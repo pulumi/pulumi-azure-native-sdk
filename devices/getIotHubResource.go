@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the non-security related metadata of an IoT hub.
@@ -105,12 +104,6 @@ func (o LookupIotHubResourceResultOutput) ToLookupIotHubResourceResultOutput() L
 
 func (o LookupIotHubResourceResultOutput) ToLookupIotHubResourceResultOutputWithContext(ctx context.Context) LookupIotHubResourceResultOutput {
 	return o
-}
-
-func (o LookupIotHubResourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIotHubResourceResult] {
-	return pulumix.Output[LookupIotHubResourceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention.

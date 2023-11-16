@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The metric setting details for the role
@@ -85,12 +84,6 @@ func (o LookupMonitoringConfigResultOutput) ToLookupMonitoringConfigResultOutput
 
 func (o LookupMonitoringConfigResultOutput) ToLookupMonitoringConfigResultOutputWithContext(ctx context.Context) LookupMonitoringConfigResultOutput {
 	return o
-}
-
-func (o LookupMonitoringConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMonitoringConfigResult] {
-	return pulumix.Output[LookupMonitoringConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The path ID that uniquely identifies the object.

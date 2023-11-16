@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type OperationByProviderRegistration struct {
@@ -113,12 +112,6 @@ func (i *OperationByProviderRegistration) ToOperationByProviderRegistrationOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(OperationByProviderRegistrationOutput)
 }
 
-func (i *OperationByProviderRegistration) ToOutput(ctx context.Context) pulumix.Output[*OperationByProviderRegistration] {
-	return pulumix.Output[*OperationByProviderRegistration]{
-		OutputState: i.ToOperationByProviderRegistrationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OperationByProviderRegistrationOutput struct{ *pulumi.OutputState }
 
 func (OperationByProviderRegistrationOutput) ElementType() reflect.Type {
@@ -131,12 +124,6 @@ func (o OperationByProviderRegistrationOutput) ToOperationByProviderRegistration
 
 func (o OperationByProviderRegistrationOutput) ToOperationByProviderRegistrationOutputWithContext(ctx context.Context) OperationByProviderRegistrationOutput {
 	return o
-}
-
-func (o OperationByProviderRegistrationOutput) ToOutput(ctx context.Context) pulumix.Output[*OperationByProviderRegistration] {
-	return pulumix.Output[*OperationByProviderRegistration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

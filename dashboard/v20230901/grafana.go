@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The grafana resource type.
@@ -156,12 +155,6 @@ func (i *Grafana) ToGrafanaOutputWithContext(ctx context.Context) GrafanaOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(GrafanaOutput)
 }
 
-func (i *Grafana) ToOutput(ctx context.Context) pulumix.Output[*Grafana] {
-	return pulumix.Output[*Grafana]{
-		OutputState: i.ToGrafanaOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GrafanaOutput struct{ *pulumi.OutputState }
 
 func (GrafanaOutput) ElementType() reflect.Type {
@@ -174,12 +167,6 @@ func (o GrafanaOutput) ToGrafanaOutput() GrafanaOutput {
 
 func (o GrafanaOutput) ToGrafanaOutputWithContext(ctx context.Context) GrafanaOutput {
 	return o
-}
-
-func (o GrafanaOutput) ToOutput(ctx context.Context) pulumix.Output[*Grafana] {
-	return pulumix.Output[*Grafana]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The managed identity of the grafana resource.

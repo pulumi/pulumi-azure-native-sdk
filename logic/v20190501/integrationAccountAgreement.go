@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The integration account agreement.
@@ -201,12 +200,6 @@ func (i *IntegrationAccountAgreement) ToIntegrationAccountAgreementOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationAccountAgreementOutput)
 }
 
-func (i *IntegrationAccountAgreement) ToOutput(ctx context.Context) pulumix.Output[*IntegrationAccountAgreement] {
-	return pulumix.Output[*IntegrationAccountAgreement]{
-		OutputState: i.ToIntegrationAccountAgreementOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IntegrationAccountAgreementOutput struct{ *pulumi.OutputState }
 
 func (IntegrationAccountAgreementOutput) ElementType() reflect.Type {
@@ -219,12 +212,6 @@ func (o IntegrationAccountAgreementOutput) ToIntegrationAccountAgreementOutput()
 
 func (o IntegrationAccountAgreementOutput) ToIntegrationAccountAgreementOutputWithContext(ctx context.Context) IntegrationAccountAgreementOutput {
 	return o
-}
-
-func (o IntegrationAccountAgreementOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationAccountAgreement] {
-	return pulumix.Output[*IntegrationAccountAgreement]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The agreement type.

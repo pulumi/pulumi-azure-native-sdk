@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a named add-on of an app.
@@ -99,12 +98,6 @@ func (o LookupWebAppPremierAddOnResultOutput) ToLookupWebAppPremierAddOnResultOu
 
 func (o LookupWebAppPremierAddOnResultOutput) ToLookupWebAppPremierAddOnResultOutputWithContext(ctx context.Context) LookupWebAppPremierAddOnResultOutput {
 	return o
-}
-
-func (o LookupWebAppPremierAddOnResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebAppPremierAddOnResult] {
-	return pulumix.Output[LookupWebAppPremierAddOnResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Id.

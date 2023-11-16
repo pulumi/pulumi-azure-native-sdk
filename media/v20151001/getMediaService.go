@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a Media Service.
@@ -85,12 +84,6 @@ func (o LookupMediaServiceResultOutput) ToLookupMediaServiceResultOutput() Looku
 
 func (o LookupMediaServiceResultOutput) ToLookupMediaServiceResultOutputWithContext(ctx context.Context) LookupMediaServiceResultOutput {
 	return o
-}
-
-func (o LookupMediaServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMediaServiceResult] {
-	return pulumix.Output[LookupMediaServiceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Read-only property that lists the Media Services REST API endpoints for this resource. If supplied on a PUT or PATCH, the value will be ignored.

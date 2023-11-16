@@ -104,12 +104,6 @@ func (o DataEncryptionTypeOutput) ToDataEncryptionTypePtrOutputWithContext(ctx c
 	}).(DataEncryptionTypePtrOutput)
 }
 
-func (o DataEncryptionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DataEncryptionType] {
-	return pulumix.Output[DataEncryptionType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataEncryptionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -143,12 +137,6 @@ func (o DataEncryptionTypePtrOutput) ToDataEncryptionTypePtrOutput() DataEncrypt
 
 func (o DataEncryptionTypePtrOutput) ToDataEncryptionTypePtrOutputWithContext(ctx context.Context) DataEncryptionTypePtrOutput {
 	return o
-}
-
-func (o DataEncryptionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataEncryptionType] {
-	return pulumix.Output[*DataEncryptionType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataEncryptionTypePtrOutput) Elem() DataEncryptionTypeOutput {
@@ -303,12 +291,6 @@ func (o ManagedServiceIdentityTypeOutput) ToManagedServiceIdentityTypePtrOutputW
 	}).(ManagedServiceIdentityTypePtrOutput)
 }
 
-func (o ManagedServiceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentityType] {
-	return pulumix.Output[ManagedServiceIdentityType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ManagedServiceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -342,12 +324,6 @@ func (o ManagedServiceIdentityTypePtrOutput) ToManagedServiceIdentityTypePtrOutp
 
 func (o ManagedServiceIdentityTypePtrOutput) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
 	return o
-}
-
-func (o ManagedServiceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
-	return pulumix.Output[*ManagedServiceIdentityType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedServiceIdentityTypePtrOutput) Elem() ManagedServiceIdentityTypeOutput {

@@ -92,12 +92,6 @@ func (o AccessRightsOutput) ToAccessRightsPtrOutputWithContext(ctx context.Conte
 	}).(AccessRightsPtrOutput)
 }
 
-func (o AccessRightsOutput) ToOutput(ctx context.Context) pulumix.Output[AccessRights] {
-	return pulumix.Output[AccessRights]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessRightsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -131,12 +125,6 @@ func (o AccessRightsPtrOutput) ToAccessRightsPtrOutput() AccessRightsPtrOutput {
 
 func (o AccessRightsPtrOutput) ToAccessRightsPtrOutputWithContext(ctx context.Context) AccessRightsPtrOutput {
 	return o
-}
-
-func (o AccessRightsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessRights] {
-	return pulumix.Output[*AccessRights]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessRightsPtrOutput) Elem() AccessRightsOutput {
@@ -340,12 +328,6 @@ func (o IpFilterActionTypeOutput) ToIpFilterActionTypePtrOutputWithContext(ctx c
 	}).(IpFilterActionTypePtrOutput)
 }
 
-func (o IpFilterActionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[IpFilterActionType] {
-	return pulumix.Output[IpFilterActionType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IpFilterActionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -379,12 +361,6 @@ func (o IpFilterActionTypePtrOutput) ToIpFilterActionTypePtrOutput() IpFilterAct
 
 func (o IpFilterActionTypePtrOutput) ToIpFilterActionTypePtrOutputWithContext(ctx context.Context) IpFilterActionTypePtrOutput {
 	return o
-}
-
-func (o IpFilterActionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IpFilterActionType] {
-	return pulumix.Output[*IpFilterActionType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IpFilterActionTypePtrOutput) Elem() IpFilterActionTypeOutput {
@@ -524,12 +500,6 @@ func (o IpFilterTargetTypeOutput) ToIpFilterTargetTypePtrOutputWithContext(ctx c
 	}).(IpFilterTargetTypePtrOutput)
 }
 
-func (o IpFilterTargetTypeOutput) ToOutput(ctx context.Context) pulumix.Output[IpFilterTargetType] {
-	return pulumix.Output[IpFilterTargetType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IpFilterTargetTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -563,12 +533,6 @@ func (o IpFilterTargetTypePtrOutput) ToIpFilterTargetTypePtrOutput() IpFilterTar
 
 func (o IpFilterTargetTypePtrOutput) ToIpFilterTargetTypePtrOutputWithContext(ctx context.Context) IpFilterTargetTypePtrOutput {
 	return o
-}
-
-func (o IpFilterTargetTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IpFilterTargetType] {
-	return pulumix.Output[*IpFilterTargetType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IpFilterTargetTypePtrOutput) Elem() IpFilterTargetTypeOutput {
@@ -734,12 +698,6 @@ func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(c
 	}).(ResourceIdentityTypePtrOutput)
 }
 
-func (o ResourceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityType] {
-	return pulumix.Output[ResourceIdentityType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -773,12 +731,6 @@ func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() Resourc
 
 func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return o
-}
-
-func (o ResourceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {

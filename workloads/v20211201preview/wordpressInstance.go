@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // WordPress instance resource
@@ -133,12 +132,6 @@ func (i *WordpressInstance) ToWordpressInstanceOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(WordpressInstanceOutput)
 }
 
-func (i *WordpressInstance) ToOutput(ctx context.Context) pulumix.Output[*WordpressInstance] {
-	return pulumix.Output[*WordpressInstance]{
-		OutputState: i.ToWordpressInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WordpressInstanceOutput struct{ *pulumi.OutputState }
 
 func (WordpressInstanceOutput) ElementType() reflect.Type {
@@ -151,12 +144,6 @@ func (o WordpressInstanceOutput) ToWordpressInstanceOutput() WordpressInstanceOu
 
 func (o WordpressInstanceOutput) ToWordpressInstanceOutputWithContext(ctx context.Context) WordpressInstanceOutput {
 	return o
-}
-
-func (o WordpressInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*WordpressInstance] {
-	return pulumix.Output[*WordpressInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Database name used by the application

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List the registration key for the device.
@@ -73,12 +72,6 @@ func (o ListDeviceRegistrationKeyResultOutput) ToListDeviceRegistrationKeyResult
 
 func (o ListDeviceRegistrationKeyResultOutput) ToListDeviceRegistrationKeyResultOutputWithContext(ctx context.Context) ListDeviceRegistrationKeyResultOutput {
 	return o
-}
-
-func (o ListDeviceRegistrationKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListDeviceRegistrationKeyResult] {
-	return pulumix.Output[ListDeviceRegistrationKeyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The registration key for the device.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Access Review History Definition.
@@ -177,12 +176,6 @@ func (i *ScopeAccessReviewHistoryDefinitionById) ToScopeAccessReviewHistoryDefin
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeAccessReviewHistoryDefinitionByIdOutput)
 }
 
-func (i *ScopeAccessReviewHistoryDefinitionById) ToOutput(ctx context.Context) pulumix.Output[*ScopeAccessReviewHistoryDefinitionById] {
-	return pulumix.Output[*ScopeAccessReviewHistoryDefinitionById]{
-		OutputState: i.ToScopeAccessReviewHistoryDefinitionByIdOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScopeAccessReviewHistoryDefinitionByIdOutput struct{ *pulumi.OutputState }
 
 func (ScopeAccessReviewHistoryDefinitionByIdOutput) ElementType() reflect.Type {
@@ -195,12 +188,6 @@ func (o ScopeAccessReviewHistoryDefinitionByIdOutput) ToScopeAccessReviewHistory
 
 func (o ScopeAccessReviewHistoryDefinitionByIdOutput) ToScopeAccessReviewHistoryDefinitionByIdOutputWithContext(ctx context.Context) ScopeAccessReviewHistoryDefinitionByIdOutput {
 	return o
-}
-
-func (o ScopeAccessReviewHistoryDefinitionByIdOutput) ToOutput(ctx context.Context) pulumix.Output[*ScopeAccessReviewHistoryDefinitionById] {
-	return pulumix.Output[*ScopeAccessReviewHistoryDefinitionById]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Date time when history definition was created

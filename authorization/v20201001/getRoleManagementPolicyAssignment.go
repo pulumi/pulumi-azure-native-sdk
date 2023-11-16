@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the specified role management policy assignment for a resource scope
@@ -87,12 +86,6 @@ func (o LookupRoleManagementPolicyAssignmentResultOutput) ToLookupRoleManagement
 
 func (o LookupRoleManagementPolicyAssignmentResultOutput) ToLookupRoleManagementPolicyAssignmentResultOutputWithContext(ctx context.Context) LookupRoleManagementPolicyAssignmentResultOutput {
 	return o
-}
-
-func (o LookupRoleManagementPolicyAssignmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRoleManagementPolicyAssignmentResult] {
-	return pulumix.Output[LookupRoleManagementPolicyAssignmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The readonly computed rule applied to the policy.

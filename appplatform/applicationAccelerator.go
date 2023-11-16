@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Application accelerator resource
@@ -150,12 +149,6 @@ func (i *ApplicationAccelerator) ToApplicationAcceleratorOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAcceleratorOutput)
 }
 
-func (i *ApplicationAccelerator) ToOutput(ctx context.Context) pulumix.Output[*ApplicationAccelerator] {
-	return pulumix.Output[*ApplicationAccelerator]{
-		OutputState: i.ToApplicationAcceleratorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationAcceleratorOutput struct{ *pulumi.OutputState }
 
 func (ApplicationAcceleratorOutput) ElementType() reflect.Type {
@@ -168,12 +161,6 @@ func (o ApplicationAcceleratorOutput) ToApplicationAcceleratorOutput() Applicati
 
 func (o ApplicationAcceleratorOutput) ToApplicationAcceleratorOutputWithContext(ctx context.Context) ApplicationAcceleratorOutput {
 	return o
-}
-
-func (o ApplicationAcceleratorOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationAccelerator] {
-	return pulumix.Output[*ApplicationAccelerator]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource.

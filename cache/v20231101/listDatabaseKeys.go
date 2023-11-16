@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the access keys for the RedisEnterprise database.
@@ -79,12 +78,6 @@ func (o ListDatabaseKeysResultOutput) ToListDatabaseKeysResultOutput() ListDatab
 
 func (o ListDatabaseKeysResultOutput) ToListDatabaseKeysResultOutputWithContext(ctx context.Context) ListDatabaseKeysResultOutput {
 	return o
-}
-
-func (o ListDatabaseKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListDatabaseKeysResult] {
-	return pulumix.Output[ListDatabaseKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The current primary key that clients can use to authenticate

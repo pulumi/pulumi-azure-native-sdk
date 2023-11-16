@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Settings with single toggle.
@@ -116,6 +115,9 @@ func NewEntityAnalytics(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:EntityAnalytics"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:EntityAnalytics"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -198,12 +200,6 @@ func (i *EntityAnalytics) ToEntityAnalyticsOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(EntityAnalyticsOutput)
 }
 
-func (i *EntityAnalytics) ToOutput(ctx context.Context) pulumix.Output[*EntityAnalytics] {
-	return pulumix.Output[*EntityAnalytics]{
-		OutputState: i.ToEntityAnalyticsOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EntityAnalyticsOutput struct{ *pulumi.OutputState }
 
 func (EntityAnalyticsOutput) ElementType() reflect.Type {
@@ -216,12 +212,6 @@ func (o EntityAnalyticsOutput) ToEntityAnalyticsOutput() EntityAnalyticsOutput {
 
 func (o EntityAnalyticsOutput) ToEntityAnalyticsOutputWithContext(ctx context.Context) EntityAnalyticsOutput {
 	return o
-}
-
-func (o EntityAnalyticsOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityAnalytics] {
-	return pulumix.Output[*EntityAnalytics]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Etag of the azure resource

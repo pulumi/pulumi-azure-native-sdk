@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The details of the snoozed or dismissed rule; for example, the duration, name, and GUID associated with the rule.
@@ -153,12 +152,6 @@ func (i *Suppression) ToSuppressionOutputWithContext(ctx context.Context) Suppre
 	return pulumi.ToOutputWithContext(ctx, i).(SuppressionOutput)
 }
 
-func (i *Suppression) ToOutput(ctx context.Context) pulumix.Output[*Suppression] {
-	return pulumix.Output[*Suppression]{
-		OutputState: i.ToSuppressionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SuppressionOutput struct{ *pulumi.OutputState }
 
 func (SuppressionOutput) ElementType() reflect.Type {
@@ -171,12 +164,6 @@ func (o SuppressionOutput) ToSuppressionOutput() SuppressionOutput {
 
 func (o SuppressionOutput) ToSuppressionOutputWithContext(ctx context.Context) SuppressionOutput {
 	return o
-}
-
-func (o SuppressionOutput) ToOutput(ctx context.Context) pulumix.Output[*Suppression] {
-	return pulumix.Output[*Suppression]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the expiration time stamp.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The private endpoint connection resource.
@@ -136,12 +135,6 @@ func (i *CloudHsmClusterPrivateEndpointConnection) ToCloudHsmClusterPrivateEndpo
 	return pulumi.ToOutputWithContext(ctx, i).(CloudHsmClusterPrivateEndpointConnectionOutput)
 }
 
-func (i *CloudHsmClusterPrivateEndpointConnection) ToOutput(ctx context.Context) pulumix.Output[*CloudHsmClusterPrivateEndpointConnection] {
-	return pulumix.Output[*CloudHsmClusterPrivateEndpointConnection]{
-		OutputState: i.ToCloudHsmClusterPrivateEndpointConnectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CloudHsmClusterPrivateEndpointConnectionOutput struct{ *pulumi.OutputState }
 
 func (CloudHsmClusterPrivateEndpointConnectionOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o CloudHsmClusterPrivateEndpointConnectionOutput) ToCloudHsmClusterPrivate
 
 func (o CloudHsmClusterPrivateEndpointConnectionOutput) ToCloudHsmClusterPrivateEndpointConnectionOutputWithContext(ctx context.Context) CloudHsmClusterPrivateEndpointConnectionOutput {
 	return o
-}
-
-func (o CloudHsmClusterPrivateEndpointConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudHsmClusterPrivateEndpointConnection] {
-	return pulumix.Output[*CloudHsmClusterPrivateEndpointConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Modified whenever there is a change in the state of private endpoint connection.

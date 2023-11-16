@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i BodyDiagnosticSettingsArgs) ToBodyDiagnosticSettingsOutput() BodyDiagnos
 
 func (i BodyDiagnosticSettingsArgs) ToBodyDiagnosticSettingsOutputWithContext(ctx context.Context) BodyDiagnosticSettingsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BodyDiagnosticSettingsOutput)
-}
-
-func (i BodyDiagnosticSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[BodyDiagnosticSettings] {
-	return pulumix.Output[BodyDiagnosticSettings]{
-		OutputState: i.ToBodyDiagnosticSettingsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i BodyDiagnosticSettingsArgs) ToBodyDiagnosticSettingsPtrOutput() BodyDiagnosticSettingsPtrOutput {
@@ -96,12 +89,6 @@ func (i *bodyDiagnosticSettingsPtrType) ToBodyDiagnosticSettingsPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(BodyDiagnosticSettingsPtrOutput)
 }
 
-func (i *bodyDiagnosticSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*BodyDiagnosticSettings] {
-	return pulumix.Output[*BodyDiagnosticSettings]{
-		OutputState: i.ToBodyDiagnosticSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Body logging settings.
 type BodyDiagnosticSettingsOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o BodyDiagnosticSettingsOutput) ToBodyDiagnosticSettingsPtrOutputWithConte
 	}).(BodyDiagnosticSettingsPtrOutput)
 }
 
-func (o BodyDiagnosticSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[BodyDiagnosticSettings] {
-	return pulumix.Output[BodyDiagnosticSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Number of request body bytes to log.
 func (o BodyDiagnosticSettingsOutput) Bytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BodyDiagnosticSettings) *int { return v.Bytes }).(pulumi.IntPtrOutput)
@@ -150,12 +131,6 @@ func (o BodyDiagnosticSettingsPtrOutput) ToBodyDiagnosticSettingsPtrOutput() Bod
 
 func (o BodyDiagnosticSettingsPtrOutput) ToBodyDiagnosticSettingsPtrOutputWithContext(ctx context.Context) BodyDiagnosticSettingsPtrOutput {
 	return o
-}
-
-func (o BodyDiagnosticSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BodyDiagnosticSettings] {
-	return pulumix.Output[*BodyDiagnosticSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BodyDiagnosticSettingsPtrOutput) Elem() BodyDiagnosticSettingsOutput {
@@ -199,12 +174,6 @@ func (o BodyDiagnosticSettingsResponseOutput) ToBodyDiagnosticSettingsResponseOu
 	return o
 }
 
-func (o BodyDiagnosticSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BodyDiagnosticSettingsResponse] {
-	return pulumix.Output[BodyDiagnosticSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Number of request body bytes to log.
 func (o BodyDiagnosticSettingsResponseOutput) Bytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BodyDiagnosticSettingsResponse) *int { return v.Bytes }).(pulumi.IntPtrOutput)
@@ -222,12 +191,6 @@ func (o BodyDiagnosticSettingsResponsePtrOutput) ToBodyDiagnosticSettingsRespons
 
 func (o BodyDiagnosticSettingsResponsePtrOutput) ToBodyDiagnosticSettingsResponsePtrOutputWithContext(ctx context.Context) BodyDiagnosticSettingsResponsePtrOutput {
 	return o
-}
-
-func (o BodyDiagnosticSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BodyDiagnosticSettingsResponse] {
-	return pulumix.Output[*BodyDiagnosticSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BodyDiagnosticSettingsResponsePtrOutput) Elem() BodyDiagnosticSettingsResponseOutput {
@@ -289,12 +252,6 @@ func (i HttpMessageDiagnosticArgs) ToHttpMessageDiagnosticOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(HttpMessageDiagnosticOutput)
 }
 
-func (i HttpMessageDiagnosticArgs) ToOutput(ctx context.Context) pulumix.Output[HttpMessageDiagnostic] {
-	return pulumix.Output[HttpMessageDiagnostic]{
-		OutputState: i.ToHttpMessageDiagnosticOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HttpMessageDiagnosticArgs) ToHttpMessageDiagnosticPtrOutput() HttpMessageDiagnosticPtrOutput {
 	return i.ToHttpMessageDiagnosticPtrOutputWithContext(context.Background())
 }
@@ -336,12 +293,6 @@ func (i *httpMessageDiagnosticPtrType) ToHttpMessageDiagnosticPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(HttpMessageDiagnosticPtrOutput)
 }
 
-func (i *httpMessageDiagnosticPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpMessageDiagnostic] {
-	return pulumix.Output[*HttpMessageDiagnostic]{
-		OutputState: i.ToHttpMessageDiagnosticPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Http message diagnostic settings.
 type HttpMessageDiagnosticOutput struct{ *pulumi.OutputState }
 
@@ -367,12 +318,6 @@ func (o HttpMessageDiagnosticOutput) ToHttpMessageDiagnosticPtrOutputWithContext
 	}).(HttpMessageDiagnosticPtrOutput)
 }
 
-func (o HttpMessageDiagnosticOutput) ToOutput(ctx context.Context) pulumix.Output[HttpMessageDiagnostic] {
-	return pulumix.Output[HttpMessageDiagnostic]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Body logging settings.
 func (o HttpMessageDiagnosticOutput) Body() BodyDiagnosticSettingsPtrOutput {
 	return o.ApplyT(func(v HttpMessageDiagnostic) *BodyDiagnosticSettings { return v.Body }).(BodyDiagnosticSettingsPtrOutput)
@@ -395,12 +340,6 @@ func (o HttpMessageDiagnosticPtrOutput) ToHttpMessageDiagnosticPtrOutput() HttpM
 
 func (o HttpMessageDiagnosticPtrOutput) ToHttpMessageDiagnosticPtrOutputWithContext(ctx context.Context) HttpMessageDiagnosticPtrOutput {
 	return o
-}
-
-func (o HttpMessageDiagnosticPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpMessageDiagnostic] {
-	return pulumix.Output[*HttpMessageDiagnostic]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpMessageDiagnosticPtrOutput) Elem() HttpMessageDiagnosticOutput {
@@ -456,12 +395,6 @@ func (o HttpMessageDiagnosticResponseOutput) ToHttpMessageDiagnosticResponseOutp
 	return o
 }
 
-func (o HttpMessageDiagnosticResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpMessageDiagnosticResponse] {
-	return pulumix.Output[HttpMessageDiagnosticResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Body logging settings.
 func (o HttpMessageDiagnosticResponseOutput) Body() BodyDiagnosticSettingsResponsePtrOutput {
 	return o.ApplyT(func(v HttpMessageDiagnosticResponse) *BodyDiagnosticSettingsResponse { return v.Body }).(BodyDiagnosticSettingsResponsePtrOutput)
@@ -484,12 +417,6 @@ func (o HttpMessageDiagnosticResponsePtrOutput) ToHttpMessageDiagnosticResponseP
 
 func (o HttpMessageDiagnosticResponsePtrOutput) ToHttpMessageDiagnosticResponsePtrOutputWithContext(ctx context.Context) HttpMessageDiagnosticResponsePtrOutput {
 	return o
-}
-
-func (o HttpMessageDiagnosticResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpMessageDiagnosticResponse] {
-	return pulumix.Output[*HttpMessageDiagnosticResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpMessageDiagnosticResponsePtrOutput) Elem() HttpMessageDiagnosticResponseOutput {
@@ -561,12 +488,6 @@ func (i PipelineDiagnosticSettingsArgs) ToPipelineDiagnosticSettingsOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineDiagnosticSettingsOutput)
 }
 
-func (i PipelineDiagnosticSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[PipelineDiagnosticSettings] {
-	return pulumix.Output[PipelineDiagnosticSettings]{
-		OutputState: i.ToPipelineDiagnosticSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PipelineDiagnosticSettingsArgs) ToPipelineDiagnosticSettingsPtrOutput() PipelineDiagnosticSettingsPtrOutput {
 	return i.ToPipelineDiagnosticSettingsPtrOutputWithContext(context.Background())
 }
@@ -608,12 +529,6 @@ func (i *pipelineDiagnosticSettingsPtrType) ToPipelineDiagnosticSettingsPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineDiagnosticSettingsPtrOutput)
 }
 
-func (i *pipelineDiagnosticSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*PipelineDiagnosticSettings] {
-	return pulumix.Output[*PipelineDiagnosticSettings]{
-		OutputState: i.ToPipelineDiagnosticSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
 type PipelineDiagnosticSettingsOutput struct{ *pulumi.OutputState }
 
@@ -639,12 +554,6 @@ func (o PipelineDiagnosticSettingsOutput) ToPipelineDiagnosticSettingsPtrOutputW
 	}).(PipelineDiagnosticSettingsPtrOutput)
 }
 
-func (o PipelineDiagnosticSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineDiagnosticSettings] {
-	return pulumix.Output[PipelineDiagnosticSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Diagnostic settings for request.
 func (o PipelineDiagnosticSettingsOutput) Request() HttpMessageDiagnosticPtrOutput {
 	return o.ApplyT(func(v PipelineDiagnosticSettings) *HttpMessageDiagnostic { return v.Request }).(HttpMessageDiagnosticPtrOutput)
@@ -667,12 +576,6 @@ func (o PipelineDiagnosticSettingsPtrOutput) ToPipelineDiagnosticSettingsPtrOutp
 
 func (o PipelineDiagnosticSettingsPtrOutput) ToPipelineDiagnosticSettingsPtrOutputWithContext(ctx context.Context) PipelineDiagnosticSettingsPtrOutput {
 	return o
-}
-
-func (o PipelineDiagnosticSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelineDiagnosticSettings] {
-	return pulumix.Output[*PipelineDiagnosticSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PipelineDiagnosticSettingsPtrOutput) Elem() PipelineDiagnosticSettingsOutput {
@@ -728,12 +631,6 @@ func (o PipelineDiagnosticSettingsResponseOutput) ToPipelineDiagnosticSettingsRe
 	return o
 }
 
-func (o PipelineDiagnosticSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineDiagnosticSettingsResponse] {
-	return pulumix.Output[PipelineDiagnosticSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Diagnostic settings for request.
 func (o PipelineDiagnosticSettingsResponseOutput) Request() HttpMessageDiagnosticResponsePtrOutput {
 	return o.ApplyT(func(v PipelineDiagnosticSettingsResponse) *HttpMessageDiagnosticResponse { return v.Request }).(HttpMessageDiagnosticResponsePtrOutput)
@@ -756,12 +653,6 @@ func (o PipelineDiagnosticSettingsResponsePtrOutput) ToPipelineDiagnosticSetting
 
 func (o PipelineDiagnosticSettingsResponsePtrOutput) ToPipelineDiagnosticSettingsResponsePtrOutputWithContext(ctx context.Context) PipelineDiagnosticSettingsResponsePtrOutput {
 	return o
-}
-
-func (o PipelineDiagnosticSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelineDiagnosticSettingsResponse] {
-	return pulumix.Output[*PipelineDiagnosticSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PipelineDiagnosticSettingsResponsePtrOutput) Elem() PipelineDiagnosticSettingsResponseOutput {
@@ -833,12 +724,6 @@ func (i SamplingSettingsArgs) ToSamplingSettingsOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SamplingSettingsOutput)
 }
 
-func (i SamplingSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[SamplingSettings] {
-	return pulumix.Output[SamplingSettings]{
-		OutputState: i.ToSamplingSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SamplingSettingsArgs) ToSamplingSettingsPtrOutput() SamplingSettingsPtrOutput {
 	return i.ToSamplingSettingsPtrOutputWithContext(context.Background())
 }
@@ -880,12 +765,6 @@ func (i *samplingSettingsPtrType) ToSamplingSettingsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(SamplingSettingsPtrOutput)
 }
 
-func (i *samplingSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SamplingSettings] {
-	return pulumix.Output[*SamplingSettings]{
-		OutputState: i.ToSamplingSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sampling settings for Diagnostic.
 type SamplingSettingsOutput struct{ *pulumi.OutputState }
 
@@ -911,12 +790,6 @@ func (o SamplingSettingsOutput) ToSamplingSettingsPtrOutputWithContext(ctx conte
 	}).(SamplingSettingsPtrOutput)
 }
 
-func (o SamplingSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[SamplingSettings] {
-	return pulumix.Output[SamplingSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Rate of sampling for fixed-rate sampling.
 func (o SamplingSettingsOutput) Percentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v SamplingSettings) *float64 { return v.Percentage }).(pulumi.Float64PtrOutput)
@@ -939,12 +812,6 @@ func (o SamplingSettingsPtrOutput) ToSamplingSettingsPtrOutput() SamplingSetting
 
 func (o SamplingSettingsPtrOutput) ToSamplingSettingsPtrOutputWithContext(ctx context.Context) SamplingSettingsPtrOutput {
 	return o
-}
-
-func (o SamplingSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SamplingSettings] {
-	return pulumix.Output[*SamplingSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SamplingSettingsPtrOutput) Elem() SamplingSettingsOutput {
@@ -1000,12 +867,6 @@ func (o SamplingSettingsResponseOutput) ToSamplingSettingsResponseOutputWithCont
 	return o
 }
 
-func (o SamplingSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SamplingSettingsResponse] {
-	return pulumix.Output[SamplingSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Rate of sampling for fixed-rate sampling.
 func (o SamplingSettingsResponseOutput) Percentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v SamplingSettingsResponse) *float64 { return v.Percentage }).(pulumi.Float64PtrOutput)
@@ -1028,12 +889,6 @@ func (o SamplingSettingsResponsePtrOutput) ToSamplingSettingsResponsePtrOutput()
 
 func (o SamplingSettingsResponsePtrOutput) ToSamplingSettingsResponsePtrOutputWithContext(ctx context.Context) SamplingSettingsResponsePtrOutput {
 	return o
-}
-
-func (o SamplingSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SamplingSettingsResponse] {
-	return pulumix.Output[*SamplingSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SamplingSettingsResponsePtrOutput) Elem() SamplingSettingsResponseOutput {

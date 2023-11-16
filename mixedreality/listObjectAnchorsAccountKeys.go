@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List Both of the 2 Keys of an object anchors Account
@@ -76,12 +75,6 @@ func (o ListObjectAnchorsAccountKeysResultOutput) ToListObjectAnchorsAccountKeys
 
 func (o ListObjectAnchorsAccountKeysResultOutput) ToListObjectAnchorsAccountKeysResultOutputWithContext(ctx context.Context) ListObjectAnchorsAccountKeysResultOutput {
 	return o
-}
-
-func (o ListObjectAnchorsAccountKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListObjectAnchorsAccountKeysResult] {
-	return pulumix.Output[ListObjectAnchorsAccountKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // value of primary key.

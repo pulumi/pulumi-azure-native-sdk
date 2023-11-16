@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The logical network resource definition.
@@ -152,12 +151,6 @@ func (i *LogicalNetwork) ToLogicalNetworkOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(LogicalNetworkOutput)
 }
 
-func (i *LogicalNetwork) ToOutput(ctx context.Context) pulumix.Output[*LogicalNetwork] {
-	return pulumix.Output[*LogicalNetwork]{
-		OutputState: i.ToLogicalNetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LogicalNetworkOutput struct{ *pulumi.OutputState }
 
 func (LogicalNetworkOutput) ElementType() reflect.Type {
@@ -170,12 +163,6 @@ func (o LogicalNetworkOutput) ToLogicalNetworkOutput() LogicalNetworkOutput {
 
 func (o LogicalNetworkOutput) ToLogicalNetworkOutputWithContext(ctx context.Context) LogicalNetworkOutput {
 	return o
-}
-
-func (o LogicalNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*LogicalNetwork] {
-	return pulumix.Output[*LogicalNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 // DhcpOptions contains an array of DNS servers available to VMs deployed in the logical network. Standard DHCP option for a subnet overrides logical network DHCP options.

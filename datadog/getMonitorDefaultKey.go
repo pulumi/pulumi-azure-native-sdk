@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2022-06-01.
@@ -79,12 +78,6 @@ func (o GetMonitorDefaultKeyResultOutput) ToGetMonitorDefaultKeyResultOutput() G
 
 func (o GetMonitorDefaultKeyResultOutput) ToGetMonitorDefaultKeyResultOutputWithContext(ctx context.Context) GetMonitorDefaultKeyResultOutput {
 	return o
-}
-
-func (o GetMonitorDefaultKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetMonitorDefaultKeyResult] {
-	return pulumix.Output[GetMonitorDefaultKeyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time of creation of the API key.

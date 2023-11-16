@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Site Extension Information.
@@ -201,12 +200,6 @@ func (i *WebAppSiteExtension) ToWebAppSiteExtensionOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppSiteExtensionOutput)
 }
 
-func (i *WebAppSiteExtension) ToOutput(ctx context.Context) pulumix.Output[*WebAppSiteExtension] {
-	return pulumix.Output[*WebAppSiteExtension]{
-		OutputState: i.ToWebAppSiteExtensionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebAppSiteExtensionOutput struct{ *pulumi.OutputState }
 
 func (WebAppSiteExtensionOutput) ElementType() reflect.Type {
@@ -219,12 +212,6 @@ func (o WebAppSiteExtensionOutput) ToWebAppSiteExtensionOutput() WebAppSiteExten
 
 func (o WebAppSiteExtensionOutput) ToWebAppSiteExtensionOutputWithContext(ctx context.Context) WebAppSiteExtensionOutput {
 	return o
-}
-
-func (o WebAppSiteExtensionOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppSiteExtension] {
-	return pulumix.Output[*WebAppSiteExtension]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of authors.

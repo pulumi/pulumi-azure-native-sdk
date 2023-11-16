@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a specific role by name.
@@ -102,12 +101,6 @@ func (o LookupIoTRoleResultOutput) ToLookupIoTRoleResultOutput() LookupIoTRoleRe
 
 func (o LookupIoTRoleResultOutput) ToLookupIoTRoleResultOutputWithContext(ctx context.Context) LookupIoTRoleResultOutput {
 	return o
-}
-
-func (o LookupIoTRoleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIoTRoleResult] {
-	return pulumix.Output[LookupIoTRoleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource allocation

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Payload of the blockchain member which is exposed in the request/response of the resource provider.
@@ -187,12 +186,6 @@ func (i *BlockchainMember) ToBlockchainMemberOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(BlockchainMemberOutput)
 }
 
-func (i *BlockchainMember) ToOutput(ctx context.Context) pulumix.Output[*BlockchainMember] {
-	return pulumix.Output[*BlockchainMember]{
-		OutputState: i.ToBlockchainMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BlockchainMemberOutput struct{ *pulumi.OutputState }
 
 func (BlockchainMemberOutput) ElementType() reflect.Type {
@@ -205,12 +198,6 @@ func (o BlockchainMemberOutput) ToBlockchainMemberOutput() BlockchainMemberOutpu
 
 func (o BlockchainMemberOutput) ToBlockchainMemberOutputWithContext(ctx context.Context) BlockchainMemberOutput {
 	return o
-}
-
-func (o BlockchainMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*BlockchainMember] {
-	return pulumix.Output[*BlockchainMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the consortium for the blockchain member.

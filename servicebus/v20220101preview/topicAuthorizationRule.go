@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description of a namespace authorization rule.
@@ -160,12 +159,6 @@ func (i *TopicAuthorizationRule) ToTopicAuthorizationRuleOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(TopicAuthorizationRuleOutput)
 }
 
-func (i *TopicAuthorizationRule) ToOutput(ctx context.Context) pulumix.Output[*TopicAuthorizationRule] {
-	return pulumix.Output[*TopicAuthorizationRule]{
-		OutputState: i.ToTopicAuthorizationRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TopicAuthorizationRuleOutput struct{ *pulumi.OutputState }
 
 func (TopicAuthorizationRuleOutput) ElementType() reflect.Type {
@@ -178,12 +171,6 @@ func (o TopicAuthorizationRuleOutput) ToTopicAuthorizationRuleOutput() TopicAuth
 
 func (o TopicAuthorizationRuleOutput) ToTopicAuthorizationRuleOutputWithContext(ctx context.Context) TopicAuthorizationRuleOutput {
 	return o
-}
-
-func (o TopicAuthorizationRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*TopicAuthorizationRule] {
-	return pulumix.Output[*TopicAuthorizationRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Properties that define a favorite that is associated to an Application Insights component.
@@ -166,12 +165,6 @@ func (i *Favorite) ToFavoriteOutputWithContext(ctx context.Context) FavoriteOutp
 	return pulumi.ToOutputWithContext(ctx, i).(FavoriteOutput)
 }
 
-func (i *Favorite) ToOutput(ctx context.Context) pulumix.Output[*Favorite] {
-	return pulumix.Output[*Favorite]{
-		OutputState: i.ToFavoriteOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FavoriteOutput struct{ *pulumi.OutputState }
 
 func (FavoriteOutput) ElementType() reflect.Type {
@@ -184,12 +177,6 @@ func (o FavoriteOutput) ToFavoriteOutput() FavoriteOutput {
 
 func (o FavoriteOutput) ToFavoriteOutputWithContext(ctx context.Context) FavoriteOutput {
 	return o
-}
-
-func (o FavoriteOutput) ToOutput(ctx context.Context) pulumix.Output[*Favorite] {
-	return pulumix.Output[*Favorite]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Favorite category, as defined by the user at creation time.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Project resource.
@@ -138,12 +137,6 @@ func (i *Project) ToProjectOutputWithContext(ctx context.Context) ProjectOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectOutput)
 }
 
-func (i *Project) ToOutput(ctx context.Context) pulumix.Output[*Project] {
-	return pulumix.Output[*Project]{
-		OutputState: i.ToProjectOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectOutput struct{ *pulumi.OutputState }
 
 func (ProjectOutput) ElementType() reflect.Type {
@@ -156,12 +149,6 @@ func (o ProjectOutput) ToProjectOutput() ProjectOutput {
 
 func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOutput {
 	return o
-}
-
-func (o ProjectOutput) ToOutput(ctx context.Context) pulumix.Output[*Project] {
-	return pulumix.Output[*Project]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A description for the Project.

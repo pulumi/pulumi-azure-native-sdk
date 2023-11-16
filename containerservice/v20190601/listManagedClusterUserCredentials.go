@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets cluster user credential of the managed cluster with a specified resource group and name.
@@ -73,12 +72,6 @@ func (o ListManagedClusterUserCredentialsResultOutput) ToListManagedClusterUserC
 
 func (o ListManagedClusterUserCredentialsResultOutput) ToListManagedClusterUserCredentialsResultOutputWithContext(ctx context.Context) ListManagedClusterUserCredentialsResultOutput {
 	return o
-}
-
-func (o ListManagedClusterUserCredentialsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListManagedClusterUserCredentialsResult] {
-	return pulumix.Output[ListManagedClusterUserCredentialsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Base64-encoded Kubernetes configuration file.

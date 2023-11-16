@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Dapr PubSub Event Subscription.
@@ -108,12 +107,6 @@ func (o LookupDaprSubscriptionResultOutput) ToLookupDaprSubscriptionResultOutput
 
 func (o LookupDaprSubscriptionResultOutput) ToLookupDaprSubscriptionResultOutputWithContext(ctx context.Context) LookupDaprSubscriptionResultOutput {
 	return o
-}
-
-func (o LookupDaprSubscriptionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDaprSubscriptionResult] {
-	return pulumix.Output[LookupDaprSubscriptionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Bulk subscription options

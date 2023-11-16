@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the Wiki for an API specified by its identifier.
@@ -83,12 +82,6 @@ func (o LookupApiWikiResultOutput) ToLookupApiWikiResultOutput() LookupApiWikiRe
 
 func (o LookupApiWikiResultOutput) ToLookupApiWikiResultOutputWithContext(ctx context.Context) LookupApiWikiResultOutput {
 	return o
-}
-
-func (o LookupApiWikiResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApiWikiResult] {
-	return pulumix.Output[LookupApiWikiResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Collection wiki documents included into this wiki.

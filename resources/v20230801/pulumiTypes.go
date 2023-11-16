@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i ContainerConfigurationArgs) ToContainerConfigurationOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerConfigurationOutput)
 }
 
-func (i ContainerConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerConfiguration] {
-	return pulumix.Output[ContainerConfiguration]{
-		OutputState: i.ToContainerConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerConfigurationArgs) ToContainerConfigurationPtrOutput() ContainerConfigurationPtrOutput {
 	return i.ToContainerConfigurationPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *containerConfigurationPtrType) ToContainerConfigurationPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerConfigurationPtrOutput)
 }
 
-func (i *containerConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerConfiguration] {
-	return pulumix.Output[*ContainerConfiguration]{
-		OutputState: i.ToContainerConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Settings to customize ACI container instance.
 type ContainerConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o ContainerConfigurationOutput) ToContainerConfigurationPtrOutputWithConte
 	}).(ContainerConfigurationPtrOutput)
 }
 
-func (o ContainerConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerConfiguration] {
-	return pulumix.Output[ContainerConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Container group name, if not specified then the name will get auto-generated. Not specifying a 'containerGroupName' indicates the system to generate a unique name which might end up flagging an Azure Policy as non-compliant. Use 'containerGroupName' when you have an Azure Policy that expects a specific naming convention or when you want to fully control the name. 'containerGroupName' property must be between 1 and 63 characters long, must contain only lowercase letters, numbers, and dashes and it cannot start or end with a dash and consecutive dashes are not allowed. To specify a 'containerGroupName', add the following object to properties: { "containerSettings": { "containerGroupName": "contoso-container" } }. If you do not want to specify a 'containerGroupName' then do not add 'containerSettings' property.
 func (o ContainerConfigurationOutput) ContainerGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerConfiguration) *string { return v.ContainerGroupName }).(pulumi.StringPtrOutput)
@@ -159,12 +140,6 @@ func (o ContainerConfigurationPtrOutput) ToContainerConfigurationPtrOutput() Con
 
 func (o ContainerConfigurationPtrOutput) ToContainerConfigurationPtrOutputWithContext(ctx context.Context) ContainerConfigurationPtrOutput {
 	return o
-}
-
-func (o ContainerConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerConfiguration] {
-	return pulumix.Output[*ContainerConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerConfigurationPtrOutput) Elem() ContainerConfigurationOutput {
@@ -220,12 +195,6 @@ func (o ContainerConfigurationResponseOutput) ToContainerConfigurationResponseOu
 	return o
 }
 
-func (o ContainerConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerConfigurationResponse] {
-	return pulumix.Output[ContainerConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Container group name, if not specified then the name will get auto-generated. Not specifying a 'containerGroupName' indicates the system to generate a unique name which might end up flagging an Azure Policy as non-compliant. Use 'containerGroupName' when you have an Azure Policy that expects a specific naming convention or when you want to fully control the name. 'containerGroupName' property must be between 1 and 63 characters long, must contain only lowercase letters, numbers, and dashes and it cannot start or end with a dash and consecutive dashes are not allowed. To specify a 'containerGroupName', add the following object to properties: { "containerSettings": { "containerGroupName": "contoso-container" } }. If you do not want to specify a 'containerGroupName' then do not add 'containerSettings' property.
 func (o ContainerConfigurationResponseOutput) ContainerGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerConfigurationResponse) *string { return v.ContainerGroupName }).(pulumi.StringPtrOutput)
@@ -248,12 +217,6 @@ func (o ContainerConfigurationResponsePtrOutput) ToContainerConfigurationRespons
 
 func (o ContainerConfigurationResponsePtrOutput) ToContainerConfigurationResponsePtrOutputWithContext(ctx context.Context) ContainerConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o ContainerConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerConfigurationResponse] {
-	return pulumix.Output[*ContainerConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerConfigurationResponsePtrOutput) Elem() ContainerConfigurationResponseOutput {
@@ -325,12 +288,6 @@ func (i ContainerGroupSubnetIdArgs) ToContainerGroupSubnetIdOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupSubnetIdOutput)
 }
 
-func (i ContainerGroupSubnetIdArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupSubnetId] {
-	return pulumix.Output[ContainerGroupSubnetId]{
-		OutputState: i.ToContainerGroupSubnetIdOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ContainerGroupSubnetIdArrayInput is an input type that accepts ContainerGroupSubnetIdArray and ContainerGroupSubnetIdArrayOutput values.
 // You can construct a concrete instance of `ContainerGroupSubnetIdArrayInput` via:
 //
@@ -356,12 +313,6 @@ func (i ContainerGroupSubnetIdArray) ToContainerGroupSubnetIdArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupSubnetIdArrayOutput)
 }
 
-func (i ContainerGroupSubnetIdArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupSubnetId] {
-	return pulumix.Output[[]ContainerGroupSubnetId]{
-		OutputState: i.ToContainerGroupSubnetIdArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Container group subnet information.
 type ContainerGroupSubnetIdOutput struct{ *pulumi.OutputState }
 
@@ -375,12 +326,6 @@ func (o ContainerGroupSubnetIdOutput) ToContainerGroupSubnetIdOutput() Container
 
 func (o ContainerGroupSubnetIdOutput) ToContainerGroupSubnetIdOutputWithContext(ctx context.Context) ContainerGroupSubnetIdOutput {
 	return o
-}
-
-func (o ContainerGroupSubnetIdOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupSubnetId] {
-	return pulumix.Output[ContainerGroupSubnetId]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource ID of subnet.
@@ -405,12 +350,6 @@ func (o ContainerGroupSubnetIdArrayOutput) ToContainerGroupSubnetIdArrayOutput()
 
 func (o ContainerGroupSubnetIdArrayOutput) ToContainerGroupSubnetIdArrayOutputWithContext(ctx context.Context) ContainerGroupSubnetIdArrayOutput {
 	return o
-}
-
-func (o ContainerGroupSubnetIdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupSubnetId] {
-	return pulumix.Output[[]ContainerGroupSubnetId]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerGroupSubnetIdArrayOutput) Index(i pulumi.IntInput) ContainerGroupSubnetIdOutput {
@@ -442,12 +381,6 @@ func (o ContainerGroupSubnetIdResponseOutput) ToContainerGroupSubnetIdResponseOu
 	return o
 }
 
-func (o ContainerGroupSubnetIdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerGroupSubnetIdResponse] {
-	return pulumix.Output[ContainerGroupSubnetIdResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource ID of subnet.
 func (o ContainerGroupSubnetIdResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerGroupSubnetIdResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -470,12 +403,6 @@ func (o ContainerGroupSubnetIdResponseArrayOutput) ToContainerGroupSubnetIdRespo
 
 func (o ContainerGroupSubnetIdResponseArrayOutput) ToContainerGroupSubnetIdResponseArrayOutputWithContext(ctx context.Context) ContainerGroupSubnetIdResponseArrayOutput {
 	return o
-}
-
-func (o ContainerGroupSubnetIdResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerGroupSubnetIdResponse] {
-	return pulumix.Output[[]ContainerGroupSubnetIdResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerGroupSubnetIdResponseArrayOutput) Index(i pulumi.IntInput) ContainerGroupSubnetIdResponseOutput {
@@ -527,12 +454,6 @@ func (i EnvironmentVariableArgs) ToEnvironmentVariableOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentVariableOutput)
 }
 
-func (i EnvironmentVariableArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentVariable] {
-	return pulumix.Output[EnvironmentVariable]{
-		OutputState: i.ToEnvironmentVariableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EnvironmentVariableArrayInput is an input type that accepts EnvironmentVariableArray and EnvironmentVariableArrayOutput values.
 // You can construct a concrete instance of `EnvironmentVariableArrayInput` via:
 //
@@ -558,12 +479,6 @@ func (i EnvironmentVariableArray) ToEnvironmentVariableArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentVariableArrayOutput)
 }
 
-func (i EnvironmentVariableArray) ToOutput(ctx context.Context) pulumix.Output[[]EnvironmentVariable] {
-	return pulumix.Output[[]EnvironmentVariable]{
-		OutputState: i.ToEnvironmentVariableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The environment variable to pass to the script in the container instance.
 type EnvironmentVariableOutput struct{ *pulumi.OutputState }
 
@@ -577,12 +492,6 @@ func (o EnvironmentVariableOutput) ToEnvironmentVariableOutput() EnvironmentVari
 
 func (o EnvironmentVariableOutput) ToEnvironmentVariableOutputWithContext(ctx context.Context) EnvironmentVariableOutput {
 	return o
-}
-
-func (o EnvironmentVariableOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentVariable] {
-	return pulumix.Output[EnvironmentVariable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the environment variable.
@@ -612,12 +521,6 @@ func (o EnvironmentVariableArrayOutput) ToEnvironmentVariableArrayOutput() Envir
 
 func (o EnvironmentVariableArrayOutput) ToEnvironmentVariableArrayOutputWithContext(ctx context.Context) EnvironmentVariableArrayOutput {
 	return o
-}
-
-func (o EnvironmentVariableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnvironmentVariable] {
-	return pulumix.Output[[]EnvironmentVariable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentVariableArrayOutput) Index(i pulumi.IntInput) EnvironmentVariableOutput {
@@ -651,12 +554,6 @@ func (o EnvironmentVariableResponseOutput) ToEnvironmentVariableResponseOutputWi
 	return o
 }
 
-func (o EnvironmentVariableResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentVariableResponse] {
-	return pulumix.Output[EnvironmentVariableResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the environment variable.
 func (o EnvironmentVariableResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentVariableResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -684,12 +581,6 @@ func (o EnvironmentVariableResponseArrayOutput) ToEnvironmentVariableResponseArr
 
 func (o EnvironmentVariableResponseArrayOutput) ToEnvironmentVariableResponseArrayOutputWithContext(ctx context.Context) EnvironmentVariableResponseArrayOutput {
 	return o
-}
-
-func (o EnvironmentVariableResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnvironmentVariableResponse] {
-	return pulumix.Output[[]EnvironmentVariableResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentVariableResponseArrayOutput) Index(i pulumi.IntInput) EnvironmentVariableResponseOutput {
@@ -721,12 +612,6 @@ func (o ErrorAdditionalInfoResponseOutput) ToErrorAdditionalInfoResponseOutputWi
 	return o
 }
 
-func (o ErrorAdditionalInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorAdditionalInfoResponse] {
-	return pulumix.Output[ErrorAdditionalInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The additional info.
 func (o ErrorAdditionalInfoResponseOutput) Info() pulumi.AnyOutput {
 	return o.ApplyT(func(v ErrorAdditionalInfoResponse) interface{} { return v.Info }).(pulumi.AnyOutput)
@@ -749,12 +634,6 @@ func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArr
 
 func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArrayOutputWithContext(ctx context.Context) ErrorAdditionalInfoResponseArrayOutput {
 	return o
-}
-
-func (o ErrorAdditionalInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ErrorAdditionalInfoResponse] {
-	return pulumix.Output[[]ErrorAdditionalInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ErrorAdditionalInfoResponseArrayOutput) Index(i pulumi.IntInput) ErrorAdditionalInfoResponseOutput {
@@ -790,12 +669,6 @@ func (o ErrorResponseResponseOutput) ToErrorResponseResponseOutput() ErrorRespon
 
 func (o ErrorResponseResponseOutput) ToErrorResponseResponseOutputWithContext(ctx context.Context) ErrorResponseResponseOutput {
 	return o
-}
-
-func (o ErrorResponseResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorResponseResponse] {
-	return pulumix.Output[ErrorResponseResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The error additional info.
@@ -835,12 +708,6 @@ func (o ErrorResponseResponsePtrOutput) ToErrorResponseResponsePtrOutput() Error
 
 func (o ErrorResponseResponsePtrOutput) ToErrorResponseResponsePtrOutputWithContext(ctx context.Context) ErrorResponseResponsePtrOutput {
 	return o
-}
-
-func (o ErrorResponseResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErrorResponseResponse] {
-	return pulumix.Output[*ErrorResponseResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ErrorResponseResponsePtrOutput) Elem() ErrorResponseResponseOutput {
@@ -917,12 +784,6 @@ func (o ErrorResponseResponseArrayOutput) ToErrorResponseResponseArrayOutputWith
 	return o
 }
 
-func (o ErrorResponseResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ErrorResponseResponse] {
-	return pulumix.Output[[]ErrorResponseResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ErrorResponseResponseArrayOutput) Index(i pulumi.IntInput) ErrorResponseResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorResponseResponse {
 		return vs[0].([]ErrorResponseResponse)[vs[1].(int)]
@@ -968,12 +829,6 @@ func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
 }
 
-func (i ManagedServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
-	return pulumix.Output[ManagedServiceIdentity]{
-		OutputState: i.ToManagedServiceIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
 	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
 }
@@ -1015,12 +870,6 @@ func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
 }
 
-func (i *managedServiceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
-	return pulumix.Output[*ManagedServiceIdentity]{
-		OutputState: i.ToManagedServiceIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Managed identity generic object.
 type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -1046,12 +895,6 @@ func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithConte
 	}).(ManagedServiceIdentityPtrOutput)
 }
 
-func (o ManagedServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
-	return pulumix.Output[ManagedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Type of the managed identity.
 func (o ManagedServiceIdentityOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedServiceIdentity) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -1074,12 +917,6 @@ func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() Man
 
 func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
 	return o
-}
-
-func (o ManagedServiceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
-	return pulumix.Output[*ManagedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
@@ -1137,12 +974,6 @@ func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOu
 	return o
 }
 
-func (o ManagedServiceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentityResponse] {
-	return pulumix.Output[ManagedServiceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ID of the Azure Active Directory.
 func (o ManagedServiceIdentityResponseOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
@@ -1172,12 +1003,6 @@ func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityRespons
 
 func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
 	return o
-}
-
-func (o ManagedServiceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityResponse] {
-	return pulumix.Output[*ManagedServiceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
@@ -1251,12 +1076,6 @@ func (o ScriptStatusResponseOutput) ToScriptStatusResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o ScriptStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScriptStatusResponse] {
-	return pulumix.Output[ScriptStatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ACI resource Id.
 func (o ScriptStatusResponseOutput) ContainerInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v ScriptStatusResponse) string { return v.ContainerInstanceId }).(pulumi.StringOutput)
@@ -1326,12 +1145,6 @@ func (i StorageAccountConfigurationArgs) ToStorageAccountConfigurationOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(StorageAccountConfigurationOutput)
 }
 
-func (i StorageAccountConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[StorageAccountConfiguration] {
-	return pulumix.Output[StorageAccountConfiguration]{
-		OutputState: i.ToStorageAccountConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StorageAccountConfigurationArgs) ToStorageAccountConfigurationPtrOutput() StorageAccountConfigurationPtrOutput {
 	return i.ToStorageAccountConfigurationPtrOutputWithContext(context.Background())
 }
@@ -1373,12 +1186,6 @@ func (i *storageAccountConfigurationPtrType) ToStorageAccountConfigurationPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(StorageAccountConfigurationPtrOutput)
 }
 
-func (i *storageAccountConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountConfiguration] {
-	return pulumix.Output[*StorageAccountConfiguration]{
-		OutputState: i.ToStorageAccountConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Settings to use an existing storage account. Valid storage account kinds are: Storage, StorageV2 and FileStorage
 type StorageAccountConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -1404,12 +1211,6 @@ func (o StorageAccountConfigurationOutput) ToStorageAccountConfigurationPtrOutpu
 	}).(StorageAccountConfigurationPtrOutput)
 }
 
-func (o StorageAccountConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[StorageAccountConfiguration] {
-	return pulumix.Output[StorageAccountConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The storage account access key.
 func (o StorageAccountConfigurationOutput) StorageAccountKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageAccountConfiguration) *string { return v.StorageAccountKey }).(pulumi.StringPtrOutput)
@@ -1432,12 +1233,6 @@ func (o StorageAccountConfigurationPtrOutput) ToStorageAccountConfigurationPtrOu
 
 func (o StorageAccountConfigurationPtrOutput) ToStorageAccountConfigurationPtrOutputWithContext(ctx context.Context) StorageAccountConfigurationPtrOutput {
 	return o
-}
-
-func (o StorageAccountConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountConfiguration] {
-	return pulumix.Output[*StorageAccountConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StorageAccountConfigurationPtrOutput) Elem() StorageAccountConfigurationOutput {
@@ -1493,12 +1288,6 @@ func (o StorageAccountConfigurationResponseOutput) ToStorageAccountConfiguration
 	return o
 }
 
-func (o StorageAccountConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageAccountConfigurationResponse] {
-	return pulumix.Output[StorageAccountConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The storage account access key.
 func (o StorageAccountConfigurationResponseOutput) StorageAccountKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageAccountConfigurationResponse) *string { return v.StorageAccountKey }).(pulumi.StringPtrOutput)
@@ -1521,12 +1310,6 @@ func (o StorageAccountConfigurationResponsePtrOutput) ToStorageAccountConfigurat
 
 func (o StorageAccountConfigurationResponsePtrOutput) ToStorageAccountConfigurationResponsePtrOutputWithContext(ctx context.Context) StorageAccountConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o StorageAccountConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountConfigurationResponse] {
-	return pulumix.Output[*StorageAccountConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StorageAccountConfigurationResponsePtrOutput) Elem() StorageAccountConfigurationResponseOutput {
@@ -1590,12 +1373,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timestamp of resource creation (UTC).
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
@@ -1649,12 +1426,6 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
-func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
-	return pulumix.Output[UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Client App Id associated with this identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -1677,12 +1448,6 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
-	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {

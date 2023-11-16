@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves details of a specific security connector
@@ -95,12 +94,6 @@ func (o LookupSecurityConnectorResultOutput) ToLookupSecurityConnectorResultOutp
 
 func (o LookupSecurityConnectorResultOutput) ToLookupSecurityConnectorResultOutputWithContext(ctx context.Context) LookupSecurityConnectorResultOutput {
 	return o
-}
-
-func (o LookupSecurityConnectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSecurityConnectorResult] {
-	return pulumix.Output[LookupSecurityConnectorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The multi cloud resource's cloud name.

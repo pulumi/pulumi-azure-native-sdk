@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Single item in List or Get Migration Config operation
@@ -162,12 +161,6 @@ func (i *MigrationConfig) ToMigrationConfigOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(MigrationConfigOutput)
 }
 
-func (i *MigrationConfig) ToOutput(ctx context.Context) pulumix.Output[*MigrationConfig] {
-	return pulumix.Output[*MigrationConfig]{
-		OutputState: i.ToMigrationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MigrationConfigOutput struct{ *pulumi.OutputState }
 
 func (MigrationConfigOutput) ElementType() reflect.Type {
@@ -180,12 +173,6 @@ func (o MigrationConfigOutput) ToMigrationConfigOutput() MigrationConfigOutput {
 
 func (o MigrationConfigOutput) ToMigrationConfigOutputWithContext(ctx context.Context) MigrationConfigOutput {
 	return o
-}
-
-func (o MigrationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*MigrationConfig] {
-	return pulumix.Output[*MigrationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

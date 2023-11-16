@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Import collector resource.
@@ -138,12 +137,6 @@ func (i *ImportCollectorsOperation) ToImportCollectorsOperationOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ImportCollectorsOperationOutput)
 }
 
-func (i *ImportCollectorsOperation) ToOutput(ctx context.Context) pulumix.Output[*ImportCollectorsOperation] {
-	return pulumix.Output[*ImportCollectorsOperation]{
-		OutputState: i.ToImportCollectorsOperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ImportCollectorsOperationOutput struct{ *pulumi.OutputState }
 
 func (ImportCollectorsOperationOutput) ElementType() reflect.Type {
@@ -156,12 +149,6 @@ func (o ImportCollectorsOperationOutput) ToImportCollectorsOperationOutput() Imp
 
 func (o ImportCollectorsOperationOutput) ToImportCollectorsOperationOutputWithContext(ctx context.Context) ImportCollectorsOperationOutput {
 	return o
-}
-
-func (o ImportCollectorsOperationOutput) ToOutput(ctx context.Context) pulumix.Output[*ImportCollectorsOperation] {
-	return pulumix.Output[*ImportCollectorsOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the Timestamp when collector was created.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an Azure API Management API if it has been onboarded to Microsoft Defender for APIs. If an Azure API Management API is onboarded to Microsoft Defender for APIs, the system will monitor the operations within the Azure API Management API for intrusive behaviors and provide alerts for attacks that have been detected.
@@ -101,12 +100,6 @@ func (o LookupAPICollectionByAzureApiManagementServiceResultOutput) ToLookupAPIC
 
 func (o LookupAPICollectionByAzureApiManagementServiceResultOutput) ToLookupAPICollectionByAzureApiManagementServiceResultOutputWithContext(ctx context.Context) LookupAPICollectionByAzureApiManagementServiceResultOutput {
 	return o
-}
-
-func (o LookupAPICollectionByAzureApiManagementServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAPICollectionByAzureApiManagementServiceResult] {
-	return pulumix.Output[LookupAPICollectionByAzureApiManagementServiceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The base URI for this API collection. All endpoints of this API collection extend this base URI.

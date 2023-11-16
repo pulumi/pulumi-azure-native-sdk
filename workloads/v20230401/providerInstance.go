@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A provider instance associated with SAP monitor.
@@ -143,12 +142,6 @@ func (i *ProviderInstance) ToProviderInstanceOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderInstanceOutput)
 }
 
-func (i *ProviderInstance) ToOutput(ctx context.Context) pulumix.Output[*ProviderInstance] {
-	return pulumix.Output[*ProviderInstance]{
-		OutputState: i.ToProviderInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProviderInstanceOutput struct{ *pulumi.OutputState }
 
 func (ProviderInstanceOutput) ElementType() reflect.Type {
@@ -161,12 +154,6 @@ func (o ProviderInstanceOutput) ToProviderInstanceOutput() ProviderInstanceOutpu
 
 func (o ProviderInstanceOutput) ToProviderInstanceOutputWithContext(ctx context.Context) ProviderInstanceOutput {
 	return o
-}
-
-func (o ProviderInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*ProviderInstance] {
-	return pulumix.Output[*ProviderInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines the provider instance errors.

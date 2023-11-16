@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a logical database's transparent data encryption.
@@ -87,12 +86,6 @@ func (o LookupTransparentDataEncryptionResultOutput) ToLookupTransparentDataEncr
 
 func (o LookupTransparentDataEncryptionResultOutput) ToLookupTransparentDataEncryptionResultOutputWithContext(ctx context.Context) LookupTransparentDataEncryptionResultOutput {
 	return o
-}
-
-func (o LookupTransparentDataEncryptionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTransparentDataEncryptionResult] {
-	return pulumix.Output[LookupTransparentDataEncryptionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource ID.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an Active Directory administrator.
@@ -147,12 +146,6 @@ func (i *Administrator) ToAdministratorOutputWithContext(ctx context.Context) Ad
 	return pulumi.ToOutputWithContext(ctx, i).(AdministratorOutput)
 }
 
-func (i *Administrator) ToOutput(ctx context.Context) pulumix.Output[*Administrator] {
-	return pulumix.Output[*Administrator]{
-		OutputState: i.ToAdministratorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AdministratorOutput struct{ *pulumi.OutputState }
 
 func (AdministratorOutput) ElementType() reflect.Type {
@@ -165,12 +158,6 @@ func (o AdministratorOutput) ToAdministratorOutput() AdministratorOutput {
 
 func (o AdministratorOutput) ToAdministratorOutputWithContext(ctx context.Context) AdministratorOutput {
 	return o
-}
-
-func (o AdministratorOutput) ToOutput(ctx context.Context) pulumix.Output[*Administrator] {
-	return pulumix.Output[*Administrator]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

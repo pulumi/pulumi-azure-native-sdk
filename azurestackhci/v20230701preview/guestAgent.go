@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Defines the GuestAgent.
@@ -129,12 +128,6 @@ func (i *GuestAgent) ToGuestAgentOutputWithContext(ctx context.Context) GuestAge
 	return pulumi.ToOutputWithContext(ctx, i).(GuestAgentOutput)
 }
 
-func (i *GuestAgent) ToOutput(ctx context.Context) pulumix.Output[*GuestAgent] {
-	return pulumix.Output[*GuestAgent]{
-		OutputState: i.ToGuestAgentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestAgentOutput struct{ *pulumi.OutputState }
 
 func (GuestAgentOutput) ElementType() reflect.Type {
@@ -147,12 +140,6 @@ func (o GuestAgentOutput) ToGuestAgentOutput() GuestAgentOutput {
 
 func (o GuestAgentOutput) ToGuestAgentOutputWithContext(ctx context.Context) GuestAgentOutput {
 	return o
-}
-
-func (o GuestAgentOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestAgent] {
-	return pulumix.Output[*GuestAgent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Username / Password Credentials to provision guest agent.

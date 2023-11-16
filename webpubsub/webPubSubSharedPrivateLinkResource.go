@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes a Shared Private Link Resource
@@ -173,12 +172,6 @@ func (i *WebPubSubSharedPrivateLinkResource) ToWebPubSubSharedPrivateLinkResourc
 	return pulumi.ToOutputWithContext(ctx, i).(WebPubSubSharedPrivateLinkResourceOutput)
 }
 
-func (i *WebPubSubSharedPrivateLinkResource) ToOutput(ctx context.Context) pulumix.Output[*WebPubSubSharedPrivateLinkResource] {
-	return pulumix.Output[*WebPubSubSharedPrivateLinkResource]{
-		OutputState: i.ToWebPubSubSharedPrivateLinkResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebPubSubSharedPrivateLinkResourceOutput struct{ *pulumi.OutputState }
 
 func (WebPubSubSharedPrivateLinkResourceOutput) ElementType() reflect.Type {
@@ -191,12 +184,6 @@ func (o WebPubSubSharedPrivateLinkResourceOutput) ToWebPubSubSharedPrivateLinkRe
 
 func (o WebPubSubSharedPrivateLinkResourceOutput) ToWebPubSubSharedPrivateLinkResourceOutputWithContext(ctx context.Context) WebPubSubSharedPrivateLinkResourceOutput {
 	return o
-}
-
-func (o WebPubSubSharedPrivateLinkResourceOutput) ToOutput(ctx context.Context) pulumix.Output[*WebPubSubSharedPrivateLinkResource] {
-	return pulumix.Output[*WebPubSubSharedPrivateLinkResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The group id from the provider of resource the shared private link resource is for

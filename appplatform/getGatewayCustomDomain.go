@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the Spring Cloud Gateway custom domain.
@@ -92,12 +91,6 @@ func (o LookupGatewayCustomDomainResultOutput) ToLookupGatewayCustomDomainResult
 
 func (o LookupGatewayCustomDomainResultOutput) ToLookupGatewayCustomDomainResultOutputWithContext(ctx context.Context) LookupGatewayCustomDomainResultOutput {
 	return o
-}
-
-func (o LookupGatewayCustomDomainResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGatewayCustomDomainResult] {
-	return pulumix.Output[LookupGatewayCustomDomainResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource Id for the resource.

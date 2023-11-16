@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -33,12 +32,6 @@ func (o AgentPropertiesResponseErrorDetailsOutput) ToAgentPropertiesResponseErro
 
 func (o AgentPropertiesResponseErrorDetailsOutput) ToAgentPropertiesResponseErrorDetailsOutputWithContext(ctx context.Context) AgentPropertiesResponseErrorDetailsOutput {
 	return o
-}
-
-func (o AgentPropertiesResponseErrorDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[AgentPropertiesResponseErrorDetails] {
-	return pulumix.Output[AgentPropertiesResponseErrorDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Error code reported by Agent
@@ -136,12 +129,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

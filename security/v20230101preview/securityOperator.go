@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Security operator under a given subscription and pricing
@@ -111,12 +110,6 @@ func (i *SecurityOperator) ToSecurityOperatorOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityOperatorOutput)
 }
 
-func (i *SecurityOperator) ToOutput(ctx context.Context) pulumix.Output[*SecurityOperator] {
-	return pulumix.Output[*SecurityOperator]{
-		OutputState: i.ToSecurityOperatorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecurityOperatorOutput struct{ *pulumi.OutputState }
 
 func (SecurityOperatorOutput) ElementType() reflect.Type {
@@ -129,12 +122,6 @@ func (o SecurityOperatorOutput) ToSecurityOperatorOutput() SecurityOperatorOutpu
 
 func (o SecurityOperatorOutput) ToSecurityOperatorOutputWithContext(ctx context.Context) SecurityOperatorOutput {
 	return o
-}
-
-func (o SecurityOperatorOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityOperator] {
-	return pulumix.Output[*SecurityOperator]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identity for the resource.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists the AAD user credentials of a provisioned cluster instance used only in direct mode.
@@ -77,12 +76,6 @@ func (o ListprovisionedClusterInstanceUserKubeconfigResultOutput) ToListprovisio
 
 func (o ListprovisionedClusterInstanceUserKubeconfigResultOutput) ToListprovisionedClusterInstanceUserKubeconfigResultOutputWithContext(ctx context.Context) ListprovisionedClusterInstanceUserKubeconfigResultOutput {
 	return o
-}
-
-func (o ListprovisionedClusterInstanceUserKubeconfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListprovisionedClusterInstanceUserKubeconfigResult] {
-	return pulumix.Output[ListprovisionedClusterInstanceUserKubeconfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ListprovisionedClusterInstanceUserKubeconfigResultOutput) Error() ListCredentialResponseResponseErrorPtrOutput {

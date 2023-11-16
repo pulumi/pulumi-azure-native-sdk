@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns ServiceEndpoint resources for a given name.
@@ -89,12 +88,6 @@ func (o LookupServiceEndpointResultOutput) ToLookupServiceEndpointResultOutput()
 
 func (o LookupServiceEndpointResultOutput) ToLookupServiceEndpointResultOutputWithContext(ctx context.Context) LookupServiceEndpointResultOutput {
 	return o
-}
-
-func (o LookupServiceEndpointResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceEndpointResult] {
-	return pulumix.Output[LookupServiceEndpointResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

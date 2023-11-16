@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get regional availability information for each size category configured under a lab account
@@ -74,12 +73,6 @@ func (o GetLabAccountRegionalAvailabilityResultOutput) ToGetLabAccountRegionalAv
 
 func (o GetLabAccountRegionalAvailabilityResultOutput) ToGetLabAccountRegionalAvailabilityResultOutputWithContext(ctx context.Context) GetLabAccountRegionalAvailabilityResultOutput {
 	return o
-}
-
-func (o GetLabAccountRegionalAvailabilityResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetLabAccountRegionalAvailabilityResult] {
-	return pulumix.Output[GetLabAccountRegionalAvailabilityResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Availability information for different size categories per region

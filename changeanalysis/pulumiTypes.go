@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i AzureMonitorWorkspacePropertiesArgs) ToAzureMonitorWorkspacePropertiesOu
 	return pulumi.ToOutputWithContext(ctx, i).(AzureMonitorWorkspacePropertiesOutput)
 }
 
-func (i AzureMonitorWorkspacePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[AzureMonitorWorkspaceProperties] {
-	return pulumix.Output[AzureMonitorWorkspaceProperties]{
-		OutputState: i.ToAzureMonitorWorkspacePropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AzureMonitorWorkspacePropertiesArgs) ToAzureMonitorWorkspacePropertiesPtrOutput() AzureMonitorWorkspacePropertiesPtrOutput {
 	return i.ToAzureMonitorWorkspacePropertiesPtrOutputWithContext(context.Background())
 }
@@ -104,12 +97,6 @@ func (i *azureMonitorWorkspacePropertiesPtrType) ToAzureMonitorWorkspaceProperti
 	return pulumi.ToOutputWithContext(ctx, i).(AzureMonitorWorkspacePropertiesPtrOutput)
 }
 
-func (i *azureMonitorWorkspacePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*AzureMonitorWorkspaceProperties] {
-	return pulumix.Output[*AzureMonitorWorkspaceProperties]{
-		OutputState: i.ToAzureMonitorWorkspacePropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration properties of an Azure Monitor workspace that receives change notifications.
 type AzureMonitorWorkspacePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -133,12 +120,6 @@ func (o AzureMonitorWorkspacePropertiesOutput) ToAzureMonitorWorkspaceProperties
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureMonitorWorkspaceProperties) *AzureMonitorWorkspaceProperties {
 		return &v
 	}).(AzureMonitorWorkspacePropertiesPtrOutput)
-}
-
-func (o AzureMonitorWorkspacePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[AzureMonitorWorkspaceProperties] {
-	return pulumix.Output[AzureMonitorWorkspaceProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The mode of includeChangeDetails feature. The flag configures whether to include or exclude content of the change before and after values.
@@ -168,12 +149,6 @@ func (o AzureMonitorWorkspacePropertiesPtrOutput) ToAzureMonitorWorkspacePropert
 
 func (o AzureMonitorWorkspacePropertiesPtrOutput) ToAzureMonitorWorkspacePropertiesPtrOutputWithContext(ctx context.Context) AzureMonitorWorkspacePropertiesPtrOutput {
 	return o
-}
-
-func (o AzureMonitorWorkspacePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureMonitorWorkspaceProperties] {
-	return pulumix.Output[*AzureMonitorWorkspaceProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureMonitorWorkspacePropertiesPtrOutput) Elem() AzureMonitorWorkspacePropertiesOutput {
@@ -241,12 +216,6 @@ func (o AzureMonitorWorkspacePropertiesResponseOutput) ToAzureMonitorWorkspacePr
 	return o
 }
 
-func (o AzureMonitorWorkspacePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureMonitorWorkspacePropertiesResponse] {
-	return pulumix.Output[AzureMonitorWorkspacePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The mode of includeChangeDetails feature. The flag configures whether to include or exclude content of the change before and after values.
 func (o AzureMonitorWorkspacePropertiesResponseOutput) IncludeChangeDetails() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureMonitorWorkspacePropertiesResponse) *string { return v.IncludeChangeDetails }).(pulumi.StringPtrOutput)
@@ -274,12 +243,6 @@ func (o AzureMonitorWorkspacePropertiesResponsePtrOutput) ToAzureMonitorWorkspac
 
 func (o AzureMonitorWorkspacePropertiesResponsePtrOutput) ToAzureMonitorWorkspacePropertiesResponsePtrOutputWithContext(ctx context.Context) AzureMonitorWorkspacePropertiesResponsePtrOutput {
 	return o
-}
-
-func (o AzureMonitorWorkspacePropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureMonitorWorkspacePropertiesResponse] {
-	return pulumix.Output[*AzureMonitorWorkspacePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureMonitorWorkspacePropertiesResponsePtrOutput) Elem() AzureMonitorWorkspacePropertiesResponseOutput {
@@ -357,12 +320,6 @@ func (i ConfigurationProfileResourcePropertiesArgs) ToConfigurationProfileResour
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationProfileResourcePropertiesOutput)
 }
 
-func (i ConfigurationProfileResourcePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigurationProfileResourceProperties] {
-	return pulumix.Output[ConfigurationProfileResourceProperties]{
-		OutputState: i.ToConfigurationProfileResourcePropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConfigurationProfileResourcePropertiesArgs) ToConfigurationProfileResourcePropertiesPtrOutput() ConfigurationProfileResourcePropertiesPtrOutput {
 	return i.ToConfigurationProfileResourcePropertiesPtrOutputWithContext(context.Background())
 }
@@ -404,12 +361,6 @@ func (i *configurationProfileResourcePropertiesPtrType) ToConfigurationProfileRe
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationProfileResourcePropertiesPtrOutput)
 }
 
-func (i *configurationProfileResourcePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationProfileResourceProperties] {
-	return pulumix.Output[*ConfigurationProfileResourceProperties]{
-		OutputState: i.ToConfigurationProfileResourcePropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties of a configuration profile.
 type ConfigurationProfileResourcePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -435,12 +386,6 @@ func (o ConfigurationProfileResourcePropertiesOutput) ToConfigurationProfileReso
 	}).(ConfigurationProfileResourcePropertiesPtrOutput)
 }
 
-func (o ConfigurationProfileResourcePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationProfileResourceProperties] {
-	return pulumix.Output[ConfigurationProfileResourceProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Settings of change notification configuration for a subscription.
 func (o ConfigurationProfileResourcePropertiesOutput) Notifications() NotificationSettingsPtrOutput {
 	return o.ApplyT(func(v ConfigurationProfileResourceProperties) *NotificationSettings { return v.Notifications }).(NotificationSettingsPtrOutput)
@@ -458,12 +403,6 @@ func (o ConfigurationProfileResourcePropertiesPtrOutput) ToConfigurationProfileR
 
 func (o ConfigurationProfileResourcePropertiesPtrOutput) ToConfigurationProfileResourcePropertiesPtrOutputWithContext(ctx context.Context) ConfigurationProfileResourcePropertiesPtrOutput {
 	return o
-}
-
-func (o ConfigurationProfileResourcePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationProfileResourceProperties] {
-	return pulumix.Output[*ConfigurationProfileResourceProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigurationProfileResourcePropertiesPtrOutput) Elem() ConfigurationProfileResourcePropertiesOutput {
@@ -505,12 +444,6 @@ func (o ConfigurationProfileResourcePropertiesResponseOutput) ToConfigurationPro
 
 func (o ConfigurationProfileResourcePropertiesResponseOutput) ToConfigurationProfileResourcePropertiesResponseOutputWithContext(ctx context.Context) ConfigurationProfileResourcePropertiesResponseOutput {
 	return o
-}
-
-func (o ConfigurationProfileResourcePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationProfileResourcePropertiesResponse] {
-	return pulumix.Output[ConfigurationProfileResourcePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Settings of change notification configuration for a subscription.
@@ -559,12 +492,6 @@ func (i NotificationSettingsArgs) ToNotificationSettingsOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationSettingsOutput)
 }
 
-func (i NotificationSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[NotificationSettings] {
-	return pulumix.Output[NotificationSettings]{
-		OutputState: i.ToNotificationSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i NotificationSettingsArgs) ToNotificationSettingsPtrOutput() NotificationSettingsPtrOutput {
 	return i.ToNotificationSettingsPtrOutputWithContext(context.Background())
 }
@@ -606,12 +533,6 @@ func (i *notificationSettingsPtrType) ToNotificationSettingsPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationSettingsPtrOutput)
 }
 
-func (i *notificationSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*NotificationSettings] {
-	return pulumix.Output[*NotificationSettings]{
-		OutputState: i.ToNotificationSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Settings of change notification configuration for a subscription.
 type NotificationSettingsOutput struct{ *pulumi.OutputState }
 
@@ -635,12 +556,6 @@ func (o NotificationSettingsOutput) ToNotificationSettingsPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationSettings) *NotificationSettings {
 		return &v
 	}).(NotificationSettingsPtrOutput)
-}
-
-func (o NotificationSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[NotificationSettings] {
-	return pulumix.Output[NotificationSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The state of notifications feature.
@@ -667,12 +582,6 @@ func (o NotificationSettingsPtrOutput) ToNotificationSettingsPtrOutput() Notific
 
 func (o NotificationSettingsPtrOutput) ToNotificationSettingsPtrOutputWithContext(ctx context.Context) NotificationSettingsPtrOutput {
 	return o
-}
-
-func (o NotificationSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NotificationSettings] {
-	return pulumix.Output[*NotificationSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NotificationSettingsPtrOutput) Elem() NotificationSettingsOutput {
@@ -728,12 +637,6 @@ func (o NotificationSettingsResponseOutput) ToNotificationSettingsResponseOutput
 	return o
 }
 
-func (o NotificationSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NotificationSettingsResponse] {
-	return pulumix.Output[NotificationSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The state of notifications feature.
 func (o NotificationSettingsResponseOutput) ActivationState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NotificationSettingsResponse) *string { return v.ActivationState }).(pulumi.StringPtrOutput)
@@ -758,12 +661,6 @@ func (o NotificationSettingsResponsePtrOutput) ToNotificationSettingsResponsePtr
 
 func (o NotificationSettingsResponsePtrOutput) ToNotificationSettingsResponsePtrOutputWithContext(ctx context.Context) NotificationSettingsResponsePtrOutput {
 	return o
-}
-
-func (o NotificationSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NotificationSettingsResponse] {
-	return pulumix.Output[*NotificationSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NotificationSettingsResponsePtrOutput) Elem() NotificationSettingsResponseOutput {
@@ -831,12 +728,6 @@ func (i ResourceIdentityArgs) ToResourceIdentityOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceIdentityOutput)
 }
 
-func (i ResourceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentity] {
-	return pulumix.Output[ResourceIdentity]{
-		OutputState: i.ToResourceIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ResourceIdentityArgs) ToResourceIdentityPtrOutput() ResourceIdentityPtrOutput {
 	return i.ToResourceIdentityPtrOutputWithContext(context.Background())
 }
@@ -878,12 +769,6 @@ func (i *resourceIdentityPtrType) ToResourceIdentityPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceIdentityPtrOutput)
 }
 
-func (i *resourceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentity] {
-	return pulumix.Output[*ResourceIdentity]{
-		OutputState: i.ToResourceIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity block returned by ARM resource that supports managed identity.
 type ResourceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -909,12 +794,6 @@ func (o ResourceIdentityOutput) ToResourceIdentityPtrOutputWithContext(ctx conte
 	}).(ResourceIdentityPtrOutput)
 }
 
-func (o ResourceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentity] {
-	return pulumix.Output[ResourceIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
 func (o ResourceIdentityOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceIdentity) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -932,12 +811,6 @@ func (o ResourceIdentityPtrOutput) ToResourceIdentityPtrOutput() ResourceIdentit
 
 func (o ResourceIdentityPtrOutput) ToResourceIdentityPtrOutputWithContext(ctx context.Context) ResourceIdentityPtrOutput {
 	return o
-}
-
-func (o ResourceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentity] {
-	return pulumix.Output[*ResourceIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceIdentityPtrOutput) Elem() ResourceIdentityOutput {
@@ -985,12 +858,6 @@ func (o ResourceIdentityResponseOutput) ToResourceIdentityResponseOutputWithCont
 	return o
 }
 
-func (o ResourceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityResponse] {
-	return pulumix.Output[ResourceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The principal id of the identity. This property will only be provided for a system-assigned identity.
 func (o ResourceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -1018,12 +885,6 @@ func (o ResourceIdentityResponsePtrOutput) ToResourceIdentityResponsePtrOutput()
 
 func (o ResourceIdentityResponsePtrOutput) ToResourceIdentityResponsePtrOutputWithContext(ctx context.Context) ResourceIdentityResponsePtrOutput {
 	return o
-}
-
-func (o ResourceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityResponse] {
-	return pulumix.Output[*ResourceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceIdentityResponsePtrOutput) Elem() ResourceIdentityResponseOutput {
@@ -1097,12 +958,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timestamp of resource creation (UTC)
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v SystemDataResponse) string { return v.CreatedAt }).(pulumi.StringOutput)
@@ -1145,12 +1000,6 @@ func (o SystemDataResponsePtrOutput) ToSystemDataResponsePtrOutput() SystemDataR
 
 func (o SystemDataResponsePtrOutput) ToSystemDataResponsePtrOutputWithContext(ctx context.Context) SystemDataResponsePtrOutput {
 	return o
-}
-
-func (o SystemDataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SystemDataResponse] {
-	return pulumix.Output[*SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SystemDataResponsePtrOutput) Elem() SystemDataResponseOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a project environment type.
@@ -99,12 +98,6 @@ func (o LookupProjectEnvironmentTypeResultOutput) ToLookupProjectEnvironmentType
 
 func (o LookupProjectEnvironmentTypeResultOutput) ToLookupProjectEnvironmentTypeResultOutputWithContext(ctx context.Context) LookupProjectEnvironmentTypeResultOutput {
 	return o
-}
-
-func (o LookupProjectEnvironmentTypeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProjectEnvironmentTypeResult] {
-	return pulumix.Output[LookupProjectEnvironmentTypeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The role definition assigned to the environment creator on backing resources.

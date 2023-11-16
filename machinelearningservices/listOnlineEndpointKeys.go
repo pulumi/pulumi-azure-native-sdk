@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Keys for endpoint authentication.
@@ -82,12 +81,6 @@ func (o ListOnlineEndpointKeysResultOutput) ToListOnlineEndpointKeysResultOutput
 
 func (o ListOnlineEndpointKeysResultOutput) ToListOnlineEndpointKeysResultOutputWithContext(ctx context.Context) ListOnlineEndpointKeysResultOutput {
 	return o
-}
-
-func (o ListOnlineEndpointKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListOnlineEndpointKeysResult] {
-	return pulumix.Output[ListOnlineEndpointKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The primary key.

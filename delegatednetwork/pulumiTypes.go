@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i ControllerDetailsTypeArgs) ToControllerDetailsTypeOutput() ControllerDet
 
 func (i ControllerDetailsTypeArgs) ToControllerDetailsTypeOutputWithContext(ctx context.Context) ControllerDetailsTypeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ControllerDetailsTypeOutput)
-}
-
-func (i ControllerDetailsTypeArgs) ToOutput(ctx context.Context) pulumix.Output[ControllerDetailsType] {
-	return pulumix.Output[ControllerDetailsType]{
-		OutputState: i.ToControllerDetailsTypeOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ControllerDetailsTypeArgs) ToControllerDetailsTypePtrOutput() ControllerDetailsTypePtrOutput {
@@ -96,12 +89,6 @@ func (i *controllerDetailsTypePtrType) ToControllerDetailsTypePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ControllerDetailsTypePtrOutput)
 }
 
-func (i *controllerDetailsTypePtrType) ToOutput(ctx context.Context) pulumix.Output[*ControllerDetailsType] {
-	return pulumix.Output[*ControllerDetailsType]{
-		OutputState: i.ToControllerDetailsTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // controller details
 type ControllerDetailsTypeOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o ControllerDetailsTypeOutput) ToControllerDetailsTypePtrOutputWithContext
 	}).(ControllerDetailsTypePtrOutput)
 }
 
-func (o ControllerDetailsTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ControllerDetailsType] {
-	return pulumix.Output[ControllerDetailsType]{
-		OutputState: o.OutputState,
-	}
-}
-
 // controller arm resource id
 func (o ControllerDetailsTypeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ControllerDetailsType) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -150,12 +131,6 @@ func (o ControllerDetailsTypePtrOutput) ToControllerDetailsTypePtrOutput() Contr
 
 func (o ControllerDetailsTypePtrOutput) ToControllerDetailsTypePtrOutputWithContext(ctx context.Context) ControllerDetailsTypePtrOutput {
 	return o
-}
-
-func (o ControllerDetailsTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ControllerDetailsType] {
-	return pulumix.Output[*ControllerDetailsType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ControllerDetailsTypePtrOutput) Elem() ControllerDetailsTypeOutput {
@@ -199,12 +174,6 @@ func (o ControllerDetailsResponseOutput) ToControllerDetailsResponseOutputWithCo
 	return o
 }
 
-func (o ControllerDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ControllerDetailsResponse] {
-	return pulumix.Output[ControllerDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // controller arm resource id
 func (o ControllerDetailsResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ControllerDetailsResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -222,12 +191,6 @@ func (o ControllerDetailsResponsePtrOutput) ToControllerDetailsResponsePtrOutput
 
 func (o ControllerDetailsResponsePtrOutput) ToControllerDetailsResponsePtrOutputWithContext(ctx context.Context) ControllerDetailsResponsePtrOutput {
 	return o
-}
-
-func (o ControllerDetailsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ControllerDetailsResponse] {
-	return pulumix.Output[*ControllerDetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ControllerDetailsResponsePtrOutput) Elem() ControllerDetailsResponseOutput {
@@ -283,12 +246,6 @@ func (i OrchestratorIdentityArgs) ToOrchestratorIdentityOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(OrchestratorIdentityOutput)
 }
 
-func (i OrchestratorIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[OrchestratorIdentity] {
-	return pulumix.Output[OrchestratorIdentity]{
-		OutputState: i.ToOrchestratorIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OrchestratorIdentityArgs) ToOrchestratorIdentityPtrOutput() OrchestratorIdentityPtrOutput {
 	return i.ToOrchestratorIdentityPtrOutputWithContext(context.Background())
 }
@@ -330,12 +287,6 @@ func (i *orchestratorIdentityPtrType) ToOrchestratorIdentityPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(OrchestratorIdentityPtrOutput)
 }
 
-func (i *orchestratorIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*OrchestratorIdentity] {
-	return pulumix.Output[*OrchestratorIdentity]{
-		OutputState: i.ToOrchestratorIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrchestratorIdentityOutput struct{ *pulumi.OutputState }
 
 func (OrchestratorIdentityOutput) ElementType() reflect.Type {
@@ -360,12 +311,6 @@ func (o OrchestratorIdentityOutput) ToOrchestratorIdentityPtrOutputWithContext(c
 	}).(OrchestratorIdentityPtrOutput)
 }
 
-func (o OrchestratorIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[OrchestratorIdentity] {
-	return pulumix.Output[OrchestratorIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The type of identity used for orchestrator cluster. Type 'SystemAssigned' will use an implicitly created identity orchestrator clusters
 func (o OrchestratorIdentityOutput) Type() ResourceIdentityTypePtrOutput {
 	return o.ApplyT(func(v OrchestratorIdentity) *ResourceIdentityType { return v.Type }).(ResourceIdentityTypePtrOutput)
@@ -383,12 +328,6 @@ func (o OrchestratorIdentityPtrOutput) ToOrchestratorIdentityPtrOutput() Orchest
 
 func (o OrchestratorIdentityPtrOutput) ToOrchestratorIdentityPtrOutputWithContext(ctx context.Context) OrchestratorIdentityPtrOutput {
 	return o
-}
-
-func (o OrchestratorIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrchestratorIdentity] {
-	return pulumix.Output[*OrchestratorIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrchestratorIdentityPtrOutput) Elem() OrchestratorIdentityOutput {
@@ -434,12 +373,6 @@ func (o OrchestratorIdentityResponseOutput) ToOrchestratorIdentityResponseOutput
 	return o
 }
 
-func (o OrchestratorIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OrchestratorIdentityResponse] {
-	return pulumix.Output[OrchestratorIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The principal id of the system assigned identity which is used by orchestrator.
 func (o OrchestratorIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v OrchestratorIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -467,12 +400,6 @@ func (o OrchestratorIdentityResponsePtrOutput) ToOrchestratorIdentityResponsePtr
 
 func (o OrchestratorIdentityResponsePtrOutput) ToOrchestratorIdentityResponsePtrOutputWithContext(ctx context.Context) OrchestratorIdentityResponsePtrOutput {
 	return o
-}
-
-func (o OrchestratorIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrchestratorIdentityResponse] {
-	return pulumix.Output[*OrchestratorIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrchestratorIdentityResponsePtrOutput) Elem() OrchestratorIdentityResponseOutput {
@@ -550,12 +477,6 @@ func (i SubnetDetailsArgs) ToSubnetDetailsOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetDetailsOutput)
 }
 
-func (i SubnetDetailsArgs) ToOutput(ctx context.Context) pulumix.Output[SubnetDetails] {
-	return pulumix.Output[SubnetDetails]{
-		OutputState: i.ToSubnetDetailsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SubnetDetailsArgs) ToSubnetDetailsPtrOutput() SubnetDetailsPtrOutput {
 	return i.ToSubnetDetailsPtrOutputWithContext(context.Background())
 }
@@ -597,12 +518,6 @@ func (i *subnetDetailsPtrType) ToSubnetDetailsPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetDetailsPtrOutput)
 }
 
-func (i *subnetDetailsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SubnetDetails] {
-	return pulumix.Output[*SubnetDetails]{
-		OutputState: i.ToSubnetDetailsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Properties of orchestrator
 type SubnetDetailsOutput struct{ *pulumi.OutputState }
 
@@ -628,12 +543,6 @@ func (o SubnetDetailsOutput) ToSubnetDetailsPtrOutputWithContext(ctx context.Con
 	}).(SubnetDetailsPtrOutput)
 }
 
-func (o SubnetDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[SubnetDetails] {
-	return pulumix.Output[SubnetDetails]{
-		OutputState: o.OutputState,
-	}
-}
-
 // subnet arm resource id
 func (o SubnetDetailsOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetDetails) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -651,12 +560,6 @@ func (o SubnetDetailsPtrOutput) ToSubnetDetailsPtrOutput() SubnetDetailsPtrOutpu
 
 func (o SubnetDetailsPtrOutput) ToSubnetDetailsPtrOutputWithContext(ctx context.Context) SubnetDetailsPtrOutput {
 	return o
-}
-
-func (o SubnetDetailsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubnetDetails] {
-	return pulumix.Output[*SubnetDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubnetDetailsPtrOutput) Elem() SubnetDetailsOutput {
@@ -700,12 +603,6 @@ func (o SubnetDetailsResponseOutput) ToSubnetDetailsResponseOutputWithContext(ct
 	return o
 }
 
-func (o SubnetDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubnetDetailsResponse] {
-	return pulumix.Output[SubnetDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // subnet arm resource id
 func (o SubnetDetailsResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetDetailsResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -723,12 +620,6 @@ func (o SubnetDetailsResponsePtrOutput) ToSubnetDetailsResponsePtrOutput() Subne
 
 func (o SubnetDetailsResponsePtrOutput) ToSubnetDetailsResponsePtrOutputWithContext(ctx context.Context) SubnetDetailsResponsePtrOutput {
 	return o
-}
-
-func (o SubnetDetailsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubnetDetailsResponse] {
-	return pulumix.Output[*SubnetDetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubnetDetailsResponsePtrOutput) Elem() SubnetDetailsResponseOutput {

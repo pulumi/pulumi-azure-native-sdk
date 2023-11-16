@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Postgres Instance.
@@ -160,12 +159,6 @@ func (i *PostgresInstance) ToPostgresInstanceOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(PostgresInstanceOutput)
 }
 
-func (i *PostgresInstance) ToOutput(ctx context.Context) pulumix.Output[*PostgresInstance] {
-	return pulumix.Output[*PostgresInstance]{
-		OutputState: i.ToPostgresInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PostgresInstanceOutput struct{ *pulumi.OutputState }
 
 func (PostgresInstanceOutput) ElementType() reflect.Type {
@@ -178,12 +171,6 @@ func (o PostgresInstanceOutput) ToPostgresInstanceOutput() PostgresInstanceOutpu
 
 func (o PostgresInstanceOutput) ToPostgresInstanceOutputWithContext(ctx context.Context) PostgresInstanceOutput {
 	return o
-}
-
-func (o PostgresInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*PostgresInstance] {
-	return pulumix.Output[*PostgresInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The extendedLocation of the resource.

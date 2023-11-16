@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a cache.
@@ -134,12 +133,6 @@ func (o LookupCacheResultOutput) ToLookupCacheResultOutput() LookupCacheResultOu
 
 func (o LookupCacheResultOutput) ToLookupCacheResultOutputWithContext(ctx context.Context) LookupCacheResultOutput {
 	return o
-}
-
-func (o LookupCacheResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCacheResult] {
-	return pulumix.Output[LookupCacheResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The size of this cache, in GB, when scalingFactor is 1.0. Values depend on the cache SKU - <a href="https://learn.microsoft.com/en-us/rest/api/storagecache/skus/list?tabs=HTTP">List SKUs</a>.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-03-01-preview.
@@ -203,12 +202,6 @@ func (i *BatchDeployment) ToBatchDeploymentOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(BatchDeploymentOutput)
 }
 
-func (i *BatchDeployment) ToOutput(ctx context.Context) pulumix.Output[*BatchDeployment] {
-	return pulumix.Output[*BatchDeployment]{
-		OutputState: i.ToBatchDeploymentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BatchDeploymentOutput struct{ *pulumi.OutputState }
 
 func (BatchDeploymentOutput) ElementType() reflect.Type {
@@ -221,12 +214,6 @@ func (o BatchDeploymentOutput) ToBatchDeploymentOutput() BatchDeploymentOutput {
 
 func (o BatchDeploymentOutput) ToBatchDeploymentOutputWithContext(ctx context.Context) BatchDeploymentOutput {
 	return o
-}
-
-func (o BatchDeploymentOutput) ToOutput(ctx context.Context) pulumix.Output[*BatchDeployment] {
-	return pulumix.Output[*BatchDeployment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // [Required] Additional attributes of the entity.

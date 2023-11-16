@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an ARM resource for /subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.SecurityDevOps/gitHubConnectors.
@@ -130,12 +129,6 @@ func (i *GitHubConnector) ToGitHubConnectorOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(GitHubConnectorOutput)
 }
 
-func (i *GitHubConnector) ToOutput(ctx context.Context) pulumix.Output[*GitHubConnector] {
-	return pulumix.Output[*GitHubConnector]{
-		OutputState: i.ToGitHubConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GitHubConnectorOutput struct{ *pulumi.OutputState }
 
 func (GitHubConnectorOutput) ElementType() reflect.Type {
@@ -148,12 +141,6 @@ func (o GitHubConnectorOutput) ToGitHubConnectorOutput() GitHubConnectorOutput {
 
 func (o GitHubConnectorOutput) ToGitHubConnectorOutputWithContext(ctx context.Context) GitHubConnectorOutput {
 	return o
-}
-
-func (o GitHubConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*GitHubConnector] {
-	return pulumix.Output[*GitHubConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

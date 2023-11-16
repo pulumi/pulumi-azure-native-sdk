@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The registration assignment.
@@ -136,12 +135,6 @@ func (i *RegistrationAssignment) ToRegistrationAssignmentOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(RegistrationAssignmentOutput)
 }
 
-func (i *RegistrationAssignment) ToOutput(ctx context.Context) pulumix.Output[*RegistrationAssignment] {
-	return pulumix.Output[*RegistrationAssignment]{
-		OutputState: i.ToRegistrationAssignmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegistrationAssignmentOutput struct{ *pulumi.OutputState }
 
 func (RegistrationAssignmentOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o RegistrationAssignmentOutput) ToRegistrationAssignmentOutput() Registrat
 
 func (o RegistrationAssignmentOutput) ToRegistrationAssignmentOutputWithContext(ctx context.Context) RegistrationAssignmentOutput {
 	return o
-}
-
-func (o RegistrationAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*RegistrationAssignment] {
-	return pulumix.Output[*RegistrationAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the registration assignment.

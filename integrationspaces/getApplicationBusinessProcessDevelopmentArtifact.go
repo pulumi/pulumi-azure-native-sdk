@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The get business process development artifact action.
@@ -86,12 +85,6 @@ func (o GetApplicationBusinessProcessDevelopmentArtifactResultOutput) ToGetAppli
 
 func (o GetApplicationBusinessProcessDevelopmentArtifactResultOutput) ToGetApplicationBusinessProcessDevelopmentArtifactResultOutputWithContext(ctx context.Context) GetApplicationBusinessProcessDevelopmentArtifactResultOutput {
 	return o
-}
-
-func (o GetApplicationBusinessProcessDevelopmentArtifactResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationBusinessProcessDevelopmentArtifactResult] {
-	return pulumix.Output[GetApplicationBusinessProcessDevelopmentArtifactResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the business process development artifact.

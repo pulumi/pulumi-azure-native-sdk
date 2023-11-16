@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Address Resource.
@@ -147,12 +146,6 @@ func (i *Address) ToAddressOutputWithContext(ctx context.Context) AddressOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(AddressOutput)
 }
 
-func (i *Address) ToOutput(ctx context.Context) pulumix.Output[*Address] {
-	return pulumix.Output[*Address]{
-		OutputState: i.ToAddressOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AddressOutput struct{ *pulumi.OutputState }
 
 func (AddressOutput) ElementType() reflect.Type {
@@ -165,12 +158,6 @@ func (o AddressOutput) ToAddressOutput() AddressOutput {
 
 func (o AddressOutput) ToAddressOutputWithContext(ctx context.Context) AddressOutput {
 	return o
-}
-
-func (o AddressOutput) ToOutput(ctx context.Context) pulumix.Output[*Address] {
-	return pulumix.Output[*Address]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Status of address validation.

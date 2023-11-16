@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details about the specified auto scale v-core.
@@ -92,12 +91,6 @@ func (o LookupAutoScaleVCoreResultOutput) ToLookupAutoScaleVCoreResultOutput() L
 
 func (o LookupAutoScaleVCoreResultOutput) ToLookupAutoScaleVCoreResultOutputWithContext(ctx context.Context) LookupAutoScaleVCoreResultOutput {
 	return o
-}
-
-func (o LookupAutoScaleVCoreResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAutoScaleVCoreResult] {
-	return pulumix.Output[LookupAutoScaleVCoreResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The maximum capacity of an auto scale v-core resource.

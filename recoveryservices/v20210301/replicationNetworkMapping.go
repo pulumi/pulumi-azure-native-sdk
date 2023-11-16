@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Network Mapping model. Ideally it should have been possible to inherit this class from prev version in InheritedModels as long as there is no difference in structure or method signature. Since there were no base Models for certain fields and methods viz NetworkMappingProperties and Load with required return type, the class has been introduced in its entirety with references to base models to facilitate extensions in subsequent versions.
@@ -207,12 +206,6 @@ func (i *ReplicationNetworkMapping) ToReplicationNetworkMappingOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationNetworkMappingOutput)
 }
 
-func (i *ReplicationNetworkMapping) ToOutput(ctx context.Context) pulumix.Output[*ReplicationNetworkMapping] {
-	return pulumix.Output[*ReplicationNetworkMapping]{
-		OutputState: i.ToReplicationNetworkMappingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReplicationNetworkMappingOutput struct{ *pulumi.OutputState }
 
 func (ReplicationNetworkMappingOutput) ElementType() reflect.Type {
@@ -225,12 +218,6 @@ func (o ReplicationNetworkMappingOutput) ToReplicationNetworkMappingOutput() Rep
 
 func (o ReplicationNetworkMappingOutput) ToReplicationNetworkMappingOutputWithContext(ctx context.Context) ReplicationNetworkMappingOutput {
 	return o
-}
-
-func (o ReplicationNetworkMappingOutput) ToOutput(ctx context.Context) pulumix.Output[*ReplicationNetworkMapping] {
-	return pulumix.Output[*ReplicationNetworkMapping]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Location

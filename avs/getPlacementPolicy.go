@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A vSphere Distributed Resource Scheduler (DRS) placement policy
@@ -90,12 +89,6 @@ func (o LookupPlacementPolicyResultOutput) ToLookupPlacementPolicyResultOutput()
 
 func (o LookupPlacementPolicyResultOutput) ToLookupPlacementPolicyResultOutputWithContext(ctx context.Context) LookupPlacementPolicyResultOutput {
 	return o
-}
-
-func (o LookupPlacementPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPlacementPolicyResult] {
-	return pulumix.Output[LookupPlacementPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource ID.

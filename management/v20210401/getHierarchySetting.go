@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the hierarchy settings defined at the Management Group level. Settings can only be set on the root Management Group of the hierarchy.
@@ -79,12 +78,6 @@ func (o LookupHierarchySettingResultOutput) ToLookupHierarchySettingResultOutput
 
 func (o LookupHierarchySettingResultOutput) ToLookupHierarchySettingResultOutputWithContext(ctx context.Context) LookupHierarchySettingResultOutput {
 	return o
-}
-
-func (o LookupHierarchySettingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHierarchySettingResult] {
-	return pulumix.Output[LookupHierarchySettingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Settings that sets the default Management Group under which new subscriptions get added in this tenant. For example, /providers/Microsoft.Management/managementGroups/defaultGroup

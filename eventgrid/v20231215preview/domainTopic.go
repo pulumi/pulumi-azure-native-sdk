@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Domain Topic.
@@ -153,12 +152,6 @@ func (i *DomainTopic) ToDomainTopicOutputWithContext(ctx context.Context) Domain
 	return pulumi.ToOutputWithContext(ctx, i).(DomainTopicOutput)
 }
 
-func (i *DomainTopic) ToOutput(ctx context.Context) pulumix.Output[*DomainTopic] {
-	return pulumix.Output[*DomainTopic]{
-		OutputState: i.ToDomainTopicOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DomainTopicOutput struct{ *pulumi.OutputState }
 
 func (DomainTopicOutput) ElementType() reflect.Type {
@@ -171,12 +164,6 @@ func (o DomainTopicOutput) ToDomainTopicOutput() DomainTopicOutput {
 
 func (o DomainTopicOutput) ToDomainTopicOutputWithContext(ctx context.Context) DomainTopicOutput {
 	return o
-}
-
-func (o DomainTopicOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainTopic] {
-	return pulumix.Output[*DomainTopic]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the resource.

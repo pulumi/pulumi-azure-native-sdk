@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The policy exemption.
@@ -178,12 +177,6 @@ func (i *PolicyExemption) ToPolicyExemptionOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyExemptionOutput)
 }
 
-func (i *PolicyExemption) ToOutput(ctx context.Context) pulumix.Output[*PolicyExemption] {
-	return pulumix.Output[*PolicyExemption]{
-		OutputState: i.ToPolicyExemptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicyExemptionOutput struct{ *pulumi.OutputState }
 
 func (PolicyExemptionOutput) ElementType() reflect.Type {
@@ -196,12 +189,6 @@ func (o PolicyExemptionOutput) ToPolicyExemptionOutput() PolicyExemptionOutput {
 
 func (o PolicyExemptionOutput) ToPolicyExemptionOutputWithContext(ctx context.Context) PolicyExemptionOutput {
 	return o
-}
-
-func (o PolicyExemptionOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyExemption] {
-	return pulumix.Output[*PolicyExemption]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The option whether validate the exemption is at or under the assignment scope.

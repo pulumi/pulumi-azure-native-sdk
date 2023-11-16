@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // IoT Connector definition.
@@ -179,12 +178,6 @@ func (i *IotConnector) ToIotConnectorOutputWithContext(ctx context.Context) IotC
 	return pulumi.ToOutputWithContext(ctx, i).(IotConnectorOutput)
 }
 
-func (i *IotConnector) ToOutput(ctx context.Context) pulumix.Output[*IotConnector] {
-	return pulumix.Output[*IotConnector]{
-		OutputState: i.ToIotConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IotConnectorOutput struct{ *pulumi.OutputState }
 
 func (IotConnectorOutput) ElementType() reflect.Type {
@@ -197,12 +190,6 @@ func (o IotConnectorOutput) ToIotConnectorOutput() IotConnectorOutput {
 
 func (o IotConnectorOutput) ToIotConnectorOutputWithContext(ctx context.Context) IotConnectorOutput {
 	return o
-}
-
-func (o IotConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*IotConnector] {
-	return pulumix.Output[*IotConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Device Mappings.

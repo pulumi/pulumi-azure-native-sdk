@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a BusinessProcess
@@ -103,12 +102,6 @@ func (o LookupBusinessProcessResultOutput) ToLookupBusinessProcessResultOutput()
 
 func (o LookupBusinessProcessResultOutput) ToLookupBusinessProcessResultOutputWithContext(ctx context.Context) LookupBusinessProcessResultOutput {
 	return o
-}
-
-func (o LookupBusinessProcessResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBusinessProcessResult] {
-	return pulumix.Output[LookupBusinessProcessResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The business process mapping.

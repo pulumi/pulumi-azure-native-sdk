@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the supported VM skus from the underlying custom location
@@ -78,12 +77,6 @@ func (o LookupVMSkusResultOutput) ToLookupVMSkusResultOutput() LookupVMSkusResul
 
 func (o LookupVMSkusResultOutput) ToLookupVMSkusResultOutputWithContext(ctx context.Context) LookupVMSkusResultOutput {
 	return o
-}
-
-func (o LookupVMSkusResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVMSkusResult] {
-	return pulumix.Output[LookupVMSkusResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Extended Location definition

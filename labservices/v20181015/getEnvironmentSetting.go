@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get environment setting
@@ -113,12 +112,6 @@ func (o LookupEnvironmentSettingResultOutput) ToLookupEnvironmentSettingResultOu
 
 func (o LookupEnvironmentSettingResultOutput) ToLookupEnvironmentSettingResultOutputWithContext(ctx context.Context) LookupEnvironmentSettingResultOutput {
 	return o
-}
-
-func (o LookupEnvironmentSettingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEnvironmentSettingResult] {
-	return pulumix.Output[LookupEnvironmentSettingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Describes the user's progress in configuring their environment setting

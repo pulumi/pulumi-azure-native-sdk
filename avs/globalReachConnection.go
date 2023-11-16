@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A global reach connection resource
@@ -158,12 +157,6 @@ func (i *GlobalReachConnection) ToGlobalReachConnectionOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalReachConnectionOutput)
 }
 
-func (i *GlobalReachConnection) ToOutput(ctx context.Context) pulumix.Output[*GlobalReachConnection] {
-	return pulumix.Output[*GlobalReachConnection]{
-		OutputState: i.ToGlobalReachConnectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GlobalReachConnectionOutput struct{ *pulumi.OutputState }
 
 func (GlobalReachConnectionOutput) ElementType() reflect.Type {
@@ -176,12 +169,6 @@ func (o GlobalReachConnectionOutput) ToGlobalReachConnectionOutput() GlobalReach
 
 func (o GlobalReachConnectionOutput) ToGlobalReachConnectionOutputWithContext(ctx context.Context) GlobalReachConnectionOutput {
 	return o
-}
-
-func (o GlobalReachConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalReachConnection] {
-	return pulumix.Output[*GlobalReachConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The network used for global reach carved out from the original network block provided for the private cloud

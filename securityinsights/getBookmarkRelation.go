@@ -9,13 +9,12 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a bookmark relation.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2019-01-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2019-01-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 func LookupBookmarkRelation(ctx *pulumi.Context, args *LookupBookmarkRelationArgs, opts ...pulumi.InvokeOption) (*LookupBookmarkRelationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBookmarkRelationResult
@@ -100,12 +99,6 @@ func (o LookupBookmarkRelationResultOutput) ToLookupBookmarkRelationResultOutput
 
 func (o LookupBookmarkRelationResultOutput) ToLookupBookmarkRelationResultOutputWithContext(ctx context.Context) LookupBookmarkRelationResultOutput {
 	return o
-}
-
-func (o LookupBookmarkRelationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBookmarkRelationResult] {
-	return pulumix.Output[LookupBookmarkRelationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Etag of the azure resource

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a snapshot Policy
@@ -101,12 +100,6 @@ func (o LookupSnapshotPolicyResultOutput) ToLookupSnapshotPolicyResultOutput() L
 
 func (o LookupSnapshotPolicyResultOutput) ToLookupSnapshotPolicyResultOutputWithContext(ctx context.Context) LookupSnapshotPolicyResultOutput {
 	return o
-}
-
-func (o LookupSnapshotPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSnapshotPolicyResult] {
-	return pulumix.Output[LookupSnapshotPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Schedule for daily snapshots

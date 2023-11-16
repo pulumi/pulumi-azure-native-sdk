@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Source control configuration for an app.
@@ -208,12 +207,6 @@ func (i *WebAppSourceControl) ToWebAppSourceControlOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppSourceControlOutput)
 }
 
-func (i *WebAppSourceControl) ToOutput(ctx context.Context) pulumix.Output[*WebAppSourceControl] {
-	return pulumix.Output[*WebAppSourceControl]{
-		OutputState: i.ToWebAppSourceControlOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebAppSourceControlOutput struct{ *pulumi.OutputState }
 
 func (WebAppSourceControlOutput) ElementType() reflect.Type {
@@ -226,12 +219,6 @@ func (o WebAppSourceControlOutput) ToWebAppSourceControlOutput() WebAppSourceCon
 
 func (o WebAppSourceControlOutput) ToWebAppSourceControlOutputWithContext(ctx context.Context) WebAppSourceControlOutput {
 	return o
-}
-
-func (o WebAppSourceControlOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppSourceControl] {
-	return pulumix.Output[*WebAppSourceControl]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of branch to use for deployment.

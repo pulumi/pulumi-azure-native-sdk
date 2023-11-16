@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the supported kubernetes versions from the underlying custom location
@@ -78,12 +77,6 @@ func (o LookupKubernetesVersionsResultOutput) ToLookupKubernetesVersionsResultOu
 
 func (o LookupKubernetesVersionsResultOutput) ToLookupKubernetesVersionsResultOutputWithContext(ctx context.Context) LookupKubernetesVersionsResultOutput {
 	return o
-}
-
-func (o LookupKubernetesVersionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKubernetesVersionsResult] {
-	return pulumix.Output[LookupKubernetesVersionsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Extended Location definition

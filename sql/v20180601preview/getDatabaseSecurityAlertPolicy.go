@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a  database's security alert policy.
@@ -101,12 +100,6 @@ func (o LookupDatabaseSecurityAlertPolicyResultOutput) ToLookupDatabaseSecurityA
 
 func (o LookupDatabaseSecurityAlertPolicyResultOutput) ToLookupDatabaseSecurityAlertPolicyResultOutputWithContext(ctx context.Context) LookupDatabaseSecurityAlertPolicyResultOutput {
 	return o
-}
-
-func (o LookupDatabaseSecurityAlertPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDatabaseSecurityAlertPolicyResult] {
-	return pulumix.Output[LookupDatabaseSecurityAlertPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the UTC creation time of the policy.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of registered recovery services provider.
@@ -89,12 +88,6 @@ func (o LookupReplicationRecoveryServicesProviderResultOutput) ToLookupReplicati
 
 func (o LookupReplicationRecoveryServicesProviderResultOutput) ToLookupReplicationRecoveryServicesProviderResultOutputWithContext(ctx context.Context) LookupReplicationRecoveryServicesProviderResultOutput {
 	return o
-}
-
-func (o LookupReplicationRecoveryServicesProviderResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReplicationRecoveryServicesProviderResult] {
-	return pulumix.Output[LookupReplicationRecoveryServicesProviderResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Id

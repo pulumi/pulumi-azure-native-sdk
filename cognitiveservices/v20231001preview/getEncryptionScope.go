@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified EncryptionScope associated with the Cognitive Services account.
@@ -100,12 +99,6 @@ func (o LookupEncryptionScopeResultOutput) ToLookupEncryptionScopeResultOutput()
 
 func (o LookupEncryptionScopeResultOutput) ToLookupEncryptionScopeResultOutputWithContext(ctx context.Context) LookupEncryptionScopeResultOutput {
 	return o
-}
-
-func (o LookupEncryptionScopeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEncryptionScopeResult] {
-	return pulumix.Output[LookupEncryptionScopeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Etag.

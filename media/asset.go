@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Asset.
@@ -178,12 +177,6 @@ func (i *Asset) ToAssetOutputWithContext(ctx context.Context) AssetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AssetOutput)
 }
 
-func (i *Asset) ToOutput(ctx context.Context) pulumix.Output[*Asset] {
-	return pulumix.Output[*Asset]{
-		OutputState: i.ToAssetOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AssetOutput struct{ *pulumi.OutputState }
 
 func (AssetOutput) ElementType() reflect.Type {
@@ -196,12 +189,6 @@ func (o AssetOutput) ToAssetOutput() AssetOutput {
 
 func (o AssetOutput) ToAssetOutputWithContext(ctx context.Context) AssetOutput {
 	return o
-}
-
-func (o AssetOutput) ToOutput(ctx context.Context) pulumix.Output[*Asset] {
-	return pulumix.Output[*Asset]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The alternate ID of the Asset.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Implements GuestAgent GET method.
@@ -89,12 +88,6 @@ func (o LookupVMInstanceGuestAgentResultOutput) ToLookupVMInstanceGuestAgentResu
 
 func (o LookupVMInstanceGuestAgentResultOutput) ToLookupVMInstanceGuestAgentResultOutputWithContext(ctx context.Context) LookupVMInstanceGuestAgentResultOutput {
 	return o
-}
-
-func (o LookupVMInstanceGuestAgentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVMInstanceGuestAgentResult] {
-	return pulumix.Output[LookupVMInstanceGuestAgentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Username / Password Credentials to provision guest agent.

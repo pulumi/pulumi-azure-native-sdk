@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A sensitivity label.
@@ -202,12 +201,6 @@ func (i *SqlPoolSensitivityLabel) ToSqlPoolSensitivityLabelOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(SqlPoolSensitivityLabelOutput)
 }
 
-func (i *SqlPoolSensitivityLabel) ToOutput(ctx context.Context) pulumix.Output[*SqlPoolSensitivityLabel] {
-	return pulumix.Output[*SqlPoolSensitivityLabel]{
-		OutputState: i.ToSqlPoolSensitivityLabelOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SqlPoolSensitivityLabelOutput struct{ *pulumi.OutputState }
 
 func (SqlPoolSensitivityLabelOutput) ElementType() reflect.Type {
@@ -220,12 +213,6 @@ func (o SqlPoolSensitivityLabelOutput) ToSqlPoolSensitivityLabelOutput() SqlPool
 
 func (o SqlPoolSensitivityLabelOutput) ToSqlPoolSensitivityLabelOutputWithContext(ctx context.Context) SqlPoolSensitivityLabelOutput {
 	return o
-}
-
-func (o SqlPoolSensitivityLabelOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlPoolSensitivityLabel] {
-	return pulumix.Output[*SqlPoolSensitivityLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The column name.

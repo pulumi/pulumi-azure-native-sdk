@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a private link policy with a given name.
@@ -92,12 +91,6 @@ func (o LookupPrivateLinkForAzureAdResultOutput) ToLookupPrivateLinkForAzureAdRe
 
 func (o LookupPrivateLinkForAzureAdResultOutput) ToLookupPrivateLinkForAzureAdResultOutputWithContext(ctx context.Context) LookupPrivateLinkForAzureAdResultOutput {
 	return o
-}
-
-func (o LookupPrivateLinkForAzureAdResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateLinkForAzureAdResult] {
-	return pulumix.Output[LookupPrivateLinkForAzureAdResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Flag indicating whether all tenants are allowed

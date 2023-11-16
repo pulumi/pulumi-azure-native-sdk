@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets entity type (profile or interaction) image upload URL.
@@ -89,12 +88,6 @@ func (o GetImageUploadUrlForEntityTypeResultOutput) ToGetImageUploadUrlForEntity
 
 func (o GetImageUploadUrlForEntityTypeResultOutput) ToGetImageUploadUrlForEntityTypeResultOutputWithContext(ctx context.Context) GetImageUploadUrlForEntityTypeResultOutput {
 	return o
-}
-
-func (o GetImageUploadUrlForEntityTypeResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetImageUploadUrlForEntityTypeResult] {
-	return pulumix.Output[GetImageUploadUrlForEntityTypeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Content URL for the image blob.

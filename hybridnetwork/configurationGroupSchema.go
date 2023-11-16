@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Configuration group schema resource.
@@ -137,12 +136,6 @@ func (i *ConfigurationGroupSchema) ToConfigurationGroupSchemaOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationGroupSchemaOutput)
 }
 
-func (i *ConfigurationGroupSchema) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationGroupSchema] {
-	return pulumix.Output[*ConfigurationGroupSchema]{
-		OutputState: i.ToConfigurationGroupSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigurationGroupSchemaOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationGroupSchemaOutput) ElementType() reflect.Type {
@@ -155,12 +148,6 @@ func (o ConfigurationGroupSchemaOutput) ToConfigurationGroupSchemaOutput() Confi
 
 func (o ConfigurationGroupSchemaOutput) ToConfigurationGroupSchemaOutputWithContext(ctx context.Context) ConfigurationGroupSchemaOutput {
 	return o
-}
-
-func (o ConfigurationGroupSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationGroupSchema] {
-	return pulumix.Output[*ConfigurationGroupSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

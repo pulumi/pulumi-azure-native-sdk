@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get Network Rack resource details.
@@ -96,12 +95,6 @@ func (o LookupNetworkRackResultOutput) ToLookupNetworkRackResultOutput() LookupN
 
 func (o LookupNetworkRackResultOutput) ToLookupNetworkRackResultOutputWithContext(ctx context.Context) LookupNetworkRackResultOutput {
 	return o
-}
-
-func (o LookupNetworkRackResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkRackResult] {
-	return pulumix.Output[LookupNetworkRackResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Switch configuration description.

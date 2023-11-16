@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Agent Pool.
@@ -177,12 +176,6 @@ func (o LookupAgentPoolResultOutput) ToLookupAgentPoolResultOutput() LookupAgent
 
 func (o LookupAgentPoolResultOutput) ToLookupAgentPoolResultOutputWithContext(ctx context.Context) LookupAgentPoolResultOutput {
 	return o
-}
-
-func (o LookupAgentPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAgentPoolResult] {
-	return pulumix.Output[LookupAgentPoolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration for using artifact streaming on AKS.

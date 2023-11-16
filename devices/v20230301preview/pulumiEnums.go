@@ -107,12 +107,6 @@ func (o IpFilterActionTypeOutput) ToIpFilterActionTypePtrOutputWithContext(ctx c
 	}).(IpFilterActionTypePtrOutput)
 }
 
-func (o IpFilterActionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[IpFilterActionType] {
-	return pulumix.Output[IpFilterActionType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IpFilterActionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -146,12 +140,6 @@ func (o IpFilterActionTypePtrOutput) ToIpFilterActionTypePtrOutput() IpFilterAct
 
 func (o IpFilterActionTypePtrOutput) ToIpFilterActionTypePtrOutputWithContext(ctx context.Context) IpFilterActionTypePtrOutput {
 	return o
-}
-
-func (o IpFilterActionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IpFilterActionType] {
-	return pulumix.Output[*IpFilterActionType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IpFilterActionTypePtrOutput) Elem() IpFilterActionTypeOutput {
@@ -291,12 +279,6 @@ func (o IpFilterTargetTypeOutput) ToIpFilterTargetTypePtrOutputWithContext(ctx c
 	}).(IpFilterTargetTypePtrOutput)
 }
 
-func (o IpFilterTargetTypeOutput) ToOutput(ctx context.Context) pulumix.Output[IpFilterTargetType] {
-	return pulumix.Output[IpFilterTargetType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IpFilterTargetTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -330,12 +312,6 @@ func (o IpFilterTargetTypePtrOutput) ToIpFilterTargetTypePtrOutput() IpFilterTar
 
 func (o IpFilterTargetTypePtrOutput) ToIpFilterTargetTypePtrOutputWithContext(ctx context.Context) IpFilterTargetTypePtrOutput {
 	return o
-}
-
-func (o IpFilterTargetTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IpFilterTargetType] {
-	return pulumix.Output[*IpFilterTargetType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IpFilterTargetTypePtrOutput) Elem() IpFilterTargetTypeOutput {

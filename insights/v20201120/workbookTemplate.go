@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Application Insights workbook template definition.
@@ -160,12 +159,6 @@ func (i *WorkbookTemplate) ToWorkbookTemplateOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(WorkbookTemplateOutput)
 }
 
-func (i *WorkbookTemplate) ToOutput(ctx context.Context) pulumix.Output[*WorkbookTemplate] {
-	return pulumix.Output[*WorkbookTemplate]{
-		OutputState: i.ToWorkbookTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkbookTemplateOutput struct{ *pulumi.OutputState }
 
 func (WorkbookTemplateOutput) ElementType() reflect.Type {
@@ -178,12 +171,6 @@ func (o WorkbookTemplateOutput) ToWorkbookTemplateOutput() WorkbookTemplateOutpu
 
 func (o WorkbookTemplateOutput) ToWorkbookTemplateOutputWithContext(ctx context.Context) WorkbookTemplateOutput {
 	return o
-}
-
-func (o WorkbookTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkbookTemplate] {
-	return pulumix.Output[*WorkbookTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Information about the author of the workbook template.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the EmailService and its properties.
@@ -90,12 +89,6 @@ func (o LookupEmailServiceResultOutput) ToLookupEmailServiceResultOutput() Looku
 
 func (o LookupEmailServiceResultOutput) ToLookupEmailServiceResultOutputWithContext(ctx context.Context) LookupEmailServiceResultOutput {
 	return o
-}
-
-func (o LookupEmailServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEmailServiceResult] {
-	return pulumix.Output[LookupEmailServiceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The location where the email service stores its data at rest.

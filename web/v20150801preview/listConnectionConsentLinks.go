@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists consent links of a connection.
@@ -101,12 +100,6 @@ func (o ListConnectionConsentLinksResultOutput) ToListConnectionConsentLinksResu
 
 func (o ListConnectionConsentLinksResultOutput) ToListConnectionConsentLinksResultOutputWithContext(ctx context.Context) ListConnectionConsentLinksResultOutput {
 	return o
-}
-
-func (o ListConnectionConsentLinksResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListConnectionConsentLinksResult] {
-	return pulumix.Output[ListConnectionConsentLinksResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Collection of resources

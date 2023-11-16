@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The peering service prefix class.
@@ -165,12 +164,6 @@ func (i *Prefix) ToPrefixOutputWithContext(ctx context.Context) PrefixOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PrefixOutput)
 }
 
-func (i *Prefix) ToOutput(ctx context.Context) pulumix.Output[*Prefix] {
-	return pulumix.Output[*Prefix]{
-		OutputState: i.ToPrefixOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrefixOutput struct{ *pulumi.OutputState }
 
 func (PrefixOutput) ElementType() reflect.Type {
@@ -183,12 +176,6 @@ func (o PrefixOutput) ToPrefixOutput() PrefixOutput {
 
 func (o PrefixOutput) ToPrefixOutputWithContext(ctx context.Context) PrefixOutput {
 	return o
-}
-
-func (o PrefixOutput) ToOutput(ctx context.Context) pulumix.Output[*Prefix] {
-	return pulumix.Output[*Prefix]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The error message for validation state

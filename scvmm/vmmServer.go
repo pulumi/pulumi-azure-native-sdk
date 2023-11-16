@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The VmmServers resource definition.
@@ -175,12 +174,6 @@ func (i *VmmServer) ToVmmServerOutputWithContext(ctx context.Context) VmmServerO
 	return pulumi.ToOutputWithContext(ctx, i).(VmmServerOutput)
 }
 
-func (i *VmmServer) ToOutput(ctx context.Context) pulumix.Output[*VmmServer] {
-	return pulumix.Output[*VmmServer]{
-		OutputState: i.ToVmmServerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VmmServerOutput struct{ *pulumi.OutputState }
 
 func (VmmServerOutput) ElementType() reflect.Type {
@@ -193,12 +186,6 @@ func (o VmmServerOutput) ToVmmServerOutput() VmmServerOutput {
 
 func (o VmmServerOutput) ToVmmServerOutputWithContext(ctx context.Context) VmmServerOutput {
 	return o
-}
-
-func (o VmmServerOutput) ToOutput(ctx context.Context) pulumix.Output[*VmmServer] {
-	return pulumix.Output[*VmmServer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the connection status to the vmmServer.

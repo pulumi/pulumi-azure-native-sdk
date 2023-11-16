@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the shared scheduled action from the given scope by name.
@@ -102,12 +101,6 @@ func (o LookupScheduledActionByScopeResultOutput) ToLookupScheduledActionByScope
 
 func (o LookupScheduledActionByScopeResultOutput) ToLookupScheduledActionByScopeResultOutputWithContext(ctx context.Context) LookupScheduledActionByScopeResultOutput {
 	return o
-}
-
-func (o LookupScheduledActionByScopeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupScheduledActionByScopeResult] {
-	return pulumix.Output[LookupScheduledActionByScopeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Scheduled action name.

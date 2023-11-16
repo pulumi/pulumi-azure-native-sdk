@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns all failover sets for a given device and their eligibility for participating in a failover. A failover set refers to a set of volume containers that need to be failed-over as a single unit to maintain data integrity.
@@ -77,12 +76,6 @@ func (o ListDeviceFailoverSetsResultOutput) ToListDeviceFailoverSetsResultOutput
 
 func (o ListDeviceFailoverSetsResultOutput) ToListDeviceFailoverSetsResultOutputWithContext(ctx context.Context) ListDeviceFailoverSetsResultOutput {
 	return o
-}
-
-func (o ListDeviceFailoverSetsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListDeviceFailoverSetsResult] {
-	return pulumix.Output[ListDeviceFailoverSetsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of failover sets.

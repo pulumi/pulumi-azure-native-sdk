@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Storage Account on the  Data Box Edge/Gateway device.
@@ -188,12 +187,6 @@ func (i *StorageAccount) ToStorageAccountOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(StorageAccountOutput)
 }
 
-func (i *StorageAccount) ToOutput(ctx context.Context) pulumix.Output[*StorageAccount] {
-	return pulumix.Output[*StorageAccount]{
-		OutputState: i.ToStorageAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StorageAccountOutput struct{ *pulumi.OutputState }
 
 func (StorageAccountOutput) ElementType() reflect.Type {
@@ -206,12 +199,6 @@ func (o StorageAccountOutput) ToStorageAccountOutput() StorageAccountOutput {
 
 func (o StorageAccountOutput) ToStorageAccountOutputWithContext(ctx context.Context) StorageAccountOutput {
 	return o
-}
-
-func (o StorageAccountOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageAccount] {
-	return pulumix.Output[*StorageAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // BlobEndpoint of Storage Account

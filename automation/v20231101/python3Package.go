@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Definition of the module type.
@@ -159,12 +158,6 @@ func (i *Python3Package) ToPython3PackageOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(Python3PackageOutput)
 }
 
-func (i *Python3Package) ToOutput(ctx context.Context) pulumix.Output[*Python3Package] {
-	return pulumix.Output[*Python3Package]{
-		OutputState: i.ToPython3PackageOutputWithContext(ctx).OutputState,
-	}
-}
-
 type Python3PackageOutput struct{ *pulumi.OutputState }
 
 func (Python3PackageOutput) ElementType() reflect.Type {
@@ -177,12 +170,6 @@ func (o Python3PackageOutput) ToPython3PackageOutput() Python3PackageOutput {
 
 func (o Python3PackageOutput) ToPython3PackageOutputWithContext(ctx context.Context) Python3PackageOutput {
 	return o
-}
-
-func (o Python3PackageOutput) ToOutput(ctx context.Context) pulumix.Output[*Python3Package] {
-	return pulumix.Output[*Python3Package]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the activity count of the module.

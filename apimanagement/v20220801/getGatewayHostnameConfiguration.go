@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get details of a hostname configuration
@@ -97,12 +96,6 @@ func (o LookupGatewayHostnameConfigurationResultOutput) ToLookupGatewayHostnameC
 
 func (o LookupGatewayHostnameConfigurationResultOutput) ToLookupGatewayHostnameConfigurationResultOutputWithContext(ctx context.Context) LookupGatewayHostnameConfigurationResultOutput {
 	return o
-}
-
-func (o LookupGatewayHostnameConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGatewayHostnameConfigurationResult] {
-	return pulumix.Output[LookupGatewayHostnameConfigurationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identifier of Certificate entity that will be used for TLS connection establishment

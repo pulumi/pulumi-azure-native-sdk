@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information about an Automation Account.
@@ -112,12 +111,6 @@ func (o LookupAutomationAccountResultOutput) ToLookupAutomationAccountResultOutp
 
 func (o LookupAutomationAccountResultOutput) ToLookupAutomationAccountResultOutputWithContext(ctx context.Context) LookupAutomationAccountResultOutput {
 	return o
-}
-
-func (o LookupAutomationAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAutomationAccountResult] {
-	return pulumix.Output[LookupAutomationAccountResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // URL of automation hybrid service which is used for hybrid worker on-boarding.

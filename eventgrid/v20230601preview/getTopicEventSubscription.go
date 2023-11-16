@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of an event subscription of a topic.
@@ -126,12 +125,6 @@ func (o LookupTopicEventSubscriptionResultOutput) ToLookupTopicEventSubscription
 
 func (o LookupTopicEventSubscriptionResultOutput) ToLookupTopicEventSubscriptionResultOutputWithContext(ctx context.Context) LookupTopicEventSubscriptionResultOutput {
 	return o
-}
-
-func (o LookupTopicEventSubscriptionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTopicEventSubscriptionResult] {
-	return pulumix.Output[LookupTopicEventSubscriptionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.

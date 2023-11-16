@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Contains a list of references of UrlSigningKey type secret objects.
@@ -128,12 +127,6 @@ func (i *KeyGroup) ToKeyGroupOutputWithContext(ctx context.Context) KeyGroupOutp
 	return pulumi.ToOutputWithContext(ctx, i).(KeyGroupOutput)
 }
 
-func (i *KeyGroup) ToOutput(ctx context.Context) pulumix.Output[*KeyGroup] {
-	return pulumix.Output[*KeyGroup]{
-		OutputState: i.ToKeyGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KeyGroupOutput struct{ *pulumi.OutputState }
 
 func (KeyGroupOutput) ElementType() reflect.Type {
@@ -146,12 +139,6 @@ func (o KeyGroupOutput) ToKeyGroupOutput() KeyGroupOutput {
 
 func (o KeyGroupOutput) ToKeyGroupOutputWithContext(ctx context.Context) KeyGroupOutput {
 	return o
-}
-
-func (o KeyGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyGroup] {
-	return pulumix.Output[*KeyGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyGroupOutput) DeploymentStatus() pulumi.StringOutput {

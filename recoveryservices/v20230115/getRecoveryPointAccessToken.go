@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetRecoveryPointAccessToken(ctx *pulumi.Context, args *GetRecoveryPointAccessTokenArgs, opts ...pulumi.InvokeOption) (*GetRecoveryPointAccessTokenResult, error) {
@@ -114,12 +113,6 @@ func (o GetRecoveryPointAccessTokenResultOutput) ToGetRecoveryPointAccessTokenRe
 
 func (o GetRecoveryPointAccessTokenResultOutput) ToGetRecoveryPointAccessTokenResultOutputWithContext(ctx context.Context) GetRecoveryPointAccessTokenResultOutput {
 	return o
-}
-
-func (o GetRecoveryPointAccessTokenResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRecoveryPointAccessTokenResult] {
-	return pulumix.Output[GetRecoveryPointAccessTokenResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional ETag.

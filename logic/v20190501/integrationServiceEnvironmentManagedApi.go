@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The integration service environment managed api.
@@ -162,12 +161,6 @@ func (i *IntegrationServiceEnvironmentManagedApi) ToIntegrationServiceEnvironmen
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationServiceEnvironmentManagedApiOutput)
 }
 
-func (i *IntegrationServiceEnvironmentManagedApi) ToOutput(ctx context.Context) pulumix.Output[*IntegrationServiceEnvironmentManagedApi] {
-	return pulumix.Output[*IntegrationServiceEnvironmentManagedApi]{
-		OutputState: i.ToIntegrationServiceEnvironmentManagedApiOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IntegrationServiceEnvironmentManagedApiOutput struct{ *pulumi.OutputState }
 
 func (IntegrationServiceEnvironmentManagedApiOutput) ElementType() reflect.Type {
@@ -180,12 +173,6 @@ func (o IntegrationServiceEnvironmentManagedApiOutput) ToIntegrationServiceEnvir
 
 func (o IntegrationServiceEnvironmentManagedApiOutput) ToIntegrationServiceEnvironmentManagedApiOutputWithContext(ctx context.Context) IntegrationServiceEnvironmentManagedApiOutput {
 	return o
-}
-
-func (o IntegrationServiceEnvironmentManagedApiOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationServiceEnvironmentManagedApi] {
-	return pulumix.Output[*IntegrationServiceEnvironmentManagedApi]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The API definition.

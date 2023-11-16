@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // NSX DNS Service
@@ -100,12 +99,6 @@ func (o LookupWorkloadNetworkDnsServiceResultOutput) ToLookupWorkloadNetworkDnsS
 
 func (o LookupWorkloadNetworkDnsServiceResultOutput) ToLookupWorkloadNetworkDnsServiceResultOutputWithContext(ctx context.Context) LookupWorkloadNetworkDnsServiceResultOutput {
 	return o
-}
-
-func (o LookupWorkloadNetworkDnsServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkloadNetworkDnsServiceResult] {
-	return pulumix.Output[LookupWorkloadNetworkDnsServiceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Default DNS zone of the DNS Service.

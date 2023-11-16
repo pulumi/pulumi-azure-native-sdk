@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Php workload resource
@@ -233,12 +232,6 @@ func (i *PhpWorkload) ToPhpWorkloadOutputWithContext(ctx context.Context) PhpWor
 	return pulumi.ToOutputWithContext(ctx, i).(PhpWorkloadOutput)
 }
 
-func (i *PhpWorkload) ToOutput(ctx context.Context) pulumix.Output[*PhpWorkload] {
-	return pulumix.Output[*PhpWorkload]{
-		OutputState: i.ToPhpWorkloadOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PhpWorkloadOutput struct{ *pulumi.OutputState }
 
 func (PhpWorkloadOutput) ElementType() reflect.Type {
@@ -251,12 +244,6 @@ func (o PhpWorkloadOutput) ToPhpWorkloadOutput() PhpWorkloadOutput {
 
 func (o PhpWorkloadOutput) ToPhpWorkloadOutputWithContext(ctx context.Context) PhpWorkloadOutput {
 	return o
-}
-
-func (o PhpWorkloadOutput) ToOutput(ctx context.Context) pulumix.Output[*PhpWorkload] {
-	return pulumix.Output[*PhpWorkload]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Admin user profile used for VM and VMSS

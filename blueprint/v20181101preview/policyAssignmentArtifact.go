@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Blueprint artifact that applies a Policy assignment.
@@ -171,12 +170,6 @@ func (i *PolicyAssignmentArtifact) ToPolicyAssignmentArtifactOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyAssignmentArtifactOutput)
 }
 
-func (i *PolicyAssignmentArtifact) ToOutput(ctx context.Context) pulumix.Output[*PolicyAssignmentArtifact] {
-	return pulumix.Output[*PolicyAssignmentArtifact]{
-		OutputState: i.ToPolicyAssignmentArtifactOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicyAssignmentArtifactOutput struct{ *pulumi.OutputState }
 
 func (PolicyAssignmentArtifactOutput) ElementType() reflect.Type {
@@ -189,12 +182,6 @@ func (o PolicyAssignmentArtifactOutput) ToPolicyAssignmentArtifactOutput() Polic
 
 func (o PolicyAssignmentArtifactOutput) ToPolicyAssignmentArtifactOutputWithContext(ctx context.Context) PolicyAssignmentArtifactOutput {
 	return o
-}
-
-func (o PolicyAssignmentArtifactOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyAssignmentArtifact] {
-	return pulumix.Output[*PolicyAssignmentArtifact]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Artifacts which need to be deployed before the specified artifact.

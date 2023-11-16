@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -33,12 +32,6 @@ func (o LogAnalyticsOutputResponseOutput) ToLogAnalyticsOutputResponseOutput() L
 
 func (o LogAnalyticsOutputResponseOutput) ToLogAnalyticsOutputResponseOutputWithContext(ctx context.Context) LogAnalyticsOutputResponseOutput {
 	return o
-}
-
-func (o LogAnalyticsOutputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LogAnalyticsOutputResponse] {
-	return pulumix.Output[LogAnalyticsOutputResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Output file Uri path to blob container.

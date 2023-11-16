@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists all applicable schedules
@@ -82,12 +81,6 @@ func (o ListScheduleApplicableResultOutput) ToListScheduleApplicableResultOutput
 
 func (o ListScheduleApplicableResultOutput) ToListScheduleApplicableResultOutputWithContext(ctx context.Context) ListScheduleApplicableResultOutput {
 	return o
-}
-
-func (o ListScheduleApplicableResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListScheduleApplicableResult] {
-	return pulumix.Output[ListScheduleApplicableResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Link for next set of results.

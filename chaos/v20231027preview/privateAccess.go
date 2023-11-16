@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // PrivateAccesses tracked resource.
@@ -125,12 +124,6 @@ func (i *PrivateAccess) ToPrivateAccessOutputWithContext(ctx context.Context) Pr
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateAccessOutput)
 }
 
-func (i *PrivateAccess) ToOutput(ctx context.Context) pulumix.Output[*PrivateAccess] {
-	return pulumix.Output[*PrivateAccess]{
-		OutputState: i.ToPrivateAccessOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateAccessOutput struct{ *pulumi.OutputState }
 
 func (PrivateAccessOutput) ElementType() reflect.Type {
@@ -143,12 +136,6 @@ func (o PrivateAccessOutput) ToPrivateAccessOutput() PrivateAccessOutput {
 
 func (o PrivateAccessOutput) ToPrivateAccessOutputWithContext(ctx context.Context) PrivateAccessOutput {
 	return o
-}
-
-func (o PrivateAccessOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateAccess] {
-	return pulumix.Output[*PrivateAccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

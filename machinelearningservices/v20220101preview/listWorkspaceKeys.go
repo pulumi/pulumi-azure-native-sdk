@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists all the keys associated with this workspace. This includes keys for the storage account, app insights and password for container registry
@@ -74,12 +73,6 @@ func (o ListWorkspaceKeysResultOutput) ToListWorkspaceKeysResultOutput() ListWor
 
 func (o ListWorkspaceKeysResultOutput) ToListWorkspaceKeysResultOutputWithContext(ctx context.Context) ListWorkspaceKeysResultOutput {
 	return o
-}
-
-func (o ListWorkspaceKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWorkspaceKeysResult] {
-	return pulumix.Output[ListWorkspaceKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ListWorkspaceKeysResultOutput) AppInsightsInstrumentationKey() pulumi.StringOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the sku details for the given resource type and sku name.
@@ -82,12 +81,6 @@ func (o LookupSkusResultOutput) ToLookupSkusResultOutput() LookupSkusResultOutpu
 
 func (o LookupSkusResultOutput) ToLookupSkusResultOutputWithContext(ctx context.Context) LookupSkusResultOutput {
 	return o
-}
-
-func (o LookupSkusResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSkusResult] {
-	return pulumix.Output[LookupSkusResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

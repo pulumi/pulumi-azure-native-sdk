@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified cloud connection in a specified resource group.
@@ -96,12 +95,6 @@ func (o LookupCloudConnectionResultOutput) ToLookupCloudConnectionResultOutput()
 
 func (o LookupCloudConnectionResultOutput) ToLookupCloudConnectionResultOutputWithContext(ctx context.Context) LookupCloudConnectionResultOutput {
 	return o
-}
-
-func (o LookupCloudConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCloudConnectionResult] {
-	return pulumix.Output[LookupCloudConnectionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The cloud connector which discovered the remote resource.

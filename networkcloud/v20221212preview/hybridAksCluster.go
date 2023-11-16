@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The details are specific to the Network Cloud use of the Hybrid AKS cluster.
@@ -186,12 +185,6 @@ func (i *HybridAksCluster) ToHybridAksClusterOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(HybridAksClusterOutput)
 }
 
-func (i *HybridAksCluster) ToOutput(ctx context.Context) pulumix.Output[*HybridAksCluster] {
-	return pulumix.Output[*HybridAksCluster]{
-		OutputState: i.ToHybridAksClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HybridAksClusterOutput struct{ *pulumi.OutputState }
 
 func (HybridAksClusterOutput) ElementType() reflect.Type {
@@ -204,12 +197,6 @@ func (o HybridAksClusterOutput) ToHybridAksClusterOutput() HybridAksClusterOutpu
 
 func (o HybridAksClusterOutput) ToHybridAksClusterOutputWithContext(ctx context.Context) HybridAksClusterOutput {
 	return o
-}
-
-func (o HybridAksClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*HybridAksCluster] {
-	return pulumix.Output[*HybridAksCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of resource IDs for the workload networks associated with the Hybrid AKS cluster. It can be any of l2Networks, l3Networks, or trunkedNetworks resources. This field will also contain one cloudServicesNetwork and one defaultCniNetwork.

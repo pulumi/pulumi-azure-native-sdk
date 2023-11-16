@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Replication protected item.
@@ -207,12 +206,6 @@ func (i *ReplicationProtectedItem) ToReplicationProtectedItemOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationProtectedItemOutput)
 }
 
-func (i *ReplicationProtectedItem) ToOutput(ctx context.Context) pulumix.Output[*ReplicationProtectedItem] {
-	return pulumix.Output[*ReplicationProtectedItem]{
-		OutputState: i.ToReplicationProtectedItemOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReplicationProtectedItemOutput struct{ *pulumi.OutputState }
 
 func (ReplicationProtectedItemOutput) ElementType() reflect.Type {
@@ -225,12 +218,6 @@ func (o ReplicationProtectedItemOutput) ToReplicationProtectedItemOutput() Repli
 
 func (o ReplicationProtectedItemOutput) ToReplicationProtectedItemOutputWithContext(ctx context.Context) ReplicationProtectedItemOutput {
 	return o
-}
-
-func (o ReplicationProtectedItemOutput) ToOutput(ctx context.Context) pulumix.Output[*ReplicationProtectedItem] {
-	return pulumix.Output[*ReplicationProtectedItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Location

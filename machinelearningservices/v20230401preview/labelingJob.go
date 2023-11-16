@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure Resource Manager resource envelope.
@@ -152,12 +151,6 @@ func (i *LabelingJob) ToLabelingJobOutputWithContext(ctx context.Context) Labeli
 	return pulumi.ToOutputWithContext(ctx, i).(LabelingJobOutput)
 }
 
-func (i *LabelingJob) ToOutput(ctx context.Context) pulumix.Output[*LabelingJob] {
-	return pulumix.Output[*LabelingJob]{
-		OutputState: i.ToLabelingJobOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LabelingJobOutput struct{ *pulumi.OutputState }
 
 func (LabelingJobOutput) ElementType() reflect.Type {
@@ -170,12 +163,6 @@ func (o LabelingJobOutput) ToLabelingJobOutput() LabelingJobOutput {
 
 func (o LabelingJobOutput) ToLabelingJobOutputWithContext(ctx context.Context) LabelingJobOutput {
 	return o
-}
-
-func (o LabelingJobOutput) ToOutput(ctx context.Context) pulumix.Output[*LabelingJob] {
-	return pulumix.Output[*LabelingJob]{
-		OutputState: o.OutputState,
-	}
 }
 
 // [Required] Additional attributes of the entity.

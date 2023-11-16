@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -74,12 +73,6 @@ func (o ApplicationServerVmDetailsResponseOutput) ToApplicationServerVmDetailsRe
 	return o
 }
 
-func (o ApplicationServerVmDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationServerVmDetailsResponse] {
-	return pulumix.Output[ApplicationServerVmDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Storage details of all the Storage Accounts attached to the App Virtual Machine. For e.g. NFS on AFS Shared Storage.
 func (o ApplicationServerVmDetailsResponseOutput) StorageDetails() StorageInformationResponseArrayOutput {
 	return o.ApplyT(func(v ApplicationServerVmDetailsResponse) []StorageInformationResponse { return v.StorageDetails }).(StorageInformationResponseArrayOutput)
@@ -106,12 +99,6 @@ func (o ApplicationServerVmDetailsResponseArrayOutput) ToApplicationServerVmDeta
 
 func (o ApplicationServerVmDetailsResponseArrayOutput) ToApplicationServerVmDetailsResponseArrayOutputWithContext(ctx context.Context) ApplicationServerVmDetailsResponseArrayOutput {
 	return o
-}
-
-func (o ApplicationServerVmDetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApplicationServerVmDetailsResponse] {
-	return pulumix.Output[[]ApplicationServerVmDetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationServerVmDetailsResponseArrayOutput) Index(i pulumi.IntInput) ApplicationServerVmDetailsResponseOutput {
@@ -184,12 +171,6 @@ func (o CentralServerVmDetailsResponseOutput) ToCentralServerVmDetailsResponseOu
 	return o
 }
 
-func (o CentralServerVmDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CentralServerVmDetailsResponse] {
-	return pulumix.Output[CentralServerVmDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Storage details of all the Storage Accounts attached to the ASCS Virtual Machine. For e.g. NFS on AFS Shared Storage.
 func (o CentralServerVmDetailsResponseOutput) StorageDetails() StorageInformationResponseArrayOutput {
 	return o.ApplyT(func(v CentralServerVmDetailsResponse) []StorageInformationResponse { return v.StorageDetails }).(StorageInformationResponseArrayOutput)
@@ -216,12 +197,6 @@ func (o CentralServerVmDetailsResponseArrayOutput) ToCentralServerVmDetailsRespo
 
 func (o CentralServerVmDetailsResponseArrayOutput) ToCentralServerVmDetailsResponseArrayOutputWithContext(ctx context.Context) CentralServerVmDetailsResponseArrayOutput {
 	return o
-}
-
-func (o CentralServerVmDetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CentralServerVmDetailsResponse] {
-	return pulumix.Output[[]CentralServerVmDetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CentralServerVmDetailsResponseArrayOutput) Index(i pulumi.IntInput) CentralServerVmDetailsResponseOutput {
@@ -255,12 +230,6 @@ func (o ConnectorErrorDefinitionResponseOutput) ToConnectorErrorDefinitionRespon
 	return o
 }
 
-func (o ConnectorErrorDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorErrorDefinitionResponse] {
-	return pulumix.Output[ConnectorErrorDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Service specific error code which serves as the substatus for the HTTP error code.
 func (o ConnectorErrorDefinitionResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectorErrorDefinitionResponse) string { return v.Code }).(pulumi.StringOutput)
@@ -288,12 +257,6 @@ func (o ConnectorErrorDefinitionResponseArrayOutput) ToConnectorErrorDefinitionR
 
 func (o ConnectorErrorDefinitionResponseArrayOutput) ToConnectorErrorDefinitionResponseArrayOutputWithContext(ctx context.Context) ConnectorErrorDefinitionResponseArrayOutput {
 	return o
-}
-
-func (o ConnectorErrorDefinitionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConnectorErrorDefinitionResponse] {
-	return pulumix.Output[[]ConnectorErrorDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorErrorDefinitionResponseArrayOutput) Index(i pulumi.IntInput) ConnectorErrorDefinitionResponseOutput {
@@ -528,12 +491,6 @@ func (o DatabaseVmDetailsResponseOutput) ToDatabaseVmDetailsResponseOutputWithCo
 	return o
 }
 
-func (o DatabaseVmDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseVmDetailsResponse] {
-	return pulumix.Output[DatabaseVmDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines the SAP Instance status.
 func (o DatabaseVmDetailsResponseOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseVmDetailsResponse) string { return v.Status }).(pulumi.StringOutput)
@@ -560,12 +517,6 @@ func (o DatabaseVmDetailsResponseArrayOutput) ToDatabaseVmDetailsResponseArrayOu
 
 func (o DatabaseVmDetailsResponseArrayOutput) ToDatabaseVmDetailsResponseArrayOutputWithContext(ctx context.Context) DatabaseVmDetailsResponseArrayOutput {
 	return o
-}
-
-func (o DatabaseVmDetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DatabaseVmDetailsResponse] {
-	return pulumix.Output[[]DatabaseVmDetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseVmDetailsResponseArrayOutput) Index(i pulumi.IntInput) DatabaseVmDetailsResponseOutput {
@@ -731,12 +682,6 @@ func (o DiskDetailsResponseOutput) ToDiskDetailsResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o DiskDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiskDetailsResponse] {
-	return pulumix.Output[DiskDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The disk tier, e.g. P10, E10.
 func (o DiskDetailsResponseOutput) DiskTier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiskDetailsResponse) *string { return v.DiskTier }).(pulumi.StringPtrOutput)
@@ -784,12 +729,6 @@ func (o DiskDetailsResponseArrayOutput) ToDiskDetailsResponseArrayOutput() DiskD
 
 func (o DiskDetailsResponseArrayOutput) ToDiskDetailsResponseArrayOutputWithContext(ctx context.Context) DiskDetailsResponseArrayOutput {
 	return o
-}
-
-func (o DiskDetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DiskDetailsResponse] {
-	return pulumix.Output[[]DiskDetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskDetailsResponseArrayOutput) Index(i pulumi.IntInput) DiskDetailsResponseOutput {
@@ -841,12 +780,6 @@ func (o DiskSkuResponseOutput) ToDiskSkuResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o DiskSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiskSkuResponse] {
-	return pulumix.Output[DiskSkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines the disk sku name.
 func (o DiskSkuResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiskSkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -864,12 +797,6 @@ func (o DiskSkuResponsePtrOutput) ToDiskSkuResponsePtrOutput() DiskSkuResponsePt
 
 func (o DiskSkuResponsePtrOutput) ToDiskSkuResponsePtrOutputWithContext(ctx context.Context) DiskSkuResponsePtrOutput {
 	return o
-}
-
-func (o DiskSkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskSkuResponse] {
-	return pulumix.Output[*DiskSkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskSkuResponsePtrOutput) Elem() DiskSkuResponseOutput {
@@ -927,12 +854,6 @@ func (o DiskVolumeConfigurationResponseOutput) ToDiskVolumeConfigurationResponse
 	return o
 }
 
-func (o DiskVolumeConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiskVolumeConfigurationResponse] {
-	return pulumix.Output[DiskVolumeConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The total number of disks required for the concerned volume.
 func (o DiskVolumeConfigurationResponseOutput) Count() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v DiskVolumeConfigurationResponse) *float64 { return v.Count }).(pulumi.Float64PtrOutput)
@@ -960,12 +881,6 @@ func (o DiskVolumeConfigurationResponsePtrOutput) ToDiskVolumeConfigurationRespo
 
 func (o DiskVolumeConfigurationResponsePtrOutput) ToDiskVolumeConfigurationResponsePtrOutputWithContext(ctx context.Context) DiskVolumeConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o DiskVolumeConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskVolumeConfigurationResponse] {
-	return pulumix.Output[*DiskVolumeConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskVolumeConfigurationResponsePtrOutput) Elem() DiskVolumeConfigurationResponseOutput {
@@ -1041,12 +956,6 @@ func (o EnqueueReplicationServerPropertiesResponseOutput) ToEnqueueReplicationSe
 	return o
 }
 
-func (o EnqueueReplicationServerPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnqueueReplicationServerPropertiesResponse] {
-	return pulumix.Output[EnqueueReplicationServerPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines the type of Enqueue Replication Server.
 func (o EnqueueReplicationServerPropertiesResponseOutput) ErsVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v EnqueueReplicationServerPropertiesResponse) string { return v.ErsVersion }).(pulumi.StringOutput)
@@ -1094,12 +1003,6 @@ func (o EnqueueReplicationServerPropertiesResponsePtrOutput) ToEnqueueReplicatio
 
 func (o EnqueueReplicationServerPropertiesResponsePtrOutput) ToEnqueueReplicationServerPropertiesResponsePtrOutputWithContext(ctx context.Context) EnqueueReplicationServerPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o EnqueueReplicationServerPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnqueueReplicationServerPropertiesResponse] {
-	return pulumix.Output[*EnqueueReplicationServerPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnqueueReplicationServerPropertiesResponsePtrOutput) Elem() EnqueueReplicationServerPropertiesResponseOutput {
@@ -1209,12 +1112,6 @@ func (o EnqueueServerPropertiesResponseOutput) ToEnqueueServerPropertiesResponse
 	return o
 }
 
-func (o EnqueueServerPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnqueueServerPropertiesResponse] {
-	return pulumix.Output[EnqueueServerPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines the health of SAP Instances.
 func (o EnqueueServerPropertiesResponseOutput) Health() pulumi.StringOutput {
 	return o.ApplyT(func(v EnqueueServerPropertiesResponse) string { return v.Health }).(pulumi.StringOutput)
@@ -1247,12 +1144,6 @@ func (o EnqueueServerPropertiesResponsePtrOutput) ToEnqueueServerPropertiesRespo
 
 func (o EnqueueServerPropertiesResponsePtrOutput) ToEnqueueServerPropertiesResponsePtrOutputWithContext(ctx context.Context) EnqueueServerPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o EnqueueServerPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnqueueServerPropertiesResponse] {
-	return pulumix.Output[*EnqueueServerPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnqueueServerPropertiesResponsePtrOutput) Elem() EnqueueServerPropertiesResponseOutput {
@@ -1330,12 +1221,6 @@ func (o ErrorDefinitionResponseOutput) ToErrorDefinitionResponseOutputWithContex
 	return o
 }
 
-func (o ErrorDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorDefinitionResponse] {
-	return pulumix.Output[ErrorDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Service specific error code which serves as the substatus for the HTTP error code.
 func (o ErrorDefinitionResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v ErrorDefinitionResponse) string { return v.Code }).(pulumi.StringOutput)
@@ -1363,12 +1248,6 @@ func (o ErrorDefinitionResponsePtrOutput) ToErrorDefinitionResponsePtrOutput() E
 
 func (o ErrorDefinitionResponsePtrOutput) ToErrorDefinitionResponsePtrOutputWithContext(ctx context.Context) ErrorDefinitionResponsePtrOutput {
 	return o
-}
-
-func (o ErrorDefinitionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErrorDefinitionResponse] {
-	return pulumix.Output[*ErrorDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ErrorDefinitionResponsePtrOutput) Elem() ErrorDefinitionResponseOutput {
@@ -1425,12 +1304,6 @@ func (o ErrorDefinitionResponseArrayOutput) ToErrorDefinitionResponseArrayOutput
 	return o
 }
 
-func (o ErrorDefinitionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ErrorDefinitionResponse] {
-	return pulumix.Output[[]ErrorDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ErrorDefinitionResponseArrayOutput) Index(i pulumi.IntInput) ErrorDefinitionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDefinitionResponse {
 		return vs[0].([]ErrorDefinitionResponse)[vs[1].(int)]
@@ -1464,12 +1337,6 @@ func (o ErrorResponseOutput) ToErrorResponseOutput() ErrorResponseOutput {
 
 func (o ErrorResponseOutput) ToErrorResponseOutputWithContext(ctx context.Context) ErrorResponseOutput {
 	return o
-}
-
-func (o ErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorResponse] {
-	return pulumix.Output[ErrorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Server-defined set of error codes.
@@ -1509,12 +1376,6 @@ func (o ErrorResponsePtrOutput) ToErrorResponsePtrOutput() ErrorResponsePtrOutpu
 
 func (o ErrorResponsePtrOutput) ToErrorResponsePtrOutputWithContext(ctx context.Context) ErrorResponsePtrOutput {
 	return o
-}
-
-func (o ErrorResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErrorResponse] {
-	return pulumix.Output[*ErrorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ErrorResponsePtrOutput) Elem() ErrorResponseOutput {
@@ -1591,12 +1452,6 @@ func (o ErrorResponseArrayOutput) ToErrorResponseArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o ErrorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ErrorResponse] {
-	return pulumix.Output[[]ErrorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ErrorResponseArrayOutput) Index(i pulumi.IntInput) ErrorResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorResponse {
 		return vs[0].([]ErrorResponse)[vs[1].(int)]
@@ -1624,12 +1479,6 @@ func (o ErrorResponseInnerErrorOutput) ToErrorResponseInnerErrorOutputWithContex
 	return o
 }
 
-func (o ErrorResponseInnerErrorOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorResponseInnerError] {
-	return pulumix.Output[ErrorResponseInnerError]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Standard error object.
 func (o ErrorResponseInnerErrorOutput) InnerError() ErrorResponsePtrOutput {
 	return o.ApplyT(func(v ErrorResponseInnerError) *ErrorResponse { return v.InnerError }).(ErrorResponsePtrOutput)
@@ -1647,12 +1496,6 @@ func (o ErrorResponseInnerErrorPtrOutput) ToErrorResponseInnerErrorPtrOutput() E
 
 func (o ErrorResponseInnerErrorPtrOutput) ToErrorResponseInnerErrorPtrOutputWithContext(ctx context.Context) ErrorResponseInnerErrorPtrOutput {
 	return o
-}
-
-func (o ErrorResponseInnerErrorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErrorResponseInnerError] {
-	return pulumix.Output[*ErrorResponseInnerError]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ErrorResponseInnerErrorPtrOutput) Elem() ErrorResponseInnerErrorOutput {
@@ -1734,12 +1577,6 @@ func (o GatewayServerPropertiesResponseOutput) ToGatewayServerPropertiesResponse
 	return o
 }
 
-func (o GatewayServerPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GatewayServerPropertiesResponse] {
-	return pulumix.Output[GatewayServerPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines the health of SAP Instances.
 func (o GatewayServerPropertiesResponseOutput) Health() pulumi.StringOutput {
 	return o.ApplyT(func(v GatewayServerPropertiesResponse) string { return v.Health }).(pulumi.StringOutput)
@@ -1762,12 +1599,6 @@ func (o GatewayServerPropertiesResponsePtrOutput) ToGatewayServerPropertiesRespo
 
 func (o GatewayServerPropertiesResponsePtrOutput) ToGatewayServerPropertiesResponsePtrOutputWithContext(ctx context.Context) GatewayServerPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o GatewayServerPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayServerPropertiesResponse] {
-	return pulumix.Output[*GatewayServerPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GatewayServerPropertiesResponsePtrOutput) Elem() GatewayServerPropertiesResponseOutput {
@@ -2032,12 +1863,6 @@ func (o LoadBalancerDetailsResponseOutput) ToLoadBalancerDetailsResponseOutputWi
 	return o
 }
 
-func (o LoadBalancerDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerDetailsResponse] {
-	return pulumix.Output[LoadBalancerDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LoadBalancerDetailsResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerDetailsResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -2163,12 +1988,6 @@ func (i ManagedRGConfigurationArgs) ToManagedRGConfigurationOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedRGConfigurationOutput)
 }
 
-func (i ManagedRGConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedRGConfiguration] {
-	return pulumix.Output[ManagedRGConfiguration]{
-		OutputState: i.ToManagedRGConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedRGConfigurationArgs) ToManagedRGConfigurationPtrOutput() ManagedRGConfigurationPtrOutput {
 	return i.ToManagedRGConfigurationPtrOutputWithContext(context.Background())
 }
@@ -2210,12 +2029,6 @@ func (i *managedRGConfigurationPtrType) ToManagedRGConfigurationPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedRGConfigurationPtrOutput)
 }
 
-func (i *managedRGConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedRGConfiguration] {
-	return pulumix.Output[*ManagedRGConfiguration]{
-		OutputState: i.ToManagedRGConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Managed resource group configuration
 type ManagedRGConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -2241,12 +2054,6 @@ func (o ManagedRGConfigurationOutput) ToManagedRGConfigurationPtrOutputWithConte
 	}).(ManagedRGConfigurationPtrOutput)
 }
 
-func (o ManagedRGConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedRGConfiguration] {
-	return pulumix.Output[ManagedRGConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Managed resource group name
 func (o ManagedRGConfigurationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedRGConfiguration) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -2264,12 +2071,6 @@ func (o ManagedRGConfigurationPtrOutput) ToManagedRGConfigurationPtrOutput() Man
 
 func (o ManagedRGConfigurationPtrOutput) ToManagedRGConfigurationPtrOutputWithContext(ctx context.Context) ManagedRGConfigurationPtrOutput {
 	return o
-}
-
-func (o ManagedRGConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedRGConfiguration] {
-	return pulumix.Output[*ManagedRGConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedRGConfigurationPtrOutput) Elem() ManagedRGConfigurationOutput {
@@ -2313,12 +2114,6 @@ func (o ManagedRGConfigurationResponseOutput) ToManagedRGConfigurationResponseOu
 	return o
 }
 
-func (o ManagedRGConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedRGConfigurationResponse] {
-	return pulumix.Output[ManagedRGConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Managed resource group name
 func (o ManagedRGConfigurationResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedRGConfigurationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -2336,12 +2131,6 @@ func (o ManagedRGConfigurationResponsePtrOutput) ToManagedRGConfigurationRespons
 
 func (o ManagedRGConfigurationResponsePtrOutput) ToManagedRGConfigurationResponsePtrOutputWithContext(ctx context.Context) ManagedRGConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o ManagedRGConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedRGConfigurationResponse] {
-	return pulumix.Output[*ManagedRGConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedRGConfigurationResponsePtrOutput) Elem() ManagedRGConfigurationResponseOutput {
@@ -2397,12 +2186,6 @@ func (o MessageServerPropertiesResponseOutput) ToMessageServerPropertiesResponse
 	return o
 }
 
-func (o MessageServerPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MessageServerPropertiesResponse] {
-	return pulumix.Output[MessageServerPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines the health of SAP Instances.
 func (o MessageServerPropertiesResponseOutput) Health() pulumi.StringOutput {
 	return o.ApplyT(func(v MessageServerPropertiesResponse) string { return v.Health }).(pulumi.StringOutput)
@@ -2450,12 +2233,6 @@ func (o MessageServerPropertiesResponsePtrOutput) ToMessageServerPropertiesRespo
 
 func (o MessageServerPropertiesResponsePtrOutput) ToMessageServerPropertiesResponsePtrOutputWithContext(ctx context.Context) MessageServerPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o MessageServerPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MessageServerPropertiesResponse] {
-	return pulumix.Output[*MessageServerPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MessageServerPropertiesResponsePtrOutput) Elem() MessageServerPropertiesResponseOutput {
@@ -2565,12 +2342,6 @@ func (o MonitorPropertiesResponseErrorsOutput) ToMonitorPropertiesResponseErrors
 
 func (o MonitorPropertiesResponseErrorsOutput) ToMonitorPropertiesResponseErrorsOutputWithContext(ctx context.Context) MonitorPropertiesResponseErrorsOutput {
 	return o
-}
-
-func (o MonitorPropertiesResponseErrorsOutput) ToOutput(ctx context.Context) pulumix.Output[MonitorPropertiesResponseErrors] {
-	return pulumix.Output[MonitorPropertiesResponseErrors]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Server-defined set of error codes.
@@ -2899,12 +2670,6 @@ func (o ProviderInstancePropertiesResponseErrorsOutput) ToProviderInstanceProper
 	return o
 }
 
-func (o ProviderInstancePropertiesResponseErrorsOutput) ToOutput(ctx context.Context) pulumix.Output[ProviderInstancePropertiesResponseErrors] {
-	return pulumix.Output[ProviderInstancePropertiesResponseErrors]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Server-defined set of error codes.
 func (o ProviderInstancePropertiesResponseErrorsOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v ProviderInstancePropertiesResponseErrors) string { return v.Code }).(pulumi.StringOutput)
@@ -2971,12 +2736,6 @@ func (o SAPAvailabilityZonePairResponseOutput) ToSAPAvailabilityZonePairResponse
 	return o
 }
 
-func (o SAPAvailabilityZonePairResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SAPAvailabilityZonePairResponse] {
-	return pulumix.Output[SAPAvailabilityZonePairResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The zone A.
 func (o SAPAvailabilityZonePairResponseOutput) ZoneA() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v SAPAvailabilityZonePairResponse) *float64 { return v.ZoneA }).(pulumi.Float64PtrOutput)
@@ -2999,12 +2758,6 @@ func (o SAPAvailabilityZonePairResponseArrayOutput) ToSAPAvailabilityZonePairRes
 
 func (o SAPAvailabilityZonePairResponseArrayOutput) ToSAPAvailabilityZonePairResponseArrayOutputWithContext(ctx context.Context) SAPAvailabilityZonePairResponseArrayOutput {
 	return o
-}
-
-func (o SAPAvailabilityZonePairResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SAPAvailabilityZonePairResponse] {
-	return pulumix.Output[[]SAPAvailabilityZonePairResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SAPAvailabilityZonePairResponseArrayOutput) Index(i pulumi.IntInput) SAPAvailabilityZonePairResponseOutput {
@@ -3036,12 +2789,6 @@ func (o SAPDiskConfigurationResponseOutput) ToSAPDiskConfigurationResponseOutput
 	return o
 }
 
-func (o SAPDiskConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SAPDiskConfigurationResponse] {
-	return pulumix.Output[SAPDiskConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The recommended disk details for a given VM Sku.
 func (o SAPDiskConfigurationResponseOutput) RecommendedConfiguration() DiskVolumeConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v SAPDiskConfigurationResponse) *DiskVolumeConfigurationResponse {
@@ -3066,12 +2813,6 @@ func (o SAPDiskConfigurationResponseMapOutput) ToSAPDiskConfigurationResponseMap
 
 func (o SAPDiskConfigurationResponseMapOutput) ToSAPDiskConfigurationResponseMapOutputWithContext(ctx context.Context) SAPDiskConfigurationResponseMapOutput {
 	return o
-}
-
-func (o SAPDiskConfigurationResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]SAPDiskConfigurationResponse] {
-	return pulumix.Output[map[string]SAPDiskConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SAPDiskConfigurationResponseMapOutput) MapIndex(k pulumi.StringInput) SAPDiskConfigurationResponseOutput {
@@ -3135,12 +2876,6 @@ func (o SAPSupportedSkuResponseOutput) ToSAPSupportedSkuResponseOutputWithContex
 	return o
 }
 
-func (o SAPSupportedSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SAPSupportedSkuResponse] {
-	return pulumix.Output[SAPSupportedSkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // True if the Sku is certified for App server in the SAP system.
 func (o SAPSupportedSkuResponseOutput) IsAppServerCertified() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SAPSupportedSkuResponse) *bool { return v.IsAppServerCertified }).(pulumi.BoolPtrOutput)
@@ -3170,12 +2905,6 @@ func (o SAPSupportedSkuResponseArrayOutput) ToSAPSupportedSkuResponseArrayOutput
 	return o
 }
 
-func (o SAPSupportedSkuResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SAPSupportedSkuResponse] {
-	return pulumix.Output[[]SAPSupportedSkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SAPSupportedSkuResponseArrayOutput) Index(i pulumi.IntInput) SAPSupportedSkuResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SAPSupportedSkuResponse {
 		return vs[0].([]SAPSupportedSkuResponse)[vs[1].(int)]
@@ -3201,12 +2930,6 @@ func (o SAPVirtualInstanceErrorResponseOutput) ToSAPVirtualInstanceErrorResponse
 
 func (o SAPVirtualInstanceErrorResponseOutput) ToSAPVirtualInstanceErrorResponseOutputWithContext(ctx context.Context) SAPVirtualInstanceErrorResponseOutput {
 	return o
-}
-
-func (o SAPVirtualInstanceErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SAPVirtualInstanceErrorResponse] {
-	return pulumix.Output[SAPVirtualInstanceErrorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Virtual Instance for SAP error body.
@@ -3285,12 +3008,6 @@ func (i SapLandscapeMonitorMetricThresholdsArgs) ToSapLandscapeMonitorMetricThre
 	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorMetricThresholdsOutput)
 }
 
-func (i SapLandscapeMonitorMetricThresholdsArgs) ToOutput(ctx context.Context) pulumix.Output[SapLandscapeMonitorMetricThresholds] {
-	return pulumix.Output[SapLandscapeMonitorMetricThresholds]{
-		OutputState: i.ToSapLandscapeMonitorMetricThresholdsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SapLandscapeMonitorMetricThresholdsArrayInput is an input type that accepts SapLandscapeMonitorMetricThresholdsArray and SapLandscapeMonitorMetricThresholdsArrayOutput values.
 // You can construct a concrete instance of `SapLandscapeMonitorMetricThresholdsArrayInput` via:
 //
@@ -3316,12 +3033,6 @@ func (i SapLandscapeMonitorMetricThresholdsArray) ToSapLandscapeMonitorMetricThr
 	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorMetricThresholdsArrayOutput)
 }
 
-func (i SapLandscapeMonitorMetricThresholdsArray) ToOutput(ctx context.Context) pulumix.Output[[]SapLandscapeMonitorMetricThresholds] {
-	return pulumix.Output[[]SapLandscapeMonitorMetricThresholds]{
-		OutputState: i.ToSapLandscapeMonitorMetricThresholdsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the Threshold Values for Top Metrics Health.
 type SapLandscapeMonitorMetricThresholdsOutput struct{ *pulumi.OutputState }
 
@@ -3335,12 +3046,6 @@ func (o SapLandscapeMonitorMetricThresholdsOutput) ToSapLandscapeMonitorMetricTh
 
 func (o SapLandscapeMonitorMetricThresholdsOutput) ToSapLandscapeMonitorMetricThresholdsOutputWithContext(ctx context.Context) SapLandscapeMonitorMetricThresholdsOutput {
 	return o
-}
-
-func (o SapLandscapeMonitorMetricThresholdsOutput) ToOutput(ctx context.Context) pulumix.Output[SapLandscapeMonitorMetricThresholds] {
-	return pulumix.Output[SapLandscapeMonitorMetricThresholds]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the threshold value for Green.
@@ -3377,12 +3082,6 @@ func (o SapLandscapeMonitorMetricThresholdsArrayOutput) ToSapLandscapeMonitorMet
 	return o
 }
 
-func (o SapLandscapeMonitorMetricThresholdsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SapLandscapeMonitorMetricThresholds] {
-	return pulumix.Output[[]SapLandscapeMonitorMetricThresholds]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SapLandscapeMonitorMetricThresholdsArrayOutput) Index(i pulumi.IntInput) SapLandscapeMonitorMetricThresholdsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SapLandscapeMonitorMetricThresholds {
 		return vs[0].([]SapLandscapeMonitorMetricThresholds)[vs[1].(int)]
@@ -3414,12 +3113,6 @@ func (o SapLandscapeMonitorMetricThresholdsResponseOutput) ToSapLandscapeMonitor
 
 func (o SapLandscapeMonitorMetricThresholdsResponseOutput) ToSapLandscapeMonitorMetricThresholdsResponseOutputWithContext(ctx context.Context) SapLandscapeMonitorMetricThresholdsResponseOutput {
 	return o
-}
-
-func (o SapLandscapeMonitorMetricThresholdsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SapLandscapeMonitorMetricThresholdsResponse] {
-	return pulumix.Output[SapLandscapeMonitorMetricThresholdsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the threshold value for Green.
@@ -3454,12 +3147,6 @@ func (o SapLandscapeMonitorMetricThresholdsResponseArrayOutput) ToSapLandscapeMo
 
 func (o SapLandscapeMonitorMetricThresholdsResponseArrayOutput) ToSapLandscapeMonitorMetricThresholdsResponseArrayOutputWithContext(ctx context.Context) SapLandscapeMonitorMetricThresholdsResponseArrayOutput {
 	return o
-}
-
-func (o SapLandscapeMonitorMetricThresholdsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SapLandscapeMonitorMetricThresholdsResponse] {
-	return pulumix.Output[[]SapLandscapeMonitorMetricThresholdsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SapLandscapeMonitorMetricThresholdsResponseArrayOutput) Index(i pulumi.IntInput) SapLandscapeMonitorMetricThresholdsResponseOutput {
@@ -3507,12 +3194,6 @@ func (i SapLandscapeMonitorPropertiesGroupingArgs) ToSapLandscapeMonitorProperti
 	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorPropertiesGroupingOutput)
 }
 
-func (i SapLandscapeMonitorPropertiesGroupingArgs) ToOutput(ctx context.Context) pulumix.Output[SapLandscapeMonitorPropertiesGrouping] {
-	return pulumix.Output[SapLandscapeMonitorPropertiesGrouping]{
-		OutputState: i.ToSapLandscapeMonitorPropertiesGroupingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SapLandscapeMonitorPropertiesGroupingArgs) ToSapLandscapeMonitorPropertiesGroupingPtrOutput() SapLandscapeMonitorPropertiesGroupingPtrOutput {
 	return i.ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(context.Background())
 }
@@ -3554,12 +3235,6 @@ func (i *sapLandscapeMonitorPropertiesGroupingPtrType) ToSapLandscapeMonitorProp
 	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorPropertiesGroupingPtrOutput)
 }
 
-func (i *sapLandscapeMonitorPropertiesGroupingPtrType) ToOutput(ctx context.Context) pulumix.Output[*SapLandscapeMonitorPropertiesGrouping] {
-	return pulumix.Output[*SapLandscapeMonitorPropertiesGrouping]{
-		OutputState: i.ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the SID groupings by landscape and Environment.
 type SapLandscapeMonitorPropertiesGroupingOutput struct{ *pulumi.OutputState }
 
@@ -3585,12 +3260,6 @@ func (o SapLandscapeMonitorPropertiesGroupingOutput) ToSapLandscapeMonitorProper
 	}).(SapLandscapeMonitorPropertiesGroupingPtrOutput)
 }
 
-func (o SapLandscapeMonitorPropertiesGroupingOutput) ToOutput(ctx context.Context) pulumix.Output[SapLandscapeMonitorPropertiesGrouping] {
-	return pulumix.Output[SapLandscapeMonitorPropertiesGrouping]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the list of landscape to SID mappings.
 func (o SapLandscapeMonitorPropertiesGroupingOutput) Landscape() SapLandscapeMonitorSidMappingArrayOutput {
 	return o.ApplyT(func(v SapLandscapeMonitorPropertiesGrouping) []SapLandscapeMonitorSidMapping { return v.Landscape }).(SapLandscapeMonitorSidMappingArrayOutput)
@@ -3613,12 +3282,6 @@ func (o SapLandscapeMonitorPropertiesGroupingPtrOutput) ToSapLandscapeMonitorPro
 
 func (o SapLandscapeMonitorPropertiesGroupingPtrOutput) ToSapLandscapeMonitorPropertiesGroupingPtrOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesGroupingPtrOutput {
 	return o
-}
-
-func (o SapLandscapeMonitorPropertiesGroupingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SapLandscapeMonitorPropertiesGrouping] {
-	return pulumix.Output[*SapLandscapeMonitorPropertiesGrouping]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SapLandscapeMonitorPropertiesGroupingPtrOutput) Elem() SapLandscapeMonitorPropertiesGroupingOutput {
@@ -3674,12 +3337,6 @@ func (o SapLandscapeMonitorPropertiesResponseGroupingOutput) ToSapLandscapeMonit
 	return o
 }
 
-func (o SapLandscapeMonitorPropertiesResponseGroupingOutput) ToOutput(ctx context.Context) pulumix.Output[SapLandscapeMonitorPropertiesResponseGrouping] {
-	return pulumix.Output[SapLandscapeMonitorPropertiesResponseGrouping]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the list of landscape to SID mappings.
 func (o SapLandscapeMonitorPropertiesResponseGroupingOutput) Landscape() SapLandscapeMonitorSidMappingResponseArrayOutput {
 	return o.ApplyT(func(v SapLandscapeMonitorPropertiesResponseGrouping) []SapLandscapeMonitorSidMappingResponse {
@@ -3706,12 +3363,6 @@ func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) ToSapLandscapeMo
 
 func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) ToSapLandscapeMonitorPropertiesResponseGroupingPtrOutputWithContext(ctx context.Context) SapLandscapeMonitorPropertiesResponseGroupingPtrOutput {
 	return o
-}
-
-func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SapLandscapeMonitorPropertiesResponseGrouping] {
-	return pulumix.Output[*SapLandscapeMonitorPropertiesResponseGrouping]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SapLandscapeMonitorPropertiesResponseGroupingPtrOutput) Elem() SapLandscapeMonitorPropertiesResponseGroupingOutput {
@@ -3783,12 +3434,6 @@ func (i SapLandscapeMonitorSidMappingArgs) ToSapLandscapeMonitorSidMappingOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorSidMappingOutput)
 }
 
-func (i SapLandscapeMonitorSidMappingArgs) ToOutput(ctx context.Context) pulumix.Output[SapLandscapeMonitorSidMapping] {
-	return pulumix.Output[SapLandscapeMonitorSidMapping]{
-		OutputState: i.ToSapLandscapeMonitorSidMappingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SapLandscapeMonitorSidMappingArrayInput is an input type that accepts SapLandscapeMonitorSidMappingArray and SapLandscapeMonitorSidMappingArrayOutput values.
 // You can construct a concrete instance of `SapLandscapeMonitorSidMappingArrayInput` via:
 //
@@ -3814,12 +3459,6 @@ func (i SapLandscapeMonitorSidMappingArray) ToSapLandscapeMonitorSidMappingArray
 	return pulumi.ToOutputWithContext(ctx, i).(SapLandscapeMonitorSidMappingArrayOutput)
 }
 
-func (i SapLandscapeMonitorSidMappingArray) ToOutput(ctx context.Context) pulumix.Output[[]SapLandscapeMonitorSidMapping] {
-	return pulumix.Output[[]SapLandscapeMonitorSidMapping]{
-		OutputState: i.ToSapLandscapeMonitorSidMappingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gets or sets the mapping for SID to Environment/Applications.
 type SapLandscapeMonitorSidMappingOutput struct{ *pulumi.OutputState }
 
@@ -3833,12 +3472,6 @@ func (o SapLandscapeMonitorSidMappingOutput) ToSapLandscapeMonitorSidMappingOutp
 
 func (o SapLandscapeMonitorSidMappingOutput) ToSapLandscapeMonitorSidMappingOutputWithContext(ctx context.Context) SapLandscapeMonitorSidMappingOutput {
 	return o
-}
-
-func (o SapLandscapeMonitorSidMappingOutput) ToOutput(ctx context.Context) pulumix.Output[SapLandscapeMonitorSidMapping] {
-	return pulumix.Output[SapLandscapeMonitorSidMapping]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the name of the grouping.
@@ -3863,12 +3496,6 @@ func (o SapLandscapeMonitorSidMappingArrayOutput) ToSapLandscapeMonitorSidMappin
 
 func (o SapLandscapeMonitorSidMappingArrayOutput) ToSapLandscapeMonitorSidMappingArrayOutputWithContext(ctx context.Context) SapLandscapeMonitorSidMappingArrayOutput {
 	return o
-}
-
-func (o SapLandscapeMonitorSidMappingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SapLandscapeMonitorSidMapping] {
-	return pulumix.Output[[]SapLandscapeMonitorSidMapping]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SapLandscapeMonitorSidMappingArrayOutput) Index(i pulumi.IntInput) SapLandscapeMonitorSidMappingOutput {
@@ -3900,12 +3527,6 @@ func (o SapLandscapeMonitorSidMappingResponseOutput) ToSapLandscapeMonitorSidMap
 	return o
 }
 
-func (o SapLandscapeMonitorSidMappingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SapLandscapeMonitorSidMappingResponse] {
-	return pulumix.Output[SapLandscapeMonitorSidMappingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the name of the grouping.
 func (o SapLandscapeMonitorSidMappingResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SapLandscapeMonitorSidMappingResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -3928,12 +3549,6 @@ func (o SapLandscapeMonitorSidMappingResponseArrayOutput) ToSapLandscapeMonitorS
 
 func (o SapLandscapeMonitorSidMappingResponseArrayOutput) ToSapLandscapeMonitorSidMappingResponseArrayOutputWithContext(ctx context.Context) SapLandscapeMonitorSidMappingResponseArrayOutput {
 	return o
-}
-
-func (o SapLandscapeMonitorSidMappingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SapLandscapeMonitorSidMappingResponse] {
-	return pulumix.Output[[]SapLandscapeMonitorSidMappingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SapLandscapeMonitorSidMappingResponseArrayOutput) Index(i pulumi.IntInput) SapLandscapeMonitorSidMappingResponseOutput {
@@ -4368,12 +3983,6 @@ func (o StorageInformationResponseOutput) ToStorageInformationResponseOutputWith
 	return o
 }
 
-func (o StorageInformationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageInformationResponse] {
-	return pulumix.Output[StorageInformationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StorageInformationResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageInformationResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -4390,12 +3999,6 @@ func (o StorageInformationResponseArrayOutput) ToStorageInformationResponseArray
 
 func (o StorageInformationResponseArrayOutput) ToStorageInformationResponseArrayOutputWithContext(ctx context.Context) StorageInformationResponseArrayOutput {
 	return o
-}
-
-func (o StorageInformationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StorageInformationResponse] {
-	return pulumix.Output[[]StorageInformationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StorageInformationResponseArrayOutput) Index(i pulumi.IntInput) StorageInformationResponseOutput {
@@ -4465,12 +4068,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -4668,12 +4265,6 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
-func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
-	return pulumix.Output[UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The client ID of the assigned identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -4696,12 +4287,6 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
-	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
@@ -4765,12 +4350,6 @@ func (i UserAssignedServiceIdentityArgs) ToUserAssignedServiceIdentityOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(UserAssignedServiceIdentityOutput)
 }
 
-func (i UserAssignedServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[UserAssignedServiceIdentity] {
-	return pulumix.Output[UserAssignedServiceIdentity]{
-		OutputState: i.ToUserAssignedServiceIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i UserAssignedServiceIdentityArgs) ToUserAssignedServiceIdentityPtrOutput() UserAssignedServiceIdentityPtrOutput {
 	return i.ToUserAssignedServiceIdentityPtrOutputWithContext(context.Background())
 }
@@ -4812,12 +4391,6 @@ func (i *userAssignedServiceIdentityPtrType) ToUserAssignedServiceIdentityPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(UserAssignedServiceIdentityPtrOutput)
 }
 
-func (i *userAssignedServiceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*UserAssignedServiceIdentity] {
-	return pulumix.Output[*UserAssignedServiceIdentity]{
-		OutputState: i.ToUserAssignedServiceIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
 type UserAssignedServiceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -4843,12 +4416,6 @@ func (o UserAssignedServiceIdentityOutput) ToUserAssignedServiceIdentityPtrOutpu
 	}).(UserAssignedServiceIdentityPtrOutput)
 }
 
-func (o UserAssignedServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedServiceIdentity] {
-	return pulumix.Output[UserAssignedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Type of manage identity
 func (o UserAssignedServiceIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
@@ -4871,12 +4438,6 @@ func (o UserAssignedServiceIdentityPtrOutput) ToUserAssignedServiceIdentityPtrOu
 
 func (o UserAssignedServiceIdentityPtrOutput) ToUserAssignedServiceIdentityPtrOutputWithContext(ctx context.Context) UserAssignedServiceIdentityPtrOutput {
 	return o
-}
-
-func (o UserAssignedServiceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserAssignedServiceIdentity] {
-	return pulumix.Output[*UserAssignedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedServiceIdentityPtrOutput) Elem() UserAssignedServiceIdentityOutput {
@@ -4932,12 +4493,6 @@ func (o UserAssignedServiceIdentityResponseOutput) ToUserAssignedServiceIdentity
 	return o
 }
 
-func (o UserAssignedServiceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedServiceIdentityResponse] {
-	return pulumix.Output[UserAssignedServiceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Type of manage identity
 func (o UserAssignedServiceIdentityResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedServiceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
@@ -4962,12 +4517,6 @@ func (o UserAssignedServiceIdentityResponsePtrOutput) ToUserAssignedServiceIdent
 
 func (o UserAssignedServiceIdentityResponsePtrOutput) ToUserAssignedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) UserAssignedServiceIdentityResponsePtrOutput {
 	return o
-}
-
-func (o UserAssignedServiceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserAssignedServiceIdentityResponse] {
-	return pulumix.Output[*UserAssignedServiceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedServiceIdentityResponsePtrOutput) Elem() UserAssignedServiceIdentityResponseOutput {

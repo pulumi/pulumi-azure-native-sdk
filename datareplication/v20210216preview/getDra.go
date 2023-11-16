@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the fabric agent.
@@ -84,12 +83,6 @@ func (o LookupDraResultOutput) ToLookupDraResultOutput() LookupDraResultOutput {
 
 func (o LookupDraResultOutput) ToLookupDraResultOutputWithContext(ctx context.Context) LookupDraResultOutput {
 	return o
-}
-
-func (o LookupDraResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDraResult] {
-	return pulumix.Output[LookupDraResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the Id of the resource.

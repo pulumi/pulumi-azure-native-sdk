@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i ApplicationInsightsComponentAnalyticsItemPropertiesArgs) ToApplicationIn
 
 func (i ApplicationInsightsComponentAnalyticsItemPropertiesArgs) ToApplicationInsightsComponentAnalyticsItemPropertiesOutputWithContext(ctx context.Context) ApplicationInsightsComponentAnalyticsItemPropertiesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInsightsComponentAnalyticsItemPropertiesOutput)
-}
-
-func (i ApplicationInsightsComponentAnalyticsItemPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationInsightsComponentAnalyticsItemProperties] {
-	return pulumix.Output[ApplicationInsightsComponentAnalyticsItemProperties]{
-		OutputState: i.ToApplicationInsightsComponentAnalyticsItemPropertiesOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ApplicationInsightsComponentAnalyticsItemPropertiesArgs) ToApplicationInsightsComponentAnalyticsItemPropertiesPtrOutput() ApplicationInsightsComponentAnalyticsItemPropertiesPtrOutput {
@@ -96,12 +89,6 @@ func (i *applicationInsightsComponentAnalyticsItemPropertiesPtrType) ToApplicati
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInsightsComponentAnalyticsItemPropertiesPtrOutput)
 }
 
-func (i *applicationInsightsComponentAnalyticsItemPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationInsightsComponentAnalyticsItemProperties] {
-	return pulumix.Output[*ApplicationInsightsComponentAnalyticsItemProperties]{
-		OutputState: i.ToApplicationInsightsComponentAnalyticsItemPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A set of properties that can be defined in the context of a specific item type. Each type may have its own properties.
 type ApplicationInsightsComponentAnalyticsItemPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o ApplicationInsightsComponentAnalyticsItemPropertiesOutput) ToApplication
 	}).(ApplicationInsightsComponentAnalyticsItemPropertiesPtrOutput)
 }
 
-func (o ApplicationInsightsComponentAnalyticsItemPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationInsightsComponentAnalyticsItemProperties] {
-	return pulumix.Output[ApplicationInsightsComponentAnalyticsItemProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A function alias, used when the type of the item is Function
 func (o ApplicationInsightsComponentAnalyticsItemPropertiesOutput) FunctionAlias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationInsightsComponentAnalyticsItemProperties) *string { return v.FunctionAlias }).(pulumi.StringPtrOutput)
@@ -150,12 +131,6 @@ func (o ApplicationInsightsComponentAnalyticsItemPropertiesPtrOutput) ToApplicat
 
 func (o ApplicationInsightsComponentAnalyticsItemPropertiesPtrOutput) ToApplicationInsightsComponentAnalyticsItemPropertiesPtrOutputWithContext(ctx context.Context) ApplicationInsightsComponentAnalyticsItemPropertiesPtrOutput {
 	return o
-}
-
-func (o ApplicationInsightsComponentAnalyticsItemPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationInsightsComponentAnalyticsItemProperties] {
-	return pulumix.Output[*ApplicationInsightsComponentAnalyticsItemProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationInsightsComponentAnalyticsItemPropertiesPtrOutput) Elem() ApplicationInsightsComponentAnalyticsItemPropertiesOutput {
@@ -197,12 +172,6 @@ func (o ApplicationInsightsComponentAnalyticsItemPropertiesResponseOutput) ToApp
 
 func (o ApplicationInsightsComponentAnalyticsItemPropertiesResponseOutput) ToApplicationInsightsComponentAnalyticsItemPropertiesResponseOutputWithContext(ctx context.Context) ApplicationInsightsComponentAnalyticsItemPropertiesResponseOutput {
 	return o
-}
-
-func (o ApplicationInsightsComponentAnalyticsItemPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationInsightsComponentAnalyticsItemPropertiesResponse] {
-	return pulumix.Output[ApplicationInsightsComponentAnalyticsItemPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A function alias, used when the type of the item is Function
@@ -257,12 +226,6 @@ func (i ApplicationInsightsComponentDataVolumeCapArgs) ToApplicationInsightsComp
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInsightsComponentDataVolumeCapOutput)
 }
 
-func (i ApplicationInsightsComponentDataVolumeCapArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationInsightsComponentDataVolumeCap] {
-	return pulumix.Output[ApplicationInsightsComponentDataVolumeCap]{
-		OutputState: i.ToApplicationInsightsComponentDataVolumeCapOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ApplicationInsightsComponentDataVolumeCapArgs) ToApplicationInsightsComponentDataVolumeCapPtrOutput() ApplicationInsightsComponentDataVolumeCapPtrOutput {
 	return i.ToApplicationInsightsComponentDataVolumeCapPtrOutputWithContext(context.Background())
 }
@@ -304,12 +267,6 @@ func (i *applicationInsightsComponentDataVolumeCapPtrType) ToApplicationInsights
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInsightsComponentDataVolumeCapPtrOutput)
 }
 
-func (i *applicationInsightsComponentDataVolumeCapPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationInsightsComponentDataVolumeCap] {
-	return pulumix.Output[*ApplicationInsightsComponentDataVolumeCap]{
-		OutputState: i.ToApplicationInsightsComponentDataVolumeCapPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An Application Insights component daily data volume cap
 type ApplicationInsightsComponentDataVolumeCapOutput struct{ *pulumi.OutputState }
 
@@ -333,12 +290,6 @@ func (o ApplicationInsightsComponentDataVolumeCapOutput) ToApplicationInsightsCo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationInsightsComponentDataVolumeCap) *ApplicationInsightsComponentDataVolumeCap {
 		return &v
 	}).(ApplicationInsightsComponentDataVolumeCapPtrOutput)
-}
-
-func (o ApplicationInsightsComponentDataVolumeCapOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationInsightsComponentDataVolumeCap] {
-	return pulumix.Output[ApplicationInsightsComponentDataVolumeCap]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Daily data volume cap in GB.
@@ -373,12 +324,6 @@ func (o ApplicationInsightsComponentDataVolumeCapPtrOutput) ToApplicationInsight
 
 func (o ApplicationInsightsComponentDataVolumeCapPtrOutput) ToApplicationInsightsComponentDataVolumeCapPtrOutputWithContext(ctx context.Context) ApplicationInsightsComponentDataVolumeCapPtrOutput {
 	return o
-}
-
-func (o ApplicationInsightsComponentDataVolumeCapPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationInsightsComponentDataVolumeCap] {
-	return pulumix.Output[*ApplicationInsightsComponentDataVolumeCap]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationInsightsComponentDataVolumeCapPtrOutput) Elem() ApplicationInsightsComponentDataVolumeCapOutput {
@@ -462,12 +407,6 @@ func (o ApplicationInsightsComponentDataVolumeCapResponseOutput) ToApplicationIn
 	return o
 }
 
-func (o ApplicationInsightsComponentDataVolumeCapResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationInsightsComponentDataVolumeCapResponse] {
-	return pulumix.Output[ApplicationInsightsComponentDataVolumeCapResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Daily data volume cap in GB.
 func (o ApplicationInsightsComponentDataVolumeCapResponseOutput) Cap() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ApplicationInsightsComponentDataVolumeCapResponse) *float64 { return v.Cap }).(pulumi.Float64PtrOutput)
@@ -514,12 +453,6 @@ func (o ApplicationInsightsComponentDataVolumeCapResponsePtrOutput) ToApplicatio
 
 func (o ApplicationInsightsComponentDataVolumeCapResponsePtrOutput) ToApplicationInsightsComponentDataVolumeCapResponsePtrOutputWithContext(ctx context.Context) ApplicationInsightsComponentDataVolumeCapResponsePtrOutput {
 	return o
-}
-
-func (o ApplicationInsightsComponentDataVolumeCapResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationInsightsComponentDataVolumeCapResponse] {
-	return pulumix.Output[*ApplicationInsightsComponentDataVolumeCapResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationInsightsComponentDataVolumeCapResponsePtrOutput) Elem() ApplicationInsightsComponentDataVolumeCapResponseOutput {
@@ -627,12 +560,6 @@ func (o ApplicationInsightsComponentProactiveDetectionConfigurationResponseRuleD
 	return o
 }
 
-func (o ApplicationInsightsComponentProactiveDetectionConfigurationResponseRuleDefinitionsOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationInsightsComponentProactiveDetectionConfigurationResponseRuleDefinitions] {
-	return pulumix.Output[ApplicationInsightsComponentProactiveDetectionConfigurationResponseRuleDefinitions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The rule description
 func (o ApplicationInsightsComponentProactiveDetectionConfigurationResponseRuleDefinitionsOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationInsightsComponentProactiveDetectionConfigurationResponseRuleDefinitions) *string {
@@ -701,12 +628,6 @@ func (o ApplicationInsightsComponentProactiveDetectionConfigurationResponseRuleD
 
 func (o ApplicationInsightsComponentProactiveDetectionConfigurationResponseRuleDefinitionsPtrOutput) ToApplicationInsightsComponentProactiveDetectionConfigurationResponseRuleDefinitionsPtrOutputWithContext(ctx context.Context) ApplicationInsightsComponentProactiveDetectionConfigurationResponseRuleDefinitionsPtrOutput {
 	return o
-}
-
-func (o ApplicationInsightsComponentProactiveDetectionConfigurationResponseRuleDefinitionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationInsightsComponentProactiveDetectionConfigurationResponseRuleDefinitions] {
-	return pulumix.Output[*ApplicationInsightsComponentProactiveDetectionConfigurationResponseRuleDefinitions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationInsightsComponentProactiveDetectionConfigurationResponseRuleDefinitionsPtrOutput) Elem() ApplicationInsightsComponentProactiveDetectionConfigurationResponseRuleDefinitionsOutput {
@@ -862,12 +783,6 @@ func (i ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitio
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitionsOutput)
 }
 
-func (i ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitionsArgs) ToOutput(ctx context.Context) pulumix.Output[ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitions] {
-	return pulumix.Output[ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitions]{
-		OutputState: i.ToApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitionsArgs) ToApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitionsPtrOutput() ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitionsPtrOutput {
 	return i.ToApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitionsPtrOutputWithContext(context.Background())
 }
@@ -909,12 +824,6 @@ func (i *applicationInsightsComponentProactiveDetectionConfigurationRuleDefiniti
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitionsPtrOutput)
 }
 
-func (i *applicationInsightsComponentProactiveDetectionConfigurationRuleDefinitionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitions] {
-	return pulumix.Output[*ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitions]{
-		OutputState: i.ToApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Static definitions of the ProactiveDetection configuration rule (same values for all components).
 type ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitionsOutput struct{ *pulumi.OutputState }
 
@@ -938,12 +847,6 @@ func (o ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitio
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitions) *ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitions {
 		return &v
 	}).(ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitionsPtrOutput)
-}
-
-func (o ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitionsOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitions] {
-	return pulumix.Output[ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The rule description
@@ -1014,12 +917,6 @@ func (o ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitio
 
 func (o ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitionsPtrOutput) ToApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitionsPtrOutputWithContext(ctx context.Context) ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitionsPtrOutput {
 	return o
-}
-
-func (o ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitions] {
-	return pulumix.Output[*ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitionsPtrOutput) Elem() ApplicationInsightsComponentProactiveDetectionConfigurationRuleDefinitionsOutput {

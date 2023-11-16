@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The NetworkPacketBroker resource definition.
@@ -143,12 +142,6 @@ func (i *NetworkPacketBroker) ToNetworkPacketBrokerOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPacketBrokerOutput)
 }
 
-func (i *NetworkPacketBroker) ToOutput(ctx context.Context) pulumix.Output[*NetworkPacketBroker] {
-	return pulumix.Output[*NetworkPacketBroker]{
-		OutputState: i.ToNetworkPacketBrokerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkPacketBrokerOutput struct{ *pulumi.OutputState }
 
 func (NetworkPacketBrokerOutput) ElementType() reflect.Type {
@@ -161,12 +154,6 @@ func (o NetworkPacketBrokerOutput) ToNetworkPacketBrokerOutput() NetworkPacketBr
 
 func (o NetworkPacketBrokerOutput) ToNetworkPacketBrokerOutputWithContext(ctx context.Context) NetworkPacketBrokerOutput {
 	return o
-}
-
-func (o NetworkPacketBrokerOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkPacketBroker] {
-	return pulumix.Output[*NetworkPacketBroker]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

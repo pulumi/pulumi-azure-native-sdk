@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (o AgentConfigurationResponseOutput) ToAgentConfigurationResponseOutput() A
 
 func (o AgentConfigurationResponseOutput) ToAgentConfigurationResponseOutputWithContext(ctx context.Context) AgentConfigurationResponseOutput {
 	return o
-}
-
-func (o AgentConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AgentConfigurationResponse] {
-	return pulumix.Output[AgentConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of configuration mode to use. Modes are pre-defined configurations of security controls, extension allowlists and guest configuration, maintained by Microsoft.
@@ -138,12 +131,6 @@ func (i AgentUpgradeArgs) ToAgentUpgradeOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AgentUpgradeOutput)
 }
 
-func (i AgentUpgradeArgs) ToOutput(ctx context.Context) pulumix.Output[AgentUpgrade] {
-	return pulumix.Output[AgentUpgrade]{
-		OutputState: i.ToAgentUpgradeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AgentUpgradeArgs) ToAgentUpgradePtrOutput() AgentUpgradePtrOutput {
 	return i.ToAgentUpgradePtrOutputWithContext(context.Background())
 }
@@ -185,12 +172,6 @@ func (i *agentUpgradePtrType) ToAgentUpgradePtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AgentUpgradePtrOutput)
 }
 
-func (i *agentUpgradePtrType) ToOutput(ctx context.Context) pulumix.Output[*AgentUpgrade] {
-	return pulumix.Output[*AgentUpgrade]{
-		OutputState: i.ToAgentUpgradePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The info w.r.t Agent Upgrade.
 type AgentUpgradeOutput struct{ *pulumi.OutputState }
 
@@ -214,12 +195,6 @@ func (o AgentUpgradeOutput) ToAgentUpgradePtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentUpgrade) *AgentUpgrade {
 		return &v
 	}).(AgentUpgradePtrOutput)
-}
-
-func (o AgentUpgradeOutput) ToOutput(ctx context.Context) pulumix.Output[AgentUpgrade] {
-	return pulumix.Output[AgentUpgrade]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The correlation ID passed in from RSM per upgrade.
@@ -249,12 +224,6 @@ func (o AgentUpgradePtrOutput) ToAgentUpgradePtrOutput() AgentUpgradePtrOutput {
 
 func (o AgentUpgradePtrOutput) ToAgentUpgradePtrOutputWithContext(ctx context.Context) AgentUpgradePtrOutput {
 	return o
-}
-
-func (o AgentUpgradePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgentUpgrade] {
-	return pulumix.Output[*AgentUpgrade]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AgentUpgradePtrOutput) Elem() AgentUpgradeOutput {
@@ -328,12 +297,6 @@ func (o AgentUpgradeResponseOutput) ToAgentUpgradeResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o AgentUpgradeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AgentUpgradeResponse] {
-	return pulumix.Output[AgentUpgradeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The correlation ID passed in from RSM per upgrade.
 func (o AgentUpgradeResponseOutput) CorrelationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AgentUpgradeResponse) *string { return v.CorrelationId }).(pulumi.StringPtrOutput)
@@ -376,12 +339,6 @@ func (o AgentUpgradeResponsePtrOutput) ToAgentUpgradeResponsePtrOutput() AgentUp
 
 func (o AgentUpgradeResponsePtrOutput) ToAgentUpgradeResponsePtrOutputWithContext(ctx context.Context) AgentUpgradeResponsePtrOutput {
 	return o
-}
-
-func (o AgentUpgradeResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgentUpgradeResponse] {
-	return pulumix.Output[*AgentUpgradeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AgentUpgradeResponsePtrOutput) Elem() AgentUpgradeResponseOutput {
@@ -475,12 +432,6 @@ func (o CloudMetadataResponseOutput) ToCloudMetadataResponseOutputWithContext(ct
 	return o
 }
 
-func (o CloudMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudMetadataResponse] {
-	return pulumix.Output[CloudMetadataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the cloud provider (Azure/AWS/GCP...).
 func (o CloudMetadataResponseOutput) Provider() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudMetadataResponse) string { return v.Provider }).(pulumi.StringOutput)
@@ -498,12 +449,6 @@ func (o CloudMetadataResponsePtrOutput) ToCloudMetadataResponsePtrOutput() Cloud
 
 func (o CloudMetadataResponsePtrOutput) ToCloudMetadataResponsePtrOutputWithContext(ctx context.Context) CloudMetadataResponsePtrOutput {
 	return o
-}
-
-func (o CloudMetadataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudMetadataResponse] {
-	return pulumix.Output[*CloudMetadataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CloudMetadataResponsePtrOutput) Elem() CloudMetadataResponseOutput {
@@ -549,12 +494,6 @@ func (o ConfigurationExtensionResponseOutput) ToConfigurationExtensionResponseOu
 	return o
 }
 
-func (o ConfigurationExtensionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationExtensionResponse] {
-	return pulumix.Output[ConfigurationExtensionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Publisher of the extension.
 func (o ConfigurationExtensionResponseOutput) Publisher() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigurationExtensionResponse) string { return v.Publisher }).(pulumi.StringOutput)
@@ -577,12 +516,6 @@ func (o ConfigurationExtensionResponseArrayOutput) ToConfigurationExtensionRespo
 
 func (o ConfigurationExtensionResponseArrayOutput) ToConfigurationExtensionResponseArrayOutputWithContext(ctx context.Context) ConfigurationExtensionResponseArrayOutput {
 	return o
-}
-
-func (o ConfigurationExtensionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConfigurationExtensionResponse] {
-	return pulumix.Output[[]ConfigurationExtensionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigurationExtensionResponseArrayOutput) Index(i pulumi.IntInput) ConfigurationExtensionResponseOutput {
@@ -614,12 +547,6 @@ func (o ErrorAdditionalInfoResponseOutput) ToErrorAdditionalInfoResponseOutputWi
 	return o
 }
 
-func (o ErrorAdditionalInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorAdditionalInfoResponse] {
-	return pulumix.Output[ErrorAdditionalInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The additional info.
 func (o ErrorAdditionalInfoResponseOutput) Info() pulumi.AnyOutput {
 	return o.ApplyT(func(v ErrorAdditionalInfoResponse) interface{} { return v.Info }).(pulumi.AnyOutput)
@@ -642,12 +569,6 @@ func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArr
 
 func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArrayOutputWithContext(ctx context.Context) ErrorAdditionalInfoResponseArrayOutput {
 	return o
-}
-
-func (o ErrorAdditionalInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ErrorAdditionalInfoResponse] {
-	return pulumix.Output[[]ErrorAdditionalInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ErrorAdditionalInfoResponseArrayOutput) Index(i pulumi.IntInput) ErrorAdditionalInfoResponseOutput {
@@ -683,12 +604,6 @@ func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutput() ErrorDetailResp
 
 func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutputWithContext(ctx context.Context) ErrorDetailResponseOutput {
 	return o
-}
-
-func (o ErrorDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorDetailResponse] {
-	return pulumix.Output[ErrorDetailResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The error additional info.
@@ -730,12 +645,6 @@ func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutputWithCont
 	return o
 }
 
-func (o ErrorDetailResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ErrorDetailResponse] {
-	return pulumix.Output[[]ErrorDetailResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDetailResponse {
 		return vs[0].([]ErrorDetailResponse)[vs[1].(int)]
@@ -765,12 +674,6 @@ func (o EsuKeyResponseOutput) ToEsuKeyResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o EsuKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EsuKeyResponse] {
-	return pulumix.Output[EsuKeyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The current status of the license profile key.
 func (o EsuKeyResponseOutput) LicenseStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EsuKeyResponse) *string { return v.LicenseStatus }).(pulumi.StringPtrOutput)
@@ -795,16 +698,84 @@ func (o EsuKeyResponseArrayOutput) ToEsuKeyResponseArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o EsuKeyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EsuKeyResponse] {
-	return pulumix.Output[[]EsuKeyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EsuKeyResponseArrayOutput) Index(i pulumi.IntInput) EsuKeyResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EsuKeyResponse {
 		return vs[0].([]EsuKeyResponse)[vs[1].(int)]
 	}).(EsuKeyResponseOutput)
+}
+
+// Instance view status.
+type ExtensionsResourceStatusResponse struct {
+	// The status code.
+	Code *string `pulumi:"code"`
+	// The short localizable label for the status.
+	DisplayStatus *string `pulumi:"displayStatus"`
+	// The level code.
+	Level *string `pulumi:"level"`
+	// The detailed status message, including for alerts and error messages.
+	Message *string `pulumi:"message"`
+	// The time of the status.
+	Time *string `pulumi:"time"`
+}
+
+// Instance view status.
+type ExtensionsResourceStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (ExtensionsResourceStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionsResourceStatusResponse)(nil)).Elem()
+}
+
+func (o ExtensionsResourceStatusResponseOutput) ToExtensionsResourceStatusResponseOutput() ExtensionsResourceStatusResponseOutput {
+	return o
+}
+
+func (o ExtensionsResourceStatusResponseOutput) ToExtensionsResourceStatusResponseOutputWithContext(ctx context.Context) ExtensionsResourceStatusResponseOutput {
+	return o
+}
+
+// The status code.
+func (o ExtensionsResourceStatusResponseOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExtensionsResourceStatusResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// The short localizable label for the status.
+func (o ExtensionsResourceStatusResponseOutput) DisplayStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExtensionsResourceStatusResponse) *string { return v.DisplayStatus }).(pulumi.StringPtrOutput)
+}
+
+// The level code.
+func (o ExtensionsResourceStatusResponseOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExtensionsResourceStatusResponse) *string { return v.Level }).(pulumi.StringPtrOutput)
+}
+
+// The detailed status message, including for alerts and error messages.
+func (o ExtensionsResourceStatusResponseOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExtensionsResourceStatusResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// The time of the status.
+func (o ExtensionsResourceStatusResponseOutput) Time() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExtensionsResourceStatusResponse) *string { return v.Time }).(pulumi.StringPtrOutput)
+}
+
+type ExtensionsResourceStatusResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ExtensionsResourceStatusResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExtensionsResourceStatusResponse)(nil)).Elem()
+}
+
+func (o ExtensionsResourceStatusResponseArrayOutput) ToExtensionsResourceStatusResponseArrayOutput() ExtensionsResourceStatusResponseArrayOutput {
+	return o
+}
+
+func (o ExtensionsResourceStatusResponseArrayOutput) ToExtensionsResourceStatusResponseArrayOutputWithContext(ctx context.Context) ExtensionsResourceStatusResponseArrayOutput {
+	return o
+}
+
+func (o ExtensionsResourceStatusResponseArrayOutput) Index(i pulumi.IntInput) ExtensionsResourceStatusResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExtensionsResourceStatusResponse {
+		return vs[0].([]ExtensionsResourceStatusResponse)[vs[1].(int)]
+	}).(ExtensionsResourceStatusResponseOutput)
 }
 
 // Properties that define a Azure Arc PrivateLinkScope resource.
@@ -840,12 +811,6 @@ func (i HybridComputePrivateLinkScopePropertiesArgs) ToHybridComputePrivateLinkS
 
 func (i HybridComputePrivateLinkScopePropertiesArgs) ToHybridComputePrivateLinkScopePropertiesOutputWithContext(ctx context.Context) HybridComputePrivateLinkScopePropertiesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HybridComputePrivateLinkScopePropertiesOutput)
-}
-
-func (i HybridComputePrivateLinkScopePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[HybridComputePrivateLinkScopeProperties] {
-	return pulumix.Output[HybridComputePrivateLinkScopeProperties]{
-		OutputState: i.ToHybridComputePrivateLinkScopePropertiesOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i HybridComputePrivateLinkScopePropertiesArgs) ToHybridComputePrivateLinkScopePropertiesPtrOutput() HybridComputePrivateLinkScopePropertiesPtrOutput {
@@ -889,12 +854,6 @@ func (i *hybridComputePrivateLinkScopePropertiesPtrType) ToHybridComputePrivateL
 	return pulumi.ToOutputWithContext(ctx, i).(HybridComputePrivateLinkScopePropertiesPtrOutput)
 }
 
-func (i *hybridComputePrivateLinkScopePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*HybridComputePrivateLinkScopeProperties] {
-	return pulumix.Output[*HybridComputePrivateLinkScopeProperties]{
-		OutputState: i.ToHybridComputePrivateLinkScopePropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Properties that define a Azure Arc PrivateLinkScope resource.
 type HybridComputePrivateLinkScopePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -920,12 +879,6 @@ func (o HybridComputePrivateLinkScopePropertiesOutput) ToHybridComputePrivateLin
 	}).(HybridComputePrivateLinkScopePropertiesPtrOutput)
 }
 
-func (o HybridComputePrivateLinkScopePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[HybridComputePrivateLinkScopeProperties] {
-	return pulumix.Output[HybridComputePrivateLinkScopeProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
 func (o HybridComputePrivateLinkScopePropertiesOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HybridComputePrivateLinkScopeProperties) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
@@ -943,12 +896,6 @@ func (o HybridComputePrivateLinkScopePropertiesPtrOutput) ToHybridComputePrivate
 
 func (o HybridComputePrivateLinkScopePropertiesPtrOutput) ToHybridComputePrivateLinkScopePropertiesPtrOutputWithContext(ctx context.Context) HybridComputePrivateLinkScopePropertiesPtrOutput {
 	return o
-}
-
-func (o HybridComputePrivateLinkScopePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HybridComputePrivateLinkScopeProperties] {
-	return pulumix.Output[*HybridComputePrivateLinkScopeProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HybridComputePrivateLinkScopePropertiesPtrOutput) Elem() HybridComputePrivateLinkScopePropertiesOutput {
@@ -996,12 +943,6 @@ func (o HybridComputePrivateLinkScopePropertiesResponseOutput) ToHybridComputePr
 
 func (o HybridComputePrivateLinkScopePropertiesResponseOutput) ToHybridComputePrivateLinkScopePropertiesResponseOutputWithContext(ctx context.Context) HybridComputePrivateLinkScopePropertiesResponseOutput {
 	return o
-}
-
-func (o HybridComputePrivateLinkScopePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HybridComputePrivateLinkScopePropertiesResponse] {
-	return pulumix.Output[HybridComputePrivateLinkScopePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The collection of associated Private Endpoint Connections.
@@ -1061,12 +1002,6 @@ func (i IdentityArgs) ToIdentityOutputWithContext(ctx context.Context) IdentityO
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityOutput)
 }
 
-func (i IdentityArgs) ToOutput(ctx context.Context) pulumix.Output[Identity] {
-	return pulumix.Output[Identity]{
-		OutputState: i.ToIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IdentityArgs) ToIdentityPtrOutput() IdentityPtrOutput {
 	return i.ToIdentityPtrOutputWithContext(context.Background())
 }
@@ -1108,12 +1043,6 @@ func (i *identityPtrType) ToIdentityPtrOutputWithContext(ctx context.Context) Id
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPtrOutput)
 }
 
-func (i *identityPtrType) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
-	return pulumix.Output[*Identity]{
-		OutputState: i.ToIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Identity for the resource.
 type IdentityOutput struct{ *pulumi.OutputState }
 
@@ -1139,12 +1068,6 @@ func (o IdentityOutput) ToIdentityPtrOutputWithContext(ctx context.Context) Iden
 	}).(IdentityPtrOutput)
 }
 
-func (o IdentityOutput) ToOutput(ctx context.Context) pulumix.Output[Identity] {
-	return pulumix.Output[Identity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The identity type.
 func (o IdentityOutput) Type() ResourceIdentityTypePtrOutput {
 	return o.ApplyT(func(v Identity) *ResourceIdentityType { return v.Type }).(ResourceIdentityTypePtrOutput)
@@ -1162,12 +1085,6 @@ func (o IdentityPtrOutput) ToIdentityPtrOutput() IdentityPtrOutput {
 
 func (o IdentityPtrOutput) ToIdentityPtrOutputWithContext(ctx context.Context) IdentityPtrOutput {
 	return o
-}
-
-func (o IdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
-	return pulumix.Output[*Identity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityPtrOutput) Elem() IdentityOutput {
@@ -1215,12 +1132,6 @@ func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o IdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityResponse] {
-	return pulumix.Output[IdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The principal ID of resource identity.
 func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -1248,12 +1159,6 @@ func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutput() IdentityRespons
 
 func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
 	return o
-}
-
-func (o IdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityResponse] {
-	return pulumix.Output[*IdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
@@ -1347,12 +1252,6 @@ func (i LicenseDetailsArgs) ToLicenseDetailsOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(LicenseDetailsOutput)
 }
 
-func (i LicenseDetailsArgs) ToOutput(ctx context.Context) pulumix.Output[LicenseDetails] {
-	return pulumix.Output[LicenseDetails]{
-		OutputState: i.ToLicenseDetailsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i LicenseDetailsArgs) ToLicenseDetailsPtrOutput() LicenseDetailsPtrOutput {
 	return i.ToLicenseDetailsPtrOutputWithContext(context.Background())
 }
@@ -1394,12 +1293,6 @@ func (i *licenseDetailsPtrType) ToLicenseDetailsPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(LicenseDetailsPtrOutput)
 }
 
-func (i *licenseDetailsPtrType) ToOutput(ctx context.Context) pulumix.Output[*LicenseDetails] {
-	return pulumix.Output[*LicenseDetails]{
-		OutputState: i.ToLicenseDetailsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes the properties of a License.
 type LicenseDetailsOutput struct{ *pulumi.OutputState }
 
@@ -1423,12 +1316,6 @@ func (o LicenseDetailsOutput) ToLicenseDetailsPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v LicenseDetails) *LicenseDetails {
 		return &v
 	}).(LicenseDetailsPtrOutput)
-}
-
-func (o LicenseDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[LicenseDetails] {
-	return pulumix.Output[LicenseDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Describes the edition of the license. The values are either Standard or Datacenter.
@@ -1468,12 +1355,6 @@ func (o LicenseDetailsPtrOutput) ToLicenseDetailsPtrOutput() LicenseDetailsPtrOu
 
 func (o LicenseDetailsPtrOutput) ToLicenseDetailsPtrOutputWithContext(ctx context.Context) LicenseDetailsPtrOutput {
 	return o
-}
-
-func (o LicenseDetailsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LicenseDetails] {
-	return pulumix.Output[*LicenseDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LicenseDetailsPtrOutput) Elem() LicenseDetailsOutput {
@@ -1569,12 +1450,6 @@ func (o LicenseDetailsResponseOutput) ToLicenseDetailsResponseOutputWithContext(
 	return o
 }
 
-func (o LicenseDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LicenseDetailsResponse] {
-	return pulumix.Output[LicenseDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Describes the number of assigned licenses.
 func (o LicenseDetailsResponseOutput) AssignedLicenses() pulumi.IntOutput {
 	return o.ApplyT(func(v LicenseDetailsResponse) int { return v.AssignedLicenses }).(pulumi.IntOutput)
@@ -1622,12 +1497,6 @@ func (o LicenseDetailsResponsePtrOutput) ToLicenseDetailsResponsePtrOutput() Lic
 
 func (o LicenseDetailsResponsePtrOutput) ToLicenseDetailsResponsePtrOutputWithContext(ctx context.Context) LicenseDetailsResponsePtrOutput {
 	return o
-}
-
-func (o LicenseDetailsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LicenseDetailsResponse] {
-	return pulumix.Output[*LicenseDetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LicenseDetailsResponsePtrOutput) Elem() LicenseDetailsResponseOutput {
@@ -1757,12 +1626,6 @@ func (i LocationDataArgs) ToLocationDataOutputWithContext(ctx context.Context) L
 	return pulumi.ToOutputWithContext(ctx, i).(LocationDataOutput)
 }
 
-func (i LocationDataArgs) ToOutput(ctx context.Context) pulumix.Output[LocationData] {
-	return pulumix.Output[LocationData]{
-		OutputState: i.ToLocationDataOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i LocationDataArgs) ToLocationDataPtrOutput() LocationDataPtrOutput {
 	return i.ToLocationDataPtrOutputWithContext(context.Background())
 }
@@ -1804,12 +1667,6 @@ func (i *locationDataPtrType) ToLocationDataPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(LocationDataPtrOutput)
 }
 
-func (i *locationDataPtrType) ToOutput(ctx context.Context) pulumix.Output[*LocationData] {
-	return pulumix.Output[*LocationData]{
-		OutputState: i.ToLocationDataPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Metadata pertaining to the geographic location of the resource.
 type LocationDataOutput struct{ *pulumi.OutputState }
 
@@ -1833,12 +1690,6 @@ func (o LocationDataOutput) ToLocationDataPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v LocationData) *LocationData {
 		return &v
 	}).(LocationDataPtrOutput)
-}
-
-func (o LocationDataOutput) ToOutput(ctx context.Context) pulumix.Output[LocationData] {
-	return pulumix.Output[LocationData]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The city or locality where the resource is located.
@@ -1873,12 +1724,6 @@ func (o LocationDataPtrOutput) ToLocationDataPtrOutput() LocationDataPtrOutput {
 
 func (o LocationDataPtrOutput) ToLocationDataPtrOutputWithContext(ctx context.Context) LocationDataPtrOutput {
 	return o
-}
-
-func (o LocationDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LocationData] {
-	return pulumix.Output[*LocationData]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LocationDataPtrOutput) Elem() LocationDataOutput {
@@ -1958,12 +1803,6 @@ func (o LocationDataResponseOutput) ToLocationDataResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o LocationDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LocationDataResponse] {
-	return pulumix.Output[LocationDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The city or locality where the resource is located.
 func (o LocationDataResponseOutput) City() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LocationDataResponse) *string { return v.City }).(pulumi.StringPtrOutput)
@@ -1996,12 +1835,6 @@ func (o LocationDataResponsePtrOutput) ToLocationDataResponsePtrOutput() Locatio
 
 func (o LocationDataResponsePtrOutput) ToLocationDataResponsePtrOutputWithContext(ctx context.Context) LocationDataResponsePtrOutput {
 	return o
-}
-
-func (o LocationDataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LocationDataResponse] {
-	return pulumix.Output[*LocationDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LocationDataResponsePtrOutput) Elem() LocationDataResponseOutput {
@@ -2101,12 +1934,6 @@ func (i MachineExtensionInstanceViewArgs) ToMachineExtensionInstanceViewOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(MachineExtensionInstanceViewOutput)
 }
 
-func (i MachineExtensionInstanceViewArgs) ToOutput(ctx context.Context) pulumix.Output[MachineExtensionInstanceView] {
-	return pulumix.Output[MachineExtensionInstanceView]{
-		OutputState: i.ToMachineExtensionInstanceViewOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MachineExtensionInstanceViewArgs) ToMachineExtensionInstanceViewPtrOutput() MachineExtensionInstanceViewPtrOutput {
 	return i.ToMachineExtensionInstanceViewPtrOutputWithContext(context.Background())
 }
@@ -2148,12 +1975,6 @@ func (i *machineExtensionInstanceViewPtrType) ToMachineExtensionInstanceViewPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(MachineExtensionInstanceViewPtrOutput)
 }
 
-func (i *machineExtensionInstanceViewPtrType) ToOutput(ctx context.Context) pulumix.Output[*MachineExtensionInstanceView] {
-	return pulumix.Output[*MachineExtensionInstanceView]{
-		OutputState: i.ToMachineExtensionInstanceViewPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MachineExtensionInstanceViewArrayInput is an input type that accepts MachineExtensionInstanceViewArray and MachineExtensionInstanceViewArrayOutput values.
 // You can construct a concrete instance of `MachineExtensionInstanceViewArrayInput` via:
 //
@@ -2179,12 +2000,6 @@ func (i MachineExtensionInstanceViewArray) ToMachineExtensionInstanceViewArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(MachineExtensionInstanceViewArrayOutput)
 }
 
-func (i MachineExtensionInstanceViewArray) ToOutput(ctx context.Context) pulumix.Output[[]MachineExtensionInstanceView] {
-	return pulumix.Output[[]MachineExtensionInstanceView]{
-		OutputState: i.ToMachineExtensionInstanceViewArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes the Machine Extension Instance View.
 type MachineExtensionInstanceViewOutput struct{ *pulumi.OutputState }
 
@@ -2208,12 +2023,6 @@ func (o MachineExtensionInstanceViewOutput) ToMachineExtensionInstanceViewPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MachineExtensionInstanceView) *MachineExtensionInstanceView {
 		return &v
 	}).(MachineExtensionInstanceViewPtrOutput)
-}
-
-func (o MachineExtensionInstanceViewOutput) ToOutput(ctx context.Context) pulumix.Output[MachineExtensionInstanceView] {
-	return pulumix.Output[MachineExtensionInstanceView]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The machine extension name.
@@ -2248,12 +2057,6 @@ func (o MachineExtensionInstanceViewPtrOutput) ToMachineExtensionInstanceViewPtr
 
 func (o MachineExtensionInstanceViewPtrOutput) ToMachineExtensionInstanceViewPtrOutputWithContext(ctx context.Context) MachineExtensionInstanceViewPtrOutput {
 	return o
-}
-
-func (o MachineExtensionInstanceViewPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineExtensionInstanceView] {
-	return pulumix.Output[*MachineExtensionInstanceView]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MachineExtensionInstanceViewPtrOutput) Elem() MachineExtensionInstanceViewOutput {
@@ -2320,12 +2123,6 @@ func (o MachineExtensionInstanceViewArrayOutput) ToMachineExtensionInstanceViewA
 	return o
 }
 
-func (o MachineExtensionInstanceViewArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MachineExtensionInstanceView] {
-	return pulumix.Output[[]MachineExtensionInstanceView]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MachineExtensionInstanceViewArrayOutput) Index(i pulumi.IntInput) MachineExtensionInstanceViewOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MachineExtensionInstanceView {
 		return vs[0].([]MachineExtensionInstanceView)[vs[1].(int)]
@@ -2357,12 +2154,6 @@ func (o MachineExtensionInstanceViewResponseOutput) ToMachineExtensionInstanceVi
 
 func (o MachineExtensionInstanceViewResponseOutput) ToMachineExtensionInstanceViewResponseOutputWithContext(ctx context.Context) MachineExtensionInstanceViewResponseOutput {
 	return o
-}
-
-func (o MachineExtensionInstanceViewResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MachineExtensionInstanceViewResponse] {
-	return pulumix.Output[MachineExtensionInstanceViewResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The machine extension name.
@@ -2399,12 +2190,6 @@ func (o MachineExtensionInstanceViewResponsePtrOutput) ToMachineExtensionInstanc
 
 func (o MachineExtensionInstanceViewResponsePtrOutput) ToMachineExtensionInstanceViewResponsePtrOutputWithContext(ctx context.Context) MachineExtensionInstanceViewResponsePtrOutput {
 	return o
-}
-
-func (o MachineExtensionInstanceViewResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineExtensionInstanceViewResponse] {
-	return pulumix.Output[*MachineExtensionInstanceViewResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MachineExtensionInstanceViewResponsePtrOutput) Elem() MachineExtensionInstanceViewResponseOutput {
@@ -2471,12 +2256,6 @@ func (o MachineExtensionInstanceViewResponseArrayOutput) ToMachineExtensionInsta
 	return o
 }
 
-func (o MachineExtensionInstanceViewResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MachineExtensionInstanceViewResponse] {
-	return pulumix.Output[[]MachineExtensionInstanceViewResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MachineExtensionInstanceViewResponseArrayOutput) Index(i pulumi.IntInput) MachineExtensionInstanceViewResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MachineExtensionInstanceViewResponse {
 		return vs[0].([]MachineExtensionInstanceViewResponse)[vs[1].(int)]
@@ -2510,12 +2289,6 @@ func (o MachineExtensionInstanceViewResponseStatusOutput) ToMachineExtensionInst
 
 func (o MachineExtensionInstanceViewResponseStatusOutput) ToMachineExtensionInstanceViewResponseStatusOutputWithContext(ctx context.Context) MachineExtensionInstanceViewResponseStatusOutput {
 	return o
-}
-
-func (o MachineExtensionInstanceViewResponseStatusOutput) ToOutput(ctx context.Context) pulumix.Output[MachineExtensionInstanceViewResponseStatus] {
-	return pulumix.Output[MachineExtensionInstanceViewResponseStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The status code.
@@ -2555,12 +2328,6 @@ func (o MachineExtensionInstanceViewResponseStatusPtrOutput) ToMachineExtensionI
 
 func (o MachineExtensionInstanceViewResponseStatusPtrOutput) ToMachineExtensionInstanceViewResponseStatusPtrOutputWithContext(ctx context.Context) MachineExtensionInstanceViewResponseStatusPtrOutput {
 	return o
-}
-
-func (o MachineExtensionInstanceViewResponseStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineExtensionInstanceViewResponseStatus] {
-	return pulumix.Output[*MachineExtensionInstanceViewResponseStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MachineExtensionInstanceViewResponseStatusPtrOutput) Elem() MachineExtensionInstanceViewResponseStatusOutput {
@@ -2674,12 +2441,6 @@ func (i MachineExtensionInstanceViewStatusArgs) ToMachineExtensionInstanceViewSt
 	return pulumi.ToOutputWithContext(ctx, i).(MachineExtensionInstanceViewStatusOutput)
 }
 
-func (i MachineExtensionInstanceViewStatusArgs) ToOutput(ctx context.Context) pulumix.Output[MachineExtensionInstanceViewStatus] {
-	return pulumix.Output[MachineExtensionInstanceViewStatus]{
-		OutputState: i.ToMachineExtensionInstanceViewStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MachineExtensionInstanceViewStatusArgs) ToMachineExtensionInstanceViewStatusPtrOutput() MachineExtensionInstanceViewStatusPtrOutput {
 	return i.ToMachineExtensionInstanceViewStatusPtrOutputWithContext(context.Background())
 }
@@ -2721,12 +2482,6 @@ func (i *machineExtensionInstanceViewStatusPtrType) ToMachineExtensionInstanceVi
 	return pulumi.ToOutputWithContext(ctx, i).(MachineExtensionInstanceViewStatusPtrOutput)
 }
 
-func (i *machineExtensionInstanceViewStatusPtrType) ToOutput(ctx context.Context) pulumix.Output[*MachineExtensionInstanceViewStatus] {
-	return pulumix.Output[*MachineExtensionInstanceViewStatus]{
-		OutputState: i.ToMachineExtensionInstanceViewStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Instance view status.
 type MachineExtensionInstanceViewStatusOutput struct{ *pulumi.OutputState }
 
@@ -2750,12 +2505,6 @@ func (o MachineExtensionInstanceViewStatusOutput) ToMachineExtensionInstanceView
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MachineExtensionInstanceViewStatus) *MachineExtensionInstanceViewStatus {
 		return &v
 	}).(MachineExtensionInstanceViewStatusPtrOutput)
-}
-
-func (o MachineExtensionInstanceViewStatusOutput) ToOutput(ctx context.Context) pulumix.Output[MachineExtensionInstanceViewStatus] {
-	return pulumix.Output[MachineExtensionInstanceViewStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The status code.
@@ -2795,12 +2544,6 @@ func (o MachineExtensionInstanceViewStatusPtrOutput) ToMachineExtensionInstanceV
 
 func (o MachineExtensionInstanceViewStatusPtrOutput) ToMachineExtensionInstanceViewStatusPtrOutputWithContext(ctx context.Context) MachineExtensionInstanceViewStatusPtrOutput {
 	return o
-}
-
-func (o MachineExtensionInstanceViewStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineExtensionInstanceViewStatus] {
-	return pulumix.Output[*MachineExtensionInstanceViewStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MachineExtensionInstanceViewStatusPtrOutput) Elem() MachineExtensionInstanceViewStatusOutput {
@@ -2930,12 +2673,6 @@ func (i MachineExtensionPropertiesArgs) ToMachineExtensionPropertiesOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(MachineExtensionPropertiesOutput)
 }
 
-func (i MachineExtensionPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[MachineExtensionProperties] {
-	return pulumix.Output[MachineExtensionProperties]{
-		OutputState: i.ToMachineExtensionPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MachineExtensionPropertiesArgs) ToMachineExtensionPropertiesPtrOutput() MachineExtensionPropertiesPtrOutput {
 	return i.ToMachineExtensionPropertiesPtrOutputWithContext(context.Background())
 }
@@ -2977,12 +2714,6 @@ func (i *machineExtensionPropertiesPtrType) ToMachineExtensionPropertiesPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(MachineExtensionPropertiesPtrOutput)
 }
 
-func (i *machineExtensionPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*MachineExtensionProperties] {
-	return pulumix.Output[*MachineExtensionProperties]{
-		OutputState: i.ToMachineExtensionPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes the properties of a Machine Extension.
 type MachineExtensionPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -3006,12 +2737,6 @@ func (o MachineExtensionPropertiesOutput) ToMachineExtensionPropertiesPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MachineExtensionProperties) *MachineExtensionProperties {
 		return &v
 	}).(MachineExtensionPropertiesPtrOutput)
-}
-
-func (o MachineExtensionPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[MachineExtensionProperties] {
-	return pulumix.Output[MachineExtensionProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
@@ -3071,12 +2796,6 @@ func (o MachineExtensionPropertiesPtrOutput) ToMachineExtensionPropertiesPtrOutp
 
 func (o MachineExtensionPropertiesPtrOutput) ToMachineExtensionPropertiesPtrOutputWithContext(ctx context.Context) MachineExtensionPropertiesPtrOutput {
 	return o
-}
-
-func (o MachineExtensionPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineExtensionProperties] {
-	return pulumix.Output[*MachineExtensionProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MachineExtensionPropertiesPtrOutput) Elem() MachineExtensionPropertiesOutput {
@@ -3218,12 +2937,6 @@ func (o MachineExtensionPropertiesResponseOutput) ToMachineExtensionPropertiesRe
 	return o
 }
 
-func (o MachineExtensionPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MachineExtensionPropertiesResponse] {
-	return pulumix.Output[MachineExtensionPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
 func (o MachineExtensionPropertiesResponseOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MachineExtensionPropertiesResponse) *bool { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
@@ -3288,12 +3001,6 @@ func (o MachineExtensionPropertiesResponsePtrOutput) ToMachineExtensionPropertie
 
 func (o MachineExtensionPropertiesResponsePtrOutput) ToMachineExtensionPropertiesResponsePtrOutputWithContext(ctx context.Context) MachineExtensionPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o MachineExtensionPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineExtensionPropertiesResponse] {
-	return pulumix.Output[*MachineExtensionPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MachineExtensionPropertiesResponsePtrOutput) Elem() MachineExtensionPropertiesResponseOutput {
@@ -3439,12 +3146,6 @@ func (o MachineExtensionResponseOutput) ToMachineExtensionResponseOutputWithCont
 	return o
 }
 
-func (o MachineExtensionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MachineExtensionResponse] {
-	return pulumix.Output[MachineExtensionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o MachineExtensionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v MachineExtensionResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -3494,16 +3195,395 @@ func (o MachineExtensionResponseArrayOutput) ToMachineExtensionResponseArrayOutp
 	return o
 }
 
-func (o MachineExtensionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MachineExtensionResponse] {
-	return pulumix.Output[[]MachineExtensionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MachineExtensionResponseArrayOutput) Index(i pulumi.IntInput) MachineExtensionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MachineExtensionResponse {
 		return vs[0].([]MachineExtensionResponse)[vs[1].(int)]
 	}).(MachineExtensionResponseOutput)
+}
+
+// The instance view of a machine run command.
+type MachineRunCommandInstanceViewResponse struct {
+	// Script end time.
+	EndTime *string `pulumi:"endTime"`
+	// Script error stream.
+	Error *string `pulumi:"error"`
+	// Communicate script configuration errors or execution messages.
+	ExecutionMessage *string `pulumi:"executionMessage"`
+	// Script execution status.
+	ExecutionState *string `pulumi:"executionState"`
+	// Exit code returned from script execution.
+	ExitCode *int `pulumi:"exitCode"`
+	// Script output stream.
+	Output *string `pulumi:"output"`
+	// Script start time.
+	StartTime *string `pulumi:"startTime"`
+	// The  status information.
+	Statuses []ExtensionsResourceStatusResponse `pulumi:"statuses"`
+}
+
+// The instance view of a machine run command.
+type MachineRunCommandInstanceViewResponseOutput struct{ *pulumi.OutputState }
+
+func (MachineRunCommandInstanceViewResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineRunCommandInstanceViewResponse)(nil)).Elem()
+}
+
+func (o MachineRunCommandInstanceViewResponseOutput) ToMachineRunCommandInstanceViewResponseOutput() MachineRunCommandInstanceViewResponseOutput {
+	return o
+}
+
+func (o MachineRunCommandInstanceViewResponseOutput) ToMachineRunCommandInstanceViewResponseOutputWithContext(ctx context.Context) MachineRunCommandInstanceViewResponseOutput {
+	return o
+}
+
+// Script end time.
+func (o MachineRunCommandInstanceViewResponseOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineRunCommandInstanceViewResponse) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Script error stream.
+func (o MachineRunCommandInstanceViewResponseOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineRunCommandInstanceViewResponse) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+// Communicate script configuration errors or execution messages.
+func (o MachineRunCommandInstanceViewResponseOutput) ExecutionMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineRunCommandInstanceViewResponse) *string { return v.ExecutionMessage }).(pulumi.StringPtrOutput)
+}
+
+// Script execution status.
+func (o MachineRunCommandInstanceViewResponseOutput) ExecutionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineRunCommandInstanceViewResponse) *string { return v.ExecutionState }).(pulumi.StringPtrOutput)
+}
+
+// Exit code returned from script execution.
+func (o MachineRunCommandInstanceViewResponseOutput) ExitCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MachineRunCommandInstanceViewResponse) *int { return v.ExitCode }).(pulumi.IntPtrOutput)
+}
+
+// Script output stream.
+func (o MachineRunCommandInstanceViewResponseOutput) Output() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineRunCommandInstanceViewResponse) *string { return v.Output }).(pulumi.StringPtrOutput)
+}
+
+// Script start time.
+func (o MachineRunCommandInstanceViewResponseOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineRunCommandInstanceViewResponse) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// The  status information.
+func (o MachineRunCommandInstanceViewResponseOutput) Statuses() ExtensionsResourceStatusResponseArrayOutput {
+	return o.ApplyT(func(v MachineRunCommandInstanceViewResponse) []ExtensionsResourceStatusResponse { return v.Statuses }).(ExtensionsResourceStatusResponseArrayOutput)
+}
+
+// Describes the script sources for run command. Use only one of script, scriptUri, commandId.
+type MachineRunCommandScriptSource struct {
+	// Specifies the commandId of predefined built-in script.
+	CommandId *string `pulumi:"commandId"`
+	// Specifies the script content to be executed on the machine.
+	Script *string `pulumi:"script"`
+	// Specifies the script download location. It can be either SAS URI of an Azure storage blob with read access or public URI.
+	ScriptUri *string `pulumi:"scriptUri"`
+	// User-assigned managed identity that has access to scriptUri in case of Azure storage blob. Use an empty object in case of system-assigned identity. Make sure the Azure storage blob exists, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
+	ScriptUriManagedIdentity *RunCommandManagedIdentity `pulumi:"scriptUriManagedIdentity"`
+}
+
+// MachineRunCommandScriptSourceInput is an input type that accepts MachineRunCommandScriptSourceArgs and MachineRunCommandScriptSourceOutput values.
+// You can construct a concrete instance of `MachineRunCommandScriptSourceInput` via:
+//
+//	MachineRunCommandScriptSourceArgs{...}
+type MachineRunCommandScriptSourceInput interface {
+	pulumi.Input
+
+	ToMachineRunCommandScriptSourceOutput() MachineRunCommandScriptSourceOutput
+	ToMachineRunCommandScriptSourceOutputWithContext(context.Context) MachineRunCommandScriptSourceOutput
+}
+
+// Describes the script sources for run command. Use only one of script, scriptUri, commandId.
+type MachineRunCommandScriptSourceArgs struct {
+	// Specifies the commandId of predefined built-in script.
+	CommandId pulumi.StringPtrInput `pulumi:"commandId"`
+	// Specifies the script content to be executed on the machine.
+	Script pulumi.StringPtrInput `pulumi:"script"`
+	// Specifies the script download location. It can be either SAS URI of an Azure storage blob with read access or public URI.
+	ScriptUri pulumi.StringPtrInput `pulumi:"scriptUri"`
+	// User-assigned managed identity that has access to scriptUri in case of Azure storage blob. Use an empty object in case of system-assigned identity. Make sure the Azure storage blob exists, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
+	ScriptUriManagedIdentity RunCommandManagedIdentityPtrInput `pulumi:"scriptUriManagedIdentity"`
+}
+
+func (MachineRunCommandScriptSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineRunCommandScriptSource)(nil)).Elem()
+}
+
+func (i MachineRunCommandScriptSourceArgs) ToMachineRunCommandScriptSourceOutput() MachineRunCommandScriptSourceOutput {
+	return i.ToMachineRunCommandScriptSourceOutputWithContext(context.Background())
+}
+
+func (i MachineRunCommandScriptSourceArgs) ToMachineRunCommandScriptSourceOutputWithContext(ctx context.Context) MachineRunCommandScriptSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineRunCommandScriptSourceOutput)
+}
+
+func (i MachineRunCommandScriptSourceArgs) ToMachineRunCommandScriptSourcePtrOutput() MachineRunCommandScriptSourcePtrOutput {
+	return i.ToMachineRunCommandScriptSourcePtrOutputWithContext(context.Background())
+}
+
+func (i MachineRunCommandScriptSourceArgs) ToMachineRunCommandScriptSourcePtrOutputWithContext(ctx context.Context) MachineRunCommandScriptSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineRunCommandScriptSourceOutput).ToMachineRunCommandScriptSourcePtrOutputWithContext(ctx)
+}
+
+// MachineRunCommandScriptSourcePtrInput is an input type that accepts MachineRunCommandScriptSourceArgs, MachineRunCommandScriptSourcePtr and MachineRunCommandScriptSourcePtrOutput values.
+// You can construct a concrete instance of `MachineRunCommandScriptSourcePtrInput` via:
+//
+//	        MachineRunCommandScriptSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type MachineRunCommandScriptSourcePtrInput interface {
+	pulumi.Input
+
+	ToMachineRunCommandScriptSourcePtrOutput() MachineRunCommandScriptSourcePtrOutput
+	ToMachineRunCommandScriptSourcePtrOutputWithContext(context.Context) MachineRunCommandScriptSourcePtrOutput
+}
+
+type machineRunCommandScriptSourcePtrType MachineRunCommandScriptSourceArgs
+
+func MachineRunCommandScriptSourcePtr(v *MachineRunCommandScriptSourceArgs) MachineRunCommandScriptSourcePtrInput {
+	return (*machineRunCommandScriptSourcePtrType)(v)
+}
+
+func (*machineRunCommandScriptSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineRunCommandScriptSource)(nil)).Elem()
+}
+
+func (i *machineRunCommandScriptSourcePtrType) ToMachineRunCommandScriptSourcePtrOutput() MachineRunCommandScriptSourcePtrOutput {
+	return i.ToMachineRunCommandScriptSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *machineRunCommandScriptSourcePtrType) ToMachineRunCommandScriptSourcePtrOutputWithContext(ctx context.Context) MachineRunCommandScriptSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineRunCommandScriptSourcePtrOutput)
+}
+
+// Describes the script sources for run command. Use only one of script, scriptUri, commandId.
+type MachineRunCommandScriptSourceOutput struct{ *pulumi.OutputState }
+
+func (MachineRunCommandScriptSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineRunCommandScriptSource)(nil)).Elem()
+}
+
+func (o MachineRunCommandScriptSourceOutput) ToMachineRunCommandScriptSourceOutput() MachineRunCommandScriptSourceOutput {
+	return o
+}
+
+func (o MachineRunCommandScriptSourceOutput) ToMachineRunCommandScriptSourceOutputWithContext(ctx context.Context) MachineRunCommandScriptSourceOutput {
+	return o
+}
+
+func (o MachineRunCommandScriptSourceOutput) ToMachineRunCommandScriptSourcePtrOutput() MachineRunCommandScriptSourcePtrOutput {
+	return o.ToMachineRunCommandScriptSourcePtrOutputWithContext(context.Background())
+}
+
+func (o MachineRunCommandScriptSourceOutput) ToMachineRunCommandScriptSourcePtrOutputWithContext(ctx context.Context) MachineRunCommandScriptSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MachineRunCommandScriptSource) *MachineRunCommandScriptSource {
+		return &v
+	}).(MachineRunCommandScriptSourcePtrOutput)
+}
+
+// Specifies the commandId of predefined built-in script.
+func (o MachineRunCommandScriptSourceOutput) CommandId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineRunCommandScriptSource) *string { return v.CommandId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the script content to be executed on the machine.
+func (o MachineRunCommandScriptSourceOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineRunCommandScriptSource) *string { return v.Script }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the script download location. It can be either SAS URI of an Azure storage blob with read access or public URI.
+func (o MachineRunCommandScriptSourceOutput) ScriptUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineRunCommandScriptSource) *string { return v.ScriptUri }).(pulumi.StringPtrOutput)
+}
+
+// User-assigned managed identity that has access to scriptUri in case of Azure storage blob. Use an empty object in case of system-assigned identity. Make sure the Azure storage blob exists, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
+func (o MachineRunCommandScriptSourceOutput) ScriptUriManagedIdentity() RunCommandManagedIdentityPtrOutput {
+	return o.ApplyT(func(v MachineRunCommandScriptSource) *RunCommandManagedIdentity { return v.ScriptUriManagedIdentity }).(RunCommandManagedIdentityPtrOutput)
+}
+
+type MachineRunCommandScriptSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (MachineRunCommandScriptSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineRunCommandScriptSource)(nil)).Elem()
+}
+
+func (o MachineRunCommandScriptSourcePtrOutput) ToMachineRunCommandScriptSourcePtrOutput() MachineRunCommandScriptSourcePtrOutput {
+	return o
+}
+
+func (o MachineRunCommandScriptSourcePtrOutput) ToMachineRunCommandScriptSourcePtrOutputWithContext(ctx context.Context) MachineRunCommandScriptSourcePtrOutput {
+	return o
+}
+
+func (o MachineRunCommandScriptSourcePtrOutput) Elem() MachineRunCommandScriptSourceOutput {
+	return o.ApplyT(func(v *MachineRunCommandScriptSource) MachineRunCommandScriptSource {
+		if v != nil {
+			return *v
+		}
+		var ret MachineRunCommandScriptSource
+		return ret
+	}).(MachineRunCommandScriptSourceOutput)
+}
+
+// Specifies the commandId of predefined built-in script.
+func (o MachineRunCommandScriptSourcePtrOutput) CommandId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineRunCommandScriptSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommandId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the script content to be executed on the machine.
+func (o MachineRunCommandScriptSourcePtrOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineRunCommandScriptSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Script
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the script download location. It can be either SAS URI of an Azure storage blob with read access or public URI.
+func (o MachineRunCommandScriptSourcePtrOutput) ScriptUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineRunCommandScriptSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScriptUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-assigned managed identity that has access to scriptUri in case of Azure storage blob. Use an empty object in case of system-assigned identity. Make sure the Azure storage blob exists, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
+func (o MachineRunCommandScriptSourcePtrOutput) ScriptUriManagedIdentity() RunCommandManagedIdentityPtrOutput {
+	return o.ApplyT(func(v *MachineRunCommandScriptSource) *RunCommandManagedIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.ScriptUriManagedIdentity
+	}).(RunCommandManagedIdentityPtrOutput)
+}
+
+// Describes the script sources for run command. Use only one of script, scriptUri, commandId.
+type MachineRunCommandScriptSourceResponse struct {
+	// Specifies the commandId of predefined built-in script.
+	CommandId *string `pulumi:"commandId"`
+	// Specifies the script content to be executed on the machine.
+	Script *string `pulumi:"script"`
+	// Specifies the script download location. It can be either SAS URI of an Azure storage blob with read access or public URI.
+	ScriptUri *string `pulumi:"scriptUri"`
+	// User-assigned managed identity that has access to scriptUri in case of Azure storage blob. Use an empty object in case of system-assigned identity. Make sure the Azure storage blob exists, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
+	ScriptUriManagedIdentity *RunCommandManagedIdentityResponse `pulumi:"scriptUriManagedIdentity"`
+}
+
+// Describes the script sources for run command. Use only one of script, scriptUri, commandId.
+type MachineRunCommandScriptSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (MachineRunCommandScriptSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineRunCommandScriptSourceResponse)(nil)).Elem()
+}
+
+func (o MachineRunCommandScriptSourceResponseOutput) ToMachineRunCommandScriptSourceResponseOutput() MachineRunCommandScriptSourceResponseOutput {
+	return o
+}
+
+func (o MachineRunCommandScriptSourceResponseOutput) ToMachineRunCommandScriptSourceResponseOutputWithContext(ctx context.Context) MachineRunCommandScriptSourceResponseOutput {
+	return o
+}
+
+// Specifies the commandId of predefined built-in script.
+func (o MachineRunCommandScriptSourceResponseOutput) CommandId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineRunCommandScriptSourceResponse) *string { return v.CommandId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the script content to be executed on the machine.
+func (o MachineRunCommandScriptSourceResponseOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineRunCommandScriptSourceResponse) *string { return v.Script }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the script download location. It can be either SAS URI of an Azure storage blob with read access or public URI.
+func (o MachineRunCommandScriptSourceResponseOutput) ScriptUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MachineRunCommandScriptSourceResponse) *string { return v.ScriptUri }).(pulumi.StringPtrOutput)
+}
+
+// User-assigned managed identity that has access to scriptUri in case of Azure storage blob. Use an empty object in case of system-assigned identity. Make sure the Azure storage blob exists, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
+func (o MachineRunCommandScriptSourceResponseOutput) ScriptUriManagedIdentity() RunCommandManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v MachineRunCommandScriptSourceResponse) *RunCommandManagedIdentityResponse {
+		return v.ScriptUriManagedIdentity
+	}).(RunCommandManagedIdentityResponsePtrOutput)
+}
+
+type MachineRunCommandScriptSourceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MachineRunCommandScriptSourceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineRunCommandScriptSourceResponse)(nil)).Elem()
+}
+
+func (o MachineRunCommandScriptSourceResponsePtrOutput) ToMachineRunCommandScriptSourceResponsePtrOutput() MachineRunCommandScriptSourceResponsePtrOutput {
+	return o
+}
+
+func (o MachineRunCommandScriptSourceResponsePtrOutput) ToMachineRunCommandScriptSourceResponsePtrOutputWithContext(ctx context.Context) MachineRunCommandScriptSourceResponsePtrOutput {
+	return o
+}
+
+func (o MachineRunCommandScriptSourceResponsePtrOutput) Elem() MachineRunCommandScriptSourceResponseOutput {
+	return o.ApplyT(func(v *MachineRunCommandScriptSourceResponse) MachineRunCommandScriptSourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MachineRunCommandScriptSourceResponse
+		return ret
+	}).(MachineRunCommandScriptSourceResponseOutput)
+}
+
+// Specifies the commandId of predefined built-in script.
+func (o MachineRunCommandScriptSourceResponsePtrOutput) CommandId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineRunCommandScriptSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommandId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the script content to be executed on the machine.
+func (o MachineRunCommandScriptSourceResponsePtrOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineRunCommandScriptSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Script
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the script download location. It can be either SAS URI of an Azure storage blob with read access or public URI.
+func (o MachineRunCommandScriptSourceResponsePtrOutput) ScriptUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MachineRunCommandScriptSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScriptUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-assigned managed identity that has access to scriptUri in case of Azure storage blob. Use an empty object in case of system-assigned identity. Make sure the Azure storage blob exists, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
+func (o MachineRunCommandScriptSourceResponsePtrOutput) ScriptUriManagedIdentity() RunCommandManagedIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *MachineRunCommandScriptSourceResponse) *RunCommandManagedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ScriptUriManagedIdentity
+	}).(RunCommandManagedIdentityResponsePtrOutput)
 }
 
 // Specifies the operating system settings for the hybrid machine.
@@ -3543,12 +3623,6 @@ func (i OSProfileArgs) ToOSProfileOutput() OSProfileOutput {
 
 func (i OSProfileArgs) ToOSProfileOutputWithContext(ctx context.Context) OSProfileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OSProfileOutput)
-}
-
-func (i OSProfileArgs) ToOutput(ctx context.Context) pulumix.Output[OSProfile] {
-	return pulumix.Output[OSProfile]{
-		OutputState: i.ToOSProfileOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i OSProfileArgs) ToOSProfilePtrOutput() OSProfilePtrOutput {
@@ -3592,12 +3666,6 @@ func (i *osprofilePtrType) ToOSProfilePtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(OSProfilePtrOutput)
 }
 
-func (i *osprofilePtrType) ToOutput(ctx context.Context) pulumix.Output[*OSProfile] {
-	return pulumix.Output[*OSProfile]{
-		OutputState: i.ToOSProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the operating system settings for the hybrid machine.
 type OSProfileOutput struct{ *pulumi.OutputState }
 
@@ -3623,12 +3691,6 @@ func (o OSProfileOutput) ToOSProfilePtrOutputWithContext(ctx context.Context) OS
 	}).(OSProfilePtrOutput)
 }
 
-func (o OSProfileOutput) ToOutput(ctx context.Context) pulumix.Output[OSProfile] {
-	return pulumix.Output[OSProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the linux configuration for update management.
 func (o OSProfileOutput) LinuxConfiguration() OSProfileLinuxConfigurationPtrOutput {
 	return o.ApplyT(func(v OSProfile) *OSProfileLinuxConfiguration { return v.LinuxConfiguration }).(OSProfileLinuxConfigurationPtrOutput)
@@ -3651,12 +3713,6 @@ func (o OSProfilePtrOutput) ToOSProfilePtrOutput() OSProfilePtrOutput {
 
 func (o OSProfilePtrOutput) ToOSProfilePtrOutputWithContext(ctx context.Context) OSProfilePtrOutput {
 	return o
-}
-
-func (o OSProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSProfile] {
-	return pulumix.Output[*OSProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OSProfilePtrOutput) Elem() OSProfileOutput {
@@ -3728,12 +3784,6 @@ func (i OSProfileLinuxConfigurationArgs) ToOSProfileLinuxConfigurationOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(OSProfileLinuxConfigurationOutput)
 }
 
-func (i OSProfileLinuxConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[OSProfileLinuxConfiguration] {
-	return pulumix.Output[OSProfileLinuxConfiguration]{
-		OutputState: i.ToOSProfileLinuxConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OSProfileLinuxConfigurationArgs) ToOSProfileLinuxConfigurationPtrOutput() OSProfileLinuxConfigurationPtrOutput {
 	return i.ToOSProfileLinuxConfigurationPtrOutputWithContext(context.Background())
 }
@@ -3775,12 +3825,6 @@ func (i *osprofileLinuxConfigurationPtrType) ToOSProfileLinuxConfigurationPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(OSProfileLinuxConfigurationPtrOutput)
 }
 
-func (i *osprofileLinuxConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*OSProfileLinuxConfiguration] {
-	return pulumix.Output[*OSProfileLinuxConfiguration]{
-		OutputState: i.ToOSProfileLinuxConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the linux configuration for update management.
 type OSProfileLinuxConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -3806,12 +3850,6 @@ func (o OSProfileLinuxConfigurationOutput) ToOSProfileLinuxConfigurationPtrOutpu
 	}).(OSProfileLinuxConfigurationPtrOutput)
 }
 
-func (o OSProfileLinuxConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[OSProfileLinuxConfiguration] {
-	return pulumix.Output[OSProfileLinuxConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the assessment mode.
 func (o OSProfileLinuxConfigurationOutput) AssessmentMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSProfileLinuxConfiguration) *string { return v.AssessmentMode }).(pulumi.StringPtrOutput)
@@ -3834,12 +3872,6 @@ func (o OSProfileLinuxConfigurationPtrOutput) ToOSProfileLinuxConfigurationPtrOu
 
 func (o OSProfileLinuxConfigurationPtrOutput) ToOSProfileLinuxConfigurationPtrOutputWithContext(ctx context.Context) OSProfileLinuxConfigurationPtrOutput {
 	return o
-}
-
-func (o OSProfileLinuxConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSProfileLinuxConfiguration] {
-	return pulumix.Output[*OSProfileLinuxConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OSProfileLinuxConfigurationPtrOutput) Elem() OSProfileLinuxConfigurationOutput {
@@ -3897,12 +3929,6 @@ func (o OSProfileResponseOutput) ToOSProfileResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o OSProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSProfileResponse] {
-	return pulumix.Output[OSProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the host OS name of the hybrid machine.
 func (o OSProfileResponseOutput) ComputerName() pulumi.StringOutput {
 	return o.ApplyT(func(v OSProfileResponse) string { return v.ComputerName }).(pulumi.StringOutput)
@@ -3930,12 +3956,6 @@ func (o OSProfileResponsePtrOutput) ToOSProfileResponsePtrOutput() OSProfileResp
 
 func (o OSProfileResponsePtrOutput) ToOSProfileResponsePtrOutputWithContext(ctx context.Context) OSProfileResponsePtrOutput {
 	return o
-}
-
-func (o OSProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSProfileResponse] {
-	return pulumix.Output[*OSProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OSProfileResponsePtrOutput) Elem() OSProfileResponseOutput {
@@ -4001,12 +4021,6 @@ func (o OSProfileResponseLinuxConfigurationOutput) ToOSProfileResponseLinuxConfi
 	return o
 }
 
-func (o OSProfileResponseLinuxConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[OSProfileResponseLinuxConfiguration] {
-	return pulumix.Output[OSProfileResponseLinuxConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the assessment mode.
 func (o OSProfileResponseLinuxConfigurationOutput) AssessmentMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSProfileResponseLinuxConfiguration) *string { return v.AssessmentMode }).(pulumi.StringPtrOutput)
@@ -4029,12 +4043,6 @@ func (o OSProfileResponseLinuxConfigurationPtrOutput) ToOSProfileResponseLinuxCo
 
 func (o OSProfileResponseLinuxConfigurationPtrOutput) ToOSProfileResponseLinuxConfigurationPtrOutputWithContext(ctx context.Context) OSProfileResponseLinuxConfigurationPtrOutput {
 	return o
-}
-
-func (o OSProfileResponseLinuxConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSProfileResponseLinuxConfiguration] {
-	return pulumix.Output[*OSProfileResponseLinuxConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OSProfileResponseLinuxConfigurationPtrOutput) Elem() OSProfileResponseLinuxConfigurationOutput {
@@ -4090,12 +4098,6 @@ func (o OSProfileResponseWindowsConfigurationOutput) ToOSProfileResponseWindowsC
 	return o
 }
 
-func (o OSProfileResponseWindowsConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[OSProfileResponseWindowsConfiguration] {
-	return pulumix.Output[OSProfileResponseWindowsConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the assessment mode.
 func (o OSProfileResponseWindowsConfigurationOutput) AssessmentMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSProfileResponseWindowsConfiguration) *string { return v.AssessmentMode }).(pulumi.StringPtrOutput)
@@ -4118,12 +4120,6 @@ func (o OSProfileResponseWindowsConfigurationPtrOutput) ToOSProfileResponseWindo
 
 func (o OSProfileResponseWindowsConfigurationPtrOutput) ToOSProfileResponseWindowsConfigurationPtrOutputWithContext(ctx context.Context) OSProfileResponseWindowsConfigurationPtrOutput {
 	return o
-}
-
-func (o OSProfileResponseWindowsConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSProfileResponseWindowsConfiguration] {
-	return pulumix.Output[*OSProfileResponseWindowsConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OSProfileResponseWindowsConfigurationPtrOutput) Elem() OSProfileResponseWindowsConfigurationOutput {
@@ -4195,12 +4191,6 @@ func (i OSProfileWindowsConfigurationArgs) ToOSProfileWindowsConfigurationOutput
 	return pulumi.ToOutputWithContext(ctx, i).(OSProfileWindowsConfigurationOutput)
 }
 
-func (i OSProfileWindowsConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[OSProfileWindowsConfiguration] {
-	return pulumix.Output[OSProfileWindowsConfiguration]{
-		OutputState: i.ToOSProfileWindowsConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OSProfileWindowsConfigurationArgs) ToOSProfileWindowsConfigurationPtrOutput() OSProfileWindowsConfigurationPtrOutput {
 	return i.ToOSProfileWindowsConfigurationPtrOutputWithContext(context.Background())
 }
@@ -4242,12 +4232,6 @@ func (i *osprofileWindowsConfigurationPtrType) ToOSProfileWindowsConfigurationPt
 	return pulumi.ToOutputWithContext(ctx, i).(OSProfileWindowsConfigurationPtrOutput)
 }
 
-func (i *osprofileWindowsConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*OSProfileWindowsConfiguration] {
-	return pulumix.Output[*OSProfileWindowsConfiguration]{
-		OutputState: i.ToOSProfileWindowsConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the windows configuration for update management.
 type OSProfileWindowsConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -4273,12 +4257,6 @@ func (o OSProfileWindowsConfigurationOutput) ToOSProfileWindowsConfigurationPtrO
 	}).(OSProfileWindowsConfigurationPtrOutput)
 }
 
-func (o OSProfileWindowsConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[OSProfileWindowsConfiguration] {
-	return pulumix.Output[OSProfileWindowsConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the assessment mode.
 func (o OSProfileWindowsConfigurationOutput) AssessmentMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSProfileWindowsConfiguration) *string { return v.AssessmentMode }).(pulumi.StringPtrOutput)
@@ -4301,12 +4279,6 @@ func (o OSProfileWindowsConfigurationPtrOutput) ToOSProfileWindowsConfigurationP
 
 func (o OSProfileWindowsConfigurationPtrOutput) ToOSProfileWindowsConfigurationPtrOutputWithContext(ctx context.Context) OSProfileWindowsConfigurationPtrOutput {
 	return o
-}
-
-func (o OSProfileWindowsConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSProfileWindowsConfiguration] {
-	return pulumix.Output[*OSProfileWindowsConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OSProfileWindowsConfigurationPtrOutput) Elem() OSProfileWindowsConfigurationOutput {
@@ -4366,12 +4338,6 @@ func (o PrivateEndpointConnectionDataModelResponseOutput) ToPrivateEndpointConne
 	return o
 }
 
-func (o PrivateEndpointConnectionDataModelResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionDataModelResponse] {
-	return pulumix.Output[PrivateEndpointConnectionDataModelResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ARM Resource Id of the Private Endpoint.
 func (o PrivateEndpointConnectionDataModelResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionDataModelResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -4406,12 +4372,6 @@ func (o PrivateEndpointConnectionDataModelResponseArrayOutput) ToPrivateEndpoint
 
 func (o PrivateEndpointConnectionDataModelResponseArrayOutput) ToPrivateEndpointConnectionDataModelResponseArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionDataModelResponseArrayOutput {
 	return o
-}
-
-func (o PrivateEndpointConnectionDataModelResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionDataModelResponse] {
-	return pulumix.Output[[]PrivateEndpointConnectionDataModelResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateEndpointConnectionDataModelResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionDataModelResponseOutput {
@@ -4459,12 +4419,6 @@ func (i PrivateEndpointConnectionPropertiesArgs) ToPrivateEndpointConnectionProp
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionPropertiesOutput)
 }
 
-func (i PrivateEndpointConnectionPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionProperties] {
-	return pulumix.Output[PrivateEndpointConnectionProperties]{
-		OutputState: i.ToPrivateEndpointConnectionPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PrivateEndpointConnectionPropertiesArgs) ToPrivateEndpointConnectionPropertiesPtrOutput() PrivateEndpointConnectionPropertiesPtrOutput {
 	return i.ToPrivateEndpointConnectionPropertiesPtrOutputWithContext(context.Background())
 }
@@ -4506,12 +4460,6 @@ func (i *privateEndpointConnectionPropertiesPtrType) ToPrivateEndpointConnection
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionPropertiesPtrOutput)
 }
 
-func (i *privateEndpointConnectionPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionProperties] {
-	return pulumix.Output[*PrivateEndpointConnectionProperties]{
-		OutputState: i.ToPrivateEndpointConnectionPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Properties of a private endpoint connection.
 type PrivateEndpointConnectionPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -4535,12 +4483,6 @@ func (o PrivateEndpointConnectionPropertiesOutput) ToPrivateEndpointConnectionPr
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateEndpointConnectionProperties) *PrivateEndpointConnectionProperties {
 		return &v
 	}).(PrivateEndpointConnectionPropertiesPtrOutput)
-}
-
-func (o PrivateEndpointConnectionPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionProperties] {
-	return pulumix.Output[PrivateEndpointConnectionProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Private endpoint which the connection belongs to.
@@ -4567,12 +4509,6 @@ func (o PrivateEndpointConnectionPropertiesPtrOutput) ToPrivateEndpointConnectio
 
 func (o PrivateEndpointConnectionPropertiesPtrOutput) ToPrivateEndpointConnectionPropertiesPtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesPtrOutput {
 	return o
-}
-
-func (o PrivateEndpointConnectionPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionProperties] {
-	return pulumix.Output[*PrivateEndpointConnectionProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateEndpointConnectionPropertiesPtrOutput) Elem() PrivateEndpointConnectionPropertiesOutput {
@@ -4632,12 +4568,6 @@ func (o PrivateEndpointConnectionPropertiesResponseOutput) ToPrivateEndpointConn
 	return o
 }
 
-func (o PrivateEndpointConnectionPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionPropertiesResponse] {
-	return pulumix.Output[PrivateEndpointConnectionPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of group IDs.
 func (o PrivateEndpointConnectionPropertiesResponseOutput) GroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
@@ -4674,12 +4604,6 @@ func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) ToPrivateEndpointC
 
 func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) ToPrivateEndpointConnectionPropertiesResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionPropertiesResponse] {
-	return pulumix.Output[*PrivateEndpointConnectionPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateEndpointConnectionPropertiesResponsePtrOutput) Elem() PrivateEndpointConnectionPropertiesResponseOutput {
@@ -4767,12 +4691,6 @@ func (i PrivateEndpointPropertyArgs) ToPrivateEndpointPropertyOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointPropertyOutput)
 }
 
-func (i PrivateEndpointPropertyArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointProperty] {
-	return pulumix.Output[PrivateEndpointProperty]{
-		OutputState: i.ToPrivateEndpointPropertyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PrivateEndpointPropertyArgs) ToPrivateEndpointPropertyPtrOutput() PrivateEndpointPropertyPtrOutput {
 	return i.ToPrivateEndpointPropertyPtrOutputWithContext(context.Background())
 }
@@ -4814,12 +4732,6 @@ func (i *privateEndpointPropertyPtrType) ToPrivateEndpointPropertyPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointPropertyPtrOutput)
 }
 
-func (i *privateEndpointPropertyPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointProperty] {
-	return pulumix.Output[*PrivateEndpointProperty]{
-		OutputState: i.ToPrivateEndpointPropertyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Private endpoint which the connection belongs to.
 type PrivateEndpointPropertyOutput struct{ *pulumi.OutputState }
 
@@ -4845,12 +4757,6 @@ func (o PrivateEndpointPropertyOutput) ToPrivateEndpointPropertyPtrOutputWithCon
 	}).(PrivateEndpointPropertyPtrOutput)
 }
 
-func (o PrivateEndpointPropertyOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointProperty] {
-	return pulumix.Output[PrivateEndpointProperty]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource id of the private endpoint.
 func (o PrivateEndpointPropertyOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateEndpointProperty) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -4868,12 +4774,6 @@ func (o PrivateEndpointPropertyPtrOutput) ToPrivateEndpointPropertyPtrOutput() P
 
 func (o PrivateEndpointPropertyPtrOutput) ToPrivateEndpointPropertyPtrOutputWithContext(ctx context.Context) PrivateEndpointPropertyPtrOutput {
 	return o
-}
-
-func (o PrivateEndpointPropertyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointProperty] {
-	return pulumix.Output[*PrivateEndpointProperty]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateEndpointPropertyPtrOutput) Elem() PrivateEndpointPropertyOutput {
@@ -4917,12 +4817,6 @@ func (o PrivateEndpointPropertyResponseOutput) ToPrivateEndpointPropertyResponse
 	return o
 }
 
-func (o PrivateEndpointPropertyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointPropertyResponse] {
-	return pulumix.Output[PrivateEndpointPropertyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource id of the private endpoint.
 func (o PrivateEndpointPropertyResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateEndpointPropertyResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -4940,12 +4834,6 @@ func (o PrivateEndpointPropertyResponsePtrOutput) ToPrivateEndpointPropertyRespo
 
 func (o PrivateEndpointPropertyResponsePtrOutput) ToPrivateEndpointPropertyResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointPropertyResponsePtrOutput {
 	return o
-}
-
-func (o PrivateEndpointPropertyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointPropertyResponse] {
-	return pulumix.Output[*PrivateEndpointPropertyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateEndpointPropertyResponsePtrOutput) Elem() PrivateEndpointPropertyResponseOutput {
@@ -5007,12 +4895,6 @@ func (i PrivateLinkServiceConnectionStatePropertyArgs) ToPrivateLinkServiceConne
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStatePropertyOutput)
 }
 
-func (i PrivateLinkServiceConnectionStatePropertyArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateProperty] {
-	return pulumix.Output[PrivateLinkServiceConnectionStateProperty]{
-		OutputState: i.ToPrivateLinkServiceConnectionStatePropertyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PrivateLinkServiceConnectionStatePropertyArgs) ToPrivateLinkServiceConnectionStatePropertyPtrOutput() PrivateLinkServiceConnectionStatePropertyPtrOutput {
 	return i.ToPrivateLinkServiceConnectionStatePropertyPtrOutputWithContext(context.Background())
 }
@@ -5054,12 +4936,6 @@ func (i *privateLinkServiceConnectionStatePropertyPtrType) ToPrivateLinkServiceC
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStatePropertyPtrOutput)
 }
 
-func (i *privateLinkServiceConnectionStatePropertyPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionStateProperty] {
-	return pulumix.Output[*PrivateLinkServiceConnectionStateProperty]{
-		OutputState: i.ToPrivateLinkServiceConnectionStatePropertyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // State of the private endpoint connection.
 type PrivateLinkServiceConnectionStatePropertyOutput struct{ *pulumi.OutputState }
 
@@ -5085,12 +4961,6 @@ func (o PrivateLinkServiceConnectionStatePropertyOutput) ToPrivateLinkServiceCon
 	}).(PrivateLinkServiceConnectionStatePropertyPtrOutput)
 }
 
-func (o PrivateLinkServiceConnectionStatePropertyOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateProperty] {
-	return pulumix.Output[PrivateLinkServiceConnectionStateProperty]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The private link service connection description.
 func (o PrivateLinkServiceConnectionStatePropertyOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateProperty) string { return v.Description }).(pulumi.StringOutput)
@@ -5113,12 +4983,6 @@ func (o PrivateLinkServiceConnectionStatePropertyPtrOutput) ToPrivateLinkService
 
 func (o PrivateLinkServiceConnectionStatePropertyPtrOutput) ToPrivateLinkServiceConnectionStatePropertyPtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePropertyPtrOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionStatePropertyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionStateProperty] {
-	return pulumix.Output[*PrivateLinkServiceConnectionStateProperty]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateLinkServiceConnectionStatePropertyPtrOutput) Elem() PrivateLinkServiceConnectionStatePropertyOutput {
@@ -5176,12 +5040,6 @@ func (o PrivateLinkServiceConnectionStatePropertyResponseOutput) ToPrivateLinkSe
 	return o
 }
 
-func (o PrivateLinkServiceConnectionStatePropertyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStatePropertyResponse] {
-	return pulumix.Output[PrivateLinkServiceConnectionStatePropertyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The actions required for private link service connection.
 func (o PrivateLinkServiceConnectionStatePropertyResponseOutput) ActionsRequired() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStatePropertyResponse) string { return v.ActionsRequired }).(pulumi.StringOutput)
@@ -5209,12 +5067,6 @@ func (o PrivateLinkServiceConnectionStatePropertyResponsePtrOutput) ToPrivateLin
 
 func (o PrivateLinkServiceConnectionStatePropertyResponsePtrOutput) ToPrivateLinkServiceConnectionStatePropertyResponsePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePropertyResponsePtrOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionStatePropertyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionStatePropertyResponse] {
-	return pulumix.Output[*PrivateLinkServiceConnectionStatePropertyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateLinkServiceConnectionStatePropertyResponsePtrOutput) Elem() PrivateLinkServiceConnectionStatePropertyResponseOutput {
@@ -5257,6 +5109,404 @@ func (o PrivateLinkServiceConnectionStatePropertyResponsePtrOutput) Status() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+// Describes the properties of a run command parameter.
+type RunCommandInputParameter struct {
+	// The run command parameter name.
+	Name string `pulumi:"name"`
+	// The run command parameter value.
+	Value string `pulumi:"value"`
+}
+
+// RunCommandInputParameterInput is an input type that accepts RunCommandInputParameterArgs and RunCommandInputParameterOutput values.
+// You can construct a concrete instance of `RunCommandInputParameterInput` via:
+//
+//	RunCommandInputParameterArgs{...}
+type RunCommandInputParameterInput interface {
+	pulumi.Input
+
+	ToRunCommandInputParameterOutput() RunCommandInputParameterOutput
+	ToRunCommandInputParameterOutputWithContext(context.Context) RunCommandInputParameterOutput
+}
+
+// Describes the properties of a run command parameter.
+type RunCommandInputParameterArgs struct {
+	// The run command parameter name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The run command parameter value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (RunCommandInputParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RunCommandInputParameter)(nil)).Elem()
+}
+
+func (i RunCommandInputParameterArgs) ToRunCommandInputParameterOutput() RunCommandInputParameterOutput {
+	return i.ToRunCommandInputParameterOutputWithContext(context.Background())
+}
+
+func (i RunCommandInputParameterArgs) ToRunCommandInputParameterOutputWithContext(ctx context.Context) RunCommandInputParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RunCommandInputParameterOutput)
+}
+
+// RunCommandInputParameterArrayInput is an input type that accepts RunCommandInputParameterArray and RunCommandInputParameterArrayOutput values.
+// You can construct a concrete instance of `RunCommandInputParameterArrayInput` via:
+//
+//	RunCommandInputParameterArray{ RunCommandInputParameterArgs{...} }
+type RunCommandInputParameterArrayInput interface {
+	pulumi.Input
+
+	ToRunCommandInputParameterArrayOutput() RunCommandInputParameterArrayOutput
+	ToRunCommandInputParameterArrayOutputWithContext(context.Context) RunCommandInputParameterArrayOutput
+}
+
+type RunCommandInputParameterArray []RunCommandInputParameterInput
+
+func (RunCommandInputParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RunCommandInputParameter)(nil)).Elem()
+}
+
+func (i RunCommandInputParameterArray) ToRunCommandInputParameterArrayOutput() RunCommandInputParameterArrayOutput {
+	return i.ToRunCommandInputParameterArrayOutputWithContext(context.Background())
+}
+
+func (i RunCommandInputParameterArray) ToRunCommandInputParameterArrayOutputWithContext(ctx context.Context) RunCommandInputParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RunCommandInputParameterArrayOutput)
+}
+
+// Describes the properties of a run command parameter.
+type RunCommandInputParameterOutput struct{ *pulumi.OutputState }
+
+func (RunCommandInputParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RunCommandInputParameter)(nil)).Elem()
+}
+
+func (o RunCommandInputParameterOutput) ToRunCommandInputParameterOutput() RunCommandInputParameterOutput {
+	return o
+}
+
+func (o RunCommandInputParameterOutput) ToRunCommandInputParameterOutputWithContext(ctx context.Context) RunCommandInputParameterOutput {
+	return o
+}
+
+// The run command parameter name.
+func (o RunCommandInputParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RunCommandInputParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The run command parameter value.
+func (o RunCommandInputParameterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v RunCommandInputParameter) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type RunCommandInputParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (RunCommandInputParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RunCommandInputParameter)(nil)).Elem()
+}
+
+func (o RunCommandInputParameterArrayOutput) ToRunCommandInputParameterArrayOutput() RunCommandInputParameterArrayOutput {
+	return o
+}
+
+func (o RunCommandInputParameterArrayOutput) ToRunCommandInputParameterArrayOutputWithContext(ctx context.Context) RunCommandInputParameterArrayOutput {
+	return o
+}
+
+func (o RunCommandInputParameterArrayOutput) Index(i pulumi.IntInput) RunCommandInputParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RunCommandInputParameter {
+		return vs[0].([]RunCommandInputParameter)[vs[1].(int)]
+	}).(RunCommandInputParameterOutput)
+}
+
+// Describes the properties of a run command parameter.
+type RunCommandInputParameterResponse struct {
+	// The run command parameter name.
+	Name string `pulumi:"name"`
+	// The run command parameter value.
+	Value string `pulumi:"value"`
+}
+
+// Describes the properties of a run command parameter.
+type RunCommandInputParameterResponseOutput struct{ *pulumi.OutputState }
+
+func (RunCommandInputParameterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RunCommandInputParameterResponse)(nil)).Elem()
+}
+
+func (o RunCommandInputParameterResponseOutput) ToRunCommandInputParameterResponseOutput() RunCommandInputParameterResponseOutput {
+	return o
+}
+
+func (o RunCommandInputParameterResponseOutput) ToRunCommandInputParameterResponseOutputWithContext(ctx context.Context) RunCommandInputParameterResponseOutput {
+	return o
+}
+
+// The run command parameter name.
+func (o RunCommandInputParameterResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RunCommandInputParameterResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The run command parameter value.
+func (o RunCommandInputParameterResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v RunCommandInputParameterResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type RunCommandInputParameterResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RunCommandInputParameterResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RunCommandInputParameterResponse)(nil)).Elem()
+}
+
+func (o RunCommandInputParameterResponseArrayOutput) ToRunCommandInputParameterResponseArrayOutput() RunCommandInputParameterResponseArrayOutput {
+	return o
+}
+
+func (o RunCommandInputParameterResponseArrayOutput) ToRunCommandInputParameterResponseArrayOutputWithContext(ctx context.Context) RunCommandInputParameterResponseArrayOutput {
+	return o
+}
+
+func (o RunCommandInputParameterResponseArrayOutput) Index(i pulumi.IntInput) RunCommandInputParameterResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RunCommandInputParameterResponse {
+		return vs[0].([]RunCommandInputParameterResponse)[vs[1].(int)]
+	}).(RunCommandInputParameterResponseOutput)
+}
+
+// Contains clientId or objectId (use only one, not both) of a user-assigned managed identity that has access to storage blob used in Run Command. Use an empty RunCommandManagedIdentity object in case of system-assigned identity. Make sure the Azure storage blob exists in case of scriptUri, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment with scriptUri blob and 'Storage Blob Data Contributor' for Append blobs(outputBlobUri, errorBlobUri). In case of user assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
+type RunCommandManagedIdentity struct {
+	// Client Id (GUID value) of the user-assigned managed identity. ObjectId should not be used if this is provided.
+	ClientId *string `pulumi:"clientId"`
+	// Object Id (GUID value) of the user-assigned managed identity. ClientId should not be used if this is provided.
+	ObjectId *string `pulumi:"objectId"`
+}
+
+// RunCommandManagedIdentityInput is an input type that accepts RunCommandManagedIdentityArgs and RunCommandManagedIdentityOutput values.
+// You can construct a concrete instance of `RunCommandManagedIdentityInput` via:
+//
+//	RunCommandManagedIdentityArgs{...}
+type RunCommandManagedIdentityInput interface {
+	pulumi.Input
+
+	ToRunCommandManagedIdentityOutput() RunCommandManagedIdentityOutput
+	ToRunCommandManagedIdentityOutputWithContext(context.Context) RunCommandManagedIdentityOutput
+}
+
+// Contains clientId or objectId (use only one, not both) of a user-assigned managed identity that has access to storage blob used in Run Command. Use an empty RunCommandManagedIdentity object in case of system-assigned identity. Make sure the Azure storage blob exists in case of scriptUri, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment with scriptUri blob and 'Storage Blob Data Contributor' for Append blobs(outputBlobUri, errorBlobUri). In case of user assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
+type RunCommandManagedIdentityArgs struct {
+	// Client Id (GUID value) of the user-assigned managed identity. ObjectId should not be used if this is provided.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Object Id (GUID value) of the user-assigned managed identity. ClientId should not be used if this is provided.
+	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
+}
+
+func (RunCommandManagedIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RunCommandManagedIdentity)(nil)).Elem()
+}
+
+func (i RunCommandManagedIdentityArgs) ToRunCommandManagedIdentityOutput() RunCommandManagedIdentityOutput {
+	return i.ToRunCommandManagedIdentityOutputWithContext(context.Background())
+}
+
+func (i RunCommandManagedIdentityArgs) ToRunCommandManagedIdentityOutputWithContext(ctx context.Context) RunCommandManagedIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RunCommandManagedIdentityOutput)
+}
+
+func (i RunCommandManagedIdentityArgs) ToRunCommandManagedIdentityPtrOutput() RunCommandManagedIdentityPtrOutput {
+	return i.ToRunCommandManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i RunCommandManagedIdentityArgs) ToRunCommandManagedIdentityPtrOutputWithContext(ctx context.Context) RunCommandManagedIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RunCommandManagedIdentityOutput).ToRunCommandManagedIdentityPtrOutputWithContext(ctx)
+}
+
+// RunCommandManagedIdentityPtrInput is an input type that accepts RunCommandManagedIdentityArgs, RunCommandManagedIdentityPtr and RunCommandManagedIdentityPtrOutput values.
+// You can construct a concrete instance of `RunCommandManagedIdentityPtrInput` via:
+//
+//	        RunCommandManagedIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type RunCommandManagedIdentityPtrInput interface {
+	pulumi.Input
+
+	ToRunCommandManagedIdentityPtrOutput() RunCommandManagedIdentityPtrOutput
+	ToRunCommandManagedIdentityPtrOutputWithContext(context.Context) RunCommandManagedIdentityPtrOutput
+}
+
+type runCommandManagedIdentityPtrType RunCommandManagedIdentityArgs
+
+func RunCommandManagedIdentityPtr(v *RunCommandManagedIdentityArgs) RunCommandManagedIdentityPtrInput {
+	return (*runCommandManagedIdentityPtrType)(v)
+}
+
+func (*runCommandManagedIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RunCommandManagedIdentity)(nil)).Elem()
+}
+
+func (i *runCommandManagedIdentityPtrType) ToRunCommandManagedIdentityPtrOutput() RunCommandManagedIdentityPtrOutput {
+	return i.ToRunCommandManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *runCommandManagedIdentityPtrType) ToRunCommandManagedIdentityPtrOutputWithContext(ctx context.Context) RunCommandManagedIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RunCommandManagedIdentityPtrOutput)
+}
+
+// Contains clientId or objectId (use only one, not both) of a user-assigned managed identity that has access to storage blob used in Run Command. Use an empty RunCommandManagedIdentity object in case of system-assigned identity. Make sure the Azure storage blob exists in case of scriptUri, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment with scriptUri blob and 'Storage Blob Data Contributor' for Append blobs(outputBlobUri, errorBlobUri). In case of user assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
+type RunCommandManagedIdentityOutput struct{ *pulumi.OutputState }
+
+func (RunCommandManagedIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RunCommandManagedIdentity)(nil)).Elem()
+}
+
+func (o RunCommandManagedIdentityOutput) ToRunCommandManagedIdentityOutput() RunCommandManagedIdentityOutput {
+	return o
+}
+
+func (o RunCommandManagedIdentityOutput) ToRunCommandManagedIdentityOutputWithContext(ctx context.Context) RunCommandManagedIdentityOutput {
+	return o
+}
+
+func (o RunCommandManagedIdentityOutput) ToRunCommandManagedIdentityPtrOutput() RunCommandManagedIdentityPtrOutput {
+	return o.ToRunCommandManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o RunCommandManagedIdentityOutput) ToRunCommandManagedIdentityPtrOutputWithContext(ctx context.Context) RunCommandManagedIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RunCommandManagedIdentity) *RunCommandManagedIdentity {
+		return &v
+	}).(RunCommandManagedIdentityPtrOutput)
+}
+
+// Client Id (GUID value) of the user-assigned managed identity. ObjectId should not be used if this is provided.
+func (o RunCommandManagedIdentityOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RunCommandManagedIdentity) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Object Id (GUID value) of the user-assigned managed identity. ClientId should not be used if this is provided.
+func (o RunCommandManagedIdentityOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RunCommandManagedIdentity) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
+}
+
+type RunCommandManagedIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (RunCommandManagedIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RunCommandManagedIdentity)(nil)).Elem()
+}
+
+func (o RunCommandManagedIdentityPtrOutput) ToRunCommandManagedIdentityPtrOutput() RunCommandManagedIdentityPtrOutput {
+	return o
+}
+
+func (o RunCommandManagedIdentityPtrOutput) ToRunCommandManagedIdentityPtrOutputWithContext(ctx context.Context) RunCommandManagedIdentityPtrOutput {
+	return o
+}
+
+func (o RunCommandManagedIdentityPtrOutput) Elem() RunCommandManagedIdentityOutput {
+	return o.ApplyT(func(v *RunCommandManagedIdentity) RunCommandManagedIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret RunCommandManagedIdentity
+		return ret
+	}).(RunCommandManagedIdentityOutput)
+}
+
+// Client Id (GUID value) of the user-assigned managed identity. ObjectId should not be used if this is provided.
+func (o RunCommandManagedIdentityPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RunCommandManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Object Id (GUID value) of the user-assigned managed identity. ClientId should not be used if this is provided.
+func (o RunCommandManagedIdentityPtrOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RunCommandManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains clientId or objectId (use only one, not both) of a user-assigned managed identity that has access to storage blob used in Run Command. Use an empty RunCommandManagedIdentity object in case of system-assigned identity. Make sure the Azure storage blob exists in case of scriptUri, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment with scriptUri blob and 'Storage Blob Data Contributor' for Append blobs(outputBlobUri, errorBlobUri). In case of user assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
+type RunCommandManagedIdentityResponse struct {
+	// Client Id (GUID value) of the user-assigned managed identity. ObjectId should not be used if this is provided.
+	ClientId *string `pulumi:"clientId"`
+	// Object Id (GUID value) of the user-assigned managed identity. ClientId should not be used if this is provided.
+	ObjectId *string `pulumi:"objectId"`
+}
+
+// Contains clientId or objectId (use only one, not both) of a user-assigned managed identity that has access to storage blob used in Run Command. Use an empty RunCommandManagedIdentity object in case of system-assigned identity. Make sure the Azure storage blob exists in case of scriptUri, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment with scriptUri blob and 'Storage Blob Data Contributor' for Append blobs(outputBlobUri, errorBlobUri). In case of user assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
+type RunCommandManagedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (RunCommandManagedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RunCommandManagedIdentityResponse)(nil)).Elem()
+}
+
+func (o RunCommandManagedIdentityResponseOutput) ToRunCommandManagedIdentityResponseOutput() RunCommandManagedIdentityResponseOutput {
+	return o
+}
+
+func (o RunCommandManagedIdentityResponseOutput) ToRunCommandManagedIdentityResponseOutputWithContext(ctx context.Context) RunCommandManagedIdentityResponseOutput {
+	return o
+}
+
+// Client Id (GUID value) of the user-assigned managed identity. ObjectId should not be used if this is provided.
+func (o RunCommandManagedIdentityResponseOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RunCommandManagedIdentityResponse) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Object Id (GUID value) of the user-assigned managed identity. ClientId should not be used if this is provided.
+func (o RunCommandManagedIdentityResponseOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RunCommandManagedIdentityResponse) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
+}
+
+type RunCommandManagedIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RunCommandManagedIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RunCommandManagedIdentityResponse)(nil)).Elem()
+}
+
+func (o RunCommandManagedIdentityResponsePtrOutput) ToRunCommandManagedIdentityResponsePtrOutput() RunCommandManagedIdentityResponsePtrOutput {
+	return o
+}
+
+func (o RunCommandManagedIdentityResponsePtrOutput) ToRunCommandManagedIdentityResponsePtrOutputWithContext(ctx context.Context) RunCommandManagedIdentityResponsePtrOutput {
+	return o
+}
+
+func (o RunCommandManagedIdentityResponsePtrOutput) Elem() RunCommandManagedIdentityResponseOutput {
+	return o.ApplyT(func(v *RunCommandManagedIdentityResponse) RunCommandManagedIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RunCommandManagedIdentityResponse
+		return ret
+	}).(RunCommandManagedIdentityResponseOutput)
+}
+
+// Client Id (GUID value) of the user-assigned managed identity. ObjectId should not be used if this is provided.
+func (o RunCommandManagedIdentityResponsePtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RunCommandManagedIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Object Id (GUID value) of the user-assigned managed identity. ClientId should not be used if this is provided.
+func (o RunCommandManagedIdentityResponsePtrOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RunCommandManagedIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Describes the status and behavior of a service.
 type ServiceStatus struct {
 	// The behavior of the service when the Arc-enabled machine starts up.
@@ -5294,12 +5544,6 @@ func (i ServiceStatusArgs) ToServiceStatusOutput() ServiceStatusOutput {
 
 func (i ServiceStatusArgs) ToServiceStatusOutputWithContext(ctx context.Context) ServiceStatusOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceStatusOutput)
-}
-
-func (i ServiceStatusArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceStatus] {
-	return pulumix.Output[ServiceStatus]{
-		OutputState: i.ToServiceStatusOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ServiceStatusArgs) ToServiceStatusPtrOutput() ServiceStatusPtrOutput {
@@ -5343,12 +5587,6 @@ func (i *serviceStatusPtrType) ToServiceStatusPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceStatusPtrOutput)
 }
 
-func (i *serviceStatusPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceStatus] {
-	return pulumix.Output[*ServiceStatus]{
-		OutputState: i.ToServiceStatusPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes the status and behavior of a service.
 type ServiceStatusOutput struct{ *pulumi.OutputState }
 
@@ -5374,12 +5612,6 @@ func (o ServiceStatusOutput) ToServiceStatusPtrOutputWithContext(ctx context.Con
 	}).(ServiceStatusPtrOutput)
 }
 
-func (o ServiceStatusOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceStatus] {
-	return pulumix.Output[ServiceStatus]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The behavior of the service when the Arc-enabled machine starts up.
 func (o ServiceStatusOutput) StartupType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceStatus) *string { return v.StartupType }).(pulumi.StringPtrOutput)
@@ -5402,12 +5634,6 @@ func (o ServiceStatusPtrOutput) ToServiceStatusPtrOutput() ServiceStatusPtrOutpu
 
 func (o ServiceStatusPtrOutput) ToServiceStatusPtrOutputWithContext(ctx context.Context) ServiceStatusPtrOutput {
 	return o
-}
-
-func (o ServiceStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceStatus] {
-	return pulumix.Output[*ServiceStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceStatusPtrOutput) Elem() ServiceStatusOutput {
@@ -5463,12 +5689,6 @@ func (o ServiceStatusResponseOutput) ToServiceStatusResponseOutputWithContext(ct
 	return o
 }
 
-func (o ServiceStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceStatusResponse] {
-	return pulumix.Output[ServiceStatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The behavior of the service when the Arc-enabled machine starts up.
 func (o ServiceStatusResponseOutput) StartupType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceStatusResponse) *string { return v.StartupType }).(pulumi.StringPtrOutput)
@@ -5491,12 +5711,6 @@ func (o ServiceStatusResponsePtrOutput) ToServiceStatusResponsePtrOutput() Servi
 
 func (o ServiceStatusResponsePtrOutput) ToServiceStatusResponsePtrOutputWithContext(ctx context.Context) ServiceStatusResponsePtrOutput {
 	return o
-}
-
-func (o ServiceStatusResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceStatusResponse] {
-	return pulumix.Output[*ServiceStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceStatusResponsePtrOutput) Elem() ServiceStatusResponseOutput {
@@ -5568,12 +5782,6 @@ func (i ServiceStatusesArgs) ToServiceStatusesOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceStatusesOutput)
 }
 
-func (i ServiceStatusesArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceStatuses] {
-	return pulumix.Output[ServiceStatuses]{
-		OutputState: i.ToServiceStatusesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceStatusesArgs) ToServiceStatusesPtrOutput() ServiceStatusesPtrOutput {
 	return i.ToServiceStatusesPtrOutputWithContext(context.Background())
 }
@@ -5615,12 +5823,6 @@ func (i *serviceStatusesPtrType) ToServiceStatusesPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceStatusesPtrOutput)
 }
 
-func (i *serviceStatusesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceStatuses] {
-	return pulumix.Output[*ServiceStatuses]{
-		OutputState: i.ToServiceStatusesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Reports the state and behavior of dependent services.
 type ServiceStatusesOutput struct{ *pulumi.OutputState }
 
@@ -5646,12 +5848,6 @@ func (o ServiceStatusesOutput) ToServiceStatusesPtrOutputWithContext(ctx context
 	}).(ServiceStatusesPtrOutput)
 }
 
-func (o ServiceStatusesOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceStatuses] {
-	return pulumix.Output[ServiceStatuses]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The state of the extension service on the Arc-enabled machine.
 func (o ServiceStatusesOutput) ExtensionService() ServiceStatusPtrOutput {
 	return o.ApplyT(func(v ServiceStatuses) *ServiceStatus { return v.ExtensionService }).(ServiceStatusPtrOutput)
@@ -5674,12 +5870,6 @@ func (o ServiceStatusesPtrOutput) ToServiceStatusesPtrOutput() ServiceStatusesPt
 
 func (o ServiceStatusesPtrOutput) ToServiceStatusesPtrOutputWithContext(ctx context.Context) ServiceStatusesPtrOutput {
 	return o
-}
-
-func (o ServiceStatusesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceStatuses] {
-	return pulumix.Output[*ServiceStatuses]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceStatusesPtrOutput) Elem() ServiceStatusesOutput {
@@ -5735,12 +5925,6 @@ func (o ServiceStatusesResponseOutput) ToServiceStatusesResponseOutputWithContex
 	return o
 }
 
-func (o ServiceStatusesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceStatusesResponse] {
-	return pulumix.Output[ServiceStatusesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The state of the extension service on the Arc-enabled machine.
 func (o ServiceStatusesResponseOutput) ExtensionService() ServiceStatusResponsePtrOutput {
 	return o.ApplyT(func(v ServiceStatusesResponse) *ServiceStatusResponse { return v.ExtensionService }).(ServiceStatusResponsePtrOutput)
@@ -5763,12 +5947,6 @@ func (o ServiceStatusesResponsePtrOutput) ToServiceStatusesResponsePtrOutput() S
 
 func (o ServiceStatusesResponsePtrOutput) ToServiceStatusesResponsePtrOutputWithContext(ctx context.Context) ServiceStatusesResponsePtrOutput {
 	return o
-}
-
-func (o ServiceStatusesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceStatusesResponse] {
-	return pulumix.Output[*ServiceStatusesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceStatusesResponsePtrOutput) Elem() ServiceStatusesResponseOutput {
@@ -5832,12 +6010,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timestamp of resource creation (UTC).
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
@@ -5884,6 +6056,8 @@ func init() {
 	pulumi.RegisterOutputType(ErrorDetailResponseArrayOutput{})
 	pulumi.RegisterOutputType(EsuKeyResponseOutput{})
 	pulumi.RegisterOutputType(EsuKeyResponseArrayOutput{})
+	pulumi.RegisterOutputType(ExtensionsResourceStatusResponseOutput{})
+	pulumi.RegisterOutputType(ExtensionsResourceStatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(HybridComputePrivateLinkScopePropertiesOutput{})
 	pulumi.RegisterOutputType(HybridComputePrivateLinkScopePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(HybridComputePrivateLinkScopePropertiesResponseOutput{})
@@ -5915,6 +6089,11 @@ func init() {
 	pulumi.RegisterOutputType(MachineExtensionPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(MachineExtensionResponseOutput{})
 	pulumi.RegisterOutputType(MachineExtensionResponseArrayOutput{})
+	pulumi.RegisterOutputType(MachineRunCommandInstanceViewResponseOutput{})
+	pulumi.RegisterOutputType(MachineRunCommandScriptSourceOutput{})
+	pulumi.RegisterOutputType(MachineRunCommandScriptSourcePtrOutput{})
+	pulumi.RegisterOutputType(MachineRunCommandScriptSourceResponseOutput{})
+	pulumi.RegisterOutputType(MachineRunCommandScriptSourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(OSProfileOutput{})
 	pulumi.RegisterOutputType(OSProfilePtrOutput{})
 	pulumi.RegisterOutputType(OSProfileLinuxConfigurationOutput{})
@@ -5941,6 +6120,14 @@ func init() {
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePropertyPtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePropertyResponseOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePropertyResponsePtrOutput{})
+	pulumi.RegisterOutputType(RunCommandInputParameterOutput{})
+	pulumi.RegisterOutputType(RunCommandInputParameterArrayOutput{})
+	pulumi.RegisterOutputType(RunCommandInputParameterResponseOutput{})
+	pulumi.RegisterOutputType(RunCommandInputParameterResponseArrayOutput{})
+	pulumi.RegisterOutputType(RunCommandManagedIdentityOutput{})
+	pulumi.RegisterOutputType(RunCommandManagedIdentityPtrOutput{})
+	pulumi.RegisterOutputType(RunCommandManagedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(RunCommandManagedIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(ServiceStatusOutput{})
 	pulumi.RegisterOutputType(ServiceStatusPtrOutput{})
 	pulumi.RegisterOutputType(ServiceStatusResponseOutput{})

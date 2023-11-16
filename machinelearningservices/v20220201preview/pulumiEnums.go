@@ -717,12 +717,6 @@ func (o SkuTierOutput) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTie
 	}).(SkuTierPtrOutput)
 }
 
-func (o SkuTierOutput) ToOutput(ctx context.Context) pulumix.Output[SkuTier] {
-	return pulumix.Output[SkuTier]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SkuTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -756,12 +750,6 @@ func (o SkuTierPtrOutput) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (o SkuTierPtrOutput) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return o
-}
-
-func (o SkuTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuTierPtrOutput) Elem() SkuTierOutput {

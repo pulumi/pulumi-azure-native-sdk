@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get an Activity Log Alert rule.
@@ -113,12 +112,6 @@ func (o LookupActivityLogAlertResultOutput) ToLookupActivityLogAlertResultOutput
 
 func (o LookupActivityLogAlertResultOutput) ToLookupActivityLogAlertResultOutputWithContext(ctx context.Context) LookupActivityLogAlertResultOutput {
 	return o
-}
-
-func (o LookupActivityLogAlertResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupActivityLogAlertResult] {
-	return pulumix.Output[LookupActivityLogAlertResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The actions that will activate when the condition is met.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a DeploymentSetting
@@ -93,12 +92,6 @@ func (o LookupDeploymentSettingResultOutput) ToLookupDeploymentSettingResultOutp
 
 func (o LookupDeploymentSettingResultOutput) ToLookupDeploymentSettingResultOutputWithContext(ctx context.Context) LookupDeploymentSettingResultOutput {
 	return o
-}
-
-func (o LookupDeploymentSettingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDeploymentSettingResult] {
-	return pulumix.Output[LookupDeploymentSettingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Azure resource ids of Arc machines to be part of cluster.

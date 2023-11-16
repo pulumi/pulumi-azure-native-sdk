@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List all apps that are assigned to a hostname.
@@ -71,12 +70,6 @@ func (o ListSiteIdentifiersAssignedToHostNameResultOutput) ToListSiteIdentifiers
 
 func (o ListSiteIdentifiersAssignedToHostNameResultOutput) ToListSiteIdentifiersAssignedToHostNameResultOutputWithContext(ctx context.Context) ListSiteIdentifiersAssignedToHostNameResultOutput {
 	return o
-}
-
-func (o ListSiteIdentifiersAssignedToHostNameResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListSiteIdentifiersAssignedToHostNameResult] {
-	return pulumix.Output[ListSiteIdentifiersAssignedToHostNameResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Link to next page of resources.

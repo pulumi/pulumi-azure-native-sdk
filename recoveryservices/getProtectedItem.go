@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides the details of the backed up item. This is an asynchronous operation. To know the status of the operation,
@@ -105,12 +104,6 @@ func (o LookupProtectedItemResultOutput) ToLookupProtectedItemResultOutput() Loo
 
 func (o LookupProtectedItemResultOutput) ToLookupProtectedItemResultOutputWithContext(ctx context.Context) LookupProtectedItemResultOutput {
 	return o
-}
-
-func (o LookupProtectedItemResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProtectedItemResult] {
-	return pulumix.Output[LookupProtectedItemResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional ETag.

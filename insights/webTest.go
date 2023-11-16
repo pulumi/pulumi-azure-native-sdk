@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Application Insights WebTest definition.
@@ -227,12 +226,6 @@ func (i *WebTest) ToWebTestOutputWithContext(ctx context.Context) WebTestOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(WebTestOutput)
 }
 
-func (i *WebTest) ToOutput(ctx context.Context) pulumix.Output[*WebTest] {
-	return pulumix.Output[*WebTest]{
-		OutputState: i.ToWebTestOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebTestOutput struct{ *pulumi.OutputState }
 
 func (WebTestOutput) ElementType() reflect.Type {
@@ -245,12 +238,6 @@ func (o WebTestOutput) ToWebTestOutput() WebTestOutput {
 
 func (o WebTestOutput) ToWebTestOutputWithContext(ctx context.Context) WebTestOutput {
 	return o
-}
-
-func (o WebTestOutput) ToOutput(ctx context.Context) pulumix.Output[*WebTest] {
-	return pulumix.Output[*WebTest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An XML configuration specification for a WebTest.

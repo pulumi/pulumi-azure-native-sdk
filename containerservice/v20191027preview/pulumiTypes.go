@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -81,12 +80,6 @@ func (i NetworkProfileArgs) ToNetworkProfileOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkProfileOutput)
 }
 
-func (i NetworkProfileArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkProfile] {
-	return pulumix.Output[NetworkProfile]{
-		OutputState: i.ToNetworkProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i NetworkProfileArgs) ToNetworkProfilePtrOutput() NetworkProfilePtrOutput {
 	return i.ToNetworkProfilePtrOutputWithContext(context.Background())
 }
@@ -128,12 +121,6 @@ func (i *networkProfilePtrType) ToNetworkProfilePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkProfilePtrOutput)
 }
 
-func (i *networkProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*NetworkProfile] {
-	return pulumix.Output[*NetworkProfile]{
-		OutputState: i.ToNetworkProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the OpenShift networking configuration
 type NetworkProfileOutput struct{ *pulumi.OutputState }
 
@@ -157,12 +144,6 @@ func (o NetworkProfileOutput) ToNetworkProfilePtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkProfile) *NetworkProfile {
 		return &v
 	}).(NetworkProfilePtrOutput)
-}
-
-func (o NetworkProfileOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkProfile] {
-	return pulumix.Output[NetworkProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // CIDR of subnet used to create PLS needed for management of the cluster
@@ -192,12 +173,6 @@ func (o NetworkProfilePtrOutput) ToNetworkProfilePtrOutput() NetworkProfilePtrOu
 
 func (o NetworkProfilePtrOutput) ToNetworkProfilePtrOutputWithContext(ctx context.Context) NetworkProfilePtrOutput {
 	return o
-}
-
-func (o NetworkProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkProfile] {
-	return pulumix.Output[*NetworkProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkProfilePtrOutput) Elem() NetworkProfileOutput {
@@ -278,12 +253,6 @@ func (o NetworkProfileResponseOutput) ToNetworkProfileResponseOutputWithContext(
 	return o
 }
 
-func (o NetworkProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkProfileResponse] {
-	return pulumix.Output[NetworkProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // CIDR of subnet used to create PLS needed for management of the cluster
 func (o NetworkProfileResponseOutput) ManagementSubnetCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkProfileResponse) *string { return v.ManagementSubnetCidr }).(pulumi.StringPtrOutput)
@@ -311,12 +280,6 @@ func (o NetworkProfileResponsePtrOutput) ToNetworkProfileResponsePtrOutput() Net
 
 func (o NetworkProfileResponsePtrOutput) ToNetworkProfileResponsePtrOutputWithContext(ctx context.Context) NetworkProfileResponsePtrOutput {
 	return o
-}
-
-func (o NetworkProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkProfileResponse] {
-	return pulumix.Output[*NetworkProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkProfileResponsePtrOutput) Elem() NetworkProfileResponseOutput {
@@ -394,12 +357,6 @@ func (i OpenShiftAPIPropertiesArgs) ToOpenShiftAPIPropertiesOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftAPIPropertiesOutput)
 }
 
-func (i OpenShiftAPIPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[OpenShiftAPIProperties] {
-	return pulumix.Output[OpenShiftAPIProperties]{
-		OutputState: i.ToOpenShiftAPIPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OpenShiftAPIPropertiesArgs) ToOpenShiftAPIPropertiesPtrOutput() OpenShiftAPIPropertiesPtrOutput {
 	return i.ToOpenShiftAPIPropertiesPtrOutputWithContext(context.Background())
 }
@@ -441,12 +398,6 @@ func (i *openShiftAPIPropertiesPtrType) ToOpenShiftAPIPropertiesPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftAPIPropertiesPtrOutput)
 }
 
-func (i *openShiftAPIPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*OpenShiftAPIProperties] {
-	return pulumix.Output[*OpenShiftAPIProperties]{
-		OutputState: i.ToOpenShiftAPIPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines further properties on the API.
 type OpenShiftAPIPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -472,12 +423,6 @@ func (o OpenShiftAPIPropertiesOutput) ToOpenShiftAPIPropertiesPtrOutputWithConte
 	}).(OpenShiftAPIPropertiesPtrOutput)
 }
 
-func (o OpenShiftAPIPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[OpenShiftAPIProperties] {
-	return pulumix.Output[OpenShiftAPIProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies if API server is public or private.
 func (o OpenShiftAPIPropertiesOutput) PrivateApiServer() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OpenShiftAPIProperties) *bool { return v.PrivateApiServer }).(pulumi.BoolPtrOutput)
@@ -495,12 +440,6 @@ func (o OpenShiftAPIPropertiesPtrOutput) ToOpenShiftAPIPropertiesPtrOutput() Ope
 
 func (o OpenShiftAPIPropertiesPtrOutput) ToOpenShiftAPIPropertiesPtrOutputWithContext(ctx context.Context) OpenShiftAPIPropertiesPtrOutput {
 	return o
-}
-
-func (o OpenShiftAPIPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenShiftAPIProperties] {
-	return pulumix.Output[*OpenShiftAPIProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenShiftAPIPropertiesPtrOutput) Elem() OpenShiftAPIPropertiesOutput {
@@ -544,12 +483,6 @@ func (o OpenShiftAPIPropertiesResponseOutput) ToOpenShiftAPIPropertiesResponseOu
 	return o
 }
 
-func (o OpenShiftAPIPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OpenShiftAPIPropertiesResponse] {
-	return pulumix.Output[OpenShiftAPIPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies if API server is public or private.
 func (o OpenShiftAPIPropertiesResponseOutput) PrivateApiServer() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OpenShiftAPIPropertiesResponse) *bool { return v.PrivateApiServer }).(pulumi.BoolPtrOutput)
@@ -567,12 +500,6 @@ func (o OpenShiftAPIPropertiesResponsePtrOutput) ToOpenShiftAPIPropertiesRespons
 
 func (o OpenShiftAPIPropertiesResponsePtrOutput) ToOpenShiftAPIPropertiesResponsePtrOutputWithContext(ctx context.Context) OpenShiftAPIPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o OpenShiftAPIPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenShiftAPIPropertiesResponse] {
-	return pulumix.Output[*OpenShiftAPIPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenShiftAPIPropertiesResponsePtrOutput) Elem() OpenShiftAPIPropertiesResponseOutput {
@@ -648,12 +575,6 @@ func (i OpenShiftManagedClusterAADIdentityProviderArgs) ToOpenShiftManagedCluste
 	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterAADIdentityProviderOutput)
 }
 
-func (i OpenShiftManagedClusterAADIdentityProviderArgs) ToOutput(ctx context.Context) pulumix.Output[OpenShiftManagedClusterAADIdentityProvider] {
-	return pulumix.Output[OpenShiftManagedClusterAADIdentityProvider]{
-		OutputState: i.ToOpenShiftManagedClusterAADIdentityProviderOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OpenShiftManagedClusterAADIdentityProviderArgs) ToOpenShiftManagedClusterAADIdentityProviderPtrOutput() OpenShiftManagedClusterAADIdentityProviderPtrOutput {
 	return i.ToOpenShiftManagedClusterAADIdentityProviderPtrOutputWithContext(context.Background())
 }
@@ -695,12 +616,6 @@ func (i *openShiftManagedClusterAADIdentityProviderPtrType) ToOpenShiftManagedCl
 	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterAADIdentityProviderPtrOutput)
 }
 
-func (i *openShiftManagedClusterAADIdentityProviderPtrType) ToOutput(ctx context.Context) pulumix.Output[*OpenShiftManagedClusterAADIdentityProvider] {
-	return pulumix.Output[*OpenShiftManagedClusterAADIdentityProvider]{
-		OutputState: i.ToOpenShiftManagedClusterAADIdentityProviderPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the Identity provider for MS AAD.
 type OpenShiftManagedClusterAADIdentityProviderOutput struct{ *pulumi.OutputState }
 
@@ -724,12 +639,6 @@ func (o OpenShiftManagedClusterAADIdentityProviderOutput) ToOpenShiftManagedClus
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenShiftManagedClusterAADIdentityProvider) *OpenShiftManagedClusterAADIdentityProvider {
 		return &v
 	}).(OpenShiftManagedClusterAADIdentityProviderPtrOutput)
-}
-
-func (o OpenShiftManagedClusterAADIdentityProviderOutput) ToOutput(ctx context.Context) pulumix.Output[OpenShiftManagedClusterAADIdentityProvider] {
-	return pulumix.Output[OpenShiftManagedClusterAADIdentityProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The clientId password associated with the provider.
@@ -770,12 +679,6 @@ func (o OpenShiftManagedClusterAADIdentityProviderPtrOutput) ToOpenShiftManagedC
 
 func (o OpenShiftManagedClusterAADIdentityProviderPtrOutput) ToOpenShiftManagedClusterAADIdentityProviderPtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterAADIdentityProviderPtrOutput {
 	return o
-}
-
-func (o OpenShiftManagedClusterAADIdentityProviderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenShiftManagedClusterAADIdentityProvider] {
-	return pulumix.Output[*OpenShiftManagedClusterAADIdentityProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenShiftManagedClusterAADIdentityProviderPtrOutput) Elem() OpenShiftManagedClusterAADIdentityProviderOutput {
@@ -869,12 +772,6 @@ func (o OpenShiftManagedClusterAADIdentityProviderResponseOutput) ToOpenShiftMan
 	return o
 }
 
-func (o OpenShiftManagedClusterAADIdentityProviderResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OpenShiftManagedClusterAADIdentityProviderResponse] {
-	return pulumix.Output[OpenShiftManagedClusterAADIdentityProviderResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The clientId password associated with the provider.
 func (o OpenShiftManagedClusterAADIdentityProviderResponseOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenShiftManagedClusterAADIdentityProviderResponse) *string { return v.ClientId }).(pulumi.StringPtrOutput)
@@ -913,12 +810,6 @@ func (o OpenShiftManagedClusterAADIdentityProviderResponsePtrOutput) ToOpenShift
 
 func (o OpenShiftManagedClusterAADIdentityProviderResponsePtrOutput) ToOpenShiftManagedClusterAADIdentityProviderResponsePtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterAADIdentityProviderResponsePtrOutput {
 	return o
-}
-
-func (o OpenShiftManagedClusterAADIdentityProviderResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenShiftManagedClusterAADIdentityProviderResponse] {
-	return pulumix.Output[*OpenShiftManagedClusterAADIdentityProviderResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenShiftManagedClusterAADIdentityProviderResponsePtrOutput) Elem() OpenShiftManagedClusterAADIdentityProviderResponseOutput {
@@ -1061,12 +952,6 @@ func (i OpenShiftManagedClusterAgentPoolProfileArgs) ToOpenShiftManagedClusterAg
 	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterAgentPoolProfileOutput)
 }
 
-func (i OpenShiftManagedClusterAgentPoolProfileArgs) ToOutput(ctx context.Context) pulumix.Output[OpenShiftManagedClusterAgentPoolProfile] {
-	return pulumix.Output[OpenShiftManagedClusterAgentPoolProfile]{
-		OutputState: i.ToOpenShiftManagedClusterAgentPoolProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OpenShiftManagedClusterAgentPoolProfileArrayInput is an input type that accepts OpenShiftManagedClusterAgentPoolProfileArray and OpenShiftManagedClusterAgentPoolProfileArrayOutput values.
 // You can construct a concrete instance of `OpenShiftManagedClusterAgentPoolProfileArrayInput` via:
 //
@@ -1092,12 +977,6 @@ func (i OpenShiftManagedClusterAgentPoolProfileArray) ToOpenShiftManagedClusterA
 	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterAgentPoolProfileArrayOutput)
 }
 
-func (i OpenShiftManagedClusterAgentPoolProfileArray) ToOutput(ctx context.Context) pulumix.Output[[]OpenShiftManagedClusterAgentPoolProfile] {
-	return pulumix.Output[[]OpenShiftManagedClusterAgentPoolProfile]{
-		OutputState: i.ToOpenShiftManagedClusterAgentPoolProfileArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the configuration of the OpenShift cluster VMs.
 type OpenShiftManagedClusterAgentPoolProfileOutput struct{ *pulumi.OutputState }
 
@@ -1111,12 +990,6 @@ func (o OpenShiftManagedClusterAgentPoolProfileOutput) ToOpenShiftManagedCluster
 
 func (o OpenShiftManagedClusterAgentPoolProfileOutput) ToOpenShiftManagedClusterAgentPoolProfileOutputWithContext(ctx context.Context) OpenShiftManagedClusterAgentPoolProfileOutput {
 	return o
-}
-
-func (o OpenShiftManagedClusterAgentPoolProfileOutput) ToOutput(ctx context.Context) pulumix.Output[OpenShiftManagedClusterAgentPoolProfile] {
-	return pulumix.Output[OpenShiftManagedClusterAgentPoolProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Number of agents (VMs) to host docker containers.
@@ -1161,12 +1034,6 @@ func (o OpenShiftManagedClusterAgentPoolProfileArrayOutput) ToOpenShiftManagedCl
 
 func (o OpenShiftManagedClusterAgentPoolProfileArrayOutput) ToOpenShiftManagedClusterAgentPoolProfileArrayOutputWithContext(ctx context.Context) OpenShiftManagedClusterAgentPoolProfileArrayOutput {
 	return o
-}
-
-func (o OpenShiftManagedClusterAgentPoolProfileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OpenShiftManagedClusterAgentPoolProfile] {
-	return pulumix.Output[[]OpenShiftManagedClusterAgentPoolProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenShiftManagedClusterAgentPoolProfileArrayOutput) Index(i pulumi.IntInput) OpenShiftManagedClusterAgentPoolProfileOutput {
@@ -1219,12 +1086,6 @@ func (o OpenShiftManagedClusterAgentPoolProfileResponseOutput) ToOpenShiftManage
 	return o
 }
 
-func (o OpenShiftManagedClusterAgentPoolProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OpenShiftManagedClusterAgentPoolProfileResponse] {
-	return pulumix.Output[OpenShiftManagedClusterAgentPoolProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Number of agents (VMs) to host docker containers.
 func (o OpenShiftManagedClusterAgentPoolProfileResponseOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v OpenShiftManagedClusterAgentPoolProfileResponse) int { return v.Count }).(pulumi.IntOutput)
@@ -1269,12 +1130,6 @@ func (o OpenShiftManagedClusterAgentPoolProfileResponseArrayOutput) ToOpenShiftM
 	return o
 }
 
-func (o OpenShiftManagedClusterAgentPoolProfileResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OpenShiftManagedClusterAgentPoolProfileResponse] {
-	return pulumix.Output[[]OpenShiftManagedClusterAgentPoolProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OpenShiftManagedClusterAgentPoolProfileResponseArrayOutput) Index(i pulumi.IntInput) OpenShiftManagedClusterAgentPoolProfileResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OpenShiftManagedClusterAgentPoolProfileResponse {
 		return vs[0].([]OpenShiftManagedClusterAgentPoolProfileResponse)[vs[1].(int)]
@@ -1314,12 +1169,6 @@ func (i OpenShiftManagedClusterAuthProfileArgs) ToOpenShiftManagedClusterAuthPro
 
 func (i OpenShiftManagedClusterAuthProfileArgs) ToOpenShiftManagedClusterAuthProfileOutputWithContext(ctx context.Context) OpenShiftManagedClusterAuthProfileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterAuthProfileOutput)
-}
-
-func (i OpenShiftManagedClusterAuthProfileArgs) ToOutput(ctx context.Context) pulumix.Output[OpenShiftManagedClusterAuthProfile] {
-	return pulumix.Output[OpenShiftManagedClusterAuthProfile]{
-		OutputState: i.ToOpenShiftManagedClusterAuthProfileOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i OpenShiftManagedClusterAuthProfileArgs) ToOpenShiftManagedClusterAuthProfilePtrOutput() OpenShiftManagedClusterAuthProfilePtrOutput {
@@ -1363,12 +1212,6 @@ func (i *openShiftManagedClusterAuthProfilePtrType) ToOpenShiftManagedClusterAut
 	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterAuthProfilePtrOutput)
 }
 
-func (i *openShiftManagedClusterAuthProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*OpenShiftManagedClusterAuthProfile] {
-	return pulumix.Output[*OpenShiftManagedClusterAuthProfile]{
-		OutputState: i.ToOpenShiftManagedClusterAuthProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines all possible authentication profiles for the OpenShift cluster.
 type OpenShiftManagedClusterAuthProfileOutput struct{ *pulumi.OutputState }
 
@@ -1394,12 +1237,6 @@ func (o OpenShiftManagedClusterAuthProfileOutput) ToOpenShiftManagedClusterAuthP
 	}).(OpenShiftManagedClusterAuthProfilePtrOutput)
 }
 
-func (o OpenShiftManagedClusterAuthProfileOutput) ToOutput(ctx context.Context) pulumix.Output[OpenShiftManagedClusterAuthProfile] {
-	return pulumix.Output[OpenShiftManagedClusterAuthProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Type of authentication profile to use.
 func (o OpenShiftManagedClusterAuthProfileOutput) IdentityProviders() OpenShiftManagedClusterIdentityProviderArrayOutput {
 	return o.ApplyT(func(v OpenShiftManagedClusterAuthProfile) []OpenShiftManagedClusterIdentityProvider {
@@ -1419,12 +1256,6 @@ func (o OpenShiftManagedClusterAuthProfilePtrOutput) ToOpenShiftManagedClusterAu
 
 func (o OpenShiftManagedClusterAuthProfilePtrOutput) ToOpenShiftManagedClusterAuthProfilePtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterAuthProfilePtrOutput {
 	return o
-}
-
-func (o OpenShiftManagedClusterAuthProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenShiftManagedClusterAuthProfile] {
-	return pulumix.Output[*OpenShiftManagedClusterAuthProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenShiftManagedClusterAuthProfilePtrOutput) Elem() OpenShiftManagedClusterAuthProfileOutput {
@@ -1468,12 +1299,6 @@ func (o OpenShiftManagedClusterAuthProfileResponseOutput) ToOpenShiftManagedClus
 	return o
 }
 
-func (o OpenShiftManagedClusterAuthProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OpenShiftManagedClusterAuthProfileResponse] {
-	return pulumix.Output[OpenShiftManagedClusterAuthProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Type of authentication profile to use.
 func (o OpenShiftManagedClusterAuthProfileResponseOutput) IdentityProviders() OpenShiftManagedClusterIdentityProviderResponseArrayOutput {
 	return o.ApplyT(func(v OpenShiftManagedClusterAuthProfileResponse) []OpenShiftManagedClusterIdentityProviderResponse {
@@ -1493,12 +1318,6 @@ func (o OpenShiftManagedClusterAuthProfileResponsePtrOutput) ToOpenShiftManagedC
 
 func (o OpenShiftManagedClusterAuthProfileResponsePtrOutput) ToOpenShiftManagedClusterAuthProfileResponsePtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterAuthProfileResponsePtrOutput {
 	return o
-}
-
-func (o OpenShiftManagedClusterAuthProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenShiftManagedClusterAuthProfileResponse] {
-	return pulumix.Output[*OpenShiftManagedClusterAuthProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenShiftManagedClusterAuthProfileResponsePtrOutput) Elem() OpenShiftManagedClusterAuthProfileResponseOutput {
@@ -1560,12 +1379,6 @@ func (i OpenShiftManagedClusterIdentityProviderArgs) ToOpenShiftManagedClusterId
 	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterIdentityProviderOutput)
 }
 
-func (i OpenShiftManagedClusterIdentityProviderArgs) ToOutput(ctx context.Context) pulumix.Output[OpenShiftManagedClusterIdentityProvider] {
-	return pulumix.Output[OpenShiftManagedClusterIdentityProvider]{
-		OutputState: i.ToOpenShiftManagedClusterIdentityProviderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OpenShiftManagedClusterIdentityProviderArrayInput is an input type that accepts OpenShiftManagedClusterIdentityProviderArray and OpenShiftManagedClusterIdentityProviderArrayOutput values.
 // You can construct a concrete instance of `OpenShiftManagedClusterIdentityProviderArrayInput` via:
 //
@@ -1591,12 +1404,6 @@ func (i OpenShiftManagedClusterIdentityProviderArray) ToOpenShiftManagedClusterI
 	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterIdentityProviderArrayOutput)
 }
 
-func (i OpenShiftManagedClusterIdentityProviderArray) ToOutput(ctx context.Context) pulumix.Output[[]OpenShiftManagedClusterIdentityProvider] {
-	return pulumix.Output[[]OpenShiftManagedClusterIdentityProvider]{
-		OutputState: i.ToOpenShiftManagedClusterIdentityProviderArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the configuration of the identity providers to be used in the OpenShift cluster.
 type OpenShiftManagedClusterIdentityProviderOutput struct{ *pulumi.OutputState }
 
@@ -1610,12 +1417,6 @@ func (o OpenShiftManagedClusterIdentityProviderOutput) ToOpenShiftManagedCluster
 
 func (o OpenShiftManagedClusterIdentityProviderOutput) ToOpenShiftManagedClusterIdentityProviderOutputWithContext(ctx context.Context) OpenShiftManagedClusterIdentityProviderOutput {
 	return o
-}
-
-func (o OpenShiftManagedClusterIdentityProviderOutput) ToOutput(ctx context.Context) pulumix.Output[OpenShiftManagedClusterIdentityProvider] {
-	return pulumix.Output[OpenShiftManagedClusterIdentityProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the provider.
@@ -1642,12 +1443,6 @@ func (o OpenShiftManagedClusterIdentityProviderArrayOutput) ToOpenShiftManagedCl
 
 func (o OpenShiftManagedClusterIdentityProviderArrayOutput) ToOpenShiftManagedClusterIdentityProviderArrayOutputWithContext(ctx context.Context) OpenShiftManagedClusterIdentityProviderArrayOutput {
 	return o
-}
-
-func (o OpenShiftManagedClusterIdentityProviderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OpenShiftManagedClusterIdentityProvider] {
-	return pulumix.Output[[]OpenShiftManagedClusterIdentityProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenShiftManagedClusterIdentityProviderArrayOutput) Index(i pulumi.IntInput) OpenShiftManagedClusterIdentityProviderOutput {
@@ -1679,12 +1474,6 @@ func (o OpenShiftManagedClusterIdentityProviderResponseOutput) ToOpenShiftManage
 	return o
 }
 
-func (o OpenShiftManagedClusterIdentityProviderResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OpenShiftManagedClusterIdentityProviderResponse] {
-	return pulumix.Output[OpenShiftManagedClusterIdentityProviderResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the provider.
 func (o OpenShiftManagedClusterIdentityProviderResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenShiftManagedClusterIdentityProviderResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1709,12 +1498,6 @@ func (o OpenShiftManagedClusterIdentityProviderResponseArrayOutput) ToOpenShiftM
 
 func (o OpenShiftManagedClusterIdentityProviderResponseArrayOutput) ToOpenShiftManagedClusterIdentityProviderResponseArrayOutputWithContext(ctx context.Context) OpenShiftManagedClusterIdentityProviderResponseArrayOutput {
 	return o
-}
-
-func (o OpenShiftManagedClusterIdentityProviderResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OpenShiftManagedClusterIdentityProviderResponse] {
-	return pulumix.Output[[]OpenShiftManagedClusterIdentityProviderResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenShiftManagedClusterIdentityProviderResponseArrayOutput) Index(i pulumi.IntInput) OpenShiftManagedClusterIdentityProviderResponseOutput {
@@ -1770,12 +1553,6 @@ func (i OpenShiftManagedClusterMasterPoolProfileArgs) ToOpenShiftManagedClusterM
 	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterMasterPoolProfileOutput)
 }
 
-func (i OpenShiftManagedClusterMasterPoolProfileArgs) ToOutput(ctx context.Context) pulumix.Output[OpenShiftManagedClusterMasterPoolProfile] {
-	return pulumix.Output[OpenShiftManagedClusterMasterPoolProfile]{
-		OutputState: i.ToOpenShiftManagedClusterMasterPoolProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OpenShiftManagedClusterMasterPoolProfileArgs) ToOpenShiftManagedClusterMasterPoolProfilePtrOutput() OpenShiftManagedClusterMasterPoolProfilePtrOutput {
 	return i.ToOpenShiftManagedClusterMasterPoolProfilePtrOutputWithContext(context.Background())
 }
@@ -1817,12 +1594,6 @@ func (i *openShiftManagedClusterMasterPoolProfilePtrType) ToOpenShiftManagedClus
 	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterMasterPoolProfilePtrOutput)
 }
 
-func (i *openShiftManagedClusterMasterPoolProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*OpenShiftManagedClusterMasterPoolProfile] {
-	return pulumix.Output[*OpenShiftManagedClusterMasterPoolProfile]{
-		OutputState: i.ToOpenShiftManagedClusterMasterPoolProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OpenShiftManagedClusterMaterPoolProfile contains configuration for OpenShift master VMs.
 type OpenShiftManagedClusterMasterPoolProfileOutput struct{ *pulumi.OutputState }
 
@@ -1846,12 +1617,6 @@ func (o OpenShiftManagedClusterMasterPoolProfileOutput) ToOpenShiftManagedCluste
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenShiftManagedClusterMasterPoolProfile) *OpenShiftManagedClusterMasterPoolProfile {
 		return &v
 	}).(OpenShiftManagedClusterMasterPoolProfilePtrOutput)
-}
-
-func (o OpenShiftManagedClusterMasterPoolProfileOutput) ToOutput(ctx context.Context) pulumix.Output[OpenShiftManagedClusterMasterPoolProfile] {
-	return pulumix.Output[OpenShiftManagedClusterMasterPoolProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines further properties on the API.
@@ -1886,12 +1651,6 @@ func (o OpenShiftManagedClusterMasterPoolProfilePtrOutput) ToOpenShiftManagedClu
 
 func (o OpenShiftManagedClusterMasterPoolProfilePtrOutput) ToOpenShiftManagedClusterMasterPoolProfilePtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterMasterPoolProfilePtrOutput {
 	return o
-}
-
-func (o OpenShiftManagedClusterMasterPoolProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenShiftManagedClusterMasterPoolProfile] {
-	return pulumix.Output[*OpenShiftManagedClusterMasterPoolProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenShiftManagedClusterMasterPoolProfilePtrOutput) Elem() OpenShiftManagedClusterMasterPoolProfileOutput {
@@ -1971,12 +1730,6 @@ func (o OpenShiftManagedClusterMasterPoolProfileResponseOutput) ToOpenShiftManag
 	return o
 }
 
-func (o OpenShiftManagedClusterMasterPoolProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OpenShiftManagedClusterMasterPoolProfileResponse] {
-	return pulumix.Output[OpenShiftManagedClusterMasterPoolProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines further properties on the API.
 func (o OpenShiftManagedClusterMasterPoolProfileResponseOutput) ApiProperties() OpenShiftAPIPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v OpenShiftManagedClusterMasterPoolProfileResponse) *OpenShiftAPIPropertiesResponse {
@@ -2011,12 +1764,6 @@ func (o OpenShiftManagedClusterMasterPoolProfileResponsePtrOutput) ToOpenShiftMa
 
 func (o OpenShiftManagedClusterMasterPoolProfileResponsePtrOutput) ToOpenShiftManagedClusterMasterPoolProfileResponsePtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterMasterPoolProfileResponsePtrOutput {
 	return o
-}
-
-func (o OpenShiftManagedClusterMasterPoolProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenShiftManagedClusterMasterPoolProfileResponse] {
-	return pulumix.Output[*OpenShiftManagedClusterMasterPoolProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenShiftManagedClusterMasterPoolProfileResponsePtrOutput) Elem() OpenShiftManagedClusterMasterPoolProfileResponseOutput {
@@ -2108,12 +1855,6 @@ func (i OpenShiftManagedClusterMonitorProfileArgs) ToOpenShiftManagedClusterMoni
 	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterMonitorProfileOutput)
 }
 
-func (i OpenShiftManagedClusterMonitorProfileArgs) ToOutput(ctx context.Context) pulumix.Output[OpenShiftManagedClusterMonitorProfile] {
-	return pulumix.Output[OpenShiftManagedClusterMonitorProfile]{
-		OutputState: i.ToOpenShiftManagedClusterMonitorProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OpenShiftManagedClusterMonitorProfileArgs) ToOpenShiftManagedClusterMonitorProfilePtrOutput() OpenShiftManagedClusterMonitorProfilePtrOutput {
 	return i.ToOpenShiftManagedClusterMonitorProfilePtrOutputWithContext(context.Background())
 }
@@ -2155,12 +1896,6 @@ func (i *openShiftManagedClusterMonitorProfilePtrType) ToOpenShiftManagedCluster
 	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterMonitorProfilePtrOutput)
 }
 
-func (i *openShiftManagedClusterMonitorProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*OpenShiftManagedClusterMonitorProfile] {
-	return pulumix.Output[*OpenShiftManagedClusterMonitorProfile]{
-		OutputState: i.ToOpenShiftManagedClusterMonitorProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the configuration for Log Analytics integration.
 type OpenShiftManagedClusterMonitorProfileOutput struct{ *pulumi.OutputState }
 
@@ -2186,12 +1921,6 @@ func (o OpenShiftManagedClusterMonitorProfileOutput) ToOpenShiftManagedClusterMo
 	}).(OpenShiftManagedClusterMonitorProfilePtrOutput)
 }
 
-func (o OpenShiftManagedClusterMonitorProfileOutput) ToOutput(ctx context.Context) pulumix.Output[OpenShiftManagedClusterMonitorProfile] {
-	return pulumix.Output[OpenShiftManagedClusterMonitorProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If the Log analytics integration should be turned on or off
 func (o OpenShiftManagedClusterMonitorProfileOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OpenShiftManagedClusterMonitorProfile) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -2214,12 +1943,6 @@ func (o OpenShiftManagedClusterMonitorProfilePtrOutput) ToOpenShiftManagedCluste
 
 func (o OpenShiftManagedClusterMonitorProfilePtrOutput) ToOpenShiftManagedClusterMonitorProfilePtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterMonitorProfilePtrOutput {
 	return o
-}
-
-func (o OpenShiftManagedClusterMonitorProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenShiftManagedClusterMonitorProfile] {
-	return pulumix.Output[*OpenShiftManagedClusterMonitorProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenShiftManagedClusterMonitorProfilePtrOutput) Elem() OpenShiftManagedClusterMonitorProfileOutput {
@@ -2275,12 +1998,6 @@ func (o OpenShiftManagedClusterMonitorProfileResponseOutput) ToOpenShiftManagedC
 	return o
 }
 
-func (o OpenShiftManagedClusterMonitorProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OpenShiftManagedClusterMonitorProfileResponse] {
-	return pulumix.Output[OpenShiftManagedClusterMonitorProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If the Log analytics integration should be turned on or off
 func (o OpenShiftManagedClusterMonitorProfileResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OpenShiftManagedClusterMonitorProfileResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -2303,12 +2020,6 @@ func (o OpenShiftManagedClusterMonitorProfileResponsePtrOutput) ToOpenShiftManag
 
 func (o OpenShiftManagedClusterMonitorProfileResponsePtrOutput) ToOpenShiftManagedClusterMonitorProfileResponsePtrOutputWithContext(ctx context.Context) OpenShiftManagedClusterMonitorProfileResponsePtrOutput {
 	return o
-}
-
-func (o OpenShiftManagedClusterMonitorProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenShiftManagedClusterMonitorProfileResponse] {
-	return pulumix.Output[*OpenShiftManagedClusterMonitorProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenShiftManagedClusterMonitorProfileResponsePtrOutput) Elem() OpenShiftManagedClusterMonitorProfileResponseOutput {
@@ -2376,12 +2087,6 @@ func (i OpenShiftRouterProfileArgs) ToOpenShiftRouterProfileOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftRouterProfileOutput)
 }
 
-func (i OpenShiftRouterProfileArgs) ToOutput(ctx context.Context) pulumix.Output[OpenShiftRouterProfile] {
-	return pulumix.Output[OpenShiftRouterProfile]{
-		OutputState: i.ToOpenShiftRouterProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OpenShiftRouterProfileArrayInput is an input type that accepts OpenShiftRouterProfileArray and OpenShiftRouterProfileArrayOutput values.
 // You can construct a concrete instance of `OpenShiftRouterProfileArrayInput` via:
 //
@@ -2407,12 +2112,6 @@ func (i OpenShiftRouterProfileArray) ToOpenShiftRouterProfileArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftRouterProfileArrayOutput)
 }
 
-func (i OpenShiftRouterProfileArray) ToOutput(ctx context.Context) pulumix.Output[[]OpenShiftRouterProfile] {
-	return pulumix.Output[[]OpenShiftRouterProfile]{
-		OutputState: i.ToOpenShiftRouterProfileArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents an OpenShift router
 type OpenShiftRouterProfileOutput struct{ *pulumi.OutputState }
 
@@ -2426,12 +2125,6 @@ func (o OpenShiftRouterProfileOutput) ToOpenShiftRouterProfileOutput() OpenShift
 
 func (o OpenShiftRouterProfileOutput) ToOpenShiftRouterProfileOutputWithContext(ctx context.Context) OpenShiftRouterProfileOutput {
 	return o
-}
-
-func (o OpenShiftRouterProfileOutput) ToOutput(ctx context.Context) pulumix.Output[OpenShiftRouterProfile] {
-	return pulumix.Output[OpenShiftRouterProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the router profile.
@@ -2451,12 +2144,6 @@ func (o OpenShiftRouterProfileArrayOutput) ToOpenShiftRouterProfileArrayOutput()
 
 func (o OpenShiftRouterProfileArrayOutput) ToOpenShiftRouterProfileArrayOutputWithContext(ctx context.Context) OpenShiftRouterProfileArrayOutput {
 	return o
-}
-
-func (o OpenShiftRouterProfileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OpenShiftRouterProfile] {
-	return pulumix.Output[[]OpenShiftRouterProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenShiftRouterProfileArrayOutput) Index(i pulumi.IntInput) OpenShiftRouterProfileOutput {
@@ -2490,12 +2177,6 @@ func (o OpenShiftRouterProfileResponseOutput) ToOpenShiftRouterProfileResponseOu
 	return o
 }
 
-func (o OpenShiftRouterProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OpenShiftRouterProfileResponse] {
-	return pulumix.Output[OpenShiftRouterProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Auto-allocated FQDN for the OpenShift router.
 func (o OpenShiftRouterProfileResponseOutput) Fqdn() pulumi.StringOutput {
 	return o.ApplyT(func(v OpenShiftRouterProfileResponse) string { return v.Fqdn }).(pulumi.StringOutput)
@@ -2523,12 +2204,6 @@ func (o OpenShiftRouterProfileResponseArrayOutput) ToOpenShiftRouterProfileRespo
 
 func (o OpenShiftRouterProfileResponseArrayOutput) ToOpenShiftRouterProfileResponseArrayOutputWithContext(ctx context.Context) OpenShiftRouterProfileResponseArrayOutput {
 	return o
-}
-
-func (o OpenShiftRouterProfileResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OpenShiftRouterProfileResponse] {
-	return pulumix.Output[[]OpenShiftRouterProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenShiftRouterProfileResponseArrayOutput) Index(i pulumi.IntInput) OpenShiftRouterProfileResponseOutput {
@@ -2584,12 +2259,6 @@ func (i PurchasePlanArgs) ToPurchasePlanOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(PurchasePlanOutput)
 }
 
-func (i PurchasePlanArgs) ToOutput(ctx context.Context) pulumix.Output[PurchasePlan] {
-	return pulumix.Output[PurchasePlan]{
-		OutputState: i.ToPurchasePlanOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PurchasePlanArgs) ToPurchasePlanPtrOutput() PurchasePlanPtrOutput {
 	return i.ToPurchasePlanPtrOutputWithContext(context.Background())
 }
@@ -2631,12 +2300,6 @@ func (i *purchasePlanPtrType) ToPurchasePlanPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(PurchasePlanPtrOutput)
 }
 
-func (i *purchasePlanPtrType) ToOutput(ctx context.Context) pulumix.Output[*PurchasePlan] {
-	return pulumix.Output[*PurchasePlan]{
-		OutputState: i.ToPurchasePlanPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Used for establishing the purchase context of any 3rd Party artifact through MarketPlace.
 type PurchasePlanOutput struct{ *pulumi.OutputState }
 
@@ -2660,12 +2323,6 @@ func (o PurchasePlanOutput) ToPurchasePlanPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PurchasePlan) *PurchasePlan {
 		return &v
 	}).(PurchasePlanPtrOutput)
-}
-
-func (o PurchasePlanOutput) ToOutput(ctx context.Context) pulumix.Output[PurchasePlan] {
-	return pulumix.Output[PurchasePlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The plan ID.
@@ -2700,12 +2357,6 @@ func (o PurchasePlanPtrOutput) ToPurchasePlanPtrOutput() PurchasePlanPtrOutput {
 
 func (o PurchasePlanPtrOutput) ToPurchasePlanPtrOutputWithContext(ctx context.Context) PurchasePlanPtrOutput {
 	return o
-}
-
-func (o PurchasePlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PurchasePlan] {
-	return pulumix.Output[*PurchasePlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PurchasePlanPtrOutput) Elem() PurchasePlanOutput {
@@ -2785,12 +2436,6 @@ func (o PurchasePlanResponseOutput) ToPurchasePlanResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o PurchasePlanResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PurchasePlanResponse] {
-	return pulumix.Output[PurchasePlanResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The plan ID.
 func (o PurchasePlanResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PurchasePlanResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -2823,12 +2468,6 @@ func (o PurchasePlanResponsePtrOutput) ToPurchasePlanResponsePtrOutput() Purchas
 
 func (o PurchasePlanResponsePtrOutput) ToPurchasePlanResponsePtrOutputWithContext(ctx context.Context) PurchasePlanResponsePtrOutput {
 	return o
-}
-
-func (o PurchasePlanResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PurchasePlanResponse] {
-	return pulumix.Output[*PurchasePlanResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PurchasePlanResponsePtrOutput) Elem() PurchasePlanResponseOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Get Domain Service operation retrieves a json representation of the Domain Service.
@@ -141,12 +140,6 @@ func (o LookupDomainServiceResultOutput) ToLookupDomainServiceResultOutput() Loo
 
 func (o LookupDomainServiceResultOutput) ToLookupDomainServiceResultOutputWithContext(ctx context.Context) LookupDomainServiceResultOutput {
 	return o
-}
-
-func (o LookupDomainServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDomainServiceResult] {
-	return pulumix.Output[LookupDomainServiceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration diagnostics data containing latest execution from client.

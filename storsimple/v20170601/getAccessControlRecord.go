@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the properties of the specified access control record name.
@@ -87,12 +86,6 @@ func (o LookupAccessControlRecordResultOutput) ToLookupAccessControlRecordResult
 
 func (o LookupAccessControlRecordResultOutput) ToLookupAccessControlRecordResultOutputWithContext(ctx context.Context) LookupAccessControlRecordResultOutput {
 	return o
-}
-
-func (o LookupAccessControlRecordResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccessControlRecordResult] {
-	return pulumix.Output[LookupAccessControlRecordResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The path ID that uniquely identifies the object.

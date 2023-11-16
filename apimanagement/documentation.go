@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Markdown documentation details.
@@ -137,12 +136,6 @@ func (i *Documentation) ToDocumentationOutputWithContext(ctx context.Context) Do
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentationOutput)
 }
 
-func (i *Documentation) ToOutput(ctx context.Context) pulumix.Output[*Documentation] {
-	return pulumix.Output[*Documentation]{
-		OutputState: i.ToDocumentationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentationOutput struct{ *pulumi.OutputState }
 
 func (DocumentationOutput) ElementType() reflect.Type {
@@ -155,12 +148,6 @@ func (o DocumentationOutput) ToDocumentationOutput() DocumentationOutput {
 
 func (o DocumentationOutput) ToDocumentationOutputWithContext(ctx context.Context) DocumentationOutput {
 	return o
-}
-
-func (o DocumentationOutput) ToOutput(ctx context.Context) pulumix.Output[*Documentation] {
-	return pulumix.Output[*Documentation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Markdown documentation content.

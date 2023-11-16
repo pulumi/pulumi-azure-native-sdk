@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // AVS assessment resource.
@@ -291,12 +290,6 @@ func (i *AvsAssessmentsOperation) ToAvsAssessmentsOperationOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(AvsAssessmentsOperationOutput)
 }
 
-func (i *AvsAssessmentsOperation) ToOutput(ctx context.Context) pulumix.Output[*AvsAssessmentsOperation] {
-	return pulumix.Output[*AvsAssessmentsOperation]{
-		OutputState: i.ToAvsAssessmentsOperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AvsAssessmentsOperationOutput struct{ *pulumi.OutputState }
 
 func (AvsAssessmentsOperationOutput) ElementType() reflect.Type {
@@ -309,12 +302,6 @@ func (o AvsAssessmentsOperationOutput) ToAvsAssessmentsOperationOutput() AvsAsse
 
 func (o AvsAssessmentsOperationOutput) ToAvsAssessmentsOperationOutputWithContext(ctx context.Context) AvsAssessmentsOperationOutput {
 	return o
-}
-
-func (o AvsAssessmentsOperationOutput) ToOutput(ctx context.Context) pulumix.Output[*AvsAssessmentsOperation] {
-	return pulumix.Output[*AvsAssessmentsOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the assessment error summary.

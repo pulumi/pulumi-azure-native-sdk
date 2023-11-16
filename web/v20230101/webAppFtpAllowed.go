@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Publishing Credentials Policies parameters.
@@ -160,12 +159,6 @@ func (i *WebAppFtpAllowed) ToWebAppFtpAllowedOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppFtpAllowedOutput)
 }
 
-func (i *WebAppFtpAllowed) ToOutput(ctx context.Context) pulumix.Output[*WebAppFtpAllowed] {
-	return pulumix.Output[*WebAppFtpAllowed]{
-		OutputState: i.ToWebAppFtpAllowedOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebAppFtpAllowedOutput struct{ *pulumi.OutputState }
 
 func (WebAppFtpAllowedOutput) ElementType() reflect.Type {
@@ -178,12 +171,6 @@ func (o WebAppFtpAllowedOutput) ToWebAppFtpAllowedOutput() WebAppFtpAllowedOutpu
 
 func (o WebAppFtpAllowedOutput) ToWebAppFtpAllowedOutputWithContext(ctx context.Context) WebAppFtpAllowedOutput {
 	return o
-}
-
-func (o WebAppFtpAllowedOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppFtpAllowed] {
-	return pulumix.Output[*WebAppFtpAllowed]{
-		OutputState: o.OutputState,
-	}
 }
 
 // <code>true</code> to allow access to a publishing method; otherwise, <code>false</code>.

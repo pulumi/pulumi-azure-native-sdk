@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets secrets related to Machine Learning compute (storage keys, service credentials, etc).
@@ -80,12 +79,6 @@ func (o ListComputeKeysResultOutput) ToListComputeKeysResultOutput() ListCompute
 
 func (o ListComputeKeysResultOutput) ToListComputeKeysResultOutputWithContext(ctx context.Context) ListComputeKeysResultOutput {
 	return o
-}
-
-func (o ListComputeKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListComputeKeysResult] {
-	return pulumix.Output[ListComputeKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of compute

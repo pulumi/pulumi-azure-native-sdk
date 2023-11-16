@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Customized accelerator resource
@@ -158,12 +157,6 @@ func (i *CustomizedAccelerator) ToCustomizedAcceleratorOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(CustomizedAcceleratorOutput)
 }
 
-func (i *CustomizedAccelerator) ToOutput(ctx context.Context) pulumix.Output[*CustomizedAccelerator] {
-	return pulumix.Output[*CustomizedAccelerator]{
-		OutputState: i.ToCustomizedAcceleratorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CustomizedAcceleratorOutput struct{ *pulumi.OutputState }
 
 func (CustomizedAcceleratorOutput) ElementType() reflect.Type {
@@ -176,12 +169,6 @@ func (o CustomizedAcceleratorOutput) ToCustomizedAcceleratorOutput() CustomizedA
 
 func (o CustomizedAcceleratorOutput) ToCustomizedAcceleratorOutputWithContext(ctx context.Context) CustomizedAcceleratorOutput {
 	return o
-}
-
-func (o CustomizedAcceleratorOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomizedAccelerator] {
-	return pulumix.Output[*CustomizedAccelerator]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource.

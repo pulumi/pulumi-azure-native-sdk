@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The build service agent pool resource
@@ -170,12 +169,6 @@ func (i *BuildServiceAgentPool) ToBuildServiceAgentPoolOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(BuildServiceAgentPoolOutput)
 }
 
-func (i *BuildServiceAgentPool) ToOutput(ctx context.Context) pulumix.Output[*BuildServiceAgentPool] {
-	return pulumix.Output[*BuildServiceAgentPool]{
-		OutputState: i.ToBuildServiceAgentPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BuildServiceAgentPoolOutput struct{ *pulumi.OutputState }
 
 func (BuildServiceAgentPoolOutput) ElementType() reflect.Type {
@@ -188,12 +181,6 @@ func (o BuildServiceAgentPoolOutput) ToBuildServiceAgentPoolOutput() BuildServic
 
 func (o BuildServiceAgentPoolOutput) ToBuildServiceAgentPoolOutputWithContext(ctx context.Context) BuildServiceAgentPoolOutput {
 	return o
-}
-
-func (o BuildServiceAgentPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*BuildServiceAgentPool] {
-	return pulumix.Output[*BuildServiceAgentPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a sync group.
@@ -109,12 +108,6 @@ func (o LookupSyncGroupResultOutput) ToLookupSyncGroupResultOutput() LookupSyncG
 
 func (o LookupSyncGroupResultOutput) ToLookupSyncGroupResultOutputWithContext(ctx context.Context) LookupSyncGroupResultOutput {
 	return o
-}
-
-func (o LookupSyncGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSyncGroupResult] {
-	return pulumix.Output[LookupSyncGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Conflict logging retention period.

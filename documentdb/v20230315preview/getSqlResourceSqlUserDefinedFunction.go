@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the SQL userDefinedFunction under an existing Azure Cosmos DB database account.
@@ -96,12 +95,6 @@ func (o LookupSqlResourceSqlUserDefinedFunctionResultOutput) ToLookupSqlResource
 
 func (o LookupSqlResourceSqlUserDefinedFunctionResultOutput) ToLookupSqlResourceSqlUserDefinedFunctionResultOutputWithContext(ctx context.Context) LookupSqlResourceSqlUserDefinedFunctionResultOutput {
 	return o
-}
-
-func (o LookupSqlResourceSqlUserDefinedFunctionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSqlResourceSqlUserDefinedFunctionResult] {
-	return pulumix.Output[LookupSqlResourceSqlUserDefinedFunctionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique resource identifier of the ARM resource.

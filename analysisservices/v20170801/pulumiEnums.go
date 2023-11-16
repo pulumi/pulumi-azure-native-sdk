@@ -79,12 +79,6 @@ func (o ConnectionModeOutput) ToConnectionModePtrOutputWithContext(ctx context.C
 	}).(ConnectionModePtrOutput)
 }
 
-func (o ConnectionModeOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionMode] {
-	return pulumix.Output[ConnectionMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectionModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -118,12 +112,6 @@ func (o ConnectionModePtrOutput) ToConnectionModePtrOutput() ConnectionModePtrOu
 
 func (o ConnectionModePtrOutput) ToConnectionModePtrOutputWithContext(ctx context.Context) ConnectionModePtrOutput {
 	return o
-}
-
-func (o ConnectionModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionMode] {
-	return pulumix.Output[*ConnectionMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionModePtrOutput) Elem() ConnectionModeOutput {

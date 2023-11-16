@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A HyperV SiteResource
@@ -169,12 +168,6 @@ func (i *HypervSitesController) ToHypervSitesControllerOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(HypervSitesControllerOutput)
 }
 
-func (i *HypervSitesController) ToOutput(ctx context.Context) pulumix.Output[*HypervSitesController] {
-	return pulumix.Output[*HypervSitesController]{
-		OutputState: i.ToHypervSitesControllerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HypervSitesControllerOutput struct{ *pulumi.OutputState }
 
 func (HypervSitesControllerOutput) ElementType() reflect.Type {
@@ -187,12 +180,6 @@ func (o HypervSitesControllerOutput) ToHypervSitesControllerOutput() HypervSites
 
 func (o HypervSitesControllerOutput) ToHypervSitesControllerOutputWithContext(ctx context.Context) HypervSitesControllerOutput {
 	return o
-}
-
-func (o HypervSitesControllerOutput) ToOutput(ctx context.Context) pulumix.Output[*HypervSitesController] {
-	return pulumix.Output[*HypervSitesController]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the on-premises agent details.

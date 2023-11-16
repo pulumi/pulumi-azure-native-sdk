@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a TestLine
@@ -96,12 +95,6 @@ func (o LookupTestLineResultOutput) ToLookupTestLineResultOutput() LookupTestLin
 
 func (o LookupTestLineResultOutput) ToLookupTestLineResultOutputWithContext(ctx context.Context) LookupTestLineResultOutput {
 	return o
-}
-
-func (o LookupTestLineResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTestLineResult] {
-	return pulumix.Output[LookupTestLineResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

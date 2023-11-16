@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve the Package identified by Package name.
@@ -106,12 +105,6 @@ func (o LookupPackageResultOutput) ToLookupPackageResultOutput() LookupPackageRe
 
 func (o LookupPackageResultOutput) ToLookupPackageResultOutputWithContext(ctx context.Context) LookupPackageResultOutput {
 	return o
-}
-
-func (o LookupPackageResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPackageResult] {
-	return pulumix.Output[LookupPackageResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Metadata pertaining to creation and last modification of the resource.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An instance of a script executed by a user - custom or AVS
@@ -190,12 +189,6 @@ func (i *ScriptExecution) ToScriptExecutionOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ScriptExecutionOutput)
 }
 
-func (i *ScriptExecution) ToOutput(ctx context.Context) pulumix.Output[*ScriptExecution] {
-	return pulumix.Output[*ScriptExecution]{
-		OutputState: i.ToScriptExecutionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScriptExecutionOutput struct{ *pulumi.OutputState }
 
 func (ScriptExecutionOutput) ElementType() reflect.Type {
@@ -208,12 +201,6 @@ func (o ScriptExecutionOutput) ToScriptExecutionOutput() ScriptExecutionOutput {
 
 func (o ScriptExecutionOutput) ToScriptExecutionOutputWithContext(ctx context.Context) ScriptExecutionOutput {
 	return o
-}
-
-func (o ScriptExecutionOutput) ToOutput(ctx context.Context) pulumix.Output[*ScriptExecution] {
-	return pulumix.Output[*ScriptExecution]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Standard error output stream from the powershell execution

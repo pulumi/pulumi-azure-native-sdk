@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information about a configuration profile assignment
@@ -87,12 +86,6 @@ func (o LookupConfigurationProfileHCIAssignmentResultOutput) ToLookupConfigurati
 
 func (o LookupConfigurationProfileHCIAssignmentResultOutput) ToLookupConfigurationProfileHCIAssignmentResultOutputWithContext(ctx context.Context) LookupConfigurationProfileHCIAssignmentResultOutput {
 	return o
-}
-
-func (o LookupConfigurationProfileHCIAssignmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConfigurationProfileHCIAssignmentResult] {
-	return pulumix.Output[LookupConfigurationProfileHCIAssignmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

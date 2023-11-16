@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Hyper-V collector resource.
@@ -144,12 +143,6 @@ func (i *HypervCollectorsOperation) ToHypervCollectorsOperationOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(HypervCollectorsOperationOutput)
 }
 
-func (i *HypervCollectorsOperation) ToOutput(ctx context.Context) pulumix.Output[*HypervCollectorsOperation] {
-	return pulumix.Output[*HypervCollectorsOperation]{
-		OutputState: i.ToHypervCollectorsOperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HypervCollectorsOperationOutput struct{ *pulumi.OutputState }
 
 func (HypervCollectorsOperationOutput) ElementType() reflect.Type {
@@ -162,12 +155,6 @@ func (o HypervCollectorsOperationOutput) ToHypervCollectorsOperationOutput() Hyp
 
 func (o HypervCollectorsOperationOutput) ToHypervCollectorsOperationOutputWithContext(ctx context.Context) HypervCollectorsOperationOutput {
 	return o
-}
-
-func (o HypervCollectorsOperationOutput) ToOutput(ctx context.Context) pulumix.Output[*HypervCollectorsOperation] {
-	return pulumix.Output[*HypervCollectorsOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the collector agent properties.

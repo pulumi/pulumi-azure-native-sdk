@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Workload group operations for a sql pool
@@ -186,12 +185,6 @@ func (i *SqlPoolWorkloadGroup) ToSqlPoolWorkloadGroupOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(SqlPoolWorkloadGroupOutput)
 }
 
-func (i *SqlPoolWorkloadGroup) ToOutput(ctx context.Context) pulumix.Output[*SqlPoolWorkloadGroup] {
-	return pulumix.Output[*SqlPoolWorkloadGroup]{
-		OutputState: i.ToSqlPoolWorkloadGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SqlPoolWorkloadGroupOutput struct{ *pulumi.OutputState }
 
 func (SqlPoolWorkloadGroupOutput) ElementType() reflect.Type {
@@ -204,12 +197,6 @@ func (o SqlPoolWorkloadGroupOutput) ToSqlPoolWorkloadGroupOutput() SqlPoolWorklo
 
 func (o SqlPoolWorkloadGroupOutput) ToSqlPoolWorkloadGroupOutputWithContext(ctx context.Context) SqlPoolWorkloadGroupOutput {
 	return o
-}
-
-func (o SqlPoolWorkloadGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlPoolWorkloadGroup] {
-	return pulumix.Output[*SqlPoolWorkloadGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The workload group importance level.

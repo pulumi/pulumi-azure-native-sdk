@@ -118,12 +118,6 @@ func (o RelaytypeOutput) ToRelaytypePtrOutputWithContext(ctx context.Context) Re
 	}).(RelaytypePtrOutput)
 }
 
-func (o RelaytypeOutput) ToOutput(ctx context.Context) pulumix.Output[Relaytype] {
-	return pulumix.Output[Relaytype]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RelaytypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -157,12 +151,6 @@ func (o RelaytypePtrOutput) ToRelaytypePtrOutput() RelaytypePtrOutput {
 
 func (o RelaytypePtrOutput) ToRelaytypePtrOutputWithContext(ctx context.Context) RelaytypePtrOutput {
 	return o
-}
-
-func (o RelaytypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Relaytype] {
-	return pulumix.Output[*Relaytype]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RelaytypePtrOutput) Elem() RelaytypeOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Cognitive Services account commitment plan.
@@ -152,12 +151,6 @@ func (i *SharedCommitmentPlan) ToSharedCommitmentPlanOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(SharedCommitmentPlanOutput)
 }
 
-func (i *SharedCommitmentPlan) ToOutput(ctx context.Context) pulumix.Output[*SharedCommitmentPlan] {
-	return pulumix.Output[*SharedCommitmentPlan]{
-		OutputState: i.ToSharedCommitmentPlanOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SharedCommitmentPlanOutput struct{ *pulumi.OutputState }
 
 func (SharedCommitmentPlanOutput) ElementType() reflect.Type {
@@ -170,12 +163,6 @@ func (o SharedCommitmentPlanOutput) ToSharedCommitmentPlanOutput() SharedCommitm
 
 func (o SharedCommitmentPlanOutput) ToSharedCommitmentPlanOutputWithContext(ctx context.Context) SharedCommitmentPlanOutput {
 	return o
-}
-
-func (o SharedCommitmentPlanOutput) ToOutput(ctx context.Context) pulumix.Output[*SharedCommitmentPlan] {
-	return pulumix.Output[*SharedCommitmentPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Etag.

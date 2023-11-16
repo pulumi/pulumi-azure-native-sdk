@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a DataLakeTopicMapResource
@@ -110,12 +109,6 @@ func (o LookupDataLakeConnectorTopicMapResultOutput) ToLookupDataLakeConnectorTo
 
 func (o LookupDataLakeConnectorTopicMapResultOutput) ToLookupDataLakeConnectorTopicMapResultOutputWithContext(ctx context.Context) LookupDataLakeConnectorTopicMapResultOutput {
 	return o
-}
-
-func (o LookupDataLakeConnectorTopicMapResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataLakeConnectorTopicMapResult] {
-	return pulumix.Output[LookupDataLakeConnectorTopicMapResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // DataLake Connector CRD to use.

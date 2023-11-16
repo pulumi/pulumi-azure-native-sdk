@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure resource which represents Maps Creator product and provides ability to manage private location data.
@@ -154,12 +153,6 @@ func (i *Creator) ToCreatorOutputWithContext(ctx context.Context) CreatorOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(CreatorOutput)
 }
 
-func (i *Creator) ToOutput(ctx context.Context) pulumix.Output[*Creator] {
-	return pulumix.Output[*Creator]{
-		OutputState: i.ToCreatorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CreatorOutput struct{ *pulumi.OutputState }
 
 func (CreatorOutput) ElementType() reflect.Type {
@@ -172,12 +165,6 @@ func (o CreatorOutput) ToCreatorOutput() CreatorOutput {
 
 func (o CreatorOutput) ToCreatorOutputWithContext(ctx context.Context) CreatorOutput {
 	return o
-}
-
-func (o CreatorOutput) ToOutput(ctx context.Context) pulumix.Output[*Creator] {
-	return pulumix.Output[*Creator]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

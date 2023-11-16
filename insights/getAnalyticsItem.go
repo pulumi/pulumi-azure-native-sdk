@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a specific Analytics Items defined within an Application Insights component.
@@ -102,12 +101,6 @@ func (o LookupAnalyticsItemResultOutput) ToLookupAnalyticsItemResultOutput() Loo
 
 func (o LookupAnalyticsItemResultOutput) ToLookupAnalyticsItemResultOutputWithContext(ctx context.Context) LookupAnalyticsItemResultOutput {
 	return o
-}
-
-func (o LookupAnalyticsItemResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAnalyticsItemResult] {
-	return pulumix.Output[LookupAnalyticsItemResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The content of this item

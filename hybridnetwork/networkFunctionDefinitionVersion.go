@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Network function definition version.
@@ -144,12 +143,6 @@ func (i *NetworkFunctionDefinitionVersion) ToNetworkFunctionDefinitionVersionOut
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkFunctionDefinitionVersionOutput)
 }
 
-func (i *NetworkFunctionDefinitionVersion) ToOutput(ctx context.Context) pulumix.Output[*NetworkFunctionDefinitionVersion] {
-	return pulumix.Output[*NetworkFunctionDefinitionVersion]{
-		OutputState: i.ToNetworkFunctionDefinitionVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkFunctionDefinitionVersionOutput struct{ *pulumi.OutputState }
 
 func (NetworkFunctionDefinitionVersionOutput) ElementType() reflect.Type {
@@ -162,12 +155,6 @@ func (o NetworkFunctionDefinitionVersionOutput) ToNetworkFunctionDefinitionVersi
 
 func (o NetworkFunctionDefinitionVersionOutput) ToNetworkFunctionDefinitionVersionOutputWithContext(ctx context.Context) NetworkFunctionDefinitionVersionOutput {
 	return o
-}
-
-func (o NetworkFunctionDefinitionVersionOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkFunctionDefinitionVersion] {
-	return pulumix.Output[*NetworkFunctionDefinitionVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

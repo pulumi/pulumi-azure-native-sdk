@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the replica and its properties.
@@ -115,12 +114,6 @@ func (o LookupSignalRReplicaResultOutput) ToLookupSignalRReplicaResultOutput() L
 
 func (o LookupSignalRReplicaResultOutput) ToLookupSignalRReplicaResultOutputWithContext(ctx context.Context) LookupSignalRReplicaResultOutput {
 	return o
-}
-
-func (o LookupSignalRReplicaResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSignalRReplicaResult] {
-	return pulumix.Output[LookupSignalRReplicaResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

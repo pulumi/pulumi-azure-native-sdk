@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Response on GET of a hybrid use benefit
@@ -130,12 +129,6 @@ func (i *HybridUseBenefit) ToHybridUseBenefitOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(HybridUseBenefitOutput)
 }
 
-func (i *HybridUseBenefit) ToOutput(ctx context.Context) pulumix.Output[*HybridUseBenefit] {
-	return pulumix.Output[*HybridUseBenefit]{
-		OutputState: i.ToHybridUseBenefitOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HybridUseBenefitOutput struct{ *pulumi.OutputState }
 
 func (HybridUseBenefitOutput) ElementType() reflect.Type {
@@ -148,12 +141,6 @@ func (o HybridUseBenefitOutput) ToHybridUseBenefitOutput() HybridUseBenefitOutpu
 
 func (o HybridUseBenefitOutput) ToHybridUseBenefitOutputWithContext(ctx context.Context) HybridUseBenefitOutput {
 	return o
-}
-
-func (o HybridUseBenefitOutput) ToOutput(ctx context.Context) pulumix.Output[*HybridUseBenefit] {
-	return pulumix.Output[*HybridUseBenefit]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Created date

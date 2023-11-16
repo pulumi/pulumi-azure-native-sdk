@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of a web, mobile, or API app.
@@ -201,12 +200,6 @@ func (o LookupWebAppSlotResultOutput) ToLookupWebAppSlotResultOutput() LookupWeb
 
 func (o LookupWebAppSlotResultOutput) ToLookupWebAppSlotResultOutputWithContext(ctx context.Context) LookupWebAppSlotResultOutput {
 	return o
-}
-
-func (o LookupWebAppSlotResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebAppSlotResult] {
-	return pulumix.Output[LookupWebAppSlotResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Management information availability state for the app.

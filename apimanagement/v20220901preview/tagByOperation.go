@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Tag Contract details.
@@ -177,12 +176,6 @@ func (i *TagByOperation) ToTagByOperationOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TagByOperationOutput)
 }
 
-func (i *TagByOperation) ToOutput(ctx context.Context) pulumix.Output[*TagByOperation] {
-	return pulumix.Output[*TagByOperation]{
-		OutputState: i.ToTagByOperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TagByOperationOutput struct{ *pulumi.OutputState }
 
 func (TagByOperationOutput) ElementType() reflect.Type {
@@ -195,12 +188,6 @@ func (o TagByOperationOutput) ToTagByOperationOutput() TagByOperationOutput {
 
 func (o TagByOperationOutput) ToTagByOperationOutputWithContext(ctx context.Context) TagByOperationOutput {
 	return o
-}
-
-func (o TagByOperationOutput) ToOutput(ctx context.Context) pulumix.Output[*TagByOperation] {
-	return pulumix.Output[*TagByOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Tag name.

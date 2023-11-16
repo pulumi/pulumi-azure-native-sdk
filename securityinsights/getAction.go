@@ -9,13 +9,12 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the action of alert rule.
 // Azure REST API version: 2023-02-01.
 //
-// Other available API versions: 2021-03-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2021-03-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 func LookupAction(ctx *pulumi.Context, args *LookupActionArgs, opts ...pulumi.InvokeOption) (*LookupActionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupActionResult
@@ -96,12 +95,6 @@ func (o LookupActionResultOutput) ToLookupActionResultOutput() LookupActionResul
 
 func (o LookupActionResultOutput) ToLookupActionResultOutputWithContext(ctx context.Context) LookupActionResultOutput {
 	return o
-}
-
-func (o LookupActionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupActionResult] {
-	return pulumix.Output[LookupActionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Etag of the action.

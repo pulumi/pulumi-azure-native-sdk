@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Definition of the job schedule.
@@ -163,12 +162,6 @@ func (i *JobSchedule) ToJobScheduleOutputWithContext(ctx context.Context) JobSch
 	return pulumi.ToOutputWithContext(ctx, i).(JobScheduleOutput)
 }
 
-func (i *JobSchedule) ToOutput(ctx context.Context) pulumix.Output[*JobSchedule] {
-	return pulumix.Output[*JobSchedule]{
-		OutputState: i.ToJobScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobScheduleOutput struct{ *pulumi.OutputState }
 
 func (JobScheduleOutput) ElementType() reflect.Type {
@@ -181,12 +174,6 @@ func (o JobScheduleOutput) ToJobScheduleOutput() JobScheduleOutput {
 
 func (o JobScheduleOutput) ToJobScheduleOutputWithContext(ctx context.Context) JobScheduleOutput {
 	return o
-}
-
-func (o JobScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[*JobSchedule] {
-	return pulumix.Output[*JobSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the id of job schedule.

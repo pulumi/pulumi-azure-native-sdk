@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Web app data source web model.
@@ -134,12 +133,6 @@ func (i *WebAppDiscoverySiteDataSourcesController) ToWebAppDiscoverySiteDataSour
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppDiscoverySiteDataSourcesControllerOutput)
 }
 
-func (i *WebAppDiscoverySiteDataSourcesController) ToOutput(ctx context.Context) pulumix.Output[*WebAppDiscoverySiteDataSourcesController] {
-	return pulumix.Output[*WebAppDiscoverySiteDataSourcesController]{
-		OutputState: i.ToWebAppDiscoverySiteDataSourcesControllerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebAppDiscoverySiteDataSourcesControllerOutput struct{ *pulumi.OutputState }
 
 func (WebAppDiscoverySiteDataSourcesControllerOutput) ElementType() reflect.Type {
@@ -152,12 +145,6 @@ func (o WebAppDiscoverySiteDataSourcesControllerOutput) ToWebAppDiscoverySiteDat
 
 func (o WebAppDiscoverySiteDataSourcesControllerOutput) ToWebAppDiscoverySiteDataSourcesControllerOutputWithContext(ctx context.Context) WebAppDiscoverySiteDataSourcesControllerOutput {
 	return o
-}
-
-func (o WebAppDiscoverySiteDataSourcesControllerOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppDiscoverySiteDataSourcesController] {
-	return pulumix.Output[*WebAppDiscoverySiteDataSourcesController]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the discovery site Id.

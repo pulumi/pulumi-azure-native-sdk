@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the specified role assignment.
@@ -85,12 +84,6 @@ func (o LookupRoleAssignmentResultOutput) ToLookupRoleAssignmentResultOutput() L
 
 func (o LookupRoleAssignmentResultOutput) ToLookupRoleAssignmentResultOutputWithContext(ctx context.Context) LookupRoleAssignmentResultOutput {
 	return o
-}
-
-func (o LookupRoleAssignmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRoleAssignmentResult] {
-	return pulumix.Output[LookupRoleAssignmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Delegation flag for the role assignment

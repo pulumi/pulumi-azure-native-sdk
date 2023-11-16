@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i AttestationServiceCreationSpecificParamsArgs) ToAttestationServiceCreati
 	return pulumi.ToOutputWithContext(ctx, i).(AttestationServiceCreationSpecificParamsOutput)
 }
 
-func (i AttestationServiceCreationSpecificParamsArgs) ToOutput(ctx context.Context) pulumix.Output[AttestationServiceCreationSpecificParams] {
-	return pulumix.Output[AttestationServiceCreationSpecificParams]{
-		OutputState: i.ToAttestationServiceCreationSpecificParamsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Client supplied parameters used to create a new attestation provider.
 type AttestationServiceCreationSpecificParamsOutput struct{ *pulumi.OutputState }
 
@@ -76,12 +69,6 @@ func (o AttestationServiceCreationSpecificParamsOutput) ToAttestationServiceCrea
 
 func (o AttestationServiceCreationSpecificParamsOutput) ToAttestationServiceCreationSpecificParamsOutputWithContext(ctx context.Context) AttestationServiceCreationSpecificParamsOutput {
 	return o
-}
-
-func (o AttestationServiceCreationSpecificParamsOutput) ToOutput(ctx context.Context) pulumix.Output[AttestationServiceCreationSpecificParams] {
-	return pulumix.Output[AttestationServiceCreationSpecificParams]{
-		OutputState: o.OutputState,
-	}
 }
 
 // JSON Web Key Set defining a set of X.509 Certificates that will represent the parent certificate for the signing certificate used for policy operations
@@ -246,12 +233,6 @@ func (i JSONWebKeyArgs) ToJSONWebKeyOutputWithContext(ctx context.Context) JSONW
 	return pulumi.ToOutputWithContext(ctx, i).(JSONWebKeyOutput)
 }
 
-func (i JSONWebKeyArgs) ToOutput(ctx context.Context) pulumix.Output[JSONWebKey] {
-	return pulumix.Output[JSONWebKey]{
-		OutputState: i.ToJSONWebKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // JSONWebKeyArrayInput is an input type that accepts JSONWebKeyArray and JSONWebKeyArrayOutput values.
 // You can construct a concrete instance of `JSONWebKeyArrayInput` via:
 //
@@ -277,12 +258,6 @@ func (i JSONWebKeyArray) ToJSONWebKeyArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(JSONWebKeyArrayOutput)
 }
 
-func (i JSONWebKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]JSONWebKey] {
-	return pulumix.Output[[]JSONWebKey]{
-		OutputState: i.ToJSONWebKeyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JSONWebKeyOutput struct{ *pulumi.OutputState }
 
 func (JSONWebKeyOutput) ElementType() reflect.Type {
@@ -295,12 +270,6 @@ func (o JSONWebKeyOutput) ToJSONWebKeyOutput() JSONWebKeyOutput {
 
 func (o JSONWebKeyOutput) ToJSONWebKeyOutputWithContext(ctx context.Context) JSONWebKeyOutput {
 	return o
-}
-
-func (o JSONWebKeyOutput) ToOutput(ctx context.Context) pulumix.Output[JSONWebKey] {
-	return pulumix.Output[JSONWebKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The "alg" (algorithm) parameter identifies the algorithm intended for
@@ -427,12 +396,6 @@ func (o JSONWebKeyArrayOutput) ToJSONWebKeyArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o JSONWebKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JSONWebKey] {
-	return pulumix.Output[[]JSONWebKey]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JSONWebKeyArrayOutput) Index(i pulumi.IntInput) JSONWebKeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JSONWebKey {
 		return vs[0].([]JSONWebKey)[vs[1].(int)]
@@ -480,12 +443,6 @@ func (i JSONWebKeySetArgs) ToJSONWebKeySetOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(JSONWebKeySetOutput)
 }
 
-func (i JSONWebKeySetArgs) ToOutput(ctx context.Context) pulumix.Output[JSONWebKeySet] {
-	return pulumix.Output[JSONWebKeySet]{
-		OutputState: i.ToJSONWebKeySetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JSONWebKeySetArgs) ToJSONWebKeySetPtrOutput() JSONWebKeySetPtrOutput {
 	return i.ToJSONWebKeySetPtrOutputWithContext(context.Background())
 }
@@ -527,12 +484,6 @@ func (i *jsonwebKeySetPtrType) ToJSONWebKeySetPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(JSONWebKeySetPtrOutput)
 }
 
-func (i *jsonwebKeySetPtrType) ToOutput(ctx context.Context) pulumix.Output[*JSONWebKeySet] {
-	return pulumix.Output[*JSONWebKeySet]{
-		OutputState: i.ToJSONWebKeySetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JSONWebKeySetOutput struct{ *pulumi.OutputState }
 
 func (JSONWebKeySetOutput) ElementType() reflect.Type {
@@ -557,12 +508,6 @@ func (o JSONWebKeySetOutput) ToJSONWebKeySetPtrOutputWithContext(ctx context.Con
 	}).(JSONWebKeySetPtrOutput)
 }
 
-func (o JSONWebKeySetOutput) ToOutput(ctx context.Context) pulumix.Output[JSONWebKeySet] {
-	return pulumix.Output[JSONWebKeySet]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The value of the "keys" parameter is an array of JWK values.  By
 // default, the order of the JWK values within the array does not imply
 // an order of preference among them, although applications of JWK Sets
@@ -584,12 +529,6 @@ func (o JSONWebKeySetPtrOutput) ToJSONWebKeySetPtrOutput() JSONWebKeySetPtrOutpu
 
 func (o JSONWebKeySetPtrOutput) ToJSONWebKeySetPtrOutputWithContext(ctx context.Context) JSONWebKeySetPtrOutput {
 	return o
-}
-
-func (o JSONWebKeySetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JSONWebKeySet] {
-	return pulumix.Output[*JSONWebKeySet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JSONWebKeySetPtrOutput) Elem() JSONWebKeySetOutput {
@@ -647,12 +586,6 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 	return o
 }
 
-func (o PrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionResponse] {
-	return pulumix.Output[PrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -699,12 +632,6 @@ func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectio
 	return o
 }
 
-func (o PrivateEndpointConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionResponse] {
-	return pulumix.Output[[]PrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
@@ -732,12 +659,6 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
-func (o PrivateEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointResponse] {
-	return pulumix.Output[PrivateEndpointResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ARM identifier for Private Endpoint
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -755,12 +676,6 @@ func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() P
 
 func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
 	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointResponse] {
-	return pulumix.Output[*PrivateEndpointResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
@@ -826,12 +741,6 @@ func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionSta
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
 }
 
-func (i PrivateLinkServiceConnectionStateArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
-	return pulumix.Output[PrivateLinkServiceConnectionState]{
-		OutputState: i.ToPrivateLinkServiceConnectionStateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A collection of information about the state of the connection between service consumer and provider.
 type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
@@ -845,12 +754,6 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 
 func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
-	return pulumix.Output[PrivateLinkServiceConnectionState]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -891,12 +794,6 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 
 func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateResponse] {
-	return pulumix.Output[PrivateLinkServiceConnectionStateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -943,12 +840,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

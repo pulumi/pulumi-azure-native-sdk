@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the sensitivity label of a given column
@@ -116,12 +115,6 @@ func (o LookupSqlPoolSensitivityLabelResultOutput) ToLookupSqlPoolSensitivityLab
 
 func (o LookupSqlPoolSensitivityLabelResultOutput) ToLookupSqlPoolSensitivityLabelResultOutputWithContext(ctx context.Context) LookupSqlPoolSensitivityLabelResultOutput {
 	return o
-}
-
-func (o LookupSqlPoolSensitivityLabelResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSqlPoolSensitivityLabelResult] {
-	return pulumix.Output[LookupSqlPoolSensitivityLabelResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The column name.

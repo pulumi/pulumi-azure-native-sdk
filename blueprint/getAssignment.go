@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a blueprint assignment.
@@ -102,12 +101,6 @@ func (o LookupAssignmentResultOutput) ToLookupAssignmentResultOutput() LookupAss
 
 func (o LookupAssignmentResultOutput) ToLookupAssignmentResultOutputWithContext(ctx context.Context) LookupAssignmentResultOutput {
 	return o
-}
-
-func (o LookupAssignmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAssignmentResult] {
-	return pulumix.Output[LookupAssignmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ID of the published version of a blueprint definition.

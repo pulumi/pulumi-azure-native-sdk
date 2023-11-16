@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetInferencePoolStatus(ctx *pulumi.Context, args *GetInferencePoolStatusArgs, opts ...pulumi.InvokeOption) (*GetInferencePoolStatusResult, error) {
@@ -105,12 +104,6 @@ func (o GetInferencePoolStatusResultOutput) ToGetInferencePoolStatusResultOutput
 
 func (o GetInferencePoolStatusResultOutput) ToGetInferencePoolStatusResultOutputWithContext(ctx context.Context) GetInferencePoolStatusResultOutput {
 	return o
-}
-
-func (o GetInferencePoolStatusResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInferencePoolStatusResult] {
-	return pulumix.Output[GetInferencePoolStatusResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the actual number of instances in the pool.

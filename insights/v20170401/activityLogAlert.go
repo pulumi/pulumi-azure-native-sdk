@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An activity log alert resource.
@@ -169,12 +168,6 @@ func (i *ActivityLogAlert) ToActivityLogAlertOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ActivityLogAlertOutput)
 }
 
-func (i *ActivityLogAlert) ToOutput(ctx context.Context) pulumix.Output[*ActivityLogAlert] {
-	return pulumix.Output[*ActivityLogAlert]{
-		OutputState: i.ToActivityLogAlertOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActivityLogAlertOutput struct{ *pulumi.OutputState }
 
 func (ActivityLogAlertOutput) ElementType() reflect.Type {
@@ -187,12 +180,6 @@ func (o ActivityLogAlertOutput) ToActivityLogAlertOutput() ActivityLogAlertOutpu
 
 func (o ActivityLogAlertOutput) ToActivityLogAlertOutputWithContext(ctx context.Context) ActivityLogAlertOutput {
 	return o
-}
-
-func (o ActivityLogAlertOutput) ToOutput(ctx context.Context) pulumix.Output[*ActivityLogAlert] {
-	return pulumix.Output[*ActivityLogAlert]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The actions that will activate when the condition is met.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -725,12 +724,6 @@ func (o JobErrorDetailResponseOutput) ToJobErrorDetailResponseOutputWithContext(
 	return o
 }
 
-func (o JobErrorDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobErrorDetailResponse] {
-	return pulumix.Output[JobErrorDetailResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Code describing the error detail.
 func (o JobErrorDetailResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v JobErrorDetailResponse) string { return v.Code }).(pulumi.StringOutput)
@@ -753,12 +746,6 @@ func (o JobErrorDetailResponseArrayOutput) ToJobErrorDetailResponseArrayOutput()
 
 func (o JobErrorDetailResponseArrayOutput) ToJobErrorDetailResponseArrayOutputWithContext(ctx context.Context) JobErrorDetailResponseArrayOutput {
 	return o
-}
-
-func (o JobErrorDetailResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobErrorDetailResponse] {
-	return pulumix.Output[[]JobErrorDetailResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) JobErrorDetailResponseOutput {
@@ -794,12 +781,6 @@ func (o JobErrorResponseOutput) ToJobErrorResponseOutput() JobErrorResponseOutpu
 
 func (o JobErrorResponseOutput) ToJobErrorResponseOutputWithContext(ctx context.Context) JobErrorResponseOutput {
 	return o
-}
-
-func (o JobErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobErrorResponse] {
-	return pulumix.Output[JobErrorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Helps with categorization of errors.
@@ -1022,12 +1003,6 @@ func (i JobOutputAssetArgs) ToJobOutputAssetOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(JobOutputAssetOutput)
 }
 
-func (i JobOutputAssetArgs) ToOutput(ctx context.Context) pulumix.Output[JobOutputAsset] {
-	return pulumix.Output[JobOutputAsset]{
-		OutputState: i.ToJobOutputAssetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // JobOutputAssetArrayInput is an input type that accepts JobOutputAssetArray and JobOutputAssetArrayOutput values.
 // You can construct a concrete instance of `JobOutputAssetArrayInput` via:
 //
@@ -1053,12 +1028,6 @@ func (i JobOutputAssetArray) ToJobOutputAssetArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(JobOutputAssetArrayOutput)
 }
 
-func (i JobOutputAssetArray) ToOutput(ctx context.Context) pulumix.Output[[]JobOutputAsset] {
-	return pulumix.Output[[]JobOutputAsset]{
-		OutputState: i.ToJobOutputAssetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents an Asset used as a JobOutput.
 type JobOutputAssetOutput struct{ *pulumi.OutputState }
 
@@ -1072,12 +1041,6 @@ func (o JobOutputAssetOutput) ToJobOutputAssetOutput() JobOutputAssetOutput {
 
 func (o JobOutputAssetOutput) ToJobOutputAssetOutputWithContext(ctx context.Context) JobOutputAssetOutput {
 	return o
-}
-
-func (o JobOutputAssetOutput) ToOutput(ctx context.Context) pulumix.Output[JobOutputAsset] {
-	return pulumix.Output[JobOutputAsset]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the output Asset.
@@ -1113,12 +1076,6 @@ func (o JobOutputAssetArrayOutput) ToJobOutputAssetArrayOutput() JobOutputAssetA
 
 func (o JobOutputAssetArrayOutput) ToJobOutputAssetArrayOutputWithContext(ctx context.Context) JobOutputAssetArrayOutput {
 	return o
-}
-
-func (o JobOutputAssetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobOutputAsset] {
-	return pulumix.Output[[]JobOutputAsset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobOutputAssetArrayOutput) Index(i pulumi.IntInput) JobOutputAssetOutput {
@@ -1163,12 +1120,6 @@ func (o JobOutputAssetResponseOutput) ToJobOutputAssetResponseOutput() JobOutput
 
 func (o JobOutputAssetResponseOutput) ToJobOutputAssetResponseOutputWithContext(ctx context.Context) JobOutputAssetResponseOutput {
 	return o
-}
-
-func (o JobOutputAssetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JobOutputAssetResponse] {
-	return pulumix.Output[JobOutputAssetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the output Asset.
@@ -1229,12 +1180,6 @@ func (o JobOutputAssetResponseArrayOutput) ToJobOutputAssetResponseArrayOutput()
 
 func (o JobOutputAssetResponseArrayOutput) ToJobOutputAssetResponseArrayOutputWithContext(ctx context.Context) JobOutputAssetResponseArrayOutput {
 	return o
-}
-
-func (o JobOutputAssetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]JobOutputAssetResponse] {
-	return pulumix.Output[[]JobOutputAssetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobOutputAssetResponseArrayOutput) Index(i pulumi.IntInput) JobOutputAssetResponseOutput {
@@ -1696,12 +1641,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timestamp of resource creation (UTC).
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
@@ -1775,12 +1714,6 @@ func (i TransformOutputTypeArgs) ToTransformOutputTypeOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(TransformOutputTypeOutput)
 }
 
-func (i TransformOutputTypeArgs) ToOutput(ctx context.Context) pulumix.Output[TransformOutputType] {
-	return pulumix.Output[TransformOutputType]{
-		OutputState: i.ToTransformOutputTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TransformOutputTypeArrayInput is an input type that accepts TransformOutputTypeArray and TransformOutputTypeArrayOutput values.
 // You can construct a concrete instance of `TransformOutputTypeArrayInput` via:
 //
@@ -1806,12 +1739,6 @@ func (i TransformOutputTypeArray) ToTransformOutputTypeArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(TransformOutputTypeArrayOutput)
 }
 
-func (i TransformOutputTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]TransformOutputType] {
-	return pulumix.Output[[]TransformOutputType]{
-		OutputState: i.ToTransformOutputTypeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes the properties of a TransformOutput, which are the rules to be applied while generating the desired output.
 type TransformOutputTypeOutput struct{ *pulumi.OutputState }
 
@@ -1825,12 +1752,6 @@ func (o TransformOutputTypeOutput) ToTransformOutputTypeOutput() TransformOutput
 
 func (o TransformOutputTypeOutput) ToTransformOutputTypeOutputWithContext(ctx context.Context) TransformOutputTypeOutput {
 	return o
-}
-
-func (o TransformOutputTypeOutput) ToOutput(ctx context.Context) pulumix.Output[TransformOutputType] {
-	return pulumix.Output[TransformOutputType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A Transform can define more than one outputs. This property defines what the service should do when one output fails - either continue to produce other outputs, or, stop the other outputs. The overall Job state will not reflect failures of outputs that are specified with 'ContinueJob'. The default is 'StopProcessingJob'.
@@ -1860,12 +1781,6 @@ func (o TransformOutputTypeArrayOutput) ToTransformOutputTypeArrayOutput() Trans
 
 func (o TransformOutputTypeArrayOutput) ToTransformOutputTypeArrayOutputWithContext(ctx context.Context) TransformOutputTypeArrayOutput {
 	return o
-}
-
-func (o TransformOutputTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TransformOutputType] {
-	return pulumix.Output[[]TransformOutputType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TransformOutputTypeArrayOutput) Index(i pulumi.IntInput) TransformOutputTypeOutput {
@@ -1899,12 +1814,6 @@ func (o TransformOutputResponseOutput) ToTransformOutputResponseOutputWithContex
 	return o
 }
 
-func (o TransformOutputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TransformOutputResponse] {
-	return pulumix.Output[TransformOutputResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A Transform can define more than one outputs. This property defines what the service should do when one output fails - either continue to produce other outputs, or, stop the other outputs. The overall Job state will not reflect failures of outputs that are specified with 'ContinueJob'. The default is 'StopProcessingJob'.
 func (o TransformOutputResponseOutput) OnError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransformOutputResponse) *string { return v.OnError }).(pulumi.StringPtrOutput)
@@ -1932,12 +1841,6 @@ func (o TransformOutputResponseArrayOutput) ToTransformOutputResponseArrayOutput
 
 func (o TransformOutputResponseArrayOutput) ToTransformOutputResponseArrayOutputWithContext(ctx context.Context) TransformOutputResponseArrayOutput {
 	return o
-}
-
-func (o TransformOutputResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TransformOutputResponse] {
-	return pulumix.Output[[]TransformOutputResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TransformOutputResponseArrayOutput) Index(i pulumi.IntInput) TransformOutputResponseOutput {

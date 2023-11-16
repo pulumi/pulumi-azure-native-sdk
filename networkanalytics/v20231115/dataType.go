@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The data type resource.
@@ -148,12 +147,6 @@ func (i *DataType) ToDataTypeOutputWithContext(ctx context.Context) DataTypeOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DataTypeOutput)
 }
 
-func (i *DataType) ToOutput(ctx context.Context) pulumix.Output[*DataType] {
-	return pulumix.Output[*DataType]{
-		OutputState: i.ToDataTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataTypeOutput struct{ *pulumi.OutputState }
 
 func (DataTypeOutput) ElementType() reflect.Type {
@@ -166,12 +159,6 @@ func (o DataTypeOutput) ToDataTypeOutput() DataTypeOutput {
 
 func (o DataTypeOutput) ToDataTypeOutputWithContext(ctx context.Context) DataTypeOutput {
 	return o
-}
-
-func (o DataTypeOutput) ToOutput(ctx context.Context) pulumix.Output[*DataType] {
-	return pulumix.Output[*DataType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Field for database cache retention in days.

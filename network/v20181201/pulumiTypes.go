@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -65,12 +64,6 @@ func (i ExpressRouteCircuitAuthorizationArgs) ToExpressRouteCircuitAuthorization
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitAuthorizationOutput)
 }
 
-func (i ExpressRouteCircuitAuthorizationArgs) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteCircuitAuthorization] {
-	return pulumix.Output[ExpressRouteCircuitAuthorization]{
-		OutputState: i.ToExpressRouteCircuitAuthorizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ExpressRouteCircuitAuthorizationArrayInput is an input type that accepts ExpressRouteCircuitAuthorizationArray and ExpressRouteCircuitAuthorizationArrayOutput values.
 // You can construct a concrete instance of `ExpressRouteCircuitAuthorizationArrayInput` via:
 //
@@ -96,12 +89,6 @@ func (i ExpressRouteCircuitAuthorizationArray) ToExpressRouteCircuitAuthorizatio
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitAuthorizationArrayOutput)
 }
 
-func (i ExpressRouteCircuitAuthorizationArray) ToOutput(ctx context.Context) pulumix.Output[[]ExpressRouteCircuitAuthorization] {
-	return pulumix.Output[[]ExpressRouteCircuitAuthorization]{
-		OutputState: i.ToExpressRouteCircuitAuthorizationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Authorization in an ExpressRouteCircuit resource.
 type ExpressRouteCircuitAuthorizationOutput struct{ *pulumi.OutputState }
 
@@ -115,12 +102,6 @@ func (o ExpressRouteCircuitAuthorizationOutput) ToExpressRouteCircuitAuthorizati
 
 func (o ExpressRouteCircuitAuthorizationOutput) ToExpressRouteCircuitAuthorizationOutputWithContext(ctx context.Context) ExpressRouteCircuitAuthorizationOutput {
 	return o
-}
-
-func (o ExpressRouteCircuitAuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteCircuitAuthorization] {
-	return pulumix.Output[ExpressRouteCircuitAuthorization]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The authorization key.
@@ -162,12 +143,6 @@ func (o ExpressRouteCircuitAuthorizationArrayOutput) ToExpressRouteCircuitAuthor
 	return o
 }
 
-func (o ExpressRouteCircuitAuthorizationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExpressRouteCircuitAuthorization] {
-	return pulumix.Output[[]ExpressRouteCircuitAuthorization]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExpressRouteCircuitAuthorizationArrayOutput) Index(i pulumi.IntInput) ExpressRouteCircuitAuthorizationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExpressRouteCircuitAuthorization {
 		return vs[0].([]ExpressRouteCircuitAuthorization)[vs[1].(int)]
@@ -203,12 +178,6 @@ func (o ExpressRouteCircuitAuthorizationResponseOutput) ToExpressRouteCircuitAut
 
 func (o ExpressRouteCircuitAuthorizationResponseOutput) ToExpressRouteCircuitAuthorizationResponseOutputWithContext(ctx context.Context) ExpressRouteCircuitAuthorizationResponseOutput {
 	return o
-}
-
-func (o ExpressRouteCircuitAuthorizationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteCircuitAuthorizationResponse] {
-	return pulumix.Output[ExpressRouteCircuitAuthorizationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The authorization key.
@@ -253,12 +222,6 @@ func (o ExpressRouteCircuitAuthorizationResponseArrayOutput) ToExpressRouteCircu
 
 func (o ExpressRouteCircuitAuthorizationResponseArrayOutput) ToExpressRouteCircuitAuthorizationResponseArrayOutputWithContext(ctx context.Context) ExpressRouteCircuitAuthorizationResponseArrayOutput {
 	return o
-}
-
-func (o ExpressRouteCircuitAuthorizationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExpressRouteCircuitAuthorizationResponse] {
-	return pulumix.Output[[]ExpressRouteCircuitAuthorizationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExpressRouteCircuitAuthorizationResponseArrayOutput) Index(i pulumi.IntInput) ExpressRouteCircuitAuthorizationResponseOutput {
@@ -322,12 +285,6 @@ func (i ExpressRouteCircuitConnectionArgs) ToExpressRouteCircuitConnectionOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitConnectionOutput)
 }
 
-func (i ExpressRouteCircuitConnectionArgs) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteCircuitConnection] {
-	return pulumix.Output[ExpressRouteCircuitConnection]{
-		OutputState: i.ToExpressRouteCircuitConnectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ExpressRouteCircuitConnectionArrayInput is an input type that accepts ExpressRouteCircuitConnectionArray and ExpressRouteCircuitConnectionArrayOutput values.
 // You can construct a concrete instance of `ExpressRouteCircuitConnectionArrayInput` via:
 //
@@ -353,12 +310,6 @@ func (i ExpressRouteCircuitConnectionArray) ToExpressRouteCircuitConnectionArray
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitConnectionArrayOutput)
 }
 
-func (i ExpressRouteCircuitConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]ExpressRouteCircuitConnection] {
-	return pulumix.Output[[]ExpressRouteCircuitConnection]{
-		OutputState: i.ToExpressRouteCircuitConnectionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Express Route Circuit Connection in an ExpressRouteCircuitPeering resource.
 type ExpressRouteCircuitConnectionOutput struct{ *pulumi.OutputState }
 
@@ -372,12 +323,6 @@ func (o ExpressRouteCircuitConnectionOutput) ToExpressRouteCircuitConnectionOutp
 
 func (o ExpressRouteCircuitConnectionOutput) ToExpressRouteCircuitConnectionOutputWithContext(ctx context.Context) ExpressRouteCircuitConnectionOutput {
 	return o
-}
-
-func (o ExpressRouteCircuitConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteCircuitConnection] {
-	return pulumix.Output[ExpressRouteCircuitConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // /29 IP address space to carve out Customer addresses for tunnels.
@@ -424,12 +369,6 @@ func (o ExpressRouteCircuitConnectionArrayOutput) ToExpressRouteCircuitConnectio
 	return o
 }
 
-func (o ExpressRouteCircuitConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExpressRouteCircuitConnection] {
-	return pulumix.Output[[]ExpressRouteCircuitConnection]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExpressRouteCircuitConnectionArrayOutput) Index(i pulumi.IntInput) ExpressRouteCircuitConnectionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExpressRouteCircuitConnection {
 		return vs[0].([]ExpressRouteCircuitConnection)[vs[1].(int)]
@@ -471,12 +410,6 @@ func (o ExpressRouteCircuitConnectionResponseOutput) ToExpressRouteCircuitConnec
 
 func (o ExpressRouteCircuitConnectionResponseOutput) ToExpressRouteCircuitConnectionResponseOutputWithContext(ctx context.Context) ExpressRouteCircuitConnectionResponseOutput {
 	return o
-}
-
-func (o ExpressRouteCircuitConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteCircuitConnectionResponse] {
-	return pulumix.Output[ExpressRouteCircuitConnectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // /29 IP address space to carve out Customer addresses for tunnels.
@@ -540,12 +473,6 @@ func (o ExpressRouteCircuitConnectionResponseArrayOutput) ToExpressRouteCircuitC
 
 func (o ExpressRouteCircuitConnectionResponseArrayOutput) ToExpressRouteCircuitConnectionResponseArrayOutputWithContext(ctx context.Context) ExpressRouteCircuitConnectionResponseArrayOutput {
 	return o
-}
-
-func (o ExpressRouteCircuitConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExpressRouteCircuitConnectionResponse] {
-	return pulumix.Output[[]ExpressRouteCircuitConnectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExpressRouteCircuitConnectionResponseArrayOutput) Index(i pulumi.IntInput) ExpressRouteCircuitConnectionResponseOutput {
@@ -665,12 +592,6 @@ func (i ExpressRouteCircuitPeeringArgs) ToExpressRouteCircuitPeeringOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitPeeringOutput)
 }
 
-func (i ExpressRouteCircuitPeeringArgs) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteCircuitPeering] {
-	return pulumix.Output[ExpressRouteCircuitPeering]{
-		OutputState: i.ToExpressRouteCircuitPeeringOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ExpressRouteCircuitPeeringArrayInput is an input type that accepts ExpressRouteCircuitPeeringArray and ExpressRouteCircuitPeeringArrayOutput values.
 // You can construct a concrete instance of `ExpressRouteCircuitPeeringArrayInput` via:
 //
@@ -696,12 +617,6 @@ func (i ExpressRouteCircuitPeeringArray) ToExpressRouteCircuitPeeringArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitPeeringArrayOutput)
 }
 
-func (i ExpressRouteCircuitPeeringArray) ToOutput(ctx context.Context) pulumix.Output[[]ExpressRouteCircuitPeering] {
-	return pulumix.Output[[]ExpressRouteCircuitPeering]{
-		OutputState: i.ToExpressRouteCircuitPeeringArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Peering in an ExpressRouteCircuit resource.
 type ExpressRouteCircuitPeeringOutput struct{ *pulumi.OutputState }
 
@@ -715,12 +630,6 @@ func (o ExpressRouteCircuitPeeringOutput) ToExpressRouteCircuitPeeringOutput() E
 
 func (o ExpressRouteCircuitPeeringOutput) ToExpressRouteCircuitPeeringOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringOutput {
 	return o
-}
-
-func (o ExpressRouteCircuitPeeringOutput) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteCircuitPeering] {
-	return pulumix.Output[ExpressRouteCircuitPeering]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Azure ASN.
@@ -837,12 +746,6 @@ func (o ExpressRouteCircuitPeeringArrayOutput) ToExpressRouteCircuitPeeringArray
 	return o
 }
 
-func (o ExpressRouteCircuitPeeringArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExpressRouteCircuitPeering] {
-	return pulumix.Output[[]ExpressRouteCircuitPeering]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExpressRouteCircuitPeeringArrayOutput) Index(i pulumi.IntInput) ExpressRouteCircuitPeeringOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExpressRouteCircuitPeering {
 		return vs[0].([]ExpressRouteCircuitPeering)[vs[1].(int)]
@@ -904,12 +807,6 @@ func (i ExpressRouteCircuitPeeringConfigArgs) ToExpressRouteCircuitPeeringConfig
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitPeeringConfigOutput)
 }
 
-func (i ExpressRouteCircuitPeeringConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteCircuitPeeringConfig] {
-	return pulumix.Output[ExpressRouteCircuitPeeringConfig]{
-		OutputState: i.ToExpressRouteCircuitPeeringConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExpressRouteCircuitPeeringConfigArgs) ToExpressRouteCircuitPeeringConfigPtrOutput() ExpressRouteCircuitPeeringConfigPtrOutput {
 	return i.ToExpressRouteCircuitPeeringConfigPtrOutputWithContext(context.Background())
 }
@@ -951,12 +848,6 @@ func (i *expressRouteCircuitPeeringConfigPtrType) ToExpressRouteCircuitPeeringCo
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitPeeringConfigPtrOutput)
 }
 
-func (i *expressRouteCircuitPeeringConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteCircuitPeeringConfig] {
-	return pulumix.Output[*ExpressRouteCircuitPeeringConfig]{
-		OutputState: i.ToExpressRouteCircuitPeeringConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the peering configuration.
 type ExpressRouteCircuitPeeringConfigOutput struct{ *pulumi.OutputState }
 
@@ -980,12 +871,6 @@ func (o ExpressRouteCircuitPeeringConfigOutput) ToExpressRouteCircuitPeeringConf
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExpressRouteCircuitPeeringConfig) *ExpressRouteCircuitPeeringConfig {
 		return &v
 	}).(ExpressRouteCircuitPeeringConfigPtrOutput)
-}
-
-func (o ExpressRouteCircuitPeeringConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteCircuitPeeringConfig] {
-	return pulumix.Output[ExpressRouteCircuitPeeringConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The communities of bgp peering. Specified for microsoft peering
@@ -1030,12 +915,6 @@ func (o ExpressRouteCircuitPeeringConfigPtrOutput) ToExpressRouteCircuitPeeringC
 
 func (o ExpressRouteCircuitPeeringConfigPtrOutput) ToExpressRouteCircuitPeeringConfigPtrOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringConfigPtrOutput {
 	return o
-}
-
-func (o ExpressRouteCircuitPeeringConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteCircuitPeeringConfig] {
-	return pulumix.Output[*ExpressRouteCircuitPeeringConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExpressRouteCircuitPeeringConfigPtrOutput) Elem() ExpressRouteCircuitPeeringConfigOutput {
@@ -1139,12 +1018,6 @@ func (o ExpressRouteCircuitPeeringConfigResponseOutput) ToExpressRouteCircuitPee
 	return o
 }
 
-func (o ExpressRouteCircuitPeeringConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteCircuitPeeringConfigResponse] {
-	return pulumix.Output[ExpressRouteCircuitPeeringConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The communities of bgp peering. Specified for microsoft peering
 func (o ExpressRouteCircuitPeeringConfigResponseOutput) AdvertisedCommunities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ExpressRouteCircuitPeeringConfigResponse) []string { return v.AdvertisedCommunities }).(pulumi.StringArrayOutput)
@@ -1187,12 +1060,6 @@ func (o ExpressRouteCircuitPeeringConfigResponsePtrOutput) ToExpressRouteCircuit
 
 func (o ExpressRouteCircuitPeeringConfigResponsePtrOutput) ToExpressRouteCircuitPeeringConfigResponsePtrOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringConfigResponsePtrOutput {
 	return o
-}
-
-func (o ExpressRouteCircuitPeeringConfigResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteCircuitPeeringConfigResponse] {
-	return pulumix.Output[*ExpressRouteCircuitPeeringConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExpressRouteCircuitPeeringConfigResponsePtrOutput) Elem() ExpressRouteCircuitPeeringConfigResponseOutput {
@@ -1328,12 +1195,6 @@ func (o ExpressRouteCircuitPeeringResponseOutput) ToExpressRouteCircuitPeeringRe
 
 func (o ExpressRouteCircuitPeeringResponseOutput) ToExpressRouteCircuitPeeringResponseOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringResponseOutput {
 	return o
-}
-
-func (o ExpressRouteCircuitPeeringResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteCircuitPeeringResponse] {
-	return pulumix.Output[ExpressRouteCircuitPeeringResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Azure ASN.
@@ -1475,12 +1336,6 @@ func (o ExpressRouteCircuitPeeringResponseArrayOutput) ToExpressRouteCircuitPeer
 	return o
 }
 
-func (o ExpressRouteCircuitPeeringResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExpressRouteCircuitPeeringResponse] {
-	return pulumix.Output[[]ExpressRouteCircuitPeeringResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExpressRouteCircuitPeeringResponseArrayOutput) Index(i pulumi.IntInput) ExpressRouteCircuitPeeringResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExpressRouteCircuitPeeringResponse {
 		return vs[0].([]ExpressRouteCircuitPeeringResponse)[vs[1].(int)]
@@ -1530,12 +1385,6 @@ func (i ExpressRouteCircuitServiceProviderPropertiesArgs) ToExpressRouteCircuitS
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitServiceProviderPropertiesOutput)
 }
 
-func (i ExpressRouteCircuitServiceProviderPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteCircuitServiceProviderProperties] {
-	return pulumix.Output[ExpressRouteCircuitServiceProviderProperties]{
-		OutputState: i.ToExpressRouteCircuitServiceProviderPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExpressRouteCircuitServiceProviderPropertiesArgs) ToExpressRouteCircuitServiceProviderPropertiesPtrOutput() ExpressRouteCircuitServiceProviderPropertiesPtrOutput {
 	return i.ToExpressRouteCircuitServiceProviderPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1577,12 +1426,6 @@ func (i *expressRouteCircuitServiceProviderPropertiesPtrType) ToExpressRouteCirc
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitServiceProviderPropertiesPtrOutput)
 }
 
-func (i *expressRouteCircuitServiceProviderPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteCircuitServiceProviderProperties] {
-	return pulumix.Output[*ExpressRouteCircuitServiceProviderProperties]{
-		OutputState: i.ToExpressRouteCircuitServiceProviderPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contains ServiceProviderProperties in an ExpressRouteCircuit.
 type ExpressRouteCircuitServiceProviderPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1606,12 +1449,6 @@ func (o ExpressRouteCircuitServiceProviderPropertiesOutput) ToExpressRouteCircui
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExpressRouteCircuitServiceProviderProperties) *ExpressRouteCircuitServiceProviderProperties {
 		return &v
 	}).(ExpressRouteCircuitServiceProviderPropertiesPtrOutput)
-}
-
-func (o ExpressRouteCircuitServiceProviderPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteCircuitServiceProviderProperties] {
-	return pulumix.Output[ExpressRouteCircuitServiceProviderProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The BandwidthInMbps.
@@ -1641,12 +1478,6 @@ func (o ExpressRouteCircuitServiceProviderPropertiesPtrOutput) ToExpressRouteCir
 
 func (o ExpressRouteCircuitServiceProviderPropertiesPtrOutput) ToExpressRouteCircuitServiceProviderPropertiesPtrOutputWithContext(ctx context.Context) ExpressRouteCircuitServiceProviderPropertiesPtrOutput {
 	return o
-}
-
-func (o ExpressRouteCircuitServiceProviderPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteCircuitServiceProviderProperties] {
-	return pulumix.Output[*ExpressRouteCircuitServiceProviderProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExpressRouteCircuitServiceProviderPropertiesPtrOutput) Elem() ExpressRouteCircuitServiceProviderPropertiesOutput {
@@ -1714,12 +1545,6 @@ func (o ExpressRouteCircuitServiceProviderPropertiesResponseOutput) ToExpressRou
 	return o
 }
 
-func (o ExpressRouteCircuitServiceProviderPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteCircuitServiceProviderPropertiesResponse] {
-	return pulumix.Output[ExpressRouteCircuitServiceProviderPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The BandwidthInMbps.
 func (o ExpressRouteCircuitServiceProviderPropertiesResponseOutput) BandwidthInMbps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ExpressRouteCircuitServiceProviderPropertiesResponse) *int { return v.BandwidthInMbps }).(pulumi.IntPtrOutput)
@@ -1747,12 +1572,6 @@ func (o ExpressRouteCircuitServiceProviderPropertiesResponsePtrOutput) ToExpress
 
 func (o ExpressRouteCircuitServiceProviderPropertiesResponsePtrOutput) ToExpressRouteCircuitServiceProviderPropertiesResponsePtrOutputWithContext(ctx context.Context) ExpressRouteCircuitServiceProviderPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o ExpressRouteCircuitServiceProviderPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteCircuitServiceProviderPropertiesResponse] {
-	return pulumix.Output[*ExpressRouteCircuitServiceProviderPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExpressRouteCircuitServiceProviderPropertiesResponsePtrOutput) Elem() ExpressRouteCircuitServiceProviderPropertiesResponseOutput {
@@ -1838,12 +1657,6 @@ func (i ExpressRouteCircuitSkuArgs) ToExpressRouteCircuitSkuOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitSkuOutput)
 }
 
-func (i ExpressRouteCircuitSkuArgs) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteCircuitSku] {
-	return pulumix.Output[ExpressRouteCircuitSku]{
-		OutputState: i.ToExpressRouteCircuitSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExpressRouteCircuitSkuArgs) ToExpressRouteCircuitSkuPtrOutput() ExpressRouteCircuitSkuPtrOutput {
 	return i.ToExpressRouteCircuitSkuPtrOutputWithContext(context.Background())
 }
@@ -1885,12 +1698,6 @@ func (i *expressRouteCircuitSkuPtrType) ToExpressRouteCircuitSkuPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitSkuPtrOutput)
 }
 
-func (i *expressRouteCircuitSkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteCircuitSku] {
-	return pulumix.Output[*ExpressRouteCircuitSku]{
-		OutputState: i.ToExpressRouteCircuitSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contains SKU in an ExpressRouteCircuit.
 type ExpressRouteCircuitSkuOutput struct{ *pulumi.OutputState }
 
@@ -1914,12 +1721,6 @@ func (o ExpressRouteCircuitSkuOutput) ToExpressRouteCircuitSkuPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExpressRouteCircuitSku) *ExpressRouteCircuitSku {
 		return &v
 	}).(ExpressRouteCircuitSkuPtrOutput)
-}
-
-func (o ExpressRouteCircuitSkuOutput) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteCircuitSku] {
-	return pulumix.Output[ExpressRouteCircuitSku]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The family of the SKU. Possible values are: 'UnlimitedData' and 'MeteredData'.
@@ -1949,12 +1750,6 @@ func (o ExpressRouteCircuitSkuPtrOutput) ToExpressRouteCircuitSkuPtrOutput() Exp
 
 func (o ExpressRouteCircuitSkuPtrOutput) ToExpressRouteCircuitSkuPtrOutputWithContext(ctx context.Context) ExpressRouteCircuitSkuPtrOutput {
 	return o
-}
-
-func (o ExpressRouteCircuitSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteCircuitSku] {
-	return pulumix.Output[*ExpressRouteCircuitSku]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExpressRouteCircuitSkuPtrOutput) Elem() ExpressRouteCircuitSkuOutput {
@@ -2022,12 +1817,6 @@ func (o ExpressRouteCircuitSkuResponseOutput) ToExpressRouteCircuitSkuResponseOu
 	return o
 }
 
-func (o ExpressRouteCircuitSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteCircuitSkuResponse] {
-	return pulumix.Output[ExpressRouteCircuitSkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The family of the SKU. Possible values are: 'UnlimitedData' and 'MeteredData'.
 func (o ExpressRouteCircuitSkuResponseOutput) Family() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExpressRouteCircuitSkuResponse) *string { return v.Family }).(pulumi.StringPtrOutput)
@@ -2055,12 +1844,6 @@ func (o ExpressRouteCircuitSkuResponsePtrOutput) ToExpressRouteCircuitSkuRespons
 
 func (o ExpressRouteCircuitSkuResponsePtrOutput) ToExpressRouteCircuitSkuResponsePtrOutputWithContext(ctx context.Context) ExpressRouteCircuitSkuResponsePtrOutput {
 	return o
-}
-
-func (o ExpressRouteCircuitSkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteCircuitSkuResponse] {
-	return pulumix.Output[*ExpressRouteCircuitSkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExpressRouteCircuitSkuResponsePtrOutput) Elem() ExpressRouteCircuitSkuResponseOutput {
@@ -2150,12 +1933,6 @@ func (i ExpressRouteCircuitStatsArgs) ToExpressRouteCircuitStatsOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitStatsOutput)
 }
 
-func (i ExpressRouteCircuitStatsArgs) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteCircuitStats] {
-	return pulumix.Output[ExpressRouteCircuitStats]{
-		OutputState: i.ToExpressRouteCircuitStatsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExpressRouteCircuitStatsArgs) ToExpressRouteCircuitStatsPtrOutput() ExpressRouteCircuitStatsPtrOutput {
 	return i.ToExpressRouteCircuitStatsPtrOutputWithContext(context.Background())
 }
@@ -2197,12 +1974,6 @@ func (i *expressRouteCircuitStatsPtrType) ToExpressRouteCircuitStatsPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteCircuitStatsPtrOutput)
 }
 
-func (i *expressRouteCircuitStatsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteCircuitStats] {
-	return pulumix.Output[*ExpressRouteCircuitStats]{
-		OutputState: i.ToExpressRouteCircuitStatsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contains stats associated with the peering.
 type ExpressRouteCircuitStatsOutput struct{ *pulumi.OutputState }
 
@@ -2226,12 +1997,6 @@ func (o ExpressRouteCircuitStatsOutput) ToExpressRouteCircuitStatsPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExpressRouteCircuitStats) *ExpressRouteCircuitStats {
 		return &v
 	}).(ExpressRouteCircuitStatsPtrOutput)
-}
-
-func (o ExpressRouteCircuitStatsOutput) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteCircuitStats] {
-	return pulumix.Output[ExpressRouteCircuitStats]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets BytesIn of the peering.
@@ -2266,12 +2031,6 @@ func (o ExpressRouteCircuitStatsPtrOutput) ToExpressRouteCircuitStatsPtrOutput()
 
 func (o ExpressRouteCircuitStatsPtrOutput) ToExpressRouteCircuitStatsPtrOutputWithContext(ctx context.Context) ExpressRouteCircuitStatsPtrOutput {
 	return o
-}
-
-func (o ExpressRouteCircuitStatsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteCircuitStats] {
-	return pulumix.Output[*ExpressRouteCircuitStats]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExpressRouteCircuitStatsPtrOutput) Elem() ExpressRouteCircuitStatsOutput {
@@ -2351,12 +2110,6 @@ func (o ExpressRouteCircuitStatsResponseOutput) ToExpressRouteCircuitStatsRespon
 	return o
 }
 
-func (o ExpressRouteCircuitStatsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteCircuitStatsResponse] {
-	return pulumix.Output[ExpressRouteCircuitStatsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets BytesIn of the peering.
 func (o ExpressRouteCircuitStatsResponseOutput) PrimarybytesIn() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ExpressRouteCircuitStatsResponse) *float64 { return v.PrimarybytesIn }).(pulumi.Float64PtrOutput)
@@ -2389,12 +2142,6 @@ func (o ExpressRouteCircuitStatsResponsePtrOutput) ToExpressRouteCircuitStatsRes
 
 func (o ExpressRouteCircuitStatsResponsePtrOutput) ToExpressRouteCircuitStatsResponsePtrOutputWithContext(ctx context.Context) ExpressRouteCircuitStatsResponsePtrOutput {
 	return o
-}
-
-func (o ExpressRouteCircuitStatsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteCircuitStatsResponse] {
-	return pulumix.Output[*ExpressRouteCircuitStatsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExpressRouteCircuitStatsResponsePtrOutput) Elem() ExpressRouteCircuitStatsResponseOutput {
@@ -2468,12 +2215,6 @@ func (o ExpressRouteConnectionIdResponseOutput) ToExpressRouteConnectionIdRespon
 	return o
 }
 
-func (o ExpressRouteConnectionIdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteConnectionIdResponse] {
-	return pulumix.Output[ExpressRouteConnectionIdResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ID of the ExpressRouteConnection.
 func (o ExpressRouteConnectionIdResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ExpressRouteConnectionIdResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -2491,12 +2232,6 @@ func (o ExpressRouteConnectionIdResponsePtrOutput) ToExpressRouteConnectionIdRes
 
 func (o ExpressRouteConnectionIdResponsePtrOutput) ToExpressRouteConnectionIdResponsePtrOutputWithContext(ctx context.Context) ExpressRouteConnectionIdResponsePtrOutput {
 	return o
-}
-
-func (o ExpressRouteConnectionIdResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteConnectionIdResponse] {
-	return pulumix.Output[*ExpressRouteConnectionIdResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExpressRouteConnectionIdResponsePtrOutput) Elem() ExpressRouteConnectionIdResponseOutput {
@@ -2570,12 +2305,6 @@ func (i Ipv6ExpressRouteCircuitPeeringConfigArgs) ToIpv6ExpressRouteCircuitPeeri
 	return pulumi.ToOutputWithContext(ctx, i).(Ipv6ExpressRouteCircuitPeeringConfigOutput)
 }
 
-func (i Ipv6ExpressRouteCircuitPeeringConfigArgs) ToOutput(ctx context.Context) pulumix.Output[Ipv6ExpressRouteCircuitPeeringConfig] {
-	return pulumix.Output[Ipv6ExpressRouteCircuitPeeringConfig]{
-		OutputState: i.ToIpv6ExpressRouteCircuitPeeringConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i Ipv6ExpressRouteCircuitPeeringConfigArgs) ToIpv6ExpressRouteCircuitPeeringConfigPtrOutput() Ipv6ExpressRouteCircuitPeeringConfigPtrOutput {
 	return i.ToIpv6ExpressRouteCircuitPeeringConfigPtrOutputWithContext(context.Background())
 }
@@ -2617,12 +2346,6 @@ func (i *ipv6ExpressRouteCircuitPeeringConfigPtrType) ToIpv6ExpressRouteCircuitP
 	return pulumi.ToOutputWithContext(ctx, i).(Ipv6ExpressRouteCircuitPeeringConfigPtrOutput)
 }
 
-func (i *ipv6ExpressRouteCircuitPeeringConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*Ipv6ExpressRouteCircuitPeeringConfig] {
-	return pulumix.Output[*Ipv6ExpressRouteCircuitPeeringConfig]{
-		OutputState: i.ToIpv6ExpressRouteCircuitPeeringConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contains IPv6 peering config.
 type Ipv6ExpressRouteCircuitPeeringConfigOutput struct{ *pulumi.OutputState }
 
@@ -2646,12 +2369,6 @@ func (o Ipv6ExpressRouteCircuitPeeringConfigOutput) ToIpv6ExpressRouteCircuitPee
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Ipv6ExpressRouteCircuitPeeringConfig) *Ipv6ExpressRouteCircuitPeeringConfig {
 		return &v
 	}).(Ipv6ExpressRouteCircuitPeeringConfigPtrOutput)
-}
-
-func (o Ipv6ExpressRouteCircuitPeeringConfigOutput) ToOutput(ctx context.Context) pulumix.Output[Ipv6ExpressRouteCircuitPeeringConfig] {
-	return pulumix.Output[Ipv6ExpressRouteCircuitPeeringConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Microsoft peering configuration.
@@ -2693,12 +2410,6 @@ func (o Ipv6ExpressRouteCircuitPeeringConfigPtrOutput) ToIpv6ExpressRouteCircuit
 
 func (o Ipv6ExpressRouteCircuitPeeringConfigPtrOutput) ToIpv6ExpressRouteCircuitPeeringConfigPtrOutputWithContext(ctx context.Context) Ipv6ExpressRouteCircuitPeeringConfigPtrOutput {
 	return o
-}
-
-func (o Ipv6ExpressRouteCircuitPeeringConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Ipv6ExpressRouteCircuitPeeringConfig] {
-	return pulumix.Output[*Ipv6ExpressRouteCircuitPeeringConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Ipv6ExpressRouteCircuitPeeringConfigPtrOutput) Elem() Ipv6ExpressRouteCircuitPeeringConfigOutput {
@@ -2790,12 +2501,6 @@ func (o Ipv6ExpressRouteCircuitPeeringConfigResponseOutput) ToIpv6ExpressRouteCi
 	return o
 }
 
-func (o Ipv6ExpressRouteCircuitPeeringConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Ipv6ExpressRouteCircuitPeeringConfigResponse] {
-	return pulumix.Output[Ipv6ExpressRouteCircuitPeeringConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Microsoft peering configuration.
 func (o Ipv6ExpressRouteCircuitPeeringConfigResponseOutput) MicrosoftPeeringConfig() ExpressRouteCircuitPeeringConfigResponsePtrOutput {
 	return o.ApplyT(func(v Ipv6ExpressRouteCircuitPeeringConfigResponse) *ExpressRouteCircuitPeeringConfigResponse {
@@ -2835,12 +2540,6 @@ func (o Ipv6ExpressRouteCircuitPeeringConfigResponsePtrOutput) ToIpv6ExpressRout
 
 func (o Ipv6ExpressRouteCircuitPeeringConfigResponsePtrOutput) ToIpv6ExpressRouteCircuitPeeringConfigResponsePtrOutputWithContext(ctx context.Context) Ipv6ExpressRouteCircuitPeeringConfigResponsePtrOutput {
 	return o
-}
-
-func (o Ipv6ExpressRouteCircuitPeeringConfigResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Ipv6ExpressRouteCircuitPeeringConfigResponse] {
-	return pulumix.Output[*Ipv6ExpressRouteCircuitPeeringConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o Ipv6ExpressRouteCircuitPeeringConfigResponsePtrOutput) Elem() Ipv6ExpressRouteCircuitPeeringConfigResponseOutput {
@@ -2942,12 +2641,6 @@ func (o PeerExpressRouteCircuitConnectionResponseOutput) ToPeerExpressRouteCircu
 	return o
 }
 
-func (o PeerExpressRouteCircuitConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PeerExpressRouteCircuitConnectionResponse] {
-	return pulumix.Output[PeerExpressRouteCircuitConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // /29 IP address space to carve out Customer addresses for tunnels.
 func (o PeerExpressRouteCircuitConnectionResponseOutput) AddressPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PeerExpressRouteCircuitConnectionResponse) *string { return v.AddressPrefix }).(pulumi.StringPtrOutput)
@@ -3016,12 +2709,6 @@ func (o PeerExpressRouteCircuitConnectionResponseArrayOutput) ToPeerExpressRoute
 	return o
 }
 
-func (o PeerExpressRouteCircuitConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PeerExpressRouteCircuitConnectionResponse] {
-	return pulumix.Output[[]PeerExpressRouteCircuitConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PeerExpressRouteCircuitConnectionResponseArrayOutput) Index(i pulumi.IntInput) PeerExpressRouteCircuitConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PeerExpressRouteCircuitConnectionResponse {
 		return vs[0].([]PeerExpressRouteCircuitConnectionResponse)[vs[1].(int)]
@@ -3079,12 +2766,6 @@ func (i RouteFilterArgs) ToRouteFilterOutputWithContext(ctx context.Context) Rou
 	return pulumi.ToOutputWithContext(ctx, i).(RouteFilterOutput)
 }
 
-func (i RouteFilterArgs) ToOutput(ctx context.Context) pulumix.Output[RouteFilter] {
-	return pulumix.Output[RouteFilter]{
-		OutputState: i.ToRouteFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RouteFilterArgs) ToRouteFilterPtrOutput() RouteFilterPtrOutput {
 	return i.ToRouteFilterPtrOutputWithContext(context.Background())
 }
@@ -3126,12 +2807,6 @@ func (i *routeFilterPtrType) ToRouteFilterPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(RouteFilterPtrOutput)
 }
 
-func (i *routeFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*RouteFilter] {
-	return pulumix.Output[*RouteFilter]{
-		OutputState: i.ToRouteFilterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Route Filter Resource.
 type RouteFilterOutput struct{ *pulumi.OutputState }
 
@@ -3155,12 +2830,6 @@ func (o RouteFilterOutput) ToRouteFilterPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouteFilter) *RouteFilter {
 		return &v
 	}).(RouteFilterPtrOutput)
-}
-
-func (o RouteFilterOutput) ToOutput(ctx context.Context) pulumix.Output[RouteFilter] {
-	return pulumix.Output[RouteFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource ID.
@@ -3200,12 +2869,6 @@ func (o RouteFilterPtrOutput) ToRouteFilterPtrOutput() RouteFilterPtrOutput {
 
 func (o RouteFilterPtrOutput) ToRouteFilterPtrOutputWithContext(ctx context.Context) RouteFilterPtrOutput {
 	return o
-}
-
-func (o RouteFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RouteFilter] {
-	return pulumix.Output[*RouteFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RouteFilterPtrOutput) Elem() RouteFilterOutput {
@@ -3305,12 +2968,6 @@ func (o RouteFilterResponseOutput) ToRouteFilterResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o RouteFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RouteFilterResponse] {
-	return pulumix.Output[RouteFilterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets a unique read-only string that changes whenever the resource is updated.
 func (o RouteFilterResponseOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v RouteFilterResponse) string { return v.Etag }).(pulumi.StringOutput)
@@ -3368,12 +3025,6 @@ func (o RouteFilterResponsePtrOutput) ToRouteFilterResponsePtrOutput() RouteFilt
 
 func (o RouteFilterResponsePtrOutput) ToRouteFilterResponsePtrOutputWithContext(ctx context.Context) RouteFilterResponsePtrOutput {
 	return o
-}
-
-func (o RouteFilterResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RouteFilterResponse] {
-	return pulumix.Output[*RouteFilterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RouteFilterResponsePtrOutput) Elem() RouteFilterResponseOutput {
@@ -3531,12 +3182,6 @@ func (i RouteFilterRuleArgs) ToRouteFilterRuleOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(RouteFilterRuleOutput)
 }
 
-func (i RouteFilterRuleArgs) ToOutput(ctx context.Context) pulumix.Output[RouteFilterRule] {
-	return pulumix.Output[RouteFilterRule]{
-		OutputState: i.ToRouteFilterRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RouteFilterRuleArrayInput is an input type that accepts RouteFilterRuleArray and RouteFilterRuleArrayOutput values.
 // You can construct a concrete instance of `RouteFilterRuleArrayInput` via:
 //
@@ -3562,12 +3207,6 @@ func (i RouteFilterRuleArray) ToRouteFilterRuleArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(RouteFilterRuleArrayOutput)
 }
 
-func (i RouteFilterRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]RouteFilterRule] {
-	return pulumix.Output[[]RouteFilterRule]{
-		OutputState: i.ToRouteFilterRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Route Filter Rule Resource
 type RouteFilterRuleOutput struct{ *pulumi.OutputState }
 
@@ -3581,12 +3220,6 @@ func (o RouteFilterRuleOutput) ToRouteFilterRuleOutput() RouteFilterRuleOutput {
 
 func (o RouteFilterRuleOutput) ToRouteFilterRuleOutputWithContext(ctx context.Context) RouteFilterRuleOutput {
 	return o
-}
-
-func (o RouteFilterRuleOutput) ToOutput(ctx context.Context) pulumix.Output[RouteFilterRule] {
-	return pulumix.Output[RouteFilterRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The access type of the rule. Valid values are: 'Allow', 'Deny'
@@ -3633,12 +3266,6 @@ func (o RouteFilterRuleArrayOutput) ToRouteFilterRuleArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o RouteFilterRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RouteFilterRule] {
-	return pulumix.Output[[]RouteFilterRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RouteFilterRuleArrayOutput) Index(i pulumi.IntInput) RouteFilterRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteFilterRule {
 		return vs[0].([]RouteFilterRule)[vs[1].(int)]
@@ -3678,12 +3305,6 @@ func (o RouteFilterRuleResponseOutput) ToRouteFilterRuleResponseOutput() RouteFi
 
 func (o RouteFilterRuleResponseOutput) ToRouteFilterRuleResponseOutputWithContext(ctx context.Context) RouteFilterRuleResponseOutput {
 	return o
-}
-
-func (o RouteFilterRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RouteFilterRuleResponse] {
-	return pulumix.Output[RouteFilterRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The access type of the rule. Valid values are: 'Allow', 'Deny'
@@ -3740,12 +3361,6 @@ func (o RouteFilterRuleResponseArrayOutput) ToRouteFilterRuleResponseArrayOutput
 	return o
 }
 
-func (o RouteFilterRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RouteFilterRuleResponse] {
-	return pulumix.Output[[]RouteFilterRuleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RouteFilterRuleResponseArrayOutput) Index(i pulumi.IntInput) RouteFilterRuleResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteFilterRuleResponse {
 		return vs[0].([]RouteFilterRuleResponse)[vs[1].(int)]
@@ -3793,12 +3408,6 @@ func (i SubResourceArgs) ToSubResourceOutputWithContext(ctx context.Context) Sub
 	return pulumi.ToOutputWithContext(ctx, i).(SubResourceOutput)
 }
 
-func (i SubResourceArgs) ToOutput(ctx context.Context) pulumix.Output[SubResource] {
-	return pulumix.Output[SubResource]{
-		OutputState: i.ToSubResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SubResourceArgs) ToSubResourcePtrOutput() SubResourcePtrOutput {
 	return i.ToSubResourcePtrOutputWithContext(context.Background())
 }
@@ -3840,12 +3449,6 @@ func (i *subResourcePtrType) ToSubResourcePtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SubResourcePtrOutput)
 }
 
-func (i *subResourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*SubResource] {
-	return pulumix.Output[*SubResource]{
-		OutputState: i.ToSubResourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Reference to another subresource.
 type SubResourceOutput struct{ *pulumi.OutputState }
 
@@ -3871,12 +3474,6 @@ func (o SubResourceOutput) ToSubResourcePtrOutputWithContext(ctx context.Context
 	}).(SubResourcePtrOutput)
 }
 
-func (o SubResourceOutput) ToOutput(ctx context.Context) pulumix.Output[SubResource] {
-	return pulumix.Output[SubResource]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
 // An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
 // A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
@@ -3897,12 +3494,6 @@ func (o SubResourcePtrOutput) ToSubResourcePtrOutput() SubResourcePtrOutput {
 
 func (o SubResourcePtrOutput) ToSubResourcePtrOutputWithContext(ctx context.Context) SubResourcePtrOutput {
 	return o
-}
-
-func (o SubResourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubResource] {
-	return pulumix.Output[*SubResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubResourcePtrOutput) Elem() SubResourceOutput {
@@ -3949,12 +3540,6 @@ func (o SubResourceResponseOutput) ToSubResourceResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o SubResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubResourceResponse] {
-	return pulumix.Output[SubResourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource ID.
 func (o SubResourceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubResourceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -3972,12 +3557,6 @@ func (o SubResourceResponsePtrOutput) ToSubResourceResponsePtrOutput() SubResour
 
 func (o SubResourceResponsePtrOutput) ToSubResourceResponsePtrOutputWithContext(ctx context.Context) SubResourceResponsePtrOutput {
 	return o
-}
-
-func (o SubResourceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubResourceResponse] {
-	return pulumix.Output[*SubResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubResourceResponsePtrOutput) Elem() SubResourceResponseOutput {

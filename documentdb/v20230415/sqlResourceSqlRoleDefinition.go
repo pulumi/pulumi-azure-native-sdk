@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure Cosmos DB SQL Role Definition.
@@ -204,12 +203,6 @@ func (i *SqlResourceSqlRoleDefinition) ToSqlResourceSqlRoleDefinitionOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(SqlResourceSqlRoleDefinitionOutput)
 }
 
-func (i *SqlResourceSqlRoleDefinition) ToOutput(ctx context.Context) pulumix.Output[*SqlResourceSqlRoleDefinition] {
-	return pulumix.Output[*SqlResourceSqlRoleDefinition]{
-		OutputState: i.ToSqlResourceSqlRoleDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SqlResourceSqlRoleDefinitionOutput struct{ *pulumi.OutputState }
 
 func (SqlResourceSqlRoleDefinitionOutput) ElementType() reflect.Type {
@@ -222,12 +215,6 @@ func (o SqlResourceSqlRoleDefinitionOutput) ToSqlResourceSqlRoleDefinitionOutput
 
 func (o SqlResourceSqlRoleDefinitionOutput) ToSqlResourceSqlRoleDefinitionOutputWithContext(ctx context.Context) SqlResourceSqlRoleDefinitionOutput {
 	return o
-}
-
-func (o SqlResourceSqlRoleDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlResourceSqlRoleDefinition] {
-	return pulumix.Output[*SqlResourceSqlRoleDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A set of fully qualified Scopes at or below which Role Assignments may be created using this Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Must have at least one element. Scopes higher than Database account are not enforceable as assignable Scopes. Note that resources referenced in assignable Scopes need not exist.

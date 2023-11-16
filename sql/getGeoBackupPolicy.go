@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a Geo backup policy for the given database resource.
@@ -96,12 +95,6 @@ func (o LookupGeoBackupPolicyResultOutput) ToLookupGeoBackupPolicyResultOutput()
 
 func (o LookupGeoBackupPolicyResultOutput) ToLookupGeoBackupPolicyResultOutputWithContext(ctx context.Context) LookupGeoBackupPolicyResultOutput {
 	return o
-}
-
-func (o LookupGeoBackupPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGeoBackupPolicyResult] {
-	return pulumix.Output[LookupGeoBackupPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource ID.

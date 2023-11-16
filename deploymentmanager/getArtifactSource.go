@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The resource that defines the source location where the artifacts are located.
@@ -88,12 +87,6 @@ func (o LookupArtifactSourceResultOutput) ToLookupArtifactSourceResultOutput() L
 
 func (o LookupArtifactSourceResultOutput) ToLookupArtifactSourceResultOutputWithContext(ctx context.Context) LookupArtifactSourceResultOutput {
 	return o
-}
-
-func (o LookupArtifactSourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupArtifactSourceResult] {
-	return pulumix.Output[LookupArtifactSourceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The path from the location that the 'authentication' property [say, a SAS URI to the blob container] refers to, to the location of the artifacts. This can be used to differentiate different versions of the artifacts. Or, different types of artifacts like binaries or templates. The location referenced by the authentication property concatenated with this optional artifactRoot path forms the artifact source location where the artifacts are expected to be found.

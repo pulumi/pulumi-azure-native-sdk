@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents MCAS (Microsoft Cloud App Security) data connector.
@@ -139,6 +138,9 @@ func NewMCASDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:MCASDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:MCASDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -229,12 +231,6 @@ func (i *MCASDataConnector) ToMCASDataConnectorOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(MCASDataConnectorOutput)
 }
 
-func (i *MCASDataConnector) ToOutput(ctx context.Context) pulumix.Output[*MCASDataConnector] {
-	return pulumix.Output[*MCASDataConnector]{
-		OutputState: i.ToMCASDataConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MCASDataConnectorOutput struct{ *pulumi.OutputState }
 
 func (MCASDataConnectorOutput) ElementType() reflect.Type {
@@ -247,12 +243,6 @@ func (o MCASDataConnectorOutput) ToMCASDataConnectorOutput() MCASDataConnectorOu
 
 func (o MCASDataConnectorOutput) ToMCASDataConnectorOutputWithContext(ctx context.Context) MCASDataConnectorOutput {
 	return o
-}
-
-func (o MCASDataConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*MCASDataConnector] {
-	return pulumix.Output[*MCASDataConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The available data types for the connector.

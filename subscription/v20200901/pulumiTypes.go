@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -65,12 +64,6 @@ func (i PutAliasRequestPropertiesArgs) ToPutAliasRequestPropertiesOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(PutAliasRequestPropertiesOutput)
 }
 
-func (i PutAliasRequestPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[PutAliasRequestProperties] {
-	return pulumix.Output[PutAliasRequestProperties]{
-		OutputState: i.ToPutAliasRequestPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Put subscription properties.
 type PutAliasRequestPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -84,12 +77,6 @@ func (o PutAliasRequestPropertiesOutput) ToPutAliasRequestPropertiesOutput() Put
 
 func (o PutAliasRequestPropertiesOutput) ToPutAliasRequestPropertiesOutputWithContext(ctx context.Context) PutAliasRequestPropertiesOutput {
 	return o
-}
-
-func (o PutAliasRequestPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[PutAliasRequestProperties] {
-	return pulumix.Output[PutAliasRequestProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Determines whether subscription is fieldLed, partnerLed or LegacyEA
@@ -138,12 +125,6 @@ func (o PutAliasResponsePropertiesResponseOutput) ToPutAliasResponsePropertiesRe
 
 func (o PutAliasResponsePropertiesResponseOutput) ToPutAliasResponsePropertiesResponseOutputWithContext(ctx context.Context) PutAliasResponsePropertiesResponseOutput {
 	return o
-}
-
-func (o PutAliasResponsePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PutAliasResponsePropertiesResponse] {
-	return pulumix.Output[PutAliasResponsePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provisioning state of the resource.

@@ -207,12 +207,6 @@ func (o DatabaseAccountOfferTypeOutput) ToDatabaseAccountOfferTypePtrOutputWithC
 	}).(DatabaseAccountOfferTypePtrOutput)
 }
 
-func (o DatabaseAccountOfferTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseAccountOfferType] {
-	return pulumix.Output[DatabaseAccountOfferType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatabaseAccountOfferTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -246,12 +240,6 @@ func (o DatabaseAccountOfferTypePtrOutput) ToDatabaseAccountOfferTypePtrOutput()
 
 func (o DatabaseAccountOfferTypePtrOutput) ToDatabaseAccountOfferTypePtrOutputWithContext(ctx context.Context) DatabaseAccountOfferTypePtrOutput {
 	return o
-}
-
-func (o DatabaseAccountOfferTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseAccountOfferType] {
-	return pulumix.Output[*DatabaseAccountOfferType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseAccountOfferTypePtrOutput) Elem() DatabaseAccountOfferTypeOutput {
@@ -393,12 +381,6 @@ func (o DefaultConsistencyLevelOutput) ToDefaultConsistencyLevelPtrOutputWithCon
 	}).(DefaultConsistencyLevelPtrOutput)
 }
 
-func (o DefaultConsistencyLevelOutput) ToOutput(ctx context.Context) pulumix.Output[DefaultConsistencyLevel] {
-	return pulumix.Output[DefaultConsistencyLevel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DefaultConsistencyLevelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -432,12 +414,6 @@ func (o DefaultConsistencyLevelPtrOutput) ToDefaultConsistencyLevelPtrOutput() D
 
 func (o DefaultConsistencyLevelPtrOutput) ToDefaultConsistencyLevelPtrOutputWithContext(ctx context.Context) DefaultConsistencyLevelPtrOutput {
 	return o
-}
-
-func (o DefaultConsistencyLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DefaultConsistencyLevel] {
-	return pulumix.Output[*DefaultConsistencyLevel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DefaultConsistencyLevelPtrOutput) Elem() DefaultConsistencyLevelOutput {
@@ -585,12 +561,6 @@ func (o EnableFullTextQueryOutput) ToEnableFullTextQueryPtrOutputWithContext(ctx
 	}).(EnableFullTextQueryPtrOutput)
 }
 
-func (o EnableFullTextQueryOutput) ToOutput(ctx context.Context) pulumix.Output[EnableFullTextQuery] {
-	return pulumix.Output[EnableFullTextQuery]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnableFullTextQueryOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -624,12 +594,6 @@ func (o EnableFullTextQueryPtrOutput) ToEnableFullTextQueryPtrOutput() EnableFul
 
 func (o EnableFullTextQueryPtrOutput) ToEnableFullTextQueryPtrOutputWithContext(ctx context.Context) EnableFullTextQueryPtrOutput {
 	return o
-}
-
-func (o EnableFullTextQueryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnableFullTextQuery] {
-	return pulumix.Output[*EnableFullTextQuery]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnableFullTextQueryPtrOutput) Elem() EnableFullTextQueryOutput {
@@ -815,12 +779,6 @@ func (o MongoRoleDefinitionTypeOutput) ToMongoRoleDefinitionTypePtrOutputWithCon
 	}).(MongoRoleDefinitionTypePtrOutput)
 }
 
-func (o MongoRoleDefinitionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[MongoRoleDefinitionType] {
-	return pulumix.Output[MongoRoleDefinitionType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MongoRoleDefinitionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -854,12 +812,6 @@ func (o MongoRoleDefinitionTypePtrOutput) ToMongoRoleDefinitionTypePtrOutput() M
 
 func (o MongoRoleDefinitionTypePtrOutput) ToMongoRoleDefinitionTypePtrOutputWithContext(ctx context.Context) MongoRoleDefinitionTypePtrOutput {
 	return o
-}
-
-func (o MongoRoleDefinitionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MongoRoleDefinitionType] {
-	return pulumix.Output[*MongoRoleDefinitionType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MongoRoleDefinitionTypePtrOutput) Elem() MongoRoleDefinitionTypeOutput {
@@ -998,12 +950,6 @@ func (o NetworkAclBypassOutput) ToNetworkAclBypassPtrOutputWithContext(ctx conte
 	}).(NetworkAclBypassPtrOutput)
 }
 
-func (o NetworkAclBypassOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkAclBypass] {
-	return pulumix.Output[NetworkAclBypass]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkAclBypassOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1037,12 +983,6 @@ func (o NetworkAclBypassPtrOutput) ToNetworkAclBypassPtrOutput() NetworkAclBypas
 
 func (o NetworkAclBypassPtrOutput) ToNetworkAclBypassPtrOutputWithContext(ctx context.Context) NetworkAclBypassPtrOutput {
 	return o
-}
-
-func (o NetworkAclBypassPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkAclBypass] {
-	return pulumix.Output[*NetworkAclBypass]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkAclBypassPtrOutput) Elem() NetworkAclBypassOutput {
@@ -1208,12 +1148,6 @@ func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(c
 	}).(ResourceIdentityTypePtrOutput)
 }
 
-func (o ResourceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityType] {
-	return pulumix.Output[ResourceIdentityType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1247,12 +1181,6 @@ func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() Resourc
 
 func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return o
-}
-
-func (o ResourceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {
@@ -1398,12 +1326,6 @@ func (o RoleDefinitionTypeOutput) ToRoleDefinitionTypePtrOutputWithContext(ctx c
 	}).(RoleDefinitionTypePtrOutput)
 }
 
-func (o RoleDefinitionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[RoleDefinitionType] {
-	return pulumix.Output[RoleDefinitionType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RoleDefinitionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1437,12 +1359,6 @@ func (o RoleDefinitionTypePtrOutput) ToRoleDefinitionTypePtrOutput() RoleDefinit
 
 func (o RoleDefinitionTypePtrOutput) ToRoleDefinitionTypePtrOutputWithContext(ctx context.Context) RoleDefinitionTypePtrOutput {
 	return o
-}
-
-func (o RoleDefinitionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RoleDefinitionType] {
-	return pulumix.Output[*RoleDefinitionType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RoleDefinitionTypePtrOutput) Elem() RoleDefinitionTypeOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get single access review definition
@@ -145,12 +144,6 @@ func (o LookupScopeAccessReviewScheduleDefinitionByIdResultOutput) ToLookupScope
 
 func (o LookupScopeAccessReviewScheduleDefinitionByIdResultOutput) ToLookupScopeAccessReviewScheduleDefinitionByIdResultOutputWithContext(ctx context.Context) LookupScopeAccessReviewScheduleDefinitionByIdResultOutput {
 	return o
-}
-
-func (o LookupScopeAccessReviewScheduleDefinitionByIdResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupScopeAccessReviewScheduleDefinitionByIdResult] {
-	return pulumix.Output[LookupScopeAccessReviewScheduleDefinitionByIdResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The role assignment state eligible/active to review

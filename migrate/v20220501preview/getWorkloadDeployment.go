@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the workload deployment.
@@ -90,12 +89,6 @@ func (o LookupWorkloadDeploymentResultOutput) ToLookupWorkloadDeploymentResultOu
 
 func (o LookupWorkloadDeploymentResultOutput) ToLookupWorkloadDeploymentResultOutputWithContext(ctx context.Context) LookupWorkloadDeploymentResultOutput {
 	return o
-}
-
-func (o LookupWorkloadDeploymentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkloadDeploymentResult] {
-	return pulumix.Output[LookupWorkloadDeploymentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the Id of the resource.

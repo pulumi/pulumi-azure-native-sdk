@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of the provided cloud services network.
@@ -126,12 +125,6 @@ func (o LookupCloudServicesNetworkResultOutput) ToLookupCloudServicesNetworkResu
 
 func (o LookupCloudServicesNetworkResultOutput) ToLookupCloudServicesNetworkResultOutputWithContext(ctx context.Context) LookupCloudServicesNetworkResultOutput {
 	return o
-}
-
-func (o LookupCloudServicesNetworkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCloudServicesNetworkResult] {
-	return pulumix.Output[LookupCloudServicesNetworkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of egress endpoints. This allows for connection from a Hybrid AKS cluster to the specified endpoint.

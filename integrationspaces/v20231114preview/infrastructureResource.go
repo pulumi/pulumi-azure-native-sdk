@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An infrastructure resource under Space.
@@ -138,12 +137,6 @@ func (i *InfrastructureResource) ToInfrastructureResourceOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(InfrastructureResourceOutput)
 }
 
-func (i *InfrastructureResource) ToOutput(ctx context.Context) pulumix.Output[*InfrastructureResource] {
-	return pulumix.Output[*InfrastructureResource]{
-		OutputState: i.ToInfrastructureResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InfrastructureResourceOutput struct{ *pulumi.OutputState }
 
 func (InfrastructureResourceOutput) ElementType() reflect.Type {
@@ -156,12 +149,6 @@ func (o InfrastructureResourceOutput) ToInfrastructureResourceOutput() Infrastru
 
 func (o InfrastructureResourceOutput) ToInfrastructureResourceOutputWithContext(ctx context.Context) InfrastructureResourceOutput {
 	return o
-}
-
-func (o InfrastructureResourceOutput) ToOutput(ctx context.Context) pulumix.Output[*InfrastructureResource] {
-	return pulumix.Output[*InfrastructureResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

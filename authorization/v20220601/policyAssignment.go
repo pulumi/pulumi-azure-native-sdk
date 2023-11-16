@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The policy assignment.
@@ -227,12 +226,6 @@ func (i *PolicyAssignment) ToPolicyAssignmentOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyAssignmentOutput)
 }
 
-func (i *PolicyAssignment) ToOutput(ctx context.Context) pulumix.Output[*PolicyAssignment] {
-	return pulumix.Output[*PolicyAssignment]{
-		OutputState: i.ToPolicyAssignmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicyAssignmentOutput struct{ *pulumi.OutputState }
 
 func (PolicyAssignmentOutput) ElementType() reflect.Type {
@@ -245,12 +238,6 @@ func (o PolicyAssignmentOutput) ToPolicyAssignmentOutput() PolicyAssignmentOutpu
 
 func (o PolicyAssignmentOutput) ToPolicyAssignmentOutputWithContext(ctx context.Context) PolicyAssignmentOutput {
 	return o
-}
-
-func (o PolicyAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyAssignment] {
-	return pulumix.Output[*PolicyAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This message will be part of response in case of policy violation.

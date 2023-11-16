@@ -10,11 +10,12 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes a license in a hybrid machine.
 // Azure REST API version: 2023-06-20-preview.
+//
+// Other available API versions: 2023-10-03-preview.
 type License struct {
 	pulumi.CustomResourceState
 
@@ -51,6 +52,9 @@ func NewLicense(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20230620preview:License"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20231003preview:License"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -144,12 +148,6 @@ func (i *License) ToLicenseOutputWithContext(ctx context.Context) LicenseOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(LicenseOutput)
 }
 
-func (i *License) ToOutput(ctx context.Context) pulumix.Output[*License] {
-	return pulumix.Output[*License]{
-		OutputState: i.ToLicenseOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LicenseOutput struct{ *pulumi.OutputState }
 
 func (LicenseOutput) ElementType() reflect.Type {
@@ -162,12 +160,6 @@ func (o LicenseOutput) ToLicenseOutput() LicenseOutput {
 
 func (o LicenseOutput) ToLicenseOutputWithContext(ctx context.Context) LicenseOutput {
 	return o
-}
-
-func (o LicenseOutput) ToOutput(ctx context.Context) pulumix.Output[*License] {
-	return pulumix.Output[*License]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Describes the properties of a License.

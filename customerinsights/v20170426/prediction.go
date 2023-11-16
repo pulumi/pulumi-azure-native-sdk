@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The prediction resource format.
@@ -223,12 +222,6 @@ func (i *Prediction) ToPredictionOutputWithContext(ctx context.Context) Predicti
 	return pulumi.ToOutputWithContext(ctx, i).(PredictionOutput)
 }
 
-func (i *Prediction) ToOutput(ctx context.Context) pulumix.Output[*Prediction] {
-	return pulumix.Output[*Prediction]{
-		OutputState: i.ToPredictionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PredictionOutput struct{ *pulumi.OutputState }
 
 func (PredictionOutput) ElementType() reflect.Type {
@@ -241,12 +234,6 @@ func (o PredictionOutput) ToPredictionOutput() PredictionOutput {
 
 func (o PredictionOutput) ToPredictionOutputWithContext(ctx context.Context) PredictionOutput {
 	return o
-}
-
-func (o PredictionOutput) ToOutput(ctx context.Context) pulumix.Output[*Prediction] {
-	return pulumix.Output[*Prediction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether do auto analyze.

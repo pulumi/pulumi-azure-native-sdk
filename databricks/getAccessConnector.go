@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an azure databricks accessConnector.
@@ -90,12 +89,6 @@ func (o LookupAccessConnectorResultOutput) ToLookupAccessConnectorResultOutput()
 
 func (o LookupAccessConnectorResultOutput) ToLookupAccessConnectorResultOutputWithContext(ctx context.Context) LookupAccessConnectorResultOutput {
 	return o
-}
-
-func (o LookupAccessConnectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccessConnectorResult] {
-	return pulumix.Output[LookupAccessConnectorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

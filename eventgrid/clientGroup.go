@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Client group resource.
@@ -141,12 +140,6 @@ func (i *ClientGroup) ToClientGroupOutputWithContext(ctx context.Context) Client
 	return pulumi.ToOutputWithContext(ctx, i).(ClientGroupOutput)
 }
 
-func (i *ClientGroup) ToOutput(ctx context.Context) pulumix.Output[*ClientGroup] {
-	return pulumix.Output[*ClientGroup]{
-		OutputState: i.ToClientGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClientGroupOutput struct{ *pulumi.OutputState }
 
 func (ClientGroupOutput) ElementType() reflect.Type {
@@ -159,12 +152,6 @@ func (o ClientGroupOutput) ToClientGroupOutput() ClientGroupOutput {
 
 func (o ClientGroupOutput) ToClientGroupOutputWithContext(ctx context.Context) ClientGroupOutput {
 	return o
-}
-
-func (o ClientGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientGroup] {
-	return pulumix.Output[*ClientGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description for the Client Group resource.

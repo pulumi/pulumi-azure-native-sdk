@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get container app resiliency policy.
@@ -96,12 +95,6 @@ func (o LookupAppResiliencyResultOutput) ToLookupAppResiliencyResultOutput() Loo
 
 func (o LookupAppResiliencyResultOutput) ToLookupAppResiliencyResultOutputWithContext(ctx context.Context) LookupAppResiliencyResultOutput {
 	return o
-}
-
-func (o LookupAppResiliencyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAppResiliencyResult] {
-	return pulumix.Output[LookupAppResiliencyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Policy that defines circuit breaker conditions

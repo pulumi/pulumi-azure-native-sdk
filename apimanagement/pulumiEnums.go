@@ -122,12 +122,6 @@ func (o AuthorizationMethodOutput) ToAuthorizationMethodPtrOutputWithContext(ctx
 	}).(AuthorizationMethodPtrOutput)
 }
 
-func (o AuthorizationMethodOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationMethod] {
-	return pulumix.Output[AuthorizationMethod]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuthorizationMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -161,12 +155,6 @@ func (o AuthorizationMethodPtrOutput) ToAuthorizationMethodPtrOutput() Authoriza
 
 func (o AuthorizationMethodPtrOutput) ToAuthorizationMethodPtrOutputWithContext(ctx context.Context) AuthorizationMethodPtrOutput {
 	return o
-}
-
-func (o AuthorizationMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationMethod] {
-	return pulumix.Output[*AuthorizationMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthorizationMethodPtrOutput) Elem() AuthorizationMethodOutput {
@@ -262,12 +250,6 @@ func (i AuthorizationMethodArray) ToAuthorizationMethodArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationMethodArrayOutput)
 }
 
-func (i AuthorizationMethodArray) ToOutput(ctx context.Context) pulumix.Output[[]AuthorizationMethod] {
-	return pulumix.Output[[]AuthorizationMethod]{
-		OutputState: i.ToAuthorizationMethodArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AuthorizationMethodArrayOutput struct{ *pulumi.OutputState }
 
 func (AuthorizationMethodArrayOutput) ElementType() reflect.Type {
@@ -280,12 +262,6 @@ func (o AuthorizationMethodArrayOutput) ToAuthorizationMethodArrayOutput() Autho
 
 func (o AuthorizationMethodArrayOutput) ToAuthorizationMethodArrayOutputWithContext(ctx context.Context) AuthorizationMethodArrayOutput {
 	return o
-}
-
-func (o AuthorizationMethodArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuthorizationMethod] {
-	return pulumix.Output[[]AuthorizationMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthorizationMethodArrayOutput) Index(i pulumi.IntInput) AuthorizationMethodOutput {
@@ -495,12 +471,6 @@ func (o GroupTypeOutput) ToGroupTypePtrOutputWithContext(ctx context.Context) Gr
 	}).(GroupTypePtrOutput)
 }
 
-func (o GroupTypeOutput) ToOutput(ctx context.Context) pulumix.Output[GroupType] {
-	return pulumix.Output[GroupType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GroupTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -534,12 +504,6 @@ func (o GroupTypePtrOutput) ToGroupTypePtrOutput() GroupTypePtrOutput {
 
 func (o GroupTypePtrOutput) ToGroupTypePtrOutputWithContext(ctx context.Context) GroupTypePtrOutput {
 	return o
-}
-
-func (o GroupTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupType] {
-	return pulumix.Output[*GroupType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupTypePtrOutput) Elem() GroupTypeOutput {
@@ -719,12 +683,6 @@ func (o KeyTypeOutput) ToKeyTypePtrOutputWithContext(ctx context.Context) KeyTyp
 	}).(KeyTypePtrOutput)
 }
 
-func (o KeyTypeOutput) ToOutput(ctx context.Context) pulumix.Output[KeyType] {
-	return pulumix.Output[KeyType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KeyTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -758,12 +716,6 @@ func (o KeyTypePtrOutput) ToKeyTypePtrOutput() KeyTypePtrOutput {
 
 func (o KeyTypePtrOutput) ToKeyTypePtrOutputWithContext(ctx context.Context) KeyTypePtrOutput {
 	return o
-}
-
-func (o KeyTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyType] {
-	return pulumix.Output[*KeyType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyTypePtrOutput) Elem() KeyTypeOutput {
@@ -977,12 +929,6 @@ func (o ProductStateEnumOutput) ToProductStateEnumPtrOutputWithContext(ctx conte
 	}).(ProductStateEnumPtrOutput)
 }
 
-func (o ProductStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[ProductStateEnum] {
-	return pulumix.Output[ProductStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProductStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1016,12 +962,6 @@ func (o ProductStateEnumPtrOutput) ToProductStateEnumPtrOutput() ProductStateEnu
 
 func (o ProductStateEnumPtrOutput) ToProductStateEnumPtrOutputWithContext(ctx context.Context) ProductStateEnumPtrOutput {
 	return o
-}
-
-func (o ProductStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProductStateEnum] {
-	return pulumix.Output[*ProductStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProductStateEnumPtrOutput) Elem() ProductStateEnumOutput {
@@ -1168,12 +1108,6 @@ func (o ProvisioningStateOutput) ToProvisioningStatePtrOutputWithContext(ctx con
 	}).(ProvisioningStatePtrOutput)
 }
 
-func (o ProvisioningStateOutput) ToOutput(ctx context.Context) pulumix.Output[ProvisioningState] {
-	return pulumix.Output[ProvisioningState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProvisioningStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1207,12 +1141,6 @@ func (o ProvisioningStatePtrOutput) ToProvisioningStatePtrOutput() ProvisioningS
 
 func (o ProvisioningStatePtrOutput) ToProvisioningStatePtrOutputWithContext(ctx context.Context) ProvisioningStatePtrOutput {
 	return o
-}
-
-func (o ProvisioningStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProvisioningState] {
-	return pulumix.Output[*ProvisioningState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProvisioningStatePtrOutput) Elem() ProvisioningStateOutput {
@@ -1433,12 +1361,6 @@ func (o SubscriptionStateEnumOutput) ToSubscriptionStateEnumPtrOutputWithContext
 	}).(SubscriptionStateEnumPtrOutput)
 }
 
-func (o SubscriptionStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionStateEnum] {
-	return pulumix.Output[SubscriptionStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SubscriptionStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1472,12 +1394,6 @@ func (o SubscriptionStateEnumPtrOutput) ToSubscriptionStateEnumPtrOutput() Subsc
 
 func (o SubscriptionStateEnumPtrOutput) ToSubscriptionStateEnumPtrOutputWithContext(ctx context.Context) SubscriptionStateEnumPtrOutput {
 	return o
-}
-
-func (o SubscriptionStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionStateEnum] {
-	return pulumix.Output[*SubscriptionStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubscriptionStateEnumPtrOutput) Elem() SubscriptionStateEnumOutput {

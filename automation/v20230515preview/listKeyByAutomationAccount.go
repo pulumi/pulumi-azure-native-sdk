@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve the automation keys for an account.
@@ -71,12 +70,6 @@ func (o ListKeyByAutomationAccountResultOutput) ToListKeyByAutomationAccountResu
 
 func (o ListKeyByAutomationAccountResultOutput) ToListKeyByAutomationAccountResultOutputWithContext(ctx context.Context) ListKeyByAutomationAccountResultOutput {
 	return o
-}
-
-func (o ListKeyByAutomationAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListKeyByAutomationAccountResult] {
-	return pulumix.Output[ListKeyByAutomationAccountResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Lists the automation keys.

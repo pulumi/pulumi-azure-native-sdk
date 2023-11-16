@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A CommunityProviderHub resource
@@ -196,12 +195,6 @@ func (i *CommunityTraining) ToCommunityTrainingOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(CommunityTrainingOutput)
 }
 
-func (i *CommunityTraining) ToOutput(ctx context.Context) pulumix.Output[*CommunityTraining] {
-	return pulumix.Output[*CommunityTraining]{
-		OutputState: i.ToCommunityTrainingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CommunityTrainingOutput struct{ *pulumi.OutputState }
 
 func (CommunityTrainingOutput) ElementType() reflect.Type {
@@ -214,12 +207,6 @@ func (o CommunityTrainingOutput) ToCommunityTrainingOutput() CommunityTrainingOu
 
 func (o CommunityTrainingOutput) ToCommunityTrainingOutputWithContext(ctx context.Context) CommunityTrainingOutput {
 	return o
-}
-
-func (o CommunityTrainingOutput) ToOutput(ctx context.Context) pulumix.Output[*CommunityTraining] {
-	return pulumix.Output[*CommunityTraining]{
-		OutputState: o.OutputState,
-	}
 }
 
 // To indicate whether the Community Training instance has Disaster Recovery enabled

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an existing security policy within a profile.
@@ -90,12 +89,6 @@ func (o LookupSecurityPolicyResultOutput) ToLookupSecurityPolicyResultOutput() L
 
 func (o LookupSecurityPolicyResultOutput) ToLookupSecurityPolicyResultOutputWithContext(ctx context.Context) LookupSecurityPolicyResultOutput {
 	return o
-}
-
-func (o LookupSecurityPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSecurityPolicyResult] {
-	return pulumix.Output[LookupSecurityPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupSecurityPolicyResultOutput) DeploymentStatus() pulumi.StringOutput {

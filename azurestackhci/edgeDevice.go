@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Edge device resource
@@ -123,12 +122,6 @@ func (i *EdgeDevice) ToEdgeDeviceOutputWithContext(ctx context.Context) EdgeDevi
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeDeviceOutput)
 }
 
-func (i *EdgeDevice) ToOutput(ctx context.Context) pulumix.Output[*EdgeDevice] {
-	return pulumix.Output[*EdgeDevice]{
-		OutputState: i.ToEdgeDeviceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EdgeDeviceOutput struct{ *pulumi.OutputState }
 
 func (EdgeDeviceOutput) ElementType() reflect.Type {
@@ -141,12 +134,6 @@ func (o EdgeDeviceOutput) ToEdgeDeviceOutput() EdgeDeviceOutput {
 
 func (o EdgeDeviceOutput) ToEdgeDeviceOutputWithContext(ctx context.Context) EdgeDeviceOutput {
 	return o
-}
-
-func (o EdgeDeviceOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeDevice] {
-	return pulumix.Output[*EdgeDevice]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Device Configuration

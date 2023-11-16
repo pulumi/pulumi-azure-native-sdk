@@ -9,13 +9,12 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Metadata.
 // Azure REST API version: 2023-02-01.
 //
-// Other available API versions: 2021-03-01-preview, 2023-02-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2021-03-01-preview, 2023-02-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 func LookupMetadata(ctx *pulumi.Context, args *LookupMetadataArgs, opts ...pulumi.InvokeOption) (*LookupMetadataResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMetadataResult
@@ -126,12 +125,6 @@ func (o LookupMetadataResultOutput) ToLookupMetadataResultOutput() LookupMetadat
 
 func (o LookupMetadataResultOutput) ToLookupMetadataResultOutputWithContext(ctx context.Context) LookupMetadataResultOutput {
 	return o
-}
-
-func (o LookupMetadataResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMetadataResult] {
-	return pulumix.Output[LookupMetadataResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creator of the content item.

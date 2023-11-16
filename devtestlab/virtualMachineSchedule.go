@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A schedule.
@@ -201,12 +200,6 @@ func (i *VirtualMachineSchedule) ToVirtualMachineScheduleOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineScheduleOutput)
 }
 
-func (i *VirtualMachineSchedule) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineSchedule] {
-	return pulumix.Output[*VirtualMachineSchedule]{
-		OutputState: i.ToVirtualMachineScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualMachineScheduleOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineScheduleOutput) ElementType() reflect.Type {
@@ -219,12 +212,6 @@ func (o VirtualMachineScheduleOutput) ToVirtualMachineScheduleOutput() VirtualMa
 
 func (o VirtualMachineScheduleOutput) ToVirtualMachineScheduleOutputWithContext(ctx context.Context) VirtualMachineScheduleOutput {
 	return o
-}
-
-func (o VirtualMachineScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualMachineSchedule] {
-	return pulumix.Output[*VirtualMachineSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation date of the schedule.

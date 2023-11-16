@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List user roles associated with the data product.
@@ -75,12 +74,6 @@ func (o ListDataProductRolesAssignmentsResultOutput) ToListDataProductRolesAssig
 
 func (o ListDataProductRolesAssignmentsResultOutput) ToListDataProductRolesAssignmentsResultOutputWithContext(ctx context.Context) ListDataProductRolesAssignmentsResultOutput {
 	return o
-}
-
-func (o ListDataProductRolesAssignmentsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListDataProductRolesAssignmentsResult] {
-	return pulumix.Output[ListDataProductRolesAssignmentsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Count of role assignments.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Edge device resource
@@ -150,12 +149,6 @@ func (i *DeploymentSetting) ToDeploymentSettingOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentSettingOutput)
 }
 
-func (i *DeploymentSetting) ToOutput(ctx context.Context) pulumix.Output[*DeploymentSetting] {
-	return pulumix.Output[*DeploymentSetting]{
-		OutputState: i.ToDeploymentSettingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeploymentSettingOutput struct{ *pulumi.OutputState }
 
 func (DeploymentSettingOutput) ElementType() reflect.Type {
@@ -168,12 +161,6 @@ func (o DeploymentSettingOutput) ToDeploymentSettingOutput() DeploymentSettingOu
 
 func (o DeploymentSettingOutput) ToDeploymentSettingOutputWithContext(ctx context.Context) DeploymentSettingOutput {
 	return o
-}
-
-func (o DeploymentSettingOutput) ToOutput(ctx context.Context) pulumix.Output[*DeploymentSetting] {
-	return pulumix.Output[*DeploymentSetting]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Azure resource ids of Arc machines to be part of cluster.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Group
@@ -102,12 +101,6 @@ func (o LookupGroupsOperationResultOutput) ToLookupGroupsOperationResultOutput()
 
 func (o LookupGroupsOperationResultOutput) ToLookupGroupsOperationResultOutputWithContext(ctx context.Context) LookupGroupsOperationResultOutput {
 	return o
-}
-
-func (o LookupGroupsOperationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGroupsOperationResult] {
-	return pulumix.Output[LookupGroupsOperationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If the assessments are in running state.

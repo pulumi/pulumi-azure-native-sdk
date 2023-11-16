@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -59,12 +58,6 @@ func (i AnalyticsConnectorDataLakeDataDestinationArgs) ToAnalyticsConnectorDataL
 	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConnectorDataLakeDataDestinationOutput)
 }
 
-func (i AnalyticsConnectorDataLakeDataDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[AnalyticsConnectorDataLakeDataDestination] {
-	return pulumix.Output[AnalyticsConnectorDataLakeDataDestination]{
-		OutputState: i.ToAnalyticsConnectorDataLakeDataDestinationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Data Lake data destination for Analytics Connector.
 type AnalyticsConnectorDataLakeDataDestinationOutput struct{ *pulumi.OutputState }
 
@@ -78,12 +71,6 @@ func (o AnalyticsConnectorDataLakeDataDestinationOutput) ToAnalyticsConnectorDat
 
 func (o AnalyticsConnectorDataLakeDataDestinationOutput) ToAnalyticsConnectorDataLakeDataDestinationOutputWithContext(ctx context.Context) AnalyticsConnectorDataLakeDataDestinationOutput {
 	return o
-}
-
-func (o AnalyticsConnectorDataLakeDataDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[AnalyticsConnectorDataLakeDataDestination] {
-	return pulumix.Output[AnalyticsConnectorDataLakeDataDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name for the Data Lake.
@@ -126,12 +113,6 @@ func (o AnalyticsConnectorDataLakeDataDestinationResponseOutput) ToAnalyticsConn
 
 func (o AnalyticsConnectorDataLakeDataDestinationResponseOutput) ToAnalyticsConnectorDataLakeDataDestinationResponseOutputWithContext(ctx context.Context) AnalyticsConnectorDataLakeDataDestinationResponseOutput {
 	return o
-}
-
-func (o AnalyticsConnectorDataLakeDataDestinationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AnalyticsConnectorDataLakeDataDestinationResponse] {
-	return pulumix.Output[AnalyticsConnectorDataLakeDataDestinationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name for the Data Lake.
@@ -195,12 +176,6 @@ func (i AnalyticsConnectorFhirServiceDataSourceArgs) ToAnalyticsConnectorFhirSer
 	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConnectorFhirServiceDataSourceOutput)
 }
 
-func (i AnalyticsConnectorFhirServiceDataSourceArgs) ToOutput(ctx context.Context) pulumix.Output[AnalyticsConnectorFhirServiceDataSource] {
-	return pulumix.Output[AnalyticsConnectorFhirServiceDataSource]{
-		OutputState: i.ToAnalyticsConnectorFhirServiceDataSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The FHIR service data source for Analytics Connector.
 type AnalyticsConnectorFhirServiceDataSourceOutput struct{ *pulumi.OutputState }
 
@@ -214,12 +189,6 @@ func (o AnalyticsConnectorFhirServiceDataSourceOutput) ToAnalyticsConnectorFhirS
 
 func (o AnalyticsConnectorFhirServiceDataSourceOutput) ToAnalyticsConnectorFhirServiceDataSourceOutputWithContext(ctx context.Context) AnalyticsConnectorFhirServiceDataSourceOutput {
 	return o
-}
-
-func (o AnalyticsConnectorFhirServiceDataSourceOutput) ToOutput(ctx context.Context) pulumix.Output[AnalyticsConnectorFhirServiceDataSource] {
-	return pulumix.Output[AnalyticsConnectorFhirServiceDataSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The kind of FHIR Service.
@@ -262,12 +231,6 @@ func (o AnalyticsConnectorFhirServiceDataSourceResponseOutput) ToAnalyticsConnec
 
 func (o AnalyticsConnectorFhirServiceDataSourceResponseOutput) ToAnalyticsConnectorFhirServiceDataSourceResponseOutputWithContext(ctx context.Context) AnalyticsConnectorFhirServiceDataSourceResponseOutput {
 	return o
-}
-
-func (o AnalyticsConnectorFhirServiceDataSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AnalyticsConnectorFhirServiceDataSourceResponse] {
-	return pulumix.Output[AnalyticsConnectorFhirServiceDataSourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The kind of FHIR Service.
@@ -331,12 +294,6 @@ func (i AnalyticsConnectorFhirToParquetMappingArgs) ToAnalyticsConnectorFhirToPa
 	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConnectorFhirToParquetMappingOutput)
 }
 
-func (i AnalyticsConnectorFhirToParquetMappingArgs) ToOutput(ctx context.Context) pulumix.Output[AnalyticsConnectorFhirToParquetMapping] {
-	return pulumix.Output[AnalyticsConnectorFhirToParquetMapping]{
-		OutputState: i.ToAnalyticsConnectorFhirToParquetMappingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FHIR Service data mapping configuration for Analytics Connector.
 type AnalyticsConnectorFhirToParquetMappingOutput struct{ *pulumi.OutputState }
 
@@ -350,12 +307,6 @@ func (o AnalyticsConnectorFhirToParquetMappingOutput) ToAnalyticsConnectorFhirTo
 
 func (o AnalyticsConnectorFhirToParquetMappingOutput) ToAnalyticsConnectorFhirToParquetMappingOutputWithContext(ctx context.Context) AnalyticsConnectorFhirToParquetMappingOutput {
 	return o
-}
-
-func (o AnalyticsConnectorFhirToParquetMappingOutput) ToOutput(ctx context.Context) pulumix.Output[AnalyticsConnectorFhirToParquetMapping] {
-	return pulumix.Output[AnalyticsConnectorFhirToParquetMapping]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Artifact reference for extension schema.
@@ -398,12 +349,6 @@ func (o AnalyticsConnectorFhirToParquetMappingResponseOutput) ToAnalyticsConnect
 
 func (o AnalyticsConnectorFhirToParquetMappingResponseOutput) ToAnalyticsConnectorFhirToParquetMappingResponseOutputWithContext(ctx context.Context) AnalyticsConnectorFhirToParquetMappingResponseOutput {
 	return o
-}
-
-func (o AnalyticsConnectorFhirToParquetMappingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AnalyticsConnectorFhirToParquetMappingResponse] {
-	return pulumix.Output[AnalyticsConnectorFhirToParquetMappingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Artifact reference for extension schema.
@@ -461,12 +406,6 @@ func (i ServiceManagedIdentityIdentityArgs) ToServiceManagedIdentityIdentityOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceManagedIdentityIdentityOutput)
 }
 
-func (i ServiceManagedIdentityIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceManagedIdentityIdentity] {
-	return pulumix.Output[ServiceManagedIdentityIdentity]{
-		OutputState: i.ToServiceManagedIdentityIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceManagedIdentityIdentityArgs) ToServiceManagedIdentityIdentityPtrOutput() ServiceManagedIdentityIdentityPtrOutput {
 	return i.ToServiceManagedIdentityIdentityPtrOutputWithContext(context.Background())
 }
@@ -508,12 +447,6 @@ func (i *serviceManagedIdentityIdentityPtrType) ToServiceManagedIdentityIdentity
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceManagedIdentityIdentityPtrOutput)
 }
 
-func (i *serviceManagedIdentityIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceManagedIdentityIdentity] {
-	return pulumix.Output[*ServiceManagedIdentityIdentity]{
-		OutputState: i.ToServiceManagedIdentityIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Setting indicating whether the service has a managed identity associated with it.
 type ServiceManagedIdentityIdentityOutput struct{ *pulumi.OutputState }
 
@@ -539,12 +472,6 @@ func (o ServiceManagedIdentityIdentityOutput) ToServiceManagedIdentityIdentityPt
 	}).(ServiceManagedIdentityIdentityPtrOutput)
 }
 
-func (o ServiceManagedIdentityIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceManagedIdentityIdentity] {
-	return pulumix.Output[ServiceManagedIdentityIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Type of identity being specified, currently SystemAssigned and None are allowed.
 func (o ServiceManagedIdentityIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceManagedIdentityIdentity) string { return v.Type }).(pulumi.StringOutput)
@@ -567,12 +494,6 @@ func (o ServiceManagedIdentityIdentityPtrOutput) ToServiceManagedIdentityIdentit
 
 func (o ServiceManagedIdentityIdentityPtrOutput) ToServiceManagedIdentityIdentityPtrOutputWithContext(ctx context.Context) ServiceManagedIdentityIdentityPtrOutput {
 	return o
-}
-
-func (o ServiceManagedIdentityIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceManagedIdentityIdentity] {
-	return pulumix.Output[*ServiceManagedIdentityIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceManagedIdentityIdentityPtrOutput) Elem() ServiceManagedIdentityIdentityOutput {
@@ -632,12 +553,6 @@ func (o ServiceManagedIdentityResponseIdentityOutput) ToServiceManagedIdentityRe
 	return o
 }
 
-func (o ServiceManagedIdentityResponseIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceManagedIdentityResponseIdentity] {
-	return pulumix.Output[ServiceManagedIdentityResponseIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
 func (o ServiceManagedIdentityResponseIdentityOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceManagedIdentityResponseIdentity) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -672,12 +587,6 @@ func (o ServiceManagedIdentityResponseIdentityPtrOutput) ToServiceManagedIdentit
 
 func (o ServiceManagedIdentityResponseIdentityPtrOutput) ToServiceManagedIdentityResponseIdentityPtrOutputWithContext(ctx context.Context) ServiceManagedIdentityResponseIdentityPtrOutput {
 	return o
-}
-
-func (o ServiceManagedIdentityResponseIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceManagedIdentityResponseIdentity] {
-	return pulumix.Output[*ServiceManagedIdentityResponseIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceManagedIdentityResponseIdentityPtrOutput) Elem() ServiceManagedIdentityResponseIdentityOutput {
@@ -761,12 +670,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timestamp of resource creation (UTC).
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
@@ -820,12 +723,6 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
-func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
-	return pulumix.Output[UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The client ID of the assigned identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -848,12 +745,6 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
-	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {

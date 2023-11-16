@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of a system topic.
@@ -96,12 +95,6 @@ func (o LookupSystemTopicResultOutput) ToLookupSystemTopicResultOutput() LookupS
 
 func (o LookupSystemTopicResultOutput) ToLookupSystemTopicResultOutputWithContext(ctx context.Context) LookupSystemTopicResultOutput {
 	return o
-}
-
-func (o LookupSystemTopicResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSystemTopicResult] {
-	return pulumix.Output[LookupSystemTopicResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified identifier of the resource.

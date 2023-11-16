@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type B2CTenant struct {
@@ -147,12 +146,6 @@ func (i *B2CTenant) ToB2CTenantOutputWithContext(ctx context.Context) B2CTenantO
 	return pulumi.ToOutputWithContext(ctx, i).(B2CTenantOutput)
 }
 
-func (i *B2CTenant) ToOutput(ctx context.Context) pulumix.Output[*B2CTenant] {
-	return pulumix.Output[*B2CTenant]{
-		OutputState: i.ToB2CTenantOutputWithContext(ctx).OutputState,
-	}
-}
-
 type B2CTenantOutput struct{ *pulumi.OutputState }
 
 func (B2CTenantOutput) ElementType() reflect.Type {
@@ -165,12 +158,6 @@ func (o B2CTenantOutput) ToB2CTenantOutput() B2CTenantOutput {
 
 func (o B2CTenantOutput) ToB2CTenantOutputWithContext(ctx context.Context) B2CTenantOutput {
 	return o
-}
-
-func (o B2CTenantOutput) ToOutput(ctx context.Context) pulumix.Output[*B2CTenant] {
-	return pulumix.Output[*B2CTenant]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The billing configuration for the tenant.

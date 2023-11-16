@@ -88,12 +88,6 @@ func (o FirewallAllowAzureIpsStateOutput) ToFirewallAllowAzureIpsStatePtrOutputW
 	}).(FirewallAllowAzureIpsStatePtrOutput)
 }
 
-func (o FirewallAllowAzureIpsStateOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallAllowAzureIpsState] {
-	return pulumix.Output[FirewallAllowAzureIpsState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FirewallAllowAzureIpsStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -127,12 +121,6 @@ func (o FirewallAllowAzureIpsStatePtrOutput) ToFirewallAllowAzureIpsStatePtrOutp
 
 func (o FirewallAllowAzureIpsStatePtrOutput) ToFirewallAllowAzureIpsStatePtrOutputWithContext(ctx context.Context) FirewallAllowAzureIpsStatePtrOutput {
 	return o
-}
-
-func (o FirewallAllowAzureIpsStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallAllowAzureIpsState] {
-	return pulumix.Output[*FirewallAllowAzureIpsState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallAllowAzureIpsStatePtrOutput) Elem() FirewallAllowAzureIpsStateOutput {
@@ -271,12 +259,6 @@ func (o FirewallStateOutput) ToFirewallStatePtrOutputWithContext(ctx context.Con
 	}).(FirewallStatePtrOutput)
 }
 
-func (o FirewallStateOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallState] {
-	return pulumix.Output[FirewallState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FirewallStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -310,12 +292,6 @@ func (o FirewallStatePtrOutput) ToFirewallStatePtrOutput() FirewallStatePtrOutpu
 
 func (o FirewallStatePtrOutput) ToFirewallStatePtrOutputWithContext(ctx context.Context) FirewallStatePtrOutput {
 	return o
-}
-
-func (o FirewallStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallState] {
-	return pulumix.Output[*FirewallState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallStatePtrOutput) Elem() FirewallStateOutput {
@@ -461,12 +437,6 @@ func (o TierTypeOutput) ToTierTypePtrOutputWithContext(ctx context.Context) Tier
 	}).(TierTypePtrOutput)
 }
 
-func (o TierTypeOutput) ToOutput(ctx context.Context) pulumix.Output[TierType] {
-	return pulumix.Output[TierType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TierTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -500,12 +470,6 @@ func (o TierTypePtrOutput) ToTierTypePtrOutput() TierTypePtrOutput {
 
 func (o TierTypePtrOutput) ToTierTypePtrOutputWithContext(ctx context.Context) TierTypePtrOutput {
 	return o
-}
-
-func (o TierTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TierType] {
-	return pulumix.Output[*TierType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TierTypePtrOutput) Elem() TierTypeOutput {

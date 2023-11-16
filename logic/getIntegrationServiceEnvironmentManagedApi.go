@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the integration service environment managed Api.
@@ -112,12 +111,6 @@ func (o LookupIntegrationServiceEnvironmentManagedApiResultOutput) ToLookupInteg
 
 func (o LookupIntegrationServiceEnvironmentManagedApiResultOutput) ToLookupIntegrationServiceEnvironmentManagedApiResultOutputWithContext(ctx context.Context) LookupIntegrationServiceEnvironmentManagedApiResultOutput {
 	return o
-}
-
-func (o LookupIntegrationServiceEnvironmentManagedApiResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIntegrationServiceEnvironmentManagedApiResult] {
-	return pulumix.Output[LookupIntegrationServiceEnvironmentManagedApiResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The API definition.

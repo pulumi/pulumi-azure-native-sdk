@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -33,12 +32,6 @@ func (o CreatorPropertiesResponseOutput) ToCreatorPropertiesResponseOutput() Cre
 
 func (o CreatorPropertiesResponseOutput) ToCreatorPropertiesResponseOutputWithContext(ctx context.Context) CreatorPropertiesResponseOutput {
 	return o
-}
-
-func (o CreatorPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CreatorPropertiesResponse] {
-	return pulumix.Output[CreatorPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The state of the resource provisioning, terminal states: Succeeded, Failed, Canceled
@@ -65,12 +58,6 @@ func (o PrivateAtlasPropertiesResponseOutput) ToPrivateAtlasPropertiesResponseOu
 
 func (o PrivateAtlasPropertiesResponseOutput) ToPrivateAtlasPropertiesResponseOutputWithContext(ctx context.Context) PrivateAtlasPropertiesResponseOutput {
 	return o
-}
-
-func (o PrivateAtlasPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateAtlasPropertiesResponse] {
-	return pulumix.Output[PrivateAtlasPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The state of the resource provisioning, terminal states: Succeeded, Failed, Canceled

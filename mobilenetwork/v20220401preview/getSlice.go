@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about the specified network slice.
@@ -105,12 +104,6 @@ func (o LookupSliceResultOutput) ToLookupSliceResultOutput() LookupSliceResultOu
 
 func (o LookupSliceResultOutput) ToLookupSliceResultOutputWithContext(ctx context.Context) LookupSliceResultOutput {
 	return o
-}
-
-func (o LookupSliceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSliceResult] {
-	return pulumix.Output[LookupSliceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

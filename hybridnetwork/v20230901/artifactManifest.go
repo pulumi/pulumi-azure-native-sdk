@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Artifact manifest properties.
@@ -143,12 +142,6 @@ func (i *ArtifactManifest) ToArtifactManifestOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ArtifactManifestOutput)
 }
 
-func (i *ArtifactManifest) ToOutput(ctx context.Context) pulumix.Output[*ArtifactManifest] {
-	return pulumix.Output[*ArtifactManifest]{
-		OutputState: i.ToArtifactManifestOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ArtifactManifestOutput struct{ *pulumi.OutputState }
 
 func (ArtifactManifestOutput) ElementType() reflect.Type {
@@ -161,12 +154,6 @@ func (o ArtifactManifestOutput) ToArtifactManifestOutput() ArtifactManifestOutpu
 
 func (o ArtifactManifestOutput) ToArtifactManifestOutputWithContext(ctx context.Context) ArtifactManifestOutput {
 	return o
-}
-
-func (o ArtifactManifestOutput) ToOutput(ctx context.Context) pulumix.Output[*ArtifactManifest] {
-	return pulumix.Output[*ArtifactManifest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

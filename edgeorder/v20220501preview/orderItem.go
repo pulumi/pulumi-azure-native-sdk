@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents order item resource.
@@ -158,12 +157,6 @@ func (i *OrderItem) ToOrderItemOutputWithContext(ctx context.Context) OrderItemO
 	return pulumi.ToOutputWithContext(ctx, i).(OrderItemOutput)
 }
 
-func (i *OrderItem) ToOutput(ctx context.Context) pulumix.Output[*OrderItem] {
-	return pulumix.Output[*OrderItem]{
-		OutputState: i.ToOrderItemOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrderItemOutput struct{ *pulumi.OutputState }
 
 func (OrderItemOutput) ElementType() reflect.Type {
@@ -176,12 +169,6 @@ func (o OrderItemOutput) ToOrderItemOutput() OrderItemOutput {
 
 func (o OrderItemOutput) ToOrderItemOutputWithContext(ctx context.Context) OrderItemOutput {
 	return o
-}
-
-func (o OrderItemOutput) ToOutput(ctx context.Context) pulumix.Output[*OrderItem] {
-	return pulumix.Output[*OrderItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Represents shipping and return address for order item.

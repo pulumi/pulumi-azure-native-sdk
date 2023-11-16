@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // API definition entity.
@@ -156,12 +155,6 @@ func (i *ApiDefinition) ToApiDefinitionOutputWithContext(ctx context.Context) Ap
 	return pulumi.ToOutputWithContext(ctx, i).(ApiDefinitionOutput)
 }
 
-func (i *ApiDefinition) ToOutput(ctx context.Context) pulumix.Output[*ApiDefinition] {
-	return pulumix.Output[*ApiDefinition]{
-		OutputState: i.ToApiDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiDefinitionOutput struct{ *pulumi.OutputState }
 
 func (ApiDefinitionOutput) ElementType() reflect.Type {
@@ -174,12 +167,6 @@ func (o ApiDefinitionOutput) ToApiDefinitionOutput() ApiDefinitionOutput {
 
 func (o ApiDefinitionOutput) ToApiDefinitionOutputWithContext(ctx context.Context) ApiDefinitionOutput {
 	return o
-}
-
-func (o ApiDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiDefinition] {
-	return pulumix.Output[*ApiDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // API definition description.

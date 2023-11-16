@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a virtual endpoint for a server.
@@ -132,12 +131,6 @@ func (i *VirtualEndpoint) ToVirtualEndpointOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualEndpointOutput)
 }
 
-func (i *VirtualEndpoint) ToOutput(ctx context.Context) pulumix.Output[*VirtualEndpoint] {
-	return pulumix.Output[*VirtualEndpoint]{
-		OutputState: i.ToVirtualEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualEndpointOutput struct{ *pulumi.OutputState }
 
 func (VirtualEndpointOutput) ElementType() reflect.Type {
@@ -150,12 +143,6 @@ func (o VirtualEndpointOutput) ToVirtualEndpointOutput() VirtualEndpointOutput {
 
 func (o VirtualEndpointOutput) ToVirtualEndpointOutputWithContext(ctx context.Context) VirtualEndpointOutput {
 	return o
-}
-
-func (o VirtualEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualEndpoint] {
-	return pulumix.Output[*VirtualEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The endpoint type for the virtual endpoint.

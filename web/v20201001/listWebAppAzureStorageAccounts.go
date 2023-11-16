@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the Azure storage account configurations of an app.
@@ -83,12 +82,6 @@ func (o ListWebAppAzureStorageAccountsResultOutput) ToListWebAppAzureStorageAcco
 
 func (o ListWebAppAzureStorageAccountsResultOutput) ToListWebAppAzureStorageAccountsResultOutputWithContext(ctx context.Context) ListWebAppAzureStorageAccountsResultOutput {
 	return o
-}
-
-func (o ListWebAppAzureStorageAccountsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWebAppAzureStorageAccountsResult] {
-	return pulumix.Output[ListWebAppAzureStorageAccountsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Id.

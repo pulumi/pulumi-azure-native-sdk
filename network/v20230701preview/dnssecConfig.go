@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents the DNSSEC configuration.
@@ -114,12 +113,6 @@ func (i *DnssecConfig) ToDnssecConfigOutputWithContext(ctx context.Context) Dnss
 	return pulumi.ToOutputWithContext(ctx, i).(DnssecConfigOutput)
 }
 
-func (i *DnssecConfig) ToOutput(ctx context.Context) pulumix.Output[*DnssecConfig] {
-	return pulumix.Output[*DnssecConfig]{
-		OutputState: i.ToDnssecConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DnssecConfigOutput struct{ *pulumi.OutputState }
 
 func (DnssecConfigOutput) ElementType() reflect.Type {
@@ -132,12 +125,6 @@ func (o DnssecConfigOutput) ToDnssecConfigOutput() DnssecConfigOutput {
 
 func (o DnssecConfigOutput) ToDnssecConfigOutputWithContext(ctx context.Context) DnssecConfigOutput {
 	return o
-}
-
-func (o DnssecConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*DnssecConfig] {
-	return pulumix.Output[*DnssecConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The etag of the DNSSEC configuration.

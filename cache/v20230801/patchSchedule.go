@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Response to put/get patch schedules for Redis cache.
@@ -157,12 +156,6 @@ func (i *PatchSchedule) ToPatchScheduleOutputWithContext(ctx context.Context) Pa
 	return pulumi.ToOutputWithContext(ctx, i).(PatchScheduleOutput)
 }
 
-func (i *PatchSchedule) ToOutput(ctx context.Context) pulumix.Output[*PatchSchedule] {
-	return pulumix.Output[*PatchSchedule]{
-		OutputState: i.ToPatchScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PatchScheduleOutput struct{ *pulumi.OutputState }
 
 func (PatchScheduleOutput) ElementType() reflect.Type {
@@ -175,12 +168,6 @@ func (o PatchScheduleOutput) ToPatchScheduleOutput() PatchScheduleOutput {
 
 func (o PatchScheduleOutput) ToPatchScheduleOutputWithContext(ctx context.Context) PatchScheduleOutput {
 	return o
-}
-
-func (o PatchScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchSchedule] {
-	return pulumix.Output[*PatchSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

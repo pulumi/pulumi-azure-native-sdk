@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A task resource
@@ -141,12 +140,6 @@ func (i *ServiceTask) ToServiceTaskOutputWithContext(ctx context.Context) Servic
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTaskOutput)
 }
 
-func (i *ServiceTask) ToOutput(ctx context.Context) pulumix.Output[*ServiceTask] {
-	return pulumix.Output[*ServiceTask]{
-		OutputState: i.ToServiceTaskOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTaskOutput struct{ *pulumi.OutputState }
 
 func (ServiceTaskOutput) ElementType() reflect.Type {
@@ -159,12 +152,6 @@ func (o ServiceTaskOutput) ToServiceTaskOutput() ServiceTaskOutput {
 
 func (o ServiceTaskOutput) ToServiceTaskOutputWithContext(ctx context.Context) ServiceTaskOutput {
 	return o
-}
-
-func (o ServiceTaskOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTask] {
-	return pulumix.Output[*ServiceTask]{
-		OutputState: o.OutputState,
-	}
 }
 
 // HTTP strong entity tag value. This is ignored if submitted.

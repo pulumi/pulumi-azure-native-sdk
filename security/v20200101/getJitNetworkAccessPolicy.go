@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Policies for protecting resources using Just-in-Time access control for the subscription, location
@@ -88,12 +87,6 @@ func (o LookupJitNetworkAccessPolicyResultOutput) ToLookupJitNetworkAccessPolicy
 
 func (o LookupJitNetworkAccessPolicyResultOutput) ToLookupJitNetworkAccessPolicyResultOutputWithContext(ctx context.Context) LookupJitNetworkAccessPolicyResultOutput {
 	return o
-}
-
-func (o LookupJitNetworkAccessPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupJitNetworkAccessPolicyResult] {
-	return pulumix.Output[LookupJitNetworkAccessPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Id

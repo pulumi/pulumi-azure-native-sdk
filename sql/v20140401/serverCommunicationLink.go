@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Server communication link.
@@ -131,12 +130,6 @@ func (i *ServerCommunicationLink) ToServerCommunicationLinkOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ServerCommunicationLinkOutput)
 }
 
-func (i *ServerCommunicationLink) ToOutput(ctx context.Context) pulumix.Output[*ServerCommunicationLink] {
-	return pulumix.Output[*ServerCommunicationLink]{
-		OutputState: i.ToServerCommunicationLinkOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerCommunicationLinkOutput struct{ *pulumi.OutputState }
 
 func (ServerCommunicationLinkOutput) ElementType() reflect.Type {
@@ -149,12 +142,6 @@ func (o ServerCommunicationLinkOutput) ToServerCommunicationLinkOutput() ServerC
 
 func (o ServerCommunicationLinkOutput) ToServerCommunicationLinkOutputWithContext(ctx context.Context) ServerCommunicationLinkOutput {
 	return o
-}
-
-func (o ServerCommunicationLinkOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerCommunicationLink] {
-	return pulumix.Output[*ServerCommunicationLink]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Communication link kind.  This property is used for Azure Portal metadata.

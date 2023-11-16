@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified commitmentPlans associated with the Cognitive Services account.
@@ -98,12 +97,6 @@ func (o LookupCommitmentPlanResultOutput) ToLookupCommitmentPlanResultOutput() L
 
 func (o LookupCommitmentPlanResultOutput) ToLookupCommitmentPlanResultOutputWithContext(ctx context.Context) LookupCommitmentPlanResultOutput {
 	return o
-}
-
-func (o LookupCommitmentPlanResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCommitmentPlanResult] {
-	return pulumix.Output[LookupCommitmentPlanResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Etag.

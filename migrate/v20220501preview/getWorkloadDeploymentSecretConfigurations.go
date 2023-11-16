@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the secrets of the workload deployment.
@@ -90,12 +89,6 @@ func (o GetWorkloadDeploymentSecretConfigurationsResultOutput) ToGetWorkloadDepl
 
 func (o GetWorkloadDeploymentSecretConfigurationsResultOutput) ToGetWorkloadDeploymentSecretConfigurationsResultOutputWithContext(ctx context.Context) GetWorkloadDeploymentSecretConfigurationsResultOutput {
 	return o
-}
-
-func (o GetWorkloadDeploymentSecretConfigurationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetWorkloadDeploymentSecretConfigurationsResult] {
-	return pulumix.Output[GetWorkloadDeploymentSecretConfigurationsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the Id of the resource.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2023-08-01-preview.
@@ -108,12 +107,6 @@ func (o LookupInferenceGroupResultOutput) ToLookupInferenceGroupResultOutput() L
 
 func (o LookupInferenceGroupResultOutput) ToLookupInferenceGroupResultOutputWithContext(ctx context.Context) LookupInferenceGroupResultOutput {
 	return o
-}
-
-func (o LookupInferenceGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInferenceGroupResult] {
-	return pulumix.Output[LookupInferenceGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

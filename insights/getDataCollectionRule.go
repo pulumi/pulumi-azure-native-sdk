@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Definition of ARM tracked top level resource.
@@ -109,12 +108,6 @@ func (o LookupDataCollectionRuleResultOutput) ToLookupDataCollectionRuleResultOu
 
 func (o LookupDataCollectionRuleResultOutput) ToLookupDataCollectionRuleResultOutputWithContext(ctx context.Context) LookupDataCollectionRuleResultOutput {
 	return o
-}
-
-func (o LookupDataCollectionRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataCollectionRuleResult] {
-	return pulumix.Output[LookupDataCollectionRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource ID of the data collection endpoint that this rule can be used with.

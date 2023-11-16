@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The role assignment
@@ -157,12 +156,6 @@ func (i *BillingRoleAssignmentByDepartment) ToBillingRoleAssignmentByDepartmentO
 	return pulumi.ToOutputWithContext(ctx, i).(BillingRoleAssignmentByDepartmentOutput)
 }
 
-func (i *BillingRoleAssignmentByDepartment) ToOutput(ctx context.Context) pulumix.Output[*BillingRoleAssignmentByDepartment] {
-	return pulumix.Output[*BillingRoleAssignmentByDepartment]{
-		OutputState: i.ToBillingRoleAssignmentByDepartmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BillingRoleAssignmentByDepartmentOutput struct{ *pulumi.OutputState }
 
 func (BillingRoleAssignmentByDepartmentOutput) ElementType() reflect.Type {
@@ -175,12 +168,6 @@ func (o BillingRoleAssignmentByDepartmentOutput) ToBillingRoleAssignmentByDepart
 
 func (o BillingRoleAssignmentByDepartmentOutput) ToBillingRoleAssignmentByDepartmentOutputWithContext(ctx context.Context) BillingRoleAssignmentByDepartmentOutput {
 	return o
-}
-
-func (o BillingRoleAssignmentByDepartmentOutput) ToOutput(ctx context.Context) pulumix.Output[*BillingRoleAssignmentByDepartment] {
-	return pulumix.Output[*BillingRoleAssignmentByDepartment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The principal Id of the user who created the role assignment.

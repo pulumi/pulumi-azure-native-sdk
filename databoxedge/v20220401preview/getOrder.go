@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The order details.
@@ -99,12 +98,6 @@ func (o LookupOrderResultOutput) ToLookupOrderResultOutput() LookupOrderResultOu
 
 func (o LookupOrderResultOutput) ToLookupOrderResultOutputWithContext(ctx context.Context) LookupOrderResultOutput {
 	return o
-}
-
-func (o LookupOrderResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOrderResult] {
-	return pulumix.Output[LookupOrderResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The contact details.

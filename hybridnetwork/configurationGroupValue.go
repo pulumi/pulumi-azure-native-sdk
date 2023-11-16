@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Hybrid configuration group value resource.
@@ -130,12 +129,6 @@ func (i *ConfigurationGroupValue) ToConfigurationGroupValueOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationGroupValueOutput)
 }
 
-func (i *ConfigurationGroupValue) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationGroupValue] {
-	return pulumix.Output[*ConfigurationGroupValue]{
-		OutputState: i.ToConfigurationGroupValueOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigurationGroupValueOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationGroupValueOutput) ElementType() reflect.Type {
@@ -148,12 +141,6 @@ func (o ConfigurationGroupValueOutput) ToConfigurationGroupValueOutput() Configu
 
 func (o ConfigurationGroupValueOutput) ToConfigurationGroupValueOutputWithContext(ctx context.Context) ConfigurationGroupValueOutput {
 	return o
-}
-
-func (o ConfigurationGroupValueOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationGroupValue] {
-	return pulumix.Output[*ConfigurationGroupValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

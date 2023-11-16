@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Custom domain of the Spring Cloud Gateway
@@ -167,12 +166,6 @@ func (i *GatewayCustomDomain) ToGatewayCustomDomainOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayCustomDomainOutput)
 }
 
-func (i *GatewayCustomDomain) ToOutput(ctx context.Context) pulumix.Output[*GatewayCustomDomain] {
-	return pulumix.Output[*GatewayCustomDomain]{
-		OutputState: i.ToGatewayCustomDomainOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GatewayCustomDomainOutput struct{ *pulumi.OutputState }
 
 func (GatewayCustomDomainOutput) ElementType() reflect.Type {
@@ -185,12 +178,6 @@ func (o GatewayCustomDomainOutput) ToGatewayCustomDomainOutput() GatewayCustomDo
 
 func (o GatewayCustomDomainOutput) ToGatewayCustomDomainOutputWithContext(ctx context.Context) GatewayCustomDomainOutput {
 	return o
-}
-
-func (o GatewayCustomDomainOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayCustomDomain] {
-	return pulumix.Output[*GatewayCustomDomain]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource.

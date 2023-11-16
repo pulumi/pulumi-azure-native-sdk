@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the Gremlin graph under an existing Azure Cosmos DB database account.
@@ -104,12 +103,6 @@ func (o LookupGremlinResourceGremlinGraphResultOutput) ToLookupGremlinResourceGr
 
 func (o LookupGremlinResourceGremlinGraphResultOutput) ToLookupGremlinResourceGremlinGraphResultOutputWithContext(ctx context.Context) LookupGremlinResourceGremlinGraphResultOutput {
 	return o
-}
-
-func (o LookupGremlinResourceGremlinGraphResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGremlinResourceGremlinGraphResult] {
-	return pulumix.Output[LookupGremlinResourceGremlinGraphResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique resource identifier of the ARM resource.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a relation between two resources
@@ -118,6 +117,9 @@ func NewBookmarkRelation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:BookmarkRelation"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:BookmarkRelation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -202,12 +204,6 @@ func (i *BookmarkRelation) ToBookmarkRelationOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(BookmarkRelationOutput)
 }
 
-func (i *BookmarkRelation) ToOutput(ctx context.Context) pulumix.Output[*BookmarkRelation] {
-	return pulumix.Output[*BookmarkRelation]{
-		OutputState: i.ToBookmarkRelationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BookmarkRelationOutput struct{ *pulumi.OutputState }
 
 func (BookmarkRelationOutput) ElementType() reflect.Type {
@@ -220,12 +216,6 @@ func (o BookmarkRelationOutput) ToBookmarkRelationOutput() BookmarkRelationOutpu
 
 func (o BookmarkRelationOutput) ToBookmarkRelationOutputWithContext(ctx context.Context) BookmarkRelationOutput {
 	return o
-}
-
-func (o BookmarkRelationOutput) ToOutput(ctx context.Context) pulumix.Output[*BookmarkRelation] {
-	return pulumix.Output[*BookmarkRelation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Etag of the azure resource

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the notification registration details.
@@ -81,12 +80,6 @@ func (o LookupNotificationRegistrationResultOutput) ToLookupNotificationRegistra
 
 func (o LookupNotificationRegistrationResultOutput) ToLookupNotificationRegistrationResultOutputWithContext(ctx context.Context) LookupNotificationRegistrationResultOutput {
 	return o
-}
-
-func (o LookupNotificationRegistrationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNotificationRegistrationResult] {
-	return pulumix.Output[LookupNotificationRegistrationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i CostAllocationProportionArgs) ToCostAllocationProportionOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(CostAllocationProportionOutput)
 }
 
-func (i CostAllocationProportionArgs) ToOutput(ctx context.Context) pulumix.Output[CostAllocationProportion] {
-	return pulumix.Output[CostAllocationProportion]{
-		OutputState: i.ToCostAllocationProportionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CostAllocationProportionArrayInput is an input type that accepts CostAllocationProportionArray and CostAllocationProportionArrayOutput values.
 // You can construct a concrete instance of `CostAllocationProportionArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i CostAllocationProportionArray) ToCostAllocationProportionArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(CostAllocationProportionArrayOutput)
 }
 
-func (i CostAllocationProportionArray) ToOutput(ctx context.Context) pulumix.Output[[]CostAllocationProportion] {
-	return pulumix.Output[[]CostAllocationProportion]{
-		OutputState: i.ToCostAllocationProportionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Target resources and allocation
 type CostAllocationProportionOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o CostAllocationProportionOutput) ToCostAllocationProportionOutput() CostA
 
 func (o CostAllocationProportionOutput) ToCostAllocationProportionOutputWithContext(ctx context.Context) CostAllocationProportionOutput {
 	return o
-}
-
-func (o CostAllocationProportionOutput) ToOutput(ctx context.Context) pulumix.Output[CostAllocationProportion] {
-	return pulumix.Output[CostAllocationProportion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Target resource for cost allocation
@@ -133,12 +114,6 @@ func (o CostAllocationProportionArrayOutput) ToCostAllocationProportionArrayOutp
 
 func (o CostAllocationProportionArrayOutput) ToCostAllocationProportionArrayOutputWithContext(ctx context.Context) CostAllocationProportionArrayOutput {
 	return o
-}
-
-func (o CostAllocationProportionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CostAllocationProportion] {
-	return pulumix.Output[[]CostAllocationProportion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CostAllocationProportionArrayOutput) Index(i pulumi.IntInput) CostAllocationProportionOutput {
@@ -170,12 +145,6 @@ func (o CostAllocationProportionResponseOutput) ToCostAllocationProportionRespon
 	return o
 }
 
-func (o CostAllocationProportionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CostAllocationProportionResponse] {
-	return pulumix.Output[CostAllocationProportionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Target resource for cost allocation
 func (o CostAllocationProportionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v CostAllocationProportionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -198,12 +167,6 @@ func (o CostAllocationProportionResponseArrayOutput) ToCostAllocationProportionR
 
 func (o CostAllocationProportionResponseArrayOutput) ToCostAllocationProportionResponseArrayOutputWithContext(ctx context.Context) CostAllocationProportionResponseArrayOutput {
 	return o
-}
-
-func (o CostAllocationProportionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CostAllocationProportionResponse] {
-	return pulumix.Output[[]CostAllocationProportionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CostAllocationProportionResponseArrayOutput) Index(i pulumi.IntInput) CostAllocationProportionResponseOutput {
@@ -251,12 +214,6 @@ func (i CostAllocationRuleDetailsArgs) ToCostAllocationRuleDetailsOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(CostAllocationRuleDetailsOutput)
 }
 
-func (i CostAllocationRuleDetailsArgs) ToOutput(ctx context.Context) pulumix.Output[CostAllocationRuleDetails] {
-	return pulumix.Output[CostAllocationRuleDetails]{
-		OutputState: i.ToCostAllocationRuleDetailsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CostAllocationRuleDetailsArgs) ToCostAllocationRuleDetailsPtrOutput() CostAllocationRuleDetailsPtrOutput {
 	return i.ToCostAllocationRuleDetailsPtrOutputWithContext(context.Background())
 }
@@ -298,12 +255,6 @@ func (i *costAllocationRuleDetailsPtrType) ToCostAllocationRuleDetailsPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(CostAllocationRuleDetailsPtrOutput)
 }
 
-func (i *costAllocationRuleDetailsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CostAllocationRuleDetails] {
-	return pulumix.Output[*CostAllocationRuleDetails]{
-		OutputState: i.ToCostAllocationRuleDetailsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Resource details of the cost allocation rule
 type CostAllocationRuleDetailsOutput struct{ *pulumi.OutputState }
 
@@ -329,12 +280,6 @@ func (o CostAllocationRuleDetailsOutput) ToCostAllocationRuleDetailsPtrOutputWit
 	}).(CostAllocationRuleDetailsPtrOutput)
 }
 
-func (o CostAllocationRuleDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[CostAllocationRuleDetails] {
-	return pulumix.Output[CostAllocationRuleDetails]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Source resources for cost allocation. At this time, this list can contain no more than one element.
 func (o CostAllocationRuleDetailsOutput) SourceResources() SourceCostAllocationResourceArrayOutput {
 	return o.ApplyT(func(v CostAllocationRuleDetails) []SourceCostAllocationResource { return v.SourceResources }).(SourceCostAllocationResourceArrayOutput)
@@ -357,12 +302,6 @@ func (o CostAllocationRuleDetailsPtrOutput) ToCostAllocationRuleDetailsPtrOutput
 
 func (o CostAllocationRuleDetailsPtrOutput) ToCostAllocationRuleDetailsPtrOutputWithContext(ctx context.Context) CostAllocationRuleDetailsPtrOutput {
 	return o
-}
-
-func (o CostAllocationRuleDetailsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CostAllocationRuleDetails] {
-	return pulumix.Output[*CostAllocationRuleDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CostAllocationRuleDetailsPtrOutput) Elem() CostAllocationRuleDetailsOutput {
@@ -416,12 +355,6 @@ func (o CostAllocationRuleDetailsResponseOutput) ToCostAllocationRuleDetailsResp
 
 func (o CostAllocationRuleDetailsResponseOutput) ToCostAllocationRuleDetailsResponseOutputWithContext(ctx context.Context) CostAllocationRuleDetailsResponseOutput {
 	return o
-}
-
-func (o CostAllocationRuleDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CostAllocationRuleDetailsResponse] {
-	return pulumix.Output[CostAllocationRuleDetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Source resources for cost allocation. At this time, this list can contain no more than one element.
@@ -481,12 +414,6 @@ func (i CostAllocationRulePropertiesArgs) ToCostAllocationRulePropertiesOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(CostAllocationRulePropertiesOutput)
 }
 
-func (i CostAllocationRulePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[CostAllocationRuleProperties] {
-	return pulumix.Output[CostAllocationRuleProperties]{
-		OutputState: i.ToCostAllocationRulePropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CostAllocationRulePropertiesArgs) ToCostAllocationRulePropertiesPtrOutput() CostAllocationRulePropertiesPtrOutput {
 	return i.ToCostAllocationRulePropertiesPtrOutputWithContext(context.Background())
 }
@@ -528,12 +455,6 @@ func (i *costAllocationRulePropertiesPtrType) ToCostAllocationRulePropertiesPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(CostAllocationRulePropertiesPtrOutput)
 }
 
-func (i *costAllocationRulePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*CostAllocationRuleProperties] {
-	return pulumix.Output[*CostAllocationRuleProperties]{
-		OutputState: i.ToCostAllocationRulePropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties of a cost allocation rule
 type CostAllocationRulePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -557,12 +478,6 @@ func (o CostAllocationRulePropertiesOutput) ToCostAllocationRulePropertiesPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CostAllocationRuleProperties) *CostAllocationRuleProperties {
 		return &v
 	}).(CostAllocationRulePropertiesPtrOutput)
-}
-
-func (o CostAllocationRulePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[CostAllocationRuleProperties] {
-	return pulumix.Output[CostAllocationRuleProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of a cost allocation rule.
@@ -592,12 +507,6 @@ func (o CostAllocationRulePropertiesPtrOutput) ToCostAllocationRulePropertiesPtr
 
 func (o CostAllocationRulePropertiesPtrOutput) ToCostAllocationRulePropertiesPtrOutputWithContext(ctx context.Context) CostAllocationRulePropertiesPtrOutput {
 	return o
-}
-
-func (o CostAllocationRulePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CostAllocationRuleProperties] {
-	return pulumix.Output[*CostAllocationRuleProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CostAllocationRulePropertiesPtrOutput) Elem() CostAllocationRulePropertiesOutput {
@@ -669,12 +578,6 @@ func (o CostAllocationRulePropertiesResponseOutput) ToCostAllocationRuleProperti
 	return o
 }
 
-func (o CostAllocationRulePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CostAllocationRulePropertiesResponse] {
-	return pulumix.Output[CostAllocationRulePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Time at which the rule was created. Rules that change cost for the same resource are applied in order of creation.
 func (o CostAllocationRulePropertiesResponseOutput) CreatedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v CostAllocationRulePropertiesResponse) string { return v.CreatedDate }).(pulumi.StringOutput)
@@ -743,12 +646,6 @@ func (i SourceCostAllocationResourceArgs) ToSourceCostAllocationResourceOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(SourceCostAllocationResourceOutput)
 }
 
-func (i SourceCostAllocationResourceArgs) ToOutput(ctx context.Context) pulumix.Output[SourceCostAllocationResource] {
-	return pulumix.Output[SourceCostAllocationResource]{
-		OutputState: i.ToSourceCostAllocationResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SourceCostAllocationResourceArrayInput is an input type that accepts SourceCostAllocationResourceArray and SourceCostAllocationResourceArrayOutput values.
 // You can construct a concrete instance of `SourceCostAllocationResourceArrayInput` via:
 //
@@ -774,12 +671,6 @@ func (i SourceCostAllocationResourceArray) ToSourceCostAllocationResourceArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(SourceCostAllocationResourceArrayOutput)
 }
 
-func (i SourceCostAllocationResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]SourceCostAllocationResource] {
-	return pulumix.Output[[]SourceCostAllocationResource]{
-		OutputState: i.ToSourceCostAllocationResourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Source resources for cost allocation
 type SourceCostAllocationResourceOutput struct{ *pulumi.OutputState }
 
@@ -793,12 +684,6 @@ func (o SourceCostAllocationResourceOutput) ToSourceCostAllocationResourceOutput
 
 func (o SourceCostAllocationResourceOutput) ToSourceCostAllocationResourceOutputWithContext(ctx context.Context) SourceCostAllocationResourceOutput {
 	return o
-}
-
-func (o SourceCostAllocationResourceOutput) ToOutput(ctx context.Context) pulumix.Output[SourceCostAllocationResource] {
-	return pulumix.Output[SourceCostAllocationResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
@@ -828,12 +713,6 @@ func (o SourceCostAllocationResourceArrayOutput) ToSourceCostAllocationResourceA
 
 func (o SourceCostAllocationResourceArrayOutput) ToSourceCostAllocationResourceArrayOutputWithContext(ctx context.Context) SourceCostAllocationResourceArrayOutput {
 	return o
-}
-
-func (o SourceCostAllocationResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SourceCostAllocationResource] {
-	return pulumix.Output[[]SourceCostAllocationResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceCostAllocationResourceArrayOutput) Index(i pulumi.IntInput) SourceCostAllocationResourceOutput {
@@ -867,12 +746,6 @@ func (o SourceCostAllocationResourceResponseOutput) ToSourceCostAllocationResour
 	return o
 }
 
-func (o SourceCostAllocationResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SourceCostAllocationResourceResponse] {
-	return pulumix.Output[SourceCostAllocationResourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
 func (o SourceCostAllocationResourceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SourceCostAllocationResourceResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -900,12 +773,6 @@ func (o SourceCostAllocationResourceResponseArrayOutput) ToSourceCostAllocationR
 
 func (o SourceCostAllocationResourceResponseArrayOutput) ToSourceCostAllocationResourceResponseArrayOutputWithContext(ctx context.Context) SourceCostAllocationResourceResponseArrayOutput {
 	return o
-}
-
-func (o SourceCostAllocationResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SourceCostAllocationResourceResponse] {
-	return pulumix.Output[[]SourceCostAllocationResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceCostAllocationResourceResponseArrayOutput) Index(i pulumi.IntInput) SourceCostAllocationResourceResponseOutput {
@@ -961,12 +828,6 @@ func (i TargetCostAllocationResourceArgs) ToTargetCostAllocationResourceOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(TargetCostAllocationResourceOutput)
 }
 
-func (i TargetCostAllocationResourceArgs) ToOutput(ctx context.Context) pulumix.Output[TargetCostAllocationResource] {
-	return pulumix.Output[TargetCostAllocationResource]{
-		OutputState: i.ToTargetCostAllocationResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TargetCostAllocationResourceArrayInput is an input type that accepts TargetCostAllocationResourceArray and TargetCostAllocationResourceArrayOutput values.
 // You can construct a concrete instance of `TargetCostAllocationResourceArrayInput` via:
 //
@@ -992,12 +853,6 @@ func (i TargetCostAllocationResourceArray) ToTargetCostAllocationResourceArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(TargetCostAllocationResourceArrayOutput)
 }
 
-func (i TargetCostAllocationResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]TargetCostAllocationResource] {
-	return pulumix.Output[[]TargetCostAllocationResource]{
-		OutputState: i.ToTargetCostAllocationResourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Target resources for cost allocation.
 type TargetCostAllocationResourceOutput struct{ *pulumi.OutputState }
 
@@ -1011,12 +866,6 @@ func (o TargetCostAllocationResourceOutput) ToTargetCostAllocationResourceOutput
 
 func (o TargetCostAllocationResourceOutput) ToTargetCostAllocationResourceOutputWithContext(ctx context.Context) TargetCostAllocationResourceOutput {
 	return o
-}
-
-func (o TargetCostAllocationResourceOutput) ToOutput(ctx context.Context) pulumix.Output[TargetCostAllocationResource] {
-	return pulumix.Output[TargetCostAllocationResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
@@ -1053,12 +902,6 @@ func (o TargetCostAllocationResourceArrayOutput) ToTargetCostAllocationResourceA
 	return o
 }
 
-func (o TargetCostAllocationResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TargetCostAllocationResource] {
-	return pulumix.Output[[]TargetCostAllocationResource]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TargetCostAllocationResourceArrayOutput) Index(i pulumi.IntInput) TargetCostAllocationResourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetCostAllocationResource {
 		return vs[0].([]TargetCostAllocationResource)[vs[1].(int)]
@@ -1090,12 +933,6 @@ func (o TargetCostAllocationResourceResponseOutput) ToTargetCostAllocationResour
 
 func (o TargetCostAllocationResourceResponseOutput) ToTargetCostAllocationResourceResponseOutputWithContext(ctx context.Context) TargetCostAllocationResourceResponseOutput {
 	return o
-}
-
-func (o TargetCostAllocationResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TargetCostAllocationResourceResponse] {
-	return pulumix.Output[TargetCostAllocationResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
@@ -1130,12 +967,6 @@ func (o TargetCostAllocationResourceResponseArrayOutput) ToTargetCostAllocationR
 
 func (o TargetCostAllocationResourceResponseArrayOutput) ToTargetCostAllocationResourceResponseArrayOutputWithContext(ctx context.Context) TargetCostAllocationResourceResponseArrayOutput {
 	return o
-}
-
-func (o TargetCostAllocationResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TargetCostAllocationResourceResponse] {
-	return pulumix.Output[[]TargetCostAllocationResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TargetCostAllocationResourceResponseArrayOutput) Index(i pulumi.IntInput) TargetCostAllocationResourceResponseOutput {

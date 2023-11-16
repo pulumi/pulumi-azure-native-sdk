@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // VpnGatewayNatRule Resource.
@@ -202,12 +201,6 @@ func (i *NatRule) ToNatRuleOutputWithContext(ctx context.Context) NatRuleOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(NatRuleOutput)
 }
 
-func (i *NatRule) ToOutput(ctx context.Context) pulumix.Output[*NatRule] {
-	return pulumix.Output[*NatRule]{
-		OutputState: i.ToNatRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NatRuleOutput struct{ *pulumi.OutputState }
 
 func (NatRuleOutput) ElementType() reflect.Type {
@@ -220,12 +213,6 @@ func (o NatRuleOutput) ToNatRuleOutput() NatRuleOutput {
 
 func (o NatRuleOutput) ToNatRuleOutputWithContext(ctx context.Context) NatRuleOutput {
 	return o
-}
-
-func (o NatRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*NatRule] {
-	return pulumix.Output[*NatRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of egress VpnSiteLinkConnections.

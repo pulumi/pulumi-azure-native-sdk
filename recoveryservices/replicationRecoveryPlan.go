@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Recovery plan details.
@@ -199,12 +198,6 @@ func (i *ReplicationRecoveryPlan) ToReplicationRecoveryPlanOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationRecoveryPlanOutput)
 }
 
-func (i *ReplicationRecoveryPlan) ToOutput(ctx context.Context) pulumix.Output[*ReplicationRecoveryPlan] {
-	return pulumix.Output[*ReplicationRecoveryPlan]{
-		OutputState: i.ToReplicationRecoveryPlanOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReplicationRecoveryPlanOutput struct{ *pulumi.OutputState }
 
 func (ReplicationRecoveryPlanOutput) ElementType() reflect.Type {
@@ -217,12 +210,6 @@ func (o ReplicationRecoveryPlanOutput) ToReplicationRecoveryPlanOutput() Replica
 
 func (o ReplicationRecoveryPlanOutput) ToReplicationRecoveryPlanOutputWithContext(ctx context.Context) ReplicationRecoveryPlanOutput {
 	return o
-}
-
-func (o ReplicationRecoveryPlanOutput) ToOutput(ctx context.Context) pulumix.Output[*ReplicationRecoveryPlan] {
-	return pulumix.Output[*ReplicationRecoveryPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Location

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i FilteringTagArgs) ToFilteringTagOutputWithContext(ctx context.Context) F
 	return pulumi.ToOutputWithContext(ctx, i).(FilteringTagOutput)
 }
 
-func (i FilteringTagArgs) ToOutput(ctx context.Context) pulumix.Output[FilteringTag] {
-	return pulumix.Output[FilteringTag]{
-		OutputState: i.ToFilteringTagOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FilteringTagArrayInput is an input type that accepts FilteringTagArray and FilteringTagArrayOutput values.
 // You can construct a concrete instance of `FilteringTagArrayInput` via:
 //
@@ -88,12 +81,6 @@ func (i FilteringTagArray) ToFilteringTagArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(FilteringTagArrayOutput)
 }
 
-func (i FilteringTagArray) ToOutput(ctx context.Context) pulumix.Output[[]FilteringTag] {
-	return pulumix.Output[[]FilteringTag]{
-		OutputState: i.ToFilteringTagArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The definition of a filtering tag. Filtering tags are used for capturing resources and include/exclude them from being monitored.
 type FilteringTagOutput struct{ *pulumi.OutputState }
 
@@ -107,12 +94,6 @@ func (o FilteringTagOutput) ToFilteringTagOutput() FilteringTagOutput {
 
 func (o FilteringTagOutput) ToFilteringTagOutputWithContext(ctx context.Context) FilteringTagOutput {
 	return o
-}
-
-func (o FilteringTagOutput) ToOutput(ctx context.Context) pulumix.Output[FilteringTag] {
-	return pulumix.Output[FilteringTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Valid actions for a filtering tag. Exclusion takes priority over inclusion.
@@ -142,12 +123,6 @@ func (o FilteringTagArrayOutput) ToFilteringTagArrayOutput() FilteringTagArrayOu
 
 func (o FilteringTagArrayOutput) ToFilteringTagArrayOutputWithContext(ctx context.Context) FilteringTagArrayOutput {
 	return o
-}
-
-func (o FilteringTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FilteringTag] {
-	return pulumix.Output[[]FilteringTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FilteringTagArrayOutput) Index(i pulumi.IntInput) FilteringTagOutput {
@@ -181,12 +156,6 @@ func (o FilteringTagResponseOutput) ToFilteringTagResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o FilteringTagResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FilteringTagResponse] {
-	return pulumix.Output[FilteringTagResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Valid actions for a filtering tag. Exclusion takes priority over inclusion.
 func (o FilteringTagResponseOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FilteringTagResponse) *string { return v.Action }).(pulumi.StringPtrOutput)
@@ -214,12 +183,6 @@ func (o FilteringTagResponseArrayOutput) ToFilteringTagResponseArrayOutput() Fil
 
 func (o FilteringTagResponseArrayOutput) ToFilteringTagResponseArrayOutputWithContext(ctx context.Context) FilteringTagResponseArrayOutput {
 	return o
-}
-
-func (o FilteringTagResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FilteringTagResponse] {
-	return pulumix.Output[[]FilteringTagResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FilteringTagResponseArrayOutput) Index(i pulumi.IntInput) FilteringTagResponseOutput {
@@ -257,12 +220,6 @@ func (i IdentityPropertiesArgs) ToIdentityPropertiesOutput() IdentityPropertiesO
 
 func (i IdentityPropertiesArgs) ToIdentityPropertiesOutputWithContext(ctx context.Context) IdentityPropertiesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPropertiesOutput)
-}
-
-func (i IdentityPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[IdentityProperties] {
-	return pulumix.Output[IdentityProperties]{
-		OutputState: i.ToIdentityPropertiesOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i IdentityPropertiesArgs) ToIdentityPropertiesPtrOutput() IdentityPropertiesPtrOutput {
@@ -306,12 +263,6 @@ func (i *identityPropertiesPtrType) ToIdentityPropertiesPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPropertiesPtrOutput)
 }
 
-func (i *identityPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*IdentityProperties] {
-	return pulumix.Output[*IdentityProperties]{
-		OutputState: i.ToIdentityPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IdentityPropertiesOutput struct{ *pulumi.OutputState }
 
 func (IdentityPropertiesOutput) ElementType() reflect.Type {
@@ -336,12 +287,6 @@ func (o IdentityPropertiesOutput) ToIdentityPropertiesPtrOutputWithContext(ctx c
 	}).(IdentityPropertiesPtrOutput)
 }
 
-func (o IdentityPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityProperties] {
-	return pulumix.Output[IdentityProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IdentityPropertiesOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentityProperties) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -358,12 +303,6 @@ func (o IdentityPropertiesPtrOutput) ToIdentityPropertiesPtrOutput() IdentityPro
 
 func (o IdentityPropertiesPtrOutput) ToIdentityPropertiesPtrOutputWithContext(ctx context.Context) IdentityPropertiesPtrOutput {
 	return o
-}
-
-func (o IdentityPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityProperties] {
-	return pulumix.Output[*IdentityProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityPropertiesPtrOutput) Elem() IdentityPropertiesOutput {
@@ -407,12 +346,6 @@ func (o IdentityPropertiesResponseOutput) ToIdentityPropertiesResponseOutputWith
 	return o
 }
 
-func (o IdentityPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityPropertiesResponse] {
-	return pulumix.Output[IdentityPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The identity ID.
 func (o IdentityPropertiesResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityPropertiesResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -439,12 +372,6 @@ func (o IdentityPropertiesResponsePtrOutput) ToIdentityPropertiesResponsePtrOutp
 
 func (o IdentityPropertiesResponsePtrOutput) ToIdentityPropertiesResponsePtrOutputWithContext(ctx context.Context) IdentityPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o IdentityPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityPropertiesResponse] {
-	return pulumix.Output[*IdentityPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityPropertiesResponsePtrOutput) Elem() IdentityPropertiesResponseOutput {
@@ -533,12 +460,6 @@ func (i LogRulesArgs) ToLogRulesOutputWithContext(ctx context.Context) LogRulesO
 	return pulumi.ToOutputWithContext(ctx, i).(LogRulesOutput)
 }
 
-func (i LogRulesArgs) ToOutput(ctx context.Context) pulumix.Output[LogRules] {
-	return pulumix.Output[LogRules]{
-		OutputState: i.ToLogRulesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i LogRulesArgs) ToLogRulesPtrOutput() LogRulesPtrOutput {
 	return i.ToLogRulesPtrOutputWithContext(context.Background())
 }
@@ -580,12 +501,6 @@ func (i *logRulesPtrType) ToLogRulesPtrOutputWithContext(ctx context.Context) Lo
 	return pulumi.ToOutputWithContext(ctx, i).(LogRulesPtrOutput)
 }
 
-func (i *logRulesPtrType) ToOutput(ctx context.Context) pulumix.Output[*LogRules] {
-	return pulumix.Output[*LogRules]{
-		OutputState: i.ToLogRulesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Set of rules for sending logs for the Monitor resource.
 type LogRulesOutput struct{ *pulumi.OutputState }
 
@@ -609,12 +524,6 @@ func (o LogRulesOutput) ToLogRulesPtrOutputWithContext(ctx context.Context) LogR
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogRules) *LogRules {
 		return &v
 	}).(LogRulesPtrOutput)
-}
-
-func (o LogRulesOutput) ToOutput(ctx context.Context) pulumix.Output[LogRules] {
-	return pulumix.Output[LogRules]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of filtering tags to be used for capturing logs. This only takes effect if SendActivityLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
@@ -649,12 +558,6 @@ func (o LogRulesPtrOutput) ToLogRulesPtrOutput() LogRulesPtrOutput {
 
 func (o LogRulesPtrOutput) ToLogRulesPtrOutputWithContext(ctx context.Context) LogRulesPtrOutput {
 	return o
-}
-
-func (o LogRulesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogRules] {
-	return pulumix.Output[*LogRules]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LogRulesPtrOutput) Elem() LogRulesOutput {
@@ -734,12 +637,6 @@ func (o LogRulesResponseOutput) ToLogRulesResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o LogRulesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LogRulesResponse] {
-	return pulumix.Output[LogRulesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of filtering tags to be used for capturing logs. This only takes effect if SendActivityLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
 func (o LogRulesResponseOutput) FilteringTags() FilteringTagResponseArrayOutput {
 	return o.ApplyT(func(v LogRulesResponse) []FilteringTagResponse { return v.FilteringTags }).(FilteringTagResponseArrayOutput)
@@ -772,12 +669,6 @@ func (o LogRulesResponsePtrOutput) ToLogRulesResponsePtrOutput() LogRulesRespons
 
 func (o LogRulesResponsePtrOutput) ToLogRulesResponsePtrOutputWithContext(ctx context.Context) LogRulesResponsePtrOutput {
 	return o
-}
-
-func (o LogRulesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogRulesResponse] {
-	return pulumix.Output[*LogRulesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LogRulesResponsePtrOutput) Elem() LogRulesResponseOutput {
@@ -871,12 +762,6 @@ func (i LogzOrganizationPropertiesArgs) ToLogzOrganizationPropertiesOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(LogzOrganizationPropertiesOutput)
 }
 
-func (i LogzOrganizationPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[LogzOrganizationProperties] {
-	return pulumix.Output[LogzOrganizationProperties]{
-		OutputState: i.ToLogzOrganizationPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i LogzOrganizationPropertiesArgs) ToLogzOrganizationPropertiesPtrOutput() LogzOrganizationPropertiesPtrOutput {
 	return i.ToLogzOrganizationPropertiesPtrOutputWithContext(context.Background())
 }
@@ -918,12 +803,6 @@ func (i *logzOrganizationPropertiesPtrType) ToLogzOrganizationPropertiesPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(LogzOrganizationPropertiesPtrOutput)
 }
 
-func (i *logzOrganizationPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*LogzOrganizationProperties] {
-	return pulumix.Output[*LogzOrganizationProperties]{
-		OutputState: i.ToLogzOrganizationPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LogzOrganizationPropertiesOutput struct{ *pulumi.OutputState }
 
 func (LogzOrganizationPropertiesOutput) ElementType() reflect.Type {
@@ -946,12 +825,6 @@ func (o LogzOrganizationPropertiesOutput) ToLogzOrganizationPropertiesPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogzOrganizationProperties) *LogzOrganizationProperties {
 		return &v
 	}).(LogzOrganizationPropertiesPtrOutput)
-}
-
-func (o LogzOrganizationPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[LogzOrganizationProperties] {
-	return pulumix.Output[LogzOrganizationProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the Logz organization.
@@ -981,12 +854,6 @@ func (o LogzOrganizationPropertiesPtrOutput) ToLogzOrganizationPropertiesPtrOutp
 
 func (o LogzOrganizationPropertiesPtrOutput) ToLogzOrganizationPropertiesPtrOutputWithContext(ctx context.Context) LogzOrganizationPropertiesPtrOutput {
 	return o
-}
-
-func (o LogzOrganizationPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogzOrganizationProperties] {
-	return pulumix.Output[*LogzOrganizationProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LogzOrganizationPropertiesPtrOutput) Elem() LogzOrganizationPropertiesOutput {
@@ -1054,12 +921,6 @@ func (o LogzOrganizationPropertiesResponseOutput) ToLogzOrganizationPropertiesRe
 	return o
 }
 
-func (o LogzOrganizationPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LogzOrganizationPropertiesResponse] {
-	return pulumix.Output[LogzOrganizationPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the Logz organization.
 func (o LogzOrganizationPropertiesResponseOutput) CompanyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogzOrganizationPropertiesResponse) *string { return v.CompanyName }).(pulumi.StringPtrOutput)
@@ -1092,12 +953,6 @@ func (o LogzOrganizationPropertiesResponsePtrOutput) ToLogzOrganizationPropertie
 
 func (o LogzOrganizationPropertiesResponsePtrOutput) ToLogzOrganizationPropertiesResponsePtrOutputWithContext(ctx context.Context) LogzOrganizationPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o LogzOrganizationPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogzOrganizationPropertiesResponse] {
-	return pulumix.Output[*LogzOrganizationPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LogzOrganizationPropertiesResponsePtrOutput) Elem() LogzOrganizationPropertiesResponseOutput {
@@ -1189,12 +1044,6 @@ func (i MetricRulesArgs) ToMetricRulesOutputWithContext(ctx context.Context) Met
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesOutput)
 }
 
-func (i MetricRulesArgs) ToOutput(ctx context.Context) pulumix.Output[MetricRules] {
-	return pulumix.Output[MetricRules]{
-		OutputState: i.ToMetricRulesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MetricRulesArrayInput is an input type that accepts MetricRulesArray and MetricRulesArrayOutput values.
 // You can construct a concrete instance of `MetricRulesArrayInput` via:
 //
@@ -1220,12 +1069,6 @@ func (i MetricRulesArray) ToMetricRulesArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesArrayOutput)
 }
 
-func (i MetricRulesArray) ToOutput(ctx context.Context) pulumix.Output[[]MetricRules] {
-	return pulumix.Output[[]MetricRules]{
-		OutputState: i.ToMetricRulesArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Set of rules for sending metrics for the Monitor resource.
 type MetricRulesOutput struct{ *pulumi.OutputState }
 
@@ -1239,12 +1082,6 @@ func (o MetricRulesOutput) ToMetricRulesOutput() MetricRulesOutput {
 
 func (o MetricRulesOutput) ToMetricRulesOutputWithContext(ctx context.Context) MetricRulesOutput {
 	return o
-}
-
-func (o MetricRulesOutput) ToOutput(ctx context.Context) pulumix.Output[MetricRules] {
-	return pulumix.Output[MetricRules]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
@@ -1269,12 +1106,6 @@ func (o MetricRulesArrayOutput) ToMetricRulesArrayOutput() MetricRulesArrayOutpu
 
 func (o MetricRulesArrayOutput) ToMetricRulesArrayOutputWithContext(ctx context.Context) MetricRulesArrayOutput {
 	return o
-}
-
-func (o MetricRulesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MetricRules] {
-	return pulumix.Output[[]MetricRules]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricRulesArrayOutput) Index(i pulumi.IntInput) MetricRulesOutput {
@@ -1306,12 +1137,6 @@ func (o MetricRulesResponseOutput) ToMetricRulesResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o MetricRulesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MetricRulesResponse] {
-	return pulumix.Output[MetricRulesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
 func (o MetricRulesResponseOutput) FilteringTags() FilteringTagResponseArrayOutput {
 	return o.ApplyT(func(v MetricRulesResponse) []FilteringTagResponse { return v.FilteringTags }).(FilteringTagResponseArrayOutput)
@@ -1334,12 +1159,6 @@ func (o MetricRulesResponseArrayOutput) ToMetricRulesResponseArrayOutput() Metri
 
 func (o MetricRulesResponseArrayOutput) ToMetricRulesResponseArrayOutputWithContext(ctx context.Context) MetricRulesResponseArrayOutput {
 	return o
-}
-
-func (o MetricRulesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MetricRulesResponse] {
-	return pulumix.Output[[]MetricRulesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricRulesResponseArrayOutput) Index(i pulumi.IntInput) MetricRulesResponseOutput {
@@ -1385,12 +1204,6 @@ func (i MetricsTagRulesPropertiesArgs) ToMetricsTagRulesPropertiesOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(MetricsTagRulesPropertiesOutput)
 }
 
-func (i MetricsTagRulesPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[MetricsTagRulesProperties] {
-	return pulumix.Output[MetricsTagRulesProperties]{
-		OutputState: i.ToMetricsTagRulesPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MetricsTagRulesPropertiesArgs) ToMetricsTagRulesPropertiesPtrOutput() MetricsTagRulesPropertiesPtrOutput {
 	return i.ToMetricsTagRulesPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1432,12 +1245,6 @@ func (i *metricsTagRulesPropertiesPtrType) ToMetricsTagRulesPropertiesPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(MetricsTagRulesPropertiesPtrOutput)
 }
 
-func (i *metricsTagRulesPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetricsTagRulesProperties] {
-	return pulumix.Output[*MetricsTagRulesProperties]{
-		OutputState: i.ToMetricsTagRulesPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Definition of the properties for a TagRules resource.
 type MetricsTagRulesPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1463,12 +1270,6 @@ func (o MetricsTagRulesPropertiesOutput) ToMetricsTagRulesPropertiesPtrOutputWit
 	}).(MetricsTagRulesPropertiesPtrOutput)
 }
 
-func (o MetricsTagRulesPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[MetricsTagRulesProperties] {
-	return pulumix.Output[MetricsTagRulesProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MetricsTagRulesPropertiesOutput) MetricRules() MetricRulesArrayOutput {
 	return o.ApplyT(func(v MetricsTagRulesProperties) []MetricRules { return v.MetricRules }).(MetricRulesArrayOutput)
 }
@@ -1490,12 +1291,6 @@ func (o MetricsTagRulesPropertiesPtrOutput) ToMetricsTagRulesPropertiesPtrOutput
 
 func (o MetricsTagRulesPropertiesPtrOutput) ToMetricsTagRulesPropertiesPtrOutputWithContext(ctx context.Context) MetricsTagRulesPropertiesPtrOutput {
 	return o
-}
-
-func (o MetricsTagRulesPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricsTagRulesProperties] {
-	return pulumix.Output[*MetricsTagRulesProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricsTagRulesPropertiesPtrOutput) Elem() MetricsTagRulesPropertiesOutput {
@@ -1551,12 +1346,6 @@ func (o MetricsTagRulesPropertiesResponseOutput) ToMetricsTagRulesPropertiesResp
 
 func (o MetricsTagRulesPropertiesResponseOutput) ToMetricsTagRulesPropertiesResponseOutputWithContext(ctx context.Context) MetricsTagRulesPropertiesResponseOutput {
 	return o
-}
-
-func (o MetricsTagRulesPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MetricsTagRulesPropertiesResponse] {
-	return pulumix.Output[MetricsTagRulesPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricsTagRulesPropertiesResponseOutput) MetricRules() MetricRulesResponseArrayOutput {
@@ -1623,12 +1412,6 @@ func (i MonitorPropertiesArgs) ToMonitorPropertiesOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorPropertiesOutput)
 }
 
-func (i MonitorPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[MonitorProperties] {
-	return pulumix.Output[MonitorProperties]{
-		OutputState: i.ToMonitorPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MonitorPropertiesArgs) ToMonitorPropertiesPtrOutput() MonitorPropertiesPtrOutput {
 	return i.ToMonitorPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1670,12 +1453,6 @@ func (i *monitorPropertiesPtrType) ToMonitorPropertiesPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorPropertiesPtrOutput)
 }
 
-func (i *monitorPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*MonitorProperties] {
-	return pulumix.Output[*MonitorProperties]{
-		OutputState: i.ToMonitorPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Properties specific to the monitor resource.
 type MonitorPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1699,12 +1476,6 @@ func (o MonitorPropertiesOutput) ToMonitorPropertiesPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorProperties) *MonitorProperties {
 		return &v
 	}).(MonitorPropertiesPtrOutput)
-}
-
-func (o MonitorPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[MonitorProperties] {
-	return pulumix.Output[MonitorProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitorPropertiesOutput) LogzOrganizationProperties() LogzOrganizationPropertiesPtrOutput {
@@ -1741,12 +1512,6 @@ func (o MonitorPropertiesPtrOutput) ToMonitorPropertiesPtrOutput() MonitorProper
 
 func (o MonitorPropertiesPtrOutput) ToMonitorPropertiesPtrOutputWithContext(ctx context.Context) MonitorPropertiesPtrOutput {
 	return o
-}
-
-func (o MonitorPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitorProperties] {
-	return pulumix.Output[*MonitorProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitorPropertiesPtrOutput) Elem() MonitorPropertiesOutput {
@@ -1837,12 +1602,6 @@ func (o MonitorPropertiesResponseOutput) ToMonitorPropertiesResponseOutputWithCo
 	return o
 }
 
-func (o MonitorPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MonitorPropertiesResponse] {
-	return pulumix.Output[MonitorPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MonitorPropertiesResponseOutput) LiftrResourceCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitorPropertiesResponse) string { return v.LiftrResourceCategory }).(pulumi.StringOutput)
 }
@@ -1912,12 +1671,6 @@ func (o MonitoredResourceResponseOutput) ToMonitoredResourceResponseOutputWithCo
 	return o
 }
 
-func (o MonitoredResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoredResourceResponse] {
-	return pulumix.Output[MonitoredResourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ARM id of the resource.
 func (o MonitoredResourceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MonitoredResourceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -1962,12 +1715,6 @@ func (o MonitoredResourceResponseArrayOutput) ToMonitoredResourceResponseArrayOu
 	return o
 }
 
-func (o MonitoredResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MonitoredResourceResponse] {
-	return pulumix.Output[[]MonitoredResourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MonitoredResourceResponseArrayOutput) Index(i pulumi.IntInput) MonitoredResourceResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitoredResourceResponse {
 		return vs[0].([]MonitoredResourceResponse)[vs[1].(int)]
@@ -2007,12 +1754,6 @@ func (i MonitoringTagRulesPropertiesArgs) ToMonitoringTagRulesPropertiesOutput()
 
 func (i MonitoringTagRulesPropertiesArgs) ToMonitoringTagRulesPropertiesOutputWithContext(ctx context.Context) MonitoringTagRulesPropertiesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoringTagRulesPropertiesOutput)
-}
-
-func (i MonitoringTagRulesPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[MonitoringTagRulesProperties] {
-	return pulumix.Output[MonitoringTagRulesProperties]{
-		OutputState: i.ToMonitoringTagRulesPropertiesOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i MonitoringTagRulesPropertiesArgs) ToMonitoringTagRulesPropertiesPtrOutput() MonitoringTagRulesPropertiesPtrOutput {
@@ -2056,12 +1797,6 @@ func (i *monitoringTagRulesPropertiesPtrType) ToMonitoringTagRulesPropertiesPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoringTagRulesPropertiesPtrOutput)
 }
 
-func (i *monitoringTagRulesPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*MonitoringTagRulesProperties] {
-	return pulumix.Output[*MonitoringTagRulesProperties]{
-		OutputState: i.ToMonitoringTagRulesPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Definition of the properties for a TagRules resource.
 type MonitoringTagRulesPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -2087,12 +1822,6 @@ func (o MonitoringTagRulesPropertiesOutput) ToMonitoringTagRulesPropertiesPtrOut
 	}).(MonitoringTagRulesPropertiesPtrOutput)
 }
 
-func (o MonitoringTagRulesPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoringTagRulesProperties] {
-	return pulumix.Output[MonitoringTagRulesProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Set of rules for sending logs for the Monitor resource.
 func (o MonitoringTagRulesPropertiesOutput) LogRules() LogRulesPtrOutput {
 	return o.ApplyT(func(v MonitoringTagRulesProperties) *LogRules { return v.LogRules }).(LogRulesPtrOutput)
@@ -2110,12 +1839,6 @@ func (o MonitoringTagRulesPropertiesPtrOutput) ToMonitoringTagRulesPropertiesPtr
 
 func (o MonitoringTagRulesPropertiesPtrOutput) ToMonitoringTagRulesPropertiesPtrOutputWithContext(ctx context.Context) MonitoringTagRulesPropertiesPtrOutput {
 	return o
-}
-
-func (o MonitoringTagRulesPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitoringTagRulesProperties] {
-	return pulumix.Output[*MonitoringTagRulesProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitoringTagRulesPropertiesPtrOutput) Elem() MonitoringTagRulesPropertiesOutput {
@@ -2161,12 +1884,6 @@ func (o MonitoringTagRulesPropertiesResponseOutput) ToMonitoringTagRulesProperti
 
 func (o MonitoringTagRulesPropertiesResponseOutput) ToMonitoringTagRulesPropertiesResponseOutputWithContext(ctx context.Context) MonitoringTagRulesPropertiesResponseOutput {
 	return o
-}
-
-func (o MonitoringTagRulesPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoringTagRulesPropertiesResponse] {
-	return pulumix.Output[MonitoringTagRulesPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Set of rules for sending logs for the Monitor resource.
@@ -2229,12 +1946,6 @@ func (i PlanDataArgs) ToPlanDataOutputWithContext(ctx context.Context) PlanDataO
 	return pulumi.ToOutputWithContext(ctx, i).(PlanDataOutput)
 }
 
-func (i PlanDataArgs) ToOutput(ctx context.Context) pulumix.Output[PlanData] {
-	return pulumix.Output[PlanData]{
-		OutputState: i.ToPlanDataOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PlanDataArgs) ToPlanDataPtrOutput() PlanDataPtrOutput {
 	return i.ToPlanDataPtrOutputWithContext(context.Background())
 }
@@ -2276,12 +1987,6 @@ func (i *planDataPtrType) ToPlanDataPtrOutputWithContext(ctx context.Context) Pl
 	return pulumi.ToOutputWithContext(ctx, i).(PlanDataPtrOutput)
 }
 
-func (i *planDataPtrType) ToOutput(ctx context.Context) pulumix.Output[*PlanData] {
-	return pulumix.Output[*PlanData]{
-		OutputState: i.ToPlanDataPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PlanDataOutput struct{ *pulumi.OutputState }
 
 func (PlanDataOutput) ElementType() reflect.Type {
@@ -2304,12 +2009,6 @@ func (o PlanDataOutput) ToPlanDataPtrOutputWithContext(ctx context.Context) Plan
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PlanData) *PlanData {
 		return &v
 	}).(PlanDataPtrOutput)
-}
-
-func (o PlanDataOutput) ToOutput(ctx context.Context) pulumix.Output[PlanData] {
-	return pulumix.Output[PlanData]{
-		OutputState: o.OutputState,
-	}
 }
 
 // different billing cycles like MONTHLY/WEEKLY. this could be enum
@@ -2344,12 +2043,6 @@ func (o PlanDataPtrOutput) ToPlanDataPtrOutput() PlanDataPtrOutput {
 
 func (o PlanDataPtrOutput) ToPlanDataPtrOutputWithContext(ctx context.Context) PlanDataPtrOutput {
 	return o
-}
-
-func (o PlanDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PlanData] {
-	return pulumix.Output[*PlanData]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PlanDataPtrOutput) Elem() PlanDataOutput {
@@ -2427,12 +2120,6 @@ func (o PlanDataResponseOutput) ToPlanDataResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o PlanDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PlanDataResponse] {
-	return pulumix.Output[PlanDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // different billing cycles like MONTHLY/WEEKLY. this could be enum
 func (o PlanDataResponseOutput) BillingCycle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PlanDataResponse) *string { return v.BillingCycle }).(pulumi.StringPtrOutput)
@@ -2465,12 +2152,6 @@ func (o PlanDataResponsePtrOutput) ToPlanDataResponsePtrOutput() PlanDataRespons
 
 func (o PlanDataResponsePtrOutput) ToPlanDataResponsePtrOutputWithContext(ctx context.Context) PlanDataResponsePtrOutput {
 	return o
-}
-
-func (o PlanDataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PlanDataResponse] {
-	return pulumix.Output[*PlanDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PlanDataResponsePtrOutput) Elem() PlanDataResponseOutput {
@@ -2554,12 +2235,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timestamp of resource creation (UTC).
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
@@ -2635,12 +2310,6 @@ func (i UserInfoArgs) ToUserInfoOutputWithContext(ctx context.Context) UserInfoO
 	return pulumi.ToOutputWithContext(ctx, i).(UserInfoOutput)
 }
 
-func (i UserInfoArgs) ToOutput(ctx context.Context) pulumix.Output[UserInfo] {
-	return pulumix.Output[UserInfo]{
-		OutputState: i.ToUserInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i UserInfoArgs) ToUserInfoPtrOutput() UserInfoPtrOutput {
 	return i.ToUserInfoPtrOutputWithContext(context.Background())
 }
@@ -2682,12 +2351,6 @@ func (i *userInfoPtrType) ToUserInfoPtrOutputWithContext(ctx context.Context) Us
 	return pulumi.ToOutputWithContext(ctx, i).(UserInfoPtrOutput)
 }
 
-func (i *userInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*UserInfo] {
-	return pulumix.Output[*UserInfo]{
-		OutputState: i.ToUserInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UserInfoOutput struct{ *pulumi.OutputState }
 
 func (UserInfoOutput) ElementType() reflect.Type {
@@ -2710,12 +2373,6 @@ func (o UserInfoOutput) ToUserInfoPtrOutputWithContext(ctx context.Context) User
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserInfo) *UserInfo {
 		return &v
 	}).(UserInfoPtrOutput)
-}
-
-func (o UserInfoOutput) ToOutput(ctx context.Context) pulumix.Output[UserInfo] {
-	return pulumix.Output[UserInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Email of the user used by Logz for contacting them if needed
@@ -2750,12 +2407,6 @@ func (o UserInfoPtrOutput) ToUserInfoPtrOutput() UserInfoPtrOutput {
 
 func (o UserInfoPtrOutput) ToUserInfoPtrOutputWithContext(ctx context.Context) UserInfoPtrOutput {
 	return o
-}
-
-func (o UserInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserInfo] {
-	return pulumix.Output[*UserInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserInfoPtrOutput) Elem() UserInfoOutput {
@@ -2833,12 +2484,6 @@ func (o UserInfoResponseOutput) ToUserInfoResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o UserInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserInfoResponse] {
-	return pulumix.Output[UserInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Email of the user used by Logz for contacting them if needed
 func (o UserInfoResponseOutput) EmailAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserInfoResponse) *string { return v.EmailAddress }).(pulumi.StringPtrOutput)
@@ -2871,12 +2516,6 @@ func (o UserInfoResponsePtrOutput) ToUserInfoResponsePtrOutput() UserInfoRespons
 
 func (o UserInfoResponsePtrOutput) ToUserInfoResponsePtrOutputWithContext(ctx context.Context) UserInfoResponsePtrOutput {
 	return o
-}
-
-func (o UserInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserInfoResponse] {
-	return pulumix.Output[*UserInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserInfoResponsePtrOutput) Elem() UserInfoResponseOutput {
@@ -2950,12 +2589,6 @@ func (o UserRoleResponseResponseOutput) ToUserRoleResponseResponseOutputWithCont
 	return o
 }
 
-func (o UserRoleResponseResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserRoleResponseResponse] {
-	return pulumix.Output[UserRoleResponseResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // User roles on configured in Logz.io account.
 func (o UserRoleResponseResponseOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserRoleResponseResponse) *string { return v.Role }).(pulumi.StringPtrOutput)
@@ -2973,12 +2606,6 @@ func (o UserRoleResponseResponseArrayOutput) ToUserRoleResponseResponseArrayOutp
 
 func (o UserRoleResponseResponseArrayOutput) ToUserRoleResponseResponseArrayOutputWithContext(ctx context.Context) UserRoleResponseResponseArrayOutput {
 	return o
-}
-
-func (o UserRoleResponseResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UserRoleResponseResponse] {
-	return pulumix.Output[[]UserRoleResponseResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserRoleResponseResponseArrayOutput) Index(i pulumi.IntInput) UserRoleResponseResponseOutput {
@@ -3010,12 +2637,6 @@ func (o VMResourcesResponseOutput) ToVMResourcesResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o VMResourcesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VMResourcesResponse] {
-	return pulumix.Output[VMResourcesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Version of the Logz agent installed on the VM.
 func (o VMResourcesResponseOutput) AgentVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMResourcesResponse) *string { return v.AgentVersion }).(pulumi.StringPtrOutput)
@@ -3038,12 +2659,6 @@ func (o VMResourcesResponseArrayOutput) ToVMResourcesResponseArrayOutput() VMRes
 
 func (o VMResourcesResponseArrayOutput) ToVMResourcesResponseArrayOutputWithContext(ctx context.Context) VMResourcesResponseArrayOutput {
 	return o
-}
-
-func (o VMResourcesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VMResourcesResponse] {
-	return pulumix.Output[[]VMResourcesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMResourcesResponseArrayOutput) Index(i pulumi.IntInput) VMResourcesResponseOutput {

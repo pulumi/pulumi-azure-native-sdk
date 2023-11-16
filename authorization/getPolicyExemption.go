@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This operation retrieves a single policy exemption, given its name and the scope it was created at.
@@ -111,12 +110,6 @@ func (o LookupPolicyExemptionResultOutput) ToLookupPolicyExemptionResultOutput()
 
 func (o LookupPolicyExemptionResultOutput) ToLookupPolicyExemptionResultOutputWithContext(ctx context.Context) LookupPolicyExemptionResultOutput {
 	return o
-}
-
-func (o LookupPolicyExemptionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPolicyExemptionResult] {
-	return pulumix.Output[LookupPolicyExemptionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The option whether validate the exemption is at or under the assignment scope.

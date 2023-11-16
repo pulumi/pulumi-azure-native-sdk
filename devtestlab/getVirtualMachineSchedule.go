@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get schedule.
@@ -133,12 +132,6 @@ func (o LookupVirtualMachineScheduleResultOutput) ToLookupVirtualMachineSchedule
 
 func (o LookupVirtualMachineScheduleResultOutput) ToLookupVirtualMachineScheduleResultOutputWithContext(ctx context.Context) LookupVirtualMachineScheduleResultOutput {
 	return o
-}
-
-func (o LookupVirtualMachineScheduleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVirtualMachineScheduleResult] {
-	return pulumix.Output[LookupVirtualMachineScheduleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation date of the schedule.

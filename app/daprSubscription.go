@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Dapr PubSub Event Subscription.
@@ -166,12 +165,6 @@ func (i *DaprSubscription) ToDaprSubscriptionOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DaprSubscriptionOutput)
 }
 
-func (i *DaprSubscription) ToOutput(ctx context.Context) pulumix.Output[*DaprSubscription] {
-	return pulumix.Output[*DaprSubscription]{
-		OutputState: i.ToDaprSubscriptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DaprSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (DaprSubscriptionOutput) ElementType() reflect.Type {
@@ -184,12 +177,6 @@ func (o DaprSubscriptionOutput) ToDaprSubscriptionOutput() DaprSubscriptionOutpu
 
 func (o DaprSubscriptionOutput) ToDaprSubscriptionOutputWithContext(ctx context.Context) DaprSubscriptionOutput {
 	return o
-}
-
-func (o DaprSubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[*DaprSubscription] {
-	return pulumix.Output[*DaprSubscription]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Bulk subscription options

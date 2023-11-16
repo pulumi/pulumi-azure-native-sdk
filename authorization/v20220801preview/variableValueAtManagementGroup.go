@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The variable value.
@@ -127,12 +126,6 @@ func (i *VariableValueAtManagementGroup) ToVariableValueAtManagementGroupOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(VariableValueAtManagementGroupOutput)
 }
 
-func (i *VariableValueAtManagementGroup) ToOutput(ctx context.Context) pulumix.Output[*VariableValueAtManagementGroup] {
-	return pulumix.Output[*VariableValueAtManagementGroup]{
-		OutputState: i.ToVariableValueAtManagementGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VariableValueAtManagementGroupOutput struct{ *pulumi.OutputState }
 
 func (VariableValueAtManagementGroupOutput) ElementType() reflect.Type {
@@ -145,12 +138,6 @@ func (o VariableValueAtManagementGroupOutput) ToVariableValueAtManagementGroupOu
 
 func (o VariableValueAtManagementGroupOutput) ToVariableValueAtManagementGroupOutputWithContext(ctx context.Context) VariableValueAtManagementGroupOutput {
 	return o
-}
-
-func (o VariableValueAtManagementGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*VariableValueAtManagementGroup] {
-	return pulumix.Output[*VariableValueAtManagementGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the variable.

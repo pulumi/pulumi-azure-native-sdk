@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Android Policy entity for Intune MAM.
@@ -214,12 +213,6 @@ func (i *AndroidMAMPolicyByName) ToAndroidMAMPolicyByNameOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AndroidMAMPolicyByNameOutput)
 }
 
-func (i *AndroidMAMPolicyByName) ToOutput(ctx context.Context) pulumix.Output[*AndroidMAMPolicyByName] {
-	return pulumix.Output[*AndroidMAMPolicyByName]{
-		OutputState: i.ToAndroidMAMPolicyByNameOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AndroidMAMPolicyByNameOutput struct{ *pulumi.OutputState }
 
 func (AndroidMAMPolicyByNameOutput) ElementType() reflect.Type {
@@ -232,12 +225,6 @@ func (o AndroidMAMPolicyByNameOutput) ToAndroidMAMPolicyByNameOutput() AndroidMA
 
 func (o AndroidMAMPolicyByNameOutput) ToAndroidMAMPolicyByNameOutputWithContext(ctx context.Context) AndroidMAMPolicyByNameOutput {
 	return o
-}
-
-func (o AndroidMAMPolicyByNameOutput) ToOutput(ctx context.Context) pulumix.Output[*AndroidMAMPolicyByName] {
-	return pulumix.Output[*AndroidMAMPolicyByName]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AndroidMAMPolicyByNameOutput) AccessRecheckOfflineTimeout() pulumi.StringPtrOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a DataSet in a share
@@ -100,12 +99,6 @@ func (o LookupBlobContainerDataSetResultOutput) ToLookupBlobContainerDataSetResu
 
 func (o LookupBlobContainerDataSetResultOutput) ToLookupBlobContainerDataSetResultOutputWithContext(ctx context.Context) LookupBlobContainerDataSetResultOutput {
 	return o
-}
-
-func (o LookupBlobContainerDataSetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBlobContainerDataSetResult] {
-	return pulumix.Output[LookupBlobContainerDataSetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // BLOB Container name.

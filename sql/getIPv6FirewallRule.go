@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an IPv6 firewall rule.
@@ -88,12 +87,6 @@ func (o LookupIPv6FirewallRuleResultOutput) ToLookupIPv6FirewallRuleResultOutput
 
 func (o LookupIPv6FirewallRuleResultOutput) ToLookupIPv6FirewallRuleResultOutputWithContext(ctx context.Context) LookupIPv6FirewallRuleResultOutput {
 	return o
-}
-
-func (o LookupIPv6FirewallRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIPv6FirewallRuleResult] {
-	return pulumix.Output[LookupIPv6FirewallRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The end IP address of the firewall rule. Must be IPv6 format. Must be greater than or equal to startIpAddress.

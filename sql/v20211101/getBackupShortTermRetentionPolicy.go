@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a database's short term retention policy.
@@ -89,12 +88,6 @@ func (o LookupBackupShortTermRetentionPolicyResultOutput) ToLookupBackupShortTer
 
 func (o LookupBackupShortTermRetentionPolicyResultOutput) ToLookupBackupShortTermRetentionPolicyResultOutputWithContext(ctx context.Context) LookupBackupShortTermRetentionPolicyResultOutput {
 	return o
-}
-
-func (o LookupBackupShortTermRetentionPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBackupShortTermRetentionPolicyResult] {
-	return pulumix.Output[LookupBackupShortTermRetentionPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The differential backup interval in hours. This is how many interval hours between each differential backup will be supported. This is only applicable to live databases but not dropped databases.

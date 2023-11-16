@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Packet core data plane resource. Must be created in the same location as its parent packet core control plane.
@@ -153,12 +152,6 @@ func (i *PacketCoreDataPlane) ToPacketCoreDataPlaneOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(PacketCoreDataPlaneOutput)
 }
 
-func (i *PacketCoreDataPlane) ToOutput(ctx context.Context) pulumix.Output[*PacketCoreDataPlane] {
-	return pulumix.Output[*PacketCoreDataPlane]{
-		OutputState: i.ToPacketCoreDataPlaneOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PacketCoreDataPlaneOutput struct{ *pulumi.OutputState }
 
 func (PacketCoreDataPlaneOutput) ElementType() reflect.Type {
@@ -171,12 +164,6 @@ func (o PacketCoreDataPlaneOutput) ToPacketCoreDataPlaneOutput() PacketCoreDataP
 
 func (o PacketCoreDataPlaneOutput) ToPacketCoreDataPlaneOutputWithContext(ctx context.Context) PacketCoreDataPlaneOutput {
 	return o
-}
-
-func (o PacketCoreDataPlaneOutput) ToOutput(ctx context.Context) pulumix.Output[*PacketCoreDataPlane] {
-	return pulumix.Output[*PacketCoreDataPlane]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

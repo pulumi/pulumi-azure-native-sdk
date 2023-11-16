@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An event source that receives its data from an Azure IoTHub.
@@ -225,12 +224,6 @@ func (i *IoTHubEventSource) ToIoTHubEventSourceOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(IoTHubEventSourceOutput)
 }
 
-func (i *IoTHubEventSource) ToOutput(ctx context.Context) pulumix.Output[*IoTHubEventSource] {
-	return pulumix.Output[*IoTHubEventSource]{
-		OutputState: i.ToIoTHubEventSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IoTHubEventSourceOutput struct{ *pulumi.OutputState }
 
 func (IoTHubEventSourceOutput) ElementType() reflect.Type {
@@ -243,12 +236,6 @@ func (o IoTHubEventSourceOutput) ToIoTHubEventSourceOutput() IoTHubEventSourceOu
 
 func (o IoTHubEventSourceOutput) ToIoTHubEventSourceOutputWithContext(ctx context.Context) IoTHubEventSourceOutput {
 	return o
-}
-
-func (o IoTHubEventSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*IoTHubEventSource] {
-	return pulumix.Output[*IoTHubEventSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the iot hub's consumer group that holds the partitions from which events will be read.

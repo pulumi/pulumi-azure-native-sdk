@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an autoscale setting
@@ -109,12 +108,6 @@ func (o LookupAutoscaleSettingResultOutput) ToLookupAutoscaleSettingResultOutput
 
 func (o LookupAutoscaleSettingResultOutput) ToLookupAutoscaleSettingResultOutputWithContext(ctx context.Context) LookupAutoscaleSettingResultOutput {
 	return o
-}
-
-func (o LookupAutoscaleSettingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAutoscaleSettingResult] {
-	return pulumix.Output[LookupAutoscaleSettingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // the enabled flag. Specifies whether automatic scaling is enabled for the resource. The default value is 'false'.

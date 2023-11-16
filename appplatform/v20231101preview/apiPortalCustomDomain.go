@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Custom domain of the API portal
@@ -164,12 +163,6 @@ func (i *ApiPortalCustomDomain) ToApiPortalCustomDomainOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ApiPortalCustomDomainOutput)
 }
 
-func (i *ApiPortalCustomDomain) ToOutput(ctx context.Context) pulumix.Output[*ApiPortalCustomDomain] {
-	return pulumix.Output[*ApiPortalCustomDomain]{
-		OutputState: i.ToApiPortalCustomDomainOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiPortalCustomDomainOutput struct{ *pulumi.OutputState }
 
 func (ApiPortalCustomDomainOutput) ElementType() reflect.Type {
@@ -182,12 +175,6 @@ func (o ApiPortalCustomDomainOutput) ToApiPortalCustomDomainOutput() ApiPortalCu
 
 func (o ApiPortalCustomDomainOutput) ToApiPortalCustomDomainOutputWithContext(ctx context.Context) ApiPortalCustomDomainOutput {
 	return o
-}
-
-func (o ApiPortalCustomDomainOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiPortalCustomDomain] {
-	return pulumix.Output[*ApiPortalCustomDomain]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource.

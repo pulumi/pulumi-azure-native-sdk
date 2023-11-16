@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about a AAD server administrator.
@@ -85,12 +84,6 @@ func (o LookupServerAdministratorResultOutput) ToLookupServerAdministratorResult
 
 func (o LookupServerAdministratorResultOutput) ToLookupServerAdministratorResultOutputWithContext(ctx context.Context) LookupServerAdministratorResultOutput {
 	return o
-}
-
-func (o LookupServerAdministratorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServerAdministratorResult] {
-	return pulumix.Output[LookupServerAdministratorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of administrator.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the send key name and value for a Hybrid Connection.
@@ -96,12 +95,6 @@ func (o ListWebAppHybridConnectionKeysSlotResultOutput) ToListWebAppHybridConnec
 
 func (o ListWebAppHybridConnectionKeysSlotResultOutput) ToListWebAppHybridConnectionKeysSlotResultOutputWithContext(ctx context.Context) ListWebAppHybridConnectionKeysSlotResultOutput {
 	return o
-}
-
-func (o ListWebAppHybridConnectionKeysSlotResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWebAppHybridConnectionKeysSlotResult] {
-	return pulumix.Output[ListWebAppHybridConnectionKeysSlotResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Id.

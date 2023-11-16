@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // API details.
@@ -282,12 +281,6 @@ func (i *WorkspaceApi) ToWorkspaceApiOutputWithContext(ctx context.Context) Work
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceApiOutput)
 }
 
-func (i *WorkspaceApi) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceApi] {
-	return pulumix.Output[*WorkspaceApi]{
-		OutputState: i.ToWorkspaceApiOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkspaceApiOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceApiOutput) ElementType() reflect.Type {
@@ -300,12 +293,6 @@ func (o WorkspaceApiOutput) ToWorkspaceApiOutput() WorkspaceApiOutput {
 
 func (o WorkspaceApiOutput) ToWorkspaceApiOutputWithContext(ctx context.Context) WorkspaceApiOutput {
 	return o
-}
-
-func (o WorkspaceApiOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceApi] {
-	return pulumix.Output[*WorkspaceApi]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Describes the revision of the API. If no value is provided, default revision 1 is created

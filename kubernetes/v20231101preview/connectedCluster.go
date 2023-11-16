@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a connected cluster.
@@ -247,12 +246,6 @@ func (i *ConnectedCluster) ToConnectedClusterOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectedClusterOutput)
 }
 
-func (i *ConnectedCluster) ToOutput(ctx context.Context) pulumix.Output[*ConnectedCluster] {
-	return pulumix.Output[*ConnectedCluster]{
-		OutputState: i.ToConnectedClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectedClusterOutput struct{ *pulumi.OutputState }
 
 func (ConnectedClusterOutput) ElementType() reflect.Type {
@@ -265,12 +258,6 @@ func (o ConnectedClusterOutput) ToConnectedClusterOutput() ConnectedClusterOutpu
 
 func (o ConnectedClusterOutput) ToConnectedClusterOutputWithContext(ctx context.Context) ConnectedClusterOutput {
 	return o
-}
-
-func (o ConnectedClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectedCluster] {
-	return pulumix.Output[*ConnectedCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // AAD profile for the connected cluster.

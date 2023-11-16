@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of a partner namespace.
@@ -125,12 +124,6 @@ func (o LookupPartnerNamespaceResultOutput) ToLookupPartnerNamespaceResultOutput
 
 func (o LookupPartnerNamespaceResultOutput) ToLookupPartnerNamespaceResultOutputWithContext(ctx context.Context) LookupPartnerNamespaceResultOutput {
 	return o
-}
-
-func (o LookupPartnerNamespaceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPartnerNamespaceResult] {
-	return pulumix.Output[LookupPartnerNamespaceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the partner namespace.

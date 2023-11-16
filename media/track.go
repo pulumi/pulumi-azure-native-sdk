@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Asset Track resource.
@@ -138,12 +137,6 @@ func (i *Track) ToTrackOutputWithContext(ctx context.Context) TrackOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TrackOutput)
 }
 
-func (i *Track) ToOutput(ctx context.Context) pulumix.Output[*Track] {
-	return pulumix.Output[*Track]{
-		OutputState: i.ToTrackOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TrackOutput struct{ *pulumi.OutputState }
 
 func (TrackOutput) ElementType() reflect.Type {
@@ -156,12 +149,6 @@ func (o TrackOutput) ToTrackOutput() TrackOutput {
 
 func (o TrackOutput) ToTrackOutputWithContext(ctx context.Context) TrackOutput {
 	return o
-}
-
-func (o TrackOutput) ToOutput(ctx context.Context) pulumix.Output[*Track] {
-	return pulumix.Output[*Track]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

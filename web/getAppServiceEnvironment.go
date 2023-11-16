@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Get the properties of an App Service Environment.
@@ -140,12 +139,6 @@ func (o LookupAppServiceEnvironmentResultOutput) ToLookupAppServiceEnvironmentRe
 
 func (o LookupAppServiceEnvironmentResultOutput) ToLookupAppServiceEnvironmentResultOutputWithContext(ctx context.Context) LookupAppServiceEnvironmentResultOutput {
 	return o
-}
-
-func (o LookupAppServiceEnvironmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAppServiceEnvironmentResult] {
-	return pulumix.Output[LookupAppServiceEnvironmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Custom settings for changing the behavior of the App Service Environment.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties of the specified Analytics Connector.
@@ -100,12 +99,6 @@ func (o LookupAnalyticsConnectorResultOutput) ToLookupAnalyticsConnectorResultOu
 
 func (o LookupAnalyticsConnectorResultOutput) ToLookupAnalyticsConnectorResultOutputWithContext(ctx context.Context) LookupAnalyticsConnectorResultOutput {
 	return o
-}
-
-func (o LookupAnalyticsConnectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAnalyticsConnectorResult] {
-	return pulumix.Output[LookupAnalyticsConnectorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Data destination configuration for Analytics Connector.

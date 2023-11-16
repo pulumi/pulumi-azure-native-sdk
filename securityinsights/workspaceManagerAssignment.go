@@ -10,13 +10,12 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The workspace manager assignment
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 type WorkspaceManagerAssignment struct {
 	pulumi.CustomResourceState
 
@@ -75,6 +74,9 @@ func NewWorkspaceManagerAssignment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:WorkspaceManagerAssignment"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:WorkspaceManagerAssignment"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -160,12 +162,6 @@ func (i *WorkspaceManagerAssignment) ToWorkspaceManagerAssignmentOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceManagerAssignmentOutput)
 }
 
-func (i *WorkspaceManagerAssignment) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceManagerAssignment] {
-	return pulumix.Output[*WorkspaceManagerAssignment]{
-		OutputState: i.ToWorkspaceManagerAssignmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkspaceManagerAssignmentOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceManagerAssignmentOutput) ElementType() reflect.Type {
@@ -178,12 +174,6 @@ func (o WorkspaceManagerAssignmentOutput) ToWorkspaceManagerAssignmentOutput() W
 
 func (o WorkspaceManagerAssignmentOutput) ToWorkspaceManagerAssignmentOutputWithContext(ctx context.Context) WorkspaceManagerAssignmentOutput {
 	return o
-}
-
-func (o WorkspaceManagerAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceManagerAssignment] {
-	return pulumix.Output[*WorkspaceManagerAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Etag.

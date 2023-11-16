@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An object that represents an import pipeline for a container registry.
@@ -184,12 +183,6 @@ func (i *ImportPipeline) ToImportPipelineOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ImportPipelineOutput)
 }
 
-func (i *ImportPipeline) ToOutput(ctx context.Context) pulumix.Output[*ImportPipeline] {
-	return pulumix.Output[*ImportPipeline]{
-		OutputState: i.ToImportPipelineOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ImportPipelineOutput struct{ *pulumi.OutputState }
 
 func (ImportPipelineOutput) ElementType() reflect.Type {
@@ -202,12 +195,6 @@ func (o ImportPipelineOutput) ToImportPipelineOutput() ImportPipelineOutput {
 
 func (o ImportPipelineOutput) ToImportPipelineOutputWithContext(ctx context.Context) ImportPipelineOutput {
 	return o
-}
-
-func (o ImportPipelineOutput) ToOutput(ctx context.Context) pulumix.Output[*ImportPipeline] {
-	return pulumix.Output[*ImportPipeline]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The identity of the import pipeline.

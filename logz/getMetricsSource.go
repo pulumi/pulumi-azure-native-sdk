@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2022-01-01-preview.
@@ -86,12 +85,6 @@ func (o LookupMetricsSourceResultOutput) ToLookupMetricsSourceResultOutput() Loo
 
 func (o LookupMetricsSourceResultOutput) ToLookupMetricsSourceResultOutputWithContext(ctx context.Context) LookupMetricsSourceResultOutput {
 	return o
-}
-
-func (o LookupMetricsSourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMetricsSourceResult] {
-	return pulumix.Output[LookupMetricsSourceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ARM id of the monitor resource.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the description for the specified WCF relay.
@@ -104,12 +103,6 @@ func (o LookupWCFRelayResultOutput) ToLookupWCFRelayResultOutput() LookupWCFRela
 
 func (o LookupWCFRelayResultOutput) ToLookupWCFRelayResultOutputWithContext(ctx context.Context) LookupWCFRelayResultOutput {
 	return o
-}
-
-func (o LookupWCFRelayResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWCFRelayResult] {
-	return pulumix.Output[LookupWCFRelayResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time the WCF relay was created.

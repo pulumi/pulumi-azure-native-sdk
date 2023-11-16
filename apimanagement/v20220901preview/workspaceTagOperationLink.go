@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Tag-operation link details.
@@ -142,12 +141,6 @@ func (i *WorkspaceTagOperationLink) ToWorkspaceTagOperationLinkOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceTagOperationLinkOutput)
 }
 
-func (i *WorkspaceTagOperationLink) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceTagOperationLink] {
-	return pulumix.Output[*WorkspaceTagOperationLink]{
-		OutputState: i.ToWorkspaceTagOperationLinkOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkspaceTagOperationLinkOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceTagOperationLinkOutput) ElementType() reflect.Type {
@@ -160,12 +153,6 @@ func (o WorkspaceTagOperationLinkOutput) ToWorkspaceTagOperationLinkOutput() Wor
 
 func (o WorkspaceTagOperationLinkOutput) ToWorkspaceTagOperationLinkOutputWithContext(ctx context.Context) WorkspaceTagOperationLinkOutput {
 	return o
-}
-
-func (o WorkspaceTagOperationLinkOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceTagOperationLink] {
-	return pulumix.Output[*WorkspaceTagOperationLink]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

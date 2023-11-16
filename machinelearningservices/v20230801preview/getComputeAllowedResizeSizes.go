@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns supported virtual machine sizes for resize
@@ -77,12 +76,6 @@ func (o GetComputeAllowedResizeSizesResultOutput) ToGetComputeAllowedResizeSizes
 
 func (o GetComputeAllowedResizeSizesResultOutput) ToGetComputeAllowedResizeSizesResultOutputWithContext(ctx context.Context) GetComputeAllowedResizeSizesResultOutput {
 	return o
-}
-
-func (o GetComputeAllowedResizeSizesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetComputeAllowedResizeSizesResult] {
-	return pulumix.Output[GetComputeAllowedResizeSizesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of virtual machine sizes supported by AmlCompute.

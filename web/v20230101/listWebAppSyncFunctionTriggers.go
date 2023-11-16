@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for This is to allow calling via powershell and ARM template.
@@ -75,12 +74,6 @@ func (o ListWebAppSyncFunctionTriggersResultOutput) ToListWebAppSyncFunctionTrig
 
 func (o ListWebAppSyncFunctionTriggersResultOutput) ToListWebAppSyncFunctionTriggersResultOutputWithContext(ctx context.Context) ListWebAppSyncFunctionTriggersResultOutput {
 	return o
-}
-
-func (o ListWebAppSyncFunctionTriggersResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWebAppSyncFunctionTriggersResult] {
-	return pulumix.Output[ListWebAppSyncFunctionTriggersResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Secret key.

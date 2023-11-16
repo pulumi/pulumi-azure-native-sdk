@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A CommunicationsGateway resource
@@ -237,12 +236,6 @@ func (i *CommunicationsGateway) ToCommunicationsGatewayOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(CommunicationsGatewayOutput)
 }
 
-func (i *CommunicationsGateway) ToOutput(ctx context.Context) pulumix.Output[*CommunicationsGateway] {
-	return pulumix.Output[*CommunicationsGateway]{
-		OutputState: i.ToCommunicationsGatewayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CommunicationsGatewayOutput struct{ *pulumi.OutputState }
 
 func (CommunicationsGatewayOutput) ElementType() reflect.Type {
@@ -255,12 +248,6 @@ func (o CommunicationsGatewayOutput) ToCommunicationsGatewayOutput() Communicati
 
 func (o CommunicationsGatewayOutput) ToCommunicationsGatewayOutputWithContext(ctx context.Context) CommunicationsGatewayOutput {
 	return o
-}
-
-func (o CommunicationsGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[*CommunicationsGateway] {
-	return pulumix.Output[*CommunicationsGateway]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Details of API bridge functionality, if required

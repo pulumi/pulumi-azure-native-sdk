@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Buildpack Binding Resource object
@@ -174,12 +173,6 @@ func (i *BuildpackBinding) ToBuildpackBindingOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(BuildpackBindingOutput)
 }
 
-func (i *BuildpackBinding) ToOutput(ctx context.Context) pulumix.Output[*BuildpackBinding] {
-	return pulumix.Output[*BuildpackBinding]{
-		OutputState: i.ToBuildpackBindingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BuildpackBindingOutput struct{ *pulumi.OutputState }
 
 func (BuildpackBindingOutput) ElementType() reflect.Type {
@@ -192,12 +185,6 @@ func (o BuildpackBindingOutput) ToBuildpackBindingOutput() BuildpackBindingOutpu
 
 func (o BuildpackBindingOutput) ToBuildpackBindingOutputWithContext(ctx context.Context) BuildpackBindingOutput {
 	return o
-}
-
-func (o BuildpackBindingOutput) ToOutput(ctx context.Context) pulumix.Output[*BuildpackBinding] {
-	return pulumix.Output[*BuildpackBinding]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get deployment log file URL
@@ -84,12 +83,6 @@ func (o GetDeploymentLogFileUrlResultOutput) ToGetDeploymentLogFileUrlResultOutp
 
 func (o GetDeploymentLogFileUrlResultOutput) ToGetDeploymentLogFileUrlResultOutputWithContext(ctx context.Context) GetDeploymentLogFileUrlResultOutput {
 	return o
-}
-
-func (o GetDeploymentLogFileUrlResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDeploymentLogFileUrlResult] {
-	return pulumix.Output[GetDeploymentLogFileUrlResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // URL of the log file

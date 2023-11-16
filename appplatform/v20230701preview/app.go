@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // App resource payload
@@ -187,12 +186,6 @@ func (i *App) ToAppOutputWithContext(ctx context.Context) AppOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppOutput)
 }
 
-func (i *App) ToOutput(ctx context.Context) pulumix.Output[*App] {
-	return pulumix.Output[*App]{
-		OutputState: i.ToAppOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AppOutput struct{ *pulumi.OutputState }
 
 func (AppOutput) ElementType() reflect.Type {
@@ -205,12 +198,6 @@ func (o AppOutput) ToAppOutput() AppOutput {
 
 func (o AppOutput) ToAppOutputWithContext(ctx context.Context) AppOutput {
 	return o
-}
-
-func (o AppOutput) ToOutput(ctx context.Context) pulumix.Output[*App] {
-	return pulumix.Output[*App]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Managed Identity type of the app resource

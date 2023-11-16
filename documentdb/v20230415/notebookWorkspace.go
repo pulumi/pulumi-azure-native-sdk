@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A notebook workspace resource
@@ -207,12 +206,6 @@ func (i *NotebookWorkspace) ToNotebookWorkspaceOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(NotebookWorkspaceOutput)
 }
 
-func (i *NotebookWorkspace) ToOutput(ctx context.Context) pulumix.Output[*NotebookWorkspace] {
-	return pulumix.Output[*NotebookWorkspace]{
-		OutputState: i.ToNotebookWorkspaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NotebookWorkspaceOutput struct{ *pulumi.OutputState }
 
 func (NotebookWorkspaceOutput) ElementType() reflect.Type {
@@ -225,12 +218,6 @@ func (o NotebookWorkspaceOutput) ToNotebookWorkspaceOutput() NotebookWorkspaceOu
 
 func (o NotebookWorkspaceOutput) ToNotebookWorkspaceOutputWithContext(ctx context.Context) NotebookWorkspaceOutput {
 	return o
-}
-
-func (o NotebookWorkspaceOutput) ToOutput(ctx context.Context) pulumix.Output[*NotebookWorkspace] {
-	return pulumix.Output[*NotebookWorkspace]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the database account.

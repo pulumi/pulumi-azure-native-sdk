@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A tenant action group resource.
@@ -172,12 +171,6 @@ func (i *TenantActionGroup) ToTenantActionGroupOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(TenantActionGroupOutput)
 }
 
-func (i *TenantActionGroup) ToOutput(ctx context.Context) pulumix.Output[*TenantActionGroup] {
-	return pulumix.Output[*TenantActionGroup]{
-		OutputState: i.ToTenantActionGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TenantActionGroupOutput struct{ *pulumi.OutputState }
 
 func (TenantActionGroupOutput) ElementType() reflect.Type {
@@ -190,12 +183,6 @@ func (o TenantActionGroupOutput) ToTenantActionGroupOutput() TenantActionGroupOu
 
 func (o TenantActionGroupOutput) ToTenantActionGroupOutputWithContext(ctx context.Context) TenantActionGroupOutput {
 	return o
-}
-
-func (o TenantActionGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*TenantActionGroup] {
-	return pulumix.Output[*TenantActionGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of AzureAppPush receivers that are part of this tenant action group.

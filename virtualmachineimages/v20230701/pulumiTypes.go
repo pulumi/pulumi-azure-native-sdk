@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -223,12 +222,6 @@ func (i ImageTemplateIdentityArgs) ToImageTemplateIdentityOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplateIdentityOutput)
 }
 
-func (i ImageTemplateIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ImageTemplateIdentity] {
-	return pulumix.Output[ImageTemplateIdentity]{
-		OutputState: i.ToImageTemplateIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Identity for the image template.
 type ImageTemplateIdentityOutput struct{ *pulumi.OutputState }
 
@@ -242,12 +235,6 @@ func (o ImageTemplateIdentityOutput) ToImageTemplateIdentityOutput() ImageTempla
 
 func (o ImageTemplateIdentityOutput) ToImageTemplateIdentityOutputWithContext(ctx context.Context) ImageTemplateIdentityOutput {
 	return o
-}
-
-func (o ImageTemplateIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ImageTemplateIdentity] {
-	return pulumix.Output[ImageTemplateIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of identity used for the image template. The type 'None' will remove any identities from the image template.
@@ -281,12 +268,6 @@ func (o ImageTemplateIdentityResponseOutput) ToImageTemplateIdentityResponseOutp
 
 func (o ImageTemplateIdentityResponseOutput) ToImageTemplateIdentityResponseOutputWithContext(ctx context.Context) ImageTemplateIdentityResponseOutput {
 	return o
-}
-
-func (o ImageTemplateIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ImageTemplateIdentityResponse] {
-	return pulumix.Output[ImageTemplateIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of identity used for the image template. The type 'None' will remove any identities from the image template.
@@ -328,12 +309,6 @@ func (o ImageTemplateLastRunStatusResponseOutput) ToImageTemplateLastRunStatusRe
 
 func (o ImageTemplateLastRunStatusResponseOutput) ToImageTemplateLastRunStatusResponseOutputWithContext(ctx context.Context) ImageTemplateLastRunStatusResponseOutput {
 	return o
-}
-
-func (o ImageTemplateLastRunStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ImageTemplateLastRunStatusResponse] {
-	return pulumix.Output[ImageTemplateLastRunStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // End time of the last run (UTC)
@@ -683,12 +658,6 @@ func (i ImageTemplatePropertiesErrorHandlingArgs) ToImageTemplatePropertiesError
 	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplatePropertiesErrorHandlingOutput)
 }
 
-func (i ImageTemplatePropertiesErrorHandlingArgs) ToOutput(ctx context.Context) pulumix.Output[ImageTemplatePropertiesErrorHandling] {
-	return pulumix.Output[ImageTemplatePropertiesErrorHandling]{
-		OutputState: i.ToImageTemplatePropertiesErrorHandlingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ImageTemplatePropertiesErrorHandlingArgs) ToImageTemplatePropertiesErrorHandlingPtrOutput() ImageTemplatePropertiesErrorHandlingPtrOutput {
 	return i.ToImageTemplatePropertiesErrorHandlingPtrOutputWithContext(context.Background())
 }
@@ -730,12 +699,6 @@ func (i *imageTemplatePropertiesErrorHandlingPtrType) ToImageTemplatePropertiesE
 	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplatePropertiesErrorHandlingPtrOutput)
 }
 
-func (i *imageTemplatePropertiesErrorHandlingPtrType) ToOutput(ctx context.Context) pulumix.Output[*ImageTemplatePropertiesErrorHandling] {
-	return pulumix.Output[*ImageTemplatePropertiesErrorHandling]{
-		OutputState: i.ToImageTemplatePropertiesErrorHandlingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Error handling options upon a build failure
 type ImageTemplatePropertiesErrorHandlingOutput struct{ *pulumi.OutputState }
 
@@ -761,12 +724,6 @@ func (o ImageTemplatePropertiesErrorHandlingOutput) ToImageTemplatePropertiesErr
 	}).(ImageTemplatePropertiesErrorHandlingPtrOutput)
 }
 
-func (o ImageTemplatePropertiesErrorHandlingOutput) ToOutput(ctx context.Context) pulumix.Output[ImageTemplatePropertiesErrorHandling] {
-	return pulumix.Output[ImageTemplatePropertiesErrorHandling]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If there is a customizer error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a customizer error and this field is set to 'abort', the build VM will be preserved.
 func (o ImageTemplatePropertiesErrorHandlingOutput) OnCustomizerError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageTemplatePropertiesErrorHandling) *string { return v.OnCustomizerError }).(pulumi.StringPtrOutput)
@@ -789,12 +746,6 @@ func (o ImageTemplatePropertiesErrorHandlingPtrOutput) ToImageTemplateProperties
 
 func (o ImageTemplatePropertiesErrorHandlingPtrOutput) ToImageTemplatePropertiesErrorHandlingPtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesErrorHandlingPtrOutput {
 	return o
-}
-
-func (o ImageTemplatePropertiesErrorHandlingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageTemplatePropertiesErrorHandling] {
-	return pulumix.Output[*ImageTemplatePropertiesErrorHandling]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImageTemplatePropertiesErrorHandlingPtrOutput) Elem() ImageTemplatePropertiesErrorHandlingOutput {
@@ -862,12 +813,6 @@ func (i ImageTemplatePropertiesOptimizeArgs) ToImageTemplatePropertiesOptimizeOu
 	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplatePropertiesOptimizeOutput)
 }
 
-func (i ImageTemplatePropertiesOptimizeArgs) ToOutput(ctx context.Context) pulumix.Output[ImageTemplatePropertiesOptimize] {
-	return pulumix.Output[ImageTemplatePropertiesOptimize]{
-		OutputState: i.ToImageTemplatePropertiesOptimizeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ImageTemplatePropertiesOptimizeArgs) ToImageTemplatePropertiesOptimizePtrOutput() ImageTemplatePropertiesOptimizePtrOutput {
 	return i.ToImageTemplatePropertiesOptimizePtrOutputWithContext(context.Background())
 }
@@ -909,12 +854,6 @@ func (i *imageTemplatePropertiesOptimizePtrType) ToImageTemplatePropertiesOptimi
 	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplatePropertiesOptimizePtrOutput)
 }
 
-func (i *imageTemplatePropertiesOptimizePtrType) ToOutput(ctx context.Context) pulumix.Output[*ImageTemplatePropertiesOptimize] {
-	return pulumix.Output[*ImageTemplatePropertiesOptimize]{
-		OutputState: i.ToImageTemplatePropertiesOptimizePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies optimization to be performed on image.
 type ImageTemplatePropertiesOptimizeOutput struct{ *pulumi.OutputState }
 
@@ -940,12 +879,6 @@ func (o ImageTemplatePropertiesOptimizeOutput) ToImageTemplatePropertiesOptimize
 	}).(ImageTemplatePropertiesOptimizePtrOutput)
 }
 
-func (o ImageTemplatePropertiesOptimizeOutput) ToOutput(ctx context.Context) pulumix.Output[ImageTemplatePropertiesOptimize] {
-	return pulumix.Output[ImageTemplatePropertiesOptimize]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optimization is applied on the image for a faster VM boot.
 func (o ImageTemplatePropertiesOptimizeOutput) VmBoot() ImageTemplatePropertiesVmBootPtrOutput {
 	return o.ApplyT(func(v ImageTemplatePropertiesOptimize) *ImageTemplatePropertiesVmBoot { return v.VmBoot }).(ImageTemplatePropertiesVmBootPtrOutput)
@@ -963,12 +896,6 @@ func (o ImageTemplatePropertiesOptimizePtrOutput) ToImageTemplatePropertiesOptim
 
 func (o ImageTemplatePropertiesOptimizePtrOutput) ToImageTemplatePropertiesOptimizePtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesOptimizePtrOutput {
 	return o
-}
-
-func (o ImageTemplatePropertiesOptimizePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageTemplatePropertiesOptimize] {
-	return pulumix.Output[*ImageTemplatePropertiesOptimize]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImageTemplatePropertiesOptimizePtrOutput) Elem() ImageTemplatePropertiesOptimizeOutput {
@@ -1031,12 +958,6 @@ func (o ImageTemplatePropertiesResponseErrorHandlingOutput) ToImageTemplatePrope
 	return o
 }
 
-func (o ImageTemplatePropertiesResponseErrorHandlingOutput) ToOutput(ctx context.Context) pulumix.Output[ImageTemplatePropertiesResponseErrorHandling] {
-	return pulumix.Output[ImageTemplatePropertiesResponseErrorHandling]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If there is a customizer error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a customizer error and this field is set to 'abort', the build VM will be preserved.
 func (o ImageTemplatePropertiesResponseErrorHandlingOutput) OnCustomizerError() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageTemplatePropertiesResponseErrorHandling) *string { return v.OnCustomizerError }).(pulumi.StringPtrOutput)
@@ -1059,12 +980,6 @@ func (o ImageTemplatePropertiesResponseErrorHandlingPtrOutput) ToImageTemplatePr
 
 func (o ImageTemplatePropertiesResponseErrorHandlingPtrOutput) ToImageTemplatePropertiesResponseErrorHandlingPtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesResponseErrorHandlingPtrOutput {
 	return o
-}
-
-func (o ImageTemplatePropertiesResponseErrorHandlingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageTemplatePropertiesResponseErrorHandling] {
-	return pulumix.Output[*ImageTemplatePropertiesResponseErrorHandling]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImageTemplatePropertiesResponseErrorHandlingPtrOutput) Elem() ImageTemplatePropertiesResponseErrorHandlingOutput {
@@ -1118,12 +1033,6 @@ func (o ImageTemplatePropertiesResponseOptimizeOutput) ToImageTemplateProperties
 	return o
 }
 
-func (o ImageTemplatePropertiesResponseOptimizeOutput) ToOutput(ctx context.Context) pulumix.Output[ImageTemplatePropertiesResponseOptimize] {
-	return pulumix.Output[ImageTemplatePropertiesResponseOptimize]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Optimization is applied on the image for a faster VM boot.
 func (o ImageTemplatePropertiesResponseOptimizeOutput) VmBoot() ImageTemplatePropertiesResponseVmBootPtrOutput {
 	return o.ApplyT(func(v ImageTemplatePropertiesResponseOptimize) *ImageTemplatePropertiesResponseVmBoot {
@@ -1143,12 +1052,6 @@ func (o ImageTemplatePropertiesResponseOptimizePtrOutput) ToImageTemplatePropert
 
 func (o ImageTemplatePropertiesResponseOptimizePtrOutput) ToImageTemplatePropertiesResponseOptimizePtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesResponseOptimizePtrOutput {
 	return o
-}
-
-func (o ImageTemplatePropertiesResponseOptimizePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageTemplatePropertiesResponseOptimize] {
-	return pulumix.Output[*ImageTemplatePropertiesResponseOptimize]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImageTemplatePropertiesResponseOptimizePtrOutput) Elem() ImageTemplatePropertiesResponseOptimizeOutput {
@@ -1213,12 +1116,6 @@ func (o ImageTemplatePropertiesResponseValidateOutput) ToImageTemplateProperties
 	return o
 }
 
-func (o ImageTemplatePropertiesResponseValidateOutput) ToOutput(ctx context.Context) pulumix.Output[ImageTemplatePropertiesResponseValidate] {
-	return pulumix.Output[ImageTemplatePropertiesResponseValidate]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If validation fails and this field is set to false, output image(s) will not be distributed. This is the default behavior. If validation fails and this field is set to true, output image(s) will still be distributed. Please use this option with caution as it may result in bad images being distributed for use. In either case (true or false), the end to end image run will be reported as having failed in case of a validation failure. [Note: This field has no effect if validation succeeds.]
 func (o ImageTemplatePropertiesResponseValidateOutput) ContinueDistributeOnFailure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ImageTemplatePropertiesResponseValidate) *bool { return v.ContinueDistributeOnFailure }).(pulumi.BoolPtrOutput)
@@ -1246,12 +1143,6 @@ func (o ImageTemplatePropertiesResponseValidatePtrOutput) ToImageTemplatePropert
 
 func (o ImageTemplatePropertiesResponseValidatePtrOutput) ToImageTemplatePropertiesResponseValidatePtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesResponseValidatePtrOutput {
 	return o
-}
-
-func (o ImageTemplatePropertiesResponseValidatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageTemplatePropertiesResponseValidate] {
-	return pulumix.Output[*ImageTemplatePropertiesResponseValidate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImageTemplatePropertiesResponseValidatePtrOutput) Elem() ImageTemplatePropertiesResponseValidateOutput {
@@ -1315,12 +1206,6 @@ func (o ImageTemplatePropertiesResponseVmBootOutput) ToImageTemplatePropertiesRe
 	return o
 }
 
-func (o ImageTemplatePropertiesResponseVmBootOutput) ToOutput(ctx context.Context) pulumix.Output[ImageTemplatePropertiesResponseVmBoot] {
-	return pulumix.Output[ImageTemplatePropertiesResponseVmBoot]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Enabling this field will improve VM boot time by optimizing the final customized image output.
 func (o ImageTemplatePropertiesResponseVmBootOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageTemplatePropertiesResponseVmBoot) *string { return v.State }).(pulumi.StringPtrOutput)
@@ -1338,12 +1223,6 @@ func (o ImageTemplatePropertiesResponseVmBootPtrOutput) ToImageTemplatePropertie
 
 func (o ImageTemplatePropertiesResponseVmBootPtrOutput) ToImageTemplatePropertiesResponseVmBootPtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesResponseVmBootPtrOutput {
 	return o
-}
-
-func (o ImageTemplatePropertiesResponseVmBootPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageTemplatePropertiesResponseVmBoot] {
-	return pulumix.Output[*ImageTemplatePropertiesResponseVmBoot]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImageTemplatePropertiesResponseVmBootPtrOutput) Elem() ImageTemplatePropertiesResponseVmBootOutput {
@@ -1440,12 +1319,6 @@ func (i ImageTemplatePropertiesValidateArgs) ToImageTemplatePropertiesValidateOu
 	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplatePropertiesValidateOutput)
 }
 
-func (i ImageTemplatePropertiesValidateArgs) ToOutput(ctx context.Context) pulumix.Output[ImageTemplatePropertiesValidate] {
-	return pulumix.Output[ImageTemplatePropertiesValidate]{
-		OutputState: i.ToImageTemplatePropertiesValidateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ImageTemplatePropertiesValidateArgs) ToImageTemplatePropertiesValidatePtrOutput() ImageTemplatePropertiesValidatePtrOutput {
 	return i.ToImageTemplatePropertiesValidatePtrOutputWithContext(context.Background())
 }
@@ -1487,12 +1360,6 @@ func (i *imageTemplatePropertiesValidatePtrType) ToImageTemplatePropertiesValida
 	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplatePropertiesValidatePtrOutput)
 }
 
-func (i *imageTemplatePropertiesValidatePtrType) ToOutput(ctx context.Context) pulumix.Output[*ImageTemplatePropertiesValidate] {
-	return pulumix.Output[*ImageTemplatePropertiesValidate]{
-		OutputState: i.ToImageTemplatePropertiesValidatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration options and list of validations to be performed on the resulting image.
 type ImageTemplatePropertiesValidateOutput struct{ *pulumi.OutputState }
 
@@ -1516,12 +1383,6 @@ func (o ImageTemplatePropertiesValidateOutput) ToImageTemplatePropertiesValidate
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageTemplatePropertiesValidate) *ImageTemplatePropertiesValidate {
 		return &v
 	}).(ImageTemplatePropertiesValidatePtrOutput)
-}
-
-func (o ImageTemplatePropertiesValidateOutput) ToOutput(ctx context.Context) pulumix.Output[ImageTemplatePropertiesValidate] {
-	return pulumix.Output[ImageTemplatePropertiesValidate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If validation fails and this field is set to false, output image(s) will not be distributed. This is the default behavior. If validation fails and this field is set to true, output image(s) will still be distributed. Please use this option with caution as it may result in bad images being distributed for use. In either case (true or false), the end to end image run will be reported as having failed in case of a validation failure. [Note: This field has no effect if validation succeeds.]
@@ -1551,12 +1412,6 @@ func (o ImageTemplatePropertiesValidatePtrOutput) ToImageTemplatePropertiesValid
 
 func (o ImageTemplatePropertiesValidatePtrOutput) ToImageTemplatePropertiesValidatePtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesValidatePtrOutput {
 	return o
-}
-
-func (o ImageTemplatePropertiesValidatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageTemplatePropertiesValidate] {
-	return pulumix.Output[*ImageTemplatePropertiesValidate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImageTemplatePropertiesValidatePtrOutput) Elem() ImageTemplatePropertiesValidateOutput {
@@ -1634,12 +1489,6 @@ func (i ImageTemplatePropertiesVmBootArgs) ToImageTemplatePropertiesVmBootOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplatePropertiesVmBootOutput)
 }
 
-func (i ImageTemplatePropertiesVmBootArgs) ToOutput(ctx context.Context) pulumix.Output[ImageTemplatePropertiesVmBoot] {
-	return pulumix.Output[ImageTemplatePropertiesVmBoot]{
-		OutputState: i.ToImageTemplatePropertiesVmBootOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ImageTemplatePropertiesVmBootArgs) ToImageTemplatePropertiesVmBootPtrOutput() ImageTemplatePropertiesVmBootPtrOutput {
 	return i.ToImageTemplatePropertiesVmBootPtrOutputWithContext(context.Background())
 }
@@ -1681,12 +1530,6 @@ func (i *imageTemplatePropertiesVmBootPtrType) ToImageTemplatePropertiesVmBootPt
 	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplatePropertiesVmBootPtrOutput)
 }
 
-func (i *imageTemplatePropertiesVmBootPtrType) ToOutput(ctx context.Context) pulumix.Output[*ImageTemplatePropertiesVmBoot] {
-	return pulumix.Output[*ImageTemplatePropertiesVmBoot]{
-		OutputState: i.ToImageTemplatePropertiesVmBootPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optimization is applied on the image for a faster VM boot.
 type ImageTemplatePropertiesVmBootOutput struct{ *pulumi.OutputState }
 
@@ -1712,12 +1555,6 @@ func (o ImageTemplatePropertiesVmBootOutput) ToImageTemplatePropertiesVmBootPtrO
 	}).(ImageTemplatePropertiesVmBootPtrOutput)
 }
 
-func (o ImageTemplatePropertiesVmBootOutput) ToOutput(ctx context.Context) pulumix.Output[ImageTemplatePropertiesVmBoot] {
-	return pulumix.Output[ImageTemplatePropertiesVmBoot]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Enabling this field will improve VM boot time by optimizing the final customized image output.
 func (o ImageTemplatePropertiesVmBootOutput) State() VMBootOptimizationStatePtrOutput {
 	return o.ApplyT(func(v ImageTemplatePropertiesVmBoot) *VMBootOptimizationState { return v.State }).(VMBootOptimizationStatePtrOutput)
@@ -1735,12 +1572,6 @@ func (o ImageTemplatePropertiesVmBootPtrOutput) ToImageTemplatePropertiesVmBootP
 
 func (o ImageTemplatePropertiesVmBootPtrOutput) ToImageTemplatePropertiesVmBootPtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesVmBootPtrOutput {
 	return o
-}
-
-func (o ImageTemplatePropertiesVmBootPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageTemplatePropertiesVmBoot] {
-	return pulumix.Output[*ImageTemplatePropertiesVmBoot]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImageTemplatePropertiesVmBootPtrOutput) Elem() ImageTemplatePropertiesVmBootOutput {
@@ -2104,12 +1935,6 @@ func (i ImageTemplateVmProfileArgs) ToImageTemplateVmProfileOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplateVmProfileOutput)
 }
 
-func (i ImageTemplateVmProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ImageTemplateVmProfile] {
-	return pulumix.Output[ImageTemplateVmProfile]{
-		OutputState: i.ToImageTemplateVmProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ImageTemplateVmProfileArgs) ToImageTemplateVmProfilePtrOutput() ImageTemplateVmProfilePtrOutput {
 	return i.ToImageTemplateVmProfilePtrOutputWithContext(context.Background())
 }
@@ -2151,12 +1976,6 @@ func (i *imageTemplateVmProfilePtrType) ToImageTemplateVmProfilePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplateVmProfilePtrOutput)
 }
 
-func (i *imageTemplateVmProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ImageTemplateVmProfile] {
-	return pulumix.Output[*ImageTemplateVmProfile]{
-		OutputState: i.ToImageTemplateVmProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes the virtual machines used to build and validate images
 type ImageTemplateVmProfileOutput struct{ *pulumi.OutputState }
 
@@ -2180,12 +1999,6 @@ func (o ImageTemplateVmProfileOutput) ToImageTemplateVmProfilePtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageTemplateVmProfile) *ImageTemplateVmProfile {
 		return &v
 	}).(ImageTemplateVmProfilePtrOutput)
-}
-
-func (o ImageTemplateVmProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ImageTemplateVmProfile] {
-	return pulumix.Output[ImageTemplateVmProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Size of the OS disk in GB. Omit or specify 0 to use Azure's default OS disk size.
@@ -2220,12 +2033,6 @@ func (o ImageTemplateVmProfilePtrOutput) ToImageTemplateVmProfilePtrOutput() Ima
 
 func (o ImageTemplateVmProfilePtrOutput) ToImageTemplateVmProfilePtrOutputWithContext(ctx context.Context) ImageTemplateVmProfilePtrOutput {
 	return o
-}
-
-func (o ImageTemplateVmProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageTemplateVmProfile] {
-	return pulumix.Output[*ImageTemplateVmProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImageTemplateVmProfilePtrOutput) Elem() ImageTemplateVmProfileOutput {
@@ -2324,12 +2131,6 @@ func (o ImageTemplateVmProfileResponseOutput) ToImageTemplateVmProfileResponseOu
 	return o
 }
 
-func (o ImageTemplateVmProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ImageTemplateVmProfileResponse] {
-	return pulumix.Output[ImageTemplateVmProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Size of the OS disk in GB. Omit or specify 0 to use Azure's default OS disk size.
 func (o ImageTemplateVmProfileResponseOutput) OsDiskSizeGB() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ImageTemplateVmProfileResponse) *int { return v.OsDiskSizeGB }).(pulumi.IntPtrOutput)
@@ -2362,12 +2163,6 @@ func (o ImageTemplateVmProfileResponsePtrOutput) ToImageTemplateVmProfileRespons
 
 func (o ImageTemplateVmProfileResponsePtrOutput) ToImageTemplateVmProfileResponsePtrOutputWithContext(ctx context.Context) ImageTemplateVmProfileResponsePtrOutput {
 	return o
-}
-
-func (o ImageTemplateVmProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageTemplateVmProfileResponse] {
-	return pulumix.Output[*ImageTemplateVmProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImageTemplateVmProfileResponsePtrOutput) Elem() ImageTemplateVmProfileResponseOutput {
@@ -2519,12 +2314,6 @@ func (o ProvisioningErrorResponseOutput) ToProvisioningErrorResponseOutputWithCo
 	return o
 }
 
-func (o ProvisioningErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ProvisioningErrorResponse] {
-	return pulumix.Output[ProvisioningErrorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Verbose error message about the provisioning failure
 func (o ProvisioningErrorResponseOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProvisioningErrorResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
@@ -2564,12 +2353,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -2673,12 +2456,6 @@ func (o TriggerStatusResponseOutput) ToTriggerStatusResponseOutputWithContext(ct
 	return o
 }
 
-func (o TriggerStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerStatusResponse] {
-	return pulumix.Output[TriggerStatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The status code.
 func (o TriggerStatusResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerStatusResponse) string { return v.Code }).(pulumi.StringOutput)
@@ -2717,12 +2494,6 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
-func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
-	return pulumix.Output[UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The client ID of the assigned identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -2745,12 +2516,6 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
-	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
@@ -2822,12 +2587,6 @@ func (i VirtualNetworkConfigArgs) ToVirtualNetworkConfigOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkConfigOutput)
 }
 
-func (i VirtualNetworkConfigArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkConfig] {
-	return pulumix.Output[VirtualNetworkConfig]{
-		OutputState: i.ToVirtualNetworkConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VirtualNetworkConfigArgs) ToVirtualNetworkConfigPtrOutput() VirtualNetworkConfigPtrOutput {
 	return i.ToVirtualNetworkConfigPtrOutputWithContext(context.Background())
 }
@@ -2869,12 +2628,6 @@ func (i *virtualNetworkConfigPtrType) ToVirtualNetworkConfigPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkConfigPtrOutput)
 }
 
-func (i *virtualNetworkConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkConfig] {
-	return pulumix.Output[*VirtualNetworkConfig]{
-		OutputState: i.ToVirtualNetworkConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Virtual Network configuration.
 type VirtualNetworkConfigOutput struct{ *pulumi.OutputState }
 
@@ -2900,12 +2653,6 @@ func (o VirtualNetworkConfigOutput) ToVirtualNetworkConfigPtrOutputWithContext(c
 	}).(VirtualNetworkConfigPtrOutput)
 }
 
-func (o VirtualNetworkConfigOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkConfig] {
-	return pulumix.Output[VirtualNetworkConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. Omit or specify empty string to use the default (Standard_A1_v2).
 func (o VirtualNetworkConfigOutput) ProxyVmSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkConfig) *string { return v.ProxyVmSize }).(pulumi.StringPtrOutput)
@@ -2928,12 +2675,6 @@ func (o VirtualNetworkConfigPtrOutput) ToVirtualNetworkConfigPtrOutput() Virtual
 
 func (o VirtualNetworkConfigPtrOutput) ToVirtualNetworkConfigPtrOutputWithContext(ctx context.Context) VirtualNetworkConfigPtrOutput {
 	return o
-}
-
-func (o VirtualNetworkConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkConfig] {
-	return pulumix.Output[*VirtualNetworkConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualNetworkConfigPtrOutput) Elem() VirtualNetworkConfigOutput {
@@ -3002,12 +2743,6 @@ func (o VirtualNetworkConfigResponseOutput) ToVirtualNetworkConfigResponseOutput
 	return o
 }
 
-func (o VirtualNetworkConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkConfigResponse] {
-	return pulumix.Output[VirtualNetworkConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. Omit or specify empty string to use the default (Standard_A1_v2).
 func (o VirtualNetworkConfigResponseOutput) ProxyVmSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkConfigResponse) *string { return v.ProxyVmSize }).(pulumi.StringPtrOutput)
@@ -3030,12 +2765,6 @@ func (o VirtualNetworkConfigResponsePtrOutput) ToVirtualNetworkConfigResponsePtr
 
 func (o VirtualNetworkConfigResponsePtrOutput) ToVirtualNetworkConfigResponsePtrOutputWithContext(ctx context.Context) VirtualNetworkConfigResponsePtrOutput {
 	return o
-}
-
-func (o VirtualNetworkConfigResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkConfigResponse] {
-	return pulumix.Output[*VirtualNetworkConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualNetworkConfigResponsePtrOutput) Elem() VirtualNetworkConfigResponseOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets Catalog Devbox Definition error details
@@ -81,12 +80,6 @@ func (o GetCatalogDevBoxDefinitionErrorDetailsResultOutput) ToGetCatalogDevBoxDe
 
 func (o GetCatalogDevBoxDefinitionErrorDetailsResultOutput) ToGetCatalogDevBoxDefinitionErrorDetailsResultOutputWithContext(ctx context.Context) GetCatalogDevBoxDefinitionErrorDetailsResultOutput {
 	return o
-}
-
-func (o GetCatalogDevBoxDefinitionErrorDetailsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCatalogDevBoxDefinitionErrorDetailsResult] {
-	return pulumix.Output[GetCatalogDevBoxDefinitionErrorDetailsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Errors associated with resources synchronized from the catalog.

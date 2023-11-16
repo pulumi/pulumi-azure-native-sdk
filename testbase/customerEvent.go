@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Customer Notification Event resource.
@@ -140,12 +139,6 @@ func (i *CustomerEvent) ToCustomerEventOutputWithContext(ctx context.Context) Cu
 	return pulumi.ToOutputWithContext(ctx, i).(CustomerEventOutput)
 }
 
-func (i *CustomerEvent) ToOutput(ctx context.Context) pulumix.Output[*CustomerEvent] {
-	return pulumix.Output[*CustomerEvent]{
-		OutputState: i.ToCustomerEventOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CustomerEventOutput struct{ *pulumi.OutputState }
 
 func (CustomerEventOutput) ElementType() reflect.Type {
@@ -158,12 +151,6 @@ func (o CustomerEventOutput) ToCustomerEventOutput() CustomerEventOutput {
 
 func (o CustomerEventOutput) ToCustomerEventOutputWithContext(ctx context.Context) CustomerEventOutput {
 	return o
-}
-
-func (o CustomerEventOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomerEvent] {
-	return pulumix.Output[*CustomerEvent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the event subscribed to.

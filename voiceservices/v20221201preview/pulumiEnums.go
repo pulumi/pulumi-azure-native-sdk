@@ -79,12 +79,6 @@ func (o TestLinePurposeOutput) ToTestLinePurposePtrOutputWithContext(ctx context
 	}).(TestLinePurposePtrOutput)
 }
 
-func (o TestLinePurposeOutput) ToOutput(ctx context.Context) pulumix.Output[TestLinePurpose] {
-	return pulumix.Output[TestLinePurpose]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TestLinePurposeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -118,12 +112,6 @@ func (o TestLinePurposePtrOutput) ToTestLinePurposePtrOutput() TestLinePurposePt
 
 func (o TestLinePurposePtrOutput) ToTestLinePurposePtrOutputWithContext(ctx context.Context) TestLinePurposePtrOutput {
 	return o
-}
-
-func (o TestLinePurposePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TestLinePurpose] {
-	return pulumix.Output[*TestLinePurpose]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TestLinePurposePtrOutput) Elem() TestLinePurposeOutput {

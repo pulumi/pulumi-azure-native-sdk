@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve a Remote Rendering Account.
@@ -100,12 +99,6 @@ func (o LookupRemoteRenderingAccountResultOutput) ToLookupRemoteRenderingAccount
 
 func (o LookupRemoteRenderingAccountResultOutput) ToLookupRemoteRenderingAccountResultOutputWithContext(ctx context.Context) LookupRemoteRenderingAccountResultOutput {
 	return o
-}
-
-func (o LookupRemoteRenderingAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRemoteRenderingAccountResult] {
-	return pulumix.Output[LookupRemoteRenderingAccountResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Correspond domain name of certain Spatial Anchors Account

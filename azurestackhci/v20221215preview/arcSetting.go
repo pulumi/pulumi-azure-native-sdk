@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ArcSetting details.
@@ -240,12 +239,6 @@ func (i *ArcSetting) ToArcSettingOutputWithContext(ctx context.Context) ArcSetti
 	return pulumi.ToOutputWithContext(ctx, i).(ArcSettingOutput)
 }
 
-func (i *ArcSetting) ToOutput(ctx context.Context) pulumix.Output[*ArcSetting] {
-	return pulumix.Output[*ArcSetting]{
-		OutputState: i.ToArcSettingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ArcSettingOutput struct{ *pulumi.OutputState }
 
 func (ArcSettingOutput) ElementType() reflect.Type {
@@ -258,12 +251,6 @@ func (o ArcSettingOutput) ToArcSettingOutput() ArcSettingOutput {
 
 func (o ArcSettingOutput) ToArcSettingOutputWithContext(ctx context.Context) ArcSettingOutput {
 	return o
-}
-
-func (o ArcSettingOutput) ToOutput(ctx context.Context) pulumix.Output[*ArcSetting] {
-	return pulumix.Output[*ArcSetting]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Aggregate state of Arc agent across the nodes in this HCI cluster.

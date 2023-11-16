@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // AFDOrigin group comprising of origins is used for load balancing to origins when the content cannot be served from Azure Front Door.
@@ -162,12 +161,6 @@ func (i *AFDOriginGroup) ToAFDOriginGroupOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AFDOriginGroupOutput)
 }
 
-func (i *AFDOriginGroup) ToOutput(ctx context.Context) pulumix.Output[*AFDOriginGroup] {
-	return pulumix.Output[*AFDOriginGroup]{
-		OutputState: i.ToAFDOriginGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AFDOriginGroupOutput struct{ *pulumi.OutputState }
 
 func (AFDOriginGroupOutput) ElementType() reflect.Type {
@@ -180,12 +173,6 @@ func (o AFDOriginGroupOutput) ToAFDOriginGroupOutput() AFDOriginGroupOutput {
 
 func (o AFDOriginGroupOutput) ToAFDOriginGroupOutputWithContext(ctx context.Context) AFDOriginGroupOutput {
 	return o
-}
-
-func (o AFDOriginGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*AFDOriginGroup] {
-	return pulumix.Output[*AFDOriginGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AFDOriginGroupOutput) DeploymentStatus() pulumi.StringOutput {

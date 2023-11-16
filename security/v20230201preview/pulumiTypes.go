@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -33,12 +32,6 @@ func (o RuleResultsPropertiesResponseOutput) ToRuleResultsPropertiesResponseOutp
 
 func (o RuleResultsPropertiesResponseOutput) ToRuleResultsPropertiesResponseOutputWithContext(ctx context.Context) RuleResultsPropertiesResponseOutput {
 	return o
-}
-
-func (o RuleResultsPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RuleResultsPropertiesResponse] {
-	return pulumix.Output[RuleResultsPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Expected results in the baseline.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Get domain name recommendations based on keywords.
@@ -78,12 +77,6 @@ func (o ListDomainRecommendationsResultOutput) ToListDomainRecommendationsResult
 
 func (o ListDomainRecommendationsResultOutput) ToListDomainRecommendationsResultOutputWithContext(ctx context.Context) ListDomainRecommendationsResultOutput {
 	return o
-}
-
-func (o ListDomainRecommendationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListDomainRecommendationsResult] {
-	return pulumix.Output[ListDomainRecommendationsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Link to next page of resources.

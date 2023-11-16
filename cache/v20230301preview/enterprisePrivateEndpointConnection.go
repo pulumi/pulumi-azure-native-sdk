@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Private Endpoint Connection resource.
@@ -161,12 +160,6 @@ func (i *EnterprisePrivateEndpointConnection) ToEnterprisePrivateEndpointConnect
 	return pulumi.ToOutputWithContext(ctx, i).(EnterprisePrivateEndpointConnectionOutput)
 }
 
-func (i *EnterprisePrivateEndpointConnection) ToOutput(ctx context.Context) pulumix.Output[*EnterprisePrivateEndpointConnection] {
-	return pulumix.Output[*EnterprisePrivateEndpointConnection]{
-		OutputState: i.ToEnterprisePrivateEndpointConnectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnterprisePrivateEndpointConnectionOutput struct{ *pulumi.OutputState }
 
 func (EnterprisePrivateEndpointConnectionOutput) ElementType() reflect.Type {
@@ -179,12 +172,6 @@ func (o EnterprisePrivateEndpointConnectionOutput) ToEnterprisePrivateEndpointCo
 
 func (o EnterprisePrivateEndpointConnectionOutput) ToEnterprisePrivateEndpointConnectionOutputWithContext(ctx context.Context) EnterprisePrivateEndpointConnectionOutput {
 	return o
-}
-
-func (o EnterprisePrivateEndpointConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterprisePrivateEndpointConnection] {
-	return pulumix.Output[*EnterprisePrivateEndpointConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Resource information with extended details.
@@ -171,12 +170,6 @@ func (i *ManagedHsm) ToManagedHsmOutputWithContext(ctx context.Context) ManagedH
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedHsmOutput)
 }
 
-func (i *ManagedHsm) ToOutput(ctx context.Context) pulumix.Output[*ManagedHsm] {
-	return pulumix.Output[*ManagedHsm]{
-		OutputState: i.ToManagedHsmOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagedHsmOutput struct{ *pulumi.OutputState }
 
 func (ManagedHsmOutput) ElementType() reflect.Type {
@@ -189,12 +182,6 @@ func (o ManagedHsmOutput) ToManagedHsmOutput() ManagedHsmOutput {
 
 func (o ManagedHsmOutput) ToManagedHsmOutputWithContext(ctx context.Context) ManagedHsmOutput {
 	return o
-}
-
-func (o ManagedHsmOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedHsm] {
-	return pulumix.Output[*ManagedHsm]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Managed service identity (system assigned and/or user assigned identities)

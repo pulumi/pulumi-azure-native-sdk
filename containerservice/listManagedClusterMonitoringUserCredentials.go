@@ -9,13 +9,12 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The list credential result response.
 // Azure REST API version: 2023-04-01.
 //
-// Other available API versions: 2021-05-01, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01.
+// Other available API versions: 2021-05-01, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview.
 func ListManagedClusterMonitoringUserCredentials(ctx *pulumi.Context, args *ListManagedClusterMonitoringUserCredentialsArgs, opts ...pulumi.InvokeOption) (*ListManagedClusterMonitoringUserCredentialsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListManagedClusterMonitoringUserCredentialsResult
@@ -80,12 +79,6 @@ func (o ListManagedClusterMonitoringUserCredentialsResultOutput) ToListManagedCl
 
 func (o ListManagedClusterMonitoringUserCredentialsResultOutput) ToListManagedClusterMonitoringUserCredentialsResultOutputWithContext(ctx context.Context) ListManagedClusterMonitoringUserCredentialsResultOutput {
 	return o
-}
-
-func (o ListManagedClusterMonitoringUserCredentialsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListManagedClusterMonitoringUserCredentialsResult] {
-	return pulumix.Output[ListManagedClusterMonitoringUserCredentialsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Base64-encoded Kubernetes configuration file.

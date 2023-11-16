@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the Update run for a specified update
@@ -116,12 +115,6 @@ func (o LookupUpdateRunResultOutput) ToLookupUpdateRunResultOutput() LookupUpdat
 
 func (o LookupUpdateRunResultOutput) ToLookupUpdateRunResultOutputWithContext(ctx context.Context) LookupUpdateRunResultOutput {
 	return o
-}
-
-func (o LookupUpdateRunResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupUpdateRunResult] {
-	return pulumix.Output[LookupUpdateRunResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // More detailed description of the step.

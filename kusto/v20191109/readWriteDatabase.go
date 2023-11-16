@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Class representing a read write database.
@@ -201,12 +200,6 @@ func (i *ReadWriteDatabase) ToReadWriteDatabaseOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ReadWriteDatabaseOutput)
 }
 
-func (i *ReadWriteDatabase) ToOutput(ctx context.Context) pulumix.Output[*ReadWriteDatabase] {
-	return pulumix.Output[*ReadWriteDatabase]{
-		OutputState: i.ToReadWriteDatabaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReadWriteDatabaseOutput struct{ *pulumi.OutputState }
 
 func (ReadWriteDatabaseOutput) ElementType() reflect.Type {
@@ -219,12 +212,6 @@ func (o ReadWriteDatabaseOutput) ToReadWriteDatabaseOutput() ReadWriteDatabaseOu
 
 func (o ReadWriteDatabaseOutput) ToReadWriteDatabaseOutputWithContext(ctx context.Context) ReadWriteDatabaseOutput {
 	return o
-}
-
-func (o ReadWriteDatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[*ReadWriteDatabase] {
-	return pulumix.Output[*ReadWriteDatabase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time the data should be kept in cache for fast queries in TimeSpan.

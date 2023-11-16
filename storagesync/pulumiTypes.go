@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (o CloudEndpointChangeEnumerationActivityResponseOutput) ToCloudEndpointCha
 
 func (o CloudEndpointChangeEnumerationActivityResponseOutput) ToCloudEndpointChangeEnumerationActivityResponseOutputWithContext(ctx context.Context) CloudEndpointChangeEnumerationActivityResponseOutput {
 	return o
-}
-
-func (o CloudEndpointChangeEnumerationActivityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudEndpointChangeEnumerationActivityResponse] {
-	return pulumix.Output[CloudEndpointChangeEnumerationActivityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Progress percentage for processing deletes. This is done separately from the rest of the enumeration run
@@ -155,12 +148,6 @@ func (o CloudEndpointChangeEnumerationStatusResponseOutput) ToCloudEndpointChang
 	return o
 }
 
-func (o CloudEndpointChangeEnumerationStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudEndpointChangeEnumerationStatusResponse] {
-	return pulumix.Output[CloudEndpointChangeEnumerationStatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Change enumeration activity
 func (o CloudEndpointChangeEnumerationStatusResponseOutput) Activity() CloudEndpointChangeEnumerationActivityResponseOutput {
 	return o.ApplyT(func(v CloudEndpointChangeEnumerationStatusResponse) CloudEndpointChangeEnumerationActivityResponse {
@@ -209,12 +196,6 @@ func (o CloudEndpointLastChangeEnumerationStatusResponseOutput) ToCloudEndpointL
 
 func (o CloudEndpointLastChangeEnumerationStatusResponseOutput) ToCloudEndpointLastChangeEnumerationStatusResponseOutputWithContext(ctx context.Context) CloudEndpointLastChangeEnumerationStatusResponseOutput {
 	return o
-}
-
-func (o CloudEndpointLastChangeEnumerationStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudEndpointLastChangeEnumerationStatusResponse] {
-	return pulumix.Output[CloudEndpointLastChangeEnumerationStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when change enumeration completed
@@ -274,12 +255,6 @@ func (o CloudTieringCachePerformanceResponseOutput) ToCloudTieringCachePerforman
 	return o
 }
 
-func (o CloudTieringCachePerformanceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudTieringCachePerformanceResponse] {
-	return pulumix.Output[CloudTieringCachePerformanceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Count of bytes that were served from the local server
 func (o CloudTieringCachePerformanceResponseOutput) CacheHitBytes() pulumi.Float64Output {
 	return o.ApplyT(func(v CloudTieringCachePerformanceResponse) float64 { return v.CacheHitBytes }).(pulumi.Float64Output)
@@ -323,12 +298,6 @@ func (o CloudTieringDatePolicyStatusResponseOutput) ToCloudTieringDatePolicyStat
 	return o
 }
 
-func (o CloudTieringDatePolicyStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudTieringDatePolicyStatusResponse] {
-	return pulumix.Output[CloudTieringDatePolicyStatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Last updated timestamp
 func (o CloudTieringDatePolicyStatusResponseOutput) LastUpdatedTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudTieringDatePolicyStatusResponse) string { return v.LastUpdatedTimestamp }).(pulumi.StringOutput)
@@ -362,12 +331,6 @@ func (o CloudTieringFilesNotTieringResponseOutput) ToCloudTieringFilesNotTiering
 
 func (o CloudTieringFilesNotTieringResponseOutput) ToCloudTieringFilesNotTieringResponseOutputWithContext(ctx context.Context) CloudTieringFilesNotTieringResponseOutput {
 	return o
-}
-
-func (o CloudTieringFilesNotTieringResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudTieringFilesNotTieringResponse] {
-	return pulumix.Output[CloudTieringFilesNotTieringResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Array of tiering errors
@@ -406,12 +369,6 @@ func (o CloudTieringLowDiskModeResponseOutput) ToCloudTieringLowDiskModeResponse
 
 func (o CloudTieringLowDiskModeResponseOutput) ToCloudTieringLowDiskModeResponseOutputWithContext(ctx context.Context) CloudTieringLowDiskModeResponseOutput {
 	return o
-}
-
-func (o CloudTieringLowDiskModeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudTieringLowDiskModeResponse] {
-	return pulumix.Output[CloudTieringLowDiskModeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Last updated timestamp
@@ -453,12 +410,6 @@ func (o CloudTieringSpaceSavingsResponseOutput) ToCloudTieringSpaceSavingsRespon
 
 func (o CloudTieringSpaceSavingsResponseOutput) ToCloudTieringSpaceSavingsResponseOutputWithContext(ctx context.Context) CloudTieringSpaceSavingsResponseOutput {
 	return o
-}
-
-func (o CloudTieringSpaceSavingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudTieringSpaceSavingsResponse] {
-	return pulumix.Output[CloudTieringSpaceSavingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cached content size on the server
@@ -516,12 +467,6 @@ func (o CloudTieringVolumeFreeSpacePolicyStatusResponseOutput) ToCloudTieringVol
 	return o
 }
 
-func (o CloudTieringVolumeFreeSpacePolicyStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudTieringVolumeFreeSpacePolicyStatusResponse] {
-	return pulumix.Output[CloudTieringVolumeFreeSpacePolicyStatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Current volume free space percentage.
 func (o CloudTieringVolumeFreeSpacePolicyStatusResponseOutput) CurrentVolumeFreeSpacePercent() pulumi.IntOutput {
 	return o.ApplyT(func(v CloudTieringVolumeFreeSpacePolicyStatusResponse) int { return v.CurrentVolumeFreeSpacePercent }).(pulumi.IntOutput)
@@ -560,12 +505,6 @@ func (o FilesNotTieringErrorResponseOutput) ToFilesNotTieringErrorResponseOutput
 	return o
 }
 
-func (o FilesNotTieringErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FilesNotTieringErrorResponse] {
-	return pulumix.Output[FilesNotTieringErrorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Error code (HResult)
 func (o FilesNotTieringErrorResponseOutput) ErrorCode() pulumi.IntOutput {
 	return o.ApplyT(func(v FilesNotTieringErrorResponse) int { return v.ErrorCode }).(pulumi.IntOutput)
@@ -588,12 +527,6 @@ func (o FilesNotTieringErrorResponseArrayOutput) ToFilesNotTieringErrorResponseA
 
 func (o FilesNotTieringErrorResponseArrayOutput) ToFilesNotTieringErrorResponseArrayOutputWithContext(ctx context.Context) FilesNotTieringErrorResponseArrayOutput {
 	return o
-}
-
-func (o FilesNotTieringErrorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FilesNotTieringErrorResponse] {
-	return pulumix.Output[[]FilesNotTieringErrorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FilesNotTieringErrorResponseArrayOutput) Index(i pulumi.IntInput) FilesNotTieringErrorResponseOutput {
@@ -633,12 +566,6 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 
 func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseOutput {
 	return o
-}
-
-func (o PrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionResponse] {
-	return pulumix.Output[PrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -692,12 +619,6 @@ func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectio
 	return o
 }
 
-func (o PrivateEndpointConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionResponse] {
-	return pulumix.Output[[]PrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
@@ -725,12 +646,6 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
-func (o PrivateEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointResponse] {
-	return pulumix.Output[PrivateEndpointResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ARM identifier for Private Endpoint
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -748,12 +663,6 @@ func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() P
 
 func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
 	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointResponse] {
-	return pulumix.Output[*PrivateEndpointResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
@@ -819,12 +728,6 @@ func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionSta
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
 }
 
-func (i PrivateLinkServiceConnectionStateArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
-	return pulumix.Output[PrivateLinkServiceConnectionState]{
-		OutputState: i.ToPrivateLinkServiceConnectionStateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A collection of information about the state of the connection between service consumer and provider.
 type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
@@ -838,12 +741,6 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 
 func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
-	return pulumix.Output[PrivateLinkServiceConnectionState]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -886,12 +783,6 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 	return o
 }
 
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateResponse] {
-	return pulumix.Output[PrivateLinkServiceConnectionStateResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A message indicating if changes on the service provider require any updates on the consumer.
 func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
@@ -932,12 +823,6 @@ func (o ServerEndpointBackgroundDataDownloadActivityResponseOutput) ToServerEndp
 
 func (o ServerEndpointBackgroundDataDownloadActivityResponseOutput) ToServerEndpointBackgroundDataDownloadActivityResponseOutputWithContext(ctx context.Context) ServerEndpointBackgroundDataDownloadActivityResponseOutput {
 	return o
-}
-
-func (o ServerEndpointBackgroundDataDownloadActivityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServerEndpointBackgroundDataDownloadActivityResponse] {
-	return pulumix.Output[ServerEndpointBackgroundDataDownloadActivityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Running count of bytes downloaded
@@ -999,12 +884,6 @@ func (o ServerEndpointCloudTieringStatusResponseOutput) ToServerEndpointCloudTie
 
 func (o ServerEndpointCloudTieringStatusResponseOutput) ToServerEndpointCloudTieringStatusResponseOutputWithContext(ctx context.Context) ServerEndpointCloudTieringStatusResponseOutput {
 	return o
-}
-
-func (o ServerEndpointCloudTieringStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServerEndpointCloudTieringStatusResponse] {
-	return pulumix.Output[ServerEndpointCloudTieringStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Information regarding how well the local cache on the server is performing.
@@ -1097,12 +976,6 @@ func (o ServerEndpointFilesNotSyncingErrorResponseOutput) ToServerEndpointFilesN
 	return o
 }
 
-func (o ServerEndpointFilesNotSyncingErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServerEndpointFilesNotSyncingErrorResponse] {
-	return pulumix.Output[ServerEndpointFilesNotSyncingErrorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Error code (HResult)
 func (o ServerEndpointFilesNotSyncingErrorResponseOutput) ErrorCode() pulumi.IntOutput {
 	return o.ApplyT(func(v ServerEndpointFilesNotSyncingErrorResponse) int { return v.ErrorCode }).(pulumi.IntOutput)
@@ -1130,12 +1003,6 @@ func (o ServerEndpointFilesNotSyncingErrorResponseArrayOutput) ToServerEndpointF
 
 func (o ServerEndpointFilesNotSyncingErrorResponseArrayOutput) ToServerEndpointFilesNotSyncingErrorResponseArrayOutputWithContext(ctx context.Context) ServerEndpointFilesNotSyncingErrorResponseArrayOutput {
 	return o
-}
-
-func (o ServerEndpointFilesNotSyncingErrorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServerEndpointFilesNotSyncingErrorResponse] {
-	return pulumix.Output[[]ServerEndpointFilesNotSyncingErrorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerEndpointFilesNotSyncingErrorResponseArrayOutput) Index(i pulumi.IntInput) ServerEndpointFilesNotSyncingErrorResponseOutput {
@@ -1167,12 +1034,6 @@ func (o ServerEndpointRecallErrorResponseOutput) ToServerEndpointRecallErrorResp
 	return o
 }
 
-func (o ServerEndpointRecallErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServerEndpointRecallErrorResponse] {
-	return pulumix.Output[ServerEndpointRecallErrorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Count of occurences of the error
 func (o ServerEndpointRecallErrorResponseOutput) Count() pulumi.Float64Output {
 	return o.ApplyT(func(v ServerEndpointRecallErrorResponse) float64 { return v.Count }).(pulumi.Float64Output)
@@ -1195,12 +1056,6 @@ func (o ServerEndpointRecallErrorResponseArrayOutput) ToServerEndpointRecallErro
 
 func (o ServerEndpointRecallErrorResponseArrayOutput) ToServerEndpointRecallErrorResponseArrayOutputWithContext(ctx context.Context) ServerEndpointRecallErrorResponseArrayOutput {
 	return o
-}
-
-func (o ServerEndpointRecallErrorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServerEndpointRecallErrorResponse] {
-	return pulumix.Output[[]ServerEndpointRecallErrorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerEndpointRecallErrorResponseArrayOutput) Index(i pulumi.IntInput) ServerEndpointRecallErrorResponseOutput {
@@ -1232,12 +1087,6 @@ func (o ServerEndpointRecallStatusResponseOutput) ToServerEndpointRecallStatusRe
 
 func (o ServerEndpointRecallStatusResponseOutput) ToServerEndpointRecallStatusResponseOutputWithContext(ctx context.Context) ServerEndpointRecallStatusResponseOutput {
 	return o
-}
-
-func (o ServerEndpointRecallStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServerEndpointRecallStatusResponse] {
-	return pulumix.Output[ServerEndpointRecallStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Last updated timestamp
@@ -1288,12 +1137,6 @@ func (o ServerEndpointSyncActivityStatusResponseOutput) ToServerEndpointSyncActi
 
 func (o ServerEndpointSyncActivityStatusResponseOutput) ToServerEndpointSyncActivityStatusResponseOutputWithContext(ctx context.Context) ServerEndpointSyncActivityStatusResponseOutput {
 	return o
-}
-
-func (o ServerEndpointSyncActivityStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServerEndpointSyncActivityStatusResponse] {
-	return pulumix.Output[ServerEndpointSyncActivityStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Applied bytes
@@ -1369,12 +1212,6 @@ func (o ServerEndpointSyncSessionStatusResponseOutput) ToServerEndpointSyncSessi
 
 func (o ServerEndpointSyncSessionStatusResponseOutput) ToServerEndpointSyncSessionStatusResponseOutputWithContext(ctx context.Context) ServerEndpointSyncSessionStatusResponseOutput {
 	return o
-}
-
-func (o ServerEndpointSyncSessionStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServerEndpointSyncSessionStatusResponse] {
-	return pulumix.Output[ServerEndpointSyncSessionStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Array of per-item errors coming from the last sync session.
@@ -1460,12 +1297,6 @@ func (o ServerEndpointSyncStatusResponseOutput) ToServerEndpointSyncStatusRespon
 
 func (o ServerEndpointSyncStatusResponseOutput) ToServerEndpointSyncStatusResponseOutputWithContext(ctx context.Context) ServerEndpointSyncStatusResponseOutput {
 	return o
-}
-
-func (o ServerEndpointSyncStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServerEndpointSyncStatusResponse] {
-	return pulumix.Output[ServerEndpointSyncStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Background data download activity
@@ -1567,12 +1398,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

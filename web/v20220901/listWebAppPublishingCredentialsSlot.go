@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Gets the Git/FTP publishing credentials of an app.
@@ -93,12 +92,6 @@ func (o ListWebAppPublishingCredentialsSlotResultOutput) ToListWebAppPublishingC
 
 func (o ListWebAppPublishingCredentialsSlotResultOutput) ToListWebAppPublishingCredentialsSlotResultOutputWithContext(ctx context.Context) ListWebAppPublishingCredentialsSlotResultOutput {
 	return o
-}
-
-func (o ListWebAppPublishingCredentialsSlotResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWebAppPublishingCredentialsSlotResult] {
-	return pulumix.Output[ListWebAppPublishingCredentialsSlotResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Id.

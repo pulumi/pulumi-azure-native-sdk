@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve the details of the monitored resource.
@@ -85,12 +84,6 @@ func (o LookupMonitoredResourceResultOutput) ToLookupMonitoredResourceResultOutp
 
 func (o LookupMonitoredResourceResultOutput) ToLookupMonitoredResourceResultOutputWithContext(ctx context.Context) LookupMonitoredResourceResultOutput {
 	return o
-}
-
-func (o LookupMonitoredResourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMonitoredResourceResult] {
-	return pulumix.Output[LookupMonitoredResourceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

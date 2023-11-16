@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i GatewayDetailsArgs) ToGatewayDetailsOutput() GatewayDetailsOutput {
 
 func (i GatewayDetailsArgs) ToGatewayDetailsOutputWithContext(ctx context.Context) GatewayDetailsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayDetailsOutput)
-}
-
-func (i GatewayDetailsArgs) ToOutput(ctx context.Context) pulumix.Output[GatewayDetails] {
-	return pulumix.Output[GatewayDetails]{
-		OutputState: i.ToGatewayDetailsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i GatewayDetailsArgs) ToGatewayDetailsPtrOutput() GatewayDetailsPtrOutput {
@@ -96,12 +89,6 @@ func (i *gatewayDetailsPtrType) ToGatewayDetailsPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayDetailsPtrOutput)
 }
 
-func (i *gatewayDetailsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GatewayDetails] {
-	return pulumix.Output[*GatewayDetails]{
-		OutputState: i.ToGatewayDetailsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The gateway details.
 type GatewayDetailsOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o GatewayDetailsOutput) ToGatewayDetailsPtrOutputWithContext(ctx context.C
 	}).(GatewayDetailsPtrOutput)
 }
 
-func (o GatewayDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[GatewayDetails] {
-	return pulumix.Output[GatewayDetails]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gateway resource to be associated with the server.
 func (o GatewayDetailsOutput) GatewayResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayDetails) *string { return v.GatewayResourceId }).(pulumi.StringPtrOutput)
@@ -150,12 +131,6 @@ func (o GatewayDetailsPtrOutput) ToGatewayDetailsPtrOutput() GatewayDetailsPtrOu
 
 func (o GatewayDetailsPtrOutput) ToGatewayDetailsPtrOutputWithContext(ctx context.Context) GatewayDetailsPtrOutput {
 	return o
-}
-
-func (o GatewayDetailsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayDetails] {
-	return pulumix.Output[*GatewayDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GatewayDetailsPtrOutput) Elem() GatewayDetailsOutput {
@@ -203,12 +178,6 @@ func (o GatewayDetailsResponseOutput) ToGatewayDetailsResponseOutputWithContext(
 	return o
 }
 
-func (o GatewayDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GatewayDetailsResponse] {
-	return pulumix.Output[GatewayDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Uri of the DMTS cluster.
 func (o GatewayDetailsResponseOutput) DmtsClusterUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GatewayDetailsResponse) string { return v.DmtsClusterUri }).(pulumi.StringOutput)
@@ -236,12 +205,6 @@ func (o GatewayDetailsResponsePtrOutput) ToGatewayDetailsResponsePtrOutput() Gat
 
 func (o GatewayDetailsResponsePtrOutput) ToGatewayDetailsResponsePtrOutputWithContext(ctx context.Context) GatewayDetailsResponsePtrOutput {
 	return o
-}
-
-func (o GatewayDetailsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GatewayDetailsResponse] {
-	return pulumix.Output[*GatewayDetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GatewayDetailsResponsePtrOutput) Elem() GatewayDetailsResponseOutput {
@@ -327,12 +290,6 @@ func (i IPv4FirewallRuleArgs) ToIPv4FirewallRuleOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(IPv4FirewallRuleOutput)
 }
 
-func (i IPv4FirewallRuleArgs) ToOutput(ctx context.Context) pulumix.Output[IPv4FirewallRule] {
-	return pulumix.Output[IPv4FirewallRule]{
-		OutputState: i.ToIPv4FirewallRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IPv4FirewallRuleArrayInput is an input type that accepts IPv4FirewallRuleArray and IPv4FirewallRuleArrayOutput values.
 // You can construct a concrete instance of `IPv4FirewallRuleArrayInput` via:
 //
@@ -358,12 +315,6 @@ func (i IPv4FirewallRuleArray) ToIPv4FirewallRuleArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(IPv4FirewallRuleArrayOutput)
 }
 
-func (i IPv4FirewallRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]IPv4FirewallRule] {
-	return pulumix.Output[[]IPv4FirewallRule]{
-		OutputState: i.ToIPv4FirewallRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The detail of firewall rule.
 type IPv4FirewallRuleOutput struct{ *pulumi.OutputState }
 
@@ -377,12 +328,6 @@ func (o IPv4FirewallRuleOutput) ToIPv4FirewallRuleOutput() IPv4FirewallRuleOutpu
 
 func (o IPv4FirewallRuleOutput) ToIPv4FirewallRuleOutputWithContext(ctx context.Context) IPv4FirewallRuleOutput {
 	return o
-}
-
-func (o IPv4FirewallRuleOutput) ToOutput(ctx context.Context) pulumix.Output[IPv4FirewallRule] {
-	return pulumix.Output[IPv4FirewallRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The rule name.
@@ -412,12 +357,6 @@ func (o IPv4FirewallRuleArrayOutput) ToIPv4FirewallRuleArrayOutput() IPv4Firewal
 
 func (o IPv4FirewallRuleArrayOutput) ToIPv4FirewallRuleArrayOutputWithContext(ctx context.Context) IPv4FirewallRuleArrayOutput {
 	return o
-}
-
-func (o IPv4FirewallRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IPv4FirewallRule] {
-	return pulumix.Output[[]IPv4FirewallRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IPv4FirewallRuleArrayOutput) Index(i pulumi.IntInput) IPv4FirewallRuleOutput {
@@ -451,12 +390,6 @@ func (o IPv4FirewallRuleResponseOutput) ToIPv4FirewallRuleResponseOutputWithCont
 	return o
 }
 
-func (o IPv4FirewallRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IPv4FirewallRuleResponse] {
-	return pulumix.Output[IPv4FirewallRuleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The rule name.
 func (o IPv4FirewallRuleResponseOutput) FirewallRuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPv4FirewallRuleResponse) *string { return v.FirewallRuleName }).(pulumi.StringPtrOutput)
@@ -484,12 +417,6 @@ func (o IPv4FirewallRuleResponseArrayOutput) ToIPv4FirewallRuleResponseArrayOutp
 
 func (o IPv4FirewallRuleResponseArrayOutput) ToIPv4FirewallRuleResponseArrayOutputWithContext(ctx context.Context) IPv4FirewallRuleResponseArrayOutput {
 	return o
-}
-
-func (o IPv4FirewallRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IPv4FirewallRuleResponse] {
-	return pulumix.Output[[]IPv4FirewallRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IPv4FirewallRuleResponseArrayOutput) Index(i pulumi.IntInput) IPv4FirewallRuleResponseOutput {
@@ -537,12 +464,6 @@ func (i IPv4FirewallSettingsArgs) ToIPv4FirewallSettingsOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(IPv4FirewallSettingsOutput)
 }
 
-func (i IPv4FirewallSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[IPv4FirewallSettings] {
-	return pulumix.Output[IPv4FirewallSettings]{
-		OutputState: i.ToIPv4FirewallSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IPv4FirewallSettingsArgs) ToIPv4FirewallSettingsPtrOutput() IPv4FirewallSettingsPtrOutput {
 	return i.ToIPv4FirewallSettingsPtrOutputWithContext(context.Background())
 }
@@ -584,12 +505,6 @@ func (i *ipv4FirewallSettingsPtrType) ToIPv4FirewallSettingsPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(IPv4FirewallSettingsPtrOutput)
 }
 
-func (i *ipv4FirewallSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*IPv4FirewallSettings] {
-	return pulumix.Output[*IPv4FirewallSettings]{
-		OutputState: i.ToIPv4FirewallSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An array of firewall rules.
 type IPv4FirewallSettingsOutput struct{ *pulumi.OutputState }
 
@@ -615,12 +530,6 @@ func (o IPv4FirewallSettingsOutput) ToIPv4FirewallSettingsPtrOutputWithContext(c
 	}).(IPv4FirewallSettingsPtrOutput)
 }
 
-func (o IPv4FirewallSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[IPv4FirewallSettings] {
-	return pulumix.Output[IPv4FirewallSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The indicator of enabling PBI service.
 func (o IPv4FirewallSettingsOutput) EnablePowerBIService() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v IPv4FirewallSettings) *bool { return v.EnablePowerBIService }).(pulumi.BoolPtrOutput)
@@ -643,12 +552,6 @@ func (o IPv4FirewallSettingsPtrOutput) ToIPv4FirewallSettingsPtrOutput() IPv4Fir
 
 func (o IPv4FirewallSettingsPtrOutput) ToIPv4FirewallSettingsPtrOutputWithContext(ctx context.Context) IPv4FirewallSettingsPtrOutput {
 	return o
-}
-
-func (o IPv4FirewallSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IPv4FirewallSettings] {
-	return pulumix.Output[*IPv4FirewallSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IPv4FirewallSettingsPtrOutput) Elem() IPv4FirewallSettingsOutput {
@@ -704,12 +607,6 @@ func (o IPv4FirewallSettingsResponseOutput) ToIPv4FirewallSettingsResponseOutput
 	return o
 }
 
-func (o IPv4FirewallSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IPv4FirewallSettingsResponse] {
-	return pulumix.Output[IPv4FirewallSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The indicator of enabling PBI service.
 func (o IPv4FirewallSettingsResponseOutput) EnablePowerBIService() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v IPv4FirewallSettingsResponse) *bool { return v.EnablePowerBIService }).(pulumi.BoolPtrOutput)
@@ -732,12 +629,6 @@ func (o IPv4FirewallSettingsResponsePtrOutput) ToIPv4FirewallSettingsResponsePtr
 
 func (o IPv4FirewallSettingsResponsePtrOutput) ToIPv4FirewallSettingsResponsePtrOutputWithContext(ctx context.Context) IPv4FirewallSettingsResponsePtrOutput {
 	return o
-}
-
-func (o IPv4FirewallSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IPv4FirewallSettingsResponse] {
-	return pulumix.Output[*IPv4FirewallSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IPv4FirewallSettingsResponsePtrOutput) Elem() IPv4FirewallSettingsResponseOutput {
@@ -837,12 +728,6 @@ func (i ResourceSkuArgs) ToResourceSkuOutputWithContext(ctx context.Context) Res
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSkuOutput)
 }
 
-func (i ResourceSkuArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceSku] {
-	return pulumix.Output[ResourceSku]{
-		OutputState: i.ToResourceSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the SKU name and Azure pricing tier for Analysis Services resource.
 type ResourceSkuOutput struct{ *pulumi.OutputState }
 
@@ -856,12 +741,6 @@ func (o ResourceSkuOutput) ToResourceSkuOutput() ResourceSkuOutput {
 
 func (o ResourceSkuOutput) ToResourceSkuOutputWithContext(ctx context.Context) ResourceSkuOutput {
 	return o
-}
-
-func (o ResourceSkuOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSku] {
-	return pulumix.Output[ResourceSku]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of instances in the read only query pool.
@@ -917,12 +796,6 @@ func (o ResourceSkuResponseOutput) ToResourceSkuResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o ResourceSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSkuResponse] {
-	return pulumix.Output[ResourceSkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of instances in the read only query pool.
 func (o ResourceSkuResponseOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceSkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
@@ -973,12 +846,6 @@ func (i ServerAdministratorsArgs) ToServerAdministratorsOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ServerAdministratorsOutput)
 }
 
-func (i ServerAdministratorsArgs) ToOutput(ctx context.Context) pulumix.Output[ServerAdministrators] {
-	return pulumix.Output[ServerAdministrators]{
-		OutputState: i.ToServerAdministratorsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServerAdministratorsArgs) ToServerAdministratorsPtrOutput() ServerAdministratorsPtrOutput {
 	return i.ToServerAdministratorsPtrOutputWithContext(context.Background())
 }
@@ -1020,12 +887,6 @@ func (i *serverAdministratorsPtrType) ToServerAdministratorsPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ServerAdministratorsPtrOutput)
 }
 
-func (i *serverAdministratorsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServerAdministrators] {
-	return pulumix.Output[*ServerAdministrators]{
-		OutputState: i.ToServerAdministratorsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An array of administrator user identities.
 type ServerAdministratorsOutput struct{ *pulumi.OutputState }
 
@@ -1051,12 +912,6 @@ func (o ServerAdministratorsOutput) ToServerAdministratorsPtrOutputWithContext(c
 	}).(ServerAdministratorsPtrOutput)
 }
 
-func (o ServerAdministratorsOutput) ToOutput(ctx context.Context) pulumix.Output[ServerAdministrators] {
-	return pulumix.Output[ServerAdministrators]{
-		OutputState: o.OutputState,
-	}
-}
-
 // An array of administrator user identities.
 func (o ServerAdministratorsOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServerAdministrators) []string { return v.Members }).(pulumi.StringArrayOutput)
@@ -1074,12 +929,6 @@ func (o ServerAdministratorsPtrOutput) ToServerAdministratorsPtrOutput() ServerA
 
 func (o ServerAdministratorsPtrOutput) ToServerAdministratorsPtrOutputWithContext(ctx context.Context) ServerAdministratorsPtrOutput {
 	return o
-}
-
-func (o ServerAdministratorsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerAdministrators] {
-	return pulumix.Output[*ServerAdministrators]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerAdministratorsPtrOutput) Elem() ServerAdministratorsOutput {
@@ -1123,12 +972,6 @@ func (o ServerAdministratorsResponseOutput) ToServerAdministratorsResponseOutput
 	return o
 }
 
-func (o ServerAdministratorsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServerAdministratorsResponse] {
-	return pulumix.Output[ServerAdministratorsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // An array of administrator user identities.
 func (o ServerAdministratorsResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServerAdministratorsResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
@@ -1146,12 +989,6 @@ func (o ServerAdministratorsResponsePtrOutput) ToServerAdministratorsResponsePtr
 
 func (o ServerAdministratorsResponsePtrOutput) ToServerAdministratorsResponsePtrOutputWithContext(ctx context.Context) ServerAdministratorsResponsePtrOutput {
 	return o
-}
-
-func (o ServerAdministratorsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerAdministratorsResponse] {
-	return pulumix.Output[*ServerAdministratorsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerAdministratorsResponsePtrOutput) Elem() ServerAdministratorsResponseOutput {

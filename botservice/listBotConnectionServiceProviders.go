@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists the available Service Providers for creating Connection Settings
@@ -70,12 +69,6 @@ func (o ListBotConnectionServiceProvidersResultOutput) ToListBotConnectionServic
 
 func (o ListBotConnectionServiceProvidersResultOutput) ToListBotConnectionServiceProvidersResultOutputWithContext(ctx context.Context) ListBotConnectionServiceProvidersResultOutput {
 	return o
-}
-
-func (o ListBotConnectionServiceProvidersResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListBotConnectionServiceProvidersResult] {
-	return pulumix.Output[ListBotConnectionServiceProvidersResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The link used to get the next page of bot service providers.

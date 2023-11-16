@@ -89,12 +89,6 @@ func (o OperatingSystemTypeOutput) ToOperatingSystemTypePtrOutputWithContext(ctx
 	}).(OperatingSystemTypePtrOutput)
 }
 
-func (o OperatingSystemTypeOutput) ToOutput(ctx context.Context) pulumix.Output[OperatingSystemType] {
-	return pulumix.Output[OperatingSystemType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OperatingSystemTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -128,12 +122,6 @@ func (o OperatingSystemTypePtrOutput) ToOperatingSystemTypePtrOutput() Operating
 
 func (o OperatingSystemTypePtrOutput) ToOperatingSystemTypePtrOutputWithContext(ctx context.Context) OperatingSystemTypePtrOutput {
 	return o
-}
-
-func (o OperatingSystemTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemType] {
-	return pulumix.Output[*OperatingSystemType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OperatingSystemTypePtrOutput) Elem() OperatingSystemTypeOutput {
@@ -298,12 +286,6 @@ func (o TagOperatorsOutput) ToTagOperatorsPtrOutputWithContext(ctx context.Conte
 	}).(TagOperatorsPtrOutput)
 }
 
-func (o TagOperatorsOutput) ToOutput(ctx context.Context) pulumix.Output[TagOperators] {
-	return pulumix.Output[TagOperators]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TagOperatorsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -337,12 +319,6 @@ func (o TagOperatorsPtrOutput) ToTagOperatorsPtrOutput() TagOperatorsPtrOutput {
 
 func (o TagOperatorsPtrOutput) ToTagOperatorsPtrOutputWithContext(ctx context.Context) TagOperatorsPtrOutput {
 	return o
-}
-
-func (o TagOperatorsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TagOperators] {
-	return pulumix.Output[*TagOperators]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TagOperatorsPtrOutput) Elem() TagOperatorsOutput {

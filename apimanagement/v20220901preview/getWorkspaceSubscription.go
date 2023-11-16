@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified Subscription entity.
@@ -111,12 +110,6 @@ func (o LookupWorkspaceSubscriptionResultOutput) ToLookupWorkspaceSubscriptionRe
 
 func (o LookupWorkspaceSubscriptionResultOutput) ToLookupWorkspaceSubscriptionResultOutputWithContext(ctx context.Context) LookupWorkspaceSubscriptionResultOutput {
 	return o
-}
-
-func (o LookupWorkspaceSubscriptionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkspaceSubscriptionResult] {
-	return pulumix.Output[LookupWorkspaceSubscriptionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Determines whether tracing is enabled

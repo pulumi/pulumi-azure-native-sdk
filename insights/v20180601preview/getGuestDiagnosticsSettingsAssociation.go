@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets guest diagnostics association settings.
@@ -83,12 +82,6 @@ func (o LookupGuestDiagnosticsSettingsAssociationResultOutput) ToLookupGuestDiag
 
 func (o LookupGuestDiagnosticsSettingsAssociationResultOutput) ToLookupGuestDiagnosticsSettingsAssociationResultOutputWithContext(ctx context.Context) LookupGuestDiagnosticsSettingsAssociationResultOutput {
 	return o
-}
-
-func (o LookupGuestDiagnosticsSettingsAssociationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGuestDiagnosticsSettingsAssociationResult] {
-	return pulumix.Output[LookupGuestDiagnosticsSettingsAssociationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The guest diagnostic settings name.

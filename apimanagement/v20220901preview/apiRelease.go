@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ApiRelease details.
@@ -180,12 +179,6 @@ func (i *ApiRelease) ToApiReleaseOutputWithContext(ctx context.Context) ApiRelea
 	return pulumi.ToOutputWithContext(ctx, i).(ApiReleaseOutput)
 }
 
-func (i *ApiRelease) ToOutput(ctx context.Context) pulumix.Output[*ApiRelease] {
-	return pulumix.Output[*ApiRelease]{
-		OutputState: i.ToApiReleaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiReleaseOutput struct{ *pulumi.OutputState }
 
 func (ApiReleaseOutput) ElementType() reflect.Type {
@@ -198,12 +191,6 @@ func (o ApiReleaseOutput) ToApiReleaseOutput() ApiReleaseOutput {
 
 func (o ApiReleaseOutput) ToApiReleaseOutputWithContext(ctx context.Context) ApiReleaseOutput {
 	return o
-}
-
-func (o ApiReleaseOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiRelease] {
-	return pulumix.Output[*ApiRelease]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identifier of the API the release belongs to.

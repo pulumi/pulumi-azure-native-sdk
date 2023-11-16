@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists the admin credentials of a provisioned cluster instance used only in direct mode.
@@ -77,12 +76,6 @@ func (o ListprovisionedClusterInstanceAdminKubeconfigResultOutput) ToListprovisi
 
 func (o ListprovisionedClusterInstanceAdminKubeconfigResultOutput) ToListprovisionedClusterInstanceAdminKubeconfigResultOutputWithContext(ctx context.Context) ListprovisionedClusterInstanceAdminKubeconfigResultOutput {
 	return o
-}
-
-func (o ListprovisionedClusterInstanceAdminKubeconfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListprovisionedClusterInstanceAdminKubeconfigResult] {
-	return pulumix.Output[ListprovisionedClusterInstanceAdminKubeconfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ListprovisionedClusterInstanceAdminKubeconfigResultOutput) Error() ListCredentialResponseResponseErrorPtrOutput {

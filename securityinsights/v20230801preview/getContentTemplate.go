@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a template byt its identifier.
@@ -135,12 +134,6 @@ func (o LookupContentTemplateResultOutput) ToLookupContentTemplateResultOutput()
 
 func (o LookupContentTemplateResultOutput) ToLookupContentTemplateResultOutputWithContext(ctx context.Context) LookupContentTemplateResultOutput {
 	return o
-}
-
-func (o LookupContentTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContentTemplateResult] {
-	return pulumix.Output[LookupContentTemplateResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creator of the content item.

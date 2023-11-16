@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a ScalingPlanPooledSchedule definition.
@@ -238,12 +237,6 @@ func (i *ScalingPlanPooledSchedule) ToScalingPlanPooledScheduleOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingPlanPooledScheduleOutput)
 }
 
-func (i *ScalingPlanPooledSchedule) ToOutput(ctx context.Context) pulumix.Output[*ScalingPlanPooledSchedule] {
-	return pulumix.Output[*ScalingPlanPooledSchedule]{
-		OutputState: i.ToScalingPlanPooledScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScalingPlanPooledScheduleOutput struct{ *pulumi.OutputState }
 
 func (ScalingPlanPooledScheduleOutput) ElementType() reflect.Type {
@@ -256,12 +249,6 @@ func (o ScalingPlanPooledScheduleOutput) ToScalingPlanPooledScheduleOutput() Sca
 
 func (o ScalingPlanPooledScheduleOutput) ToScalingPlanPooledScheduleOutputWithContext(ctx context.Context) ScalingPlanPooledScheduleOutput {
 	return o
-}
-
-func (o ScalingPlanPooledScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[*ScalingPlanPooledSchedule] {
-	return pulumix.Output[*ScalingPlanPooledSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Set of days of the week on which this schedule is active.

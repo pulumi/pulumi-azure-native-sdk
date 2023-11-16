@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A budget resource.
@@ -338,12 +337,6 @@ func (i *Budget) ToBudgetOutputWithContext(ctx context.Context) BudgetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetOutput)
 }
 
-func (i *Budget) ToOutput(ctx context.Context) pulumix.Output[*Budget] {
-	return pulumix.Output[*Budget]{
-		OutputState: i.ToBudgetOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BudgetOutput struct{ *pulumi.OutputState }
 
 func (BudgetOutput) ElementType() reflect.Type {
@@ -356,12 +349,6 @@ func (o BudgetOutput) ToBudgetOutput() BudgetOutput {
 
 func (o BudgetOutput) ToBudgetOutputWithContext(ctx context.Context) BudgetOutput {
 	return o
-}
-
-func (o BudgetOutput) ToOutput(ctx context.Context) pulumix.Output[*Budget] {
-	return pulumix.Output[*Budget]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The total amount of cost to track with the budget.

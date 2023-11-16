@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves details of this L3 Isolation Domain.
@@ -118,12 +117,6 @@ func (o LookupL3IsolationDomainResultOutput) ToLookupL3IsolationDomainResultOutp
 
 func (o LookupL3IsolationDomainResultOutput) ToLookupL3IsolationDomainResultOutputWithContext(ctx context.Context) LookupL3IsolationDomainResultOutput {
 	return o
-}
-
-func (o LookupL3IsolationDomainResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupL3IsolationDomainResult] {
-	return pulumix.Output[LookupL3IsolationDomainResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Administrative state of the resource.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description of the WCF relay resource.
@@ -158,12 +157,6 @@ func (i *WCFRelay) ToWCFRelayOutputWithContext(ctx context.Context) WCFRelayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(WCFRelayOutput)
 }
 
-func (i *WCFRelay) ToOutput(ctx context.Context) pulumix.Output[*WCFRelay] {
-	return pulumix.Output[*WCFRelay]{
-		OutputState: i.ToWCFRelayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WCFRelayOutput struct{ *pulumi.OutputState }
 
 func (WCFRelayOutput) ElementType() reflect.Type {
@@ -176,12 +169,6 @@ func (o WCFRelayOutput) ToWCFRelayOutput() WCFRelayOutput {
 
 func (o WCFRelayOutput) ToWCFRelayOutputWithContext(ctx context.Context) WCFRelayOutput {
 	return o
-}
-
-func (o WCFRelayOutput) ToOutput(ctx context.Context) pulumix.Output[*WCFRelay] {
-	return pulumix.Output[*WCFRelay]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time the WCF relay was created.

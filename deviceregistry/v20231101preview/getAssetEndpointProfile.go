@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve a single Asset Endpoint Profile.
@@ -98,12 +97,6 @@ func (o LookupAssetEndpointProfileResultOutput) ToLookupAssetEndpointProfileResu
 
 func (o LookupAssetEndpointProfileResultOutput) ToLookupAssetEndpointProfileResultOutputWithContext(ctx context.Context) LookupAssetEndpointProfileResultOutput {
 	return o
-}
-
-func (o LookupAssetEndpointProfileResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAssetEndpointProfileResult] {
-	return pulumix.Output[LookupAssetEndpointProfileResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The extended location.

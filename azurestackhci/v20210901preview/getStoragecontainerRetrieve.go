@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets storagecontainers by resource name
@@ -93,12 +92,6 @@ func (o LookupStoragecontainerRetrieveResultOutput) ToLookupStoragecontainerRetr
 
 func (o LookupStoragecontainerRetrieveResultOutput) ToLookupStoragecontainerRetrieveResultOutputWithContext(ctx context.Context) LookupStoragecontainerRetrieveResultOutput {
 	return o
-}
-
-func (o LookupStoragecontainerRetrieveResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStoragecontainerRetrieveResult] {
-	return pulumix.Output[LookupStoragecontainerRetrieveResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Amount of space available on the disk in MB

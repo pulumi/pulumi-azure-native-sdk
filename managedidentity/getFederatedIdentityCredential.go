@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the federated identity credential.
@@ -90,12 +89,6 @@ func (o LookupFederatedIdentityCredentialResultOutput) ToLookupFederatedIdentity
 
 func (o LookupFederatedIdentityCredentialResultOutput) ToLookupFederatedIdentityCredentialResultOutputWithContext(ctx context.Context) LookupFederatedIdentityCredentialResultOutput {
 	return o
-}
-
-func (o LookupFederatedIdentityCredentialResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFederatedIdentityCredentialResult] {
-	return pulumix.Output[LookupFederatedIdentityCredentialResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of audiences that can appear in the issued token.

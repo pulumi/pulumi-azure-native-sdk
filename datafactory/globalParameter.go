@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Global parameters resource type.
@@ -128,12 +127,6 @@ func (i *GlobalParameter) ToGlobalParameterOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalParameterOutput)
 }
 
-func (i *GlobalParameter) ToOutput(ctx context.Context) pulumix.Output[*GlobalParameter] {
-	return pulumix.Output[*GlobalParameter]{
-		OutputState: i.ToGlobalParameterOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GlobalParameterOutput struct{ *pulumi.OutputState }
 
 func (GlobalParameterOutput) ElementType() reflect.Type {
@@ -146,12 +139,6 @@ func (o GlobalParameterOutput) ToGlobalParameterOutput() GlobalParameterOutput {
 
 func (o GlobalParameterOutput) ToGlobalParameterOutputWithContext(ctx context.Context) GlobalParameterOutput {
 	return o
-}
-
-func (o GlobalParameterOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalParameter] {
-	return pulumix.Output[*GlobalParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Etag identifies change in the resource.

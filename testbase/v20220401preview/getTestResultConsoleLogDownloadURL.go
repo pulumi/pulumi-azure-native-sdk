@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the download URL of the test execution console log file.
@@ -87,12 +86,6 @@ func (o GetTestResultConsoleLogDownloadURLResultOutput) ToGetTestResultConsoleLo
 
 func (o GetTestResultConsoleLogDownloadURLResultOutput) ToGetTestResultConsoleLogDownloadURLResultOutputWithContext(ctx context.Context) GetTestResultConsoleLogDownloadURLResultOutput {
 	return o
-}
-
-func (o GetTestResultConsoleLogDownloadURLResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTestResultConsoleLogDownloadURLResult] {
-	return pulumix.Output[GetTestResultConsoleLogDownloadURLResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The download URL.

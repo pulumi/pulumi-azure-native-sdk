@@ -86,12 +86,6 @@ func (o ConnectionParameterTypeOutput) ToConnectionParameterTypePtrOutputWithCon
 	}).(ConnectionParameterTypePtrOutput)
 }
 
-func (o ConnectionParameterTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionParameterType] {
-	return pulumix.Output[ConnectionParameterType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectionParameterTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -125,12 +119,6 @@ func (o ConnectionParameterTypePtrOutput) ToConnectionParameterTypePtrOutput() C
 
 func (o ConnectionParameterTypePtrOutput) ToConnectionParameterTypePtrOutputWithContext(ctx context.Context) ConnectionParameterTypePtrOutput {
 	return o
-}
-
-func (o ConnectionParameterTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionParameterType] {
-	return pulumix.Output[*ConnectionParameterType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionParameterTypePtrOutput) Elem() ConnectionParameterTypeOutput {
@@ -270,12 +258,6 @@ func (o PrincipalTypeOutput) ToPrincipalTypePtrOutputWithContext(ctx context.Con
 	}).(PrincipalTypePtrOutput)
 }
 
-func (o PrincipalTypeOutput) ToOutput(ctx context.Context) pulumix.Output[PrincipalType] {
-	return pulumix.Output[PrincipalType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrincipalTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -309,12 +291,6 @@ func (o PrincipalTypePtrOutput) ToPrincipalTypePtrOutput() PrincipalTypePtrOutpu
 
 func (o PrincipalTypePtrOutput) ToPrincipalTypePtrOutputWithContext(ctx context.Context) PrincipalTypePtrOutput {
 	return o
-}
-
-func (o PrincipalTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrincipalType] {
-	return pulumix.Output[*PrincipalType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrincipalTypePtrOutput) Elem() PrincipalTypeOutput {

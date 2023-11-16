@@ -81,12 +81,6 @@ func (o AadAuthFailureModeOutput) ToAadAuthFailureModePtrOutputWithContext(ctx c
 	}).(AadAuthFailureModePtrOutput)
 }
 
-func (o AadAuthFailureModeOutput) ToOutput(ctx context.Context) pulumix.Output[AadAuthFailureMode] {
-	return pulumix.Output[AadAuthFailureMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AadAuthFailureModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -120,12 +114,6 @@ func (o AadAuthFailureModePtrOutput) ToAadAuthFailureModePtrOutput() AadAuthFail
 
 func (o AadAuthFailureModePtrOutput) ToAadAuthFailureModePtrOutputWithContext(ctx context.Context) AadAuthFailureModePtrOutput {
 	return o
-}
-
-func (o AadAuthFailureModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AadAuthFailureMode] {
-	return pulumix.Output[*AadAuthFailureMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AadAuthFailureModePtrOutput) Elem() AadAuthFailureModeOutput {
@@ -266,12 +254,6 @@ func (o HostingModeOutput) ToHostingModePtrOutputWithContext(ctx context.Context
 	}).(HostingModePtrOutput)
 }
 
-func (o HostingModeOutput) ToOutput(ctx context.Context) pulumix.Output[HostingMode] {
-	return pulumix.Output[HostingMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HostingModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -305,12 +287,6 @@ func (o HostingModePtrOutput) ToHostingModePtrOutput() HostingModePtrOutput {
 
 func (o HostingModePtrOutput) ToHostingModePtrOutputWithContext(ctx context.Context) HostingModePtrOutput {
 	return o
-}
-
-func (o HostingModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HostingMode] {
-	return pulumix.Output[*HostingMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HostingModePtrOutput) Elem() HostingModeOutput {
@@ -449,12 +425,6 @@ func (o IdentityTypeOutput) ToIdentityTypePtrOutputWithContext(ctx context.Conte
 	}).(IdentityTypePtrOutput)
 }
 
-func (o IdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityType] {
-	return pulumix.Output[IdentityType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -488,12 +458,6 @@ func (o IdentityTypePtrOutput) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
 
 func (o IdentityTypePtrOutput) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
 	return o
-}
-
-func (o IdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityTypePtrOutput) Elem() IdentityTypeOutput {
@@ -656,12 +620,6 @@ func (o PrivateLinkServiceConnectionStatusOutput) ToPrivateLinkServiceConnection
 	}).(PrivateLinkServiceConnectionStatusPtrOutput)
 }
 
-func (o PrivateLinkServiceConnectionStatusOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStatus] {
-	return pulumix.Output[PrivateLinkServiceConnectionStatus]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrivateLinkServiceConnectionStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -695,12 +653,6 @@ func (o PrivateLinkServiceConnectionStatusPtrOutput) ToPrivateLinkServiceConnect
 
 func (o PrivateLinkServiceConnectionStatusPtrOutput) ToPrivateLinkServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatusPtrOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionStatus] {
-	return pulumix.Output[*PrivateLinkServiceConnectionStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateLinkServiceConnectionStatusPtrOutput) Elem() PrivateLinkServiceConnectionStatusOutput {
@@ -839,12 +791,6 @@ func (o PublicNetworkAccessOutput) ToPublicNetworkAccessPtrOutputWithContext(ctx
 	}).(PublicNetworkAccessPtrOutput)
 }
 
-func (o PublicNetworkAccessOutput) ToOutput(ctx context.Context) pulumix.Output[PublicNetworkAccess] {
-	return pulumix.Output[PublicNetworkAccess]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PublicNetworkAccessOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -878,12 +824,6 @@ func (o PublicNetworkAccessPtrOutput) ToPublicNetworkAccessPtrOutput() PublicNet
 
 func (o PublicNetworkAccessPtrOutput) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return o
-}
-
-func (o PublicNetworkAccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
-	return pulumix.Output[*PublicNetworkAccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PublicNetworkAccessPtrOutput) Elem() PublicNetworkAccessOutput {
@@ -1026,12 +966,6 @@ func (o SearchEncryptionWithCmkOutput) ToSearchEncryptionWithCmkPtrOutputWithCon
 	}).(SearchEncryptionWithCmkPtrOutput)
 }
 
-func (o SearchEncryptionWithCmkOutput) ToOutput(ctx context.Context) pulumix.Output[SearchEncryptionWithCmk] {
-	return pulumix.Output[SearchEncryptionWithCmk]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SearchEncryptionWithCmkOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1065,12 +999,6 @@ func (o SearchEncryptionWithCmkPtrOutput) ToSearchEncryptionWithCmkPtrOutput() S
 
 func (o SearchEncryptionWithCmkPtrOutput) ToSearchEncryptionWithCmkPtrOutputWithContext(ctx context.Context) SearchEncryptionWithCmkPtrOutput {
 	return o
-}
-
-func (o SearchEncryptionWithCmkPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SearchEncryptionWithCmk] {
-	return pulumix.Output[*SearchEncryptionWithCmk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SearchEncryptionWithCmkPtrOutput) Elem() SearchEncryptionWithCmkOutput {
@@ -1224,12 +1152,6 @@ func (o SharedPrivateLinkResourceProvisioningStateOutput) ToSharedPrivateLinkRes
 	}).(SharedPrivateLinkResourceProvisioningStatePtrOutput)
 }
 
-func (o SharedPrivateLinkResourceProvisioningStateOutput) ToOutput(ctx context.Context) pulumix.Output[SharedPrivateLinkResourceProvisioningState] {
-	return pulumix.Output[SharedPrivateLinkResourceProvisioningState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SharedPrivateLinkResourceProvisioningStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1263,12 +1185,6 @@ func (o SharedPrivateLinkResourceProvisioningStatePtrOutput) ToSharedPrivateLink
 
 func (o SharedPrivateLinkResourceProvisioningStatePtrOutput) ToSharedPrivateLinkResourceProvisioningStatePtrOutputWithContext(ctx context.Context) SharedPrivateLinkResourceProvisioningStatePtrOutput {
 	return o
-}
-
-func (o SharedPrivateLinkResourceProvisioningStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SharedPrivateLinkResourceProvisioningState] {
-	return pulumix.Output[*SharedPrivateLinkResourceProvisioningState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SharedPrivateLinkResourceProvisioningStatePtrOutput) Elem() SharedPrivateLinkResourceProvisioningStateOutput {
@@ -1409,12 +1325,6 @@ func (o SharedPrivateLinkResourceStatusOutput) ToSharedPrivateLinkResourceStatus
 	}).(SharedPrivateLinkResourceStatusPtrOutput)
 }
 
-func (o SharedPrivateLinkResourceStatusOutput) ToOutput(ctx context.Context) pulumix.Output[SharedPrivateLinkResourceStatus] {
-	return pulumix.Output[SharedPrivateLinkResourceStatus]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SharedPrivateLinkResourceStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1448,12 +1358,6 @@ func (o SharedPrivateLinkResourceStatusPtrOutput) ToSharedPrivateLinkResourceSta
 
 func (o SharedPrivateLinkResourceStatusPtrOutput) ToSharedPrivateLinkResourceStatusPtrOutputWithContext(ctx context.Context) SharedPrivateLinkResourceStatusPtrOutput {
 	return o
-}
-
-func (o SharedPrivateLinkResourceStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SharedPrivateLinkResourceStatus] {
-	return pulumix.Output[*SharedPrivateLinkResourceStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SharedPrivateLinkResourceStatusPtrOutput) Elem() SharedPrivateLinkResourceStatusOutput {
@@ -1604,12 +1508,6 @@ func (o SkuNameOutput) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNam
 	}).(SkuNamePtrOutput)
 }
 
-func (o SkuNameOutput) ToOutput(ctx context.Context) pulumix.Output[SkuName] {
-	return pulumix.Output[SkuName]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SkuNameOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1643,12 +1541,6 @@ func (o SkuNamePtrOutput) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (o SkuNamePtrOutput) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return o
-}
-
-func (o SkuNamePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuNamePtrOutput) Elem() SkuNameOutput {

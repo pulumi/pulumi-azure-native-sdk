@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an Agent resource.
@@ -106,12 +105,6 @@ func (o LookupAgentResultOutput) ToLookupAgentResultOutput() LookupAgentResultOu
 
 func (o LookupAgentResultOutput) ToLookupAgentResultOutputWithContext(ctx context.Context) LookupAgentResultOutput {
 	return o
-}
-
-func (o LookupAgentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAgentResult] {
-	return pulumix.Output[LookupAgentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Agent status.

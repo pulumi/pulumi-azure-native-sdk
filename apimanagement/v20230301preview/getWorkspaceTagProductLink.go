@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the product link for the tag.
@@ -91,12 +90,6 @@ func (o LookupWorkspaceTagProductLinkResultOutput) ToLookupWorkspaceTagProductLi
 
 func (o LookupWorkspaceTagProductLinkResultOutput) ToLookupWorkspaceTagProductLinkResultOutputWithContext(ctx context.Context) LookupWorkspaceTagProductLinkResultOutput {
 	return o
-}
-
-func (o LookupWorkspaceTagProductLinkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkspaceTagProductLinkResult] {
-	return pulumix.Output[LookupWorkspaceTagProductLinkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

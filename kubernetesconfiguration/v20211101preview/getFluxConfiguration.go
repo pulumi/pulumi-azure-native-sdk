@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of the Flux Configuration.
@@ -138,12 +137,6 @@ func (o LookupFluxConfigurationResultOutput) ToLookupFluxConfigurationResultOutp
 
 func (o LookupFluxConfigurationResultOutput) ToLookupFluxConfigurationResultOutputWithContext(ctx context.Context) LookupFluxConfigurationResultOutput {
 	return o
-}
-
-func (o LookupFluxConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFluxConfigurationResult] {
-	return pulumix.Output[LookupFluxConfigurationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Combined status of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // DevOps Configuration resource.
@@ -121,12 +120,6 @@ func (i *DevOpsConfiguration) ToDevOpsConfigurationOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DevOpsConfigurationOutput)
 }
 
-func (i *DevOpsConfiguration) ToOutput(ctx context.Context) pulumix.Output[*DevOpsConfiguration] {
-	return pulumix.Output[*DevOpsConfiguration]{
-		OutputState: i.ToDevOpsConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DevOpsConfigurationOutput struct{ *pulumi.OutputState }
 
 func (DevOpsConfigurationOutput) ElementType() reflect.Type {
@@ -139,12 +132,6 @@ func (o DevOpsConfigurationOutput) ToDevOpsConfigurationOutput() DevOpsConfigura
 
 func (o DevOpsConfigurationOutput) ToDevOpsConfigurationOutputWithContext(ctx context.Context) DevOpsConfigurationOutput {
 	return o
-}
-
-func (o DevOpsConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*DevOpsConfiguration] {
-	return pulumix.Output[*DevOpsConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

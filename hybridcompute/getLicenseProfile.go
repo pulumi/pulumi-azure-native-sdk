@@ -9,11 +9,12 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves information about the view of a license profile.
 // Azure REST API version: 2023-06-20-preview.
+//
+// Other available API versions: 2023-10-03-preview.
 func LookupLicenseProfile(ctx *pulumi.Context, args *LookupLicenseProfileArgs, opts ...pulumi.InvokeOption) (*LookupLicenseProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLicenseProfileResult
@@ -102,12 +103,6 @@ func (o LookupLicenseProfileResultOutput) ToLookupLicenseProfileResultOutput() L
 
 func (o LookupLicenseProfileResultOutput) ToLookupLicenseProfileResultOutputWithContext(ctx context.Context) LookupLicenseProfileResultOutput {
 	return o
-}
-
-func (o LookupLicenseProfileResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLicenseProfileResult] {
-	return pulumix.Output[LookupLicenseProfileResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource id of the license.

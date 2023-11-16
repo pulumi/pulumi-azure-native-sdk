@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists the access keys for the specified Azure Cosmos DB database account.
@@ -79,12 +78,6 @@ func (o ListDatabaseAccountKeysResultOutput) ToListDatabaseAccountKeysResultOutp
 
 func (o ListDatabaseAccountKeysResultOutput) ToListDatabaseAccountKeysResultOutputWithContext(ctx context.Context) ListDatabaseAccountKeysResultOutput {
 	return o
-}
-
-func (o ListDatabaseAccountKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListDatabaseAccountKeysResult] {
-	return pulumix.Output[ListDatabaseAccountKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Base 64 encoded value of the primary read-write key.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a DiagnosticServiceResource
@@ -141,12 +140,6 @@ func (o LookupDiagnosticServiceResultOutput) ToLookupDiagnosticServiceResultOutp
 
 func (o LookupDiagnosticServiceResultOutput) ToLookupDiagnosticServiceResultOutputWithContext(ctx context.Context) LookupDiagnosticServiceResultOutput {
 	return o
-}
-
-func (o LookupDiagnosticServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDiagnosticServiceResult] {
-	return pulumix.Output[LookupDiagnosticServiceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The frequency at which the data will be exported.

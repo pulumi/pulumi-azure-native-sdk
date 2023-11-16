@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Agent Pool.
@@ -307,6 +306,9 @@ func NewAgentPool(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerservice/v20230902preview:AgentPool"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20231002preview:AgentPool"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -543,12 +545,6 @@ func (i *AgentPool) ToAgentPoolOutputWithContext(ctx context.Context) AgentPoolO
 	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolOutput)
 }
 
-func (i *AgentPool) ToOutput(ctx context.Context) pulumix.Output[*AgentPool] {
-	return pulumix.Output[*AgentPool]{
-		OutputState: i.ToAgentPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AgentPoolOutput struct{ *pulumi.OutputState }
 
 func (AgentPoolOutput) ElementType() reflect.Type {
@@ -561,12 +557,6 @@ func (o AgentPoolOutput) ToAgentPoolOutput() AgentPoolOutput {
 
 func (o AgentPoolOutput) ToAgentPoolOutputWithContext(ctx context.Context) AgentPoolOutput {
 	return o
-}
-
-func (o AgentPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*AgentPool] {
-	return pulumix.Output[*AgentPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'.

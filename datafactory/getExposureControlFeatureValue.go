@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get exposure control feature for specific location.
@@ -80,12 +79,6 @@ func (o GetExposureControlFeatureValueResultOutput) ToGetExposureControlFeatureV
 
 func (o GetExposureControlFeatureValueResultOutput) ToGetExposureControlFeatureValueResultOutputWithContext(ctx context.Context) GetExposureControlFeatureValueResultOutput {
 	return o
-}
-
-func (o GetExposureControlFeatureValueResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetExposureControlFeatureValueResult] {
-	return pulumix.Output[GetExposureControlFeatureValueResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The feature name.

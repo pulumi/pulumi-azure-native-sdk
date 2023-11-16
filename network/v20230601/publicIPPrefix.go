@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Public IP prefix resource.
@@ -281,12 +280,6 @@ func (i *PublicIPPrefix) ToPublicIPPrefixOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(PublicIPPrefixOutput)
 }
 
-func (i *PublicIPPrefix) ToOutput(ctx context.Context) pulumix.Output[*PublicIPPrefix] {
-	return pulumix.Output[*PublicIPPrefix]{
-		OutputState: i.ToPublicIPPrefixOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PublicIPPrefixOutput struct{ *pulumi.OutputState }
 
 func (PublicIPPrefixOutput) ElementType() reflect.Type {
@@ -299,12 +292,6 @@ func (o PublicIPPrefixOutput) ToPublicIPPrefixOutput() PublicIPPrefixOutput {
 
 func (o PublicIPPrefixOutput) ToPublicIPPrefixOutputWithContext(ctx context.Context) PublicIPPrefixOutput {
 	return o
-}
-
-func (o PublicIPPrefixOutput) ToOutput(ctx context.Context) pulumix.Output[*PublicIPPrefix] {
-	return pulumix.Output[*PublicIPPrefix]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The customIpPrefix that this prefix is associated with.

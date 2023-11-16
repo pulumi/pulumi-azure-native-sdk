@@ -79,12 +79,6 @@ func (o LiveEventEncodingTypeOutput) ToLiveEventEncodingTypePtrOutputWithContext
 	}).(LiveEventEncodingTypePtrOutput)
 }
 
-func (o LiveEventEncodingTypeOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventEncodingType] {
-	return pulumix.Output[LiveEventEncodingType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LiveEventEncodingTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -118,12 +112,6 @@ func (o LiveEventEncodingTypePtrOutput) ToLiveEventEncodingTypePtrOutput() LiveE
 
 func (o LiveEventEncodingTypePtrOutput) ToLiveEventEncodingTypePtrOutputWithContext(ctx context.Context) LiveEventEncodingTypePtrOutput {
 	return o
-}
-
-func (o LiveEventEncodingTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventEncodingType] {
-	return pulumix.Output[*LiveEventEncodingType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LiveEventEncodingTypePtrOutput) Elem() LiveEventEncodingTypeOutput {
@@ -262,12 +250,6 @@ func (o LiveEventInputProtocolOutput) ToLiveEventInputProtocolPtrOutputWithConte
 	}).(LiveEventInputProtocolPtrOutput)
 }
 
-func (o LiveEventInputProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[LiveEventInputProtocol] {
-	return pulumix.Output[LiveEventInputProtocol]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LiveEventInputProtocolOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -301,12 +283,6 @@ func (o LiveEventInputProtocolPtrOutput) ToLiveEventInputProtocolPtrOutput() Liv
 
 func (o LiveEventInputProtocolPtrOutput) ToLiveEventInputProtocolPtrOutputWithContext(ctx context.Context) LiveEventInputProtocolPtrOutput {
 	return o
-}
-
-func (o LiveEventInputProtocolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEventInputProtocol] {
-	return pulumix.Output[*LiveEventInputProtocol]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LiveEventInputProtocolPtrOutput) Elem() LiveEventInputProtocolOutput {
@@ -444,12 +420,6 @@ func (o StreamOptionsFlagOutput) ToStreamOptionsFlagPtrOutputWithContext(ctx con
 	}).(StreamOptionsFlagPtrOutput)
 }
 
-func (o StreamOptionsFlagOutput) ToOutput(ctx context.Context) pulumix.Output[StreamOptionsFlag] {
-	return pulumix.Output[StreamOptionsFlag]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StreamOptionsFlagOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -483,12 +453,6 @@ func (o StreamOptionsFlagPtrOutput) ToStreamOptionsFlagPtrOutput() StreamOptions
 
 func (o StreamOptionsFlagPtrOutput) ToStreamOptionsFlagPtrOutputWithContext(ctx context.Context) StreamOptionsFlagPtrOutput {
 	return o
-}
-
-func (o StreamOptionsFlagPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StreamOptionsFlag] {
-	return pulumix.Output[*StreamOptionsFlag]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamOptionsFlagPtrOutput) Elem() StreamOptionsFlagOutput {
@@ -584,12 +548,6 @@ func (i StreamOptionsFlagArray) ToStreamOptionsFlagArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(StreamOptionsFlagArrayOutput)
 }
 
-func (i StreamOptionsFlagArray) ToOutput(ctx context.Context) pulumix.Output[[]StreamOptionsFlag] {
-	return pulumix.Output[[]StreamOptionsFlag]{
-		OutputState: i.ToStreamOptionsFlagArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StreamOptionsFlagArrayOutput struct{ *pulumi.OutputState }
 
 func (StreamOptionsFlagArrayOutput) ElementType() reflect.Type {
@@ -602,12 +560,6 @@ func (o StreamOptionsFlagArrayOutput) ToStreamOptionsFlagArrayOutput() StreamOpt
 
 func (o StreamOptionsFlagArrayOutput) ToStreamOptionsFlagArrayOutputWithContext(ctx context.Context) StreamOptionsFlagArrayOutput {
 	return o
-}
-
-func (o StreamOptionsFlagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StreamOptionsFlag] {
-	return pulumix.Output[[]StreamOptionsFlag]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StreamOptionsFlagArrayOutput) Index(i pulumi.IntInput) StreamOptionsFlagOutput {

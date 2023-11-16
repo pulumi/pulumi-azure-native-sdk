@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of an ASR replication protected item.
@@ -96,12 +95,6 @@ func (o LookupReplicationProtectedItemResultOutput) ToLookupReplicationProtected
 
 func (o LookupReplicationProtectedItemResultOutput) ToLookupReplicationProtectedItemResultOutputWithContext(ctx context.Context) LookupReplicationProtectedItemResultOutput {
 	return o
-}
-
-func (o LookupReplicationProtectedItemResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReplicationProtectedItemResult] {
-	return pulumix.Output[LookupReplicationProtectedItemResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Id

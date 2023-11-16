@@ -10,13 +10,12 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Watchlist in Azure Security Insights.
 // Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-03-01-preview.
 //
-// Other available API versions: 2019-01-01-preview, 2021-03-01-preview, 2021-04-01, 2021-10-01-preview, 2022-01-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2019-01-01-preview, 2021-03-01-preview, 2021-04-01, 2021-10-01-preview, 2022-01-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 type Watchlist struct {
 	pulumi.CustomResourceState
 
@@ -179,6 +178,9 @@ func NewWatchlist(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:Watchlist"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:Watchlist"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -335,12 +337,6 @@ func (i *Watchlist) ToWatchlistOutputWithContext(ctx context.Context) WatchlistO
 	return pulumi.ToOutputWithContext(ctx, i).(WatchlistOutput)
 }
 
-func (i *Watchlist) ToOutput(ctx context.Context) pulumix.Output[*Watchlist] {
-	return pulumix.Output[*Watchlist]{
-		OutputState: i.ToWatchlistOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WatchlistOutput struct{ *pulumi.OutputState }
 
 func (WatchlistOutput) ElementType() reflect.Type {
@@ -353,12 +349,6 @@ func (o WatchlistOutput) ToWatchlistOutput() WatchlistOutput {
 
 func (o WatchlistOutput) ToWatchlistOutputWithContext(ctx context.Context) WatchlistOutput {
 	return o
-}
-
-func (o WatchlistOutput) ToOutput(ctx context.Context) pulumix.Output[*Watchlist] {
-	return pulumix.Output[*Watchlist]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The content type of the raw content. For now, only text/csv is valid

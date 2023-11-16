@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetOnlineDeploymentLogs(ctx *pulumi.Context, args *GetOnlineDeploymentLogsArgs, opts ...pulumi.InvokeOption) (*GetOnlineDeploymentLogsResult, error) {
@@ -99,12 +98,6 @@ func (o GetOnlineDeploymentLogsResultOutput) ToGetOnlineDeploymentLogsResultOutp
 
 func (o GetOnlineDeploymentLogsResultOutput) ToGetOnlineDeploymentLogsResultOutputWithContext(ctx context.Context) GetOnlineDeploymentLogsResultOutput {
 	return o
-}
-
-func (o GetOnlineDeploymentLogsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetOnlineDeploymentLogsResult] {
-	return pulumix.Output[GetOnlineDeploymentLogsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The retrieved online deployment logs.

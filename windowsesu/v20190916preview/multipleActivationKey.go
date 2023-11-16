@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // MAK key details.
@@ -159,12 +158,6 @@ func (i *MultipleActivationKey) ToMultipleActivationKeyOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(MultipleActivationKeyOutput)
 }
 
-func (i *MultipleActivationKey) ToOutput(ctx context.Context) pulumix.Output[*MultipleActivationKey] {
-	return pulumix.Output[*MultipleActivationKey]{
-		OutputState: i.ToMultipleActivationKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MultipleActivationKeyOutput struct{ *pulumi.OutputState }
 
 func (MultipleActivationKeyOutput) ElementType() reflect.Type {
@@ -177,12 +170,6 @@ func (o MultipleActivationKeyOutput) ToMultipleActivationKeyOutput() MultipleAct
 
 func (o MultipleActivationKeyOutput) ToMultipleActivationKeyOutputWithContext(ctx context.Context) MultipleActivationKeyOutput {
 	return o
-}
-
-func (o MultipleActivationKeyOutput) ToOutput(ctx context.Context) pulumix.Output[*MultipleActivationKey] {
-	return pulumix.Output[*MultipleActivationKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Agreement number under which the key is requested.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A member of the Fleet. It contains a reference to an existing Kubernetes cluster on Azure.
@@ -158,12 +157,6 @@ func (i *FleetMember) ToFleetMemberOutputWithContext(ctx context.Context) FleetM
 	return pulumi.ToOutputWithContext(ctx, i).(FleetMemberOutput)
 }
 
-func (i *FleetMember) ToOutput(ctx context.Context) pulumix.Output[*FleetMember] {
-	return pulumix.Output[*FleetMember]{
-		OutputState: i.ToFleetMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FleetMemberOutput struct{ *pulumi.OutputState }
 
 func (FleetMemberOutput) ElementType() reflect.Type {
@@ -176,12 +169,6 @@ func (o FleetMemberOutput) ToFleetMemberOutput() FleetMemberOutput {
 
 func (o FleetMemberOutput) ToFleetMemberOutputWithContext(ctx context.Context) FleetMemberOutput {
 	return o
-}
-
-func (o FleetMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*FleetMember] {
-	return pulumix.Output[*FleetMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ARM resource id of the cluster that joins the Fleet. Must be a valid Azure resource id. e.g.: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{clusterName}'.

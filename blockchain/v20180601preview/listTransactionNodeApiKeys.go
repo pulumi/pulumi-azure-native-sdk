@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List the API keys for the transaction node.
@@ -77,12 +76,6 @@ func (o ListTransactionNodeApiKeysResultOutput) ToListTransactionNodeApiKeysResu
 
 func (o ListTransactionNodeApiKeysResultOutput) ToListTransactionNodeApiKeysResultOutputWithContext(ctx context.Context) ListTransactionNodeApiKeysResultOutput {
 	return o
-}
-
-func (o ListTransactionNodeApiKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListTransactionNodeApiKeysResult] {
-	return pulumix.Output[ListTransactionNodeApiKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the collection of API key.

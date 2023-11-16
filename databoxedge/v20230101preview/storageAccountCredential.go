@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The storage account credential.
@@ -220,12 +219,6 @@ func (i *StorageAccountCredential) ToStorageAccountCredentialOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(StorageAccountCredentialOutput)
 }
 
-func (i *StorageAccountCredential) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountCredential] {
-	return pulumix.Output[*StorageAccountCredential]{
-		OutputState: i.ToStorageAccountCredentialOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StorageAccountCredentialOutput struct{ *pulumi.OutputState }
 
 func (StorageAccountCredentialOutput) ElementType() reflect.Type {
@@ -238,12 +231,6 @@ func (o StorageAccountCredentialOutput) ToStorageAccountCredentialOutput() Stora
 
 func (o StorageAccountCredentialOutput) ToStorageAccountCredentialOutputWithContext(ctx context.Context) StorageAccountCredentialOutput {
 	return o
-}
-
-func (o StorageAccountCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountCredential] {
-	return pulumix.Output[*StorageAccountCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Encrypted storage key.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents Amazon Web Services CloudTrail data connector.
@@ -139,6 +138,9 @@ func NewAwsCloudTrailDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:AwsCloudTrailDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:AwsCloudTrailDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -233,12 +235,6 @@ func (i *AwsCloudTrailDataConnector) ToAwsCloudTrailDataConnectorOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(AwsCloudTrailDataConnectorOutput)
 }
 
-func (i *AwsCloudTrailDataConnector) ToOutput(ctx context.Context) pulumix.Output[*AwsCloudTrailDataConnector] {
-	return pulumix.Output[*AwsCloudTrailDataConnector]{
-		OutputState: i.ToAwsCloudTrailDataConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AwsCloudTrailDataConnectorOutput struct{ *pulumi.OutputState }
 
 func (AwsCloudTrailDataConnectorOutput) ElementType() reflect.Type {
@@ -251,12 +247,6 @@ func (o AwsCloudTrailDataConnectorOutput) ToAwsCloudTrailDataConnectorOutput() A
 
 func (o AwsCloudTrailDataConnectorOutput) ToAwsCloudTrailDataConnectorOutputWithContext(ctx context.Context) AwsCloudTrailDataConnectorOutput {
 	return o
-}
-
-func (o AwsCloudTrailDataConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*AwsCloudTrailDataConnector] {
-	return pulumix.Output[*AwsCloudTrailDataConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Aws Role Arn (with CloudTrailReadOnly policy) that is used to access the Aws account.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the policy configuration at the GraphQL API Resolver level.
@@ -113,12 +112,6 @@ func (o LookupGraphQLApiResolverPolicyResultOutput) ToLookupGraphQLApiResolverPo
 
 func (o LookupGraphQLApiResolverPolicyResultOutput) ToLookupGraphQLApiResolverPolicyResultOutputWithContext(ctx context.Context) LookupGraphQLApiResolverPolicyResultOutput {
 	return o
-}
-
-func (o LookupGraphQLApiResolverPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGraphQLApiResolverPolicyResult] {
-	return pulumix.Output[LookupGraphQLApiResolverPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Format of the policyContent.

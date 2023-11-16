@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a given SyncGroup.
@@ -87,12 +86,6 @@ func (o LookupSyncGroupResultOutput) ToLookupSyncGroupResultOutput() LookupSyncG
 
 func (o LookupSyncGroupResultOutput) ToLookupSyncGroupResultOutputWithContext(ctx context.Context) LookupSyncGroupResultOutput {
 	return o
-}
-
-func (o LookupSyncGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSyncGroupResult] {
-	return pulumix.Output[LookupSyncGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

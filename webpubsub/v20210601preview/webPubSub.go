@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A class represent a resource.
@@ -250,12 +249,6 @@ func (i *WebPubSub) ToWebPubSubOutputWithContext(ctx context.Context) WebPubSubO
 	return pulumi.ToOutputWithContext(ctx, i).(WebPubSubOutput)
 }
 
-func (i *WebPubSub) ToOutput(ctx context.Context) pulumix.Output[*WebPubSub] {
-	return pulumix.Output[*WebPubSub]{
-		OutputState: i.ToWebPubSubOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebPubSubOutput struct{ *pulumi.OutputState }
 
 func (WebPubSubOutput) ElementType() reflect.Type {
@@ -268,12 +261,6 @@ func (o WebPubSubOutput) ToWebPubSubOutput() WebPubSubOutput {
 
 func (o WebPubSubOutput) ToWebPubSubOutputWithContext(ctx context.Context) WebPubSubOutput {
 	return o
-}
-
-func (o WebPubSubOutput) ToOutput(ctx context.Context) pulumix.Output[*WebPubSub] {
-	return pulumix.Output[*WebPubSub]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Diagnostic configuration of a Microsoft.SignalRService resource. Used together with Azure monitor DiagnosticSettings.

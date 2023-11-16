@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an Internet Gateway Rule resource.
@@ -92,12 +91,6 @@ func (o LookupInternetGatewayRuleResultOutput) ToLookupInternetGatewayRuleResult
 
 func (o LookupInternetGatewayRuleResultOutput) ToLookupInternetGatewayRuleResultOutputWithContext(ctx context.Context) LookupInternetGatewayRuleResultOutput {
 	return o
-}
-
-func (o LookupInternetGatewayRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInternetGatewayRuleResult] {
-	return pulumix.Output[LookupInternetGatewayRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Switch configuration description.

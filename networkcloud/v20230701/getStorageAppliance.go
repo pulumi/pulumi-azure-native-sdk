@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of the provided storage appliance.
@@ -111,12 +110,6 @@ func (o LookupStorageApplianceResultOutput) ToLookupStorageApplianceResultOutput
 
 func (o LookupStorageApplianceResultOutput) ToLookupStorageApplianceResultOutputWithContext(ctx context.Context) LookupStorageApplianceResultOutput {
 	return o
-}
-
-func (o LookupStorageApplianceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStorageApplianceResult] {
-	return pulumix.Output[LookupStorageApplianceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The credentials of the administrative interface on this storage appliance.

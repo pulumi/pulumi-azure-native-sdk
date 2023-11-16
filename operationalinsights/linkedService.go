@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The top level Linked service resource container.
@@ -152,12 +151,6 @@ func (i *LinkedService) ToLinkedServiceOutputWithContext(ctx context.Context) Li
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceOutput)
 }
 
-func (i *LinkedService) ToOutput(ctx context.Context) pulumix.Output[*LinkedService] {
-	return pulumix.Output[*LinkedService]{
-		OutputState: i.ToLinkedServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LinkedServiceOutput struct{ *pulumi.OutputState }
 
 func (LinkedServiceOutput) ElementType() reflect.Type {
@@ -170,12 +163,6 @@ func (o LinkedServiceOutput) ToLinkedServiceOutput() LinkedServiceOutput {
 
 func (o LinkedServiceOutput) ToLinkedServiceOutputWithContext(ctx context.Context) LinkedServiceOutput {
 	return o
-}
-
-func (o LinkedServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*LinkedService] {
-	return pulumix.Output[*LinkedService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i AzureHybridBenefitPropertiesArgs) ToAzureHybridBenefitPropertiesOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(AzureHybridBenefitPropertiesOutput)
 }
 
-func (i AzureHybridBenefitPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[AzureHybridBenefitProperties] {
-	return pulumix.Output[AzureHybridBenefitProperties]{
-		OutputState: i.ToAzureHybridBenefitPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AzureHybridBenefitPropertiesArgs) ToAzureHybridBenefitPropertiesPtrOutput() AzureHybridBenefitPropertiesPtrOutput {
 	return i.ToAzureHybridBenefitPropertiesPtrOutputWithContext(context.Background())
 }
@@ -104,12 +97,6 @@ func (i *azureHybridBenefitPropertiesPtrType) ToAzureHybridBenefitPropertiesPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(AzureHybridBenefitPropertiesPtrOutput)
 }
 
-func (i *azureHybridBenefitPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*AzureHybridBenefitProperties] {
-	return pulumix.Output[*AzureHybridBenefitProperties]{
-		OutputState: i.ToAzureHybridBenefitPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties to maximize savings by using Azure Hybrid Benefit
 type AzureHybridBenefitPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -133,12 +120,6 @@ func (o AzureHybridBenefitPropertiesOutput) ToAzureHybridBenefitPropertiesPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureHybridBenefitProperties) *AzureHybridBenefitProperties {
 		return &v
 	}).(AzureHybridBenefitPropertiesPtrOutput)
-}
-
-func (o AzureHybridBenefitPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[AzureHybridBenefitProperties] {
-	return pulumix.Output[AzureHybridBenefitProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // SCOM license type. Maximize savings by using license you already own
@@ -168,12 +149,6 @@ func (o AzureHybridBenefitPropertiesPtrOutput) ToAzureHybridBenefitPropertiesPtr
 
 func (o AzureHybridBenefitPropertiesPtrOutput) ToAzureHybridBenefitPropertiesPtrOutputWithContext(ctx context.Context) AzureHybridBenefitPropertiesPtrOutput {
 	return o
-}
-
-func (o AzureHybridBenefitPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureHybridBenefitProperties] {
-	return pulumix.Output[*AzureHybridBenefitProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureHybridBenefitPropertiesPtrOutput) Elem() AzureHybridBenefitPropertiesOutput {
@@ -241,12 +216,6 @@ func (o AzureHybridBenefitPropertiesResponseOutput) ToAzureHybridBenefitProperti
 	return o
 }
 
-func (o AzureHybridBenefitPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureHybridBenefitPropertiesResponse] {
-	return pulumix.Output[AzureHybridBenefitPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // SCOM license type. Maximize savings by using license you already own
 func (o AzureHybridBenefitPropertiesResponseOutput) ScomLicenseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureHybridBenefitPropertiesResponse) *string { return v.ScomLicenseType }).(pulumi.StringPtrOutput)
@@ -274,12 +243,6 @@ func (o AzureHybridBenefitPropertiesResponsePtrOutput) ToAzureHybridBenefitPrope
 
 func (o AzureHybridBenefitPropertiesResponsePtrOutput) ToAzureHybridBenefitPropertiesResponsePtrOutputWithContext(ctx context.Context) AzureHybridBenefitPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o AzureHybridBenefitPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureHybridBenefitPropertiesResponse] {
-	return pulumix.Output[*AzureHybridBenefitPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureHybridBenefitPropertiesResponsePtrOutput) Elem() AzureHybridBenefitPropertiesResponseOutput {
@@ -357,12 +320,6 @@ func (i DatabaseInstancePropertiesArgs) ToDatabaseInstancePropertiesOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstancePropertiesOutput)
 }
 
-func (i DatabaseInstancePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceProperties] {
-	return pulumix.Output[DatabaseInstanceProperties]{
-		OutputState: i.ToDatabaseInstancePropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatabaseInstancePropertiesArgs) ToDatabaseInstancePropertiesPtrOutput() DatabaseInstancePropertiesPtrOutput {
 	return i.ToDatabaseInstancePropertiesPtrOutputWithContext(context.Background())
 }
@@ -404,12 +361,6 @@ func (i *databaseInstancePropertiesPtrType) ToDatabaseInstancePropertiesPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstancePropertiesPtrOutput)
 }
 
-func (i *databaseInstancePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceProperties] {
-	return pulumix.Output[*DatabaseInstanceProperties]{
-		OutputState: i.ToDatabaseInstancePropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties of database instance
 type DatabaseInstancePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -435,12 +386,6 @@ func (o DatabaseInstancePropertiesOutput) ToDatabaseInstancePropertiesPtrOutputW
 	}).(DatabaseInstancePropertiesPtrOutput)
 }
 
-func (o DatabaseInstancePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstanceProperties] {
-	return pulumix.Output[DatabaseInstanceProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource Id of existing database instance
 func (o DatabaseInstancePropertiesOutput) DatabaseInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceProperties) *string { return v.DatabaseInstanceId }).(pulumi.StringPtrOutput)
@@ -458,12 +403,6 @@ func (o DatabaseInstancePropertiesPtrOutput) ToDatabaseInstancePropertiesPtrOutp
 
 func (o DatabaseInstancePropertiesPtrOutput) ToDatabaseInstancePropertiesPtrOutputWithContext(ctx context.Context) DatabaseInstancePropertiesPtrOutput {
 	return o
-}
-
-func (o DatabaseInstancePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstanceProperties] {
-	return pulumix.Output[*DatabaseInstanceProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstancePropertiesPtrOutput) Elem() DatabaseInstancePropertiesOutput {
@@ -515,12 +454,6 @@ func (o DatabaseInstancePropertiesResponseOutput) ToDatabaseInstancePropertiesRe
 	return o
 }
 
-func (o DatabaseInstancePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInstancePropertiesResponse] {
-	return pulumix.Output[DatabaseInstancePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Fully qualified domain name of existing database instance
 func (o DatabaseInstancePropertiesResponseOutput) DatabaseFqdn() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseInstancePropertiesResponse) string { return v.DatabaseFqdn }).(pulumi.StringOutput)
@@ -558,12 +491,6 @@ func (o DatabaseInstancePropertiesResponsePtrOutput) ToDatabaseInstancePropertie
 
 func (o DatabaseInstancePropertiesResponsePtrOutput) ToDatabaseInstancePropertiesResponsePtrOutputWithContext(ctx context.Context) DatabaseInstancePropertiesResponsePtrOutput {
 	return o
-}
-
-func (o DatabaseInstancePropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseInstancePropertiesResponse] {
-	return pulumix.Output[*DatabaseInstancePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInstancePropertiesResponsePtrOutput) Elem() DatabaseInstancePropertiesResponseOutput {
@@ -693,12 +620,6 @@ func (i DomainControllerPropertiesArgs) ToDomainControllerPropertiesOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(DomainControllerPropertiesOutput)
 }
 
-func (i DomainControllerPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[DomainControllerProperties] {
-	return pulumix.Output[DomainControllerProperties]{
-		OutputState: i.ToDomainControllerPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DomainControllerPropertiesArgs) ToDomainControllerPropertiesPtrOutput() DomainControllerPropertiesPtrOutput {
 	return i.ToDomainControllerPropertiesPtrOutputWithContext(context.Background())
 }
@@ -740,12 +661,6 @@ func (i *domainControllerPropertiesPtrType) ToDomainControllerPropertiesPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(DomainControllerPropertiesPtrOutput)
 }
 
-func (i *domainControllerPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*DomainControllerProperties] {
-	return pulumix.Output[*DomainControllerProperties]{
-		OutputState: i.ToDomainControllerPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties of domain controller to which SCOM and SQL servers join for AuthN/AuthZ.
 type DomainControllerPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -769,12 +684,6 @@ func (o DomainControllerPropertiesOutput) ToDomainControllerPropertiesPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainControllerProperties) *DomainControllerProperties {
 		return &v
 	}).(DomainControllerPropertiesPtrOutput)
-}
-
-func (o DomainControllerPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[DomainControllerProperties] {
-	return pulumix.Output[DomainControllerProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // IP address of DNS server
@@ -804,12 +713,6 @@ func (o DomainControllerPropertiesPtrOutput) ToDomainControllerPropertiesPtrOutp
 
 func (o DomainControllerPropertiesPtrOutput) ToDomainControllerPropertiesPtrOutputWithContext(ctx context.Context) DomainControllerPropertiesPtrOutput {
 	return o
-}
-
-func (o DomainControllerPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainControllerProperties] {
-	return pulumix.Output[*DomainControllerProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainControllerPropertiesPtrOutput) Elem() DomainControllerPropertiesOutput {
@@ -890,12 +793,6 @@ func (o DomainControllerPropertiesResponseOutput) ToDomainControllerPropertiesRe
 	return o
 }
 
-func (o DomainControllerPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DomainControllerPropertiesResponse] {
-	return pulumix.Output[DomainControllerPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // IP address of DNS server
 func (o DomainControllerPropertiesResponseOutput) DnsServer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainControllerPropertiesResponse) *string { return v.DnsServer }).(pulumi.StringPtrOutput)
@@ -923,12 +820,6 @@ func (o DomainControllerPropertiesResponsePtrOutput) ToDomainControllerPropertie
 
 func (o DomainControllerPropertiesResponsePtrOutput) ToDomainControllerPropertiesResponsePtrOutputWithContext(ctx context.Context) DomainControllerPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o DomainControllerPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainControllerPropertiesResponse] {
-	return pulumix.Output[*DomainControllerPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainControllerPropertiesResponsePtrOutput) Elem() DomainControllerPropertiesResponseOutput {
@@ -1014,12 +905,6 @@ func (i DomainUserCredentialsArgs) ToDomainUserCredentialsOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DomainUserCredentialsOutput)
 }
 
-func (i DomainUserCredentialsArgs) ToOutput(ctx context.Context) pulumix.Output[DomainUserCredentials] {
-	return pulumix.Output[DomainUserCredentials]{
-		OutputState: i.ToDomainUserCredentialsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DomainUserCredentialsArgs) ToDomainUserCredentialsPtrOutput() DomainUserCredentialsPtrOutput {
 	return i.ToDomainUserCredentialsPtrOutputWithContext(context.Background())
 }
@@ -1061,12 +946,6 @@ func (i *domainUserCredentialsPtrType) ToDomainUserCredentialsPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(DomainUserCredentialsPtrOutput)
 }
 
-func (i *domainUserCredentialsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DomainUserCredentials] {
-	return pulumix.Output[*DomainUserCredentials]{
-		OutputState: i.ToDomainUserCredentialsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Get Domain user name and password from key vault
 type DomainUserCredentialsOutput struct{ *pulumi.OutputState }
 
@@ -1090,12 +969,6 @@ func (o DomainUserCredentialsOutput) ToDomainUserCredentialsPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainUserCredentials) *DomainUserCredentials {
 		return &v
 	}).(DomainUserCredentialsPtrOutput)
-}
-
-func (o DomainUserCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[DomainUserCredentials] {
-	return pulumix.Output[DomainUserCredentials]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Key vault url to get the domain username and password
@@ -1125,12 +998,6 @@ func (o DomainUserCredentialsPtrOutput) ToDomainUserCredentialsPtrOutput() Domai
 
 func (o DomainUserCredentialsPtrOutput) ToDomainUserCredentialsPtrOutputWithContext(ctx context.Context) DomainUserCredentialsPtrOutput {
 	return o
-}
-
-func (o DomainUserCredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainUserCredentials] {
-	return pulumix.Output[*DomainUserCredentials]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainUserCredentialsPtrOutput) Elem() DomainUserCredentialsOutput {
@@ -1198,12 +1065,6 @@ func (o DomainUserCredentialsResponseOutput) ToDomainUserCredentialsResponseOutp
 	return o
 }
 
-func (o DomainUserCredentialsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DomainUserCredentialsResponse] {
-	return pulumix.Output[DomainUserCredentialsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Key vault url to get the domain username and password
 func (o DomainUserCredentialsResponseOutput) KeyVaultUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainUserCredentialsResponse) *string { return v.KeyVaultUrl }).(pulumi.StringPtrOutput)
@@ -1231,12 +1092,6 @@ func (o DomainUserCredentialsResponsePtrOutput) ToDomainUserCredentialsResponseP
 
 func (o DomainUserCredentialsResponsePtrOutput) ToDomainUserCredentialsResponsePtrOutputWithContext(ctx context.Context) DomainUserCredentialsResponsePtrOutput {
 	return o
-}
-
-func (o DomainUserCredentialsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainUserCredentialsResponse] {
-	return pulumix.Output[*DomainUserCredentialsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainUserCredentialsResponsePtrOutput) Elem() DomainUserCredentialsResponseOutput {
@@ -1326,12 +1181,6 @@ func (i GmsaDetailsArgs) ToGmsaDetailsOutputWithContext(ctx context.Context) Gms
 	return pulumi.ToOutputWithContext(ctx, i).(GmsaDetailsOutput)
 }
 
-func (i GmsaDetailsArgs) ToOutput(ctx context.Context) pulumix.Output[GmsaDetails] {
-	return pulumix.Output[GmsaDetails]{
-		OutputState: i.ToGmsaDetailsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GmsaDetailsArgs) ToGmsaDetailsPtrOutput() GmsaDetailsPtrOutput {
 	return i.ToGmsaDetailsPtrOutputWithContext(context.Background())
 }
@@ -1373,12 +1222,6 @@ func (i *gmsaDetailsPtrType) ToGmsaDetailsPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(GmsaDetailsPtrOutput)
 }
 
-func (i *gmsaDetailsPtrType) ToOutput(ctx context.Context) pulumix.Output[*GmsaDetails] {
-	return pulumix.Output[*GmsaDetails]{
-		OutputState: i.ToGmsaDetailsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Gmsa Details
 type GmsaDetailsOutput struct{ *pulumi.OutputState }
 
@@ -1402,12 +1245,6 @@ func (o GmsaDetailsOutput) ToGmsaDetailsPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GmsaDetails) *GmsaDetails {
 		return &v
 	}).(GmsaDetailsPtrOutput)
-}
-
-func (o GmsaDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[GmsaDetails] {
-	return pulumix.Output[GmsaDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Frontend DNS name for Load Balancer which will be used by Agents to initiate communication
@@ -1442,12 +1279,6 @@ func (o GmsaDetailsPtrOutput) ToGmsaDetailsPtrOutput() GmsaDetailsPtrOutput {
 
 func (o GmsaDetailsPtrOutput) ToGmsaDetailsPtrOutputWithContext(ctx context.Context) GmsaDetailsPtrOutput {
 	return o
-}
-
-func (o GmsaDetailsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GmsaDetails] {
-	return pulumix.Output[*GmsaDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GmsaDetailsPtrOutput) Elem() GmsaDetailsOutput {
@@ -1527,12 +1358,6 @@ func (o GmsaDetailsResponseOutput) ToGmsaDetailsResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o GmsaDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GmsaDetailsResponse] {
-	return pulumix.Output[GmsaDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Frontend DNS name for Load Balancer which will be used by Agents to initiate communication
 func (o GmsaDetailsResponseOutput) DnsName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GmsaDetailsResponse) *string { return v.DnsName }).(pulumi.StringPtrOutput)
@@ -1565,12 +1390,6 @@ func (o GmsaDetailsResponsePtrOutput) ToGmsaDetailsResponsePtrOutput() GmsaDetai
 
 func (o GmsaDetailsResponsePtrOutput) ToGmsaDetailsResponsePtrOutputWithContext(ctx context.Context) GmsaDetailsResponsePtrOutput {
 	return o
-}
-
-func (o GmsaDetailsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GmsaDetailsResponse] {
-	return pulumix.Output[*GmsaDetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GmsaDetailsResponsePtrOutput) Elem() GmsaDetailsResponseOutput {
@@ -1661,12 +1480,6 @@ func (o LogAnalyticsConfigurationResponseOutput) ToLogAnalyticsConfigurationResp
 	return o
 }
 
-func (o LogAnalyticsConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LogAnalyticsConfigurationResponse] {
-	return pulumix.Output[LogAnalyticsConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The types of data to be ingested to Log Analytics workspace.
 func (o LogAnalyticsConfigurationResponseOutput) DataTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LogAnalyticsConfigurationResponse) []string { return v.DataTypes }).(pulumi.StringArrayOutput)
@@ -1718,12 +1531,6 @@ func (o ManagedGatewayPropertiesResponseOutput) ToManagedGatewayPropertiesRespon
 
 func (o ManagedGatewayPropertiesResponseOutput) ToManagedGatewayPropertiesResponseOutputWithContext(ctx context.Context) ManagedGatewayPropertiesResponseOutput {
 	return o
-}
-
-func (o ManagedGatewayPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedGatewayPropertiesResponse] {
-	return pulumix.Output[ManagedGatewayPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ComputerName of the gateway to be monitored.
@@ -1814,12 +1621,6 @@ func (i ManagedIdentityArgs) ToManagedIdentityOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedIdentityOutput)
 }
 
-func (i ManagedIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedIdentity] {
-	return pulumix.Output[ManagedIdentity]{
-		OutputState: i.ToManagedIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedIdentityArgs) ToManagedIdentityPtrOutput() ManagedIdentityPtrOutput {
 	return i.ToManagedIdentityPtrOutputWithContext(context.Background())
 }
@@ -1861,12 +1662,6 @@ func (i *managedIdentityPtrType) ToManagedIdentityPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedIdentityPtrOutput)
 }
 
-func (i *managedIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedIdentity] {
-	return pulumix.Output[*ManagedIdentity]{
-		OutputState: i.ToManagedIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Azure Active Directory identity configuration for a resource.
 type ManagedIdentityOutput struct{ *pulumi.OutputState }
 
@@ -1892,12 +1687,6 @@ func (o ManagedIdentityOutput) ToManagedIdentityPtrOutputWithContext(ctx context
 	}).(ManagedIdentityPtrOutput)
 }
 
-func (o ManagedIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedIdentity] {
-	return pulumix.Output[ManagedIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The identity type
 func (o ManagedIdentityOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedIdentity) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -1920,12 +1709,6 @@ func (o ManagedIdentityPtrOutput) ToManagedIdentityPtrOutput() ManagedIdentityPt
 
 func (o ManagedIdentityPtrOutput) ToManagedIdentityPtrOutputWithContext(ctx context.Context) ManagedIdentityPtrOutput {
 	return o
-}
-
-func (o ManagedIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedIdentity] {
-	return pulumix.Output[*ManagedIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedIdentityPtrOutput) Elem() ManagedIdentityOutput {
@@ -1985,12 +1768,6 @@ func (o ManagedIdentityResponseOutput) ToManagedIdentityResponseOutputWithContex
 	return o
 }
 
-func (o ManagedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedIdentityResponse] {
-	return pulumix.Output[ManagedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // System Assigned Identity ObjectId.
 func (o ManagedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -2023,12 +1800,6 @@ func (o ManagedIdentityResponsePtrOutput) ToManagedIdentityResponsePtrOutput() M
 
 func (o ManagedIdentityResponsePtrOutput) ToManagedIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedIdentityResponsePtrOutput {
 	return o
-}
-
-func (o ManagedIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedIdentityResponse] {
-	return pulumix.Output[*ManagedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedIdentityResponsePtrOutput) Elem() ManagedIdentityResponseOutput {
@@ -2106,12 +1877,6 @@ func (o ManagedInstanceOperationStatusResponseOutput) ToManagedInstanceOperation
 	return o
 }
 
-func (o ManagedInstanceOperationStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedInstanceOperationStatusResponse] {
-	return pulumix.Output[ManagedInstanceOperationStatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Operation id
 func (o ManagedInstanceOperationStatusResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedInstanceOperationStatusResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -2139,12 +1904,6 @@ func (o ManagedInstanceOperationStatusResponseArrayOutput) ToManagedInstanceOper
 
 func (o ManagedInstanceOperationStatusResponseArrayOutput) ToManagedInstanceOperationStatusResponseArrayOutputWithContext(ctx context.Context) ManagedInstanceOperationStatusResponseArrayOutput {
 	return o
-}
-
-func (o ManagedInstanceOperationStatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagedInstanceOperationStatusResponse] {
-	return pulumix.Output[[]ManagedInstanceOperationStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedInstanceOperationStatusResponseArrayOutput) Index(i pulumi.IntInput) ManagedInstanceOperationStatusResponseOutput {
@@ -2180,12 +1939,6 @@ func (o ManagementServerPropertiesResponseOutput) ToManagementServerPropertiesRe
 
 func (o ManagementServerPropertiesResponseOutput) ToManagementServerPropertiesResponseOutputWithContext(ctx context.Context) ManagementServerPropertiesResponseOutput {
 	return o
-}
-
-func (o ManagementServerPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementServerPropertiesResponse] {
-	return pulumix.Output[ManagementServerPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Management server Fully Qualified Domain Name.
@@ -2225,12 +1978,6 @@ func (o ManagementServerPropertiesResponseArrayOutput) ToManagementServerPropert
 
 func (o ManagementServerPropertiesResponseArrayOutput) ToManagementServerPropertiesResponseArrayOutputWithContext(ctx context.Context) ManagementServerPropertiesResponseArrayOutput {
 	return o
-}
-
-func (o ManagementServerPropertiesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagementServerPropertiesResponse] {
-	return pulumix.Output[[]ManagementServerPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagementServerPropertiesResponseArrayOutput) Index(i pulumi.IntInput) ManagementServerPropertiesResponseOutput {
@@ -2275,12 +2022,6 @@ func (o MonitoredResourcePropertiesResponseOutput) ToMonitoredResourceProperties
 
 func (o MonitoredResourcePropertiesResponseOutput) ToMonitoredResourcePropertiesResponseOutputWithContext(ctx context.Context) MonitoredResourcePropertiesResponseOutput {
 	return o
-}
-
-func (o MonitoredResourcePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoredResourcePropertiesResponse] {
-	return pulumix.Output[MonitoredResourcePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The version of the monitored resource agent version.
@@ -2407,12 +2148,6 @@ func (i MonitoringInstancePropertiesArgs) ToMonitoringInstancePropertiesOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoringInstancePropertiesOutput)
 }
 
-func (i MonitoringInstancePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[MonitoringInstanceProperties] {
-	return pulumix.Output[MonitoringInstanceProperties]{
-		OutputState: i.ToMonitoringInstancePropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MonitoringInstancePropertiesArgs) ToMonitoringInstancePropertiesPtrOutput() MonitoringInstancePropertiesPtrOutput {
 	return i.ToMonitoringInstancePropertiesPtrOutputWithContext(context.Background())
 }
@@ -2454,12 +2189,6 @@ func (i *monitoringInstancePropertiesPtrType) ToMonitoringInstancePropertiesPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoringInstancePropertiesPtrOutput)
 }
 
-func (i *monitoringInstancePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*MonitoringInstanceProperties] {
-	return pulumix.Output[*MonitoringInstanceProperties]{
-		OutputState: i.ToMonitoringInstancePropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties of a SCOM instance resource
 type MonitoringInstancePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -2483,12 +2212,6 @@ func (o MonitoringInstancePropertiesOutput) ToMonitoringInstancePropertiesPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitoringInstanceProperties) *MonitoringInstanceProperties {
 		return &v
 	}).(MonitoringInstancePropertiesPtrOutput)
-}
-
-func (o MonitoringInstancePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoringInstanceProperties] {
-	return pulumix.Output[MonitoringInstanceProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The properties to enable Azure Hybrid benefit for various SCOM infrastructure license.
@@ -2533,12 +2256,6 @@ func (o MonitoringInstancePropertiesPtrOutput) ToMonitoringInstancePropertiesPtr
 
 func (o MonitoringInstancePropertiesPtrOutput) ToMonitoringInstancePropertiesPtrOutputWithContext(ctx context.Context) MonitoringInstancePropertiesPtrOutput {
 	return o
-}
-
-func (o MonitoringInstancePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitoringInstanceProperties] {
-	return pulumix.Output[*MonitoringInstanceProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitoringInstancePropertiesPtrOutput) Elem() MonitoringInstancePropertiesOutput {
@@ -2665,12 +2382,6 @@ func (o MonitoringInstancePropertiesResponseOutput) ToMonitoringInstanceProperti
 	return o
 }
 
-func (o MonitoringInstancePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoringInstancePropertiesResponse] {
-	return pulumix.Output[MonitoringInstancePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The properties to enable Azure Hybrid benefit for various SCOM infrastructure license.
 func (o MonitoringInstancePropertiesResponseOutput) AzureHybridBenefit() AzureHybridBenefitPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v MonitoringInstancePropertiesResponse) *AzureHybridBenefitPropertiesResponse {
@@ -2771,12 +2482,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timestamp of resource creation (UTC).
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
@@ -2830,12 +2535,6 @@ func (o UserIdentityResponseOutput) ToUserIdentityResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o UserIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserIdentityResponse] {
-	return pulumix.Output[UserIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Azure Active Directory client id.
 func (o UserIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -2858,12 +2557,6 @@ func (o UserIdentityResponseMapOutput) ToUserIdentityResponseMapOutput() UserIde
 
 func (o UserIdentityResponseMapOutput) ToUserIdentityResponseMapOutputWithContext(ctx context.Context) UserIdentityResponseMapOutput {
 	return o
-}
-
-func (o UserIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserIdentityResponse] {
-	return pulumix.Output[map[string]UserIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserIdentityResponseOutput {

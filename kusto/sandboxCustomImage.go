@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Class representing a Kusto sandbox custom image.
@@ -143,12 +142,6 @@ func (i *SandboxCustomImage) ToSandboxCustomImageOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(SandboxCustomImageOutput)
 }
 
-func (i *SandboxCustomImage) ToOutput(ctx context.Context) pulumix.Output[*SandboxCustomImage] {
-	return pulumix.Output[*SandboxCustomImage]{
-		OutputState: i.ToSandboxCustomImageOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SandboxCustomImageOutput struct{ *pulumi.OutputState }
 
 func (SandboxCustomImageOutput) ElementType() reflect.Type {
@@ -161,12 +154,6 @@ func (o SandboxCustomImageOutput) ToSandboxCustomImageOutput() SandboxCustomImag
 
 func (o SandboxCustomImageOutput) ToSandboxCustomImageOutputWithContext(ctx context.Context) SandboxCustomImageOutput {
 	return o
-}
-
-func (o SandboxCustomImageOutput) ToOutput(ctx context.Context) pulumix.Output[*SandboxCustomImage] {
-	return pulumix.Output[*SandboxCustomImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The language name, for example Python.

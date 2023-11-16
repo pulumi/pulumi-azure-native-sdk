@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a devcenter.
@@ -91,12 +90,6 @@ func (o LookupDevCenterResultOutput) ToLookupDevCenterResultOutput() LookupDevCe
 
 func (o LookupDevCenterResultOutput) ToLookupDevCenterResultOutputWithContext(ctx context.Context) LookupDevCenterResultOutput {
 	return o
-}
-
-func (o LookupDevCenterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDevCenterResult] {
-	return pulumix.Output[LookupDevCenterResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The URI of the Dev Center.

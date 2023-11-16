@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a KafkaTopicMapResource
@@ -128,12 +127,6 @@ func (o LookupKafkaConnectorTopicMapResultOutput) ToLookupKafkaConnectorTopicMap
 
 func (o LookupKafkaConnectorTopicMapResultOutput) ToLookupKafkaConnectorTopicMapResultOutputWithContext(ctx context.Context) LookupKafkaConnectorTopicMapResultOutput {
 	return o
-}
-
-func (o LookupKafkaConnectorTopicMapResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKafkaConnectorTopicMapResult] {
-	return pulumix.Output[LookupKafkaConnectorTopicMapResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The batching settings for kafka messages.

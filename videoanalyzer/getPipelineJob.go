@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a specific pipeline job by name. If a pipeline job with that name has been previously created, the call will return the JSON representation of that instance.
@@ -96,12 +95,6 @@ func (o LookupPipelineJobResultOutput) ToLookupPipelineJobResultOutput() LookupP
 
 func (o LookupPipelineJobResultOutput) ToLookupPipelineJobResultOutputWithContext(ctx context.Context) LookupPipelineJobResultOutput {
 	return o
-}
-
-func (o LookupPipelineJobResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPipelineJobResult] {
-	return pulumix.Output[LookupPipelineJobResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An optional description for the pipeline.

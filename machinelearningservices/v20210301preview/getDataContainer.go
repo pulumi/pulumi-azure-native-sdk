@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure Resource Manager resource envelope.
@@ -85,12 +84,6 @@ func (o LookupDataContainerResultOutput) ToLookupDataContainerResultOutput() Loo
 
 func (o LookupDataContainerResultOutput) ToLookupDataContainerResultOutputWithContext(ctx context.Context) LookupDataContainerResultOutput {
 	return o
-}
-
-func (o LookupDataContainerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataContainerResult] {
-	return pulumix.Output[LookupDataContainerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

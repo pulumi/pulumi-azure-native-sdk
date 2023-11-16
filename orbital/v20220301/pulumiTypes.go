@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -37,12 +36,6 @@ func (o AuthorizedGroundstationResponseOutput) ToAuthorizedGroundstationResponse
 	return o
 }
 
-func (o AuthorizedGroundstationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizedGroundstationResponse] {
-	return pulumix.Output[AuthorizedGroundstationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Date of authorization expiration.
 func (o AuthorizedGroundstationResponseOutput) ExpirationDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuthorizedGroundstationResponse) *string { return v.ExpirationDate }).(pulumi.StringPtrOutput)
@@ -65,12 +58,6 @@ func (o AuthorizedGroundstationResponseArrayOutput) ToAuthorizedGroundstationRes
 
 func (o AuthorizedGroundstationResponseArrayOutput) ToAuthorizedGroundstationResponseArrayOutputWithContext(ctx context.Context) AuthorizedGroundstationResponseArrayOutput {
 	return o
-}
-
-func (o AuthorizedGroundstationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuthorizedGroundstationResponse] {
-	return pulumix.Output[[]AuthorizedGroundstationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthorizedGroundstationResponseArrayOutput) Index(i pulumi.IntInput) AuthorizedGroundstationResponseOutput {
@@ -118,12 +105,6 @@ func (o AvailableContactsResponseOutput) ToAvailableContactsResponseOutput() Ava
 
 func (o AvailableContactsResponseOutput) ToAvailableContactsResponseOutputWithContext(ctx context.Context) AvailableContactsResponseOutput {
 	return o
-}
-
-func (o AvailableContactsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AvailableContactsResponse] {
-	return pulumix.Output[AvailableContactsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Azimuth of the antenna at the end of the contact in decimal degrees.
@@ -195,12 +176,6 @@ func (o AvailableContactsResponseArrayOutput) ToAvailableContactsResponseArrayOu
 	return o
 }
 
-func (o AvailableContactsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AvailableContactsResponse] {
-	return pulumix.Output[[]AvailableContactsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AvailableContactsResponseArrayOutput) Index(i pulumi.IntInput) AvailableContactsResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AvailableContactsResponse {
 		return vs[0].([]AvailableContactsResponse)[vs[1].(int)]
@@ -228,12 +203,6 @@ func (o AvailableContactsResponseSpacecraftOutput) ToAvailableContactsResponseSp
 	return o
 }
 
-func (o AvailableContactsResponseSpacecraftOutput) ToOutput(ctx context.Context) pulumix.Output[AvailableContactsResponseSpacecraft] {
-	return pulumix.Output[AvailableContactsResponseSpacecraft]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource ID.
 func (o AvailableContactsResponseSpacecraftOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AvailableContactsResponseSpacecraft) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -251,12 +220,6 @@ func (o AvailableContactsResponseSpacecraftPtrOutput) ToAvailableContactsRespons
 
 func (o AvailableContactsResponseSpacecraftPtrOutput) ToAvailableContactsResponseSpacecraftPtrOutputWithContext(ctx context.Context) AvailableContactsResponseSpacecraftPtrOutput {
 	return o
-}
-
-func (o AvailableContactsResponseSpacecraftPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AvailableContactsResponseSpacecraft] {
-	return pulumix.Output[*AvailableContactsResponseSpacecraft]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AvailableContactsResponseSpacecraftPtrOutput) Elem() AvailableContactsResponseSpacecraftOutput {
@@ -314,12 +277,6 @@ func (i ContactParametersContactProfileArgs) ToContactParametersContactProfileOu
 	return pulumi.ToOutputWithContext(ctx, i).(ContactParametersContactProfileOutput)
 }
 
-func (i ContactParametersContactProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ContactParametersContactProfile] {
-	return pulumix.Output[ContactParametersContactProfile]{
-		OutputState: i.ToContactParametersContactProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The reference to the contact profile resource.
 type ContactParametersContactProfileOutput struct{ *pulumi.OutputState }
 
@@ -333,12 +290,6 @@ func (o ContactParametersContactProfileOutput) ToContactParametersContactProfile
 
 func (o ContactParametersContactProfileOutput) ToContactParametersContactProfileOutputWithContext(ctx context.Context) ContactParametersContactProfileOutput {
 	return o
-}
-
-func (o ContactParametersContactProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ContactParametersContactProfile] {
-	return pulumix.Output[ContactParametersContactProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource ID.
@@ -401,12 +352,6 @@ func (i ContactProfileLinkArgs) ToContactProfileLinkOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ContactProfileLinkOutput)
 }
 
-func (i ContactProfileLinkArgs) ToOutput(ctx context.Context) pulumix.Output[ContactProfileLink] {
-	return pulumix.Output[ContactProfileLink]{
-		OutputState: i.ToContactProfileLinkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ContactProfileLinkArrayInput is an input type that accepts ContactProfileLinkArray and ContactProfileLinkArrayOutput values.
 // You can construct a concrete instance of `ContactProfileLinkArrayInput` via:
 //
@@ -432,12 +377,6 @@ func (i ContactProfileLinkArray) ToContactProfileLinkArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ContactProfileLinkArrayOutput)
 }
 
-func (i ContactProfileLinkArray) ToOutput(ctx context.Context) pulumix.Output[[]ContactProfileLink] {
-	return pulumix.Output[[]ContactProfileLink]{
-		OutputState: i.ToContactProfileLinkArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contact Profile Link.
 type ContactProfileLinkOutput struct{ *pulumi.OutputState }
 
@@ -451,12 +390,6 @@ func (o ContactProfileLinkOutput) ToContactProfileLinkOutput() ContactProfileLin
 
 func (o ContactProfileLinkOutput) ToContactProfileLinkOutputWithContext(ctx context.Context) ContactProfileLinkOutput {
 	return o
-}
-
-func (o ContactProfileLinkOutput) ToOutput(ctx context.Context) pulumix.Output[ContactProfileLink] {
-	return pulumix.Output[ContactProfileLink]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Contact Profile Link Channel.
@@ -501,12 +434,6 @@ func (o ContactProfileLinkArrayOutput) ToContactProfileLinkArrayOutput() Contact
 
 func (o ContactProfileLinkArrayOutput) ToContactProfileLinkArrayOutputWithContext(ctx context.Context) ContactProfileLinkArrayOutput {
 	return o
-}
-
-func (o ContactProfileLinkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContactProfileLink] {
-	return pulumix.Output[[]ContactProfileLink]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContactProfileLinkArrayOutput) Index(i pulumi.IntInput) ContactProfileLinkOutput {
@@ -578,12 +505,6 @@ func (i ContactProfileLinkChannelArgs) ToContactProfileLinkChannelOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ContactProfileLinkChannelOutput)
 }
 
-func (i ContactProfileLinkChannelArgs) ToOutput(ctx context.Context) pulumix.Output[ContactProfileLinkChannel] {
-	return pulumix.Output[ContactProfileLinkChannel]{
-		OutputState: i.ToContactProfileLinkChannelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ContactProfileLinkChannelArrayInput is an input type that accepts ContactProfileLinkChannelArray and ContactProfileLinkChannelArrayOutput values.
 // You can construct a concrete instance of `ContactProfileLinkChannelArrayInput` via:
 //
@@ -609,12 +530,6 @@ func (i ContactProfileLinkChannelArray) ToContactProfileLinkChannelArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ContactProfileLinkChannelArrayOutput)
 }
 
-func (i ContactProfileLinkChannelArray) ToOutput(ctx context.Context) pulumix.Output[[]ContactProfileLinkChannel] {
-	return pulumix.Output[[]ContactProfileLinkChannel]{
-		OutputState: i.ToContactProfileLinkChannelArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contact Profile Link Channel.
 type ContactProfileLinkChannelOutput struct{ *pulumi.OutputState }
 
@@ -628,12 +543,6 @@ func (o ContactProfileLinkChannelOutput) ToContactProfileLinkChannelOutput() Con
 
 func (o ContactProfileLinkChannelOutput) ToContactProfileLinkChannelOutputWithContext(ctx context.Context) ContactProfileLinkChannelOutput {
 	return o
-}
-
-func (o ContactProfileLinkChannelOutput) ToOutput(ctx context.Context) pulumix.Output[ContactProfileLinkChannel] {
-	return pulumix.Output[ContactProfileLinkChannel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Bandwidth in MHz.
@@ -690,12 +599,6 @@ func (o ContactProfileLinkChannelArrayOutput) ToContactProfileLinkChannelArrayOu
 	return o
 }
 
-func (o ContactProfileLinkChannelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContactProfileLinkChannel] {
-	return pulumix.Output[[]ContactProfileLinkChannel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ContactProfileLinkChannelArrayOutput) Index(i pulumi.IntInput) ContactProfileLinkChannelOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContactProfileLinkChannel {
 		return vs[0].([]ContactProfileLinkChannel)[vs[1].(int)]
@@ -735,12 +638,6 @@ func (o ContactProfileLinkChannelResponseOutput) ToContactProfileLinkChannelResp
 
 func (o ContactProfileLinkChannelResponseOutput) ToContactProfileLinkChannelResponseOutputWithContext(ctx context.Context) ContactProfileLinkChannelResponseOutput {
 	return o
-}
-
-func (o ContactProfileLinkChannelResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContactProfileLinkChannelResponse] {
-	return pulumix.Output[ContactProfileLinkChannelResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Bandwidth in MHz.
@@ -797,12 +694,6 @@ func (o ContactProfileLinkChannelResponseArrayOutput) ToContactProfileLinkChanne
 	return o
 }
 
-func (o ContactProfileLinkChannelResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContactProfileLinkChannelResponse] {
-	return pulumix.Output[[]ContactProfileLinkChannelResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ContactProfileLinkChannelResponseArrayOutput) Index(i pulumi.IntInput) ContactProfileLinkChannelResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContactProfileLinkChannelResponse {
 		return vs[0].([]ContactProfileLinkChannelResponse)[vs[1].(int)]
@@ -838,12 +729,6 @@ func (o ContactProfileLinkResponseOutput) ToContactProfileLinkResponseOutput() C
 
 func (o ContactProfileLinkResponseOutput) ToContactProfileLinkResponseOutputWithContext(ctx context.Context) ContactProfileLinkResponseOutput {
 	return o
-}
-
-func (o ContactProfileLinkResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContactProfileLinkResponse] {
-	return pulumix.Output[ContactProfileLinkResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Contact Profile Link Channel.
@@ -890,12 +775,6 @@ func (o ContactProfileLinkResponseArrayOutput) ToContactProfileLinkResponseArray
 	return o
 }
 
-func (o ContactProfileLinkResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContactProfileLinkResponse] {
-	return pulumix.Output[[]ContactProfileLinkResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ContactProfileLinkResponseArrayOutput) Index(i pulumi.IntInput) ContactProfileLinkResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContactProfileLinkResponse {
 		return vs[0].([]ContactProfileLinkResponse)[vs[1].(int)]
@@ -937,12 +816,6 @@ func (i ContactProfilesPropertiesNetworkConfigurationArgs) ToContactProfilesProp
 	return pulumi.ToOutputWithContext(ctx, i).(ContactProfilesPropertiesNetworkConfigurationOutput)
 }
 
-func (i ContactProfilesPropertiesNetworkConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ContactProfilesPropertiesNetworkConfiguration] {
-	return pulumix.Output[ContactProfilesPropertiesNetworkConfiguration]{
-		OutputState: i.ToContactProfilesPropertiesNetworkConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Network configuration of customer virtual network.
 type ContactProfilesPropertiesNetworkConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -956,12 +829,6 @@ func (o ContactProfilesPropertiesNetworkConfigurationOutput) ToContactProfilesPr
 
 func (o ContactProfilesPropertiesNetworkConfigurationOutput) ToContactProfilesPropertiesNetworkConfigurationOutputWithContext(ctx context.Context) ContactProfilesPropertiesNetworkConfigurationOutput {
 	return o
-}
-
-func (o ContactProfilesPropertiesNetworkConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ContactProfilesPropertiesNetworkConfiguration] {
-	return pulumix.Output[ContactProfilesPropertiesNetworkConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ARM resource identifier of the subnet delegated to the Microsoft.Orbital/orbitalGateways. Needs to be at least a class C subnet, and should not have any IP created in it.
@@ -988,12 +855,6 @@ func (o ContactProfilesPropertiesResponseNetworkConfigurationOutput) ToContactPr
 
 func (o ContactProfilesPropertiesResponseNetworkConfigurationOutput) ToContactProfilesPropertiesResponseNetworkConfigurationOutputWithContext(ctx context.Context) ContactProfilesPropertiesResponseNetworkConfigurationOutput {
 	return o
-}
-
-func (o ContactProfilesPropertiesResponseNetworkConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ContactProfilesPropertiesResponseNetworkConfiguration] {
-	return pulumix.Output[ContactProfilesPropertiesResponseNetworkConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ARM resource identifier of the subnet delegated to the Microsoft.Orbital/orbitalGateways. Needs to be at least a class C subnet, and should not have any IP created in it.
@@ -1036,12 +897,6 @@ func (i ContactsPropertiesContactProfileArgs) ToContactsPropertiesContactProfile
 	return pulumi.ToOutputWithContext(ctx, i).(ContactsPropertiesContactProfileOutput)
 }
 
-func (i ContactsPropertiesContactProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ContactsPropertiesContactProfile] {
-	return pulumix.Output[ContactsPropertiesContactProfile]{
-		OutputState: i.ToContactsPropertiesContactProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The reference to the contact profile resource.
 type ContactsPropertiesContactProfileOutput struct{ *pulumi.OutputState }
 
@@ -1055,12 +910,6 @@ func (o ContactsPropertiesContactProfileOutput) ToContactsPropertiesContactProfi
 
 func (o ContactsPropertiesContactProfileOutput) ToContactsPropertiesContactProfileOutputWithContext(ctx context.Context) ContactsPropertiesContactProfileOutput {
 	return o
-}
-
-func (o ContactsPropertiesContactProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ContactsPropertiesContactProfile] {
-	return pulumix.Output[ContactsPropertiesContactProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource ID.
@@ -1089,12 +938,6 @@ func (o ContactsPropertiesResponseAntennaConfigurationOutput) ToContactsProperti
 
 func (o ContactsPropertiesResponseAntennaConfigurationOutput) ToContactsPropertiesResponseAntennaConfigurationOutputWithContext(ctx context.Context) ContactsPropertiesResponseAntennaConfigurationOutput {
 	return o
-}
-
-func (o ContactsPropertiesResponseAntennaConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ContactsPropertiesResponseAntennaConfiguration] {
-	return pulumix.Output[ContactsPropertiesResponseAntennaConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The destination IP a packet can be sent to. This would for example be the TCP endpoint you would send data to.
@@ -1126,12 +969,6 @@ func (o ContactsPropertiesResponseContactProfileOutput) ToContactsPropertiesResp
 
 func (o ContactsPropertiesResponseContactProfileOutput) ToContactsPropertiesResponseContactProfileOutputWithContext(ctx context.Context) ContactsPropertiesResponseContactProfileOutput {
 	return o
-}
-
-func (o ContactsPropertiesResponseContactProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ContactsPropertiesResponseContactProfile] {
-	return pulumix.Output[ContactsPropertiesResponseContactProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource ID.
@@ -1186,12 +1023,6 @@ func (i EndPointArgs) ToEndPointOutputWithContext(ctx context.Context) EndPointO
 	return pulumi.ToOutputWithContext(ctx, i).(EndPointOutput)
 }
 
-func (i EndPointArgs) ToOutput(ctx context.Context) pulumix.Output[EndPoint] {
-	return pulumix.Output[EndPoint]{
-		OutputState: i.ToEndPointOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Customer End point to store/retrieve data during a contact.
 type EndPointOutput struct{ *pulumi.OutputState }
 
@@ -1205,12 +1036,6 @@ func (o EndPointOutput) ToEndPointOutput() EndPointOutput {
 
 func (o EndPointOutput) ToEndPointOutputWithContext(ctx context.Context) EndPointOutput {
 	return o
-}
-
-func (o EndPointOutput) ToOutput(ctx context.Context) pulumix.Output[EndPoint] {
-	return pulumix.Output[EndPoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of an end point.
@@ -1258,12 +1083,6 @@ func (o EndPointResponseOutput) ToEndPointResponseOutput() EndPointResponseOutpu
 
 func (o EndPointResponseOutput) ToEndPointResponseOutputWithContext(ctx context.Context) EndPointResponseOutput {
 	return o
-}
-
-func (o EndPointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EndPointResponse] {
-	return pulumix.Output[EndPointResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of an end point.
@@ -1337,12 +1156,6 @@ func (i SpacecraftLinkArgs) ToSpacecraftLinkOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SpacecraftLinkOutput)
 }
 
-func (i SpacecraftLinkArgs) ToOutput(ctx context.Context) pulumix.Output[SpacecraftLink] {
-	return pulumix.Output[SpacecraftLink]{
-		OutputState: i.ToSpacecraftLinkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SpacecraftLinkArrayInput is an input type that accepts SpacecraftLinkArray and SpacecraftLinkArrayOutput values.
 // You can construct a concrete instance of `SpacecraftLinkArrayInput` via:
 //
@@ -1368,12 +1181,6 @@ func (i SpacecraftLinkArray) ToSpacecraftLinkArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SpacecraftLinkArrayOutput)
 }
 
-func (i SpacecraftLinkArray) ToOutput(ctx context.Context) pulumix.Output[[]SpacecraftLink] {
-	return pulumix.Output[[]SpacecraftLink]{
-		OutputState: i.ToSpacecraftLinkArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // List of authorized spacecraft links per ground station and the expiration date of the authorization.
 type SpacecraftLinkOutput struct{ *pulumi.OutputState }
 
@@ -1387,12 +1194,6 @@ func (o SpacecraftLinkOutput) ToSpacecraftLinkOutput() SpacecraftLinkOutput {
 
 func (o SpacecraftLinkOutput) ToSpacecraftLinkOutputWithContext(ctx context.Context) SpacecraftLinkOutput {
 	return o
-}
-
-func (o SpacecraftLinkOutput) ToOutput(ctx context.Context) pulumix.Output[SpacecraftLink] {
-	return pulumix.Output[SpacecraftLink]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Bandwidth in MHz.
@@ -1434,12 +1235,6 @@ func (o SpacecraftLinkArrayOutput) ToSpacecraftLinkArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o SpacecraftLinkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SpacecraftLink] {
-	return pulumix.Output[[]SpacecraftLink]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SpacecraftLinkArrayOutput) Index(i pulumi.IntInput) SpacecraftLinkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SpacecraftLink {
 		return vs[0].([]SpacecraftLink)[vs[1].(int)]
@@ -1475,12 +1270,6 @@ func (o SpacecraftLinkResponseOutput) ToSpacecraftLinkResponseOutput() Spacecraf
 
 func (o SpacecraftLinkResponseOutput) ToSpacecraftLinkResponseOutputWithContext(ctx context.Context) SpacecraftLinkResponseOutput {
 	return o
-}
-
-func (o SpacecraftLinkResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SpacecraftLinkResponse] {
-	return pulumix.Output[SpacecraftLinkResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Authorized Ground Stations
@@ -1527,12 +1316,6 @@ func (o SpacecraftLinkResponseArrayOutput) ToSpacecraftLinkResponseArrayOutputWi
 	return o
 }
 
-func (o SpacecraftLinkResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SpacecraftLinkResponse] {
-	return pulumix.Output[[]SpacecraftLinkResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SpacecraftLinkResponseArrayOutput) Index(i pulumi.IntInput) SpacecraftLinkResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SpacecraftLinkResponse {
 		return vs[0].([]SpacecraftLinkResponse)[vs[1].(int)]
@@ -1568,12 +1351,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

@@ -95,12 +95,6 @@ func (o AutoExecuteStatusOutput) ToAutoExecuteStatusPtrOutputWithContext(ctx con
 	}).(AutoExecuteStatusPtrOutput)
 }
 
-func (o AutoExecuteStatusOutput) ToOutput(ctx context.Context) pulumix.Output[AutoExecuteStatus] {
-	return pulumix.Output[AutoExecuteStatus]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AutoExecuteStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -134,12 +128,6 @@ func (o AutoExecuteStatusPtrOutput) ToAutoExecuteStatusPtrOutput() AutoExecuteSt
 
 func (o AutoExecuteStatusPtrOutput) ToAutoExecuteStatusPtrOutputWithContext(ctx context.Context) AutoExecuteStatusPtrOutput {
 	return o
-}
-
-func (o AutoExecuteStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoExecuteStatus] {
-	return pulumix.Output[*AutoExecuteStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoExecuteStatusPtrOutput) Elem() AutoExecuteStatusOutput {
@@ -298,12 +286,6 @@ func (o BlobAuditingPolicyStateOutput) ToBlobAuditingPolicyStatePtrOutputWithCon
 	}).(BlobAuditingPolicyStatePtrOutput)
 }
 
-func (o BlobAuditingPolicyStateOutput) ToOutput(ctx context.Context) pulumix.Output[BlobAuditingPolicyState] {
-	return pulumix.Output[BlobAuditingPolicyState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BlobAuditingPolicyStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -337,12 +319,6 @@ func (o BlobAuditingPolicyStatePtrOutput) ToBlobAuditingPolicyStatePtrOutput() B
 
 func (o BlobAuditingPolicyStatePtrOutput) ToBlobAuditingPolicyStatePtrOutputWithContext(ctx context.Context) BlobAuditingPolicyStatePtrOutput {
 	return o
-}
-
-func (o BlobAuditingPolicyStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BlobAuditingPolicyState] {
-	return pulumix.Output[*BlobAuditingPolicyState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlobAuditingPolicyStatePtrOutput) Elem() BlobAuditingPolicyStateOutput {
@@ -530,12 +506,6 @@ func (o DataMaskingStateOutput) ToDataMaskingStatePtrOutputWithContext(ctx conte
 	}).(DataMaskingStatePtrOutput)
 }
 
-func (o DataMaskingStateOutput) ToOutput(ctx context.Context) pulumix.Output[DataMaskingState] {
-	return pulumix.Output[DataMaskingState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataMaskingStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -569,12 +539,6 @@ func (o DataMaskingStatePtrOutput) ToDataMaskingStatePtrOutput() DataMaskingStat
 
 func (o DataMaskingStatePtrOutput) ToDataMaskingStatePtrOutputWithContext(ctx context.Context) DataMaskingStatePtrOutput {
 	return o
-}
-
-func (o DataMaskingStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataMaskingState] {
-	return pulumix.Output[*DataMaskingState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataMaskingStatePtrOutput) Elem() DataMaskingStateOutput {
@@ -778,12 +742,6 @@ func (o GeoBackupPolicyStateEnumOutput) ToGeoBackupPolicyStateEnumPtrOutputWithC
 	}).(GeoBackupPolicyStateEnumPtrOutput)
 }
 
-func (o GeoBackupPolicyStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[GeoBackupPolicyStateEnum] {
-	return pulumix.Output[GeoBackupPolicyStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GeoBackupPolicyStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -817,12 +775,6 @@ func (o GeoBackupPolicyStateEnumPtrOutput) ToGeoBackupPolicyStateEnumPtrOutput()
 
 func (o GeoBackupPolicyStateEnumPtrOutput) ToGeoBackupPolicyStateEnumPtrOutputWithContext(ctx context.Context) GeoBackupPolicyStateEnumPtrOutput {
 	return o
-}
-
-func (o GeoBackupPolicyStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GeoBackupPolicyStateEnum] {
-	return pulumix.Output[*GeoBackupPolicyStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GeoBackupPolicyStateEnumPtrOutput) Elem() GeoBackupPolicyStateEnumOutput {
@@ -987,12 +939,6 @@ func (o JobScheduleTypeOutput) ToJobScheduleTypePtrOutputWithContext(ctx context
 	}).(JobScheduleTypePtrOutput)
 }
 
-func (o JobScheduleTypeOutput) ToOutput(ctx context.Context) pulumix.Output[JobScheduleType] {
-	return pulumix.Output[JobScheduleType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobScheduleTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1026,12 +972,6 @@ func (o JobScheduleTypePtrOutput) ToJobScheduleTypePtrOutput() JobScheduleTypePt
 
 func (o JobScheduleTypePtrOutput) ToJobScheduleTypePtrOutputWithContext(ctx context.Context) JobScheduleTypePtrOutput {
 	return o
-}
-
-func (o JobScheduleTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobScheduleType] {
-	return pulumix.Output[*JobScheduleType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobScheduleTypePtrOutput) Elem() JobScheduleTypeOutput {
@@ -1191,12 +1131,6 @@ func (o JobTargetGroupMembershipTypeOutput) ToJobTargetGroupMembershipTypePtrOut
 	}).(JobTargetGroupMembershipTypePtrOutput)
 }
 
-func (o JobTargetGroupMembershipTypeOutput) ToOutput(ctx context.Context) pulumix.Output[JobTargetGroupMembershipType] {
-	return pulumix.Output[JobTargetGroupMembershipType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o JobTargetGroupMembershipTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1230,12 +1164,6 @@ func (o JobTargetGroupMembershipTypePtrOutput) ToJobTargetGroupMembershipTypePtr
 
 func (o JobTargetGroupMembershipTypePtrOutput) ToJobTargetGroupMembershipTypePtrOutputWithContext(ctx context.Context) JobTargetGroupMembershipTypePtrOutput {
 	return o
-}
-
-func (o JobTargetGroupMembershipTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTargetGroupMembershipType] {
-	return pulumix.Output[*JobTargetGroupMembershipType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JobTargetGroupMembershipTypePtrOutput) Elem() JobTargetGroupMembershipTypeOutput {
@@ -1501,12 +1429,6 @@ func (o SecurityAlertsPolicyStateOutput) ToSecurityAlertsPolicyStatePtrOutputWit
 	}).(SecurityAlertsPolicyStatePtrOutput)
 }
 
-func (o SecurityAlertsPolicyStateOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityAlertsPolicyState] {
-	return pulumix.Output[SecurityAlertsPolicyState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SecurityAlertsPolicyStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1540,12 +1462,6 @@ func (o SecurityAlertsPolicyStatePtrOutput) ToSecurityAlertsPolicyStatePtrOutput
 
 func (o SecurityAlertsPolicyStatePtrOutput) ToSecurityAlertsPolicyStatePtrOutputWithContext(ctx context.Context) SecurityAlertsPolicyStatePtrOutput {
 	return o
-}
-
-func (o SecurityAlertsPolicyStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityAlertsPolicyState] {
-	return pulumix.Output[*SecurityAlertsPolicyState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecurityAlertsPolicyStatePtrOutput) Elem() SecurityAlertsPolicyStateOutput {
@@ -1686,12 +1602,6 @@ func (o SensitivityLabelRankOutput) ToSensitivityLabelRankPtrOutputWithContext(c
 	}).(SensitivityLabelRankPtrOutput)
 }
 
-func (o SensitivityLabelRankOutput) ToOutput(ctx context.Context) pulumix.Output[SensitivityLabelRank] {
-	return pulumix.Output[SensitivityLabelRank]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SensitivityLabelRankOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1725,12 +1635,6 @@ func (o SensitivityLabelRankPtrOutput) ToSensitivityLabelRankPtrOutput() Sensiti
 
 func (o SensitivityLabelRankPtrOutput) ToSensitivityLabelRankPtrOutputWithContext(ctx context.Context) SensitivityLabelRankPtrOutput {
 	return o
-}
-
-func (o SensitivityLabelRankPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SensitivityLabelRank] {
-	return pulumix.Output[*SensitivityLabelRank]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SensitivityLabelRankPtrOutput) Elem() SensitivityLabelRankOutput {
@@ -1902,12 +1806,6 @@ func (o SqlVulnerabilityAssessmentStateOutput) ToSqlVulnerabilityAssessmentState
 	}).(SqlVulnerabilityAssessmentStatePtrOutput)
 }
 
-func (o SqlVulnerabilityAssessmentStateOutput) ToOutput(ctx context.Context) pulumix.Output[SqlVulnerabilityAssessmentState] {
-	return pulumix.Output[SqlVulnerabilityAssessmentState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SqlVulnerabilityAssessmentStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1941,12 +1839,6 @@ func (o SqlVulnerabilityAssessmentStatePtrOutput) ToSqlVulnerabilityAssessmentSt
 
 func (o SqlVulnerabilityAssessmentStatePtrOutput) ToSqlVulnerabilityAssessmentStatePtrOutputWithContext(ctx context.Context) SqlVulnerabilityAssessmentStatePtrOutput {
 	return o
-}
-
-func (o SqlVulnerabilityAssessmentStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlVulnerabilityAssessmentState] {
-	return pulumix.Output[*SqlVulnerabilityAssessmentState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SqlVulnerabilityAssessmentStatePtrOutput) Elem() SqlVulnerabilityAssessmentStateOutput {
@@ -2110,12 +2002,6 @@ func (o TransparentDataEncryptionStateEnumOutput) ToTransparentDataEncryptionSta
 	}).(TransparentDataEncryptionStateEnumPtrOutput)
 }
 
-func (o TransparentDataEncryptionStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[TransparentDataEncryptionStateEnum] {
-	return pulumix.Output[TransparentDataEncryptionStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TransparentDataEncryptionStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -2149,12 +2035,6 @@ func (o TransparentDataEncryptionStateEnumPtrOutput) ToTransparentDataEncryption
 
 func (o TransparentDataEncryptionStateEnumPtrOutput) ToTransparentDataEncryptionStateEnumPtrOutputWithContext(ctx context.Context) TransparentDataEncryptionStateEnumPtrOutput {
 	return o
-}
-
-func (o TransparentDataEncryptionStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TransparentDataEncryptionStateEnum] {
-	return pulumix.Output[*TransparentDataEncryptionStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TransparentDataEncryptionStateEnumPtrOutput) Elem() TransparentDataEncryptionStateEnumOutput {

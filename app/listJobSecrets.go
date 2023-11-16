@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Container Apps Job Secrets Collection ARM resource.
@@ -76,12 +75,6 @@ func (o ListJobSecretsResultOutput) ToListJobSecretsResultOutput() ListJobSecret
 
 func (o ListJobSecretsResultOutput) ToListJobSecretsResultOutputWithContext(ctx context.Context) ListJobSecretsResultOutput {
 	return o
-}
-
-func (o ListJobSecretsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListJobSecretsResult] {
-	return pulumix.Output[ListJobSecretsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Collection of resources.

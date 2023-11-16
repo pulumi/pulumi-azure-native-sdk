@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i DnsConfigArgs) ToDnsConfigOutputWithContext(ctx context.Context) DnsConf
 	return pulumi.ToOutputWithContext(ctx, i).(DnsConfigOutput)
 }
 
-func (i DnsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[DnsConfig] {
-	return pulumix.Output[DnsConfig]{
-		OutputState: i.ToDnsConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DnsConfigArgs) ToDnsConfigPtrOutput() DnsConfigPtrOutput {
 	return i.ToDnsConfigPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *dnsConfigPtrType) ToDnsConfigPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(DnsConfigPtrOutput)
 }
 
-func (i *dnsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*DnsConfig] {
-	return pulumix.Output[*DnsConfig]{
-		OutputState: i.ToDnsConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Class containing DNS settings in a Traffic Manager profile.
 type DnsConfigOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o DnsConfigOutput) ToDnsConfigPtrOutputWithContext(ctx context.Context) Dn
 	}).(DnsConfigPtrOutput)
 }
 
-func (o DnsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[DnsConfig] {
-	return pulumix.Output[DnsConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The relative DNS name provided by this Traffic Manager profile. This value is combined with the DNS domain name used by Azure Traffic Manager to form the fully-qualified domain name (FQDN) of the profile.
 func (o DnsConfigOutput) RelativeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DnsConfig) *string { return v.RelativeName }).(pulumi.StringPtrOutput)
@@ -159,12 +140,6 @@ func (o DnsConfigPtrOutput) ToDnsConfigPtrOutput() DnsConfigPtrOutput {
 
 func (o DnsConfigPtrOutput) ToDnsConfigPtrOutputWithContext(ctx context.Context) DnsConfigPtrOutput {
 	return o
-}
-
-func (o DnsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DnsConfig] {
-	return pulumix.Output[*DnsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DnsConfigPtrOutput) Elem() DnsConfigOutput {
@@ -222,12 +197,6 @@ func (o DnsConfigResponseOutput) ToDnsConfigResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o DnsConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DnsConfigResponse] {
-	return pulumix.Output[DnsConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The fully-qualified domain name (FQDN) of the Traffic Manager profile. This is formed from the concatenation of the RelativeName with the DNS domain used by Azure Traffic Manager.
 func (o DnsConfigResponseOutput) Fqdn() pulumi.StringOutput {
 	return o.ApplyT(func(v DnsConfigResponse) string { return v.Fqdn }).(pulumi.StringOutput)
@@ -255,12 +224,6 @@ func (o DnsConfigResponsePtrOutput) ToDnsConfigResponsePtrOutput() DnsConfigResp
 
 func (o DnsConfigResponsePtrOutput) ToDnsConfigResponsePtrOutputWithContext(ctx context.Context) DnsConfigResponsePtrOutput {
 	return o
-}
-
-func (o DnsConfigResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DnsConfigResponse] {
-	return pulumix.Output[*DnsConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DnsConfigResponsePtrOutput) Elem() DnsConfigResponseOutput {
@@ -402,12 +365,6 @@ func (i EndpointTypeArgs) ToEndpointTypeOutputWithContext(ctx context.Context) E
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointTypeOutput)
 }
 
-func (i EndpointTypeArgs) ToOutput(ctx context.Context) pulumix.Output[EndpointType] {
-	return pulumix.Output[EndpointType]{
-		OutputState: i.ToEndpointTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EndpointTypeArrayInput is an input type that accepts EndpointTypeArray and EndpointTypeArrayOutput values.
 // You can construct a concrete instance of `EndpointTypeArrayInput` via:
 //
@@ -433,12 +390,6 @@ func (i EndpointTypeArray) ToEndpointTypeArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointTypeArrayOutput)
 }
 
-func (i EndpointTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]EndpointType] {
-	return pulumix.Output[[]EndpointType]{
-		OutputState: i.ToEndpointTypeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Class representing a Traffic Manager endpoint.
 type EndpointTypeOutput struct{ *pulumi.OutputState }
 
@@ -452,12 +403,6 @@ func (o EndpointTypeOutput) ToEndpointTypeOutput() EndpointTypeOutput {
 
 func (o EndpointTypeOutput) ToEndpointTypeOutputWithContext(ctx context.Context) EndpointTypeOutput {
 	return o
-}
-
-func (o EndpointTypeOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointType] {
-	return pulumix.Output[EndpointType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.
@@ -559,12 +504,6 @@ func (o EndpointTypeArrayOutput) ToEndpointTypeArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o EndpointTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EndpointType] {
-	return pulumix.Output[[]EndpointType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EndpointTypeArrayOutput) Index(i pulumi.IntInput) EndpointTypeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointType {
 		return vs[0].([]EndpointType)[vs[1].(int)]
@@ -610,12 +549,6 @@ func (i EndpointPropertiesCustomHeadersArgs) ToEndpointPropertiesCustomHeadersOu
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointPropertiesCustomHeadersOutput)
 }
 
-func (i EndpointPropertiesCustomHeadersArgs) ToOutput(ctx context.Context) pulumix.Output[EndpointPropertiesCustomHeaders] {
-	return pulumix.Output[EndpointPropertiesCustomHeaders]{
-		OutputState: i.ToEndpointPropertiesCustomHeadersOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EndpointPropertiesCustomHeadersArrayInput is an input type that accepts EndpointPropertiesCustomHeadersArray and EndpointPropertiesCustomHeadersArrayOutput values.
 // You can construct a concrete instance of `EndpointPropertiesCustomHeadersArrayInput` via:
 //
@@ -641,12 +574,6 @@ func (i EndpointPropertiesCustomHeadersArray) ToEndpointPropertiesCustomHeadersA
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointPropertiesCustomHeadersArrayOutput)
 }
 
-func (i EndpointPropertiesCustomHeadersArray) ToOutput(ctx context.Context) pulumix.Output[[]EndpointPropertiesCustomHeaders] {
-	return pulumix.Output[[]EndpointPropertiesCustomHeaders]{
-		OutputState: i.ToEndpointPropertiesCustomHeadersArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Custom header name and value.
 type EndpointPropertiesCustomHeadersOutput struct{ *pulumi.OutputState }
 
@@ -660,12 +587,6 @@ func (o EndpointPropertiesCustomHeadersOutput) ToEndpointPropertiesCustomHeaders
 
 func (o EndpointPropertiesCustomHeadersOutput) ToEndpointPropertiesCustomHeadersOutputWithContext(ctx context.Context) EndpointPropertiesCustomHeadersOutput {
 	return o
-}
-
-func (o EndpointPropertiesCustomHeadersOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointPropertiesCustomHeaders] {
-	return pulumix.Output[EndpointPropertiesCustomHeaders]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Header name.
@@ -690,12 +611,6 @@ func (o EndpointPropertiesCustomHeadersArrayOutput) ToEndpointPropertiesCustomHe
 
 func (o EndpointPropertiesCustomHeadersArrayOutput) ToEndpointPropertiesCustomHeadersArrayOutputWithContext(ctx context.Context) EndpointPropertiesCustomHeadersArrayOutput {
 	return o
-}
-
-func (o EndpointPropertiesCustomHeadersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EndpointPropertiesCustomHeaders] {
-	return pulumix.Output[[]EndpointPropertiesCustomHeaders]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EndpointPropertiesCustomHeadersArrayOutput) Index(i pulumi.IntInput) EndpointPropertiesCustomHeadersOutput {
@@ -727,12 +642,6 @@ func (o EndpointPropertiesResponseCustomHeadersOutput) ToEndpointPropertiesRespo
 	return o
 }
 
-func (o EndpointPropertiesResponseCustomHeadersOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointPropertiesResponseCustomHeaders] {
-	return pulumix.Output[EndpointPropertiesResponseCustomHeaders]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Header name.
 func (o EndpointPropertiesResponseCustomHeadersOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EndpointPropertiesResponseCustomHeaders) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -755,12 +664,6 @@ func (o EndpointPropertiesResponseCustomHeadersArrayOutput) ToEndpointProperties
 
 func (o EndpointPropertiesResponseCustomHeadersArrayOutput) ToEndpointPropertiesResponseCustomHeadersArrayOutputWithContext(ctx context.Context) EndpointPropertiesResponseCustomHeadersArrayOutput {
 	return o
-}
-
-func (o EndpointPropertiesResponseCustomHeadersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EndpointPropertiesResponseCustomHeaders] {
-	return pulumix.Output[[]EndpointPropertiesResponseCustomHeaders]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EndpointPropertiesResponseCustomHeadersArrayOutput) Index(i pulumi.IntInput) EndpointPropertiesResponseCustomHeadersOutput {
@@ -794,12 +697,6 @@ func (o EndpointPropertiesResponseSubnetsOutput) ToEndpointPropertiesResponseSub
 	return o
 }
 
-func (o EndpointPropertiesResponseSubnetsOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointPropertiesResponseSubnets] {
-	return pulumix.Output[EndpointPropertiesResponseSubnets]{
-		OutputState: o.OutputState,
-	}
-}
-
 // First address in the subnet.
 func (o EndpointPropertiesResponseSubnetsOutput) First() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EndpointPropertiesResponseSubnets) *string { return v.First }).(pulumi.StringPtrOutput)
@@ -827,12 +724,6 @@ func (o EndpointPropertiesResponseSubnetsArrayOutput) ToEndpointPropertiesRespon
 
 func (o EndpointPropertiesResponseSubnetsArrayOutput) ToEndpointPropertiesResponseSubnetsArrayOutputWithContext(ctx context.Context) EndpointPropertiesResponseSubnetsArrayOutput {
 	return o
-}
-
-func (o EndpointPropertiesResponseSubnetsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EndpointPropertiesResponseSubnets] {
-	return pulumix.Output[[]EndpointPropertiesResponseSubnets]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EndpointPropertiesResponseSubnetsArrayOutput) Index(i pulumi.IntInput) EndpointPropertiesResponseSubnetsOutput {
@@ -884,12 +775,6 @@ func (i EndpointPropertiesSubnetsArgs) ToEndpointPropertiesSubnetsOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointPropertiesSubnetsOutput)
 }
 
-func (i EndpointPropertiesSubnetsArgs) ToOutput(ctx context.Context) pulumix.Output[EndpointPropertiesSubnets] {
-	return pulumix.Output[EndpointPropertiesSubnets]{
-		OutputState: i.ToEndpointPropertiesSubnetsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EndpointPropertiesSubnetsArrayInput is an input type that accepts EndpointPropertiesSubnetsArray and EndpointPropertiesSubnetsArrayOutput values.
 // You can construct a concrete instance of `EndpointPropertiesSubnetsArrayInput` via:
 //
@@ -915,12 +800,6 @@ func (i EndpointPropertiesSubnetsArray) ToEndpointPropertiesSubnetsArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointPropertiesSubnetsArrayOutput)
 }
 
-func (i EndpointPropertiesSubnetsArray) ToOutput(ctx context.Context) pulumix.Output[[]EndpointPropertiesSubnets] {
-	return pulumix.Output[[]EndpointPropertiesSubnets]{
-		OutputState: i.ToEndpointPropertiesSubnetsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Subnet first address, scope, and/or last address.
 type EndpointPropertiesSubnetsOutput struct{ *pulumi.OutputState }
 
@@ -934,12 +813,6 @@ func (o EndpointPropertiesSubnetsOutput) ToEndpointPropertiesSubnetsOutput() End
 
 func (o EndpointPropertiesSubnetsOutput) ToEndpointPropertiesSubnetsOutputWithContext(ctx context.Context) EndpointPropertiesSubnetsOutput {
 	return o
-}
-
-func (o EndpointPropertiesSubnetsOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointPropertiesSubnets] {
-	return pulumix.Output[EndpointPropertiesSubnets]{
-		OutputState: o.OutputState,
-	}
 }
 
 // First address in the subnet.
@@ -969,12 +842,6 @@ func (o EndpointPropertiesSubnetsArrayOutput) ToEndpointPropertiesSubnetsArrayOu
 
 func (o EndpointPropertiesSubnetsArrayOutput) ToEndpointPropertiesSubnetsArrayOutputWithContext(ctx context.Context) EndpointPropertiesSubnetsArrayOutput {
 	return o
-}
-
-func (o EndpointPropertiesSubnetsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EndpointPropertiesSubnets] {
-	return pulumix.Output[[]EndpointPropertiesSubnets]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EndpointPropertiesSubnetsArrayOutput) Index(i pulumi.IntInput) EndpointPropertiesSubnetsOutput {
@@ -1034,12 +901,6 @@ func (o EndpointResponseOutput) ToEndpointResponseOutput() EndpointResponseOutpu
 
 func (o EndpointResponseOutput) ToEndpointResponseOutputWithContext(ctx context.Context) EndpointResponseOutput {
 	return o
-}
-
-func (o EndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointResponse] {
-	return pulumix.Output[EndpointResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.
@@ -1141,12 +1002,6 @@ func (o EndpointResponseArrayOutput) ToEndpointResponseArrayOutputWithContext(ct
 	return o
 }
 
-func (o EndpointResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EndpointResponse] {
-	return pulumix.Output[[]EndpointResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EndpointResponseArrayOutput) Index(i pulumi.IntInput) EndpointResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointResponse {
 		return vs[0].([]EndpointResponse)[vs[1].(int)]
@@ -1220,12 +1075,6 @@ func (i MonitorConfigArgs) ToMonitorConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigOutput)
 }
 
-func (i MonitorConfigArgs) ToOutput(ctx context.Context) pulumix.Output[MonitorConfig] {
-	return pulumix.Output[MonitorConfig]{
-		OutputState: i.ToMonitorConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MonitorConfigArgs) ToMonitorConfigPtrOutput() MonitorConfigPtrOutput {
 	return i.ToMonitorConfigPtrOutputWithContext(context.Background())
 }
@@ -1267,12 +1116,6 @@ func (i *monitorConfigPtrType) ToMonitorConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigPtrOutput)
 }
 
-func (i *monitorConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*MonitorConfig] {
-	return pulumix.Output[*MonitorConfig]{
-		OutputState: i.ToMonitorConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Class containing endpoint monitoring settings in a Traffic Manager profile.
 type MonitorConfigOutput struct{ *pulumi.OutputState }
 
@@ -1296,12 +1139,6 @@ func (o MonitorConfigOutput) ToMonitorConfigPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorConfig) *MonitorConfig {
 		return &v
 	}).(MonitorConfigPtrOutput)
-}
-
-func (o MonitorConfigOutput) ToOutput(ctx context.Context) pulumix.Output[MonitorConfig] {
-	return pulumix.Output[MonitorConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of custom headers.
@@ -1361,12 +1198,6 @@ func (o MonitorConfigPtrOutput) ToMonitorConfigPtrOutput() MonitorConfigPtrOutpu
 
 func (o MonitorConfigPtrOutput) ToMonitorConfigPtrOutputWithContext(ctx context.Context) MonitorConfigPtrOutput {
 	return o
-}
-
-func (o MonitorConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitorConfig] {
-	return pulumix.Output[*MonitorConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitorConfigPtrOutput) Elem() MonitorConfigOutput {
@@ -1508,12 +1339,6 @@ func (i MonitorConfigCustomHeadersArgs) ToMonitorConfigCustomHeadersOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigCustomHeadersOutput)
 }
 
-func (i MonitorConfigCustomHeadersArgs) ToOutput(ctx context.Context) pulumix.Output[MonitorConfigCustomHeaders] {
-	return pulumix.Output[MonitorConfigCustomHeaders]{
-		OutputState: i.ToMonitorConfigCustomHeadersOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MonitorConfigCustomHeadersArrayInput is an input type that accepts MonitorConfigCustomHeadersArray and MonitorConfigCustomHeadersArrayOutput values.
 // You can construct a concrete instance of `MonitorConfigCustomHeadersArrayInput` via:
 //
@@ -1539,12 +1364,6 @@ func (i MonitorConfigCustomHeadersArray) ToMonitorConfigCustomHeadersArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigCustomHeadersArrayOutput)
 }
 
-func (i MonitorConfigCustomHeadersArray) ToOutput(ctx context.Context) pulumix.Output[[]MonitorConfigCustomHeaders] {
-	return pulumix.Output[[]MonitorConfigCustomHeaders]{
-		OutputState: i.ToMonitorConfigCustomHeadersArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Custom header name and value.
 type MonitorConfigCustomHeadersOutput struct{ *pulumi.OutputState }
 
@@ -1558,12 +1377,6 @@ func (o MonitorConfigCustomHeadersOutput) ToMonitorConfigCustomHeadersOutput() M
 
 func (o MonitorConfigCustomHeadersOutput) ToMonitorConfigCustomHeadersOutputWithContext(ctx context.Context) MonitorConfigCustomHeadersOutput {
 	return o
-}
-
-func (o MonitorConfigCustomHeadersOutput) ToOutput(ctx context.Context) pulumix.Output[MonitorConfigCustomHeaders] {
-	return pulumix.Output[MonitorConfigCustomHeaders]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Header name.
@@ -1588,12 +1401,6 @@ func (o MonitorConfigCustomHeadersArrayOutput) ToMonitorConfigCustomHeadersArray
 
 func (o MonitorConfigCustomHeadersArrayOutput) ToMonitorConfigCustomHeadersArrayOutputWithContext(ctx context.Context) MonitorConfigCustomHeadersArrayOutput {
 	return o
-}
-
-func (o MonitorConfigCustomHeadersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MonitorConfigCustomHeaders] {
-	return pulumix.Output[[]MonitorConfigCustomHeaders]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitorConfigCustomHeadersArrayOutput) Index(i pulumi.IntInput) MonitorConfigCustomHeadersOutput {
@@ -1641,12 +1448,6 @@ func (i MonitorConfigExpectedStatusCodeRangesArgs) ToMonitorConfigExpectedStatus
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigExpectedStatusCodeRangesOutput)
 }
 
-func (i MonitorConfigExpectedStatusCodeRangesArgs) ToOutput(ctx context.Context) pulumix.Output[MonitorConfigExpectedStatusCodeRanges] {
-	return pulumix.Output[MonitorConfigExpectedStatusCodeRanges]{
-		OutputState: i.ToMonitorConfigExpectedStatusCodeRangesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MonitorConfigExpectedStatusCodeRangesArrayInput is an input type that accepts MonitorConfigExpectedStatusCodeRangesArray and MonitorConfigExpectedStatusCodeRangesArrayOutput values.
 // You can construct a concrete instance of `MonitorConfigExpectedStatusCodeRangesArrayInput` via:
 //
@@ -1672,12 +1473,6 @@ func (i MonitorConfigExpectedStatusCodeRangesArray) ToMonitorConfigExpectedStatu
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorConfigExpectedStatusCodeRangesArrayOutput)
 }
 
-func (i MonitorConfigExpectedStatusCodeRangesArray) ToOutput(ctx context.Context) pulumix.Output[[]MonitorConfigExpectedStatusCodeRanges] {
-	return pulumix.Output[[]MonitorConfigExpectedStatusCodeRanges]{
-		OutputState: i.ToMonitorConfigExpectedStatusCodeRangesArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Min and max value of a status code range.
 type MonitorConfigExpectedStatusCodeRangesOutput struct{ *pulumi.OutputState }
 
@@ -1691,12 +1486,6 @@ func (o MonitorConfigExpectedStatusCodeRangesOutput) ToMonitorConfigExpectedStat
 
 func (o MonitorConfigExpectedStatusCodeRangesOutput) ToMonitorConfigExpectedStatusCodeRangesOutputWithContext(ctx context.Context) MonitorConfigExpectedStatusCodeRangesOutput {
 	return o
-}
-
-func (o MonitorConfigExpectedStatusCodeRangesOutput) ToOutput(ctx context.Context) pulumix.Output[MonitorConfigExpectedStatusCodeRanges] {
-	return pulumix.Output[MonitorConfigExpectedStatusCodeRanges]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Max status code.
@@ -1721,12 +1510,6 @@ func (o MonitorConfigExpectedStatusCodeRangesArrayOutput) ToMonitorConfigExpecte
 
 func (o MonitorConfigExpectedStatusCodeRangesArrayOutput) ToMonitorConfigExpectedStatusCodeRangesArrayOutputWithContext(ctx context.Context) MonitorConfigExpectedStatusCodeRangesArrayOutput {
 	return o
-}
-
-func (o MonitorConfigExpectedStatusCodeRangesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MonitorConfigExpectedStatusCodeRanges] {
-	return pulumix.Output[[]MonitorConfigExpectedStatusCodeRanges]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitorConfigExpectedStatusCodeRangesArrayOutput) Index(i pulumi.IntInput) MonitorConfigExpectedStatusCodeRangesOutput {
@@ -1770,12 +1553,6 @@ func (o MonitorConfigResponseOutput) ToMonitorConfigResponseOutput() MonitorConf
 
 func (o MonitorConfigResponseOutput) ToMonitorConfigResponseOutputWithContext(ctx context.Context) MonitorConfigResponseOutput {
 	return o
-}
-
-func (o MonitorConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MonitorConfigResponse] {
-	return pulumix.Output[MonitorConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of custom headers.
@@ -1837,12 +1614,6 @@ func (o MonitorConfigResponsePtrOutput) ToMonitorConfigResponsePtrOutput() Monit
 
 func (o MonitorConfigResponsePtrOutput) ToMonitorConfigResponsePtrOutputWithContext(ctx context.Context) MonitorConfigResponsePtrOutput {
 	return o
-}
-
-func (o MonitorConfigResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitorConfigResponse] {
-	return pulumix.Output[*MonitorConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitorConfigResponsePtrOutput) Elem() MonitorConfigResponseOutput {
@@ -1968,12 +1739,6 @@ func (o MonitorConfigResponseCustomHeadersOutput) ToMonitorConfigResponseCustomH
 	return o
 }
 
-func (o MonitorConfigResponseCustomHeadersOutput) ToOutput(ctx context.Context) pulumix.Output[MonitorConfigResponseCustomHeaders] {
-	return pulumix.Output[MonitorConfigResponseCustomHeaders]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Header name.
 func (o MonitorConfigResponseCustomHeadersOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MonitorConfigResponseCustomHeaders) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1996,12 +1761,6 @@ func (o MonitorConfigResponseCustomHeadersArrayOutput) ToMonitorConfigResponseCu
 
 func (o MonitorConfigResponseCustomHeadersArrayOutput) ToMonitorConfigResponseCustomHeadersArrayOutputWithContext(ctx context.Context) MonitorConfigResponseCustomHeadersArrayOutput {
 	return o
-}
-
-func (o MonitorConfigResponseCustomHeadersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MonitorConfigResponseCustomHeaders] {
-	return pulumix.Output[[]MonitorConfigResponseCustomHeaders]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitorConfigResponseCustomHeadersArrayOutput) Index(i pulumi.IntInput) MonitorConfigResponseCustomHeadersOutput {
@@ -2033,12 +1792,6 @@ func (o MonitorConfigResponseExpectedStatusCodeRangesOutput) ToMonitorConfigResp
 	return o
 }
 
-func (o MonitorConfigResponseExpectedStatusCodeRangesOutput) ToOutput(ctx context.Context) pulumix.Output[MonitorConfigResponseExpectedStatusCodeRanges] {
-	return pulumix.Output[MonitorConfigResponseExpectedStatusCodeRanges]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Max status code.
 func (o MonitorConfigResponseExpectedStatusCodeRangesOutput) Max() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MonitorConfigResponseExpectedStatusCodeRanges) *int { return v.Max }).(pulumi.IntPtrOutput)
@@ -2061,12 +1814,6 @@ func (o MonitorConfigResponseExpectedStatusCodeRangesArrayOutput) ToMonitorConfi
 
 func (o MonitorConfigResponseExpectedStatusCodeRangesArrayOutput) ToMonitorConfigResponseExpectedStatusCodeRangesArrayOutputWithContext(ctx context.Context) MonitorConfigResponseExpectedStatusCodeRangesArrayOutput {
 	return o
-}
-
-func (o MonitorConfigResponseExpectedStatusCodeRangesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MonitorConfigResponseExpectedStatusCodeRanges] {
-	return pulumix.Output[[]MonitorConfigResponseExpectedStatusCodeRanges]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitorConfigResponseExpectedStatusCodeRangesArrayOutput) Index(i pulumi.IntInput) MonitorConfigResponseExpectedStatusCodeRangesOutput {

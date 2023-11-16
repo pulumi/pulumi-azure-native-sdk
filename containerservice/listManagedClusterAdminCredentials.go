@@ -9,13 +9,12 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The list credential result response.
 // Azure REST API version: 2023-04-01.
 //
-// Other available API versions: 2019-02-01, 2019-06-01, 2021-05-01, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01.
+// Other available API versions: 2019-02-01, 2019-06-01, 2021-05-01, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview.
 func ListManagedClusterAdminCredentials(ctx *pulumi.Context, args *ListManagedClusterAdminCredentialsArgs, opts ...pulumi.InvokeOption) (*ListManagedClusterAdminCredentialsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListManagedClusterAdminCredentialsResult
@@ -80,12 +79,6 @@ func (o ListManagedClusterAdminCredentialsResultOutput) ToListManagedClusterAdmi
 
 func (o ListManagedClusterAdminCredentialsResultOutput) ToListManagedClusterAdminCredentialsResultOutputWithContext(ctx context.Context) ListManagedClusterAdminCredentialsResultOutput {
 	return o
-}
-
-func (o ListManagedClusterAdminCredentialsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListManagedClusterAdminCredentialsResult] {
-	return pulumix.Output[ListManagedClusterAdminCredentialsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Base64-encoded Kubernetes configuration file.

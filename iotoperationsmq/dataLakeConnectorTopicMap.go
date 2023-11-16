@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // MQ dataLakeConnector/topicMap resource
@@ -168,12 +167,6 @@ func (i *DataLakeConnectorTopicMap) ToDataLakeConnectorTopicMapOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(DataLakeConnectorTopicMapOutput)
 }
 
-func (i *DataLakeConnectorTopicMap) ToOutput(ctx context.Context) pulumix.Output[*DataLakeConnectorTopicMap] {
-	return pulumix.Output[*DataLakeConnectorTopicMap]{
-		OutputState: i.ToDataLakeConnectorTopicMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataLakeConnectorTopicMapOutput struct{ *pulumi.OutputState }
 
 func (DataLakeConnectorTopicMapOutput) ElementType() reflect.Type {
@@ -186,12 +179,6 @@ func (o DataLakeConnectorTopicMapOutput) ToDataLakeConnectorTopicMapOutput() Dat
 
 func (o DataLakeConnectorTopicMapOutput) ToDataLakeConnectorTopicMapOutputWithContext(ctx context.Context) DataLakeConnectorTopicMapOutput {
 	return o
-}
-
-func (o DataLakeConnectorTopicMapOutput) ToOutput(ctx context.Context) pulumix.Output[*DataLakeConnectorTopicMap] {
-	return pulumix.Output[*DataLakeConnectorTopicMap]{
-		OutputState: o.OutputState,
-	}
 }
 
 // DataLake Connector CRD to use.

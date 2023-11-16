@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2021-09-01-preview. Prior API version in Azure Native 1.x: 2020-11-20.
@@ -123,12 +122,6 @@ func (i *ResourceTypeRegistration) ToResourceTypeRegistrationOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceTypeRegistrationOutput)
 }
 
-func (i *ResourceTypeRegistration) ToOutput(ctx context.Context) pulumix.Output[*ResourceTypeRegistration] {
-	return pulumix.Output[*ResourceTypeRegistration]{
-		OutputState: i.ToResourceTypeRegistrationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ResourceTypeRegistrationOutput struct{ *pulumi.OutputState }
 
 func (ResourceTypeRegistrationOutput) ElementType() reflect.Type {
@@ -141,12 +134,6 @@ func (o ResourceTypeRegistrationOutput) ToResourceTypeRegistrationOutput() Resou
 
 func (o ResourceTypeRegistrationOutput) ToResourceTypeRegistrationOutputWithContext(ctx context.Context) ResourceTypeRegistrationOutput {
 	return o
-}
-
-func (o ResourceTypeRegistrationOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceTypeRegistration] {
-	return pulumix.Output[*ResourceTypeRegistration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

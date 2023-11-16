@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get function keys for a function in a web site, or a deployment slot.
@@ -87,12 +86,6 @@ func (o ListWebAppFunctionKeysResultOutput) ToListWebAppFunctionKeysResultOutput
 
 func (o ListWebAppFunctionKeysResultOutput) ToListWebAppFunctionKeysResultOutputWithContext(ctx context.Context) ListWebAppFunctionKeysResultOutput {
 	return o
-}
-
-func (o ListWebAppFunctionKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWebAppFunctionKeysResult] {
-	return pulumix.Output[ListWebAppFunctionKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Id.

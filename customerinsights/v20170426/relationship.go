@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The relationship resource format.
@@ -181,12 +180,6 @@ func (i *Relationship) ToRelationshipOutputWithContext(ctx context.Context) Rela
 	return pulumi.ToOutputWithContext(ctx, i).(RelationshipOutput)
 }
 
-func (i *Relationship) ToOutput(ctx context.Context) pulumix.Output[*Relationship] {
-	return pulumix.Output[*Relationship]{
-		OutputState: i.ToRelationshipOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RelationshipOutput struct{ *pulumi.OutputState }
 
 func (RelationshipOutput) ElementType() reflect.Type {
@@ -199,12 +192,6 @@ func (o RelationshipOutput) ToRelationshipOutput() RelationshipOutput {
 
 func (o RelationshipOutput) ToRelationshipOutputWithContext(ctx context.Context) RelationshipOutput {
 	return o
-}
-
-func (o RelationshipOutput) ToOutput(ctx context.Context) pulumix.Output[*Relationship] {
-	return pulumix.Output[*Relationship]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Relationship Cardinality.

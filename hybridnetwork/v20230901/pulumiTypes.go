@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -123,12 +122,6 @@ func (i ArtifactManifestPropertiesFormatArgs) ToArtifactManifestPropertiesFormat
 	return pulumi.ToOutputWithContext(ctx, i).(ArtifactManifestPropertiesFormatOutput)
 }
 
-func (i ArtifactManifestPropertiesFormatArgs) ToOutput(ctx context.Context) pulumix.Output[ArtifactManifestPropertiesFormat] {
-	return pulumix.Output[ArtifactManifestPropertiesFormat]{
-		OutputState: i.ToArtifactManifestPropertiesFormatOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ArtifactManifestPropertiesFormatArgs) ToArtifactManifestPropertiesFormatPtrOutput() ArtifactManifestPropertiesFormatPtrOutput {
 	return i.ToArtifactManifestPropertiesFormatPtrOutputWithContext(context.Background())
 }
@@ -170,12 +163,6 @@ func (i *artifactManifestPropertiesFormatPtrType) ToArtifactManifestPropertiesFo
 	return pulumi.ToOutputWithContext(ctx, i).(ArtifactManifestPropertiesFormatPtrOutput)
 }
 
-func (i *artifactManifestPropertiesFormatPtrType) ToOutput(ctx context.Context) pulumix.Output[*ArtifactManifestPropertiesFormat] {
-	return pulumix.Output[*ArtifactManifestPropertiesFormat]{
-		OutputState: i.ToArtifactManifestPropertiesFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Artifact manifest properties.
 type ArtifactManifestPropertiesFormatOutput struct{ *pulumi.OutputState }
 
@@ -201,12 +188,6 @@ func (o ArtifactManifestPropertiesFormatOutput) ToArtifactManifestPropertiesForm
 	}).(ArtifactManifestPropertiesFormatPtrOutput)
 }
 
-func (o ArtifactManifestPropertiesFormatOutput) ToOutput(ctx context.Context) pulumix.Output[ArtifactManifestPropertiesFormat] {
-	return pulumix.Output[ArtifactManifestPropertiesFormat]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The artifacts list.
 func (o ArtifactManifestPropertiesFormatOutput) Artifacts() ManifestArtifactFormatArrayOutput {
 	return o.ApplyT(func(v ArtifactManifestPropertiesFormat) []ManifestArtifactFormat { return v.Artifacts }).(ManifestArtifactFormatArrayOutput)
@@ -224,12 +205,6 @@ func (o ArtifactManifestPropertiesFormatPtrOutput) ToArtifactManifestPropertiesF
 
 func (o ArtifactManifestPropertiesFormatPtrOutput) ToArtifactManifestPropertiesFormatPtrOutputWithContext(ctx context.Context) ArtifactManifestPropertiesFormatPtrOutput {
 	return o
-}
-
-func (o ArtifactManifestPropertiesFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ArtifactManifestPropertiesFormat] {
-	return pulumix.Output[*ArtifactManifestPropertiesFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ArtifactManifestPropertiesFormatPtrOutput) Elem() ArtifactManifestPropertiesFormatOutput {
@@ -275,12 +250,6 @@ func (o ArtifactManifestPropertiesFormatResponseOutput) ToArtifactManifestProper
 
 func (o ArtifactManifestPropertiesFormatResponseOutput) ToArtifactManifestPropertiesFormatResponseOutputWithContext(ctx context.Context) ArtifactManifestPropertiesFormatResponseOutput {
 	return o
-}
-
-func (o ArtifactManifestPropertiesFormatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ArtifactManifestPropertiesFormatResponse] {
-	return pulumix.Output[ArtifactManifestPropertiesFormatResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The artifact manifest state.
@@ -339,12 +308,6 @@ func (i ArtifactStorePropertiesFormatArgs) ToArtifactStorePropertiesFormatOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ArtifactStorePropertiesFormatOutput)
 }
 
-func (i ArtifactStorePropertiesFormatArgs) ToOutput(ctx context.Context) pulumix.Output[ArtifactStorePropertiesFormat] {
-	return pulumix.Output[ArtifactStorePropertiesFormat]{
-		OutputState: i.ToArtifactStorePropertiesFormatOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ArtifactStorePropertiesFormatArgs) ToArtifactStorePropertiesFormatPtrOutput() ArtifactStorePropertiesFormatPtrOutput {
 	return i.ToArtifactStorePropertiesFormatPtrOutputWithContext(context.Background())
 }
@@ -386,12 +349,6 @@ func (i *artifactStorePropertiesFormatPtrType) ToArtifactStorePropertiesFormatPt
 	return pulumi.ToOutputWithContext(ctx, i).(ArtifactStorePropertiesFormatPtrOutput)
 }
 
-func (i *artifactStorePropertiesFormatPtrType) ToOutput(ctx context.Context) pulumix.Output[*ArtifactStorePropertiesFormat] {
-	return pulumix.Output[*ArtifactStorePropertiesFormat]{
-		OutputState: i.ToArtifactStorePropertiesFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Artifact store properties.
 type ArtifactStorePropertiesFormatOutput struct{ *pulumi.OutputState }
 
@@ -415,12 +372,6 @@ func (o ArtifactStorePropertiesFormatOutput) ToArtifactStorePropertiesFormatPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ArtifactStorePropertiesFormat) *ArtifactStorePropertiesFormat {
 		return &v
 	}).(ArtifactStorePropertiesFormatPtrOutput)
-}
-
-func (o ArtifactStorePropertiesFormatOutput) ToOutput(ctx context.Context) pulumix.Output[ArtifactStorePropertiesFormat] {
-	return pulumix.Output[ArtifactStorePropertiesFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ArtifactStorePropertiesFormatOutput) ManagedResourceGroupConfiguration() ArtifactStorePropertiesFormatManagedResourceGroupConfigurationPtrOutput {
@@ -451,12 +402,6 @@ func (o ArtifactStorePropertiesFormatPtrOutput) ToArtifactStorePropertiesFormatP
 
 func (o ArtifactStorePropertiesFormatPtrOutput) ToArtifactStorePropertiesFormatPtrOutputWithContext(ctx context.Context) ArtifactStorePropertiesFormatPtrOutput {
 	return o
-}
-
-func (o ArtifactStorePropertiesFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ArtifactStorePropertiesFormat] {
-	return pulumix.Output[*ArtifactStorePropertiesFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ArtifactStorePropertiesFormatPtrOutput) Elem() ArtifactStorePropertiesFormatOutput {
@@ -535,12 +480,6 @@ func (i ArtifactStorePropertiesFormatManagedResourceGroupConfigurationArgs) ToAr
 	return pulumi.ToOutputWithContext(ctx, i).(ArtifactStorePropertiesFormatManagedResourceGroupConfigurationOutput)
 }
 
-func (i ArtifactStorePropertiesFormatManagedResourceGroupConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ArtifactStorePropertiesFormatManagedResourceGroupConfiguration] {
-	return pulumix.Output[ArtifactStorePropertiesFormatManagedResourceGroupConfiguration]{
-		OutputState: i.ToArtifactStorePropertiesFormatManagedResourceGroupConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ArtifactStorePropertiesFormatManagedResourceGroupConfigurationArgs) ToArtifactStorePropertiesFormatManagedResourceGroupConfigurationPtrOutput() ArtifactStorePropertiesFormatManagedResourceGroupConfigurationPtrOutput {
 	return i.ToArtifactStorePropertiesFormatManagedResourceGroupConfigurationPtrOutputWithContext(context.Background())
 }
@@ -582,12 +521,6 @@ func (i *artifactStorePropertiesFormatManagedResourceGroupConfigurationPtrType) 
 	return pulumi.ToOutputWithContext(ctx, i).(ArtifactStorePropertiesFormatManagedResourceGroupConfigurationPtrOutput)
 }
 
-func (i *artifactStorePropertiesFormatManagedResourceGroupConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ArtifactStorePropertiesFormatManagedResourceGroupConfiguration] {
-	return pulumix.Output[*ArtifactStorePropertiesFormatManagedResourceGroupConfiguration]{
-		OutputState: i.ToArtifactStorePropertiesFormatManagedResourceGroupConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ArtifactStorePropertiesFormatManagedResourceGroupConfigurationOutput struct{ *pulumi.OutputState }
 
 func (ArtifactStorePropertiesFormatManagedResourceGroupConfigurationOutput) ElementType() reflect.Type {
@@ -612,12 +545,6 @@ func (o ArtifactStorePropertiesFormatManagedResourceGroupConfigurationOutput) To
 	}).(ArtifactStorePropertiesFormatManagedResourceGroupConfigurationPtrOutput)
 }
 
-func (o ArtifactStorePropertiesFormatManagedResourceGroupConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ArtifactStorePropertiesFormatManagedResourceGroupConfiguration] {
-	return pulumix.Output[ArtifactStorePropertiesFormatManagedResourceGroupConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The managed resource group location.
 func (o ArtifactStorePropertiesFormatManagedResourceGroupConfigurationOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ArtifactStorePropertiesFormatManagedResourceGroupConfiguration) *string { return v.Location }).(pulumi.StringPtrOutput)
@@ -640,12 +567,6 @@ func (o ArtifactStorePropertiesFormatManagedResourceGroupConfigurationPtrOutput)
 
 func (o ArtifactStorePropertiesFormatManagedResourceGroupConfigurationPtrOutput) ToArtifactStorePropertiesFormatManagedResourceGroupConfigurationPtrOutputWithContext(ctx context.Context) ArtifactStorePropertiesFormatManagedResourceGroupConfigurationPtrOutput {
 	return o
-}
-
-func (o ArtifactStorePropertiesFormatManagedResourceGroupConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ArtifactStorePropertiesFormatManagedResourceGroupConfiguration] {
-	return pulumix.Output[*ArtifactStorePropertiesFormatManagedResourceGroupConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ArtifactStorePropertiesFormatManagedResourceGroupConfigurationPtrOutput) Elem() ArtifactStorePropertiesFormatManagedResourceGroupConfigurationOutput {
@@ -706,12 +627,6 @@ func (o ArtifactStorePropertiesFormatResponseOutput) ToArtifactStorePropertiesFo
 	return o
 }
 
-func (o ArtifactStorePropertiesFormatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ArtifactStorePropertiesFormatResponse] {
-	return pulumix.Output[ArtifactStorePropertiesFormatResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ArtifactStorePropertiesFormatResponseOutput) ManagedResourceGroupConfiguration() ArtifactStorePropertiesFormatResponseManagedResourceGroupConfigurationPtrOutput {
 	return o.ApplyT(func(v ArtifactStorePropertiesFormatResponse) *ArtifactStorePropertiesFormatResponseManagedResourceGroupConfiguration {
 		return v.ManagedResourceGroupConfiguration
@@ -759,12 +674,6 @@ func (o ArtifactStorePropertiesFormatResponseManagedResourceGroupConfigurationOu
 	return o
 }
 
-func (o ArtifactStorePropertiesFormatResponseManagedResourceGroupConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ArtifactStorePropertiesFormatResponseManagedResourceGroupConfiguration] {
-	return pulumix.Output[ArtifactStorePropertiesFormatResponseManagedResourceGroupConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The managed resource group location.
 func (o ArtifactStorePropertiesFormatResponseManagedResourceGroupConfigurationOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ArtifactStorePropertiesFormatResponseManagedResourceGroupConfiguration) *string {
@@ -789,12 +698,6 @@ func (o ArtifactStorePropertiesFormatResponseManagedResourceGroupConfigurationPt
 
 func (o ArtifactStorePropertiesFormatResponseManagedResourceGroupConfigurationPtrOutput) ToArtifactStorePropertiesFormatResponseManagedResourceGroupConfigurationPtrOutputWithContext(ctx context.Context) ArtifactStorePropertiesFormatResponseManagedResourceGroupConfigurationPtrOutput {
 	return o
-}
-
-func (o ArtifactStorePropertiesFormatResponseManagedResourceGroupConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ArtifactStorePropertiesFormatResponseManagedResourceGroupConfiguration] {
-	return pulumix.Output[*ArtifactStorePropertiesFormatResponseManagedResourceGroupConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ArtifactStorePropertiesFormatResponseManagedResourceGroupConfigurationPtrOutput) Elem() ArtifactStorePropertiesFormatResponseManagedResourceGroupConfigurationOutput {
@@ -1296,12 +1199,6 @@ func (i ConfigurationGroupSchemaPropertiesFormatArgs) ToConfigurationGroupSchema
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationGroupSchemaPropertiesFormatOutput)
 }
 
-func (i ConfigurationGroupSchemaPropertiesFormatArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigurationGroupSchemaPropertiesFormat] {
-	return pulumix.Output[ConfigurationGroupSchemaPropertiesFormat]{
-		OutputState: i.ToConfigurationGroupSchemaPropertiesFormatOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConfigurationGroupSchemaPropertiesFormatArgs) ToConfigurationGroupSchemaPropertiesFormatPtrOutput() ConfigurationGroupSchemaPropertiesFormatPtrOutput {
 	return i.ToConfigurationGroupSchemaPropertiesFormatPtrOutputWithContext(context.Background())
 }
@@ -1343,12 +1240,6 @@ func (i *configurationGroupSchemaPropertiesFormatPtrType) ToConfigurationGroupSc
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationGroupSchemaPropertiesFormatPtrOutput)
 }
 
-func (i *configurationGroupSchemaPropertiesFormatPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationGroupSchemaPropertiesFormat] {
-	return pulumix.Output[*ConfigurationGroupSchemaPropertiesFormat]{
-		OutputState: i.ToConfigurationGroupSchemaPropertiesFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration group schema properties.
 type ConfigurationGroupSchemaPropertiesFormatOutput struct{ *pulumi.OutputState }
 
@@ -1374,12 +1265,6 @@ func (o ConfigurationGroupSchemaPropertiesFormatOutput) ToConfigurationGroupSche
 	}).(ConfigurationGroupSchemaPropertiesFormatPtrOutput)
 }
 
-func (o ConfigurationGroupSchemaPropertiesFormatOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationGroupSchemaPropertiesFormat] {
-	return pulumix.Output[ConfigurationGroupSchemaPropertiesFormat]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Description of what schema can contain.
 func (o ConfigurationGroupSchemaPropertiesFormatOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfigurationGroupSchemaPropertiesFormat) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -1402,12 +1287,6 @@ func (o ConfigurationGroupSchemaPropertiesFormatPtrOutput) ToConfigurationGroupS
 
 func (o ConfigurationGroupSchemaPropertiesFormatPtrOutput) ToConfigurationGroupSchemaPropertiesFormatPtrOutputWithContext(ctx context.Context) ConfigurationGroupSchemaPropertiesFormatPtrOutput {
 	return o
-}
-
-func (o ConfigurationGroupSchemaPropertiesFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationGroupSchemaPropertiesFormat] {
-	return pulumix.Output[*ConfigurationGroupSchemaPropertiesFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigurationGroupSchemaPropertiesFormatPtrOutput) Elem() ConfigurationGroupSchemaPropertiesFormatOutput {
@@ -1465,12 +1344,6 @@ func (o ConfigurationGroupSchemaPropertiesFormatResponseOutput) ToConfigurationG
 
 func (o ConfigurationGroupSchemaPropertiesFormatResponseOutput) ToConfigurationGroupSchemaPropertiesFormatResponseOutputWithContext(ctx context.Context) ConfigurationGroupSchemaPropertiesFormatResponseOutput {
 	return o
-}
-
-func (o ConfigurationGroupSchemaPropertiesFormatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationGroupSchemaPropertiesFormatResponse] {
-	return pulumix.Output[ConfigurationGroupSchemaPropertiesFormatResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of what schema can contain.
@@ -1780,12 +1653,6 @@ func (i ManagedResourceGroupConfigurationArgs) ToManagedResourceGroupConfigurati
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedResourceGroupConfigurationOutput)
 }
 
-func (i ManagedResourceGroupConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedResourceGroupConfiguration] {
-	return pulumix.Output[ManagedResourceGroupConfiguration]{
-		OutputState: i.ToManagedResourceGroupConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedResourceGroupConfigurationArgs) ToManagedResourceGroupConfigurationPtrOutput() ManagedResourceGroupConfigurationPtrOutput {
 	return i.ToManagedResourceGroupConfigurationPtrOutputWithContext(context.Background())
 }
@@ -1827,12 +1694,6 @@ func (i *managedResourceGroupConfigurationPtrType) ToManagedResourceGroupConfigu
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedResourceGroupConfigurationPtrOutput)
 }
 
-func (i *managedResourceGroupConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedResourceGroupConfiguration] {
-	return pulumix.Output[*ManagedResourceGroupConfiguration]{
-		OutputState: i.ToManagedResourceGroupConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Managed resource group configuration.
 type ManagedResourceGroupConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -1858,12 +1719,6 @@ func (o ManagedResourceGroupConfigurationOutput) ToManagedResourceGroupConfigura
 	}).(ManagedResourceGroupConfigurationPtrOutput)
 }
 
-func (o ManagedResourceGroupConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedResourceGroupConfiguration] {
-	return pulumix.Output[ManagedResourceGroupConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Managed resource group location.
 func (o ManagedResourceGroupConfigurationOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedResourceGroupConfiguration) *string { return v.Location }).(pulumi.StringPtrOutput)
@@ -1886,12 +1741,6 @@ func (o ManagedResourceGroupConfigurationPtrOutput) ToManagedResourceGroupConfig
 
 func (o ManagedResourceGroupConfigurationPtrOutput) ToManagedResourceGroupConfigurationPtrOutputWithContext(ctx context.Context) ManagedResourceGroupConfigurationPtrOutput {
 	return o
-}
-
-func (o ManagedResourceGroupConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedResourceGroupConfiguration] {
-	return pulumix.Output[*ManagedResourceGroupConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedResourceGroupConfigurationPtrOutput) Elem() ManagedResourceGroupConfigurationOutput {
@@ -1947,12 +1796,6 @@ func (o ManagedResourceGroupConfigurationResponseOutput) ToManagedResourceGroupC
 	return o
 }
 
-func (o ManagedResourceGroupConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedResourceGroupConfigurationResponse] {
-	return pulumix.Output[ManagedResourceGroupConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Managed resource group location.
 func (o ManagedResourceGroupConfigurationResponseOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedResourceGroupConfigurationResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
@@ -1975,12 +1818,6 @@ func (o ManagedResourceGroupConfigurationResponsePtrOutput) ToManagedResourceGro
 
 func (o ManagedResourceGroupConfigurationResponsePtrOutput) ToManagedResourceGroupConfigurationResponsePtrOutputWithContext(ctx context.Context) ManagedResourceGroupConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o ManagedResourceGroupConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedResourceGroupConfigurationResponse] {
-	return pulumix.Output[*ManagedResourceGroupConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedResourceGroupConfigurationResponsePtrOutput) Elem() ManagedResourceGroupConfigurationResponseOutput {
@@ -2052,12 +1889,6 @@ func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
 }
 
-func (i ManagedServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
-	return pulumix.Output[ManagedServiceIdentity]{
-		OutputState: i.ToManagedServiceIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
 	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
 }
@@ -2099,12 +1930,6 @@ func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
 }
 
-func (i *managedServiceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
-	return pulumix.Output[*ManagedServiceIdentity]{
-		OutputState: i.ToManagedServiceIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Managed service identity (system assigned and/or user assigned identities)
 type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -2130,12 +1955,6 @@ func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithConte
 	}).(ManagedServiceIdentityPtrOutput)
 }
 
-func (o ManagedServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
-	return pulumix.Output[ManagedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
@@ -2158,12 +1977,6 @@ func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() Man
 
 func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
 	return o
-}
-
-func (o ManagedServiceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
-	return pulumix.Output[*ManagedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
@@ -2223,12 +2036,6 @@ func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOu
 	return o
 }
 
-func (o ManagedServiceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentityResponse] {
-	return pulumix.Output[ManagedServiceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
 func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -2263,12 +2070,6 @@ func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityRespons
 
 func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
 	return o
-}
-
-func (o ManagedServiceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityResponse] {
-	return pulumix.Output[*ManagedServiceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
@@ -2364,12 +2165,6 @@ func (i ManifestArtifactFormatArgs) ToManifestArtifactFormatOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ManifestArtifactFormatOutput)
 }
 
-func (i ManifestArtifactFormatArgs) ToOutput(ctx context.Context) pulumix.Output[ManifestArtifactFormat] {
-	return pulumix.Output[ManifestArtifactFormat]{
-		OutputState: i.ToManifestArtifactFormatOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ManifestArtifactFormatArrayInput is an input type that accepts ManifestArtifactFormatArray and ManifestArtifactFormatArrayOutput values.
 // You can construct a concrete instance of `ManifestArtifactFormatArrayInput` via:
 //
@@ -2395,12 +2190,6 @@ func (i ManifestArtifactFormatArray) ToManifestArtifactFormatArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ManifestArtifactFormatArrayOutput)
 }
 
-func (i ManifestArtifactFormatArray) ToOutput(ctx context.Context) pulumix.Output[[]ManifestArtifactFormat] {
-	return pulumix.Output[[]ManifestArtifactFormat]{
-		OutputState: i.ToManifestArtifactFormatArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Manifest artifact properties.
 type ManifestArtifactFormatOutput struct{ *pulumi.OutputState }
 
@@ -2414,12 +2203,6 @@ func (o ManifestArtifactFormatOutput) ToManifestArtifactFormatOutput() ManifestA
 
 func (o ManifestArtifactFormatOutput) ToManifestArtifactFormatOutputWithContext(ctx context.Context) ManifestArtifactFormatOutput {
 	return o
-}
-
-func (o ManifestArtifactFormatOutput) ToOutput(ctx context.Context) pulumix.Output[ManifestArtifactFormat] {
-	return pulumix.Output[ManifestArtifactFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The artifact name
@@ -2449,12 +2232,6 @@ func (o ManifestArtifactFormatArrayOutput) ToManifestArtifactFormatArrayOutput()
 
 func (o ManifestArtifactFormatArrayOutput) ToManifestArtifactFormatArrayOutputWithContext(ctx context.Context) ManifestArtifactFormatArrayOutput {
 	return o
-}
-
-func (o ManifestArtifactFormatArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManifestArtifactFormat] {
-	return pulumix.Output[[]ManifestArtifactFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManifestArtifactFormatArrayOutput) Index(i pulumi.IntInput) ManifestArtifactFormatOutput {
@@ -2488,12 +2265,6 @@ func (o ManifestArtifactFormatResponseOutput) ToManifestArtifactFormatResponseOu
 	return o
 }
 
-func (o ManifestArtifactFormatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManifestArtifactFormatResponse] {
-	return pulumix.Output[ManifestArtifactFormatResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The artifact name
 func (o ManifestArtifactFormatResponseOutput) ArtifactName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManifestArtifactFormatResponse) *string { return v.ArtifactName }).(pulumi.StringPtrOutput)
@@ -2521,12 +2292,6 @@ func (o ManifestArtifactFormatResponseArrayOutput) ToManifestArtifactFormatRespo
 
 func (o ManifestArtifactFormatResponseArrayOutput) ToManifestArtifactFormatResponseArrayOutputWithContext(ctx context.Context) ManifestArtifactFormatResponseArrayOutput {
 	return o
-}
-
-func (o ManifestArtifactFormatResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManifestArtifactFormatResponse] {
-	return pulumix.Output[[]ManifestArtifactFormatResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManifestArtifactFormatResponseArrayOutput) Index(i pulumi.IntInput) ManifestArtifactFormatResponseOutput {
@@ -2590,12 +2355,6 @@ func (i NetworkFunctionDefinitionGroupPropertiesFormatArgs) ToNetworkFunctionDef
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkFunctionDefinitionGroupPropertiesFormatOutput)
 }
 
-func (i NetworkFunctionDefinitionGroupPropertiesFormatArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkFunctionDefinitionGroupPropertiesFormat] {
-	return pulumix.Output[NetworkFunctionDefinitionGroupPropertiesFormat]{
-		OutputState: i.ToNetworkFunctionDefinitionGroupPropertiesFormatOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i NetworkFunctionDefinitionGroupPropertiesFormatArgs) ToNetworkFunctionDefinitionGroupPropertiesFormatPtrOutput() NetworkFunctionDefinitionGroupPropertiesFormatPtrOutput {
 	return i.ToNetworkFunctionDefinitionGroupPropertiesFormatPtrOutputWithContext(context.Background())
 }
@@ -2637,12 +2396,6 @@ func (i *networkFunctionDefinitionGroupPropertiesFormatPtrType) ToNetworkFunctio
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkFunctionDefinitionGroupPropertiesFormatPtrOutput)
 }
 
-func (i *networkFunctionDefinitionGroupPropertiesFormatPtrType) ToOutput(ctx context.Context) pulumix.Output[*NetworkFunctionDefinitionGroupPropertiesFormat] {
-	return pulumix.Output[*NetworkFunctionDefinitionGroupPropertiesFormat]{
-		OutputState: i.ToNetworkFunctionDefinitionGroupPropertiesFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Network function definition group properties.
 type NetworkFunctionDefinitionGroupPropertiesFormatOutput struct{ *pulumi.OutputState }
 
@@ -2668,12 +2421,6 @@ func (o NetworkFunctionDefinitionGroupPropertiesFormatOutput) ToNetworkFunctionD
 	}).(NetworkFunctionDefinitionGroupPropertiesFormatPtrOutput)
 }
 
-func (o NetworkFunctionDefinitionGroupPropertiesFormatOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkFunctionDefinitionGroupPropertiesFormat] {
-	return pulumix.Output[NetworkFunctionDefinitionGroupPropertiesFormat]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The network function definition group description.
 func (o NetworkFunctionDefinitionGroupPropertiesFormatOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkFunctionDefinitionGroupPropertiesFormat) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -2691,12 +2438,6 @@ func (o NetworkFunctionDefinitionGroupPropertiesFormatPtrOutput) ToNetworkFuncti
 
 func (o NetworkFunctionDefinitionGroupPropertiesFormatPtrOutput) ToNetworkFunctionDefinitionGroupPropertiesFormatPtrOutputWithContext(ctx context.Context) NetworkFunctionDefinitionGroupPropertiesFormatPtrOutput {
 	return o
-}
-
-func (o NetworkFunctionDefinitionGroupPropertiesFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkFunctionDefinitionGroupPropertiesFormat] {
-	return pulumix.Output[*NetworkFunctionDefinitionGroupPropertiesFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkFunctionDefinitionGroupPropertiesFormatPtrOutput) Elem() NetworkFunctionDefinitionGroupPropertiesFormatOutput {
@@ -2740,12 +2481,6 @@ func (o NetworkFunctionDefinitionGroupPropertiesFormatResponseOutput) ToNetworkF
 
 func (o NetworkFunctionDefinitionGroupPropertiesFormatResponseOutput) ToNetworkFunctionDefinitionGroupPropertiesFormatResponseOutputWithContext(ctx context.Context) NetworkFunctionDefinitionGroupPropertiesFormatResponseOutput {
 	return o
-}
-
-func (o NetworkFunctionDefinitionGroupPropertiesFormatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkFunctionDefinitionGroupPropertiesFormatResponse] {
-	return pulumix.Output[NetworkFunctionDefinitionGroupPropertiesFormatResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The network function definition group description.
@@ -2917,12 +2652,6 @@ func (i NetworkServiceDesignGroupPropertiesFormatArgs) ToNetworkServiceDesignGro
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkServiceDesignGroupPropertiesFormatOutput)
 }
 
-func (i NetworkServiceDesignGroupPropertiesFormatArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkServiceDesignGroupPropertiesFormat] {
-	return pulumix.Output[NetworkServiceDesignGroupPropertiesFormat]{
-		OutputState: i.ToNetworkServiceDesignGroupPropertiesFormatOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i NetworkServiceDesignGroupPropertiesFormatArgs) ToNetworkServiceDesignGroupPropertiesFormatPtrOutput() NetworkServiceDesignGroupPropertiesFormatPtrOutput {
 	return i.ToNetworkServiceDesignGroupPropertiesFormatPtrOutputWithContext(context.Background())
 }
@@ -2964,12 +2693,6 @@ func (i *networkServiceDesignGroupPropertiesFormatPtrType) ToNetworkServiceDesig
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkServiceDesignGroupPropertiesFormatPtrOutput)
 }
 
-func (i *networkServiceDesignGroupPropertiesFormatPtrType) ToOutput(ctx context.Context) pulumix.Output[*NetworkServiceDesignGroupPropertiesFormat] {
-	return pulumix.Output[*NetworkServiceDesignGroupPropertiesFormat]{
-		OutputState: i.ToNetworkServiceDesignGroupPropertiesFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // network service design group properties.
 type NetworkServiceDesignGroupPropertiesFormatOutput struct{ *pulumi.OutputState }
 
@@ -2995,12 +2718,6 @@ func (o NetworkServiceDesignGroupPropertiesFormatOutput) ToNetworkServiceDesignG
 	}).(NetworkServiceDesignGroupPropertiesFormatPtrOutput)
 }
 
-func (o NetworkServiceDesignGroupPropertiesFormatOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkServiceDesignGroupPropertiesFormat] {
-	return pulumix.Output[NetworkServiceDesignGroupPropertiesFormat]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The network service design group description.
 func (o NetworkServiceDesignGroupPropertiesFormatOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkServiceDesignGroupPropertiesFormat) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -3018,12 +2735,6 @@ func (o NetworkServiceDesignGroupPropertiesFormatPtrOutput) ToNetworkServiceDesi
 
 func (o NetworkServiceDesignGroupPropertiesFormatPtrOutput) ToNetworkServiceDesignGroupPropertiesFormatPtrOutputWithContext(ctx context.Context) NetworkServiceDesignGroupPropertiesFormatPtrOutput {
 	return o
-}
-
-func (o NetworkServiceDesignGroupPropertiesFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkServiceDesignGroupPropertiesFormat] {
-	return pulumix.Output[*NetworkServiceDesignGroupPropertiesFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkServiceDesignGroupPropertiesFormatPtrOutput) Elem() NetworkServiceDesignGroupPropertiesFormatOutput {
@@ -3067,12 +2778,6 @@ func (o NetworkServiceDesignGroupPropertiesFormatResponseOutput) ToNetworkServic
 
 func (o NetworkServiceDesignGroupPropertiesFormatResponseOutput) ToNetworkServiceDesignGroupPropertiesFormatResponseOutputWithContext(ctx context.Context) NetworkServiceDesignGroupPropertiesFormatResponseOutput {
 	return o
-}
-
-func (o NetworkServiceDesignGroupPropertiesFormatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkServiceDesignGroupPropertiesFormatResponse] {
-	return pulumix.Output[NetworkServiceDesignGroupPropertiesFormatResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The network service design group description.
@@ -3132,12 +2837,6 @@ func (i NetworkServiceDesignVersionPropertiesFormatArgs) ToNetworkServiceDesignV
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkServiceDesignVersionPropertiesFormatOutput)
 }
 
-func (i NetworkServiceDesignVersionPropertiesFormatArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkServiceDesignVersionPropertiesFormat] {
-	return pulumix.Output[NetworkServiceDesignVersionPropertiesFormat]{
-		OutputState: i.ToNetworkServiceDesignVersionPropertiesFormatOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i NetworkServiceDesignVersionPropertiesFormatArgs) ToNetworkServiceDesignVersionPropertiesFormatPtrOutput() NetworkServiceDesignVersionPropertiesFormatPtrOutput {
 	return i.ToNetworkServiceDesignVersionPropertiesFormatPtrOutputWithContext(context.Background())
 }
@@ -3179,12 +2878,6 @@ func (i *networkServiceDesignVersionPropertiesFormatPtrType) ToNetworkServiceDes
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkServiceDesignVersionPropertiesFormatPtrOutput)
 }
 
-func (i *networkServiceDesignVersionPropertiesFormatPtrType) ToOutput(ctx context.Context) pulumix.Output[*NetworkServiceDesignVersionPropertiesFormat] {
-	return pulumix.Output[*NetworkServiceDesignVersionPropertiesFormat]{
-		OutputState: i.ToNetworkServiceDesignVersionPropertiesFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // network service design version properties.
 type NetworkServiceDesignVersionPropertiesFormatOutput struct{ *pulumi.OutputState }
 
@@ -3208,12 +2901,6 @@ func (o NetworkServiceDesignVersionPropertiesFormatOutput) ToNetworkServiceDesig
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkServiceDesignVersionPropertiesFormat) *NetworkServiceDesignVersionPropertiesFormat {
 		return &v
 	}).(NetworkServiceDesignVersionPropertiesFormatPtrOutput)
-}
-
-func (o NetworkServiceDesignVersionPropertiesFormatOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkServiceDesignVersionPropertiesFormat] {
-	return pulumix.Output[NetworkServiceDesignVersionPropertiesFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration schemas to used to define the values.
@@ -3250,12 +2937,6 @@ func (o NetworkServiceDesignVersionPropertiesFormatPtrOutput) ToNetworkServiceDe
 
 func (o NetworkServiceDesignVersionPropertiesFormatPtrOutput) ToNetworkServiceDesignVersionPropertiesFormatPtrOutputWithContext(ctx context.Context) NetworkServiceDesignVersionPropertiesFormatPtrOutput {
 	return o
-}
-
-func (o NetworkServiceDesignVersionPropertiesFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkServiceDesignVersionPropertiesFormat] {
-	return pulumix.Output[*NetworkServiceDesignVersionPropertiesFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkServiceDesignVersionPropertiesFormatPtrOutput) Elem() NetworkServiceDesignVersionPropertiesFormatOutput {
@@ -3339,12 +3020,6 @@ func (o NetworkServiceDesignVersionPropertiesFormatResponseOutput) ToNetworkServ
 	return o
 }
 
-func (o NetworkServiceDesignVersionPropertiesFormatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkServiceDesignVersionPropertiesFormatResponse] {
-	return pulumix.Output[NetworkServiceDesignVersionPropertiesFormatResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration schemas to used to define the values.
 func (o NetworkServiceDesignVersionPropertiesFormatResponseOutput) ConfigurationGroupSchemaReferences() ReferencedResourceResponseMapOutput {
 	return o.ApplyT(func(v NetworkServiceDesignVersionPropertiesFormatResponse) map[string]ReferencedResourceResponse {
@@ -3420,12 +3095,6 @@ func (i NfviDetailsArgs) ToNfviDetailsOutputWithContext(ctx context.Context) Nfv
 	return pulumi.ToOutputWithContext(ctx, i).(NfviDetailsOutput)
 }
 
-func (i NfviDetailsArgs) ToOutput(ctx context.Context) pulumix.Output[NfviDetails] {
-	return pulumix.Output[NfviDetails]{
-		OutputState: i.ToNfviDetailsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NfviDetailsMapInput is an input type that accepts NfviDetailsMap and NfviDetailsMapOutput values.
 // You can construct a concrete instance of `NfviDetailsMapInput` via:
 //
@@ -3451,12 +3120,6 @@ func (i NfviDetailsMap) ToNfviDetailsMapOutputWithContext(ctx context.Context) N
 	return pulumi.ToOutputWithContext(ctx, i).(NfviDetailsMapOutput)
 }
 
-func (i NfviDetailsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]NfviDetails] {
-	return pulumix.Output[map[string]NfviDetails]{
-		OutputState: i.ToNfviDetailsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The nfvi details.
 type NfviDetailsOutput struct{ *pulumi.OutputState }
 
@@ -3470,12 +3133,6 @@ func (o NfviDetailsOutput) ToNfviDetailsOutput() NfviDetailsOutput {
 
 func (o NfviDetailsOutput) ToNfviDetailsOutputWithContext(ctx context.Context) NfviDetailsOutput {
 	return o
-}
-
-func (o NfviDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[NfviDetails] {
-	return pulumix.Output[NfviDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The nfvi name.
@@ -3500,12 +3157,6 @@ func (o NfviDetailsMapOutput) ToNfviDetailsMapOutput() NfviDetailsMapOutput {
 
 func (o NfviDetailsMapOutput) ToNfviDetailsMapOutputWithContext(ctx context.Context) NfviDetailsMapOutput {
 	return o
-}
-
-func (o NfviDetailsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]NfviDetails] {
-	return pulumix.Output[map[string]NfviDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NfviDetailsMapOutput) MapIndex(k pulumi.StringInput) NfviDetailsOutput {
@@ -3537,12 +3188,6 @@ func (o NfviDetailsResponseOutput) ToNfviDetailsResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o NfviDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NfviDetailsResponse] {
-	return pulumix.Output[NfviDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The nfvi name.
 func (o NfviDetailsResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NfviDetailsResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -3565,12 +3210,6 @@ func (o NfviDetailsResponseMapOutput) ToNfviDetailsResponseMapOutput() NfviDetai
 
 func (o NfviDetailsResponseMapOutput) ToNfviDetailsResponseMapOutputWithContext(ctx context.Context) NfviDetailsResponseMapOutput {
 	return o
-}
-
-func (o NfviDetailsResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]NfviDetailsResponse] {
-	return pulumix.Output[map[string]NfviDetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NfviDetailsResponseMapOutput) MapIndex(k pulumi.StringInput) NfviDetailsResponseOutput {
@@ -3632,12 +3271,6 @@ func (i PublisherPropertiesFormatArgs) ToPublisherPropertiesFormatOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(PublisherPropertiesFormatOutput)
 }
 
-func (i PublisherPropertiesFormatArgs) ToOutput(ctx context.Context) pulumix.Output[PublisherPropertiesFormat] {
-	return pulumix.Output[PublisherPropertiesFormat]{
-		OutputState: i.ToPublisherPropertiesFormatOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PublisherPropertiesFormatArgs) ToPublisherPropertiesFormatPtrOutput() PublisherPropertiesFormatPtrOutput {
 	return i.ToPublisherPropertiesFormatPtrOutputWithContext(context.Background())
 }
@@ -3679,12 +3312,6 @@ func (i *publisherPropertiesFormatPtrType) ToPublisherPropertiesFormatPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(PublisherPropertiesFormatPtrOutput)
 }
 
-func (i *publisherPropertiesFormatPtrType) ToOutput(ctx context.Context) pulumix.Output[*PublisherPropertiesFormat] {
-	return pulumix.Output[*PublisherPropertiesFormat]{
-		OutputState: i.ToPublisherPropertiesFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // publisher properties.
 type PublisherPropertiesFormatOutput struct{ *pulumi.OutputState }
 
@@ -3710,12 +3337,6 @@ func (o PublisherPropertiesFormatOutput) ToPublisherPropertiesFormatPtrOutputWit
 	}).(PublisherPropertiesFormatPtrOutput)
 }
 
-func (o PublisherPropertiesFormatOutput) ToOutput(ctx context.Context) pulumix.Output[PublisherPropertiesFormat] {
-	return pulumix.Output[PublisherPropertiesFormat]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The publisher scope.
 func (o PublisherPropertiesFormatOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PublisherPropertiesFormat) *string { return v.Scope }).(pulumi.StringPtrOutput)
@@ -3733,12 +3354,6 @@ func (o PublisherPropertiesFormatPtrOutput) ToPublisherPropertiesFormatPtrOutput
 
 func (o PublisherPropertiesFormatPtrOutput) ToPublisherPropertiesFormatPtrOutputWithContext(ctx context.Context) PublisherPropertiesFormatPtrOutput {
 	return o
-}
-
-func (o PublisherPropertiesFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PublisherPropertiesFormat] {
-	return pulumix.Output[*PublisherPropertiesFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PublisherPropertiesFormatPtrOutput) Elem() PublisherPropertiesFormatOutput {
@@ -3782,12 +3397,6 @@ func (o PublisherPropertiesFormatResponseOutput) ToPublisherPropertiesFormatResp
 
 func (o PublisherPropertiesFormatResponseOutput) ToPublisherPropertiesFormatResponseOutputWithContext(ctx context.Context) PublisherPropertiesFormatResponseOutput {
 	return o
-}
-
-func (o PublisherPropertiesFormatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PublisherPropertiesFormatResponse] {
-	return pulumix.Output[PublisherPropertiesFormatResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provisioning state of the publisher resource.
@@ -3835,12 +3444,6 @@ func (i ReferencedResourceArgs) ToReferencedResourceOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ReferencedResourceOutput)
 }
 
-func (i ReferencedResourceArgs) ToOutput(ctx context.Context) pulumix.Output[ReferencedResource] {
-	return pulumix.Output[ReferencedResource]{
-		OutputState: i.ToReferencedResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ReferencedResourceArgs) ToReferencedResourcePtrOutput() ReferencedResourcePtrOutput {
 	return i.ToReferencedResourcePtrOutputWithContext(context.Background())
 }
@@ -3882,12 +3485,6 @@ func (i *referencedResourcePtrType) ToReferencedResourcePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ReferencedResourcePtrOutput)
 }
 
-func (i *referencedResourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*ReferencedResource] {
-	return pulumix.Output[*ReferencedResource]{
-		OutputState: i.ToReferencedResourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ReferencedResourceMapInput is an input type that accepts ReferencedResourceMap and ReferencedResourceMapOutput values.
 // You can construct a concrete instance of `ReferencedResourceMapInput` via:
 //
@@ -3911,12 +3508,6 @@ func (i ReferencedResourceMap) ToReferencedResourceMapOutput() ReferencedResourc
 
 func (i ReferencedResourceMap) ToReferencedResourceMapOutputWithContext(ctx context.Context) ReferencedResourceMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReferencedResourceMapOutput)
-}
-
-func (i ReferencedResourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]ReferencedResource] {
-	return pulumix.Output[map[string]ReferencedResource]{
-		OutputState: i.ToReferencedResourceMapOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Reference to another resource.
@@ -3944,12 +3535,6 @@ func (o ReferencedResourceOutput) ToReferencedResourcePtrOutputWithContext(ctx c
 	}).(ReferencedResourcePtrOutput)
 }
 
-func (o ReferencedResourceOutput) ToOutput(ctx context.Context) pulumix.Output[ReferencedResource] {
-	return pulumix.Output[ReferencedResource]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource ID.
 func (o ReferencedResourceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReferencedResource) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -3967,12 +3552,6 @@ func (o ReferencedResourcePtrOutput) ToReferencedResourcePtrOutput() ReferencedR
 
 func (o ReferencedResourcePtrOutput) ToReferencedResourcePtrOutputWithContext(ctx context.Context) ReferencedResourcePtrOutput {
 	return o
-}
-
-func (o ReferencedResourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReferencedResource] {
-	return pulumix.Output[*ReferencedResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReferencedResourcePtrOutput) Elem() ReferencedResourceOutput {
@@ -4009,12 +3588,6 @@ func (o ReferencedResourceMapOutput) ToReferencedResourceMapOutputWithContext(ct
 	return o
 }
 
-func (o ReferencedResourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ReferencedResource] {
-	return pulumix.Output[map[string]ReferencedResource]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ReferencedResourceMapOutput) MapIndex(k pulumi.StringInput) ReferencedResourceOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ReferencedResource {
 		return vs[0].(map[string]ReferencedResource)[vs[1].(string)]
@@ -4042,12 +3615,6 @@ func (o ReferencedResourceResponseOutput) ToReferencedResourceResponseOutputWith
 	return o
 }
 
-func (o ReferencedResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReferencedResourceResponse] {
-	return pulumix.Output[ReferencedResourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource ID.
 func (o ReferencedResourceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReferencedResourceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -4065,12 +3632,6 @@ func (o ReferencedResourceResponsePtrOutput) ToReferencedResourceResponsePtrOutp
 
 func (o ReferencedResourceResponsePtrOutput) ToReferencedResourceResponsePtrOutputWithContext(ctx context.Context) ReferencedResourceResponsePtrOutput {
 	return o
-}
-
-func (o ReferencedResourceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReferencedResourceResponse] {
-	return pulumix.Output[*ReferencedResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReferencedResourceResponsePtrOutput) Elem() ReferencedResourceResponseOutput {
@@ -4107,12 +3668,6 @@ func (o ReferencedResourceResponseArrayOutput) ToReferencedResourceResponseArray
 	return o
 }
 
-func (o ReferencedResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReferencedResourceResponse] {
-	return pulumix.Output[[]ReferencedResourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ReferencedResourceResponseArrayOutput) Index(i pulumi.IntInput) ReferencedResourceResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReferencedResourceResponse {
 		return vs[0].([]ReferencedResourceResponse)[vs[1].(int)]
@@ -4131,12 +3686,6 @@ func (o ReferencedResourceResponseMapOutput) ToReferencedResourceResponseMapOutp
 
 func (o ReferencedResourceResponseMapOutput) ToReferencedResourceResponseMapOutputWithContext(ctx context.Context) ReferencedResourceResponseMapOutput {
 	return o
-}
-
-func (o ReferencedResourceResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ReferencedResourceResponse] {
-	return pulumix.Output[map[string]ReferencedResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReferencedResourceResponseMapOutput) MapIndex(k pulumi.StringInput) ReferencedResourceResponseOutput {
@@ -4208,12 +3757,6 @@ func (i SiteNetworkServicePropertiesFormatArgs) ToSiteNetworkServicePropertiesFo
 	return pulumi.ToOutputWithContext(ctx, i).(SiteNetworkServicePropertiesFormatOutput)
 }
 
-func (i SiteNetworkServicePropertiesFormatArgs) ToOutput(ctx context.Context) pulumix.Output[SiteNetworkServicePropertiesFormat] {
-	return pulumix.Output[SiteNetworkServicePropertiesFormat]{
-		OutputState: i.ToSiteNetworkServicePropertiesFormatOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SiteNetworkServicePropertiesFormatArgs) ToSiteNetworkServicePropertiesFormatPtrOutput() SiteNetworkServicePropertiesFormatPtrOutput {
 	return i.ToSiteNetworkServicePropertiesFormatPtrOutputWithContext(context.Background())
 }
@@ -4255,12 +3798,6 @@ func (i *siteNetworkServicePropertiesFormatPtrType) ToSiteNetworkServiceProperti
 	return pulumi.ToOutputWithContext(ctx, i).(SiteNetworkServicePropertiesFormatPtrOutput)
 }
 
-func (i *siteNetworkServicePropertiesFormatPtrType) ToOutput(ctx context.Context) pulumix.Output[*SiteNetworkServicePropertiesFormat] {
-	return pulumix.Output[*SiteNetworkServicePropertiesFormat]{
-		OutputState: i.ToSiteNetworkServicePropertiesFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Site network service properties.
 type SiteNetworkServicePropertiesFormatOutput struct{ *pulumi.OutputState }
 
@@ -4284,12 +3821,6 @@ func (o SiteNetworkServicePropertiesFormatOutput) ToSiteNetworkServiceProperties
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteNetworkServicePropertiesFormat) *SiteNetworkServicePropertiesFormat {
 		return &v
 	}).(SiteNetworkServicePropertiesFormatPtrOutput)
-}
-
-func (o SiteNetworkServicePropertiesFormatOutput) ToOutput(ctx context.Context) pulumix.Output[SiteNetworkServicePropertiesFormat] {
-	return pulumix.Output[SiteNetworkServicePropertiesFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The goal state of the site network service resource. This has references to the configuration group value objects that describe the desired state of the site network service.
@@ -4330,12 +3861,6 @@ func (o SiteNetworkServicePropertiesFormatPtrOutput) ToSiteNetworkServicePropert
 
 func (o SiteNetworkServicePropertiesFormatPtrOutput) ToSiteNetworkServicePropertiesFormatPtrOutputWithContext(ctx context.Context) SiteNetworkServicePropertiesFormatPtrOutput {
 	return o
-}
-
-func (o SiteNetworkServicePropertiesFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SiteNetworkServicePropertiesFormat] {
-	return pulumix.Output[*SiteNetworkServicePropertiesFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SiteNetworkServicePropertiesFormatPtrOutput) Elem() SiteNetworkServicePropertiesFormatOutput {
@@ -4429,12 +3954,6 @@ func (o SiteNetworkServicePropertiesFormatResponseOutput) ToSiteNetworkServicePr
 
 func (o SiteNetworkServicePropertiesFormatResponseOutput) ToSiteNetworkServicePropertiesFormatResponseOutputWithContext(ctx context.Context) SiteNetworkServicePropertiesFormatResponseOutput {
 	return o
-}
-
-func (o SiteNetworkServicePropertiesFormatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SiteNetworkServicePropertiesFormatResponse] {
-	return pulumix.Output[SiteNetworkServicePropertiesFormatResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The goal state of the site network service resource. This has references to the configuration group value objects that describe the desired state of the site network service.
@@ -4544,12 +4063,6 @@ func (i SitePropertiesFormatArgs) ToSitePropertiesFormatOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(SitePropertiesFormatOutput)
 }
 
-func (i SitePropertiesFormatArgs) ToOutput(ctx context.Context) pulumix.Output[SitePropertiesFormat] {
-	return pulumix.Output[SitePropertiesFormat]{
-		OutputState: i.ToSitePropertiesFormatOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SitePropertiesFormatArgs) ToSitePropertiesFormatPtrOutput() SitePropertiesFormatPtrOutput {
 	return i.ToSitePropertiesFormatPtrOutputWithContext(context.Background())
 }
@@ -4591,12 +4104,6 @@ func (i *sitePropertiesFormatPtrType) ToSitePropertiesFormatPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(SitePropertiesFormatPtrOutput)
 }
 
-func (i *sitePropertiesFormatPtrType) ToOutput(ctx context.Context) pulumix.Output[*SitePropertiesFormat] {
-	return pulumix.Output[*SitePropertiesFormat]{
-		OutputState: i.ToSitePropertiesFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Site properties.
 type SitePropertiesFormatOutput struct{ *pulumi.OutputState }
 
@@ -4622,12 +4129,6 @@ func (o SitePropertiesFormatOutput) ToSitePropertiesFormatPtrOutputWithContext(c
 	}).(SitePropertiesFormatPtrOutput)
 }
 
-func (o SitePropertiesFormatOutput) ToOutput(ctx context.Context) pulumix.Output[SitePropertiesFormat] {
-	return pulumix.Output[SitePropertiesFormat]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of NFVIs
 func (o SitePropertiesFormatOutput) Nfvis() pulumi.ArrayOutput {
 	return o.ApplyT(func(v SitePropertiesFormat) []interface{} { return v.Nfvis }).(pulumi.ArrayOutput)
@@ -4645,12 +4146,6 @@ func (o SitePropertiesFormatPtrOutput) ToSitePropertiesFormatPtrOutput() SitePro
 
 func (o SitePropertiesFormatPtrOutput) ToSitePropertiesFormatPtrOutputWithContext(ctx context.Context) SitePropertiesFormatPtrOutput {
 	return o
-}
-
-func (o SitePropertiesFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SitePropertiesFormat] {
-	return pulumix.Output[*SitePropertiesFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SitePropertiesFormatPtrOutput) Elem() SitePropertiesFormatOutput {
@@ -4696,12 +4191,6 @@ func (o SitePropertiesFormatResponseOutput) ToSitePropertiesFormatResponseOutput
 
 func (o SitePropertiesFormatResponseOutput) ToSitePropertiesFormatResponseOutputWithContext(ctx context.Context) SitePropertiesFormatResponseOutput {
 	return o
-}
-
-func (o SitePropertiesFormatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SitePropertiesFormatResponse] {
-	return pulumix.Output[SitePropertiesFormatResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of NFVIs
@@ -4756,12 +4245,6 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
-func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
 	return i.ToSkuPtrOutputWithContext(context.Background())
 }
@@ -4803,12 +4286,6 @@ func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
 }
 
-func (i *skuPtrType) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
-	return pulumix.Output[*Sku]{
-		OutputState: i.ToSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sku, to be associated with a SiteNetworkService.
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -4834,12 +4311,6 @@ func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	}).(SkuPtrOutput)
 }
 
-func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of this Sku
 func (o SkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v Sku) string { return v.Name }).(pulumi.StringOutput)
@@ -4857,12 +4328,6 @@ func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
 
 func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o
-}
-
-func (o SkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
-	return pulumix.Output[*Sku]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuPtrOutput) Elem() SkuOutput {
@@ -4908,12 +4373,6 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
-	return pulumix.Output[SkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of this Sku
 func (o SkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SkuResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -4936,12 +4395,6 @@ func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
 
 func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
 	return o
-}
-
-func (o SkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuResponse] {
-	return pulumix.Output[*SkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
@@ -5005,12 +4458,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timestamp of resource creation (UTC).
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
@@ -5064,12 +4511,6 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
-func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
-	return pulumix.Output[UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The client ID of the assigned identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -5092,12 +4533,6 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
-	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {

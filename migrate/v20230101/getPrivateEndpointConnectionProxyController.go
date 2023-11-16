@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the of private link proxy resources from a migrate project and private link proxy resource.
@@ -83,12 +82,6 @@ func (o LookupPrivateEndpointConnectionProxyControllerResultOutput) ToLookupPriv
 
 func (o LookupPrivateEndpointConnectionProxyControllerResultOutput) ToLookupPrivateEndpointConnectionProxyControllerResultOutputWithContext(ctx context.Context) LookupPrivateEndpointConnectionProxyControllerResultOutput {
 	return o
-}
-
-func (o LookupPrivateEndpointConnectionProxyControllerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateEndpointConnectionProxyControllerResult] {
-	return pulumix.Output[LookupPrivateEndpointConnectionProxyControllerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupPrivateEndpointConnectionProxyControllerResultOutput) ETag() pulumi.StringPtrOutput {

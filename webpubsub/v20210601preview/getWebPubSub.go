@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the resource and its properties.
@@ -148,12 +147,6 @@ func (o LookupWebPubSubResultOutput) ToLookupWebPubSubResultOutput() LookupWebPu
 
 func (o LookupWebPubSubResultOutput) ToLookupWebPubSubResultOutputWithContext(ctx context.Context) LookupWebPubSubResultOutput {
 	return o
-}
-
-func (o LookupWebPubSubResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebPubSubResult] {
-	return pulumix.Output[LookupWebPubSubResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Diagnostic configuration of a Microsoft.SignalRService resource. Used together with Azure monitor DiagnosticSettings.

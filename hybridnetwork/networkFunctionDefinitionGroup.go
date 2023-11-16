@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Network function definition group resource.
@@ -137,12 +136,6 @@ func (i *NetworkFunctionDefinitionGroup) ToNetworkFunctionDefinitionGroupOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkFunctionDefinitionGroupOutput)
 }
 
-func (i *NetworkFunctionDefinitionGroup) ToOutput(ctx context.Context) pulumix.Output[*NetworkFunctionDefinitionGroup] {
-	return pulumix.Output[*NetworkFunctionDefinitionGroup]{
-		OutputState: i.ToNetworkFunctionDefinitionGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkFunctionDefinitionGroupOutput struct{ *pulumi.OutputState }
 
 func (NetworkFunctionDefinitionGroupOutput) ElementType() reflect.Type {
@@ -155,12 +148,6 @@ func (o NetworkFunctionDefinitionGroupOutput) ToNetworkFunctionDefinitionGroupOu
 
 func (o NetworkFunctionDefinitionGroupOutput) ToNetworkFunctionDefinitionGroupOutputWithContext(ctx context.Context) NetworkFunctionDefinitionGroupOutput {
 	return o
-}
-
-func (o NetworkFunctionDefinitionGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkFunctionDefinitionGroup] {
-	return pulumix.Output[*NetworkFunctionDefinitionGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

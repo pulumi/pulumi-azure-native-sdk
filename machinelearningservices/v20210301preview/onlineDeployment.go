@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type OnlineDeployment struct {
@@ -193,12 +192,6 @@ func (i *OnlineDeployment) ToOnlineDeploymentOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(OnlineDeploymentOutput)
 }
 
-func (i *OnlineDeployment) ToOutput(ctx context.Context) pulumix.Output[*OnlineDeployment] {
-	return pulumix.Output[*OnlineDeployment]{
-		OutputState: i.ToOnlineDeploymentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OnlineDeploymentOutput struct{ *pulumi.OutputState }
 
 func (OnlineDeploymentOutput) ElementType() reflect.Type {
@@ -211,12 +204,6 @@ func (o OnlineDeploymentOutput) ToOnlineDeploymentOutput() OnlineDeploymentOutpu
 
 func (o OnlineDeploymentOutput) ToOnlineDeploymentOutputWithContext(ctx context.Context) OnlineDeploymentOutput {
 	return o
-}
-
-func (o OnlineDeploymentOutput) ToOutput(ctx context.Context) pulumix.Output[*OnlineDeployment] {
-	return pulumix.Output[*OnlineDeployment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Service identity associated with a resource.

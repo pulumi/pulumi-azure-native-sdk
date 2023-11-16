@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details from a list of feature names.
@@ -78,12 +77,6 @@ func (o ListFeatureAccountResultOutput) ToListFeatureAccountResultOutput() ListF
 
 func (o ListFeatureAccountResultOutput) ToListFeatureAccountResultOutputWithContext(ctx context.Context) ListFeatureAccountResultOutput {
 	return o
-}
-
-func (o ListFeatureAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListFeatureAccountResult] {
-	return pulumix.Output[ListFeatureAccountResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Features with enabled status

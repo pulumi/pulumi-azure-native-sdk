@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Recipient User details.
@@ -170,12 +169,6 @@ func (i *NotificationRecipientUser) ToNotificationRecipientUserOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationRecipientUserOutput)
 }
 
-func (i *NotificationRecipientUser) ToOutput(ctx context.Context) pulumix.Output[*NotificationRecipientUser] {
-	return pulumix.Output[*NotificationRecipientUser]{
-		OutputState: i.ToNotificationRecipientUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NotificationRecipientUserOutput struct{ *pulumi.OutputState }
 
 func (NotificationRecipientUserOutput) ElementType() reflect.Type {
@@ -188,12 +181,6 @@ func (o NotificationRecipientUserOutput) ToNotificationRecipientUserOutput() Not
 
 func (o NotificationRecipientUserOutput) ToNotificationRecipientUserOutputWithContext(ctx context.Context) NotificationRecipientUserOutput {
 	return o
-}
-
-func (o NotificationRecipientUserOutput) ToOutput(ctx context.Context) pulumix.Output[*NotificationRecipientUser] {
-	return pulumix.Output[*NotificationRecipientUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource name.

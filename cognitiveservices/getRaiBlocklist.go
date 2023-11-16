@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified custom blocklist associated with the Azure OpenAI account.
@@ -90,12 +89,6 @@ func (o LookupRaiBlocklistResultOutput) ToLookupRaiBlocklistResultOutput() Looku
 
 func (o LookupRaiBlocklistResultOutput) ToLookupRaiBlocklistResultOutputWithContext(ctx context.Context) LookupRaiBlocklistResultOutput {
 	return o
-}
-
-func (o LookupRaiBlocklistResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRaiBlocklistResult] {
-	return pulumix.Output[LookupRaiBlocklistResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Etag.

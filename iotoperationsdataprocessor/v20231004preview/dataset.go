@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Dataset resource belonging to an Instance resource.
@@ -171,12 +170,6 @@ func (i *Dataset) ToDatasetOutputWithContext(ctx context.Context) DatasetOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetOutput)
 }
 
-func (i *Dataset) ToOutput(ctx context.Context) pulumix.Output[*Dataset] {
-	return pulumix.Output[*Dataset]{
-		OutputState: i.ToDatasetOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatasetOutput struct{ *pulumi.OutputState }
 
 func (DatasetOutput) ElementType() reflect.Type {
@@ -189,12 +182,6 @@ func (o DatasetOutput) ToDatasetOutput() DatasetOutput {
 
 func (o DatasetOutput) ToDatasetOutputWithContext(ctx context.Context) DatasetOutput {
 	return o
-}
-
-func (o DatasetOutput) ToOutput(ctx context.Context) pulumix.Output[*Dataset] {
-	return pulumix.Output[*Dataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Detailed description of the Dataset.

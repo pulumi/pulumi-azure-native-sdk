@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Private Endpoint Connection resource.
@@ -131,12 +130,6 @@ func (i *PrivateEndpointConnectionsForMIPPolicySync) ToPrivateEndpointConnection
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionsForMIPPolicySyncOutput)
 }
 
-func (i *PrivateEndpointConnectionsForMIPPolicySync) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionsForMIPPolicySync] {
-	return pulumix.Output[*PrivateEndpointConnectionsForMIPPolicySync]{
-		OutputState: i.ToPrivateEndpointConnectionsForMIPPolicySyncOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateEndpointConnectionsForMIPPolicySyncOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointConnectionsForMIPPolicySyncOutput) ElementType() reflect.Type {
@@ -149,12 +142,6 @@ func (o PrivateEndpointConnectionsForMIPPolicySyncOutput) ToPrivateEndpointConne
 
 func (o PrivateEndpointConnectionsForMIPPolicySyncOutput) ToPrivateEndpointConnectionsForMIPPolicySyncOutputWithContext(ctx context.Context) PrivateEndpointConnectionsForMIPPolicySyncOutput {
 	return o
-}
-
-func (o PrivateEndpointConnectionsForMIPPolicySyncOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionsForMIPPolicySync] {
-	return pulumix.Output[*PrivateEndpointConnectionsForMIPPolicySync]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description of topic resource.
@@ -170,12 +169,6 @@ func (i *NamespaceNetworkRuleSet) ToNamespaceNetworkRuleSetOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceNetworkRuleSetOutput)
 }
 
-func (i *NamespaceNetworkRuleSet) ToOutput(ctx context.Context) pulumix.Output[*NamespaceNetworkRuleSet] {
-	return pulumix.Output[*NamespaceNetworkRuleSet]{
-		OutputState: i.ToNamespaceNetworkRuleSetOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NamespaceNetworkRuleSetOutput struct{ *pulumi.OutputState }
 
 func (NamespaceNetworkRuleSetOutput) ElementType() reflect.Type {
@@ -188,12 +181,6 @@ func (o NamespaceNetworkRuleSetOutput) ToNamespaceNetworkRuleSetOutput() Namespa
 
 func (o NamespaceNetworkRuleSetOutput) ToNamespaceNetworkRuleSetOutputWithContext(ctx context.Context) NamespaceNetworkRuleSetOutput {
 	return o
-}
-
-func (o NamespaceNetworkRuleSetOutput) ToOutput(ctx context.Context) pulumix.Output[*NamespaceNetworkRuleSet] {
-	return pulumix.Output[*NamespaceNetworkRuleSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Default Action for Network Rule Set

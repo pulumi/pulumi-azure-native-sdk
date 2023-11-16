@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a TrafficController
@@ -91,12 +90,6 @@ func (o LookupTrafficControllerInterfaceResultOutput) ToLookupTrafficControllerI
 
 func (o LookupTrafficControllerInterfaceResultOutput) ToLookupTrafficControllerInterfaceResultOutputWithContext(ctx context.Context) LookupTrafficControllerInterfaceResultOutput {
 	return o
-}
-
-func (o LookupTrafficControllerInterfaceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTrafficControllerInterfaceResult] {
-	return pulumix.Output[LookupTrafficControllerInterfaceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Associations References List

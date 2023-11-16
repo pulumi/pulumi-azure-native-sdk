@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes a node type in the cluster, each node type represents sub set of nodes in the cluster.
@@ -447,12 +446,6 @@ func (i *NodeType) ToNodeTypeOutputWithContext(ctx context.Context) NodeTypeOutp
 	return pulumi.ToOutputWithContext(ctx, i).(NodeTypeOutput)
 }
 
-func (i *NodeType) ToOutput(ctx context.Context) pulumix.Output[*NodeType] {
-	return pulumix.Output[*NodeType]{
-		OutputState: i.ToNodeTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NodeTypeOutput struct{ *pulumi.OutputState }
 
 func (NodeTypeOutput) ElementType() reflect.Type {
@@ -465,12 +458,6 @@ func (o NodeTypeOutput) ToNodeTypeOutput() NodeTypeOutput {
 
 func (o NodeTypeOutput) ToNodeTypeOutputWithContext(ctx context.Context) NodeTypeOutput {
 	return o
-}
-
-func (o NodeTypeOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeType] {
-	return pulumix.Output[*NodeType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional managed data disks.

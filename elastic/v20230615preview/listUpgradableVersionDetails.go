@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Stack Versions that this version can upgrade to
@@ -75,12 +74,6 @@ func (o ListUpgradableVersionDetailsResultOutput) ToListUpgradableVersionDetails
 
 func (o ListUpgradableVersionDetailsResultOutput) ToListUpgradableVersionDetailsResultOutputWithContext(ctx context.Context) ListUpgradableVersionDetailsResultOutput {
 	return o
-}
-
-func (o ListUpgradableVersionDetailsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListUpgradableVersionDetailsResult] {
-	return pulumix.Output[ListUpgradableVersionDetailsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Current version of the elastic monitor

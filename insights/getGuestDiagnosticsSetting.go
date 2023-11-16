@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets guest diagnostics settings.
@@ -87,12 +86,6 @@ func (o LookupGuestDiagnosticsSettingResultOutput) ToLookupGuestDiagnosticsSetti
 
 func (o LookupGuestDiagnosticsSettingResultOutput) ToLookupGuestDiagnosticsSettingResultOutputWithContext(ctx context.Context) LookupGuestDiagnosticsSettingResultOutput {
 	return o
-}
-
-func (o LookupGuestDiagnosticsSettingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGuestDiagnosticsSettingResult] {
-	return pulumix.Output[LookupGuestDiagnosticsSettingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // the array of data source object which are configured to collect and send data

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Transform encapsulates the rules or instructions for generating desired outputs from input media, such as by transcoding or by extracting insights. After the Transform is created, it can be applied to input media by creating Jobs.
@@ -158,12 +157,6 @@ func (i *Transform) ToTransformOutputWithContext(ctx context.Context) TransformO
 	return pulumi.ToOutputWithContext(ctx, i).(TransformOutput)
 }
 
-func (i *Transform) ToOutput(ctx context.Context) pulumix.Output[*Transform] {
-	return pulumix.Output[*Transform]{
-		OutputState: i.ToTransformOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TransformOutput struct{ *pulumi.OutputState }
 
 func (TransformOutput) ElementType() reflect.Type {
@@ -176,12 +169,6 @@ func (o TransformOutput) ToTransformOutput() TransformOutput {
 
 func (o TransformOutput) ToTransformOutputWithContext(ctx context.Context) TransformOutput {
 	return o
-}
-
-func (o TransformOutput) ToOutput(ctx context.Context) pulumix.Output[*Transform] {
-	return pulumix.Output[*Transform]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The UTC date and time when the Transform was created, in 'YYYY-MM-DDThh:mm:ssZ' format.

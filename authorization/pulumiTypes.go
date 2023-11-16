@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -69,12 +68,6 @@ func (i AccessReviewHistoryInstanceArgs) ToAccessReviewHistoryInstanceOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(AccessReviewHistoryInstanceOutput)
 }
 
-func (i AccessReviewHistoryInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[AccessReviewHistoryInstance] {
-	return pulumix.Output[AccessReviewHistoryInstance]{
-		OutputState: i.ToAccessReviewHistoryInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessReviewHistoryInstanceArrayInput is an input type that accepts AccessReviewHistoryInstanceArray and AccessReviewHistoryInstanceArrayOutput values.
 // You can construct a concrete instance of `AccessReviewHistoryInstanceArrayInput` via:
 //
@@ -100,12 +93,6 @@ func (i AccessReviewHistoryInstanceArray) ToAccessReviewHistoryInstanceArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AccessReviewHistoryInstanceArrayOutput)
 }
 
-func (i AccessReviewHistoryInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewHistoryInstance] {
-	return pulumix.Output[[]AccessReviewHistoryInstance]{
-		OutputState: i.ToAccessReviewHistoryInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Access Review History Definition Instance.
 type AccessReviewHistoryInstanceOutput struct{ *pulumi.OutputState }
 
@@ -119,12 +106,6 @@ func (o AccessReviewHistoryInstanceOutput) ToAccessReviewHistoryInstanceOutput()
 
 func (o AccessReviewHistoryInstanceOutput) ToAccessReviewHistoryInstanceOutputWithContext(ctx context.Context) AccessReviewHistoryInstanceOutput {
 	return o
-}
-
-func (o AccessReviewHistoryInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[AccessReviewHistoryInstance] {
-	return pulumix.Output[AccessReviewHistoryInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The display name for the parent history definition.
@@ -169,12 +150,6 @@ func (o AccessReviewHistoryInstanceArrayOutput) ToAccessReviewHistoryInstanceArr
 
 func (o AccessReviewHistoryInstanceArrayOutput) ToAccessReviewHistoryInstanceArrayOutputWithContext(ctx context.Context) AccessReviewHistoryInstanceArrayOutput {
 	return o
-}
-
-func (o AccessReviewHistoryInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewHistoryInstance] {
-	return pulumix.Output[[]AccessReviewHistoryInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessReviewHistoryInstanceArrayOutput) Index(i pulumi.IntInput) AccessReviewHistoryInstanceOutput {
@@ -222,12 +197,6 @@ func (o AccessReviewHistoryInstanceResponseOutput) ToAccessReviewHistoryInstance
 
 func (o AccessReviewHistoryInstanceResponseOutput) ToAccessReviewHistoryInstanceResponseOutputWithContext(ctx context.Context) AccessReviewHistoryInstanceResponseOutput {
 	return o
-}
-
-func (o AccessReviewHistoryInstanceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AccessReviewHistoryInstanceResponse] {
-	return pulumix.Output[AccessReviewHistoryInstanceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The display name for the parent history definition.
@@ -299,12 +268,6 @@ func (o AccessReviewHistoryInstanceResponseArrayOutput) ToAccessReviewHistoryIns
 	return o
 }
 
-func (o AccessReviewHistoryInstanceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewHistoryInstanceResponse] {
-	return pulumix.Output[[]AccessReviewHistoryInstanceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessReviewHistoryInstanceResponseArrayOutput) Index(i pulumi.IntInput) AccessReviewHistoryInstanceResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessReviewHistoryInstanceResponse {
 		return vs[0].([]AccessReviewHistoryInstanceResponse)[vs[1].(int)]
@@ -358,12 +321,6 @@ func (i AccessReviewInstanceArgs) ToAccessReviewInstanceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AccessReviewInstanceOutput)
 }
 
-func (i AccessReviewInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[AccessReviewInstance] {
-	return pulumix.Output[AccessReviewInstance]{
-		OutputState: i.ToAccessReviewInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessReviewInstanceArrayInput is an input type that accepts AccessReviewInstanceArray and AccessReviewInstanceArrayOutput values.
 // You can construct a concrete instance of `AccessReviewInstanceArrayInput` via:
 //
@@ -389,12 +346,6 @@ func (i AccessReviewInstanceArray) ToAccessReviewInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AccessReviewInstanceArrayOutput)
 }
 
-func (i AccessReviewInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewInstance] {
-	return pulumix.Output[[]AccessReviewInstance]{
-		OutputState: i.ToAccessReviewInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Access Review Instance.
 type AccessReviewInstanceOutput struct{ *pulumi.OutputState }
 
@@ -408,12 +359,6 @@ func (o AccessReviewInstanceOutput) ToAccessReviewInstanceOutput() AccessReviewI
 
 func (o AccessReviewInstanceOutput) ToAccessReviewInstanceOutputWithContext(ctx context.Context) AccessReviewInstanceOutput {
 	return o
-}
-
-func (o AccessReviewInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[AccessReviewInstance] {
-	return pulumix.Output[AccessReviewInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This is the collection of backup reviewers.
@@ -448,12 +393,6 @@ func (o AccessReviewInstanceArrayOutput) ToAccessReviewInstanceArrayOutput() Acc
 
 func (o AccessReviewInstanceArrayOutput) ToAccessReviewInstanceArrayOutputWithContext(ctx context.Context) AccessReviewInstanceArrayOutput {
 	return o
-}
-
-func (o AccessReviewInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewInstance] {
-	return pulumix.Output[[]AccessReviewInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessReviewInstanceArrayOutput) Index(i pulumi.IntInput) AccessReviewInstanceOutput {
@@ -497,12 +436,6 @@ func (o AccessReviewInstanceResponseOutput) ToAccessReviewInstanceResponseOutput
 
 func (o AccessReviewInstanceResponseOutput) ToAccessReviewInstanceResponseOutputWithContext(ctx context.Context) AccessReviewInstanceResponseOutput {
 	return o
-}
-
-func (o AccessReviewInstanceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AccessReviewInstanceResponse] {
-	return pulumix.Output[AccessReviewInstanceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This is the collection of backup reviewers.
@@ -564,12 +497,6 @@ func (o AccessReviewInstanceResponseArrayOutput) ToAccessReviewInstanceResponseA
 	return o
 }
 
-func (o AccessReviewInstanceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewInstanceResponse] {
-	return pulumix.Output[[]AccessReviewInstanceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessReviewInstanceResponseArrayOutput) Index(i pulumi.IntInput) AccessReviewInstanceResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessReviewInstanceResponse {
 		return vs[0].([]AccessReviewInstanceResponse)[vs[1].(int)]
@@ -611,12 +538,6 @@ func (i AccessReviewReviewerArgs) ToAccessReviewReviewerOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AccessReviewReviewerOutput)
 }
 
-func (i AccessReviewReviewerArgs) ToOutput(ctx context.Context) pulumix.Output[AccessReviewReviewer] {
-	return pulumix.Output[AccessReviewReviewer]{
-		OutputState: i.ToAccessReviewReviewerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessReviewReviewerArrayInput is an input type that accepts AccessReviewReviewerArray and AccessReviewReviewerArrayOutput values.
 // You can construct a concrete instance of `AccessReviewReviewerArrayInput` via:
 //
@@ -642,12 +563,6 @@ func (i AccessReviewReviewerArray) ToAccessReviewReviewerArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AccessReviewReviewerArrayOutput)
 }
 
-func (i AccessReviewReviewerArray) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewReviewer] {
-	return pulumix.Output[[]AccessReviewReviewer]{
-		OutputState: i.ToAccessReviewReviewerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Descriptor for what needs to be reviewed
 type AccessReviewReviewerOutput struct{ *pulumi.OutputState }
 
@@ -661,12 +576,6 @@ func (o AccessReviewReviewerOutput) ToAccessReviewReviewerOutput() AccessReviewR
 
 func (o AccessReviewReviewerOutput) ToAccessReviewReviewerOutputWithContext(ctx context.Context) AccessReviewReviewerOutput {
 	return o
-}
-
-func (o AccessReviewReviewerOutput) ToOutput(ctx context.Context) pulumix.Output[AccessReviewReviewer] {
-	return pulumix.Output[AccessReviewReviewer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the reviewer(user/servicePrincipal)
@@ -686,12 +595,6 @@ func (o AccessReviewReviewerArrayOutput) ToAccessReviewReviewerArrayOutput() Acc
 
 func (o AccessReviewReviewerArrayOutput) ToAccessReviewReviewerArrayOutputWithContext(ctx context.Context) AccessReviewReviewerArrayOutput {
 	return o
-}
-
-func (o AccessReviewReviewerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewReviewer] {
-	return pulumix.Output[[]AccessReviewReviewer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessReviewReviewerArrayOutput) Index(i pulumi.IntInput) AccessReviewReviewerOutput {
@@ -723,12 +626,6 @@ func (o AccessReviewReviewerResponseOutput) ToAccessReviewReviewerResponseOutput
 	return o
 }
 
-func (o AccessReviewReviewerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AccessReviewReviewerResponse] {
-	return pulumix.Output[AccessReviewReviewerResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The id of the reviewer(user/servicePrincipal)
 func (o AccessReviewReviewerResponseOutput) PrincipalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessReviewReviewerResponse) *string { return v.PrincipalId }).(pulumi.StringPtrOutput)
@@ -751,12 +648,6 @@ func (o AccessReviewReviewerResponseArrayOutput) ToAccessReviewReviewerResponseA
 
 func (o AccessReviewReviewerResponseArrayOutput) ToAccessReviewReviewerResponseArrayOutputWithContext(ctx context.Context) AccessReviewReviewerResponseArrayOutput {
 	return o
-}
-
-func (o AccessReviewReviewerResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewReviewerResponse] {
-	return pulumix.Output[[]AccessReviewReviewerResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessReviewReviewerResponseArrayOutput) Index(i pulumi.IntInput) AccessReviewReviewerResponseOutput {
@@ -820,12 +711,6 @@ func (i AccessReviewScopeArgs) ToAccessReviewScopeOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AccessReviewScopeOutput)
 }
 
-func (i AccessReviewScopeArgs) ToOutput(ctx context.Context) pulumix.Output[AccessReviewScope] {
-	return pulumix.Output[AccessReviewScope]{
-		OutputState: i.ToAccessReviewScopeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessReviewScopeArrayInput is an input type that accepts AccessReviewScopeArray and AccessReviewScopeArrayOutput values.
 // You can construct a concrete instance of `AccessReviewScopeArrayInput` via:
 //
@@ -851,12 +736,6 @@ func (i AccessReviewScopeArray) ToAccessReviewScopeArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AccessReviewScopeArrayOutput)
 }
 
-func (i AccessReviewScopeArray) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewScope] {
-	return pulumix.Output[[]AccessReviewScope]{
-		OutputState: i.ToAccessReviewScopeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Descriptor for what needs to be reviewed
 type AccessReviewScopeOutput struct{ *pulumi.OutputState }
 
@@ -870,12 +749,6 @@ func (o AccessReviewScopeOutput) ToAccessReviewScopeOutput() AccessReviewScopeOu
 
 func (o AccessReviewScopeOutput) ToAccessReviewScopeOutputWithContext(ctx context.Context) AccessReviewScopeOutput {
 	return o
-}
-
-func (o AccessReviewScopeOutput) ToOutput(ctx context.Context) pulumix.Output[AccessReviewScope] {
-	return pulumix.Output[AccessReviewScope]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This is used to indicate the resource id(s) to exclude
@@ -922,12 +795,6 @@ func (o AccessReviewScopeArrayOutput) ToAccessReviewScopeArrayOutputWithContext(
 	return o
 }
 
-func (o AccessReviewScopeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewScope] {
-	return pulumix.Output[[]AccessReviewScope]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessReviewScopeArrayOutput) Index(i pulumi.IntInput) AccessReviewScopeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessReviewScope {
 		return vs[0].([]AccessReviewScope)[vs[1].(int)]
@@ -971,12 +838,6 @@ func (o AccessReviewScopeResponseOutput) ToAccessReviewScopeResponseOutput() Acc
 
 func (o AccessReviewScopeResponseOutput) ToAccessReviewScopeResponseOutputWithContext(ctx context.Context) AccessReviewScopeResponseOutput {
 	return o
-}
-
-func (o AccessReviewScopeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AccessReviewScopeResponse] {
-	return pulumix.Output[AccessReviewScopeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The role assignment state eligible/active to review
@@ -1041,12 +902,6 @@ func (o AccessReviewScopeResponseArrayOutput) ToAccessReviewScopeResponseArrayOu
 
 func (o AccessReviewScopeResponseArrayOutput) ToAccessReviewScopeResponseArrayOutputWithContext(ctx context.Context) AccessReviewScopeResponseArrayOutput {
 	return o
-}
-
-func (o AccessReviewScopeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewScopeResponse] {
-	return pulumix.Output[[]AccessReviewScopeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessReviewScopeResponseArrayOutput) Index(i pulumi.IntInput) AccessReviewScopeResponseOutput {
@@ -1124,12 +979,6 @@ func (i IdentityArgs) ToIdentityOutputWithContext(ctx context.Context) IdentityO
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityOutput)
 }
 
-func (i IdentityArgs) ToOutput(ctx context.Context) pulumix.Output[Identity] {
-	return pulumix.Output[Identity]{
-		OutputState: i.ToIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IdentityArgs) ToIdentityPtrOutput() IdentityPtrOutput {
 	return i.ToIdentityPtrOutputWithContext(context.Background())
 }
@@ -1171,12 +1020,6 @@ func (i *identityPtrType) ToIdentityPtrOutputWithContext(ctx context.Context) Id
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPtrOutput)
 }
 
-func (i *identityPtrType) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
-	return pulumix.Output[*Identity]{
-		OutputState: i.ToIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Identity for the resource.  Policy assignments support a maximum of one identity.  That is either a system assigned identity or a single user assigned identity.
 type IdentityOutput struct{ *pulumi.OutputState }
 
@@ -1202,12 +1045,6 @@ func (o IdentityOutput) ToIdentityPtrOutputWithContext(ctx context.Context) Iden
 	}).(IdentityPtrOutput)
 }
 
-func (o IdentityOutput) ToOutput(ctx context.Context) pulumix.Output[Identity] {
-	return pulumix.Output[Identity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The identity type. This is the only required field when adding a system or user assigned identity to a resource.
 func (o IdentityOutput) Type() ResourceIdentityTypePtrOutput {
 	return o.ApplyT(func(v Identity) *ResourceIdentityType { return v.Type }).(ResourceIdentityTypePtrOutput)
@@ -1230,12 +1067,6 @@ func (o IdentityPtrOutput) ToIdentityPtrOutput() IdentityPtrOutput {
 
 func (o IdentityPtrOutput) ToIdentityPtrOutputWithContext(ctx context.Context) IdentityPtrOutput {
 	return o
-}
-
-func (o IdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
-	return pulumix.Output[*Identity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityPtrOutput) Elem() IdentityOutput {
@@ -1295,12 +1126,6 @@ func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o IdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityResponse] {
-	return pulumix.Output[IdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The principal ID of the resource identity.  This property will only be provided for a system assigned identity
 func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -1335,12 +1160,6 @@ func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutput() IdentityRespons
 
 func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
 	return o
-}
-
-func (o IdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityResponse] {
-	return pulumix.Output[*IdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
@@ -1414,12 +1233,6 @@ func (o IdentityResponseUserAssignedIdentitiesOutput) ToIdentityResponseUserAssi
 	return o
 }
 
-func (o IdentityResponseUserAssignedIdentitiesOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityResponseUserAssignedIdentities] {
-	return pulumix.Output[IdentityResponseUserAssignedIdentities]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The client id of user assigned identity.
 func (o IdentityResponseUserAssignedIdentitiesOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponseUserAssignedIdentities) string { return v.ClientId }).(pulumi.StringOutput)
@@ -1442,12 +1255,6 @@ func (o IdentityResponseUserAssignedIdentitiesMapOutput) ToIdentityResponseUserA
 
 func (o IdentityResponseUserAssignedIdentitiesMapOutput) ToIdentityResponseUserAssignedIdentitiesMapOutputWithContext(ctx context.Context) IdentityResponseUserAssignedIdentitiesMapOutput {
 	return o
-}
-
-func (o IdentityResponseUserAssignedIdentitiesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]IdentityResponseUserAssignedIdentities] {
-	return pulumix.Output[map[string]IdentityResponseUserAssignedIdentities]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityResponseUserAssignedIdentitiesMapOutput) MapIndex(k pulumi.StringInput) IdentityResponseUserAssignedIdentitiesOutput {
@@ -1491,12 +1298,6 @@ func (i ManagementLockOwnerArgs) ToManagementLockOwnerOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementLockOwnerOutput)
 }
 
-func (i ManagementLockOwnerArgs) ToOutput(ctx context.Context) pulumix.Output[ManagementLockOwner] {
-	return pulumix.Output[ManagementLockOwner]{
-		OutputState: i.ToManagementLockOwnerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ManagementLockOwnerArrayInput is an input type that accepts ManagementLockOwnerArray and ManagementLockOwnerArrayOutput values.
 // You can construct a concrete instance of `ManagementLockOwnerArrayInput` via:
 //
@@ -1522,12 +1323,6 @@ func (i ManagementLockOwnerArray) ToManagementLockOwnerArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementLockOwnerArrayOutput)
 }
 
-func (i ManagementLockOwnerArray) ToOutput(ctx context.Context) pulumix.Output[[]ManagementLockOwner] {
-	return pulumix.Output[[]ManagementLockOwner]{
-		OutputState: i.ToManagementLockOwnerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Lock owner properties.
 type ManagementLockOwnerOutput struct{ *pulumi.OutputState }
 
@@ -1541,12 +1336,6 @@ func (o ManagementLockOwnerOutput) ToManagementLockOwnerOutput() ManagementLockO
 
 func (o ManagementLockOwnerOutput) ToManagementLockOwnerOutputWithContext(ctx context.Context) ManagementLockOwnerOutput {
 	return o
-}
-
-func (o ManagementLockOwnerOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementLockOwner] {
-	return pulumix.Output[ManagementLockOwner]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The application ID of the lock owner.
@@ -1566,12 +1355,6 @@ func (o ManagementLockOwnerArrayOutput) ToManagementLockOwnerArrayOutput() Manag
 
 func (o ManagementLockOwnerArrayOutput) ToManagementLockOwnerArrayOutputWithContext(ctx context.Context) ManagementLockOwnerArrayOutput {
 	return o
-}
-
-func (o ManagementLockOwnerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagementLockOwner] {
-	return pulumix.Output[[]ManagementLockOwner]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagementLockOwnerArrayOutput) Index(i pulumi.IntInput) ManagementLockOwnerOutput {
@@ -1601,12 +1384,6 @@ func (o ManagementLockOwnerResponseOutput) ToManagementLockOwnerResponseOutputWi
 	return o
 }
 
-func (o ManagementLockOwnerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementLockOwnerResponse] {
-	return pulumix.Output[ManagementLockOwnerResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The application ID of the lock owner.
 func (o ManagementLockOwnerResponseOutput) ApplicationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagementLockOwnerResponse) *string { return v.ApplicationId }).(pulumi.StringPtrOutput)
@@ -1624,12 +1401,6 @@ func (o ManagementLockOwnerResponseArrayOutput) ToManagementLockOwnerResponseArr
 
 func (o ManagementLockOwnerResponseArrayOutput) ToManagementLockOwnerResponseArrayOutputWithContext(ctx context.Context) ManagementLockOwnerResponseArrayOutput {
 	return o
-}
-
-func (o ManagementLockOwnerResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagementLockOwnerResponse] {
-	return pulumix.Output[[]ManagementLockOwnerResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagementLockOwnerResponseArrayOutput) Index(i pulumi.IntInput) ManagementLockOwnerResponseOutput {
@@ -1677,12 +1448,6 @@ func (i NonComplianceMessageArgs) ToNonComplianceMessageOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(NonComplianceMessageOutput)
 }
 
-func (i NonComplianceMessageArgs) ToOutput(ctx context.Context) pulumix.Output[NonComplianceMessage] {
-	return pulumix.Output[NonComplianceMessage]{
-		OutputState: i.ToNonComplianceMessageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NonComplianceMessageArrayInput is an input type that accepts NonComplianceMessageArray and NonComplianceMessageArrayOutput values.
 // You can construct a concrete instance of `NonComplianceMessageArrayInput` via:
 //
@@ -1708,12 +1473,6 @@ func (i NonComplianceMessageArray) ToNonComplianceMessageArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(NonComplianceMessageArrayOutput)
 }
 
-func (i NonComplianceMessageArray) ToOutput(ctx context.Context) pulumix.Output[[]NonComplianceMessage] {
-	return pulumix.Output[[]NonComplianceMessage]{
-		OutputState: i.ToNonComplianceMessageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A message that describes why a resource is non-compliant with the policy. This is shown in 'deny' error messages and on resource's non-compliant compliance results.
 type NonComplianceMessageOutput struct{ *pulumi.OutputState }
 
@@ -1727,12 +1486,6 @@ func (o NonComplianceMessageOutput) ToNonComplianceMessageOutput() NonCompliance
 
 func (o NonComplianceMessageOutput) ToNonComplianceMessageOutputWithContext(ctx context.Context) NonComplianceMessageOutput {
 	return o
-}
-
-func (o NonComplianceMessageOutput) ToOutput(ctx context.Context) pulumix.Output[NonComplianceMessage] {
-	return pulumix.Output[NonComplianceMessage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A message that describes why a resource is non-compliant with the policy. This is shown in 'deny' error messages and on resource's non-compliant compliance results.
@@ -1757,12 +1510,6 @@ func (o NonComplianceMessageArrayOutput) ToNonComplianceMessageArrayOutput() Non
 
 func (o NonComplianceMessageArrayOutput) ToNonComplianceMessageArrayOutputWithContext(ctx context.Context) NonComplianceMessageArrayOutput {
 	return o
-}
-
-func (o NonComplianceMessageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NonComplianceMessage] {
-	return pulumix.Output[[]NonComplianceMessage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NonComplianceMessageArrayOutput) Index(i pulumi.IntInput) NonComplianceMessageOutput {
@@ -1794,12 +1541,6 @@ func (o NonComplianceMessageResponseOutput) ToNonComplianceMessageResponseOutput
 	return o
 }
 
-func (o NonComplianceMessageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NonComplianceMessageResponse] {
-	return pulumix.Output[NonComplianceMessageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A message that describes why a resource is non-compliant with the policy. This is shown in 'deny' error messages and on resource's non-compliant compliance results.
 func (o NonComplianceMessageResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v NonComplianceMessageResponse) string { return v.Message }).(pulumi.StringOutput)
@@ -1822,12 +1563,6 @@ func (o NonComplianceMessageResponseArrayOutput) ToNonComplianceMessageResponseA
 
 func (o NonComplianceMessageResponseArrayOutput) ToNonComplianceMessageResponseArrayOutputWithContext(ctx context.Context) NonComplianceMessageResponseArrayOutput {
 	return o
-}
-
-func (o NonComplianceMessageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NonComplianceMessageResponse] {
-	return pulumix.Output[[]NonComplianceMessageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NonComplianceMessageResponseArrayOutput) Index(i pulumi.IntInput) NonComplianceMessageResponseOutput {
@@ -1879,12 +1614,6 @@ func (i OverrideArgs) ToOverrideOutputWithContext(ctx context.Context) OverrideO
 	return pulumi.ToOutputWithContext(ctx, i).(OverrideOutput)
 }
 
-func (i OverrideArgs) ToOutput(ctx context.Context) pulumix.Output[Override] {
-	return pulumix.Output[Override]{
-		OutputState: i.ToOverrideOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OverrideArrayInput is an input type that accepts OverrideArray and OverrideArrayOutput values.
 // You can construct a concrete instance of `OverrideArrayInput` via:
 //
@@ -1910,12 +1639,6 @@ func (i OverrideArray) ToOverrideArrayOutputWithContext(ctx context.Context) Ove
 	return pulumi.ToOutputWithContext(ctx, i).(OverrideArrayOutput)
 }
 
-func (i OverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]Override] {
-	return pulumix.Output[[]Override]{
-		OutputState: i.ToOverrideArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The policy property value override.
 type OverrideOutput struct{ *pulumi.OutputState }
 
@@ -1929,12 +1652,6 @@ func (o OverrideOutput) ToOverrideOutput() OverrideOutput {
 
 func (o OverrideOutput) ToOverrideOutputWithContext(ctx context.Context) OverrideOutput {
 	return o
-}
-
-func (o OverrideOutput) ToOutput(ctx context.Context) pulumix.Output[Override] {
-	return pulumix.Output[Override]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The override kind.
@@ -1964,12 +1681,6 @@ func (o OverrideArrayOutput) ToOverrideArrayOutput() OverrideArrayOutput {
 
 func (o OverrideArrayOutput) ToOverrideArrayOutputWithContext(ctx context.Context) OverrideArrayOutput {
 	return o
-}
-
-func (o OverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Override] {
-	return pulumix.Output[[]Override]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OverrideArrayOutput) Index(i pulumi.IntInput) OverrideOutput {
@@ -2003,12 +1714,6 @@ func (o OverrideResponseOutput) ToOverrideResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o OverrideResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OverrideResponse] {
-	return pulumix.Output[OverrideResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The override kind.
 func (o OverrideResponseOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OverrideResponse) *string { return v.Kind }).(pulumi.StringPtrOutput)
@@ -2036,12 +1741,6 @@ func (o OverrideResponseArrayOutput) ToOverrideResponseArrayOutput() OverrideRes
 
 func (o OverrideResponseArrayOutput) ToOverrideResponseArrayOutputWithContext(ctx context.Context) OverrideResponseArrayOutput {
 	return o
-}
-
-func (o OverrideResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OverrideResponse] {
-	return pulumix.Output[[]OverrideResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OverrideResponseArrayOutput) Index(i pulumi.IntInput) OverrideResponseOutput {
@@ -2101,12 +1800,6 @@ func (i ParameterDefinitionsValueArgs) ToParameterDefinitionsValueOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterDefinitionsValueOutput)
 }
 
-func (i ParameterDefinitionsValueArgs) ToOutput(ctx context.Context) pulumix.Output[ParameterDefinitionsValue] {
-	return pulumix.Output[ParameterDefinitionsValue]{
-		OutputState: i.ToParameterDefinitionsValueOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ParameterDefinitionsValueMapInput is an input type that accepts ParameterDefinitionsValueMap and ParameterDefinitionsValueMapOutput values.
 // You can construct a concrete instance of `ParameterDefinitionsValueMapInput` via:
 //
@@ -2132,12 +1825,6 @@ func (i ParameterDefinitionsValueMap) ToParameterDefinitionsValueMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterDefinitionsValueMapOutput)
 }
 
-func (i ParameterDefinitionsValueMap) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterDefinitionsValue] {
-	return pulumix.Output[map[string]ParameterDefinitionsValue]{
-		OutputState: i.ToParameterDefinitionsValueMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The definition of a parameter that can be provided to the policy.
 type ParameterDefinitionsValueOutput struct{ *pulumi.OutputState }
 
@@ -2151,12 +1838,6 @@ func (o ParameterDefinitionsValueOutput) ToParameterDefinitionsValueOutput() Par
 
 func (o ParameterDefinitionsValueOutput) ToParameterDefinitionsValueOutputWithContext(ctx context.Context) ParameterDefinitionsValueOutput {
 	return o
-}
-
-func (o ParameterDefinitionsValueOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterDefinitionsValue] {
-	return pulumix.Output[ParameterDefinitionsValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The allowed values for the parameter.
@@ -2196,12 +1877,6 @@ func (o ParameterDefinitionsValueMapOutput) ToParameterDefinitionsValueMapOutput
 
 func (o ParameterDefinitionsValueMapOutput) ToParameterDefinitionsValueMapOutputWithContext(ctx context.Context) ParameterDefinitionsValueMapOutput {
 	return o
-}
-
-func (o ParameterDefinitionsValueMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterDefinitionsValue] {
-	return pulumix.Output[map[string]ParameterDefinitionsValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ParameterDefinitionsValueMapOutput) MapIndex(k pulumi.StringInput) ParameterDefinitionsValueOutput {
@@ -2257,12 +1932,6 @@ func (i ParameterDefinitionsValueMetadataArgs) ToParameterDefinitionsValueMetada
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterDefinitionsValueMetadataOutput)
 }
 
-func (i ParameterDefinitionsValueMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[ParameterDefinitionsValueMetadata] {
-	return pulumix.Output[ParameterDefinitionsValueMetadata]{
-		OutputState: i.ToParameterDefinitionsValueMetadataOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ParameterDefinitionsValueMetadataArgs) ToParameterDefinitionsValueMetadataPtrOutput() ParameterDefinitionsValueMetadataPtrOutput {
 	return i.ToParameterDefinitionsValueMetadataPtrOutputWithContext(context.Background())
 }
@@ -2304,12 +1973,6 @@ func (i *parameterDefinitionsValueMetadataPtrType) ToParameterDefinitionsValueMe
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterDefinitionsValueMetadataPtrOutput)
 }
 
-func (i *parameterDefinitionsValueMetadataPtrType) ToOutput(ctx context.Context) pulumix.Output[*ParameterDefinitionsValueMetadata] {
-	return pulumix.Output[*ParameterDefinitionsValueMetadata]{
-		OutputState: i.ToParameterDefinitionsValueMetadataPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // General metadata for the parameter.
 type ParameterDefinitionsValueMetadataOutput struct{ *pulumi.OutputState }
 
@@ -2333,12 +1996,6 @@ func (o ParameterDefinitionsValueMetadataOutput) ToParameterDefinitionsValueMeta
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ParameterDefinitionsValueMetadata) *ParameterDefinitionsValueMetadata {
 		return &v
 	}).(ParameterDefinitionsValueMetadataPtrOutput)
-}
-
-func (o ParameterDefinitionsValueMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterDefinitionsValueMetadata] {
-	return pulumix.Output[ParameterDefinitionsValueMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Set to true to have Azure portal create role assignments on the resource ID or resource scope value of this parameter during policy assignment. This property is useful in case you wish to assign permissions outside the assignment scope.
@@ -2373,12 +2030,6 @@ func (o ParameterDefinitionsValueMetadataPtrOutput) ToParameterDefinitionsValueM
 
 func (o ParameterDefinitionsValueMetadataPtrOutput) ToParameterDefinitionsValueMetadataPtrOutputWithContext(ctx context.Context) ParameterDefinitionsValueMetadataPtrOutput {
 	return o
-}
-
-func (o ParameterDefinitionsValueMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ParameterDefinitionsValueMetadata] {
-	return pulumix.Output[*ParameterDefinitionsValueMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ParameterDefinitionsValueMetadataPtrOutput) Elem() ParameterDefinitionsValueMetadataOutput {
@@ -2460,12 +2111,6 @@ func (o ParameterDefinitionsValueResponseOutput) ToParameterDefinitionsValueResp
 	return o
 }
 
-func (o ParameterDefinitionsValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterDefinitionsValueResponse] {
-	return pulumix.Output[ParameterDefinitionsValueResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The allowed values for the parameter.
 func (o ParameterDefinitionsValueResponseOutput) AllowedValues() pulumi.ArrayOutput {
 	return o.ApplyT(func(v ParameterDefinitionsValueResponse) []interface{} { return v.AllowedValues }).(pulumi.ArrayOutput)
@@ -2507,12 +2152,6 @@ func (o ParameterDefinitionsValueResponseMapOutput) ToParameterDefinitionsValueR
 	return o
 }
 
-func (o ParameterDefinitionsValueResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterDefinitionsValueResponse] {
-	return pulumix.Output[map[string]ParameterDefinitionsValueResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ParameterDefinitionsValueResponseMapOutput) MapIndex(k pulumi.StringInput) ParameterDefinitionsValueResponseOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ParameterDefinitionsValueResponse {
 		return vs[0].(map[string]ParameterDefinitionsValueResponse)[vs[1].(string)]
@@ -2544,12 +2183,6 @@ func (o ParameterDefinitionsValueResponseMetadataOutput) ToParameterDefinitionsV
 
 func (o ParameterDefinitionsValueResponseMetadataOutput) ToParameterDefinitionsValueResponseMetadataOutputWithContext(ctx context.Context) ParameterDefinitionsValueResponseMetadataOutput {
 	return o
-}
-
-func (o ParameterDefinitionsValueResponseMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterDefinitionsValueResponseMetadata] {
-	return pulumix.Output[ParameterDefinitionsValueResponseMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Set to true to have Azure portal create role assignments on the resource ID or resource scope value of this parameter during policy assignment. This property is useful in case you wish to assign permissions outside the assignment scope.
@@ -2584,12 +2217,6 @@ func (o ParameterDefinitionsValueResponseMetadataPtrOutput) ToParameterDefinitio
 
 func (o ParameterDefinitionsValueResponseMetadataPtrOutput) ToParameterDefinitionsValueResponseMetadataPtrOutputWithContext(ctx context.Context) ParameterDefinitionsValueResponseMetadataPtrOutput {
 	return o
-}
-
-func (o ParameterDefinitionsValueResponseMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ParameterDefinitionsValueResponseMetadata] {
-	return pulumix.Output[*ParameterDefinitionsValueResponseMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ParameterDefinitionsValueResponseMetadataPtrOutput) Elem() ParameterDefinitionsValueResponseMetadataOutput {
@@ -2677,12 +2304,6 @@ func (i ParameterValuesValueArgs) ToParameterValuesValueOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterValuesValueOutput)
 }
 
-func (i ParameterValuesValueArgs) ToOutput(ctx context.Context) pulumix.Output[ParameterValuesValue] {
-	return pulumix.Output[ParameterValuesValue]{
-		OutputState: i.ToParameterValuesValueOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ParameterValuesValueMapInput is an input type that accepts ParameterValuesValueMap and ParameterValuesValueMapOutput values.
 // You can construct a concrete instance of `ParameterValuesValueMapInput` via:
 //
@@ -2708,12 +2329,6 @@ func (i ParameterValuesValueMap) ToParameterValuesValueMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterValuesValueMapOutput)
 }
 
-func (i ParameterValuesValueMap) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterValuesValue] {
-	return pulumix.Output[map[string]ParameterValuesValue]{
-		OutputState: i.ToParameterValuesValueMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The value of a parameter.
 type ParameterValuesValueOutput struct{ *pulumi.OutputState }
 
@@ -2727,12 +2342,6 @@ func (o ParameterValuesValueOutput) ToParameterValuesValueOutput() ParameterValu
 
 func (o ParameterValuesValueOutput) ToParameterValuesValueOutputWithContext(ctx context.Context) ParameterValuesValueOutput {
 	return o
-}
-
-func (o ParameterValuesValueOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterValuesValue] {
-	return pulumix.Output[ParameterValuesValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value of the parameter.
@@ -2752,12 +2361,6 @@ func (o ParameterValuesValueMapOutput) ToParameterValuesValueMapOutput() Paramet
 
 func (o ParameterValuesValueMapOutput) ToParameterValuesValueMapOutputWithContext(ctx context.Context) ParameterValuesValueMapOutput {
 	return o
-}
-
-func (o ParameterValuesValueMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterValuesValue] {
-	return pulumix.Output[map[string]ParameterValuesValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ParameterValuesValueMapOutput) MapIndex(k pulumi.StringInput) ParameterValuesValueOutput {
@@ -2787,12 +2390,6 @@ func (o ParameterValuesValueResponseOutput) ToParameterValuesValueResponseOutput
 	return o
 }
 
-func (o ParameterValuesValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterValuesValueResponse] {
-	return pulumix.Output[ParameterValuesValueResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The value of the parameter.
 func (o ParameterValuesValueResponseOutput) Value() pulumi.AnyOutput {
 	return o.ApplyT(func(v ParameterValuesValueResponse) interface{} { return v.Value }).(pulumi.AnyOutput)
@@ -2810,12 +2407,6 @@ func (o ParameterValuesValueResponseMapOutput) ToParameterValuesValueResponseMap
 
 func (o ParameterValuesValueResponseMapOutput) ToParameterValuesValueResponseMapOutputWithContext(ctx context.Context) ParameterValuesValueResponseMapOutput {
 	return o
-}
-
-func (o ParameterValuesValueResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterValuesValueResponse] {
-	return pulumix.Output[map[string]ParameterValuesValueResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ParameterValuesValueResponseMapOutput) MapIndex(k pulumi.StringInput) ParameterValuesValueResponseOutput {
@@ -2871,12 +2462,6 @@ func (i PermissionArgs) ToPermissionOutputWithContext(ctx context.Context) Permi
 	return pulumi.ToOutputWithContext(ctx, i).(PermissionOutput)
 }
 
-func (i PermissionArgs) ToOutput(ctx context.Context) pulumix.Output[Permission] {
-	return pulumix.Output[Permission]{
-		OutputState: i.ToPermissionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PermissionArrayInput is an input type that accepts PermissionArray and PermissionArrayOutput values.
 // You can construct a concrete instance of `PermissionArrayInput` via:
 //
@@ -2902,12 +2487,6 @@ func (i PermissionArray) ToPermissionArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(PermissionArrayOutput)
 }
 
-func (i PermissionArray) ToOutput(ctx context.Context) pulumix.Output[[]Permission] {
-	return pulumix.Output[[]Permission]{
-		OutputState: i.ToPermissionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Role definition permissions.
 type PermissionOutput struct{ *pulumi.OutputState }
 
@@ -2921,12 +2500,6 @@ func (o PermissionOutput) ToPermissionOutput() PermissionOutput {
 
 func (o PermissionOutput) ToPermissionOutputWithContext(ctx context.Context) PermissionOutput {
 	return o
-}
-
-func (o PermissionOutput) ToOutput(ctx context.Context) pulumix.Output[Permission] {
-	return pulumix.Output[Permission]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allowed actions.
@@ -2961,12 +2534,6 @@ func (o PermissionArrayOutput) ToPermissionArrayOutput() PermissionArrayOutput {
 
 func (o PermissionArrayOutput) ToPermissionArrayOutputWithContext(ctx context.Context) PermissionArrayOutput {
 	return o
-}
-
-func (o PermissionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Permission] {
-	return pulumix.Output[[]Permission]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PermissionArrayOutput) Index(i pulumi.IntInput) PermissionOutput {
@@ -3004,12 +2571,6 @@ func (o PermissionResponseOutput) ToPermissionResponseOutput() PermissionRespons
 
 func (o PermissionResponseOutput) ToPermissionResponseOutputWithContext(ctx context.Context) PermissionResponseOutput {
 	return o
-}
-
-func (o PermissionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PermissionResponse] {
-	return pulumix.Output[PermissionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allowed actions.
@@ -3056,12 +2617,6 @@ func (o PermissionResponseArrayOutput) ToPermissionResponseArrayOutputWithContex
 	return o
 }
 
-func (o PermissionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PermissionResponse] {
-	return pulumix.Output[[]PermissionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PermissionResponseArrayOutput) Index(i pulumi.IntInput) PermissionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PermissionResponse {
 		return vs[0].([]PermissionResponse)[vs[1].(int)]
@@ -3091,12 +2646,6 @@ func (o PolicyAssignmentPropertiesResponseOutput) ToPolicyAssignmentPropertiesRe
 
 func (o PolicyAssignmentPropertiesResponseOutput) ToPolicyAssignmentPropertiesResponseOutputWithContext(ctx context.Context) PolicyAssignmentPropertiesResponseOutput {
 	return o
-}
-
-func (o PolicyAssignmentPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyAssignmentPropertiesResponse] {
-	return pulumix.Output[PolicyAssignmentPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Details of the policy
@@ -3141,12 +2690,6 @@ func (o PolicyAssignmentPropertiesResponsePolicyOutput) ToPolicyAssignmentProper
 	return o
 }
 
-func (o PolicyAssignmentPropertiesResponsePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyAssignmentPropertiesResponsePolicy] {
-	return pulumix.Output[PolicyAssignmentPropertiesResponsePolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Id of the policy
 func (o PolicyAssignmentPropertiesResponsePolicyOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyAssignmentPropertiesResponsePolicy) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -3174,12 +2717,6 @@ func (o PolicyAssignmentPropertiesResponsePolicyPtrOutput) ToPolicyAssignmentPro
 
 func (o PolicyAssignmentPropertiesResponsePolicyPtrOutput) ToPolicyAssignmentPropertiesResponsePolicyPtrOutputWithContext(ctx context.Context) PolicyAssignmentPropertiesResponsePolicyPtrOutput {
 	return o
-}
-
-func (o PolicyAssignmentPropertiesResponsePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyAssignmentPropertiesResponsePolicy] {
-	return pulumix.Output[*PolicyAssignmentPropertiesResponsePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyAssignmentPropertiesResponsePolicyPtrOutput) Elem() PolicyAssignmentPropertiesResponsePolicyOutput {
@@ -3247,12 +2784,6 @@ func (o PolicyAssignmentPropertiesResponseRoleDefinitionOutput) ToPolicyAssignme
 	return o
 }
 
-func (o PolicyAssignmentPropertiesResponseRoleDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyAssignmentPropertiesResponseRoleDefinition] {
-	return pulumix.Output[PolicyAssignmentPropertiesResponseRoleDefinition]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Display name of the role definition
 func (o PolicyAssignmentPropertiesResponseRoleDefinitionOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyAssignmentPropertiesResponseRoleDefinition) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
@@ -3280,12 +2811,6 @@ func (o PolicyAssignmentPropertiesResponseRoleDefinitionPtrOutput) ToPolicyAssig
 
 func (o PolicyAssignmentPropertiesResponseRoleDefinitionPtrOutput) ToPolicyAssignmentPropertiesResponseRoleDefinitionPtrOutputWithContext(ctx context.Context) PolicyAssignmentPropertiesResponseRoleDefinitionPtrOutput {
 	return o
-}
-
-func (o PolicyAssignmentPropertiesResponseRoleDefinitionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyAssignmentPropertiesResponseRoleDefinition] {
-	return pulumix.Output[*PolicyAssignmentPropertiesResponseRoleDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyAssignmentPropertiesResponseRoleDefinitionPtrOutput) Elem() PolicyAssignmentPropertiesResponseRoleDefinitionOutput {
@@ -3353,12 +2878,6 @@ func (o PolicyAssignmentPropertiesResponseScopeOutput) ToPolicyAssignmentPropert
 	return o
 }
 
-func (o PolicyAssignmentPropertiesResponseScopeOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyAssignmentPropertiesResponseScope] {
-	return pulumix.Output[PolicyAssignmentPropertiesResponseScope]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Display name of the resource
 func (o PolicyAssignmentPropertiesResponseScopeOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyAssignmentPropertiesResponseScope) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
@@ -3386,12 +2905,6 @@ func (o PolicyAssignmentPropertiesResponseScopePtrOutput) ToPolicyAssignmentProp
 
 func (o PolicyAssignmentPropertiesResponseScopePtrOutput) ToPolicyAssignmentPropertiesResponseScopePtrOutputWithContext(ctx context.Context) PolicyAssignmentPropertiesResponseScopePtrOutput {
 	return o
-}
-
-func (o PolicyAssignmentPropertiesResponseScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyAssignmentPropertiesResponseScope] {
-	return pulumix.Output[*PolicyAssignmentPropertiesResponseScope]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyAssignmentPropertiesResponseScopePtrOutput) Elem() PolicyAssignmentPropertiesResponseScopeOutput {
@@ -3485,12 +2998,6 @@ func (i PolicyDefinitionGroupArgs) ToPolicyDefinitionGroupOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyDefinitionGroupOutput)
 }
 
-func (i PolicyDefinitionGroupArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyDefinitionGroup] {
-	return pulumix.Output[PolicyDefinitionGroup]{
-		OutputState: i.ToPolicyDefinitionGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PolicyDefinitionGroupArrayInput is an input type that accepts PolicyDefinitionGroupArray and PolicyDefinitionGroupArrayOutput values.
 // You can construct a concrete instance of `PolicyDefinitionGroupArrayInput` via:
 //
@@ -3516,12 +3023,6 @@ func (i PolicyDefinitionGroupArray) ToPolicyDefinitionGroupArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyDefinitionGroupArrayOutput)
 }
 
-func (i PolicyDefinitionGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]PolicyDefinitionGroup] {
-	return pulumix.Output[[]PolicyDefinitionGroup]{
-		OutputState: i.ToPolicyDefinitionGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The policy definition group.
 type PolicyDefinitionGroupOutput struct{ *pulumi.OutputState }
 
@@ -3535,12 +3036,6 @@ func (o PolicyDefinitionGroupOutput) ToPolicyDefinitionGroupOutput() PolicyDefin
 
 func (o PolicyDefinitionGroupOutput) ToPolicyDefinitionGroupOutputWithContext(ctx context.Context) PolicyDefinitionGroupOutput {
 	return o
-}
-
-func (o PolicyDefinitionGroupOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyDefinitionGroup] {
-	return pulumix.Output[PolicyDefinitionGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A resource ID of a resource that contains additional metadata about the group.
@@ -3582,12 +3077,6 @@ func (o PolicyDefinitionGroupArrayOutput) ToPolicyDefinitionGroupArrayOutputWith
 	return o
 }
 
-func (o PolicyDefinitionGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyDefinitionGroup] {
-	return pulumix.Output[[]PolicyDefinitionGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PolicyDefinitionGroupArrayOutput) Index(i pulumi.IntInput) PolicyDefinitionGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyDefinitionGroup {
 		return vs[0].([]PolicyDefinitionGroup)[vs[1].(int)]
@@ -3621,12 +3110,6 @@ func (o PolicyDefinitionGroupResponseOutput) ToPolicyDefinitionGroupResponseOutp
 
 func (o PolicyDefinitionGroupResponseOutput) ToPolicyDefinitionGroupResponseOutputWithContext(ctx context.Context) PolicyDefinitionGroupResponseOutput {
 	return o
-}
-
-func (o PolicyDefinitionGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyDefinitionGroupResponse] {
-	return pulumix.Output[PolicyDefinitionGroupResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A resource ID of a resource that contains additional metadata about the group.
@@ -3666,12 +3149,6 @@ func (o PolicyDefinitionGroupResponseArrayOutput) ToPolicyDefinitionGroupRespons
 
 func (o PolicyDefinitionGroupResponseArrayOutput) ToPolicyDefinitionGroupResponseArrayOutputWithContext(ctx context.Context) PolicyDefinitionGroupResponseArrayOutput {
 	return o
-}
-
-func (o PolicyDefinitionGroupResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyDefinitionGroupResponse] {
-	return pulumix.Output[[]PolicyDefinitionGroupResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyDefinitionGroupResponseArrayOutput) Index(i pulumi.IntInput) PolicyDefinitionGroupResponseOutput {
@@ -3727,12 +3204,6 @@ func (i PolicyDefinitionReferenceArgs) ToPolicyDefinitionReferenceOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyDefinitionReferenceOutput)
 }
 
-func (i PolicyDefinitionReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyDefinitionReference] {
-	return pulumix.Output[PolicyDefinitionReference]{
-		OutputState: i.ToPolicyDefinitionReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PolicyDefinitionReferenceArrayInput is an input type that accepts PolicyDefinitionReferenceArray and PolicyDefinitionReferenceArrayOutput values.
 // You can construct a concrete instance of `PolicyDefinitionReferenceArrayInput` via:
 //
@@ -3758,12 +3229,6 @@ func (i PolicyDefinitionReferenceArray) ToPolicyDefinitionReferenceArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyDefinitionReferenceArrayOutput)
 }
 
-func (i PolicyDefinitionReferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]PolicyDefinitionReference] {
-	return pulumix.Output[[]PolicyDefinitionReference]{
-		OutputState: i.ToPolicyDefinitionReferenceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The policy definition reference.
 type PolicyDefinitionReferenceOutput struct{ *pulumi.OutputState }
 
@@ -3777,12 +3242,6 @@ func (o PolicyDefinitionReferenceOutput) ToPolicyDefinitionReferenceOutput() Pol
 
 func (o PolicyDefinitionReferenceOutput) ToPolicyDefinitionReferenceOutputWithContext(ctx context.Context) PolicyDefinitionReferenceOutput {
 	return o
-}
-
-func (o PolicyDefinitionReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyDefinitionReference] {
-	return pulumix.Output[PolicyDefinitionReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the groups that this policy definition reference belongs to.
@@ -3819,12 +3278,6 @@ func (o PolicyDefinitionReferenceArrayOutput) ToPolicyDefinitionReferenceArrayOu
 	return o
 }
 
-func (o PolicyDefinitionReferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyDefinitionReference] {
-	return pulumix.Output[[]PolicyDefinitionReference]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PolicyDefinitionReferenceArrayOutput) Index(i pulumi.IntInput) PolicyDefinitionReferenceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyDefinitionReference {
 		return vs[0].([]PolicyDefinitionReference)[vs[1].(int)]
@@ -3856,12 +3309,6 @@ func (o PolicyDefinitionReferenceResponseOutput) ToPolicyDefinitionReferenceResp
 
 func (o PolicyDefinitionReferenceResponseOutput) ToPolicyDefinitionReferenceResponseOutputWithContext(ctx context.Context) PolicyDefinitionReferenceResponseOutput {
 	return o
-}
-
-func (o PolicyDefinitionReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyDefinitionReferenceResponse] {
-	return pulumix.Output[PolicyDefinitionReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the groups that this policy definition reference belongs to.
@@ -3896,12 +3343,6 @@ func (o PolicyDefinitionReferenceResponseArrayOutput) ToPolicyDefinitionReferenc
 
 func (o PolicyDefinitionReferenceResponseArrayOutput) ToPolicyDefinitionReferenceResponseArrayOutputWithContext(ctx context.Context) PolicyDefinitionReferenceResponseArrayOutput {
 	return o
-}
-
-func (o PolicyDefinitionReferenceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyDefinitionReferenceResponse] {
-	return pulumix.Output[[]PolicyDefinitionReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyDefinitionReferenceResponseArrayOutput) Index(i pulumi.IntInput) PolicyDefinitionReferenceResponseOutput {
@@ -3964,12 +3405,6 @@ func (o PolicyDefinitionVersionResponseOutput) ToPolicyDefinitionVersionResponse
 
 func (o PolicyDefinitionVersionResponseOutput) ToPolicyDefinitionVersionResponseOutputWithContext(ctx context.Context) PolicyDefinitionVersionResponseOutput {
 	return o
-}
-
-func (o PolicyDefinitionVersionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyDefinitionVersionResponse] {
-	return pulumix.Output[PolicyDefinitionVersionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The policy definition description.
@@ -4048,12 +3483,6 @@ func (o PolicyDefinitionVersionResponseArrayOutput) ToPolicyDefinitionVersionRes
 	return o
 }
 
-func (o PolicyDefinitionVersionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyDefinitionVersionResponse] {
-	return pulumix.Output[[]PolicyDefinitionVersionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PolicyDefinitionVersionResponseArrayOutput) Index(i pulumi.IntInput) PolicyDefinitionVersionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyDefinitionVersionResponse {
 		return vs[0].([]PolicyDefinitionVersionResponse)[vs[1].(int)]
@@ -4101,12 +3530,6 @@ func (o PolicySetDefinitionVersionResponseOutput) ToPolicySetDefinitionVersionRe
 
 func (o PolicySetDefinitionVersionResponseOutput) ToPolicySetDefinitionVersionResponseOutputWithContext(ctx context.Context) PolicySetDefinitionVersionResponseOutput {
 	return o
-}
-
-func (o PolicySetDefinitionVersionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PolicySetDefinitionVersionResponse] {
-	return pulumix.Output[PolicySetDefinitionVersionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The policy set definition description.
@@ -4189,12 +3612,6 @@ func (o PolicySetDefinitionVersionResponseArrayOutput) ToPolicySetDefinitionVers
 	return o
 }
 
-func (o PolicySetDefinitionVersionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicySetDefinitionVersionResponse] {
-	return pulumix.Output[[]PolicySetDefinitionVersionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PolicySetDefinitionVersionResponseArrayOutput) Index(i pulumi.IntInput) PolicySetDefinitionVersionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicySetDefinitionVersionResponse {
 		return vs[0].([]PolicySetDefinitionVersionResponse)[vs[1].(int)]
@@ -4236,12 +3653,6 @@ func (i PolicyVariableColumnArgs) ToPolicyVariableColumnOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyVariableColumnOutput)
 }
 
-func (i PolicyVariableColumnArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyVariableColumn] {
-	return pulumix.Output[PolicyVariableColumn]{
-		OutputState: i.ToPolicyVariableColumnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PolicyVariableColumnArrayInput is an input type that accepts PolicyVariableColumnArray and PolicyVariableColumnArrayOutput values.
 // You can construct a concrete instance of `PolicyVariableColumnArrayInput` via:
 //
@@ -4267,12 +3678,6 @@ func (i PolicyVariableColumnArray) ToPolicyVariableColumnArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyVariableColumnArrayOutput)
 }
 
-func (i PolicyVariableColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]PolicyVariableColumn] {
-	return pulumix.Output[[]PolicyVariableColumn]{
-		OutputState: i.ToPolicyVariableColumnArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The variable column.
 type PolicyVariableColumnOutput struct{ *pulumi.OutputState }
 
@@ -4286,12 +3691,6 @@ func (o PolicyVariableColumnOutput) ToPolicyVariableColumnOutput() PolicyVariabl
 
 func (o PolicyVariableColumnOutput) ToPolicyVariableColumnOutputWithContext(ctx context.Context) PolicyVariableColumnOutput {
 	return o
-}
-
-func (o PolicyVariableColumnOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyVariableColumn] {
-	return pulumix.Output[PolicyVariableColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of this policy variable column.
@@ -4311,12 +3710,6 @@ func (o PolicyVariableColumnArrayOutput) ToPolicyVariableColumnArrayOutput() Pol
 
 func (o PolicyVariableColumnArrayOutput) ToPolicyVariableColumnArrayOutputWithContext(ctx context.Context) PolicyVariableColumnArrayOutput {
 	return o
-}
-
-func (o PolicyVariableColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyVariableColumn] {
-	return pulumix.Output[[]PolicyVariableColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyVariableColumnArrayOutput) Index(i pulumi.IntInput) PolicyVariableColumnOutput {
@@ -4346,12 +3739,6 @@ func (o PolicyVariableColumnResponseOutput) ToPolicyVariableColumnResponseOutput
 	return o
 }
 
-func (o PolicyVariableColumnResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyVariableColumnResponse] {
-	return pulumix.Output[PolicyVariableColumnResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of this policy variable column.
 func (o PolicyVariableColumnResponseOutput) ColumnName() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyVariableColumnResponse) string { return v.ColumnName }).(pulumi.StringOutput)
@@ -4369,12 +3756,6 @@ func (o PolicyVariableColumnResponseArrayOutput) ToPolicyVariableColumnResponseA
 
 func (o PolicyVariableColumnResponseArrayOutput) ToPolicyVariableColumnResponseArrayOutputWithContext(ctx context.Context) PolicyVariableColumnResponseArrayOutput {
 	return o
-}
-
-func (o PolicyVariableColumnResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyVariableColumnResponse] {
-	return pulumix.Output[[]PolicyVariableColumnResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyVariableColumnResponseArrayOutput) Index(i pulumi.IntInput) PolicyVariableColumnResponseOutput {
@@ -4422,12 +3803,6 @@ func (i PolicyVariableValueColumnValueArgs) ToPolicyVariableValueColumnValueOutp
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyVariableValueColumnValueOutput)
 }
 
-func (i PolicyVariableValueColumnValueArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyVariableValueColumnValue] {
-	return pulumix.Output[PolicyVariableValueColumnValue]{
-		OutputState: i.ToPolicyVariableValueColumnValueOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PolicyVariableValueColumnValueArrayInput is an input type that accepts PolicyVariableValueColumnValueArray and PolicyVariableValueColumnValueArrayOutput values.
 // You can construct a concrete instance of `PolicyVariableValueColumnValueArrayInput` via:
 //
@@ -4453,12 +3828,6 @@ func (i PolicyVariableValueColumnValueArray) ToPolicyVariableValueColumnValueArr
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyVariableValueColumnValueArrayOutput)
 }
 
-func (i PolicyVariableValueColumnValueArray) ToOutput(ctx context.Context) pulumix.Output[[]PolicyVariableValueColumnValue] {
-	return pulumix.Output[[]PolicyVariableValueColumnValue]{
-		OutputState: i.ToPolicyVariableValueColumnValueArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The name value tuple for this variable value column.
 type PolicyVariableValueColumnValueOutput struct{ *pulumi.OutputState }
 
@@ -4472,12 +3841,6 @@ func (o PolicyVariableValueColumnValueOutput) ToPolicyVariableValueColumnValueOu
 
 func (o PolicyVariableValueColumnValueOutput) ToPolicyVariableValueColumnValueOutputWithContext(ctx context.Context) PolicyVariableValueColumnValueOutput {
 	return o
-}
-
-func (o PolicyVariableValueColumnValueOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyVariableValueColumnValue] {
-	return pulumix.Output[PolicyVariableValueColumnValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Column name for the variable value
@@ -4502,12 +3865,6 @@ func (o PolicyVariableValueColumnValueArrayOutput) ToPolicyVariableValueColumnVa
 
 func (o PolicyVariableValueColumnValueArrayOutput) ToPolicyVariableValueColumnValueArrayOutputWithContext(ctx context.Context) PolicyVariableValueColumnValueArrayOutput {
 	return o
-}
-
-func (o PolicyVariableValueColumnValueArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyVariableValueColumnValue] {
-	return pulumix.Output[[]PolicyVariableValueColumnValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyVariableValueColumnValueArrayOutput) Index(i pulumi.IntInput) PolicyVariableValueColumnValueOutput {
@@ -4539,12 +3896,6 @@ func (o PolicyVariableValueColumnValueResponseOutput) ToPolicyVariableValueColum
 	return o
 }
 
-func (o PolicyVariableValueColumnValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyVariableValueColumnValueResponse] {
-	return pulumix.Output[PolicyVariableValueColumnValueResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Column name for the variable value
 func (o PolicyVariableValueColumnValueResponseOutput) ColumnName() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyVariableValueColumnValueResponse) string { return v.ColumnName }).(pulumi.StringOutput)
@@ -4567,12 +3918,6 @@ func (o PolicyVariableValueColumnValueResponseArrayOutput) ToPolicyVariableValue
 
 func (o PolicyVariableValueColumnValueResponseArrayOutput) ToPolicyVariableValueColumnValueResponseArrayOutputWithContext(ctx context.Context) PolicyVariableValueColumnValueResponseArrayOutput {
 	return o
-}
-
-func (o PolicyVariableValueColumnValueResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyVariableValueColumnValueResponse] {
-	return pulumix.Output[[]PolicyVariableValueColumnValueResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyVariableValueColumnValueResponseArrayOutput) Index(i pulumi.IntInput) PolicyVariableValueColumnValueResponseOutput {
@@ -4608,12 +3953,6 @@ func (o PrincipalResponseOutput) ToPrincipalResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o PrincipalResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrincipalResponse] {
-	return pulumix.Output[PrincipalResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the principal made changes
 func (o PrincipalResponseOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrincipalResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
@@ -4646,12 +3985,6 @@ func (o PrincipalResponsePtrOutput) ToPrincipalResponsePtrOutput() PrincipalResp
 
 func (o PrincipalResponsePtrOutput) ToPrincipalResponsePtrOutputWithContext(ctx context.Context) PrincipalResponsePtrOutput {
 	return o
-}
-
-func (o PrincipalResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrincipalResponse] {
-	return pulumix.Output[*PrincipalResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrincipalResponsePtrOutput) Elem() PrincipalResponseOutput {
@@ -4739,12 +4072,6 @@ func (i PrivateLinkAssociationPropertiesArgs) ToPrivateLinkAssociationProperties
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkAssociationPropertiesOutput)
 }
 
-func (i PrivateLinkAssociationPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkAssociationProperties] {
-	return pulumix.Output[PrivateLinkAssociationProperties]{
-		OutputState: i.ToPrivateLinkAssociationPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PrivateLinkAssociationPropertiesArgs) ToPrivateLinkAssociationPropertiesPtrOutput() PrivateLinkAssociationPropertiesPtrOutput {
 	return i.ToPrivateLinkAssociationPropertiesPtrOutputWithContext(context.Background())
 }
@@ -4786,12 +4113,6 @@ func (i *privateLinkAssociationPropertiesPtrType) ToPrivateLinkAssociationProper
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkAssociationPropertiesPtrOutput)
 }
 
-func (i *privateLinkAssociationPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkAssociationProperties] {
-	return pulumix.Output[*PrivateLinkAssociationProperties]{
-		OutputState: i.ToPrivateLinkAssociationPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateLinkAssociationPropertiesOutput struct{ *pulumi.OutputState }
 
 func (PrivateLinkAssociationPropertiesOutput) ElementType() reflect.Type {
@@ -4816,12 +4137,6 @@ func (o PrivateLinkAssociationPropertiesOutput) ToPrivateLinkAssociationProperti
 	}).(PrivateLinkAssociationPropertiesPtrOutput)
 }
 
-func (o PrivateLinkAssociationPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkAssociationProperties] {
-	return pulumix.Output[PrivateLinkAssociationProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The rmpl Resource ID.
 func (o PrivateLinkAssociationPropertiesOutput) PrivateLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkAssociationProperties) *string { return v.PrivateLink }).(pulumi.StringPtrOutput)
@@ -4843,12 +4158,6 @@ func (o PrivateLinkAssociationPropertiesPtrOutput) ToPrivateLinkAssociationPrope
 
 func (o PrivateLinkAssociationPropertiesPtrOutput) ToPrivateLinkAssociationPropertiesPtrOutputWithContext(ctx context.Context) PrivateLinkAssociationPropertiesPtrOutput {
 	return o
-}
-
-func (o PrivateLinkAssociationPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkAssociationProperties] {
-	return pulumix.Output[*PrivateLinkAssociationProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateLinkAssociationPropertiesPtrOutput) Elem() PrivateLinkAssociationPropertiesOutput {
@@ -4906,12 +4215,6 @@ func (o PrivateLinkAssociationPropertiesExpandedResponseOutput) ToPrivateLinkAss
 	return o
 }
 
-func (o PrivateLinkAssociationPropertiesExpandedResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkAssociationPropertiesExpandedResponse] {
-	return pulumix.Output[PrivateLinkAssociationPropertiesExpandedResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The rmpl Resource ID.
 func (o PrivateLinkAssociationPropertiesExpandedResponseOutput) PrivateLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkAssociationPropertiesExpandedResponse) *string { return v.PrivateLink }).(pulumi.StringPtrOutput)
@@ -4948,12 +4251,6 @@ func (o ResourceManagementPrivateLinkEndpointConnectionsResponseOutput) ToResour
 
 func (o ResourceManagementPrivateLinkEndpointConnectionsResponseOutput) ToResourceManagementPrivateLinkEndpointConnectionsResponseOutputWithContext(ctx context.Context) ResourceManagementPrivateLinkEndpointConnectionsResponseOutput {
 	return o
-}
-
-func (o ResourceManagementPrivateLinkEndpointConnectionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceManagementPrivateLinkEndpointConnectionsResponse] {
-	return pulumix.Output[ResourceManagementPrivateLinkEndpointConnectionsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The private endpoint connections.
@@ -5002,12 +4299,6 @@ func (i ResourceSelectorArgs) ToResourceSelectorOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSelectorOutput)
 }
 
-func (i ResourceSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceSelector] {
-	return pulumix.Output[ResourceSelector]{
-		OutputState: i.ToResourceSelectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ResourceSelectorArrayInput is an input type that accepts ResourceSelectorArray and ResourceSelectorArrayOutput values.
 // You can construct a concrete instance of `ResourceSelectorArrayInput` via:
 //
@@ -5033,12 +4324,6 @@ func (i ResourceSelectorArray) ToResourceSelectorArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSelectorArrayOutput)
 }
 
-func (i ResourceSelectorArray) ToOutput(ctx context.Context) pulumix.Output[[]ResourceSelector] {
-	return pulumix.Output[[]ResourceSelector]{
-		OutputState: i.ToResourceSelectorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The resource selector to filter policies by resource properties.
 type ResourceSelectorOutput struct{ *pulumi.OutputState }
 
@@ -5052,12 +4337,6 @@ func (o ResourceSelectorOutput) ToResourceSelectorOutput() ResourceSelectorOutpu
 
 func (o ResourceSelectorOutput) ToResourceSelectorOutputWithContext(ctx context.Context) ResourceSelectorOutput {
 	return o
-}
-
-func (o ResourceSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSelector] {
-	return pulumix.Output[ResourceSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource selector.
@@ -5082,12 +4361,6 @@ func (o ResourceSelectorArrayOutput) ToResourceSelectorArrayOutput() ResourceSel
 
 func (o ResourceSelectorArrayOutput) ToResourceSelectorArrayOutputWithContext(ctx context.Context) ResourceSelectorArrayOutput {
 	return o
-}
-
-func (o ResourceSelectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceSelector] {
-	return pulumix.Output[[]ResourceSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceSelectorArrayOutput) Index(i pulumi.IntInput) ResourceSelectorOutput {
@@ -5119,12 +4392,6 @@ func (o ResourceSelectorResponseOutput) ToResourceSelectorResponseOutputWithCont
 	return o
 }
 
-func (o ResourceSelectorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSelectorResponse] {
-	return pulumix.Output[ResourceSelectorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the resource selector.
 func (o ResourceSelectorResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSelectorResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -5147,12 +4414,6 @@ func (o ResourceSelectorResponseArrayOutput) ToResourceSelectorResponseArrayOutp
 
 func (o ResourceSelectorResponseArrayOutput) ToResourceSelectorResponseArrayOutputWithContext(ctx context.Context) ResourceSelectorResponseArrayOutput {
 	return o
-}
-
-func (o ResourceSelectorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceSelectorResponse] {
-	return pulumix.Output[[]ResourceSelectorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceSelectorResponseArrayOutput) Index(i pulumi.IntInput) ResourceSelectorResponseOutput {
@@ -5297,12 +4558,6 @@ func (i SelectorArgs) ToSelectorOutputWithContext(ctx context.Context) SelectorO
 	return pulumi.ToOutputWithContext(ctx, i).(SelectorOutput)
 }
 
-func (i SelectorArgs) ToOutput(ctx context.Context) pulumix.Output[Selector] {
-	return pulumix.Output[Selector]{
-		OutputState: i.ToSelectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SelectorArrayInput is an input type that accepts SelectorArray and SelectorArrayOutput values.
 // You can construct a concrete instance of `SelectorArrayInput` via:
 //
@@ -5328,12 +4583,6 @@ func (i SelectorArray) ToSelectorArrayOutputWithContext(ctx context.Context) Sel
 	return pulumi.ToOutputWithContext(ctx, i).(SelectorArrayOutput)
 }
 
-func (i SelectorArray) ToOutput(ctx context.Context) pulumix.Output[[]Selector] {
-	return pulumix.Output[[]Selector]{
-		OutputState: i.ToSelectorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The selector expression.
 type SelectorOutput struct{ *pulumi.OutputState }
 
@@ -5347,12 +4596,6 @@ func (o SelectorOutput) ToSelectorOutput() SelectorOutput {
 
 func (o SelectorOutput) ToSelectorOutputWithContext(ctx context.Context) SelectorOutput {
 	return o
-}
-
-func (o SelectorOutput) ToOutput(ctx context.Context) pulumix.Output[Selector] {
-	return pulumix.Output[Selector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of values to filter in.
@@ -5382,12 +4625,6 @@ func (o SelectorArrayOutput) ToSelectorArrayOutput() SelectorArrayOutput {
 
 func (o SelectorArrayOutput) ToSelectorArrayOutputWithContext(ctx context.Context) SelectorArrayOutput {
 	return o
-}
-
-func (o SelectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Selector] {
-	return pulumix.Output[[]Selector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SelectorArrayOutput) Index(i pulumi.IntInput) SelectorOutput {
@@ -5421,12 +4658,6 @@ func (o SelectorResponseOutput) ToSelectorResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o SelectorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SelectorResponse] {
-	return pulumix.Output[SelectorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of values to filter in.
 func (o SelectorResponseOutput) In() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SelectorResponse) []string { return v.In }).(pulumi.StringArrayOutput)
@@ -5454,12 +4685,6 @@ func (o SelectorResponseArrayOutput) ToSelectorResponseArrayOutput() SelectorRes
 
 func (o SelectorResponseArrayOutput) ToSelectorResponseArrayOutputWithContext(ctx context.Context) SelectorResponseArrayOutput {
 	return o
-}
-
-func (o SelectorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SelectorResponse] {
-	return pulumix.Output[[]SelectorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SelectorResponseArrayOutput) Index(i pulumi.IntInput) SelectorResponseOutput {
@@ -5497,12 +4722,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

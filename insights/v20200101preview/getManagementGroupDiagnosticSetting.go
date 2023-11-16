@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the active management group diagnostic settings for the specified resource.
@@ -91,12 +90,6 @@ func (o LookupManagementGroupDiagnosticSettingResultOutput) ToLookupManagementGr
 
 func (o LookupManagementGroupDiagnosticSettingResultOutput) ToLookupManagementGroupDiagnosticSettingResultOutputWithContext(ctx context.Context) LookupManagementGroupDiagnosticSettingResultOutput {
 	return o
-}
-
-func (o LookupManagementGroupDiagnosticSettingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagementGroupDiagnosticSettingResult] {
-	return pulumix.Output[LookupManagementGroupDiagnosticSettingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource Id for the event hub authorization rule.

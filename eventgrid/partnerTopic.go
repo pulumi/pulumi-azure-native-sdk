@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Event Grid Partner Topic.
@@ -191,12 +190,6 @@ func (i *PartnerTopic) ToPartnerTopicOutputWithContext(ctx context.Context) Part
 	return pulumi.ToOutputWithContext(ctx, i).(PartnerTopicOutput)
 }
 
-func (i *PartnerTopic) ToOutput(ctx context.Context) pulumix.Output[*PartnerTopic] {
-	return pulumix.Output[*PartnerTopic]{
-		OutputState: i.ToPartnerTopicOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PartnerTopicOutput struct{ *pulumi.OutputState }
 
 func (PartnerTopicOutput) ElementType() reflect.Type {
@@ -209,12 +202,6 @@ func (o PartnerTopicOutput) ToPartnerTopicOutput() PartnerTopicOutput {
 
 func (o PartnerTopicOutput) ToPartnerTopicOutputWithContext(ctx context.Context) PartnerTopicOutput {
 	return o
-}
-
-func (o PartnerTopicOutput) ToOutput(ctx context.Context) pulumix.Output[*PartnerTopic] {
-	return pulumix.Output[*PartnerTopic]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Activation state of the partner topic.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a link to download the run logs.
@@ -77,12 +76,6 @@ func (o ListRunLogSasUrlResultOutput) ToListRunLogSasUrlResultOutput() ListRunLo
 
 func (o ListRunLogSasUrlResultOutput) ToListRunLogSasUrlResultOutputWithContext(ctx context.Context) ListRunLogSasUrlResultOutput {
 	return o
-}
-
-func (o ListRunLogSasUrlResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListRunLogSasUrlResult] {
-	return pulumix.Output[ListRunLogSasUrlResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The link to logs for a run on a azure container registry.

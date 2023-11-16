@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the Schema specified by its identifier.
@@ -90,12 +89,6 @@ func (o LookupGlobalSchemaResultOutput) ToLookupGlobalSchemaResultOutput() Looku
 
 func (o LookupGlobalSchemaResultOutput) ToLookupGlobalSchemaResultOutputWithContext(ctx context.Context) LookupGlobalSchemaResultOutput {
 	return o
-}
-
-func (o LookupGlobalSchemaResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGlobalSchemaResult] {
-	return pulumix.Output[LookupGlobalSchemaResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Free-form schema entity description.

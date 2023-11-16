@@ -9,13 +9,12 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the automation rule.
 // Azure REST API version: 2023-02-01.
 //
-// Other available API versions: 2019-01-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2019-01-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 func LookupAutomationRule(ctx *pulumi.Context, args *LookupAutomationRuleArgs, opts ...pulumi.InvokeOption) (*LookupAutomationRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAutomationRuleResult
@@ -102,12 +101,6 @@ func (o LookupAutomationRuleResultOutput) ToLookupAutomationRuleResultOutput() L
 
 func (o LookupAutomationRuleResultOutput) ToLookupAutomationRuleResultOutputWithContext(ctx context.Context) LookupAutomationRuleResultOutput {
 	return o
-}
-
-func (o LookupAutomationRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAutomationRuleResult] {
-	return pulumix.Output[LookupAutomationRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The actions to execute when the automation rule is triggered.

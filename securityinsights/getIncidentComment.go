@@ -9,13 +9,12 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a comment for a given incident.
 // Azure REST API version: 2023-02-01.
 //
-// Other available API versions: 2021-03-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2021-03-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 func LookupIncidentComment(ctx *pulumi.Context, args *LookupIncidentCommentArgs, opts ...pulumi.InvokeOption) (*LookupIncidentCommentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIncidentCommentResult
@@ -100,12 +99,6 @@ func (o LookupIncidentCommentResultOutput) ToLookupIncidentCommentResultOutput()
 
 func (o LookupIncidentCommentResultOutput) ToLookupIncidentCommentResultOutputWithContext(ctx context.Context) LookupIncidentCommentResultOutput {
 	return o
-}
-
-func (o LookupIncidentCommentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIncidentCommentResult] {
-	return pulumix.Output[LookupIncidentCommentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Describes the client that created the comment

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns an attached database configuration.
@@ -102,12 +101,6 @@ func (o LookupAttachedDatabaseConfigurationResultOutput) ToLookupAttachedDatabas
 
 func (o LookupAttachedDatabaseConfigurationResultOutput) ToLookupAttachedDatabaseConfigurationResultOutputWithContext(ctx context.Context) LookupAttachedDatabaseConfigurationResultOutput {
 	return o
-}
-
-func (o LookupAttachedDatabaseConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAttachedDatabaseConfigurationResult] {
-	return pulumix.Output[LookupAttachedDatabaseConfigurationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of databases from the clusterResourceId which are currently attached to the cluster.

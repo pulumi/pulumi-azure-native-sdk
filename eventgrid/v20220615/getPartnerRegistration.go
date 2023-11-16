@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a partner registration with the specified parameters.
@@ -88,12 +87,6 @@ func (o LookupPartnerRegistrationResultOutput) ToLookupPartnerRegistrationResult
 
 func (o LookupPartnerRegistrationResultOutput) ToLookupPartnerRegistrationResultOutputWithContext(ctx context.Context) LookupPartnerRegistrationResultOutput {
 	return o
-}
-
-func (o LookupPartnerRegistrationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPartnerRegistrationResult] {
-	return pulumix.Output[LookupPartnerRegistrationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified identifier of the resource.

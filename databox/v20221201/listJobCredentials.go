@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This method gets the unencrypted secrets related to the job.
@@ -75,12 +74,6 @@ func (o ListJobCredentialsResultOutput) ToListJobCredentialsResultOutput() ListJ
 
 func (o ListJobCredentialsResultOutput) ToListJobCredentialsResultOutputWithContext(ctx context.Context) ListJobCredentialsResultOutput {
 	return o
-}
-
-func (o ListJobCredentialsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListJobCredentialsResult] {
-	return pulumix.Output[ListJobCredentialsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Link for the next set of unencrypted credentials.

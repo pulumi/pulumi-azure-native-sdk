@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the properties of an existing Azure Cosmos DB Mongo Role Definition with the given Id.
@@ -89,12 +88,6 @@ func (o LookupMongoDBResourceMongoRoleDefinitionResultOutput) ToLookupMongoDBRes
 
 func (o LookupMongoDBResourceMongoRoleDefinitionResultOutput) ToLookupMongoDBResourceMongoRoleDefinitionResultOutputWithContext(ctx context.Context) LookupMongoDBResourceMongoRoleDefinitionResultOutput {
 	return o
-}
-
-func (o LookupMongoDBResourceMongoRoleDefinitionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMongoDBResourceMongoRoleDefinitionResult] {
-	return pulumix.Output[LookupMongoDBResourceMongoRoleDefinitionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The database name for which access is being granted for this Role Definition.

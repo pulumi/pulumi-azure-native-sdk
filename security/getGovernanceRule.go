@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a specific governance rule for the requested scope by ruleId
@@ -106,12 +105,6 @@ func (o LookupGovernanceRuleResultOutput) ToLookupGovernanceRuleResultOutput() L
 
 func (o LookupGovernanceRuleResultOutput) ToLookupGovernanceRuleResultOutputWithContext(ctx context.Context) LookupGovernanceRuleResultOutput {
 	return o
-}
-
-func (o LookupGovernanceRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGovernanceRuleResult] {
-	return pulumix.Output[LookupGovernanceRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the governance rule

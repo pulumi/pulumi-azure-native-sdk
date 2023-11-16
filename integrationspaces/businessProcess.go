@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A business process under application.
@@ -166,12 +165,6 @@ func (i *BusinessProcess) ToBusinessProcessOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(BusinessProcessOutput)
 }
 
-func (i *BusinessProcess) ToOutput(ctx context.Context) pulumix.Output[*BusinessProcess] {
-	return pulumix.Output[*BusinessProcess]{
-		OutputState: i.ToBusinessProcessOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BusinessProcessOutput struct{ *pulumi.OutputState }
 
 func (BusinessProcessOutput) ElementType() reflect.Type {
@@ -184,12 +177,6 @@ func (o BusinessProcessOutput) ToBusinessProcessOutput() BusinessProcessOutput {
 
 func (o BusinessProcessOutput) ToBusinessProcessOutputWithContext(ctx context.Context) BusinessProcessOutput {
 	return o
-}
-
-func (o BusinessProcessOutput) ToOutput(ctx context.Context) pulumix.Output[*BusinessProcess] {
-	return pulumix.Output[*BusinessProcess]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The business process mapping.

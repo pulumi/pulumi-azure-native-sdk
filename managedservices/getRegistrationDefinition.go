@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the registration definition details.
@@ -84,12 +83,6 @@ func (o LookupRegistrationDefinitionResultOutput) ToLookupRegistrationDefinition
 
 func (o LookupRegistrationDefinitionResultOutput) ToLookupRegistrationDefinitionResultOutputWithContext(ctx context.Context) LookupRegistrationDefinitionResultOutput {
 	return o
-}
-
-func (o LookupRegistrationDefinitionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegistrationDefinitionResult] {
-	return pulumix.Output[LookupRegistrationDefinitionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The fully qualified path of the registration definition.

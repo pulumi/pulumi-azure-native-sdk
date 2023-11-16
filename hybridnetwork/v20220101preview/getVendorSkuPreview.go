@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the preview information of a vendor sku.
@@ -85,12 +84,6 @@ func (o LookupVendorSkuPreviewResultOutput) ToLookupVendorSkuPreviewResultOutput
 
 func (o LookupVendorSkuPreviewResultOutput) ToLookupVendorSkuPreviewResultOutputWithContext(ctx context.Context) LookupVendorSkuPreviewResultOutput {
 	return o
-}
-
-func (o LookupVendorSkuPreviewResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVendorSkuPreviewResult] {
-	return pulumix.Output[LookupVendorSkuPreviewResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ARM ID of the resource.

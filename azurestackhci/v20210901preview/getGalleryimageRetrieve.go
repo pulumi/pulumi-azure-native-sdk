@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets galleryimages by resource name
@@ -105,12 +104,6 @@ func (o LookupGalleryimageRetrieveResultOutput) ToLookupGalleryimageRetrieveResu
 
 func (o LookupGalleryimageRetrieveResultOutput) ToLookupGalleryimageRetrieveResultOutputWithContext(ctx context.Context) LookupGalleryimageRetrieveResultOutput {
 	return o
-}
-
-func (o LookupGalleryimageRetrieveResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGalleryimageRetrieveResult] {
-	return pulumix.Output[LookupGalleryimageRetrieveResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Datasource for the gallery image when provisioning with cloud-init (Azure or NoCloud)

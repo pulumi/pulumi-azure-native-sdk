@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Guest Usages Resource
@@ -141,12 +140,6 @@ func (i *GuestUsage) ToGuestUsageOutputWithContext(ctx context.Context) GuestUsa
 	return pulumi.ToOutputWithContext(ctx, i).(GuestUsageOutput)
 }
 
-func (i *GuestUsage) ToOutput(ctx context.Context) pulumix.Output[*GuestUsage] {
-	return pulumix.Output[*GuestUsage]{
-		OutputState: i.ToGuestUsageOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestUsageOutput struct{ *pulumi.OutputState }
 
 func (GuestUsageOutput) ElementType() reflect.Type {
@@ -159,12 +152,6 @@ func (o GuestUsageOutput) ToGuestUsageOutput() GuestUsageOutput {
 
 func (o GuestUsageOutput) ToGuestUsageOutputWithContext(ctx context.Context) GuestUsageOutput {
 	return o
-}
-
-func (o GuestUsageOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestUsage] {
-	return pulumix.Output[*GuestUsage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Location of the Guest Usages resource.

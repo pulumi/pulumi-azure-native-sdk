@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Tap configuration in a Network Interface.
@@ -230,12 +229,6 @@ func (i *NetworkInterfaceTapConfiguration) ToNetworkInterfaceTapConfigurationOut
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceTapConfigurationOutput)
 }
 
-func (i *NetworkInterfaceTapConfiguration) ToOutput(ctx context.Context) pulumix.Output[*NetworkInterfaceTapConfiguration] {
-	return pulumix.Output[*NetworkInterfaceTapConfiguration]{
-		OutputState: i.ToNetworkInterfaceTapConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkInterfaceTapConfigurationOutput struct{ *pulumi.OutputState }
 
 func (NetworkInterfaceTapConfigurationOutput) ElementType() reflect.Type {
@@ -248,12 +241,6 @@ func (o NetworkInterfaceTapConfigurationOutput) ToNetworkInterfaceTapConfigurati
 
 func (o NetworkInterfaceTapConfigurationOutput) ToNetworkInterfaceTapConfigurationOutputWithContext(ctx context.Context) NetworkInterfaceTapConfigurationOutput {
 	return o
-}
-
-func (o NetworkInterfaceTapConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkInterfaceTapConfiguration] {
-	return pulumix.Output[*NetworkInterfaceTapConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A unique read-only string that changes whenever the resource is updated.

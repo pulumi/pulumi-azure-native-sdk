@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve the Database Migration resource.
@@ -88,12 +87,6 @@ func (o LookupDatabaseMigrationsSqlDbResultOutput) ToLookupDatabaseMigrationsSql
 
 func (o LookupDatabaseMigrationsSqlDbResultOutput) ToLookupDatabaseMigrationsSqlDbResultOutputWithContext(ctx context.Context) LookupDatabaseMigrationsSqlDbResultOutput {
 	return o
-}
-
-func (o LookupDatabaseMigrationsSqlDbResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDatabaseMigrationsSqlDbResult] {
-	return pulumix.Output[LookupDatabaseMigrationsSqlDbResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupDatabaseMigrationsSqlDbResultOutput) Id() pulumi.StringOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Workflow properties definition.
@@ -90,12 +89,6 @@ func (o ListWebAppWorkflowsConnectionsSlotResultOutput) ToListWebAppWorkflowsCon
 
 func (o ListWebAppWorkflowsConnectionsSlotResultOutput) ToListWebAppWorkflowsConnectionsSlotResultOutputWithContext(ctx context.Context) ListWebAppWorkflowsConnectionsSlotResultOutput {
 	return o
-}
-
-func (o ListWebAppWorkflowsConnectionsSlotResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWebAppWorkflowsConnectionsSlotResult] {
-	return pulumix.Output[ListWebAppWorkflowsConnectionsSlotResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource id.

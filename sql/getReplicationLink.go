@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a replication link.
@@ -110,12 +109,6 @@ func (o LookupReplicationLinkResultOutput) ToLookupReplicationLinkResultOutput()
 
 func (o LookupReplicationLinkResultOutput) ToLookupReplicationLinkResultOutputWithContext(ctx context.Context) LookupReplicationLinkResultOutput {
 	return o
-}
-
-func (o LookupReplicationLinkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReplicationLinkResult] {
-	return pulumix.Output[LookupReplicationLinkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource ID.

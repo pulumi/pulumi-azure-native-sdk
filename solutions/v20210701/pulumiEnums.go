@@ -80,12 +80,6 @@ func (o ApplicationArtifactTypeOutput) ToApplicationArtifactTypePtrOutputWithCon
 	}).(ApplicationArtifactTypePtrOutput)
 }
 
-func (o ApplicationArtifactTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationArtifactType] {
-	return pulumix.Output[ApplicationArtifactType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApplicationArtifactTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -119,12 +113,6 @@ func (o ApplicationArtifactTypePtrOutput) ToApplicationArtifactTypePtrOutput() A
 
 func (o ApplicationArtifactTypePtrOutput) ToApplicationArtifactTypePtrOutputWithContext(ctx context.Context) ApplicationArtifactTypePtrOutput {
 	return o
-}
-
-func (o ApplicationArtifactTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationArtifactType] {
-	return pulumix.Output[*ApplicationArtifactType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationArtifactTypePtrOutput) Elem() ApplicationArtifactTypeOutput {
@@ -274,12 +262,6 @@ func (o ApplicationLockLevelOutput) ToApplicationLockLevelPtrOutputWithContext(c
 	}).(ApplicationLockLevelPtrOutput)
 }
 
-func (o ApplicationLockLevelOutput) ToOutput(ctx context.Context) pulumix.Output[ApplicationLockLevel] {
-	return pulumix.Output[ApplicationLockLevel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApplicationLockLevelOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -313,12 +295,6 @@ func (o ApplicationLockLevelPtrOutput) ToApplicationLockLevelPtrOutput() Applica
 
 func (o ApplicationLockLevelPtrOutput) ToApplicationLockLevelPtrOutputWithContext(ctx context.Context) ApplicationLockLevelPtrOutput {
 	return o
-}
-
-func (o ApplicationLockLevelPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationLockLevel] {
-	return pulumix.Output[*ApplicationLockLevel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationLockLevelPtrOutput) Elem() ApplicationLockLevelOutput {
@@ -503,12 +479,6 @@ func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(c
 	}).(ResourceIdentityTypePtrOutput)
 }
 
-func (o ResourceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityType] {
-	return pulumix.Output[ResourceIdentityType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -542,12 +512,6 @@ func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() Resourc
 
 func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return o
-}
-
-func (o ResourceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {

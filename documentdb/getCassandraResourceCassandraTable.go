@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the Cassandra table under an existing Azure Cosmos DB database account.
@@ -94,12 +93,6 @@ func (o LookupCassandraResourceCassandraTableResultOutput) ToLookupCassandraReso
 
 func (o LookupCassandraResourceCassandraTableResultOutput) ToLookupCassandraResourceCassandraTableResultOutputWithContext(ctx context.Context) LookupCassandraResourceCassandraTableResultOutput {
 	return o
-}
-
-func (o LookupCassandraResourceCassandraTableResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCassandraResourceCassandraTableResult] {
-	return pulumix.Output[LookupCassandraResourceCassandraTableResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique resource identifier of the ARM resource.

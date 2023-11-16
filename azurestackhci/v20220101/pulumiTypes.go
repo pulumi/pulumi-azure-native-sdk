@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i ClusterDesiredPropertiesArgs) ToClusterDesiredPropertiesOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterDesiredPropertiesOutput)
 }
 
-func (i ClusterDesiredPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterDesiredProperties] {
-	return pulumix.Output[ClusterDesiredProperties]{
-		OutputState: i.ToClusterDesiredPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterDesiredPropertiesArgs) ToClusterDesiredPropertiesPtrOutput() ClusterDesiredPropertiesPtrOutput {
 	return i.ToClusterDesiredPropertiesPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *clusterDesiredPropertiesPtrType) ToClusterDesiredPropertiesPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterDesiredPropertiesPtrOutput)
 }
 
-func (i *clusterDesiredPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterDesiredProperties] {
-	return pulumix.Output[*ClusterDesiredProperties]{
-		OutputState: i.ToClusterDesiredPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Desired properties of the cluster.
 type ClusterDesiredPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o ClusterDesiredPropertiesOutput) ToClusterDesiredPropertiesPtrOutputWithC
 	}).(ClusterDesiredPropertiesPtrOutput)
 }
 
-func (o ClusterDesiredPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterDesiredProperties] {
-	return pulumix.Output[ClusterDesiredProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Desired level of diagnostic data emitted by the cluster.
 func (o ClusterDesiredPropertiesOutput) DiagnosticLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterDesiredProperties) *string { return v.DiagnosticLevel }).(pulumi.StringPtrOutput)
@@ -159,12 +140,6 @@ func (o ClusterDesiredPropertiesPtrOutput) ToClusterDesiredPropertiesPtrOutput()
 
 func (o ClusterDesiredPropertiesPtrOutput) ToClusterDesiredPropertiesPtrOutputWithContext(ctx context.Context) ClusterDesiredPropertiesPtrOutput {
 	return o
-}
-
-func (o ClusterDesiredPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterDesiredProperties] {
-	return pulumix.Output[*ClusterDesiredProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterDesiredPropertiesPtrOutput) Elem() ClusterDesiredPropertiesOutput {
@@ -220,12 +195,6 @@ func (o ClusterDesiredPropertiesResponseOutput) ToClusterDesiredPropertiesRespon
 	return o
 }
 
-func (o ClusterDesiredPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterDesiredPropertiesResponse] {
-	return pulumix.Output[ClusterDesiredPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Desired level of diagnostic data emitted by the cluster.
 func (o ClusterDesiredPropertiesResponseOutput) DiagnosticLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterDesiredPropertiesResponse) *string { return v.DiagnosticLevel }).(pulumi.StringPtrOutput)
@@ -248,12 +217,6 @@ func (o ClusterDesiredPropertiesResponsePtrOutput) ToClusterDesiredPropertiesRes
 
 func (o ClusterDesiredPropertiesResponsePtrOutput) ToClusterDesiredPropertiesResponsePtrOutputWithContext(ctx context.Context) ClusterDesiredPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o ClusterDesiredPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterDesiredPropertiesResponse] {
-	return pulumix.Output[*ClusterDesiredPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterDesiredPropertiesResponsePtrOutput) Elem() ClusterDesiredPropertiesResponseOutput {
@@ -325,12 +288,6 @@ func (o ClusterNodeResponseOutput) ToClusterNodeResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o ClusterNodeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterNodeResponse] {
-	return pulumix.Output[ClusterNodeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Number of physical cores on the cluster node.
 func (o ClusterNodeResponseOutput) CoreCount() pulumi.Float64Output {
 	return o.ApplyT(func(v ClusterNodeResponse) float64 { return v.CoreCount }).(pulumi.Float64Output)
@@ -395,12 +352,6 @@ func (o ClusterNodeResponseArrayOutput) ToClusterNodeResponseArrayOutputWithCont
 	return o
 }
 
-func (o ClusterNodeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterNodeResponse] {
-	return pulumix.Output[[]ClusterNodeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ClusterNodeResponseArrayOutput) Index(i pulumi.IntInput) ClusterNodeResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeResponse {
 		return vs[0].([]ClusterNodeResponse)[vs[1].(int)]
@@ -438,12 +389,6 @@ func (o ClusterReportedPropertiesResponseOutput) ToClusterReportedPropertiesResp
 
 func (o ClusterReportedPropertiesResponseOutput) ToClusterReportedPropertiesResponseOutputWithContext(ctx context.Context) ClusterReportedPropertiesResponseOutput {
 	return o
-}
-
-func (o ClusterReportedPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterReportedPropertiesResponse] {
-	return pulumix.Output[ClusterReportedPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Unique id generated by the on-prem cluster.

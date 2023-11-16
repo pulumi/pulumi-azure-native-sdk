@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -31,12 +30,6 @@ func (o AzureADMetricsPropertiesFormatResponseOutput) ToAzureADMetricsProperties
 
 func (o AzureADMetricsPropertiesFormatResponseOutput) ToAzureADMetricsPropertiesFormatResponseOutputWithContext(ctx context.Context) AzureADMetricsPropertiesFormatResponseOutput {
 	return o
-}
-
-func (o AzureADMetricsPropertiesFormatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureADMetricsPropertiesFormatResponse] {
-	return pulumix.Output[AzureADMetricsPropertiesFormatResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provisioning state of the resource.

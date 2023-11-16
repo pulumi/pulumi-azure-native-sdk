@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Cache details.
@@ -188,12 +187,6 @@ func (i *Cache) ToCacheOutputWithContext(ctx context.Context) CacheOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CacheOutput)
 }
 
-func (i *Cache) ToOutput(ctx context.Context) pulumix.Output[*Cache] {
-	return pulumix.Output[*Cache]{
-		OutputState: i.ToCacheOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CacheOutput struct{ *pulumi.OutputState }
 
 func (CacheOutput) ElementType() reflect.Type {
@@ -206,12 +199,6 @@ func (o CacheOutput) ToCacheOutput() CacheOutput {
 
 func (o CacheOutput) ToCacheOutputWithContext(ctx context.Context) CacheOutput {
 	return o
-}
-
-func (o CacheOutput) ToOutput(ctx context.Context) pulumix.Output[*Cache] {
-	return pulumix.Output[*Cache]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Runtime connection string to cache

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The limited preview of Kubernetes Cluster Management from the Azure supports:
@@ -223,12 +222,6 @@ func (i *KubernetesRole) ToKubernetesRoleOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesRoleOutput)
 }
 
-func (i *KubernetesRole) ToOutput(ctx context.Context) pulumix.Output[*KubernetesRole] {
-	return pulumix.Output[*KubernetesRole]{
-		OutputState: i.ToKubernetesRoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KubernetesRoleOutput struct{ *pulumi.OutputState }
 
 func (KubernetesRoleOutput) ElementType() reflect.Type {
@@ -241,12 +234,6 @@ func (o KubernetesRoleOutput) ToKubernetesRoleOutput() KubernetesRoleOutput {
 
 func (o KubernetesRoleOutput) ToKubernetesRoleOutputWithContext(ctx context.Context) KubernetesRoleOutput {
 	return o
-}
-
-func (o KubernetesRoleOutput) ToOutput(ctx context.Context) pulumix.Output[*KubernetesRole] {
-	return pulumix.Output[*KubernetesRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Host OS supported by the Kubernetes role.

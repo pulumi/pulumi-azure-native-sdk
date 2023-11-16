@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The integration account RosettaNet process configuration.
@@ -199,12 +198,6 @@ func (i *RosettaNetProcessConfiguration) ToRosettaNetProcessConfigurationOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(RosettaNetProcessConfigurationOutput)
 }
 
-func (i *RosettaNetProcessConfiguration) ToOutput(ctx context.Context) pulumix.Output[*RosettaNetProcessConfiguration] {
-	return pulumix.Output[*RosettaNetProcessConfiguration]{
-		OutputState: i.ToRosettaNetProcessConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RosettaNetProcessConfigurationOutput struct{ *pulumi.OutputState }
 
 func (RosettaNetProcessConfigurationOutput) ElementType() reflect.Type {
@@ -217,12 +210,6 @@ func (o RosettaNetProcessConfigurationOutput) ToRosettaNetProcessConfigurationOu
 
 func (o RosettaNetProcessConfigurationOutput) ToRosettaNetProcessConfigurationOutputWithContext(ctx context.Context) RosettaNetProcessConfigurationOutput {
 	return o
-}
-
-func (o RosettaNetProcessConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*RosettaNetProcessConfiguration] {
-	return pulumix.Output[*RosettaNetProcessConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The RosettaNet process configuration activity settings.

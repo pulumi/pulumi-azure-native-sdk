@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // publisher resource.
@@ -136,12 +135,6 @@ func (i *Publisher) ToPublisherOutputWithContext(ctx context.Context) PublisherO
 	return pulumi.ToOutputWithContext(ctx, i).(PublisherOutput)
 }
 
-func (i *Publisher) ToOutput(ctx context.Context) pulumix.Output[*Publisher] {
-	return pulumix.Output[*Publisher]{
-		OutputState: i.ToPublisherOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PublisherOutput struct{ *pulumi.OutputState }
 
 func (PublisherOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o PublisherOutput) ToPublisherOutput() PublisherOutput {
 
 func (o PublisherOutput) ToPublisherOutputWithContext(ctx context.Context) PublisherOutput {
 	return o
-}
-
-func (o PublisherOutput) ToOutput(ctx context.Context) pulumix.Output[*Publisher] {
-	return pulumix.Output[*Publisher]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The managed identity of the publisher, if configured.

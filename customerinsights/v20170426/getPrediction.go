@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a Prediction in the hub.
@@ -115,12 +114,6 @@ func (o LookupPredictionResultOutput) ToLookupPredictionResultOutput() LookupPre
 
 func (o LookupPredictionResultOutput) ToLookupPredictionResultOutputWithContext(ctx context.Context) LookupPredictionResultOutput {
 	return o
-}
-
-func (o LookupPredictionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPredictionResult] {
-	return pulumix.Output[LookupPredictionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether do auto analyze.

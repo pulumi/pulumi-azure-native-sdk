@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a specific addon by name.
@@ -102,12 +101,6 @@ func (o LookupIoTAddonResultOutput) ToLookupIoTAddonResultOutput() LookupIoTAddo
 
 func (o LookupIoTAddonResultOutput) ToLookupIoTAddonResultOutputWithContext(ctx context.Context) LookupIoTAddonResultOutput {
 	return o
-}
-
-func (o LookupIoTAddonResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIoTAddonResult] {
-	return pulumix.Output[LookupIoTAddonResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Host OS supported by the IoT addon.

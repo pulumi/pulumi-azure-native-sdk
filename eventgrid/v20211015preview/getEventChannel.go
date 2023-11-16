@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of an event channel.
@@ -110,12 +109,6 @@ func (o LookupEventChannelResultOutput) ToLookupEventChannelResultOutput() Looku
 
 func (o LookupEventChannelResultOutput) ToLookupEventChannelResultOutputWithContext(ctx context.Context) LookupEventChannelResultOutput {
 	return o
-}
-
-func (o LookupEventChannelResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEventChannelResult] {
-	return pulumix.Output[LookupEventChannelResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Represents the destination of an event channel.

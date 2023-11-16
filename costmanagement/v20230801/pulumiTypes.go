@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i BudgetComparisonExpressionArgs) ToBudgetComparisonExpressionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetComparisonExpressionOutput)
 }
 
-func (i BudgetComparisonExpressionArgs) ToOutput(ctx context.Context) pulumix.Output[BudgetComparisonExpression] {
-	return pulumix.Output[BudgetComparisonExpression]{
-		OutputState: i.ToBudgetComparisonExpressionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BudgetComparisonExpressionArgs) ToBudgetComparisonExpressionPtrOutput() BudgetComparisonExpressionPtrOutput {
 	return i.ToBudgetComparisonExpressionPtrOutputWithContext(context.Background())
 }
@@ -104,12 +97,6 @@ func (i *budgetComparisonExpressionPtrType) ToBudgetComparisonExpressionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetComparisonExpressionPtrOutput)
 }
 
-func (i *budgetComparisonExpressionPtrType) ToOutput(ctx context.Context) pulumix.Output[*BudgetComparisonExpression] {
-	return pulumix.Output[*BudgetComparisonExpression]{
-		OutputState: i.ToBudgetComparisonExpressionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The comparison expression to be used in the budgets.
 type BudgetComparisonExpressionOutput struct{ *pulumi.OutputState }
 
@@ -133,12 +120,6 @@ func (o BudgetComparisonExpressionOutput) ToBudgetComparisonExpressionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BudgetComparisonExpression) *BudgetComparisonExpression {
 		return &v
 	}).(BudgetComparisonExpressionPtrOutput)
-}
-
-func (o BudgetComparisonExpressionOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetComparisonExpression] {
-	return pulumix.Output[BudgetComparisonExpression]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the column to use in comparison.
@@ -168,12 +149,6 @@ func (o BudgetComparisonExpressionPtrOutput) ToBudgetComparisonExpressionPtrOutp
 
 func (o BudgetComparisonExpressionPtrOutput) ToBudgetComparisonExpressionPtrOutputWithContext(ctx context.Context) BudgetComparisonExpressionPtrOutput {
 	return o
-}
-
-func (o BudgetComparisonExpressionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BudgetComparisonExpression] {
-	return pulumix.Output[*BudgetComparisonExpression]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BudgetComparisonExpressionPtrOutput) Elem() BudgetComparisonExpressionOutput {
@@ -241,12 +216,6 @@ func (o BudgetComparisonExpressionResponseOutput) ToBudgetComparisonExpressionRe
 	return o
 }
 
-func (o BudgetComparisonExpressionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetComparisonExpressionResponse] {
-	return pulumix.Output[BudgetComparisonExpressionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the column to use in comparison.
 func (o BudgetComparisonExpressionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v BudgetComparisonExpressionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -274,12 +243,6 @@ func (o BudgetComparisonExpressionResponsePtrOutput) ToBudgetComparisonExpressio
 
 func (o BudgetComparisonExpressionResponsePtrOutput) ToBudgetComparisonExpressionResponsePtrOutputWithContext(ctx context.Context) BudgetComparisonExpressionResponsePtrOutput {
 	return o
-}
-
-func (o BudgetComparisonExpressionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BudgetComparisonExpressionResponse] {
-	return pulumix.Output[*BudgetComparisonExpressionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BudgetComparisonExpressionResponsePtrOutput) Elem() BudgetComparisonExpressionResponseOutput {
@@ -389,12 +352,6 @@ func (i BudgetFilterArgs) ToBudgetFilterOutputWithContext(ctx context.Context) B
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetFilterOutput)
 }
 
-func (i BudgetFilterArgs) ToOutput(ctx context.Context) pulumix.Output[BudgetFilter] {
-	return pulumix.Output[BudgetFilter]{
-		OutputState: i.ToBudgetFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BudgetFilterArgs) ToBudgetFilterPtrOutput() BudgetFilterPtrOutput {
 	return i.ToBudgetFilterPtrOutputWithContext(context.Background())
 }
@@ -436,12 +393,6 @@ func (i *budgetFilterPtrType) ToBudgetFilterPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetFilterPtrOutput)
 }
 
-func (i *budgetFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*BudgetFilter] {
-	return pulumix.Output[*BudgetFilter]{
-		OutputState: i.ToBudgetFilterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // May be used to filter budgets by user-specified dimensions and/or tags.
 //
 //	Supported for CategoryType(s): Cost, ReservationUtilization.
@@ -467,12 +418,6 @@ func (o BudgetFilterOutput) ToBudgetFilterPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BudgetFilter) *BudgetFilter {
 		return &v
 	}).(BudgetFilterPtrOutput)
-}
-
-func (o BudgetFilterOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetFilter] {
-	return pulumix.Output[BudgetFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The logical "AND" expression. Must have at least 2 items.
@@ -512,12 +457,6 @@ func (o BudgetFilterPtrOutput) ToBudgetFilterPtrOutput() BudgetFilterPtrOutput {
 
 func (o BudgetFilterPtrOutput) ToBudgetFilterPtrOutputWithContext(ctx context.Context) BudgetFilterPtrOutput {
 	return o
-}
-
-func (o BudgetFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BudgetFilter] {
-	return pulumix.Output[*BudgetFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BudgetFilterPtrOutput) Elem() BudgetFilterOutput {
@@ -629,12 +568,6 @@ func (i BudgetFilterPropertiesArgs) ToBudgetFilterPropertiesOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetFilterPropertiesOutput)
 }
 
-func (i BudgetFilterPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[BudgetFilterProperties] {
-	return pulumix.Output[BudgetFilterProperties]{
-		OutputState: i.ToBudgetFilterPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BudgetFilterPropertiesArrayInput is an input type that accepts BudgetFilterPropertiesArray and BudgetFilterPropertiesArrayOutput values.
 // You can construct a concrete instance of `BudgetFilterPropertiesArrayInput` via:
 //
@@ -660,12 +593,6 @@ func (i BudgetFilterPropertiesArray) ToBudgetFilterPropertiesArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetFilterPropertiesArrayOutput)
 }
 
-func (i BudgetFilterPropertiesArray) ToOutput(ctx context.Context) pulumix.Output[[]BudgetFilterProperties] {
-	return pulumix.Output[[]BudgetFilterProperties]{
-		OutputState: i.ToBudgetFilterPropertiesArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Dimensions or Tags to filter a budget by.
 //
 //	Supported for CategoryType(s): Cost, ReservationUtilization.
@@ -681,12 +608,6 @@ func (o BudgetFilterPropertiesOutput) ToBudgetFilterPropertiesOutput() BudgetFil
 
 func (o BudgetFilterPropertiesOutput) ToBudgetFilterPropertiesOutputWithContext(ctx context.Context) BudgetFilterPropertiesOutput {
 	return o
-}
-
-func (o BudgetFilterPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetFilterProperties] {
-	return pulumix.Output[BudgetFilterProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Has comparison expression for a dimension.
@@ -719,12 +640,6 @@ func (o BudgetFilterPropertiesArrayOutput) ToBudgetFilterPropertiesArrayOutput()
 
 func (o BudgetFilterPropertiesArrayOutput) ToBudgetFilterPropertiesArrayOutputWithContext(ctx context.Context) BudgetFilterPropertiesArrayOutput {
 	return o
-}
-
-func (o BudgetFilterPropertiesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BudgetFilterProperties] {
-	return pulumix.Output[[]BudgetFilterProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BudgetFilterPropertiesArrayOutput) Index(i pulumi.IntInput) BudgetFilterPropertiesOutput {
@@ -768,12 +683,6 @@ func (o BudgetFilterPropertiesResponseOutput) ToBudgetFilterPropertiesResponseOu
 	return o
 }
 
-func (o BudgetFilterPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetFilterPropertiesResponse] {
-	return pulumix.Output[BudgetFilterPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Has comparison expression for a dimension.
 //
 //	Supported for CategoryType(s): Cost, ReservationUtilization.
@@ -804,12 +713,6 @@ func (o BudgetFilterPropertiesResponseArrayOutput) ToBudgetFilterPropertiesRespo
 
 func (o BudgetFilterPropertiesResponseArrayOutput) ToBudgetFilterPropertiesResponseArrayOutputWithContext(ctx context.Context) BudgetFilterPropertiesResponseArrayOutput {
 	return o
-}
-
-func (o BudgetFilterPropertiesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BudgetFilterPropertiesResponse] {
-	return pulumix.Output[[]BudgetFilterPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BudgetFilterPropertiesResponseArrayOutput) Index(i pulumi.IntInput) BudgetFilterPropertiesResponseOutput {
@@ -857,12 +760,6 @@ func (o BudgetFilterResponseOutput) ToBudgetFilterResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o BudgetFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetFilterResponse] {
-	return pulumix.Output[BudgetFilterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The logical "AND" expression. Must have at least 2 items.
 //
 //	Supported for CategoryType(s): Cost.
@@ -900,12 +797,6 @@ func (o BudgetFilterResponsePtrOutput) ToBudgetFilterResponsePtrOutput() BudgetF
 
 func (o BudgetFilterResponsePtrOutput) ToBudgetFilterResponsePtrOutputWithContext(ctx context.Context) BudgetFilterResponsePtrOutput {
 	return o
-}
-
-func (o BudgetFilterResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BudgetFilterResponse] {
-	return pulumix.Output[*BudgetFilterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BudgetFilterResponsePtrOutput) Elem() BudgetFilterResponseOutput {
@@ -1021,12 +912,6 @@ func (i BudgetTimePeriodArgs) ToBudgetTimePeriodOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(BudgetTimePeriodOutput)
 }
 
-func (i BudgetTimePeriodArgs) ToOutput(ctx context.Context) pulumix.Output[BudgetTimePeriod] {
-	return pulumix.Output[BudgetTimePeriod]{
-		OutputState: i.ToBudgetTimePeriodOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The time period that defines the active period of the budget. The budget will evaluate data on or after the startDate and will expire on the endDate.
 //
 //	Supported for CategoryType(s): Cost, ReservationUtilization.
@@ -1044,12 +929,6 @@ func (o BudgetTimePeriodOutput) ToBudgetTimePeriodOutput() BudgetTimePeriodOutpu
 
 func (o BudgetTimePeriodOutput) ToBudgetTimePeriodOutputWithContext(ctx context.Context) BudgetTimePeriodOutput {
 	return o
-}
-
-func (o BudgetTimePeriodOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetTimePeriod] {
-	return pulumix.Output[BudgetTimePeriod]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The end date for the budget.
@@ -1109,12 +988,6 @@ func (o BudgetTimePeriodResponseOutput) ToBudgetTimePeriodResponseOutputWithCont
 	return o
 }
 
-func (o BudgetTimePeriodResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BudgetTimePeriodResponse] {
-	return pulumix.Output[BudgetTimePeriodResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The end date for the budget.
 //
 // - Constraints for **CategoryType: Cost** - No constraints. If not provided, we default this to 10 years from the start date.
@@ -1164,12 +1037,6 @@ func (o CommonExportPropertiesResponseOutput) ToCommonExportPropertiesResponseOu
 	return o
 }
 
-func (o CommonExportPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CommonExportPropertiesResponse] {
-	return pulumix.Output[CommonExportPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Has the definition for the export.
 func (o CommonExportPropertiesResponseOutput) Definition() ExportDefinitionResponseOutput {
 	return o.ApplyT(func(v CommonExportPropertiesResponse) ExportDefinitionResponse { return v.Definition }).(ExportDefinitionResponseOutput)
@@ -1212,12 +1079,6 @@ func (o CommonExportPropertiesResponsePtrOutput) ToCommonExportPropertiesRespons
 
 func (o CommonExportPropertiesResponsePtrOutput) ToCommonExportPropertiesResponsePtrOutputWithContext(ctx context.Context) CommonExportPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o CommonExportPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CommonExportPropertiesResponse] {
-	return pulumix.Output[*CommonExportPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CommonExportPropertiesResponsePtrOutput) Elem() CommonExportPropertiesResponseOutput {
@@ -1329,12 +1190,6 @@ func (i CostAllocationProportionArgs) ToCostAllocationProportionOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(CostAllocationProportionOutput)
 }
 
-func (i CostAllocationProportionArgs) ToOutput(ctx context.Context) pulumix.Output[CostAllocationProportion] {
-	return pulumix.Output[CostAllocationProportion]{
-		OutputState: i.ToCostAllocationProportionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CostAllocationProportionArrayInput is an input type that accepts CostAllocationProportionArray and CostAllocationProportionArrayOutput values.
 // You can construct a concrete instance of `CostAllocationProportionArrayInput` via:
 //
@@ -1360,12 +1215,6 @@ func (i CostAllocationProportionArray) ToCostAllocationProportionArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(CostAllocationProportionArrayOutput)
 }
 
-func (i CostAllocationProportionArray) ToOutput(ctx context.Context) pulumix.Output[[]CostAllocationProportion] {
-	return pulumix.Output[[]CostAllocationProportion]{
-		OutputState: i.ToCostAllocationProportionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Target resources and allocation
 type CostAllocationProportionOutput struct{ *pulumi.OutputState }
 
@@ -1379,12 +1228,6 @@ func (o CostAllocationProportionOutput) ToCostAllocationProportionOutput() CostA
 
 func (o CostAllocationProportionOutput) ToCostAllocationProportionOutputWithContext(ctx context.Context) CostAllocationProportionOutput {
 	return o
-}
-
-func (o CostAllocationProportionOutput) ToOutput(ctx context.Context) pulumix.Output[CostAllocationProportion] {
-	return pulumix.Output[CostAllocationProportion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Target resource for cost allocation
@@ -1409,12 +1252,6 @@ func (o CostAllocationProportionArrayOutput) ToCostAllocationProportionArrayOutp
 
 func (o CostAllocationProportionArrayOutput) ToCostAllocationProportionArrayOutputWithContext(ctx context.Context) CostAllocationProportionArrayOutput {
 	return o
-}
-
-func (o CostAllocationProportionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CostAllocationProportion] {
-	return pulumix.Output[[]CostAllocationProportion]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CostAllocationProportionArrayOutput) Index(i pulumi.IntInput) CostAllocationProportionOutput {
@@ -1446,12 +1283,6 @@ func (o CostAllocationProportionResponseOutput) ToCostAllocationProportionRespon
 	return o
 }
 
-func (o CostAllocationProportionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CostAllocationProportionResponse] {
-	return pulumix.Output[CostAllocationProportionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Target resource for cost allocation
 func (o CostAllocationProportionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v CostAllocationProportionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -1474,12 +1305,6 @@ func (o CostAllocationProportionResponseArrayOutput) ToCostAllocationProportionR
 
 func (o CostAllocationProportionResponseArrayOutput) ToCostAllocationProportionResponseArrayOutputWithContext(ctx context.Context) CostAllocationProportionResponseArrayOutput {
 	return o
-}
-
-func (o CostAllocationProportionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CostAllocationProportionResponse] {
-	return pulumix.Output[[]CostAllocationProportionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CostAllocationProportionResponseArrayOutput) Index(i pulumi.IntInput) CostAllocationProportionResponseOutput {
@@ -1527,12 +1352,6 @@ func (i CostAllocationRuleDetailsArgs) ToCostAllocationRuleDetailsOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(CostAllocationRuleDetailsOutput)
 }
 
-func (i CostAllocationRuleDetailsArgs) ToOutput(ctx context.Context) pulumix.Output[CostAllocationRuleDetails] {
-	return pulumix.Output[CostAllocationRuleDetails]{
-		OutputState: i.ToCostAllocationRuleDetailsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CostAllocationRuleDetailsArgs) ToCostAllocationRuleDetailsPtrOutput() CostAllocationRuleDetailsPtrOutput {
 	return i.ToCostAllocationRuleDetailsPtrOutputWithContext(context.Background())
 }
@@ -1574,12 +1393,6 @@ func (i *costAllocationRuleDetailsPtrType) ToCostAllocationRuleDetailsPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(CostAllocationRuleDetailsPtrOutput)
 }
 
-func (i *costAllocationRuleDetailsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CostAllocationRuleDetails] {
-	return pulumix.Output[*CostAllocationRuleDetails]{
-		OutputState: i.ToCostAllocationRuleDetailsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Resource details of the cost allocation rule
 type CostAllocationRuleDetailsOutput struct{ *pulumi.OutputState }
 
@@ -1605,12 +1418,6 @@ func (o CostAllocationRuleDetailsOutput) ToCostAllocationRuleDetailsPtrOutputWit
 	}).(CostAllocationRuleDetailsPtrOutput)
 }
 
-func (o CostAllocationRuleDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[CostAllocationRuleDetails] {
-	return pulumix.Output[CostAllocationRuleDetails]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Source resources for cost allocation. At this time, this list can contain no more than one element.
 func (o CostAllocationRuleDetailsOutput) SourceResources() SourceCostAllocationResourceArrayOutput {
 	return o.ApplyT(func(v CostAllocationRuleDetails) []SourceCostAllocationResource { return v.SourceResources }).(SourceCostAllocationResourceArrayOutput)
@@ -1633,12 +1440,6 @@ func (o CostAllocationRuleDetailsPtrOutput) ToCostAllocationRuleDetailsPtrOutput
 
 func (o CostAllocationRuleDetailsPtrOutput) ToCostAllocationRuleDetailsPtrOutputWithContext(ctx context.Context) CostAllocationRuleDetailsPtrOutput {
 	return o
-}
-
-func (o CostAllocationRuleDetailsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CostAllocationRuleDetails] {
-	return pulumix.Output[*CostAllocationRuleDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CostAllocationRuleDetailsPtrOutput) Elem() CostAllocationRuleDetailsOutput {
@@ -1692,12 +1493,6 @@ func (o CostAllocationRuleDetailsResponseOutput) ToCostAllocationRuleDetailsResp
 
 func (o CostAllocationRuleDetailsResponseOutput) ToCostAllocationRuleDetailsResponseOutputWithContext(ctx context.Context) CostAllocationRuleDetailsResponseOutput {
 	return o
-}
-
-func (o CostAllocationRuleDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CostAllocationRuleDetailsResponse] {
-	return pulumix.Output[CostAllocationRuleDetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Source resources for cost allocation. At this time, this list can contain no more than one element.
@@ -1757,12 +1552,6 @@ func (i CostAllocationRulePropertiesArgs) ToCostAllocationRulePropertiesOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(CostAllocationRulePropertiesOutput)
 }
 
-func (i CostAllocationRulePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[CostAllocationRuleProperties] {
-	return pulumix.Output[CostAllocationRuleProperties]{
-		OutputState: i.ToCostAllocationRulePropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CostAllocationRulePropertiesArgs) ToCostAllocationRulePropertiesPtrOutput() CostAllocationRulePropertiesPtrOutput {
 	return i.ToCostAllocationRulePropertiesPtrOutputWithContext(context.Background())
 }
@@ -1804,12 +1593,6 @@ func (i *costAllocationRulePropertiesPtrType) ToCostAllocationRulePropertiesPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(CostAllocationRulePropertiesPtrOutput)
 }
 
-func (i *costAllocationRulePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*CostAllocationRuleProperties] {
-	return pulumix.Output[*CostAllocationRuleProperties]{
-		OutputState: i.ToCostAllocationRulePropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties of a cost allocation rule
 type CostAllocationRulePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1833,12 +1616,6 @@ func (o CostAllocationRulePropertiesOutput) ToCostAllocationRulePropertiesPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CostAllocationRuleProperties) *CostAllocationRuleProperties {
 		return &v
 	}).(CostAllocationRulePropertiesPtrOutput)
-}
-
-func (o CostAllocationRulePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[CostAllocationRuleProperties] {
-	return pulumix.Output[CostAllocationRuleProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of a cost allocation rule.
@@ -1868,12 +1645,6 @@ func (o CostAllocationRulePropertiesPtrOutput) ToCostAllocationRulePropertiesPtr
 
 func (o CostAllocationRulePropertiesPtrOutput) ToCostAllocationRulePropertiesPtrOutputWithContext(ctx context.Context) CostAllocationRulePropertiesPtrOutput {
 	return o
-}
-
-func (o CostAllocationRulePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CostAllocationRuleProperties] {
-	return pulumix.Output[*CostAllocationRuleProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CostAllocationRulePropertiesPtrOutput) Elem() CostAllocationRulePropertiesOutput {
@@ -1945,12 +1716,6 @@ func (o CostAllocationRulePropertiesResponseOutput) ToCostAllocationRuleProperti
 	return o
 }
 
-func (o CostAllocationRulePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CostAllocationRulePropertiesResponse] {
-	return pulumix.Output[CostAllocationRulePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Time at which the rule was created. Rules that change cost for the same resource are applied in order of creation.
 func (o CostAllocationRulePropertiesResponseOutput) CreatedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v CostAllocationRulePropertiesResponse) string { return v.CreatedDate }).(pulumi.StringOutput)
@@ -2003,12 +1768,6 @@ func (o CurrentSpendResponseOutput) ToCurrentSpendResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o CurrentSpendResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CurrentSpendResponse] {
-	return pulumix.Output[CurrentSpendResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The total amount of cost which is being tracked by the budget.
 func (o CurrentSpendResponseOutput) Amount() pulumi.Float64Output {
 	return o.ApplyT(func(v CurrentSpendResponse) float64 { return v.Amount }).(pulumi.Float64Output)
@@ -2042,12 +1801,6 @@ func (o ErrorDetailsResponseOutput) ToErrorDetailsResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o ErrorDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorDetailsResponse] {
-	return pulumix.Output[ErrorDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Error code.
 func (o ErrorDetailsResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v ErrorDetailsResponse) string { return v.Code }).(pulumi.StringOutput)
@@ -2070,12 +1823,6 @@ func (o ErrorDetailsResponsePtrOutput) ToErrorDetailsResponsePtrOutput() ErrorDe
 
 func (o ErrorDetailsResponsePtrOutput) ToErrorDetailsResponsePtrOutputWithContext(ctx context.Context) ErrorDetailsResponsePtrOutput {
 	return o
-}
-
-func (o ErrorDetailsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErrorDetailsResponse] {
-	return pulumix.Output[*ErrorDetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ErrorDetailsResponsePtrOutput) Elem() ErrorDetailsResponseOutput {
@@ -2147,12 +1894,6 @@ func (i ExportDatasetArgs) ToExportDatasetOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ExportDatasetOutput)
 }
 
-func (i ExportDatasetArgs) ToOutput(ctx context.Context) pulumix.Output[ExportDataset] {
-	return pulumix.Output[ExportDataset]{
-		OutputState: i.ToExportDatasetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExportDatasetArgs) ToExportDatasetPtrOutput() ExportDatasetPtrOutput {
 	return i.ToExportDatasetPtrOutputWithContext(context.Background())
 }
@@ -2194,12 +1935,6 @@ func (i *exportDatasetPtrType) ToExportDatasetPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ExportDatasetPtrOutput)
 }
 
-func (i *exportDatasetPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExportDataset] {
-	return pulumix.Output[*ExportDataset]{
-		OutputState: i.ToExportDatasetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The definition for data in the export.
 type ExportDatasetOutput struct{ *pulumi.OutputState }
 
@@ -2225,12 +1960,6 @@ func (o ExportDatasetOutput) ToExportDatasetPtrOutputWithContext(ctx context.Con
 	}).(ExportDatasetPtrOutput)
 }
 
-func (o ExportDatasetOutput) ToOutput(ctx context.Context) pulumix.Output[ExportDataset] {
-	return pulumix.Output[ExportDataset]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The export dataset configuration.
 func (o ExportDatasetOutput) Configuration() ExportDatasetConfigurationPtrOutput {
 	return o.ApplyT(func(v ExportDataset) *ExportDatasetConfiguration { return v.Configuration }).(ExportDatasetConfigurationPtrOutput)
@@ -2253,12 +1982,6 @@ func (o ExportDatasetPtrOutput) ToExportDatasetPtrOutput() ExportDatasetPtrOutpu
 
 func (o ExportDatasetPtrOutput) ToExportDatasetPtrOutputWithContext(ctx context.Context) ExportDatasetPtrOutput {
 	return o
-}
-
-func (o ExportDatasetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExportDataset] {
-	return pulumix.Output[*ExportDataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExportDatasetPtrOutput) Elem() ExportDatasetOutput {
@@ -2326,12 +2049,6 @@ func (i ExportDatasetConfigurationArgs) ToExportDatasetConfigurationOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ExportDatasetConfigurationOutput)
 }
 
-func (i ExportDatasetConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ExportDatasetConfiguration] {
-	return pulumix.Output[ExportDatasetConfiguration]{
-		OutputState: i.ToExportDatasetConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExportDatasetConfigurationArgs) ToExportDatasetConfigurationPtrOutput() ExportDatasetConfigurationPtrOutput {
 	return i.ToExportDatasetConfigurationPtrOutputWithContext(context.Background())
 }
@@ -2373,12 +2090,6 @@ func (i *exportDatasetConfigurationPtrType) ToExportDatasetConfigurationPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ExportDatasetConfigurationPtrOutput)
 }
 
-func (i *exportDatasetConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExportDatasetConfiguration] {
-	return pulumix.Output[*ExportDatasetConfiguration]{
-		OutputState: i.ToExportDatasetConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The export dataset configuration. Allows columns to be selected for the export. If not provided then the export will include all available columns.
 type ExportDatasetConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -2404,12 +2115,6 @@ func (o ExportDatasetConfigurationOutput) ToExportDatasetConfigurationPtrOutputW
 	}).(ExportDatasetConfigurationPtrOutput)
 }
 
-func (o ExportDatasetConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ExportDatasetConfiguration] {
-	return pulumix.Output[ExportDatasetConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Array of column names to be included in the export. If not provided then the export will include all available columns. The available columns can vary by customer channel (see examples).
 func (o ExportDatasetConfigurationOutput) Columns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ExportDatasetConfiguration) []string { return v.Columns }).(pulumi.StringArrayOutput)
@@ -2427,12 +2132,6 @@ func (o ExportDatasetConfigurationPtrOutput) ToExportDatasetConfigurationPtrOutp
 
 func (o ExportDatasetConfigurationPtrOutput) ToExportDatasetConfigurationPtrOutputWithContext(ctx context.Context) ExportDatasetConfigurationPtrOutput {
 	return o
-}
-
-func (o ExportDatasetConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExportDatasetConfiguration] {
-	return pulumix.Output[*ExportDatasetConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExportDatasetConfigurationPtrOutput) Elem() ExportDatasetConfigurationOutput {
@@ -2476,12 +2175,6 @@ func (o ExportDatasetConfigurationResponseOutput) ToExportDatasetConfigurationRe
 	return o
 }
 
-func (o ExportDatasetConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExportDatasetConfigurationResponse] {
-	return pulumix.Output[ExportDatasetConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Array of column names to be included in the export. If not provided then the export will include all available columns. The available columns can vary by customer channel (see examples).
 func (o ExportDatasetConfigurationResponseOutput) Columns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ExportDatasetConfigurationResponse) []string { return v.Columns }).(pulumi.StringArrayOutput)
@@ -2499,12 +2192,6 @@ func (o ExportDatasetConfigurationResponsePtrOutput) ToExportDatasetConfiguratio
 
 func (o ExportDatasetConfigurationResponsePtrOutput) ToExportDatasetConfigurationResponsePtrOutputWithContext(ctx context.Context) ExportDatasetConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o ExportDatasetConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExportDatasetConfigurationResponse] {
-	return pulumix.Output[*ExportDatasetConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExportDatasetConfigurationResponsePtrOutput) Elem() ExportDatasetConfigurationResponseOutput {
@@ -2550,12 +2237,6 @@ func (o ExportDatasetResponseOutput) ToExportDatasetResponseOutputWithContext(ct
 	return o
 }
 
-func (o ExportDatasetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExportDatasetResponse] {
-	return pulumix.Output[ExportDatasetResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The export dataset configuration.
 func (o ExportDatasetResponseOutput) Configuration() ExportDatasetConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v ExportDatasetResponse) *ExportDatasetConfigurationResponse { return v.Configuration }).(ExportDatasetConfigurationResponsePtrOutput)
@@ -2578,12 +2259,6 @@ func (o ExportDatasetResponsePtrOutput) ToExportDatasetResponsePtrOutput() Expor
 
 func (o ExportDatasetResponsePtrOutput) ToExportDatasetResponsePtrOutputWithContext(ctx context.Context) ExportDatasetResponsePtrOutput {
 	return o
-}
-
-func (o ExportDatasetResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExportDatasetResponse] {
-	return pulumix.Output[*ExportDatasetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExportDatasetResponsePtrOutput) Elem() ExportDatasetResponseOutput {
@@ -2663,12 +2338,6 @@ func (i ExportDefinitionArgs) ToExportDefinitionOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ExportDefinitionOutput)
 }
 
-func (i ExportDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[ExportDefinition] {
-	return pulumix.Output[ExportDefinition]{
-		OutputState: i.ToExportDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The definition of an export.
 type ExportDefinitionOutput struct{ *pulumi.OutputState }
 
@@ -2682,12 +2351,6 @@ func (o ExportDefinitionOutput) ToExportDefinitionOutput() ExportDefinitionOutpu
 
 func (o ExportDefinitionOutput) ToExportDefinitionOutputWithContext(ctx context.Context) ExportDefinitionOutput {
 	return o
-}
-
-func (o ExportDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[ExportDefinition] {
-	return pulumix.Output[ExportDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The definition for data in the export.
@@ -2737,12 +2400,6 @@ func (o ExportDefinitionResponseOutput) ToExportDefinitionResponseOutputWithCont
 	return o
 }
 
-func (o ExportDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExportDefinitionResponse] {
-	return pulumix.Output[ExportDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The definition for data in the export.
 func (o ExportDefinitionResponseOutput) DataSet() ExportDatasetResponsePtrOutput {
 	return o.ApplyT(func(v ExportDefinitionResponse) *ExportDatasetResponse { return v.DataSet }).(ExportDatasetResponsePtrOutput)
@@ -2775,12 +2432,6 @@ func (o ExportDefinitionResponsePtrOutput) ToExportDefinitionResponsePtrOutput()
 
 func (o ExportDefinitionResponsePtrOutput) ToExportDefinitionResponsePtrOutputWithContext(ctx context.Context) ExportDefinitionResponsePtrOutput {
 	return o
-}
-
-func (o ExportDefinitionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExportDefinitionResponse] {
-	return pulumix.Output[*ExportDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExportDefinitionResponsePtrOutput) Elem() ExportDefinitionResponseOutput {
@@ -2884,12 +2535,6 @@ func (i ExportDeliveryDestinationArgs) ToExportDeliveryDestinationOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ExportDeliveryDestinationOutput)
 }
 
-func (i ExportDeliveryDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[ExportDeliveryDestination] {
-	return pulumix.Output[ExportDeliveryDestination]{
-		OutputState: i.ToExportDeliveryDestinationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This represents the blob storage account location where exports of costs will be delivered. There are two ways to configure the destination. The approach recommended for most customers is to specify the resourceId of the storage account. This requires a one-time registration of the account's subscription with the Microsoft.CostManagementExports resource provider in order to give Cost Management services access to the storage. When creating an export in the Azure portal this registration is performed automatically but API users may need to register the subscription explicitly (for more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services ). Another way to configure the destination is available ONLY to Partners with a Microsoft Partner Agreement plan who are global admins of their billing account. These Partners, instead of specifying the resourceId of a storage account, can specify the storage account name along with a SAS token for the account. This allows exports of costs to a storage account in any tenant. The SAS token should be created for the blob service with Service/Container/Object resource types and with Read/Write/Delete/List/Add/Create permissions (for more information see https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/export-cost-data-storage-account-sas-key ).
 type ExportDeliveryDestinationOutput struct{ *pulumi.OutputState }
 
@@ -2903,12 +2548,6 @@ func (o ExportDeliveryDestinationOutput) ToExportDeliveryDestinationOutput() Exp
 
 func (o ExportDeliveryDestinationOutput) ToExportDeliveryDestinationOutputWithContext(ctx context.Context) ExportDeliveryDestinationOutput {
 	return o
-}
-
-func (o ExportDeliveryDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[ExportDeliveryDestination] {
-	return pulumix.Output[ExportDeliveryDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the container where exports will be uploaded. If the container does not exist it will be created.
@@ -2965,12 +2604,6 @@ func (o ExportDeliveryDestinationResponseOutput) ToExportDeliveryDestinationResp
 	return o
 }
 
-func (o ExportDeliveryDestinationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExportDeliveryDestinationResponse] {
-	return pulumix.Output[ExportDeliveryDestinationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the container where exports will be uploaded. If the container does not exist it will be created.
 func (o ExportDeliveryDestinationResponseOutput) Container() pulumi.StringOutput {
 	return o.ApplyT(func(v ExportDeliveryDestinationResponse) string { return v.Container }).(pulumi.StringOutput)
@@ -3008,12 +2641,6 @@ func (o ExportDeliveryDestinationResponsePtrOutput) ToExportDeliveryDestinationR
 
 func (o ExportDeliveryDestinationResponsePtrOutput) ToExportDeliveryDestinationResponsePtrOutputWithContext(ctx context.Context) ExportDeliveryDestinationResponsePtrOutput {
 	return o
-}
-
-func (o ExportDeliveryDestinationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExportDeliveryDestinationResponse] {
-	return pulumix.Output[*ExportDeliveryDestinationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExportDeliveryDestinationResponsePtrOutput) Elem() ExportDeliveryDestinationResponseOutput {
@@ -3111,12 +2738,6 @@ func (i ExportDeliveryInfoArgs) ToExportDeliveryInfoOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ExportDeliveryInfoOutput)
 }
 
-func (i ExportDeliveryInfoArgs) ToOutput(ctx context.Context) pulumix.Output[ExportDeliveryInfo] {
-	return pulumix.Output[ExportDeliveryInfo]{
-		OutputState: i.ToExportDeliveryInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The delivery information associated with a export.
 type ExportDeliveryInfoOutput struct{ *pulumi.OutputState }
 
@@ -3130,12 +2751,6 @@ func (o ExportDeliveryInfoOutput) ToExportDeliveryInfoOutput() ExportDeliveryInf
 
 func (o ExportDeliveryInfoOutput) ToExportDeliveryInfoOutputWithContext(ctx context.Context) ExportDeliveryInfoOutput {
 	return o
-}
-
-func (o ExportDeliveryInfoOutput) ToOutput(ctx context.Context) pulumix.Output[ExportDeliveryInfo] {
-	return pulumix.Output[ExportDeliveryInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Has destination for the export being delivered.
@@ -3164,12 +2779,6 @@ func (o ExportDeliveryInfoResponseOutput) ToExportDeliveryInfoResponseOutputWith
 	return o
 }
 
-func (o ExportDeliveryInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExportDeliveryInfoResponse] {
-	return pulumix.Output[ExportDeliveryInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Has destination for the export being delivered.
 func (o ExportDeliveryInfoResponseOutput) Destination() ExportDeliveryDestinationResponseOutput {
 	return o.ApplyT(func(v ExportDeliveryInfoResponse) ExportDeliveryDestinationResponse { return v.Destination }).(ExportDeliveryDestinationResponseOutput)
@@ -3187,12 +2796,6 @@ func (o ExportDeliveryInfoResponsePtrOutput) ToExportDeliveryInfoResponsePtrOutp
 
 func (o ExportDeliveryInfoResponsePtrOutput) ToExportDeliveryInfoResponsePtrOutputWithContext(ctx context.Context) ExportDeliveryInfoResponsePtrOutput {
 	return o
-}
-
-func (o ExportDeliveryInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExportDeliveryInfoResponse] {
-	return pulumix.Output[*ExportDeliveryInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExportDeliveryInfoResponsePtrOutput) Elem() ExportDeliveryInfoResponseOutput {
@@ -3236,12 +2839,6 @@ func (o ExportExecutionListResultResponseOutput) ToExportExecutionListResultResp
 	return o
 }
 
-func (o ExportExecutionListResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExportExecutionListResultResponse] {
-	return pulumix.Output[ExportExecutionListResultResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of export runs.
 func (o ExportExecutionListResultResponseOutput) Value() ExportRunResponseArrayOutput {
 	return o.ApplyT(func(v ExportExecutionListResultResponse) []ExportRunResponse { return v.Value }).(ExportRunResponseArrayOutput)
@@ -3259,12 +2856,6 @@ func (o ExportExecutionListResultResponsePtrOutput) ToExportExecutionListResultR
 
 func (o ExportExecutionListResultResponsePtrOutput) ToExportExecutionListResultResponsePtrOutputWithContext(ctx context.Context) ExportExecutionListResultResponsePtrOutput {
 	return o
-}
-
-func (o ExportExecutionListResultResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExportExecutionListResultResponse] {
-	return pulumix.Output[*ExportExecutionListResultResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExportExecutionListResultResponsePtrOutput) Elem() ExportExecutionListResultResponseOutput {
@@ -3326,12 +2917,6 @@ func (i ExportRecurrencePeriodArgs) ToExportRecurrencePeriodOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ExportRecurrencePeriodOutput)
 }
 
-func (i ExportRecurrencePeriodArgs) ToOutput(ctx context.Context) pulumix.Output[ExportRecurrencePeriod] {
-	return pulumix.Output[ExportRecurrencePeriod]{
-		OutputState: i.ToExportRecurrencePeriodOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExportRecurrencePeriodArgs) ToExportRecurrencePeriodPtrOutput() ExportRecurrencePeriodPtrOutput {
 	return i.ToExportRecurrencePeriodPtrOutputWithContext(context.Background())
 }
@@ -3373,12 +2958,6 @@ func (i *exportRecurrencePeriodPtrType) ToExportRecurrencePeriodPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ExportRecurrencePeriodPtrOutput)
 }
 
-func (i *exportRecurrencePeriodPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExportRecurrencePeriod] {
-	return pulumix.Output[*ExportRecurrencePeriod]{
-		OutputState: i.ToExportRecurrencePeriodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The start and end date for recurrence schedule.
 type ExportRecurrencePeriodOutput struct{ *pulumi.OutputState }
 
@@ -3404,12 +2983,6 @@ func (o ExportRecurrencePeriodOutput) ToExportRecurrencePeriodPtrOutputWithConte
 	}).(ExportRecurrencePeriodPtrOutput)
 }
 
-func (o ExportRecurrencePeriodOutput) ToOutput(ctx context.Context) pulumix.Output[ExportRecurrencePeriod] {
-	return pulumix.Output[ExportRecurrencePeriod]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The start date of recurrence.
 func (o ExportRecurrencePeriodOutput) From() pulumi.StringOutput {
 	return o.ApplyT(func(v ExportRecurrencePeriod) string { return v.From }).(pulumi.StringOutput)
@@ -3432,12 +3005,6 @@ func (o ExportRecurrencePeriodPtrOutput) ToExportRecurrencePeriodPtrOutput() Exp
 
 func (o ExportRecurrencePeriodPtrOutput) ToExportRecurrencePeriodPtrOutputWithContext(ctx context.Context) ExportRecurrencePeriodPtrOutput {
 	return o
-}
-
-func (o ExportRecurrencePeriodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExportRecurrencePeriod] {
-	return pulumix.Output[*ExportRecurrencePeriod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExportRecurrencePeriodPtrOutput) Elem() ExportRecurrencePeriodOutput {
@@ -3493,12 +3060,6 @@ func (o ExportRecurrencePeriodResponseOutput) ToExportRecurrencePeriodResponseOu
 	return o
 }
 
-func (o ExportRecurrencePeriodResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExportRecurrencePeriodResponse] {
-	return pulumix.Output[ExportRecurrencePeriodResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The start date of recurrence.
 func (o ExportRecurrencePeriodResponseOutput) From() pulumi.StringOutput {
 	return o.ApplyT(func(v ExportRecurrencePeriodResponse) string { return v.From }).(pulumi.StringOutput)
@@ -3521,12 +3082,6 @@ func (o ExportRecurrencePeriodResponsePtrOutput) ToExportRecurrencePeriodRespons
 
 func (o ExportRecurrencePeriodResponsePtrOutput) ToExportRecurrencePeriodResponsePtrOutputWithContext(ctx context.Context) ExportRecurrencePeriodResponsePtrOutput {
 	return o
-}
-
-func (o ExportRecurrencePeriodResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExportRecurrencePeriodResponse] {
-	return pulumix.Output[*ExportRecurrencePeriodResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExportRecurrencePeriodResponsePtrOutput) Elem() ExportRecurrencePeriodResponseOutput {
@@ -3602,12 +3157,6 @@ func (o ExportRunResponseOutput) ToExportRunResponseOutput() ExportRunResponseOu
 
 func (o ExportRunResponseOutput) ToExportRunResponseOutputWithContext(ctx context.Context) ExportRunResponseOutput {
 	return o
-}
-
-func (o ExportRunResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExportRunResponse] {
-	return pulumix.Output[ExportRunResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
@@ -3689,12 +3238,6 @@ func (o ExportRunResponseArrayOutput) ToExportRunResponseArrayOutputWithContext(
 	return o
 }
 
-func (o ExportRunResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExportRunResponse] {
-	return pulumix.Output[[]ExportRunResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExportRunResponseArrayOutput) Index(i pulumi.IntInput) ExportRunResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExportRunResponse {
 		return vs[0].([]ExportRunResponse)[vs[1].(int)]
@@ -3744,12 +3287,6 @@ func (i ExportScheduleArgs) ToExportScheduleOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ExportScheduleOutput)
 }
 
-func (i ExportScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[ExportSchedule] {
-	return pulumix.Output[ExportSchedule]{
-		OutputState: i.ToExportScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExportScheduleArgs) ToExportSchedulePtrOutput() ExportSchedulePtrOutput {
 	return i.ToExportSchedulePtrOutputWithContext(context.Background())
 }
@@ -3791,12 +3328,6 @@ func (i *exportSchedulePtrType) ToExportSchedulePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ExportSchedulePtrOutput)
 }
 
-func (i *exportSchedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*ExportSchedule] {
-	return pulumix.Output[*ExportSchedule]{
-		OutputState: i.ToExportSchedulePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The schedule associated with the export.
 type ExportScheduleOutput struct{ *pulumi.OutputState }
 
@@ -3820,12 +3351,6 @@ func (o ExportScheduleOutput) ToExportSchedulePtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExportSchedule) *ExportSchedule {
 		return &v
 	}).(ExportSchedulePtrOutput)
-}
-
-func (o ExportScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[ExportSchedule] {
-	return pulumix.Output[ExportSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The schedule recurrence.
@@ -3855,12 +3380,6 @@ func (o ExportSchedulePtrOutput) ToExportSchedulePtrOutput() ExportSchedulePtrOu
 
 func (o ExportSchedulePtrOutput) ToExportSchedulePtrOutputWithContext(ctx context.Context) ExportSchedulePtrOutput {
 	return o
-}
-
-func (o ExportSchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExportSchedule] {
-	return pulumix.Output[*ExportSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExportSchedulePtrOutput) Elem() ExportScheduleOutput {
@@ -3928,12 +3447,6 @@ func (o ExportScheduleResponseOutput) ToExportScheduleResponseOutputWithContext(
 	return o
 }
 
-func (o ExportScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExportScheduleResponse] {
-	return pulumix.Output[ExportScheduleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The schedule recurrence.
 func (o ExportScheduleResponseOutput) Recurrence() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExportScheduleResponse) *string { return v.Recurrence }).(pulumi.StringPtrOutput)
@@ -3961,12 +3474,6 @@ func (o ExportScheduleResponsePtrOutput) ToExportScheduleResponsePtrOutput() Exp
 
 func (o ExportScheduleResponsePtrOutput) ToExportScheduleResponsePtrOutputWithContext(ctx context.Context) ExportScheduleResponsePtrOutput {
 	return o
-}
-
-func (o ExportScheduleResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExportScheduleResponse] {
-	return pulumix.Output[*ExportScheduleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExportScheduleResponsePtrOutput) Elem() ExportScheduleResponseOutput {
@@ -4048,12 +3555,6 @@ func (i ExportTimePeriodArgs) ToExportTimePeriodOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ExportTimePeriodOutput)
 }
 
-func (i ExportTimePeriodArgs) ToOutput(ctx context.Context) pulumix.Output[ExportTimePeriod] {
-	return pulumix.Output[ExportTimePeriod]{
-		OutputState: i.ToExportTimePeriodOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExportTimePeriodArgs) ToExportTimePeriodPtrOutput() ExportTimePeriodPtrOutput {
 	return i.ToExportTimePeriodPtrOutputWithContext(context.Background())
 }
@@ -4095,12 +3596,6 @@ func (i *exportTimePeriodPtrType) ToExportTimePeriodPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ExportTimePeriodPtrOutput)
 }
 
-func (i *exportTimePeriodPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExportTimePeriod] {
-	return pulumix.Output[*ExportTimePeriod]{
-		OutputState: i.ToExportTimePeriodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The date range for data in the export. This should only be specified with timeFrame set to 'Custom'. The maximum date range is 3 months.
 type ExportTimePeriodOutput struct{ *pulumi.OutputState }
 
@@ -4126,12 +3621,6 @@ func (o ExportTimePeriodOutput) ToExportTimePeriodPtrOutputWithContext(ctx conte
 	}).(ExportTimePeriodPtrOutput)
 }
 
-func (o ExportTimePeriodOutput) ToOutput(ctx context.Context) pulumix.Output[ExportTimePeriod] {
-	return pulumix.Output[ExportTimePeriod]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The start date for export data.
 func (o ExportTimePeriodOutput) From() pulumi.StringOutput {
 	return o.ApplyT(func(v ExportTimePeriod) string { return v.From }).(pulumi.StringOutput)
@@ -4154,12 +3643,6 @@ func (o ExportTimePeriodPtrOutput) ToExportTimePeriodPtrOutput() ExportTimePerio
 
 func (o ExportTimePeriodPtrOutput) ToExportTimePeriodPtrOutputWithContext(ctx context.Context) ExportTimePeriodPtrOutput {
 	return o
-}
-
-func (o ExportTimePeriodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExportTimePeriod] {
-	return pulumix.Output[*ExportTimePeriod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExportTimePeriodPtrOutput) Elem() ExportTimePeriodOutput {
@@ -4215,12 +3698,6 @@ func (o ExportTimePeriodResponseOutput) ToExportTimePeriodResponseOutputWithCont
 	return o
 }
 
-func (o ExportTimePeriodResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExportTimePeriodResponse] {
-	return pulumix.Output[ExportTimePeriodResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The start date for export data.
 func (o ExportTimePeriodResponseOutput) From() pulumi.StringOutput {
 	return o.ApplyT(func(v ExportTimePeriodResponse) string { return v.From }).(pulumi.StringOutput)
@@ -4243,12 +3720,6 @@ func (o ExportTimePeriodResponsePtrOutput) ToExportTimePeriodResponsePtrOutput()
 
 func (o ExportTimePeriodResponsePtrOutput) ToExportTimePeriodResponsePtrOutputWithContext(ctx context.Context) ExportTimePeriodResponsePtrOutput {
 	return o
-}
-
-func (o ExportTimePeriodResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExportTimePeriodResponse] {
-	return pulumix.Output[*ExportTimePeriodResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExportTimePeriodResponsePtrOutput) Elem() ExportTimePeriodResponseOutput {
@@ -4316,12 +3787,6 @@ func (i FileDestinationArgs) ToFileDestinationOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(FileDestinationOutput)
 }
 
-func (i FileDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[FileDestination] {
-	return pulumix.Output[FileDestination]{
-		OutputState: i.ToFileDestinationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FileDestinationArgs) ToFileDestinationPtrOutput() FileDestinationPtrOutput {
 	return i.ToFileDestinationPtrOutputWithContext(context.Background())
 }
@@ -4363,12 +3828,6 @@ func (i *fileDestinationPtrType) ToFileDestinationPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(FileDestinationPtrOutput)
 }
 
-func (i *fileDestinationPtrType) ToOutput(ctx context.Context) pulumix.Output[*FileDestination] {
-	return pulumix.Output[*FileDestination]{
-		OutputState: i.ToFileDestinationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Destination of the view data. This is optional. Currently only CSV format is supported.
 type FileDestinationOutput struct{ *pulumi.OutputState }
 
@@ -4394,12 +3853,6 @@ func (o FileDestinationOutput) ToFileDestinationPtrOutputWithContext(ctx context
 	}).(FileDestinationPtrOutput)
 }
 
-func (o FileDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[FileDestination] {
-	return pulumix.Output[FileDestination]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Destination of the view data. Currently only CSV format is supported.
 func (o FileDestinationOutput) FileFormats() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FileDestination) []string { return v.FileFormats }).(pulumi.StringArrayOutput)
@@ -4417,12 +3870,6 @@ func (o FileDestinationPtrOutput) ToFileDestinationPtrOutput() FileDestinationPt
 
 func (o FileDestinationPtrOutput) ToFileDestinationPtrOutputWithContext(ctx context.Context) FileDestinationPtrOutput {
 	return o
-}
-
-func (o FileDestinationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FileDestination] {
-	return pulumix.Output[*FileDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FileDestinationPtrOutput) Elem() FileDestinationOutput {
@@ -4466,12 +3913,6 @@ func (o FileDestinationResponseOutput) ToFileDestinationResponseOutputWithContex
 	return o
 }
 
-func (o FileDestinationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FileDestinationResponse] {
-	return pulumix.Output[FileDestinationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Destination of the view data. Currently only CSV format is supported.
 func (o FileDestinationResponseOutput) FileFormats() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FileDestinationResponse) []string { return v.FileFormats }).(pulumi.StringArrayOutput)
@@ -4489,12 +3930,6 @@ func (o FileDestinationResponsePtrOutput) ToFileDestinationResponsePtrOutput() F
 
 func (o FileDestinationResponsePtrOutput) ToFileDestinationResponsePtrOutputWithContext(ctx context.Context) FileDestinationResponsePtrOutput {
 	return o
-}
-
-func (o FileDestinationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FileDestinationResponse] {
-	return pulumix.Output[*FileDestinationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FileDestinationResponsePtrOutput) Elem() FileDestinationResponseOutput {
@@ -4542,12 +3977,6 @@ func (o ForecastSpendResponseOutput) ToForecastSpendResponseOutput() ForecastSpe
 
 func (o ForecastSpendResponseOutput) ToForecastSpendResponseOutputWithContext(ctx context.Context) ForecastSpendResponseOutput {
 	return o
-}
-
-func (o ForecastSpendResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ForecastSpendResponse] {
-	return pulumix.Output[ForecastSpendResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The forecasted cost for the total time period which is being tracked by the budget. This value is only provided if the budget contains a forecast alert type.
@@ -4603,12 +4032,6 @@ func (i KpiPropertiesArgs) ToKpiPropertiesOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(KpiPropertiesOutput)
 }
 
-func (i KpiPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[KpiProperties] {
-	return pulumix.Output[KpiProperties]{
-		OutputState: i.ToKpiPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KpiPropertiesArrayInput is an input type that accepts KpiPropertiesArray and KpiPropertiesArrayOutput values.
 // You can construct a concrete instance of `KpiPropertiesArrayInput` via:
 //
@@ -4634,12 +4057,6 @@ func (i KpiPropertiesArray) ToKpiPropertiesArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(KpiPropertiesArrayOutput)
 }
 
-func (i KpiPropertiesArray) ToOutput(ctx context.Context) pulumix.Output[[]KpiProperties] {
-	return pulumix.Output[[]KpiProperties]{
-		OutputState: i.ToKpiPropertiesArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Each KPI must contain a 'type' and 'enabled' key.
 type KpiPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -4653,12 +4070,6 @@ func (o KpiPropertiesOutput) ToKpiPropertiesOutput() KpiPropertiesOutput {
 
 func (o KpiPropertiesOutput) ToKpiPropertiesOutputWithContext(ctx context.Context) KpiPropertiesOutput {
 	return o
-}
-
-func (o KpiPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[KpiProperties] {
-	return pulumix.Output[KpiProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // show the KPI in the UI?
@@ -4688,12 +4099,6 @@ func (o KpiPropertiesArrayOutput) ToKpiPropertiesArrayOutput() KpiPropertiesArra
 
 func (o KpiPropertiesArrayOutput) ToKpiPropertiesArrayOutputWithContext(ctx context.Context) KpiPropertiesArrayOutput {
 	return o
-}
-
-func (o KpiPropertiesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KpiProperties] {
-	return pulumix.Output[[]KpiProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KpiPropertiesArrayOutput) Index(i pulumi.IntInput) KpiPropertiesOutput {
@@ -4727,12 +4132,6 @@ func (o KpiPropertiesResponseOutput) ToKpiPropertiesResponseOutputWithContext(ct
 	return o
 }
 
-func (o KpiPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KpiPropertiesResponse] {
-	return pulumix.Output[KpiPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // show the KPI in the UI?
 func (o KpiPropertiesResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v KpiPropertiesResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -4760,12 +4159,6 @@ func (o KpiPropertiesResponseArrayOutput) ToKpiPropertiesResponseArrayOutput() K
 
 func (o KpiPropertiesResponseArrayOutput) ToKpiPropertiesResponseArrayOutputWithContext(ctx context.Context) KpiPropertiesResponseArrayOutput {
 	return o
-}
-
-func (o KpiPropertiesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KpiPropertiesResponse] {
-	return pulumix.Output[[]KpiPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KpiPropertiesResponseArrayOutput) Index(i pulumi.IntInput) KpiPropertiesResponseOutput {
@@ -4927,12 +4320,6 @@ func (i NotificationArgs) ToNotificationOutputWithContext(ctx context.Context) N
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationOutput)
 }
 
-func (i NotificationArgs) ToOutput(ctx context.Context) pulumix.Output[Notification] {
-	return pulumix.Output[Notification]{
-		OutputState: i.ToNotificationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NotificationMapInput is an input type that accepts NotificationMap and NotificationMapOutput values.
 // You can construct a concrete instance of `NotificationMapInput` via:
 //
@@ -4958,12 +4345,6 @@ func (i NotificationMap) ToNotificationMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationMapOutput)
 }
 
-func (i NotificationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]Notification] {
-	return pulumix.Output[map[string]Notification]{
-		OutputState: i.ToNotificationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The notification associated with a budget.
 //
 //	Supported for CategoryType(s): Cost, ReservationUtilization.
@@ -4979,12 +4360,6 @@ func (o NotificationOutput) ToNotificationOutput() NotificationOutput {
 
 func (o NotificationOutput) ToNotificationOutputWithContext(ctx context.Context) NotificationOutput {
 	return o
-}
-
-func (o NotificationOutput) ToOutput(ctx context.Context) pulumix.Output[Notification] {
-	return pulumix.Output[Notification]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Email addresses to send the notification to when the threshold is breached. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified.
@@ -5077,12 +4452,6 @@ func (o NotificationMapOutput) ToNotificationMapOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o NotificationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]Notification] {
-	return pulumix.Output[map[string]Notification]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NotificationMapOutput) MapIndex(k pulumi.StringInput) NotificationOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Notification {
 		return vs[0].(map[string]Notification)[vs[1].(string)]
@@ -5140,12 +4509,6 @@ func (i NotificationPropertiesArgs) ToNotificationPropertiesOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationPropertiesOutput)
 }
 
-func (i NotificationPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[NotificationProperties] {
-	return pulumix.Output[NotificationProperties]{
-		OutputState: i.ToNotificationPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties of the scheduled action notification.
 type NotificationPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -5159,12 +4522,6 @@ func (o NotificationPropertiesOutput) ToNotificationPropertiesOutput() Notificat
 
 func (o NotificationPropertiesOutput) ToNotificationPropertiesOutputWithContext(ctx context.Context) NotificationPropertiesOutput {
 	return o
-}
-
-func (o NotificationPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[NotificationProperties] {
-	return pulumix.Output[NotificationProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Locale of the email.
@@ -5219,12 +4576,6 @@ func (o NotificationPropertiesResponseOutput) ToNotificationPropertiesResponseOu
 
 func (o NotificationPropertiesResponseOutput) ToNotificationPropertiesResponseOutputWithContext(ctx context.Context) NotificationPropertiesResponseOutput {
 	return o
-}
-
-func (o NotificationPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NotificationPropertiesResponse] {
-	return pulumix.Output[NotificationPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Locale of the email.
@@ -5335,12 +4686,6 @@ func (o NotificationResponseOutput) ToNotificationResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o NotificationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NotificationResponse] {
-	return pulumix.Output[NotificationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Email addresses to send the notification to when the threshold is breached. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified.
 //
 //	Supported for CategoryType(s): Cost, ReservationUtilization.
@@ -5431,12 +4776,6 @@ func (o NotificationResponseMapOutput) ToNotificationResponseMapOutputWithContex
 	return o
 }
 
-func (o NotificationResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]NotificationResponse] {
-	return pulumix.Output[map[string]NotificationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NotificationResponseMapOutput) MapIndex(k pulumi.StringInput) NotificationResponseOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NotificationResponse {
 		return vs[0].(map[string]NotificationResponse)[vs[1].(string)]
@@ -5482,12 +4821,6 @@ func (i PivotPropertiesArgs) ToPivotPropertiesOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(PivotPropertiesOutput)
 }
 
-func (i PivotPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[PivotProperties] {
-	return pulumix.Output[PivotProperties]{
-		OutputState: i.ToPivotPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PivotPropertiesArrayInput is an input type that accepts PivotPropertiesArray and PivotPropertiesArrayOutput values.
 // You can construct a concrete instance of `PivotPropertiesArrayInput` via:
 //
@@ -5513,12 +4846,6 @@ func (i PivotPropertiesArray) ToPivotPropertiesArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(PivotPropertiesArrayOutput)
 }
 
-func (i PivotPropertiesArray) ToOutput(ctx context.Context) pulumix.Output[[]PivotProperties] {
-	return pulumix.Output[[]PivotProperties]{
-		OutputState: i.ToPivotPropertiesArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Each pivot must contain a 'type' and 'name'.
 type PivotPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -5532,12 +4859,6 @@ func (o PivotPropertiesOutput) ToPivotPropertiesOutput() PivotPropertiesOutput {
 
 func (o PivotPropertiesOutput) ToPivotPropertiesOutputWithContext(ctx context.Context) PivotPropertiesOutput {
 	return o
-}
-
-func (o PivotPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[PivotProperties] {
-	return pulumix.Output[PivotProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Data field to show in view.
@@ -5562,12 +4883,6 @@ func (o PivotPropertiesArrayOutput) ToPivotPropertiesArrayOutput() PivotProperti
 
 func (o PivotPropertiesArrayOutput) ToPivotPropertiesArrayOutputWithContext(ctx context.Context) PivotPropertiesArrayOutput {
 	return o
-}
-
-func (o PivotPropertiesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PivotProperties] {
-	return pulumix.Output[[]PivotProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PivotPropertiesArrayOutput) Index(i pulumi.IntInput) PivotPropertiesOutput {
@@ -5599,12 +4914,6 @@ func (o PivotPropertiesResponseOutput) ToPivotPropertiesResponseOutputWithContex
 	return o
 }
 
-func (o PivotPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PivotPropertiesResponse] {
-	return pulumix.Output[PivotPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Data field to show in view.
 func (o PivotPropertiesResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PivotPropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -5627,12 +4936,6 @@ func (o PivotPropertiesResponseArrayOutput) ToPivotPropertiesResponseArrayOutput
 
 func (o PivotPropertiesResponseArrayOutput) ToPivotPropertiesResponseArrayOutputWithContext(ctx context.Context) PivotPropertiesResponseArrayOutput {
 	return o
-}
-
-func (o PivotPropertiesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PivotPropertiesResponse] {
-	return pulumix.Output[[]PivotPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PivotPropertiesResponseArrayOutput) Index(i pulumi.IntInput) PivotPropertiesResponseOutput {
@@ -5680,12 +4983,6 @@ func (i ReportConfigAggregationArgs) ToReportConfigAggregationOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigAggregationOutput)
 }
 
-func (i ReportConfigAggregationArgs) ToOutput(ctx context.Context) pulumix.Output[ReportConfigAggregation] {
-	return pulumix.Output[ReportConfigAggregation]{
-		OutputState: i.ToReportConfigAggregationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ReportConfigAggregationMapInput is an input type that accepts ReportConfigAggregationMap and ReportConfigAggregationMapOutput values.
 // You can construct a concrete instance of `ReportConfigAggregationMapInput` via:
 //
@@ -5711,12 +5008,6 @@ func (i ReportConfigAggregationMap) ToReportConfigAggregationMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigAggregationMapOutput)
 }
 
-func (i ReportConfigAggregationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]ReportConfigAggregation] {
-	return pulumix.Output[map[string]ReportConfigAggregation]{
-		OutputState: i.ToReportConfigAggregationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The aggregation expression to be used in the report.
 type ReportConfigAggregationOutput struct{ *pulumi.OutputState }
 
@@ -5730,12 +5021,6 @@ func (o ReportConfigAggregationOutput) ToReportConfigAggregationOutput() ReportC
 
 func (o ReportConfigAggregationOutput) ToReportConfigAggregationOutputWithContext(ctx context.Context) ReportConfigAggregationOutput {
 	return o
-}
-
-func (o ReportConfigAggregationOutput) ToOutput(ctx context.Context) pulumix.Output[ReportConfigAggregation] {
-	return pulumix.Output[ReportConfigAggregation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the aggregation function to use.
@@ -5760,12 +5045,6 @@ func (o ReportConfigAggregationMapOutput) ToReportConfigAggregationMapOutput() R
 
 func (o ReportConfigAggregationMapOutput) ToReportConfigAggregationMapOutputWithContext(ctx context.Context) ReportConfigAggregationMapOutput {
 	return o
-}
-
-func (o ReportConfigAggregationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ReportConfigAggregation] {
-	return pulumix.Output[map[string]ReportConfigAggregation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportConfigAggregationMapOutput) MapIndex(k pulumi.StringInput) ReportConfigAggregationOutput {
@@ -5797,12 +5076,6 @@ func (o ReportConfigAggregationResponseOutput) ToReportConfigAggregationResponse
 	return o
 }
 
-func (o ReportConfigAggregationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportConfigAggregationResponse] {
-	return pulumix.Output[ReportConfigAggregationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the aggregation function to use.
 func (o ReportConfigAggregationResponseOutput) Function() pulumi.StringOutput {
 	return o.ApplyT(func(v ReportConfigAggregationResponse) string { return v.Function }).(pulumi.StringOutput)
@@ -5825,12 +5098,6 @@ func (o ReportConfigAggregationResponseMapOutput) ToReportConfigAggregationRespo
 
 func (o ReportConfigAggregationResponseMapOutput) ToReportConfigAggregationResponseMapOutputWithContext(ctx context.Context) ReportConfigAggregationResponseMapOutput {
 	return o
-}
-
-func (o ReportConfigAggregationResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ReportConfigAggregationResponse] {
-	return pulumix.Output[map[string]ReportConfigAggregationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportConfigAggregationResponseMapOutput) MapIndex(k pulumi.StringInput) ReportConfigAggregationResponseOutput {
@@ -5882,12 +5149,6 @@ func (i ReportConfigComparisonExpressionArgs) ToReportConfigComparisonExpression
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigComparisonExpressionOutput)
 }
 
-func (i ReportConfigComparisonExpressionArgs) ToOutput(ctx context.Context) pulumix.Output[ReportConfigComparisonExpression] {
-	return pulumix.Output[ReportConfigComparisonExpression]{
-		OutputState: i.ToReportConfigComparisonExpressionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ReportConfigComparisonExpressionArgs) ToReportConfigComparisonExpressionPtrOutput() ReportConfigComparisonExpressionPtrOutput {
 	return i.ToReportConfigComparisonExpressionPtrOutputWithContext(context.Background())
 }
@@ -5929,12 +5190,6 @@ func (i *reportConfigComparisonExpressionPtrType) ToReportConfigComparisonExpres
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigComparisonExpressionPtrOutput)
 }
 
-func (i *reportConfigComparisonExpressionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ReportConfigComparisonExpression] {
-	return pulumix.Output[*ReportConfigComparisonExpression]{
-		OutputState: i.ToReportConfigComparisonExpressionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The comparison expression to be used in the report.
 type ReportConfigComparisonExpressionOutput struct{ *pulumi.OutputState }
 
@@ -5958,12 +5213,6 @@ func (o ReportConfigComparisonExpressionOutput) ToReportConfigComparisonExpressi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReportConfigComparisonExpression) *ReportConfigComparisonExpression {
 		return &v
 	}).(ReportConfigComparisonExpressionPtrOutput)
-}
-
-func (o ReportConfigComparisonExpressionOutput) ToOutput(ctx context.Context) pulumix.Output[ReportConfigComparisonExpression] {
-	return pulumix.Output[ReportConfigComparisonExpression]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the column to use in comparison.
@@ -5993,12 +5242,6 @@ func (o ReportConfigComparisonExpressionPtrOutput) ToReportConfigComparisonExpre
 
 func (o ReportConfigComparisonExpressionPtrOutput) ToReportConfigComparisonExpressionPtrOutputWithContext(ctx context.Context) ReportConfigComparisonExpressionPtrOutput {
 	return o
-}
-
-func (o ReportConfigComparisonExpressionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportConfigComparisonExpression] {
-	return pulumix.Output[*ReportConfigComparisonExpression]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportConfigComparisonExpressionPtrOutput) Elem() ReportConfigComparisonExpressionOutput {
@@ -6066,12 +5309,6 @@ func (o ReportConfigComparisonExpressionResponseOutput) ToReportConfigComparison
 	return o
 }
 
-func (o ReportConfigComparisonExpressionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportConfigComparisonExpressionResponse] {
-	return pulumix.Output[ReportConfigComparisonExpressionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the column to use in comparison.
 func (o ReportConfigComparisonExpressionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ReportConfigComparisonExpressionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -6099,12 +5336,6 @@ func (o ReportConfigComparisonExpressionResponsePtrOutput) ToReportConfigCompari
 
 func (o ReportConfigComparisonExpressionResponsePtrOutput) ToReportConfigComparisonExpressionResponsePtrOutputWithContext(ctx context.Context) ReportConfigComparisonExpressionResponsePtrOutput {
 	return o
-}
-
-func (o ReportConfigComparisonExpressionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportConfigComparisonExpressionResponse] {
-	return pulumix.Output[*ReportConfigComparisonExpressionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportConfigComparisonExpressionResponsePtrOutput) Elem() ReportConfigComparisonExpressionResponseOutput {
@@ -6202,12 +5433,6 @@ func (i ReportConfigDatasetArgs) ToReportConfigDatasetOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigDatasetOutput)
 }
 
-func (i ReportConfigDatasetArgs) ToOutput(ctx context.Context) pulumix.Output[ReportConfigDataset] {
-	return pulumix.Output[ReportConfigDataset]{
-		OutputState: i.ToReportConfigDatasetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ReportConfigDatasetArgs) ToReportConfigDatasetPtrOutput() ReportConfigDatasetPtrOutput {
 	return i.ToReportConfigDatasetPtrOutputWithContext(context.Background())
 }
@@ -6249,12 +5474,6 @@ func (i *reportConfigDatasetPtrType) ToReportConfigDatasetPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigDatasetPtrOutput)
 }
 
-func (i *reportConfigDatasetPtrType) ToOutput(ctx context.Context) pulumix.Output[*ReportConfigDataset] {
-	return pulumix.Output[*ReportConfigDataset]{
-		OutputState: i.ToReportConfigDatasetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The definition of data present in the report.
 type ReportConfigDatasetOutput struct{ *pulumi.OutputState }
 
@@ -6278,12 +5497,6 @@ func (o ReportConfigDatasetOutput) ToReportConfigDatasetPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReportConfigDataset) *ReportConfigDataset {
 		return &v
 	}).(ReportConfigDatasetPtrOutput)
-}
-
-func (o ReportConfigDatasetOutput) ToOutput(ctx context.Context) pulumix.Output[ReportConfigDataset] {
-	return pulumix.Output[ReportConfigDataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.
@@ -6328,12 +5541,6 @@ func (o ReportConfigDatasetPtrOutput) ToReportConfigDatasetPtrOutput() ReportCon
 
 func (o ReportConfigDatasetPtrOutput) ToReportConfigDatasetPtrOutputWithContext(ctx context.Context) ReportConfigDatasetPtrOutput {
 	return o
-}
-
-func (o ReportConfigDatasetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportConfigDataset] {
-	return pulumix.Output[*ReportConfigDataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportConfigDatasetPtrOutput) Elem() ReportConfigDatasetOutput {
@@ -6441,12 +5648,6 @@ func (i ReportConfigDatasetConfigurationArgs) ToReportConfigDatasetConfiguration
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigDatasetConfigurationOutput)
 }
 
-func (i ReportConfigDatasetConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ReportConfigDatasetConfiguration] {
-	return pulumix.Output[ReportConfigDatasetConfiguration]{
-		OutputState: i.ToReportConfigDatasetConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ReportConfigDatasetConfigurationArgs) ToReportConfigDatasetConfigurationPtrOutput() ReportConfigDatasetConfigurationPtrOutput {
 	return i.ToReportConfigDatasetConfigurationPtrOutputWithContext(context.Background())
 }
@@ -6488,12 +5689,6 @@ func (i *reportConfigDatasetConfigurationPtrType) ToReportConfigDatasetConfigura
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigDatasetConfigurationPtrOutput)
 }
 
-func (i *reportConfigDatasetConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ReportConfigDatasetConfiguration] {
-	return pulumix.Output[*ReportConfigDatasetConfiguration]{
-		OutputState: i.ToReportConfigDatasetConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration of dataset in the report.
 type ReportConfigDatasetConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -6519,12 +5714,6 @@ func (o ReportConfigDatasetConfigurationOutput) ToReportConfigDatasetConfigurati
 	}).(ReportConfigDatasetConfigurationPtrOutput)
 }
 
-func (o ReportConfigDatasetConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ReportConfigDatasetConfiguration] {
-	return pulumix.Output[ReportConfigDatasetConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
 func (o ReportConfigDatasetConfigurationOutput) Columns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ReportConfigDatasetConfiguration) []string { return v.Columns }).(pulumi.StringArrayOutput)
@@ -6542,12 +5731,6 @@ func (o ReportConfigDatasetConfigurationPtrOutput) ToReportConfigDatasetConfigur
 
 func (o ReportConfigDatasetConfigurationPtrOutput) ToReportConfigDatasetConfigurationPtrOutputWithContext(ctx context.Context) ReportConfigDatasetConfigurationPtrOutput {
 	return o
-}
-
-func (o ReportConfigDatasetConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportConfigDatasetConfiguration] {
-	return pulumix.Output[*ReportConfigDatasetConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportConfigDatasetConfigurationPtrOutput) Elem() ReportConfigDatasetConfigurationOutput {
@@ -6591,12 +5774,6 @@ func (o ReportConfigDatasetConfigurationResponseOutput) ToReportConfigDatasetCon
 	return o
 }
 
-func (o ReportConfigDatasetConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportConfigDatasetConfigurationResponse] {
-	return pulumix.Output[ReportConfigDatasetConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
 func (o ReportConfigDatasetConfigurationResponseOutput) Columns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ReportConfigDatasetConfigurationResponse) []string { return v.Columns }).(pulumi.StringArrayOutput)
@@ -6614,12 +5791,6 @@ func (o ReportConfigDatasetConfigurationResponsePtrOutput) ToReportConfigDataset
 
 func (o ReportConfigDatasetConfigurationResponsePtrOutput) ToReportConfigDatasetConfigurationResponsePtrOutputWithContext(ctx context.Context) ReportConfigDatasetConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o ReportConfigDatasetConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportConfigDatasetConfigurationResponse] {
-	return pulumix.Output[*ReportConfigDatasetConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportConfigDatasetConfigurationResponsePtrOutput) Elem() ReportConfigDatasetConfigurationResponseOutput {
@@ -6673,12 +5844,6 @@ func (o ReportConfigDatasetResponseOutput) ToReportConfigDatasetResponseOutputWi
 	return o
 }
 
-func (o ReportConfigDatasetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportConfigDatasetResponse] {
-	return pulumix.Output[ReportConfigDatasetResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.
 func (o ReportConfigDatasetResponseOutput) Aggregation() ReportConfigAggregationResponseMapOutput {
 	return o.ApplyT(func(v ReportConfigDatasetResponse) map[string]ReportConfigAggregationResponse { return v.Aggregation }).(ReportConfigAggregationResponseMapOutput)
@@ -6721,12 +5886,6 @@ func (o ReportConfigDatasetResponsePtrOutput) ToReportConfigDatasetResponsePtrOu
 
 func (o ReportConfigDatasetResponsePtrOutput) ToReportConfigDatasetResponsePtrOutputWithContext(ctx context.Context) ReportConfigDatasetResponsePtrOutput {
 	return o
-}
-
-func (o ReportConfigDatasetResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportConfigDatasetResponse] {
-	return pulumix.Output[*ReportConfigDatasetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportConfigDatasetResponsePtrOutput) Elem() ReportConfigDatasetResponseOutput {
@@ -6846,12 +6005,6 @@ func (i ReportConfigFilterArgs) ToReportConfigFilterOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigFilterOutput)
 }
 
-func (i ReportConfigFilterArgs) ToOutput(ctx context.Context) pulumix.Output[ReportConfigFilter] {
-	return pulumix.Output[ReportConfigFilter]{
-		OutputState: i.ToReportConfigFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ReportConfigFilterArgs) ToReportConfigFilterPtrOutput() ReportConfigFilterPtrOutput {
 	return i.ToReportConfigFilterPtrOutputWithContext(context.Background())
 }
@@ -6893,12 +6046,6 @@ func (i *reportConfigFilterPtrType) ToReportConfigFilterPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigFilterPtrOutput)
 }
 
-func (i *reportConfigFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*ReportConfigFilter] {
-	return pulumix.Output[*ReportConfigFilter]{
-		OutputState: i.ToReportConfigFilterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ReportConfigFilterArrayInput is an input type that accepts ReportConfigFilterArray and ReportConfigFilterArrayOutput values.
 // You can construct a concrete instance of `ReportConfigFilterArrayInput` via:
 //
@@ -6924,12 +6071,6 @@ func (i ReportConfigFilterArray) ToReportConfigFilterArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigFilterArrayOutput)
 }
 
-func (i ReportConfigFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]ReportConfigFilter] {
-	return pulumix.Output[[]ReportConfigFilter]{
-		OutputState: i.ToReportConfigFilterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The filter expression to be used in the report.
 type ReportConfigFilterOutput struct{ *pulumi.OutputState }
 
@@ -6953,12 +6094,6 @@ func (o ReportConfigFilterOutput) ToReportConfigFilterPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReportConfigFilter) *ReportConfigFilter {
 		return &v
 	}).(ReportConfigFilterPtrOutput)
-}
-
-func (o ReportConfigFilterOutput) ToOutput(ctx context.Context) pulumix.Output[ReportConfigFilter] {
-	return pulumix.Output[ReportConfigFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The logical "AND" expression. Must have at least 2 items.
@@ -6993,12 +6128,6 @@ func (o ReportConfigFilterPtrOutput) ToReportConfigFilterPtrOutput() ReportConfi
 
 func (o ReportConfigFilterPtrOutput) ToReportConfigFilterPtrOutputWithContext(ctx context.Context) ReportConfigFilterPtrOutput {
 	return o
-}
-
-func (o ReportConfigFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportConfigFilter] {
-	return pulumix.Output[*ReportConfigFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportConfigFilterPtrOutput) Elem() ReportConfigFilterOutput {
@@ -7065,12 +6194,6 @@ func (o ReportConfigFilterArrayOutput) ToReportConfigFilterArrayOutputWithContex
 	return o
 }
 
-func (o ReportConfigFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReportConfigFilter] {
-	return pulumix.Output[[]ReportConfigFilter]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ReportConfigFilterArrayOutput) Index(i pulumi.IntInput) ReportConfigFilterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportConfigFilter {
 		return vs[0].([]ReportConfigFilter)[vs[1].(int)]
@@ -7102,12 +6225,6 @@ func (o ReportConfigFilterResponseOutput) ToReportConfigFilterResponseOutput() R
 
 func (o ReportConfigFilterResponseOutput) ToReportConfigFilterResponseOutputWithContext(ctx context.Context) ReportConfigFilterResponseOutput {
 	return o
-}
-
-func (o ReportConfigFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportConfigFilterResponse] {
-	return pulumix.Output[ReportConfigFilterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The logical "AND" expression. Must have at least 2 items.
@@ -7142,12 +6259,6 @@ func (o ReportConfigFilterResponsePtrOutput) ToReportConfigFilterResponsePtrOutp
 
 func (o ReportConfigFilterResponsePtrOutput) ToReportConfigFilterResponsePtrOutputWithContext(ctx context.Context) ReportConfigFilterResponsePtrOutput {
 	return o
-}
-
-func (o ReportConfigFilterResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportConfigFilterResponse] {
-	return pulumix.Output[*ReportConfigFilterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportConfigFilterResponsePtrOutput) Elem() ReportConfigFilterResponseOutput {
@@ -7214,12 +6325,6 @@ func (o ReportConfigFilterResponseArrayOutput) ToReportConfigFilterResponseArray
 	return o
 }
 
-func (o ReportConfigFilterResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReportConfigFilterResponse] {
-	return pulumix.Output[[]ReportConfigFilterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ReportConfigFilterResponseArrayOutput) Index(i pulumi.IntInput) ReportConfigFilterResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportConfigFilterResponse {
 		return vs[0].([]ReportConfigFilterResponse)[vs[1].(int)]
@@ -7265,12 +6370,6 @@ func (i ReportConfigGroupingArgs) ToReportConfigGroupingOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigGroupingOutput)
 }
 
-func (i ReportConfigGroupingArgs) ToOutput(ctx context.Context) pulumix.Output[ReportConfigGrouping] {
-	return pulumix.Output[ReportConfigGrouping]{
-		OutputState: i.ToReportConfigGroupingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ReportConfigGroupingArrayInput is an input type that accepts ReportConfigGroupingArray and ReportConfigGroupingArrayOutput values.
 // You can construct a concrete instance of `ReportConfigGroupingArrayInput` via:
 //
@@ -7296,12 +6395,6 @@ func (i ReportConfigGroupingArray) ToReportConfigGroupingArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigGroupingArrayOutput)
 }
 
-func (i ReportConfigGroupingArray) ToOutput(ctx context.Context) pulumix.Output[[]ReportConfigGrouping] {
-	return pulumix.Output[[]ReportConfigGrouping]{
-		OutputState: i.ToReportConfigGroupingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The group by expression to be used in the report.
 type ReportConfigGroupingOutput struct{ *pulumi.OutputState }
 
@@ -7315,12 +6408,6 @@ func (o ReportConfigGroupingOutput) ToReportConfigGroupingOutput() ReportConfigG
 
 func (o ReportConfigGroupingOutput) ToReportConfigGroupingOutputWithContext(ctx context.Context) ReportConfigGroupingOutput {
 	return o
-}
-
-func (o ReportConfigGroupingOutput) ToOutput(ctx context.Context) pulumix.Output[ReportConfigGrouping] {
-	return pulumix.Output[ReportConfigGrouping]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the column to group. This version supports subscription lowest possible grain.
@@ -7345,12 +6432,6 @@ func (o ReportConfigGroupingArrayOutput) ToReportConfigGroupingArrayOutput() Rep
 
 func (o ReportConfigGroupingArrayOutput) ToReportConfigGroupingArrayOutputWithContext(ctx context.Context) ReportConfigGroupingArrayOutput {
 	return o
-}
-
-func (o ReportConfigGroupingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReportConfigGrouping] {
-	return pulumix.Output[[]ReportConfigGrouping]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportConfigGroupingArrayOutput) Index(i pulumi.IntInput) ReportConfigGroupingOutput {
@@ -7382,12 +6463,6 @@ func (o ReportConfigGroupingResponseOutput) ToReportConfigGroupingResponseOutput
 	return o
 }
 
-func (o ReportConfigGroupingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportConfigGroupingResponse] {
-	return pulumix.Output[ReportConfigGroupingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the column to group. This version supports subscription lowest possible grain.
 func (o ReportConfigGroupingResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ReportConfigGroupingResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -7410,12 +6485,6 @@ func (o ReportConfigGroupingResponseArrayOutput) ToReportConfigGroupingResponseA
 
 func (o ReportConfigGroupingResponseArrayOutput) ToReportConfigGroupingResponseArrayOutputWithContext(ctx context.Context) ReportConfigGroupingResponseArrayOutput {
 	return o
-}
-
-func (o ReportConfigGroupingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReportConfigGroupingResponse] {
-	return pulumix.Output[[]ReportConfigGroupingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportConfigGroupingResponseArrayOutput) Index(i pulumi.IntInput) ReportConfigGroupingResponseOutput {
@@ -7463,12 +6532,6 @@ func (i ReportConfigSortingArgs) ToReportConfigSortingOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigSortingOutput)
 }
 
-func (i ReportConfigSortingArgs) ToOutput(ctx context.Context) pulumix.Output[ReportConfigSorting] {
-	return pulumix.Output[ReportConfigSorting]{
-		OutputState: i.ToReportConfigSortingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ReportConfigSortingArrayInput is an input type that accepts ReportConfigSortingArray and ReportConfigSortingArrayOutput values.
 // You can construct a concrete instance of `ReportConfigSortingArrayInput` via:
 //
@@ -7494,12 +6557,6 @@ func (i ReportConfigSortingArray) ToReportConfigSortingArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigSortingArrayOutput)
 }
 
-func (i ReportConfigSortingArray) ToOutput(ctx context.Context) pulumix.Output[[]ReportConfigSorting] {
-	return pulumix.Output[[]ReportConfigSorting]{
-		OutputState: i.ToReportConfigSortingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The order by expression to be used in the report.
 type ReportConfigSortingOutput struct{ *pulumi.OutputState }
 
@@ -7513,12 +6570,6 @@ func (o ReportConfigSortingOutput) ToReportConfigSortingOutput() ReportConfigSor
 
 func (o ReportConfigSortingOutput) ToReportConfigSortingOutputWithContext(ctx context.Context) ReportConfigSortingOutput {
 	return o
-}
-
-func (o ReportConfigSortingOutput) ToOutput(ctx context.Context) pulumix.Output[ReportConfigSorting] {
-	return pulumix.Output[ReportConfigSorting]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Direction of sort.
@@ -7543,12 +6594,6 @@ func (o ReportConfigSortingArrayOutput) ToReportConfigSortingArrayOutput() Repor
 
 func (o ReportConfigSortingArrayOutput) ToReportConfigSortingArrayOutputWithContext(ctx context.Context) ReportConfigSortingArrayOutput {
 	return o
-}
-
-func (o ReportConfigSortingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReportConfigSorting] {
-	return pulumix.Output[[]ReportConfigSorting]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportConfigSortingArrayOutput) Index(i pulumi.IntInput) ReportConfigSortingOutput {
@@ -7580,12 +6625,6 @@ func (o ReportConfigSortingResponseOutput) ToReportConfigSortingResponseOutputWi
 	return o
 }
 
-func (o ReportConfigSortingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportConfigSortingResponse] {
-	return pulumix.Output[ReportConfigSortingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Direction of sort.
 func (o ReportConfigSortingResponseOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReportConfigSortingResponse) *string { return v.Direction }).(pulumi.StringPtrOutput)
@@ -7608,12 +6647,6 @@ func (o ReportConfigSortingResponseArrayOutput) ToReportConfigSortingResponseArr
 
 func (o ReportConfigSortingResponseArrayOutput) ToReportConfigSortingResponseArrayOutputWithContext(ctx context.Context) ReportConfigSortingResponseArrayOutput {
 	return o
-}
-
-func (o ReportConfigSortingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReportConfigSortingResponse] {
-	return pulumix.Output[[]ReportConfigSortingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportConfigSortingResponseArrayOutput) Index(i pulumi.IntInput) ReportConfigSortingResponseOutput {
@@ -7661,12 +6694,6 @@ func (i ReportConfigTimePeriodArgs) ToReportConfigTimePeriodOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigTimePeriodOutput)
 }
 
-func (i ReportConfigTimePeriodArgs) ToOutput(ctx context.Context) pulumix.Output[ReportConfigTimePeriod] {
-	return pulumix.Output[ReportConfigTimePeriod]{
-		OutputState: i.ToReportConfigTimePeriodOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ReportConfigTimePeriodArgs) ToReportConfigTimePeriodPtrOutput() ReportConfigTimePeriodPtrOutput {
 	return i.ToReportConfigTimePeriodPtrOutputWithContext(context.Background())
 }
@@ -7708,12 +6735,6 @@ func (i *reportConfigTimePeriodPtrType) ToReportConfigTimePeriodPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ReportConfigTimePeriodPtrOutput)
 }
 
-func (i *reportConfigTimePeriodPtrType) ToOutput(ctx context.Context) pulumix.Output[*ReportConfigTimePeriod] {
-	return pulumix.Output[*ReportConfigTimePeriod]{
-		OutputState: i.ToReportConfigTimePeriodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The start and end date for pulling data for the report.
 type ReportConfigTimePeriodOutput struct{ *pulumi.OutputState }
 
@@ -7739,12 +6760,6 @@ func (o ReportConfigTimePeriodOutput) ToReportConfigTimePeriodPtrOutputWithConte
 	}).(ReportConfigTimePeriodPtrOutput)
 }
 
-func (o ReportConfigTimePeriodOutput) ToOutput(ctx context.Context) pulumix.Output[ReportConfigTimePeriod] {
-	return pulumix.Output[ReportConfigTimePeriod]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The start date to pull data from.
 func (o ReportConfigTimePeriodOutput) From() pulumi.StringOutput {
 	return o.ApplyT(func(v ReportConfigTimePeriod) string { return v.From }).(pulumi.StringOutput)
@@ -7767,12 +6782,6 @@ func (o ReportConfigTimePeriodPtrOutput) ToReportConfigTimePeriodPtrOutput() Rep
 
 func (o ReportConfigTimePeriodPtrOutput) ToReportConfigTimePeriodPtrOutputWithContext(ctx context.Context) ReportConfigTimePeriodPtrOutput {
 	return o
-}
-
-func (o ReportConfigTimePeriodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportConfigTimePeriod] {
-	return pulumix.Output[*ReportConfigTimePeriod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportConfigTimePeriodPtrOutput) Elem() ReportConfigTimePeriodOutput {
@@ -7828,12 +6837,6 @@ func (o ReportConfigTimePeriodResponseOutput) ToReportConfigTimePeriodResponseOu
 	return o
 }
 
-func (o ReportConfigTimePeriodResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportConfigTimePeriodResponse] {
-	return pulumix.Output[ReportConfigTimePeriodResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The start date to pull data from.
 func (o ReportConfigTimePeriodResponseOutput) From() pulumi.StringOutput {
 	return o.ApplyT(func(v ReportConfigTimePeriodResponse) string { return v.From }).(pulumi.StringOutput)
@@ -7856,12 +6859,6 @@ func (o ReportConfigTimePeriodResponsePtrOutput) ToReportConfigTimePeriodRespons
 
 func (o ReportConfigTimePeriodResponsePtrOutput) ToReportConfigTimePeriodResponsePtrOutputWithContext(ctx context.Context) ReportConfigTimePeriodResponsePtrOutput {
 	return o
-}
-
-func (o ReportConfigTimePeriodResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportConfigTimePeriodResponse] {
-	return pulumix.Output[*ReportConfigTimePeriodResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportConfigTimePeriodResponsePtrOutput) Elem() ReportConfigTimePeriodResponseOutput {
@@ -7953,12 +6950,6 @@ func (i SchedulePropertiesArgs) ToSchedulePropertiesOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulePropertiesOutput)
 }
 
-func (i SchedulePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ScheduleProperties] {
-	return pulumix.Output[ScheduleProperties]{
-		OutputState: i.ToSchedulePropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties of the schedule.
 type SchedulePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -7972,12 +6963,6 @@ func (o SchedulePropertiesOutput) ToSchedulePropertiesOutput() SchedulePropertie
 
 func (o SchedulePropertiesOutput) ToSchedulePropertiesOutputWithContext(ctx context.Context) SchedulePropertiesOutput {
 	return o
-}
-
-func (o SchedulePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduleProperties] {
-	return pulumix.Output[ScheduleProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // UTC day on which cost analysis data will be emailed. Must be between 1 and 31. This property is applicable when frequency is Monthly and overrides weeksOfMonth or daysOfWeek.
@@ -8046,12 +7031,6 @@ func (o SchedulePropertiesResponseOutput) ToSchedulePropertiesResponseOutput() S
 
 func (o SchedulePropertiesResponseOutput) ToSchedulePropertiesResponseOutputWithContext(ctx context.Context) SchedulePropertiesResponseOutput {
 	return o
-}
-
-func (o SchedulePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SchedulePropertiesResponse] {
-	return pulumix.Output[SchedulePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // UTC day on which cost analysis data will be emailed. Must be between 1 and 31. This property is applicable when frequency is Monthly and overrides weeksOfMonth or daysOfWeek.
@@ -8132,12 +7111,6 @@ func (i SourceCostAllocationResourceArgs) ToSourceCostAllocationResourceOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(SourceCostAllocationResourceOutput)
 }
 
-func (i SourceCostAllocationResourceArgs) ToOutput(ctx context.Context) pulumix.Output[SourceCostAllocationResource] {
-	return pulumix.Output[SourceCostAllocationResource]{
-		OutputState: i.ToSourceCostAllocationResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SourceCostAllocationResourceArrayInput is an input type that accepts SourceCostAllocationResourceArray and SourceCostAllocationResourceArrayOutput values.
 // You can construct a concrete instance of `SourceCostAllocationResourceArrayInput` via:
 //
@@ -8163,12 +7136,6 @@ func (i SourceCostAllocationResourceArray) ToSourceCostAllocationResourceArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(SourceCostAllocationResourceArrayOutput)
 }
 
-func (i SourceCostAllocationResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]SourceCostAllocationResource] {
-	return pulumix.Output[[]SourceCostAllocationResource]{
-		OutputState: i.ToSourceCostAllocationResourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Source resources for cost allocation
 type SourceCostAllocationResourceOutput struct{ *pulumi.OutputState }
 
@@ -8182,12 +7149,6 @@ func (o SourceCostAllocationResourceOutput) ToSourceCostAllocationResourceOutput
 
 func (o SourceCostAllocationResourceOutput) ToSourceCostAllocationResourceOutputWithContext(ctx context.Context) SourceCostAllocationResourceOutput {
 	return o
-}
-
-func (o SourceCostAllocationResourceOutput) ToOutput(ctx context.Context) pulumix.Output[SourceCostAllocationResource] {
-	return pulumix.Output[SourceCostAllocationResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
@@ -8217,12 +7178,6 @@ func (o SourceCostAllocationResourceArrayOutput) ToSourceCostAllocationResourceA
 
 func (o SourceCostAllocationResourceArrayOutput) ToSourceCostAllocationResourceArrayOutputWithContext(ctx context.Context) SourceCostAllocationResourceArrayOutput {
 	return o
-}
-
-func (o SourceCostAllocationResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SourceCostAllocationResource] {
-	return pulumix.Output[[]SourceCostAllocationResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceCostAllocationResourceArrayOutput) Index(i pulumi.IntInput) SourceCostAllocationResourceOutput {
@@ -8256,12 +7211,6 @@ func (o SourceCostAllocationResourceResponseOutput) ToSourceCostAllocationResour
 	return o
 }
 
-func (o SourceCostAllocationResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SourceCostAllocationResourceResponse] {
-	return pulumix.Output[SourceCostAllocationResourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
 func (o SourceCostAllocationResourceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SourceCostAllocationResourceResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -8289,12 +7238,6 @@ func (o SourceCostAllocationResourceResponseArrayOutput) ToSourceCostAllocationR
 
 func (o SourceCostAllocationResourceResponseArrayOutput) ToSourceCostAllocationResourceResponseArrayOutputWithContext(ctx context.Context) SourceCostAllocationResourceResponseArrayOutput {
 	return o
-}
-
-func (o SourceCostAllocationResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SourceCostAllocationResourceResponse] {
-	return pulumix.Output[[]SourceCostAllocationResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceCostAllocationResourceResponseArrayOutput) Index(i pulumi.IntInput) SourceCostAllocationResourceResponseOutput {
@@ -8338,12 +7281,6 @@ func (i SystemAssignedServiceIdentityArgs) ToSystemAssignedServiceIdentityOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SystemAssignedServiceIdentityOutput)
 }
 
-func (i SystemAssignedServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[SystemAssignedServiceIdentity] {
-	return pulumix.Output[SystemAssignedServiceIdentity]{
-		OutputState: i.ToSystemAssignedServiceIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SystemAssignedServiceIdentityArgs) ToSystemAssignedServiceIdentityPtrOutput() SystemAssignedServiceIdentityPtrOutput {
 	return i.ToSystemAssignedServiceIdentityPtrOutputWithContext(context.Background())
 }
@@ -8385,12 +7322,6 @@ func (i *systemAssignedServiceIdentityPtrType) ToSystemAssignedServiceIdentityPt
 	return pulumi.ToOutputWithContext(ctx, i).(SystemAssignedServiceIdentityPtrOutput)
 }
 
-func (i *systemAssignedServiceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*SystemAssignedServiceIdentity] {
-	return pulumix.Output[*SystemAssignedServiceIdentity]{
-		OutputState: i.ToSystemAssignedServiceIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Managed service identity (either system assigned, or none)
 type SystemAssignedServiceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -8416,12 +7347,6 @@ func (o SystemAssignedServiceIdentityOutput) ToSystemAssignedServiceIdentityPtrO
 	}).(SystemAssignedServiceIdentityPtrOutput)
 }
 
-func (o SystemAssignedServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[SystemAssignedServiceIdentity] {
-	return pulumix.Output[SystemAssignedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Type of managed service identity (either system assigned, or none).
 func (o SystemAssignedServiceIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SystemAssignedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
@@ -8439,12 +7364,6 @@ func (o SystemAssignedServiceIdentityPtrOutput) ToSystemAssignedServiceIdentityP
 
 func (o SystemAssignedServiceIdentityPtrOutput) ToSystemAssignedServiceIdentityPtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityPtrOutput {
 	return o
-}
-
-func (o SystemAssignedServiceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SystemAssignedServiceIdentity] {
-	return pulumix.Output[*SystemAssignedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SystemAssignedServiceIdentityPtrOutput) Elem() SystemAssignedServiceIdentityOutput {
@@ -8492,12 +7411,6 @@ func (o SystemAssignedServiceIdentityResponseOutput) ToSystemAssignedServiceIden
 	return o
 }
 
-func (o SystemAssignedServiceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemAssignedServiceIdentityResponse] {
-	return pulumix.Output[SystemAssignedServiceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
 func (o SystemAssignedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v SystemAssignedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -8525,12 +7438,6 @@ func (o SystemAssignedServiceIdentityResponsePtrOutput) ToSystemAssignedServiceI
 
 func (o SystemAssignedServiceIdentityResponsePtrOutput) ToSystemAssignedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityResponsePtrOutput {
 	return o
-}
-
-func (o SystemAssignedServiceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SystemAssignedServiceIdentityResponse] {
-	return pulumix.Output[*SystemAssignedServiceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SystemAssignedServiceIdentityResponsePtrOutput) Elem() SystemAssignedServiceIdentityResponseOutput {
@@ -8604,12 +7511,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timestamp of resource creation (UTC).
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
@@ -8675,12 +7576,6 @@ func (i TagInheritancePropertiesArgs) ToTagInheritancePropertiesOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(TagInheritancePropertiesOutput)
 }
 
-func (i TagInheritancePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[TagInheritanceProperties] {
-	return pulumix.Output[TagInheritanceProperties]{
-		OutputState: i.ToTagInheritancePropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TagInheritancePropertiesArgs) ToTagInheritancePropertiesPtrOutput() TagInheritancePropertiesPtrOutput {
 	return i.ToTagInheritancePropertiesPtrOutputWithContext(context.Background())
 }
@@ -8722,12 +7617,6 @@ func (i *tagInheritancePropertiesPtrType) ToTagInheritancePropertiesPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(TagInheritancePropertiesPtrOutput)
 }
 
-func (i *tagInheritancePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*TagInheritanceProperties] {
-	return pulumix.Output[*TagInheritanceProperties]{
-		OutputState: i.ToTagInheritancePropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties of the tag inheritance setting.
 type TagInheritancePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -8753,12 +7642,6 @@ func (o TagInheritancePropertiesOutput) ToTagInheritancePropertiesPtrOutputWithC
 	}).(TagInheritancePropertiesPtrOutput)
 }
 
-func (o TagInheritancePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[TagInheritanceProperties] {
-	return pulumix.Output[TagInheritanceProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
 func (o TagInheritancePropertiesOutput) PreferContainerTags() pulumi.BoolOutput {
 	return o.ApplyT(func(v TagInheritanceProperties) bool { return v.PreferContainerTags }).(pulumi.BoolOutput)
@@ -8776,12 +7659,6 @@ func (o TagInheritancePropertiesPtrOutput) ToTagInheritancePropertiesPtrOutput()
 
 func (o TagInheritancePropertiesPtrOutput) ToTagInheritancePropertiesPtrOutputWithContext(ctx context.Context) TagInheritancePropertiesPtrOutput {
 	return o
-}
-
-func (o TagInheritancePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TagInheritanceProperties] {
-	return pulumix.Output[*TagInheritanceProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TagInheritancePropertiesPtrOutput) Elem() TagInheritancePropertiesOutput {
@@ -8823,12 +7700,6 @@ func (o TagInheritancePropertiesResponseOutput) ToTagInheritancePropertiesRespon
 
 func (o TagInheritancePropertiesResponseOutput) ToTagInheritancePropertiesResponseOutputWithContext(ctx context.Context) TagInheritancePropertiesResponseOutput {
 	return o
-}
-
-func (o TagInheritancePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TagInheritancePropertiesResponse] {
-	return pulumix.Output[TagInheritancePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
@@ -8883,12 +7754,6 @@ func (i TargetCostAllocationResourceArgs) ToTargetCostAllocationResourceOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(TargetCostAllocationResourceOutput)
 }
 
-func (i TargetCostAllocationResourceArgs) ToOutput(ctx context.Context) pulumix.Output[TargetCostAllocationResource] {
-	return pulumix.Output[TargetCostAllocationResource]{
-		OutputState: i.ToTargetCostAllocationResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TargetCostAllocationResourceArrayInput is an input type that accepts TargetCostAllocationResourceArray and TargetCostAllocationResourceArrayOutput values.
 // You can construct a concrete instance of `TargetCostAllocationResourceArrayInput` via:
 //
@@ -8914,12 +7779,6 @@ func (i TargetCostAllocationResourceArray) ToTargetCostAllocationResourceArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(TargetCostAllocationResourceArrayOutput)
 }
 
-func (i TargetCostAllocationResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]TargetCostAllocationResource] {
-	return pulumix.Output[[]TargetCostAllocationResource]{
-		OutputState: i.ToTargetCostAllocationResourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Target resources for cost allocation.
 type TargetCostAllocationResourceOutput struct{ *pulumi.OutputState }
 
@@ -8933,12 +7792,6 @@ func (o TargetCostAllocationResourceOutput) ToTargetCostAllocationResourceOutput
 
 func (o TargetCostAllocationResourceOutput) ToTargetCostAllocationResourceOutputWithContext(ctx context.Context) TargetCostAllocationResourceOutput {
 	return o
-}
-
-func (o TargetCostAllocationResourceOutput) ToOutput(ctx context.Context) pulumix.Output[TargetCostAllocationResource] {
-	return pulumix.Output[TargetCostAllocationResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
@@ -8975,12 +7828,6 @@ func (o TargetCostAllocationResourceArrayOutput) ToTargetCostAllocationResourceA
 	return o
 }
 
-func (o TargetCostAllocationResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TargetCostAllocationResource] {
-	return pulumix.Output[[]TargetCostAllocationResource]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TargetCostAllocationResourceArrayOutput) Index(i pulumi.IntInput) TargetCostAllocationResourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetCostAllocationResource {
 		return vs[0].([]TargetCostAllocationResource)[vs[1].(int)]
@@ -9012,12 +7859,6 @@ func (o TargetCostAllocationResourceResponseOutput) ToTargetCostAllocationResour
 
 func (o TargetCostAllocationResourceResponseOutput) ToTargetCostAllocationResourceResponseOutputWithContext(ctx context.Context) TargetCostAllocationResourceResponseOutput {
 	return o
-}
-
-func (o TargetCostAllocationResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TargetCostAllocationResourceResponse] {
-	return pulumix.Output[TargetCostAllocationResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
@@ -9052,12 +7893,6 @@ func (o TargetCostAllocationResourceResponseArrayOutput) ToTargetCostAllocationR
 
 func (o TargetCostAllocationResourceResponseArrayOutput) ToTargetCostAllocationResourceResponseArrayOutputWithContext(ctx context.Context) TargetCostAllocationResourceResponseArrayOutput {
 	return o
-}
-
-func (o TargetCostAllocationResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TargetCostAllocationResourceResponse] {
-	return pulumix.Output[[]TargetCostAllocationResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TargetCostAllocationResourceResponseArrayOutput) Index(i pulumi.IntInput) TargetCostAllocationResourceResponseOutput {

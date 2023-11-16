@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i AzureSkuArgs) ToAzureSkuOutputWithContext(ctx context.Context) AzureSkuO
 	return pulumi.ToOutputWithContext(ctx, i).(AzureSkuOutput)
 }
 
-func (i AzureSkuArgs) ToOutput(ctx context.Context) pulumix.Output[AzureSku] {
-	return pulumix.Output[AzureSku]{
-		OutputState: i.ToAzureSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Azure SKU definition.
 type AzureSkuOutput struct{ *pulumi.OutputState }
 
@@ -76,12 +69,6 @@ func (o AzureSkuOutput) ToAzureSkuOutput() AzureSkuOutput {
 
 func (o AzureSkuOutput) ToAzureSkuOutputWithContext(ctx context.Context) AzureSkuOutput {
 	return o
-}
-
-func (o AzureSkuOutput) ToOutput(ctx context.Context) pulumix.Output[AzureSku] {
-	return pulumix.Output[AzureSku]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of instances of the cluster.
@@ -122,12 +109,6 @@ func (o AzureSkuResponseOutput) ToAzureSkuResponseOutput() AzureSkuResponseOutpu
 
 func (o AzureSkuResponseOutput) ToAzureSkuResponseOutputWithContext(ctx context.Context) AzureSkuResponseOutput {
 	return o
-}
-
-func (o AzureSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureSkuResponse] {
-	return pulumix.Output[AzureSkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of instances of the cluster.
@@ -174,12 +155,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Configuration to setup App Resiliency
@@ -154,12 +153,6 @@ func (i *AppResiliency) ToAppResiliencyOutputWithContext(ctx context.Context) Ap
 	return pulumi.ToOutputWithContext(ctx, i).(AppResiliencyOutput)
 }
 
-func (i *AppResiliency) ToOutput(ctx context.Context) pulumix.Output[*AppResiliency] {
-	return pulumix.Output[*AppResiliency]{
-		OutputState: i.ToAppResiliencyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AppResiliencyOutput struct{ *pulumi.OutputState }
 
 func (AppResiliencyOutput) ElementType() reflect.Type {
@@ -172,12 +165,6 @@ func (o AppResiliencyOutput) ToAppResiliencyOutput() AppResiliencyOutput {
 
 func (o AppResiliencyOutput) ToAppResiliencyOutputWithContext(ctx context.Context) AppResiliencyOutput {
 	return o
-}
-
-func (o AppResiliencyOutput) ToOutput(ctx context.Context) pulumix.Output[*AppResiliency] {
-	return pulumix.Output[*AppResiliency]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Policy that defines circuit breaker conditions

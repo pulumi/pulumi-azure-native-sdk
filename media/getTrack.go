@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the details of a Track in the Asset
@@ -90,12 +89,6 @@ func (o LookupTrackResultOutput) ToLookupTrackResultOutput() LookupTrackResultOu
 
 func (o LookupTrackResultOutput) ToLookupTrackResultOutputWithContext(ctx context.Context) LookupTrackResultOutput {
 	return o
-}
-
-func (o LookupTrackResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTrackResult] {
-	return pulumix.Output[LookupTrackResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

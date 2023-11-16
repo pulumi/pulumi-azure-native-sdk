@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Contract details.
@@ -188,12 +187,6 @@ func (i *TagDescription) ToTagDescriptionOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TagDescriptionOutput)
 }
 
-func (i *TagDescription) ToOutput(ctx context.Context) pulumix.Output[*TagDescription] {
-	return pulumix.Output[*TagDescription]{
-		OutputState: i.ToTagDescriptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TagDescriptionOutput struct{ *pulumi.OutputState }
 
 func (TagDescriptionOutput) ElementType() reflect.Type {
@@ -206,12 +199,6 @@ func (o TagDescriptionOutput) ToTagDescriptionOutput() TagDescriptionOutput {
 
 func (o TagDescriptionOutput) ToTagDescriptionOutputWithContext(ctx context.Context) TagDescriptionOutput {
 	return o
-}
-
-func (o TagDescriptionOutput) ToOutput(ctx context.Context) pulumix.Output[*TagDescription] {
-	return pulumix.Output[*TagDescription]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the Tag.

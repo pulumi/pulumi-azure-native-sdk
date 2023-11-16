@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the current value for a specific setting.
@@ -81,12 +80,6 @@ func (o LookupSettingResultOutput) ToLookupSettingResultOutput() LookupSettingRe
 
 func (o LookupSettingResultOutput) ToLookupSettingResultOutputWithContext(ctx context.Context) LookupSettingResultOutput {
 	return o
-}
-
-func (o LookupSettingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSettingResult] {
-	return pulumix.Output[LookupSettingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Array of scopes with additional details used by Cost Management in the Azure portal.

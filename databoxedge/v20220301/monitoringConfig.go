@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The metric setting details for the role
@@ -163,12 +162,6 @@ func (i *MonitoringConfig) ToMonitoringConfigOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoringConfigOutput)
 }
 
-func (i *MonitoringConfig) ToOutput(ctx context.Context) pulumix.Output[*MonitoringConfig] {
-	return pulumix.Output[*MonitoringConfig]{
-		OutputState: i.ToMonitoringConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MonitoringConfigOutput struct{ *pulumi.OutputState }
 
 func (MonitoringConfigOutput) ElementType() reflect.Type {
@@ -181,12 +174,6 @@ func (o MonitoringConfigOutput) ToMonitoringConfigOutput() MonitoringConfigOutpu
 
 func (o MonitoringConfigOutput) ToMonitoringConfigOutputWithContext(ctx context.Context) MonitoringConfigOutput {
 	return o
-}
-
-func (o MonitoringConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitoringConfig] {
-	return pulumix.Output[*MonitoringConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The metrics configuration details

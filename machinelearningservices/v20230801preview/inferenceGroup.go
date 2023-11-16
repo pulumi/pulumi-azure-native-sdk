@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type InferenceGroup struct {
@@ -164,12 +163,6 @@ func (i *InferenceGroup) ToInferenceGroupOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(InferenceGroupOutput)
 }
 
-func (i *InferenceGroup) ToOutput(ctx context.Context) pulumix.Output[*InferenceGroup] {
-	return pulumix.Output[*InferenceGroup]{
-		OutputState: i.ToInferenceGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InferenceGroupOutput struct{ *pulumi.OutputState }
 
 func (InferenceGroupOutput) ElementType() reflect.Type {
@@ -182,12 +175,6 @@ func (o InferenceGroupOutput) ToInferenceGroupOutput() InferenceGroupOutput {
 
 func (o InferenceGroupOutput) ToInferenceGroupOutputWithContext(ctx context.Context) InferenceGroupOutput {
 	return o
-}
-
-func (o InferenceGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*InferenceGroup] {
-	return pulumix.Output[*InferenceGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Managed service identity (system assigned and/or user assigned identities)

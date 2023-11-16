@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Information pertaining to an individual build.
@@ -141,12 +140,6 @@ func (i *Build) ToBuildOutputWithContext(ctx context.Context) BuildOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BuildOutput)
 }
 
-func (i *Build) ToOutput(ctx context.Context) pulumix.Output[*Build] {
-	return pulumix.Output[*Build]{
-		OutputState: i.ToBuildOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BuildOutput struct{ *pulumi.OutputState }
 
 func (BuildOutput) ElementType() reflect.Type {
@@ -159,12 +152,6 @@ func (o BuildOutput) ToBuildOutput() BuildOutput {
 
 func (o BuildOutput) ToBuildOutputWithContext(ctx context.Context) BuildOutput {
 	return o
-}
-
-func (o BuildOutput) ToOutput(ctx context.Context) pulumix.Output[*Build] {
-	return pulumix.Output[*Build]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Status of the build once it has been provisioned.

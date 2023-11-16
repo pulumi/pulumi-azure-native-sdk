@@ -114,12 +114,6 @@ func (o EntityStatusOutput) ToEntityStatusPtrOutputWithContext(ctx context.Conte
 	}).(EntityStatusPtrOutput)
 }
 
-func (o EntityStatusOutput) ToOutput(ctx context.Context) pulumix.Output[EntityStatus] {
-	return pulumix.Output[EntityStatus]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EntityStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -153,12 +147,6 @@ func (o EntityStatusPtrOutput) ToEntityStatusPtrOutput() EntityStatusPtrOutput {
 
 func (o EntityStatusPtrOutput) ToEntityStatusPtrOutputWithContext(ctx context.Context) EntityStatusPtrOutput {
 	return o
-}
-
-func (o EntityStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityStatus] {
-	return pulumix.Output[*EntityStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EntityStatusPtrOutput) Elem() EntityStatusOutput {

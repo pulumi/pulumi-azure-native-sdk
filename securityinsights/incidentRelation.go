@@ -10,13 +10,12 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a relation between two resources
 // Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-03-01-preview.
 //
-// Other available API versions: 2021-03-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2021-03-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 type IncidentRelation struct {
 	pulumi.CustomResourceState
 
@@ -139,6 +138,9 @@ func NewIncidentRelation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:IncidentRelation"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:IncidentRelation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -223,12 +225,6 @@ func (i *IncidentRelation) ToIncidentRelationOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(IncidentRelationOutput)
 }
 
-func (i *IncidentRelation) ToOutput(ctx context.Context) pulumix.Output[*IncidentRelation] {
-	return pulumix.Output[*IncidentRelation]{
-		OutputState: i.ToIncidentRelationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IncidentRelationOutput struct{ *pulumi.OutputState }
 
 func (IncidentRelationOutput) ElementType() reflect.Type {
@@ -241,12 +237,6 @@ func (o IncidentRelationOutput) ToIncidentRelationOutput() IncidentRelationOutpu
 
 func (o IncidentRelationOutput) ToIncidentRelationOutputWithContext(ctx context.Context) IncidentRelationOutput {
 	return o
-}
-
-func (o IncidentRelationOutput) ToOutput(ctx context.Context) pulumix.Output[*IncidentRelation] {
-	return pulumix.Output[*IncidentRelation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Etag of the azure resource

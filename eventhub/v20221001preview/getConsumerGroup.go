@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a description for the specified consumer group.
@@ -95,12 +94,6 @@ func (o LookupConsumerGroupResultOutput) ToLookupConsumerGroupResultOutput() Loo
 
 func (o LookupConsumerGroupResultOutput) ToLookupConsumerGroupResultOutputWithContext(ctx context.Context) LookupConsumerGroupResultOutput {
 	return o
-}
-
-func (o LookupConsumerGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConsumerGroupResult] {
-	return pulumix.Output[LookupConsumerGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Exact time the message was created.

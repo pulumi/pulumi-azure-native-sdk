@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -39,12 +38,6 @@ func (o CompatibilityResponseOutput) ToCompatibilityResponseOutput() Compatibili
 
 func (o CompatibilityResponseOutput) ToCompatibilityResponseOutputWithContext(ctx context.Context) CompatibilityResponseOutput {
 	return o
-}
-
-func (o CompatibilityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CompatibilityResponse] {
-	return pulumix.Output[CompatibilityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Full error message if any compatibility issues are found
@@ -79,12 +72,6 @@ func (o CompatibilityResponsePtrOutput) ToCompatibilityResponsePtrOutput() Compa
 
 func (o CompatibilityResponsePtrOutput) ToCompatibilityResponsePtrOutputWithContext(ctx context.Context) CompatibilityResponsePtrOutput {
 	return o
-}
-
-func (o CompatibilityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CompatibilityResponse] {
-	return pulumix.Output[*CompatibilityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CompatibilityResponsePtrOutput) Elem() CompatibilityResponseOutput {
@@ -160,12 +147,6 @@ func (o DataDiskImageResponseOutput) ToDataDiskImageResponseOutputWithContext(ct
 	return o
 }
 
-func (o DataDiskImageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataDiskImageResponse] {
-	return pulumix.Output[DataDiskImageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The LUN.
 func (o DataDiskImageResponseOutput) Lun() pulumi.IntOutput {
 	return o.ApplyT(func(v DataDiskImageResponse) int { return v.Lun }).(pulumi.IntOutput)
@@ -188,12 +169,6 @@ func (o DataDiskImageResponseArrayOutput) ToDataDiskImageResponseArrayOutput() D
 
 func (o DataDiskImageResponseArrayOutput) ToDataDiskImageResponseArrayOutputWithContext(ctx context.Context) DataDiskImageResponseArrayOutput {
 	return o
-}
-
-func (o DataDiskImageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataDiskImageResponse] {
-	return pulumix.Output[[]DataDiskImageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataDiskImageResponseArrayOutput) Index(i pulumi.IntInput) DataDiskImageResponseOutput {
@@ -229,12 +204,6 @@ func (o IconUrisResponseOutput) ToIconUrisResponseOutput() IconUrisResponseOutpu
 
 func (o IconUrisResponseOutput) ToIconUrisResponseOutputWithContext(ctx context.Context) IconUrisResponseOutput {
 	return o
-}
-
-func (o IconUrisResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IconUrisResponse] {
-	return pulumix.Output[IconUrisResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // URI to hero icon.
@@ -274,12 +243,6 @@ func (o IconUrisResponsePtrOutput) ToIconUrisResponsePtrOutput() IconUrisRespons
 
 func (o IconUrisResponsePtrOutput) ToIconUrisResponsePtrOutputWithContext(ctx context.Context) IconUrisResponsePtrOutput {
 	return o
-}
-
-func (o IconUrisResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IconUrisResponse] {
-	return pulumix.Output[*IconUrisResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IconUrisResponsePtrOutput) Elem() IconUrisResponseOutput {
@@ -365,12 +328,6 @@ func (o OsDiskImageResponseOutput) ToOsDiskImageResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o OsDiskImageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OsDiskImageResponse] {
-	return pulumix.Output[OsDiskImageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // OS operating system type.
 func (o OsDiskImageResponseOutput) OperatingSystem() pulumi.StringOutput {
 	return o.ApplyT(func(v OsDiskImageResponse) string { return v.OperatingSystem }).(pulumi.StringOutput)
@@ -404,12 +361,6 @@ func (o ProductLinkResponseOutput) ToProductLinkResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o ProductLinkResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ProductLinkResponse] {
-	return pulumix.Output[ProductLinkResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The description of the link.
 func (o ProductLinkResponseOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProductLinkResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
@@ -432,12 +383,6 @@ func (o ProductLinkResponseArrayOutput) ToProductLinkResponseArrayOutput() Produ
 
 func (o ProductLinkResponseArrayOutput) ToProductLinkResponseArrayOutputWithContext(ctx context.Context) ProductLinkResponseArrayOutput {
 	return o
-}
-
-func (o ProductLinkResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ProductLinkResponse] {
-	return pulumix.Output[[]ProductLinkResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProductLinkResponseArrayOutput) Index(i pulumi.IntInput) ProductLinkResponseOutput {
@@ -467,12 +412,6 @@ func (o ProductPropertiesResponseOutput) ToProductPropertiesResponseOutputWithCo
 	return o
 }
 
-func (o ProductPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ProductPropertiesResponse] {
-	return pulumix.Output[ProductPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The version.
 func (o ProductPropertiesResponseOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProductPropertiesResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
@@ -490,12 +429,6 @@ func (o ProductPropertiesResponsePtrOutput) ToProductPropertiesResponsePtrOutput
 
 func (o ProductPropertiesResponsePtrOutput) ToProductPropertiesResponsePtrOutputWithContext(ctx context.Context) ProductPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o ProductPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProductPropertiesResponse] {
-	return pulumix.Output[*ProductPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProductPropertiesResponsePtrOutput) Elem() ProductPropertiesResponseOutput {
@@ -579,12 +512,6 @@ func (o ProductResponseOutput) ToProductResponseOutput() ProductResponseOutput {
 
 func (o ProductResponseOutput) ToProductResponseOutputWithContext(ctx context.Context) ProductResponseOutput {
 	return o
-}
-
-func (o ProductResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ProductResponse] {
-	return pulumix.Output[ProductResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The part number used for billing purposes.
@@ -711,12 +638,6 @@ func (o ProductResponseArrayOutput) ToProductResponseArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o ProductResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ProductResponse] {
-	return pulumix.Output[[]ProductResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProductResponseArrayOutput) Index(i pulumi.IntInput) ProductResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProductResponse {
 		return vs[0].([]ProductResponse)[vs[1].(int)]
@@ -752,12 +673,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

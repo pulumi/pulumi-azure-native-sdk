@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -35,12 +34,6 @@ func (o AccountPropertiesResponseAccountStatusOutput) ToAccountPropertiesRespons
 
 func (o AccountPropertiesResponseAccountStatusOutput) ToAccountPropertiesResponseAccountStatusOutputWithContext(ctx context.Context) AccountPropertiesResponseAccountStatusOutput {
 	return o
-}
-
-func (o AccountPropertiesResponseAccountStatusOutput) ToOutput(ctx context.Context) pulumix.Output[AccountPropertiesResponseAccountStatus] {
-	return pulumix.Output[AccountPropertiesResponseAccountStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the account status code.
@@ -78,12 +71,6 @@ func (o AccountPropertiesResponseEndpointsOutput) ToAccountPropertiesResponseEnd
 
 func (o AccountPropertiesResponseEndpointsOutput) ToAccountPropertiesResponseEndpointsOutputWithContext(ctx context.Context) AccountPropertiesResponseEndpointsOutput {
 	return o
-}
-
-func (o AccountPropertiesResponseEndpointsOutput) ToOutput(ctx context.Context) pulumix.Output[AccountPropertiesResponseEndpoints] {
-	return pulumix.Output[AccountPropertiesResponseEndpoints]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the catalog endpoint.
@@ -126,12 +113,6 @@ func (o AccountPropertiesResponseManagedResourcesOutput) ToAccountPropertiesResp
 	return o
 }
 
-func (o AccountPropertiesResponseManagedResourcesOutput) ToOutput(ctx context.Context) pulumix.Output[AccountPropertiesResponseManagedResources] {
-	return pulumix.Output[AccountPropertiesResponseManagedResources]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets the managed event hub namespace resource identifier.
 func (o AccountPropertiesResponseManagedResourcesOutput) EventHubNamespace() pulumi.StringOutput {
 	return o.ApplyT(func(v AccountPropertiesResponseManagedResources) string { return v.EventHubNamespace }).(pulumi.StringOutput)
@@ -170,12 +151,6 @@ func (o AccountResponseSkuOutput) ToAccountResponseSkuOutputWithContext(ctx cont
 	return o
 }
 
-func (o AccountResponseSkuOutput) ToOutput(ctx context.Context) pulumix.Output[AccountResponseSku] {
-	return pulumix.Output[AccountResponseSku]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the sku capacity.
 func (o AccountResponseSkuOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AccountResponseSku) *int { return v.Capacity }).(pulumi.IntPtrOutput)
@@ -211,12 +186,6 @@ func (o AccountStatusResponseErrorDetailsOutput) ToAccountStatusResponseErrorDet
 
 func (o AccountStatusResponseErrorDetailsOutput) ToAccountStatusResponseErrorDetailsOutputWithContext(ctx context.Context) AccountStatusResponseErrorDetailsOutput {
 	return o
-}
-
-func (o AccountStatusResponseErrorDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[AccountStatusResponseErrorDetails] {
-	return pulumix.Output[AccountStatusResponseErrorDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the code.
@@ -261,12 +230,6 @@ func (o CloudConnectorsResponseOutput) ToCloudConnectorsResponseOutputWithContex
 	return o
 }
 
-func (o CloudConnectorsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CloudConnectorsResponse] {
-	return pulumix.Output[CloudConnectorsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // AWS external identifier.
 // Configured in AWS to allow use of the role arn used for scanning
 func (o CloudConnectorsResponseOutput) AwsExternalId() pulumi.StringOutput {
@@ -285,12 +248,6 @@ func (o CloudConnectorsResponsePtrOutput) ToCloudConnectorsResponsePtrOutput() C
 
 func (o CloudConnectorsResponsePtrOutput) ToCloudConnectorsResponsePtrOutputWithContext(ctx context.Context) CloudConnectorsResponsePtrOutput {
 	return o
-}
-
-func (o CloudConnectorsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudConnectorsResponse] {
-	return pulumix.Output[*CloudConnectorsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CloudConnectorsResponsePtrOutput) Elem() CloudConnectorsResponseOutput {
@@ -353,12 +310,6 @@ func (i CredentialsArgs) ToCredentialsOutputWithContext(ctx context.Context) Cre
 	return pulumi.ToOutputWithContext(ctx, i).(CredentialsOutput)
 }
 
-func (i CredentialsArgs) ToOutput(ctx context.Context) pulumix.Output[Credentials] {
-	return pulumix.Output[Credentials]{
-		OutputState: i.ToCredentialsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CredentialsArgs) ToCredentialsPtrOutput() CredentialsPtrOutput {
 	return i.ToCredentialsPtrOutputWithContext(context.Background())
 }
@@ -400,12 +351,6 @@ func (i *credentialsPtrType) ToCredentialsPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(CredentialsPtrOutput)
 }
 
-func (i *credentialsPtrType) ToOutput(ctx context.Context) pulumix.Output[*Credentials] {
-	return pulumix.Output[*Credentials]{
-		OutputState: i.ToCredentialsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Credentials to access the event streaming service attached to the purview account.
 type CredentialsOutput struct{ *pulumi.OutputState }
 
@@ -431,12 +376,6 @@ func (o CredentialsOutput) ToCredentialsPtrOutputWithContext(ctx context.Context
 	}).(CredentialsPtrOutput)
 }
 
-func (o CredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[Credentials] {
-	return pulumix.Output[Credentials]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Identity identifier for UserAssign type.
 func (o CredentialsOutput) IdentityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Credentials) *string { return v.IdentityId }).(pulumi.StringPtrOutput)
@@ -459,12 +398,6 @@ func (o CredentialsPtrOutput) ToCredentialsPtrOutput() CredentialsPtrOutput {
 
 func (o CredentialsPtrOutput) ToCredentialsPtrOutputWithContext(ctx context.Context) CredentialsPtrOutput {
 	return o
-}
-
-func (o CredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Credentials] {
-	return pulumix.Output[*Credentials]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CredentialsPtrOutput) Elem() CredentialsOutput {
@@ -520,12 +453,6 @@ func (o CredentialsResponseOutput) ToCredentialsResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o CredentialsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CredentialsResponse] {
-	return pulumix.Output[CredentialsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Identity identifier for UserAssign type.
 func (o CredentialsResponseOutput) IdentityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CredentialsResponse) *string { return v.IdentityId }).(pulumi.StringPtrOutput)
@@ -548,12 +475,6 @@ func (o CredentialsResponsePtrOutput) ToCredentialsResponsePtrOutput() Credentia
 
 func (o CredentialsResponsePtrOutput) ToCredentialsResponsePtrOutputWithContext(ctx context.Context) CredentialsResponsePtrOutput {
 	return o
-}
-
-func (o CredentialsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CredentialsResponse] {
-	return pulumix.Output[*CredentialsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CredentialsResponsePtrOutput) Elem() CredentialsResponseOutput {
@@ -613,12 +534,6 @@ func (o ErrorModelResponseOutput) ToErrorModelResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o ErrorModelResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorModelResponse] {
-	return pulumix.Output[ErrorModelResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the code.
 func (o ErrorModelResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v ErrorModelResponse) string { return v.Code }).(pulumi.StringOutput)
@@ -651,12 +566,6 @@ func (o ErrorModelResponseArrayOutput) ToErrorModelResponseArrayOutput() ErrorMo
 
 func (o ErrorModelResponseArrayOutput) ToErrorModelResponseArrayOutputWithContext(ctx context.Context) ErrorModelResponseArrayOutput {
 	return o
-}
-
-func (o ErrorModelResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ErrorModelResponse] {
-	return pulumix.Output[[]ErrorModelResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ErrorModelResponseArrayOutput) Index(i pulumi.IntInput) ErrorModelResponseOutput {
@@ -704,12 +613,6 @@ func (i IdentityArgs) ToIdentityOutputWithContext(ctx context.Context) IdentityO
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityOutput)
 }
 
-func (i IdentityArgs) ToOutput(ctx context.Context) pulumix.Output[Identity] {
-	return pulumix.Output[Identity]{
-		OutputState: i.ToIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IdentityArgs) ToIdentityPtrOutput() IdentityPtrOutput {
 	return i.ToIdentityPtrOutputWithContext(context.Background())
 }
@@ -751,12 +654,6 @@ func (i *identityPtrType) ToIdentityPtrOutputWithContext(ctx context.Context) Id
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPtrOutput)
 }
 
-func (i *identityPtrType) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
-	return pulumix.Output[*Identity]{
-		OutputState: i.ToIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Managed Identity of the resource
 type IdentityOutput struct{ *pulumi.OutputState }
 
@@ -782,12 +679,6 @@ func (o IdentityOutput) ToIdentityPtrOutputWithContext(ctx context.Context) Iden
 	}).(IdentityPtrOutput)
 }
 
-func (o IdentityOutput) ToOutput(ctx context.Context) pulumix.Output[Identity] {
-	return pulumix.Output[Identity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Identity Type
 func (o IdentityOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Identity) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -810,12 +701,6 @@ func (o IdentityPtrOutput) ToIdentityPtrOutput() IdentityPtrOutput {
 
 func (o IdentityPtrOutput) ToIdentityPtrOutputWithContext(ctx context.Context) IdentityPtrOutput {
 	return o
-}
-
-func (o IdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
-	return pulumix.Output[*Identity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityPtrOutput) Elem() IdentityOutput {
@@ -875,12 +760,6 @@ func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o IdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityResponse] {
-	return pulumix.Output[IdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Service principal object Id
 func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -913,12 +792,6 @@ func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutput() IdentityRespons
 
 func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
 	return o
-}
-
-func (o IdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityResponse] {
-	return pulumix.Output[*IdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
@@ -1006,12 +879,6 @@ func (i PrivateEndpointArgs) ToPrivateEndpointOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointOutput)
 }
 
-func (i PrivateEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpoint] {
-	return pulumix.Output[PrivateEndpoint]{
-		OutputState: i.ToPrivateEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PrivateEndpointArgs) ToPrivateEndpointPtrOutput() PrivateEndpointPtrOutput {
 	return i.ToPrivateEndpointPtrOutputWithContext(context.Background())
 }
@@ -1053,12 +920,6 @@ func (i *privateEndpointPtrType) ToPrivateEndpointPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointPtrOutput)
 }
 
-func (i *privateEndpointPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpoint] {
-	return pulumix.Output[*PrivateEndpoint]{
-		OutputState: i.ToPrivateEndpointPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A private endpoint class.
 type PrivateEndpointOutput struct{ *pulumi.OutputState }
 
@@ -1084,12 +945,6 @@ func (o PrivateEndpointOutput) ToPrivateEndpointPtrOutputWithContext(ctx context
 	}).(PrivateEndpointPtrOutput)
 }
 
-func (o PrivateEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpoint] {
-	return pulumix.Output[PrivateEndpoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The private endpoint identifier.
 func (o PrivateEndpointOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateEndpoint) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -1107,12 +962,6 @@ func (o PrivateEndpointPtrOutput) ToPrivateEndpointPtrOutput() PrivateEndpointPt
 
 func (o PrivateEndpointPtrOutput) ToPrivateEndpointPtrOutputWithContext(ctx context.Context) PrivateEndpointPtrOutput {
 	return o
-}
-
-func (o PrivateEndpointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpoint] {
-	return pulumix.Output[*PrivateEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateEndpointPtrOutput) Elem() PrivateEndpointOutput {
@@ -1168,12 +1017,6 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 	return o
 }
 
-func (o PrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionResponse] {
-	return pulumix.Output[PrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the identifier.
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -1225,12 +1068,6 @@ func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectio
 	return o
 }
 
-func (o PrivateEndpointConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionResponse] {
-	return pulumix.Output[[]PrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
@@ -1258,12 +1095,6 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
-func (o PrivateEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointResponse] {
-	return pulumix.Output[PrivateEndpointResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The private endpoint identifier.
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -1281,12 +1112,6 @@ func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() P
 
 func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
 	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointResponse] {
-	return pulumix.Output[*PrivateEndpointResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
@@ -1352,12 +1177,6 @@ func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionSta
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
 }
 
-func (i PrivateLinkServiceConnectionStateArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
-	return pulumix.Output[PrivateLinkServiceConnectionState]{
-		OutputState: i.ToPrivateLinkServiceConnectionStateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
 	return i.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
 }
@@ -1399,12 +1218,6 @@ func (i *privateLinkServiceConnectionStatePtrType) ToPrivateLinkServiceConnectio
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStatePtrOutput)
 }
 
-func (i *privateLinkServiceConnectionStatePtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionState] {
-	return pulumix.Output[*PrivateLinkServiceConnectionState]{
-		OutputState: i.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The private link service connection state.
 type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
@@ -1428,12 +1241,6 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateLinkServiceConnectionState) *PrivateLinkServiceConnectionState {
 		return &v
 	}).(PrivateLinkServiceConnectionStatePtrOutput)
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
-	return pulumix.Output[PrivateLinkServiceConnectionState]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The required actions.
@@ -1463,12 +1270,6 @@ func (o PrivateLinkServiceConnectionStatePtrOutput) ToPrivateLinkServiceConnecti
 
 func (o PrivateLinkServiceConnectionStatePtrOutput) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionState] {
-	return pulumix.Output[*PrivateLinkServiceConnectionState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateLinkServiceConnectionStatePtrOutput) Elem() PrivateLinkServiceConnectionStateOutput {
@@ -1536,12 +1337,6 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 	return o
 }
 
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateResponse] {
-	return pulumix.Output[PrivateLinkServiceConnectionStateResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The required actions.
 func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
@@ -1569,12 +1364,6 @@ func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ToPrivateLinkService
 
 func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ToPrivateLinkServiceConnectionStateResponsePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponsePtrOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionStateResponse] {
-	return pulumix.Output[*PrivateLinkServiceConnectionStateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Elem() PrivateLinkServiceConnectionStateResponseOutput {
@@ -1648,12 +1437,6 @@ func (o ProxyResourceResponseSystemDataOutput) ToProxyResourceResponseSystemData
 	return o
 }
 
-func (o ProxyResourceResponseSystemDataOutput) ToOutput(ctx context.Context) pulumix.Output[ProxyResourceResponseSystemData] {
-	return pulumix.Output[ProxyResourceResponseSystemData]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timestamp of resource creation (UTC).
 func (o ProxyResourceResponseSystemDataOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v ProxyResourceResponseSystemData) string { return v.CreatedAt }).(pulumi.StringOutput)
@@ -1715,12 +1498,6 @@ func (o TrackedResourceResponseSystemDataOutput) ToTrackedResourceResponseSystem
 	return o
 }
 
-func (o TrackedResourceResponseSystemDataOutput) ToOutput(ctx context.Context) pulumix.Output[TrackedResourceResponseSystemData] {
-	return pulumix.Output[TrackedResourceResponseSystemData]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timestamp of resource creation (UTC).
 func (o TrackedResourceResponseSystemDataOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v TrackedResourceResponseSystemData) string { return v.CreatedAt }).(pulumi.StringOutput)
@@ -1774,12 +1551,6 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
-func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
-	return pulumix.Output[UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or Sets Client ID
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -1802,12 +1573,6 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
-	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {

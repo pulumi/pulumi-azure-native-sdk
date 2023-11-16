@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about a server group.
@@ -119,12 +118,6 @@ func (o LookupServerGroupResultOutput) ToLookupServerGroupResultOutput() LookupS
 
 func (o LookupServerGroupResultOutput) ToLookupServerGroupResultOutputWithContext(ctx context.Context) LookupServerGroupResultOutput {
 	return o
-}
-
-func (o LookupServerGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServerGroupResult] {
-	return pulumix.Output[LookupServerGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The administrator's login name of servers in server group. Can only be specified when the server is being created (and is required for creation).

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Gets a hybrid connection configuration by its name.
@@ -90,12 +89,6 @@ func (o LookupWebAppRelayServiceConnectionResultOutput) ToLookupWebAppRelayServi
 
 func (o LookupWebAppRelayServiceConnectionResultOutput) ToLookupWebAppRelayServiceConnectionResultOutputWithContext(ctx context.Context) LookupWebAppRelayServiceConnectionResultOutput {
 	return o
-}
-
-func (o LookupWebAppRelayServiceConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebAppRelayServiceConnectionResult] {
-	return pulumix.Output[LookupWebAppRelayServiceConnectionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupWebAppRelayServiceConnectionResultOutput) BiztalkUri() pulumi.StringPtrOutput {

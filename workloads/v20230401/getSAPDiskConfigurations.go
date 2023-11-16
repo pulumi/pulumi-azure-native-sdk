@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the SAP Disk Configuration Layout prod/non-prod SAP System.
@@ -93,12 +92,6 @@ func (o GetSAPDiskConfigurationsResultOutput) ToGetSAPDiskConfigurationsResultOu
 
 func (o GetSAPDiskConfigurationsResultOutput) ToGetSAPDiskConfigurationsResultOutputWithContext(ctx context.Context) GetSAPDiskConfigurationsResultOutput {
 	return o
-}
-
-func (o GetSAPDiskConfigurationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSAPDiskConfigurationsResult] {
-	return pulumix.Output[GetSAPDiskConfigurationsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup'].

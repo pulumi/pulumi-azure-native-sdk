@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties of the specified key-value. NOTE: This operation is intended for use in ARM Template deployments. For all other scenarios involving App Configuration key-values the data plane API should be used instead.
@@ -101,12 +100,6 @@ func (o LookupKeyValueResultOutput) ToLookupKeyValueResultOutput() LookupKeyValu
 
 func (o LookupKeyValueResultOutput) ToLookupKeyValueResultOutputWithContext(ctx context.Context) LookupKeyValueResultOutput {
 	return o
-}
-
-func (o LookupKeyValueResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKeyValueResult] {
-	return pulumix.Output[LookupKeyValueResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The content type of the key-value's value.

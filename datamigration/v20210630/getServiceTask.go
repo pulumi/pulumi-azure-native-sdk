@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The service tasks resource is a nested, proxy-only resource representing work performed by a DMS instance. The GET method retrieves information about a service task.
@@ -91,12 +90,6 @@ func (o LookupServiceTaskResultOutput) ToLookupServiceTaskResultOutput() LookupS
 
 func (o LookupServiceTaskResultOutput) ToLookupServiceTaskResultOutputWithContext(ctx context.Context) LookupServiceTaskResultOutput {
 	return o
-}
-
-func (o LookupServiceTaskResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceTaskResult] {
-	return pulumix.Output[LookupServiceTaskResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // HTTP strong entity tag value. This is ignored if submitted.

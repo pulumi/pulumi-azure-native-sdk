@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // **Gets an access token for live metrics stream data.**
@@ -69,12 +68,6 @@ func (o GetLiveTokenResultOutput) ToGetLiveTokenResultOutput() GetLiveTokenResul
 
 func (o GetLiveTokenResultOutput) ToGetLiveTokenResultOutputWithContext(ctx context.Context) GetLiveTokenResultOutput {
 	return o
-}
-
-func (o GetLiveTokenResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetLiveTokenResult] {
-	return pulumix.Output[GetLiveTokenResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // JWT token for accessing live metrics stream data.

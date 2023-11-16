@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The operation returns properties of a OpenShift cluster.
@@ -104,12 +103,6 @@ func (o LookupOpenShiftClusterResultOutput) ToLookupOpenShiftClusterResultOutput
 
 func (o LookupOpenShiftClusterResultOutput) ToLookupOpenShiftClusterResultOutputWithContext(ctx context.Context) LookupOpenShiftClusterResultOutput {
 	return o
-}
-
-func (o LookupOpenShiftClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOpenShiftClusterResult] {
-	return pulumix.Output[LookupOpenShiftClusterResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The cluster API server profile.

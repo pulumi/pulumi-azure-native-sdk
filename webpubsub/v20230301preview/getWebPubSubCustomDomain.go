@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a custom domain.
@@ -89,12 +88,6 @@ func (o LookupWebPubSubCustomDomainResultOutput) ToLookupWebPubSubCustomDomainRe
 
 func (o LookupWebPubSubCustomDomainResultOutput) ToLookupWebPubSubCustomDomainResultOutputWithContext(ctx context.Context) LookupWebPubSubCustomDomainResultOutput {
 	return o
-}
-
-func (o LookupWebPubSubCustomDomainResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebPubSubCustomDomainResult] {
-	return pulumix.Output[LookupWebPubSubCustomDomainResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Reference to a resource.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -69,12 +68,6 @@ func (i AccessReviewHistoryInstanceArgs) ToAccessReviewHistoryInstanceOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(AccessReviewHistoryInstanceOutput)
 }
 
-func (i AccessReviewHistoryInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[AccessReviewHistoryInstance] {
-	return pulumix.Output[AccessReviewHistoryInstance]{
-		OutputState: i.ToAccessReviewHistoryInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessReviewHistoryInstanceArrayInput is an input type that accepts AccessReviewHistoryInstanceArray and AccessReviewHistoryInstanceArrayOutput values.
 // You can construct a concrete instance of `AccessReviewHistoryInstanceArrayInput` via:
 //
@@ -100,12 +93,6 @@ func (i AccessReviewHistoryInstanceArray) ToAccessReviewHistoryInstanceArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AccessReviewHistoryInstanceArrayOutput)
 }
 
-func (i AccessReviewHistoryInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewHistoryInstance] {
-	return pulumix.Output[[]AccessReviewHistoryInstance]{
-		OutputState: i.ToAccessReviewHistoryInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Access Review History Definition Instance.
 type AccessReviewHistoryInstanceOutput struct{ *pulumi.OutputState }
 
@@ -119,12 +106,6 @@ func (o AccessReviewHistoryInstanceOutput) ToAccessReviewHistoryInstanceOutput()
 
 func (o AccessReviewHistoryInstanceOutput) ToAccessReviewHistoryInstanceOutputWithContext(ctx context.Context) AccessReviewHistoryInstanceOutput {
 	return o
-}
-
-func (o AccessReviewHistoryInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[AccessReviewHistoryInstance] {
-	return pulumix.Output[AccessReviewHistoryInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The display name for the parent history definition.
@@ -169,12 +150,6 @@ func (o AccessReviewHistoryInstanceArrayOutput) ToAccessReviewHistoryInstanceArr
 
 func (o AccessReviewHistoryInstanceArrayOutput) ToAccessReviewHistoryInstanceArrayOutputWithContext(ctx context.Context) AccessReviewHistoryInstanceArrayOutput {
 	return o
-}
-
-func (o AccessReviewHistoryInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewHistoryInstance] {
-	return pulumix.Output[[]AccessReviewHistoryInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessReviewHistoryInstanceArrayOutput) Index(i pulumi.IntInput) AccessReviewHistoryInstanceOutput {
@@ -222,12 +197,6 @@ func (o AccessReviewHistoryInstanceResponseOutput) ToAccessReviewHistoryInstance
 
 func (o AccessReviewHistoryInstanceResponseOutput) ToAccessReviewHistoryInstanceResponseOutputWithContext(ctx context.Context) AccessReviewHistoryInstanceResponseOutput {
 	return o
-}
-
-func (o AccessReviewHistoryInstanceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AccessReviewHistoryInstanceResponse] {
-	return pulumix.Output[AccessReviewHistoryInstanceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The display name for the parent history definition.
@@ -299,12 +268,6 @@ func (o AccessReviewHistoryInstanceResponseArrayOutput) ToAccessReviewHistoryIns
 	return o
 }
 
-func (o AccessReviewHistoryInstanceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewHistoryInstanceResponse] {
-	return pulumix.Output[[]AccessReviewHistoryInstanceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessReviewHistoryInstanceResponseArrayOutput) Index(i pulumi.IntInput) AccessReviewHistoryInstanceResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessReviewHistoryInstanceResponse {
 		return vs[0].([]AccessReviewHistoryInstanceResponse)[vs[1].(int)]
@@ -358,12 +321,6 @@ func (i AccessReviewInstanceArgs) ToAccessReviewInstanceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AccessReviewInstanceOutput)
 }
 
-func (i AccessReviewInstanceArgs) ToOutput(ctx context.Context) pulumix.Output[AccessReviewInstance] {
-	return pulumix.Output[AccessReviewInstance]{
-		OutputState: i.ToAccessReviewInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessReviewInstanceArrayInput is an input type that accepts AccessReviewInstanceArray and AccessReviewInstanceArrayOutput values.
 // You can construct a concrete instance of `AccessReviewInstanceArrayInput` via:
 //
@@ -389,12 +346,6 @@ func (i AccessReviewInstanceArray) ToAccessReviewInstanceArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AccessReviewInstanceArrayOutput)
 }
 
-func (i AccessReviewInstanceArray) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewInstance] {
-	return pulumix.Output[[]AccessReviewInstance]{
-		OutputState: i.ToAccessReviewInstanceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Access Review Instance.
 type AccessReviewInstanceOutput struct{ *pulumi.OutputState }
 
@@ -408,12 +359,6 @@ func (o AccessReviewInstanceOutput) ToAccessReviewInstanceOutput() AccessReviewI
 
 func (o AccessReviewInstanceOutput) ToAccessReviewInstanceOutputWithContext(ctx context.Context) AccessReviewInstanceOutput {
 	return o
-}
-
-func (o AccessReviewInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[AccessReviewInstance] {
-	return pulumix.Output[AccessReviewInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This is the collection of backup reviewers.
@@ -448,12 +393,6 @@ func (o AccessReviewInstanceArrayOutput) ToAccessReviewInstanceArrayOutput() Acc
 
 func (o AccessReviewInstanceArrayOutput) ToAccessReviewInstanceArrayOutputWithContext(ctx context.Context) AccessReviewInstanceArrayOutput {
 	return o
-}
-
-func (o AccessReviewInstanceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewInstance] {
-	return pulumix.Output[[]AccessReviewInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessReviewInstanceArrayOutput) Index(i pulumi.IntInput) AccessReviewInstanceOutput {
@@ -497,12 +436,6 @@ func (o AccessReviewInstanceResponseOutput) ToAccessReviewInstanceResponseOutput
 
 func (o AccessReviewInstanceResponseOutput) ToAccessReviewInstanceResponseOutputWithContext(ctx context.Context) AccessReviewInstanceResponseOutput {
 	return o
-}
-
-func (o AccessReviewInstanceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AccessReviewInstanceResponse] {
-	return pulumix.Output[AccessReviewInstanceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This is the collection of backup reviewers.
@@ -564,12 +497,6 @@ func (o AccessReviewInstanceResponseArrayOutput) ToAccessReviewInstanceResponseA
 	return o
 }
 
-func (o AccessReviewInstanceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewInstanceResponse] {
-	return pulumix.Output[[]AccessReviewInstanceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessReviewInstanceResponseArrayOutput) Index(i pulumi.IntInput) AccessReviewInstanceResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessReviewInstanceResponse {
 		return vs[0].([]AccessReviewInstanceResponse)[vs[1].(int)]
@@ -611,12 +538,6 @@ func (i AccessReviewReviewerArgs) ToAccessReviewReviewerOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AccessReviewReviewerOutput)
 }
 
-func (i AccessReviewReviewerArgs) ToOutput(ctx context.Context) pulumix.Output[AccessReviewReviewer] {
-	return pulumix.Output[AccessReviewReviewer]{
-		OutputState: i.ToAccessReviewReviewerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessReviewReviewerArrayInput is an input type that accepts AccessReviewReviewerArray and AccessReviewReviewerArrayOutput values.
 // You can construct a concrete instance of `AccessReviewReviewerArrayInput` via:
 //
@@ -642,12 +563,6 @@ func (i AccessReviewReviewerArray) ToAccessReviewReviewerArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AccessReviewReviewerArrayOutput)
 }
 
-func (i AccessReviewReviewerArray) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewReviewer] {
-	return pulumix.Output[[]AccessReviewReviewer]{
-		OutputState: i.ToAccessReviewReviewerArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Descriptor for what needs to be reviewed
 type AccessReviewReviewerOutput struct{ *pulumi.OutputState }
 
@@ -661,12 +576,6 @@ func (o AccessReviewReviewerOutput) ToAccessReviewReviewerOutput() AccessReviewR
 
 func (o AccessReviewReviewerOutput) ToAccessReviewReviewerOutputWithContext(ctx context.Context) AccessReviewReviewerOutput {
 	return o
-}
-
-func (o AccessReviewReviewerOutput) ToOutput(ctx context.Context) pulumix.Output[AccessReviewReviewer] {
-	return pulumix.Output[AccessReviewReviewer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the reviewer(user/servicePrincipal)
@@ -686,12 +595,6 @@ func (o AccessReviewReviewerArrayOutput) ToAccessReviewReviewerArrayOutput() Acc
 
 func (o AccessReviewReviewerArrayOutput) ToAccessReviewReviewerArrayOutputWithContext(ctx context.Context) AccessReviewReviewerArrayOutput {
 	return o
-}
-
-func (o AccessReviewReviewerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewReviewer] {
-	return pulumix.Output[[]AccessReviewReviewer]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessReviewReviewerArrayOutput) Index(i pulumi.IntInput) AccessReviewReviewerOutput {
@@ -723,12 +626,6 @@ func (o AccessReviewReviewerResponseOutput) ToAccessReviewReviewerResponseOutput
 	return o
 }
 
-func (o AccessReviewReviewerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AccessReviewReviewerResponse] {
-	return pulumix.Output[AccessReviewReviewerResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The id of the reviewer(user/servicePrincipal)
 func (o AccessReviewReviewerResponseOutput) PrincipalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessReviewReviewerResponse) *string { return v.PrincipalId }).(pulumi.StringPtrOutput)
@@ -751,12 +648,6 @@ func (o AccessReviewReviewerResponseArrayOutput) ToAccessReviewReviewerResponseA
 
 func (o AccessReviewReviewerResponseArrayOutput) ToAccessReviewReviewerResponseArrayOutputWithContext(ctx context.Context) AccessReviewReviewerResponseArrayOutput {
 	return o
-}
-
-func (o AccessReviewReviewerResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewReviewerResponse] {
-	return pulumix.Output[[]AccessReviewReviewerResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessReviewReviewerResponseArrayOutput) Index(i pulumi.IntInput) AccessReviewReviewerResponseOutput {
@@ -820,12 +711,6 @@ func (i AccessReviewScopeArgs) ToAccessReviewScopeOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AccessReviewScopeOutput)
 }
 
-func (i AccessReviewScopeArgs) ToOutput(ctx context.Context) pulumix.Output[AccessReviewScope] {
-	return pulumix.Output[AccessReviewScope]{
-		OutputState: i.ToAccessReviewScopeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessReviewScopeArrayInput is an input type that accepts AccessReviewScopeArray and AccessReviewScopeArrayOutput values.
 // You can construct a concrete instance of `AccessReviewScopeArrayInput` via:
 //
@@ -851,12 +736,6 @@ func (i AccessReviewScopeArray) ToAccessReviewScopeArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AccessReviewScopeArrayOutput)
 }
 
-func (i AccessReviewScopeArray) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewScope] {
-	return pulumix.Output[[]AccessReviewScope]{
-		OutputState: i.ToAccessReviewScopeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Descriptor for what needs to be reviewed
 type AccessReviewScopeOutput struct{ *pulumi.OutputState }
 
@@ -870,12 +749,6 @@ func (o AccessReviewScopeOutput) ToAccessReviewScopeOutput() AccessReviewScopeOu
 
 func (o AccessReviewScopeOutput) ToAccessReviewScopeOutputWithContext(ctx context.Context) AccessReviewScopeOutput {
 	return o
-}
-
-func (o AccessReviewScopeOutput) ToOutput(ctx context.Context) pulumix.Output[AccessReviewScope] {
-	return pulumix.Output[AccessReviewScope]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This is used to indicate the resource id(s) to exclude
@@ -922,12 +795,6 @@ func (o AccessReviewScopeArrayOutput) ToAccessReviewScopeArrayOutputWithContext(
 	return o
 }
 
-func (o AccessReviewScopeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewScope] {
-	return pulumix.Output[[]AccessReviewScope]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessReviewScopeArrayOutput) Index(i pulumi.IntInput) AccessReviewScopeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessReviewScope {
 		return vs[0].([]AccessReviewScope)[vs[1].(int)]
@@ -971,12 +838,6 @@ func (o AccessReviewScopeResponseOutput) ToAccessReviewScopeResponseOutput() Acc
 
 func (o AccessReviewScopeResponseOutput) ToAccessReviewScopeResponseOutputWithContext(ctx context.Context) AccessReviewScopeResponseOutput {
 	return o
-}
-
-func (o AccessReviewScopeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AccessReviewScopeResponse] {
-	return pulumix.Output[AccessReviewScopeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The role assignment state eligible/active to review
@@ -1041,12 +902,6 @@ func (o AccessReviewScopeResponseArrayOutput) ToAccessReviewScopeResponseArrayOu
 
 func (o AccessReviewScopeResponseArrayOutput) ToAccessReviewScopeResponseArrayOutputWithContext(ctx context.Context) AccessReviewScopeResponseArrayOutput {
 	return o
-}
-
-func (o AccessReviewScopeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessReviewScopeResponse] {
-	return pulumix.Output[[]AccessReviewScopeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessReviewScopeResponseArrayOutput) Index(i pulumi.IntInput) AccessReviewScopeResponseOutput {

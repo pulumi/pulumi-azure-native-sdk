@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -37,12 +36,6 @@ func (o FleetCredentialResultResponseOutput) ToFleetCredentialResultResponseOutp
 	return o
 }
 
-func (o FleetCredentialResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FleetCredentialResultResponse] {
-	return pulumix.Output[FleetCredentialResultResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the credential.
 func (o FleetCredentialResultResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FleetCredentialResultResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -65,12 +58,6 @@ func (o FleetCredentialResultResponseArrayOutput) ToFleetCredentialResultRespons
 
 func (o FleetCredentialResultResponseArrayOutput) ToFleetCredentialResultResponseArrayOutputWithContext(ctx context.Context) FleetCredentialResultResponseArrayOutput {
 	return o
-}
-
-func (o FleetCredentialResultResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FleetCredentialResultResponse] {
-	return pulumix.Output[[]FleetCredentialResultResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FleetCredentialResultResponseArrayOutput) Index(i pulumi.IntInput) FleetCredentialResultResponseOutput {
@@ -114,12 +101,6 @@ func (i FleetHubProfileArgs) ToFleetHubProfileOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(FleetHubProfileOutput)
 }
 
-func (i FleetHubProfileArgs) ToOutput(ctx context.Context) pulumix.Output[FleetHubProfile] {
-	return pulumix.Output[FleetHubProfile]{
-		OutputState: i.ToFleetHubProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FleetHubProfileArgs) ToFleetHubProfilePtrOutput() FleetHubProfilePtrOutput {
 	return i.ToFleetHubProfilePtrOutputWithContext(context.Background())
 }
@@ -161,12 +142,6 @@ func (i *fleetHubProfilePtrType) ToFleetHubProfilePtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(FleetHubProfilePtrOutput)
 }
 
-func (i *fleetHubProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*FleetHubProfile] {
-	return pulumix.Output[*FleetHubProfile]{
-		OutputState: i.ToFleetHubProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The FleetHubProfile configures the fleet hub.
 type FleetHubProfileOutput struct{ *pulumi.OutputState }
 
@@ -192,12 +167,6 @@ func (o FleetHubProfileOutput) ToFleetHubProfilePtrOutputWithContext(ctx context
 	}).(FleetHubProfilePtrOutput)
 }
 
-func (o FleetHubProfileOutput) ToOutput(ctx context.Context) pulumix.Output[FleetHubProfile] {
-	return pulumix.Output[FleetHubProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // DNS prefix used to create the FQDN for the Fleet hub.
 func (o FleetHubProfileOutput) DnsPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FleetHubProfile) *string { return v.DnsPrefix }).(pulumi.StringPtrOutput)
@@ -215,12 +184,6 @@ func (o FleetHubProfilePtrOutput) ToFleetHubProfilePtrOutput() FleetHubProfilePt
 
 func (o FleetHubProfilePtrOutput) ToFleetHubProfilePtrOutputWithContext(ctx context.Context) FleetHubProfilePtrOutput {
 	return o
-}
-
-func (o FleetHubProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FleetHubProfile] {
-	return pulumix.Output[*FleetHubProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FleetHubProfilePtrOutput) Elem() FleetHubProfileOutput {
@@ -268,12 +231,6 @@ func (o FleetHubProfileResponseOutput) ToFleetHubProfileResponseOutputWithContex
 	return o
 }
 
-func (o FleetHubProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FleetHubProfileResponse] {
-	return pulumix.Output[FleetHubProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // DNS prefix used to create the FQDN for the Fleet hub.
 func (o FleetHubProfileResponseOutput) DnsPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FleetHubProfileResponse) *string { return v.DnsPrefix }).(pulumi.StringPtrOutput)
@@ -301,12 +258,6 @@ func (o FleetHubProfileResponsePtrOutput) ToFleetHubProfileResponsePtrOutput() F
 
 func (o FleetHubProfileResponsePtrOutput) ToFleetHubProfileResponsePtrOutputWithContext(ctx context.Context) FleetHubProfileResponsePtrOutput {
 	return o
-}
-
-func (o FleetHubProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FleetHubProfileResponse] {
-	return pulumix.Output[*FleetHubProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FleetHubProfileResponsePtrOutput) Elem() FleetHubProfileResponseOutput {
@@ -378,12 +329,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

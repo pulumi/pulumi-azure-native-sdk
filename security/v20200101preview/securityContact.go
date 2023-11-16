@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Contact details and configurations for notifications coming from Microsoft Defender for Cloud.
@@ -128,12 +127,6 @@ func (i *SecurityContact) ToSecurityContactOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityContactOutput)
 }
 
-func (i *SecurityContact) ToOutput(ctx context.Context) pulumix.Output[*SecurityContact] {
-	return pulumix.Output[*SecurityContact]{
-		OutputState: i.ToSecurityContactOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecurityContactOutput struct{ *pulumi.OutputState }
 
 func (SecurityContactOutput) ElementType() reflect.Type {
@@ -146,12 +139,6 @@ func (o SecurityContactOutput) ToSecurityContactOutput() SecurityContactOutput {
 
 func (o SecurityContactOutput) ToSecurityContactOutputWithContext(ctx context.Context) SecurityContactOutput {
 	return o
-}
-
-func (o SecurityContactOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityContact] {
-	return pulumix.Output[*SecurityContact]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines whether to send email notifications about new security alerts

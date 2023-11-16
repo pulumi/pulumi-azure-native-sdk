@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a SuppressionList resource.
@@ -96,12 +95,6 @@ func (o LookupSuppressionListResultOutput) ToLookupSuppressionListResultOutput()
 
 func (o LookupSuppressionListResultOutput) ToLookupSuppressionListResultOutputWithContext(ctx context.Context) LookupSuppressionListResultOutput {
 	return o
-}
-
-func (o LookupSuppressionListResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSuppressionListResult] {
-	return pulumix.Output[LookupSuppressionListResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The date the resource was created.

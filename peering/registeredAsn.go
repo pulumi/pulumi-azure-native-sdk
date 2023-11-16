@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The customer's ASN that is registered by the peering service provider.
@@ -148,12 +147,6 @@ func (i *RegisteredAsn) ToRegisteredAsnOutputWithContext(ctx context.Context) Re
 	return pulumi.ToOutputWithContext(ctx, i).(RegisteredAsnOutput)
 }
 
-func (i *RegisteredAsn) ToOutput(ctx context.Context) pulumix.Output[*RegisteredAsn] {
-	return pulumix.Output[*RegisteredAsn]{
-		OutputState: i.ToRegisteredAsnOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegisteredAsnOutput struct{ *pulumi.OutputState }
 
 func (RegisteredAsnOutput) ElementType() reflect.Type {
@@ -166,12 +159,6 @@ func (o RegisteredAsnOutput) ToRegisteredAsnOutput() RegisteredAsnOutput {
 
 func (o RegisteredAsnOutput) ToRegisteredAsnOutputWithContext(ctx context.Context) RegisteredAsnOutput {
 	return o
-}
-
-func (o RegisteredAsnOutput) ToOutput(ctx context.Context) pulumix.Output[*RegisteredAsn] {
-	return pulumix.Output[*RegisteredAsn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The customer's ASN from which traffic originates.

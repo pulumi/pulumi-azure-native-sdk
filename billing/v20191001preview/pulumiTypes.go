@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -37,12 +36,6 @@ func (o AzurePlanResponseOutput) ToAzurePlanResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o AzurePlanResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzurePlanResponse] {
-	return pulumix.Output[AzurePlanResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The sku description.
 func (o AzurePlanResponseOutput) SkuDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v AzurePlanResponse) string { return v.SkuDescription }).(pulumi.StringOutput)
@@ -65,12 +58,6 @@ func (o AzurePlanResponseArrayOutput) ToAzurePlanResponseArrayOutput() AzurePlan
 
 func (o AzurePlanResponseArrayOutput) ToAzurePlanResponseArrayOutputWithContext(ctx context.Context) AzurePlanResponseArrayOutput {
 	return o
-}
-
-func (o AzurePlanResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AzurePlanResponse] {
-	return pulumix.Output[[]AzurePlanResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzurePlanResponseArrayOutput) Index(i pulumi.IntInput) AzurePlanResponseOutput {
@@ -112,12 +99,6 @@ func (o InvoiceSectionWithCreateSubPermissionResponseOutput) ToInvoiceSectionWit
 
 func (o InvoiceSectionWithCreateSubPermissionResponseOutput) ToInvoiceSectionWithCreateSubPermissionResponseOutputWithContext(ctx context.Context) InvoiceSectionWithCreateSubPermissionResponseOutput {
 	return o
-}
-
-func (o InvoiceSectionWithCreateSubPermissionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InvoiceSectionWithCreateSubPermissionResponse] {
-	return pulumix.Output[InvoiceSectionWithCreateSubPermissionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the billing profile for the invoice section.
@@ -172,12 +153,6 @@ func (o InvoiceSectionWithCreateSubPermissionResponseArrayOutput) ToInvoiceSecti
 
 func (o InvoiceSectionWithCreateSubPermissionResponseArrayOutput) ToInvoiceSectionWithCreateSubPermissionResponseArrayOutputWithContext(ctx context.Context) InvoiceSectionWithCreateSubPermissionResponseArrayOutput {
 	return o
-}
-
-func (o InvoiceSectionWithCreateSubPermissionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InvoiceSectionWithCreateSubPermissionResponse] {
-	return pulumix.Output[[]InvoiceSectionWithCreateSubPermissionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InvoiceSectionWithCreateSubPermissionResponseArrayOutput) Index(i pulumi.IntInput) InvoiceSectionWithCreateSubPermissionResponseOutput {

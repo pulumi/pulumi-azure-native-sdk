@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The properties of deployment in Elastic cloud corresponding to the Elastic monitor resource.
@@ -85,12 +84,6 @@ func (o ListDeploymentInfoResultOutput) ToListDeploymentInfoResultOutput() ListD
 
 func (o ListDeploymentInfoResultOutput) ToListDeploymentInfoResultOutputWithContext(ctx context.Context) ListDeploymentInfoResultOutput {
 	return o
-}
-
-func (o ListDeploymentInfoResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListDeploymentInfoResult] {
-	return pulumix.Output[ListDeploymentInfoResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Deployment URL of the elasticsearch in Elastic cloud deployment.

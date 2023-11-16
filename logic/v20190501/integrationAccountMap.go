@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The integration account map.
@@ -176,12 +175,6 @@ func (i *IntegrationAccountMap) ToIntegrationAccountMapOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationAccountMapOutput)
 }
 
-func (i *IntegrationAccountMap) ToOutput(ctx context.Context) pulumix.Output[*IntegrationAccountMap] {
-	return pulumix.Output[*IntegrationAccountMap]{
-		OutputState: i.ToIntegrationAccountMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IntegrationAccountMapOutput struct{ *pulumi.OutputState }
 
 func (IntegrationAccountMapOutput) ElementType() reflect.Type {
@@ -194,12 +187,6 @@ func (o IntegrationAccountMapOutput) ToIntegrationAccountMapOutput() Integration
 
 func (o IntegrationAccountMapOutput) ToIntegrationAccountMapOutputWithContext(ctx context.Context) IntegrationAccountMapOutput {
 	return o
-}
-
-func (o IntegrationAccountMapOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationAccountMap] {
-	return pulumix.Output[*IntegrationAccountMap]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The changed time.

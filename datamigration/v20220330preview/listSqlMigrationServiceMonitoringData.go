@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve the registered Integration Runtime nodes and their monitoring data for a given Database Migration Service.
@@ -75,12 +74,6 @@ func (o ListSqlMigrationServiceMonitoringDataResultOutput) ToListSqlMigrationSer
 
 func (o ListSqlMigrationServiceMonitoringDataResultOutput) ToListSqlMigrationServiceMonitoringDataResultOutputWithContext(ctx context.Context) ListSqlMigrationServiceMonitoringDataResultOutput {
 	return o
-}
-
-func (o ListSqlMigrationServiceMonitoringDataResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListSqlMigrationServiceMonitoringDataResult] {
-	return pulumix.Output[ListSqlMigrationServiceMonitoringDataResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of Integration Runtime.

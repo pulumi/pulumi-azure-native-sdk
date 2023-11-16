@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified private endpoint connection associated with the RedisEnterprise cluster.
@@ -87,12 +86,6 @@ func (o LookupEnterprisePrivateEndpointConnectionResultOutput) ToLookupEnterpris
 
 func (o LookupEnterprisePrivateEndpointConnectionResultOutput) ToLookupEnterprisePrivateEndpointConnectionResultOutputWithContext(ctx context.Context) LookupEnterprisePrivateEndpointConnectionResultOutput {
 	return o
-}
-
-func (o LookupEnterprisePrivateEndpointConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEnterprisePrivateEndpointConnectionResult] {
-	return pulumix.Output[LookupEnterprisePrivateEndpointConnectionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

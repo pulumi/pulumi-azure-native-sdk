@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a list of repositories metadata.
@@ -75,12 +74,6 @@ func (o ListSourceControlRepositoriesResultOutput) ToListSourceControlRepositori
 
 func (o ListSourceControlRepositoriesResultOutput) ToListSourceControlRepositoriesResultOutputWithContext(ctx context.Context) ListSourceControlRepositoriesResultOutput {
 	return o
-}
-
-func (o ListSourceControlRepositoriesResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListSourceControlRepositoriesResult] {
-	return pulumix.Output[ListSourceControlRepositoriesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // URL to fetch the next set of repositories.

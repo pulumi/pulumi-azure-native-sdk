@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List users success response
@@ -81,12 +80,6 @@ func (o ListAccessUsersResultOutput) ToListAccessUsersResultOutput() ListAccessU
 
 func (o ListAccessUsersResultOutput) ToListAccessUsersResultOutputWithContext(ctx context.Context) ListAccessUsersResultOutput {
 	return o
-}
-
-func (o ListAccessUsersResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListAccessUsersResult] {
-	return pulumix.Output[ListAccessUsersResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Data of the users list

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a management lock at the subscription level.
@@ -82,12 +81,6 @@ func (o LookupManagementLockAtSubscriptionLevelResultOutput) ToLookupManagementL
 
 func (o LookupManagementLockAtSubscriptionLevelResultOutput) ToLookupManagementLockAtSubscriptionLevelResultOutputWithContext(ctx context.Context) LookupManagementLockAtSubscriptionLevelResultOutput {
 	return o
-}
-
-func (o LookupManagementLockAtSubscriptionLevelResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagementLockAtSubscriptionLevelResult] {
-	return pulumix.Output[LookupManagementLockAtSubscriptionLevelResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource ID of the lock.

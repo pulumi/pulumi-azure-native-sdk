@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a postgres Instance resource
@@ -101,12 +100,6 @@ func (o LookupPostgresInstanceResultOutput) ToLookupPostgresInstanceResultOutput
 
 func (o LookupPostgresInstanceResultOutput) ToLookupPostgresInstanceResultOutputWithContext(ctx context.Context) LookupPostgresInstanceResultOutput {
 	return o
-}
-
-func (o LookupPostgresInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPostgresInstanceResult] {
-	return pulumix.Output[LookupPostgresInstanceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The extendedLocation of the resource.

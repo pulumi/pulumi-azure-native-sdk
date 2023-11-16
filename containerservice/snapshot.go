@@ -10,13 +10,12 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A node pool snapshot resource.
 // Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-08-01.
 //
-// Other available API versions: 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01.
+// Other available API versions: 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview.
 type Snapshot struct {
 	pulumi.CustomResourceState
 
@@ -188,6 +187,9 @@ func NewSnapshot(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerservice/v20231001:Snapshot"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20231002preview:Snapshot"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -276,12 +278,6 @@ func (i *Snapshot) ToSnapshotOutputWithContext(ctx context.Context) SnapshotOutp
 	return pulumi.ToOutputWithContext(ctx, i).(SnapshotOutput)
 }
 
-func (i *Snapshot) ToOutput(ctx context.Context) pulumix.Output[*Snapshot] {
-	return pulumix.Output[*Snapshot]{
-		OutputState: i.ToSnapshotOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SnapshotOutput struct{ *pulumi.OutputState }
 
 func (SnapshotOutput) ElementType() reflect.Type {
@@ -294,12 +290,6 @@ func (o SnapshotOutput) ToSnapshotOutput() SnapshotOutput {
 
 func (o SnapshotOutput) ToSnapshotOutputWithContext(ctx context.Context) SnapshotOutput {
 	return o
-}
-
-func (o SnapshotOutput) ToOutput(ctx context.Context) pulumix.Output[*Snapshot] {
-	return pulumix.Output[*Snapshot]{
-		OutputState: o.OutputState,
-	}
 }
 
 // CreationData to be used to specify the source agent pool resource ID to create this snapshot.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i DnsSettingsArgs) ToDnsSettingsOutputWithContext(ctx context.Context) Dns
 	return pulumi.ToOutputWithContext(ctx, i).(DnsSettingsOutput)
 }
 
-func (i DnsSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[DnsSettings] {
-	return pulumix.Output[DnsSettings]{
-		OutputState: i.ToDnsSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DnsSettingsArgs) ToDnsSettingsPtrOutput() DnsSettingsPtrOutput {
 	return i.ToDnsSettingsPtrOutputWithContext(context.Background())
 }
@@ -104,12 +97,6 @@ func (i *dnsSettingsPtrType) ToDnsSettingsPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DnsSettingsPtrOutput)
 }
 
-func (i *dnsSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DnsSettings] {
-	return pulumix.Output[*DnsSettings]{
-		OutputState: i.ToDnsSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DNS Proxy Settings in Firewall Policy.
 type DnsSettingsOutput struct{ *pulumi.OutputState }
 
@@ -133,12 +120,6 @@ func (o DnsSettingsOutput) ToDnsSettingsPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DnsSettings) *DnsSettings {
 		return &v
 	}).(DnsSettingsPtrOutput)
-}
-
-func (o DnsSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[DnsSettings] {
-	return pulumix.Output[DnsSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Enable DNS Proxy on Firewalls attached to the Firewall Policy.
@@ -168,12 +149,6 @@ func (o DnsSettingsPtrOutput) ToDnsSettingsPtrOutput() DnsSettingsPtrOutput {
 
 func (o DnsSettingsPtrOutput) ToDnsSettingsPtrOutputWithContext(ctx context.Context) DnsSettingsPtrOutput {
 	return o
-}
-
-func (o DnsSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DnsSettings] {
-	return pulumix.Output[*DnsSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DnsSettingsPtrOutput) Elem() DnsSettingsOutput {
@@ -241,12 +216,6 @@ func (o DnsSettingsResponseOutput) ToDnsSettingsResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o DnsSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DnsSettingsResponse] {
-	return pulumix.Output[DnsSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Enable DNS Proxy on Firewalls attached to the Firewall Policy.
 func (o DnsSettingsResponseOutput) EnableProxy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DnsSettingsResponse) *bool { return v.EnableProxy }).(pulumi.BoolPtrOutput)
@@ -274,12 +243,6 @@ func (o DnsSettingsResponsePtrOutput) ToDnsSettingsResponsePtrOutput() DnsSettin
 
 func (o DnsSettingsResponsePtrOutput) ToDnsSettingsResponsePtrOutputWithContext(ctx context.Context) DnsSettingsResponsePtrOutput {
 	return o
-}
-
-func (o DnsSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DnsSettingsResponse] {
-	return pulumix.Output[*DnsSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DnsSettingsResponsePtrOutput) Elem() DnsSettingsResponseOutput {
@@ -373,12 +336,6 @@ func (i ExplicitProxySettingsArgs) ToExplicitProxySettingsOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ExplicitProxySettingsOutput)
 }
 
-func (i ExplicitProxySettingsArgs) ToOutput(ctx context.Context) pulumix.Output[ExplicitProxySettings] {
-	return pulumix.Output[ExplicitProxySettings]{
-		OutputState: i.ToExplicitProxySettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExplicitProxySettingsArgs) ToExplicitProxySettingsPtrOutput() ExplicitProxySettingsPtrOutput {
 	return i.ToExplicitProxySettingsPtrOutputWithContext(context.Background())
 }
@@ -420,12 +377,6 @@ func (i *explicitProxySettingsPtrType) ToExplicitProxySettingsPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ExplicitProxySettingsPtrOutput)
 }
 
-func (i *explicitProxySettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExplicitProxySettings] {
-	return pulumix.Output[*ExplicitProxySettings]{
-		OutputState: i.ToExplicitProxySettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Explicit Proxy Settings in Firewall Policy.
 type ExplicitProxySettingsOutput struct{ *pulumi.OutputState }
 
@@ -449,12 +400,6 @@ func (o ExplicitProxySettingsOutput) ToExplicitProxySettingsPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExplicitProxySettings) *ExplicitProxySettings {
 		return &v
 	}).(ExplicitProxySettingsPtrOutput)
-}
-
-func (o ExplicitProxySettingsOutput) ToOutput(ctx context.Context) pulumix.Output[ExplicitProxySettings] {
-	return pulumix.Output[ExplicitProxySettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // When set to true, explicit proxy mode is enabled.
@@ -494,12 +439,6 @@ func (o ExplicitProxySettingsPtrOutput) ToExplicitProxySettingsPtrOutput() Expli
 
 func (o ExplicitProxySettingsPtrOutput) ToExplicitProxySettingsPtrOutputWithContext(ctx context.Context) ExplicitProxySettingsPtrOutput {
 	return o
-}
-
-func (o ExplicitProxySettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExplicitProxySettings] {
-	return pulumix.Output[*ExplicitProxySettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExplicitProxySettingsPtrOutput) Elem() ExplicitProxySettingsOutput {
@@ -591,12 +530,6 @@ func (o ExplicitProxySettingsResponseOutput) ToExplicitProxySettingsResponseOutp
 	return o
 }
 
-func (o ExplicitProxySettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExplicitProxySettingsResponse] {
-	return pulumix.Output[ExplicitProxySettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // When set to true, explicit proxy mode is enabled.
 func (o ExplicitProxySettingsResponseOutput) EnableExplicitProxy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ExplicitProxySettingsResponse) *bool { return v.EnableExplicitProxy }).(pulumi.BoolPtrOutput)
@@ -634,12 +567,6 @@ func (o ExplicitProxySettingsResponsePtrOutput) ToExplicitProxySettingsResponseP
 
 func (o ExplicitProxySettingsResponsePtrOutput) ToExplicitProxySettingsResponsePtrOutputWithContext(ctx context.Context) ExplicitProxySettingsResponsePtrOutput {
 	return o
-}
-
-func (o ExplicitProxySettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExplicitProxySettingsResponse] {
-	return pulumix.Output[*ExplicitProxySettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExplicitProxySettingsResponsePtrOutput) Elem() ExplicitProxySettingsResponseOutput {
@@ -741,12 +668,6 @@ func (i FilterItemsArgs) ToFilterItemsOutputWithContext(ctx context.Context) Fil
 	return pulumi.ToOutputWithContext(ctx, i).(FilterItemsOutput)
 }
 
-func (i FilterItemsArgs) ToOutput(ctx context.Context) pulumix.Output[FilterItems] {
-	return pulumix.Output[FilterItems]{
-		OutputState: i.ToFilterItemsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FilterItemsArrayInput is an input type that accepts FilterItemsArray and FilterItemsArrayOutput values.
 // You can construct a concrete instance of `FilterItemsArrayInput` via:
 //
@@ -772,12 +693,6 @@ func (i FilterItemsArray) ToFilterItemsArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(FilterItemsArrayOutput)
 }
 
-func (i FilterItemsArray) ToOutput(ctx context.Context) pulumix.Output[[]FilterItems] {
-	return pulumix.Output[[]FilterItems]{
-		OutputState: i.ToFilterItemsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Will contain the filter name and values to operate on
 type FilterItemsOutput struct{ *pulumi.OutputState }
 
@@ -791,12 +706,6 @@ func (o FilterItemsOutput) ToFilterItemsOutput() FilterItemsOutput {
 
 func (o FilterItemsOutput) ToFilterItemsOutputWithContext(ctx context.Context) FilterItemsOutput {
 	return o
-}
-
-func (o FilterItemsOutput) ToOutput(ctx context.Context) pulumix.Output[FilterItems] {
-	return pulumix.Output[FilterItems]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the field we would like to filter
@@ -821,12 +730,6 @@ func (o FilterItemsArrayOutput) ToFilterItemsArrayOutput() FilterItemsArrayOutpu
 
 func (o FilterItemsArrayOutput) ToFilterItemsArrayOutputWithContext(ctx context.Context) FilterItemsArrayOutput {
 	return o
-}
-
-func (o FilterItemsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FilterItems] {
-	return pulumix.Output[[]FilterItems]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FilterItemsArrayOutput) Index(i pulumi.IntInput) FilterItemsOutput {
@@ -874,12 +777,6 @@ func (i FirewallPolicyCertificateAuthorityArgs) ToFirewallPolicyCertificateAutho
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyCertificateAuthorityOutput)
 }
 
-func (i FirewallPolicyCertificateAuthorityArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyCertificateAuthority] {
-	return pulumix.Output[FirewallPolicyCertificateAuthority]{
-		OutputState: i.ToFirewallPolicyCertificateAuthorityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FirewallPolicyCertificateAuthorityArgs) ToFirewallPolicyCertificateAuthorityPtrOutput() FirewallPolicyCertificateAuthorityPtrOutput {
 	return i.ToFirewallPolicyCertificateAuthorityPtrOutputWithContext(context.Background())
 }
@@ -921,12 +818,6 @@ func (i *firewallPolicyCertificateAuthorityPtrType) ToFirewallPolicyCertificateA
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyCertificateAuthorityPtrOutput)
 }
 
-func (i *firewallPolicyCertificateAuthorityPtrType) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyCertificateAuthority] {
-	return pulumix.Output[*FirewallPolicyCertificateAuthority]{
-		OutputState: i.ToFirewallPolicyCertificateAuthorityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Trusted Root certificates properties for tls.
 type FirewallPolicyCertificateAuthorityOutput struct{ *pulumi.OutputState }
 
@@ -952,12 +843,6 @@ func (o FirewallPolicyCertificateAuthorityOutput) ToFirewallPolicyCertificateAut
 	}).(FirewallPolicyCertificateAuthorityPtrOutput)
 }
 
-func (o FirewallPolicyCertificateAuthorityOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyCertificateAuthority] {
-	return pulumix.Output[FirewallPolicyCertificateAuthority]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault.
 func (o FirewallPolicyCertificateAuthorityOutput) KeyVaultSecretId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallPolicyCertificateAuthority) *string { return v.KeyVaultSecretId }).(pulumi.StringPtrOutput)
@@ -980,12 +865,6 @@ func (o FirewallPolicyCertificateAuthorityPtrOutput) ToFirewallPolicyCertificate
 
 func (o FirewallPolicyCertificateAuthorityPtrOutput) ToFirewallPolicyCertificateAuthorityPtrOutputWithContext(ctx context.Context) FirewallPolicyCertificateAuthorityPtrOutput {
 	return o
-}
-
-func (o FirewallPolicyCertificateAuthorityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyCertificateAuthority] {
-	return pulumix.Output[*FirewallPolicyCertificateAuthority]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicyCertificateAuthorityPtrOutput) Elem() FirewallPolicyCertificateAuthorityOutput {
@@ -1041,12 +920,6 @@ func (o FirewallPolicyCertificateAuthorityResponseOutput) ToFirewallPolicyCertif
 	return o
 }
 
-func (o FirewallPolicyCertificateAuthorityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyCertificateAuthorityResponse] {
-	return pulumix.Output[FirewallPolicyCertificateAuthorityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault.
 func (o FirewallPolicyCertificateAuthorityResponseOutput) KeyVaultSecretId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallPolicyCertificateAuthorityResponse) *string { return v.KeyVaultSecretId }).(pulumi.StringPtrOutput)
@@ -1069,12 +942,6 @@ func (o FirewallPolicyCertificateAuthorityResponsePtrOutput) ToFirewallPolicyCer
 
 func (o FirewallPolicyCertificateAuthorityResponsePtrOutput) ToFirewallPolicyCertificateAuthorityResponsePtrOutputWithContext(ctx context.Context) FirewallPolicyCertificateAuthorityResponsePtrOutput {
 	return o
-}
-
-func (o FirewallPolicyCertificateAuthorityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyCertificateAuthorityResponse] {
-	return pulumix.Output[*FirewallPolicyCertificateAuthorityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicyCertificateAuthorityResponsePtrOutput) Elem() FirewallPolicyCertificateAuthorityResponseOutput {
@@ -1150,12 +1017,6 @@ func (i FirewallPolicyInsightsArgs) ToFirewallPolicyInsightsOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyInsightsOutput)
 }
 
-func (i FirewallPolicyInsightsArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyInsights] {
-	return pulumix.Output[FirewallPolicyInsights]{
-		OutputState: i.ToFirewallPolicyInsightsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FirewallPolicyInsightsArgs) ToFirewallPolicyInsightsPtrOutput() FirewallPolicyInsightsPtrOutput {
 	return i.ToFirewallPolicyInsightsPtrOutputWithContext(context.Background())
 }
@@ -1197,12 +1058,6 @@ func (i *firewallPolicyInsightsPtrType) ToFirewallPolicyInsightsPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyInsightsPtrOutput)
 }
 
-func (i *firewallPolicyInsightsPtrType) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyInsights] {
-	return pulumix.Output[*FirewallPolicyInsights]{
-		OutputState: i.ToFirewallPolicyInsightsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Firewall Policy Insights.
 type FirewallPolicyInsightsOutput struct{ *pulumi.OutputState }
 
@@ -1226,12 +1081,6 @@ func (o FirewallPolicyInsightsOutput) ToFirewallPolicyInsightsPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FirewallPolicyInsights) *FirewallPolicyInsights {
 		return &v
 	}).(FirewallPolicyInsightsPtrOutput)
-}
-
-func (o FirewallPolicyInsightsOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyInsights] {
-	return pulumix.Output[FirewallPolicyInsights]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A flag to indicate if the insights are enabled on the policy.
@@ -1261,12 +1110,6 @@ func (o FirewallPolicyInsightsPtrOutput) ToFirewallPolicyInsightsPtrOutput() Fir
 
 func (o FirewallPolicyInsightsPtrOutput) ToFirewallPolicyInsightsPtrOutputWithContext(ctx context.Context) FirewallPolicyInsightsPtrOutput {
 	return o
-}
-
-func (o FirewallPolicyInsightsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyInsights] {
-	return pulumix.Output[*FirewallPolicyInsights]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicyInsightsPtrOutput) Elem() FirewallPolicyInsightsOutput {
@@ -1334,12 +1177,6 @@ func (o FirewallPolicyInsightsResponseOutput) ToFirewallPolicyInsightsResponseOu
 	return o
 }
 
-func (o FirewallPolicyInsightsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyInsightsResponse] {
-	return pulumix.Output[FirewallPolicyInsightsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A flag to indicate if the insights are enabled on the policy.
 func (o FirewallPolicyInsightsResponseOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FirewallPolicyInsightsResponse) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
@@ -1369,12 +1206,6 @@ func (o FirewallPolicyInsightsResponsePtrOutput) ToFirewallPolicyInsightsRespons
 
 func (o FirewallPolicyInsightsResponsePtrOutput) ToFirewallPolicyInsightsResponsePtrOutputWithContext(ctx context.Context) FirewallPolicyInsightsResponsePtrOutput {
 	return o
-}
-
-func (o FirewallPolicyInsightsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyInsightsResponse] {
-	return pulumix.Output[*FirewallPolicyInsightsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicyInsightsResponsePtrOutput) Elem() FirewallPolicyInsightsResponseOutput {
@@ -1456,12 +1287,6 @@ func (i FirewallPolicyIntrusionDetectionArgs) ToFirewallPolicyIntrusionDetection
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyIntrusionDetectionOutput)
 }
 
-func (i FirewallPolicyIntrusionDetectionArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyIntrusionDetection] {
-	return pulumix.Output[FirewallPolicyIntrusionDetection]{
-		OutputState: i.ToFirewallPolicyIntrusionDetectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FirewallPolicyIntrusionDetectionArgs) ToFirewallPolicyIntrusionDetectionPtrOutput() FirewallPolicyIntrusionDetectionPtrOutput {
 	return i.ToFirewallPolicyIntrusionDetectionPtrOutputWithContext(context.Background())
 }
@@ -1503,12 +1328,6 @@ func (i *firewallPolicyIntrusionDetectionPtrType) ToFirewallPolicyIntrusionDetec
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyIntrusionDetectionPtrOutput)
 }
 
-func (i *firewallPolicyIntrusionDetectionPtrType) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyIntrusionDetection] {
-	return pulumix.Output[*FirewallPolicyIntrusionDetection]{
-		OutputState: i.ToFirewallPolicyIntrusionDetectionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for intrusion detection mode and rules.
 type FirewallPolicyIntrusionDetectionOutput struct{ *pulumi.OutputState }
 
@@ -1532,12 +1351,6 @@ func (o FirewallPolicyIntrusionDetectionOutput) ToFirewallPolicyIntrusionDetecti
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FirewallPolicyIntrusionDetection) *FirewallPolicyIntrusionDetection {
 		return &v
 	}).(FirewallPolicyIntrusionDetectionPtrOutput)
-}
-
-func (o FirewallPolicyIntrusionDetectionOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyIntrusionDetection] {
-	return pulumix.Output[FirewallPolicyIntrusionDetection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Intrusion detection configuration properties.
@@ -1564,12 +1377,6 @@ func (o FirewallPolicyIntrusionDetectionPtrOutput) ToFirewallPolicyIntrusionDete
 
 func (o FirewallPolicyIntrusionDetectionPtrOutput) ToFirewallPolicyIntrusionDetectionPtrOutputWithContext(ctx context.Context) FirewallPolicyIntrusionDetectionPtrOutput {
 	return o
-}
-
-func (o FirewallPolicyIntrusionDetectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyIntrusionDetection] {
-	return pulumix.Output[*FirewallPolicyIntrusionDetection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicyIntrusionDetectionPtrOutput) Elem() FirewallPolicyIntrusionDetectionOutput {
@@ -1665,12 +1472,6 @@ func (i FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsArgs) ToFirew
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsOutput)
 }
 
-func (i FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyIntrusionDetectionBypassTrafficSpecifications] {
-	return pulumix.Output[FirewallPolicyIntrusionDetectionBypassTrafficSpecifications]{
-		OutputState: i.ToFirewallPolicyIntrusionDetectionBypassTrafficSpecificationsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsArrayInput is an input type that accepts FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsArray and FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsArrayOutput values.
 // You can construct a concrete instance of `FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsArrayInput` via:
 //
@@ -1696,12 +1497,6 @@ func (i FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsArray) ToFire
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsArrayOutput)
 }
 
-func (i FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsArray) ToOutput(ctx context.Context) pulumix.Output[[]FirewallPolicyIntrusionDetectionBypassTrafficSpecifications] {
-	return pulumix.Output[[]FirewallPolicyIntrusionDetectionBypassTrafficSpecifications]{
-		OutputState: i.ToFirewallPolicyIntrusionDetectionBypassTrafficSpecificationsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Intrusion detection bypass traffic specification.
 type FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsOutput struct{ *pulumi.OutputState }
 
@@ -1715,12 +1510,6 @@ func (o FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsOutput) ToFir
 
 func (o FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsOutput) ToFirewallPolicyIntrusionDetectionBypassTrafficSpecificationsOutputWithContext(ctx context.Context) FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsOutput {
 	return o
-}
-
-func (o FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyIntrusionDetectionBypassTrafficSpecifications] {
-	return pulumix.Output[FirewallPolicyIntrusionDetectionBypassTrafficSpecifications]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the bypass traffic rule.
@@ -1783,12 +1572,6 @@ func (o FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsArrayOutput) 
 	return o
 }
 
-func (o FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FirewallPolicyIntrusionDetectionBypassTrafficSpecifications] {
-	return pulumix.Output[[]FirewallPolicyIntrusionDetectionBypassTrafficSpecifications]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsArrayOutput) Index(i pulumi.IntInput) FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallPolicyIntrusionDetectionBypassTrafficSpecifications {
 		return vs[0].([]FirewallPolicyIntrusionDetectionBypassTrafficSpecifications)[vs[1].(int)]
@@ -1828,12 +1611,6 @@ func (o FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponseOutpu
 
 func (o FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponseOutput) ToFirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponseOutputWithContext(ctx context.Context) FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponseOutput {
 	return o
-}
-
-func (o FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponse] {
-	return pulumix.Output[FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the bypass traffic rule.
@@ -1902,12 +1679,6 @@ func (o FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponseArray
 	return o
 }
 
-func (o FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponse] {
-	return pulumix.Output[[]FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponseArrayOutput) Index(i pulumi.IntInput) FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponse {
 		return vs[0].([]FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponse)[vs[1].(int)]
@@ -1957,12 +1728,6 @@ func (i FirewallPolicyIntrusionDetectionConfigurationArgs) ToFirewallPolicyIntru
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyIntrusionDetectionConfigurationOutput)
 }
 
-func (i FirewallPolicyIntrusionDetectionConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyIntrusionDetectionConfiguration] {
-	return pulumix.Output[FirewallPolicyIntrusionDetectionConfiguration]{
-		OutputState: i.ToFirewallPolicyIntrusionDetectionConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FirewallPolicyIntrusionDetectionConfigurationArgs) ToFirewallPolicyIntrusionDetectionConfigurationPtrOutput() FirewallPolicyIntrusionDetectionConfigurationPtrOutput {
 	return i.ToFirewallPolicyIntrusionDetectionConfigurationPtrOutputWithContext(context.Background())
 }
@@ -2004,12 +1769,6 @@ func (i *firewallPolicyIntrusionDetectionConfigurationPtrType) ToFirewallPolicyI
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyIntrusionDetectionConfigurationPtrOutput)
 }
 
-func (i *firewallPolicyIntrusionDetectionConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyIntrusionDetectionConfiguration] {
-	return pulumix.Output[*FirewallPolicyIntrusionDetectionConfiguration]{
-		OutputState: i.ToFirewallPolicyIntrusionDetectionConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The operation for configuring intrusion detection.
 type FirewallPolicyIntrusionDetectionConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -2033,12 +1792,6 @@ func (o FirewallPolicyIntrusionDetectionConfigurationOutput) ToFirewallPolicyInt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FirewallPolicyIntrusionDetectionConfiguration) *FirewallPolicyIntrusionDetectionConfiguration {
 		return &v
 	}).(FirewallPolicyIntrusionDetectionConfigurationPtrOutput)
-}
-
-func (o FirewallPolicyIntrusionDetectionConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyIntrusionDetectionConfiguration] {
-	return pulumix.Output[FirewallPolicyIntrusionDetectionConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of rules for traffic to bypass.
@@ -2072,12 +1825,6 @@ func (o FirewallPolicyIntrusionDetectionConfigurationPtrOutput) ToFirewallPolicy
 
 func (o FirewallPolicyIntrusionDetectionConfigurationPtrOutput) ToFirewallPolicyIntrusionDetectionConfigurationPtrOutputWithContext(ctx context.Context) FirewallPolicyIntrusionDetectionConfigurationPtrOutput {
 	return o
-}
-
-func (o FirewallPolicyIntrusionDetectionConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyIntrusionDetectionConfiguration] {
-	return pulumix.Output[*FirewallPolicyIntrusionDetectionConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicyIntrusionDetectionConfigurationPtrOutput) Elem() FirewallPolicyIntrusionDetectionConfigurationOutput {
@@ -2145,12 +1892,6 @@ func (o FirewallPolicyIntrusionDetectionConfigurationResponseOutput) ToFirewallP
 	return o
 }
 
-func (o FirewallPolicyIntrusionDetectionConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyIntrusionDetectionConfigurationResponse] {
-	return pulumix.Output[FirewallPolicyIntrusionDetectionConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of rules for traffic to bypass.
 func (o FirewallPolicyIntrusionDetectionConfigurationResponseOutput) BypassTrafficSettings() FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponseArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyIntrusionDetectionConfigurationResponse) []FirewallPolicyIntrusionDetectionBypassTrafficSpecificationsResponse {
@@ -2182,12 +1923,6 @@ func (o FirewallPolicyIntrusionDetectionConfigurationResponsePtrOutput) ToFirewa
 
 func (o FirewallPolicyIntrusionDetectionConfigurationResponsePtrOutput) ToFirewallPolicyIntrusionDetectionConfigurationResponsePtrOutputWithContext(ctx context.Context) FirewallPolicyIntrusionDetectionConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o FirewallPolicyIntrusionDetectionConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyIntrusionDetectionConfigurationResponse] {
-	return pulumix.Output[*FirewallPolicyIntrusionDetectionConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicyIntrusionDetectionConfigurationResponsePtrOutput) Elem() FirewallPolicyIntrusionDetectionConfigurationResponseOutput {
@@ -2253,12 +1988,6 @@ func (o FirewallPolicyIntrusionDetectionResponseOutput) ToFirewallPolicyIntrusio
 	return o
 }
 
-func (o FirewallPolicyIntrusionDetectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyIntrusionDetectionResponse] {
-	return pulumix.Output[FirewallPolicyIntrusionDetectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Intrusion detection configuration properties.
 func (o FirewallPolicyIntrusionDetectionResponseOutput) Configuration() FirewallPolicyIntrusionDetectionConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v FirewallPolicyIntrusionDetectionResponse) *FirewallPolicyIntrusionDetectionConfigurationResponse {
@@ -2283,12 +2012,6 @@ func (o FirewallPolicyIntrusionDetectionResponsePtrOutput) ToFirewallPolicyIntru
 
 func (o FirewallPolicyIntrusionDetectionResponsePtrOutput) ToFirewallPolicyIntrusionDetectionResponsePtrOutputWithContext(ctx context.Context) FirewallPolicyIntrusionDetectionResponsePtrOutput {
 	return o
-}
-
-func (o FirewallPolicyIntrusionDetectionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyIntrusionDetectionResponse] {
-	return pulumix.Output[*FirewallPolicyIntrusionDetectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicyIntrusionDetectionResponsePtrOutput) Elem() FirewallPolicyIntrusionDetectionResponseOutput {
@@ -2360,12 +2083,6 @@ func (i FirewallPolicyIntrusionDetectionSignatureSpecificationArgs) ToFirewallPo
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyIntrusionDetectionSignatureSpecificationOutput)
 }
 
-func (i FirewallPolicyIntrusionDetectionSignatureSpecificationArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyIntrusionDetectionSignatureSpecification] {
-	return pulumix.Output[FirewallPolicyIntrusionDetectionSignatureSpecification]{
-		OutputState: i.ToFirewallPolicyIntrusionDetectionSignatureSpecificationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FirewallPolicyIntrusionDetectionSignatureSpecificationArrayInput is an input type that accepts FirewallPolicyIntrusionDetectionSignatureSpecificationArray and FirewallPolicyIntrusionDetectionSignatureSpecificationArrayOutput values.
 // You can construct a concrete instance of `FirewallPolicyIntrusionDetectionSignatureSpecificationArrayInput` via:
 //
@@ -2391,12 +2108,6 @@ func (i FirewallPolicyIntrusionDetectionSignatureSpecificationArray) ToFirewallP
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyIntrusionDetectionSignatureSpecificationArrayOutput)
 }
 
-func (i FirewallPolicyIntrusionDetectionSignatureSpecificationArray) ToOutput(ctx context.Context) pulumix.Output[[]FirewallPolicyIntrusionDetectionSignatureSpecification] {
-	return pulumix.Output[[]FirewallPolicyIntrusionDetectionSignatureSpecification]{
-		OutputState: i.ToFirewallPolicyIntrusionDetectionSignatureSpecificationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Intrusion detection signatures specification states.
 type FirewallPolicyIntrusionDetectionSignatureSpecificationOutput struct{ *pulumi.OutputState }
 
@@ -2410,12 +2121,6 @@ func (o FirewallPolicyIntrusionDetectionSignatureSpecificationOutput) ToFirewall
 
 func (o FirewallPolicyIntrusionDetectionSignatureSpecificationOutput) ToFirewallPolicyIntrusionDetectionSignatureSpecificationOutputWithContext(ctx context.Context) FirewallPolicyIntrusionDetectionSignatureSpecificationOutput {
 	return o
-}
-
-func (o FirewallPolicyIntrusionDetectionSignatureSpecificationOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyIntrusionDetectionSignatureSpecification] {
-	return pulumix.Output[FirewallPolicyIntrusionDetectionSignatureSpecification]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Signature id.
@@ -2440,12 +2145,6 @@ func (o FirewallPolicyIntrusionDetectionSignatureSpecificationArrayOutput) ToFir
 
 func (o FirewallPolicyIntrusionDetectionSignatureSpecificationArrayOutput) ToFirewallPolicyIntrusionDetectionSignatureSpecificationArrayOutputWithContext(ctx context.Context) FirewallPolicyIntrusionDetectionSignatureSpecificationArrayOutput {
 	return o
-}
-
-func (o FirewallPolicyIntrusionDetectionSignatureSpecificationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FirewallPolicyIntrusionDetectionSignatureSpecification] {
-	return pulumix.Output[[]FirewallPolicyIntrusionDetectionSignatureSpecification]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicyIntrusionDetectionSignatureSpecificationArrayOutput) Index(i pulumi.IntInput) FirewallPolicyIntrusionDetectionSignatureSpecificationOutput {
@@ -2477,12 +2176,6 @@ func (o FirewallPolicyIntrusionDetectionSignatureSpecificationResponseOutput) To
 	return o
 }
 
-func (o FirewallPolicyIntrusionDetectionSignatureSpecificationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyIntrusionDetectionSignatureSpecificationResponse] {
-	return pulumix.Output[FirewallPolicyIntrusionDetectionSignatureSpecificationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Signature id.
 func (o FirewallPolicyIntrusionDetectionSignatureSpecificationResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallPolicyIntrusionDetectionSignatureSpecificationResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -2505,12 +2198,6 @@ func (o FirewallPolicyIntrusionDetectionSignatureSpecificationResponseArrayOutpu
 
 func (o FirewallPolicyIntrusionDetectionSignatureSpecificationResponseArrayOutput) ToFirewallPolicyIntrusionDetectionSignatureSpecificationResponseArrayOutputWithContext(ctx context.Context) FirewallPolicyIntrusionDetectionSignatureSpecificationResponseArrayOutput {
 	return o
-}
-
-func (o FirewallPolicyIntrusionDetectionSignatureSpecificationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FirewallPolicyIntrusionDetectionSignatureSpecificationResponse] {
-	return pulumix.Output[[]FirewallPolicyIntrusionDetectionSignatureSpecificationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicyIntrusionDetectionSignatureSpecificationResponseArrayOutput) Index(i pulumi.IntInput) FirewallPolicyIntrusionDetectionSignatureSpecificationResponseOutput {
@@ -2558,12 +2245,6 @@ func (i FirewallPolicyLogAnalyticsResourcesArgs) ToFirewallPolicyLogAnalyticsRes
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyLogAnalyticsResourcesOutput)
 }
 
-func (i FirewallPolicyLogAnalyticsResourcesArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyLogAnalyticsResources] {
-	return pulumix.Output[FirewallPolicyLogAnalyticsResources]{
-		OutputState: i.ToFirewallPolicyLogAnalyticsResourcesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FirewallPolicyLogAnalyticsResourcesArgs) ToFirewallPolicyLogAnalyticsResourcesPtrOutput() FirewallPolicyLogAnalyticsResourcesPtrOutput {
 	return i.ToFirewallPolicyLogAnalyticsResourcesPtrOutputWithContext(context.Background())
 }
@@ -2605,12 +2286,6 @@ func (i *firewallPolicyLogAnalyticsResourcesPtrType) ToFirewallPolicyLogAnalytic
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyLogAnalyticsResourcesPtrOutput)
 }
 
-func (i *firewallPolicyLogAnalyticsResourcesPtrType) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyLogAnalyticsResources] {
-	return pulumix.Output[*FirewallPolicyLogAnalyticsResources]{
-		OutputState: i.ToFirewallPolicyLogAnalyticsResourcesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Log Analytics Resources for Firewall Policy Insights.
 type FirewallPolicyLogAnalyticsResourcesOutput struct{ *pulumi.OutputState }
 
@@ -2636,12 +2311,6 @@ func (o FirewallPolicyLogAnalyticsResourcesOutput) ToFirewallPolicyLogAnalyticsR
 	}).(FirewallPolicyLogAnalyticsResourcesPtrOutput)
 }
 
-func (o FirewallPolicyLogAnalyticsResourcesOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyLogAnalyticsResources] {
-	return pulumix.Output[FirewallPolicyLogAnalyticsResources]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The default workspace Id for Firewall Policy Insights.
 func (o FirewallPolicyLogAnalyticsResourcesOutput) DefaultWorkspaceId() SubResourcePtrOutput {
 	return o.ApplyT(func(v FirewallPolicyLogAnalyticsResources) *SubResource { return v.DefaultWorkspaceId }).(SubResourcePtrOutput)
@@ -2664,12 +2333,6 @@ func (o FirewallPolicyLogAnalyticsResourcesPtrOutput) ToFirewallPolicyLogAnalyti
 
 func (o FirewallPolicyLogAnalyticsResourcesPtrOutput) ToFirewallPolicyLogAnalyticsResourcesPtrOutputWithContext(ctx context.Context) FirewallPolicyLogAnalyticsResourcesPtrOutput {
 	return o
-}
-
-func (o FirewallPolicyLogAnalyticsResourcesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyLogAnalyticsResources] {
-	return pulumix.Output[*FirewallPolicyLogAnalyticsResources]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicyLogAnalyticsResourcesPtrOutput) Elem() FirewallPolicyLogAnalyticsResourcesOutput {
@@ -2725,12 +2388,6 @@ func (o FirewallPolicyLogAnalyticsResourcesResponseOutput) ToFirewallPolicyLogAn
 	return o
 }
 
-func (o FirewallPolicyLogAnalyticsResourcesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyLogAnalyticsResourcesResponse] {
-	return pulumix.Output[FirewallPolicyLogAnalyticsResourcesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The default workspace Id for Firewall Policy Insights.
 func (o FirewallPolicyLogAnalyticsResourcesResponseOutput) DefaultWorkspaceId() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v FirewallPolicyLogAnalyticsResourcesResponse) *SubResourceResponse { return v.DefaultWorkspaceId }).(SubResourceResponsePtrOutput)
@@ -2755,12 +2412,6 @@ func (o FirewallPolicyLogAnalyticsResourcesResponsePtrOutput) ToFirewallPolicyLo
 
 func (o FirewallPolicyLogAnalyticsResourcesResponsePtrOutput) ToFirewallPolicyLogAnalyticsResourcesResponsePtrOutputWithContext(ctx context.Context) FirewallPolicyLogAnalyticsResourcesResponsePtrOutput {
 	return o
-}
-
-func (o FirewallPolicyLogAnalyticsResourcesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyLogAnalyticsResourcesResponse] {
-	return pulumix.Output[*FirewallPolicyLogAnalyticsResourcesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicyLogAnalyticsResourcesResponsePtrOutput) Elem() FirewallPolicyLogAnalyticsResourcesResponseOutput {
@@ -2832,12 +2483,6 @@ func (i FirewallPolicyLogAnalyticsWorkspaceArgs) ToFirewallPolicyLogAnalyticsWor
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyLogAnalyticsWorkspaceOutput)
 }
 
-func (i FirewallPolicyLogAnalyticsWorkspaceArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyLogAnalyticsWorkspace] {
-	return pulumix.Output[FirewallPolicyLogAnalyticsWorkspace]{
-		OutputState: i.ToFirewallPolicyLogAnalyticsWorkspaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FirewallPolicyLogAnalyticsWorkspaceArrayInput is an input type that accepts FirewallPolicyLogAnalyticsWorkspaceArray and FirewallPolicyLogAnalyticsWorkspaceArrayOutput values.
 // You can construct a concrete instance of `FirewallPolicyLogAnalyticsWorkspaceArrayInput` via:
 //
@@ -2863,12 +2508,6 @@ func (i FirewallPolicyLogAnalyticsWorkspaceArray) ToFirewallPolicyLogAnalyticsWo
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyLogAnalyticsWorkspaceArrayOutput)
 }
 
-func (i FirewallPolicyLogAnalyticsWorkspaceArray) ToOutput(ctx context.Context) pulumix.Output[[]FirewallPolicyLogAnalyticsWorkspace] {
-	return pulumix.Output[[]FirewallPolicyLogAnalyticsWorkspace]{
-		OutputState: i.ToFirewallPolicyLogAnalyticsWorkspaceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Log Analytics Workspace for Firewall Policy Insights.
 type FirewallPolicyLogAnalyticsWorkspaceOutput struct{ *pulumi.OutputState }
 
@@ -2882,12 +2521,6 @@ func (o FirewallPolicyLogAnalyticsWorkspaceOutput) ToFirewallPolicyLogAnalyticsW
 
 func (o FirewallPolicyLogAnalyticsWorkspaceOutput) ToFirewallPolicyLogAnalyticsWorkspaceOutputWithContext(ctx context.Context) FirewallPolicyLogAnalyticsWorkspaceOutput {
 	return o
-}
-
-func (o FirewallPolicyLogAnalyticsWorkspaceOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyLogAnalyticsWorkspace] {
-	return pulumix.Output[FirewallPolicyLogAnalyticsWorkspace]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Region to configure the Workspace.
@@ -2912,12 +2545,6 @@ func (o FirewallPolicyLogAnalyticsWorkspaceArrayOutput) ToFirewallPolicyLogAnaly
 
 func (o FirewallPolicyLogAnalyticsWorkspaceArrayOutput) ToFirewallPolicyLogAnalyticsWorkspaceArrayOutputWithContext(ctx context.Context) FirewallPolicyLogAnalyticsWorkspaceArrayOutput {
 	return o
-}
-
-func (o FirewallPolicyLogAnalyticsWorkspaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FirewallPolicyLogAnalyticsWorkspace] {
-	return pulumix.Output[[]FirewallPolicyLogAnalyticsWorkspace]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicyLogAnalyticsWorkspaceArrayOutput) Index(i pulumi.IntInput) FirewallPolicyLogAnalyticsWorkspaceOutput {
@@ -2949,12 +2576,6 @@ func (o FirewallPolicyLogAnalyticsWorkspaceResponseOutput) ToFirewallPolicyLogAn
 	return o
 }
 
-func (o FirewallPolicyLogAnalyticsWorkspaceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyLogAnalyticsWorkspaceResponse] {
-	return pulumix.Output[FirewallPolicyLogAnalyticsWorkspaceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Region to configure the Workspace.
 func (o FirewallPolicyLogAnalyticsWorkspaceResponseOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallPolicyLogAnalyticsWorkspaceResponse) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -2977,12 +2598,6 @@ func (o FirewallPolicyLogAnalyticsWorkspaceResponseArrayOutput) ToFirewallPolicy
 
 func (o FirewallPolicyLogAnalyticsWorkspaceResponseArrayOutput) ToFirewallPolicyLogAnalyticsWorkspaceResponseArrayOutputWithContext(ctx context.Context) FirewallPolicyLogAnalyticsWorkspaceResponseArrayOutput {
 	return o
-}
-
-func (o FirewallPolicyLogAnalyticsWorkspaceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FirewallPolicyLogAnalyticsWorkspaceResponse] {
-	return pulumix.Output[[]FirewallPolicyLogAnalyticsWorkspaceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicyLogAnalyticsWorkspaceResponseArrayOutput) Index(i pulumi.IntInput) FirewallPolicyLogAnalyticsWorkspaceResponseOutput {
@@ -3026,12 +2641,6 @@ func (i FirewallPolicySNATArgs) ToFirewallPolicySNATOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicySNATOutput)
 }
 
-func (i FirewallPolicySNATArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicySNAT] {
-	return pulumix.Output[FirewallPolicySNAT]{
-		OutputState: i.ToFirewallPolicySNATOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FirewallPolicySNATArgs) ToFirewallPolicySNATPtrOutput() FirewallPolicySNATPtrOutput {
 	return i.ToFirewallPolicySNATPtrOutputWithContext(context.Background())
 }
@@ -3073,12 +2682,6 @@ func (i *firewallPolicySNATPtrType) ToFirewallPolicySNATPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicySNATPtrOutput)
 }
 
-func (i *firewallPolicySNATPtrType) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicySNAT] {
-	return pulumix.Output[*FirewallPolicySNAT]{
-		OutputState: i.ToFirewallPolicySNATPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The private IP addresses/IP ranges to which traffic will not be SNAT.
 type FirewallPolicySNATOutput struct{ *pulumi.OutputState }
 
@@ -3104,12 +2707,6 @@ func (o FirewallPolicySNATOutput) ToFirewallPolicySNATPtrOutputWithContext(ctx c
 	}).(FirewallPolicySNATPtrOutput)
 }
 
-func (o FirewallPolicySNATOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicySNAT] {
-	return pulumix.Output[FirewallPolicySNAT]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of private IP addresses/IP address ranges to not be SNAT.
 func (o FirewallPolicySNATOutput) PrivateRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicySNAT) []string { return v.PrivateRanges }).(pulumi.StringArrayOutput)
@@ -3127,12 +2724,6 @@ func (o FirewallPolicySNATPtrOutput) ToFirewallPolicySNATPtrOutput() FirewallPol
 
 func (o FirewallPolicySNATPtrOutput) ToFirewallPolicySNATPtrOutputWithContext(ctx context.Context) FirewallPolicySNATPtrOutput {
 	return o
-}
-
-func (o FirewallPolicySNATPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicySNAT] {
-	return pulumix.Output[*FirewallPolicySNAT]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicySNATPtrOutput) Elem() FirewallPolicySNATOutput {
@@ -3176,12 +2767,6 @@ func (o FirewallPolicySNATResponseOutput) ToFirewallPolicySNATResponseOutputWith
 	return o
 }
 
-func (o FirewallPolicySNATResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicySNATResponse] {
-	return pulumix.Output[FirewallPolicySNATResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of private IP addresses/IP address ranges to not be SNAT.
 func (o FirewallPolicySNATResponseOutput) PrivateRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicySNATResponse) []string { return v.PrivateRanges }).(pulumi.StringArrayOutput)
@@ -3199,12 +2784,6 @@ func (o FirewallPolicySNATResponsePtrOutput) ToFirewallPolicySNATResponsePtrOutp
 
 func (o FirewallPolicySNATResponsePtrOutput) ToFirewallPolicySNATResponsePtrOutputWithContext(ctx context.Context) FirewallPolicySNATResponsePtrOutput {
 	return o
-}
-
-func (o FirewallPolicySNATResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicySNATResponse] {
-	return pulumix.Output[*FirewallPolicySNATResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicySNATResponsePtrOutput) Elem() FirewallPolicySNATResponseOutput {
@@ -3262,12 +2841,6 @@ func (i FirewallPolicySQLArgs) ToFirewallPolicySQLOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicySQLOutput)
 }
 
-func (i FirewallPolicySQLArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicySQL] {
-	return pulumix.Output[FirewallPolicySQL]{
-		OutputState: i.ToFirewallPolicySQLOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FirewallPolicySQLArgs) ToFirewallPolicySQLPtrOutput() FirewallPolicySQLPtrOutput {
 	return i.ToFirewallPolicySQLPtrOutputWithContext(context.Background())
 }
@@ -3309,12 +2882,6 @@ func (i *firewallPolicySQLPtrType) ToFirewallPolicySQLPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicySQLPtrOutput)
 }
 
-func (i *firewallPolicySQLPtrType) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicySQL] {
-	return pulumix.Output[*FirewallPolicySQL]{
-		OutputState: i.ToFirewallPolicySQLPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SQL Settings in Firewall Policy.
 type FirewallPolicySQLOutput struct{ *pulumi.OutputState }
 
@@ -3340,12 +2907,6 @@ func (o FirewallPolicySQLOutput) ToFirewallPolicySQLPtrOutputWithContext(ctx con
 	}).(FirewallPolicySQLPtrOutput)
 }
 
-func (o FirewallPolicySQLOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicySQL] {
-	return pulumix.Output[FirewallPolicySQL]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A flag to indicate if SQL Redirect traffic filtering is enabled. Turning on the flag requires no rule using port 11000-11999.
 func (o FirewallPolicySQLOutput) AllowSqlRedirect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FirewallPolicySQL) *bool { return v.AllowSqlRedirect }).(pulumi.BoolPtrOutput)
@@ -3363,12 +2924,6 @@ func (o FirewallPolicySQLPtrOutput) ToFirewallPolicySQLPtrOutput() FirewallPolic
 
 func (o FirewallPolicySQLPtrOutput) ToFirewallPolicySQLPtrOutputWithContext(ctx context.Context) FirewallPolicySQLPtrOutput {
 	return o
-}
-
-func (o FirewallPolicySQLPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicySQL] {
-	return pulumix.Output[*FirewallPolicySQL]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicySQLPtrOutput) Elem() FirewallPolicySQLOutput {
@@ -3412,12 +2967,6 @@ func (o FirewallPolicySQLResponseOutput) ToFirewallPolicySQLResponseOutputWithCo
 	return o
 }
 
-func (o FirewallPolicySQLResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicySQLResponse] {
-	return pulumix.Output[FirewallPolicySQLResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A flag to indicate if SQL Redirect traffic filtering is enabled. Turning on the flag requires no rule using port 11000-11999.
 func (o FirewallPolicySQLResponseOutput) AllowSqlRedirect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FirewallPolicySQLResponse) *bool { return v.AllowSqlRedirect }).(pulumi.BoolPtrOutput)
@@ -3435,12 +2984,6 @@ func (o FirewallPolicySQLResponsePtrOutput) ToFirewallPolicySQLResponsePtrOutput
 
 func (o FirewallPolicySQLResponsePtrOutput) ToFirewallPolicySQLResponsePtrOutputWithContext(ctx context.Context) FirewallPolicySQLResponsePtrOutput {
 	return o
-}
-
-func (o FirewallPolicySQLResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicySQLResponse] {
-	return pulumix.Output[*FirewallPolicySQLResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicySQLResponsePtrOutput) Elem() FirewallPolicySQLResponseOutput {
@@ -3498,12 +3041,6 @@ func (i FirewallPolicySkuArgs) ToFirewallPolicySkuOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicySkuOutput)
 }
 
-func (i FirewallPolicySkuArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicySku] {
-	return pulumix.Output[FirewallPolicySku]{
-		OutputState: i.ToFirewallPolicySkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FirewallPolicySkuArgs) ToFirewallPolicySkuPtrOutput() FirewallPolicySkuPtrOutput {
 	return i.ToFirewallPolicySkuPtrOutputWithContext(context.Background())
 }
@@ -3545,12 +3082,6 @@ func (i *firewallPolicySkuPtrType) ToFirewallPolicySkuPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicySkuPtrOutput)
 }
 
-func (i *firewallPolicySkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicySku] {
-	return pulumix.Output[*FirewallPolicySku]{
-		OutputState: i.ToFirewallPolicySkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SKU of Firewall policy.
 type FirewallPolicySkuOutput struct{ *pulumi.OutputState }
 
@@ -3576,12 +3107,6 @@ func (o FirewallPolicySkuOutput) ToFirewallPolicySkuPtrOutputWithContext(ctx con
 	}).(FirewallPolicySkuPtrOutput)
 }
 
-func (o FirewallPolicySkuOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicySku] {
-	return pulumix.Output[FirewallPolicySku]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Tier of Firewall Policy.
 func (o FirewallPolicySkuOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallPolicySku) *string { return v.Tier }).(pulumi.StringPtrOutput)
@@ -3599,12 +3124,6 @@ func (o FirewallPolicySkuPtrOutput) ToFirewallPolicySkuPtrOutput() FirewallPolic
 
 func (o FirewallPolicySkuPtrOutput) ToFirewallPolicySkuPtrOutputWithContext(ctx context.Context) FirewallPolicySkuPtrOutput {
 	return o
-}
-
-func (o FirewallPolicySkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicySku] {
-	return pulumix.Output[*FirewallPolicySku]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicySkuPtrOutput) Elem() FirewallPolicySkuOutput {
@@ -3648,12 +3167,6 @@ func (o FirewallPolicySkuResponseOutput) ToFirewallPolicySkuResponseOutputWithCo
 	return o
 }
 
-func (o FirewallPolicySkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicySkuResponse] {
-	return pulumix.Output[FirewallPolicySkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Tier of Firewall Policy.
 func (o FirewallPolicySkuResponseOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallPolicySkuResponse) *string { return v.Tier }).(pulumi.StringPtrOutput)
@@ -3671,12 +3184,6 @@ func (o FirewallPolicySkuResponsePtrOutput) ToFirewallPolicySkuResponsePtrOutput
 
 func (o FirewallPolicySkuResponsePtrOutput) ToFirewallPolicySkuResponsePtrOutputWithContext(ctx context.Context) FirewallPolicySkuResponsePtrOutput {
 	return o
-}
-
-func (o FirewallPolicySkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicySkuResponse] {
-	return pulumix.Output[*FirewallPolicySkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicySkuResponsePtrOutput) Elem() FirewallPolicySkuResponseOutput {
@@ -3738,12 +3245,6 @@ func (i FirewallPolicyThreatIntelWhitelistArgs) ToFirewallPolicyThreatIntelWhite
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyThreatIntelWhitelistOutput)
 }
 
-func (i FirewallPolicyThreatIntelWhitelistArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyThreatIntelWhitelist] {
-	return pulumix.Output[FirewallPolicyThreatIntelWhitelist]{
-		OutputState: i.ToFirewallPolicyThreatIntelWhitelistOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FirewallPolicyThreatIntelWhitelistArgs) ToFirewallPolicyThreatIntelWhitelistPtrOutput() FirewallPolicyThreatIntelWhitelistPtrOutput {
 	return i.ToFirewallPolicyThreatIntelWhitelistPtrOutputWithContext(context.Background())
 }
@@ -3785,12 +3286,6 @@ func (i *firewallPolicyThreatIntelWhitelistPtrType) ToFirewallPolicyThreatIntelW
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyThreatIntelWhitelistPtrOutput)
 }
 
-func (i *firewallPolicyThreatIntelWhitelistPtrType) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyThreatIntelWhitelist] {
-	return pulumix.Output[*FirewallPolicyThreatIntelWhitelist]{
-		OutputState: i.ToFirewallPolicyThreatIntelWhitelistPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ThreatIntel Whitelist for Firewall Policy.
 type FirewallPolicyThreatIntelWhitelistOutput struct{ *pulumi.OutputState }
 
@@ -3816,12 +3311,6 @@ func (o FirewallPolicyThreatIntelWhitelistOutput) ToFirewallPolicyThreatIntelWhi
 	}).(FirewallPolicyThreatIntelWhitelistPtrOutput)
 }
 
-func (o FirewallPolicyThreatIntelWhitelistOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyThreatIntelWhitelist] {
-	return pulumix.Output[FirewallPolicyThreatIntelWhitelist]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of FQDNs for the ThreatIntel Whitelist.
 func (o FirewallPolicyThreatIntelWhitelistOutput) Fqdns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyThreatIntelWhitelist) []string { return v.Fqdns }).(pulumi.StringArrayOutput)
@@ -3844,12 +3333,6 @@ func (o FirewallPolicyThreatIntelWhitelistPtrOutput) ToFirewallPolicyThreatIntel
 
 func (o FirewallPolicyThreatIntelWhitelistPtrOutput) ToFirewallPolicyThreatIntelWhitelistPtrOutputWithContext(ctx context.Context) FirewallPolicyThreatIntelWhitelistPtrOutput {
 	return o
-}
-
-func (o FirewallPolicyThreatIntelWhitelistPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyThreatIntelWhitelist] {
-	return pulumix.Output[*FirewallPolicyThreatIntelWhitelist]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicyThreatIntelWhitelistPtrOutput) Elem() FirewallPolicyThreatIntelWhitelistOutput {
@@ -3905,12 +3388,6 @@ func (o FirewallPolicyThreatIntelWhitelistResponseOutput) ToFirewallPolicyThreat
 	return o
 }
 
-func (o FirewallPolicyThreatIntelWhitelistResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyThreatIntelWhitelistResponse] {
-	return pulumix.Output[FirewallPolicyThreatIntelWhitelistResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of FQDNs for the ThreatIntel Whitelist.
 func (o FirewallPolicyThreatIntelWhitelistResponseOutput) Fqdns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyThreatIntelWhitelistResponse) []string { return v.Fqdns }).(pulumi.StringArrayOutput)
@@ -3933,12 +3410,6 @@ func (o FirewallPolicyThreatIntelWhitelistResponsePtrOutput) ToFirewallPolicyThr
 
 func (o FirewallPolicyThreatIntelWhitelistResponsePtrOutput) ToFirewallPolicyThreatIntelWhitelistResponsePtrOutputWithContext(ctx context.Context) FirewallPolicyThreatIntelWhitelistResponsePtrOutput {
 	return o
-}
-
-func (o FirewallPolicyThreatIntelWhitelistResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyThreatIntelWhitelistResponse] {
-	return pulumix.Output[*FirewallPolicyThreatIntelWhitelistResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicyThreatIntelWhitelistResponsePtrOutput) Elem() FirewallPolicyThreatIntelWhitelistResponseOutput {
@@ -4006,12 +3477,6 @@ func (i FirewallPolicyTransportSecurityArgs) ToFirewallPolicyTransportSecurityOu
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyTransportSecurityOutput)
 }
 
-func (i FirewallPolicyTransportSecurityArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyTransportSecurity] {
-	return pulumix.Output[FirewallPolicyTransportSecurity]{
-		OutputState: i.ToFirewallPolicyTransportSecurityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FirewallPolicyTransportSecurityArgs) ToFirewallPolicyTransportSecurityPtrOutput() FirewallPolicyTransportSecurityPtrOutput {
 	return i.ToFirewallPolicyTransportSecurityPtrOutputWithContext(context.Background())
 }
@@ -4053,12 +3518,6 @@ func (i *firewallPolicyTransportSecurityPtrType) ToFirewallPolicyTransportSecuri
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallPolicyTransportSecurityPtrOutput)
 }
 
-func (i *firewallPolicyTransportSecurityPtrType) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyTransportSecurity] {
-	return pulumix.Output[*FirewallPolicyTransportSecurity]{
-		OutputState: i.ToFirewallPolicyTransportSecurityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration needed to perform TLS termination & initiation.
 type FirewallPolicyTransportSecurityOutput struct{ *pulumi.OutputState }
 
@@ -4084,12 +3543,6 @@ func (o FirewallPolicyTransportSecurityOutput) ToFirewallPolicyTransportSecurity
 	}).(FirewallPolicyTransportSecurityPtrOutput)
 }
 
-func (o FirewallPolicyTransportSecurityOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyTransportSecurity] {
-	return pulumix.Output[FirewallPolicyTransportSecurity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The CA used for intermediate CA generation.
 func (o FirewallPolicyTransportSecurityOutput) CertificateAuthority() FirewallPolicyCertificateAuthorityPtrOutput {
 	return o.ApplyT(func(v FirewallPolicyTransportSecurity) *FirewallPolicyCertificateAuthority {
@@ -4109,12 +3562,6 @@ func (o FirewallPolicyTransportSecurityPtrOutput) ToFirewallPolicyTransportSecur
 
 func (o FirewallPolicyTransportSecurityPtrOutput) ToFirewallPolicyTransportSecurityPtrOutputWithContext(ctx context.Context) FirewallPolicyTransportSecurityPtrOutput {
 	return o
-}
-
-func (o FirewallPolicyTransportSecurityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyTransportSecurity] {
-	return pulumix.Output[*FirewallPolicyTransportSecurity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicyTransportSecurityPtrOutput) Elem() FirewallPolicyTransportSecurityOutput {
@@ -4158,12 +3605,6 @@ func (o FirewallPolicyTransportSecurityResponseOutput) ToFirewallPolicyTransport
 	return o
 }
 
-func (o FirewallPolicyTransportSecurityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallPolicyTransportSecurityResponse] {
-	return pulumix.Output[FirewallPolicyTransportSecurityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The CA used for intermediate CA generation.
 func (o FirewallPolicyTransportSecurityResponseOutput) CertificateAuthority() FirewallPolicyCertificateAuthorityResponsePtrOutput {
 	return o.ApplyT(func(v FirewallPolicyTransportSecurityResponse) *FirewallPolicyCertificateAuthorityResponse {
@@ -4183,12 +3624,6 @@ func (o FirewallPolicyTransportSecurityResponsePtrOutput) ToFirewallPolicyTransp
 
 func (o FirewallPolicyTransportSecurityResponsePtrOutput) ToFirewallPolicyTransportSecurityResponsePtrOutputWithContext(ctx context.Context) FirewallPolicyTransportSecurityResponsePtrOutput {
 	return o
-}
-
-func (o FirewallPolicyTransportSecurityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FirewallPolicyTransportSecurityResponse] {
-	return pulumix.Output[*FirewallPolicyTransportSecurityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallPolicyTransportSecurityResponsePtrOutput) Elem() FirewallPolicyTransportSecurityResponseOutput {
@@ -4250,12 +3685,6 @@ func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
 }
 
-func (i ManagedServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
-	return pulumix.Output[ManagedServiceIdentity]{
-		OutputState: i.ToManagedServiceIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
 	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
 }
@@ -4297,12 +3726,6 @@ func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
 }
 
-func (i *managedServiceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
-	return pulumix.Output[*ManagedServiceIdentity]{
-		OutputState: i.ToManagedServiceIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Identity for the resource.
 type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -4328,12 +3751,6 @@ func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithConte
 	}).(ManagedServiceIdentityPtrOutput)
 }
 
-func (o ManagedServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
-	return pulumix.Output[ManagedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine.
 func (o ManagedServiceIdentityOutput) Type() ResourceIdentityTypePtrOutput {
 	return o.ApplyT(func(v ManagedServiceIdentity) *ResourceIdentityType { return v.Type }).(ResourceIdentityTypePtrOutput)
@@ -4356,12 +3773,6 @@ func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() Man
 
 func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
 	return o
-}
-
-func (o ManagedServiceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
-	return pulumix.Output[*ManagedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
@@ -4421,12 +3832,6 @@ func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOu
 	return o
 }
 
-func (o ManagedServiceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentityResponse] {
-	return pulumix.Output[ManagedServiceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The principal id of the system assigned identity. This property will only be provided for a system assigned identity.
 func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -4461,12 +3866,6 @@ func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityRespons
 
 func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
 	return o
-}
-
-func (o ManagedServiceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityResponse] {
-	return pulumix.Output[*ManagedServiceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
@@ -4540,12 +3939,6 @@ func (o ManagedServiceIdentityResponseUserAssignedIdentitiesOutput) ToManagedSer
 	return o
 }
 
-func (o ManagedServiceIdentityResponseUserAssignedIdentitiesOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentityResponseUserAssignedIdentities] {
-	return pulumix.Output[ManagedServiceIdentityResponseUserAssignedIdentities]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The client id of user assigned identity.
 func (o ManagedServiceIdentityResponseUserAssignedIdentitiesOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentityResponseUserAssignedIdentities) string { return v.ClientId }).(pulumi.StringOutput)
@@ -4568,12 +3961,6 @@ func (o ManagedServiceIdentityResponseUserAssignedIdentitiesMapOutput) ToManaged
 
 func (o ManagedServiceIdentityResponseUserAssignedIdentitiesMapOutput) ToManagedServiceIdentityResponseUserAssignedIdentitiesMapOutputWithContext(ctx context.Context) ManagedServiceIdentityResponseUserAssignedIdentitiesMapOutput {
 	return o
-}
-
-func (o ManagedServiceIdentityResponseUserAssignedIdentitiesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ManagedServiceIdentityResponseUserAssignedIdentities] {
-	return pulumix.Output[map[string]ManagedServiceIdentityResponseUserAssignedIdentities]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedServiceIdentityResponseUserAssignedIdentitiesMapOutput) MapIndex(k pulumi.StringInput) ManagedServiceIdentityResponseUserAssignedIdentitiesOutput {
@@ -4621,12 +4008,6 @@ func (i OrderByArgs) ToOrderByOutputWithContext(ctx context.Context) OrderByOutp
 	return pulumi.ToOutputWithContext(ctx, i).(OrderByOutput)
 }
 
-func (i OrderByArgs) ToOutput(ctx context.Context) pulumix.Output[OrderBy] {
-	return pulumix.Output[OrderBy]{
-		OutputState: i.ToOrderByOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OrderByArgs) ToOrderByPtrOutput() OrderByPtrOutput {
 	return i.ToOrderByPtrOutputWithContext(context.Background())
 }
@@ -4668,12 +4049,6 @@ func (i *orderByPtrType) ToOrderByPtrOutputWithContext(ctx context.Context) Orde
 	return pulumi.ToOutputWithContext(ctx, i).(OrderByPtrOutput)
 }
 
-func (i *orderByPtrType) ToOutput(ctx context.Context) pulumix.Output[*OrderBy] {
-	return pulumix.Output[*OrderBy]{
-		OutputState: i.ToOrderByPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes a column to sort
 type OrderByOutput struct{ *pulumi.OutputState }
 
@@ -4699,12 +4074,6 @@ func (o OrderByOutput) ToOrderByPtrOutputWithContext(ctx context.Context) OrderB
 	}).(OrderByPtrOutput)
 }
 
-func (o OrderByOutput) ToOutput(ctx context.Context) pulumix.Output[OrderBy] {
-	return pulumix.Output[OrderBy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Describes the actual column name to sort by
 func (o OrderByOutput) Field() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OrderBy) *string { return v.Field }).(pulumi.StringPtrOutput)
@@ -4727,12 +4096,6 @@ func (o OrderByPtrOutput) ToOrderByPtrOutput() OrderByPtrOutput {
 
 func (o OrderByPtrOutput) ToOrderByPtrOutputWithContext(ctx context.Context) OrderByPtrOutput {
 	return o
-}
-
-func (o OrderByPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrderBy] {
-	return pulumix.Output[*OrderBy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrderByPtrOutput) Elem() OrderByOutput {
@@ -4804,12 +4167,6 @@ func (o SingleQueryResultResponseOutput) ToSingleQueryResultResponseOutputWithCo
 	return o
 }
 
-func (o SingleQueryResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SingleQueryResultResponse] {
-	return pulumix.Output[SingleQueryResultResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Describes what is the signature enforces
 func (o SingleQueryResultResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SingleQueryResultResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -4879,12 +4236,6 @@ func (o SingleQueryResultResponseArrayOutput) ToSingleQueryResultResponseArrayOu
 	return o
 }
 
-func (o SingleQueryResultResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SingleQueryResultResponse] {
-	return pulumix.Output[[]SingleQueryResultResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SingleQueryResultResponseArrayOutput) Index(i pulumi.IntInput) SingleQueryResultResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SingleQueryResultResponse {
 		return vs[0].([]SingleQueryResultResponse)[vs[1].(int)]
@@ -4932,12 +4283,6 @@ func (i SubResourceArgs) ToSubResourceOutputWithContext(ctx context.Context) Sub
 	return pulumi.ToOutputWithContext(ctx, i).(SubResourceOutput)
 }
 
-func (i SubResourceArgs) ToOutput(ctx context.Context) pulumix.Output[SubResource] {
-	return pulumix.Output[SubResource]{
-		OutputState: i.ToSubResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SubResourceArgs) ToSubResourcePtrOutput() SubResourcePtrOutput {
 	return i.ToSubResourcePtrOutputWithContext(context.Background())
 }
@@ -4979,12 +4324,6 @@ func (i *subResourcePtrType) ToSubResourcePtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SubResourcePtrOutput)
 }
 
-func (i *subResourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*SubResource] {
-	return pulumix.Output[*SubResource]{
-		OutputState: i.ToSubResourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Reference to another subresource.
 type SubResourceOutput struct{ *pulumi.OutputState }
 
@@ -5010,12 +4349,6 @@ func (o SubResourceOutput) ToSubResourcePtrOutputWithContext(ctx context.Context
 	}).(SubResourcePtrOutput)
 }
 
-func (o SubResourceOutput) ToOutput(ctx context.Context) pulumix.Output[SubResource] {
-	return pulumix.Output[SubResource]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
 // An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
 // A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
@@ -5036,12 +4369,6 @@ func (o SubResourcePtrOutput) ToSubResourcePtrOutput() SubResourcePtrOutput {
 
 func (o SubResourcePtrOutput) ToSubResourcePtrOutputWithContext(ctx context.Context) SubResourcePtrOutput {
 	return o
-}
-
-func (o SubResourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubResource] {
-	return pulumix.Output[*SubResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubResourcePtrOutput) Elem() SubResourceOutput {
@@ -5088,12 +4415,6 @@ func (o SubResourceResponseOutput) ToSubResourceResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o SubResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubResourceResponse] {
-	return pulumix.Output[SubResourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource ID.
 func (o SubResourceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubResourceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -5111,12 +4432,6 @@ func (o SubResourceResponsePtrOutput) ToSubResourceResponsePtrOutput() SubResour
 
 func (o SubResourceResponsePtrOutput) ToSubResourceResponsePtrOutputWithContext(ctx context.Context) SubResourceResponsePtrOutput {
 	return o
-}
-
-func (o SubResourceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubResourceResponse] {
-	return pulumix.Output[*SubResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubResourceResponsePtrOutput) Elem() SubResourceResponseOutput {
@@ -5151,12 +4466,6 @@ func (o SubResourceResponseArrayOutput) ToSubResourceResponseArrayOutput() SubRe
 
 func (o SubResourceResponseArrayOutput) ToSubResourceResponseArrayOutputWithContext(ctx context.Context) SubResourceResponseArrayOutput {
 	return o
-}
-
-func (o SubResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubResourceResponse] {
-	return pulumix.Output[[]SubResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubResourceResponseArrayOutput) Index(i pulumi.IntInput) SubResourceResponseOutput {

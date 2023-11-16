@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the client secret details of the authorization server.
@@ -81,12 +80,6 @@ func (o ListAuthorizationServerSecretsResultOutput) ToListAuthorizationServerSec
 
 func (o ListAuthorizationServerSecretsResultOutput) ToListAuthorizationServerSecretsResultOutputWithContext(ctx context.Context) ListAuthorizationServerSecretsResultOutput {
 	return o
-}
-
-func (o ListAuthorizationServerSecretsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListAuthorizationServerSecretsResult] {
-	return pulumix.Output[ListAuthorizationServerSecretsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // oAuth Authorization Server Secrets.

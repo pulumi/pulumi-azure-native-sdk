@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -73,12 +72,6 @@ func (i AddressArgs) ToAddressOutputWithContext(ctx context.Context) AddressOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AddressOutput)
 }
 
-func (i AddressArgs) ToOutput(ctx context.Context) pulumix.Output[Address] {
-	return pulumix.Output[Address]{
-		OutputState: i.ToAddressOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AddressArgs) ToAddressPtrOutput() AddressPtrOutput {
 	return i.ToAddressPtrOutputWithContext(context.Background())
 }
@@ -120,12 +113,6 @@ func (i *addressPtrType) ToAddressPtrOutputWithContext(ctx context.Context) Addr
 	return pulumi.ToOutputWithContext(ctx, i).(AddressPtrOutput)
 }
 
-func (i *addressPtrType) ToOutput(ctx context.Context) pulumix.Output[*Address] {
-	return pulumix.Output[*Address]{
-		OutputState: i.ToAddressPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The shipping address of the customer.
 type AddressOutput struct{ *pulumi.OutputState }
 
@@ -149,12 +136,6 @@ func (o AddressOutput) ToAddressPtrOutputWithContext(ctx context.Context) Addres
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Address) *Address {
 		return &v
 	}).(AddressPtrOutput)
-}
-
-func (o AddressOutput) ToOutput(ctx context.Context) pulumix.Output[Address] {
-	return pulumix.Output[Address]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The address line1.
@@ -204,12 +185,6 @@ func (o AddressPtrOutput) ToAddressPtrOutput() AddressPtrOutput {
 
 func (o AddressPtrOutput) ToAddressPtrOutputWithContext(ctx context.Context) AddressPtrOutput {
 	return o
-}
-
-func (o AddressPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Address] {
-	return pulumix.Output[*Address]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AddressPtrOutput) Elem() AddressOutput {
@@ -325,12 +300,6 @@ func (o AddressResponseOutput) ToAddressResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o AddressResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AddressResponse] {
-	return pulumix.Output[AddressResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The address line1.
 func (o AddressResponseOutput) AddressLine1() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AddressResponse) *string { return v.AddressLine1 }).(pulumi.StringPtrOutput)
@@ -378,12 +347,6 @@ func (o AddressResponsePtrOutput) ToAddressResponsePtrOutput() AddressResponsePt
 
 func (o AddressResponsePtrOutput) ToAddressResponsePtrOutputWithContext(ctx context.Context) AddressResponsePtrOutput {
 	return o
-}
-
-func (o AddressResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AddressResponse] {
-	return pulumix.Output[*AddressResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AddressResponsePtrOutput) Elem() AddressResponseOutput {
@@ -491,12 +454,6 @@ func (o AsymmetricEncryptedSecretResponseOutput) ToAsymmetricEncryptedSecretResp
 	return o
 }
 
-func (o AsymmetricEncryptedSecretResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AsymmetricEncryptedSecretResponse] {
-	return pulumix.Output[AsymmetricEncryptedSecretResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The algorithm used to encrypt "Value".
 func (o AsymmetricEncryptedSecretResponseOutput) EncryptionAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v AsymmetricEncryptedSecretResponse) string { return v.EncryptionAlgorithm }).(pulumi.StringOutput)
@@ -524,12 +481,6 @@ func (o AsymmetricEncryptedSecretResponsePtrOutput) ToAsymmetricEncryptedSecretR
 
 func (o AsymmetricEncryptedSecretResponsePtrOutput) ToAsymmetricEncryptedSecretResponsePtrOutputWithContext(ctx context.Context) AsymmetricEncryptedSecretResponsePtrOutput {
 	return o
-}
-
-func (o AsymmetricEncryptedSecretResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AsymmetricEncryptedSecretResponse] {
-	return pulumix.Output[*AsymmetricEncryptedSecretResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AsymmetricEncryptedSecretResponsePtrOutput) Elem() AsymmetricEncryptedSecretResponseOutput {
@@ -597,12 +548,6 @@ func (o ComputeVersionInformationResponseOutput) ToComputeVersionInformationResp
 	return o
 }
 
-func (o ComputeVersionInformationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeVersionInformationResponse] {
-	return pulumix.Output[ComputeVersionInformationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Azure Arc Version
 func (o ComputeVersionInformationResponseOutput) AzureArcVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeVersionInformationResponse) *string { return v.AzureArcVersion }).(pulumi.StringPtrOutput)
@@ -665,12 +610,6 @@ func (i ContactDetailsArgs) ToContactDetailsOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ContactDetailsOutput)
 }
 
-func (i ContactDetailsArgs) ToOutput(ctx context.Context) pulumix.Output[ContactDetails] {
-	return pulumix.Output[ContactDetails]{
-		OutputState: i.ToContactDetailsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContactDetailsArgs) ToContactDetailsPtrOutput() ContactDetailsPtrOutput {
 	return i.ToContactDetailsPtrOutputWithContext(context.Background())
 }
@@ -712,12 +651,6 @@ func (i *contactDetailsPtrType) ToContactDetailsPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ContactDetailsPtrOutput)
 }
 
-func (i *contactDetailsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContactDetails] {
-	return pulumix.Output[*ContactDetails]{
-		OutputState: i.ToContactDetailsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contains all the contact details of the customer.
 type ContactDetailsOutput struct{ *pulumi.OutputState }
 
@@ -741,12 +674,6 @@ func (o ContactDetailsOutput) ToContactDetailsPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContactDetails) *ContactDetails {
 		return &v
 	}).(ContactDetailsPtrOutput)
-}
-
-func (o ContactDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[ContactDetails] {
-	return pulumix.Output[ContactDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the company.
@@ -781,12 +708,6 @@ func (o ContactDetailsPtrOutput) ToContactDetailsPtrOutput() ContactDetailsPtrOu
 
 func (o ContactDetailsPtrOutput) ToContactDetailsPtrOutputWithContext(ctx context.Context) ContactDetailsPtrOutput {
 	return o
-}
-
-func (o ContactDetailsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContactDetails] {
-	return pulumix.Output[*ContactDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContactDetailsPtrOutput) Elem() ContactDetailsOutput {
@@ -866,12 +787,6 @@ func (o ContactDetailsResponseOutput) ToContactDetailsResponseOutputWithContext(
 	return o
 }
 
-func (o ContactDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContactDetailsResponse] {
-	return pulumix.Output[ContactDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the company.
 func (o ContactDetailsResponseOutput) CompanyName() pulumi.StringOutput {
 	return o.ApplyT(func(v ContactDetailsResponse) string { return v.CompanyName }).(pulumi.StringOutput)
@@ -904,12 +819,6 @@ func (o ContactDetailsResponsePtrOutput) ToContactDetailsResponsePtrOutput() Con
 
 func (o ContactDetailsResponsePtrOutput) ToContactDetailsResponsePtrOutputWithContext(ctx context.Context) ContactDetailsResponsePtrOutput {
 	return o
-}
-
-func (o ContactDetailsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContactDetailsResponse] {
-	return pulumix.Output[*ContactDetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContactDetailsResponsePtrOutput) Elem() ContactDetailsResponseOutput {
@@ -997,12 +906,6 @@ func (i DataResidencyArgs) ToDataResidencyOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(DataResidencyOutput)
 }
 
-func (i DataResidencyArgs) ToOutput(ctx context.Context) pulumix.Output[DataResidency] {
-	return pulumix.Output[DataResidency]{
-		OutputState: i.ToDataResidencyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DataResidencyArgs) ToDataResidencyPtrOutput() DataResidencyPtrOutput {
 	return i.ToDataResidencyPtrOutputWithContext(context.Background())
 }
@@ -1044,12 +947,6 @@ func (i *dataResidencyPtrType) ToDataResidencyPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(DataResidencyPtrOutput)
 }
 
-func (i *dataResidencyPtrType) ToOutput(ctx context.Context) pulumix.Output[*DataResidency] {
-	return pulumix.Output[*DataResidency]{
-		OutputState: i.ToDataResidencyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Wraps data-residency related information for edge-resource and this should be used with ARM layer.
 type DataResidencyOutput struct{ *pulumi.OutputState }
 
@@ -1075,12 +972,6 @@ func (o DataResidencyOutput) ToDataResidencyPtrOutputWithContext(ctx context.Con
 	}).(DataResidencyPtrOutput)
 }
 
-func (o DataResidencyOutput) ToOutput(ctx context.Context) pulumix.Output[DataResidency] {
-	return pulumix.Output[DataResidency]{
-		OutputState: o.OutputState,
-	}
-}
-
 // DataResidencyType enum
 func (o DataResidencyOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataResidency) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -1098,12 +989,6 @@ func (o DataResidencyPtrOutput) ToDataResidencyPtrOutput() DataResidencyPtrOutpu
 
 func (o DataResidencyPtrOutput) ToDataResidencyPtrOutputWithContext(ctx context.Context) DataResidencyPtrOutput {
 	return o
-}
-
-func (o DataResidencyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataResidency] {
-	return pulumix.Output[*DataResidency]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataResidencyPtrOutput) Elem() DataResidencyOutput {
@@ -1147,12 +1032,6 @@ func (o DataResidencyResponseOutput) ToDataResidencyResponseOutputWithContext(ct
 	return o
 }
 
-func (o DataResidencyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataResidencyResponse] {
-	return pulumix.Output[DataResidencyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // DataResidencyType enum
 func (o DataResidencyResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataResidencyResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -1170,12 +1049,6 @@ func (o DataResidencyResponsePtrOutput) ToDataResidencyResponsePtrOutput() DataR
 
 func (o DataResidencyResponsePtrOutput) ToDataResidencyResponsePtrOutputWithContext(ctx context.Context) DataResidencyResponsePtrOutput {
 	return o
-}
-
-func (o DataResidencyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataResidencyResponse] {
-	return pulumix.Output[*DataResidencyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataResidencyResponsePtrOutput) Elem() DataResidencyResponseOutput {
@@ -1219,12 +1092,6 @@ func (o EdgeProfileResponseOutput) ToEdgeProfileResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o EdgeProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeProfileResponse] {
-	return pulumix.Output[EdgeProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Edge Profile Subscription
 func (o EdgeProfileResponseOutput) Subscription() EdgeProfileSubscriptionResponsePtrOutput {
 	return o.ApplyT(func(v EdgeProfileResponse) *EdgeProfileSubscriptionResponse { return v.Subscription }).(EdgeProfileSubscriptionResponsePtrOutput)
@@ -1259,12 +1126,6 @@ func (o EdgeProfileSubscriptionResponseOutput) ToEdgeProfileSubscriptionResponse
 
 func (o EdgeProfileSubscriptionResponseOutput) ToEdgeProfileSubscriptionResponseOutputWithContext(ctx context.Context) EdgeProfileSubscriptionResponseOutput {
 	return o
-}
-
-func (o EdgeProfileSubscriptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EdgeProfileSubscriptionResponse] {
-	return pulumix.Output[EdgeProfileSubscriptionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ARM ID of the subscription
@@ -1323,12 +1184,6 @@ func (o EdgeProfileSubscriptionResponsePtrOutput) ToEdgeProfileSubscriptionRespo
 
 func (o EdgeProfileSubscriptionResponsePtrOutput) ToEdgeProfileSubscriptionResponsePtrOutputWithContext(ctx context.Context) EdgeProfileSubscriptionResponsePtrOutput {
 	return o
-}
-
-func (o EdgeProfileSubscriptionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeProfileSubscriptionResponse] {
-	return pulumix.Output[*EdgeProfileSubscriptionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdgeProfileSubscriptionResponsePtrOutput) Elem() EdgeProfileSubscriptionResponseOutput {
@@ -1463,12 +1318,6 @@ func (o OrderStatusResponseOutput) ToOrderStatusResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o OrderStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OrderStatusResponse] {
-	return pulumix.Output[OrderStatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Dictionary to hold generic information which is not stored
 // by the already existing properties
 func (o OrderStatusResponseOutput) AdditionalOrderDetails() pulumi.StringMapOutput {
@@ -1509,12 +1358,6 @@ func (o OrderStatusResponseArrayOutput) ToOrderStatusResponseArrayOutputWithCont
 	return o
 }
 
-func (o OrderStatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OrderStatusResponse] {
-	return pulumix.Output[[]OrderStatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OrderStatusResponseArrayOutput) Index(i pulumi.IntInput) OrderStatusResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrderStatusResponse {
 		return vs[0].([]OrderStatusResponse)[vs[1].(int)]
@@ -1544,12 +1387,6 @@ func (o ResourceIdentityResponseOutput) ToResourceIdentityResponseOutput() Resou
 
 func (o ResourceIdentityResponseOutput) ToResourceIdentityResponseOutputWithContext(ctx context.Context) ResourceIdentityResponseOutput {
 	return o
-}
-
-func (o ResourceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityResponse] {
-	return pulumix.Output[ResourceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Service Principal Id backing the Msi
@@ -1590,12 +1427,6 @@ func (o ResourceMoveDetailsResponseOutput) ToResourceMoveDetailsResponseOutputWi
 	return o
 }
 
-func (o ResourceMoveDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceMoveDetailsResponse] {
-	return pulumix.Output[ResourceMoveDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Denotes whether move operation is in progress
 func (o ResourceMoveDetailsResponseOutput) OperationInProgress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMoveDetailsResponse) *string { return v.OperationInProgress }).(pulumi.StringPtrOutput)
@@ -1629,12 +1460,6 @@ func (o SecretResponseOutput) ToSecretResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o SecretResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecretResponse] {
-	return pulumix.Output[SecretResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Encrypted (using device public key) secret value.
 func (o SecretResponseOutput) EncryptedSecret() AsymmetricEncryptedSecretResponsePtrOutput {
 	return o.ApplyT(func(v SecretResponse) *AsymmetricEncryptedSecretResponse { return v.EncryptedSecret }).(AsymmetricEncryptedSecretResponsePtrOutput)
@@ -1657,12 +1482,6 @@ func (o SecretResponseMapOutput) ToSecretResponseMapOutput() SecretResponseMapOu
 
 func (o SecretResponseMapOutput) ToSecretResponseMapOutputWithContext(ctx context.Context) SecretResponseMapOutput {
 	return o
-}
-
-func (o SecretResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]SecretResponse] {
-	return pulumix.Output[map[string]SecretResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretResponseMapOutput) MapIndex(k pulumi.StringInput) SecretResponseOutput {
@@ -1710,12 +1529,6 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
-func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
 	return i.ToSkuPtrOutputWithContext(context.Background())
 }
@@ -1757,12 +1570,6 @@ func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
 }
 
-func (i *skuPtrType) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
-	return pulumix.Output[*Sku]{
-		OutputState: i.ToSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The SKU type.
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -1788,12 +1595,6 @@ func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	}).(SkuPtrOutput)
 }
 
-func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: o.OutputState,
-	}
-}
-
 // SKU name.
 func (o SkuOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Sku) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1816,12 +1617,6 @@ func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
 
 func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o
-}
-
-func (o SkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
-	return pulumix.Output[*Sku]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuPtrOutput) Elem() SkuOutput {
@@ -1877,12 +1672,6 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
-	return pulumix.Output[SkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // SKU name.
 func (o SkuResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1905,12 +1694,6 @@ func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
 
 func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
 	return o
-}
-
-func (o SkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuResponse] {
-	return pulumix.Output[*SkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
@@ -1962,12 +1745,6 @@ func (o SubscriptionRegisteredFeaturesResponseOutput) ToSubscriptionRegisteredFe
 	return o
 }
 
-func (o SubscriptionRegisteredFeaturesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionRegisteredFeaturesResponse] {
-	return pulumix.Output[SubscriptionRegisteredFeaturesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SubscriptionRegisteredFeaturesResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubscriptionRegisteredFeaturesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -1988,12 +1765,6 @@ func (o SubscriptionRegisteredFeaturesResponseArrayOutput) ToSubscriptionRegiste
 
 func (o SubscriptionRegisteredFeaturesResponseArrayOutput) ToSubscriptionRegisteredFeaturesResponseArrayOutputWithContext(ctx context.Context) SubscriptionRegisteredFeaturesResponseArrayOutput {
 	return o
-}
-
-func (o SubscriptionRegisteredFeaturesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubscriptionRegisteredFeaturesResponse] {
-	return pulumix.Output[[]SubscriptionRegisteredFeaturesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubscriptionRegisteredFeaturesResponseArrayOutput) Index(i pulumi.IntInput) SubscriptionRegisteredFeaturesResponseOutput {
@@ -2031,12 +1802,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -2096,12 +1861,6 @@ func (o TrackingInfoResponseOutput) ToTrackingInfoResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o TrackingInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TrackingInfoResponse] {
-	return pulumix.Output[TrackingInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the carrier used in the delivery.
 func (o TrackingInfoResponseOutput) CarrierName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrackingInfoResponse) *string { return v.CarrierName }).(pulumi.StringPtrOutput)
@@ -2134,12 +1893,6 @@ func (o TrackingInfoResponseArrayOutput) ToTrackingInfoResponseArrayOutput() Tra
 
 func (o TrackingInfoResponseArrayOutput) ToTrackingInfoResponseArrayOutputWithContext(ctx context.Context) TrackingInfoResponseArrayOutput {
 	return o
-}
-
-func (o TrackingInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TrackingInfoResponse] {
-	return pulumix.Output[[]TrackingInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TrackingInfoResponseArrayOutput) Index(i pulumi.IntInput) TrackingInfoResponseOutput {

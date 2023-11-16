@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Advanced Threat Protection resource.
@@ -119,12 +118,6 @@ func (i *AdvancedThreatProtection) ToAdvancedThreatProtectionOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(AdvancedThreatProtectionOutput)
 }
 
-func (i *AdvancedThreatProtection) ToOutput(ctx context.Context) pulumix.Output[*AdvancedThreatProtection] {
-	return pulumix.Output[*AdvancedThreatProtection]{
-		OutputState: i.ToAdvancedThreatProtectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AdvancedThreatProtectionOutput struct{ *pulumi.OutputState }
 
 func (AdvancedThreatProtectionOutput) ElementType() reflect.Type {
@@ -137,12 +130,6 @@ func (o AdvancedThreatProtectionOutput) ToAdvancedThreatProtectionOutput() Advan
 
 func (o AdvancedThreatProtectionOutput) ToAdvancedThreatProtectionOutputWithContext(ctx context.Context) AdvancedThreatProtectionOutput {
 	return o
-}
-
-func (o AdvancedThreatProtectionOutput) ToOutput(ctx context.Context) pulumix.Output[*AdvancedThreatProtection] {
-	return pulumix.Output[*AdvancedThreatProtection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates whether Advanced Threat Protection is enabled.

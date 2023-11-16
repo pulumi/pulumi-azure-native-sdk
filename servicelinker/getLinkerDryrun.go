@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // get a dryrun job
@@ -88,12 +87,6 @@ func (o LookupLinkerDryrunResultOutput) ToLookupLinkerDryrunResultOutput() Looku
 
 func (o LookupLinkerDryrunResultOutput) ToLookupLinkerDryrunResultOutputWithContext(ctx context.Context) LookupLinkerDryrunResultOutput {
 	return o
-}
-
-func (o LookupLinkerDryrunResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLinkerDryrunResult] {
-	return pulumix.Output[LookupLinkerDryrunResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

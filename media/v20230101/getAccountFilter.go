@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the details of an Account Filter in the Media Services account.
@@ -89,12 +88,6 @@ func (o LookupAccountFilterResultOutput) ToLookupAccountFilterResultOutput() Loo
 
 func (o LookupAccountFilterResultOutput) ToLookupAccountFilterResultOutputWithContext(ctx context.Context) LookupAccountFilterResultOutput {
 	return o
-}
-
-func (o LookupAccountFilterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccountFilterResult] {
-	return pulumix.Output[LookupAccountFilterResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The first quality.

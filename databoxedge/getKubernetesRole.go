@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a specific role by name.
@@ -113,12 +112,6 @@ func (o LookupKubernetesRoleResultOutput) ToLookupKubernetesRoleResultOutput() L
 
 func (o LookupKubernetesRoleResultOutput) ToLookupKubernetesRoleResultOutputWithContext(ctx context.Context) LookupKubernetesRoleResultOutput {
 	return o
-}
-
-func (o LookupKubernetesRoleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKubernetesRoleResult] {
-	return pulumix.Output[LookupKubernetesRoleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Host OS supported by the Kubernetes role.

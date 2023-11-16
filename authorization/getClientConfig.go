@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this function to access the current configuration of the native Azure provider.
@@ -59,12 +58,6 @@ func (o GetClientConfigResultOutput) ToGetClientConfigResultOutput() GetClientCo
 
 func (o GetClientConfigResultOutput) ToGetClientConfigResultOutputWithContext(ctx context.Context) GetClientConfigResultOutput {
 	return o
-}
-
-func (o GetClientConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientConfigResult] {
-	return pulumix.Output[GetClientConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Azure Client ID (Application Object ID).

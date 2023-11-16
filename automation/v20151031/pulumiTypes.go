@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i RunbookAssociationPropertyArgs) ToRunbookAssociationPropertyOutput() Run
 
 func (i RunbookAssociationPropertyArgs) ToRunbookAssociationPropertyOutputWithContext(ctx context.Context) RunbookAssociationPropertyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RunbookAssociationPropertyOutput)
-}
-
-func (i RunbookAssociationPropertyArgs) ToOutput(ctx context.Context) pulumix.Output[RunbookAssociationProperty] {
-	return pulumix.Output[RunbookAssociationProperty]{
-		OutputState: i.ToRunbookAssociationPropertyOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i RunbookAssociationPropertyArgs) ToRunbookAssociationPropertyPtrOutput() RunbookAssociationPropertyPtrOutput {
@@ -96,12 +89,6 @@ func (i *runbookAssociationPropertyPtrType) ToRunbookAssociationPropertyPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(RunbookAssociationPropertyPtrOutput)
 }
 
-func (i *runbookAssociationPropertyPtrType) ToOutput(ctx context.Context) pulumix.Output[*RunbookAssociationProperty] {
-	return pulumix.Output[*RunbookAssociationProperty]{
-		OutputState: i.ToRunbookAssociationPropertyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The runbook property associated with the entity.
 type RunbookAssociationPropertyOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o RunbookAssociationPropertyOutput) ToRunbookAssociationPropertyPtrOutputW
 	}).(RunbookAssociationPropertyPtrOutput)
 }
 
-func (o RunbookAssociationPropertyOutput) ToOutput(ctx context.Context) pulumix.Output[RunbookAssociationProperty] {
-	return pulumix.Output[RunbookAssociationProperty]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the name of the runbook.
 func (o RunbookAssociationPropertyOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RunbookAssociationProperty) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -150,12 +131,6 @@ func (o RunbookAssociationPropertyPtrOutput) ToRunbookAssociationPropertyPtrOutp
 
 func (o RunbookAssociationPropertyPtrOutput) ToRunbookAssociationPropertyPtrOutputWithContext(ctx context.Context) RunbookAssociationPropertyPtrOutput {
 	return o
-}
-
-func (o RunbookAssociationPropertyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RunbookAssociationProperty] {
-	return pulumix.Output[*RunbookAssociationProperty]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RunbookAssociationPropertyPtrOutput) Elem() RunbookAssociationPropertyOutput {
@@ -199,12 +174,6 @@ func (o RunbookAssociationPropertyResponseOutput) ToRunbookAssociationPropertyRe
 	return o
 }
 
-func (o RunbookAssociationPropertyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RunbookAssociationPropertyResponse] {
-	return pulumix.Output[RunbookAssociationPropertyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the name of the runbook.
 func (o RunbookAssociationPropertyResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RunbookAssociationPropertyResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -222,12 +191,6 @@ func (o RunbookAssociationPropertyResponsePtrOutput) ToRunbookAssociationPropert
 
 func (o RunbookAssociationPropertyResponsePtrOutput) ToRunbookAssociationPropertyResponsePtrOutputWithContext(ctx context.Context) RunbookAssociationPropertyResponsePtrOutput {
 	return o
-}
-
-func (o RunbookAssociationPropertyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RunbookAssociationPropertyResponse] {
-	return pulumix.Output[*RunbookAssociationPropertyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RunbookAssociationPropertyResponsePtrOutput) Elem() RunbookAssociationPropertyResponseOutput {

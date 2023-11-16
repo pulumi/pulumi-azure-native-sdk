@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Packet capture session resource.
@@ -162,12 +161,6 @@ func (i *PacketCapture) ToPacketCaptureOutputWithContext(ctx context.Context) Pa
 	return pulumi.ToOutputWithContext(ctx, i).(PacketCaptureOutput)
 }
 
-func (i *PacketCapture) ToOutput(ctx context.Context) pulumix.Output[*PacketCapture] {
-	return pulumix.Output[*PacketCapture]{
-		OutputState: i.ToPacketCaptureOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PacketCaptureOutput struct{ *pulumi.OutputState }
 
 func (PacketCaptureOutput) ElementType() reflect.Type {
@@ -180,12 +173,6 @@ func (o PacketCaptureOutput) ToPacketCaptureOutput() PacketCaptureOutput {
 
 func (o PacketCaptureOutput) ToPacketCaptureOutputWithContext(ctx context.Context) PacketCaptureOutput {
 	return o
-}
-
-func (o PacketCaptureOutput) ToOutput(ctx context.Context) pulumix.Output[*PacketCapture] {
-	return pulumix.Output[*PacketCapture]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Number of bytes captured per packet, the remaining bytes are truncated. The default "0" means the entire packet is captured.

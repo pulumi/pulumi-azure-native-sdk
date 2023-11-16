@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Service Fabric.
@@ -154,12 +153,6 @@ func (i *ServiceFabric) ToServiceFabricOutputWithContext(ctx context.Context) Se
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceFabricOutput)
 }
 
-func (i *ServiceFabric) ToOutput(ctx context.Context) pulumix.Output[*ServiceFabric] {
-	return pulumix.Output[*ServiceFabric]{
-		OutputState: i.ToServiceFabricOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceFabricOutput struct{ *pulumi.OutputState }
 
 func (ServiceFabricOutput) ElementType() reflect.Type {
@@ -172,12 +165,6 @@ func (o ServiceFabricOutput) ToServiceFabricOutput() ServiceFabricOutput {
 
 func (o ServiceFabricOutput) ToServiceFabricOutputWithContext(ctx context.Context) ServiceFabricOutput {
 	return o
-}
-
-func (o ServiceFabricOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceFabric] {
-	return pulumix.Output[*ServiceFabric]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The applicable schedule for the virtual machine.

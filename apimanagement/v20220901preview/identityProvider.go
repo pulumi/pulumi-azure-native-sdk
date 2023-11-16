@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Identity Provider details.
@@ -237,12 +236,6 @@ func (i *IdentityProvider) ToIdentityProviderOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityProviderOutput)
 }
 
-func (i *IdentityProvider) ToOutput(ctx context.Context) pulumix.Output[*IdentityProvider] {
-	return pulumix.Output[*IdentityProvider]{
-		OutputState: i.ToIdentityProviderOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IdentityProviderOutput struct{ *pulumi.OutputState }
 
 func (IdentityProviderOutput) ElementType() reflect.Type {
@@ -255,12 +248,6 @@ func (o IdentityProviderOutput) ToIdentityProviderOutput() IdentityProviderOutpu
 
 func (o IdentityProviderOutput) ToIdentityProviderOutputWithContext(ctx context.Context) IdentityProviderOutput {
 	return o
-}
-
-func (o IdentityProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityProvider] {
-	return pulumix.Output[*IdentityProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of Allowed Tenants when configuring Azure Active Directory login.

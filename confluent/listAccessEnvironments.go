@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List environments success response
@@ -82,12 +81,6 @@ func (o ListAccessEnvironmentsResultOutput) ToListAccessEnvironmentsResultOutput
 
 func (o ListAccessEnvironmentsResultOutput) ToListAccessEnvironmentsResultOutputWithContext(ctx context.Context) ListAccessEnvironmentsResultOutput {
 	return o
-}
-
-func (o ListAccessEnvironmentsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListAccessEnvironmentsResult] {
-	return pulumix.Output[ListAccessEnvironmentsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Data of the environments list

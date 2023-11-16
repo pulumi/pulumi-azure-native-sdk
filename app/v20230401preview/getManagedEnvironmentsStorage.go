@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get storage for a managedEnvironment.
@@ -85,12 +84,6 @@ func (o LookupManagedEnvironmentsStorageResultOutput) ToLookupManagedEnvironment
 
 func (o LookupManagedEnvironmentsStorageResultOutput) ToLookupManagedEnvironmentsStorageResultOutputWithContext(ctx context.Context) LookupManagedEnvironmentsStorageResultOutput {
 	return o
-}
-
-func (o LookupManagedEnvironmentsStorageResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedEnvironmentsStorageResult] {
-	return pulumix.Output[LookupManagedEnvironmentsStorageResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

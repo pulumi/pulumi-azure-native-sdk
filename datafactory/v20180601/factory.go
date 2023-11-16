@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Factory resource type.
@@ -168,12 +167,6 @@ func (i *Factory) ToFactoryOutputWithContext(ctx context.Context) FactoryOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(FactoryOutput)
 }
 
-func (i *Factory) ToOutput(ctx context.Context) pulumix.Output[*Factory] {
-	return pulumix.Output[*Factory]{
-		OutputState: i.ToFactoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FactoryOutput struct{ *pulumi.OutputState }
 
 func (FactoryOutput) ElementType() reflect.Type {
@@ -186,12 +179,6 @@ func (o FactoryOutput) ToFactoryOutput() FactoryOutput {
 
 func (o FactoryOutput) ToFactoryOutputWithContext(ctx context.Context) FactoryOutput {
 	return o
-}
-
-func (o FactoryOutput) ToOutput(ctx context.Context) pulumix.Output[*Factory] {
-	return pulumix.Output[*Factory]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time the factory was created in ISO8601 format.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Customer subscription.
@@ -132,12 +131,6 @@ func (i *CustomerSubscription) ToCustomerSubscriptionOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(CustomerSubscriptionOutput)
 }
 
-func (i *CustomerSubscription) ToOutput(ctx context.Context) pulumix.Output[*CustomerSubscription] {
-	return pulumix.Output[*CustomerSubscription]{
-		OutputState: i.ToCustomerSubscriptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CustomerSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (CustomerSubscriptionOutput) ElementType() reflect.Type {
@@ -150,12 +143,6 @@ func (o CustomerSubscriptionOutput) ToCustomerSubscriptionOutput() CustomerSubsc
 
 func (o CustomerSubscriptionOutput) ToCustomerSubscriptionOutputWithContext(ctx context.Context) CustomerSubscriptionOutput {
 	return o
-}
-
-func (o CustomerSubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomerSubscription] {
-	return pulumix.Output[*CustomerSubscription]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The entity tag used for optimistic concurrency when modifying the resource.

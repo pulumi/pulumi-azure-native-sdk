@@ -81,12 +81,6 @@ func (o HostnameTypeOutput) ToHostnameTypePtrOutputWithContext(ctx context.Conte
 	}).(HostnameTypePtrOutput)
 }
 
-func (o HostnameTypeOutput) ToOutput(ctx context.Context) pulumix.Output[HostnameType] {
-	return pulumix.Output[HostnameType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HostnameTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -120,12 +114,6 @@ func (o HostnameTypePtrOutput) ToHostnameTypePtrOutput() HostnameTypePtrOutput {
 
 func (o HostnameTypePtrOutput) ToHostnameTypePtrOutputWithContext(ctx context.Context) HostnameTypePtrOutput {
 	return o
-}
-
-func (o HostnameTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HostnameType] {
-	return pulumix.Output[*HostnameType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HostnameTypePtrOutput) Elem() HostnameTypeOutput {
@@ -264,12 +252,6 @@ func (o KeyTypeContractOutput) ToKeyTypeContractPtrOutputWithContext(ctx context
 	}).(KeyTypeContractPtrOutput)
 }
 
-func (o KeyTypeContractOutput) ToOutput(ctx context.Context) pulumix.Output[KeyTypeContract] {
-	return pulumix.Output[KeyTypeContract]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KeyTypeContractOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -303,12 +285,6 @@ func (o KeyTypeContractPtrOutput) ToKeyTypeContractPtrOutput() KeyTypeContractPt
 
 func (o KeyTypeContractPtrOutput) ToKeyTypeContractPtrOutputWithContext(ctx context.Context) KeyTypeContractPtrOutput {
 	return o
-}
-
-func (o KeyTypeContractPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyTypeContract] {
-	return pulumix.Output[*KeyTypeContract]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyTypeContractPtrOutput) Elem() KeyTypeContractOutput {
@@ -448,12 +424,6 @@ func (o SkuTypeOutput) ToSkuTypePtrOutputWithContext(ctx context.Context) SkuTyp
 	}).(SkuTypePtrOutput)
 }
 
-func (o SkuTypeOutput) ToOutput(ctx context.Context) pulumix.Output[SkuType] {
-	return pulumix.Output[SkuType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SkuTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -487,12 +457,6 @@ func (o SkuTypePtrOutput) ToSkuTypePtrOutput() SkuTypePtrOutput {
 
 func (o SkuTypePtrOutput) ToSkuTypePtrOutputWithContext(ctx context.Context) SkuTypePtrOutput {
 	return o
-}
-
-func (o SkuTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuType] {
-	return pulumix.Output[*SkuType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuTypePtrOutput) Elem() SkuTypeOutput {
@@ -632,12 +596,6 @@ func (o VirtualNetworkTypeOutput) ToVirtualNetworkTypePtrOutputWithContext(ctx c
 	}).(VirtualNetworkTypePtrOutput)
 }
 
-func (o VirtualNetworkTypeOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkType] {
-	return pulumix.Output[VirtualNetworkType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VirtualNetworkTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -671,12 +629,6 @@ func (o VirtualNetworkTypePtrOutput) ToVirtualNetworkTypePtrOutput() VirtualNetw
 
 func (o VirtualNetworkTypePtrOutput) ToVirtualNetworkTypePtrOutputWithContext(ctx context.Context) VirtualNetworkTypePtrOutput {
 	return o
-}
-
-func (o VirtualNetworkTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkType] {
-	return pulumix.Output[*VirtualNetworkType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualNetworkTypePtrOutput) Elem() VirtualNetworkTypeOutput {

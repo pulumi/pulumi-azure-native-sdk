@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The operation returns properties of a SyncSet.
@@ -88,12 +87,6 @@ func (o LookupSyncSetResultOutput) ToLookupSyncSetResultOutput() LookupSyncSetRe
 
 func (o LookupSyncSetResultOutput) ToLookupSyncSetResultOutputWithContext(ctx context.Context) LookupSyncSetResultOutput {
 	return o
-}
-
-func (o LookupSyncSetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSyncSetResult] {
-	return pulumix.Output[LookupSyncSetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

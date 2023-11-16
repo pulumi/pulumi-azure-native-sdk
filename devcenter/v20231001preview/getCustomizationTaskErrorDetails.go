@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets Customization Task error details
@@ -81,12 +80,6 @@ func (o GetCustomizationTaskErrorDetailsResultOutput) ToGetCustomizationTaskErro
 
 func (o GetCustomizationTaskErrorDetailsResultOutput) ToGetCustomizationTaskErrorDetailsResultOutputWithContext(ctx context.Context) GetCustomizationTaskErrorDetailsResultOutput {
 	return o
-}
-
-func (o GetCustomizationTaskErrorDetailsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCustomizationTaskErrorDetailsResult] {
-	return pulumix.Output[GetCustomizationTaskErrorDetailsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Errors associated with resources synchronized from the catalog.

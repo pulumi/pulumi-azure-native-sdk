@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The managed private endpoint resource type.
@@ -106,12 +105,6 @@ func (o LookupManagedPrivateEndpointResultOutput) ToLookupManagedPrivateEndpoint
 
 func (o LookupManagedPrivateEndpointResultOutput) ToLookupManagedPrivateEndpointResultOutputWithContext(ctx context.Context) LookupManagedPrivateEndpointResultOutput {
 	return o
-}
-
-func (o LookupManagedPrivateEndpointResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedPrivateEndpointResult] {
-	return pulumix.Output[LookupManagedPrivateEndpointResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The state of managed private endpoint connection.

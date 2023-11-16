@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the policy configuration at the API Operation level.
@@ -113,12 +112,6 @@ func (o LookupApiOperationPolicyResultOutput) ToLookupApiOperationPolicyResultOu
 
 func (o LookupApiOperationPolicyResultOutput) ToLookupApiOperationPolicyResultOutputWithContext(ctx context.Context) LookupApiOperationPolicyResultOutput {
 	return o
-}
-
-func (o LookupApiOperationPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApiOperationPolicyResult] {
-	return pulumix.Output[LookupApiOperationPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Format of the policyContent.

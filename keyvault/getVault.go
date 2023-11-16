@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified Azure key vault.
@@ -99,12 +98,6 @@ func (o LookupVaultResultOutput) ToLookupVaultResultOutput() LookupVaultResultOu
 
 func (o LookupVaultResultOutput) ToLookupVaultResultOutputWithContext(ctx context.Context) LookupVaultResultOutput {
 	return o
-}
-
-func (o LookupVaultResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVaultResult] {
-	return pulumix.Output[LookupVaultResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified identifier of the key vault resource.

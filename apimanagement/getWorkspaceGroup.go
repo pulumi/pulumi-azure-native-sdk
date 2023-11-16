@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the group specified by its identifier.
@@ -96,12 +95,6 @@ func (o LookupWorkspaceGroupResultOutput) ToLookupWorkspaceGroupResultOutput() L
 
 func (o LookupWorkspaceGroupResultOutput) ToLookupWorkspaceGroupResultOutputWithContext(ctx context.Context) LookupWorkspaceGroupResultOutput {
 	return o
-}
-
-func (o LookupWorkspaceGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkspaceGroupResult] {
-	return pulumix.Output[LookupWorkspaceGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // true if the group is one of the three system groups (Administrators, Developers, or Guests); otherwise false.

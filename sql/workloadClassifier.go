@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Workload classifier operations for a data warehouse
@@ -214,12 +213,6 @@ func (i *WorkloadClassifier) ToWorkloadClassifierOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadClassifierOutput)
 }
 
-func (i *WorkloadClassifier) ToOutput(ctx context.Context) pulumix.Output[*WorkloadClassifier] {
-	return pulumix.Output[*WorkloadClassifier]{
-		OutputState: i.ToWorkloadClassifierOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkloadClassifierOutput struct{ *pulumi.OutputState }
 
 func (WorkloadClassifierOutput) ElementType() reflect.Type {
@@ -232,12 +225,6 @@ func (o WorkloadClassifierOutput) ToWorkloadClassifierOutput() WorkloadClassifie
 
 func (o WorkloadClassifierOutput) ToWorkloadClassifierOutputWithContext(ctx context.Context) WorkloadClassifierOutput {
 	return o
-}
-
-func (o WorkloadClassifierOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadClassifier] {
-	return pulumix.Output[*WorkloadClassifier]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The workload classifier context.

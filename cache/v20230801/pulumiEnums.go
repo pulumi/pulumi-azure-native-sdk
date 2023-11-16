@@ -86,12 +86,6 @@ func (o DayOfWeekOutput) ToDayOfWeekPtrOutputWithContext(ctx context.Context) Da
 	}).(DayOfWeekPtrOutput)
 }
 
-func (o DayOfWeekOutput) ToOutput(ctx context.Context) pulumix.Output[DayOfWeek] {
-	return pulumix.Output[DayOfWeek]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DayOfWeekOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -125,12 +119,6 @@ func (o DayOfWeekPtrOutput) ToDayOfWeekPtrOutput() DayOfWeekPtrOutput {
 
 func (o DayOfWeekPtrOutput) ToDayOfWeekPtrOutputWithContext(ctx context.Context) DayOfWeekPtrOutput {
 	return o
-}
-
-func (o DayOfWeekPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
-	return pulumix.Output[*DayOfWeek]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DayOfWeekPtrOutput) Elem() DayOfWeekOutput {
@@ -296,12 +284,6 @@ func (o ReplicationRoleOutput) ToReplicationRolePtrOutputWithContext(ctx context
 	}).(ReplicationRolePtrOutput)
 }
 
-func (o ReplicationRoleOutput) ToOutput(ctx context.Context) pulumix.Output[ReplicationRole] {
-	return pulumix.Output[ReplicationRole]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ReplicationRoleOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -335,12 +317,6 @@ func (o ReplicationRolePtrOutput) ToReplicationRolePtrOutput() ReplicationRolePt
 
 func (o ReplicationRolePtrOutput) ToReplicationRolePtrOutputWithContext(ctx context.Context) ReplicationRolePtrOutput {
 	return o
-}
-
-func (o ReplicationRolePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReplicationRole] {
-	return pulumix.Output[*ReplicationRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReplicationRolePtrOutput) Elem() ReplicationRoleOutput {

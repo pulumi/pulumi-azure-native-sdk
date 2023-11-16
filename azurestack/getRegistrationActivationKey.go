@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns Azure Stack Activation Key.
@@ -76,12 +75,6 @@ func (o GetRegistrationActivationKeyResultOutput) ToGetRegistrationActivationKey
 
 func (o GetRegistrationActivationKeyResultOutput) ToGetRegistrationActivationKeyResultOutputWithContext(ctx context.Context) GetRegistrationActivationKeyResultOutput {
 	return o
-}
-
-func (o GetRegistrationActivationKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRegistrationActivationKeyResult] {
-	return pulumix.Output[GetRegistrationActivationKeyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Azure Stack activation key.

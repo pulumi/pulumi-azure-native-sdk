@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -45,12 +44,6 @@ func (o ActionableRemediationResponseOutput) ToActionableRemediationResponseOutp
 
 func (o ActionableRemediationResponseOutput) ToActionableRemediationResponseOutputWithContext(ctx context.Context) ActionableRemediationResponseOutput {
 	return o
-}
-
-func (o ActionableRemediationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ActionableRemediationResponse] {
-	return pulumix.Output[ActionableRemediationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Repository branch configuration for PR Annotations.
@@ -91,12 +84,6 @@ func (o ActionableRemediationResponsePtrOutput) ToActionableRemediationResponseP
 
 func (o ActionableRemediationResponsePtrOutput) ToActionableRemediationResponsePtrOutputWithContext(ctx context.Context) ActionableRemediationResponsePtrOutput {
 	return o
-}
-
-func (o ActionableRemediationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ActionableRemediationResponse] {
-	return pulumix.Output[*ActionableRemediationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionableRemediationResponsePtrOutput) Elem() ActionableRemediationResponseOutput {
@@ -194,12 +181,6 @@ func (i AuthorizationArgs) ToAuthorizationOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationOutput)
 }
 
-func (i AuthorizationArgs) ToOutput(ctx context.Context) pulumix.Output[Authorization] {
-	return pulumix.Output[Authorization]{
-		OutputState: i.ToAuthorizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AuthorizationArgs) ToAuthorizationPtrOutput() AuthorizationPtrOutput {
 	return i.ToAuthorizationPtrOutputWithContext(context.Background())
 }
@@ -241,12 +222,6 @@ func (i *authorizationPtrType) ToAuthorizationPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationPtrOutput)
 }
 
-func (i *authorizationPtrType) ToOutput(ctx context.Context) pulumix.Output[*Authorization] {
-	return pulumix.Output[*Authorization]{
-		OutputState: i.ToAuthorizationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Authorization payload.
 type AuthorizationOutput struct{ *pulumi.OutputState }
 
@@ -272,12 +247,6 @@ func (o AuthorizationOutput) ToAuthorizationPtrOutputWithContext(ctx context.Con
 	}).(AuthorizationPtrOutput)
 }
 
-func (o AuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[Authorization] {
-	return pulumix.Output[Authorization]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets one-time OAuth code to exchange for refresh and access tokens.
 //
 // Only used during PUT/PATCH operations. The secret is cleared during GET.
@@ -297,12 +266,6 @@ func (o AuthorizationPtrOutput) ToAuthorizationPtrOutput() AuthorizationPtrOutpu
 
 func (o AuthorizationPtrOutput) ToAuthorizationPtrOutputWithContext(ctx context.Context) AuthorizationPtrOutput {
 	return o
-}
-
-func (o AuthorizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Authorization] {
-	return pulumix.Output[*Authorization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthorizationPtrOutput) Elem() AuthorizationOutput {
@@ -350,12 +313,6 @@ func (o AuthorizationResponseOutput) ToAuthorizationResponseOutputWithContext(ct
 	return o
 }
 
-func (o AuthorizationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationResponse] {
-	return pulumix.Output[AuthorizationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets one-time OAuth code to exchange for refresh and access tokens.
 //
 // Only used during PUT/PATCH operations. The secret is cleared during GET.
@@ -375,12 +332,6 @@ func (o AuthorizationResponsePtrOutput) ToAuthorizationResponsePtrOutput() Autho
 
 func (o AuthorizationResponsePtrOutput) ToAuthorizationResponsePtrOutputWithContext(ctx context.Context) AuthorizationResponsePtrOutput {
 	return o
-}
-
-func (o AuthorizationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationResponse] {
-	return pulumix.Output[*AuthorizationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthorizationResponsePtrOutput) Elem() AuthorizationResponseOutput {
@@ -447,12 +398,6 @@ func (o AzureDevOpsOrgPropertiesResponseOutput) ToAzureDevOpsOrgPropertiesRespon
 	return o
 }
 
-func (o AzureDevOpsOrgPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureDevOpsOrgPropertiesResponse] {
-	return pulumix.Output[AzureDevOpsOrgPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Configuration payload for PR Annotations.
 func (o AzureDevOpsOrgPropertiesResponseOutput) ActionableRemediation() ActionableRemediationResponsePtrOutput {
 	return o.ApplyT(func(v AzureDevOpsOrgPropertiesResponse) *ActionableRemediationResponse {
@@ -505,12 +450,6 @@ func (o AzureDevOpsOrgPropertiesResponsePtrOutput) ToAzureDevOpsOrgPropertiesRes
 
 func (o AzureDevOpsOrgPropertiesResponsePtrOutput) ToAzureDevOpsOrgPropertiesResponsePtrOutputWithContext(ctx context.Context) AzureDevOpsOrgPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o AzureDevOpsOrgPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureDevOpsOrgPropertiesResponse] {
-	return pulumix.Output[*AzureDevOpsOrgPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureDevOpsOrgPropertiesResponsePtrOutput) Elem() AzureDevOpsOrgPropertiesResponseOutput {
@@ -615,12 +554,6 @@ func (o AzureDevOpsOrgResponseOutput) ToAzureDevOpsOrgResponseOutputWithContext(
 	return o
 }
 
-func (o AzureDevOpsOrgResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureDevOpsOrgResponse] {
-	return pulumix.Output[AzureDevOpsOrgResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o AzureDevOpsOrgResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureDevOpsOrgResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -660,12 +593,6 @@ func (o AzureDevOpsOrgResponseArrayOutput) ToAzureDevOpsOrgResponseArrayOutputWi
 	return o
 }
 
-func (o AzureDevOpsOrgResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AzureDevOpsOrgResponse] {
-	return pulumix.Output[[]AzureDevOpsOrgResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AzureDevOpsOrgResponseArrayOutput) Index(i pulumi.IntInput) AzureDevOpsOrgResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AzureDevOpsOrgResponse {
 		return vs[0].([]AzureDevOpsOrgResponse)[vs[1].(int)]
@@ -701,12 +628,6 @@ func (o CategoryConfigurationResponseOutput) ToCategoryConfigurationResponseOutp
 	return o
 }
 
-func (o CategoryConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CategoryConfigurationResponse] {
-	return pulumix.Output[CategoryConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Rule categories.
 // Code - code scanning results.
 // Artifact scanning results.
@@ -735,12 +656,6 @@ func (o CategoryConfigurationResponseArrayOutput) ToCategoryConfigurationRespons
 
 func (o CategoryConfigurationResponseArrayOutput) ToCategoryConfigurationResponseArrayOutputWithContext(ctx context.Context) CategoryConfigurationResponseArrayOutput {
 	return o
-}
-
-func (o CategoryConfigurationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CategoryConfigurationResponse] {
-	return pulumix.Output[[]CategoryConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CategoryConfigurationResponseArrayOutput) Index(i pulumi.IntInput) CategoryConfigurationResponseOutput {
@@ -814,12 +729,6 @@ func (i DevOpsConfigurationPropertiesArgs) ToDevOpsConfigurationPropertiesOutput
 	return pulumi.ToOutputWithContext(ctx, i).(DevOpsConfigurationPropertiesOutput)
 }
 
-func (i DevOpsConfigurationPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[DevOpsConfigurationProperties] {
-	return pulumix.Output[DevOpsConfigurationProperties]{
-		OutputState: i.ToDevOpsConfigurationPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DevOpsConfigurationPropertiesArgs) ToDevOpsConfigurationPropertiesPtrOutput() DevOpsConfigurationPropertiesPtrOutput {
 	return i.ToDevOpsConfigurationPropertiesPtrOutputWithContext(context.Background())
 }
@@ -861,12 +770,6 @@ func (i *devOpsConfigurationPropertiesPtrType) ToDevOpsConfigurationPropertiesPt
 	return pulumi.ToOutputWithContext(ctx, i).(DevOpsConfigurationPropertiesPtrOutput)
 }
 
-func (i *devOpsConfigurationPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*DevOpsConfigurationProperties] {
-	return pulumix.Output[*DevOpsConfigurationProperties]{
-		OutputState: i.ToDevOpsConfigurationPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DevOps Configuration properties.
 type DevOpsConfigurationPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -890,12 +793,6 @@ func (o DevOpsConfigurationPropertiesOutput) ToDevOpsConfigurationPropertiesPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DevOpsConfigurationProperties) *DevOpsConfigurationProperties {
 		return &v
 	}).(DevOpsConfigurationPropertiesPtrOutput)
-}
-
-func (o DevOpsConfigurationPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[DevOpsConfigurationProperties] {
-	return pulumix.Output[DevOpsConfigurationProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Authorization payload.
@@ -939,12 +836,6 @@ func (o DevOpsConfigurationPropertiesPtrOutput) ToDevOpsConfigurationPropertiesP
 
 func (o DevOpsConfigurationPropertiesPtrOutput) ToDevOpsConfigurationPropertiesPtrOutputWithContext(ctx context.Context) DevOpsConfigurationPropertiesPtrOutput {
 	return o
-}
-
-func (o DevOpsConfigurationPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DevOpsConfigurationProperties] {
-	return pulumix.Output[*DevOpsConfigurationProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DevOpsConfigurationPropertiesPtrOutput) Elem() DevOpsConfigurationPropertiesOutput {
@@ -1046,12 +937,6 @@ func (o DevOpsConfigurationPropertiesResponseOutput) ToDevOpsConfigurationProper
 	return o
 }
 
-func (o DevOpsConfigurationPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DevOpsConfigurationPropertiesResponse] {
-	return pulumix.Output[DevOpsConfigurationPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Authorization payload.
 func (o DevOpsConfigurationPropertiesResponseOutput) Authorization() AuthorizationResponsePtrOutput {
 	return o.ApplyT(func(v DevOpsConfigurationPropertiesResponse) *AuthorizationResponse { return v.Authorization }).(AuthorizationResponsePtrOutput)
@@ -1135,12 +1020,6 @@ func (o GitHubOwnerPropertiesResponseOutput) ToGitHubOwnerPropertiesResponseOutp
 	return o
 }
 
-func (o GitHubOwnerPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GitHubOwnerPropertiesResponse] {
-	return pulumix.Output[GitHubOwnerPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets internal GitHub id.
 func (o GitHubOwnerPropertiesResponseOutput) GitHubInternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v GitHubOwnerPropertiesResponse) string { return v.GitHubInternalId }).(pulumi.StringOutput)
@@ -1196,12 +1075,6 @@ func (o GitHubOwnerPropertiesResponsePtrOutput) ToGitHubOwnerPropertiesResponseP
 
 func (o GitHubOwnerPropertiesResponsePtrOutput) ToGitHubOwnerPropertiesResponsePtrOutputWithContext(ctx context.Context) GitHubOwnerPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o GitHubOwnerPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GitHubOwnerPropertiesResponse] {
-	return pulumix.Output[*GitHubOwnerPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GitHubOwnerPropertiesResponsePtrOutput) Elem() GitHubOwnerPropertiesResponseOutput {
@@ -1316,12 +1189,6 @@ func (o GitHubOwnerResponseOutput) ToGitHubOwnerResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o GitHubOwnerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GitHubOwnerResponse] {
-	return pulumix.Output[GitHubOwnerResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o GitHubOwnerResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GitHubOwnerResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -1359,12 +1226,6 @@ func (o GitHubOwnerResponseArrayOutput) ToGitHubOwnerResponseArrayOutput() GitHu
 
 func (o GitHubOwnerResponseArrayOutput) ToGitHubOwnerResponseArrayOutputWithContext(ctx context.Context) GitHubOwnerResponseArrayOutput {
 	return o
-}
-
-func (o GitHubOwnerResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GitHubOwnerResponse] {
-	return pulumix.Output[[]GitHubOwnerResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GitHubOwnerResponseArrayOutput) Index(i pulumi.IntInput) GitHubOwnerResponseOutput {
@@ -1421,12 +1282,6 @@ func (o GitLabGroupPropertiesResponseOutput) ToGitLabGroupPropertiesResponseOutp
 
 func (o GitLabGroupPropertiesResponseOutput) ToGitLabGroupPropertiesResponseOutputWithContext(ctx context.Context) GitLabGroupPropertiesResponseOutput {
 	return o
-}
-
-func (o GitLabGroupPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GitLabGroupPropertiesResponse] {
-	return pulumix.Output[GitLabGroupPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the human readable fully-qualified name of the Group object.
@@ -1493,12 +1348,6 @@ func (o GitLabGroupPropertiesResponsePtrOutput) ToGitLabGroupPropertiesResponseP
 
 func (o GitLabGroupPropertiesResponsePtrOutput) ToGitLabGroupPropertiesResponsePtrOutputWithContext(ctx context.Context) GitLabGroupPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o GitLabGroupPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GitLabGroupPropertiesResponse] {
-	return pulumix.Output[*GitLabGroupPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GitLabGroupPropertiesResponsePtrOutput) Elem() GitLabGroupPropertiesResponseOutput {
@@ -1627,12 +1476,6 @@ func (o GitLabGroupResponseOutput) ToGitLabGroupResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o GitLabGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GitLabGroupResponse] {
-	return pulumix.Output[GitLabGroupResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o GitLabGroupResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GitLabGroupResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -1672,12 +1515,6 @@ func (o GitLabGroupResponseArrayOutput) ToGitLabGroupResponseArrayOutputWithCont
 	return o
 }
 
-func (o GitLabGroupResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GitLabGroupResponse] {
-	return pulumix.Output[[]GitLabGroupResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GitLabGroupResponseArrayOutput) Index(i pulumi.IntInput) GitLabGroupResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GitLabGroupResponse {
 		return vs[0].([]GitLabGroupResponse)[vs[1].(int)]
@@ -1713,12 +1550,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -1777,12 +1608,6 @@ func (o TargetBranchConfigurationResponseOutput) ToTargetBranchConfigurationResp
 	return o
 }
 
-func (o TargetBranchConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TargetBranchConfigurationResponse] {
-	return pulumix.Output[TargetBranchConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Configuration of PR Annotations on default branch.
 //
 // Enabled - PR Annotations are enabled on the resource's default branch.
@@ -1808,12 +1633,6 @@ func (o TargetBranchConfigurationResponsePtrOutput) ToTargetBranchConfigurationR
 
 func (o TargetBranchConfigurationResponsePtrOutput) ToTargetBranchConfigurationResponsePtrOutputWithContext(ctx context.Context) TargetBranchConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o TargetBranchConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TargetBranchConfigurationResponse] {
-	return pulumix.Output[*TargetBranchConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TargetBranchConfigurationResponsePtrOutput) Elem() TargetBranchConfigurationResponseOutput {

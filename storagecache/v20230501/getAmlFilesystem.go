@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns an AML file system.
@@ -118,12 +117,6 @@ func (o LookupAmlFilesystemResultOutput) ToLookupAmlFilesystemResultOutput() Loo
 
 func (o LookupAmlFilesystemResultOutput) ToLookupAmlFilesystemResultOutputWithContext(ctx context.Context) LookupAmlFilesystemResultOutput {
 	return o
-}
-
-func (o LookupAmlFilesystemResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAmlFilesystemResult] {
-	return pulumix.Output[LookupAmlFilesystemResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Client information for the AML file system.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An object that represents a replication for a container registry.
@@ -197,12 +196,6 @@ func (i *Replication) ToReplicationOutputWithContext(ctx context.Context) Replic
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationOutput)
 }
 
-func (i *Replication) ToOutput(ctx context.Context) pulumix.Output[*Replication] {
-	return pulumix.Output[*Replication]{
-		OutputState: i.ToReplicationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReplicationOutput struct{ *pulumi.OutputState }
 
 func (ReplicationOutput) ElementType() reflect.Type {
@@ -215,12 +208,6 @@ func (o ReplicationOutput) ToReplicationOutput() ReplicationOutput {
 
 func (o ReplicationOutput) ToReplicationOutputWithContext(ctx context.Context) ReplicationOutput {
 	return o
-}
-
-func (o ReplicationOutput) ToOutput(ctx context.Context) pulumix.Output[*Replication] {
-	return pulumix.Output[*Replication]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The location of the resource. This cannot be changed after the resource is created.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the details for a specific lab associated with the provided billing account name, billing profile name, and invoice section name.
@@ -107,12 +106,6 @@ func (o LookupLabResultOutput) ToLookupLabResultOutput() LookupLabResultOutput {
 
 func (o LookupLabResultOutput) ToLookupLabResultOutputWithContext(ctx context.Context) LookupLabResultOutput {
 	return o
-}
-
-func (o LookupLabResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLabResult] {
-	return pulumix.Output[LookupLabResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Default monetary cap for each student in this lab

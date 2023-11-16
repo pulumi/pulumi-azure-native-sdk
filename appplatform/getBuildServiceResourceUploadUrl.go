@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get an resource upload URL for build service, which may be artifacts or source archive.
@@ -82,12 +81,6 @@ func (o GetBuildServiceResourceUploadUrlResultOutput) ToGetBuildServiceResourceU
 
 func (o GetBuildServiceResourceUploadUrlResultOutput) ToGetBuildServiceResourceUploadUrlResultOutputWithContext(ctx context.Context) GetBuildServiceResourceUploadUrlResultOutput {
 	return o
-}
-
-func (o GetBuildServiceResourceUploadUrlResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBuildServiceResourceUploadUrlResult] {
-	return pulumix.Output[GetBuildServiceResourceUploadUrlResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Source relative path

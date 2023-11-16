@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about the specified configuration group schema.
@@ -89,12 +88,6 @@ func (o LookupConfigurationGroupSchemaResultOutput) ToLookupConfigurationGroupSc
 
 func (o LookupConfigurationGroupSchemaResultOutput) ToLookupConfigurationGroupSchemaResultOutputWithContext(ctx context.Context) LookupConfigurationGroupSchemaResultOutput {
 	return o
-}
-
-func (o LookupConfigurationGroupSchemaResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConfigurationGroupSchemaResult] {
-	return pulumix.Output[LookupConfigurationGroupSchemaResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

@@ -88,12 +88,6 @@ func (o OnFailureOutput) ToOnFailurePtrOutputWithContext(ctx context.Context) On
 	}).(OnFailurePtrOutput)
 }
 
-func (o OnFailureOutput) ToOutput(ctx context.Context) pulumix.Output[OnFailure] {
-	return pulumix.Output[OnFailure]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OnFailureOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -127,12 +121,6 @@ func (o OnFailurePtrOutput) ToOnFailurePtrOutput() OnFailurePtrOutput {
 
 func (o OnFailurePtrOutput) ToOnFailurePtrOutputWithContext(ctx context.Context) OnFailurePtrOutput {
 	return o
-}
-
-func (o OnFailurePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OnFailure] {
-	return pulumix.Output[*OnFailure]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OnFailurePtrOutput) Elem() OnFailureOutput {
@@ -270,12 +258,6 @@ func (o OnSuccessOutput) ToOnSuccessPtrOutputWithContext(ctx context.Context) On
 	}).(OnSuccessPtrOutput)
 }
 
-func (o OnSuccessOutput) ToOutput(ctx context.Context) pulumix.Output[OnSuccess] {
-	return pulumix.Output[OnSuccess]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OnSuccessOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -309,12 +291,6 @@ func (o OnSuccessPtrOutput) ToOnSuccessPtrOutput() OnSuccessPtrOutput {
 
 func (o OnSuccessPtrOutput) ToOnSuccessPtrOutputWithContext(ctx context.Context) OnSuccessPtrOutput {
 	return o
-}
-
-func (o OnSuccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OnSuccess] {
-	return pulumix.Output[*OnSuccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OnSuccessPtrOutput) Elem() OnSuccessOutput {

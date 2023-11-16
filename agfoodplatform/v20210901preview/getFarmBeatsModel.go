@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get FarmBeats resource.
@@ -95,12 +94,6 @@ func (o LookupFarmBeatsModelResultOutput) ToLookupFarmBeatsModelResultOutput() L
 
 func (o LookupFarmBeatsModelResultOutput) ToLookupFarmBeatsModelResultOutputWithContext(ctx context.Context) LookupFarmBeatsModelResultOutput {
 	return o
-}
-
-func (o LookupFarmBeatsModelResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFarmBeatsModelResult] {
-	return pulumix.Output[LookupFarmBeatsModelResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

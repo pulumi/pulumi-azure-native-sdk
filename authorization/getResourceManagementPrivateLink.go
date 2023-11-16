@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a resource management private link(resource-level).
@@ -79,12 +78,6 @@ func (o LookupResourceManagementPrivateLinkResultOutput) ToLookupResourceManagem
 
 func (o LookupResourceManagementPrivateLinkResultOutput) ToLookupResourceManagementPrivateLinkResultOutputWithContext(ctx context.Context) LookupResourceManagementPrivateLinkResultOutput {
 	return o
-}
-
-func (o LookupResourceManagementPrivateLinkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupResourceManagementPrivateLinkResult] {
-	return pulumix.Output[LookupResourceManagementPrivateLinkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The rmplResourceID.

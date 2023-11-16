@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i ActivityLogAlertActionGroupArgs) ToActivityLogAlertActionGroupOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ActivityLogAlertActionGroupOutput)
 }
 
-func (i ActivityLogAlertActionGroupArgs) ToOutput(ctx context.Context) pulumix.Output[ActivityLogAlertActionGroup] {
-	return pulumix.Output[ActivityLogAlertActionGroup]{
-		OutputState: i.ToActivityLogAlertActionGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ActivityLogAlertActionGroupArrayInput is an input type that accepts ActivityLogAlertActionGroupArray and ActivityLogAlertActionGroupArrayOutput values.
 // You can construct a concrete instance of `ActivityLogAlertActionGroupArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i ActivityLogAlertActionGroupArray) ToActivityLogAlertActionGroupArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ActivityLogAlertActionGroupArrayOutput)
 }
 
-func (i ActivityLogAlertActionGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]ActivityLogAlertActionGroup] {
-	return pulumix.Output[[]ActivityLogAlertActionGroup]{
-		OutputState: i.ToActivityLogAlertActionGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A pointer to an Azure Action Group.
 type ActivityLogAlertActionGroupOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o ActivityLogAlertActionGroupOutput) ToActivityLogAlertActionGroupOutput()
 
 func (o ActivityLogAlertActionGroupOutput) ToActivityLogAlertActionGroupOutputWithContext(ctx context.Context) ActivityLogAlertActionGroupOutput {
 	return o
-}
-
-func (o ActivityLogAlertActionGroupOutput) ToOutput(ctx context.Context) pulumix.Output[ActivityLogAlertActionGroup] {
-	return pulumix.Output[ActivityLogAlertActionGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resourceId of the action group. This cannot be null or empty.
@@ -133,12 +114,6 @@ func (o ActivityLogAlertActionGroupArrayOutput) ToActivityLogAlertActionGroupArr
 
 func (o ActivityLogAlertActionGroupArrayOutput) ToActivityLogAlertActionGroupArrayOutputWithContext(ctx context.Context) ActivityLogAlertActionGroupArrayOutput {
 	return o
-}
-
-func (o ActivityLogAlertActionGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ActivityLogAlertActionGroup] {
-	return pulumix.Output[[]ActivityLogAlertActionGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActivityLogAlertActionGroupArrayOutput) Index(i pulumi.IntInput) ActivityLogAlertActionGroupOutput {
@@ -170,12 +145,6 @@ func (o ActivityLogAlertActionGroupResponseOutput) ToActivityLogAlertActionGroup
 	return o
 }
 
-func (o ActivityLogAlertActionGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ActivityLogAlertActionGroupResponse] {
-	return pulumix.Output[ActivityLogAlertActionGroupResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resourceId of the action group. This cannot be null or empty.
 func (o ActivityLogAlertActionGroupResponseOutput) ActionGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v ActivityLogAlertActionGroupResponse) string { return v.ActionGroupId }).(pulumi.StringOutput)
@@ -198,12 +167,6 @@ func (o ActivityLogAlertActionGroupResponseArrayOutput) ToActivityLogAlertAction
 
 func (o ActivityLogAlertActionGroupResponseArrayOutput) ToActivityLogAlertActionGroupResponseArrayOutputWithContext(ctx context.Context) ActivityLogAlertActionGroupResponseArrayOutput {
 	return o
-}
-
-func (o ActivityLogAlertActionGroupResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ActivityLogAlertActionGroupResponse] {
-	return pulumix.Output[[]ActivityLogAlertActionGroupResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActivityLogAlertActionGroupResponseArrayOutput) Index(i pulumi.IntInput) ActivityLogAlertActionGroupResponseOutput {
@@ -247,12 +210,6 @@ func (i ActivityLogAlertActionListArgs) ToActivityLogAlertActionListOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ActivityLogAlertActionListOutput)
 }
 
-func (i ActivityLogAlertActionListArgs) ToOutput(ctx context.Context) pulumix.Output[ActivityLogAlertActionList] {
-	return pulumix.Output[ActivityLogAlertActionList]{
-		OutputState: i.ToActivityLogAlertActionListOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A list of activity log alert actions.
 type ActivityLogAlertActionListOutput struct{ *pulumi.OutputState }
 
@@ -266,12 +223,6 @@ func (o ActivityLogAlertActionListOutput) ToActivityLogAlertActionListOutput() A
 
 func (o ActivityLogAlertActionListOutput) ToActivityLogAlertActionListOutputWithContext(ctx context.Context) ActivityLogAlertActionListOutput {
 	return o
-}
-
-func (o ActivityLogAlertActionListOutput) ToOutput(ctx context.Context) pulumix.Output[ActivityLogAlertActionList] {
-	return pulumix.Output[ActivityLogAlertActionList]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of activity log alerts.
@@ -298,12 +249,6 @@ func (o ActivityLogAlertActionListResponseOutput) ToActivityLogAlertActionListRe
 
 func (o ActivityLogAlertActionListResponseOutput) ToActivityLogAlertActionListResponseOutputWithContext(ctx context.Context) ActivityLogAlertActionListResponseOutput {
 	return o
-}
-
-func (o ActivityLogAlertActionListResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ActivityLogAlertActionListResponse] {
-	return pulumix.Output[ActivityLogAlertActionListResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of activity log alerts.
@@ -348,12 +293,6 @@ func (i ActivityLogAlertAllOfConditionArgs) ToActivityLogAlertAllOfConditionOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ActivityLogAlertAllOfConditionOutput)
 }
 
-func (i ActivityLogAlertAllOfConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ActivityLogAlertAllOfCondition] {
-	return pulumix.Output[ActivityLogAlertAllOfCondition]{
-		OutputState: i.ToActivityLogAlertAllOfConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An Activity Log alert condition that is met when all its member conditions are met.
 type ActivityLogAlertAllOfConditionOutput struct{ *pulumi.OutputState }
 
@@ -367,12 +306,6 @@ func (o ActivityLogAlertAllOfConditionOutput) ToActivityLogAlertAllOfConditionOu
 
 func (o ActivityLogAlertAllOfConditionOutput) ToActivityLogAlertAllOfConditionOutputWithContext(ctx context.Context) ActivityLogAlertAllOfConditionOutput {
 	return o
-}
-
-func (o ActivityLogAlertAllOfConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ActivityLogAlertAllOfCondition] {
-	return pulumix.Output[ActivityLogAlertAllOfCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of activity log alert conditions.
@@ -399,12 +332,6 @@ func (o ActivityLogAlertAllOfConditionResponseOutput) ToActivityLogAlertAllOfCon
 
 func (o ActivityLogAlertAllOfConditionResponseOutput) ToActivityLogAlertAllOfConditionResponseOutputWithContext(ctx context.Context) ActivityLogAlertAllOfConditionResponseOutput {
 	return o
-}
-
-func (o ActivityLogAlertAllOfConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ActivityLogAlertAllOfConditionResponse] {
-	return pulumix.Output[ActivityLogAlertAllOfConditionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of activity log alert conditions.
@@ -451,12 +378,6 @@ func (i ActivityLogAlertLeafConditionArgs) ToActivityLogAlertLeafConditionOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ActivityLogAlertLeafConditionOutput)
 }
 
-func (i ActivityLogAlertLeafConditionArgs) ToOutput(ctx context.Context) pulumix.Output[ActivityLogAlertLeafCondition] {
-	return pulumix.Output[ActivityLogAlertLeafCondition]{
-		OutputState: i.ToActivityLogAlertLeafConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ActivityLogAlertLeafConditionArrayInput is an input type that accepts ActivityLogAlertLeafConditionArray and ActivityLogAlertLeafConditionArrayOutput values.
 // You can construct a concrete instance of `ActivityLogAlertLeafConditionArrayInput` via:
 //
@@ -482,12 +403,6 @@ func (i ActivityLogAlertLeafConditionArray) ToActivityLogAlertLeafConditionArray
 	return pulumi.ToOutputWithContext(ctx, i).(ActivityLogAlertLeafConditionArrayOutput)
 }
 
-func (i ActivityLogAlertLeafConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]ActivityLogAlertLeafCondition] {
-	return pulumix.Output[[]ActivityLogAlertLeafCondition]{
-		OutputState: i.ToActivityLogAlertLeafConditionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An Activity Log alert condition that is met by comparing an activity log field and value.
 type ActivityLogAlertLeafConditionOutput struct{ *pulumi.OutputState }
 
@@ -501,12 +416,6 @@ func (o ActivityLogAlertLeafConditionOutput) ToActivityLogAlertLeafConditionOutp
 
 func (o ActivityLogAlertLeafConditionOutput) ToActivityLogAlertLeafConditionOutputWithContext(ctx context.Context) ActivityLogAlertLeafConditionOutput {
 	return o
-}
-
-func (o ActivityLogAlertLeafConditionOutput) ToOutput(ctx context.Context) pulumix.Output[ActivityLogAlertLeafCondition] {
-	return pulumix.Output[ActivityLogAlertLeafCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The field value will be compared to this value (case-insensitive) to determine if the condition is met.
@@ -531,12 +440,6 @@ func (o ActivityLogAlertLeafConditionArrayOutput) ToActivityLogAlertLeafConditio
 
 func (o ActivityLogAlertLeafConditionArrayOutput) ToActivityLogAlertLeafConditionArrayOutputWithContext(ctx context.Context) ActivityLogAlertLeafConditionArrayOutput {
 	return o
-}
-
-func (o ActivityLogAlertLeafConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ActivityLogAlertLeafCondition] {
-	return pulumix.Output[[]ActivityLogAlertLeafCondition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActivityLogAlertLeafConditionArrayOutput) Index(i pulumi.IntInput) ActivityLogAlertLeafConditionOutput {
@@ -568,12 +471,6 @@ func (o ActivityLogAlertLeafConditionResponseOutput) ToActivityLogAlertLeafCondi
 	return o
 }
 
-func (o ActivityLogAlertLeafConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ActivityLogAlertLeafConditionResponse] {
-	return pulumix.Output[ActivityLogAlertLeafConditionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The field value will be compared to this value (case-insensitive) to determine if the condition is met.
 func (o ActivityLogAlertLeafConditionResponseOutput) Equals() pulumi.StringOutput {
 	return o.ApplyT(func(v ActivityLogAlertLeafConditionResponse) string { return v.Equals }).(pulumi.StringOutput)
@@ -596,12 +493,6 @@ func (o ActivityLogAlertLeafConditionResponseArrayOutput) ToActivityLogAlertLeaf
 
 func (o ActivityLogAlertLeafConditionResponseArrayOutput) ToActivityLogAlertLeafConditionResponseArrayOutputWithContext(ctx context.Context) ActivityLogAlertLeafConditionResponseArrayOutput {
 	return o
-}
-
-func (o ActivityLogAlertLeafConditionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ActivityLogAlertLeafConditionResponse] {
-	return pulumix.Output[[]ActivityLogAlertLeafConditionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActivityLogAlertLeafConditionResponseArrayOutput) Index(i pulumi.IntInput) ActivityLogAlertLeafConditionResponseOutput {

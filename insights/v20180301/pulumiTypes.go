@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -123,12 +122,6 @@ func (i MetricAlertActionArgs) ToMetricAlertActionOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MetricAlertActionOutput)
 }
 
-func (i MetricAlertActionArgs) ToOutput(ctx context.Context) pulumix.Output[MetricAlertAction] {
-	return pulumix.Output[MetricAlertAction]{
-		OutputState: i.ToMetricAlertActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MetricAlertActionArrayInput is an input type that accepts MetricAlertActionArray and MetricAlertActionArrayOutput values.
 // You can construct a concrete instance of `MetricAlertActionArrayInput` via:
 //
@@ -154,12 +147,6 @@ func (i MetricAlertActionArray) ToMetricAlertActionArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(MetricAlertActionArrayOutput)
 }
 
-func (i MetricAlertActionArray) ToOutput(ctx context.Context) pulumix.Output[[]MetricAlertAction] {
-	return pulumix.Output[[]MetricAlertAction]{
-		OutputState: i.ToMetricAlertActionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An alert action.
 type MetricAlertActionOutput struct{ *pulumi.OutputState }
 
@@ -173,12 +160,6 @@ func (o MetricAlertActionOutput) ToMetricAlertActionOutput() MetricAlertActionOu
 
 func (o MetricAlertActionOutput) ToMetricAlertActionOutputWithContext(ctx context.Context) MetricAlertActionOutput {
 	return o
-}
-
-func (o MetricAlertActionOutput) ToOutput(ctx context.Context) pulumix.Output[MetricAlertAction] {
-	return pulumix.Output[MetricAlertAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // the id of the action group to use.
@@ -203,12 +184,6 @@ func (o MetricAlertActionArrayOutput) ToMetricAlertActionArrayOutput() MetricAle
 
 func (o MetricAlertActionArrayOutput) ToMetricAlertActionArrayOutputWithContext(ctx context.Context) MetricAlertActionArrayOutput {
 	return o
-}
-
-func (o MetricAlertActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MetricAlertAction] {
-	return pulumix.Output[[]MetricAlertAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricAlertActionArrayOutput) Index(i pulumi.IntInput) MetricAlertActionOutput {
@@ -240,12 +215,6 @@ func (o MetricAlertActionResponseOutput) ToMetricAlertActionResponseOutputWithCo
 	return o
 }
 
-func (o MetricAlertActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MetricAlertActionResponse] {
-	return pulumix.Output[MetricAlertActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // the id of the action group to use.
 func (o MetricAlertActionResponseOutput) ActionGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricAlertActionResponse) *string { return v.ActionGroupId }).(pulumi.StringPtrOutput)
@@ -268,12 +237,6 @@ func (o MetricAlertActionResponseArrayOutput) ToMetricAlertActionResponseArrayOu
 
 func (o MetricAlertActionResponseArrayOutput) ToMetricAlertActionResponseArrayOutputWithContext(ctx context.Context) MetricAlertActionResponseArrayOutput {
 	return o
-}
-
-func (o MetricAlertActionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MetricAlertActionResponse] {
-	return pulumix.Output[[]MetricAlertActionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricAlertActionResponseArrayOutput) Index(i pulumi.IntInput) MetricAlertActionResponseOutput {

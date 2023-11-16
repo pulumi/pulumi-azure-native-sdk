@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a lab account.
@@ -143,12 +142,6 @@ func (i *LabAccount) ToLabAccountOutputWithContext(ctx context.Context) LabAccou
 	return pulumi.ToOutputWithContext(ctx, i).(LabAccountOutput)
 }
 
-func (i *LabAccount) ToOutput(ctx context.Context) pulumix.Output[*LabAccount] {
-	return pulumix.Output[*LabAccount]{
-		OutputState: i.ToLabAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LabAccountOutput struct{ *pulumi.OutputState }
 
 func (LabAccountOutput) ElementType() reflect.Type {
@@ -161,12 +154,6 @@ func (o LabAccountOutput) ToLabAccountOutput() LabAccountOutput {
 
 func (o LabAccountOutput) ToLabAccountOutputWithContext(ctx context.Context) LabAccountOutput {
 	return o
-}
-
-func (o LabAccountOutput) ToOutput(ctx context.Context) pulumix.Output[*LabAccount] {
-	return pulumix.Output[*LabAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Represents if region selection is enabled

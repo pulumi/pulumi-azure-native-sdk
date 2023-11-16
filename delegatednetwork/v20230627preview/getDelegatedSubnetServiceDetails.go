@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details about the specified dnc DelegatedSubnet Link.
@@ -92,12 +91,6 @@ func (o LookupDelegatedSubnetServiceDetailsResultOutput) ToLookupDelegatedSubnet
 
 func (o LookupDelegatedSubnetServiceDetailsResultOutput) ToLookupDelegatedSubnetServiceDetailsResultOutputWithContext(ctx context.Context) LookupDelegatedSubnetServiceDetailsResultOutput {
 	return o
-}
-
-func (o LookupDelegatedSubnetServiceDetailsResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDelegatedSubnetServiceDetailsResult] {
-	return pulumix.Output[LookupDelegatedSubnetServiceDetailsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines prefix size of CIDR blocks allocated to nodes in VnetBlock Mode.

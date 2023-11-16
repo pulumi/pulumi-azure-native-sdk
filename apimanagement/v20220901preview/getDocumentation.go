@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the Documentation specified by its identifier.
@@ -85,12 +84,6 @@ func (o LookupDocumentationResultOutput) ToLookupDocumentationResultOutput() Loo
 
 func (o LookupDocumentationResultOutput) ToLookupDocumentationResultOutputWithContext(ctx context.Context) LookupDocumentationResultOutput {
 	return o
-}
-
-func (o LookupDocumentationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDocumentationResult] {
-	return pulumix.Output[LookupDocumentationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Markdown documentation content.

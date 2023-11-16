@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure Resource Manager resource envelope.
@@ -159,12 +158,6 @@ func (i *RegistryEnvironmentVersion) ToRegistryEnvironmentVersionOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryEnvironmentVersionOutput)
 }
 
-func (i *RegistryEnvironmentVersion) ToOutput(ctx context.Context) pulumix.Output[*RegistryEnvironmentVersion] {
-	return pulumix.Output[*RegistryEnvironmentVersion]{
-		OutputState: i.ToRegistryEnvironmentVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegistryEnvironmentVersionOutput struct{ *pulumi.OutputState }
 
 func (RegistryEnvironmentVersionOutput) ElementType() reflect.Type {
@@ -177,12 +170,6 @@ func (o RegistryEnvironmentVersionOutput) ToRegistryEnvironmentVersionOutput() R
 
 func (o RegistryEnvironmentVersionOutput) ToRegistryEnvironmentVersionOutputWithContext(ctx context.Context) RegistryEnvironmentVersionOutput {
 	return o
-}
-
-func (o RegistryEnvironmentVersionOutput) ToOutput(ctx context.Context) pulumix.Output[*RegistryEnvironmentVersion] {
-	return pulumix.Output[*RegistryEnvironmentVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // [Required] Additional attributes of the entity.

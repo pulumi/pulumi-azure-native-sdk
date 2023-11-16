@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a blueprint definition.
@@ -96,12 +95,6 @@ func (o LookupBlueprintResultOutput) ToLookupBlueprintResultOutput() LookupBluep
 
 func (o LookupBlueprintResultOutput) ToLookupBlueprintResultOutputWithContext(ctx context.Context) LookupBlueprintResultOutput {
 	return o
-}
-
-func (o LookupBlueprintResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBlueprintResult] {
-	return pulumix.Output[LookupBlueprintResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Multi-line explain this resource.

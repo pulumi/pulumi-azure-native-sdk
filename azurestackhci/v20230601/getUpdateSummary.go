@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get all Update summaries under the HCI cluster
@@ -97,12 +96,6 @@ func (o LookupUpdateSummaryResultOutput) ToLookupUpdateSummaryResultOutput() Loo
 
 func (o LookupUpdateSummaryResultOutput) ToLookupUpdateSummaryResultOutputWithContext(ctx context.Context) LookupUpdateSummaryResultOutput {
 	return o
-}
-
-func (o LookupUpdateSummaryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupUpdateSummaryResult] {
-	return pulumix.Output[LookupUpdateSummaryResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Current Solution Bundle version of the stamp.

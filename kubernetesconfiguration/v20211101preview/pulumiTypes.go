@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -49,12 +48,6 @@ func (i DependsOnDefinitionArgs) ToDependsOnDefinitionOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(DependsOnDefinitionOutput)
 }
 
-func (i DependsOnDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[DependsOnDefinition] {
-	return pulumix.Output[DependsOnDefinition]{
-		OutputState: i.ToDependsOnDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DependsOnDefinitionArrayInput is an input type that accepts DependsOnDefinitionArray and DependsOnDefinitionArrayOutput values.
 // You can construct a concrete instance of `DependsOnDefinitionArrayInput` via:
 //
@@ -80,12 +73,6 @@ func (i DependsOnDefinitionArray) ToDependsOnDefinitionArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(DependsOnDefinitionArrayOutput)
 }
 
-func (i DependsOnDefinitionArray) ToOutput(ctx context.Context) pulumix.Output[[]DependsOnDefinition] {
-	return pulumix.Output[[]DependsOnDefinition]{
-		OutputState: i.ToDependsOnDefinitionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specify which kustomizations must succeed reconciliation on the cluster prior to reconciling this kustomization
 type DependsOnDefinitionOutput struct{ *pulumi.OutputState }
 
@@ -99,12 +86,6 @@ func (o DependsOnDefinitionOutput) ToDependsOnDefinitionOutput() DependsOnDefini
 
 func (o DependsOnDefinitionOutput) ToDependsOnDefinitionOutputWithContext(ctx context.Context) DependsOnDefinitionOutput {
 	return o
-}
-
-func (o DependsOnDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[DependsOnDefinition] {
-	return pulumix.Output[DependsOnDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the kustomization to claim dependency on
@@ -124,12 +105,6 @@ func (o DependsOnDefinitionArrayOutput) ToDependsOnDefinitionArrayOutput() Depen
 
 func (o DependsOnDefinitionArrayOutput) ToDependsOnDefinitionArrayOutputWithContext(ctx context.Context) DependsOnDefinitionArrayOutput {
 	return o
-}
-
-func (o DependsOnDefinitionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DependsOnDefinition] {
-	return pulumix.Output[[]DependsOnDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DependsOnDefinitionArrayOutput) Index(i pulumi.IntInput) DependsOnDefinitionOutput {
@@ -159,12 +134,6 @@ func (o DependsOnDefinitionResponseOutput) ToDependsOnDefinitionResponseOutputWi
 	return o
 }
 
-func (o DependsOnDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DependsOnDefinitionResponse] {
-	return pulumix.Output[DependsOnDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the kustomization to claim dependency on
 func (o DependsOnDefinitionResponseOutput) KustomizationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DependsOnDefinitionResponse) *string { return v.KustomizationName }).(pulumi.StringPtrOutput)
@@ -182,12 +151,6 @@ func (o DependsOnDefinitionResponseArrayOutput) ToDependsOnDefinitionResponseArr
 
 func (o DependsOnDefinitionResponseArrayOutput) ToDependsOnDefinitionResponseArrayOutputWithContext(ctx context.Context) DependsOnDefinitionResponseArrayOutput {
 	return o
-}
-
-func (o DependsOnDefinitionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DependsOnDefinitionResponse] {
-	return pulumix.Output[[]DependsOnDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DependsOnDefinitionResponseArrayOutput) Index(i pulumi.IntInput) DependsOnDefinitionResponseOutput {
@@ -290,12 +253,6 @@ func (i GitRepositoryDefinitionArgs) ToGitRepositoryDefinitionOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GitRepositoryDefinitionOutput)
 }
 
-func (i GitRepositoryDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[GitRepositoryDefinition] {
-	return pulumix.Output[GitRepositoryDefinition]{
-		OutputState: i.ToGitRepositoryDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GitRepositoryDefinitionArgs) ToGitRepositoryDefinitionPtrOutput() GitRepositoryDefinitionPtrOutput {
 	return i.ToGitRepositoryDefinitionPtrOutputWithContext(context.Background())
 }
@@ -337,12 +294,6 @@ func (i *gitRepositoryDefinitionPtrType) ToGitRepositoryDefinitionPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(GitRepositoryDefinitionPtrOutput)
 }
 
-func (i *gitRepositoryDefinitionPtrType) ToOutput(ctx context.Context) pulumix.Output[*GitRepositoryDefinition] {
-	return pulumix.Output[*GitRepositoryDefinition]{
-		OutputState: i.ToGitRepositoryDefinitionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Parameters to reconcile to the GitRepository source kind type.
 type GitRepositoryDefinitionOutput struct{ *pulumi.OutputState }
 
@@ -366,12 +317,6 @@ func (o GitRepositoryDefinitionOutput) ToGitRepositoryDefinitionPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitRepositoryDefinition) *GitRepositoryDefinition {
 		return &v
 	}).(GitRepositoryDefinitionPtrOutput)
-}
-
-func (o GitRepositoryDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[GitRepositoryDefinition] {
-	return pulumix.Output[GitRepositoryDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Base64-encoded HTTPS certificate authority contents used to access git private git repositories over HTTPS
@@ -426,12 +371,6 @@ func (o GitRepositoryDefinitionPtrOutput) ToGitRepositoryDefinitionPtrOutput() G
 
 func (o GitRepositoryDefinitionPtrOutput) ToGitRepositoryDefinitionPtrOutputWithContext(ctx context.Context) GitRepositoryDefinitionPtrOutput {
 	return o
-}
-
-func (o GitRepositoryDefinitionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GitRepositoryDefinition] {
-	return pulumix.Output[*GitRepositoryDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GitRepositoryDefinitionPtrOutput) Elem() GitRepositoryDefinitionOutput {
@@ -576,12 +515,6 @@ func (o GitRepositoryDefinitionResponseOutput) ToGitRepositoryDefinitionResponse
 	return o
 }
 
-func (o GitRepositoryDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GitRepositoryDefinitionResponse] {
-	return pulumix.Output[GitRepositoryDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Base64-encoded HTTPS certificate authority contents used to access git private git repositories over HTTPS
 func (o GitRepositoryDefinitionResponseOutput) HttpsCAFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitRepositoryDefinitionResponse) *string { return v.HttpsCAFile }).(pulumi.StringPtrOutput)
@@ -634,12 +567,6 @@ func (o GitRepositoryDefinitionResponsePtrOutput) ToGitRepositoryDefinitionRespo
 
 func (o GitRepositoryDefinitionResponsePtrOutput) ToGitRepositoryDefinitionResponsePtrOutputWithContext(ctx context.Context) GitRepositoryDefinitionResponsePtrOutput {
 	return o
-}
-
-func (o GitRepositoryDefinitionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GitRepositoryDefinitionResponse] {
-	return pulumix.Output[*GitRepositoryDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GitRepositoryDefinitionResponsePtrOutput) Elem() GitRepositoryDefinitionResponseOutput {
@@ -759,12 +686,6 @@ func (o HelmReleasePropertiesDefinitionResponseOutput) ToHelmReleasePropertiesDe
 	return o
 }
 
-func (o HelmReleasePropertiesDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HelmReleasePropertiesDefinitionResponse] {
-	return pulumix.Output[HelmReleasePropertiesDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Total number of times that the HelmRelease failed to install or upgrade
 func (o HelmReleasePropertiesDefinitionResponseOutput) FailureCount() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v HelmReleasePropertiesDefinitionResponse) *float64 { return v.FailureCount }).(pulumi.Float64PtrOutput)
@@ -804,12 +725,6 @@ func (o HelmReleasePropertiesDefinitionResponsePtrOutput) ToHelmReleasePropertie
 
 func (o HelmReleasePropertiesDefinitionResponsePtrOutput) ToHelmReleasePropertiesDefinitionResponsePtrOutputWithContext(ctx context.Context) HelmReleasePropertiesDefinitionResponsePtrOutput {
 	return o
-}
-
-func (o HelmReleasePropertiesDefinitionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HelmReleasePropertiesDefinitionResponse] {
-	return pulumix.Output[*HelmReleasePropertiesDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HelmReleasePropertiesDefinitionResponsePtrOutput) Elem() HelmReleasePropertiesDefinitionResponseOutput {
@@ -987,12 +902,6 @@ func (i KustomizationDefinitionArgs) ToKustomizationDefinitionOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(KustomizationDefinitionOutput)
 }
 
-func (i KustomizationDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[KustomizationDefinition] {
-	return pulumix.Output[KustomizationDefinition]{
-		OutputState: i.ToKustomizationDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KustomizationDefinitionMapInput is an input type that accepts KustomizationDefinitionMap and KustomizationDefinitionMapOutput values.
 // You can construct a concrete instance of `KustomizationDefinitionMapInput` via:
 //
@@ -1018,12 +927,6 @@ func (i KustomizationDefinitionMap) ToKustomizationDefinitionMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(KustomizationDefinitionMapOutput)
 }
 
-func (i KustomizationDefinitionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]KustomizationDefinition] {
-	return pulumix.Output[map[string]KustomizationDefinition]{
-		OutputState: i.ToKustomizationDefinitionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Kustomization defining how to reconcile the artifact pulled by the source type on the cluster.
 type KustomizationDefinitionOutput struct{ *pulumi.OutputState }
 
@@ -1037,12 +940,6 @@ func (o KustomizationDefinitionOutput) ToKustomizationDefinitionOutput() Kustomi
 
 func (o KustomizationDefinitionOutput) ToKustomizationDefinitionOutputWithContext(ctx context.Context) KustomizationDefinitionOutput {
 	return o
-}
-
-func (o KustomizationDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[KustomizationDefinition] {
-	return pulumix.Output[KustomizationDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies other Kustomizations that this Kustomization depends on. This Kustomization will not reconcile until all dependencies have completed their reconciliation.
@@ -1097,12 +994,6 @@ func (o KustomizationDefinitionMapOutput) ToKustomizationDefinitionMapOutput() K
 
 func (o KustomizationDefinitionMapOutput) ToKustomizationDefinitionMapOutputWithContext(ctx context.Context) KustomizationDefinitionMapOutput {
 	return o
-}
-
-func (o KustomizationDefinitionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]KustomizationDefinition] {
-	return pulumix.Output[map[string]KustomizationDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KustomizationDefinitionMapOutput) MapIndex(k pulumi.StringInput) KustomizationDefinitionOutput {
@@ -1175,12 +1066,6 @@ func (o KustomizationDefinitionResponseOutput) ToKustomizationDefinitionResponse
 	return o
 }
 
-func (o KustomizationDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KustomizationDefinitionResponse] {
-	return pulumix.Output[KustomizationDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies other Kustomizations that this Kustomization depends on. This Kustomization will not reconcile until all dependencies have completed their reconciliation.
 func (o KustomizationDefinitionResponseOutput) DependsOn() DependsOnDefinitionResponseArrayOutput {
 	return o.ApplyT(func(v KustomizationDefinitionResponse) []DependsOnDefinitionResponse { return v.DependsOn }).(DependsOnDefinitionResponseArrayOutput)
@@ -1235,12 +1120,6 @@ func (o KustomizationDefinitionResponseMapOutput) ToKustomizationDefinitionRespo
 	return o
 }
 
-func (o KustomizationDefinitionResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]KustomizationDefinitionResponse] {
-	return pulumix.Output[map[string]KustomizationDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KustomizationDefinitionResponseMapOutput) MapIndex(k pulumi.StringInput) KustomizationDefinitionResponseOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) KustomizationDefinitionResponse {
 		return vs[0].(map[string]KustomizationDefinitionResponse)[vs[1].(string)]
@@ -1270,12 +1149,6 @@ func (o ObjectReferenceDefinitionResponseOutput) ToObjectReferenceDefinitionResp
 	return o
 }
 
-func (o ObjectReferenceDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ObjectReferenceDefinitionResponse] {
-	return pulumix.Output[ObjectReferenceDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the object
 func (o ObjectReferenceDefinitionResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectReferenceDefinitionResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1298,12 +1171,6 @@ func (o ObjectReferenceDefinitionResponsePtrOutput) ToObjectReferenceDefinitionR
 
 func (o ObjectReferenceDefinitionResponsePtrOutput) ToObjectReferenceDefinitionResponsePtrOutputWithContext(ctx context.Context) ObjectReferenceDefinitionResponsePtrOutput {
 	return o
-}
-
-func (o ObjectReferenceDefinitionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ObjectReferenceDefinitionResponse] {
-	return pulumix.Output[*ObjectReferenceDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ObjectReferenceDefinitionResponsePtrOutput) Elem() ObjectReferenceDefinitionResponseOutput {
@@ -1365,12 +1232,6 @@ func (o ObjectStatusConditionDefinitionResponseOutput) ToObjectStatusConditionDe
 	return o
 }
 
-func (o ObjectStatusConditionDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ObjectStatusConditionDefinitionResponse] {
-	return pulumix.Output[ObjectStatusConditionDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Last time this status condition has changed
 func (o ObjectStatusConditionDefinitionResponseOutput) LastTransitionTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectStatusConditionDefinitionResponse) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
@@ -1410,12 +1271,6 @@ func (o ObjectStatusConditionDefinitionResponseArrayOutput) ToObjectStatusCondit
 	return o
 }
 
-func (o ObjectStatusConditionDefinitionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ObjectStatusConditionDefinitionResponse] {
-	return pulumix.Output[[]ObjectStatusConditionDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ObjectStatusConditionDefinitionResponseArrayOutput) Index(i pulumi.IntInput) ObjectStatusConditionDefinitionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ObjectStatusConditionDefinitionResponse {
 		return vs[0].([]ObjectStatusConditionDefinitionResponse)[vs[1].(int)]
@@ -1453,12 +1308,6 @@ func (o ObjectStatusDefinitionResponseOutput) ToObjectStatusDefinitionResponseOu
 
 func (o ObjectStatusDefinitionResponseOutput) ToObjectStatusDefinitionResponseOutputWithContext(ctx context.Context) ObjectStatusDefinitionResponseOutput {
 	return o
-}
-
-func (o ObjectStatusDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ObjectStatusDefinitionResponse] {
-	return pulumix.Output[ObjectStatusDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Object reference to the Kustomization that applied this object
@@ -1514,12 +1363,6 @@ func (o ObjectStatusDefinitionResponseArrayOutput) ToObjectStatusDefinitionRespo
 	return o
 }
 
-func (o ObjectStatusDefinitionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ObjectStatusDefinitionResponse] {
-	return pulumix.Output[[]ObjectStatusDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ObjectStatusDefinitionResponseArrayOutput) Index(i pulumi.IntInput) ObjectStatusDefinitionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ObjectStatusDefinitionResponse {
 		return vs[0].([]ObjectStatusDefinitionResponse)[vs[1].(int)]
@@ -1573,12 +1416,6 @@ func (i RepositoryRefDefinitionArgs) ToRepositoryRefDefinitionOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRefDefinitionOutput)
 }
 
-func (i RepositoryRefDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[RepositoryRefDefinition] {
-	return pulumix.Output[RepositoryRefDefinition]{
-		OutputState: i.ToRepositoryRefDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RepositoryRefDefinitionArgs) ToRepositoryRefDefinitionPtrOutput() RepositoryRefDefinitionPtrOutput {
 	return i.ToRepositoryRefDefinitionPtrOutputWithContext(context.Background())
 }
@@ -1620,12 +1457,6 @@ func (i *repositoryRefDefinitionPtrType) ToRepositoryRefDefinitionPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRefDefinitionPtrOutput)
 }
 
-func (i *repositoryRefDefinitionPtrType) ToOutput(ctx context.Context) pulumix.Output[*RepositoryRefDefinition] {
-	return pulumix.Output[*RepositoryRefDefinition]{
-		OutputState: i.ToRepositoryRefDefinitionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The source reference for the GitRepository object.
 type RepositoryRefDefinitionOutput struct{ *pulumi.OutputState }
 
@@ -1649,12 +1480,6 @@ func (o RepositoryRefDefinitionOutput) ToRepositoryRefDefinitionPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryRefDefinition) *RepositoryRefDefinition {
 		return &v
 	}).(RepositoryRefDefinitionPtrOutput)
-}
-
-func (o RepositoryRefDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryRefDefinition] {
-	return pulumix.Output[RepositoryRefDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The git repository branch name to checkout.
@@ -1689,12 +1514,6 @@ func (o RepositoryRefDefinitionPtrOutput) ToRepositoryRefDefinitionPtrOutput() R
 
 func (o RepositoryRefDefinitionPtrOutput) ToRepositoryRefDefinitionPtrOutputWithContext(ctx context.Context) RepositoryRefDefinitionPtrOutput {
 	return o
-}
-
-func (o RepositoryRefDefinitionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryRefDefinition] {
-	return pulumix.Output[*RepositoryRefDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryRefDefinitionPtrOutput) Elem() RepositoryRefDefinitionOutput {
@@ -1774,12 +1593,6 @@ func (o RepositoryRefDefinitionResponseOutput) ToRepositoryRefDefinitionResponse
 	return o
 }
 
-func (o RepositoryRefDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RepositoryRefDefinitionResponse] {
-	return pulumix.Output[RepositoryRefDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The git repository branch name to checkout.
 func (o RepositoryRefDefinitionResponseOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryRefDefinitionResponse) *string { return v.Branch }).(pulumi.StringPtrOutput)
@@ -1812,12 +1625,6 @@ func (o RepositoryRefDefinitionResponsePtrOutput) ToRepositoryRefDefinitionRespo
 
 func (o RepositoryRefDefinitionResponsePtrOutput) ToRepositoryRefDefinitionResponsePtrOutputWithContext(ctx context.Context) RepositoryRefDefinitionResponsePtrOutput {
 	return o
-}
-
-func (o RepositoryRefDefinitionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RepositoryRefDefinitionResponse] {
-	return pulumix.Output[*RepositoryRefDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepositoryRefDefinitionResponsePtrOutput) Elem() RepositoryRefDefinitionResponseOutput {
@@ -1899,12 +1706,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

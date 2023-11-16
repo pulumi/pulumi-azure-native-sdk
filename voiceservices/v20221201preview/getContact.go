@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Contact
@@ -97,12 +96,6 @@ func (o LookupContactResultOutput) ToLookupContactResultOutput() LookupContactRe
 
 func (o LookupContactResultOutput) ToLookupContactResultOutputWithContext(ctx context.Context) LookupContactResultOutput {
 	return o
-}
-
-func (o LookupContactResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContactResult] {
-	return pulumix.Output[LookupContactResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Full name of contact

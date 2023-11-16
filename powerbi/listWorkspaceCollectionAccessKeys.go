@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the primary and secondary access keys for the specified Power BI Workspace Collection.
@@ -74,12 +73,6 @@ func (o ListWorkspaceCollectionAccessKeysResultOutput) ToListWorkspaceCollection
 
 func (o ListWorkspaceCollectionAccessKeysResultOutput) ToListWorkspaceCollectionAccessKeysResultOutputWithContext(ctx context.Context) ListWorkspaceCollectionAccessKeysResultOutput {
 	return o
-}
-
-func (o ListWorkspaceCollectionAccessKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWorkspaceCollectionAccessKeysResult] {
-	return pulumix.Output[ListWorkspaceCollectionAccessKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Access key 1

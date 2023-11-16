@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets private store collection
@@ -100,12 +99,6 @@ func (o LookupPrivateStoreCollectionResultOutput) ToLookupPrivateStoreCollection
 
 func (o LookupPrivateStoreCollectionResultOutput) ToLookupPrivateStoreCollectionResultOutputWithContext(ctx context.Context) LookupPrivateStoreCollectionResultOutput {
 	return o
-}
-
-func (o LookupPrivateStoreCollectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateStoreCollectionResult] {
-	return pulumix.Output[LookupPrivateStoreCollectionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicating whether all subscriptions are selected (=true) or not (=false).

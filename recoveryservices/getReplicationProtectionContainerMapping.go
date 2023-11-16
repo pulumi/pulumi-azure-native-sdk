@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of a protection container mapping.
@@ -96,12 +95,6 @@ func (o LookupReplicationProtectionContainerMappingResultOutput) ToLookupReplica
 
 func (o LookupReplicationProtectionContainerMappingResultOutput) ToLookupReplicationProtectionContainerMappingResultOutputWithContext(ctx context.Context) LookupReplicationProtectionContainerMappingResultOutput {
 	return o
-}
-
-func (o LookupReplicationProtectionContainerMappingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReplicationProtectionContainerMappingResult] {
-	return pulumix.Output[LookupReplicationProtectionContainerMappingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Id

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Machine assessment resource.
@@ -307,12 +306,6 @@ func (i *AssessmentsOperation) ToAssessmentsOperationOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(AssessmentsOperationOutput)
 }
 
-func (i *AssessmentsOperation) ToOutput(ctx context.Context) pulumix.Output[*AssessmentsOperation] {
-	return pulumix.Output[*AssessmentsOperation]{
-		OutputState: i.ToAssessmentsOperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AssessmentsOperationOutput struct{ *pulumi.OutputState }
 
 func (AssessmentsOperationOutput) ElementType() reflect.Type {
@@ -325,12 +318,6 @@ func (o AssessmentsOperationOutput) ToAssessmentsOperationOutput() AssessmentsOp
 
 func (o AssessmentsOperationOutput) ToAssessmentsOperationOutputWithContext(ctx context.Context) AssessmentsOperationOutput {
 	return o
-}
-
-func (o AssessmentsOperationOutput) ToOutput(ctx context.Context) pulumix.Output[*AssessmentsOperation] {
-	return pulumix.Output[*AssessmentsOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the assessment error summary.

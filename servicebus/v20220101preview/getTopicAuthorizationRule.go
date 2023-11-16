@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified authorization rule.
@@ -91,12 +90,6 @@ func (o LookupTopicAuthorizationRuleResultOutput) ToLookupTopicAuthorizationRule
 
 func (o LookupTopicAuthorizationRuleResultOutput) ToLookupTopicAuthorizationRuleResultOutputWithContext(ctx context.Context) LookupTopicAuthorizationRuleResultOutput {
 	return o
-}
-
-func (o LookupTopicAuthorizationRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTopicAuthorizationRuleResult] {
-	return pulumix.Output[LookupTopicAuthorizationRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

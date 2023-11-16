@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties of a Data Pool
@@ -91,12 +90,6 @@ func (o LookupDataPoolResultOutput) ToLookupDataPoolResultOutput() LookupDataPoo
 
 func (o LookupDataPoolResultOutput) ToLookupDataPoolResultOutputWithContext(ctx context.Context) LookupDataPoolResultOutput {
 	return o
-}
-
-func (o LookupDataPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataPoolResult] {
-	return pulumix.Output[LookupDataPoolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Data Pool's data-plane ID

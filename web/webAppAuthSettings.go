@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Configuration settings for the Azure App Service Authentication / Authorization feature.
@@ -550,12 +549,6 @@ func (i *WebAppAuthSettings) ToWebAppAuthSettingsOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppAuthSettingsOutput)
 }
 
-func (i *WebAppAuthSettings) ToOutput(ctx context.Context) pulumix.Output[*WebAppAuthSettings] {
-	return pulumix.Output[*WebAppAuthSettings]{
-		OutputState: i.ToWebAppAuthSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebAppAuthSettingsOutput struct{ *pulumi.OutputState }
 
 func (WebAppAuthSettingsOutput) ElementType() reflect.Type {
@@ -568,12 +561,6 @@ func (o WebAppAuthSettingsOutput) ToWebAppAuthSettingsOutput() WebAppAuthSetting
 
 func (o WebAppAuthSettingsOutput) ToWebAppAuthSettingsOutputWithContext(ctx context.Context) WebAppAuthSettingsOutput {
 	return o
-}
-
-func (o WebAppAuthSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppAuthSettings] {
-	return pulumix.Output[*WebAppAuthSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets a JSON string containing the Azure AD Acl settings.

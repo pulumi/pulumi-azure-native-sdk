@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get an existing assessment with the specified name. Returns a json object of type 'assessment' as specified in Models section.
@@ -129,12 +128,6 @@ func (o LookupAssessmentResultOutput) ToLookupAssessmentResultOutput() LookupAss
 
 func (o LookupAssessmentResultOutput) ToLookupAssessmentResultOutputWithContext(ctx context.Context) LookupAssessmentResultOutput {
 	return o
-}
-
-func (o LookupAssessmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAssessmentResult] {
-	return pulumix.Output[LookupAssessmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // AHUB discount on windows virtual machines.

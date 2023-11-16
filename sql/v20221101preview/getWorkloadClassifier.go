@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a workload classifier
@@ -101,12 +100,6 @@ func (o LookupWorkloadClassifierResultOutput) ToLookupWorkloadClassifierResultOu
 
 func (o LookupWorkloadClassifierResultOutput) ToLookupWorkloadClassifierResultOutputWithContext(ctx context.Context) LookupWorkloadClassifierResultOutput {
 	return o
-}
-
-func (o LookupWorkloadClassifierResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkloadClassifierResult] {
-	return pulumix.Output[LookupWorkloadClassifierResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The workload classifier context.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An ADLS Gen 2 folder data set.
@@ -197,12 +196,6 @@ func (i *ADLSGen2FolderDataSet) ToADLSGen2FolderDataSetOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ADLSGen2FolderDataSetOutput)
 }
 
-func (i *ADLSGen2FolderDataSet) ToOutput(ctx context.Context) pulumix.Output[*ADLSGen2FolderDataSet] {
-	return pulumix.Output[*ADLSGen2FolderDataSet]{
-		OutputState: i.ToADLSGen2FolderDataSetOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ADLSGen2FolderDataSetOutput struct{ *pulumi.OutputState }
 
 func (ADLSGen2FolderDataSetOutput) ElementType() reflect.Type {
@@ -215,12 +208,6 @@ func (o ADLSGen2FolderDataSetOutput) ToADLSGen2FolderDataSetOutput() ADLSGen2Fol
 
 func (o ADLSGen2FolderDataSetOutput) ToADLSGen2FolderDataSetOutputWithContext(ctx context.Context) ADLSGen2FolderDataSetOutput {
 	return o
-}
-
-func (o ADLSGen2FolderDataSetOutput) ToOutput(ctx context.Context) pulumix.Output[*ADLSGen2FolderDataSet] {
-	return pulumix.Output[*ADLSGen2FolderDataSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Unique id for identifying a data set resource

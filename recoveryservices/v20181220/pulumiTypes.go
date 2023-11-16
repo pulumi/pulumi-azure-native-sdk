@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i AADPropertiesArgs) ToAADPropertiesOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AADPropertiesOutput)
 }
 
-func (i AADPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[AADProperties] {
-	return pulumix.Output[AADProperties]{
-		OutputState: i.ToAADPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AADPropertiesArgs) ToAADPropertiesPtrOutput() AADPropertiesPtrOutput {
 	return i.ToAADPropertiesPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *aadpropertiesPtrType) ToAADPropertiesPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AADPropertiesPtrOutput)
 }
 
-func (i *aadpropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*AADProperties] {
-	return pulumix.Output[*AADProperties]{
-		OutputState: i.ToAADPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AADPropertiesOutput struct{ *pulumi.OutputState }
 
 func (AADPropertiesOutput) ElementType() reflect.Type {
@@ -128,12 +115,6 @@ func (o AADPropertiesOutput) ToAADPropertiesPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AADProperties) *AADProperties {
 		return &v
 	}).(AADPropertiesPtrOutput)
-}
-
-func (o AADPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[AADProperties] {
-	return pulumix.Output[AADProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AADPropertiesOutput) Audience() pulumi.StringPtrOutput {
@@ -168,12 +149,6 @@ func (o AADPropertiesPtrOutput) ToAADPropertiesPtrOutput() AADPropertiesPtrOutpu
 
 func (o AADPropertiesPtrOutput) ToAADPropertiesPtrOutputWithContext(ctx context.Context) AADPropertiesPtrOutput {
 	return o
-}
-
-func (o AADPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AADProperties] {
-	return pulumix.Output[*AADProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AADPropertiesPtrOutput) Elem() AADPropertiesOutput {
@@ -311,12 +286,6 @@ func (o WorkloadCrrAccessTokenResponseOutput) ToWorkloadCrrAccessTokenResponseOu
 
 func (o WorkloadCrrAccessTokenResponseOutput) ToWorkloadCrrAccessTokenResponseOutputWithContext(ctx context.Context) WorkloadCrrAccessTokenResponseOutput {
 	return o
-}
-
-func (o WorkloadCrrAccessTokenResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkloadCrrAccessTokenResponse] {
-	return pulumix.Output[WorkloadCrrAccessTokenResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Access token used for authentication

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes the RedisEnterprise cluster
@@ -199,12 +198,6 @@ func (i *RedisEnterprise) ToRedisEnterpriseOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(RedisEnterpriseOutput)
 }
 
-func (i *RedisEnterprise) ToOutput(ctx context.Context) pulumix.Output[*RedisEnterprise] {
-	return pulumix.Output[*RedisEnterprise]{
-		OutputState: i.ToRedisEnterpriseOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RedisEnterpriseOutput struct{ *pulumi.OutputState }
 
 func (RedisEnterpriseOutput) ElementType() reflect.Type {
@@ -217,12 +210,6 @@ func (o RedisEnterpriseOutput) ToRedisEnterpriseOutput() RedisEnterpriseOutput {
 
 func (o RedisEnterpriseOutput) ToRedisEnterpriseOutputWithContext(ctx context.Context) RedisEnterpriseOutput {
 	return o
-}
-
-func (o RedisEnterpriseOutput) ToOutput(ctx context.Context) pulumix.Output[*RedisEnterprise] {
-	return pulumix.Output[*RedisEnterprise]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Encryption-at-rest configuration for the cluster.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Get ManagedNetworks operation gets a Managed Network Resource, specified by the resource group and Managed Network name
@@ -89,12 +88,6 @@ func (o LookupManagedNetworkResultOutput) ToLookupManagedNetworkResultOutput() L
 
 func (o LookupManagedNetworkResultOutput) ToLookupManagedNetworkResultOutputWithContext(ctx context.Context) LookupManagedNetworkResultOutput {
 	return o
-}
-
-func (o LookupManagedNetworkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedNetworkResult] {
-	return pulumix.Output[LookupManagedNetworkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The collection of groups and policies concerned with connectivity

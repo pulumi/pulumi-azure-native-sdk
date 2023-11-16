@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Definition of the credential.
@@ -166,12 +165,6 @@ func (i *Credential) ToCredentialOutputWithContext(ctx context.Context) Credenti
 	return pulumi.ToOutputWithContext(ctx, i).(CredentialOutput)
 }
 
-func (i *Credential) ToOutput(ctx context.Context) pulumix.Output[*Credential] {
-	return pulumix.Output[*Credential]{
-		OutputState: i.ToCredentialOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CredentialOutput struct{ *pulumi.OutputState }
 
 func (CredentialOutput) ElementType() reflect.Type {
@@ -184,12 +177,6 @@ func (o CredentialOutput) ToCredentialOutput() CredentialOutput {
 
 func (o CredentialOutput) ToCredentialOutputWithContext(ctx context.Context) CredentialOutput {
 	return o
-}
-
-func (o CredentialOutput) ToOutput(ctx context.Context) pulumix.Output[*Credential] {
-	return pulumix.Output[*Credential]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the creation time.

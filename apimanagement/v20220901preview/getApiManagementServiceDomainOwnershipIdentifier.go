@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the custom domain ownership identifier for an API Management service.
@@ -65,12 +64,6 @@ func (o GetApiManagementServiceDomainOwnershipIdentifierResultOutput) ToGetApiMa
 
 func (o GetApiManagementServiceDomainOwnershipIdentifierResultOutput) ToGetApiManagementServiceDomainOwnershipIdentifierResultOutputWithContext(ctx context.Context) GetApiManagementServiceDomainOwnershipIdentifierResultOutput {
 	return o
-}
-
-func (o GetApiManagementServiceDomainOwnershipIdentifierResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetApiManagementServiceDomainOwnershipIdentifierResult] {
-	return pulumix.Output[GetApiManagementServiceDomainOwnershipIdentifierResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The domain ownership identifier value.

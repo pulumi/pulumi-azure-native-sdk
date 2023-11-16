@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists a workflow run expression trace.
@@ -94,12 +93,6 @@ func (o ListWorkflowRunActionRepetitionExpressionTracesResultOutput) ToListWorkf
 
 func (o ListWorkflowRunActionRepetitionExpressionTracesResultOutput) ToListWorkflowRunActionRepetitionExpressionTracesResultOutputWithContext(ctx context.Context) ListWorkflowRunActionRepetitionExpressionTracesResultOutput {
 	return o
-}
-
-func (o ListWorkflowRunActionRepetitionExpressionTracesResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWorkflowRunActionRepetitionExpressionTracesResult] {
-	return pulumix.Output[ListWorkflowRunActionRepetitionExpressionTracesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ListWorkflowRunActionRepetitionExpressionTracesResultOutput) Inputs() ExpressionRootResponseArrayOutput {

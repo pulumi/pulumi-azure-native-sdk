@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The L2IsolationDomain resource definition.
@@ -162,12 +161,6 @@ func (i *L2IsolationDomain) ToL2IsolationDomainOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(L2IsolationDomainOutput)
 }
 
-func (i *L2IsolationDomain) ToOutput(ctx context.Context) pulumix.Output[*L2IsolationDomain] {
-	return pulumix.Output[*L2IsolationDomain]{
-		OutputState: i.ToL2IsolationDomainOutputWithContext(ctx).OutputState,
-	}
-}
-
 type L2IsolationDomainOutput struct{ *pulumi.OutputState }
 
 func (L2IsolationDomainOutput) ElementType() reflect.Type {
@@ -180,12 +173,6 @@ func (o L2IsolationDomainOutput) ToL2IsolationDomainOutput() L2IsolationDomainOu
 
 func (o L2IsolationDomainOutput) ToL2IsolationDomainOutputWithContext(ctx context.Context) L2IsolationDomainOutput {
 	return o
-}
-
-func (o L2IsolationDomainOutput) ToOutput(ctx context.Context) pulumix.Output[*L2IsolationDomain] {
-	return pulumix.Output[*L2IsolationDomain]{
-		OutputState: o.OutputState,
-	}
 }
 
 // state. Example: Enabled | Disabled. It indicates administrative state of the isolationDomain, whether it is enabled or disabled. If enabled, the configuration is applied on the devices. If disabled, the configuration is removed from the devices

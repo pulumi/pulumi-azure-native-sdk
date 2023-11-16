@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Resource which represents the managed network connection between Azure Gateways and remote cloud gateways.
@@ -152,12 +151,6 @@ func (i *CloudConnection) ToCloudConnectionOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(CloudConnectionOutput)
 }
 
-func (i *CloudConnection) ToOutput(ctx context.Context) pulumix.Output[*CloudConnection] {
-	return pulumix.Output[*CloudConnection]{
-		OutputState: i.ToCloudConnectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CloudConnectionOutput struct{ *pulumi.OutputState }
 
 func (CloudConnectionOutput) ElementType() reflect.Type {
@@ -170,12 +163,6 @@ func (o CloudConnectionOutput) ToCloudConnectionOutput() CloudConnectionOutput {
 
 func (o CloudConnectionOutput) ToCloudConnectionOutputWithContext(ctx context.Context) CloudConnectionOutput {
 	return o
-}
-
-func (o CloudConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudConnection] {
-	return pulumix.Output[*CloudConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The cloud connector which discovered the remote resource.

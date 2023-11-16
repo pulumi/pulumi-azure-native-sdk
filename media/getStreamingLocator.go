@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the details of a Streaming Locator in the Media Services account
@@ -106,12 +105,6 @@ func (o LookupStreamingLocatorResultOutput) ToLookupStreamingLocatorResultOutput
 
 func (o LookupStreamingLocatorResultOutput) ToLookupStreamingLocatorResultOutputWithContext(ctx context.Context) LookupStreamingLocatorResultOutput {
 	return o
-}
-
-func (o LookupStreamingLocatorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStreamingLocatorResult] {
-	return pulumix.Output[LookupStreamingLocatorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Alternative Media ID of this Streaming Locator

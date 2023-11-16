@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Dapr Component.
@@ -199,12 +198,6 @@ func (i *DaprComponent) ToDaprComponentOutputWithContext(ctx context.Context) Da
 	return pulumi.ToOutputWithContext(ctx, i).(DaprComponentOutput)
 }
 
-func (i *DaprComponent) ToOutput(ctx context.Context) pulumix.Output[*DaprComponent] {
-	return pulumix.Output[*DaprComponent]{
-		OutputState: i.ToDaprComponentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DaprComponentOutput struct{ *pulumi.OutputState }
 
 func (DaprComponentOutput) ElementType() reflect.Type {
@@ -217,12 +210,6 @@ func (o DaprComponentOutput) ToDaprComponentOutput() DaprComponentOutput {
 
 func (o DaprComponentOutput) ToDaprComponentOutputWithContext(ctx context.Context) DaprComponentOutput {
 	return o
-}
-
-func (o DaprComponentOutput) ToOutput(ctx context.Context) pulumix.Output[*DaprComponent] {
-	return pulumix.Output[*DaprComponent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Component type

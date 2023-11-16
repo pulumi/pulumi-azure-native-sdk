@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The logical network resource definition.
@@ -96,12 +95,6 @@ func (o LookupLogicalNetworkResultOutput) ToLookupLogicalNetworkResultOutput() L
 
 func (o LookupLogicalNetworkResultOutput) ToLookupLogicalNetworkResultOutputWithContext(ctx context.Context) LookupLogicalNetworkResultOutput {
 	return o
-}
-
-func (o LookupLogicalNetworkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLogicalNetworkResult] {
-	return pulumix.Output[LookupLogicalNetworkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // DhcpOptions contains an array of DNS servers available to VMs deployed in the logical network. Standard DHCP option for a subnet overrides logical network DHCP options.

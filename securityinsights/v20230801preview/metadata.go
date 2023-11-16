@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Metadata resource definition.
@@ -150,6 +149,9 @@ func NewMetadata(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:Metadata"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:Metadata"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -303,12 +305,6 @@ func (i *Metadata) ToMetadataOutputWithContext(ctx context.Context) MetadataOutp
 	return pulumi.ToOutputWithContext(ctx, i).(MetadataOutput)
 }
 
-func (i *Metadata) ToOutput(ctx context.Context) pulumix.Output[*Metadata] {
-	return pulumix.Output[*Metadata]{
-		OutputState: i.ToMetadataOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetadataOutput struct{ *pulumi.OutputState }
 
 func (MetadataOutput) ElementType() reflect.Type {
@@ -321,12 +317,6 @@ func (o MetadataOutput) ToMetadataOutput() MetadataOutput {
 
 func (o MetadataOutput) ToMetadataOutputWithContext(ctx context.Context) MetadataOutput {
 	return o
-}
-
-func (o MetadataOutput) ToOutput(ctx context.Context) pulumix.Output[*Metadata] {
-	return pulumix.Output[*Metadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creator of the content item.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about the specified relationship Link.
@@ -106,12 +105,6 @@ func (o LookupRelationshipLinkResultOutput) ToLookupRelationshipLinkResultOutput
 
 func (o LookupRelationshipLinkResultOutput) ToLookupRelationshipLinkResultOutputWithContext(ctx context.Context) LookupRelationshipLinkResultOutput {
 	return o
-}
-
-func (o LookupRelationshipLinkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRelationshipLinkResult] {
-	return pulumix.Output[LookupRelationshipLinkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Localized descriptions for the Relationship Link.

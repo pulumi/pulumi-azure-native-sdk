@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -37,12 +36,6 @@ func (o ApiKeyResponseOutput) ToApiKeyResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o ApiKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApiKeyResponse] {
-	return pulumix.Output[ApiKeyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the API key name.
 func (o ApiKeyResponseOutput) KeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiKeyResponse) *string { return v.KeyName }).(pulumi.StringPtrOutput)
@@ -65,12 +58,6 @@ func (o ApiKeyResponseArrayOutput) ToApiKeyResponseArrayOutput() ApiKeyResponseA
 
 func (o ApiKeyResponseArrayOutput) ToApiKeyResponseArrayOutputWithContext(ctx context.Context) ApiKeyResponseArrayOutput {
 	return o
-}
-
-func (o ApiKeyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApiKeyResponse] {
-	return pulumix.Output[[]ApiKeyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiKeyResponseArrayOutput) Index(i pulumi.IntInput) ApiKeyResponseOutput {
@@ -114,12 +101,6 @@ func (i BlockchainMemberNodesSkuArgs) ToBlockchainMemberNodesSkuOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(BlockchainMemberNodesSkuOutput)
 }
 
-func (i BlockchainMemberNodesSkuArgs) ToOutput(ctx context.Context) pulumix.Output[BlockchainMemberNodesSku] {
-	return pulumix.Output[BlockchainMemberNodesSku]{
-		OutputState: i.ToBlockchainMemberNodesSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BlockchainMemberNodesSkuArgs) ToBlockchainMemberNodesSkuPtrOutput() BlockchainMemberNodesSkuPtrOutput {
 	return i.ToBlockchainMemberNodesSkuPtrOutputWithContext(context.Background())
 }
@@ -161,12 +142,6 @@ func (i *blockchainMemberNodesSkuPtrType) ToBlockchainMemberNodesSkuPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(BlockchainMemberNodesSkuPtrOutput)
 }
 
-func (i *blockchainMemberNodesSkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*BlockchainMemberNodesSku] {
-	return pulumix.Output[*BlockchainMemberNodesSku]{
-		OutputState: i.ToBlockchainMemberNodesSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Payload of the blockchain member nodes Sku for a blockchain member.
 type BlockchainMemberNodesSkuOutput struct{ *pulumi.OutputState }
 
@@ -192,12 +167,6 @@ func (o BlockchainMemberNodesSkuOutput) ToBlockchainMemberNodesSkuPtrOutputWithC
 	}).(BlockchainMemberNodesSkuPtrOutput)
 }
 
-func (o BlockchainMemberNodesSkuOutput) ToOutput(ctx context.Context) pulumix.Output[BlockchainMemberNodesSku] {
-	return pulumix.Output[BlockchainMemberNodesSku]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the nodes capacity.
 func (o BlockchainMemberNodesSkuOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BlockchainMemberNodesSku) *int { return v.Capacity }).(pulumi.IntPtrOutput)
@@ -215,12 +184,6 @@ func (o BlockchainMemberNodesSkuPtrOutput) ToBlockchainMemberNodesSkuPtrOutput()
 
 func (o BlockchainMemberNodesSkuPtrOutput) ToBlockchainMemberNodesSkuPtrOutputWithContext(ctx context.Context) BlockchainMemberNodesSkuPtrOutput {
 	return o
-}
-
-func (o BlockchainMemberNodesSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BlockchainMemberNodesSku] {
-	return pulumix.Output[*BlockchainMemberNodesSku]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlockchainMemberNodesSkuPtrOutput) Elem() BlockchainMemberNodesSkuOutput {
@@ -264,12 +227,6 @@ func (o BlockchainMemberNodesSkuResponseOutput) ToBlockchainMemberNodesSkuRespon
 	return o
 }
 
-func (o BlockchainMemberNodesSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BlockchainMemberNodesSkuResponse] {
-	return pulumix.Output[BlockchainMemberNodesSkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the nodes capacity.
 func (o BlockchainMemberNodesSkuResponseOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BlockchainMemberNodesSkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
@@ -287,12 +244,6 @@ func (o BlockchainMemberNodesSkuResponsePtrOutput) ToBlockchainMemberNodesSkuRes
 
 func (o BlockchainMemberNodesSkuResponsePtrOutput) ToBlockchainMemberNodesSkuResponsePtrOutputWithContext(ctx context.Context) BlockchainMemberNodesSkuResponsePtrOutput {
 	return o
-}
-
-func (o BlockchainMemberNodesSkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BlockchainMemberNodesSkuResponse] {
-	return pulumix.Output[*BlockchainMemberNodesSkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlockchainMemberNodesSkuResponsePtrOutput) Elem() BlockchainMemberNodesSkuResponseOutput {
@@ -338,12 +289,6 @@ func (o ConsortiumResponseOutput) ToConsortiumResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o ConsortiumResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConsortiumResponse] {
-	return pulumix.Output[ConsortiumResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the blockchain member name.
 func (o ConsortiumResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConsortiumResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -366,12 +311,6 @@ func (o ConsortiumResponseArrayOutput) ToConsortiumResponseArrayOutput() Consort
 
 func (o ConsortiumResponseArrayOutput) ToConsortiumResponseArrayOutputWithContext(ctx context.Context) ConsortiumResponseArrayOutput {
 	return o
-}
-
-func (o ConsortiumResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConsortiumResponse] {
-	return pulumix.Output[[]ConsortiumResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConsortiumResponseArrayOutput) Index(i pulumi.IntInput) ConsortiumResponseOutput {
@@ -423,12 +362,6 @@ func (i FirewallRuleArgs) ToFirewallRuleOutputWithContext(ctx context.Context) F
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallRuleOutput)
 }
 
-func (i FirewallRuleArgs) ToOutput(ctx context.Context) pulumix.Output[FirewallRule] {
-	return pulumix.Output[FirewallRule]{
-		OutputState: i.ToFirewallRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FirewallRuleArrayInput is an input type that accepts FirewallRuleArray and FirewallRuleArrayOutput values.
 // You can construct a concrete instance of `FirewallRuleArrayInput` via:
 //
@@ -454,12 +387,6 @@ func (i FirewallRuleArray) ToFirewallRuleArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallRuleArrayOutput)
 }
 
-func (i FirewallRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]FirewallRule] {
-	return pulumix.Output[[]FirewallRule]{
-		OutputState: i.ToFirewallRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Ip range for firewall rules
 type FirewallRuleOutput struct{ *pulumi.OutputState }
 
@@ -473,12 +400,6 @@ func (o FirewallRuleOutput) ToFirewallRuleOutput() FirewallRuleOutput {
 
 func (o FirewallRuleOutput) ToFirewallRuleOutputWithContext(ctx context.Context) FirewallRuleOutput {
 	return o
-}
-
-func (o FirewallRuleOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallRule] {
-	return pulumix.Output[FirewallRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the end IP address of the firewall rule range.
@@ -508,12 +429,6 @@ func (o FirewallRuleArrayOutput) ToFirewallRuleArrayOutput() FirewallRuleArrayOu
 
 func (o FirewallRuleArrayOutput) ToFirewallRuleArrayOutputWithContext(ctx context.Context) FirewallRuleArrayOutput {
 	return o
-}
-
-func (o FirewallRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FirewallRule] {
-	return pulumix.Output[[]FirewallRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallRuleArrayOutput) Index(i pulumi.IntInput) FirewallRuleOutput {
@@ -547,12 +462,6 @@ func (o FirewallRuleResponseOutput) ToFirewallRuleResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o FirewallRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallRuleResponse] {
-	return pulumix.Output[FirewallRuleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the end IP address of the firewall rule range.
 func (o FirewallRuleResponseOutput) EndIpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallRuleResponse) *string { return v.EndIpAddress }).(pulumi.StringPtrOutput)
@@ -580,12 +489,6 @@ func (o FirewallRuleResponseArrayOutput) ToFirewallRuleResponseArrayOutput() Fir
 
 func (o FirewallRuleResponseArrayOutput) ToFirewallRuleResponseArrayOutputWithContext(ctx context.Context) FirewallRuleResponseArrayOutput {
 	return o
-}
-
-func (o FirewallRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FirewallRuleResponse] {
-	return pulumix.Output[[]FirewallRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FirewallRuleResponseArrayOutput) Index(i pulumi.IntInput) FirewallRuleResponseOutput {
@@ -633,12 +536,6 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
-func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
 	return i.ToSkuPtrOutputWithContext(context.Background())
 }
@@ -680,12 +577,6 @@ func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
 }
 
-func (i *skuPtrType) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
-	return pulumix.Output[*Sku]{
-		OutputState: i.ToSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Blockchain member Sku in payload
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -711,12 +602,6 @@ func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	}).(SkuPtrOutput)
 }
 
-func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets Sku name
 func (o SkuOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Sku) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -739,12 +624,6 @@ func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
 
 func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o
-}
-
-func (o SkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
-	return pulumix.Output[*Sku]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuPtrOutput) Elem() SkuOutput {
@@ -800,12 +679,6 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
-	return pulumix.Output[SkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets Sku name
 func (o SkuResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -828,12 +701,6 @@ func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
 
 func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
 	return o
-}
-
-func (o SkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuResponse] {
-	return pulumix.Output[*SkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {

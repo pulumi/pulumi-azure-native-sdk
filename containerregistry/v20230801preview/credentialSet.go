@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An object that represents a credential set resource for a container registry.
@@ -155,12 +154,6 @@ func (i *CredentialSet) ToCredentialSetOutputWithContext(ctx context.Context) Cr
 	return pulumi.ToOutputWithContext(ctx, i).(CredentialSetOutput)
 }
 
-func (i *CredentialSet) ToOutput(ctx context.Context) pulumix.Output[*CredentialSet] {
-	return pulumix.Output[*CredentialSet]{
-		OutputState: i.ToCredentialSetOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CredentialSetOutput struct{ *pulumi.OutputState }
 
 func (CredentialSetOutput) ElementType() reflect.Type {
@@ -173,12 +166,6 @@ func (o CredentialSetOutput) ToCredentialSetOutput() CredentialSetOutput {
 
 func (o CredentialSetOutput) ToCredentialSetOutputWithContext(ctx context.Context) CredentialSetOutput {
 	return o
-}
-
-func (o CredentialSetOutput) ToOutput(ctx context.Context) pulumix.Output[*CredentialSet] {
-	return pulumix.Output[*CredentialSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of authentication credentials stored for an upstream.

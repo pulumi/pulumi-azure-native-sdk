@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a gallery
@@ -87,12 +86,6 @@ func (o LookupGalleryResultOutput) ToLookupGalleryResultOutput() LookupGalleryRe
 
 func (o LookupGalleryResultOutput) ToLookupGalleryResultOutputWithContext(ctx context.Context) LookupGalleryResultOutput {
 	return o
-}
-
-func (o LookupGalleryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGalleryResult] {
-	return pulumix.Output[LookupGalleryResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource ID of the backing Azure Compute Gallery.

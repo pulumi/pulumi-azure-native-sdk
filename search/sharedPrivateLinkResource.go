@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes a Shared Private Link Resource managed by the Azure Cognitive Search service.
@@ -137,12 +136,6 @@ func (i *SharedPrivateLinkResource) ToSharedPrivateLinkResourceOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(SharedPrivateLinkResourceOutput)
 }
 
-func (i *SharedPrivateLinkResource) ToOutput(ctx context.Context) pulumix.Output[*SharedPrivateLinkResource] {
-	return pulumix.Output[*SharedPrivateLinkResource]{
-		OutputState: i.ToSharedPrivateLinkResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SharedPrivateLinkResourceOutput struct{ *pulumi.OutputState }
 
 func (SharedPrivateLinkResourceOutput) ElementType() reflect.Type {
@@ -155,12 +148,6 @@ func (o SharedPrivateLinkResourceOutput) ToSharedPrivateLinkResourceOutput() Sha
 
 func (o SharedPrivateLinkResourceOutput) ToSharedPrivateLinkResourceOutputWithContext(ctx context.Context) SharedPrivateLinkResourceOutput {
 	return o
-}
-
-func (o SharedPrivateLinkResourceOutput) ToOutput(ctx context.Context) pulumix.Output[*SharedPrivateLinkResource] {
-	return pulumix.Output[*SharedPrivateLinkResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

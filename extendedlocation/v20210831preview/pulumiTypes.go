@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i CustomLocationPropertiesAuthenticationArgs) ToCustomLocationPropertiesAu
 	return pulumi.ToOutputWithContext(ctx, i).(CustomLocationPropertiesAuthenticationOutput)
 }
 
-func (i CustomLocationPropertiesAuthenticationArgs) ToOutput(ctx context.Context) pulumix.Output[CustomLocationPropertiesAuthentication] {
-	return pulumix.Output[CustomLocationPropertiesAuthentication]{
-		OutputState: i.ToCustomLocationPropertiesAuthenticationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CustomLocationPropertiesAuthenticationArgs) ToCustomLocationPropertiesAuthenticationPtrOutput() CustomLocationPropertiesAuthenticationPtrOutput {
 	return i.ToCustomLocationPropertiesAuthenticationPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *customLocationPropertiesAuthenticationPtrType) ToCustomLocationProperti
 	return pulumi.ToOutputWithContext(ctx, i).(CustomLocationPropertiesAuthenticationPtrOutput)
 }
 
-func (i *customLocationPropertiesAuthenticationPtrType) ToOutput(ctx context.Context) pulumix.Output[*CustomLocationPropertiesAuthentication] {
-	return pulumix.Output[*CustomLocationPropertiesAuthentication]{
-		OutputState: i.ToCustomLocationPropertiesAuthenticationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This is optional input that contains the authentication that should be used to generate the namespace.
 type CustomLocationPropertiesAuthenticationOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o CustomLocationPropertiesAuthenticationOutput) ToCustomLocationProperties
 	}).(CustomLocationPropertiesAuthenticationPtrOutput)
 }
 
-func (o CustomLocationPropertiesAuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[CustomLocationPropertiesAuthentication] {
-	return pulumix.Output[CustomLocationPropertiesAuthentication]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The type of the Custom Locations authentication
 func (o CustomLocationPropertiesAuthenticationOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomLocationPropertiesAuthentication) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -159,12 +140,6 @@ func (o CustomLocationPropertiesAuthenticationPtrOutput) ToCustomLocationPropert
 
 func (o CustomLocationPropertiesAuthenticationPtrOutput) ToCustomLocationPropertiesAuthenticationPtrOutputWithContext(ctx context.Context) CustomLocationPropertiesAuthenticationPtrOutput {
 	return o
-}
-
-func (o CustomLocationPropertiesAuthenticationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomLocationPropertiesAuthentication] {
-	return pulumix.Output[*CustomLocationPropertiesAuthentication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomLocationPropertiesAuthenticationPtrOutput) Elem() CustomLocationPropertiesAuthenticationOutput {
@@ -218,12 +193,6 @@ func (o CustomLocationPropertiesResponseAuthenticationOutput) ToCustomLocationPr
 	return o
 }
 
-func (o CustomLocationPropertiesResponseAuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[CustomLocationPropertiesResponseAuthentication] {
-	return pulumix.Output[CustomLocationPropertiesResponseAuthentication]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The type of the Custom Locations authentication
 func (o CustomLocationPropertiesResponseAuthenticationOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomLocationPropertiesResponseAuthentication) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -241,12 +210,6 @@ func (o CustomLocationPropertiesResponseAuthenticationPtrOutput) ToCustomLocatio
 
 func (o CustomLocationPropertiesResponseAuthenticationPtrOutput) ToCustomLocationPropertiesResponseAuthenticationPtrOutputWithContext(ctx context.Context) CustomLocationPropertiesResponseAuthenticationPtrOutput {
 	return o
-}
-
-func (o CustomLocationPropertiesResponseAuthenticationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomLocationPropertiesResponseAuthentication] {
-	return pulumix.Output[*CustomLocationPropertiesResponseAuthentication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomLocationPropertiesResponseAuthenticationPtrOutput) Elem() CustomLocationPropertiesResponseAuthenticationOutput {
@@ -304,12 +267,6 @@ func (i IdentityArgs) ToIdentityOutputWithContext(ctx context.Context) IdentityO
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityOutput)
 }
 
-func (i IdentityArgs) ToOutput(ctx context.Context) pulumix.Output[Identity] {
-	return pulumix.Output[Identity]{
-		OutputState: i.ToIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IdentityArgs) ToIdentityPtrOutput() IdentityPtrOutput {
 	return i.ToIdentityPtrOutputWithContext(context.Background())
 }
@@ -351,12 +308,6 @@ func (i *identityPtrType) ToIdentityPtrOutputWithContext(ctx context.Context) Id
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPtrOutput)
 }
 
-func (i *identityPtrType) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
-	return pulumix.Output[*Identity]{
-		OutputState: i.ToIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Identity for the resource.
 type IdentityOutput struct{ *pulumi.OutputState }
 
@@ -382,12 +333,6 @@ func (o IdentityOutput) ToIdentityPtrOutputWithContext(ctx context.Context) Iden
 	}).(IdentityPtrOutput)
 }
 
-func (o IdentityOutput) ToOutput(ctx context.Context) pulumix.Output[Identity] {
-	return pulumix.Output[Identity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The identity type.
 func (o IdentityOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Identity) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -405,12 +350,6 @@ func (o IdentityPtrOutput) ToIdentityPtrOutput() IdentityPtrOutput {
 
 func (o IdentityPtrOutput) ToIdentityPtrOutputWithContext(ctx context.Context) IdentityPtrOutput {
 	return o
-}
-
-func (o IdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
-	return pulumix.Output[*Identity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityPtrOutput) Elem() IdentityOutput {
@@ -458,12 +397,6 @@ func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o IdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityResponse] {
-	return pulumix.Output[IdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The principal ID of resource identity.
 func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -491,12 +424,6 @@ func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutput() IdentityRespons
 
 func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
 	return o
-}
-
-func (o IdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityResponse] {
-	return pulumix.Output[*IdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
@@ -560,12 +487,6 @@ func (o ResourceSyncRulePropertiesResponseSelectorOutput) ToResourceSyncRuleProp
 	return o
 }
 
-func (o ResourceSyncRulePropertiesResponseSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSyncRulePropertiesResponseSelector] {
-	return pulumix.Output[ResourceSyncRulePropertiesResponseSelector]{
-		OutputState: o.OutputState,
-	}
-}
-
 // MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is 'key', the operator is 'In', and the values array contains only 'value'.
 func (o ResourceSyncRulePropertiesResponseSelectorOutput) MatchLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceSyncRulePropertiesResponseSelector) map[string]string { return v.MatchLabels }).(pulumi.StringMapOutput)
@@ -583,12 +504,6 @@ func (o ResourceSyncRulePropertiesResponseSelectorPtrOutput) ToResourceSyncRuleP
 
 func (o ResourceSyncRulePropertiesResponseSelectorPtrOutput) ToResourceSyncRulePropertiesResponseSelectorPtrOutputWithContext(ctx context.Context) ResourceSyncRulePropertiesResponseSelectorPtrOutput {
 	return o
-}
-
-func (o ResourceSyncRulePropertiesResponseSelectorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSyncRulePropertiesResponseSelector] {
-	return pulumix.Output[*ResourceSyncRulePropertiesResponseSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceSyncRulePropertiesResponseSelectorPtrOutput) Elem() ResourceSyncRulePropertiesResponseSelectorOutput {
@@ -646,12 +561,6 @@ func (i ResourceSyncRulePropertiesSelectorArgs) ToResourceSyncRulePropertiesSele
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSyncRulePropertiesSelectorOutput)
 }
 
-func (i ResourceSyncRulePropertiesSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceSyncRulePropertiesSelector] {
-	return pulumix.Output[ResourceSyncRulePropertiesSelector]{
-		OutputState: i.ToResourceSyncRulePropertiesSelectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ResourceSyncRulePropertiesSelectorArgs) ToResourceSyncRulePropertiesSelectorPtrOutput() ResourceSyncRulePropertiesSelectorPtrOutput {
 	return i.ToResourceSyncRulePropertiesSelectorPtrOutputWithContext(context.Background())
 }
@@ -693,12 +602,6 @@ func (i *resourceSyncRulePropertiesSelectorPtrType) ToResourceSyncRuleProperties
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSyncRulePropertiesSelectorPtrOutput)
 }
 
-func (i *resourceSyncRulePropertiesSelectorPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceSyncRulePropertiesSelector] {
-	return pulumix.Output[*ResourceSyncRulePropertiesSelector]{
-		OutputState: i.ToResourceSyncRulePropertiesSelectorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A label selector is composed of two parts, matchLabels and matchExpressions. The first part, matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is 'key', the operator is 'In', and the values array contains only 'value'. The second part, matchExpressions is a list of resource selector requirements. Valid operators include In, NotIn, Exists, and DoesNotExist. The values set must be non-empty in the case of In and NotIn. The values set must be empty in the case of Exists and DoesNotExist. All of the requirements, from both matchLabels and matchExpressions must all be satisfied in order to match.
 type ResourceSyncRulePropertiesSelectorOutput struct{ *pulumi.OutputState }
 
@@ -724,12 +627,6 @@ func (o ResourceSyncRulePropertiesSelectorOutput) ToResourceSyncRulePropertiesSe
 	}).(ResourceSyncRulePropertiesSelectorPtrOutput)
 }
 
-func (o ResourceSyncRulePropertiesSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSyncRulePropertiesSelector] {
-	return pulumix.Output[ResourceSyncRulePropertiesSelector]{
-		OutputState: o.OutputState,
-	}
-}
-
 // MatchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is 'key', the operator is 'In', and the values array contains only 'value'.
 func (o ResourceSyncRulePropertiesSelectorOutput) MatchLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceSyncRulePropertiesSelector) map[string]string { return v.MatchLabels }).(pulumi.StringMapOutput)
@@ -747,12 +644,6 @@ func (o ResourceSyncRulePropertiesSelectorPtrOutput) ToResourceSyncRulePropertie
 
 func (o ResourceSyncRulePropertiesSelectorPtrOutput) ToResourceSyncRulePropertiesSelectorPtrOutputWithContext(ctx context.Context) ResourceSyncRulePropertiesSelectorPtrOutput {
 	return o
-}
-
-func (o ResourceSyncRulePropertiesSelectorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSyncRulePropertiesSelector] {
-	return pulumix.Output[*ResourceSyncRulePropertiesSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceSyncRulePropertiesSelectorPtrOutput) Elem() ResourceSyncRulePropertiesSelectorOutput {
@@ -804,12 +695,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

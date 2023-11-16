@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a mongo cluster firewall rule.
@@ -144,12 +143,6 @@ func (i *MongoClusterFirewallRule) ToMongoClusterFirewallRuleOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(MongoClusterFirewallRuleOutput)
 }
 
-func (i *MongoClusterFirewallRule) ToOutput(ctx context.Context) pulumix.Output[*MongoClusterFirewallRule] {
-	return pulumix.Output[*MongoClusterFirewallRule]{
-		OutputState: i.ToMongoClusterFirewallRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MongoClusterFirewallRuleOutput struct{ *pulumi.OutputState }
 
 func (MongoClusterFirewallRuleOutput) ElementType() reflect.Type {
@@ -162,12 +155,6 @@ func (o MongoClusterFirewallRuleOutput) ToMongoClusterFirewallRuleOutput() Mongo
 
 func (o MongoClusterFirewallRuleOutput) ToMongoClusterFirewallRuleOutputWithContext(ctx context.Context) MongoClusterFirewallRuleOutput {
 	return o
-}
-
-func (o MongoClusterFirewallRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*MongoClusterFirewallRule] {
-	return pulumix.Output[*MongoClusterFirewallRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The end IP address of the mongo cluster firewall rule. Must be IPv4 format.

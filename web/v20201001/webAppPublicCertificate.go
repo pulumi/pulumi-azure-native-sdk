@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Public certificate object
@@ -180,12 +179,6 @@ func (i *WebAppPublicCertificate) ToWebAppPublicCertificateOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppPublicCertificateOutput)
 }
 
-func (i *WebAppPublicCertificate) ToOutput(ctx context.Context) pulumix.Output[*WebAppPublicCertificate] {
-	return pulumix.Output[*WebAppPublicCertificate]{
-		OutputState: i.ToWebAppPublicCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebAppPublicCertificateOutput struct{ *pulumi.OutputState }
 
 func (WebAppPublicCertificateOutput) ElementType() reflect.Type {
@@ -198,12 +191,6 @@ func (o WebAppPublicCertificateOutput) ToWebAppPublicCertificateOutput() WebAppP
 
 func (o WebAppPublicCertificateOutput) ToWebAppPublicCertificateOutputWithContext(ctx context.Context) WebAppPublicCertificateOutput {
 	return o
-}
-
-func (o WebAppPublicCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppPublicCertificate] {
-	return pulumix.Output[*WebAppPublicCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Public Certificate byte array

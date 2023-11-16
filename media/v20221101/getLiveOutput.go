@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a live output.
@@ -109,12 +108,6 @@ func (o LookupLiveOutputResultOutput) ToLookupLiveOutputResultOutput() LookupLiv
 
 func (o LookupLiveOutputResultOutput) ToLookupLiveOutputResultOutputWithContext(ctx context.Context) LookupLiveOutputResultOutput {
 	return o
-}
-
-func (o LookupLiveOutputResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLiveOutputResult] {
-	return pulumix.Output[LookupLiveOutputResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ISO 8601 time between 1 minute to 25 hours to indicate the maximum content length that can be archived in the asset for this live output. This also sets the maximum content length for the rewind window. For example, use PT1H30M to indicate 1 hour and 30 minutes of archive window.

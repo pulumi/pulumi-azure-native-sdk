@@ -110,12 +110,6 @@ func (o IPPoolTypeEnumOutput) ToIPPoolTypeEnumPtrOutputWithContext(ctx context.C
 	}).(IPPoolTypeEnumPtrOutput)
 }
 
-func (o IPPoolTypeEnumOutput) ToOutput(ctx context.Context) pulumix.Output[IPPoolTypeEnum] {
-	return pulumix.Output[IPPoolTypeEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IPPoolTypeEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -149,12 +143,6 @@ func (o IPPoolTypeEnumPtrOutput) ToIPPoolTypeEnumPtrOutput() IPPoolTypeEnumPtrOu
 
 func (o IPPoolTypeEnumPtrOutput) ToIPPoolTypeEnumPtrOutputWithContext(ctx context.Context) IPPoolTypeEnumPtrOutput {
 	return o
-}
-
-func (o IPPoolTypeEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IPPoolTypeEnum] {
-	return pulumix.Output[*IPPoolTypeEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IPPoolTypeEnumPtrOutput) Elem() IPPoolTypeEnumOutput {
@@ -301,12 +289,6 @@ func (o OperatingSystemTypesOutput) ToOperatingSystemTypesPtrOutputWithContext(c
 	}).(OperatingSystemTypesPtrOutput)
 }
 
-func (o OperatingSystemTypesOutput) ToOutput(ctx context.Context) pulumix.Output[OperatingSystemTypes] {
-	return pulumix.Output[OperatingSystemTypes]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OperatingSystemTypesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -340,12 +322,6 @@ func (o OperatingSystemTypesPtrOutput) ToOperatingSystemTypesPtrOutput() Operati
 
 func (o OperatingSystemTypesPtrOutput) ToOperatingSystemTypesPtrOutputWithContext(ctx context.Context) OperatingSystemTypesPtrOutput {
 	return o
-}
-
-func (o OperatingSystemTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OperatingSystemTypes] {
-	return pulumix.Output[*OperatingSystemTypes]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OperatingSystemTypesPtrOutput) Elem() OperatingSystemTypesOutput {
@@ -492,12 +468,6 @@ func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(c
 	}).(ResourceIdentityTypePtrOutput)
 }
 
-func (o ResourceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityType] {
-	return pulumix.Output[ResourceIdentityType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -531,12 +501,6 @@ func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() Resourc
 
 func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return o
-}
-
-func (o ResourceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {

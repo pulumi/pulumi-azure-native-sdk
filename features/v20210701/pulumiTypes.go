@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -41,12 +40,6 @@ func (o AuthorizationProfileResponseOutput) ToAuthorizationProfileResponseOutput
 
 func (o AuthorizationProfileResponseOutput) ToAuthorizationProfileResponseOutputWithContext(ctx context.Context) AuthorizationProfileResponseOutput {
 	return o
-}
-
-func (o AuthorizationProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationProfileResponse] {
-	return pulumix.Output[AuthorizationProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The approved time
@@ -86,12 +79,6 @@ func (o AuthorizationProfileResponsePtrOutput) ToAuthorizationProfileResponsePtr
 
 func (o AuthorizationProfileResponsePtrOutput) ToAuthorizationProfileResponsePtrOutputWithContext(ctx context.Context) AuthorizationProfileResponsePtrOutput {
 	return o
-}
-
-func (o AuthorizationProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationProfileResponse] {
-	return pulumix.Output[*AuthorizationProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthorizationProfileResponsePtrOutput) Elem() AuthorizationProfileResponseOutput {
@@ -223,12 +210,6 @@ func (i SubscriptionFeatureRegistrationPropertiesArgs) ToSubscriptionFeatureRegi
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionFeatureRegistrationPropertiesOutput)
 }
 
-func (i SubscriptionFeatureRegistrationPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[SubscriptionFeatureRegistrationProperties] {
-	return pulumix.Output[SubscriptionFeatureRegistrationProperties]{
-		OutputState: i.ToSubscriptionFeatureRegistrationPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SubscriptionFeatureRegistrationPropertiesArgs) ToSubscriptionFeatureRegistrationPropertiesPtrOutput() SubscriptionFeatureRegistrationPropertiesPtrOutput {
 	return i.ToSubscriptionFeatureRegistrationPropertiesPtrOutputWithContext(context.Background())
 }
@@ -270,12 +251,6 @@ func (i *subscriptionFeatureRegistrationPropertiesPtrType) ToSubscriptionFeature
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionFeatureRegistrationPropertiesPtrOutput)
 }
 
-func (i *subscriptionFeatureRegistrationPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionFeatureRegistrationProperties] {
-	return pulumix.Output[*SubscriptionFeatureRegistrationProperties]{
-		OutputState: i.ToSubscriptionFeatureRegistrationPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SubscriptionFeatureRegistrationPropertiesOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionFeatureRegistrationPropertiesOutput) ElementType() reflect.Type {
@@ -298,12 +273,6 @@ func (o SubscriptionFeatureRegistrationPropertiesOutput) ToSubscriptionFeatureRe
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionFeatureRegistrationProperties) *SubscriptionFeatureRegistrationProperties {
 		return &v
 	}).(SubscriptionFeatureRegistrationPropertiesPtrOutput)
-}
-
-func (o SubscriptionFeatureRegistrationPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionFeatureRegistrationProperties] {
-	return pulumix.Output[SubscriptionFeatureRegistrationProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The feature description.
@@ -338,12 +307,6 @@ func (o SubscriptionFeatureRegistrationPropertiesPtrOutput) ToSubscriptionFeatur
 
 func (o SubscriptionFeatureRegistrationPropertiesPtrOutput) ToSubscriptionFeatureRegistrationPropertiesPtrOutputWithContext(ctx context.Context) SubscriptionFeatureRegistrationPropertiesPtrOutput {
 	return o
-}
-
-func (o SubscriptionFeatureRegistrationPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionFeatureRegistrationProperties] {
-	return pulumix.Output[*SubscriptionFeatureRegistrationProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubscriptionFeatureRegistrationPropertiesPtrOutput) Elem() SubscriptionFeatureRegistrationPropertiesOutput {
@@ -452,12 +415,6 @@ func (o SubscriptionFeatureRegistrationResponsePropertiesOutput) ToSubscriptionF
 
 func (o SubscriptionFeatureRegistrationResponsePropertiesOutput) ToSubscriptionFeatureRegistrationResponsePropertiesOutputWithContext(ctx context.Context) SubscriptionFeatureRegistrationResponsePropertiesOutput {
 	return o
-}
-
-func (o SubscriptionFeatureRegistrationResponsePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionFeatureRegistrationResponseProperties] {
-	return pulumix.Output[SubscriptionFeatureRegistrationResponseProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The feature approval type.

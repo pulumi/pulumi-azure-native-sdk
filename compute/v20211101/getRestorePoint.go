@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The operation to get the restore point.
@@ -99,12 +98,6 @@ func (o LookupRestorePointResultOutput) ToLookupRestorePointResultOutput() Looku
 
 func (o LookupRestorePointResultOutput) ToLookupRestorePointResultOutputWithContext(ctx context.Context) LookupRestorePointResultOutput {
 	return o
-}
-
-func (o LookupRestorePointResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRestorePointResult] {
-	return pulumix.Output[LookupRestorePointResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the consistency mode for the restore point. Please refer to https://aka.ms/RestorePoints for more details.

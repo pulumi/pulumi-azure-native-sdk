@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -61,12 +60,6 @@ func (i AuthorizationArgs) ToAuthorizationOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationOutput)
 }
 
-func (i AuthorizationArgs) ToOutput(ctx context.Context) pulumix.Output[Authorization] {
-	return pulumix.Output[Authorization]{
-		OutputState: i.ToAuthorizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuthorizationArrayInput is an input type that accepts AuthorizationArray and AuthorizationArrayOutput values.
 // You can construct a concrete instance of `AuthorizationArrayInput` via:
 //
@@ -92,12 +85,6 @@ func (i AuthorizationArray) ToAuthorizationArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationArrayOutput)
 }
 
-func (i AuthorizationArray) ToOutput(ctx context.Context) pulumix.Output[[]Authorization] {
-	return pulumix.Output[[]Authorization]{
-		OutputState: i.ToAuthorizationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Azure Active Directory principal identifier and Azure built-in role that describes the access the principal will receive on the delegated resource in the managed tenant.
 type AuthorizationOutput struct{ *pulumi.OutputState }
 
@@ -111,12 +98,6 @@ func (o AuthorizationOutput) ToAuthorizationOutput() AuthorizationOutput {
 
 func (o AuthorizationOutput) ToAuthorizationOutputWithContext(ctx context.Context) AuthorizationOutput {
 	return o
-}
-
-func (o AuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[Authorization] {
-	return pulumix.Output[Authorization]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other principals.
@@ -153,12 +134,6 @@ func (o AuthorizationArrayOutput) ToAuthorizationArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o AuthorizationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Authorization] {
-	return pulumix.Output[[]Authorization]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AuthorizationArrayOutput) Index(i pulumi.IntInput) AuthorizationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Authorization {
 		return vs[0].([]Authorization)[vs[1].(int)]
@@ -190,12 +165,6 @@ func (o AuthorizationResponseOutput) ToAuthorizationResponseOutput() Authorizati
 
 func (o AuthorizationResponseOutput) ToAuthorizationResponseOutputWithContext(ctx context.Context) AuthorizationResponseOutput {
 	return o
-}
-
-func (o AuthorizationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationResponse] {
-	return pulumix.Output[AuthorizationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other principals.
@@ -230,12 +199,6 @@ func (o AuthorizationResponseArrayOutput) ToAuthorizationResponseArrayOutput() A
 
 func (o AuthorizationResponseArrayOutput) ToAuthorizationResponseArrayOutputWithContext(ctx context.Context) AuthorizationResponseArrayOutput {
 	return o
-}
-
-func (o AuthorizationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuthorizationResponse] {
-	return pulumix.Output[[]AuthorizationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthorizationResponseArrayOutput) Index(i pulumi.IntInput) AuthorizationResponseOutput {
@@ -283,12 +246,6 @@ func (i EligibleApproverArgs) ToEligibleApproverOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EligibleApproverOutput)
 }
 
-func (i EligibleApproverArgs) ToOutput(ctx context.Context) pulumix.Output[EligibleApprover] {
-	return pulumix.Output[EligibleApprover]{
-		OutputState: i.ToEligibleApproverOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EligibleApproverArrayInput is an input type that accepts EligibleApproverArray and EligibleApproverArrayOutput values.
 // You can construct a concrete instance of `EligibleApproverArrayInput` via:
 //
@@ -314,12 +271,6 @@ func (i EligibleApproverArray) ToEligibleApproverArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(EligibleApproverArrayOutput)
 }
 
-func (i EligibleApproverArray) ToOutput(ctx context.Context) pulumix.Output[[]EligibleApprover] {
-	return pulumix.Output[[]EligibleApprover]{
-		OutputState: i.ToEligibleApproverArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the Azure Active Directory principal that can approve any just-in-time access requests by the principal defined in the EligibleAuthorization.
 type EligibleApproverOutput struct{ *pulumi.OutputState }
 
@@ -333,12 +284,6 @@ func (o EligibleApproverOutput) ToEligibleApproverOutput() EligibleApproverOutpu
 
 func (o EligibleApproverOutput) ToEligibleApproverOutputWithContext(ctx context.Context) EligibleApproverOutput {
 	return o
-}
-
-func (o EligibleApproverOutput) ToOutput(ctx context.Context) pulumix.Output[EligibleApprover] {
-	return pulumix.Output[EligibleApprover]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The identifier of the Azure Active Directory principal.
@@ -363,12 +308,6 @@ func (o EligibleApproverArrayOutput) ToEligibleApproverArrayOutput() EligibleApp
 
 func (o EligibleApproverArrayOutput) ToEligibleApproverArrayOutputWithContext(ctx context.Context) EligibleApproverArrayOutput {
 	return o
-}
-
-func (o EligibleApproverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EligibleApprover] {
-	return pulumix.Output[[]EligibleApprover]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EligibleApproverArrayOutput) Index(i pulumi.IntInput) EligibleApproverOutput {
@@ -400,12 +339,6 @@ func (o EligibleApproverResponseOutput) ToEligibleApproverResponseOutputWithCont
 	return o
 }
 
-func (o EligibleApproverResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EligibleApproverResponse] {
-	return pulumix.Output[EligibleApproverResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The identifier of the Azure Active Directory principal.
 func (o EligibleApproverResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v EligibleApproverResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -428,12 +361,6 @@ func (o EligibleApproverResponseArrayOutput) ToEligibleApproverResponseArrayOutp
 
 func (o EligibleApproverResponseArrayOutput) ToEligibleApproverResponseArrayOutputWithContext(ctx context.Context) EligibleApproverResponseArrayOutput {
 	return o
-}
-
-func (o EligibleApproverResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EligibleApproverResponse] {
-	return pulumix.Output[[]EligibleApproverResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EligibleApproverResponseArrayOutput) Index(i pulumi.IntInput) EligibleApproverResponseOutput {
@@ -509,12 +436,6 @@ func (i EligibleAuthorizationArgs) ToEligibleAuthorizationOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(EligibleAuthorizationOutput)
 }
 
-func (i EligibleAuthorizationArgs) ToOutput(ctx context.Context) pulumix.Output[EligibleAuthorization] {
-	return pulumix.Output[EligibleAuthorization]{
-		OutputState: i.ToEligibleAuthorizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EligibleAuthorizationArrayInput is an input type that accepts EligibleAuthorizationArray and EligibleAuthorizationArrayOutput values.
 // You can construct a concrete instance of `EligibleAuthorizationArrayInput` via:
 //
@@ -540,12 +461,6 @@ func (i EligibleAuthorizationArray) ToEligibleAuthorizationArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(EligibleAuthorizationArrayOutput)
 }
 
-func (i EligibleAuthorizationArray) ToOutput(ctx context.Context) pulumix.Output[[]EligibleAuthorization] {
-	return pulumix.Output[[]EligibleAuthorization]{
-		OutputState: i.ToEligibleAuthorizationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Azure Active Directory principal identifier, Azure built-in role, and just-in-time access policy that describes the just-in-time access the principal will receive on the delegated resource in the managed tenant.
 type EligibleAuthorizationOutput struct{ *pulumi.OutputState }
 
@@ -559,12 +474,6 @@ func (o EligibleAuthorizationOutput) ToEligibleAuthorizationOutput() EligibleAut
 
 func (o EligibleAuthorizationOutput) ToEligibleAuthorizationOutputWithContext(ctx context.Context) EligibleAuthorizationOutput {
 	return o
-}
-
-func (o EligibleAuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[EligibleAuthorization] {
-	return pulumix.Output[EligibleAuthorization]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The just-in-time access policy setting.
@@ -599,12 +508,6 @@ func (o EligibleAuthorizationArrayOutput) ToEligibleAuthorizationArrayOutput() E
 
 func (o EligibleAuthorizationArrayOutput) ToEligibleAuthorizationArrayOutputWithContext(ctx context.Context) EligibleAuthorizationArrayOutput {
 	return o
-}
-
-func (o EligibleAuthorizationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EligibleAuthorization] {
-	return pulumix.Output[[]EligibleAuthorization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EligibleAuthorizationArrayOutput) Index(i pulumi.IntInput) EligibleAuthorizationOutput {
@@ -651,12 +554,6 @@ func (o EligibleAuthorizationResponseOutput) ToEligibleAuthorizationResponseOutp
 	return o
 }
 
-func (o EligibleAuthorizationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EligibleAuthorizationResponse] {
-	return pulumix.Output[EligibleAuthorizationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The just-in-time access policy setting.
 func (o EligibleAuthorizationResponseOutput) JustInTimeAccessPolicy() JustInTimeAccessPolicyResponsePtrOutput {
 	return o.ApplyT(func(v EligibleAuthorizationResponse) *JustInTimeAccessPolicyResponse { return v.JustInTimeAccessPolicy }).(JustInTimeAccessPolicyResponsePtrOutput)
@@ -689,12 +586,6 @@ func (o EligibleAuthorizationResponseArrayOutput) ToEligibleAuthorizationRespons
 
 func (o EligibleAuthorizationResponseArrayOutput) ToEligibleAuthorizationResponseArrayOutputWithContext(ctx context.Context) EligibleAuthorizationResponseArrayOutput {
 	return o
-}
-
-func (o EligibleAuthorizationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EligibleAuthorizationResponse] {
-	return pulumix.Output[[]EligibleAuthorizationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EligibleAuthorizationResponseArrayOutput) Index(i pulumi.IntInput) EligibleAuthorizationResponseOutput {
@@ -776,12 +667,6 @@ func (i JustInTimeAccessPolicyArgs) ToJustInTimeAccessPolicyOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(JustInTimeAccessPolicyOutput)
 }
 
-func (i JustInTimeAccessPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[JustInTimeAccessPolicy] {
-	return pulumix.Output[JustInTimeAccessPolicy]{
-		OutputState: i.ToJustInTimeAccessPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JustInTimeAccessPolicyArgs) ToJustInTimeAccessPolicyPtrOutput() JustInTimeAccessPolicyPtrOutput {
 	return i.ToJustInTimeAccessPolicyPtrOutputWithContext(context.Background())
 }
@@ -823,12 +708,6 @@ func (i *justInTimeAccessPolicyPtrType) ToJustInTimeAccessPolicyPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(JustInTimeAccessPolicyPtrOutput)
 }
 
-func (i *justInTimeAccessPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*JustInTimeAccessPolicy] {
-	return pulumix.Output[*JustInTimeAccessPolicy]{
-		OutputState: i.ToJustInTimeAccessPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Just-in-time access policy setting.
 type JustInTimeAccessPolicyOutput struct{ *pulumi.OutputState }
 
@@ -852,12 +731,6 @@ func (o JustInTimeAccessPolicyOutput) ToJustInTimeAccessPolicyPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v JustInTimeAccessPolicy) *JustInTimeAccessPolicy {
 		return &v
 	}).(JustInTimeAccessPolicyPtrOutput)
-}
-
-func (o JustInTimeAccessPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[JustInTimeAccessPolicy] {
-	return pulumix.Output[JustInTimeAccessPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of managedByTenant approvers for the eligible authorization.
@@ -887,12 +760,6 @@ func (o JustInTimeAccessPolicyPtrOutput) ToJustInTimeAccessPolicyPtrOutput() Jus
 
 func (o JustInTimeAccessPolicyPtrOutput) ToJustInTimeAccessPolicyPtrOutputWithContext(ctx context.Context) JustInTimeAccessPolicyPtrOutput {
 	return o
-}
-
-func (o JustInTimeAccessPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JustInTimeAccessPolicy] {
-	return pulumix.Output[*JustInTimeAccessPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JustInTimeAccessPolicyPtrOutput) Elem() JustInTimeAccessPolicyOutput {
@@ -976,12 +843,6 @@ func (o JustInTimeAccessPolicyResponseOutput) ToJustInTimeAccessPolicyResponseOu
 	return o
 }
 
-func (o JustInTimeAccessPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JustInTimeAccessPolicyResponse] {
-	return pulumix.Output[JustInTimeAccessPolicyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of managedByTenant approvers for the eligible authorization.
 func (o JustInTimeAccessPolicyResponseOutput) ManagedByTenantApprovers() EligibleApproverResponseArrayOutput {
 	return o.ApplyT(func(v JustInTimeAccessPolicyResponse) []EligibleApproverResponse { return v.ManagedByTenantApprovers }).(EligibleApproverResponseArrayOutput)
@@ -1009,12 +870,6 @@ func (o JustInTimeAccessPolicyResponsePtrOutput) ToJustInTimeAccessPolicyRespons
 
 func (o JustInTimeAccessPolicyResponsePtrOutput) ToJustInTimeAccessPolicyResponsePtrOutputWithContext(ctx context.Context) JustInTimeAccessPolicyResponsePtrOutput {
 	return o
-}
-
-func (o JustInTimeAccessPolicyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JustInTimeAccessPolicyResponse] {
-	return pulumix.Output[*JustInTimeAccessPolicyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JustInTimeAccessPolicyResponsePtrOutput) Elem() JustInTimeAccessPolicyResponseOutput {
@@ -1104,12 +959,6 @@ func (i PlanArgs) ToPlanOutputWithContext(ctx context.Context) PlanOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PlanOutput)
 }
 
-func (i PlanArgs) ToOutput(ctx context.Context) pulumix.Output[Plan] {
-	return pulumix.Output[Plan]{
-		OutputState: i.ToPlanOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PlanArgs) ToPlanPtrOutput() PlanPtrOutput {
 	return i.ToPlanPtrOutputWithContext(context.Background())
 }
@@ -1151,12 +1000,6 @@ func (i *planPtrType) ToPlanPtrOutputWithContext(ctx context.Context) PlanPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(PlanPtrOutput)
 }
 
-func (i *planPtrType) ToOutput(ctx context.Context) pulumix.Output[*Plan] {
-	return pulumix.Output[*Plan]{
-		OutputState: i.ToPlanPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The details for the Managed Services offer’s plan in Azure Marketplace.
 type PlanOutput struct{ *pulumi.OutputState }
 
@@ -1180,12 +1023,6 @@ func (o PlanOutput) ToPlanPtrOutputWithContext(ctx context.Context) PlanPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Plan) *Plan {
 		return &v
 	}).(PlanPtrOutput)
-}
-
-func (o PlanOutput) ToOutput(ctx context.Context) pulumix.Output[Plan] {
-	return pulumix.Output[Plan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Azure Marketplace plan name.
@@ -1220,12 +1057,6 @@ func (o PlanPtrOutput) ToPlanPtrOutput() PlanPtrOutput {
 
 func (o PlanPtrOutput) ToPlanPtrOutputWithContext(ctx context.Context) PlanPtrOutput {
 	return o
-}
-
-func (o PlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Plan] {
-	return pulumix.Output[*Plan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PlanPtrOutput) Elem() PlanOutput {
@@ -1305,12 +1136,6 @@ func (o PlanResponseOutput) ToPlanResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o PlanResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PlanResponse] {
-	return pulumix.Output[PlanResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Azure Marketplace plan name.
 func (o PlanResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PlanResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -1343,12 +1168,6 @@ func (o PlanResponsePtrOutput) ToPlanResponsePtrOutput() PlanResponsePtrOutput {
 
 func (o PlanResponsePtrOutput) ToPlanResponsePtrOutputWithContext(ctx context.Context) PlanResponsePtrOutput {
 	return o
-}
-
-func (o PlanResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PlanResponse] {
-	return pulumix.Output[*PlanResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PlanResponsePtrOutput) Elem() PlanResponseOutput {
@@ -1436,12 +1255,6 @@ func (i RegistrationAssignmentPropertiesArgs) ToRegistrationAssignmentProperties
 	return pulumi.ToOutputWithContext(ctx, i).(RegistrationAssignmentPropertiesOutput)
 }
 
-func (i RegistrationAssignmentPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[RegistrationAssignmentProperties] {
-	return pulumix.Output[RegistrationAssignmentProperties]{
-		OutputState: i.ToRegistrationAssignmentPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RegistrationAssignmentPropertiesArgs) ToRegistrationAssignmentPropertiesPtrOutput() RegistrationAssignmentPropertiesPtrOutput {
 	return i.ToRegistrationAssignmentPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1483,12 +1296,6 @@ func (i *registrationAssignmentPropertiesPtrType) ToRegistrationAssignmentProper
 	return pulumi.ToOutputWithContext(ctx, i).(RegistrationAssignmentPropertiesPtrOutput)
 }
 
-func (i *registrationAssignmentPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*RegistrationAssignmentProperties] {
-	return pulumix.Output[*RegistrationAssignmentProperties]{
-		OutputState: i.ToRegistrationAssignmentPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties of the registration assignment.
 type RegistrationAssignmentPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1514,12 +1321,6 @@ func (o RegistrationAssignmentPropertiesOutput) ToRegistrationAssignmentProperti
 	}).(RegistrationAssignmentPropertiesPtrOutput)
 }
 
-func (o RegistrationAssignmentPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[RegistrationAssignmentProperties] {
-	return pulumix.Output[RegistrationAssignmentProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The fully qualified path of the registration definition.
 func (o RegistrationAssignmentPropertiesOutput) RegistrationDefinitionId() pulumi.StringOutput {
 	return o.ApplyT(func(v RegistrationAssignmentProperties) string { return v.RegistrationDefinitionId }).(pulumi.StringOutput)
@@ -1537,12 +1338,6 @@ func (o RegistrationAssignmentPropertiesPtrOutput) ToRegistrationAssignmentPrope
 
 func (o RegistrationAssignmentPropertiesPtrOutput) ToRegistrationAssignmentPropertiesPtrOutputWithContext(ctx context.Context) RegistrationAssignmentPropertiesPtrOutput {
 	return o
-}
-
-func (o RegistrationAssignmentPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegistrationAssignmentProperties] {
-	return pulumix.Output[*RegistrationAssignmentProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegistrationAssignmentPropertiesPtrOutput) Elem() RegistrationAssignmentPropertiesOutput {
@@ -1588,12 +1383,6 @@ func (o RegistrationAssignmentPropertiesResponseOutput) ToRegistrationAssignment
 
 func (o RegistrationAssignmentPropertiesResponseOutput) ToRegistrationAssignmentPropertiesResponseOutputWithContext(ctx context.Context) RegistrationAssignmentPropertiesResponseOutput {
 	return o
-}
-
-func (o RegistrationAssignmentPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RegistrationAssignmentPropertiesResponse] {
-	return pulumix.Output[RegistrationAssignmentPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The current provisioning state of the registration assignment.
@@ -1648,12 +1437,6 @@ func (o RegistrationAssignmentPropertiesResponsePropertiesOutput) ToRegistration
 
 func (o RegistrationAssignmentPropertiesResponsePropertiesOutput) ToRegistrationAssignmentPropertiesResponsePropertiesOutputWithContext(ctx context.Context) RegistrationAssignmentPropertiesResponsePropertiesOutput {
 	return o
-}
-
-func (o RegistrationAssignmentPropertiesResponsePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[RegistrationAssignmentPropertiesResponseProperties] {
-	return pulumix.Output[RegistrationAssignmentPropertiesResponseProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
@@ -1719,12 +1502,6 @@ func (o RegistrationAssignmentPropertiesResponsePropertiesPtrOutput) ToRegistrat
 
 func (o RegistrationAssignmentPropertiesResponsePropertiesPtrOutput) ToRegistrationAssignmentPropertiesResponsePropertiesPtrOutputWithContext(ctx context.Context) RegistrationAssignmentPropertiesResponsePropertiesPtrOutput {
 	return o
-}
-
-func (o RegistrationAssignmentPropertiesResponsePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegistrationAssignmentPropertiesResponseProperties] {
-	return pulumix.Output[*RegistrationAssignmentPropertiesResponseProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegistrationAssignmentPropertiesResponsePropertiesPtrOutput) Elem() RegistrationAssignmentPropertiesResponsePropertiesOutput {
@@ -1858,12 +1635,6 @@ func (o RegistrationAssignmentPropertiesResponseRegistrationDefinitionOutput) To
 	return o
 }
 
-func (o RegistrationAssignmentPropertiesResponseRegistrationDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[RegistrationAssignmentPropertiesResponseRegistrationDefinition] {
-	return pulumix.Output[RegistrationAssignmentPropertiesResponseRegistrationDefinition]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The fully qualified path of the registration definition.
 func (o RegistrationAssignmentPropertiesResponseRegistrationDefinitionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v RegistrationAssignmentPropertiesResponseRegistrationDefinition) string { return v.Id }).(pulumi.StringOutput)
@@ -1949,12 +1720,6 @@ func (i RegistrationDefinitionPropertiesArgs) ToRegistrationDefinitionProperties
 	return pulumi.ToOutputWithContext(ctx, i).(RegistrationDefinitionPropertiesOutput)
 }
 
-func (i RegistrationDefinitionPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[RegistrationDefinitionProperties] {
-	return pulumix.Output[RegistrationDefinitionProperties]{
-		OutputState: i.ToRegistrationDefinitionPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RegistrationDefinitionPropertiesArgs) ToRegistrationDefinitionPropertiesPtrOutput() RegistrationDefinitionPropertiesPtrOutput {
 	return i.ToRegistrationDefinitionPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1996,12 +1761,6 @@ func (i *registrationDefinitionPropertiesPtrType) ToRegistrationDefinitionProper
 	return pulumi.ToOutputWithContext(ctx, i).(RegistrationDefinitionPropertiesPtrOutput)
 }
 
-func (i *registrationDefinitionPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*RegistrationDefinitionProperties] {
-	return pulumix.Output[*RegistrationDefinitionProperties]{
-		OutputState: i.ToRegistrationDefinitionPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties of a registration definition.
 type RegistrationDefinitionPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -2025,12 +1784,6 @@ func (o RegistrationDefinitionPropertiesOutput) ToRegistrationDefinitionProperti
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistrationDefinitionProperties) *RegistrationDefinitionProperties {
 		return &v
 	}).(RegistrationDefinitionPropertiesPtrOutput)
-}
-
-func (o RegistrationDefinitionPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[RegistrationDefinitionProperties] {
-	return pulumix.Output[RegistrationDefinitionProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
@@ -2070,12 +1823,6 @@ func (o RegistrationDefinitionPropertiesPtrOutput) ToRegistrationDefinitionPrope
 
 func (o RegistrationDefinitionPropertiesPtrOutput) ToRegistrationDefinitionPropertiesPtrOutputWithContext(ctx context.Context) RegistrationDefinitionPropertiesPtrOutput {
 	return o
-}
-
-func (o RegistrationDefinitionPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RegistrationDefinitionProperties] {
-	return pulumix.Output[*RegistrationDefinitionProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegistrationDefinitionPropertiesPtrOutput) Elem() RegistrationDefinitionPropertiesOutput {
@@ -2175,12 +1922,6 @@ func (o RegistrationDefinitionPropertiesResponseOutput) ToRegistrationDefinition
 	return o
 }
 
-func (o RegistrationDefinitionPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RegistrationDefinitionPropertiesResponse] {
-	return pulumix.Output[RegistrationDefinitionPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
 func (o RegistrationDefinitionPropertiesResponseOutput) Authorizations() AuthorizationResponseArrayOutput {
 	return o.ApplyT(func(v RegistrationDefinitionPropertiesResponse) []AuthorizationResponse { return v.Authorizations }).(AuthorizationResponseArrayOutput)
@@ -2257,12 +1998,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

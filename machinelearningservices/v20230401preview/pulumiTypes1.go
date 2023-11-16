@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -101,12 +100,6 @@ func (i SharedPrivateLinkResourceArgs) ToSharedPrivateLinkResourceOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(SharedPrivateLinkResourceOutput)
 }
 
-func (i SharedPrivateLinkResourceArgs) ToOutput(ctx context.Context) pulumix.Output[SharedPrivateLinkResource] {
-	return pulumix.Output[SharedPrivateLinkResource]{
-		OutputState: i.ToSharedPrivateLinkResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SharedPrivateLinkResourceArrayInput is an input type that accepts SharedPrivateLinkResourceArray and SharedPrivateLinkResourceArrayOutput values.
 // You can construct a concrete instance of `SharedPrivateLinkResourceArrayInput` via:
 //
@@ -132,12 +125,6 @@ func (i SharedPrivateLinkResourceArray) ToSharedPrivateLinkResourceArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(SharedPrivateLinkResourceArrayOutput)
 }
 
-func (i SharedPrivateLinkResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]SharedPrivateLinkResource] {
-	return pulumix.Output[[]SharedPrivateLinkResource]{
-		OutputState: i.ToSharedPrivateLinkResourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SharedPrivateLinkResourceOutput struct{ *pulumi.OutputState }
 
 func (SharedPrivateLinkResourceOutput) ElementType() reflect.Type {
@@ -150,12 +137,6 @@ func (o SharedPrivateLinkResourceOutput) ToSharedPrivateLinkResourceOutput() Sha
 
 func (o SharedPrivateLinkResourceOutput) ToSharedPrivateLinkResourceOutputWithContext(ctx context.Context) SharedPrivateLinkResourceOutput {
 	return o
-}
-
-func (o SharedPrivateLinkResourceOutput) ToOutput(ctx context.Context) pulumix.Output[SharedPrivateLinkResource] {
-	return pulumix.Output[SharedPrivateLinkResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The private link resource group id.
@@ -197,12 +178,6 @@ func (o SharedPrivateLinkResourceArrayOutput) ToSharedPrivateLinkResourceArrayOu
 	return o
 }
 
-func (o SharedPrivateLinkResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SharedPrivateLinkResource] {
-	return pulumix.Output[[]SharedPrivateLinkResource]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SharedPrivateLinkResourceArrayOutput) Index(i pulumi.IntInput) SharedPrivateLinkResourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SharedPrivateLinkResource {
 		return vs[0].([]SharedPrivateLinkResource)[vs[1].(int)]
@@ -234,12 +209,6 @@ func (o SharedPrivateLinkResourceResponseOutput) ToSharedPrivateLinkResourceResp
 
 func (o SharedPrivateLinkResourceResponseOutput) ToSharedPrivateLinkResourceResponseOutputWithContext(ctx context.Context) SharedPrivateLinkResourceResponseOutput {
 	return o
-}
-
-func (o SharedPrivateLinkResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SharedPrivateLinkResourceResponse] {
-	return pulumix.Output[SharedPrivateLinkResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The private link resource group id.
@@ -279,12 +248,6 @@ func (o SharedPrivateLinkResourceResponseArrayOutput) ToSharedPrivateLinkResourc
 
 func (o SharedPrivateLinkResourceResponseArrayOutput) ToSharedPrivateLinkResourceResponseArrayOutputWithContext(ctx context.Context) SharedPrivateLinkResourceResponseArrayOutput {
 	return o
-}
-
-func (o SharedPrivateLinkResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SharedPrivateLinkResourceResponse] {
-	return pulumix.Output[[]SharedPrivateLinkResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SharedPrivateLinkResourceResponseArrayOutput) Index(i pulumi.IntInput) SharedPrivateLinkResourceResponseOutput {
@@ -344,12 +307,6 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
-func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
 	return i.ToSkuPtrOutputWithContext(context.Background())
 }
@@ -391,12 +348,6 @@ func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
 }
 
-func (i *skuPtrType) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
-	return pulumix.Output[*Sku]{
-		OutputState: i.ToSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The resource model definition representing SKU
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -420,12 +371,6 @@ func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Sku) *Sku {
 		return &v
 	}).(SkuPtrOutput)
-}
-
-func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
@@ -465,12 +410,6 @@ func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
 
 func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o
-}
-
-func (o SkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
-	return pulumix.Output[*Sku]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuPtrOutput) Elem() SkuOutput {
@@ -562,12 +501,6 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
-	return pulumix.Output[SkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
 func (o SkuResponseOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
@@ -605,12 +538,6 @@ func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
 
 func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
 	return o
-}
-
-func (o SkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuResponse] {
-	return pulumix.Output[*SkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
@@ -1016,12 +943,6 @@ func (o StatusMessageResponseOutput) ToStatusMessageResponseOutputWithContext(ct
 	return o
 }
 
-func (o StatusMessageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StatusMessageResponse] {
-	return pulumix.Output[StatusMessageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Service-defined message code.
 func (o StatusMessageResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusMessageResponse) string { return v.Code }).(pulumi.StringOutput)
@@ -1054,12 +975,6 @@ func (o StatusMessageResponseArrayOutput) ToStatusMessageResponseArrayOutput() S
 
 func (o StatusMessageResponseArrayOutput) ToStatusMessageResponseArrayOutputWithContext(ctx context.Context) StatusMessageResponseArrayOutput {
 	return o
-}
-
-func (o StatusMessageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StatusMessageResponse] {
-	return pulumix.Output[[]StatusMessageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatusMessageResponseArrayOutput) Index(i pulumi.IntInput) StatusMessageResponseOutput {
@@ -1107,12 +1022,6 @@ func (i StorageAccountDetailsArgs) ToStorageAccountDetailsOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(StorageAccountDetailsOutput)
 }
 
-func (i StorageAccountDetailsArgs) ToOutput(ctx context.Context) pulumix.Output[StorageAccountDetails] {
-	return pulumix.Output[StorageAccountDetails]{
-		OutputState: i.ToStorageAccountDetailsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StorageAccountDetailsArrayInput is an input type that accepts StorageAccountDetailsArray and StorageAccountDetailsArrayOutput values.
 // You can construct a concrete instance of `StorageAccountDetailsArrayInput` via:
 //
@@ -1138,12 +1047,6 @@ func (i StorageAccountDetailsArray) ToStorageAccountDetailsArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(StorageAccountDetailsArrayOutput)
 }
 
-func (i StorageAccountDetailsArray) ToOutput(ctx context.Context) pulumix.Output[[]StorageAccountDetails] {
-	return pulumix.Output[[]StorageAccountDetails]{
-		OutputState: i.ToStorageAccountDetailsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Details of storage account to be used for the Registry
 type StorageAccountDetailsOutput struct{ *pulumi.OutputState }
 
@@ -1157,12 +1060,6 @@ func (o StorageAccountDetailsOutput) ToStorageAccountDetailsOutput() StorageAcco
 
 func (o StorageAccountDetailsOutput) ToStorageAccountDetailsOutputWithContext(ctx context.Context) StorageAccountDetailsOutput {
 	return o
-}
-
-func (o StorageAccountDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[StorageAccountDetails] {
-	return pulumix.Output[StorageAccountDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Details of system created storage account to be used for the registry
@@ -1187,12 +1084,6 @@ func (o StorageAccountDetailsArrayOutput) ToStorageAccountDetailsArrayOutput() S
 
 func (o StorageAccountDetailsArrayOutput) ToStorageAccountDetailsArrayOutputWithContext(ctx context.Context) StorageAccountDetailsArrayOutput {
 	return o
-}
-
-func (o StorageAccountDetailsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StorageAccountDetails] {
-	return pulumix.Output[[]StorageAccountDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StorageAccountDetailsArrayOutput) Index(i pulumi.IntInput) StorageAccountDetailsOutput {
@@ -1224,12 +1115,6 @@ func (o StorageAccountDetailsResponseOutput) ToStorageAccountDetailsResponseOutp
 	return o
 }
 
-func (o StorageAccountDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageAccountDetailsResponse] {
-	return pulumix.Output[StorageAccountDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Details of system created storage account to be used for the registry
 func (o StorageAccountDetailsResponseOutput) SystemCreatedStorageAccount() SystemCreatedStorageAccountResponsePtrOutput {
 	return o.ApplyT(func(v StorageAccountDetailsResponse) *SystemCreatedStorageAccountResponse {
@@ -1256,12 +1141,6 @@ func (o StorageAccountDetailsResponseArrayOutput) ToStorageAccountDetailsRespons
 
 func (o StorageAccountDetailsResponseArrayOutput) ToStorageAccountDetailsResponseArrayOutputWithContext(ctx context.Context) StorageAccountDetailsResponseArrayOutput {
 	return o
-}
-
-func (o StorageAccountDetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StorageAccountDetailsResponse] {
-	return pulumix.Output[[]StorageAccountDetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StorageAccountDetailsResponseArrayOutput) Index(i pulumi.IntInput) StorageAccountDetailsResponseOutput {
@@ -1573,12 +1452,6 @@ func (i SystemCreatedAcrAccountArgs) ToSystemCreatedAcrAccountOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(SystemCreatedAcrAccountOutput)
 }
 
-func (i SystemCreatedAcrAccountArgs) ToOutput(ctx context.Context) pulumix.Output[SystemCreatedAcrAccount] {
-	return pulumix.Output[SystemCreatedAcrAccount]{
-		OutputState: i.ToSystemCreatedAcrAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SystemCreatedAcrAccountArgs) ToSystemCreatedAcrAccountPtrOutput() SystemCreatedAcrAccountPtrOutput {
 	return i.ToSystemCreatedAcrAccountPtrOutputWithContext(context.Background())
 }
@@ -1620,12 +1493,6 @@ func (i *systemCreatedAcrAccountPtrType) ToSystemCreatedAcrAccountPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(SystemCreatedAcrAccountPtrOutput)
 }
 
-func (i *systemCreatedAcrAccountPtrType) ToOutput(ctx context.Context) pulumix.Output[*SystemCreatedAcrAccount] {
-	return pulumix.Output[*SystemCreatedAcrAccount]{
-		OutputState: i.ToSystemCreatedAcrAccountPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SystemCreatedAcrAccountOutput struct{ *pulumi.OutputState }
 
 func (SystemCreatedAcrAccountOutput) ElementType() reflect.Type {
@@ -1648,12 +1515,6 @@ func (o SystemCreatedAcrAccountOutput) ToSystemCreatedAcrAccountPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemCreatedAcrAccount) *SystemCreatedAcrAccount {
 		return &v
 	}).(SystemCreatedAcrAccountPtrOutput)
-}
-
-func (o SystemCreatedAcrAccountOutput) ToOutput(ctx context.Context) pulumix.Output[SystemCreatedAcrAccount] {
-	return pulumix.Output[SystemCreatedAcrAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the ACR account
@@ -1683,12 +1544,6 @@ func (o SystemCreatedAcrAccountPtrOutput) ToSystemCreatedAcrAccountPtrOutput() S
 
 func (o SystemCreatedAcrAccountPtrOutput) ToSystemCreatedAcrAccountPtrOutputWithContext(ctx context.Context) SystemCreatedAcrAccountPtrOutput {
 	return o
-}
-
-func (o SystemCreatedAcrAccountPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SystemCreatedAcrAccount] {
-	return pulumix.Output[*SystemCreatedAcrAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SystemCreatedAcrAccountPtrOutput) Elem() SystemCreatedAcrAccountOutput {
@@ -1754,12 +1609,6 @@ func (o SystemCreatedAcrAccountResponseOutput) ToSystemCreatedAcrAccountResponse
 	return o
 }
 
-func (o SystemCreatedAcrAccountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemCreatedAcrAccountResponse] {
-	return pulumix.Output[SystemCreatedAcrAccountResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the ACR account
 func (o SystemCreatedAcrAccountResponseOutput) AcrAccountName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemCreatedAcrAccountResponse) *string { return v.AcrAccountName }).(pulumi.StringPtrOutput)
@@ -1787,12 +1636,6 @@ func (o SystemCreatedAcrAccountResponsePtrOutput) ToSystemCreatedAcrAccountRespo
 
 func (o SystemCreatedAcrAccountResponsePtrOutput) ToSystemCreatedAcrAccountResponsePtrOutputWithContext(ctx context.Context) SystemCreatedAcrAccountResponsePtrOutput {
 	return o
-}
-
-func (o SystemCreatedAcrAccountResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SystemCreatedAcrAccountResponse] {
-	return pulumix.Output[*SystemCreatedAcrAccountResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SystemCreatedAcrAccountResponsePtrOutput) Elem() SystemCreatedAcrAccountResponseOutput {
@@ -1900,12 +1743,6 @@ func (i SystemCreatedStorageAccountArgs) ToSystemCreatedStorageAccountOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(SystemCreatedStorageAccountOutput)
 }
 
-func (i SystemCreatedStorageAccountArgs) ToOutput(ctx context.Context) pulumix.Output[SystemCreatedStorageAccount] {
-	return pulumix.Output[SystemCreatedStorageAccount]{
-		OutputState: i.ToSystemCreatedStorageAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SystemCreatedStorageAccountArgs) ToSystemCreatedStorageAccountPtrOutput() SystemCreatedStorageAccountPtrOutput {
 	return i.ToSystemCreatedStorageAccountPtrOutputWithContext(context.Background())
 }
@@ -1947,12 +1784,6 @@ func (i *systemCreatedStorageAccountPtrType) ToSystemCreatedStorageAccountPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(SystemCreatedStorageAccountPtrOutput)
 }
 
-func (i *systemCreatedStorageAccountPtrType) ToOutput(ctx context.Context) pulumix.Output[*SystemCreatedStorageAccount] {
-	return pulumix.Output[*SystemCreatedStorageAccount]{
-		OutputState: i.ToSystemCreatedStorageAccountPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SystemCreatedStorageAccountOutput struct{ *pulumi.OutputState }
 
 func (SystemCreatedStorageAccountOutput) ElementType() reflect.Type {
@@ -1975,12 +1806,6 @@ func (o SystemCreatedStorageAccountOutput) ToSystemCreatedStorageAccountPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemCreatedStorageAccount) *SystemCreatedStorageAccount {
 		return &v
 	}).(SystemCreatedStorageAccountPtrOutput)
-}
-
-func (o SystemCreatedStorageAccountOutput) ToOutput(ctx context.Context) pulumix.Output[SystemCreatedStorageAccount] {
-	return pulumix.Output[SystemCreatedStorageAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Public blob access allowed
@@ -2028,12 +1853,6 @@ func (o SystemCreatedStorageAccountPtrOutput) ToSystemCreatedStorageAccountPtrOu
 
 func (o SystemCreatedStorageAccountPtrOutput) ToSystemCreatedStorageAccountPtrOutputWithContext(ctx context.Context) SystemCreatedStorageAccountPtrOutput {
 	return o
-}
-
-func (o SystemCreatedStorageAccountPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SystemCreatedStorageAccount] {
-	return pulumix.Output[*SystemCreatedStorageAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SystemCreatedStorageAccountPtrOutput) Elem() SystemCreatedStorageAccountOutput {
@@ -2139,12 +1958,6 @@ func (o SystemCreatedStorageAccountResponseOutput) ToSystemCreatedStorageAccount
 	return o
 }
 
-func (o SystemCreatedStorageAccountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemCreatedStorageAccountResponse] {
-	return pulumix.Output[SystemCreatedStorageAccountResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Public blob access allowed
 func (o SystemCreatedStorageAccountResponseOutput) AllowBlobPublicAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SystemCreatedStorageAccountResponse) *bool { return v.AllowBlobPublicAccess }).(pulumi.BoolPtrOutput)
@@ -2190,12 +2003,6 @@ func (o SystemCreatedStorageAccountResponsePtrOutput) ToSystemCreatedStorageAcco
 
 func (o SystemCreatedStorageAccountResponsePtrOutput) ToSystemCreatedStorageAccountResponsePtrOutputWithContext(ctx context.Context) SystemCreatedStorageAccountResponsePtrOutput {
 	return o
-}
-
-func (o SystemCreatedStorageAccountResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SystemCreatedStorageAccountResponse] {
-	return pulumix.Output[*SystemCreatedStorageAccountResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SystemCreatedStorageAccountResponsePtrOutput) Elem() SystemCreatedStorageAccountResponseOutput {
@@ -2295,12 +2102,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -3950,12 +3751,6 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
-func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
-	return pulumix.Output[UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The client ID of the assigned identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -3978,12 +3773,6 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
-	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
@@ -4023,12 +3812,6 @@ func (i UserCreatedAcrAccountArgs) ToUserCreatedAcrAccountOutput() UserCreatedAc
 
 func (i UserCreatedAcrAccountArgs) ToUserCreatedAcrAccountOutputWithContext(ctx context.Context) UserCreatedAcrAccountOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserCreatedAcrAccountOutput)
-}
-
-func (i UserCreatedAcrAccountArgs) ToOutput(ctx context.Context) pulumix.Output[UserCreatedAcrAccount] {
-	return pulumix.Output[UserCreatedAcrAccount]{
-		OutputState: i.ToUserCreatedAcrAccountOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i UserCreatedAcrAccountArgs) ToUserCreatedAcrAccountPtrOutput() UserCreatedAcrAccountPtrOutput {
@@ -4072,12 +3855,6 @@ func (i *userCreatedAcrAccountPtrType) ToUserCreatedAcrAccountPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(UserCreatedAcrAccountPtrOutput)
 }
 
-func (i *userCreatedAcrAccountPtrType) ToOutput(ctx context.Context) pulumix.Output[*UserCreatedAcrAccount] {
-	return pulumix.Output[*UserCreatedAcrAccount]{
-		OutputState: i.ToUserCreatedAcrAccountPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UserCreatedAcrAccountOutput struct{ *pulumi.OutputState }
 
 func (UserCreatedAcrAccountOutput) ElementType() reflect.Type {
@@ -4102,12 +3879,6 @@ func (o UserCreatedAcrAccountOutput) ToUserCreatedAcrAccountPtrOutputWithContext
 	}).(UserCreatedAcrAccountPtrOutput)
 }
 
-func (o UserCreatedAcrAccountOutput) ToOutput(ctx context.Context) pulumix.Output[UserCreatedAcrAccount] {
-	return pulumix.Output[UserCreatedAcrAccount]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ARM ResourceId of a resource
 func (o UserCreatedAcrAccountOutput) ArmResourceId() ArmResourceIdPtrOutput {
 	return o.ApplyT(func(v UserCreatedAcrAccount) *ArmResourceId { return v.ArmResourceId }).(ArmResourceIdPtrOutput)
@@ -4125,12 +3896,6 @@ func (o UserCreatedAcrAccountPtrOutput) ToUserCreatedAcrAccountPtrOutput() UserC
 
 func (o UserCreatedAcrAccountPtrOutput) ToUserCreatedAcrAccountPtrOutputWithContext(ctx context.Context) UserCreatedAcrAccountPtrOutput {
 	return o
-}
-
-func (o UserCreatedAcrAccountPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserCreatedAcrAccount] {
-	return pulumix.Output[*UserCreatedAcrAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserCreatedAcrAccountPtrOutput) Elem() UserCreatedAcrAccountOutput {
@@ -4172,12 +3937,6 @@ func (o UserCreatedAcrAccountResponseOutput) ToUserCreatedAcrAccountResponseOutp
 	return o
 }
 
-func (o UserCreatedAcrAccountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserCreatedAcrAccountResponse] {
-	return pulumix.Output[UserCreatedAcrAccountResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ARM ResourceId of a resource
 func (o UserCreatedAcrAccountResponseOutput) ArmResourceId() ArmResourceIdResponsePtrOutput {
 	return o.ApplyT(func(v UserCreatedAcrAccountResponse) *ArmResourceIdResponse { return v.ArmResourceId }).(ArmResourceIdResponsePtrOutput)
@@ -4195,12 +3954,6 @@ func (o UserCreatedAcrAccountResponsePtrOutput) ToUserCreatedAcrAccountResponseP
 
 func (o UserCreatedAcrAccountResponsePtrOutput) ToUserCreatedAcrAccountResponsePtrOutputWithContext(ctx context.Context) UserCreatedAcrAccountResponsePtrOutput {
 	return o
-}
-
-func (o UserCreatedAcrAccountResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserCreatedAcrAccountResponse] {
-	return pulumix.Output[*UserCreatedAcrAccountResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserCreatedAcrAccountResponsePtrOutput) Elem() UserCreatedAcrAccountResponseOutput {
@@ -4256,12 +4009,6 @@ func (i UserCreatedStorageAccountArgs) ToUserCreatedStorageAccountOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(UserCreatedStorageAccountOutput)
 }
 
-func (i UserCreatedStorageAccountArgs) ToOutput(ctx context.Context) pulumix.Output[UserCreatedStorageAccount] {
-	return pulumix.Output[UserCreatedStorageAccount]{
-		OutputState: i.ToUserCreatedStorageAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i UserCreatedStorageAccountArgs) ToUserCreatedStorageAccountPtrOutput() UserCreatedStorageAccountPtrOutput {
 	return i.ToUserCreatedStorageAccountPtrOutputWithContext(context.Background())
 }
@@ -4303,12 +4050,6 @@ func (i *userCreatedStorageAccountPtrType) ToUserCreatedStorageAccountPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(UserCreatedStorageAccountPtrOutput)
 }
 
-func (i *userCreatedStorageAccountPtrType) ToOutput(ctx context.Context) pulumix.Output[*UserCreatedStorageAccount] {
-	return pulumix.Output[*UserCreatedStorageAccount]{
-		OutputState: i.ToUserCreatedStorageAccountPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UserCreatedStorageAccountOutput struct{ *pulumi.OutputState }
 
 func (UserCreatedStorageAccountOutput) ElementType() reflect.Type {
@@ -4333,12 +4074,6 @@ func (o UserCreatedStorageAccountOutput) ToUserCreatedStorageAccountPtrOutputWit
 	}).(UserCreatedStorageAccountPtrOutput)
 }
 
-func (o UserCreatedStorageAccountOutput) ToOutput(ctx context.Context) pulumix.Output[UserCreatedStorageAccount] {
-	return pulumix.Output[UserCreatedStorageAccount]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ARM ResourceId of a resource
 func (o UserCreatedStorageAccountOutput) ArmResourceId() ArmResourceIdPtrOutput {
 	return o.ApplyT(func(v UserCreatedStorageAccount) *ArmResourceId { return v.ArmResourceId }).(ArmResourceIdPtrOutput)
@@ -4356,12 +4091,6 @@ func (o UserCreatedStorageAccountPtrOutput) ToUserCreatedStorageAccountPtrOutput
 
 func (o UserCreatedStorageAccountPtrOutput) ToUserCreatedStorageAccountPtrOutputWithContext(ctx context.Context) UserCreatedStorageAccountPtrOutput {
 	return o
-}
-
-func (o UserCreatedStorageAccountPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserCreatedStorageAccount] {
-	return pulumix.Output[*UserCreatedStorageAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserCreatedStorageAccountPtrOutput) Elem() UserCreatedStorageAccountOutput {
@@ -4403,12 +4132,6 @@ func (o UserCreatedStorageAccountResponseOutput) ToUserCreatedStorageAccountResp
 	return o
 }
 
-func (o UserCreatedStorageAccountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserCreatedStorageAccountResponse] {
-	return pulumix.Output[UserCreatedStorageAccountResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ARM ResourceId of a resource
 func (o UserCreatedStorageAccountResponseOutput) ArmResourceId() ArmResourceIdResponsePtrOutput {
 	return o.ApplyT(func(v UserCreatedStorageAccountResponse) *ArmResourceIdResponse { return v.ArmResourceId }).(ArmResourceIdResponsePtrOutput)
@@ -4426,12 +4149,6 @@ func (o UserCreatedStorageAccountResponsePtrOutput) ToUserCreatedStorageAccountR
 
 func (o UserCreatedStorageAccountResponsePtrOutput) ToUserCreatedStorageAccountResponsePtrOutputWithContext(ctx context.Context) UserCreatedStorageAccountResponsePtrOutput {
 	return o
-}
-
-func (o UserCreatedStorageAccountResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserCreatedStorageAccountResponse] {
-	return pulumix.Output[*UserCreatedStorageAccountResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserCreatedStorageAccountResponsePtrOutput) Elem() UserCreatedStorageAccountResponseOutput {

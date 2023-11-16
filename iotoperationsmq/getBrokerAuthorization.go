@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a BrokerAuthorizationResource
@@ -111,12 +110,6 @@ func (o LookupBrokerAuthorizationResultOutput) ToLookupBrokerAuthorizationResult
 
 func (o LookupBrokerAuthorizationResultOutput) ToLookupBrokerAuthorizationResultOutputWithContext(ctx context.Context) LookupBrokerAuthorizationResultOutput {
 	return o
-}
-
-func (o LookupBrokerAuthorizationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBrokerAuthorizationResult] {
-	return pulumix.Output[LookupBrokerAuthorizationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of authorization policies supported by the Authorization Resource.

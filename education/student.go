@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Student details.
@@ -198,12 +197,6 @@ func (i *Student) ToStudentOutputWithContext(ctx context.Context) StudentOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(StudentOutput)
 }
 
-func (i *Student) ToOutput(ctx context.Context) pulumix.Output[*Student] {
-	return pulumix.Output[*Student]{
-		OutputState: i.ToStudentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StudentOutput struct{ *pulumi.OutputState }
 
 func (StudentOutput) ElementType() reflect.Type {
@@ -216,12 +209,6 @@ func (o StudentOutput) ToStudentOutput() StudentOutput {
 
 func (o StudentOutput) ToStudentOutputWithContext(ctx context.Context) StudentOutput {
 	return o
-}
-
-func (o StudentOutput) ToOutput(ctx context.Context) pulumix.Output[*Student] {
-	return pulumix.Output[*Student]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Student Budget

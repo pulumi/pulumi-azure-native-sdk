@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Response of a list operation.
@@ -75,12 +74,6 @@ func (o ListMonitorLinkedResourcesResultOutput) ToListMonitorLinkedResourcesResu
 
 func (o ListMonitorLinkedResourcesResultOutput) ToListMonitorLinkedResourcesResultOutputWithContext(ctx context.Context) ListMonitorLinkedResourcesResultOutput {
 	return o
-}
-
-func (o ListMonitorLinkedResourcesResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListMonitorLinkedResourcesResult] {
-	return pulumix.Output[ListMonitorLinkedResourcesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Link to the next set of results, if any.

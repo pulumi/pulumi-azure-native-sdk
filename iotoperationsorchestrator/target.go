@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Target resource belonging to an Instance resource.
@@ -165,12 +164,6 @@ func (i *Target) ToTargetOutputWithContext(ctx context.Context) TargetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TargetOutput)
 }
 
-func (i *Target) ToOutput(ctx context.Context) pulumix.Output[*Target] {
-	return pulumix.Output[*Target]{
-		OutputState: i.ToTargetOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TargetOutput struct{ *pulumi.OutputState }
 
 func (TargetOutput) ElementType() reflect.Type {
@@ -183,12 +176,6 @@ func (o TargetOutput) ToTargetOutput() TargetOutput {
 
 func (o TargetOutput) ToTargetOutputWithContext(ctx context.Context) TargetOutput {
 	return o
-}
-
-func (o TargetOutput) ToOutput(ctx context.Context) pulumix.Output[*Target] {
-	return pulumix.Output[*Target]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of components.

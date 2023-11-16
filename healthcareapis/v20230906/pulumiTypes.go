@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -65,12 +64,6 @@ func (i CorsConfigurationArgs) ToCorsConfigurationOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CorsConfigurationOutput)
 }
 
-func (i CorsConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[CorsConfiguration] {
-	return pulumix.Output[CorsConfiguration]{
-		OutputState: i.ToCorsConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CorsConfigurationArgs) ToCorsConfigurationPtrOutput() CorsConfigurationPtrOutput {
 	return i.ToCorsConfigurationPtrOutputWithContext(context.Background())
 }
@@ -112,12 +105,6 @@ func (i *corsConfigurationPtrType) ToCorsConfigurationPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(CorsConfigurationPtrOutput)
 }
 
-func (i *corsConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*CorsConfiguration] {
-	return pulumix.Output[*CorsConfiguration]{
-		OutputState: i.ToCorsConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The settings for the CORS configuration of the service instance.
 type CorsConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -141,12 +128,6 @@ func (o CorsConfigurationOutput) ToCorsConfigurationPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CorsConfiguration) *CorsConfiguration {
 		return &v
 	}).(CorsConfigurationPtrOutput)
-}
-
-func (o CorsConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[CorsConfiguration] {
-	return pulumix.Output[CorsConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If credentials are allowed via CORS.
@@ -186,12 +167,6 @@ func (o CorsConfigurationPtrOutput) ToCorsConfigurationPtrOutput() CorsConfigura
 
 func (o CorsConfigurationPtrOutput) ToCorsConfigurationPtrOutputWithContext(ctx context.Context) CorsConfigurationPtrOutput {
 	return o
-}
-
-func (o CorsConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CorsConfiguration] {
-	return pulumix.Output[*CorsConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CorsConfigurationPtrOutput) Elem() CorsConfigurationOutput {
@@ -283,12 +258,6 @@ func (o CorsConfigurationResponseOutput) ToCorsConfigurationResponseOutputWithCo
 	return o
 }
 
-func (o CorsConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CorsConfigurationResponse] {
-	return pulumix.Output[CorsConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If credentials are allowed via CORS.
 func (o CorsConfigurationResponseOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CorsConfigurationResponse) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
@@ -326,12 +295,6 @@ func (o CorsConfigurationResponsePtrOutput) ToCorsConfigurationResponsePtrOutput
 
 func (o CorsConfigurationResponsePtrOutput) ToCorsConfigurationResponsePtrOutputWithContext(ctx context.Context) CorsConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o CorsConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CorsConfigurationResponse] {
-	return pulumix.Output[*CorsConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CorsConfigurationResponsePtrOutput) Elem() CorsConfigurationResponseOutput {
@@ -417,12 +380,6 @@ func (o DicomServiceAuthenticationConfigurationResponseOutput) ToDicomServiceAut
 	return o
 }
 
-func (o DicomServiceAuthenticationConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DicomServiceAuthenticationConfigurationResponse] {
-	return pulumix.Output[DicomServiceAuthenticationConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The audiences for the service
 func (o DicomServiceAuthenticationConfigurationResponseOutput) Audiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DicomServiceAuthenticationConfigurationResponse) []string { return v.Audiences }).(pulumi.StringArrayOutput)
@@ -445,12 +402,6 @@ func (o DicomServiceAuthenticationConfigurationResponsePtrOutput) ToDicomService
 
 func (o DicomServiceAuthenticationConfigurationResponsePtrOutput) ToDicomServiceAuthenticationConfigurationResponsePtrOutputWithContext(ctx context.Context) DicomServiceAuthenticationConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o DicomServiceAuthenticationConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DicomServiceAuthenticationConfigurationResponse] {
-	return pulumix.Output[*DicomServiceAuthenticationConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DicomServiceAuthenticationConfigurationResponsePtrOutput) Elem() DicomServiceAuthenticationConfigurationResponseOutput {
@@ -522,12 +473,6 @@ func (i FhirServiceAcrConfigurationArgs) ToFhirServiceAcrConfigurationOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(FhirServiceAcrConfigurationOutput)
 }
 
-func (i FhirServiceAcrConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[FhirServiceAcrConfiguration] {
-	return pulumix.Output[FhirServiceAcrConfiguration]{
-		OutputState: i.ToFhirServiceAcrConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FhirServiceAcrConfigurationArgs) ToFhirServiceAcrConfigurationPtrOutput() FhirServiceAcrConfigurationPtrOutput {
 	return i.ToFhirServiceAcrConfigurationPtrOutputWithContext(context.Background())
 }
@@ -569,12 +514,6 @@ func (i *fhirServiceAcrConfigurationPtrType) ToFhirServiceAcrConfigurationPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(FhirServiceAcrConfigurationPtrOutput)
 }
 
-func (i *fhirServiceAcrConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*FhirServiceAcrConfiguration] {
-	return pulumix.Output[*FhirServiceAcrConfiguration]{
-		OutputState: i.ToFhirServiceAcrConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Azure container registry configuration information
 type FhirServiceAcrConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -600,12 +539,6 @@ func (o FhirServiceAcrConfigurationOutput) ToFhirServiceAcrConfigurationPtrOutpu
 	}).(FhirServiceAcrConfigurationPtrOutput)
 }
 
-func (o FhirServiceAcrConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[FhirServiceAcrConfiguration] {
-	return pulumix.Output[FhirServiceAcrConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of the Azure container registry login servers.
 func (o FhirServiceAcrConfigurationOutput) LoginServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FhirServiceAcrConfiguration) []string { return v.LoginServers }).(pulumi.StringArrayOutput)
@@ -628,12 +561,6 @@ func (o FhirServiceAcrConfigurationPtrOutput) ToFhirServiceAcrConfigurationPtrOu
 
 func (o FhirServiceAcrConfigurationPtrOutput) ToFhirServiceAcrConfigurationPtrOutputWithContext(ctx context.Context) FhirServiceAcrConfigurationPtrOutput {
 	return o
-}
-
-func (o FhirServiceAcrConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirServiceAcrConfiguration] {
-	return pulumix.Output[*FhirServiceAcrConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirServiceAcrConfigurationPtrOutput) Elem() FhirServiceAcrConfigurationOutput {
@@ -689,12 +616,6 @@ func (o FhirServiceAcrConfigurationResponseOutput) ToFhirServiceAcrConfiguration
 	return o
 }
 
-func (o FhirServiceAcrConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FhirServiceAcrConfigurationResponse] {
-	return pulumix.Output[FhirServiceAcrConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of the Azure container registry login servers.
 func (o FhirServiceAcrConfigurationResponseOutput) LoginServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FhirServiceAcrConfigurationResponse) []string { return v.LoginServers }).(pulumi.StringArrayOutput)
@@ -717,12 +638,6 @@ func (o FhirServiceAcrConfigurationResponsePtrOutput) ToFhirServiceAcrConfigurat
 
 func (o FhirServiceAcrConfigurationResponsePtrOutput) ToFhirServiceAcrConfigurationResponsePtrOutputWithContext(ctx context.Context) FhirServiceAcrConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o FhirServiceAcrConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirServiceAcrConfigurationResponse] {
-	return pulumix.Output[*FhirServiceAcrConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirServiceAcrConfigurationResponsePtrOutput) Elem() FhirServiceAcrConfigurationResponseOutput {
@@ -798,12 +713,6 @@ func (i FhirServiceAuthenticationConfigurationArgs) ToFhirServiceAuthenticationC
 	return pulumi.ToOutputWithContext(ctx, i).(FhirServiceAuthenticationConfigurationOutput)
 }
 
-func (i FhirServiceAuthenticationConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[FhirServiceAuthenticationConfiguration] {
-	return pulumix.Output[FhirServiceAuthenticationConfiguration]{
-		OutputState: i.ToFhirServiceAuthenticationConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FhirServiceAuthenticationConfigurationArgs) ToFhirServiceAuthenticationConfigurationPtrOutput() FhirServiceAuthenticationConfigurationPtrOutput {
 	return i.ToFhirServiceAuthenticationConfigurationPtrOutputWithContext(context.Background())
 }
@@ -845,12 +754,6 @@ func (i *fhirServiceAuthenticationConfigurationPtrType) ToFhirServiceAuthenticat
 	return pulumi.ToOutputWithContext(ctx, i).(FhirServiceAuthenticationConfigurationPtrOutput)
 }
 
-func (i *fhirServiceAuthenticationConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*FhirServiceAuthenticationConfiguration] {
-	return pulumix.Output[*FhirServiceAuthenticationConfiguration]{
-		OutputState: i.ToFhirServiceAuthenticationConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Authentication configuration information
 type FhirServiceAuthenticationConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -874,12 +777,6 @@ func (o FhirServiceAuthenticationConfigurationOutput) ToFhirServiceAuthenticatio
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirServiceAuthenticationConfiguration) *FhirServiceAuthenticationConfiguration {
 		return &v
 	}).(FhirServiceAuthenticationConfigurationPtrOutput)
-}
-
-func (o FhirServiceAuthenticationConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[FhirServiceAuthenticationConfiguration] {
-	return pulumix.Output[FhirServiceAuthenticationConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The audience url for the service
@@ -909,12 +806,6 @@ func (o FhirServiceAuthenticationConfigurationPtrOutput) ToFhirServiceAuthentica
 
 func (o FhirServiceAuthenticationConfigurationPtrOutput) ToFhirServiceAuthenticationConfigurationPtrOutputWithContext(ctx context.Context) FhirServiceAuthenticationConfigurationPtrOutput {
 	return o
-}
-
-func (o FhirServiceAuthenticationConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirServiceAuthenticationConfiguration] {
-	return pulumix.Output[*FhirServiceAuthenticationConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirServiceAuthenticationConfigurationPtrOutput) Elem() FhirServiceAuthenticationConfigurationOutput {
@@ -982,12 +873,6 @@ func (o FhirServiceAuthenticationConfigurationResponseOutput) ToFhirServiceAuthe
 	return o
 }
 
-func (o FhirServiceAuthenticationConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FhirServiceAuthenticationConfigurationResponse] {
-	return pulumix.Output[FhirServiceAuthenticationConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The audience url for the service
 func (o FhirServiceAuthenticationConfigurationResponseOutput) Audience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FhirServiceAuthenticationConfigurationResponse) *string { return v.Audience }).(pulumi.StringPtrOutput)
@@ -1015,12 +900,6 @@ func (o FhirServiceAuthenticationConfigurationResponsePtrOutput) ToFhirServiceAu
 
 func (o FhirServiceAuthenticationConfigurationResponsePtrOutput) ToFhirServiceAuthenticationConfigurationResponsePtrOutputWithContext(ctx context.Context) FhirServiceAuthenticationConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o FhirServiceAuthenticationConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirServiceAuthenticationConfigurationResponse] {
-	return pulumix.Output[*FhirServiceAuthenticationConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirServiceAuthenticationConfigurationResponsePtrOutput) Elem() FhirServiceAuthenticationConfigurationResponseOutput {
@@ -1114,12 +993,6 @@ func (i FhirServiceCorsConfigurationArgs) ToFhirServiceCorsConfigurationOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(FhirServiceCorsConfigurationOutput)
 }
 
-func (i FhirServiceCorsConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[FhirServiceCorsConfiguration] {
-	return pulumix.Output[FhirServiceCorsConfiguration]{
-		OutputState: i.ToFhirServiceCorsConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FhirServiceCorsConfigurationArgs) ToFhirServiceCorsConfigurationPtrOutput() FhirServiceCorsConfigurationPtrOutput {
 	return i.ToFhirServiceCorsConfigurationPtrOutputWithContext(context.Background())
 }
@@ -1161,12 +1034,6 @@ func (i *fhirServiceCorsConfigurationPtrType) ToFhirServiceCorsConfigurationPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(FhirServiceCorsConfigurationPtrOutput)
 }
 
-func (i *fhirServiceCorsConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*FhirServiceCorsConfiguration] {
-	return pulumix.Output[*FhirServiceCorsConfiguration]{
-		OutputState: i.ToFhirServiceCorsConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The settings for the CORS configuration of the service instance.
 type FhirServiceCorsConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -1190,12 +1057,6 @@ func (o FhirServiceCorsConfigurationOutput) ToFhirServiceCorsConfigurationPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirServiceCorsConfiguration) *FhirServiceCorsConfiguration {
 		return &v
 	}).(FhirServiceCorsConfigurationPtrOutput)
-}
-
-func (o FhirServiceCorsConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[FhirServiceCorsConfiguration] {
-	return pulumix.Output[FhirServiceCorsConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If credentials are allowed via CORS.
@@ -1235,12 +1096,6 @@ func (o FhirServiceCorsConfigurationPtrOutput) ToFhirServiceCorsConfigurationPtr
 
 func (o FhirServiceCorsConfigurationPtrOutput) ToFhirServiceCorsConfigurationPtrOutputWithContext(ctx context.Context) FhirServiceCorsConfigurationPtrOutput {
 	return o
-}
-
-func (o FhirServiceCorsConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirServiceCorsConfiguration] {
-	return pulumix.Output[*FhirServiceCorsConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirServiceCorsConfigurationPtrOutput) Elem() FhirServiceCorsConfigurationOutput {
@@ -1332,12 +1187,6 @@ func (o FhirServiceCorsConfigurationResponseOutput) ToFhirServiceCorsConfigurati
 	return o
 }
 
-func (o FhirServiceCorsConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FhirServiceCorsConfigurationResponse] {
-	return pulumix.Output[FhirServiceCorsConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If credentials are allowed via CORS.
 func (o FhirServiceCorsConfigurationResponseOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FhirServiceCorsConfigurationResponse) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
@@ -1375,12 +1224,6 @@ func (o FhirServiceCorsConfigurationResponsePtrOutput) ToFhirServiceCorsConfigur
 
 func (o FhirServiceCorsConfigurationResponsePtrOutput) ToFhirServiceCorsConfigurationResponsePtrOutputWithContext(ctx context.Context) FhirServiceCorsConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o FhirServiceCorsConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirServiceCorsConfigurationResponse] {
-	return pulumix.Output[*FhirServiceCorsConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirServiceCorsConfigurationResponsePtrOutput) Elem() FhirServiceCorsConfigurationResponseOutput {
@@ -1478,12 +1321,6 @@ func (i FhirServiceExportConfigurationArgs) ToFhirServiceExportConfigurationOutp
 	return pulumi.ToOutputWithContext(ctx, i).(FhirServiceExportConfigurationOutput)
 }
 
-func (i FhirServiceExportConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[FhirServiceExportConfiguration] {
-	return pulumix.Output[FhirServiceExportConfiguration]{
-		OutputState: i.ToFhirServiceExportConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FhirServiceExportConfigurationArgs) ToFhirServiceExportConfigurationPtrOutput() FhirServiceExportConfigurationPtrOutput {
 	return i.ToFhirServiceExportConfigurationPtrOutputWithContext(context.Background())
 }
@@ -1525,12 +1362,6 @@ func (i *fhirServiceExportConfigurationPtrType) ToFhirServiceExportConfiguration
 	return pulumi.ToOutputWithContext(ctx, i).(FhirServiceExportConfigurationPtrOutput)
 }
 
-func (i *fhirServiceExportConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*FhirServiceExportConfiguration] {
-	return pulumix.Output[*FhirServiceExportConfiguration]{
-		OutputState: i.ToFhirServiceExportConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Export operation configuration information
 type FhirServiceExportConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -1556,12 +1387,6 @@ func (o FhirServiceExportConfigurationOutput) ToFhirServiceExportConfigurationPt
 	}).(FhirServiceExportConfigurationPtrOutput)
 }
 
-func (o FhirServiceExportConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[FhirServiceExportConfiguration] {
-	return pulumix.Output[FhirServiceExportConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the default export storage account.
 func (o FhirServiceExportConfigurationOutput) StorageAccountName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FhirServiceExportConfiguration) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
@@ -1579,12 +1404,6 @@ func (o FhirServiceExportConfigurationPtrOutput) ToFhirServiceExportConfiguratio
 
 func (o FhirServiceExportConfigurationPtrOutput) ToFhirServiceExportConfigurationPtrOutputWithContext(ctx context.Context) FhirServiceExportConfigurationPtrOutput {
 	return o
-}
-
-func (o FhirServiceExportConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirServiceExportConfiguration] {
-	return pulumix.Output[*FhirServiceExportConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirServiceExportConfigurationPtrOutput) Elem() FhirServiceExportConfigurationOutput {
@@ -1628,12 +1447,6 @@ func (o FhirServiceExportConfigurationResponseOutput) ToFhirServiceExportConfigu
 	return o
 }
 
-func (o FhirServiceExportConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FhirServiceExportConfigurationResponse] {
-	return pulumix.Output[FhirServiceExportConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the default export storage account.
 func (o FhirServiceExportConfigurationResponseOutput) StorageAccountName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FhirServiceExportConfigurationResponse) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
@@ -1651,12 +1464,6 @@ func (o FhirServiceExportConfigurationResponsePtrOutput) ToFhirServiceExportConf
 
 func (o FhirServiceExportConfigurationResponsePtrOutput) ToFhirServiceExportConfigurationResponsePtrOutputWithContext(ctx context.Context) FhirServiceExportConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o FhirServiceExportConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirServiceExportConfigurationResponse] {
-	return pulumix.Output[*FhirServiceExportConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirServiceExportConfigurationResponsePtrOutput) Elem() FhirServiceExportConfigurationResponseOutput {
@@ -1722,12 +1529,6 @@ func (i FhirServiceImportConfigurationArgs) ToFhirServiceImportConfigurationOutp
 	return pulumi.ToOutputWithContext(ctx, i).(FhirServiceImportConfigurationOutput)
 }
 
-func (i FhirServiceImportConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[FhirServiceImportConfiguration] {
-	return pulumix.Output[FhirServiceImportConfiguration]{
-		OutputState: i.ToFhirServiceImportConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FhirServiceImportConfigurationArgs) ToFhirServiceImportConfigurationPtrOutput() FhirServiceImportConfigurationPtrOutput {
 	return i.ToFhirServiceImportConfigurationPtrOutputWithContext(context.Background())
 }
@@ -1769,12 +1570,6 @@ func (i *fhirServiceImportConfigurationPtrType) ToFhirServiceImportConfiguration
 	return pulumi.ToOutputWithContext(ctx, i).(FhirServiceImportConfigurationPtrOutput)
 }
 
-func (i *fhirServiceImportConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*FhirServiceImportConfiguration] {
-	return pulumix.Output[*FhirServiceImportConfiguration]{
-		OutputState: i.ToFhirServiceImportConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Import operation configuration information
 type FhirServiceImportConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -1798,12 +1593,6 @@ func (o FhirServiceImportConfigurationOutput) ToFhirServiceImportConfigurationPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirServiceImportConfiguration) *FhirServiceImportConfiguration {
 		return &v
 	}).(FhirServiceImportConfigurationPtrOutput)
-}
-
-func (o FhirServiceImportConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[FhirServiceImportConfiguration] {
-	return pulumix.Output[FhirServiceImportConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If the import operation is enabled.
@@ -1833,12 +1622,6 @@ func (o FhirServiceImportConfigurationPtrOutput) ToFhirServiceImportConfiguratio
 
 func (o FhirServiceImportConfigurationPtrOutput) ToFhirServiceImportConfigurationPtrOutputWithContext(ctx context.Context) FhirServiceImportConfigurationPtrOutput {
 	return o
-}
-
-func (o FhirServiceImportConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirServiceImportConfiguration] {
-	return pulumix.Output[*FhirServiceImportConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirServiceImportConfigurationPtrOutput) Elem() FhirServiceImportConfigurationOutput {
@@ -1906,12 +1689,6 @@ func (o FhirServiceImportConfigurationResponseOutput) ToFhirServiceImportConfigu
 	return o
 }
 
-func (o FhirServiceImportConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FhirServiceImportConfigurationResponse] {
-	return pulumix.Output[FhirServiceImportConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If the import operation is enabled.
 func (o FhirServiceImportConfigurationResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FhirServiceImportConfigurationResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -1939,12 +1716,6 @@ func (o FhirServiceImportConfigurationResponsePtrOutput) ToFhirServiceImportConf
 
 func (o FhirServiceImportConfigurationResponsePtrOutput) ToFhirServiceImportConfigurationResponsePtrOutputWithContext(ctx context.Context) FhirServiceImportConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o FhirServiceImportConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirServiceImportConfigurationResponse] {
-	return pulumix.Output[*FhirServiceImportConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FhirServiceImportConfigurationResponsePtrOutput) Elem() FhirServiceImportConfigurationResponseOutput {
@@ -2022,12 +1793,6 @@ func (i ImplementationGuidesConfigurationArgs) ToImplementationGuidesConfigurati
 	return pulumi.ToOutputWithContext(ctx, i).(ImplementationGuidesConfigurationOutput)
 }
 
-func (i ImplementationGuidesConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ImplementationGuidesConfiguration] {
-	return pulumix.Output[ImplementationGuidesConfiguration]{
-		OutputState: i.ToImplementationGuidesConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ImplementationGuidesConfigurationArgs) ToImplementationGuidesConfigurationPtrOutput() ImplementationGuidesConfigurationPtrOutput {
 	return i.ToImplementationGuidesConfigurationPtrOutputWithContext(context.Background())
 }
@@ -2069,12 +1834,6 @@ func (i *implementationGuidesConfigurationPtrType) ToImplementationGuidesConfigu
 	return pulumi.ToOutputWithContext(ctx, i).(ImplementationGuidesConfigurationPtrOutput)
 }
 
-func (i *implementationGuidesConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ImplementationGuidesConfiguration] {
-	return pulumix.Output[*ImplementationGuidesConfiguration]{
-		OutputState: i.ToImplementationGuidesConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The settings for Implementation Guides - defining capabilities for national standards, vendor consortiums, clinical societies, etc.
 type ImplementationGuidesConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -2100,12 +1859,6 @@ func (o ImplementationGuidesConfigurationOutput) ToImplementationGuidesConfigura
 	}).(ImplementationGuidesConfigurationPtrOutput)
 }
 
-func (o ImplementationGuidesConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ImplementationGuidesConfiguration] {
-	return pulumix.Output[ImplementationGuidesConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If US Core Missing Data requirement is enabled.
 func (o ImplementationGuidesConfigurationOutput) UsCoreMissingData() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ImplementationGuidesConfiguration) *bool { return v.UsCoreMissingData }).(pulumi.BoolPtrOutput)
@@ -2123,12 +1876,6 @@ func (o ImplementationGuidesConfigurationPtrOutput) ToImplementationGuidesConfig
 
 func (o ImplementationGuidesConfigurationPtrOutput) ToImplementationGuidesConfigurationPtrOutputWithContext(ctx context.Context) ImplementationGuidesConfigurationPtrOutput {
 	return o
-}
-
-func (o ImplementationGuidesConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImplementationGuidesConfiguration] {
-	return pulumix.Output[*ImplementationGuidesConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImplementationGuidesConfigurationPtrOutput) Elem() ImplementationGuidesConfigurationOutput {
@@ -2172,12 +1919,6 @@ func (o ImplementationGuidesConfigurationResponseOutput) ToImplementationGuidesC
 	return o
 }
 
-func (o ImplementationGuidesConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ImplementationGuidesConfigurationResponse] {
-	return pulumix.Output[ImplementationGuidesConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If US Core Missing Data requirement is enabled.
 func (o ImplementationGuidesConfigurationResponseOutput) UsCoreMissingData() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ImplementationGuidesConfigurationResponse) *bool { return v.UsCoreMissingData }).(pulumi.BoolPtrOutput)
@@ -2195,12 +1936,6 @@ func (o ImplementationGuidesConfigurationResponsePtrOutput) ToImplementationGuid
 
 func (o ImplementationGuidesConfigurationResponsePtrOutput) ToImplementationGuidesConfigurationResponsePtrOutputWithContext(ctx context.Context) ImplementationGuidesConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o ImplementationGuidesConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImplementationGuidesConfigurationResponse] {
-	return pulumix.Output[*ImplementationGuidesConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImplementationGuidesConfigurationResponsePtrOutput) Elem() ImplementationGuidesConfigurationResponseOutput {
@@ -2266,12 +2001,6 @@ func (i IotEventHubIngestionEndpointConfigurationArgs) ToIotEventHubIngestionEnd
 	return pulumi.ToOutputWithContext(ctx, i).(IotEventHubIngestionEndpointConfigurationOutput)
 }
 
-func (i IotEventHubIngestionEndpointConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[IotEventHubIngestionEndpointConfiguration] {
-	return pulumix.Output[IotEventHubIngestionEndpointConfiguration]{
-		OutputState: i.ToIotEventHubIngestionEndpointConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IotEventHubIngestionEndpointConfigurationArgs) ToIotEventHubIngestionEndpointConfigurationPtrOutput() IotEventHubIngestionEndpointConfigurationPtrOutput {
 	return i.ToIotEventHubIngestionEndpointConfigurationPtrOutputWithContext(context.Background())
 }
@@ -2313,12 +2042,6 @@ func (i *iotEventHubIngestionEndpointConfigurationPtrType) ToIotEventHubIngestio
 	return pulumi.ToOutputWithContext(ctx, i).(IotEventHubIngestionEndpointConfigurationPtrOutput)
 }
 
-func (i *iotEventHubIngestionEndpointConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*IotEventHubIngestionEndpointConfiguration] {
-	return pulumix.Output[*IotEventHubIngestionEndpointConfiguration]{
-		OutputState: i.ToIotEventHubIngestionEndpointConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Event Hub ingestion endpoint configuration
 type IotEventHubIngestionEndpointConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -2342,12 +2065,6 @@ func (o IotEventHubIngestionEndpointConfigurationOutput) ToIotEventHubIngestionE
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v IotEventHubIngestionEndpointConfiguration) *IotEventHubIngestionEndpointConfiguration {
 		return &v
 	}).(IotEventHubIngestionEndpointConfigurationPtrOutput)
-}
-
-func (o IotEventHubIngestionEndpointConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[IotEventHubIngestionEndpointConfiguration] {
-	return pulumix.Output[IotEventHubIngestionEndpointConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Consumer group of the event hub to connected to.
@@ -2377,12 +2094,6 @@ func (o IotEventHubIngestionEndpointConfigurationPtrOutput) ToIotEventHubIngesti
 
 func (o IotEventHubIngestionEndpointConfigurationPtrOutput) ToIotEventHubIngestionEndpointConfigurationPtrOutputWithContext(ctx context.Context) IotEventHubIngestionEndpointConfigurationPtrOutput {
 	return o
-}
-
-func (o IotEventHubIngestionEndpointConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IotEventHubIngestionEndpointConfiguration] {
-	return pulumix.Output[*IotEventHubIngestionEndpointConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IotEventHubIngestionEndpointConfigurationPtrOutput) Elem() IotEventHubIngestionEndpointConfigurationOutput {
@@ -2450,12 +2161,6 @@ func (o IotEventHubIngestionEndpointConfigurationResponseOutput) ToIotEventHubIn
 	return o
 }
 
-func (o IotEventHubIngestionEndpointConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IotEventHubIngestionEndpointConfigurationResponse] {
-	return pulumix.Output[IotEventHubIngestionEndpointConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Consumer group of the event hub to connected to.
 func (o IotEventHubIngestionEndpointConfigurationResponseOutput) ConsumerGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IotEventHubIngestionEndpointConfigurationResponse) *string { return v.ConsumerGroup }).(pulumi.StringPtrOutput)
@@ -2485,12 +2190,6 @@ func (o IotEventHubIngestionEndpointConfigurationResponsePtrOutput) ToIotEventHu
 
 func (o IotEventHubIngestionEndpointConfigurationResponsePtrOutput) ToIotEventHubIngestionEndpointConfigurationResponsePtrOutputWithContext(ctx context.Context) IotEventHubIngestionEndpointConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o IotEventHubIngestionEndpointConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IotEventHubIngestionEndpointConfigurationResponse] {
-	return pulumix.Output[*IotEventHubIngestionEndpointConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IotEventHubIngestionEndpointConfigurationResponsePtrOutput) Elem() IotEventHubIngestionEndpointConfigurationResponseOutput {
@@ -2568,12 +2267,6 @@ func (i IotMappingPropertiesArgs) ToIotMappingPropertiesOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(IotMappingPropertiesOutput)
 }
 
-func (i IotMappingPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[IotMappingProperties] {
-	return pulumix.Output[IotMappingProperties]{
-		OutputState: i.ToIotMappingPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IotMappingPropertiesArgs) ToIotMappingPropertiesPtrOutput() IotMappingPropertiesPtrOutput {
 	return i.ToIotMappingPropertiesPtrOutputWithContext(context.Background())
 }
@@ -2615,12 +2308,6 @@ func (i *iotMappingPropertiesPtrType) ToIotMappingPropertiesPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(IotMappingPropertiesPtrOutput)
 }
 
-func (i *iotMappingPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*IotMappingProperties] {
-	return pulumix.Output[*IotMappingProperties]{
-		OutputState: i.ToIotMappingPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The mapping content.
 type IotMappingPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -2646,12 +2333,6 @@ func (o IotMappingPropertiesOutput) ToIotMappingPropertiesPtrOutputWithContext(c
 	}).(IotMappingPropertiesPtrOutput)
 }
 
-func (o IotMappingPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[IotMappingProperties] {
-	return pulumix.Output[IotMappingProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The mapping.
 func (o IotMappingPropertiesOutput) Content() pulumi.AnyOutput {
 	return o.ApplyT(func(v IotMappingProperties) interface{} { return v.Content }).(pulumi.AnyOutput)
@@ -2669,12 +2350,6 @@ func (o IotMappingPropertiesPtrOutput) ToIotMappingPropertiesPtrOutput() IotMapp
 
 func (o IotMappingPropertiesPtrOutput) ToIotMappingPropertiesPtrOutputWithContext(ctx context.Context) IotMappingPropertiesPtrOutput {
 	return o
-}
-
-func (o IotMappingPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IotMappingProperties] {
-	return pulumix.Output[*IotMappingProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IotMappingPropertiesPtrOutput) Elem() IotMappingPropertiesOutput {
@@ -2718,12 +2393,6 @@ func (o IotMappingPropertiesResponseOutput) ToIotMappingPropertiesResponseOutput
 	return o
 }
 
-func (o IotMappingPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IotMappingPropertiesResponse] {
-	return pulumix.Output[IotMappingPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The mapping.
 func (o IotMappingPropertiesResponseOutput) Content() pulumi.AnyOutput {
 	return o.ApplyT(func(v IotMappingPropertiesResponse) interface{} { return v.Content }).(pulumi.AnyOutput)
@@ -2741,12 +2410,6 @@ func (o IotMappingPropertiesResponsePtrOutput) ToIotMappingPropertiesResponsePtr
 
 func (o IotMappingPropertiesResponsePtrOutput) ToIotMappingPropertiesResponsePtrOutputWithContext(ctx context.Context) IotMappingPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o IotMappingPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IotMappingPropertiesResponse] {
-	return pulumix.Output[*IotMappingPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IotMappingPropertiesResponsePtrOutput) Elem() IotMappingPropertiesResponseOutput {
@@ -2804,12 +2467,6 @@ func (i PrivateEndpointConnectionTypeArgs) ToPrivateEndpointConnectionTypeOutput
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionTypeOutput)
 }
 
-func (i PrivateEndpointConnectionTypeArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionType] {
-	return pulumix.Output[PrivateEndpointConnectionType]{
-		OutputState: i.ToPrivateEndpointConnectionTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PrivateEndpointConnectionTypeArrayInput is an input type that accepts PrivateEndpointConnectionTypeArray and PrivateEndpointConnectionTypeArrayOutput values.
 // You can construct a concrete instance of `PrivateEndpointConnectionTypeArrayInput` via:
 //
@@ -2835,12 +2492,6 @@ func (i PrivateEndpointConnectionTypeArray) ToPrivateEndpointConnectionTypeArray
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionTypeArrayOutput)
 }
 
-func (i PrivateEndpointConnectionTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionType] {
-	return pulumix.Output[[]PrivateEndpointConnectionType]{
-		OutputState: i.ToPrivateEndpointConnectionTypeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Private Endpoint Connection resource.
 type PrivateEndpointConnectionTypeOutput struct{ *pulumi.OutputState }
 
@@ -2854,12 +2505,6 @@ func (o PrivateEndpointConnectionTypeOutput) ToPrivateEndpointConnectionTypeOutp
 
 func (o PrivateEndpointConnectionTypeOutput) ToPrivateEndpointConnectionTypeOutputWithContext(ctx context.Context) PrivateEndpointConnectionTypeOutput {
 	return o
-}
-
-func (o PrivateEndpointConnectionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionType] {
-	return pulumix.Output[PrivateEndpointConnectionType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A collection of information about the state of the connection between service consumer and provider.
@@ -2881,12 +2526,6 @@ func (o PrivateEndpointConnectionTypeArrayOutput) ToPrivateEndpointConnectionTyp
 
 func (o PrivateEndpointConnectionTypeArrayOutput) ToPrivateEndpointConnectionTypeArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionTypeArrayOutput {
 	return o
-}
-
-func (o PrivateEndpointConnectionTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionType] {
-	return pulumix.Output[[]PrivateEndpointConnectionType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateEndpointConnectionTypeArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionTypeOutput {
@@ -2924,12 +2563,6 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 
 func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseOutput {
 	return o
-}
-
-func (o PrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionResponse] {
-	return pulumix.Output[PrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -2978,12 +2611,6 @@ func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectio
 	return o
 }
 
-func (o PrivateEndpointConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionResponse] {
-	return pulumix.Output[[]PrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
@@ -3011,12 +2638,6 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
-func (o PrivateEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointResponse] {
-	return pulumix.Output[PrivateEndpointResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ARM identifier for Private Endpoint
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -3034,12 +2655,6 @@ func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() P
 
 func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
 	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointResponse] {
-	return pulumix.Output[*PrivateEndpointResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
@@ -3105,12 +2720,6 @@ func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionSta
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
 }
 
-func (i PrivateLinkServiceConnectionStateArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
-	return pulumix.Output[PrivateLinkServiceConnectionState]{
-		OutputState: i.ToPrivateLinkServiceConnectionStateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A collection of information about the state of the connection between service consumer and provider.
 type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
@@ -3124,12 +2733,6 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 
 func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
-	return pulumix.Output[PrivateLinkServiceConnectionState]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -3170,12 +2773,6 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 
 func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateResponse] {
-	return pulumix.Output[PrivateLinkServiceConnectionStateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -3232,12 +2829,6 @@ func (i ResourceVersionPolicyConfigurationArgs) ToResourceVersionPolicyConfigura
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceVersionPolicyConfigurationOutput)
 }
 
-func (i ResourceVersionPolicyConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceVersionPolicyConfiguration] {
-	return pulumix.Output[ResourceVersionPolicyConfiguration]{
-		OutputState: i.ToResourceVersionPolicyConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ResourceVersionPolicyConfigurationArgs) ToResourceVersionPolicyConfigurationPtrOutput() ResourceVersionPolicyConfigurationPtrOutput {
 	return i.ToResourceVersionPolicyConfigurationPtrOutputWithContext(context.Background())
 }
@@ -3279,12 +2870,6 @@ func (i *resourceVersionPolicyConfigurationPtrType) ToResourceVersionPolicyConfi
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceVersionPolicyConfigurationPtrOutput)
 }
 
-func (i *resourceVersionPolicyConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceVersionPolicyConfiguration] {
-	return pulumix.Output[*ResourceVersionPolicyConfiguration]{
-		OutputState: i.ToResourceVersionPolicyConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The settings for history tracking for FHIR resources.
 type ResourceVersionPolicyConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -3310,12 +2895,6 @@ func (o ResourceVersionPolicyConfigurationOutput) ToResourceVersionPolicyConfigu
 	}).(ResourceVersionPolicyConfigurationPtrOutput)
 }
 
-func (o ResourceVersionPolicyConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceVersionPolicyConfiguration] {
-	return pulumix.Output[ResourceVersionPolicyConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The default value for tracking history across all resources.
 func (o ResourceVersionPolicyConfigurationOutput) Default() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceVersionPolicyConfiguration) *string { return v.Default }).(pulumi.StringPtrOutput)
@@ -3338,12 +2917,6 @@ func (o ResourceVersionPolicyConfigurationPtrOutput) ToResourceVersionPolicyConf
 
 func (o ResourceVersionPolicyConfigurationPtrOutput) ToResourceVersionPolicyConfigurationPtrOutputWithContext(ctx context.Context) ResourceVersionPolicyConfigurationPtrOutput {
 	return o
-}
-
-func (o ResourceVersionPolicyConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceVersionPolicyConfiguration] {
-	return pulumix.Output[*ResourceVersionPolicyConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceVersionPolicyConfigurationPtrOutput) Elem() ResourceVersionPolicyConfigurationOutput {
@@ -3399,12 +2972,6 @@ func (o ResourceVersionPolicyConfigurationResponseOutput) ToResourceVersionPolic
 	return o
 }
 
-func (o ResourceVersionPolicyConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceVersionPolicyConfigurationResponse] {
-	return pulumix.Output[ResourceVersionPolicyConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The default value for tracking history across all resources.
 func (o ResourceVersionPolicyConfigurationResponseOutput) Default() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceVersionPolicyConfigurationResponse) *string { return v.Default }).(pulumi.StringPtrOutput)
@@ -3427,12 +2994,6 @@ func (o ResourceVersionPolicyConfigurationResponsePtrOutput) ToResourceVersionPo
 
 func (o ResourceVersionPolicyConfigurationResponsePtrOutput) ToResourceVersionPolicyConfigurationResponsePtrOutputWithContext(ctx context.Context) ResourceVersionPolicyConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o ResourceVersionPolicyConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceVersionPolicyConfigurationResponse] {
-	return pulumix.Output[*ResourceVersionPolicyConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceVersionPolicyConfigurationResponsePtrOutput) Elem() ResourceVersionPolicyConfigurationResponseOutput {
@@ -3500,12 +3061,6 @@ func (i ServiceAccessPolicyEntryArgs) ToServiceAccessPolicyEntryOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceAccessPolicyEntryOutput)
 }
 
-func (i ServiceAccessPolicyEntryArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceAccessPolicyEntry] {
-	return pulumix.Output[ServiceAccessPolicyEntry]{
-		OutputState: i.ToServiceAccessPolicyEntryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceAccessPolicyEntryArrayInput is an input type that accepts ServiceAccessPolicyEntryArray and ServiceAccessPolicyEntryArrayOutput values.
 // You can construct a concrete instance of `ServiceAccessPolicyEntryArrayInput` via:
 //
@@ -3531,12 +3086,6 @@ func (i ServiceAccessPolicyEntryArray) ToServiceAccessPolicyEntryArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceAccessPolicyEntryArrayOutput)
 }
 
-func (i ServiceAccessPolicyEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceAccessPolicyEntry] {
-	return pulumix.Output[[]ServiceAccessPolicyEntry]{
-		OutputState: i.ToServiceAccessPolicyEntryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An access policy entry.
 type ServiceAccessPolicyEntryOutput struct{ *pulumi.OutputState }
 
@@ -3550,12 +3099,6 @@ func (o ServiceAccessPolicyEntryOutput) ToServiceAccessPolicyEntryOutput() Servi
 
 func (o ServiceAccessPolicyEntryOutput) ToServiceAccessPolicyEntryOutputWithContext(ctx context.Context) ServiceAccessPolicyEntryOutput {
 	return o
-}
-
-func (o ServiceAccessPolicyEntryOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceAccessPolicyEntry] {
-	return pulumix.Output[ServiceAccessPolicyEntry]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
@@ -3575,12 +3118,6 @@ func (o ServiceAccessPolicyEntryArrayOutput) ToServiceAccessPolicyEntryArrayOutp
 
 func (o ServiceAccessPolicyEntryArrayOutput) ToServiceAccessPolicyEntryArrayOutputWithContext(ctx context.Context) ServiceAccessPolicyEntryArrayOutput {
 	return o
-}
-
-func (o ServiceAccessPolicyEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceAccessPolicyEntry] {
-	return pulumix.Output[[]ServiceAccessPolicyEntry]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceAccessPolicyEntryArrayOutput) Index(i pulumi.IntInput) ServiceAccessPolicyEntryOutput {
@@ -3610,12 +3147,6 @@ func (o ServiceAccessPolicyEntryResponseOutput) ToServiceAccessPolicyEntryRespon
 	return o
 }
 
-func (o ServiceAccessPolicyEntryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceAccessPolicyEntryResponse] {
-	return pulumix.Output[ServiceAccessPolicyEntryResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
 func (o ServiceAccessPolicyEntryResponseOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceAccessPolicyEntryResponse) string { return v.ObjectId }).(pulumi.StringOutput)
@@ -3633,12 +3164,6 @@ func (o ServiceAccessPolicyEntryResponseArrayOutput) ToServiceAccessPolicyEntryR
 
 func (o ServiceAccessPolicyEntryResponseArrayOutput) ToServiceAccessPolicyEntryResponseArrayOutputWithContext(ctx context.Context) ServiceAccessPolicyEntryResponseArrayOutput {
 	return o
-}
-
-func (o ServiceAccessPolicyEntryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceAccessPolicyEntryResponse] {
-	return pulumix.Output[[]ServiceAccessPolicyEntryResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceAccessPolicyEntryResponseArrayOutput) Index(i pulumi.IntInput) ServiceAccessPolicyEntryResponseOutput {
@@ -3686,12 +3211,6 @@ func (i ServiceAcrConfigurationInfoArgs) ToServiceAcrConfigurationInfoOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceAcrConfigurationInfoOutput)
 }
 
-func (i ServiceAcrConfigurationInfoArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceAcrConfigurationInfo] {
-	return pulumix.Output[ServiceAcrConfigurationInfo]{
-		OutputState: i.ToServiceAcrConfigurationInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceAcrConfigurationInfoArgs) ToServiceAcrConfigurationInfoPtrOutput() ServiceAcrConfigurationInfoPtrOutput {
 	return i.ToServiceAcrConfigurationInfoPtrOutputWithContext(context.Background())
 }
@@ -3733,12 +3252,6 @@ func (i *serviceAcrConfigurationInfoPtrType) ToServiceAcrConfigurationInfoPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceAcrConfigurationInfoPtrOutput)
 }
 
-func (i *serviceAcrConfigurationInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceAcrConfigurationInfo] {
-	return pulumix.Output[*ServiceAcrConfigurationInfo]{
-		OutputState: i.ToServiceAcrConfigurationInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Azure container registry configuration information
 type ServiceAcrConfigurationInfoOutput struct{ *pulumi.OutputState }
 
@@ -3764,12 +3277,6 @@ func (o ServiceAcrConfigurationInfoOutput) ToServiceAcrConfigurationInfoPtrOutpu
 	}).(ServiceAcrConfigurationInfoPtrOutput)
 }
 
-func (o ServiceAcrConfigurationInfoOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceAcrConfigurationInfo] {
-	return pulumix.Output[ServiceAcrConfigurationInfo]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of the ACR login servers.
 func (o ServiceAcrConfigurationInfoOutput) LoginServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceAcrConfigurationInfo) []string { return v.LoginServers }).(pulumi.StringArrayOutput)
@@ -3792,12 +3299,6 @@ func (o ServiceAcrConfigurationInfoPtrOutput) ToServiceAcrConfigurationInfoPtrOu
 
 func (o ServiceAcrConfigurationInfoPtrOutput) ToServiceAcrConfigurationInfoPtrOutputWithContext(ctx context.Context) ServiceAcrConfigurationInfoPtrOutput {
 	return o
-}
-
-func (o ServiceAcrConfigurationInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceAcrConfigurationInfo] {
-	return pulumix.Output[*ServiceAcrConfigurationInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceAcrConfigurationInfoPtrOutput) Elem() ServiceAcrConfigurationInfoOutput {
@@ -3853,12 +3354,6 @@ func (o ServiceAcrConfigurationInfoResponseOutput) ToServiceAcrConfigurationInfo
 	return o
 }
 
-func (o ServiceAcrConfigurationInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceAcrConfigurationInfoResponse] {
-	return pulumix.Output[ServiceAcrConfigurationInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of the ACR login servers.
 func (o ServiceAcrConfigurationInfoResponseOutput) LoginServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceAcrConfigurationInfoResponse) []string { return v.LoginServers }).(pulumi.StringArrayOutput)
@@ -3881,12 +3376,6 @@ func (o ServiceAcrConfigurationInfoResponsePtrOutput) ToServiceAcrConfigurationI
 
 func (o ServiceAcrConfigurationInfoResponsePtrOutput) ToServiceAcrConfigurationInfoResponsePtrOutputWithContext(ctx context.Context) ServiceAcrConfigurationInfoResponsePtrOutput {
 	return o
-}
-
-func (o ServiceAcrConfigurationInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceAcrConfigurationInfoResponse] {
-	return pulumix.Output[*ServiceAcrConfigurationInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceAcrConfigurationInfoResponsePtrOutput) Elem() ServiceAcrConfigurationInfoResponseOutput {
@@ -3962,12 +3451,6 @@ func (i ServiceAuthenticationConfigurationInfoArgs) ToServiceAuthenticationConfi
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceAuthenticationConfigurationInfoOutput)
 }
 
-func (i ServiceAuthenticationConfigurationInfoArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceAuthenticationConfigurationInfo] {
-	return pulumix.Output[ServiceAuthenticationConfigurationInfo]{
-		OutputState: i.ToServiceAuthenticationConfigurationInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceAuthenticationConfigurationInfoArgs) ToServiceAuthenticationConfigurationInfoPtrOutput() ServiceAuthenticationConfigurationInfoPtrOutput {
 	return i.ToServiceAuthenticationConfigurationInfoPtrOutputWithContext(context.Background())
 }
@@ -4009,12 +3492,6 @@ func (i *serviceAuthenticationConfigurationInfoPtrType) ToServiceAuthenticationC
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceAuthenticationConfigurationInfoPtrOutput)
 }
 
-func (i *serviceAuthenticationConfigurationInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceAuthenticationConfigurationInfo] {
-	return pulumix.Output[*ServiceAuthenticationConfigurationInfo]{
-		OutputState: i.ToServiceAuthenticationConfigurationInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Authentication configuration information
 type ServiceAuthenticationConfigurationInfoOutput struct{ *pulumi.OutputState }
 
@@ -4038,12 +3515,6 @@ func (o ServiceAuthenticationConfigurationInfoOutput) ToServiceAuthenticationCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceAuthenticationConfigurationInfo) *ServiceAuthenticationConfigurationInfo {
 		return &v
 	}).(ServiceAuthenticationConfigurationInfoPtrOutput)
-}
-
-func (o ServiceAuthenticationConfigurationInfoOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceAuthenticationConfigurationInfo] {
-	return pulumix.Output[ServiceAuthenticationConfigurationInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The audience url for the service
@@ -4073,12 +3544,6 @@ func (o ServiceAuthenticationConfigurationInfoPtrOutput) ToServiceAuthentication
 
 func (o ServiceAuthenticationConfigurationInfoPtrOutput) ToServiceAuthenticationConfigurationInfoPtrOutputWithContext(ctx context.Context) ServiceAuthenticationConfigurationInfoPtrOutput {
 	return o
-}
-
-func (o ServiceAuthenticationConfigurationInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceAuthenticationConfigurationInfo] {
-	return pulumix.Output[*ServiceAuthenticationConfigurationInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceAuthenticationConfigurationInfoPtrOutput) Elem() ServiceAuthenticationConfigurationInfoOutput {
@@ -4146,12 +3611,6 @@ func (o ServiceAuthenticationConfigurationInfoResponseOutput) ToServiceAuthentic
 	return o
 }
 
-func (o ServiceAuthenticationConfigurationInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceAuthenticationConfigurationInfoResponse] {
-	return pulumix.Output[ServiceAuthenticationConfigurationInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The audience url for the service
 func (o ServiceAuthenticationConfigurationInfoResponseOutput) Audience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceAuthenticationConfigurationInfoResponse) *string { return v.Audience }).(pulumi.StringPtrOutput)
@@ -4179,12 +3638,6 @@ func (o ServiceAuthenticationConfigurationInfoResponsePtrOutput) ToServiceAuthen
 
 func (o ServiceAuthenticationConfigurationInfoResponsePtrOutput) ToServiceAuthenticationConfigurationInfoResponsePtrOutputWithContext(ctx context.Context) ServiceAuthenticationConfigurationInfoResponsePtrOutput {
 	return o
-}
-
-func (o ServiceAuthenticationConfigurationInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceAuthenticationConfigurationInfoResponse] {
-	return pulumix.Output[*ServiceAuthenticationConfigurationInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceAuthenticationConfigurationInfoResponsePtrOutput) Elem() ServiceAuthenticationConfigurationInfoResponseOutput {
@@ -4278,12 +3731,6 @@ func (i ServiceCorsConfigurationInfoArgs) ToServiceCorsConfigurationInfoOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceCorsConfigurationInfoOutput)
 }
 
-func (i ServiceCorsConfigurationInfoArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceCorsConfigurationInfo] {
-	return pulumix.Output[ServiceCorsConfigurationInfo]{
-		OutputState: i.ToServiceCorsConfigurationInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceCorsConfigurationInfoArgs) ToServiceCorsConfigurationInfoPtrOutput() ServiceCorsConfigurationInfoPtrOutput {
 	return i.ToServiceCorsConfigurationInfoPtrOutputWithContext(context.Background())
 }
@@ -4325,12 +3772,6 @@ func (i *serviceCorsConfigurationInfoPtrType) ToServiceCorsConfigurationInfoPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceCorsConfigurationInfoPtrOutput)
 }
 
-func (i *serviceCorsConfigurationInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceCorsConfigurationInfo] {
-	return pulumix.Output[*ServiceCorsConfigurationInfo]{
-		OutputState: i.ToServiceCorsConfigurationInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The settings for the CORS configuration of the service instance.
 type ServiceCorsConfigurationInfoOutput struct{ *pulumi.OutputState }
 
@@ -4354,12 +3795,6 @@ func (o ServiceCorsConfigurationInfoOutput) ToServiceCorsConfigurationInfoPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceCorsConfigurationInfo) *ServiceCorsConfigurationInfo {
 		return &v
 	}).(ServiceCorsConfigurationInfoPtrOutput)
-}
-
-func (o ServiceCorsConfigurationInfoOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceCorsConfigurationInfo] {
-	return pulumix.Output[ServiceCorsConfigurationInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If credentials are allowed via CORS.
@@ -4399,12 +3834,6 @@ func (o ServiceCorsConfigurationInfoPtrOutput) ToServiceCorsConfigurationInfoPtr
 
 func (o ServiceCorsConfigurationInfoPtrOutput) ToServiceCorsConfigurationInfoPtrOutputWithContext(ctx context.Context) ServiceCorsConfigurationInfoPtrOutput {
 	return o
-}
-
-func (o ServiceCorsConfigurationInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceCorsConfigurationInfo] {
-	return pulumix.Output[*ServiceCorsConfigurationInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceCorsConfigurationInfoPtrOutput) Elem() ServiceCorsConfigurationInfoOutput {
@@ -4496,12 +3925,6 @@ func (o ServiceCorsConfigurationInfoResponseOutput) ToServiceCorsConfigurationIn
 	return o
 }
 
-func (o ServiceCorsConfigurationInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceCorsConfigurationInfoResponse] {
-	return pulumix.Output[ServiceCorsConfigurationInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If credentials are allowed via CORS.
 func (o ServiceCorsConfigurationInfoResponseOutput) AllowCredentials() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceCorsConfigurationInfoResponse) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
@@ -4539,12 +3962,6 @@ func (o ServiceCorsConfigurationInfoResponsePtrOutput) ToServiceCorsConfiguratio
 
 func (o ServiceCorsConfigurationInfoResponsePtrOutput) ToServiceCorsConfigurationInfoResponsePtrOutputWithContext(ctx context.Context) ServiceCorsConfigurationInfoResponsePtrOutput {
 	return o
-}
-
-func (o ServiceCorsConfigurationInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceCorsConfigurationInfoResponse] {
-	return pulumix.Output[*ServiceCorsConfigurationInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceCorsConfigurationInfoResponsePtrOutput) Elem() ServiceCorsConfigurationInfoResponseOutput {
@@ -4650,12 +4067,6 @@ func (i ServiceCosmosDbConfigurationInfoArgs) ToServiceCosmosDbConfigurationInfo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceCosmosDbConfigurationInfoOutput)
 }
 
-func (i ServiceCosmosDbConfigurationInfoArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceCosmosDbConfigurationInfo] {
-	return pulumix.Output[ServiceCosmosDbConfigurationInfo]{
-		OutputState: i.ToServiceCosmosDbConfigurationInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceCosmosDbConfigurationInfoArgs) ToServiceCosmosDbConfigurationInfoPtrOutput() ServiceCosmosDbConfigurationInfoPtrOutput {
 	return i.ToServiceCosmosDbConfigurationInfoPtrOutputWithContext(context.Background())
 }
@@ -4697,12 +4108,6 @@ func (i *serviceCosmosDbConfigurationInfoPtrType) ToServiceCosmosDbConfiguration
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceCosmosDbConfigurationInfoPtrOutput)
 }
 
-func (i *serviceCosmosDbConfigurationInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceCosmosDbConfigurationInfo] {
-	return pulumix.Output[*ServiceCosmosDbConfigurationInfo]{
-		OutputState: i.ToServiceCosmosDbConfigurationInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The settings for the Cosmos DB database backing the service.
 type ServiceCosmosDbConfigurationInfoOutput struct{ *pulumi.OutputState }
 
@@ -4726,12 +4131,6 @@ func (o ServiceCosmosDbConfigurationInfoOutput) ToServiceCosmosDbConfigurationIn
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceCosmosDbConfigurationInfo) *ServiceCosmosDbConfigurationInfo {
 		return &v
 	}).(ServiceCosmosDbConfigurationInfoPtrOutput)
-}
-
-func (o ServiceCosmosDbConfigurationInfoOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceCosmosDbConfigurationInfo] {
-	return pulumix.Output[ServiceCosmosDbConfigurationInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The multi-tenant application id used to enable CMK access for services in a data sovereign region.
@@ -4761,12 +4160,6 @@ func (o ServiceCosmosDbConfigurationInfoPtrOutput) ToServiceCosmosDbConfiguratio
 
 func (o ServiceCosmosDbConfigurationInfoPtrOutput) ToServiceCosmosDbConfigurationInfoPtrOutputWithContext(ctx context.Context) ServiceCosmosDbConfigurationInfoPtrOutput {
 	return o
-}
-
-func (o ServiceCosmosDbConfigurationInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceCosmosDbConfigurationInfo] {
-	return pulumix.Output[*ServiceCosmosDbConfigurationInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceCosmosDbConfigurationInfoPtrOutput) Elem() ServiceCosmosDbConfigurationInfoOutput {
@@ -4834,12 +4227,6 @@ func (o ServiceCosmosDbConfigurationInfoResponseOutput) ToServiceCosmosDbConfigu
 	return o
 }
 
-func (o ServiceCosmosDbConfigurationInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceCosmosDbConfigurationInfoResponse] {
-	return pulumix.Output[ServiceCosmosDbConfigurationInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The multi-tenant application id used to enable CMK access for services in a data sovereign region.
 func (o ServiceCosmosDbConfigurationInfoResponseOutput) CrossTenantCmkApplicationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCosmosDbConfigurationInfoResponse) *string { return v.CrossTenantCmkApplicationId }).(pulumi.StringPtrOutput)
@@ -4867,12 +4254,6 @@ func (o ServiceCosmosDbConfigurationInfoResponsePtrOutput) ToServiceCosmosDbConf
 
 func (o ServiceCosmosDbConfigurationInfoResponsePtrOutput) ToServiceCosmosDbConfigurationInfoResponsePtrOutputWithContext(ctx context.Context) ServiceCosmosDbConfigurationInfoResponsePtrOutput {
 	return o
-}
-
-func (o ServiceCosmosDbConfigurationInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceCosmosDbConfigurationInfoResponse] {
-	return pulumix.Output[*ServiceCosmosDbConfigurationInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceCosmosDbConfigurationInfoResponsePtrOutput) Elem() ServiceCosmosDbConfigurationInfoResponseOutput {
@@ -4950,12 +4331,6 @@ func (i ServiceExportConfigurationInfoArgs) ToServiceExportConfigurationInfoOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceExportConfigurationInfoOutput)
 }
 
-func (i ServiceExportConfigurationInfoArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceExportConfigurationInfo] {
-	return pulumix.Output[ServiceExportConfigurationInfo]{
-		OutputState: i.ToServiceExportConfigurationInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceExportConfigurationInfoArgs) ToServiceExportConfigurationInfoPtrOutput() ServiceExportConfigurationInfoPtrOutput {
 	return i.ToServiceExportConfigurationInfoPtrOutputWithContext(context.Background())
 }
@@ -4997,12 +4372,6 @@ func (i *serviceExportConfigurationInfoPtrType) ToServiceExportConfigurationInfo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceExportConfigurationInfoPtrOutput)
 }
 
-func (i *serviceExportConfigurationInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceExportConfigurationInfo] {
-	return pulumix.Output[*ServiceExportConfigurationInfo]{
-		OutputState: i.ToServiceExportConfigurationInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Export operation configuration information
 type ServiceExportConfigurationInfoOutput struct{ *pulumi.OutputState }
 
@@ -5028,12 +4397,6 @@ func (o ServiceExportConfigurationInfoOutput) ToServiceExportConfigurationInfoPt
 	}).(ServiceExportConfigurationInfoPtrOutput)
 }
 
-func (o ServiceExportConfigurationInfoOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceExportConfigurationInfo] {
-	return pulumix.Output[ServiceExportConfigurationInfo]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the default export storage account.
 func (o ServiceExportConfigurationInfoOutput) StorageAccountName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceExportConfigurationInfo) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
@@ -5051,12 +4414,6 @@ func (o ServiceExportConfigurationInfoPtrOutput) ToServiceExportConfigurationInf
 
 func (o ServiceExportConfigurationInfoPtrOutput) ToServiceExportConfigurationInfoPtrOutputWithContext(ctx context.Context) ServiceExportConfigurationInfoPtrOutput {
 	return o
-}
-
-func (o ServiceExportConfigurationInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceExportConfigurationInfo] {
-	return pulumix.Output[*ServiceExportConfigurationInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceExportConfigurationInfoPtrOutput) Elem() ServiceExportConfigurationInfoOutput {
@@ -5100,12 +4457,6 @@ func (o ServiceExportConfigurationInfoResponseOutput) ToServiceExportConfigurati
 	return o
 }
 
-func (o ServiceExportConfigurationInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceExportConfigurationInfoResponse] {
-	return pulumix.Output[ServiceExportConfigurationInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the default export storage account.
 func (o ServiceExportConfigurationInfoResponseOutput) StorageAccountName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceExportConfigurationInfoResponse) *string { return v.StorageAccountName }).(pulumi.StringPtrOutput)
@@ -5123,12 +4474,6 @@ func (o ServiceExportConfigurationInfoResponsePtrOutput) ToServiceExportConfigur
 
 func (o ServiceExportConfigurationInfoResponsePtrOutput) ToServiceExportConfigurationInfoResponsePtrOutputWithContext(ctx context.Context) ServiceExportConfigurationInfoResponsePtrOutput {
 	return o
-}
-
-func (o ServiceExportConfigurationInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceExportConfigurationInfoResponse] {
-	return pulumix.Output[*ServiceExportConfigurationInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceExportConfigurationInfoResponsePtrOutput) Elem() ServiceExportConfigurationInfoResponseOutput {
@@ -5194,12 +4539,6 @@ func (i ServiceImportConfigurationInfoArgs) ToServiceImportConfigurationInfoOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceImportConfigurationInfoOutput)
 }
 
-func (i ServiceImportConfigurationInfoArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceImportConfigurationInfo] {
-	return pulumix.Output[ServiceImportConfigurationInfo]{
-		OutputState: i.ToServiceImportConfigurationInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceImportConfigurationInfoArgs) ToServiceImportConfigurationInfoPtrOutput() ServiceImportConfigurationInfoPtrOutput {
 	return i.ToServiceImportConfigurationInfoPtrOutputWithContext(context.Background())
 }
@@ -5241,12 +4580,6 @@ func (i *serviceImportConfigurationInfoPtrType) ToServiceImportConfigurationInfo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceImportConfigurationInfoPtrOutput)
 }
 
-func (i *serviceImportConfigurationInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceImportConfigurationInfo] {
-	return pulumix.Output[*ServiceImportConfigurationInfo]{
-		OutputState: i.ToServiceImportConfigurationInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Import operation configuration information
 type ServiceImportConfigurationInfoOutput struct{ *pulumi.OutputState }
 
@@ -5270,12 +4603,6 @@ func (o ServiceImportConfigurationInfoOutput) ToServiceImportConfigurationInfoPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceImportConfigurationInfo) *ServiceImportConfigurationInfo {
 		return &v
 	}).(ServiceImportConfigurationInfoPtrOutput)
-}
-
-func (o ServiceImportConfigurationInfoOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceImportConfigurationInfo] {
-	return pulumix.Output[ServiceImportConfigurationInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If the import operation is enabled.
@@ -5305,12 +4632,6 @@ func (o ServiceImportConfigurationInfoPtrOutput) ToServiceImportConfigurationInf
 
 func (o ServiceImportConfigurationInfoPtrOutput) ToServiceImportConfigurationInfoPtrOutputWithContext(ctx context.Context) ServiceImportConfigurationInfoPtrOutput {
 	return o
-}
-
-func (o ServiceImportConfigurationInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceImportConfigurationInfo] {
-	return pulumix.Output[*ServiceImportConfigurationInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceImportConfigurationInfoPtrOutput) Elem() ServiceImportConfigurationInfoOutput {
@@ -5378,12 +4699,6 @@ func (o ServiceImportConfigurationInfoResponseOutput) ToServiceImportConfigurati
 	return o
 }
 
-func (o ServiceImportConfigurationInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceImportConfigurationInfoResponse] {
-	return pulumix.Output[ServiceImportConfigurationInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If the import operation is enabled.
 func (o ServiceImportConfigurationInfoResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceImportConfigurationInfoResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -5411,12 +4726,6 @@ func (o ServiceImportConfigurationInfoResponsePtrOutput) ToServiceImportConfigur
 
 func (o ServiceImportConfigurationInfoResponsePtrOutput) ToServiceImportConfigurationInfoResponsePtrOutputWithContext(ctx context.Context) ServiceImportConfigurationInfoResponsePtrOutput {
 	return o
-}
-
-func (o ServiceImportConfigurationInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceImportConfigurationInfoResponse] {
-	return pulumix.Output[*ServiceImportConfigurationInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceImportConfigurationInfoResponsePtrOutput) Elem() ServiceImportConfigurationInfoResponseOutput {
@@ -5498,12 +4807,6 @@ func (i ServiceManagedIdentityIdentityArgs) ToServiceManagedIdentityIdentityOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceManagedIdentityIdentityOutput)
 }
 
-func (i ServiceManagedIdentityIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceManagedIdentityIdentity] {
-	return pulumix.Output[ServiceManagedIdentityIdentity]{
-		OutputState: i.ToServiceManagedIdentityIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceManagedIdentityIdentityArgs) ToServiceManagedIdentityIdentityPtrOutput() ServiceManagedIdentityIdentityPtrOutput {
 	return i.ToServiceManagedIdentityIdentityPtrOutputWithContext(context.Background())
 }
@@ -5545,12 +4848,6 @@ func (i *serviceManagedIdentityIdentityPtrType) ToServiceManagedIdentityIdentity
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceManagedIdentityIdentityPtrOutput)
 }
 
-func (i *serviceManagedIdentityIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceManagedIdentityIdentity] {
-	return pulumix.Output[*ServiceManagedIdentityIdentity]{
-		OutputState: i.ToServiceManagedIdentityIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Setting indicating whether the service has a managed identity associated with it.
 type ServiceManagedIdentityIdentityOutput struct{ *pulumi.OutputState }
 
@@ -5576,12 +4873,6 @@ func (o ServiceManagedIdentityIdentityOutput) ToServiceManagedIdentityIdentityPt
 	}).(ServiceManagedIdentityIdentityPtrOutput)
 }
 
-func (o ServiceManagedIdentityIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceManagedIdentityIdentity] {
-	return pulumix.Output[ServiceManagedIdentityIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Type of identity being specified, currently SystemAssigned and None are allowed.
 func (o ServiceManagedIdentityIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceManagedIdentityIdentity) string { return v.Type }).(pulumi.StringOutput)
@@ -5604,12 +4895,6 @@ func (o ServiceManagedIdentityIdentityPtrOutput) ToServiceManagedIdentityIdentit
 
 func (o ServiceManagedIdentityIdentityPtrOutput) ToServiceManagedIdentityIdentityPtrOutputWithContext(ctx context.Context) ServiceManagedIdentityIdentityPtrOutput {
 	return o
-}
-
-func (o ServiceManagedIdentityIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceManagedIdentityIdentity] {
-	return pulumix.Output[*ServiceManagedIdentityIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceManagedIdentityIdentityPtrOutput) Elem() ServiceManagedIdentityIdentityOutput {
@@ -5669,12 +4954,6 @@ func (o ServiceManagedIdentityResponseIdentityOutput) ToServiceManagedIdentityRe
 	return o
 }
 
-func (o ServiceManagedIdentityResponseIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceManagedIdentityResponseIdentity] {
-	return pulumix.Output[ServiceManagedIdentityResponseIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
 func (o ServiceManagedIdentityResponseIdentityOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceManagedIdentityResponseIdentity) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -5709,12 +4988,6 @@ func (o ServiceManagedIdentityResponseIdentityPtrOutput) ToServiceManagedIdentit
 
 func (o ServiceManagedIdentityResponseIdentityPtrOutput) ToServiceManagedIdentityResponseIdentityPtrOutputWithContext(ctx context.Context) ServiceManagedIdentityResponseIdentityPtrOutput {
 	return o
-}
-
-func (o ServiceManagedIdentityResponseIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceManagedIdentityResponseIdentity] {
-	return pulumix.Output[*ServiceManagedIdentityResponseIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceManagedIdentityResponseIdentityPtrOutput) Elem() ServiceManagedIdentityResponseIdentityOutput {
@@ -5810,12 +5083,6 @@ func (i ServiceOciArtifactEntryArgs) ToServiceOciArtifactEntryOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceOciArtifactEntryOutput)
 }
 
-func (i ServiceOciArtifactEntryArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceOciArtifactEntry] {
-	return pulumix.Output[ServiceOciArtifactEntry]{
-		OutputState: i.ToServiceOciArtifactEntryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServiceOciArtifactEntryArrayInput is an input type that accepts ServiceOciArtifactEntryArray and ServiceOciArtifactEntryArrayOutput values.
 // You can construct a concrete instance of `ServiceOciArtifactEntryArrayInput` via:
 //
@@ -5841,12 +5108,6 @@ func (i ServiceOciArtifactEntryArray) ToServiceOciArtifactEntryArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceOciArtifactEntryArrayOutput)
 }
 
-func (i ServiceOciArtifactEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]ServiceOciArtifactEntry] {
-	return pulumix.Output[[]ServiceOciArtifactEntry]{
-		OutputState: i.ToServiceOciArtifactEntryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An Open Container Initiative (OCI) artifact.
 type ServiceOciArtifactEntryOutput struct{ *pulumi.OutputState }
 
@@ -5860,12 +5121,6 @@ func (o ServiceOciArtifactEntryOutput) ToServiceOciArtifactEntryOutput() Service
 
 func (o ServiceOciArtifactEntryOutput) ToServiceOciArtifactEntryOutputWithContext(ctx context.Context) ServiceOciArtifactEntryOutput {
 	return o
-}
-
-func (o ServiceOciArtifactEntryOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceOciArtifactEntry] {
-	return pulumix.Output[ServiceOciArtifactEntry]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The artifact digest.
@@ -5895,12 +5150,6 @@ func (o ServiceOciArtifactEntryArrayOutput) ToServiceOciArtifactEntryArrayOutput
 
 func (o ServiceOciArtifactEntryArrayOutput) ToServiceOciArtifactEntryArrayOutputWithContext(ctx context.Context) ServiceOciArtifactEntryArrayOutput {
 	return o
-}
-
-func (o ServiceOciArtifactEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceOciArtifactEntry] {
-	return pulumix.Output[[]ServiceOciArtifactEntry]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceOciArtifactEntryArrayOutput) Index(i pulumi.IntInput) ServiceOciArtifactEntryOutput {
@@ -5934,12 +5183,6 @@ func (o ServiceOciArtifactEntryResponseOutput) ToServiceOciArtifactEntryResponse
 	return o
 }
 
-func (o ServiceOciArtifactEntryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceOciArtifactEntryResponse] {
-	return pulumix.Output[ServiceOciArtifactEntryResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The artifact digest.
 func (o ServiceOciArtifactEntryResponseOutput) Digest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceOciArtifactEntryResponse) *string { return v.Digest }).(pulumi.StringPtrOutput)
@@ -5967,12 +5210,6 @@ func (o ServiceOciArtifactEntryResponseArrayOutput) ToServiceOciArtifactEntryRes
 
 func (o ServiceOciArtifactEntryResponseArrayOutput) ToServiceOciArtifactEntryResponseArrayOutputWithContext(ctx context.Context) ServiceOciArtifactEntryResponseArrayOutput {
 	return o
-}
-
-func (o ServiceOciArtifactEntryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceOciArtifactEntryResponse] {
-	return pulumix.Output[[]ServiceOciArtifactEntryResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceOciArtifactEntryResponseArrayOutput) Index(i pulumi.IntInput) ServiceOciArtifactEntryResponseOutput {
@@ -6048,12 +5285,6 @@ func (i ServicesPropertiesArgs) ToServicesPropertiesOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ServicesPropertiesOutput)
 }
 
-func (i ServicesPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ServicesProperties] {
-	return pulumix.Output[ServicesProperties]{
-		OutputState: i.ToServicesPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicesPropertiesArgs) ToServicesPropertiesPtrOutput() ServicesPropertiesPtrOutput {
 	return i.ToServicesPropertiesPtrOutputWithContext(context.Background())
 }
@@ -6095,12 +5326,6 @@ func (i *servicesPropertiesPtrType) ToServicesPropertiesPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ServicesPropertiesPtrOutput)
 }
 
-func (i *servicesPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicesProperties] {
-	return pulumix.Output[*ServicesProperties]{
-		OutputState: i.ToServicesPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties of a service instance.
 type ServicesPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -6124,12 +5349,6 @@ func (o ServicesPropertiesOutput) ToServicesPropertiesPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicesProperties) *ServicesProperties {
 		return &v
 	}).(ServicesPropertiesPtrOutput)
-}
-
-func (o ServicesPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ServicesProperties] {
-	return pulumix.Output[ServicesProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The access policies of the service instance.
@@ -6191,12 +5410,6 @@ func (o ServicesPropertiesPtrOutput) ToServicesPropertiesPtrOutput() ServicesPro
 
 func (o ServicesPropertiesPtrOutput) ToServicesPropertiesPtrOutputWithContext(ctx context.Context) ServicesPropertiesPtrOutput {
 	return o
-}
-
-func (o ServicesPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicesProperties] {
-	return pulumix.Output[*ServicesProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicesPropertiesPtrOutput) Elem() ServicesPropertiesOutput {
@@ -6338,12 +5551,6 @@ func (o ServicesPropertiesResponseOutput) ToServicesPropertiesResponseOutputWith
 	return o
 }
 
-func (o ServicesPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServicesPropertiesResponse] {
-	return pulumix.Output[ServicesPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The access policies of the service instance.
 func (o ServicesPropertiesResponseOutput) AccessPolicies() ServiceAccessPolicyEntryResponseArrayOutput {
 	return o.ApplyT(func(v ServicesPropertiesResponse) []ServiceAccessPolicyEntryResponse { return v.AccessPolicies }).(ServiceAccessPolicyEntryResponseArrayOutput)
@@ -6439,12 +5646,6 @@ func (i ServicesResourceIdentityArgs) ToServicesResourceIdentityOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ServicesResourceIdentityOutput)
 }
 
-func (i ServicesResourceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ServicesResourceIdentity] {
-	return pulumix.Output[ServicesResourceIdentity]{
-		OutputState: i.ToServicesResourceIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicesResourceIdentityArgs) ToServicesResourceIdentityPtrOutput() ServicesResourceIdentityPtrOutput {
 	return i.ToServicesResourceIdentityPtrOutputWithContext(context.Background())
 }
@@ -6486,12 +5687,6 @@ func (i *servicesResourceIdentityPtrType) ToServicesResourceIdentityPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ServicesResourceIdentityPtrOutput)
 }
 
-func (i *servicesResourceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicesResourceIdentity] {
-	return pulumix.Output[*ServicesResourceIdentity]{
-		OutputState: i.ToServicesResourceIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Setting indicating whether the service has a managed identity associated with it.
 type ServicesResourceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -6517,12 +5712,6 @@ func (o ServicesResourceIdentityOutput) ToServicesResourceIdentityPtrOutputWithC
 	}).(ServicesResourceIdentityPtrOutput)
 }
 
-func (o ServicesResourceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ServicesResourceIdentity] {
-	return pulumix.Output[ServicesResourceIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Type of identity being specified, currently SystemAssigned and None are allowed.
 func (o ServicesResourceIdentityOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicesResourceIdentity) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -6540,12 +5729,6 @@ func (o ServicesResourceIdentityPtrOutput) ToServicesResourceIdentityPtrOutput()
 
 func (o ServicesResourceIdentityPtrOutput) ToServicesResourceIdentityPtrOutputWithContext(ctx context.Context) ServicesResourceIdentityPtrOutput {
 	return o
-}
-
-func (o ServicesResourceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicesResourceIdentity] {
-	return pulumix.Output[*ServicesResourceIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicesResourceIdentityPtrOutput) Elem() ServicesResourceIdentityOutput {
@@ -6593,12 +5776,6 @@ func (o ServicesResourceResponseIdentityOutput) ToServicesResourceResponseIdenti
 	return o
 }
 
-func (o ServicesResourceResponseIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ServicesResourceResponseIdentity] {
-	return pulumix.Output[ServicesResourceResponseIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The principal ID of the resource identity.
 func (o ServicesResourceResponseIdentityOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ServicesResourceResponseIdentity) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -6626,12 +5803,6 @@ func (o ServicesResourceResponseIdentityPtrOutput) ToServicesResourceResponseIde
 
 func (o ServicesResourceResponseIdentityPtrOutput) ToServicesResourceResponseIdentityPtrOutputWithContext(ctx context.Context) ServicesResourceResponseIdentityPtrOutput {
 	return o
-}
-
-func (o ServicesResourceResponseIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicesResourceResponseIdentity] {
-	return pulumix.Output[*ServicesResourceResponseIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicesResourceResponseIdentityPtrOutput) Elem() ServicesResourceResponseIdentityOutput {
@@ -6705,12 +5876,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timestamp of resource creation (UTC).
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
@@ -6764,12 +5929,6 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
-func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
-	return pulumix.Output[UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The client ID of the assigned identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -6792,12 +5951,6 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
-	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
@@ -6829,12 +5982,6 @@ func (o WorkspaceResponsePropertiesOutput) ToWorkspaceResponsePropertiesOutput()
 
 func (o WorkspaceResponsePropertiesOutput) ToWorkspaceResponsePropertiesOutputWithContext(ctx context.Context) WorkspaceResponsePropertiesOutput {
 	return o
-}
-
-func (o WorkspaceResponsePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[WorkspaceResponseProperties] {
-	return pulumix.Output[WorkspaceResponseProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of private endpoint connections that are set up for this resource.

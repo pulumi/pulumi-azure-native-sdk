@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified Azure Traffic Collector in a specified resource group
@@ -91,12 +90,6 @@ func (o LookupAzureTrafficCollectorResultOutput) ToLookupAzureTrafficCollectorRe
 
 func (o LookupAzureTrafficCollectorResultOutput) ToLookupAzureTrafficCollectorResultOutputWithContext(ctx context.Context) LookupAzureTrafficCollectorResultOutput {
 	return o
-}
-
-func (o LookupAzureTrafficCollectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAzureTrafficCollectorResult] {
-	return pulumix.Output[LookupAzureTrafficCollectorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Collector Policies for Azure Traffic Collector.

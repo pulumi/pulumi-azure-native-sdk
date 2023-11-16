@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i CertificatePropertiesArgs) ToCertificatePropertiesOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(CertificatePropertiesOutput)
 }
 
-func (i CertificatePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[CertificateProperties] {
-	return pulumix.Output[CertificateProperties]{
-		OutputState: i.ToCertificatePropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CertificatePropertiesArgs) ToCertificatePropertiesPtrOutput() CertificatePropertiesPtrOutput {
 	return i.ToCertificatePropertiesPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *certificatePropertiesPtrType) ToCertificatePropertiesPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(CertificatePropertiesPtrOutput)
 }
 
-func (i *certificatePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*CertificateProperties] {
-	return pulumix.Output[*CertificateProperties]{
-		OutputState: i.ToCertificatePropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The description of an X509 CA Certificate.
 type CertificatePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o CertificatePropertiesOutput) ToCertificatePropertiesPtrOutputWithContext
 	}).(CertificatePropertiesPtrOutput)
 }
 
-func (o CertificatePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateProperties] {
-	return pulumix.Output[CertificateProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // base-64 representation of X509 certificate .cer file or just .pem file content.
 func (o CertificatePropertiesOutput) Certificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateProperties) *string { return v.Certificate }).(pulumi.StringPtrOutput)
@@ -159,12 +140,6 @@ func (o CertificatePropertiesPtrOutput) ToCertificatePropertiesPtrOutput() Certi
 
 func (o CertificatePropertiesPtrOutput) ToCertificatePropertiesPtrOutputWithContext(ctx context.Context) CertificatePropertiesPtrOutput {
 	return o
-}
-
-func (o CertificatePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateProperties] {
-	return pulumix.Output[*CertificateProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertificatePropertiesPtrOutput) Elem() CertificatePropertiesOutput {
@@ -228,12 +203,6 @@ func (o CertificatePropertiesResponseOutput) ToCertificatePropertiesResponseOutp
 
 func (o CertificatePropertiesResponseOutput) ToCertificatePropertiesResponseOutputWithContext(ctx context.Context) CertificatePropertiesResponseOutput {
 	return o
-}
-
-func (o CertificatePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertificatePropertiesResponse] {
-	return pulumix.Output[CertificatePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // base-64 representation of X509 certificate .cer file or just .pem file content.
@@ -344,12 +313,6 @@ func (i IotDpsPropertiesDescriptionArgs) ToIotDpsPropertiesDescriptionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(IotDpsPropertiesDescriptionOutput)
 }
 
-func (i IotDpsPropertiesDescriptionArgs) ToOutput(ctx context.Context) pulumix.Output[IotDpsPropertiesDescription] {
-	return pulumix.Output[IotDpsPropertiesDescription]{
-		OutputState: i.ToIotDpsPropertiesDescriptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // the service specific properties of a provisioning service, including keys, linked iot hubs, current state, and system generated properties such as hostname and idScope
 type IotDpsPropertiesDescriptionOutput struct{ *pulumi.OutputState }
 
@@ -363,12 +326,6 @@ func (o IotDpsPropertiesDescriptionOutput) ToIotDpsPropertiesDescriptionOutput()
 
 func (o IotDpsPropertiesDescriptionOutput) ToIotDpsPropertiesDescriptionOutputWithContext(ctx context.Context) IotDpsPropertiesDescriptionOutput {
 	return o
-}
-
-func (o IotDpsPropertiesDescriptionOutput) ToOutput(ctx context.Context) pulumix.Output[IotDpsPropertiesDescription] {
-	return pulumix.Output[IotDpsPropertiesDescription]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allocation policy to be used by this provisioning service.
@@ -468,12 +425,6 @@ func (o IotDpsPropertiesDescriptionResponseOutput) ToIotDpsPropertiesDescription
 
 func (o IotDpsPropertiesDescriptionResponseOutput) ToIotDpsPropertiesDescriptionResponseOutputWithContext(ctx context.Context) IotDpsPropertiesDescriptionResponseOutput {
 	return o
-}
-
-func (o IotDpsPropertiesDescriptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IotDpsPropertiesDescriptionResponse] {
-	return pulumix.Output[IotDpsPropertiesDescriptionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allocation policy to be used by this provisioning service.
@@ -585,12 +536,6 @@ func (i IotDpsSkuInfoArgs) ToIotDpsSkuInfoOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(IotDpsSkuInfoOutput)
 }
 
-func (i IotDpsSkuInfoArgs) ToOutput(ctx context.Context) pulumix.Output[IotDpsSkuInfo] {
-	return pulumix.Output[IotDpsSkuInfo]{
-		OutputState: i.ToIotDpsSkuInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 // List of possible provisioning service SKUs.
 type IotDpsSkuInfoOutput struct{ *pulumi.OutputState }
 
@@ -604,12 +549,6 @@ func (o IotDpsSkuInfoOutput) ToIotDpsSkuInfoOutput() IotDpsSkuInfoOutput {
 
 func (o IotDpsSkuInfoOutput) ToIotDpsSkuInfoOutputWithContext(ctx context.Context) IotDpsSkuInfoOutput {
 	return o
-}
-
-func (o IotDpsSkuInfoOutput) ToOutput(ctx context.Context) pulumix.Output[IotDpsSkuInfo] {
-	return pulumix.Output[IotDpsSkuInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of units to provision
@@ -645,12 +584,6 @@ func (o IotDpsSkuInfoResponseOutput) ToIotDpsSkuInfoResponseOutput() IotDpsSkuIn
 
 func (o IotDpsSkuInfoResponseOutput) ToIotDpsSkuInfoResponseOutputWithContext(ctx context.Context) IotDpsSkuInfoResponseOutput {
 	return o
-}
-
-func (o IotDpsSkuInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IotDpsSkuInfoResponse] {
-	return pulumix.Output[IotDpsSkuInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of units to provision
@@ -715,12 +648,6 @@ func (i IotHubDefinitionDescriptionArgs) ToIotHubDefinitionDescriptionOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(IotHubDefinitionDescriptionOutput)
 }
 
-func (i IotHubDefinitionDescriptionArgs) ToOutput(ctx context.Context) pulumix.Output[IotHubDefinitionDescription] {
-	return pulumix.Output[IotHubDefinitionDescription]{
-		OutputState: i.ToIotHubDefinitionDescriptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IotHubDefinitionDescriptionArrayInput is an input type that accepts IotHubDefinitionDescriptionArray and IotHubDefinitionDescriptionArrayOutput values.
 // You can construct a concrete instance of `IotHubDefinitionDescriptionArrayInput` via:
 //
@@ -746,12 +673,6 @@ func (i IotHubDefinitionDescriptionArray) ToIotHubDefinitionDescriptionArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(IotHubDefinitionDescriptionArrayOutput)
 }
 
-func (i IotHubDefinitionDescriptionArray) ToOutput(ctx context.Context) pulumix.Output[[]IotHubDefinitionDescription] {
-	return pulumix.Output[[]IotHubDefinitionDescription]{
-		OutputState: i.ToIotHubDefinitionDescriptionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Description of the IoT hub.
 type IotHubDefinitionDescriptionOutput struct{ *pulumi.OutputState }
 
@@ -765,12 +686,6 @@ func (o IotHubDefinitionDescriptionOutput) ToIotHubDefinitionDescriptionOutput()
 
 func (o IotHubDefinitionDescriptionOutput) ToIotHubDefinitionDescriptionOutputWithContext(ctx context.Context) IotHubDefinitionDescriptionOutput {
 	return o
-}
-
-func (o IotHubDefinitionDescriptionOutput) ToOutput(ctx context.Context) pulumix.Output[IotHubDefinitionDescription] {
-	return pulumix.Output[IotHubDefinitionDescription]{
-		OutputState: o.OutputState,
-	}
 }
 
 // weight to apply for a given iot h.
@@ -807,12 +722,6 @@ func (o IotHubDefinitionDescriptionArrayOutput) ToIotHubDefinitionDescriptionArr
 	return o
 }
 
-func (o IotHubDefinitionDescriptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IotHubDefinitionDescription] {
-	return pulumix.Output[[]IotHubDefinitionDescription]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IotHubDefinitionDescriptionArrayOutput) Index(i pulumi.IntInput) IotHubDefinitionDescriptionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IotHubDefinitionDescription {
 		return vs[0].([]IotHubDefinitionDescription)[vs[1].(int)]
@@ -846,12 +755,6 @@ func (o IotHubDefinitionDescriptionResponseOutput) ToIotHubDefinitionDescription
 
 func (o IotHubDefinitionDescriptionResponseOutput) ToIotHubDefinitionDescriptionResponseOutputWithContext(ctx context.Context) IotHubDefinitionDescriptionResponseOutput {
 	return o
-}
-
-func (o IotHubDefinitionDescriptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IotHubDefinitionDescriptionResponse] {
-	return pulumix.Output[IotHubDefinitionDescriptionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // weight to apply for a given iot h.
@@ -891,12 +794,6 @@ func (o IotHubDefinitionDescriptionResponseArrayOutput) ToIotHubDefinitionDescri
 
 func (o IotHubDefinitionDescriptionResponseArrayOutput) ToIotHubDefinitionDescriptionResponseArrayOutputWithContext(ctx context.Context) IotHubDefinitionDescriptionResponseArrayOutput {
 	return o
-}
-
-func (o IotHubDefinitionDescriptionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IotHubDefinitionDescriptionResponse] {
-	return pulumix.Output[[]IotHubDefinitionDescriptionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IotHubDefinitionDescriptionResponseArrayOutput) Index(i pulumi.IntInput) IotHubDefinitionDescriptionResponseOutput {
@@ -940,12 +837,6 @@ func (i PrivateEndpointConnectionArgs) ToPrivateEndpointConnectionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionOutput)
 }
 
-func (i PrivateEndpointConnectionArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnection] {
-	return pulumix.Output[PrivateEndpointConnection]{
-		OutputState: i.ToPrivateEndpointConnectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PrivateEndpointConnectionArrayInput is an input type that accepts PrivateEndpointConnectionArray and PrivateEndpointConnectionArrayOutput values.
 // You can construct a concrete instance of `PrivateEndpointConnectionArrayInput` via:
 //
@@ -971,12 +862,6 @@ func (i PrivateEndpointConnectionArray) ToPrivateEndpointConnectionArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionArrayOutput)
 }
 
-func (i PrivateEndpointConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnection] {
-	return pulumix.Output[[]PrivateEndpointConnection]{
-		OutputState: i.ToPrivateEndpointConnectionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The private endpoint connection of a provisioning service
 type PrivateEndpointConnectionOutput struct{ *pulumi.OutputState }
 
@@ -990,12 +875,6 @@ func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutput() Pri
 
 func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutputWithContext(ctx context.Context) PrivateEndpointConnectionOutput {
 	return o
-}
-
-func (o PrivateEndpointConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnection] {
-	return pulumix.Output[PrivateEndpointConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The properties of a private endpoint connection
@@ -1015,12 +894,6 @@ func (o PrivateEndpointConnectionArrayOutput) ToPrivateEndpointConnectionArrayOu
 
 func (o PrivateEndpointConnectionArrayOutput) ToPrivateEndpointConnectionArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionArrayOutput {
 	return o
-}
-
-func (o PrivateEndpointConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnection] {
-	return pulumix.Output[[]PrivateEndpointConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateEndpointConnectionArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionOutput {
@@ -1064,12 +937,6 @@ func (i PrivateEndpointConnectionPropertiesArgs) ToPrivateEndpointConnectionProp
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionPropertiesOutput)
 }
 
-func (i PrivateEndpointConnectionPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionProperties] {
-	return pulumix.Output[PrivateEndpointConnectionProperties]{
-		OutputState: i.ToPrivateEndpointConnectionPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties of a private endpoint connection
 type PrivateEndpointConnectionPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1083,12 +950,6 @@ func (o PrivateEndpointConnectionPropertiesOutput) ToPrivateEndpointConnectionPr
 
 func (o PrivateEndpointConnectionPropertiesOutput) ToPrivateEndpointConnectionPropertiesOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesOutput {
 	return o
-}
-
-func (o PrivateEndpointConnectionPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionProperties] {
-	return pulumix.Output[PrivateEndpointConnectionProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The current state of a private endpoint connection
@@ -1119,12 +980,6 @@ func (o PrivateEndpointConnectionPropertiesResponseOutput) ToPrivateEndpointConn
 
 func (o PrivateEndpointConnectionPropertiesResponseOutput) ToPrivateEndpointConnectionPropertiesResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionPropertiesResponseOutput {
 	return o
-}
-
-func (o PrivateEndpointConnectionPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionPropertiesResponse] {
-	return pulumix.Output[PrivateEndpointConnectionPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The private endpoint property of a private endpoint connection
@@ -1168,12 +1023,6 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 	return o
 }
 
-func (o PrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionResponse] {
-	return pulumix.Output[PrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resource identifier.
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -1215,12 +1064,6 @@ func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectio
 	return o
 }
 
-func (o PrivateEndpointConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionResponse] {
-	return pulumix.Output[[]PrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
@@ -1248,12 +1091,6 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
-func (o PrivateEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointResponse] {
-	return pulumix.Output[PrivateEndpointResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resource identifier.
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -1271,12 +1108,6 @@ func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() P
 
 func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
 	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointResponse] {
-	return pulumix.Output[*PrivateEndpointResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
@@ -1342,12 +1173,6 @@ func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionSta
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
 }
 
-func (i PrivateLinkServiceConnectionStateArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
-	return pulumix.Output[PrivateLinkServiceConnectionState]{
-		OutputState: i.ToPrivateLinkServiceConnectionStateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The current state of a private endpoint connection
 type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
@@ -1361,12 +1186,6 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 
 func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
-	return pulumix.Output[PrivateLinkServiceConnectionState]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Actions required for a private endpoint connection
@@ -1407,12 +1226,6 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 
 func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateResponse] {
-	return pulumix.Output[PrivateLinkServiceConnectionStateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Actions required for a private endpoint connection
@@ -1477,12 +1290,6 @@ func (i SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionArgs) ToSha
 	return pulumi.ToOutputWithContext(ctx, i).(SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionOutput)
 }
 
-func (i SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionArgs) ToOutput(ctx context.Context) pulumix.Output[SharedAccessSignatureAuthorizationRuleAccessRightsDescription] {
-	return pulumix.Output[SharedAccessSignatureAuthorizationRuleAccessRightsDescription]{
-		OutputState: i.ToSharedAccessSignatureAuthorizationRuleAccessRightsDescriptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionArrayInput is an input type that accepts SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionArray and SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionArrayOutput values.
 // You can construct a concrete instance of `SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionArrayInput` via:
 //
@@ -1508,12 +1315,6 @@ func (i SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionArray) ToSh
 	return pulumi.ToOutputWithContext(ctx, i).(SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionArrayOutput)
 }
 
-func (i SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionArray) ToOutput(ctx context.Context) pulumix.Output[[]SharedAccessSignatureAuthorizationRuleAccessRightsDescription] {
-	return pulumix.Output[[]SharedAccessSignatureAuthorizationRuleAccessRightsDescription]{
-		OutputState: i.ToSharedAccessSignatureAuthorizationRuleAccessRightsDescriptionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Description of the shared access key.
 type SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionOutput struct{ *pulumi.OutputState }
 
@@ -1527,12 +1328,6 @@ func (o SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionOutput) ToS
 
 func (o SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionOutput) ToSharedAccessSignatureAuthorizationRuleAccessRightsDescriptionOutputWithContext(ctx context.Context) SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionOutput {
 	return o
-}
-
-func (o SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionOutput) ToOutput(ctx context.Context) pulumix.Output[SharedAccessSignatureAuthorizationRuleAccessRightsDescription] {
-	return pulumix.Output[SharedAccessSignatureAuthorizationRuleAccessRightsDescription]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the key.
@@ -1569,12 +1364,6 @@ func (o SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionArrayOutput
 	return o
 }
 
-func (o SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SharedAccessSignatureAuthorizationRuleAccessRightsDescription] {
-	return pulumix.Output[[]SharedAccessSignatureAuthorizationRuleAccessRightsDescription]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionArrayOutput) Index(i pulumi.IntInput) SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SharedAccessSignatureAuthorizationRuleAccessRightsDescription {
 		return vs[0].([]SharedAccessSignatureAuthorizationRuleAccessRightsDescription)[vs[1].(int)]
@@ -1606,12 +1395,6 @@ func (o SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponseOut
 
 func (o SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponseOutput) ToSharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponseOutputWithContext(ctx context.Context) SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponseOutput {
 	return o
-}
-
-func (o SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse] {
-	return pulumix.Output[SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the key.
@@ -1652,12 +1435,6 @@ func (o SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponseArr
 	return o
 }
 
-func (o SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse] {
-	return pulumix.Output[[]SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponseArrayOutput) Index(i pulumi.IntInput) SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse {
 		return vs[0].([]SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse)[vs[1].(int)]
@@ -1693,12 +1470,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -1778,12 +1549,6 @@ func (i TargetIpFilterRuleArgs) ToTargetIpFilterRuleOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TargetIpFilterRuleOutput)
 }
 
-func (i TargetIpFilterRuleArgs) ToOutput(ctx context.Context) pulumix.Output[TargetIpFilterRule] {
-	return pulumix.Output[TargetIpFilterRule]{
-		OutputState: i.ToTargetIpFilterRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TargetIpFilterRuleArrayInput is an input type that accepts TargetIpFilterRuleArray and TargetIpFilterRuleArrayOutput values.
 // You can construct a concrete instance of `TargetIpFilterRuleArrayInput` via:
 //
@@ -1809,12 +1574,6 @@ func (i TargetIpFilterRuleArray) ToTargetIpFilterRuleArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(TargetIpFilterRuleArrayOutput)
 }
 
-func (i TargetIpFilterRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]TargetIpFilterRule] {
-	return pulumix.Output[[]TargetIpFilterRule]{
-		OutputState: i.ToTargetIpFilterRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The IP filter rules for a provisioning Service.
 type TargetIpFilterRuleOutput struct{ *pulumi.OutputState }
 
@@ -1828,12 +1587,6 @@ func (o TargetIpFilterRuleOutput) ToTargetIpFilterRuleOutput() TargetIpFilterRul
 
 func (o TargetIpFilterRuleOutput) ToTargetIpFilterRuleOutputWithContext(ctx context.Context) TargetIpFilterRuleOutput {
 	return o
-}
-
-func (o TargetIpFilterRuleOutput) ToOutput(ctx context.Context) pulumix.Output[TargetIpFilterRule] {
-	return pulumix.Output[TargetIpFilterRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The desired action for requests captured by this rule.
@@ -1870,12 +1623,6 @@ func (o TargetIpFilterRuleArrayOutput) ToTargetIpFilterRuleArrayOutputWithContex
 	return o
 }
 
-func (o TargetIpFilterRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TargetIpFilterRule] {
-	return pulumix.Output[[]TargetIpFilterRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TargetIpFilterRuleArrayOutput) Index(i pulumi.IntInput) TargetIpFilterRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetIpFilterRule {
 		return vs[0].([]TargetIpFilterRule)[vs[1].(int)]
@@ -1907,12 +1654,6 @@ func (o TargetIpFilterRuleResponseOutput) ToTargetIpFilterRuleResponseOutput() T
 
 func (o TargetIpFilterRuleResponseOutput) ToTargetIpFilterRuleResponseOutputWithContext(ctx context.Context) TargetIpFilterRuleResponseOutput {
 	return o
-}
-
-func (o TargetIpFilterRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TargetIpFilterRuleResponse] {
-	return pulumix.Output[TargetIpFilterRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The desired action for requests captured by this rule.
@@ -1947,12 +1688,6 @@ func (o TargetIpFilterRuleResponseArrayOutput) ToTargetIpFilterRuleResponseArray
 
 func (o TargetIpFilterRuleResponseArrayOutput) ToTargetIpFilterRuleResponseArrayOutputWithContext(ctx context.Context) TargetIpFilterRuleResponseArrayOutput {
 	return o
-}
-
-func (o TargetIpFilterRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TargetIpFilterRuleResponse] {
-	return pulumix.Output[[]TargetIpFilterRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TargetIpFilterRuleResponseArrayOutput) Index(i pulumi.IntInput) TargetIpFilterRuleResponseOutput {

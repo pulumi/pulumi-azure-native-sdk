@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupInferencePool(ctx *pulumi.Context, args *LookupInferencePoolArgs, opts ...pulumi.InvokeOption) (*LookupInferencePoolResult, error) {
@@ -103,12 +102,6 @@ func (o LookupInferencePoolResultOutput) ToLookupInferencePoolResultOutput() Loo
 
 func (o LookupInferencePoolResultOutput) ToLookupInferencePoolResultOutputWithContext(ctx context.Context) LookupInferencePoolResultOutput {
 	return o
-}
-
-func (o LookupInferencePoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInferencePoolResult] {
-	return pulumix.Output[LookupInferencePoolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

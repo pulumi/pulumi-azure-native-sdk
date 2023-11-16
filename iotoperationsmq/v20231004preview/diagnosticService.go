@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // MQ diagnostic services resource
@@ -210,12 +209,6 @@ func (i *DiagnosticService) ToDiagnosticServiceOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticServiceOutput)
 }
 
-func (i *DiagnosticService) ToOutput(ctx context.Context) pulumix.Output[*DiagnosticService] {
-	return pulumix.Output[*DiagnosticService]{
-		OutputState: i.ToDiagnosticServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DiagnosticServiceOutput struct{ *pulumi.OutputState }
 
 func (DiagnosticServiceOutput) ElementType() reflect.Type {
@@ -228,12 +221,6 @@ func (o DiagnosticServiceOutput) ToDiagnosticServiceOutput() DiagnosticServiceOu
 
 func (o DiagnosticServiceOutput) ToDiagnosticServiceOutputWithContext(ctx context.Context) DiagnosticServiceOutput {
 	return o
-}
-
-func (o DiagnosticServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*DiagnosticService] {
-	return pulumix.Output[*DiagnosticService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The frequency at which the data will be exported.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the specified shared private link resource
@@ -96,12 +95,6 @@ func (o LookupSignalRSharedPrivateLinkResourceResultOutput) ToLookupSignalRShare
 
 func (o LookupSignalRSharedPrivateLinkResourceResultOutput) ToLookupSignalRSharedPrivateLinkResourceResultOutputWithContext(ctx context.Context) LookupSignalRSharedPrivateLinkResourceResultOutput {
 	return o
-}
-
-func (o LookupSignalRSharedPrivateLinkResourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSignalRSharedPrivateLinkResourceResult] {
-	return pulumix.Output[LookupSignalRSharedPrivateLinkResourceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The group id from the provider of resource the shared private link resource is for

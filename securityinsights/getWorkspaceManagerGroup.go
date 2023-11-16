@@ -9,13 +9,12 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a workspace manager group
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 func LookupWorkspaceManagerGroup(ctx *pulumi.Context, args *LookupWorkspaceManagerGroupArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceManagerGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceManagerGroupResult
@@ -94,12 +93,6 @@ func (o LookupWorkspaceManagerGroupResultOutput) ToLookupWorkspaceManagerGroupRe
 
 func (o LookupWorkspaceManagerGroupResultOutput) ToLookupWorkspaceManagerGroupResultOutputWithContext(ctx context.Context) LookupWorkspaceManagerGroupResultOutput {
 	return o
-}
-
-func (o LookupWorkspaceManagerGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkspaceManagerGroupResult] {
-	return pulumix.Output[LookupWorkspaceManagerGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the workspace manager group

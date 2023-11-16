@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Administrative credentials for accessing vCenter and NSX-T
@@ -82,12 +81,6 @@ func (o ListPrivateCloudAdminCredentialsResultOutput) ToListPrivateCloudAdminCre
 
 func (o ListPrivateCloudAdminCredentialsResultOutput) ToListPrivateCloudAdminCredentialsResultOutputWithContext(ctx context.Context) ListPrivateCloudAdminCredentialsResultOutput {
 	return o
-}
-
-func (o ListPrivateCloudAdminCredentialsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListPrivateCloudAdminCredentialsResult] {
-	return pulumix.Output[ListPrivateCloudAdminCredentialsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // NSX-T Manager password

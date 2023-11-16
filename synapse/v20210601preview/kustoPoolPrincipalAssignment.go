@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Class representing a cluster principal assignment.
@@ -169,12 +168,6 @@ func (i *KustoPoolPrincipalAssignment) ToKustoPoolPrincipalAssignmentOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(KustoPoolPrincipalAssignmentOutput)
 }
 
-func (i *KustoPoolPrincipalAssignment) ToOutput(ctx context.Context) pulumix.Output[*KustoPoolPrincipalAssignment] {
-	return pulumix.Output[*KustoPoolPrincipalAssignment]{
-		OutputState: i.ToKustoPoolPrincipalAssignmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KustoPoolPrincipalAssignmentOutput struct{ *pulumi.OutputState }
 
 func (KustoPoolPrincipalAssignmentOutput) ElementType() reflect.Type {
@@ -187,12 +180,6 @@ func (o KustoPoolPrincipalAssignmentOutput) ToKustoPoolPrincipalAssignmentOutput
 
 func (o KustoPoolPrincipalAssignmentOutput) ToKustoPoolPrincipalAssignmentOutputWithContext(ctx context.Context) KustoPoolPrincipalAssignmentOutput {
 	return o
-}
-
-func (o KustoPoolPrincipalAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*KustoPoolPrincipalAssignment] {
-	return pulumix.Output[*KustoPoolPrincipalAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The service principal object id in AAD (Azure active directory)

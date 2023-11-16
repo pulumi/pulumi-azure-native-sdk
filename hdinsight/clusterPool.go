@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Cluster pool.
@@ -167,12 +166,6 @@ func (i *ClusterPool) ToClusterPoolOutputWithContext(ctx context.Context) Cluste
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterPoolOutput)
 }
 
-func (i *ClusterPool) ToOutput(ctx context.Context) pulumix.Output[*ClusterPool] {
-	return pulumix.Output[*ClusterPool]{
-		OutputState: i.ToClusterPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ClusterPoolOutput struct{ *pulumi.OutputState }
 
 func (ClusterPoolOutput) ElementType() reflect.Type {
@@ -185,12 +178,6 @@ func (o ClusterPoolOutput) ToClusterPoolOutput() ClusterPoolOutput {
 
 func (o ClusterPoolOutput) ToClusterPoolOutputWithContext(ctx context.Context) ClusterPoolOutput {
 	return o
-}
-
-func (o ClusterPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterPool] {
-	return pulumix.Output[*ClusterPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Properties of underlying AKS cluster.

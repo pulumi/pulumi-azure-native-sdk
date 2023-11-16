@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents Dynamics365 data connector.
@@ -142,6 +141,9 @@ func NewDynamics365DataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:Dynamics365DataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:Dynamics365DataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -236,12 +238,6 @@ func (i *Dynamics365DataConnector) ToDynamics365DataConnectorOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(Dynamics365DataConnectorOutput)
 }
 
-func (i *Dynamics365DataConnector) ToOutput(ctx context.Context) pulumix.Output[*Dynamics365DataConnector] {
-	return pulumix.Output[*Dynamics365DataConnector]{
-		OutputState: i.ToDynamics365DataConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type Dynamics365DataConnectorOutput struct{ *pulumi.OutputState }
 
 func (Dynamics365DataConnectorOutput) ElementType() reflect.Type {
@@ -254,12 +250,6 @@ func (o Dynamics365DataConnectorOutput) ToDynamics365DataConnectorOutput() Dynam
 
 func (o Dynamics365DataConnectorOutput) ToDynamics365DataConnectorOutputWithContext(ctx context.Context) Dynamics365DataConnectorOutput {
 	return o
-}
-
-func (o Dynamics365DataConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*Dynamics365DataConnector] {
-	return pulumix.Output[*Dynamics365DataConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The available data types for the connector.

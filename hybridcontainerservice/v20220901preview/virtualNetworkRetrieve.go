@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The virtualNetworks resource definition.
@@ -150,12 +149,6 @@ func (i *VirtualNetworkRetrieve) ToVirtualNetworkRetrieveOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkRetrieveOutput)
 }
 
-func (i *VirtualNetworkRetrieve) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkRetrieve] {
-	return pulumix.Output[*VirtualNetworkRetrieve]{
-		OutputState: i.ToVirtualNetworkRetrieveOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VirtualNetworkRetrieveOutput struct{ *pulumi.OutputState }
 
 func (VirtualNetworkRetrieveOutput) ElementType() reflect.Type {
@@ -168,12 +161,6 @@ func (o VirtualNetworkRetrieveOutput) ToVirtualNetworkRetrieveOutput() VirtualNe
 
 func (o VirtualNetworkRetrieveOutput) ToVirtualNetworkRetrieveOutputWithContext(ctx context.Context) VirtualNetworkRetrieveOutput {
 	return o
-}
-
-func (o VirtualNetworkRetrieveOutput) ToOutput(ctx context.Context) pulumix.Output[*VirtualNetworkRetrieve] {
-	return pulumix.Output[*VirtualNetworkRetrieve]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualNetworkRetrieveOutput) ExtendedLocation() VirtualNetworksResponseExtendedLocationPtrOutput {

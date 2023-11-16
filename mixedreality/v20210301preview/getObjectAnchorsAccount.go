@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve an Object Anchors Account.
@@ -96,12 +95,6 @@ func (o LookupObjectAnchorsAccountResultOutput) ToLookupObjectAnchorsAccountResu
 
 func (o LookupObjectAnchorsAccountResultOutput) ToLookupObjectAnchorsAccountResultOutputWithContext(ctx context.Context) LookupObjectAnchorsAccountResultOutput {
 	return o
-}
-
-func (o LookupObjectAnchorsAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupObjectAnchorsAccountResult] {
-	return pulumix.Output[LookupObjectAnchorsAccountResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Correspond domain name of certain Spatial Anchors Account

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i DatasetPropertyKeyArgs) ToDatasetPropertyKeyOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetPropertyKeyOutput)
 }
 
-func (i DatasetPropertyKeyArgs) ToOutput(ctx context.Context) pulumix.Output[DatasetPropertyKey] {
-	return pulumix.Output[DatasetPropertyKey]{
-		OutputState: i.ToDatasetPropertyKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatasetPropertyKeyMapInput is an input type that accepts DatasetPropertyKeyMap and DatasetPropertyKeyMapOutput values.
 // You can construct a concrete instance of `DatasetPropertyKeyMapInput` via:
 //
@@ -84,12 +77,6 @@ func (i DatasetPropertyKeyMap) ToDatasetPropertyKeyMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetPropertyKeyMapOutput)
 }
 
-func (i DatasetPropertyKeyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]DatasetPropertyKey] {
-	return pulumix.Output[map[string]DatasetPropertyKey]{
-		OutputState: i.ToDatasetPropertyKeyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Key that can be used for joining on enrich.
 type DatasetPropertyKeyOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o DatasetPropertyKeyOutput) ToDatasetPropertyKeyOutput() DatasetPropertyKe
 
 func (o DatasetPropertyKeyOutput) ToDatasetPropertyKeyOutputWithContext(ctx context.Context) DatasetPropertyKeyOutput {
 	return o
-}
-
-func (o DatasetPropertyKeyOutput) ToOutput(ctx context.Context) pulumix.Output[DatasetPropertyKey] {
-	return pulumix.Output[DatasetPropertyKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Path to the input value from the message.
@@ -133,12 +114,6 @@ func (o DatasetPropertyKeyMapOutput) ToDatasetPropertyKeyMapOutput() DatasetProp
 
 func (o DatasetPropertyKeyMapOutput) ToDatasetPropertyKeyMapOutputWithContext(ctx context.Context) DatasetPropertyKeyMapOutput {
 	return o
-}
-
-func (o DatasetPropertyKeyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]DatasetPropertyKey] {
-	return pulumix.Output[map[string]DatasetPropertyKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatasetPropertyKeyMapOutput) MapIndex(k pulumi.StringInput) DatasetPropertyKeyOutput {
@@ -170,12 +145,6 @@ func (o DatasetPropertyKeyResponseOutput) ToDatasetPropertyKeyResponseOutputWith
 	return o
 }
 
-func (o DatasetPropertyKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DatasetPropertyKeyResponse] {
-	return pulumix.Output[DatasetPropertyKeyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Path to the input value from the message.
 func (o DatasetPropertyKeyResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v DatasetPropertyKeyResponse) string { return v.Path }).(pulumi.StringOutput)
@@ -198,12 +167,6 @@ func (o DatasetPropertyKeyResponseMapOutput) ToDatasetPropertyKeyResponseMapOutp
 
 func (o DatasetPropertyKeyResponseMapOutput) ToDatasetPropertyKeyResponseMapOutputWithContext(ctx context.Context) DatasetPropertyKeyResponseMapOutput {
 	return o
-}
-
-func (o DatasetPropertyKeyResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]DatasetPropertyKeyResponse] {
-	return pulumix.Output[map[string]DatasetPropertyKeyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatasetPropertyKeyResponseMapOutput) MapIndex(k pulumi.StringInput) DatasetPropertyKeyResponseOutput {
@@ -251,12 +214,6 @@ func (i ExtendedLocationArgs) ToExtendedLocationOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationOutput)
 }
 
-func (i ExtendedLocationArgs) ToOutput(ctx context.Context) pulumix.Output[ExtendedLocation] {
-	return pulumix.Output[ExtendedLocation]{
-		OutputState: i.ToExtendedLocationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Extended location is an extension of Azure locations. They provide a way to use their Azure ARC enabled Kubernetes clusters as target locations for deploying Azure services instances.
 type ExtendedLocationOutput struct{ *pulumi.OutputState }
 
@@ -270,12 +227,6 @@ func (o ExtendedLocationOutput) ToExtendedLocationOutput() ExtendedLocationOutpu
 
 func (o ExtendedLocationOutput) ToExtendedLocationOutputWithContext(ctx context.Context) ExtendedLocationOutput {
 	return o
-}
-
-func (o ExtendedLocationOutput) ToOutput(ctx context.Context) pulumix.Output[ExtendedLocation] {
-	return pulumix.Output[ExtendedLocation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the extended location.
@@ -309,12 +260,6 @@ func (o ExtendedLocationResponseOutput) ToExtendedLocationResponseOutput() Exten
 
 func (o ExtendedLocationResponseOutput) ToExtendedLocationResponseOutputWithContext(ctx context.Context) ExtendedLocationResponseOutput {
 	return o
-}
-
-func (o ExtendedLocationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExtendedLocationResponse] {
-	return pulumix.Output[ExtendedLocationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the extended location.
@@ -370,12 +315,6 @@ func (i PipelineInputTypeArgs) ToPipelineInputTypeOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineInputTypeOutput)
 }
 
-func (i PipelineInputTypeArgs) ToOutput(ctx context.Context) pulumix.Output[PipelineInputType] {
-	return pulumix.Output[PipelineInputType]{
-		OutputState: i.ToPipelineInputTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Stage configuration for Pipeline input stage.
 type PipelineInputTypeOutput struct{ *pulumi.OutputState }
 
@@ -389,12 +328,6 @@ func (o PipelineInputTypeOutput) ToPipelineInputTypeOutput() PipelineInputTypeOu
 
 func (o PipelineInputTypeOutput) ToPipelineInputTypeOutputWithContext(ctx context.Context) PipelineInputTypeOutput {
 	return o
-}
-
-func (o PipelineInputTypeOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineInputType] {
-	return pulumix.Output[PipelineInputType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description for stage.
@@ -435,12 +368,6 @@ func (o PipelineInputResponseOutput) ToPipelineInputResponseOutput() PipelineInp
 
 func (o PipelineInputResponseOutput) ToPipelineInputResponseOutputWithContext(ctx context.Context) PipelineInputResponseOutput {
 	return o
-}
-
-func (o PipelineInputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineInputResponse] {
-	return pulumix.Output[PipelineInputResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description for stage.
@@ -501,12 +428,6 @@ func (i PipelineStageArgs) ToPipelineStageOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineStageOutput)
 }
 
-func (i PipelineStageArgs) ToOutput(ctx context.Context) pulumix.Output[PipelineStage] {
-	return pulumix.Output[PipelineStage]{
-		OutputState: i.ToPipelineStageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PipelineStageMapInput is an input type that accepts PipelineStageMap and PipelineStageMapOutput values.
 // You can construct a concrete instance of `PipelineStageMapInput` via:
 //
@@ -532,12 +453,6 @@ func (i PipelineStageMap) ToPipelineStageMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineStageMapOutput)
 }
 
-func (i PipelineStageMap) ToOutput(ctx context.Context) pulumix.Output[map[string]PipelineStage] {
-	return pulumix.Output[map[string]PipelineStage]{
-		OutputState: i.ToPipelineStageMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Stage configurations for all Pipeline processing and output stages.
 type PipelineStageOutput struct{ *pulumi.OutputState }
 
@@ -551,12 +466,6 @@ func (o PipelineStageOutput) ToPipelineStageOutput() PipelineStageOutput {
 
 func (o PipelineStageOutput) ToPipelineStageOutputWithContext(ctx context.Context) PipelineStageOutput {
 	return o
-}
-
-func (o PipelineStageOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineStage] {
-	return pulumix.Output[PipelineStage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description for stage.
@@ -586,12 +495,6 @@ func (o PipelineStageMapOutput) ToPipelineStageMapOutput() PipelineStageMapOutpu
 
 func (o PipelineStageMapOutput) ToPipelineStageMapOutputWithContext(ctx context.Context) PipelineStageMapOutput {
 	return o
-}
-
-func (o PipelineStageMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]PipelineStage] {
-	return pulumix.Output[map[string]PipelineStage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PipelineStageMapOutput) MapIndex(k pulumi.StringInput) PipelineStageOutput {
@@ -625,12 +528,6 @@ func (o PipelineStageResponseOutput) ToPipelineStageResponseOutputWithContext(ct
 	return o
 }
 
-func (o PipelineStageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineStageResponse] {
-	return pulumix.Output[PipelineStageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Description for stage.
 func (o PipelineStageResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PipelineStageResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -658,12 +555,6 @@ func (o PipelineStageResponseMapOutput) ToPipelineStageResponseMapOutput() Pipel
 
 func (o PipelineStageResponseMapOutput) ToPipelineStageResponseMapOutputWithContext(ctx context.Context) PipelineStageResponseMapOutput {
 	return o
-}
-
-func (o PipelineStageResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]PipelineStageResponse] {
-	return pulumix.Output[map[string]PipelineStageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PipelineStageResponseMapOutput) MapIndex(k pulumi.StringInput) PipelineStageResponseOutput {
@@ -701,12 +592,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

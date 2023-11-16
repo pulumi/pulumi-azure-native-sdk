@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an instance of an Analysis Services resource.
@@ -200,12 +199,6 @@ func (i *ServerDetails) ToServerDetailsOutputWithContext(ctx context.Context) Se
 	return pulumi.ToOutputWithContext(ctx, i).(ServerDetailsOutput)
 }
 
-func (i *ServerDetails) ToOutput(ctx context.Context) pulumix.Output[*ServerDetails] {
-	return pulumix.Output[*ServerDetails]{
-		OutputState: i.ToServerDetailsOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerDetailsOutput struct{ *pulumi.OutputState }
 
 func (ServerDetailsOutput) ElementType() reflect.Type {
@@ -218,12 +211,6 @@ func (o ServerDetailsOutput) ToServerDetailsOutput() ServerDetailsOutput {
 
 func (o ServerDetailsOutput) ToServerDetailsOutputWithContext(ctx context.Context) ServerDetailsOutput {
 	return o
-}
-
-func (o ServerDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerDetails] {
-	return pulumix.Output[*ServerDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A collection of AS server administrators

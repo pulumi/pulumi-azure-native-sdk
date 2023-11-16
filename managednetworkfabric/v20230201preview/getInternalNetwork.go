@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a InternalNetworks.
@@ -128,12 +127,6 @@ func (o LookupInternalNetworkResultOutput) ToLookupInternalNetworkResultOutput()
 
 func (o LookupInternalNetworkResultOutput) ToLookupInternalNetworkResultOutputWithContext(ctx context.Context) LookupInternalNetworkResultOutput {
 	return o
-}
-
-func (o LookupInternalNetworkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInternalNetworkResult] {
-	return pulumix.Output[LookupInternalNetworkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Administrative state of the InternalNetwork. Example: Enabled | Disabled.

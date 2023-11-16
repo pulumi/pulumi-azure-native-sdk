@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i AutoScaleVCoreSkuArgs) ToAutoScaleVCoreSkuOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AutoScaleVCoreSkuOutput)
 }
 
-func (i AutoScaleVCoreSkuArgs) ToOutput(ctx context.Context) pulumix.Output[AutoScaleVCoreSku] {
-	return pulumix.Output[AutoScaleVCoreSku]{
-		OutputState: i.ToAutoScaleVCoreSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the SKU name and Azure pricing tier for auto scale v-core resource.
 type AutoScaleVCoreSkuOutput struct{ *pulumi.OutputState }
 
@@ -76,12 +69,6 @@ func (o AutoScaleVCoreSkuOutput) ToAutoScaleVCoreSkuOutput() AutoScaleVCoreSkuOu
 
 func (o AutoScaleVCoreSkuOutput) ToAutoScaleVCoreSkuOutputWithContext(ctx context.Context) AutoScaleVCoreSkuOutput {
 	return o
-}
-
-func (o AutoScaleVCoreSkuOutput) ToOutput(ctx context.Context) pulumix.Output[AutoScaleVCoreSku] {
-	return pulumix.Output[AutoScaleVCoreSku]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The capacity of an auto scale v-core resource.
@@ -122,12 +109,6 @@ func (o AutoScaleVCoreSkuResponseOutput) ToAutoScaleVCoreSkuResponseOutput() Aut
 
 func (o AutoScaleVCoreSkuResponseOutput) ToAutoScaleVCoreSkuResponseOutputWithContext(ctx context.Context) AutoScaleVCoreSkuResponseOutput {
 	return o
-}
-
-func (o AutoScaleVCoreSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutoScaleVCoreSkuResponse] {
-	return pulumix.Output[AutoScaleVCoreSkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The capacity of an auto scale v-core resource.
@@ -188,12 +169,6 @@ func (i CapacitySkuArgs) ToCapacitySkuOutputWithContext(ctx context.Context) Cap
 	return pulumi.ToOutputWithContext(ctx, i).(CapacitySkuOutput)
 }
 
-func (i CapacitySkuArgs) ToOutput(ctx context.Context) pulumix.Output[CapacitySku] {
-	return pulumix.Output[CapacitySku]{
-		OutputState: i.ToCapacitySkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents the SKU name and Azure pricing tier for PowerBI Dedicated capacity resource.
 type CapacitySkuOutput struct{ *pulumi.OutputState }
 
@@ -207,12 +182,6 @@ func (o CapacitySkuOutput) ToCapacitySkuOutput() CapacitySkuOutput {
 
 func (o CapacitySkuOutput) ToCapacitySkuOutputWithContext(ctx context.Context) CapacitySkuOutput {
 	return o
-}
-
-func (o CapacitySkuOutput) ToOutput(ctx context.Context) pulumix.Output[CapacitySku] {
-	return pulumix.Output[CapacitySku]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The capacity of the SKU.
@@ -253,12 +222,6 @@ func (o CapacitySkuResponseOutput) ToCapacitySkuResponseOutput() CapacitySkuResp
 
 func (o CapacitySkuResponseOutput) ToCapacitySkuResponseOutputWithContext(ctx context.Context) CapacitySkuResponseOutput {
 	return o
-}
-
-func (o CapacitySkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CapacitySkuResponse] {
-	return pulumix.Output[CapacitySkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The capacity of the SKU.
@@ -311,12 +274,6 @@ func (i DedicatedCapacityAdministratorsArgs) ToDedicatedCapacityAdministratorsOu
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedCapacityAdministratorsOutput)
 }
 
-func (i DedicatedCapacityAdministratorsArgs) ToOutput(ctx context.Context) pulumix.Output[DedicatedCapacityAdministrators] {
-	return pulumix.Output[DedicatedCapacityAdministrators]{
-		OutputState: i.ToDedicatedCapacityAdministratorsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DedicatedCapacityAdministratorsArgs) ToDedicatedCapacityAdministratorsPtrOutput() DedicatedCapacityAdministratorsPtrOutput {
 	return i.ToDedicatedCapacityAdministratorsPtrOutputWithContext(context.Background())
 }
@@ -358,12 +315,6 @@ func (i *dedicatedCapacityAdministratorsPtrType) ToDedicatedCapacityAdministrato
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedCapacityAdministratorsPtrOutput)
 }
 
-func (i *dedicatedCapacityAdministratorsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DedicatedCapacityAdministrators] {
-	return pulumix.Output[*DedicatedCapacityAdministrators]{
-		OutputState: i.ToDedicatedCapacityAdministratorsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An array of administrator user identities
 type DedicatedCapacityAdministratorsOutput struct{ *pulumi.OutputState }
 
@@ -389,12 +340,6 @@ func (o DedicatedCapacityAdministratorsOutput) ToDedicatedCapacityAdministrators
 	}).(DedicatedCapacityAdministratorsPtrOutput)
 }
 
-func (o DedicatedCapacityAdministratorsOutput) ToOutput(ctx context.Context) pulumix.Output[DedicatedCapacityAdministrators] {
-	return pulumix.Output[DedicatedCapacityAdministrators]{
-		OutputState: o.OutputState,
-	}
-}
-
 // An array of administrator user identities.
 func (o DedicatedCapacityAdministratorsOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DedicatedCapacityAdministrators) []string { return v.Members }).(pulumi.StringArrayOutput)
@@ -412,12 +357,6 @@ func (o DedicatedCapacityAdministratorsPtrOutput) ToDedicatedCapacityAdministrat
 
 func (o DedicatedCapacityAdministratorsPtrOutput) ToDedicatedCapacityAdministratorsPtrOutputWithContext(ctx context.Context) DedicatedCapacityAdministratorsPtrOutput {
 	return o
-}
-
-func (o DedicatedCapacityAdministratorsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DedicatedCapacityAdministrators] {
-	return pulumix.Output[*DedicatedCapacityAdministrators]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DedicatedCapacityAdministratorsPtrOutput) Elem() DedicatedCapacityAdministratorsOutput {
@@ -461,12 +400,6 @@ func (o DedicatedCapacityAdministratorsResponseOutput) ToDedicatedCapacityAdmini
 	return o
 }
 
-func (o DedicatedCapacityAdministratorsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DedicatedCapacityAdministratorsResponse] {
-	return pulumix.Output[DedicatedCapacityAdministratorsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // An array of administrator user identities.
 func (o DedicatedCapacityAdministratorsResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DedicatedCapacityAdministratorsResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
@@ -484,12 +417,6 @@ func (o DedicatedCapacityAdministratorsResponsePtrOutput) ToDedicatedCapacityAdm
 
 func (o DedicatedCapacityAdministratorsResponsePtrOutput) ToDedicatedCapacityAdministratorsResponsePtrOutputWithContext(ctx context.Context) DedicatedCapacityAdministratorsResponsePtrOutput {
 	return o
-}
-
-func (o DedicatedCapacityAdministratorsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DedicatedCapacityAdministratorsResponse] {
-	return pulumix.Output[*DedicatedCapacityAdministratorsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DedicatedCapacityAdministratorsResponsePtrOutput) Elem() DedicatedCapacityAdministratorsResponseOutput {
@@ -567,12 +494,6 @@ func (i SystemDataArgs) ToSystemDataOutputWithContext(ctx context.Context) Syste
 	return pulumi.ToOutputWithContext(ctx, i).(SystemDataOutput)
 }
 
-func (i SystemDataArgs) ToOutput(ctx context.Context) pulumix.Output[SystemData] {
-	return pulumix.Output[SystemData]{
-		OutputState: i.ToSystemDataOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SystemDataArgs) ToSystemDataPtrOutput() SystemDataPtrOutput {
 	return i.ToSystemDataPtrOutputWithContext(context.Background())
 }
@@ -614,12 +535,6 @@ func (i *systemDataPtrType) ToSystemDataPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SystemDataPtrOutput)
 }
 
-func (i *systemDataPtrType) ToOutput(ctx context.Context) pulumix.Output[*SystemData] {
-	return pulumix.Output[*SystemData]{
-		OutputState: i.ToSystemDataPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataOutput struct{ *pulumi.OutputState }
 
@@ -643,12 +558,6 @@ func (o SystemDataOutput) ToSystemDataPtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemData) *SystemData {
 		return &v
 	}).(SystemDataPtrOutput)
-}
-
-func (o SystemDataOutput) ToOutput(ctx context.Context) pulumix.Output[SystemData] {
-	return pulumix.Output[SystemData]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC)
@@ -693,12 +602,6 @@ func (o SystemDataPtrOutput) ToSystemDataPtrOutput() SystemDataPtrOutput {
 
 func (o SystemDataPtrOutput) ToSystemDataPtrOutputWithContext(ctx context.Context) SystemDataPtrOutput {
 	return o
-}
-
-func (o SystemDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SystemData] {
-	return pulumix.Output[*SystemData]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SystemDataPtrOutput) Elem() SystemDataOutput {
@@ -802,12 +705,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timestamp of resource creation (UTC)
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
@@ -850,12 +747,6 @@ func (o SystemDataResponsePtrOutput) ToSystemDataResponsePtrOutput() SystemDataR
 
 func (o SystemDataResponsePtrOutput) ToSystemDataResponsePtrOutputWithContext(ctx context.Context) SystemDataResponsePtrOutput {
 	return o
-}
-
-func (o SystemDataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SystemDataResponse] {
-	return pulumix.Output[*SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SystemDataResponsePtrOutput) Elem() SystemDataResponseOutput {

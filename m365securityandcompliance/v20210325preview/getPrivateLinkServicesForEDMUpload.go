@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the metadata of a privateLinkServicesForEDMUpload resource.
@@ -91,12 +90,6 @@ func (o LookupPrivateLinkServicesForEDMUploadResultOutput) ToLookupPrivateLinkSe
 
 func (o LookupPrivateLinkServicesForEDMUploadResultOutput) ToLookupPrivateLinkServicesForEDMUploadResultOutputWithContext(ctx context.Context) LookupPrivateLinkServicesForEDMUploadResultOutput {
 	return o
-}
-
-func (o LookupPrivateLinkServicesForEDMUploadResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateLinkServicesForEDMUploadResult] {
-	return pulumix.Output[LookupPrivateLinkServicesForEDMUploadResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An etag associated with the resource, used for optimistic concurrency when editing it.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2023-08-01-preview.
@@ -158,12 +157,6 @@ func (i *InferencePool) ToInferencePoolOutputWithContext(ctx context.Context) In
 	return pulumi.ToOutputWithContext(ctx, i).(InferencePoolOutput)
 }
 
-func (i *InferencePool) ToOutput(ctx context.Context) pulumix.Output[*InferencePool] {
-	return pulumix.Output[*InferencePool]{
-		OutputState: i.ToInferencePoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InferencePoolOutput struct{ *pulumi.OutputState }
 
 func (InferencePoolOutput) ElementType() reflect.Type {
@@ -176,12 +169,6 @@ func (o InferencePoolOutput) ToInferencePoolOutput() InferencePoolOutput {
 
 func (o InferencePoolOutput) ToInferencePoolOutputWithContext(ctx context.Context) InferencePoolOutput {
 	return o
-}
-
-func (o InferencePoolOutput) ToOutput(ctx context.Context) pulumix.Output[*InferencePool] {
-	return pulumix.Output[*InferencePool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Managed service identity (system assigned and/or user assigned identities)

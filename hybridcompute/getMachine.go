@@ -9,13 +9,12 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves information about the model view or the instance view of a hybrid machine.
 // Azure REST API version: 2022-12-27.
 //
-// Other available API versions: 2019-03-18-preview, 2019-08-02-preview, 2020-08-02, 2020-08-15-preview, 2022-05-10-preview, 2023-06-20-preview.
+// Other available API versions: 2019-03-18-preview, 2019-08-02-preview, 2020-08-02, 2020-08-15-preview, 2022-05-10-preview, 2023-06-20-preview, 2023-10-03-preview.
 func LookupMachine(ctx *pulumi.Context, args *LookupMachineArgs, opts ...pulumi.InvokeOption) (*LookupMachineResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMachineResult
@@ -150,12 +149,6 @@ func (o LookupMachineResultOutput) ToLookupMachineResultOutput() LookupMachineRe
 
 func (o LookupMachineResultOutput) ToLookupMachineResultOutputWithContext(ctx context.Context) LookupMachineResultOutput {
 	return o
-}
-
-func (o LookupMachineResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMachineResult] {
-	return pulumix.Output[LookupMachineResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the AD fully qualified display name.

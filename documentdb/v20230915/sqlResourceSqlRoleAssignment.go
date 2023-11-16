@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure Cosmos DB Role Assignment
@@ -200,12 +199,6 @@ func (i *SqlResourceSqlRoleAssignment) ToSqlResourceSqlRoleAssignmentOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(SqlResourceSqlRoleAssignmentOutput)
 }
 
-func (i *SqlResourceSqlRoleAssignment) ToOutput(ctx context.Context) pulumix.Output[*SqlResourceSqlRoleAssignment] {
-	return pulumix.Output[*SqlResourceSqlRoleAssignment]{
-		OutputState: i.ToSqlResourceSqlRoleAssignmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SqlResourceSqlRoleAssignmentOutput struct{ *pulumi.OutputState }
 
 func (SqlResourceSqlRoleAssignmentOutput) ElementType() reflect.Type {
@@ -218,12 +211,6 @@ func (o SqlResourceSqlRoleAssignmentOutput) ToSqlResourceSqlRoleAssignmentOutput
 
 func (o SqlResourceSqlRoleAssignmentOutput) ToSqlResourceSqlRoleAssignmentOutputWithContext(ctx context.Context) SqlResourceSqlRoleAssignmentOutput {
 	return o
-}
-
-func (o SqlResourceSqlRoleAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlResourceSqlRoleAssignment] {
-	return pulumix.Output[*SqlResourceSqlRoleAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the database account.

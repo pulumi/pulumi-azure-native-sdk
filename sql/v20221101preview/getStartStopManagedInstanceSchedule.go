@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the managed instance's Start/Stop schedule.
@@ -110,12 +109,6 @@ func (o LookupStartStopManagedInstanceScheduleResultOutput) ToLookupStartStopMan
 
 func (o LookupStartStopManagedInstanceScheduleResultOutput) ToLookupStartStopManagedInstanceScheduleResultOutputWithContext(ctx context.Context) LookupStartStopManagedInstanceScheduleResultOutput {
 	return o
-}
-
-func (o LookupStartStopManagedInstanceScheduleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStartStopManagedInstanceScheduleResult] {
-	return pulumix.Output[LookupStartStopManagedInstanceScheduleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the schedule.

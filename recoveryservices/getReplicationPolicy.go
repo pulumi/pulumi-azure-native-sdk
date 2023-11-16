@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of a replication policy.
@@ -88,12 +87,6 @@ func (o LookupReplicationPolicyResultOutput) ToLookupReplicationPolicyResultOutp
 
 func (o LookupReplicationPolicyResultOutput) ToLookupReplicationPolicyResultOutputWithContext(ctx context.Context) LookupReplicationPolicyResultOutput {
 	return o
-}
-
-func (o LookupReplicationPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReplicationPolicyResult] {
-	return pulumix.Output[LookupReplicationPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Id

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve the Dsc node configurations by node configuration.
@@ -93,12 +92,6 @@ func (o LookupDscNodeConfigurationResultOutput) ToLookupDscNodeConfigurationResu
 
 func (o LookupDscNodeConfigurationResultOutput) ToLookupDscNodeConfigurationResultOutputWithContext(ctx context.Context) LookupDscNodeConfigurationResultOutput {
 	return o
-}
-
-func (o LookupDscNodeConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDscNodeConfigurationResult] {
-	return pulumix.Output[LookupDscNodeConfigurationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the configuration of the node.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the properties of a Managed Environment used to host container apps.
@@ -123,12 +122,6 @@ func (o LookupManagedEnvironmentResultOutput) ToLookupManagedEnvironmentResultOu
 
 func (o LookupManagedEnvironmentResultOutput) ToLookupManagedEnvironmentResultOutputWithContext(ctx context.Context) LookupManagedEnvironmentResultOutput {
 	return o
-}
-
-func (o LookupManagedEnvironmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedEnvironmentResult] {
-	return pulumix.Output[LookupManagedEnvironmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Environment level Application Insights configuration

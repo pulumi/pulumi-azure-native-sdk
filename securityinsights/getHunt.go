@@ -9,13 +9,12 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a hunt, without relations and comments.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 func LookupHunt(ctx *pulumi.Context, args *LookupHuntArgs, opts ...pulumi.InvokeOption) (*LookupHuntResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHuntResult
@@ -121,12 +120,6 @@ func (o LookupHuntResultOutput) ToLookupHuntResultOutput() LookupHuntResultOutpu
 
 func (o LookupHuntResultOutput) ToLookupHuntResultOutputWithContext(ctx context.Context) LookupHuntResultOutput {
 	return o
-}
-
-func (o LookupHuntResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHuntResult] {
-	return pulumix.Output[LookupHuntResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of mitre attack tactics the hunt is associated with

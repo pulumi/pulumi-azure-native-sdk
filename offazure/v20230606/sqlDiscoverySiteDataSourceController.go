@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A SQL discovery site data source resource.
@@ -133,12 +132,6 @@ func (i *SqlDiscoverySiteDataSourceController) ToSqlDiscoverySiteDataSourceContr
 	return pulumi.ToOutputWithContext(ctx, i).(SqlDiscoverySiteDataSourceControllerOutput)
 }
 
-func (i *SqlDiscoverySiteDataSourceController) ToOutput(ctx context.Context) pulumix.Output[*SqlDiscoverySiteDataSourceController] {
-	return pulumix.Output[*SqlDiscoverySiteDataSourceController]{
-		OutputState: i.ToSqlDiscoverySiteDataSourceControllerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SqlDiscoverySiteDataSourceControllerOutput struct{ *pulumi.OutputState }
 
 func (SqlDiscoverySiteDataSourceControllerOutput) ElementType() reflect.Type {
@@ -151,12 +144,6 @@ func (o SqlDiscoverySiteDataSourceControllerOutput) ToSqlDiscoverySiteDataSource
 
 func (o SqlDiscoverySiteDataSourceControllerOutput) ToSqlDiscoverySiteDataSourceControllerOutputWithContext(ctx context.Context) SqlDiscoverySiteDataSourceControllerOutput {
 	return o
-}
-
-func (o SqlDiscoverySiteDataSourceControllerOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlDiscoverySiteDataSourceController] {
-	return pulumix.Output[*SqlDiscoverySiteDataSourceController]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the discovery site Id.

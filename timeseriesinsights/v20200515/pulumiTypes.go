@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i ReferenceDataSetKeyPropertyArgs) ToReferenceDataSetKeyPropertyOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ReferenceDataSetKeyPropertyOutput)
 }
 
-func (i ReferenceDataSetKeyPropertyArgs) ToOutput(ctx context.Context) pulumix.Output[ReferenceDataSetKeyProperty] {
-	return pulumix.Output[ReferenceDataSetKeyProperty]{
-		OutputState: i.ToReferenceDataSetKeyPropertyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ReferenceDataSetKeyPropertyArrayInput is an input type that accepts ReferenceDataSetKeyPropertyArray and ReferenceDataSetKeyPropertyArrayOutput values.
 // You can construct a concrete instance of `ReferenceDataSetKeyPropertyArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i ReferenceDataSetKeyPropertyArray) ToReferenceDataSetKeyPropertyArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ReferenceDataSetKeyPropertyArrayOutput)
 }
 
-func (i ReferenceDataSetKeyPropertyArray) ToOutput(ctx context.Context) pulumix.Output[[]ReferenceDataSetKeyProperty] {
-	return pulumix.Output[[]ReferenceDataSetKeyProperty]{
-		OutputState: i.ToReferenceDataSetKeyPropertyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A key property for the reference data set. A reference data set can have multiple key properties.
 type ReferenceDataSetKeyPropertyOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o ReferenceDataSetKeyPropertyOutput) ToReferenceDataSetKeyPropertyOutput()
 
 func (o ReferenceDataSetKeyPropertyOutput) ToReferenceDataSetKeyPropertyOutputWithContext(ctx context.Context) ReferenceDataSetKeyPropertyOutput {
 	return o
-}
-
-func (o ReferenceDataSetKeyPropertyOutput) ToOutput(ctx context.Context) pulumix.Output[ReferenceDataSetKeyProperty] {
-	return pulumix.Output[ReferenceDataSetKeyProperty]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the key property.
@@ -133,12 +114,6 @@ func (o ReferenceDataSetKeyPropertyArrayOutput) ToReferenceDataSetKeyPropertyArr
 
 func (o ReferenceDataSetKeyPropertyArrayOutput) ToReferenceDataSetKeyPropertyArrayOutputWithContext(ctx context.Context) ReferenceDataSetKeyPropertyArrayOutput {
 	return o
-}
-
-func (o ReferenceDataSetKeyPropertyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReferenceDataSetKeyProperty] {
-	return pulumix.Output[[]ReferenceDataSetKeyProperty]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReferenceDataSetKeyPropertyArrayOutput) Index(i pulumi.IntInput) ReferenceDataSetKeyPropertyOutput {
@@ -170,12 +145,6 @@ func (o ReferenceDataSetKeyPropertyResponseOutput) ToReferenceDataSetKeyProperty
 	return o
 }
 
-func (o ReferenceDataSetKeyPropertyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReferenceDataSetKeyPropertyResponse] {
-	return pulumix.Output[ReferenceDataSetKeyPropertyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the key property.
 func (o ReferenceDataSetKeyPropertyResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReferenceDataSetKeyPropertyResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -198,12 +167,6 @@ func (o ReferenceDataSetKeyPropertyResponseArrayOutput) ToReferenceDataSetKeyPro
 
 func (o ReferenceDataSetKeyPropertyResponseArrayOutput) ToReferenceDataSetKeyPropertyResponseArrayOutputWithContext(ctx context.Context) ReferenceDataSetKeyPropertyResponseArrayOutput {
 	return o
-}
-
-func (o ReferenceDataSetKeyPropertyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReferenceDataSetKeyPropertyResponse] {
-	return pulumix.Output[[]ReferenceDataSetKeyPropertyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReferenceDataSetKeyPropertyResponseArrayOutput) Index(i pulumi.IntInput) ReferenceDataSetKeyPropertyResponseOutput {

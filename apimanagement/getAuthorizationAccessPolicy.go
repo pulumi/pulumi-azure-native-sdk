@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the authorization access policy specified by its identifier.
@@ -96,12 +95,6 @@ func (o LookupAuthorizationAccessPolicyResultOutput) ToLookupAuthorizationAccess
 
 func (o LookupAuthorizationAccessPolicyResultOutput) ToLookupAuthorizationAccessPolicyResultOutputWithContext(ctx context.Context) LookupAuthorizationAccessPolicyResultOutput {
 	return o
-}
-
-func (o LookupAuthorizationAccessPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAuthorizationAccessPolicyResult] {
-	return pulumix.Output[LookupAuthorizationAccessPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

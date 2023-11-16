@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-03-01-preview.
@@ -196,12 +195,6 @@ func (i *OnlineEndpoint) ToOnlineEndpointOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(OnlineEndpointOutput)
 }
 
-func (i *OnlineEndpoint) ToOutput(ctx context.Context) pulumix.Output[*OnlineEndpoint] {
-	return pulumix.Output[*OnlineEndpoint]{
-		OutputState: i.ToOnlineEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OnlineEndpointOutput struct{ *pulumi.OutputState }
 
 func (OnlineEndpointOutput) ElementType() reflect.Type {
@@ -214,12 +207,6 @@ func (o OnlineEndpointOutput) ToOnlineEndpointOutput() OnlineEndpointOutput {
 
 func (o OnlineEndpointOutput) ToOnlineEndpointOutputWithContext(ctx context.Context) OnlineEndpointOutput {
 	return o
-}
-
-func (o OnlineEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*OnlineEndpoint] {
-	return pulumix.Output[*OnlineEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Managed service identity (system assigned and/or user assigned identities)

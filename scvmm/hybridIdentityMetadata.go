@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Defines the HybridIdentityMetadata.
@@ -140,12 +139,6 @@ func (i *HybridIdentityMetadata) ToHybridIdentityMetadataOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(HybridIdentityMetadataOutput)
 }
 
-func (i *HybridIdentityMetadata) ToOutput(ctx context.Context) pulumix.Output[*HybridIdentityMetadata] {
-	return pulumix.Output[*HybridIdentityMetadata]{
-		OutputState: i.ToHybridIdentityMetadataOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HybridIdentityMetadataOutput struct{ *pulumi.OutputState }
 
 func (HybridIdentityMetadataOutput) ElementType() reflect.Type {
@@ -158,12 +151,6 @@ func (o HybridIdentityMetadataOutput) ToHybridIdentityMetadataOutput() HybridIde
 
 func (o HybridIdentityMetadataOutput) ToHybridIdentityMetadataOutputWithContext(ctx context.Context) HybridIdentityMetadataOutput {
 	return o
-}
-
-func (o HybridIdentityMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[*HybridIdentityMetadata] {
-	return pulumix.Output[*HybridIdentityMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The identity of the resource.

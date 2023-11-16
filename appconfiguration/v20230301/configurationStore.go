@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The configuration store along with all resource properties. The Configuration Store will have all information to begin utilizing it.
@@ -216,12 +215,6 @@ func (i *ConfigurationStore) ToConfigurationStoreOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationStoreOutput)
 }
 
-func (i *ConfigurationStore) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationStore] {
-	return pulumix.Output[*ConfigurationStore]{
-		OutputState: i.ToConfigurationStoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigurationStoreOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationStoreOutput) ElementType() reflect.Type {
@@ -234,12 +227,6 @@ func (o ConfigurationStoreOutput) ToConfigurationStoreOutput() ConfigurationStor
 
 func (o ConfigurationStoreOutput) ToConfigurationStoreOutputWithContext(ctx context.Context) ConfigurationStoreOutput {
 	return o
-}
-
-func (o ConfigurationStoreOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationStore] {
-	return pulumix.Output[*ConfigurationStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation date of configuration store.

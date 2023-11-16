@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get GitHub Access Token.
@@ -90,12 +89,6 @@ func (o GetFactoryGitHubAccessTokenResultOutput) ToGetFactoryGitHubAccessTokenRe
 
 func (o GetFactoryGitHubAccessTokenResultOutput) ToGetFactoryGitHubAccessTokenResultOutputWithContext(ctx context.Context) GetFactoryGitHubAccessTokenResultOutput {
 	return o
-}
-
-func (o GetFactoryGitHubAccessTokenResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetFactoryGitHubAccessTokenResult] {
-	return pulumix.Output[GetFactoryGitHubAccessTokenResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // GitHub access token.

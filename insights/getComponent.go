@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns an Application Insights component.
@@ -160,12 +159,6 @@ func (o LookupComponentResultOutput) ToLookupComponentResultOutput() LookupCompo
 
 func (o LookupComponentResultOutput) ToLookupComponentResultOutputWithContext(ctx context.Context) LookupComponentResultOutput {
 	return o
-}
-
-func (o LookupComponentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupComponentResult] {
-	return pulumix.Output[LookupComponentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Application Insights Unique ID for your Application.

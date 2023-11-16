@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets all deployments for a remediation at subscription scope.
@@ -78,12 +77,6 @@ func (o ListRemediationDeploymentsAtSubscriptionResultOutput) ToListRemediationD
 
 func (o ListRemediationDeploymentsAtSubscriptionResultOutput) ToListRemediationDeploymentsAtSubscriptionResultOutputWithContext(ctx context.Context) ListRemediationDeploymentsAtSubscriptionResultOutput {
 	return o
-}
-
-func (o ListRemediationDeploymentsAtSubscriptionResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListRemediationDeploymentsAtSubscriptionResult] {
-	return pulumix.Output[ListRemediationDeploymentsAtSubscriptionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The URL to get the next set of results.

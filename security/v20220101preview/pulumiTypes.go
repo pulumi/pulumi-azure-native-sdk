@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i GovernanceAssignmentAdditionalDataArgs) ToGovernanceAssignmentAdditional
 	return pulumi.ToOutputWithContext(ctx, i).(GovernanceAssignmentAdditionalDataOutput)
 }
 
-func (i GovernanceAssignmentAdditionalDataArgs) ToOutput(ctx context.Context) pulumix.Output[GovernanceAssignmentAdditionalData] {
-	return pulumix.Output[GovernanceAssignmentAdditionalData]{
-		OutputState: i.ToGovernanceAssignmentAdditionalDataOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GovernanceAssignmentAdditionalDataArgs) ToGovernanceAssignmentAdditionalDataPtrOutput() GovernanceAssignmentAdditionalDataPtrOutput {
 	return i.ToGovernanceAssignmentAdditionalDataPtrOutputWithContext(context.Background())
 }
@@ -104,12 +97,6 @@ func (i *governanceAssignmentAdditionalDataPtrType) ToGovernanceAssignmentAdditi
 	return pulumi.ToOutputWithContext(ctx, i).(GovernanceAssignmentAdditionalDataPtrOutput)
 }
 
-func (i *governanceAssignmentAdditionalDataPtrType) ToOutput(ctx context.Context) pulumix.Output[*GovernanceAssignmentAdditionalData] {
-	return pulumix.Output[*GovernanceAssignmentAdditionalData]{
-		OutputState: i.ToGovernanceAssignmentAdditionalDataPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describe the additional data of governance assignment - optional
 type GovernanceAssignmentAdditionalDataOutput struct{ *pulumi.OutputState }
 
@@ -133,12 +120,6 @@ func (o GovernanceAssignmentAdditionalDataOutput) ToGovernanceAssignmentAddition
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GovernanceAssignmentAdditionalData) *GovernanceAssignmentAdditionalData {
 		return &v
 	}).(GovernanceAssignmentAdditionalDataPtrOutput)
-}
-
-func (o GovernanceAssignmentAdditionalDataOutput) ToOutput(ctx context.Context) pulumix.Output[GovernanceAssignmentAdditionalData] {
-	return pulumix.Output[GovernanceAssignmentAdditionalData]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Ticket link associated with this governance assignment - for example: https://snow.com
@@ -168,12 +149,6 @@ func (o GovernanceAssignmentAdditionalDataPtrOutput) ToGovernanceAssignmentAddit
 
 func (o GovernanceAssignmentAdditionalDataPtrOutput) ToGovernanceAssignmentAdditionalDataPtrOutputWithContext(ctx context.Context) GovernanceAssignmentAdditionalDataPtrOutput {
 	return o
-}
-
-func (o GovernanceAssignmentAdditionalDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GovernanceAssignmentAdditionalData] {
-	return pulumix.Output[*GovernanceAssignmentAdditionalData]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GovernanceAssignmentAdditionalDataPtrOutput) Elem() GovernanceAssignmentAdditionalDataOutput {
@@ -241,12 +216,6 @@ func (o GovernanceAssignmentAdditionalDataResponseOutput) ToGovernanceAssignment
 	return o
 }
 
-func (o GovernanceAssignmentAdditionalDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GovernanceAssignmentAdditionalDataResponse] {
-	return pulumix.Output[GovernanceAssignmentAdditionalDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Ticket link associated with this governance assignment - for example: https://snow.com
 func (o GovernanceAssignmentAdditionalDataResponseOutput) TicketLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GovernanceAssignmentAdditionalDataResponse) *string { return v.TicketLink }).(pulumi.StringPtrOutput)
@@ -274,12 +243,6 @@ func (o GovernanceAssignmentAdditionalDataResponsePtrOutput) ToGovernanceAssignm
 
 func (o GovernanceAssignmentAdditionalDataResponsePtrOutput) ToGovernanceAssignmentAdditionalDataResponsePtrOutputWithContext(ctx context.Context) GovernanceAssignmentAdditionalDataResponsePtrOutput {
 	return o
-}
-
-func (o GovernanceAssignmentAdditionalDataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GovernanceAssignmentAdditionalDataResponse] {
-	return pulumix.Output[*GovernanceAssignmentAdditionalDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GovernanceAssignmentAdditionalDataResponsePtrOutput) Elem() GovernanceAssignmentAdditionalDataResponseOutput {
@@ -361,12 +324,6 @@ func (i GovernanceEmailNotificationArgs) ToGovernanceEmailNotificationOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GovernanceEmailNotificationOutput)
 }
 
-func (i GovernanceEmailNotificationArgs) ToOutput(ctx context.Context) pulumix.Output[GovernanceEmailNotification] {
-	return pulumix.Output[GovernanceEmailNotification]{
-		OutputState: i.ToGovernanceEmailNotificationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GovernanceEmailNotificationArgs) ToGovernanceEmailNotificationPtrOutput() GovernanceEmailNotificationPtrOutput {
 	return i.ToGovernanceEmailNotificationPtrOutputWithContext(context.Background())
 }
@@ -408,12 +365,6 @@ func (i *governanceEmailNotificationPtrType) ToGovernanceEmailNotificationPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(GovernanceEmailNotificationPtrOutput)
 }
 
-func (i *governanceEmailNotificationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GovernanceEmailNotification] {
-	return pulumix.Output[*GovernanceEmailNotification]{
-		OutputState: i.ToGovernanceEmailNotificationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The governance email weekly notification configuration.
 type GovernanceEmailNotificationOutput struct{ *pulumi.OutputState }
 
@@ -439,12 +390,6 @@ func (o GovernanceEmailNotificationOutput) ToGovernanceEmailNotificationPtrOutpu
 	}).(GovernanceEmailNotificationPtrOutput)
 }
 
-func (o GovernanceEmailNotificationOutput) ToOutput(ctx context.Context) pulumix.Output[GovernanceEmailNotification] {
-	return pulumix.Output[GovernanceEmailNotification]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Exclude manager from weekly email notification.
 func (o GovernanceEmailNotificationOutput) DisableManagerEmailNotification() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GovernanceEmailNotification) *bool { return v.DisableManagerEmailNotification }).(pulumi.BoolPtrOutput)
@@ -467,12 +412,6 @@ func (o GovernanceEmailNotificationPtrOutput) ToGovernanceEmailNotificationPtrOu
 
 func (o GovernanceEmailNotificationPtrOutput) ToGovernanceEmailNotificationPtrOutputWithContext(ctx context.Context) GovernanceEmailNotificationPtrOutput {
 	return o
-}
-
-func (o GovernanceEmailNotificationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GovernanceEmailNotification] {
-	return pulumix.Output[*GovernanceEmailNotification]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GovernanceEmailNotificationPtrOutput) Elem() GovernanceEmailNotificationOutput {
@@ -528,12 +467,6 @@ func (o GovernanceEmailNotificationResponseOutput) ToGovernanceEmailNotification
 	return o
 }
 
-func (o GovernanceEmailNotificationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GovernanceEmailNotificationResponse] {
-	return pulumix.Output[GovernanceEmailNotificationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Exclude manager from weekly email notification.
 func (o GovernanceEmailNotificationResponseOutput) DisableManagerEmailNotification() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GovernanceEmailNotificationResponse) *bool { return v.DisableManagerEmailNotification }).(pulumi.BoolPtrOutput)
@@ -556,12 +489,6 @@ func (o GovernanceEmailNotificationResponsePtrOutput) ToGovernanceEmailNotificat
 
 func (o GovernanceEmailNotificationResponsePtrOutput) ToGovernanceEmailNotificationResponsePtrOutputWithContext(ctx context.Context) GovernanceEmailNotificationResponsePtrOutput {
 	return o
-}
-
-func (o GovernanceEmailNotificationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GovernanceEmailNotificationResponse] {
-	return pulumix.Output[*GovernanceEmailNotificationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GovernanceEmailNotificationResponsePtrOutput) Elem() GovernanceEmailNotificationResponseOutput {
@@ -633,12 +560,6 @@ func (i GovernanceRuleEmailNotificationArgs) ToGovernanceRuleEmailNotificationOu
 	return pulumi.ToOutputWithContext(ctx, i).(GovernanceRuleEmailNotificationOutput)
 }
 
-func (i GovernanceRuleEmailNotificationArgs) ToOutput(ctx context.Context) pulumix.Output[GovernanceRuleEmailNotification] {
-	return pulumix.Output[GovernanceRuleEmailNotification]{
-		OutputState: i.ToGovernanceRuleEmailNotificationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GovernanceRuleEmailNotificationArgs) ToGovernanceRuleEmailNotificationPtrOutput() GovernanceRuleEmailNotificationPtrOutput {
 	return i.ToGovernanceRuleEmailNotificationPtrOutputWithContext(context.Background())
 }
@@ -680,12 +601,6 @@ func (i *governanceRuleEmailNotificationPtrType) ToGovernanceRuleEmailNotificati
 	return pulumi.ToOutputWithContext(ctx, i).(GovernanceRuleEmailNotificationPtrOutput)
 }
 
-func (i *governanceRuleEmailNotificationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GovernanceRuleEmailNotification] {
-	return pulumix.Output[*GovernanceRuleEmailNotification]{
-		OutputState: i.ToGovernanceRuleEmailNotificationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The governance email weekly notification configuration
 type GovernanceRuleEmailNotificationOutput struct{ *pulumi.OutputState }
 
@@ -711,12 +626,6 @@ func (o GovernanceRuleEmailNotificationOutput) ToGovernanceRuleEmailNotification
 	}).(GovernanceRuleEmailNotificationPtrOutput)
 }
 
-func (o GovernanceRuleEmailNotificationOutput) ToOutput(ctx context.Context) pulumix.Output[GovernanceRuleEmailNotification] {
-	return pulumix.Output[GovernanceRuleEmailNotification]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines whether manager email notifications are disabled
 func (o GovernanceRuleEmailNotificationOutput) DisableManagerEmailNotification() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GovernanceRuleEmailNotification) *bool { return v.DisableManagerEmailNotification }).(pulumi.BoolPtrOutput)
@@ -739,12 +648,6 @@ func (o GovernanceRuleEmailNotificationPtrOutput) ToGovernanceRuleEmailNotificat
 
 func (o GovernanceRuleEmailNotificationPtrOutput) ToGovernanceRuleEmailNotificationPtrOutputWithContext(ctx context.Context) GovernanceRuleEmailNotificationPtrOutput {
 	return o
-}
-
-func (o GovernanceRuleEmailNotificationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GovernanceRuleEmailNotification] {
-	return pulumix.Output[*GovernanceRuleEmailNotification]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GovernanceRuleEmailNotificationPtrOutput) Elem() GovernanceRuleEmailNotificationOutput {
@@ -800,12 +703,6 @@ func (o GovernanceRuleEmailNotificationResponseOutput) ToGovernanceRuleEmailNoti
 	return o
 }
 
-func (o GovernanceRuleEmailNotificationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GovernanceRuleEmailNotificationResponse] {
-	return pulumix.Output[GovernanceRuleEmailNotificationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines whether manager email notifications are disabled
 func (o GovernanceRuleEmailNotificationResponseOutput) DisableManagerEmailNotification() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GovernanceRuleEmailNotificationResponse) *bool { return v.DisableManagerEmailNotification }).(pulumi.BoolPtrOutput)
@@ -828,12 +725,6 @@ func (o GovernanceRuleEmailNotificationResponsePtrOutput) ToGovernanceRuleEmailN
 
 func (o GovernanceRuleEmailNotificationResponsePtrOutput) ToGovernanceRuleEmailNotificationResponsePtrOutputWithContext(ctx context.Context) GovernanceRuleEmailNotificationResponsePtrOutput {
 	return o
-}
-
-func (o GovernanceRuleEmailNotificationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GovernanceRuleEmailNotificationResponse] {
-	return pulumix.Output[*GovernanceRuleEmailNotificationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GovernanceRuleEmailNotificationResponsePtrOutput) Elem() GovernanceRuleEmailNotificationResponseOutput {
@@ -893,12 +784,6 @@ func (o GovernanceRuleMetadataResponseOutput) ToGovernanceRuleMetadataResponseOu
 	return o
 }
 
-func (o GovernanceRuleMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GovernanceRuleMetadataResponse] {
-	return pulumix.Output[GovernanceRuleMetadataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Governance rule Created by object id (GUID)
 func (o GovernanceRuleMetadataResponseOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v GovernanceRuleMetadataResponse) string { return v.CreatedBy }).(pulumi.StringOutput)
@@ -931,12 +816,6 @@ func (o GovernanceRuleMetadataResponsePtrOutput) ToGovernanceRuleMetadataRespons
 
 func (o GovernanceRuleMetadataResponsePtrOutput) ToGovernanceRuleMetadataResponsePtrOutputWithContext(ctx context.Context) GovernanceRuleMetadataResponsePtrOutput {
 	return o
-}
-
-func (o GovernanceRuleMetadataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GovernanceRuleMetadataResponse] {
-	return pulumix.Output[*GovernanceRuleMetadataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GovernanceRuleMetadataResponsePtrOutput) Elem() GovernanceRuleMetadataResponseOutput {
@@ -1028,12 +907,6 @@ func (i GovernanceRuleOwnerSourceArgs) ToGovernanceRuleOwnerSourceOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GovernanceRuleOwnerSourceOutput)
 }
 
-func (i GovernanceRuleOwnerSourceArgs) ToOutput(ctx context.Context) pulumix.Output[GovernanceRuleOwnerSource] {
-	return pulumix.Output[GovernanceRuleOwnerSource]{
-		OutputState: i.ToGovernanceRuleOwnerSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describe the owner source of governance rule
 type GovernanceRuleOwnerSourceOutput struct{ *pulumi.OutputState }
 
@@ -1047,12 +920,6 @@ func (o GovernanceRuleOwnerSourceOutput) ToGovernanceRuleOwnerSourceOutput() Gov
 
 func (o GovernanceRuleOwnerSourceOutput) ToGovernanceRuleOwnerSourceOutputWithContext(ctx context.Context) GovernanceRuleOwnerSourceOutput {
 	return o
-}
-
-func (o GovernanceRuleOwnerSourceOutput) ToOutput(ctx context.Context) pulumix.Output[GovernanceRuleOwnerSource] {
-	return pulumix.Output[GovernanceRuleOwnerSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The owner type for the governance rule owner source
@@ -1086,12 +953,6 @@ func (o GovernanceRuleOwnerSourceResponseOutput) ToGovernanceRuleOwnerSourceResp
 
 func (o GovernanceRuleOwnerSourceResponseOutput) ToGovernanceRuleOwnerSourceResponseOutputWithContext(ctx context.Context) GovernanceRuleOwnerSourceResponseOutput {
 	return o
-}
-
-func (o GovernanceRuleOwnerSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GovernanceRuleOwnerSourceResponse] {
-	return pulumix.Output[GovernanceRuleOwnerSourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The owner type for the governance rule owner source
@@ -1143,12 +1004,6 @@ func (i RemediationEtaArgs) ToRemediationEtaOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(RemediationEtaOutput)
 }
 
-func (i RemediationEtaArgs) ToOutput(ctx context.Context) pulumix.Output[RemediationEta] {
-	return pulumix.Output[RemediationEta]{
-		OutputState: i.ToRemediationEtaOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RemediationEtaArgs) ToRemediationEtaPtrOutput() RemediationEtaPtrOutput {
 	return i.ToRemediationEtaPtrOutputWithContext(context.Background())
 }
@@ -1190,12 +1045,6 @@ func (i *remediationEtaPtrType) ToRemediationEtaPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(RemediationEtaPtrOutput)
 }
 
-func (i *remediationEtaPtrType) ToOutput(ctx context.Context) pulumix.Output[*RemediationEta] {
-	return pulumix.Output[*RemediationEta]{
-		OutputState: i.ToRemediationEtaPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The ETA (estimated time of arrival) for remediation
 type RemediationEtaOutput struct{ *pulumi.OutputState }
 
@@ -1221,12 +1070,6 @@ func (o RemediationEtaOutput) ToRemediationEtaPtrOutputWithContext(ctx context.C
 	}).(RemediationEtaPtrOutput)
 }
 
-func (o RemediationEtaOutput) ToOutput(ctx context.Context) pulumix.Output[RemediationEta] {
-	return pulumix.Output[RemediationEta]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ETA for remediation.
 func (o RemediationEtaOutput) Eta() pulumi.StringOutput {
 	return o.ApplyT(func(v RemediationEta) string { return v.Eta }).(pulumi.StringOutput)
@@ -1249,12 +1092,6 @@ func (o RemediationEtaPtrOutput) ToRemediationEtaPtrOutput() RemediationEtaPtrOu
 
 func (o RemediationEtaPtrOutput) ToRemediationEtaPtrOutputWithContext(ctx context.Context) RemediationEtaPtrOutput {
 	return o
-}
-
-func (o RemediationEtaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RemediationEta] {
-	return pulumix.Output[*RemediationEta]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RemediationEtaPtrOutput) Elem() RemediationEtaOutput {
@@ -1310,12 +1147,6 @@ func (o RemediationEtaResponseOutput) ToRemediationEtaResponseOutputWithContext(
 	return o
 }
 
-func (o RemediationEtaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RemediationEtaResponse] {
-	return pulumix.Output[RemediationEtaResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ETA for remediation.
 func (o RemediationEtaResponseOutput) Eta() pulumi.StringOutput {
 	return o.ApplyT(func(v RemediationEtaResponse) string { return v.Eta }).(pulumi.StringOutput)
@@ -1338,12 +1169,6 @@ func (o RemediationEtaResponsePtrOutput) ToRemediationEtaResponsePtrOutput() Rem
 
 func (o RemediationEtaResponsePtrOutput) ToRemediationEtaResponsePtrOutputWithContext(ctx context.Context) RemediationEtaResponsePtrOutput {
 	return o
-}
-
-func (o RemediationEtaResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RemediationEtaResponse] {
-	return pulumix.Output[*RemediationEtaResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RemediationEtaResponsePtrOutput) Elem() RemediationEtaResponseOutput {

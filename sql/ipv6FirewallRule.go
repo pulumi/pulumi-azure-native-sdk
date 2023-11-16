@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An IPv6 server firewall rule.
@@ -159,12 +158,6 @@ func (i *IPv6FirewallRule) ToIPv6FirewallRuleOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(IPv6FirewallRuleOutput)
 }
 
-func (i *IPv6FirewallRule) ToOutput(ctx context.Context) pulumix.Output[*IPv6FirewallRule] {
-	return pulumix.Output[*IPv6FirewallRule]{
-		OutputState: i.ToIPv6FirewallRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IPv6FirewallRuleOutput struct{ *pulumi.OutputState }
 
 func (IPv6FirewallRuleOutput) ElementType() reflect.Type {
@@ -177,12 +170,6 @@ func (o IPv6FirewallRuleOutput) ToIPv6FirewallRuleOutput() IPv6FirewallRuleOutpu
 
 func (o IPv6FirewallRuleOutput) ToIPv6FirewallRuleOutputWithContext(ctx context.Context) IPv6FirewallRuleOutput {
 	return o
-}
-
-func (o IPv6FirewallRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*IPv6FirewallRule] {
-	return pulumix.Output[*IPv6FirewallRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The end IP address of the firewall rule. Must be IPv6 format. Must be greater than or equal to startIpAddress.

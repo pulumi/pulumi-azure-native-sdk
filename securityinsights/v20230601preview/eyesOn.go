@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Settings with single toggle.
@@ -116,6 +115,9 @@ func NewEyesOn(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:EyesOn"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:EyesOn"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -198,12 +200,6 @@ func (i *EyesOn) ToEyesOnOutputWithContext(ctx context.Context) EyesOnOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EyesOnOutput)
 }
 
-func (i *EyesOn) ToOutput(ctx context.Context) pulumix.Output[*EyesOn] {
-	return pulumix.Output[*EyesOn]{
-		OutputState: i.ToEyesOnOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EyesOnOutput struct{ *pulumi.OutputState }
 
 func (EyesOnOutput) ElementType() reflect.Type {
@@ -216,12 +212,6 @@ func (o EyesOnOutput) ToEyesOnOutput() EyesOnOutput {
 
 func (o EyesOnOutput) ToEyesOnOutputWithContext(ctx context.Context) EyesOnOutput {
 	return o
-}
-
-func (o EyesOnOutput) ToOutput(ctx context.Context) pulumix.Output[*EyesOn] {
-	return pulumix.Output[*EyesOn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Etag of the azure resource

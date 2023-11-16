@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The autoscale setting resource.
@@ -179,12 +178,6 @@ func (i *AutoscaleSetting) ToAutoscaleSettingOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscaleSettingOutput)
 }
 
-func (i *AutoscaleSetting) ToOutput(ctx context.Context) pulumix.Output[*AutoscaleSetting] {
-	return pulumix.Output[*AutoscaleSetting]{
-		OutputState: i.ToAutoscaleSettingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AutoscaleSettingOutput struct{ *pulumi.OutputState }
 
 func (AutoscaleSettingOutput) ElementType() reflect.Type {
@@ -197,12 +190,6 @@ func (o AutoscaleSettingOutput) ToAutoscaleSettingOutput() AutoscaleSettingOutpu
 
 func (o AutoscaleSettingOutput) ToAutoscaleSettingOutputWithContext(ctx context.Context) AutoscaleSettingOutput {
 	return o
-}
-
-func (o AutoscaleSettingOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoscaleSetting] {
-	return pulumix.Output[*AutoscaleSetting]{
-		OutputState: o.OutputState,
-	}
 }
 
 // the enabled flag. Specifies whether automatic scaling is enabled for the resource. The default value is 'false'.

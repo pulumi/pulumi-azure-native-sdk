@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a single firewall rule in a specified redis cache.
@@ -88,12 +87,6 @@ func (o LookupFirewallRuleResultOutput) ToLookupFirewallRuleResultOutput() Looku
 
 func (o LookupFirewallRuleResultOutput) ToLookupFirewallRuleResultOutputWithContext(ctx context.Context) LookupFirewallRuleResultOutput {
 	return o
-}
-
-func (o LookupFirewallRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFirewallRuleResult] {
-	return pulumix.Output[LookupFirewallRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // highest IP address included in the range

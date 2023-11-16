@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Resource information with extended details.
@@ -163,12 +162,6 @@ func (i *DedicatedHsm) ToDedicatedHsmOutputWithContext(ctx context.Context) Dedi
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedHsmOutput)
 }
 
-func (i *DedicatedHsm) ToOutput(ctx context.Context) pulumix.Output[*DedicatedHsm] {
-	return pulumix.Output[*DedicatedHsm]{
-		OutputState: i.ToDedicatedHsmOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DedicatedHsmOutput struct{ *pulumi.OutputState }
 
 func (DedicatedHsmOutput) ElementType() reflect.Type {
@@ -181,12 +174,6 @@ func (o DedicatedHsmOutput) ToDedicatedHsmOutput() DedicatedHsmOutput {
 
 func (o DedicatedHsmOutput) ToDedicatedHsmOutputWithContext(ctx context.Context) DedicatedHsmOutput {
 	return o
-}
-
-func (o DedicatedHsmOutput) ToOutput(ctx context.Context) pulumix.Output[*DedicatedHsm] {
-	return pulumix.Output[*DedicatedHsm]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The supported Azure location where the dedicated HSM should be created.

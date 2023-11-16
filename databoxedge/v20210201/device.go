@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Data Box Edge/Gateway device.
@@ -230,12 +229,6 @@ func (i *Device) ToDeviceOutputWithContext(ctx context.Context) DeviceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceOutput)
 }
 
-func (i *Device) ToOutput(ctx context.Context) pulumix.Output[*Device] {
-	return pulumix.Output[*Device]{
-		OutputState: i.ToDeviceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeviceOutput struct{ *pulumi.OutputState }
 
 func (DeviceOutput) ElementType() reflect.Type {
@@ -248,12 +241,6 @@ func (o DeviceOutput) ToDeviceOutput() DeviceOutput {
 
 func (o DeviceOutput) ToDeviceOutputWithContext(ctx context.Context) DeviceOutput {
 	return o
-}
-
-func (o DeviceOutput) ToOutput(ctx context.Context) pulumix.Output[*Device] {
-	return pulumix.Output[*Device]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Type of compute roles configured.

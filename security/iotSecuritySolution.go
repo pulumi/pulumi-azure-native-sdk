@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // IoT Security solution configuration and resource information.
@@ -203,12 +202,6 @@ func (i *IotSecuritySolution) ToIotSecuritySolutionOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(IotSecuritySolutionOutput)
 }
 
-func (i *IotSecuritySolution) ToOutput(ctx context.Context) pulumix.Output[*IotSecuritySolution] {
-	return pulumix.Output[*IotSecuritySolution]{
-		OutputState: i.ToIotSecuritySolutionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IotSecuritySolutionOutput struct{ *pulumi.OutputState }
 
 func (IotSecuritySolutionOutput) ElementType() reflect.Type {
@@ -221,12 +214,6 @@ func (o IotSecuritySolutionOutput) ToIotSecuritySolutionOutput() IotSecuritySolu
 
 func (o IotSecuritySolutionOutput) ToIotSecuritySolutionOutputWithContext(ctx context.Context) IotSecuritySolutionOutput {
 	return o
-}
-
-func (o IotSecuritySolutionOutput) ToOutput(ctx context.Context) pulumix.Output[*IotSecuritySolution] {
-	return pulumix.Output[*IotSecuritySolution]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of additional workspaces

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve the credential identified by credential name.
@@ -92,12 +91,6 @@ func (o LookupCredentialResultOutput) ToLookupCredentialResultOutput() LookupCre
 
 func (o LookupCredentialResultOutput) ToLookupCredentialResultOutputWithContext(ctx context.Context) LookupCredentialResultOutput {
 	return o
-}
-
-func (o LookupCredentialResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCredentialResult] {
-	return pulumix.Output[LookupCredentialResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the creation time.

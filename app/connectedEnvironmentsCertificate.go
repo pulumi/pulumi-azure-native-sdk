@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Certificate used for Custom Domain bindings of Container Apps in a Managed Environment
@@ -157,12 +156,6 @@ func (i *ConnectedEnvironmentsCertificate) ToConnectedEnvironmentsCertificateOut
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectedEnvironmentsCertificateOutput)
 }
 
-func (i *ConnectedEnvironmentsCertificate) ToOutput(ctx context.Context) pulumix.Output[*ConnectedEnvironmentsCertificate] {
-	return pulumix.Output[*ConnectedEnvironmentsCertificate]{
-		OutputState: i.ToConnectedEnvironmentsCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectedEnvironmentsCertificateOutput struct{ *pulumi.OutputState }
 
 func (ConnectedEnvironmentsCertificateOutput) ElementType() reflect.Type {
@@ -175,12 +168,6 @@ func (o ConnectedEnvironmentsCertificateOutput) ToConnectedEnvironmentsCertifica
 
 func (o ConnectedEnvironmentsCertificateOutput) ToConnectedEnvironmentsCertificateOutputWithContext(ctx context.Context) ConnectedEnvironmentsCertificateOutput {
 	return o
-}
-
-func (o ConnectedEnvironmentsCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectedEnvironmentsCertificate] {
-	return pulumix.Output[*ConnectedEnvironmentsCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

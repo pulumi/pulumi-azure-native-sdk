@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List Environments for the user
@@ -74,12 +73,6 @@ func (o ListGlobalUserEnvironmentsResultOutput) ToListGlobalUserEnvironmentsResu
 
 func (o ListGlobalUserEnvironmentsResultOutput) ToListGlobalUserEnvironmentsResultOutputWithContext(ctx context.Context) ListGlobalUserEnvironmentsResultOutput {
 	return o
-}
-
-func (o ListGlobalUserEnvironmentsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListGlobalUserEnvironmentsResult] {
-	return pulumix.Output[ListGlobalUserEnvironmentsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of all the environments

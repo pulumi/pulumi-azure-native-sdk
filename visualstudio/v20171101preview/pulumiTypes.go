@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -65,12 +64,6 @@ func (i ExtensionResourcePlanArgs) ToExtensionResourcePlanOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionResourcePlanOutput)
 }
 
-func (i ExtensionResourcePlanArgs) ToOutput(ctx context.Context) pulumix.Output[ExtensionResourcePlan] {
-	return pulumix.Output[ExtensionResourcePlan]{
-		OutputState: i.ToExtensionResourcePlanOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExtensionResourcePlanArgs) ToExtensionResourcePlanPtrOutput() ExtensionResourcePlanPtrOutput {
 	return i.ToExtensionResourcePlanPtrOutputWithContext(context.Background())
 }
@@ -112,12 +105,6 @@ func (i *extensionResourcePlanPtrType) ToExtensionResourcePlanPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ExtensionResourcePlanPtrOutput)
 }
 
-func (i *extensionResourcePlanPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExtensionResourcePlan] {
-	return pulumix.Output[*ExtensionResourcePlan]{
-		OutputState: i.ToExtensionResourcePlanPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Plan data for an extension resource.
 type ExtensionResourcePlanOutput struct{ *pulumi.OutputState }
 
@@ -141,12 +128,6 @@ func (o ExtensionResourcePlanOutput) ToExtensionResourcePlanPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExtensionResourcePlan) *ExtensionResourcePlan {
 		return &v
 	}).(ExtensionResourcePlanPtrOutput)
-}
-
-func (o ExtensionResourcePlanOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionResourcePlan] {
-	return pulumix.Output[ExtensionResourcePlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the plan.
@@ -186,12 +167,6 @@ func (o ExtensionResourcePlanPtrOutput) ToExtensionResourcePlanPtrOutput() Exten
 
 func (o ExtensionResourcePlanPtrOutput) ToExtensionResourcePlanPtrOutputWithContext(ctx context.Context) ExtensionResourcePlanPtrOutput {
 	return o
-}
-
-func (o ExtensionResourcePlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExtensionResourcePlan] {
-	return pulumix.Output[*ExtensionResourcePlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExtensionResourcePlanPtrOutput) Elem() ExtensionResourcePlanOutput {
@@ -283,12 +258,6 @@ func (o ExtensionResourcePlanResponseOutput) ToExtensionResourcePlanResponseOutp
 	return o
 }
 
-func (o ExtensionResourcePlanResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExtensionResourcePlanResponse] {
-	return pulumix.Output[ExtensionResourcePlanResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the plan.
 func (o ExtensionResourcePlanResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExtensionResourcePlanResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -326,12 +295,6 @@ func (o ExtensionResourcePlanResponsePtrOutput) ToExtensionResourcePlanResponseP
 
 func (o ExtensionResourcePlanResponsePtrOutput) ToExtensionResourcePlanResponsePtrOutputWithContext(ctx context.Context) ExtensionResourcePlanResponsePtrOutput {
 	return o
-}
-
-func (o ExtensionResourcePlanResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExtensionResourcePlanResponse] {
-	return pulumix.Output[*ExtensionResourcePlanResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExtensionResourcePlanResponsePtrOutput) Elem() ExtensionResourcePlanResponseOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A host resource belonging to a site resource.
@@ -144,12 +143,6 @@ func (i *HypervHostController) ToHypervHostControllerOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(HypervHostControllerOutput)
 }
 
-func (i *HypervHostController) ToOutput(ctx context.Context) pulumix.Output[*HypervHostController] {
-	return pulumix.Output[*HypervHostController]{
-		OutputState: i.ToHypervHostControllerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HypervHostControllerOutput struct{ *pulumi.OutputState }
 
 func (HypervHostControllerOutput) ElementType() reflect.Type {
@@ -162,12 +155,6 @@ func (o HypervHostControllerOutput) ToHypervHostControllerOutput() HypervHostCon
 
 func (o HypervHostControllerOutput) ToHypervHostControllerOutputWithContext(ctx context.Context) HypervHostControllerOutput {
 	return o
-}
-
-func (o HypervHostControllerOutput) ToOutput(ctx context.Context) pulumix.Output[*HypervHostController] {
-	return pulumix.Output[*HypervHostController]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the timestamp marking Hyper-V host creation.

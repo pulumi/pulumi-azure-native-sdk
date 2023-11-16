@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Managed Network resource
@@ -133,12 +132,6 @@ func (i *ManagedNetwork) ToManagedNetworkOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedNetworkOutput)
 }
 
-func (i *ManagedNetwork) ToOutput(ctx context.Context) pulumix.Output[*ManagedNetwork] {
-	return pulumix.Output[*ManagedNetwork]{
-		OutputState: i.ToManagedNetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagedNetworkOutput struct{ *pulumi.OutputState }
 
 func (ManagedNetworkOutput) ElementType() reflect.Type {
@@ -151,12 +144,6 @@ func (o ManagedNetworkOutput) ToManagedNetworkOutput() ManagedNetworkOutput {
 
 func (o ManagedNetworkOutput) ToManagedNetworkOutputWithContext(ctx context.Context) ManagedNetworkOutput {
 	return o
-}
-
-func (o ManagedNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedNetwork] {
-	return pulumix.Output[*ManagedNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The collection of groups and policies concerned with connectivity

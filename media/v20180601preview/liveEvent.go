@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Live Event.
@@ -209,12 +208,6 @@ func (i *LiveEvent) ToLiveEventOutputWithContext(ctx context.Context) LiveEventO
 	return pulumi.ToOutputWithContext(ctx, i).(LiveEventOutput)
 }
 
-func (i *LiveEvent) ToOutput(ctx context.Context) pulumix.Output[*LiveEvent] {
-	return pulumix.Output[*LiveEvent]{
-		OutputState: i.ToLiveEventOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LiveEventOutput struct{ *pulumi.OutputState }
 
 func (LiveEventOutput) ElementType() reflect.Type {
@@ -227,12 +220,6 @@ func (o LiveEventOutput) ToLiveEventOutput() LiveEventOutput {
 
 func (o LiveEventOutput) ToLiveEventOutputWithContext(ctx context.Context) LiveEventOutput {
 	return o
-}
-
-func (o LiveEventOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveEvent] {
-	return pulumix.Output[*LiveEvent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The exact time the Live Event was created.

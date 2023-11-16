@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of an Appliance with a specified resource group and name.
@@ -113,12 +112,6 @@ func (o LookupApplianceResultOutput) ToLookupApplianceResultOutput() LookupAppli
 
 func (o LookupApplianceResultOutput) ToLookupApplianceResultOutputWithContext(ctx context.Context) LookupApplianceResultOutput {
 	return o
-}
-
-func (o LookupApplianceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApplianceResult] {
-	return pulumix.Output[LookupApplianceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Represents a supported Fabric/Infra. (AKSEdge etc...).

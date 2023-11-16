@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i BackupProfileArgs) ToBackupProfileOutput() BackupProfileOutput {
 
 func (i BackupProfileArgs) ToBackupProfileOutputWithContext(ctx context.Context) BackupProfileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BackupProfileOutput)
-}
-
-func (i BackupProfileArgs) ToOutput(ctx context.Context) pulumix.Output[BackupProfile] {
-	return pulumix.Output[BackupProfile]{
-		OutputState: i.ToBackupProfileOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i BackupProfileArgs) ToBackupProfilePtrOutput() BackupProfilePtrOutput {
@@ -96,12 +89,6 @@ func (i *backupProfilePtrType) ToBackupProfilePtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(BackupProfilePtrOutput)
 }
 
-func (i *backupProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*BackupProfile] {
-	return pulumix.Output[*BackupProfile]{
-		OutputState: i.ToBackupProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Backup profile
 type BackupProfileOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o BackupProfileOutput) ToBackupProfilePtrOutputWithContext(ctx context.Con
 	}).(BackupProfilePtrOutput)
 }
 
-func (o BackupProfileOutput) ToOutput(ctx context.Context) pulumix.Output[BackupProfile] {
-	return pulumix.Output[BackupProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable Azure backup for the workload
 func (o BackupProfileOutput) BackupEnabled() pulumi.StringOutput {
 	return o.ApplyT(func(v BackupProfile) string { return v.BackupEnabled }).(pulumi.StringOutput)
@@ -150,12 +131,6 @@ func (o BackupProfilePtrOutput) ToBackupProfilePtrOutput() BackupProfilePtrOutpu
 
 func (o BackupProfilePtrOutput) ToBackupProfilePtrOutputWithContext(ctx context.Context) BackupProfilePtrOutput {
 	return o
-}
-
-func (o BackupProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupProfile] {
-	return pulumix.Output[*BackupProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackupProfilePtrOutput) Elem() BackupProfileOutput {
@@ -201,12 +176,6 @@ func (o BackupProfileResponseOutput) ToBackupProfileResponseOutputWithContext(ct
 	return o
 }
 
-func (o BackupProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BackupProfileResponse] {
-	return pulumix.Output[BackupProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable Azure backup for the workload
 func (o BackupProfileResponseOutput) BackupEnabled() pulumi.StringOutput {
 	return o.ApplyT(func(v BackupProfileResponse) string { return v.BackupEnabled }).(pulumi.StringOutput)
@@ -229,12 +198,6 @@ func (o BackupProfileResponsePtrOutput) ToBackupProfileResponsePtrOutput() Backu
 
 func (o BackupProfileResponsePtrOutput) ToBackupProfileResponsePtrOutputWithContext(ctx context.Context) BackupProfileResponsePtrOutput {
 	return o
-}
-
-func (o BackupProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupProfileResponse] {
-	return pulumix.Output[*BackupProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackupProfileResponsePtrOutput) Elem() BackupProfileResponseOutput {
@@ -314,12 +277,6 @@ func (i CacheProfileArgs) ToCacheProfileOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(CacheProfileOutput)
 }
 
-func (i CacheProfileArgs) ToOutput(ctx context.Context) pulumix.Output[CacheProfile] {
-	return pulumix.Output[CacheProfile]{
-		OutputState: i.ToCacheProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CacheProfileArgs) ToCacheProfilePtrOutput() CacheProfilePtrOutput {
 	return i.ToCacheProfilePtrOutputWithContext(context.Background())
 }
@@ -361,12 +318,6 @@ func (i *cacheProfilePtrType) ToCacheProfilePtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(CacheProfilePtrOutput)
 }
 
-func (i *cacheProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*CacheProfile] {
-	return pulumix.Output[*CacheProfile]{
-		OutputState: i.ToCacheProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Cache profile
 type CacheProfileOutput struct{ *pulumi.OutputState }
 
@@ -390,12 +341,6 @@ func (o CacheProfileOutput) ToCacheProfilePtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CacheProfile) *CacheProfile {
 		return &v
 	}).(CacheProfilePtrOutput)
-}
-
-func (o CacheProfileOutput) ToOutput(ctx context.Context) pulumix.Output[CacheProfile] {
-	return pulumix.Output[CacheProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cache capacity
@@ -430,12 +375,6 @@ func (o CacheProfilePtrOutput) ToCacheProfilePtrOutput() CacheProfilePtrOutput {
 
 func (o CacheProfilePtrOutput) ToCacheProfilePtrOutputWithContext(ctx context.Context) CacheProfilePtrOutput {
 	return o
-}
-
-func (o CacheProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheProfile] {
-	return pulumix.Output[*CacheProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CacheProfilePtrOutput) Elem() CacheProfileOutput {
@@ -517,12 +456,6 @@ func (o CacheProfileResponseOutput) ToCacheProfileResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o CacheProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CacheProfileResponse] {
-	return pulumix.Output[CacheProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Cache resource Id
 func (o CacheProfileResponseOutput) CacheResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v CacheProfileResponse) string { return v.CacheResourceId }).(pulumi.StringOutput)
@@ -560,12 +493,6 @@ func (o CacheProfileResponsePtrOutput) ToCacheProfileResponsePtrOutput() CachePr
 
 func (o CacheProfileResponsePtrOutput) ToCacheProfileResponsePtrOutputWithContext(ctx context.Context) CacheProfileResponsePtrOutput {
 	return o
-}
-
-func (o CacheProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheProfileResponse] {
-	return pulumix.Output[*CacheProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CacheProfileResponsePtrOutput) Elem() CacheProfileResponseOutput {
@@ -703,12 +630,6 @@ func (i DatabaseProfileArgs) ToDatabaseProfileOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseProfileOutput)
 }
 
-func (i DatabaseProfileArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseProfile] {
-	return pulumix.Output[DatabaseProfile]{
-		OutputState: i.ToDatabaseProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Workload database profile
 type DatabaseProfileOutput struct{ *pulumi.OutputState }
 
@@ -722,12 +643,6 @@ func (o DatabaseProfileOutput) ToDatabaseProfileOutput() DatabaseProfileOutput {
 
 func (o DatabaseProfileOutput) ToDatabaseProfileOutputWithContext(ctx context.Context) DatabaseProfileOutput {
 	return o
-}
-
-func (o DatabaseProfileOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseProfile] {
-	return pulumix.Output[DatabaseProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Backup retention days for the server
@@ -826,12 +741,6 @@ func (o DatabaseProfileResponseOutput) ToDatabaseProfileResponseOutput() Databas
 
 func (o DatabaseProfileResponseOutput) ToDatabaseProfileResponseOutputWithContext(ctx context.Context) DatabaseProfileResponseOutput {
 	return o
-}
-
-func (o DatabaseProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseProfileResponse] {
-	return pulumix.Output[DatabaseProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Backup retention days for the server
@@ -933,12 +842,6 @@ func (i DiskInfoArgs) ToDiskInfoOutputWithContext(ctx context.Context) DiskInfoO
 	return pulumi.ToOutputWithContext(ctx, i).(DiskInfoOutput)
 }
 
-func (i DiskInfoArgs) ToOutput(ctx context.Context) pulumix.Output[DiskInfo] {
-	return pulumix.Output[DiskInfo]{
-		OutputState: i.ToDiskInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DiskInfoArgs) ToDiskInfoPtrOutput() DiskInfoPtrOutput {
 	return i.ToDiskInfoPtrOutputWithContext(context.Background())
 }
@@ -980,12 +883,6 @@ func (i *diskInfoPtrType) ToDiskInfoPtrOutputWithContext(ctx context.Context) Di
 	return pulumi.ToOutputWithContext(ctx, i).(DiskInfoPtrOutput)
 }
 
-func (i *diskInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*DiskInfo] {
-	return pulumix.Output[*DiskInfo]{
-		OutputState: i.ToDiskInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DiskInfoArrayInput is an input type that accepts DiskInfoArray and DiskInfoArrayOutput values.
 // You can construct a concrete instance of `DiskInfoArrayInput` via:
 //
@@ -1009,12 +906,6 @@ func (i DiskInfoArray) ToDiskInfoArrayOutput() DiskInfoArrayOutput {
 
 func (i DiskInfoArray) ToDiskInfoArrayOutputWithContext(ctx context.Context) DiskInfoArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskInfoArrayOutput)
-}
-
-func (i DiskInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]DiskInfo] {
-	return pulumix.Output[[]DiskInfo]{
-		OutputState: i.ToDiskInfoArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // Disk resource creation details
@@ -1042,12 +933,6 @@ func (o DiskInfoOutput) ToDiskInfoPtrOutputWithContext(ctx context.Context) Disk
 	}).(DiskInfoPtrOutput)
 }
 
-func (o DiskInfoOutput) ToOutput(ctx context.Context) pulumix.Output[DiskInfo] {
-	return pulumix.Output[DiskInfo]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Disk size in GB
 func (o DiskInfoOutput) SizeInGB() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v DiskInfo) *float64 { return v.SizeInGB }).(pulumi.Float64PtrOutput)
@@ -1070,12 +955,6 @@ func (o DiskInfoPtrOutput) ToDiskInfoPtrOutput() DiskInfoPtrOutput {
 
 func (o DiskInfoPtrOutput) ToDiskInfoPtrOutputWithContext(ctx context.Context) DiskInfoPtrOutput {
 	return o
-}
-
-func (o DiskInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskInfo] {
-	return pulumix.Output[*DiskInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskInfoPtrOutput) Elem() DiskInfoOutput {
@@ -1122,12 +1001,6 @@ func (o DiskInfoArrayOutput) ToDiskInfoArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o DiskInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DiskInfo] {
-	return pulumix.Output[[]DiskInfo]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DiskInfoArrayOutput) Index(i pulumi.IntInput) DiskInfoOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiskInfo {
 		return vs[0].([]DiskInfo)[vs[1].(int)]
@@ -1157,12 +1030,6 @@ func (o DiskInfoResponseOutput) ToDiskInfoResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o DiskInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiskInfoResponse] {
-	return pulumix.Output[DiskInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Disk size in GB
 func (o DiskInfoResponseOutput) SizeInGB() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v DiskInfoResponse) *float64 { return v.SizeInGB }).(pulumi.Float64PtrOutput)
@@ -1185,12 +1052,6 @@ func (o DiskInfoResponsePtrOutput) ToDiskInfoResponsePtrOutput() DiskInfoRespons
 
 func (o DiskInfoResponsePtrOutput) ToDiskInfoResponsePtrOutputWithContext(ctx context.Context) DiskInfoResponsePtrOutput {
 	return o
-}
-
-func (o DiskInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskInfoResponse] {
-	return pulumix.Output[*DiskInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskInfoResponsePtrOutput) Elem() DiskInfoResponseOutput {
@@ -1237,12 +1098,6 @@ func (o DiskInfoResponseArrayOutput) ToDiskInfoResponseArrayOutputWithContext(ct
 	return o
 }
 
-func (o DiskInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DiskInfoResponse] {
-	return pulumix.Output[[]DiskInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DiskInfoResponseArrayOutput) Index(i pulumi.IntInput) DiskInfoResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiskInfoResponse {
 		return vs[0].([]DiskInfoResponse)[vs[1].(int)]
@@ -1274,12 +1129,6 @@ func (o ErrorDefinitionResponseOutput) ToErrorDefinitionResponseOutputWithContex
 	return o
 }
 
-func (o ErrorDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorDefinitionResponse] {
-	return pulumix.Output[ErrorDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Service specific error code which serves as the substatus for the HTTP error code.
 func (o ErrorDefinitionResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v ErrorDefinitionResponse) string { return v.Code }).(pulumi.StringOutput)
@@ -1307,12 +1156,6 @@ func (o ErrorDefinitionResponsePtrOutput) ToErrorDefinitionResponsePtrOutput() E
 
 func (o ErrorDefinitionResponsePtrOutput) ToErrorDefinitionResponsePtrOutputWithContext(ctx context.Context) ErrorDefinitionResponsePtrOutput {
 	return o
-}
-
-func (o ErrorDefinitionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErrorDefinitionResponse] {
-	return pulumix.Output[*ErrorDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ErrorDefinitionResponsePtrOutput) Elem() ErrorDefinitionResponseOutput {
@@ -1369,12 +1212,6 @@ func (o ErrorDefinitionResponseArrayOutput) ToErrorDefinitionResponseArrayOutput
 	return o
 }
 
-func (o ErrorDefinitionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ErrorDefinitionResponse] {
-	return pulumix.Output[[]ErrorDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ErrorDefinitionResponseArrayOutput) Index(i pulumi.IntInput) ErrorDefinitionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDefinitionResponse {
 		return vs[0].([]ErrorDefinitionResponse)[vs[1].(int)]
@@ -1424,12 +1261,6 @@ func (i FileshareProfileArgs) ToFileshareProfileOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(FileshareProfileOutput)
 }
 
-func (i FileshareProfileArgs) ToOutput(ctx context.Context) pulumix.Output[FileshareProfile] {
-	return pulumix.Output[FileshareProfile]{
-		OutputState: i.ToFileshareProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FileshareProfileArgs) ToFileshareProfilePtrOutput() FileshareProfilePtrOutput {
 	return i.ToFileshareProfilePtrOutputWithContext(context.Background())
 }
@@ -1471,12 +1302,6 @@ func (i *fileshareProfilePtrType) ToFileshareProfilePtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(FileshareProfilePtrOutput)
 }
 
-func (i *fileshareProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*FileshareProfile] {
-	return pulumix.Output[*FileshareProfile]{
-		OutputState: i.ToFileshareProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // File share profile
 type FileshareProfileOutput struct{ *pulumi.OutputState }
 
@@ -1500,12 +1325,6 @@ func (o FileshareProfileOutput) ToFileshareProfilePtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileshareProfile) *FileshareProfile {
 		return &v
 	}).(FileshareProfilePtrOutput)
-}
-
-func (o FileshareProfileOutput) ToOutput(ctx context.Context) pulumix.Output[FileshareProfile] {
-	return pulumix.Output[FileshareProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // File share size in GB
@@ -1535,12 +1354,6 @@ func (o FileshareProfilePtrOutput) ToFileshareProfilePtrOutput() FileshareProfil
 
 func (o FileshareProfilePtrOutput) ToFileshareProfilePtrOutputWithContext(ctx context.Context) FileshareProfilePtrOutput {
 	return o
-}
-
-func (o FileshareProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FileshareProfile] {
-	return pulumix.Output[*FileshareProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FileshareProfilePtrOutput) Elem() FileshareProfileOutput {
@@ -1612,12 +1425,6 @@ func (o FileshareProfileResponseOutput) ToFileshareProfileResponseOutputWithCont
 	return o
 }
 
-func (o FileshareProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FileshareProfileResponse] {
-	return pulumix.Output[FileshareProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // File share name
 func (o FileshareProfileResponseOutput) ShareName() pulumi.StringOutput {
 	return o.ApplyT(func(v FileshareProfileResponse) string { return v.ShareName }).(pulumi.StringOutput)
@@ -1655,12 +1462,6 @@ func (o FileshareProfileResponsePtrOutput) ToFileshareProfileResponsePtrOutput()
 
 func (o FileshareProfileResponsePtrOutput) ToFileshareProfileResponsePtrOutputWithContext(ctx context.Context) FileshareProfileResponsePtrOutput {
 	return o
-}
-
-func (o FileshareProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FileshareProfileResponse] {
-	return pulumix.Output[*FileshareProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FileshareProfileResponsePtrOutput) Elem() FileshareProfileResponseOutput {
@@ -1758,12 +1559,6 @@ func (i ManagedRGConfigurationArgs) ToManagedRGConfigurationOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedRGConfigurationOutput)
 }
 
-func (i ManagedRGConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedRGConfiguration] {
-	return pulumix.Output[ManagedRGConfiguration]{
-		OutputState: i.ToManagedRGConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedRGConfigurationArgs) ToManagedRGConfigurationPtrOutput() ManagedRGConfigurationPtrOutput {
 	return i.ToManagedRGConfigurationPtrOutputWithContext(context.Background())
 }
@@ -1805,12 +1600,6 @@ func (i *managedRGConfigurationPtrType) ToManagedRGConfigurationPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedRGConfigurationPtrOutput)
 }
 
-func (i *managedRGConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedRGConfiguration] {
-	return pulumix.Output[*ManagedRGConfiguration]{
-		OutputState: i.ToManagedRGConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Managed resource group configuration
 type ManagedRGConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -1836,12 +1625,6 @@ func (o ManagedRGConfigurationOutput) ToManagedRGConfigurationPtrOutputWithConte
 	}).(ManagedRGConfigurationPtrOutput)
 }
 
-func (o ManagedRGConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedRGConfiguration] {
-	return pulumix.Output[ManagedRGConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Managed resource group name
 func (o ManagedRGConfigurationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedRGConfiguration) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1859,12 +1642,6 @@ func (o ManagedRGConfigurationPtrOutput) ToManagedRGConfigurationPtrOutput() Man
 
 func (o ManagedRGConfigurationPtrOutput) ToManagedRGConfigurationPtrOutputWithContext(ctx context.Context) ManagedRGConfigurationPtrOutput {
 	return o
-}
-
-func (o ManagedRGConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedRGConfiguration] {
-	return pulumix.Output[*ManagedRGConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedRGConfigurationPtrOutput) Elem() ManagedRGConfigurationOutput {
@@ -1908,12 +1685,6 @@ func (o ManagedRGConfigurationResponseOutput) ToManagedRGConfigurationResponseOu
 	return o
 }
 
-func (o ManagedRGConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedRGConfigurationResponse] {
-	return pulumix.Output[ManagedRGConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Managed resource group name
 func (o ManagedRGConfigurationResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedRGConfigurationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1931,12 +1702,6 @@ func (o ManagedRGConfigurationResponsePtrOutput) ToManagedRGConfigurationRespons
 
 func (o ManagedRGConfigurationResponsePtrOutput) ToManagedRGConfigurationResponsePtrOutputWithContext(ctx context.Context) ManagedRGConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o ManagedRGConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedRGConfigurationResponse] {
-	return pulumix.Output[*ManagedRGConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedRGConfigurationResponsePtrOutput) Elem() ManagedRGConfigurationResponseOutput {
@@ -2010,12 +1775,6 @@ func (i NetworkProfileArgs) ToNetworkProfileOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkProfileOutput)
 }
 
-func (i NetworkProfileArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkProfile] {
-	return pulumix.Output[NetworkProfile]{
-		OutputState: i.ToNetworkProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i NetworkProfileArgs) ToNetworkProfilePtrOutput() NetworkProfilePtrOutput {
 	return i.ToNetworkProfilePtrOutputWithContext(context.Background())
 }
@@ -2057,12 +1816,6 @@ func (i *networkProfilePtrType) ToNetworkProfilePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkProfilePtrOutput)
 }
 
-func (i *networkProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*NetworkProfile] {
-	return pulumix.Output[*NetworkProfile]{
-		OutputState: i.ToNetworkProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Network profile
 type NetworkProfileOutput struct{ *pulumi.OutputState }
 
@@ -2086,12 +1839,6 @@ func (o NetworkProfileOutput) ToNetworkProfilePtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkProfile) *NetworkProfile {
 		return &v
 	}).(NetworkProfilePtrOutput)
-}
-
-func (o NetworkProfileOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkProfile] {
-	return pulumix.Output[NetworkProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to enable Azure front door
@@ -2131,12 +1878,6 @@ func (o NetworkProfilePtrOutput) ToNetworkProfilePtrOutput() NetworkProfilePtrOu
 
 func (o NetworkProfilePtrOutput) ToNetworkProfilePtrOutputWithContext(ctx context.Context) NetworkProfilePtrOutput {
 	return o
-}
-
-func (o NetworkProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkProfile] {
-	return pulumix.Output[*NetworkProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkProfilePtrOutput) Elem() NetworkProfileOutput {
@@ -2238,12 +1979,6 @@ func (o NetworkProfileResponseOutput) ToNetworkProfileResponseOutputWithContext(
 	return o
 }
 
-func (o NetworkProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkProfileResponse] {
-	return pulumix.Output[NetworkProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable Azure front door
 func (o NetworkProfileResponseOutput) AzureFrontDoorEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkProfileResponse) *string { return v.AzureFrontDoorEnabled }).(pulumi.StringPtrOutput)
@@ -2306,12 +2041,6 @@ func (o NetworkProfileResponsePtrOutput) ToNetworkProfileResponsePtrOutput() Net
 
 func (o NetworkProfileResponsePtrOutput) ToNetworkProfileResponsePtrOutputWithContext(ctx context.Context) NetworkProfileResponsePtrOutput {
 	return o
-}
-
-func (o NetworkProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkProfileResponse] {
-	return pulumix.Output[*NetworkProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkProfileResponsePtrOutput) Elem() NetworkProfileResponseOutput {
@@ -2475,12 +2204,6 @@ func (i NodeProfileArgs) ToNodeProfileOutputWithContext(ctx context.Context) Nod
 	return pulumi.ToOutputWithContext(ctx, i).(NodeProfileOutput)
 }
 
-func (i NodeProfileArgs) ToOutput(ctx context.Context) pulumix.Output[NodeProfile] {
-	return pulumix.Output[NodeProfile]{
-		OutputState: i.ToNodeProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VM or VMSS node profile
 type NodeProfileOutput struct{ *pulumi.OutputState }
 
@@ -2494,12 +2217,6 @@ func (o NodeProfileOutput) ToNodeProfileOutput() NodeProfileOutput {
 
 func (o NodeProfileOutput) ToNodeProfileOutputWithContext(ctx context.Context) NodeProfileOutput {
 	return o
-}
-
-func (o NodeProfileOutput) ToOutput(ctx context.Context) pulumix.Output[NodeProfile] {
-	return pulumix.Output[NodeProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Data disks details. This property is not in use right now
@@ -2556,12 +2273,6 @@ func (o NodeProfileResponseOutput) ToNodeProfileResponseOutput() NodeProfileResp
 
 func (o NodeProfileResponseOutput) ToNodeProfileResponseOutputWithContext(ctx context.Context) NodeProfileResponseOutput {
 	return o
-}
-
-func (o NodeProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NodeProfileResponse] {
-	return pulumix.Output[NodeProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Data disks details. This property is not in use right now
@@ -2641,12 +2352,6 @@ func (i OsImageProfileArgs) ToOsImageProfileOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(OsImageProfileOutput)
 }
 
-func (i OsImageProfileArgs) ToOutput(ctx context.Context) pulumix.Output[OsImageProfile] {
-	return pulumix.Output[OsImageProfile]{
-		OutputState: i.ToOsImageProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OsImageProfileArgs) ToOsImageProfilePtrOutput() OsImageProfilePtrOutput {
 	return i.ToOsImageProfilePtrOutputWithContext(context.Background())
 }
@@ -2688,12 +2393,6 @@ func (i *osImageProfilePtrType) ToOsImageProfilePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(OsImageProfilePtrOutput)
 }
 
-func (i *osImageProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*OsImageProfile] {
-	return pulumix.Output[*OsImageProfile]{
-		OutputState: i.ToOsImageProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OS image profile
 type OsImageProfileOutput struct{ *pulumi.OutputState }
 
@@ -2717,12 +2416,6 @@ func (o OsImageProfileOutput) ToOsImageProfilePtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsImageProfile) *OsImageProfile {
 		return &v
 	}).(OsImageProfilePtrOutput)
-}
-
-func (o OsImageProfileOutput) ToOutput(ctx context.Context) pulumix.Output[OsImageProfile] {
-	return pulumix.Output[OsImageProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // OS image offer
@@ -2757,12 +2450,6 @@ func (o OsImageProfilePtrOutput) ToOsImageProfilePtrOutput() OsImageProfilePtrOu
 
 func (o OsImageProfilePtrOutput) ToOsImageProfilePtrOutputWithContext(ctx context.Context) OsImageProfilePtrOutput {
 	return o
-}
-
-func (o OsImageProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsImageProfile] {
-	return pulumix.Output[*OsImageProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsImageProfilePtrOutput) Elem() OsImageProfileOutput {
@@ -2842,12 +2529,6 @@ func (o OsImageProfileResponseOutput) ToOsImageProfileResponseOutputWithContext(
 	return o
 }
 
-func (o OsImageProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OsImageProfileResponse] {
-	return pulumix.Output[OsImageProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // OS image offer
 func (o OsImageProfileResponseOutput) Offer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OsImageProfileResponse) *string { return v.Offer }).(pulumi.StringPtrOutput)
@@ -2880,12 +2561,6 @@ func (o OsImageProfileResponsePtrOutput) ToOsImageProfileResponsePtrOutput() OsI
 
 func (o OsImageProfileResponsePtrOutput) ToOsImageProfileResponsePtrOutputWithContext(ctx context.Context) OsImageProfileResponsePtrOutput {
 	return o
-}
-
-func (o OsImageProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OsImageProfileResponse] {
-	return pulumix.Output[*OsImageProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OsImageProfileResponsePtrOutput) Elem() OsImageProfileResponseOutput {
@@ -2973,12 +2648,6 @@ func (i PhpProfileArgs) ToPhpProfileOutputWithContext(ctx context.Context) PhpPr
 	return pulumi.ToOutputWithContext(ctx, i).(PhpProfileOutput)
 }
 
-func (i PhpProfileArgs) ToOutput(ctx context.Context) pulumix.Output[PhpProfile] {
-	return pulumix.Output[PhpProfile]{
-		OutputState: i.ToPhpProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PhpProfileArgs) ToPhpProfilePtrOutput() PhpProfilePtrOutput {
 	return i.ToPhpProfilePtrOutputWithContext(context.Background())
 }
@@ -3020,12 +2689,6 @@ func (i *phpProfilePtrType) ToPhpProfilePtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PhpProfilePtrOutput)
 }
 
-func (i *phpProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*PhpProfile] {
-	return pulumix.Output[*PhpProfile]{
-		OutputState: i.ToPhpProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PHP profile
 type PhpProfileOutput struct{ *pulumi.OutputState }
 
@@ -3051,12 +2714,6 @@ func (o PhpProfileOutput) ToPhpProfilePtrOutputWithContext(ctx context.Context) 
 	}).(PhpProfilePtrOutput)
 }
 
-func (o PhpProfileOutput) ToOutput(ctx context.Context) pulumix.Output[PhpProfile] {
-	return pulumix.Output[PhpProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // PHP version
 func (o PhpProfileOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v PhpProfile) string { return v.Version }).(pulumi.StringOutput)
@@ -3074,12 +2731,6 @@ func (o PhpProfilePtrOutput) ToPhpProfilePtrOutput() PhpProfilePtrOutput {
 
 func (o PhpProfilePtrOutput) ToPhpProfilePtrOutputWithContext(ctx context.Context) PhpProfilePtrOutput {
 	return o
-}
-
-func (o PhpProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PhpProfile] {
-	return pulumix.Output[*PhpProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PhpProfilePtrOutput) Elem() PhpProfileOutput {
@@ -3123,12 +2774,6 @@ func (o PhpProfileResponseOutput) ToPhpProfileResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o PhpProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PhpProfileResponse] {
-	return pulumix.Output[PhpProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // PHP version
 func (o PhpProfileResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v PhpProfileResponse) string { return v.Version }).(pulumi.StringOutput)
@@ -3146,12 +2791,6 @@ func (o PhpProfileResponsePtrOutput) ToPhpProfileResponsePtrOutput() PhpProfileR
 
 func (o PhpProfileResponsePtrOutput) ToPhpProfileResponsePtrOutputWithContext(ctx context.Context) PhpProfileResponsePtrOutput {
 	return o
-}
-
-func (o PhpProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PhpProfileResponse] {
-	return pulumix.Output[*PhpProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PhpProfileResponsePtrOutput) Elem() PhpProfileResponseOutput {
@@ -3213,12 +2852,6 @@ func (i PhpWorkloadResourceIdentityArgs) ToPhpWorkloadResourceIdentityOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(PhpWorkloadResourceIdentityOutput)
 }
 
-func (i PhpWorkloadResourceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[PhpWorkloadResourceIdentity] {
-	return pulumix.Output[PhpWorkloadResourceIdentity]{
-		OutputState: i.ToPhpWorkloadResourceIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PhpWorkloadResourceIdentityArgs) ToPhpWorkloadResourceIdentityPtrOutput() PhpWorkloadResourceIdentityPtrOutput {
 	return i.ToPhpWorkloadResourceIdentityPtrOutputWithContext(context.Background())
 }
@@ -3260,12 +2893,6 @@ func (i *phpWorkloadResourceIdentityPtrType) ToPhpWorkloadResourceIdentityPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(PhpWorkloadResourceIdentityPtrOutput)
 }
 
-func (i *phpWorkloadResourceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*PhpWorkloadResourceIdentity] {
-	return pulumix.Output[*PhpWorkloadResourceIdentity]{
-		OutputState: i.ToPhpWorkloadResourceIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Identity for the resource. Currently not supported
 type PhpWorkloadResourceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -3291,12 +2918,6 @@ func (o PhpWorkloadResourceIdentityOutput) ToPhpWorkloadResourceIdentityPtrOutpu
 	}).(PhpWorkloadResourceIdentityPtrOutput)
 }
 
-func (o PhpWorkloadResourceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[PhpWorkloadResourceIdentity] {
-	return pulumix.Output[PhpWorkloadResourceIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Type of manage identity
 func (o PhpWorkloadResourceIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PhpWorkloadResourceIdentity) string { return v.Type }).(pulumi.StringOutput)
@@ -3319,12 +2940,6 @@ func (o PhpWorkloadResourceIdentityPtrOutput) ToPhpWorkloadResourceIdentityPtrOu
 
 func (o PhpWorkloadResourceIdentityPtrOutput) ToPhpWorkloadResourceIdentityPtrOutputWithContext(ctx context.Context) PhpWorkloadResourceIdentityPtrOutput {
 	return o
-}
-
-func (o PhpWorkloadResourceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PhpWorkloadResourceIdentity] {
-	return pulumix.Output[*PhpWorkloadResourceIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PhpWorkloadResourceIdentityPtrOutput) Elem() PhpWorkloadResourceIdentityOutput {
@@ -3380,12 +2995,6 @@ func (o PhpWorkloadResourceResponseIdentityOutput) ToPhpWorkloadResourceResponse
 	return o
 }
 
-func (o PhpWorkloadResourceResponseIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[PhpWorkloadResourceResponseIdentity] {
-	return pulumix.Output[PhpWorkloadResourceResponseIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Type of manage identity
 func (o PhpWorkloadResourceResponseIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PhpWorkloadResourceResponseIdentity) string { return v.Type }).(pulumi.StringOutput)
@@ -3410,12 +3019,6 @@ func (o PhpWorkloadResourceResponseIdentityPtrOutput) ToPhpWorkloadResourceRespo
 
 func (o PhpWorkloadResourceResponseIdentityPtrOutput) ToPhpWorkloadResourceResponseIdentityPtrOutputWithContext(ctx context.Context) PhpWorkloadResourceResponseIdentityPtrOutput {
 	return o
-}
-
-func (o PhpWorkloadResourceResponseIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PhpWorkloadResourceResponseIdentity] {
-	return pulumix.Output[*PhpWorkloadResourceResponseIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PhpWorkloadResourceResponseIdentityPtrOutput) Elem() PhpWorkloadResourceResponseIdentityOutput {
@@ -3471,12 +3074,6 @@ func (o SAPAvailabilityZonePairResponseOutput) ToSAPAvailabilityZonePairResponse
 	return o
 }
 
-func (o SAPAvailabilityZonePairResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SAPAvailabilityZonePairResponse] {
-	return pulumix.Output[SAPAvailabilityZonePairResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The zone A.
 func (o SAPAvailabilityZonePairResponseOutput) ZoneA() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v SAPAvailabilityZonePairResponse) *float64 { return v.ZoneA }).(pulumi.Float64PtrOutput)
@@ -3499,12 +3096,6 @@ func (o SAPAvailabilityZonePairResponseArrayOutput) ToSAPAvailabilityZonePairRes
 
 func (o SAPAvailabilityZonePairResponseArrayOutput) ToSAPAvailabilityZonePairResponseArrayOutputWithContext(ctx context.Context) SAPAvailabilityZonePairResponseArrayOutput {
 	return o
-}
-
-func (o SAPAvailabilityZonePairResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SAPAvailabilityZonePairResponse] {
-	return pulumix.Output[[]SAPAvailabilityZonePairResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SAPAvailabilityZonePairResponseArrayOutput) Index(i pulumi.IntInput) SAPAvailabilityZonePairResponseOutput {
@@ -3544,12 +3135,6 @@ func (o SAPDiskConfigurationResponseOutput) ToSAPDiskConfigurationResponseOutput
 
 func (o SAPDiskConfigurationResponseOutput) ToSAPDiskConfigurationResponseOutputWithContext(ctx context.Context) SAPDiskConfigurationResponseOutput {
 	return o
-}
-
-func (o SAPDiskConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SAPDiskConfigurationResponse] {
-	return pulumix.Output[SAPDiskConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The disk count.
@@ -3601,12 +3186,6 @@ func (o SAPDiskConfigurationResponseArrayOutput) ToSAPDiskConfigurationResponseA
 	return o
 }
 
-func (o SAPDiskConfigurationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SAPDiskConfigurationResponse] {
-	return pulumix.Output[[]SAPDiskConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SAPDiskConfigurationResponseArrayOutput) Index(i pulumi.IntInput) SAPDiskConfigurationResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SAPDiskConfigurationResponse {
 		return vs[0].([]SAPDiskConfigurationResponse)[vs[1].(int)]
@@ -3638,12 +3217,6 @@ func (o SAPSupportedSkuResponseOutput) ToSAPSupportedSkuResponseOutputWithContex
 	return o
 }
 
-func (o SAPSupportedSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SAPSupportedSkuResponse] {
-	return pulumix.Output[SAPSupportedSkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // True if the Sku is certified for App server in the SAP system.
 func (o SAPSupportedSkuResponseOutput) IsAppServerCertified() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SAPSupportedSkuResponse) *bool { return v.IsAppServerCertified }).(pulumi.BoolPtrOutput)
@@ -3673,12 +3246,6 @@ func (o SAPSupportedSkuResponseArrayOutput) ToSAPSupportedSkuResponseArrayOutput
 	return o
 }
 
-func (o SAPSupportedSkuResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SAPSupportedSkuResponse] {
-	return pulumix.Output[[]SAPSupportedSkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SAPSupportedSkuResponseArrayOutput) Index(i pulumi.IntInput) SAPSupportedSkuResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SAPSupportedSkuResponse {
 		return vs[0].([]SAPSupportedSkuResponse)[vs[1].(int)]
@@ -3704,12 +3271,6 @@ func (o SAPVirtualInstanceErrorResponseOutput) ToSAPVirtualInstanceErrorResponse
 
 func (o SAPVirtualInstanceErrorResponseOutput) ToSAPVirtualInstanceErrorResponseOutputWithContext(ctx context.Context) SAPVirtualInstanceErrorResponseOutput {
 	return o
-}
-
-func (o SAPVirtualInstanceErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SAPVirtualInstanceErrorResponse] {
-	return pulumix.Output[SAPVirtualInstanceErrorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Virtual Instance for SAP error body.
@@ -3772,12 +3333,6 @@ func (i SearchProfileArgs) ToSearchProfileOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(SearchProfileOutput)
 }
 
-func (i SearchProfileArgs) ToOutput(ctx context.Context) pulumix.Output[SearchProfile] {
-	return pulumix.Output[SearchProfile]{
-		OutputState: i.ToSearchProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SearchProfileArgs) ToSearchProfilePtrOutput() SearchProfilePtrOutput {
 	return i.ToSearchProfilePtrOutputWithContext(context.Background())
 }
@@ -3819,12 +3374,6 @@ func (i *searchProfilePtrType) ToSearchProfilePtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(SearchProfilePtrOutput)
 }
 
-func (i *searchProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*SearchProfile] {
-	return pulumix.Output[*SearchProfile]{
-		OutputState: i.ToSearchProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Search profile
 type SearchProfileOutput struct{ *pulumi.OutputState }
 
@@ -3848,12 +3397,6 @@ func (o SearchProfileOutput) ToSearchProfilePtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SearchProfile) *SearchProfile {
 		return &v
 	}).(SearchProfilePtrOutput)
-}
-
-func (o SearchProfileOutput) ToOutput(ctx context.Context) pulumix.Output[SearchProfile] {
-	return pulumix.Output[SearchProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Data disks details. This property is not in use right now
@@ -3898,12 +3441,6 @@ func (o SearchProfilePtrOutput) ToSearchProfilePtrOutput() SearchProfilePtrOutpu
 
 func (o SearchProfilePtrOutput) ToSearchProfilePtrOutputWithContext(ctx context.Context) SearchProfilePtrOutput {
 	return o
-}
-
-func (o SearchProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SearchProfile] {
-	return pulumix.Output[*SearchProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SearchProfilePtrOutput) Elem() SearchProfileOutput {
@@ -4009,12 +3546,6 @@ func (o SearchProfileResponseOutput) ToSearchProfileResponseOutputWithContext(ct
 	return o
 }
 
-func (o SearchProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SearchProfileResponse] {
-	return pulumix.Output[SearchProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Data disks details. This property is not in use right now
 func (o SearchProfileResponseOutput) DataDisks() DiskInfoResponseArrayOutput {
 	return o.ApplyT(func(v SearchProfileResponse) []DiskInfoResponse { return v.DataDisks }).(DiskInfoResponseArrayOutput)
@@ -4062,12 +3593,6 @@ func (o SearchProfileResponsePtrOutput) ToSearchProfileResponsePtrOutput() Searc
 
 func (o SearchProfileResponsePtrOutput) ToSearchProfileResponsePtrOutputWithContext(ctx context.Context) SearchProfileResponsePtrOutput {
 	return o
-}
-
-func (o SearchProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SearchProfileResponse] {
-	return pulumix.Output[*SearchProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SearchProfileResponsePtrOutput) Elem() SearchProfileResponseOutput {
@@ -4185,12 +3710,6 @@ func (i SiteProfileArgs) ToSiteProfileOutputWithContext(ctx context.Context) Sit
 	return pulumi.ToOutputWithContext(ctx, i).(SiteProfileOutput)
 }
 
-func (i SiteProfileArgs) ToOutput(ctx context.Context) pulumix.Output[SiteProfile] {
-	return pulumix.Output[SiteProfile]{
-		OutputState: i.ToSiteProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SiteProfileArgs) ToSiteProfilePtrOutput() SiteProfilePtrOutput {
 	return i.ToSiteProfilePtrOutputWithContext(context.Background())
 }
@@ -4232,12 +3751,6 @@ func (i *siteProfilePtrType) ToSiteProfilePtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SiteProfilePtrOutput)
 }
 
-func (i *siteProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*SiteProfile] {
-	return pulumix.Output[*SiteProfile]{
-		OutputState: i.ToSiteProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Workload website profile
 type SiteProfileOutput struct{ *pulumi.OutputState }
 
@@ -4263,12 +3776,6 @@ func (o SiteProfileOutput) ToSiteProfilePtrOutputWithContext(ctx context.Context
 	}).(SiteProfilePtrOutput)
 }
 
-func (o SiteProfileOutput) ToOutput(ctx context.Context) pulumix.Output[SiteProfile] {
-	return pulumix.Output[SiteProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Domain name for the application site URL
 func (o SiteProfileOutput) DomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SiteProfile) *string { return v.DomainName }).(pulumi.StringPtrOutput)
@@ -4286,12 +3793,6 @@ func (o SiteProfilePtrOutput) ToSiteProfilePtrOutput() SiteProfilePtrOutput {
 
 func (o SiteProfilePtrOutput) ToSiteProfilePtrOutputWithContext(ctx context.Context) SiteProfilePtrOutput {
 	return o
-}
-
-func (o SiteProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SiteProfile] {
-	return pulumix.Output[*SiteProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SiteProfilePtrOutput) Elem() SiteProfileOutput {
@@ -4335,12 +3836,6 @@ func (o SiteProfileResponseOutput) ToSiteProfileResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o SiteProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SiteProfileResponse] {
-	return pulumix.Output[SiteProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Domain name for the application site URL
 func (o SiteProfileResponseOutput) DomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SiteProfileResponse) *string { return v.DomainName }).(pulumi.StringPtrOutput)
@@ -4358,12 +3853,6 @@ func (o SiteProfileResponsePtrOutput) ToSiteProfileResponsePtrOutput() SiteProfi
 
 func (o SiteProfileResponsePtrOutput) ToSiteProfileResponsePtrOutputWithContext(ctx context.Context) SiteProfileResponsePtrOutput {
 	return o
-}
-
-func (o SiteProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SiteProfileResponse] {
-	return pulumix.Output[*SiteProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SiteProfileResponsePtrOutput) Elem() SiteProfileResponseOutput {
@@ -4437,12 +3926,6 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
-func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
 	return i.ToSkuPtrOutputWithContext(context.Background())
 }
@@ -4484,12 +3967,6 @@ func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
 }
 
-func (i *skuPtrType) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
-	return pulumix.Output[*Sku]{
-		OutputState: i.ToSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The resource model definition representing SKU
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -4513,12 +3990,6 @@ func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Sku) *Sku {
 		return &v
 	}).(SkuPtrOutput)
-}
-
-func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
@@ -4558,12 +4029,6 @@ func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
 
 func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o
-}
-
-func (o SkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
-	return pulumix.Output[*Sku]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuPtrOutput) Elem() SkuOutput {
@@ -4655,12 +4120,6 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
-	return pulumix.Output[SkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
 func (o SkuResponseOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
@@ -4698,12 +4157,6 @@ func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
 
 func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
 	return o
-}
-
-func (o SkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuResponse] {
-	return pulumix.Output[*SkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
@@ -4786,12 +4239,6 @@ func (o StorageInformationResponseOutput) ToStorageInformationResponseOutputWith
 	return o
 }
 
-func (o StorageInformationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageInformationResponse] {
-	return pulumix.Output[StorageInformationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StorageInformationResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageInformationResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -4808,12 +4255,6 @@ func (o StorageInformationResponseArrayOutput) ToStorageInformationResponseArray
 
 func (o StorageInformationResponseArrayOutput) ToStorageInformationResponseArrayOutputWithContext(ctx context.Context) StorageInformationResponseArrayOutput {
 	return o
-}
-
-func (o StorageInformationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StorageInformationResponse] {
-	return pulumix.Output[[]StorageInformationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StorageInformationResponseArrayOutput) Index(i pulumi.IntInput) StorageInformationResponseOutput {
@@ -4851,12 +4292,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -4912,12 +4347,6 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
-func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
-	return pulumix.Output[UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The client ID of the assigned identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -4940,12 +4369,6 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
-	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
@@ -4993,12 +4416,6 @@ func (i UserProfileArgs) ToUserProfileOutputWithContext(ctx context.Context) Use
 	return pulumi.ToOutputWithContext(ctx, i).(UserProfileOutput)
 }
 
-func (i UserProfileArgs) ToOutput(ctx context.Context) pulumix.Output[UserProfile] {
-	return pulumix.Output[UserProfile]{
-		OutputState: i.ToUserProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // User profile to configure on a compute resources such as VM, VMSS
 type UserProfileOutput struct{ *pulumi.OutputState }
 
@@ -5012,12 +4429,6 @@ func (o UserProfileOutput) ToUserProfileOutput() UserProfileOutput {
 
 func (o UserProfileOutput) ToUserProfileOutputWithContext(ctx context.Context) UserProfileOutput {
 	return o
-}
-
-func (o UserProfileOutput) ToOutput(ctx context.Context) pulumix.Output[UserProfile] {
-	return pulumix.Output[UserProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // SSH public key data
@@ -5051,12 +4462,6 @@ func (o UserProfileResponseOutput) ToUserProfileResponseOutput() UserProfileResp
 
 func (o UserProfileResponseOutput) ToUserProfileResponseOutputWithContext(ctx context.Context) UserProfileResponseOutput {
 	return o
-}
-
-func (o UserProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserProfileResponse] {
-	return pulumix.Output[UserProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // SSH public key data
@@ -5128,12 +4533,6 @@ func (i VmssNodesProfileArgs) ToVmssNodesProfileOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(VmssNodesProfileOutput)
 }
 
-func (i VmssNodesProfileArgs) ToOutput(ctx context.Context) pulumix.Output[VmssNodesProfile] {
-	return pulumix.Output[VmssNodesProfile]{
-		OutputState: i.ToVmssNodesProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VMSS profile
 type VmssNodesProfileOutput struct{ *pulumi.OutputState }
 
@@ -5147,12 +4546,6 @@ func (o VmssNodesProfileOutput) ToVmssNodesProfileOutput() VmssNodesProfileOutpu
 
 func (o VmssNodesProfileOutput) ToVmssNodesProfileOutputWithContext(ctx context.Context) VmssNodesProfileOutput {
 	return o
-}
-
-func (o VmssNodesProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VmssNodesProfile] {
-	return pulumix.Output[VmssNodesProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Maximum number of nodes for autoscale
@@ -5223,12 +4616,6 @@ func (o VmssNodesProfileResponseOutput) ToVmssNodesProfileResponseOutput() VmssN
 
 func (o VmssNodesProfileResponseOutput) ToVmssNodesProfileResponseOutputWithContext(ctx context.Context) VmssNodesProfileResponseOutput {
 	return o
-}
-
-func (o VmssNodesProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VmssNodesProfileResponse] {
-	return pulumix.Output[VmssNodesProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Maximum number of nodes for autoscale

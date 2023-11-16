@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Defines the Neighbor Group.
@@ -145,12 +144,6 @@ func (i *NeighborGroup) ToNeighborGroupOutputWithContext(ctx context.Context) Ne
 	return pulumi.ToOutputWithContext(ctx, i).(NeighborGroupOutput)
 }
 
-func (i *NeighborGroup) ToOutput(ctx context.Context) pulumix.Output[*NeighborGroup] {
-	return pulumix.Output[*NeighborGroup]{
-		OutputState: i.ToNeighborGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NeighborGroupOutput struct{ *pulumi.OutputState }
 
 func (NeighborGroupOutput) ElementType() reflect.Type {
@@ -163,12 +156,6 @@ func (o NeighborGroupOutput) ToNeighborGroupOutput() NeighborGroupOutput {
 
 func (o NeighborGroupOutput) ToNeighborGroupOutputWithContext(ctx context.Context) NeighborGroupOutput {
 	return o
-}
-
-func (o NeighborGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*NeighborGroup] {
-	return pulumix.Output[*NeighborGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Switch configuration description.

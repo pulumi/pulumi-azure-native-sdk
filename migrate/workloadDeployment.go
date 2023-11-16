@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Workload deployment model.
@@ -134,12 +133,6 @@ func (i *WorkloadDeployment) ToWorkloadDeploymentOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadDeploymentOutput)
 }
 
-func (i *WorkloadDeployment) ToOutput(ctx context.Context) pulumix.Output[*WorkloadDeployment] {
-	return pulumix.Output[*WorkloadDeployment]{
-		OutputState: i.ToWorkloadDeploymentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkloadDeploymentOutput struct{ *pulumi.OutputState }
 
 func (WorkloadDeploymentOutput) ElementType() reflect.Type {
@@ -152,12 +145,6 @@ func (o WorkloadDeploymentOutput) ToWorkloadDeploymentOutput() WorkloadDeploymen
 
 func (o WorkloadDeploymentOutput) ToWorkloadDeploymentOutputWithContext(ctx context.Context) WorkloadDeploymentOutput {
 	return o
-}
-
-func (o WorkloadDeploymentOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadDeployment] {
-	return pulumix.Output[*WorkloadDeployment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the name of the resource.

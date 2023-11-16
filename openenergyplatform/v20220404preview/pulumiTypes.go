@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i DataPartitionNamesArgs) ToDataPartitionNamesOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DataPartitionNamesOutput)
 }
 
-func (i DataPartitionNamesArgs) ToOutput(ctx context.Context) pulumix.Output[DataPartitionNames] {
-	return pulumix.Output[DataPartitionNames]{
-		OutputState: i.ToDataPartitionNamesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataPartitionNamesArrayInput is an input type that accepts DataPartitionNamesArray and DataPartitionNamesArrayOutput values.
 // You can construct a concrete instance of `DataPartitionNamesArrayInput` via:
 //
@@ -78,12 +71,6 @@ func (i DataPartitionNamesArray) ToDataPartitionNamesArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DataPartitionNamesArrayOutput)
 }
 
-func (i DataPartitionNamesArray) ToOutput(ctx context.Context) pulumix.Output[[]DataPartitionNames] {
-	return pulumix.Output[[]DataPartitionNames]{
-		OutputState: i.ToDataPartitionNamesArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The list of Energy services resource's Data Partition Names.
 type DataPartitionNamesOutput struct{ *pulumi.OutputState }
 
@@ -97,12 +84,6 @@ func (o DataPartitionNamesOutput) ToDataPartitionNamesOutput() DataPartitionName
 
 func (o DataPartitionNamesOutput) ToDataPartitionNamesOutputWithContext(ctx context.Context) DataPartitionNamesOutput {
 	return o
-}
-
-func (o DataPartitionNamesOutput) ToOutput(ctx context.Context) pulumix.Output[DataPartitionNames] {
-	return pulumix.Output[DataPartitionNames]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataPartitionNamesOutput) Name() pulumi.StringPtrOutput {
@@ -121,12 +102,6 @@ func (o DataPartitionNamesArrayOutput) ToDataPartitionNamesArrayOutput() DataPar
 
 func (o DataPartitionNamesArrayOutput) ToDataPartitionNamesArrayOutputWithContext(ctx context.Context) DataPartitionNamesArrayOutput {
 	return o
-}
-
-func (o DataPartitionNamesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataPartitionNames] {
-	return pulumix.Output[[]DataPartitionNames]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataPartitionNamesArrayOutput) Index(i pulumi.IntInput) DataPartitionNamesOutput {
@@ -155,12 +130,6 @@ func (o DataPartitionNamesResponseOutput) ToDataPartitionNamesResponseOutputWith
 	return o
 }
 
-func (o DataPartitionNamesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataPartitionNamesResponse] {
-	return pulumix.Output[DataPartitionNamesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataPartitionNamesResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataPartitionNamesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -177,12 +146,6 @@ func (o DataPartitionNamesResponseArrayOutput) ToDataPartitionNamesResponseArray
 
 func (o DataPartitionNamesResponseArrayOutput) ToDataPartitionNamesResponseArrayOutputWithContext(ctx context.Context) DataPartitionNamesResponseArrayOutput {
 	return o
-}
-
-func (o DataPartitionNamesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataPartitionNamesResponse] {
-	return pulumix.Output[[]DataPartitionNamesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataPartitionNamesResponseArrayOutput) Index(i pulumi.IntInput) DataPartitionNamesResponseOutput {
@@ -214,12 +177,6 @@ func (o DataPartitionPropertiesResponseOutput) ToDataPartitionPropertiesResponse
 	return o
 }
 
-func (o DataPartitionPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataPartitionPropertiesResponse] {
-	return pulumix.Output[DataPartitionPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the data partition
 func (o DataPartitionPropertiesResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataPartitionPropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -242,12 +199,6 @@ func (o DataPartitionPropertiesResponseArrayOutput) ToDataPartitionPropertiesRes
 
 func (o DataPartitionPropertiesResponseArrayOutput) ToDataPartitionPropertiesResponseArrayOutputWithContext(ctx context.Context) DataPartitionPropertiesResponseArrayOutput {
 	return o
-}
-
-func (o DataPartitionPropertiesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataPartitionPropertiesResponse] {
-	return pulumix.Output[[]DataPartitionPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataPartitionPropertiesResponseArrayOutput) Index(i pulumi.IntInput) DataPartitionPropertiesResponseOutput {
@@ -287,12 +238,6 @@ func (i EnergyServicePropertiesArgs) ToEnergyServicePropertiesOutput() EnergySer
 
 func (i EnergyServicePropertiesArgs) ToEnergyServicePropertiesOutputWithContext(ctx context.Context) EnergyServicePropertiesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnergyServicePropertiesOutput)
-}
-
-func (i EnergyServicePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[EnergyServiceProperties] {
-	return pulumix.Output[EnergyServiceProperties]{
-		OutputState: i.ToEnergyServicePropertiesOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i EnergyServicePropertiesArgs) ToEnergyServicePropertiesPtrOutput() EnergyServicePropertiesPtrOutput {
@@ -336,12 +281,6 @@ func (i *energyServicePropertiesPtrType) ToEnergyServicePropertiesPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(EnergyServicePropertiesPtrOutput)
 }
 
-func (i *energyServicePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnergyServiceProperties] {
-	return pulumix.Output[*EnergyServiceProperties]{
-		OutputState: i.ToEnergyServicePropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnergyServicePropertiesOutput struct{ *pulumi.OutputState }
 
 func (EnergyServicePropertiesOutput) ElementType() reflect.Type {
@@ -366,12 +305,6 @@ func (o EnergyServicePropertiesOutput) ToEnergyServicePropertiesPtrOutputWithCon
 	}).(EnergyServicePropertiesPtrOutput)
 }
 
-func (o EnergyServicePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[EnergyServiceProperties] {
-	return pulumix.Output[EnergyServiceProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnergyServicePropertiesOutput) AuthAppId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnergyServiceProperties) *string { return v.AuthAppId }).(pulumi.StringPtrOutput)
 }
@@ -392,12 +325,6 @@ func (o EnergyServicePropertiesPtrOutput) ToEnergyServicePropertiesPtrOutput() E
 
 func (o EnergyServicePropertiesPtrOutput) ToEnergyServicePropertiesPtrOutputWithContext(ctx context.Context) EnergyServicePropertiesPtrOutput {
 	return o
-}
-
-func (o EnergyServicePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnergyServiceProperties] {
-	return pulumix.Output[*EnergyServiceProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnergyServicePropertiesPtrOutput) Elem() EnergyServicePropertiesOutput {
@@ -449,12 +376,6 @@ func (o EnergyServicePropertiesResponseOutput) ToEnergyServicePropertiesResponse
 	return o
 }
 
-func (o EnergyServicePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnergyServicePropertiesResponse] {
-	return pulumix.Output[EnergyServicePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnergyServicePropertiesResponseOutput) AuthAppId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnergyServicePropertiesResponse) *string { return v.AuthAppId }).(pulumi.StringPtrOutput)
 }
@@ -500,12 +421,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

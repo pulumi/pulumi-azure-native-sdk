@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Event Subscription
@@ -213,12 +212,6 @@ func (i *DomainTopicEventSubscription) ToDomainTopicEventSubscriptionOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(DomainTopicEventSubscriptionOutput)
 }
 
-func (i *DomainTopicEventSubscription) ToOutput(ctx context.Context) pulumix.Output[*DomainTopicEventSubscription] {
-	return pulumix.Output[*DomainTopicEventSubscription]{
-		OutputState: i.ToDomainTopicEventSubscriptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DomainTopicEventSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (DomainTopicEventSubscriptionOutput) ElementType() reflect.Type {
@@ -231,12 +224,6 @@ func (o DomainTopicEventSubscriptionOutput) ToDomainTopicEventSubscriptionOutput
 
 func (o DomainTopicEventSubscriptionOutput) ToDomainTopicEventSubscriptionOutputWithContext(ctx context.Context) DomainTopicEventSubscriptionOutput {
 	return o
-}
-
-func (o DomainTopicEventSubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainTopicEventSubscription] {
-	return pulumix.Output[*DomainTopicEventSubscription]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.

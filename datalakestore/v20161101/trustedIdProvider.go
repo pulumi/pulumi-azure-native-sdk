@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Data Lake Store trusted identity provider information.
@@ -125,12 +124,6 @@ func (i *TrustedIdProvider) ToTrustedIdProviderOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(TrustedIdProviderOutput)
 }
 
-func (i *TrustedIdProvider) ToOutput(ctx context.Context) pulumix.Output[*TrustedIdProvider] {
-	return pulumix.Output[*TrustedIdProvider]{
-		OutputState: i.ToTrustedIdProviderOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TrustedIdProviderOutput struct{ *pulumi.OutputState }
 
 func (TrustedIdProviderOutput) ElementType() reflect.Type {
@@ -143,12 +136,6 @@ func (o TrustedIdProviderOutput) ToTrustedIdProviderOutput() TrustedIdProviderOu
 
 func (o TrustedIdProviderOutput) ToTrustedIdProviderOutputWithContext(ctx context.Context) TrustedIdProviderOutput {
 	return o
-}
-
-func (o TrustedIdProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*TrustedIdProvider] {
-	return pulumix.Output[*TrustedIdProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The URL of this trusted identity provider.

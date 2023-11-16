@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Content Key Policy resource.
@@ -161,12 +160,6 @@ func (i *ContentKeyPolicy) ToContentKeyPolicyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ContentKeyPolicyOutput)
 }
 
-func (i *ContentKeyPolicy) ToOutput(ctx context.Context) pulumix.Output[*ContentKeyPolicy] {
-	return pulumix.Output[*ContentKeyPolicy]{
-		OutputState: i.ToContentKeyPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContentKeyPolicyOutput struct{ *pulumi.OutputState }
 
 func (ContentKeyPolicyOutput) ElementType() reflect.Type {
@@ -179,12 +172,6 @@ func (o ContentKeyPolicyOutput) ToContentKeyPolicyOutput() ContentKeyPolicyOutpu
 
 func (o ContentKeyPolicyOutput) ToContentKeyPolicyOutputWithContext(ctx context.Context) ContentKeyPolicyOutput {
 	return o
-}
-
-func (o ContentKeyPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ContentKeyPolicy] {
-	return pulumix.Output[*ContentKeyPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation date of the Policy

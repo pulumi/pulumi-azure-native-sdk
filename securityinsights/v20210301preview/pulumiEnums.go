@@ -487,12 +487,6 @@ func (o TriggerOperatorOutput) ToTriggerOperatorPtrOutputWithContext(ctx context
 	}).(TriggerOperatorPtrOutput)
 }
 
-func (o TriggerOperatorOutput) ToOutput(ctx context.Context) pulumix.Output[TriggerOperator] {
-	return pulumix.Output[TriggerOperator]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TriggerOperatorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -526,12 +520,6 @@ func (o TriggerOperatorPtrOutput) ToTriggerOperatorPtrOutput() TriggerOperatorPt
 
 func (o TriggerOperatorPtrOutput) ToTriggerOperatorPtrOutputWithContext(ctx context.Context) TriggerOperatorPtrOutput {
 	return o
-}
-
-func (o TriggerOperatorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TriggerOperator] {
-	return pulumix.Output[*TriggerOperator]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TriggerOperatorPtrOutput) Elem() TriggerOperatorOutput {

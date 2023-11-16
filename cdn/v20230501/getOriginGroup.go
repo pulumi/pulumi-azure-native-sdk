@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an existing origin group within an endpoint.
@@ -99,12 +98,6 @@ func (o LookupOriginGroupResultOutput) ToLookupOriginGroupResultOutput() LookupO
 
 func (o LookupOriginGroupResultOutput) ToLookupOriginGroupResultOutputWithContext(ctx context.Context) LookupOriginGroupResultOutput {
 	return o
-}
-
-func (o LookupOriginGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOriginGroupResult] {
-	return pulumix.Output[LookupOriginGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Health probe settings to the origin that is used to determine the health of the origin.

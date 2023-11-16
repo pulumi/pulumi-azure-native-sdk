@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get object metadata from an integration runtime
@@ -83,12 +82,6 @@ func (o GetIntegrationRuntimeObjectMetadatumResultOutput) ToGetIntegrationRuntim
 
 func (o GetIntegrationRuntimeObjectMetadatumResultOutput) ToGetIntegrationRuntimeObjectMetadatumResultOutputWithContext(ctx context.Context) GetIntegrationRuntimeObjectMetadatumResultOutput {
 	return o
-}
-
-func (o GetIntegrationRuntimeObjectMetadatumResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIntegrationRuntimeObjectMetadatumResult] {
-	return pulumix.Output[GetIntegrationRuntimeObjectMetadatumResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The link to the next page of results, if any remaining results exist.

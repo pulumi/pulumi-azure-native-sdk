@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The list of supported VM SKUs.
@@ -108,12 +107,6 @@ func (i *VMSkus) ToVMSkusOutputWithContext(ctx context.Context) VMSkusOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VMSkusOutput)
 }
 
-func (i *VMSkus) ToOutput(ctx context.Context) pulumix.Output[*VMSkus] {
-	return pulumix.Output[*VMSkus]{
-		OutputState: i.ToVMSkusOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VMSkusOutput struct{ *pulumi.OutputState }
 
 func (VMSkusOutput) ElementType() reflect.Type {
@@ -126,12 +119,6 @@ func (o VMSkusOutput) ToVMSkusOutput() VMSkusOutput {
 
 func (o VMSkusOutput) ToVMSkusOutputWithContext(ctx context.Context) VMSkusOutput {
 	return o
-}
-
-func (o VMSkusOutput) ToOutput(ctx context.Context) pulumix.Output[*VMSkus] {
-	return pulumix.Output[*VMSkus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Extended Location definition

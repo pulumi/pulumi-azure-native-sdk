@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a specific Smart Detector alert rule.
@@ -115,12 +114,6 @@ func (o LookupSmartDetectorAlertRuleResultOutput) ToLookupSmartDetectorAlertRule
 
 func (o LookupSmartDetectorAlertRuleResultOutput) ToLookupSmartDetectorAlertRuleResultOutputWithContext(ctx context.Context) LookupSmartDetectorAlertRuleResultOutput {
 	return o
-}
-
-func (o LookupSmartDetectorAlertRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSmartDetectorAlertRuleResult] {
-	return pulumix.Output[LookupSmartDetectorAlertRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The alert rule actions.

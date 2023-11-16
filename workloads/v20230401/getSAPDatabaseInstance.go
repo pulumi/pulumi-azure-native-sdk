@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the SAP Database Instance resource.
@@ -105,12 +104,6 @@ func (o LookupSAPDatabaseInstanceResultOutput) ToLookupSAPDatabaseInstanceResult
 
 func (o LookupSAPDatabaseInstanceResultOutput) ToLookupSAPDatabaseInstanceResultOutputWithContext(ctx context.Context) LookupSAPDatabaseInstanceResultOutput {
 	return o
-}
-
-func (o LookupSAPDatabaseInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSAPDatabaseInstanceResult] {
-	return pulumix.Output[LookupSAPDatabaseInstanceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Database SID name.

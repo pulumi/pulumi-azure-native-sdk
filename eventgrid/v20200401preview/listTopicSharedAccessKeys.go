@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List the two keys used to publish to a topic.
@@ -75,12 +74,6 @@ func (o ListTopicSharedAccessKeysResultOutput) ToListTopicSharedAccessKeysResult
 
 func (o ListTopicSharedAccessKeysResultOutput) ToListTopicSharedAccessKeysResultOutputWithContext(ctx context.Context) ListTopicSharedAccessKeysResultOutput {
 	return o
-}
-
-func (o ListTopicSharedAccessKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListTopicSharedAccessKeysResult] {
-	return pulumix.Output[ListTopicSharedAccessKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Shared access key1 for the topic.

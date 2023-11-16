@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a HypervCollector
@@ -93,12 +92,6 @@ func (o LookupHypervCollectorsOperationResultOutput) ToLookupHypervCollectorsOpe
 
 func (o LookupHypervCollectorsOperationResultOutput) ToLookupHypervCollectorsOperationResultOutputWithContext(ctx context.Context) LookupHypervCollectorsOperationResultOutput {
 	return o
-}
-
-func (o LookupHypervCollectorsOperationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHypervCollectorsOperationResult] {
-	return pulumix.Output[LookupHypervCollectorsOperationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the collector agent properties.

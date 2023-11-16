@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a VmwareSite
@@ -101,12 +100,6 @@ func (o LookupSitesControllerResultOutput) ToLookupSitesControllerResultOutput()
 
 func (o LookupSitesControllerResultOutput) ToLookupSitesControllerResultOutputWithContext(ctx context.Context) LookupSitesControllerResultOutput {
 	return o
-}
-
-func (o LookupSitesControllerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSitesControllerResult] {
-	return pulumix.Output[LookupSitesControllerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the on-premises agent details.

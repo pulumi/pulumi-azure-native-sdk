@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Defines the ExternalNetwork item.
@@ -173,12 +172,6 @@ func (i *ExternalNetwork) ToExternalNetworkOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalNetworkOutput)
 }
 
-func (i *ExternalNetwork) ToOutput(ctx context.Context) pulumix.Output[*ExternalNetwork] {
-	return pulumix.Output[*ExternalNetwork]{
-		OutputState: i.ToExternalNetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExternalNetworkOutput struct{ *pulumi.OutputState }
 
 func (ExternalNetworkOutput) ElementType() reflect.Type {
@@ -191,12 +184,6 @@ func (o ExternalNetworkOutput) ToExternalNetworkOutput() ExternalNetworkOutput {
 
 func (o ExternalNetworkOutput) ToExternalNetworkOutputWithContext(ctx context.Context) ExternalNetworkOutput {
 	return o
-}
-
-func (o ExternalNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*ExternalNetwork] {
-	return pulumix.Output[*ExternalNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 // AdministrativeState of the externalNetwork. Example: Enabled | Disabled.

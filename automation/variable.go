@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Definition of the variable.
@@ -163,12 +162,6 @@ func (i *Variable) ToVariableOutputWithContext(ctx context.Context) VariableOutp
 	return pulumi.ToOutputWithContext(ctx, i).(VariableOutput)
 }
 
-func (i *Variable) ToOutput(ctx context.Context) pulumix.Output[*Variable] {
-	return pulumix.Output[*Variable]{
-		OutputState: i.ToVariableOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VariableOutput struct{ *pulumi.OutputState }
 
 func (VariableOutput) ElementType() reflect.Type {
@@ -181,12 +174,6 @@ func (o VariableOutput) ToVariableOutput() VariableOutput {
 
 func (o VariableOutput) ToVariableOutputWithContext(ctx context.Context) VariableOutput {
 	return o
-}
-
-func (o VariableOutput) ToOutput(ctx context.Context) pulumix.Output[*Variable] {
-	return pulumix.Output[*Variable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the creation time.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about a RedisEnterprise cluster
@@ -103,12 +102,6 @@ func (o LookupRedisEnterpriseResultOutput) ToLookupRedisEnterpriseResultOutput()
 
 func (o LookupRedisEnterpriseResultOutput) ToLookupRedisEnterpriseResultOutputWithContext(ctx context.Context) LookupRedisEnterpriseResultOutput {
 	return o
-}
-
-func (o LookupRedisEnterpriseResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRedisEnterpriseResult] {
-	return pulumix.Output[LookupRedisEnterpriseResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Encryption-at-rest configuration for the cluster.

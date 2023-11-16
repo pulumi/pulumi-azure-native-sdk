@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a list of language extensions that can run within KQL queries.
@@ -73,12 +72,6 @@ func (o ListClusterLanguageExtensionsResultOutput) ToListClusterLanguageExtensio
 
 func (o ListClusterLanguageExtensionsResultOutput) ToListClusterLanguageExtensionsResultOutputWithContext(ctx context.Context) ListClusterLanguageExtensionsResultOutput {
 	return o
-}
-
-func (o ListClusterLanguageExtensionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListClusterLanguageExtensionsResult] {
-	return pulumix.Output[ListClusterLanguageExtensionsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of language extensions.

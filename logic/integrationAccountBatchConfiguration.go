@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The batch configuration resource definition.
@@ -144,12 +143,6 @@ func (i *IntegrationAccountBatchConfiguration) ToIntegrationAccountBatchConfigur
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationAccountBatchConfigurationOutput)
 }
 
-func (i *IntegrationAccountBatchConfiguration) ToOutput(ctx context.Context) pulumix.Output[*IntegrationAccountBatchConfiguration] {
-	return pulumix.Output[*IntegrationAccountBatchConfiguration]{
-		OutputState: i.ToIntegrationAccountBatchConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IntegrationAccountBatchConfigurationOutput struct{ *pulumi.OutputState }
 
 func (IntegrationAccountBatchConfigurationOutput) ElementType() reflect.Type {
@@ -162,12 +155,6 @@ func (o IntegrationAccountBatchConfigurationOutput) ToIntegrationAccountBatchCon
 
 func (o IntegrationAccountBatchConfigurationOutput) ToIntegrationAccountBatchConfigurationOutputWithContext(ctx context.Context) IntegrationAccountBatchConfigurationOutput {
 	return o
-}
-
-func (o IntegrationAccountBatchConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationAccountBatchConfiguration] {
-	return pulumix.Output[*IntegrationAccountBatchConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource location.

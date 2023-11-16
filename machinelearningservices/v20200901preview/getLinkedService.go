@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the detail of a linked service.
@@ -87,12 +86,6 @@ func (o LookupLinkedServiceResultOutput) ToLookupLinkedServiceResultOutput() Loo
 
 func (o LookupLinkedServiceResultOutput) ToLookupLinkedServiceResultOutputWithContext(ctx context.Context) LookupLinkedServiceResultOutput {
 	return o
-}
-
-func (o LookupLinkedServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLinkedServiceResult] {
-	return pulumix.Output[LookupLinkedServiceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ResourceId of the link of the linked service.

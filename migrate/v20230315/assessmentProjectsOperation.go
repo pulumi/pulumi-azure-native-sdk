@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Assessment project site resource.
@@ -189,12 +188,6 @@ func (i *AssessmentProjectsOperation) ToAssessmentProjectsOperationOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(AssessmentProjectsOperationOutput)
 }
 
-func (i *AssessmentProjectsOperation) ToOutput(ctx context.Context) pulumix.Output[*AssessmentProjectsOperation] {
-	return pulumix.Output[*AssessmentProjectsOperation]{
-		OutputState: i.ToAssessmentProjectsOperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AssessmentProjectsOperationOutput struct{ *pulumi.OutputState }
 
 func (AssessmentProjectsOperationOutput) ElementType() reflect.Type {
@@ -207,12 +200,6 @@ func (o AssessmentProjectsOperationOutput) ToAssessmentProjectsOperationOutput()
 
 func (o AssessmentProjectsOperationOutput) ToAssessmentProjectsOperationOutputWithContext(ctx context.Context) AssessmentProjectsOperationOutput {
 	return o
-}
-
-func (o AssessmentProjectsOperationOutput) ToOutput(ctx context.Context) pulumix.Output[*AssessmentProjectsOperation] {
-	return pulumix.Output[*AssessmentProjectsOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Assessment solution ARM id tracked by Microsoft.Migrate/migrateProjects.

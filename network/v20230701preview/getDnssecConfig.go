@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the DNSSEC configuration.
@@ -85,12 +84,6 @@ func (o LookupDnssecConfigResultOutput) ToLookupDnssecConfigResultOutput() Looku
 
 func (o LookupDnssecConfigResultOutput) ToLookupDnssecConfigResultOutputWithContext(ctx context.Context) LookupDnssecConfigResultOutput {
 	return o
-}
-
-func (o LookupDnssecConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDnssecConfigResult] {
-	return pulumix.Output[LookupDnssecConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The etag of the DNSSEC configuration.

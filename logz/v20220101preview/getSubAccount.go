@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupSubAccount(ctx *pulumi.Context, args *LookupSubAccountArgs, opts ...pulumi.InvokeOption) (*LookupSubAccountResult, error) {
@@ -85,12 +84,6 @@ func (o LookupSubAccountResultOutput) ToLookupSubAccountResultOutput() LookupSub
 
 func (o LookupSubAccountResultOutput) ToLookupSubAccountResultOutputWithContext(ctx context.Context) LookupSubAccountResultOutput {
 	return o
-}
-
-func (o LookupSubAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSubAccountResult] {
-	return pulumix.Output[LookupSubAccountResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ARM id of the monitor resource.

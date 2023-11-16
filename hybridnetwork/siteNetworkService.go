@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Site network service resource.
@@ -142,12 +141,6 @@ func (i *SiteNetworkService) ToSiteNetworkServiceOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(SiteNetworkServiceOutput)
 }
 
-func (i *SiteNetworkService) ToOutput(ctx context.Context) pulumix.Output[*SiteNetworkService] {
-	return pulumix.Output[*SiteNetworkService]{
-		OutputState: i.ToSiteNetworkServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SiteNetworkServiceOutput struct{ *pulumi.OutputState }
 
 func (SiteNetworkServiceOutput) ElementType() reflect.Type {
@@ -160,12 +153,6 @@ func (o SiteNetworkServiceOutput) ToSiteNetworkServiceOutput() SiteNetworkServic
 
 func (o SiteNetworkServiceOutput) ToSiteNetworkServiceOutputWithContext(ctx context.Context) SiteNetworkServiceOutput {
 	return o
-}
-
-func (o SiteNetworkServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*SiteNetworkService] {
-	return pulumix.Output[*SiteNetworkService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The managed identity of the Site network service, if configured.

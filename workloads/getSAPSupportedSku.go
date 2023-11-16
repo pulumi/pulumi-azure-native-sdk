@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a list of SAP supported SKUs for ASCS, Application and Database tier.
@@ -96,12 +95,6 @@ func (o GetSAPSupportedSkuResultOutput) ToGetSAPSupportedSkuResultOutput() GetSA
 
 func (o GetSAPSupportedSkuResultOutput) ToGetSAPSupportedSkuResultOutputWithContext(ctx context.Context) GetSAPSupportedSkuResultOutput {
 	return o
-}
-
-func (o GetSAPSupportedSkuResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSAPSupportedSkuResult] {
-	return pulumix.Output[GetSAPSupportedSkuResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the list of SAP supported SKUs.

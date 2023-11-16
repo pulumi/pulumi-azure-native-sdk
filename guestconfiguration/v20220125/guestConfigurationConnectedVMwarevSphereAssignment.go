@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Guest configuration assignment is an association between a machine and guest configuration.
@@ -137,12 +136,6 @@ func (i *GuestConfigurationConnectedVMwarevSphereAssignment) ToGuestConfiguratio
 	return pulumi.ToOutputWithContext(ctx, i).(GuestConfigurationConnectedVMwarevSphereAssignmentOutput)
 }
 
-func (i *GuestConfigurationConnectedVMwarevSphereAssignment) ToOutput(ctx context.Context) pulumix.Output[*GuestConfigurationConnectedVMwarevSphereAssignment] {
-	return pulumix.Output[*GuestConfigurationConnectedVMwarevSphereAssignment]{
-		OutputState: i.ToGuestConfigurationConnectedVMwarevSphereAssignmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestConfigurationConnectedVMwarevSphereAssignmentOutput struct{ *pulumi.OutputState }
 
 func (GuestConfigurationConnectedVMwarevSphereAssignmentOutput) ElementType() reflect.Type {
@@ -155,12 +148,6 @@ func (o GuestConfigurationConnectedVMwarevSphereAssignmentOutput) ToGuestConfigu
 
 func (o GuestConfigurationConnectedVMwarevSphereAssignmentOutput) ToGuestConfigurationConnectedVMwarevSphereAssignmentOutputWithContext(ctx context.Context) GuestConfigurationConnectedVMwarevSphereAssignmentOutput {
 	return o
-}
-
-func (o GuestConfigurationConnectedVMwarevSphereAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestConfigurationConnectedVMwarevSphereAssignment] {
-	return pulumix.Output[*GuestConfigurationConnectedVMwarevSphereAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Region where the VM is located.

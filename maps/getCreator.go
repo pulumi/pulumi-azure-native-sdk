@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Maps Creator resource.
@@ -90,12 +89,6 @@ func (o LookupCreatorResultOutput) ToLookupCreatorResultOutput() LookupCreatorRe
 
 func (o LookupCreatorResultOutput) ToLookupCreatorResultOutputWithContext(ctx context.Context) LookupCreatorResultOutput {
 	return o
-}
-
-func (o LookupCreatorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCreatorResult] {
-	return pulumix.Output[LookupCreatorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

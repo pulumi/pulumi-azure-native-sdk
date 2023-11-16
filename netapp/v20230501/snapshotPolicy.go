@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Snapshot policy information
@@ -221,12 +220,6 @@ func (i *SnapshotPolicy) ToSnapshotPolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SnapshotPolicyOutput)
 }
 
-func (i *SnapshotPolicy) ToOutput(ctx context.Context) pulumix.Output[*SnapshotPolicy] {
-	return pulumix.Output[*SnapshotPolicy]{
-		OutputState: i.ToSnapshotPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SnapshotPolicyOutput struct{ *pulumi.OutputState }
 
 func (SnapshotPolicyOutput) ElementType() reflect.Type {
@@ -239,12 +232,6 @@ func (o SnapshotPolicyOutput) ToSnapshotPolicyOutput() SnapshotPolicyOutput {
 
 func (o SnapshotPolicyOutput) ToSnapshotPolicyOutputWithContext(ctx context.Context) SnapshotPolicyOutput {
 	return o
-}
-
-func (o SnapshotPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*SnapshotPolicy] {
-	return pulumix.Output[*SnapshotPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Schedule for daily snapshots

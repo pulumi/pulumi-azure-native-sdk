@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // DC Access code in the case of Self Managed Shipping.
@@ -73,12 +72,6 @@ func (o ListOrderDCAccessCodeResultOutput) ToListOrderDCAccessCodeResultOutput()
 
 func (o ListOrderDCAccessCodeResultOutput) ToListOrderDCAccessCodeResultOutputWithContext(ctx context.Context) ListOrderDCAccessCodeResultOutput {
 	return o
-}
-
-func (o ListOrderDCAccessCodeResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListOrderDCAccessCodeResult] {
-	return pulumix.Output[ListOrderDCAccessCodeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // DCAccess Code for the Self Managed shipment.

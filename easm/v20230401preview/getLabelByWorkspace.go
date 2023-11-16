@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a label in the given workspace.
@@ -89,12 +88,6 @@ func (o LookupLabelByWorkspaceResultOutput) ToLookupLabelByWorkspaceResultOutput
 
 func (o LookupLabelByWorkspaceResultOutput) ToLookupLabelByWorkspaceResultOutputWithContext(ctx context.Context) LookupLabelByWorkspaceResultOutput {
 	return o
-}
-
-func (o LookupLabelByWorkspaceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLabelByWorkspaceResult] {
-	return pulumix.Output[LookupLabelByWorkspaceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Label color.

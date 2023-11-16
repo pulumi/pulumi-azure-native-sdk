@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a feature registration
@@ -89,12 +88,6 @@ func (o LookupSubscriptionFeatureRegistrationResultOutput) ToLookupSubscriptionF
 
 func (o LookupSubscriptionFeatureRegistrationResultOutput) ToLookupSubscriptionFeatureRegistrationResultOutputWithContext(ctx context.Context) LookupSubscriptionFeatureRegistrationResultOutput {
 	return o
-}
-
-func (o LookupSubscriptionFeatureRegistrationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSubscriptionFeatureRegistrationResult] {
-	return pulumix.Output[LookupSubscriptionFeatureRegistrationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Azure resource Id.

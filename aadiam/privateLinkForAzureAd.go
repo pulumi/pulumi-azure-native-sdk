@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // PrivateLink Policy configuration object.
@@ -168,12 +167,6 @@ func (i *PrivateLinkForAzureAd) ToPrivateLinkForAzureAdOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkForAzureAdOutput)
 }
 
-func (i *PrivateLinkForAzureAd) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkForAzureAd] {
-	return pulumix.Output[*PrivateLinkForAzureAd]{
-		OutputState: i.ToPrivateLinkForAzureAdOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateLinkForAzureAdOutput struct{ *pulumi.OutputState }
 
 func (PrivateLinkForAzureAdOutput) ElementType() reflect.Type {
@@ -186,12 +179,6 @@ func (o PrivateLinkForAzureAdOutput) ToPrivateLinkForAzureAdOutput() PrivateLink
 
 func (o PrivateLinkForAzureAdOutput) ToPrivateLinkForAzureAdOutputWithContext(ctx context.Context) PrivateLinkForAzureAdOutput {
 	return o
-}
-
-func (o PrivateLinkForAzureAdOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkForAzureAd] {
-	return pulumix.Output[*PrivateLinkForAzureAd]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Flag indicating whether all tenants are allowed

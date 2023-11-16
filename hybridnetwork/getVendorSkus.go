@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about the specified sku.
@@ -96,12 +95,6 @@ func (o LookupVendorSkusResultOutput) ToLookupVendorSkusResultOutput() LookupVen
 
 func (o LookupVendorSkusResultOutput) ToLookupVendorSkusResultOutputWithContext(ctx context.Context) LookupVendorSkusResultOutput {
 	return o
-}
-
-func (o LookupVendorSkusResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVendorSkusResult] {
-	return pulumix.Output[LookupVendorSkusResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The sku deployment mode.

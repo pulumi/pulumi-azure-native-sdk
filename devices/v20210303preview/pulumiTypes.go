@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i EventHubConsumerGroupNameArgs) ToEventHubConsumerGroupNameOutput() Event
 
 func (i EventHubConsumerGroupNameArgs) ToEventHubConsumerGroupNameOutputWithContext(ctx context.Context) EventHubConsumerGroupNameOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EventHubConsumerGroupNameOutput)
-}
-
-func (i EventHubConsumerGroupNameArgs) ToOutput(ctx context.Context) pulumix.Output[EventHubConsumerGroupName] {
-	return pulumix.Output[EventHubConsumerGroupName]{
-		OutputState: i.ToEventHubConsumerGroupNameOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i EventHubConsumerGroupNameArgs) ToEventHubConsumerGroupNamePtrOutput() EventHubConsumerGroupNamePtrOutput {
@@ -96,12 +89,6 @@ func (i *eventHubConsumerGroupNamePtrType) ToEventHubConsumerGroupNamePtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(EventHubConsumerGroupNamePtrOutput)
 }
 
-func (i *eventHubConsumerGroupNamePtrType) ToOutput(ctx context.Context) pulumix.Output[*EventHubConsumerGroupName] {
-	return pulumix.Output[*EventHubConsumerGroupName]{
-		OutputState: i.ToEventHubConsumerGroupNamePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The EventHub consumer group name.
 type EventHubConsumerGroupNameOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o EventHubConsumerGroupNameOutput) ToEventHubConsumerGroupNamePtrOutputWit
 	}).(EventHubConsumerGroupNamePtrOutput)
 }
 
-func (o EventHubConsumerGroupNameOutput) ToOutput(ctx context.Context) pulumix.Output[EventHubConsumerGroupName] {
-	return pulumix.Output[EventHubConsumerGroupName]{
-		OutputState: o.OutputState,
-	}
-}
-
 // EventHub consumer group name
 func (o EventHubConsumerGroupNameOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EventHubConsumerGroupName) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -150,12 +131,6 @@ func (o EventHubConsumerGroupNamePtrOutput) ToEventHubConsumerGroupNamePtrOutput
 
 func (o EventHubConsumerGroupNamePtrOutput) ToEventHubConsumerGroupNamePtrOutputWithContext(ctx context.Context) EventHubConsumerGroupNamePtrOutput {
 	return o
-}
-
-func (o EventHubConsumerGroupNamePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EventHubConsumerGroupName] {
-	return pulumix.Output[*EventHubConsumerGroupName]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EventHubConsumerGroupNamePtrOutput) Elem() EventHubConsumerGroupNameOutput {

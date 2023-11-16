@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the Hybrid AKS virtual network
@@ -86,12 +85,6 @@ func (o LookupVirtualNetworkRetrieveResultOutput) ToLookupVirtualNetworkRetrieve
 
 func (o LookupVirtualNetworkRetrieveResultOutput) ToLookupVirtualNetworkRetrieveResultOutputWithContext(ctx context.Context) LookupVirtualNetworkRetrieveResultOutput {
 	return o
-}
-
-func (o LookupVirtualNetworkRetrieveResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVirtualNetworkRetrieveResult] {
-	return pulumix.Output[LookupVirtualNetworkRetrieveResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupVirtualNetworkRetrieveResultOutput) ExtendedLocation() VirtualNetworksResponseExtendedLocationPtrOutput {

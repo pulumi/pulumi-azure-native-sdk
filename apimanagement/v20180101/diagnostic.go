@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Diagnostic details.
@@ -170,12 +169,6 @@ func (i *Diagnostic) ToDiagnosticOutputWithContext(ctx context.Context) Diagnost
 	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticOutput)
 }
 
-func (i *Diagnostic) ToOutput(ctx context.Context) pulumix.Output[*Diagnostic] {
-	return pulumix.Output[*Diagnostic]{
-		OutputState: i.ToDiagnosticOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DiagnosticOutput struct{ *pulumi.OutputState }
 
 func (DiagnosticOutput) ElementType() reflect.Type {
@@ -188,12 +181,6 @@ func (o DiagnosticOutput) ToDiagnosticOutput() DiagnosticOutput {
 
 func (o DiagnosticOutput) ToDiagnosticOutputWithContext(ctx context.Context) DiagnosticOutput {
 	return o
-}
-
-func (o DiagnosticOutput) ToOutput(ctx context.Context) pulumix.Output[*Diagnostic] {
-	return pulumix.Output[*Diagnostic]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates whether a diagnostic should receive data or not.

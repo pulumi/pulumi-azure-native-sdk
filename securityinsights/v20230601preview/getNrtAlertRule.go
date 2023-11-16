@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the alert rule.
@@ -124,12 +123,6 @@ func (o LookupNrtAlertRuleResultOutput) ToLookupNrtAlertRuleResultOutput() Looku
 
 func (o LookupNrtAlertRuleResultOutput) ToLookupNrtAlertRuleResultOutputWithContext(ctx context.Context) LookupNrtAlertRuleResultOutput {
 	return o
-}
-
-func (o LookupNrtAlertRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNrtAlertRuleResult] {
-	return pulumix.Output[LookupNrtAlertRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The alert details override settings

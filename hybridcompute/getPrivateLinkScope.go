@@ -9,13 +9,12 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a Azure Arc PrivateLinkScope.
 // Azure REST API version: 2022-12-27.
 //
-// Other available API versions: 2020-08-15-preview, 2023-06-20-preview.
+// Other available API versions: 2020-08-15-preview, 2023-06-20-preview, 2023-10-03-preview.
 func LookupPrivateLinkScope(ctx *pulumi.Context, args *LookupPrivateLinkScopeArgs, opts ...pulumi.InvokeOption) (*LookupPrivateLinkScopeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateLinkScopeResult
@@ -88,12 +87,6 @@ func (o LookupPrivateLinkScopeResultOutput) ToLookupPrivateLinkScopeResultOutput
 
 func (o LookupPrivateLinkScopeResultOutput) ToLookupPrivateLinkScopeResultOutputWithContext(ctx context.Context) LookupPrivateLinkScopeResultOutput {
 	return o
-}
-
-func (o LookupPrivateLinkScopeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateLinkScopeResult] {
-	return pulumix.Output[LookupPrivateLinkScopeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Azure resource Id

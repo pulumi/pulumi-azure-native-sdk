@@ -10,13 +10,12 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Threat intelligence information object.
 // Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2019-01-01-preview.
 //
-// Other available API versions: 2021-04-01, 2021-09-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2021-04-01, 2021-09-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 type ThreatIntelligenceIndicator struct {
 	pulumi.CustomResourceState
 
@@ -127,6 +126,9 @@ func NewThreatIntelligenceIndicator(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:ThreatIntelligenceIndicator"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:ThreatIntelligenceIndicator"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -322,12 +324,6 @@ func (i *ThreatIntelligenceIndicator) ToThreatIntelligenceIndicatorOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelligenceIndicatorOutput)
 }
 
-func (i *ThreatIntelligenceIndicator) ToOutput(ctx context.Context) pulumix.Output[*ThreatIntelligenceIndicator] {
-	return pulumix.Output[*ThreatIntelligenceIndicator]{
-		OutputState: i.ToThreatIntelligenceIndicatorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ThreatIntelligenceIndicatorOutput struct{ *pulumi.OutputState }
 
 func (ThreatIntelligenceIndicatorOutput) ElementType() reflect.Type {
@@ -340,12 +336,6 @@ func (o ThreatIntelligenceIndicatorOutput) ToThreatIntelligenceIndicatorOutput()
 
 func (o ThreatIntelligenceIndicatorOutput) ToThreatIntelligenceIndicatorOutputWithContext(ctx context.Context) ThreatIntelligenceIndicatorOutput {
 	return o
-}
-
-func (o ThreatIntelligenceIndicatorOutput) ToOutput(ctx context.Context) pulumix.Output[*ThreatIntelligenceIndicator] {
-	return pulumix.Output[*ThreatIntelligenceIndicator]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Etag of the azure resource

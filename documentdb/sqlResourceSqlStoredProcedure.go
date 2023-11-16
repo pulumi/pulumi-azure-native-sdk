@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure Cosmos DB storedProcedure.
@@ -244,12 +243,6 @@ func (i *SqlResourceSqlStoredProcedure) ToSqlResourceSqlStoredProcedureOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(SqlResourceSqlStoredProcedureOutput)
 }
 
-func (i *SqlResourceSqlStoredProcedure) ToOutput(ctx context.Context) pulumix.Output[*SqlResourceSqlStoredProcedure] {
-	return pulumix.Output[*SqlResourceSqlStoredProcedure]{
-		OutputState: i.ToSqlResourceSqlStoredProcedureOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SqlResourceSqlStoredProcedureOutput struct{ *pulumi.OutputState }
 
 func (SqlResourceSqlStoredProcedureOutput) ElementType() reflect.Type {
@@ -262,12 +255,6 @@ func (o SqlResourceSqlStoredProcedureOutput) ToSqlResourceSqlStoredProcedureOutp
 
 func (o SqlResourceSqlStoredProcedureOutput) ToSqlResourceSqlStoredProcedureOutputWithContext(ctx context.Context) SqlResourceSqlStoredProcedureOutput {
 	return o
-}
-
-func (o SqlResourceSqlStoredProcedureOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlResourceSqlStoredProcedure] {
-	return pulumix.Output[*SqlResourceSqlStoredProcedure]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The location of the resource group to which the resource belongs.

@@ -10,13 +10,12 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A managed cluster snapshot resource.
 // Azure REST API version: 2023-05-02-preview. Prior API version in Azure Native 1.x: 2022-02-02-preview.
 //
-// Other available API versions: 2023-06-02-preview, 2023-07-02-preview, 2023-08-02-preview, 2023-09-02-preview.
+// Other available API versions: 2023-06-02-preview, 2023-07-02-preview, 2023-08-02-preview, 2023-09-02-preview, 2023-10-02-preview.
 type ManagedClusterSnapshot struct {
 	pulumi.CustomResourceState
 
@@ -109,6 +108,9 @@ func NewManagedClusterSnapshot(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerservice/v20230902preview:ManagedClusterSnapshot"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20231002preview:ManagedClusterSnapshot"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -197,12 +199,6 @@ func (i *ManagedClusterSnapshot) ToManagedClusterSnapshotOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterSnapshotOutput)
 }
 
-func (i *ManagedClusterSnapshot) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSnapshot] {
-	return pulumix.Output[*ManagedClusterSnapshot]{
-		OutputState: i.ToManagedClusterSnapshotOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagedClusterSnapshotOutput struct{ *pulumi.OutputState }
 
 func (ManagedClusterSnapshotOutput) ElementType() reflect.Type {
@@ -215,12 +211,6 @@ func (o ManagedClusterSnapshotOutput) ToManagedClusterSnapshotOutput() ManagedCl
 
 func (o ManagedClusterSnapshotOutput) ToManagedClusterSnapshotOutputWithContext(ctx context.Context) ManagedClusterSnapshotOutput {
 	return o
-}
-
-func (o ManagedClusterSnapshotOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSnapshot] {
-	return pulumix.Output[*ManagedClusterSnapshot]{
-		OutputState: o.OutputState,
-	}
 }
 
 // CreationData to be used to specify the source resource ID to create this snapshot.

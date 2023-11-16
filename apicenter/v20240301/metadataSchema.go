@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Metadata schema entity. Used to define metadata for the entities in API catalog.
@@ -130,12 +129,6 @@ func (i *MetadataSchema) ToMetadataSchemaOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(MetadataSchemaOutput)
 }
 
-func (i *MetadataSchema) ToOutput(ctx context.Context) pulumix.Output[*MetadataSchema] {
-	return pulumix.Output[*MetadataSchema]{
-		OutputState: i.ToMetadataSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetadataSchemaOutput struct{ *pulumi.OutputState }
 
 func (MetadataSchemaOutput) ElementType() reflect.Type {
@@ -148,12 +141,6 @@ func (o MetadataSchemaOutput) ToMetadataSchemaOutput() MetadataSchemaOutput {
 
 func (o MetadataSchemaOutput) ToMetadataSchemaOutputWithContext(ctx context.Context) MetadataSchemaOutput {
 	return o
-}
-
-func (o MetadataSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[*MetadataSchema] {
-	return pulumix.Output[*MetadataSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetadataSchemaOutput) AssignedTo() MetadataAssignmentResponseArrayOutput {

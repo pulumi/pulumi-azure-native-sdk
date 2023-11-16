@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // get access token.
@@ -81,12 +80,6 @@ func (o GetOfferAccessTokenResultOutput) ToGetOfferAccessTokenResultOutput() Get
 
 func (o GetOfferAccessTokenResultOutput) ToGetOfferAccessTokenResultOutputWithContext(ctx context.Context) GetOfferAccessTokenResultOutput {
 	return o
-}
-
-func (o GetOfferAccessTokenResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetOfferAccessTokenResult] {
-	return pulumix.Output[GetOfferAccessTokenResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The access token.

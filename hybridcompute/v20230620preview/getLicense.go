@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves information about the view of a license.
@@ -91,12 +90,6 @@ func (o LookupLicenseResultOutput) ToLookupLicenseResultOutput() LookupLicenseRe
 
 func (o LookupLicenseResultOutput) ToLookupLicenseResultOutputWithContext(ctx context.Context) LookupLicenseResultOutput {
 	return o
-}
-
-func (o LookupLicenseResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLicenseResult] {
-	return pulumix.Output[LookupLicenseResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

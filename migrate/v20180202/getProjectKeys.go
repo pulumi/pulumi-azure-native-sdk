@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the Log Analytics Workspace ID and Primary Key for the specified project.
@@ -75,12 +74,6 @@ func (o GetProjectKeysResultOutput) ToGetProjectKeysResultOutput() GetProjectKey
 
 func (o GetProjectKeysResultOutput) ToGetProjectKeysResultOutputWithContext(ctx context.Context) GetProjectKeysResultOutput {
 	return o
-}
-
-func (o GetProjectKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetProjectKeysResult] {
-	return pulumix.Output[GetProjectKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ID of Migration Project.

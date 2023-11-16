@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure SQL managed instance administrator.
@@ -189,12 +188,6 @@ func (i *ManagedInstanceAdministrator) ToManagedInstanceAdministratorOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceAdministratorOutput)
 }
 
-func (i *ManagedInstanceAdministrator) ToOutput(ctx context.Context) pulumix.Output[*ManagedInstanceAdministrator] {
-	return pulumix.Output[*ManagedInstanceAdministrator]{
-		OutputState: i.ToManagedInstanceAdministratorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagedInstanceAdministratorOutput struct{ *pulumi.OutputState }
 
 func (ManagedInstanceAdministratorOutput) ElementType() reflect.Type {
@@ -207,12 +200,6 @@ func (o ManagedInstanceAdministratorOutput) ToManagedInstanceAdministratorOutput
 
 func (o ManagedInstanceAdministratorOutput) ToManagedInstanceAdministratorOutputWithContext(ctx context.Context) ManagedInstanceAdministratorOutput {
 	return o
-}
-
-func (o ManagedInstanceAdministratorOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedInstanceAdministrator] {
-	return pulumix.Output[*ManagedInstanceAdministrator]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Type of the managed instance administrator.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This operation applies only to Batch accounts with allowedAuthenticationModes containing 'SharedKey'. If the Batch account doesn't contain 'SharedKey' in its allowedAuthenticationMode, clients cannot use shared keys to authenticate, and must use another allowedAuthenticationModes instead. In this case, getting the keys will fail.
@@ -80,12 +79,6 @@ func (o ListBatchAccountKeysResultOutput) ToListBatchAccountKeysResultOutput() L
 
 func (o ListBatchAccountKeysResultOutput) ToListBatchAccountKeysResultOutputWithContext(ctx context.Context) ListBatchAccountKeysResultOutput {
 	return o
-}
-
-func (o ListBatchAccountKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListBatchAccountKeysResult] {
-	return pulumix.Output[ListBatchAccountKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Batch account name.

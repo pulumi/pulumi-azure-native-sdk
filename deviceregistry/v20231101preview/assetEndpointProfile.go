@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Asset Endpoint Profile definition.
@@ -141,12 +140,6 @@ func (i *AssetEndpointProfile) ToAssetEndpointProfileOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfileOutput)
 }
 
-func (i *AssetEndpointProfile) ToOutput(ctx context.Context) pulumix.Output[*AssetEndpointProfile] {
-	return pulumix.Output[*AssetEndpointProfile]{
-		OutputState: i.ToAssetEndpointProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AssetEndpointProfileOutput struct{ *pulumi.OutputState }
 
 func (AssetEndpointProfileOutput) ElementType() reflect.Type {
@@ -159,12 +152,6 @@ func (o AssetEndpointProfileOutput) ToAssetEndpointProfileOutput() AssetEndpoint
 
 func (o AssetEndpointProfileOutput) ToAssetEndpointProfileOutputWithContext(ctx context.Context) AssetEndpointProfileOutput {
 	return o
-}
-
-func (o AssetEndpointProfileOutput) ToOutput(ctx context.Context) pulumix.Output[*AssetEndpointProfile] {
-	return pulumix.Output[*AssetEndpointProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The extended location.

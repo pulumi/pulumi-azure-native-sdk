@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Defines Private endpoint proxy resource.
@@ -121,12 +120,6 @@ func (i *PrivateEndpointConnectionProxyController) ToPrivateEndpointConnectionPr
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionProxyControllerOutput)
 }
 
-func (i *PrivateEndpointConnectionProxyController) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionProxyController] {
-	return pulumix.Output[*PrivateEndpointConnectionProxyController]{
-		OutputState: i.ToPrivateEndpointConnectionProxyControllerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateEndpointConnectionProxyControllerOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointConnectionProxyControllerOutput) ElementType() reflect.Type {
@@ -139,12 +132,6 @@ func (o PrivateEndpointConnectionProxyControllerOutput) ToPrivateEndpointConnect
 
 func (o PrivateEndpointConnectionProxyControllerOutput) ToPrivateEndpointConnectionProxyControllerOutputWithContext(ctx context.Context) PrivateEndpointConnectionProxyControllerOutput {
 	return o
-}
-
-func (o PrivateEndpointConnectionProxyControllerOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionProxyController] {
-	return pulumix.Output[*PrivateEndpointConnectionProxyController]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateEndpointConnectionProxyControllerOutput) ETag() pulumi.StringPtrOutput {

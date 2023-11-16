@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a failover group.
@@ -97,12 +96,6 @@ func (o LookupFailoverGroupResultOutput) ToLookupFailoverGroupResultOutput() Loo
 
 func (o LookupFailoverGroupResultOutput) ToLookupFailoverGroupResultOutputWithContext(ctx context.Context) LookupFailoverGroupResultOutput {
 	return o
-}
-
-func (o LookupFailoverGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFailoverGroupResult] {
-	return pulumix.Output[LookupFailoverGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of databases in the failover group.

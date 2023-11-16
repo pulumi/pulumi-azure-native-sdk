@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i ContainerServiceLinuxProfileArgs) ToContainerServiceLinuxProfileOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerServiceLinuxProfileOutput)
 }
 
-func (i ContainerServiceLinuxProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceLinuxProfile] {
-	return pulumix.Output[ContainerServiceLinuxProfile]{
-		OutputState: i.ToContainerServiceLinuxProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerServiceLinuxProfileArgs) ToContainerServiceLinuxProfilePtrOutput() ContainerServiceLinuxProfilePtrOutput {
 	return i.ToContainerServiceLinuxProfilePtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *containerServiceLinuxProfilePtrType) ToContainerServiceLinuxProfilePtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerServiceLinuxProfilePtrOutput)
 }
 
-func (i *containerServiceLinuxProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceLinuxProfile] {
-	return pulumix.Output[*ContainerServiceLinuxProfile]{
-		OutputState: i.ToContainerServiceLinuxProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Profile for Linux VMs in the container service cluster.
 type ContainerServiceLinuxProfileOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o ContainerServiceLinuxProfileOutput) ToContainerServiceLinuxProfilePtrOut
 	}).(ContainerServiceLinuxProfilePtrOutput)
 }
 
-func (o ContainerServiceLinuxProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceLinuxProfile] {
-	return pulumix.Output[ContainerServiceLinuxProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The administrator username to use for Linux VMs.
 func (o ContainerServiceLinuxProfileOutput) AdminUsername() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerServiceLinuxProfile) string { return v.AdminUsername }).(pulumi.StringOutput)
@@ -159,12 +140,6 @@ func (o ContainerServiceLinuxProfilePtrOutput) ToContainerServiceLinuxProfilePtr
 
 func (o ContainerServiceLinuxProfilePtrOutput) ToContainerServiceLinuxProfilePtrOutputWithContext(ctx context.Context) ContainerServiceLinuxProfilePtrOutput {
 	return o
-}
-
-func (o ContainerServiceLinuxProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceLinuxProfile] {
-	return pulumix.Output[*ContainerServiceLinuxProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerServiceLinuxProfilePtrOutput) Elem() ContainerServiceLinuxProfileOutput {
@@ -220,12 +195,6 @@ func (o ContainerServiceLinuxProfileResponseOutput) ToContainerServiceLinuxProfi
 	return o
 }
 
-func (o ContainerServiceLinuxProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceLinuxProfileResponse] {
-	return pulumix.Output[ContainerServiceLinuxProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The administrator username to use for Linux VMs.
 func (o ContainerServiceLinuxProfileResponseOutput) AdminUsername() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerServiceLinuxProfileResponse) string { return v.AdminUsername }).(pulumi.StringOutput)
@@ -248,12 +217,6 @@ func (o ContainerServiceLinuxProfileResponsePtrOutput) ToContainerServiceLinuxPr
 
 func (o ContainerServiceLinuxProfileResponsePtrOutput) ToContainerServiceLinuxProfileResponsePtrOutputWithContext(ctx context.Context) ContainerServiceLinuxProfileResponsePtrOutput {
 	return o
-}
-
-func (o ContainerServiceLinuxProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceLinuxProfileResponse] {
-	return pulumix.Output[*ContainerServiceLinuxProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerServiceLinuxProfileResponsePtrOutput) Elem() ContainerServiceLinuxProfileResponseOutput {
@@ -397,12 +360,6 @@ func (i ContainerServiceNetworkProfileArgs) ToContainerServiceNetworkProfileOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerServiceNetworkProfileOutput)
 }
 
-func (i ContainerServiceNetworkProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceNetworkProfile] {
-	return pulumix.Output[ContainerServiceNetworkProfile]{
-		OutputState: i.ToContainerServiceNetworkProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerServiceNetworkProfileArgs) ToContainerServiceNetworkProfilePtrOutput() ContainerServiceNetworkProfilePtrOutput {
 	return i.ToContainerServiceNetworkProfilePtrOutputWithContext(context.Background())
 }
@@ -444,12 +401,6 @@ func (i *containerServiceNetworkProfilePtrType) ToContainerServiceNetworkProfile
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerServiceNetworkProfilePtrOutput)
 }
 
-func (i *containerServiceNetworkProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceNetworkProfile] {
-	return pulumix.Output[*ContainerServiceNetworkProfile]{
-		OutputState: i.ToContainerServiceNetworkProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Profile of network configuration.
 type ContainerServiceNetworkProfileOutput struct{ *pulumi.OutputState }
 
@@ -473,12 +424,6 @@ func (o ContainerServiceNetworkProfileOutput) ToContainerServiceNetworkProfilePt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerServiceNetworkProfile) *ContainerServiceNetworkProfile {
 		return &v
 	}).(ContainerServiceNetworkProfilePtrOutput)
-}
-
-func (o ContainerServiceNetworkProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceNetworkProfile] {
-	return pulumix.Output[ContainerServiceNetworkProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
@@ -528,12 +473,6 @@ func (o ContainerServiceNetworkProfilePtrOutput) ToContainerServiceNetworkProfil
 
 func (o ContainerServiceNetworkProfilePtrOutput) ToContainerServiceNetworkProfilePtrOutputWithContext(ctx context.Context) ContainerServiceNetworkProfilePtrOutput {
 	return o
-}
-
-func (o ContainerServiceNetworkProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceNetworkProfile] {
-	return pulumix.Output[*ContainerServiceNetworkProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerServiceNetworkProfilePtrOutput) Elem() ContainerServiceNetworkProfileOutput {
@@ -678,12 +617,6 @@ func (o ContainerServiceNetworkProfileResponseOutput) ToContainerServiceNetworkP
 	return o
 }
 
-func (o ContainerServiceNetworkProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceNetworkProfileResponse] {
-	return pulumix.Output[ContainerServiceNetworkProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
 func (o ContainerServiceNetworkProfileResponseOutput) DnsServiceIP() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerServiceNetworkProfileResponse) *string { return v.DnsServiceIP }).(pulumi.StringPtrOutput)
@@ -731,12 +664,6 @@ func (o ContainerServiceNetworkProfileResponsePtrOutput) ToContainerServiceNetwo
 
 func (o ContainerServiceNetworkProfileResponsePtrOutput) ToContainerServiceNetworkProfileResponsePtrOutputWithContext(ctx context.Context) ContainerServiceNetworkProfileResponsePtrOutput {
 	return o
-}
-
-func (o ContainerServiceNetworkProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceNetworkProfileResponse] {
-	return pulumix.Output[*ContainerServiceNetworkProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerServiceNetworkProfileResponsePtrOutput) Elem() ContainerServiceNetworkProfileResponseOutput {
@@ -854,12 +781,6 @@ func (i ContainerServiceSshConfigurationArgs) ToContainerServiceSshConfiguration
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerServiceSshConfigurationOutput)
 }
 
-func (i ContainerServiceSshConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceSshConfiguration] {
-	return pulumix.Output[ContainerServiceSshConfiguration]{
-		OutputState: i.ToContainerServiceSshConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerServiceSshConfigurationArgs) ToContainerServiceSshConfigurationPtrOutput() ContainerServiceSshConfigurationPtrOutput {
 	return i.ToContainerServiceSshConfigurationPtrOutputWithContext(context.Background())
 }
@@ -901,12 +822,6 @@ func (i *containerServiceSshConfigurationPtrType) ToContainerServiceSshConfigura
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerServiceSshConfigurationPtrOutput)
 }
 
-func (i *containerServiceSshConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceSshConfiguration] {
-	return pulumix.Output[*ContainerServiceSshConfiguration]{
-		OutputState: i.ToContainerServiceSshConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SSH configuration for Linux-based VMs running on Azure.
 type ContainerServiceSshConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -932,12 +847,6 @@ func (o ContainerServiceSshConfigurationOutput) ToContainerServiceSshConfigurati
 	}).(ContainerServiceSshConfigurationPtrOutput)
 }
 
-func (o ContainerServiceSshConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceSshConfiguration] {
-	return pulumix.Output[ContainerServiceSshConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of SSH public keys used to authenticate with Linux-based VMs. Only expect one key specified.
 func (o ContainerServiceSshConfigurationOutput) PublicKeys() ContainerServiceSshPublicKeyArrayOutput {
 	return o.ApplyT(func(v ContainerServiceSshConfiguration) []ContainerServiceSshPublicKey { return v.PublicKeys }).(ContainerServiceSshPublicKeyArrayOutput)
@@ -955,12 +864,6 @@ func (o ContainerServiceSshConfigurationPtrOutput) ToContainerServiceSshConfigur
 
 func (o ContainerServiceSshConfigurationPtrOutput) ToContainerServiceSshConfigurationPtrOutputWithContext(ctx context.Context) ContainerServiceSshConfigurationPtrOutput {
 	return o
-}
-
-func (o ContainerServiceSshConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceSshConfiguration] {
-	return pulumix.Output[*ContainerServiceSshConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerServiceSshConfigurationPtrOutput) Elem() ContainerServiceSshConfigurationOutput {
@@ -1004,12 +907,6 @@ func (o ContainerServiceSshConfigurationResponseOutput) ToContainerServiceSshCon
 	return o
 }
 
-func (o ContainerServiceSshConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceSshConfigurationResponse] {
-	return pulumix.Output[ContainerServiceSshConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of SSH public keys used to authenticate with Linux-based VMs. Only expect one key specified.
 func (o ContainerServiceSshConfigurationResponseOutput) PublicKeys() ContainerServiceSshPublicKeyResponseArrayOutput {
 	return o.ApplyT(func(v ContainerServiceSshConfigurationResponse) []ContainerServiceSshPublicKeyResponse {
@@ -1029,12 +926,6 @@ func (o ContainerServiceSshConfigurationResponsePtrOutput) ToContainerServiceSsh
 
 func (o ContainerServiceSshConfigurationResponsePtrOutput) ToContainerServiceSshConfigurationResponsePtrOutputWithContext(ctx context.Context) ContainerServiceSshConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o ContainerServiceSshConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceSshConfigurationResponse] {
-	return pulumix.Output[*ContainerServiceSshConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerServiceSshConfigurationResponsePtrOutput) Elem() ContainerServiceSshConfigurationResponseOutput {
@@ -1092,12 +983,6 @@ func (i ContainerServiceSshPublicKeyArgs) ToContainerServiceSshPublicKeyOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerServiceSshPublicKeyOutput)
 }
 
-func (i ContainerServiceSshPublicKeyArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceSshPublicKey] {
-	return pulumix.Output[ContainerServiceSshPublicKey]{
-		OutputState: i.ToContainerServiceSshPublicKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ContainerServiceSshPublicKeyArrayInput is an input type that accepts ContainerServiceSshPublicKeyArray and ContainerServiceSshPublicKeyArrayOutput values.
 // You can construct a concrete instance of `ContainerServiceSshPublicKeyArrayInput` via:
 //
@@ -1123,12 +1008,6 @@ func (i ContainerServiceSshPublicKeyArray) ToContainerServiceSshPublicKeyArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerServiceSshPublicKeyArrayOutput)
 }
 
-func (i ContainerServiceSshPublicKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerServiceSshPublicKey] {
-	return pulumix.Output[[]ContainerServiceSshPublicKey]{
-		OutputState: i.ToContainerServiceSshPublicKeyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contains information about SSH certificate public key data.
 type ContainerServiceSshPublicKeyOutput struct{ *pulumi.OutputState }
 
@@ -1142,12 +1021,6 @@ func (o ContainerServiceSshPublicKeyOutput) ToContainerServiceSshPublicKeyOutput
 
 func (o ContainerServiceSshPublicKeyOutput) ToContainerServiceSshPublicKeyOutputWithContext(ctx context.Context) ContainerServiceSshPublicKeyOutput {
 	return o
-}
-
-func (o ContainerServiceSshPublicKeyOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceSshPublicKey] {
-	return pulumix.Output[ContainerServiceSshPublicKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Certificate public key used to authenticate with VMs through SSH. The certificate must be in PEM format with or without headers.
@@ -1167,12 +1040,6 @@ func (o ContainerServiceSshPublicKeyArrayOutput) ToContainerServiceSshPublicKeyA
 
 func (o ContainerServiceSshPublicKeyArrayOutput) ToContainerServiceSshPublicKeyArrayOutputWithContext(ctx context.Context) ContainerServiceSshPublicKeyArrayOutput {
 	return o
-}
-
-func (o ContainerServiceSshPublicKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerServiceSshPublicKey] {
-	return pulumix.Output[[]ContainerServiceSshPublicKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerServiceSshPublicKeyArrayOutput) Index(i pulumi.IntInput) ContainerServiceSshPublicKeyOutput {
@@ -1202,12 +1069,6 @@ func (o ContainerServiceSshPublicKeyResponseOutput) ToContainerServiceSshPublicK
 	return o
 }
 
-func (o ContainerServiceSshPublicKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceSshPublicKeyResponse] {
-	return pulumix.Output[ContainerServiceSshPublicKeyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Certificate public key used to authenticate with VMs through SSH. The certificate must be in PEM format with or without headers.
 func (o ContainerServiceSshPublicKeyResponseOutput) KeyData() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerServiceSshPublicKeyResponse) string { return v.KeyData }).(pulumi.StringOutput)
@@ -1225,12 +1086,6 @@ func (o ContainerServiceSshPublicKeyResponseArrayOutput) ToContainerServiceSshPu
 
 func (o ContainerServiceSshPublicKeyResponseArrayOutput) ToContainerServiceSshPublicKeyResponseArrayOutputWithContext(ctx context.Context) ContainerServiceSshPublicKeyResponseArrayOutput {
 	return o
-}
-
-func (o ContainerServiceSshPublicKeyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerServiceSshPublicKeyResponse] {
-	return pulumix.Output[[]ContainerServiceSshPublicKeyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerServiceSshPublicKeyResponseArrayOutput) Index(i pulumi.IntInput) ContainerServiceSshPublicKeyResponseOutput {
@@ -1262,12 +1117,6 @@ func (o CredentialResultResponseOutput) ToCredentialResultResponseOutputWithCont
 	return o
 }
 
-func (o CredentialResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CredentialResultResponse] {
-	return pulumix.Output[CredentialResultResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the credential.
 func (o CredentialResultResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v CredentialResultResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -1290,12 +1139,6 @@ func (o CredentialResultResponseArrayOutput) ToCredentialResultResponseArrayOutp
 
 func (o CredentialResultResponseArrayOutput) ToCredentialResultResponseArrayOutputWithContext(ctx context.Context) CredentialResultResponseArrayOutput {
 	return o
-}
-
-func (o CredentialResultResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CredentialResultResponse] {
-	return pulumix.Output[[]CredentialResultResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CredentialResultResponseArrayOutput) Index(i pulumi.IntInput) CredentialResultResponseOutput {
@@ -1351,12 +1194,6 @@ func (i ManagedClusterAADProfileArgs) ToManagedClusterAADProfileOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAADProfileOutput)
 }
 
-func (i ManagedClusterAADProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAADProfile] {
-	return pulumix.Output[ManagedClusterAADProfile]{
-		OutputState: i.ToManagedClusterAADProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterAADProfileArgs) ToManagedClusterAADProfilePtrOutput() ManagedClusterAADProfilePtrOutput {
 	return i.ToManagedClusterAADProfilePtrOutputWithContext(context.Background())
 }
@@ -1398,12 +1235,6 @@ func (i *managedClusterAADProfilePtrType) ToManagedClusterAADProfilePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAADProfilePtrOutput)
 }
 
-func (i *managedClusterAADProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAADProfile] {
-	return pulumix.Output[*ManagedClusterAADProfile]{
-		OutputState: i.ToManagedClusterAADProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AADProfile specifies attributes for Azure Active Directory integration.
 type ManagedClusterAADProfileOutput struct{ *pulumi.OutputState }
 
@@ -1427,12 +1258,6 @@ func (o ManagedClusterAADProfileOutput) ToManagedClusterAADProfilePtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterAADProfile) *ManagedClusterAADProfile {
 		return &v
 	}).(ManagedClusterAADProfilePtrOutput)
-}
-
-func (o ManagedClusterAADProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAADProfile] {
-	return pulumix.Output[ManagedClusterAADProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The client AAD application ID.
@@ -1467,12 +1292,6 @@ func (o ManagedClusterAADProfilePtrOutput) ToManagedClusterAADProfilePtrOutput()
 
 func (o ManagedClusterAADProfilePtrOutput) ToManagedClusterAADProfilePtrOutputWithContext(ctx context.Context) ManagedClusterAADProfilePtrOutput {
 	return o
-}
-
-func (o ManagedClusterAADProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAADProfile] {
-	return pulumix.Output[*ManagedClusterAADProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAADProfilePtrOutput) Elem() ManagedClusterAADProfileOutput {
@@ -1552,12 +1371,6 @@ func (o ManagedClusterAADProfileResponseOutput) ToManagedClusterAADProfileRespon
 	return o
 }
 
-func (o ManagedClusterAADProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAADProfileResponse] {
-	return pulumix.Output[ManagedClusterAADProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The client AAD application ID.
 func (o ManagedClusterAADProfileResponseOutput) ClientAppID() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedClusterAADProfileResponse) string { return v.ClientAppID }).(pulumi.StringOutput)
@@ -1590,12 +1403,6 @@ func (o ManagedClusterAADProfileResponsePtrOutput) ToManagedClusterAADProfileRes
 
 func (o ManagedClusterAADProfileResponsePtrOutput) ToManagedClusterAADProfileResponsePtrOutputWithContext(ctx context.Context) ManagedClusterAADProfileResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterAADProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAADProfileResponse] {
-	return pulumix.Output[*ManagedClusterAADProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAADProfileResponsePtrOutput) Elem() ManagedClusterAADProfileResponseOutput {
@@ -1687,12 +1494,6 @@ func (i ManagedClusterAddonProfileArgs) ToManagedClusterAddonProfileOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAddonProfileOutput)
 }
 
-func (i ManagedClusterAddonProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAddonProfile] {
-	return pulumix.Output[ManagedClusterAddonProfile]{
-		OutputState: i.ToManagedClusterAddonProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ManagedClusterAddonProfileMapInput is an input type that accepts ManagedClusterAddonProfileMap and ManagedClusterAddonProfileMapOutput values.
 // You can construct a concrete instance of `ManagedClusterAddonProfileMapInput` via:
 //
@@ -1718,12 +1519,6 @@ func (i ManagedClusterAddonProfileMap) ToManagedClusterAddonProfileMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAddonProfileMapOutput)
 }
 
-func (i ManagedClusterAddonProfileMap) ToOutput(ctx context.Context) pulumix.Output[map[string]ManagedClusterAddonProfile] {
-	return pulumix.Output[map[string]ManagedClusterAddonProfile]{
-		OutputState: i.ToManagedClusterAddonProfileMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A Kubernetes add-on profile for a managed cluster.
 type ManagedClusterAddonProfileOutput struct{ *pulumi.OutputState }
 
@@ -1737,12 +1532,6 @@ func (o ManagedClusterAddonProfileOutput) ToManagedClusterAddonProfileOutput() M
 
 func (o ManagedClusterAddonProfileOutput) ToManagedClusterAddonProfileOutputWithContext(ctx context.Context) ManagedClusterAddonProfileOutput {
 	return o
-}
-
-func (o ManagedClusterAddonProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAddonProfile] {
-	return pulumix.Output[ManagedClusterAddonProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Key-value pairs for configuring an add-on.
@@ -1767,12 +1556,6 @@ func (o ManagedClusterAddonProfileMapOutput) ToManagedClusterAddonProfileMapOutp
 
 func (o ManagedClusterAddonProfileMapOutput) ToManagedClusterAddonProfileMapOutputWithContext(ctx context.Context) ManagedClusterAddonProfileMapOutput {
 	return o
-}
-
-func (o ManagedClusterAddonProfileMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ManagedClusterAddonProfile] {
-	return pulumix.Output[map[string]ManagedClusterAddonProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAddonProfileMapOutput) MapIndex(k pulumi.StringInput) ManagedClusterAddonProfileOutput {
@@ -1804,12 +1587,6 @@ func (o ManagedClusterAddonProfileResponseOutput) ToManagedClusterAddonProfileRe
 	return o
 }
 
-func (o ManagedClusterAddonProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAddonProfileResponse] {
-	return pulumix.Output[ManagedClusterAddonProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Key-value pairs for configuring an add-on.
 func (o ManagedClusterAddonProfileResponseOutput) Config() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ManagedClusterAddonProfileResponse) map[string]string { return v.Config }).(pulumi.StringMapOutput)
@@ -1832,12 +1609,6 @@ func (o ManagedClusterAddonProfileResponseMapOutput) ToManagedClusterAddonProfil
 
 func (o ManagedClusterAddonProfileResponseMapOutput) ToManagedClusterAddonProfileResponseMapOutputWithContext(ctx context.Context) ManagedClusterAddonProfileResponseMapOutput {
 	return o
-}
-
-func (o ManagedClusterAddonProfileResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ManagedClusterAddonProfileResponse] {
-	return pulumix.Output[map[string]ManagedClusterAddonProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAddonProfileResponseMapOutput) MapIndex(k pulumi.StringInput) ManagedClusterAddonProfileResponseOutput {
@@ -1945,12 +1716,6 @@ func (i ManagedClusterAgentPoolProfileArgs) ToManagedClusterAgentPoolProfileOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAgentPoolProfileOutput)
 }
 
-func (i ManagedClusterAgentPoolProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAgentPoolProfile] {
-	return pulumix.Output[ManagedClusterAgentPoolProfile]{
-		OutputState: i.ToManagedClusterAgentPoolProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ManagedClusterAgentPoolProfileArrayInput is an input type that accepts ManagedClusterAgentPoolProfileArray and ManagedClusterAgentPoolProfileArrayOutput values.
 // You can construct a concrete instance of `ManagedClusterAgentPoolProfileArrayInput` via:
 //
@@ -1976,12 +1741,6 @@ func (i ManagedClusterAgentPoolProfileArray) ToManagedClusterAgentPoolProfileArr
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAgentPoolProfileArrayOutput)
 }
 
-func (i ManagedClusterAgentPoolProfileArray) ToOutput(ctx context.Context) pulumix.Output[[]ManagedClusterAgentPoolProfile] {
-	return pulumix.Output[[]ManagedClusterAgentPoolProfile]{
-		OutputState: i.ToManagedClusterAgentPoolProfileArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Profile for the container service agent pool.
 type ManagedClusterAgentPoolProfileOutput struct{ *pulumi.OutputState }
 
@@ -1995,12 +1754,6 @@ func (o ManagedClusterAgentPoolProfileOutput) ToManagedClusterAgentPoolProfileOu
 
 func (o ManagedClusterAgentPoolProfileOutput) ToManagedClusterAgentPoolProfileOutputWithContext(ctx context.Context) ManagedClusterAgentPoolProfileOutput {
 	return o
-}
-
-func (o ManagedClusterAgentPoolProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAgentPoolProfile] {
-	return pulumix.Output[ManagedClusterAgentPoolProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (PREVIEW) Availability zones for nodes. Must use VirtualMachineScaleSets AgentPoolType.
@@ -2102,12 +1855,6 @@ func (o ManagedClusterAgentPoolProfileArrayOutput) ToManagedClusterAgentPoolProf
 	return o
 }
 
-func (o ManagedClusterAgentPoolProfileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagedClusterAgentPoolProfile] {
-	return pulumix.Output[[]ManagedClusterAgentPoolProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ManagedClusterAgentPoolProfileArrayOutput) Index(i pulumi.IntInput) ManagedClusterAgentPoolProfileOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedClusterAgentPoolProfile {
 		return vs[0].([]ManagedClusterAgentPoolProfile)[vs[1].(int)]
@@ -2167,12 +1914,6 @@ func (o ManagedClusterAgentPoolProfileResponseOutput) ToManagedClusterAgentPoolP
 
 func (o ManagedClusterAgentPoolProfileResponseOutput) ToManagedClusterAgentPoolProfileResponseOutputWithContext(ctx context.Context) ManagedClusterAgentPoolProfileResponseOutput {
 	return o
-}
-
-func (o ManagedClusterAgentPoolProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAgentPoolProfileResponse] {
-	return pulumix.Output[ManagedClusterAgentPoolProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // (PREVIEW) Availability zones for nodes. Must use VirtualMachineScaleSets AgentPoolType.
@@ -2279,12 +2020,6 @@ func (o ManagedClusterAgentPoolProfileResponseArrayOutput) ToManagedClusterAgent
 	return o
 }
 
-func (o ManagedClusterAgentPoolProfileResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagedClusterAgentPoolProfileResponse] {
-	return pulumix.Output[[]ManagedClusterAgentPoolProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ManagedClusterAgentPoolProfileResponseArrayOutput) Index(i pulumi.IntInput) ManagedClusterAgentPoolProfileResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedClusterAgentPoolProfileResponse {
 		return vs[0].([]ManagedClusterAgentPoolProfileResponse)[vs[1].(int)]
@@ -2324,12 +2059,6 @@ func (i ManagedClusterIdentityArgs) ToManagedClusterIdentityOutput() ManagedClus
 
 func (i ManagedClusterIdentityArgs) ToManagedClusterIdentityOutputWithContext(ctx context.Context) ManagedClusterIdentityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterIdentityOutput)
-}
-
-func (i ManagedClusterIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterIdentity] {
-	return pulumix.Output[ManagedClusterIdentity]{
-		OutputState: i.ToManagedClusterIdentityOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ManagedClusterIdentityArgs) ToManagedClusterIdentityPtrOutput() ManagedClusterIdentityPtrOutput {
@@ -2373,12 +2102,6 @@ func (i *managedClusterIdentityPtrType) ToManagedClusterIdentityPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterIdentityPtrOutput)
 }
 
-func (i *managedClusterIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterIdentity] {
-	return pulumix.Output[*ManagedClusterIdentity]{
-		OutputState: i.ToManagedClusterIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Identity for the managed cluster.
 type ManagedClusterIdentityOutput struct{ *pulumi.OutputState }
 
@@ -2404,12 +2127,6 @@ func (o ManagedClusterIdentityOutput) ToManagedClusterIdentityPtrOutputWithConte
 	}).(ManagedClusterIdentityPtrOutput)
 }
 
-func (o ManagedClusterIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterIdentity] {
-	return pulumix.Output[ManagedClusterIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The type of identity used for the managed cluster. Type 'SystemAssigned' will use an implicitly created identity in master components and an auto-created user assigned identity in MC_ resource group in agent nodes. Type 'None' will not use MSI for the managed cluster, service principal will be used instead.
 func (o ManagedClusterIdentityOutput) Type() ResourceIdentityTypePtrOutput {
 	return o.ApplyT(func(v ManagedClusterIdentity) *ResourceIdentityType { return v.Type }).(ResourceIdentityTypePtrOutput)
@@ -2427,12 +2144,6 @@ func (o ManagedClusterIdentityPtrOutput) ToManagedClusterIdentityPtrOutput() Man
 
 func (o ManagedClusterIdentityPtrOutput) ToManagedClusterIdentityPtrOutputWithContext(ctx context.Context) ManagedClusterIdentityPtrOutput {
 	return o
-}
-
-func (o ManagedClusterIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterIdentity] {
-	return pulumix.Output[*ManagedClusterIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterIdentityPtrOutput) Elem() ManagedClusterIdentityOutput {
@@ -2480,12 +2191,6 @@ func (o ManagedClusterIdentityResponseOutput) ToManagedClusterIdentityResponseOu
 	return o
 }
 
-func (o ManagedClusterIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterIdentityResponse] {
-	return pulumix.Output[ManagedClusterIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The principal id of the system assigned identity which is used by master components.
 func (o ManagedClusterIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedClusterIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -2513,12 +2218,6 @@ func (o ManagedClusterIdentityResponsePtrOutput) ToManagedClusterIdentityRespons
 
 func (o ManagedClusterIdentityResponsePtrOutput) ToManagedClusterIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedClusterIdentityResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterIdentityResponse] {
-	return pulumix.Output[*ManagedClusterIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterIdentityResponsePtrOutput) Elem() ManagedClusterIdentityResponseOutput {
@@ -2600,12 +2299,6 @@ func (i ManagedClusterServicePrincipalProfileArgs) ToManagedClusterServicePrinci
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterServicePrincipalProfileOutput)
 }
 
-func (i ManagedClusterServicePrincipalProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterServicePrincipalProfile] {
-	return pulumix.Output[ManagedClusterServicePrincipalProfile]{
-		OutputState: i.ToManagedClusterServicePrincipalProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterServicePrincipalProfileArgs) ToManagedClusterServicePrincipalProfilePtrOutput() ManagedClusterServicePrincipalProfilePtrOutput {
 	return i.ToManagedClusterServicePrincipalProfilePtrOutputWithContext(context.Background())
 }
@@ -2647,12 +2340,6 @@ func (i *managedClusterServicePrincipalProfilePtrType) ToManagedClusterServicePr
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterServicePrincipalProfilePtrOutput)
 }
 
-func (i *managedClusterServicePrincipalProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterServicePrincipalProfile] {
-	return pulumix.Output[*ManagedClusterServicePrincipalProfile]{
-		OutputState: i.ToManagedClusterServicePrincipalProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Information about a service principal identity for the cluster to use for manipulating Azure APIs.
 type ManagedClusterServicePrincipalProfileOutput struct{ *pulumi.OutputState }
 
@@ -2678,12 +2365,6 @@ func (o ManagedClusterServicePrincipalProfileOutput) ToManagedClusterServicePrin
 	}).(ManagedClusterServicePrincipalProfilePtrOutput)
 }
 
-func (o ManagedClusterServicePrincipalProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterServicePrincipalProfile] {
-	return pulumix.Output[ManagedClusterServicePrincipalProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ID for the service principal.
 func (o ManagedClusterServicePrincipalProfileOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedClusterServicePrincipalProfile) string { return v.ClientId }).(pulumi.StringOutput)
@@ -2706,12 +2387,6 @@ func (o ManagedClusterServicePrincipalProfilePtrOutput) ToManagedClusterServiceP
 
 func (o ManagedClusterServicePrincipalProfilePtrOutput) ToManagedClusterServicePrincipalProfilePtrOutputWithContext(ctx context.Context) ManagedClusterServicePrincipalProfilePtrOutput {
 	return o
-}
-
-func (o ManagedClusterServicePrincipalProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterServicePrincipalProfile] {
-	return pulumix.Output[*ManagedClusterServicePrincipalProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterServicePrincipalProfilePtrOutput) Elem() ManagedClusterServicePrincipalProfileOutput {
@@ -2767,12 +2442,6 @@ func (o ManagedClusterServicePrincipalProfileResponseOutput) ToManagedClusterSer
 	return o
 }
 
-func (o ManagedClusterServicePrincipalProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterServicePrincipalProfileResponse] {
-	return pulumix.Output[ManagedClusterServicePrincipalProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ID for the service principal.
 func (o ManagedClusterServicePrincipalProfileResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedClusterServicePrincipalProfileResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -2795,12 +2464,6 @@ func (o ManagedClusterServicePrincipalProfileResponsePtrOutput) ToManagedCluster
 
 func (o ManagedClusterServicePrincipalProfileResponsePtrOutput) ToManagedClusterServicePrincipalProfileResponsePtrOutputWithContext(ctx context.Context) ManagedClusterServicePrincipalProfileResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterServicePrincipalProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterServicePrincipalProfileResponse] {
-	return pulumix.Output[*ManagedClusterServicePrincipalProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterServicePrincipalProfileResponsePtrOutput) Elem() ManagedClusterServicePrincipalProfileResponseOutput {
@@ -2872,12 +2535,6 @@ func (i ManagedClusterWindowsProfileArgs) ToManagedClusterWindowsProfileOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterWindowsProfileOutput)
 }
 
-func (i ManagedClusterWindowsProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterWindowsProfile] {
-	return pulumix.Output[ManagedClusterWindowsProfile]{
-		OutputState: i.ToManagedClusterWindowsProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterWindowsProfileArgs) ToManagedClusterWindowsProfilePtrOutput() ManagedClusterWindowsProfilePtrOutput {
 	return i.ToManagedClusterWindowsProfilePtrOutputWithContext(context.Background())
 }
@@ -2919,12 +2576,6 @@ func (i *managedClusterWindowsProfilePtrType) ToManagedClusterWindowsProfilePtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterWindowsProfilePtrOutput)
 }
 
-func (i *managedClusterWindowsProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterWindowsProfile] {
-	return pulumix.Output[*ManagedClusterWindowsProfile]{
-		OutputState: i.ToManagedClusterWindowsProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Profile for Windows VMs in the container service cluster.
 type ManagedClusterWindowsProfileOutput struct{ *pulumi.OutputState }
 
@@ -2950,12 +2601,6 @@ func (o ManagedClusterWindowsProfileOutput) ToManagedClusterWindowsProfilePtrOut
 	}).(ManagedClusterWindowsProfilePtrOutput)
 }
 
-func (o ManagedClusterWindowsProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterWindowsProfile] {
-	return pulumix.Output[ManagedClusterWindowsProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
 func (o ManagedClusterWindowsProfileOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedClusterWindowsProfile) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
@@ -2978,12 +2623,6 @@ func (o ManagedClusterWindowsProfilePtrOutput) ToManagedClusterWindowsProfilePtr
 
 func (o ManagedClusterWindowsProfilePtrOutput) ToManagedClusterWindowsProfilePtrOutputWithContext(ctx context.Context) ManagedClusterWindowsProfilePtrOutput {
 	return o
-}
-
-func (o ManagedClusterWindowsProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterWindowsProfile] {
-	return pulumix.Output[*ManagedClusterWindowsProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterWindowsProfilePtrOutput) Elem() ManagedClusterWindowsProfileOutput {
@@ -3039,12 +2678,6 @@ func (o ManagedClusterWindowsProfileResponseOutput) ToManagedClusterWindowsProfi
 	return o
 }
 
-func (o ManagedClusterWindowsProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterWindowsProfileResponse] {
-	return pulumix.Output[ManagedClusterWindowsProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
 func (o ManagedClusterWindowsProfileResponseOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedClusterWindowsProfileResponse) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
@@ -3067,12 +2700,6 @@ func (o ManagedClusterWindowsProfileResponsePtrOutput) ToManagedClusterWindowsPr
 
 func (o ManagedClusterWindowsProfileResponsePtrOutput) ToManagedClusterWindowsProfileResponsePtrOutputWithContext(ctx context.Context) ManagedClusterWindowsProfileResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterWindowsProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterWindowsProfileResponse] {
-	return pulumix.Output[*ManagedClusterWindowsProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterWindowsProfileResponsePtrOutput) Elem() ManagedClusterWindowsProfileResponseOutput {

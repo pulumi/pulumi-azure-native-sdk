@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Single item in List or Get Consumer group operation
@@ -164,12 +163,6 @@ func (i *ConsumerGroup) ToConsumerGroupOutputWithContext(ctx context.Context) Co
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumerGroupOutput)
 }
 
-func (i *ConsumerGroup) ToOutput(ctx context.Context) pulumix.Output[*ConsumerGroup] {
-	return pulumix.Output[*ConsumerGroup]{
-		OutputState: i.ToConsumerGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConsumerGroupOutput struct{ *pulumi.OutputState }
 
 func (ConsumerGroupOutput) ElementType() reflect.Type {
@@ -182,12 +175,6 @@ func (o ConsumerGroupOutput) ToConsumerGroupOutput() ConsumerGroupOutput {
 
 func (o ConsumerGroupOutput) ToConsumerGroupOutputWithContext(ctx context.Context) ConsumerGroupOutput {
 	return o
-}
-
-func (o ConsumerGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*ConsumerGroup] {
-	return pulumix.Output[*ConsumerGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Exact time the message was created.

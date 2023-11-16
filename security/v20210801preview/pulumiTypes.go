@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i AssignedComponentItemArgs) ToAssignedComponentItemOutput() AssignedCompo
 
 func (i AssignedComponentItemArgs) ToAssignedComponentItemOutputWithContext(ctx context.Context) AssignedComponentItemOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AssignedComponentItemOutput)
-}
-
-func (i AssignedComponentItemArgs) ToOutput(ctx context.Context) pulumix.Output[AssignedComponentItem] {
-	return pulumix.Output[AssignedComponentItem]{
-		OutputState: i.ToAssignedComponentItemOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i AssignedComponentItemArgs) ToAssignedComponentItemPtrOutput() AssignedComponentItemPtrOutput {
@@ -96,12 +89,6 @@ func (i *assignedComponentItemPtrType) ToAssignedComponentItemPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(AssignedComponentItemPtrOutput)
 }
 
-func (i *assignedComponentItemPtrType) ToOutput(ctx context.Context) pulumix.Output[*AssignedComponentItem] {
-	return pulumix.Output[*AssignedComponentItem]{
-		OutputState: i.ToAssignedComponentItemPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // describe the properties of a security assessment object reference (by key)
 type AssignedComponentItemOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o AssignedComponentItemOutput) ToAssignedComponentItemPtrOutputWithContext
 	}).(AssignedComponentItemPtrOutput)
 }
 
-func (o AssignedComponentItemOutput) ToOutput(ctx context.Context) pulumix.Output[AssignedComponentItem] {
-	return pulumix.Output[AssignedComponentItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 // unique key to a security assessment object
 func (o AssignedComponentItemOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssignedComponentItem) *string { return v.Key }).(pulumi.StringPtrOutput)
@@ -150,12 +131,6 @@ func (o AssignedComponentItemPtrOutput) ToAssignedComponentItemPtrOutput() Assig
 
 func (o AssignedComponentItemPtrOutput) ToAssignedComponentItemPtrOutputWithContext(ctx context.Context) AssignedComponentItemPtrOutput {
 	return o
-}
-
-func (o AssignedComponentItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssignedComponentItem] {
-	return pulumix.Output[*AssignedComponentItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssignedComponentItemPtrOutput) Elem() AssignedComponentItemOutput {
@@ -199,12 +174,6 @@ func (o AssignedComponentItemResponseOutput) ToAssignedComponentItemResponseOutp
 	return o
 }
 
-func (o AssignedComponentItemResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssignedComponentItemResponse] {
-	return pulumix.Output[AssignedComponentItemResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // unique key to a security assessment object
 func (o AssignedComponentItemResponseOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssignedComponentItemResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
@@ -222,12 +191,6 @@ func (o AssignedComponentItemResponsePtrOutput) ToAssignedComponentItemResponseP
 
 func (o AssignedComponentItemResponsePtrOutput) ToAssignedComponentItemResponsePtrOutputWithContext(ctx context.Context) AssignedComponentItemResponsePtrOutput {
 	return o
-}
-
-func (o AssignedComponentItemResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssignedComponentItemResponse] {
-	return pulumix.Output[*AssignedComponentItemResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssignedComponentItemResponsePtrOutput) Elem() AssignedComponentItemResponseOutput {
@@ -285,12 +248,6 @@ func (i AssignedStandardItemArgs) ToAssignedStandardItemOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AssignedStandardItemOutput)
 }
 
-func (i AssignedStandardItemArgs) ToOutput(ctx context.Context) pulumix.Output[AssignedStandardItem] {
-	return pulumix.Output[AssignedStandardItem]{
-		OutputState: i.ToAssignedStandardItemOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AssignedStandardItemArgs) ToAssignedStandardItemPtrOutput() AssignedStandardItemPtrOutput {
 	return i.ToAssignedStandardItemPtrOutputWithContext(context.Background())
 }
@@ -332,12 +289,6 @@ func (i *assignedStandardItemPtrType) ToAssignedStandardItemPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(AssignedStandardItemPtrOutput)
 }
 
-func (i *assignedStandardItemPtrType) ToOutput(ctx context.Context) pulumix.Output[*AssignedStandardItem] {
-	return pulumix.Output[*AssignedStandardItem]{
-		OutputState: i.ToAssignedStandardItemPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // describe the properties of a of a security standard object reference
 type AssignedStandardItemOutput struct{ *pulumi.OutputState }
 
@@ -363,12 +314,6 @@ func (o AssignedStandardItemOutput) ToAssignedStandardItemPtrOutputWithContext(c
 	}).(AssignedStandardItemPtrOutput)
 }
 
-func (o AssignedStandardItemOutput) ToOutput(ctx context.Context) pulumix.Output[AssignedStandardItem] {
-	return pulumix.Output[AssignedStandardItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 // full resourceId of the Microsoft.Security/standard object
 func (o AssignedStandardItemOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssignedStandardItem) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -386,12 +331,6 @@ func (o AssignedStandardItemPtrOutput) ToAssignedStandardItemPtrOutput() Assigne
 
 func (o AssignedStandardItemPtrOutput) ToAssignedStandardItemPtrOutputWithContext(ctx context.Context) AssignedStandardItemPtrOutput {
 	return o
-}
-
-func (o AssignedStandardItemPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssignedStandardItem] {
-	return pulumix.Output[*AssignedStandardItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssignedStandardItemPtrOutput) Elem() AssignedStandardItemOutput {
@@ -435,12 +374,6 @@ func (o AssignedStandardItemResponseOutput) ToAssignedStandardItemResponseOutput
 	return o
 }
 
-func (o AssignedStandardItemResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssignedStandardItemResponse] {
-	return pulumix.Output[AssignedStandardItemResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // full resourceId of the Microsoft.Security/standard object
 func (o AssignedStandardItemResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssignedStandardItemResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -458,12 +391,6 @@ func (o AssignedStandardItemResponsePtrOutput) ToAssignedStandardItemResponsePtr
 
 func (o AssignedStandardItemResponsePtrOutput) ToAssignedStandardItemResponsePtrOutputWithContext(ctx context.Context) AssignedStandardItemResponsePtrOutput {
 	return o
-}
-
-func (o AssignedStandardItemResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssignedStandardItemResponse] {
-	return pulumix.Output[*AssignedStandardItemResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssignedStandardItemResponsePtrOutput) Elem() AssignedStandardItemResponseOutput {
@@ -521,12 +448,6 @@ func (i AssignmentPropertiesAdditionalDataArgs) ToAssignmentPropertiesAdditional
 	return pulumi.ToOutputWithContext(ctx, i).(AssignmentPropertiesAdditionalDataOutput)
 }
 
-func (i AssignmentPropertiesAdditionalDataArgs) ToOutput(ctx context.Context) pulumix.Output[AssignmentPropertiesAdditionalData] {
-	return pulumix.Output[AssignmentPropertiesAdditionalData]{
-		OutputState: i.ToAssignmentPropertiesAdditionalDataOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AssignmentPropertiesAdditionalDataArgs) ToAssignmentPropertiesAdditionalDataPtrOutput() AssignmentPropertiesAdditionalDataPtrOutput {
 	return i.ToAssignmentPropertiesAdditionalDataPtrOutputWithContext(context.Background())
 }
@@ -568,12 +489,6 @@ func (i *assignmentPropertiesAdditionalDataPtrType) ToAssignmentPropertiesAdditi
 	return pulumi.ToOutputWithContext(ctx, i).(AssignmentPropertiesAdditionalDataPtrOutput)
 }
 
-func (i *assignmentPropertiesAdditionalDataPtrType) ToOutput(ctx context.Context) pulumix.Output[*AssignmentPropertiesAdditionalData] {
-	return pulumix.Output[*AssignmentPropertiesAdditionalData]{
-		OutputState: i.ToAssignmentPropertiesAdditionalDataPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Additional data about the assignment
 type AssignmentPropertiesAdditionalDataOutput struct{ *pulumi.OutputState }
 
@@ -599,12 +514,6 @@ func (o AssignmentPropertiesAdditionalDataOutput) ToAssignmentPropertiesAddition
 	}).(AssignmentPropertiesAdditionalDataPtrOutput)
 }
 
-func (o AssignmentPropertiesAdditionalDataOutput) ToOutput(ctx context.Context) pulumix.Output[AssignmentPropertiesAdditionalData] {
-	return pulumix.Output[AssignmentPropertiesAdditionalData]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Exemption category of this assignment
 func (o AssignmentPropertiesAdditionalDataOutput) ExemptionCategory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssignmentPropertiesAdditionalData) *string { return v.ExemptionCategory }).(pulumi.StringPtrOutput)
@@ -622,12 +531,6 @@ func (o AssignmentPropertiesAdditionalDataPtrOutput) ToAssignmentPropertiesAddit
 
 func (o AssignmentPropertiesAdditionalDataPtrOutput) ToAssignmentPropertiesAdditionalDataPtrOutputWithContext(ctx context.Context) AssignmentPropertiesAdditionalDataPtrOutput {
 	return o
-}
-
-func (o AssignmentPropertiesAdditionalDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssignmentPropertiesAdditionalData] {
-	return pulumix.Output[*AssignmentPropertiesAdditionalData]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssignmentPropertiesAdditionalDataPtrOutput) Elem() AssignmentPropertiesAdditionalDataOutput {
@@ -671,12 +574,6 @@ func (o AssignmentPropertiesResponseAdditionalDataOutput) ToAssignmentProperties
 	return o
 }
 
-func (o AssignmentPropertiesResponseAdditionalDataOutput) ToOutput(ctx context.Context) pulumix.Output[AssignmentPropertiesResponseAdditionalData] {
-	return pulumix.Output[AssignmentPropertiesResponseAdditionalData]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Exemption category of this assignment
 func (o AssignmentPropertiesResponseAdditionalDataOutput) ExemptionCategory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssignmentPropertiesResponseAdditionalData) *string { return v.ExemptionCategory }).(pulumi.StringPtrOutput)
@@ -694,12 +591,6 @@ func (o AssignmentPropertiesResponseAdditionalDataPtrOutput) ToAssignmentPropert
 
 func (o AssignmentPropertiesResponseAdditionalDataPtrOutput) ToAssignmentPropertiesResponseAdditionalDataPtrOutputWithContext(ctx context.Context) AssignmentPropertiesResponseAdditionalDataPtrOutput {
 	return o
-}
-
-func (o AssignmentPropertiesResponseAdditionalDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssignmentPropertiesResponseAdditionalData] {
-	return pulumix.Output[*AssignmentPropertiesResponseAdditionalData]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssignmentPropertiesResponseAdditionalDataPtrOutput) Elem() AssignmentPropertiesResponseAdditionalDataOutput {
@@ -757,12 +648,6 @@ func (i StandardComponentPropertiesArgs) ToStandardComponentPropertiesOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(StandardComponentPropertiesOutput)
 }
 
-func (i StandardComponentPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[StandardComponentProperties] {
-	return pulumix.Output[StandardComponentProperties]{
-		OutputState: i.ToStandardComponentPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StandardComponentPropertiesArrayInput is an input type that accepts StandardComponentPropertiesArray and StandardComponentPropertiesArrayOutput values.
 // You can construct a concrete instance of `StandardComponentPropertiesArrayInput` via:
 //
@@ -788,12 +673,6 @@ func (i StandardComponentPropertiesArray) ToStandardComponentPropertiesArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(StandardComponentPropertiesArrayOutput)
 }
 
-func (i StandardComponentPropertiesArray) ToOutput(ctx context.Context) pulumix.Output[[]StandardComponentProperties] {
-	return pulumix.Output[[]StandardComponentProperties]{
-		OutputState: i.ToStandardComponentPropertiesArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes properties of an component as related to the standard
 type StandardComponentPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -807,12 +686,6 @@ func (o StandardComponentPropertiesOutput) ToStandardComponentPropertiesOutput()
 
 func (o StandardComponentPropertiesOutput) ToStandardComponentPropertiesOutputWithContext(ctx context.Context) StandardComponentPropertiesOutput {
 	return o
-}
-
-func (o StandardComponentPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[StandardComponentProperties] {
-	return pulumix.Output[StandardComponentProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Component Key matching componentMetadata
@@ -832,12 +705,6 @@ func (o StandardComponentPropertiesArrayOutput) ToStandardComponentPropertiesArr
 
 func (o StandardComponentPropertiesArrayOutput) ToStandardComponentPropertiesArrayOutputWithContext(ctx context.Context) StandardComponentPropertiesArrayOutput {
 	return o
-}
-
-func (o StandardComponentPropertiesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StandardComponentProperties] {
-	return pulumix.Output[[]StandardComponentProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StandardComponentPropertiesArrayOutput) Index(i pulumi.IntInput) StandardComponentPropertiesOutput {
@@ -867,12 +734,6 @@ func (o StandardComponentPropertiesResponseOutput) ToStandardComponentProperties
 	return o
 }
 
-func (o StandardComponentPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StandardComponentPropertiesResponse] {
-	return pulumix.Output[StandardComponentPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Component Key matching componentMetadata
 func (o StandardComponentPropertiesResponseOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardComponentPropertiesResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
@@ -890,12 +751,6 @@ func (o StandardComponentPropertiesResponseArrayOutput) ToStandardComponentPrope
 
 func (o StandardComponentPropertiesResponseArrayOutput) ToStandardComponentPropertiesResponseArrayOutputWithContext(ctx context.Context) StandardComponentPropertiesResponseArrayOutput {
 	return o
-}
-
-func (o StandardComponentPropertiesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StandardComponentPropertiesResponse] {
-	return pulumix.Output[[]StandardComponentPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StandardComponentPropertiesResponseArrayOutput) Index(i pulumi.IntInput) StandardComponentPropertiesResponseOutput {
@@ -933,12 +788,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

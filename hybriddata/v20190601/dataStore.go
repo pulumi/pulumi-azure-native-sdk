@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Data store.
@@ -155,12 +154,6 @@ func (i *DataStore) ToDataStoreOutputWithContext(ctx context.Context) DataStoreO
 	return pulumi.ToOutputWithContext(ctx, i).(DataStoreOutput)
 }
 
-func (i *DataStore) ToOutput(ctx context.Context) pulumix.Output[*DataStore] {
-	return pulumix.Output[*DataStore]{
-		OutputState: i.ToDataStoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataStoreOutput struct{ *pulumi.OutputState }
 
 func (DataStoreOutput) ElementType() reflect.Type {
@@ -173,12 +166,6 @@ func (o DataStoreOutput) ToDataStoreOutput() DataStoreOutput {
 
 func (o DataStoreOutput) ToDataStoreOutputWithContext(ctx context.Context) DataStoreOutput {
 	return o
-}
-
-func (o DataStoreOutput) ToOutput(ctx context.Context) pulumix.Output[*DataStore] {
-	return pulumix.Output[*DataStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of customer secrets containing a key identifier and key value. The key identifier is a way for the specific data source to understand the key. Value contains customer secret encrypted by the encryptionKeys.

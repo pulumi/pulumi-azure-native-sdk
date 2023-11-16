@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a ServerCollector
@@ -93,12 +92,6 @@ func (o LookupServerCollectorsOperationResultOutput) ToLookupServerCollectorsOpe
 
 func (o LookupServerCollectorsOperationResultOutput) ToLookupServerCollectorsOperationResultOutputWithContext(ctx context.Context) LookupServerCollectorsOperationResultOutput {
 	return o
-}
-
-func (o LookupServerCollectorsOperationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServerCollectorsOperationResult] {
-	return pulumix.Output[LookupServerCollectorsOperationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the collector agent properties.

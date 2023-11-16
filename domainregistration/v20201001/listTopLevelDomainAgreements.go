@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets all legal agreements that user needs to accept before purchasing a domain.
@@ -79,12 +78,6 @@ func (o ListTopLevelDomainAgreementsResultOutput) ToListTopLevelDomainAgreements
 
 func (o ListTopLevelDomainAgreementsResultOutput) ToListTopLevelDomainAgreementsResultOutputWithContext(ctx context.Context) ListTopLevelDomainAgreementsResultOutput {
 	return o
-}
-
-func (o ListTopLevelDomainAgreementsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListTopLevelDomainAgreementsResult] {
-	return pulumix.Output[ListTopLevelDomainAgreementsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Link to next page of resources.

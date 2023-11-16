@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the details of a Content Key Policy in the Media Services account
@@ -94,12 +93,6 @@ func (o LookupContentKeyPolicyResultOutput) ToLookupContentKeyPolicyResultOutput
 
 func (o LookupContentKeyPolicyResultOutput) ToLookupContentKeyPolicyResultOutputWithContext(ctx context.Context) LookupContentKeyPolicyResultOutput {
 	return o
-}
-
-func (o LookupContentKeyPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContentKeyPolicyResult] {
-	return pulumix.Output[LookupContentKeyPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation date of the Policy

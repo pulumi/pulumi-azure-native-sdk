@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A SQL DB table data set.
@@ -188,12 +187,6 @@ func (i *SqlDBTableDataSet) ToSqlDBTableDataSetOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(SqlDBTableDataSetOutput)
 }
 
-func (i *SqlDBTableDataSet) ToOutput(ctx context.Context) pulumix.Output[*SqlDBTableDataSet] {
-	return pulumix.Output[*SqlDBTableDataSet]{
-		OutputState: i.ToSqlDBTableDataSetOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SqlDBTableDataSetOutput struct{ *pulumi.OutputState }
 
 func (SqlDBTableDataSetOutput) ElementType() reflect.Type {
@@ -206,12 +199,6 @@ func (o SqlDBTableDataSetOutput) ToSqlDBTableDataSetOutput() SqlDBTableDataSetOu
 
 func (o SqlDBTableDataSetOutput) ToSqlDBTableDataSetOutputWithContext(ctx context.Context) SqlDBTableDataSetOutput {
 	return o
-}
-
-func (o SqlDBTableDataSetOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlDBTableDataSet] {
-	return pulumix.Output[*SqlDBTableDataSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Unique id for identifying a data set resource

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Implements ExternalNetworks GET method.
@@ -117,12 +116,6 @@ func (o LookupExternalNetworkResultOutput) ToLookupExternalNetworkResultOutput()
 
 func (o LookupExternalNetworkResultOutput) ToLookupExternalNetworkResultOutputWithContext(ctx context.Context) LookupExternalNetworkResultOutput {
 	return o
-}
-
-func (o LookupExternalNetworkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupExternalNetworkResult] {
-	return pulumix.Output[LookupExternalNetworkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // AdministrativeState of the externalNetwork. Example: Enabled | Disabled.

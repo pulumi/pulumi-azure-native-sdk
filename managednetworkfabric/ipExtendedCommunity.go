@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The IpExtendedCommunity resource definition.
@@ -155,12 +154,6 @@ func (i *IpExtendedCommunity) ToIpExtendedCommunityOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(IpExtendedCommunityOutput)
 }
 
-func (i *IpExtendedCommunity) ToOutput(ctx context.Context) pulumix.Output[*IpExtendedCommunity] {
-	return pulumix.Output[*IpExtendedCommunity]{
-		OutputState: i.ToIpExtendedCommunityOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IpExtendedCommunityOutput struct{ *pulumi.OutputState }
 
 func (IpExtendedCommunityOutput) ElementType() reflect.Type {
@@ -173,12 +166,6 @@ func (o IpExtendedCommunityOutput) ToIpExtendedCommunityOutput() IpExtendedCommu
 
 func (o IpExtendedCommunityOutput) ToIpExtendedCommunityOutputWithContext(ctx context.Context) IpExtendedCommunityOutput {
 	return o
-}
-
-func (o IpExtendedCommunityOutput) ToOutput(ctx context.Context) pulumix.Output[*IpExtendedCommunity] {
-	return pulumix.Output[*IpExtendedCommunity]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Action to be taken on the configuration. Example: Permit | Deny.

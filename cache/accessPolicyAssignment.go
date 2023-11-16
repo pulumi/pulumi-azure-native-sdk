@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Response to an operation on access policy assignment
@@ -151,12 +150,6 @@ func (i *AccessPolicyAssignment) ToAccessPolicyAssignmentOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyAssignmentOutput)
 }
 
-func (i *AccessPolicyAssignment) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicyAssignment] {
-	return pulumix.Output[*AccessPolicyAssignment]{
-		OutputState: i.ToAccessPolicyAssignmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessPolicyAssignmentOutput struct{ *pulumi.OutputState }
 
 func (AccessPolicyAssignmentOutput) ElementType() reflect.Type {
@@ -169,12 +162,6 @@ func (o AccessPolicyAssignmentOutput) ToAccessPolicyAssignmentOutput() AccessPol
 
 func (o AccessPolicyAssignmentOutput) ToAccessPolicyAssignmentOutputWithContext(ctx context.Context) AccessPolicyAssignmentOutput {
 	return o
-}
-
-func (o AccessPolicyAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessPolicyAssignment] {
-	return pulumix.Output[*AccessPolicyAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the access policy that is being assigned

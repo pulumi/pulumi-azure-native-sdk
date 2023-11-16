@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The key-value resource along with all resource properties.
@@ -165,12 +164,6 @@ func (i *KeyValue) ToKeyValueOutputWithContext(ctx context.Context) KeyValueOutp
 	return pulumi.ToOutputWithContext(ctx, i).(KeyValueOutput)
 }
 
-func (i *KeyValue) ToOutput(ctx context.Context) pulumix.Output[*KeyValue] {
-	return pulumix.Output[*KeyValue]{
-		OutputState: i.ToKeyValueOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KeyValueOutput struct{ *pulumi.OutputState }
 
 func (KeyValueOutput) ElementType() reflect.Type {
@@ -183,12 +176,6 @@ func (o KeyValueOutput) ToKeyValueOutput() KeyValueOutput {
 
 func (o KeyValueOutput) ToKeyValueOutputWithContext(ctx context.Context) KeyValueOutput {
 	return o
-}
-
-func (o KeyValueOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyValue] {
-	return pulumix.Output[*KeyValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The content type of the key-value's value.

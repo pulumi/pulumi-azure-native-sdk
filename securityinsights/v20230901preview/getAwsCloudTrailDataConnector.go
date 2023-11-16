@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a data connector.
@@ -92,12 +91,6 @@ func (o LookupAwsCloudTrailDataConnectorResultOutput) ToLookupAwsCloudTrailDataC
 
 func (o LookupAwsCloudTrailDataConnectorResultOutput) ToLookupAwsCloudTrailDataConnectorResultOutputWithContext(ctx context.Context) LookupAwsCloudTrailDataConnectorResultOutput {
 	return o
-}
-
-func (o LookupAwsCloudTrailDataConnectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAwsCloudTrailDataConnectorResult] {
-	return pulumix.Output[LookupAwsCloudTrailDataConnectorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Aws Role Arn (with CloudTrailReadOnly policy) that is used to access the Aws account.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -39,12 +38,6 @@ func (o OverviewStatusResponseOutput) ToOverviewStatusResponseOutputWithContext(
 	return o
 }
 
-func (o OverviewStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OverviewStatusResponse] {
-	return pulumix.Output[OverviewStatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The count of all failed full automation control.
 func (o OverviewStatusResponseOutput) FailedCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OverviewStatusResponse) *int { return v.FailedCount }).(pulumi.IntPtrOutput)
@@ -72,12 +65,6 @@ func (o OverviewStatusResponsePtrOutput) ToOverviewStatusResponsePtrOutput() Ove
 
 func (o OverviewStatusResponsePtrOutput) ToOverviewStatusResponsePtrOutputWithContext(ctx context.Context) OverviewStatusResponsePtrOutput {
 	return o
-}
-
-func (o OverviewStatusResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OverviewStatusResponse] {
-	return pulumix.Output[*OverviewStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OverviewStatusResponsePtrOutput) Elem() OverviewStatusResponseOutput {
@@ -141,12 +128,6 @@ func (o ReportComplianceStatusResponseOutput) ToReportComplianceStatusResponseOu
 	return o
 }
 
-func (o ReportComplianceStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportComplianceStatusResponse] {
-	return pulumix.Output[ReportComplianceStatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Microsoft 365 certification name.
 func (o ReportComplianceStatusResponseOutput) M365() OverviewStatusResponsePtrOutput {
 	return o.ApplyT(func(v ReportComplianceStatusResponse) *OverviewStatusResponse { return v.M365 }).(OverviewStatusResponsePtrOutput)
@@ -201,12 +182,6 @@ func (i ReportPropertiesArgs) ToReportPropertiesOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ReportPropertiesOutput)
 }
 
-func (i ReportPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ReportProperties] {
-	return pulumix.Output[ReportProperties]{
-		OutputState: i.ToReportPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Report's properties.
 type ReportPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -220,12 +195,6 @@ func (o ReportPropertiesOutput) ToReportPropertiesOutput() ReportPropertiesOutpu
 
 func (o ReportPropertiesOutput) ToReportPropertiesOutputWithContext(ctx context.Context) ReportPropertiesOutput {
 	return o
-}
-
-func (o ReportPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ReportProperties] {
-	return pulumix.Output[ReportProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Report offer Guid.
@@ -293,12 +262,6 @@ func (o ReportPropertiesResponseOutput) ToReportPropertiesResponseOutput() Repor
 
 func (o ReportPropertiesResponseOutput) ToReportPropertiesResponseOutputWithContext(ctx context.Context) ReportPropertiesResponseOutput {
 	return o
-}
-
-func (o ReportPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportPropertiesResponse] {
-	return pulumix.Output[ReportPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Report compliance status.
@@ -418,12 +381,6 @@ func (i ResourceMetadataArgs) ToResourceMetadataOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMetadataOutput)
 }
 
-func (i ResourceMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceMetadata] {
-	return pulumix.Output[ResourceMetadata]{
-		OutputState: i.ToResourceMetadataOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ResourceMetadataArrayInput is an input type that accepts ResourceMetadataArray and ResourceMetadataArrayOutput values.
 // You can construct a concrete instance of `ResourceMetadataArrayInput` via:
 //
@@ -449,12 +406,6 @@ func (i ResourceMetadataArray) ToResourceMetadataArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMetadataArrayOutput)
 }
 
-func (i ResourceMetadataArray) ToOutput(ctx context.Context) pulumix.Output[[]ResourceMetadata] {
-	return pulumix.Output[[]ResourceMetadata]{
-		OutputState: i.ToResourceMetadataArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Single resource Id's metadata.
 type ResourceMetadataOutput struct{ *pulumi.OutputState }
 
@@ -468,12 +419,6 @@ func (o ResourceMetadataOutput) ToResourceMetadataOutput() ResourceMetadataOutpu
 
 func (o ResourceMetadataOutput) ToResourceMetadataOutputWithContext(ctx context.Context) ResourceMetadataOutput {
 	return o
-}
-
-func (o ResourceMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceMetadata] {
-	return pulumix.Output[ResourceMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Id - e.g. "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1".
@@ -515,12 +460,6 @@ func (o ResourceMetadataArrayOutput) ToResourceMetadataArrayOutputWithContext(ct
 	return o
 }
 
-func (o ResourceMetadataArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceMetadata] {
-	return pulumix.Output[[]ResourceMetadata]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ResourceMetadataArrayOutput) Index(i pulumi.IntInput) ResourceMetadataOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceMetadata {
 		return vs[0].([]ResourceMetadata)[vs[1].(int)]
@@ -554,12 +493,6 @@ func (o ResourceMetadataResponseOutput) ToResourceMetadataResponseOutput() Resou
 
 func (o ResourceMetadataResponseOutput) ToResourceMetadataResponseOutputWithContext(ctx context.Context) ResourceMetadataResponseOutput {
 	return o
-}
-
-func (o ResourceMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceMetadataResponse] {
-	return pulumix.Output[ResourceMetadataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Id - e.g. "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1".
@@ -601,12 +534,6 @@ func (o ResourceMetadataResponseArrayOutput) ToResourceMetadataResponseArrayOutp
 	return o
 }
 
-func (o ResourceMetadataResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceMetadataResponse] {
-	return pulumix.Output[[]ResourceMetadataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ResourceMetadataResponseArrayOutput) Index(i pulumi.IntInput) ResourceMetadataResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceMetadataResponse {
 		return vs[0].([]ResourceMetadataResponse)[vs[1].(int)]
@@ -642,12 +569,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

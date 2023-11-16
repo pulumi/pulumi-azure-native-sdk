@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -49,12 +48,6 @@ func (i AdditionalAttributesArgs) ToAdditionalAttributesOutput() AdditionalAttri
 
 func (i AdditionalAttributesArgs) ToAdditionalAttributesOutputWithContext(ctx context.Context) AdditionalAttributesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AdditionalAttributesOutput)
-}
-
-func (i AdditionalAttributesArgs) ToOutput(ctx context.Context) pulumix.Output[AdditionalAttributes] {
-	return pulumix.Output[AdditionalAttributes]{
-		OutputState: i.ToAdditionalAttributesOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i AdditionalAttributesArgs) ToAdditionalAttributesPtrOutput() AdditionalAttributesPtrOutput {
@@ -98,12 +91,6 @@ func (i *additionalAttributesPtrType) ToAdditionalAttributesPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(AdditionalAttributesPtrOutput)
 }
 
-func (i *additionalAttributesPtrType) ToOutput(ctx context.Context) pulumix.Output[*AdditionalAttributes] {
-	return pulumix.Output[*AdditionalAttributes]{
-		OutputState: i.ToAdditionalAttributesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Additional attribute to allow subscriptions to be part of the GroupQuota.
 type AdditionalAttributesOutput struct{ *pulumi.OutputState }
 
@@ -129,12 +116,6 @@ func (o AdditionalAttributesOutput) ToAdditionalAttributesPtrOutputWithContext(c
 	}).(AdditionalAttributesPtrOutput)
 }
 
-func (o AdditionalAttributesOutput) ToOutput(ctx context.Context) pulumix.Output[AdditionalAttributes] {
-	return pulumix.Output[AdditionalAttributes]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AdditionalAttributesOutput) Environment() pulumi.AnyOutput {
 	return o.ApplyT(func(v AdditionalAttributes) interface{} { return v.Environment }).(pulumi.AnyOutput)
 }
@@ -156,12 +137,6 @@ func (o AdditionalAttributesPtrOutput) ToAdditionalAttributesPtrOutput() Additio
 
 func (o AdditionalAttributesPtrOutput) ToAdditionalAttributesPtrOutputWithContext(ctx context.Context) AdditionalAttributesPtrOutput {
 	return o
-}
-
-func (o AdditionalAttributesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AdditionalAttributes] {
-	return pulumix.Output[*AdditionalAttributes]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AdditionalAttributesPtrOutput) Elem() AdditionalAttributesOutput {
@@ -215,12 +190,6 @@ func (o AdditionalAttributesResponseOutput) ToAdditionalAttributesResponseOutput
 	return o
 }
 
-func (o AdditionalAttributesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AdditionalAttributesResponse] {
-	return pulumix.Output[AdditionalAttributesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AdditionalAttributesResponseOutput) Environment() pulumi.AnyOutput {
 	return o.ApplyT(func(v AdditionalAttributesResponse) interface{} { return v.Environment }).(pulumi.AnyOutput)
 }
@@ -242,12 +211,6 @@ func (o AdditionalAttributesResponsePtrOutput) ToAdditionalAttributesResponsePtr
 
 func (o AdditionalAttributesResponsePtrOutput) ToAdditionalAttributesResponsePtrOutputWithContext(ctx context.Context) AdditionalAttributesResponsePtrOutput {
 	return o
-}
-
-func (o AdditionalAttributesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AdditionalAttributesResponse] {
-	return pulumix.Output[*AdditionalAttributesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AdditionalAttributesResponsePtrOutput) Elem() AdditionalAttributesResponseOutput {
@@ -300,12 +263,6 @@ func (o GroupQuotaSubscriptionIdResponsePropertiesOutput) ToGroupQuotaSubscripti
 	return o
 }
 
-func (o GroupQuotaSubscriptionIdResponsePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[GroupQuotaSubscriptionIdResponseProperties] {
-	return pulumix.Output[GroupQuotaSubscriptionIdResponseProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Status of this subscriptionId being associated with the GroupQuotasEntity.
 func (o GroupQuotaSubscriptionIdResponsePropertiesOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v GroupQuotaSubscriptionIdResponseProperties) string { return v.ProvisioningState }).(pulumi.StringOutput)
@@ -355,12 +312,6 @@ func (i GroupQuotasEntityBaseArgs) ToGroupQuotasEntityBaseOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GroupQuotasEntityBaseOutput)
 }
 
-func (i GroupQuotasEntityBaseArgs) ToOutput(ctx context.Context) pulumix.Output[GroupQuotasEntityBase] {
-	return pulumix.Output[GroupQuotasEntityBase]{
-		OutputState: i.ToGroupQuotasEntityBaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GroupQuotasEntityBaseArgs) ToGroupQuotasEntityBasePtrOutput() GroupQuotasEntityBasePtrOutput {
 	return i.ToGroupQuotasEntityBasePtrOutputWithContext(context.Background())
 }
@@ -402,12 +353,6 @@ func (i *groupQuotasEntityBasePtrType) ToGroupQuotasEntityBasePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(GroupQuotasEntityBasePtrOutput)
 }
 
-func (i *groupQuotasEntityBasePtrType) ToOutput(ctx context.Context) pulumix.Output[*GroupQuotasEntityBase] {
-	return pulumix.Output[*GroupQuotasEntityBase]{
-		OutputState: i.ToGroupQuotasEntityBasePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
 type GroupQuotasEntityBaseOutput struct{ *pulumi.OutputState }
 
@@ -433,12 +378,6 @@ func (o GroupQuotasEntityBaseOutput) ToGroupQuotasEntityBasePtrOutputWithContext
 	}).(GroupQuotasEntityBasePtrOutput)
 }
 
-func (o GroupQuotasEntityBaseOutput) ToOutput(ctx context.Context) pulumix.Output[GroupQuotasEntityBase] {
-	return pulumix.Output[GroupQuotasEntityBase]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Additional attributes to allow subscription, which can be added to the subscriptionIds.
 func (o GroupQuotasEntityBaseOutput) AdditionalAttributes() AdditionalAttributesPtrOutput {
 	return o.ApplyT(func(v GroupQuotasEntityBase) *AdditionalAttributes { return v.AdditionalAttributes }).(AdditionalAttributesPtrOutput)
@@ -461,12 +400,6 @@ func (o GroupQuotasEntityBasePtrOutput) ToGroupQuotasEntityBasePtrOutput() Group
 
 func (o GroupQuotasEntityBasePtrOutput) ToGroupQuotasEntityBasePtrOutputWithContext(ctx context.Context) GroupQuotasEntityBasePtrOutput {
 	return o
-}
-
-func (o GroupQuotasEntityBasePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupQuotasEntityBase] {
-	return pulumix.Output[*GroupQuotasEntityBase]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupQuotasEntityBasePtrOutput) Elem() GroupQuotasEntityBaseOutput {
@@ -524,12 +457,6 @@ func (o GroupQuotasEntityBaseResponseOutput) ToGroupQuotasEntityBaseResponseOutp
 	return o
 }
 
-func (o GroupQuotasEntityBaseResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GroupQuotasEntityBaseResponse] {
-	return pulumix.Output[GroupQuotasEntityBaseResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Additional attributes to allow subscription, which can be added to the subscriptionIds.
 func (o GroupQuotasEntityBaseResponseOutput) AdditionalAttributes() AdditionalAttributesResponsePtrOutput {
 	return o.ApplyT(func(v GroupQuotasEntityBaseResponse) *AdditionalAttributesResponse { return v.AdditionalAttributes }).(AdditionalAttributesResponsePtrOutput)
@@ -584,12 +511,6 @@ func (i GroupingIdArgs) ToGroupingIdOutputWithContext(ctx context.Context) Group
 	return pulumi.ToOutputWithContext(ctx, i).(GroupingIdOutput)
 }
 
-func (i GroupingIdArgs) ToOutput(ctx context.Context) pulumix.Output[GroupingId] {
-	return pulumix.Output[GroupingId]{
-		OutputState: i.ToGroupingIdOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GroupingIdArgs) ToGroupingIdPtrOutput() GroupingIdPtrOutput {
 	return i.ToGroupingIdPtrOutputWithContext(context.Background())
 }
@@ -631,12 +552,6 @@ func (i *groupingIdPtrType) ToGroupingIdPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(GroupingIdPtrOutput)
 }
 
-func (i *groupingIdPtrType) ToOutput(ctx context.Context) pulumix.Output[*GroupingId] {
-	return pulumix.Output[*GroupingId]{
-		OutputState: i.ToGroupingIdPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The grouping Id for the group quota. It can be management Group Id or ServiceTreeId if applicable.
 type GroupingIdOutput struct{ *pulumi.OutputState }
 
@@ -662,12 +577,6 @@ func (o GroupingIdOutput) ToGroupingIdPtrOutputWithContext(ctx context.Context) 
 	}).(GroupingIdPtrOutput)
 }
 
-func (o GroupingIdOutput) ToOutput(ctx context.Context) pulumix.Output[GroupingId] {
-	return pulumix.Output[GroupingId]{
-		OutputState: o.OutputState,
-	}
-}
-
 // GroupingId type. It is a required property. More types of groupIds can be supported in future. MGID is already in the URI, so it's not needed.'
 func (o GroupingIdOutput) GroupingIdType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupingId) *string { return v.GroupingIdType }).(pulumi.StringPtrOutput)
@@ -690,12 +599,6 @@ func (o GroupingIdPtrOutput) ToGroupingIdPtrOutput() GroupingIdPtrOutput {
 
 func (o GroupingIdPtrOutput) ToGroupingIdPtrOutputWithContext(ctx context.Context) GroupingIdPtrOutput {
 	return o
-}
-
-func (o GroupingIdPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupingId] {
-	return pulumix.Output[*GroupingId]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupingIdPtrOutput) Elem() GroupingIdOutput {
@@ -751,12 +654,6 @@ func (o GroupingIdResponseOutput) ToGroupingIdResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o GroupingIdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GroupingIdResponse] {
-	return pulumix.Output[GroupingIdResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // GroupingId type. It is a required property. More types of groupIds can be supported in future. MGID is already in the URI, so it's not needed.'
 func (o GroupingIdResponseOutput) GroupingIdType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupingIdResponse) *string { return v.GroupingIdType }).(pulumi.StringPtrOutput)
@@ -779,12 +676,6 @@ func (o GroupingIdResponsePtrOutput) ToGroupingIdResponsePtrOutput() GroupingIdR
 
 func (o GroupingIdResponsePtrOutput) ToGroupingIdResponsePtrOutputWithContext(ctx context.Context) GroupingIdResponsePtrOutput {
 	return o
-}
-
-func (o GroupingIdResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupingIdResponse] {
-	return pulumix.Output[*GroupingIdResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupingIdResponsePtrOutput) Elem() GroupingIdResponseOutput {
@@ -846,12 +737,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

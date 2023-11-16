@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List credential for publishing artifacts defined in artifact manifest.
@@ -81,12 +80,6 @@ func (o ListArtifactManifestCredentialResultOutput) ToListArtifactManifestCreden
 
 func (o ListArtifactManifestCredentialResultOutput) ToListArtifactManifestCredentialResultOutputWithContext(ctx context.Context) ListArtifactManifestCredentialResultOutput {
 	return o
-}
-
-func (o ListArtifactManifestCredentialResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListArtifactManifestCredentialResult] {
-	return pulumix.Output[ListArtifactManifestCredentialResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The credential type.

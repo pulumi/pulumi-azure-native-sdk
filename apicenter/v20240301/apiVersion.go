@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // API version entity.
@@ -150,12 +149,6 @@ func (i *ApiVersion) ToApiVersionOutputWithContext(ctx context.Context) ApiVersi
 	return pulumi.ToOutputWithContext(ctx, i).(ApiVersionOutput)
 }
 
-func (i *ApiVersion) ToOutput(ctx context.Context) pulumix.Output[*ApiVersion] {
-	return pulumix.Output[*ApiVersion]{
-		OutputState: i.ToApiVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiVersionOutput struct{ *pulumi.OutputState }
 
 func (ApiVersionOutput) ElementType() reflect.Type {
@@ -168,12 +161,6 @@ func (o ApiVersionOutput) ToApiVersionOutput() ApiVersionOutput {
 
 func (o ApiVersionOutput) ToApiVersionOutputWithContext(ctx context.Context) ApiVersionOutput {
 	return o
-}
-
-func (o ApiVersionOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiVersion] {
-	return pulumix.Output[*ApiVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Current lifecycle stage of the API.

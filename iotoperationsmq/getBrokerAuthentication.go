@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a BrokerAuthenticationResource
@@ -100,12 +99,6 @@ func (o LookupBrokerAuthenticationResultOutput) ToLookupBrokerAuthenticationResu
 
 func (o LookupBrokerAuthenticationResultOutput) ToLookupBrokerAuthenticationResultOutputWithContext(ctx context.Context) LookupBrokerAuthenticationResultOutput {
 	return o
-}
-
-func (o LookupBrokerAuthenticationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBrokerAuthenticationResult] {
-	return pulumix.Output[LookupBrokerAuthenticationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of authentication methods supported by the Authentication Resource. For each array element, NOTE - Enum only authenticator type supported.

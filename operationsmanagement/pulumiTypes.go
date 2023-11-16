@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i ArmTemplateParameterArgs) ToArmTemplateParameterOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ArmTemplateParameterOutput)
 }
 
-func (i ArmTemplateParameterArgs) ToOutput(ctx context.Context) pulumix.Output[ArmTemplateParameter] {
-	return pulumix.Output[ArmTemplateParameter]{
-		OutputState: i.ToArmTemplateParameterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ArmTemplateParameterArrayInput is an input type that accepts ArmTemplateParameterArray and ArmTemplateParameterArrayOutput values.
 // You can construct a concrete instance of `ArmTemplateParameterArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i ArmTemplateParameterArray) ToArmTemplateParameterArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ArmTemplateParameterArrayOutput)
 }
 
-func (i ArmTemplateParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]ArmTemplateParameter] {
-	return pulumix.Output[[]ArmTemplateParameter]{
-		OutputState: i.ToArmTemplateParameterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Parameter to pass to ARM template
 type ArmTemplateParameterOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o ArmTemplateParameterOutput) ToArmTemplateParameterOutput() ArmTemplatePa
 
 func (o ArmTemplateParameterOutput) ToArmTemplateParameterOutputWithContext(ctx context.Context) ArmTemplateParameterOutput {
 	return o
-}
-
-func (o ArmTemplateParameterOutput) ToOutput(ctx context.Context) pulumix.Output[ArmTemplateParameter] {
-	return pulumix.Output[ArmTemplateParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // name of the parameter.
@@ -133,12 +114,6 @@ func (o ArmTemplateParameterArrayOutput) ToArmTemplateParameterArrayOutput() Arm
 
 func (o ArmTemplateParameterArrayOutput) ToArmTemplateParameterArrayOutputWithContext(ctx context.Context) ArmTemplateParameterArrayOutput {
 	return o
-}
-
-func (o ArmTemplateParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ArmTemplateParameter] {
-	return pulumix.Output[[]ArmTemplateParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ArmTemplateParameterArrayOutput) Index(i pulumi.IntInput) ArmTemplateParameterOutput {
@@ -170,12 +145,6 @@ func (o ArmTemplateParameterResponseOutput) ToArmTemplateParameterResponseOutput
 	return o
 }
 
-func (o ArmTemplateParameterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ArmTemplateParameterResponse] {
-	return pulumix.Output[ArmTemplateParameterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // name of the parameter.
 func (o ArmTemplateParameterResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ArmTemplateParameterResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -198,12 +167,6 @@ func (o ArmTemplateParameterResponseArrayOutput) ToArmTemplateParameterResponseA
 
 func (o ArmTemplateParameterResponseArrayOutput) ToArmTemplateParameterResponseArrayOutputWithContext(ctx context.Context) ArmTemplateParameterResponseArrayOutput {
 	return o
-}
-
-func (o ArmTemplateParameterResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ArmTemplateParameterResponse] {
-	return pulumix.Output[[]ArmTemplateParameterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ArmTemplateParameterResponseArrayOutput) Index(i pulumi.IntInput) ArmTemplateParameterResponseOutput {
@@ -247,12 +210,6 @@ func (i ManagementAssociationPropertiesArgs) ToManagementAssociationPropertiesOu
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementAssociationPropertiesOutput)
 }
 
-func (i ManagementAssociationPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ManagementAssociationProperties] {
-	return pulumix.Output[ManagementAssociationProperties]{
-		OutputState: i.ToManagementAssociationPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagementAssociationPropertiesArgs) ToManagementAssociationPropertiesPtrOutput() ManagementAssociationPropertiesPtrOutput {
 	return i.ToManagementAssociationPropertiesPtrOutputWithContext(context.Background())
 }
@@ -294,12 +251,6 @@ func (i *managementAssociationPropertiesPtrType) ToManagementAssociationProperti
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementAssociationPropertiesPtrOutput)
 }
 
-func (i *managementAssociationPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagementAssociationProperties] {
-	return pulumix.Output[*ManagementAssociationProperties]{
-		OutputState: i.ToManagementAssociationPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ManagementAssociation properties supported by the OperationsManagement resource provider.
 type ManagementAssociationPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -325,12 +276,6 @@ func (o ManagementAssociationPropertiesOutput) ToManagementAssociationProperties
 	}).(ManagementAssociationPropertiesPtrOutput)
 }
 
-func (o ManagementAssociationPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementAssociationProperties] {
-	return pulumix.Output[ManagementAssociationProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The applicationId of the appliance for this association.
 func (o ManagementAssociationPropertiesOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagementAssociationProperties) string { return v.ApplicationId }).(pulumi.StringOutput)
@@ -348,12 +293,6 @@ func (o ManagementAssociationPropertiesPtrOutput) ToManagementAssociationPropert
 
 func (o ManagementAssociationPropertiesPtrOutput) ToManagementAssociationPropertiesPtrOutputWithContext(ctx context.Context) ManagementAssociationPropertiesPtrOutput {
 	return o
-}
-
-func (o ManagementAssociationPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagementAssociationProperties] {
-	return pulumix.Output[*ManagementAssociationProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagementAssociationPropertiesPtrOutput) Elem() ManagementAssociationPropertiesOutput {
@@ -395,12 +334,6 @@ func (o ManagementAssociationPropertiesResponseOutput) ToManagementAssociationPr
 
 func (o ManagementAssociationPropertiesResponseOutput) ToManagementAssociationPropertiesResponseOutputWithContext(ctx context.Context) ManagementAssociationPropertiesResponseOutput {
 	return o
-}
-
-func (o ManagementAssociationPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementAssociationPropertiesResponse] {
-	return pulumix.Output[ManagementAssociationPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The applicationId of the appliance for this association.
@@ -455,12 +388,6 @@ func (i ManagementConfigurationPropertiesArgs) ToManagementConfigurationProperti
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementConfigurationPropertiesOutput)
 }
 
-func (i ManagementConfigurationPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ManagementConfigurationProperties] {
-	return pulumix.Output[ManagementConfigurationProperties]{
-		OutputState: i.ToManagementConfigurationPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagementConfigurationPropertiesArgs) ToManagementConfigurationPropertiesPtrOutput() ManagementConfigurationPropertiesPtrOutput {
 	return i.ToManagementConfigurationPropertiesPtrOutputWithContext(context.Background())
 }
@@ -502,12 +429,6 @@ func (i *managementConfigurationPropertiesPtrType) ToManagementConfigurationProp
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementConfigurationPropertiesPtrOutput)
 }
 
-func (i *managementConfigurationPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagementConfigurationProperties] {
-	return pulumix.Output[*ManagementConfigurationProperties]{
-		OutputState: i.ToManagementConfigurationPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ManagementConfiguration properties supported by the OperationsManagement resource provider.
 type ManagementConfigurationPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -531,12 +452,6 @@ func (o ManagementConfigurationPropertiesOutput) ToManagementConfigurationProper
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagementConfigurationProperties) *ManagementConfigurationProperties {
 		return &v
 	}).(ManagementConfigurationPropertiesPtrOutput)
-}
-
-func (o ManagementConfigurationPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementConfigurationProperties] {
-	return pulumix.Output[ManagementConfigurationProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The applicationId of the appliance for this Management.
@@ -571,12 +486,6 @@ func (o ManagementConfigurationPropertiesPtrOutput) ToManagementConfigurationPro
 
 func (o ManagementConfigurationPropertiesPtrOutput) ToManagementConfigurationPropertiesPtrOutputWithContext(ctx context.Context) ManagementConfigurationPropertiesPtrOutput {
 	return o
-}
-
-func (o ManagementConfigurationPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagementConfigurationProperties] {
-	return pulumix.Output[*ManagementConfigurationProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagementConfigurationPropertiesPtrOutput) Elem() ManagementConfigurationPropertiesOutput {
@@ -658,12 +567,6 @@ func (o ManagementConfigurationPropertiesResponseOutput) ToManagementConfigurati
 	return o
 }
 
-func (o ManagementConfigurationPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagementConfigurationPropertiesResponse] {
-	return pulumix.Output[ManagementConfigurationPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The applicationId of the appliance for this Management.
 func (o ManagementConfigurationPropertiesResponseOutput) ApplicationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagementConfigurationPropertiesResponse) *string { return v.ApplicationId }).(pulumi.StringPtrOutput)
@@ -736,12 +639,6 @@ func (i SolutionPlanArgs) ToSolutionPlanOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(SolutionPlanOutput)
 }
 
-func (i SolutionPlanArgs) ToOutput(ctx context.Context) pulumix.Output[SolutionPlan] {
-	return pulumix.Output[SolutionPlan]{
-		OutputState: i.ToSolutionPlanOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SolutionPlanArgs) ToSolutionPlanPtrOutput() SolutionPlanPtrOutput {
 	return i.ToSolutionPlanPtrOutputWithContext(context.Background())
 }
@@ -783,12 +680,6 @@ func (i *solutionPlanPtrType) ToSolutionPlanPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(SolutionPlanPtrOutput)
 }
 
-func (i *solutionPlanPtrType) ToOutput(ctx context.Context) pulumix.Output[*SolutionPlan] {
-	return pulumix.Output[*SolutionPlan]{
-		OutputState: i.ToSolutionPlanPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Plan for solution object supported by the OperationsManagement resource provider.
 type SolutionPlanOutput struct{ *pulumi.OutputState }
 
@@ -812,12 +703,6 @@ func (o SolutionPlanOutput) ToSolutionPlanPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SolutionPlan) *SolutionPlan {
 		return &v
 	}).(SolutionPlanPtrOutput)
-}
-
-func (o SolutionPlanOutput) ToOutput(ctx context.Context) pulumix.Output[SolutionPlan] {
-	return pulumix.Output[SolutionPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // name of the solution to be created. For Microsoft published solution it should be in the format of solutionType(workspaceName). SolutionType part is case sensitive. For third party solution, it can be anything.
@@ -852,12 +737,6 @@ func (o SolutionPlanPtrOutput) ToSolutionPlanPtrOutput() SolutionPlanPtrOutput {
 
 func (o SolutionPlanPtrOutput) ToSolutionPlanPtrOutputWithContext(ctx context.Context) SolutionPlanPtrOutput {
 	return o
-}
-
-func (o SolutionPlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SolutionPlan] {
-	return pulumix.Output[*SolutionPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SolutionPlanPtrOutput) Elem() SolutionPlanOutput {
@@ -937,12 +816,6 @@ func (o SolutionPlanResponseOutput) ToSolutionPlanResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o SolutionPlanResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SolutionPlanResponse] {
-	return pulumix.Output[SolutionPlanResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // name of the solution to be created. For Microsoft published solution it should be in the format of solutionType(workspaceName). SolutionType part is case sensitive. For third party solution, it can be anything.
 func (o SolutionPlanResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SolutionPlanResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -975,12 +848,6 @@ func (o SolutionPlanResponsePtrOutput) ToSolutionPlanResponsePtrOutput() Solutio
 
 func (o SolutionPlanResponsePtrOutput) ToSolutionPlanResponsePtrOutputWithContext(ctx context.Context) SolutionPlanResponsePtrOutput {
 	return o
-}
-
-func (o SolutionPlanResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SolutionPlanResponse] {
-	return pulumix.Output[*SolutionPlanResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SolutionPlanResponsePtrOutput) Elem() SolutionPlanResponseOutput {
@@ -1076,12 +943,6 @@ func (i SolutionPropertiesArgs) ToSolutionPropertiesOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SolutionPropertiesOutput)
 }
 
-func (i SolutionPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[SolutionProperties] {
-	return pulumix.Output[SolutionProperties]{
-		OutputState: i.ToSolutionPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SolutionPropertiesArgs) ToSolutionPropertiesPtrOutput() SolutionPropertiesPtrOutput {
 	return i.ToSolutionPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1123,12 +984,6 @@ func (i *solutionPropertiesPtrType) ToSolutionPropertiesPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(SolutionPropertiesPtrOutput)
 }
 
-func (i *solutionPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*SolutionProperties] {
-	return pulumix.Output[*SolutionProperties]{
-		OutputState: i.ToSolutionPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Solution properties supported by the OperationsManagement resource provider.
 type SolutionPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1152,12 +1007,6 @@ func (o SolutionPropertiesOutput) ToSolutionPropertiesPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SolutionProperties) *SolutionProperties {
 		return &v
 	}).(SolutionPropertiesPtrOutput)
-}
-
-func (o SolutionPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[SolutionProperties] {
-	return pulumix.Output[SolutionProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The azure resources that will be contained within the solutions. They will be locked and gets deleted automatically when the solution is deleted.
@@ -1187,12 +1036,6 @@ func (o SolutionPropertiesPtrOutput) ToSolutionPropertiesPtrOutput() SolutionPro
 
 func (o SolutionPropertiesPtrOutput) ToSolutionPropertiesPtrOutputWithContext(ctx context.Context) SolutionPropertiesPtrOutput {
 	return o
-}
-
-func (o SolutionPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SolutionProperties] {
-	return pulumix.Output[*SolutionProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SolutionPropertiesPtrOutput) Elem() SolutionPropertiesOutput {
@@ -1260,12 +1103,6 @@ func (o SolutionPropertiesResponseOutput) ToSolutionPropertiesResponseOutput() S
 
 func (o SolutionPropertiesResponseOutput) ToSolutionPropertiesResponseOutputWithContext(ctx context.Context) SolutionPropertiesResponseOutput {
 	return o
-}
-
-func (o SolutionPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SolutionPropertiesResponse] {
-	return pulumix.Output[SolutionPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The azure resources that will be contained within the solutions. They will be locked and gets deleted automatically when the solution is deleted.

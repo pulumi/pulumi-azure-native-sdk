@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Migration item.
@@ -96,12 +95,6 @@ func (o LookupReplicationMigrationItemResultOutput) ToLookupReplicationMigration
 
 func (o LookupReplicationMigrationItemResultOutput) ToLookupReplicationMigrationItemResultOutputWithContext(ctx context.Context) LookupReplicationMigrationItemResultOutput {
 	return o
-}
-
-func (o LookupReplicationMigrationItemResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReplicationMigrationItemResult] {
-	return pulumix.Output[LookupReplicationMigrationItemResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Id

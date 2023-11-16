@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Maintenance configuration record type
@@ -114,12 +113,6 @@ func (o LookupMaintenanceConfigurationResultOutput) ToLookupMaintenanceConfigura
 
 func (o LookupMaintenanceConfigurationResultOutput) ToLookupMaintenanceConfigurationResultOutputWithContext(ctx context.Context) LookupMaintenanceConfigurationResultOutput {
 	return o
-}
-
-func (o LookupMaintenanceConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMaintenanceConfigurationResult] {
-	return pulumix.Output[LookupMaintenanceConfigurationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Duration of the maintenance window in HH:mm format. If not provided, default value will be used based on maintenance scope provided. Example: 05:00.

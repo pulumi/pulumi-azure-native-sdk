@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A schedule.
@@ -184,12 +183,6 @@ func (i *GlobalSchedule) ToGlobalScheduleOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalScheduleOutput)
 }
 
-func (i *GlobalSchedule) ToOutput(ctx context.Context) pulumix.Output[*GlobalSchedule] {
-	return pulumix.Output[*GlobalSchedule]{
-		OutputState: i.ToGlobalScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GlobalScheduleOutput struct{ *pulumi.OutputState }
 
 func (GlobalScheduleOutput) ElementType() reflect.Type {
@@ -202,12 +195,6 @@ func (o GlobalScheduleOutput) ToGlobalScheduleOutput() GlobalScheduleOutput {
 
 func (o GlobalScheduleOutput) ToGlobalScheduleOutputWithContext(ctx context.Context) GlobalScheduleOutput {
 	return o
-}
-
-func (o GlobalScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalSchedule] {
-	return pulumix.Output[*GlobalSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation date of the schedule.

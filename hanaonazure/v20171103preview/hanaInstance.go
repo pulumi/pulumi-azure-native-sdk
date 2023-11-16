@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // HANA instance info on Azure (ARM properties and HANA properties)
@@ -151,12 +150,6 @@ func (i *HanaInstance) ToHanaInstanceOutputWithContext(ctx context.Context) Hana
 	return pulumi.ToOutputWithContext(ctx, i).(HanaInstanceOutput)
 }
 
-func (i *HanaInstance) ToOutput(ctx context.Context) pulumix.Output[*HanaInstance] {
-	return pulumix.Output[*HanaInstance]{
-		OutputState: i.ToHanaInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HanaInstanceOutput struct{ *pulumi.OutputState }
 
 func (HanaInstanceOutput) ElementType() reflect.Type {
@@ -169,12 +162,6 @@ func (o HanaInstanceOutput) ToHanaInstanceOutput() HanaInstanceOutput {
 
 func (o HanaInstanceOutput) ToHanaInstanceOutputWithContext(ctx context.Context) HanaInstanceOutput {
 	return o
-}
-
-func (o HanaInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*HanaInstance] {
-	return pulumix.Output[*HanaInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the HANA instance unique ID.

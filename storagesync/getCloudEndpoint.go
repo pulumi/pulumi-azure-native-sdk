@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a given CloudEndpoint.
@@ -110,12 +109,6 @@ func (o LookupCloudEndpointResultOutput) ToLookupCloudEndpointResultOutput() Loo
 
 func (o LookupCloudEndpointResultOutput) ToLookupCloudEndpointResultOutputWithContext(ctx context.Context) LookupCloudEndpointResultOutput {
 	return o
-}
-
-func (o LookupCloudEndpointResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCloudEndpointResult] {
-	return pulumix.Output[LookupCloudEndpointResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Azure file share name

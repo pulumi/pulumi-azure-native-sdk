@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An object that represents a connected registry for a container registry.
@@ -198,12 +197,6 @@ func (i *ConnectedRegistry) ToConnectedRegistryOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectedRegistryOutput)
 }
 
-func (i *ConnectedRegistry) ToOutput(ctx context.Context) pulumix.Output[*ConnectedRegistry] {
-	return pulumix.Output[*ConnectedRegistry]{
-		OutputState: i.ToConnectedRegistryOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectedRegistryOutput struct{ *pulumi.OutputState }
 
 func (ConnectedRegistryOutput) ElementType() reflect.Type {
@@ -216,12 +209,6 @@ func (o ConnectedRegistryOutput) ToConnectedRegistryOutput() ConnectedRegistryOu
 
 func (o ConnectedRegistryOutput) ToConnectedRegistryOutputWithContext(ctx context.Context) ConnectedRegistryOutput {
 	return o
-}
-
-func (o ConnectedRegistryOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectedRegistry] {
-	return pulumix.Output[*ConnectedRegistry]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The activation properties of the connected registry.

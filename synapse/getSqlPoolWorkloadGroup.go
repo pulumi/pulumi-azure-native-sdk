@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Sql pool's workload group.
@@ -100,12 +99,6 @@ func (o LookupSqlPoolWorkloadGroupResultOutput) ToLookupSqlPoolWorkloadGroupResu
 
 func (o LookupSqlPoolWorkloadGroupResultOutput) ToLookupSqlPoolWorkloadGroupResultOutputWithContext(ctx context.Context) LookupSqlPoolWorkloadGroupResultOutput {
 	return o
-}
-
-func (o LookupSqlPoolWorkloadGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSqlPoolWorkloadGroupResult] {
-	return pulumix.Output[LookupSqlPoolWorkloadGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

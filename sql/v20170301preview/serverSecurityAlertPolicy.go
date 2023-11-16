@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A server security alert policy.
@@ -205,12 +204,6 @@ func (i *ServerSecurityAlertPolicy) ToServerSecurityAlertPolicyOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ServerSecurityAlertPolicyOutput)
 }
 
-func (i *ServerSecurityAlertPolicy) ToOutput(ctx context.Context) pulumix.Output[*ServerSecurityAlertPolicy] {
-	return pulumix.Output[*ServerSecurityAlertPolicy]{
-		OutputState: i.ToServerSecurityAlertPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerSecurityAlertPolicyOutput struct{ *pulumi.OutputState }
 
 func (ServerSecurityAlertPolicyOutput) ElementType() reflect.Type {
@@ -223,12 +216,6 @@ func (o ServerSecurityAlertPolicyOutput) ToServerSecurityAlertPolicyOutput() Ser
 
 func (o ServerSecurityAlertPolicyOutput) ToServerSecurityAlertPolicyOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyOutput {
 	return o
-}
-
-func (o ServerSecurityAlertPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerSecurityAlertPolicy] {
-	return pulumix.Output[*ServerSecurityAlertPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the UTC creation time of the policy.

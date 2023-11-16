@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Model that represents a Capability resource.
@@ -162,12 +161,6 @@ func (i *Capability) ToCapabilityOutputWithContext(ctx context.Context) Capabili
 	return pulumi.ToOutputWithContext(ctx, i).(CapabilityOutput)
 }
 
-func (i *Capability) ToOutput(ctx context.Context) pulumix.Output[*Capability] {
-	return pulumix.Output[*Capability]{
-		OutputState: i.ToCapabilityOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CapabilityOutput struct{ *pulumi.OutputState }
 
 func (CapabilityOutput) ElementType() reflect.Type {
@@ -180,12 +173,6 @@ func (o CapabilityOutput) ToCapabilityOutput() CapabilityOutput {
 
 func (o CapabilityOutput) ToCapabilityOutputWithContext(ctx context.Context) CapabilityOutput {
 	return o
-}
-
-func (o CapabilityOutput) ToOutput(ctx context.Context) pulumix.Output[*Capability] {
-	return pulumix.Output[*Capability]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

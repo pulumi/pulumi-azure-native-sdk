@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a list of database principals of the given Kusto cluster and database.
@@ -77,12 +76,6 @@ func (o ListDatabasePrincipalsResultOutput) ToListDatabasePrincipalsResultOutput
 
 func (o ListDatabasePrincipalsResultOutput) ToListDatabasePrincipalsResultOutputWithContext(ctx context.Context) ListDatabasePrincipalsResultOutput {
 	return o
-}
-
-func (o ListDatabasePrincipalsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListDatabasePrincipalsResult] {
-	return pulumix.Output[ListDatabasePrincipalsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of Kusto database principals.

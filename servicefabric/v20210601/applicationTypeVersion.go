@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An application type version resource for the specified application type name resource.
@@ -170,12 +169,6 @@ func (i *ApplicationTypeVersion) ToApplicationTypeVersionOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationTypeVersionOutput)
 }
 
-func (i *ApplicationTypeVersion) ToOutput(ctx context.Context) pulumix.Output[*ApplicationTypeVersion] {
-	return pulumix.Output[*ApplicationTypeVersion]{
-		OutputState: i.ToApplicationTypeVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationTypeVersionOutput struct{ *pulumi.OutputState }
 
 func (ApplicationTypeVersionOutput) ElementType() reflect.Type {
@@ -188,12 +181,6 @@ func (o ApplicationTypeVersionOutput) ToApplicationTypeVersionOutput() Applicati
 
 func (o ApplicationTypeVersionOutput) ToApplicationTypeVersionOutputWithContext(ctx context.Context) ApplicationTypeVersionOutput {
 	return o
-}
-
-func (o ApplicationTypeVersionOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationTypeVersion] {
-	return pulumix.Output[*ApplicationTypeVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The URL to the application package

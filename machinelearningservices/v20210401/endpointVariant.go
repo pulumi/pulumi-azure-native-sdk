@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Machine Learning service object wrapped into ARM resource envelope.
@@ -183,12 +182,6 @@ func (i *EndpointVariant) ToEndpointVariantOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointVariantOutput)
 }
 
-func (i *EndpointVariant) ToOutput(ctx context.Context) pulumix.Output[*EndpointVariant] {
-	return pulumix.Output[*EndpointVariant]{
-		OutputState: i.ToEndpointVariantOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EndpointVariantOutput struct{ *pulumi.OutputState }
 
 func (EndpointVariantOutput) ElementType() reflect.Type {
@@ -201,12 +194,6 @@ func (o EndpointVariantOutput) ToEndpointVariantOutput() EndpointVariantOutput {
 
 func (o EndpointVariantOutput) ToEndpointVariantOutputWithContext(ctx context.Context) EndpointVariantOutput {
 	return o
-}
-
-func (o EndpointVariantOutput) ToOutput(ctx context.Context) pulumix.Output[*EndpointVariant] {
-	return pulumix.Output[*EndpointVariant]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The identity of the resource.

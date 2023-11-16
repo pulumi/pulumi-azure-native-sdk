@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i AttestationEvidenceArgs) ToAttestationEvidenceOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AttestationEvidenceOutput)
 }
 
-func (i AttestationEvidenceArgs) ToOutput(ctx context.Context) pulumix.Output[AttestationEvidence] {
-	return pulumix.Output[AttestationEvidence]{
-		OutputState: i.ToAttestationEvidenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AttestationEvidenceArrayInput is an input type that accepts AttestationEvidenceArray and AttestationEvidenceArrayOutput values.
 // You can construct a concrete instance of `AttestationEvidenceArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i AttestationEvidenceArray) ToAttestationEvidenceArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(AttestationEvidenceArrayOutput)
 }
 
-func (i AttestationEvidenceArray) ToOutput(ctx context.Context) pulumix.Output[[]AttestationEvidence] {
-	return pulumix.Output[[]AttestationEvidence]{
-		OutputState: i.ToAttestationEvidenceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A piece of evidence supporting the compliance state set in the attestation.
 type AttestationEvidenceOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o AttestationEvidenceOutput) ToAttestationEvidenceOutput() AttestationEvid
 
 func (o AttestationEvidenceOutput) ToAttestationEvidenceOutputWithContext(ctx context.Context) AttestationEvidenceOutput {
 	return o
-}
-
-func (o AttestationEvidenceOutput) ToOutput(ctx context.Context) pulumix.Output[AttestationEvidence] {
-	return pulumix.Output[AttestationEvidence]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description for this piece of evidence.
@@ -133,12 +114,6 @@ func (o AttestationEvidenceArrayOutput) ToAttestationEvidenceArrayOutput() Attes
 
 func (o AttestationEvidenceArrayOutput) ToAttestationEvidenceArrayOutputWithContext(ctx context.Context) AttestationEvidenceArrayOutput {
 	return o
-}
-
-func (o AttestationEvidenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AttestationEvidence] {
-	return pulumix.Output[[]AttestationEvidence]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AttestationEvidenceArrayOutput) Index(i pulumi.IntInput) AttestationEvidenceOutput {
@@ -170,12 +145,6 @@ func (o AttestationEvidenceResponseOutput) ToAttestationEvidenceResponseOutputWi
 	return o
 }
 
-func (o AttestationEvidenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AttestationEvidenceResponse] {
-	return pulumix.Output[AttestationEvidenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The description for this piece of evidence.
 func (o AttestationEvidenceResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttestationEvidenceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -198,12 +167,6 @@ func (o AttestationEvidenceResponseArrayOutput) ToAttestationEvidenceResponseArr
 
 func (o AttestationEvidenceResponseArrayOutput) ToAttestationEvidenceResponseArrayOutputWithContext(ctx context.Context) AttestationEvidenceResponseArrayOutput {
 	return o
-}
-
-func (o AttestationEvidenceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AttestationEvidenceResponse] {
-	return pulumix.Output[[]AttestationEvidenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AttestationEvidenceResponseArrayOutput) Index(i pulumi.IntInput) AttestationEvidenceResponseOutput {
@@ -241,12 +204,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

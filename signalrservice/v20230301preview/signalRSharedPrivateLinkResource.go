@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes a Shared Private Link Resource
@@ -173,12 +172,6 @@ func (i *SignalRSharedPrivateLinkResource) ToSignalRSharedPrivateLinkResourceOut
 	return pulumi.ToOutputWithContext(ctx, i).(SignalRSharedPrivateLinkResourceOutput)
 }
 
-func (i *SignalRSharedPrivateLinkResource) ToOutput(ctx context.Context) pulumix.Output[*SignalRSharedPrivateLinkResource] {
-	return pulumix.Output[*SignalRSharedPrivateLinkResource]{
-		OutputState: i.ToSignalRSharedPrivateLinkResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SignalRSharedPrivateLinkResourceOutput struct{ *pulumi.OutputState }
 
 func (SignalRSharedPrivateLinkResourceOutput) ElementType() reflect.Type {
@@ -191,12 +184,6 @@ func (o SignalRSharedPrivateLinkResourceOutput) ToSignalRSharedPrivateLinkResour
 
 func (o SignalRSharedPrivateLinkResourceOutput) ToSignalRSharedPrivateLinkResourceOutputWithContext(ctx context.Context) SignalRSharedPrivateLinkResourceOutput {
 	return o
-}
-
-func (o SignalRSharedPrivateLinkResourceOutput) ToOutput(ctx context.Context) pulumix.Output[*SignalRSharedPrivateLinkResource] {
-	return pulumix.Output[*SignalRSharedPrivateLinkResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The group id from the provider of resource the shared private link resource is for

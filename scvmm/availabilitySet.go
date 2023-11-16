@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The AvailabilitySets resource definition.
@@ -151,12 +150,6 @@ func (i *AvailabilitySet) ToAvailabilitySetOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(AvailabilitySetOutput)
 }
 
-func (i *AvailabilitySet) ToOutput(ctx context.Context) pulumix.Output[*AvailabilitySet] {
-	return pulumix.Output[*AvailabilitySet]{
-		OutputState: i.ToAvailabilitySetOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AvailabilitySetOutput struct{ *pulumi.OutputState }
 
 func (AvailabilitySetOutput) ElementType() reflect.Type {
@@ -169,12 +162,6 @@ func (o AvailabilitySetOutput) ToAvailabilitySetOutput() AvailabilitySetOutput {
 
 func (o AvailabilitySetOutput) ToAvailabilitySetOutputWithContext(ctx context.Context) AvailabilitySetOutput {
 	return o
-}
-
-func (o AvailabilitySetOutput) ToOutput(ctx context.Context) pulumix.Output[*AvailabilitySet] {
-	return pulumix.Output[*AvailabilitySet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the availability set.

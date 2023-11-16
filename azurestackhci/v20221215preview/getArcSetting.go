@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get ArcSetting resource details of HCI Cluster.
@@ -115,12 +114,6 @@ func (o LookupArcSettingResultOutput) ToLookupArcSettingResultOutput() LookupArc
 
 func (o LookupArcSettingResultOutput) ToLookupArcSettingResultOutputWithContext(ctx context.Context) LookupArcSettingResultOutput {
 	return o
-}
-
-func (o LookupArcSettingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupArcSettingResult] {
-	return pulumix.Output[LookupArcSettingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Aggregate state of Arc agent across the nodes in this HCI cluster.

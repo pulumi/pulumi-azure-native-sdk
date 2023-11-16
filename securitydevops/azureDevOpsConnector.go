@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 1.x: 2022-09-01-preview.
@@ -126,12 +125,6 @@ func (i *AzureDevOpsConnector) ToAzureDevOpsConnectorOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(AzureDevOpsConnectorOutput)
 }
 
-func (i *AzureDevOpsConnector) ToOutput(ctx context.Context) pulumix.Output[*AzureDevOpsConnector] {
-	return pulumix.Output[*AzureDevOpsConnector]{
-		OutputState: i.ToAzureDevOpsConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AzureDevOpsConnectorOutput struct{ *pulumi.OutputState }
 
 func (AzureDevOpsConnectorOutput) ElementType() reflect.Type {
@@ -144,12 +137,6 @@ func (o AzureDevOpsConnectorOutput) ToAzureDevOpsConnectorOutput() AzureDevOpsCo
 
 func (o AzureDevOpsConnectorOutput) ToAzureDevOpsConnectorOutputWithContext(ctx context.Context) AzureDevOpsConnectorOutput {
 	return o
-}
-
-func (o AzureDevOpsConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureDevOpsConnector] {
-	return pulumix.Output[*AzureDevOpsConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

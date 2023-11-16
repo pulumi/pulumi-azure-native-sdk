@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a cluster role.
@@ -128,12 +127,6 @@ func (i *Role) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoleOutput)
 }
 
-func (i *Role) ToOutput(ctx context.Context) pulumix.Output[*Role] {
-	return pulumix.Output[*Role]{
-		OutputState: i.ToRoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RoleOutput struct{ *pulumi.OutputState }
 
 func (RoleOutput) ElementType() reflect.Type {
@@ -146,12 +139,6 @@ func (o RoleOutput) ToRoleOutput() RoleOutput {
 
 func (o RoleOutput) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 	return o
-}
-
-func (o RoleOutput) ToOutput(ctx context.Context) pulumix.Output[*Role] {
-	return pulumix.Output[*Role]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

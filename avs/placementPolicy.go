@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A vSphere Distributed Resource Scheduler (DRS) placement policy
@@ -138,12 +137,6 @@ func (i *PlacementPolicy) ToPlacementPolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PlacementPolicyOutput)
 }
 
-func (i *PlacementPolicy) ToOutput(ctx context.Context) pulumix.Output[*PlacementPolicy] {
-	return pulumix.Output[*PlacementPolicy]{
-		OutputState: i.ToPlacementPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PlacementPolicyOutput struct{ *pulumi.OutputState }
 
 func (PlacementPolicyOutput) ElementType() reflect.Type {
@@ -156,12 +149,6 @@ func (o PlacementPolicyOutput) ToPlacementPolicyOutput() PlacementPolicyOutput {
 
 func (o PlacementPolicyOutput) ToPlacementPolicyOutputWithContext(ctx context.Context) PlacementPolicyOutput {
 	return o
-}
-
-func (o PlacementPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*PlacementPolicy] {
-	return pulumix.Output[*PlacementPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource name.

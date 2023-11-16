@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // MQ mqttBridgeTopicMap resource
@@ -164,12 +163,6 @@ func (i *MqttBridgeTopicMap) ToMqttBridgeTopicMapOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(MqttBridgeTopicMapOutput)
 }
 
-func (i *MqttBridgeTopicMap) ToOutput(ctx context.Context) pulumix.Output[*MqttBridgeTopicMap] {
-	return pulumix.Output[*MqttBridgeTopicMap]{
-		OutputState: i.ToMqttBridgeTopicMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MqttBridgeTopicMapOutput struct{ *pulumi.OutputState }
 
 func (MqttBridgeTopicMapOutput) ElementType() reflect.Type {
@@ -182,12 +175,6 @@ func (o MqttBridgeTopicMapOutput) ToMqttBridgeTopicMapOutput() MqttBridgeTopicMa
 
 func (o MqttBridgeTopicMapOutput) ToMqttBridgeTopicMapOutputWithContext(ctx context.Context) MqttBridgeTopicMapOutput {
 	return o
-}
-
-func (o MqttBridgeTopicMapOutput) ToOutput(ctx context.Context) pulumix.Output[*MqttBridgeTopicMap] {
-	return pulumix.Output[*MqttBridgeTopicMap]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Extended Location

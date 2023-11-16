@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Tenant configuration.
@@ -111,12 +110,6 @@ func (i *TenantConfiguration) ToTenantConfigurationOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(TenantConfigurationOutput)
 }
 
-func (i *TenantConfiguration) ToOutput(ctx context.Context) pulumix.Output[*TenantConfiguration] {
-	return pulumix.Output[*TenantConfiguration]{
-		OutputState: i.ToTenantConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TenantConfigurationOutput struct{ *pulumi.OutputState }
 
 func (TenantConfigurationOutput) ElementType() reflect.Type {
@@ -129,12 +122,6 @@ func (o TenantConfigurationOutput) ToTenantConfigurationOutput() TenantConfigura
 
 func (o TenantConfigurationOutput) ToTenantConfigurationOutputWithContext(ctx context.Context) TenantConfigurationOutput {
 	return o
-}
-
-func (o TenantConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*TenantConfiguration] {
-	return pulumix.Output[*TenantConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited.

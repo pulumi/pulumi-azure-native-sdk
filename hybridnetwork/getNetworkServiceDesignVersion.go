@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about a network service design version.
@@ -94,12 +93,6 @@ func (o LookupNetworkServiceDesignVersionResultOutput) ToLookupNetworkServiceDes
 
 func (o LookupNetworkServiceDesignVersionResultOutput) ToLookupNetworkServiceDesignVersionResultOutputWithContext(ctx context.Context) LookupNetworkServiceDesignVersionResultOutput {
 	return o
-}
-
-func (o LookupNetworkServiceDesignVersionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkServiceDesignVersionResult] {
-	return pulumix.Output[LookupNetworkServiceDesignVersionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

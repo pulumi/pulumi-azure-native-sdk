@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A custom API
@@ -133,12 +132,6 @@ func (i *CustomApi) ToCustomApiOutputWithContext(ctx context.Context) CustomApiO
 	return pulumi.ToOutputWithContext(ctx, i).(CustomApiOutput)
 }
 
-func (i *CustomApi) ToOutput(ctx context.Context) pulumix.Output[*CustomApi] {
-	return pulumix.Output[*CustomApi]{
-		OutputState: i.ToCustomApiOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CustomApiOutput struct{ *pulumi.OutputState }
 
 func (CustomApiOutput) ElementType() reflect.Type {
@@ -151,12 +144,6 @@ func (o CustomApiOutput) ToCustomApiOutput() CustomApiOutput {
 
 func (o CustomApiOutput) ToCustomApiOutputWithContext(ctx context.Context) CustomApiOutput {
 	return o
-}
-
-func (o CustomApiOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomApi] {
-	return pulumix.Output[*CustomApi]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource ETag

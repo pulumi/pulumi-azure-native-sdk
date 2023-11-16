@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the details (e.g IP address, port etc) of all the compute nodes in the compute.
@@ -82,12 +81,6 @@ func (o ListComputeNodesResultOutput) ToListComputeNodesResultOutput() ListCompu
 
 func (o ListComputeNodesResultOutput) ToListComputeNodesResultOutputWithContext(ctx context.Context) ListComputeNodesResultOutput {
 	return o
-}
-
-func (o ListComputeNodesResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListComputeNodesResult] {
-	return pulumix.Output[ListComputeNodesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The continuation token.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the application settings of a static site build.
@@ -85,12 +84,6 @@ func (o ListStaticSiteBuildFunctionAppSettingsResultOutput) ToListStaticSiteBuil
 
 func (o ListStaticSiteBuildFunctionAppSettingsResultOutput) ToListStaticSiteBuildFunctionAppSettingsResultOutputWithContext(ctx context.Context) ListStaticSiteBuildFunctionAppSettingsResultOutput {
 	return o
-}
-
-func (o ListStaticSiteBuildFunctionAppSettingsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListStaticSiteBuildFunctionAppSettingsResult] {
-	return pulumix.Output[ListStaticSiteBuildFunctionAppSettingsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Id.

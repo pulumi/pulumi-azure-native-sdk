@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i APIServerProfileArgs) ToAPIServerProfileOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(APIServerProfileOutput)
 }
 
-func (i APIServerProfileArgs) ToOutput(ctx context.Context) pulumix.Output[APIServerProfile] {
-	return pulumix.Output[APIServerProfile]{
-		OutputState: i.ToAPIServerProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i APIServerProfileArgs) ToAPIServerProfilePtrOutput() APIServerProfilePtrOutput {
 	return i.ToAPIServerProfilePtrOutputWithContext(context.Background())
 }
@@ -104,12 +97,6 @@ func (i *apiserverProfilePtrType) ToAPIServerProfilePtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(APIServerProfilePtrOutput)
 }
 
-func (i *apiserverProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*APIServerProfile] {
-	return pulumix.Output[*APIServerProfile]{
-		OutputState: i.ToAPIServerProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // APIServerProfile represents an API server profile.
 type APIServerProfileOutput struct{ *pulumi.OutputState }
 
@@ -133,12 +120,6 @@ func (o APIServerProfileOutput) ToAPIServerProfilePtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v APIServerProfile) *APIServerProfile {
 		return &v
 	}).(APIServerProfilePtrOutput)
-}
-
-func (o APIServerProfileOutput) ToOutput(ctx context.Context) pulumix.Output[APIServerProfile] {
-	return pulumix.Output[APIServerProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IP of the cluster API server.
@@ -168,12 +149,6 @@ func (o APIServerProfilePtrOutput) ToAPIServerProfilePtrOutput() APIServerProfil
 
 func (o APIServerProfilePtrOutput) ToAPIServerProfilePtrOutputWithContext(ctx context.Context) APIServerProfilePtrOutput {
 	return o
-}
-
-func (o APIServerProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*APIServerProfile] {
-	return pulumix.Output[*APIServerProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o APIServerProfilePtrOutput) Elem() APIServerProfileOutput {
@@ -241,12 +216,6 @@ func (o APIServerProfileResponseOutput) ToAPIServerProfileResponseOutputWithCont
 	return o
 }
 
-func (o APIServerProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[APIServerProfileResponse] {
-	return pulumix.Output[APIServerProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The IP of the cluster API server.
 func (o APIServerProfileResponseOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v APIServerProfileResponse) *string { return v.Ip }).(pulumi.StringPtrOutput)
@@ -274,12 +243,6 @@ func (o APIServerProfileResponsePtrOutput) ToAPIServerProfileResponsePtrOutput()
 
 func (o APIServerProfileResponsePtrOutput) ToAPIServerProfileResponsePtrOutputWithContext(ctx context.Context) APIServerProfileResponsePtrOutput {
 	return o
-}
-
-func (o APIServerProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*APIServerProfileResponse] {
-	return pulumix.Output[*APIServerProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o APIServerProfileResponsePtrOutput) Elem() APIServerProfileResponseOutput {
@@ -373,12 +336,6 @@ func (i ClusterProfileArgs) ToClusterProfileOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterProfileOutput)
 }
 
-func (i ClusterProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterProfile] {
-	return pulumix.Output[ClusterProfile]{
-		OutputState: i.ToClusterProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterProfileArgs) ToClusterProfilePtrOutput() ClusterProfilePtrOutput {
 	return i.ToClusterProfilePtrOutputWithContext(context.Background())
 }
@@ -420,12 +377,6 @@ func (i *clusterProfilePtrType) ToClusterProfilePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterProfilePtrOutput)
 }
 
-func (i *clusterProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterProfile] {
-	return pulumix.Output[*ClusterProfile]{
-		OutputState: i.ToClusterProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ClusterProfile represents a cluster profile.
 type ClusterProfileOutput struct{ *pulumi.OutputState }
 
@@ -449,12 +400,6 @@ func (o ClusterProfileOutput) ToClusterProfilePtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterProfile) *ClusterProfile {
 		return &v
 	}).(ClusterProfilePtrOutput)
-}
-
-func (o ClusterProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterProfile] {
-	return pulumix.Output[ClusterProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The domain for the cluster.
@@ -494,12 +439,6 @@ func (o ClusterProfilePtrOutput) ToClusterProfilePtrOutput() ClusterProfilePtrOu
 
 func (o ClusterProfilePtrOutput) ToClusterProfilePtrOutputWithContext(ctx context.Context) ClusterProfilePtrOutput {
 	return o
-}
-
-func (o ClusterProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterProfile] {
-	return pulumix.Output[*ClusterProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterProfilePtrOutput) Elem() ClusterProfileOutput {
@@ -591,12 +530,6 @@ func (o ClusterProfileResponseOutput) ToClusterProfileResponseOutputWithContext(
 	return o
 }
 
-func (o ClusterProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterProfileResponse] {
-	return pulumix.Output[ClusterProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The domain for the cluster.
 func (o ClusterProfileResponseOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterProfileResponse) *string { return v.Domain }).(pulumi.StringPtrOutput)
@@ -634,12 +567,6 @@ func (o ClusterProfileResponsePtrOutput) ToClusterProfileResponsePtrOutput() Clu
 
 func (o ClusterProfileResponsePtrOutput) ToClusterProfileResponsePtrOutputWithContext(ctx context.Context) ClusterProfileResponsePtrOutput {
 	return o
-}
-
-func (o ClusterProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterProfileResponse] {
-	return pulumix.Output[*ClusterProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterProfileResponsePtrOutput) Elem() ClusterProfileResponseOutput {
@@ -737,12 +664,6 @@ func (i ConsoleProfileArgs) ToConsoleProfileOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ConsoleProfileOutput)
 }
 
-func (i ConsoleProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ConsoleProfile] {
-	return pulumix.Output[ConsoleProfile]{
-		OutputState: i.ToConsoleProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConsoleProfileArgs) ToConsoleProfilePtrOutput() ConsoleProfilePtrOutput {
 	return i.ToConsoleProfilePtrOutputWithContext(context.Background())
 }
@@ -784,12 +705,6 @@ func (i *consoleProfilePtrType) ToConsoleProfilePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ConsoleProfilePtrOutput)
 }
 
-func (i *consoleProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ConsoleProfile] {
-	return pulumix.Output[*ConsoleProfile]{
-		OutputState: i.ToConsoleProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConsoleProfile represents a console profile.
 type ConsoleProfileOutput struct{ *pulumi.OutputState }
 
@@ -815,12 +730,6 @@ func (o ConsoleProfileOutput) ToConsoleProfilePtrOutputWithContext(ctx context.C
 	}).(ConsoleProfilePtrOutput)
 }
 
-func (o ConsoleProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ConsoleProfile] {
-	return pulumix.Output[ConsoleProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The URL to access the cluster console.
 func (o ConsoleProfileOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConsoleProfile) *string { return v.Url }).(pulumi.StringPtrOutput)
@@ -838,12 +747,6 @@ func (o ConsoleProfilePtrOutput) ToConsoleProfilePtrOutput() ConsoleProfilePtrOu
 
 func (o ConsoleProfilePtrOutput) ToConsoleProfilePtrOutputWithContext(ctx context.Context) ConsoleProfilePtrOutput {
 	return o
-}
-
-func (o ConsoleProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConsoleProfile] {
-	return pulumix.Output[*ConsoleProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConsoleProfilePtrOutput) Elem() ConsoleProfileOutput {
@@ -887,12 +790,6 @@ func (o ConsoleProfileResponseOutput) ToConsoleProfileResponseOutputWithContext(
 	return o
 }
 
-func (o ConsoleProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConsoleProfileResponse] {
-	return pulumix.Output[ConsoleProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The URL to access the cluster console.
 func (o ConsoleProfileResponseOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConsoleProfileResponse) *string { return v.Url }).(pulumi.StringPtrOutput)
@@ -910,12 +807,6 @@ func (o ConsoleProfileResponsePtrOutput) ToConsoleProfileResponsePtrOutput() Con
 
 func (o ConsoleProfileResponsePtrOutput) ToConsoleProfileResponsePtrOutputWithContext(ctx context.Context) ConsoleProfileResponsePtrOutput {
 	return o
-}
-
-func (o ConsoleProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConsoleProfileResponse] {
-	return pulumix.Output[*ConsoleProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConsoleProfileResponsePtrOutput) Elem() ConsoleProfileResponseOutput {
@@ -959,12 +850,6 @@ func (o EffectiveOutboundIPResponseOutput) ToEffectiveOutboundIPResponseOutputWi
 	return o
 }
 
-func (o EffectiveOutboundIPResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EffectiveOutboundIPResponse] {
-	return pulumix.Output[EffectiveOutboundIPResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The fully qualified Azure resource id of an IP address resource.
 func (o EffectiveOutboundIPResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EffectiveOutboundIPResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -982,12 +867,6 @@ func (o EffectiveOutboundIPResponseArrayOutput) ToEffectiveOutboundIPResponseArr
 
 func (o EffectiveOutboundIPResponseArrayOutput) ToEffectiveOutboundIPResponseArrayOutputWithContext(ctx context.Context) EffectiveOutboundIPResponseArrayOutput {
 	return o
-}
-
-func (o EffectiveOutboundIPResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EffectiveOutboundIPResponse] {
-	return pulumix.Output[[]EffectiveOutboundIPResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EffectiveOutboundIPResponseArrayOutput) Index(i pulumi.IntInput) EffectiveOutboundIPResponseOutput {
@@ -1039,12 +918,6 @@ func (i IngressProfileArgs) ToIngressProfileOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(IngressProfileOutput)
 }
 
-func (i IngressProfileArgs) ToOutput(ctx context.Context) pulumix.Output[IngressProfile] {
-	return pulumix.Output[IngressProfile]{
-		OutputState: i.ToIngressProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IngressProfileArrayInput is an input type that accepts IngressProfileArray and IngressProfileArrayOutput values.
 // You can construct a concrete instance of `IngressProfileArrayInput` via:
 //
@@ -1070,12 +943,6 @@ func (i IngressProfileArray) ToIngressProfileArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(IngressProfileArrayOutput)
 }
 
-func (i IngressProfileArray) ToOutput(ctx context.Context) pulumix.Output[[]IngressProfile] {
-	return pulumix.Output[[]IngressProfile]{
-		OutputState: i.ToIngressProfileArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IngressProfile represents an ingress profile.
 type IngressProfileOutput struct{ *pulumi.OutputState }
 
@@ -1089,12 +956,6 @@ func (o IngressProfileOutput) ToIngressProfileOutput() IngressProfileOutput {
 
 func (o IngressProfileOutput) ToIngressProfileOutputWithContext(ctx context.Context) IngressProfileOutput {
 	return o
-}
-
-func (o IngressProfileOutput) ToOutput(ctx context.Context) pulumix.Output[IngressProfile] {
-	return pulumix.Output[IngressProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IP of the ingress.
@@ -1124,12 +985,6 @@ func (o IngressProfileArrayOutput) ToIngressProfileArrayOutput() IngressProfileA
 
 func (o IngressProfileArrayOutput) ToIngressProfileArrayOutputWithContext(ctx context.Context) IngressProfileArrayOutput {
 	return o
-}
-
-func (o IngressProfileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IngressProfile] {
-	return pulumix.Output[[]IngressProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IngressProfileArrayOutput) Index(i pulumi.IntInput) IngressProfileOutput {
@@ -1163,12 +1018,6 @@ func (o IngressProfileResponseOutput) ToIngressProfileResponseOutputWithContext(
 	return o
 }
 
-func (o IngressProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IngressProfileResponse] {
-	return pulumix.Output[IngressProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The IP of the ingress.
 func (o IngressProfileResponseOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IngressProfileResponse) *string { return v.Ip }).(pulumi.StringPtrOutput)
@@ -1196,12 +1045,6 @@ func (o IngressProfileResponseArrayOutput) ToIngressProfileResponseArrayOutput()
 
 func (o IngressProfileResponseArrayOutput) ToIngressProfileResponseArrayOutputWithContext(ctx context.Context) IngressProfileResponseArrayOutput {
 	return o
-}
-
-func (o IngressProfileResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IngressProfileResponse] {
-	return pulumix.Output[[]IngressProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IngressProfileResponseArrayOutput) Index(i pulumi.IntInput) IngressProfileResponseOutput {
@@ -1257,12 +1100,6 @@ func (i LoadBalancerProfileArgs) ToLoadBalancerProfileOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerProfileOutput)
 }
 
-func (i LoadBalancerProfileArgs) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerProfile] {
-	return pulumix.Output[LoadBalancerProfile]{
-		OutputState: i.ToLoadBalancerProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i LoadBalancerProfileArgs) ToLoadBalancerProfilePtrOutput() LoadBalancerProfilePtrOutput {
 	return i.ToLoadBalancerProfilePtrOutputWithContext(context.Background())
 }
@@ -1304,12 +1141,6 @@ func (i *loadBalancerProfilePtrType) ToLoadBalancerProfilePtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerProfilePtrOutput)
 }
 
-func (i *loadBalancerProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerProfile] {
-	return pulumix.Output[*LoadBalancerProfile]{
-		OutputState: i.ToLoadBalancerProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LoadBalancerProfile represents the profile of the cluster public load balancer.
 type LoadBalancerProfileOutput struct{ *pulumi.OutputState }
 
@@ -1333,12 +1164,6 @@ func (o LoadBalancerProfileOutput) ToLoadBalancerProfilePtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerProfile) *LoadBalancerProfile {
 		return &v
 	}).(LoadBalancerProfilePtrOutput)
-}
-
-func (o LoadBalancerProfileOutput) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerProfile] {
-	return pulumix.Output[LoadBalancerProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The desired number of allocated SNAT ports per VM. Allowed values are in the range of 0 to 64000 (inclusive). The default value is 1024.
@@ -1373,12 +1198,6 @@ func (o LoadBalancerProfilePtrOutput) ToLoadBalancerProfilePtrOutput() LoadBalan
 
 func (o LoadBalancerProfilePtrOutput) ToLoadBalancerProfilePtrOutputWithContext(ctx context.Context) LoadBalancerProfilePtrOutput {
 	return o
-}
-
-func (o LoadBalancerProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerProfile] {
-	return pulumix.Output[*LoadBalancerProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LoadBalancerProfilePtrOutput) Elem() LoadBalancerProfileOutput {
@@ -1460,12 +1279,6 @@ func (o LoadBalancerProfileResponseOutput) ToLoadBalancerProfileResponseOutputWi
 	return o
 }
 
-func (o LoadBalancerProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerProfileResponse] {
-	return pulumix.Output[LoadBalancerProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The desired number of allocated SNAT ports per VM. Allowed values are in the range of 0 to 64000 (inclusive). The default value is 1024.
 func (o LoadBalancerProfileResponseOutput) AllocatedOutboundPorts() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LoadBalancerProfileResponse) *int { return v.AllocatedOutboundPorts }).(pulumi.IntPtrOutput)
@@ -1503,12 +1316,6 @@ func (o LoadBalancerProfileResponsePtrOutput) ToLoadBalancerProfileResponsePtrOu
 
 func (o LoadBalancerProfileResponsePtrOutput) ToLoadBalancerProfileResponsePtrOutputWithContext(ctx context.Context) LoadBalancerProfileResponsePtrOutput {
 	return o
-}
-
-func (o LoadBalancerProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerProfileResponse] {
-	return pulumix.Output[*LoadBalancerProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LoadBalancerProfileResponsePtrOutput) Elem() LoadBalancerProfileResponseOutput {
@@ -1606,12 +1413,6 @@ func (i ManagedOutboundIPsArgs) ToManagedOutboundIPsOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedOutboundIPsOutput)
 }
 
-func (i ManagedOutboundIPsArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedOutboundIPs] {
-	return pulumix.Output[ManagedOutboundIPs]{
-		OutputState: i.ToManagedOutboundIPsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedOutboundIPsArgs) ToManagedOutboundIPsPtrOutput() ManagedOutboundIPsPtrOutput {
 	return i.ToManagedOutboundIPsPtrOutputWithContext(context.Background())
 }
@@ -1653,12 +1454,6 @@ func (i *managedOutboundIPsPtrType) ToManagedOutboundIPsPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedOutboundIPsPtrOutput)
 }
 
-func (i *managedOutboundIPsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedOutboundIPs] {
-	return pulumix.Output[*ManagedOutboundIPs]{
-		OutputState: i.ToManagedOutboundIPsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ManagedOutboundIPs represents the desired managed outbound IPs for the cluster public load balancer.
 type ManagedOutboundIPsOutput struct{ *pulumi.OutputState }
 
@@ -1684,12 +1479,6 @@ func (o ManagedOutboundIPsOutput) ToManagedOutboundIPsPtrOutputWithContext(ctx c
 	}).(ManagedOutboundIPsPtrOutput)
 }
 
-func (o ManagedOutboundIPsOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedOutboundIPs] {
-	return pulumix.Output[ManagedOutboundIPs]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Count represents the desired number of IPv4 outbound IPs created and managed by Azure for the cluster public load balancer.  Allowed values are in the range of 1 - 20.  The default value is 1.
 func (o ManagedOutboundIPsOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManagedOutboundIPs) *int { return v.Count }).(pulumi.IntPtrOutput)
@@ -1707,12 +1496,6 @@ func (o ManagedOutboundIPsPtrOutput) ToManagedOutboundIPsPtrOutput() ManagedOutb
 
 func (o ManagedOutboundIPsPtrOutput) ToManagedOutboundIPsPtrOutputWithContext(ctx context.Context) ManagedOutboundIPsPtrOutput {
 	return o
-}
-
-func (o ManagedOutboundIPsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedOutboundIPs] {
-	return pulumix.Output[*ManagedOutboundIPs]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedOutboundIPsPtrOutput) Elem() ManagedOutboundIPsOutput {
@@ -1756,12 +1539,6 @@ func (o ManagedOutboundIPsResponseOutput) ToManagedOutboundIPsResponseOutputWith
 	return o
 }
 
-func (o ManagedOutboundIPsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedOutboundIPsResponse] {
-	return pulumix.Output[ManagedOutboundIPsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Count represents the desired number of IPv4 outbound IPs created and managed by Azure for the cluster public load balancer.  Allowed values are in the range of 1 - 20.  The default value is 1.
 func (o ManagedOutboundIPsResponseOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManagedOutboundIPsResponse) *int { return v.Count }).(pulumi.IntPtrOutput)
@@ -1779,12 +1556,6 @@ func (o ManagedOutboundIPsResponsePtrOutput) ToManagedOutboundIPsResponsePtrOutp
 
 func (o ManagedOutboundIPsResponsePtrOutput) ToManagedOutboundIPsResponsePtrOutputWithContext(ctx context.Context) ManagedOutboundIPsResponsePtrOutput {
 	return o
-}
-
-func (o ManagedOutboundIPsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedOutboundIPsResponse] {
-	return pulumix.Output[*ManagedOutboundIPsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedOutboundIPsResponsePtrOutput) Elem() ManagedOutboundIPsResponseOutput {
@@ -1854,12 +1625,6 @@ func (i MasterProfileArgs) ToMasterProfileOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(MasterProfileOutput)
 }
 
-func (i MasterProfileArgs) ToOutput(ctx context.Context) pulumix.Output[MasterProfile] {
-	return pulumix.Output[MasterProfile]{
-		OutputState: i.ToMasterProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MasterProfileArgs) ToMasterProfilePtrOutput() MasterProfilePtrOutput {
 	return i.ToMasterProfilePtrOutputWithContext(context.Background())
 }
@@ -1901,12 +1666,6 @@ func (i *masterProfilePtrType) ToMasterProfilePtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(MasterProfilePtrOutput)
 }
 
-func (i *masterProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*MasterProfile] {
-	return pulumix.Output[*MasterProfile]{
-		OutputState: i.ToMasterProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MasterProfile represents a master profile.
 type MasterProfileOutput struct{ *pulumi.OutputState }
 
@@ -1930,12 +1689,6 @@ func (o MasterProfileOutput) ToMasterProfilePtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MasterProfile) *MasterProfile {
 		return &v
 	}).(MasterProfilePtrOutput)
-}
-
-func (o MasterProfileOutput) ToOutput(ctx context.Context) pulumix.Output[MasterProfile] {
-	return pulumix.Output[MasterProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource ID of an associated DiskEncryptionSet, if applicable.
@@ -1970,12 +1723,6 @@ func (o MasterProfilePtrOutput) ToMasterProfilePtrOutput() MasterProfilePtrOutpu
 
 func (o MasterProfilePtrOutput) ToMasterProfilePtrOutputWithContext(ctx context.Context) MasterProfilePtrOutput {
 	return o
-}
-
-func (o MasterProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MasterProfile] {
-	return pulumix.Output[*MasterProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MasterProfilePtrOutput) Elem() MasterProfileOutput {
@@ -2055,12 +1802,6 @@ func (o MasterProfileResponseOutput) ToMasterProfileResponseOutputWithContext(ct
 	return o
 }
 
-func (o MasterProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MasterProfileResponse] {
-	return pulumix.Output[MasterProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resource ID of an associated DiskEncryptionSet, if applicable.
 func (o MasterProfileResponseOutput) DiskEncryptionSetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MasterProfileResponse) *string { return v.DiskEncryptionSetId }).(pulumi.StringPtrOutput)
@@ -2093,12 +1834,6 @@ func (o MasterProfileResponsePtrOutput) ToMasterProfileResponsePtrOutput() Maste
 
 func (o MasterProfileResponsePtrOutput) ToMasterProfileResponsePtrOutputWithContext(ctx context.Context) MasterProfileResponsePtrOutput {
 	return o
-}
-
-func (o MasterProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MasterProfileResponse] {
-	return pulumix.Output[*MasterProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MasterProfileResponsePtrOutput) Elem() MasterProfileResponseOutput {
@@ -2198,12 +1933,6 @@ func (i NetworkProfileArgs) ToNetworkProfileOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkProfileOutput)
 }
 
-func (i NetworkProfileArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkProfile] {
-	return pulumix.Output[NetworkProfile]{
-		OutputState: i.ToNetworkProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i NetworkProfileArgs) ToNetworkProfilePtrOutput() NetworkProfilePtrOutput {
 	return i.ToNetworkProfilePtrOutputWithContext(context.Background())
 }
@@ -2245,12 +1974,6 @@ func (i *networkProfilePtrType) ToNetworkProfilePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkProfilePtrOutput)
 }
 
-func (i *networkProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*NetworkProfile] {
-	return pulumix.Output[*NetworkProfile]{
-		OutputState: i.ToNetworkProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NetworkProfile represents a network profile.
 type NetworkProfileOutput struct{ *pulumi.OutputState }
 
@@ -2274,12 +1997,6 @@ func (o NetworkProfileOutput) ToNetworkProfilePtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkProfile) *NetworkProfile {
 		return &v
 	}).(NetworkProfilePtrOutput)
-}
-
-func (o NetworkProfileOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkProfile] {
-	return pulumix.Output[NetworkProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The cluster load balancer profile.
@@ -2314,12 +2031,6 @@ func (o NetworkProfilePtrOutput) ToNetworkProfilePtrOutput() NetworkProfilePtrOu
 
 func (o NetworkProfilePtrOutput) ToNetworkProfilePtrOutputWithContext(ctx context.Context) NetworkProfilePtrOutput {
 	return o
-}
-
-func (o NetworkProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkProfile] {
-	return pulumix.Output[*NetworkProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkProfilePtrOutput) Elem() NetworkProfileOutput {
@@ -2399,12 +2110,6 @@ func (o NetworkProfileResponseOutput) ToNetworkProfileResponseOutputWithContext(
 	return o
 }
 
-func (o NetworkProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkProfileResponse] {
-	return pulumix.Output[NetworkProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The cluster load balancer profile.
 func (o NetworkProfileResponseOutput) LoadBalancerProfile() LoadBalancerProfileResponsePtrOutput {
 	return o.ApplyT(func(v NetworkProfileResponse) *LoadBalancerProfileResponse { return v.LoadBalancerProfile }).(LoadBalancerProfileResponsePtrOutput)
@@ -2437,12 +2142,6 @@ func (o NetworkProfileResponsePtrOutput) ToNetworkProfileResponsePtrOutput() Net
 
 func (o NetworkProfileResponsePtrOutput) ToNetworkProfileResponsePtrOutputWithContext(ctx context.Context) NetworkProfileResponsePtrOutput {
 	return o
-}
-
-func (o NetworkProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkProfileResponse] {
-	return pulumix.Output[*NetworkProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkProfileResponsePtrOutput) Elem() NetworkProfileResponseOutput {
@@ -2530,12 +2229,6 @@ func (i OutboundIPArgs) ToOutboundIPOutputWithContext(ctx context.Context) Outbo
 	return pulumi.ToOutputWithContext(ctx, i).(OutboundIPOutput)
 }
 
-func (i OutboundIPArgs) ToOutput(ctx context.Context) pulumix.Output[OutboundIP] {
-	return pulumix.Output[OutboundIP]{
-		OutputState: i.ToOutboundIPOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OutboundIPArrayInput is an input type that accepts OutboundIPArray and OutboundIPArrayOutput values.
 // You can construct a concrete instance of `OutboundIPArrayInput` via:
 //
@@ -2561,12 +2254,6 @@ func (i OutboundIPArray) ToOutboundIPArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(OutboundIPArrayOutput)
 }
 
-func (i OutboundIPArray) ToOutput(ctx context.Context) pulumix.Output[[]OutboundIP] {
-	return pulumix.Output[[]OutboundIP]{
-		OutputState: i.ToOutboundIPArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OutboundIP represents a desired outbound IP resource for the cluster load balancer.
 type OutboundIPOutput struct{ *pulumi.OutputState }
 
@@ -2580,12 +2267,6 @@ func (o OutboundIPOutput) ToOutboundIPOutput() OutboundIPOutput {
 
 func (o OutboundIPOutput) ToOutboundIPOutputWithContext(ctx context.Context) OutboundIPOutput {
 	return o
-}
-
-func (o OutboundIPOutput) ToOutput(ctx context.Context) pulumix.Output[OutboundIP] {
-	return pulumix.Output[OutboundIP]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The fully qualified Azure resource id of the IP address resource.
@@ -2605,12 +2286,6 @@ func (o OutboundIPArrayOutput) ToOutboundIPArrayOutput() OutboundIPArrayOutput {
 
 func (o OutboundIPArrayOutput) ToOutboundIPArrayOutputWithContext(ctx context.Context) OutboundIPArrayOutput {
 	return o
-}
-
-func (o OutboundIPArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OutboundIP] {
-	return pulumix.Output[[]OutboundIP]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OutboundIPArrayOutput) Index(i pulumi.IntInput) OutboundIPOutput {
@@ -2654,12 +2329,6 @@ func (i OutboundIPPrefixArgs) ToOutboundIPPrefixOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(OutboundIPPrefixOutput)
 }
 
-func (i OutboundIPPrefixArgs) ToOutput(ctx context.Context) pulumix.Output[OutboundIPPrefix] {
-	return pulumix.Output[OutboundIPPrefix]{
-		OutputState: i.ToOutboundIPPrefixOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OutboundIPPrefixArrayInput is an input type that accepts OutboundIPPrefixArray and OutboundIPPrefixArrayOutput values.
 // You can construct a concrete instance of `OutboundIPPrefixArrayInput` via:
 //
@@ -2685,12 +2354,6 @@ func (i OutboundIPPrefixArray) ToOutboundIPPrefixArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(OutboundIPPrefixArrayOutput)
 }
 
-func (i OutboundIPPrefixArray) ToOutput(ctx context.Context) pulumix.Output[[]OutboundIPPrefix] {
-	return pulumix.Output[[]OutboundIPPrefix]{
-		OutputState: i.ToOutboundIPPrefixArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OutboundIPPrefix represents a desired outbound IP Prefix resource for the cluster load balancer.
 type OutboundIPPrefixOutput struct{ *pulumi.OutputState }
 
@@ -2704,12 +2367,6 @@ func (o OutboundIPPrefixOutput) ToOutboundIPPrefixOutput() OutboundIPPrefixOutpu
 
 func (o OutboundIPPrefixOutput) ToOutboundIPPrefixOutputWithContext(ctx context.Context) OutboundIPPrefixOutput {
 	return o
-}
-
-func (o OutboundIPPrefixOutput) ToOutput(ctx context.Context) pulumix.Output[OutboundIPPrefix] {
-	return pulumix.Output[OutboundIPPrefix]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The fully qualified Azure resource id of an IP Prefix resource.
@@ -2729,12 +2386,6 @@ func (o OutboundIPPrefixArrayOutput) ToOutboundIPPrefixArrayOutput() OutboundIPP
 
 func (o OutboundIPPrefixArrayOutput) ToOutboundIPPrefixArrayOutputWithContext(ctx context.Context) OutboundIPPrefixArrayOutput {
 	return o
-}
-
-func (o OutboundIPPrefixArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OutboundIPPrefix] {
-	return pulumix.Output[[]OutboundIPPrefix]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OutboundIPPrefixArrayOutput) Index(i pulumi.IntInput) OutboundIPPrefixOutput {
@@ -2764,12 +2415,6 @@ func (o OutboundIPPrefixResponseOutput) ToOutboundIPPrefixResponseOutputWithCont
 	return o
 }
 
-func (o OutboundIPPrefixResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OutboundIPPrefixResponse] {
-	return pulumix.Output[OutboundIPPrefixResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The fully qualified Azure resource id of an IP Prefix resource.
 func (o OutboundIPPrefixResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OutboundIPPrefixResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -2787,12 +2432,6 @@ func (o OutboundIPPrefixResponseArrayOutput) ToOutboundIPPrefixResponseArrayOutp
 
 func (o OutboundIPPrefixResponseArrayOutput) ToOutboundIPPrefixResponseArrayOutputWithContext(ctx context.Context) OutboundIPPrefixResponseArrayOutput {
 	return o
-}
-
-func (o OutboundIPPrefixResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OutboundIPPrefixResponse] {
-	return pulumix.Output[[]OutboundIPPrefixResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OutboundIPPrefixResponseArrayOutput) Index(i pulumi.IntInput) OutboundIPPrefixResponseOutput {
@@ -2822,12 +2461,6 @@ func (o OutboundIPResponseOutput) ToOutboundIPResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o OutboundIPResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OutboundIPResponse] {
-	return pulumix.Output[OutboundIPResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The fully qualified Azure resource id of the IP address resource.
 func (o OutboundIPResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OutboundIPResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -2845,12 +2478,6 @@ func (o OutboundIPResponseArrayOutput) ToOutboundIPResponseArrayOutput() Outboun
 
 func (o OutboundIPResponseArrayOutput) ToOutboundIPResponseArrayOutputWithContext(ctx context.Context) OutboundIPResponseArrayOutput {
 	return o
-}
-
-func (o OutboundIPResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OutboundIPResponse] {
-	return pulumix.Output[[]OutboundIPResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OutboundIPResponseArrayOutput) Index(i pulumi.IntInput) OutboundIPResponseOutput {
@@ -2898,12 +2525,6 @@ func (i ServicePrincipalProfileArgs) ToServicePrincipalProfileOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalProfileOutput)
 }
 
-func (i ServicePrincipalProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePrincipalProfile] {
-	return pulumix.Output[ServicePrincipalProfile]{
-		OutputState: i.ToServicePrincipalProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePrincipalProfileArgs) ToServicePrincipalProfilePtrOutput() ServicePrincipalProfilePtrOutput {
 	return i.ToServicePrincipalProfilePtrOutputWithContext(context.Background())
 }
@@ -2945,12 +2566,6 @@ func (i *servicePrincipalProfilePtrType) ToServicePrincipalProfilePtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalProfilePtrOutput)
 }
 
-func (i *servicePrincipalProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalProfile] {
-	return pulumix.Output[*ServicePrincipalProfile]{
-		OutputState: i.ToServicePrincipalProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServicePrincipalProfile represents a service principal profile.
 type ServicePrincipalProfileOutput struct{ *pulumi.OutputState }
 
@@ -2976,12 +2591,6 @@ func (o ServicePrincipalProfileOutput) ToServicePrincipalProfilePtrOutputWithCon
 	}).(ServicePrincipalProfilePtrOutput)
 }
 
-func (o ServicePrincipalProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePrincipalProfile] {
-	return pulumix.Output[ServicePrincipalProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The client ID used for the cluster.
 func (o ServicePrincipalProfileOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalProfile) *string { return v.ClientId }).(pulumi.StringPtrOutput)
@@ -3004,12 +2613,6 @@ func (o ServicePrincipalProfilePtrOutput) ToServicePrincipalProfilePtrOutput() S
 
 func (o ServicePrincipalProfilePtrOutput) ToServicePrincipalProfilePtrOutputWithContext(ctx context.Context) ServicePrincipalProfilePtrOutput {
 	return o
-}
-
-func (o ServicePrincipalProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalProfile] {
-	return pulumix.Output[*ServicePrincipalProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePrincipalProfilePtrOutput) Elem() ServicePrincipalProfileOutput {
@@ -3065,12 +2668,6 @@ func (o ServicePrincipalProfileResponseOutput) ToServicePrincipalProfileResponse
 	return o
 }
 
-func (o ServicePrincipalProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePrincipalProfileResponse] {
-	return pulumix.Output[ServicePrincipalProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The client ID used for the cluster.
 func (o ServicePrincipalProfileResponseOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalProfileResponse) *string { return v.ClientId }).(pulumi.StringPtrOutput)
@@ -3093,12 +2690,6 @@ func (o ServicePrincipalProfileResponsePtrOutput) ToServicePrincipalProfileRespo
 
 func (o ServicePrincipalProfileResponsePtrOutput) ToServicePrincipalProfileResponsePtrOutputWithContext(ctx context.Context) ServicePrincipalProfileResponsePtrOutput {
 	return o
-}
-
-func (o ServicePrincipalProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalProfileResponse] {
-	return pulumix.Output[*ServicePrincipalProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePrincipalProfileResponsePtrOutput) Elem() ServicePrincipalProfileResponseOutput {
@@ -3160,12 +2751,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -3257,12 +2842,6 @@ func (i WorkerProfileArgs) ToWorkerProfileOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerProfileOutput)
 }
 
-func (i WorkerProfileArgs) ToOutput(ctx context.Context) pulumix.Output[WorkerProfile] {
-	return pulumix.Output[WorkerProfile]{
-		OutputState: i.ToWorkerProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkerProfileArrayInput is an input type that accepts WorkerProfileArray and WorkerProfileArrayOutput values.
 // You can construct a concrete instance of `WorkerProfileArrayInput` via:
 //
@@ -3288,12 +2867,6 @@ func (i WorkerProfileArray) ToWorkerProfileArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerProfileArrayOutput)
 }
 
-func (i WorkerProfileArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkerProfile] {
-	return pulumix.Output[[]WorkerProfile]{
-		OutputState: i.ToWorkerProfileArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkerProfile represents a worker profile.
 type WorkerProfileOutput struct{ *pulumi.OutputState }
 
@@ -3307,12 +2880,6 @@ func (o WorkerProfileOutput) ToWorkerProfileOutput() WorkerProfileOutput {
 
 func (o WorkerProfileOutput) ToWorkerProfileOutputWithContext(ctx context.Context) WorkerProfileOutput {
 	return o
-}
-
-func (o WorkerProfileOutput) ToOutput(ctx context.Context) pulumix.Output[WorkerProfile] {
-	return pulumix.Output[WorkerProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of worker VMs.
@@ -3364,12 +2931,6 @@ func (o WorkerProfileArrayOutput) ToWorkerProfileArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o WorkerProfileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkerProfile] {
-	return pulumix.Output[[]WorkerProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkerProfileArrayOutput) Index(i pulumi.IntInput) WorkerProfileOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerProfile {
 		return vs[0].([]WorkerProfile)[vs[1].(int)]
@@ -3407,12 +2968,6 @@ func (o WorkerProfileResponseOutput) ToWorkerProfileResponseOutput() WorkerProfi
 
 func (o WorkerProfileResponseOutput) ToWorkerProfileResponseOutputWithContext(ctx context.Context) WorkerProfileResponseOutput {
 	return o
-}
-
-func (o WorkerProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkerProfileResponse] {
-	return pulumix.Output[WorkerProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of worker VMs.
@@ -3462,12 +3017,6 @@ func (o WorkerProfileResponseArrayOutput) ToWorkerProfileResponseArrayOutput() W
 
 func (o WorkerProfileResponseArrayOutput) ToWorkerProfileResponseArrayOutputWithContext(ctx context.Context) WorkerProfileResponseArrayOutput {
 	return o
-}
-
-func (o WorkerProfileResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkerProfileResponse] {
-	return pulumix.Output[[]WorkerProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkerProfileResponseArrayOutput) Index(i pulumi.IntInput) WorkerProfileResponseOutput {

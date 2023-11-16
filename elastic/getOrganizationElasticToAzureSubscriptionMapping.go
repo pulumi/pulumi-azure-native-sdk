@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get Elastic Organization To Azure Subscription Mapping details for the logged-in user.
@@ -68,12 +67,6 @@ func (o GetOrganizationElasticToAzureSubscriptionMappingResultOutput) ToGetOrgan
 
 func (o GetOrganizationElasticToAzureSubscriptionMappingResultOutput) ToGetOrganizationElasticToAzureSubscriptionMappingResultOutputWithContext(ctx context.Context) GetOrganizationElasticToAzureSubscriptionMappingResultOutput {
 	return o
-}
-
-func (o GetOrganizationElasticToAzureSubscriptionMappingResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetOrganizationElasticToAzureSubscriptionMappingResult] {
-	return pulumix.Output[GetOrganizationElasticToAzureSubscriptionMappingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The properties of Azure Subscription ID to which the Organization of the logged in user belongs and gets billed into.

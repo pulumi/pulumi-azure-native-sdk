@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The profile resource format.
@@ -216,12 +215,6 @@ func (i *Profile) ToProfileOutputWithContext(ctx context.Context) ProfileOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ProfileOutput)
 }
 
-func (i *Profile) ToOutput(ctx context.Context) pulumix.Output[*Profile] {
-	return pulumix.Output[*Profile]{
-		OutputState: i.ToProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProfileOutput struct{ *pulumi.OutputState }
 
 func (ProfileOutput) ElementType() reflect.Type {
@@ -234,12 +227,6 @@ func (o ProfileOutput) ToProfileOutput() ProfileOutput {
 
 func (o ProfileOutput) ToProfileOutputWithContext(ctx context.Context) ProfileOutput {
 	return o
-}
-
-func (o ProfileOutput) ToOutput(ctx context.Context) pulumix.Output[*Profile] {
-	return pulumix.Output[*Profile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The api entity set name. This becomes the odata entity set name for the entity Type being referred in this object.

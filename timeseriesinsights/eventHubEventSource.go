@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An event source that receives its data from an Azure EventHub.
@@ -235,12 +234,6 @@ func (i *EventHubEventSource) ToEventHubEventSourceOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(EventHubEventSourceOutput)
 }
 
-func (i *EventHubEventSource) ToOutput(ctx context.Context) pulumix.Output[*EventHubEventSource] {
-	return pulumix.Output[*EventHubEventSource]{
-		OutputState: i.ToEventHubEventSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EventHubEventSourceOutput struct{ *pulumi.OutputState }
 
 func (EventHubEventSourceOutput) ElementType() reflect.Type {
@@ -253,12 +246,6 @@ func (o EventHubEventSourceOutput) ToEventHubEventSourceOutput() EventHubEventSo
 
 func (o EventHubEventSourceOutput) ToEventHubEventSourceOutputWithContext(ctx context.Context) EventHubEventSourceOutput {
 	return o
-}
-
-func (o EventHubEventSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*EventHubEventSource] {
-	return pulumix.Output[*EventHubEventSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the event hub's consumer group that holds the partitions from which events will be read.

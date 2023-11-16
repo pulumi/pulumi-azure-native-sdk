@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve a Prometheus rule group definition.
@@ -96,12 +95,6 @@ func (o LookupPrometheusRuleGroupResultOutput) ToLookupPrometheusRuleGroupResult
 
 func (o LookupPrometheusRuleGroupResultOutput) ToLookupPrometheusRuleGroupResultOutputWithContext(ctx context.Context) LookupPrometheusRuleGroupResultOutput {
 	return o
-}
-
-func (o LookupPrometheusRuleGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrometheusRuleGroupResult] {
-	return pulumix.Output[LookupPrometheusRuleGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Apply rule to data from a specific cluster.

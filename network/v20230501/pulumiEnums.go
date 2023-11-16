@@ -1000,12 +1000,6 @@ func (o PacketCaptureTargetTypeOutput) ToPacketCaptureTargetTypePtrOutputWithCon
 	}).(PacketCaptureTargetTypePtrOutput)
 }
 
-func (o PacketCaptureTargetTypeOutput) ToOutput(ctx context.Context) pulumix.Output[PacketCaptureTargetType] {
-	return pulumix.Output[PacketCaptureTargetType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PacketCaptureTargetTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1039,12 +1033,6 @@ func (o PacketCaptureTargetTypePtrOutput) ToPacketCaptureTargetTypePtrOutput() P
 
 func (o PacketCaptureTargetTypePtrOutput) ToPacketCaptureTargetTypePtrOutputWithContext(ctx context.Context) PacketCaptureTargetTypePtrOutput {
 	return o
-}
-
-func (o PacketCaptureTargetTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PacketCaptureTargetType] {
-	return pulumix.Output[*PacketCaptureTargetType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PacketCaptureTargetTypePtrOutput) Elem() PacketCaptureTargetTypeOutput {
@@ -1292,12 +1280,6 @@ func (o PublicIpAddressDnsSettingsDomainNameLabelScopeOutput) ToPublicIpAddressD
 	}).(PublicIpAddressDnsSettingsDomainNameLabelScopePtrOutput)
 }
 
-func (o PublicIpAddressDnsSettingsDomainNameLabelScopeOutput) ToOutput(ctx context.Context) pulumix.Output[PublicIpAddressDnsSettingsDomainNameLabelScope] {
-	return pulumix.Output[PublicIpAddressDnsSettingsDomainNameLabelScope]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PublicIpAddressDnsSettingsDomainNameLabelScopeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1331,12 +1313,6 @@ func (o PublicIpAddressDnsSettingsDomainNameLabelScopePtrOutput) ToPublicIpAddre
 
 func (o PublicIpAddressDnsSettingsDomainNameLabelScopePtrOutput) ToPublicIpAddressDnsSettingsDomainNameLabelScopePtrOutputWithContext(ctx context.Context) PublicIpAddressDnsSettingsDomainNameLabelScopePtrOutput {
 	return o
-}
-
-func (o PublicIpAddressDnsSettingsDomainNameLabelScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PublicIpAddressDnsSettingsDomainNameLabelScope] {
-	return pulumix.Output[*PublicIpAddressDnsSettingsDomainNameLabelScope]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PublicIpAddressDnsSettingsDomainNameLabelScopePtrOutput) Elem() PublicIpAddressDnsSettingsDomainNameLabelScopeOutput {
@@ -1477,12 +1453,6 @@ func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(c
 	}).(ResourceIdentityTypePtrOutput)
 }
 
-func (o ResourceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityType] {
-	return pulumix.Output[ResourceIdentityType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1516,12 +1486,6 @@ func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() Resourc
 
 func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return o
-}
-
-func (o ResourceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {

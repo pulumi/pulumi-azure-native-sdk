@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the properties of an App Service Environment.
@@ -161,12 +160,6 @@ func (o LookupAppServiceEnvironmentResultOutput) ToLookupAppServiceEnvironmentRe
 
 func (o LookupAppServiceEnvironmentResultOutput) ToLookupAppServiceEnvironmentResultOutputWithContext(ctx context.Context) LookupAppServiceEnvironmentResultOutput {
 	return o
-}
-
-func (o LookupAppServiceEnvironmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAppServiceEnvironmentResult] {
-	return pulumix.Output[LookupAppServiceEnvironmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of comma separated strings describing which VM sizes are allowed for front-ends.

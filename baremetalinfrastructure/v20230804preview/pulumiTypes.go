@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i StorageBillingPropertiesArgs) ToStorageBillingPropertiesOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(StorageBillingPropertiesOutput)
 }
 
-func (i StorageBillingPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[StorageBillingProperties] {
-	return pulumix.Output[StorageBillingProperties]{
-		OutputState: i.ToStorageBillingPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StorageBillingPropertiesArgs) ToStorageBillingPropertiesPtrOutput() StorageBillingPropertiesPtrOutput {
 	return i.ToStorageBillingPropertiesPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *storageBillingPropertiesPtrType) ToStorageBillingPropertiesPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(StorageBillingPropertiesPtrOutput)
 }
 
-func (i *storageBillingPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*StorageBillingProperties] {
-	return pulumix.Output[*StorageBillingProperties]{
-		OutputState: i.ToStorageBillingPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes the billing related details of the AzureBareMetalStorageInstance.
 type StorageBillingPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o StorageBillingPropertiesOutput) ToStorageBillingPropertiesPtrOutputWithC
 	}).(StorageBillingPropertiesPtrOutput)
 }
 
-func (o StorageBillingPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[StorageBillingProperties] {
-	return pulumix.Output[StorageBillingProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // the SKU type that is provisioned
 func (o StorageBillingPropertiesOutput) AzureBareMetalStorageInstanceSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageBillingProperties) *string { return v.AzureBareMetalStorageInstanceSize }).(pulumi.StringPtrOutput)
@@ -159,12 +140,6 @@ func (o StorageBillingPropertiesPtrOutput) ToStorageBillingPropertiesPtrOutput()
 
 func (o StorageBillingPropertiesPtrOutput) ToStorageBillingPropertiesPtrOutputWithContext(ctx context.Context) StorageBillingPropertiesPtrOutput {
 	return o
-}
-
-func (o StorageBillingPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageBillingProperties] {
-	return pulumix.Output[*StorageBillingProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StorageBillingPropertiesPtrOutput) Elem() StorageBillingPropertiesOutput {
@@ -220,12 +195,6 @@ func (o StorageBillingPropertiesResponseOutput) ToStorageBillingPropertiesRespon
 	return o
 }
 
-func (o StorageBillingPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageBillingPropertiesResponse] {
-	return pulumix.Output[StorageBillingPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // the SKU type that is provisioned
 func (o StorageBillingPropertiesResponseOutput) AzureBareMetalStorageInstanceSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageBillingPropertiesResponse) *string { return v.AzureBareMetalStorageInstanceSize }).(pulumi.StringPtrOutput)
@@ -248,12 +217,6 @@ func (o StorageBillingPropertiesResponsePtrOutput) ToStorageBillingPropertiesRes
 
 func (o StorageBillingPropertiesResponsePtrOutput) ToStorageBillingPropertiesResponsePtrOutputWithContext(ctx context.Context) StorageBillingPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o StorageBillingPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageBillingPropertiesResponse] {
-	return pulumix.Output[*StorageBillingPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StorageBillingPropertiesResponsePtrOutput) Elem() StorageBillingPropertiesResponseOutput {
@@ -345,12 +308,6 @@ func (i StoragePropertiesArgs) ToStoragePropertiesOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(StoragePropertiesOutput)
 }
 
-func (i StoragePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[StorageProperties] {
-	return pulumix.Output[StorageProperties]{
-		OutputState: i.ToStoragePropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StoragePropertiesArgs) ToStoragePropertiesPtrOutput() StoragePropertiesPtrOutput {
 	return i.ToStoragePropertiesPtrOutputWithContext(context.Background())
 }
@@ -392,12 +349,6 @@ func (i *storagePropertiesPtrType) ToStoragePropertiesPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(StoragePropertiesPtrOutput)
 }
 
-func (i *storagePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*StorageProperties] {
-	return pulumix.Output[*StorageProperties]{
-		OutputState: i.ToStoragePropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // described the storage properties of the azure bare metal storage instance
 type StoragePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -421,12 +372,6 @@ func (o StoragePropertiesOutput) ToStoragePropertiesPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageProperties) *StorageProperties {
 		return &v
 	}).(StoragePropertiesPtrOutput)
-}
-
-func (o StoragePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[StorageProperties] {
-	return pulumix.Output[StorageProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // the kind of storage instance
@@ -476,12 +421,6 @@ func (o StoragePropertiesPtrOutput) ToStoragePropertiesPtrOutput() StorageProper
 
 func (o StoragePropertiesPtrOutput) ToStoragePropertiesPtrOutputWithContext(ctx context.Context) StoragePropertiesPtrOutput {
 	return o
-}
-
-func (o StoragePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageProperties] {
-	return pulumix.Output[*StorageProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StoragePropertiesPtrOutput) Elem() StoragePropertiesOutput {
@@ -597,12 +536,6 @@ func (o StoragePropertiesResponseOutput) ToStoragePropertiesResponseOutputWithCo
 	return o
 }
 
-func (o StoragePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StoragePropertiesResponse] {
-	return pulumix.Output[StoragePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // the kind of storage instance
 func (o StoragePropertiesResponseOutput) Generation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StoragePropertiesResponse) *string { return v.Generation }).(pulumi.StringPtrOutput)
@@ -650,12 +583,6 @@ func (o StoragePropertiesResponsePtrOutput) ToStoragePropertiesResponsePtrOutput
 
 func (o StoragePropertiesResponsePtrOutput) ToStoragePropertiesResponsePtrOutputWithContext(ctx context.Context) StoragePropertiesResponsePtrOutput {
 	return o
-}
-
-func (o StoragePropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StoragePropertiesResponse] {
-	return pulumix.Output[*StoragePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StoragePropertiesResponsePtrOutput) Elem() StoragePropertiesResponseOutput {
@@ -767,12 +694,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

@@ -111,12 +111,6 @@ func (o ClientCredentialMethodOutput) ToClientCredentialMethodPtrOutputWithConte
 	}).(ClientCredentialMethodPtrOutput)
 }
 
-func (o ClientCredentialMethodOutput) ToOutput(ctx context.Context) pulumix.Output[ClientCredentialMethod] {
-	return pulumix.Output[ClientCredentialMethod]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ClientCredentialMethodOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -150,12 +144,6 @@ func (o ClientCredentialMethodPtrOutput) ToClientCredentialMethodPtrOutput() Cli
 
 func (o ClientCredentialMethodPtrOutput) ToClientCredentialMethodPtrOutputWithContext(ctx context.Context) ClientCredentialMethodPtrOutput {
 	return o
-}
-
-func (o ClientCredentialMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientCredentialMethod] {
-	return pulumix.Output[*ClientCredentialMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClientCredentialMethodPtrOutput) Elem() ClientCredentialMethodOutput {
@@ -294,12 +282,6 @@ func (o CookieExpirationConventionOutput) ToCookieExpirationConventionPtrOutputW
 	}).(CookieExpirationConventionPtrOutput)
 }
 
-func (o CookieExpirationConventionOutput) ToOutput(ctx context.Context) pulumix.Output[CookieExpirationConvention] {
-	return pulumix.Output[CookieExpirationConvention]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CookieExpirationConventionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -333,12 +315,6 @@ func (o CookieExpirationConventionPtrOutput) ToCookieExpirationConventionPtrOutp
 
 func (o CookieExpirationConventionPtrOutput) ToCookieExpirationConventionPtrOutputWithContext(ctx context.Context) CookieExpirationConventionPtrOutput {
 	return o
-}
-
-func (o CookieExpirationConventionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CookieExpirationConvention] {
-	return pulumix.Output[*CookieExpirationConvention]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CookieExpirationConventionPtrOutput) Elem() CookieExpirationConventionOutput {
@@ -478,12 +454,6 @@ func (o ForwardProxyConventionOutput) ToForwardProxyConventionPtrOutputWithConte
 	}).(ForwardProxyConventionPtrOutput)
 }
 
-func (o ForwardProxyConventionOutput) ToOutput(ctx context.Context) pulumix.Output[ForwardProxyConvention] {
-	return pulumix.Output[ForwardProxyConvention]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ForwardProxyConventionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -517,12 +487,6 @@ func (o ForwardProxyConventionPtrOutput) ToForwardProxyConventionPtrOutput() For
 
 func (o ForwardProxyConventionPtrOutput) ToForwardProxyConventionPtrOutputWithContext(ctx context.Context) ForwardProxyConventionPtrOutput {
 	return o
-}
-
-func (o ForwardProxyConventionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ForwardProxyConvention] {
-	return pulumix.Output[*ForwardProxyConvention]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ForwardProxyConventionPtrOutput) Elem() ForwardProxyConventionOutput {
@@ -707,12 +671,6 @@ func (o UnauthenticatedClientActionV2Output) ToUnauthenticatedClientActionV2PtrO
 	}).(UnauthenticatedClientActionV2PtrOutput)
 }
 
-func (o UnauthenticatedClientActionV2Output) ToOutput(ctx context.Context) pulumix.Output[UnauthenticatedClientActionV2] {
-	return pulumix.Output[UnauthenticatedClientActionV2]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UnauthenticatedClientActionV2Output) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -746,12 +704,6 @@ func (o UnauthenticatedClientActionV2PtrOutput) ToUnauthenticatedClientActionV2P
 
 func (o UnauthenticatedClientActionV2PtrOutput) ToUnauthenticatedClientActionV2PtrOutputWithContext(ctx context.Context) UnauthenticatedClientActionV2PtrOutput {
 	return o
-}
-
-func (o UnauthenticatedClientActionV2PtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UnauthenticatedClientActionV2] {
-	return pulumix.Output[*UnauthenticatedClientActionV2]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UnauthenticatedClientActionV2PtrOutput) Elem() UnauthenticatedClientActionV2Output {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a backup instance with name in a backup vault
@@ -87,12 +86,6 @@ func (o LookupBackupInstanceResultOutput) ToLookupBackupInstanceResultOutput() L
 
 func (o LookupBackupInstanceResultOutput) ToLookupBackupInstanceResultOutputWithContext(ctx context.Context) LookupBackupInstanceResultOutput {
 	return o
-}
-
-func (o LookupBackupInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBackupInstanceResult] {
-	return pulumix.Output[LookupBackupInstanceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Proxy Resource Id represents the complete path to the resource.

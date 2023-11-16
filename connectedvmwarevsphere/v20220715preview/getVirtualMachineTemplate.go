@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Implements virtual machine template GET method.
@@ -127,12 +126,6 @@ func (o LookupVirtualMachineTemplateResultOutput) ToLookupVirtualMachineTemplate
 
 func (o LookupVirtualMachineTemplateResultOutput) ToLookupVirtualMachineTemplateResultOutputWithContext(ctx context.Context) LookupVirtualMachineTemplateResultOutput {
 	return o
-}
-
-func (o LookupVirtualMachineTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVirtualMachineTemplateResult] {
-	return pulumix.Output[LookupVirtualMachineTemplateResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the name of the corresponding resource in Kubernetes.

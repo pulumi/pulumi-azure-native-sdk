@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a change data capture.
@@ -98,12 +97,6 @@ func (o LookupChangeDataCaptureResultOutput) ToLookupChangeDataCaptureResultOutp
 
 func (o LookupChangeDataCaptureResultOutput) ToLookupChangeDataCaptureResultOutputWithContext(ctx context.Context) LookupChangeDataCaptureResultOutput {
 	return o
-}
-
-func (o LookupChangeDataCaptureResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupChangeDataCaptureResult] {
-	return pulumix.Output[LookupChangeDataCaptureResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A boolean to determine if the vnet configuration needs to be overwritten.

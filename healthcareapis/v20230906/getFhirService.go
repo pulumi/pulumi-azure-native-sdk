@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties of the specified FHIR Service.
@@ -115,12 +114,6 @@ func (o LookupFhirServiceResultOutput) ToLookupFhirServiceResultOutput() LookupF
 
 func (o LookupFhirServiceResultOutput) ToLookupFhirServiceResultOutputWithContext(ctx context.Context) LookupFhirServiceResultOutput {
 	return o
-}
-
-func (o LookupFhirServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFhirServiceResult] {
-	return pulumix.Output[LookupFhirServiceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fhir Service Azure container registry configuration.

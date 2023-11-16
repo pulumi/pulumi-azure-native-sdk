@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about the specified SIM policy.
@@ -117,12 +116,6 @@ func (o LookupSimPolicyResultOutput) ToLookupSimPolicyResultOutput() LookupSimPo
 
 func (o LookupSimPolicyResultOutput) ToLookupSimPolicyResultOutputWithContext(ctx context.Context) LookupSimPolicyResultOutput {
 	return o
-}
-
-func (o LookupSimPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSimPolicyResult] {
-	return pulumix.Output[LookupSimPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The default slice to use if the UE does not explicitly specify it. This slice must exist in the `sliceConfigurations` map. The slice must be in the same location as the SIM policy.

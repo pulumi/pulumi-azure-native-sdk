@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This operation retrieves a single variable value; given its name,  management group it was created at and the variable it's created for.
@@ -86,12 +85,6 @@ func (o LookupVariableValueAtManagementGroupResultOutput) ToLookupVariableValueA
 
 func (o LookupVariableValueAtManagementGroupResultOutput) ToLookupVariableValueAtManagementGroupResultOutputWithContext(ctx context.Context) LookupVariableValueAtManagementGroupResultOutput {
 	return o
-}
-
-func (o LookupVariableValueAtManagementGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVariableValueAtManagementGroupResult] {
-	return pulumix.Output[LookupVariableValueAtManagementGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the variable.

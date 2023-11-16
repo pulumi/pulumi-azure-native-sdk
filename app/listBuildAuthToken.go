@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the token used to connect to the endpoint where source code can be uploaded for a build.
@@ -80,12 +79,6 @@ func (o ListBuildAuthTokenResultOutput) ToListBuildAuthTokenResultOutput() ListB
 
 func (o ListBuildAuthTokenResultOutput) ToListBuildAuthTokenResultOutputWithContext(ctx context.Context) ListBuildAuthTokenResultOutput {
 	return o
-}
-
-func (o ListBuildAuthTokenResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListBuildAuthTokenResult] {
-	return pulumix.Output[ListBuildAuthTokenResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Token expiration date.

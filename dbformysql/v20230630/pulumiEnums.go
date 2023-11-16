@@ -104,12 +104,6 @@ func (o DataEncryptionTypeOutput) ToDataEncryptionTypePtrOutputWithContext(ctx c
 	}).(DataEncryptionTypePtrOutput)
 }
 
-func (o DataEncryptionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[DataEncryptionType] {
-	return pulumix.Output[DataEncryptionType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataEncryptionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -143,12 +137,6 @@ func (o DataEncryptionTypePtrOutput) ToDataEncryptionTypePtrOutput() DataEncrypt
 
 func (o DataEncryptionTypePtrOutput) ToDataEncryptionTypePtrOutputWithContext(ctx context.Context) DataEncryptionTypePtrOutput {
 	return o
-}
-
-func (o DataEncryptionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataEncryptionType] {
-	return pulumix.Output[*DataEncryptionType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataEncryptionTypePtrOutput) Elem() DataEncryptionTypeOutput {

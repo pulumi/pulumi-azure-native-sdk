@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Definition of hybrid runbook worker group.
@@ -145,12 +144,6 @@ func (i *HybridRunbookWorkerGroup) ToHybridRunbookWorkerGroupOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(HybridRunbookWorkerGroupOutput)
 }
 
-func (i *HybridRunbookWorkerGroup) ToOutput(ctx context.Context) pulumix.Output[*HybridRunbookWorkerGroup] {
-	return pulumix.Output[*HybridRunbookWorkerGroup]{
-		OutputState: i.ToHybridRunbookWorkerGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HybridRunbookWorkerGroupOutput struct{ *pulumi.OutputState }
 
 func (HybridRunbookWorkerGroupOutput) ElementType() reflect.Type {
@@ -163,12 +156,6 @@ func (o HybridRunbookWorkerGroupOutput) ToHybridRunbookWorkerGroupOutput() Hybri
 
 func (o HybridRunbookWorkerGroupOutput) ToHybridRunbookWorkerGroupOutputWithContext(ctx context.Context) HybridRunbookWorkerGroupOutput {
 	return o
-}
-
-func (o HybridRunbookWorkerGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*HybridRunbookWorkerGroup] {
-	return pulumix.Output[*HybridRunbookWorkerGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Sets the credential of a worker group.

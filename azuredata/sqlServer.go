@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A SQL server.
@@ -150,12 +149,6 @@ func (i *SqlServer) ToSqlServerOutputWithContext(ctx context.Context) SqlServerO
 	return pulumi.ToOutputWithContext(ctx, i).(SqlServerOutput)
 }
 
-func (i *SqlServer) ToOutput(ctx context.Context) pulumix.Output[*SqlServer] {
-	return pulumix.Output[*SqlServer]{
-		OutputState: i.ToSqlServerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SqlServerOutput struct{ *pulumi.OutputState }
 
 func (SqlServerOutput) ElementType() reflect.Type {
@@ -168,12 +161,6 @@ func (o SqlServerOutput) ToSqlServerOutput() SqlServerOutput {
 
 func (o SqlServerOutput) ToSqlServerOutputWithContext(ctx context.Context) SqlServerOutput {
 	return o
-}
-
-func (o SqlServerOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlServer] {
-	return pulumix.Output[*SqlServer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cores of the Sql Server.

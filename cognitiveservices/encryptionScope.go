@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Cognitive Services EncryptionScope
@@ -136,12 +135,6 @@ func (i *EncryptionScope) ToEncryptionScopeOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionScopeOutput)
 }
 
-func (i *EncryptionScope) ToOutput(ctx context.Context) pulumix.Output[*EncryptionScope] {
-	return pulumix.Output[*EncryptionScope]{
-		OutputState: i.ToEncryptionScopeOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EncryptionScopeOutput struct{ *pulumi.OutputState }
 
 func (EncryptionScopeOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o EncryptionScopeOutput) ToEncryptionScopeOutput() EncryptionScopeOutput {
 
 func (o EncryptionScopeOutput) ToEncryptionScopeOutputWithContext(ctx context.Context) EncryptionScopeOutput {
 	return o
-}
-
-func (o EncryptionScopeOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionScope] {
-	return pulumix.Output[*EncryptionScope]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Etag.

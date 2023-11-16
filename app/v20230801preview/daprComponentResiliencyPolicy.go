@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Dapr Component Resiliency Policy.
@@ -137,12 +136,6 @@ func (i *DaprComponentResiliencyPolicy) ToDaprComponentResiliencyPolicyOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(DaprComponentResiliencyPolicyOutput)
 }
 
-func (i *DaprComponentResiliencyPolicy) ToOutput(ctx context.Context) pulumix.Output[*DaprComponentResiliencyPolicy] {
-	return pulumix.Output[*DaprComponentResiliencyPolicy]{
-		OutputState: i.ToDaprComponentResiliencyPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DaprComponentResiliencyPolicyOutput struct{ *pulumi.OutputState }
 
 func (DaprComponentResiliencyPolicyOutput) ElementType() reflect.Type {
@@ -155,12 +148,6 @@ func (o DaprComponentResiliencyPolicyOutput) ToDaprComponentResiliencyPolicyOutp
 
 func (o DaprComponentResiliencyPolicyOutput) ToDaprComponentResiliencyPolicyOutputWithContext(ctx context.Context) DaprComponentResiliencyPolicyOutput {
 	return o
-}
-
-func (o DaprComponentResiliencyPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*DaprComponentResiliencyPolicy] {
-	return pulumix.Output[*DaprComponentResiliencyPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The optional inbound component resiliency policy configuration

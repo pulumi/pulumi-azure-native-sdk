@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified backup of the volume
@@ -124,12 +123,6 @@ func (o LookupBackupResultOutput) ToLookupBackupResultOutput() LookupBackupResul
 
 func (o LookupBackupResultOutput) ToLookupBackupResultOutputWithContext(ctx context.Context) LookupBackupResultOutput {
 	return o
-}
-
-func (o LookupBackupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBackupResult] {
-	return pulumix.Output[LookupBackupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // UUID v4 used to identify the Backup

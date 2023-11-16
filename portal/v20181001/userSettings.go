@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Response to get user settings
@@ -107,12 +106,6 @@ func (i *UserSettings) ToUserSettingsOutputWithContext(ctx context.Context) User
 	return pulumi.ToOutputWithContext(ctx, i).(UserSettingsOutput)
 }
 
-func (i *UserSettings) ToOutput(ctx context.Context) pulumix.Output[*UserSettings] {
-	return pulumix.Output[*UserSettings]{
-		OutputState: i.ToUserSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UserSettingsOutput struct{ *pulumi.OutputState }
 
 func (UserSettingsOutput) ElementType() reflect.Type {
@@ -125,12 +118,6 @@ func (o UserSettingsOutput) ToUserSettingsOutput() UserSettingsOutput {
 
 func (o UserSettingsOutput) ToUserSettingsOutputWithContext(ctx context.Context) UserSettingsOutput {
 	return o
-}
-
-func (o UserSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[*UserSettings] {
-	return pulumix.Output[*UserSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The cloud shell user settings properties.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about the specified Subscription Level SaaS.
@@ -81,12 +80,6 @@ func (o LookupSaasSubscriptionLevelResultOutput) ToLookupSaasSubscriptionLevelRe
 
 func (o LookupSaasSubscriptionLevelResultOutput) ToLookupSaasSubscriptionLevelResultOutputWithContext(ctx context.Context) LookupSaasSubscriptionLevelResultOutput {
 	return o
-}
-
-func (o LookupSaasSubscriptionLevelResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSaasSubscriptionLevelResult] {
-	return pulumix.Output[LookupSaasSubscriptionLevelResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource uri

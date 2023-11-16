@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a ApplicationResource
@@ -95,12 +94,6 @@ func (o LookupApplicationResourceResultOutput) ToLookupApplicationResourceResult
 
 func (o LookupApplicationResourceResultOutput) ToLookupApplicationResourceResultOutputWithContext(ctx context.Context) LookupApplicationResourceResultOutput {
 	return o
-}
-
-func (o LookupApplicationResourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApplicationResourceResult] {
-	return pulumix.Output[LookupApplicationResourceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

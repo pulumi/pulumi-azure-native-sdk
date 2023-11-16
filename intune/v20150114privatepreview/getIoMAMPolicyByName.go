@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns Intune iOS policies.
@@ -161,12 +160,6 @@ func (o LookupIoMAMPolicyByNameResultOutput) ToLookupIoMAMPolicyByNameResultOutp
 
 func (o LookupIoMAMPolicyByNameResultOutput) ToLookupIoMAMPolicyByNameResultOutputWithContext(ctx context.Context) LookupIoMAMPolicyByNameResultOutput {
 	return o
-}
-
-func (o LookupIoMAMPolicyByNameResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIoMAMPolicyByNameResult] {
-	return pulumix.Output[LookupIoMAMPolicyByNameResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupIoMAMPolicyByNameResultOutput) AccessRecheckOfflineTimeout() pulumi.StringPtrOutput {

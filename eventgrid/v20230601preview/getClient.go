@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of a client.
@@ -112,12 +111,6 @@ func (o LookupClientResultOutput) ToLookupClientResultOutput() LookupClientResul
 
 func (o LookupClientResultOutput) ToLookupClientResultOutputWithContext(ctx context.Context) LookupClientResultOutput {
 	return o
-}
-
-func (o LookupClientResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupClientResult] {
-	return pulumix.Output[LookupClientResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Attributes for the client. Supported values are int, bool, string, string[].

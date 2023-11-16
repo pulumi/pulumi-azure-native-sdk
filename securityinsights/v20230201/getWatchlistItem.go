@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a watchlist item.
@@ -109,12 +108,6 @@ func (o LookupWatchlistItemResultOutput) ToLookupWatchlistItemResultOutput() Loo
 
 func (o LookupWatchlistItemResultOutput) ToLookupWatchlistItemResultOutputWithContext(ctx context.Context) LookupWatchlistItemResultOutput {
 	return o
-}
-
-func (o LookupWatchlistItemResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWatchlistItemResult] {
-	return pulumix.Output[LookupWatchlistItemResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time the watchlist item was created

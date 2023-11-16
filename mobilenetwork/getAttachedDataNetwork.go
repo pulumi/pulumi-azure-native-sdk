@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about the specified attached data network.
@@ -122,12 +121,6 @@ func (o LookupAttachedDataNetworkResultOutput) ToLookupAttachedDataNetworkResult
 
 func (o LookupAttachedDataNetworkResultOutput) ToLookupAttachedDataNetworkResultOutputWithContext(ctx context.Context) LookupAttachedDataNetworkResultOutput {
 	return o
-}
-
-func (o LookupAttachedDataNetworkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAttachedDataNetworkResult] {
-	return pulumix.Output[LookupAttachedDataNetworkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The DNS servers to signal to UEs to use for this attached data network. This configuration is mandatory - if you don't want DNS servers, you must provide an empty array.

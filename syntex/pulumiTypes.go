@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i DocumentProcessorPropertiesArgs) ToDocumentProcessorPropertiesOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentProcessorPropertiesOutput)
 }
 
-func (i DocumentProcessorPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[DocumentProcessorProperties] {
-	return pulumix.Output[DocumentProcessorProperties]{
-		OutputState: i.ToDocumentProcessorPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DocumentProcessorPropertiesArgs) ToDocumentProcessorPropertiesPtrOutput() DocumentProcessorPropertiesPtrOutput {
 	return i.ToDocumentProcessorPropertiesPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *documentProcessorPropertiesPtrType) ToDocumentProcessorPropertiesPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentProcessorPropertiesPtrOutput)
 }
 
-func (i *documentProcessorPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*DocumentProcessorProperties] {
-	return pulumix.Output[*DocumentProcessorProperties]{
-		OutputState: i.ToDocumentProcessorPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Document processor properties
 type DocumentProcessorPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o DocumentProcessorPropertiesOutput) ToDocumentProcessorPropertiesPtrOutpu
 	}).(DocumentProcessorPropertiesPtrOutput)
 }
 
-func (o DocumentProcessorPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentProcessorProperties] {
-	return pulumix.Output[DocumentProcessorProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ID (GUID) of an SharePoint Online (SPO) tenant associated with this document processor resource
 func (o DocumentProcessorPropertiesOutput) SpoTenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v DocumentProcessorProperties) string { return v.SpoTenantId }).(pulumi.StringOutput)
@@ -159,12 +140,6 @@ func (o DocumentProcessorPropertiesPtrOutput) ToDocumentProcessorPropertiesPtrOu
 
 func (o DocumentProcessorPropertiesPtrOutput) ToDocumentProcessorPropertiesPtrOutputWithContext(ctx context.Context) DocumentProcessorPropertiesPtrOutput {
 	return o
-}
-
-func (o DocumentProcessorPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentProcessorProperties] {
-	return pulumix.Output[*DocumentProcessorProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DocumentProcessorPropertiesPtrOutput) Elem() DocumentProcessorPropertiesOutput {
@@ -222,12 +197,6 @@ func (o DocumentProcessorPropertiesResponseOutput) ToDocumentProcessorProperties
 	return o
 }
 
-func (o DocumentProcessorPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DocumentProcessorPropertiesResponse] {
-	return pulumix.Output[DocumentProcessorPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The managed resource provisioning state.
 func (o DocumentProcessorPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v DocumentProcessorPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
@@ -272,12 +241,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

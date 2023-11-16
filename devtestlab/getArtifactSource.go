@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get artifact source.
@@ -114,12 +113,6 @@ func (o LookupArtifactSourceResultOutput) ToLookupArtifactSourceResultOutput() L
 
 func (o LookupArtifactSourceResultOutput) ToLookupArtifactSourceResultOutputWithContext(ctx context.Context) LookupArtifactSourceResultOutput {
 	return o
-}
-
-func (o LookupArtifactSourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupArtifactSourceResult] {
-	return pulumix.Output[LookupArtifactSourceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The folder containing Azure Resource Manager templates.

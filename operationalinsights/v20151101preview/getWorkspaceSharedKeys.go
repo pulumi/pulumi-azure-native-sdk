@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the shared keys for a workspace.
@@ -75,12 +74,6 @@ func (o GetWorkspaceSharedKeysResultOutput) ToGetWorkspaceSharedKeysResultOutput
 
 func (o GetWorkspaceSharedKeysResultOutput) ToGetWorkspaceSharedKeysResultOutputWithContext(ctx context.Context) GetWorkspaceSharedKeysResultOutput {
 	return o
-}
-
-func (o GetWorkspaceSharedKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetWorkspaceSharedKeysResult] {
-	return pulumix.Output[GetWorkspaceSharedKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The primary shared key of a workspace.

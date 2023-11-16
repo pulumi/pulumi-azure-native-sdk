@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // SQL site web model.
@@ -141,12 +140,6 @@ func (i *SqlSitesController) ToSqlSitesControllerOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(SqlSitesControllerOutput)
 }
 
-func (i *SqlSitesController) ToOutput(ctx context.Context) pulumix.Output[*SqlSitesController] {
-	return pulumix.Output[*SqlSitesController]{
-		OutputState: i.ToSqlSitesControllerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SqlSitesControllerOutput struct{ *pulumi.OutputState }
 
 func (SqlSitesControllerOutput) ElementType() reflect.Type {
@@ -159,12 +152,6 @@ func (o SqlSitesControllerOutput) ToSqlSitesControllerOutput() SqlSitesControlle
 
 func (o SqlSitesControllerOutput) ToSqlSitesControllerOutputWithContext(ctx context.Context) SqlSitesControllerOutput {
 	return o
-}
-
-func (o SqlSitesControllerOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlSitesController] {
-	return pulumix.Output[*SqlSitesController]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the discovery scenario.

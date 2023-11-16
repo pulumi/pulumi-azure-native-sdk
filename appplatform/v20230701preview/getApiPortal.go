@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the API portal and its properties.
@@ -100,12 +99,6 @@ func (o LookupApiPortalResultOutput) ToLookupApiPortalResultOutput() LookupApiPo
 
 func (o LookupApiPortalResultOutput) ToLookupApiPortalResultOutputWithContext(ctx context.Context) LookupApiPortalResultOutput {
 	return o
-}
-
-func (o LookupApiPortalResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApiPortalResult] {
-	return pulumix.Output[LookupApiPortalResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource Id for the resource.

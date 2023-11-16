@@ -80,12 +80,6 @@ func (o IdentityTypeOutput) ToIdentityTypePtrOutputWithContext(ctx context.Conte
 	}).(IdentityTypePtrOutput)
 }
 
-func (o IdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityType] {
-	return pulumix.Output[IdentityType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -119,12 +113,6 @@ func (o IdentityTypePtrOutput) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
 
 func (o IdentityTypePtrOutput) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
 	return o
-}
-
-func (o IdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityType] {
-	return pulumix.Output[*IdentityType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityTypePtrOutput) Elem() IdentityTypeOutput {

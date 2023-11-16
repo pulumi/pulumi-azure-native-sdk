@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties of the specified credential set resource.
@@ -94,12 +93,6 @@ func (o LookupCredentialSetResultOutput) ToLookupCredentialSetResultOutput() Loo
 
 func (o LookupCredentialSetResultOutput) ToLookupCredentialSetResultOutputWithContext(ctx context.Context) LookupCredentialSetResultOutput {
 	return o
-}
-
-func (o LookupCredentialSetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCredentialSetResult] {
-	return pulumix.Output[LookupCredentialSetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of authentication credentials stored for an upstream.

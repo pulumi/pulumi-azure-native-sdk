@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Implements NetworkToNetworkInterconnects GET method.
@@ -130,12 +129,6 @@ func (o LookupNetworkToNetworkInterconnectResultOutput) ToLookupNetworkToNetwork
 
 func (o LookupNetworkToNetworkInterconnectResultOutput) ToLookupNetworkToNetworkInterconnectResultOutputWithContext(ctx context.Context) LookupNetworkToNetworkInterconnectResultOutput {
 	return o
-}
-
-func (o LookupNetworkToNetworkInterconnectResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkToNetworkInterconnectResult] {
-	return pulumix.Output[LookupNetworkToNetworkInterconnectResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Administrative state of the resource.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Implements VMMServer GET method.
@@ -101,12 +100,6 @@ func (o LookupVmmServerResultOutput) ToLookupVmmServerResultOutput() LookupVmmSe
 
 func (o LookupVmmServerResultOutput) ToLookupVmmServerResultOutputWithContext(ctx context.Context) LookupVmmServerResultOutput {
 	return o
-}
-
-func (o LookupVmmServerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVmmServerResult] {
-	return pulumix.Output[LookupVmmServerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the connection status to the vmmServer.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An HCX Enterprise Site resource
@@ -141,12 +140,6 @@ func (i *HcxEnterpriseSite) ToHcxEnterpriseSiteOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(HcxEnterpriseSiteOutput)
 }
 
-func (i *HcxEnterpriseSite) ToOutput(ctx context.Context) pulumix.Output[*HcxEnterpriseSite] {
-	return pulumix.Output[*HcxEnterpriseSite]{
-		OutputState: i.ToHcxEnterpriseSiteOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HcxEnterpriseSiteOutput struct{ *pulumi.OutputState }
 
 func (HcxEnterpriseSiteOutput) ElementType() reflect.Type {
@@ -159,12 +152,6 @@ func (o HcxEnterpriseSiteOutput) ToHcxEnterpriseSiteOutput() HcxEnterpriseSiteOu
 
 func (o HcxEnterpriseSiteOutput) ToHcxEnterpriseSiteOutputWithContext(ctx context.Context) HcxEnterpriseSiteOutput {
 	return o
-}
-
-func (o HcxEnterpriseSiteOutput) ToOutput(ctx context.Context) pulumix.Output[*HcxEnterpriseSite] {
-	return pulumix.Output[*HcxEnterpriseSite]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The activation key

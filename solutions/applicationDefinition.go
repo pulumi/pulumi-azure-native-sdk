@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Information about managed application definition.
@@ -261,12 +260,6 @@ func (i *ApplicationDefinition) ToApplicationDefinitionOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationDefinitionOutput)
 }
 
-func (i *ApplicationDefinition) ToOutput(ctx context.Context) pulumix.Output[*ApplicationDefinition] {
-	return pulumix.Output[*ApplicationDefinition]{
-		OutputState: i.ToApplicationDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationDefinitionOutput struct{ *pulumi.OutputState }
 
 func (ApplicationDefinitionOutput) ElementType() reflect.Type {
@@ -279,12 +272,6 @@ func (o ApplicationDefinitionOutput) ToApplicationDefinitionOutput() Application
 
 func (o ApplicationDefinitionOutput) ToApplicationDefinitionOutputWithContext(ctx context.Context) ApplicationDefinitionOutput {
 	return o
-}
-
-func (o ApplicationDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationDefinition] {
-	return pulumix.Output[*ApplicationDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The collection of managed application artifacts. The portal will use the files specified as artifacts to construct the user experience of creating a managed application from a managed application definition.

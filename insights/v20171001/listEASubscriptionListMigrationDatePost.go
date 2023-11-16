@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // list date to migrate to new pricing model.
@@ -67,12 +66,6 @@ func (o ListEASubscriptionListMigrationDatePostResultOutput) ToListEASubscriptio
 
 func (o ListEASubscriptionListMigrationDatePostResultOutput) ToListEASubscriptionListMigrationDatePostResultOutputWithContext(ctx context.Context) ListEASubscriptionListMigrationDatePostResultOutput {
 	return o
-}
-
-func (o ListEASubscriptionListMigrationDatePostResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListEASubscriptionListMigrationDatePostResult] {
-	return pulumix.Output[ListEASubscriptionListMigrationDatePostResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Is subscription in the grand fatherable subscription list.

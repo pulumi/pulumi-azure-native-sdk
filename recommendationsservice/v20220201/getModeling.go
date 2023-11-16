@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns Modeling resources for a given name.
@@ -89,12 +88,6 @@ func (o LookupModelingResultOutput) ToLookupModelingResultOutput() LookupModelin
 
 func (o LookupModelingResultOutput) ToLookupModelingResultOutputWithContext(ctx context.Context) LookupModelingResultOutput {
 	return o
-}
-
-func (o LookupModelingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupModelingResult] {
-	return pulumix.Output[LookupModelingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

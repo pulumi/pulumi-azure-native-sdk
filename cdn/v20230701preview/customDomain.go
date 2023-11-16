@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com.
@@ -194,12 +193,6 @@ func (i *CustomDomain) ToCustomDomainOutputWithContext(ctx context.Context) Cust
 	return pulumi.ToOutputWithContext(ctx, i).(CustomDomainOutput)
 }
 
-func (i *CustomDomain) ToOutput(ctx context.Context) pulumix.Output[*CustomDomain] {
-	return pulumix.Output[*CustomDomain]{
-		OutputState: i.ToCustomDomainOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CustomDomainOutput struct{ *pulumi.OutputState }
 
 func (CustomDomainOutput) ElementType() reflect.Type {
@@ -212,12 +205,6 @@ func (o CustomDomainOutput) ToCustomDomainOutput() CustomDomainOutput {
 
 func (o CustomDomainOutput) ToCustomDomainOutputWithContext(ctx context.Context) CustomDomainOutput {
 	return o
-}
-
-func (o CustomDomainOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomDomain] {
-	return pulumix.Output[*CustomDomain]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Certificate parameters for securing custom HTTPS

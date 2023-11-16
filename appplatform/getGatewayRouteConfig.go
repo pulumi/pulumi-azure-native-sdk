@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the Spring Cloud Gateway route configs.
@@ -103,12 +102,6 @@ func (o LookupGatewayRouteConfigResultOutput) ToLookupGatewayRouteConfigResultOu
 
 func (o LookupGatewayRouteConfigResultOutput) ToLookupGatewayRouteConfigResultOutputWithContext(ctx context.Context) LookupGatewayRouteConfigResultOutput {
 	return o
-}
-
-func (o LookupGatewayRouteConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGatewayRouteConfigResult] {
-	return pulumix.Output[LookupGatewayRouteConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource Id for the resource.

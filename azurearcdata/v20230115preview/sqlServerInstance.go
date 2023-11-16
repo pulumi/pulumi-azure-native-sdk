@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A SqlServerInstance.
@@ -147,12 +146,6 @@ func (i *SqlServerInstance) ToSqlServerInstanceOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(SqlServerInstanceOutput)
 }
 
-func (i *SqlServerInstance) ToOutput(ctx context.Context) pulumix.Output[*SqlServerInstance] {
-	return pulumix.Output[*SqlServerInstance]{
-		OutputState: i.ToSqlServerInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SqlServerInstanceOutput struct{ *pulumi.OutputState }
 
 func (SqlServerInstanceOutput) ElementType() reflect.Type {
@@ -165,12 +158,6 @@ func (o SqlServerInstanceOutput) ToSqlServerInstanceOutput() SqlServerInstanceOu
 
 func (o SqlServerInstanceOutput) ToSqlServerInstanceOutputWithContext(ctx context.Context) SqlServerInstanceOutput {
 	return o
-}
-
-func (o SqlServerInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlServerInstance] {
-	return pulumix.Output[*SqlServerInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

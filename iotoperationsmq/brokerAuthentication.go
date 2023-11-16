@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // MQ broker/authentication resource
@@ -167,12 +166,6 @@ func (i *BrokerAuthentication) ToBrokerAuthenticationOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerAuthenticationOutput)
 }
 
-func (i *BrokerAuthentication) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthentication] {
-	return pulumix.Output[*BrokerAuthentication]{
-		OutputState: i.ToBrokerAuthenticationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BrokerAuthenticationOutput struct{ *pulumi.OutputState }
 
 func (BrokerAuthenticationOutput) ElementType() reflect.Type {
@@ -185,12 +178,6 @@ func (o BrokerAuthenticationOutput) ToBrokerAuthenticationOutput() BrokerAuthent
 
 func (o BrokerAuthenticationOutput) ToBrokerAuthenticationOutputWithContext(ctx context.Context) BrokerAuthenticationOutput {
 	return o
-}
-
-func (o BrokerAuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthentication] {
-	return pulumix.Output[*BrokerAuthentication]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of authentication methods supported by the Authentication Resource. For each array element, NOTE - Enum only authenticator type supported.

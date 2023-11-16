@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a server group for create.
@@ -242,12 +241,6 @@ func (i *ServerGroup) ToServerGroupOutputWithContext(ctx context.Context) Server
 	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupOutput)
 }
 
-func (i *ServerGroup) ToOutput(ctx context.Context) pulumix.Output[*ServerGroup] {
-	return pulumix.Output[*ServerGroup]{
-		OutputState: i.ToServerGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerGroupOutput struct{ *pulumi.OutputState }
 
 func (ServerGroupOutput) ElementType() reflect.Type {
@@ -260,12 +253,6 @@ func (o ServerGroupOutput) ToServerGroupOutput() ServerGroupOutput {
 
 func (o ServerGroupOutput) ToServerGroupOutputWithContext(ctx context.Context) ServerGroupOutput {
 	return o
-}
-
-func (o ServerGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerGroup] {
-	return pulumix.Output[*ServerGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The administrator's login name of servers in server group. Can only be specified when the server is being created (and is required for creation).

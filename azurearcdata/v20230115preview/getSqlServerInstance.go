@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a SQL Server Instance resource
@@ -85,12 +84,6 @@ func (o LookupSqlServerInstanceResultOutput) ToLookupSqlServerInstanceResultOutp
 
 func (o LookupSqlServerInstanceResultOutput) ToLookupSqlServerInstanceResultOutputWithContext(ctx context.Context) LookupSqlServerInstanceResultOutput {
 	return o
-}
-
-func (o LookupSqlServerInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSqlServerInstanceResult] {
-	return pulumix.Output[LookupSqlServerInstanceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

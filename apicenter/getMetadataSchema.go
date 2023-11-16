@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns details of the metadata schema.
@@ -87,12 +86,6 @@ func (o LookupMetadataSchemaResultOutput) ToLookupMetadataSchemaResultOutput() L
 
 func (o LookupMetadataSchemaResultOutput) ToLookupMetadataSchemaResultOutputWithContext(ctx context.Context) LookupMetadataSchemaResultOutput {
 	return o
-}
-
-func (o LookupMetadataSchemaResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMetadataSchemaResult] {
-	return pulumix.Output[LookupMetadataSchemaResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupMetadataSchemaResultOutput) AssignedTo() MetadataAssignmentResponseArrayOutput {

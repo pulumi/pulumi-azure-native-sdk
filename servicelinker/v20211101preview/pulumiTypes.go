@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -71,12 +70,6 @@ func (i SecretStoreArgs) ToSecretStoreOutputWithContext(ctx context.Context) Sec
 	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreOutput)
 }
 
-func (i SecretStoreArgs) ToOutput(ctx context.Context) pulumix.Output[SecretStore] {
-	return pulumix.Output[SecretStore]{
-		OutputState: i.ToSecretStoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SecretStoreArgs) ToSecretStorePtrOutput() SecretStorePtrOutput {
 	return i.ToSecretStorePtrOutputWithContext(context.Background())
 }
@@ -118,12 +111,6 @@ func (i *secretStorePtrType) ToSecretStorePtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SecretStorePtrOutput)
 }
 
-func (i *secretStorePtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretStore] {
-	return pulumix.Output[*SecretStore]{
-		OutputState: i.ToSecretStorePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An option to store secret value in secure place
 type SecretStoreOutput struct{ *pulumi.OutputState }
 
@@ -149,12 +136,6 @@ func (o SecretStoreOutput) ToSecretStorePtrOutputWithContext(ctx context.Context
 	}).(SecretStorePtrOutput)
 }
 
-func (o SecretStoreOutput) ToOutput(ctx context.Context) pulumix.Output[SecretStore] {
-	return pulumix.Output[SecretStore]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The key vault id to store secret
 func (o SecretStoreOutput) KeyVaultId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretStore) *string { return v.KeyVaultId }).(pulumi.StringPtrOutput)
@@ -172,12 +153,6 @@ func (o SecretStorePtrOutput) ToSecretStorePtrOutput() SecretStorePtrOutput {
 
 func (o SecretStorePtrOutput) ToSecretStorePtrOutputWithContext(ctx context.Context) SecretStorePtrOutput {
 	return o
-}
-
-func (o SecretStorePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretStore] {
-	return pulumix.Output[*SecretStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretStorePtrOutput) Elem() SecretStoreOutput {
@@ -221,12 +196,6 @@ func (o SecretStoreResponseOutput) ToSecretStoreResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o SecretStoreResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecretStoreResponse] {
-	return pulumix.Output[SecretStoreResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The key vault id to store secret
 func (o SecretStoreResponseOutput) KeyVaultId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretStoreResponse) *string { return v.KeyVaultId }).(pulumi.StringPtrOutput)
@@ -244,12 +213,6 @@ func (o SecretStoreResponsePtrOutput) ToSecretStoreResponsePtrOutput() SecretSto
 
 func (o SecretStoreResponsePtrOutput) ToSecretStoreResponsePtrOutputWithContext(ctx context.Context) SecretStoreResponsePtrOutput {
 	return o
-}
-
-func (o SecretStoreResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreResponse] {
-	return pulumix.Output[*SecretStoreResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretStoreResponsePtrOutput) Elem() SecretStoreResponseOutput {
@@ -347,12 +310,6 @@ func (o SourceConfigurationResponseOutput) ToSourceConfigurationResponseOutputWi
 	return o
 }
 
-func (o SourceConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SourceConfigurationResponse] {
-	return pulumix.Output[SourceConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of setting.
 func (o SourceConfigurationResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SourceConfigurationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -375,12 +332,6 @@ func (o SourceConfigurationResponseArrayOutput) ToSourceConfigurationResponseArr
 
 func (o SourceConfigurationResponseArrayOutput) ToSourceConfigurationResponseArrayOutputWithContext(ctx context.Context) SourceConfigurationResponseArrayOutput {
 	return o
-}
-
-func (o SourceConfigurationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SourceConfigurationResponse] {
-	return pulumix.Output[[]SourceConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceConfigurationResponseArrayOutput) Index(i pulumi.IntInput) SourceConfigurationResponseOutput {
@@ -432,12 +383,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -527,12 +472,6 @@ func (i VNetSolutionArgs) ToVNetSolutionOutputWithContext(ctx context.Context) V
 	return pulumi.ToOutputWithContext(ctx, i).(VNetSolutionOutput)
 }
 
-func (i VNetSolutionArgs) ToOutput(ctx context.Context) pulumix.Output[VNetSolution] {
-	return pulumix.Output[VNetSolution]{
-		OutputState: i.ToVNetSolutionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VNetSolutionArgs) ToVNetSolutionPtrOutput() VNetSolutionPtrOutput {
 	return i.ToVNetSolutionPtrOutputWithContext(context.Background())
 }
@@ -574,12 +513,6 @@ func (i *vnetSolutionPtrType) ToVNetSolutionPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(VNetSolutionPtrOutput)
 }
 
-func (i *vnetSolutionPtrType) ToOutput(ctx context.Context) pulumix.Output[*VNetSolution] {
-	return pulumix.Output[*VNetSolution]{
-		OutputState: i.ToVNetSolutionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The VNet solution for linker
 type VNetSolutionOutput struct{ *pulumi.OutputState }
 
@@ -605,12 +538,6 @@ func (o VNetSolutionOutput) ToVNetSolutionPtrOutputWithContext(ctx context.Conte
 	}).(VNetSolutionPtrOutput)
 }
 
-func (o VNetSolutionOutput) ToOutput(ctx context.Context) pulumix.Output[VNetSolution] {
-	return pulumix.Output[VNetSolution]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Type of VNet solution.
 func (o VNetSolutionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VNetSolution) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -628,12 +555,6 @@ func (o VNetSolutionPtrOutput) ToVNetSolutionPtrOutput() VNetSolutionPtrOutput {
 
 func (o VNetSolutionPtrOutput) ToVNetSolutionPtrOutputWithContext(ctx context.Context) VNetSolutionPtrOutput {
 	return o
-}
-
-func (o VNetSolutionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VNetSolution] {
-	return pulumix.Output[*VNetSolution]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VNetSolutionPtrOutput) Elem() VNetSolutionOutput {
@@ -677,12 +598,6 @@ func (o VNetSolutionResponseOutput) ToVNetSolutionResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o VNetSolutionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VNetSolutionResponse] {
-	return pulumix.Output[VNetSolutionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Type of VNet solution.
 func (o VNetSolutionResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VNetSolutionResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -700,12 +615,6 @@ func (o VNetSolutionResponsePtrOutput) ToVNetSolutionResponsePtrOutput() VNetSol
 
 func (o VNetSolutionResponsePtrOutput) ToVNetSolutionResponsePtrOutputWithContext(ctx context.Context) VNetSolutionResponsePtrOutput {
 	return o
-}
-
-func (o VNetSolutionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VNetSolutionResponse] {
-	return pulumix.Output[*VNetSolutionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VNetSolutionResponsePtrOutput) Elem() VNetSolutionResponseOutput {

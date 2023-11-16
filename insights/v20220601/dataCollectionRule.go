@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Definition of ARM tracked top level resource.
@@ -191,12 +190,6 @@ func (i *DataCollectionRule) ToDataCollectionRuleOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(DataCollectionRuleOutput)
 }
 
-func (i *DataCollectionRule) ToOutput(ctx context.Context) pulumix.Output[*DataCollectionRule] {
-	return pulumix.Output[*DataCollectionRule]{
-		OutputState: i.ToDataCollectionRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataCollectionRuleOutput struct{ *pulumi.OutputState }
 
 func (DataCollectionRuleOutput) ElementType() reflect.Type {
@@ -209,12 +202,6 @@ func (o DataCollectionRuleOutput) ToDataCollectionRuleOutput() DataCollectionRul
 
 func (o DataCollectionRuleOutput) ToDataCollectionRuleOutputWithContext(ctx context.Context) DataCollectionRuleOutput {
 	return o
-}
-
-func (o DataCollectionRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*DataCollectionRule] {
-	return pulumix.Output[*DataCollectionRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource ID of the data collection endpoint that this rule can be used with.

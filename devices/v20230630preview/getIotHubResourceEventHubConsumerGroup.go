@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a consumer group from the Event Hub-compatible device-to-cloud endpoint for an IoT hub.
@@ -89,12 +88,6 @@ func (o LookupIotHubResourceEventHubConsumerGroupResultOutput) ToLookupIotHubRes
 
 func (o LookupIotHubResourceEventHubConsumerGroupResultOutput) ToLookupIotHubResourceEventHubConsumerGroupResultOutputWithContext(ctx context.Context) LookupIotHubResourceEventHubConsumerGroupResultOutput {
 	return o
-}
-
-func (o LookupIotHubResourceEventHubConsumerGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIotHubResourceEventHubConsumerGroupResult] {
-	return pulumix.Output[LookupIotHubResourceEventHubConsumerGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The etag.

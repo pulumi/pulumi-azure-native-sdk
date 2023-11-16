@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A class represent an AppComplianceAutomation report resource.
@@ -114,12 +113,6 @@ func (i *Report) ToReportOutputWithContext(ctx context.Context) ReportOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReportOutput)
 }
 
-func (i *Report) ToOutput(ctx context.Context) pulumix.Output[*Report] {
-	return pulumix.Output[*Report]{
-		OutputState: i.ToReportOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReportOutput struct{ *pulumi.OutputState }
 
 func (ReportOutput) ElementType() reflect.Type {
@@ -132,12 +125,6 @@ func (o ReportOutput) ToReportOutput() ReportOutput {
 
 func (o ReportOutput) ToReportOutputWithContext(ctx context.Context) ReportOutput {
 	return o
-}
-
-func (o ReportOutput) ToOutput(ctx context.Context) pulumix.Output[*Report] {
-	return pulumix.Output[*Report]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

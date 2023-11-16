@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the detail of a workspace connection.
@@ -93,12 +92,6 @@ func (o LookupWorkspaceConnectionResultOutput) ToLookupWorkspaceConnectionResult
 
 func (o LookupWorkspaceConnectionResultOutput) ToLookupWorkspaceConnectionResultOutputWithContext(ctx context.Context) LookupWorkspaceConnectionResultOutput {
 	return o
-}
-
-func (o LookupWorkspaceConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkspaceConnectionResult] {
-	return pulumix.Output[LookupWorkspaceConnectionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Authorization type of the workspace connection.

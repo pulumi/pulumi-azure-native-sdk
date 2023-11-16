@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The request to update subscriptions needed to be monitored by the Datadog monitor resource.
@@ -84,12 +83,6 @@ func (o LookupMonitoredSubscriptionResultOutput) ToLookupMonitoredSubscriptionRe
 
 func (o LookupMonitoredSubscriptionResultOutput) ToLookupMonitoredSubscriptionResultOutputWithContext(ctx context.Context) LookupMonitoredSubscriptionResultOutput {
 	return o
-}
-
-func (o LookupMonitoredSubscriptionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMonitoredSubscriptionResult] {
-	return pulumix.Output[LookupMonitoredSubscriptionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the monitored subscription resource.

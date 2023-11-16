@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Capture logs and metrics of Azure resources based on ARM tags.
@@ -163,12 +162,6 @@ func (i *TagRule) ToTagRuleOutputWithContext(ctx context.Context) TagRuleOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(TagRuleOutput)
 }
 
-func (i *TagRule) ToOutput(ctx context.Context) pulumix.Output[*TagRule] {
-	return pulumix.Output[*TagRule]{
-		OutputState: i.ToTagRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TagRuleOutput struct{ *pulumi.OutputState }
 
 func (TagRuleOutput) ElementType() reflect.Type {
@@ -181,12 +174,6 @@ func (o TagRuleOutput) ToTagRuleOutput() TagRuleOutput {
 
 func (o TagRuleOutput) ToTagRuleOutputWithContext(ctx context.Context) TagRuleOutput {
 	return o
-}
-
-func (o TagRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*TagRule] {
-	return pulumix.Output[*TagRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the rule set.

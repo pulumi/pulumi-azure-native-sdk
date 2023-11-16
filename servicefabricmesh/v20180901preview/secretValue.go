@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This type describes a value of a secret resource. The name of this resource is the version identifier corresponding to this secret value.
@@ -136,12 +135,6 @@ func (i *SecretValue) ToSecretValueOutputWithContext(ctx context.Context) Secret
 	return pulumi.ToOutputWithContext(ctx, i).(SecretValueOutput)
 }
 
-func (i *SecretValue) ToOutput(ctx context.Context) pulumix.Output[*SecretValue] {
-	return pulumix.Output[*SecretValue]{
-		OutputState: i.ToSecretValueOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecretValueOutput struct{ *pulumi.OutputState }
 
 func (SecretValueOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o SecretValueOutput) ToSecretValueOutput() SecretValueOutput {
 
 func (o SecretValueOutput) ToSecretValueOutputWithContext(ctx context.Context) SecretValueOutput {
 	return o
-}
-
-func (o SecretValueOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretValue] {
-	return pulumix.Output[*SecretValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

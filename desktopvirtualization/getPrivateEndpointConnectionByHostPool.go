@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a private endpoint connection.
@@ -92,12 +91,6 @@ func (o LookupPrivateEndpointConnectionByHostPoolResultOutput) ToLookupPrivateEn
 
 func (o LookupPrivateEndpointConnectionByHostPoolResultOutput) ToLookupPrivateEndpointConnectionByHostPoolResultOutputWithContext(ctx context.Context) LookupPrivateEndpointConnectionByHostPoolResultOutput {
 	return o
-}
-
-func (o LookupPrivateEndpointConnectionByHostPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateEndpointConnectionByHostPoolResult] {
-	return pulumix.Output[LookupPrivateEndpointConnectionByHostPoolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

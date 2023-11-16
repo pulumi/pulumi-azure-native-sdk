@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -85,12 +84,6 @@ func (o EntityInsightItemResponseOutput) ToEntityInsightItemResponseOutputWithCo
 	return o
 }
 
-func (o EntityInsightItemResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EntityInsightItemResponse] {
-	return pulumix.Output[EntityInsightItemResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Query results for table insights query.
 func (o EntityInsightItemResponseOutput) ChartQueryResults() InsightsTableResultResponseArrayOutput {
 	return o.ApplyT(func(v EntityInsightItemResponse) []InsightsTableResultResponse { return v.ChartQueryResults }).(InsightsTableResultResponseArrayOutput)
@@ -127,12 +120,6 @@ func (o EntityInsightItemResponseArrayOutput) ToEntityInsightItemResponseArrayOu
 	return o
 }
 
-func (o EntityInsightItemResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EntityInsightItemResponse] {
-	return pulumix.Output[[]EntityInsightItemResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EntityInsightItemResponseArrayOutput) Index(i pulumi.IntInput) EntityInsightItemResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntityInsightItemResponse {
 		return vs[0].([]EntityInsightItemResponse)[vs[1].(int)]
@@ -162,12 +149,6 @@ func (o EntityInsightItemResponseQueryTimeIntervalOutput) ToEntityInsightItemRes
 	return o
 }
 
-func (o EntityInsightItemResponseQueryTimeIntervalOutput) ToOutput(ctx context.Context) pulumix.Output[EntityInsightItemResponseQueryTimeInterval] {
-	return pulumix.Output[EntityInsightItemResponseQueryTimeInterval]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Insight query end time
 func (o EntityInsightItemResponseQueryTimeIntervalOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntityInsightItemResponseQueryTimeInterval) *string { return v.EndTime }).(pulumi.StringPtrOutput)
@@ -190,12 +171,6 @@ func (o EntityInsightItemResponseQueryTimeIntervalPtrOutput) ToEntityInsightItem
 
 func (o EntityInsightItemResponseQueryTimeIntervalPtrOutput) ToEntityInsightItemResponseQueryTimeIntervalPtrOutputWithContext(ctx context.Context) EntityInsightItemResponseQueryTimeIntervalPtrOutput {
 	return o
-}
-
-func (o EntityInsightItemResponseQueryTimeIntervalPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EntityInsightItemResponseQueryTimeInterval] {
-	return pulumix.Output[*EntityInsightItemResponseQueryTimeInterval]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EntityInsightItemResponseQueryTimeIntervalPtrOutput) Elem() EntityInsightItemResponseQueryTimeIntervalOutput {
@@ -253,12 +228,6 @@ func (o GetInsightsErrorResponseOutput) ToGetInsightsErrorResponseOutputWithCont
 	return o
 }
 
-func (o GetInsightsErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GetInsightsErrorResponse] {
-	return pulumix.Output[GetInsightsErrorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // the error message
 func (o GetInsightsErrorResponseOutput) ErrorMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInsightsErrorResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
@@ -286,12 +255,6 @@ func (o GetInsightsErrorResponseArrayOutput) ToGetInsightsErrorResponseArrayOutp
 
 func (o GetInsightsErrorResponseArrayOutput) ToGetInsightsErrorResponseArrayOutputWithContext(ctx context.Context) GetInsightsErrorResponseArrayOutput {
 	return o
-}
-
-func (o GetInsightsErrorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetInsightsErrorResponse] {
-	return pulumix.Output[[]GetInsightsErrorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetInsightsErrorResponseArrayOutput) Index(i pulumi.IntInput) GetInsightsErrorResponseOutput {
@@ -323,12 +286,6 @@ func (o GetInsightsResultsMetadataResponseOutput) ToGetInsightsResultsMetadataRe
 	return o
 }
 
-func (o GetInsightsResultsMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GetInsightsResultsMetadataResponse] {
-	return pulumix.Output[GetInsightsResultsMetadataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // information about the failed queries
 func (o GetInsightsResultsMetadataResponseOutput) Errors() GetInsightsErrorResponseArrayOutput {
 	return o.ApplyT(func(v GetInsightsResultsMetadataResponse) []GetInsightsErrorResponse { return v.Errors }).(GetInsightsErrorResponseArrayOutput)
@@ -351,12 +308,6 @@ func (o GetInsightsResultsMetadataResponsePtrOutput) ToGetInsightsResultsMetadat
 
 func (o GetInsightsResultsMetadataResponsePtrOutput) ToGetInsightsResultsMetadataResponsePtrOutputWithContext(ctx context.Context) GetInsightsResultsMetadataResponsePtrOutput {
 	return o
-}
-
-func (o GetInsightsResultsMetadataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GetInsightsResultsMetadataResponse] {
-	return pulumix.Output[*GetInsightsResultsMetadataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetInsightsResultsMetadataResponsePtrOutput) Elem() GetInsightsResultsMetadataResponseOutput {
@@ -412,12 +363,6 @@ func (o InsightsTableResultResponseOutput) ToInsightsTableResultResponseOutputWi
 	return o
 }
 
-func (o InsightsTableResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InsightsTableResultResponse] {
-	return pulumix.Output[InsightsTableResultResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Columns Metadata of the table
 func (o InsightsTableResultResponseOutput) Columns() InsightsTableResultResponseColumnsArrayOutput {
 	return o.ApplyT(func(v InsightsTableResultResponse) []InsightsTableResultResponseColumns { return v.Columns }).(InsightsTableResultResponseColumnsArrayOutput)
@@ -440,12 +385,6 @@ func (o InsightsTableResultResponsePtrOutput) ToInsightsTableResultResponsePtrOu
 
 func (o InsightsTableResultResponsePtrOutput) ToInsightsTableResultResponsePtrOutputWithContext(ctx context.Context) InsightsTableResultResponsePtrOutput {
 	return o
-}
-
-func (o InsightsTableResultResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InsightsTableResultResponse] {
-	return pulumix.Output[*InsightsTableResultResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InsightsTableResultResponsePtrOutput) Elem() InsightsTableResultResponseOutput {
@@ -492,12 +431,6 @@ func (o InsightsTableResultResponseArrayOutput) ToInsightsTableResultResponseArr
 	return o
 }
 
-func (o InsightsTableResultResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InsightsTableResultResponse] {
-	return pulumix.Output[[]InsightsTableResultResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InsightsTableResultResponseArrayOutput) Index(i pulumi.IntInput) InsightsTableResultResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InsightsTableResultResponse {
 		return vs[0].([]InsightsTableResultResponse)[vs[1].(int)]
@@ -525,12 +458,6 @@ func (o InsightsTableResultResponseColumnsOutput) ToInsightsTableResultResponseC
 	return o
 }
 
-func (o InsightsTableResultResponseColumnsOutput) ToOutput(ctx context.Context) pulumix.Output[InsightsTableResultResponseColumns] {
-	return pulumix.Output[InsightsTableResultResponseColumns]{
-		OutputState: o.OutputState,
-	}
-}
-
 // the name of the colum
 func (o InsightsTableResultResponseColumnsOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InsightsTableResultResponseColumns) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -553,12 +480,6 @@ func (o InsightsTableResultResponseColumnsArrayOutput) ToInsightsTableResultResp
 
 func (o InsightsTableResultResponseColumnsArrayOutput) ToInsightsTableResultResponseColumnsArrayOutputWithContext(ctx context.Context) InsightsTableResultResponseColumnsArrayOutput {
 	return o
-}
-
-func (o InsightsTableResultResponseColumnsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InsightsTableResultResponseColumns] {
-	return pulumix.Output[[]InsightsTableResultResponseColumns]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InsightsTableResultResponseColumnsArrayOutput) Index(i pulumi.IntInput) InsightsTableResultResponseColumnsOutput {
@@ -592,12 +513,6 @@ func (o RepoResponseOutput) ToRepoResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o RepoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RepoResponse] {
-	return pulumix.Output[RepoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Array of branches.
 func (o RepoResponseOutput) Branches() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RepoResponse) []string { return v.Branches }).(pulumi.StringArrayOutput)
@@ -625,12 +540,6 @@ func (o RepoResponseArrayOutput) ToRepoResponseArrayOutput() RepoResponseArrayOu
 
 func (o RepoResponseArrayOutput) ToRepoResponseArrayOutputWithContext(ctx context.Context) RepoResponseArrayOutput {
 	return o
-}
-
-func (o RepoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RepoResponse] {
-	return pulumix.Output[[]RepoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RepoResponseArrayOutput) Index(i pulumi.IntInput) RepoResponseOutput {
@@ -693,12 +602,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -782,12 +685,6 @@ func (i ThreatIntelligenceExternalReferenceArgs) ToThreatIntelligenceExternalRef
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelligenceExternalReferenceOutput)
 }
 
-func (i ThreatIntelligenceExternalReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[ThreatIntelligenceExternalReference] {
-	return pulumix.Output[ThreatIntelligenceExternalReference]{
-		OutputState: i.ToThreatIntelligenceExternalReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ThreatIntelligenceExternalReferenceArrayInput is an input type that accepts ThreatIntelligenceExternalReferenceArray and ThreatIntelligenceExternalReferenceArrayOutput values.
 // You can construct a concrete instance of `ThreatIntelligenceExternalReferenceArrayInput` via:
 //
@@ -813,12 +710,6 @@ func (i ThreatIntelligenceExternalReferenceArray) ToThreatIntelligenceExternalRe
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelligenceExternalReferenceArrayOutput)
 }
 
-func (i ThreatIntelligenceExternalReferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]ThreatIntelligenceExternalReference] {
-	return pulumix.Output[[]ThreatIntelligenceExternalReference]{
-		OutputState: i.ToThreatIntelligenceExternalReferenceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes external reference
 type ThreatIntelligenceExternalReferenceOutput struct{ *pulumi.OutputState }
 
@@ -832,12 +723,6 @@ func (o ThreatIntelligenceExternalReferenceOutput) ToThreatIntelligenceExternalR
 
 func (o ThreatIntelligenceExternalReferenceOutput) ToThreatIntelligenceExternalReferenceOutputWithContext(ctx context.Context) ThreatIntelligenceExternalReferenceOutput {
 	return o
-}
-
-func (o ThreatIntelligenceExternalReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[ThreatIntelligenceExternalReference] {
-	return pulumix.Output[ThreatIntelligenceExternalReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 // External reference description
@@ -877,12 +762,6 @@ func (o ThreatIntelligenceExternalReferenceArrayOutput) ToThreatIntelligenceExte
 
 func (o ThreatIntelligenceExternalReferenceArrayOutput) ToThreatIntelligenceExternalReferenceArrayOutputWithContext(ctx context.Context) ThreatIntelligenceExternalReferenceArrayOutput {
 	return o
-}
-
-func (o ThreatIntelligenceExternalReferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ThreatIntelligenceExternalReference] {
-	return pulumix.Output[[]ThreatIntelligenceExternalReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ThreatIntelligenceExternalReferenceArrayOutput) Index(i pulumi.IntInput) ThreatIntelligenceExternalReferenceOutput {
@@ -934,12 +813,6 @@ func (i ThreatIntelligenceGranularMarkingModelArgs) ToThreatIntelligenceGranular
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelligenceGranularMarkingModelOutput)
 }
 
-func (i ThreatIntelligenceGranularMarkingModelArgs) ToOutput(ctx context.Context) pulumix.Output[ThreatIntelligenceGranularMarkingModel] {
-	return pulumix.Output[ThreatIntelligenceGranularMarkingModel]{
-		OutputState: i.ToThreatIntelligenceGranularMarkingModelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ThreatIntelligenceGranularMarkingModelArrayInput is an input type that accepts ThreatIntelligenceGranularMarkingModelArray and ThreatIntelligenceGranularMarkingModelArrayOutput values.
 // You can construct a concrete instance of `ThreatIntelligenceGranularMarkingModelArrayInput` via:
 //
@@ -965,12 +838,6 @@ func (i ThreatIntelligenceGranularMarkingModelArray) ToThreatIntelligenceGranula
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelligenceGranularMarkingModelArrayOutput)
 }
 
-func (i ThreatIntelligenceGranularMarkingModelArray) ToOutput(ctx context.Context) pulumix.Output[[]ThreatIntelligenceGranularMarkingModel] {
-	return pulumix.Output[[]ThreatIntelligenceGranularMarkingModel]{
-		OutputState: i.ToThreatIntelligenceGranularMarkingModelArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes threat granular marking model entity
 type ThreatIntelligenceGranularMarkingModelOutput struct{ *pulumi.OutputState }
 
@@ -984,12 +851,6 @@ func (o ThreatIntelligenceGranularMarkingModelOutput) ToThreatIntelligenceGranul
 
 func (o ThreatIntelligenceGranularMarkingModelOutput) ToThreatIntelligenceGranularMarkingModelOutputWithContext(ctx context.Context) ThreatIntelligenceGranularMarkingModelOutput {
 	return o
-}
-
-func (o ThreatIntelligenceGranularMarkingModelOutput) ToOutput(ctx context.Context) pulumix.Output[ThreatIntelligenceGranularMarkingModel] {
-	return pulumix.Output[ThreatIntelligenceGranularMarkingModel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Language granular marking model
@@ -1019,12 +880,6 @@ func (o ThreatIntelligenceGranularMarkingModelArrayOutput) ToThreatIntelligenceG
 
 func (o ThreatIntelligenceGranularMarkingModelArrayOutput) ToThreatIntelligenceGranularMarkingModelArrayOutputWithContext(ctx context.Context) ThreatIntelligenceGranularMarkingModelArrayOutput {
 	return o
-}
-
-func (o ThreatIntelligenceGranularMarkingModelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ThreatIntelligenceGranularMarkingModel] {
-	return pulumix.Output[[]ThreatIntelligenceGranularMarkingModel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ThreatIntelligenceGranularMarkingModelArrayOutput) Index(i pulumi.IntInput) ThreatIntelligenceGranularMarkingModelOutput {
@@ -1072,12 +927,6 @@ func (i ThreatIntelligenceKillChainPhaseArgs) ToThreatIntelligenceKillChainPhase
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelligenceKillChainPhaseOutput)
 }
 
-func (i ThreatIntelligenceKillChainPhaseArgs) ToOutput(ctx context.Context) pulumix.Output[ThreatIntelligenceKillChainPhase] {
-	return pulumix.Output[ThreatIntelligenceKillChainPhase]{
-		OutputState: i.ToThreatIntelligenceKillChainPhaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ThreatIntelligenceKillChainPhaseArrayInput is an input type that accepts ThreatIntelligenceKillChainPhaseArray and ThreatIntelligenceKillChainPhaseArrayOutput values.
 // You can construct a concrete instance of `ThreatIntelligenceKillChainPhaseArrayInput` via:
 //
@@ -1103,12 +952,6 @@ func (i ThreatIntelligenceKillChainPhaseArray) ToThreatIntelligenceKillChainPhas
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelligenceKillChainPhaseArrayOutput)
 }
 
-func (i ThreatIntelligenceKillChainPhaseArray) ToOutput(ctx context.Context) pulumix.Output[[]ThreatIntelligenceKillChainPhase] {
-	return pulumix.Output[[]ThreatIntelligenceKillChainPhase]{
-		OutputState: i.ToThreatIntelligenceKillChainPhaseArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes threat kill chain phase entity
 type ThreatIntelligenceKillChainPhaseOutput struct{ *pulumi.OutputState }
 
@@ -1122,12 +965,6 @@ func (o ThreatIntelligenceKillChainPhaseOutput) ToThreatIntelligenceKillChainPha
 
 func (o ThreatIntelligenceKillChainPhaseOutput) ToThreatIntelligenceKillChainPhaseOutputWithContext(ctx context.Context) ThreatIntelligenceKillChainPhaseOutput {
 	return o
-}
-
-func (o ThreatIntelligenceKillChainPhaseOutput) ToOutput(ctx context.Context) pulumix.Output[ThreatIntelligenceKillChainPhase] {
-	return pulumix.Output[ThreatIntelligenceKillChainPhase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Kill chainName name
@@ -1152,12 +989,6 @@ func (o ThreatIntelligenceKillChainPhaseArrayOutput) ToThreatIntelligenceKillCha
 
 func (o ThreatIntelligenceKillChainPhaseArrayOutput) ToThreatIntelligenceKillChainPhaseArrayOutputWithContext(ctx context.Context) ThreatIntelligenceKillChainPhaseArrayOutput {
 	return o
-}
-
-func (o ThreatIntelligenceKillChainPhaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ThreatIntelligenceKillChainPhase] {
-	return pulumix.Output[[]ThreatIntelligenceKillChainPhase]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ThreatIntelligenceKillChainPhaseArrayOutput) Index(i pulumi.IntInput) ThreatIntelligenceKillChainPhaseOutput {
@@ -1205,12 +1036,6 @@ func (i ThreatIntelligenceParsedPatternArgs) ToThreatIntelligenceParsedPatternOu
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelligenceParsedPatternOutput)
 }
 
-func (i ThreatIntelligenceParsedPatternArgs) ToOutput(ctx context.Context) pulumix.Output[ThreatIntelligenceParsedPattern] {
-	return pulumix.Output[ThreatIntelligenceParsedPattern]{
-		OutputState: i.ToThreatIntelligenceParsedPatternOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ThreatIntelligenceParsedPatternArrayInput is an input type that accepts ThreatIntelligenceParsedPatternArray and ThreatIntelligenceParsedPatternArrayOutput values.
 // You can construct a concrete instance of `ThreatIntelligenceParsedPatternArrayInput` via:
 //
@@ -1236,12 +1061,6 @@ func (i ThreatIntelligenceParsedPatternArray) ToThreatIntelligenceParsedPatternA
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelligenceParsedPatternArrayOutput)
 }
 
-func (i ThreatIntelligenceParsedPatternArray) ToOutput(ctx context.Context) pulumix.Output[[]ThreatIntelligenceParsedPattern] {
-	return pulumix.Output[[]ThreatIntelligenceParsedPattern]{
-		OutputState: i.ToThreatIntelligenceParsedPatternArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes parsed pattern entity
 type ThreatIntelligenceParsedPatternOutput struct{ *pulumi.OutputState }
 
@@ -1255,12 +1074,6 @@ func (o ThreatIntelligenceParsedPatternOutput) ToThreatIntelligenceParsedPattern
 
 func (o ThreatIntelligenceParsedPatternOutput) ToThreatIntelligenceParsedPatternOutputWithContext(ctx context.Context) ThreatIntelligenceParsedPatternOutput {
 	return o
-}
-
-func (o ThreatIntelligenceParsedPatternOutput) ToOutput(ctx context.Context) pulumix.Output[ThreatIntelligenceParsedPattern] {
-	return pulumix.Output[ThreatIntelligenceParsedPattern]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Pattern type key
@@ -1287,12 +1100,6 @@ func (o ThreatIntelligenceParsedPatternArrayOutput) ToThreatIntelligenceParsedPa
 
 func (o ThreatIntelligenceParsedPatternArrayOutput) ToThreatIntelligenceParsedPatternArrayOutputWithContext(ctx context.Context) ThreatIntelligenceParsedPatternArrayOutput {
 	return o
-}
-
-func (o ThreatIntelligenceParsedPatternArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ThreatIntelligenceParsedPattern] {
-	return pulumix.Output[[]ThreatIntelligenceParsedPattern]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ThreatIntelligenceParsedPatternArrayOutput) Index(i pulumi.IntInput) ThreatIntelligenceParsedPatternOutput {
@@ -1340,12 +1147,6 @@ func (i ThreatIntelligenceParsedPatternTypeValueArgs) ToThreatIntelligenceParsed
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelligenceParsedPatternTypeValueOutput)
 }
 
-func (i ThreatIntelligenceParsedPatternTypeValueArgs) ToOutput(ctx context.Context) pulumix.Output[ThreatIntelligenceParsedPatternTypeValue] {
-	return pulumix.Output[ThreatIntelligenceParsedPatternTypeValue]{
-		OutputState: i.ToThreatIntelligenceParsedPatternTypeValueOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ThreatIntelligenceParsedPatternTypeValueArrayInput is an input type that accepts ThreatIntelligenceParsedPatternTypeValueArray and ThreatIntelligenceParsedPatternTypeValueArrayOutput values.
 // You can construct a concrete instance of `ThreatIntelligenceParsedPatternTypeValueArrayInput` via:
 //
@@ -1371,12 +1172,6 @@ func (i ThreatIntelligenceParsedPatternTypeValueArray) ToThreatIntelligenceParse
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelligenceParsedPatternTypeValueArrayOutput)
 }
 
-func (i ThreatIntelligenceParsedPatternTypeValueArray) ToOutput(ctx context.Context) pulumix.Output[[]ThreatIntelligenceParsedPatternTypeValue] {
-	return pulumix.Output[[]ThreatIntelligenceParsedPatternTypeValue]{
-		OutputState: i.ToThreatIntelligenceParsedPatternTypeValueArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes threat kill chain phase entity
 type ThreatIntelligenceParsedPatternTypeValueOutput struct{ *pulumi.OutputState }
 
@@ -1390,12 +1185,6 @@ func (o ThreatIntelligenceParsedPatternTypeValueOutput) ToThreatIntelligencePars
 
 func (o ThreatIntelligenceParsedPatternTypeValueOutput) ToThreatIntelligenceParsedPatternTypeValueOutputWithContext(ctx context.Context) ThreatIntelligenceParsedPatternTypeValueOutput {
 	return o
-}
-
-func (o ThreatIntelligenceParsedPatternTypeValueOutput) ToOutput(ctx context.Context) pulumix.Output[ThreatIntelligenceParsedPatternTypeValue] {
-	return pulumix.Output[ThreatIntelligenceParsedPatternTypeValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Value of parsed pattern
@@ -1420,12 +1209,6 @@ func (o ThreatIntelligenceParsedPatternTypeValueArrayOutput) ToThreatIntelligenc
 
 func (o ThreatIntelligenceParsedPatternTypeValueArrayOutput) ToThreatIntelligenceParsedPatternTypeValueArrayOutputWithContext(ctx context.Context) ThreatIntelligenceParsedPatternTypeValueArrayOutput {
 	return o
-}
-
-func (o ThreatIntelligenceParsedPatternTypeValueArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ThreatIntelligenceParsedPatternTypeValue] {
-	return pulumix.Output[[]ThreatIntelligenceParsedPatternTypeValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ThreatIntelligenceParsedPatternTypeValueArrayOutput) Index(i pulumi.IntInput) ThreatIntelligenceParsedPatternTypeValueOutput {
@@ -1457,12 +1240,6 @@ func (o TimelineAggregationResponseOutput) ToTimelineAggregationResponseOutputWi
 	return o
 }
 
-func (o TimelineAggregationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimelineAggregationResponse] {
-	return pulumix.Output[TimelineAggregationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // the total items found for a kind
 func (o TimelineAggregationResponseOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v TimelineAggregationResponse) int { return v.Count }).(pulumi.IntOutput)
@@ -1485,12 +1262,6 @@ func (o TimelineAggregationResponseArrayOutput) ToTimelineAggregationResponseArr
 
 func (o TimelineAggregationResponseArrayOutput) ToTimelineAggregationResponseArrayOutputWithContext(ctx context.Context) TimelineAggregationResponseArrayOutput {
 	return o
-}
-
-func (o TimelineAggregationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TimelineAggregationResponse] {
-	return pulumix.Output[[]TimelineAggregationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimelineAggregationResponseArrayOutput) Index(i pulumi.IntInput) TimelineAggregationResponseOutput {
@@ -1524,12 +1295,6 @@ func (o TimelineErrorResponseOutput) ToTimelineErrorResponseOutputWithContext(ct
 	return o
 }
 
-func (o TimelineErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimelineErrorResponse] {
-	return pulumix.Output[TimelineErrorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // the error message
 func (o TimelineErrorResponseOutput) ErrorMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v TimelineErrorResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
@@ -1557,12 +1322,6 @@ func (o TimelineErrorResponseArrayOutput) ToTimelineErrorResponseArrayOutput() T
 
 func (o TimelineErrorResponseArrayOutput) ToTimelineErrorResponseArrayOutputWithContext(ctx context.Context) TimelineErrorResponseArrayOutput {
 	return o
-}
-
-func (o TimelineErrorResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TimelineErrorResponse] {
-	return pulumix.Output[[]TimelineErrorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimelineErrorResponseArrayOutput) Index(i pulumi.IntInput) TimelineErrorResponseOutput {
@@ -1596,12 +1355,6 @@ func (o TimelineResultsMetadataResponseOutput) ToTimelineResultsMetadataResponse
 	return o
 }
 
-func (o TimelineResultsMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimelineResultsMetadataResponse] {
-	return pulumix.Output[TimelineResultsMetadataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // timeline aggregation per kind
 func (o TimelineResultsMetadataResponseOutput) Aggregations() TimelineAggregationResponseArrayOutput {
 	return o.ApplyT(func(v TimelineResultsMetadataResponse) []TimelineAggregationResponse { return v.Aggregations }).(TimelineAggregationResponseArrayOutput)
@@ -1629,12 +1382,6 @@ func (o TimelineResultsMetadataResponsePtrOutput) ToTimelineResultsMetadataRespo
 
 func (o TimelineResultsMetadataResponsePtrOutput) ToTimelineResultsMetadataResponsePtrOutputWithContext(ctx context.Context) TimelineResultsMetadataResponsePtrOutput {
 	return o
-}
-
-func (o TimelineResultsMetadataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TimelineResultsMetadataResponse] {
-	return pulumix.Output[*TimelineResultsMetadataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimelineResultsMetadataResponsePtrOutput) Elem() TimelineResultsMetadataResponseOutput {

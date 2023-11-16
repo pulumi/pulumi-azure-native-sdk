@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A VmwareSite
@@ -168,12 +167,6 @@ func (i *SitesController) ToSitesControllerOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SitesControllerOutput)
 }
 
-func (i *SitesController) ToOutput(ctx context.Context) pulumix.Output[*SitesController] {
-	return pulumix.Output[*SitesController]{
-		OutputState: i.ToSitesControllerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SitesControllerOutput struct{ *pulumi.OutputState }
 
 func (SitesControllerOutput) ElementType() reflect.Type {
@@ -186,12 +179,6 @@ func (o SitesControllerOutput) ToSitesControllerOutput() SitesControllerOutput {
 
 func (o SitesControllerOutput) ToSitesControllerOutputWithContext(ctx context.Context) SitesControllerOutput {
 	return o
-}
-
-func (o SitesControllerOutput) ToOutput(ctx context.Context) pulumix.Output[*SitesController] {
-	return pulumix.Output[*SitesController]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the on-premises agent details.

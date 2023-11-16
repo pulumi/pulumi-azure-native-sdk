@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Kusto cluster data set mapping
@@ -174,12 +173,6 @@ func (i *KustoClusterDataSetMapping) ToKustoClusterDataSetMappingOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(KustoClusterDataSetMappingOutput)
 }
 
-func (i *KustoClusterDataSetMapping) ToOutput(ctx context.Context) pulumix.Output[*KustoClusterDataSetMapping] {
-	return pulumix.Output[*KustoClusterDataSetMapping]{
-		OutputState: i.ToKustoClusterDataSetMappingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KustoClusterDataSetMappingOutput struct{ *pulumi.OutputState }
 
 func (KustoClusterDataSetMappingOutput) ElementType() reflect.Type {
@@ -192,12 +185,6 @@ func (o KustoClusterDataSetMappingOutput) ToKustoClusterDataSetMappingOutput() K
 
 func (o KustoClusterDataSetMappingOutput) ToKustoClusterDataSetMappingOutputWithContext(ctx context.Context) KustoClusterDataSetMappingOutput {
 	return o
-}
-
-func (o KustoClusterDataSetMappingOutput) ToOutput(ctx context.Context) pulumix.Output[*KustoClusterDataSetMapping] {
-	return pulumix.Output[*KustoClusterDataSetMapping]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the source data set.

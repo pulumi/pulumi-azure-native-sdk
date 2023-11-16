@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve the details of the gateway resource.
@@ -85,12 +84,6 @@ func (o LookupManagedGatewayResultOutput) ToLookupManagedGatewayResultOutput() L
 
 func (o LookupManagedGatewayResultOutput) ToLookupManagedGatewayResultOutputWithContext(ctx context.Context) LookupManagedGatewayResultOutput {
 	return o
-}
-
-func (o LookupManagedGatewayResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedGatewayResult] {
-	return pulumix.Output[LookupManagedGatewayResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

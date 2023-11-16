@@ -81,12 +81,6 @@ func (o AadAuthFailureModeOutput) ToAadAuthFailureModePtrOutputWithContext(ctx c
 	}).(AadAuthFailureModePtrOutput)
 }
 
-func (o AadAuthFailureModeOutput) ToOutput(ctx context.Context) pulumix.Output[AadAuthFailureMode] {
-	return pulumix.Output[AadAuthFailureMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AadAuthFailureModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -120,12 +114,6 @@ func (o AadAuthFailureModePtrOutput) ToAadAuthFailureModePtrOutput() AadAuthFail
 
 func (o AadAuthFailureModePtrOutput) ToAadAuthFailureModePtrOutputWithContext(ctx context.Context) AadAuthFailureModePtrOutput {
 	return o
-}
-
-func (o AadAuthFailureModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AadAuthFailureMode] {
-	return pulumix.Output[*AadAuthFailureMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AadAuthFailureModePtrOutput) Elem() AadAuthFailureModeOutput {
@@ -266,12 +254,6 @@ func (o HostingModeOutput) ToHostingModePtrOutputWithContext(ctx context.Context
 	}).(HostingModePtrOutput)
 }
 
-func (o HostingModeOutput) ToOutput(ctx context.Context) pulumix.Output[HostingMode] {
-	return pulumix.Output[HostingMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HostingModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -305,12 +287,6 @@ func (o HostingModePtrOutput) ToHostingModePtrOutput() HostingModePtrOutput {
 
 func (o HostingModePtrOutput) ToHostingModePtrOutputWithContext(ctx context.Context) HostingModePtrOutput {
 	return o
-}
-
-func (o HostingModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HostingMode] {
-	return pulumix.Output[*HostingMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HostingModePtrOutput) Elem() HostingModeOutput {
@@ -495,12 +471,6 @@ func (o SearchEncryptionWithCmkOutput) ToSearchEncryptionWithCmkPtrOutputWithCon
 	}).(SearchEncryptionWithCmkPtrOutput)
 }
 
-func (o SearchEncryptionWithCmkOutput) ToOutput(ctx context.Context) pulumix.Output[SearchEncryptionWithCmk] {
-	return pulumix.Output[SearchEncryptionWithCmk]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SearchEncryptionWithCmkOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -534,12 +504,6 @@ func (o SearchEncryptionWithCmkPtrOutput) ToSearchEncryptionWithCmkPtrOutput() S
 
 func (o SearchEncryptionWithCmkPtrOutput) ToSearchEncryptionWithCmkPtrOutputWithContext(ctx context.Context) SearchEncryptionWithCmkPtrOutput {
 	return o
-}
-
-func (o SearchEncryptionWithCmkPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SearchEncryptionWithCmk] {
-	return pulumix.Output[*SearchEncryptionWithCmk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SearchEncryptionWithCmkPtrOutput) Elem() SearchEncryptionWithCmkOutput {

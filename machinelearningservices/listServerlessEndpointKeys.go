@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Keys for endpoint authentication.
@@ -80,12 +79,6 @@ func (o ListServerlessEndpointKeysResultOutput) ToListServerlessEndpointKeysResu
 
 func (o ListServerlessEndpointKeysResultOutput) ToListServerlessEndpointKeysResultOutputWithContext(ctx context.Context) ListServerlessEndpointKeysResultOutput {
 	return o
-}
-
-func (o ListServerlessEndpointKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListServerlessEndpointKeysResult] {
-	return pulumix.Output[ListServerlessEndpointKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The primary key.

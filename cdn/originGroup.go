@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Origin group comprising of origins is used for load balancing to origins when the content cannot be served from CDN.
@@ -183,12 +182,6 @@ func (i *OriginGroup) ToOriginGroupOutputWithContext(ctx context.Context) Origin
 	return pulumi.ToOutputWithContext(ctx, i).(OriginGroupOutput)
 }
 
-func (i *OriginGroup) ToOutput(ctx context.Context) pulumix.Output[*OriginGroup] {
-	return pulumix.Output[*OriginGroup]{
-		OutputState: i.ToOriginGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OriginGroupOutput struct{ *pulumi.OutputState }
 
 func (OriginGroupOutput) ElementType() reflect.Type {
@@ -201,12 +194,6 @@ func (o OriginGroupOutput) ToOriginGroupOutput() OriginGroupOutput {
 
 func (o OriginGroupOutput) ToOriginGroupOutputWithContext(ctx context.Context) OriginGroupOutput {
 	return o
-}
-
-func (o OriginGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*OriginGroup] {
-	return pulumix.Output[*OriginGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Health probe settings to the origin that is used to determine the health of the origin.

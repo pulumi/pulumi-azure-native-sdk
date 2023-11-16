@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Dapr Component Resiliency Policy.
@@ -91,12 +90,6 @@ func (o LookupDaprComponentResiliencyPolicyResultOutput) ToLookupDaprComponentRe
 
 func (o LookupDaprComponentResiliencyPolicyResultOutput) ToLookupDaprComponentResiliencyPolicyResultOutputWithContext(ctx context.Context) LookupDaprComponentResiliencyPolicyResultOutput {
 	return o
-}
-
-func (o LookupDaprComponentResiliencyPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDaprComponentResiliencyPolicyResult] {
-	return pulumix.Output[LookupDaprComponentResiliencyPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

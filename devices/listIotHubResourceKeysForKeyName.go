@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a shared access policy by name from an IoT hub. For more information, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
@@ -86,12 +85,6 @@ func (o ListIotHubResourceKeysForKeyNameResultOutput) ToListIotHubResourceKeysFo
 
 func (o ListIotHubResourceKeysForKeyNameResultOutput) ToListIotHubResourceKeysForKeyNameResultOutputWithContext(ctx context.Context) ListIotHubResourceKeysForKeyNameResultOutput {
 	return o
-}
-
-func (o ListIotHubResourceKeysForKeyNameResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListIotHubResourceKeysForKeyNameResult] {
-	return pulumix.Output[ListIotHubResourceKeysForKeyNameResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the shared access policy.

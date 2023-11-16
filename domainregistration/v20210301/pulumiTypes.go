@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -35,12 +34,6 @@ func (o NameIdentifierResponseOutput) ToNameIdentifierResponseOutputWithContext(
 	return o
 }
 
-func (o NameIdentifierResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NameIdentifierResponse] {
-	return pulumix.Output[NameIdentifierResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the object.
 func (o NameIdentifierResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NameIdentifierResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -58,12 +51,6 @@ func (o NameIdentifierResponseArrayOutput) ToNameIdentifierResponseArrayOutput()
 
 func (o NameIdentifierResponseArrayOutput) ToNameIdentifierResponseArrayOutputWithContext(ctx context.Context) NameIdentifierResponseArrayOutput {
 	return o
-}
-
-func (o NameIdentifierResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NameIdentifierResponse] {
-	return pulumix.Output[[]NameIdentifierResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NameIdentifierResponseArrayOutput) Index(i pulumi.IntInput) NameIdentifierResponseOutput {
@@ -99,12 +86,6 @@ func (o TldLegalAgreementResponseOutput) ToTldLegalAgreementResponseOutputWithCo
 	return o
 }
 
-func (o TldLegalAgreementResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TldLegalAgreementResponse] {
-	return pulumix.Output[TldLegalAgreementResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Unique identifier for the agreement.
 func (o TldLegalAgreementResponseOutput) AgreementKey() pulumi.StringOutput {
 	return o.ApplyT(func(v TldLegalAgreementResponse) string { return v.AgreementKey }).(pulumi.StringOutput)
@@ -137,12 +118,6 @@ func (o TldLegalAgreementResponseArrayOutput) ToTldLegalAgreementResponseArrayOu
 
 func (o TldLegalAgreementResponseArrayOutput) ToTldLegalAgreementResponseArrayOutputWithContext(ctx context.Context) TldLegalAgreementResponseArrayOutput {
 	return o
-}
-
-func (o TldLegalAgreementResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TldLegalAgreementResponse] {
-	return pulumix.Output[[]TldLegalAgreementResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TldLegalAgreementResponseArrayOutput) Index(i pulumi.IntInput) TldLegalAgreementResponseOutput {

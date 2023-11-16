@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -43,12 +42,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -126,12 +119,6 @@ func (i TemplateSpecTemplateArtifactArgs) ToTemplateSpecTemplateArtifactOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateSpecTemplateArtifactOutput)
 }
 
-func (i TemplateSpecTemplateArtifactArgs) ToOutput(ctx context.Context) pulumix.Output[TemplateSpecTemplateArtifact] {
-	return pulumix.Output[TemplateSpecTemplateArtifact]{
-		OutputState: i.ToTemplateSpecTemplateArtifactOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TemplateSpecTemplateArtifactArrayInput is an input type that accepts TemplateSpecTemplateArtifactArray and TemplateSpecTemplateArtifactArrayOutput values.
 // You can construct a concrete instance of `TemplateSpecTemplateArtifactArrayInput` via:
 //
@@ -157,12 +144,6 @@ func (i TemplateSpecTemplateArtifactArray) ToTemplateSpecTemplateArtifactArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(TemplateSpecTemplateArtifactArrayOutput)
 }
 
-func (i TemplateSpecTemplateArtifactArray) ToOutput(ctx context.Context) pulumix.Output[[]TemplateSpecTemplateArtifact] {
-	return pulumix.Output[[]TemplateSpecTemplateArtifact]{
-		OutputState: i.ToTemplateSpecTemplateArtifactArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a Template Spec artifact containing an embedded Azure Resource Manager template.
 type TemplateSpecTemplateArtifactOutput struct{ *pulumi.OutputState }
 
@@ -176,12 +157,6 @@ func (o TemplateSpecTemplateArtifactOutput) ToTemplateSpecTemplateArtifactOutput
 
 func (o TemplateSpecTemplateArtifactOutput) ToTemplateSpecTemplateArtifactOutputWithContext(ctx context.Context) TemplateSpecTemplateArtifactOutput {
 	return o
-}
-
-func (o TemplateSpecTemplateArtifactOutput) ToOutput(ctx context.Context) pulumix.Output[TemplateSpecTemplateArtifact] {
-	return pulumix.Output[TemplateSpecTemplateArtifact]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The kind of artifact.
@@ -212,12 +187,6 @@ func (o TemplateSpecTemplateArtifactArrayOutput) ToTemplateSpecTemplateArtifactA
 
 func (o TemplateSpecTemplateArtifactArrayOutput) ToTemplateSpecTemplateArtifactArrayOutputWithContext(ctx context.Context) TemplateSpecTemplateArtifactArrayOutput {
 	return o
-}
-
-func (o TemplateSpecTemplateArtifactArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TemplateSpecTemplateArtifact] {
-	return pulumix.Output[[]TemplateSpecTemplateArtifact]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TemplateSpecTemplateArtifactArrayOutput) Index(i pulumi.IntInput) TemplateSpecTemplateArtifactOutput {
@@ -252,12 +221,6 @@ func (o TemplateSpecTemplateArtifactResponseOutput) ToTemplateSpecTemplateArtifa
 	return o
 }
 
-func (o TemplateSpecTemplateArtifactResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TemplateSpecTemplateArtifactResponse] {
-	return pulumix.Output[TemplateSpecTemplateArtifactResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The kind of artifact.
 // Expected value is 'template'.
 func (o TemplateSpecTemplateArtifactResponseOutput) Kind() pulumi.StringOutput {
@@ -286,12 +249,6 @@ func (o TemplateSpecTemplateArtifactResponseArrayOutput) ToTemplateSpecTemplateA
 
 func (o TemplateSpecTemplateArtifactResponseArrayOutput) ToTemplateSpecTemplateArtifactResponseArrayOutputWithContext(ctx context.Context) TemplateSpecTemplateArtifactResponseArrayOutput {
 	return o
-}
-
-func (o TemplateSpecTemplateArtifactResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TemplateSpecTemplateArtifactResponse] {
-	return pulumix.Output[[]TemplateSpecTemplateArtifactResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TemplateSpecTemplateArtifactResponseArrayOutput) Index(i pulumi.IntInput) TemplateSpecTemplateArtifactResponseOutput {

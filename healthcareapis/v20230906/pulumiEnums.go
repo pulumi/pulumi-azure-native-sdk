@@ -105,12 +105,6 @@ func (o KindOutput) ToKindPtrOutputWithContext(ctx context.Context) KindPtrOutpu
 	}).(KindPtrOutput)
 }
 
-func (o KindOutput) ToOutput(ctx context.Context) pulumix.Output[Kind] {
-	return pulumix.Output[Kind]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KindOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -144,12 +138,6 @@ func (o KindPtrOutput) ToKindPtrOutput() KindPtrOutput {
 
 func (o KindPtrOutput) ToKindPtrOutputWithContext(ctx context.Context) KindPtrOutput {
 	return o
-}
-
-func (o KindPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Kind] {
-	return pulumix.Output[*Kind]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KindPtrOutput) Elem() KindOutput {

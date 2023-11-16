@@ -10,12 +10,11 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2019-01-01-preview.
 //
-// Other available API versions: 2019-01-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2019-01-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 type AutomationRule struct {
 	pulumi.CustomResourceState
 
@@ -146,6 +145,9 @@ func NewAutomationRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:AutomationRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:AutomationRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -238,12 +240,6 @@ func (i *AutomationRule) ToAutomationRuleOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleOutput)
 }
 
-func (i *AutomationRule) ToOutput(ctx context.Context) pulumix.Output[*AutomationRule] {
-	return pulumix.Output[*AutomationRule]{
-		OutputState: i.ToAutomationRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AutomationRuleOutput struct{ *pulumi.OutputState }
 
 func (AutomationRuleOutput) ElementType() reflect.Type {
@@ -256,12 +252,6 @@ func (o AutomationRuleOutput) ToAutomationRuleOutput() AutomationRuleOutput {
 
 func (o AutomationRuleOutput) ToAutomationRuleOutputWithContext(ctx context.Context) AutomationRuleOutput {
 	return o
-}
-
-func (o AutomationRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*AutomationRule] {
-	return pulumix.Output[*AutomationRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The actions to execute when the automation rule is triggered.

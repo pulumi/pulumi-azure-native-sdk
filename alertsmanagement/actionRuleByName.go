@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Action rule object containing target scope, conditions and suppression logic
@@ -142,12 +141,6 @@ func (i *ActionRuleByName) ToActionRuleByNameOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ActionRuleByNameOutput)
 }
 
-func (i *ActionRuleByName) ToOutput(ctx context.Context) pulumix.Output[*ActionRuleByName] {
-	return pulumix.Output[*ActionRuleByName]{
-		OutputState: i.ToActionRuleByNameOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ActionRuleByNameOutput struct{ *pulumi.OutputState }
 
 func (ActionRuleByNameOutput) ElementType() reflect.Type {
@@ -160,12 +153,6 @@ func (o ActionRuleByNameOutput) ToActionRuleByNameOutput() ActionRuleByNameOutpu
 
 func (o ActionRuleByNameOutput) ToActionRuleByNameOutputWithContext(ctx context.Context) ActionRuleByNameOutput {
 	return o
-}
-
-func (o ActionRuleByNameOutput) ToOutput(ctx context.Context) pulumix.Output[*ActionRuleByName] {
-	return pulumix.Output[*ActionRuleByName]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource location

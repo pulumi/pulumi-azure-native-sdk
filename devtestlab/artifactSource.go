@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Properties of an artifact source.
@@ -191,12 +190,6 @@ func (i *ArtifactSource) ToArtifactSourceOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ArtifactSourceOutput)
 }
 
-func (i *ArtifactSource) ToOutput(ctx context.Context) pulumix.Output[*ArtifactSource] {
-	return pulumix.Output[*ArtifactSource]{
-		OutputState: i.ToArtifactSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ArtifactSourceOutput struct{ *pulumi.OutputState }
 
 func (ArtifactSourceOutput) ElementType() reflect.Type {
@@ -209,12 +202,6 @@ func (o ArtifactSourceOutput) ToArtifactSourceOutput() ArtifactSourceOutput {
 
 func (o ArtifactSourceOutput) ToArtifactSourceOutputWithContext(ctx context.Context) ArtifactSourceOutput {
 	return o
-}
-
-func (o ArtifactSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*ArtifactSource] {
-	return pulumix.Output[*ArtifactSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The folder containing Azure Resource Manager templates.

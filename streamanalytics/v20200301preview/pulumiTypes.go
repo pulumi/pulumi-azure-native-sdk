@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -39,12 +38,6 @@ func (o ClusterJobResponseOutput) ToClusterJobResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o ClusterJobResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterJobResponse] {
-	return pulumix.Output[ClusterJobResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource ID of the streaming job.
 func (o ClusterJobResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterJobResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -72,12 +65,6 @@ func (o ClusterJobResponseArrayOutput) ToClusterJobResponseArrayOutput() Cluster
 
 func (o ClusterJobResponseArrayOutput) ToClusterJobResponseArrayOutputWithContext(ctx context.Context) ClusterJobResponseArrayOutput {
 	return o
-}
-
-func (o ClusterJobResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterJobResponse] {
-	return pulumix.Output[[]ClusterJobResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterJobResponseArrayOutput) Index(i pulumi.IntInput) ClusterJobResponseOutput {
@@ -113,12 +100,6 @@ func (o ClusterPropertiesResponseOutput) ToClusterPropertiesResponseOutput() Clu
 
 func (o ClusterPropertiesResponseOutput) ToClusterPropertiesResponseOutputWithContext(ctx context.Context) ClusterPropertiesResponseOutput {
 	return o
-}
-
-func (o ClusterPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterPropertiesResponse] {
-	return pulumix.Output[ClusterPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Represents the number of streaming units currently being used on the cluster.
@@ -185,12 +166,6 @@ func (i ClusterSkuArgs) ToClusterSkuOutputWithContext(ctx context.Context) Clust
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterSkuOutput)
 }
 
-func (i ClusterSkuArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterSku] {
-	return pulumix.Output[ClusterSku]{
-		OutputState: i.ToClusterSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterSkuArgs) ToClusterSkuPtrOutput() ClusterSkuPtrOutput {
 	return i.ToClusterSkuPtrOutputWithContext(context.Background())
 }
@@ -232,12 +207,6 @@ func (i *clusterSkuPtrType) ToClusterSkuPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterSkuPtrOutput)
 }
 
-func (i *clusterSkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterSku] {
-	return pulumix.Output[*ClusterSku]{
-		OutputState: i.ToClusterSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The SKU of the cluster. This determines the size/capacity of the cluster. Required on PUT (CreateOrUpdate) requests.
 type ClusterSkuOutput struct{ *pulumi.OutputState }
 
@@ -263,12 +232,6 @@ func (o ClusterSkuOutput) ToClusterSkuPtrOutputWithContext(ctx context.Context) 
 	}).(ClusterSkuPtrOutput)
 }
 
-func (o ClusterSkuOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterSku] {
-	return pulumix.Output[ClusterSku]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Denotes the number of streaming units the cluster can support. Valid values for this property are multiples of 36 with a minimum value of 36 and maximum value of 216. Required on PUT (CreateOrUpdate) requests.
 func (o ClusterSkuOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterSku) *int { return v.Capacity }).(pulumi.IntPtrOutput)
@@ -291,12 +254,6 @@ func (o ClusterSkuPtrOutput) ToClusterSkuPtrOutput() ClusterSkuPtrOutput {
 
 func (o ClusterSkuPtrOutput) ToClusterSkuPtrOutputWithContext(ctx context.Context) ClusterSkuPtrOutput {
 	return o
-}
-
-func (o ClusterSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterSku] {
-	return pulumix.Output[*ClusterSku]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterSkuPtrOutput) Elem() ClusterSkuOutput {
@@ -352,12 +309,6 @@ func (o ClusterSkuResponseOutput) ToClusterSkuResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o ClusterSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterSkuResponse] {
-	return pulumix.Output[ClusterSkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Denotes the number of streaming units the cluster can support. Valid values for this property are multiples of 36 with a minimum value of 36 and maximum value of 216. Required on PUT (CreateOrUpdate) requests.
 func (o ClusterSkuResponseOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterSkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
@@ -380,12 +331,6 @@ func (o ClusterSkuResponsePtrOutput) ToClusterSkuResponsePtrOutput() ClusterSkuR
 
 func (o ClusterSkuResponsePtrOutput) ToClusterSkuResponsePtrOutputWithContext(ctx context.Context) ClusterSkuResponsePtrOutput {
 	return o
-}
-
-func (o ClusterSkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterSkuResponse] {
-	return pulumix.Output[*ClusterSkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterSkuResponsePtrOutput) Elem() ClusterSkuResponseOutput {
@@ -453,12 +398,6 @@ func (i PrivateEndpointPropertiesArgs) ToPrivateEndpointPropertiesOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointPropertiesOutput)
 }
 
-func (i PrivateEndpointPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointProperties] {
-	return pulumix.Output[PrivateEndpointProperties]{
-		OutputState: i.ToPrivateEndpointPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PrivateEndpointPropertiesArgs) ToPrivateEndpointPropertiesPtrOutput() PrivateEndpointPropertiesPtrOutput {
 	return i.ToPrivateEndpointPropertiesPtrOutputWithContext(context.Background())
 }
@@ -500,12 +439,6 @@ func (i *privateEndpointPropertiesPtrType) ToPrivateEndpointPropertiesPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointPropertiesPtrOutput)
 }
 
-func (i *privateEndpointPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointProperties] {
-	return pulumix.Output[*PrivateEndpointProperties]{
-		OutputState: i.ToPrivateEndpointPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties associated with a private endpoint.
 type PrivateEndpointPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -531,12 +464,6 @@ func (o PrivateEndpointPropertiesOutput) ToPrivateEndpointPropertiesPtrOutputWit
 	}).(PrivateEndpointPropertiesPtrOutput)
 }
 
-func (o PrivateEndpointPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointProperties] {
-	return pulumix.Output[PrivateEndpointProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of connections to the remote resource. Immutable after it is set.
 func (o PrivateEndpointPropertiesOutput) ManualPrivateLinkServiceConnections() PrivateLinkServiceConnectionArrayOutput {
 	return o.ApplyT(func(v PrivateEndpointProperties) []PrivateLinkServiceConnection {
@@ -556,12 +483,6 @@ func (o PrivateEndpointPropertiesPtrOutput) ToPrivateEndpointPropertiesPtrOutput
 
 func (o PrivateEndpointPropertiesPtrOutput) ToPrivateEndpointPropertiesPtrOutputWithContext(ctx context.Context) PrivateEndpointPropertiesPtrOutput {
 	return o
-}
-
-func (o PrivateEndpointPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointProperties] {
-	return pulumix.Output[*PrivateEndpointProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateEndpointPropertiesPtrOutput) Elem() PrivateEndpointPropertiesOutput {
@@ -607,12 +528,6 @@ func (o PrivateEndpointPropertiesResponseOutput) ToPrivateEndpointPropertiesResp
 	return o
 }
 
-func (o PrivateEndpointPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointPropertiesResponse] {
-	return pulumix.Output[PrivateEndpointPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The date when this private endpoint was created.
 func (o PrivateEndpointPropertiesResponseOutput) CreatedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointPropertiesResponse) string { return v.CreatedDate }).(pulumi.StringOutput)
@@ -650,12 +565,6 @@ func (o PrivateLinkConnectionStateResponseOutput) ToPrivateLinkConnectionStateRe
 	return o
 }
 
-func (o PrivateLinkConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkConnectionStateResponse] {
-	return pulumix.Output[PrivateLinkConnectionStateResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A message indicating if changes on the service provider require any updates on the consumer.
 func (o PrivateLinkConnectionStateResponseOutput) ActionsRequired() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateLinkConnectionStateResponse) string { return v.ActionsRequired }).(pulumi.StringOutput)
@@ -683,12 +592,6 @@ func (o PrivateLinkConnectionStateResponsePtrOutput) ToPrivateLinkConnectionStat
 
 func (o PrivateLinkConnectionStateResponsePtrOutput) ToPrivateLinkConnectionStateResponsePtrOutputWithContext(ctx context.Context) PrivateLinkConnectionStateResponsePtrOutput {
 	return o
-}
-
-func (o PrivateLinkConnectionStateResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkConnectionStateResponse] {
-	return pulumix.Output[*PrivateLinkConnectionStateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateLinkConnectionStateResponsePtrOutput) Elem() PrivateLinkConnectionStateResponseOutput {
@@ -770,12 +673,6 @@ func (i PrivateLinkServiceConnectionArgs) ToPrivateLinkServiceConnectionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionOutput)
 }
 
-func (i PrivateLinkServiceConnectionArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnection] {
-	return pulumix.Output[PrivateLinkServiceConnection]{
-		OutputState: i.ToPrivateLinkServiceConnectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PrivateLinkServiceConnectionArrayInput is an input type that accepts PrivateLinkServiceConnectionArray and PrivateLinkServiceConnectionArrayOutput values.
 // You can construct a concrete instance of `PrivateLinkServiceConnectionArrayInput` via:
 //
@@ -801,12 +698,6 @@ func (i PrivateLinkServiceConnectionArray) ToPrivateLinkServiceConnectionArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionArrayOutput)
 }
 
-func (i PrivateLinkServiceConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]PrivateLinkServiceConnection] {
-	return pulumix.Output[[]PrivateLinkServiceConnection]{
-		OutputState: i.ToPrivateLinkServiceConnectionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A grouping of information about the connection to the remote resource.
 type PrivateLinkServiceConnectionOutput struct{ *pulumi.OutputState }
 
@@ -820,12 +711,6 @@ func (o PrivateLinkServiceConnectionOutput) ToPrivateLinkServiceConnectionOutput
 
 func (o PrivateLinkServiceConnectionOutput) ToPrivateLinkServiceConnectionOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnection] {
-	return pulumix.Output[PrivateLinkServiceConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests.
@@ -850,12 +735,6 @@ func (o PrivateLinkServiceConnectionArrayOutput) ToPrivateLinkServiceConnectionA
 
 func (o PrivateLinkServiceConnectionArrayOutput) ToPrivateLinkServiceConnectionArrayOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionArrayOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateLinkServiceConnection] {
-	return pulumix.Output[[]PrivateLinkServiceConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateLinkServiceConnectionArrayOutput) Index(i pulumi.IntInput) PrivateLinkServiceConnectionOutput {
@@ -889,12 +768,6 @@ func (o PrivateLinkServiceConnectionResponseOutput) ToPrivateLinkServiceConnecti
 
 func (o PrivateLinkServiceConnectionResponseOutput) ToPrivateLinkServiceConnectionResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionResponseOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionResponse] {
-	return pulumix.Output[PrivateLinkServiceConnectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests.
@@ -931,12 +804,6 @@ func (o PrivateLinkServiceConnectionResponseArrayOutput) ToPrivateLinkServiceCon
 
 func (o PrivateLinkServiceConnectionResponseArrayOutput) ToPrivateLinkServiceConnectionResponseArrayOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionResponseArrayOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateLinkServiceConnectionResponse] {
-	return pulumix.Output[[]PrivateLinkServiceConnectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateLinkServiceConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateLinkServiceConnectionResponseOutput {

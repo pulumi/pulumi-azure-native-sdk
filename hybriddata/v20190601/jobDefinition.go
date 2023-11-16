@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Job Definition.
@@ -192,12 +191,6 @@ func (i *JobDefinition) ToJobDefinitionOutputWithContext(ctx context.Context) Jo
 	return pulumi.ToOutputWithContext(ctx, i).(JobDefinitionOutput)
 }
 
-func (i *JobDefinition) ToOutput(ctx context.Context) pulumix.Output[*JobDefinition] {
-	return pulumix.Output[*JobDefinition]{
-		OutputState: i.ToJobDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobDefinitionOutput struct{ *pulumi.OutputState }
 
 func (JobDefinitionOutput) ElementType() reflect.Type {
@@ -210,12 +203,6 @@ func (o JobDefinitionOutput) ToJobDefinitionOutput() JobDefinitionOutput {
 
 func (o JobDefinitionOutput) ToJobDefinitionOutputWithContext(ctx context.Context) JobDefinitionOutput {
 	return o
-}
-
-func (o JobDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[*JobDefinition] {
-	return pulumix.Output[*JobDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of customer secrets containing a key identifier and key value. The key identifier is a way for the specific data source to understand the key. Value contains customer secret encrypted by the encryptionKeys.

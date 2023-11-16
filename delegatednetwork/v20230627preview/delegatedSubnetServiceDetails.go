@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an instance of a orchestrator.
@@ -155,12 +154,6 @@ func (i *DelegatedSubnetServiceDetails) ToDelegatedSubnetServiceDetailsOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(DelegatedSubnetServiceDetailsOutput)
 }
 
-func (i *DelegatedSubnetServiceDetails) ToOutput(ctx context.Context) pulumix.Output[*DelegatedSubnetServiceDetails] {
-	return pulumix.Output[*DelegatedSubnetServiceDetails]{
-		OutputState: i.ToDelegatedSubnetServiceDetailsOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DelegatedSubnetServiceDetailsOutput struct{ *pulumi.OutputState }
 
 func (DelegatedSubnetServiceDetailsOutput) ElementType() reflect.Type {
@@ -173,12 +166,6 @@ func (o DelegatedSubnetServiceDetailsOutput) ToDelegatedSubnetServiceDetailsOutp
 
 func (o DelegatedSubnetServiceDetailsOutput) ToDelegatedSubnetServiceDetailsOutputWithContext(ctx context.Context) DelegatedSubnetServiceDetailsOutput {
 	return o
-}
-
-func (o DelegatedSubnetServiceDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[*DelegatedSubnetServiceDetails] {
-	return pulumix.Output[*DelegatedSubnetServiceDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines prefix size of CIDR blocks allocated to nodes in VnetBlock Mode.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Namespace topic details.
@@ -147,12 +146,6 @@ func (i *NamespaceTopic) ToNamespaceTopicOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceTopicOutput)
 }
 
-func (i *NamespaceTopic) ToOutput(ctx context.Context) pulumix.Output[*NamespaceTopic] {
-	return pulumix.Output[*NamespaceTopic]{
-		OutputState: i.ToNamespaceTopicOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NamespaceTopicOutput struct{ *pulumi.OutputState }
 
 func (NamespaceTopicOutput) ElementType() reflect.Type {
@@ -165,12 +158,6 @@ func (o NamespaceTopicOutput) ToNamespaceTopicOutput() NamespaceTopicOutput {
 
 func (o NamespaceTopicOutput) ToNamespaceTopicOutputWithContext(ctx context.Context) NamespaceTopicOutput {
 	return o
-}
-
-func (o NamespaceTopicOutput) ToOutput(ctx context.Context) pulumix.Output[*NamespaceTopic] {
-	return pulumix.Output[*NamespaceTopic]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Event retention for the namespace topic expressed in days. The property default value is 1 day.

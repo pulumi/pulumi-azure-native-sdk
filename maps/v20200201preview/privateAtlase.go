@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure resource which represents which will provision the ability to create private location data.
@@ -130,12 +129,6 @@ func (i *PrivateAtlase) ToPrivateAtlaseOutputWithContext(ctx context.Context) Pr
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateAtlaseOutput)
 }
 
-func (i *PrivateAtlase) ToOutput(ctx context.Context) pulumix.Output[*PrivateAtlase] {
-	return pulumix.Output[*PrivateAtlase]{
-		OutputState: i.ToPrivateAtlaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateAtlaseOutput struct{ *pulumi.OutputState }
 
 func (PrivateAtlaseOutput) ElementType() reflect.Type {
@@ -148,12 +141,6 @@ func (o PrivateAtlaseOutput) ToPrivateAtlaseOutput() PrivateAtlaseOutput {
 
 func (o PrivateAtlaseOutput) ToPrivateAtlaseOutputWithContext(ctx context.Context) PrivateAtlaseOutput {
 	return o
-}
-
-func (o PrivateAtlaseOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateAtlase] {
-	return pulumix.Output[*PrivateAtlase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

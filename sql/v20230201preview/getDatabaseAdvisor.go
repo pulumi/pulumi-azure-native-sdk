@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a database advisor.
@@ -101,12 +100,6 @@ func (o LookupDatabaseAdvisorResultOutput) ToLookupDatabaseAdvisorResultOutput()
 
 func (o LookupDatabaseAdvisorResultOutput) ToLookupDatabaseAdvisorResultOutputWithContext(ctx context.Context) LookupDatabaseAdvisorResultOutput {
 	return o
-}
-
-func (o LookupDatabaseAdvisorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDatabaseAdvisorResult] {
-	return pulumix.Output[LookupDatabaseAdvisorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the status of availability of this advisor to customers. Possible values are 'GA', 'PublicPreview', 'LimitedPublicPreview' and 'PrivatePreview'.

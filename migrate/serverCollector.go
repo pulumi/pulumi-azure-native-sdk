@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2019-10-01. Prior API version in Azure Native 1.x: 2019-10-01.
@@ -123,12 +122,6 @@ func (i *ServerCollector) ToServerCollectorOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ServerCollectorOutput)
 }
 
-func (i *ServerCollector) ToOutput(ctx context.Context) pulumix.Output[*ServerCollector] {
-	return pulumix.Output[*ServerCollector]{
-		OutputState: i.ToServerCollectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerCollectorOutput struct{ *pulumi.OutputState }
 
 func (ServerCollectorOutput) ElementType() reflect.Type {
@@ -141,12 +134,6 @@ func (o ServerCollectorOutput) ToServerCollectorOutput() ServerCollectorOutput {
 
 func (o ServerCollectorOutput) ToServerCollectorOutputWithContext(ctx context.Context) ServerCollectorOutput {
 	return o
-}
-
-func (o ServerCollectorOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerCollector] {
-	return pulumix.Output[*ServerCollector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerCollectorOutput) ETag() pulumi.StringPtrOutput {

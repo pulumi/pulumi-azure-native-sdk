@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Space
@@ -88,12 +87,6 @@ func (o LookupSpaceResultOutput) ToLookupSpaceResultOutput() LookupSpaceResultOu
 
 func (o LookupSpaceResultOutput) ToLookupSpaceResultOutputWithContext(ctx context.Context) LookupSpaceResultOutput {
 	return o
-}
-
-func (o LookupSpaceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSpaceResult] {
-	return pulumix.Output[LookupSpaceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the resource.
