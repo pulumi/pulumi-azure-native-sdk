@@ -108,12 +108,6 @@ func (o TagOperatorsOutput) ToTagOperatorsPtrOutputWithContext(ctx context.Conte
 	}).(TagOperatorsPtrOutput)
 }
 
-func (o TagOperatorsOutput) ToOutput(ctx context.Context) pulumix.Output[TagOperators] {
-	return pulumix.Output[TagOperators]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TagOperatorsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -147,12 +141,6 @@ func (o TagOperatorsPtrOutput) ToTagOperatorsPtrOutput() TagOperatorsPtrOutput {
 
 func (o TagOperatorsPtrOutput) ToTagOperatorsPtrOutputWithContext(ctx context.Context) TagOperatorsPtrOutput {
 	return o
-}
-
-func (o TagOperatorsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TagOperators] {
-	return pulumix.Output[*TagOperators]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TagOperatorsPtrOutput) Elem() TagOperatorsOutput {

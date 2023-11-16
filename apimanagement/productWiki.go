@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Wiki properties
@@ -134,12 +133,6 @@ func (i *ProductWiki) ToProductWikiOutputWithContext(ctx context.Context) Produc
 	return pulumi.ToOutputWithContext(ctx, i).(ProductWikiOutput)
 }
 
-func (i *ProductWiki) ToOutput(ctx context.Context) pulumix.Output[*ProductWiki] {
-	return pulumix.Output[*ProductWiki]{
-		OutputState: i.ToProductWikiOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProductWikiOutput struct{ *pulumi.OutputState }
 
 func (ProductWikiOutput) ElementType() reflect.Type {
@@ -152,12 +145,6 @@ func (o ProductWikiOutput) ToProductWikiOutput() ProductWikiOutput {
 
 func (o ProductWikiOutput) ToProductWikiOutputWithContext(ctx context.Context) ProductWikiOutput {
 	return o
-}
-
-func (o ProductWikiOutput) ToOutput(ctx context.Context) pulumix.Output[*ProductWiki] {
-	return pulumix.Output[*ProductWiki]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Collection wiki documents included into this wiki.

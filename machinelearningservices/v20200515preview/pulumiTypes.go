@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i LinkedWorkspacePropsArgs) ToLinkedWorkspacePropsOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedWorkspacePropsOutput)
 }
 
-func (i LinkedWorkspacePropsArgs) ToOutput(ctx context.Context) pulumix.Output[LinkedWorkspaceProps] {
-	return pulumix.Output[LinkedWorkspaceProps]{
-		OutputState: i.ToLinkedWorkspacePropsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i LinkedWorkspacePropsArgs) ToLinkedWorkspacePropsPtrOutput() LinkedWorkspacePropsPtrOutput {
 	return i.ToLinkedWorkspacePropsPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *linkedWorkspacePropsPtrType) ToLinkedWorkspacePropsPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedWorkspacePropsPtrOutput)
 }
 
-func (i *linkedWorkspacePropsPtrType) ToOutput(ctx context.Context) pulumix.Output[*LinkedWorkspaceProps] {
-	return pulumix.Output[*LinkedWorkspaceProps]{
-		OutputState: i.ToLinkedWorkspacePropsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LinkedWorkspace specific properties.
 type LinkedWorkspacePropsOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o LinkedWorkspacePropsOutput) ToLinkedWorkspacePropsPtrOutputWithContext(c
 	}).(LinkedWorkspacePropsPtrOutput)
 }
 
-func (o LinkedWorkspacePropsOutput) ToOutput(ctx context.Context) pulumix.Output[LinkedWorkspaceProps] {
-	return pulumix.Output[LinkedWorkspaceProps]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ResourceId of the link target of the linked workspace.
 func (o LinkedWorkspacePropsOutput) LinkedWorkspaceResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LinkedWorkspaceProps) *string { return v.LinkedWorkspaceResourceId }).(pulumi.StringPtrOutput)
@@ -159,12 +140,6 @@ func (o LinkedWorkspacePropsPtrOutput) ToLinkedWorkspacePropsPtrOutput() LinkedW
 
 func (o LinkedWorkspacePropsPtrOutput) ToLinkedWorkspacePropsPtrOutputWithContext(ctx context.Context) LinkedWorkspacePropsPtrOutput {
 	return o
-}
-
-func (o LinkedWorkspacePropsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LinkedWorkspaceProps] {
-	return pulumix.Output[*LinkedWorkspaceProps]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LinkedWorkspacePropsPtrOutput) Elem() LinkedWorkspacePropsOutput {
@@ -218,12 +193,6 @@ func (o LinkedWorkspacePropsResponseOutput) ToLinkedWorkspacePropsResponseOutput
 
 func (o LinkedWorkspacePropsResponseOutput) ToLinkedWorkspacePropsResponseOutputWithContext(ctx context.Context) LinkedWorkspacePropsResponseOutput {
 	return o
-}
-
-func (o LinkedWorkspacePropsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LinkedWorkspacePropsResponse] {
-	return pulumix.Output[LinkedWorkspacePropsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ResourceId of the link target of the linked workspace.

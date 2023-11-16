@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // DevOps Configuration resource.
@@ -82,12 +81,6 @@ func (o LookupDevOpsConfigurationResultOutput) ToLookupDevOpsConfigurationResult
 
 func (o LookupDevOpsConfigurationResultOutput) ToLookupDevOpsConfigurationResultOutputWithContext(ctx context.Context) LookupDevOpsConfigurationResultOutput {
 	return o
-}
-
-func (o LookupDevOpsConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDevOpsConfigurationResult] {
-	return pulumix.Output[LookupDevOpsConfigurationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

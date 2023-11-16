@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Migration item.
@@ -207,12 +206,6 @@ func (i *ReplicationMigrationItem) ToReplicationMigrationItemOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationMigrationItemOutput)
 }
 
-func (i *ReplicationMigrationItem) ToOutput(ctx context.Context) pulumix.Output[*ReplicationMigrationItem] {
-	return pulumix.Output[*ReplicationMigrationItem]{
-		OutputState: i.ToReplicationMigrationItemOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReplicationMigrationItemOutput struct{ *pulumi.OutputState }
 
 func (ReplicationMigrationItemOutput) ElementType() reflect.Type {
@@ -225,12 +218,6 @@ func (o ReplicationMigrationItemOutput) ToReplicationMigrationItemOutput() Repli
 
 func (o ReplicationMigrationItemOutput) ToReplicationMigrationItemOutputWithContext(ctx context.Context) ReplicationMigrationItemOutput {
 	return o
-}
-
-func (o ReplicationMigrationItemOutput) ToOutput(ctx context.Context) pulumix.Output[*ReplicationMigrationItem] {
-	return pulumix.Output[*ReplicationMigrationItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Location

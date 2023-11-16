@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // AzureStorageInfo dictionary resource.
@@ -173,12 +172,6 @@ func (i *WebAppAzureStorageAccountsSlot) ToWebAppAzureStorageAccountsSlotOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppAzureStorageAccountsSlotOutput)
 }
 
-func (i *WebAppAzureStorageAccountsSlot) ToOutput(ctx context.Context) pulumix.Output[*WebAppAzureStorageAccountsSlot] {
-	return pulumix.Output[*WebAppAzureStorageAccountsSlot]{
-		OutputState: i.ToWebAppAzureStorageAccountsSlotOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebAppAzureStorageAccountsSlotOutput struct{ *pulumi.OutputState }
 
 func (WebAppAzureStorageAccountsSlotOutput) ElementType() reflect.Type {
@@ -191,12 +184,6 @@ func (o WebAppAzureStorageAccountsSlotOutput) ToWebAppAzureStorageAccountsSlotOu
 
 func (o WebAppAzureStorageAccountsSlotOutput) ToWebAppAzureStorageAccountsSlotOutputWithContext(ctx context.Context) WebAppAzureStorageAccountsSlotOutput {
 	return o
-}
-
-func (o WebAppAzureStorageAccountsSlotOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppAzureStorageAccountsSlot] {
-	return pulumix.Output[*WebAppAzureStorageAccountsSlot]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Kind of resource.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve data type resource.
@@ -98,12 +97,6 @@ func (o LookupDataTypeResultOutput) ToLookupDataTypeResultOutput() LookupDataTyp
 
 func (o LookupDataTypeResultOutput) ToLookupDataTypeResultOutputWithContext(ctx context.Context) LookupDataTypeResultOutput {
 	return o
-}
-
-func (o LookupDataTypeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataTypeResult] {
-	return pulumix.Output[LookupDataTypeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Field for database cache retention in days.

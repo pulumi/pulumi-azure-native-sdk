@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Authorization access policy contract.
@@ -151,12 +150,6 @@ func (i *AuthorizationAccessPolicy) ToAuthorizationAccessPolicyOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationAccessPolicyOutput)
 }
 
-func (i *AuthorizationAccessPolicy) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationAccessPolicy] {
-	return pulumix.Output[*AuthorizationAccessPolicy]{
-		OutputState: i.ToAuthorizationAccessPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AuthorizationAccessPolicyOutput struct{ *pulumi.OutputState }
 
 func (AuthorizationAccessPolicyOutput) ElementType() reflect.Type {
@@ -169,12 +162,6 @@ func (o AuthorizationAccessPolicyOutput) ToAuthorizationAccessPolicyOutput() Aut
 
 func (o AuthorizationAccessPolicyOutput) ToAuthorizationAccessPolicyOutputWithContext(ctx context.Context) AuthorizationAccessPolicyOutput {
 	return o
-}
-
-func (o AuthorizationAccessPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationAccessPolicy] {
-	return pulumix.Output[*AuthorizationAccessPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

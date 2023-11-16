@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the Primary and Secondary ConnectionStrings to the NotificationHub
@@ -89,12 +88,6 @@ func (o ListNotificationHubKeysResultOutput) ToListNotificationHubKeysResultOutp
 
 func (o ListNotificationHubKeysResultOutput) ToListNotificationHubKeysResultOutputWithContext(ctx context.Context) ListNotificationHubKeysResultOutput {
 	return o
-}
-
-func (o ListNotificationHubKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListNotificationHubKeysResult] {
-	return pulumix.Output[ListNotificationHubKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // KeyName of the created AuthorizationRule

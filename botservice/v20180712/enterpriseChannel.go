@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Enterprise Channel resource definition
@@ -135,12 +134,6 @@ func (i *EnterpriseChannel) ToEnterpriseChannelOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseChannelOutput)
 }
 
-func (i *EnterpriseChannel) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseChannel] {
-	return pulumix.Output[*EnterpriseChannel]{
-		OutputState: i.ToEnterpriseChannelOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnterpriseChannelOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseChannelOutput) ElementType() reflect.Type {
@@ -153,12 +146,6 @@ func (o EnterpriseChannelOutput) ToEnterpriseChannelOutput() EnterpriseChannelOu
 
 func (o EnterpriseChannelOutput) ToEnterpriseChannelOutputWithContext(ctx context.Context) EnterpriseChannelOutput {
 	return o
-}
-
-func (o EnterpriseChannelOutput) ToOutput(ctx context.Context) pulumix.Output[*EnterpriseChannel] {
-	return pulumix.Output[*EnterpriseChannel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Entity Tag

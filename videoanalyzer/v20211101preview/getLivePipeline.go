@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a specific live pipeline by name. If a live pipeline with that name has been previously created, the call will return the JSON representation of that instance.
@@ -93,12 +92,6 @@ func (o LookupLivePipelineResultOutput) ToLookupLivePipelineResultOutput() Looku
 
 func (o LookupLivePipelineResultOutput) ToLookupLivePipelineResultOutputWithContext(ctx context.Context) LookupLivePipelineResultOutput {
 	return o
-}
-
-func (o LookupLivePipelineResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLivePipelineResult] {
-	return pulumix.Output[LookupLivePipelineResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Maximum bitrate capacity in Kbps reserved for the live pipeline. The allowed range is from 500 to 3000 Kbps in increments of 100 Kbps. If the RTSP camera exceeds this capacity, then the service will disconnect temporarily from the camera. It will retry to re-establish connection (with exponential backoff), checking to see if the camera bitrate is now below the reserved capacity. Doing so will ensure that one 'noisy neighbor' does not affect other live pipelines in your account.

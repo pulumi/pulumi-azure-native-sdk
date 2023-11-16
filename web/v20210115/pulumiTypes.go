@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -41,12 +40,6 @@ func (o IdentifierResponseOutput) ToIdentifierResponseOutput() IdentifierRespons
 
 func (o IdentifierResponseOutput) ToIdentifierResponseOutputWithContext(ctx context.Context) IdentifierResponseOutput {
 	return o
-}
-
-func (o IdentifierResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentifierResponse] {
-	return pulumix.Output[IdentifierResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Id.
@@ -86,12 +79,6 @@ func (o IdentifierResponseArrayOutput) ToIdentifierResponseArrayOutput() Identif
 
 func (o IdentifierResponseArrayOutput) ToIdentifierResponseArrayOutputWithContext(ctx context.Context) IdentifierResponseArrayOutput {
 	return o
-}
-
-func (o IdentifierResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IdentifierResponse] {
-	return pulumix.Output[[]IdentifierResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentifierResponseArrayOutput) Index(i pulumi.IntInput) IdentifierResponseOutput {
@@ -139,12 +126,6 @@ func (i NameValuePairArgs) ToNameValuePairOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NameValuePairOutput)
 }
 
-func (i NameValuePairArgs) ToOutput(ctx context.Context) pulumix.Output[NameValuePair] {
-	return pulumix.Output[NameValuePair]{
-		OutputState: i.ToNameValuePairOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NameValuePairArrayInput is an input type that accepts NameValuePairArray and NameValuePairArrayOutput values.
 // You can construct a concrete instance of `NameValuePairArrayInput` via:
 //
@@ -170,12 +151,6 @@ func (i NameValuePairArray) ToNameValuePairArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(NameValuePairArrayOutput)
 }
 
-func (i NameValuePairArray) ToOutput(ctx context.Context) pulumix.Output[[]NameValuePair] {
-	return pulumix.Output[[]NameValuePair]{
-		OutputState: i.ToNameValuePairArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Name value pair.
 type NameValuePairOutput struct{ *pulumi.OutputState }
 
@@ -189,12 +164,6 @@ func (o NameValuePairOutput) ToNameValuePairOutput() NameValuePairOutput {
 
 func (o NameValuePairOutput) ToNameValuePairOutputWithContext(ctx context.Context) NameValuePairOutput {
 	return o
-}
-
-func (o NameValuePairOutput) ToOutput(ctx context.Context) pulumix.Output[NameValuePair] {
-	return pulumix.Output[NameValuePair]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Pair name.
@@ -219,12 +188,6 @@ func (o NameValuePairArrayOutput) ToNameValuePairArrayOutput() NameValuePairArra
 
 func (o NameValuePairArrayOutput) ToNameValuePairArrayOutputWithContext(ctx context.Context) NameValuePairArrayOutput {
 	return o
-}
-
-func (o NameValuePairArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NameValuePair] {
-	return pulumix.Output[[]NameValuePair]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NameValuePairArrayOutput) Index(i pulumi.IntInput) NameValuePairOutput {
@@ -256,12 +219,6 @@ func (o NameValuePairResponseOutput) ToNameValuePairResponseOutputWithContext(ct
 	return o
 }
 
-func (o NameValuePairResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NameValuePairResponse] {
-	return pulumix.Output[NameValuePairResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Pair name.
 func (o NameValuePairResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NameValuePairResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -284,12 +241,6 @@ func (o NameValuePairResponseArrayOutput) ToNameValuePairResponseArrayOutput() N
 
 func (o NameValuePairResponseArrayOutput) ToNameValuePairResponseArrayOutputWithContext(ctx context.Context) NameValuePairResponseArrayOutput {
 	return o
-}
-
-func (o NameValuePairResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NameValuePairResponse] {
-	return pulumix.Output[[]NameValuePairResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NameValuePairResponseArrayOutput) Index(i pulumi.IntInput) NameValuePairResponseOutput {
@@ -337,12 +288,6 @@ func (i VirtualNetworkProfileArgs) ToVirtualNetworkProfileOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkProfileOutput)
 }
 
-func (i VirtualNetworkProfileArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkProfile] {
-	return pulumix.Output[VirtualNetworkProfile]{
-		OutputState: i.ToVirtualNetworkProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specification for using a Virtual Network.
 type VirtualNetworkProfileOutput struct{ *pulumi.OutputState }
 
@@ -356,12 +301,6 @@ func (o VirtualNetworkProfileOutput) ToVirtualNetworkProfileOutput() VirtualNetw
 
 func (o VirtualNetworkProfileOutput) ToVirtualNetworkProfileOutputWithContext(ctx context.Context) VirtualNetworkProfileOutput {
 	return o
-}
-
-func (o VirtualNetworkProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkProfile] {
-	return pulumix.Output[VirtualNetworkProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource id of the Virtual Network.
@@ -399,12 +338,6 @@ func (o VirtualNetworkProfileResponseOutput) ToVirtualNetworkProfileResponseOutp
 
 func (o VirtualNetworkProfileResponseOutput) ToVirtualNetworkProfileResponseOutputWithContext(ctx context.Context) VirtualNetworkProfileResponseOutput {
 	return o
-}
-
-func (o VirtualNetworkProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkProfileResponse] {
-	return pulumix.Output[VirtualNetworkProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource id of the Virtual Network.

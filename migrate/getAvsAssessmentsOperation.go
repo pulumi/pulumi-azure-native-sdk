@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a AvsAssessment
@@ -176,12 +175,6 @@ func (o LookupAvsAssessmentsOperationResultOutput) ToLookupAvsAssessmentsOperati
 
 func (o LookupAvsAssessmentsOperationResultOutput) ToLookupAvsAssessmentsOperationResultOutputWithContext(ctx context.Context) LookupAvsAssessmentsOperationResultOutput {
 	return o
-}
-
-func (o LookupAvsAssessmentsOperationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAvsAssessmentsOperationResult] {
-	return pulumix.Output[LookupAvsAssessmentsOperationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the assessment error summary.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a factory.
@@ -101,12 +100,6 @@ func (o LookupFactoryResultOutput) ToLookupFactoryResultOutput() LookupFactoryRe
 
 func (o LookupFactoryResultOutput) ToLookupFactoryResultOutputWithContext(ctx context.Context) LookupFactoryResultOutput {
 	return o
-}
-
-func (o LookupFactoryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFactoryResult] {
-	return pulumix.Output[LookupFactoryResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time the factory was created in ISO8601 format.

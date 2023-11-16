@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a sync member.
@@ -111,12 +110,6 @@ func (o LookupSyncMemberResultOutput) ToLookupSyncMemberResultOutput() LookupSyn
 
 func (o LookupSyncMemberResultOutput) ToLookupSyncMemberResultOutputWithContext(ctx context.Context) LookupSyncMemberResultOutput {
 	return o
-}
-
-func (o LookupSyncMemberResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSyncMemberResult] {
-	return pulumix.Output[LookupSyncMemberResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Database name of the member database in the sync member.

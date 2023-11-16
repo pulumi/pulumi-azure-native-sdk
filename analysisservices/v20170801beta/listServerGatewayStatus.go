@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Return the gateway status of the specified Analysis Services server instance.
@@ -73,12 +72,6 @@ func (o ListServerGatewayStatusResultOutput) ToListServerGatewayStatusResultOutp
 
 func (o ListServerGatewayStatusResultOutput) ToListServerGatewayStatusResultOutputWithContext(ctx context.Context) ListServerGatewayStatusResultOutput {
 	return o
-}
-
-func (o ListServerGatewayStatusResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListServerGatewayStatusResult] {
-	return pulumix.Output[ListServerGatewayStatusResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Live message of list gateway. Status: 0 - Live

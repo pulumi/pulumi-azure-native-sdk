@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A job step.
@@ -221,12 +220,6 @@ func (i *JobStep) ToJobStepOutputWithContext(ctx context.Context) JobStepOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(JobStepOutput)
 }
 
-func (i *JobStep) ToOutput(ctx context.Context) pulumix.Output[*JobStep] {
-	return pulumix.Output[*JobStep]{
-		OutputState: i.ToJobStepOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobStepOutput struct{ *pulumi.OutputState }
 
 func (JobStepOutput) ElementType() reflect.Type {
@@ -239,12 +232,6 @@ func (o JobStepOutput) ToJobStepOutput() JobStepOutput {
 
 func (o JobStepOutput) ToJobStepOutputWithContext(ctx context.Context) JobStepOutput {
 	return o
-}
-
-func (o JobStepOutput) ToOutput(ctx context.Context) pulumix.Output[*JobStep] {
-	return pulumix.Output[*JobStep]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The action payload of the job step.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists impacted resources in the subscription by an event (Security Advisory).
@@ -78,12 +77,6 @@ func (o ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResultOutp
 
 func (o ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResultOutput) ToListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResultOutputWithContext(ctx context.Context) ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResultOutput {
 	return o
-}
-
-func (o ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult] {
-	return pulumix.Output[ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The URI to fetch the next page of events. Call ListNext() with this URI to fetch the next page of impacted resource.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type JitNetworkAccessPolicy struct {
@@ -140,12 +139,6 @@ func (i *JitNetworkAccessPolicy) ToJitNetworkAccessPolicyOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(JitNetworkAccessPolicyOutput)
 }
 
-func (i *JitNetworkAccessPolicy) ToOutput(ctx context.Context) pulumix.Output[*JitNetworkAccessPolicy] {
-	return pulumix.Output[*JitNetworkAccessPolicy]{
-		OutputState: i.ToJitNetworkAccessPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JitNetworkAccessPolicyOutput struct{ *pulumi.OutputState }
 
 func (JitNetworkAccessPolicyOutput) ElementType() reflect.Type {
@@ -158,12 +151,6 @@ func (o JitNetworkAccessPolicyOutput) ToJitNetworkAccessPolicyOutput() JitNetwor
 
 func (o JitNetworkAccessPolicyOutput) ToJitNetworkAccessPolicyOutputWithContext(ctx context.Context) JitNetworkAccessPolicyOutput {
 	return o
-}
-
-func (o JitNetworkAccessPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*JitNetworkAccessPolicy] {
-	return pulumix.Output[*JitNetworkAccessPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Kind of the resource

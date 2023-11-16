@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List of RP resources which supports pagination.
@@ -75,12 +74,6 @@ func (o ListGitHubOwnerAvailableResultOutput) ToListGitHubOwnerAvailableResultOu
 
 func (o ListGitHubOwnerAvailableResultOutput) ToListGitHubOwnerAvailableResultOutputWithContext(ctx context.Context) ListGitHubOwnerAvailableResultOutput {
 	return o
-}
-
-func (o ListGitHubOwnerAvailableResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListGitHubOwnerAvailableResult] {
-	return pulumix.Output[ListGitHubOwnerAvailableResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets next link to scroll over the results.

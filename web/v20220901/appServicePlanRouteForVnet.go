@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Virtual Network route contract used to pass routing information for a Virtual Network.
@@ -204,12 +203,6 @@ func (i *AppServicePlanRouteForVnet) ToAppServicePlanRouteForVnetOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(AppServicePlanRouteForVnetOutput)
 }
 
-func (i *AppServicePlanRouteForVnet) ToOutput(ctx context.Context) pulumix.Output[*AppServicePlanRouteForVnet] {
-	return pulumix.Output[*AppServicePlanRouteForVnet]{
-		OutputState: i.ToAppServicePlanRouteForVnetOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AppServicePlanRouteForVnetOutput struct{ *pulumi.OutputState }
 
 func (AppServicePlanRouteForVnetOutput) ElementType() reflect.Type {
@@ -222,12 +215,6 @@ func (o AppServicePlanRouteForVnetOutput) ToAppServicePlanRouteForVnetOutput() A
 
 func (o AppServicePlanRouteForVnetOutput) ToAppServicePlanRouteForVnetOutputWithContext(ctx context.Context) AppServicePlanRouteForVnetOutput {
 	return o
-}
-
-func (o AppServicePlanRouteForVnetOutput) ToOutput(ctx context.Context) pulumix.Output[*AppServicePlanRouteForVnet] {
-	return pulumix.Output[*AppServicePlanRouteForVnet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ending address for this route. If the start address is specified in CIDR notation, this must be omitted.

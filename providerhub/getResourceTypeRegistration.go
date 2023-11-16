@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a resource type details in the given subscription and provider.
@@ -79,12 +78,6 @@ func (o LookupResourceTypeRegistrationResultOutput) ToLookupResourceTypeRegistra
 
 func (o LookupResourceTypeRegistrationResultOutput) ToLookupResourceTypeRegistrationResultOutputWithContext(ctx context.Context) LookupResourceTypeRegistrationResultOutput {
 	return o
-}
-
-func (o LookupResourceTypeRegistrationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupResourceTypeRegistrationResult] {
-	return pulumix.Output[LookupResourceTypeRegistrationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Subvolume Information properties
@@ -171,12 +170,6 @@ func (i *Subvolume) ToSubvolumeOutputWithContext(ctx context.Context) SubvolumeO
 	return pulumi.ToOutputWithContext(ctx, i).(SubvolumeOutput)
 }
 
-func (i *Subvolume) ToOutput(ctx context.Context) pulumix.Output[*Subvolume] {
-	return pulumix.Output[*Subvolume]{
-		OutputState: i.ToSubvolumeOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SubvolumeOutput struct{ *pulumi.OutputState }
 
 func (SubvolumeOutput) ElementType() reflect.Type {
@@ -189,12 +182,6 @@ func (o SubvolumeOutput) ToSubvolumeOutput() SubvolumeOutput {
 
 func (o SubvolumeOutput) ToSubvolumeOutputWithContext(ctx context.Context) SubvolumeOutput {
 	return o
-}
-
-func (o SubvolumeOutput) ToOutput(ctx context.Context) pulumix.Output[*Subvolume] {
-	return pulumix.Output[*Subvolume]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

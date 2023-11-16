@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the authentication keys for an integration runtime.
@@ -79,12 +78,6 @@ func (o ListIntegrationRuntimeAuthKeysResultOutput) ToListIntegrationRuntimeAuth
 
 func (o ListIntegrationRuntimeAuthKeysResultOutput) ToListIntegrationRuntimeAuthKeysResultOutputWithContext(ctx context.Context) ListIntegrationRuntimeAuthKeysResultOutput {
 	return o
-}
-
-func (o ListIntegrationRuntimeAuthKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListIntegrationRuntimeAuthKeysResult] {
-	return pulumix.Output[ListIntegrationRuntimeAuthKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The primary integration runtime authentication key.

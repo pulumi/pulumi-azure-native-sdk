@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -85,12 +84,6 @@ func (i CustomIpPrefixTypeArgs) ToCustomIpPrefixTypeOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(CustomIpPrefixTypeOutput)
 }
 
-func (i CustomIpPrefixTypeArgs) ToOutput(ctx context.Context) pulumix.Output[CustomIpPrefixType] {
-	return pulumix.Output[CustomIpPrefixType]{
-		OutputState: i.ToCustomIpPrefixTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CustomIpPrefixTypeArgs) ToCustomIpPrefixTypePtrOutput() CustomIpPrefixTypePtrOutput {
 	return i.ToCustomIpPrefixTypePtrOutputWithContext(context.Background())
 }
@@ -132,12 +125,6 @@ func (i *customIpPrefixTypePtrType) ToCustomIpPrefixTypePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(CustomIpPrefixTypePtrOutput)
 }
 
-func (i *customIpPrefixTypePtrType) ToOutput(ctx context.Context) pulumix.Output[*CustomIpPrefixType] {
-	return pulumix.Output[*CustomIpPrefixType]{
-		OutputState: i.ToCustomIpPrefixTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Custom IP prefix resource.
 type CustomIpPrefixTypeOutput struct{ *pulumi.OutputState }
 
@@ -161,12 +148,6 @@ func (o CustomIpPrefixTypeOutput) ToCustomIpPrefixTypePtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomIpPrefixType) *CustomIpPrefixType {
 		return &v
 	}).(CustomIpPrefixTypePtrOutput)
-}
-
-func (o CustomIpPrefixTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CustomIpPrefixType] {
-	return pulumix.Output[CustomIpPrefixType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Authorization message for WAN validation.
@@ -231,12 +212,6 @@ func (o CustomIpPrefixTypePtrOutput) ToCustomIpPrefixTypePtrOutput() CustomIpPre
 
 func (o CustomIpPrefixTypePtrOutput) ToCustomIpPrefixTypePtrOutputWithContext(ctx context.Context) CustomIpPrefixTypePtrOutput {
 	return o
-}
-
-func (o CustomIpPrefixTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomIpPrefixType] {
-	return pulumix.Output[*CustomIpPrefixType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomIpPrefixTypePtrOutput) Elem() CustomIpPrefixTypeOutput {
@@ -404,12 +379,6 @@ func (o CustomIpPrefixResponseOutput) ToCustomIpPrefixResponseOutputWithContext(
 	return o
 }
 
-func (o CustomIpPrefixResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CustomIpPrefixResponse] {
-	return pulumix.Output[CustomIpPrefixResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Authorization message for WAN validation.
 func (o CustomIpPrefixResponseOutput) AuthorizationMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomIpPrefixResponse) *string { return v.AuthorizationMessage }).(pulumi.StringPtrOutput)
@@ -512,12 +481,6 @@ func (o CustomIpPrefixResponsePtrOutput) ToCustomIpPrefixResponsePtrOutput() Cus
 
 func (o CustomIpPrefixResponsePtrOutput) ToCustomIpPrefixResponsePtrOutputWithContext(ctx context.Context) CustomIpPrefixResponsePtrOutput {
 	return o
-}
-
-func (o CustomIpPrefixResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomIpPrefixResponse] {
-	return pulumix.Output[*CustomIpPrefixResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomIpPrefixResponsePtrOutput) Elem() CustomIpPrefixResponseOutput {
@@ -724,12 +687,6 @@ func (o CustomIpPrefixResponseArrayOutput) ToCustomIpPrefixResponseArrayOutputWi
 	return o
 }
 
-func (o CustomIpPrefixResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CustomIpPrefixResponse] {
-	return pulumix.Output[[]CustomIpPrefixResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CustomIpPrefixResponseArrayOutput) Index(i pulumi.IntInput) CustomIpPrefixResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomIpPrefixResponse {
 		return vs[0].([]CustomIpPrefixResponse)[vs[1].(int)]
@@ -755,12 +712,6 @@ func (o ExpressRouteCircuitPeeringIdResponseOutput) ToExpressRouteCircuitPeering
 
 func (o ExpressRouteCircuitPeeringIdResponseOutput) ToExpressRouteCircuitPeeringIdResponseOutputWithContext(ctx context.Context) ExpressRouteCircuitPeeringIdResponseOutput {
 	return o
-}
-
-func (o ExpressRouteCircuitPeeringIdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteCircuitPeeringIdResponse] {
-	return pulumix.Output[ExpressRouteCircuitPeeringIdResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the ExpressRoute circuit peering.
@@ -803,12 +754,6 @@ func (o ExpressRouteConnectionResponseOutput) ToExpressRouteConnectionResponseOu
 
 func (o ExpressRouteConnectionResponseOutput) ToExpressRouteConnectionResponseOutputWithContext(ctx context.Context) ExpressRouteConnectionResponseOutput {
 	return o
-}
-
-func (o ExpressRouteConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteConnectionResponse] {
-	return pulumix.Output[ExpressRouteConnectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Authorization key to establish the connection.
@@ -872,12 +817,6 @@ func (o ExpressRouteConnectionResponseArrayOutput) ToExpressRouteConnectionRespo
 	return o
 }
 
-func (o ExpressRouteConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExpressRouteConnectionResponse] {
-	return pulumix.Output[[]ExpressRouteConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExpressRouteConnectionResponseArrayOutput) Index(i pulumi.IntInput) ExpressRouteConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExpressRouteConnectionResponse {
 		return vs[0].([]ExpressRouteConnectionResponse)[vs[1].(int)]
@@ -917,12 +856,6 @@ func (i ExpressRouteGatewayPropertiesAutoScaleConfigurationArgs) ToExpressRouteG
 
 func (i ExpressRouteGatewayPropertiesAutoScaleConfigurationArgs) ToExpressRouteGatewayPropertiesAutoScaleConfigurationOutputWithContext(ctx context.Context) ExpressRouteGatewayPropertiesAutoScaleConfigurationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteGatewayPropertiesAutoScaleConfigurationOutput)
-}
-
-func (i ExpressRouteGatewayPropertiesAutoScaleConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteGatewayPropertiesAutoScaleConfiguration] {
-	return pulumix.Output[ExpressRouteGatewayPropertiesAutoScaleConfiguration]{
-		OutputState: i.ToExpressRouteGatewayPropertiesAutoScaleConfigurationOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ExpressRouteGatewayPropertiesAutoScaleConfigurationArgs) ToExpressRouteGatewayPropertiesAutoScaleConfigurationPtrOutput() ExpressRouteGatewayPropertiesAutoScaleConfigurationPtrOutput {
@@ -966,12 +899,6 @@ func (i *expressRouteGatewayPropertiesAutoScaleConfigurationPtrType) ToExpressRo
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteGatewayPropertiesAutoScaleConfigurationPtrOutput)
 }
 
-func (i *expressRouteGatewayPropertiesAutoScaleConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteGatewayPropertiesAutoScaleConfiguration] {
-	return pulumix.Output[*ExpressRouteGatewayPropertiesAutoScaleConfiguration]{
-		OutputState: i.ToExpressRouteGatewayPropertiesAutoScaleConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configuration for auto scaling.
 type ExpressRouteGatewayPropertiesAutoScaleConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -997,12 +924,6 @@ func (o ExpressRouteGatewayPropertiesAutoScaleConfigurationOutput) ToExpressRout
 	}).(ExpressRouteGatewayPropertiesAutoScaleConfigurationPtrOutput)
 }
 
-func (o ExpressRouteGatewayPropertiesAutoScaleConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteGatewayPropertiesAutoScaleConfiguration] {
-	return pulumix.Output[ExpressRouteGatewayPropertiesAutoScaleConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Minimum and maximum number of scale units to deploy.
 func (o ExpressRouteGatewayPropertiesAutoScaleConfigurationOutput) Bounds() ExpressRouteGatewayPropertiesBoundsPtrOutput {
 	return o.ApplyT(func(v ExpressRouteGatewayPropertiesAutoScaleConfiguration) *ExpressRouteGatewayPropertiesBounds {
@@ -1022,12 +943,6 @@ func (o ExpressRouteGatewayPropertiesAutoScaleConfigurationPtrOutput) ToExpressR
 
 func (o ExpressRouteGatewayPropertiesAutoScaleConfigurationPtrOutput) ToExpressRouteGatewayPropertiesAutoScaleConfigurationPtrOutputWithContext(ctx context.Context) ExpressRouteGatewayPropertiesAutoScaleConfigurationPtrOutput {
 	return o
-}
-
-func (o ExpressRouteGatewayPropertiesAutoScaleConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteGatewayPropertiesAutoScaleConfiguration] {
-	return pulumix.Output[*ExpressRouteGatewayPropertiesAutoScaleConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExpressRouteGatewayPropertiesAutoScaleConfigurationPtrOutput) Elem() ExpressRouteGatewayPropertiesAutoScaleConfigurationOutput {
@@ -1089,12 +1004,6 @@ func (i ExpressRouteGatewayPropertiesBoundsArgs) ToExpressRouteGatewayProperties
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteGatewayPropertiesBoundsOutput)
 }
 
-func (i ExpressRouteGatewayPropertiesBoundsArgs) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteGatewayPropertiesBounds] {
-	return pulumix.Output[ExpressRouteGatewayPropertiesBounds]{
-		OutputState: i.ToExpressRouteGatewayPropertiesBoundsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExpressRouteGatewayPropertiesBoundsArgs) ToExpressRouteGatewayPropertiesBoundsPtrOutput() ExpressRouteGatewayPropertiesBoundsPtrOutput {
 	return i.ToExpressRouteGatewayPropertiesBoundsPtrOutputWithContext(context.Background())
 }
@@ -1136,12 +1045,6 @@ func (i *expressRouteGatewayPropertiesBoundsPtrType) ToExpressRouteGatewayProper
 	return pulumi.ToOutputWithContext(ctx, i).(ExpressRouteGatewayPropertiesBoundsPtrOutput)
 }
 
-func (i *expressRouteGatewayPropertiesBoundsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteGatewayPropertiesBounds] {
-	return pulumix.Output[*ExpressRouteGatewayPropertiesBounds]{
-		OutputState: i.ToExpressRouteGatewayPropertiesBoundsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Minimum and maximum number of scale units to deploy.
 type ExpressRouteGatewayPropertiesBoundsOutput struct{ *pulumi.OutputState }
 
@@ -1167,12 +1070,6 @@ func (o ExpressRouteGatewayPropertiesBoundsOutput) ToExpressRouteGatewayProperti
 	}).(ExpressRouteGatewayPropertiesBoundsPtrOutput)
 }
 
-func (o ExpressRouteGatewayPropertiesBoundsOutput) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteGatewayPropertiesBounds] {
-	return pulumix.Output[ExpressRouteGatewayPropertiesBounds]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Maximum number of scale units deployed for ExpressRoute gateway.
 func (o ExpressRouteGatewayPropertiesBoundsOutput) Max() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ExpressRouteGatewayPropertiesBounds) *int { return v.Max }).(pulumi.IntPtrOutput)
@@ -1195,12 +1092,6 @@ func (o ExpressRouteGatewayPropertiesBoundsPtrOutput) ToExpressRouteGatewayPrope
 
 func (o ExpressRouteGatewayPropertiesBoundsPtrOutput) ToExpressRouteGatewayPropertiesBoundsPtrOutputWithContext(ctx context.Context) ExpressRouteGatewayPropertiesBoundsPtrOutput {
 	return o
-}
-
-func (o ExpressRouteGatewayPropertiesBoundsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteGatewayPropertiesBounds] {
-	return pulumix.Output[*ExpressRouteGatewayPropertiesBounds]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExpressRouteGatewayPropertiesBoundsPtrOutput) Elem() ExpressRouteGatewayPropertiesBoundsOutput {
@@ -1254,12 +1145,6 @@ func (o ExpressRouteGatewayPropertiesResponseAutoScaleConfigurationOutput) ToExp
 	return o
 }
 
-func (o ExpressRouteGatewayPropertiesResponseAutoScaleConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration] {
-	return pulumix.Output[ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Minimum and maximum number of scale units to deploy.
 func (o ExpressRouteGatewayPropertiesResponseAutoScaleConfigurationOutput) Bounds() ExpressRouteGatewayPropertiesResponseBoundsPtrOutput {
 	return o.ApplyT(func(v ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration) *ExpressRouteGatewayPropertiesResponseBounds {
@@ -1279,12 +1164,6 @@ func (o ExpressRouteGatewayPropertiesResponseAutoScaleConfigurationPtrOutput) To
 
 func (o ExpressRouteGatewayPropertiesResponseAutoScaleConfigurationPtrOutput) ToExpressRouteGatewayPropertiesResponseAutoScaleConfigurationPtrOutputWithContext(ctx context.Context) ExpressRouteGatewayPropertiesResponseAutoScaleConfigurationPtrOutput {
 	return o
-}
-
-func (o ExpressRouteGatewayPropertiesResponseAutoScaleConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration] {
-	return pulumix.Output[*ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExpressRouteGatewayPropertiesResponseAutoScaleConfigurationPtrOutput) Elem() ExpressRouteGatewayPropertiesResponseAutoScaleConfigurationOutput {
@@ -1330,12 +1209,6 @@ func (o ExpressRouteGatewayPropertiesResponseBoundsOutput) ToExpressRouteGateway
 	return o
 }
 
-func (o ExpressRouteGatewayPropertiesResponseBoundsOutput) ToOutput(ctx context.Context) pulumix.Output[ExpressRouteGatewayPropertiesResponseBounds] {
-	return pulumix.Output[ExpressRouteGatewayPropertiesResponseBounds]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Maximum number of scale units deployed for ExpressRoute gateway.
 func (o ExpressRouteGatewayPropertiesResponseBoundsOutput) Max() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ExpressRouteGatewayPropertiesResponseBounds) *int { return v.Max }).(pulumi.IntPtrOutput)
@@ -1358,12 +1231,6 @@ func (o ExpressRouteGatewayPropertiesResponseBoundsPtrOutput) ToExpressRouteGate
 
 func (o ExpressRouteGatewayPropertiesResponseBoundsPtrOutput) ToExpressRouteGatewayPropertiesResponseBoundsPtrOutputWithContext(ctx context.Context) ExpressRouteGatewayPropertiesResponseBoundsPtrOutput {
 	return o
-}
-
-func (o ExpressRouteGatewayPropertiesResponseBoundsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExpressRouteGatewayPropertiesResponseBounds] {
-	return pulumix.Output[*ExpressRouteGatewayPropertiesResponseBounds]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExpressRouteGatewayPropertiesResponseBoundsPtrOutput) Elem() ExpressRouteGatewayPropertiesResponseBoundsOutput {
@@ -1435,12 +1302,6 @@ func (i ExtendedLocationArgs) ToExtendedLocationOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationOutput)
 }
 
-func (i ExtendedLocationArgs) ToOutput(ctx context.Context) pulumix.Output[ExtendedLocation] {
-	return pulumix.Output[ExtendedLocation]{
-		OutputState: i.ToExtendedLocationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExtendedLocationArgs) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
 	return i.ToExtendedLocationPtrOutputWithContext(context.Background())
 }
@@ -1482,12 +1343,6 @@ func (i *extendedLocationPtrType) ToExtendedLocationPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationPtrOutput)
 }
 
-func (i *extendedLocationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocation] {
-	return pulumix.Output[*ExtendedLocation]{
-		OutputState: i.ToExtendedLocationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ExtendedLocation complex type.
 type ExtendedLocationOutput struct{ *pulumi.OutputState }
 
@@ -1513,12 +1368,6 @@ func (o ExtendedLocationOutput) ToExtendedLocationPtrOutputWithContext(ctx conte
 	}).(ExtendedLocationPtrOutput)
 }
 
-func (o ExtendedLocationOutput) ToOutput(ctx context.Context) pulumix.Output[ExtendedLocation] {
-	return pulumix.Output[ExtendedLocation]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the extended location.
 func (o ExtendedLocationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExtendedLocation) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1541,12 +1390,6 @@ func (o ExtendedLocationPtrOutput) ToExtendedLocationPtrOutput() ExtendedLocatio
 
 func (o ExtendedLocationPtrOutput) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
 	return o
-}
-
-func (o ExtendedLocationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocation] {
-	return pulumix.Output[*ExtendedLocation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExtendedLocationPtrOutput) Elem() ExtendedLocationOutput {
@@ -1602,12 +1445,6 @@ func (o ExtendedLocationResponseOutput) ToExtendedLocationResponseOutputWithCont
 	return o
 }
 
-func (o ExtendedLocationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExtendedLocationResponse] {
-	return pulumix.Output[ExtendedLocationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the extended location.
 func (o ExtendedLocationResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExtendedLocationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1630,12 +1467,6 @@ func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutput()
 
 func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutputWithContext(ctx context.Context) ExtendedLocationResponsePtrOutput {
 	return o
-}
-
-func (o ExtendedLocationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocationResponse] {
-	return pulumix.Output[*ExtendedLocationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExtendedLocationResponsePtrOutput) Elem() ExtendedLocationResponseOutput {
@@ -1691,12 +1522,6 @@ func (o PropagatedRouteTableResponseOutput) ToPropagatedRouteTableResponseOutput
 	return o
 }
 
-func (o PropagatedRouteTableResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PropagatedRouteTableResponse] {
-	return pulumix.Output[PropagatedRouteTableResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of resource ids of all the RouteTables.
 func (o PropagatedRouteTableResponseOutput) Ids() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v PropagatedRouteTableResponse) []SubResourceResponse { return v.Ids }).(SubResourceResponseArrayOutput)
@@ -1719,12 +1544,6 @@ func (o PropagatedRouteTableResponsePtrOutput) ToPropagatedRouteTableResponsePtr
 
 func (o PropagatedRouteTableResponsePtrOutput) ToPropagatedRouteTableResponsePtrOutputWithContext(ctx context.Context) PropagatedRouteTableResponsePtrOutput {
 	return o
-}
-
-func (o PropagatedRouteTableResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PropagatedRouteTableResponse] {
-	return pulumix.Output[*PropagatedRouteTableResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PropagatedRouteTableResponsePtrOutput) Elem() PropagatedRouteTableResponseOutput {
@@ -1782,12 +1601,6 @@ func (o RoutingConfigurationResponseOutput) ToRoutingConfigurationResponseOutput
 	return o
 }
 
-func (o RoutingConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RoutingConfigurationResponse] {
-	return pulumix.Output[RoutingConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resource id RouteTable associated with this RoutingConfiguration.
 func (o RoutingConfigurationResponseOutput) AssociatedRouteTable() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v RoutingConfigurationResponse) *SubResourceResponse { return v.AssociatedRouteTable }).(SubResourceResponsePtrOutput)
@@ -1815,12 +1628,6 @@ func (o RoutingConfigurationResponsePtrOutput) ToRoutingConfigurationResponsePtr
 
 func (o RoutingConfigurationResponsePtrOutput) ToRoutingConfigurationResponsePtrOutputWithContext(ctx context.Context) RoutingConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o RoutingConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RoutingConfigurationResponse] {
-	return pulumix.Output[*RoutingConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RoutingConfigurationResponsePtrOutput) Elem() RoutingConfigurationResponseOutput {
@@ -1888,12 +1695,6 @@ func (o StaticRouteResponseOutput) ToStaticRouteResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o StaticRouteResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StaticRouteResponse] {
-	return pulumix.Output[StaticRouteResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of all address prefixes.
 func (o StaticRouteResponseOutput) AddressPrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v StaticRouteResponse) []string { return v.AddressPrefixes }).(pulumi.StringArrayOutput)
@@ -1923,12 +1724,6 @@ func (o StaticRouteResponseArrayOutput) ToStaticRouteResponseArrayOutputWithCont
 	return o
 }
 
-func (o StaticRouteResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StaticRouteResponse] {
-	return pulumix.Output[[]StaticRouteResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StaticRouteResponseArrayOutput) Index(i pulumi.IntInput) StaticRouteResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StaticRouteResponse {
 		return vs[0].([]StaticRouteResponse)[vs[1].(int)]
@@ -1956,12 +1751,6 @@ func (o SubResourceResponseOutput) ToSubResourceResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o SubResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubResourceResponse] {
-	return pulumix.Output[SubResourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource ID.
 func (o SubResourceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubResourceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -1979,12 +1768,6 @@ func (o SubResourceResponsePtrOutput) ToSubResourceResponsePtrOutput() SubResour
 
 func (o SubResourceResponsePtrOutput) ToSubResourceResponsePtrOutputWithContext(ctx context.Context) SubResourceResponsePtrOutput {
 	return o
-}
-
-func (o SubResourceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubResourceResponse] {
-	return pulumix.Output[*SubResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubResourceResponsePtrOutput) Elem() SubResourceResponseOutput {
@@ -2019,12 +1802,6 @@ func (o SubResourceResponseArrayOutput) ToSubResourceResponseArrayOutput() SubRe
 
 func (o SubResourceResponseArrayOutput) ToSubResourceResponseArrayOutputWithContext(ctx context.Context) SubResourceResponseArrayOutput {
 	return o
-}
-
-func (o SubResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubResourceResponse] {
-	return pulumix.Output[[]SubResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubResourceResponseArrayOutput) Index(i pulumi.IntInput) SubResourceResponseOutput {
@@ -2068,12 +1845,6 @@ func (i VirtualHubIdArgs) ToVirtualHubIdOutputWithContext(ctx context.Context) V
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualHubIdOutput)
 }
 
-func (i VirtualHubIdArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualHubId] {
-	return pulumix.Output[VirtualHubId]{
-		OutputState: i.ToVirtualHubIdOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Virtual Hub identifier.
 type VirtualHubIdOutput struct{ *pulumi.OutputState }
 
@@ -2087,12 +1858,6 @@ func (o VirtualHubIdOutput) ToVirtualHubIdOutput() VirtualHubIdOutput {
 
 func (o VirtualHubIdOutput) ToVirtualHubIdOutputWithContext(ctx context.Context) VirtualHubIdOutput {
 	return o
-}
-
-func (o VirtualHubIdOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualHubId] {
-	return pulumix.Output[VirtualHubId]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource URI for the Virtual Hub where the ExpressRoute gateway is or will be deployed. The Virtual Hub resource and the ExpressRoute gateway resource reside in the same subscription.
@@ -2119,12 +1884,6 @@ func (o VirtualHubIdResponseOutput) ToVirtualHubIdResponseOutput() VirtualHubIdR
 
 func (o VirtualHubIdResponseOutput) ToVirtualHubIdResponseOutputWithContext(ctx context.Context) VirtualHubIdResponseOutput {
 	return o
-}
-
-func (o VirtualHubIdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualHubIdResponse] {
-	return pulumix.Output[VirtualHubIdResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource URI for the Virtual Hub where the ExpressRoute gateway is or will be deployed. The Virtual Hub resource and the ExpressRoute gateway resource reside in the same subscription.
@@ -2155,12 +1914,6 @@ func (o VnetRouteResponseOutput) ToVnetRouteResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o VnetRouteResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VnetRouteResponse] {
-	return pulumix.Output[VnetRouteResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of references to HubBgpConnection objects.
 func (o VnetRouteResponseOutput) BgpConnections() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v VnetRouteResponse) []SubResourceResponse { return v.BgpConnections }).(SubResourceResponseArrayOutput)
@@ -2183,12 +1936,6 @@ func (o VnetRouteResponsePtrOutput) ToVnetRouteResponsePtrOutput() VnetRouteResp
 
 func (o VnetRouteResponsePtrOutput) ToVnetRouteResponsePtrOutputWithContext(ctx context.Context) VnetRouteResponsePtrOutput {
 	return o
-}
-
-func (o VnetRouteResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VnetRouteResponse] {
-	return pulumix.Output[*VnetRouteResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VnetRouteResponsePtrOutput) Elem() VnetRouteResponseOutput {

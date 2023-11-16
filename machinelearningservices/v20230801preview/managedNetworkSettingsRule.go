@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type ManagedNetworkSettingsRule struct {
@@ -135,12 +134,6 @@ func (i *ManagedNetworkSettingsRule) ToManagedNetworkSettingsRuleOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedNetworkSettingsRuleOutput)
 }
 
-func (i *ManagedNetworkSettingsRule) ToOutput(ctx context.Context) pulumix.Output[*ManagedNetworkSettingsRule] {
-	return pulumix.Output[*ManagedNetworkSettingsRule]{
-		OutputState: i.ToManagedNetworkSettingsRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagedNetworkSettingsRuleOutput struct{ *pulumi.OutputState }
 
 func (ManagedNetworkSettingsRuleOutput) ElementType() reflect.Type {
@@ -153,12 +146,6 @@ func (o ManagedNetworkSettingsRuleOutput) ToManagedNetworkSettingsRuleOutput() M
 
 func (o ManagedNetworkSettingsRuleOutput) ToManagedNetworkSettingsRuleOutputWithContext(ctx context.Context) ManagedNetworkSettingsRuleOutput {
 	return o
-}
-
-func (o ManagedNetworkSettingsRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedNetworkSettingsRule] {
-	return pulumix.Output[*ManagedNetworkSettingsRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Bot resource definition
@@ -170,12 +169,6 @@ func (i *Bot) ToBotOutputWithContext(ctx context.Context) BotOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BotOutput)
 }
 
-func (i *Bot) ToOutput(ctx context.Context) pulumix.Output[*Bot] {
-	return pulumix.Output[*Bot]{
-		OutputState: i.ToBotOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BotOutput struct{ *pulumi.OutputState }
 
 func (BotOutput) ElementType() reflect.Type {
@@ -188,12 +181,6 @@ func (o BotOutput) ToBotOutput() BotOutput {
 
 func (o BotOutput) ToBotOutputWithContext(ctx context.Context) BotOutput {
 	return o
-}
-
-func (o BotOutput) ToOutput(ctx context.Context) pulumix.Output[*Bot] {
-	return pulumix.Output[*Bot]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Entity Tag.

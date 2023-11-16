@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type BmcKeySet struct {
@@ -190,12 +189,6 @@ func (i *BmcKeySet) ToBmcKeySetOutputWithContext(ctx context.Context) BmcKeySetO
 	return pulumi.ToOutputWithContext(ctx, i).(BmcKeySetOutput)
 }
 
-func (i *BmcKeySet) ToOutput(ctx context.Context) pulumix.Output[*BmcKeySet] {
-	return pulumix.Output[*BmcKeySet]{
-		OutputState: i.ToBmcKeySetOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BmcKeySetOutput struct{ *pulumi.OutputState }
 
 func (BmcKeySetOutput) ElementType() reflect.Type {
@@ -208,12 +201,6 @@ func (o BmcKeySetOutput) ToBmcKeySetOutput() BmcKeySetOutput {
 
 func (o BmcKeySetOutput) ToBmcKeySetOutputWithContext(ctx context.Context) BmcKeySetOutput {
 	return o
-}
-
-func (o BmcKeySetOutput) ToOutput(ctx context.Context) pulumix.Output[*BmcKeySet] {
-	return pulumix.Output[*BmcKeySet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The object ID of Azure Active Directory group that all users in the list must be in for access to be granted. Users that are not in the group will not have access.

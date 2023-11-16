@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents the response of a service unit resource.
@@ -95,12 +94,6 @@ func (o LookupServiceUnitResultOutput) ToLookupServiceUnitResultOutput() LookupS
 
 func (o LookupServiceUnitResultOutput) ToLookupServiceUnitResultOutputWithContext(ctx context.Context) LookupServiceUnitResultOutput {
 	return o
-}
-
-func (o LookupServiceUnitResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceUnitResult] {
-	return pulumix.Output[LookupServiceUnitResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The artifacts for the service unit.

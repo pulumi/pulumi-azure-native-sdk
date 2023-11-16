@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A blob storage account data set mapping.
@@ -198,12 +197,6 @@ func (i *BlobStorageAccountDataSetMapping) ToBlobStorageAccountDataSetMappingOut
 	return pulumi.ToOutputWithContext(ctx, i).(BlobStorageAccountDataSetMappingOutput)
 }
 
-func (i *BlobStorageAccountDataSetMapping) ToOutput(ctx context.Context) pulumix.Output[*BlobStorageAccountDataSetMapping] {
-	return pulumix.Output[*BlobStorageAccountDataSetMapping]{
-		OutputState: i.ToBlobStorageAccountDataSetMappingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BlobStorageAccountDataSetMappingOutput struct{ *pulumi.OutputState }
 
 func (BlobStorageAccountDataSetMappingOutput) ElementType() reflect.Type {
@@ -216,12 +209,6 @@ func (o BlobStorageAccountDataSetMappingOutput) ToBlobStorageAccountDataSetMappi
 
 func (o BlobStorageAccountDataSetMappingOutput) ToBlobStorageAccountDataSetMappingOutputWithContext(ctx context.Context) BlobStorageAccountDataSetMappingOutput {
 	return o
-}
-
-func (o BlobStorageAccountDataSetMappingOutput) ToOutput(ctx context.Context) pulumix.Output[*BlobStorageAccountDataSetMapping] {
-	return pulumix.Output[*BlobStorageAccountDataSetMapping]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the container name.

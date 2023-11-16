@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A FluidRelay Server.
@@ -163,12 +162,6 @@ func (i *FluidRelayServer) ToFluidRelayServerOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(FluidRelayServerOutput)
 }
 
-func (i *FluidRelayServer) ToOutput(ctx context.Context) pulumix.Output[*FluidRelayServer] {
-	return pulumix.Output[*FluidRelayServer]{
-		OutputState: i.ToFluidRelayServerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FluidRelayServerOutput struct{ *pulumi.OutputState }
 
 func (FluidRelayServerOutput) ElementType() reflect.Type {
@@ -181,12 +174,6 @@ func (o FluidRelayServerOutput) ToFluidRelayServerOutput() FluidRelayServerOutpu
 
 func (o FluidRelayServerOutput) ToFluidRelayServerOutputWithContext(ctx context.Context) FluidRelayServerOutput {
 	return o
-}
-
-func (o FluidRelayServerOutput) ToOutput(ctx context.Context) pulumix.Output[*FluidRelayServer] {
-	return pulumix.Output[*FluidRelayServer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Fluid Relay Service endpoints for this server.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Logger details.
@@ -200,12 +199,6 @@ func (i *Logger) ToLoggerOutputWithContext(ctx context.Context) LoggerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LoggerOutput)
 }
 
-func (i *Logger) ToOutput(ctx context.Context) pulumix.Output[*Logger] {
-	return pulumix.Output[*Logger]{
-		OutputState: i.ToLoggerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LoggerOutput struct{ *pulumi.OutputState }
 
 func (LoggerOutput) ElementType() reflect.Type {
@@ -218,12 +211,6 @@ func (o LoggerOutput) ToLoggerOutput() LoggerOutput {
 
 func (o LoggerOutput) ToLoggerOutputWithContext(ctx context.Context) LoggerOutput {
 	return o
-}
-
-func (o LoggerOutput) ToOutput(ctx context.Context) pulumix.Output[*Logger] {
-	return pulumix.Output[*Logger]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name and SendRule connection string of the event hub for azureEventHub logger.

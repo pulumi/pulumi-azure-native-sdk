@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Log Analytics QueryPack definition.
@@ -135,12 +134,6 @@ func (i *QueryPack) ToQueryPackOutputWithContext(ctx context.Context) QueryPackO
 	return pulumi.ToOutputWithContext(ctx, i).(QueryPackOutput)
 }
 
-func (i *QueryPack) ToOutput(ctx context.Context) pulumix.Output[*QueryPack] {
-	return pulumix.Output[*QueryPack]{
-		OutputState: i.ToQueryPackOutputWithContext(ctx).OutputState,
-	}
-}
-
 type QueryPackOutput struct{ *pulumi.OutputState }
 
 func (QueryPackOutput) ElementType() reflect.Type {
@@ -153,12 +146,6 @@ func (o QueryPackOutput) ToQueryPackOutput() QueryPackOutput {
 
 func (o QueryPackOutput) ToQueryPackOutputWithContext(ctx context.Context) QueryPackOutput {
 	return o
-}
-
-func (o QueryPackOutput) ToOutput(ctx context.Context) pulumix.Output[*QueryPack] {
-	return pulumix.Output[*QueryPack]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource location

@@ -9,13 +9,12 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a watchlist item.
 // Azure REST API version: 2023-02-01.
 //
-// Other available API versions: 2021-04-01, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2021-04-01, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 func LookupWatchlistItem(ctx *pulumi.Context, args *LookupWatchlistItemArgs, opts ...pulumi.InvokeOption) (*LookupWatchlistItemResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWatchlistItemResult
@@ -112,12 +111,6 @@ func (o LookupWatchlistItemResultOutput) ToLookupWatchlistItemResultOutput() Loo
 
 func (o LookupWatchlistItemResultOutput) ToLookupWatchlistItemResultOutputWithContext(ctx context.Context) LookupWatchlistItemResultOutput {
 	return o
-}
-
-func (o LookupWatchlistItemResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWatchlistItemResult] {
-	return pulumix.Output[LookupWatchlistItemResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time the watchlist item was created

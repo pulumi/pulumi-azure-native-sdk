@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // MQ kafkaConnector resource
@@ -193,12 +192,6 @@ func (i *KafkaConnector) ToKafkaConnectorOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaConnectorOutput)
 }
 
-func (i *KafkaConnector) ToOutput(ctx context.Context) pulumix.Output[*KafkaConnector] {
-	return pulumix.Output[*KafkaConnector]{
-		OutputState: i.ToKafkaConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KafkaConnectorOutput struct{ *pulumi.OutputState }
 
 func (KafkaConnectorOutput) ElementType() reflect.Type {
@@ -211,12 +204,6 @@ func (o KafkaConnectorOutput) ToKafkaConnectorOutput() KafkaConnectorOutput {
 
 func (o KafkaConnectorOutput) ToKafkaConnectorOutputWithContext(ctx context.Context) KafkaConnectorOutput {
 	return o
-}
-
-func (o KafkaConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaConnector] {
-	return pulumix.Output[*KafkaConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The client id prefix of the dynamically generated client ids.

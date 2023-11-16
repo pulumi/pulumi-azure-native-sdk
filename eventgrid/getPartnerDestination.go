@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of a partner destination.
@@ -101,12 +100,6 @@ func (o LookupPartnerDestinationResultOutput) ToLookupPartnerDestinationResultOu
 
 func (o LookupPartnerDestinationResultOutput) ToLookupPartnerDestinationResultOutputWithContext(ctx context.Context) LookupPartnerDestinationResultOutput {
 	return o
-}
-
-func (o LookupPartnerDestinationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPartnerDestinationResult] {
-	return pulumix.Output[LookupPartnerDestinationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Activation state of the partner destination.

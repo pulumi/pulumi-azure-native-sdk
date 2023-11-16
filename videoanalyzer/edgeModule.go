@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The representation of an edge module.
@@ -124,12 +123,6 @@ func (i *EdgeModule) ToEdgeModuleOutputWithContext(ctx context.Context) EdgeModu
 	return pulumi.ToOutputWithContext(ctx, i).(EdgeModuleOutput)
 }
 
-func (i *EdgeModule) ToOutput(ctx context.Context) pulumix.Output[*EdgeModule] {
-	return pulumix.Output[*EdgeModule]{
-		OutputState: i.ToEdgeModuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EdgeModuleOutput struct{ *pulumi.OutputState }
 
 func (EdgeModuleOutput) ElementType() reflect.Type {
@@ -142,12 +135,6 @@ func (o EdgeModuleOutput) ToEdgeModuleOutput() EdgeModuleOutput {
 
 func (o EdgeModuleOutput) ToEdgeModuleOutputWithContext(ctx context.Context) EdgeModuleOutput {
 	return o
-}
-
-func (o EdgeModuleOutput) ToOutput(ctx context.Context) pulumix.Output[*EdgeModule] {
-	return pulumix.Output[*EdgeModule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Internal ID generated for the instance of the Video Analyzer edge module.

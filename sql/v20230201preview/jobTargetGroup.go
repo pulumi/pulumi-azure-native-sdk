@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A group of job targets.
@@ -174,12 +173,6 @@ func (i *JobTargetGroup) ToJobTargetGroupOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(JobTargetGroupOutput)
 }
 
-func (i *JobTargetGroup) ToOutput(ctx context.Context) pulumix.Output[*JobTargetGroup] {
-	return pulumix.Output[*JobTargetGroup]{
-		OutputState: i.ToJobTargetGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobTargetGroupOutput struct{ *pulumi.OutputState }
 
 func (JobTargetGroupOutput) ElementType() reflect.Type {
@@ -192,12 +185,6 @@ func (o JobTargetGroupOutput) ToJobTargetGroupOutput() JobTargetGroupOutput {
 
 func (o JobTargetGroupOutput) ToJobTargetGroupOutputWithContext(ctx context.Context) JobTargetGroupOutput {
 	return o
-}
-
-func (o JobTargetGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*JobTargetGroup] {
-	return pulumix.Output[*JobTargetGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Members of the target group.

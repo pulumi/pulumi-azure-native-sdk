@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i ExportDeliveryDestinationArgs) ToExportDeliveryDestinationOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ExportDeliveryDestinationOutput)
 }
 
-func (i ExportDeliveryDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[ExportDeliveryDestination] {
-	return pulumix.Output[ExportDeliveryDestination]{
-		OutputState: i.ToExportDeliveryDestinationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The destination information for the delivery of the export.
 type ExportDeliveryDestinationOutput struct{ *pulumi.OutputState }
 
@@ -76,12 +69,6 @@ func (o ExportDeliveryDestinationOutput) ToExportDeliveryDestinationOutput() Exp
 
 func (o ExportDeliveryDestinationOutput) ToExportDeliveryDestinationOutputWithContext(ctx context.Context) ExportDeliveryDestinationOutput {
 	return o
-}
-
-func (o ExportDeliveryDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[ExportDeliveryDestination] {
-	return pulumix.Output[ExportDeliveryDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the container where exports will be uploaded.
@@ -122,12 +109,6 @@ func (o ExportDeliveryDestinationResponseOutput) ToExportDeliveryDestinationResp
 
 func (o ExportDeliveryDestinationResponseOutput) ToExportDeliveryDestinationResponseOutputWithContext(ctx context.Context) ExportDeliveryDestinationResponseOutput {
 	return o
-}
-
-func (o ExportDeliveryDestinationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExportDeliveryDestinationResponse] {
-	return pulumix.Output[ExportDeliveryDestinationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the container where exports will be uploaded.
@@ -180,12 +161,6 @@ func (i ExportDeliveryInfoArgs) ToExportDeliveryInfoOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ExportDeliveryInfoOutput)
 }
 
-func (i ExportDeliveryInfoArgs) ToOutput(ctx context.Context) pulumix.Output[ExportDeliveryInfo] {
-	return pulumix.Output[ExportDeliveryInfo]{
-		OutputState: i.ToExportDeliveryInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The delivery information associated with a export.
 type ExportDeliveryInfoOutput struct{ *pulumi.OutputState }
 
@@ -199,12 +174,6 @@ func (o ExportDeliveryInfoOutput) ToExportDeliveryInfoOutput() ExportDeliveryInf
 
 func (o ExportDeliveryInfoOutput) ToExportDeliveryInfoOutputWithContext(ctx context.Context) ExportDeliveryInfoOutput {
 	return o
-}
-
-func (o ExportDeliveryInfoOutput) ToOutput(ctx context.Context) pulumix.Output[ExportDeliveryInfo] {
-	return pulumix.Output[ExportDeliveryInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Has destination for the export being delivered.
@@ -231,12 +200,6 @@ func (o ExportDeliveryInfoResponseOutput) ToExportDeliveryInfoResponseOutput() E
 
 func (o ExportDeliveryInfoResponseOutput) ToExportDeliveryInfoResponseOutputWithContext(ctx context.Context) ExportDeliveryInfoResponseOutput {
 	return o
-}
-
-func (o ExportDeliveryInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExportDeliveryInfoResponse] {
-	return pulumix.Output[ExportDeliveryInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Has destination for the export being delivered.
@@ -283,12 +246,6 @@ func (i ExportRecurrencePeriodArgs) ToExportRecurrencePeriodOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ExportRecurrencePeriodOutput)
 }
 
-func (i ExportRecurrencePeriodArgs) ToOutput(ctx context.Context) pulumix.Output[ExportRecurrencePeriod] {
-	return pulumix.Output[ExportRecurrencePeriod]{
-		OutputState: i.ToExportRecurrencePeriodOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExportRecurrencePeriodArgs) ToExportRecurrencePeriodPtrOutput() ExportRecurrencePeriodPtrOutput {
 	return i.ToExportRecurrencePeriodPtrOutputWithContext(context.Background())
 }
@@ -330,12 +287,6 @@ func (i *exportRecurrencePeriodPtrType) ToExportRecurrencePeriodPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ExportRecurrencePeriodPtrOutput)
 }
 
-func (i *exportRecurrencePeriodPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExportRecurrencePeriod] {
-	return pulumix.Output[*ExportRecurrencePeriod]{
-		OutputState: i.ToExportRecurrencePeriodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The start and end date for recurrence schedule.
 type ExportRecurrencePeriodOutput struct{ *pulumi.OutputState }
 
@@ -361,12 +312,6 @@ func (o ExportRecurrencePeriodOutput) ToExportRecurrencePeriodPtrOutputWithConte
 	}).(ExportRecurrencePeriodPtrOutput)
 }
 
-func (o ExportRecurrencePeriodOutput) ToOutput(ctx context.Context) pulumix.Output[ExportRecurrencePeriod] {
-	return pulumix.Output[ExportRecurrencePeriod]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The start date of recurrence.
 func (o ExportRecurrencePeriodOutput) From() pulumi.StringOutput {
 	return o.ApplyT(func(v ExportRecurrencePeriod) string { return v.From }).(pulumi.StringOutput)
@@ -389,12 +334,6 @@ func (o ExportRecurrencePeriodPtrOutput) ToExportRecurrencePeriodPtrOutput() Exp
 
 func (o ExportRecurrencePeriodPtrOutput) ToExportRecurrencePeriodPtrOutputWithContext(ctx context.Context) ExportRecurrencePeriodPtrOutput {
 	return o
-}
-
-func (o ExportRecurrencePeriodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExportRecurrencePeriod] {
-	return pulumix.Output[*ExportRecurrencePeriod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExportRecurrencePeriodPtrOutput) Elem() ExportRecurrencePeriodOutput {
@@ -450,12 +389,6 @@ func (o ExportRecurrencePeriodResponseOutput) ToExportRecurrencePeriodResponseOu
 	return o
 }
 
-func (o ExportRecurrencePeriodResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExportRecurrencePeriodResponse] {
-	return pulumix.Output[ExportRecurrencePeriodResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The start date of recurrence.
 func (o ExportRecurrencePeriodResponseOutput) From() pulumi.StringOutput {
 	return o.ApplyT(func(v ExportRecurrencePeriodResponse) string { return v.From }).(pulumi.StringOutput)
@@ -478,12 +411,6 @@ func (o ExportRecurrencePeriodResponsePtrOutput) ToExportRecurrencePeriodRespons
 
 func (o ExportRecurrencePeriodResponsePtrOutput) ToExportRecurrencePeriodResponsePtrOutputWithContext(ctx context.Context) ExportRecurrencePeriodResponsePtrOutput {
 	return o
-}
-
-func (o ExportRecurrencePeriodResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExportRecurrencePeriodResponse] {
-	return pulumix.Output[*ExportRecurrencePeriodResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExportRecurrencePeriodResponsePtrOutput) Elem() ExportRecurrencePeriodResponseOutput {
@@ -559,12 +486,6 @@ func (i ExportScheduleArgs) ToExportScheduleOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ExportScheduleOutput)
 }
 
-func (i ExportScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[ExportSchedule] {
-	return pulumix.Output[ExportSchedule]{
-		OutputState: i.ToExportScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExportScheduleArgs) ToExportSchedulePtrOutput() ExportSchedulePtrOutput {
 	return i.ToExportSchedulePtrOutputWithContext(context.Background())
 }
@@ -606,12 +527,6 @@ func (i *exportSchedulePtrType) ToExportSchedulePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ExportSchedulePtrOutput)
 }
 
-func (i *exportSchedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*ExportSchedule] {
-	return pulumix.Output[*ExportSchedule]{
-		OutputState: i.ToExportSchedulePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The schedule associated with a export.
 type ExportScheduleOutput struct{ *pulumi.OutputState }
 
@@ -635,12 +550,6 @@ func (o ExportScheduleOutput) ToExportSchedulePtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExportSchedule) *ExportSchedule {
 		return &v
 	}).(ExportSchedulePtrOutput)
-}
-
-func (o ExportScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[ExportSchedule] {
-	return pulumix.Output[ExportSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The schedule recurrence.
@@ -670,12 +579,6 @@ func (o ExportSchedulePtrOutput) ToExportSchedulePtrOutput() ExportSchedulePtrOu
 
 func (o ExportSchedulePtrOutput) ToExportSchedulePtrOutputWithContext(ctx context.Context) ExportSchedulePtrOutput {
 	return o
-}
-
-func (o ExportSchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExportSchedule] {
-	return pulumix.Output[*ExportSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExportSchedulePtrOutput) Elem() ExportScheduleOutput {
@@ -743,12 +646,6 @@ func (o ExportScheduleResponseOutput) ToExportScheduleResponseOutputWithContext(
 	return o
 }
 
-func (o ExportScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExportScheduleResponse] {
-	return pulumix.Output[ExportScheduleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The schedule recurrence.
 func (o ExportScheduleResponseOutput) Recurrence() pulumi.StringOutput {
 	return o.ApplyT(func(v ExportScheduleResponse) string { return v.Recurrence }).(pulumi.StringOutput)
@@ -776,12 +673,6 @@ func (o ExportScheduleResponsePtrOutput) ToExportScheduleResponsePtrOutput() Exp
 
 func (o ExportScheduleResponsePtrOutput) ToExportScheduleResponsePtrOutputWithContext(ctx context.Context) ExportScheduleResponsePtrOutput {
 	return o
-}
-
-func (o ExportScheduleResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExportScheduleResponse] {
-	return pulumix.Output[*ExportScheduleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExportScheduleResponsePtrOutput) Elem() ExportScheduleResponseOutput {
@@ -863,12 +754,6 @@ func (i QueryAggregationArgs) ToQueryAggregationOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(QueryAggregationOutput)
 }
 
-func (i QueryAggregationArgs) ToOutput(ctx context.Context) pulumix.Output[QueryAggregation] {
-	return pulumix.Output[QueryAggregation]{
-		OutputState: i.ToQueryAggregationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // QueryAggregationMapInput is an input type that accepts QueryAggregationMap and QueryAggregationMapOutput values.
 // You can construct a concrete instance of `QueryAggregationMapInput` via:
 //
@@ -894,12 +779,6 @@ func (i QueryAggregationMap) ToQueryAggregationMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(QueryAggregationMapOutput)
 }
 
-func (i QueryAggregationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]QueryAggregation] {
-	return pulumix.Output[map[string]QueryAggregation]{
-		OutputState: i.ToQueryAggregationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The aggregation expression to be used in the query.
 type QueryAggregationOutput struct{ *pulumi.OutputState }
 
@@ -913,12 +792,6 @@ func (o QueryAggregationOutput) ToQueryAggregationOutput() QueryAggregationOutpu
 
 func (o QueryAggregationOutput) ToQueryAggregationOutputWithContext(ctx context.Context) QueryAggregationOutput {
 	return o
-}
-
-func (o QueryAggregationOutput) ToOutput(ctx context.Context) pulumix.Output[QueryAggregation] {
-	return pulumix.Output[QueryAggregation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the aggregation function to use.
@@ -943,12 +816,6 @@ func (o QueryAggregationMapOutput) ToQueryAggregationMapOutput() QueryAggregatio
 
 func (o QueryAggregationMapOutput) ToQueryAggregationMapOutputWithContext(ctx context.Context) QueryAggregationMapOutput {
 	return o
-}
-
-func (o QueryAggregationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]QueryAggregation] {
-	return pulumix.Output[map[string]QueryAggregation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueryAggregationMapOutput) MapIndex(k pulumi.StringInput) QueryAggregationOutput {
@@ -980,12 +847,6 @@ func (o QueryAggregationResponseOutput) ToQueryAggregationResponseOutputWithCont
 	return o
 }
 
-func (o QueryAggregationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[QueryAggregationResponse] {
-	return pulumix.Output[QueryAggregationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the aggregation function to use.
 func (o QueryAggregationResponseOutput) Function() pulumi.StringOutput {
 	return o.ApplyT(func(v QueryAggregationResponse) string { return v.Function }).(pulumi.StringOutput)
@@ -1008,12 +869,6 @@ func (o QueryAggregationResponseMapOutput) ToQueryAggregationResponseMapOutput()
 
 func (o QueryAggregationResponseMapOutput) ToQueryAggregationResponseMapOutputWithContext(ctx context.Context) QueryAggregationResponseMapOutput {
 	return o
-}
-
-func (o QueryAggregationResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]QueryAggregationResponse] {
-	return pulumix.Output[map[string]QueryAggregationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueryAggregationResponseMapOutput) MapIndex(k pulumi.StringInput) QueryAggregationResponseOutput {
@@ -1065,12 +920,6 @@ func (i QueryComparisonExpressionArgs) ToQueryComparisonExpressionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(QueryComparisonExpressionOutput)
 }
 
-func (i QueryComparisonExpressionArgs) ToOutput(ctx context.Context) pulumix.Output[QueryComparisonExpression] {
-	return pulumix.Output[QueryComparisonExpression]{
-		OutputState: i.ToQueryComparisonExpressionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i QueryComparisonExpressionArgs) ToQueryComparisonExpressionPtrOutput() QueryComparisonExpressionPtrOutput {
 	return i.ToQueryComparisonExpressionPtrOutputWithContext(context.Background())
 }
@@ -1112,12 +961,6 @@ func (i *queryComparisonExpressionPtrType) ToQueryComparisonExpressionPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(QueryComparisonExpressionPtrOutput)
 }
 
-func (i *queryComparisonExpressionPtrType) ToOutput(ctx context.Context) pulumix.Output[*QueryComparisonExpression] {
-	return pulumix.Output[*QueryComparisonExpression]{
-		OutputState: i.ToQueryComparisonExpressionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The comparison expression to be used in the query.
 type QueryComparisonExpressionOutput struct{ *pulumi.OutputState }
 
@@ -1141,12 +984,6 @@ func (o QueryComparisonExpressionOutput) ToQueryComparisonExpressionPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueryComparisonExpression) *QueryComparisonExpression {
 		return &v
 	}).(QueryComparisonExpressionPtrOutput)
-}
-
-func (o QueryComparisonExpressionOutput) ToOutput(ctx context.Context) pulumix.Output[QueryComparisonExpression] {
-	return pulumix.Output[QueryComparisonExpression]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the column to use in comparison.
@@ -1176,12 +1013,6 @@ func (o QueryComparisonExpressionPtrOutput) ToQueryComparisonExpressionPtrOutput
 
 func (o QueryComparisonExpressionPtrOutput) ToQueryComparisonExpressionPtrOutputWithContext(ctx context.Context) QueryComparisonExpressionPtrOutput {
 	return o
-}
-
-func (o QueryComparisonExpressionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueryComparisonExpression] {
-	return pulumix.Output[*QueryComparisonExpression]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueryComparisonExpressionPtrOutput) Elem() QueryComparisonExpressionOutput {
@@ -1249,12 +1080,6 @@ func (o QueryComparisonExpressionResponseOutput) ToQueryComparisonExpressionResp
 	return o
 }
 
-func (o QueryComparisonExpressionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[QueryComparisonExpressionResponse] {
-	return pulumix.Output[QueryComparisonExpressionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the column to use in comparison.
 func (o QueryComparisonExpressionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v QueryComparisonExpressionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -1282,12 +1107,6 @@ func (o QueryComparisonExpressionResponsePtrOutput) ToQueryComparisonExpressionR
 
 func (o QueryComparisonExpressionResponsePtrOutput) ToQueryComparisonExpressionResponsePtrOutputWithContext(ctx context.Context) QueryComparisonExpressionResponsePtrOutput {
 	return o
-}
-
-func (o QueryComparisonExpressionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueryComparisonExpressionResponse] {
-	return pulumix.Output[*QueryComparisonExpressionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueryComparisonExpressionResponsePtrOutput) Elem() QueryComparisonExpressionResponseOutput {
@@ -1385,12 +1204,6 @@ func (i QueryDatasetArgs) ToQueryDatasetOutputWithContext(ctx context.Context) Q
 	return pulumi.ToOutputWithContext(ctx, i).(QueryDatasetOutput)
 }
 
-func (i QueryDatasetArgs) ToOutput(ctx context.Context) pulumix.Output[QueryDataset] {
-	return pulumix.Output[QueryDataset]{
-		OutputState: i.ToQueryDatasetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i QueryDatasetArgs) ToQueryDatasetPtrOutput() QueryDatasetPtrOutput {
 	return i.ToQueryDatasetPtrOutputWithContext(context.Background())
 }
@@ -1432,12 +1245,6 @@ func (i *queryDatasetPtrType) ToQueryDatasetPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(QueryDatasetPtrOutput)
 }
 
-func (i *queryDatasetPtrType) ToOutput(ctx context.Context) pulumix.Output[*QueryDataset] {
-	return pulumix.Output[*QueryDataset]{
-		OutputState: i.ToQueryDatasetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The definition of data present in the query.
 type QueryDatasetOutput struct{ *pulumi.OutputState }
 
@@ -1461,12 +1268,6 @@ func (o QueryDatasetOutput) ToQueryDatasetPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueryDataset) *QueryDataset {
 		return &v
 	}).(QueryDatasetPtrOutput)
-}
-
-func (o QueryDatasetOutput) ToOutput(ctx context.Context) pulumix.Output[QueryDataset] {
-	return pulumix.Output[QueryDataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Dictionary of aggregation expression to use in the query. The key of each item in the dictionary is the alias for the aggregated column. Query can have up to 2 aggregation clauses.
@@ -1511,12 +1312,6 @@ func (o QueryDatasetPtrOutput) ToQueryDatasetPtrOutput() QueryDatasetPtrOutput {
 
 func (o QueryDatasetPtrOutput) ToQueryDatasetPtrOutputWithContext(ctx context.Context) QueryDatasetPtrOutput {
 	return o
-}
-
-func (o QueryDatasetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueryDataset] {
-	return pulumix.Output[*QueryDataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueryDatasetPtrOutput) Elem() QueryDatasetOutput {
@@ -1624,12 +1419,6 @@ func (i QueryDatasetConfigurationArgs) ToQueryDatasetConfigurationOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(QueryDatasetConfigurationOutput)
 }
 
-func (i QueryDatasetConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[QueryDatasetConfiguration] {
-	return pulumix.Output[QueryDatasetConfiguration]{
-		OutputState: i.ToQueryDatasetConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i QueryDatasetConfigurationArgs) ToQueryDatasetConfigurationPtrOutput() QueryDatasetConfigurationPtrOutput {
 	return i.ToQueryDatasetConfigurationPtrOutputWithContext(context.Background())
 }
@@ -1671,12 +1460,6 @@ func (i *queryDatasetConfigurationPtrType) ToQueryDatasetConfigurationPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(QueryDatasetConfigurationPtrOutput)
 }
 
-func (i *queryDatasetConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*QueryDatasetConfiguration] {
-	return pulumix.Output[*QueryDatasetConfiguration]{
-		OutputState: i.ToQueryDatasetConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration of dataset in the query.
 type QueryDatasetConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -1702,12 +1485,6 @@ func (o QueryDatasetConfigurationOutput) ToQueryDatasetConfigurationPtrOutputWit
 	}).(QueryDatasetConfigurationPtrOutput)
 }
 
-func (o QueryDatasetConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[QueryDatasetConfiguration] {
-	return pulumix.Output[QueryDatasetConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Array of column names to be included in the query. Any valid query column name is allowed. If not provided, then query includes all columns.
 func (o QueryDatasetConfigurationOutput) Columns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v QueryDatasetConfiguration) []string { return v.Columns }).(pulumi.StringArrayOutput)
@@ -1725,12 +1502,6 @@ func (o QueryDatasetConfigurationPtrOutput) ToQueryDatasetConfigurationPtrOutput
 
 func (o QueryDatasetConfigurationPtrOutput) ToQueryDatasetConfigurationPtrOutputWithContext(ctx context.Context) QueryDatasetConfigurationPtrOutput {
 	return o
-}
-
-func (o QueryDatasetConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueryDatasetConfiguration] {
-	return pulumix.Output[*QueryDatasetConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueryDatasetConfigurationPtrOutput) Elem() QueryDatasetConfigurationOutput {
@@ -1774,12 +1545,6 @@ func (o QueryDatasetConfigurationResponseOutput) ToQueryDatasetConfigurationResp
 	return o
 }
 
-func (o QueryDatasetConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[QueryDatasetConfigurationResponse] {
-	return pulumix.Output[QueryDatasetConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Array of column names to be included in the query. Any valid query column name is allowed. If not provided, then query includes all columns.
 func (o QueryDatasetConfigurationResponseOutput) Columns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v QueryDatasetConfigurationResponse) []string { return v.Columns }).(pulumi.StringArrayOutput)
@@ -1797,12 +1562,6 @@ func (o QueryDatasetConfigurationResponsePtrOutput) ToQueryDatasetConfigurationR
 
 func (o QueryDatasetConfigurationResponsePtrOutput) ToQueryDatasetConfigurationResponsePtrOutputWithContext(ctx context.Context) QueryDatasetConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o QueryDatasetConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueryDatasetConfigurationResponse] {
-	return pulumix.Output[*QueryDatasetConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueryDatasetConfigurationResponsePtrOutput) Elem() QueryDatasetConfigurationResponseOutput {
@@ -1856,12 +1615,6 @@ func (o QueryDatasetResponseOutput) ToQueryDatasetResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o QueryDatasetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[QueryDatasetResponse] {
-	return pulumix.Output[QueryDatasetResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Dictionary of aggregation expression to use in the query. The key of each item in the dictionary is the alias for the aggregated column. Query can have up to 2 aggregation clauses.
 func (o QueryDatasetResponseOutput) Aggregation() QueryAggregationResponseMapOutput {
 	return o.ApplyT(func(v QueryDatasetResponse) map[string]QueryAggregationResponse { return v.Aggregation }).(QueryAggregationResponseMapOutput)
@@ -1904,12 +1657,6 @@ func (o QueryDatasetResponsePtrOutput) ToQueryDatasetResponsePtrOutput() QueryDa
 
 func (o QueryDatasetResponsePtrOutput) ToQueryDatasetResponsePtrOutputWithContext(ctx context.Context) QueryDatasetResponsePtrOutput {
 	return o
-}
-
-func (o QueryDatasetResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueryDatasetResponse] {
-	return pulumix.Output[*QueryDatasetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueryDatasetResponsePtrOutput) Elem() QueryDatasetResponseOutput {
@@ -2029,12 +1776,6 @@ func (i QueryDefinitionArgs) ToQueryDefinitionOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(QueryDefinitionOutput)
 }
 
-func (i QueryDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[QueryDefinition] {
-	return pulumix.Output[QueryDefinition]{
-		OutputState: i.ToQueryDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The definition of a query.
 type QueryDefinitionOutput struct{ *pulumi.OutputState }
 
@@ -2048,12 +1789,6 @@ func (o QueryDefinitionOutput) ToQueryDefinitionOutput() QueryDefinitionOutput {
 
 func (o QueryDefinitionOutput) ToQueryDefinitionOutputWithContext(ctx context.Context) QueryDefinitionOutput {
 	return o
-}
-
-func (o QueryDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[QueryDefinition] {
-	return pulumix.Output[QueryDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Has definition for data in this query.
@@ -2101,12 +1836,6 @@ func (o QueryDefinitionResponseOutput) ToQueryDefinitionResponseOutput() QueryDe
 
 func (o QueryDefinitionResponseOutput) ToQueryDefinitionResponseOutputWithContext(ctx context.Context) QueryDefinitionResponseOutput {
 	return o
-}
-
-func (o QueryDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[QueryDefinitionResponse] {
-	return pulumix.Output[QueryDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Has definition for data in this query.
@@ -2180,12 +1909,6 @@ func (i QueryFilterArgs) ToQueryFilterOutputWithContext(ctx context.Context) Que
 	return pulumi.ToOutputWithContext(ctx, i).(QueryFilterOutput)
 }
 
-func (i QueryFilterArgs) ToOutput(ctx context.Context) pulumix.Output[QueryFilter] {
-	return pulumix.Output[QueryFilter]{
-		OutputState: i.ToQueryFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i QueryFilterArgs) ToQueryFilterPtrOutput() QueryFilterPtrOutput {
 	return i.ToQueryFilterPtrOutputWithContext(context.Background())
 }
@@ -2227,12 +1950,6 @@ func (i *queryFilterPtrType) ToQueryFilterPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(QueryFilterPtrOutput)
 }
 
-func (i *queryFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*QueryFilter] {
-	return pulumix.Output[*QueryFilter]{
-		OutputState: i.ToQueryFilterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // QueryFilterArrayInput is an input type that accepts QueryFilterArray and QueryFilterArrayOutput values.
 // You can construct a concrete instance of `QueryFilterArrayInput` via:
 //
@@ -2258,12 +1975,6 @@ func (i QueryFilterArray) ToQueryFilterArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(QueryFilterArrayOutput)
 }
 
-func (i QueryFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]QueryFilter] {
-	return pulumix.Output[[]QueryFilter]{
-		OutputState: i.ToQueryFilterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The filter expression to be used in the export.
 type QueryFilterOutput struct{ *pulumi.OutputState }
 
@@ -2287,12 +1998,6 @@ func (o QueryFilterOutput) ToQueryFilterPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueryFilter) *QueryFilter {
 		return &v
 	}).(QueryFilterPtrOutput)
-}
-
-func (o QueryFilterOutput) ToOutput(ctx context.Context) pulumix.Output[QueryFilter] {
-	return pulumix.Output[QueryFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The logical "AND" expression. Must have at least 2 items.
@@ -2332,12 +2037,6 @@ func (o QueryFilterPtrOutput) ToQueryFilterPtrOutput() QueryFilterPtrOutput {
 
 func (o QueryFilterPtrOutput) ToQueryFilterPtrOutputWithContext(ctx context.Context) QueryFilterPtrOutput {
 	return o
-}
-
-func (o QueryFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueryFilter] {
-	return pulumix.Output[*QueryFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueryFilterPtrOutput) Elem() QueryFilterOutput {
@@ -2414,12 +2113,6 @@ func (o QueryFilterArrayOutput) ToQueryFilterArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o QueryFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]QueryFilter] {
-	return pulumix.Output[[]QueryFilter]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o QueryFilterArrayOutput) Index(i pulumi.IntInput) QueryFilterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QueryFilter {
 		return vs[0].([]QueryFilter)[vs[1].(int)]
@@ -2453,12 +2146,6 @@ func (o QueryFilterResponseOutput) ToQueryFilterResponseOutput() QueryFilterResp
 
 func (o QueryFilterResponseOutput) ToQueryFilterResponseOutputWithContext(ctx context.Context) QueryFilterResponseOutput {
 	return o
-}
-
-func (o QueryFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[QueryFilterResponse] {
-	return pulumix.Output[QueryFilterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The logical "AND" expression. Must have at least 2 items.
@@ -2498,12 +2185,6 @@ func (o QueryFilterResponsePtrOutput) ToQueryFilterResponsePtrOutput() QueryFilt
 
 func (o QueryFilterResponsePtrOutput) ToQueryFilterResponsePtrOutputWithContext(ctx context.Context) QueryFilterResponsePtrOutput {
 	return o
-}
-
-func (o QueryFilterResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueryFilterResponse] {
-	return pulumix.Output[*QueryFilterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueryFilterResponsePtrOutput) Elem() QueryFilterResponseOutput {
@@ -2580,12 +2261,6 @@ func (o QueryFilterResponseArrayOutput) ToQueryFilterResponseArrayOutputWithCont
 	return o
 }
 
-func (o QueryFilterResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]QueryFilterResponse] {
-	return pulumix.Output[[]QueryFilterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o QueryFilterResponseArrayOutput) Index(i pulumi.IntInput) QueryFilterResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QueryFilterResponse {
 		return vs[0].([]QueryFilterResponse)[vs[1].(int)]
@@ -2631,12 +2306,6 @@ func (i QueryGroupingArgs) ToQueryGroupingOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(QueryGroupingOutput)
 }
 
-func (i QueryGroupingArgs) ToOutput(ctx context.Context) pulumix.Output[QueryGrouping] {
-	return pulumix.Output[QueryGrouping]{
-		OutputState: i.ToQueryGroupingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // QueryGroupingArrayInput is an input type that accepts QueryGroupingArray and QueryGroupingArrayOutput values.
 // You can construct a concrete instance of `QueryGroupingArrayInput` via:
 //
@@ -2662,12 +2331,6 @@ func (i QueryGroupingArray) ToQueryGroupingArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(QueryGroupingArrayOutput)
 }
 
-func (i QueryGroupingArray) ToOutput(ctx context.Context) pulumix.Output[[]QueryGrouping] {
-	return pulumix.Output[[]QueryGrouping]{
-		OutputState: i.ToQueryGroupingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The group by expression to be used in the query.
 type QueryGroupingOutput struct{ *pulumi.OutputState }
 
@@ -2681,12 +2344,6 @@ func (o QueryGroupingOutput) ToQueryGroupingOutput() QueryGroupingOutput {
 
 func (o QueryGroupingOutput) ToQueryGroupingOutputWithContext(ctx context.Context) QueryGroupingOutput {
 	return o
-}
-
-func (o QueryGroupingOutput) ToOutput(ctx context.Context) pulumix.Output[QueryGrouping] {
-	return pulumix.Output[QueryGrouping]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the column to group.
@@ -2711,12 +2368,6 @@ func (o QueryGroupingArrayOutput) ToQueryGroupingArrayOutput() QueryGroupingArra
 
 func (o QueryGroupingArrayOutput) ToQueryGroupingArrayOutputWithContext(ctx context.Context) QueryGroupingArrayOutput {
 	return o
-}
-
-func (o QueryGroupingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]QueryGrouping] {
-	return pulumix.Output[[]QueryGrouping]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueryGroupingArrayOutput) Index(i pulumi.IntInput) QueryGroupingOutput {
@@ -2748,12 +2399,6 @@ func (o QueryGroupingResponseOutput) ToQueryGroupingResponseOutputWithContext(ct
 	return o
 }
 
-func (o QueryGroupingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[QueryGroupingResponse] {
-	return pulumix.Output[QueryGroupingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the column to group.
 func (o QueryGroupingResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v QueryGroupingResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -2776,12 +2421,6 @@ func (o QueryGroupingResponseArrayOutput) ToQueryGroupingResponseArrayOutput() Q
 
 func (o QueryGroupingResponseArrayOutput) ToQueryGroupingResponseArrayOutputWithContext(ctx context.Context) QueryGroupingResponseArrayOutput {
 	return o
-}
-
-func (o QueryGroupingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]QueryGroupingResponse] {
-	return pulumix.Output[[]QueryGroupingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueryGroupingResponseArrayOutput) Index(i pulumi.IntInput) QueryGroupingResponseOutput {
@@ -2829,12 +2468,6 @@ func (i QuerySortingConfigurationArgs) ToQuerySortingConfigurationOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(QuerySortingConfigurationOutput)
 }
 
-func (i QuerySortingConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[QuerySortingConfiguration] {
-	return pulumix.Output[QuerySortingConfiguration]{
-		OutputState: i.ToQuerySortingConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // QuerySortingConfigurationArrayInput is an input type that accepts QuerySortingConfigurationArray and QuerySortingConfigurationArrayOutput values.
 // You can construct a concrete instance of `QuerySortingConfigurationArrayInput` via:
 //
@@ -2860,12 +2493,6 @@ func (i QuerySortingConfigurationArray) ToQuerySortingConfigurationArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(QuerySortingConfigurationArrayOutput)
 }
 
-func (i QuerySortingConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]QuerySortingConfiguration] {
-	return pulumix.Output[[]QuerySortingConfiguration]{
-		OutputState: i.ToQuerySortingConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration for sorting in the query.
 type QuerySortingConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -2879,12 +2506,6 @@ func (o QuerySortingConfigurationOutput) ToQuerySortingConfigurationOutput() Que
 
 func (o QuerySortingConfigurationOutput) ToQuerySortingConfigurationOutputWithContext(ctx context.Context) QuerySortingConfigurationOutput {
 	return o
-}
-
-func (o QuerySortingConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[QuerySortingConfiguration] {
-	return pulumix.Output[QuerySortingConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the column to use in sorting.
@@ -2909,12 +2530,6 @@ func (o QuerySortingConfigurationArrayOutput) ToQuerySortingConfigurationArrayOu
 
 func (o QuerySortingConfigurationArrayOutput) ToQuerySortingConfigurationArrayOutputWithContext(ctx context.Context) QuerySortingConfigurationArrayOutput {
 	return o
-}
-
-func (o QuerySortingConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]QuerySortingConfiguration] {
-	return pulumix.Output[[]QuerySortingConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QuerySortingConfigurationArrayOutput) Index(i pulumi.IntInput) QuerySortingConfigurationOutput {
@@ -2946,12 +2561,6 @@ func (o QuerySortingConfigurationResponseOutput) ToQuerySortingConfigurationResp
 	return o
 }
 
-func (o QuerySortingConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[QuerySortingConfigurationResponse] {
-	return pulumix.Output[QuerySortingConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the column to use in sorting.
 func (o QuerySortingConfigurationResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v QuerySortingConfigurationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -2974,12 +2583,6 @@ func (o QuerySortingConfigurationResponseArrayOutput) ToQuerySortingConfiguratio
 
 func (o QuerySortingConfigurationResponseArrayOutput) ToQuerySortingConfigurationResponseArrayOutputWithContext(ctx context.Context) QuerySortingConfigurationResponseArrayOutput {
 	return o
-}
-
-func (o QuerySortingConfigurationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]QuerySortingConfigurationResponse] {
-	return pulumix.Output[[]QuerySortingConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QuerySortingConfigurationResponseArrayOutput) Index(i pulumi.IntInput) QuerySortingConfigurationResponseOutput {
@@ -3027,12 +2630,6 @@ func (i QueryTimePeriodArgs) ToQueryTimePeriodOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(QueryTimePeriodOutput)
 }
 
-func (i QueryTimePeriodArgs) ToOutput(ctx context.Context) pulumix.Output[QueryTimePeriod] {
-	return pulumix.Output[QueryTimePeriod]{
-		OutputState: i.ToQueryTimePeriodOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i QueryTimePeriodArgs) ToQueryTimePeriodPtrOutput() QueryTimePeriodPtrOutput {
 	return i.ToQueryTimePeriodPtrOutputWithContext(context.Background())
 }
@@ -3074,12 +2671,6 @@ func (i *queryTimePeriodPtrType) ToQueryTimePeriodPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(QueryTimePeriodPtrOutput)
 }
 
-func (i *queryTimePeriodPtrType) ToOutput(ctx context.Context) pulumix.Output[*QueryTimePeriod] {
-	return pulumix.Output[*QueryTimePeriod]{
-		OutputState: i.ToQueryTimePeriodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The start and end date for pulling data for the query.
 type QueryTimePeriodOutput struct{ *pulumi.OutputState }
 
@@ -3105,12 +2696,6 @@ func (o QueryTimePeriodOutput) ToQueryTimePeriodPtrOutputWithContext(ctx context
 	}).(QueryTimePeriodPtrOutput)
 }
 
-func (o QueryTimePeriodOutput) ToOutput(ctx context.Context) pulumix.Output[QueryTimePeriod] {
-	return pulumix.Output[QueryTimePeriod]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The start date to pull data from.
 func (o QueryTimePeriodOutput) From() pulumi.StringOutput {
 	return o.ApplyT(func(v QueryTimePeriod) string { return v.From }).(pulumi.StringOutput)
@@ -3133,12 +2718,6 @@ func (o QueryTimePeriodPtrOutput) ToQueryTimePeriodPtrOutput() QueryTimePeriodPt
 
 func (o QueryTimePeriodPtrOutput) ToQueryTimePeriodPtrOutputWithContext(ctx context.Context) QueryTimePeriodPtrOutput {
 	return o
-}
-
-func (o QueryTimePeriodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueryTimePeriod] {
-	return pulumix.Output[*QueryTimePeriod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueryTimePeriodPtrOutput) Elem() QueryTimePeriodOutput {
@@ -3194,12 +2773,6 @@ func (o QueryTimePeriodResponseOutput) ToQueryTimePeriodResponseOutputWithContex
 	return o
 }
 
-func (o QueryTimePeriodResponseOutput) ToOutput(ctx context.Context) pulumix.Output[QueryTimePeriodResponse] {
-	return pulumix.Output[QueryTimePeriodResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The start date to pull data from.
 func (o QueryTimePeriodResponseOutput) From() pulumi.StringOutput {
 	return o.ApplyT(func(v QueryTimePeriodResponse) string { return v.From }).(pulumi.StringOutput)
@@ -3222,12 +2795,6 @@ func (o QueryTimePeriodResponsePtrOutput) ToQueryTimePeriodResponsePtrOutput() Q
 
 func (o QueryTimePeriodResponsePtrOutput) ToQueryTimePeriodResponsePtrOutputWithContext(ctx context.Context) QueryTimePeriodResponsePtrOutput {
 	return o
-}
-
-func (o QueryTimePeriodResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*QueryTimePeriodResponse] {
-	return pulumix.Output[*QueryTimePeriodResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o QueryTimePeriodResponsePtrOutput) Elem() QueryTimePeriodResponseOutput {

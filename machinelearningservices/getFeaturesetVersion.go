@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure Resource Manager resource envelope.
@@ -103,12 +102,6 @@ func (o LookupFeaturesetVersionResultOutput) ToLookupFeaturesetVersionResultOutp
 
 func (o LookupFeaturesetVersionResultOutput) ToLookupFeaturesetVersionResultOutputWithContext(ctx context.Context) LookupFeaturesetVersionResultOutput {
 	return o
-}
-
-func (o LookupFeaturesetVersionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFeaturesetVersionResult] {
-	return pulumix.Output[LookupFeaturesetVersionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // [Required] Additional attributes of the entity.

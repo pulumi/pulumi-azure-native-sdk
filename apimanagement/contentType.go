@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Content type contract details.
@@ -175,12 +174,6 @@ func (i *ContentType) ToContentTypeOutputWithContext(ctx context.Context) Conten
 	return pulumi.ToOutputWithContext(ctx, i).(ContentTypeOutput)
 }
 
-func (i *ContentType) ToOutput(ctx context.Context) pulumix.Output[*ContentType] {
-	return pulumix.Output[*ContentType]{
-		OutputState: i.ToContentTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContentTypeOutput struct{ *pulumi.OutputState }
 
 func (ContentTypeOutput) ElementType() reflect.Type {
@@ -193,12 +186,6 @@ func (o ContentTypeOutput) ToContentTypeOutput() ContentTypeOutput {
 
 func (o ContentTypeOutput) ToContentTypeOutputWithContext(ctx context.Context) ContentTypeOutput {
 	return o
-}
-
-func (o ContentTypeOutput) ToOutput(ctx context.Context) pulumix.Output[*ContentType] {
-	return pulumix.Output[*ContentType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Content type description.

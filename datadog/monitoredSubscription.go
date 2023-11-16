@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The request to update subscriptions needed to be monitored by the Datadog monitor resource.
@@ -123,12 +122,6 @@ func (i *MonitoredSubscription) ToMonitoredSubscriptionOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoredSubscriptionOutput)
 }
 
-func (i *MonitoredSubscription) ToOutput(ctx context.Context) pulumix.Output[*MonitoredSubscription] {
-	return pulumix.Output[*MonitoredSubscription]{
-		OutputState: i.ToMonitoredSubscriptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MonitoredSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (MonitoredSubscriptionOutput) ElementType() reflect.Type {
@@ -141,12 +134,6 @@ func (o MonitoredSubscriptionOutput) ToMonitoredSubscriptionOutput() MonitoredSu
 
 func (o MonitoredSubscriptionOutput) ToMonitoredSubscriptionOutputWithContext(ctx context.Context) MonitoredSubscriptionOutput {
 	return o
-}
-
-func (o MonitoredSubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitoredSubscription] {
-	return pulumix.Output[*MonitoredSubscription]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the monitored subscription resource.

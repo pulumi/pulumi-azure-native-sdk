@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // VMware collector resource.
@@ -143,12 +142,6 @@ func (i *VmwareCollectorsOperation) ToVmwareCollectorsOperationOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(VmwareCollectorsOperationOutput)
 }
 
-func (i *VmwareCollectorsOperation) ToOutput(ctx context.Context) pulumix.Output[*VmwareCollectorsOperation] {
-	return pulumix.Output[*VmwareCollectorsOperation]{
-		OutputState: i.ToVmwareCollectorsOperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VmwareCollectorsOperationOutput struct{ *pulumi.OutputState }
 
 func (VmwareCollectorsOperationOutput) ElementType() reflect.Type {
@@ -161,12 +154,6 @@ func (o VmwareCollectorsOperationOutput) ToVmwareCollectorsOperationOutput() Vmw
 
 func (o VmwareCollectorsOperationOutput) ToVmwareCollectorsOperationOutputWithContext(ctx context.Context) VmwareCollectorsOperationOutput {
 	return o
-}
-
-func (o VmwareCollectorsOperationOutput) ToOutput(ctx context.Context) pulumix.Output[*VmwareCollectorsOperation] {
-	return pulumix.Output[*VmwareCollectorsOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the collector agent properties.

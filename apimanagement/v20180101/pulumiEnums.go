@@ -113,12 +113,6 @@ func (o SubscriptionStateEnumOutput) ToSubscriptionStateEnumPtrOutputWithContext
 	}).(SubscriptionStateEnumPtrOutput)
 }
 
-func (o SubscriptionStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionStateEnum] {
-	return pulumix.Output[SubscriptionStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SubscriptionStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -152,12 +146,6 @@ func (o SubscriptionStateEnumPtrOutput) ToSubscriptionStateEnumPtrOutput() Subsc
 
 func (o SubscriptionStateEnumPtrOutput) ToSubscriptionStateEnumPtrOutputWithContext(ctx context.Context) SubscriptionStateEnumPtrOutput {
 	return o
-}
-
-func (o SubscriptionStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionStateEnum] {
-	return pulumix.Output[*SubscriptionStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubscriptionStateEnumPtrOutput) Elem() SubscriptionStateEnumOutput {

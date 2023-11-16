@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i ActionGroupsInformationArgs) ToActionGroupsInformationOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ActionGroupsInformationOutput)
 }
 
-func (i ActionGroupsInformationArgs) ToOutput(ctx context.Context) pulumix.Output[ActionGroupsInformation] {
-	return pulumix.Output[ActionGroupsInformation]{
-		OutputState: i.ToActionGroupsInformationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Action Groups information, used by the alert rule.
 type ActionGroupsInformationOutput struct{ *pulumi.OutputState }
 
@@ -76,12 +69,6 @@ func (o ActionGroupsInformationOutput) ToActionGroupsInformationOutput() ActionG
 
 func (o ActionGroupsInformationOutput) ToActionGroupsInformationOutputWithContext(ctx context.Context) ActionGroupsInformationOutput {
 	return o
-}
-
-func (o ActionGroupsInformationOutput) ToOutput(ctx context.Context) pulumix.Output[ActionGroupsInformation] {
-	return pulumix.Output[ActionGroupsInformation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An optional custom email subject to use in email notifications.
@@ -122,12 +109,6 @@ func (o ActionGroupsInformationResponseOutput) ToActionGroupsInformationResponse
 
 func (o ActionGroupsInformationResponseOutput) ToActionGroupsInformationResponseOutputWithContext(ctx context.Context) ActionGroupsInformationResponseOutput {
 	return o
-}
-
-func (o ActionGroupsInformationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ActionGroupsInformationResponse] {
-	return pulumix.Output[ActionGroupsInformationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An optional custom email subject to use in email notifications.
@@ -184,12 +165,6 @@ func (i DetectorArgs) ToDetectorOutputWithContext(ctx context.Context) DetectorO
 	return pulumi.ToOutputWithContext(ctx, i).(DetectorOutput)
 }
 
-func (i DetectorArgs) ToOutput(ctx context.Context) pulumix.Output[Detector] {
-	return pulumix.Output[Detector]{
-		OutputState: i.ToDetectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The detector information. By default this is not populated, unless it's specified in expandDetector
 type DetectorOutput struct{ *pulumi.OutputState }
 
@@ -203,12 +178,6 @@ func (o DetectorOutput) ToDetectorOutput() DetectorOutput {
 
 func (o DetectorOutput) ToDetectorOutputWithContext(ctx context.Context) DetectorOutput {
 	return o
-}
-
-func (o DetectorOutput) ToOutput(ctx context.Context) pulumix.Output[Detector] {
-	return pulumix.Output[Detector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The detector id.
@@ -250,12 +219,6 @@ func (o DetectorParameterDefinitionResponseOutput) ToDetectorParameterDefinition
 	return o
 }
 
-func (o DetectorParameterDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DetectorParameterDefinitionResponse] {
-	return pulumix.Output[DetectorParameterDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The detector parameter description.
 func (o DetectorParameterDefinitionResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DetectorParameterDefinitionResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -293,12 +256,6 @@ func (o DetectorParameterDefinitionResponseArrayOutput) ToDetectorParameterDefin
 
 func (o DetectorParameterDefinitionResponseArrayOutput) ToDetectorParameterDefinitionResponseArrayOutputWithContext(ctx context.Context) DetectorParameterDefinitionResponseArrayOutput {
 	return o
-}
-
-func (o DetectorParameterDefinitionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DetectorParameterDefinitionResponse] {
-	return pulumix.Output[[]DetectorParameterDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DetectorParameterDefinitionResponseArrayOutput) Index(i pulumi.IntInput) DetectorParameterDefinitionResponseOutput {
@@ -340,12 +297,6 @@ func (o DetectorResponseOutput) ToDetectorResponseOutput() DetectorResponseOutpu
 
 func (o DetectorResponseOutput) ToDetectorResponseOutputWithContext(ctx context.Context) DetectorResponseOutput {
 	return o
-}
-
-func (o DetectorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DetectorResponse] {
-	return pulumix.Output[DetectorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Smart Detector description.
@@ -423,12 +374,6 @@ func (i ThrottlingInformationArgs) ToThrottlingInformationOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ThrottlingInformationOutput)
 }
 
-func (i ThrottlingInformationArgs) ToOutput(ctx context.Context) pulumix.Output[ThrottlingInformation] {
-	return pulumix.Output[ThrottlingInformation]{
-		OutputState: i.ToThrottlingInformationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ThrottlingInformationArgs) ToThrottlingInformationPtrOutput() ThrottlingInformationPtrOutput {
 	return i.ToThrottlingInformationPtrOutputWithContext(context.Background())
 }
@@ -470,12 +415,6 @@ func (i *throttlingInformationPtrType) ToThrottlingInformationPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ThrottlingInformationPtrOutput)
 }
 
-func (i *throttlingInformationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ThrottlingInformation] {
-	return pulumix.Output[*ThrottlingInformation]{
-		OutputState: i.ToThrottlingInformationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Optional throttling information for the alert rule.
 type ThrottlingInformationOutput struct{ *pulumi.OutputState }
 
@@ -501,12 +440,6 @@ func (o ThrottlingInformationOutput) ToThrottlingInformationPtrOutputWithContext
 	}).(ThrottlingInformationPtrOutput)
 }
 
-func (o ThrottlingInformationOutput) ToOutput(ctx context.Context) pulumix.Output[ThrottlingInformation] {
-	return pulumix.Output[ThrottlingInformation]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The required duration (in ISO8601 format) to wait before notifying on the alert rule again. The time granularity must be in minutes and minimum value is 0 minutes
 func (o ThrottlingInformationOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ThrottlingInformation) *string { return v.Duration }).(pulumi.StringPtrOutput)
@@ -524,12 +457,6 @@ func (o ThrottlingInformationPtrOutput) ToThrottlingInformationPtrOutput() Throt
 
 func (o ThrottlingInformationPtrOutput) ToThrottlingInformationPtrOutputWithContext(ctx context.Context) ThrottlingInformationPtrOutput {
 	return o
-}
-
-func (o ThrottlingInformationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ThrottlingInformation] {
-	return pulumix.Output[*ThrottlingInformation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ThrottlingInformationPtrOutput) Elem() ThrottlingInformationOutput {
@@ -573,12 +500,6 @@ func (o ThrottlingInformationResponseOutput) ToThrottlingInformationResponseOutp
 	return o
 }
 
-func (o ThrottlingInformationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ThrottlingInformationResponse] {
-	return pulumix.Output[ThrottlingInformationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The required duration (in ISO8601 format) to wait before notifying on the alert rule again. The time granularity must be in minutes and minimum value is 0 minutes
 func (o ThrottlingInformationResponseOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ThrottlingInformationResponse) *string { return v.Duration }).(pulumi.StringPtrOutput)
@@ -596,12 +517,6 @@ func (o ThrottlingInformationResponsePtrOutput) ToThrottlingInformationResponseP
 
 func (o ThrottlingInformationResponsePtrOutput) ToThrottlingInformationResponsePtrOutputWithContext(ctx context.Context) ThrottlingInformationResponsePtrOutput {
 	return o
-}
-
-func (o ThrottlingInformationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ThrottlingInformationResponse] {
-	return pulumix.Output[*ThrottlingInformationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ThrottlingInformationResponsePtrOutput) Elem() ThrottlingInformationResponseOutput {

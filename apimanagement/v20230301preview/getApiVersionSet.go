@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the Api Version Set specified by its identifier.
@@ -91,12 +90,6 @@ func (o LookupApiVersionSetResultOutput) ToLookupApiVersionSetResultOutput() Loo
 
 func (o LookupApiVersionSetResultOutput) ToLookupApiVersionSetResultOutputWithContext(ctx context.Context) LookupApiVersionSetResultOutput {
 	return o
-}
-
-func (o LookupApiVersionSetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApiVersionSetResult] {
-	return pulumix.Output[LookupApiVersionSetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of API Version Set.

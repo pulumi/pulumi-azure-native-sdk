@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the file upload URL of a Test Base Account.
@@ -79,12 +78,6 @@ func (o GetTestBaseAccountFileUploadUrlResultOutput) ToGetTestBaseAccountFileUpl
 
 func (o GetTestBaseAccountFileUploadUrlResultOutput) ToGetTestBaseAccountFileUploadUrlResultOutputWithContext(ctx context.Context) GetTestBaseAccountFileUploadUrlResultOutput {
 	return o
-}
-
-func (o GetTestBaseAccountFileUploadUrlResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTestBaseAccountFileUploadUrlResult] {
-	return pulumix.Output[GetTestBaseAccountFileUploadUrlResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The blob path of the uploaded package. It will be used as the 'blobPath' property of PackageResource.

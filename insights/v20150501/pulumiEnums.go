@@ -79,12 +79,6 @@ func (o FavoriteTypeOutput) ToFavoriteTypePtrOutputWithContext(ctx context.Conte
 	}).(FavoriteTypePtrOutput)
 }
 
-func (o FavoriteTypeOutput) ToOutput(ctx context.Context) pulumix.Output[FavoriteType] {
-	return pulumix.Output[FavoriteType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FavoriteTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -118,12 +112,6 @@ func (o FavoriteTypePtrOutput) ToFavoriteTypePtrOutput() FavoriteTypePtrOutput {
 
 func (o FavoriteTypePtrOutput) ToFavoriteTypePtrOutputWithContext(ctx context.Context) FavoriteTypePtrOutput {
 	return o
-}
-
-func (o FavoriteTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FavoriteType] {
-	return pulumix.Output[*FavoriteType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FavoriteTypePtrOutput) Elem() FavoriteTypeOutput {

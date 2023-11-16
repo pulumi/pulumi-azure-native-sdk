@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get host secrets for a function app.
@@ -81,12 +80,6 @@ func (o ListWebAppHostKeysSlotResultOutput) ToListWebAppHostKeysSlotResultOutput
 
 func (o ListWebAppHostKeysSlotResultOutput) ToListWebAppHostKeysSlotResultOutputWithContext(ctx context.Context) ListWebAppHostKeysSlotResultOutput {
 	return o
-}
-
-func (o ListWebAppHostKeysSlotResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWebAppHostKeysSlotResult] {
-	return pulumix.Output[ListWebAppHostKeysSlotResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Host level function keys.

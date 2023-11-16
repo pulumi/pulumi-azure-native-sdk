@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A MasterSite
@@ -166,12 +165,6 @@ func (i *MasterSitesController) ToMasterSitesControllerOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(MasterSitesControllerOutput)
 }
 
-func (i *MasterSitesController) ToOutput(ctx context.Context) pulumix.Output[*MasterSitesController] {
-	return pulumix.Output[*MasterSitesController]{
-		OutputState: i.ToMasterSitesControllerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MasterSitesControllerOutput struct{ *pulumi.OutputState }
 
 func (MasterSitesControllerOutput) ElementType() reflect.Type {
@@ -184,12 +177,6 @@ func (o MasterSitesControllerOutput) ToMasterSitesControllerOutput() MasterSites
 
 func (o MasterSitesControllerOutput) ToMasterSitesControllerOutputWithContext(ctx context.Context) MasterSitesControllerOutput {
 	return o
-}
-
-func (o MasterSitesControllerOutput) ToOutput(ctx context.Context) pulumix.Output[*MasterSitesController] {
-	return pulumix.Output[*MasterSitesController]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets a value indicating whether multiple sites per site type are

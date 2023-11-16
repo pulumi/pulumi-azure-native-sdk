@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a ElasticSan.
@@ -105,12 +104,6 @@ func (o LookupElasticSanResultOutput) ToLookupElasticSanResultOutput() LookupEla
 
 func (o LookupElasticSanResultOutput) ToLookupElasticSanResultOutputWithContext(ctx context.Context) LookupElasticSanResultOutput {
 	return o
-}
-
-func (o LookupElasticSanResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupElasticSanResult] {
-	return pulumix.Output[LookupElasticSanResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Logical zone for Elastic San resource; example: ["1"].

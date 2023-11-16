@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List operation response containing list of Datadog Hosts.
@@ -75,12 +74,6 @@ func (o ListMonitorHostsResultOutput) ToListMonitorHostsResultOutput() ListMonit
 
 func (o ListMonitorHostsResultOutput) ToListMonitorHostsResultOutputWithContext(ctx context.Context) ListMonitorHostsResultOutput {
 	return o
-}
-
-func (o ListMonitorHostsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListMonitorHostsResult] {
-	return pulumix.Output[ListMonitorHostsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Link to the next set of results, if any.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties of the specified Iot Connector FHIR destination.
@@ -100,12 +99,6 @@ func (o LookupIotConnectorFhirDestinationResultOutput) ToLookupIotConnectorFhirD
 
 func (o LookupIotConnectorFhirDestinationResultOutput) ToLookupIotConnectorFhirDestinationResultOutputWithContext(ctx context.Context) LookupIotConnectorFhirDestinationResultOutput {
 	return o
-}
-
-func (o LookupIotConnectorFhirDestinationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIotConnectorFhirDestinationResult] {
-	return pulumix.Output[LookupIotConnectorFhirDestinationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An etag associated with the resource, used for optimistic concurrency when editing it.

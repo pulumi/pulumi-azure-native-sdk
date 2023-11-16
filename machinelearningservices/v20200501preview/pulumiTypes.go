@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -55,12 +54,6 @@ func (o AzureDataLakeSectionResponseOutput) ToAzureDataLakeSectionResponseOutput
 
 func (o AzureDataLakeSectionResponseOutput) ToAzureDataLakeSectionResponseOutputWithContext(ctx context.Context) AzureDataLakeSectionResponseOutput {
 	return o
-}
-
-func (o AzureDataLakeSectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureDataLakeSectionResponse] {
-	return pulumix.Output[AzureDataLakeSectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The authority URL used for authentication.
@@ -140,12 +133,6 @@ func (o AzureDataLakeSectionResponsePtrOutput) ToAzureDataLakeSectionResponsePtr
 
 func (o AzureDataLakeSectionResponsePtrOutput) ToAzureDataLakeSectionResponsePtrOutputWithContext(ctx context.Context) AzureDataLakeSectionResponsePtrOutput {
 	return o
-}
-
-func (o AzureDataLakeSectionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureDataLakeSectionResponse] {
-	return pulumix.Output[*AzureDataLakeSectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureDataLakeSectionResponsePtrOutput) Elem() AzureDataLakeSectionResponseOutput {
@@ -341,12 +328,6 @@ func (o AzureMySqlSectionResponseOutput) ToAzureMySqlSectionResponseOutputWithCo
 	return o
 }
 
-func (o AzureMySqlSectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureMySqlSectionResponse] {
-	return pulumix.Output[AzureMySqlSectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The authority URL used for authentication.
 func (o AzureMySqlSectionResponseOutput) AuthorityUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureMySqlSectionResponse) *string { return v.AuthorityUrl }).(pulumi.StringPtrOutput)
@@ -449,12 +430,6 @@ func (o AzureMySqlSectionResponsePtrOutput) ToAzureMySqlSectionResponsePtrOutput
 
 func (o AzureMySqlSectionResponsePtrOutput) ToAzureMySqlSectionResponsePtrOutputWithContext(ctx context.Context) AzureMySqlSectionResponsePtrOutput {
 	return o
-}
-
-func (o AzureMySqlSectionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureMySqlSectionResponse] {
-	return pulumix.Output[*AzureMySqlSectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureMySqlSectionResponsePtrOutput) Elem() AzureMySqlSectionResponseOutput {
@@ -702,12 +677,6 @@ func (o AzurePostgreSqlSectionResponseOutput) ToAzurePostgreSqlSectionResponseOu
 	return o
 }
 
-func (o AzurePostgreSqlSectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzurePostgreSqlSectionResponse] {
-	return pulumix.Output[AzurePostgreSqlSectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The authority URL used for authentication.
 func (o AzurePostgreSqlSectionResponseOutput) AuthorityUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzurePostgreSqlSectionResponse) *string { return v.AuthorityUrl }).(pulumi.StringPtrOutput)
@@ -815,12 +784,6 @@ func (o AzurePostgreSqlSectionResponsePtrOutput) ToAzurePostgreSqlSectionRespons
 
 func (o AzurePostgreSqlSectionResponsePtrOutput) ToAzurePostgreSqlSectionResponsePtrOutputWithContext(ctx context.Context) AzurePostgreSqlSectionResponsePtrOutput {
 	return o
-}
-
-func (o AzurePostgreSqlSectionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzurePostgreSqlSectionResponse] {
-	return pulumix.Output[*AzurePostgreSqlSectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzurePostgreSqlSectionResponsePtrOutput) Elem() AzurePostgreSqlSectionResponseOutput {
@@ -1076,12 +1039,6 @@ func (o AzureSqlDatabaseSectionResponseOutput) ToAzureSqlDatabaseSectionResponse
 	return o
 }
 
-func (o AzureSqlDatabaseSectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureSqlDatabaseSectionResponse] {
-	return pulumix.Output[AzureSqlDatabaseSectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The authority URL used for authentication.
 func (o AzureSqlDatabaseSectionResponseOutput) AuthorityUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureSqlDatabaseSectionResponse) *string { return v.AuthorityUrl }).(pulumi.StringPtrOutput)
@@ -1184,12 +1141,6 @@ func (o AzureSqlDatabaseSectionResponsePtrOutput) ToAzureSqlDatabaseSectionRespo
 
 func (o AzureSqlDatabaseSectionResponsePtrOutput) ToAzureSqlDatabaseSectionResponsePtrOutputWithContext(ctx context.Context) AzureSqlDatabaseSectionResponsePtrOutput {
 	return o
-}
-
-func (o AzureSqlDatabaseSectionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureSqlDatabaseSectionResponse] {
-	return pulumix.Output[*AzureSqlDatabaseSectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureSqlDatabaseSectionResponsePtrOutput) Elem() AzureSqlDatabaseSectionResponseOutput {
@@ -1428,12 +1379,6 @@ func (o AzureStorageSectionResponseOutput) ToAzureStorageSectionResponseOutputWi
 	return o
 }
 
-func (o AzureStorageSectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureStorageSectionResponse] {
-	return pulumix.Output[AzureStorageSectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Storage Account Key (Deprecated).
 func (o AzureStorageSectionResponseOutput) AccountKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureStorageSectionResponse) *string { return v.AccountKey }).(pulumi.StringPtrOutput)
@@ -1520,12 +1465,6 @@ func (o AzureStorageSectionResponsePtrOutput) ToAzureStorageSectionResponsePtrOu
 
 func (o AzureStorageSectionResponsePtrOutput) ToAzureStorageSectionResponsePtrOutputWithContext(ctx context.Context) AzureStorageSectionResponsePtrOutput {
 	return o
-}
-
-func (o AzureStorageSectionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureStorageSectionResponse] {
-	return pulumix.Output[*AzureStorageSectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureStorageSectionResponsePtrOutput) Elem() AzureStorageSectionResponseOutput {
@@ -1726,12 +1665,6 @@ func (o ClientCredentialsResponseOutput) ToClientCredentialsResponseOutputWithCo
 	return o
 }
 
-func (o ClientCredentialsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClientCredentialsResponse] {
-	return pulumix.Output[ClientCredentialsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The authority URL used for authentication.
 func (o ClientCredentialsResponseOutput) AuthorityUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientCredentialsResponse) *string { return v.AuthorityUrl }).(pulumi.StringPtrOutput)
@@ -1799,12 +1732,6 @@ func (o ClientCredentialsResponsePtrOutput) ToClientCredentialsResponsePtrOutput
 
 func (o ClientCredentialsResponsePtrOutput) ToClientCredentialsResponsePtrOutputWithContext(ctx context.Context) ClientCredentialsResponsePtrOutput {
 	return o
-}
-
-func (o ClientCredentialsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientCredentialsResponse] {
-	return pulumix.Output[*ClientCredentialsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClientCredentialsResponsePtrOutput) Elem() ClientCredentialsResponseOutput {
@@ -1964,12 +1891,6 @@ func (i DatasetCreateRequestDataPathArgs) ToDatasetCreateRequestDataPathOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetCreateRequestDataPathOutput)
 }
 
-func (i DatasetCreateRequestDataPathArgs) ToOutput(ctx context.Context) pulumix.Output[DatasetCreateRequestDataPath] {
-	return pulumix.Output[DatasetCreateRequestDataPath]{
-		OutputState: i.ToDatasetCreateRequestDataPathOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatasetCreateRequestDataPathArgs) ToDatasetCreateRequestDataPathPtrOutput() DatasetCreateRequestDataPathPtrOutput {
 	return i.ToDatasetCreateRequestDataPathPtrOutputWithContext(context.Background())
 }
@@ -2011,12 +1932,6 @@ func (i *datasetCreateRequestDataPathPtrType) ToDatasetCreateRequestDataPathPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetCreateRequestDataPathPtrOutput)
 }
 
-func (i *datasetCreateRequestDataPathPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatasetCreateRequestDataPath] {
-	return pulumix.Output[*DatasetCreateRequestDataPath]{
-		OutputState: i.ToDatasetCreateRequestDataPathPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatasetCreateRequestDataPathOutput struct{ *pulumi.OutputState }
 
 func (DatasetCreateRequestDataPathOutput) ElementType() reflect.Type {
@@ -2041,12 +1956,6 @@ func (o DatasetCreateRequestDataPathOutput) ToDatasetCreateRequestDataPathPtrOut
 	}).(DatasetCreateRequestDataPathPtrOutput)
 }
 
-func (o DatasetCreateRequestDataPathOutput) ToOutput(ctx context.Context) pulumix.Output[DatasetCreateRequestDataPath] {
-	return pulumix.Output[DatasetCreateRequestDataPath]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The datastore name.
 func (o DatasetCreateRequestDataPathOutput) DatastoreName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatasetCreateRequestDataPath) *string { return v.DatastoreName }).(pulumi.StringPtrOutput)
@@ -2069,12 +1978,6 @@ func (o DatasetCreateRequestDataPathPtrOutput) ToDatasetCreateRequestDataPathPtr
 
 func (o DatasetCreateRequestDataPathPtrOutput) ToDatasetCreateRequestDataPathPtrOutputWithContext(ctx context.Context) DatasetCreateRequestDataPathPtrOutput {
 	return o
-}
-
-func (o DatasetCreateRequestDataPathPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatasetCreateRequestDataPath] {
-	return pulumix.Output[*DatasetCreateRequestDataPath]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatasetCreateRequestDataPathPtrOutput) Elem() DatasetCreateRequestDataPathOutput {
@@ -2184,12 +2087,6 @@ func (i DatasetCreateRequestParametersArgs) ToDatasetCreateRequestParametersOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetCreateRequestParametersOutput)
 }
 
-func (i DatasetCreateRequestParametersArgs) ToOutput(ctx context.Context) pulumix.Output[DatasetCreateRequestParameters] {
-	return pulumix.Output[DatasetCreateRequestParameters]{
-		OutputState: i.ToDatasetCreateRequestParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatasetCreateRequestParametersOutput struct{ *pulumi.OutputState }
 
 func (DatasetCreateRequestParametersOutput) ElementType() reflect.Type {
@@ -2202,12 +2099,6 @@ func (o DatasetCreateRequestParametersOutput) ToDatasetCreateRequestParametersOu
 
 func (o DatasetCreateRequestParametersOutput) ToDatasetCreateRequestParametersOutputWithContext(ctx context.Context) DatasetCreateRequestParametersOutput {
 	return o
-}
-
-func (o DatasetCreateRequestParametersOutput) ToOutput(ctx context.Context) pulumix.Output[DatasetCreateRequestParameters] {
-	return pulumix.Output[DatasetCreateRequestParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Header type.
@@ -2278,12 +2169,6 @@ func (i DatasetCreateRequestPathArgs) ToDatasetCreateRequestPathOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetCreateRequestPathOutput)
 }
 
-func (i DatasetCreateRequestPathArgs) ToOutput(ctx context.Context) pulumix.Output[DatasetCreateRequestPath] {
-	return pulumix.Output[DatasetCreateRequestPath]{
-		OutputState: i.ToDatasetCreateRequestPathOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatasetCreateRequestPathArgs) ToDatasetCreateRequestPathPtrOutput() DatasetCreateRequestPathPtrOutput {
 	return i.ToDatasetCreateRequestPathPtrOutputWithContext(context.Background())
 }
@@ -2325,12 +2210,6 @@ func (i *datasetCreateRequestPathPtrType) ToDatasetCreateRequestPathPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetCreateRequestPathPtrOutput)
 }
 
-func (i *datasetCreateRequestPathPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatasetCreateRequestPath] {
-	return pulumix.Output[*DatasetCreateRequestPath]{
-		OutputState: i.ToDatasetCreateRequestPathPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatasetCreateRequestPathOutput struct{ *pulumi.OutputState }
 
 func (DatasetCreateRequestPathOutput) ElementType() reflect.Type {
@@ -2355,12 +2234,6 @@ func (o DatasetCreateRequestPathOutput) ToDatasetCreateRequestPathPtrOutputWithC
 	}).(DatasetCreateRequestPathPtrOutput)
 }
 
-func (o DatasetCreateRequestPathOutput) ToOutput(ctx context.Context) pulumix.Output[DatasetCreateRequestPath] {
-	return pulumix.Output[DatasetCreateRequestPath]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatasetCreateRequestPathOutput) DataPath() DatasetCreateRequestDataPathPtrOutput {
 	return o.ApplyT(func(v DatasetCreateRequestPath) *DatasetCreateRequestDataPath { return v.DataPath }).(DatasetCreateRequestDataPathPtrOutput)
 }
@@ -2382,12 +2255,6 @@ func (o DatasetCreateRequestPathPtrOutput) ToDatasetCreateRequestPathPtrOutput()
 
 func (o DatasetCreateRequestPathPtrOutput) ToDatasetCreateRequestPathPtrOutputWithContext(ctx context.Context) DatasetCreateRequestPathPtrOutput {
 	return o
-}
-
-func (o DatasetCreateRequestPathPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatasetCreateRequestPath] {
-	return pulumix.Output[*DatasetCreateRequestPath]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatasetCreateRequestPathPtrOutput) Elem() DatasetCreateRequestPathOutput {
@@ -2456,12 +2323,6 @@ func (i DatasetCreateRequestQueryArgs) ToDatasetCreateRequestQueryOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetCreateRequestQueryOutput)
 }
 
-func (i DatasetCreateRequestQueryArgs) ToOutput(ctx context.Context) pulumix.Output[DatasetCreateRequestQuery] {
-	return pulumix.Output[DatasetCreateRequestQuery]{
-		OutputState: i.ToDatasetCreateRequestQueryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatasetCreateRequestQueryArgs) ToDatasetCreateRequestQueryPtrOutput() DatasetCreateRequestQueryPtrOutput {
 	return i.ToDatasetCreateRequestQueryPtrOutputWithContext(context.Background())
 }
@@ -2503,12 +2364,6 @@ func (i *datasetCreateRequestQueryPtrType) ToDatasetCreateRequestQueryPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetCreateRequestQueryPtrOutput)
 }
 
-func (i *datasetCreateRequestQueryPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatasetCreateRequestQuery] {
-	return pulumix.Output[*DatasetCreateRequestQuery]{
-		OutputState: i.ToDatasetCreateRequestQueryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatasetCreateRequestQueryOutput struct{ *pulumi.OutputState }
 
 func (DatasetCreateRequestQueryOutput) ElementType() reflect.Type {
@@ -2533,12 +2388,6 @@ func (o DatasetCreateRequestQueryOutput) ToDatasetCreateRequestQueryPtrOutputWit
 	}).(DatasetCreateRequestQueryPtrOutput)
 }
 
-func (o DatasetCreateRequestQueryOutput) ToOutput(ctx context.Context) pulumix.Output[DatasetCreateRequestQuery] {
-	return pulumix.Output[DatasetCreateRequestQuery]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The SQL/PostgreSQL/MySQL datastore name.
 func (o DatasetCreateRequestQueryOutput) DatastoreName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatasetCreateRequestQuery) *string { return v.DatastoreName }).(pulumi.StringPtrOutput)
@@ -2561,12 +2410,6 @@ func (o DatasetCreateRequestQueryPtrOutput) ToDatasetCreateRequestQueryPtrOutput
 
 func (o DatasetCreateRequestQueryPtrOutput) ToDatasetCreateRequestQueryPtrOutputWithContext(ctx context.Context) DatasetCreateRequestQueryPtrOutput {
 	return o
-}
-
-func (o DatasetCreateRequestQueryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatasetCreateRequestQuery] {
-	return pulumix.Output[*DatasetCreateRequestQuery]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatasetCreateRequestQueryPtrOutput) Elem() DatasetCreateRequestQueryOutput {
@@ -2640,12 +2483,6 @@ func (i DatasetCreateRequestRegistrationArgs) ToDatasetCreateRequestRegistration
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetCreateRequestRegistrationOutput)
 }
 
-func (i DatasetCreateRequestRegistrationArgs) ToOutput(ctx context.Context) pulumix.Output[DatasetCreateRequestRegistration] {
-	return pulumix.Output[DatasetCreateRequestRegistration]{
-		OutputState: i.ToDatasetCreateRequestRegistrationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatasetCreateRequestRegistrationOutput struct{ *pulumi.OutputState }
 
 func (DatasetCreateRequestRegistrationOutput) ElementType() reflect.Type {
@@ -2658,12 +2495,6 @@ func (o DatasetCreateRequestRegistrationOutput) ToDatasetCreateRequestRegistrati
 
 func (o DatasetCreateRequestRegistrationOutput) ToDatasetCreateRequestRegistrationOutputWithContext(ctx context.Context) DatasetCreateRequestRegistrationOutput {
 	return o
-}
-
-func (o DatasetCreateRequestRegistrationOutput) ToOutput(ctx context.Context) pulumix.Output[DatasetCreateRequestRegistration] {
-	return pulumix.Output[DatasetCreateRequestRegistration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description for the dataset.
@@ -2718,12 +2549,6 @@ func (i DatasetCreateRequestTimeSeriesArgs) ToDatasetCreateRequestTimeSeriesOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetCreateRequestTimeSeriesOutput)
 }
 
-func (i DatasetCreateRequestTimeSeriesArgs) ToOutput(ctx context.Context) pulumix.Output[DatasetCreateRequestTimeSeries] {
-	return pulumix.Output[DatasetCreateRequestTimeSeries]{
-		OutputState: i.ToDatasetCreateRequestTimeSeriesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatasetCreateRequestTimeSeriesArgs) ToDatasetCreateRequestTimeSeriesPtrOutput() DatasetCreateRequestTimeSeriesPtrOutput {
 	return i.ToDatasetCreateRequestTimeSeriesPtrOutputWithContext(context.Background())
 }
@@ -2765,12 +2590,6 @@ func (i *datasetCreateRequestTimeSeriesPtrType) ToDatasetCreateRequestTimeSeries
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetCreateRequestTimeSeriesPtrOutput)
 }
 
-func (i *datasetCreateRequestTimeSeriesPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatasetCreateRequestTimeSeries] {
-	return pulumix.Output[*DatasetCreateRequestTimeSeries]{
-		OutputState: i.ToDatasetCreateRequestTimeSeriesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatasetCreateRequestTimeSeriesOutput struct{ *pulumi.OutputState }
 
 func (DatasetCreateRequestTimeSeriesOutput) ElementType() reflect.Type {
@@ -2795,12 +2614,6 @@ func (o DatasetCreateRequestTimeSeriesOutput) ToDatasetCreateRequestTimeSeriesPt
 	}).(DatasetCreateRequestTimeSeriesPtrOutput)
 }
 
-func (o DatasetCreateRequestTimeSeriesOutput) ToOutput(ctx context.Context) pulumix.Output[DatasetCreateRequestTimeSeries] {
-	return pulumix.Output[DatasetCreateRequestTimeSeries]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Column name to be used as CoarseGrainTimestamp. Can only be used if 'fineGrainTimestamp' is specified and cannot be same as 'fineGrainTimestamp'.
 func (o DatasetCreateRequestTimeSeriesOutput) CoarseGrainTimestamp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatasetCreateRequestTimeSeries) *string { return v.CoarseGrainTimestamp }).(pulumi.StringPtrOutput)
@@ -2823,12 +2636,6 @@ func (o DatasetCreateRequestTimeSeriesPtrOutput) ToDatasetCreateRequestTimeSerie
 
 func (o DatasetCreateRequestTimeSeriesPtrOutput) ToDatasetCreateRequestTimeSeriesPtrOutputWithContext(ctx context.Context) DatasetCreateRequestTimeSeriesPtrOutput {
 	return o
-}
-
-func (o DatasetCreateRequestTimeSeriesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatasetCreateRequestTimeSeries] {
-	return pulumix.Output[*DatasetCreateRequestTimeSeries]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatasetCreateRequestTimeSeriesPtrOutput) Elem() DatasetCreateRequestTimeSeriesOutput {
@@ -2902,12 +2709,6 @@ func (o DatasetResponseOutput) ToDatasetResponseOutput() DatasetResponseOutput {
 
 func (o DatasetResponseOutput) ToDatasetResponseOutputWithContext(ctx context.Context) DatasetResponseOutput {
 	return o
-}
-
-func (o DatasetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DatasetResponse] {
-	return pulumix.Output[DatasetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The dataset creation time (UTC).
@@ -3007,12 +2808,6 @@ func (o DatasetResponseDataPathOutput) ToDatasetResponseDataPathOutputWithContex
 	return o
 }
 
-func (o DatasetResponseDataPathOutput) ToOutput(ctx context.Context) pulumix.Output[DatasetResponseDataPath] {
-	return pulumix.Output[DatasetResponseDataPath]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Additional Properties.
 func (o DatasetResponseDataPathOutput) AdditionalProperties() pulumi.MapOutput {
 	return o.ApplyT(func(v DatasetResponseDataPath) map[string]interface{} { return v.AdditionalProperties }).(pulumi.MapOutput)
@@ -3070,12 +2865,6 @@ func (o DatasetResponseDataPathPtrOutput) ToDatasetResponseDataPathPtrOutput() D
 
 func (o DatasetResponseDataPathPtrOutput) ToDatasetResponseDataPathPtrOutputWithContext(ctx context.Context) DatasetResponseDataPathPtrOutput {
 	return o
-}
-
-func (o DatasetResponseDataPathPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatasetResponseDataPath] {
-	return pulumix.Output[*DatasetResponseDataPath]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatasetResponseDataPathPtrOutput) Elem() DatasetResponseDataPathOutput {
@@ -3233,12 +3022,6 @@ func (o DatasetResponseLatestOutput) ToDatasetResponseLatestOutputWithContext(ct
 	return o
 }
 
-func (o DatasetResponseLatestOutput) ToOutput(ctx context.Context) pulumix.Output[DatasetResponseLatest] {
-	return pulumix.Output[DatasetResponseLatest]{
-		OutputState: o.OutputState,
-	}
-}
-
 // User who created.
 func (o DatasetResponseLatestOutput) CreatedBy() UserInfoResponsePtrOutput {
 	return o.ApplyT(func(v DatasetResponseLatest) *UserInfoResponse { return v.CreatedBy }).(UserInfoResponsePtrOutput)
@@ -3341,12 +3124,6 @@ func (o DatasetResponseLatestPtrOutput) ToDatasetResponseLatestPtrOutput() Datas
 
 func (o DatasetResponseLatestPtrOutput) ToDatasetResponseLatestPtrOutputWithContext(ctx context.Context) DatasetResponseLatestPtrOutput {
 	return o
-}
-
-func (o DatasetResponseLatestPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatasetResponseLatest] {
-	return pulumix.Output[*DatasetResponseLatest]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatasetResponseLatestPtrOutput) Elem() DatasetResponseLatestOutput {
@@ -3566,12 +3343,6 @@ func (o DatasetResponseSqlDataPathOutput) ToDatasetResponseSqlDataPathOutputWith
 	return o
 }
 
-func (o DatasetResponseSqlDataPathOutput) ToOutput(ctx context.Context) pulumix.Output[DatasetResponseSqlDataPath] {
-	return pulumix.Output[DatasetResponseSqlDataPath]{
-		OutputState: o.OutputState,
-	}
-}
-
 // SQL query timeout. Unit in seconds.
 func (o DatasetResponseSqlDataPathOutput) QueryTimeout() pulumi.Float64Output {
 	return o.ApplyT(func(v DatasetResponseSqlDataPath) float64 { return v.QueryTimeout }).(pulumi.Float64Output)
@@ -3604,12 +3375,6 @@ func (o DatasetResponseSqlDataPathPtrOutput) ToDatasetResponseSqlDataPathPtrOutp
 
 func (o DatasetResponseSqlDataPathPtrOutput) ToDatasetResponseSqlDataPathPtrOutputWithContext(ctx context.Context) DatasetResponseSqlDataPathPtrOutput {
 	return o
-}
-
-func (o DatasetResponseSqlDataPathPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatasetResponseSqlDataPath] {
-	return pulumix.Output[*DatasetResponseSqlDataPath]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatasetResponseSqlDataPathPtrOutput) Elem() DatasetResponseSqlDataPathOutput {
@@ -3687,12 +3452,6 @@ func (o DatasetStateResponseOutput) ToDatasetStateResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o DatasetStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DatasetStateResponse] {
-	return pulumix.Output[DatasetStateResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Reference to better Dataset or a Definition
 func (o DatasetStateResponseOutput) DeprecatedBy() DatasetStateResponseDeprecatedByPtrOutput {
 	return o.ApplyT(func(v DatasetStateResponse) *DatasetStateResponseDeprecatedBy { return v.DeprecatedBy }).(DatasetStateResponseDeprecatedByPtrOutput)
@@ -3720,12 +3479,6 @@ func (o DatasetStateResponsePtrOutput) ToDatasetStateResponsePtrOutput() Dataset
 
 func (o DatasetStateResponsePtrOutput) ToDatasetStateResponsePtrOutputWithContext(ctx context.Context) DatasetStateResponsePtrOutput {
 	return o
-}
-
-func (o DatasetStateResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatasetStateResponse] {
-	return pulumix.Output[*DatasetStateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatasetStateResponsePtrOutput) Elem() DatasetStateResponseOutput {
@@ -3791,12 +3544,6 @@ func (o DatasetStateResponseDeprecatedByOutput) ToDatasetStateResponseDeprecated
 	return o
 }
 
-func (o DatasetStateResponseDeprecatedByOutput) ToOutput(ctx context.Context) pulumix.Output[DatasetStateResponseDeprecatedBy] {
-	return pulumix.Output[DatasetStateResponseDeprecatedBy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Unique Dataset identifier.
 func (o DatasetStateResponseDeprecatedByOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v DatasetStateResponseDeprecatedBy) string { return v.DatasetId }).(pulumi.StringOutput)
@@ -3819,12 +3566,6 @@ func (o DatasetStateResponseDeprecatedByPtrOutput) ToDatasetStateResponseDepreca
 
 func (o DatasetStateResponseDeprecatedByPtrOutput) ToDatasetStateResponseDeprecatedByPtrOutputWithContext(ctx context.Context) DatasetStateResponseDeprecatedByPtrOutput {
 	return o
-}
-
-func (o DatasetStateResponseDeprecatedByPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatasetStateResponseDeprecatedBy] {
-	return pulumix.Output[*DatasetStateResponseDeprecatedBy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatasetStateResponseDeprecatedByPtrOutput) Elem() DatasetStateResponseDeprecatedByOutput {
@@ -3914,12 +3655,6 @@ func (o DatastoreResponseOutput) ToDatastoreResponseOutput() DatastoreResponseOu
 
 func (o DatastoreResponseOutput) ToDatastoreResponseOutputWithContext(ctx context.Context) DatastoreResponseOutput {
 	return o
-}
-
-func (o DatastoreResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DatastoreResponse] {
-	return pulumix.Output[DatastoreResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatastoreResponseOutput) AzureDataLakeSection() AzureDataLakeSectionResponsePtrOutput {
@@ -4020,12 +3755,6 @@ func (o GlusterFsSectionResponseOutput) ToGlusterFsSectionResponseOutputWithCont
 	return o
 }
 
-func (o GlusterFsSectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GlusterFsSectionResponse] {
-	return pulumix.Output[GlusterFsSectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The server address of one of the servers that hosts the GlusterFS. Can be either the IP address or server name.
 func (o GlusterFsSectionResponseOutput) ServerAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GlusterFsSectionResponse) string { return v.ServerAddress }).(pulumi.StringOutput)
@@ -4048,12 +3777,6 @@ func (o GlusterFsSectionResponsePtrOutput) ToGlusterFsSectionResponsePtrOutput()
 
 func (o GlusterFsSectionResponsePtrOutput) ToGlusterFsSectionResponsePtrOutputWithContext(ctx context.Context) GlusterFsSectionResponsePtrOutput {
 	return o
-}
-
-func (o GlusterFsSectionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlusterFsSectionResponse] {
-	return pulumix.Output[*GlusterFsSectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GlusterFsSectionResponsePtrOutput) Elem() GlusterFsSectionResponseOutput {
@@ -4113,12 +3836,6 @@ func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o IdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityResponse] {
-	return pulumix.Output[IdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The principal ID of resource identity.
 func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -4151,12 +3868,6 @@ func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutput() IdentityRespons
 
 func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
 	return o
-}
-
-func (o IdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityResponse] {
-	return pulumix.Output[*IdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
@@ -4234,12 +3945,6 @@ func (o LinkedInfoResponseOutput) ToLinkedInfoResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o LinkedInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LinkedInfoResponse] {
-	return pulumix.Output[LinkedInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // LinkedId id.
 func (o LinkedInfoResponseOutput) LinkedId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LinkedInfoResponse) *string { return v.LinkedId }).(pulumi.StringPtrOutput)
@@ -4267,12 +3972,6 @@ func (o LinkedInfoResponsePtrOutput) ToLinkedInfoResponsePtrOutput() LinkedInfoR
 
 func (o LinkedInfoResponsePtrOutput) ToLinkedInfoResponsePtrOutputWithContext(ctx context.Context) LinkedInfoResponsePtrOutput {
 	return o
-}
-
-func (o LinkedInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LinkedInfoResponse] {
-	return pulumix.Output[*LinkedInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LinkedInfoResponsePtrOutput) Elem() LinkedInfoResponseOutput {
@@ -4338,12 +4037,6 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
-	return pulumix.Output[SkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the sku
 func (o SkuResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -4366,12 +4059,6 @@ func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
 
 func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
 	return o
-}
-
-func (o SkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuResponse] {
-	return pulumix.Output[*SkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
@@ -4429,12 +4116,6 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
-func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
-	return pulumix.Output[UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The clientId(aka appId) of the user assigned identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -4462,12 +4143,6 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
-	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
@@ -4507,12 +4182,6 @@ func (o UserInfoResponseOutput) ToUserInfoResponseOutput() UserInfoResponseOutpu
 
 func (o UserInfoResponseOutput) ToUserInfoResponseOutputWithContext(ctx context.Context) UserInfoResponseOutput {
 	return o
-}
-
-func (o UserInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserInfoResponse] {
-	return pulumix.Output[UserInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A user alternate sec id. This represents the user in a different identity provider system Eg.1:live.com:puid
@@ -4562,12 +4231,6 @@ func (o UserInfoResponsePtrOutput) ToUserInfoResponsePtrOutput() UserInfoRespons
 
 func (o UserInfoResponsePtrOutput) ToUserInfoResponsePtrOutputWithContext(ctx context.Context) UserInfoResponsePtrOutput {
 	return o
-}
-
-func (o UserInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserInfoResponse] {
-	return pulumix.Output[*UserInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserInfoResponsePtrOutput) Elem() UserInfoResponseOutput {

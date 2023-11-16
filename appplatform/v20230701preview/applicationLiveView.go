@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Application Live View resource
@@ -138,12 +137,6 @@ func (i *ApplicationLiveView) ToApplicationLiveViewOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLiveViewOutput)
 }
 
-func (i *ApplicationLiveView) ToOutput(ctx context.Context) pulumix.Output[*ApplicationLiveView] {
-	return pulumix.Output[*ApplicationLiveView]{
-		OutputState: i.ToApplicationLiveViewOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationLiveViewOutput struct{ *pulumi.OutputState }
 
 func (ApplicationLiveViewOutput) ElementType() reflect.Type {
@@ -156,12 +149,6 @@ func (o ApplicationLiveViewOutput) ToApplicationLiveViewOutput() ApplicationLive
 
 func (o ApplicationLiveViewOutput) ToApplicationLiveViewOutputWithContext(ctx context.Context) ApplicationLiveViewOutput {
 	return o
-}
-
-func (o ApplicationLiveViewOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationLiveView] {
-	return pulumix.Output[*ApplicationLiveView]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource.

@@ -86,12 +86,6 @@ func (o CloudHsmClusterSkuNameOutput) ToCloudHsmClusterSkuNamePtrOutputWithConte
 	}).(CloudHsmClusterSkuNamePtrOutput)
 }
 
-func (o CloudHsmClusterSkuNameOutput) ToOutput(ctx context.Context) pulumix.Output[CloudHsmClusterSkuName] {
-	return pulumix.Output[CloudHsmClusterSkuName]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CloudHsmClusterSkuNameOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -125,12 +119,6 @@ func (o CloudHsmClusterSkuNamePtrOutput) ToCloudHsmClusterSkuNamePtrOutput() Clo
 
 func (o CloudHsmClusterSkuNamePtrOutput) ToCloudHsmClusterSkuNamePtrOutputWithContext(ctx context.Context) CloudHsmClusterSkuNamePtrOutput {
 	return o
-}
-
-func (o CloudHsmClusterSkuNamePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudHsmClusterSkuName] {
-	return pulumix.Output[*CloudHsmClusterSkuName]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CloudHsmClusterSkuNamePtrOutput) Elem() CloudHsmClusterSkuNameOutput {

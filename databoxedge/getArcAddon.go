@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a specific addon by name.
@@ -107,12 +106,6 @@ func (o LookupArcAddonResultOutput) ToLookupArcAddonResultOutput() LookupArcAddo
 
 func (o LookupArcAddonResultOutput) ToLookupArcAddonResultOutputWithContext(ctx context.Context) LookupArcAddonResultOutput {
 	return o
-}
-
-func (o LookupArcAddonResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupArcAddonResult] {
-	return pulumix.Output[LookupArcAddonResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Host OS supported by the Arc addon.

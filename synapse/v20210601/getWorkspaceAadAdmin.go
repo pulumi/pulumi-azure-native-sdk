@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a workspace active directory admin
@@ -85,12 +84,6 @@ func (o LookupWorkspaceAadAdminResultOutput) ToLookupWorkspaceAadAdminResultOutp
 
 func (o LookupWorkspaceAadAdminResultOutput) ToLookupWorkspaceAadAdminResultOutputWithContext(ctx context.Context) LookupWorkspaceAadAdminResultOutput {
 	return o
-}
-
-func (o LookupWorkspaceAadAdminResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkspaceAadAdminResult] {
-	return pulumix.Output[LookupWorkspaceAadAdminResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Workspace active directory administrator type

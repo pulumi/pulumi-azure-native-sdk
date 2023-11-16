@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i LinkedTemplateArtifactArgs) ToLinkedTemplateArtifactOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedTemplateArtifactOutput)
 }
 
-func (i LinkedTemplateArtifactArgs) ToOutput(ctx context.Context) pulumix.Output[LinkedTemplateArtifact] {
-	return pulumix.Output[LinkedTemplateArtifact]{
-		OutputState: i.ToLinkedTemplateArtifactOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LinkedTemplateArtifactArrayInput is an input type that accepts LinkedTemplateArtifactArray and LinkedTemplateArtifactArrayOutput values.
 // You can construct a concrete instance of `LinkedTemplateArtifactArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i LinkedTemplateArtifactArray) ToLinkedTemplateArtifactArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedTemplateArtifactArrayOutput)
 }
 
-func (i LinkedTemplateArtifactArray) ToOutput(ctx context.Context) pulumix.Output[[]LinkedTemplateArtifact] {
-	return pulumix.Output[[]LinkedTemplateArtifact]{
-		OutputState: i.ToLinkedTemplateArtifactArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a Template Spec artifact containing an embedded Azure Resource Manager template for use as a linked template.
 type LinkedTemplateArtifactOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o LinkedTemplateArtifactOutput) ToLinkedTemplateArtifactOutput() LinkedTem
 
 func (o LinkedTemplateArtifactOutput) ToLinkedTemplateArtifactOutputWithContext(ctx context.Context) LinkedTemplateArtifactOutput {
 	return o
-}
-
-func (o LinkedTemplateArtifactOutput) ToOutput(ctx context.Context) pulumix.Output[LinkedTemplateArtifact] {
-	return pulumix.Output[LinkedTemplateArtifact]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A filesystem safe relative path of the artifact.
@@ -133,12 +114,6 @@ func (o LinkedTemplateArtifactArrayOutput) ToLinkedTemplateArtifactArrayOutput()
 
 func (o LinkedTemplateArtifactArrayOutput) ToLinkedTemplateArtifactArrayOutputWithContext(ctx context.Context) LinkedTemplateArtifactArrayOutput {
 	return o
-}
-
-func (o LinkedTemplateArtifactArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LinkedTemplateArtifact] {
-	return pulumix.Output[[]LinkedTemplateArtifact]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LinkedTemplateArtifactArrayOutput) Index(i pulumi.IntInput) LinkedTemplateArtifactOutput {
@@ -170,12 +145,6 @@ func (o LinkedTemplateArtifactResponseOutput) ToLinkedTemplateArtifactResponseOu
 	return o
 }
 
-func (o LinkedTemplateArtifactResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LinkedTemplateArtifactResponse] {
-	return pulumix.Output[LinkedTemplateArtifactResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A filesystem safe relative path of the artifact.
 func (o LinkedTemplateArtifactResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v LinkedTemplateArtifactResponse) string { return v.Path }).(pulumi.StringOutput)
@@ -198,12 +167,6 @@ func (o LinkedTemplateArtifactResponseArrayOutput) ToLinkedTemplateArtifactRespo
 
 func (o LinkedTemplateArtifactResponseArrayOutput) ToLinkedTemplateArtifactResponseArrayOutputWithContext(ctx context.Context) LinkedTemplateArtifactResponseArrayOutput {
 	return o
-}
-
-func (o LinkedTemplateArtifactResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LinkedTemplateArtifactResponse] {
-	return pulumix.Output[[]LinkedTemplateArtifactResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LinkedTemplateArtifactResponseArrayOutput) Index(i pulumi.IntInput) LinkedTemplateArtifactResponseOutput {
@@ -241,12 +204,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -304,12 +261,6 @@ func (o TemplateSpecVersionInfoResponseOutput) ToTemplateSpecVersionInfoResponse
 	return o
 }
 
-func (o TemplateSpecVersionInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TemplateSpecVersionInfoResponse] {
-	return pulumix.Output[TemplateSpecVersionInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Template Spec version description.
 func (o TemplateSpecVersionInfoResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v TemplateSpecVersionInfoResponse) string { return v.Description }).(pulumi.StringOutput)
@@ -337,12 +288,6 @@ func (o TemplateSpecVersionInfoResponseMapOutput) ToTemplateSpecVersionInfoRespo
 
 func (o TemplateSpecVersionInfoResponseMapOutput) ToTemplateSpecVersionInfoResponseMapOutputWithContext(ctx context.Context) TemplateSpecVersionInfoResponseMapOutput {
 	return o
-}
-
-func (o TemplateSpecVersionInfoResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]TemplateSpecVersionInfoResponse] {
-	return pulumix.Output[map[string]TemplateSpecVersionInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TemplateSpecVersionInfoResponseMapOutput) MapIndex(k pulumi.StringInput) TemplateSpecVersionInfoResponseOutput {

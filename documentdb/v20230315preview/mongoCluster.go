@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a mongo cluster resource.
@@ -170,12 +169,6 @@ func (i *MongoCluster) ToMongoClusterOutputWithContext(ctx context.Context) Mong
 	return pulumi.ToOutputWithContext(ctx, i).(MongoClusterOutput)
 }
 
-func (i *MongoCluster) ToOutput(ctx context.Context) pulumix.Output[*MongoCluster] {
-	return pulumix.Output[*MongoCluster]{
-		OutputState: i.ToMongoClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MongoClusterOutput struct{ *pulumi.OutputState }
 
 func (MongoClusterOutput) ElementType() reflect.Type {
@@ -188,12 +181,6 @@ func (o MongoClusterOutput) ToMongoClusterOutput() MongoClusterOutput {
 
 func (o MongoClusterOutput) ToMongoClusterOutputWithContext(ctx context.Context) MongoClusterOutput {
 	return o
-}
-
-func (o MongoClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*MongoCluster] {
-	return pulumix.Output[*MongoCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The administrator's login for the mongo cluster.

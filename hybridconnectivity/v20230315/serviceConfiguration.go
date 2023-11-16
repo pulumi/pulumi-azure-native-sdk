@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The service configuration details associated with the target resource.
@@ -177,12 +176,6 @@ func (i *ServiceConfiguration) ToServiceConfigurationOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConfigurationOutput)
 }
 
-func (i *ServiceConfiguration) ToOutput(ctx context.Context) pulumix.Output[*ServiceConfiguration] {
-	return pulumix.Output[*ServiceConfiguration]{
-		OutputState: i.ToServiceConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceConfigurationOutput struct{ *pulumi.OutputState }
 
 func (ServiceConfigurationOutput) ElementType() reflect.Type {
@@ -195,12 +188,6 @@ func (o ServiceConfigurationOutput) ToServiceConfigurationOutput() ServiceConfig
 
 func (o ServiceConfigurationOutput) ToServiceConfigurationOutputWithContext(ctx context.Context) ServiceConfigurationOutput {
 	return o
-}
-
-func (o ServiceConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceConfiguration] {
-	return pulumix.Output[*ServiceConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

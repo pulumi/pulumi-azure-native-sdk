@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists the decrypted value of the specified named value of the secret resource. This is a privileged operation.
@@ -78,12 +77,6 @@ func (o ListSecretValueResultOutput) ToListSecretValueResultOutput() ListSecretV
 
 func (o ListSecretValueResultOutput) ToListSecretValueResultOutputWithContext(ctx context.Context) ListSecretValueResultOutput {
 	return o
-}
-
-func (o ListSecretValueResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListSecretValueResult] {
-	return pulumix.Output[ListSecretValueResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The actual value of the secret.

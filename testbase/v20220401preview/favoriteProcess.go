@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A favorite process identifier.
@@ -137,12 +136,6 @@ func (i *FavoriteProcess) ToFavoriteProcessOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(FavoriteProcessOutput)
 }
 
-func (i *FavoriteProcess) ToOutput(ctx context.Context) pulumix.Output[*FavoriteProcess] {
-	return pulumix.Output[*FavoriteProcess]{
-		OutputState: i.ToFavoriteProcessOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FavoriteProcessOutput struct{ *pulumi.OutputState }
 
 func (FavoriteProcessOutput) ElementType() reflect.Type {
@@ -155,12 +148,6 @@ func (o FavoriteProcessOutput) ToFavoriteProcessOutput() FavoriteProcessOutput {
 
 func (o FavoriteProcessOutput) ToFavoriteProcessOutputWithContext(ctx context.Context) FavoriteProcessOutput {
 	return o
-}
-
-func (o FavoriteProcessOutput) ToOutput(ctx context.Context) pulumix.Output[*FavoriteProcess] {
-	return pulumix.Output[*FavoriteProcess]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The actual name of the favorite process. It will be equal to resource name except for the scenario that the process name contains characters that are not allowed in the resource name.

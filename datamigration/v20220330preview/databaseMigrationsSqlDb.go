@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Database Migration Resource for SQL Database.
@@ -120,12 +119,6 @@ func (i *DatabaseMigrationsSqlDb) ToDatabaseMigrationsSqlDbOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMigrationsSqlDbOutput)
 }
 
-func (i *DatabaseMigrationsSqlDb) ToOutput(ctx context.Context) pulumix.Output[*DatabaseMigrationsSqlDb] {
-	return pulumix.Output[*DatabaseMigrationsSqlDb]{
-		OutputState: i.ToDatabaseMigrationsSqlDbOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseMigrationsSqlDbOutput struct{ *pulumi.OutputState }
 
 func (DatabaseMigrationsSqlDbOutput) ElementType() reflect.Type {
@@ -138,12 +131,6 @@ func (o DatabaseMigrationsSqlDbOutput) ToDatabaseMigrationsSqlDbOutput() Databas
 
 func (o DatabaseMigrationsSqlDbOutput) ToDatabaseMigrationsSqlDbOutputWithContext(ctx context.Context) DatabaseMigrationsSqlDbOutput {
 	return o
-}
-
-func (o DatabaseMigrationsSqlDbOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseMigrationsSqlDb] {
-	return pulumix.Output[*DatabaseMigrationsSqlDb]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseMigrationsSqlDbOutput) Name() pulumi.StringOutput {

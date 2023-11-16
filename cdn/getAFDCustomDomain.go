@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.
@@ -105,12 +104,6 @@ func (o LookupAFDCustomDomainResultOutput) ToLookupAFDCustomDomainResultOutput()
 
 func (o LookupAFDCustomDomainResultOutput) ToLookupAFDCustomDomainResultOutputWithContext(ctx context.Context) LookupAFDCustomDomainResultOutput {
 	return o
-}
-
-func (o LookupAFDCustomDomainResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAFDCustomDomainResult] {
-	return pulumix.Output[LookupAFDCustomDomainResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource reference to the Azure DNS zone

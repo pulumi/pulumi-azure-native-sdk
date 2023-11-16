@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Service Token
@@ -100,12 +99,6 @@ func (o GetOnlineEndpointTokenResultOutput) ToGetOnlineEndpointTokenResultOutput
 
 func (o GetOnlineEndpointTokenResultOutput) ToGetOnlineEndpointTokenResultOutputWithContext(ctx context.Context) GetOnlineEndpointTokenResultOutput {
 	return o
-}
-
-func (o GetOnlineEndpointTokenResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetOnlineEndpointTokenResult] {
-	return pulumix.Output[GetOnlineEndpointTokenResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Access token for endpoint authentication.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Cognitive Services RaiPolicy.
@@ -133,12 +132,6 @@ func (i *RaiPolicy) ToRaiPolicyOutputWithContext(ctx context.Context) RaiPolicyO
 	return pulumi.ToOutputWithContext(ctx, i).(RaiPolicyOutput)
 }
 
-func (i *RaiPolicy) ToOutput(ctx context.Context) pulumix.Output[*RaiPolicy] {
-	return pulumix.Output[*RaiPolicy]{
-		OutputState: i.ToRaiPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RaiPolicyOutput struct{ *pulumi.OutputState }
 
 func (RaiPolicyOutput) ElementType() reflect.Type {
@@ -151,12 +144,6 @@ func (o RaiPolicyOutput) ToRaiPolicyOutput() RaiPolicyOutput {
 
 func (o RaiPolicyOutput) ToRaiPolicyOutputWithContext(ctx context.Context) RaiPolicyOutput {
 	return o
-}
-
-func (o RaiPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*RaiPolicy] {
-	return pulumix.Output[*RaiPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Etag.

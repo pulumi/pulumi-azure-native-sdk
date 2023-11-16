@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Define the backup connection resource of virtual instance for SAP..
@@ -140,12 +139,6 @@ func (i *ACSSBackupConnection) ToACSSBackupConnectionOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ACSSBackupConnectionOutput)
 }
 
-func (i *ACSSBackupConnection) ToOutput(ctx context.Context) pulumix.Output[*ACSSBackupConnection] {
-	return pulumix.Output[*ACSSBackupConnection]{
-		OutputState: i.ToACSSBackupConnectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ACSSBackupConnectionOutput struct{ *pulumi.OutputState }
 
 func (ACSSBackupConnectionOutput) ElementType() reflect.Type {
@@ -158,12 +151,6 @@ func (o ACSSBackupConnectionOutput) ToACSSBackupConnectionOutput() ACSSBackupCon
 
 func (o ACSSBackupConnectionOutput) ToACSSBackupConnectionOutputWithContext(ctx context.Context) ACSSBackupConnectionOutput {
 	return o
-}
-
-func (o ACSSBackupConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*ACSSBackupConnection] {
-	return pulumix.Output[*ACSSBackupConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Information about the recovery services vault and backup policy used for backup.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a DataSetMapping in a shareSubscription
@@ -105,12 +104,6 @@ func (o LookupBlobContainerDataSetMappingResultOutput) ToLookupBlobContainerData
 
 func (o LookupBlobContainerDataSetMappingResultOutput) ToLookupBlobContainerDataSetMappingResultOutputWithContext(ctx context.Context) LookupBlobContainerDataSetMappingResultOutput {
 	return o
-}
-
-func (o LookupBlobContainerDataSetMappingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBlobContainerDataSetMappingResult] {
-	return pulumix.Output[LookupBlobContainerDataSetMappingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // BLOB Container name.

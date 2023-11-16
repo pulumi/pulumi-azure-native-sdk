@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the issue Comment for an API specified by its identifier.
@@ -95,12 +94,6 @@ func (o LookupApiIssueCommentResultOutput) ToLookupApiIssueCommentResultOutput()
 
 func (o LookupApiIssueCommentResultOutput) ToLookupApiIssueCommentResultOutputWithContext(ctx context.Context) LookupApiIssueCommentResultOutput {
 	return o
-}
-
-func (o LookupApiIssueCommentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApiIssueCommentResult] {
-	return pulumix.Output[LookupApiIssueCommentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Date and time when the comment was created.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The description of Fhir Service
@@ -224,12 +223,6 @@ func (i *FhirService) ToFhirServiceOutputWithContext(ctx context.Context) FhirSe
 	return pulumi.ToOutputWithContext(ctx, i).(FhirServiceOutput)
 }
 
-func (i *FhirService) ToOutput(ctx context.Context) pulumix.Output[*FhirService] {
-	return pulumix.Output[*FhirService]{
-		OutputState: i.ToFhirServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FhirServiceOutput struct{ *pulumi.OutputState }
 
 func (FhirServiceOutput) ElementType() reflect.Type {
@@ -242,12 +235,6 @@ func (o FhirServiceOutput) ToFhirServiceOutput() FhirServiceOutput {
 
 func (o FhirServiceOutput) ToFhirServiceOutputWithContext(ctx context.Context) FhirServiceOutput {
 	return o
-}
-
-func (o FhirServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*FhirService] {
-	return pulumix.Output[*FhirService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fhir Service access policies.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type KubernetesCluster struct {
@@ -209,12 +208,6 @@ func (i *KubernetesCluster) ToKubernetesClusterOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterOutput)
 }
 
-func (i *KubernetesCluster) ToOutput(ctx context.Context) pulumix.Output[*KubernetesCluster] {
-	return pulumix.Output[*KubernetesCluster]{
-		OutputState: i.ToKubernetesClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KubernetesClusterOutput struct{ *pulumi.OutputState }
 
 func (KubernetesClusterOutput) ElementType() reflect.Type {
@@ -227,12 +220,6 @@ func (o KubernetesClusterOutput) ToKubernetesClusterOutput() KubernetesClusterOu
 
 func (o KubernetesClusterOutput) ToKubernetesClusterOutputWithContext(ctx context.Context) KubernetesClusterOutput {
 	return o
-}
-
-func (o KubernetesClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*KubernetesCluster] {
-	return pulumix.Output[*KubernetesCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Azure Active Directory Integration properties.

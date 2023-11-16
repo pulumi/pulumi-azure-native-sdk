@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -720,12 +719,6 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
-func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
-	return pulumix.Output[UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The client ID of the assigned identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -753,12 +746,6 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
-	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
@@ -798,12 +785,6 @@ func (i UserCreatedAcrAccountArgs) ToUserCreatedAcrAccountOutput() UserCreatedAc
 
 func (i UserCreatedAcrAccountArgs) ToUserCreatedAcrAccountOutputWithContext(ctx context.Context) UserCreatedAcrAccountOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserCreatedAcrAccountOutput)
-}
-
-func (i UserCreatedAcrAccountArgs) ToOutput(ctx context.Context) pulumix.Output[UserCreatedAcrAccount] {
-	return pulumix.Output[UserCreatedAcrAccount]{
-		OutputState: i.ToUserCreatedAcrAccountOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i UserCreatedAcrAccountArgs) ToUserCreatedAcrAccountPtrOutput() UserCreatedAcrAccountPtrOutput {
@@ -847,12 +828,6 @@ func (i *userCreatedAcrAccountPtrType) ToUserCreatedAcrAccountPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(UserCreatedAcrAccountPtrOutput)
 }
 
-func (i *userCreatedAcrAccountPtrType) ToOutput(ctx context.Context) pulumix.Output[*UserCreatedAcrAccount] {
-	return pulumix.Output[*UserCreatedAcrAccount]{
-		OutputState: i.ToUserCreatedAcrAccountPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UserCreatedAcrAccountOutput struct{ *pulumi.OutputState }
 
 func (UserCreatedAcrAccountOutput) ElementType() reflect.Type {
@@ -877,12 +852,6 @@ func (o UserCreatedAcrAccountOutput) ToUserCreatedAcrAccountPtrOutputWithContext
 	}).(UserCreatedAcrAccountPtrOutput)
 }
 
-func (o UserCreatedAcrAccountOutput) ToOutput(ctx context.Context) pulumix.Output[UserCreatedAcrAccount] {
-	return pulumix.Output[UserCreatedAcrAccount]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ARM ResourceId of a resource
 func (o UserCreatedAcrAccountOutput) ArmResourceId() ArmResourceIdPtrOutput {
 	return o.ApplyT(func(v UserCreatedAcrAccount) *ArmResourceId { return v.ArmResourceId }).(ArmResourceIdPtrOutput)
@@ -900,12 +869,6 @@ func (o UserCreatedAcrAccountPtrOutput) ToUserCreatedAcrAccountPtrOutput() UserC
 
 func (o UserCreatedAcrAccountPtrOutput) ToUserCreatedAcrAccountPtrOutputWithContext(ctx context.Context) UserCreatedAcrAccountPtrOutput {
 	return o
-}
-
-func (o UserCreatedAcrAccountPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserCreatedAcrAccount] {
-	return pulumix.Output[*UserCreatedAcrAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserCreatedAcrAccountPtrOutput) Elem() UserCreatedAcrAccountOutput {
@@ -947,12 +910,6 @@ func (o UserCreatedAcrAccountResponseOutput) ToUserCreatedAcrAccountResponseOutp
 	return o
 }
 
-func (o UserCreatedAcrAccountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserCreatedAcrAccountResponse] {
-	return pulumix.Output[UserCreatedAcrAccountResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ARM ResourceId of a resource
 func (o UserCreatedAcrAccountResponseOutput) ArmResourceId() ArmResourceIdResponsePtrOutput {
 	return o.ApplyT(func(v UserCreatedAcrAccountResponse) *ArmResourceIdResponse { return v.ArmResourceId }).(ArmResourceIdResponsePtrOutput)
@@ -970,12 +927,6 @@ func (o UserCreatedAcrAccountResponsePtrOutput) ToUserCreatedAcrAccountResponseP
 
 func (o UserCreatedAcrAccountResponsePtrOutput) ToUserCreatedAcrAccountResponsePtrOutputWithContext(ctx context.Context) UserCreatedAcrAccountResponsePtrOutput {
 	return o
-}
-
-func (o UserCreatedAcrAccountResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserCreatedAcrAccountResponse] {
-	return pulumix.Output[*UserCreatedAcrAccountResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserCreatedAcrAccountResponsePtrOutput) Elem() UserCreatedAcrAccountResponseOutput {
@@ -1031,12 +982,6 @@ func (i UserCreatedStorageAccountArgs) ToUserCreatedStorageAccountOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(UserCreatedStorageAccountOutput)
 }
 
-func (i UserCreatedStorageAccountArgs) ToOutput(ctx context.Context) pulumix.Output[UserCreatedStorageAccount] {
-	return pulumix.Output[UserCreatedStorageAccount]{
-		OutputState: i.ToUserCreatedStorageAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i UserCreatedStorageAccountArgs) ToUserCreatedStorageAccountPtrOutput() UserCreatedStorageAccountPtrOutput {
 	return i.ToUserCreatedStorageAccountPtrOutputWithContext(context.Background())
 }
@@ -1078,12 +1023,6 @@ func (i *userCreatedStorageAccountPtrType) ToUserCreatedStorageAccountPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(UserCreatedStorageAccountPtrOutput)
 }
 
-func (i *userCreatedStorageAccountPtrType) ToOutput(ctx context.Context) pulumix.Output[*UserCreatedStorageAccount] {
-	return pulumix.Output[*UserCreatedStorageAccount]{
-		OutputState: i.ToUserCreatedStorageAccountPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UserCreatedStorageAccountOutput struct{ *pulumi.OutputState }
 
 func (UserCreatedStorageAccountOutput) ElementType() reflect.Type {
@@ -1108,12 +1047,6 @@ func (o UserCreatedStorageAccountOutput) ToUserCreatedStorageAccountPtrOutputWit
 	}).(UserCreatedStorageAccountPtrOutput)
 }
 
-func (o UserCreatedStorageAccountOutput) ToOutput(ctx context.Context) pulumix.Output[UserCreatedStorageAccount] {
-	return pulumix.Output[UserCreatedStorageAccount]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ARM ResourceId of a resource
 func (o UserCreatedStorageAccountOutput) ArmResourceId() ArmResourceIdPtrOutput {
 	return o.ApplyT(func(v UserCreatedStorageAccount) *ArmResourceId { return v.ArmResourceId }).(ArmResourceIdPtrOutput)
@@ -1131,12 +1064,6 @@ func (o UserCreatedStorageAccountPtrOutput) ToUserCreatedStorageAccountPtrOutput
 
 func (o UserCreatedStorageAccountPtrOutput) ToUserCreatedStorageAccountPtrOutputWithContext(ctx context.Context) UserCreatedStorageAccountPtrOutput {
 	return o
-}
-
-func (o UserCreatedStorageAccountPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserCreatedStorageAccount] {
-	return pulumix.Output[*UserCreatedStorageAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserCreatedStorageAccountPtrOutput) Elem() UserCreatedStorageAccountOutput {
@@ -1178,12 +1105,6 @@ func (o UserCreatedStorageAccountResponseOutput) ToUserCreatedStorageAccountResp
 	return o
 }
 
-func (o UserCreatedStorageAccountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserCreatedStorageAccountResponse] {
-	return pulumix.Output[UserCreatedStorageAccountResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ARM ResourceId of a resource
 func (o UserCreatedStorageAccountResponseOutput) ArmResourceId() ArmResourceIdResponsePtrOutput {
 	return o.ApplyT(func(v UserCreatedStorageAccountResponse) *ArmResourceIdResponse { return v.ArmResourceId }).(ArmResourceIdResponsePtrOutput)
@@ -1201,12 +1122,6 @@ func (o UserCreatedStorageAccountResponsePtrOutput) ToUserCreatedStorageAccountR
 
 func (o UserCreatedStorageAccountResponsePtrOutput) ToUserCreatedStorageAccountResponsePtrOutputWithContext(ctx context.Context) UserCreatedStorageAccountResponsePtrOutput {
 	return o
-}
-
-func (o UserCreatedStorageAccountResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserCreatedStorageAccountResponse] {
-	return pulumix.Output[*UserCreatedStorageAccountResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserCreatedStorageAccountResponsePtrOutput) Elem() UserCreatedStorageAccountResponseOutput {
@@ -1276,12 +1191,6 @@ func (o UserInfoResponseOutput) ToUserInfoResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o UserInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserInfoResponse] {
-	return pulumix.Output[UserInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A user alternate sec id. This represents the user in a different identity provider system Eg.1:live.com:puid
 func (o UserInfoResponseOutput) UserAltSecId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserInfoResponse) *string { return v.UserAltSecId }).(pulumi.StringPtrOutput)
@@ -1329,12 +1238,6 @@ func (o UserInfoResponsePtrOutput) ToUserInfoResponsePtrOutput() UserInfoRespons
 
 func (o UserInfoResponsePtrOutput) ToUserInfoResponsePtrOutputWithContext(ctx context.Context) UserInfoResponsePtrOutput {
 	return o
-}
-
-func (o UserInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserInfoResponse] {
-	return pulumix.Output[*UserInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserInfoResponsePtrOutput) Elem() UserInfoResponseOutput {
@@ -1572,12 +1475,6 @@ func (o VirtualMachineSizeResponseOutput) ToVirtualMachineSizeResponseOutputWith
 	return o
 }
 
-func (o VirtualMachineSizeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineSizeResponse] {
-	return pulumix.Output[VirtualMachineSizeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The estimated price information for using a VM.
 func (o VirtualMachineSizeResponseOutput) EstimatedVMPrices() EstimatedVMPricesResponsePtrOutput {
 	return o.ApplyT(func(v VirtualMachineSizeResponse) *EstimatedVMPricesResponse { return v.EstimatedVMPrices }).(EstimatedVMPricesResponsePtrOutput)
@@ -1645,12 +1542,6 @@ func (o VirtualMachineSizeResponseArrayOutput) ToVirtualMachineSizeResponseArray
 
 func (o VirtualMachineSizeResponseArrayOutput) ToVirtualMachineSizeResponseArrayOutputWithContext(ctx context.Context) VirtualMachineSizeResponseArrayOutput {
 	return o
-}
-
-func (o VirtualMachineSizeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachineSizeResponse] {
-	return pulumix.Output[[]VirtualMachineSizeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineSizeResponseArrayOutput) Index(i pulumi.IntInput) VirtualMachineSizeResponseOutput {

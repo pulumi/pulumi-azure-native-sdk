@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The configuration of the event streaming service resource attached to the Purview account for kafka notifications.
@@ -164,12 +163,6 @@ func (i *KafkaConfiguration) ToKafkaConfigurationOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaConfigurationOutput)
 }
 
-func (i *KafkaConfiguration) ToOutput(ctx context.Context) pulumix.Output[*KafkaConfiguration] {
-	return pulumix.Output[*KafkaConfiguration]{
-		OutputState: i.ToKafkaConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KafkaConfigurationOutput struct{ *pulumi.OutputState }
 
 func (KafkaConfigurationOutput) ElementType() reflect.Type {
@@ -182,12 +175,6 @@ func (o KafkaConfigurationOutput) ToKafkaConfigurationOutput() KafkaConfiguratio
 
 func (o KafkaConfigurationOutput) ToKafkaConfigurationOutputWithContext(ctx context.Context) KafkaConfigurationOutput {
 	return o
-}
-
-func (o KafkaConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaConfiguration] {
-	return pulumix.Output[*KafkaConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Consumer group for hook event hub.

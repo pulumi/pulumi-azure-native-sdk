@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Define the Virtual Instance for SAP solutions resource.
@@ -190,12 +189,6 @@ func (i *SAPVirtualInstance) ToSAPVirtualInstanceOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(SAPVirtualInstanceOutput)
 }
 
-func (i *SAPVirtualInstance) ToOutput(ctx context.Context) pulumix.Output[*SAPVirtualInstance] {
-	return pulumix.Output[*SAPVirtualInstance]{
-		OutputState: i.ToSAPVirtualInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SAPVirtualInstanceOutput struct{ *pulumi.OutputState }
 
 func (SAPVirtualInstanceOutput) ElementType() reflect.Type {
@@ -208,12 +201,6 @@ func (o SAPVirtualInstanceOutput) ToSAPVirtualInstanceOutput() SAPVirtualInstanc
 
 func (o SAPVirtualInstanceOutput) ToSAPVirtualInstanceOutputWithContext(ctx context.Context) SAPVirtualInstanceOutput {
 	return o
-}
-
-func (o SAPVirtualInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*SAPVirtualInstance] {
-	return pulumix.Output[*SAPVirtualInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines if the SAP system is being created using Azure Center for SAP solutions (ACSS) or if an existing SAP system is being registered with ACSS

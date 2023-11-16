@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an authorization rule for a NotificationHub by name.
@@ -109,12 +108,6 @@ func (o LookupNotificationHubAuthorizationRuleResultOutput) ToLookupNotification
 
 func (o LookupNotificationHubAuthorizationRuleResultOutput) ToLookupNotificationHubAuthorizationRuleResultOutputWithContext(ctx context.Context) LookupNotificationHubAuthorizationRuleResultOutput {
 	return o
-}
-
-func (o LookupNotificationHubAuthorizationRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNotificationHubAuthorizationRuleResult] {
-	return pulumix.Output[LookupNotificationHubAuthorizationRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A string that describes the claim type

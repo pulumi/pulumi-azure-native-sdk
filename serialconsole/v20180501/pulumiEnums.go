@@ -79,12 +79,6 @@ func (o SerialPortStateEnumOutput) ToSerialPortStateEnumPtrOutputWithContext(ctx
 	}).(SerialPortStateEnumPtrOutput)
 }
 
-func (o SerialPortStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[SerialPortStateEnum] {
-	return pulumix.Output[SerialPortStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SerialPortStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -118,12 +112,6 @@ func (o SerialPortStateEnumPtrOutput) ToSerialPortStateEnumPtrOutput() SerialPor
 
 func (o SerialPortStateEnumPtrOutput) ToSerialPortStateEnumPtrOutputWithContext(ctx context.Context) SerialPortStateEnumPtrOutput {
 	return o
-}
-
-func (o SerialPortStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SerialPortStateEnum] {
-	return pulumix.Output[*SerialPortStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SerialPortStateEnumPtrOutput) Elem() SerialPortStateEnumOutput {

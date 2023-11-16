@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Settings with single toggle.
@@ -117,6 +116,9 @@ func NewAnomalies(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:Anomalies"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:Anomalies"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -199,12 +201,6 @@ func (i *Anomalies) ToAnomaliesOutputWithContext(ctx context.Context) AnomaliesO
 	return pulumi.ToOutputWithContext(ctx, i).(AnomaliesOutput)
 }
 
-func (i *Anomalies) ToOutput(ctx context.Context) pulumix.Output[*Anomalies] {
-	return pulumix.Output[*Anomalies]{
-		OutputState: i.ToAnomaliesOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AnomaliesOutput struct{ *pulumi.OutputState }
 
 func (AnomaliesOutput) ElementType() reflect.Type {
@@ -217,12 +213,6 @@ func (o AnomaliesOutput) ToAnomaliesOutput() AnomaliesOutput {
 
 func (o AnomaliesOutput) ToAnomaliesOutputWithContext(ctx context.Context) AnomaliesOutput {
 	return o
-}
-
-func (o AnomaliesOutput) ToOutput(ctx context.Context) pulumix.Output[*Anomalies] {
-	return pulumix.Output[*Anomalies]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Etag of the azure resource

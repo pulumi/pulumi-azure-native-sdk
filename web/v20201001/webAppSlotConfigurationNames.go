@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Slot Config names azure resource.
@@ -183,12 +182,6 @@ func (i *WebAppSlotConfigurationNames) ToWebAppSlotConfigurationNamesOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppSlotConfigurationNamesOutput)
 }
 
-func (i *WebAppSlotConfigurationNames) ToOutput(ctx context.Context) pulumix.Output[*WebAppSlotConfigurationNames] {
-	return pulumix.Output[*WebAppSlotConfigurationNames]{
-		OutputState: i.ToWebAppSlotConfigurationNamesOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebAppSlotConfigurationNamesOutput struct{ *pulumi.OutputState }
 
 func (WebAppSlotConfigurationNamesOutput) ElementType() reflect.Type {
@@ -201,12 +194,6 @@ func (o WebAppSlotConfigurationNamesOutput) ToWebAppSlotConfigurationNamesOutput
 
 func (o WebAppSlotConfigurationNamesOutput) ToWebAppSlotConfigurationNamesOutputWithContext(ctx context.Context) WebAppSlotConfigurationNamesOutput {
 	return o
-}
-
-func (o WebAppSlotConfigurationNamesOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppSlotConfigurationNames] {
-	return pulumix.Output[*WebAppSlotConfigurationNames]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of application settings names.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the recovery plan.
@@ -85,12 +84,6 @@ func (o LookupReplicationRecoveryPlanResultOutput) ToLookupReplicationRecoveryPl
 
 func (o LookupReplicationRecoveryPlanResultOutput) ToLookupReplicationRecoveryPlanResultOutputWithContext(ctx context.Context) LookupReplicationRecoveryPlanResultOutput {
 	return o
-}
-
-func (o LookupReplicationRecoveryPlanResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReplicationRecoveryPlanResult] {
-	return pulumix.Output[LookupReplicationRecoveryPlanResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Id

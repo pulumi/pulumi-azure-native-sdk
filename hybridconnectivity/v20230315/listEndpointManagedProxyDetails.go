@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Fetches the managed proxy details
@@ -87,12 +86,6 @@ func (o ListEndpointManagedProxyDetailsResultOutput) ToListEndpointManagedProxyD
 
 func (o ListEndpointManagedProxyDetailsResultOutput) ToListEndpointManagedProxyDetailsResultOutputWithContext(ctx context.Context) ListEndpointManagedProxyDetailsResultOutput {
 	return o
-}
-
-func (o ListEndpointManagedProxyDetailsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListEndpointManagedProxyDetailsResult] {
-	return pulumix.Output[ListEndpointManagedProxyDetailsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The expiration time of short lived proxy name in unix epoch.

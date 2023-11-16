@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an installed packages by its id.
@@ -129,12 +128,6 @@ func (o LookupContentPackageResultOutput) ToLookupContentPackageResultOutput() L
 
 func (o LookupContentPackageResultOutput) ToLookupContentPackageResultOutputWithContext(ctx context.Context) LookupContentPackageResultOutput {
 	return o
-}
-
-func (o LookupContentPackageResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContentPackageResult] {
-	return pulumix.Output[LookupContentPackageResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The author of the package

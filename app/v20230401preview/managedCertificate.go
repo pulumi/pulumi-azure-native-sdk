@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Managed certificates used for Custom Domain bindings of Container Apps in a Managed Environment
@@ -148,12 +147,6 @@ func (i *ManagedCertificate) ToManagedCertificateOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedCertificateOutput)
 }
 
-func (i *ManagedCertificate) ToOutput(ctx context.Context) pulumix.Output[*ManagedCertificate] {
-	return pulumix.Output[*ManagedCertificate]{
-		OutputState: i.ToManagedCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagedCertificateOutput struct{ *pulumi.OutputState }
 
 func (ManagedCertificateOutput) ElementType() reflect.Type {
@@ -166,12 +159,6 @@ func (o ManagedCertificateOutput) ToManagedCertificateOutput() ManagedCertificat
 
 func (o ManagedCertificateOutput) ToManagedCertificateOutputWithContext(ctx context.Context) ManagedCertificateOutput {
 	return o
-}
-
-func (o ManagedCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedCertificate] {
-	return pulumix.Output[*ManagedCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

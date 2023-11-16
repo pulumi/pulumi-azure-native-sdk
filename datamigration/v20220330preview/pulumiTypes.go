@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -61,12 +60,6 @@ func (i AzureActiveDirectoryAppArgs) ToAzureActiveDirectoryAppOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AzureActiveDirectoryAppOutput)
 }
 
-func (i AzureActiveDirectoryAppArgs) ToOutput(ctx context.Context) pulumix.Output[AzureActiveDirectoryApp] {
-	return pulumix.Output[AzureActiveDirectoryApp]{
-		OutputState: i.ToAzureActiveDirectoryAppOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AzureActiveDirectoryAppArgs) ToAzureActiveDirectoryAppPtrOutput() AzureActiveDirectoryAppPtrOutput {
 	return i.ToAzureActiveDirectoryAppPtrOutputWithContext(context.Background())
 }
@@ -108,12 +101,6 @@ func (i *azureActiveDirectoryAppPtrType) ToAzureActiveDirectoryAppPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(AzureActiveDirectoryAppPtrOutput)
 }
 
-func (i *azureActiveDirectoryAppPtrType) ToOutput(ctx context.Context) pulumix.Output[*AzureActiveDirectoryApp] {
-	return pulumix.Output[*AzureActiveDirectoryApp]{
-		OutputState: i.ToAzureActiveDirectoryAppPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Azure Active Directory Application
 type AzureActiveDirectoryAppOutput struct{ *pulumi.OutputState }
 
@@ -137,12 +124,6 @@ func (o AzureActiveDirectoryAppOutput) ToAzureActiveDirectoryAppPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureActiveDirectoryApp) *AzureActiveDirectoryApp {
 		return &v
 	}).(AzureActiveDirectoryAppPtrOutput)
-}
-
-func (o AzureActiveDirectoryAppOutput) ToOutput(ctx context.Context) pulumix.Output[AzureActiveDirectoryApp] {
-	return pulumix.Output[AzureActiveDirectoryApp]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Key used to authenticate to the Azure Active Directory Application
@@ -177,12 +158,6 @@ func (o AzureActiveDirectoryAppPtrOutput) ToAzureActiveDirectoryAppPtrOutput() A
 
 func (o AzureActiveDirectoryAppPtrOutput) ToAzureActiveDirectoryAppPtrOutputWithContext(ctx context.Context) AzureActiveDirectoryAppPtrOutput {
 	return o
-}
-
-func (o AzureActiveDirectoryAppPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureActiveDirectoryApp] {
-	return pulumix.Output[*AzureActiveDirectoryApp]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureActiveDirectoryAppPtrOutput) Elem() AzureActiveDirectoryAppOutput {
@@ -262,12 +237,6 @@ func (o AzureActiveDirectoryAppResponseOutput) ToAzureActiveDirectoryAppResponse
 	return o
 }
 
-func (o AzureActiveDirectoryAppResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureActiveDirectoryAppResponse] {
-	return pulumix.Output[AzureActiveDirectoryAppResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Key used to authenticate to the Azure Active Directory Application
 func (o AzureActiveDirectoryAppResponseOutput) AppKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureActiveDirectoryAppResponse) *string { return v.AppKey }).(pulumi.StringPtrOutput)
@@ -300,12 +269,6 @@ func (o AzureActiveDirectoryAppResponsePtrOutput) ToAzureActiveDirectoryAppRespo
 
 func (o AzureActiveDirectoryAppResponsePtrOutput) ToAzureActiveDirectoryAppResponsePtrOutputWithContext(ctx context.Context) AzureActiveDirectoryAppResponsePtrOutput {
 	return o
-}
-
-func (o AzureActiveDirectoryAppResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureActiveDirectoryAppResponse] {
-	return pulumix.Output[*AzureActiveDirectoryAppResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureActiveDirectoryAppResponsePtrOutput) Elem() AzureActiveDirectoryAppResponseOutput {
@@ -1792,12 +1755,6 @@ func (o CopyProgressDetailsResponseOutput) ToCopyProgressDetailsResponseOutputWi
 	return o
 }
 
-func (o CopyProgressDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CopyProgressDetailsResponse] {
-	return pulumix.Output[CopyProgressDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Copy Duration in seconds
 func (o CopyProgressDetailsResponseOutput) CopyDuration() pulumi.IntOutput {
 	return o.ApplyT(func(v CopyProgressDetailsResponse) int { return v.CopyDuration }).(pulumi.IntOutput)
@@ -1865,12 +1822,6 @@ func (o CopyProgressDetailsResponseArrayOutput) ToCopyProgressDetailsResponseArr
 
 func (o CopyProgressDetailsResponseArrayOutput) ToCopyProgressDetailsResponseArrayOutputWithContext(ctx context.Context) CopyProgressDetailsResponseArrayOutput {
 	return o
-}
-
-func (o CopyProgressDetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CopyProgressDetailsResponse] {
-	return pulumix.Output[[]CopyProgressDetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CopyProgressDetailsResponseArrayOutput) Index(i pulumi.IntInput) CopyProgressDetailsResponseOutput {
@@ -1982,12 +1933,6 @@ func (i DatabaseInfoArgs) ToDatabaseInfoOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInfoOutput)
 }
 
-func (i DatabaseInfoArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInfo] {
-	return pulumix.Output[DatabaseInfo]{
-		OutputState: i.ToDatabaseInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatabaseInfoArrayInput is an input type that accepts DatabaseInfoArray and DatabaseInfoArrayOutput values.
 // You can construct a concrete instance of `DatabaseInfoArrayInput` via:
 //
@@ -2013,12 +1958,6 @@ func (i DatabaseInfoArray) ToDatabaseInfoArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInfoArrayOutput)
 }
 
-func (i DatabaseInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]DatabaseInfo] {
-	return pulumix.Output[[]DatabaseInfo]{
-		OutputState: i.ToDatabaseInfoArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Project Database Details
 type DatabaseInfoOutput struct{ *pulumi.OutputState }
 
@@ -2032,12 +1971,6 @@ func (o DatabaseInfoOutput) ToDatabaseInfoOutput() DatabaseInfoOutput {
 
 func (o DatabaseInfoOutput) ToDatabaseInfoOutputWithContext(ctx context.Context) DatabaseInfoOutput {
 	return o
-}
-
-func (o DatabaseInfoOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInfo] {
-	return pulumix.Output[DatabaseInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the database
@@ -2057,12 +1990,6 @@ func (o DatabaseInfoArrayOutput) ToDatabaseInfoArrayOutput() DatabaseInfoArrayOu
 
 func (o DatabaseInfoArrayOutput) ToDatabaseInfoArrayOutputWithContext(ctx context.Context) DatabaseInfoArrayOutput {
 	return o
-}
-
-func (o DatabaseInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DatabaseInfo] {
-	return pulumix.Output[[]DatabaseInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInfoArrayOutput) Index(i pulumi.IntInput) DatabaseInfoOutput {
@@ -2092,12 +2019,6 @@ func (o DatabaseInfoResponseOutput) ToDatabaseInfoResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o DatabaseInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInfoResponse] {
-	return pulumix.Output[DatabaseInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the database
 func (o DatabaseInfoResponseOutput) SourceDatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseInfoResponse) string { return v.SourceDatabaseName }).(pulumi.StringOutput)
@@ -2115,12 +2036,6 @@ func (o DatabaseInfoResponseArrayOutput) ToDatabaseInfoResponseArrayOutput() Dat
 
 func (o DatabaseInfoResponseArrayOutput) ToDatabaseInfoResponseArrayOutputWithContext(ctx context.Context) DatabaseInfoResponseArrayOutput {
 	return o
-}
-
-func (o DatabaseInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DatabaseInfoResponse] {
-	return pulumix.Output[[]DatabaseInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInfoResponseArrayOutput) Index(i pulumi.IntInput) DatabaseInfoResponseOutput {
@@ -2200,12 +2115,6 @@ func (i DatabaseMigrationPropertiesSqlDbArgs) ToDatabaseMigrationPropertiesSqlDb
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMigrationPropertiesSqlDbOutput)
 }
 
-func (i DatabaseMigrationPropertiesSqlDbArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseMigrationPropertiesSqlDb] {
-	return pulumix.Output[DatabaseMigrationPropertiesSqlDb]{
-		OutputState: i.ToDatabaseMigrationPropertiesSqlDbOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatabaseMigrationPropertiesSqlDbArgs) ToDatabaseMigrationPropertiesSqlDbPtrOutput() DatabaseMigrationPropertiesSqlDbPtrOutput {
 	return i.ToDatabaseMigrationPropertiesSqlDbPtrOutputWithContext(context.Background())
 }
@@ -2247,12 +2156,6 @@ func (i *databaseMigrationPropertiesSqlDbPtrType) ToDatabaseMigrationPropertiesS
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseMigrationPropertiesSqlDbPtrOutput)
 }
 
-func (i *databaseMigrationPropertiesSqlDbPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatabaseMigrationPropertiesSqlDb] {
-	return pulumix.Output[*DatabaseMigrationPropertiesSqlDb]{
-		OutputState: i.ToDatabaseMigrationPropertiesSqlDbPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Database Migration Resource properties for SQL database.
 type DatabaseMigrationPropertiesSqlDbOutput struct{ *pulumi.OutputState }
 
@@ -2276,12 +2179,6 @@ func (o DatabaseMigrationPropertiesSqlDbOutput) ToDatabaseMigrationPropertiesSql
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseMigrationPropertiesSqlDb) *DatabaseMigrationPropertiesSqlDb {
 		return &v
 	}).(DatabaseMigrationPropertiesSqlDbPtrOutput)
-}
-
-func (o DatabaseMigrationPropertiesSqlDbOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseMigrationPropertiesSqlDb] {
-	return pulumix.Output[DatabaseMigrationPropertiesSqlDb]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Expected value is 'SqlDb'.
@@ -2346,12 +2243,6 @@ func (o DatabaseMigrationPropertiesSqlDbPtrOutput) ToDatabaseMigrationProperties
 
 func (o DatabaseMigrationPropertiesSqlDbPtrOutput) ToDatabaseMigrationPropertiesSqlDbPtrOutputWithContext(ctx context.Context) DatabaseMigrationPropertiesSqlDbPtrOutput {
 	return o
-}
-
-func (o DatabaseMigrationPropertiesSqlDbPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseMigrationPropertiesSqlDb] {
-	return pulumix.Output[*DatabaseMigrationPropertiesSqlDb]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseMigrationPropertiesSqlDbPtrOutput) Elem() DatabaseMigrationPropertiesSqlDbOutput {
@@ -2519,12 +2410,6 @@ func (o DatabaseMigrationPropertiesSqlDbResponseOutput) ToDatabaseMigrationPrope
 	return o
 }
 
-func (o DatabaseMigrationPropertiesSqlDbResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseMigrationPropertiesSqlDbResponse] {
-	return pulumix.Output[DatabaseMigrationPropertiesSqlDbResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Database migration end time.
 func (o DatabaseMigrationPropertiesSqlDbResponseOutput) EndedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseMigrationPropertiesSqlDbResponse) string { return v.EndedOn }).(pulumi.StringOutput)
@@ -2676,12 +2561,6 @@ func (o ErrorInfoResponseOutput) ToErrorInfoResponseOutput() ErrorInfoResponseOu
 
 func (o ErrorInfoResponseOutput) ToErrorInfoResponseOutputWithContext(ctx context.Context) ErrorInfoResponseOutput {
 	return o
-}
-
-func (o ErrorInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorInfoResponse] {
-	return pulumix.Output[ErrorInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Error code.
@@ -6266,12 +6145,6 @@ func (o NodeMonitoringDataResponseOutput) ToNodeMonitoringDataResponseOutputWith
 	return o
 }
 
-func (o NodeMonitoringDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NodeMonitoringDataResponse] {
-	return pulumix.Output[NodeMonitoringDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Unmatched properties from the message are deserialized in this collection.
 func (o NodeMonitoringDataResponseOutput) AdditionalProperties() pulumi.MapOutput {
 	return o.ApplyT(func(v NodeMonitoringDataResponse) map[string]interface{} { return v.AdditionalProperties }).(pulumi.MapOutput)
@@ -6329,12 +6202,6 @@ func (o NodeMonitoringDataResponseArrayOutput) ToNodeMonitoringDataResponseArray
 
 func (o NodeMonitoringDataResponseArrayOutput) ToNodeMonitoringDataResponseArrayOutputWithContext(ctx context.Context) NodeMonitoringDataResponseArrayOutput {
 	return o
-}
-
-func (o NodeMonitoringDataResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NodeMonitoringDataResponse] {
-	return pulumix.Output[[]NodeMonitoringDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NodeMonitoringDataResponseArrayOutput) Index(i pulumi.IntInput) NodeMonitoringDataResponseOutput {
@@ -6542,12 +6409,6 @@ func (i ProjectFilePropertiesArgs) ToProjectFilePropertiesOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectFilePropertiesOutput)
 }
 
-func (i ProjectFilePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ProjectFileProperties] {
-	return pulumix.Output[ProjectFileProperties]{
-		OutputState: i.ToProjectFilePropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProjectFilePropertiesArgs) ToProjectFilePropertiesPtrOutput() ProjectFilePropertiesPtrOutput {
 	return i.ToProjectFilePropertiesPtrOutputWithContext(context.Background())
 }
@@ -6589,12 +6450,6 @@ func (i *projectFilePropertiesPtrType) ToProjectFilePropertiesPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectFilePropertiesPtrOutput)
 }
 
-func (i *projectFilePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProjectFileProperties] {
-	return pulumix.Output[*ProjectFileProperties]{
-		OutputState: i.ToProjectFilePropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Base class for file properties.
 type ProjectFilePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -6618,12 +6473,6 @@ func (o ProjectFilePropertiesOutput) ToProjectFilePropertiesPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectFileProperties) *ProjectFileProperties {
 		return &v
 	}).(ProjectFilePropertiesPtrOutput)
-}
-
-func (o ProjectFilePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectFileProperties] {
-	return pulumix.Output[ProjectFileProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional File extension. If submitted it should not have a leading period and must match the extension from filePath.
@@ -6653,12 +6502,6 @@ func (o ProjectFilePropertiesPtrOutput) ToProjectFilePropertiesPtrOutput() Proje
 
 func (o ProjectFilePropertiesPtrOutput) ToProjectFilePropertiesPtrOutputWithContext(ctx context.Context) ProjectFilePropertiesPtrOutput {
 	return o
-}
-
-func (o ProjectFilePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectFileProperties] {
-	return pulumix.Output[*ProjectFileProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectFilePropertiesPtrOutput) Elem() ProjectFilePropertiesOutput {
@@ -6728,12 +6571,6 @@ func (o ProjectFilePropertiesResponseOutput) ToProjectFilePropertiesResponseOutp
 
 func (o ProjectFilePropertiesResponseOutput) ToProjectFilePropertiesResponseOutputWithContext(ctx context.Context) ProjectFilePropertiesResponseOutput {
 	return o
-}
-
-func (o ProjectFilePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ProjectFilePropertiesResponse] {
-	return pulumix.Output[ProjectFilePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional File extension. If submitted it should not have a leading period and must match the extension from filePath.
@@ -6902,12 +6739,6 @@ func (i ServiceSkuArgs) ToServiceSkuOutputWithContext(ctx context.Context) Servi
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceSkuOutput)
 }
 
-func (i ServiceSkuArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceSku] {
-	return pulumix.Output[ServiceSku]{
-		OutputState: i.ToServiceSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceSkuArgs) ToServiceSkuPtrOutput() ServiceSkuPtrOutput {
 	return i.ToServiceSkuPtrOutputWithContext(context.Background())
 }
@@ -6949,12 +6780,6 @@ func (i *serviceSkuPtrType) ToServiceSkuPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceSkuPtrOutput)
 }
 
-func (i *serviceSkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceSku] {
-	return pulumix.Output[*ServiceSku]{
-		OutputState: i.ToServiceSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An Azure SKU instance
 type ServiceSkuOutput struct{ *pulumi.OutputState }
 
@@ -6978,12 +6803,6 @@ func (o ServiceSkuOutput) ToServiceSkuPtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceSku) *ServiceSku {
 		return &v
 	}).(ServiceSkuPtrOutput)
-}
-
-func (o ServiceSkuOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceSku] {
-	return pulumix.Output[ServiceSku]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The capacity of the SKU, if it supports scaling
@@ -7023,12 +6842,6 @@ func (o ServiceSkuPtrOutput) ToServiceSkuPtrOutput() ServiceSkuPtrOutput {
 
 func (o ServiceSkuPtrOutput) ToServiceSkuPtrOutputWithContext(ctx context.Context) ServiceSkuPtrOutput {
 	return o
-}
-
-func (o ServiceSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceSku] {
-	return pulumix.Output[*ServiceSku]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceSkuPtrOutput) Elem() ServiceSkuOutput {
@@ -7120,12 +6933,6 @@ func (o ServiceSkuResponseOutput) ToServiceSkuResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o ServiceSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceSkuResponse] {
-	return pulumix.Output[ServiceSkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The capacity of the SKU, if it supports scaling
 func (o ServiceSkuResponseOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceSkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
@@ -7163,12 +6970,6 @@ func (o ServiceSkuResponsePtrOutput) ToServiceSkuResponsePtrOutput() ServiceSkuR
 
 func (o ServiceSkuResponsePtrOutput) ToServiceSkuResponsePtrOutputWithContext(ctx context.Context) ServiceSkuResponsePtrOutput {
 	return o
-}
-
-func (o ServiceSkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceSkuResponse] {
-	return pulumix.Output[*ServiceSkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceSkuResponsePtrOutput) Elem() ServiceSkuResponseOutput {
@@ -7386,12 +7187,6 @@ func (i SqlConnectionInformationArgs) ToSqlConnectionInformationOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(SqlConnectionInformationOutput)
 }
 
-func (i SqlConnectionInformationArgs) ToOutput(ctx context.Context) pulumix.Output[SqlConnectionInformation] {
-	return pulumix.Output[SqlConnectionInformation]{
-		OutputState: i.ToSqlConnectionInformationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SqlConnectionInformationArgs) ToSqlConnectionInformationPtrOutput() SqlConnectionInformationPtrOutput {
 	return i.ToSqlConnectionInformationPtrOutputWithContext(context.Background())
 }
@@ -7433,12 +7228,6 @@ func (i *sqlConnectionInformationPtrType) ToSqlConnectionInformationPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(SqlConnectionInformationPtrOutput)
 }
 
-func (i *sqlConnectionInformationPtrType) ToOutput(ctx context.Context) pulumix.Output[*SqlConnectionInformation] {
-	return pulumix.Output[*SqlConnectionInformation]{
-		OutputState: i.ToSqlConnectionInformationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Source SQL Connection
 type SqlConnectionInformationOutput struct{ *pulumi.OutputState }
 
@@ -7462,12 +7251,6 @@ func (o SqlConnectionInformationOutput) ToSqlConnectionInformationPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlConnectionInformation) *SqlConnectionInformation {
 		return &v
 	}).(SqlConnectionInformationPtrOutput)
-}
-
-func (o SqlConnectionInformationOutput) ToOutput(ctx context.Context) pulumix.Output[SqlConnectionInformation] {
-	return pulumix.Output[SqlConnectionInformation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Authentication type.
@@ -7512,12 +7295,6 @@ func (o SqlConnectionInformationPtrOutput) ToSqlConnectionInformationPtrOutput()
 
 func (o SqlConnectionInformationPtrOutput) ToSqlConnectionInformationPtrOutputWithContext(ctx context.Context) SqlConnectionInformationPtrOutput {
 	return o
-}
-
-func (o SqlConnectionInformationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlConnectionInformation] {
-	return pulumix.Output[*SqlConnectionInformation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SqlConnectionInformationPtrOutput) Elem() SqlConnectionInformationOutput {
@@ -7621,12 +7398,6 @@ func (o SqlConnectionInformationResponseOutput) ToSqlConnectionInformationRespon
 	return o
 }
 
-func (o SqlConnectionInformationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SqlConnectionInformationResponse] {
-	return pulumix.Output[SqlConnectionInformationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Authentication type.
 func (o SqlConnectionInformationResponseOutput) Authentication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlConnectionInformationResponse) *string { return v.Authentication }).(pulumi.StringPtrOutput)
@@ -7669,12 +7440,6 @@ func (o SqlConnectionInformationResponsePtrOutput) ToSqlConnectionInformationRes
 
 func (o SqlConnectionInformationResponsePtrOutput) ToSqlConnectionInformationResponsePtrOutputWithContext(ctx context.Context) SqlConnectionInformationResponsePtrOutput {
 	return o
-}
-
-func (o SqlConnectionInformationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlConnectionInformationResponse] {
-	return pulumix.Output[*SqlConnectionInformationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SqlConnectionInformationResponsePtrOutput) Elem() SqlConnectionInformationResponseOutput {
@@ -7772,12 +7537,6 @@ func (o SqlDbMigrationStatusDetailsResponseOutput) ToSqlDbMigrationStatusDetails
 	return o
 }
 
-func (o SqlDbMigrationStatusDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SqlDbMigrationStatusDetailsResponse] {
-	return pulumix.Output[SqlDbMigrationStatusDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Details on progress of ADF copy activities.
 func (o SqlDbMigrationStatusDetailsResponseOutput) ListOfCopyProgressDetails() CopyProgressDetailsResponseArrayOutput {
 	return o.ApplyT(func(v SqlDbMigrationStatusDetailsResponse) []CopyProgressDetailsResponse {
@@ -7814,12 +7573,6 @@ func (o SqlDbOfflineConfigurationResponseOutput) ToSqlDbOfflineConfigurationResp
 
 func (o SqlDbOfflineConfigurationResponseOutput) ToSqlDbOfflineConfigurationResponseOutputWithContext(ctx context.Context) SqlDbOfflineConfigurationResponseOutput {
 	return o
-}
-
-func (o SqlDbOfflineConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SqlDbOfflineConfigurationResponse] {
-	return pulumix.Output[SqlDbOfflineConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Offline migration
@@ -7888,12 +7641,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {

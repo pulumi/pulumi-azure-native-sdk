@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the hybrid identity metadata proxy resource.
@@ -81,12 +80,6 @@ func (o LookupHybridIdentityMetadatumResultOutput) ToLookupHybridIdentityMetadat
 
 func (o LookupHybridIdentityMetadatumResultOutput) ToLookupHybridIdentityMetadatumResultOutputWithContext(ctx context.Context) LookupHybridIdentityMetadatumResultOutput {
 	return o
-}
-
-func (o LookupHybridIdentityMetadatumResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHybridIdentityMetadatumResult] {
-	return pulumix.Output[LookupHybridIdentityMetadatumResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

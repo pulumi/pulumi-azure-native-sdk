@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ExpressRoute Circuit Authorization
@@ -146,12 +145,6 @@ func (i *Authorization) ToAuthorizationOutputWithContext(ctx context.Context) Au
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationOutput)
 }
 
-func (i *Authorization) ToOutput(ctx context.Context) pulumix.Output[*Authorization] {
-	return pulumix.Output[*Authorization]{
-		OutputState: i.ToAuthorizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AuthorizationOutput struct{ *pulumi.OutputState }
 
 func (AuthorizationOutput) ElementType() reflect.Type {
@@ -164,12 +157,6 @@ func (o AuthorizationOutput) ToAuthorizationOutput() AuthorizationOutput {
 
 func (o AuthorizationOutput) ToAuthorizationOutputWithContext(ctx context.Context) AuthorizationOutput {
 	return o
-}
-
-func (o AuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[*Authorization] {
-	return pulumix.Output[*Authorization]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the ExpressRoute Circuit Authorization

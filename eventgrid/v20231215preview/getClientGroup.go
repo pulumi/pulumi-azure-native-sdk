@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of a client group.
@@ -90,12 +89,6 @@ func (o LookupClientGroupResultOutput) ToLookupClientGroupResultOutput() LookupC
 
 func (o LookupClientGroupResultOutput) ToLookupClientGroupResultOutputWithContext(ctx context.Context) LookupClientGroupResultOutput {
 	return o
-}
-
-func (o LookupClientGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupClientGroupResult] {
-	return pulumix.Output[LookupClientGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description for the Client Group resource.

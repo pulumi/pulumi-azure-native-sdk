@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The top level data export resource container.
@@ -171,12 +170,6 @@ func (i *DataExport) ToDataExportOutputWithContext(ctx context.Context) DataExpo
 	return pulumi.ToOutputWithContext(ctx, i).(DataExportOutput)
 }
 
-func (i *DataExport) ToOutput(ctx context.Context) pulumix.Output[*DataExport] {
-	return pulumix.Output[*DataExport]{
-		OutputState: i.ToDataExportOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataExportOutput struct{ *pulumi.OutputState }
 
 func (DataExportOutput) ElementType() reflect.Type {
@@ -189,12 +182,6 @@ func (o DataExportOutput) ToDataExportOutput() DataExportOutput {
 
 func (o DataExportOutput) ToDataExportOutputWithContext(ctx context.Context) DataExportOutput {
 	return o
-}
-
-func (o DataExportOutput) ToOutput(ctx context.Context) pulumix.Output[*DataExport] {
-	return pulumix.Output[*DataExport]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The latest data export rule modification time.

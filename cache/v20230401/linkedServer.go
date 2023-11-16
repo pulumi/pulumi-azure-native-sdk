@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Response to put/get linked server (with properties) for Redis cache.
@@ -182,12 +181,6 @@ func (i *LinkedServer) ToLinkedServerOutputWithContext(ctx context.Context) Link
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedServerOutput)
 }
 
-func (i *LinkedServer) ToOutput(ctx context.Context) pulumix.Output[*LinkedServer] {
-	return pulumix.Output[*LinkedServer]{
-		OutputState: i.ToLinkedServerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LinkedServerOutput struct{ *pulumi.OutputState }
 
 func (LinkedServerOutput) ElementType() reflect.Type {
@@ -200,12 +193,6 @@ func (o LinkedServerOutput) ToLinkedServerOutput() LinkedServerOutput {
 
 func (o LinkedServerOutput) ToLinkedServerOutputWithContext(ctx context.Context) LinkedServerOutput {
 	return o
-}
-
-func (o LinkedServerOutput) ToOutput(ctx context.Context) pulumix.Output[*LinkedServer] {
-	return pulumix.Output[*LinkedServer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unchanging DNS name which will always point to current geo-primary cache among the linked redis caches for seamless Geo Failover experience.

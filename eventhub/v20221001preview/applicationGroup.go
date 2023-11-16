@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Application Group object
@@ -147,12 +146,6 @@ func (i *ApplicationGroup) ToApplicationGroupOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationGroupOutput)
 }
 
-func (i *ApplicationGroup) ToOutput(ctx context.Context) pulumix.Output[*ApplicationGroup] {
-	return pulumix.Output[*ApplicationGroup]{
-		OutputState: i.ToApplicationGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationGroupOutput struct{ *pulumi.OutputState }
 
 func (ApplicationGroupOutput) ElementType() reflect.Type {
@@ -165,12 +158,6 @@ func (o ApplicationGroupOutput) ToApplicationGroupOutput() ApplicationGroupOutpu
 
 func (o ApplicationGroupOutput) ToApplicationGroupOutputWithContext(ctx context.Context) ApplicationGroupOutput {
 	return o
-}
-
-func (o ApplicationGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationGroup] {
-	return pulumix.Output[*ApplicationGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Unique identifier for application group.Supports SAS(SASKeyName=KeyName) or AAD(AADAppID=Guid)

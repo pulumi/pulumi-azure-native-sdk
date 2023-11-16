@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Fabric definition.
@@ -196,12 +195,6 @@ func (i *ReplicationFabric) ToReplicationFabricOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationFabricOutput)
 }
 
-func (i *ReplicationFabric) ToOutput(ctx context.Context) pulumix.Output[*ReplicationFabric] {
-	return pulumix.Output[*ReplicationFabric]{
-		OutputState: i.ToReplicationFabricOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReplicationFabricOutput struct{ *pulumi.OutputState }
 
 func (ReplicationFabricOutput) ElementType() reflect.Type {
@@ -214,12 +207,6 @@ func (o ReplicationFabricOutput) ToReplicationFabricOutput() ReplicationFabricOu
 
 func (o ReplicationFabricOutput) ToReplicationFabricOutputWithContext(ctx context.Context) ReplicationFabricOutput {
 	return o
-}
-
-func (o ReplicationFabricOutput) ToOutput(ctx context.Context) pulumix.Output[*ReplicationFabric] {
-	return pulumix.Output[*ReplicationFabric]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Location

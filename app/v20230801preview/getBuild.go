@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a BuildResource
@@ -97,12 +96,6 @@ func (o LookupBuildResultOutput) ToLookupBuildResultOutput() LookupBuildResultOu
 
 func (o LookupBuildResultOutput) ToLookupBuildResultOutputWithContext(ctx context.Context) LookupBuildResultOutput {
 	return o
-}
-
-func (o LookupBuildResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBuildResult] {
-	return pulumix.Output[LookupBuildResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Status of the build once it has been provisioned.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A private link scoped resource
@@ -125,12 +124,6 @@ func (i *PrivateLinkScopedResource) ToPrivateLinkScopedResourceOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkScopedResourceOutput)
 }
 
-func (i *PrivateLinkScopedResource) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkScopedResource] {
-	return pulumix.Output[*PrivateLinkScopedResource]{
-		OutputState: i.ToPrivateLinkScopedResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateLinkScopedResourceOutput struct{ *pulumi.OutputState }
 
 func (PrivateLinkScopedResourceOutput) ElementType() reflect.Type {
@@ -143,12 +136,6 @@ func (o PrivateLinkScopedResourceOutput) ToPrivateLinkScopedResourceOutput() Pri
 
 func (o PrivateLinkScopedResourceOutput) ToPrivateLinkScopedResourceOutputWithContext(ctx context.Context) PrivateLinkScopedResourceOutput {
 	return o
-}
-
-func (o PrivateLinkScopedResourceOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkScopedResource] {
-	return pulumix.Output[*PrivateLinkScopedResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource id of the scoped Azure monitor resource.

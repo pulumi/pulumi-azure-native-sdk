@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a data export instance.
@@ -96,12 +95,6 @@ func (o LookupDataExportResultOutput) ToLookupDataExportResultOutput() LookupDat
 
 func (o LookupDataExportResultOutput) ToLookupDataExportResultOutputWithContext(ctx context.Context) LookupDataExportResultOutput {
 	return o
-}
-
-func (o LookupDataExportResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataExportResult] {
-	return pulumix.Output[LookupDataExportResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The latest data export rule modification time.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the active diagnostic settings for the specified resource.
@@ -98,12 +97,6 @@ func (o LookupDiagnosticSettingResultOutput) ToLookupDiagnosticSettingResultOutp
 
 func (o LookupDiagnosticSettingResultOutput) ToLookupDiagnosticSettingResultOutputWithContext(ctx context.Context) LookupDiagnosticSettingResultOutput {
 	return o
-}
-
-func (o LookupDiagnosticSettingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDiagnosticSettingResult] {
-	return pulumix.Output[LookupDiagnosticSettingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource Id for the event hub authorization rule.

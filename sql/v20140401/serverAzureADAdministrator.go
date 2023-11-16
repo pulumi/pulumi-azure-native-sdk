@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An server Active Directory Administrator.
@@ -200,12 +199,6 @@ func (i *ServerAzureADAdministrator) ToServerAzureADAdministratorOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ServerAzureADAdministratorOutput)
 }
 
-func (i *ServerAzureADAdministrator) ToOutput(ctx context.Context) pulumix.Output[*ServerAzureADAdministrator] {
-	return pulumix.Output[*ServerAzureADAdministrator]{
-		OutputState: i.ToServerAzureADAdministratorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerAzureADAdministratorOutput struct{ *pulumi.OutputState }
 
 func (ServerAzureADAdministratorOutput) ElementType() reflect.Type {
@@ -218,12 +211,6 @@ func (o ServerAzureADAdministratorOutput) ToServerAzureADAdministratorOutput() S
 
 func (o ServerAzureADAdministratorOutput) ToServerAzureADAdministratorOutputWithContext(ctx context.Context) ServerAzureADAdministratorOutput {
 	return o
-}
-
-func (o ServerAzureADAdministratorOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerAzureADAdministrator] {
-	return pulumix.Output[*ServerAzureADAdministrator]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of administrator.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A profile object that contains change analysis configuration, such as notification settings, for this subscription
@@ -121,12 +120,6 @@ func (i *ConfigurationProfile) ToConfigurationProfileOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationProfileOutput)
 }
 
-func (i *ConfigurationProfile) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationProfile] {
-	return pulumix.Output[*ConfigurationProfile]{
-		OutputState: i.ToConfigurationProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigurationProfileOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationProfileOutput) ElementType() reflect.Type {
@@ -139,12 +132,6 @@ func (o ConfigurationProfileOutput) ToConfigurationProfileOutput() Configuration
 
 func (o ConfigurationProfileOutput) ToConfigurationProfileOutputWithContext(ctx context.Context) ConfigurationProfileOutput {
 	return o
-}
-
-func (o ConfigurationProfileOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationProfile] {
-	return pulumix.Output[*ConfigurationProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The identity block returned by ARM resource that supports managed identity.

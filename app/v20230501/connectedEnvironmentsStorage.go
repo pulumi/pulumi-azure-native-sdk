@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Storage resource for connectedEnvironment.
@@ -142,12 +141,6 @@ func (i *ConnectedEnvironmentsStorage) ToConnectedEnvironmentsStorageOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectedEnvironmentsStorageOutput)
 }
 
-func (i *ConnectedEnvironmentsStorage) ToOutput(ctx context.Context) pulumix.Output[*ConnectedEnvironmentsStorage] {
-	return pulumix.Output[*ConnectedEnvironmentsStorage]{
-		OutputState: i.ToConnectedEnvironmentsStorageOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectedEnvironmentsStorageOutput struct{ *pulumi.OutputState }
 
 func (ConnectedEnvironmentsStorageOutput) ElementType() reflect.Type {
@@ -160,12 +153,6 @@ func (o ConnectedEnvironmentsStorageOutput) ToConnectedEnvironmentsStorageOutput
 
 func (o ConnectedEnvironmentsStorageOutput) ToConnectedEnvironmentsStorageOutputWithContext(ctx context.Context) ConnectedEnvironmentsStorageOutput {
 	return o
-}
-
-func (o ConnectedEnvironmentsStorageOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectedEnvironmentsStorage] {
-	return pulumix.Output[*ConnectedEnvironmentsStorage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The policy set definition.
@@ -195,12 +194,6 @@ func (i *PolicySetDefinitionAtManagementGroup) ToPolicySetDefinitionAtManagement
 	return pulumi.ToOutputWithContext(ctx, i).(PolicySetDefinitionAtManagementGroupOutput)
 }
 
-func (i *PolicySetDefinitionAtManagementGroup) ToOutput(ctx context.Context) pulumix.Output[*PolicySetDefinitionAtManagementGroup] {
-	return pulumix.Output[*PolicySetDefinitionAtManagementGroup]{
-		OutputState: i.ToPolicySetDefinitionAtManagementGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PolicySetDefinitionAtManagementGroupOutput struct{ *pulumi.OutputState }
 
 func (PolicySetDefinitionAtManagementGroupOutput) ElementType() reflect.Type {
@@ -213,12 +206,6 @@ func (o PolicySetDefinitionAtManagementGroupOutput) ToPolicySetDefinitionAtManag
 
 func (o PolicySetDefinitionAtManagementGroupOutput) ToPolicySetDefinitionAtManagementGroupOutputWithContext(ctx context.Context) PolicySetDefinitionAtManagementGroupOutput {
 	return o
-}
-
-func (o PolicySetDefinitionAtManagementGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicySetDefinitionAtManagementGroup] {
-	return pulumix.Output[*PolicySetDefinitionAtManagementGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The policy set definition description.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i DFPInstanceAdministratorsArgs) ToDFPInstanceAdministratorsOutput() DFPIn
 
 func (i DFPInstanceAdministratorsArgs) ToDFPInstanceAdministratorsOutputWithContext(ctx context.Context) DFPInstanceAdministratorsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DFPInstanceAdministratorsOutput)
-}
-
-func (i DFPInstanceAdministratorsArgs) ToOutput(ctx context.Context) pulumix.Output[DFPInstanceAdministrators] {
-	return pulumix.Output[DFPInstanceAdministrators]{
-		OutputState: i.ToDFPInstanceAdministratorsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i DFPInstanceAdministratorsArgs) ToDFPInstanceAdministratorsPtrOutput() DFPInstanceAdministratorsPtrOutput {
@@ -96,12 +89,6 @@ func (i *dfpinstanceAdministratorsPtrType) ToDFPInstanceAdministratorsPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(DFPInstanceAdministratorsPtrOutput)
 }
 
-func (i *dfpinstanceAdministratorsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DFPInstanceAdministrators] {
-	return pulumix.Output[*DFPInstanceAdministrators]{
-		OutputState: i.ToDFPInstanceAdministratorsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An array of administrator user identities
 type DFPInstanceAdministratorsOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o DFPInstanceAdministratorsOutput) ToDFPInstanceAdministratorsPtrOutputWit
 	}).(DFPInstanceAdministratorsPtrOutput)
 }
 
-func (o DFPInstanceAdministratorsOutput) ToOutput(ctx context.Context) pulumix.Output[DFPInstanceAdministrators] {
-	return pulumix.Output[DFPInstanceAdministrators]{
-		OutputState: o.OutputState,
-	}
-}
-
 // An array of administrator user identities.
 func (o DFPInstanceAdministratorsOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DFPInstanceAdministrators) []string { return v.Members }).(pulumi.StringArrayOutput)
@@ -150,12 +131,6 @@ func (o DFPInstanceAdministratorsPtrOutput) ToDFPInstanceAdministratorsPtrOutput
 
 func (o DFPInstanceAdministratorsPtrOutput) ToDFPInstanceAdministratorsPtrOutputWithContext(ctx context.Context) DFPInstanceAdministratorsPtrOutput {
 	return o
-}
-
-func (o DFPInstanceAdministratorsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DFPInstanceAdministrators] {
-	return pulumix.Output[*DFPInstanceAdministrators]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DFPInstanceAdministratorsPtrOutput) Elem() DFPInstanceAdministratorsOutput {
@@ -199,12 +174,6 @@ func (o DFPInstanceAdministratorsResponseOutput) ToDFPInstanceAdministratorsResp
 	return o
 }
 
-func (o DFPInstanceAdministratorsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DFPInstanceAdministratorsResponse] {
-	return pulumix.Output[DFPInstanceAdministratorsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // An array of administrator user identities.
 func (o DFPInstanceAdministratorsResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DFPInstanceAdministratorsResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
@@ -222,12 +191,6 @@ func (o DFPInstanceAdministratorsResponsePtrOutput) ToDFPInstanceAdministratorsR
 
 func (o DFPInstanceAdministratorsResponsePtrOutput) ToDFPInstanceAdministratorsResponsePtrOutputWithContext(ctx context.Context) DFPInstanceAdministratorsResponsePtrOutput {
 	return o
-}
-
-func (o DFPInstanceAdministratorsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DFPInstanceAdministratorsResponse] {
-	return pulumix.Output[*DFPInstanceAdministratorsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DFPInstanceAdministratorsResponsePtrOutput) Elem() DFPInstanceAdministratorsResponseOutput {
@@ -279,12 +242,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

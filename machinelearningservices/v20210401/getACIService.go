@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Service by name.
@@ -97,12 +96,6 @@ func (o LookupACIServiceResultOutput) ToLookupACIServiceResultOutput() LookupACI
 
 func (o LookupACIServiceResultOutput) ToLookupACIServiceResultOutputWithContext(ctx context.Context) LookupACIServiceResultOutput {
 	return o
-}
-
-func (o LookupACIServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupACIServiceResult] {
-	return pulumix.Output[LookupACIServiceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the resource ID.

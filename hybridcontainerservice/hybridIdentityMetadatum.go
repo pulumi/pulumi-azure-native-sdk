@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Defines the hybridIdentityMetadata.
@@ -144,12 +143,6 @@ func (i *HybridIdentityMetadatum) ToHybridIdentityMetadatumOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(HybridIdentityMetadatumOutput)
 }
 
-func (i *HybridIdentityMetadatum) ToOutput(ctx context.Context) pulumix.Output[*HybridIdentityMetadatum] {
-	return pulumix.Output[*HybridIdentityMetadatum]{
-		OutputState: i.ToHybridIdentityMetadatumOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HybridIdentityMetadatumOutput struct{ *pulumi.OutputState }
 
 func (HybridIdentityMetadatumOutput) ElementType() reflect.Type {
@@ -162,12 +155,6 @@ func (o HybridIdentityMetadatumOutput) ToHybridIdentityMetadatumOutput() HybridI
 
 func (o HybridIdentityMetadatumOutput) ToHybridIdentityMetadatumOutputWithContext(ctx context.Context) HybridIdentityMetadatumOutput {
 	return o
-}
-
-func (o HybridIdentityMetadatumOutput) ToOutput(ctx context.Context) pulumix.Output[*HybridIdentityMetadatum] {
-	return pulumix.Output[*HybridIdentityMetadatum]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The identity of the provisioned cluster.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a ImportCollector
@@ -91,12 +90,6 @@ func (o LookupImportCollectorsOperationResultOutput) ToLookupImportCollectorsOpe
 
 func (o LookupImportCollectorsOperationResultOutput) ToLookupImportCollectorsOperationResultOutputWithContext(ctx context.Context) LookupImportCollectorsOperationResultOutput {
 	return o
-}
-
-func (o LookupImportCollectorsOperationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupImportCollectorsOperationResult] {
-	return pulumix.Output[LookupImportCollectorsOperationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the Timestamp when collector was created.

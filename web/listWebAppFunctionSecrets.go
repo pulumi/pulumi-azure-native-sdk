@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Get function secrets for a function in a web site, or a deployment slot.
@@ -82,12 +81,6 @@ func (o ListWebAppFunctionSecretsResultOutput) ToListWebAppFunctionSecretsResult
 
 func (o ListWebAppFunctionSecretsResultOutput) ToListWebAppFunctionSecretsResultOutputWithContext(ctx context.Context) ListWebAppFunctionSecretsResultOutput {
 	return o
-}
-
-func (o ListWebAppFunctionSecretsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWebAppFunctionSecretsResult] {
-	return pulumix.Output[ListWebAppFunctionSecretsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Secret key.

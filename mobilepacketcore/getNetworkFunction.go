@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a NetworkFunctionResource
@@ -102,12 +101,6 @@ func (o LookupNetworkFunctionResultOutput) ToLookupNetworkFunctionResultOutput()
 
 func (o LookupNetworkFunctionResultOutput) ToLookupNetworkFunctionResultOutputWithContext(ctx context.Context) LookupNetworkFunctionResultOutput {
 	return o
-}
-
-func (o LookupNetworkFunctionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkFunctionResult] {
-	return pulumix.Output[LookupNetworkFunctionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Capacity of the network function in units of 10000.  This represents the session count or the Simultaneously Attached Users (SAU) count as applicable

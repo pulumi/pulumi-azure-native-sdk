@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a DataSetMapping in a shareSubscription
@@ -100,12 +99,6 @@ func (o LookupKustoClusterDataSetMappingResultOutput) ToLookupKustoClusterDataSe
 
 func (o LookupKustoClusterDataSetMappingResultOutput) ToLookupKustoClusterDataSetMappingResultOutputWithContext(ctx context.Context) LookupKustoClusterDataSetMappingResultOutput {
 	return o
-}
-
-func (o LookupKustoClusterDataSetMappingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKustoClusterDataSetMappingResult] {
-	return pulumix.Output[LookupKustoClusterDataSetMappingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the source data set.

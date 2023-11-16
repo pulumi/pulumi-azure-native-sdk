@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about an azure ad administrator.
@@ -93,12 +92,6 @@ func (o LookupAzureADAdministratorResultOutput) ToLookupAzureADAdministratorResu
 
 func (o LookupAzureADAdministratorResultOutput) ToLookupAzureADAdministratorResultOutputWithContext(ctx context.Context) LookupAzureADAdministratorResultOutput {
 	return o
-}
-
-func (o LookupAzureADAdministratorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAzureADAdministratorResult] {
-	return pulumix.Output[LookupAzureADAdministratorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Type of the sever administrator.

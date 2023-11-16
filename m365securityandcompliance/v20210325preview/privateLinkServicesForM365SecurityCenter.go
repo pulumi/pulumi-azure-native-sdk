@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The description of the service.
@@ -152,12 +151,6 @@ func (i *PrivateLinkServicesForM365SecurityCenter) ToPrivateLinkServicesForM365S
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServicesForM365SecurityCenterOutput)
 }
 
-func (i *PrivateLinkServicesForM365SecurityCenter) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServicesForM365SecurityCenter] {
-	return pulumix.Output[*PrivateLinkServicesForM365SecurityCenter]{
-		OutputState: i.ToPrivateLinkServicesForM365SecurityCenterOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateLinkServicesForM365SecurityCenterOutput struct{ *pulumi.OutputState }
 
 func (PrivateLinkServicesForM365SecurityCenterOutput) ElementType() reflect.Type {
@@ -170,12 +163,6 @@ func (o PrivateLinkServicesForM365SecurityCenterOutput) ToPrivateLinkServicesFor
 
 func (o PrivateLinkServicesForM365SecurityCenterOutput) ToPrivateLinkServicesForM365SecurityCenterOutputWithContext(ctx context.Context) PrivateLinkServicesForM365SecurityCenterOutput {
 	return o
-}
-
-func (o PrivateLinkServicesForM365SecurityCenterOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServicesForM365SecurityCenter] {
-	return pulumix.Output[*PrivateLinkServicesForM365SecurityCenter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An etag associated with the resource, used for optimistic concurrency when editing it.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes a time series database connection resource.
@@ -139,12 +138,6 @@ func (i *TimeSeriesDatabaseConnection) ToTimeSeriesDatabaseConnectionOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesDatabaseConnectionOutput)
 }
 
-func (i *TimeSeriesDatabaseConnection) ToOutput(ctx context.Context) pulumix.Output[*TimeSeriesDatabaseConnection] {
-	return pulumix.Output[*TimeSeriesDatabaseConnection]{
-		OutputState: i.ToTimeSeriesDatabaseConnectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TimeSeriesDatabaseConnectionOutput struct{ *pulumi.OutputState }
 
 func (TimeSeriesDatabaseConnectionOutput) ElementType() reflect.Type {
@@ -157,12 +150,6 @@ func (o TimeSeriesDatabaseConnectionOutput) ToTimeSeriesDatabaseConnectionOutput
 
 func (o TimeSeriesDatabaseConnectionOutput) ToTimeSeriesDatabaseConnectionOutputWithContext(ctx context.Context) TimeSeriesDatabaseConnectionOutput {
 	return o
-}
-
-func (o TimeSeriesDatabaseConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*TimeSeriesDatabaseConnection] {
-	return pulumix.Output[*TimeSeriesDatabaseConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Extension resource name.

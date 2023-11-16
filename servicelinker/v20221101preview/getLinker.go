@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns Linker resource for a given name.
@@ -97,12 +96,6 @@ func (o LookupLinkerResultOutput) ToLookupLinkerResultOutput() LookupLinkerResul
 
 func (o LookupLinkerResultOutput) ToLookupLinkerResultOutputWithContext(ctx context.Context) LookupLinkerResultOutput {
 	return o
-}
-
-func (o LookupLinkerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLinkerResult] {
-	return pulumix.Output[LookupLinkerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The authentication type.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Peering Service
@@ -183,12 +182,6 @@ func (i *PeeringService) ToPeeringServiceOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringServiceOutput)
 }
 
-func (i *PeeringService) ToOutput(ctx context.Context) pulumix.Output[*PeeringService] {
-	return pulumix.Output[*PeeringService]{
-		OutputState: i.ToPeeringServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PeeringServiceOutput struct{ *pulumi.OutputState }
 
 func (PeeringServiceOutput) ElementType() reflect.Type {
@@ -201,12 +194,6 @@ func (o PeeringServiceOutput) ToPeeringServiceOutput() PeeringServiceOutput {
 
 func (o PeeringServiceOutput) ToPeeringServiceOutputWithContext(ctx context.Context) PeeringServiceOutput {
 	return o
-}
-
-func (o PeeringServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*PeeringService] {
-	return pulumix.Output[*PeeringService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The location of the resource.

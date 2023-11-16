@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i AllowedAudiencesValidationArgs) ToAllowedAudiencesValidationOutput() All
 
 func (i AllowedAudiencesValidationArgs) ToAllowedAudiencesValidationOutputWithContext(ctx context.Context) AllowedAudiencesValidationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AllowedAudiencesValidationOutput)
-}
-
-func (i AllowedAudiencesValidationArgs) ToOutput(ctx context.Context) pulumix.Output[AllowedAudiencesValidation] {
-	return pulumix.Output[AllowedAudiencesValidation]{
-		OutputState: i.ToAllowedAudiencesValidationOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i AllowedAudiencesValidationArgs) ToAllowedAudiencesValidationPtrOutput() AllowedAudiencesValidationPtrOutput {
@@ -96,12 +89,6 @@ func (i *allowedAudiencesValidationPtrType) ToAllowedAudiencesValidationPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(AllowedAudiencesValidationPtrOutput)
 }
 
-func (i *allowedAudiencesValidationPtrType) ToOutput(ctx context.Context) pulumix.Output[*AllowedAudiencesValidation] {
-	return pulumix.Output[*AllowedAudiencesValidation]{
-		OutputState: i.ToAllowedAudiencesValidationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the Allowed Audiences validation flow.
 type AllowedAudiencesValidationOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o AllowedAudiencesValidationOutput) ToAllowedAudiencesValidationPtrOutputW
 	}).(AllowedAudiencesValidationPtrOutput)
 }
 
-func (o AllowedAudiencesValidationOutput) ToOutput(ctx context.Context) pulumix.Output[AllowedAudiencesValidation] {
-	return pulumix.Output[AllowedAudiencesValidation]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration settings of the allowed list of audiences from which to validate the JWT token.
 func (o AllowedAudiencesValidationOutput) AllowedAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AllowedAudiencesValidation) []string { return v.AllowedAudiences }).(pulumi.StringArrayOutput)
@@ -150,12 +131,6 @@ func (o AllowedAudiencesValidationPtrOutput) ToAllowedAudiencesValidationPtrOutp
 
 func (o AllowedAudiencesValidationPtrOutput) ToAllowedAudiencesValidationPtrOutputWithContext(ctx context.Context) AllowedAudiencesValidationPtrOutput {
 	return o
-}
-
-func (o AllowedAudiencesValidationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AllowedAudiencesValidation] {
-	return pulumix.Output[*AllowedAudiencesValidation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AllowedAudiencesValidationPtrOutput) Elem() AllowedAudiencesValidationOutput {
@@ -199,12 +174,6 @@ func (o AllowedAudiencesValidationResponseOutput) ToAllowedAudiencesValidationRe
 	return o
 }
 
-func (o AllowedAudiencesValidationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AllowedAudiencesValidationResponse] {
-	return pulumix.Output[AllowedAudiencesValidationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration settings of the allowed list of audiences from which to validate the JWT token.
 func (o AllowedAudiencesValidationResponseOutput) AllowedAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AllowedAudiencesValidationResponse) []string { return v.AllowedAudiences }).(pulumi.StringArrayOutput)
@@ -222,12 +191,6 @@ func (o AllowedAudiencesValidationResponsePtrOutput) ToAllowedAudiencesValidatio
 
 func (o AllowedAudiencesValidationResponsePtrOutput) ToAllowedAudiencesValidationResponsePtrOutputWithContext(ctx context.Context) AllowedAudiencesValidationResponsePtrOutput {
 	return o
-}
-
-func (o AllowedAudiencesValidationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AllowedAudiencesValidationResponse] {
-	return pulumix.Output[*AllowedAudiencesValidationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AllowedAudiencesValidationResponsePtrOutput) Elem() AllowedAudiencesValidationResponseOutput {
@@ -289,12 +252,6 @@ func (i AllowedPrincipalsArgs) ToAllowedPrincipalsOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AllowedPrincipalsOutput)
 }
 
-func (i AllowedPrincipalsArgs) ToOutput(ctx context.Context) pulumix.Output[AllowedPrincipals] {
-	return pulumix.Output[AllowedPrincipals]{
-		OutputState: i.ToAllowedPrincipalsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AllowedPrincipalsArgs) ToAllowedPrincipalsPtrOutput() AllowedPrincipalsPtrOutput {
 	return i.ToAllowedPrincipalsPtrOutputWithContext(context.Background())
 }
@@ -336,12 +293,6 @@ func (i *allowedPrincipalsPtrType) ToAllowedPrincipalsPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AllowedPrincipalsPtrOutput)
 }
 
-func (i *allowedPrincipalsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AllowedPrincipals] {
-	return pulumix.Output[*AllowedPrincipals]{
-		OutputState: i.ToAllowedPrincipalsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the Azure Active Directory allowed principals.
 type AllowedPrincipalsOutput struct{ *pulumi.OutputState }
 
@@ -367,12 +318,6 @@ func (o AllowedPrincipalsOutput) ToAllowedPrincipalsPtrOutputWithContext(ctx con
 	}).(AllowedPrincipalsPtrOutput)
 }
 
-func (o AllowedPrincipalsOutput) ToOutput(ctx context.Context) pulumix.Output[AllowedPrincipals] {
-	return pulumix.Output[AllowedPrincipals]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of the allowed groups.
 func (o AllowedPrincipalsOutput) Groups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AllowedPrincipals) []string { return v.Groups }).(pulumi.StringArrayOutput)
@@ -395,12 +340,6 @@ func (o AllowedPrincipalsPtrOutput) ToAllowedPrincipalsPtrOutput() AllowedPrinci
 
 func (o AllowedPrincipalsPtrOutput) ToAllowedPrincipalsPtrOutputWithContext(ctx context.Context) AllowedPrincipalsPtrOutput {
 	return o
-}
-
-func (o AllowedPrincipalsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AllowedPrincipals] {
-	return pulumix.Output[*AllowedPrincipals]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AllowedPrincipalsPtrOutput) Elem() AllowedPrincipalsOutput {
@@ -456,12 +395,6 @@ func (o AllowedPrincipalsResponseOutput) ToAllowedPrincipalsResponseOutputWithCo
 	return o
 }
 
-func (o AllowedPrincipalsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AllowedPrincipalsResponse] {
-	return pulumix.Output[AllowedPrincipalsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of the allowed groups.
 func (o AllowedPrincipalsResponseOutput) Groups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AllowedPrincipalsResponse) []string { return v.Groups }).(pulumi.StringArrayOutput)
@@ -484,12 +417,6 @@ func (o AllowedPrincipalsResponsePtrOutput) ToAllowedPrincipalsResponsePtrOutput
 
 func (o AllowedPrincipalsResponsePtrOutput) ToAllowedPrincipalsResponsePtrOutputWithContext(ctx context.Context) AllowedPrincipalsResponsePtrOutput {
 	return o
-}
-
-func (o AllowedPrincipalsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AllowedPrincipalsResponse] {
-	return pulumix.Output[*AllowedPrincipalsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AllowedPrincipalsResponsePtrOutput) Elem() AllowedPrincipalsResponseOutput {
@@ -561,12 +488,6 @@ func (i AppRegistrationArgs) ToAppRegistrationOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AppRegistrationOutput)
 }
 
-func (i AppRegistrationArgs) ToOutput(ctx context.Context) pulumix.Output[AppRegistration] {
-	return pulumix.Output[AppRegistration]{
-		OutputState: i.ToAppRegistrationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AppRegistrationArgs) ToAppRegistrationPtrOutput() AppRegistrationPtrOutput {
 	return i.ToAppRegistrationPtrOutputWithContext(context.Background())
 }
@@ -608,12 +529,6 @@ func (i *appRegistrationPtrType) ToAppRegistrationPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(AppRegistrationPtrOutput)
 }
 
-func (i *appRegistrationPtrType) ToOutput(ctx context.Context) pulumix.Output[*AppRegistration] {
-	return pulumix.Output[*AppRegistration]{
-		OutputState: i.ToAppRegistrationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the app registration for providers that have app ids and app secrets
 type AppRegistrationOutput struct{ *pulumi.OutputState }
 
@@ -639,12 +554,6 @@ func (o AppRegistrationOutput) ToAppRegistrationPtrOutputWithContext(ctx context
 	}).(AppRegistrationPtrOutput)
 }
 
-func (o AppRegistrationOutput) ToOutput(ctx context.Context) pulumix.Output[AppRegistration] {
-	return pulumix.Output[AppRegistration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The App ID of the app used for login.
 func (o AppRegistrationOutput) AppId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppRegistration) *string { return v.AppId }).(pulumi.StringPtrOutput)
@@ -667,12 +576,6 @@ func (o AppRegistrationPtrOutput) ToAppRegistrationPtrOutput() AppRegistrationPt
 
 func (o AppRegistrationPtrOutput) ToAppRegistrationPtrOutputWithContext(ctx context.Context) AppRegistrationPtrOutput {
 	return o
-}
-
-func (o AppRegistrationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppRegistration] {
-	return pulumix.Output[*AppRegistration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppRegistrationPtrOutput) Elem() AppRegistrationOutput {
@@ -728,12 +631,6 @@ func (o AppRegistrationResponseOutput) ToAppRegistrationResponseOutputWithContex
 	return o
 }
 
-func (o AppRegistrationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AppRegistrationResponse] {
-	return pulumix.Output[AppRegistrationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The App ID of the app used for login.
 func (o AppRegistrationResponseOutput) AppId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppRegistrationResponse) *string { return v.AppId }).(pulumi.StringPtrOutput)
@@ -756,12 +653,6 @@ func (o AppRegistrationResponsePtrOutput) ToAppRegistrationResponsePtrOutput() A
 
 func (o AppRegistrationResponsePtrOutput) ToAppRegistrationResponsePtrOutputWithContext(ctx context.Context) AppRegistrationResponsePtrOutput {
 	return o
-}
-
-func (o AppRegistrationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppRegistrationResponse] {
-	return pulumix.Output[*AppRegistrationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppRegistrationResponsePtrOutput) Elem() AppRegistrationResponseOutput {
@@ -837,12 +728,6 @@ func (i AppleArgs) ToAppleOutputWithContext(ctx context.Context) AppleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppleOutput)
 }
 
-func (i AppleArgs) ToOutput(ctx context.Context) pulumix.Output[Apple] {
-	return pulumix.Output[Apple]{
-		OutputState: i.ToAppleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AppleArgs) ToApplePtrOutput() ApplePtrOutput {
 	return i.ToApplePtrOutputWithContext(context.Background())
 }
@@ -884,12 +769,6 @@ func (i *applePtrType) ToApplePtrOutputWithContext(ctx context.Context) ApplePtr
 	return pulumi.ToOutputWithContext(ctx, i).(ApplePtrOutput)
 }
 
-func (i *applePtrType) ToOutput(ctx context.Context) pulumix.Output[*Apple] {
-	return pulumix.Output[*Apple]{
-		OutputState: i.ToApplePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the Apple provider.
 type AppleOutput struct{ *pulumi.OutputState }
 
@@ -913,12 +792,6 @@ func (o AppleOutput) ToApplePtrOutputWithContext(ctx context.Context) ApplePtrOu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Apple) *Apple {
 		return &v
 	}).(ApplePtrOutput)
-}
-
-func (o AppleOutput) ToOutput(ctx context.Context) pulumix.Output[Apple] {
-	return pulumix.Output[Apple]{
-		OutputState: o.OutputState,
-	}
 }
 
 // <code>false</code> if the Apple provider should not be enabled despite the set registration; otherwise, <code>true</code>.
@@ -948,12 +821,6 @@ func (o ApplePtrOutput) ToApplePtrOutput() ApplePtrOutput {
 
 func (o ApplePtrOutput) ToApplePtrOutputWithContext(ctx context.Context) ApplePtrOutput {
 	return o
-}
-
-func (o ApplePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Apple] {
-	return pulumix.Output[*Apple]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplePtrOutput) Elem() AppleOutput {
@@ -1035,12 +902,6 @@ func (i AppleRegistrationArgs) ToAppleRegistrationOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AppleRegistrationOutput)
 }
 
-func (i AppleRegistrationArgs) ToOutput(ctx context.Context) pulumix.Output[AppleRegistration] {
-	return pulumix.Output[AppleRegistration]{
-		OutputState: i.ToAppleRegistrationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AppleRegistrationArgs) ToAppleRegistrationPtrOutput() AppleRegistrationPtrOutput {
 	return i.ToAppleRegistrationPtrOutputWithContext(context.Background())
 }
@@ -1082,12 +943,6 @@ func (i *appleRegistrationPtrType) ToAppleRegistrationPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AppleRegistrationPtrOutput)
 }
 
-func (i *appleRegistrationPtrType) ToOutput(ctx context.Context) pulumix.Output[*AppleRegistration] {
-	return pulumix.Output[*AppleRegistration]{
-		OutputState: i.ToAppleRegistrationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the registration for the Apple provider
 type AppleRegistrationOutput struct{ *pulumi.OutputState }
 
@@ -1113,12 +968,6 @@ func (o AppleRegistrationOutput) ToAppleRegistrationPtrOutputWithContext(ctx con
 	}).(AppleRegistrationPtrOutput)
 }
 
-func (o AppleRegistrationOutput) ToOutput(ctx context.Context) pulumix.Output[AppleRegistration] {
-	return pulumix.Output[AppleRegistration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Client ID of the app used for login.
 func (o AppleRegistrationOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppleRegistration) *string { return v.ClientId }).(pulumi.StringPtrOutput)
@@ -1141,12 +990,6 @@ func (o AppleRegistrationPtrOutput) ToAppleRegistrationPtrOutput() AppleRegistra
 
 func (o AppleRegistrationPtrOutput) ToAppleRegistrationPtrOutputWithContext(ctx context.Context) AppleRegistrationPtrOutput {
 	return o
-}
-
-func (o AppleRegistrationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppleRegistration] {
-	return pulumix.Output[*AppleRegistration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppleRegistrationPtrOutput) Elem() AppleRegistrationOutput {
@@ -1202,12 +1045,6 @@ func (o AppleRegistrationResponseOutput) ToAppleRegistrationResponseOutputWithCo
 	return o
 }
 
-func (o AppleRegistrationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AppleRegistrationResponse] {
-	return pulumix.Output[AppleRegistrationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Client ID of the app used for login.
 func (o AppleRegistrationResponseOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppleRegistrationResponse) *string { return v.ClientId }).(pulumi.StringPtrOutput)
@@ -1230,12 +1067,6 @@ func (o AppleRegistrationResponsePtrOutput) ToAppleRegistrationResponsePtrOutput
 
 func (o AppleRegistrationResponsePtrOutput) ToAppleRegistrationResponsePtrOutputWithContext(ctx context.Context) AppleRegistrationResponsePtrOutput {
 	return o
-}
-
-func (o AppleRegistrationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppleRegistrationResponse] {
-	return pulumix.Output[*AppleRegistrationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppleRegistrationResponsePtrOutput) Elem() AppleRegistrationResponseOutput {
@@ -1293,12 +1124,6 @@ func (o AppleResponseOutput) ToAppleResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o AppleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AppleResponse] {
-	return pulumix.Output[AppleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // <code>false</code> if the Apple provider should not be enabled despite the set registration; otherwise, <code>true</code>.
 func (o AppleResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppleResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -1326,12 +1151,6 @@ func (o AppleResponsePtrOutput) ToAppleResponsePtrOutput() AppleResponsePtrOutpu
 
 func (o AppleResponsePtrOutput) ToAppleResponsePtrOutputWithContext(ctx context.Context) AppleResponsePtrOutput {
 	return o
-}
-
-func (o AppleResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppleResponse] {
-	return pulumix.Output[*AppleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppleResponsePtrOutput) Elem() AppleResponseOutput {
@@ -1394,12 +1213,6 @@ func (o ArmIdWrapperResponseOutput) ToArmIdWrapperResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o ArmIdWrapperResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ArmIdWrapperResponse] {
-	return pulumix.Output[ArmIdWrapperResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ArmIdWrapperResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ArmIdWrapperResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1416,12 +1229,6 @@ func (o ArmIdWrapperResponsePtrOutput) ToArmIdWrapperResponsePtrOutput() ArmIdWr
 
 func (o ArmIdWrapperResponsePtrOutput) ToArmIdWrapperResponsePtrOutputWithContext(ctx context.Context) ArmIdWrapperResponsePtrOutput {
 	return o
-}
-
-func (o ArmIdWrapperResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ArmIdWrapperResponse] {
-	return pulumix.Output[*ArmIdWrapperResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ArmIdWrapperResponsePtrOutput) Elem() ArmIdWrapperResponseOutput {
@@ -1472,12 +1279,6 @@ func (o ArmPlanResponseOutput) ToArmPlanResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o ArmPlanResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ArmPlanResponse] {
-	return pulumix.Output[ArmPlanResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name.
 func (o ArmPlanResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ArmPlanResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1515,12 +1316,6 @@ func (o ArmPlanResponsePtrOutput) ToArmPlanResponsePtrOutput() ArmPlanResponsePt
 
 func (o ArmPlanResponsePtrOutput) ToArmPlanResponsePtrOutputWithContext(ctx context.Context) ArmPlanResponsePtrOutput {
 	return o
-}
-
-func (o ArmPlanResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ArmPlanResponse] {
-	return pulumix.Output[*ArmPlanResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ArmPlanResponsePtrOutput) Elem() ArmPlanResponseOutput {
@@ -1630,12 +1425,6 @@ func (i AuthPlatformArgs) ToAuthPlatformOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AuthPlatformOutput)
 }
 
-func (i AuthPlatformArgs) ToOutput(ctx context.Context) pulumix.Output[AuthPlatform] {
-	return pulumix.Output[AuthPlatform]{
-		OutputState: i.ToAuthPlatformOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AuthPlatformArgs) ToAuthPlatformPtrOutput() AuthPlatformPtrOutput {
 	return i.ToAuthPlatformPtrOutputWithContext(context.Background())
 }
@@ -1677,12 +1466,6 @@ func (i *authPlatformPtrType) ToAuthPlatformPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AuthPlatformPtrOutput)
 }
 
-func (i *authPlatformPtrType) ToOutput(ctx context.Context) pulumix.Output[*AuthPlatform] {
-	return pulumix.Output[*AuthPlatform]{
-		OutputState: i.ToAuthPlatformPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the platform of App Service Authentication/Authorization.
 type AuthPlatformOutput struct{ *pulumi.OutputState }
 
@@ -1706,12 +1489,6 @@ func (o AuthPlatformOutput) ToAuthPlatformPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthPlatform) *AuthPlatform {
 		return &v
 	}).(AuthPlatformPtrOutput)
-}
-
-func (o AuthPlatformOutput) ToOutput(ctx context.Context) pulumix.Output[AuthPlatform] {
-	return pulumix.Output[AuthPlatform]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The path of the config file containing auth settings if they come from a file.
@@ -1743,12 +1520,6 @@ func (o AuthPlatformPtrOutput) ToAuthPlatformPtrOutput() AuthPlatformPtrOutput {
 
 func (o AuthPlatformPtrOutput) ToAuthPlatformPtrOutputWithContext(ctx context.Context) AuthPlatformPtrOutput {
 	return o
-}
-
-func (o AuthPlatformPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthPlatform] {
-	return pulumix.Output[*AuthPlatform]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthPlatformPtrOutput) Elem() AuthPlatformOutput {
@@ -1820,12 +1591,6 @@ func (o AuthPlatformResponseOutput) ToAuthPlatformResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o AuthPlatformResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuthPlatformResponse] {
-	return pulumix.Output[AuthPlatformResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The path of the config file containing auth settings if they come from a file.
 // If the path is relative, base will the site's root directory.
 func (o AuthPlatformResponseOutput) ConfigFilePath() pulumi.StringPtrOutput {
@@ -1855,12 +1620,6 @@ func (o AuthPlatformResponsePtrOutput) ToAuthPlatformResponsePtrOutput() AuthPla
 
 func (o AuthPlatformResponsePtrOutput) ToAuthPlatformResponsePtrOutputWithContext(ctx context.Context) AuthPlatformResponsePtrOutput {
 	return o
-}
-
-func (o AuthPlatformResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthPlatformResponse] {
-	return pulumix.Output[*AuthPlatformResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthPlatformResponsePtrOutput) Elem() AuthPlatformResponseOutput {
@@ -1960,12 +1719,6 @@ func (i AzureActiveDirectoryArgs) ToAzureActiveDirectoryOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AzureActiveDirectoryOutput)
 }
 
-func (i AzureActiveDirectoryArgs) ToOutput(ctx context.Context) pulumix.Output[AzureActiveDirectory] {
-	return pulumix.Output[AzureActiveDirectory]{
-		OutputState: i.ToAzureActiveDirectoryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AzureActiveDirectoryArgs) ToAzureActiveDirectoryPtrOutput() AzureActiveDirectoryPtrOutput {
 	return i.ToAzureActiveDirectoryPtrOutputWithContext(context.Background())
 }
@@ -2007,12 +1760,6 @@ func (i *azureActiveDirectoryPtrType) ToAzureActiveDirectoryPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(AzureActiveDirectoryPtrOutput)
 }
 
-func (i *azureActiveDirectoryPtrType) ToOutput(ctx context.Context) pulumix.Output[*AzureActiveDirectory] {
-	return pulumix.Output[*AzureActiveDirectory]{
-		OutputState: i.ToAzureActiveDirectoryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the Azure Active directory provider.
 type AzureActiveDirectoryOutput struct{ *pulumi.OutputState }
 
@@ -2036,12 +1783,6 @@ func (o AzureActiveDirectoryOutput) ToAzureActiveDirectoryPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureActiveDirectory) *AzureActiveDirectory {
 		return &v
 	}).(AzureActiveDirectoryPtrOutput)
-}
-
-func (o AzureActiveDirectoryOutput) ToOutput(ctx context.Context) pulumix.Output[AzureActiveDirectory] {
-	return pulumix.Output[AzureActiveDirectory]{
-		OutputState: o.OutputState,
-	}
 }
 
 // <code>false</code> if the Azure Active Directory provider should not be enabled despite the set registration; otherwise, <code>true</code>.
@@ -2083,12 +1824,6 @@ func (o AzureActiveDirectoryPtrOutput) ToAzureActiveDirectoryPtrOutput() AzureAc
 
 func (o AzureActiveDirectoryPtrOutput) ToAzureActiveDirectoryPtrOutputWithContext(ctx context.Context) AzureActiveDirectoryPtrOutput {
 	return o
-}
-
-func (o AzureActiveDirectoryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureActiveDirectory] {
-	return pulumix.Output[*AzureActiveDirectory]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureActiveDirectoryPtrOutput) Elem() AzureActiveDirectoryOutput {
@@ -2194,12 +1929,6 @@ func (i AzureActiveDirectoryLoginArgs) ToAzureActiveDirectoryLoginOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AzureActiveDirectoryLoginOutput)
 }
 
-func (i AzureActiveDirectoryLoginArgs) ToOutput(ctx context.Context) pulumix.Output[AzureActiveDirectoryLogin] {
-	return pulumix.Output[AzureActiveDirectoryLogin]{
-		OutputState: i.ToAzureActiveDirectoryLoginOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AzureActiveDirectoryLoginArgs) ToAzureActiveDirectoryLoginPtrOutput() AzureActiveDirectoryLoginPtrOutput {
 	return i.ToAzureActiveDirectoryLoginPtrOutputWithContext(context.Background())
 }
@@ -2241,12 +1970,6 @@ func (i *azureActiveDirectoryLoginPtrType) ToAzureActiveDirectoryLoginPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(AzureActiveDirectoryLoginPtrOutput)
 }
 
-func (i *azureActiveDirectoryLoginPtrType) ToOutput(ctx context.Context) pulumix.Output[*AzureActiveDirectoryLogin] {
-	return pulumix.Output[*AzureActiveDirectoryLogin]{
-		OutputState: i.ToAzureActiveDirectoryLoginPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the Azure Active Directory login flow.
 type AzureActiveDirectoryLoginOutput struct{ *pulumi.OutputState }
 
@@ -2272,12 +1995,6 @@ func (o AzureActiveDirectoryLoginOutput) ToAzureActiveDirectoryLoginPtrOutputWit
 	}).(AzureActiveDirectoryLoginPtrOutput)
 }
 
-func (o AzureActiveDirectoryLoginOutput) ToOutput(ctx context.Context) pulumix.Output[AzureActiveDirectoryLogin] {
-	return pulumix.Output[AzureActiveDirectoryLogin]{
-		OutputState: o.OutputState,
-	}
-}
-
 // <code>true</code> if the www-authenticate provider should be omitted from the request; otherwise, <code>false</code>.
 func (o AzureActiveDirectoryLoginOutput) DisableWWWAuthenticate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AzureActiveDirectoryLogin) *bool { return v.DisableWWWAuthenticate }).(pulumi.BoolPtrOutput)
@@ -2301,12 +2018,6 @@ func (o AzureActiveDirectoryLoginPtrOutput) ToAzureActiveDirectoryLoginPtrOutput
 
 func (o AzureActiveDirectoryLoginPtrOutput) ToAzureActiveDirectoryLoginPtrOutputWithContext(ctx context.Context) AzureActiveDirectoryLoginPtrOutput {
 	return o
-}
-
-func (o AzureActiveDirectoryLoginPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureActiveDirectoryLogin] {
-	return pulumix.Output[*AzureActiveDirectoryLogin]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureActiveDirectoryLoginPtrOutput) Elem() AzureActiveDirectoryLoginOutput {
@@ -2364,12 +2075,6 @@ func (o AzureActiveDirectoryLoginResponseOutput) ToAzureActiveDirectoryLoginResp
 	return o
 }
 
-func (o AzureActiveDirectoryLoginResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureActiveDirectoryLoginResponse] {
-	return pulumix.Output[AzureActiveDirectoryLoginResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // <code>true</code> if the www-authenticate provider should be omitted from the request; otherwise, <code>false</code>.
 func (o AzureActiveDirectoryLoginResponseOutput) DisableWWWAuthenticate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AzureActiveDirectoryLoginResponse) *bool { return v.DisableWWWAuthenticate }).(pulumi.BoolPtrOutput)
@@ -2393,12 +2098,6 @@ func (o AzureActiveDirectoryLoginResponsePtrOutput) ToAzureActiveDirectoryLoginR
 
 func (o AzureActiveDirectoryLoginResponsePtrOutput) ToAzureActiveDirectoryLoginResponsePtrOutputWithContext(ctx context.Context) AzureActiveDirectoryLoginResponsePtrOutput {
 	return o
-}
-
-func (o AzureActiveDirectoryLoginResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureActiveDirectoryLoginResponse] {
-	return pulumix.Output[*AzureActiveDirectoryLoginResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureActiveDirectoryLoginResponsePtrOutput) Elem() AzureActiveDirectoryLoginResponseOutput {
@@ -2505,12 +2204,6 @@ func (i AzureActiveDirectoryRegistrationArgs) ToAzureActiveDirectoryRegistration
 	return pulumi.ToOutputWithContext(ctx, i).(AzureActiveDirectoryRegistrationOutput)
 }
 
-func (i AzureActiveDirectoryRegistrationArgs) ToOutput(ctx context.Context) pulumix.Output[AzureActiveDirectoryRegistration] {
-	return pulumix.Output[AzureActiveDirectoryRegistration]{
-		OutputState: i.ToAzureActiveDirectoryRegistrationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AzureActiveDirectoryRegistrationArgs) ToAzureActiveDirectoryRegistrationPtrOutput() AzureActiveDirectoryRegistrationPtrOutput {
 	return i.ToAzureActiveDirectoryRegistrationPtrOutputWithContext(context.Background())
 }
@@ -2552,12 +2245,6 @@ func (i *azureActiveDirectoryRegistrationPtrType) ToAzureActiveDirectoryRegistra
 	return pulumi.ToOutputWithContext(ctx, i).(AzureActiveDirectoryRegistrationPtrOutput)
 }
 
-func (i *azureActiveDirectoryRegistrationPtrType) ToOutput(ctx context.Context) pulumix.Output[*AzureActiveDirectoryRegistration] {
-	return pulumix.Output[*AzureActiveDirectoryRegistration]{
-		OutputState: i.ToAzureActiveDirectoryRegistrationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the Azure Active Directory app registration.
 type AzureActiveDirectoryRegistrationOutput struct{ *pulumi.OutputState }
 
@@ -2581,12 +2268,6 @@ func (o AzureActiveDirectoryRegistrationOutput) ToAzureActiveDirectoryRegistrati
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureActiveDirectoryRegistration) *AzureActiveDirectoryRegistration {
 		return &v
 	}).(AzureActiveDirectoryRegistrationPtrOutput)
-}
-
-func (o AzureActiveDirectoryRegistrationOutput) ToOutput(ctx context.Context) pulumix.Output[AzureActiveDirectoryRegistration] {
-	return pulumix.Output[AzureActiveDirectoryRegistration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Client ID of this relying party application, known as the client_id.
@@ -2642,12 +2323,6 @@ func (o AzureActiveDirectoryRegistrationPtrOutput) ToAzureActiveDirectoryRegistr
 
 func (o AzureActiveDirectoryRegistrationPtrOutput) ToAzureActiveDirectoryRegistrationPtrOutputWithContext(ctx context.Context) AzureActiveDirectoryRegistrationPtrOutput {
 	return o
-}
-
-func (o AzureActiveDirectoryRegistrationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureActiveDirectoryRegistration] {
-	return pulumix.Output[*AzureActiveDirectoryRegistration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureActiveDirectoryRegistrationPtrOutput) Elem() AzureActiveDirectoryRegistrationOutput {
@@ -2769,12 +2444,6 @@ func (o AzureActiveDirectoryRegistrationResponseOutput) ToAzureActiveDirectoryRe
 	return o
 }
 
-func (o AzureActiveDirectoryRegistrationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureActiveDirectoryRegistrationResponse] {
-	return pulumix.Output[AzureActiveDirectoryRegistrationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Client ID of this relying party application, known as the client_id.
 // This setting is required for enabling OpenID Connection authentication with Azure Active Directory or
 // other 3rd party OpenID Connect providers.
@@ -2828,12 +2497,6 @@ func (o AzureActiveDirectoryRegistrationResponsePtrOutput) ToAzureActiveDirector
 
 func (o AzureActiveDirectoryRegistrationResponsePtrOutput) ToAzureActiveDirectoryRegistrationResponsePtrOutputWithContext(ctx context.Context) AzureActiveDirectoryRegistrationResponsePtrOutput {
 	return o
-}
-
-func (o AzureActiveDirectoryRegistrationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureActiveDirectoryRegistrationResponse] {
-	return pulumix.Output[*AzureActiveDirectoryRegistrationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureActiveDirectoryRegistrationResponsePtrOutput) Elem() AzureActiveDirectoryRegistrationResponseOutput {
@@ -2946,12 +2609,6 @@ func (o AzureActiveDirectoryResponseOutput) ToAzureActiveDirectoryResponseOutput
 	return o
 }
 
-func (o AzureActiveDirectoryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureActiveDirectoryResponse] {
-	return pulumix.Output[AzureActiveDirectoryResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // <code>false</code> if the Azure Active Directory provider should not be enabled despite the set registration; otherwise, <code>true</code>.
 func (o AzureActiveDirectoryResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AzureActiveDirectoryResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -2991,12 +2648,6 @@ func (o AzureActiveDirectoryResponsePtrOutput) ToAzureActiveDirectoryResponsePtr
 
 func (o AzureActiveDirectoryResponsePtrOutput) ToAzureActiveDirectoryResponsePtrOutputWithContext(ctx context.Context) AzureActiveDirectoryResponsePtrOutput {
 	return o
-}
-
-func (o AzureActiveDirectoryResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureActiveDirectoryResponse] {
-	return pulumix.Output[*AzureActiveDirectoryResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureActiveDirectoryResponsePtrOutput) Elem() AzureActiveDirectoryResponseOutput {
@@ -3104,12 +2755,6 @@ func (i AzureActiveDirectoryValidationArgs) ToAzureActiveDirectoryValidationOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AzureActiveDirectoryValidationOutput)
 }
 
-func (i AzureActiveDirectoryValidationArgs) ToOutput(ctx context.Context) pulumix.Output[AzureActiveDirectoryValidation] {
-	return pulumix.Output[AzureActiveDirectoryValidation]{
-		OutputState: i.ToAzureActiveDirectoryValidationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AzureActiveDirectoryValidationArgs) ToAzureActiveDirectoryValidationPtrOutput() AzureActiveDirectoryValidationPtrOutput {
 	return i.ToAzureActiveDirectoryValidationPtrOutputWithContext(context.Background())
 }
@@ -3151,12 +2796,6 @@ func (i *azureActiveDirectoryValidationPtrType) ToAzureActiveDirectoryValidation
 	return pulumi.ToOutputWithContext(ctx, i).(AzureActiveDirectoryValidationPtrOutput)
 }
 
-func (i *azureActiveDirectoryValidationPtrType) ToOutput(ctx context.Context) pulumix.Output[*AzureActiveDirectoryValidation] {
-	return pulumix.Output[*AzureActiveDirectoryValidation]{
-		OutputState: i.ToAzureActiveDirectoryValidationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the Azure Active Directory token validation flow.
 type AzureActiveDirectoryValidationOutput struct{ *pulumi.OutputState }
 
@@ -3180,12 +2819,6 @@ func (o AzureActiveDirectoryValidationOutput) ToAzureActiveDirectoryValidationPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureActiveDirectoryValidation) *AzureActiveDirectoryValidation {
 		return &v
 	}).(AzureActiveDirectoryValidationPtrOutput)
-}
-
-func (o AzureActiveDirectoryValidationOutput) ToOutput(ctx context.Context) pulumix.Output[AzureActiveDirectoryValidation] {
-	return pulumix.Output[AzureActiveDirectoryValidation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of audiences that can make successful authentication/authorization requests.
@@ -3217,12 +2850,6 @@ func (o AzureActiveDirectoryValidationPtrOutput) ToAzureActiveDirectoryValidatio
 
 func (o AzureActiveDirectoryValidationPtrOutput) ToAzureActiveDirectoryValidationPtrOutputWithContext(ctx context.Context) AzureActiveDirectoryValidationPtrOutput {
 	return o
-}
-
-func (o AzureActiveDirectoryValidationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureActiveDirectoryValidation] {
-	return pulumix.Output[*AzureActiveDirectoryValidation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureActiveDirectoryValidationPtrOutput) Elem() AzureActiveDirectoryValidationOutput {
@@ -3290,12 +2917,6 @@ func (o AzureActiveDirectoryValidationResponseOutput) ToAzureActiveDirectoryVali
 	return o
 }
 
-func (o AzureActiveDirectoryValidationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureActiveDirectoryValidationResponse] {
-	return pulumix.Output[AzureActiveDirectoryValidationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of audiences that can make successful authentication/authorization requests.
 func (o AzureActiveDirectoryValidationResponseOutput) AllowedAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AzureActiveDirectoryValidationResponse) []string { return v.AllowedAudiences }).(pulumi.StringArrayOutput)
@@ -3325,12 +2946,6 @@ func (o AzureActiveDirectoryValidationResponsePtrOutput) ToAzureActiveDirectoryV
 
 func (o AzureActiveDirectoryValidationResponsePtrOutput) ToAzureActiveDirectoryValidationResponsePtrOutputWithContext(ctx context.Context) AzureActiveDirectoryValidationResponsePtrOutput {
 	return o
-}
-
-func (o AzureActiveDirectoryValidationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureActiveDirectoryValidationResponse] {
-	return pulumix.Output[*AzureActiveDirectoryValidationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureActiveDirectoryValidationResponsePtrOutput) Elem() AzureActiveDirectoryValidationResponseOutput {
@@ -3412,12 +3027,6 @@ func (i AzureStaticWebAppsArgs) ToAzureStaticWebAppsOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AzureStaticWebAppsOutput)
 }
 
-func (i AzureStaticWebAppsArgs) ToOutput(ctx context.Context) pulumix.Output[AzureStaticWebApps] {
-	return pulumix.Output[AzureStaticWebApps]{
-		OutputState: i.ToAzureStaticWebAppsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AzureStaticWebAppsArgs) ToAzureStaticWebAppsPtrOutput() AzureStaticWebAppsPtrOutput {
 	return i.ToAzureStaticWebAppsPtrOutputWithContext(context.Background())
 }
@@ -3459,12 +3068,6 @@ func (i *azureStaticWebAppsPtrType) ToAzureStaticWebAppsPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(AzureStaticWebAppsPtrOutput)
 }
 
-func (i *azureStaticWebAppsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AzureStaticWebApps] {
-	return pulumix.Output[*AzureStaticWebApps]{
-		OutputState: i.ToAzureStaticWebAppsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the Azure Static Web Apps provider.
 type AzureStaticWebAppsOutput struct{ *pulumi.OutputState }
 
@@ -3490,12 +3093,6 @@ func (o AzureStaticWebAppsOutput) ToAzureStaticWebAppsPtrOutputWithContext(ctx c
 	}).(AzureStaticWebAppsPtrOutput)
 }
 
-func (o AzureStaticWebAppsOutput) ToOutput(ctx context.Context) pulumix.Output[AzureStaticWebApps] {
-	return pulumix.Output[AzureStaticWebApps]{
-		OutputState: o.OutputState,
-	}
-}
-
 // <code>false</code> if the Azure Static Web Apps provider should not be enabled despite the set registration; otherwise, <code>true</code>.
 func (o AzureStaticWebAppsOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AzureStaticWebApps) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -3518,12 +3115,6 @@ func (o AzureStaticWebAppsPtrOutput) ToAzureStaticWebAppsPtrOutput() AzureStatic
 
 func (o AzureStaticWebAppsPtrOutput) ToAzureStaticWebAppsPtrOutputWithContext(ctx context.Context) AzureStaticWebAppsPtrOutput {
 	return o
-}
-
-func (o AzureStaticWebAppsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureStaticWebApps] {
-	return pulumix.Output[*AzureStaticWebApps]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureStaticWebAppsPtrOutput) Elem() AzureStaticWebAppsOutput {
@@ -3591,12 +3182,6 @@ func (i AzureStaticWebAppsRegistrationArgs) ToAzureStaticWebAppsRegistrationOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AzureStaticWebAppsRegistrationOutput)
 }
 
-func (i AzureStaticWebAppsRegistrationArgs) ToOutput(ctx context.Context) pulumix.Output[AzureStaticWebAppsRegistration] {
-	return pulumix.Output[AzureStaticWebAppsRegistration]{
-		OutputState: i.ToAzureStaticWebAppsRegistrationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AzureStaticWebAppsRegistrationArgs) ToAzureStaticWebAppsRegistrationPtrOutput() AzureStaticWebAppsRegistrationPtrOutput {
 	return i.ToAzureStaticWebAppsRegistrationPtrOutputWithContext(context.Background())
 }
@@ -3638,12 +3223,6 @@ func (i *azureStaticWebAppsRegistrationPtrType) ToAzureStaticWebAppsRegistration
 	return pulumi.ToOutputWithContext(ctx, i).(AzureStaticWebAppsRegistrationPtrOutput)
 }
 
-func (i *azureStaticWebAppsRegistrationPtrType) ToOutput(ctx context.Context) pulumix.Output[*AzureStaticWebAppsRegistration] {
-	return pulumix.Output[*AzureStaticWebAppsRegistration]{
-		OutputState: i.ToAzureStaticWebAppsRegistrationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the registration for the Azure Static Web Apps provider
 type AzureStaticWebAppsRegistrationOutput struct{ *pulumi.OutputState }
 
@@ -3669,12 +3248,6 @@ func (o AzureStaticWebAppsRegistrationOutput) ToAzureStaticWebAppsRegistrationPt
 	}).(AzureStaticWebAppsRegistrationPtrOutput)
 }
 
-func (o AzureStaticWebAppsRegistrationOutput) ToOutput(ctx context.Context) pulumix.Output[AzureStaticWebAppsRegistration] {
-	return pulumix.Output[AzureStaticWebAppsRegistration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Client ID of the app used for login.
 func (o AzureStaticWebAppsRegistrationOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureStaticWebAppsRegistration) *string { return v.ClientId }).(pulumi.StringPtrOutput)
@@ -3692,12 +3265,6 @@ func (o AzureStaticWebAppsRegistrationPtrOutput) ToAzureStaticWebAppsRegistratio
 
 func (o AzureStaticWebAppsRegistrationPtrOutput) ToAzureStaticWebAppsRegistrationPtrOutputWithContext(ctx context.Context) AzureStaticWebAppsRegistrationPtrOutput {
 	return o
-}
-
-func (o AzureStaticWebAppsRegistrationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureStaticWebAppsRegistration] {
-	return pulumix.Output[*AzureStaticWebAppsRegistration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureStaticWebAppsRegistrationPtrOutput) Elem() AzureStaticWebAppsRegistrationOutput {
@@ -3741,12 +3308,6 @@ func (o AzureStaticWebAppsRegistrationResponseOutput) ToAzureStaticWebAppsRegist
 	return o
 }
 
-func (o AzureStaticWebAppsRegistrationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureStaticWebAppsRegistrationResponse] {
-	return pulumix.Output[AzureStaticWebAppsRegistrationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Client ID of the app used for login.
 func (o AzureStaticWebAppsRegistrationResponseOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureStaticWebAppsRegistrationResponse) *string { return v.ClientId }).(pulumi.StringPtrOutput)
@@ -3764,12 +3325,6 @@ func (o AzureStaticWebAppsRegistrationResponsePtrOutput) ToAzureStaticWebAppsReg
 
 func (o AzureStaticWebAppsRegistrationResponsePtrOutput) ToAzureStaticWebAppsRegistrationResponsePtrOutputWithContext(ctx context.Context) AzureStaticWebAppsRegistrationResponsePtrOutput {
 	return o
-}
-
-func (o AzureStaticWebAppsRegistrationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureStaticWebAppsRegistrationResponse] {
-	return pulumix.Output[*AzureStaticWebAppsRegistrationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureStaticWebAppsRegistrationResponsePtrOutput) Elem() AzureStaticWebAppsRegistrationResponseOutput {
@@ -3815,12 +3370,6 @@ func (o AzureStaticWebAppsResponseOutput) ToAzureStaticWebAppsResponseOutputWith
 	return o
 }
 
-func (o AzureStaticWebAppsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureStaticWebAppsResponse] {
-	return pulumix.Output[AzureStaticWebAppsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // <code>false</code> if the Azure Static Web Apps provider should not be enabled despite the set registration; otherwise, <code>true</code>.
 func (o AzureStaticWebAppsResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AzureStaticWebAppsResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -3843,12 +3392,6 @@ func (o AzureStaticWebAppsResponsePtrOutput) ToAzureStaticWebAppsResponsePtrOutp
 
 func (o AzureStaticWebAppsResponsePtrOutput) ToAzureStaticWebAppsResponsePtrOutputWithContext(ctx context.Context) AzureStaticWebAppsResponsePtrOutput {
 	return o
-}
-
-func (o AzureStaticWebAppsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureStaticWebAppsResponse] {
-	return pulumix.Output[*AzureStaticWebAppsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureStaticWebAppsResponsePtrOutput) Elem() AzureStaticWebAppsResponseOutput {
@@ -3916,12 +3459,6 @@ func (i BlobStorageTokenStoreArgs) ToBlobStorageTokenStoreOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(BlobStorageTokenStoreOutput)
 }
 
-func (i BlobStorageTokenStoreArgs) ToOutput(ctx context.Context) pulumix.Output[BlobStorageTokenStore] {
-	return pulumix.Output[BlobStorageTokenStore]{
-		OutputState: i.ToBlobStorageTokenStoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BlobStorageTokenStoreArgs) ToBlobStorageTokenStorePtrOutput() BlobStorageTokenStorePtrOutput {
 	return i.ToBlobStorageTokenStorePtrOutputWithContext(context.Background())
 }
@@ -3963,12 +3500,6 @@ func (i *blobStorageTokenStorePtrType) ToBlobStorageTokenStorePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(BlobStorageTokenStorePtrOutput)
 }
 
-func (i *blobStorageTokenStorePtrType) ToOutput(ctx context.Context) pulumix.Output[*BlobStorageTokenStore] {
-	return pulumix.Output[*BlobStorageTokenStore]{
-		OutputState: i.ToBlobStorageTokenStorePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the storage of the tokens if blob storage is used.
 type BlobStorageTokenStoreOutput struct{ *pulumi.OutputState }
 
@@ -3994,12 +3525,6 @@ func (o BlobStorageTokenStoreOutput) ToBlobStorageTokenStorePtrOutputWithContext
 	}).(BlobStorageTokenStorePtrOutput)
 }
 
-func (o BlobStorageTokenStoreOutput) ToOutput(ctx context.Context) pulumix.Output[BlobStorageTokenStore] {
-	return pulumix.Output[BlobStorageTokenStore]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the app setting containing the SAS URL of the blob storage containing the tokens.
 func (o BlobStorageTokenStoreOutput) SasUrlSettingName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlobStorageTokenStore) *string { return v.SasUrlSettingName }).(pulumi.StringPtrOutput)
@@ -4017,12 +3542,6 @@ func (o BlobStorageTokenStorePtrOutput) ToBlobStorageTokenStorePtrOutput() BlobS
 
 func (o BlobStorageTokenStorePtrOutput) ToBlobStorageTokenStorePtrOutputWithContext(ctx context.Context) BlobStorageTokenStorePtrOutput {
 	return o
-}
-
-func (o BlobStorageTokenStorePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BlobStorageTokenStore] {
-	return pulumix.Output[*BlobStorageTokenStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlobStorageTokenStorePtrOutput) Elem() BlobStorageTokenStoreOutput {
@@ -4066,12 +3585,6 @@ func (o BlobStorageTokenStoreResponseOutput) ToBlobStorageTokenStoreResponseOutp
 	return o
 }
 
-func (o BlobStorageTokenStoreResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BlobStorageTokenStoreResponse] {
-	return pulumix.Output[BlobStorageTokenStoreResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the app setting containing the SAS URL of the blob storage containing the tokens.
 func (o BlobStorageTokenStoreResponseOutput) SasUrlSettingName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlobStorageTokenStoreResponse) *string { return v.SasUrlSettingName }).(pulumi.StringPtrOutput)
@@ -4089,12 +3602,6 @@ func (o BlobStorageTokenStoreResponsePtrOutput) ToBlobStorageTokenStoreResponseP
 
 func (o BlobStorageTokenStoreResponsePtrOutput) ToBlobStorageTokenStoreResponsePtrOutputWithContext(ctx context.Context) BlobStorageTokenStoreResponsePtrOutput {
 	return o
-}
-
-func (o BlobStorageTokenStoreResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BlobStorageTokenStoreResponse] {
-	return pulumix.Output[*BlobStorageTokenStoreResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlobStorageTokenStoreResponsePtrOutput) Elem() BlobStorageTokenStoreResponseOutput {
@@ -4160,12 +3667,6 @@ func (i CapabilityArgs) ToCapabilityOutputWithContext(ctx context.Context) Capab
 	return pulumi.ToOutputWithContext(ctx, i).(CapabilityOutput)
 }
 
-func (i CapabilityArgs) ToOutput(ctx context.Context) pulumix.Output[Capability] {
-	return pulumix.Output[Capability]{
-		OutputState: i.ToCapabilityOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CapabilityArrayInput is an input type that accepts CapabilityArray and CapabilityArrayOutput values.
 // You can construct a concrete instance of `CapabilityArrayInput` via:
 //
@@ -4191,12 +3692,6 @@ func (i CapabilityArray) ToCapabilityArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(CapabilityArrayOutput)
 }
 
-func (i CapabilityArray) ToOutput(ctx context.Context) pulumix.Output[[]Capability] {
-	return pulumix.Output[[]Capability]{
-		OutputState: i.ToCapabilityArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes the capabilities/features allowed for a specific SKU.
 type CapabilityOutput struct{ *pulumi.OutputState }
 
@@ -4210,12 +3705,6 @@ func (o CapabilityOutput) ToCapabilityOutput() CapabilityOutput {
 
 func (o CapabilityOutput) ToCapabilityOutputWithContext(ctx context.Context) CapabilityOutput {
 	return o
-}
-
-func (o CapabilityOutput) ToOutput(ctx context.Context) pulumix.Output[Capability] {
-	return pulumix.Output[Capability]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the SKU capability.
@@ -4245,12 +3734,6 @@ func (o CapabilityArrayOutput) ToCapabilityArrayOutput() CapabilityArrayOutput {
 
 func (o CapabilityArrayOutput) ToCapabilityArrayOutputWithContext(ctx context.Context) CapabilityArrayOutput {
 	return o
-}
-
-func (o CapabilityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Capability] {
-	return pulumix.Output[[]Capability]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CapabilityArrayOutput) Index(i pulumi.IntInput) CapabilityOutput {
@@ -4284,12 +3767,6 @@ func (o CapabilityResponseOutput) ToCapabilityResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o CapabilityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CapabilityResponse] {
-	return pulumix.Output[CapabilityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the SKU capability.
 func (o CapabilityResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CapabilityResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -4317,12 +3794,6 @@ func (o CapabilityResponseArrayOutput) ToCapabilityResponseArrayOutput() Capabil
 
 func (o CapabilityResponseArrayOutput) ToCapabilityResponseArrayOutputWithContext(ctx context.Context) CapabilityResponseArrayOutput {
 	return o
-}
-
-func (o CapabilityResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CapabilityResponse] {
-	return pulumix.Output[[]CapabilityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CapabilityResponseArrayOutput) Index(i pulumi.IntInput) CapabilityResponseOutput {
@@ -4370,12 +3841,6 @@ func (i ClientRegistrationArgs) ToClientRegistrationOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ClientRegistrationOutput)
 }
 
-func (i ClientRegistrationArgs) ToOutput(ctx context.Context) pulumix.Output[ClientRegistration] {
-	return pulumix.Output[ClientRegistration]{
-		OutputState: i.ToClientRegistrationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClientRegistrationArgs) ToClientRegistrationPtrOutput() ClientRegistrationPtrOutput {
 	return i.ToClientRegistrationPtrOutputWithContext(context.Background())
 }
@@ -4417,12 +3882,6 @@ func (i *clientRegistrationPtrType) ToClientRegistrationPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ClientRegistrationPtrOutput)
 }
 
-func (i *clientRegistrationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClientRegistration] {
-	return pulumix.Output[*ClientRegistration]{
-		OutputState: i.ToClientRegistrationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the app registration for providers that have client ids and client secrets
 type ClientRegistrationOutput struct{ *pulumi.OutputState }
 
@@ -4448,12 +3907,6 @@ func (o ClientRegistrationOutput) ToClientRegistrationPtrOutputWithContext(ctx c
 	}).(ClientRegistrationPtrOutput)
 }
 
-func (o ClientRegistrationOutput) ToOutput(ctx context.Context) pulumix.Output[ClientRegistration] {
-	return pulumix.Output[ClientRegistration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Client ID of the app used for login.
 func (o ClientRegistrationOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientRegistration) *string { return v.ClientId }).(pulumi.StringPtrOutput)
@@ -4476,12 +3929,6 @@ func (o ClientRegistrationPtrOutput) ToClientRegistrationPtrOutput() ClientRegis
 
 func (o ClientRegistrationPtrOutput) ToClientRegistrationPtrOutputWithContext(ctx context.Context) ClientRegistrationPtrOutput {
 	return o
-}
-
-func (o ClientRegistrationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientRegistration] {
-	return pulumix.Output[*ClientRegistration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClientRegistrationPtrOutput) Elem() ClientRegistrationOutput {
@@ -4537,12 +3984,6 @@ func (o ClientRegistrationResponseOutput) ToClientRegistrationResponseOutputWith
 	return o
 }
 
-func (o ClientRegistrationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClientRegistrationResponse] {
-	return pulumix.Output[ClientRegistrationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Client ID of the app used for login.
 func (o ClientRegistrationResponseOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClientRegistrationResponse) *string { return v.ClientId }).(pulumi.StringPtrOutput)
@@ -4565,12 +4006,6 @@ func (o ClientRegistrationResponsePtrOutput) ToClientRegistrationResponsePtrOutp
 
 func (o ClientRegistrationResponsePtrOutput) ToClientRegistrationResponsePtrOutputWithContext(ctx context.Context) ClientRegistrationResponsePtrOutput {
 	return o
-}
-
-func (o ClientRegistrationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClientRegistrationResponse] {
-	return pulumix.Output[*ClientRegistrationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClientRegistrationResponsePtrOutput) Elem() ClientRegistrationResponseOutput {
@@ -4642,12 +4077,6 @@ func (i CookieExpirationArgs) ToCookieExpirationOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(CookieExpirationOutput)
 }
 
-func (i CookieExpirationArgs) ToOutput(ctx context.Context) pulumix.Output[CookieExpiration] {
-	return pulumix.Output[CookieExpiration]{
-		OutputState: i.ToCookieExpirationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CookieExpirationArgs) ToCookieExpirationPtrOutput() CookieExpirationPtrOutput {
 	return i.ToCookieExpirationPtrOutputWithContext(context.Background())
 }
@@ -4689,12 +4118,6 @@ func (i *cookieExpirationPtrType) ToCookieExpirationPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(CookieExpirationPtrOutput)
 }
 
-func (i *cookieExpirationPtrType) ToOutput(ctx context.Context) pulumix.Output[*CookieExpiration] {
-	return pulumix.Output[*CookieExpiration]{
-		OutputState: i.ToCookieExpirationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the session cookie's expiration.
 type CookieExpirationOutput struct{ *pulumi.OutputState }
 
@@ -4720,12 +4143,6 @@ func (o CookieExpirationOutput) ToCookieExpirationPtrOutputWithContext(ctx conte
 	}).(CookieExpirationPtrOutput)
 }
 
-func (o CookieExpirationOutput) ToOutput(ctx context.Context) pulumix.Output[CookieExpiration] {
-	return pulumix.Output[CookieExpiration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The convention used when determining the session cookie's expiration.
 func (o CookieExpirationOutput) Convention() CookieExpirationConventionPtrOutput {
 	return o.ApplyT(func(v CookieExpiration) *CookieExpirationConvention { return v.Convention }).(CookieExpirationConventionPtrOutput)
@@ -4748,12 +4165,6 @@ func (o CookieExpirationPtrOutput) ToCookieExpirationPtrOutput() CookieExpiratio
 
 func (o CookieExpirationPtrOutput) ToCookieExpirationPtrOutputWithContext(ctx context.Context) CookieExpirationPtrOutput {
 	return o
-}
-
-func (o CookieExpirationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CookieExpiration] {
-	return pulumix.Output[*CookieExpiration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CookieExpirationPtrOutput) Elem() CookieExpirationOutput {
@@ -4809,12 +4220,6 @@ func (o CookieExpirationResponseOutput) ToCookieExpirationResponseOutputWithCont
 	return o
 }
 
-func (o CookieExpirationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CookieExpirationResponse] {
-	return pulumix.Output[CookieExpirationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The convention used when determining the session cookie's expiration.
 func (o CookieExpirationResponseOutput) Convention() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CookieExpirationResponse) *string { return v.Convention }).(pulumi.StringPtrOutput)
@@ -4837,12 +4242,6 @@ func (o CookieExpirationResponsePtrOutput) ToCookieExpirationResponsePtrOutput()
 
 func (o CookieExpirationResponsePtrOutput) ToCookieExpirationResponsePtrOutputWithContext(ctx context.Context) CookieExpirationResponsePtrOutput {
 	return o
-}
-
-func (o CookieExpirationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CookieExpirationResponse] {
-	return pulumix.Output[*CookieExpirationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CookieExpirationResponsePtrOutput) Elem() CookieExpirationResponseOutput {
@@ -4918,12 +4317,6 @@ func (i CustomOpenIdConnectProviderArgs) ToCustomOpenIdConnectProviderOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(CustomOpenIdConnectProviderOutput)
 }
 
-func (i CustomOpenIdConnectProviderArgs) ToOutput(ctx context.Context) pulumix.Output[CustomOpenIdConnectProvider] {
-	return pulumix.Output[CustomOpenIdConnectProvider]{
-		OutputState: i.ToCustomOpenIdConnectProviderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CustomOpenIdConnectProviderMapInput is an input type that accepts CustomOpenIdConnectProviderMap and CustomOpenIdConnectProviderMapOutput values.
 // You can construct a concrete instance of `CustomOpenIdConnectProviderMapInput` via:
 //
@@ -4949,12 +4342,6 @@ func (i CustomOpenIdConnectProviderMap) ToCustomOpenIdConnectProviderMapOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(CustomOpenIdConnectProviderMapOutput)
 }
 
-func (i CustomOpenIdConnectProviderMap) ToOutput(ctx context.Context) pulumix.Output[map[string]CustomOpenIdConnectProvider] {
-	return pulumix.Output[map[string]CustomOpenIdConnectProvider]{
-		OutputState: i.ToCustomOpenIdConnectProviderMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the custom Open ID Connect provider.
 type CustomOpenIdConnectProviderOutput struct{ *pulumi.OutputState }
 
@@ -4968,12 +4355,6 @@ func (o CustomOpenIdConnectProviderOutput) ToCustomOpenIdConnectProviderOutput()
 
 func (o CustomOpenIdConnectProviderOutput) ToCustomOpenIdConnectProviderOutputWithContext(ctx context.Context) CustomOpenIdConnectProviderOutput {
 	return o
-}
-
-func (o CustomOpenIdConnectProviderOutput) ToOutput(ctx context.Context) pulumix.Output[CustomOpenIdConnectProvider] {
-	return pulumix.Output[CustomOpenIdConnectProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 // <code>false</code> if the custom Open ID provider provider should not be enabled; otherwise, <code>true</code>.
@@ -5003,12 +4384,6 @@ func (o CustomOpenIdConnectProviderMapOutput) ToCustomOpenIdConnectProviderMapOu
 
 func (o CustomOpenIdConnectProviderMapOutput) ToCustomOpenIdConnectProviderMapOutputWithContext(ctx context.Context) CustomOpenIdConnectProviderMapOutput {
 	return o
-}
-
-func (o CustomOpenIdConnectProviderMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]CustomOpenIdConnectProvider] {
-	return pulumix.Output[map[string]CustomOpenIdConnectProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomOpenIdConnectProviderMapOutput) MapIndex(k pulumi.StringInput) CustomOpenIdConnectProviderOutput {
@@ -5042,12 +4417,6 @@ func (o CustomOpenIdConnectProviderResponseOutput) ToCustomOpenIdConnectProvider
 	return o
 }
 
-func (o CustomOpenIdConnectProviderResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CustomOpenIdConnectProviderResponse] {
-	return pulumix.Output[CustomOpenIdConnectProviderResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // <code>false</code> if the custom Open ID provider provider should not be enabled; otherwise, <code>true</code>.
 func (o CustomOpenIdConnectProviderResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CustomOpenIdConnectProviderResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -5075,12 +4444,6 @@ func (o CustomOpenIdConnectProviderResponseMapOutput) ToCustomOpenIdConnectProvi
 
 func (o CustomOpenIdConnectProviderResponseMapOutput) ToCustomOpenIdConnectProviderResponseMapOutputWithContext(ctx context.Context) CustomOpenIdConnectProviderResponseMapOutput {
 	return o
-}
-
-func (o CustomOpenIdConnectProviderResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]CustomOpenIdConnectProviderResponse] {
-	return pulumix.Output[map[string]CustomOpenIdConnectProviderResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomOpenIdConnectProviderResponseMapOutput) MapIndex(k pulumi.StringInput) CustomOpenIdConnectProviderResponseOutput {
@@ -5128,12 +4491,6 @@ func (i DefaultAuthorizationPolicyArgs) ToDefaultAuthorizationPolicyOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultAuthorizationPolicyOutput)
 }
 
-func (i DefaultAuthorizationPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[DefaultAuthorizationPolicy] {
-	return pulumix.Output[DefaultAuthorizationPolicy]{
-		OutputState: i.ToDefaultAuthorizationPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DefaultAuthorizationPolicyArgs) ToDefaultAuthorizationPolicyPtrOutput() DefaultAuthorizationPolicyPtrOutput {
 	return i.ToDefaultAuthorizationPolicyPtrOutputWithContext(context.Background())
 }
@@ -5175,12 +4532,6 @@ func (i *defaultAuthorizationPolicyPtrType) ToDefaultAuthorizationPolicyPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultAuthorizationPolicyPtrOutput)
 }
 
-func (i *defaultAuthorizationPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*DefaultAuthorizationPolicy] {
-	return pulumix.Output[*DefaultAuthorizationPolicy]{
-		OutputState: i.ToDefaultAuthorizationPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the Azure Active Directory default authorization policy.
 type DefaultAuthorizationPolicyOutput struct{ *pulumi.OutputState }
 
@@ -5206,12 +4557,6 @@ func (o DefaultAuthorizationPolicyOutput) ToDefaultAuthorizationPolicyPtrOutputW
 	}).(DefaultAuthorizationPolicyPtrOutput)
 }
 
-func (o DefaultAuthorizationPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[DefaultAuthorizationPolicy] {
-	return pulumix.Output[DefaultAuthorizationPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration settings of the Azure Active Directory allowed applications.
 func (o DefaultAuthorizationPolicyOutput) AllowedApplications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DefaultAuthorizationPolicy) []string { return v.AllowedApplications }).(pulumi.StringArrayOutput)
@@ -5234,12 +4579,6 @@ func (o DefaultAuthorizationPolicyPtrOutput) ToDefaultAuthorizationPolicyPtrOutp
 
 func (o DefaultAuthorizationPolicyPtrOutput) ToDefaultAuthorizationPolicyPtrOutputWithContext(ctx context.Context) DefaultAuthorizationPolicyPtrOutput {
 	return o
-}
-
-func (o DefaultAuthorizationPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DefaultAuthorizationPolicy] {
-	return pulumix.Output[*DefaultAuthorizationPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DefaultAuthorizationPolicyPtrOutput) Elem() DefaultAuthorizationPolicyOutput {
@@ -5295,12 +4634,6 @@ func (o DefaultAuthorizationPolicyResponseOutput) ToDefaultAuthorizationPolicyRe
 	return o
 }
 
-func (o DefaultAuthorizationPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DefaultAuthorizationPolicyResponse] {
-	return pulumix.Output[DefaultAuthorizationPolicyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration settings of the Azure Active Directory allowed applications.
 func (o DefaultAuthorizationPolicyResponseOutput) AllowedApplications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DefaultAuthorizationPolicyResponse) []string { return v.AllowedApplications }).(pulumi.StringArrayOutput)
@@ -5323,12 +4656,6 @@ func (o DefaultAuthorizationPolicyResponsePtrOutput) ToDefaultAuthorizationPolic
 
 func (o DefaultAuthorizationPolicyResponsePtrOutput) ToDefaultAuthorizationPolicyResponsePtrOutputWithContext(ctx context.Context) DefaultAuthorizationPolicyResponsePtrOutput {
 	return o
-}
-
-func (o DefaultAuthorizationPolicyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DefaultAuthorizationPolicyResponse] {
-	return pulumix.Output[*DefaultAuthorizationPolicyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DefaultAuthorizationPolicyResponsePtrOutput) Elem() DefaultAuthorizationPolicyResponseOutput {
@@ -5396,12 +4723,6 @@ func (o ErrorEntityResponseOutput) ToErrorEntityResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o ErrorEntityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorEntityResponse] {
-	return pulumix.Output[ErrorEntityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Basic error code.
 func (o ErrorEntityResponseOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ErrorEntityResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
@@ -5454,12 +4775,6 @@ func (o ErrorEntityResponsePtrOutput) ToErrorEntityResponsePtrOutput() ErrorEnti
 
 func (o ErrorEntityResponsePtrOutput) ToErrorEntityResponsePtrOutputWithContext(ctx context.Context) ErrorEntityResponsePtrOutput {
 	return o
-}
-
-func (o ErrorEntityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErrorEntityResponse] {
-	return pulumix.Output[*ErrorEntityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ErrorEntityResponsePtrOutput) Elem() ErrorEntityResponseOutput {
@@ -5566,12 +4881,6 @@ func (o ErrorEntityResponseArrayOutput) ToErrorEntityResponseArrayOutputWithCont
 	return o
 }
 
-func (o ErrorEntityResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ErrorEntityResponse] {
-	return pulumix.Output[[]ErrorEntityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ErrorEntityResponseArrayOutput) Index(i pulumi.IntInput) ErrorEntityResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorEntityResponse {
 		return vs[0].([]ErrorEntityResponse)[vs[1].(int)]
@@ -5625,12 +4934,6 @@ func (i FacebookArgs) ToFacebookOutputWithContext(ctx context.Context) FacebookO
 	return pulumi.ToOutputWithContext(ctx, i).(FacebookOutput)
 }
 
-func (i FacebookArgs) ToOutput(ctx context.Context) pulumix.Output[Facebook] {
-	return pulumix.Output[Facebook]{
-		OutputState: i.ToFacebookOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FacebookArgs) ToFacebookPtrOutput() FacebookPtrOutput {
 	return i.ToFacebookPtrOutputWithContext(context.Background())
 }
@@ -5672,12 +4975,6 @@ func (i *facebookPtrType) ToFacebookPtrOutputWithContext(ctx context.Context) Fa
 	return pulumi.ToOutputWithContext(ctx, i).(FacebookPtrOutput)
 }
 
-func (i *facebookPtrType) ToOutput(ctx context.Context) pulumix.Output[*Facebook] {
-	return pulumix.Output[*Facebook]{
-		OutputState: i.ToFacebookPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the Facebook provider.
 type FacebookOutput struct{ *pulumi.OutputState }
 
@@ -5701,12 +4998,6 @@ func (o FacebookOutput) ToFacebookPtrOutputWithContext(ctx context.Context) Face
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Facebook) *Facebook {
 		return &v
 	}).(FacebookPtrOutput)
-}
-
-func (o FacebookOutput) ToOutput(ctx context.Context) pulumix.Output[Facebook] {
-	return pulumix.Output[Facebook]{
-		OutputState: o.OutputState,
-	}
 }
 
 // <code>false</code> if the Facebook provider should not be enabled despite the set registration; otherwise, <code>true</code>.
@@ -5741,12 +5032,6 @@ func (o FacebookPtrOutput) ToFacebookPtrOutput() FacebookPtrOutput {
 
 func (o FacebookPtrOutput) ToFacebookPtrOutputWithContext(ctx context.Context) FacebookPtrOutput {
 	return o
-}
-
-func (o FacebookPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Facebook] {
-	return pulumix.Output[*Facebook]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FacebookPtrOutput) Elem() FacebookOutput {
@@ -5826,12 +5111,6 @@ func (o FacebookResponseOutput) ToFacebookResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o FacebookResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FacebookResponse] {
-	return pulumix.Output[FacebookResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // <code>false</code> if the Facebook provider should not be enabled despite the set registration; otherwise, <code>true</code>.
 func (o FacebookResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FacebookResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -5864,12 +5143,6 @@ func (o FacebookResponsePtrOutput) ToFacebookResponsePtrOutput() FacebookRespons
 
 func (o FacebookResponsePtrOutput) ToFacebookResponsePtrOutputWithContext(ctx context.Context) FacebookResponsePtrOutput {
 	return o
-}
-
-func (o FacebookResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FacebookResponse] {
-	return pulumix.Output[*FacebookResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FacebookResponsePtrOutput) Elem() FacebookResponseOutput {
@@ -5957,12 +5230,6 @@ func (i FileSystemTokenStoreArgs) ToFileSystemTokenStoreOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(FileSystemTokenStoreOutput)
 }
 
-func (i FileSystemTokenStoreArgs) ToOutput(ctx context.Context) pulumix.Output[FileSystemTokenStore] {
-	return pulumix.Output[FileSystemTokenStore]{
-		OutputState: i.ToFileSystemTokenStoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FileSystemTokenStoreArgs) ToFileSystemTokenStorePtrOutput() FileSystemTokenStorePtrOutput {
 	return i.ToFileSystemTokenStorePtrOutputWithContext(context.Background())
 }
@@ -6004,12 +5271,6 @@ func (i *fileSystemTokenStorePtrType) ToFileSystemTokenStorePtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(FileSystemTokenStorePtrOutput)
 }
 
-func (i *fileSystemTokenStorePtrType) ToOutput(ctx context.Context) pulumix.Output[*FileSystemTokenStore] {
-	return pulumix.Output[*FileSystemTokenStore]{
-		OutputState: i.ToFileSystemTokenStorePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the storage of the tokens if a file system is used.
 type FileSystemTokenStoreOutput struct{ *pulumi.OutputState }
 
@@ -6035,12 +5296,6 @@ func (o FileSystemTokenStoreOutput) ToFileSystemTokenStorePtrOutputWithContext(c
 	}).(FileSystemTokenStorePtrOutput)
 }
 
-func (o FileSystemTokenStoreOutput) ToOutput(ctx context.Context) pulumix.Output[FileSystemTokenStore] {
-	return pulumix.Output[FileSystemTokenStore]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The directory in which the tokens will be stored.
 func (o FileSystemTokenStoreOutput) Directory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileSystemTokenStore) *string { return v.Directory }).(pulumi.StringPtrOutput)
@@ -6058,12 +5313,6 @@ func (o FileSystemTokenStorePtrOutput) ToFileSystemTokenStorePtrOutput() FileSys
 
 func (o FileSystemTokenStorePtrOutput) ToFileSystemTokenStorePtrOutputWithContext(ctx context.Context) FileSystemTokenStorePtrOutput {
 	return o
-}
-
-func (o FileSystemTokenStorePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FileSystemTokenStore] {
-	return pulumix.Output[*FileSystemTokenStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FileSystemTokenStorePtrOutput) Elem() FileSystemTokenStoreOutput {
@@ -6107,12 +5356,6 @@ func (o FileSystemTokenStoreResponseOutput) ToFileSystemTokenStoreResponseOutput
 	return o
 }
 
-func (o FileSystemTokenStoreResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FileSystemTokenStoreResponse] {
-	return pulumix.Output[FileSystemTokenStoreResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The directory in which the tokens will be stored.
 func (o FileSystemTokenStoreResponseOutput) Directory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileSystemTokenStoreResponse) *string { return v.Directory }).(pulumi.StringPtrOutput)
@@ -6130,12 +5373,6 @@ func (o FileSystemTokenStoreResponsePtrOutput) ToFileSystemTokenStoreResponsePtr
 
 func (o FileSystemTokenStoreResponsePtrOutput) ToFileSystemTokenStoreResponsePtrOutputWithContext(ctx context.Context) FileSystemTokenStoreResponsePtrOutput {
 	return o
-}
-
-func (o FileSystemTokenStoreResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FileSystemTokenStoreResponse] {
-	return pulumix.Output[*FileSystemTokenStoreResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FileSystemTokenStoreResponsePtrOutput) Elem() FileSystemTokenStoreResponseOutput {
@@ -6201,12 +5438,6 @@ func (i ForwardProxyArgs) ToForwardProxyOutputWithContext(ctx context.Context) F
 	return pulumi.ToOutputWithContext(ctx, i).(ForwardProxyOutput)
 }
 
-func (i ForwardProxyArgs) ToOutput(ctx context.Context) pulumix.Output[ForwardProxy] {
-	return pulumix.Output[ForwardProxy]{
-		OutputState: i.ToForwardProxyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ForwardProxyArgs) ToForwardProxyPtrOutput() ForwardProxyPtrOutput {
 	return i.ToForwardProxyPtrOutputWithContext(context.Background())
 }
@@ -6248,12 +5479,6 @@ func (i *forwardProxyPtrType) ToForwardProxyPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ForwardProxyPtrOutput)
 }
 
-func (i *forwardProxyPtrType) ToOutput(ctx context.Context) pulumix.Output[*ForwardProxy] {
-	return pulumix.Output[*ForwardProxy]{
-		OutputState: i.ToForwardProxyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of a forward proxy used to make the requests.
 type ForwardProxyOutput struct{ *pulumi.OutputState }
 
@@ -6277,12 +5502,6 @@ func (o ForwardProxyOutput) ToForwardProxyPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ForwardProxy) *ForwardProxy {
 		return &v
 	}).(ForwardProxyPtrOutput)
-}
-
-func (o ForwardProxyOutput) ToOutput(ctx context.Context) pulumix.Output[ForwardProxy] {
-	return pulumix.Output[ForwardProxy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The convention used to determine the url of the request made.
@@ -6312,12 +5531,6 @@ func (o ForwardProxyPtrOutput) ToForwardProxyPtrOutput() ForwardProxyPtrOutput {
 
 func (o ForwardProxyPtrOutput) ToForwardProxyPtrOutputWithContext(ctx context.Context) ForwardProxyPtrOutput {
 	return o
-}
-
-func (o ForwardProxyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ForwardProxy] {
-	return pulumix.Output[*ForwardProxy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ForwardProxyPtrOutput) Elem() ForwardProxyOutput {
@@ -6385,12 +5598,6 @@ func (o ForwardProxyResponseOutput) ToForwardProxyResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o ForwardProxyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ForwardProxyResponse] {
-	return pulumix.Output[ForwardProxyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The convention used to determine the url of the request made.
 func (o ForwardProxyResponseOutput) Convention() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ForwardProxyResponse) *string { return v.Convention }).(pulumi.StringPtrOutput)
@@ -6418,12 +5625,6 @@ func (o ForwardProxyResponsePtrOutput) ToForwardProxyResponsePtrOutput() Forward
 
 func (o ForwardProxyResponsePtrOutput) ToForwardProxyResponsePtrOutputWithContext(ctx context.Context) ForwardProxyResponsePtrOutput {
 	return o
-}
-
-func (o ForwardProxyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ForwardProxyResponse] {
-	return pulumix.Output[*ForwardProxyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ForwardProxyResponsePtrOutput) Elem() ForwardProxyResponseOutput {
@@ -6509,12 +5710,6 @@ func (i GitHubArgs) ToGitHubOutputWithContext(ctx context.Context) GitHubOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(GitHubOutput)
 }
 
-func (i GitHubArgs) ToOutput(ctx context.Context) pulumix.Output[GitHub] {
-	return pulumix.Output[GitHub]{
-		OutputState: i.ToGitHubOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GitHubArgs) ToGitHubPtrOutput() GitHubPtrOutput {
 	return i.ToGitHubPtrOutputWithContext(context.Background())
 }
@@ -6556,12 +5751,6 @@ func (i *gitHubPtrType) ToGitHubPtrOutputWithContext(ctx context.Context) GitHub
 	return pulumi.ToOutputWithContext(ctx, i).(GitHubPtrOutput)
 }
 
-func (i *gitHubPtrType) ToOutput(ctx context.Context) pulumix.Output[*GitHub] {
-	return pulumix.Output[*GitHub]{
-		OutputState: i.ToGitHubPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the GitHub provider.
 type GitHubOutput struct{ *pulumi.OutputState }
 
@@ -6585,12 +5774,6 @@ func (o GitHubOutput) ToGitHubPtrOutputWithContext(ctx context.Context) GitHubPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GitHub) *GitHub {
 		return &v
 	}).(GitHubPtrOutput)
-}
-
-func (o GitHubOutput) ToOutput(ctx context.Context) pulumix.Output[GitHub] {
-	return pulumix.Output[GitHub]{
-		OutputState: o.OutputState,
-	}
 }
 
 // <code>false</code> if the GitHub provider should not be enabled despite the set registration; otherwise, <code>true</code>.
@@ -6620,12 +5803,6 @@ func (o GitHubPtrOutput) ToGitHubPtrOutput() GitHubPtrOutput {
 
 func (o GitHubPtrOutput) ToGitHubPtrOutputWithContext(ctx context.Context) GitHubPtrOutput {
 	return o
-}
-
-func (o GitHubPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GitHub] {
-	return pulumix.Output[*GitHub]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GitHubPtrOutput) Elem() GitHubOutput {
@@ -6693,12 +5870,6 @@ func (o GitHubResponseOutput) ToGitHubResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o GitHubResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GitHubResponse] {
-	return pulumix.Output[GitHubResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // <code>false</code> if the GitHub provider should not be enabled despite the set registration; otherwise, <code>true</code>.
 func (o GitHubResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GitHubResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -6726,12 +5897,6 @@ func (o GitHubResponsePtrOutput) ToGitHubResponsePtrOutput() GitHubResponsePtrOu
 
 func (o GitHubResponsePtrOutput) ToGitHubResponsePtrOutputWithContext(ctx context.Context) GitHubResponsePtrOutput {
 	return o
-}
-
-func (o GitHubResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GitHubResponse] {
-	return pulumix.Output[*GitHubResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GitHubResponsePtrOutput) Elem() GitHubResponseOutput {
@@ -6825,12 +5990,6 @@ func (i GlobalValidationArgs) ToGlobalValidationOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalValidationOutput)
 }
 
-func (i GlobalValidationArgs) ToOutput(ctx context.Context) pulumix.Output[GlobalValidation] {
-	return pulumix.Output[GlobalValidation]{
-		OutputState: i.ToGlobalValidationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GlobalValidationArgs) ToGlobalValidationPtrOutput() GlobalValidationPtrOutput {
 	return i.ToGlobalValidationPtrOutputWithContext(context.Background())
 }
@@ -6872,12 +6031,6 @@ func (i *globalValidationPtrType) ToGlobalValidationPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalValidationPtrOutput)
 }
 
-func (i *globalValidationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GlobalValidation] {
-	return pulumix.Output[*GlobalValidation]{
-		OutputState: i.ToGlobalValidationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings that determines the validation flow of users using App Service Authentication/Authorization.
 type GlobalValidationOutput struct{ *pulumi.OutputState }
 
@@ -6901,12 +6054,6 @@ func (o GlobalValidationOutput) ToGlobalValidationPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalValidation) *GlobalValidation {
 		return &v
 	}).(GlobalValidationPtrOutput)
-}
-
-func (o GlobalValidationOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalValidation] {
-	return pulumix.Output[GlobalValidation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The paths for which unauthenticated flow would not be redirected to the login page.
@@ -6943,12 +6090,6 @@ func (o GlobalValidationPtrOutput) ToGlobalValidationPtrOutput() GlobalValidatio
 
 func (o GlobalValidationPtrOutput) ToGlobalValidationPtrOutputWithContext(ctx context.Context) GlobalValidationPtrOutput {
 	return o
-}
-
-func (o GlobalValidationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalValidation] {
-	return pulumix.Output[*GlobalValidation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GlobalValidationPtrOutput) Elem() GlobalValidationOutput {
@@ -7032,12 +6173,6 @@ func (o GlobalValidationResponseOutput) ToGlobalValidationResponseOutputWithCont
 	return o
 }
 
-func (o GlobalValidationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalValidationResponse] {
-	return pulumix.Output[GlobalValidationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The paths for which unauthenticated flow would not be redirected to the login page.
 func (o GlobalValidationResponseOutput) ExcludedPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GlobalValidationResponse) []string { return v.ExcludedPaths }).(pulumi.StringArrayOutput)
@@ -7072,12 +6207,6 @@ func (o GlobalValidationResponsePtrOutput) ToGlobalValidationResponsePtrOutput()
 
 func (o GlobalValidationResponsePtrOutput) ToGlobalValidationResponsePtrOutputWithContext(ctx context.Context) GlobalValidationResponsePtrOutput {
 	return o
-}
-
-func (o GlobalValidationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalValidationResponse] {
-	return pulumix.Output[*GlobalValidationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GlobalValidationResponsePtrOutput) Elem() GlobalValidationResponseOutput {
@@ -7179,12 +6308,6 @@ func (i GoogleArgs) ToGoogleOutputWithContext(ctx context.Context) GoogleOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleOutput)
 }
 
-func (i GoogleArgs) ToOutput(ctx context.Context) pulumix.Output[Google] {
-	return pulumix.Output[Google]{
-		OutputState: i.ToGoogleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GoogleArgs) ToGooglePtrOutput() GooglePtrOutput {
 	return i.ToGooglePtrOutputWithContext(context.Background())
 }
@@ -7226,12 +6349,6 @@ func (i *googlePtrType) ToGooglePtrOutputWithContext(ctx context.Context) Google
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePtrOutput)
 }
 
-func (i *googlePtrType) ToOutput(ctx context.Context) pulumix.Output[*Google] {
-	return pulumix.Output[*Google]{
-		OutputState: i.ToGooglePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the Google provider.
 type GoogleOutput struct{ *pulumi.OutputState }
 
@@ -7255,12 +6372,6 @@ func (o GoogleOutput) ToGooglePtrOutputWithContext(ctx context.Context) GooglePt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Google) *Google {
 		return &v
 	}).(GooglePtrOutput)
-}
-
-func (o GoogleOutput) ToOutput(ctx context.Context) pulumix.Output[Google] {
-	return pulumix.Output[Google]{
-		OutputState: o.OutputState,
-	}
 }
 
 // <code>false</code> if the Google provider should not be enabled despite the set registration; otherwise, <code>true</code>.
@@ -7295,12 +6406,6 @@ func (o GooglePtrOutput) ToGooglePtrOutput() GooglePtrOutput {
 
 func (o GooglePtrOutput) ToGooglePtrOutputWithContext(ctx context.Context) GooglePtrOutput {
 	return o
-}
-
-func (o GooglePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Google] {
-	return pulumix.Output[*Google]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GooglePtrOutput) Elem() GoogleOutput {
@@ -7380,12 +6485,6 @@ func (o GoogleResponseOutput) ToGoogleResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o GoogleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GoogleResponse] {
-	return pulumix.Output[GoogleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // <code>false</code> if the Google provider should not be enabled despite the set registration; otherwise, <code>true</code>.
 func (o GoogleResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -7418,12 +6517,6 @@ func (o GoogleResponsePtrOutput) ToGoogleResponsePtrOutput() GoogleResponsePtrOu
 
 func (o GoogleResponsePtrOutput) ToGoogleResponsePtrOutputWithContext(ctx context.Context) GoogleResponsePtrOutput {
 	return o
-}
-
-func (o GoogleResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GoogleResponse] {
-	return pulumix.Output[*GoogleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GoogleResponsePtrOutput) Elem() GoogleResponseOutput {
@@ -7519,12 +6612,6 @@ func (i HttpSettingsArgs) ToHttpSettingsOutputWithContext(ctx context.Context) H
 	return pulumi.ToOutputWithContext(ctx, i).(HttpSettingsOutput)
 }
 
-func (i HttpSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[HttpSettings] {
-	return pulumix.Output[HttpSettings]{
-		OutputState: i.ToHttpSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HttpSettingsArgs) ToHttpSettingsPtrOutput() HttpSettingsPtrOutput {
 	return i.ToHttpSettingsPtrOutputWithContext(context.Background())
 }
@@ -7566,12 +6653,6 @@ func (i *httpSettingsPtrType) ToHttpSettingsPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(HttpSettingsPtrOutput)
 }
 
-func (i *httpSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpSettings] {
-	return pulumix.Output[*HttpSettings]{
-		OutputState: i.ToHttpSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the HTTP requests for authentication and authorization requests made against App Service Authentication/Authorization.
 type HttpSettingsOutput struct{ *pulumi.OutputState }
 
@@ -7595,12 +6676,6 @@ func (o HttpSettingsOutput) ToHttpSettingsPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpSettings) *HttpSettings {
 		return &v
 	}).(HttpSettingsPtrOutput)
-}
-
-func (o HttpSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[HttpSettings] {
-	return pulumix.Output[HttpSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration settings of a forward proxy used to make the requests.
@@ -7630,12 +6705,6 @@ func (o HttpSettingsPtrOutput) ToHttpSettingsPtrOutput() HttpSettingsPtrOutput {
 
 func (o HttpSettingsPtrOutput) ToHttpSettingsPtrOutputWithContext(ctx context.Context) HttpSettingsPtrOutput {
 	return o
-}
-
-func (o HttpSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpSettings] {
-	return pulumix.Output[*HttpSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpSettingsPtrOutput) Elem() HttpSettingsOutput {
@@ -7703,12 +6772,6 @@ func (o HttpSettingsResponseOutput) ToHttpSettingsResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o HttpSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpSettingsResponse] {
-	return pulumix.Output[HttpSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration settings of a forward proxy used to make the requests.
 func (o HttpSettingsResponseOutput) ForwardProxy() ForwardProxyResponsePtrOutput {
 	return o.ApplyT(func(v HttpSettingsResponse) *ForwardProxyResponse { return v.ForwardProxy }).(ForwardProxyResponsePtrOutput)
@@ -7736,12 +6799,6 @@ func (o HttpSettingsResponsePtrOutput) ToHttpSettingsResponsePtrOutput() HttpSet
 
 func (o HttpSettingsResponsePtrOutput) ToHttpSettingsResponsePtrOutputWithContext(ctx context.Context) HttpSettingsResponsePtrOutput {
 	return o
-}
-
-func (o HttpSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpSettingsResponse] {
-	return pulumix.Output[*HttpSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpSettingsResponsePtrOutput) Elem() HttpSettingsResponseOutput {
@@ -7819,12 +6876,6 @@ func (i HttpSettingsRoutesArgs) ToHttpSettingsRoutesOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(HttpSettingsRoutesOutput)
 }
 
-func (i HttpSettingsRoutesArgs) ToOutput(ctx context.Context) pulumix.Output[HttpSettingsRoutes] {
-	return pulumix.Output[HttpSettingsRoutes]{
-		OutputState: i.ToHttpSettingsRoutesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HttpSettingsRoutesArgs) ToHttpSettingsRoutesPtrOutput() HttpSettingsRoutesPtrOutput {
 	return i.ToHttpSettingsRoutesPtrOutputWithContext(context.Background())
 }
@@ -7866,12 +6917,6 @@ func (i *httpSettingsRoutesPtrType) ToHttpSettingsRoutesPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(HttpSettingsRoutesPtrOutput)
 }
 
-func (i *httpSettingsRoutesPtrType) ToOutput(ctx context.Context) pulumix.Output[*HttpSettingsRoutes] {
-	return pulumix.Output[*HttpSettingsRoutes]{
-		OutputState: i.ToHttpSettingsRoutesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the paths HTTP requests.
 type HttpSettingsRoutesOutput struct{ *pulumi.OutputState }
 
@@ -7897,12 +6942,6 @@ func (o HttpSettingsRoutesOutput) ToHttpSettingsRoutesPtrOutputWithContext(ctx c
 	}).(HttpSettingsRoutesPtrOutput)
 }
 
-func (o HttpSettingsRoutesOutput) ToOutput(ctx context.Context) pulumix.Output[HttpSettingsRoutes] {
-	return pulumix.Output[HttpSettingsRoutes]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The prefix that should precede all the authentication/authorization paths.
 func (o HttpSettingsRoutesOutput) ApiPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpSettingsRoutes) *string { return v.ApiPrefix }).(pulumi.StringPtrOutput)
@@ -7920,12 +6959,6 @@ func (o HttpSettingsRoutesPtrOutput) ToHttpSettingsRoutesPtrOutput() HttpSetting
 
 func (o HttpSettingsRoutesPtrOutput) ToHttpSettingsRoutesPtrOutputWithContext(ctx context.Context) HttpSettingsRoutesPtrOutput {
 	return o
-}
-
-func (o HttpSettingsRoutesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpSettingsRoutes] {
-	return pulumix.Output[*HttpSettingsRoutes]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpSettingsRoutesPtrOutput) Elem() HttpSettingsRoutesOutput {
@@ -7969,12 +7002,6 @@ func (o HttpSettingsRoutesResponseOutput) ToHttpSettingsRoutesResponseOutputWith
 	return o
 }
 
-func (o HttpSettingsRoutesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpSettingsRoutesResponse] {
-	return pulumix.Output[HttpSettingsRoutesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The prefix that should precede all the authentication/authorization paths.
 func (o HttpSettingsRoutesResponseOutput) ApiPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpSettingsRoutesResponse) *string { return v.ApiPrefix }).(pulumi.StringPtrOutput)
@@ -7992,12 +7019,6 @@ func (o HttpSettingsRoutesResponsePtrOutput) ToHttpSettingsRoutesResponsePtrOutp
 
 func (o HttpSettingsRoutesResponsePtrOutput) ToHttpSettingsRoutesResponsePtrOutputWithContext(ctx context.Context) HttpSettingsRoutesResponsePtrOutput {
 	return o
-}
-
-func (o HttpSettingsRoutesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpSettingsRoutesResponse] {
-	return pulumix.Output[*HttpSettingsRoutesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpSettingsRoutesResponsePtrOutput) Elem() HttpSettingsRoutesResponseOutput {
@@ -8049,12 +7070,6 @@ func (o IdentifierResponseOutput) ToIdentifierResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o IdentifierResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentifierResponse] {
-	return pulumix.Output[IdentifierResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource Id.
 func (o IdentifierResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentifierResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -8092,12 +7107,6 @@ func (o IdentifierResponseArrayOutput) ToIdentifierResponseArrayOutput() Identif
 
 func (o IdentifierResponseArrayOutput) ToIdentifierResponseArrayOutputWithContext(ctx context.Context) IdentifierResponseArrayOutput {
 	return o
-}
-
-func (o IdentifierResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IdentifierResponse] {
-	return pulumix.Output[[]IdentifierResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentifierResponseArrayOutput) Index(i pulumi.IntInput) IdentifierResponseOutput {
@@ -8175,12 +7184,6 @@ func (i IdentityProvidersArgs) ToIdentityProvidersOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityProvidersOutput)
 }
 
-func (i IdentityProvidersArgs) ToOutput(ctx context.Context) pulumix.Output[IdentityProviders] {
-	return pulumix.Output[IdentityProviders]{
-		OutputState: i.ToIdentityProvidersOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IdentityProvidersArgs) ToIdentityProvidersPtrOutput() IdentityProvidersPtrOutput {
 	return i.ToIdentityProvidersPtrOutputWithContext(context.Background())
 }
@@ -8222,12 +7225,6 @@ func (i *identityProvidersPtrType) ToIdentityProvidersPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityProvidersPtrOutput)
 }
 
-func (i *identityProvidersPtrType) ToOutput(ctx context.Context) pulumix.Output[*IdentityProviders] {
-	return pulumix.Output[*IdentityProviders]{
-		OutputState: i.ToIdentityProvidersPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of each of the identity providers used to configure App Service Authentication/Authorization.
 type IdentityProvidersOutput struct{ *pulumi.OutputState }
 
@@ -8251,12 +7248,6 @@ func (o IdentityProvidersOutput) ToIdentityProvidersPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityProviders) *IdentityProviders {
 		return &v
 	}).(IdentityProvidersPtrOutput)
-}
-
-func (o IdentityProvidersOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityProviders] {
-	return pulumix.Output[IdentityProviders]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration settings of the Apple provider.
@@ -8319,12 +7310,6 @@ func (o IdentityProvidersPtrOutput) ToIdentityProvidersPtrOutput() IdentityProvi
 
 func (o IdentityProvidersPtrOutput) ToIdentityProvidersPtrOutputWithContext(ctx context.Context) IdentityProvidersPtrOutput {
 	return o
-}
-
-func (o IdentityProvidersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityProviders] {
-	return pulumix.Output[*IdentityProviders]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityProvidersPtrOutput) Elem() IdentityProvidersOutput {
@@ -8466,12 +7451,6 @@ func (o IdentityProvidersResponseOutput) ToIdentityProvidersResponseOutputWithCo
 	return o
 }
 
-func (o IdentityProvidersResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityProvidersResponse] {
-	return pulumix.Output[IdentityProvidersResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration settings of the Apple provider.
 func (o IdentityProvidersResponseOutput) Apple() AppleResponsePtrOutput {
 	return o.ApplyT(func(v IdentityProvidersResponse) *AppleResponse { return v.Apple }).(AppleResponsePtrOutput)
@@ -8532,12 +7511,6 @@ func (o IdentityProvidersResponsePtrOutput) ToIdentityProvidersResponsePtrOutput
 
 func (o IdentityProvidersResponsePtrOutput) ToIdentityProvidersResponsePtrOutputWithContext(ctx context.Context) IdentityProvidersResponsePtrOutput {
 	return o
-}
-
-func (o IdentityProvidersResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityProvidersResponse] {
-	return pulumix.Output[*IdentityProvidersResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityProvidersResponsePtrOutput) Elem() IdentityProvidersResponseOutput {
@@ -8680,12 +7653,6 @@ func (i JwtClaimChecksArgs) ToJwtClaimChecksOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(JwtClaimChecksOutput)
 }
 
-func (i JwtClaimChecksArgs) ToOutput(ctx context.Context) pulumix.Output[JwtClaimChecks] {
-	return pulumix.Output[JwtClaimChecks]{
-		OutputState: i.ToJwtClaimChecksOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i JwtClaimChecksArgs) ToJwtClaimChecksPtrOutput() JwtClaimChecksPtrOutput {
 	return i.ToJwtClaimChecksPtrOutputWithContext(context.Background())
 }
@@ -8727,12 +7694,6 @@ func (i *jwtClaimChecksPtrType) ToJwtClaimChecksPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(JwtClaimChecksPtrOutput)
 }
 
-func (i *jwtClaimChecksPtrType) ToOutput(ctx context.Context) pulumix.Output[*JwtClaimChecks] {
-	return pulumix.Output[*JwtClaimChecks]{
-		OutputState: i.ToJwtClaimChecksPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the checks that should be made while validating the JWT Claims.
 type JwtClaimChecksOutput struct{ *pulumi.OutputState }
 
@@ -8758,12 +7719,6 @@ func (o JwtClaimChecksOutput) ToJwtClaimChecksPtrOutputWithContext(ctx context.C
 	}).(JwtClaimChecksPtrOutput)
 }
 
-func (o JwtClaimChecksOutput) ToOutput(ctx context.Context) pulumix.Output[JwtClaimChecks] {
-	return pulumix.Output[JwtClaimChecks]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of the allowed client applications.
 func (o JwtClaimChecksOutput) AllowedClientApplications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JwtClaimChecks) []string { return v.AllowedClientApplications }).(pulumi.StringArrayOutput)
@@ -8786,12 +7741,6 @@ func (o JwtClaimChecksPtrOutput) ToJwtClaimChecksPtrOutput() JwtClaimChecksPtrOu
 
 func (o JwtClaimChecksPtrOutput) ToJwtClaimChecksPtrOutputWithContext(ctx context.Context) JwtClaimChecksPtrOutput {
 	return o
-}
-
-func (o JwtClaimChecksPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JwtClaimChecks] {
-	return pulumix.Output[*JwtClaimChecks]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JwtClaimChecksPtrOutput) Elem() JwtClaimChecksOutput {
@@ -8847,12 +7796,6 @@ func (o JwtClaimChecksResponseOutput) ToJwtClaimChecksResponseOutputWithContext(
 	return o
 }
 
-func (o JwtClaimChecksResponseOutput) ToOutput(ctx context.Context) pulumix.Output[JwtClaimChecksResponse] {
-	return pulumix.Output[JwtClaimChecksResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of the allowed client applications.
 func (o JwtClaimChecksResponseOutput) AllowedClientApplications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JwtClaimChecksResponse) []string { return v.AllowedClientApplications }).(pulumi.StringArrayOutput)
@@ -8875,12 +7818,6 @@ func (o JwtClaimChecksResponsePtrOutput) ToJwtClaimChecksResponsePtrOutput() Jwt
 
 func (o JwtClaimChecksResponsePtrOutput) ToJwtClaimChecksResponsePtrOutputWithContext(ctx context.Context) JwtClaimChecksResponsePtrOutput {
 	return o
-}
-
-func (o JwtClaimChecksResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*JwtClaimChecksResponse] {
-	return pulumix.Output[*JwtClaimChecksResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o JwtClaimChecksResponsePtrOutput) Elem() JwtClaimChecksResponseOutput {
@@ -8960,12 +7897,6 @@ func (i LegacyMicrosoftAccountArgs) ToLegacyMicrosoftAccountOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(LegacyMicrosoftAccountOutput)
 }
 
-func (i LegacyMicrosoftAccountArgs) ToOutput(ctx context.Context) pulumix.Output[LegacyMicrosoftAccount] {
-	return pulumix.Output[LegacyMicrosoftAccount]{
-		OutputState: i.ToLegacyMicrosoftAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i LegacyMicrosoftAccountArgs) ToLegacyMicrosoftAccountPtrOutput() LegacyMicrosoftAccountPtrOutput {
 	return i.ToLegacyMicrosoftAccountPtrOutputWithContext(context.Background())
 }
@@ -9007,12 +7938,6 @@ func (i *legacyMicrosoftAccountPtrType) ToLegacyMicrosoftAccountPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(LegacyMicrosoftAccountPtrOutput)
 }
 
-func (i *legacyMicrosoftAccountPtrType) ToOutput(ctx context.Context) pulumix.Output[*LegacyMicrosoftAccount] {
-	return pulumix.Output[*LegacyMicrosoftAccount]{
-		OutputState: i.ToLegacyMicrosoftAccountPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the legacy Microsoft Account provider.
 type LegacyMicrosoftAccountOutput struct{ *pulumi.OutputState }
 
@@ -9036,12 +7961,6 @@ func (o LegacyMicrosoftAccountOutput) ToLegacyMicrosoftAccountPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v LegacyMicrosoftAccount) *LegacyMicrosoftAccount {
 		return &v
 	}).(LegacyMicrosoftAccountPtrOutput)
-}
-
-func (o LegacyMicrosoftAccountOutput) ToOutput(ctx context.Context) pulumix.Output[LegacyMicrosoftAccount] {
-	return pulumix.Output[LegacyMicrosoftAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // <code>false</code> if the legacy Microsoft Account provider should not be enabled despite the set registration; otherwise, <code>true</code>.
@@ -9076,12 +7995,6 @@ func (o LegacyMicrosoftAccountPtrOutput) ToLegacyMicrosoftAccountPtrOutput() Leg
 
 func (o LegacyMicrosoftAccountPtrOutput) ToLegacyMicrosoftAccountPtrOutputWithContext(ctx context.Context) LegacyMicrosoftAccountPtrOutput {
 	return o
-}
-
-func (o LegacyMicrosoftAccountPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LegacyMicrosoftAccount] {
-	return pulumix.Output[*LegacyMicrosoftAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LegacyMicrosoftAccountPtrOutput) Elem() LegacyMicrosoftAccountOutput {
@@ -9161,12 +8074,6 @@ func (o LegacyMicrosoftAccountResponseOutput) ToLegacyMicrosoftAccountResponseOu
 	return o
 }
 
-func (o LegacyMicrosoftAccountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LegacyMicrosoftAccountResponse] {
-	return pulumix.Output[LegacyMicrosoftAccountResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // <code>false</code> if the legacy Microsoft Account provider should not be enabled despite the set registration; otherwise, <code>true</code>.
 func (o LegacyMicrosoftAccountResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LegacyMicrosoftAccountResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -9199,12 +8106,6 @@ func (o LegacyMicrosoftAccountResponsePtrOutput) ToLegacyMicrosoftAccountRespons
 
 func (o LegacyMicrosoftAccountResponsePtrOutput) ToLegacyMicrosoftAccountResponsePtrOutputWithContext(ctx context.Context) LegacyMicrosoftAccountResponsePtrOutput {
 	return o
-}
-
-func (o LegacyMicrosoftAccountResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LegacyMicrosoftAccountResponse] {
-	return pulumix.Output[*LegacyMicrosoftAccountResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LegacyMicrosoftAccountResponsePtrOutput) Elem() LegacyMicrosoftAccountResponseOutput {
@@ -9316,12 +8217,6 @@ func (i LoginArgs) ToLoginOutputWithContext(ctx context.Context) LoginOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LoginOutput)
 }
 
-func (i LoginArgs) ToOutput(ctx context.Context) pulumix.Output[Login] {
-	return pulumix.Output[Login]{
-		OutputState: i.ToLoginOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i LoginArgs) ToLoginPtrOutput() LoginPtrOutput {
 	return i.ToLoginPtrOutputWithContext(context.Background())
 }
@@ -9363,12 +8258,6 @@ func (i *loginPtrType) ToLoginPtrOutputWithContext(ctx context.Context) LoginPtr
 	return pulumi.ToOutputWithContext(ctx, i).(LoginPtrOutput)
 }
 
-func (i *loginPtrType) ToOutput(ctx context.Context) pulumix.Output[*Login] {
-	return pulumix.Output[*Login]{
-		OutputState: i.ToLoginPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the login flow of users using App Service Authentication/Authorization.
 type LoginOutput struct{ *pulumi.OutputState }
 
@@ -9392,12 +8281,6 @@ func (o LoginOutput) ToLoginPtrOutputWithContext(ctx context.Context) LoginPtrOu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Login) *Login {
 		return &v
 	}).(LoginPtrOutput)
-}
-
-func (o LoginOutput) ToOutput(ctx context.Context) pulumix.Output[Login] {
-	return pulumix.Output[Login]{
-		OutputState: o.OutputState,
-	}
 }
 
 // External URLs that can be redirected to as part of logging in or logging out of the app. Note that the query string part of the URL is ignored.
@@ -9444,12 +8327,6 @@ func (o LoginPtrOutput) ToLoginPtrOutput() LoginPtrOutput {
 
 func (o LoginPtrOutput) ToLoginPtrOutputWithContext(ctx context.Context) LoginPtrOutput {
 	return o
-}
-
-func (o LoginPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Login] {
-	return pulumix.Output[*Login]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LoginPtrOutput) Elem() LoginOutput {
@@ -9557,12 +8434,6 @@ func (o LoginResponseOutput) ToLoginResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o LoginResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LoginResponse] {
-	return pulumix.Output[LoginResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // External URLs that can be redirected to as part of logging in or logging out of the app. Note that the query string part of the URL is ignored.
 // This is an advanced setting typically only needed by Windows Store application backends.
 // Note that URLs within the current domain are always implicitly allowed.
@@ -9607,12 +8478,6 @@ func (o LoginResponsePtrOutput) ToLoginResponsePtrOutput() LoginResponsePtrOutpu
 
 func (o LoginResponsePtrOutput) ToLoginResponsePtrOutputWithContext(ctx context.Context) LoginResponsePtrOutput {
 	return o
-}
-
-func (o LoginResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LoginResponse] {
-	return pulumix.Output[*LoginResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LoginResponsePtrOutput) Elem() LoginResponseOutput {
@@ -9722,12 +8587,6 @@ func (i LoginRoutesArgs) ToLoginRoutesOutputWithContext(ctx context.Context) Log
 	return pulumi.ToOutputWithContext(ctx, i).(LoginRoutesOutput)
 }
 
-func (i LoginRoutesArgs) ToOutput(ctx context.Context) pulumix.Output[LoginRoutes] {
-	return pulumix.Output[LoginRoutes]{
-		OutputState: i.ToLoginRoutesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i LoginRoutesArgs) ToLoginRoutesPtrOutput() LoginRoutesPtrOutput {
 	return i.ToLoginRoutesPtrOutputWithContext(context.Background())
 }
@@ -9769,12 +8628,6 @@ func (i *loginRoutesPtrType) ToLoginRoutesPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(LoginRoutesPtrOutput)
 }
 
-func (i *loginRoutesPtrType) ToOutput(ctx context.Context) pulumix.Output[*LoginRoutes] {
-	return pulumix.Output[*LoginRoutes]{
-		OutputState: i.ToLoginRoutesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The routes that specify the endpoints used for login and logout requests.
 type LoginRoutesOutput struct{ *pulumi.OutputState }
 
@@ -9800,12 +8653,6 @@ func (o LoginRoutesOutput) ToLoginRoutesPtrOutputWithContext(ctx context.Context
 	}).(LoginRoutesPtrOutput)
 }
 
-func (o LoginRoutesOutput) ToOutput(ctx context.Context) pulumix.Output[LoginRoutes] {
-	return pulumix.Output[LoginRoutes]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The endpoint at which a logout request should be made.
 func (o LoginRoutesOutput) LogoutEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoginRoutes) *string { return v.LogoutEndpoint }).(pulumi.StringPtrOutput)
@@ -9823,12 +8670,6 @@ func (o LoginRoutesPtrOutput) ToLoginRoutesPtrOutput() LoginRoutesPtrOutput {
 
 func (o LoginRoutesPtrOutput) ToLoginRoutesPtrOutputWithContext(ctx context.Context) LoginRoutesPtrOutput {
 	return o
-}
-
-func (o LoginRoutesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LoginRoutes] {
-	return pulumix.Output[*LoginRoutes]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LoginRoutesPtrOutput) Elem() LoginRoutesOutput {
@@ -9872,12 +8713,6 @@ func (o LoginRoutesResponseOutput) ToLoginRoutesResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o LoginRoutesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LoginRoutesResponse] {
-	return pulumix.Output[LoginRoutesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The endpoint at which a logout request should be made.
 func (o LoginRoutesResponseOutput) LogoutEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoginRoutesResponse) *string { return v.LogoutEndpoint }).(pulumi.StringPtrOutput)
@@ -9895,12 +8730,6 @@ func (o LoginRoutesResponsePtrOutput) ToLoginRoutesResponsePtrOutput() LoginRout
 
 func (o LoginRoutesResponsePtrOutput) ToLoginRoutesResponsePtrOutputWithContext(ctx context.Context) LoginRoutesResponsePtrOutput {
 	return o
-}
-
-func (o LoginRoutesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LoginRoutesResponse] {
-	return pulumix.Output[*LoginRoutesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LoginRoutesResponsePtrOutput) Elem() LoginRoutesResponseOutput {
@@ -9958,12 +8787,6 @@ func (i LoginScopesArgs) ToLoginScopesOutputWithContext(ctx context.Context) Log
 	return pulumi.ToOutputWithContext(ctx, i).(LoginScopesOutput)
 }
 
-func (i LoginScopesArgs) ToOutput(ctx context.Context) pulumix.Output[LoginScopes] {
-	return pulumix.Output[LoginScopes]{
-		OutputState: i.ToLoginScopesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i LoginScopesArgs) ToLoginScopesPtrOutput() LoginScopesPtrOutput {
 	return i.ToLoginScopesPtrOutputWithContext(context.Background())
 }
@@ -10005,12 +8828,6 @@ func (i *loginScopesPtrType) ToLoginScopesPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(LoginScopesPtrOutput)
 }
 
-func (i *loginScopesPtrType) ToOutput(ctx context.Context) pulumix.Output[*LoginScopes] {
-	return pulumix.Output[*LoginScopes]{
-		OutputState: i.ToLoginScopesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the login flow, including the scopes that should be requested.
 type LoginScopesOutput struct{ *pulumi.OutputState }
 
@@ -10036,12 +8853,6 @@ func (o LoginScopesOutput) ToLoginScopesPtrOutputWithContext(ctx context.Context
 	}).(LoginScopesPtrOutput)
 }
 
-func (o LoginScopesOutput) ToOutput(ctx context.Context) pulumix.Output[LoginScopes] {
-	return pulumix.Output[LoginScopes]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of the scopes that should be requested while authenticating.
 func (o LoginScopesOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LoginScopes) []string { return v.Scopes }).(pulumi.StringArrayOutput)
@@ -10059,12 +8870,6 @@ func (o LoginScopesPtrOutput) ToLoginScopesPtrOutput() LoginScopesPtrOutput {
 
 func (o LoginScopesPtrOutput) ToLoginScopesPtrOutputWithContext(ctx context.Context) LoginScopesPtrOutput {
 	return o
-}
-
-func (o LoginScopesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LoginScopes] {
-	return pulumix.Output[*LoginScopes]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LoginScopesPtrOutput) Elem() LoginScopesOutput {
@@ -10108,12 +8913,6 @@ func (o LoginScopesResponseOutput) ToLoginScopesResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o LoginScopesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LoginScopesResponse] {
-	return pulumix.Output[LoginScopesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of the scopes that should be requested while authenticating.
 func (o LoginScopesResponseOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LoginScopesResponse) []string { return v.Scopes }).(pulumi.StringArrayOutput)
@@ -10131,12 +8930,6 @@ func (o LoginScopesResponsePtrOutput) ToLoginScopesResponsePtrOutput() LoginScop
 
 func (o LoginScopesResponsePtrOutput) ToLoginScopesResponsePtrOutputWithContext(ctx context.Context) LoginScopesResponsePtrOutput {
 	return o
-}
-
-func (o LoginScopesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LoginScopesResponse] {
-	return pulumix.Output[*LoginScopesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LoginScopesResponsePtrOutput) Elem() LoginScopesResponseOutput {
@@ -10198,12 +8991,6 @@ func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
 }
 
-func (i ManagedServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
-	return pulumix.Output[ManagedServiceIdentity]{
-		OutputState: i.ToManagedServiceIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
 	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
 }
@@ -10245,12 +9032,6 @@ func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
 }
 
-func (i *managedServiceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
-	return pulumix.Output[*ManagedServiceIdentity]{
-		OutputState: i.ToManagedServiceIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Managed service identity.
 type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -10276,12 +9057,6 @@ func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithConte
 	}).(ManagedServiceIdentityPtrOutput)
 }
 
-func (o ManagedServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
-	return pulumix.Output[ManagedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Type of managed service identity.
 func (o ManagedServiceIdentityOutput) Type() ManagedServiceIdentityTypePtrOutput {
 	return o.ApplyT(func(v ManagedServiceIdentity) *ManagedServiceIdentityType { return v.Type }).(ManagedServiceIdentityTypePtrOutput)
@@ -10304,12 +9079,6 @@ func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() Man
 
 func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
 	return o
-}
-
-func (o ManagedServiceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
-	return pulumix.Output[*ManagedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
@@ -10369,12 +9138,6 @@ func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOu
 	return o
 }
 
-func (o ManagedServiceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentityResponse] {
-	return pulumix.Output[ManagedServiceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Principal Id of managed service identity.
 func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -10409,12 +9172,6 @@ func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityRespons
 
 func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
 	return o
-}
-
-func (o ManagedServiceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityResponse] {
-	return pulumix.Output[*ManagedServiceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
@@ -10506,12 +9263,6 @@ func (i NonceArgs) ToNonceOutputWithContext(ctx context.Context) NonceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NonceOutput)
 }
 
-func (i NonceArgs) ToOutput(ctx context.Context) pulumix.Output[Nonce] {
-	return pulumix.Output[Nonce]{
-		OutputState: i.ToNonceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i NonceArgs) ToNoncePtrOutput() NoncePtrOutput {
 	return i.ToNoncePtrOutputWithContext(context.Background())
 }
@@ -10553,12 +9304,6 @@ func (i *noncePtrType) ToNoncePtrOutputWithContext(ctx context.Context) NoncePtr
 	return pulumi.ToOutputWithContext(ctx, i).(NoncePtrOutput)
 }
 
-func (i *noncePtrType) ToOutput(ctx context.Context) pulumix.Output[*Nonce] {
-	return pulumix.Output[*Nonce]{
-		OutputState: i.ToNoncePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the nonce used in the login flow.
 type NonceOutput struct{ *pulumi.OutputState }
 
@@ -10584,12 +9329,6 @@ func (o NonceOutput) ToNoncePtrOutputWithContext(ctx context.Context) NoncePtrOu
 	}).(NoncePtrOutput)
 }
 
-func (o NonceOutput) ToOutput(ctx context.Context) pulumix.Output[Nonce] {
-	return pulumix.Output[Nonce]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The time after the request is made when the nonce should expire.
 func (o NonceOutput) NonceExpirationInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Nonce) *string { return v.NonceExpirationInterval }).(pulumi.StringPtrOutput)
@@ -10612,12 +9351,6 @@ func (o NoncePtrOutput) ToNoncePtrOutput() NoncePtrOutput {
 
 func (o NoncePtrOutput) ToNoncePtrOutputWithContext(ctx context.Context) NoncePtrOutput {
 	return o
-}
-
-func (o NoncePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Nonce] {
-	return pulumix.Output[*Nonce]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NoncePtrOutput) Elem() NonceOutput {
@@ -10673,12 +9406,6 @@ func (o NonceResponseOutput) ToNonceResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o NonceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NonceResponse] {
-	return pulumix.Output[NonceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The time after the request is made when the nonce should expire.
 func (o NonceResponseOutput) NonceExpirationInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NonceResponse) *string { return v.NonceExpirationInterval }).(pulumi.StringPtrOutput)
@@ -10701,12 +9428,6 @@ func (o NonceResponsePtrOutput) ToNonceResponsePtrOutput() NonceResponsePtrOutpu
 
 func (o NonceResponsePtrOutput) ToNonceResponsePtrOutputWithContext(ctx context.Context) NonceResponsePtrOutput {
 	return o
-}
-
-func (o NonceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NonceResponse] {
-	return pulumix.Output[*NonceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NonceResponsePtrOutput) Elem() NonceResponseOutput {
@@ -10778,12 +9499,6 @@ func (i OpenIdConnectClientCredentialArgs) ToOpenIdConnectClientCredentialOutput
 	return pulumi.ToOutputWithContext(ctx, i).(OpenIdConnectClientCredentialOutput)
 }
 
-func (i OpenIdConnectClientCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[OpenIdConnectClientCredential] {
-	return pulumix.Output[OpenIdConnectClientCredential]{
-		OutputState: i.ToOpenIdConnectClientCredentialOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OpenIdConnectClientCredentialArgs) ToOpenIdConnectClientCredentialPtrOutput() OpenIdConnectClientCredentialPtrOutput {
 	return i.ToOpenIdConnectClientCredentialPtrOutputWithContext(context.Background())
 }
@@ -10825,12 +9540,6 @@ func (i *openIdConnectClientCredentialPtrType) ToOpenIdConnectClientCredentialPt
 	return pulumi.ToOutputWithContext(ctx, i).(OpenIdConnectClientCredentialPtrOutput)
 }
 
-func (i *openIdConnectClientCredentialPtrType) ToOutput(ctx context.Context) pulumix.Output[*OpenIdConnectClientCredential] {
-	return pulumix.Output[*OpenIdConnectClientCredential]{
-		OutputState: i.ToOpenIdConnectClientCredentialPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The authentication client credentials of the custom Open ID Connect provider.
 type OpenIdConnectClientCredentialOutput struct{ *pulumi.OutputState }
 
@@ -10856,12 +9565,6 @@ func (o OpenIdConnectClientCredentialOutput) ToOpenIdConnectClientCredentialPtrO
 	}).(OpenIdConnectClientCredentialPtrOutput)
 }
 
-func (o OpenIdConnectClientCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[OpenIdConnectClientCredential] {
-	return pulumix.Output[OpenIdConnectClientCredential]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The app setting that contains the client secret for the custom Open ID Connect provider.
 func (o OpenIdConnectClientCredentialOutput) ClientSecretSettingName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenIdConnectClientCredential) *string { return v.ClientSecretSettingName }).(pulumi.StringPtrOutput)
@@ -10884,12 +9587,6 @@ func (o OpenIdConnectClientCredentialPtrOutput) ToOpenIdConnectClientCredentialP
 
 func (o OpenIdConnectClientCredentialPtrOutput) ToOpenIdConnectClientCredentialPtrOutputWithContext(ctx context.Context) OpenIdConnectClientCredentialPtrOutput {
 	return o
-}
-
-func (o OpenIdConnectClientCredentialPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenIdConnectClientCredential] {
-	return pulumix.Output[*OpenIdConnectClientCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenIdConnectClientCredentialPtrOutput) Elem() OpenIdConnectClientCredentialOutput {
@@ -10945,12 +9642,6 @@ func (o OpenIdConnectClientCredentialResponseOutput) ToOpenIdConnectClientCreden
 	return o
 }
 
-func (o OpenIdConnectClientCredentialResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OpenIdConnectClientCredentialResponse] {
-	return pulumix.Output[OpenIdConnectClientCredentialResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The app setting that contains the client secret for the custom Open ID Connect provider.
 func (o OpenIdConnectClientCredentialResponseOutput) ClientSecretSettingName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenIdConnectClientCredentialResponse) *string { return v.ClientSecretSettingName }).(pulumi.StringPtrOutput)
@@ -10973,12 +9664,6 @@ func (o OpenIdConnectClientCredentialResponsePtrOutput) ToOpenIdConnectClientCre
 
 func (o OpenIdConnectClientCredentialResponsePtrOutput) ToOpenIdConnectClientCredentialResponsePtrOutputWithContext(ctx context.Context) OpenIdConnectClientCredentialResponsePtrOutput {
 	return o
-}
-
-func (o OpenIdConnectClientCredentialResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenIdConnectClientCredentialResponse] {
-	return pulumix.Output[*OpenIdConnectClientCredentialResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenIdConnectClientCredentialResponsePtrOutput) Elem() OpenIdConnectClientCredentialResponseOutput {
@@ -11062,12 +9747,6 @@ func (i OpenIdConnectConfigArgs) ToOpenIdConnectConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(OpenIdConnectConfigOutput)
 }
 
-func (i OpenIdConnectConfigArgs) ToOutput(ctx context.Context) pulumix.Output[OpenIdConnectConfig] {
-	return pulumix.Output[OpenIdConnectConfig]{
-		OutputState: i.ToOpenIdConnectConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OpenIdConnectConfigArgs) ToOpenIdConnectConfigPtrOutput() OpenIdConnectConfigPtrOutput {
 	return i.ToOpenIdConnectConfigPtrOutputWithContext(context.Background())
 }
@@ -11109,12 +9788,6 @@ func (i *openIdConnectConfigPtrType) ToOpenIdConnectConfigPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(OpenIdConnectConfigPtrOutput)
 }
 
-func (i *openIdConnectConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*OpenIdConnectConfig] {
-	return pulumix.Output[*OpenIdConnectConfig]{
-		OutputState: i.ToOpenIdConnectConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the endpoints used for the custom Open ID Connect provider.
 type OpenIdConnectConfigOutput struct{ *pulumi.OutputState }
 
@@ -11138,12 +9811,6 @@ func (o OpenIdConnectConfigOutput) ToOpenIdConnectConfigPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenIdConnectConfig) *OpenIdConnectConfig {
 		return &v
 	}).(OpenIdConnectConfigPtrOutput)
-}
-
-func (o OpenIdConnectConfigOutput) ToOutput(ctx context.Context) pulumix.Output[OpenIdConnectConfig] {
-	return pulumix.Output[OpenIdConnectConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The endpoint to be used to make an authorization request.
@@ -11183,12 +9850,6 @@ func (o OpenIdConnectConfigPtrOutput) ToOpenIdConnectConfigPtrOutput() OpenIdCon
 
 func (o OpenIdConnectConfigPtrOutput) ToOpenIdConnectConfigPtrOutputWithContext(ctx context.Context) OpenIdConnectConfigPtrOutput {
 	return o
-}
-
-func (o OpenIdConnectConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenIdConnectConfig] {
-	return pulumix.Output[*OpenIdConnectConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenIdConnectConfigPtrOutput) Elem() OpenIdConnectConfigOutput {
@@ -11280,12 +9941,6 @@ func (o OpenIdConnectConfigResponseOutput) ToOpenIdConnectConfigResponseOutputWi
 	return o
 }
 
-func (o OpenIdConnectConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OpenIdConnectConfigResponse] {
-	return pulumix.Output[OpenIdConnectConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The endpoint to be used to make an authorization request.
 func (o OpenIdConnectConfigResponseOutput) AuthorizationEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenIdConnectConfigResponse) *string { return v.AuthorizationEndpoint }).(pulumi.StringPtrOutput)
@@ -11323,12 +9978,6 @@ func (o OpenIdConnectConfigResponsePtrOutput) ToOpenIdConnectConfigResponsePtrOu
 
 func (o OpenIdConnectConfigResponsePtrOutput) ToOpenIdConnectConfigResponsePtrOutputWithContext(ctx context.Context) OpenIdConnectConfigResponsePtrOutput {
 	return o
-}
-
-func (o OpenIdConnectConfigResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenIdConnectConfigResponse] {
-	return pulumix.Output[*OpenIdConnectConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenIdConnectConfigResponsePtrOutput) Elem() OpenIdConnectConfigResponseOutput {
@@ -11430,12 +10079,6 @@ func (i OpenIdConnectLoginArgs) ToOpenIdConnectLoginOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(OpenIdConnectLoginOutput)
 }
 
-func (i OpenIdConnectLoginArgs) ToOutput(ctx context.Context) pulumix.Output[OpenIdConnectLogin] {
-	return pulumix.Output[OpenIdConnectLogin]{
-		OutputState: i.ToOpenIdConnectLoginOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OpenIdConnectLoginArgs) ToOpenIdConnectLoginPtrOutput() OpenIdConnectLoginPtrOutput {
 	return i.ToOpenIdConnectLoginPtrOutputWithContext(context.Background())
 }
@@ -11477,12 +10120,6 @@ func (i *openIdConnectLoginPtrType) ToOpenIdConnectLoginPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(OpenIdConnectLoginPtrOutput)
 }
 
-func (i *openIdConnectLoginPtrType) ToOutput(ctx context.Context) pulumix.Output[*OpenIdConnectLogin] {
-	return pulumix.Output[*OpenIdConnectLogin]{
-		OutputState: i.ToOpenIdConnectLoginPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the login flow of the custom Open ID Connect provider.
 type OpenIdConnectLoginOutput struct{ *pulumi.OutputState }
 
@@ -11508,12 +10145,6 @@ func (o OpenIdConnectLoginOutput) ToOpenIdConnectLoginPtrOutputWithContext(ctx c
 	}).(OpenIdConnectLoginPtrOutput)
 }
 
-func (o OpenIdConnectLoginOutput) ToOutput(ctx context.Context) pulumix.Output[OpenIdConnectLogin] {
-	return pulumix.Output[OpenIdConnectLogin]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the claim that contains the users name.
 func (o OpenIdConnectLoginOutput) NameClaimType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenIdConnectLogin) *string { return v.NameClaimType }).(pulumi.StringPtrOutput)
@@ -11536,12 +10167,6 @@ func (o OpenIdConnectLoginPtrOutput) ToOpenIdConnectLoginPtrOutput() OpenIdConne
 
 func (o OpenIdConnectLoginPtrOutput) ToOpenIdConnectLoginPtrOutputWithContext(ctx context.Context) OpenIdConnectLoginPtrOutput {
 	return o
-}
-
-func (o OpenIdConnectLoginPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenIdConnectLogin] {
-	return pulumix.Output[*OpenIdConnectLogin]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenIdConnectLoginPtrOutput) Elem() OpenIdConnectLoginOutput {
@@ -11597,12 +10222,6 @@ func (o OpenIdConnectLoginResponseOutput) ToOpenIdConnectLoginResponseOutputWith
 	return o
 }
 
-func (o OpenIdConnectLoginResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OpenIdConnectLoginResponse] {
-	return pulumix.Output[OpenIdConnectLoginResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the claim that contains the users name.
 func (o OpenIdConnectLoginResponseOutput) NameClaimType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenIdConnectLoginResponse) *string { return v.NameClaimType }).(pulumi.StringPtrOutput)
@@ -11625,12 +10244,6 @@ func (o OpenIdConnectLoginResponsePtrOutput) ToOpenIdConnectLoginResponsePtrOutp
 
 func (o OpenIdConnectLoginResponsePtrOutput) ToOpenIdConnectLoginResponsePtrOutputWithContext(ctx context.Context) OpenIdConnectLoginResponsePtrOutput {
 	return o
-}
-
-func (o OpenIdConnectLoginResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenIdConnectLoginResponse] {
-	return pulumix.Output[*OpenIdConnectLoginResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenIdConnectLoginResponsePtrOutput) Elem() OpenIdConnectLoginResponseOutput {
@@ -11706,12 +10319,6 @@ func (i OpenIdConnectRegistrationArgs) ToOpenIdConnectRegistrationOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(OpenIdConnectRegistrationOutput)
 }
 
-func (i OpenIdConnectRegistrationArgs) ToOutput(ctx context.Context) pulumix.Output[OpenIdConnectRegistration] {
-	return pulumix.Output[OpenIdConnectRegistration]{
-		OutputState: i.ToOpenIdConnectRegistrationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OpenIdConnectRegistrationArgs) ToOpenIdConnectRegistrationPtrOutput() OpenIdConnectRegistrationPtrOutput {
 	return i.ToOpenIdConnectRegistrationPtrOutputWithContext(context.Background())
 }
@@ -11753,12 +10360,6 @@ func (i *openIdConnectRegistrationPtrType) ToOpenIdConnectRegistrationPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(OpenIdConnectRegistrationPtrOutput)
 }
 
-func (i *openIdConnectRegistrationPtrType) ToOutput(ctx context.Context) pulumix.Output[*OpenIdConnectRegistration] {
-	return pulumix.Output[*OpenIdConnectRegistration]{
-		OutputState: i.ToOpenIdConnectRegistrationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the app registration for the custom Open ID Connect provider.
 type OpenIdConnectRegistrationOutput struct{ *pulumi.OutputState }
 
@@ -11782,12 +10383,6 @@ func (o OpenIdConnectRegistrationOutput) ToOpenIdConnectRegistrationPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OpenIdConnectRegistration) *OpenIdConnectRegistration {
 		return &v
 	}).(OpenIdConnectRegistrationPtrOutput)
-}
-
-func (o OpenIdConnectRegistrationOutput) ToOutput(ctx context.Context) pulumix.Output[OpenIdConnectRegistration] {
-	return pulumix.Output[OpenIdConnectRegistration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The authentication credentials of the custom Open ID Connect provider.
@@ -11817,12 +10412,6 @@ func (o OpenIdConnectRegistrationPtrOutput) ToOpenIdConnectRegistrationPtrOutput
 
 func (o OpenIdConnectRegistrationPtrOutput) ToOpenIdConnectRegistrationPtrOutputWithContext(ctx context.Context) OpenIdConnectRegistrationPtrOutput {
 	return o
-}
-
-func (o OpenIdConnectRegistrationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenIdConnectRegistration] {
-	return pulumix.Output[*OpenIdConnectRegistration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenIdConnectRegistrationPtrOutput) Elem() OpenIdConnectRegistrationOutput {
@@ -11890,12 +10479,6 @@ func (o OpenIdConnectRegistrationResponseOutput) ToOpenIdConnectRegistrationResp
 	return o
 }
 
-func (o OpenIdConnectRegistrationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OpenIdConnectRegistrationResponse] {
-	return pulumix.Output[OpenIdConnectRegistrationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The authentication credentials of the custom Open ID Connect provider.
 func (o OpenIdConnectRegistrationResponseOutput) ClientCredential() OpenIdConnectClientCredentialResponsePtrOutput {
 	return o.ApplyT(func(v OpenIdConnectRegistrationResponse) *OpenIdConnectClientCredentialResponse {
@@ -11927,12 +10510,6 @@ func (o OpenIdConnectRegistrationResponsePtrOutput) ToOpenIdConnectRegistrationR
 
 func (o OpenIdConnectRegistrationResponsePtrOutput) ToOpenIdConnectRegistrationResponsePtrOutputWithContext(ctx context.Context) OpenIdConnectRegistrationResponsePtrOutput {
 	return o
-}
-
-func (o OpenIdConnectRegistrationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenIdConnectRegistrationResponse] {
-	return pulumix.Output[*OpenIdConnectRegistrationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OpenIdConnectRegistrationResponsePtrOutput) Elem() OpenIdConnectRegistrationResponseOutput {
@@ -12000,12 +10577,6 @@ func (o PrivateLinkConnectionStateResponseOutput) ToPrivateLinkConnectionStateRe
 	return o
 }
 
-func (o PrivateLinkConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkConnectionStateResponse] {
-	return pulumix.Output[PrivateLinkConnectionStateResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ActionsRequired for a private link connection
 func (o PrivateLinkConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
@@ -12033,12 +10604,6 @@ func (o PrivateLinkConnectionStateResponsePtrOutput) ToPrivateLinkConnectionStat
 
 func (o PrivateLinkConnectionStateResponsePtrOutput) ToPrivateLinkConnectionStateResponsePtrOutputWithContext(ctx context.Context) PrivateLinkConnectionStateResponsePtrOutput {
 	return o
-}
-
-func (o PrivateLinkConnectionStateResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkConnectionStateResponse] {
-	return pulumix.Output[*PrivateLinkConnectionStateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateLinkConnectionStateResponsePtrOutput) Elem() PrivateLinkConnectionStateResponseOutput {
@@ -12115,12 +10680,6 @@ func (o RemotePrivateEndpointConnectionResponseOutput) ToRemotePrivateEndpointCo
 	return o
 }
 
-func (o RemotePrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RemotePrivateEndpointConnectionResponse] {
-	return pulumix.Output[RemotePrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource Id.
 func (o RemotePrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v RemotePrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -12174,12 +10733,6 @@ func (o RemotePrivateEndpointConnectionResponsePtrOutput) ToRemotePrivateEndpoin
 
 func (o RemotePrivateEndpointConnectionResponsePtrOutput) ToRemotePrivateEndpointConnectionResponsePtrOutputWithContext(ctx context.Context) RemotePrivateEndpointConnectionResponsePtrOutput {
 	return o
-}
-
-func (o RemotePrivateEndpointConnectionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RemotePrivateEndpointConnectionResponse] {
-	return pulumix.Output[*RemotePrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RemotePrivateEndpointConnectionResponsePtrOutput) Elem() RemotePrivateEndpointConnectionResponseOutput {
@@ -12316,12 +10869,6 @@ func (o ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponseOutput) To
 	return o
 }
 
-func (o ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponse] {
-	return pulumix.Output[ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Azure-AsyncOperation Error info.
 func (o ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponseOutput) Error() ErrorEntityResponsePtrOutput {
 	return o.ApplyT(func(v ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponse) *ErrorEntityResponse {
@@ -12408,12 +10955,6 @@ func (o ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponseArrayOutpu
 	return o
 }
 
-func (o ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponse] {
-	return pulumix.Output[[]ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponse {
 		return vs[0].([]ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponse)[vs[1].(int)]
@@ -12471,12 +11012,6 @@ func (i SkuCapacityArgs) ToSkuCapacityOutputWithContext(ctx context.Context) Sku
 	return pulumi.ToOutputWithContext(ctx, i).(SkuCapacityOutput)
 }
 
-func (i SkuCapacityArgs) ToOutput(ctx context.Context) pulumix.Output[SkuCapacity] {
-	return pulumix.Output[SkuCapacity]{
-		OutputState: i.ToSkuCapacityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SkuCapacityArgs) ToSkuCapacityPtrOutput() SkuCapacityPtrOutput {
 	return i.ToSkuCapacityPtrOutputWithContext(context.Background())
 }
@@ -12518,12 +11053,6 @@ func (i *skuCapacityPtrType) ToSkuCapacityPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SkuCapacityPtrOutput)
 }
 
-func (i *skuCapacityPtrType) ToOutput(ctx context.Context) pulumix.Output[*SkuCapacity] {
-	return pulumix.Output[*SkuCapacity]{
-		OutputState: i.ToSkuCapacityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Description of the App Service plan scale options.
 type SkuCapacityOutput struct{ *pulumi.OutputState }
 
@@ -12547,12 +11076,6 @@ func (o SkuCapacityOutput) ToSkuCapacityPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SkuCapacity) *SkuCapacity {
 		return &v
 	}).(SkuCapacityPtrOutput)
-}
-
-func (o SkuCapacityOutput) ToOutput(ctx context.Context) pulumix.Output[SkuCapacity] {
-	return pulumix.Output[SkuCapacity]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Default number of workers for this App Service plan SKU.
@@ -12592,12 +11115,6 @@ func (o SkuCapacityPtrOutput) ToSkuCapacityPtrOutput() SkuCapacityPtrOutput {
 
 func (o SkuCapacityPtrOutput) ToSkuCapacityPtrOutputWithContext(ctx context.Context) SkuCapacityPtrOutput {
 	return o
-}
-
-func (o SkuCapacityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuCapacity] {
-	return pulumix.Output[*SkuCapacity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuCapacityPtrOutput) Elem() SkuCapacityOutput {
@@ -12689,12 +11206,6 @@ func (o SkuCapacityResponseOutput) ToSkuCapacityResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o SkuCapacityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuCapacityResponse] {
-	return pulumix.Output[SkuCapacityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Default number of workers for this App Service plan SKU.
 func (o SkuCapacityResponseOutput) Default() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SkuCapacityResponse) *int { return v.Default }).(pulumi.IntPtrOutput)
@@ -12732,12 +11243,6 @@ func (o SkuCapacityResponsePtrOutput) ToSkuCapacityResponsePtrOutput() SkuCapaci
 
 func (o SkuCapacityResponsePtrOutput) ToSkuCapacityResponsePtrOutputWithContext(ctx context.Context) SkuCapacityResponsePtrOutput {
 	return o
-}
-
-func (o SkuCapacityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuCapacityResponse] {
-	return pulumix.Output[*SkuCapacityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuCapacityResponsePtrOutput) Elem() SkuCapacityResponseOutput {
@@ -12863,12 +11368,6 @@ func (i SkuDescriptionArgs) ToSkuDescriptionOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SkuDescriptionOutput)
 }
 
-func (i SkuDescriptionArgs) ToOutput(ctx context.Context) pulumix.Output[SkuDescription] {
-	return pulumix.Output[SkuDescription]{
-		OutputState: i.ToSkuDescriptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SkuDescriptionArgs) ToSkuDescriptionPtrOutput() SkuDescriptionPtrOutput {
 	return i.ToSkuDescriptionPtrOutputWithContext(context.Background())
 }
@@ -12910,12 +11409,6 @@ func (i *skuDescriptionPtrType) ToSkuDescriptionPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(SkuDescriptionPtrOutput)
 }
 
-func (i *skuDescriptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*SkuDescription] {
-	return pulumix.Output[*SkuDescription]{
-		OutputState: i.ToSkuDescriptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Description of a SKU for a scalable resource.
 type SkuDescriptionOutput struct{ *pulumi.OutputState }
 
@@ -12939,12 +11432,6 @@ func (o SkuDescriptionOutput) ToSkuDescriptionPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SkuDescription) *SkuDescription {
 		return &v
 	}).(SkuDescriptionPtrOutput)
-}
-
-func (o SkuDescriptionOutput) ToOutput(ctx context.Context) pulumix.Output[SkuDescription] {
-	return pulumix.Output[SkuDescription]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Capabilities of the SKU, e.g., is traffic manager enabled?
@@ -12999,12 +11486,6 @@ func (o SkuDescriptionPtrOutput) ToSkuDescriptionPtrOutput() SkuDescriptionPtrOu
 
 func (o SkuDescriptionPtrOutput) ToSkuDescriptionPtrOutputWithContext(ctx context.Context) SkuDescriptionPtrOutput {
 	return o
-}
-
-func (o SkuDescriptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuDescription] {
-	return pulumix.Output[*SkuDescription]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuDescriptionPtrOutput) Elem() SkuDescriptionOutput {
@@ -13132,12 +11613,6 @@ func (o SkuDescriptionResponseOutput) ToSkuDescriptionResponseOutputWithContext(
 	return o
 }
 
-func (o SkuDescriptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuDescriptionResponse] {
-	return pulumix.Output[SkuDescriptionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Capabilities of the SKU, e.g., is traffic manager enabled?
 func (o SkuDescriptionResponseOutput) Capabilities() CapabilityResponseArrayOutput {
 	return o.ApplyT(func(v SkuDescriptionResponse) []CapabilityResponse { return v.Capabilities }).(CapabilityResponseArrayOutput)
@@ -13190,12 +11665,6 @@ func (o SkuDescriptionResponsePtrOutput) ToSkuDescriptionResponsePtrOutput() Sku
 
 func (o SkuDescriptionResponsePtrOutput) ToSkuDescriptionResponsePtrOutputWithContext(ctx context.Context) SkuDescriptionResponsePtrOutput {
 	return o
-}
-
-func (o SkuDescriptionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuDescriptionResponse] {
-	return pulumix.Output[*SkuDescriptionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuDescriptionResponsePtrOutput) Elem() SkuDescriptionResponseOutput {
@@ -13351,12 +11820,6 @@ func (i StaticSiteBuildPropertiesArgs) ToStaticSiteBuildPropertiesOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(StaticSiteBuildPropertiesOutput)
 }
 
-func (i StaticSiteBuildPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[StaticSiteBuildProperties] {
-	return pulumix.Output[StaticSiteBuildProperties]{
-		OutputState: i.ToStaticSiteBuildPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StaticSiteBuildPropertiesArgs) ToStaticSiteBuildPropertiesPtrOutput() StaticSiteBuildPropertiesPtrOutput {
 	return i.ToStaticSiteBuildPropertiesPtrOutputWithContext(context.Background())
 }
@@ -13398,12 +11861,6 @@ func (i *staticSiteBuildPropertiesPtrType) ToStaticSiteBuildPropertiesPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(StaticSiteBuildPropertiesPtrOutput)
 }
 
-func (i *staticSiteBuildPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*StaticSiteBuildProperties] {
-	return pulumix.Output[*StaticSiteBuildProperties]{
-		OutputState: i.ToStaticSiteBuildPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Build properties for the static site.
 type StaticSiteBuildPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -13427,12 +11884,6 @@ func (o StaticSiteBuildPropertiesOutput) ToStaticSiteBuildPropertiesPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StaticSiteBuildProperties) *StaticSiteBuildProperties {
 		return &v
 	}).(StaticSiteBuildPropertiesPtrOutput)
-}
-
-func (o StaticSiteBuildPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[StaticSiteBuildProperties] {
-	return pulumix.Output[StaticSiteBuildProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A custom command to run during deployment of the Azure Functions API application.
@@ -13487,12 +11938,6 @@ func (o StaticSiteBuildPropertiesPtrOutput) ToStaticSiteBuildPropertiesPtrOutput
 
 func (o StaticSiteBuildPropertiesPtrOutput) ToStaticSiteBuildPropertiesPtrOutputWithContext(ctx context.Context) StaticSiteBuildPropertiesPtrOutput {
 	return o
-}
-
-func (o StaticSiteBuildPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StaticSiteBuildProperties] {
-	return pulumix.Output[*StaticSiteBuildProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StaticSiteBuildPropertiesPtrOutput) Elem() StaticSiteBuildPropertiesOutput {
@@ -13620,12 +12065,6 @@ func (o StaticSiteBuildPropertiesResponseOutput) ToStaticSiteBuildPropertiesResp
 	return o
 }
 
-func (o StaticSiteBuildPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StaticSiteBuildPropertiesResponse] {
-	return pulumix.Output[StaticSiteBuildPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A custom command to run during deployment of the Azure Functions API application.
 func (o StaticSiteBuildPropertiesResponseOutput) ApiBuildCommand() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StaticSiteBuildPropertiesResponse) *string { return v.ApiBuildCommand }).(pulumi.StringPtrOutput)
@@ -13678,12 +12117,6 @@ func (o StaticSiteBuildPropertiesResponsePtrOutput) ToStaticSiteBuildPropertiesR
 
 func (o StaticSiteBuildPropertiesResponsePtrOutput) ToStaticSiteBuildPropertiesResponsePtrOutputWithContext(ctx context.Context) StaticSiteBuildPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o StaticSiteBuildPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StaticSiteBuildPropertiesResponse] {
-	return pulumix.Output[*StaticSiteBuildPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StaticSiteBuildPropertiesResponsePtrOutput) Elem() StaticSiteBuildPropertiesResponseOutput {
@@ -13827,12 +12260,6 @@ func (i StaticSiteTemplateOptionsArgs) ToStaticSiteTemplateOptionsOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(StaticSiteTemplateOptionsOutput)
 }
 
-func (i StaticSiteTemplateOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[StaticSiteTemplateOptions] {
-	return pulumix.Output[StaticSiteTemplateOptions]{
-		OutputState: i.ToStaticSiteTemplateOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StaticSiteTemplateOptionsArgs) ToStaticSiteTemplateOptionsPtrOutput() StaticSiteTemplateOptionsPtrOutput {
 	return i.ToStaticSiteTemplateOptionsPtrOutputWithContext(context.Background())
 }
@@ -13874,12 +12301,6 @@ func (i *staticSiteTemplateOptionsPtrType) ToStaticSiteTemplateOptionsPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(StaticSiteTemplateOptionsPtrOutput)
 }
 
-func (i *staticSiteTemplateOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*StaticSiteTemplateOptions] {
-	return pulumix.Output[*StaticSiteTemplateOptions]{
-		OutputState: i.ToStaticSiteTemplateOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Template Options for the static site.
 type StaticSiteTemplateOptionsOutput struct{ *pulumi.OutputState }
 
@@ -13903,12 +12324,6 @@ func (o StaticSiteTemplateOptionsOutput) ToStaticSiteTemplateOptionsPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StaticSiteTemplateOptions) *StaticSiteTemplateOptions {
 		return &v
 	}).(StaticSiteTemplateOptionsPtrOutput)
-}
-
-func (o StaticSiteTemplateOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[StaticSiteTemplateOptions] {
-	return pulumix.Output[StaticSiteTemplateOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the newly generated repository.
@@ -13948,12 +12363,6 @@ func (o StaticSiteTemplateOptionsPtrOutput) ToStaticSiteTemplateOptionsPtrOutput
 
 func (o StaticSiteTemplateOptionsPtrOutput) ToStaticSiteTemplateOptionsPtrOutputWithContext(ctx context.Context) StaticSiteTemplateOptionsPtrOutput {
 	return o
-}
-
-func (o StaticSiteTemplateOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StaticSiteTemplateOptions] {
-	return pulumix.Output[*StaticSiteTemplateOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StaticSiteTemplateOptionsPtrOutput) Elem() StaticSiteTemplateOptionsOutput {
@@ -14045,12 +12454,6 @@ func (o StaticSiteTemplateOptionsResponseOutput) ToStaticSiteTemplateOptionsResp
 	return o
 }
 
-func (o StaticSiteTemplateOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StaticSiteTemplateOptionsResponse] {
-	return pulumix.Output[StaticSiteTemplateOptionsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Description of the newly generated repository.
 func (o StaticSiteTemplateOptionsResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StaticSiteTemplateOptionsResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -14088,12 +12491,6 @@ func (o StaticSiteTemplateOptionsResponsePtrOutput) ToStaticSiteTemplateOptionsR
 
 func (o StaticSiteTemplateOptionsResponsePtrOutput) ToStaticSiteTemplateOptionsResponsePtrOutputWithContext(ctx context.Context) StaticSiteTemplateOptionsResponsePtrOutput {
 	return o
-}
-
-func (o StaticSiteTemplateOptionsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StaticSiteTemplateOptionsResponse] {
-	return pulumix.Output[*StaticSiteTemplateOptionsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StaticSiteTemplateOptionsResponsePtrOutput) Elem() StaticSiteTemplateOptionsResponseOutput {
@@ -14191,12 +12588,6 @@ func (o StaticSiteUserARMResourceResponseOutput) ToStaticSiteUserARMResourceResp
 	return o
 }
 
-func (o StaticSiteUserARMResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StaticSiteUserARMResourceResponse] {
-	return pulumix.Output[StaticSiteUserARMResourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The display name for the static site user.
 func (o StaticSiteUserARMResourceResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v StaticSiteUserARMResourceResponse) string { return v.DisplayName }).(pulumi.StringOutput)
@@ -14251,12 +12642,6 @@ func (o StaticSiteUserARMResourceResponseArrayOutput) ToStaticSiteUserARMResourc
 	return o
 }
 
-func (o StaticSiteUserARMResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StaticSiteUserARMResourceResponse] {
-	return pulumix.Output[[]StaticSiteUserARMResourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StaticSiteUserARMResourceResponseArrayOutput) Index(i pulumi.IntInput) StaticSiteUserARMResourceResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StaticSiteUserARMResourceResponse {
 		return vs[0].([]StaticSiteUserARMResourceResponse)[vs[1].(int)]
@@ -14294,12 +12679,6 @@ func (o StaticSiteUserProvidedFunctionAppResponseOutput) ToStaticSiteUserProvide
 
 func (o StaticSiteUserProvidedFunctionAppResponseOutput) ToStaticSiteUserProvidedFunctionAppResponseOutputWithContext(ctx context.Context) StaticSiteUserProvidedFunctionAppResponseOutput {
 	return o
-}
-
-func (o StaticSiteUserProvidedFunctionAppResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StaticSiteUserProvidedFunctionAppResponse] {
-	return pulumix.Output[StaticSiteUserProvidedFunctionAppResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The date and time on which the function app was registered with the static site.
@@ -14349,12 +12728,6 @@ func (o StaticSiteUserProvidedFunctionAppResponseArrayOutput) ToStaticSiteUserPr
 
 func (o StaticSiteUserProvidedFunctionAppResponseArrayOutput) ToStaticSiteUserProvidedFunctionAppResponseArrayOutputWithContext(ctx context.Context) StaticSiteUserProvidedFunctionAppResponseArrayOutput {
 	return o
-}
-
-func (o StaticSiteUserProvidedFunctionAppResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StaticSiteUserProvidedFunctionAppResponse] {
-	return pulumix.Output[[]StaticSiteUserProvidedFunctionAppResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StaticSiteUserProvidedFunctionAppResponseArrayOutput) Index(i pulumi.IntInput) StaticSiteUserProvidedFunctionAppResponseOutput {
@@ -14414,12 +12787,6 @@ func (i TokenStoreArgs) ToTokenStoreOutputWithContext(ctx context.Context) Token
 	return pulumi.ToOutputWithContext(ctx, i).(TokenStoreOutput)
 }
 
-func (i TokenStoreArgs) ToOutput(ctx context.Context) pulumix.Output[TokenStore] {
-	return pulumix.Output[TokenStore]{
-		OutputState: i.ToTokenStoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TokenStoreArgs) ToTokenStorePtrOutput() TokenStorePtrOutput {
 	return i.ToTokenStorePtrOutputWithContext(context.Background())
 }
@@ -14461,12 +12828,6 @@ func (i *tokenStorePtrType) ToTokenStorePtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TokenStorePtrOutput)
 }
 
-func (i *tokenStorePtrType) ToOutput(ctx context.Context) pulumix.Output[*TokenStore] {
-	return pulumix.Output[*TokenStore]{
-		OutputState: i.ToTokenStorePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the token store.
 type TokenStoreOutput struct{ *pulumi.OutputState }
 
@@ -14490,12 +12851,6 @@ func (o TokenStoreOutput) ToTokenStorePtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TokenStore) *TokenStore {
 		return &v
 	}).(TokenStorePtrOutput)
-}
-
-func (o TokenStoreOutput) ToOutput(ctx context.Context) pulumix.Output[TokenStore] {
-	return pulumix.Output[TokenStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration settings of the storage of the tokens if blob storage is used.
@@ -14533,12 +12888,6 @@ func (o TokenStorePtrOutput) ToTokenStorePtrOutput() TokenStorePtrOutput {
 
 func (o TokenStorePtrOutput) ToTokenStorePtrOutputWithContext(ctx context.Context) TokenStorePtrOutput {
 	return o
-}
-
-func (o TokenStorePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TokenStore] {
-	return pulumix.Output[*TokenStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TokenStorePtrOutput) Elem() TokenStoreOutput {
@@ -14623,12 +12972,6 @@ func (o TokenStoreResponseOutput) ToTokenStoreResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o TokenStoreResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TokenStoreResponse] {
-	return pulumix.Output[TokenStoreResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The configuration settings of the storage of the tokens if blob storage is used.
 func (o TokenStoreResponseOutput) AzureBlobStorage() BlobStorageTokenStoreResponsePtrOutput {
 	return o.ApplyT(func(v TokenStoreResponse) *BlobStorageTokenStoreResponse { return v.AzureBlobStorage }).(BlobStorageTokenStoreResponsePtrOutput)
@@ -14664,12 +13007,6 @@ func (o TokenStoreResponsePtrOutput) ToTokenStoreResponsePtrOutput() TokenStoreR
 
 func (o TokenStoreResponsePtrOutput) ToTokenStoreResponsePtrOutputWithContext(ctx context.Context) TokenStoreResponsePtrOutput {
 	return o
-}
-
-func (o TokenStoreResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TokenStoreResponse] {
-	return pulumix.Output[*TokenStoreResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TokenStoreResponsePtrOutput) Elem() TokenStoreResponseOutput {
@@ -14764,12 +13101,6 @@ func (i TwitterArgs) ToTwitterOutputWithContext(ctx context.Context) TwitterOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TwitterOutput)
 }
 
-func (i TwitterArgs) ToOutput(ctx context.Context) pulumix.Output[Twitter] {
-	return pulumix.Output[Twitter]{
-		OutputState: i.ToTwitterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TwitterArgs) ToTwitterPtrOutput() TwitterPtrOutput {
 	return i.ToTwitterPtrOutputWithContext(context.Background())
 }
@@ -14811,12 +13142,6 @@ func (i *twitterPtrType) ToTwitterPtrOutputWithContext(ctx context.Context) Twit
 	return pulumi.ToOutputWithContext(ctx, i).(TwitterPtrOutput)
 }
 
-func (i *twitterPtrType) ToOutput(ctx context.Context) pulumix.Output[*Twitter] {
-	return pulumix.Output[*Twitter]{
-		OutputState: i.ToTwitterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the Twitter provider.
 type TwitterOutput struct{ *pulumi.OutputState }
 
@@ -14842,12 +13167,6 @@ func (o TwitterOutput) ToTwitterPtrOutputWithContext(ctx context.Context) Twitte
 	}).(TwitterPtrOutput)
 }
 
-func (o TwitterOutput) ToOutput(ctx context.Context) pulumix.Output[Twitter] {
-	return pulumix.Output[Twitter]{
-		OutputState: o.OutputState,
-	}
-}
-
 // <code>false</code> if the Twitter provider should not be enabled despite the set registration; otherwise, <code>true</code>.
 func (o TwitterOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Twitter) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -14870,12 +13189,6 @@ func (o TwitterPtrOutput) ToTwitterPtrOutput() TwitterPtrOutput {
 
 func (o TwitterPtrOutput) ToTwitterPtrOutputWithContext(ctx context.Context) TwitterPtrOutput {
 	return o
-}
-
-func (o TwitterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Twitter] {
-	return pulumix.Output[*Twitter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TwitterPtrOutput) Elem() TwitterOutput {
@@ -14953,12 +13266,6 @@ func (i TwitterRegistrationArgs) ToTwitterRegistrationOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(TwitterRegistrationOutput)
 }
 
-func (i TwitterRegistrationArgs) ToOutput(ctx context.Context) pulumix.Output[TwitterRegistration] {
-	return pulumix.Output[TwitterRegistration]{
-		OutputState: i.ToTwitterRegistrationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TwitterRegistrationArgs) ToTwitterRegistrationPtrOutput() TwitterRegistrationPtrOutput {
 	return i.ToTwitterRegistrationPtrOutputWithContext(context.Background())
 }
@@ -15000,12 +13307,6 @@ func (i *twitterRegistrationPtrType) ToTwitterRegistrationPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(TwitterRegistrationPtrOutput)
 }
 
-func (i *twitterRegistrationPtrType) ToOutput(ctx context.Context) pulumix.Output[*TwitterRegistration] {
-	return pulumix.Output[*TwitterRegistration]{
-		OutputState: i.ToTwitterRegistrationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration settings of the app registration for the Twitter provider.
 type TwitterRegistrationOutput struct{ *pulumi.OutputState }
 
@@ -15029,12 +13330,6 @@ func (o TwitterRegistrationOutput) ToTwitterRegistrationPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TwitterRegistration) *TwitterRegistration {
 		return &v
 	}).(TwitterRegistrationPtrOutput)
-}
-
-func (o TwitterRegistrationOutput) ToOutput(ctx context.Context) pulumix.Output[TwitterRegistration] {
-	return pulumix.Output[TwitterRegistration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The OAuth 1.0a consumer key of the Twitter application used for sign-in.
@@ -15062,12 +13357,6 @@ func (o TwitterRegistrationPtrOutput) ToTwitterRegistrationPtrOutput() TwitterRe
 
 func (o TwitterRegistrationPtrOutput) ToTwitterRegistrationPtrOutputWithContext(ctx context.Context) TwitterRegistrationPtrOutput {
 	return o
-}
-
-func (o TwitterRegistrationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TwitterRegistration] {
-	return pulumix.Output[*TwitterRegistration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TwitterRegistrationPtrOutput) Elem() TwitterRegistrationOutput {
@@ -15129,12 +13418,6 @@ func (o TwitterRegistrationResponseOutput) ToTwitterRegistrationResponseOutputWi
 	return o
 }
 
-func (o TwitterRegistrationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TwitterRegistrationResponse] {
-	return pulumix.Output[TwitterRegistrationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The OAuth 1.0a consumer key of the Twitter application used for sign-in.
 // This setting is required for enabling Twitter Sign-In.
 // Twitter Sign-In documentation: https://dev.twitter.com/web/sign-in
@@ -15160,12 +13443,6 @@ func (o TwitterRegistrationResponsePtrOutput) ToTwitterRegistrationResponsePtrOu
 
 func (o TwitterRegistrationResponsePtrOutput) ToTwitterRegistrationResponsePtrOutputWithContext(ctx context.Context) TwitterRegistrationResponsePtrOutput {
 	return o
-}
-
-func (o TwitterRegistrationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TwitterRegistrationResponse] {
-	return pulumix.Output[*TwitterRegistrationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TwitterRegistrationResponsePtrOutput) Elem() TwitterRegistrationResponseOutput {
@@ -15224,12 +13501,6 @@ func (o TwitterResponseOutput) ToTwitterResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o TwitterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TwitterResponse] {
-	return pulumix.Output[TwitterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // <code>false</code> if the Twitter provider should not be enabled despite the set registration; otherwise, <code>true</code>.
 func (o TwitterResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TwitterResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -15252,12 +13523,6 @@ func (o TwitterResponsePtrOutput) ToTwitterResponsePtrOutput() TwitterResponsePt
 
 func (o TwitterResponsePtrOutput) ToTwitterResponsePtrOutputWithContext(ctx context.Context) TwitterResponsePtrOutput {
 	return o
-}
-
-func (o TwitterResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TwitterResponse] {
-	return pulumix.Output[*TwitterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TwitterResponsePtrOutput) Elem() TwitterResponseOutput {
@@ -15313,12 +13578,6 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
-func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
-	return pulumix.Output[UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Client Id of user assigned identity
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -15341,12 +13600,6 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
-	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {

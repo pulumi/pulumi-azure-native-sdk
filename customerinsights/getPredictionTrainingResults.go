@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets training results.
@@ -86,12 +85,6 @@ func (o GetPredictionTrainingResultsResultOutput) ToGetPredictionTrainingResults
 
 func (o GetPredictionTrainingResultsResultOutput) ToGetPredictionTrainingResultsResultOutputWithContext(ctx context.Context) GetPredictionTrainingResultsResultOutput {
 	return o
-}
-
-func (o GetPredictionTrainingResultsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetPredictionTrainingResultsResult] {
-	return pulumix.Output[GetPredictionTrainingResultsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Canonical profiles.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2023-01-15.
@@ -117,12 +116,6 @@ func (o GetRecoveryPointAccessTokenResultOutput) ToGetRecoveryPointAccessTokenRe
 
 func (o GetRecoveryPointAccessTokenResultOutput) ToGetRecoveryPointAccessTokenResultOutputWithContext(ctx context.Context) GetRecoveryPointAccessTokenResultOutput {
 	return o
-}
-
-func (o GetRecoveryPointAccessTokenResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRecoveryPointAccessTokenResult] {
-	return pulumix.Output[GetRecoveryPointAccessTokenResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional ETag.

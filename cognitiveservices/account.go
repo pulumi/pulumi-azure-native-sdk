@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Cognitive Services account is an Azure resource representing the provisioned account, it's type, location and SKU.
@@ -179,12 +178,6 @@ func (i *Account) ToAccountOutputWithContext(ctx context.Context) AccountOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(AccountOutput)
 }
 
-func (i *Account) ToOutput(ctx context.Context) pulumix.Output[*Account] {
-	return pulumix.Output[*Account]{
-		OutputState: i.ToAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccountOutput struct{ *pulumi.OutputState }
 
 func (AccountOutput) ElementType() reflect.Type {
@@ -197,12 +190,6 @@ func (o AccountOutput) ToAccountOutput() AccountOutput {
 
 func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOutput {
 	return o
-}
-
-func (o AccountOutput) ToOutput(ctx context.Context) pulumix.Output[*Account] {
-	return pulumix.Output[*Account]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Etag.

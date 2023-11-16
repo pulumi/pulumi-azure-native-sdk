@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -33,12 +32,6 @@ func (o DatabaseStatisticsResponseOutput) ToDatabaseStatisticsResponseOutput() D
 
 func (o DatabaseStatisticsResponseOutput) ToDatabaseStatisticsResponseOutputWithContext(ctx context.Context) DatabaseStatisticsResponseOutput {
 	return o
-}
-
-func (o DatabaseStatisticsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseStatisticsResponse] {
-	return pulumix.Output[DatabaseStatisticsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The database size - the total size of compressed data and index in bytes.

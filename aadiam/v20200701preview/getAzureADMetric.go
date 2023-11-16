@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a azureADMetrics instance with a given name.
@@ -82,12 +81,6 @@ func (o LookupAzureADMetricResultOutput) ToLookupAzureADMetricResultOutput() Loo
 
 func (o LookupAzureADMetricResultOutput) ToLookupAzureADMetricResultOutputWithContext(ctx context.Context) LookupAzureADMetricResultOutput {
 	return o
-}
-
-func (o LookupAzureADMetricResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAzureADMetricResult] {
-	return pulumix.Output[LookupAzureADMetricResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

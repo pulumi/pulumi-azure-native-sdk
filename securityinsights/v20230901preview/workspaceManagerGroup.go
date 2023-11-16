@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The workspace manager group
@@ -70,6 +69,9 @@ func NewWorkspaceManagerGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:WorkspaceManagerGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:WorkspaceManagerGroup"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -159,12 +161,6 @@ func (i *WorkspaceManagerGroup) ToWorkspaceManagerGroupOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceManagerGroupOutput)
 }
 
-func (i *WorkspaceManagerGroup) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceManagerGroup] {
-	return pulumix.Output[*WorkspaceManagerGroup]{
-		OutputState: i.ToWorkspaceManagerGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkspaceManagerGroupOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceManagerGroupOutput) ElementType() reflect.Type {
@@ -177,12 +173,6 @@ func (o WorkspaceManagerGroupOutput) ToWorkspaceManagerGroupOutput() WorkspaceMa
 
 func (o WorkspaceManagerGroupOutput) ToWorkspaceManagerGroupOutputWithContext(ctx context.Context) WorkspaceManagerGroupOutput {
 	return o
-}
-
-func (o WorkspaceManagerGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkspaceManagerGroup] {
-	return pulumix.Output[*WorkspaceManagerGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the workspace manager group

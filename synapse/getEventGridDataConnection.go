@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a data connection.
@@ -115,12 +114,6 @@ func (o LookupEventGridDataConnectionResultOutput) ToLookupEventGridDataConnecti
 
 func (o LookupEventGridDataConnectionResultOutput) ToLookupEventGridDataConnectionResultOutputWithContext(ctx context.Context) LookupEventGridDataConnectionResultOutput {
 	return o
-}
-
-func (o LookupEventGridDataConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEventGridDataConnectionResult] {
-	return pulumix.Output[LookupEventGridDataConnectionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of blob storage event type to process.

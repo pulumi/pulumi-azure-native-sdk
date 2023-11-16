@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about a specific offer.
@@ -105,12 +104,6 @@ func (o LookupPrivateStoreCollectionOfferResultOutput) ToLookupPrivateStoreColle
 
 func (o LookupPrivateStoreCollectionOfferResultOutput) ToLookupPrivateStoreCollectionOfferResultOutputWithContext(ctx context.Context) LookupPrivateStoreCollectionOfferResultOutput {
 	return o
-}
-
-func (o LookupPrivateStoreCollectionOfferResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateStoreCollectionOfferResult] {
-	return pulumix.Output[LookupPrivateStoreCollectionOfferResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Private store offer creation date

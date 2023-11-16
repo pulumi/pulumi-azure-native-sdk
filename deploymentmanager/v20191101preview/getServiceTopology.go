@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The resource representation of a service topology.
@@ -83,12 +82,6 @@ func (o LookupServiceTopologyResultOutput) ToLookupServiceTopologyResultOutput()
 
 func (o LookupServiceTopologyResultOutput) ToLookupServiceTopologyResultOutputWithContext(ctx context.Context) LookupServiceTopologyResultOutput {
 	return o
-}
-
-func (o LookupServiceTopologyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceTopologyResult] {
-	return pulumix.Output[LookupServiceTopologyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource Id of the artifact source that contains the artifacts that can be referenced in the service units.

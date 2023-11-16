@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -49,12 +48,6 @@ func (i ContentHashArgs) ToContentHashOutput() ContentHashOutput {
 
 func (i ContentHashArgs) ToContentHashOutputWithContext(ctx context.Context) ContentHashOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContentHashOutput)
-}
-
-func (i ContentHashArgs) ToOutput(ctx context.Context) pulumix.Output[ContentHash] {
-	return pulumix.Output[ContentHash]{
-		OutputState: i.ToContentHashOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ContentHashArgs) ToContentHashPtrOutput() ContentHashPtrOutput {
@@ -98,12 +91,6 @@ func (i *contentHashPtrType) ToContentHashPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ContentHashPtrOutput)
 }
 
-func (i *contentHashPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContentHash] {
-	return pulumix.Output[*ContentHash]{
-		OutputState: i.ToContentHashPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContentHashOutput struct{ *pulumi.OutputState }
 
 func (ContentHashOutput) ElementType() reflect.Type {
@@ -128,12 +115,6 @@ func (o ContentHashOutput) ToContentHashPtrOutputWithContext(ctx context.Context
 	}).(ContentHashPtrOutput)
 }
 
-func (o ContentHashOutput) ToOutput(ctx context.Context) pulumix.Output[ContentHash] {
-	return pulumix.Output[ContentHash]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the algorithm.
 func (o ContentHashOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContentHash) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
@@ -156,12 +137,6 @@ func (o ContentHashPtrOutput) ToContentHashPtrOutput() ContentHashPtrOutput {
 
 func (o ContentHashPtrOutput) ToContentHashPtrOutputWithContext(ctx context.Context) ContentHashPtrOutput {
 	return o
-}
-
-func (o ContentHashPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContentHash] {
-	return pulumix.Output[*ContentHash]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContentHashPtrOutput) Elem() ContentHashOutput {
@@ -215,12 +190,6 @@ func (o ContentHashResponseOutput) ToContentHashResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o ContentHashResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContentHashResponse] {
-	return pulumix.Output[ContentHashResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the algorithm.
 func (o ContentHashResponseOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContentHashResponse) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
@@ -243,12 +212,6 @@ func (o ContentHashResponsePtrOutput) ToContentHashResponsePtrOutput() ContentHa
 
 func (o ContentHashResponsePtrOutput) ToContentHashResponsePtrOutputWithContext(ctx context.Context) ContentHashResponsePtrOutput {
 	return o
-}
-
-func (o ContentHashResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContentHashResponse] {
-	return pulumix.Output[*ContentHashResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContentHashResponsePtrOutput) Elem() ContentHashResponseOutput {
@@ -330,12 +293,6 @@ func (i ContentLinkArgs) ToContentLinkOutputWithContext(ctx context.Context) Con
 	return pulumi.ToOutputWithContext(ctx, i).(ContentLinkOutput)
 }
 
-func (i ContentLinkArgs) ToOutput(ctx context.Context) pulumix.Output[ContentLink] {
-	return pulumix.Output[ContentLink]{
-		OutputState: i.ToContentLinkOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContentLinkArgs) ToContentLinkPtrOutput() ContentLinkPtrOutput {
 	return i.ToContentLinkPtrOutputWithContext(context.Background())
 }
@@ -377,12 +334,6 @@ func (i *contentLinkPtrType) ToContentLinkPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ContentLinkPtrOutput)
 }
 
-func (i *contentLinkPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContentLink] {
-	return pulumix.Output[*ContentLink]{
-		OutputState: i.ToContentLinkPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContentLinkOutput struct{ *pulumi.OutputState }
 
 func (ContentLinkOutput) ElementType() reflect.Type {
@@ -405,12 +356,6 @@ func (o ContentLinkOutput) ToContentLinkPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContentLink) *ContentLink {
 		return &v
 	}).(ContentLinkPtrOutput)
-}
-
-func (o ContentLinkOutput) ToOutput(ctx context.Context) pulumix.Output[ContentLink] {
-	return pulumix.Output[ContentLink]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the content hash.
@@ -450,12 +395,6 @@ func (o ContentLinkPtrOutput) ToContentLinkPtrOutput() ContentLinkPtrOutput {
 
 func (o ContentLinkPtrOutput) ToContentLinkPtrOutputWithContext(ctx context.Context) ContentLinkPtrOutput {
 	return o
-}
-
-func (o ContentLinkPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContentLink] {
-	return pulumix.Output[*ContentLink]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContentLinkPtrOutput) Elem() ContentLinkOutput {
@@ -545,12 +484,6 @@ func (o ContentLinkResponseOutput) ToContentLinkResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o ContentLinkResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContentLinkResponse] {
-	return pulumix.Output[ContentLinkResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the content hash.
 func (o ContentLinkResponseOutput) ContentHash() ContentHashResponsePtrOutput {
 	return o.ApplyT(func(v ContentLinkResponse) *ContentHashResponse { return v.ContentHash }).(ContentHashResponsePtrOutput)
@@ -588,12 +521,6 @@ func (o ContentLinkResponsePtrOutput) ToContentLinkResponsePtrOutput() ContentLi
 
 func (o ContentLinkResponsePtrOutput) ToContentLinkResponsePtrOutputWithContext(ctx context.Context) ContentLinkResponsePtrOutput {
 	return o
-}
-
-func (o ContentLinkResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContentLinkResponse] {
-	return pulumix.Output[*ContentLinkResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContentLinkResponsePtrOutput) Elem() ContentLinkResponseOutput {
@@ -689,12 +616,6 @@ func (i ResourceReferenceArgs) ToResourceReferenceOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceReferenceOutput)
 }
 
-func (i ResourceReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceReference] {
-	return pulumix.Output[ResourceReference]{
-		OutputState: i.ToResourceReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ResourceReferenceArgs) ToResourceReferencePtrOutput() ResourceReferencePtrOutput {
 	return i.ToResourceReferencePtrOutputWithContext(context.Background())
 }
@@ -736,12 +657,6 @@ func (i *resourceReferencePtrType) ToResourceReferencePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceReferencePtrOutput)
 }
 
-func (i *resourceReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceReference] {
-	return pulumix.Output[*ResourceReference]{
-		OutputState: i.ToResourceReferencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ResourceReferenceOutput struct{ *pulumi.OutputState }
 
 func (ResourceReferenceOutput) ElementType() reflect.Type {
@@ -766,12 +681,6 @@ func (o ResourceReferenceOutput) ToResourceReferencePtrOutputWithContext(ctx con
 	}).(ResourceReferencePtrOutput)
 }
 
-func (o ResourceReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceReference] {
-	return pulumix.Output[ResourceReference]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the resource id.
 func (o ResourceReferenceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceReference) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -789,12 +698,6 @@ func (o ResourceReferencePtrOutput) ToResourceReferencePtrOutput() ResourceRefer
 
 func (o ResourceReferencePtrOutput) ToResourceReferencePtrOutputWithContext(ctx context.Context) ResourceReferencePtrOutput {
 	return o
-}
-
-func (o ResourceReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceReference] {
-	return pulumix.Output[*ResourceReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceReferencePtrOutput) Elem() ResourceReferenceOutput {
@@ -840,12 +743,6 @@ func (o ResourceReferenceResponseOutput) ToResourceReferenceResponseOutputWithCo
 	return o
 }
 
-func (o ResourceReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceReferenceResponse] {
-	return pulumix.Output[ResourceReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the resource id.
 func (o ResourceReferenceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceReferenceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -873,12 +770,6 @@ func (o ResourceReferenceResponsePtrOutput) ToResourceReferenceResponsePtrOutput
 
 func (o ResourceReferenceResponsePtrOutput) ToResourceReferenceResponsePtrOutputWithContext(ctx context.Context) ResourceReferenceResponsePtrOutput {
 	return o
-}
-
-func (o ResourceReferenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceReferenceResponse] {
-	return pulumix.Output[*ResourceReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceReferenceResponsePtrOutput) Elem() ResourceReferenceResponseOutput {
@@ -958,12 +849,6 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
-func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
 	return i.ToSkuPtrOutputWithContext(context.Background())
 }
@@ -1005,12 +890,6 @@ func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
 }
 
-func (i *skuPtrType) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
-	return pulumix.Output[*Sku]{
-		OutputState: i.ToSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SkuOutput struct{ *pulumi.OutputState }
 
 func (SkuOutput) ElementType() reflect.Type {
@@ -1035,12 +914,6 @@ func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	}).(SkuPtrOutput)
 }
 
-func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the name.
 func (o SkuOutput) Name() SkuNamePtrOutput {
 	return o.ApplyT(func(v Sku) *SkuName { return v.Name }).(SkuNamePtrOutput)
@@ -1063,12 +936,6 @@ func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
 
 func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o
-}
-
-func (o SkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
-	return pulumix.Output[*Sku]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuPtrOutput) Elem() SkuOutput {
@@ -1122,12 +989,6 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
-	return pulumix.Output[SkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the name.
 func (o SkuResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1150,12 +1011,6 @@ func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
 
 func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
 	return o
-}
-
-func (o SkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuResponse] {
-	return pulumix.Output[*SkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
@@ -1229,12 +1084,6 @@ func (i WorkflowParameterArgs) ToWorkflowParameterOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowParameterOutput)
 }
 
-func (i WorkflowParameterArgs) ToOutput(ctx context.Context) pulumix.Output[WorkflowParameter] {
-	return pulumix.Output[WorkflowParameter]{
-		OutputState: i.ToWorkflowParameterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkflowParameterMapInput is an input type that accepts WorkflowParameterMap and WorkflowParameterMapOutput values.
 // You can construct a concrete instance of `WorkflowParameterMapInput` via:
 //
@@ -1260,12 +1109,6 @@ func (i WorkflowParameterMap) ToWorkflowParameterMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowParameterMapOutput)
 }
 
-func (i WorkflowParameterMap) ToOutput(ctx context.Context) pulumix.Output[map[string]WorkflowParameter] {
-	return pulumix.Output[map[string]WorkflowParameter]{
-		OutputState: i.ToWorkflowParameterMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowParameterOutput struct{ *pulumi.OutputState }
 
 func (WorkflowParameterOutput) ElementType() reflect.Type {
@@ -1278,12 +1121,6 @@ func (o WorkflowParameterOutput) ToWorkflowParameterOutput() WorkflowParameterOu
 
 func (o WorkflowParameterOutput) ToWorkflowParameterOutputWithContext(ctx context.Context) WorkflowParameterOutput {
 	return o
-}
-
-func (o WorkflowParameterOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowParameter] {
-	return pulumix.Output[WorkflowParameter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the metadata.
@@ -1315,12 +1152,6 @@ func (o WorkflowParameterMapOutput) ToWorkflowParameterMapOutputWithContext(ctx 
 	return o
 }
 
-func (o WorkflowParameterMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]WorkflowParameter] {
-	return pulumix.Output[map[string]WorkflowParameter]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkflowParameterMapOutput) MapIndex(k pulumi.StringInput) WorkflowParameterOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WorkflowParameter {
 		return vs[0].(map[string]WorkflowParameter)[vs[1].(string)]
@@ -1350,12 +1181,6 @@ func (o WorkflowParameterResponseOutput) ToWorkflowParameterResponseOutputWithCo
 	return o
 }
 
-func (o WorkflowParameterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkflowParameterResponse] {
-	return pulumix.Output[WorkflowParameterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the metadata.
 func (o WorkflowParameterResponseOutput) Metadata() pulumi.AnyOutput {
 	return o.ApplyT(func(v WorkflowParameterResponse) interface{} { return v.Metadata }).(pulumi.AnyOutput)
@@ -1383,12 +1208,6 @@ func (o WorkflowParameterResponseMapOutput) ToWorkflowParameterResponseMapOutput
 
 func (o WorkflowParameterResponseMapOutput) ToWorkflowParameterResponseMapOutputWithContext(ctx context.Context) WorkflowParameterResponseMapOutput {
 	return o
-}
-
-func (o WorkflowParameterResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]WorkflowParameterResponse] {
-	return pulumix.Output[map[string]WorkflowParameterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowParameterResponseMapOutput) MapIndex(k pulumi.StringInput) WorkflowParameterResponseOutput {

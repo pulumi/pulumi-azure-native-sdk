@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Private endpoint connection proxy details.
@@ -146,12 +145,6 @@ func (i *PrivateEndpointConnectionProxy) ToPrivateEndpointConnectionProxyOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionProxyOutput)
 }
 
-func (i *PrivateEndpointConnectionProxy) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionProxy] {
-	return pulumix.Output[*PrivateEndpointConnectionProxy]{
-		OutputState: i.ToPrivateEndpointConnectionProxyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateEndpointConnectionProxyOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointConnectionProxyOutput) ElementType() reflect.Type {
@@ -164,12 +157,6 @@ func (o PrivateEndpointConnectionProxyOutput) ToPrivateEndpointConnectionProxyOu
 
 func (o PrivateEndpointConnectionProxyOutput) ToPrivateEndpointConnectionProxyOutputWithContext(ctx context.Context) PrivateEndpointConnectionProxyOutput {
 	return o
-}
-
-func (o PrivateEndpointConnectionProxyOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionProxy] {
-	return pulumix.Output[*PrivateEndpointConnectionProxy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ETag from NRP.

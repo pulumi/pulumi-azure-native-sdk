@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i AzureAppPushReceiverArgs) ToAzureAppPushReceiverOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AzureAppPushReceiverOutput)
 }
 
-func (i AzureAppPushReceiverArgs) ToOutput(ctx context.Context) pulumix.Output[AzureAppPushReceiver] {
-	return pulumix.Output[AzureAppPushReceiver]{
-		OutputState: i.ToAzureAppPushReceiverOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AzureAppPushReceiverArrayInput is an input type that accepts AzureAppPushReceiverArray and AzureAppPushReceiverArrayOutput values.
 // You can construct a concrete instance of `AzureAppPushReceiverArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i AzureAppPushReceiverArray) ToAzureAppPushReceiverArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AzureAppPushReceiverArrayOutput)
 }
 
-func (i AzureAppPushReceiverArray) ToOutput(ctx context.Context) pulumix.Output[[]AzureAppPushReceiver] {
-	return pulumix.Output[[]AzureAppPushReceiver]{
-		OutputState: i.ToAzureAppPushReceiverArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Azure mobile App push notification receiver.
 type AzureAppPushReceiverOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o AzureAppPushReceiverOutput) ToAzureAppPushReceiverOutput() AzureAppPushR
 
 func (o AzureAppPushReceiverOutput) ToAzureAppPushReceiverOutputWithContext(ctx context.Context) AzureAppPushReceiverOutput {
 	return o
-}
-
-func (o AzureAppPushReceiverOutput) ToOutput(ctx context.Context) pulumix.Output[AzureAppPushReceiver] {
-	return pulumix.Output[AzureAppPushReceiver]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The email address registered for the Azure mobile app.
@@ -133,12 +114,6 @@ func (o AzureAppPushReceiverArrayOutput) ToAzureAppPushReceiverArrayOutput() Azu
 
 func (o AzureAppPushReceiverArrayOutput) ToAzureAppPushReceiverArrayOutputWithContext(ctx context.Context) AzureAppPushReceiverArrayOutput {
 	return o
-}
-
-func (o AzureAppPushReceiverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AzureAppPushReceiver] {
-	return pulumix.Output[[]AzureAppPushReceiver]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureAppPushReceiverArrayOutput) Index(i pulumi.IntInput) AzureAppPushReceiverOutput {
@@ -170,12 +145,6 @@ func (o AzureAppPushReceiverResponseOutput) ToAzureAppPushReceiverResponseOutput
 	return o
 }
 
-func (o AzureAppPushReceiverResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureAppPushReceiverResponse] {
-	return pulumix.Output[AzureAppPushReceiverResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The email address registered for the Azure mobile app.
 func (o AzureAppPushReceiverResponseOutput) EmailAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureAppPushReceiverResponse) string { return v.EmailAddress }).(pulumi.StringOutput)
@@ -198,12 +167,6 @@ func (o AzureAppPushReceiverResponseArrayOutput) ToAzureAppPushReceiverResponseA
 
 func (o AzureAppPushReceiverResponseArrayOutput) ToAzureAppPushReceiverResponseArrayOutputWithContext(ctx context.Context) AzureAppPushReceiverResponseArrayOutput {
 	return o
-}
-
-func (o AzureAppPushReceiverResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AzureAppPushReceiverResponse] {
-	return pulumix.Output[[]AzureAppPushReceiverResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureAppPushReceiverResponseArrayOutput) Index(i pulumi.IntInput) AzureAppPushReceiverResponseOutput {
@@ -279,12 +242,6 @@ func (i EmailReceiverArgs) ToEmailReceiverOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(EmailReceiverOutput)
 }
 
-func (i EmailReceiverArgs) ToOutput(ctx context.Context) pulumix.Output[EmailReceiver] {
-	return pulumix.Output[EmailReceiver]{
-		OutputState: i.ToEmailReceiverOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EmailReceiverArrayInput is an input type that accepts EmailReceiverArray and EmailReceiverArrayOutput values.
 // You can construct a concrete instance of `EmailReceiverArrayInput` via:
 //
@@ -310,12 +267,6 @@ func (i EmailReceiverArray) ToEmailReceiverArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EmailReceiverArrayOutput)
 }
 
-func (i EmailReceiverArray) ToOutput(ctx context.Context) pulumix.Output[[]EmailReceiver] {
-	return pulumix.Output[[]EmailReceiver]{
-		OutputState: i.ToEmailReceiverArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An email receiver.
 type EmailReceiverOutput struct{ *pulumi.OutputState }
 
@@ -329,12 +280,6 @@ func (o EmailReceiverOutput) ToEmailReceiverOutput() EmailReceiverOutput {
 
 func (o EmailReceiverOutput) ToEmailReceiverOutputWithContext(ctx context.Context) EmailReceiverOutput {
 	return o
-}
-
-func (o EmailReceiverOutput) ToOutput(ctx context.Context) pulumix.Output[EmailReceiver] {
-	return pulumix.Output[EmailReceiver]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The email address of this receiver.
@@ -364,12 +309,6 @@ func (o EmailReceiverArrayOutput) ToEmailReceiverArrayOutput() EmailReceiverArra
 
 func (o EmailReceiverArrayOutput) ToEmailReceiverArrayOutputWithContext(ctx context.Context) EmailReceiverArrayOutput {
 	return o
-}
-
-func (o EmailReceiverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EmailReceiver] {
-	return pulumix.Output[[]EmailReceiver]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EmailReceiverArrayOutput) Index(i pulumi.IntInput) EmailReceiverOutput {
@@ -418,12 +357,6 @@ func (o EmailReceiverResponseOutput) ToEmailReceiverResponseOutputWithContext(ct
 	return o
 }
 
-func (o EmailReceiverResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EmailReceiverResponse] {
-	return pulumix.Output[EmailReceiverResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The email address of this receiver.
 func (o EmailReceiverResponseOutput) EmailAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v EmailReceiverResponse) string { return v.EmailAddress }).(pulumi.StringOutput)
@@ -456,12 +389,6 @@ func (o EmailReceiverResponseArrayOutput) ToEmailReceiverResponseArrayOutput() E
 
 func (o EmailReceiverResponseArrayOutput) ToEmailReceiverResponseArrayOutputWithContext(ctx context.Context) EmailReceiverResponseArrayOutput {
 	return o
-}
-
-func (o EmailReceiverResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EmailReceiverResponse] {
-	return pulumix.Output[[]EmailReceiverResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EmailReceiverResponseArrayOutput) Index(i pulumi.IntInput) EmailReceiverResponseOutput {
@@ -513,12 +440,6 @@ func (i SmsReceiverArgs) ToSmsReceiverOutputWithContext(ctx context.Context) Sms
 	return pulumi.ToOutputWithContext(ctx, i).(SmsReceiverOutput)
 }
 
-func (i SmsReceiverArgs) ToOutput(ctx context.Context) pulumix.Output[SmsReceiver] {
-	return pulumix.Output[SmsReceiver]{
-		OutputState: i.ToSmsReceiverOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SmsReceiverArrayInput is an input type that accepts SmsReceiverArray and SmsReceiverArrayOutput values.
 // You can construct a concrete instance of `SmsReceiverArrayInput` via:
 //
@@ -544,12 +465,6 @@ func (i SmsReceiverArray) ToSmsReceiverArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SmsReceiverArrayOutput)
 }
 
-func (i SmsReceiverArray) ToOutput(ctx context.Context) pulumix.Output[[]SmsReceiver] {
-	return pulumix.Output[[]SmsReceiver]{
-		OutputState: i.ToSmsReceiverArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An SMS receiver.
 type SmsReceiverOutput struct{ *pulumi.OutputState }
 
@@ -563,12 +478,6 @@ func (o SmsReceiverOutput) ToSmsReceiverOutput() SmsReceiverOutput {
 
 func (o SmsReceiverOutput) ToSmsReceiverOutputWithContext(ctx context.Context) SmsReceiverOutput {
 	return o
-}
-
-func (o SmsReceiverOutput) ToOutput(ctx context.Context) pulumix.Output[SmsReceiver] {
-	return pulumix.Output[SmsReceiver]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The country code of the SMS receiver.
@@ -598,12 +507,6 @@ func (o SmsReceiverArrayOutput) ToSmsReceiverArrayOutput() SmsReceiverArrayOutpu
 
 func (o SmsReceiverArrayOutput) ToSmsReceiverArrayOutputWithContext(ctx context.Context) SmsReceiverArrayOutput {
 	return o
-}
-
-func (o SmsReceiverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SmsReceiver] {
-	return pulumix.Output[[]SmsReceiver]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SmsReceiverArrayOutput) Index(i pulumi.IntInput) SmsReceiverOutput {
@@ -639,12 +542,6 @@ func (o SmsReceiverResponseOutput) ToSmsReceiverResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o SmsReceiverResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SmsReceiverResponse] {
-	return pulumix.Output[SmsReceiverResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The country code of the SMS receiver.
 func (o SmsReceiverResponseOutput) CountryCode() pulumi.StringOutput {
 	return o.ApplyT(func(v SmsReceiverResponse) string { return v.CountryCode }).(pulumi.StringOutput)
@@ -677,12 +574,6 @@ func (o SmsReceiverResponseArrayOutput) ToSmsReceiverResponseArrayOutput() SmsRe
 
 func (o SmsReceiverResponseArrayOutput) ToSmsReceiverResponseArrayOutputWithContext(ctx context.Context) SmsReceiverResponseArrayOutput {
 	return o
-}
-
-func (o SmsReceiverResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SmsReceiverResponse] {
-	return pulumix.Output[[]SmsReceiverResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SmsReceiverResponseArrayOutput) Index(i pulumi.IntInput) SmsReceiverResponseOutput {
@@ -734,12 +625,6 @@ func (i VoiceReceiverArgs) ToVoiceReceiverOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(VoiceReceiverOutput)
 }
 
-func (i VoiceReceiverArgs) ToOutput(ctx context.Context) pulumix.Output[VoiceReceiver] {
-	return pulumix.Output[VoiceReceiver]{
-		OutputState: i.ToVoiceReceiverOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VoiceReceiverArrayInput is an input type that accepts VoiceReceiverArray and VoiceReceiverArrayOutput values.
 // You can construct a concrete instance of `VoiceReceiverArrayInput` via:
 //
@@ -765,12 +650,6 @@ func (i VoiceReceiverArray) ToVoiceReceiverArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(VoiceReceiverArrayOutput)
 }
 
-func (i VoiceReceiverArray) ToOutput(ctx context.Context) pulumix.Output[[]VoiceReceiver] {
-	return pulumix.Output[[]VoiceReceiver]{
-		OutputState: i.ToVoiceReceiverArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A voice receiver.
 type VoiceReceiverOutput struct{ *pulumi.OutputState }
 
@@ -784,12 +663,6 @@ func (o VoiceReceiverOutput) ToVoiceReceiverOutput() VoiceReceiverOutput {
 
 func (o VoiceReceiverOutput) ToVoiceReceiverOutputWithContext(ctx context.Context) VoiceReceiverOutput {
 	return o
-}
-
-func (o VoiceReceiverOutput) ToOutput(ctx context.Context) pulumix.Output[VoiceReceiver] {
-	return pulumix.Output[VoiceReceiver]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The country code of the voice receiver.
@@ -819,12 +692,6 @@ func (o VoiceReceiverArrayOutput) ToVoiceReceiverArrayOutput() VoiceReceiverArra
 
 func (o VoiceReceiverArrayOutput) ToVoiceReceiverArrayOutputWithContext(ctx context.Context) VoiceReceiverArrayOutput {
 	return o
-}
-
-func (o VoiceReceiverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VoiceReceiver] {
-	return pulumix.Output[[]VoiceReceiver]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VoiceReceiverArrayOutput) Index(i pulumi.IntInput) VoiceReceiverOutput {
@@ -858,12 +725,6 @@ func (o VoiceReceiverResponseOutput) ToVoiceReceiverResponseOutputWithContext(ct
 	return o
 }
 
-func (o VoiceReceiverResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VoiceReceiverResponse] {
-	return pulumix.Output[VoiceReceiverResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The country code of the voice receiver.
 func (o VoiceReceiverResponseOutput) CountryCode() pulumi.StringOutput {
 	return o.ApplyT(func(v VoiceReceiverResponse) string { return v.CountryCode }).(pulumi.StringOutput)
@@ -891,12 +752,6 @@ func (o VoiceReceiverResponseArrayOutput) ToVoiceReceiverResponseArrayOutput() V
 
 func (o VoiceReceiverResponseArrayOutput) ToVoiceReceiverResponseArrayOutputWithContext(ctx context.Context) VoiceReceiverResponseArrayOutput {
 	return o
-}
-
-func (o VoiceReceiverResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VoiceReceiverResponse] {
-	return pulumix.Output[[]VoiceReceiverResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VoiceReceiverResponseArrayOutput) Index(i pulumi.IntInput) VoiceReceiverResponseOutput {
@@ -995,12 +850,6 @@ func (i WebhookReceiverArgs) ToWebhookReceiverOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookReceiverOutput)
 }
 
-func (i WebhookReceiverArgs) ToOutput(ctx context.Context) pulumix.Output[WebhookReceiver] {
-	return pulumix.Output[WebhookReceiver]{
-		OutputState: i.ToWebhookReceiverOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WebhookReceiverArrayInput is an input type that accepts WebhookReceiverArray and WebhookReceiverArrayOutput values.
 // You can construct a concrete instance of `WebhookReceiverArrayInput` via:
 //
@@ -1026,12 +875,6 @@ func (i WebhookReceiverArray) ToWebhookReceiverArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookReceiverArrayOutput)
 }
 
-func (i WebhookReceiverArray) ToOutput(ctx context.Context) pulumix.Output[[]WebhookReceiver] {
-	return pulumix.Output[[]WebhookReceiver]{
-		OutputState: i.ToWebhookReceiverArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A webhook receiver.
 type WebhookReceiverOutput struct{ *pulumi.OutputState }
 
@@ -1045,12 +888,6 @@ func (o WebhookReceiverOutput) ToWebhookReceiverOutput() WebhookReceiverOutput {
 
 func (o WebhookReceiverOutput) ToWebhookReceiverOutputWithContext(ctx context.Context) WebhookReceiverOutput {
 	return o
-}
-
-func (o WebhookReceiverOutput) ToOutput(ctx context.Context) pulumix.Output[WebhookReceiver] {
-	return pulumix.Output[WebhookReceiver]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates the identifier uri for aad auth.
@@ -1100,12 +937,6 @@ func (o WebhookReceiverArrayOutput) ToWebhookReceiverArrayOutput() WebhookReceiv
 
 func (o WebhookReceiverArrayOutput) ToWebhookReceiverArrayOutputWithContext(ctx context.Context) WebhookReceiverArrayOutput {
 	return o
-}
-
-func (o WebhookReceiverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WebhookReceiver] {
-	return pulumix.Output[[]WebhookReceiver]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebhookReceiverArrayOutput) Index(i pulumi.IntInput) WebhookReceiverOutput {
@@ -1164,12 +995,6 @@ func (o WebhookReceiverResponseOutput) ToWebhookReceiverResponseOutputWithContex
 	return o
 }
 
-func (o WebhookReceiverResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WebhookReceiverResponse] {
-	return pulumix.Output[WebhookReceiverResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Indicates the identifier uri for aad auth.
 func (o WebhookReceiverResponseOutput) IdentifierUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebhookReceiverResponse) *string { return v.IdentifierUri }).(pulumi.StringPtrOutput)
@@ -1217,12 +1042,6 @@ func (o WebhookReceiverResponseArrayOutput) ToWebhookReceiverResponseArrayOutput
 
 func (o WebhookReceiverResponseArrayOutput) ToWebhookReceiverResponseArrayOutputWithContext(ctx context.Context) WebhookReceiverResponseArrayOutput {
 	return o
-}
-
-func (o WebhookReceiverResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WebhookReceiverResponse] {
-	return pulumix.Output[[]WebhookReceiverResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebhookReceiverResponseArrayOutput) Index(i pulumi.IntInput) WebhookReceiverResponseOutput {

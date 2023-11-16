@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the sensitivity label of a given column
@@ -117,12 +116,6 @@ func (o LookupManagedDatabaseSensitivityLabelResultOutput) ToLookupManagedDataba
 
 func (o LookupManagedDatabaseSensitivityLabelResultOutput) ToLookupManagedDatabaseSensitivityLabelResultOutputWithContext(ctx context.Context) LookupManagedDatabaseSensitivityLabelResultOutput {
 	return o
-}
-
-func (o LookupManagedDatabaseSensitivityLabelResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedDatabaseSensitivityLabelResult] {
-	return pulumix.Output[LookupManagedDatabaseSensitivityLabelResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupManagedDatabaseSensitivityLabelResultOutput) ClientClassificationSource() pulumi.StringPtrOutput {

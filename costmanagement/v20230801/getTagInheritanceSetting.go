@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the setting from the given scope by name.
@@ -82,12 +81,6 @@ func (o LookupTagInheritanceSettingResultOutput) ToLookupTagInheritanceSettingRe
 
 func (o LookupTagInheritanceSettingResultOutput) ToLookupTagInheritanceSettingResultOutputWithContext(ctx context.Context) LookupTagInheritanceSettingResultOutput {
 	return o
-}
-
-func (o LookupTagInheritanceSettingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTagInheritanceSettingResult] {
-	return pulumix.Output[LookupTagInheritanceSettingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

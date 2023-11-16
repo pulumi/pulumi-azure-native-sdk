@@ -9,13 +9,12 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a workspace manager assignment
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 func LookupWorkspaceManagerAssignment(ctx *pulumi.Context, args *LookupWorkspaceManagerAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupWorkspaceManagerAssignmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspaceManagerAssignmentResult
@@ -96,12 +95,6 @@ func (o LookupWorkspaceManagerAssignmentResultOutput) ToLookupWorkspaceManagerAs
 
 func (o LookupWorkspaceManagerAssignmentResultOutput) ToLookupWorkspaceManagerAssignmentResultOutputWithContext(ctx context.Context) LookupWorkspaceManagerAssignmentResultOutput {
 	return o
-}
-
-func (o LookupWorkspaceManagerAssignmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkspaceManagerAssignmentResult] {
-	return pulumix.Output[LookupWorkspaceManagerAssignmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Etag.

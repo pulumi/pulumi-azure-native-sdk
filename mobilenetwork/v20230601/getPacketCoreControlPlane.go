@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about the specified packet core control plane.
@@ -128,12 +127,6 @@ func (o LookupPacketCoreControlPlaneResultOutput) ToLookupPacketCoreControlPlane
 
 func (o LookupPacketCoreControlPlaneResultOutput) ToLookupPacketCoreControlPlaneResultOutputWithContext(ctx context.Context) LookupPacketCoreControlPlaneResultOutput {
 	return o
-}
-
-func (o LookupPacketCoreControlPlaneResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPacketCoreControlPlaneResult] {
-	return pulumix.Output[LookupPacketCoreControlPlaneResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The control plane interface on the access network. For 5G networks, this is the N2 interface. For 4G networks, this is the S1-MME interface.

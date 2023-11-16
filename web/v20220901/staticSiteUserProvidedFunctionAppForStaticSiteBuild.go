@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Static Site User Provided Function App ARM resource.
@@ -168,12 +167,6 @@ func (i *StaticSiteUserProvidedFunctionAppForStaticSiteBuild) ToStaticSiteUserPr
 	return pulumi.ToOutputWithContext(ctx, i).(StaticSiteUserProvidedFunctionAppForStaticSiteBuildOutput)
 }
 
-func (i *StaticSiteUserProvidedFunctionAppForStaticSiteBuild) ToOutput(ctx context.Context) pulumix.Output[*StaticSiteUserProvidedFunctionAppForStaticSiteBuild] {
-	return pulumix.Output[*StaticSiteUserProvidedFunctionAppForStaticSiteBuild]{
-		OutputState: i.ToStaticSiteUserProvidedFunctionAppForStaticSiteBuildOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StaticSiteUserProvidedFunctionAppForStaticSiteBuildOutput struct{ *pulumi.OutputState }
 
 func (StaticSiteUserProvidedFunctionAppForStaticSiteBuildOutput) ElementType() reflect.Type {
@@ -186,12 +179,6 @@ func (o StaticSiteUserProvidedFunctionAppForStaticSiteBuildOutput) ToStaticSiteU
 
 func (o StaticSiteUserProvidedFunctionAppForStaticSiteBuildOutput) ToStaticSiteUserProvidedFunctionAppForStaticSiteBuildOutputWithContext(ctx context.Context) StaticSiteUserProvidedFunctionAppForStaticSiteBuildOutput {
 	return o
-}
-
-func (o StaticSiteUserProvidedFunctionAppForStaticSiteBuildOutput) ToOutput(ctx context.Context) pulumix.Output[*StaticSiteUserProvidedFunctionAppForStaticSiteBuild] {
-	return pulumix.Output[*StaticSiteUserProvidedFunctionAppForStaticSiteBuild]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The date and time on which the function app was registered with the static site.

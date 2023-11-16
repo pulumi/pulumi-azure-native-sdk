@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Static Site Linked Backend ARM resource.
@@ -95,12 +94,6 @@ func (o LookupStaticSiteLinkedBackendForBuildResultOutput) ToLookupStaticSiteLin
 
 func (o LookupStaticSiteLinkedBackendForBuildResultOutput) ToLookupStaticSiteLinkedBackendForBuildResultOutputWithContext(ctx context.Context) LookupStaticSiteLinkedBackendForBuildResultOutput {
 	return o
-}
-
-func (o LookupStaticSiteLinkedBackendForBuildResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStaticSiteLinkedBackendForBuildResult] {
-	return pulumix.Output[LookupStaticSiteLinkedBackendForBuildResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource id of the backend linked to the static site

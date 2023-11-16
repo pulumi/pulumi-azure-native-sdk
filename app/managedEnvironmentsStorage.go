@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Storage resource for managedEnvironment.
@@ -151,12 +150,6 @@ func (i *ManagedEnvironmentsStorage) ToManagedEnvironmentsStorageOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedEnvironmentsStorageOutput)
 }
 
-func (i *ManagedEnvironmentsStorage) ToOutput(ctx context.Context) pulumix.Output[*ManagedEnvironmentsStorage] {
-	return pulumix.Output[*ManagedEnvironmentsStorage]{
-		OutputState: i.ToManagedEnvironmentsStorageOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagedEnvironmentsStorageOutput struct{ *pulumi.OutputState }
 
 func (ManagedEnvironmentsStorageOutput) ElementType() reflect.Type {
@@ -169,12 +162,6 @@ func (o ManagedEnvironmentsStorageOutput) ToManagedEnvironmentsStorageOutput() M
 
 func (o ManagedEnvironmentsStorageOutput) ToManagedEnvironmentsStorageOutputWithContext(ctx context.Context) ManagedEnvironmentsStorageOutput {
 	return o
-}
-
-func (o ManagedEnvironmentsStorageOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedEnvironmentsStorage] {
-	return pulumix.Output[*ManagedEnvironmentsStorage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

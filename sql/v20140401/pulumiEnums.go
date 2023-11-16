@@ -87,12 +87,6 @@ func (o AutoExecuteStatusOutput) ToAutoExecuteStatusPtrOutputWithContext(ctx con
 	}).(AutoExecuteStatusPtrOutput)
 }
 
-func (o AutoExecuteStatusOutput) ToOutput(ctx context.Context) pulumix.Output[AutoExecuteStatus] {
-	return pulumix.Output[AutoExecuteStatus]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AutoExecuteStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -126,12 +120,6 @@ func (o AutoExecuteStatusPtrOutput) ToAutoExecuteStatusPtrOutput() AutoExecuteSt
 
 func (o AutoExecuteStatusPtrOutput) ToAutoExecuteStatusPtrOutputWithContext(ctx context.Context) AutoExecuteStatusPtrOutput {
 	return o
-}
-
-func (o AutoExecuteStatusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoExecuteStatus] {
-	return pulumix.Output[*AutoExecuteStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoExecuteStatusPtrOutput) Elem() AutoExecuteStatusOutput {

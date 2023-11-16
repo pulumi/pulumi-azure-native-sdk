@@ -78,12 +78,6 @@ func (o ActionOutput) ToActionPtrOutputWithContext(ctx context.Context) ActionPt
 	}).(ActionPtrOutput)
 }
 
-func (o ActionOutput) ToOutput(ctx context.Context) pulumix.Output[Action] {
-	return pulumix.Output[Action]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -117,12 +111,6 @@ func (o ActionPtrOutput) ToActionPtrOutput() ActionPtrOutput {
 
 func (o ActionPtrOutput) ToActionPtrOutputWithContext(ctx context.Context) ActionPtrOutput {
 	return o
-}
-
-func (o ActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Action] {
-	return pulumix.Output[*Action]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionPtrOutput) Elem() ActionOutput {
@@ -304,12 +292,6 @@ func (o VolumeCreateOptionOutput) ToVolumeCreateOptionPtrOutputWithContext(ctx c
 	}).(VolumeCreateOptionPtrOutput)
 }
 
-func (o VolumeCreateOptionOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeCreateOption] {
-	return pulumix.Output[VolumeCreateOption]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VolumeCreateOptionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -343,12 +325,6 @@ func (o VolumeCreateOptionPtrOutput) ToVolumeCreateOptionPtrOutput() VolumeCreat
 
 func (o VolumeCreateOptionPtrOutput) ToVolumeCreateOptionPtrOutputWithContext(ctx context.Context) VolumeCreateOptionPtrOutput {
 	return o
-}
-
-func (o VolumeCreateOptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeCreateOption] {
-	return pulumix.Output[*VolumeCreateOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeCreateOptionPtrOutput) Elem() VolumeCreateOptionOutput {

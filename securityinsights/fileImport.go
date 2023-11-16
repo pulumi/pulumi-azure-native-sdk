@@ -10,13 +10,12 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a file import in Azure Security Insights.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 type FileImport struct {
 	pulumi.CustomResourceState
 
@@ -119,6 +118,9 @@ func NewFileImport(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:FileImport"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:FileImport"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -211,12 +213,6 @@ func (i *FileImport) ToFileImportOutputWithContext(ctx context.Context) FileImpo
 	return pulumi.ToOutputWithContext(ctx, i).(FileImportOutput)
 }
 
-func (i *FileImport) ToOutput(ctx context.Context) pulumix.Output[*FileImport] {
-	return pulumix.Output[*FileImport]{
-		OutputState: i.ToFileImportOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FileImportOutput struct{ *pulumi.OutputState }
 
 func (FileImportOutput) ElementType() reflect.Type {
@@ -229,12 +225,6 @@ func (o FileImportOutput) ToFileImportOutput() FileImportOutput {
 
 func (o FileImportOutput) ToFileImportOutputWithContext(ctx context.Context) FileImportOutput {
 	return o
-}
-
-func (o FileImportOutput) ToOutput(ctx context.Context) pulumix.Output[*FileImport] {
-	return pulumix.Output[*FileImport]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The content type of this file.

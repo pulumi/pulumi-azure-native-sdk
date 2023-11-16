@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Application Insights private workbook definition.
@@ -204,12 +203,6 @@ func (i *MyWorkbook) ToMyWorkbookOutputWithContext(ctx context.Context) MyWorkbo
 	return pulumi.ToOutputWithContext(ctx, i).(MyWorkbookOutput)
 }
 
-func (i *MyWorkbook) ToOutput(ctx context.Context) pulumix.Output[*MyWorkbook] {
-	return pulumix.Output[*MyWorkbook]{
-		OutputState: i.ToMyWorkbookOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MyWorkbookOutput struct{ *pulumi.OutputState }
 
 func (MyWorkbookOutput) ElementType() reflect.Type {
@@ -222,12 +215,6 @@ func (o MyWorkbookOutput) ToMyWorkbookOutput() MyWorkbookOutput {
 
 func (o MyWorkbookOutput) ToMyWorkbookOutputWithContext(ctx context.Context) MyWorkbookOutput {
 	return o
-}
-
-func (o MyWorkbookOutput) ToOutput(ctx context.Context) pulumix.Output[*MyWorkbook] {
-	return pulumix.Output[*MyWorkbook]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Workbook category, as defined by the user at creation time.

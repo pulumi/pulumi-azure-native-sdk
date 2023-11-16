@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the configuration of service URI and custom headers for the webhook.
@@ -82,12 +81,6 @@ func (o GetWebhookCallbackConfigResultOutput) ToGetWebhookCallbackConfigResultOu
 
 func (o GetWebhookCallbackConfigResultOutput) ToGetWebhookCallbackConfigResultOutputWithContext(ctx context.Context) GetWebhookCallbackConfigResultOutput {
 	return o
-}
-
-func (o GetWebhookCallbackConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetWebhookCallbackConfigResult] {
-	return pulumix.Output[GetWebhookCallbackConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Custom headers that will be added to the webhook notifications.

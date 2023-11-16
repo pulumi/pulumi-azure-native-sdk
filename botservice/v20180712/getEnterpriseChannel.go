@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns an Enterprise Channel specified by the parameters.
@@ -89,12 +88,6 @@ func (o LookupEnterpriseChannelResultOutput) ToLookupEnterpriseChannelResultOutp
 
 func (o LookupEnterpriseChannelResultOutput) ToLookupEnterpriseChannelResultOutputWithContext(ctx context.Context) LookupEnterpriseChannelResultOutput {
 	return o
-}
-
-func (o LookupEnterpriseChannelResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEnterpriseChannelResult] {
-	return pulumix.Output[LookupEnterpriseChannelResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Entity Tag

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information about the Runtime Environment
@@ -96,12 +95,6 @@ func (o LookupRuntimeEnvironmentResultOutput) ToLookupRuntimeEnvironmentResultOu
 
 func (o LookupRuntimeEnvironmentResultOutput) ToLookupRuntimeEnvironmentResultOutputWithContext(ctx context.Context) LookupRuntimeEnvironmentResultOutput {
 	return o
-}
-
-func (o LookupRuntimeEnvironmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRuntimeEnvironmentResult] {
-	return pulumix.Output[LookupRuntimeEnvironmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of Default packages for Environment

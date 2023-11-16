@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a Test Base CustomerEvent.
@@ -88,12 +87,6 @@ func (o LookupCustomerEventResultOutput) ToLookupCustomerEventResultOutput() Loo
 
 func (o LookupCustomerEventResultOutput) ToLookupCustomerEventResultOutputWithContext(ctx context.Context) LookupCustomerEventResultOutput {
 	return o
-}
-
-func (o LookupCustomerEventResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCustomerEventResult] {
-	return pulumix.Output[LookupCustomerEventResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the event subscribed to.

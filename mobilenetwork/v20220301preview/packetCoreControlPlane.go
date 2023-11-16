@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Packet core control plane resource.
@@ -209,12 +208,6 @@ func (i *PacketCoreControlPlane) ToPacketCoreControlPlaneOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(PacketCoreControlPlaneOutput)
 }
 
-func (i *PacketCoreControlPlane) ToOutput(ctx context.Context) pulumix.Output[*PacketCoreControlPlane] {
-	return pulumix.Output[*PacketCoreControlPlane]{
-		OutputState: i.ToPacketCoreControlPlaneOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PacketCoreControlPlaneOutput struct{ *pulumi.OutputState }
 
 func (PacketCoreControlPlaneOutput) ElementType() reflect.Type {
@@ -227,12 +220,6 @@ func (o PacketCoreControlPlaneOutput) ToPacketCoreControlPlaneOutput() PacketCor
 
 func (o PacketCoreControlPlaneOutput) ToPacketCoreControlPlaneOutputWithContext(ctx context.Context) PacketCoreControlPlaneOutput {
 	return o
-}
-
-func (o PacketCoreControlPlaneOutput) ToOutput(ctx context.Context) pulumix.Output[*PacketCoreControlPlane] {
-	return pulumix.Output[*PacketCoreControlPlane]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The control plane interface on the access network. In 5G networks this is called as N2 interface whereas in 4G networks this is called as S1-MME interface.

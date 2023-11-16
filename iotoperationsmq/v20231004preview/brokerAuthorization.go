@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // MQ broker/authorization resource
@@ -167,12 +166,6 @@ func (i *BrokerAuthorization) ToBrokerAuthorizationOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerAuthorizationOutput)
 }
 
-func (i *BrokerAuthorization) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthorization] {
-	return pulumix.Output[*BrokerAuthorization]{
-		OutputState: i.ToBrokerAuthorizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BrokerAuthorizationOutput struct{ *pulumi.OutputState }
 
 func (BrokerAuthorizationOutput) ElementType() reflect.Type {
@@ -185,12 +178,6 @@ func (o BrokerAuthorizationOutput) ToBrokerAuthorizationOutput() BrokerAuthoriza
 
 func (o BrokerAuthorizationOutput) ToBrokerAuthorizationOutputWithContext(ctx context.Context) BrokerAuthorizationOutput {
 	return o
-}
-
-func (o BrokerAuthorizationOutput) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthorization] {
-	return pulumix.Output[*BrokerAuthorization]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of authorization policies supported by the Authorization Resource.

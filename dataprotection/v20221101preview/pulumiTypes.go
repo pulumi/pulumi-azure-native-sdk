@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i DppIdentityDetailsArgs) ToDppIdentityDetailsOutput() DppIdentityDetailsO
 
 func (i DppIdentityDetailsArgs) ToDppIdentityDetailsOutputWithContext(ctx context.Context) DppIdentityDetailsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DppIdentityDetailsOutput)
-}
-
-func (i DppIdentityDetailsArgs) ToOutput(ctx context.Context) pulumix.Output[DppIdentityDetails] {
-	return pulumix.Output[DppIdentityDetails]{
-		OutputState: i.ToDppIdentityDetailsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i DppIdentityDetailsArgs) ToDppIdentityDetailsPtrOutput() DppIdentityDetailsPtrOutput {
@@ -96,12 +89,6 @@ func (i *dppIdentityDetailsPtrType) ToDppIdentityDetailsPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(DppIdentityDetailsPtrOutput)
 }
 
-func (i *dppIdentityDetailsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DppIdentityDetails] {
-	return pulumix.Output[*DppIdentityDetails]{
-		OutputState: i.ToDppIdentityDetailsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Identity details
 type DppIdentityDetailsOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o DppIdentityDetailsOutput) ToDppIdentityDetailsPtrOutputWithContext(ctx c
 	}).(DppIdentityDetailsPtrOutput)
 }
 
-func (o DppIdentityDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[DppIdentityDetails] {
-	return pulumix.Output[DppIdentityDetails]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The identityType which can be either SystemAssigned or None
 func (o DppIdentityDetailsOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DppIdentityDetails) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -150,12 +131,6 @@ func (o DppIdentityDetailsPtrOutput) ToDppIdentityDetailsPtrOutput() DppIdentity
 
 func (o DppIdentityDetailsPtrOutput) ToDppIdentityDetailsPtrOutputWithContext(ctx context.Context) DppIdentityDetailsPtrOutput {
 	return o
-}
-
-func (o DppIdentityDetailsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DppIdentityDetails] {
-	return pulumix.Output[*DppIdentityDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DppIdentityDetailsPtrOutput) Elem() DppIdentityDetailsOutput {
@@ -203,12 +178,6 @@ func (o DppIdentityDetailsResponseOutput) ToDppIdentityDetailsResponseOutputWith
 	return o
 }
 
-func (o DppIdentityDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DppIdentityDetailsResponse] {
-	return pulumix.Output[DppIdentityDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The object ID of the service principal object for the managed identity that is used to grant role-based access to an Azure resource.
 func (o DppIdentityDetailsResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v DppIdentityDetailsResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -236,12 +205,6 @@ func (o DppIdentityDetailsResponsePtrOutput) ToDppIdentityDetailsResponsePtrOutp
 
 func (o DppIdentityDetailsResponsePtrOutput) ToDppIdentityDetailsResponsePtrOutputWithContext(ctx context.Context) DppIdentityDetailsResponsePtrOutput {
 	return o
-}
-
-func (o DppIdentityDetailsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DppIdentityDetailsResponse] {
-	return pulumix.Output[*DppIdentityDetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DppIdentityDetailsResponsePtrOutput) Elem() DppIdentityDetailsResponseOutput {
@@ -317,12 +280,6 @@ func (i ResourceGuardTypeArgs) ToResourceGuardTypeOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGuardTypeOutput)
 }
 
-func (i ResourceGuardTypeArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceGuardType] {
-	return pulumix.Output[ResourceGuardType]{
-		OutputState: i.ToResourceGuardTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ResourceGuardTypeArgs) ToResourceGuardTypePtrOutput() ResourceGuardTypePtrOutput {
 	return i.ToResourceGuardTypePtrOutputWithContext(context.Background())
 }
@@ -364,12 +321,6 @@ func (i *resourceGuardTypePtrType) ToResourceGuardTypePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGuardTypePtrOutput)
 }
 
-func (i *resourceGuardTypePtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceGuardType] {
-	return pulumix.Output[*ResourceGuardType]{
-		OutputState: i.ToResourceGuardTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ResourceGuardTypeOutput struct{ *pulumi.OutputState }
 
 func (ResourceGuardTypeOutput) ElementType() reflect.Type {
@@ -394,12 +345,6 @@ func (o ResourceGuardTypeOutput) ToResourceGuardTypePtrOutputWithContext(ctx con
 	}).(ResourceGuardTypePtrOutput)
 }
 
-func (o ResourceGuardTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceGuardType] {
-	return pulumix.Output[ResourceGuardType]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of critical operations which are not protected by this resourceGuard
 func (o ResourceGuardTypeOutput) VaultCriticalOperationExclusionList() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ResourceGuardType) []string { return v.VaultCriticalOperationExclusionList }).(pulumi.StringArrayOutput)
@@ -417,12 +362,6 @@ func (o ResourceGuardTypePtrOutput) ToResourceGuardTypePtrOutput() ResourceGuard
 
 func (o ResourceGuardTypePtrOutput) ToResourceGuardTypePtrOutputWithContext(ctx context.Context) ResourceGuardTypePtrOutput {
 	return o
-}
-
-func (o ResourceGuardTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceGuardType] {
-	return pulumix.Output[*ResourceGuardType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceGuardTypePtrOutput) Elem() ResourceGuardTypeOutput {
@@ -468,12 +407,6 @@ func (o ResourceGuardOperationResponseOutput) ToResourceGuardOperationResponseOu
 	return o
 }
 
-func (o ResourceGuardOperationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceGuardOperationResponse] {
-	return pulumix.Output[ResourceGuardOperationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Type of resource request.
 func (o ResourceGuardOperationResponseOutput) RequestResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceGuardOperationResponse) string { return v.RequestResourceType }).(pulumi.StringOutput)
@@ -496,12 +429,6 @@ func (o ResourceGuardOperationResponseArrayOutput) ToResourceGuardOperationRespo
 
 func (o ResourceGuardOperationResponseArrayOutput) ToResourceGuardOperationResponseArrayOutputWithContext(ctx context.Context) ResourceGuardOperationResponseArrayOutput {
 	return o
-}
-
-func (o ResourceGuardOperationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceGuardOperationResponse] {
-	return pulumix.Output[[]ResourceGuardOperationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceGuardOperationResponseArrayOutput) Index(i pulumi.IntInput) ResourceGuardOperationResponseOutput {
@@ -535,12 +462,6 @@ func (o ResourceGuardResponseOutput) ToResourceGuardResponseOutput() ResourceGua
 
 func (o ResourceGuardResponseOutput) ToResourceGuardResponseOutputWithContext(ctx context.Context) ResourceGuardResponseOutput {
 	return o
-}
-
-func (o ResourceGuardResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceGuardResponse] {
-	return pulumix.Output[ResourceGuardResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This flag indicates whether auto approval is allowed or not.
@@ -597,12 +518,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

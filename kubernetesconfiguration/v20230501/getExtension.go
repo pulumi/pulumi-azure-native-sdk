@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets Kubernetes Cluster Extension.
@@ -145,12 +144,6 @@ func (o LookupExtensionResultOutput) ToLookupExtensionResultOutput() LookupExten
 
 func (o LookupExtensionResultOutput) ToLookupExtensionResultOutputWithContext(ctx context.Context) LookupExtensionResultOutput {
 	return o
-}
-
-func (o LookupExtensionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupExtensionResult] {
-	return pulumix.Output[LookupExtensionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identity of the Extension resource in an AKS cluster

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Volume group resource for create
@@ -160,12 +159,6 @@ func (i *VolumeGroup) ToVolumeGroupOutputWithContext(ctx context.Context) Volume
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeGroupOutput)
 }
 
-func (i *VolumeGroup) ToOutput(ctx context.Context) pulumix.Output[*VolumeGroup] {
-	return pulumix.Output[*VolumeGroup]{
-		OutputState: i.ToVolumeGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VolumeGroupOutput struct{ *pulumi.OutputState }
 
 func (VolumeGroupOutput) ElementType() reflect.Type {
@@ -178,12 +171,6 @@ func (o VolumeGroupOutput) ToVolumeGroupOutput() VolumeGroupOutput {
 
 func (o VolumeGroupOutput) ToVolumeGroupOutputWithContext(ctx context.Context) VolumeGroupOutput {
 	return o
-}
-
-func (o VolumeGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeGroup] {
-	return pulumix.Output[*VolumeGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Volume group details

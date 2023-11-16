@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the SAP Central Services Instance resource.
@@ -118,12 +117,6 @@ func (o LookupSAPCentralInstanceResultOutput) ToLookupSAPCentralInstanceResultOu
 
 func (o LookupSAPCentralInstanceResultOutput) ToLookupSAPCentralInstanceResultOutputWithContext(ctx context.Context) LookupSAPCentralInstanceResultOutput {
 	return o
-}
-
-func (o LookupSAPCentralInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSAPCentralInstanceResult] {
-	return pulumix.Output[LookupSAPCentralInstanceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines the SAP Enqueue Replication Server (ERS) properties.

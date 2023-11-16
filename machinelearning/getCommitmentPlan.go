@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve an Azure ML commitment plan by its subscription, resource group and name.
@@ -88,12 +87,6 @@ func (o LookupCommitmentPlanResultOutput) ToLookupCommitmentPlanResultOutput() L
 
 func (o LookupCommitmentPlanResultOutput) ToLookupCommitmentPlanResultOutputWithContext(ctx context.Context) LookupCommitmentPlanResultOutput {
 	return o
-}
-
-func (o LookupCommitmentPlanResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCommitmentPlanResult] {
-	return pulumix.Output[LookupCommitmentPlanResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An entity tag used to enforce optimistic concurrency.

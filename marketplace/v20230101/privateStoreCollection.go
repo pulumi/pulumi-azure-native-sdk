@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Collection data structure.
@@ -163,12 +162,6 @@ func (i *PrivateStoreCollection) ToPrivateStoreCollectionOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateStoreCollectionOutput)
 }
 
-func (i *PrivateStoreCollection) ToOutput(ctx context.Context) pulumix.Output[*PrivateStoreCollection] {
-	return pulumix.Output[*PrivateStoreCollection]{
-		OutputState: i.ToPrivateStoreCollectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateStoreCollectionOutput struct{ *pulumi.OutputState }
 
 func (PrivateStoreCollectionOutput) ElementType() reflect.Type {
@@ -181,12 +174,6 @@ func (o PrivateStoreCollectionOutput) ToPrivateStoreCollectionOutput() PrivateSt
 
 func (o PrivateStoreCollectionOutput) ToPrivateStoreCollectionOutputWithContext(ctx context.Context) PrivateStoreCollectionOutput {
 	return o
-}
-
-func (o PrivateStoreCollectionOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateStoreCollection] {
-	return pulumix.Output[*PrivateStoreCollection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicating whether all subscriptions are selected (=true) or not (=false).

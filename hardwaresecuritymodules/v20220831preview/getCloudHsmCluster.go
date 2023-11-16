@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified Cloud HSM Cluster
@@ -97,12 +96,6 @@ func (o LookupCloudHsmClusterResultOutput) ToLookupCloudHsmClusterResultOutput()
 
 func (o LookupCloudHsmClusterResultOutput) ToLookupCloudHsmClusterResultOutputWithContext(ctx context.Context) LookupCloudHsmClusterResultOutput {
 	return o
-}
-
-func (o LookupCloudHsmClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCloudHsmClusterResult] {
-	return pulumix.Output[LookupCloudHsmClusterResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Cloud HSM Cluster's auto-generated Domain Name Label Scope

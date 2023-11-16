@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // RemoteRenderingAccount Response.
@@ -166,12 +165,6 @@ func (i *RemoteRenderingAccount) ToRemoteRenderingAccountOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(RemoteRenderingAccountOutput)
 }
 
-func (i *RemoteRenderingAccount) ToOutput(ctx context.Context) pulumix.Output[*RemoteRenderingAccount] {
-	return pulumix.Output[*RemoteRenderingAccount]{
-		OutputState: i.ToRemoteRenderingAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RemoteRenderingAccountOutput struct{ *pulumi.OutputState }
 
 func (RemoteRenderingAccountOutput) ElementType() reflect.Type {
@@ -184,12 +177,6 @@ func (o RemoteRenderingAccountOutput) ToRemoteRenderingAccountOutput() RemoteRen
 
 func (o RemoteRenderingAccountOutput) ToRemoteRenderingAccountOutputWithContext(ctx context.Context) RemoteRenderingAccountOutput {
 	return o
-}
-
-func (o RemoteRenderingAccountOutput) ToOutput(ctx context.Context) pulumix.Output[*RemoteRenderingAccount] {
-	return pulumix.Output[*RemoteRenderingAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Correspond domain name of certain Spatial Anchors Account

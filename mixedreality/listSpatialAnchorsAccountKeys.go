@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List Both of the 2 Keys of a Spatial Anchors Account
@@ -78,12 +77,6 @@ func (o ListSpatialAnchorsAccountKeysResultOutput) ToListSpatialAnchorsAccountKe
 
 func (o ListSpatialAnchorsAccountKeysResultOutput) ToListSpatialAnchorsAccountKeysResultOutputWithContext(ctx context.Context) ListSpatialAnchorsAccountKeysResultOutput {
 	return o
-}
-
-func (o ListSpatialAnchorsAccountKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListSpatialAnchorsAccountKeysResult] {
-	return pulumix.Output[ListSpatialAnchorsAccountKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // value of primary key.

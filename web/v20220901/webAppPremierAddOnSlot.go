@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Premier add-on.
@@ -216,12 +215,6 @@ func (i *WebAppPremierAddOnSlot) ToWebAppPremierAddOnSlotOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppPremierAddOnSlotOutput)
 }
 
-func (i *WebAppPremierAddOnSlot) ToOutput(ctx context.Context) pulumix.Output[*WebAppPremierAddOnSlot] {
-	return pulumix.Output[*WebAppPremierAddOnSlot]{
-		OutputState: i.ToWebAppPremierAddOnSlotOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebAppPremierAddOnSlotOutput struct{ *pulumi.OutputState }
 
 func (WebAppPremierAddOnSlotOutput) ElementType() reflect.Type {
@@ -234,12 +227,6 @@ func (o WebAppPremierAddOnSlotOutput) ToWebAppPremierAddOnSlotOutput() WebAppPre
 
 func (o WebAppPremierAddOnSlotOutput) ToWebAppPremierAddOnSlotOutputWithContext(ctx context.Context) WebAppPremierAddOnSlotOutput {
 	return o
-}
-
-func (o WebAppPremierAddOnSlotOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppPremierAddOnSlot] {
-	return pulumix.Output[*WebAppPremierAddOnSlot]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Kind of resource.

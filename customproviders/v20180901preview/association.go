@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The resource definition of this association.
@@ -117,12 +116,6 @@ func (i *Association) ToAssociationOutputWithContext(ctx context.Context) Associ
 	return pulumi.ToOutputWithContext(ctx, i).(AssociationOutput)
 }
 
-func (i *Association) ToOutput(ctx context.Context) pulumix.Output[*Association] {
-	return pulumix.Output[*Association]{
-		OutputState: i.ToAssociationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AssociationOutput struct{ *pulumi.OutputState }
 
 func (AssociationOutput) ElementType() reflect.Type {
@@ -135,12 +128,6 @@ func (o AssociationOutput) ToAssociationOutput() AssociationOutput {
 
 func (o AssociationOutput) ToAssociationOutputWithContext(ctx context.Context) AssociationOutput {
 	return o
-}
-
-func (o AssociationOutput) ToOutput(ctx context.Context) pulumix.Output[*Association] {
-	return pulumix.Output[*Association]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The association name.

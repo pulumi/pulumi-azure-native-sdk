@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an existing custom domain within an endpoint.
@@ -104,12 +103,6 @@ func (o LookupCustomDomainResultOutput) ToLookupCustomDomainResultOutput() Looku
 
 func (o LookupCustomDomainResultOutput) ToLookupCustomDomainResultOutputWithContext(ctx context.Context) LookupCustomDomainResultOutput {
 	return o
-}
-
-func (o LookupCustomDomainResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCustomDomainResult] {
-	return pulumix.Output[LookupCustomDomainResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Certificate parameters for securing custom HTTPS

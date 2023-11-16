@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Class representing the config for the solution in the migrate project.
@@ -77,12 +76,6 @@ func (o GetSolutionsControllerConfigResultOutput) ToGetSolutionsControllerConfig
 
 func (o GetSolutionsControllerConfigResultOutput) ToGetSolutionsControllerConfigResultOutputWithContext(ctx context.Context) GetSolutionsControllerConfigResultOutput {
 	return o
-}
-
-func (o GetSolutionsControllerConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSolutionsControllerConfigResult] {
-	return pulumix.Output[GetSolutionsControllerConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the publisher sas uri for the solution.

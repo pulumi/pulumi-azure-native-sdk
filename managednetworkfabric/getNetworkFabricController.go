@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Shows the provisioning status of Network Fabric Controller.
@@ -122,12 +121,6 @@ func (o LookupNetworkFabricControllerResultOutput) ToLookupNetworkFabricControll
 
 func (o LookupNetworkFabricControllerResultOutput) ToLookupNetworkFabricControllerResultOutputWithContext(ctx context.Context) LookupNetworkFabricControllerResultOutput {
 	return o
-}
-
-func (o LookupNetworkFabricControllerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkFabricControllerResult] {
-	return pulumix.Output[LookupNetworkFabricControllerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Switch configuration description.

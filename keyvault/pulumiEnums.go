@@ -108,12 +108,6 @@ func (o CreateModeOutput) ToCreateModePtrOutputWithContext(ctx context.Context) 
 	}).(CreateModePtrOutput)
 }
 
-func (o CreateModeOutput) ToOutput(ctx context.Context) pulumix.Output[CreateMode] {
-	return pulumix.Output[CreateMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CreateModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -147,12 +141,6 @@ func (o CreateModePtrOutput) ToCreateModePtrOutput() CreateModePtrOutput {
 
 func (o CreateModePtrOutput) ToCreateModePtrOutputWithContext(ctx context.Context) CreateModePtrOutput {
 	return o
-}
-
-func (o CreateModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CreateMode] {
-	return pulumix.Output[*CreateMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CreateModePtrOutput) Elem() CreateModeOutput {
@@ -353,12 +341,6 @@ func (o KeyRotationPolicyActionTypeOutput) ToKeyRotationPolicyActionTypePtrOutpu
 	}).(KeyRotationPolicyActionTypePtrOutput)
 }
 
-func (o KeyRotationPolicyActionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[KeyRotationPolicyActionType] {
-	return pulumix.Output[KeyRotationPolicyActionType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o KeyRotationPolicyActionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -392,12 +374,6 @@ func (o KeyRotationPolicyActionTypePtrOutput) ToKeyRotationPolicyActionTypePtrOu
 
 func (o KeyRotationPolicyActionTypePtrOutput) ToKeyRotationPolicyActionTypePtrOutputWithContext(ctx context.Context) KeyRotationPolicyActionTypePtrOutput {
 	return o
-}
-
-func (o KeyRotationPolicyActionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyRotationPolicyActionType] {
-	return pulumix.Output[*KeyRotationPolicyActionType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyRotationPolicyActionTypePtrOutput) Elem() KeyRotationPolicyActionTypeOutput {
@@ -544,12 +520,6 @@ func (o ManagedHsmSkuNameOutput) ToManagedHsmSkuNamePtrOutputWithContext(ctx con
 	}).(ManagedHsmSkuNamePtrOutput)
 }
 
-func (o ManagedHsmSkuNameOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedHsmSkuName] {
-	return pulumix.Output[ManagedHsmSkuName]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ManagedHsmSkuNameOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -583,12 +553,6 @@ func (o ManagedHsmSkuNamePtrOutput) ToManagedHsmSkuNamePtrOutput() ManagedHsmSku
 
 func (o ManagedHsmSkuNamePtrOutput) ToManagedHsmSkuNamePtrOutputWithContext(ctx context.Context) ManagedHsmSkuNamePtrOutput {
 	return o
-}
-
-func (o ManagedHsmSkuNamePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedHsmSkuName] {
-	return pulumix.Output[*ManagedHsmSkuName]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedHsmSkuNamePtrOutput) Elem() ManagedHsmSkuNameOutput {
@@ -782,12 +746,6 @@ func (o SkuNameOutput) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNam
 	}).(SkuNamePtrOutput)
 }
 
-func (o SkuNameOutput) ToOutput(ctx context.Context) pulumix.Output[SkuName] {
-	return pulumix.Output[SkuName]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SkuNameOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -821,12 +779,6 @@ func (o SkuNamePtrOutput) ToSkuNamePtrOutput() SkuNamePtrOutput {
 
 func (o SkuNamePtrOutput) ToSkuNamePtrOutputWithContext(ctx context.Context) SkuNamePtrOutput {
 	return o
-}
-
-func (o SkuNamePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuName] {
-	return pulumix.Output[*SkuName]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuNamePtrOutput) Elem() SkuNameOutput {

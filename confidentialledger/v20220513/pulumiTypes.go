@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i AADBasedSecurityPrincipalArgs) ToAADBasedSecurityPrincipalOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AADBasedSecurityPrincipalOutput)
 }
 
-func (i AADBasedSecurityPrincipalArgs) ToOutput(ctx context.Context) pulumix.Output[AADBasedSecurityPrincipal] {
-	return pulumix.Output[AADBasedSecurityPrincipal]{
-		OutputState: i.ToAADBasedSecurityPrincipalOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AADBasedSecurityPrincipalArrayInput is an input type that accepts AADBasedSecurityPrincipalArray and AADBasedSecurityPrincipalArrayOutput values.
 // You can construct a concrete instance of `AADBasedSecurityPrincipalArrayInput` via:
 //
@@ -88,12 +81,6 @@ func (i AADBasedSecurityPrincipalArray) ToAADBasedSecurityPrincipalArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(AADBasedSecurityPrincipalArrayOutput)
 }
 
-func (i AADBasedSecurityPrincipalArray) ToOutput(ctx context.Context) pulumix.Output[[]AADBasedSecurityPrincipal] {
-	return pulumix.Output[[]AADBasedSecurityPrincipal]{
-		OutputState: i.ToAADBasedSecurityPrincipalArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AAD based security principal with associated Ledger RoleName
 type AADBasedSecurityPrincipalOutput struct{ *pulumi.OutputState }
 
@@ -107,12 +94,6 @@ func (o AADBasedSecurityPrincipalOutput) ToAADBasedSecurityPrincipalOutput() AAD
 
 func (o AADBasedSecurityPrincipalOutput) ToAADBasedSecurityPrincipalOutputWithContext(ctx context.Context) AADBasedSecurityPrincipalOutput {
 	return o
-}
-
-func (o AADBasedSecurityPrincipalOutput) ToOutput(ctx context.Context) pulumix.Output[AADBasedSecurityPrincipal] {
-	return pulumix.Output[AADBasedSecurityPrincipal]{
-		OutputState: o.OutputState,
-	}
 }
 
 // LedgerRole associated with the Security Principal of Ledger
@@ -142,12 +123,6 @@ func (o AADBasedSecurityPrincipalArrayOutput) ToAADBasedSecurityPrincipalArrayOu
 
 func (o AADBasedSecurityPrincipalArrayOutput) ToAADBasedSecurityPrincipalArrayOutputWithContext(ctx context.Context) AADBasedSecurityPrincipalArrayOutput {
 	return o
-}
-
-func (o AADBasedSecurityPrincipalArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AADBasedSecurityPrincipal] {
-	return pulumix.Output[[]AADBasedSecurityPrincipal]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AADBasedSecurityPrincipalArrayOutput) Index(i pulumi.IntInput) AADBasedSecurityPrincipalOutput {
@@ -181,12 +156,6 @@ func (o AADBasedSecurityPrincipalResponseOutput) ToAADBasedSecurityPrincipalResp
 	return o
 }
 
-func (o AADBasedSecurityPrincipalResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AADBasedSecurityPrincipalResponse] {
-	return pulumix.Output[AADBasedSecurityPrincipalResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // LedgerRole associated with the Security Principal of Ledger
 func (o AADBasedSecurityPrincipalResponseOutput) LedgerRoleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AADBasedSecurityPrincipalResponse) *string { return v.LedgerRoleName }).(pulumi.StringPtrOutput)
@@ -214,12 +183,6 @@ func (o AADBasedSecurityPrincipalResponseArrayOutput) ToAADBasedSecurityPrincipa
 
 func (o AADBasedSecurityPrincipalResponseArrayOutput) ToAADBasedSecurityPrincipalResponseArrayOutputWithContext(ctx context.Context) AADBasedSecurityPrincipalResponseArrayOutput {
 	return o
-}
-
-func (o AADBasedSecurityPrincipalResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AADBasedSecurityPrincipalResponse] {
-	return pulumix.Output[[]AADBasedSecurityPrincipalResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AADBasedSecurityPrincipalResponseArrayOutput) Index(i pulumi.IntInput) AADBasedSecurityPrincipalResponseOutput {
@@ -267,12 +230,6 @@ func (i CertBasedSecurityPrincipalArgs) ToCertBasedSecurityPrincipalOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(CertBasedSecurityPrincipalOutput)
 }
 
-func (i CertBasedSecurityPrincipalArgs) ToOutput(ctx context.Context) pulumix.Output[CertBasedSecurityPrincipal] {
-	return pulumix.Output[CertBasedSecurityPrincipal]{
-		OutputState: i.ToCertBasedSecurityPrincipalOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CertBasedSecurityPrincipalArrayInput is an input type that accepts CertBasedSecurityPrincipalArray and CertBasedSecurityPrincipalArrayOutput values.
 // You can construct a concrete instance of `CertBasedSecurityPrincipalArrayInput` via:
 //
@@ -298,12 +255,6 @@ func (i CertBasedSecurityPrincipalArray) ToCertBasedSecurityPrincipalArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(CertBasedSecurityPrincipalArrayOutput)
 }
 
-func (i CertBasedSecurityPrincipalArray) ToOutput(ctx context.Context) pulumix.Output[[]CertBasedSecurityPrincipal] {
-	return pulumix.Output[[]CertBasedSecurityPrincipal]{
-		OutputState: i.ToCertBasedSecurityPrincipalArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Cert based security principal with Ledger RoleName
 type CertBasedSecurityPrincipalOutput struct{ *pulumi.OutputState }
 
@@ -317,12 +268,6 @@ func (o CertBasedSecurityPrincipalOutput) ToCertBasedSecurityPrincipalOutput() C
 
 func (o CertBasedSecurityPrincipalOutput) ToCertBasedSecurityPrincipalOutputWithContext(ctx context.Context) CertBasedSecurityPrincipalOutput {
 	return o
-}
-
-func (o CertBasedSecurityPrincipalOutput) ToOutput(ctx context.Context) pulumix.Output[CertBasedSecurityPrincipal] {
-	return pulumix.Output[CertBasedSecurityPrincipal]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Public key of the user cert (.pem or .cer)
@@ -347,12 +292,6 @@ func (o CertBasedSecurityPrincipalArrayOutput) ToCertBasedSecurityPrincipalArray
 
 func (o CertBasedSecurityPrincipalArrayOutput) ToCertBasedSecurityPrincipalArrayOutputWithContext(ctx context.Context) CertBasedSecurityPrincipalArrayOutput {
 	return o
-}
-
-func (o CertBasedSecurityPrincipalArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CertBasedSecurityPrincipal] {
-	return pulumix.Output[[]CertBasedSecurityPrincipal]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertBasedSecurityPrincipalArrayOutput) Index(i pulumi.IntInput) CertBasedSecurityPrincipalOutput {
@@ -384,12 +323,6 @@ func (o CertBasedSecurityPrincipalResponseOutput) ToCertBasedSecurityPrincipalRe
 	return o
 }
 
-func (o CertBasedSecurityPrincipalResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertBasedSecurityPrincipalResponse] {
-	return pulumix.Output[CertBasedSecurityPrincipalResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Public key of the user cert (.pem or .cer)
 func (o CertBasedSecurityPrincipalResponseOutput) Cert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertBasedSecurityPrincipalResponse) *string { return v.Cert }).(pulumi.StringPtrOutput)
@@ -412,12 +345,6 @@ func (o CertBasedSecurityPrincipalResponseArrayOutput) ToCertBasedSecurityPrinci
 
 func (o CertBasedSecurityPrincipalResponseArrayOutput) ToCertBasedSecurityPrincipalResponseArrayOutputWithContext(ctx context.Context) CertBasedSecurityPrincipalResponseArrayOutput {
 	return o
-}
-
-func (o CertBasedSecurityPrincipalResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CertBasedSecurityPrincipalResponse] {
-	return pulumix.Output[[]CertBasedSecurityPrincipalResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertBasedSecurityPrincipalResponseArrayOutput) Index(i pulumi.IntInput) CertBasedSecurityPrincipalResponseOutput {
@@ -469,12 +396,6 @@ func (i LedgerPropertiesArgs) ToLedgerPropertiesOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(LedgerPropertiesOutput)
 }
 
-func (i LedgerPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[LedgerProperties] {
-	return pulumix.Output[LedgerProperties]{
-		OutputState: i.ToLedgerPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i LedgerPropertiesArgs) ToLedgerPropertiesPtrOutput() LedgerPropertiesPtrOutput {
 	return i.ToLedgerPropertiesPtrOutputWithContext(context.Background())
 }
@@ -516,12 +437,6 @@ func (i *ledgerPropertiesPtrType) ToLedgerPropertiesPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(LedgerPropertiesPtrOutput)
 }
 
-func (i *ledgerPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*LedgerProperties] {
-	return pulumix.Output[*LedgerProperties]{
-		OutputState: i.ToLedgerPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Additional Confidential Ledger properties.
 type LedgerPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -545,12 +460,6 @@ func (o LedgerPropertiesOutput) ToLedgerPropertiesPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v LedgerProperties) *LedgerProperties {
 		return &v
 	}).(LedgerPropertiesPtrOutput)
-}
-
-func (o LedgerPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[LedgerProperties] {
-	return pulumix.Output[LedgerProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Array of all AAD based Security Principals.
@@ -580,12 +489,6 @@ func (o LedgerPropertiesPtrOutput) ToLedgerPropertiesPtrOutput() LedgerPropertie
 
 func (o LedgerPropertiesPtrOutput) ToLedgerPropertiesPtrOutputWithContext(ctx context.Context) LedgerPropertiesPtrOutput {
 	return o
-}
-
-func (o LedgerPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LedgerProperties] {
-	return pulumix.Output[*LedgerProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LedgerPropertiesPtrOutput) Elem() LedgerPropertiesOutput {
@@ -663,12 +566,6 @@ func (o LedgerPropertiesResponseOutput) ToLedgerPropertiesResponseOutputWithCont
 	return o
 }
 
-func (o LedgerPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LedgerPropertiesResponse] {
-	return pulumix.Output[LedgerPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Array of all AAD based Security Principals.
 func (o LedgerPropertiesResponseOutput) AadBasedSecurityPrincipals() AADBasedSecurityPrincipalResponseArrayOutput {
 	return o.ApplyT(func(v LedgerPropertiesResponse) []AADBasedSecurityPrincipalResponse {
@@ -742,12 +639,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

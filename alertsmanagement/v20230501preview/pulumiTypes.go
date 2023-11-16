@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -111,12 +110,6 @@ func (i AlertProcessingRulePropertiesArgs) ToAlertProcessingRulePropertiesOutput
 	return pulumi.ToOutputWithContext(ctx, i).(AlertProcessingRulePropertiesOutput)
 }
 
-func (i AlertProcessingRulePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[AlertProcessingRuleProperties] {
-	return pulumix.Output[AlertProcessingRuleProperties]{
-		OutputState: i.ToAlertProcessingRulePropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AlertProcessingRulePropertiesArgs) ToAlertProcessingRulePropertiesPtrOutput() AlertProcessingRulePropertiesPtrOutput {
 	return i.ToAlertProcessingRulePropertiesPtrOutputWithContext(context.Background())
 }
@@ -158,12 +151,6 @@ func (i *alertProcessingRulePropertiesPtrType) ToAlertProcessingRulePropertiesPt
 	return pulumi.ToOutputWithContext(ctx, i).(AlertProcessingRulePropertiesPtrOutput)
 }
 
-func (i *alertProcessingRulePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*AlertProcessingRuleProperties] {
-	return pulumix.Output[*AlertProcessingRuleProperties]{
-		OutputState: i.ToAlertProcessingRulePropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Alert processing rule properties defining scopes, conditions and scheduling logic for alert processing rule.
 type AlertProcessingRulePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -187,12 +174,6 @@ func (o AlertProcessingRulePropertiesOutput) ToAlertProcessingRulePropertiesPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertProcessingRuleProperties) *AlertProcessingRuleProperties {
 		return &v
 	}).(AlertProcessingRulePropertiesPtrOutput)
-}
-
-func (o AlertProcessingRulePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[AlertProcessingRuleProperties] {
-	return pulumix.Output[AlertProcessingRuleProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Actions to be applied.
@@ -237,12 +218,6 @@ func (o AlertProcessingRulePropertiesPtrOutput) ToAlertProcessingRulePropertiesP
 
 func (o AlertProcessingRulePropertiesPtrOutput) ToAlertProcessingRulePropertiesPtrOutputWithContext(ctx context.Context) AlertProcessingRulePropertiesPtrOutput {
 	return o
-}
-
-func (o AlertProcessingRulePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertProcessingRuleProperties] {
-	return pulumix.Output[*AlertProcessingRuleProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AlertProcessingRulePropertiesPtrOutput) Elem() AlertProcessingRulePropertiesOutput {
@@ -359,12 +334,6 @@ func (o AlertProcessingRulePropertiesResponseOutput) ToAlertProcessingRuleProper
 	return o
 }
 
-func (o AlertProcessingRulePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AlertProcessingRulePropertiesResponse] {
-	return pulumix.Output[AlertProcessingRulePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Actions to be applied.
 func (o AlertProcessingRulePropertiesResponseOutput) Actions() pulumi.ArrayOutput {
 	return o.ApplyT(func(v AlertProcessingRulePropertiesResponse) []interface{} { return v.Actions }).(pulumi.ArrayOutput)
@@ -438,12 +407,6 @@ func (i ConditionArgs) ToConditionOutputWithContext(ctx context.Context) Conditi
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionOutput)
 }
 
-func (i ConditionArgs) ToOutput(ctx context.Context) pulumix.Output[Condition] {
-	return pulumix.Output[Condition]{
-		OutputState: i.ToConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConditionArrayInput is an input type that accepts ConditionArray and ConditionArrayOutput values.
 // You can construct a concrete instance of `ConditionArrayInput` via:
 //
@@ -469,12 +432,6 @@ func (i ConditionArray) ToConditionArrayOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionArrayOutput)
 }
 
-func (i ConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]Condition] {
-	return pulumix.Output[[]Condition]{
-		OutputState: i.ToConditionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Condition to trigger an alert processing rule.
 type ConditionOutput struct{ *pulumi.OutputState }
 
@@ -488,12 +445,6 @@ func (o ConditionOutput) ToConditionOutput() ConditionOutput {
 
 func (o ConditionOutput) ToConditionOutputWithContext(ctx context.Context) ConditionOutput {
 	return o
-}
-
-func (o ConditionOutput) ToOutput(ctx context.Context) pulumix.Output[Condition] {
-	return pulumix.Output[Condition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Field for a given condition.
@@ -523,12 +474,6 @@ func (o ConditionArrayOutput) ToConditionArrayOutput() ConditionArrayOutput {
 
 func (o ConditionArrayOutput) ToConditionArrayOutputWithContext(ctx context.Context) ConditionArrayOutput {
 	return o
-}
-
-func (o ConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Condition] {
-	return pulumix.Output[[]Condition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConditionArrayOutput) Index(i pulumi.IntInput) ConditionOutput {
@@ -562,12 +507,6 @@ func (o ConditionResponseOutput) ToConditionResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o ConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionResponse] {
-	return pulumix.Output[ConditionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Field for a given condition.
 func (o ConditionResponseOutput) Field() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConditionResponse) *string { return v.Field }).(pulumi.StringPtrOutput)
@@ -595,12 +534,6 @@ func (o ConditionResponseArrayOutput) ToConditionResponseArrayOutput() Condition
 
 func (o ConditionResponseArrayOutput) ToConditionResponseArrayOutputWithContext(ctx context.Context) ConditionResponseArrayOutput {
 	return o
-}
-
-func (o ConditionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConditionResponse] {
-	return pulumix.Output[[]ConditionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConditionResponseArrayOutput) Index(i pulumi.IntInput) ConditionResponseOutput {
@@ -786,12 +719,6 @@ func (i ScheduleArgs) ToScheduleOutputWithContext(ctx context.Context) ScheduleO
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleOutput)
 }
 
-func (i ScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[Schedule] {
-	return pulumix.Output[Schedule]{
-		OutputState: i.ToScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ScheduleArgs) ToSchedulePtrOutput() SchedulePtrOutput {
 	return i.ToSchedulePtrOutputWithContext(context.Background())
 }
@@ -833,12 +760,6 @@ func (i *schedulePtrType) ToSchedulePtrOutputWithContext(ctx context.Context) Sc
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulePtrOutput)
 }
 
-func (i *schedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*Schedule] {
-	return pulumix.Output[*Schedule]{
-		OutputState: i.ToSchedulePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Scheduling configuration for a given alert processing rule.
 type ScheduleOutput struct{ *pulumi.OutputState }
 
@@ -862,12 +783,6 @@ func (o ScheduleOutput) ToSchedulePtrOutputWithContext(ctx context.Context) Sche
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Schedule) *Schedule {
 		return &v
 	}).(SchedulePtrOutput)
-}
-
-func (o ScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[Schedule] {
-	return pulumix.Output[Schedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Scheduling effective from time. Date-Time in ISO-8601 format without timezone suffix.
@@ -902,12 +817,6 @@ func (o SchedulePtrOutput) ToSchedulePtrOutput() SchedulePtrOutput {
 
 func (o SchedulePtrOutput) ToSchedulePtrOutputWithContext(ctx context.Context) SchedulePtrOutput {
 	return o
-}
-
-func (o SchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Schedule] {
-	return pulumix.Output[*Schedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SchedulePtrOutput) Elem() ScheduleOutput {
@@ -987,12 +896,6 @@ func (o ScheduleResponseOutput) ToScheduleResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o ScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduleResponse] {
-	return pulumix.Output[ScheduleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Scheduling effective from time. Date-Time in ISO-8601 format without timezone suffix.
 func (o ScheduleResponseOutput) EffectiveFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScheduleResponse) *string { return v.EffectiveFrom }).(pulumi.StringPtrOutput)
@@ -1025,12 +928,6 @@ func (o ScheduleResponsePtrOutput) ToScheduleResponsePtrOutput() ScheduleRespons
 
 func (o ScheduleResponsePtrOutput) ToScheduleResponsePtrOutputWithContext(ctx context.Context) ScheduleResponsePtrOutput {
 	return o
-}
-
-func (o ScheduleResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScheduleResponse] {
-	return pulumix.Output[*ScheduleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScheduleResponsePtrOutput) Elem() ScheduleResponseOutput {
@@ -1112,12 +1009,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

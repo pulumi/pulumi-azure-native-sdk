@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A custom certificate.
@@ -156,12 +155,6 @@ func (i *WebPubSubCustomCertificate) ToWebPubSubCustomCertificateOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(WebPubSubCustomCertificateOutput)
 }
 
-func (i *WebPubSubCustomCertificate) ToOutput(ctx context.Context) pulumix.Output[*WebPubSubCustomCertificate] {
-	return pulumix.Output[*WebPubSubCustomCertificate]{
-		OutputState: i.ToWebPubSubCustomCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebPubSubCustomCertificateOutput struct{ *pulumi.OutputState }
 
 func (WebPubSubCustomCertificateOutput) ElementType() reflect.Type {
@@ -174,12 +167,6 @@ func (o WebPubSubCustomCertificateOutput) ToWebPubSubCustomCertificateOutput() W
 
 func (o WebPubSubCustomCertificateOutput) ToWebPubSubCustomCertificateOutputWithContext(ctx context.Context) WebPubSubCustomCertificateOutput {
 	return o
-}
-
-func (o WebPubSubCustomCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*WebPubSubCustomCertificate] {
-	return pulumix.Output[*WebPubSubCustomCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Base uri of the KeyVault that stores certificate.

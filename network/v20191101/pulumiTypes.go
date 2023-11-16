@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i ExperimentEndpointArgs) ToExperimentEndpointOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ExperimentEndpointOutput)
 }
 
-func (i ExperimentEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[ExperimentEndpoint] {
-	return pulumix.Output[ExperimentEndpoint]{
-		OutputState: i.ToExperimentEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExperimentEndpointArgs) ToExperimentEndpointPtrOutput() ExperimentEndpointPtrOutput {
 	return i.ToExperimentEndpointPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *experimentEndpointPtrType) ToExperimentEndpointPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ExperimentEndpointPtrOutput)
 }
 
-func (i *experimentEndpointPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExperimentEndpoint] {
-	return pulumix.Output[*ExperimentEndpoint]{
-		OutputState: i.ToExperimentEndpointPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the endpoint properties
 type ExperimentEndpointOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o ExperimentEndpointOutput) ToExperimentEndpointPtrOutputWithContext(ctx c
 	}).(ExperimentEndpointPtrOutput)
 }
 
-func (o ExperimentEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[ExperimentEndpoint] {
-	return pulumix.Output[ExperimentEndpoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The endpoint URL
 func (o ExperimentEndpointOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExperimentEndpoint) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
@@ -159,12 +140,6 @@ func (o ExperimentEndpointPtrOutput) ToExperimentEndpointPtrOutput() ExperimentE
 
 func (o ExperimentEndpointPtrOutput) ToExperimentEndpointPtrOutputWithContext(ctx context.Context) ExperimentEndpointPtrOutput {
 	return o
-}
-
-func (o ExperimentEndpointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExperimentEndpoint] {
-	return pulumix.Output[*ExperimentEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExperimentEndpointPtrOutput) Elem() ExperimentEndpointOutput {
@@ -220,12 +195,6 @@ func (o ExperimentEndpointResponseOutput) ToExperimentEndpointResponseOutputWith
 	return o
 }
 
-func (o ExperimentEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExperimentEndpointResponse] {
-	return pulumix.Output[ExperimentEndpointResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The endpoint URL
 func (o ExperimentEndpointResponseOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExperimentEndpointResponse) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
@@ -248,12 +217,6 @@ func (o ExperimentEndpointResponsePtrOutput) ToExperimentEndpointResponsePtrOutp
 
 func (o ExperimentEndpointResponsePtrOutput) ToExperimentEndpointResponsePtrOutputWithContext(ctx context.Context) ExperimentEndpointResponsePtrOutput {
 	return o
-}
-
-func (o ExperimentEndpointResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExperimentEndpointResponse] {
-	return pulumix.Output[*ExperimentEndpointResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExperimentEndpointResponsePtrOutput) Elem() ExperimentEndpointResponseOutput {

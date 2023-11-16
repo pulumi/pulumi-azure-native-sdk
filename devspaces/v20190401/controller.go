@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type Controller struct {
@@ -153,12 +152,6 @@ func (i *Controller) ToControllerOutputWithContext(ctx context.Context) Controll
 	return pulumi.ToOutputWithContext(ctx, i).(ControllerOutput)
 }
 
-func (i *Controller) ToOutput(ctx context.Context) pulumix.Output[*Controller] {
-	return pulumix.Output[*Controller]{
-		OutputState: i.ToControllerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ControllerOutput struct{ *pulumi.OutputState }
 
 func (ControllerOutput) ElementType() reflect.Type {
@@ -171,12 +164,6 @@ func (o ControllerOutput) ToControllerOutput() ControllerOutput {
 
 func (o ControllerOutput) ToControllerOutputWithContext(ctx context.Context) ControllerOutput {
 	return o
-}
-
-func (o ControllerOutput) ToOutput(ctx context.Context) pulumix.Output[*Controller] {
-	return pulumix.Output[*Controller]{
-		OutputState: o.OutputState,
-	}
 }
 
 // DNS name for accessing DataPlane services

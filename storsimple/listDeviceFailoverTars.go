@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Given a list of volume containers to be failed over from a source device, this method returns the eligibility result, as a failover target, for all devices under that resource.
@@ -82,12 +81,6 @@ func (o ListDeviceFailoverTarsResultOutput) ToListDeviceFailoverTarsResultOutput
 
 func (o ListDeviceFailoverTarsResultOutput) ToListDeviceFailoverTarsResultOutputWithContext(ctx context.Context) ListDeviceFailoverTarsResultOutput {
 	return o
-}
-
-func (o ListDeviceFailoverTarsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListDeviceFailoverTarsResult] {
-	return pulumix.Output[ListDeviceFailoverTarsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of all the failover targets.

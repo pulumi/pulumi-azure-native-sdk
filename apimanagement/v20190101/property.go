@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Property details.
@@ -158,12 +157,6 @@ func (i *Property) ToPropertyOutputWithContext(ctx context.Context) PropertyOutp
 	return pulumi.ToOutputWithContext(ctx, i).(PropertyOutput)
 }
 
-func (i *Property) ToOutput(ctx context.Context) pulumix.Output[*Property] {
-	return pulumix.Output[*Property]{
-		OutputState: i.ToPropertyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PropertyOutput struct{ *pulumi.OutputState }
 
 func (PropertyOutput) ElementType() reflect.Type {
@@ -176,12 +169,6 @@ func (o PropertyOutput) ToPropertyOutput() PropertyOutput {
 
 func (o PropertyOutput) ToPropertyOutputWithContext(ctx context.Context) PropertyOutput {
 	return o
-}
-
-func (o PropertyOutput) ToOutput(ctx context.Context) pulumix.Output[*Property] {
-	return pulumix.Output[*Property]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Unique name of Property. It may contain only letters, digits, period, dash, and underscore characters.

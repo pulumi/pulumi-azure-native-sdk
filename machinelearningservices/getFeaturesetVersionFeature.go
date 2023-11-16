@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Dto object representing feature
@@ -105,12 +104,6 @@ func (o GetFeaturesetVersionFeatureResultOutput) ToGetFeaturesetVersionFeatureRe
 
 func (o GetFeaturesetVersionFeatureResultOutput) ToGetFeaturesetVersionFeatureResultOutputWithContext(ctx context.Context) GetFeaturesetVersionFeatureResultOutput {
 	return o
-}
-
-func (o GetFeaturesetVersionFeatureResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetFeaturesetVersionFeatureResult] {
-	return pulumix.Output[GetFeaturesetVersionFeatureResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies type

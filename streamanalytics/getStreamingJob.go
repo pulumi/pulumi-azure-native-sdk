@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details about the specified streaming job.
@@ -147,12 +146,6 @@ func (o LookupStreamingJobResultOutput) ToLookupStreamingJobResultOutput() Looku
 
 func (o LookupStreamingJobResultOutput) ToLookupStreamingJobResultOutputWithContext(ctx context.Context) LookupStreamingJobResultOutput {
 	return o
-}
-
-func (o LookupStreamingJobResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStreamingJobResult] {
-	return pulumix.Output[LookupStreamingJobResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The cluster which streaming jobs will run on.

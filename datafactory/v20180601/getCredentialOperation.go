@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a credential.
@@ -85,12 +84,6 @@ func (o LookupCredentialOperationResultOutput) ToLookupCredentialOperationResult
 
 func (o LookupCredentialOperationResultOutput) ToLookupCredentialOperationResultOutputWithContext(ctx context.Context) LookupCredentialOperationResultOutput {
 	return o
-}
-
-func (o LookupCredentialOperationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCredentialOperationResult] {
-	return pulumix.Output[LookupCredentialOperationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Etag identifies change in the resource.

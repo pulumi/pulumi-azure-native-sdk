@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the schema configuration at the API level.
@@ -97,12 +96,6 @@ func (o LookupWorkspaceApiSchemaResultOutput) ToLookupWorkspaceApiSchemaResultOu
 
 func (o LookupWorkspaceApiSchemaResultOutput) ToLookupWorkspaceApiSchemaResultOutputWithContext(ctx context.Context) LookupWorkspaceApiSchemaResultOutput {
 	return o
-}
-
-func (o LookupWorkspaceApiSchemaResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkspaceApiSchemaResult] {
-	return pulumix.Output[LookupWorkspaceApiSchemaResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Types definitions. Used for Swagger/OpenAPI v2/v3 schemas only, null otherwise.

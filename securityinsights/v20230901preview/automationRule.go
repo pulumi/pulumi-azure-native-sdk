@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type AutomationRule struct {
@@ -143,6 +142,9 @@ func NewAutomationRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:AutomationRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:AutomationRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -235,12 +237,6 @@ func (i *AutomationRule) ToAutomationRuleOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleOutput)
 }
 
-func (i *AutomationRule) ToOutput(ctx context.Context) pulumix.Output[*AutomationRule] {
-	return pulumix.Output[*AutomationRule]{
-		OutputState: i.ToAutomationRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AutomationRuleOutput struct{ *pulumi.OutputState }
 
 func (AutomationRuleOutput) ElementType() reflect.Type {
@@ -253,12 +249,6 @@ func (o AutomationRuleOutput) ToAutomationRuleOutput() AutomationRuleOutput {
 
 func (o AutomationRuleOutput) ToAutomationRuleOutputWithContext(ctx context.Context) AutomationRuleOutput {
 	return o
-}
-
-func (o AutomationRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*AutomationRule] {
-	return pulumix.Output[*AutomationRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The actions to execute when the automation rule is triggered.

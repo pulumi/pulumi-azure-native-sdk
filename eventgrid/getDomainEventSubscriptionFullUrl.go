@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the full endpoint URL for an event subscription for domain.
@@ -80,12 +79,6 @@ func (o GetDomainEventSubscriptionFullUrlResultOutput) ToGetDomainEventSubscript
 
 func (o GetDomainEventSubscriptionFullUrlResultOutput) ToGetDomainEventSubscriptionFullUrlResultOutputWithContext(ctx context.Context) GetDomainEventSubscriptionFullUrlResultOutput {
 	return o
-}
-
-func (o GetDomainEventSubscriptionFullUrlResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainEventSubscriptionFullUrlResult] {
-	return pulumix.Output[GetDomainEventSubscriptionFullUrlResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The URL that represents the endpoint of the destination of an event subscription.

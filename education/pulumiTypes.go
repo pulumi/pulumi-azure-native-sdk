@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i AmountArgs) ToAmountOutputWithContext(ctx context.Context) AmountOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(AmountOutput)
 }
 
-func (i AmountArgs) ToOutput(ctx context.Context) pulumix.Output[Amount] {
-	return pulumix.Output[Amount]{
-		OutputState: i.ToAmountOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The amount.
 type AmountOutput struct{ *pulumi.OutputState }
 
@@ -72,12 +65,6 @@ func (o AmountOutput) ToAmountOutput() AmountOutput {
 
 func (o AmountOutput) ToAmountOutputWithContext(ctx context.Context) AmountOutput {
 	return o
-}
-
-func (o AmountOutput) ToOutput(ctx context.Context) pulumix.Output[Amount] {
-	return pulumix.Output[Amount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of currency being used for the value.
@@ -111,12 +98,6 @@ func (o AmountResponseOutput) ToAmountResponseOutput() AmountResponseOutput {
 
 func (o AmountResponseOutput) ToAmountResponseOutputWithContext(ctx context.Context) AmountResponseOutput {
 	return o
-}
-
-func (o AmountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AmountResponse] {
-	return pulumix.Output[AmountResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of currency being used for the value.
@@ -158,12 +139,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

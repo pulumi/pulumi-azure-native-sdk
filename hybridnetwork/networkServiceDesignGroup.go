@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // network service design group resource.
@@ -137,12 +136,6 @@ func (i *NetworkServiceDesignGroup) ToNetworkServiceDesignGroupOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkServiceDesignGroupOutput)
 }
 
-func (i *NetworkServiceDesignGroup) ToOutput(ctx context.Context) pulumix.Output[*NetworkServiceDesignGroup] {
-	return pulumix.Output[*NetworkServiceDesignGroup]{
-		OutputState: i.ToNetworkServiceDesignGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkServiceDesignGroupOutput struct{ *pulumi.OutputState }
 
 func (NetworkServiceDesignGroupOutput) ElementType() reflect.Type {
@@ -155,12 +148,6 @@ func (o NetworkServiceDesignGroupOutput) ToNetworkServiceDesignGroupOutput() Net
 
 func (o NetworkServiceDesignGroupOutput) ToNetworkServiceDesignGroupOutputWithContext(ctx context.Context) NetworkServiceDesignGroupOutput {
 	return o
-}
-
-func (o NetworkServiceDesignGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkServiceDesignGroup] {
-	return pulumix.Output[*NetworkServiceDesignGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

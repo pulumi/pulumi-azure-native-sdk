@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Protected item model.
@@ -127,12 +126,6 @@ func (i *ProtectedItem) ToProtectedItemOutputWithContext(ctx context.Context) Pr
 	return pulumi.ToOutputWithContext(ctx, i).(ProtectedItemOutput)
 }
 
-func (i *ProtectedItem) ToOutput(ctx context.Context) pulumix.Output[*ProtectedItem] {
-	return pulumix.Output[*ProtectedItem]{
-		OutputState: i.ToProtectedItemOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProtectedItemOutput struct{ *pulumi.OutputState }
 
 func (ProtectedItemOutput) ElementType() reflect.Type {
@@ -145,12 +138,6 @@ func (o ProtectedItemOutput) ToProtectedItemOutput() ProtectedItemOutput {
 
 func (o ProtectedItemOutput) ToProtectedItemOutputWithContext(ctx context.Context) ProtectedItemOutput {
 	return o
-}
-
-func (o ProtectedItemOutput) ToOutput(ctx context.Context) pulumix.Output[*ProtectedItem] {
-	return pulumix.Output[*ProtectedItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the name of the resource.

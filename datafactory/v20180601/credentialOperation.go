@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Credential resource type.
@@ -127,12 +126,6 @@ func (i *CredentialOperation) ToCredentialOperationOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(CredentialOperationOutput)
 }
 
-func (i *CredentialOperation) ToOutput(ctx context.Context) pulumix.Output[*CredentialOperation] {
-	return pulumix.Output[*CredentialOperation]{
-		OutputState: i.ToCredentialOperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CredentialOperationOutput struct{ *pulumi.OutputState }
 
 func (CredentialOperationOutput) ElementType() reflect.Type {
@@ -145,12 +138,6 @@ func (o CredentialOperationOutput) ToCredentialOperationOutput() CredentialOpera
 
 func (o CredentialOperationOutput) ToCredentialOperationOutputWithContext(ctx context.Context) CredentialOperationOutput {
 	return o
-}
-
-func (o CredentialOperationOutput) ToOutput(ctx context.Context) pulumix.Output[*CredentialOperation] {
-	return pulumix.Output[*CredentialOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Etag identifies change in the resource.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An HCX Enterprise Site resource
@@ -88,12 +87,6 @@ func (o LookupHcxEnterpriseSiteResultOutput) ToLookupHcxEnterpriseSiteResultOutp
 
 func (o LookupHcxEnterpriseSiteResultOutput) ToLookupHcxEnterpriseSiteResultOutputWithContext(ctx context.Context) LookupHcxEnterpriseSiteResultOutput {
 	return o
-}
-
-func (o LookupHcxEnterpriseSiteResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHcxEnterpriseSiteResult] {
-	return pulumix.Output[LookupHcxEnterpriseSiteResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The activation key

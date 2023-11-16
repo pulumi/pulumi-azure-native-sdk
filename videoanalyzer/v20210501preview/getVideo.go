@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves an existing video resource within an account with a given name.
@@ -93,12 +92,6 @@ func (o LookupVideoResultOutput) ToLookupVideoResultOutput() LookupVideoResultOu
 
 func (o LookupVideoResultOutput) ToLookupVideoResultOutputWithContext(ctx context.Context) LookupVideoResultOutput {
 	return o
-}
-
-func (o LookupVideoResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVideoResult] {
-	return pulumix.Output[LookupVideoResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional video description provided by the user. Value can be up to 2048 characters long.

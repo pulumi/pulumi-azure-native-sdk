@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Static Site Custom Domain Overview ARM resource.
@@ -159,12 +158,6 @@ func (i *StaticSiteCustomDomain) ToStaticSiteCustomDomainOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(StaticSiteCustomDomainOutput)
 }
 
-func (i *StaticSiteCustomDomain) ToOutput(ctx context.Context) pulumix.Output[*StaticSiteCustomDomain] {
-	return pulumix.Output[*StaticSiteCustomDomain]{
-		OutputState: i.ToStaticSiteCustomDomainOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StaticSiteCustomDomainOutput struct{ *pulumi.OutputState }
 
 func (StaticSiteCustomDomainOutput) ElementType() reflect.Type {
@@ -177,12 +170,6 @@ func (o StaticSiteCustomDomainOutput) ToStaticSiteCustomDomainOutput() StaticSit
 
 func (o StaticSiteCustomDomainOutput) ToStaticSiteCustomDomainOutputWithContext(ctx context.Context) StaticSiteCustomDomainOutput {
 	return o
-}
-
-func (o StaticSiteCustomDomainOutput) ToOutput(ctx context.Context) pulumix.Output[*StaticSiteCustomDomain] {
-	return pulumix.Output[*StaticSiteCustomDomain]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The date and time on which the custom domain was created for the static site.

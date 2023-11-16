@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a dataController resource
@@ -99,12 +98,6 @@ func (o LookupDataControllerResultOutput) ToLookupDataControllerResultOutput() L
 
 func (o LookupDataControllerResultOutput) ToLookupDataControllerResultOutputWithContext(ctx context.Context) LookupDataControllerResultOutput {
 	return o
-}
-
-func (o LookupDataControllerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataControllerResult] {
-	return pulumix.Output[LookupDataControllerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The extendedLocation of the resource.

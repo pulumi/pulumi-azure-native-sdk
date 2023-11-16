@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -39,12 +38,6 @@ func (o ApiErrorBaseResponseOutput) ToApiErrorBaseResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o ApiErrorBaseResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApiErrorBaseResponse] {
-	return pulumix.Output[ApiErrorBaseResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The error code.
 func (o ApiErrorBaseResponseOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiErrorBaseResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
@@ -72,12 +65,6 @@ func (o ApiErrorBaseResponseArrayOutput) ToApiErrorBaseResponseArrayOutput() Api
 
 func (o ApiErrorBaseResponseArrayOutput) ToApiErrorBaseResponseArrayOutputWithContext(ctx context.Context) ApiErrorBaseResponseArrayOutput {
 	return o
-}
-
-func (o ApiErrorBaseResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApiErrorBaseResponse] {
-	return pulumix.Output[[]ApiErrorBaseResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiErrorBaseResponseArrayOutput) Index(i pulumi.IntInput) ApiErrorBaseResponseOutput {
@@ -113,12 +100,6 @@ func (o ApiErrorResponseOutput) ToApiErrorResponseOutput() ApiErrorResponseOutpu
 
 func (o ApiErrorResponseOutput) ToApiErrorResponseOutputWithContext(ctx context.Context) ApiErrorResponseOutput {
 	return o
-}
-
-func (o ApiErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApiErrorResponse] {
-	return pulumix.Output[ApiErrorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The error code.
@@ -185,12 +166,6 @@ func (i CopyCompletionErrorArgs) ToCopyCompletionErrorOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(CopyCompletionErrorOutput)
 }
 
-func (i CopyCompletionErrorArgs) ToOutput(ctx context.Context) pulumix.Output[CopyCompletionError] {
-	return pulumix.Output[CopyCompletionError]{
-		OutputState: i.ToCopyCompletionErrorOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CopyCompletionErrorArgs) ToCopyCompletionErrorPtrOutput() CopyCompletionErrorPtrOutput {
 	return i.ToCopyCompletionErrorPtrOutputWithContext(context.Background())
 }
@@ -232,12 +207,6 @@ func (i *copyCompletionErrorPtrType) ToCopyCompletionErrorPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(CopyCompletionErrorPtrOutput)
 }
 
-func (i *copyCompletionErrorPtrType) ToOutput(ctx context.Context) pulumix.Output[*CopyCompletionError] {
-	return pulumix.Output[*CopyCompletionError]{
-		OutputState: i.ToCopyCompletionErrorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Indicates the error details if the background copy of a resource created via the CopyStart operation fails.
 type CopyCompletionErrorOutput struct{ *pulumi.OutputState }
 
@@ -263,12 +232,6 @@ func (o CopyCompletionErrorOutput) ToCopyCompletionErrorPtrOutputWithContext(ctx
 	}).(CopyCompletionErrorPtrOutput)
 }
 
-func (o CopyCompletionErrorOutput) ToOutput(ctx context.Context) pulumix.Output[CopyCompletionError] {
-	return pulumix.Output[CopyCompletionError]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Indicates the error code if the background copy of a resource created via the CopyStart operation fails.
 func (o CopyCompletionErrorOutput) ErrorCode() pulumi.StringOutput {
 	return o.ApplyT(func(v CopyCompletionError) string { return v.ErrorCode }).(pulumi.StringOutput)
@@ -291,12 +254,6 @@ func (o CopyCompletionErrorPtrOutput) ToCopyCompletionErrorPtrOutput() CopyCompl
 
 func (o CopyCompletionErrorPtrOutput) ToCopyCompletionErrorPtrOutputWithContext(ctx context.Context) CopyCompletionErrorPtrOutput {
 	return o
-}
-
-func (o CopyCompletionErrorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CopyCompletionError] {
-	return pulumix.Output[*CopyCompletionError]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CopyCompletionErrorPtrOutput) Elem() CopyCompletionErrorOutput {
@@ -352,12 +309,6 @@ func (o CopyCompletionErrorResponseOutput) ToCopyCompletionErrorResponseOutputWi
 	return o
 }
 
-func (o CopyCompletionErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CopyCompletionErrorResponse] {
-	return pulumix.Output[CopyCompletionErrorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Indicates the error code if the background copy of a resource created via the CopyStart operation fails.
 func (o CopyCompletionErrorResponseOutput) ErrorCode() pulumi.StringOutput {
 	return o.ApplyT(func(v CopyCompletionErrorResponse) string { return v.ErrorCode }).(pulumi.StringOutput)
@@ -380,12 +331,6 @@ func (o CopyCompletionErrorResponsePtrOutput) ToCopyCompletionErrorResponsePtrOu
 
 func (o CopyCompletionErrorResponsePtrOutput) ToCopyCompletionErrorResponsePtrOutputWithContext(ctx context.Context) CopyCompletionErrorResponsePtrOutput {
 	return o
-}
-
-func (o CopyCompletionErrorResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CopyCompletionErrorResponse] {
-	return pulumix.Output[*CopyCompletionErrorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CopyCompletionErrorResponsePtrOutput) Elem() CopyCompletionErrorResponseOutput {
@@ -489,12 +434,6 @@ func (i CreationDataArgs) ToCreationDataOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(CreationDataOutput)
 }
 
-func (i CreationDataArgs) ToOutput(ctx context.Context) pulumix.Output[CreationData] {
-	return pulumix.Output[CreationData]{
-		OutputState: i.ToCreationDataOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Data used when creating a disk.
 type CreationDataOutput struct{ *pulumi.OutputState }
 
@@ -508,12 +447,6 @@ func (o CreationDataOutput) ToCreationDataOutput() CreationDataOutput {
 
 func (o CreationDataOutput) ToCreationDataOutputWithContext(ctx context.Context) CreationDataOutput {
 	return o
-}
-
-func (o CreationDataOutput) ToOutput(ctx context.Context) pulumix.Output[CreationData] {
-	return pulumix.Output[CreationData]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This enumerates the possible sources of a disk's creation.
@@ -605,12 +538,6 @@ func (o CreationDataResponseOutput) ToCreationDataResponseOutput() CreationDataR
 
 func (o CreationDataResponseOutput) ToCreationDataResponseOutputWithContext(ctx context.Context) CreationDataResponseOutput {
 	return o
-}
-
-func (o CreationDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CreationDataResponse] {
-	return pulumix.Output[CreationDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This enumerates the possible sources of a disk's creation.
@@ -707,12 +634,6 @@ func (i DiskSecurityProfileArgs) ToDiskSecurityProfileOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(DiskSecurityProfileOutput)
 }
 
-func (i DiskSecurityProfileArgs) ToOutput(ctx context.Context) pulumix.Output[DiskSecurityProfile] {
-	return pulumix.Output[DiskSecurityProfile]{
-		OutputState: i.ToDiskSecurityProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DiskSecurityProfileArgs) ToDiskSecurityProfilePtrOutput() DiskSecurityProfilePtrOutput {
 	return i.ToDiskSecurityProfilePtrOutputWithContext(context.Background())
 }
@@ -754,12 +675,6 @@ func (i *diskSecurityProfilePtrType) ToDiskSecurityProfilePtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(DiskSecurityProfilePtrOutput)
 }
 
-func (i *diskSecurityProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*DiskSecurityProfile] {
-	return pulumix.Output[*DiskSecurityProfile]{
-		OutputState: i.ToDiskSecurityProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contains the security related information for the resource.
 type DiskSecurityProfileOutput struct{ *pulumi.OutputState }
 
@@ -785,12 +700,6 @@ func (o DiskSecurityProfileOutput) ToDiskSecurityProfilePtrOutputWithContext(ctx
 	}).(DiskSecurityProfilePtrOutput)
 }
 
-func (o DiskSecurityProfileOutput) ToOutput(ctx context.Context) pulumix.Output[DiskSecurityProfile] {
-	return pulumix.Output[DiskSecurityProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ResourceId of the disk encryption set associated to Confidential VM supported disk encrypted with customer managed key
 func (o DiskSecurityProfileOutput) SecureVMDiskEncryptionSetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiskSecurityProfile) *string { return v.SecureVMDiskEncryptionSetId }).(pulumi.StringPtrOutput)
@@ -813,12 +722,6 @@ func (o DiskSecurityProfilePtrOutput) ToDiskSecurityProfilePtrOutput() DiskSecur
 
 func (o DiskSecurityProfilePtrOutput) ToDiskSecurityProfilePtrOutputWithContext(ctx context.Context) DiskSecurityProfilePtrOutput {
 	return o
-}
-
-func (o DiskSecurityProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskSecurityProfile] {
-	return pulumix.Output[*DiskSecurityProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskSecurityProfilePtrOutput) Elem() DiskSecurityProfileOutput {
@@ -874,12 +777,6 @@ func (o DiskSecurityProfileResponseOutput) ToDiskSecurityProfileResponseOutputWi
 	return o
 }
 
-func (o DiskSecurityProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiskSecurityProfileResponse] {
-	return pulumix.Output[DiskSecurityProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ResourceId of the disk encryption set associated to Confidential VM supported disk encrypted with customer managed key
 func (o DiskSecurityProfileResponseOutput) SecureVMDiskEncryptionSetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiskSecurityProfileResponse) *string { return v.SecureVMDiskEncryptionSetId }).(pulumi.StringPtrOutput)
@@ -902,12 +799,6 @@ func (o DiskSecurityProfileResponsePtrOutput) ToDiskSecurityProfileResponsePtrOu
 
 func (o DiskSecurityProfileResponsePtrOutput) ToDiskSecurityProfileResponsePtrOutputWithContext(ctx context.Context) DiskSecurityProfileResponsePtrOutput {
 	return o
-}
-
-func (o DiskSecurityProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskSecurityProfileResponse] {
-	return pulumix.Output[*DiskSecurityProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskSecurityProfileResponsePtrOutput) Elem() DiskSecurityProfileResponseOutput {
@@ -975,12 +866,6 @@ func (i DiskSkuArgs) ToDiskSkuOutputWithContext(ctx context.Context) DiskSkuOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DiskSkuOutput)
 }
 
-func (i DiskSkuArgs) ToOutput(ctx context.Context) pulumix.Output[DiskSku] {
-	return pulumix.Output[DiskSku]{
-		OutputState: i.ToDiskSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DiskSkuArgs) ToDiskSkuPtrOutput() DiskSkuPtrOutput {
 	return i.ToDiskSkuPtrOutputWithContext(context.Background())
 }
@@ -1022,12 +907,6 @@ func (i *diskSkuPtrType) ToDiskSkuPtrOutputWithContext(ctx context.Context) Disk
 	return pulumi.ToOutputWithContext(ctx, i).(DiskSkuPtrOutput)
 }
 
-func (i *diskSkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*DiskSku] {
-	return pulumix.Output[*DiskSku]{
-		OutputState: i.ToDiskSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or PremiumV2_LRS.
 type DiskSkuOutput struct{ *pulumi.OutputState }
 
@@ -1053,12 +932,6 @@ func (o DiskSkuOutput) ToDiskSkuPtrOutputWithContext(ctx context.Context) DiskSk
 	}).(DiskSkuPtrOutput)
 }
 
-func (o DiskSkuOutput) ToOutput(ctx context.Context) pulumix.Output[DiskSku] {
-	return pulumix.Output[DiskSku]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The sku name.
 func (o DiskSkuOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiskSku) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1076,12 +949,6 @@ func (o DiskSkuPtrOutput) ToDiskSkuPtrOutput() DiskSkuPtrOutput {
 
 func (o DiskSkuPtrOutput) ToDiskSkuPtrOutputWithContext(ctx context.Context) DiskSkuPtrOutput {
 	return o
-}
-
-func (o DiskSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskSku] {
-	return pulumix.Output[*DiskSku]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskSkuPtrOutput) Elem() DiskSkuOutput {
@@ -1127,12 +994,6 @@ func (o DiskSkuResponseOutput) ToDiskSkuResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o DiskSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiskSkuResponse] {
-	return pulumix.Output[DiskSkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The sku name.
 func (o DiskSkuResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiskSkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1155,12 +1016,6 @@ func (o DiskSkuResponsePtrOutput) ToDiskSkuResponsePtrOutput() DiskSkuResponsePt
 
 func (o DiskSkuResponsePtrOutput) ToDiskSkuResponsePtrOutputWithContext(ctx context.Context) DiskSkuResponsePtrOutput {
 	return o
-}
-
-func (o DiskSkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskSkuResponse] {
-	return pulumix.Output[*DiskSkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskSkuResponsePtrOutput) Elem() DiskSkuResponseOutput {
@@ -1232,12 +1087,6 @@ func (i EncryptionArgs) ToEncryptionOutputWithContext(ctx context.Context) Encry
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionOutput)
 }
 
-func (i EncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[Encryption] {
-	return pulumix.Output[Encryption]{
-		OutputState: i.ToEncryptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EncryptionArgs) ToEncryptionPtrOutput() EncryptionPtrOutput {
 	return i.ToEncryptionPtrOutputWithContext(context.Background())
 }
@@ -1279,12 +1128,6 @@ func (i *encryptionPtrType) ToEncryptionPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionPtrOutput)
 }
 
-func (i *encryptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*Encryption] {
-	return pulumix.Output[*Encryption]{
-		OutputState: i.ToEncryptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Encryption at rest settings for disk or snapshot
 type EncryptionOutput struct{ *pulumi.OutputState }
 
@@ -1310,12 +1153,6 @@ func (o EncryptionOutput) ToEncryptionPtrOutputWithContext(ctx context.Context) 
 	}).(EncryptionPtrOutput)
 }
 
-func (o EncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[Encryption] {
-	return pulumix.Output[Encryption]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ResourceId of the disk encryption set to use for enabling encryption at rest.
 func (o EncryptionOutput) DiskEncryptionSetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Encryption) *string { return v.DiskEncryptionSetId }).(pulumi.StringPtrOutput)
@@ -1338,12 +1175,6 @@ func (o EncryptionPtrOutput) ToEncryptionPtrOutput() EncryptionPtrOutput {
 
 func (o EncryptionPtrOutput) ToEncryptionPtrOutputWithContext(ctx context.Context) EncryptionPtrOutput {
 	return o
-}
-
-func (o EncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Encryption] {
-	return pulumix.Output[*Encryption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EncryptionPtrOutput) Elem() EncryptionOutput {
@@ -1399,12 +1230,6 @@ func (o EncryptionResponseOutput) ToEncryptionResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o EncryptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionResponse] {
-	return pulumix.Output[EncryptionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ResourceId of the disk encryption set to use for enabling encryption at rest.
 func (o EncryptionResponseOutput) DiskEncryptionSetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EncryptionResponse) *string { return v.DiskEncryptionSetId }).(pulumi.StringPtrOutput)
@@ -1427,12 +1252,6 @@ func (o EncryptionResponsePtrOutput) ToEncryptionResponsePtrOutput() EncryptionR
 
 func (o EncryptionResponsePtrOutput) ToEncryptionResponsePtrOutputWithContext(ctx context.Context) EncryptionResponsePtrOutput {
 	return o
-}
-
-func (o EncryptionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionResponse] {
-	return pulumix.Output[*EncryptionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EncryptionResponsePtrOutput) Elem() EncryptionResponseOutput {
@@ -1504,12 +1323,6 @@ func (i EncryptionSetIdentityArgs) ToEncryptionSetIdentityOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionSetIdentityOutput)
 }
 
-func (i EncryptionSetIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[EncryptionSetIdentity] {
-	return pulumix.Output[EncryptionSetIdentity]{
-		OutputState: i.ToEncryptionSetIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EncryptionSetIdentityArgs) ToEncryptionSetIdentityPtrOutput() EncryptionSetIdentityPtrOutput {
 	return i.ToEncryptionSetIdentityPtrOutputWithContext(context.Background())
 }
@@ -1551,12 +1364,6 @@ func (i *encryptionSetIdentityPtrType) ToEncryptionSetIdentityPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionSetIdentityPtrOutput)
 }
 
-func (i *encryptionSetIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*EncryptionSetIdentity] {
-	return pulumix.Output[*EncryptionSetIdentity]{
-		OutputState: i.ToEncryptionSetIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks.
 type EncryptionSetIdentityOutput struct{ *pulumi.OutputState }
 
@@ -1582,12 +1389,6 @@ func (o EncryptionSetIdentityOutput) ToEncryptionSetIdentityPtrOutputWithContext
 	}).(EncryptionSetIdentityPtrOutput)
 }
 
-func (o EncryptionSetIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionSetIdentity] {
-	return pulumix.Output[EncryptionSetIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The type of Managed Identity used by the DiskEncryptionSet. Only SystemAssigned is supported for new creations. Disk Encryption Sets can be updated with Identity type None during migration of subscription to a new Azure Active Directory tenant; it will cause the encrypted resources to lose access to the keys.
 func (o EncryptionSetIdentityOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EncryptionSetIdentity) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -1610,12 +1411,6 @@ func (o EncryptionSetIdentityPtrOutput) ToEncryptionSetIdentityPtrOutput() Encry
 
 func (o EncryptionSetIdentityPtrOutput) ToEncryptionSetIdentityPtrOutputWithContext(ctx context.Context) EncryptionSetIdentityPtrOutput {
 	return o
-}
-
-func (o EncryptionSetIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionSetIdentity] {
-	return pulumix.Output[*EncryptionSetIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EncryptionSetIdentityPtrOutput) Elem() EncryptionSetIdentityOutput {
@@ -1675,12 +1470,6 @@ func (o EncryptionSetIdentityResponseOutput) ToEncryptionSetIdentityResponseOutp
 	return o
 }
 
-func (o EncryptionSetIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionSetIdentityResponse] {
-	return pulumix.Output[EncryptionSetIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The object id of the Managed Identity Resource. This will be sent to the RP from ARM via the x-ms-identity-principal-id header in the PUT request if the resource has a systemAssigned(implicit) identity
 func (o EncryptionSetIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v EncryptionSetIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -1715,12 +1504,6 @@ func (o EncryptionSetIdentityResponsePtrOutput) ToEncryptionSetIdentityResponseP
 
 func (o EncryptionSetIdentityResponsePtrOutput) ToEncryptionSetIdentityResponsePtrOutputWithContext(ctx context.Context) EncryptionSetIdentityResponsePtrOutput {
 	return o
-}
-
-func (o EncryptionSetIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionSetIdentityResponse] {
-	return pulumix.Output[*EncryptionSetIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EncryptionSetIdentityResponsePtrOutput) Elem() EncryptionSetIdentityResponseOutput {
@@ -1816,12 +1599,6 @@ func (i EncryptionSettingsCollectionArgs) ToEncryptionSettingsCollectionOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionSettingsCollectionOutput)
 }
 
-func (i EncryptionSettingsCollectionArgs) ToOutput(ctx context.Context) pulumix.Output[EncryptionSettingsCollection] {
-	return pulumix.Output[EncryptionSettingsCollection]{
-		OutputState: i.ToEncryptionSettingsCollectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EncryptionSettingsCollectionArgs) ToEncryptionSettingsCollectionPtrOutput() EncryptionSettingsCollectionPtrOutput {
 	return i.ToEncryptionSettingsCollectionPtrOutputWithContext(context.Background())
 }
@@ -1863,12 +1640,6 @@ func (i *encryptionSettingsCollectionPtrType) ToEncryptionSettingsCollectionPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionSettingsCollectionPtrOutput)
 }
 
-func (i *encryptionSettingsCollectionPtrType) ToOutput(ctx context.Context) pulumix.Output[*EncryptionSettingsCollection] {
-	return pulumix.Output[*EncryptionSettingsCollection]{
-		OutputState: i.ToEncryptionSettingsCollectionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Encryption settings for disk or snapshot
 type EncryptionSettingsCollectionOutput struct{ *pulumi.OutputState }
 
@@ -1892,12 +1663,6 @@ func (o EncryptionSettingsCollectionOutput) ToEncryptionSettingsCollectionPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionSettingsCollection) *EncryptionSettingsCollection {
 		return &v
 	}).(EncryptionSettingsCollectionPtrOutput)
-}
-
-func (o EncryptionSettingsCollectionOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionSettingsCollection] {
-	return pulumix.Output[EncryptionSettingsCollection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Set this flag to true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable encryption. Set this flag to false and remove DiskEncryptionKey and KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the request object, the existing settings remain unchanged.
@@ -1927,12 +1692,6 @@ func (o EncryptionSettingsCollectionPtrOutput) ToEncryptionSettingsCollectionPtr
 
 func (o EncryptionSettingsCollectionPtrOutput) ToEncryptionSettingsCollectionPtrOutputWithContext(ctx context.Context) EncryptionSettingsCollectionPtrOutput {
 	return o
-}
-
-func (o EncryptionSettingsCollectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionSettingsCollection] {
-	return pulumix.Output[*EncryptionSettingsCollection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EncryptionSettingsCollectionPtrOutput) Elem() EncryptionSettingsCollectionOutput {
@@ -2000,12 +1759,6 @@ func (o EncryptionSettingsCollectionResponseOutput) ToEncryptionSettingsCollecti
 	return o
 }
 
-func (o EncryptionSettingsCollectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionSettingsCollectionResponse] {
-	return pulumix.Output[EncryptionSettingsCollectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Set this flag to true and provide DiskEncryptionKey and optional KeyEncryptionKey to enable encryption. Set this flag to false and remove DiskEncryptionKey and KeyEncryptionKey to disable encryption. If EncryptionSettings is null in the request object, the existing settings remain unchanged.
 func (o EncryptionSettingsCollectionResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v EncryptionSettingsCollectionResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -2035,12 +1788,6 @@ func (o EncryptionSettingsCollectionResponsePtrOutput) ToEncryptionSettingsColle
 
 func (o EncryptionSettingsCollectionResponsePtrOutput) ToEncryptionSettingsCollectionResponsePtrOutputWithContext(ctx context.Context) EncryptionSettingsCollectionResponsePtrOutput {
 	return o
-}
-
-func (o EncryptionSettingsCollectionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionSettingsCollectionResponse] {
-	return pulumix.Output[*EncryptionSettingsCollectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EncryptionSettingsCollectionResponsePtrOutput) Elem() EncryptionSettingsCollectionResponseOutput {
@@ -2122,12 +1869,6 @@ func (i EncryptionSettingsElementArgs) ToEncryptionSettingsElementOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionSettingsElementOutput)
 }
 
-func (i EncryptionSettingsElementArgs) ToOutput(ctx context.Context) pulumix.Output[EncryptionSettingsElement] {
-	return pulumix.Output[EncryptionSettingsElement]{
-		OutputState: i.ToEncryptionSettingsElementOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EncryptionSettingsElementArrayInput is an input type that accepts EncryptionSettingsElementArray and EncryptionSettingsElementArrayOutput values.
 // You can construct a concrete instance of `EncryptionSettingsElementArrayInput` via:
 //
@@ -2153,12 +1894,6 @@ func (i EncryptionSettingsElementArray) ToEncryptionSettingsElementArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionSettingsElementArrayOutput)
 }
 
-func (i EncryptionSettingsElementArray) ToOutput(ctx context.Context) pulumix.Output[[]EncryptionSettingsElement] {
-	return pulumix.Output[[]EncryptionSettingsElement]{
-		OutputState: i.ToEncryptionSettingsElementArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Encryption settings for one disk volume.
 type EncryptionSettingsElementOutput struct{ *pulumi.OutputState }
 
@@ -2172,12 +1907,6 @@ func (o EncryptionSettingsElementOutput) ToEncryptionSettingsElementOutput() Enc
 
 func (o EncryptionSettingsElementOutput) ToEncryptionSettingsElementOutputWithContext(ctx context.Context) EncryptionSettingsElementOutput {
 	return o
-}
-
-func (o EncryptionSettingsElementOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionSettingsElement] {
-	return pulumix.Output[EncryptionSettingsElement]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Key Vault Secret Url and vault id of the disk encryption key
@@ -2202,12 +1931,6 @@ func (o EncryptionSettingsElementArrayOutput) ToEncryptionSettingsElementArrayOu
 
 func (o EncryptionSettingsElementArrayOutput) ToEncryptionSettingsElementArrayOutputWithContext(ctx context.Context) EncryptionSettingsElementArrayOutput {
 	return o
-}
-
-func (o EncryptionSettingsElementArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EncryptionSettingsElement] {
-	return pulumix.Output[[]EncryptionSettingsElement]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EncryptionSettingsElementArrayOutput) Index(i pulumi.IntInput) EncryptionSettingsElementOutput {
@@ -2239,12 +1962,6 @@ func (o EncryptionSettingsElementResponseOutput) ToEncryptionSettingsElementResp
 	return o
 }
 
-func (o EncryptionSettingsElementResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionSettingsElementResponse] {
-	return pulumix.Output[EncryptionSettingsElementResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Key Vault Secret Url and vault id of the disk encryption key
 func (o EncryptionSettingsElementResponseOutput) DiskEncryptionKey() KeyVaultAndSecretReferenceResponsePtrOutput {
 	return o.ApplyT(func(v EncryptionSettingsElementResponse) *KeyVaultAndSecretReferenceResponse {
@@ -2269,12 +1986,6 @@ func (o EncryptionSettingsElementResponseArrayOutput) ToEncryptionSettingsElemen
 
 func (o EncryptionSettingsElementResponseArrayOutput) ToEncryptionSettingsElementResponseArrayOutputWithContext(ctx context.Context) EncryptionSettingsElementResponseArrayOutput {
 	return o
-}
-
-func (o EncryptionSettingsElementResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EncryptionSettingsElementResponse] {
-	return pulumix.Output[[]EncryptionSettingsElementResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EncryptionSettingsElementResponseArrayOutput) Index(i pulumi.IntInput) EncryptionSettingsElementResponseOutput {
@@ -2322,12 +2033,6 @@ func (i ExtendedLocationArgs) ToExtendedLocationOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationOutput)
 }
 
-func (i ExtendedLocationArgs) ToOutput(ctx context.Context) pulumix.Output[ExtendedLocation] {
-	return pulumix.Output[ExtendedLocation]{
-		OutputState: i.ToExtendedLocationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExtendedLocationArgs) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
 	return i.ToExtendedLocationPtrOutputWithContext(context.Background())
 }
@@ -2369,12 +2074,6 @@ func (i *extendedLocationPtrType) ToExtendedLocationPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationPtrOutput)
 }
 
-func (i *extendedLocationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocation] {
-	return pulumix.Output[*ExtendedLocation]{
-		OutputState: i.ToExtendedLocationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The complex type of the extended location.
 type ExtendedLocationOutput struct{ *pulumi.OutputState }
 
@@ -2400,12 +2099,6 @@ func (o ExtendedLocationOutput) ToExtendedLocationPtrOutputWithContext(ctx conte
 	}).(ExtendedLocationPtrOutput)
 }
 
-func (o ExtendedLocationOutput) ToOutput(ctx context.Context) pulumix.Output[ExtendedLocation] {
-	return pulumix.Output[ExtendedLocation]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the extended location.
 func (o ExtendedLocationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExtendedLocation) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -2428,12 +2121,6 @@ func (o ExtendedLocationPtrOutput) ToExtendedLocationPtrOutput() ExtendedLocatio
 
 func (o ExtendedLocationPtrOutput) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
 	return o
-}
-
-func (o ExtendedLocationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocation] {
-	return pulumix.Output[*ExtendedLocation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExtendedLocationPtrOutput) Elem() ExtendedLocationOutput {
@@ -2489,12 +2176,6 @@ func (o ExtendedLocationResponseOutput) ToExtendedLocationResponseOutputWithCont
 	return o
 }
 
-func (o ExtendedLocationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExtendedLocationResponse] {
-	return pulumix.Output[ExtendedLocationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the extended location.
 func (o ExtendedLocationResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExtendedLocationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -2517,12 +2198,6 @@ func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutput()
 
 func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutputWithContext(ctx context.Context) ExtendedLocationResponsePtrOutput {
 	return o
-}
-
-func (o ExtendedLocationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocationResponse] {
-	return pulumix.Output[*ExtendedLocationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExtendedLocationResponsePtrOutput) Elem() ExtendedLocationResponseOutput {
@@ -2602,12 +2277,6 @@ func (i ImageDiskReferenceArgs) ToImageDiskReferenceOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ImageDiskReferenceOutput)
 }
 
-func (i ImageDiskReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[ImageDiskReference] {
-	return pulumix.Output[ImageDiskReference]{
-		OutputState: i.ToImageDiskReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ImageDiskReferenceArgs) ToImageDiskReferencePtrOutput() ImageDiskReferencePtrOutput {
 	return i.ToImageDiskReferencePtrOutputWithContext(context.Background())
 }
@@ -2649,12 +2318,6 @@ func (i *imageDiskReferencePtrType) ToImageDiskReferencePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ImageDiskReferencePtrOutput)
 }
 
-func (i *imageDiskReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*ImageDiskReference] {
-	return pulumix.Output[*ImageDiskReference]{
-		OutputState: i.ToImageDiskReferencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The source image used for creating the disk.
 type ImageDiskReferenceOutput struct{ *pulumi.OutputState }
 
@@ -2678,12 +2341,6 @@ func (o ImageDiskReferenceOutput) ToImageDiskReferencePtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageDiskReference) *ImageDiskReference {
 		return &v
 	}).(ImageDiskReferencePtrOutput)
-}
-
-func (o ImageDiskReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[ImageDiskReference] {
-	return pulumix.Output[ImageDiskReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A relative uri containing a community Azure Compute Gallery image reference.
@@ -2718,12 +2375,6 @@ func (o ImageDiskReferencePtrOutput) ToImageDiskReferencePtrOutput() ImageDiskRe
 
 func (o ImageDiskReferencePtrOutput) ToImageDiskReferencePtrOutputWithContext(ctx context.Context) ImageDiskReferencePtrOutput {
 	return o
-}
-
-func (o ImageDiskReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageDiskReference] {
-	return pulumix.Output[*ImageDiskReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImageDiskReferencePtrOutput) Elem() ImageDiskReferenceOutput {
@@ -2803,12 +2454,6 @@ func (o ImageDiskReferenceResponseOutput) ToImageDiskReferenceResponseOutputWith
 	return o
 }
 
-func (o ImageDiskReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ImageDiskReferenceResponse] {
-	return pulumix.Output[ImageDiskReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A relative uri containing a community Azure Compute Gallery image reference.
 func (o ImageDiskReferenceResponseOutput) CommunityGalleryImageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageDiskReferenceResponse) *string { return v.CommunityGalleryImageId }).(pulumi.StringPtrOutput)
@@ -2841,12 +2486,6 @@ func (o ImageDiskReferenceResponsePtrOutput) ToImageDiskReferenceResponsePtrOutp
 
 func (o ImageDiskReferenceResponsePtrOutput) ToImageDiskReferenceResponsePtrOutputWithContext(ctx context.Context) ImageDiskReferenceResponsePtrOutput {
 	return o
-}
-
-func (o ImageDiskReferenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageDiskReferenceResponse] {
-	return pulumix.Output[*ImageDiskReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImageDiskReferenceResponsePtrOutput) Elem() ImageDiskReferenceResponseOutput {
@@ -2922,12 +2561,6 @@ func (o InnerErrorResponseOutput) ToInnerErrorResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o InnerErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InnerErrorResponse] {
-	return pulumix.Output[InnerErrorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The internal error message or exception dump.
 func (o InnerErrorResponseOutput) Errordetail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InnerErrorResponse) *string { return v.Errordetail }).(pulumi.StringPtrOutput)
@@ -2950,12 +2583,6 @@ func (o InnerErrorResponsePtrOutput) ToInnerErrorResponsePtrOutput() InnerErrorR
 
 func (o InnerErrorResponsePtrOutput) ToInnerErrorResponsePtrOutputWithContext(ctx context.Context) InnerErrorResponsePtrOutput {
 	return o
-}
-
-func (o InnerErrorResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InnerErrorResponse] {
-	return pulumix.Output[*InnerErrorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InnerErrorResponsePtrOutput) Elem() InnerErrorResponseOutput {
@@ -3027,12 +2654,6 @@ func (i KeyForDiskEncryptionSetArgs) ToKeyForDiskEncryptionSetOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(KeyForDiskEncryptionSetOutput)
 }
 
-func (i KeyForDiskEncryptionSetArgs) ToOutput(ctx context.Context) pulumix.Output[KeyForDiskEncryptionSet] {
-	return pulumix.Output[KeyForDiskEncryptionSet]{
-		OutputState: i.ToKeyForDiskEncryptionSetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KeyForDiskEncryptionSetArgs) ToKeyForDiskEncryptionSetPtrOutput() KeyForDiskEncryptionSetPtrOutput {
 	return i.ToKeyForDiskEncryptionSetPtrOutputWithContext(context.Background())
 }
@@ -3074,12 +2695,6 @@ func (i *keyForDiskEncryptionSetPtrType) ToKeyForDiskEncryptionSetPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(KeyForDiskEncryptionSetPtrOutput)
 }
 
-func (i *keyForDiskEncryptionSetPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyForDiskEncryptionSet] {
-	return pulumix.Output[*KeyForDiskEncryptionSet]{
-		OutputState: i.ToKeyForDiskEncryptionSetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Key Vault Key Url to be used for server side encryption of Managed Disks and Snapshots
 type KeyForDiskEncryptionSetOutput struct{ *pulumi.OutputState }
 
@@ -3105,12 +2720,6 @@ func (o KeyForDiskEncryptionSetOutput) ToKeyForDiskEncryptionSetPtrOutputWithCon
 	}).(KeyForDiskEncryptionSetPtrOutput)
 }
 
-func (o KeyForDiskEncryptionSetOutput) ToOutput(ctx context.Context) pulumix.Output[KeyForDiskEncryptionSet] {
-	return pulumix.Output[KeyForDiskEncryptionSet]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Fully versioned Key Url pointing to a key in KeyVault. Version segment of the Url is required regardless of rotationToLatestKeyVersionEnabled value.
 func (o KeyForDiskEncryptionSetOutput) KeyUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyForDiskEncryptionSet) string { return v.KeyUrl }).(pulumi.StringOutput)
@@ -3133,12 +2742,6 @@ func (o KeyForDiskEncryptionSetPtrOutput) ToKeyForDiskEncryptionSetPtrOutput() K
 
 func (o KeyForDiskEncryptionSetPtrOutput) ToKeyForDiskEncryptionSetPtrOutputWithContext(ctx context.Context) KeyForDiskEncryptionSetPtrOutput {
 	return o
-}
-
-func (o KeyForDiskEncryptionSetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyForDiskEncryptionSet] {
-	return pulumix.Output[*KeyForDiskEncryptionSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyForDiskEncryptionSetPtrOutput) Elem() KeyForDiskEncryptionSetOutput {
@@ -3194,12 +2797,6 @@ func (o KeyForDiskEncryptionSetResponseOutput) ToKeyForDiskEncryptionSetResponse
 	return o
 }
 
-func (o KeyForDiskEncryptionSetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyForDiskEncryptionSetResponse] {
-	return pulumix.Output[KeyForDiskEncryptionSetResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Fully versioned Key Url pointing to a key in KeyVault. Version segment of the Url is required regardless of rotationToLatestKeyVersionEnabled value.
 func (o KeyForDiskEncryptionSetResponseOutput) KeyUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyForDiskEncryptionSetResponse) string { return v.KeyUrl }).(pulumi.StringOutput)
@@ -3222,12 +2819,6 @@ func (o KeyForDiskEncryptionSetResponsePtrOutput) ToKeyForDiskEncryptionSetRespo
 
 func (o KeyForDiskEncryptionSetResponsePtrOutput) ToKeyForDiskEncryptionSetResponsePtrOutputWithContext(ctx context.Context) KeyForDiskEncryptionSetResponsePtrOutput {
 	return o
-}
-
-func (o KeyForDiskEncryptionSetResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyForDiskEncryptionSetResponse] {
-	return pulumix.Output[*KeyForDiskEncryptionSetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyForDiskEncryptionSetResponsePtrOutput) Elem() KeyForDiskEncryptionSetResponseOutput {
@@ -3272,12 +2863,6 @@ func (o KeyForDiskEncryptionSetResponseArrayOutput) ToKeyForDiskEncryptionSetRes
 
 func (o KeyForDiskEncryptionSetResponseArrayOutput) ToKeyForDiskEncryptionSetResponseArrayOutputWithContext(ctx context.Context) KeyForDiskEncryptionSetResponseArrayOutput {
 	return o
-}
-
-func (o KeyForDiskEncryptionSetResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KeyForDiskEncryptionSetResponse] {
-	return pulumix.Output[[]KeyForDiskEncryptionSetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyForDiskEncryptionSetResponseArrayOutput) Index(i pulumi.IntInput) KeyForDiskEncryptionSetResponseOutput {
@@ -3325,12 +2910,6 @@ func (i KeyVaultAndKeyReferenceArgs) ToKeyVaultAndKeyReferenceOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultAndKeyReferenceOutput)
 }
 
-func (i KeyVaultAndKeyReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[KeyVaultAndKeyReference] {
-	return pulumix.Output[KeyVaultAndKeyReference]{
-		OutputState: i.ToKeyVaultAndKeyReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KeyVaultAndKeyReferenceArgs) ToKeyVaultAndKeyReferencePtrOutput() KeyVaultAndKeyReferencePtrOutput {
 	return i.ToKeyVaultAndKeyReferencePtrOutputWithContext(context.Background())
 }
@@ -3372,12 +2951,6 @@ func (i *keyVaultAndKeyReferencePtrType) ToKeyVaultAndKeyReferencePtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultAndKeyReferencePtrOutput)
 }
 
-func (i *keyVaultAndKeyReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultAndKeyReference] {
-	return pulumix.Output[*KeyVaultAndKeyReference]{
-		OutputState: i.ToKeyVaultAndKeyReferencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Key Vault Key Url and vault id of KeK, KeK is optional and when provided is used to unwrap the encryptionKey
 type KeyVaultAndKeyReferenceOutput struct{ *pulumi.OutputState }
 
@@ -3403,12 +2976,6 @@ func (o KeyVaultAndKeyReferenceOutput) ToKeyVaultAndKeyReferencePtrOutputWithCon
 	}).(KeyVaultAndKeyReferencePtrOutput)
 }
 
-func (o KeyVaultAndKeyReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultAndKeyReference] {
-	return pulumix.Output[KeyVaultAndKeyReference]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Url pointing to a key or secret in KeyVault
 func (o KeyVaultAndKeyReferenceOutput) KeyUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultAndKeyReference) string { return v.KeyUrl }).(pulumi.StringOutput)
@@ -3431,12 +2998,6 @@ func (o KeyVaultAndKeyReferencePtrOutput) ToKeyVaultAndKeyReferencePtrOutput() K
 
 func (o KeyVaultAndKeyReferencePtrOutput) ToKeyVaultAndKeyReferencePtrOutputWithContext(ctx context.Context) KeyVaultAndKeyReferencePtrOutput {
 	return o
-}
-
-func (o KeyVaultAndKeyReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultAndKeyReference] {
-	return pulumix.Output[*KeyVaultAndKeyReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultAndKeyReferencePtrOutput) Elem() KeyVaultAndKeyReferenceOutput {
@@ -3492,12 +3053,6 @@ func (o KeyVaultAndKeyReferenceResponseOutput) ToKeyVaultAndKeyReferenceResponse
 	return o
 }
 
-func (o KeyVaultAndKeyReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultAndKeyReferenceResponse] {
-	return pulumix.Output[KeyVaultAndKeyReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Url pointing to a key or secret in KeyVault
 func (o KeyVaultAndKeyReferenceResponseOutput) KeyUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultAndKeyReferenceResponse) string { return v.KeyUrl }).(pulumi.StringOutput)
@@ -3520,12 +3075,6 @@ func (o KeyVaultAndKeyReferenceResponsePtrOutput) ToKeyVaultAndKeyReferenceRespo
 
 func (o KeyVaultAndKeyReferenceResponsePtrOutput) ToKeyVaultAndKeyReferenceResponsePtrOutputWithContext(ctx context.Context) KeyVaultAndKeyReferenceResponsePtrOutput {
 	return o
-}
-
-func (o KeyVaultAndKeyReferenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultAndKeyReferenceResponse] {
-	return pulumix.Output[*KeyVaultAndKeyReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultAndKeyReferenceResponsePtrOutput) Elem() KeyVaultAndKeyReferenceResponseOutput {
@@ -3597,12 +3146,6 @@ func (i KeyVaultAndSecretReferenceArgs) ToKeyVaultAndSecretReferenceOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultAndSecretReferenceOutput)
 }
 
-func (i KeyVaultAndSecretReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[KeyVaultAndSecretReference] {
-	return pulumix.Output[KeyVaultAndSecretReference]{
-		OutputState: i.ToKeyVaultAndSecretReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KeyVaultAndSecretReferenceArgs) ToKeyVaultAndSecretReferencePtrOutput() KeyVaultAndSecretReferencePtrOutput {
 	return i.ToKeyVaultAndSecretReferencePtrOutputWithContext(context.Background())
 }
@@ -3644,12 +3187,6 @@ func (i *keyVaultAndSecretReferencePtrType) ToKeyVaultAndSecretReferencePtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultAndSecretReferencePtrOutput)
 }
 
-func (i *keyVaultAndSecretReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultAndSecretReference] {
-	return pulumix.Output[*KeyVaultAndSecretReference]{
-		OutputState: i.ToKeyVaultAndSecretReferencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Key Vault Secret Url and vault id of the encryption key
 type KeyVaultAndSecretReferenceOutput struct{ *pulumi.OutputState }
 
@@ -3675,12 +3212,6 @@ func (o KeyVaultAndSecretReferenceOutput) ToKeyVaultAndSecretReferencePtrOutputW
 	}).(KeyVaultAndSecretReferencePtrOutput)
 }
 
-func (o KeyVaultAndSecretReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultAndSecretReference] {
-	return pulumix.Output[KeyVaultAndSecretReference]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Url pointing to a key or secret in KeyVault
 func (o KeyVaultAndSecretReferenceOutput) SecretUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultAndSecretReference) string { return v.SecretUrl }).(pulumi.StringOutput)
@@ -3703,12 +3234,6 @@ func (o KeyVaultAndSecretReferencePtrOutput) ToKeyVaultAndSecretReferencePtrOutp
 
 func (o KeyVaultAndSecretReferencePtrOutput) ToKeyVaultAndSecretReferencePtrOutputWithContext(ctx context.Context) KeyVaultAndSecretReferencePtrOutput {
 	return o
-}
-
-func (o KeyVaultAndSecretReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultAndSecretReference] {
-	return pulumix.Output[*KeyVaultAndSecretReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultAndSecretReferencePtrOutput) Elem() KeyVaultAndSecretReferenceOutput {
@@ -3764,12 +3289,6 @@ func (o KeyVaultAndSecretReferenceResponseOutput) ToKeyVaultAndSecretReferenceRe
 	return o
 }
 
-func (o KeyVaultAndSecretReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultAndSecretReferenceResponse] {
-	return pulumix.Output[KeyVaultAndSecretReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Url pointing to a key or secret in KeyVault
 func (o KeyVaultAndSecretReferenceResponseOutput) SecretUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultAndSecretReferenceResponse) string { return v.SecretUrl }).(pulumi.StringOutput)
@@ -3792,12 +3311,6 @@ func (o KeyVaultAndSecretReferenceResponsePtrOutput) ToKeyVaultAndSecretReferenc
 
 func (o KeyVaultAndSecretReferenceResponsePtrOutput) ToKeyVaultAndSecretReferenceResponsePtrOutputWithContext(ctx context.Context) KeyVaultAndSecretReferenceResponsePtrOutput {
 	return o
-}
-
-func (o KeyVaultAndSecretReferenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultAndSecretReferenceResponse] {
-	return pulumix.Output[*KeyVaultAndSecretReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultAndSecretReferenceResponsePtrOutput) Elem() KeyVaultAndSecretReferenceResponseOutput {
@@ -3861,12 +3374,6 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 	return o
 }
 
-func (o PrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionResponse] {
-	return pulumix.Output[PrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // private endpoint connection Id
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -3913,12 +3420,6 @@ func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectio
 	return o
 }
 
-func (o PrivateEndpointConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionResponse] {
-	return pulumix.Output[[]PrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
@@ -3944,12 +3445,6 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutput() Private
 
 func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContext(ctx context.Context) PrivateEndpointResponseOutput {
 	return o
-}
-
-func (o PrivateEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointResponse] {
-	return pulumix.Output[PrivateEndpointResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ARM identifier for Private Endpoint
@@ -4000,12 +3495,6 @@ func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionSta
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
 }
 
-func (i PrivateLinkServiceConnectionStateArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
-	return pulumix.Output[PrivateLinkServiceConnectionState]{
-		OutputState: i.ToPrivateLinkServiceConnectionStateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A collection of information about the state of the connection between service consumer and provider.
 type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
@@ -4019,12 +3508,6 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 
 func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
-	return pulumix.Output[PrivateLinkServiceConnectionState]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -4067,12 +3550,6 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 	return o
 }
 
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateResponse] {
-	return pulumix.Output[PrivateLinkServiceConnectionStateResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A message indicating if changes on the service provider require any updates on the consumer.
 func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
@@ -4107,12 +3584,6 @@ func (o PropertyUpdatesInProgressResponseOutput) ToPropertyUpdatesInProgressResp
 
 func (o PropertyUpdatesInProgressResponseOutput) ToPropertyUpdatesInProgressResponseOutputWithContext(ctx context.Context) PropertyUpdatesInProgressResponseOutput {
 	return o
-}
-
-func (o PropertyUpdatesInProgressResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PropertyUpdatesInProgressResponse] {
-	return pulumix.Output[PropertyUpdatesInProgressResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The target performance tier of the disk if a tier change operation is in progress.
@@ -4167,12 +3638,6 @@ func (i PurchasePlanArgs) ToPurchasePlanOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(PurchasePlanOutput)
 }
 
-func (i PurchasePlanArgs) ToOutput(ctx context.Context) pulumix.Output[PurchasePlan] {
-	return pulumix.Output[PurchasePlan]{
-		OutputState: i.ToPurchasePlanOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PurchasePlanArgs) ToPurchasePlanPtrOutput() PurchasePlanPtrOutput {
 	return i.ToPurchasePlanPtrOutputWithContext(context.Background())
 }
@@ -4214,12 +3679,6 @@ func (i *purchasePlanPtrType) ToPurchasePlanPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(PurchasePlanPtrOutput)
 }
 
-func (i *purchasePlanPtrType) ToOutput(ctx context.Context) pulumix.Output[*PurchasePlan] {
-	return pulumix.Output[*PurchasePlan]{
-		OutputState: i.ToPurchasePlanPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Used for establishing the purchase context of any 3rd Party artifact through MarketPlace.
 type PurchasePlanOutput struct{ *pulumi.OutputState }
 
@@ -4243,12 +3702,6 @@ func (o PurchasePlanOutput) ToPurchasePlanPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PurchasePlan) *PurchasePlan {
 		return &v
 	}).(PurchasePlanPtrOutput)
-}
-
-func (o PurchasePlanOutput) ToOutput(ctx context.Context) pulumix.Output[PurchasePlan] {
-	return pulumix.Output[PurchasePlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The plan ID.
@@ -4283,12 +3736,6 @@ func (o PurchasePlanPtrOutput) ToPurchasePlanPtrOutput() PurchasePlanPtrOutput {
 
 func (o PurchasePlanPtrOutput) ToPurchasePlanPtrOutputWithContext(ctx context.Context) PurchasePlanPtrOutput {
 	return o
-}
-
-func (o PurchasePlanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PurchasePlan] {
-	return pulumix.Output[*PurchasePlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PurchasePlanPtrOutput) Elem() PurchasePlanOutput {
@@ -4368,12 +3815,6 @@ func (o PurchasePlanResponseOutput) ToPurchasePlanResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o PurchasePlanResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PurchasePlanResponse] {
-	return pulumix.Output[PurchasePlanResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The plan ID.
 func (o PurchasePlanResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PurchasePlanResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -4406,12 +3847,6 @@ func (o PurchasePlanResponsePtrOutput) ToPurchasePlanResponsePtrOutput() Purchas
 
 func (o PurchasePlanResponsePtrOutput) ToPurchasePlanResponsePtrOutputWithContext(ctx context.Context) PurchasePlanResponsePtrOutput {
 	return o
-}
-
-func (o PurchasePlanResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PurchasePlanResponse] {
-	return pulumix.Output[*PurchasePlanResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PurchasePlanResponsePtrOutput) Elem() PurchasePlanResponseOutput {
@@ -4483,12 +3918,6 @@ func (o ShareInfoElementResponseOutput) ToShareInfoElementResponseOutputWithCont
 	return o
 }
 
-func (o ShareInfoElementResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ShareInfoElementResponse] {
-	return pulumix.Output[ShareInfoElementResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A relative URI containing the ID of the VM that has the disk attached.
 func (o ShareInfoElementResponseOutput) VmUri() pulumi.StringOutput {
 	return o.ApplyT(func(v ShareInfoElementResponse) string { return v.VmUri }).(pulumi.StringOutput)
@@ -4506,12 +3935,6 @@ func (o ShareInfoElementResponseArrayOutput) ToShareInfoElementResponseArrayOutp
 
 func (o ShareInfoElementResponseArrayOutput) ToShareInfoElementResponseArrayOutputWithContext(ctx context.Context) ShareInfoElementResponseArrayOutput {
 	return o
-}
-
-func (o ShareInfoElementResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ShareInfoElementResponse] {
-	return pulumix.Output[[]ShareInfoElementResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ShareInfoElementResponseArrayOutput) Index(i pulumi.IntInput) ShareInfoElementResponseOutput {
@@ -4555,12 +3978,6 @@ func (i SnapshotSkuArgs) ToSnapshotSkuOutputWithContext(ctx context.Context) Sna
 	return pulumi.ToOutputWithContext(ctx, i).(SnapshotSkuOutput)
 }
 
-func (i SnapshotSkuArgs) ToOutput(ctx context.Context) pulumix.Output[SnapshotSku] {
-	return pulumix.Output[SnapshotSku]{
-		OutputState: i.ToSnapshotSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SnapshotSkuArgs) ToSnapshotSkuPtrOutput() SnapshotSkuPtrOutput {
 	return i.ToSnapshotSkuPtrOutputWithContext(context.Background())
 }
@@ -4602,12 +4019,6 @@ func (i *snapshotSkuPtrType) ToSnapshotSkuPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SnapshotSkuPtrOutput)
 }
 
-func (i *snapshotSkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*SnapshotSku] {
-	return pulumix.Output[*SnapshotSku]{
-		OutputState: i.ToSnapshotSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot
 type SnapshotSkuOutput struct{ *pulumi.OutputState }
 
@@ -4633,12 +4044,6 @@ func (o SnapshotSkuOutput) ToSnapshotSkuPtrOutputWithContext(ctx context.Context
 	}).(SnapshotSkuPtrOutput)
 }
 
-func (o SnapshotSkuOutput) ToOutput(ctx context.Context) pulumix.Output[SnapshotSku] {
-	return pulumix.Output[SnapshotSku]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The sku name.
 func (o SnapshotSkuOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SnapshotSku) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -4656,12 +4061,6 @@ func (o SnapshotSkuPtrOutput) ToSnapshotSkuPtrOutput() SnapshotSkuPtrOutput {
 
 func (o SnapshotSkuPtrOutput) ToSnapshotSkuPtrOutputWithContext(ctx context.Context) SnapshotSkuPtrOutput {
 	return o
-}
-
-func (o SnapshotSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SnapshotSku] {
-	return pulumix.Output[*SnapshotSku]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SnapshotSkuPtrOutput) Elem() SnapshotSkuOutput {
@@ -4707,12 +4106,6 @@ func (o SnapshotSkuResponseOutput) ToSnapshotSkuResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o SnapshotSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SnapshotSkuResponse] {
-	return pulumix.Output[SnapshotSkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The sku name.
 func (o SnapshotSkuResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SnapshotSkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -4735,12 +4128,6 @@ func (o SnapshotSkuResponsePtrOutput) ToSnapshotSkuResponsePtrOutput() SnapshotS
 
 func (o SnapshotSkuResponsePtrOutput) ToSnapshotSkuResponsePtrOutputWithContext(ctx context.Context) SnapshotSkuResponsePtrOutput {
 	return o
-}
-
-func (o SnapshotSkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SnapshotSkuResponse] {
-	return pulumix.Output[*SnapshotSkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SnapshotSkuResponsePtrOutput) Elem() SnapshotSkuResponseOutput {
@@ -4808,12 +4195,6 @@ func (i SourceVaultArgs) ToSourceVaultOutputWithContext(ctx context.Context) Sou
 	return pulumi.ToOutputWithContext(ctx, i).(SourceVaultOutput)
 }
 
-func (i SourceVaultArgs) ToOutput(ctx context.Context) pulumix.Output[SourceVault] {
-	return pulumix.Output[SourceVault]{
-		OutputState: i.ToSourceVaultOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SourceVaultArgs) ToSourceVaultPtrOutput() SourceVaultPtrOutput {
 	return i.ToSourceVaultPtrOutputWithContext(context.Background())
 }
@@ -4855,12 +4236,6 @@ func (i *sourceVaultPtrType) ToSourceVaultPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SourceVaultPtrOutput)
 }
 
-func (i *sourceVaultPtrType) ToOutput(ctx context.Context) pulumix.Output[*SourceVault] {
-	return pulumix.Output[*SourceVault]{
-		OutputState: i.ToSourceVaultPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The vault id is an Azure Resource Manager Resource id in the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.KeyVault/vaults/{vaultName}
 type SourceVaultOutput struct{ *pulumi.OutputState }
 
@@ -4886,12 +4261,6 @@ func (o SourceVaultOutput) ToSourceVaultPtrOutputWithContext(ctx context.Context
 	}).(SourceVaultPtrOutput)
 }
 
-func (o SourceVaultOutput) ToOutput(ctx context.Context) pulumix.Output[SourceVault] {
-	return pulumix.Output[SourceVault]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource Id
 func (o SourceVaultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SourceVault) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -4909,12 +4278,6 @@ func (o SourceVaultPtrOutput) ToSourceVaultPtrOutput() SourceVaultPtrOutput {
 
 func (o SourceVaultPtrOutput) ToSourceVaultPtrOutputWithContext(ctx context.Context) SourceVaultPtrOutput {
 	return o
-}
-
-func (o SourceVaultPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceVault] {
-	return pulumix.Output[*SourceVault]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceVaultPtrOutput) Elem() SourceVaultOutput {
@@ -4958,12 +4321,6 @@ func (o SourceVaultResponseOutput) ToSourceVaultResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o SourceVaultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SourceVaultResponse] {
-	return pulumix.Output[SourceVaultResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource Id
 func (o SourceVaultResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SourceVaultResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -4981,12 +4338,6 @@ func (o SourceVaultResponsePtrOutput) ToSourceVaultResponsePtrOutput() SourceVau
 
 func (o SourceVaultResponsePtrOutput) ToSourceVaultResponsePtrOutputWithContext(ctx context.Context) SourceVaultResponsePtrOutput {
 	return o
-}
-
-func (o SourceVaultResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceVaultResponse] {
-	return pulumix.Output[*SourceVaultResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceVaultResponsePtrOutput) Elem() SourceVaultResponseOutput {
@@ -5052,12 +4403,6 @@ func (i SupportedCapabilitiesArgs) ToSupportedCapabilitiesOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(SupportedCapabilitiesOutput)
 }
 
-func (i SupportedCapabilitiesArgs) ToOutput(ctx context.Context) pulumix.Output[SupportedCapabilities] {
-	return pulumix.Output[SupportedCapabilities]{
-		OutputState: i.ToSupportedCapabilitiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SupportedCapabilitiesArgs) ToSupportedCapabilitiesPtrOutput() SupportedCapabilitiesPtrOutput {
 	return i.ToSupportedCapabilitiesPtrOutputWithContext(context.Background())
 }
@@ -5099,12 +4444,6 @@ func (i *supportedCapabilitiesPtrType) ToSupportedCapabilitiesPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(SupportedCapabilitiesPtrOutput)
 }
 
-func (i *supportedCapabilitiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*SupportedCapabilities] {
-	return pulumix.Output[*SupportedCapabilities]{
-		OutputState: i.ToSupportedCapabilitiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // List of supported capabilities persisted on the disk resource for VM use.
 type SupportedCapabilitiesOutput struct{ *pulumi.OutputState }
 
@@ -5128,12 +4467,6 @@ func (o SupportedCapabilitiesOutput) ToSupportedCapabilitiesPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SupportedCapabilities) *SupportedCapabilities {
 		return &v
 	}).(SupportedCapabilitiesPtrOutput)
-}
-
-func (o SupportedCapabilitiesOutput) ToOutput(ctx context.Context) pulumix.Output[SupportedCapabilities] {
-	return pulumix.Output[SupportedCapabilities]{
-		OutputState: o.OutputState,
-	}
 }
 
 // True if the image from which the OS disk is created supports accelerated networking.
@@ -5163,12 +4496,6 @@ func (o SupportedCapabilitiesPtrOutput) ToSupportedCapabilitiesPtrOutput() Suppo
 
 func (o SupportedCapabilitiesPtrOutput) ToSupportedCapabilitiesPtrOutputWithContext(ctx context.Context) SupportedCapabilitiesPtrOutput {
 	return o
-}
-
-func (o SupportedCapabilitiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SupportedCapabilities] {
-	return pulumix.Output[*SupportedCapabilities]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SupportedCapabilitiesPtrOutput) Elem() SupportedCapabilitiesOutput {
@@ -5236,12 +4563,6 @@ func (o SupportedCapabilitiesResponseOutput) ToSupportedCapabilitiesResponseOutp
 	return o
 }
 
-func (o SupportedCapabilitiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SupportedCapabilitiesResponse] {
-	return pulumix.Output[SupportedCapabilitiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // True if the image from which the OS disk is created supports accelerated networking.
 func (o SupportedCapabilitiesResponseOutput) AcceleratedNetwork() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SupportedCapabilitiesResponse) *bool { return v.AcceleratedNetwork }).(pulumi.BoolPtrOutput)
@@ -5269,12 +4590,6 @@ func (o SupportedCapabilitiesResponsePtrOutput) ToSupportedCapabilitiesResponseP
 
 func (o SupportedCapabilitiesResponsePtrOutput) ToSupportedCapabilitiesResponsePtrOutputWithContext(ctx context.Context) SupportedCapabilitiesResponsePtrOutput {
 	return o
-}
-
-func (o SupportedCapabilitiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SupportedCapabilitiesResponse] {
-	return pulumix.Output[*SupportedCapabilitiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SupportedCapabilitiesResponsePtrOutput) Elem() SupportedCapabilitiesResponseOutput {
@@ -5338,12 +4653,6 @@ func (o UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput) ToUserAssign
 	return o
 }
 
-func (o UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentitiesResponseUserAssignedIdentities] {
-	return pulumix.Output[UserAssignedIdentitiesResponseUserAssignedIdentities]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The client id of user assigned identity.
 func (o UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentitiesResponseUserAssignedIdentities) string { return v.ClientId }).(pulumi.StringOutput)
@@ -5366,12 +4675,6 @@ func (o UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput) ToUserAss
 
 func (o UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput) ToUserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutputWithContext(ctx context.Context) UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput {
 	return o
-}
-
-func (o UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentitiesResponseUserAssignedIdentities] {
-	return pulumix.Output[map[string]UserAssignedIdentitiesResponseUserAssignedIdentities]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedIdentitiesResponseUserAssignedIdentitiesMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentitiesResponseUserAssignedIdentitiesOutput {

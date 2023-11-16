@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Get the properties of a Kubernetes Environment.
@@ -108,12 +107,6 @@ func (o LookupKubeEnvironmentResultOutput) ToLookupKubeEnvironmentResultOutput()
 
 func (o LookupKubeEnvironmentResultOutput) ToLookupKubeEnvironmentResultOutputWithContext(ctx context.Context) LookupKubeEnvironmentResultOutput {
 	return o
-}
-
-func (o LookupKubeEnvironmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKubeEnvironmentResult] {
-	return pulumix.Output[LookupKubeEnvironmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupKubeEnvironmentResultOutput) AksResourceID() pulumi.StringPtrOutput {

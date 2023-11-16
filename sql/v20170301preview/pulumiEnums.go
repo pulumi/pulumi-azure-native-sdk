@@ -80,12 +80,6 @@ func (o SecurityAlertPolicyStateOutput) ToSecurityAlertPolicyStatePtrOutputWithC
 	}).(SecurityAlertPolicyStatePtrOutput)
 }
 
-func (o SecurityAlertPolicyStateOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityAlertPolicyState] {
-	return pulumix.Output[SecurityAlertPolicyState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SecurityAlertPolicyStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -119,12 +113,6 @@ func (o SecurityAlertPolicyStatePtrOutput) ToSecurityAlertPolicyStatePtrOutput()
 
 func (o SecurityAlertPolicyStatePtrOutput) ToSecurityAlertPolicyStatePtrOutputWithContext(ctx context.Context) SecurityAlertPolicyStatePtrOutput {
 	return o
-}
-
-func (o SecurityAlertPolicyStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityAlertPolicyState] {
-	return pulumix.Output[*SecurityAlertPolicyState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecurityAlertPolicyStatePtrOutput) Elem() SecurityAlertPolicyStateOutput {

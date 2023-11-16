@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The details of subscription under management group.
@@ -129,12 +128,6 @@ func (i *ManagementGroupSubscription) ToManagementGroupSubscriptionOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementGroupSubscriptionOutput)
 }
 
-func (i *ManagementGroupSubscription) ToOutput(ctx context.Context) pulumix.Output[*ManagementGroupSubscription] {
-	return pulumix.Output[*ManagementGroupSubscription]{
-		OutputState: i.ToManagementGroupSubscriptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagementGroupSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (ManagementGroupSubscriptionOutput) ElementType() reflect.Type {
@@ -147,12 +140,6 @@ func (o ManagementGroupSubscriptionOutput) ToManagementGroupSubscriptionOutput()
 
 func (o ManagementGroupSubscriptionOutput) ToManagementGroupSubscriptionOutputWithContext(ctx context.Context) ManagementGroupSubscriptionOutput {
 	return o
-}
-
-func (o ManagementGroupSubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagementGroupSubscription] {
-	return pulumix.Output[*ManagementGroupSubscription]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The friendly name of the subscription.

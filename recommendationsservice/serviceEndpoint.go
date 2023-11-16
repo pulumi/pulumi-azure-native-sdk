@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ServiceEndpoint resource details.
@@ -142,12 +141,6 @@ func (i *ServiceEndpoint) ToServiceEndpointOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceEndpointOutput)
 }
 
-func (i *ServiceEndpoint) ToOutput(ctx context.Context) pulumix.Output[*ServiceEndpoint] {
-	return pulumix.Output[*ServiceEndpoint]{
-		OutputState: i.ToServiceEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceEndpointOutput struct{ *pulumi.OutputState }
 
 func (ServiceEndpointOutput) ElementType() reflect.Type {
@@ -160,12 +153,6 @@ func (o ServiceEndpointOutput) ToServiceEndpointOutput() ServiceEndpointOutput {
 
 func (o ServiceEndpointOutput) ToServiceEndpointOutputWithContext(ctx context.Context) ServiceEndpointOutput {
 	return o
-}
-
-func (o ServiceEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceEndpoint] {
-	return pulumix.Output[*ServiceEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

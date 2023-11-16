@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -35,12 +34,6 @@ func (o PerimeterBasedAccessRuleResponseOutput) ToPerimeterBasedAccessRuleRespon
 
 func (o PerimeterBasedAccessRuleResponseOutput) ToPerimeterBasedAccessRuleResponseOutputWithContext(ctx context.Context) PerimeterBasedAccessRuleResponseOutput {
 	return o
-}
-
-func (o PerimeterBasedAccessRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PerimeterBasedAccessRuleResponse] {
-	return pulumix.Output[PerimeterBasedAccessRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // NSP id in the ARM id format.
@@ -70,12 +63,6 @@ func (o PerimeterBasedAccessRuleResponseArrayOutput) ToPerimeterBasedAccessRuleR
 
 func (o PerimeterBasedAccessRuleResponseArrayOutput) ToPerimeterBasedAccessRuleResponseArrayOutputWithContext(ctx context.Context) PerimeterBasedAccessRuleResponseArrayOutput {
 	return o
-}
-
-func (o PerimeterBasedAccessRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PerimeterBasedAccessRuleResponse] {
-	return pulumix.Output[[]PerimeterBasedAccessRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PerimeterBasedAccessRuleResponseArrayOutput) Index(i pulumi.IntInput) PerimeterBasedAccessRuleResponseOutput {
@@ -125,12 +112,6 @@ func (i SubResourceArgs) ToSubResourceOutputWithContext(ctx context.Context) Sub
 	return pulumi.ToOutputWithContext(ctx, i).(SubResourceOutput)
 }
 
-func (i SubResourceArgs) ToOutput(ctx context.Context) pulumix.Output[SubResource] {
-	return pulumix.Output[SubResource]{
-		OutputState: i.ToSubResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SubResourceArgs) ToSubResourcePtrOutput() SubResourcePtrOutput {
 	return i.ToSubResourcePtrOutputWithContext(context.Background())
 }
@@ -172,12 +153,6 @@ func (i *subResourcePtrType) ToSubResourcePtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SubResourcePtrOutput)
 }
 
-func (i *subResourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*SubResource] {
-	return pulumix.Output[*SubResource]{
-		OutputState: i.ToSubResourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Reference to another subresource.
 type SubResourceOutput struct{ *pulumi.OutputState }
 
@@ -203,12 +178,6 @@ func (o SubResourceOutput) ToSubResourcePtrOutputWithContext(ctx context.Context
 	}).(SubResourcePtrOutput)
 }
 
-func (o SubResourceOutput) ToOutput(ctx context.Context) pulumix.Output[SubResource] {
-	return pulumix.Output[SubResource]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
 // An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
 // A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
@@ -229,12 +198,6 @@ func (o SubResourcePtrOutput) ToSubResourcePtrOutput() SubResourcePtrOutput {
 
 func (o SubResourcePtrOutput) ToSubResourcePtrOutputWithContext(ctx context.Context) SubResourcePtrOutput {
 	return o
-}
-
-func (o SubResourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubResource] {
-	return pulumix.Output[*SubResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubResourcePtrOutput) Elem() SubResourceOutput {
@@ -281,12 +244,6 @@ func (o SubResourceResponseOutput) ToSubResourceResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o SubResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubResourceResponse] {
-	return pulumix.Output[SubResourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource ID.
 func (o SubResourceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubResourceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -304,12 +261,6 @@ func (o SubResourceResponsePtrOutput) ToSubResourceResponsePtrOutput() SubResour
 
 func (o SubResourceResponsePtrOutput) ToSubResourceResponsePtrOutputWithContext(ctx context.Context) SubResourceResponsePtrOutput {
 	return o
-}
-
-func (o SubResourceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubResourceResponse] {
-	return pulumix.Output[*SubResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubResourceResponsePtrOutput) Elem() SubResourceResponseOutput {
@@ -365,12 +316,6 @@ func (i SubscriptionIdArgs) ToSubscriptionIdOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIdOutput)
 }
 
-func (i SubscriptionIdArgs) ToOutput(ctx context.Context) pulumix.Output[SubscriptionId] {
-	return pulumix.Output[SubscriptionId]{
-		OutputState: i.ToSubscriptionIdOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SubscriptionIdArrayInput is an input type that accepts SubscriptionIdArray and SubscriptionIdArrayOutput values.
 // You can construct a concrete instance of `SubscriptionIdArrayInput` via:
 //
@@ -396,12 +341,6 @@ func (i SubscriptionIdArray) ToSubscriptionIdArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIdArrayOutput)
 }
 
-func (i SubscriptionIdArray) ToOutput(ctx context.Context) pulumix.Output[[]SubscriptionId] {
-	return pulumix.Output[[]SubscriptionId]{
-		OutputState: i.ToSubscriptionIdArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SubscriptionIdOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionIdOutput) ElementType() reflect.Type {
@@ -414,12 +353,6 @@ func (o SubscriptionIdOutput) ToSubscriptionIdOutput() SubscriptionIdOutput {
 
 func (o SubscriptionIdOutput) ToSubscriptionIdOutputWithContext(ctx context.Context) SubscriptionIdOutput {
 	return o
-}
-
-func (o SubscriptionIdOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionId] {
-	return pulumix.Output[SubscriptionId]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Subscription id in the ARM id format.
@@ -439,12 +372,6 @@ func (o SubscriptionIdArrayOutput) ToSubscriptionIdArrayOutput() SubscriptionIdA
 
 func (o SubscriptionIdArrayOutput) ToSubscriptionIdArrayOutputWithContext(ctx context.Context) SubscriptionIdArrayOutput {
 	return o
-}
-
-func (o SubscriptionIdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubscriptionId] {
-	return pulumix.Output[[]SubscriptionId]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubscriptionIdArrayOutput) Index(i pulumi.IntInput) SubscriptionIdOutput {
@@ -472,12 +399,6 @@ func (o SubscriptionIdResponseOutput) ToSubscriptionIdResponseOutputWithContext(
 	return o
 }
 
-func (o SubscriptionIdResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionIdResponse] {
-	return pulumix.Output[SubscriptionIdResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Subscription id in the ARM id format.
 func (o SubscriptionIdResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubscriptionIdResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -495,12 +416,6 @@ func (o SubscriptionIdResponseArrayOutput) ToSubscriptionIdResponseArrayOutput()
 
 func (o SubscriptionIdResponseArrayOutput) ToSubscriptionIdResponseArrayOutputWithContext(ctx context.Context) SubscriptionIdResponseArrayOutput {
 	return o
-}
-
-func (o SubscriptionIdResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubscriptionIdResponse] {
-	return pulumix.Output[[]SubscriptionIdResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubscriptionIdResponseArrayOutput) Index(i pulumi.IntInput) SubscriptionIdResponseOutput {

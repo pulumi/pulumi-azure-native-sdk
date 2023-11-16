@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Document processor details
@@ -130,12 +129,6 @@ func (i *DocumentProcessor) ToDocumentProcessorOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentProcessorOutput)
 }
 
-func (i *DocumentProcessor) ToOutput(ctx context.Context) pulumix.Output[*DocumentProcessor] {
-	return pulumix.Output[*DocumentProcessor]{
-		OutputState: i.ToDocumentProcessorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DocumentProcessorOutput struct{ *pulumi.OutputState }
 
 func (DocumentProcessorOutput) ElementType() reflect.Type {
@@ -148,12 +141,6 @@ func (o DocumentProcessorOutput) ToDocumentProcessorOutput() DocumentProcessorOu
 
 func (o DocumentProcessorOutput) ToDocumentProcessorOutputWithContext(ctx context.Context) DocumentProcessorOutput {
 	return o
-}
-
-func (o DocumentProcessorOutput) ToOutput(ctx context.Context) pulumix.Output[*DocumentProcessor] {
-	return pulumix.Output[*DocumentProcessor]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

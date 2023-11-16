@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure Cosmos DB Gremlin database.
@@ -246,12 +245,6 @@ func (i *GremlinResourceGremlinDatabase) ToGremlinResourceGremlinDatabaseOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(GremlinResourceGremlinDatabaseOutput)
 }
 
-func (i *GremlinResourceGremlinDatabase) ToOutput(ctx context.Context) pulumix.Output[*GremlinResourceGremlinDatabase] {
-	return pulumix.Output[*GremlinResourceGremlinDatabase]{
-		OutputState: i.ToGremlinResourceGremlinDatabaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GremlinResourceGremlinDatabaseOutput struct{ *pulumi.OutputState }
 
 func (GremlinResourceGremlinDatabaseOutput) ElementType() reflect.Type {
@@ -264,12 +257,6 @@ func (o GremlinResourceGremlinDatabaseOutput) ToGremlinResourceGremlinDatabaseOu
 
 func (o GremlinResourceGremlinDatabaseOutput) ToGremlinResourceGremlinDatabaseOutputWithContext(ctx context.Context) GremlinResourceGremlinDatabaseOutput {
 	return o
-}
-
-func (o GremlinResourceGremlinDatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[*GremlinResourceGremlinDatabase] {
-	return pulumix.Output[*GremlinResourceGremlinDatabase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The location of the resource group to which the resource belongs.

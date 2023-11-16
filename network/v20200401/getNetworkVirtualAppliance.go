@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified Network Virtual Appliance.
@@ -103,12 +102,6 @@ func (o LookupNetworkVirtualApplianceResultOutput) ToLookupNetworkVirtualApplian
 
 func (o LookupNetworkVirtualApplianceResultOutput) ToLookupNetworkVirtualApplianceResultOutputWithContext(ctx context.Context) LookupNetworkVirtualApplianceResultOutput {
 	return o
-}
-
-func (o LookupNetworkVirtualApplianceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkVirtualApplianceResult] {
-	return pulumix.Output[LookupNetworkVirtualApplianceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // BootStrapConfigurationBlob storage URLs.

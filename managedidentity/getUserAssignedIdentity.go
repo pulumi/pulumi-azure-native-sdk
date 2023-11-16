@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the identity.
@@ -92,12 +91,6 @@ func (o LookupUserAssignedIdentityResultOutput) ToLookupUserAssignedIdentityResu
 
 func (o LookupUserAssignedIdentityResultOutput) ToLookupUserAssignedIdentityResultOutputWithContext(ctx context.Context) LookupUserAssignedIdentityResultOutput {
 	return o
-}
-
-func (o LookupUserAssignedIdentityResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupUserAssignedIdentityResult] {
-	return pulumix.Output[LookupUserAssignedIdentityResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the app associated with the identity. This is a random generated UUID by MSI.

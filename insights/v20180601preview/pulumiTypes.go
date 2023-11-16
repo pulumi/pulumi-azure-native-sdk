@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i DataSourceArgs) ToDataSourceOutputWithContext(ctx context.Context) DataS
 	return pulumi.ToOutputWithContext(ctx, i).(DataSourceOutput)
 }
 
-func (i DataSourceArgs) ToOutput(ctx context.Context) pulumix.Output[DataSource] {
-	return pulumix.Output[DataSource]{
-		OutputState: i.ToDataSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataSourceArrayInput is an input type that accepts DataSourceArray and DataSourceArrayOutput values.
 // You can construct a concrete instance of `DataSourceArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i DataSourceArray) ToDataSourceArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(DataSourceArrayOutput)
 }
 
-func (i DataSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]DataSource] {
-	return pulumix.Output[[]DataSource]{
-		OutputState: i.ToDataSourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Data source object contains configuration to collect telemetry and one or more sinks to send that telemetry data to
 type DataSourceOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o DataSourceOutput) ToDataSourceOutput() DataSourceOutput {
 
 func (o DataSourceOutput) ToDataSourceOutputWithContext(ctx context.Context) DataSourceOutput {
 	return o
-}
-
-func (o DataSourceOutput) ToOutput(ctx context.Context) pulumix.Output[DataSource] {
-	return pulumix.Output[DataSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataSourceOutput) Configuration() DataSourceConfigurationOutput {
@@ -136,12 +117,6 @@ func (o DataSourceArrayOutput) ToDataSourceArrayOutput() DataSourceArrayOutput {
 
 func (o DataSourceArrayOutput) ToDataSourceArrayOutputWithContext(ctx context.Context) DataSourceArrayOutput {
 	return o
-}
-
-func (o DataSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataSource] {
-	return pulumix.Output[[]DataSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataSourceArrayOutput) Index(i pulumi.IntInput) DataSourceOutput {
@@ -191,12 +166,6 @@ func (i DataSourceConfigurationArgs) ToDataSourceConfigurationOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(DataSourceConfigurationOutput)
 }
 
-func (i DataSourceConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[DataSourceConfiguration] {
-	return pulumix.Output[DataSourceConfiguration]{
-		OutputState: i.ToDataSourceConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataSourceConfigurationOutput struct{ *pulumi.OutputState }
 
 func (DataSourceConfigurationOutput) ElementType() reflect.Type {
@@ -209,12 +178,6 @@ func (o DataSourceConfigurationOutput) ToDataSourceConfigurationOutput() DataSou
 
 func (o DataSourceConfigurationOutput) ToDataSourceConfigurationOutputWithContext(ctx context.Context) DataSourceConfigurationOutput {
 	return o
-}
-
-func (o DataSourceConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[DataSourceConfiguration] {
-	return pulumix.Output[DataSourceConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Windows event logs configuration.
@@ -253,12 +216,6 @@ func (o DataSourceConfigurationResponseOutput) ToDataSourceConfigurationResponse
 
 func (o DataSourceConfigurationResponseOutput) ToDataSourceConfigurationResponseOutputWithContext(ctx context.Context) DataSourceConfigurationResponseOutput {
 	return o
-}
-
-func (o DataSourceConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataSourceConfigurationResponse] {
-	return pulumix.Output[DataSourceConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Windows event logs configuration.
@@ -301,12 +258,6 @@ func (o DataSourceResponseOutput) ToDataSourceResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o DataSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataSourceResponse] {
-	return pulumix.Output[DataSourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataSourceResponseOutput) Configuration() DataSourceConfigurationResponseOutput {
 	return o.ApplyT(func(v DataSourceResponse) DataSourceConfigurationResponse { return v.Configuration }).(DataSourceConfigurationResponseOutput)
 }
@@ -332,12 +283,6 @@ func (o DataSourceResponseArrayOutput) ToDataSourceResponseArrayOutput() DataSou
 
 func (o DataSourceResponseArrayOutput) ToDataSourceResponseArrayOutputWithContext(ctx context.Context) DataSourceResponseArrayOutput {
 	return o
-}
-
-func (o DataSourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataSourceResponse] {
-	return pulumix.Output[[]DataSourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataSourceResponseArrayOutput) Index(i pulumi.IntInput) DataSourceResponseOutput {
@@ -381,12 +326,6 @@ func (i EtwEventConfigurationArgs) ToEtwEventConfigurationOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(EtwEventConfigurationOutput)
 }
 
-func (i EtwEventConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[EtwEventConfiguration] {
-	return pulumix.Output[EtwEventConfiguration]{
-		OutputState: i.ToEtwEventConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EtwEventConfigurationArrayInput is an input type that accepts EtwEventConfigurationArray and EtwEventConfigurationArrayOutput values.
 // You can construct a concrete instance of `EtwEventConfigurationArrayInput` via:
 //
@@ -412,12 +351,6 @@ func (i EtwEventConfigurationArray) ToEtwEventConfigurationArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(EtwEventConfigurationArrayOutput)
 }
 
-func (i EtwEventConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]EtwEventConfiguration] {
-	return pulumix.Output[[]EtwEventConfiguration]{
-		OutputState: i.ToEtwEventConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EtwEventConfigurationOutput struct{ *pulumi.OutputState }
 
 func (EtwEventConfigurationOutput) ElementType() reflect.Type {
@@ -430,12 +363,6 @@ func (o EtwEventConfigurationOutput) ToEtwEventConfigurationOutput() EtwEventCon
 
 func (o EtwEventConfigurationOutput) ToEtwEventConfigurationOutputWithContext(ctx context.Context) EtwEventConfigurationOutput {
 	return o
-}
-
-func (o EtwEventConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[EtwEventConfiguration] {
-	return pulumix.Output[EtwEventConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EtwEventConfigurationOutput) Filter() pulumi.StringPtrOutput {
@@ -464,12 +391,6 @@ func (o EtwEventConfigurationArrayOutput) ToEtwEventConfigurationArrayOutputWith
 	return o
 }
 
-func (o EtwEventConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EtwEventConfiguration] {
-	return pulumix.Output[[]EtwEventConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EtwEventConfigurationArrayOutput) Index(i pulumi.IntInput) EtwEventConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EtwEventConfiguration {
 		return vs[0].([]EtwEventConfiguration)[vs[1].(int)]
@@ -496,12 +417,6 @@ func (o EtwEventConfigurationResponseOutput) ToEtwEventConfigurationResponseOutp
 	return o
 }
 
-func (o EtwEventConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EtwEventConfigurationResponse] {
-	return pulumix.Output[EtwEventConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EtwEventConfigurationResponseOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EtwEventConfigurationResponse) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
@@ -526,12 +441,6 @@ func (o EtwEventConfigurationResponseArrayOutput) ToEtwEventConfigurationRespons
 
 func (o EtwEventConfigurationResponseArrayOutput) ToEtwEventConfigurationResponseArrayOutputWithContext(ctx context.Context) EtwEventConfigurationResponseArrayOutput {
 	return o
-}
-
-func (o EtwEventConfigurationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EtwEventConfigurationResponse] {
-	return pulumix.Output[[]EtwEventConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EtwEventConfigurationResponseArrayOutput) Index(i pulumi.IntInput) EtwEventConfigurationResponseOutput {
@@ -573,12 +482,6 @@ func (i EtwProviderConfigurationArgs) ToEtwProviderConfigurationOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(EtwProviderConfigurationOutput)
 }
 
-func (i EtwProviderConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[EtwProviderConfiguration] {
-	return pulumix.Output[EtwProviderConfiguration]{
-		OutputState: i.ToEtwProviderConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EtwProviderConfigurationArrayInput is an input type that accepts EtwProviderConfigurationArray and EtwProviderConfigurationArrayOutput values.
 // You can construct a concrete instance of `EtwProviderConfigurationArrayInput` via:
 //
@@ -604,12 +507,6 @@ func (i EtwProviderConfigurationArray) ToEtwProviderConfigurationArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(EtwProviderConfigurationArrayOutput)
 }
 
-func (i EtwProviderConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]EtwProviderConfiguration] {
-	return pulumix.Output[[]EtwProviderConfiguration]{
-		OutputState: i.ToEtwProviderConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EtwProviderConfigurationOutput struct{ *pulumi.OutputState }
 
 func (EtwProviderConfigurationOutput) ElementType() reflect.Type {
@@ -622,12 +519,6 @@ func (o EtwProviderConfigurationOutput) ToEtwProviderConfigurationOutput() EtwPr
 
 func (o EtwProviderConfigurationOutput) ToEtwProviderConfigurationOutputWithContext(ctx context.Context) EtwProviderConfigurationOutput {
 	return o
-}
-
-func (o EtwProviderConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[EtwProviderConfiguration] {
-	return pulumix.Output[EtwProviderConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EtwProviderConfigurationOutput) Events() EtwEventConfigurationArrayOutput {
@@ -650,12 +541,6 @@ func (o EtwProviderConfigurationArrayOutput) ToEtwProviderConfigurationArrayOutp
 
 func (o EtwProviderConfigurationArrayOutput) ToEtwProviderConfigurationArrayOutputWithContext(ctx context.Context) EtwProviderConfigurationArrayOutput {
 	return o
-}
-
-func (o EtwProviderConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EtwProviderConfiguration] {
-	return pulumix.Output[[]EtwProviderConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EtwProviderConfigurationArrayOutput) Index(i pulumi.IntInput) EtwProviderConfigurationOutput {
@@ -683,12 +568,6 @@ func (o EtwProviderConfigurationResponseOutput) ToEtwProviderConfigurationRespon
 	return o
 }
 
-func (o EtwProviderConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EtwProviderConfigurationResponse] {
-	return pulumix.Output[EtwProviderConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EtwProviderConfigurationResponseOutput) Events() EtwEventConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v EtwProviderConfigurationResponse) []EtwEventConfigurationResponse { return v.Events }).(EtwEventConfigurationResponseArrayOutput)
 }
@@ -709,12 +588,6 @@ func (o EtwProviderConfigurationResponseArrayOutput) ToEtwProviderConfigurationR
 
 func (o EtwProviderConfigurationResponseArrayOutput) ToEtwProviderConfigurationResponseArrayOutputWithContext(ctx context.Context) EtwProviderConfigurationResponseArrayOutput {
 	return o
-}
-
-func (o EtwProviderConfigurationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EtwProviderConfigurationResponse] {
-	return pulumix.Output[[]EtwProviderConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EtwProviderConfigurationResponseArrayOutput) Index(i pulumi.IntInput) EtwProviderConfigurationResponseOutput {
@@ -756,12 +629,6 @@ func (i EventLogConfigurationArgs) ToEventLogConfigurationOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(EventLogConfigurationOutput)
 }
 
-func (i EventLogConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[EventLogConfiguration] {
-	return pulumix.Output[EventLogConfiguration]{
-		OutputState: i.ToEventLogConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EventLogConfigurationArrayInput is an input type that accepts EventLogConfigurationArray and EventLogConfigurationArrayOutput values.
 // You can construct a concrete instance of `EventLogConfigurationArrayInput` via:
 //
@@ -787,12 +654,6 @@ func (i EventLogConfigurationArray) ToEventLogConfigurationArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(EventLogConfigurationArrayOutput)
 }
 
-func (i EventLogConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]EventLogConfiguration] {
-	return pulumix.Output[[]EventLogConfiguration]{
-		OutputState: i.ToEventLogConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EventLogConfigurationOutput struct{ *pulumi.OutputState }
 
 func (EventLogConfigurationOutput) ElementType() reflect.Type {
@@ -805,12 +666,6 @@ func (o EventLogConfigurationOutput) ToEventLogConfigurationOutput() EventLogCon
 
 func (o EventLogConfigurationOutput) ToEventLogConfigurationOutputWithContext(ctx context.Context) EventLogConfigurationOutput {
 	return o
-}
-
-func (o EventLogConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[EventLogConfiguration] {
-	return pulumix.Output[EventLogConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EventLogConfigurationOutput) Filter() pulumi.StringPtrOutput {
@@ -833,12 +688,6 @@ func (o EventLogConfigurationArrayOutput) ToEventLogConfigurationArrayOutput() E
 
 func (o EventLogConfigurationArrayOutput) ToEventLogConfigurationArrayOutputWithContext(ctx context.Context) EventLogConfigurationArrayOutput {
 	return o
-}
-
-func (o EventLogConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EventLogConfiguration] {
-	return pulumix.Output[[]EventLogConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EventLogConfigurationArrayOutput) Index(i pulumi.IntInput) EventLogConfigurationOutput {
@@ -866,12 +715,6 @@ func (o EventLogConfigurationResponseOutput) ToEventLogConfigurationResponseOutp
 	return o
 }
 
-func (o EventLogConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EventLogConfigurationResponse] {
-	return pulumix.Output[EventLogConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EventLogConfigurationResponseOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EventLogConfigurationResponse) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
@@ -892,12 +735,6 @@ func (o EventLogConfigurationResponseArrayOutput) ToEventLogConfigurationRespons
 
 func (o EventLogConfigurationResponseArrayOutput) ToEventLogConfigurationResponseArrayOutputWithContext(ctx context.Context) EventLogConfigurationResponseArrayOutput {
 	return o
-}
-
-func (o EventLogConfigurationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EventLogConfigurationResponse] {
-	return pulumix.Output[[]EventLogConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EventLogConfigurationResponseArrayOutput) Index(i pulumi.IntInput) EventLogConfigurationResponseOutput {
@@ -941,12 +778,6 @@ func (i PerformanceCounterConfigurationArgs) ToPerformanceCounterConfigurationOu
 	return pulumi.ToOutputWithContext(ctx, i).(PerformanceCounterConfigurationOutput)
 }
 
-func (i PerformanceCounterConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[PerformanceCounterConfiguration] {
-	return pulumix.Output[PerformanceCounterConfiguration]{
-		OutputState: i.ToPerformanceCounterConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PerformanceCounterConfigurationArrayInput is an input type that accepts PerformanceCounterConfigurationArray and PerformanceCounterConfigurationArrayOutput values.
 // You can construct a concrete instance of `PerformanceCounterConfigurationArrayInput` via:
 //
@@ -972,12 +803,6 @@ func (i PerformanceCounterConfigurationArray) ToPerformanceCounterConfigurationA
 	return pulumi.ToOutputWithContext(ctx, i).(PerformanceCounterConfigurationArrayOutput)
 }
 
-func (i PerformanceCounterConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]PerformanceCounterConfiguration] {
-	return pulumix.Output[[]PerformanceCounterConfiguration]{
-		OutputState: i.ToPerformanceCounterConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PerformanceCounterConfigurationOutput struct{ *pulumi.OutputState }
 
 func (PerformanceCounterConfigurationOutput) ElementType() reflect.Type {
@@ -990,12 +815,6 @@ func (o PerformanceCounterConfigurationOutput) ToPerformanceCounterConfiguration
 
 func (o PerformanceCounterConfigurationOutput) ToPerformanceCounterConfigurationOutputWithContext(ctx context.Context) PerformanceCounterConfigurationOutput {
 	return o
-}
-
-func (o PerformanceCounterConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[PerformanceCounterConfiguration] {
-	return pulumix.Output[PerformanceCounterConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PerformanceCounterConfigurationOutput) Instance() pulumi.StringPtrOutput {
@@ -1024,12 +843,6 @@ func (o PerformanceCounterConfigurationArrayOutput) ToPerformanceCounterConfigur
 	return o
 }
 
-func (o PerformanceCounterConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PerformanceCounterConfiguration] {
-	return pulumix.Output[[]PerformanceCounterConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PerformanceCounterConfigurationArrayOutput) Index(i pulumi.IntInput) PerformanceCounterConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PerformanceCounterConfiguration {
 		return vs[0].([]PerformanceCounterConfiguration)[vs[1].(int)]
@@ -1056,12 +869,6 @@ func (o PerformanceCounterConfigurationResponseOutput) ToPerformanceCounterConfi
 	return o
 }
 
-func (o PerformanceCounterConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PerformanceCounterConfigurationResponse] {
-	return pulumix.Output[PerformanceCounterConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PerformanceCounterConfigurationResponseOutput) Instance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PerformanceCounterConfigurationResponse) *string { return v.Instance }).(pulumi.StringPtrOutput)
 }
@@ -1086,12 +893,6 @@ func (o PerformanceCounterConfigurationResponseArrayOutput) ToPerformanceCounter
 
 func (o PerformanceCounterConfigurationResponseArrayOutput) ToPerformanceCounterConfigurationResponseArrayOutputWithContext(ctx context.Context) PerformanceCounterConfigurationResponseArrayOutput {
 	return o
-}
-
-func (o PerformanceCounterConfigurationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PerformanceCounterConfigurationResponse] {
-	return pulumix.Output[[]PerformanceCounterConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PerformanceCounterConfigurationResponseArrayOutput) Index(i pulumi.IntInput) PerformanceCounterConfigurationResponseOutput {
@@ -1131,12 +932,6 @@ func (i SinkConfigurationArgs) ToSinkConfigurationOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SinkConfigurationOutput)
 }
 
-func (i SinkConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[SinkConfiguration] {
-	return pulumix.Output[SinkConfiguration]{
-		OutputState: i.ToSinkConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SinkConfigurationArrayInput is an input type that accepts SinkConfigurationArray and SinkConfigurationArrayOutput values.
 // You can construct a concrete instance of `SinkConfigurationArrayInput` via:
 //
@@ -1162,12 +957,6 @@ func (i SinkConfigurationArray) ToSinkConfigurationArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(SinkConfigurationArrayOutput)
 }
 
-func (i SinkConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]SinkConfiguration] {
-	return pulumix.Output[[]SinkConfiguration]{
-		OutputState: i.ToSinkConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SinkConfigurationOutput struct{ *pulumi.OutputState }
 
 func (SinkConfigurationOutput) ElementType() reflect.Type {
@@ -1180,12 +969,6 @@ func (o SinkConfigurationOutput) ToSinkConfigurationOutput() SinkConfigurationOu
 
 func (o SinkConfigurationOutput) ToSinkConfigurationOutputWithContext(ctx context.Context) SinkConfigurationOutput {
 	return o
-}
-
-func (o SinkConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[SinkConfiguration] {
-	return pulumix.Output[SinkConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SinkConfigurationOutput) Kind() pulumi.StringOutput {
@@ -1204,12 +987,6 @@ func (o SinkConfigurationArrayOutput) ToSinkConfigurationArrayOutput() SinkConfi
 
 func (o SinkConfigurationArrayOutput) ToSinkConfigurationArrayOutputWithContext(ctx context.Context) SinkConfigurationArrayOutput {
 	return o
-}
-
-func (o SinkConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SinkConfiguration] {
-	return pulumix.Output[[]SinkConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SinkConfigurationArrayOutput) Index(i pulumi.IntInput) SinkConfigurationOutput {
@@ -1236,12 +1013,6 @@ func (o SinkConfigurationResponseOutput) ToSinkConfigurationResponseOutputWithCo
 	return o
 }
 
-func (o SinkConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SinkConfigurationResponse] {
-	return pulumix.Output[SinkConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SinkConfigurationResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v SinkConfigurationResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -1258,12 +1029,6 @@ func (o SinkConfigurationResponseArrayOutput) ToSinkConfigurationResponseArrayOu
 
 func (o SinkConfigurationResponseArrayOutput) ToSinkConfigurationResponseArrayOutputWithContext(ctx context.Context) SinkConfigurationResponseArrayOutput {
 	return o
-}
-
-func (o SinkConfigurationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SinkConfigurationResponse] {
-	return pulumix.Output[[]SinkConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SinkConfigurationResponseArrayOutput) Index(i pulumi.IntInput) SinkConfigurationResponseOutput {

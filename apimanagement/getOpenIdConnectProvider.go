@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets specific OpenID Connect Provider without secrets.
@@ -98,12 +97,6 @@ func (o LookupOpenIdConnectProviderResultOutput) ToLookupOpenIdConnectProviderRe
 
 func (o LookupOpenIdConnectProviderResultOutput) ToLookupOpenIdConnectProviderResultOutputWithContext(ctx context.Context) LookupOpenIdConnectProviderResultOutput {
 	return o
-}
-
-func (o LookupOpenIdConnectProviderResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOpenIdConnectProviderResult] {
-	return pulumix.Output[LookupOpenIdConnectProviderResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Client ID of developer console which is the client application.

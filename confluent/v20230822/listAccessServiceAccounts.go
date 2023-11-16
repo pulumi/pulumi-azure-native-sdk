@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List service accounts success response
@@ -81,12 +80,6 @@ func (o ListAccessServiceAccountsResultOutput) ToListAccessServiceAccountsResult
 
 func (o ListAccessServiceAccountsResultOutput) ToListAccessServiceAccountsResultOutputWithContext(ctx context.Context) ListAccessServiceAccountsResultOutput {
 	return o
-}
-
-func (o ListAccessServiceAccountsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListAccessServiceAccountsResult] {
-	return pulumix.Output[ListAccessServiceAccountsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Data of the service accounts list

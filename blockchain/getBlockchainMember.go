@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get details about a blockchain member.
@@ -112,12 +111,6 @@ func (o LookupBlockchainMemberResultOutput) ToLookupBlockchainMemberResultOutput
 
 func (o LookupBlockchainMemberResultOutput) ToLookupBlockchainMemberResultOutputWithContext(ctx context.Context) LookupBlockchainMemberResultOutput {
 	return o
-}
-
-func (o LookupBlockchainMemberResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBlockchainMemberResult] {
-	return pulumix.Output[LookupBlockchainMemberResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the consortium for the blockchain member.

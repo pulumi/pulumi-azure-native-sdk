@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a catalog.
@@ -163,12 +162,6 @@ func (i *Catalog) ToCatalogOutputWithContext(ctx context.Context) CatalogOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(CatalogOutput)
 }
 
-func (i *Catalog) ToOutput(ctx context.Context) pulumix.Output[*Catalog] {
-	return pulumix.Output[*Catalog]{
-		OutputState: i.ToCatalogOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CatalogOutput struct{ *pulumi.OutputState }
 
 func (CatalogOutput) ElementType() reflect.Type {
@@ -181,12 +174,6 @@ func (o CatalogOutput) ToCatalogOutput() CatalogOutput {
 
 func (o CatalogOutput) ToCatalogOutputWithContext(ctx context.Context) CatalogOutput {
 	return o
-}
-
-func (o CatalogOutput) ToOutput(ctx context.Context) pulumix.Output[*Catalog] {
-	return pulumix.Output[*Catalog]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Properties for an Azure DevOps catalog type.

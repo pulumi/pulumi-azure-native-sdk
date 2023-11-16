@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents Office Microsoft Project data connector.
@@ -139,6 +138,9 @@ func NewOffice365ProjectDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:Office365ProjectDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:Office365ProjectDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -229,12 +231,6 @@ func (i *Office365ProjectDataConnector) ToOffice365ProjectDataConnectorOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(Office365ProjectDataConnectorOutput)
 }
 
-func (i *Office365ProjectDataConnector) ToOutput(ctx context.Context) pulumix.Output[*Office365ProjectDataConnector] {
-	return pulumix.Output[*Office365ProjectDataConnector]{
-		OutputState: i.ToOffice365ProjectDataConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type Office365ProjectDataConnectorOutput struct{ *pulumi.OutputState }
 
 func (Office365ProjectDataConnectorOutput) ElementType() reflect.Type {
@@ -247,12 +243,6 @@ func (o Office365ProjectDataConnectorOutput) ToOffice365ProjectDataConnectorOutp
 
 func (o Office365ProjectDataConnectorOutput) ToOffice365ProjectDataConnectorOutputWithContext(ctx context.Context) Office365ProjectDataConnectorOutput {
 	return o
-}
-
-func (o Office365ProjectDataConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*Office365ProjectDataConnector] {
-	return pulumix.Output[*Office365ProjectDataConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The available data types for the connector.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Data controller resource
@@ -158,12 +157,6 @@ func (i *DataController) ToDataControllerOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(DataControllerOutput)
 }
 
-func (i *DataController) ToOutput(ctx context.Context) pulumix.Output[*DataController] {
-	return pulumix.Output[*DataController]{
-		OutputState: i.ToDataControllerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataControllerOutput struct{ *pulumi.OutputState }
 
 func (DataControllerOutput) ElementType() reflect.Type {
@@ -176,12 +169,6 @@ func (o DataControllerOutput) ToDataControllerOutput() DataControllerOutput {
 
 func (o DataControllerOutput) ToDataControllerOutputWithContext(ctx context.Context) DataControllerOutput {
 	return o
-}
-
-func (o DataControllerOutput) ToOutput(ctx context.Context) pulumix.Output[*DataController] {
-	return pulumix.Output[*DataController]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The extendedLocation of the resource.

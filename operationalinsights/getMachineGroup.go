@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified machine group as it existed during the specified time interval.
@@ -103,12 +102,6 @@ func (o LookupMachineGroupResultOutput) ToLookupMachineGroupResultOutput() Looku
 
 func (o LookupMachineGroupResultOutput) ToLookupMachineGroupResultOutputWithContext(ctx context.Context) LookupMachineGroupResultOutput {
 	return o
-}
-
-func (o LookupMachineGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMachineGroupResult] {
-	return pulumix.Output[LookupMachineGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Count of machines in this group. The value of count may be bigger than the number of machines in case of the group has been truncated due to exceeding the max number of machines a group can handle.

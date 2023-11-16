@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an AuthorizationRule for an Event Hub by rule name.
@@ -91,12 +90,6 @@ func (o LookupEventHubAuthorizationRuleResultOutput) ToLookupEventHubAuthorizati
 
 func (o LookupEventHubAuthorizationRuleResultOutput) ToLookupEventHubAuthorizationRuleResultOutputWithContext(ctx context.Context) LookupEventHubAuthorizationRuleResultOutput {
 	return o
-}
-
-func (o LookupEventHubAuthorizationRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEventHubAuthorizationRuleResult] {
-	return pulumix.Output[LookupEventHubAuthorizationRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

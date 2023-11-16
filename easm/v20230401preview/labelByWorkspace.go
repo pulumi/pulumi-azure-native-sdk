@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Label details
@@ -135,12 +134,6 @@ func (i *LabelByWorkspace) ToLabelByWorkspaceOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(LabelByWorkspaceOutput)
 }
 
-func (i *LabelByWorkspace) ToOutput(ctx context.Context) pulumix.Output[*LabelByWorkspace] {
-	return pulumix.Output[*LabelByWorkspace]{
-		OutputState: i.ToLabelByWorkspaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LabelByWorkspaceOutput struct{ *pulumi.OutputState }
 
 func (LabelByWorkspaceOutput) ElementType() reflect.Type {
@@ -153,12 +146,6 @@ func (o LabelByWorkspaceOutput) ToLabelByWorkspaceOutput() LabelByWorkspaceOutpu
 
 func (o LabelByWorkspaceOutput) ToLabelByWorkspaceOutputWithContext(ctx context.Context) LabelByWorkspaceOutput {
 	return o
-}
-
-func (o LabelByWorkspaceOutput) ToOutput(ctx context.Context) pulumix.Output[*LabelByWorkspace] {
-	return pulumix.Output[*LabelByWorkspace]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Label color.

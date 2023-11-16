@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the Issue for an API specified by its identifier.
@@ -101,12 +100,6 @@ func (o LookupApiIssueResultOutput) ToLookupApiIssueResultOutput() LookupApiIssu
 
 func (o LookupApiIssueResultOutput) ToLookupApiIssueResultOutputWithContext(ctx context.Context) LookupApiIssueResultOutput {
 	return o
-}
-
-func (o LookupApiIssueResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApiIssueResult] {
-	return pulumix.Output[LookupApiIssueResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A resource identifier for the API the issue was created for.

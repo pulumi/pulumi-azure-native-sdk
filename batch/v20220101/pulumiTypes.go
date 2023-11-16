@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -81,12 +80,6 @@ func (i AutoStorageBasePropertiesArgs) ToAutoStorageBasePropertiesOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AutoStorageBasePropertiesOutput)
 }
 
-func (i AutoStorageBasePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[AutoStorageBaseProperties] {
-	return pulumix.Output[AutoStorageBaseProperties]{
-		OutputState: i.ToAutoStorageBasePropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AutoStorageBasePropertiesArgs) ToAutoStorageBasePropertiesPtrOutput() AutoStorageBasePropertiesPtrOutput {
 	return i.ToAutoStorageBasePropertiesPtrOutputWithContext(context.Background())
 }
@@ -128,12 +121,6 @@ func (i *autoStorageBasePropertiesPtrType) ToAutoStorageBasePropertiesPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(AutoStorageBasePropertiesPtrOutput)
 }
 
-func (i *autoStorageBasePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*AutoStorageBaseProperties] {
-	return pulumix.Output[*AutoStorageBaseProperties]{
-		OutputState: i.ToAutoStorageBasePropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties related to the auto-storage account.
 type AutoStorageBasePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -157,12 +144,6 @@ func (o AutoStorageBasePropertiesOutput) ToAutoStorageBasePropertiesPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoStorageBaseProperties) *AutoStorageBaseProperties {
 		return &v
 	}).(AutoStorageBasePropertiesPtrOutput)
-}
-
-func (o AutoStorageBasePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[AutoStorageBaseProperties] {
-	return pulumix.Output[AutoStorageBaseProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The authentication mode which the Batch service will use to manage the auto-storage account.
@@ -192,12 +173,6 @@ func (o AutoStorageBasePropertiesPtrOutput) ToAutoStorageBasePropertiesPtrOutput
 
 func (o AutoStorageBasePropertiesPtrOutput) ToAutoStorageBasePropertiesPtrOutputWithContext(ctx context.Context) AutoStorageBasePropertiesPtrOutput {
 	return o
-}
-
-func (o AutoStorageBasePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoStorageBaseProperties] {
-	return pulumix.Output[*AutoStorageBaseProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoStorageBasePropertiesPtrOutput) Elem() AutoStorageBasePropertiesOutput {
@@ -280,12 +255,6 @@ func (o AutoStoragePropertiesResponseOutput) ToAutoStoragePropertiesResponseOutp
 	return o
 }
 
-func (o AutoStoragePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutoStoragePropertiesResponse] {
-	return pulumix.Output[AutoStoragePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The authentication mode which the Batch service will use to manage the auto-storage account.
 func (o AutoStoragePropertiesResponseOutput) AuthenticationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutoStoragePropertiesResponse) *string { return v.AuthenticationMode }).(pulumi.StringPtrOutput)
@@ -347,12 +316,6 @@ func (i BatchAccountIdentityArgs) ToBatchAccountIdentityOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(BatchAccountIdentityOutput)
 }
 
-func (i BatchAccountIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[BatchAccountIdentity] {
-	return pulumix.Output[BatchAccountIdentity]{
-		OutputState: i.ToBatchAccountIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BatchAccountIdentityArgs) ToBatchAccountIdentityPtrOutput() BatchAccountIdentityPtrOutput {
 	return i.ToBatchAccountIdentityPtrOutputWithContext(context.Background())
 }
@@ -394,12 +357,6 @@ func (i *batchAccountIdentityPtrType) ToBatchAccountIdentityPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(BatchAccountIdentityPtrOutput)
 }
 
-func (i *batchAccountIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*BatchAccountIdentity] {
-	return pulumix.Output[*BatchAccountIdentity]{
-		OutputState: i.ToBatchAccountIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The identity of the Batch account, if configured. This is used when the user specifies 'Microsoft.KeyVault' as their Batch account encryption configuration or when `ManagedIdentity` is selected as the auto-storage authentication mode.
 type BatchAccountIdentityOutput struct{ *pulumi.OutputState }
 
@@ -425,12 +382,6 @@ func (o BatchAccountIdentityOutput) ToBatchAccountIdentityPtrOutputWithContext(c
 	}).(BatchAccountIdentityPtrOutput)
 }
 
-func (o BatchAccountIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[BatchAccountIdentity] {
-	return pulumix.Output[BatchAccountIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The type of identity used for the Batch account.
 func (o BatchAccountIdentityOutput) Type() ResourceIdentityTypeOutput {
 	return o.ApplyT(func(v BatchAccountIdentity) ResourceIdentityType { return v.Type }).(ResourceIdentityTypeOutput)
@@ -453,12 +404,6 @@ func (o BatchAccountIdentityPtrOutput) ToBatchAccountIdentityPtrOutput() BatchAc
 
 func (o BatchAccountIdentityPtrOutput) ToBatchAccountIdentityPtrOutputWithContext(ctx context.Context) BatchAccountIdentityPtrOutput {
 	return o
-}
-
-func (o BatchAccountIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BatchAccountIdentity] {
-	return pulumix.Output[*BatchAccountIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BatchAccountIdentityPtrOutput) Elem() BatchAccountIdentityOutput {
@@ -518,12 +463,6 @@ func (o BatchAccountIdentityResponseOutput) ToBatchAccountIdentityResponseOutput
 	return o
 }
 
-func (o BatchAccountIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BatchAccountIdentityResponse] {
-	return pulumix.Output[BatchAccountIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The principal id of the Batch account. This property will only be provided for a system assigned identity.
 func (o BatchAccountIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v BatchAccountIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -558,12 +497,6 @@ func (o BatchAccountIdentityResponsePtrOutput) ToBatchAccountIdentityResponsePtr
 
 func (o BatchAccountIdentityResponsePtrOutput) ToBatchAccountIdentityResponsePtrOutputWithContext(ctx context.Context) BatchAccountIdentityResponsePtrOutput {
 	return o
-}
-
-func (o BatchAccountIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BatchAccountIdentityResponse] {
-	return pulumix.Output[*BatchAccountIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BatchAccountIdentityResponsePtrOutput) Elem() BatchAccountIdentityResponseOutput {
@@ -651,12 +584,6 @@ func (i ComputeNodeIdentityReferenceArgs) ToComputeNodeIdentityReferenceOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeNodeIdentityReferenceOutput)
 }
 
-func (i ComputeNodeIdentityReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[ComputeNodeIdentityReference] {
-	return pulumix.Output[ComputeNodeIdentityReference]{
-		OutputState: i.ToComputeNodeIdentityReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ComputeNodeIdentityReferenceArgs) ToComputeNodeIdentityReferencePtrOutput() ComputeNodeIdentityReferencePtrOutput {
 	return i.ToComputeNodeIdentityReferencePtrOutputWithContext(context.Background())
 }
@@ -698,12 +625,6 @@ func (i *computeNodeIdentityReferencePtrType) ToComputeNodeIdentityReferencePtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ComputeNodeIdentityReferencePtrOutput)
 }
 
-func (i *computeNodeIdentityReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*ComputeNodeIdentityReference] {
-	return pulumix.Output[*ComputeNodeIdentityReference]{
-		OutputState: i.ToComputeNodeIdentityReferencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The reference to a user assigned identity associated with the Batch pool which a compute node will use.
 type ComputeNodeIdentityReferenceOutput struct{ *pulumi.OutputState }
 
@@ -729,12 +650,6 @@ func (o ComputeNodeIdentityReferenceOutput) ToComputeNodeIdentityReferencePtrOut
 	}).(ComputeNodeIdentityReferencePtrOutput)
 }
 
-func (o ComputeNodeIdentityReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeNodeIdentityReference] {
-	return pulumix.Output[ComputeNodeIdentityReference]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ARM resource id of the user assigned identity.
 func (o ComputeNodeIdentityReferenceOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeNodeIdentityReference) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
@@ -752,12 +667,6 @@ func (o ComputeNodeIdentityReferencePtrOutput) ToComputeNodeIdentityReferencePtr
 
 func (o ComputeNodeIdentityReferencePtrOutput) ToComputeNodeIdentityReferencePtrOutputWithContext(ctx context.Context) ComputeNodeIdentityReferencePtrOutput {
 	return o
-}
-
-func (o ComputeNodeIdentityReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeNodeIdentityReference] {
-	return pulumix.Output[*ComputeNodeIdentityReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ComputeNodeIdentityReferencePtrOutput) Elem() ComputeNodeIdentityReferenceOutput {
@@ -801,12 +710,6 @@ func (o ComputeNodeIdentityReferenceResponseOutput) ToComputeNodeIdentityReferen
 	return o
 }
 
-func (o ComputeNodeIdentityReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeNodeIdentityReferenceResponse] {
-	return pulumix.Output[ComputeNodeIdentityReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ARM resource id of the user assigned identity.
 func (o ComputeNodeIdentityReferenceResponseOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ComputeNodeIdentityReferenceResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
@@ -824,12 +727,6 @@ func (o ComputeNodeIdentityReferenceResponsePtrOutput) ToComputeNodeIdentityRefe
 
 func (o ComputeNodeIdentityReferenceResponsePtrOutput) ToComputeNodeIdentityReferenceResponsePtrOutputWithContext(ctx context.Context) ComputeNodeIdentityReferenceResponsePtrOutput {
 	return o
-}
-
-func (o ComputeNodeIdentityReferenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeNodeIdentityReferenceResponse] {
-	return pulumix.Output[*ComputeNodeIdentityReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ComputeNodeIdentityReferenceResponsePtrOutput) Elem() ComputeNodeIdentityReferenceResponseOutput {
@@ -891,12 +788,6 @@ func (i EncryptionPropertiesArgs) ToEncryptionPropertiesOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionPropertiesOutput)
 }
 
-func (i EncryptionPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[EncryptionProperties] {
-	return pulumix.Output[EncryptionProperties]{
-		OutputState: i.ToEncryptionPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EncryptionPropertiesArgs) ToEncryptionPropertiesPtrOutput() EncryptionPropertiesPtrOutput {
 	return i.ToEncryptionPropertiesPtrOutputWithContext(context.Background())
 }
@@ -938,12 +829,6 @@ func (i *encryptionPropertiesPtrType) ToEncryptionPropertiesPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionPropertiesPtrOutput)
 }
 
-func (i *encryptionPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*EncryptionProperties] {
-	return pulumix.Output[*EncryptionProperties]{
-		OutputState: i.ToEncryptionPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configures how customer data is encrypted inside the Batch account. By default, accounts are encrypted using a Microsoft managed key. For additional control, a customer-managed key can be used instead.
 type EncryptionPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -969,12 +854,6 @@ func (o EncryptionPropertiesOutput) ToEncryptionPropertiesPtrOutputWithContext(c
 	}).(EncryptionPropertiesPtrOutput)
 }
 
-func (o EncryptionPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionProperties] {
-	return pulumix.Output[EncryptionProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Type of the key source.
 func (o EncryptionPropertiesOutput) KeySource() KeySourcePtrOutput {
 	return o.ApplyT(func(v EncryptionProperties) *KeySource { return v.KeySource }).(KeySourcePtrOutput)
@@ -997,12 +876,6 @@ func (o EncryptionPropertiesPtrOutput) ToEncryptionPropertiesPtrOutput() Encrypt
 
 func (o EncryptionPropertiesPtrOutput) ToEncryptionPropertiesPtrOutputWithContext(ctx context.Context) EncryptionPropertiesPtrOutput {
 	return o
-}
-
-func (o EncryptionPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionProperties] {
-	return pulumix.Output[*EncryptionProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EncryptionPropertiesPtrOutput) Elem() EncryptionPropertiesOutput {
@@ -1058,12 +931,6 @@ func (o EncryptionPropertiesResponseOutput) ToEncryptionPropertiesResponseOutput
 	return o
 }
 
-func (o EncryptionPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionPropertiesResponse] {
-	return pulumix.Output[EncryptionPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Type of the key source.
 func (o EncryptionPropertiesResponseOutput) KeySource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EncryptionPropertiesResponse) *string { return v.KeySource }).(pulumi.StringPtrOutput)
@@ -1117,12 +984,6 @@ func (i KeyVaultPropertiesArgs) ToKeyVaultPropertiesOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultPropertiesOutput)
 }
 
-func (i KeyVaultPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[KeyVaultProperties] {
-	return pulumix.Output[KeyVaultProperties]{
-		OutputState: i.ToKeyVaultPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KeyVaultPropertiesArgs) ToKeyVaultPropertiesPtrOutput() KeyVaultPropertiesPtrOutput {
 	return i.ToKeyVaultPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1164,12 +1025,6 @@ func (i *keyVaultPropertiesPtrType) ToKeyVaultPropertiesPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultPropertiesPtrOutput)
 }
 
-func (i *keyVaultPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultProperties] {
-	return pulumix.Output[*KeyVaultProperties]{
-		OutputState: i.ToKeyVaultPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KeyVault configuration when using an encryption KeySource of Microsoft.KeyVault.
 type KeyVaultPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1195,12 +1050,6 @@ func (o KeyVaultPropertiesOutput) ToKeyVaultPropertiesPtrOutputWithContext(ctx c
 	}).(KeyVaultPropertiesPtrOutput)
 }
 
-func (o KeyVaultPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultProperties] {
-	return pulumix.Output[KeyVaultProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Full path to the versioned secret. Example https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053. To be usable the following prerequisites must be met:
 //
 //	The Batch Account has a System Assigned identity
@@ -1222,12 +1071,6 @@ func (o KeyVaultPropertiesPtrOutput) ToKeyVaultPropertiesPtrOutput() KeyVaultPro
 
 func (o KeyVaultPropertiesPtrOutput) ToKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) KeyVaultPropertiesPtrOutput {
 	return o
-}
-
-func (o KeyVaultPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultProperties] {
-	return pulumix.Output[*KeyVaultProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultPropertiesPtrOutput) Elem() KeyVaultPropertiesOutput {
@@ -1279,12 +1122,6 @@ func (o KeyVaultPropertiesResponseOutput) ToKeyVaultPropertiesResponseOutputWith
 	return o
 }
 
-func (o KeyVaultPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultPropertiesResponse] {
-	return pulumix.Output[KeyVaultPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Full path to the versioned secret. Example https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053. To be usable the following prerequisites must be met:
 //
 //	The Batch Account has a System Assigned identity
@@ -1306,12 +1143,6 @@ func (o KeyVaultPropertiesResponsePtrOutput) ToKeyVaultPropertiesResponsePtrOutp
 
 func (o KeyVaultPropertiesResponsePtrOutput) ToKeyVaultPropertiesResponsePtrOutputWithContext(ctx context.Context) KeyVaultPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o KeyVaultPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultPropertiesResponse] {
-	return pulumix.Output[*KeyVaultPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultPropertiesResponsePtrOutput) Elem() KeyVaultPropertiesResponseOutput {
@@ -1377,12 +1208,6 @@ func (i KeyVaultReferenceArgs) ToKeyVaultReferenceOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultReferenceOutput)
 }
 
-func (i KeyVaultReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[KeyVaultReference] {
-	return pulumix.Output[KeyVaultReference]{
-		OutputState: i.ToKeyVaultReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KeyVaultReferenceArgs) ToKeyVaultReferencePtrOutput() KeyVaultReferencePtrOutput {
 	return i.ToKeyVaultReferencePtrOutputWithContext(context.Background())
 }
@@ -1424,12 +1249,6 @@ func (i *keyVaultReferencePtrType) ToKeyVaultReferencePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultReferencePtrOutput)
 }
 
-func (i *keyVaultReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultReference] {
-	return pulumix.Output[*KeyVaultReference]{
-		OutputState: i.ToKeyVaultReferencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Identifies the Azure key vault associated with a Batch account.
 type KeyVaultReferenceOutput struct{ *pulumi.OutputState }
 
@@ -1455,12 +1274,6 @@ func (o KeyVaultReferenceOutput) ToKeyVaultReferencePtrOutputWithContext(ctx con
 	}).(KeyVaultReferencePtrOutput)
 }
 
-func (o KeyVaultReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultReference] {
-	return pulumix.Output[KeyVaultReference]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resource ID of the Azure key vault associated with the Batch account.
 func (o KeyVaultReferenceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultReference) string { return v.Id }).(pulumi.StringOutput)
@@ -1483,12 +1296,6 @@ func (o KeyVaultReferencePtrOutput) ToKeyVaultReferencePtrOutput() KeyVaultRefer
 
 func (o KeyVaultReferencePtrOutput) ToKeyVaultReferencePtrOutputWithContext(ctx context.Context) KeyVaultReferencePtrOutput {
 	return o
-}
-
-func (o KeyVaultReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultReference] {
-	return pulumix.Output[*KeyVaultReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultReferencePtrOutput) Elem() KeyVaultReferenceOutput {
@@ -1544,12 +1351,6 @@ func (o KeyVaultReferenceResponseOutput) ToKeyVaultReferenceResponseOutputWithCo
 	return o
 }
 
-func (o KeyVaultReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultReferenceResponse] {
-	return pulumix.Output[KeyVaultReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resource ID of the Azure key vault associated with the Batch account.
 func (o KeyVaultReferenceResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultReferenceResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -1590,12 +1391,6 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 
 func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseOutput {
 	return o
-}
-
-func (o PrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionResponse] {
-	return pulumix.Output[PrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ETag of the resource, used for concurrency statements.
@@ -1648,12 +1443,6 @@ func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectio
 	return o
 }
 
-func (o PrivateEndpointConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionResponse] {
-	return pulumix.Output[[]PrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
@@ -1680,12 +1469,6 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
-func (o PrivateEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointResponse] {
-	return pulumix.Output[PrivateEndpointResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1702,12 +1485,6 @@ func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() P
 
 func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
 	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointResponse] {
-	return pulumix.Output[*PrivateEndpointResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
@@ -1751,12 +1528,6 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 	return o
 }
 
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateResponse] {
-	return pulumix.Output[PrivateLinkServiceConnectionStateResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrivateLinkServiceConnectionStateResponseOutput) ActionRequired() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) string { return v.ActionRequired }).(pulumi.StringOutput)
 }
@@ -1781,12 +1552,6 @@ func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ToPrivateLinkService
 
 func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ToPrivateLinkServiceConnectionStateResponsePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponsePtrOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionStateResponse] {
-	return pulumix.Output[*PrivateLinkServiceConnectionStateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Elem() PrivateLinkServiceConnectionStateResponseOutput {
@@ -1849,12 +1614,6 @@ func (o UserAssignedIdentitiesResponseOutput) ToUserAssignedIdentitiesResponseOu
 	return o
 }
 
-func (o UserAssignedIdentitiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentitiesResponse] {
-	return pulumix.Output[UserAssignedIdentitiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The client id of user assigned identity.
 func (o UserAssignedIdentitiesResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentitiesResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -1877,12 +1636,6 @@ func (o UserAssignedIdentitiesResponseMapOutput) ToUserAssignedIdentitiesRespons
 
 func (o UserAssignedIdentitiesResponseMapOutput) ToUserAssignedIdentitiesResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentitiesResponseMapOutput {
 	return o
-}
-
-func (o UserAssignedIdentitiesResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentitiesResponse] {
-	return pulumix.Output[map[string]UserAssignedIdentitiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedIdentitiesResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentitiesResponseOutput {
@@ -1914,12 +1667,6 @@ func (o VirtualMachineFamilyCoreQuotaResponseOutput) ToVirtualMachineFamilyCoreQ
 	return o
 }
 
-func (o VirtualMachineFamilyCoreQuotaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualMachineFamilyCoreQuotaResponse] {
-	return pulumix.Output[VirtualMachineFamilyCoreQuotaResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The core quota for the VM family for the Batch account.
 func (o VirtualMachineFamilyCoreQuotaResponseOutput) CoreQuota() pulumi.IntOutput {
 	return o.ApplyT(func(v VirtualMachineFamilyCoreQuotaResponse) int { return v.CoreQuota }).(pulumi.IntOutput)
@@ -1942,12 +1689,6 @@ func (o VirtualMachineFamilyCoreQuotaResponseArrayOutput) ToVirtualMachineFamily
 
 func (o VirtualMachineFamilyCoreQuotaResponseArrayOutput) ToVirtualMachineFamilyCoreQuotaResponseArrayOutputWithContext(ctx context.Context) VirtualMachineFamilyCoreQuotaResponseArrayOutput {
 	return o
-}
-
-func (o VirtualMachineFamilyCoreQuotaResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualMachineFamilyCoreQuotaResponse] {
-	return pulumix.Output[[]VirtualMachineFamilyCoreQuotaResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualMachineFamilyCoreQuotaResponseArrayOutput) Index(i pulumi.IntInput) VirtualMachineFamilyCoreQuotaResponseOutput {

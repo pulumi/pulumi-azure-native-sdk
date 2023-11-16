@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get Default Security contact configurations for the subscription
@@ -84,12 +83,6 @@ func (o LookupSecurityContactResultOutput) ToLookupSecurityContactResultOutput()
 
 func (o LookupSecurityContactResultOutput) ToLookupSecurityContactResultOutputWithContext(ctx context.Context) LookupSecurityContactResultOutput {
 	return o
-}
-
-func (o LookupSecurityContactResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSecurityContactResult] {
-	return pulumix.Output[LookupSecurityContactResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines whether to send email notifications about new security alerts

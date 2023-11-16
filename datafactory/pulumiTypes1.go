@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -2665,12 +2664,6 @@ func (i LinkedServiceReferenceArgs) ToLinkedServiceReferenceOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceReferenceOutput)
 }
 
-func (i LinkedServiceReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[LinkedServiceReference] {
-	return pulumix.Output[LinkedServiceReference]{
-		OutputState: i.ToLinkedServiceReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i LinkedServiceReferenceArgs) ToLinkedServiceReferencePtrOutput() LinkedServiceReferencePtrOutput {
 	return i.ToLinkedServiceReferencePtrOutputWithContext(context.Background())
 }
@@ -2712,12 +2705,6 @@ func (i *linkedServiceReferencePtrType) ToLinkedServiceReferencePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedServiceReferencePtrOutput)
 }
 
-func (i *linkedServiceReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*LinkedServiceReference] {
-	return pulumix.Output[*LinkedServiceReference]{
-		OutputState: i.ToLinkedServiceReferencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Linked service reference type.
 type LinkedServiceReferenceOutput struct{ *pulumi.OutputState }
 
@@ -2741,12 +2728,6 @@ func (o LinkedServiceReferenceOutput) ToLinkedServiceReferencePtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v LinkedServiceReference) *LinkedServiceReference {
 		return &v
 	}).(LinkedServiceReferencePtrOutput)
-}
-
-func (o LinkedServiceReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[LinkedServiceReference] {
-	return pulumix.Output[LinkedServiceReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Arguments for LinkedService.
@@ -2776,12 +2757,6 @@ func (o LinkedServiceReferencePtrOutput) ToLinkedServiceReferencePtrOutput() Lin
 
 func (o LinkedServiceReferencePtrOutput) ToLinkedServiceReferencePtrOutputWithContext(ctx context.Context) LinkedServiceReferencePtrOutput {
 	return o
-}
-
-func (o LinkedServiceReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LinkedServiceReference] {
-	return pulumix.Output[*LinkedServiceReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LinkedServiceReferencePtrOutput) Elem() LinkedServiceReferenceOutput {
@@ -2849,12 +2824,6 @@ func (o LinkedServiceReferenceResponseOutput) ToLinkedServiceReferenceResponseOu
 	return o
 }
 
-func (o LinkedServiceReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LinkedServiceReferenceResponse] {
-	return pulumix.Output[LinkedServiceReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Arguments for LinkedService.
 func (o LinkedServiceReferenceResponseOutput) Parameters() pulumi.MapOutput {
 	return o.ApplyT(func(v LinkedServiceReferenceResponse) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
@@ -2882,12 +2851,6 @@ func (o LinkedServiceReferenceResponsePtrOutput) ToLinkedServiceReferenceRespons
 
 func (o LinkedServiceReferenceResponsePtrOutput) ToLinkedServiceReferenceResponsePtrOutputWithContext(ctx context.Context) LinkedServiceReferenceResponsePtrOutput {
 	return o
-}
-
-func (o LinkedServiceReferenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LinkedServiceReferenceResponse] {
-	return pulumix.Output[*LinkedServiceReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LinkedServiceReferenceResponsePtrOutput) Elem() LinkedServiceReferenceResponseOutput {
@@ -3239,12 +3202,6 @@ func (i ManagedIdentityCredentialArgs) ToManagedIdentityCredentialOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedIdentityCredentialOutput)
 }
 
-func (i ManagedIdentityCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedIdentityCredential] {
-	return pulumix.Output[ManagedIdentityCredential]{
-		OutputState: i.ToManagedIdentityCredentialOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Managed identity credential.
 type ManagedIdentityCredentialOutput struct{ *pulumi.OutputState }
 
@@ -3258,12 +3215,6 @@ func (o ManagedIdentityCredentialOutput) ToManagedIdentityCredentialOutput() Man
 
 func (o ManagedIdentityCredentialOutput) ToManagedIdentityCredentialOutputWithContext(ctx context.Context) ManagedIdentityCredentialOutput {
 	return o
-}
-
-func (o ManagedIdentityCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedIdentityCredential] {
-	return pulumix.Output[ManagedIdentityCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of tags that can be used for describing the Credential.
@@ -3313,12 +3264,6 @@ func (o ManagedIdentityCredentialResponseOutput) ToManagedIdentityCredentialResp
 
 func (o ManagedIdentityCredentialResponseOutput) ToManagedIdentityCredentialResponseOutputWithContext(ctx context.Context) ManagedIdentityCredentialResponseOutput {
 	return o
-}
-
-func (o ManagedIdentityCredentialResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedIdentityCredentialResponse] {
-	return pulumix.Output[ManagedIdentityCredentialResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of tags that can be used for describing the Credential.
@@ -3478,12 +3423,6 @@ func (i ManagedPrivateEndpointTypeArgs) ToManagedPrivateEndpointTypeOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedPrivateEndpointTypeOutput)
 }
 
-func (i ManagedPrivateEndpointTypeArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedPrivateEndpointType] {
-	return pulumix.Output[ManagedPrivateEndpointType]{
-		OutputState: i.ToManagedPrivateEndpointTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Properties of a managed private endpoint
 type ManagedPrivateEndpointTypeOutput struct{ *pulumi.OutputState }
 
@@ -3497,12 +3436,6 @@ func (o ManagedPrivateEndpointTypeOutput) ToManagedPrivateEndpointTypeOutput() M
 
 func (o ManagedPrivateEndpointTypeOutput) ToManagedPrivateEndpointTypeOutputWithContext(ctx context.Context) ManagedPrivateEndpointTypeOutput {
 	return o
-}
-
-func (o ManagedPrivateEndpointTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedPrivateEndpointType] {
-	return pulumix.Output[ManagedPrivateEndpointType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified domain names
@@ -3549,12 +3482,6 @@ func (o ManagedPrivateEndpointResponseOutput) ToManagedPrivateEndpointResponseOu
 
 func (o ManagedPrivateEndpointResponseOutput) ToManagedPrivateEndpointResponseOutputWithContext(ctx context.Context) ManagedPrivateEndpointResponseOutput {
 	return o
-}
-
-func (o ManagedPrivateEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedPrivateEndpointResponse] {
-	return pulumix.Output[ManagedPrivateEndpointResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The managed private endpoint connection state
@@ -3658,12 +3585,6 @@ func (i MapperAttributeMappingArgs) ToMapperAttributeMappingOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(MapperAttributeMappingOutput)
 }
 
-func (i MapperAttributeMappingArgs) ToOutput(ctx context.Context) pulumix.Output[MapperAttributeMapping] {
-	return pulumix.Output[MapperAttributeMapping]{
-		OutputState: i.ToMapperAttributeMappingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MapperAttributeMappingArrayInput is an input type that accepts MapperAttributeMappingArray and MapperAttributeMappingArrayOutput values.
 // You can construct a concrete instance of `MapperAttributeMappingArrayInput` via:
 //
@@ -3689,12 +3610,6 @@ func (i MapperAttributeMappingArray) ToMapperAttributeMappingArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(MapperAttributeMappingArrayOutput)
 }
 
-func (i MapperAttributeMappingArray) ToOutput(ctx context.Context) pulumix.Output[[]MapperAttributeMapping] {
-	return pulumix.Output[[]MapperAttributeMapping]{
-		OutputState: i.ToMapperAttributeMappingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Source and target column mapping details.
 type MapperAttributeMappingOutput struct{ *pulumi.OutputState }
 
@@ -3708,12 +3623,6 @@ func (o MapperAttributeMappingOutput) ToMapperAttributeMappingOutput() MapperAtt
 
 func (o MapperAttributeMappingOutput) ToMapperAttributeMappingOutputWithContext(ctx context.Context) MapperAttributeMappingOutput {
 	return o
-}
-
-func (o MapperAttributeMappingOutput) ToOutput(ctx context.Context) pulumix.Output[MapperAttributeMapping] {
-	return pulumix.Output[MapperAttributeMapping]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Reference of the source column used in the mapping. It is used for 'Direct' mapping type only.
@@ -3760,12 +3669,6 @@ func (o MapperAttributeMappingArrayOutput) ToMapperAttributeMappingArrayOutputWi
 	return o
 }
 
-func (o MapperAttributeMappingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MapperAttributeMapping] {
-	return pulumix.Output[[]MapperAttributeMapping]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MapperAttributeMappingArrayOutput) Index(i pulumi.IntInput) MapperAttributeMappingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MapperAttributeMapping {
 		return vs[0].([]MapperAttributeMapping)[vs[1].(int)]
@@ -3801,12 +3704,6 @@ func (o MapperAttributeMappingResponseOutput) ToMapperAttributeMappingResponseOu
 
 func (o MapperAttributeMappingResponseOutput) ToMapperAttributeMappingResponseOutputWithContext(ctx context.Context) MapperAttributeMappingResponseOutput {
 	return o
-}
-
-func (o MapperAttributeMappingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MapperAttributeMappingResponse] {
-	return pulumix.Output[MapperAttributeMappingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Reference of the source column used in the mapping. It is used for 'Direct' mapping type only.
@@ -3855,12 +3752,6 @@ func (o MapperAttributeMappingResponseArrayOutput) ToMapperAttributeMappingRespo
 	return o
 }
 
-func (o MapperAttributeMappingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MapperAttributeMappingResponse] {
-	return pulumix.Output[[]MapperAttributeMappingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MapperAttributeMappingResponseArrayOutput) Index(i pulumi.IntInput) MapperAttributeMappingResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MapperAttributeMappingResponse {
 		return vs[0].([]MapperAttributeMappingResponse)[vs[1].(int)]
@@ -3900,12 +3791,6 @@ func (i MapperAttributeMappingsArgs) ToMapperAttributeMappingsOutput() MapperAtt
 
 func (i MapperAttributeMappingsArgs) ToMapperAttributeMappingsOutputWithContext(ctx context.Context) MapperAttributeMappingsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MapperAttributeMappingsOutput)
-}
-
-func (i MapperAttributeMappingsArgs) ToOutput(ctx context.Context) pulumix.Output[MapperAttributeMappings] {
-	return pulumix.Output[MapperAttributeMappings]{
-		OutputState: i.ToMapperAttributeMappingsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i MapperAttributeMappingsArgs) ToMapperAttributeMappingsPtrOutput() MapperAttributeMappingsPtrOutput {
@@ -3949,12 +3834,6 @@ func (i *mapperAttributeMappingsPtrType) ToMapperAttributeMappingsPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(MapperAttributeMappingsPtrOutput)
 }
 
-func (i *mapperAttributeMappingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*MapperAttributeMappings] {
-	return pulumix.Output[*MapperAttributeMappings]{
-		OutputState: i.ToMapperAttributeMappingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Attribute mapping details.
 type MapperAttributeMappingsOutput struct{ *pulumi.OutputState }
 
@@ -3980,12 +3859,6 @@ func (o MapperAttributeMappingsOutput) ToMapperAttributeMappingsPtrOutputWithCon
 	}).(MapperAttributeMappingsPtrOutput)
 }
 
-func (o MapperAttributeMappingsOutput) ToOutput(ctx context.Context) pulumix.Output[MapperAttributeMappings] {
-	return pulumix.Output[MapperAttributeMappings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of attribute mappings.
 func (o MapperAttributeMappingsOutput) AttributeMappings() MapperAttributeMappingArrayOutput {
 	return o.ApplyT(func(v MapperAttributeMappings) []MapperAttributeMapping { return v.AttributeMappings }).(MapperAttributeMappingArrayOutput)
@@ -4003,12 +3876,6 @@ func (o MapperAttributeMappingsPtrOutput) ToMapperAttributeMappingsPtrOutput() M
 
 func (o MapperAttributeMappingsPtrOutput) ToMapperAttributeMappingsPtrOutputWithContext(ctx context.Context) MapperAttributeMappingsPtrOutput {
 	return o
-}
-
-func (o MapperAttributeMappingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MapperAttributeMappings] {
-	return pulumix.Output[*MapperAttributeMappings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MapperAttributeMappingsPtrOutput) Elem() MapperAttributeMappingsOutput {
@@ -4052,12 +3919,6 @@ func (o MapperAttributeMappingsResponseOutput) ToMapperAttributeMappingsResponse
 	return o
 }
 
-func (o MapperAttributeMappingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MapperAttributeMappingsResponse] {
-	return pulumix.Output[MapperAttributeMappingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of attribute mappings.
 func (o MapperAttributeMappingsResponseOutput) AttributeMappings() MapperAttributeMappingResponseArrayOutput {
 	return o.ApplyT(func(v MapperAttributeMappingsResponse) []MapperAttributeMappingResponse { return v.AttributeMappings }).(MapperAttributeMappingResponseArrayOutput)
@@ -4075,12 +3936,6 @@ func (o MapperAttributeMappingsResponsePtrOutput) ToMapperAttributeMappingsRespo
 
 func (o MapperAttributeMappingsResponsePtrOutput) ToMapperAttributeMappingsResponsePtrOutputWithContext(ctx context.Context) MapperAttributeMappingsResponsePtrOutput {
 	return o
-}
-
-func (o MapperAttributeMappingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MapperAttributeMappingsResponse] {
-	return pulumix.Output[*MapperAttributeMappingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MapperAttributeMappingsResponsePtrOutput) Elem() MapperAttributeMappingsResponseOutput {
@@ -4146,12 +4001,6 @@ func (i MapperAttributeReferenceArgs) ToMapperAttributeReferenceOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(MapperAttributeReferenceOutput)
 }
 
-func (i MapperAttributeReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[MapperAttributeReference] {
-	return pulumix.Output[MapperAttributeReference]{
-		OutputState: i.ToMapperAttributeReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MapperAttributeReferenceArgs) ToMapperAttributeReferencePtrOutput() MapperAttributeReferencePtrOutput {
 	return i.ToMapperAttributeReferencePtrOutputWithContext(context.Background())
 }
@@ -4193,12 +4042,6 @@ func (i *mapperAttributeReferencePtrType) ToMapperAttributeReferencePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(MapperAttributeReferencePtrOutput)
 }
 
-func (i *mapperAttributeReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*MapperAttributeReference] {
-	return pulumix.Output[*MapperAttributeReference]{
-		OutputState: i.ToMapperAttributeReferencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MapperAttributeReferenceArrayInput is an input type that accepts MapperAttributeReferenceArray and MapperAttributeReferenceArrayOutput values.
 // You can construct a concrete instance of `MapperAttributeReferenceArrayInput` via:
 //
@@ -4224,12 +4067,6 @@ func (i MapperAttributeReferenceArray) ToMapperAttributeReferenceArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(MapperAttributeReferenceArrayOutput)
 }
 
-func (i MapperAttributeReferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]MapperAttributeReference] {
-	return pulumix.Output[[]MapperAttributeReference]{
-		OutputState: i.ToMapperAttributeReferenceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Attribute reference details for the referred column.
 type MapperAttributeReferenceOutput struct{ *pulumi.OutputState }
 
@@ -4253,12 +4090,6 @@ func (o MapperAttributeReferenceOutput) ToMapperAttributeReferencePtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MapperAttributeReference) *MapperAttributeReference {
 		return &v
 	}).(MapperAttributeReferencePtrOutput)
-}
-
-func (o MapperAttributeReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[MapperAttributeReference] {
-	return pulumix.Output[MapperAttributeReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the table.
@@ -4288,12 +4119,6 @@ func (o MapperAttributeReferencePtrOutput) ToMapperAttributeReferencePtrOutput()
 
 func (o MapperAttributeReferencePtrOutput) ToMapperAttributeReferencePtrOutputWithContext(ctx context.Context) MapperAttributeReferencePtrOutput {
 	return o
-}
-
-func (o MapperAttributeReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MapperAttributeReference] {
-	return pulumix.Output[*MapperAttributeReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MapperAttributeReferencePtrOutput) Elem() MapperAttributeReferenceOutput {
@@ -4350,12 +4175,6 @@ func (o MapperAttributeReferenceArrayOutput) ToMapperAttributeReferenceArrayOutp
 	return o
 }
 
-func (o MapperAttributeReferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MapperAttributeReference] {
-	return pulumix.Output[[]MapperAttributeReference]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MapperAttributeReferenceArrayOutput) Index(i pulumi.IntInput) MapperAttributeReferenceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MapperAttributeReference {
 		return vs[0].([]MapperAttributeReference)[vs[1].(int)]
@@ -4387,12 +4206,6 @@ func (o MapperAttributeReferenceResponseOutput) ToMapperAttributeReferenceRespon
 	return o
 }
 
-func (o MapperAttributeReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MapperAttributeReferenceResponse] {
-	return pulumix.Output[MapperAttributeReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the table.
 func (o MapperAttributeReferenceResponseOutput) Entity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MapperAttributeReferenceResponse) *string { return v.Entity }).(pulumi.StringPtrOutput)
@@ -4422,12 +4235,6 @@ func (o MapperAttributeReferenceResponsePtrOutput) ToMapperAttributeReferenceRes
 
 func (o MapperAttributeReferenceResponsePtrOutput) ToMapperAttributeReferenceResponsePtrOutputWithContext(ctx context.Context) MapperAttributeReferenceResponsePtrOutput {
 	return o
-}
-
-func (o MapperAttributeReferenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MapperAttributeReferenceResponse] {
-	return pulumix.Output[*MapperAttributeReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MapperAttributeReferenceResponsePtrOutput) Elem() MapperAttributeReferenceResponseOutput {
@@ -4482,12 +4289,6 @@ func (o MapperAttributeReferenceResponseArrayOutput) ToMapperAttributeReferenceR
 
 func (o MapperAttributeReferenceResponseArrayOutput) ToMapperAttributeReferenceResponseArrayOutputWithContext(ctx context.Context) MapperAttributeReferenceResponseArrayOutput {
 	return o
-}
-
-func (o MapperAttributeReferenceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MapperAttributeReferenceResponse] {
-	return pulumix.Output[[]MapperAttributeReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MapperAttributeReferenceResponseArrayOutput) Index(i pulumi.IntInput) MapperAttributeReferenceResponseOutput {
@@ -4547,12 +4348,6 @@ func (i MapperConnectionArgs) ToMapperConnectionOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(MapperConnectionOutput)
 }
 
-func (i MapperConnectionArgs) ToOutput(ctx context.Context) pulumix.Output[MapperConnection] {
-	return pulumix.Output[MapperConnection]{
-		OutputState: i.ToMapperConnectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MapperConnectionArgs) ToMapperConnectionPtrOutput() MapperConnectionPtrOutput {
 	return i.ToMapperConnectionPtrOutputWithContext(context.Background())
 }
@@ -4594,12 +4389,6 @@ func (i *mapperConnectionPtrType) ToMapperConnectionPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(MapperConnectionPtrOutput)
 }
 
-func (i *mapperConnectionPtrType) ToOutput(ctx context.Context) pulumix.Output[*MapperConnection] {
-	return pulumix.Output[*MapperConnection]{
-		OutputState: i.ToMapperConnectionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Source connection details.
 type MapperConnectionOutput struct{ *pulumi.OutputState }
 
@@ -4623,12 +4412,6 @@ func (o MapperConnectionOutput) ToMapperConnectionPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MapperConnection) *MapperConnection {
 		return &v
 	}).(MapperConnectionPtrOutput)
-}
-
-func (o MapperConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[MapperConnection] {
-	return pulumix.Output[MapperConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of name/value pairs for connection properties.
@@ -4668,12 +4451,6 @@ func (o MapperConnectionPtrOutput) ToMapperConnectionPtrOutput() MapperConnectio
 
 func (o MapperConnectionPtrOutput) ToMapperConnectionPtrOutputWithContext(ctx context.Context) MapperConnectionPtrOutput {
 	return o
-}
-
-func (o MapperConnectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MapperConnection] {
-	return pulumix.Output[*MapperConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MapperConnectionPtrOutput) Elem() MapperConnectionOutput {
@@ -4775,12 +4552,6 @@ func (i MapperConnectionReferenceArgs) ToMapperConnectionReferenceOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(MapperConnectionReferenceOutput)
 }
 
-func (i MapperConnectionReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[MapperConnectionReference] {
-	return pulumix.Output[MapperConnectionReference]{
-		OutputState: i.ToMapperConnectionReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MapperConnectionReferenceArgs) ToMapperConnectionReferencePtrOutput() MapperConnectionReferencePtrOutput {
 	return i.ToMapperConnectionReferencePtrOutputWithContext(context.Background())
 }
@@ -4822,12 +4593,6 @@ func (i *mapperConnectionReferencePtrType) ToMapperConnectionReferencePtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(MapperConnectionReferencePtrOutput)
 }
 
-func (i *mapperConnectionReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*MapperConnectionReference] {
-	return pulumix.Output[*MapperConnectionReference]{
-		OutputState: i.ToMapperConnectionReferencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Source or target connection reference details.
 type MapperConnectionReferenceOutput struct{ *pulumi.OutputState }
 
@@ -4853,12 +4618,6 @@ func (o MapperConnectionReferenceOutput) ToMapperConnectionReferencePtrOutputWit
 	}).(MapperConnectionReferencePtrOutput)
 }
 
-func (o MapperConnectionReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[MapperConnectionReference] {
-	return pulumix.Output[MapperConnectionReference]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the connection
 func (o MapperConnectionReferenceOutput) ConnectionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MapperConnectionReference) *string { return v.ConnectionName }).(pulumi.StringPtrOutput)
@@ -4881,12 +4640,6 @@ func (o MapperConnectionReferencePtrOutput) ToMapperConnectionReferencePtrOutput
 
 func (o MapperConnectionReferencePtrOutput) ToMapperConnectionReferencePtrOutputWithContext(ctx context.Context) MapperConnectionReferencePtrOutput {
 	return o
-}
-
-func (o MapperConnectionReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MapperConnectionReference] {
-	return pulumix.Output[*MapperConnectionReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MapperConnectionReferencePtrOutput) Elem() MapperConnectionReferenceOutput {
@@ -4942,12 +4695,6 @@ func (o MapperConnectionReferenceResponseOutput) ToMapperConnectionReferenceResp
 	return o
 }
 
-func (o MapperConnectionReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MapperConnectionReferenceResponse] {
-	return pulumix.Output[MapperConnectionReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the connection
 func (o MapperConnectionReferenceResponseOutput) ConnectionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MapperConnectionReferenceResponse) *string { return v.ConnectionName }).(pulumi.StringPtrOutput)
@@ -4970,12 +4717,6 @@ func (o MapperConnectionReferenceResponsePtrOutput) ToMapperConnectionReferenceR
 
 func (o MapperConnectionReferenceResponsePtrOutput) ToMapperConnectionReferenceResponsePtrOutputWithContext(ctx context.Context) MapperConnectionReferenceResponsePtrOutput {
 	return o
-}
-
-func (o MapperConnectionReferenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MapperConnectionReferenceResponse] {
-	return pulumix.Output[*MapperConnectionReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MapperConnectionReferenceResponsePtrOutput) Elem() MapperConnectionReferenceResponseOutput {
@@ -5037,12 +4778,6 @@ func (o MapperConnectionResponseOutput) ToMapperConnectionResponseOutputWithCont
 	return o
 }
 
-func (o MapperConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MapperConnectionResponse] {
-	return pulumix.Output[MapperConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of name/value pairs for connection properties.
 func (o MapperConnectionResponseOutput) CommonDslConnectorProperties() MapperDslConnectorPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v MapperConnectionResponse) []MapperDslConnectorPropertiesResponse {
@@ -5082,12 +4817,6 @@ func (o MapperConnectionResponsePtrOutput) ToMapperConnectionResponsePtrOutput()
 
 func (o MapperConnectionResponsePtrOutput) ToMapperConnectionResponsePtrOutputWithContext(ctx context.Context) MapperConnectionResponsePtrOutput {
 	return o
-}
-
-func (o MapperConnectionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MapperConnectionResponse] {
-	return pulumix.Output[*MapperConnectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MapperConnectionResponsePtrOutput) Elem() MapperConnectionResponseOutput {
@@ -5189,12 +4918,6 @@ func (i MapperDslConnectorPropertiesArgs) ToMapperDslConnectorPropertiesOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(MapperDslConnectorPropertiesOutput)
 }
 
-func (i MapperDslConnectorPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[MapperDslConnectorProperties] {
-	return pulumix.Output[MapperDslConnectorProperties]{
-		OutputState: i.ToMapperDslConnectorPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MapperDslConnectorPropertiesArrayInput is an input type that accepts MapperDslConnectorPropertiesArray and MapperDslConnectorPropertiesArrayOutput values.
 // You can construct a concrete instance of `MapperDslConnectorPropertiesArrayInput` via:
 //
@@ -5220,12 +4943,6 @@ func (i MapperDslConnectorPropertiesArray) ToMapperDslConnectorPropertiesArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(MapperDslConnectorPropertiesArrayOutput)
 }
 
-func (i MapperDslConnectorPropertiesArray) ToOutput(ctx context.Context) pulumix.Output[[]MapperDslConnectorProperties] {
-	return pulumix.Output[[]MapperDslConnectorProperties]{
-		OutputState: i.ToMapperDslConnectorPropertiesArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Connector properties of a CDC table in terms of name / value pairs.
 type MapperDslConnectorPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -5239,12 +4956,6 @@ func (o MapperDslConnectorPropertiesOutput) ToMapperDslConnectorPropertiesOutput
 
 func (o MapperDslConnectorPropertiesOutput) ToMapperDslConnectorPropertiesOutputWithContext(ctx context.Context) MapperDslConnectorPropertiesOutput {
 	return o
-}
-
-func (o MapperDslConnectorPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[MapperDslConnectorProperties] {
-	return pulumix.Output[MapperDslConnectorProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the property.
@@ -5269,12 +4980,6 @@ func (o MapperDslConnectorPropertiesArrayOutput) ToMapperDslConnectorPropertiesA
 
 func (o MapperDslConnectorPropertiesArrayOutput) ToMapperDslConnectorPropertiesArrayOutputWithContext(ctx context.Context) MapperDslConnectorPropertiesArrayOutput {
 	return o
-}
-
-func (o MapperDslConnectorPropertiesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MapperDslConnectorProperties] {
-	return pulumix.Output[[]MapperDslConnectorProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MapperDslConnectorPropertiesArrayOutput) Index(i pulumi.IntInput) MapperDslConnectorPropertiesOutput {
@@ -5306,12 +5011,6 @@ func (o MapperDslConnectorPropertiesResponseOutput) ToMapperDslConnectorProperti
 	return o
 }
 
-func (o MapperDslConnectorPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MapperDslConnectorPropertiesResponse] {
-	return pulumix.Output[MapperDslConnectorPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the property.
 func (o MapperDslConnectorPropertiesResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MapperDslConnectorPropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -5334,12 +5033,6 @@ func (o MapperDslConnectorPropertiesResponseArrayOutput) ToMapperDslConnectorPro
 
 func (o MapperDslConnectorPropertiesResponseArrayOutput) ToMapperDslConnectorPropertiesResponseArrayOutputWithContext(ctx context.Context) MapperDslConnectorPropertiesResponseArrayOutput {
 	return o
-}
-
-func (o MapperDslConnectorPropertiesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MapperDslConnectorPropertiesResponse] {
-	return pulumix.Output[[]MapperDslConnectorPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MapperDslConnectorPropertiesResponseArrayOutput) Index(i pulumi.IntInput) MapperDslConnectorPropertiesResponseOutput {
@@ -5387,12 +5080,6 @@ func (i MapperPolicyArgs) ToMapperPolicyOutputWithContext(ctx context.Context) M
 	return pulumi.ToOutputWithContext(ctx, i).(MapperPolicyOutput)
 }
 
-func (i MapperPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[MapperPolicy] {
-	return pulumix.Output[MapperPolicy]{
-		OutputState: i.ToMapperPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CDC Policy.
 type MapperPolicyOutput struct{ *pulumi.OutputState }
 
@@ -5406,12 +5093,6 @@ func (o MapperPolicyOutput) ToMapperPolicyOutput() MapperPolicyOutput {
 
 func (o MapperPolicyOutput) ToMapperPolicyOutputWithContext(ctx context.Context) MapperPolicyOutput {
 	return o
-}
-
-func (o MapperPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[MapperPolicy] {
-	return pulumix.Output[MapperPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Mode of running the CDC: batch vs continuous.
@@ -5463,12 +5144,6 @@ func (i MapperPolicyRecurrenceArgs) ToMapperPolicyRecurrenceOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(MapperPolicyRecurrenceOutput)
 }
 
-func (i MapperPolicyRecurrenceArgs) ToOutput(ctx context.Context) pulumix.Output[MapperPolicyRecurrence] {
-	return pulumix.Output[MapperPolicyRecurrence]{
-		OutputState: i.ToMapperPolicyRecurrenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MapperPolicyRecurrenceArgs) ToMapperPolicyRecurrencePtrOutput() MapperPolicyRecurrencePtrOutput {
 	return i.ToMapperPolicyRecurrencePtrOutputWithContext(context.Background())
 }
@@ -5510,12 +5185,6 @@ func (i *mapperPolicyRecurrencePtrType) ToMapperPolicyRecurrencePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(MapperPolicyRecurrencePtrOutput)
 }
 
-func (i *mapperPolicyRecurrencePtrType) ToOutput(ctx context.Context) pulumix.Output[*MapperPolicyRecurrence] {
-	return pulumix.Output[*MapperPolicyRecurrence]{
-		OutputState: i.ToMapperPolicyRecurrencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CDC policy recurrence details.
 type MapperPolicyRecurrenceOutput struct{ *pulumi.OutputState }
 
@@ -5541,12 +5210,6 @@ func (o MapperPolicyRecurrenceOutput) ToMapperPolicyRecurrencePtrOutputWithConte
 	}).(MapperPolicyRecurrencePtrOutput)
 }
 
-func (o MapperPolicyRecurrenceOutput) ToOutput(ctx context.Context) pulumix.Output[MapperPolicyRecurrence] {
-	return pulumix.Output[MapperPolicyRecurrence]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Frequency of period in terms of 'Hour', 'Minute' or 'Second'.
 func (o MapperPolicyRecurrenceOutput) Frequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MapperPolicyRecurrence) *string { return v.Frequency }).(pulumi.StringPtrOutput)
@@ -5569,12 +5232,6 @@ func (o MapperPolicyRecurrencePtrOutput) ToMapperPolicyRecurrencePtrOutput() Map
 
 func (o MapperPolicyRecurrencePtrOutput) ToMapperPolicyRecurrencePtrOutputWithContext(ctx context.Context) MapperPolicyRecurrencePtrOutput {
 	return o
-}
-
-func (o MapperPolicyRecurrencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MapperPolicyRecurrence] {
-	return pulumix.Output[*MapperPolicyRecurrence]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MapperPolicyRecurrencePtrOutput) Elem() MapperPolicyRecurrenceOutput {
@@ -5630,12 +5287,6 @@ func (o MapperPolicyRecurrenceResponseOutput) ToMapperPolicyRecurrenceResponseOu
 	return o
 }
 
-func (o MapperPolicyRecurrenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MapperPolicyRecurrenceResponse] {
-	return pulumix.Output[MapperPolicyRecurrenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Frequency of period in terms of 'Hour', 'Minute' or 'Second'.
 func (o MapperPolicyRecurrenceResponseOutput) Frequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MapperPolicyRecurrenceResponse) *string { return v.Frequency }).(pulumi.StringPtrOutput)
@@ -5658,12 +5309,6 @@ func (o MapperPolicyRecurrenceResponsePtrOutput) ToMapperPolicyRecurrenceRespons
 
 func (o MapperPolicyRecurrenceResponsePtrOutput) ToMapperPolicyRecurrenceResponsePtrOutputWithContext(ctx context.Context) MapperPolicyRecurrenceResponsePtrOutput {
 	return o
-}
-
-func (o MapperPolicyRecurrenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MapperPolicyRecurrenceResponse] {
-	return pulumix.Output[*MapperPolicyRecurrenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MapperPolicyRecurrenceResponsePtrOutput) Elem() MapperPolicyRecurrenceResponseOutput {
@@ -5719,12 +5364,6 @@ func (o MapperPolicyResponseOutput) ToMapperPolicyResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o MapperPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MapperPolicyResponse] {
-	return pulumix.Output[MapperPolicyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Mode of running the CDC: batch vs continuous.
 func (o MapperPolicyResponseOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MapperPolicyResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
@@ -5774,12 +5413,6 @@ func (i MapperSourceConnectionsInfoArgs) ToMapperSourceConnectionsInfoOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(MapperSourceConnectionsInfoOutput)
 }
 
-func (i MapperSourceConnectionsInfoArgs) ToOutput(ctx context.Context) pulumix.Output[MapperSourceConnectionsInfo] {
-	return pulumix.Output[MapperSourceConnectionsInfo]{
-		OutputState: i.ToMapperSourceConnectionsInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MapperSourceConnectionsInfoArrayInput is an input type that accepts MapperSourceConnectionsInfoArray and MapperSourceConnectionsInfoArrayOutput values.
 // You can construct a concrete instance of `MapperSourceConnectionsInfoArrayInput` via:
 //
@@ -5805,12 +5438,6 @@ func (i MapperSourceConnectionsInfoArray) ToMapperSourceConnectionsInfoArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(MapperSourceConnectionsInfoArrayOutput)
 }
 
-func (i MapperSourceConnectionsInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]MapperSourceConnectionsInfo] {
-	return pulumix.Output[[]MapperSourceConnectionsInfo]{
-		OutputState: i.ToMapperSourceConnectionsInfoArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A object which contains list of tables and connection details for a source connection.
 type MapperSourceConnectionsInfoOutput struct{ *pulumi.OutputState }
 
@@ -5824,12 +5451,6 @@ func (o MapperSourceConnectionsInfoOutput) ToMapperSourceConnectionsInfoOutput()
 
 func (o MapperSourceConnectionsInfoOutput) ToMapperSourceConnectionsInfoOutputWithContext(ctx context.Context) MapperSourceConnectionsInfoOutput {
 	return o
-}
-
-func (o MapperSourceConnectionsInfoOutput) ToOutput(ctx context.Context) pulumix.Output[MapperSourceConnectionsInfo] {
-	return pulumix.Output[MapperSourceConnectionsInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Source connection details.
@@ -5854,12 +5475,6 @@ func (o MapperSourceConnectionsInfoArrayOutput) ToMapperSourceConnectionsInfoArr
 
 func (o MapperSourceConnectionsInfoArrayOutput) ToMapperSourceConnectionsInfoArrayOutputWithContext(ctx context.Context) MapperSourceConnectionsInfoArrayOutput {
 	return o
-}
-
-func (o MapperSourceConnectionsInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MapperSourceConnectionsInfo] {
-	return pulumix.Output[[]MapperSourceConnectionsInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MapperSourceConnectionsInfoArrayOutput) Index(i pulumi.IntInput) MapperSourceConnectionsInfoOutput {
@@ -5891,12 +5506,6 @@ func (o MapperSourceConnectionsInfoResponseOutput) ToMapperSourceConnectionsInfo
 	return o
 }
 
-func (o MapperSourceConnectionsInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MapperSourceConnectionsInfoResponse] {
-	return pulumix.Output[MapperSourceConnectionsInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Source connection details.
 func (o MapperSourceConnectionsInfoResponseOutput) Connection() MapperConnectionResponsePtrOutput {
 	return o.ApplyT(func(v MapperSourceConnectionsInfoResponse) *MapperConnectionResponse { return v.Connection }).(MapperConnectionResponsePtrOutput)
@@ -5919,12 +5528,6 @@ func (o MapperSourceConnectionsInfoResponseArrayOutput) ToMapperSourceConnection
 
 func (o MapperSourceConnectionsInfoResponseArrayOutput) ToMapperSourceConnectionsInfoResponseArrayOutputWithContext(ctx context.Context) MapperSourceConnectionsInfoResponseArrayOutput {
 	return o
-}
-
-func (o MapperSourceConnectionsInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MapperSourceConnectionsInfoResponse] {
-	return pulumix.Output[[]MapperSourceConnectionsInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MapperSourceConnectionsInfoResponseArrayOutput) Index(i pulumi.IntInput) MapperSourceConnectionsInfoResponseOutput {
@@ -5976,12 +5579,6 @@ func (i MapperTableArgs) ToMapperTableOutputWithContext(ctx context.Context) Map
 	return pulumi.ToOutputWithContext(ctx, i).(MapperTableOutput)
 }
 
-func (i MapperTableArgs) ToOutput(ctx context.Context) pulumix.Output[MapperTable] {
-	return pulumix.Output[MapperTable]{
-		OutputState: i.ToMapperTableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MapperTableArrayInput is an input type that accepts MapperTableArray and MapperTableArrayOutput values.
 // You can construct a concrete instance of `MapperTableArrayInput` via:
 //
@@ -6007,12 +5604,6 @@ func (i MapperTableArray) ToMapperTableArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(MapperTableArrayOutput)
 }
 
-func (i MapperTableArray) ToOutput(ctx context.Context) pulumix.Output[[]MapperTable] {
-	return pulumix.Output[[]MapperTable]{
-		OutputState: i.ToMapperTableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CDC table details.
 type MapperTableOutput struct{ *pulumi.OutputState }
 
@@ -6026,12 +5617,6 @@ func (o MapperTableOutput) ToMapperTableOutput() MapperTableOutput {
 
 func (o MapperTableOutput) ToMapperTableOutputWithContext(ctx context.Context) MapperTableOutput {
 	return o
-}
-
-func (o MapperTableOutput) ToOutput(ctx context.Context) pulumix.Output[MapperTable] {
-	return pulumix.Output[MapperTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of name/value pairs for connection properties.
@@ -6061,12 +5646,6 @@ func (o MapperTableArrayOutput) ToMapperTableArrayOutput() MapperTableArrayOutpu
 
 func (o MapperTableArrayOutput) ToMapperTableArrayOutputWithContext(ctx context.Context) MapperTableArrayOutput {
 	return o
-}
-
-func (o MapperTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MapperTable] {
-	return pulumix.Output[[]MapperTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MapperTableArrayOutput) Index(i pulumi.IntInput) MapperTableOutput {
@@ -6100,12 +5679,6 @@ func (o MapperTableResponseOutput) ToMapperTableResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o MapperTableResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MapperTableResponse] {
-	return pulumix.Output[MapperTableResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of name/value pairs for connection properties.
 func (o MapperTableResponseOutput) DslConnectorProperties() MapperDslConnectorPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v MapperTableResponse) []MapperDslConnectorPropertiesResponse { return v.DslConnectorProperties }).(MapperDslConnectorPropertiesResponseArrayOutput)
@@ -6133,12 +5706,6 @@ func (o MapperTableResponseArrayOutput) ToMapperTableResponseArrayOutput() Mappe
 
 func (o MapperTableResponseArrayOutput) ToMapperTableResponseArrayOutputWithContext(ctx context.Context) MapperTableResponseArrayOutput {
 	return o
-}
-
-func (o MapperTableResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MapperTableResponse] {
-	return pulumix.Output[[]MapperTableResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MapperTableResponseArrayOutput) Index(i pulumi.IntInput) MapperTableResponseOutput {
@@ -6186,12 +5753,6 @@ func (i MapperTableSchemaArgs) ToMapperTableSchemaOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MapperTableSchemaOutput)
 }
 
-func (i MapperTableSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[MapperTableSchema] {
-	return pulumix.Output[MapperTableSchema]{
-		OutputState: i.ToMapperTableSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MapperTableSchemaArrayInput is an input type that accepts MapperTableSchemaArray and MapperTableSchemaArrayOutput values.
 // You can construct a concrete instance of `MapperTableSchemaArrayInput` via:
 //
@@ -6217,12 +5778,6 @@ func (i MapperTableSchemaArray) ToMapperTableSchemaArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(MapperTableSchemaArrayOutput)
 }
 
-func (i MapperTableSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]MapperTableSchema] {
-	return pulumix.Output[[]MapperTableSchema]{
-		OutputState: i.ToMapperTableSchemaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Schema of a CDC table in terms of column names and their corresponding data types.
 type MapperTableSchemaOutput struct{ *pulumi.OutputState }
 
@@ -6236,12 +5791,6 @@ func (o MapperTableSchemaOutput) ToMapperTableSchemaOutput() MapperTableSchemaOu
 
 func (o MapperTableSchemaOutput) ToMapperTableSchemaOutputWithContext(ctx context.Context) MapperTableSchemaOutput {
 	return o
-}
-
-func (o MapperTableSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[MapperTableSchema] {
-	return pulumix.Output[MapperTableSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Data type of the column.
@@ -6266,12 +5815,6 @@ func (o MapperTableSchemaArrayOutput) ToMapperTableSchemaArrayOutput() MapperTab
 
 func (o MapperTableSchemaArrayOutput) ToMapperTableSchemaArrayOutputWithContext(ctx context.Context) MapperTableSchemaArrayOutput {
 	return o
-}
-
-func (o MapperTableSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MapperTableSchema] {
-	return pulumix.Output[[]MapperTableSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MapperTableSchemaArrayOutput) Index(i pulumi.IntInput) MapperTableSchemaOutput {
@@ -6303,12 +5846,6 @@ func (o MapperTableSchemaResponseOutput) ToMapperTableSchemaResponseOutputWithCo
 	return o
 }
 
-func (o MapperTableSchemaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MapperTableSchemaResponse] {
-	return pulumix.Output[MapperTableSchemaResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Data type of the column.
 func (o MapperTableSchemaResponseOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MapperTableSchemaResponse) *string { return v.DataType }).(pulumi.StringPtrOutput)
@@ -6331,12 +5868,6 @@ func (o MapperTableSchemaResponseArrayOutput) ToMapperTableSchemaResponseArrayOu
 
 func (o MapperTableSchemaResponseArrayOutput) ToMapperTableSchemaResponseArrayOutputWithContext(ctx context.Context) MapperTableSchemaResponseArrayOutput {
 	return o
-}
-
-func (o MapperTableSchemaResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MapperTableSchemaResponse] {
-	return pulumix.Output[[]MapperTableSchemaResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MapperTableSchemaResponseArrayOutput) Index(i pulumi.IntInput) MapperTableSchemaResponseOutput {
@@ -6392,12 +5923,6 @@ func (i MapperTargetConnectionsInfoArgs) ToMapperTargetConnectionsInfoOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(MapperTargetConnectionsInfoOutput)
 }
 
-func (i MapperTargetConnectionsInfoArgs) ToOutput(ctx context.Context) pulumix.Output[MapperTargetConnectionsInfo] {
-	return pulumix.Output[MapperTargetConnectionsInfo]{
-		OutputState: i.ToMapperTargetConnectionsInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MapperTargetConnectionsInfoArrayInput is an input type that accepts MapperTargetConnectionsInfoArray and MapperTargetConnectionsInfoArrayOutput values.
 // You can construct a concrete instance of `MapperTargetConnectionsInfoArrayInput` via:
 //
@@ -6423,12 +5948,6 @@ func (i MapperTargetConnectionsInfoArray) ToMapperTargetConnectionsInfoArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(MapperTargetConnectionsInfoArrayOutput)
 }
 
-func (i MapperTargetConnectionsInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]MapperTargetConnectionsInfo] {
-	return pulumix.Output[[]MapperTargetConnectionsInfo]{
-		OutputState: i.ToMapperTargetConnectionsInfoArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A object which contains list of tables and connection details for a target connection.
 type MapperTargetConnectionsInfoOutput struct{ *pulumi.OutputState }
 
@@ -6442,12 +5961,6 @@ func (o MapperTargetConnectionsInfoOutput) ToMapperTargetConnectionsInfoOutput()
 
 func (o MapperTargetConnectionsInfoOutput) ToMapperTargetConnectionsInfoOutputWithContext(ctx context.Context) MapperTargetConnectionsInfoOutput {
 	return o
-}
-
-func (o MapperTargetConnectionsInfoOutput) ToOutput(ctx context.Context) pulumix.Output[MapperTargetConnectionsInfo] {
-	return pulumix.Output[MapperTargetConnectionsInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Source connection details.
@@ -6484,12 +5997,6 @@ func (o MapperTargetConnectionsInfoArrayOutput) ToMapperTargetConnectionsInfoArr
 	return o
 }
 
-func (o MapperTargetConnectionsInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MapperTargetConnectionsInfo] {
-	return pulumix.Output[[]MapperTargetConnectionsInfo]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MapperTargetConnectionsInfoArrayOutput) Index(i pulumi.IntInput) MapperTargetConnectionsInfoOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MapperTargetConnectionsInfo {
 		return vs[0].([]MapperTargetConnectionsInfo)[vs[1].(int)]
@@ -6521,12 +6028,6 @@ func (o MapperTargetConnectionsInfoResponseOutput) ToMapperTargetConnectionsInfo
 
 func (o MapperTargetConnectionsInfoResponseOutput) ToMapperTargetConnectionsInfoResponseOutputWithContext(ctx context.Context) MapperTargetConnectionsInfoResponseOutput {
 	return o
-}
-
-func (o MapperTargetConnectionsInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MapperTargetConnectionsInfoResponse] {
-	return pulumix.Output[MapperTargetConnectionsInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Source connection details.
@@ -6561,12 +6062,6 @@ func (o MapperTargetConnectionsInfoResponseArrayOutput) ToMapperTargetConnection
 
 func (o MapperTargetConnectionsInfoResponseArrayOutput) ToMapperTargetConnectionsInfoResponseArrayOutputWithContext(ctx context.Context) MapperTargetConnectionsInfoResponseArrayOutput {
 	return o
-}
-
-func (o MapperTargetConnectionsInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MapperTargetConnectionsInfoResponse] {
-	return pulumix.Output[[]MapperTargetConnectionsInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MapperTargetConnectionsInfoResponseArrayOutput) Index(i pulumi.IntInput) MapperTargetConnectionsInfoResponseOutput {
@@ -9200,12 +8695,6 @@ func (i ParameterSpecificationArgs) ToParameterSpecificationOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterSpecificationOutput)
 }
 
-func (i ParameterSpecificationArgs) ToOutput(ctx context.Context) pulumix.Output[ParameterSpecification] {
-	return pulumix.Output[ParameterSpecification]{
-		OutputState: i.ToParameterSpecificationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ParameterSpecificationMapInput is an input type that accepts ParameterSpecificationMap and ParameterSpecificationMapOutput values.
 // You can construct a concrete instance of `ParameterSpecificationMapInput` via:
 //
@@ -9231,12 +8720,6 @@ func (i ParameterSpecificationMap) ToParameterSpecificationMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterSpecificationMapOutput)
 }
 
-func (i ParameterSpecificationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterSpecification] {
-	return pulumix.Output[map[string]ParameterSpecification]{
-		OutputState: i.ToParameterSpecificationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Definition of a single parameter for an entity.
 type ParameterSpecificationOutput struct{ *pulumi.OutputState }
 
@@ -9250,12 +8733,6 @@ func (o ParameterSpecificationOutput) ToParameterSpecificationOutput() Parameter
 
 func (o ParameterSpecificationOutput) ToParameterSpecificationOutputWithContext(ctx context.Context) ParameterSpecificationOutput {
 	return o
-}
-
-func (o ParameterSpecificationOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterSpecification] {
-	return pulumix.Output[ParameterSpecification]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Default value of parameter.
@@ -9280,12 +8757,6 @@ func (o ParameterSpecificationMapOutput) ToParameterSpecificationMapOutput() Par
 
 func (o ParameterSpecificationMapOutput) ToParameterSpecificationMapOutputWithContext(ctx context.Context) ParameterSpecificationMapOutput {
 	return o
-}
-
-func (o ParameterSpecificationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterSpecification] {
-	return pulumix.Output[map[string]ParameterSpecification]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ParameterSpecificationMapOutput) MapIndex(k pulumi.StringInput) ParameterSpecificationOutput {
@@ -9317,12 +8788,6 @@ func (o ParameterSpecificationResponseOutput) ToParameterSpecificationResponseOu
 	return o
 }
 
-func (o ParameterSpecificationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterSpecificationResponse] {
-	return pulumix.Output[ParameterSpecificationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Default value of parameter.
 func (o ParameterSpecificationResponseOutput) DefaultValue() pulumi.AnyOutput {
 	return o.ApplyT(func(v ParameterSpecificationResponse) interface{} { return v.DefaultValue }).(pulumi.AnyOutput)
@@ -9345,12 +8810,6 @@ func (o ParameterSpecificationResponseMapOutput) ToParameterSpecificationRespons
 
 func (o ParameterSpecificationResponseMapOutput) ToParameterSpecificationResponseMapOutputWithContext(ctx context.Context) ParameterSpecificationResponseMapOutput {
 	return o
-}
-
-func (o ParameterSpecificationResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterSpecificationResponse] {
-	return pulumix.Output[map[string]ParameterSpecificationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ParameterSpecificationResponseMapOutput) MapIndex(k pulumi.StringInput) ParameterSpecificationResponseOutput {
@@ -9910,12 +9369,6 @@ func (i PipelineElapsedTimeMetricPolicyArgs) ToPipelineElapsedTimeMetricPolicyOu
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineElapsedTimeMetricPolicyOutput)
 }
 
-func (i PipelineElapsedTimeMetricPolicyArgs) ToOutput(ctx context.Context) pulumix.Output[PipelineElapsedTimeMetricPolicy] {
-	return pulumix.Output[PipelineElapsedTimeMetricPolicy]{
-		OutputState: i.ToPipelineElapsedTimeMetricPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PipelineElapsedTimeMetricPolicyArgs) ToPipelineElapsedTimeMetricPolicyPtrOutput() PipelineElapsedTimeMetricPolicyPtrOutput {
 	return i.ToPipelineElapsedTimeMetricPolicyPtrOutputWithContext(context.Background())
 }
@@ -9957,12 +9410,6 @@ func (i *pipelineElapsedTimeMetricPolicyPtrType) ToPipelineElapsedTimeMetricPoli
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineElapsedTimeMetricPolicyPtrOutput)
 }
 
-func (i *pipelineElapsedTimeMetricPolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*PipelineElapsedTimeMetricPolicy] {
-	return pulumix.Output[*PipelineElapsedTimeMetricPolicy]{
-		OutputState: i.ToPipelineElapsedTimeMetricPolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Pipeline ElapsedTime Metric Policy.
 type PipelineElapsedTimeMetricPolicyOutput struct{ *pulumi.OutputState }
 
@@ -9988,12 +9435,6 @@ func (o PipelineElapsedTimeMetricPolicyOutput) ToPipelineElapsedTimeMetricPolicy
 	}).(PipelineElapsedTimeMetricPolicyPtrOutput)
 }
 
-func (o PipelineElapsedTimeMetricPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineElapsedTimeMetricPolicy] {
-	return pulumix.Output[PipelineElapsedTimeMetricPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // TimeSpan value, after which an Azure Monitoring Metric is fired.
 func (o PipelineElapsedTimeMetricPolicyOutput) Duration() pulumi.AnyOutput {
 	return o.ApplyT(func(v PipelineElapsedTimeMetricPolicy) interface{} { return v.Duration }).(pulumi.AnyOutput)
@@ -10011,12 +9452,6 @@ func (o PipelineElapsedTimeMetricPolicyPtrOutput) ToPipelineElapsedTimeMetricPol
 
 func (o PipelineElapsedTimeMetricPolicyPtrOutput) ToPipelineElapsedTimeMetricPolicyPtrOutputWithContext(ctx context.Context) PipelineElapsedTimeMetricPolicyPtrOutput {
 	return o
-}
-
-func (o PipelineElapsedTimeMetricPolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelineElapsedTimeMetricPolicy] {
-	return pulumix.Output[*PipelineElapsedTimeMetricPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PipelineElapsedTimeMetricPolicyPtrOutput) Elem() PipelineElapsedTimeMetricPolicyOutput {
@@ -10060,12 +9495,6 @@ func (o PipelineElapsedTimeMetricPolicyResponseOutput) ToPipelineElapsedTimeMetr
 	return o
 }
 
-func (o PipelineElapsedTimeMetricPolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineElapsedTimeMetricPolicyResponse] {
-	return pulumix.Output[PipelineElapsedTimeMetricPolicyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // TimeSpan value, after which an Azure Monitoring Metric is fired.
 func (o PipelineElapsedTimeMetricPolicyResponseOutput) Duration() pulumi.AnyOutput {
 	return o.ApplyT(func(v PipelineElapsedTimeMetricPolicyResponse) interface{} { return v.Duration }).(pulumi.AnyOutput)
@@ -10083,12 +9512,6 @@ func (o PipelineElapsedTimeMetricPolicyResponsePtrOutput) ToPipelineElapsedTimeM
 
 func (o PipelineElapsedTimeMetricPolicyResponsePtrOutput) ToPipelineElapsedTimeMetricPolicyResponsePtrOutputWithContext(ctx context.Context) PipelineElapsedTimeMetricPolicyResponsePtrOutput {
 	return o
-}
-
-func (o PipelineElapsedTimeMetricPolicyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelineElapsedTimeMetricPolicyResponse] {
-	return pulumix.Output[*PipelineElapsedTimeMetricPolicyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PipelineElapsedTimeMetricPolicyResponsePtrOutput) Elem() PipelineElapsedTimeMetricPolicyResponseOutput {
@@ -10166,12 +9589,6 @@ func (i PipelineFolderArgs) ToPipelineFolderOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineFolderOutput)
 }
 
-func (i PipelineFolderArgs) ToOutput(ctx context.Context) pulumix.Output[PipelineFolder] {
-	return pulumix.Output[PipelineFolder]{
-		OutputState: i.ToPipelineFolderOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PipelineFolderArgs) ToPipelineFolderPtrOutput() PipelineFolderPtrOutput {
 	return i.ToPipelineFolderPtrOutputWithContext(context.Background())
 }
@@ -10213,12 +9630,6 @@ func (i *pipelineFolderPtrType) ToPipelineFolderPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(PipelineFolderPtrOutput)
 }
 
-func (i *pipelineFolderPtrType) ToOutput(ctx context.Context) pulumix.Output[*PipelineFolder] {
-	return pulumix.Output[*PipelineFolder]{
-		OutputState: i.ToPipelineFolderPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level.
 type PipelineFolderOutput struct{ *pulumi.OutputState }
 
@@ -10244,12 +9655,6 @@ func (o PipelineFolderOutput) ToPipelineFolderPtrOutputWithContext(ctx context.C
 	}).(PipelineFolderPtrOutput)
 }
 
-func (o PipelineFolderOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineFolder] {
-	return pulumix.Output[PipelineFolder]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the folder that this Pipeline is in.
 func (o PipelineFolderOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PipelineFolder) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -10267,12 +9672,6 @@ func (o PipelineFolderPtrOutput) ToPipelineFolderPtrOutput() PipelineFolderPtrOu
 
 func (o PipelineFolderPtrOutput) ToPipelineFolderPtrOutputWithContext(ctx context.Context) PipelineFolderPtrOutput {
 	return o
-}
-
-func (o PipelineFolderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelineFolder] {
-	return pulumix.Output[*PipelineFolder]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PipelineFolderPtrOutput) Elem() PipelineFolderOutput {
@@ -10330,12 +9729,6 @@ func (i PipelinePolicyArgs) ToPipelinePolicyOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(PipelinePolicyOutput)
 }
 
-func (i PipelinePolicyArgs) ToOutput(ctx context.Context) pulumix.Output[PipelinePolicy] {
-	return pulumix.Output[PipelinePolicy]{
-		OutputState: i.ToPipelinePolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PipelinePolicyArgs) ToPipelinePolicyPtrOutput() PipelinePolicyPtrOutput {
 	return i.ToPipelinePolicyPtrOutputWithContext(context.Background())
 }
@@ -10377,12 +9770,6 @@ func (i *pipelinePolicyPtrType) ToPipelinePolicyPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(PipelinePolicyPtrOutput)
 }
 
-func (i *pipelinePolicyPtrType) ToOutput(ctx context.Context) pulumix.Output[*PipelinePolicy] {
-	return pulumix.Output[*PipelinePolicy]{
-		OutputState: i.ToPipelinePolicyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Pipeline Policy.
 type PipelinePolicyOutput struct{ *pulumi.OutputState }
 
@@ -10408,12 +9795,6 @@ func (o PipelinePolicyOutput) ToPipelinePolicyPtrOutputWithContext(ctx context.C
 	}).(PipelinePolicyPtrOutput)
 }
 
-func (o PipelinePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[PipelinePolicy] {
-	return pulumix.Output[PipelinePolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Pipeline ElapsedTime Metric Policy.
 func (o PipelinePolicyOutput) ElapsedTimeMetric() PipelineElapsedTimeMetricPolicyPtrOutput {
 	return o.ApplyT(func(v PipelinePolicy) *PipelineElapsedTimeMetricPolicy { return v.ElapsedTimeMetric }).(PipelineElapsedTimeMetricPolicyPtrOutput)
@@ -10431,12 +9812,6 @@ func (o PipelinePolicyPtrOutput) ToPipelinePolicyPtrOutput() PipelinePolicyPtrOu
 
 func (o PipelinePolicyPtrOutput) ToPipelinePolicyPtrOutputWithContext(ctx context.Context) PipelinePolicyPtrOutput {
 	return o
-}
-
-func (o PipelinePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelinePolicy] {
-	return pulumix.Output[*PipelinePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PipelinePolicyPtrOutput) Elem() PipelinePolicyOutput {
@@ -10480,12 +9855,6 @@ func (o PipelinePolicyResponseOutput) ToPipelinePolicyResponseOutputWithContext(
 	return o
 }
 
-func (o PipelinePolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PipelinePolicyResponse] {
-	return pulumix.Output[PipelinePolicyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Pipeline ElapsedTime Metric Policy.
 func (o PipelinePolicyResponseOutput) ElapsedTimeMetric() PipelineElapsedTimeMetricPolicyResponsePtrOutput {
 	return o.ApplyT(func(v PipelinePolicyResponse) *PipelineElapsedTimeMetricPolicyResponse { return v.ElapsedTimeMetric }).(PipelineElapsedTimeMetricPolicyResponsePtrOutput)
@@ -10503,12 +9872,6 @@ func (o PipelinePolicyResponsePtrOutput) ToPipelinePolicyResponsePtrOutput() Pip
 
 func (o PipelinePolicyResponsePtrOutput) ToPipelinePolicyResponsePtrOutputWithContext(ctx context.Context) PipelinePolicyResponsePtrOutput {
 	return o
-}
-
-func (o PipelinePolicyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelinePolicyResponse] {
-	return pulumix.Output[*PipelinePolicyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PipelinePolicyResponsePtrOutput) Elem() PipelinePolicyResponseOutput {
@@ -10572,12 +9935,6 @@ func (o PipelineResponseFolderOutput) ToPipelineResponseFolderOutputWithContext(
 	return o
 }
 
-func (o PipelineResponseFolderOutput) ToOutput(ctx context.Context) pulumix.Output[PipelineResponseFolder] {
-	return pulumix.Output[PipelineResponseFolder]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the folder that this Pipeline is in.
 func (o PipelineResponseFolderOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PipelineResponseFolder) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -10595,12 +9952,6 @@ func (o PipelineResponseFolderPtrOutput) ToPipelineResponseFolderPtrOutput() Pip
 
 func (o PipelineResponseFolderPtrOutput) ToPipelineResponseFolderPtrOutputWithContext(ctx context.Context) PipelineResponseFolderPtrOutput {
 	return o
-}
-
-func (o PipelineResponseFolderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PipelineResponseFolder] {
-	return pulumix.Output[*PipelineResponseFolder]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PipelineResponseFolderPtrOutput) Elem() PipelineResponseFolderOutput {
@@ -11086,12 +10437,6 @@ func (i PrivateEndpointArgs) ToPrivateEndpointOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointOutput)
 }
 
-func (i PrivateEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpoint] {
-	return pulumix.Output[PrivateEndpoint]{
-		OutputState: i.ToPrivateEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PrivateEndpointArgs) ToPrivateEndpointPtrOutput() PrivateEndpointPtrOutput {
 	return i.ToPrivateEndpointPtrOutputWithContext(context.Background())
 }
@@ -11133,12 +10478,6 @@ func (i *privateEndpointPtrType) ToPrivateEndpointPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointPtrOutput)
 }
 
-func (i *privateEndpointPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpoint] {
-	return pulumix.Output[*PrivateEndpoint]{
-		OutputState: i.ToPrivateEndpointPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Private endpoint which a connection belongs to.
 type PrivateEndpointOutput struct{ *pulumi.OutputState }
 
@@ -11164,12 +10503,6 @@ func (o PrivateEndpointOutput) ToPrivateEndpointPtrOutputWithContext(ctx context
 	}).(PrivateEndpointPtrOutput)
 }
 
-func (o PrivateEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpoint] {
-	return pulumix.Output[PrivateEndpoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resource Id for private endpoint
 func (o PrivateEndpointOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateEndpoint) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -11187,12 +10520,6 @@ func (o PrivateEndpointPtrOutput) ToPrivateEndpointPtrOutput() PrivateEndpointPt
 
 func (o PrivateEndpointPtrOutput) ToPrivateEndpointPtrOutputWithContext(ctx context.Context) PrivateEndpointPtrOutput {
 	return o
-}
-
-func (o PrivateEndpointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpoint] {
-	return pulumix.Output[*PrivateEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateEndpointPtrOutput) Elem() PrivateEndpointOutput {
@@ -11254,12 +10581,6 @@ func (i PrivateLinkConnectionApprovalRequestArgs) ToPrivateLinkConnectionApprova
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkConnectionApprovalRequestOutput)
 }
 
-func (i PrivateLinkConnectionApprovalRequestArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkConnectionApprovalRequest] {
-	return pulumix.Output[PrivateLinkConnectionApprovalRequest]{
-		OutputState: i.ToPrivateLinkConnectionApprovalRequestOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PrivateLinkConnectionApprovalRequestArgs) ToPrivateLinkConnectionApprovalRequestPtrOutput() PrivateLinkConnectionApprovalRequestPtrOutput {
 	return i.ToPrivateLinkConnectionApprovalRequestPtrOutputWithContext(context.Background())
 }
@@ -11301,12 +10622,6 @@ func (i *privateLinkConnectionApprovalRequestPtrType) ToPrivateLinkConnectionApp
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkConnectionApprovalRequestPtrOutput)
 }
 
-func (i *privateLinkConnectionApprovalRequestPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkConnectionApprovalRequest] {
-	return pulumix.Output[*PrivateLinkConnectionApprovalRequest]{
-		OutputState: i.ToPrivateLinkConnectionApprovalRequestPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A request to approve or reject a private endpoint connection
 type PrivateLinkConnectionApprovalRequestOutput struct{ *pulumi.OutputState }
 
@@ -11330,12 +10645,6 @@ func (o PrivateLinkConnectionApprovalRequestOutput) ToPrivateLinkConnectionAppro
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateLinkConnectionApprovalRequest) *PrivateLinkConnectionApprovalRequest {
 		return &v
 	}).(PrivateLinkConnectionApprovalRequestPtrOutput)
-}
-
-func (o PrivateLinkConnectionApprovalRequestOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkConnectionApprovalRequest] {
-	return pulumix.Output[PrivateLinkConnectionApprovalRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource of private endpoint.
@@ -11362,12 +10671,6 @@ func (o PrivateLinkConnectionApprovalRequestPtrOutput) ToPrivateLinkConnectionAp
 
 func (o PrivateLinkConnectionApprovalRequestPtrOutput) ToPrivateLinkConnectionApprovalRequestPtrOutputWithContext(ctx context.Context) PrivateLinkConnectionApprovalRequestPtrOutput {
 	return o
-}
-
-func (o PrivateLinkConnectionApprovalRequestPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkConnectionApprovalRequest] {
-	return pulumix.Output[*PrivateLinkConnectionApprovalRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateLinkConnectionApprovalRequestPtrOutput) Elem() PrivateLinkConnectionApprovalRequestOutput {
@@ -11443,12 +10746,6 @@ func (i PrivateLinkConnectionStateArgs) ToPrivateLinkConnectionStateOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkConnectionStateOutput)
 }
 
-func (i PrivateLinkConnectionStateArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkConnectionState] {
-	return pulumix.Output[PrivateLinkConnectionState]{
-		OutputState: i.ToPrivateLinkConnectionStateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PrivateLinkConnectionStateArgs) ToPrivateLinkConnectionStatePtrOutput() PrivateLinkConnectionStatePtrOutput {
 	return i.ToPrivateLinkConnectionStatePtrOutputWithContext(context.Background())
 }
@@ -11490,12 +10787,6 @@ func (i *privateLinkConnectionStatePtrType) ToPrivateLinkConnectionStatePtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkConnectionStatePtrOutput)
 }
 
-func (i *privateLinkConnectionStatePtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkConnectionState] {
-	return pulumix.Output[*PrivateLinkConnectionState]{
-		OutputState: i.ToPrivateLinkConnectionStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The state of a private link connection
 type PrivateLinkConnectionStateOutput struct{ *pulumi.OutputState }
 
@@ -11519,12 +10810,6 @@ func (o PrivateLinkConnectionStateOutput) ToPrivateLinkConnectionStatePtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateLinkConnectionState) *PrivateLinkConnectionState {
 		return &v
 	}).(PrivateLinkConnectionStatePtrOutput)
-}
-
-func (o PrivateLinkConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkConnectionState] {
-	return pulumix.Output[PrivateLinkConnectionState]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ActionsRequired for a private link connection
@@ -11554,12 +10839,6 @@ func (o PrivateLinkConnectionStatePtrOutput) ToPrivateLinkConnectionStatePtrOutp
 
 func (o PrivateLinkConnectionStatePtrOutput) ToPrivateLinkConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkConnectionStatePtrOutput {
 	return o
-}
-
-func (o PrivateLinkConnectionStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkConnectionState] {
-	return pulumix.Output[*PrivateLinkConnectionState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateLinkConnectionStatePtrOutput) Elem() PrivateLinkConnectionStateOutput {
@@ -11627,12 +10906,6 @@ func (o PrivateLinkConnectionStateResponseOutput) ToPrivateLinkConnectionStateRe
 	return o
 }
 
-func (o PrivateLinkConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkConnectionStateResponse] {
-	return pulumix.Output[PrivateLinkConnectionStateResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ActionsRequired for a private link connection
 func (o PrivateLinkConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
@@ -11660,12 +10933,6 @@ func (o PrivateLinkConnectionStateResponsePtrOutput) ToPrivateLinkConnectionStat
 
 func (o PrivateLinkConnectionStateResponsePtrOutput) ToPrivateLinkConnectionStateResponsePtrOutputWithContext(ctx context.Context) PrivateLinkConnectionStateResponsePtrOutput {
 	return o
-}
-
-func (o PrivateLinkConnectionStateResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkConnectionStateResponse] {
-	return pulumix.Output[*PrivateLinkConnectionStateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateLinkConnectionStateResponsePtrOutput) Elem() PrivateLinkConnectionStateResponseOutput {
@@ -11743,12 +11010,6 @@ func (i PurviewConfigurationArgs) ToPurviewConfigurationOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(PurviewConfigurationOutput)
 }
 
-func (i PurviewConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[PurviewConfiguration] {
-	return pulumix.Output[PurviewConfiguration]{
-		OutputState: i.ToPurviewConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PurviewConfigurationArgs) ToPurviewConfigurationPtrOutput() PurviewConfigurationPtrOutput {
 	return i.ToPurviewConfigurationPtrOutputWithContext(context.Background())
 }
@@ -11790,12 +11051,6 @@ func (i *purviewConfigurationPtrType) ToPurviewConfigurationPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(PurviewConfigurationPtrOutput)
 }
 
-func (i *purviewConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*PurviewConfiguration] {
-	return pulumix.Output[*PurviewConfiguration]{
-		OutputState: i.ToPurviewConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Purview configuration.
 type PurviewConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -11821,12 +11076,6 @@ func (o PurviewConfigurationOutput) ToPurviewConfigurationPtrOutputWithContext(c
 	}).(PurviewConfigurationPtrOutput)
 }
 
-func (o PurviewConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[PurviewConfiguration] {
-	return pulumix.Output[PurviewConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Purview resource id.
 func (o PurviewConfigurationOutput) PurviewResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PurviewConfiguration) *string { return v.PurviewResourceId }).(pulumi.StringPtrOutput)
@@ -11844,12 +11093,6 @@ func (o PurviewConfigurationPtrOutput) ToPurviewConfigurationPtrOutput() Purview
 
 func (o PurviewConfigurationPtrOutput) ToPurviewConfigurationPtrOutputWithContext(ctx context.Context) PurviewConfigurationPtrOutput {
 	return o
-}
-
-func (o PurviewConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PurviewConfiguration] {
-	return pulumix.Output[*PurviewConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PurviewConfigurationPtrOutput) Elem() PurviewConfigurationOutput {
@@ -11893,12 +11136,6 @@ func (o PurviewConfigurationResponseOutput) ToPurviewConfigurationResponseOutput
 	return o
 }
 
-func (o PurviewConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PurviewConfigurationResponse] {
-	return pulumix.Output[PurviewConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Purview resource id.
 func (o PurviewConfigurationResponseOutput) PurviewResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PurviewConfigurationResponse) *string { return v.PurviewResourceId }).(pulumi.StringPtrOutput)
@@ -11916,12 +11153,6 @@ func (o PurviewConfigurationResponsePtrOutput) ToPurviewConfigurationResponsePtr
 
 func (o PurviewConfigurationResponsePtrOutput) ToPurviewConfigurationResponsePtrOutputWithContext(ctx context.Context) PurviewConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o PurviewConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PurviewConfigurationResponse] {
-	return pulumix.Output[*PurviewConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PurviewConfigurationResponsePtrOutput) Elem() PurviewConfigurationResponseOutput {
@@ -12322,12 +11553,6 @@ func (o RemotePrivateEndpointConnectionResponseOutput) ToRemotePrivateEndpointCo
 
 func (o RemotePrivateEndpointConnectionResponseOutput) ToRemotePrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) RemotePrivateEndpointConnectionResponseOutput {
 	return o
-}
-
-func (o RemotePrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RemotePrivateEndpointConnectionResponse] {
-	return pulumix.Output[RemotePrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // PrivateEndpoint of a remote private endpoint connection

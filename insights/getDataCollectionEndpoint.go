@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Definition of ARM tracked top level resource.
@@ -110,12 +109,6 @@ func (o LookupDataCollectionEndpointResultOutput) ToLookupDataCollectionEndpoint
 
 func (o LookupDataCollectionEndpointResultOutput) ToLookupDataCollectionEndpointResultOutputWithContext(ctx context.Context) LookupDataCollectionEndpointResultOutput {
 	return o
-}
-
-func (o LookupDataCollectionEndpointResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataCollectionEndpointResult] {
-	return pulumix.Output[LookupDataCollectionEndpointResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The endpoint used by clients to access their configuration.

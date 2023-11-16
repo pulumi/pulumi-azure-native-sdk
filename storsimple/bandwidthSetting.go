@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The bandwidth setting.
@@ -134,12 +133,6 @@ func (i *BandwidthSetting) ToBandwidthSettingOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(BandwidthSettingOutput)
 }
 
-func (i *BandwidthSetting) ToOutput(ctx context.Context) pulumix.Output[*BandwidthSetting] {
-	return pulumix.Output[*BandwidthSetting]{
-		OutputState: i.ToBandwidthSettingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BandwidthSettingOutput struct{ *pulumi.OutputState }
 
 func (BandwidthSettingOutput) ElementType() reflect.Type {
@@ -152,12 +145,6 @@ func (o BandwidthSettingOutput) ToBandwidthSettingOutput() BandwidthSettingOutpu
 
 func (o BandwidthSettingOutput) ToBandwidthSettingOutputWithContext(ctx context.Context) BandwidthSettingOutput {
 	return o
-}
-
-func (o BandwidthSettingOutput) ToOutput(ctx context.Context) pulumix.Output[*BandwidthSetting] {
-	return pulumix.Output[*BandwidthSetting]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Kind of the object. Currently only Series8000 is supported

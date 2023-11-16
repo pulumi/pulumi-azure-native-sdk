@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties of the archive.
@@ -98,12 +97,6 @@ func (o LookupArchifeResultOutput) ToLookupArchifeResultOutput() LookupArchifeRe
 
 func (o LookupArchifeResultOutput) ToLookupArchifeResultOutputWithContext(ctx context.Context) LookupArchifeResultOutput {
 	return o
-}
-
-func (o LookupArchifeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupArchifeResult] {
-	return pulumix.Output[LookupArchifeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource ID.

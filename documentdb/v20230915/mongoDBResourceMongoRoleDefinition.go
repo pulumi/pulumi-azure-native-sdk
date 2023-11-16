@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure Cosmos DB Mongo Role Definition.
@@ -183,12 +182,6 @@ func (i *MongoDBResourceMongoRoleDefinition) ToMongoDBResourceMongoRoleDefinitio
 	return pulumi.ToOutputWithContext(ctx, i).(MongoDBResourceMongoRoleDefinitionOutput)
 }
 
-func (i *MongoDBResourceMongoRoleDefinition) ToOutput(ctx context.Context) pulumix.Output[*MongoDBResourceMongoRoleDefinition] {
-	return pulumix.Output[*MongoDBResourceMongoRoleDefinition]{
-		OutputState: i.ToMongoDBResourceMongoRoleDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MongoDBResourceMongoRoleDefinitionOutput struct{ *pulumi.OutputState }
 
 func (MongoDBResourceMongoRoleDefinitionOutput) ElementType() reflect.Type {
@@ -201,12 +194,6 @@ func (o MongoDBResourceMongoRoleDefinitionOutput) ToMongoDBResourceMongoRoleDefi
 
 func (o MongoDBResourceMongoRoleDefinitionOutput) ToMongoDBResourceMongoRoleDefinitionOutputWithContext(ctx context.Context) MongoDBResourceMongoRoleDefinitionOutput {
 	return o
-}
-
-func (o MongoDBResourceMongoRoleDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[*MongoDBResourceMongoRoleDefinition] {
-	return pulumix.Output[*MongoDBResourceMongoRoleDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The database name for which access is being granted for this Role Definition.

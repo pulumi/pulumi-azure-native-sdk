@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Generate credentials for publishing SKU images.
@@ -81,12 +80,6 @@ func (o ListVendorSkusCredentialResultOutput) ToListVendorSkusCredentialResultOu
 
 func (o ListVendorSkusCredentialResultOutput) ToListVendorSkusCredentialResultOutputWithContext(ctx context.Context) ListVendorSkusCredentialResultOutput {
 	return o
-}
-
-func (o ListVendorSkusCredentialResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListVendorSkusCredentialResult] {
-	return pulumix.Output[ListVendorSkusCredentialResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Acr server url

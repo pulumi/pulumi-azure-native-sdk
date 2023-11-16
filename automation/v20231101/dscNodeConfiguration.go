@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Definition of the dsc node configuration.
@@ -172,12 +171,6 @@ func (i *DscNodeConfiguration) ToDscNodeConfigurationOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(DscNodeConfigurationOutput)
 }
 
-func (i *DscNodeConfiguration) ToOutput(ctx context.Context) pulumix.Output[*DscNodeConfiguration] {
-	return pulumix.Output[*DscNodeConfiguration]{
-		OutputState: i.ToDscNodeConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DscNodeConfigurationOutput struct{ *pulumi.OutputState }
 
 func (DscNodeConfigurationOutput) ElementType() reflect.Type {
@@ -190,12 +183,6 @@ func (o DscNodeConfigurationOutput) ToDscNodeConfigurationOutput() DscNodeConfig
 
 func (o DscNodeConfigurationOutput) ToDscNodeConfigurationOutputWithContext(ctx context.Context) DscNodeConfigurationOutput {
 	return o
-}
-
-func (o DscNodeConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*DscNodeConfiguration] {
-	return pulumix.Output[*DscNodeConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the configuration of the node.

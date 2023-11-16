@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes a hybrid machine.
@@ -142,6 +141,9 @@ func NewMachine(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20230620preview:Machine"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20231003preview:Machine"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -240,12 +242,6 @@ func (i *Machine) ToMachineOutputWithContext(ctx context.Context) MachineOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(MachineOutput)
 }
 
-func (i *Machine) ToOutput(ctx context.Context) pulumix.Output[*Machine] {
-	return pulumix.Output[*Machine]{
-		OutputState: i.ToMachineOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MachineOutput struct{ *pulumi.OutputState }
 
 func (MachineOutput) ElementType() reflect.Type {
@@ -258,12 +254,6 @@ func (o MachineOutput) ToMachineOutput() MachineOutput {
 
 func (o MachineOutput) ToMachineOutputWithContext(ctx context.Context) MachineOutput {
 	return o
-}
-
-func (o MachineOutput) ToOutput(ctx context.Context) pulumix.Output[*Machine] {
-	return pulumix.Output[*Machine]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the AD fully qualified display name.

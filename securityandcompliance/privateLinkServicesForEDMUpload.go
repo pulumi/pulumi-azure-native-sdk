@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The description of the service.
@@ -159,12 +158,6 @@ func (i *PrivateLinkServicesForEDMUpload) ToPrivateLinkServicesForEDMUploadOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServicesForEDMUploadOutput)
 }
 
-func (i *PrivateLinkServicesForEDMUpload) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServicesForEDMUpload] {
-	return pulumix.Output[*PrivateLinkServicesForEDMUpload]{
-		OutputState: i.ToPrivateLinkServicesForEDMUploadOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateLinkServicesForEDMUploadOutput struct{ *pulumi.OutputState }
 
 func (PrivateLinkServicesForEDMUploadOutput) ElementType() reflect.Type {
@@ -177,12 +170,6 @@ func (o PrivateLinkServicesForEDMUploadOutput) ToPrivateLinkServicesForEDMUpload
 
 func (o PrivateLinkServicesForEDMUploadOutput) ToPrivateLinkServicesForEDMUploadOutputWithContext(ctx context.Context) PrivateLinkServicesForEDMUploadOutput {
 	return o
-}
-
-func (o PrivateLinkServicesForEDMUploadOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServicesForEDMUpload] {
-	return pulumix.Output[*PrivateLinkServicesForEDMUpload]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An etag associated with the resource, used for optimistic concurrency when editing it.

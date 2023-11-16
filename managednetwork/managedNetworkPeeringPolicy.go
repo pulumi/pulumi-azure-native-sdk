@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Managed Network Peering Policy resource
@@ -129,12 +128,6 @@ func (i *ManagedNetworkPeeringPolicy) ToManagedNetworkPeeringPolicyOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedNetworkPeeringPolicyOutput)
 }
 
-func (i *ManagedNetworkPeeringPolicy) ToOutput(ctx context.Context) pulumix.Output[*ManagedNetworkPeeringPolicy] {
-	return pulumix.Output[*ManagedNetworkPeeringPolicy]{
-		OutputState: i.ToManagedNetworkPeeringPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagedNetworkPeeringPolicyOutput struct{ *pulumi.OutputState }
 
 func (ManagedNetworkPeeringPolicyOutput) ElementType() reflect.Type {
@@ -147,12 +140,6 @@ func (o ManagedNetworkPeeringPolicyOutput) ToManagedNetworkPeeringPolicyOutput()
 
 func (o ManagedNetworkPeeringPolicyOutput) ToManagedNetworkPeeringPolicyOutputWithContext(ctx context.Context) ManagedNetworkPeeringPolicyOutput {
 	return o
-}
-
-func (o ManagedNetworkPeeringPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedNetworkPeeringPolicy] {
-	return pulumix.Output[*ManagedNetworkPeeringPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

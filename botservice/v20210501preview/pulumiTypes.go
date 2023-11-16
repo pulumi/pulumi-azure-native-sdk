@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -45,12 +44,6 @@ func (o ServiceProviderParameterResponseOutput) ToServiceProviderParameterRespon
 
 func (o ServiceProviderParameterResponseOutput) ToServiceProviderParameterResponseOutputWithContext(ctx context.Context) ServiceProviderParameterResponseOutput {
 	return o
-}
-
-func (o ServiceProviderParameterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceProviderParameterResponse] {
-	return pulumix.Output[ServiceProviderParameterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Default Name for the Service Provider
@@ -102,12 +95,6 @@ func (o ServiceProviderParameterResponseArrayOutput) ToServiceProviderParameterR
 	return o
 }
 
-func (o ServiceProviderParameterResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceProviderParameterResponse] {
-	return pulumix.Output[[]ServiceProviderParameterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceProviderParameterResponseArrayOutput) Index(i pulumi.IntInput) ServiceProviderParameterResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceProviderParameterResponse {
 		return vs[0].([]ServiceProviderParameterResponse)[vs[1].(int)]
@@ -135,12 +122,6 @@ func (o ServiceProviderParameterResponseConstraintsOutput) ToServiceProviderPara
 	return o
 }
 
-func (o ServiceProviderParameterResponseConstraintsOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceProviderParameterResponseConstraints] {
-	return pulumix.Output[ServiceProviderParameterResponseConstraints]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether required the constraints of the bot meta data.
 func (o ServiceProviderParameterResponseConstraintsOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceProviderParameterResponseConstraints) *bool { return v.Required }).(pulumi.BoolPtrOutput)
@@ -158,12 +139,6 @@ func (o ServiceProviderParameterResponseConstraintsPtrOutput) ToServiceProviderP
 
 func (o ServiceProviderParameterResponseConstraintsPtrOutput) ToServiceProviderParameterResponseConstraintsPtrOutputWithContext(ctx context.Context) ServiceProviderParameterResponseConstraintsPtrOutput {
 	return o
-}
-
-func (o ServiceProviderParameterResponseConstraintsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceProviderParameterResponseConstraints] {
-	return pulumix.Output[*ServiceProviderParameterResponseConstraints]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceProviderParameterResponseConstraintsPtrOutput) Elem() ServiceProviderParameterResponseConstraintsOutput {
@@ -205,12 +180,6 @@ func (o ServiceProviderParameterResponseMetadataOutput) ToServiceProviderParamet
 
 func (o ServiceProviderParameterResponseMetadataOutput) ToServiceProviderParameterResponseMetadataOutputWithContext(ctx context.Context) ServiceProviderParameterResponseMetadataOutput {
 	return o
-}
-
-func (o ServiceProviderParameterResponseMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceProviderParameterResponseMetadata] {
-	return pulumix.Output[ServiceProviderParameterResponseMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 // the constraints of the bot meta data.
@@ -264,12 +233,6 @@ func (o ServiceProviderPropertiesResponseOutput) ToServiceProviderPropertiesResp
 	return o
 }
 
-func (o ServiceProviderPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceProviderPropertiesResponse] {
-	return pulumix.Output[ServiceProviderPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // URL of Dev Portal
 func (o ServiceProviderPropertiesResponseOutput) DevPortalUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceProviderPropertiesResponse) string { return v.DevPortalUrl }).(pulumi.StringOutput)
@@ -312,12 +275,6 @@ func (o ServiceProviderPropertiesResponsePtrOutput) ToServiceProviderPropertiesR
 
 func (o ServiceProviderPropertiesResponsePtrOutput) ToServiceProviderPropertiesResponsePtrOutputWithContext(ctx context.Context) ServiceProviderPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o ServiceProviderPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceProviderPropertiesResponse] {
-	return pulumix.Output[*ServiceProviderPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceProviderPropertiesResponsePtrOutput) Elem() ServiceProviderPropertiesResponseOutput {
@@ -422,12 +379,6 @@ func (o ServiceProviderResponseOutput) ToServiceProviderResponseOutputWithContex
 	return o
 }
 
-func (o ServiceProviderResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceProviderResponse] {
-	return pulumix.Output[ServiceProviderResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Properties of a Service Provider Object
 func (o ServiceProviderResponseOutput) Properties() ServiceProviderPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v ServiceProviderResponse) *ServiceProviderPropertiesResponse { return v.Properties }).(ServiceProviderPropertiesResponsePtrOutput)
@@ -445,12 +396,6 @@ func (o ServiceProviderResponseArrayOutput) ToServiceProviderResponseArrayOutput
 
 func (o ServiceProviderResponseArrayOutput) ToServiceProviderResponseArrayOutputWithContext(ctx context.Context) ServiceProviderResponseArrayOutput {
 	return o
-}
-
-func (o ServiceProviderResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceProviderResponse] {
-	return pulumix.Output[[]ServiceProviderResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceProviderResponseArrayOutput) Index(i pulumi.IntInput) ServiceProviderResponseOutput {

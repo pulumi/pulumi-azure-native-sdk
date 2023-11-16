@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A domain specific resource identifier.
@@ -179,12 +178,6 @@ func (i *WebAppDomainOwnershipIdentifierSlot) ToWebAppDomainOwnershipIdentifierS
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppDomainOwnershipIdentifierSlotOutput)
 }
 
-func (i *WebAppDomainOwnershipIdentifierSlot) ToOutput(ctx context.Context) pulumix.Output[*WebAppDomainOwnershipIdentifierSlot] {
-	return pulumix.Output[*WebAppDomainOwnershipIdentifierSlot]{
-		OutputState: i.ToWebAppDomainOwnershipIdentifierSlotOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebAppDomainOwnershipIdentifierSlotOutput struct{ *pulumi.OutputState }
 
 func (WebAppDomainOwnershipIdentifierSlotOutput) ElementType() reflect.Type {
@@ -197,12 +190,6 @@ func (o WebAppDomainOwnershipIdentifierSlotOutput) ToWebAppDomainOwnershipIdenti
 
 func (o WebAppDomainOwnershipIdentifierSlotOutput) ToWebAppDomainOwnershipIdentifierSlotOutputWithContext(ctx context.Context) WebAppDomainOwnershipIdentifierSlotOutput {
 	return o
-}
-
-func (o WebAppDomainOwnershipIdentifierSlotOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppDomainOwnershipIdentifierSlot] {
-	return pulumix.Output[*WebAppDomainOwnershipIdentifierSlot]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Kind of resource.

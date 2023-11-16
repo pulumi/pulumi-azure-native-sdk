@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified Subscription keys.
@@ -79,12 +78,6 @@ func (o ListSubscriptionSecretsResultOutput) ToListSubscriptionSecretsResultOutp
 
 func (o ListSubscriptionSecretsResultOutput) ToListSubscriptionSecretsResultOutputWithContext(ctx context.Context) ListSubscriptionSecretsResultOutput {
 	return o
-}
-
-func (o ListSubscriptionSecretsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListSubscriptionSecretsResult] {
-	return pulumix.Output[ListSubscriptionSecretsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Subscription primary key.

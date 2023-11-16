@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the managed cluster with a specified resource group and name.
@@ -126,12 +125,6 @@ func (o LookupManagedClusterResultOutput) ToLookupManagedClusterResultOutput() L
 
 func (o LookupManagedClusterResultOutput) ToLookupManagedClusterResultOutputWithContext(ctx context.Context) LookupManagedClusterResultOutput {
 	return o
-}
-
-func (o LookupManagedClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedClusterResult] {
-	return pulumix.Output[LookupManagedClusterResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Profile of Azure Active Directory configuration.

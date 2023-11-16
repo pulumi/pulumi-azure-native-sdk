@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -61,12 +60,6 @@ func (i MaintenanceWindowArgs) ToMaintenanceWindowOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowOutput)
 }
 
-func (i MaintenanceWindowArgs) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindow] {
-	return pulumix.Output[MaintenanceWindow]{
-		OutputState: i.ToMaintenanceWindowOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MaintenanceWindowArgs) ToMaintenanceWindowPtrOutput() MaintenanceWindowPtrOutput {
 	return i.ToMaintenanceWindowPtrOutputWithContext(context.Background())
 }
@@ -108,12 +101,6 @@ func (i *maintenanceWindowPtrType) ToMaintenanceWindowPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowPtrOutput)
 }
 
-func (i *maintenanceWindowPtrType) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindow] {
-	return pulumix.Output[*MaintenanceWindow]{
-		OutputState: i.ToMaintenanceWindowPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Maintenance window of a server group.
 type MaintenanceWindowOutput struct{ *pulumi.OutputState }
 
@@ -137,12 +124,6 @@ func (o MaintenanceWindowOutput) ToMaintenanceWindowPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceWindow) *MaintenanceWindow {
 		return &v
 	}).(MaintenanceWindowPtrOutput)
-}
-
-func (o MaintenanceWindowOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindow] {
-	return pulumix.Output[MaintenanceWindow]{
-		OutputState: o.OutputState,
-	}
 }
 
 // indicates whether custom window is enabled or disabled
@@ -177,12 +158,6 @@ func (o MaintenanceWindowPtrOutput) ToMaintenanceWindowPtrOutput() MaintenanceWi
 
 func (o MaintenanceWindowPtrOutput) ToMaintenanceWindowPtrOutputWithContext(ctx context.Context) MaintenanceWindowPtrOutput {
 	return o
-}
-
-func (o MaintenanceWindowPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindow] {
-	return pulumix.Output[*MaintenanceWindow]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MaintenanceWindowPtrOutput) Elem() MaintenanceWindowOutput {
@@ -262,12 +237,6 @@ func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponseOutputWithCo
 	return o
 }
 
-func (o MaintenanceWindowResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindowResponse] {
-	return pulumix.Output[MaintenanceWindowResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // indicates whether custom window is enabled or disabled
 func (o MaintenanceWindowResponseOutput) CustomWindow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MaintenanceWindowResponse) *string { return v.CustomWindow }).(pulumi.StringPtrOutput)
@@ -300,12 +269,6 @@ func (o MaintenanceWindowResponsePtrOutput) ToMaintenanceWindowResponsePtrOutput
 
 func (o MaintenanceWindowResponsePtrOutput) ToMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) MaintenanceWindowResponsePtrOutput {
 	return o
-}
-
-func (o MaintenanceWindowResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindowResponse] {
-	return pulumix.Output[*MaintenanceWindowResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MaintenanceWindowResponsePtrOutput) Elem() MaintenanceWindowResponseOutput {
@@ -393,12 +356,6 @@ func (i ServerGroupPropertiesDelegatedSubnetArgumentsArgs) ToServerGroupProperti
 	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupPropertiesDelegatedSubnetArgumentsOutput)
 }
 
-func (i ServerGroupPropertiesDelegatedSubnetArgumentsArgs) ToOutput(ctx context.Context) pulumix.Output[ServerGroupPropertiesDelegatedSubnetArguments] {
-	return pulumix.Output[ServerGroupPropertiesDelegatedSubnetArguments]{
-		OutputState: i.ToServerGroupPropertiesDelegatedSubnetArgumentsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServerGroupPropertiesDelegatedSubnetArgumentsArgs) ToServerGroupPropertiesDelegatedSubnetArgumentsPtrOutput() ServerGroupPropertiesDelegatedSubnetArgumentsPtrOutput {
 	return i.ToServerGroupPropertiesDelegatedSubnetArgumentsPtrOutputWithContext(context.Background())
 }
@@ -440,12 +397,6 @@ func (i *serverGroupPropertiesDelegatedSubnetArgumentsPtrType) ToServerGroupProp
 	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupPropertiesDelegatedSubnetArgumentsPtrOutput)
 }
 
-func (i *serverGroupPropertiesDelegatedSubnetArgumentsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServerGroupPropertiesDelegatedSubnetArguments] {
-	return pulumix.Output[*ServerGroupPropertiesDelegatedSubnetArguments]{
-		OutputState: i.ToServerGroupPropertiesDelegatedSubnetArgumentsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The delegated subnet arguments for a server group.
 type ServerGroupPropertiesDelegatedSubnetArgumentsOutput struct{ *pulumi.OutputState }
 
@@ -471,12 +422,6 @@ func (o ServerGroupPropertiesDelegatedSubnetArgumentsOutput) ToServerGroupProper
 	}).(ServerGroupPropertiesDelegatedSubnetArgumentsPtrOutput)
 }
 
-func (o ServerGroupPropertiesDelegatedSubnetArgumentsOutput) ToOutput(ctx context.Context) pulumix.Output[ServerGroupPropertiesDelegatedSubnetArguments] {
-	return pulumix.Output[ServerGroupPropertiesDelegatedSubnetArguments]{
-		OutputState: o.OutputState,
-	}
-}
-
 // delegated subnet arm resource id.
 func (o ServerGroupPropertiesDelegatedSubnetArgumentsOutput) SubnetArmResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupPropertiesDelegatedSubnetArguments) *string { return v.SubnetArmResourceId }).(pulumi.StringPtrOutput)
@@ -494,12 +439,6 @@ func (o ServerGroupPropertiesDelegatedSubnetArgumentsPtrOutput) ToServerGroupPro
 
 func (o ServerGroupPropertiesDelegatedSubnetArgumentsPtrOutput) ToServerGroupPropertiesDelegatedSubnetArgumentsPtrOutputWithContext(ctx context.Context) ServerGroupPropertiesDelegatedSubnetArgumentsPtrOutput {
 	return o
-}
-
-func (o ServerGroupPropertiesDelegatedSubnetArgumentsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerGroupPropertiesDelegatedSubnetArguments] {
-	return pulumix.Output[*ServerGroupPropertiesDelegatedSubnetArguments]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerGroupPropertiesDelegatedSubnetArgumentsPtrOutput) Elem() ServerGroupPropertiesDelegatedSubnetArgumentsOutput {
@@ -557,12 +496,6 @@ func (i ServerGroupPropertiesPrivateDnsZoneArgumentsArgs) ToServerGroupPropertie
 	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupPropertiesPrivateDnsZoneArgumentsOutput)
 }
 
-func (i ServerGroupPropertiesPrivateDnsZoneArgumentsArgs) ToOutput(ctx context.Context) pulumix.Output[ServerGroupPropertiesPrivateDnsZoneArguments] {
-	return pulumix.Output[ServerGroupPropertiesPrivateDnsZoneArguments]{
-		OutputState: i.ToServerGroupPropertiesPrivateDnsZoneArgumentsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServerGroupPropertiesPrivateDnsZoneArgumentsArgs) ToServerGroupPropertiesPrivateDnsZoneArgumentsPtrOutput() ServerGroupPropertiesPrivateDnsZoneArgumentsPtrOutput {
 	return i.ToServerGroupPropertiesPrivateDnsZoneArgumentsPtrOutputWithContext(context.Background())
 }
@@ -604,12 +537,6 @@ func (i *serverGroupPropertiesPrivateDnsZoneArgumentsPtrType) ToServerGroupPrope
 	return pulumi.ToOutputWithContext(ctx, i).(ServerGroupPropertiesPrivateDnsZoneArgumentsPtrOutput)
 }
 
-func (i *serverGroupPropertiesPrivateDnsZoneArgumentsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServerGroupPropertiesPrivateDnsZoneArguments] {
-	return pulumix.Output[*ServerGroupPropertiesPrivateDnsZoneArguments]{
-		OutputState: i.ToServerGroupPropertiesPrivateDnsZoneArgumentsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The private dns zone arguments for a server group.
 type ServerGroupPropertiesPrivateDnsZoneArgumentsOutput struct{ *pulumi.OutputState }
 
@@ -635,12 +562,6 @@ func (o ServerGroupPropertiesPrivateDnsZoneArgumentsOutput) ToServerGroupPropert
 	}).(ServerGroupPropertiesPrivateDnsZoneArgumentsPtrOutput)
 }
 
-func (o ServerGroupPropertiesPrivateDnsZoneArgumentsOutput) ToOutput(ctx context.Context) pulumix.Output[ServerGroupPropertiesPrivateDnsZoneArguments] {
-	return pulumix.Output[ServerGroupPropertiesPrivateDnsZoneArguments]{
-		OutputState: o.OutputState,
-	}
-}
-
 // private dns zone arm resource id.
 func (o ServerGroupPropertiesPrivateDnsZoneArgumentsOutput) PrivateDnsZoneArmResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupPropertiesPrivateDnsZoneArguments) *string { return v.PrivateDnsZoneArmResourceId }).(pulumi.StringPtrOutput)
@@ -658,12 +579,6 @@ func (o ServerGroupPropertiesPrivateDnsZoneArgumentsPtrOutput) ToServerGroupProp
 
 func (o ServerGroupPropertiesPrivateDnsZoneArgumentsPtrOutput) ToServerGroupPropertiesPrivateDnsZoneArgumentsPtrOutputWithContext(ctx context.Context) ServerGroupPropertiesPrivateDnsZoneArgumentsPtrOutput {
 	return o
-}
-
-func (o ServerGroupPropertiesPrivateDnsZoneArgumentsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerGroupPropertiesPrivateDnsZoneArguments] {
-	return pulumix.Output[*ServerGroupPropertiesPrivateDnsZoneArguments]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerGroupPropertiesPrivateDnsZoneArgumentsPtrOutput) Elem() ServerGroupPropertiesPrivateDnsZoneArgumentsOutput {
@@ -707,12 +622,6 @@ func (o ServerGroupPropertiesResponseDelegatedSubnetArgumentsOutput) ToServerGro
 	return o
 }
 
-func (o ServerGroupPropertiesResponseDelegatedSubnetArgumentsOutput) ToOutput(ctx context.Context) pulumix.Output[ServerGroupPropertiesResponseDelegatedSubnetArguments] {
-	return pulumix.Output[ServerGroupPropertiesResponseDelegatedSubnetArguments]{
-		OutputState: o.OutputState,
-	}
-}
-
 // delegated subnet arm resource id.
 func (o ServerGroupPropertiesResponseDelegatedSubnetArgumentsOutput) SubnetArmResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupPropertiesResponseDelegatedSubnetArguments) *string { return v.SubnetArmResourceId }).(pulumi.StringPtrOutput)
@@ -730,12 +639,6 @@ func (o ServerGroupPropertiesResponseDelegatedSubnetArgumentsPtrOutput) ToServer
 
 func (o ServerGroupPropertiesResponseDelegatedSubnetArgumentsPtrOutput) ToServerGroupPropertiesResponseDelegatedSubnetArgumentsPtrOutputWithContext(ctx context.Context) ServerGroupPropertiesResponseDelegatedSubnetArgumentsPtrOutput {
 	return o
-}
-
-func (o ServerGroupPropertiesResponseDelegatedSubnetArgumentsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerGroupPropertiesResponseDelegatedSubnetArguments] {
-	return pulumix.Output[*ServerGroupPropertiesResponseDelegatedSubnetArguments]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerGroupPropertiesResponseDelegatedSubnetArgumentsPtrOutput) Elem() ServerGroupPropertiesResponseDelegatedSubnetArgumentsOutput {
@@ -779,12 +682,6 @@ func (o ServerGroupPropertiesResponsePrivateDnsZoneArgumentsOutput) ToServerGrou
 	return o
 }
 
-func (o ServerGroupPropertiesResponsePrivateDnsZoneArgumentsOutput) ToOutput(ctx context.Context) pulumix.Output[ServerGroupPropertiesResponsePrivateDnsZoneArguments] {
-	return pulumix.Output[ServerGroupPropertiesResponsePrivateDnsZoneArguments]{
-		OutputState: o.OutputState,
-	}
-}
-
 // private dns zone arm resource id.
 func (o ServerGroupPropertiesResponsePrivateDnsZoneArgumentsOutput) PrivateDnsZoneArmResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupPropertiesResponsePrivateDnsZoneArguments) *string {
@@ -804,12 +701,6 @@ func (o ServerGroupPropertiesResponsePrivateDnsZoneArgumentsPtrOutput) ToServerG
 
 func (o ServerGroupPropertiesResponsePrivateDnsZoneArgumentsPtrOutput) ToServerGroupPropertiesResponsePrivateDnsZoneArgumentsPtrOutputWithContext(ctx context.Context) ServerGroupPropertiesResponsePrivateDnsZoneArgumentsPtrOutput {
 	return o
-}
-
-func (o ServerGroupPropertiesResponsePrivateDnsZoneArgumentsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerGroupPropertiesResponsePrivateDnsZoneArguments] {
-	return pulumix.Output[*ServerGroupPropertiesResponsePrivateDnsZoneArguments]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerGroupPropertiesResponsePrivateDnsZoneArgumentsPtrOutput) Elem() ServerGroupPropertiesResponsePrivateDnsZoneArgumentsOutput {
@@ -855,12 +746,6 @@ func (o ServerNameItemResponseOutput) ToServerNameItemResponseOutputWithContext(
 	return o
 }
 
-func (o ServerNameItemResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServerNameItemResponse] {
-	return pulumix.Output[ServerNameItemResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The fully qualified domain name of a server.
 func (o ServerNameItemResponseOutput) FullyQualifiedDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerNameItemResponse) string { return v.FullyQualifiedDomainName }).(pulumi.StringOutput)
@@ -883,12 +768,6 @@ func (o ServerNameItemResponseArrayOutput) ToServerNameItemResponseArrayOutput()
 
 func (o ServerNameItemResponseArrayOutput) ToServerNameItemResponseArrayOutputWithContext(ctx context.Context) ServerNameItemResponseArrayOutput {
 	return o
-}
-
-func (o ServerNameItemResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServerNameItemResponse] {
-	return pulumix.Output[[]ServerNameItemResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerNameItemResponseArrayOutput) Index(i pulumi.IntInput) ServerNameItemResponseOutput {
@@ -956,12 +835,6 @@ func (i ServerRoleGroupArgs) ToServerRoleGroupOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ServerRoleGroupOutput)
 }
 
-func (i ServerRoleGroupArgs) ToOutput(ctx context.Context) pulumix.Output[ServerRoleGroup] {
-	return pulumix.Output[ServerRoleGroup]{
-		OutputState: i.ToServerRoleGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ServerRoleGroupArrayInput is an input type that accepts ServerRoleGroupArray and ServerRoleGroupArrayOutput values.
 // You can construct a concrete instance of `ServerRoleGroupArrayInput` via:
 //
@@ -987,12 +860,6 @@ func (i ServerRoleGroupArray) ToServerRoleGroupArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ServerRoleGroupArrayOutput)
 }
 
-func (i ServerRoleGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]ServerRoleGroup] {
-	return pulumix.Output[[]ServerRoleGroup]{
-		OutputState: i.ToServerRoleGroupArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents a server role group.
 type ServerRoleGroupOutput struct{ *pulumi.OutputState }
 
@@ -1006,12 +873,6 @@ func (o ServerRoleGroupOutput) ToServerRoleGroupOutput() ServerRoleGroupOutput {
 
 func (o ServerRoleGroupOutput) ToServerRoleGroupOutputWithContext(ctx context.Context) ServerRoleGroupOutput {
 	return o
-}
-
-func (o ServerRoleGroupOutput) ToOutput(ctx context.Context) pulumix.Output[ServerRoleGroup] {
-	return pulumix.Output[ServerRoleGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If high availability is enabled or not for the server.
@@ -1063,12 +924,6 @@ func (o ServerRoleGroupArrayOutput) ToServerRoleGroupArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o ServerRoleGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServerRoleGroup] {
-	return pulumix.Output[[]ServerRoleGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServerRoleGroupArrayOutput) Index(i pulumi.IntInput) ServerRoleGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerRoleGroup {
 		return vs[0].([]ServerRoleGroup)[vs[1].(int)]
@@ -1110,12 +965,6 @@ func (o ServerRoleGroupResponseOutput) ToServerRoleGroupResponseOutput() ServerR
 
 func (o ServerRoleGroupResponseOutput) ToServerRoleGroupResponseOutputWithContext(ctx context.Context) ServerRoleGroupResponseOutput {
 	return o
-}
-
-func (o ServerRoleGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServerRoleGroupResponse] {
-	return pulumix.Output[ServerRoleGroupResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If high availability is enabled or not for the server.
@@ -1177,12 +1026,6 @@ func (o ServerRoleGroupResponseArrayOutput) ToServerRoleGroupResponseArrayOutput
 	return o
 }
 
-func (o ServerRoleGroupResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServerRoleGroupResponse] {
-	return pulumix.Output[[]ServerRoleGroupResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServerRoleGroupResponseArrayOutput) Index(i pulumi.IntInput) ServerRoleGroupResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerRoleGroupResponse {
 		return vs[0].([]ServerRoleGroupResponse)[vs[1].(int)]
@@ -1218,12 +1061,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

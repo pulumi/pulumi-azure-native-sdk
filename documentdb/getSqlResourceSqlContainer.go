@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the SQL container under an existing Azure Cosmos DB database account.
@@ -105,12 +104,6 @@ func (o LookupSqlResourceSqlContainerResultOutput) ToLookupSqlResourceSqlContain
 
 func (o LookupSqlResourceSqlContainerResultOutput) ToLookupSqlResourceSqlContainerResultOutputWithContext(ctx context.Context) LookupSqlResourceSqlContainerResultOutput {
 	return o
-}
-
-func (o LookupSqlResourceSqlContainerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSqlResourceSqlContainerResult] {
-	return pulumix.Output[LookupSqlResourceSqlContainerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique resource identifier of the ARM resource.

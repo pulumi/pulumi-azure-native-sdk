@@ -80,12 +80,6 @@ func (o DiskIndependenceModeOutput) ToDiskIndependenceModePtrOutputWithContext(c
 	}).(DiskIndependenceModePtrOutput)
 }
 
-func (o DiskIndependenceModeOutput) ToOutput(ctx context.Context) pulumix.Output[DiskIndependenceMode] {
-	return pulumix.Output[DiskIndependenceMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DiskIndependenceModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -119,12 +113,6 @@ func (o DiskIndependenceModePtrOutput) ToDiskIndependenceModePtrOutput() DiskInd
 
 func (o DiskIndependenceModePtrOutput) ToDiskIndependenceModePtrOutputWithContext(ctx context.Context) DiskIndependenceModePtrOutput {
 	return o
-}
-
-func (o DiskIndependenceModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskIndependenceMode] {
-	return pulumix.Output[*DiskIndependenceMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskIndependenceModePtrOutput) Elem() DiskIndependenceModeOutput {
@@ -267,12 +255,6 @@ func (o NICTypeOutput) ToNICTypePtrOutputWithContext(ctx context.Context) NICTyp
 	}).(NICTypePtrOutput)
 }
 
-func (o NICTypeOutput) ToOutput(ctx context.Context) pulumix.Output[NICType] {
-	return pulumix.Output[NICType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NICTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -306,12 +288,6 @@ func (o NICTypePtrOutput) ToNICTypePtrOutput() NICTypePtrOutput {
 
 func (o NICTypePtrOutput) ToNICTypePtrOutputWithContext(ctx context.Context) NICTypePtrOutput {
 	return o
-}
-
-func (o NICTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NICType] {
-	return pulumix.Output[*NICType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NICTypePtrOutput) Elem() NICTypeOutput {

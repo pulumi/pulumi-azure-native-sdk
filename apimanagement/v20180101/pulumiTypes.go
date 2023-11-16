@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i BackendAuthorizationHeaderCredentialsArgs) ToBackendAuthorizationHeaderC
 	return pulumi.ToOutputWithContext(ctx, i).(BackendAuthorizationHeaderCredentialsOutput)
 }
 
-func (i BackendAuthorizationHeaderCredentialsArgs) ToOutput(ctx context.Context) pulumix.Output[BackendAuthorizationHeaderCredentials] {
-	return pulumix.Output[BackendAuthorizationHeaderCredentials]{
-		OutputState: i.ToBackendAuthorizationHeaderCredentialsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BackendAuthorizationHeaderCredentialsArgs) ToBackendAuthorizationHeaderCredentialsPtrOutput() BackendAuthorizationHeaderCredentialsPtrOutput {
 	return i.ToBackendAuthorizationHeaderCredentialsPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *backendAuthorizationHeaderCredentialsPtrType) ToBackendAuthorizationHea
 	return pulumi.ToOutputWithContext(ctx, i).(BackendAuthorizationHeaderCredentialsPtrOutput)
 }
 
-func (i *backendAuthorizationHeaderCredentialsPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackendAuthorizationHeaderCredentials] {
-	return pulumix.Output[*BackendAuthorizationHeaderCredentials]{
-		OutputState: i.ToBackendAuthorizationHeaderCredentialsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Authorization header information.
 type BackendAuthorizationHeaderCredentialsOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o BackendAuthorizationHeaderCredentialsOutput) ToBackendAuthorizationHeade
 	}).(BackendAuthorizationHeaderCredentialsPtrOutput)
 }
 
-func (o BackendAuthorizationHeaderCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[BackendAuthorizationHeaderCredentials] {
-	return pulumix.Output[BackendAuthorizationHeaderCredentials]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Authentication Parameter value.
 func (o BackendAuthorizationHeaderCredentialsOutput) Parameter() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendAuthorizationHeaderCredentials) string { return v.Parameter }).(pulumi.StringOutput)
@@ -159,12 +140,6 @@ func (o BackendAuthorizationHeaderCredentialsPtrOutput) ToBackendAuthorizationHe
 
 func (o BackendAuthorizationHeaderCredentialsPtrOutput) ToBackendAuthorizationHeaderCredentialsPtrOutputWithContext(ctx context.Context) BackendAuthorizationHeaderCredentialsPtrOutput {
 	return o
-}
-
-func (o BackendAuthorizationHeaderCredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendAuthorizationHeaderCredentials] {
-	return pulumix.Output[*BackendAuthorizationHeaderCredentials]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackendAuthorizationHeaderCredentialsPtrOutput) Elem() BackendAuthorizationHeaderCredentialsOutput {
@@ -220,12 +195,6 @@ func (o BackendAuthorizationHeaderCredentialsResponseOutput) ToBackendAuthorizat
 	return o
 }
 
-func (o BackendAuthorizationHeaderCredentialsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BackendAuthorizationHeaderCredentialsResponse] {
-	return pulumix.Output[BackendAuthorizationHeaderCredentialsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Authentication Parameter value.
 func (o BackendAuthorizationHeaderCredentialsResponseOutput) Parameter() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendAuthorizationHeaderCredentialsResponse) string { return v.Parameter }).(pulumi.StringOutput)
@@ -248,12 +217,6 @@ func (o BackendAuthorizationHeaderCredentialsResponsePtrOutput) ToBackendAuthori
 
 func (o BackendAuthorizationHeaderCredentialsResponsePtrOutput) ToBackendAuthorizationHeaderCredentialsResponsePtrOutputWithContext(ctx context.Context) BackendAuthorizationHeaderCredentialsResponsePtrOutput {
 	return o
-}
-
-func (o BackendAuthorizationHeaderCredentialsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendAuthorizationHeaderCredentialsResponse] {
-	return pulumix.Output[*BackendAuthorizationHeaderCredentialsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackendAuthorizationHeaderCredentialsResponsePtrOutput) Elem() BackendAuthorizationHeaderCredentialsResponseOutput {
@@ -333,12 +296,6 @@ func (i BackendCredentialsContractArgs) ToBackendCredentialsContractOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(BackendCredentialsContractOutput)
 }
 
-func (i BackendCredentialsContractArgs) ToOutput(ctx context.Context) pulumix.Output[BackendCredentialsContract] {
-	return pulumix.Output[BackendCredentialsContract]{
-		OutputState: i.ToBackendCredentialsContractOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BackendCredentialsContractArgs) ToBackendCredentialsContractPtrOutput() BackendCredentialsContractPtrOutput {
 	return i.ToBackendCredentialsContractPtrOutputWithContext(context.Background())
 }
@@ -380,12 +337,6 @@ func (i *backendCredentialsContractPtrType) ToBackendCredentialsContractPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(BackendCredentialsContractPtrOutput)
 }
 
-func (i *backendCredentialsContractPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackendCredentialsContract] {
-	return pulumix.Output[*BackendCredentialsContract]{
-		OutputState: i.ToBackendCredentialsContractPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Details of the Credentials used to connect to Backend.
 type BackendCredentialsContractOutput struct{ *pulumi.OutputState }
 
@@ -409,12 +360,6 @@ func (o BackendCredentialsContractOutput) ToBackendCredentialsContractPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendCredentialsContract) *BackendCredentialsContract {
 		return &v
 	}).(BackendCredentialsContractPtrOutput)
-}
-
-func (o BackendCredentialsContractOutput) ToOutput(ctx context.Context) pulumix.Output[BackendCredentialsContract] {
-	return pulumix.Output[BackendCredentialsContract]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Authorization header authentication
@@ -449,12 +394,6 @@ func (o BackendCredentialsContractPtrOutput) ToBackendCredentialsContractPtrOutp
 
 func (o BackendCredentialsContractPtrOutput) ToBackendCredentialsContractPtrOutputWithContext(ctx context.Context) BackendCredentialsContractPtrOutput {
 	return o
-}
-
-func (o BackendCredentialsContractPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendCredentialsContract] {
-	return pulumix.Output[*BackendCredentialsContract]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackendCredentialsContractPtrOutput) Elem() BackendCredentialsContractOutput {
@@ -534,12 +473,6 @@ func (o BackendCredentialsContractResponseOutput) ToBackendCredentialsContractRe
 	return o
 }
 
-func (o BackendCredentialsContractResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BackendCredentialsContractResponse] {
-	return pulumix.Output[BackendCredentialsContractResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Authorization header authentication
 func (o BackendCredentialsContractResponseOutput) Authorization() BackendAuthorizationHeaderCredentialsResponsePtrOutput {
 	return o.ApplyT(func(v BackendCredentialsContractResponse) *BackendAuthorizationHeaderCredentialsResponse {
@@ -574,12 +507,6 @@ func (o BackendCredentialsContractResponsePtrOutput) ToBackendCredentialsContrac
 
 func (o BackendCredentialsContractResponsePtrOutput) ToBackendCredentialsContractResponsePtrOutputWithContext(ctx context.Context) BackendCredentialsContractResponsePtrOutput {
 	return o
-}
-
-func (o BackendCredentialsContractResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendCredentialsContractResponse] {
-	return pulumix.Output[*BackendCredentialsContractResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackendCredentialsContractResponsePtrOutput) Elem() BackendCredentialsContractResponseOutput {
@@ -667,12 +594,6 @@ func (i BackendPropertiesArgs) ToBackendPropertiesOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(BackendPropertiesOutput)
 }
 
-func (i BackendPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[BackendProperties] {
-	return pulumix.Output[BackendProperties]{
-		OutputState: i.ToBackendPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BackendPropertiesArgs) ToBackendPropertiesPtrOutput() BackendPropertiesPtrOutput {
 	return i.ToBackendPropertiesPtrOutputWithContext(context.Background())
 }
@@ -714,12 +635,6 @@ func (i *backendPropertiesPtrType) ToBackendPropertiesPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(BackendPropertiesPtrOutput)
 }
 
-func (i *backendPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackendProperties] {
-	return pulumix.Output[*BackendProperties]{
-		OutputState: i.ToBackendPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Properties specific to the Backend Type.
 type BackendPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -745,12 +660,6 @@ func (o BackendPropertiesOutput) ToBackendPropertiesPtrOutputWithContext(ctx con
 	}).(BackendPropertiesPtrOutput)
 }
 
-func (o BackendPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[BackendProperties] {
-	return pulumix.Output[BackendProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Backend Service Fabric Cluster Properties
 func (o BackendPropertiesOutput) ServiceFabricCluster() BackendServiceFabricClusterPropertiesPtrOutput {
 	return o.ApplyT(func(v BackendProperties) *BackendServiceFabricClusterProperties { return v.ServiceFabricCluster }).(BackendServiceFabricClusterPropertiesPtrOutput)
@@ -768,12 +677,6 @@ func (o BackendPropertiesPtrOutput) ToBackendPropertiesPtrOutput() BackendProper
 
 func (o BackendPropertiesPtrOutput) ToBackendPropertiesPtrOutputWithContext(ctx context.Context) BackendPropertiesPtrOutput {
 	return o
-}
-
-func (o BackendPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendProperties] {
-	return pulumix.Output[*BackendProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackendPropertiesPtrOutput) Elem() BackendPropertiesOutput {
@@ -815,12 +718,6 @@ func (o BackendPropertiesResponseOutput) ToBackendPropertiesResponseOutput() Bac
 
 func (o BackendPropertiesResponseOutput) ToBackendPropertiesResponseOutputWithContext(ctx context.Context) BackendPropertiesResponseOutput {
 	return o
-}
-
-func (o BackendPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BackendPropertiesResponse] {
-	return pulumix.Output[BackendPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Backend Service Fabric Cluster Properties
@@ -873,12 +770,6 @@ func (i BackendProxyContractArgs) ToBackendProxyContractOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(BackendProxyContractOutput)
 }
 
-func (i BackendProxyContractArgs) ToOutput(ctx context.Context) pulumix.Output[BackendProxyContract] {
-	return pulumix.Output[BackendProxyContract]{
-		OutputState: i.ToBackendProxyContractOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BackendProxyContractArgs) ToBackendProxyContractPtrOutput() BackendProxyContractPtrOutput {
 	return i.ToBackendProxyContractPtrOutputWithContext(context.Background())
 }
@@ -920,12 +811,6 @@ func (i *backendProxyContractPtrType) ToBackendProxyContractPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(BackendProxyContractPtrOutput)
 }
 
-func (i *backendProxyContractPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackendProxyContract] {
-	return pulumix.Output[*BackendProxyContract]{
-		OutputState: i.ToBackendProxyContractPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Details of the Backend WebProxy Server to use in the Request to Backend.
 type BackendProxyContractOutput struct{ *pulumi.OutputState }
 
@@ -949,12 +834,6 @@ func (o BackendProxyContractOutput) ToBackendProxyContractPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendProxyContract) *BackendProxyContract {
 		return &v
 	}).(BackendProxyContractPtrOutput)
-}
-
-func (o BackendProxyContractOutput) ToOutput(ctx context.Context) pulumix.Output[BackendProxyContract] {
-	return pulumix.Output[BackendProxyContract]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Password to connect to the WebProxy Server
@@ -984,12 +863,6 @@ func (o BackendProxyContractPtrOutput) ToBackendProxyContractPtrOutput() Backend
 
 func (o BackendProxyContractPtrOutput) ToBackendProxyContractPtrOutputWithContext(ctx context.Context) BackendProxyContractPtrOutput {
 	return o
-}
-
-func (o BackendProxyContractPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendProxyContract] {
-	return pulumix.Output[*BackendProxyContract]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackendProxyContractPtrOutput) Elem() BackendProxyContractOutput {
@@ -1057,12 +930,6 @@ func (o BackendProxyContractResponseOutput) ToBackendProxyContractResponseOutput
 	return o
 }
 
-func (o BackendProxyContractResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BackendProxyContractResponse] {
-	return pulumix.Output[BackendProxyContractResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Password to connect to the WebProxy Server
 func (o BackendProxyContractResponseOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackendProxyContractResponse) *string { return v.Password }).(pulumi.StringPtrOutput)
@@ -1090,12 +957,6 @@ func (o BackendProxyContractResponsePtrOutput) ToBackendProxyContractResponsePtr
 
 func (o BackendProxyContractResponsePtrOutput) ToBackendProxyContractResponsePtrOutputWithContext(ctx context.Context) BackendProxyContractResponsePtrOutput {
 	return o
-}
-
-func (o BackendProxyContractResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendProxyContractResponse] {
-	return pulumix.Output[*BackendProxyContractResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackendProxyContractResponsePtrOutput) Elem() BackendProxyContractResponseOutput {
@@ -1189,12 +1050,6 @@ func (i BackendServiceFabricClusterPropertiesArgs) ToBackendServiceFabricCluster
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceFabricClusterPropertiesOutput)
 }
 
-func (i BackendServiceFabricClusterPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[BackendServiceFabricClusterProperties] {
-	return pulumix.Output[BackendServiceFabricClusterProperties]{
-		OutputState: i.ToBackendServiceFabricClusterPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BackendServiceFabricClusterPropertiesArgs) ToBackendServiceFabricClusterPropertiesPtrOutput() BackendServiceFabricClusterPropertiesPtrOutput {
 	return i.ToBackendServiceFabricClusterPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1236,12 +1091,6 @@ func (i *backendServiceFabricClusterPropertiesPtrType) ToBackendServiceFabricClu
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceFabricClusterPropertiesPtrOutput)
 }
 
-func (i *backendServiceFabricClusterPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceFabricClusterProperties] {
-	return pulumix.Output[*BackendServiceFabricClusterProperties]{
-		OutputState: i.ToBackendServiceFabricClusterPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Properties of the Service Fabric Type Backend.
 type BackendServiceFabricClusterPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1265,12 +1114,6 @@ func (o BackendServiceFabricClusterPropertiesOutput) ToBackendServiceFabricClust
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendServiceFabricClusterProperties) *BackendServiceFabricClusterProperties {
 		return &v
 	}).(BackendServiceFabricClusterPropertiesPtrOutput)
-}
-
-func (o BackendServiceFabricClusterPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[BackendServiceFabricClusterProperties] {
-	return pulumix.Output[BackendServiceFabricClusterProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The client certificate thumbprint for the management endpoint.
@@ -1310,12 +1153,6 @@ func (o BackendServiceFabricClusterPropertiesPtrOutput) ToBackendServiceFabricCl
 
 func (o BackendServiceFabricClusterPropertiesPtrOutput) ToBackendServiceFabricClusterPropertiesPtrOutputWithContext(ctx context.Context) BackendServiceFabricClusterPropertiesPtrOutput {
 	return o
-}
-
-func (o BackendServiceFabricClusterPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceFabricClusterProperties] {
-	return pulumix.Output[*BackendServiceFabricClusterProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackendServiceFabricClusterPropertiesPtrOutput) Elem() BackendServiceFabricClusterPropertiesOutput {
@@ -1407,12 +1244,6 @@ func (o BackendServiceFabricClusterPropertiesResponseOutput) ToBackendServiceFab
 	return o
 }
 
-func (o BackendServiceFabricClusterPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BackendServiceFabricClusterPropertiesResponse] {
-	return pulumix.Output[BackendServiceFabricClusterPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The client certificate thumbprint for the management endpoint.
 func (o BackendServiceFabricClusterPropertiesResponseOutput) ClientCertificatethumbprint() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendServiceFabricClusterPropertiesResponse) string { return v.ClientCertificatethumbprint }).(pulumi.StringOutput)
@@ -1452,12 +1283,6 @@ func (o BackendServiceFabricClusterPropertiesResponsePtrOutput) ToBackendService
 
 func (o BackendServiceFabricClusterPropertiesResponsePtrOutput) ToBackendServiceFabricClusterPropertiesResponsePtrOutputWithContext(ctx context.Context) BackendServiceFabricClusterPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o BackendServiceFabricClusterPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendServiceFabricClusterPropertiesResponse] {
-	return pulumix.Output[*BackendServiceFabricClusterPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackendServiceFabricClusterPropertiesResponsePtrOutput) Elem() BackendServiceFabricClusterPropertiesResponseOutput {
@@ -1590,12 +1415,6 @@ func (i BackendTlsPropertiesArgs) ToBackendTlsPropertiesOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(BackendTlsPropertiesOutput)
 }
 
-func (i BackendTlsPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[BackendTlsProperties] {
-	return pulumix.Output[BackendTlsProperties]{
-		OutputState: i.ToBackendTlsPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BackendTlsPropertiesArgs) ToBackendTlsPropertiesPtrOutput() BackendTlsPropertiesPtrOutput {
 	return i.ToBackendTlsPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1637,12 +1456,6 @@ func (i *backendTlsPropertiesPtrType) ToBackendTlsPropertiesPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(BackendTlsPropertiesPtrOutput)
 }
 
-func (i *backendTlsPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackendTlsProperties] {
-	return pulumix.Output[*BackendTlsProperties]{
-		OutputState: i.ToBackendTlsPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Properties controlling TLS Certificate Validation.
 type BackendTlsPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1668,12 +1481,6 @@ func (o BackendTlsPropertiesOutput) ToBackendTlsPropertiesPtrOutputWithContext(c
 	}).(BackendTlsPropertiesPtrOutput)
 }
 
-func (o BackendTlsPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[BackendTlsProperties] {
-	return pulumix.Output[BackendTlsProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Flag indicating whether SSL certificate chain validation should be done when using self-signed certificates for this backend host.
 func (o BackendTlsPropertiesOutput) ValidateCertificateChain() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BackendTlsProperties) *bool { return v.ValidateCertificateChain }).(pulumi.BoolPtrOutput)
@@ -1696,12 +1503,6 @@ func (o BackendTlsPropertiesPtrOutput) ToBackendTlsPropertiesPtrOutput() Backend
 
 func (o BackendTlsPropertiesPtrOutput) ToBackendTlsPropertiesPtrOutputWithContext(ctx context.Context) BackendTlsPropertiesPtrOutput {
 	return o
-}
-
-func (o BackendTlsPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendTlsProperties] {
-	return pulumix.Output[*BackendTlsProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackendTlsPropertiesPtrOutput) Elem() BackendTlsPropertiesOutput {
@@ -1774,12 +1575,6 @@ func (o BackendTlsPropertiesResponseOutput) ToBackendTlsPropertiesResponseOutput
 	return o
 }
 
-func (o BackendTlsPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BackendTlsPropertiesResponse] {
-	return pulumix.Output[BackendTlsPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Flag indicating whether SSL certificate chain validation should be done when using self-signed certificates for this backend host.
 func (o BackendTlsPropertiesResponseOutput) ValidateCertificateChain() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BackendTlsPropertiesResponse) *bool { return v.ValidateCertificateChain }).(pulumi.BoolPtrOutput)
@@ -1802,12 +1597,6 @@ func (o BackendTlsPropertiesResponsePtrOutput) ToBackendTlsPropertiesResponsePtr
 
 func (o BackendTlsPropertiesResponsePtrOutput) ToBackendTlsPropertiesResponsePtrOutputWithContext(ctx context.Context) BackendTlsPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o BackendTlsPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendTlsPropertiesResponse] {
-	return pulumix.Output[*BackendTlsPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackendTlsPropertiesResponsePtrOutput) Elem() BackendTlsPropertiesResponseOutput {
@@ -1869,12 +1658,6 @@ func (o GroupContractPropertiesResponseOutput) ToGroupContractPropertiesResponse
 	return o
 }
 
-func (o GroupContractPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GroupContractPropertiesResponse] {
-	return pulumix.Output[GroupContractPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // true if the group is one of the three system groups (Administrators, Developers, or Guests); otherwise false.
 func (o GroupContractPropertiesResponseOutput) BuiltIn() pulumi.BoolOutput {
 	return o.ApplyT(func(v GroupContractPropertiesResponse) bool { return v.BuiltIn }).(pulumi.BoolOutput)
@@ -1912,12 +1695,6 @@ func (o GroupContractPropertiesResponseArrayOutput) ToGroupContractPropertiesRes
 
 func (o GroupContractPropertiesResponseArrayOutput) ToGroupContractPropertiesResponseArrayOutputWithContext(ctx context.Context) GroupContractPropertiesResponseArrayOutput {
 	return o
-}
-
-func (o GroupContractPropertiesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GroupContractPropertiesResponse] {
-	return pulumix.Output[[]GroupContractPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GroupContractPropertiesResponseArrayOutput) Index(i pulumi.IntInput) GroupContractPropertiesResponseOutput {
@@ -1965,12 +1742,6 @@ func (i UserIdentityContractArgs) ToUserIdentityContractOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(UserIdentityContractOutput)
 }
 
-func (i UserIdentityContractArgs) ToOutput(ctx context.Context) pulumix.Output[UserIdentityContract] {
-	return pulumix.Output[UserIdentityContract]{
-		OutputState: i.ToUserIdentityContractOutputWithContext(ctx).OutputState,
-	}
-}
-
 // UserIdentityContractArrayInput is an input type that accepts UserIdentityContractArray and UserIdentityContractArrayOutput values.
 // You can construct a concrete instance of `UserIdentityContractArrayInput` via:
 //
@@ -1996,12 +1767,6 @@ func (i UserIdentityContractArray) ToUserIdentityContractArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(UserIdentityContractArrayOutput)
 }
 
-func (i UserIdentityContractArray) ToOutput(ctx context.Context) pulumix.Output[[]UserIdentityContract] {
-	return pulumix.Output[[]UserIdentityContract]{
-		OutputState: i.ToUserIdentityContractArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // User identity details.
 type UserIdentityContractOutput struct{ *pulumi.OutputState }
 
@@ -2015,12 +1780,6 @@ func (o UserIdentityContractOutput) ToUserIdentityContractOutput() UserIdentityC
 
 func (o UserIdentityContractOutput) ToUserIdentityContractOutputWithContext(ctx context.Context) UserIdentityContractOutput {
 	return o
-}
-
-func (o UserIdentityContractOutput) ToOutput(ctx context.Context) pulumix.Output[UserIdentityContract] {
-	return pulumix.Output[UserIdentityContract]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identifier value within provider.
@@ -2045,12 +1804,6 @@ func (o UserIdentityContractArrayOutput) ToUserIdentityContractArrayOutput() Use
 
 func (o UserIdentityContractArrayOutput) ToUserIdentityContractArrayOutputWithContext(ctx context.Context) UserIdentityContractArrayOutput {
 	return o
-}
-
-func (o UserIdentityContractArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UserIdentityContract] {
-	return pulumix.Output[[]UserIdentityContract]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserIdentityContractArrayOutput) Index(i pulumi.IntInput) UserIdentityContractOutput {
@@ -2082,12 +1835,6 @@ func (o UserIdentityContractResponseOutput) ToUserIdentityContractResponseOutput
 	return o
 }
 
-func (o UserIdentityContractResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserIdentityContractResponse] {
-	return pulumix.Output[UserIdentityContractResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Identifier value within provider.
 func (o UserIdentityContractResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserIdentityContractResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -2110,12 +1857,6 @@ func (o UserIdentityContractResponseArrayOutput) ToUserIdentityContractResponseA
 
 func (o UserIdentityContractResponseArrayOutput) ToUserIdentityContractResponseArrayOutputWithContext(ctx context.Context) UserIdentityContractResponseArrayOutput {
 	return o
-}
-
-func (o UserIdentityContractResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UserIdentityContractResponse] {
-	return pulumix.Output[[]UserIdentityContractResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserIdentityContractResponseArrayOutput) Index(i pulumi.IntInput) UserIdentityContractResponseOutput {
@@ -2163,12 +1904,6 @@ func (i X509CertificateNameArgs) ToX509CertificateNameOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(X509CertificateNameOutput)
 }
 
-func (i X509CertificateNameArgs) ToOutput(ctx context.Context) pulumix.Output[X509CertificateName] {
-	return pulumix.Output[X509CertificateName]{
-		OutputState: i.ToX509CertificateNameOutputWithContext(ctx).OutputState,
-	}
-}
-
 // X509CertificateNameArrayInput is an input type that accepts X509CertificateNameArray and X509CertificateNameArrayOutput values.
 // You can construct a concrete instance of `X509CertificateNameArrayInput` via:
 //
@@ -2194,12 +1929,6 @@ func (i X509CertificateNameArray) ToX509CertificateNameArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(X509CertificateNameArrayOutput)
 }
 
-func (i X509CertificateNameArray) ToOutput(ctx context.Context) pulumix.Output[[]X509CertificateName] {
-	return pulumix.Output[[]X509CertificateName]{
-		OutputState: i.ToX509CertificateNameArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Properties of server X509Names.
 type X509CertificateNameOutput struct{ *pulumi.OutputState }
 
@@ -2213,12 +1942,6 @@ func (o X509CertificateNameOutput) ToX509CertificateNameOutput() X509Certificate
 
 func (o X509CertificateNameOutput) ToX509CertificateNameOutputWithContext(ctx context.Context) X509CertificateNameOutput {
 	return o
-}
-
-func (o X509CertificateNameOutput) ToOutput(ctx context.Context) pulumix.Output[X509CertificateName] {
-	return pulumix.Output[X509CertificateName]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Thumbprint for the Issuer of the Certificate.
@@ -2243,12 +1966,6 @@ func (o X509CertificateNameArrayOutput) ToX509CertificateNameArrayOutput() X509C
 
 func (o X509CertificateNameArrayOutput) ToX509CertificateNameArrayOutputWithContext(ctx context.Context) X509CertificateNameArrayOutput {
 	return o
-}
-
-func (o X509CertificateNameArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]X509CertificateName] {
-	return pulumix.Output[[]X509CertificateName]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X509CertificateNameArrayOutput) Index(i pulumi.IntInput) X509CertificateNameOutput {
@@ -2280,12 +1997,6 @@ func (o X509CertificateNameResponseOutput) ToX509CertificateNameResponseOutputWi
 	return o
 }
 
-func (o X509CertificateNameResponseOutput) ToOutput(ctx context.Context) pulumix.Output[X509CertificateNameResponse] {
-	return pulumix.Output[X509CertificateNameResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Thumbprint for the Issuer of the Certificate.
 func (o X509CertificateNameResponseOutput) IssuerCertificateThumbprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v X509CertificateNameResponse) *string { return v.IssuerCertificateThumbprint }).(pulumi.StringPtrOutput)
@@ -2308,12 +2019,6 @@ func (o X509CertificateNameResponseArrayOutput) ToX509CertificateNameResponseArr
 
 func (o X509CertificateNameResponseArrayOutput) ToX509CertificateNameResponseArrayOutputWithContext(ctx context.Context) X509CertificateNameResponseArrayOutput {
 	return o
-}
-
-func (o X509CertificateNameResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]X509CertificateNameResponse] {
-	return pulumix.Output[[]X509CertificateNameResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X509CertificateNameResponseArrayOutput) Index(i pulumi.IntInput) X509CertificateNameResponseOutput {

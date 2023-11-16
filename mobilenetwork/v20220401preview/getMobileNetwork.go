@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about the specified mobile network.
@@ -101,12 +100,6 @@ func (o LookupMobileNetworkResultOutput) ToLookupMobileNetworkResultOutput() Loo
 
 func (o LookupMobileNetworkResultOutput) ToLookupMobileNetworkResultOutputWithContext(ctx context.Context) LookupMobileNetworkResultOutput {
 	return o
-}
-
-func (o LookupMobileNetworkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMobileNetworkResult] {
-	return pulumix.Output[LookupMobileNetworkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

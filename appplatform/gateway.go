@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Spring Cloud Gateway resource
@@ -172,12 +171,6 @@ func (i *Gateway) ToGatewayOutputWithContext(ctx context.Context) GatewayOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayOutput)
 }
 
-func (i *Gateway) ToOutput(ctx context.Context) pulumix.Output[*Gateway] {
-	return pulumix.Output[*Gateway]{
-		OutputState: i.ToGatewayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GatewayOutput struct{ *pulumi.OutputState }
 
 func (GatewayOutput) ElementType() reflect.Type {
@@ -190,12 +183,6 @@ func (o GatewayOutput) ToGatewayOutput() GatewayOutput {
 
 func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOutput {
 	return o
-}
-
-func (o GatewayOutput) ToOutput(ctx context.Context) pulumix.Output[*Gateway] {
-	return pulumix.Output[*Gateway]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource.

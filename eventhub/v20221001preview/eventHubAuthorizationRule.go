@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Single item in a List or Get AuthorizationRule operation
@@ -163,12 +162,6 @@ func (i *EventHubAuthorizationRule) ToEventHubAuthorizationRuleOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(EventHubAuthorizationRuleOutput)
 }
 
-func (i *EventHubAuthorizationRule) ToOutput(ctx context.Context) pulumix.Output[*EventHubAuthorizationRule] {
-	return pulumix.Output[*EventHubAuthorizationRule]{
-		OutputState: i.ToEventHubAuthorizationRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EventHubAuthorizationRuleOutput struct{ *pulumi.OutputState }
 
 func (EventHubAuthorizationRuleOutput) ElementType() reflect.Type {
@@ -181,12 +174,6 @@ func (o EventHubAuthorizationRuleOutput) ToEventHubAuthorizationRuleOutput() Eve
 
 func (o EventHubAuthorizationRuleOutput) ToEventHubAuthorizationRuleOutputWithContext(ctx context.Context) EventHubAuthorizationRuleOutput {
 	return o
-}
-
-func (o EventHubAuthorizationRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*EventHubAuthorizationRule] {
-	return pulumix.Output[*EventHubAuthorizationRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

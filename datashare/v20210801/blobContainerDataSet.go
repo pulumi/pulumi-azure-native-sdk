@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure storage blob container data set.
@@ -188,12 +187,6 @@ func (i *BlobContainerDataSet) ToBlobContainerDataSetOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(BlobContainerDataSetOutput)
 }
 
-func (i *BlobContainerDataSet) ToOutput(ctx context.Context) pulumix.Output[*BlobContainerDataSet] {
-	return pulumix.Output[*BlobContainerDataSet]{
-		OutputState: i.ToBlobContainerDataSetOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BlobContainerDataSetOutput struct{ *pulumi.OutputState }
 
 func (BlobContainerDataSetOutput) ElementType() reflect.Type {
@@ -206,12 +199,6 @@ func (o BlobContainerDataSetOutput) ToBlobContainerDataSetOutput() BlobContainer
 
 func (o BlobContainerDataSetOutput) ToBlobContainerDataSetOutputWithContext(ctx context.Context) BlobContainerDataSetOutput {
 	return o
-}
-
-func (o BlobContainerDataSetOutput) ToOutput(ctx context.Context) pulumix.Output[*BlobContainerDataSet] {
-	return pulumix.Output[*BlobContainerDataSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // BLOB Container name.

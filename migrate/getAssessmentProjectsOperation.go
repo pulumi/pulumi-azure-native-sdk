@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a AssessmentProject
@@ -111,12 +110,6 @@ func (o LookupAssessmentProjectsOperationResultOutput) ToLookupAssessmentProject
 
 func (o LookupAssessmentProjectsOperationResultOutput) ToLookupAssessmentProjectsOperationResultOutputWithContext(ctx context.Context) LookupAssessmentProjectsOperationResultOutput {
 	return o
-}
-
-func (o LookupAssessmentProjectsOperationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAssessmentProjectsOperationResult] {
-	return pulumix.Output[LookupAssessmentProjectsOperationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Assessment solution ARM id tracked by Microsoft.Migrate/migrateProjects.

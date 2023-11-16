@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -81,12 +80,6 @@ func (i BgpSessionArgs) ToBgpSessionOutputWithContext(ctx context.Context) BgpSe
 	return pulumi.ToOutputWithContext(ctx, i).(BgpSessionOutput)
 }
 
-func (i BgpSessionArgs) ToOutput(ctx context.Context) pulumix.Output[BgpSession] {
-	return pulumix.Output[BgpSession]{
-		OutputState: i.ToBgpSessionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BgpSessionArgs) ToBgpSessionPtrOutput() BgpSessionPtrOutput {
 	return i.ToBgpSessionPtrOutputWithContext(context.Background())
 }
@@ -128,12 +121,6 @@ func (i *bgpSessionPtrType) ToBgpSessionPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(BgpSessionPtrOutput)
 }
 
-func (i *bgpSessionPtrType) ToOutput(ctx context.Context) pulumix.Output[*BgpSession] {
-	return pulumix.Output[*BgpSession]{
-		OutputState: i.ToBgpSessionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties that define a BGP session.
 type BgpSessionOutput struct{ *pulumi.OutputState }
 
@@ -157,12 +144,6 @@ func (o BgpSessionOutput) ToBgpSessionPtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BgpSession) *BgpSession {
 		return &v
 	}).(BgpSessionPtrOutput)
-}
-
-func (o BgpSessionOutput) ToOutput(ctx context.Context) pulumix.Output[BgpSession] {
-	return pulumix.Output[BgpSession]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The maximum number of prefixes advertised over the IPv4 session.
@@ -222,12 +203,6 @@ func (o BgpSessionPtrOutput) ToBgpSessionPtrOutput() BgpSessionPtrOutput {
 
 func (o BgpSessionPtrOutput) ToBgpSessionPtrOutputWithContext(ctx context.Context) BgpSessionPtrOutput {
 	return o
-}
-
-func (o BgpSessionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BgpSession] {
-	return pulumix.Output[*BgpSession]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BgpSessionPtrOutput) Elem() BgpSessionOutput {
@@ -371,12 +346,6 @@ func (o BgpSessionResponseOutput) ToBgpSessionResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o BgpSessionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BgpSessionResponse] {
-	return pulumix.Output[BgpSessionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The maximum number of prefixes advertised over the IPv4 session.
 func (o BgpSessionResponseOutput) MaxPrefixesAdvertisedV4() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BgpSessionResponse) *int { return v.MaxPrefixesAdvertisedV4 }).(pulumi.IntPtrOutput)
@@ -444,12 +413,6 @@ func (o BgpSessionResponsePtrOutput) ToBgpSessionResponsePtrOutput() BgpSessionR
 
 func (o BgpSessionResponsePtrOutput) ToBgpSessionResponsePtrOutputWithContext(ctx context.Context) BgpSessionResponsePtrOutput {
 	return o
-}
-
-func (o BgpSessionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BgpSessionResponse] {
-	return pulumix.Output[*BgpSessionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BgpSessionResponsePtrOutput) Elem() BgpSessionResponseOutput {
@@ -615,12 +578,6 @@ func (i ContactDetailArgs) ToContactDetailOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ContactDetailOutput)
 }
 
-func (i ContactDetailArgs) ToOutput(ctx context.Context) pulumix.Output[ContactDetail] {
-	return pulumix.Output[ContactDetail]{
-		OutputState: i.ToContactDetailOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ContactDetailArrayInput is an input type that accepts ContactDetailArray and ContactDetailArrayOutput values.
 // You can construct a concrete instance of `ContactDetailArrayInput` via:
 //
@@ -646,12 +603,6 @@ func (i ContactDetailArray) ToContactDetailArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ContactDetailArrayOutput)
 }
 
-func (i ContactDetailArray) ToOutput(ctx context.Context) pulumix.Output[[]ContactDetail] {
-	return pulumix.Output[[]ContactDetail]{
-		OutputState: i.ToContactDetailArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The contact detail class.
 type ContactDetailOutput struct{ *pulumi.OutputState }
 
@@ -665,12 +616,6 @@ func (o ContactDetailOutput) ToContactDetailOutput() ContactDetailOutput {
 
 func (o ContactDetailOutput) ToContactDetailOutputWithContext(ctx context.Context) ContactDetailOutput {
 	return o
-}
-
-func (o ContactDetailOutput) ToOutput(ctx context.Context) pulumix.Output[ContactDetail] {
-	return pulumix.Output[ContactDetail]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The e-mail address of the contact.
@@ -700,12 +645,6 @@ func (o ContactDetailArrayOutput) ToContactDetailArrayOutput() ContactDetailArra
 
 func (o ContactDetailArrayOutput) ToContactDetailArrayOutputWithContext(ctx context.Context) ContactDetailArrayOutput {
 	return o
-}
-
-func (o ContactDetailArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContactDetail] {
-	return pulumix.Output[[]ContactDetail]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContactDetailArrayOutput) Index(i pulumi.IntInput) ContactDetailOutput {
@@ -739,12 +678,6 @@ func (o ContactDetailResponseOutput) ToContactDetailResponseOutputWithContext(ct
 	return o
 }
 
-func (o ContactDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContactDetailResponse] {
-	return pulumix.Output[ContactDetailResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The e-mail address of the contact.
 func (o ContactDetailResponseOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContactDetailResponse) *string { return v.Email }).(pulumi.StringPtrOutput)
@@ -772,12 +705,6 @@ func (o ContactDetailResponseArrayOutput) ToContactDetailResponseArrayOutput() C
 
 func (o ContactDetailResponseArrayOutput) ToContactDetailResponseArrayOutputWithContext(ctx context.Context) ContactDetailResponseArrayOutput {
 	return o
-}
-
-func (o ContactDetailResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContactDetailResponse] {
-	return pulumix.Output[[]ContactDetailResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContactDetailResponseArrayOutput) Index(i pulumi.IntInput) ContactDetailResponseOutput {
@@ -841,12 +768,6 @@ func (i DirectConnectionArgs) ToDirectConnectionOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DirectConnectionOutput)
 }
 
-func (i DirectConnectionArgs) ToOutput(ctx context.Context) pulumix.Output[DirectConnection] {
-	return pulumix.Output[DirectConnection]{
-		OutputState: i.ToDirectConnectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DirectConnectionArrayInput is an input type that accepts DirectConnectionArray and DirectConnectionArrayOutput values.
 // You can construct a concrete instance of `DirectConnectionArrayInput` via:
 //
@@ -872,12 +793,6 @@ func (i DirectConnectionArray) ToDirectConnectionArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(DirectConnectionArrayOutput)
 }
 
-func (i DirectConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]DirectConnection] {
-	return pulumix.Output[[]DirectConnection]{
-		OutputState: i.ToDirectConnectionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties that define a direct connection.
 type DirectConnectionOutput struct{ *pulumi.OutputState }
 
@@ -891,12 +806,6 @@ func (o DirectConnectionOutput) ToDirectConnectionOutput() DirectConnectionOutpu
 
 func (o DirectConnectionOutput) ToDirectConnectionOutputWithContext(ctx context.Context) DirectConnectionOutput {
 	return o
-}
-
-func (o DirectConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[DirectConnection] {
-	return pulumix.Output[DirectConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The bandwidth of the connection.
@@ -943,12 +852,6 @@ func (o DirectConnectionArrayOutput) ToDirectConnectionArrayOutputWithContext(ct
 	return o
 }
 
-func (o DirectConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DirectConnection] {
-	return pulumix.Output[[]DirectConnection]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DirectConnectionArrayOutput) Index(i pulumi.IntInput) DirectConnectionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DirectConnection {
 		return vs[0].([]DirectConnection)[vs[1].(int)]
@@ -992,12 +895,6 @@ func (o DirectConnectionResponseOutput) ToDirectConnectionResponseOutput() Direc
 
 func (o DirectConnectionResponseOutput) ToDirectConnectionResponseOutputWithContext(ctx context.Context) DirectConnectionResponseOutput {
 	return o
-}
-
-func (o DirectConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DirectConnectionResponse] {
-	return pulumix.Output[DirectConnectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The bandwidth of the connection.
@@ -1064,12 +961,6 @@ func (o DirectConnectionResponseArrayOutput) ToDirectConnectionResponseArrayOutp
 	return o
 }
 
-func (o DirectConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DirectConnectionResponse] {
-	return pulumix.Output[[]DirectConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DirectConnectionResponseArrayOutput) Index(i pulumi.IntInput) DirectConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DirectConnectionResponse {
 		return vs[0].([]DirectConnectionResponse)[vs[1].(int)]
@@ -1119,12 +1010,6 @@ func (i ExchangeConnectionArgs) ToExchangeConnectionOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ExchangeConnectionOutput)
 }
 
-func (i ExchangeConnectionArgs) ToOutput(ctx context.Context) pulumix.Output[ExchangeConnection] {
-	return pulumix.Output[ExchangeConnection]{
-		OutputState: i.ToExchangeConnectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ExchangeConnectionArrayInput is an input type that accepts ExchangeConnectionArray and ExchangeConnectionArrayOutput values.
 // You can construct a concrete instance of `ExchangeConnectionArrayInput` via:
 //
@@ -1150,12 +1035,6 @@ func (i ExchangeConnectionArray) ToExchangeConnectionArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ExchangeConnectionArrayOutput)
 }
 
-func (i ExchangeConnectionArray) ToOutput(ctx context.Context) pulumix.Output[[]ExchangeConnection] {
-	return pulumix.Output[[]ExchangeConnection]{
-		OutputState: i.ToExchangeConnectionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties that define an exchange connection.
 type ExchangeConnectionOutput struct{ *pulumi.OutputState }
 
@@ -1169,12 +1048,6 @@ func (o ExchangeConnectionOutput) ToExchangeConnectionOutput() ExchangeConnectio
 
 func (o ExchangeConnectionOutput) ToExchangeConnectionOutputWithContext(ctx context.Context) ExchangeConnectionOutput {
 	return o
-}
-
-func (o ExchangeConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[ExchangeConnection] {
-	return pulumix.Output[ExchangeConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The BGP session associated with the connection.
@@ -1204,12 +1077,6 @@ func (o ExchangeConnectionArrayOutput) ToExchangeConnectionArrayOutput() Exchang
 
 func (o ExchangeConnectionArrayOutput) ToExchangeConnectionArrayOutputWithContext(ctx context.Context) ExchangeConnectionArrayOutput {
 	return o
-}
-
-func (o ExchangeConnectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExchangeConnection] {
-	return pulumix.Output[[]ExchangeConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExchangeConnectionArrayOutput) Index(i pulumi.IntInput) ExchangeConnectionOutput {
@@ -1245,12 +1112,6 @@ func (o ExchangeConnectionResponseOutput) ToExchangeConnectionResponseOutput() E
 
 func (o ExchangeConnectionResponseOutput) ToExchangeConnectionResponseOutputWithContext(ctx context.Context) ExchangeConnectionResponseOutput {
 	return o
-}
-
-func (o ExchangeConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExchangeConnectionResponse] {
-	return pulumix.Output[ExchangeConnectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The BGP session associated with the connection.
@@ -1292,12 +1153,6 @@ func (o ExchangeConnectionResponseArrayOutput) ToExchangeConnectionResponseArray
 	return o
 }
 
-func (o ExchangeConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ExchangeConnectionResponse] {
-	return pulumix.Output[[]ExchangeConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExchangeConnectionResponseArrayOutput) Index(i pulumi.IntInput) ExchangeConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExchangeConnectionResponse {
 		return vs[0].([]ExchangeConnectionResponse)[vs[1].(int)]
@@ -1329,12 +1184,6 @@ func (o LogAnalyticsWorkspacePropertiesResponseOutput) ToLogAnalyticsWorkspacePr
 	return o
 }
 
-func (o LogAnalyticsWorkspacePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LogAnalyticsWorkspacePropertiesResponse] {
-	return pulumix.Output[LogAnalyticsWorkspacePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of connected agents.
 func (o LogAnalyticsWorkspacePropertiesResponseOutput) ConnectedAgents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LogAnalyticsWorkspacePropertiesResponse) []string { return v.ConnectedAgents }).(pulumi.StringArrayOutput)
@@ -1362,12 +1211,6 @@ func (o LogAnalyticsWorkspacePropertiesResponsePtrOutput) ToLogAnalyticsWorkspac
 
 func (o LogAnalyticsWorkspacePropertiesResponsePtrOutput) ToLogAnalyticsWorkspacePropertiesResponsePtrOutputWithContext(ctx context.Context) LogAnalyticsWorkspacePropertiesResponsePtrOutput {
 	return o
-}
-
-func (o LogAnalyticsWorkspacePropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogAnalyticsWorkspacePropertiesResponse] {
-	return pulumix.Output[*LogAnalyticsWorkspacePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LogAnalyticsWorkspacePropertiesResponsePtrOutput) Elem() LogAnalyticsWorkspacePropertiesResponseOutput {
@@ -1453,12 +1296,6 @@ func (i PeeringPropertiesDirectArgs) ToPeeringPropertiesDirectOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringPropertiesDirectOutput)
 }
 
-func (i PeeringPropertiesDirectArgs) ToOutput(ctx context.Context) pulumix.Output[PeeringPropertiesDirect] {
-	return pulumix.Output[PeeringPropertiesDirect]{
-		OutputState: i.ToPeeringPropertiesDirectOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PeeringPropertiesDirectArgs) ToPeeringPropertiesDirectPtrOutput() PeeringPropertiesDirectPtrOutput {
 	return i.ToPeeringPropertiesDirectPtrOutputWithContext(context.Background())
 }
@@ -1500,12 +1337,6 @@ func (i *peeringPropertiesDirectPtrType) ToPeeringPropertiesDirectPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringPropertiesDirectPtrOutput)
 }
 
-func (i *peeringPropertiesDirectPtrType) ToOutput(ctx context.Context) pulumix.Output[*PeeringPropertiesDirect] {
-	return pulumix.Output[*PeeringPropertiesDirect]{
-		OutputState: i.ToPeeringPropertiesDirectPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties that define a direct peering.
 type PeeringPropertiesDirectOutput struct{ *pulumi.OutputState }
 
@@ -1529,12 +1360,6 @@ func (o PeeringPropertiesDirectOutput) ToPeeringPropertiesDirectPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v PeeringPropertiesDirect) *PeeringPropertiesDirect {
 		return &v
 	}).(PeeringPropertiesDirectPtrOutput)
-}
-
-func (o PeeringPropertiesDirectOutput) ToOutput(ctx context.Context) pulumix.Output[PeeringPropertiesDirect] {
-	return pulumix.Output[PeeringPropertiesDirect]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The set of connections that constitute a direct peering.
@@ -1564,12 +1389,6 @@ func (o PeeringPropertiesDirectPtrOutput) ToPeeringPropertiesDirectPtrOutput() P
 
 func (o PeeringPropertiesDirectPtrOutput) ToPeeringPropertiesDirectPtrOutputWithContext(ctx context.Context) PeeringPropertiesDirectPtrOutput {
 	return o
-}
-
-func (o PeeringPropertiesDirectPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PeeringPropertiesDirect] {
-	return pulumix.Output[*PeeringPropertiesDirect]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PeeringPropertiesDirectPtrOutput) Elem() PeeringPropertiesDirectOutput {
@@ -1639,12 +1458,6 @@ func (o PeeringPropertiesDirectResponseOutput) ToPeeringPropertiesDirectResponse
 	return o
 }
 
-func (o PeeringPropertiesDirectResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PeeringPropertiesDirectResponse] {
-	return pulumix.Output[PeeringPropertiesDirectResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The set of connections that constitute a direct peering.
 func (o PeeringPropertiesDirectResponseOutput) Connections() DirectConnectionResponseArrayOutput {
 	return o.ApplyT(func(v PeeringPropertiesDirectResponse) []DirectConnectionResponse { return v.Connections }).(DirectConnectionResponseArrayOutput)
@@ -1677,12 +1490,6 @@ func (o PeeringPropertiesDirectResponsePtrOutput) ToPeeringPropertiesDirectRespo
 
 func (o PeeringPropertiesDirectResponsePtrOutput) ToPeeringPropertiesDirectResponsePtrOutputWithContext(ctx context.Context) PeeringPropertiesDirectResponsePtrOutput {
 	return o
-}
-
-func (o PeeringPropertiesDirectResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PeeringPropertiesDirectResponse] {
-	return pulumix.Output[*PeeringPropertiesDirectResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PeeringPropertiesDirectResponsePtrOutput) Elem() PeeringPropertiesDirectResponseOutput {
@@ -1774,12 +1581,6 @@ func (i PeeringPropertiesExchangeArgs) ToPeeringPropertiesExchangeOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringPropertiesExchangeOutput)
 }
 
-func (i PeeringPropertiesExchangeArgs) ToOutput(ctx context.Context) pulumix.Output[PeeringPropertiesExchange] {
-	return pulumix.Output[PeeringPropertiesExchange]{
-		OutputState: i.ToPeeringPropertiesExchangeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PeeringPropertiesExchangeArgs) ToPeeringPropertiesExchangePtrOutput() PeeringPropertiesExchangePtrOutput {
 	return i.ToPeeringPropertiesExchangePtrOutputWithContext(context.Background())
 }
@@ -1821,12 +1622,6 @@ func (i *peeringPropertiesExchangePtrType) ToPeeringPropertiesExchangePtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringPropertiesExchangePtrOutput)
 }
 
-func (i *peeringPropertiesExchangePtrType) ToOutput(ctx context.Context) pulumix.Output[*PeeringPropertiesExchange] {
-	return pulumix.Output[*PeeringPropertiesExchange]{
-		OutputState: i.ToPeeringPropertiesExchangePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties that define an exchange peering.
 type PeeringPropertiesExchangeOutput struct{ *pulumi.OutputState }
 
@@ -1852,12 +1647,6 @@ func (o PeeringPropertiesExchangeOutput) ToPeeringPropertiesExchangePtrOutputWit
 	}).(PeeringPropertiesExchangePtrOutput)
 }
 
-func (o PeeringPropertiesExchangeOutput) ToOutput(ctx context.Context) pulumix.Output[PeeringPropertiesExchange] {
-	return pulumix.Output[PeeringPropertiesExchange]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The set of connections that constitute an exchange peering.
 func (o PeeringPropertiesExchangeOutput) Connections() ExchangeConnectionArrayOutput {
 	return o.ApplyT(func(v PeeringPropertiesExchange) []ExchangeConnection { return v.Connections }).(ExchangeConnectionArrayOutput)
@@ -1880,12 +1669,6 @@ func (o PeeringPropertiesExchangePtrOutput) ToPeeringPropertiesExchangePtrOutput
 
 func (o PeeringPropertiesExchangePtrOutput) ToPeeringPropertiesExchangePtrOutputWithContext(ctx context.Context) PeeringPropertiesExchangePtrOutput {
 	return o
-}
-
-func (o PeeringPropertiesExchangePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PeeringPropertiesExchange] {
-	return pulumix.Output[*PeeringPropertiesExchange]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PeeringPropertiesExchangePtrOutput) Elem() PeeringPropertiesExchangeOutput {
@@ -1941,12 +1724,6 @@ func (o PeeringPropertiesExchangeResponseOutput) ToPeeringPropertiesExchangeResp
 	return o
 }
 
-func (o PeeringPropertiesExchangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PeeringPropertiesExchangeResponse] {
-	return pulumix.Output[PeeringPropertiesExchangeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The set of connections that constitute an exchange peering.
 func (o PeeringPropertiesExchangeResponseOutput) Connections() ExchangeConnectionResponseArrayOutput {
 	return o.ApplyT(func(v PeeringPropertiesExchangeResponse) []ExchangeConnectionResponse { return v.Connections }).(ExchangeConnectionResponseArrayOutput)
@@ -1969,12 +1746,6 @@ func (o PeeringPropertiesExchangeResponsePtrOutput) ToPeeringPropertiesExchangeR
 
 func (o PeeringPropertiesExchangeResponsePtrOutput) ToPeeringPropertiesExchangeResponsePtrOutputWithContext(ctx context.Context) PeeringPropertiesExchangeResponsePtrOutput {
 	return o
-}
-
-func (o PeeringPropertiesExchangeResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PeeringPropertiesExchangeResponse] {
-	return pulumix.Output[*PeeringPropertiesExchangeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PeeringPropertiesExchangeResponsePtrOutput) Elem() PeeringPropertiesExchangeResponseOutput {
@@ -2036,12 +1807,6 @@ func (o PeeringServicePrefixEventResponseOutput) ToPeeringServicePrefixEventResp
 	return o
 }
 
-func (o PeeringServicePrefixEventResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PeeringServicePrefixEventResponse] {
-	return pulumix.Output[PeeringServicePrefixEventResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The description of the event associated with a prefix.
 func (o PeeringServicePrefixEventResponseOutput) EventDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v PeeringServicePrefixEventResponse) string { return v.EventDescription }).(pulumi.StringOutput)
@@ -2079,12 +1844,6 @@ func (o PeeringServicePrefixEventResponseArrayOutput) ToPeeringServicePrefixEven
 
 func (o PeeringServicePrefixEventResponseArrayOutput) ToPeeringServicePrefixEventResponseArrayOutputWithContext(ctx context.Context) PeeringServicePrefixEventResponseArrayOutput {
 	return o
-}
-
-func (o PeeringServicePrefixEventResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PeeringServicePrefixEventResponse] {
-	return pulumix.Output[[]PeeringServicePrefixEventResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PeeringServicePrefixEventResponseArrayOutput) Index(i pulumi.IntInput) PeeringServicePrefixEventResponseOutput {
@@ -2128,12 +1887,6 @@ func (i PeeringServiceSkuArgs) ToPeeringServiceSkuOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringServiceSkuOutput)
 }
 
-func (i PeeringServiceSkuArgs) ToOutput(ctx context.Context) pulumix.Output[PeeringServiceSku] {
-	return pulumix.Output[PeeringServiceSku]{
-		OutputState: i.ToPeeringServiceSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PeeringServiceSkuArgs) ToPeeringServiceSkuPtrOutput() PeeringServiceSkuPtrOutput {
 	return i.ToPeeringServiceSkuPtrOutputWithContext(context.Background())
 }
@@ -2175,12 +1928,6 @@ func (i *peeringServiceSkuPtrType) ToPeeringServiceSkuPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringServiceSkuPtrOutput)
 }
 
-func (i *peeringServiceSkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*PeeringServiceSku] {
-	return pulumix.Output[*PeeringServiceSku]{
-		OutputState: i.ToPeeringServiceSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The SKU that defines the type of the peering service.
 type PeeringServiceSkuOutput struct{ *pulumi.OutputState }
 
@@ -2206,12 +1953,6 @@ func (o PeeringServiceSkuOutput) ToPeeringServiceSkuPtrOutputWithContext(ctx con
 	}).(PeeringServiceSkuPtrOutput)
 }
 
-func (o PeeringServiceSkuOutput) ToOutput(ctx context.Context) pulumix.Output[PeeringServiceSku] {
-	return pulumix.Output[PeeringServiceSku]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the peering service SKU.
 func (o PeeringServiceSkuOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PeeringServiceSku) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -2229,12 +1970,6 @@ func (o PeeringServiceSkuPtrOutput) ToPeeringServiceSkuPtrOutput() PeeringServic
 
 func (o PeeringServiceSkuPtrOutput) ToPeeringServiceSkuPtrOutputWithContext(ctx context.Context) PeeringServiceSkuPtrOutput {
 	return o
-}
-
-func (o PeeringServiceSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PeeringServiceSku] {
-	return pulumix.Output[*PeeringServiceSku]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PeeringServiceSkuPtrOutput) Elem() PeeringServiceSkuOutput {
@@ -2278,12 +2013,6 @@ func (o PeeringServiceSkuResponseOutput) ToPeeringServiceSkuResponseOutputWithCo
 	return o
 }
 
-func (o PeeringServiceSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PeeringServiceSkuResponse] {
-	return pulumix.Output[PeeringServiceSkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the peering service SKU.
 func (o PeeringServiceSkuResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PeeringServiceSkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -2301,12 +2030,6 @@ func (o PeeringServiceSkuResponsePtrOutput) ToPeeringServiceSkuResponsePtrOutput
 
 func (o PeeringServiceSkuResponsePtrOutput) ToPeeringServiceSkuResponsePtrOutputWithContext(ctx context.Context) PeeringServiceSkuResponsePtrOutput {
 	return o
-}
-
-func (o PeeringServiceSkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PeeringServiceSkuResponse] {
-	return pulumix.Output[*PeeringServiceSkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PeeringServiceSkuResponsePtrOutput) Elem() PeeringServiceSkuResponseOutput {
@@ -2364,12 +2087,6 @@ func (i PeeringSkuArgs) ToPeeringSkuOutputWithContext(ctx context.Context) Peeri
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringSkuOutput)
 }
 
-func (i PeeringSkuArgs) ToOutput(ctx context.Context) pulumix.Output[PeeringSku] {
-	return pulumix.Output[PeeringSku]{
-		OutputState: i.ToPeeringSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The SKU that defines the tier and kind of the peering.
 type PeeringSkuOutput struct{ *pulumi.OutputState }
 
@@ -2383,12 +2100,6 @@ func (o PeeringSkuOutput) ToPeeringSkuOutput() PeeringSkuOutput {
 
 func (o PeeringSkuOutput) ToPeeringSkuOutputWithContext(ctx context.Context) PeeringSkuOutput {
 	return o
-}
-
-func (o PeeringSkuOutput) ToOutput(ctx context.Context) pulumix.Output[PeeringSku] {
-	return pulumix.Output[PeeringSku]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the peering SKU.
@@ -2421,12 +2132,6 @@ func (o PeeringSkuResponseOutput) ToPeeringSkuResponseOutput() PeeringSkuRespons
 
 func (o PeeringSkuResponseOutput) ToPeeringSkuResponseOutputWithContext(ctx context.Context) PeeringSkuResponseOutput {
 	return o
-}
-
-func (o PeeringSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PeeringSkuResponse] {
-	return pulumix.Output[PeeringSkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The family of the peering SKU.
@@ -2490,12 +2195,6 @@ func (i SubResourceArgs) ToSubResourceOutputWithContext(ctx context.Context) Sub
 	return pulumi.ToOutputWithContext(ctx, i).(SubResourceOutput)
 }
 
-func (i SubResourceArgs) ToOutput(ctx context.Context) pulumix.Output[SubResource] {
-	return pulumix.Output[SubResource]{
-		OutputState: i.ToSubResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SubResourceArgs) ToSubResourcePtrOutput() SubResourcePtrOutput {
 	return i.ToSubResourcePtrOutputWithContext(context.Background())
 }
@@ -2537,12 +2236,6 @@ func (i *subResourcePtrType) ToSubResourcePtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SubResourcePtrOutput)
 }
 
-func (i *subResourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*SubResource] {
-	return pulumix.Output[*SubResource]{
-		OutputState: i.ToSubResourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The sub resource.
 type SubResourceOutput struct{ *pulumi.OutputState }
 
@@ -2568,12 +2261,6 @@ func (o SubResourceOutput) ToSubResourcePtrOutputWithContext(ctx context.Context
 	}).(SubResourcePtrOutput)
 }
 
-func (o SubResourceOutput) ToOutput(ctx context.Context) pulumix.Output[SubResource] {
-	return pulumix.Output[SubResource]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
 // An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
 // A relative ID replaces the ID of the parent resource with a token '$self', followed by the sub-resource ID itself.
@@ -2594,12 +2281,6 @@ func (o SubResourcePtrOutput) ToSubResourcePtrOutput() SubResourcePtrOutput {
 
 func (o SubResourcePtrOutput) ToSubResourcePtrOutputWithContext(ctx context.Context) SubResourcePtrOutput {
 	return o
-}
-
-func (o SubResourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubResource] {
-	return pulumix.Output[*SubResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubResourcePtrOutput) Elem() SubResourceOutput {
@@ -2646,12 +2327,6 @@ func (o SubResourceResponseOutput) ToSubResourceResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o SubResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubResourceResponse] {
-	return pulumix.Output[SubResourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The identifier of the referenced resource.
 func (o SubResourceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubResourceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -2669,12 +2344,6 @@ func (o SubResourceResponsePtrOutput) ToSubResourceResponsePtrOutput() SubResour
 
 func (o SubResourceResponsePtrOutput) ToSubResourceResponsePtrOutputWithContext(ctx context.Context) SubResourceResponsePtrOutput {
 	return o
-}
-
-func (o SubResourceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubResourceResponse] {
-	return pulumix.Output[*SubResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubResourceResponsePtrOutput) Elem() SubResourceResponseOutput {

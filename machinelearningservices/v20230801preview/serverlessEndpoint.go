@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type ServerlessEndpoint struct {
@@ -156,12 +155,6 @@ func (i *ServerlessEndpoint) ToServerlessEndpointOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ServerlessEndpointOutput)
 }
 
-func (i *ServerlessEndpoint) ToOutput(ctx context.Context) pulumix.Output[*ServerlessEndpoint] {
-	return pulumix.Output[*ServerlessEndpoint]{
-		OutputState: i.ToServerlessEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerlessEndpointOutput struct{ *pulumi.OutputState }
 
 func (ServerlessEndpointOutput) ElementType() reflect.Type {
@@ -174,12 +167,6 @@ func (o ServerlessEndpointOutput) ToServerlessEndpointOutput() ServerlessEndpoin
 
 func (o ServerlessEndpointOutput) ToServerlessEndpointOutputWithContext(ctx context.Context) ServerlessEndpointOutput {
 	return o
-}
-
-func (o ServerlessEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerlessEndpoint] {
-	return pulumix.Output[*ServerlessEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Managed service identity (system assigned and/or user assigned identities)

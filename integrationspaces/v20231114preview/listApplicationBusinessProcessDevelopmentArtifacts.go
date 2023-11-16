@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The list business process development artifacts action.
@@ -77,12 +76,6 @@ func (o ListApplicationBusinessProcessDevelopmentArtifactsResultOutput) ToListAp
 
 func (o ListApplicationBusinessProcessDevelopmentArtifactsResultOutput) ToListApplicationBusinessProcessDevelopmentArtifactsResultOutputWithContext(ctx context.Context) ListApplicationBusinessProcessDevelopmentArtifactsResultOutput {
 	return o
-}
-
-func (o ListApplicationBusinessProcessDevelopmentArtifactsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListApplicationBusinessProcessDevelopmentArtifactsResult] {
-	return pulumix.Output[ListApplicationBusinessProcessDevelopmentArtifactsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of the business process development artifact.

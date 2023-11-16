@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the report for a subscription by report name.
@@ -84,12 +83,6 @@ func (o LookupReportResultOutput) ToLookupReportResultOutput() LookupReportResul
 
 func (o LookupReportResultOutput) ToLookupReportResultOutputWithContext(ctx context.Context) LookupReportResultOutput {
 	return o
-}
-
-func (o LookupReportResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReportResult] {
-	return pulumix.Output[LookupReportResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Has definition for the report.

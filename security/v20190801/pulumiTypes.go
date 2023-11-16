@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -81,12 +80,6 @@ func (i AdditionalWorkspacesPropertiesArgs) ToAdditionalWorkspacesPropertiesOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AdditionalWorkspacesPropertiesOutput)
 }
 
-func (i AdditionalWorkspacesPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[AdditionalWorkspacesProperties] {
-	return pulumix.Output[AdditionalWorkspacesProperties]{
-		OutputState: i.ToAdditionalWorkspacesPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AdditionalWorkspacesPropertiesArrayInput is an input type that accepts AdditionalWorkspacesPropertiesArray and AdditionalWorkspacesPropertiesArrayOutput values.
 // You can construct a concrete instance of `AdditionalWorkspacesPropertiesArrayInput` via:
 //
@@ -112,12 +105,6 @@ func (i AdditionalWorkspacesPropertiesArray) ToAdditionalWorkspacesPropertiesArr
 	return pulumi.ToOutputWithContext(ctx, i).(AdditionalWorkspacesPropertiesArrayOutput)
 }
 
-func (i AdditionalWorkspacesPropertiesArray) ToOutput(ctx context.Context) pulumix.Output[[]AdditionalWorkspacesProperties] {
-	return pulumix.Output[[]AdditionalWorkspacesProperties]{
-		OutputState: i.ToAdditionalWorkspacesPropertiesArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Properties of the additional workspaces.
 type AdditionalWorkspacesPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o AdditionalWorkspacesPropertiesOutput) ToAdditionalWorkspacesPropertiesOu
 
 func (o AdditionalWorkspacesPropertiesOutput) ToAdditionalWorkspacesPropertiesOutputWithContext(ctx context.Context) AdditionalWorkspacesPropertiesOutput {
 	return o
-}
-
-func (o AdditionalWorkspacesPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[AdditionalWorkspacesProperties] {
-	return pulumix.Output[AdditionalWorkspacesProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of data types sent to workspace
@@ -166,12 +147,6 @@ func (o AdditionalWorkspacesPropertiesArrayOutput) ToAdditionalWorkspacesPropert
 
 func (o AdditionalWorkspacesPropertiesArrayOutput) ToAdditionalWorkspacesPropertiesArrayOutputWithContext(ctx context.Context) AdditionalWorkspacesPropertiesArrayOutput {
 	return o
-}
-
-func (o AdditionalWorkspacesPropertiesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AdditionalWorkspacesProperties] {
-	return pulumix.Output[[]AdditionalWorkspacesProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AdditionalWorkspacesPropertiesArrayOutput) Index(i pulumi.IntInput) AdditionalWorkspacesPropertiesOutput {
@@ -218,12 +193,6 @@ func (o AdditionalWorkspacesPropertiesResponseOutput) ToAdditionalWorkspacesProp
 	return o
 }
 
-func (o AdditionalWorkspacesPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AdditionalWorkspacesPropertiesResponse] {
-	return pulumix.Output[AdditionalWorkspacesPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of data types sent to workspace
 func (o AdditionalWorkspacesPropertiesResponseOutput) DataTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AdditionalWorkspacesPropertiesResponse) []string { return v.DataTypes }).(pulumi.StringArrayOutput)
@@ -251,12 +220,6 @@ func (o AdditionalWorkspacesPropertiesResponseArrayOutput) ToAdditionalWorkspace
 
 func (o AdditionalWorkspacesPropertiesResponseArrayOutput) ToAdditionalWorkspacesPropertiesResponseArrayOutputWithContext(ctx context.Context) AdditionalWorkspacesPropertiesResponseArrayOutput {
 	return o
-}
-
-func (o AdditionalWorkspacesPropertiesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AdditionalWorkspacesPropertiesResponse] {
-	return pulumix.Output[[]AdditionalWorkspacesPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AdditionalWorkspacesPropertiesResponseArrayOutput) Index(i pulumi.IntInput) AdditionalWorkspacesPropertiesResponseOutput {
@@ -310,12 +273,6 @@ func (i AllowlistCustomAlertRuleArgs) ToAllowlistCustomAlertRuleOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AllowlistCustomAlertRuleOutput)
 }
 
-func (i AllowlistCustomAlertRuleArgs) ToOutput(ctx context.Context) pulumix.Output[AllowlistCustomAlertRule] {
-	return pulumix.Output[AllowlistCustomAlertRule]{
-		OutputState: i.ToAllowlistCustomAlertRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AllowlistCustomAlertRuleArrayInput is an input type that accepts AllowlistCustomAlertRuleArray and AllowlistCustomAlertRuleArrayOutput values.
 // You can construct a concrete instance of `AllowlistCustomAlertRuleArrayInput` via:
 //
@@ -341,12 +298,6 @@ func (i AllowlistCustomAlertRuleArray) ToAllowlistCustomAlertRuleArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(AllowlistCustomAlertRuleArrayOutput)
 }
 
-func (i AllowlistCustomAlertRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]AllowlistCustomAlertRule] {
-	return pulumix.Output[[]AllowlistCustomAlertRule]{
-		OutputState: i.ToAllowlistCustomAlertRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A custom alert rule that checks if a value (depends on the custom alert type) is allowed.
 type AllowlistCustomAlertRuleOutput struct{ *pulumi.OutputState }
 
@@ -360,12 +311,6 @@ func (o AllowlistCustomAlertRuleOutput) ToAllowlistCustomAlertRuleOutput() Allow
 
 func (o AllowlistCustomAlertRuleOutput) ToAllowlistCustomAlertRuleOutputWithContext(ctx context.Context) AllowlistCustomAlertRuleOutput {
 	return o
-}
-
-func (o AllowlistCustomAlertRuleOutput) ToOutput(ctx context.Context) pulumix.Output[AllowlistCustomAlertRule] {
-	return pulumix.Output[AllowlistCustomAlertRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The values to allow. The format of the values depends on the rule type.
@@ -396,12 +341,6 @@ func (o AllowlistCustomAlertRuleArrayOutput) ToAllowlistCustomAlertRuleArrayOutp
 
 func (o AllowlistCustomAlertRuleArrayOutput) ToAllowlistCustomAlertRuleArrayOutputWithContext(ctx context.Context) AllowlistCustomAlertRuleArrayOutput {
 	return o
-}
-
-func (o AllowlistCustomAlertRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AllowlistCustomAlertRule] {
-	return pulumix.Output[[]AllowlistCustomAlertRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AllowlistCustomAlertRuleArrayOutput) Index(i pulumi.IntInput) AllowlistCustomAlertRuleOutput {
@@ -440,12 +379,6 @@ func (o AllowlistCustomAlertRuleResponseOutput) ToAllowlistCustomAlertRuleRespon
 
 func (o AllowlistCustomAlertRuleResponseOutput) ToAllowlistCustomAlertRuleResponseOutputWithContext(ctx context.Context) AllowlistCustomAlertRuleResponseOutput {
 	return o
-}
-
-func (o AllowlistCustomAlertRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AllowlistCustomAlertRuleResponse] {
-	return pulumix.Output[AllowlistCustomAlertRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The values to allow. The format of the values depends on the rule type.
@@ -491,12 +424,6 @@ func (o AllowlistCustomAlertRuleResponseArrayOutput) ToAllowlistCustomAlertRuleR
 
 func (o AllowlistCustomAlertRuleResponseArrayOutput) ToAllowlistCustomAlertRuleResponseArrayOutputWithContext(ctx context.Context) AllowlistCustomAlertRuleResponseArrayOutput {
 	return o
-}
-
-func (o AllowlistCustomAlertRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AllowlistCustomAlertRuleResponse] {
-	return pulumix.Output[[]AllowlistCustomAlertRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AllowlistCustomAlertRuleResponseArrayOutput) Index(i pulumi.IntInput) AllowlistCustomAlertRuleResponseOutput {
@@ -550,12 +477,6 @@ func (i DenylistCustomAlertRuleArgs) ToDenylistCustomAlertRuleOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(DenylistCustomAlertRuleOutput)
 }
 
-func (i DenylistCustomAlertRuleArgs) ToOutput(ctx context.Context) pulumix.Output[DenylistCustomAlertRule] {
-	return pulumix.Output[DenylistCustomAlertRule]{
-		OutputState: i.ToDenylistCustomAlertRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DenylistCustomAlertRuleArrayInput is an input type that accepts DenylistCustomAlertRuleArray and DenylistCustomAlertRuleArrayOutput values.
 // You can construct a concrete instance of `DenylistCustomAlertRuleArrayInput` via:
 //
@@ -581,12 +502,6 @@ func (i DenylistCustomAlertRuleArray) ToDenylistCustomAlertRuleArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(DenylistCustomAlertRuleArrayOutput)
 }
 
-func (i DenylistCustomAlertRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]DenylistCustomAlertRule] {
-	return pulumix.Output[[]DenylistCustomAlertRule]{
-		OutputState: i.ToDenylistCustomAlertRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A custom alert rule that checks if a value (depends on the custom alert type) is denied.
 type DenylistCustomAlertRuleOutput struct{ *pulumi.OutputState }
 
@@ -600,12 +515,6 @@ func (o DenylistCustomAlertRuleOutput) ToDenylistCustomAlertRuleOutput() Denylis
 
 func (o DenylistCustomAlertRuleOutput) ToDenylistCustomAlertRuleOutputWithContext(ctx context.Context) DenylistCustomAlertRuleOutput {
 	return o
-}
-
-func (o DenylistCustomAlertRuleOutput) ToOutput(ctx context.Context) pulumix.Output[DenylistCustomAlertRule] {
-	return pulumix.Output[DenylistCustomAlertRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The values to deny. The format of the values depends on the rule type.
@@ -636,12 +545,6 @@ func (o DenylistCustomAlertRuleArrayOutput) ToDenylistCustomAlertRuleArrayOutput
 
 func (o DenylistCustomAlertRuleArrayOutput) ToDenylistCustomAlertRuleArrayOutputWithContext(ctx context.Context) DenylistCustomAlertRuleArrayOutput {
 	return o
-}
-
-func (o DenylistCustomAlertRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DenylistCustomAlertRule] {
-	return pulumix.Output[[]DenylistCustomAlertRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DenylistCustomAlertRuleArrayOutput) Index(i pulumi.IntInput) DenylistCustomAlertRuleOutput {
@@ -680,12 +583,6 @@ func (o DenylistCustomAlertRuleResponseOutput) ToDenylistCustomAlertRuleResponse
 
 func (o DenylistCustomAlertRuleResponseOutput) ToDenylistCustomAlertRuleResponseOutputWithContext(ctx context.Context) DenylistCustomAlertRuleResponseOutput {
 	return o
-}
-
-func (o DenylistCustomAlertRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DenylistCustomAlertRuleResponse] {
-	return pulumix.Output[DenylistCustomAlertRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The values to deny. The format of the values depends on the rule type.
@@ -731,12 +628,6 @@ func (o DenylistCustomAlertRuleResponseArrayOutput) ToDenylistCustomAlertRuleRes
 
 func (o DenylistCustomAlertRuleResponseArrayOutput) ToDenylistCustomAlertRuleResponseArrayOutputWithContext(ctx context.Context) DenylistCustomAlertRuleResponseArrayOutput {
 	return o
-}
-
-func (o DenylistCustomAlertRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DenylistCustomAlertRuleResponse] {
-	return pulumix.Output[[]DenylistCustomAlertRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DenylistCustomAlertRuleResponseArrayOutput) Index(i pulumi.IntInput) DenylistCustomAlertRuleResponseOutput {
@@ -807,12 +698,6 @@ func (i RecommendationConfigurationPropertiesArgs) ToRecommendationConfiguration
 	return pulumi.ToOutputWithContext(ctx, i).(RecommendationConfigurationPropertiesOutput)
 }
 
-func (i RecommendationConfigurationPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[RecommendationConfigurationProperties] {
-	return pulumix.Output[RecommendationConfigurationProperties]{
-		OutputState: i.ToRecommendationConfigurationPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RecommendationConfigurationPropertiesArrayInput is an input type that accepts RecommendationConfigurationPropertiesArray and RecommendationConfigurationPropertiesArrayOutput values.
 // You can construct a concrete instance of `RecommendationConfigurationPropertiesArrayInput` via:
 //
@@ -838,12 +723,6 @@ func (i RecommendationConfigurationPropertiesArray) ToRecommendationConfiguratio
 	return pulumi.ToOutputWithContext(ctx, i).(RecommendationConfigurationPropertiesArrayOutput)
 }
 
-func (i RecommendationConfigurationPropertiesArray) ToOutput(ctx context.Context) pulumix.Output[[]RecommendationConfigurationProperties] {
-	return pulumix.Output[[]RecommendationConfigurationProperties]{
-		OutputState: i.ToRecommendationConfigurationPropertiesArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The type of IoT Security recommendation.
 type RecommendationConfigurationPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -857,12 +736,6 @@ func (o RecommendationConfigurationPropertiesOutput) ToRecommendationConfigurati
 
 func (o RecommendationConfigurationPropertiesOutput) ToRecommendationConfigurationPropertiesOutputWithContext(ctx context.Context) RecommendationConfigurationPropertiesOutput {
 	return o
-}
-
-func (o RecommendationConfigurationPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[RecommendationConfigurationProperties] {
-	return pulumix.Output[RecommendationConfigurationProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of IoT Security recommendation.
@@ -887,12 +760,6 @@ func (o RecommendationConfigurationPropertiesArrayOutput) ToRecommendationConfig
 
 func (o RecommendationConfigurationPropertiesArrayOutput) ToRecommendationConfigurationPropertiesArrayOutputWithContext(ctx context.Context) RecommendationConfigurationPropertiesArrayOutput {
 	return o
-}
-
-func (o RecommendationConfigurationPropertiesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RecommendationConfigurationProperties] {
-	return pulumix.Output[[]RecommendationConfigurationProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RecommendationConfigurationPropertiesArrayOutput) Index(i pulumi.IntInput) RecommendationConfigurationPropertiesOutput {
@@ -937,12 +804,6 @@ func (o RecommendationConfigurationPropertiesResponseOutput) ToRecommendationCon
 	return o
 }
 
-func (o RecommendationConfigurationPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RecommendationConfigurationPropertiesResponse] {
-	return pulumix.Output[RecommendationConfigurationPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RecommendationConfigurationPropertiesResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v RecommendationConfigurationPropertiesResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -969,12 +830,6 @@ func (o RecommendationConfigurationPropertiesResponseArrayOutput) ToRecommendati
 
 func (o RecommendationConfigurationPropertiesResponseArrayOutput) ToRecommendationConfigurationPropertiesResponseArrayOutputWithContext(ctx context.Context) RecommendationConfigurationPropertiesResponseArrayOutput {
 	return o
-}
-
-func (o RecommendationConfigurationPropertiesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RecommendationConfigurationPropertiesResponse] {
-	return pulumix.Output[[]RecommendationConfigurationPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RecommendationConfigurationPropertiesResponseArrayOutput) Index(i pulumi.IntInput) RecommendationConfigurationPropertiesResponseOutput {
@@ -1012,12 +867,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -1099,12 +948,6 @@ func (i ThresholdCustomAlertRuleArgs) ToThresholdCustomAlertRuleOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ThresholdCustomAlertRuleOutput)
 }
 
-func (i ThresholdCustomAlertRuleArgs) ToOutput(ctx context.Context) pulumix.Output[ThresholdCustomAlertRule] {
-	return pulumix.Output[ThresholdCustomAlertRule]{
-		OutputState: i.ToThresholdCustomAlertRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ThresholdCustomAlertRuleArrayInput is an input type that accepts ThresholdCustomAlertRuleArray and ThresholdCustomAlertRuleArrayOutput values.
 // You can construct a concrete instance of `ThresholdCustomAlertRuleArrayInput` via:
 //
@@ -1130,12 +973,6 @@ func (i ThresholdCustomAlertRuleArray) ToThresholdCustomAlertRuleArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ThresholdCustomAlertRuleArrayOutput)
 }
 
-func (i ThresholdCustomAlertRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]ThresholdCustomAlertRule] {
-	return pulumix.Output[[]ThresholdCustomAlertRule]{
-		OutputState: i.ToThresholdCustomAlertRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A custom alert rule that checks if a value (depends on the custom alert type) is within the given range.
 type ThresholdCustomAlertRuleOutput struct{ *pulumi.OutputState }
 
@@ -1149,12 +986,6 @@ func (o ThresholdCustomAlertRuleOutput) ToThresholdCustomAlertRuleOutput() Thres
 
 func (o ThresholdCustomAlertRuleOutput) ToThresholdCustomAlertRuleOutputWithContext(ctx context.Context) ThresholdCustomAlertRuleOutput {
 	return o
-}
-
-func (o ThresholdCustomAlertRuleOutput) ToOutput(ctx context.Context) pulumix.Output[ThresholdCustomAlertRule] {
-	return pulumix.Output[ThresholdCustomAlertRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Status of the custom alert.
@@ -1190,12 +1021,6 @@ func (o ThresholdCustomAlertRuleArrayOutput) ToThresholdCustomAlertRuleArrayOutp
 
 func (o ThresholdCustomAlertRuleArrayOutput) ToThresholdCustomAlertRuleArrayOutputWithContext(ctx context.Context) ThresholdCustomAlertRuleArrayOutput {
 	return o
-}
-
-func (o ThresholdCustomAlertRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ThresholdCustomAlertRule] {
-	return pulumix.Output[[]ThresholdCustomAlertRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ThresholdCustomAlertRuleArrayOutput) Index(i pulumi.IntInput) ThresholdCustomAlertRuleOutput {
@@ -1234,12 +1059,6 @@ func (o ThresholdCustomAlertRuleResponseOutput) ToThresholdCustomAlertRuleRespon
 
 func (o ThresholdCustomAlertRuleResponseOutput) ToThresholdCustomAlertRuleResponseOutputWithContext(ctx context.Context) ThresholdCustomAlertRuleResponseOutput {
 	return o
-}
-
-func (o ThresholdCustomAlertRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ThresholdCustomAlertRuleResponse] {
-	return pulumix.Output[ThresholdCustomAlertRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the custom alert.
@@ -1285,12 +1104,6 @@ func (o ThresholdCustomAlertRuleResponseArrayOutput) ToThresholdCustomAlertRuleR
 
 func (o ThresholdCustomAlertRuleResponseArrayOutput) ToThresholdCustomAlertRuleResponseArrayOutputWithContext(ctx context.Context) ThresholdCustomAlertRuleResponseArrayOutput {
 	return o
-}
-
-func (o ThresholdCustomAlertRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ThresholdCustomAlertRuleResponse] {
-	return pulumix.Output[[]ThresholdCustomAlertRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ThresholdCustomAlertRuleResponseArrayOutput) Index(i pulumi.IntInput) ThresholdCustomAlertRuleResponseOutput {
@@ -1352,12 +1165,6 @@ func (i TimeWindowCustomAlertRuleArgs) ToTimeWindowCustomAlertRuleOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(TimeWindowCustomAlertRuleOutput)
 }
 
-func (i TimeWindowCustomAlertRuleArgs) ToOutput(ctx context.Context) pulumix.Output[TimeWindowCustomAlertRule] {
-	return pulumix.Output[TimeWindowCustomAlertRule]{
-		OutputState: i.ToTimeWindowCustomAlertRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TimeWindowCustomAlertRuleArrayInput is an input type that accepts TimeWindowCustomAlertRuleArray and TimeWindowCustomAlertRuleArrayOutput values.
 // You can construct a concrete instance of `TimeWindowCustomAlertRuleArrayInput` via:
 //
@@ -1383,12 +1190,6 @@ func (i TimeWindowCustomAlertRuleArray) ToTimeWindowCustomAlertRuleArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(TimeWindowCustomAlertRuleArrayOutput)
 }
 
-func (i TimeWindowCustomAlertRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]TimeWindowCustomAlertRule] {
-	return pulumix.Output[[]TimeWindowCustomAlertRule]{
-		OutputState: i.ToTimeWindowCustomAlertRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A custom alert rule that checks if the number of activities (depends on the custom alert type) in a time window is within the given range.
 type TimeWindowCustomAlertRuleOutput struct{ *pulumi.OutputState }
 
@@ -1402,12 +1203,6 @@ func (o TimeWindowCustomAlertRuleOutput) ToTimeWindowCustomAlertRuleOutput() Tim
 
 func (o TimeWindowCustomAlertRuleOutput) ToTimeWindowCustomAlertRuleOutputWithContext(ctx context.Context) TimeWindowCustomAlertRuleOutput {
 	return o
-}
-
-func (o TimeWindowCustomAlertRuleOutput) ToOutput(ctx context.Context) pulumix.Output[TimeWindowCustomAlertRule] {
-	return pulumix.Output[TimeWindowCustomAlertRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Status of the custom alert.
@@ -1450,12 +1245,6 @@ func (o TimeWindowCustomAlertRuleArrayOutput) ToTimeWindowCustomAlertRuleArrayOu
 	return o
 }
 
-func (o TimeWindowCustomAlertRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TimeWindowCustomAlertRule] {
-	return pulumix.Output[[]TimeWindowCustomAlertRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TimeWindowCustomAlertRuleArrayOutput) Index(i pulumi.IntInput) TimeWindowCustomAlertRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TimeWindowCustomAlertRule {
 		return vs[0].([]TimeWindowCustomAlertRule)[vs[1].(int)]
@@ -1494,12 +1283,6 @@ func (o TimeWindowCustomAlertRuleResponseOutput) ToTimeWindowCustomAlertRuleResp
 
 func (o TimeWindowCustomAlertRuleResponseOutput) ToTimeWindowCustomAlertRuleResponseOutputWithContext(ctx context.Context) TimeWindowCustomAlertRuleResponseOutput {
 	return o
-}
-
-func (o TimeWindowCustomAlertRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimeWindowCustomAlertRuleResponse] {
-	return pulumix.Output[TimeWindowCustomAlertRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the custom alert.
@@ -1552,12 +1335,6 @@ func (o TimeWindowCustomAlertRuleResponseArrayOutput) ToTimeWindowCustomAlertRul
 	return o
 }
 
-func (o TimeWindowCustomAlertRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TimeWindowCustomAlertRuleResponse] {
-	return pulumix.Output[[]TimeWindowCustomAlertRuleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TimeWindowCustomAlertRuleResponseArrayOutput) Index(i pulumi.IntInput) TimeWindowCustomAlertRuleResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TimeWindowCustomAlertRuleResponse {
 		return vs[0].([]TimeWindowCustomAlertRuleResponse)[vs[1].(int)]
@@ -1603,12 +1380,6 @@ func (i UserDefinedResourcesPropertiesArgs) ToUserDefinedResourcesPropertiesOutp
 	return pulumi.ToOutputWithContext(ctx, i).(UserDefinedResourcesPropertiesOutput)
 }
 
-func (i UserDefinedResourcesPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[UserDefinedResourcesProperties] {
-	return pulumix.Output[UserDefinedResourcesProperties]{
-		OutputState: i.ToUserDefinedResourcesPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i UserDefinedResourcesPropertiesArgs) ToUserDefinedResourcesPropertiesPtrOutput() UserDefinedResourcesPropertiesPtrOutput {
 	return i.ToUserDefinedResourcesPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1650,12 +1421,6 @@ func (i *userDefinedResourcesPropertiesPtrType) ToUserDefinedResourcesProperties
 	return pulumi.ToOutputWithContext(ctx, i).(UserDefinedResourcesPropertiesPtrOutput)
 }
 
-func (i *userDefinedResourcesPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*UserDefinedResourcesProperties] {
-	return pulumix.Output[*UserDefinedResourcesProperties]{
-		OutputState: i.ToUserDefinedResourcesPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Properties of the IoT Security solution's user defined resources.
 type UserDefinedResourcesPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1681,12 +1446,6 @@ func (o UserDefinedResourcesPropertiesOutput) ToUserDefinedResourcesPropertiesPt
 	}).(UserDefinedResourcesPropertiesPtrOutput)
 }
 
-func (o UserDefinedResourcesPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[UserDefinedResourcesProperties] {
-	return pulumix.Output[UserDefinedResourcesProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Azure Resource Graph query which represents the security solution's user defined resources. Required to start with "where type != "Microsoft.Devices/IotHubs""
 func (o UserDefinedResourcesPropertiesOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v UserDefinedResourcesProperties) string { return v.Query }).(pulumi.StringOutput)
@@ -1709,12 +1468,6 @@ func (o UserDefinedResourcesPropertiesPtrOutput) ToUserDefinedResourcesPropertie
 
 func (o UserDefinedResourcesPropertiesPtrOutput) ToUserDefinedResourcesPropertiesPtrOutputWithContext(ctx context.Context) UserDefinedResourcesPropertiesPtrOutput {
 	return o
-}
-
-func (o UserDefinedResourcesPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserDefinedResourcesProperties] {
-	return pulumix.Output[*UserDefinedResourcesProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserDefinedResourcesPropertiesPtrOutput) Elem() UserDefinedResourcesPropertiesOutput {
@@ -1770,12 +1523,6 @@ func (o UserDefinedResourcesPropertiesResponseOutput) ToUserDefinedResourcesProp
 	return o
 }
 
-func (o UserDefinedResourcesPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserDefinedResourcesPropertiesResponse] {
-	return pulumix.Output[UserDefinedResourcesPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Azure Resource Graph query which represents the security solution's user defined resources. Required to start with "where type != "Microsoft.Devices/IotHubs""
 func (o UserDefinedResourcesPropertiesResponseOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v UserDefinedResourcesPropertiesResponse) string { return v.Query }).(pulumi.StringOutput)
@@ -1798,12 +1545,6 @@ func (o UserDefinedResourcesPropertiesResponsePtrOutput) ToUserDefinedResourcesP
 
 func (o UserDefinedResourcesPropertiesResponsePtrOutput) ToUserDefinedResourcesPropertiesResponsePtrOutputWithContext(ctx context.Context) UserDefinedResourcesPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o UserDefinedResourcesPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserDefinedResourcesPropertiesResponse] {
-	return pulumix.Output[*UserDefinedResourcesPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserDefinedResourcesPropertiesResponsePtrOutput) Elem() UserDefinedResourcesPropertiesResponseOutput {

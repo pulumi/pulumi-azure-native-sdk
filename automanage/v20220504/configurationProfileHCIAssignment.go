@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Configuration profile assignment is an association between a VM and automanage profile configuration.
@@ -129,12 +128,6 @@ func (i *ConfigurationProfileHCIAssignment) ToConfigurationProfileHCIAssignmentO
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationProfileHCIAssignmentOutput)
 }
 
-func (i *ConfigurationProfileHCIAssignment) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationProfileHCIAssignment] {
-	return pulumix.Output[*ConfigurationProfileHCIAssignment]{
-		OutputState: i.ToConfigurationProfileHCIAssignmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigurationProfileHCIAssignmentOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationProfileHCIAssignmentOutput) ElementType() reflect.Type {
@@ -147,12 +140,6 @@ func (o ConfigurationProfileHCIAssignmentOutput) ToConfigurationProfileHCIAssign
 
 func (o ConfigurationProfileHCIAssignmentOutput) ToConfigurationProfileHCIAssignmentOutputWithContext(ctx context.Context) ConfigurationProfileHCIAssignmentOutput {
 	return o
-}
-
-func (o ConfigurationProfileHCIAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationProfileHCIAssignment] {
-	return pulumix.Output[*ConfigurationProfileHCIAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Azure resource id. Indicates if this resource is managed by another Azure resource.

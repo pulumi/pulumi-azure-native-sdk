@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the private endpoint connection for the Cloud Hsm Cluster.
@@ -94,12 +93,6 @@ func (o LookupCloudHsmClusterPrivateEndpointConnectionResultOutput) ToLookupClou
 
 func (o LookupCloudHsmClusterPrivateEndpointConnectionResultOutput) ToLookupCloudHsmClusterPrivateEndpointConnectionResultOutputWithContext(ctx context.Context) LookupCloudHsmClusterPrivateEndpointConnectionResultOutput {
 	return o
-}
-
-func (o LookupCloudHsmClusterPrivateEndpointConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCloudHsmClusterPrivateEndpointConnectionResult] {
-	return pulumix.Output[LookupCloudHsmClusterPrivateEndpointConnectionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Modified whenever there is a change in the state of private endpoint connection.

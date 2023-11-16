@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a InfrastructureResource
@@ -90,12 +89,6 @@ func (o LookupInfrastructureResourceResultOutput) ToLookupInfrastructureResource
 
 func (o LookupInfrastructureResourceResultOutput) ToLookupInfrastructureResourceResultOutputWithContext(ctx context.Context) LookupInfrastructureResourceResultOutput {
 	return o
-}
-
-func (o LookupInfrastructureResourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupInfrastructureResourceResult] {
-	return pulumix.Output[LookupInfrastructureResourceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

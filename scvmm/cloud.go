@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Clouds resource definition.
@@ -170,12 +169,6 @@ func (i *Cloud) ToCloudOutputWithContext(ctx context.Context) CloudOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CloudOutput)
 }
 
-func (i *Cloud) ToOutput(ctx context.Context) pulumix.Output[*Cloud] {
-	return pulumix.Output[*Cloud]{
-		OutputState: i.ToCloudOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CloudOutput struct{ *pulumi.OutputState }
 
 func (CloudOutput) ElementType() reflect.Type {
@@ -188,12 +181,6 @@ func (o CloudOutput) ToCloudOutput() CloudOutput {
 
 func (o CloudOutput) ToCloudOutputWithContext(ctx context.Context) CloudOutput {
 	return o
-}
-
-func (o CloudOutput) ToOutput(ctx context.Context) pulumix.Output[*Cloud] {
-	return pulumix.Output[*Cloud]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Capacity of the cloud.

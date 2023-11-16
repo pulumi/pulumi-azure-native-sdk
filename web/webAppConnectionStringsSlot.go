@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // String dictionary resource.
@@ -179,12 +178,6 @@ func (i *WebAppConnectionStringsSlot) ToWebAppConnectionStringsSlotOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppConnectionStringsSlotOutput)
 }
 
-func (i *WebAppConnectionStringsSlot) ToOutput(ctx context.Context) pulumix.Output[*WebAppConnectionStringsSlot] {
-	return pulumix.Output[*WebAppConnectionStringsSlot]{
-		OutputState: i.ToWebAppConnectionStringsSlotOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebAppConnectionStringsSlotOutput struct{ *pulumi.OutputState }
 
 func (WebAppConnectionStringsSlotOutput) ElementType() reflect.Type {
@@ -197,12 +190,6 @@ func (o WebAppConnectionStringsSlotOutput) ToWebAppConnectionStringsSlotOutput()
 
 func (o WebAppConnectionStringsSlotOutput) ToWebAppConnectionStringsSlotOutputWithContext(ctx context.Context) WebAppConnectionStringsSlotOutput {
 	return o
-}
-
-func (o WebAppConnectionStringsSlotOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppConnectionStringsSlot] {
-	return pulumix.Output[*WebAppConnectionStringsSlot]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Kind of resource.

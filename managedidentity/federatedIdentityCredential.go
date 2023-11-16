@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes a federated identity credential.
@@ -149,12 +148,6 @@ func (i *FederatedIdentityCredential) ToFederatedIdentityCredentialOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(FederatedIdentityCredentialOutput)
 }
 
-func (i *FederatedIdentityCredential) ToOutput(ctx context.Context) pulumix.Output[*FederatedIdentityCredential] {
-	return pulumix.Output[*FederatedIdentityCredential]{
-		OutputState: i.ToFederatedIdentityCredentialOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FederatedIdentityCredentialOutput struct{ *pulumi.OutputState }
 
 func (FederatedIdentityCredentialOutput) ElementType() reflect.Type {
@@ -167,12 +160,6 @@ func (o FederatedIdentityCredentialOutput) ToFederatedIdentityCredentialOutput()
 
 func (o FederatedIdentityCredentialOutput) ToFederatedIdentityCredentialOutputWithContext(ctx context.Context) FederatedIdentityCredentialOutput {
 	return o
-}
-
-func (o FederatedIdentityCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[*FederatedIdentityCredential] {
-	return pulumix.Output[*FederatedIdentityCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of audiences that can appear in the issued token.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Response for Volume Snapshot request.
@@ -141,12 +140,6 @@ func (i *VolumeSnapshot) ToVolumeSnapshotOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeSnapshotOutput)
 }
 
-func (i *VolumeSnapshot) ToOutput(ctx context.Context) pulumix.Output[*VolumeSnapshot] {
-	return pulumix.Output[*VolumeSnapshot]{
-		OutputState: i.ToVolumeSnapshotOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VolumeSnapshotOutput struct{ *pulumi.OutputState }
 
 func (VolumeSnapshotOutput) ElementType() reflect.Type {
@@ -159,12 +152,6 @@ func (o VolumeSnapshotOutput) ToVolumeSnapshotOutput() VolumeSnapshotOutput {
 
 func (o VolumeSnapshotOutput) ToVolumeSnapshotOutputWithContext(ctx context.Context) VolumeSnapshotOutput {
 	return o
-}
-
-func (o VolumeSnapshotOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeSnapshot] {
-	return pulumix.Output[*VolumeSnapshot]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Data used when creating a volume snapshot.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i AssetEndpointProfileExtendedLocationArgs) ToAssetEndpointProfileExtended
 	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfileExtendedLocationOutput)
 }
 
-func (i AssetEndpointProfileExtendedLocationArgs) ToOutput(ctx context.Context) pulumix.Output[AssetEndpointProfileExtendedLocation] {
-	return pulumix.Output[AssetEndpointProfileExtendedLocation]{
-		OutputState: i.ToAssetEndpointProfileExtendedLocationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The extended location.
 type AssetEndpointProfileExtendedLocationOutput struct{ *pulumi.OutputState }
 
@@ -72,12 +65,6 @@ func (o AssetEndpointProfileExtendedLocationOutput) ToAssetEndpointProfileExtend
 
 func (o AssetEndpointProfileExtendedLocationOutput) ToAssetEndpointProfileExtendedLocationOutputWithContext(ctx context.Context) AssetEndpointProfileExtendedLocationOutput {
 	return o
-}
-
-func (o AssetEndpointProfileExtendedLocationOutput) ToOutput(ctx context.Context) pulumix.Output[AssetEndpointProfileExtendedLocation] {
-	return pulumix.Output[AssetEndpointProfileExtendedLocation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The extended location name.
@@ -157,12 +144,6 @@ func (i AssetEndpointProfilePropertiesArgs) ToAssetEndpointProfilePropertiesOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesOutput)
 }
 
-func (i AssetEndpointProfilePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[AssetEndpointProfileProperties] {
-	return pulumix.Output[AssetEndpointProfileProperties]{
-		OutputState: i.ToAssetEndpointProfilePropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AssetEndpointProfilePropertiesArgs) ToAssetEndpointProfilePropertiesPtrOutput() AssetEndpointProfilePropertiesPtrOutput {
 	return i.ToAssetEndpointProfilePropertiesPtrOutputWithContext(context.Background())
 }
@@ -204,12 +185,6 @@ func (i *assetEndpointProfilePropertiesPtrType) ToAssetEndpointProfileProperties
 	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesPtrOutput)
 }
 
-func (i *assetEndpointProfilePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*AssetEndpointProfileProperties] {
-	return pulumix.Output[*AssetEndpointProfileProperties]{
-		OutputState: i.ToAssetEndpointProfilePropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the Asset Endpoint Profile properties.
 type AssetEndpointProfilePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -233,12 +208,6 @@ func (o AssetEndpointProfilePropertiesOutput) ToAssetEndpointProfilePropertiesPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssetEndpointProfileProperties) *AssetEndpointProfileProperties {
 		return &v
 	}).(AssetEndpointProfilePropertiesPtrOutput)
-}
-
-func (o AssetEndpointProfilePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[AssetEndpointProfileProperties] {
-	return pulumix.Output[AssetEndpointProfileProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
@@ -277,12 +246,6 @@ func (o AssetEndpointProfilePropertiesPtrOutput) ToAssetEndpointProfilePropertie
 
 func (o AssetEndpointProfilePropertiesPtrOutput) ToAssetEndpointProfilePropertiesPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesPtrOutput {
 	return o
-}
-
-func (o AssetEndpointProfilePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssetEndpointProfileProperties] {
-	return pulumix.Output[*AssetEndpointProfileProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssetEndpointProfilePropertiesPtrOutput) Elem() AssetEndpointProfilePropertiesOutput {
@@ -376,12 +339,6 @@ func (i AssetEndpointProfilePropertiesOwnCertificatesArgs) ToAssetEndpointProfil
 	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesOwnCertificatesOutput)
 }
 
-func (i AssetEndpointProfilePropertiesOwnCertificatesArgs) ToOutput(ctx context.Context) pulumix.Output[AssetEndpointProfilePropertiesOwnCertificates] {
-	return pulumix.Output[AssetEndpointProfilePropertiesOwnCertificates]{
-		OutputState: i.ToAssetEndpointProfilePropertiesOwnCertificatesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AssetEndpointProfilePropertiesOwnCertificatesArrayInput is an input type that accepts AssetEndpointProfilePropertiesOwnCertificatesArray and AssetEndpointProfilePropertiesOwnCertificatesArrayOutput values.
 // You can construct a concrete instance of `AssetEndpointProfilePropertiesOwnCertificatesArrayInput` via:
 //
@@ -407,12 +364,6 @@ func (i AssetEndpointProfilePropertiesOwnCertificatesArray) ToAssetEndpointProfi
 	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesOwnCertificatesArrayOutput)
 }
 
-func (i AssetEndpointProfilePropertiesOwnCertificatesArray) ToOutput(ctx context.Context) pulumix.Output[[]AssetEndpointProfilePropertiesOwnCertificates] {
-	return pulumix.Output[[]AssetEndpointProfilePropertiesOwnCertificates]{
-		OutputState: i.ToAssetEndpointProfilePropertiesOwnCertificatesArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AssetEndpointProfilePropertiesOwnCertificatesOutput struct{ *pulumi.OutputState }
 
 func (AssetEndpointProfilePropertiesOwnCertificatesOutput) ElementType() reflect.Type {
@@ -425,12 +376,6 @@ func (o AssetEndpointProfilePropertiesOwnCertificatesOutput) ToAssetEndpointProf
 
 func (o AssetEndpointProfilePropertiesOwnCertificatesOutput) ToAssetEndpointProfilePropertiesOwnCertificatesOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesOwnCertificatesOutput {
 	return o
-}
-
-func (o AssetEndpointProfilePropertiesOwnCertificatesOutput) ToOutput(ctx context.Context) pulumix.Output[AssetEndpointProfilePropertiesOwnCertificates] {
-	return pulumix.Output[AssetEndpointProfilePropertiesOwnCertificates]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Secret Reference Name (Pfx or Pem password)
@@ -460,12 +405,6 @@ func (o AssetEndpointProfilePropertiesOwnCertificatesArrayOutput) ToAssetEndpoin
 
 func (o AssetEndpointProfilePropertiesOwnCertificatesArrayOutput) ToAssetEndpointProfilePropertiesOwnCertificatesArrayOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesOwnCertificatesArrayOutput {
 	return o
-}
-
-func (o AssetEndpointProfilePropertiesOwnCertificatesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AssetEndpointProfilePropertiesOwnCertificates] {
-	return pulumix.Output[[]AssetEndpointProfilePropertiesOwnCertificates]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssetEndpointProfilePropertiesOwnCertificatesArrayOutput) Index(i pulumi.IntInput) AssetEndpointProfilePropertiesOwnCertificatesOutput {
@@ -514,12 +453,6 @@ func (o AssetEndpointProfilePropertiesResponseOutput) ToAssetEndpointProfileProp
 
 func (o AssetEndpointProfilePropertiesResponseOutput) ToAssetEndpointProfilePropertiesResponseOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesResponseOutput {
 	return o
-}
-
-func (o AssetEndpointProfilePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssetEndpointProfilePropertiesResponse] {
-	return pulumix.Output[AssetEndpointProfilePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
@@ -579,12 +512,6 @@ func (o AssetEndpointProfilePropertiesResponseOwnCertificatesOutput) ToAssetEndp
 	return o
 }
 
-func (o AssetEndpointProfilePropertiesResponseOwnCertificatesOutput) ToOutput(ctx context.Context) pulumix.Output[AssetEndpointProfilePropertiesResponseOwnCertificates] {
-	return pulumix.Output[AssetEndpointProfilePropertiesResponseOwnCertificates]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Secret Reference Name (Pfx or Pem password)
 func (o AssetEndpointProfilePropertiesResponseOwnCertificatesOutput) CertPasswordReference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssetEndpointProfilePropertiesResponseOwnCertificates) *string { return v.CertPasswordReference }).(pulumi.StringPtrOutput)
@@ -614,12 +541,6 @@ func (o AssetEndpointProfilePropertiesResponseOwnCertificatesArrayOutput) ToAsse
 	return o
 }
 
-func (o AssetEndpointProfilePropertiesResponseOwnCertificatesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AssetEndpointProfilePropertiesResponseOwnCertificates] {
-	return pulumix.Output[[]AssetEndpointProfilePropertiesResponseOwnCertificates]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AssetEndpointProfilePropertiesResponseOwnCertificatesArrayOutput) Index(i pulumi.IntInput) AssetEndpointProfilePropertiesResponseOwnCertificatesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetEndpointProfilePropertiesResponseOwnCertificates {
 		return vs[0].([]AssetEndpointProfilePropertiesResponseOwnCertificates)[vs[1].(int)]
@@ -647,12 +568,6 @@ func (o AssetEndpointProfilePropertiesResponseTransportAuthenticationOutput) ToA
 	return o
 }
 
-func (o AssetEndpointProfilePropertiesResponseTransportAuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[AssetEndpointProfilePropertiesResponseTransportAuthentication] {
-	return pulumix.Output[AssetEndpointProfilePropertiesResponseTransportAuthentication]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
 func (o AssetEndpointProfilePropertiesResponseTransportAuthenticationOutput) OwnCertificates() AssetEndpointProfilePropertiesResponseOwnCertificatesArrayOutput {
 	return o.ApplyT(func(v AssetEndpointProfilePropertiesResponseTransportAuthentication) []AssetEndpointProfilePropertiesResponseOwnCertificates {
@@ -672,12 +587,6 @@ func (o AssetEndpointProfilePropertiesResponseTransportAuthenticationPtrOutput) 
 
 func (o AssetEndpointProfilePropertiesResponseTransportAuthenticationPtrOutput) ToAssetEndpointProfilePropertiesResponseTransportAuthenticationPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesResponseTransportAuthenticationPtrOutput {
 	return o
-}
-
-func (o AssetEndpointProfilePropertiesResponseTransportAuthenticationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssetEndpointProfilePropertiesResponseTransportAuthentication] {
-	return pulumix.Output[*AssetEndpointProfilePropertiesResponseTransportAuthentication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssetEndpointProfilePropertiesResponseTransportAuthenticationPtrOutput) Elem() AssetEndpointProfilePropertiesResponseTransportAuthenticationOutput {
@@ -737,12 +646,6 @@ func (o AssetEndpointProfilePropertiesResponseUserAuthenticationOutput) ToAssetE
 	return o
 }
 
-func (o AssetEndpointProfilePropertiesResponseUserAuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[AssetEndpointProfilePropertiesResponseUserAuthentication] {
-	return pulumix.Output[AssetEndpointProfilePropertiesResponseUserAuthentication]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines the mode to authenticate the user of the client at the server.
 func (o AssetEndpointProfilePropertiesResponseUserAuthenticationOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v AssetEndpointProfilePropertiesResponseUserAuthentication) string { return v.Mode }).(pulumi.StringOutput)
@@ -774,12 +677,6 @@ func (o AssetEndpointProfilePropertiesResponseUserAuthenticationPtrOutput) ToAss
 
 func (o AssetEndpointProfilePropertiesResponseUserAuthenticationPtrOutput) ToAssetEndpointProfilePropertiesResponseUserAuthenticationPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesResponseUserAuthenticationPtrOutput {
 	return o
-}
-
-func (o AssetEndpointProfilePropertiesResponseUserAuthenticationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssetEndpointProfilePropertiesResponseUserAuthentication] {
-	return pulumix.Output[*AssetEndpointProfilePropertiesResponseUserAuthentication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssetEndpointProfilePropertiesResponseUserAuthenticationPtrOutput) Elem() AssetEndpointProfilePropertiesResponseUserAuthenticationOutput {
@@ -845,12 +742,6 @@ func (o AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsOutput)
 	return o
 }
 
-func (o AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[AssetEndpointProfilePropertiesResponseUsernamePasswordCredentials] {
-	return pulumix.Output[AssetEndpointProfilePropertiesResponseUsernamePasswordCredentials]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A reference to secret containing the password.
 func (o AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsOutput) PasswordReference() pulumi.StringOutput {
 	return o.ApplyT(func(v AssetEndpointProfilePropertiesResponseUsernamePasswordCredentials) string {
@@ -877,12 +768,6 @@ func (o AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsPtrOutp
 
 func (o AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsPtrOutput) ToAssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsPtrOutput {
 	return o
-}
-
-func (o AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssetEndpointProfilePropertiesResponseUsernamePasswordCredentials] {
-	return pulumix.Output[*AssetEndpointProfilePropertiesResponseUsernamePasswordCredentials]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsPtrOutput) Elem() AssetEndpointProfilePropertiesResponseUsernamePasswordCredentialsOutput {
@@ -936,12 +821,6 @@ func (o AssetEndpointProfilePropertiesResponseX509CredentialsOutput) ToAssetEndp
 	return o
 }
 
-func (o AssetEndpointProfilePropertiesResponseX509CredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[AssetEndpointProfilePropertiesResponseX509Credentials] {
-	return pulumix.Output[AssetEndpointProfilePropertiesResponseX509Credentials]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
 func (o AssetEndpointProfilePropertiesResponseX509CredentialsOutput) CertificateReference() pulumi.StringOutput {
 	return o.ApplyT(func(v AssetEndpointProfilePropertiesResponseX509Credentials) string { return v.CertificateReference }).(pulumi.StringOutput)
@@ -959,12 +838,6 @@ func (o AssetEndpointProfilePropertiesResponseX509CredentialsPtrOutput) ToAssetE
 
 func (o AssetEndpointProfilePropertiesResponseX509CredentialsPtrOutput) ToAssetEndpointProfilePropertiesResponseX509CredentialsPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesResponseX509CredentialsPtrOutput {
 	return o
-}
-
-func (o AssetEndpointProfilePropertiesResponseX509CredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssetEndpointProfilePropertiesResponseX509Credentials] {
-	return pulumix.Output[*AssetEndpointProfilePropertiesResponseX509Credentials]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssetEndpointProfilePropertiesResponseX509CredentialsPtrOutput) Elem() AssetEndpointProfilePropertiesResponseX509CredentialsOutput {
@@ -1022,12 +895,6 @@ func (i AssetEndpointProfilePropertiesTransportAuthenticationArgs) ToAssetEndpoi
 	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesTransportAuthenticationOutput)
 }
 
-func (i AssetEndpointProfilePropertiesTransportAuthenticationArgs) ToOutput(ctx context.Context) pulumix.Output[AssetEndpointProfilePropertiesTransportAuthentication] {
-	return pulumix.Output[AssetEndpointProfilePropertiesTransportAuthentication]{
-		OutputState: i.ToAssetEndpointProfilePropertiesTransportAuthenticationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AssetEndpointProfilePropertiesTransportAuthenticationArgs) ToAssetEndpointProfilePropertiesTransportAuthenticationPtrOutput() AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput {
 	return i.ToAssetEndpointProfilePropertiesTransportAuthenticationPtrOutputWithContext(context.Background())
 }
@@ -1069,12 +936,6 @@ func (i *assetEndpointProfilePropertiesTransportAuthenticationPtrType) ToAssetEn
 	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput)
 }
 
-func (i *assetEndpointProfilePropertiesTransportAuthenticationPtrType) ToOutput(ctx context.Context) pulumix.Output[*AssetEndpointProfilePropertiesTransportAuthentication] {
-	return pulumix.Output[*AssetEndpointProfilePropertiesTransportAuthentication]{
-		OutputState: i.ToAssetEndpointProfilePropertiesTransportAuthenticationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the authentication mechanism for the southbound connector connecting to the shop floor/OT device.
 type AssetEndpointProfilePropertiesTransportAuthenticationOutput struct{ *pulumi.OutputState }
 
@@ -1100,12 +961,6 @@ func (o AssetEndpointProfilePropertiesTransportAuthenticationOutput) ToAssetEndp
 	}).(AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput)
 }
 
-func (o AssetEndpointProfilePropertiesTransportAuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[AssetEndpointProfilePropertiesTransportAuthentication] {
-	return pulumix.Output[AssetEndpointProfilePropertiesTransportAuthentication]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
 func (o AssetEndpointProfilePropertiesTransportAuthenticationOutput) OwnCertificates() AssetEndpointProfilePropertiesOwnCertificatesArrayOutput {
 	return o.ApplyT(func(v AssetEndpointProfilePropertiesTransportAuthentication) []AssetEndpointProfilePropertiesOwnCertificates {
@@ -1125,12 +980,6 @@ func (o AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput) ToAssetE
 
 func (o AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput) ToAssetEndpointProfilePropertiesTransportAuthenticationPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput {
 	return o
-}
-
-func (o AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssetEndpointProfilePropertiesTransportAuthentication] {
-	return pulumix.Output[*AssetEndpointProfilePropertiesTransportAuthentication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssetEndpointProfilePropertiesTransportAuthenticationPtrOutput) Elem() AssetEndpointProfilePropertiesTransportAuthenticationOutput {
@@ -1219,12 +1068,6 @@ func (i AssetEndpointProfilePropertiesUserAuthenticationArgs) ToAssetEndpointPro
 	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesUserAuthenticationOutput)
 }
 
-func (i AssetEndpointProfilePropertiesUserAuthenticationArgs) ToOutput(ctx context.Context) pulumix.Output[AssetEndpointProfilePropertiesUserAuthentication] {
-	return pulumix.Output[AssetEndpointProfilePropertiesUserAuthentication]{
-		OutputState: i.ToAssetEndpointProfilePropertiesUserAuthenticationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AssetEndpointProfilePropertiesUserAuthenticationArgs) ToAssetEndpointProfilePropertiesUserAuthenticationPtrOutput() AssetEndpointProfilePropertiesUserAuthenticationPtrOutput {
 	return i.ToAssetEndpointProfilePropertiesUserAuthenticationPtrOutputWithContext(context.Background())
 }
@@ -1266,12 +1109,6 @@ func (i *assetEndpointProfilePropertiesUserAuthenticationPtrType) ToAssetEndpoin
 	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesUserAuthenticationPtrOutput)
 }
 
-func (i *assetEndpointProfilePropertiesUserAuthenticationPtrType) ToOutput(ctx context.Context) pulumix.Output[*AssetEndpointProfilePropertiesUserAuthentication] {
-	return pulumix.Output[*AssetEndpointProfilePropertiesUserAuthentication]{
-		OutputState: i.ToAssetEndpointProfilePropertiesUserAuthenticationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the client authentication mechanism to the server.
 type AssetEndpointProfilePropertiesUserAuthenticationOutput struct{ *pulumi.OutputState }
 
@@ -1295,12 +1132,6 @@ func (o AssetEndpointProfilePropertiesUserAuthenticationOutput) ToAssetEndpointP
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssetEndpointProfilePropertiesUserAuthentication) *AssetEndpointProfilePropertiesUserAuthentication {
 		return &v
 	}).(AssetEndpointProfilePropertiesUserAuthenticationPtrOutput)
-}
-
-func (o AssetEndpointProfilePropertiesUserAuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[AssetEndpointProfilePropertiesUserAuthentication] {
-	return pulumix.Output[AssetEndpointProfilePropertiesUserAuthentication]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Defines the mode to authenticate the user of the client at the server.
@@ -1334,12 +1165,6 @@ func (o AssetEndpointProfilePropertiesUserAuthenticationPtrOutput) ToAssetEndpoi
 
 func (o AssetEndpointProfilePropertiesUserAuthenticationPtrOutput) ToAssetEndpointProfilePropertiesUserAuthenticationPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesUserAuthenticationPtrOutput {
 	return o
-}
-
-func (o AssetEndpointProfilePropertiesUserAuthenticationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssetEndpointProfilePropertiesUserAuthentication] {
-	return pulumix.Output[*AssetEndpointProfilePropertiesUserAuthentication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssetEndpointProfilePropertiesUserAuthenticationPtrOutput) Elem() AssetEndpointProfilePropertiesUserAuthenticationOutput {
@@ -1421,12 +1246,6 @@ func (i AssetEndpointProfilePropertiesUsernamePasswordCredentialsArgs) ToAssetEn
 	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput)
 }
 
-func (i AssetEndpointProfilePropertiesUsernamePasswordCredentialsArgs) ToOutput(ctx context.Context) pulumix.Output[AssetEndpointProfilePropertiesUsernamePasswordCredentials] {
-	return pulumix.Output[AssetEndpointProfilePropertiesUsernamePasswordCredentials]{
-		OutputState: i.ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AssetEndpointProfilePropertiesUsernamePasswordCredentialsArgs) ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput() AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput {
 	return i.ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutputWithContext(context.Background())
 }
@@ -1468,12 +1287,6 @@ func (i *assetEndpointProfilePropertiesUsernamePasswordCredentialsPtrType) ToAss
 	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput)
 }
 
-func (i *assetEndpointProfilePropertiesUsernamePasswordCredentialsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AssetEndpointProfilePropertiesUsernamePasswordCredentials] {
-	return pulumix.Output[*AssetEndpointProfilePropertiesUsernamePasswordCredentials]{
-		OutputState: i.ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the username and password references when UsernamePassword user authentication mode is selected.
 type AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput struct{ *pulumi.OutputState }
 
@@ -1499,12 +1312,6 @@ func (o AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput) ToAsset
 	}).(AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput)
 }
 
-func (o AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[AssetEndpointProfilePropertiesUsernamePasswordCredentials] {
-	return pulumix.Output[AssetEndpointProfilePropertiesUsernamePasswordCredentials]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A reference to secret containing the password.
 func (o AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput) PasswordReference() pulumi.StringOutput {
 	return o.ApplyT(func(v AssetEndpointProfilePropertiesUsernamePasswordCredentials) string { return v.PasswordReference }).(pulumi.StringOutput)
@@ -1527,12 +1334,6 @@ func (o AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput) ToAs
 
 func (o AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput) ToAssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput {
 	return o
-}
-
-func (o AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssetEndpointProfilePropertiesUsernamePasswordCredentials] {
-	return pulumix.Output[*AssetEndpointProfilePropertiesUsernamePasswordCredentials]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssetEndpointProfilePropertiesUsernamePasswordCredentialsPtrOutput) Elem() AssetEndpointProfilePropertiesUsernamePasswordCredentialsOutput {
@@ -1600,12 +1401,6 @@ func (i AssetEndpointProfilePropertiesX509CredentialsArgs) ToAssetEndpointProfil
 	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesX509CredentialsOutput)
 }
 
-func (i AssetEndpointProfilePropertiesX509CredentialsArgs) ToOutput(ctx context.Context) pulumix.Output[AssetEndpointProfilePropertiesX509Credentials] {
-	return pulumix.Output[AssetEndpointProfilePropertiesX509Credentials]{
-		OutputState: i.ToAssetEndpointProfilePropertiesX509CredentialsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AssetEndpointProfilePropertiesX509CredentialsArgs) ToAssetEndpointProfilePropertiesX509CredentialsPtrOutput() AssetEndpointProfilePropertiesX509CredentialsPtrOutput {
 	return i.ToAssetEndpointProfilePropertiesX509CredentialsPtrOutputWithContext(context.Background())
 }
@@ -1647,12 +1442,6 @@ func (i *assetEndpointProfilePropertiesX509CredentialsPtrType) ToAssetEndpointPr
 	return pulumi.ToOutputWithContext(ctx, i).(AssetEndpointProfilePropertiesX509CredentialsPtrOutput)
 }
 
-func (i *assetEndpointProfilePropertiesX509CredentialsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AssetEndpointProfilePropertiesX509Credentials] {
-	return pulumix.Output[*AssetEndpointProfilePropertiesX509Credentials]{
-		OutputState: i.ToAssetEndpointProfilePropertiesX509CredentialsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the certificate reference when Certificate user authentication mode is selected.
 type AssetEndpointProfilePropertiesX509CredentialsOutput struct{ *pulumi.OutputState }
 
@@ -1678,12 +1467,6 @@ func (o AssetEndpointProfilePropertiesX509CredentialsOutput) ToAssetEndpointProf
 	}).(AssetEndpointProfilePropertiesX509CredentialsPtrOutput)
 }
 
-func (o AssetEndpointProfilePropertiesX509CredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[AssetEndpointProfilePropertiesX509Credentials] {
-	return pulumix.Output[AssetEndpointProfilePropertiesX509Credentials]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
 func (o AssetEndpointProfilePropertiesX509CredentialsOutput) CertificateReference() pulumi.StringOutput {
 	return o.ApplyT(func(v AssetEndpointProfilePropertiesX509Credentials) string { return v.CertificateReference }).(pulumi.StringOutput)
@@ -1701,12 +1484,6 @@ func (o AssetEndpointProfilePropertiesX509CredentialsPtrOutput) ToAssetEndpointP
 
 func (o AssetEndpointProfilePropertiesX509CredentialsPtrOutput) ToAssetEndpointProfilePropertiesX509CredentialsPtrOutputWithContext(ctx context.Context) AssetEndpointProfilePropertiesX509CredentialsPtrOutput {
 	return o
-}
-
-func (o AssetEndpointProfilePropertiesX509CredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssetEndpointProfilePropertiesX509Credentials] {
-	return pulumix.Output[*AssetEndpointProfilePropertiesX509Credentials]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssetEndpointProfilePropertiesX509CredentialsPtrOutput) Elem() AssetEndpointProfilePropertiesX509CredentialsOutput {
@@ -1750,12 +1527,6 @@ func (o AssetEndpointProfileResponseExtendedLocationOutput) ToAssetEndpointProfi
 
 func (o AssetEndpointProfileResponseExtendedLocationOutput) ToAssetEndpointProfileResponseExtendedLocationOutputWithContext(ctx context.Context) AssetEndpointProfileResponseExtendedLocationOutput {
 	return o
-}
-
-func (o AssetEndpointProfileResponseExtendedLocationOutput) ToOutput(ctx context.Context) pulumix.Output[AssetEndpointProfileResponseExtendedLocation] {
-	return pulumix.Output[AssetEndpointProfileResponseExtendedLocation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The extended location name.
@@ -1807,12 +1578,6 @@ func (i AssetExtendedLocationArgs) ToAssetExtendedLocationOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(AssetExtendedLocationOutput)
 }
 
-func (i AssetExtendedLocationArgs) ToOutput(ctx context.Context) pulumix.Output[AssetExtendedLocation] {
-	return pulumix.Output[AssetExtendedLocation]{
-		OutputState: i.ToAssetExtendedLocationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The extended location.
 type AssetExtendedLocationOutput struct{ *pulumi.OutputState }
 
@@ -1826,12 +1591,6 @@ func (o AssetExtendedLocationOutput) ToAssetExtendedLocationOutput() AssetExtend
 
 func (o AssetExtendedLocationOutput) ToAssetExtendedLocationOutputWithContext(ctx context.Context) AssetExtendedLocationOutput {
 	return o
-}
-
-func (o AssetExtendedLocationOutput) ToOutput(ctx context.Context) pulumix.Output[AssetExtendedLocation] {
-	return pulumix.Output[AssetExtendedLocation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The extended location name.
@@ -1951,12 +1710,6 @@ func (i AssetPropertiesArgs) ToAssetPropertiesOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AssetPropertiesOutput)
 }
 
-func (i AssetPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[AssetProperties] {
-	return pulumix.Output[AssetProperties]{
-		OutputState: i.ToAssetPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AssetPropertiesArgs) ToAssetPropertiesPtrOutput() AssetPropertiesPtrOutput {
 	return i.ToAssetPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1998,12 +1751,6 @@ func (i *assetPropertiesPtrType) ToAssetPropertiesPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(AssetPropertiesPtrOutput)
 }
 
-func (i *assetPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*AssetProperties] {
-	return pulumix.Output[*AssetProperties]{
-		OutputState: i.ToAssetPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Asset resource properties.
 type AssetPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -2027,12 +1774,6 @@ func (o AssetPropertiesOutput) ToAssetPropertiesPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssetProperties) *AssetProperties {
 		return &v
 	}).(AssetPropertiesPtrOutput)
-}
-
-func (o AssetPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[AssetProperties] {
-	return pulumix.Output[AssetProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must have the format <ModuleCR.metadata.namespace>/<ModuleCR.metadata.name>.
@@ -2142,12 +1883,6 @@ func (o AssetPropertiesPtrOutput) ToAssetPropertiesPtrOutput() AssetPropertiesPt
 
 func (o AssetPropertiesPtrOutput) ToAssetPropertiesPtrOutputWithContext(ctx context.Context) AssetPropertiesPtrOutput {
 	return o
-}
-
-func (o AssetPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssetProperties] {
-	return pulumix.Output[*AssetProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssetPropertiesPtrOutput) Elem() AssetPropertiesOutput {
@@ -2423,12 +2158,6 @@ func (i AssetPropertiesDataPointsArgs) ToAssetPropertiesDataPointsOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AssetPropertiesDataPointsOutput)
 }
 
-func (i AssetPropertiesDataPointsArgs) ToOutput(ctx context.Context) pulumix.Output[AssetPropertiesDataPoints] {
-	return pulumix.Output[AssetPropertiesDataPoints]{
-		OutputState: i.ToAssetPropertiesDataPointsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AssetPropertiesDataPointsArrayInput is an input type that accepts AssetPropertiesDataPointsArray and AssetPropertiesDataPointsArrayOutput values.
 // You can construct a concrete instance of `AssetPropertiesDataPointsArrayInput` via:
 //
@@ -2454,12 +2183,6 @@ func (i AssetPropertiesDataPointsArray) ToAssetPropertiesDataPointsArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(AssetPropertiesDataPointsArrayOutput)
 }
 
-func (i AssetPropertiesDataPointsArray) ToOutput(ctx context.Context) pulumix.Output[[]AssetPropertiesDataPoints] {
-	return pulumix.Output[[]AssetPropertiesDataPoints]{
-		OutputState: i.ToAssetPropertiesDataPointsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AssetPropertiesDataPointsOutput struct{ *pulumi.OutputState }
 
 func (AssetPropertiesDataPointsOutput) ElementType() reflect.Type {
@@ -2472,12 +2195,6 @@ func (o AssetPropertiesDataPointsOutput) ToAssetPropertiesDataPointsOutput() Ass
 
 func (o AssetPropertiesDataPointsOutput) ToAssetPropertiesDataPointsOutputWithContext(ctx context.Context) AssetPropertiesDataPointsOutput {
 	return o
-}
-
-func (o AssetPropertiesDataPointsOutput) ToOutput(ctx context.Context) pulumix.Output[AssetPropertiesDataPoints] {
-	return pulumix.Output[AssetPropertiesDataPoints]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
@@ -2517,12 +2234,6 @@ func (o AssetPropertiesDataPointsArrayOutput) ToAssetPropertiesDataPointsArrayOu
 
 func (o AssetPropertiesDataPointsArrayOutput) ToAssetPropertiesDataPointsArrayOutputWithContext(ctx context.Context) AssetPropertiesDataPointsArrayOutput {
 	return o
-}
-
-func (o AssetPropertiesDataPointsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AssetPropertiesDataPoints] {
-	return pulumix.Output[[]AssetPropertiesDataPoints]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssetPropertiesDataPointsArrayOutput) Index(i pulumi.IntInput) AssetPropertiesDataPointsOutput {
@@ -2604,12 +2315,6 @@ func (i AssetPropertiesEventsArgs) ToAssetPropertiesEventsOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(AssetPropertiesEventsOutput)
 }
 
-func (i AssetPropertiesEventsArgs) ToOutput(ctx context.Context) pulumix.Output[AssetPropertiesEvents] {
-	return pulumix.Output[AssetPropertiesEvents]{
-		OutputState: i.ToAssetPropertiesEventsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AssetPropertiesEventsArrayInput is an input type that accepts AssetPropertiesEventsArray and AssetPropertiesEventsArrayOutput values.
 // You can construct a concrete instance of `AssetPropertiesEventsArrayInput` via:
 //
@@ -2635,12 +2340,6 @@ func (i AssetPropertiesEventsArray) ToAssetPropertiesEventsArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AssetPropertiesEventsArrayOutput)
 }
 
-func (i AssetPropertiesEventsArray) ToOutput(ctx context.Context) pulumix.Output[[]AssetPropertiesEvents] {
-	return pulumix.Output[[]AssetPropertiesEvents]{
-		OutputState: i.ToAssetPropertiesEventsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AssetPropertiesEventsOutput struct{ *pulumi.OutputState }
 
 func (AssetPropertiesEventsOutput) ElementType() reflect.Type {
@@ -2653,12 +2352,6 @@ func (o AssetPropertiesEventsOutput) ToAssetPropertiesEventsOutput() AssetProper
 
 func (o AssetPropertiesEventsOutput) ToAssetPropertiesEventsOutputWithContext(ctx context.Context) AssetPropertiesEventsOutput {
 	return o
-}
-
-func (o AssetPropertiesEventsOutput) ToOutput(ctx context.Context) pulumix.Output[AssetPropertiesEvents] {
-	return pulumix.Output[AssetPropertiesEvents]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
@@ -2698,12 +2391,6 @@ func (o AssetPropertiesEventsArrayOutput) ToAssetPropertiesEventsArrayOutput() A
 
 func (o AssetPropertiesEventsArrayOutput) ToAssetPropertiesEventsArrayOutputWithContext(ctx context.Context) AssetPropertiesEventsArrayOutput {
 	return o
-}
-
-func (o AssetPropertiesEventsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AssetPropertiesEvents] {
-	return pulumix.Output[[]AssetPropertiesEvents]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssetPropertiesEventsArrayOutput) Index(i pulumi.IntInput) AssetPropertiesEventsOutput {
@@ -2752,12 +2439,6 @@ func (o AssetPropertiesResponseDataPointsOutput) ToAssetPropertiesResponseDataPo
 	return o
 }
 
-func (o AssetPropertiesResponseDataPointsOutput) ToOutput(ctx context.Context) pulumix.Output[AssetPropertiesResponseDataPoints] {
-	return pulumix.Output[AssetPropertiesResponseDataPoints]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
 func (o AssetPropertiesResponseDataPointsOutput) CapabilityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssetPropertiesResponseDataPoints) *string { return v.CapabilityId }).(pulumi.StringPtrOutput)
@@ -2797,12 +2478,6 @@ func (o AssetPropertiesResponseDataPointsArrayOutput) ToAssetPropertiesResponseD
 	return o
 }
 
-func (o AssetPropertiesResponseDataPointsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AssetPropertiesResponseDataPoints] {
-	return pulumix.Output[[]AssetPropertiesResponseDataPoints]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AssetPropertiesResponseDataPointsArrayOutput) Index(i pulumi.IntInput) AssetPropertiesResponseDataPointsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetPropertiesResponseDataPoints {
 		return vs[0].([]AssetPropertiesResponseDataPoints)[vs[1].(int)]
@@ -2830,12 +2505,6 @@ func (o AssetPropertiesResponseErrorsOutput) ToAssetPropertiesResponseErrorsOutp
 	return o
 }
 
-func (o AssetPropertiesResponseErrorsOutput) ToOutput(ctx context.Context) pulumix.Output[AssetPropertiesResponseErrors] {
-	return pulumix.Output[AssetPropertiesResponseErrors]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Error code for classification of errors (ex: 400, 404, 500, etc.).
 func (o AssetPropertiesResponseErrorsOutput) Code() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AssetPropertiesResponseErrors) *int { return v.Code }).(pulumi.IntPtrOutput)
@@ -2858,12 +2527,6 @@ func (o AssetPropertiesResponseErrorsArrayOutput) ToAssetPropertiesResponseError
 
 func (o AssetPropertiesResponseErrorsArrayOutput) ToAssetPropertiesResponseErrorsArrayOutputWithContext(ctx context.Context) AssetPropertiesResponseErrorsArrayOutput {
 	return o
-}
-
-func (o AssetPropertiesResponseErrorsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AssetPropertiesResponseErrors] {
-	return pulumix.Output[[]AssetPropertiesResponseErrors]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssetPropertiesResponseErrorsArrayOutput) Index(i pulumi.IntInput) AssetPropertiesResponseErrorsOutput {
@@ -2912,12 +2575,6 @@ func (o AssetPropertiesResponseEventsOutput) ToAssetPropertiesResponseEventsOutp
 	return o
 }
 
-func (o AssetPropertiesResponseEventsOutput) ToOutput(ctx context.Context) pulumix.Output[AssetPropertiesResponseEvents] {
-	return pulumix.Output[AssetPropertiesResponseEvents]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
 func (o AssetPropertiesResponseEventsOutput) CapabilityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssetPropertiesResponseEvents) *string { return v.CapabilityId }).(pulumi.StringPtrOutput)
@@ -2957,12 +2614,6 @@ func (o AssetPropertiesResponseEventsArrayOutput) ToAssetPropertiesResponseEvent
 	return o
 }
 
-func (o AssetPropertiesResponseEventsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AssetPropertiesResponseEvents] {
-	return pulumix.Output[[]AssetPropertiesResponseEvents]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AssetPropertiesResponseEventsArrayOutput) Index(i pulumi.IntInput) AssetPropertiesResponseEventsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AssetPropertiesResponseEvents {
 		return vs[0].([]AssetPropertiesResponseEvents)[vs[1].(int)]
@@ -2990,12 +2641,6 @@ func (o AssetPropertiesResponseStatusOutput) ToAssetPropertiesResponseStatusOutp
 
 func (o AssetPropertiesResponseStatusOutput) ToAssetPropertiesResponseStatusOutputWithContext(ctx context.Context) AssetPropertiesResponseStatusOutput {
 	return o
-}
-
-func (o AssetPropertiesResponseStatusOutput) ToOutput(ctx context.Context) pulumix.Output[AssetPropertiesResponseStatus] {
-	return pulumix.Output[AssetPropertiesResponseStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Array object to transfer and persist errors that originate from the Edge.
@@ -3029,12 +2674,6 @@ func (o AssetResponseExtendedLocationOutput) ToAssetResponseExtendedLocationOutp
 
 func (o AssetResponseExtendedLocationOutput) ToAssetResponseExtendedLocationOutputWithContext(ctx context.Context) AssetResponseExtendedLocationOutput {
 	return o
-}
-
-func (o AssetResponseExtendedLocationOutput) ToOutput(ctx context.Context) pulumix.Output[AssetResponseExtendedLocation] {
-	return pulumix.Output[AssetResponseExtendedLocation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The extended location name.
@@ -3110,12 +2749,6 @@ func (o AssetResponsePropertiesOutput) ToAssetResponsePropertiesOutput() AssetRe
 
 func (o AssetResponsePropertiesOutput) ToAssetResponsePropertiesOutputWithContext(ctx context.Context) AssetResponsePropertiesOutput {
 	return o
-}
-
-func (o AssetResponsePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[AssetResponseProperties] {
-	return pulumix.Output[AssetResponseProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must have the format <ModuleCR.metadata.namespace>/<ModuleCR.metadata.name>.
@@ -3262,12 +2895,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // User credentials used for publishing activity.
@@ -231,12 +230,6 @@ func (i *WebAppDeploymentSlot) ToWebAppDeploymentSlotOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppDeploymentSlotOutput)
 }
 
-func (i *WebAppDeploymentSlot) ToOutput(ctx context.Context) pulumix.Output[*WebAppDeploymentSlot] {
-	return pulumix.Output[*WebAppDeploymentSlot]{
-		OutputState: i.ToWebAppDeploymentSlotOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebAppDeploymentSlotOutput struct{ *pulumi.OutputState }
 
 func (WebAppDeploymentSlotOutput) ElementType() reflect.Type {
@@ -249,12 +242,6 @@ func (o WebAppDeploymentSlotOutput) ToWebAppDeploymentSlotOutput() WebAppDeploym
 
 func (o WebAppDeploymentSlotOutput) ToWebAppDeploymentSlotOutputWithContext(ctx context.Context) WebAppDeploymentSlotOutput {
 	return o
-}
-
-func (o WebAppDeploymentSlotOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppDeploymentSlot] {
-	return pulumix.Output[*WebAppDeploymentSlot]{
-		OutputState: o.OutputState,
-	}
 }
 
 // True if deployment is currently active, false if completed and null if not started.

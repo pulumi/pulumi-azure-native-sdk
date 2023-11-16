@@ -95,12 +95,6 @@ func (o HAEnabledEnumOutput) ToHAEnabledEnumPtrOutputWithContext(ctx context.Con
 	}).(HAEnabledEnumPtrOutput)
 }
 
-func (o HAEnabledEnumOutput) ToOutput(ctx context.Context) pulumix.Output[HAEnabledEnum] {
-	return pulumix.Output[HAEnabledEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HAEnabledEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -134,12 +128,6 @@ func (o HAEnabledEnumPtrOutput) ToHAEnabledEnumPtrOutput() HAEnabledEnumPtrOutpu
 
 func (o HAEnabledEnumPtrOutput) ToHAEnabledEnumPtrOutputWithContext(ctx context.Context) HAEnabledEnumPtrOutput {
 	return o
-}
-
-func (o HAEnabledEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HAEnabledEnum] {
-	return pulumix.Output[*HAEnabledEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HAEnabledEnumPtrOutput) Elem() HAEnabledEnumOutput {
@@ -277,12 +265,6 @@ func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(c
 	}).(ResourceIdentityTypePtrOutput)
 }
 
-func (o ResourceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityType] {
-	return pulumix.Output[ResourceIdentityType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -316,12 +298,6 @@ func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() Resourc
 
 func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return o
-}
-
-func (o ResourceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {

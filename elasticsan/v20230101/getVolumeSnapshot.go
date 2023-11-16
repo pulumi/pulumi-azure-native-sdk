@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Volume Snapshot.
@@ -95,12 +94,6 @@ func (o LookupVolumeSnapshotResultOutput) ToLookupVolumeSnapshotResultOutput() L
 
 func (o LookupVolumeSnapshotResultOutput) ToLookupVolumeSnapshotResultOutputWithContext(ctx context.Context) LookupVolumeSnapshotResultOutput {
 	return o
-}
-
-func (o LookupVolumeSnapshotResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVolumeSnapshotResult] {
-	return pulumix.Output[LookupVolumeSnapshotResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Data used when creating a volume snapshot.

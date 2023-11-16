@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List new plans notifications
@@ -71,12 +70,6 @@ func (o ListPrivateStoreNewPlansNotificationsResultOutput) ToListPrivateStoreNew
 
 func (o ListPrivateStoreNewPlansNotificationsResultOutput) ToListPrivateStoreNewPlansNotificationsResultOutputWithContext(ctx context.Context) ListPrivateStoreNewPlansNotificationsResultOutput {
 	return o
-}
-
-func (o ListPrivateStoreNewPlansNotificationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListPrivateStoreNewPlansNotificationsResult] {
-	return pulumix.Output[ListPrivateStoreNewPlansNotificationsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ListPrivateStoreNewPlansNotificationsResultOutput) NewPlansNotifications() NewNotificationsResponseArrayOutput {

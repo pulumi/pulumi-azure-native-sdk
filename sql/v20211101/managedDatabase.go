@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A managed database resource.
@@ -238,12 +237,6 @@ func (i *ManagedDatabase) ToManagedDatabaseOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedDatabaseOutput)
 }
 
-func (i *ManagedDatabase) ToOutput(ctx context.Context) pulumix.Output[*ManagedDatabase] {
-	return pulumix.Output[*ManagedDatabase]{
-		OutputState: i.ToManagedDatabaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagedDatabaseOutput struct{ *pulumi.OutputState }
 
 func (ManagedDatabaseOutput) ElementType() reflect.Type {
@@ -256,12 +249,6 @@ func (o ManagedDatabaseOutput) ToManagedDatabaseOutput() ManagedDatabaseOutput {
 
 func (o ManagedDatabaseOutput) ToManagedDatabaseOutputWithContext(ctx context.Context) ManagedDatabaseOutput {
 	return o
-}
-
-func (o ManagedDatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedDatabase] {
-	return pulumix.Output[*ManagedDatabase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Collation of the metadata catalog.

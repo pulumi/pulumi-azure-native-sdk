@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Implements Cloud GET method.
@@ -99,12 +98,6 @@ func (o LookupCloudResultOutput) ToLookupCloudResultOutput() LookupCloudResultOu
 
 func (o LookupCloudResultOutput) ToLookupCloudResultOutputWithContext(ctx context.Context) LookupCloudResultOutput {
 	return o
-}
-
-func (o LookupCloudResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCloudResult] {
-	return pulumix.Output[LookupCloudResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Capacity of the cloud.

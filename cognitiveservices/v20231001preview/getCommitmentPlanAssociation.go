@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the association of the Cognitive Services commitment plan.
@@ -89,12 +88,6 @@ func (o LookupCommitmentPlanAssociationResultOutput) ToLookupCommitmentPlanAssoc
 
 func (o LookupCommitmentPlanAssociationResultOutput) ToLookupCommitmentPlanAssociationResultOutputWithContext(ctx context.Context) LookupCommitmentPlanAssociationResultOutput {
 	return o
-}
-
-func (o LookupCommitmentPlanAssociationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCommitmentPlanAssociationResult] {
-	return pulumix.Output[LookupCommitmentPlanAssociationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Azure resource id of the account.

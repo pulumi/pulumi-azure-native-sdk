@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // NSX DNS Zone
@@ -172,12 +171,6 @@ func (i *WorkloadNetworkDnsZone) ToWorkloadNetworkDnsZoneOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadNetworkDnsZoneOutput)
 }
 
-func (i *WorkloadNetworkDnsZone) ToOutput(ctx context.Context) pulumix.Output[*WorkloadNetworkDnsZone] {
-	return pulumix.Output[*WorkloadNetworkDnsZone]{
-		OutputState: i.ToWorkloadNetworkDnsZoneOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkloadNetworkDnsZoneOutput struct{ *pulumi.OutputState }
 
 func (WorkloadNetworkDnsZoneOutput) ElementType() reflect.Type {
@@ -190,12 +183,6 @@ func (o WorkloadNetworkDnsZoneOutput) ToWorkloadNetworkDnsZoneOutput() WorkloadN
 
 func (o WorkloadNetworkDnsZoneOutput) ToWorkloadNetworkDnsZoneOutputWithContext(ctx context.Context) WorkloadNetworkDnsZoneOutput {
 	return o
-}
-
-func (o WorkloadNetworkDnsZoneOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadNetworkDnsZone] {
-	return pulumix.Output[*WorkloadNetworkDnsZone]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Display name of the DNS Zone.

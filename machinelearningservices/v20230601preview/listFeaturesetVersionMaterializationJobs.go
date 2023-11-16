@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A paginated list of FeaturesetJob entities.
@@ -99,12 +98,6 @@ func (o ListFeaturesetVersionMaterializationJobsResultOutput) ToListFeaturesetVe
 
 func (o ListFeaturesetVersionMaterializationJobsResultOutput) ToListFeaturesetVersionMaterializationJobsResultOutputWithContext(ctx context.Context) ListFeaturesetVersionMaterializationJobsResultOutput {
 	return o
-}
-
-func (o ListFeaturesetVersionMaterializationJobsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListFeaturesetVersionMaterializationJobsResult] {
-	return pulumix.Output[ListFeaturesetVersionMaterializationJobsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The link to the next page of FeaturesetJob objects. If null, there are no additional pages.

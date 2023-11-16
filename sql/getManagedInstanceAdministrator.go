@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a managed instance administrator.
@@ -90,12 +89,6 @@ func (o LookupManagedInstanceAdministratorResultOutput) ToLookupManagedInstanceA
 
 func (o LookupManagedInstanceAdministratorResultOutput) ToLookupManagedInstanceAdministratorResultOutputWithContext(ctx context.Context) LookupManagedInstanceAdministratorResultOutput {
 	return o
-}
-
-func (o LookupManagedInstanceAdministratorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedInstanceAdministratorResult] {
-	return pulumix.Output[LookupManagedInstanceAdministratorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Type of the managed instance administrator.

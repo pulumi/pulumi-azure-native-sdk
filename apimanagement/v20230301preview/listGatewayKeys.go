@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves gateway keys.
@@ -79,12 +78,6 @@ func (o ListGatewayKeysResultOutput) ToListGatewayKeysResultOutput() ListGateway
 
 func (o ListGatewayKeysResultOutput) ToListGatewayKeysResultOutputWithContext(ctx context.Context) ListGatewayKeysResultOutput {
 	return o
-}
-
-func (o ListGatewayKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListGatewayKeysResult] {
-	return pulumix.Output[ListGatewayKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Primary gateway key.

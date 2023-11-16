@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Kusto database data set mapping
@@ -175,12 +174,6 @@ func (i *KustoTableDataSetMapping) ToKustoTableDataSetMappingOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(KustoTableDataSetMappingOutput)
 }
 
-func (i *KustoTableDataSetMapping) ToOutput(ctx context.Context) pulumix.Output[*KustoTableDataSetMapping] {
-	return pulumix.Output[*KustoTableDataSetMapping]{
-		OutputState: i.ToKustoTableDataSetMappingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KustoTableDataSetMappingOutput struct{ *pulumi.OutputState }
 
 func (KustoTableDataSetMappingOutput) ElementType() reflect.Type {
@@ -193,12 +186,6 @@ func (o KustoTableDataSetMappingOutput) ToKustoTableDataSetMappingOutput() Kusto
 
 func (o KustoTableDataSetMappingOutput) ToKustoTableDataSetMappingOutputWithContext(ctx context.Context) KustoTableDataSetMappingOutput {
 	return o
-}
-
-func (o KustoTableDataSetMappingOutput) ToOutput(ctx context.Context) pulumix.Output[*KustoTableDataSetMapping] {
-	return pulumix.Output[*KustoTableDataSetMapping]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the source data set.

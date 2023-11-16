@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
 }
 
-func (i ManagedServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
-	return pulumix.Output[ManagedServiceIdentity]{
-		OutputState: i.ToManagedServiceIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
 	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
 }
 
-func (i *managedServiceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
-	return pulumix.Output[*ManagedServiceIdentity]{
-		OutputState: i.ToManagedServiceIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Managed service identity (system assigned and/or user assigned identities)
 type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithConte
 	}).(ManagedServiceIdentityPtrOutput)
 }
 
-func (o ManagedServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
-	return pulumix.Output[ManagedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
@@ -159,12 +140,6 @@ func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() Man
 
 func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
 	return o
-}
-
-func (o ManagedServiceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
-	return pulumix.Output[*ManagedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
@@ -224,12 +199,6 @@ func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOu
 	return o
 }
 
-func (o ManagedServiceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentityResponse] {
-	return pulumix.Output[ManagedServiceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
 func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -264,12 +233,6 @@ func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityRespons
 
 func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
 	return o
-}
-
-func (o ManagedServiceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityResponse] {
-	return pulumix.Output[*ManagedServiceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
@@ -353,12 +316,6 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 	return o
 }
 
-func (o PrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionResponse] {
-	return pulumix.Output[PrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -405,12 +362,6 @@ func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectio
 	return o
 }
 
-func (o PrivateEndpointConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionResponse] {
-	return pulumix.Output[[]PrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
@@ -438,12 +389,6 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
-func (o PrivateEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointResponse] {
-	return pulumix.Output[PrivateEndpointResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ARM identifier for Private Endpoint
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -461,12 +406,6 @@ func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() P
 
 func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
 	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointResponse] {
-	return pulumix.Output[*PrivateEndpointResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
@@ -532,12 +471,6 @@ func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionSta
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
 }
 
-func (i PrivateLinkServiceConnectionStateArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
-	return pulumix.Output[PrivateLinkServiceConnectionState]{
-		OutputState: i.ToPrivateLinkServiceConnectionStateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A collection of information about the state of the connection between service consumer and provider.
 type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
@@ -551,12 +484,6 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 
 func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
-	return pulumix.Output[PrivateLinkServiceConnectionState]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -599,12 +526,6 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 	return o
 }
 
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateResponse] {
-	return pulumix.Output[PrivateLinkServiceConnectionStateResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A message indicating if changes on the service provider require any updates on the consumer.
 func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
@@ -641,12 +562,6 @@ func (o RedisAccessKeysResponseOutput) ToRedisAccessKeysResponseOutput() RedisAc
 
 func (o RedisAccessKeysResponseOutput) ToRedisAccessKeysResponseOutputWithContext(ctx context.Context) RedisAccessKeysResponseOutput {
 	return o
-}
-
-func (o RedisAccessKeysResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RedisAccessKeysResponse] {
-	return pulumix.Output[RedisAccessKeysResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The current primary key that clients can use to authenticate with Redis cache.
@@ -750,12 +665,6 @@ func (i RedisCommonPropertiesRedisConfigurationArgs) ToRedisCommonPropertiesRedi
 	return pulumi.ToOutputWithContext(ctx, i).(RedisCommonPropertiesRedisConfigurationOutput)
 }
 
-func (i RedisCommonPropertiesRedisConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[RedisCommonPropertiesRedisConfiguration] {
-	return pulumix.Output[RedisCommonPropertiesRedisConfiguration]{
-		OutputState: i.ToRedisCommonPropertiesRedisConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RedisCommonPropertiesRedisConfigurationArgs) ToRedisCommonPropertiesRedisConfigurationPtrOutput() RedisCommonPropertiesRedisConfigurationPtrOutput {
 	return i.ToRedisCommonPropertiesRedisConfigurationPtrOutputWithContext(context.Background())
 }
@@ -797,12 +706,6 @@ func (i *redisCommonPropertiesRedisConfigurationPtrType) ToRedisCommonProperties
 	return pulumi.ToOutputWithContext(ctx, i).(RedisCommonPropertiesRedisConfigurationPtrOutput)
 }
 
-func (i *redisCommonPropertiesRedisConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*RedisCommonPropertiesRedisConfiguration] {
-	return pulumix.Output[*RedisCommonPropertiesRedisConfiguration]{
-		OutputState: i.ToRedisCommonPropertiesRedisConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value etc.
 type RedisCommonPropertiesRedisConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -826,12 +729,6 @@ func (o RedisCommonPropertiesRedisConfigurationOutput) ToRedisCommonPropertiesRe
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RedisCommonPropertiesRedisConfiguration) *RedisCommonPropertiesRedisConfiguration {
 		return &v
 	}).(RedisCommonPropertiesRedisConfigurationPtrOutput)
-}
-
-func (o RedisCommonPropertiesRedisConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[RedisCommonPropertiesRedisConfiguration] {
-	return pulumix.Output[RedisCommonPropertiesRedisConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies whether AAD based authentication has been enabled or disabled for the cache
@@ -921,12 +818,6 @@ func (o RedisCommonPropertiesRedisConfigurationPtrOutput) ToRedisCommonPropertie
 
 func (o RedisCommonPropertiesRedisConfigurationPtrOutput) ToRedisCommonPropertiesRedisConfigurationPtrOutputWithContext(ctx context.Context) RedisCommonPropertiesRedisConfigurationPtrOutput {
 	return o
-}
-
-func (o RedisCommonPropertiesRedisConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RedisCommonPropertiesRedisConfiguration] {
-	return pulumix.Output[*RedisCommonPropertiesRedisConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RedisCommonPropertiesRedisConfigurationPtrOutput) Elem() RedisCommonPropertiesRedisConfigurationOutput {
@@ -1144,12 +1035,6 @@ func (o RedisCommonPropertiesResponseRedisConfigurationOutput) ToRedisCommonProp
 	return o
 }
 
-func (o RedisCommonPropertiesResponseRedisConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[RedisCommonPropertiesResponseRedisConfiguration] {
-	return pulumix.Output[RedisCommonPropertiesResponseRedisConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies whether AAD based authentication has been enabled or disabled for the cache
 func (o RedisCommonPropertiesResponseRedisConfigurationOutput) AadEnabled() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RedisCommonPropertiesResponseRedisConfiguration) *string { return v.AadEnabled }).(pulumi.StringPtrOutput)
@@ -1258,12 +1143,6 @@ func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) ToRedisCommonP
 
 func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) ToRedisCommonPropertiesResponseRedisConfigurationPtrOutputWithContext(ctx context.Context) RedisCommonPropertiesResponseRedisConfigurationPtrOutput {
 	return o
-}
-
-func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RedisCommonPropertiesResponseRedisConfiguration] {
-	return pulumix.Output[*RedisCommonPropertiesResponseRedisConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RedisCommonPropertiesResponseRedisConfigurationPtrOutput) Elem() RedisCommonPropertiesResponseRedisConfigurationOutput {
@@ -1487,12 +1366,6 @@ func (o RedisInstanceDetailsResponseOutput) ToRedisInstanceDetailsResponseOutput
 	return o
 }
 
-func (o RedisInstanceDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RedisInstanceDetailsResponse] {
-	return pulumix.Output[RedisInstanceDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies whether the instance is a primary node.
 func (o RedisInstanceDetailsResponseOutput) IsMaster() pulumi.BoolOutput {
 	return o.ApplyT(func(v RedisInstanceDetailsResponse) bool { return v.IsMaster }).(pulumi.BoolOutput)
@@ -1537,12 +1410,6 @@ func (o RedisInstanceDetailsResponseArrayOutput) ToRedisInstanceDetailsResponseA
 	return o
 }
 
-func (o RedisInstanceDetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RedisInstanceDetailsResponse] {
-	return pulumix.Output[[]RedisInstanceDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RedisInstanceDetailsResponseArrayOutput) Index(i pulumi.IntInput) RedisInstanceDetailsResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RedisInstanceDetailsResponse {
 		return vs[0].([]RedisInstanceDetailsResponse)[vs[1].(int)]
@@ -1570,12 +1437,6 @@ func (o RedisLinkedServerResponseOutput) ToRedisLinkedServerResponseOutputWithCo
 	return o
 }
 
-func (o RedisLinkedServerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RedisLinkedServerResponse] {
-	return pulumix.Output[RedisLinkedServerResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Linked server Id.
 func (o RedisLinkedServerResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v RedisLinkedServerResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -1593,12 +1454,6 @@ func (o RedisLinkedServerResponseArrayOutput) ToRedisLinkedServerResponseArrayOu
 
 func (o RedisLinkedServerResponseArrayOutput) ToRedisLinkedServerResponseArrayOutputWithContext(ctx context.Context) RedisLinkedServerResponseArrayOutput {
 	return o
-}
-
-func (o RedisLinkedServerResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RedisLinkedServerResponse] {
-	return pulumix.Output[[]RedisLinkedServerResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RedisLinkedServerResponseArrayOutput) Index(i pulumi.IntInput) RedisLinkedServerResponseOutput {
@@ -1650,12 +1505,6 @@ func (i ScheduleEntryArgs) ToScheduleEntryOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleEntryOutput)
 }
 
-func (i ScheduleEntryArgs) ToOutput(ctx context.Context) pulumix.Output[ScheduleEntry] {
-	return pulumix.Output[ScheduleEntry]{
-		OutputState: i.ToScheduleEntryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ScheduleEntryArrayInput is an input type that accepts ScheduleEntryArray and ScheduleEntryArrayOutput values.
 // You can construct a concrete instance of `ScheduleEntryArrayInput` via:
 //
@@ -1681,12 +1530,6 @@ func (i ScheduleEntryArray) ToScheduleEntryArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleEntryArrayOutput)
 }
 
-func (i ScheduleEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]ScheduleEntry] {
-	return pulumix.Output[[]ScheduleEntry]{
-		OutputState: i.ToScheduleEntryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Patch schedule entry for a Premium Redis Cache.
 type ScheduleEntryOutput struct{ *pulumi.OutputState }
 
@@ -1700,12 +1543,6 @@ func (o ScheduleEntryOutput) ToScheduleEntryOutput() ScheduleEntryOutput {
 
 func (o ScheduleEntryOutput) ToScheduleEntryOutputWithContext(ctx context.Context) ScheduleEntryOutput {
 	return o
-}
-
-func (o ScheduleEntryOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduleEntry] {
-	return pulumix.Output[ScheduleEntry]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Day of the week when a cache can be patched.
@@ -1735,12 +1572,6 @@ func (o ScheduleEntryArrayOutput) ToScheduleEntryArrayOutput() ScheduleEntryArra
 
 func (o ScheduleEntryArrayOutput) ToScheduleEntryArrayOutputWithContext(ctx context.Context) ScheduleEntryArrayOutput {
 	return o
-}
-
-func (o ScheduleEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScheduleEntry] {
-	return pulumix.Output[[]ScheduleEntry]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScheduleEntryArrayOutput) Index(i pulumi.IntInput) ScheduleEntryOutput {
@@ -1774,12 +1605,6 @@ func (o ScheduleEntryResponseOutput) ToScheduleEntryResponseOutputWithContext(ct
 	return o
 }
 
-func (o ScheduleEntryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduleEntryResponse] {
-	return pulumix.Output[ScheduleEntryResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Day of the week when a cache can be patched.
 func (o ScheduleEntryResponseOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v ScheduleEntryResponse) string { return v.DayOfWeek }).(pulumi.StringOutput)
@@ -1807,12 +1632,6 @@ func (o ScheduleEntryResponseArrayOutput) ToScheduleEntryResponseArrayOutput() S
 
 func (o ScheduleEntryResponseArrayOutput) ToScheduleEntryResponseArrayOutputWithContext(ctx context.Context) ScheduleEntryResponseArrayOutput {
 	return o
-}
-
-func (o ScheduleEntryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ScheduleEntryResponse] {
-	return pulumix.Output[[]ScheduleEntryResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScheduleEntryResponseArrayOutput) Index(i pulumi.IntInput) ScheduleEntryResponseOutput {
@@ -1864,12 +1683,6 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
-func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SKU parameters supplied to the create Redis operation.
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -1883,12 +1696,6 @@ func (o SkuOutput) ToSkuOutput() SkuOutput {
 
 func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return o
-}
-
-func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The size of the Redis cache to deploy. Valid values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium) family (1, 2, 3, 4).
@@ -1931,12 +1738,6 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
-	return pulumix.Output[SkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The size of the Redis cache to deploy. Valid values: for C (Basic/Standard) family (0, 1, 2, 3, 4, 5, 6), for P (Premium) family (1, 2, 3, 4).
 func (o SkuResponseOutput) Capacity() pulumi.IntOutput {
 	return o.ApplyT(func(v SkuResponse) int { return v.Capacity }).(pulumi.IntOutput)
@@ -1975,12 +1776,6 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
-func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
-	return pulumix.Output[UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The client ID of the assigned identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -2003,12 +1798,6 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
-	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // MQ kafkaConnector/topicMap resource
@@ -205,12 +204,6 @@ func (i *KafkaConnectorTopicMap) ToKafkaConnectorTopicMapOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaConnectorTopicMapOutput)
 }
 
-func (i *KafkaConnectorTopicMap) ToOutput(ctx context.Context) pulumix.Output[*KafkaConnectorTopicMap] {
-	return pulumix.Output[*KafkaConnectorTopicMap]{
-		OutputState: i.ToKafkaConnectorTopicMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KafkaConnectorTopicMapOutput struct{ *pulumi.OutputState }
 
 func (KafkaConnectorTopicMapOutput) ElementType() reflect.Type {
@@ -223,12 +216,6 @@ func (o KafkaConnectorTopicMapOutput) ToKafkaConnectorTopicMapOutput() KafkaConn
 
 func (o KafkaConnectorTopicMapOutput) ToKafkaConnectorTopicMapOutputWithContext(ctx context.Context) KafkaConnectorTopicMapOutput {
 	return o
-}
-
-func (o KafkaConnectorTopicMapOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaConnectorTopicMap] {
-	return pulumix.Output[*KafkaConnectorTopicMap]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The batching settings for kafka messages.

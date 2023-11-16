@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a specific Log Analytics Query defined within a Log Analytics QueryPack.
@@ -104,12 +103,6 @@ func (o LookupQueryResultOutput) ToLookupQueryResultOutput() LookupQueryResultOu
 
 func (o LookupQueryResultOutput) ToLookupQueryResultOutputWithContext(ctx context.Context) LookupQueryResultOutput {
 	return o
-}
-
-func (o LookupQueryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupQueryResult] {
-	return pulumix.Output[LookupQueryResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Object Id of user creating the query.

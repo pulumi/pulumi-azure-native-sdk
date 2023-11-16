@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Definition of the watcher type.
@@ -180,12 +179,6 @@ func (i *Watcher) ToWatcherOutputWithContext(ctx context.Context) WatcherOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(WatcherOutput)
 }
 
-func (i *Watcher) ToOutput(ctx context.Context) pulumix.Output[*Watcher] {
-	return pulumix.Output[*Watcher]{
-		OutputState: i.ToWatcherOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WatcherOutput struct{ *pulumi.OutputState }
 
 func (WatcherOutput) ElementType() reflect.Type {
@@ -198,12 +191,6 @@ func (o WatcherOutput) ToWatcherOutput() WatcherOutput {
 
 func (o WatcherOutput) ToWatcherOutputWithContext(ctx context.Context) WatcherOutput {
 	return o
-}
-
-func (o WatcherOutput) ToOutput(ctx context.Context) pulumix.Output[*Watcher] {
-	return pulumix.Output[*Watcher]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the creation time.

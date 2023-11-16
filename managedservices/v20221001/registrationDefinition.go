@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The registration definition.
@@ -141,12 +140,6 @@ func (i *RegistrationDefinition) ToRegistrationDefinitionOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(RegistrationDefinitionOutput)
 }
 
-func (i *RegistrationDefinition) ToOutput(ctx context.Context) pulumix.Output[*RegistrationDefinition] {
-	return pulumix.Output[*RegistrationDefinition]{
-		OutputState: i.ToRegistrationDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegistrationDefinitionOutput struct{ *pulumi.OutputState }
 
 func (RegistrationDefinitionOutput) ElementType() reflect.Type {
@@ -159,12 +152,6 @@ func (o RegistrationDefinitionOutput) ToRegistrationDefinitionOutput() Registrat
 
 func (o RegistrationDefinitionOutput) ToRegistrationDefinitionOutputWithContext(ctx context.Context) RegistrationDefinitionOutput {
 	return o
-}
-
-func (o RegistrationDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[*RegistrationDefinition] {
-	return pulumix.Output[*RegistrationDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the registration definition.

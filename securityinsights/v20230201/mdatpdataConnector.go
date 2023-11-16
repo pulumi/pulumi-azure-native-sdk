@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents MDATP (Microsoft Defender Advanced Threat Protection) data connector.
@@ -133,6 +132,9 @@ func NewMDATPDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:MDATPDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:MDATPDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -223,12 +225,6 @@ func (i *MDATPDataConnector) ToMDATPDataConnectorOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(MDATPDataConnectorOutput)
 }
 
-func (i *MDATPDataConnector) ToOutput(ctx context.Context) pulumix.Output[*MDATPDataConnector] {
-	return pulumix.Output[*MDATPDataConnector]{
-		OutputState: i.ToMDATPDataConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MDATPDataConnectorOutput struct{ *pulumi.OutputState }
 
 func (MDATPDataConnectorOutput) ElementType() reflect.Type {
@@ -241,12 +237,6 @@ func (o MDATPDataConnectorOutput) ToMDATPDataConnectorOutput() MDATPDataConnecto
 
 func (o MDATPDataConnectorOutput) ToMDATPDataConnectorOutputWithContext(ctx context.Context) MDATPDataConnectorOutput {
 	return o
-}
-
-func (o MDATPDataConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*MDATPDataConnector] {
-	return pulumix.Output[*MDATPDataConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The available data types for the connector.

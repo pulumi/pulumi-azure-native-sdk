@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the detailed information about a linked server of a redis cache (requires Premium SKU).
@@ -96,12 +95,6 @@ func (o LookupLinkedServerResultOutput) ToLookupLinkedServerResultOutput() Looku
 
 func (o LookupLinkedServerResultOutput) ToLookupLinkedServerResultOutputWithContext(ctx context.Context) LookupLinkedServerResultOutput {
 	return o
-}
-
-func (o LookupLinkedServerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLinkedServerResult] {
-	return pulumix.Output[LookupLinkedServerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unchanging DNS name which will always point to current geo-primary cache among the linked redis caches for seamless Geo Failover experience.

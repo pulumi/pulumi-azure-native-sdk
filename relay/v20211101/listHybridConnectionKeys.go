@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Primary and secondary connection strings to the hybrid connection.
@@ -89,12 +88,6 @@ func (o ListHybridConnectionKeysResultOutput) ToListHybridConnectionKeysResultOu
 
 func (o ListHybridConnectionKeysResultOutput) ToListHybridConnectionKeysResultOutputWithContext(ctx context.Context) ListHybridConnectionKeysResultOutput {
 	return o
-}
-
-func (o ListHybridConnectionKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListHybridConnectionKeysResult] {
-	return pulumix.Output[ListHybridConnectionKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A string that describes the authorization rule.

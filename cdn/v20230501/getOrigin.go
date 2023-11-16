@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an existing origin within an endpoint.
@@ -115,12 +114,6 @@ func (o LookupOriginResultOutput) ToLookupOriginResultOutput() LookupOriginResul
 
 func (o LookupOriginResultOutput) ToLookupOriginResultOutputWithContext(ctx context.Context) LookupOriginResultOutput {
 	return o
-}
-
-func (o LookupOriginResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOriginResult] {
-	return pulumix.Output[LookupOriginResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Origin is enabled for load balancing or not

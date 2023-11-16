@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -39,12 +38,6 @@ func (o AdditionalUnattendContentResponseOutput) ToAdditionalUnattendContentResp
 
 func (o AdditionalUnattendContentResponseOutput) ToAdditionalUnattendContentResponseOutputWithContext(ctx context.Context) AdditionalUnattendContentResponseOutput {
 	return o
-}
-
-func (o AdditionalUnattendContentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AdditionalUnattendContentResponse] {
-	return pulumix.Output[AdditionalUnattendContentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The component name. Currently, the only allowable value is Microsoft-Windows-Shell-Setup.
@@ -79,12 +72,6 @@ func (o AdditionalUnattendContentResponseArrayOutput) ToAdditionalUnattendConten
 
 func (o AdditionalUnattendContentResponseArrayOutput) ToAdditionalUnattendContentResponseArrayOutputWithContext(ctx context.Context) AdditionalUnattendContentResponseArrayOutput {
 	return o
-}
-
-func (o AdditionalUnattendContentResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AdditionalUnattendContentResponse] {
-	return pulumix.Output[[]AdditionalUnattendContentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AdditionalUnattendContentResponseArrayOutput) Index(i pulumi.IntInput) AdditionalUnattendContentResponseOutput {
@@ -128,12 +115,6 @@ func (i ApiEntityReferenceArgs) ToApiEntityReferenceOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ApiEntityReferenceOutput)
 }
 
-func (i ApiEntityReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[ApiEntityReference] {
-	return pulumix.Output[ApiEntityReference]{
-		OutputState: i.ToApiEntityReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ApiEntityReferenceArgs) ToApiEntityReferencePtrOutput() ApiEntityReferencePtrOutput {
 	return i.ToApiEntityReferencePtrOutputWithContext(context.Background())
 }
@@ -175,12 +156,6 @@ func (i *apiEntityReferencePtrType) ToApiEntityReferencePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ApiEntityReferencePtrOutput)
 }
 
-func (i *apiEntityReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*ApiEntityReference] {
-	return pulumix.Output[*ApiEntityReference]{
-		OutputState: i.ToApiEntityReferencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApiEntityReferenceArrayInput is an input type that accepts ApiEntityReferenceArray and ApiEntityReferenceArrayOutput values.
 // You can construct a concrete instance of `ApiEntityReferenceArrayInput` via:
 //
@@ -204,12 +179,6 @@ func (i ApiEntityReferenceArray) ToApiEntityReferenceArrayOutput() ApiEntityRefe
 
 func (i ApiEntityReferenceArray) ToApiEntityReferenceArrayOutputWithContext(ctx context.Context) ApiEntityReferenceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiEntityReferenceArrayOutput)
-}
-
-func (i ApiEntityReferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]ApiEntityReference] {
-	return pulumix.Output[[]ApiEntityReference]{
-		OutputState: i.ToApiEntityReferenceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // The API entity reference.
@@ -237,12 +206,6 @@ func (o ApiEntityReferenceOutput) ToApiEntityReferencePtrOutputWithContext(ctx c
 	}).(ApiEntityReferencePtrOutput)
 }
 
-func (o ApiEntityReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[ApiEntityReference] {
-	return pulumix.Output[ApiEntityReference]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
 func (o ApiEntityReferenceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiEntityReference) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -260,12 +223,6 @@ func (o ApiEntityReferencePtrOutput) ToApiEntityReferencePtrOutput() ApiEntityRe
 
 func (o ApiEntityReferencePtrOutput) ToApiEntityReferencePtrOutputWithContext(ctx context.Context) ApiEntityReferencePtrOutput {
 	return o
-}
-
-func (o ApiEntityReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiEntityReference] {
-	return pulumix.Output[*ApiEntityReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiEntityReferencePtrOutput) Elem() ApiEntityReferenceOutput {
@@ -302,12 +259,6 @@ func (o ApiEntityReferenceArrayOutput) ToApiEntityReferenceArrayOutputWithContex
 	return o
 }
 
-func (o ApiEntityReferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApiEntityReference] {
-	return pulumix.Output[[]ApiEntityReference]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApiEntityReferenceArrayOutput) Index(i pulumi.IntInput) ApiEntityReferenceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiEntityReference {
 		return vs[0].([]ApiEntityReference)[vs[1].(int)]
@@ -335,12 +286,6 @@ func (o ApiEntityReferenceResponseOutput) ToApiEntityReferenceResponseOutputWith
 	return o
 }
 
-func (o ApiEntityReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApiEntityReferenceResponse] {
-	return pulumix.Output[ApiEntityReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
 func (o ApiEntityReferenceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiEntityReferenceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -358,12 +303,6 @@ func (o ApiEntityReferenceResponsePtrOutput) ToApiEntityReferenceResponsePtrOutp
 
 func (o ApiEntityReferenceResponsePtrOutput) ToApiEntityReferenceResponsePtrOutputWithContext(ctx context.Context) ApiEntityReferenceResponsePtrOutput {
 	return o
-}
-
-func (o ApiEntityReferenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiEntityReferenceResponse] {
-	return pulumix.Output[*ApiEntityReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiEntityReferenceResponsePtrOutput) Elem() ApiEntityReferenceResponseOutput {
@@ -400,12 +339,6 @@ func (o ApiEntityReferenceResponseArrayOutput) ToApiEntityReferenceResponseArray
 	return o
 }
 
-func (o ApiEntityReferenceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApiEntityReferenceResponse] {
-	return pulumix.Output[[]ApiEntityReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApiEntityReferenceResponseArrayOutput) Index(i pulumi.IntInput) ApiEntityReferenceResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiEntityReferenceResponse {
 		return vs[0].([]ApiEntityReferenceResponse)[vs[1].(int)]
@@ -435,12 +368,6 @@ func (o BootDiagnosticsResponseOutput) ToBootDiagnosticsResponseOutputWithContex
 	return o
 }
 
-func (o BootDiagnosticsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BootDiagnosticsResponse] {
-	return pulumix.Output[BootDiagnosticsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether boot diagnostics should be enabled on the Virtual Machine.
 func (o BootDiagnosticsResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BootDiagnosticsResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -463,12 +390,6 @@ func (o BootDiagnosticsResponsePtrOutput) ToBootDiagnosticsResponsePtrOutput() B
 
 func (o BootDiagnosticsResponsePtrOutput) ToBootDiagnosticsResponsePtrOutputWithContext(ctx context.Context) BootDiagnosticsResponsePtrOutput {
 	return o
-}
-
-func (o BootDiagnosticsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BootDiagnosticsResponse] {
-	return pulumix.Output[*BootDiagnosticsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BootDiagnosticsResponsePtrOutput) Elem() BootDiagnosticsResponseOutput {
@@ -522,12 +443,6 @@ func (o DiagnosticsProfileResponseOutput) ToDiagnosticsProfileResponseOutputWith
 	return o
 }
 
-func (o DiagnosticsProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiagnosticsProfileResponse] {
-	return pulumix.Output[DiagnosticsProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. <br>**NOTE**: If storageUri is being specified then ensure that the storage account is in the same region and subscription as the VM. <br><br> You can easily view the output of your console log. <br><br> Azure also enables you to see a screenshot of the VM from the hypervisor.
 func (o DiagnosticsProfileResponseOutput) BootDiagnostics() BootDiagnosticsResponsePtrOutput {
 	return o.ApplyT(func(v DiagnosticsProfileResponse) *BootDiagnosticsResponse { return v.BootDiagnostics }).(BootDiagnosticsResponsePtrOutput)
@@ -545,12 +460,6 @@ func (o DiagnosticsProfileResponsePtrOutput) ToDiagnosticsProfileResponsePtrOutp
 
 func (o DiagnosticsProfileResponsePtrOutput) ToDiagnosticsProfileResponsePtrOutputWithContext(ctx context.Context) DiagnosticsProfileResponsePtrOutput {
 	return o
-}
-
-func (o DiagnosticsProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiagnosticsProfileResponse] {
-	return pulumix.Output[*DiagnosticsProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiagnosticsProfileResponsePtrOutput) Elem() DiagnosticsProfileResponseOutput {
@@ -594,12 +503,6 @@ func (o DiskEncryptionSetParametersResponseOutput) ToDiskEncryptionSetParameters
 	return o
 }
 
-func (o DiskEncryptionSetParametersResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiskEncryptionSetParametersResponse] {
-	return pulumix.Output[DiskEncryptionSetParametersResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource Id
 func (o DiskEncryptionSetParametersResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiskEncryptionSetParametersResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -617,12 +520,6 @@ func (o DiskEncryptionSetParametersResponsePtrOutput) ToDiskEncryptionSetParamet
 
 func (o DiskEncryptionSetParametersResponsePtrOutput) ToDiskEncryptionSetParametersResponsePtrOutputWithContext(ctx context.Context) DiskEncryptionSetParametersResponsePtrOutput {
 	return o
-}
-
-func (o DiskEncryptionSetParametersResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskEncryptionSetParametersResponse] {
-	return pulumix.Output[*DiskEncryptionSetParametersResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskEncryptionSetParametersResponsePtrOutput) Elem() DiskEncryptionSetParametersResponseOutput {
@@ -670,12 +567,6 @@ func (o DiskEncryptionSettingsResponseOutput) ToDiskEncryptionSettingsResponseOu
 	return o
 }
 
-func (o DiskEncryptionSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiskEncryptionSettingsResponse] {
-	return pulumix.Output[DiskEncryptionSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the location of the disk encryption key, which is a Key Vault Secret.
 func (o DiskEncryptionSettingsResponseOutput) DiskEncryptionKey() KeyVaultSecretReferenceResponsePtrOutput {
 	return o.ApplyT(func(v DiskEncryptionSettingsResponse) *KeyVaultSecretReferenceResponse { return v.DiskEncryptionKey }).(KeyVaultSecretReferenceResponsePtrOutput)
@@ -703,12 +594,6 @@ func (o DiskEncryptionSettingsResponsePtrOutput) ToDiskEncryptionSettingsRespons
 
 func (o DiskEncryptionSettingsResponsePtrOutput) ToDiskEncryptionSettingsResponsePtrOutputWithContext(ctx context.Context) DiskEncryptionSettingsResponsePtrOutput {
 	return o
-}
-
-func (o DiskEncryptionSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskEncryptionSettingsResponse] {
-	return pulumix.Output[*DiskEncryptionSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskEncryptionSettingsResponsePtrOutput) Elem() DiskEncryptionSettingsResponseOutput {
@@ -774,12 +659,6 @@ func (o DiskRestorePointInstanceViewResponseOutput) ToDiskRestorePointInstanceVi
 	return o
 }
 
-func (o DiskRestorePointInstanceViewResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiskRestorePointInstanceViewResponse] {
-	return pulumix.Output[DiskRestorePointInstanceViewResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Disk restore point Id.
 func (o DiskRestorePointInstanceViewResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiskRestorePointInstanceViewResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -804,12 +683,6 @@ func (o DiskRestorePointInstanceViewResponseArrayOutput) ToDiskRestorePointInsta
 
 func (o DiskRestorePointInstanceViewResponseArrayOutput) ToDiskRestorePointInstanceViewResponseArrayOutputWithContext(ctx context.Context) DiskRestorePointInstanceViewResponseArrayOutput {
 	return o
-}
-
-func (o DiskRestorePointInstanceViewResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DiskRestorePointInstanceViewResponse] {
-	return pulumix.Output[[]DiskRestorePointInstanceViewResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskRestorePointInstanceViewResponseArrayOutput) Index(i pulumi.IntInput) DiskRestorePointInstanceViewResponseOutput {
@@ -841,12 +714,6 @@ func (o DiskRestorePointReplicationStatusResponseOutput) ToDiskRestorePointRepli
 	return o
 }
 
-func (o DiskRestorePointReplicationStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiskRestorePointReplicationStatusResponse] {
-	return pulumix.Output[DiskRestorePointReplicationStatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Replication completion percentage.
 func (o DiskRestorePointReplicationStatusResponseOutput) CompletionPercent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DiskRestorePointReplicationStatusResponse) *int { return v.CompletionPercent }).(pulumi.IntPtrOutput)
@@ -869,12 +736,6 @@ func (o DiskRestorePointReplicationStatusResponsePtrOutput) ToDiskRestorePointRe
 
 func (o DiskRestorePointReplicationStatusResponsePtrOutput) ToDiskRestorePointReplicationStatusResponsePtrOutputWithContext(ctx context.Context) DiskRestorePointReplicationStatusResponsePtrOutput {
 	return o
-}
-
-func (o DiskRestorePointReplicationStatusResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskRestorePointReplicationStatusResponse] {
-	return pulumix.Output[*DiskRestorePointReplicationStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskRestorePointReplicationStatusResponsePtrOutput) Elem() DiskRestorePointReplicationStatusResponseOutput {
@@ -930,12 +791,6 @@ func (o HardwareProfileResponseOutput) ToHardwareProfileResponseOutputWithContex
 	return o
 }
 
-func (o HardwareProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HardwareProfileResponse] {
-	return pulumix.Output[HardwareProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the size of the virtual machine. <br><br> The enum data type is currently deprecated and will be removed by December 23rd 2023. <br><br> Recommended way to get the list of available sizes is using these APIs: <br><br> [List all available virtual machine sizes in an availability set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes) <br><br> [List all available virtual machine sizes in a region](https://docs.microsoft.com/rest/api/compute/resourceskus/list) <br><br> [List all available virtual machine sizes for resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes). For more information about virtual machine sizes, see [Sizes for virtual machines](https://docs.microsoft.com/azure/virtual-machines/sizes). <br><br> The available VM sizes depend on region and availability set.
 func (o HardwareProfileResponseOutput) VmSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HardwareProfileResponse) *string { return v.VmSize }).(pulumi.StringPtrOutput)
@@ -958,12 +813,6 @@ func (o HardwareProfileResponsePtrOutput) ToHardwareProfileResponsePtrOutput() H
 
 func (o HardwareProfileResponsePtrOutput) ToHardwareProfileResponsePtrOutputWithContext(ctx context.Context) HardwareProfileResponsePtrOutput {
 	return o
-}
-
-func (o HardwareProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HardwareProfileResponse] {
-	return pulumix.Output[*HardwareProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HardwareProfileResponsePtrOutput) Elem() HardwareProfileResponseOutput {
@@ -1025,12 +874,6 @@ func (o InstanceViewStatusResponseOutput) ToInstanceViewStatusResponseOutputWith
 	return o
 }
 
-func (o InstanceViewStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InstanceViewStatusResponse] {
-	return pulumix.Output[InstanceViewStatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The status code.
 func (o InstanceViewStatusResponseOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceViewStatusResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
@@ -1068,12 +911,6 @@ func (o InstanceViewStatusResponsePtrOutput) ToInstanceViewStatusResponsePtrOutp
 
 func (o InstanceViewStatusResponsePtrOutput) ToInstanceViewStatusResponsePtrOutputWithContext(ctx context.Context) InstanceViewStatusResponsePtrOutput {
 	return o
-}
-
-func (o InstanceViewStatusResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceViewStatusResponse] {
-	return pulumix.Output[*InstanceViewStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InstanceViewStatusResponsePtrOutput) Elem() InstanceViewStatusResponseOutput {
@@ -1150,12 +987,6 @@ func (o InstanceViewStatusResponseArrayOutput) ToInstanceViewStatusResponseArray
 	return o
 }
 
-func (o InstanceViewStatusResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InstanceViewStatusResponse] {
-	return pulumix.Output[[]InstanceViewStatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InstanceViewStatusResponseArrayOutput) Index(i pulumi.IntInput) InstanceViewStatusResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceViewStatusResponse {
 		return vs[0].([]InstanceViewStatusResponse)[vs[1].(int)]
@@ -1185,12 +1016,6 @@ func (o KeyVaultKeyReferenceResponseOutput) ToKeyVaultKeyReferenceResponseOutput
 	return o
 }
 
-func (o KeyVaultKeyReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultKeyReferenceResponse] {
-	return pulumix.Output[KeyVaultKeyReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The URL referencing a key encryption key in Key Vault.
 func (o KeyVaultKeyReferenceResponseOutput) KeyUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultKeyReferenceResponse) string { return v.KeyUrl }).(pulumi.StringOutput)
@@ -1213,12 +1038,6 @@ func (o KeyVaultKeyReferenceResponsePtrOutput) ToKeyVaultKeyReferenceResponsePtr
 
 func (o KeyVaultKeyReferenceResponsePtrOutput) ToKeyVaultKeyReferenceResponsePtrOutputWithContext(ctx context.Context) KeyVaultKeyReferenceResponsePtrOutput {
 	return o
-}
-
-func (o KeyVaultKeyReferenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultKeyReferenceResponse] {
-	return pulumix.Output[*KeyVaultKeyReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultKeyReferenceResponsePtrOutput) Elem() KeyVaultKeyReferenceResponseOutput {
@@ -1274,12 +1093,6 @@ func (o KeyVaultSecretReferenceResponseOutput) ToKeyVaultSecretReferenceResponse
 	return o
 }
 
-func (o KeyVaultSecretReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultSecretReferenceResponse] {
-	return pulumix.Output[KeyVaultSecretReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The URL referencing a secret in a Key Vault.
 func (o KeyVaultSecretReferenceResponseOutput) SecretUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultSecretReferenceResponse) string { return v.SecretUrl }).(pulumi.StringOutput)
@@ -1302,12 +1115,6 @@ func (o KeyVaultSecretReferenceResponsePtrOutput) ToKeyVaultSecretReferenceRespo
 
 func (o KeyVaultSecretReferenceResponsePtrOutput) ToKeyVaultSecretReferenceResponsePtrOutputWithContext(ctx context.Context) KeyVaultSecretReferenceResponsePtrOutput {
 	return o
-}
-
-func (o KeyVaultSecretReferenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultSecretReferenceResponse] {
-	return pulumix.Output[*KeyVaultSecretReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultSecretReferenceResponsePtrOutput) Elem() KeyVaultSecretReferenceResponseOutput {
@@ -1369,12 +1176,6 @@ func (o LinuxConfigurationResponseOutput) ToLinuxConfigurationResponseOutputWith
 	return o
 }
 
-func (o LinuxConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LinuxConfigurationResponse] {
-	return pulumix.Output[LinuxConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies whether password authentication should be disabled.
 func (o LinuxConfigurationResponseOutput) DisablePasswordAuthentication() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LinuxConfigurationResponse) *bool { return v.DisablePasswordAuthentication }).(pulumi.BoolPtrOutput)
@@ -1412,12 +1213,6 @@ func (o LinuxConfigurationResponsePtrOutput) ToLinuxConfigurationResponsePtrOutp
 
 func (o LinuxConfigurationResponsePtrOutput) ToLinuxConfigurationResponsePtrOutputWithContext(ctx context.Context) LinuxConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o LinuxConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LinuxConfigurationResponse] {
-	return pulumix.Output[*LinuxConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LinuxConfigurationResponsePtrOutput) Elem() LinuxConfigurationResponseOutput {
@@ -1505,12 +1300,6 @@ func (o LinuxPatchSettingsResponseOutput) ToLinuxPatchSettingsResponseOutputWith
 	return o
 }
 
-func (o LinuxPatchSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LinuxPatchSettingsResponse] {
-	return pulumix.Output[LinuxPatchSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the mode of VM Guest Patch Assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine. <br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true.
 func (o LinuxPatchSettingsResponseOutput) AssessmentMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LinuxPatchSettingsResponse) *string { return v.AssessmentMode }).(pulumi.StringPtrOutput)
@@ -1540,12 +1329,6 @@ func (o LinuxPatchSettingsResponsePtrOutput) ToLinuxPatchSettingsResponsePtrOutp
 
 func (o LinuxPatchSettingsResponsePtrOutput) ToLinuxPatchSettingsResponsePtrOutputWithContext(ctx context.Context) LinuxPatchSettingsResponsePtrOutput {
 	return o
-}
-
-func (o LinuxPatchSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LinuxPatchSettingsResponse] {
-	return pulumix.Output[*LinuxPatchSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LinuxPatchSettingsResponsePtrOutput) Elem() LinuxPatchSettingsResponseOutput {
@@ -1609,12 +1392,6 @@ func (o LinuxVMGuestPatchAutomaticByPlatformSettingsResponseOutput) ToLinuxVMGue
 	return o
 }
 
-func (o LinuxVMGuestPatchAutomaticByPlatformSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LinuxVMGuestPatchAutomaticByPlatformSettingsResponse] {
-	return pulumix.Output[LinuxVMGuestPatchAutomaticByPlatformSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
 func (o LinuxVMGuestPatchAutomaticByPlatformSettingsResponseOutput) RebootSetting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LinuxVMGuestPatchAutomaticByPlatformSettingsResponse) *string { return v.RebootSetting }).(pulumi.StringPtrOutput)
@@ -1632,12 +1409,6 @@ func (o LinuxVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput) ToLinuxVM
 
 func (o LinuxVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput) ToLinuxVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutputWithContext(ctx context.Context) LinuxVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput {
 	return o
-}
-
-func (o LinuxVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LinuxVMGuestPatchAutomaticByPlatformSettingsResponse] {
-	return pulumix.Output[*LinuxVMGuestPatchAutomaticByPlatformSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LinuxVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput) Elem() LinuxVMGuestPatchAutomaticByPlatformSettingsResponseOutput {
@@ -1681,12 +1452,6 @@ func (o LogAnalyticsOutputResponseOutput) ToLogAnalyticsOutputResponseOutputWith
 	return o
 }
 
-func (o LogAnalyticsOutputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LogAnalyticsOutputResponse] {
-	return pulumix.Output[LogAnalyticsOutputResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Output file Uri path to blob container.
 func (o LogAnalyticsOutputResponseOutput) Output() pulumi.StringOutput {
 	return o.ApplyT(func(v LogAnalyticsOutputResponse) string { return v.Output }).(pulumi.StringOutput)
@@ -1717,12 +1482,6 @@ func (o ManagedDiskParametersResponseOutput) ToManagedDiskParametersResponseOutp
 
 func (o ManagedDiskParametersResponseOutput) ToManagedDiskParametersResponseOutputWithContext(ctx context.Context) ManagedDiskParametersResponseOutput {
 	return o
-}
-
-func (o ManagedDiskParametersResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedDiskParametersResponse] {
-	return pulumix.Output[ManagedDiskParametersResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the customer managed disk encryption set resource id for the managed disk.
@@ -1757,12 +1516,6 @@ func (o ManagedDiskParametersResponsePtrOutput) ToManagedDiskParametersResponseP
 
 func (o ManagedDiskParametersResponsePtrOutput) ToManagedDiskParametersResponsePtrOutputWithContext(ctx context.Context) ManagedDiskParametersResponsePtrOutput {
 	return o
-}
-
-func (o ManagedDiskParametersResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedDiskParametersResponse] {
-	return pulumix.Output[*ManagedDiskParametersResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedDiskParametersResponsePtrOutput) Elem() ManagedDiskParametersResponseOutput {
@@ -1852,12 +1605,6 @@ func (o OSProfileResponseOutput) ToOSProfileResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o OSProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OSProfileResponse] {
-	return pulumix.Output[OSProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
 func (o OSProfileResponseOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSProfileResponse) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
@@ -1915,12 +1662,6 @@ func (o OSProfileResponsePtrOutput) ToOSProfileResponsePtrOutput() OSProfileResp
 
 func (o OSProfileResponsePtrOutput) ToOSProfileResponsePtrOutputWithContext(ctx context.Context) OSProfileResponsePtrOutput {
 	return o
-}
-
-func (o OSProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OSProfileResponse] {
-	return pulumix.Output[*OSProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OSProfileResponsePtrOutput) Elem() OSProfileResponseOutput {
@@ -2050,12 +1791,6 @@ func (o PatchSettingsResponseOutput) ToPatchSettingsResponseOutputWithContext(ct
 	return o
 }
 
-func (o PatchSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PatchSettingsResponse] {
-	return pulumix.Output[PatchSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the mode of VM Guest patch assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine.<br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true.
 func (o PatchSettingsResponseOutput) AssessmentMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PatchSettingsResponse) *string { return v.AssessmentMode }).(pulumi.StringPtrOutput)
@@ -2090,12 +1825,6 @@ func (o PatchSettingsResponsePtrOutput) ToPatchSettingsResponsePtrOutput() Patch
 
 func (o PatchSettingsResponsePtrOutput) ToPatchSettingsResponsePtrOutputWithContext(ctx context.Context) PatchSettingsResponsePtrOutput {
 	return o
-}
-
-func (o PatchSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PatchSettingsResponse] {
-	return pulumix.Output[*PatchSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PatchSettingsResponsePtrOutput) Elem() PatchSettingsResponseOutput {
@@ -2171,12 +1900,6 @@ func (o RestorePointInstanceViewResponseOutput) ToRestorePointInstanceViewRespon
 	return o
 }
 
-func (o RestorePointInstanceViewResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePointInstanceViewResponse] {
-	return pulumix.Output[RestorePointInstanceViewResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The disk restore points information.
 func (o RestorePointInstanceViewResponseOutput) DiskRestorePoints() DiskRestorePointInstanceViewResponseArrayOutput {
 	return o.ApplyT(func(v RestorePointInstanceViewResponse) []DiskRestorePointInstanceViewResponse {
@@ -2224,12 +1947,6 @@ func (o RestorePointSourceMetadataResponseOutput) ToRestorePointSourceMetadataRe
 
 func (o RestorePointSourceMetadataResponseOutput) ToRestorePointSourceMetadataResponseOutputWithContext(ctx context.Context) RestorePointSourceMetadataResponseOutput {
 	return o
-}
-
-func (o RestorePointSourceMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePointSourceMetadataResponse] {
-	return pulumix.Output[RestorePointSourceMetadataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the diagnostics profile.
@@ -2310,12 +2027,6 @@ func (o RestorePointSourceVMDataDiskResponseOutput) ToRestorePointSourceVMDataDi
 	return o
 }
 
-func (o RestorePointSourceVMDataDiskResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePointSourceVMDataDiskResponse] {
-	return pulumix.Output[RestorePointSourceVMDataDiskResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets the caching type.
 func (o RestorePointSourceVMDataDiskResponseOutput) Caching() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RestorePointSourceVMDataDiskResponse) *string { return v.Caching }).(pulumi.StringPtrOutput)
@@ -2360,12 +2071,6 @@ func (o RestorePointSourceVMDataDiskResponseArrayOutput) ToRestorePointSourceVMD
 	return o
 }
 
-func (o RestorePointSourceVMDataDiskResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RestorePointSourceVMDataDiskResponse] {
-	return pulumix.Output[[]RestorePointSourceVMDataDiskResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RestorePointSourceVMDataDiskResponseArrayOutput) Index(i pulumi.IntInput) RestorePointSourceVMDataDiskResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestorePointSourceVMDataDiskResponse {
 		return vs[0].([]RestorePointSourceVMDataDiskResponse)[vs[1].(int)]
@@ -2403,12 +2108,6 @@ func (o RestorePointSourceVMOSDiskResponseOutput) ToRestorePointSourceVMOSDiskRe
 
 func (o RestorePointSourceVMOSDiskResponseOutput) ToRestorePointSourceVMOSDiskResponseOutputWithContext(ctx context.Context) RestorePointSourceVMOSDiskResponseOutput {
 	return o
-}
-
-func (o RestorePointSourceVMOSDiskResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePointSourceVMOSDiskResponse] {
-	return pulumix.Output[RestorePointSourceVMOSDiskResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the caching type.
@@ -2460,12 +2159,6 @@ func (o RestorePointSourceVMOSDiskResponsePtrOutput) ToRestorePointSourceVMOSDis
 
 func (o RestorePointSourceVMOSDiskResponsePtrOutput) ToRestorePointSourceVMOSDiskResponsePtrOutputWithContext(ctx context.Context) RestorePointSourceVMOSDiskResponsePtrOutput {
 	return o
-}
-
-func (o RestorePointSourceVMOSDiskResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePointSourceVMOSDiskResponse] {
-	return pulumix.Output[*RestorePointSourceVMOSDiskResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestorePointSourceVMOSDiskResponsePtrOutput) Elem() RestorePointSourceVMOSDiskResponseOutput {
@@ -2571,12 +2264,6 @@ func (o RestorePointSourceVMStorageProfileResponseOutput) ToRestorePointSourceVM
 	return o
 }
 
-func (o RestorePointSourceVMStorageProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RestorePointSourceVMStorageProfileResponse] {
-	return pulumix.Output[RestorePointSourceVMStorageProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets the data disks of the VM captured at the time of the restore point creation.
 func (o RestorePointSourceVMStorageProfileResponseOutput) DataDisks() RestorePointSourceVMDataDiskResponseArrayOutput {
 	return o.ApplyT(func(v RestorePointSourceVMStorageProfileResponse) []RestorePointSourceVMDataDiskResponse {
@@ -2603,12 +2290,6 @@ func (o RestorePointSourceVMStorageProfileResponsePtrOutput) ToRestorePointSourc
 
 func (o RestorePointSourceVMStorageProfileResponsePtrOutput) ToRestorePointSourceVMStorageProfileResponsePtrOutputWithContext(ctx context.Context) RestorePointSourceVMStorageProfileResponsePtrOutput {
 	return o
-}
-
-func (o RestorePointSourceVMStorageProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePointSourceVMStorageProfileResponse] {
-	return pulumix.Output[*RestorePointSourceVMStorageProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RestorePointSourceVMStorageProfileResponsePtrOutput) Elem() RestorePointSourceVMStorageProfileResponseOutput {
@@ -2666,12 +2347,6 @@ func (o SecurityProfileResponseOutput) ToSecurityProfileResponseOutputWithContex
 	return o
 }
 
-func (o SecurityProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityProfileResponse] {
-	return pulumix.Output[SecurityProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself. <br><br> Default: The Encryption at host will be disabled unless this property is set to true for the resource.
 func (o SecurityProfileResponseOutput) EncryptionAtHost() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecurityProfileResponse) *bool { return v.EncryptionAtHost }).(pulumi.BoolPtrOutput)
@@ -2699,12 +2374,6 @@ func (o SecurityProfileResponsePtrOutput) ToSecurityProfileResponsePtrOutput() S
 
 func (o SecurityProfileResponsePtrOutput) ToSecurityProfileResponsePtrOutputWithContext(ctx context.Context) SecurityProfileResponsePtrOutput {
 	return o
-}
-
-func (o SecurityProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityProfileResponse] {
-	return pulumix.Output[*SecurityProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecurityProfileResponsePtrOutput) Elem() SecurityProfileResponseOutput {
@@ -2768,12 +2437,6 @@ func (o SshConfigurationResponseOutput) ToSshConfigurationResponseOutputWithCont
 	return o
 }
 
-func (o SshConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SshConfigurationResponse] {
-	return pulumix.Output[SshConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of SSH public keys used to authenticate with linux based VMs.
 func (o SshConfigurationResponseOutput) PublicKeys() SshPublicKeyResponseArrayOutput {
 	return o.ApplyT(func(v SshConfigurationResponse) []SshPublicKeyResponse { return v.PublicKeys }).(SshPublicKeyResponseArrayOutput)
@@ -2791,12 +2454,6 @@ func (o SshConfigurationResponsePtrOutput) ToSshConfigurationResponsePtrOutput()
 
 func (o SshConfigurationResponsePtrOutput) ToSshConfigurationResponsePtrOutputWithContext(ctx context.Context) SshConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o SshConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SshConfigurationResponse] {
-	return pulumix.Output[*SshConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SshConfigurationResponsePtrOutput) Elem() SshConfigurationResponseOutput {
@@ -2842,12 +2499,6 @@ func (o SshPublicKeyResponseOutput) ToSshPublicKeyResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o SshPublicKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SshPublicKeyResponse] {
-	return pulumix.Output[SshPublicKeyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 func (o SshPublicKeyResponseOutput) KeyData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SshPublicKeyResponse) *string { return v.KeyData }).(pulumi.StringPtrOutput)
@@ -2870,12 +2521,6 @@ func (o SshPublicKeyResponseArrayOutput) ToSshPublicKeyResponseArrayOutput() Ssh
 
 func (o SshPublicKeyResponseArrayOutput) ToSshPublicKeyResponseArrayOutputWithContext(ctx context.Context) SshPublicKeyResponseArrayOutput {
 	return o
-}
-
-func (o SshPublicKeyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SshPublicKeyResponse] {
-	return pulumix.Output[[]SshPublicKeyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SshPublicKeyResponseArrayOutput) Index(i pulumi.IntInput) SshPublicKeyResponseOutput {
@@ -2903,12 +2548,6 @@ func (o SubResourceResponseOutput) ToSubResourceResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o SubResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubResourceResponse] {
-	return pulumix.Output[SubResourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource Id
 func (o SubResourceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubResourceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -2926,12 +2565,6 @@ func (o SubResourceResponsePtrOutput) ToSubResourceResponsePtrOutput() SubResour
 
 func (o SubResourceResponsePtrOutput) ToSubResourceResponsePtrOutputWithContext(ctx context.Context) SubResourceResponsePtrOutput {
 	return o
-}
-
-func (o SubResourceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubResourceResponse] {
-	return pulumix.Output[*SubResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubResourceResponsePtrOutput) Elem() SubResourceResponseOutput {
@@ -2977,12 +2610,6 @@ func (o UefiSettingsResponseOutput) ToUefiSettingsResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o UefiSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UefiSettingsResponse] {
-	return pulumix.Output[UefiSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies whether secure boot should be enabled on the virtual machine. <br><br>Minimum api-version: 2020-12-01
 func (o UefiSettingsResponseOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UefiSettingsResponse) *bool { return v.SecureBootEnabled }).(pulumi.BoolPtrOutput)
@@ -3005,12 +2632,6 @@ func (o UefiSettingsResponsePtrOutput) ToUefiSettingsResponsePtrOutput() UefiSet
 
 func (o UefiSettingsResponsePtrOutput) ToUefiSettingsResponsePtrOutputWithContext(ctx context.Context) UefiSettingsResponsePtrOutput {
 	return o
-}
-
-func (o UefiSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UefiSettingsResponse] {
-	return pulumix.Output[*UefiSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UefiSettingsResponsePtrOutput) Elem() UefiSettingsResponseOutput {
@@ -3066,12 +2687,6 @@ func (o VMDiskSecurityProfileResponseOutput) ToVMDiskSecurityProfileResponseOutp
 	return o
 }
 
-func (o VMDiskSecurityProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VMDiskSecurityProfileResponse] {
-	return pulumix.Output[VMDiskSecurityProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the customer managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob.
 func (o VMDiskSecurityProfileResponseOutput) DiskEncryptionSet() DiskEncryptionSetParametersResponsePtrOutput {
 	return o.ApplyT(func(v VMDiskSecurityProfileResponse) *DiskEncryptionSetParametersResponse { return v.DiskEncryptionSet }).(DiskEncryptionSetParametersResponsePtrOutput)
@@ -3094,12 +2709,6 @@ func (o VMDiskSecurityProfileResponsePtrOutput) ToVMDiskSecurityProfileResponseP
 
 func (o VMDiskSecurityProfileResponsePtrOutput) ToVMDiskSecurityProfileResponsePtrOutputWithContext(ctx context.Context) VMDiskSecurityProfileResponsePtrOutput {
 	return o
-}
-
-func (o VMDiskSecurityProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMDiskSecurityProfileResponse] {
-	return pulumix.Output[*VMDiskSecurityProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMDiskSecurityProfileResponsePtrOutput) Elem() VMDiskSecurityProfileResponseOutput {
@@ -3155,12 +2764,6 @@ func (o VMSizePropertiesResponseOutput) ToVMSizePropertiesResponseOutputWithCont
 	return o
 }
 
-func (o VMSizePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VMSizePropertiesResponse] {
-	return pulumix.Output[VMSizePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the number of vCPUs available for the VM. <br><br> When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list) .
 func (o VMSizePropertiesResponseOutput) VCPUsAvailable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VMSizePropertiesResponse) *int { return v.VCPUsAvailable }).(pulumi.IntPtrOutput)
@@ -3183,12 +2786,6 @@ func (o VMSizePropertiesResponsePtrOutput) ToVMSizePropertiesResponsePtrOutput()
 
 func (o VMSizePropertiesResponsePtrOutput) ToVMSizePropertiesResponsePtrOutputWithContext(ctx context.Context) VMSizePropertiesResponsePtrOutput {
 	return o
-}
-
-func (o VMSizePropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VMSizePropertiesResponse] {
-	return pulumix.Output[*VMSizePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMSizePropertiesResponsePtrOutput) Elem() VMSizePropertiesResponseOutput {
@@ -3244,12 +2841,6 @@ func (o VaultCertificateResponseOutput) ToVaultCertificateResponseOutputWithCont
 	return o
 }
 
-func (o VaultCertificateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VaultCertificateResponse] {
-	return pulumix.Output[VaultCertificateResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // For Windows VMs, specifies the certificate store on the Virtual Machine to which the certificate should be added. The specified certificate store is implicitly in the LocalMachine account. <br><br>For Linux VMs, the certificate file is placed under the /var/lib/waagent directory, with the file name &lt;UppercaseThumbprint&gt;.crt for the X509 certificate file and &lt;UppercaseThumbprint&gt;.prv for private key. Both of these files are .pem formatted.
 func (o VaultCertificateResponseOutput) CertificateStore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VaultCertificateResponse) *string { return v.CertificateStore }).(pulumi.StringPtrOutput)
@@ -3272,12 +2863,6 @@ func (o VaultCertificateResponseArrayOutput) ToVaultCertificateResponseArrayOutp
 
 func (o VaultCertificateResponseArrayOutput) ToVaultCertificateResponseArrayOutputWithContext(ctx context.Context) VaultCertificateResponseArrayOutput {
 	return o
-}
-
-func (o VaultCertificateResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VaultCertificateResponse] {
-	return pulumix.Output[[]VaultCertificateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VaultCertificateResponseArrayOutput) Index(i pulumi.IntInput) VaultCertificateResponseOutput {
@@ -3309,12 +2894,6 @@ func (o VaultSecretGroupResponseOutput) ToVaultSecretGroupResponseOutputWithCont
 	return o
 }
 
-func (o VaultSecretGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VaultSecretGroupResponse] {
-	return pulumix.Output[VaultSecretGroupResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The relative URL of the Key Vault containing all of the certificates in VaultCertificates.
 func (o VaultSecretGroupResponseOutput) SourceVault() SubResourceResponsePtrOutput {
 	return o.ApplyT(func(v VaultSecretGroupResponse) *SubResourceResponse { return v.SourceVault }).(SubResourceResponsePtrOutput)
@@ -3337,12 +2916,6 @@ func (o VaultSecretGroupResponseArrayOutput) ToVaultSecretGroupResponseArrayOutp
 
 func (o VaultSecretGroupResponseArrayOutput) ToVaultSecretGroupResponseArrayOutputWithContext(ctx context.Context) VaultSecretGroupResponseArrayOutput {
 	return o
-}
-
-func (o VaultSecretGroupResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VaultSecretGroupResponse] {
-	return pulumix.Output[[]VaultSecretGroupResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VaultSecretGroupResponseArrayOutput) Index(i pulumi.IntInput) VaultSecretGroupResponseOutput {
@@ -3372,12 +2945,6 @@ func (o WinRMConfigurationResponseOutput) ToWinRMConfigurationResponseOutputWith
 	return o
 }
 
-func (o WinRMConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WinRMConfigurationResponse] {
-	return pulumix.Output[WinRMConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of Windows Remote Management listeners
 func (o WinRMConfigurationResponseOutput) Listeners() WinRMListenerResponseArrayOutput {
 	return o.ApplyT(func(v WinRMConfigurationResponse) []WinRMListenerResponse { return v.Listeners }).(WinRMListenerResponseArrayOutput)
@@ -3395,12 +2962,6 @@ func (o WinRMConfigurationResponsePtrOutput) ToWinRMConfigurationResponsePtrOutp
 
 func (o WinRMConfigurationResponsePtrOutput) ToWinRMConfigurationResponsePtrOutputWithContext(ctx context.Context) WinRMConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o WinRMConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WinRMConfigurationResponse] {
-	return pulumix.Output[*WinRMConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WinRMConfigurationResponsePtrOutput) Elem() WinRMConfigurationResponseOutput {
@@ -3446,12 +3007,6 @@ func (o WinRMListenerResponseOutput) ToWinRMListenerResponseOutputWithContext(ct
 	return o
 }
 
-func (o WinRMListenerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WinRMListenerResponse] {
-	return pulumix.Output[WinRMListenerResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add). In this case, your certificate needs to be It is the Base64 encoding of the following JSON Object which is encoded in UTF-8: <br><br> {<br>  "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>  "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
 func (o WinRMListenerResponseOutput) CertificateUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WinRMListenerResponse) *string { return v.CertificateUrl }).(pulumi.StringPtrOutput)
@@ -3474,12 +3029,6 @@ func (o WinRMListenerResponseArrayOutput) ToWinRMListenerResponseArrayOutput() W
 
 func (o WinRMListenerResponseArrayOutput) ToWinRMListenerResponseArrayOutputWithContext(ctx context.Context) WinRMListenerResponseArrayOutput {
 	return o
-}
-
-func (o WinRMListenerResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WinRMListenerResponse] {
-	return pulumix.Output[[]WinRMListenerResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WinRMListenerResponseArrayOutput) Index(i pulumi.IntInput) WinRMListenerResponseOutput {
@@ -3519,12 +3068,6 @@ func (o WindowsConfigurationResponseOutput) ToWindowsConfigurationResponseOutput
 
 func (o WindowsConfigurationResponseOutput) ToWindowsConfigurationResponseOutputWithContext(ctx context.Context) WindowsConfigurationResponseOutput {
 	return o
-}
-
-func (o WindowsConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WindowsConfigurationResponse] {
-	return pulumix.Output[WindowsConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies additional base-64 encoded XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup.
@@ -3576,12 +3119,6 @@ func (o WindowsConfigurationResponsePtrOutput) ToWindowsConfigurationResponsePtr
 
 func (o WindowsConfigurationResponsePtrOutput) ToWindowsConfigurationResponsePtrOutputWithContext(ctx context.Context) WindowsConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o WindowsConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WindowsConfigurationResponse] {
-	return pulumix.Output[*WindowsConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WindowsConfigurationResponsePtrOutput) Elem() WindowsConfigurationResponseOutput {
@@ -3685,12 +3222,6 @@ func (o WindowsVMGuestPatchAutomaticByPlatformSettingsResponseOutput) ToWindowsV
 	return o
 }
 
-func (o WindowsVMGuestPatchAutomaticByPlatformSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WindowsVMGuestPatchAutomaticByPlatformSettingsResponse] {
-	return pulumix.Output[WindowsVMGuestPatchAutomaticByPlatformSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
 func (o WindowsVMGuestPatchAutomaticByPlatformSettingsResponseOutput) RebootSetting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WindowsVMGuestPatchAutomaticByPlatformSettingsResponse) *string { return v.RebootSetting }).(pulumi.StringPtrOutput)
@@ -3708,12 +3239,6 @@ func (o WindowsVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput) ToWindo
 
 func (o WindowsVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput) ToWindowsVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutputWithContext(ctx context.Context) WindowsVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput {
 	return o
-}
-
-func (o WindowsVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WindowsVMGuestPatchAutomaticByPlatformSettingsResponse] {
-	return pulumix.Output[*WindowsVMGuestPatchAutomaticByPlatformSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WindowsVMGuestPatchAutomaticByPlatformSettingsResponsePtrOutput) Elem() WindowsVMGuestPatchAutomaticByPlatformSettingsResponseOutput {

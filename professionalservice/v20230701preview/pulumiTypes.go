@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -77,12 +76,6 @@ func (i ProfessionalServiceCreationPropertiesArgs) ToProfessionalServiceCreation
 	return pulumi.ToOutputWithContext(ctx, i).(ProfessionalServiceCreationPropertiesOutput)
 }
 
-func (i ProfessionalServiceCreationPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ProfessionalServiceCreationProperties] {
-	return pulumix.Output[ProfessionalServiceCreationProperties]{
-		OutputState: i.ToProfessionalServiceCreationPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ProfessionalServiceCreationPropertiesArgs) ToProfessionalServiceCreationPropertiesPtrOutput() ProfessionalServiceCreationPropertiesPtrOutput {
 	return i.ToProfessionalServiceCreationPropertiesPtrOutputWithContext(context.Background())
 }
@@ -124,12 +117,6 @@ func (i *professionalServiceCreationPropertiesPtrType) ToProfessionalServiceCrea
 	return pulumi.ToOutputWithContext(ctx, i).(ProfessionalServiceCreationPropertiesPtrOutput)
 }
 
-func (i *professionalServiceCreationPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ProfessionalServiceCreationProperties] {
-	return pulumix.Output[*ProfessionalServiceCreationProperties]{
-		OutputState: i.ToProfessionalServiceCreationPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // properties for creation professionalService
 type ProfessionalServiceCreationPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -153,12 +140,6 @@ func (o ProfessionalServiceCreationPropertiesOutput) ToProfessionalServiceCreati
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProfessionalServiceCreationProperties) *ProfessionalServiceCreationProperties {
 		return &v
 	}).(ProfessionalServiceCreationPropertiesPtrOutput)
-}
-
-func (o ProfessionalServiceCreationPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ProfessionalServiceCreationProperties] {
-	return pulumix.Output[ProfessionalServiceCreationProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether the ProfessionalService subscription will auto renew upon term end.
@@ -213,12 +194,6 @@ func (o ProfessionalServiceCreationPropertiesPtrOutput) ToProfessionalServiceCre
 
 func (o ProfessionalServiceCreationPropertiesPtrOutput) ToProfessionalServiceCreationPropertiesPtrOutputWithContext(ctx context.Context) ProfessionalServiceCreationPropertiesPtrOutput {
 	return o
-}
-
-func (o ProfessionalServiceCreationPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProfessionalServiceCreationProperties] {
-	return pulumix.Output[*ProfessionalServiceCreationProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProfessionalServiceCreationPropertiesPtrOutput) Elem() ProfessionalServiceCreationPropertiesOutput {
@@ -336,12 +311,6 @@ func (o ProfessionalServicePropertiesResponseTermOutput) ToProfessionalServicePr
 	return o
 }
 
-func (o ProfessionalServicePropertiesResponseTermOutput) ToOutput(ctx context.Context) pulumix.Output[ProfessionalServicePropertiesResponseTerm] {
-	return pulumix.Output[ProfessionalServicePropertiesResponseTerm]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The end date of the current term
 func (o ProfessionalServicePropertiesResponseTermOutput) EndDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProfessionalServicePropertiesResponseTerm) *string { return v.EndDate }).(pulumi.StringPtrOutput)
@@ -369,12 +338,6 @@ func (o ProfessionalServicePropertiesResponseTermPtrOutput) ToProfessionalServic
 
 func (o ProfessionalServicePropertiesResponseTermPtrOutput) ToProfessionalServicePropertiesResponseTermPtrOutputWithContext(ctx context.Context) ProfessionalServicePropertiesResponseTermPtrOutput {
 	return o
-}
-
-func (o ProfessionalServicePropertiesResponseTermPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProfessionalServicePropertiesResponseTerm] {
-	return pulumix.Output[*ProfessionalServicePropertiesResponseTerm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProfessionalServicePropertiesResponseTermPtrOutput) Elem() ProfessionalServicePropertiesResponseTermOutput {
@@ -464,12 +427,6 @@ func (o ProfessionalServiceResourceResponsePropertiesOutput) ToProfessionalServi
 
 func (o ProfessionalServiceResourceResponsePropertiesOutput) ToProfessionalServiceResourceResponsePropertiesOutputWithContext(ctx context.Context) ProfessionalServiceResourceResponsePropertiesOutput {
 	return o
-}
-
-func (o ProfessionalServiceResourceResponsePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ProfessionalServiceResourceResponseProperties] {
-	return pulumix.Output[ProfessionalServiceResourceResponseProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether the ProfessionalService subscription will auto renew upon term end.

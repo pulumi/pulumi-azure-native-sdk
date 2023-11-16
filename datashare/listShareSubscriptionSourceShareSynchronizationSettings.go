@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get synchronization settings set on a share
@@ -84,12 +83,6 @@ func (o ListShareSubscriptionSourceShareSynchronizationSettingsResultOutput) ToL
 
 func (o ListShareSubscriptionSourceShareSynchronizationSettingsResultOutput) ToListShareSubscriptionSourceShareSynchronizationSettingsResultOutputWithContext(ctx context.Context) ListShareSubscriptionSourceShareSynchronizationSettingsResultOutput {
 	return o
-}
-
-func (o ListShareSubscriptionSourceShareSynchronizationSettingsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListShareSubscriptionSourceShareSynchronizationSettingsResult] {
-	return pulumix.Output[ListShareSubscriptionSourceShareSynchronizationSettingsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Url of next result page.

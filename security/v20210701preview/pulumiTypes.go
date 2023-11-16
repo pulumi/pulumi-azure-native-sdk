@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -277,12 +276,6 @@ func (i SecurityConnectorPropertiesOrganizationalDataArgs) ToSecurityConnectorPr
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityConnectorPropertiesOrganizationalDataOutput)
 }
 
-func (i SecurityConnectorPropertiesOrganizationalDataArgs) ToOutput(ctx context.Context) pulumix.Output[SecurityConnectorPropertiesOrganizationalData] {
-	return pulumix.Output[SecurityConnectorPropertiesOrganizationalData]{
-		OutputState: i.ToSecurityConnectorPropertiesOrganizationalDataOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SecurityConnectorPropertiesOrganizationalDataArgs) ToSecurityConnectorPropertiesOrganizationalDataPtrOutput() SecurityConnectorPropertiesOrganizationalDataPtrOutput {
 	return i.ToSecurityConnectorPropertiesOrganizationalDataPtrOutputWithContext(context.Background())
 }
@@ -324,12 +317,6 @@ func (i *securityConnectorPropertiesOrganizationalDataPtrType) ToSecurityConnect
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityConnectorPropertiesOrganizationalDataPtrOutput)
 }
 
-func (i *securityConnectorPropertiesOrganizationalDataPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecurityConnectorPropertiesOrganizationalData] {
-	return pulumix.Output[*SecurityConnectorPropertiesOrganizationalData]{
-		OutputState: i.ToSecurityConnectorPropertiesOrganizationalDataPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The multi cloud account's organizational data
 type SecurityConnectorPropertiesOrganizationalDataOutput struct{ *pulumi.OutputState }
 
@@ -353,12 +340,6 @@ func (o SecurityConnectorPropertiesOrganizationalDataOutput) ToSecurityConnector
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityConnectorPropertiesOrganizationalData) *SecurityConnectorPropertiesOrganizationalData {
 		return &v
 	}).(SecurityConnectorPropertiesOrganizationalDataPtrOutput)
-}
-
-func (o SecurityConnectorPropertiesOrganizationalDataOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityConnectorPropertiesOrganizationalData] {
-	return pulumix.Output[SecurityConnectorPropertiesOrganizationalData]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If the multi cloud account is of membership type organization, list of accounts excluded from offering
@@ -393,12 +374,6 @@ func (o SecurityConnectorPropertiesOrganizationalDataPtrOutput) ToSecurityConnec
 
 func (o SecurityConnectorPropertiesOrganizationalDataPtrOutput) ToSecurityConnectorPropertiesOrganizationalDataPtrOutputWithContext(ctx context.Context) SecurityConnectorPropertiesOrganizationalDataPtrOutput {
 	return o
-}
-
-func (o SecurityConnectorPropertiesOrganizationalDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityConnectorPropertiesOrganizationalData] {
-	return pulumix.Output[*SecurityConnectorPropertiesOrganizationalData]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecurityConnectorPropertiesOrganizationalDataPtrOutput) Elem() SecurityConnectorPropertiesOrganizationalDataOutput {
@@ -478,12 +453,6 @@ func (o SecurityConnectorPropertiesResponseOrganizationalDataOutput) ToSecurityC
 	return o
 }
 
-func (o SecurityConnectorPropertiesResponseOrganizationalDataOutput) ToOutput(ctx context.Context) pulumix.Output[SecurityConnectorPropertiesResponseOrganizationalData] {
-	return pulumix.Output[SecurityConnectorPropertiesResponseOrganizationalData]{
-		OutputState: o.OutputState,
-	}
-}
-
 // If the multi cloud account is of membership type organization, list of accounts excluded from offering
 func (o SecurityConnectorPropertiesResponseOrganizationalDataOutput) ExcludedAccountIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SecurityConnectorPropertiesResponseOrganizationalData) []string { return v.ExcludedAccountIds }).(pulumi.StringArrayOutput)
@@ -518,12 +487,6 @@ func (o SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput) ToSecuri
 
 func (o SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput) ToSecurityConnectorPropertiesResponseOrganizationalDataPtrOutputWithContext(ctx context.Context) SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput {
 	return o
-}
-
-func (o SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityConnectorPropertiesResponseOrganizationalData] {
-	return pulumix.Output[*SecurityConnectorPropertiesResponseOrganizationalData]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecurityConnectorPropertiesResponseOrganizationalDataPtrOutput) Elem() SecurityConnectorPropertiesResponseOrganizationalDataOutput {
@@ -605,12 +568,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

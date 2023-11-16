@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the Move Resource.
@@ -85,12 +84,6 @@ func (o LookupMoveResourceResultOutput) ToLookupMoveResourceResultOutput() Looku
 
 func (o LookupMoveResourceResultOutput) ToLookupMoveResourceResultOutputWithContext(ctx context.Context) LookupMoveResourceResultOutput {
 	return o
-}
-
-func (o LookupMoveResourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMoveResourceResult] {
-	return pulumix.Output[LookupMoveResourceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource Id for the resource.

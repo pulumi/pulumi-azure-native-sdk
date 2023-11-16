@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists devices for catalog.
@@ -91,12 +90,6 @@ func (o ListCatalogDevicesResultOutput) ToListCatalogDevicesResultOutput() ListC
 
 func (o ListCatalogDevicesResultOutput) ToListCatalogDevicesResultOutputWithContext(ctx context.Context) ListCatalogDevicesResultOutput {
 	return o
-}
-
-func (o ListCatalogDevicesResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListCatalogDevicesResult] {
-	return pulumix.Output[ListCatalogDevicesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The link to the next page of items

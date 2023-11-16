@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the database data masking policy.
@@ -100,12 +99,6 @@ func (o LookupDataMaskingPolicyResultOutput) ToLookupDataMaskingPolicyResultOutp
 
 func (o LookupDataMaskingPolicyResultOutput) ToLookupDataMaskingPolicyResultOutputWithContext(ctx context.Context) LookupDataMaskingPolicyResultOutput {
 	return o
-}
-
-func (o LookupDataMaskingPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataMaskingPolicyResult] {
-	return pulumix.Output[LookupDataMaskingPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of the application principals. This is a legacy parameter and is no longer used.

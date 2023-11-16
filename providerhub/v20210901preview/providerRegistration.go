@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type ProviderRegistration struct {
@@ -114,12 +113,6 @@ func (i *ProviderRegistration) ToProviderRegistrationOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderRegistrationOutput)
 }
 
-func (i *ProviderRegistration) ToOutput(ctx context.Context) pulumix.Output[*ProviderRegistration] {
-	return pulumix.Output[*ProviderRegistration]{
-		OutputState: i.ToProviderRegistrationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProviderRegistrationOutput struct{ *pulumi.OutputState }
 
 func (ProviderRegistrationOutput) ElementType() reflect.Type {
@@ -132,12 +125,6 @@ func (o ProviderRegistrationOutput) ToProviderRegistrationOutput() ProviderRegis
 
 func (o ProviderRegistrationOutput) ToProviderRegistrationOutputWithContext(ctx context.Context) ProviderRegistrationOutput {
 	return o
-}
-
-func (o ProviderRegistrationOutput) ToOutput(ctx context.Context) pulumix.Output[*ProviderRegistration] {
-	return pulumix.Output[*ProviderRegistration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

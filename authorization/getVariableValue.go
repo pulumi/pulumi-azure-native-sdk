@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This operation retrieves a single variable value; given its name, subscription it was created at and the variable it's created for.
@@ -82,12 +81,6 @@ func (o LookupVariableValueResultOutput) ToLookupVariableValueResultOutput() Loo
 
 func (o LookupVariableValueResultOutput) ToLookupVariableValueResultOutputWithContext(ctx context.Context) LookupVariableValueResultOutput {
 	return o
-}
-
-func (o LookupVariableValueResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVariableValueResult] {
-	return pulumix.Output[LookupVariableValueResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the variable.

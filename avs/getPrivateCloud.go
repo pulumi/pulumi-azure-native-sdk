@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A private cloud resource
@@ -139,12 +138,6 @@ func (o LookupPrivateCloudResultOutput) ToLookupPrivateCloudResultOutput() Looku
 
 func (o LookupPrivateCloudResultOutput) ToLookupPrivateCloudResultOutputWithContext(ctx context.Context) LookupPrivateCloudResultOutput {
 	return o
-}
-
-func (o LookupPrivateCloudResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateCloudResult] {
-	return pulumix.Output[LookupPrivateCloudResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Properties describing how the cloud is distributed across availability zones

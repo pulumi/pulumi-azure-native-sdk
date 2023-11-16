@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Healthcare Bot.
@@ -87,12 +86,6 @@ func (o LookupBotResultOutput) ToLookupBotResultOutput() LookupBotResultOutput {
 
 func (o LookupBotResultOutput) ToLookupBotResultOutputWithContext(ctx context.Context) LookupBotResultOutput {
 	return o
-}
-
-func (o LookupBotResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBotResult] {
-	return pulumix.Output[LookupBotResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource Id for the resource.

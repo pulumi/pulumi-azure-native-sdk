@@ -9,13 +9,12 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an installed packages by its id.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 func LookupContentPackage(ctx *pulumi.Context, args *LookupContentPackageArgs, opts ...pulumi.InvokeOption) (*LookupContentPackageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContentPackageResult
@@ -130,12 +129,6 @@ func (o LookupContentPackageResultOutput) ToLookupContentPackageResultOutput() L
 
 func (o LookupContentPackageResultOutput) ToLookupContentPackageResultOutputWithContext(ctx context.Context) LookupContentPackageResultOutput {
 	return o
-}
-
-func (o LookupContentPackageResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContentPackageResult] {
-	return pulumix.Output[LookupContentPackageResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The author of the package

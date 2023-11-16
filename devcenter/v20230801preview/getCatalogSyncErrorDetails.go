@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets catalog synchronization error details
@@ -81,12 +80,6 @@ func (o GetCatalogSyncErrorDetailsResultOutput) ToGetCatalogSyncErrorDetailsResu
 
 func (o GetCatalogSyncErrorDetailsResultOutput) ToGetCatalogSyncErrorDetailsResultOutputWithContext(ctx context.Context) GetCatalogSyncErrorDetailsResultOutput {
 	return o
-}
-
-func (o GetCatalogSyncErrorDetailsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCatalogSyncErrorDetailsResult] {
-	return pulumix.Output[GetCatalogSyncErrorDetailsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Catalog items that have conflicting names.

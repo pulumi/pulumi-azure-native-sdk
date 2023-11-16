@@ -104,12 +104,6 @@ func (o RunLocationOutput) ToRunLocationPtrOutputWithContext(ctx context.Context
 	}).(RunLocationPtrOutput)
 }
 
-func (o RunLocationOutput) ToOutput(ctx context.Context) pulumix.Output[RunLocation] {
-	return pulumix.Output[RunLocation]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RunLocationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -143,12 +137,6 @@ func (o RunLocationPtrOutput) ToRunLocationPtrOutput() RunLocationPtrOutput {
 
 func (o RunLocationPtrOutput) ToRunLocationPtrOutputWithContext(ctx context.Context) RunLocationPtrOutput {
 	return o
-}
-
-func (o RunLocationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RunLocation] {
-	return pulumix.Output[*RunLocation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RunLocationPtrOutput) Elem() RunLocationOutput {
@@ -288,12 +276,6 @@ func (o StateOutput) ToStatePtrOutputWithContext(ctx context.Context) StatePtrOu
 	}).(StatePtrOutput)
 }
 
-func (o StateOutput) ToOutput(ctx context.Context) pulumix.Output[State] {
-	return pulumix.Output[State]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -327,12 +309,6 @@ func (o StatePtrOutput) ToStatePtrOutput() StatePtrOutput {
 
 func (o StatePtrOutput) ToStatePtrOutputWithContext(ctx context.Context) StatePtrOutput {
 	return o
-}
-
-func (o StatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*State] {
-	return pulumix.Output[*State]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StatePtrOutput) Elem() StateOutput {
@@ -473,12 +449,6 @@ func (o SupportedAlgorithmOutput) ToSupportedAlgorithmPtrOutputWithContext(ctx c
 	}).(SupportedAlgorithmPtrOutput)
 }
 
-func (o SupportedAlgorithmOutput) ToOutput(ctx context.Context) pulumix.Output[SupportedAlgorithm] {
-	return pulumix.Output[SupportedAlgorithm]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SupportedAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -512,12 +482,6 @@ func (o SupportedAlgorithmPtrOutput) ToSupportedAlgorithmPtrOutput() SupportedAl
 
 func (o SupportedAlgorithmPtrOutput) ToSupportedAlgorithmPtrOutputWithContext(ctx context.Context) SupportedAlgorithmPtrOutput {
 	return o
-}
-
-func (o SupportedAlgorithmPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SupportedAlgorithm] {
-	return pulumix.Output[*SupportedAlgorithm]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SupportedAlgorithmPtrOutput) Elem() SupportedAlgorithmOutput {
@@ -656,12 +620,6 @@ func (o UserConfirmationOutput) ToUserConfirmationPtrOutputWithContext(ctx conte
 	}).(UserConfirmationPtrOutput)
 }
 
-func (o UserConfirmationOutput) ToOutput(ctx context.Context) pulumix.Output[UserConfirmation] {
-	return pulumix.Output[UserConfirmation]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UserConfirmationOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -695,12 +653,6 @@ func (o UserConfirmationPtrOutput) ToUserConfirmationPtrOutput() UserConfirmatio
 
 func (o UserConfirmationPtrOutput) ToUserConfirmationPtrOutputWithContext(ctx context.Context) UserConfirmationPtrOutput {
 	return o
-}
-
-func (o UserConfirmationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserConfirmation] {
-	return pulumix.Output[*UserConfirmation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserConfirmationPtrOutput) Elem() UserConfirmationOutput {

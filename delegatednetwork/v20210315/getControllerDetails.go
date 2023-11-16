@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details about the specified dnc controller.
@@ -91,12 +90,6 @@ func (o LookupControllerDetailsResultOutput) ToLookupControllerDetailsResultOutp
 
 func (o LookupControllerDetailsResultOutput) ToLookupControllerDetailsResultOutputWithContext(ctx context.Context) LookupControllerDetailsResultOutput {
 	return o
-}
-
-func (o LookupControllerDetailsResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupControllerDetailsResult] {
-	return pulumix.Output[LookupControllerDetailsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // dnc application id should be used by customer to authenticate with dnc gateway.

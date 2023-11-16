@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupBatchEndpoint(ctx *pulumi.Context, args *LookupBatchEndpointArgs, opts ...pulumi.InvokeOption) (*LookupBatchEndpointResult, error) {
@@ -92,12 +91,6 @@ func (o LookupBatchEndpointResultOutput) ToLookupBatchEndpointResultOutput() Loo
 
 func (o LookupBatchEndpointResultOutput) ToLookupBatchEndpointResultOutputWithContext(ctx context.Context) LookupBatchEndpointResultOutput {
 	return o
-}
-
-func (o LookupBatchEndpointResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBatchEndpointResult] {
-	return pulumix.Output[LookupBatchEndpointResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // [Required] Additional attributes of the entity.

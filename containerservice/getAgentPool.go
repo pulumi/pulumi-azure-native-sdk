@@ -9,13 +9,12 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Agent Pool.
 // Azure REST API version: 2023-04-01.
 //
-// Other available API versions: 2019-02-01, 2019-04-01, 2020-06-01, 2021-02-01, 2021-08-01, 2022-04-02-preview, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01.
+// Other available API versions: 2019-02-01, 2019-04-01, 2020-06-01, 2021-02-01, 2021-08-01, 2022-04-02-preview, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview.
 func LookupAgentPool(ctx *pulumi.Context, args *LookupAgentPoolArgs, opts ...pulumi.InvokeOption) (*LookupAgentPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAgentPoolResult
@@ -164,12 +163,6 @@ func (o LookupAgentPoolResultOutput) ToLookupAgentPoolResultOutput() LookupAgent
 
 func (o LookupAgentPoolResultOutput) ToLookupAgentPoolResultOutputWithContext(ctx context.Context) LookupAgentPoolResultOutput {
 	return o
-}
-
-func (o LookupAgentPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAgentPoolResult] {
-	return pulumix.Output[LookupAgentPoolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'.

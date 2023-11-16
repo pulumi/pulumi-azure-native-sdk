@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a CommunityTraining
@@ -112,12 +111,6 @@ func (o LookupCommunityTrainingResultOutput) ToLookupCommunityTrainingResultOutp
 
 func (o LookupCommunityTrainingResultOutput) ToLookupCommunityTrainingResultOutputWithContext(ctx context.Context) LookupCommunityTrainingResultOutput {
 	return o
-}
-
-func (o LookupCommunityTrainingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCommunityTrainingResult] {
-	return pulumix.Output[LookupCommunityTrainingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // To indicate whether the Community Training instance has Disaster Recovery enabled

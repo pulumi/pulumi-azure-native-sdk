@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a server communication link.
@@ -90,12 +89,6 @@ func (o LookupServerCommunicationLinkResultOutput) ToLookupServerCommunicationLi
 
 func (o LookupServerCommunicationLinkResultOutput) ToLookupServerCommunicationLinkResultOutputWithContext(ctx context.Context) LookupServerCommunicationLinkResultOutput {
 	return o
-}
-
-func (o LookupServerCommunicationLinkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServerCommunicationLinkResult] {
-	return pulumix.Output[LookupServerCommunicationLinkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource ID.

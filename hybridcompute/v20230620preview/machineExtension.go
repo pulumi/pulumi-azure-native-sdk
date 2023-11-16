@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Describes a Machine Extension.
@@ -105,6 +104,9 @@ func NewMachineExtension(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20230315preview:MachineExtension"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20231003preview:MachineExtension"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -193,12 +195,6 @@ func (i *MachineExtension) ToMachineExtensionOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(MachineExtensionOutput)
 }
 
-func (i *MachineExtension) ToOutput(ctx context.Context) pulumix.Output[*MachineExtension] {
-	return pulumix.Output[*MachineExtension]{
-		OutputState: i.ToMachineExtensionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MachineExtensionOutput struct{ *pulumi.OutputState }
 
 func (MachineExtensionOutput) ElementType() reflect.Type {
@@ -211,12 +207,6 @@ func (o MachineExtensionOutput) ToMachineExtensionOutput() MachineExtensionOutpu
 
 func (o MachineExtensionOutput) ToMachineExtensionOutputWithContext(ctx context.Context) MachineExtensionOutput {
 	return o
-}
-
-func (o MachineExtensionOutput) ToOutput(ctx context.Context) pulumix.Output[*MachineExtension] {
-	return pulumix.Output[*MachineExtension]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

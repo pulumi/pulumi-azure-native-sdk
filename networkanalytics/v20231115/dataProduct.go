@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The data product resource.
@@ -232,12 +231,6 @@ func (i *DataProduct) ToDataProductOutputWithContext(ctx context.Context) DataPr
 	return pulumi.ToOutputWithContext(ctx, i).(DataProductOutput)
 }
 
-func (i *DataProduct) ToOutput(ctx context.Context) pulumix.Output[*DataProduct] {
-	return pulumix.Output[*DataProduct]{
-		OutputState: i.ToDataProductOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataProductOutput struct{ *pulumi.OutputState }
 
 func (DataProductOutput) ElementType() reflect.Type {
@@ -250,12 +243,6 @@ func (o DataProductOutput) ToDataProductOutput() DataProductOutput {
 
 func (o DataProductOutput) ToDataProductOutputWithContext(ctx context.Context) DataProductOutput {
 	return o
-}
-
-func (o DataProductOutput) ToOutput(ctx context.Context) pulumix.Output[*DataProduct] {
-	return pulumix.Output[*DataProduct]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of available minor versions of the data product resource.

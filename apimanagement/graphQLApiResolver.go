@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // GraphQL API Resolver details.
@@ -150,12 +149,6 @@ func (i *GraphQLApiResolver) ToGraphQLApiResolverOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(GraphQLApiResolverOutput)
 }
 
-func (i *GraphQLApiResolver) ToOutput(ctx context.Context) pulumix.Output[*GraphQLApiResolver] {
-	return pulumix.Output[*GraphQLApiResolver]{
-		OutputState: i.ToGraphQLApiResolverOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GraphQLApiResolverOutput struct{ *pulumi.OutputState }
 
 func (GraphQLApiResolverOutput) ElementType() reflect.Type {
@@ -168,12 +161,6 @@ func (o GraphQLApiResolverOutput) ToGraphQLApiResolverOutput() GraphQLApiResolve
 
 func (o GraphQLApiResolverOutput) ToGraphQLApiResolverOutputWithContext(ctx context.Context) GraphQLApiResolverOutput {
 	return o
-}
-
-func (o GraphQLApiResolverOutput) ToOutput(ctx context.Context) pulumix.Output[*GraphQLApiResolver] {
-	return pulumix.Output[*GraphQLApiResolver]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the resolver. May include HTML formatting tags.

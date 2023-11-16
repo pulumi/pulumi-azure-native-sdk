@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get details of the specified volume group
@@ -91,12 +90,6 @@ func (o LookupVolumeGroupResultOutput) ToLookupVolumeGroupResultOutput() LookupV
 
 func (o LookupVolumeGroupResultOutput) ToLookupVolumeGroupResultOutputWithContext(ctx context.Context) LookupVolumeGroupResultOutput {
 	return o
-}
-
-func (o LookupVolumeGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVolumeGroupResult] {
-	return pulumix.Output[LookupVolumeGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Volume group details

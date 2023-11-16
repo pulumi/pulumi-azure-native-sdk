@@ -80,12 +80,6 @@ func (o WebTestKindOutput) ToWebTestKindPtrOutputWithContext(ctx context.Context
 	}).(WebTestKindPtrOutput)
 }
 
-func (o WebTestKindOutput) ToOutput(ctx context.Context) pulumix.Output[WebTestKind] {
-	return pulumix.Output[WebTestKind]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WebTestKindOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -119,12 +113,6 @@ func (o WebTestKindPtrOutput) ToWebTestKindPtrOutput() WebTestKindPtrOutput {
 
 func (o WebTestKindPtrOutput) ToWebTestKindPtrOutputWithContext(ctx context.Context) WebTestKindPtrOutput {
 	return o
-}
-
-func (o WebTestKindPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WebTestKind] {
-	return pulumix.Output[*WebTestKind]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebTestKindPtrOutput) Elem() WebTestKindOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Recipient Email details.
@@ -173,12 +172,6 @@ func (i *NotificationRecipientEmail) ToNotificationRecipientEmailOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationRecipientEmailOutput)
 }
 
-func (i *NotificationRecipientEmail) ToOutput(ctx context.Context) pulumix.Output[*NotificationRecipientEmail] {
-	return pulumix.Output[*NotificationRecipientEmail]{
-		OutputState: i.ToNotificationRecipientEmailOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NotificationRecipientEmailOutput struct{ *pulumi.OutputState }
 
 func (NotificationRecipientEmailOutput) ElementType() reflect.Type {
@@ -191,12 +184,6 @@ func (o NotificationRecipientEmailOutput) ToNotificationRecipientEmailOutput() N
 
 func (o NotificationRecipientEmailOutput) ToNotificationRecipientEmailOutputWithContext(ctx context.Context) NotificationRecipientEmailOutput {
 	return o
-}
-
-func (o NotificationRecipientEmailOutput) ToOutput(ctx context.Context) pulumix.Output[*NotificationRecipientEmail] {
-	return pulumix.Output[*NotificationRecipientEmail]{
-		OutputState: o.OutputState,
-	}
 }
 
 // User Email subscribed to notification.

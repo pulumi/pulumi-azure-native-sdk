@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Network slice resource.
@@ -195,12 +194,6 @@ func (i *Slice) ToSliceOutputWithContext(ctx context.Context) SliceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SliceOutput)
 }
 
-func (i *Slice) ToOutput(ctx context.Context) pulumix.Output[*Slice] {
-	return pulumix.Output[*Slice]{
-		OutputState: i.ToSliceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SliceOutput struct{ *pulumi.OutputState }
 
 func (SliceOutput) ElementType() reflect.Type {
@@ -213,12 +206,6 @@ func (o SliceOutput) ToSliceOutput() SliceOutput {
 
 func (o SliceOutput) ToSliceOutputWithContext(ctx context.Context) SliceOutput {
 	return o
-}
-
-func (o SliceOutput) ToOutput(ctx context.Context) pulumix.Output[*Slice] {
-	return pulumix.Output[*Slice]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Definition of the runbook type.
@@ -208,12 +207,6 @@ func (i *Runbook) ToRunbookOutputWithContext(ctx context.Context) RunbookOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(RunbookOutput)
 }
 
-func (i *Runbook) ToOutput(ctx context.Context) pulumix.Output[*Runbook] {
-	return pulumix.Output[*Runbook]{
-		OutputState: i.ToRunbookOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RunbookOutput struct{ *pulumi.OutputState }
 
 func (RunbookOutput) ElementType() reflect.Type {
@@ -226,12 +219,6 @@ func (o RunbookOutput) ToRunbookOutput() RunbookOutput {
 
 func (o RunbookOutput) ToRunbookOutputWithContext(ctx context.Context) RunbookOutput {
 	return o
-}
-
-func (o RunbookOutput) ToOutput(ctx context.Context) pulumix.Output[*Runbook] {
-	return pulumix.Output[*Runbook]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the creation time.

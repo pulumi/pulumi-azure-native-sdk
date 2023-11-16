@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of an event subscription of a namespace topic.
@@ -95,12 +94,6 @@ func (o LookupNamespaceTopicEventSubscriptionResultOutput) ToLookupNamespaceTopi
 
 func (o LookupNamespaceTopicEventSubscriptionResultOutput) ToLookupNamespaceTopicEventSubscriptionResultOutputWithContext(ctx context.Context) LookupNamespaceTopicEventSubscriptionResultOutput {
 	return o
-}
-
-func (o LookupNamespaceTopicEventSubscriptionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNamespaceTopicEventSubscriptionResult] {
-	return pulumix.Output[LookupNamespaceTopicEventSubscriptionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Information about the delivery configuration of the event subscription.

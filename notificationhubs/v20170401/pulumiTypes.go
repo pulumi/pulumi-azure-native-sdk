@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i AdmCredentialArgs) ToAdmCredentialOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AdmCredentialOutput)
 }
 
-func (i AdmCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[AdmCredential] {
-	return pulumix.Output[AdmCredential]{
-		OutputState: i.ToAdmCredentialOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AdmCredentialArgs) ToAdmCredentialPtrOutput() AdmCredentialPtrOutput {
 	return i.ToAdmCredentialPtrOutputWithContext(context.Background())
 }
@@ -104,12 +97,6 @@ func (i *admCredentialPtrType) ToAdmCredentialPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AdmCredentialPtrOutput)
 }
 
-func (i *admCredentialPtrType) ToOutput(ctx context.Context) pulumix.Output[*AdmCredential] {
-	return pulumix.Output[*AdmCredential]{
-		OutputState: i.ToAdmCredentialPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Description of a NotificationHub AdmCredential.
 type AdmCredentialOutput struct{ *pulumi.OutputState }
 
@@ -133,12 +120,6 @@ func (o AdmCredentialOutput) ToAdmCredentialPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdmCredential) *AdmCredential {
 		return &v
 	}).(AdmCredentialPtrOutput)
-}
-
-func (o AdmCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[AdmCredential] {
-	return pulumix.Output[AdmCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The URL of the authorization token.
@@ -168,12 +149,6 @@ func (o AdmCredentialPtrOutput) ToAdmCredentialPtrOutput() AdmCredentialPtrOutpu
 
 func (o AdmCredentialPtrOutput) ToAdmCredentialPtrOutputWithContext(ctx context.Context) AdmCredentialPtrOutput {
 	return o
-}
-
-func (o AdmCredentialPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AdmCredential] {
-	return pulumix.Output[*AdmCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AdmCredentialPtrOutput) Elem() AdmCredentialOutput {
@@ -241,12 +216,6 @@ func (o AdmCredentialResponseOutput) ToAdmCredentialResponseOutputWithContext(ct
 	return o
 }
 
-func (o AdmCredentialResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AdmCredentialResponse] {
-	return pulumix.Output[AdmCredentialResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The URL of the authorization token.
 func (o AdmCredentialResponseOutput) AuthTokenUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AdmCredentialResponse) *string { return v.AuthTokenUrl }).(pulumi.StringPtrOutput)
@@ -274,12 +243,6 @@ func (o AdmCredentialResponsePtrOutput) ToAdmCredentialResponsePtrOutput() AdmCr
 
 func (o AdmCredentialResponsePtrOutput) ToAdmCredentialResponsePtrOutputWithContext(ctx context.Context) AdmCredentialResponsePtrOutput {
 	return o
-}
-
-func (o AdmCredentialResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AdmCredentialResponse] {
-	return pulumix.Output[*AdmCredentialResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AdmCredentialResponsePtrOutput) Elem() AdmCredentialResponseOutput {
@@ -385,12 +348,6 @@ func (i ApnsCredentialArgs) ToApnsCredentialOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ApnsCredentialOutput)
 }
 
-func (i ApnsCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[ApnsCredential] {
-	return pulumix.Output[ApnsCredential]{
-		OutputState: i.ToApnsCredentialOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ApnsCredentialArgs) ToApnsCredentialPtrOutput() ApnsCredentialPtrOutput {
 	return i.ToApnsCredentialPtrOutputWithContext(context.Background())
 }
@@ -432,12 +389,6 @@ func (i *apnsCredentialPtrType) ToApnsCredentialPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ApnsCredentialPtrOutput)
 }
 
-func (i *apnsCredentialPtrType) ToOutput(ctx context.Context) pulumix.Output[*ApnsCredential] {
-	return pulumix.Output[*ApnsCredential]{
-		OutputState: i.ToApnsCredentialPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Description of a NotificationHub ApnsCredential.
 type ApnsCredentialOutput struct{ *pulumi.OutputState }
 
@@ -461,12 +412,6 @@ func (o ApnsCredentialOutput) ToApnsCredentialPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApnsCredential) *ApnsCredential {
 		return &v
 	}).(ApnsCredentialPtrOutput)
-}
-
-func (o ApnsCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[ApnsCredential] {
-	return pulumix.Output[ApnsCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The APNS certificate. Specify if using Certificate Authentication Mode.
@@ -521,12 +466,6 @@ func (o ApnsCredentialPtrOutput) ToApnsCredentialPtrOutput() ApnsCredentialPtrOu
 
 func (o ApnsCredentialPtrOutput) ToApnsCredentialPtrOutputWithContext(ctx context.Context) ApnsCredentialPtrOutput {
 	return o
-}
-
-func (o ApnsCredentialPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApnsCredential] {
-	return pulumix.Output[*ApnsCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApnsCredentialPtrOutput) Elem() ApnsCredentialOutput {
@@ -654,12 +593,6 @@ func (o ApnsCredentialResponseOutput) ToApnsCredentialResponseOutputWithContext(
 	return o
 }
 
-func (o ApnsCredentialResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApnsCredentialResponse] {
-	return pulumix.Output[ApnsCredentialResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The APNS certificate. Specify if using Certificate Authentication Mode.
 func (o ApnsCredentialResponseOutput) ApnsCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApnsCredentialResponse) *string { return v.ApnsCertificate }).(pulumi.StringPtrOutput)
@@ -712,12 +645,6 @@ func (o ApnsCredentialResponsePtrOutput) ToApnsCredentialResponsePtrOutput() Apn
 
 func (o ApnsCredentialResponsePtrOutput) ToApnsCredentialResponsePtrOutputWithContext(ctx context.Context) ApnsCredentialResponsePtrOutput {
 	return o
-}
-
-func (o ApnsCredentialResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ApnsCredentialResponse] {
-	return pulumix.Output[*ApnsCredentialResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApnsCredentialResponsePtrOutput) Elem() ApnsCredentialResponseOutput {
@@ -853,12 +780,6 @@ func (i BaiduCredentialArgs) ToBaiduCredentialOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(BaiduCredentialOutput)
 }
 
-func (i BaiduCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[BaiduCredential] {
-	return pulumix.Output[BaiduCredential]{
-		OutputState: i.ToBaiduCredentialOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BaiduCredentialArgs) ToBaiduCredentialPtrOutput() BaiduCredentialPtrOutput {
 	return i.ToBaiduCredentialPtrOutputWithContext(context.Background())
 }
@@ -900,12 +821,6 @@ func (i *baiduCredentialPtrType) ToBaiduCredentialPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(BaiduCredentialPtrOutput)
 }
 
-func (i *baiduCredentialPtrType) ToOutput(ctx context.Context) pulumix.Output[*BaiduCredential] {
-	return pulumix.Output[*BaiduCredential]{
-		OutputState: i.ToBaiduCredentialPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Description of a NotificationHub BaiduCredential.
 type BaiduCredentialOutput struct{ *pulumi.OutputState }
 
@@ -929,12 +844,6 @@ func (o BaiduCredentialOutput) ToBaiduCredentialPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BaiduCredential) *BaiduCredential {
 		return &v
 	}).(BaiduCredentialPtrOutput)
-}
-
-func (o BaiduCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[BaiduCredential] {
-	return pulumix.Output[BaiduCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Baidu Api Key.
@@ -964,12 +873,6 @@ func (o BaiduCredentialPtrOutput) ToBaiduCredentialPtrOutput() BaiduCredentialPt
 
 func (o BaiduCredentialPtrOutput) ToBaiduCredentialPtrOutputWithContext(ctx context.Context) BaiduCredentialPtrOutput {
 	return o
-}
-
-func (o BaiduCredentialPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BaiduCredential] {
-	return pulumix.Output[*BaiduCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BaiduCredentialPtrOutput) Elem() BaiduCredentialOutput {
@@ -1037,12 +940,6 @@ func (o BaiduCredentialResponseOutput) ToBaiduCredentialResponseOutputWithContex
 	return o
 }
 
-func (o BaiduCredentialResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BaiduCredentialResponse] {
-	return pulumix.Output[BaiduCredentialResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Baidu Api Key.
 func (o BaiduCredentialResponseOutput) BaiduApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BaiduCredentialResponse) *string { return v.BaiduApiKey }).(pulumi.StringPtrOutput)
@@ -1070,12 +967,6 @@ func (o BaiduCredentialResponsePtrOutput) ToBaiduCredentialResponsePtrOutput() B
 
 func (o BaiduCredentialResponsePtrOutput) ToBaiduCredentialResponsePtrOutputWithContext(ctx context.Context) BaiduCredentialResponsePtrOutput {
 	return o
-}
-
-func (o BaiduCredentialResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BaiduCredentialResponse] {
-	return pulumix.Output[*BaiduCredentialResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BaiduCredentialResponsePtrOutput) Elem() BaiduCredentialResponseOutput {
@@ -1157,12 +1048,6 @@ func (i GcmCredentialArgs) ToGcmCredentialOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(GcmCredentialOutput)
 }
 
-func (i GcmCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[GcmCredential] {
-	return pulumix.Output[GcmCredential]{
-		OutputState: i.ToGcmCredentialOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GcmCredentialArgs) ToGcmCredentialPtrOutput() GcmCredentialPtrOutput {
 	return i.ToGcmCredentialPtrOutputWithContext(context.Background())
 }
@@ -1204,12 +1089,6 @@ func (i *gcmCredentialPtrType) ToGcmCredentialPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(GcmCredentialPtrOutput)
 }
 
-func (i *gcmCredentialPtrType) ToOutput(ctx context.Context) pulumix.Output[*GcmCredential] {
-	return pulumix.Output[*GcmCredential]{
-		OutputState: i.ToGcmCredentialPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Description of a NotificationHub GcmCredential.
 type GcmCredentialOutput struct{ *pulumi.OutputState }
 
@@ -1235,12 +1114,6 @@ func (o GcmCredentialOutput) ToGcmCredentialPtrOutputWithContext(ctx context.Con
 	}).(GcmCredentialPtrOutput)
 }
 
-func (o GcmCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[GcmCredential] {
-	return pulumix.Output[GcmCredential]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The FCM legacy endpoint. Default value is 'https://fcm.googleapis.com/fcm/send'
 func (o GcmCredentialOutput) GcmEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GcmCredential) *string { return v.GcmEndpoint }).(pulumi.StringPtrOutput)
@@ -1263,12 +1136,6 @@ func (o GcmCredentialPtrOutput) ToGcmCredentialPtrOutput() GcmCredentialPtrOutpu
 
 func (o GcmCredentialPtrOutput) ToGcmCredentialPtrOutputWithContext(ctx context.Context) GcmCredentialPtrOutput {
 	return o
-}
-
-func (o GcmCredentialPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GcmCredential] {
-	return pulumix.Output[*GcmCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GcmCredentialPtrOutput) Elem() GcmCredentialOutput {
@@ -1324,12 +1191,6 @@ func (o GcmCredentialResponseOutput) ToGcmCredentialResponseOutputWithContext(ct
 	return o
 }
 
-func (o GcmCredentialResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GcmCredentialResponse] {
-	return pulumix.Output[GcmCredentialResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The FCM legacy endpoint. Default value is 'https://fcm.googleapis.com/fcm/send'
 func (o GcmCredentialResponseOutput) GcmEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GcmCredentialResponse) *string { return v.GcmEndpoint }).(pulumi.StringPtrOutput)
@@ -1352,12 +1213,6 @@ func (o GcmCredentialResponsePtrOutput) ToGcmCredentialResponsePtrOutput() GcmCr
 
 func (o GcmCredentialResponsePtrOutput) ToGcmCredentialResponsePtrOutputWithContext(ctx context.Context) GcmCredentialResponsePtrOutput {
 	return o
-}
-
-func (o GcmCredentialResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GcmCredentialResponse] {
-	return pulumix.Output[*GcmCredentialResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GcmCredentialResponsePtrOutput) Elem() GcmCredentialResponseOutput {
@@ -1433,12 +1288,6 @@ func (i MpnsCredentialArgs) ToMpnsCredentialOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(MpnsCredentialOutput)
 }
 
-func (i MpnsCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[MpnsCredential] {
-	return pulumix.Output[MpnsCredential]{
-		OutputState: i.ToMpnsCredentialOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MpnsCredentialArgs) ToMpnsCredentialPtrOutput() MpnsCredentialPtrOutput {
 	return i.ToMpnsCredentialPtrOutputWithContext(context.Background())
 }
@@ -1480,12 +1329,6 @@ func (i *mpnsCredentialPtrType) ToMpnsCredentialPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(MpnsCredentialPtrOutput)
 }
 
-func (i *mpnsCredentialPtrType) ToOutput(ctx context.Context) pulumix.Output[*MpnsCredential] {
-	return pulumix.Output[*MpnsCredential]{
-		OutputState: i.ToMpnsCredentialPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Description of a NotificationHub MpnsCredential.
 type MpnsCredentialOutput struct{ *pulumi.OutputState }
 
@@ -1509,12 +1352,6 @@ func (o MpnsCredentialOutput) ToMpnsCredentialPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MpnsCredential) *MpnsCredential {
 		return &v
 	}).(MpnsCredentialPtrOutput)
-}
-
-func (o MpnsCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[MpnsCredential] {
-	return pulumix.Output[MpnsCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The certificate key for this credential.
@@ -1544,12 +1381,6 @@ func (o MpnsCredentialPtrOutput) ToMpnsCredentialPtrOutput() MpnsCredentialPtrOu
 
 func (o MpnsCredentialPtrOutput) ToMpnsCredentialPtrOutputWithContext(ctx context.Context) MpnsCredentialPtrOutput {
 	return o
-}
-
-func (o MpnsCredentialPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MpnsCredential] {
-	return pulumix.Output[*MpnsCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MpnsCredentialPtrOutput) Elem() MpnsCredentialOutput {
@@ -1617,12 +1448,6 @@ func (o MpnsCredentialResponseOutput) ToMpnsCredentialResponseOutputWithContext(
 	return o
 }
 
-func (o MpnsCredentialResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MpnsCredentialResponse] {
-	return pulumix.Output[MpnsCredentialResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The certificate key for this credential.
 func (o MpnsCredentialResponseOutput) CertificateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MpnsCredentialResponse) *string { return v.CertificateKey }).(pulumi.StringPtrOutput)
@@ -1650,12 +1475,6 @@ func (o MpnsCredentialResponsePtrOutput) ToMpnsCredentialResponsePtrOutput() Mpn
 
 func (o MpnsCredentialResponsePtrOutput) ToMpnsCredentialResponsePtrOutputWithContext(ctx context.Context) MpnsCredentialResponsePtrOutput {
 	return o
-}
-
-func (o MpnsCredentialResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MpnsCredentialResponse] {
-	return pulumix.Output[*MpnsCredentialResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MpnsCredentialResponsePtrOutput) Elem() MpnsCredentialResponseOutput {
@@ -1733,12 +1552,6 @@ func (i SharedAccessAuthorizationRulePropertiesArgs) ToSharedAccessAuthorization
 	return pulumi.ToOutputWithContext(ctx, i).(SharedAccessAuthorizationRulePropertiesOutput)
 }
 
-func (i SharedAccessAuthorizationRulePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[SharedAccessAuthorizationRuleProperties] {
-	return pulumix.Output[SharedAccessAuthorizationRuleProperties]{
-		OutputState: i.ToSharedAccessAuthorizationRulePropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SharedAccessAuthorizationRulePropertiesArrayInput is an input type that accepts SharedAccessAuthorizationRulePropertiesArray and SharedAccessAuthorizationRulePropertiesArrayOutput values.
 // You can construct a concrete instance of `SharedAccessAuthorizationRulePropertiesArrayInput` via:
 //
@@ -1764,12 +1577,6 @@ func (i SharedAccessAuthorizationRulePropertiesArray) ToSharedAccessAuthorizatio
 	return pulumi.ToOutputWithContext(ctx, i).(SharedAccessAuthorizationRulePropertiesArrayOutput)
 }
 
-func (i SharedAccessAuthorizationRulePropertiesArray) ToOutput(ctx context.Context) pulumix.Output[[]SharedAccessAuthorizationRuleProperties] {
-	return pulumix.Output[[]SharedAccessAuthorizationRuleProperties]{
-		OutputState: i.ToSharedAccessAuthorizationRulePropertiesArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SharedAccessAuthorizationRule properties.
 type SharedAccessAuthorizationRulePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1783,12 +1590,6 @@ func (o SharedAccessAuthorizationRulePropertiesOutput) ToSharedAccessAuthorizati
 
 func (o SharedAccessAuthorizationRulePropertiesOutput) ToSharedAccessAuthorizationRulePropertiesOutputWithContext(ctx context.Context) SharedAccessAuthorizationRulePropertiesOutput {
 	return o
-}
-
-func (o SharedAccessAuthorizationRulePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[SharedAccessAuthorizationRuleProperties] {
-	return pulumix.Output[SharedAccessAuthorizationRuleProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The rights associated with the rule.
@@ -1808,12 +1609,6 @@ func (o SharedAccessAuthorizationRulePropertiesArrayOutput) ToSharedAccessAuthor
 
 func (o SharedAccessAuthorizationRulePropertiesArrayOutput) ToSharedAccessAuthorizationRulePropertiesArrayOutputWithContext(ctx context.Context) SharedAccessAuthorizationRulePropertiesArrayOutput {
 	return o
-}
-
-func (o SharedAccessAuthorizationRulePropertiesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SharedAccessAuthorizationRuleProperties] {
-	return pulumix.Output[[]SharedAccessAuthorizationRuleProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SharedAccessAuthorizationRulePropertiesArrayOutput) Index(i pulumi.IntInput) SharedAccessAuthorizationRulePropertiesOutput {
@@ -1857,12 +1652,6 @@ func (o SharedAccessAuthorizationRulePropertiesResponseOutput) ToSharedAccessAut
 
 func (o SharedAccessAuthorizationRulePropertiesResponseOutput) ToSharedAccessAuthorizationRulePropertiesResponseOutputWithContext(ctx context.Context) SharedAccessAuthorizationRulePropertiesResponseOutput {
 	return o
-}
-
-func (o SharedAccessAuthorizationRulePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SharedAccessAuthorizationRulePropertiesResponse] {
-	return pulumix.Output[SharedAccessAuthorizationRulePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A string that describes the claim type
@@ -1924,12 +1713,6 @@ func (o SharedAccessAuthorizationRulePropertiesResponseArrayOutput) ToSharedAcce
 	return o
 }
 
-func (o SharedAccessAuthorizationRulePropertiesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SharedAccessAuthorizationRulePropertiesResponse] {
-	return pulumix.Output[[]SharedAccessAuthorizationRulePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SharedAccessAuthorizationRulePropertiesResponseArrayOutput) Index(i pulumi.IntInput) SharedAccessAuthorizationRulePropertiesResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SharedAccessAuthorizationRulePropertiesResponse {
 		return vs[0].([]SharedAccessAuthorizationRulePropertiesResponse)[vs[1].(int)]
@@ -1987,12 +1770,6 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
-func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
 	return i.ToSkuPtrOutputWithContext(context.Background())
 }
@@ -2034,12 +1811,6 @@ func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
 }
 
-func (i *skuPtrType) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
-	return pulumix.Output[*Sku]{
-		OutputState: i.ToSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Sku description for a namespace
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -2063,12 +1834,6 @@ func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Sku) *Sku {
 		return &v
 	}).(SkuPtrOutput)
-}
-
-func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The capacity of the resource
@@ -2108,12 +1873,6 @@ func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
 
 func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o
-}
-
-func (o SkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
-	return pulumix.Output[*Sku]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuPtrOutput) Elem() SkuOutput {
@@ -2205,12 +1964,6 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
-	return pulumix.Output[SkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The capacity of the resource
 func (o SkuResponseOutput) Capacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
@@ -2248,12 +2001,6 @@ func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
 
 func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
 	return o
-}
-
-func (o SkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuResponse] {
-	return pulumix.Output[*SkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
@@ -2359,12 +2106,6 @@ func (i WnsCredentialArgs) ToWnsCredentialOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(WnsCredentialOutput)
 }
 
-func (i WnsCredentialArgs) ToOutput(ctx context.Context) pulumix.Output[WnsCredential] {
-	return pulumix.Output[WnsCredential]{
-		OutputState: i.ToWnsCredentialOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WnsCredentialArgs) ToWnsCredentialPtrOutput() WnsCredentialPtrOutput {
 	return i.ToWnsCredentialPtrOutputWithContext(context.Background())
 }
@@ -2406,12 +2147,6 @@ func (i *wnsCredentialPtrType) ToWnsCredentialPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(WnsCredentialPtrOutput)
 }
 
-func (i *wnsCredentialPtrType) ToOutput(ctx context.Context) pulumix.Output[*WnsCredential] {
-	return pulumix.Output[*WnsCredential]{
-		OutputState: i.ToWnsCredentialPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Description of a NotificationHub WnsCredential.
 type WnsCredentialOutput struct{ *pulumi.OutputState }
 
@@ -2435,12 +2170,6 @@ func (o WnsCredentialOutput) ToWnsCredentialPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WnsCredential) *WnsCredential {
 		return &v
 	}).(WnsCredentialPtrOutput)
-}
-
-func (o WnsCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[WnsCredential] {
-	return pulumix.Output[WnsCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The package ID for this credential.
@@ -2470,12 +2199,6 @@ func (o WnsCredentialPtrOutput) ToWnsCredentialPtrOutput() WnsCredentialPtrOutpu
 
 func (o WnsCredentialPtrOutput) ToWnsCredentialPtrOutputWithContext(ctx context.Context) WnsCredentialPtrOutput {
 	return o
-}
-
-func (o WnsCredentialPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WnsCredential] {
-	return pulumix.Output[*WnsCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WnsCredentialPtrOutput) Elem() WnsCredentialOutput {
@@ -2543,12 +2266,6 @@ func (o WnsCredentialResponseOutput) ToWnsCredentialResponseOutputWithContext(ct
 	return o
 }
 
-func (o WnsCredentialResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WnsCredentialResponse] {
-	return pulumix.Output[WnsCredentialResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The package ID for this credential.
 func (o WnsCredentialResponseOutput) PackageSid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WnsCredentialResponse) *string { return v.PackageSid }).(pulumi.StringPtrOutput)
@@ -2576,12 +2293,6 @@ func (o WnsCredentialResponsePtrOutput) ToWnsCredentialResponsePtrOutput() WnsCr
 
 func (o WnsCredentialResponsePtrOutput) ToWnsCredentialResponsePtrOutputWithContext(ctx context.Context) WnsCredentialResponsePtrOutput {
 	return o
-}
-
-func (o WnsCredentialResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WnsCredentialResponse] {
-	return pulumix.Output[*WnsCredentialResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WnsCredentialResponsePtrOutput) Elem() WnsCredentialResponseOutput {

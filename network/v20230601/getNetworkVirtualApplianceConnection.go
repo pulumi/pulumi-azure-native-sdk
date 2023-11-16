@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the details of specified NVA connection.
@@ -91,12 +90,6 @@ func (o LookupNetworkVirtualApplianceConnectionResultOutput) ToLookupNetworkVirt
 
 func (o LookupNetworkVirtualApplianceConnectionResultOutput) ToLookupNetworkVirtualApplianceConnectionResultOutputWithContext(ctx context.Context) LookupNetworkVirtualApplianceConnectionResultOutput {
 	return o
-}
-
-func (o LookupNetworkVirtualApplianceConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkVirtualApplianceConnectionResult] {
-	return pulumix.Output[LookupNetworkVirtualApplianceConnectionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Network Virtual Appliance ASN.

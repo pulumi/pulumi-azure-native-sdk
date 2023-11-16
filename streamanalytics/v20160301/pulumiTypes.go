@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -139,12 +138,6 @@ func (i FunctionInputTypeArgs) ToFunctionInputTypeOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionInputTypeOutput)
 }
 
-func (i FunctionInputTypeArgs) ToOutput(ctx context.Context) pulumix.Output[FunctionInputType] {
-	return pulumix.Output[FunctionInputType]{
-		OutputState: i.ToFunctionInputTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FunctionInputTypeArrayInput is an input type that accepts FunctionInputTypeArray and FunctionInputTypeArrayOutput values.
 // You can construct a concrete instance of `FunctionInputTypeArrayInput` via:
 //
@@ -170,12 +163,6 @@ func (i FunctionInputTypeArray) ToFunctionInputTypeArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionInputTypeArrayOutput)
 }
 
-func (i FunctionInputTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]FunctionInputType] {
-	return pulumix.Output[[]FunctionInputType]{
-		OutputState: i.ToFunctionInputTypeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes one input parameter of a function.
 type FunctionInputTypeOutput struct{ *pulumi.OutputState }
 
@@ -189,12 +176,6 @@ func (o FunctionInputTypeOutput) ToFunctionInputTypeOutput() FunctionInputTypeOu
 
 func (o FunctionInputTypeOutput) ToFunctionInputTypeOutputWithContext(ctx context.Context) FunctionInputTypeOutput {
 	return o
-}
-
-func (o FunctionInputTypeOutput) ToOutput(ctx context.Context) pulumix.Output[FunctionInputType] {
-	return pulumix.Output[FunctionInputType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The (Azure Stream Analytics supported) data type of the function input parameter. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
@@ -219,12 +200,6 @@ func (o FunctionInputTypeArrayOutput) ToFunctionInputTypeArrayOutput() FunctionI
 
 func (o FunctionInputTypeArrayOutput) ToFunctionInputTypeArrayOutputWithContext(ctx context.Context) FunctionInputTypeArrayOutput {
 	return o
-}
-
-func (o FunctionInputTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FunctionInputType] {
-	return pulumix.Output[[]FunctionInputType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FunctionInputTypeArrayOutput) Index(i pulumi.IntInput) FunctionInputTypeOutput {
@@ -256,12 +231,6 @@ func (o FunctionInputResponseOutput) ToFunctionInputResponseOutputWithContext(ct
 	return o
 }
 
-func (o FunctionInputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FunctionInputResponse] {
-	return pulumix.Output[FunctionInputResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The (Azure Stream Analytics supported) data type of the function input parameter. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
 func (o FunctionInputResponseOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionInputResponse) *string { return v.DataType }).(pulumi.StringPtrOutput)
@@ -284,12 +253,6 @@ func (o FunctionInputResponseArrayOutput) ToFunctionInputResponseArrayOutput() F
 
 func (o FunctionInputResponseArrayOutput) ToFunctionInputResponseArrayOutputWithContext(ctx context.Context) FunctionInputResponseArrayOutput {
 	return o
-}
-
-func (o FunctionInputResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FunctionInputResponse] {
-	return pulumix.Output[[]FunctionInputResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FunctionInputResponseArrayOutput) Index(i pulumi.IntInput) FunctionInputResponseOutput {
@@ -333,12 +296,6 @@ func (i FunctionOutputTypeArgs) ToFunctionOutputTypeOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionOutputTypeOutput)
 }
 
-func (i FunctionOutputTypeArgs) ToOutput(ctx context.Context) pulumix.Output[FunctionOutputType] {
-	return pulumix.Output[FunctionOutputType]{
-		OutputState: i.ToFunctionOutputTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FunctionOutputTypeArgs) ToFunctionOutputTypePtrOutput() FunctionOutputTypePtrOutput {
 	return i.ToFunctionOutputTypePtrOutputWithContext(context.Background())
 }
@@ -380,12 +337,6 @@ func (i *functionOutputTypePtrType) ToFunctionOutputTypePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionOutputTypePtrOutput)
 }
 
-func (i *functionOutputTypePtrType) ToOutput(ctx context.Context) pulumix.Output[*FunctionOutputType] {
-	return pulumix.Output[*FunctionOutputType]{
-		OutputState: i.ToFunctionOutputTypePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes the output of a function.
 type FunctionOutputTypeOutput struct{ *pulumi.OutputState }
 
@@ -411,12 +362,6 @@ func (o FunctionOutputTypeOutput) ToFunctionOutputTypePtrOutputWithContext(ctx c
 	}).(FunctionOutputTypePtrOutput)
 }
 
-func (o FunctionOutputTypeOutput) ToOutput(ctx context.Context) pulumix.Output[FunctionOutputType] {
-	return pulumix.Output[FunctionOutputType]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The (Azure Stream Analytics supported) data type of the function output. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
 func (o FunctionOutputTypeOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionOutputType) *string { return v.DataType }).(pulumi.StringPtrOutput)
@@ -434,12 +379,6 @@ func (o FunctionOutputTypePtrOutput) ToFunctionOutputTypePtrOutput() FunctionOut
 
 func (o FunctionOutputTypePtrOutput) ToFunctionOutputTypePtrOutputWithContext(ctx context.Context) FunctionOutputTypePtrOutput {
 	return o
-}
-
-func (o FunctionOutputTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FunctionOutputType] {
-	return pulumix.Output[*FunctionOutputType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FunctionOutputTypePtrOutput) Elem() FunctionOutputTypeOutput {
@@ -483,12 +422,6 @@ func (o FunctionOutputResponseOutput) ToFunctionOutputResponseOutputWithContext(
 	return o
 }
 
-func (o FunctionOutputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FunctionOutputResponse] {
-	return pulumix.Output[FunctionOutputResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The (Azure Stream Analytics supported) data type of the function output. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
 func (o FunctionOutputResponseOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionOutputResponse) *string { return v.DataType }).(pulumi.StringPtrOutput)
@@ -506,12 +439,6 @@ func (o FunctionOutputResponsePtrOutput) ToFunctionOutputResponsePtrOutput() Fun
 
 func (o FunctionOutputResponsePtrOutput) ToFunctionOutputResponsePtrOutputWithContext(ctx context.Context) FunctionOutputResponsePtrOutput {
 	return o
-}
-
-func (o FunctionOutputResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FunctionOutputResponse] {
-	return pulumix.Output[*FunctionOutputResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FunctionOutputResponsePtrOutput) Elem() FunctionOutputResponseOutput {
@@ -601,12 +528,6 @@ func (i ScalarFunctionPropertiesArgs) ToScalarFunctionPropertiesOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ScalarFunctionPropertiesOutput)
 }
 
-func (i ScalarFunctionPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ScalarFunctionProperties] {
-	return pulumix.Output[ScalarFunctionProperties]{
-		OutputState: i.ToScalarFunctionPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ScalarFunctionPropertiesArgs) ToScalarFunctionPropertiesPtrOutput() ScalarFunctionPropertiesPtrOutput {
 	return i.ToScalarFunctionPropertiesPtrOutputWithContext(context.Background())
 }
@@ -648,12 +569,6 @@ func (i *scalarFunctionPropertiesPtrType) ToScalarFunctionPropertiesPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ScalarFunctionPropertiesPtrOutput)
 }
 
-func (i *scalarFunctionPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ScalarFunctionProperties] {
-	return pulumix.Output[*ScalarFunctionProperties]{
-		OutputState: i.ToScalarFunctionPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties that are associated with a scalar function.
 type ScalarFunctionPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -677,12 +592,6 @@ func (o ScalarFunctionPropertiesOutput) ToScalarFunctionPropertiesPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScalarFunctionProperties) *ScalarFunctionProperties {
 		return &v
 	}).(ScalarFunctionPropertiesPtrOutput)
-}
-
-func (o ScalarFunctionPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ScalarFunctionProperties] {
-	return pulumix.Output[ScalarFunctionProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The physical binding of the function. For example, in the Azure Machine Learning web service’s case, this describes the endpoint.
@@ -718,12 +627,6 @@ func (o ScalarFunctionPropertiesPtrOutput) ToScalarFunctionPropertiesPtrOutput()
 
 func (o ScalarFunctionPropertiesPtrOutput) ToScalarFunctionPropertiesPtrOutputWithContext(ctx context.Context) ScalarFunctionPropertiesPtrOutput {
 	return o
-}
-
-func (o ScalarFunctionPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScalarFunctionProperties] {
-	return pulumix.Output[*ScalarFunctionProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScalarFunctionPropertiesPtrOutput) Elem() ScalarFunctionPropertiesOutput {
@@ -805,12 +708,6 @@ func (o ScalarFunctionPropertiesResponseOutput) ToScalarFunctionPropertiesRespon
 
 func (o ScalarFunctionPropertiesResponseOutput) ToScalarFunctionPropertiesResponseOutputWithContext(ctx context.Context) ScalarFunctionPropertiesResponseOutput {
 	return o
-}
-
-func (o ScalarFunctionPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScalarFunctionPropertiesResponse] {
-	return pulumix.Output[ScalarFunctionPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The physical binding of the function. For example, in the Azure Machine Learning web service’s case, this describes the endpoint.

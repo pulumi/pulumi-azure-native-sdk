@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -41,12 +40,6 @@ func (o IdentifierResponseOutput) ToIdentifierResponseOutput() IdentifierRespons
 
 func (o IdentifierResponseOutput) ToIdentifierResponseOutputWithContext(ctx context.Context) IdentifierResponseOutput {
 	return o
-}
-
-func (o IdentifierResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentifierResponse] {
-	return pulumix.Output[IdentifierResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Id.
@@ -86,12 +79,6 @@ func (o IdentifierResponseArrayOutput) ToIdentifierResponseArrayOutput() Identif
 
 func (o IdentifierResponseArrayOutput) ToIdentifierResponseArrayOutputWithContext(ctx context.Context) IdentifierResponseArrayOutput {
 	return o
-}
-
-func (o IdentifierResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IdentifierResponse] {
-	return pulumix.Output[[]IdentifierResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentifierResponseArrayOutput) Index(i pulumi.IntInput) IdentifierResponseOutput {
@@ -139,12 +126,6 @@ func (i NameValuePairArgs) ToNameValuePairOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(NameValuePairOutput)
 }
 
-func (i NameValuePairArgs) ToOutput(ctx context.Context) pulumix.Output[NameValuePair] {
-	return pulumix.Output[NameValuePair]{
-		OutputState: i.ToNameValuePairOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NameValuePairArrayInput is an input type that accepts NameValuePairArray and NameValuePairArrayOutput values.
 // You can construct a concrete instance of `NameValuePairArrayInput` via:
 //
@@ -170,12 +151,6 @@ func (i NameValuePairArray) ToNameValuePairArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(NameValuePairArrayOutput)
 }
 
-func (i NameValuePairArray) ToOutput(ctx context.Context) pulumix.Output[[]NameValuePair] {
-	return pulumix.Output[[]NameValuePair]{
-		OutputState: i.ToNameValuePairArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Name value pair.
 type NameValuePairOutput struct{ *pulumi.OutputState }
 
@@ -189,12 +164,6 @@ func (o NameValuePairOutput) ToNameValuePairOutput() NameValuePairOutput {
 
 func (o NameValuePairOutput) ToNameValuePairOutputWithContext(ctx context.Context) NameValuePairOutput {
 	return o
-}
-
-func (o NameValuePairOutput) ToOutput(ctx context.Context) pulumix.Output[NameValuePair] {
-	return pulumix.Output[NameValuePair]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Pair name.
@@ -219,12 +188,6 @@ func (o NameValuePairArrayOutput) ToNameValuePairArrayOutput() NameValuePairArra
 
 func (o NameValuePairArrayOutput) ToNameValuePairArrayOutputWithContext(ctx context.Context) NameValuePairArrayOutput {
 	return o
-}
-
-func (o NameValuePairArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NameValuePair] {
-	return pulumix.Output[[]NameValuePair]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NameValuePairArrayOutput) Index(i pulumi.IntInput) NameValuePairOutput {
@@ -256,12 +219,6 @@ func (o NameValuePairResponseOutput) ToNameValuePairResponseOutputWithContext(ct
 	return o
 }
 
-func (o NameValuePairResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NameValuePairResponse] {
-	return pulumix.Output[NameValuePairResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Pair name.
 func (o NameValuePairResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NameValuePairResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -284,12 +241,6 @@ func (o NameValuePairResponseArrayOutput) ToNameValuePairResponseArrayOutput() N
 
 func (o NameValuePairResponseArrayOutput) ToNameValuePairResponseArrayOutputWithContext(ctx context.Context) NameValuePairResponseArrayOutput {
 	return o
-}
-
-func (o NameValuePairResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NameValuePairResponse] {
-	return pulumix.Output[[]NameValuePairResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NameValuePairResponseArrayOutput) Index(i pulumi.IntInput) NameValuePairResponseOutput {
@@ -345,12 +296,6 @@ func (i NetworkAccessControlEntryArgs) ToNetworkAccessControlEntryOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAccessControlEntryOutput)
 }
 
-func (i NetworkAccessControlEntryArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkAccessControlEntry] {
-	return pulumix.Output[NetworkAccessControlEntry]{
-		OutputState: i.ToNetworkAccessControlEntryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NetworkAccessControlEntryArrayInput is an input type that accepts NetworkAccessControlEntryArray and NetworkAccessControlEntryArrayOutput values.
 // You can construct a concrete instance of `NetworkAccessControlEntryArrayInput` via:
 //
@@ -376,12 +321,6 @@ func (i NetworkAccessControlEntryArray) ToNetworkAccessControlEntryArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkAccessControlEntryArrayOutput)
 }
 
-func (i NetworkAccessControlEntryArray) ToOutput(ctx context.Context) pulumix.Output[[]NetworkAccessControlEntry] {
-	return pulumix.Output[[]NetworkAccessControlEntry]{
-		OutputState: i.ToNetworkAccessControlEntryArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Network access control entry.
 type NetworkAccessControlEntryOutput struct{ *pulumi.OutputState }
 
@@ -395,12 +334,6 @@ func (o NetworkAccessControlEntryOutput) ToNetworkAccessControlEntryOutput() Net
 
 func (o NetworkAccessControlEntryOutput) ToNetworkAccessControlEntryOutputWithContext(ctx context.Context) NetworkAccessControlEntryOutput {
 	return o
-}
-
-func (o NetworkAccessControlEntryOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkAccessControlEntry] {
-	return pulumix.Output[NetworkAccessControlEntry]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Action object.
@@ -437,12 +370,6 @@ func (o NetworkAccessControlEntryArrayOutput) ToNetworkAccessControlEntryArrayOu
 	return o
 }
 
-func (o NetworkAccessControlEntryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NetworkAccessControlEntry] {
-	return pulumix.Output[[]NetworkAccessControlEntry]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NetworkAccessControlEntryArrayOutput) Index(i pulumi.IntInput) NetworkAccessControlEntryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkAccessControlEntry {
 		return vs[0].([]NetworkAccessControlEntry)[vs[1].(int)]
@@ -474,12 +401,6 @@ func (o NetworkAccessControlEntryResponseOutput) ToNetworkAccessControlEntryResp
 
 func (o NetworkAccessControlEntryResponseOutput) ToNetworkAccessControlEntryResponseOutputWithContext(ctx context.Context) NetworkAccessControlEntryResponseOutput {
 	return o
-}
-
-func (o NetworkAccessControlEntryResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkAccessControlEntryResponse] {
-	return pulumix.Output[NetworkAccessControlEntryResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Action object.
@@ -514,12 +435,6 @@ func (o NetworkAccessControlEntryResponseArrayOutput) ToNetworkAccessControlEntr
 
 func (o NetworkAccessControlEntryResponseArrayOutput) ToNetworkAccessControlEntryResponseArrayOutputWithContext(ctx context.Context) NetworkAccessControlEntryResponseArrayOutput {
 	return o
-}
-
-func (o NetworkAccessControlEntryResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NetworkAccessControlEntryResponse] {
-	return pulumix.Output[[]NetworkAccessControlEntryResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkAccessControlEntryResponseArrayOutput) Index(i pulumi.IntInput) NetworkAccessControlEntryResponseOutput {
@@ -571,12 +486,6 @@ func (o StampCapacityResponseOutput) ToStampCapacityResponseOutput() StampCapaci
 
 func (o StampCapacityResponseOutput) ToStampCapacityResponseOutputWithContext(ctx context.Context) StampCapacityResponseOutput {
 	return o
-}
-
-func (o StampCapacityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StampCapacityResponse] {
-	return pulumix.Output[StampCapacityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Available capacity (# of machines, bytes of storage etc...).
@@ -652,12 +561,6 @@ func (o StampCapacityResponseArrayOutput) ToStampCapacityResponseArrayOutputWith
 	return o
 }
 
-func (o StampCapacityResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StampCapacityResponse] {
-	return pulumix.Output[[]StampCapacityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StampCapacityResponseArrayOutput) Index(i pulumi.IntInput) StampCapacityResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StampCapacityResponse {
 		return vs[0].([]StampCapacityResponse)[vs[1].(int)]
@@ -691,12 +594,6 @@ func (o VirtualIPMappingResponseOutput) ToVirtualIPMappingResponseOutput() Virtu
 
 func (o VirtualIPMappingResponseOutput) ToVirtualIPMappingResponseOutputWithContext(ctx context.Context) VirtualIPMappingResponseOutput {
 	return o
-}
-
-func (o VirtualIPMappingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualIPMappingResponse] {
-	return pulumix.Output[VirtualIPMappingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Is virtual IP mapping in use.
@@ -736,12 +633,6 @@ func (o VirtualIPMappingResponseArrayOutput) ToVirtualIPMappingResponseArrayOutp
 
 func (o VirtualIPMappingResponseArrayOutput) ToVirtualIPMappingResponseArrayOutputWithContext(ctx context.Context) VirtualIPMappingResponseArrayOutput {
 	return o
-}
-
-func (o VirtualIPMappingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualIPMappingResponse] {
-	return pulumix.Output[[]VirtualIPMappingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualIPMappingResponseArrayOutput) Index(i pulumi.IntInput) VirtualIPMappingResponseOutput {
@@ -789,12 +680,6 @@ func (i VirtualNetworkProfileArgs) ToVirtualNetworkProfileOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkProfileOutput)
 }
 
-func (i VirtualNetworkProfileArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkProfile] {
-	return pulumix.Output[VirtualNetworkProfile]{
-		OutputState: i.ToVirtualNetworkProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specification for using a Virtual Network.
 type VirtualNetworkProfileOutput struct{ *pulumi.OutputState }
 
@@ -808,12 +693,6 @@ func (o VirtualNetworkProfileOutput) ToVirtualNetworkProfileOutput() VirtualNetw
 
 func (o VirtualNetworkProfileOutput) ToVirtualNetworkProfileOutputWithContext(ctx context.Context) VirtualNetworkProfileOutput {
 	return o
-}
-
-func (o VirtualNetworkProfileOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkProfile] {
-	return pulumix.Output[VirtualNetworkProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource id of the Virtual Network.
@@ -851,12 +730,6 @@ func (o VirtualNetworkProfileResponseOutput) ToVirtualNetworkProfileResponseOutp
 
 func (o VirtualNetworkProfileResponseOutput) ToVirtualNetworkProfileResponseOutputWithContext(ctx context.Context) VirtualNetworkProfileResponseOutput {
 	return o
-}
-
-func (o VirtualNetworkProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkProfileResponse] {
-	return pulumix.Output[VirtualNetworkProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource id of the Virtual Network.
@@ -926,12 +799,6 @@ func (i WorkerPoolArgs) ToWorkerPoolOutputWithContext(ctx context.Context) Worke
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolOutput)
 }
 
-func (i WorkerPoolArgs) ToOutput(ctx context.Context) pulumix.Output[WorkerPool] {
-	return pulumix.Output[WorkerPool]{
-		OutputState: i.ToWorkerPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkerPoolArrayInput is an input type that accepts WorkerPoolArray and WorkerPoolArrayOutput values.
 // You can construct a concrete instance of `WorkerPoolArrayInput` via:
 //
@@ -957,12 +824,6 @@ func (i WorkerPoolArray) ToWorkerPoolArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolArrayOutput)
 }
 
-func (i WorkerPoolArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkerPool] {
-	return pulumix.Output[[]WorkerPool]{
-		OutputState: i.ToWorkerPoolArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Worker pool of an App Service Environment.
 type WorkerPoolOutput struct{ *pulumi.OutputState }
 
@@ -976,12 +837,6 @@ func (o WorkerPoolOutput) ToWorkerPoolOutput() WorkerPoolOutput {
 
 func (o WorkerPoolOutput) ToWorkerPoolOutputWithContext(ctx context.Context) WorkerPoolOutput {
 	return o
-}
-
-func (o WorkerPoolOutput) ToOutput(ctx context.Context) pulumix.Output[WorkerPool] {
-	return pulumix.Output[WorkerPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Shared or dedicated app hosting.
@@ -1018,12 +873,6 @@ func (o WorkerPoolArrayOutput) ToWorkerPoolArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o WorkerPoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkerPool] {
-	return pulumix.Output[[]WorkerPool]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkerPoolArrayOutput) Index(i pulumi.IntInput) WorkerPoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerPool {
 		return vs[0].([]WorkerPool)[vs[1].(int)]
@@ -1057,12 +906,6 @@ func (o WorkerPoolResponseOutput) ToWorkerPoolResponseOutput() WorkerPoolRespons
 
 func (o WorkerPoolResponseOutput) ToWorkerPoolResponseOutputWithContext(ctx context.Context) WorkerPoolResponseOutput {
 	return o
-}
-
-func (o WorkerPoolResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WorkerPoolResponse] {
-	return pulumix.Output[WorkerPoolResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Shared or dedicated app hosting.
@@ -1102,12 +945,6 @@ func (o WorkerPoolResponseArrayOutput) ToWorkerPoolResponseArrayOutput() WorkerP
 
 func (o WorkerPoolResponseArrayOutput) ToWorkerPoolResponseArrayOutputWithContext(ctx context.Context) WorkerPoolResponseArrayOutput {
 	return o
-}
-
-func (o WorkerPoolResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkerPoolResponse] {
-	return pulumix.Output[[]WorkerPoolResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkerPoolResponseArrayOutput) Index(i pulumi.IntInput) WorkerPoolResponseOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Settings with single toggle.
@@ -117,6 +116,9 @@ func NewUeba(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:Ueba"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:Ueba"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -203,12 +205,6 @@ func (i *Ueba) ToUebaOutputWithContext(ctx context.Context) UebaOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UebaOutput)
 }
 
-func (i *Ueba) ToOutput(ctx context.Context) pulumix.Output[*Ueba] {
-	return pulumix.Output[*Ueba]{
-		OutputState: i.ToUebaOutputWithContext(ctx).OutputState,
-	}
-}
-
 type UebaOutput struct{ *pulumi.OutputState }
 
 func (UebaOutput) ElementType() reflect.Type {
@@ -221,12 +217,6 @@ func (o UebaOutput) ToUebaOutput() UebaOutput {
 
 func (o UebaOutput) ToUebaOutputWithContext(ctx context.Context) UebaOutput {
 	return o
-}
-
-func (o UebaOutput) ToOutput(ctx context.Context) pulumix.Output[*Ueba] {
-	return pulumix.Output[*Ueba]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The relevant data sources that enriched by ueba

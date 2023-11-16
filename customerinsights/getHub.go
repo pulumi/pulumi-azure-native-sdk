@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about the specified hub.
@@ -92,12 +91,6 @@ func (o LookupHubResultOutput) ToLookupHubResultOutput() LookupHubResultOutput {
 
 func (o LookupHubResultOutput) ToLookupHubResultOutputWithContext(ctx context.Context) LookupHubResultOutput {
 	return o
-}
-
-func (o LookupHubResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHubResult] {
-	return pulumix.Output[LookupHubResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // API endpoint URL of the hub.

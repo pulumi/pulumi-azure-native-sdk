@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The service resource.
@@ -188,12 +187,6 @@ func (i *ManagedClusterService) ToManagedClusterServiceOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterServiceOutput)
 }
 
-func (i *ManagedClusterService) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterService] {
-	return pulumix.Output[*ManagedClusterService]{
-		OutputState: i.ToManagedClusterServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagedClusterServiceOutput struct{ *pulumi.OutputState }
 
 func (ManagedClusterServiceOutput) ElementType() reflect.Type {
@@ -206,12 +199,6 @@ func (o ManagedClusterServiceOutput) ToManagedClusterServiceOutput() ManagedClus
 
 func (o ManagedClusterServiceOutput) ToManagedClusterServiceOutputWithContext(ctx context.Context) ManagedClusterServiceOutput {
 	return o
-}
-
-func (o ManagedClusterServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterService] {
-	return pulumix.Output[*ManagedClusterService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource location depends on the parent resource.

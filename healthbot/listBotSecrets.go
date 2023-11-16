@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List all secrets of a HealthBot.
@@ -74,12 +73,6 @@ func (o ListBotSecretsResultOutput) ToListBotSecretsResultOutput() ListBotSecret
 
 func (o ListBotSecretsResultOutput) ToListBotSecretsResultOutputWithContext(ctx context.Context) ListBotSecretsResultOutput {
 	return o
-}
-
-func (o ListBotSecretsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListBotSecretsResult] {
-	return pulumix.Output[ListBotSecretsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Array of Azure Health Bot Secrets.

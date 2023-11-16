@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the security metadata for an IoT hub. For more information, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
@@ -75,12 +74,6 @@ func (o ListIotHubResourceKeysResultOutput) ToListIotHubResourceKeysResultOutput
 
 func (o ListIotHubResourceKeysResultOutput) ToListIotHubResourceKeysResultOutputWithContext(ctx context.Context) ListIotHubResourceKeysResultOutput {
 	return o
-}
-
-func (o ListIotHubResourceKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListIotHubResourceKeysResult] {
-	return pulumix.Output[ListIotHubResourceKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The next link.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The gateway definition
@@ -130,12 +129,6 @@ func (i *ConnectionGateway) ToConnectionGatewayOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGatewayOutput)
 }
 
-func (i *ConnectionGateway) ToOutput(ctx context.Context) pulumix.Output[*ConnectionGateway] {
-	return pulumix.Output[*ConnectionGateway]{
-		OutputState: i.ToConnectionGatewayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionGatewayOutput struct{ *pulumi.OutputState }
 
 func (ConnectionGatewayOutput) ElementType() reflect.Type {
@@ -148,12 +141,6 @@ func (o ConnectionGatewayOutput) ToConnectionGatewayOutput() ConnectionGatewayOu
 
 func (o ConnectionGatewayOutput) ToConnectionGatewayOutputWithContext(ctx context.Context) ConnectionGatewayOutput {
 	return o
-}
-
-func (o ConnectionGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionGateway] {
-	return pulumix.Output[*ConnectionGateway]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource ETag

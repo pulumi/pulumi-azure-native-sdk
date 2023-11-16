@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Remote Private Endpoint Connection ARM resource.
@@ -157,12 +156,6 @@ func (i *WebAppPrivateEndpointConnectionSlot) ToWebAppPrivateEndpointConnectionS
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppPrivateEndpointConnectionSlotOutput)
 }
 
-func (i *WebAppPrivateEndpointConnectionSlot) ToOutput(ctx context.Context) pulumix.Output[*WebAppPrivateEndpointConnectionSlot] {
-	return pulumix.Output[*WebAppPrivateEndpointConnectionSlot]{
-		OutputState: i.ToWebAppPrivateEndpointConnectionSlotOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebAppPrivateEndpointConnectionSlotOutput struct{ *pulumi.OutputState }
 
 func (WebAppPrivateEndpointConnectionSlotOutput) ElementType() reflect.Type {
@@ -175,12 +168,6 @@ func (o WebAppPrivateEndpointConnectionSlotOutput) ToWebAppPrivateEndpointConnec
 
 func (o WebAppPrivateEndpointConnectionSlotOutput) ToWebAppPrivateEndpointConnectionSlotOutputWithContext(ctx context.Context) WebAppPrivateEndpointConnectionSlotOutput {
 	return o
-}
-
-func (o WebAppPrivateEndpointConnectionSlotOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppPrivateEndpointConnectionSlot] {
-	return pulumix.Output[*WebAppPrivateEndpointConnectionSlot]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Private IPAddresses mapped to the remote private endpoint

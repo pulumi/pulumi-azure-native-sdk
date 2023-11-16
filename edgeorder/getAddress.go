@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information about the specified address.
@@ -90,12 +89,6 @@ func (o LookupAddressResultOutput) ToLookupAddressResultOutput() LookupAddressRe
 
 func (o LookupAddressResultOutput) ToLookupAddressResultOutputWithContext(ctx context.Context) LookupAddressResultOutput {
 	return o
-}
-
-func (o LookupAddressResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAddressResult] {
-	return pulumix.Output[LookupAddressResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Status of address validation.

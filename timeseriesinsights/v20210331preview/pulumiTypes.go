@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -35,12 +34,6 @@ func (o EnvironmentStateDetailsResponseOutput) ToEnvironmentStateDetailsResponse
 
 func (o EnvironmentStateDetailsResponseOutput) ToEnvironmentStateDetailsResponseOutputWithContext(ctx context.Context) EnvironmentStateDetailsResponseOutput {
 	return o
-}
-
-func (o EnvironmentStateDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentStateDetailsResponse] {
-	return pulumix.Output[EnvironmentStateDetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Contains the code that represents the reason of an environment being in a particular state. Can be used to programmatically handle specific cases.
@@ -74,12 +67,6 @@ func (o EnvironmentStatusResponseOutput) ToEnvironmentStatusResponseOutput() Env
 
 func (o EnvironmentStatusResponseOutput) ToEnvironmentStatusResponseOutputWithContext(ctx context.Context) EnvironmentStatusResponseOutput {
 	return o
-}
-
-func (o EnvironmentStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentStatusResponse] {
-	return pulumix.Output[EnvironmentStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An object that represents the status of ingress on an environment.
@@ -131,12 +118,6 @@ func (i Gen2StorageConfigurationInputArgs) ToGen2StorageConfigurationInputOutput
 	return pulumi.ToOutputWithContext(ctx, i).(Gen2StorageConfigurationInputOutput)
 }
 
-func (i Gen2StorageConfigurationInputArgs) ToOutput(ctx context.Context) pulumix.Output[Gen2StorageConfigurationInput] {
-	return pulumix.Output[Gen2StorageConfigurationInput]{
-		OutputState: i.ToGen2StorageConfigurationInputOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The storage configuration provides the connection details that allows the Time Series Insights service to connect to the customer storage account that is used to store the environment's data.
 type Gen2StorageConfigurationInputOutput struct{ *pulumi.OutputState }
 
@@ -150,12 +131,6 @@ func (o Gen2StorageConfigurationInputOutput) ToGen2StorageConfigurationInputOutp
 
 func (o Gen2StorageConfigurationInputOutput) ToGen2StorageConfigurationInputOutputWithContext(ctx context.Context) Gen2StorageConfigurationInputOutput {
 	return o
-}
-
-func (o Gen2StorageConfigurationInputOutput) ToOutput(ctx context.Context) pulumix.Output[Gen2StorageConfigurationInput] {
-	return pulumix.Output[Gen2StorageConfigurationInput]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the storage account that will hold the environment's Gen2 data.
@@ -189,12 +164,6 @@ func (o Gen2StorageConfigurationOutputResponseOutput) ToGen2StorageConfiguration
 	return o
 }
 
-func (o Gen2StorageConfigurationOutputResponseOutput) ToOutput(ctx context.Context) pulumix.Output[Gen2StorageConfigurationOutputResponse] {
-	return pulumix.Output[Gen2StorageConfigurationOutputResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the storage account that will hold the environment's Gen2 data.
 func (o Gen2StorageConfigurationOutputResponseOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v Gen2StorageConfigurationOutputResponse) string { return v.AccountName }).(pulumi.StringOutput)
@@ -221,12 +190,6 @@ func (o IngressEnvironmentStatusResponseOutput) ToIngressEnvironmentStatusRespon
 
 func (o IngressEnvironmentStatusResponseOutput) ToIngressEnvironmentStatusResponseOutputWithContext(ctx context.Context) IngressEnvironmentStatusResponseOutput {
 	return o
-}
-
-func (o IngressEnvironmentStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IngressEnvironmentStatusResponse] {
-	return pulumix.Output[IngressEnvironmentStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This string represents the state of ingress operations on an environment. It can be "Disabled", "Ready", "Running", "Paused" or "Unknown"
@@ -270,12 +233,6 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 
 func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseOutput {
 	return o
-}
-
-func (o PrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionResponse] {
-	return pulumix.Output[PrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provisioning state of the private endpoint connection resource.
@@ -329,12 +286,6 @@ func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectio
 	return o
 }
 
-func (o PrivateEndpointConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionResponse] {
-	return pulumix.Output[[]PrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
@@ -362,12 +313,6 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
-func (o PrivateEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointResponse] {
-	return pulumix.Output[PrivateEndpointResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ARM identifier for Private Endpoint
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -385,12 +330,6 @@ func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() P
 
 func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
 	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointResponse] {
-	return pulumix.Output[*PrivateEndpointResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
@@ -456,12 +395,6 @@ func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionSta
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
 }
 
-func (i PrivateLinkServiceConnectionStateArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
-	return pulumix.Output[PrivateLinkServiceConnectionState]{
-		OutputState: i.ToPrivateLinkServiceConnectionStateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A collection of information about the state of the connection between service consumer and provider.
 type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
@@ -475,12 +408,6 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 
 func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
-	return pulumix.Output[PrivateLinkServiceConnectionState]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -521,12 +448,6 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 
 func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateResponse] {
-	return pulumix.Output[PrivateLinkServiceConnectionStateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -583,12 +504,6 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
-func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate.
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -602,12 +517,6 @@ func (o SkuOutput) ToSkuOutput() SkuOutput {
 
 func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return o
-}
-
-func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The capacity of the sku. For Gen1 environments, this value can be changed to support scale out of environments after they have been created.
@@ -641,12 +550,6 @@ func (o SkuResponseOutput) ToSkuResponseOutput() SkuResponseOutput {
 
 func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) SkuResponseOutput {
 	return o
-}
-
-func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
-	return pulumix.Output[SkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The capacity of the sku. For Gen1 environments, this value can be changed to support scale out of environments after they have been created.
@@ -698,12 +601,6 @@ func (i TimeSeriesIdPropertyArgs) ToTimeSeriesIdPropertyOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesIdPropertyOutput)
 }
 
-func (i TimeSeriesIdPropertyArgs) ToOutput(ctx context.Context) pulumix.Output[TimeSeriesIdProperty] {
-	return pulumix.Output[TimeSeriesIdProperty]{
-		OutputState: i.ToTimeSeriesIdPropertyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TimeSeriesIdPropertyArrayInput is an input type that accepts TimeSeriesIdPropertyArray and TimeSeriesIdPropertyArrayOutput values.
 // You can construct a concrete instance of `TimeSeriesIdPropertyArrayInput` via:
 //
@@ -729,12 +626,6 @@ func (i TimeSeriesIdPropertyArray) ToTimeSeriesIdPropertyArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(TimeSeriesIdPropertyArrayOutput)
 }
 
-func (i TimeSeriesIdPropertyArray) ToOutput(ctx context.Context) pulumix.Output[[]TimeSeriesIdProperty] {
-	return pulumix.Output[[]TimeSeriesIdProperty]{
-		OutputState: i.ToTimeSeriesIdPropertyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The structure of the property that a time series id can have. An environment can have multiple such properties.
 type TimeSeriesIdPropertyOutput struct{ *pulumi.OutputState }
 
@@ -748,12 +639,6 @@ func (o TimeSeriesIdPropertyOutput) ToTimeSeriesIdPropertyOutput() TimeSeriesIdP
 
 func (o TimeSeriesIdPropertyOutput) ToTimeSeriesIdPropertyOutputWithContext(ctx context.Context) TimeSeriesIdPropertyOutput {
 	return o
-}
-
-func (o TimeSeriesIdPropertyOutput) ToOutput(ctx context.Context) pulumix.Output[TimeSeriesIdProperty] {
-	return pulumix.Output[TimeSeriesIdProperty]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the property.
@@ -778,12 +663,6 @@ func (o TimeSeriesIdPropertyArrayOutput) ToTimeSeriesIdPropertyArrayOutput() Tim
 
 func (o TimeSeriesIdPropertyArrayOutput) ToTimeSeriesIdPropertyArrayOutputWithContext(ctx context.Context) TimeSeriesIdPropertyArrayOutput {
 	return o
-}
-
-func (o TimeSeriesIdPropertyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TimeSeriesIdProperty] {
-	return pulumix.Output[[]TimeSeriesIdProperty]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeSeriesIdPropertyArrayOutput) Index(i pulumi.IntInput) TimeSeriesIdPropertyOutput {
@@ -815,12 +694,6 @@ func (o TimeSeriesIdPropertyResponseOutput) ToTimeSeriesIdPropertyResponseOutput
 	return o
 }
 
-func (o TimeSeriesIdPropertyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimeSeriesIdPropertyResponse] {
-	return pulumix.Output[TimeSeriesIdPropertyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the property.
 func (o TimeSeriesIdPropertyResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeSeriesIdPropertyResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -843,12 +716,6 @@ func (o TimeSeriesIdPropertyResponseArrayOutput) ToTimeSeriesIdPropertyResponseA
 
 func (o TimeSeriesIdPropertyResponseArrayOutput) ToTimeSeriesIdPropertyResponseArrayOutputWithContext(ctx context.Context) TimeSeriesIdPropertyResponseArrayOutput {
 	return o
-}
-
-func (o TimeSeriesIdPropertyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TimeSeriesIdPropertyResponse] {
-	return pulumix.Output[[]TimeSeriesIdPropertyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeSeriesIdPropertyResponseArrayOutput) Index(i pulumi.IntInput) TimeSeriesIdPropertyResponseOutput {
@@ -880,12 +747,6 @@ func (o WarmStorageEnvironmentStatusResponseOutput) ToWarmStorageEnvironmentStat
 
 func (o WarmStorageEnvironmentStatusResponseOutput) ToWarmStorageEnvironmentStatusResponseOutputWithContext(ctx context.Context) WarmStorageEnvironmentStatusResponseOutput {
 	return o
-}
-
-func (o WarmStorageEnvironmentStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WarmStorageEnvironmentStatusResponse] {
-	return pulumix.Output[WarmStorageEnvironmentStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A value that represents the number of properties used by the environment for S1/S2 SKU and number of properties used by Warm Store for PAYG SKU
@@ -938,12 +799,6 @@ func (i WarmStoreConfigurationPropertiesArgs) ToWarmStoreConfigurationProperties
 	return pulumi.ToOutputWithContext(ctx, i).(WarmStoreConfigurationPropertiesOutput)
 }
 
-func (i WarmStoreConfigurationPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[WarmStoreConfigurationProperties] {
-	return pulumix.Output[WarmStoreConfigurationProperties]{
-		OutputState: i.ToWarmStoreConfigurationPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WarmStoreConfigurationPropertiesArgs) ToWarmStoreConfigurationPropertiesPtrOutput() WarmStoreConfigurationPropertiesPtrOutput {
 	return i.ToWarmStoreConfigurationPropertiesPtrOutputWithContext(context.Background())
 }
@@ -985,12 +840,6 @@ func (i *warmStoreConfigurationPropertiesPtrType) ToWarmStoreConfigurationProper
 	return pulumi.ToOutputWithContext(ctx, i).(WarmStoreConfigurationPropertiesPtrOutput)
 }
 
-func (i *warmStoreConfigurationPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*WarmStoreConfigurationProperties] {
-	return pulumix.Output[*WarmStoreConfigurationProperties]{
-		OutputState: i.ToWarmStoreConfigurationPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The warm store configuration provides the details to create a warm store cache that will retain a copy of the environment's data available for faster query.
 type WarmStoreConfigurationPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1016,12 +865,6 @@ func (o WarmStoreConfigurationPropertiesOutput) ToWarmStoreConfigurationProperti
 	}).(WarmStoreConfigurationPropertiesPtrOutput)
 }
 
-func (o WarmStoreConfigurationPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[WarmStoreConfigurationProperties] {
-	return pulumix.Output[WarmStoreConfigurationProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ISO8601 timespan specifying the number of days the environment's events will be available for query from the warm store.
 func (o WarmStoreConfigurationPropertiesOutput) DataRetention() pulumi.StringOutput {
 	return o.ApplyT(func(v WarmStoreConfigurationProperties) string { return v.DataRetention }).(pulumi.StringOutput)
@@ -1039,12 +882,6 @@ func (o WarmStoreConfigurationPropertiesPtrOutput) ToWarmStoreConfigurationPrope
 
 func (o WarmStoreConfigurationPropertiesPtrOutput) ToWarmStoreConfigurationPropertiesPtrOutputWithContext(ctx context.Context) WarmStoreConfigurationPropertiesPtrOutput {
 	return o
-}
-
-func (o WarmStoreConfigurationPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WarmStoreConfigurationProperties] {
-	return pulumix.Output[*WarmStoreConfigurationProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WarmStoreConfigurationPropertiesPtrOutput) Elem() WarmStoreConfigurationPropertiesOutput {
@@ -1088,12 +925,6 @@ func (o WarmStoreConfigurationPropertiesResponseOutput) ToWarmStoreConfiguration
 	return o
 }
 
-func (o WarmStoreConfigurationPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WarmStoreConfigurationPropertiesResponse] {
-	return pulumix.Output[WarmStoreConfigurationPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ISO8601 timespan specifying the number of days the environment's events will be available for query from the warm store.
 func (o WarmStoreConfigurationPropertiesResponseOutput) DataRetention() pulumi.StringOutput {
 	return o.ApplyT(func(v WarmStoreConfigurationPropertiesResponse) string { return v.DataRetention }).(pulumi.StringOutput)
@@ -1111,12 +942,6 @@ func (o WarmStoreConfigurationPropertiesResponsePtrOutput) ToWarmStoreConfigurat
 
 func (o WarmStoreConfigurationPropertiesResponsePtrOutput) ToWarmStoreConfigurationPropertiesResponsePtrOutputWithContext(ctx context.Context) WarmStoreConfigurationPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o WarmStoreConfigurationPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WarmStoreConfigurationPropertiesResponse] {
-	return pulumix.Output[*WarmStoreConfigurationPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WarmStoreConfigurationPropertiesResponsePtrOutput) Elem() WarmStoreConfigurationPropertiesResponseOutput {

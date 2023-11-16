@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Configuration settings for the Azure ContainerApp Service Authentication / Authorization feature.
@@ -95,12 +94,6 @@ func (o LookupContainerAppsAuthConfigResultOutput) ToLookupContainerAppsAuthConf
 
 func (o LookupContainerAppsAuthConfigResultOutput) ToLookupContainerAppsAuthConfigResultOutputWithContext(ctx context.Context) LookupContainerAppsAuthConfigResultOutput {
 	return o
-}
-
-func (o LookupContainerAppsAuthConfigResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContainerAppsAuthConfigResult] {
-	return pulumix.Output[LookupContainerAppsAuthConfigResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration settings of the secrets references of encryption key and signing key for ContainerApp Service Authentication/Authorization.

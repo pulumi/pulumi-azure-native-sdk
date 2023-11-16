@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A formula for creating a VM, specifying an image base and other parameters
@@ -172,12 +171,6 @@ func (i *Formula) ToFormulaOutputWithContext(ctx context.Context) FormulaOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(FormulaOutput)
 }
 
-func (i *Formula) ToOutput(ctx context.Context) pulumix.Output[*Formula] {
-	return pulumix.Output[*Formula]{
-		OutputState: i.ToFormulaOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FormulaOutput struct{ *pulumi.OutputState }
 
 func (FormulaOutput) ElementType() reflect.Type {
@@ -190,12 +183,6 @@ func (o FormulaOutput) ToFormulaOutput() FormulaOutput {
 
 func (o FormulaOutput) ToFormulaOutputWithContext(ctx context.Context) FormulaOutput {
 	return o
-}
-
-func (o FormulaOutput) ToOutput(ctx context.Context) pulumix.Output[*Formula] {
-	return pulumix.Output[*Formula]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The author of the formula.

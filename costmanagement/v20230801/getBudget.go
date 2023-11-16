@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the budget for the scope by budget name.
@@ -191,12 +190,6 @@ func (o LookupBudgetResultOutput) ToLookupBudgetResultOutput() LookupBudgetResul
 
 func (o LookupBudgetResultOutput) ToLookupBudgetResultOutputWithContext(ctx context.Context) LookupBudgetResultOutput {
 	return o
-}
-
-func (o LookupBudgetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBudgetResult] {
-	return pulumix.Output[LookupBudgetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The total amount of cost to track with the budget.

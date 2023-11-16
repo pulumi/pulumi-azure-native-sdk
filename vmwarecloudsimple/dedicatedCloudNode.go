@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Dedicated cloud node model
@@ -196,12 +195,6 @@ func (i *DedicatedCloudNode) ToDedicatedCloudNodeOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(DedicatedCloudNodeOutput)
 }
 
-func (i *DedicatedCloudNode) ToOutput(ctx context.Context) pulumix.Output[*DedicatedCloudNode] {
-	return pulumix.Output[*DedicatedCloudNode]{
-		OutputState: i.ToDedicatedCloudNodeOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DedicatedCloudNodeOutput struct{ *pulumi.OutputState }
 
 func (DedicatedCloudNodeOutput) ElementType() reflect.Type {
@@ -214,12 +207,6 @@ func (o DedicatedCloudNodeOutput) ToDedicatedCloudNodeOutput() DedicatedCloudNod
 
 func (o DedicatedCloudNodeOutput) ToDedicatedCloudNodeOutputWithContext(ctx context.Context) DedicatedCloudNodeOutput {
 	return o
-}
-
-func (o DedicatedCloudNodeOutput) ToOutput(ctx context.Context) pulumix.Output[*DedicatedCloudNode] {
-	return pulumix.Output[*DedicatedCloudNode]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Availability Zone id, e.g. "az1"

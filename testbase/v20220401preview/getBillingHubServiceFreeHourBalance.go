@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func GetBillingHubServiceFreeHourBalance(ctx *pulumi.Context, args *GetBillingHubServiceFreeHourBalanceArgs, opts ...pulumi.InvokeOption) (*GetBillingHubServiceFreeHourBalanceResult, error) {
@@ -70,12 +69,6 @@ func (o GetBillingHubServiceFreeHourBalanceResultOutput) ToGetBillingHubServiceF
 
 func (o GetBillingHubServiceFreeHourBalanceResultOutput) ToGetBillingHubServiceFreeHourBalanceResultOutputWithContext(ctx context.Context) GetBillingHubServiceFreeHourBalanceResultOutput {
 	return o
-}
-
-func (o GetBillingHubServiceFreeHourBalanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetBillingHubServiceFreeHourBalanceResult] {
-	return pulumix.Output[GetBillingHubServiceFreeHourBalanceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetBillingHubServiceFreeHourBalanceResultOutput) IncrementEntries() BillingHubFreeHourIncrementEntryResponseArrayOutput {

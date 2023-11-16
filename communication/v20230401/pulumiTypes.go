@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -39,12 +38,6 @@ func (o DnsRecordResponseOutput) ToDnsRecordResponseOutput() DnsRecordResponseOu
 
 func (o DnsRecordResponseOutput) ToDnsRecordResponseOutputWithContext(ctx context.Context) DnsRecordResponseOutput {
 	return o
-}
-
-func (o DnsRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DnsRecordResponse] {
-	return pulumix.Output[DnsRecordResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the DNS record.
@@ -79,12 +72,6 @@ func (o DnsRecordResponsePtrOutput) ToDnsRecordResponsePtrOutput() DnsRecordResp
 
 func (o DnsRecordResponsePtrOutput) ToDnsRecordResponsePtrOutputWithContext(ctx context.Context) DnsRecordResponsePtrOutput {
 	return o
-}
-
-func (o DnsRecordResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DnsRecordResponse] {
-	return pulumix.Output[*DnsRecordResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DnsRecordResponsePtrOutput) Elem() DnsRecordResponseOutput {
@@ -166,12 +153,6 @@ func (o DomainPropertiesResponseVerificationRecordsOutput) ToDomainPropertiesRes
 	return o
 }
 
-func (o DomainPropertiesResponseVerificationRecordsOutput) ToOutput(ctx context.Context) pulumix.Output[DomainPropertiesResponseVerificationRecords] {
-	return pulumix.Output[DomainPropertiesResponseVerificationRecords]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A class that represents a VerificationStatus record.
 func (o DomainPropertiesResponseVerificationRecordsOutput) DKIM() DnsRecordResponsePtrOutput {
 	return o.ApplyT(func(v DomainPropertiesResponseVerificationRecords) *DnsRecordResponse { return v.DKIM }).(DnsRecordResponsePtrOutput)
@@ -224,12 +205,6 @@ func (o DomainPropertiesResponseVerificationStatesOutput) ToDomainPropertiesResp
 
 func (o DomainPropertiesResponseVerificationStatesOutput) ToDomainPropertiesResponseVerificationStatesOutputWithContext(ctx context.Context) DomainPropertiesResponseVerificationStatesOutput {
 	return o
-}
-
-func (o DomainPropertiesResponseVerificationStatesOutput) ToOutput(ctx context.Context) pulumix.Output[DomainPropertiesResponseVerificationStates] {
-	return pulumix.Output[DomainPropertiesResponseVerificationStates]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A class that represents a VerificationStatus record.
@@ -296,12 +271,6 @@ func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
 }
 
-func (i ManagedServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
-	return pulumix.Output[ManagedServiceIdentity]{
-		OutputState: i.ToManagedServiceIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
 	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
 }
@@ -343,12 +312,6 @@ func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
 }
 
-func (i *managedServiceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
-	return pulumix.Output[*ManagedServiceIdentity]{
-		OutputState: i.ToManagedServiceIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Managed service identity (system assigned and/or user assigned identities)
 type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -374,12 +337,6 @@ func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithConte
 	}).(ManagedServiceIdentityPtrOutput)
 }
 
-func (o ManagedServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
-	return pulumix.Output[ManagedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
@@ -402,12 +359,6 @@ func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() Man
 
 func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
 	return o
-}
-
-func (o ManagedServiceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
-	return pulumix.Output[*ManagedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
@@ -467,12 +418,6 @@ func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOu
 	return o
 }
 
-func (o ManagedServiceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentityResponse] {
-	return pulumix.Output[ManagedServiceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
 func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -507,12 +452,6 @@ func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityRespons
 
 func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
 	return o
-}
-
-func (o ManagedServiceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityResponse] {
-	return pulumix.Output[*ManagedServiceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
@@ -596,12 +535,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timestamp of resource creation (UTC).
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
@@ -655,12 +588,6 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
-func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
-	return pulumix.Output[UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The client ID of the assigned identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -683,12 +610,6 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
-	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
@@ -720,12 +641,6 @@ func (o VerificationStatusRecordResponseOutput) ToVerificationStatusRecordRespon
 	return o
 }
 
-func (o VerificationStatusRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VerificationStatusRecordResponse] {
-	return pulumix.Output[VerificationStatusRecordResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Error code. This property will only be present if the status is UnableToVerify.
 func (o VerificationStatusRecordResponseOutput) ErrorCode() pulumi.StringOutput {
 	return o.ApplyT(func(v VerificationStatusRecordResponse) string { return v.ErrorCode }).(pulumi.StringOutput)
@@ -748,12 +663,6 @@ func (o VerificationStatusRecordResponsePtrOutput) ToVerificationStatusRecordRes
 
 func (o VerificationStatusRecordResponsePtrOutput) ToVerificationStatusRecordResponsePtrOutputWithContext(ctx context.Context) VerificationStatusRecordResponsePtrOutput {
 	return o
-}
-
-func (o VerificationStatusRecordResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VerificationStatusRecordResponse] {
-	return pulumix.Output[*VerificationStatusRecordResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VerificationStatusRecordResponsePtrOutput) Elem() VerificationStatusRecordResponseOutput {

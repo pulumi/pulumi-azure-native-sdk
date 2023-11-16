@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the primary and secondary admin API keys for the specified Azure Cognitive Search service.
@@ -78,12 +77,6 @@ func (o ListAdminKeyResultOutput) ToListAdminKeyResultOutput() ListAdminKeyResul
 
 func (o ListAdminKeyResultOutput) ToListAdminKeyResultOutputWithContext(ctx context.Context) ListAdminKeyResultOutput {
 	return o
-}
-
-func (o ListAdminKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListAdminKeyResult] {
-	return pulumix.Output[ListAdminKeyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The primary admin API key of the search service.

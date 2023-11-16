@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // NSX DNS Zone
@@ -95,12 +94,6 @@ func (o LookupWorkloadNetworkDnsZoneResultOutput) ToLookupWorkloadNetworkDnsZone
 
 func (o LookupWorkloadNetworkDnsZoneResultOutput) ToLookupWorkloadNetworkDnsZoneResultOutputWithContext(ctx context.Context) LookupWorkloadNetworkDnsZoneResultOutput {
 	return o
-}
-
-func (o LookupWorkloadNetworkDnsZoneResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkloadNetworkDnsZoneResult] {
-	return pulumix.Output[LookupWorkloadNetworkDnsZoneResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Display name of the DNS Zone.

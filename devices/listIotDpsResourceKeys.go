@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List the primary and secondary keys for a provisioning service.
@@ -78,12 +77,6 @@ func (o ListIotDpsResourceKeysResultOutput) ToListIotDpsResourceKeysResultOutput
 
 func (o ListIotDpsResourceKeysResultOutput) ToListIotDpsResourceKeysResultOutputWithContext(ctx context.Context) ListIotDpsResourceKeysResultOutput {
 	return o
-}
-
-func (o ListIotDpsResourceKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListIotDpsResourceKeysResult] {
-	return pulumix.Output[ListIotDpsResourceKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The next link.

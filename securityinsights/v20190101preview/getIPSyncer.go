@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a setting.
@@ -91,12 +90,6 @@ func (o LookupIPSyncerResultOutput) ToLookupIPSyncerResultOutput() LookupIPSynce
 
 func (o LookupIPSyncerResultOutput) ToLookupIPSyncerResultOutputWithContext(ctx context.Context) LookupIPSyncerResultOutput {
 	return o
-}
-
-func (o LookupIPSyncerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIPSyncerResult] {
-	return pulumix.Output[LookupIPSyncerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Etag of the azure resource

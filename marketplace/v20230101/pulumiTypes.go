@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -43,12 +42,6 @@ func (o NewNotificationsResponseOutput) ToNewNotificationsResponseOutput() NewNo
 
 func (o NewNotificationsResponseOutput) ToNewNotificationsResponseOutputWithContext(ctx context.Context) NewNotificationsResponseOutput {
 	return o
-}
-
-func (o NewNotificationsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NewNotificationsResponse] {
-	return pulumix.Output[NewNotificationsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets offer display name
@@ -95,12 +88,6 @@ func (o NewNotificationsResponseArrayOutput) ToNewNotificationsResponseArrayOutp
 	return o
 }
 
-func (o NewNotificationsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NewNotificationsResponse] {
-	return pulumix.Output[[]NewNotificationsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NewNotificationsResponseArrayOutput) Index(i pulumi.IntInput) NewNotificationsResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NewNotificationsResponse {
 		return vs[0].([]NewNotificationsResponse)[vs[1].(int)]
@@ -140,12 +127,6 @@ func (i PlanArgs) ToPlanOutputWithContext(ctx context.Context) PlanOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PlanOutput)
 }
 
-func (i PlanArgs) ToOutput(ctx context.Context) pulumix.Output[Plan] {
-	return pulumix.Output[Plan]{
-		OutputState: i.ToPlanOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PlanArrayInput is an input type that accepts PlanArray and PlanArrayOutput values.
 // You can construct a concrete instance of `PlanArrayInput` via:
 //
@@ -171,12 +152,6 @@ func (i PlanArray) ToPlanArrayOutputWithContext(ctx context.Context) PlanArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(PlanArrayOutput)
 }
 
-func (i PlanArray) ToOutput(ctx context.Context) pulumix.Output[[]Plan] {
-	return pulumix.Output[[]Plan]{
-		OutputState: i.ToPlanArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PlanOutput struct{ *pulumi.OutputState }
 
 func (PlanOutput) ElementType() reflect.Type {
@@ -189,12 +164,6 @@ func (o PlanOutput) ToPlanOutput() PlanOutput {
 
 func (o PlanOutput) ToPlanOutputWithContext(ctx context.Context) PlanOutput {
 	return o
-}
-
-func (o PlanOutput) ToOutput(ctx context.Context) pulumix.Output[Plan] {
-	return pulumix.Output[Plan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Plan accessibility
@@ -214,12 +183,6 @@ func (o PlanArrayOutput) ToPlanArrayOutput() PlanArrayOutput {
 
 func (o PlanArrayOutput) ToPlanArrayOutputWithContext(ctx context.Context) PlanArrayOutput {
 	return o
-}
-
-func (o PlanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Plan] {
-	return pulumix.Output[[]Plan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PlanArrayOutput) Index(i pulumi.IntInput) PlanOutput {
@@ -251,12 +214,6 @@ func (o PlanNotificationDetailsResponseOutput) ToPlanNotificationDetailsResponse
 	return o
 }
 
-func (o PlanNotificationDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PlanNotificationDetailsResponse] {
-	return pulumix.Output[PlanNotificationDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the plan display name
 func (o PlanNotificationDetailsResponseOutput) PlanDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PlanNotificationDetailsResponse) *string { return v.PlanDisplayName }).(pulumi.StringPtrOutput)
@@ -279,12 +236,6 @@ func (o PlanNotificationDetailsResponseArrayOutput) ToPlanNotificationDetailsRes
 
 func (o PlanNotificationDetailsResponseArrayOutput) ToPlanNotificationDetailsResponseArrayOutputWithContext(ctx context.Context) PlanNotificationDetailsResponseArrayOutput {
 	return o
-}
-
-func (o PlanNotificationDetailsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PlanNotificationDetailsResponse] {
-	return pulumix.Output[[]PlanNotificationDetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PlanNotificationDetailsResponseArrayOutput) Index(i pulumi.IntInput) PlanNotificationDetailsResponseOutput {
@@ -320,12 +271,6 @@ func (o PlanResponseOutput) ToPlanResponseOutput() PlanResponseOutput {
 
 func (o PlanResponseOutput) ToPlanResponseOutputWithContext(ctx context.Context) PlanResponseOutput {
 	return o
-}
-
-func (o PlanResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PlanResponse] {
-	return pulumix.Output[PlanResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Plan accessibility
@@ -372,12 +317,6 @@ func (o PlanResponseArrayOutput) ToPlanResponseArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o PlanResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PlanResponse] {
-	return pulumix.Output[[]PlanResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PlanResponseArrayOutput) Index(i pulumi.IntInput) PlanResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PlanResponse {
 		return vs[0].([]PlanResponse)[vs[1].(int)]
@@ -404,12 +343,6 @@ func (o RuleResponseOutput) ToRuleResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o RuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RuleResponse] {
-	return pulumix.Output[RuleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Rule type
 func (o RuleResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -431,12 +364,6 @@ func (o RuleResponseArrayOutput) ToRuleResponseArrayOutput() RuleResponseArrayOu
 
 func (o RuleResponseArrayOutput) ToRuleResponseArrayOutputWithContext(ctx context.Context) RuleResponseArrayOutput {
 	return o
-}
-
-func (o RuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RuleResponse] {
-	return pulumix.Output[[]RuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RuleResponseArrayOutput) Index(i pulumi.IntInput) RuleResponseOutput {
@@ -478,12 +405,6 @@ func (o StopSellOffersPlansNotificationsListPropertiesResponseOutput) ToStopSell
 
 func (o StopSellOffersPlansNotificationsListPropertiesResponseOutput) ToStopSellOffersPlansNotificationsListPropertiesResponseOutputWithContext(ctx context.Context) StopSellOffersPlansNotificationsListPropertiesResponseOutput {
 	return o
-}
-
-func (o StopSellOffersPlansNotificationsListPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StopSellOffersPlansNotificationsListPropertiesResponse] {
-	return pulumix.Output[StopSellOffersPlansNotificationsListPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The offer display name
@@ -542,12 +463,6 @@ func (o StopSellOffersPlansNotificationsListPropertiesResponseArrayOutput) ToSto
 	return o
 }
 
-func (o StopSellOffersPlansNotificationsListPropertiesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StopSellOffersPlansNotificationsListPropertiesResponse] {
-	return pulumix.Output[[]StopSellOffersPlansNotificationsListPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StopSellOffersPlansNotificationsListPropertiesResponseArrayOutput) Index(i pulumi.IntInput) StopSellOffersPlansNotificationsListPropertiesResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StopSellOffersPlansNotificationsListPropertiesResponse {
 		return vs[0].([]StopSellOffersPlansNotificationsListPropertiesResponse)[vs[1].(int)]
@@ -583,12 +498,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC)

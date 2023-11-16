@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Pool resource
@@ -164,12 +163,6 @@ func (i *Pool) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PoolOutput)
 }
 
-func (i *Pool) ToOutput(ctx context.Context) pulumix.Output[*Pool] {
-	return pulumix.Output[*Pool]{
-		OutputState: i.ToPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PoolOutput struct{ *pulumi.OutputState }
 
 func (PoolOutput) ElementType() reflect.Type {
@@ -182,12 +175,6 @@ func (o PoolOutput) ToPoolOutput() PoolOutput {
 
 func (o PoolOutput) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
 	return o
-}
-
-func (o PoolOutput) ToOutput(ctx context.Context) pulumix.Output[*Pool] {
-	return pulumix.Output[*Pool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For ElasticSAN there can be many.

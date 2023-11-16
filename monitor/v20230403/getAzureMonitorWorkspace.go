@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified Azure Monitor Workspace
@@ -97,12 +96,6 @@ func (o LookupAzureMonitorWorkspaceResultOutput) ToLookupAzureMonitorWorkspaceRe
 
 func (o LookupAzureMonitorWorkspaceResultOutput) ToLookupAzureMonitorWorkspaceResultOutputWithContext(ctx context.Context) LookupAzureMonitorWorkspaceResultOutput {
 	return o
-}
-
-func (o LookupAzureMonitorWorkspaceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAzureMonitorWorkspaceResult] {
-	return pulumix.Output[LookupAzureMonitorWorkspaceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The immutable Id of the Azure Monitor Workspace. This property is read-only.

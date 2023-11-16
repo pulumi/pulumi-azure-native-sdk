@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // iOS Policy entity for Intune MAM.
@@ -214,12 +213,6 @@ func (i *IoMAMPolicyByName) ToIoMAMPolicyByNameOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(IoMAMPolicyByNameOutput)
 }
 
-func (i *IoMAMPolicyByName) ToOutput(ctx context.Context) pulumix.Output[*IoMAMPolicyByName] {
-	return pulumix.Output[*IoMAMPolicyByName]{
-		OutputState: i.ToIoMAMPolicyByNameOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IoMAMPolicyByNameOutput struct{ *pulumi.OutputState }
 
 func (IoMAMPolicyByNameOutput) ElementType() reflect.Type {
@@ -232,12 +225,6 @@ func (o IoMAMPolicyByNameOutput) ToIoMAMPolicyByNameOutput() IoMAMPolicyByNameOu
 
 func (o IoMAMPolicyByNameOutput) ToIoMAMPolicyByNameOutputWithContext(ctx context.Context) IoMAMPolicyByNameOutput {
 	return o
-}
-
-func (o IoMAMPolicyByNameOutput) ToOutput(ctx context.Context) pulumix.Output[*IoMAMPolicyByName] {
-	return pulumix.Output[*IoMAMPolicyByName]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IoMAMPolicyByNameOutput) AccessRecheckOfflineTimeout() pulumi.StringPtrOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a job collection.
@@ -82,12 +81,6 @@ func (o LookupJobCollectionResultOutput) ToLookupJobCollectionResultOutput() Loo
 
 func (o LookupJobCollectionResultOutput) ToLookupJobCollectionResultOutputWithContext(ctx context.Context) LookupJobCollectionResultOutput {
 	return o
-}
-
-func (o LookupJobCollectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupJobCollectionResult] {
-	return pulumix.Output[LookupJobCollectionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the job collection resource identifier.

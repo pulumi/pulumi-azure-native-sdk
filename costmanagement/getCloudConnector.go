@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a cloud connector definition
@@ -108,12 +107,6 @@ func (o LookupCloudConnectorResultOutput) ToLookupCloudConnectorResultOutput() L
 
 func (o LookupCloudConnectorResultOutput) ToLookupCloudConnectorResultOutputWithContext(ctx context.Context) LookupCloudConnectorResultOutput {
 	return o
-}
-
-func (o LookupCloudConnectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCloudConnectorResult] {
-	return pulumix.Output[LookupCloudConnectorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Connector billing model

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List tokens for application.
@@ -81,12 +80,6 @@ func (o ListApplicationTokensResultOutput) ToListApplicationTokensResultOutput()
 
 func (o ListApplicationTokensResultOutput) ToListApplicationTokensResultOutputWithContext(ctx context.Context) ListApplicationTokensResultOutput {
 	return o
-}
-
-func (o ListApplicationTokensResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListApplicationTokensResult] {
-	return pulumix.Output[ListApplicationTokensResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The array of managed identity tokens.

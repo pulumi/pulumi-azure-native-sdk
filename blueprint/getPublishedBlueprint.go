@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a published version of a blueprint definition.
@@ -100,12 +99,6 @@ func (o LookupPublishedBlueprintResultOutput) ToLookupPublishedBlueprintResultOu
 
 func (o LookupPublishedBlueprintResultOutput) ToLookupPublishedBlueprintResultOutputWithContext(ctx context.Context) LookupPublishedBlueprintResultOutput {
 	return o
-}
-
-func (o LookupPublishedBlueprintResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPublishedBlueprintResult] {
-	return pulumix.Output[LookupPublishedBlueprintResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the published blueprint definition.

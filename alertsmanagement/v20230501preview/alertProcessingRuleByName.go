@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Alert processing rule object containing target scopes, conditions and scheduling logic.
@@ -144,12 +143,6 @@ func (i *AlertProcessingRuleByName) ToAlertProcessingRuleByNameOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(AlertProcessingRuleByNameOutput)
 }
 
-func (i *AlertProcessingRuleByName) ToOutput(ctx context.Context) pulumix.Output[*AlertProcessingRuleByName] {
-	return pulumix.Output[*AlertProcessingRuleByName]{
-		OutputState: i.ToAlertProcessingRuleByNameOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AlertProcessingRuleByNameOutput struct{ *pulumi.OutputState }
 
 func (AlertProcessingRuleByNameOutput) ElementType() reflect.Type {
@@ -162,12 +155,6 @@ func (o AlertProcessingRuleByNameOutput) ToAlertProcessingRuleByNameOutput() Ale
 
 func (o AlertProcessingRuleByNameOutput) ToAlertProcessingRuleByNameOutputWithContext(ctx context.Context) AlertProcessingRuleByNameOutput {
 	return o
-}
-
-func (o AlertProcessingRuleByNameOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertProcessingRuleByName] {
-	return pulumix.Output[*AlertProcessingRuleByName]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource location

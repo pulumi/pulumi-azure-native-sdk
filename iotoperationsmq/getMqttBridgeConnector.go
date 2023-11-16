@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a MqttBridgeConnectorResource
@@ -121,12 +120,6 @@ func (o LookupMqttBridgeConnectorResultOutput) ToLookupMqttBridgeConnectorResult
 
 func (o LookupMqttBridgeConnectorResultOutput) ToLookupMqttBridgeConnectorResultOutputWithContext(ctx context.Context) LookupMqttBridgeConnectorResultOutput {
 	return o
-}
-
-func (o LookupMqttBridgeConnectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMqttBridgeConnectorResult] {
-	return pulumix.Output[LookupMqttBridgeConnectorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of instances to deploy for a bridge rollout.

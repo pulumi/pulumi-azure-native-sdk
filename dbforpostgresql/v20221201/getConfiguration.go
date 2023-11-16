@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about a configuration of server.
@@ -105,12 +104,6 @@ func (o LookupConfigurationResultOutput) ToLookupConfigurationResultOutput() Loo
 
 func (o LookupConfigurationResultOutput) ToLookupConfigurationResultOutputWithContext(ctx context.Context) LookupConfigurationResultOutput {
 	return o
-}
-
-func (o LookupConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConfigurationResult] {
-	return pulumix.Output[LookupConfigurationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allowed values of the configuration.

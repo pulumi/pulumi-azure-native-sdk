@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A database security alert policy.
@@ -220,12 +219,6 @@ func (i *DatabaseSecurityAlertPolicy) ToDatabaseSecurityAlertPolicyOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseSecurityAlertPolicyOutput)
 }
 
-func (i *DatabaseSecurityAlertPolicy) ToOutput(ctx context.Context) pulumix.Output[*DatabaseSecurityAlertPolicy] {
-	return pulumix.Output[*DatabaseSecurityAlertPolicy]{
-		OutputState: i.ToDatabaseSecurityAlertPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DatabaseSecurityAlertPolicyOutput struct{ *pulumi.OutputState }
 
 func (DatabaseSecurityAlertPolicyOutput) ElementType() reflect.Type {
@@ -238,12 +231,6 @@ func (o DatabaseSecurityAlertPolicyOutput) ToDatabaseSecurityAlertPolicyOutput()
 
 func (o DatabaseSecurityAlertPolicyOutput) ToDatabaseSecurityAlertPolicyOutputWithContext(ctx context.Context) DatabaseSecurityAlertPolicyOutput {
 	return o
-}
-
-func (o DatabaseSecurityAlertPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*DatabaseSecurityAlertPolicy] {
-	return pulumix.Output[*DatabaseSecurityAlertPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the UTC creation time of the policy.

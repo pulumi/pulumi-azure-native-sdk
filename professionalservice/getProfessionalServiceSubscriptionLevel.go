@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about the specified Subscription Level ProfessionalService.
@@ -86,12 +85,6 @@ func (o LookupProfessionalServiceSubscriptionLevelResultOutput) ToLookupProfessi
 
 func (o LookupProfessionalServiceSubscriptionLevelResultOutput) ToLookupProfessionalServiceSubscriptionLevelResultOutputWithContext(ctx context.Context) LookupProfessionalServiceSubscriptionLevelResultOutput {
 	return o
-}
-
-func (o LookupProfessionalServiceSubscriptionLevelResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProfessionalServiceSubscriptionLevelResult] {
-	return pulumix.Output[LookupProfessionalServiceSubscriptionLevelResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource uri

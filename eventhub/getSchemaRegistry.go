@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of an EventHub schema group.
@@ -98,12 +97,6 @@ func (o LookupSchemaRegistryResultOutput) ToLookupSchemaRegistryResultOutput() L
 
 func (o LookupSchemaRegistryResultOutput) ToLookupSchemaRegistryResultOutputWithContext(ctx context.Context) LookupSchemaRegistryResultOutput {
 	return o
-}
-
-func (o LookupSchemaRegistryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSchemaRegistryResult] {
-	return pulumix.Output[LookupSchemaRegistryResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Exact time the Schema Group was created.

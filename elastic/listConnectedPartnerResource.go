@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 //	List of all active elastic deployments.
@@ -79,12 +78,6 @@ func (o ListConnectedPartnerResourceResultOutput) ToListConnectedPartnerResource
 
 func (o ListConnectedPartnerResourceResultOutput) ToListConnectedPartnerResourceResultOutputWithContext(ctx context.Context) ListConnectedPartnerResourceResultOutput {
 	return o
-}
-
-func (o ListConnectedPartnerResourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListConnectedPartnerResourceResult] {
-	return pulumix.Output[ListConnectedPartnerResourceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Link to the next set of results, if any.

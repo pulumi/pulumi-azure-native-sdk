@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a hunt relation
@@ -99,12 +98,6 @@ func (o LookupHuntRelationResultOutput) ToLookupHuntRelationResultOutput() Looku
 
 func (o LookupHuntRelationResultOutput) ToLookupHuntRelationResultOutputWithContext(ctx context.Context) LookupHuntRelationResultOutput {
 	return o
-}
-
-func (o LookupHuntRelationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHuntRelationResult] {
-	return pulumix.Output[LookupHuntRelationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Etag of the azure resource

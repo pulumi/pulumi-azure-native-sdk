@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -39,12 +38,6 @@ func (o ConnectorCollectionErrorInfoResponseOutput) ToConnectorCollectionErrorIn
 	return o
 }
 
-func (o ConnectorCollectionErrorInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorCollectionErrorInfoResponse] {
-	return pulumix.Output[ConnectorCollectionErrorInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Short error message
 func (o ConnectorCollectionErrorInfoResponseOutput) ErrorCode() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectorCollectionErrorInfoResponse) string { return v.ErrorCode }).(pulumi.StringOutput)
@@ -72,12 +65,6 @@ func (o ConnectorCollectionErrorInfoResponsePtrOutput) ToConnectorCollectionErro
 
 func (o ConnectorCollectionErrorInfoResponsePtrOutput) ToConnectorCollectionErrorInfoResponsePtrOutputWithContext(ctx context.Context) ConnectorCollectionErrorInfoResponsePtrOutput {
 	return o
-}
-
-func (o ConnectorCollectionErrorInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectorCollectionErrorInfoResponse] {
-	return pulumix.Output[*ConnectorCollectionErrorInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectorCollectionErrorInfoResponsePtrOutput) Elem() ConnectorCollectionErrorInfoResponseOutput {
@@ -147,12 +134,6 @@ func (o ConnectorCollectionInfoResponseOutput) ToConnectorCollectionInfoResponse
 	return o
 }
 
-func (o ConnectorCollectionInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectorCollectionInfoResponse] {
-	return pulumix.Output[ConnectorCollectionInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Error information of last collection
 func (o ConnectorCollectionInfoResponseOutput) Error() ConnectorCollectionErrorInfoResponsePtrOutput {
 	return o.ApplyT(func(v ConnectorCollectionInfoResponse) *ConnectorCollectionErrorInfoResponse { return v.Error }).(ConnectorCollectionErrorInfoResponsePtrOutput)
@@ -212,12 +193,6 @@ func (i ReportAggregationArgs) ToReportAggregationOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ReportAggregationOutput)
 }
 
-func (i ReportAggregationArgs) ToOutput(ctx context.Context) pulumix.Output[ReportAggregation] {
-	return pulumix.Output[ReportAggregation]{
-		OutputState: i.ToReportAggregationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ReportAggregationMapInput is an input type that accepts ReportAggregationMap and ReportAggregationMapOutput values.
 // You can construct a concrete instance of `ReportAggregationMapInput` via:
 //
@@ -243,12 +218,6 @@ func (i ReportAggregationMap) ToReportAggregationMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ReportAggregationMapOutput)
 }
 
-func (i ReportAggregationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]ReportAggregation] {
-	return pulumix.Output[map[string]ReportAggregation]{
-		OutputState: i.ToReportAggregationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The aggregation expression to be used in the report.
 type ReportAggregationOutput struct{ *pulumi.OutputState }
 
@@ -262,12 +231,6 @@ func (o ReportAggregationOutput) ToReportAggregationOutput() ReportAggregationOu
 
 func (o ReportAggregationOutput) ToReportAggregationOutputWithContext(ctx context.Context) ReportAggregationOutput {
 	return o
-}
-
-func (o ReportAggregationOutput) ToOutput(ctx context.Context) pulumix.Output[ReportAggregation] {
-	return pulumix.Output[ReportAggregation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the aggregation function to use.
@@ -292,12 +255,6 @@ func (o ReportAggregationMapOutput) ToReportAggregationMapOutput() ReportAggrega
 
 func (o ReportAggregationMapOutput) ToReportAggregationMapOutputWithContext(ctx context.Context) ReportAggregationMapOutput {
 	return o
-}
-
-func (o ReportAggregationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ReportAggregation] {
-	return pulumix.Output[map[string]ReportAggregation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportAggregationMapOutput) MapIndex(k pulumi.StringInput) ReportAggregationOutput {
@@ -329,12 +286,6 @@ func (o ReportAggregationResponseOutput) ToReportAggregationResponseOutputWithCo
 	return o
 }
 
-func (o ReportAggregationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportAggregationResponse] {
-	return pulumix.Output[ReportAggregationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the aggregation function to use.
 func (o ReportAggregationResponseOutput) Function() pulumi.StringOutput {
 	return o.ApplyT(func(v ReportAggregationResponse) string { return v.Function }).(pulumi.StringOutput)
@@ -357,12 +308,6 @@ func (o ReportAggregationResponseMapOutput) ToReportAggregationResponseMapOutput
 
 func (o ReportAggregationResponseMapOutput) ToReportAggregationResponseMapOutputWithContext(ctx context.Context) ReportAggregationResponseMapOutput {
 	return o
-}
-
-func (o ReportAggregationResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ReportAggregationResponse] {
-	return pulumix.Output[map[string]ReportAggregationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportAggregationResponseMapOutput) MapIndex(k pulumi.StringInput) ReportAggregationResponseOutput {
@@ -414,12 +359,6 @@ func (i ReportComparisonExpressionArgs) ToReportComparisonExpressionOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ReportComparisonExpressionOutput)
 }
 
-func (i ReportComparisonExpressionArgs) ToOutput(ctx context.Context) pulumix.Output[ReportComparisonExpression] {
-	return pulumix.Output[ReportComparisonExpression]{
-		OutputState: i.ToReportComparisonExpressionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ReportComparisonExpressionArgs) ToReportComparisonExpressionPtrOutput() ReportComparisonExpressionPtrOutput {
 	return i.ToReportComparisonExpressionPtrOutputWithContext(context.Background())
 }
@@ -461,12 +400,6 @@ func (i *reportComparisonExpressionPtrType) ToReportComparisonExpressionPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ReportComparisonExpressionPtrOutput)
 }
 
-func (i *reportComparisonExpressionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ReportComparisonExpression] {
-	return pulumix.Output[*ReportComparisonExpression]{
-		OutputState: i.ToReportComparisonExpressionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The comparison expression to be used in the report.
 type ReportComparisonExpressionOutput struct{ *pulumi.OutputState }
 
@@ -490,12 +423,6 @@ func (o ReportComparisonExpressionOutput) ToReportComparisonExpressionPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReportComparisonExpression) *ReportComparisonExpression {
 		return &v
 	}).(ReportComparisonExpressionPtrOutput)
-}
-
-func (o ReportComparisonExpressionOutput) ToOutput(ctx context.Context) pulumix.Output[ReportComparisonExpression] {
-	return pulumix.Output[ReportComparisonExpression]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the column to use in comparison.
@@ -525,12 +452,6 @@ func (o ReportComparisonExpressionPtrOutput) ToReportComparisonExpressionPtrOutp
 
 func (o ReportComparisonExpressionPtrOutput) ToReportComparisonExpressionPtrOutputWithContext(ctx context.Context) ReportComparisonExpressionPtrOutput {
 	return o
-}
-
-func (o ReportComparisonExpressionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportComparisonExpression] {
-	return pulumix.Output[*ReportComparisonExpression]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportComparisonExpressionPtrOutput) Elem() ReportComparisonExpressionOutput {
@@ -598,12 +519,6 @@ func (o ReportComparisonExpressionResponseOutput) ToReportComparisonExpressionRe
 	return o
 }
 
-func (o ReportComparisonExpressionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportComparisonExpressionResponse] {
-	return pulumix.Output[ReportComparisonExpressionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the column to use in comparison.
 func (o ReportComparisonExpressionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ReportComparisonExpressionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -631,12 +546,6 @@ func (o ReportComparisonExpressionResponsePtrOutput) ToReportComparisonExpressio
 
 func (o ReportComparisonExpressionResponsePtrOutput) ToReportComparisonExpressionResponsePtrOutputWithContext(ctx context.Context) ReportComparisonExpressionResponsePtrOutput {
 	return o
-}
-
-func (o ReportComparisonExpressionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportComparisonExpressionResponse] {
-	return pulumix.Output[*ReportComparisonExpressionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportComparisonExpressionResponsePtrOutput) Elem() ReportComparisonExpressionResponseOutput {
@@ -730,12 +639,6 @@ func (i ReportDatasetArgs) ToReportDatasetOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ReportDatasetOutput)
 }
 
-func (i ReportDatasetArgs) ToOutput(ctx context.Context) pulumix.Output[ReportDataset] {
-	return pulumix.Output[ReportDataset]{
-		OutputState: i.ToReportDatasetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ReportDatasetArgs) ToReportDatasetPtrOutput() ReportDatasetPtrOutput {
 	return i.ToReportDatasetPtrOutputWithContext(context.Background())
 }
@@ -777,12 +680,6 @@ func (i *reportDatasetPtrType) ToReportDatasetPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ReportDatasetPtrOutput)
 }
 
-func (i *reportDatasetPtrType) ToOutput(ctx context.Context) pulumix.Output[*ReportDataset] {
-	return pulumix.Output[*ReportDataset]{
-		OutputState: i.ToReportDatasetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The definition of data present in the report.
 type ReportDatasetOutput struct{ *pulumi.OutputState }
 
@@ -806,12 +703,6 @@ func (o ReportDatasetOutput) ToReportDatasetPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReportDataset) *ReportDataset {
 		return &v
 	}).(ReportDatasetPtrOutput)
-}
-
-func (o ReportDatasetOutput) ToOutput(ctx context.Context) pulumix.Output[ReportDataset] {
-	return pulumix.Output[ReportDataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.
@@ -851,12 +742,6 @@ func (o ReportDatasetPtrOutput) ToReportDatasetPtrOutput() ReportDatasetPtrOutpu
 
 func (o ReportDatasetPtrOutput) ToReportDatasetPtrOutputWithContext(ctx context.Context) ReportDatasetPtrOutput {
 	return o
-}
-
-func (o ReportDatasetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportDataset] {
-	return pulumix.Output[*ReportDataset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportDatasetPtrOutput) Elem() ReportDatasetOutput {
@@ -954,12 +839,6 @@ func (i ReportDatasetConfigurationArgs) ToReportDatasetConfigurationOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ReportDatasetConfigurationOutput)
 }
 
-func (i ReportDatasetConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ReportDatasetConfiguration] {
-	return pulumix.Output[ReportDatasetConfiguration]{
-		OutputState: i.ToReportDatasetConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ReportDatasetConfigurationArgs) ToReportDatasetConfigurationPtrOutput() ReportDatasetConfigurationPtrOutput {
 	return i.ToReportDatasetConfigurationPtrOutputWithContext(context.Background())
 }
@@ -1001,12 +880,6 @@ func (i *reportDatasetConfigurationPtrType) ToReportDatasetConfigurationPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ReportDatasetConfigurationPtrOutput)
 }
 
-func (i *reportDatasetConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ReportDatasetConfiguration] {
-	return pulumix.Output[*ReportDatasetConfiguration]{
-		OutputState: i.ToReportDatasetConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration of dataset in the report.
 type ReportDatasetConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -1032,12 +905,6 @@ func (o ReportDatasetConfigurationOutput) ToReportDatasetConfigurationPtrOutputW
 	}).(ReportDatasetConfigurationPtrOutput)
 }
 
-func (o ReportDatasetConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ReportDatasetConfiguration] {
-	return pulumix.Output[ReportDatasetConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
 func (o ReportDatasetConfigurationOutput) Columns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ReportDatasetConfiguration) []string { return v.Columns }).(pulumi.StringArrayOutput)
@@ -1055,12 +922,6 @@ func (o ReportDatasetConfigurationPtrOutput) ToReportDatasetConfigurationPtrOutp
 
 func (o ReportDatasetConfigurationPtrOutput) ToReportDatasetConfigurationPtrOutputWithContext(ctx context.Context) ReportDatasetConfigurationPtrOutput {
 	return o
-}
-
-func (o ReportDatasetConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportDatasetConfiguration] {
-	return pulumix.Output[*ReportDatasetConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportDatasetConfigurationPtrOutput) Elem() ReportDatasetConfigurationOutput {
@@ -1104,12 +965,6 @@ func (o ReportDatasetConfigurationResponseOutput) ToReportDatasetConfigurationRe
 	return o
 }
 
-func (o ReportDatasetConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportDatasetConfigurationResponse] {
-	return pulumix.Output[ReportDatasetConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
 func (o ReportDatasetConfigurationResponseOutput) Columns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ReportDatasetConfigurationResponse) []string { return v.Columns }).(pulumi.StringArrayOutput)
@@ -1127,12 +982,6 @@ func (o ReportDatasetConfigurationResponsePtrOutput) ToReportDatasetConfiguratio
 
 func (o ReportDatasetConfigurationResponsePtrOutput) ToReportDatasetConfigurationResponsePtrOutputWithContext(ctx context.Context) ReportDatasetConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o ReportDatasetConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportDatasetConfigurationResponse] {
-	return pulumix.Output[*ReportDatasetConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportDatasetConfigurationResponsePtrOutput) Elem() ReportDatasetConfigurationResponseOutput {
@@ -1184,12 +1033,6 @@ func (o ReportDatasetResponseOutput) ToReportDatasetResponseOutputWithContext(ct
 	return o
 }
 
-func (o ReportDatasetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportDatasetResponse] {
-	return pulumix.Output[ReportDatasetResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.
 func (o ReportDatasetResponseOutput) Aggregation() ReportAggregationResponseMapOutput {
 	return o.ApplyT(func(v ReportDatasetResponse) map[string]ReportAggregationResponse { return v.Aggregation }).(ReportAggregationResponseMapOutput)
@@ -1227,12 +1070,6 @@ func (o ReportDatasetResponsePtrOutput) ToReportDatasetResponsePtrOutput() Repor
 
 func (o ReportDatasetResponsePtrOutput) ToReportDatasetResponsePtrOutputWithContext(ctx context.Context) ReportDatasetResponsePtrOutput {
 	return o
-}
-
-func (o ReportDatasetResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportDatasetResponse] {
-	return pulumix.Output[*ReportDatasetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportDatasetResponsePtrOutput) Elem() ReportDatasetResponseOutput {
@@ -1342,12 +1179,6 @@ func (i ReportDefinitionArgs) ToReportDefinitionOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ReportDefinitionOutput)
 }
 
-func (i ReportDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[ReportDefinition] {
-	return pulumix.Output[ReportDefinition]{
-		OutputState: i.ToReportDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The definition of a report.
 type ReportDefinitionOutput struct{ *pulumi.OutputState }
 
@@ -1361,12 +1192,6 @@ func (o ReportDefinitionOutput) ToReportDefinitionOutput() ReportDefinitionOutpu
 
 func (o ReportDefinitionOutput) ToReportDefinitionOutputWithContext(ctx context.Context) ReportDefinitionOutput {
 	return o
-}
-
-func (o ReportDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[ReportDefinition] {
-	return pulumix.Output[ReportDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Has definition for data in this report.
@@ -1414,12 +1239,6 @@ func (o ReportDefinitionResponseOutput) ToReportDefinitionResponseOutput() Repor
 
 func (o ReportDefinitionResponseOutput) ToReportDefinitionResponseOutputWithContext(ctx context.Context) ReportDefinitionResponseOutput {
 	return o
-}
-
-func (o ReportDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportDefinitionResponse] {
-	return pulumix.Output[ReportDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Has definition for data in this report.
@@ -1485,12 +1304,6 @@ func (i ReportDeliveryDestinationArgs) ToReportDeliveryDestinationOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ReportDeliveryDestinationOutput)
 }
 
-func (i ReportDeliveryDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[ReportDeliveryDestination] {
-	return pulumix.Output[ReportDeliveryDestination]{
-		OutputState: i.ToReportDeliveryDestinationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The destination information for the delivery of the report.
 type ReportDeliveryDestinationOutput struct{ *pulumi.OutputState }
 
@@ -1504,12 +1317,6 @@ func (o ReportDeliveryDestinationOutput) ToReportDeliveryDestinationOutput() Rep
 
 func (o ReportDeliveryDestinationOutput) ToReportDeliveryDestinationOutputWithContext(ctx context.Context) ReportDeliveryDestinationOutput {
 	return o
-}
-
-func (o ReportDeliveryDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[ReportDeliveryDestination] {
-	return pulumix.Output[ReportDeliveryDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the container where reports will be uploaded.
@@ -1550,12 +1357,6 @@ func (o ReportDeliveryDestinationResponseOutput) ToReportDeliveryDestinationResp
 
 func (o ReportDeliveryDestinationResponseOutput) ToReportDeliveryDestinationResponseOutputWithContext(ctx context.Context) ReportDeliveryDestinationResponseOutput {
 	return o
-}
-
-func (o ReportDeliveryDestinationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportDeliveryDestinationResponse] {
-	return pulumix.Output[ReportDeliveryDestinationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the container where reports will be uploaded.
@@ -1608,12 +1409,6 @@ func (i ReportDeliveryInfoArgs) ToReportDeliveryInfoOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ReportDeliveryInfoOutput)
 }
 
-func (i ReportDeliveryInfoArgs) ToOutput(ctx context.Context) pulumix.Output[ReportDeliveryInfo] {
-	return pulumix.Output[ReportDeliveryInfo]{
-		OutputState: i.ToReportDeliveryInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The delivery information associated with a report.
 type ReportDeliveryInfoOutput struct{ *pulumi.OutputState }
 
@@ -1627,12 +1422,6 @@ func (o ReportDeliveryInfoOutput) ToReportDeliveryInfoOutput() ReportDeliveryInf
 
 func (o ReportDeliveryInfoOutput) ToReportDeliveryInfoOutputWithContext(ctx context.Context) ReportDeliveryInfoOutput {
 	return o
-}
-
-func (o ReportDeliveryInfoOutput) ToOutput(ctx context.Context) pulumix.Output[ReportDeliveryInfo] {
-	return pulumix.Output[ReportDeliveryInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Has destination for the report being delivered.
@@ -1659,12 +1448,6 @@ func (o ReportDeliveryInfoResponseOutput) ToReportDeliveryInfoResponseOutput() R
 
 func (o ReportDeliveryInfoResponseOutput) ToReportDeliveryInfoResponseOutputWithContext(ctx context.Context) ReportDeliveryInfoResponseOutput {
 	return o
-}
-
-func (o ReportDeliveryInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportDeliveryInfoResponse] {
-	return pulumix.Output[ReportDeliveryInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Has destination for the report being delivered.
@@ -1723,12 +1506,6 @@ func (i ReportFilterArgs) ToReportFilterOutputWithContext(ctx context.Context) R
 	return pulumi.ToOutputWithContext(ctx, i).(ReportFilterOutput)
 }
 
-func (i ReportFilterArgs) ToOutput(ctx context.Context) pulumix.Output[ReportFilter] {
-	return pulumix.Output[ReportFilter]{
-		OutputState: i.ToReportFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ReportFilterArgs) ToReportFilterPtrOutput() ReportFilterPtrOutput {
 	return i.ToReportFilterPtrOutputWithContext(context.Background())
 }
@@ -1770,12 +1547,6 @@ func (i *reportFilterPtrType) ToReportFilterPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ReportFilterPtrOutput)
 }
 
-func (i *reportFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*ReportFilter] {
-	return pulumix.Output[*ReportFilter]{
-		OutputState: i.ToReportFilterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ReportFilterArrayInput is an input type that accepts ReportFilterArray and ReportFilterArrayOutput values.
 // You can construct a concrete instance of `ReportFilterArrayInput` via:
 //
@@ -1801,12 +1572,6 @@ func (i ReportFilterArray) ToReportFilterArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ReportFilterArrayOutput)
 }
 
-func (i ReportFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]ReportFilter] {
-	return pulumix.Output[[]ReportFilter]{
-		OutputState: i.ToReportFilterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The filter expression to be used in the report.
 type ReportFilterOutput struct{ *pulumi.OutputState }
 
@@ -1830,12 +1595,6 @@ func (o ReportFilterOutput) ToReportFilterPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReportFilter) *ReportFilter {
 		return &v
 	}).(ReportFilterPtrOutput)
-}
-
-func (o ReportFilterOutput) ToOutput(ctx context.Context) pulumix.Output[ReportFilter] {
-	return pulumix.Output[ReportFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The logical "AND" expression. Must have at least 2 items.
@@ -1875,12 +1634,6 @@ func (o ReportFilterPtrOutput) ToReportFilterPtrOutput() ReportFilterPtrOutput {
 
 func (o ReportFilterPtrOutput) ToReportFilterPtrOutputWithContext(ctx context.Context) ReportFilterPtrOutput {
 	return o
-}
-
-func (o ReportFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportFilter] {
-	return pulumix.Output[*ReportFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportFilterPtrOutput) Elem() ReportFilterOutput {
@@ -1957,12 +1710,6 @@ func (o ReportFilterArrayOutput) ToReportFilterArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o ReportFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReportFilter] {
-	return pulumix.Output[[]ReportFilter]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ReportFilterArrayOutput) Index(i pulumi.IntInput) ReportFilterOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportFilter {
 		return vs[0].([]ReportFilter)[vs[1].(int)]
@@ -1996,12 +1743,6 @@ func (o ReportFilterResponseOutput) ToReportFilterResponseOutput() ReportFilterR
 
 func (o ReportFilterResponseOutput) ToReportFilterResponseOutputWithContext(ctx context.Context) ReportFilterResponseOutput {
 	return o
-}
-
-func (o ReportFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportFilterResponse] {
-	return pulumix.Output[ReportFilterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The logical "AND" expression. Must have at least 2 items.
@@ -2041,12 +1782,6 @@ func (o ReportFilterResponsePtrOutput) ToReportFilterResponsePtrOutput() ReportF
 
 func (o ReportFilterResponsePtrOutput) ToReportFilterResponsePtrOutputWithContext(ctx context.Context) ReportFilterResponsePtrOutput {
 	return o
-}
-
-func (o ReportFilterResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportFilterResponse] {
-	return pulumix.Output[*ReportFilterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportFilterResponsePtrOutput) Elem() ReportFilterResponseOutput {
@@ -2123,12 +1858,6 @@ func (o ReportFilterResponseArrayOutput) ToReportFilterResponseArrayOutputWithCo
 	return o
 }
 
-func (o ReportFilterResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReportFilterResponse] {
-	return pulumix.Output[[]ReportFilterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ReportFilterResponseArrayOutput) Index(i pulumi.IntInput) ReportFilterResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReportFilterResponse {
 		return vs[0].([]ReportFilterResponse)[vs[1].(int)]
@@ -2174,12 +1903,6 @@ func (i ReportGroupingArgs) ToReportGroupingOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ReportGroupingOutput)
 }
 
-func (i ReportGroupingArgs) ToOutput(ctx context.Context) pulumix.Output[ReportGrouping] {
-	return pulumix.Output[ReportGrouping]{
-		OutputState: i.ToReportGroupingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ReportGroupingArrayInput is an input type that accepts ReportGroupingArray and ReportGroupingArrayOutput values.
 // You can construct a concrete instance of `ReportGroupingArrayInput` via:
 //
@@ -2205,12 +1928,6 @@ func (i ReportGroupingArray) ToReportGroupingArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ReportGroupingArrayOutput)
 }
 
-func (i ReportGroupingArray) ToOutput(ctx context.Context) pulumix.Output[[]ReportGrouping] {
-	return pulumix.Output[[]ReportGrouping]{
-		OutputState: i.ToReportGroupingArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The group by expression to be used in the report.
 type ReportGroupingOutput struct{ *pulumi.OutputState }
 
@@ -2224,12 +1941,6 @@ func (o ReportGroupingOutput) ToReportGroupingOutput() ReportGroupingOutput {
 
 func (o ReportGroupingOutput) ToReportGroupingOutputWithContext(ctx context.Context) ReportGroupingOutput {
 	return o
-}
-
-func (o ReportGroupingOutput) ToOutput(ctx context.Context) pulumix.Output[ReportGrouping] {
-	return pulumix.Output[ReportGrouping]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the column to group.
@@ -2254,12 +1965,6 @@ func (o ReportGroupingArrayOutput) ToReportGroupingArrayOutput() ReportGroupingA
 
 func (o ReportGroupingArrayOutput) ToReportGroupingArrayOutputWithContext(ctx context.Context) ReportGroupingArrayOutput {
 	return o
-}
-
-func (o ReportGroupingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReportGrouping] {
-	return pulumix.Output[[]ReportGrouping]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportGroupingArrayOutput) Index(i pulumi.IntInput) ReportGroupingOutput {
@@ -2291,12 +1996,6 @@ func (o ReportGroupingResponseOutput) ToReportGroupingResponseOutputWithContext(
 	return o
 }
 
-func (o ReportGroupingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportGroupingResponse] {
-	return pulumix.Output[ReportGroupingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the column to group.
 func (o ReportGroupingResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ReportGroupingResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -2319,12 +2018,6 @@ func (o ReportGroupingResponseArrayOutput) ToReportGroupingResponseArrayOutput()
 
 func (o ReportGroupingResponseArrayOutput) ToReportGroupingResponseArrayOutputWithContext(ctx context.Context) ReportGroupingResponseArrayOutput {
 	return o
-}
-
-func (o ReportGroupingResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ReportGroupingResponse] {
-	return pulumix.Output[[]ReportGroupingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportGroupingResponseArrayOutput) Index(i pulumi.IntInput) ReportGroupingResponseOutput {
@@ -2372,12 +2065,6 @@ func (i ReportRecurrencePeriodArgs) ToReportRecurrencePeriodOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ReportRecurrencePeriodOutput)
 }
 
-func (i ReportRecurrencePeriodArgs) ToOutput(ctx context.Context) pulumix.Output[ReportRecurrencePeriod] {
-	return pulumix.Output[ReportRecurrencePeriod]{
-		OutputState: i.ToReportRecurrencePeriodOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ReportRecurrencePeriodArgs) ToReportRecurrencePeriodPtrOutput() ReportRecurrencePeriodPtrOutput {
 	return i.ToReportRecurrencePeriodPtrOutputWithContext(context.Background())
 }
@@ -2419,12 +2106,6 @@ func (i *reportRecurrencePeriodPtrType) ToReportRecurrencePeriodPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ReportRecurrencePeriodPtrOutput)
 }
 
-func (i *reportRecurrencePeriodPtrType) ToOutput(ctx context.Context) pulumix.Output[*ReportRecurrencePeriod] {
-	return pulumix.Output[*ReportRecurrencePeriod]{
-		OutputState: i.ToReportRecurrencePeriodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The start and end date for recurrence schedule.
 type ReportRecurrencePeriodOutput struct{ *pulumi.OutputState }
 
@@ -2450,12 +2131,6 @@ func (o ReportRecurrencePeriodOutput) ToReportRecurrencePeriodPtrOutputWithConte
 	}).(ReportRecurrencePeriodPtrOutput)
 }
 
-func (o ReportRecurrencePeriodOutput) ToOutput(ctx context.Context) pulumix.Output[ReportRecurrencePeriod] {
-	return pulumix.Output[ReportRecurrencePeriod]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The start date of recurrence.
 func (o ReportRecurrencePeriodOutput) From() pulumi.StringOutput {
 	return o.ApplyT(func(v ReportRecurrencePeriod) string { return v.From }).(pulumi.StringOutput)
@@ -2478,12 +2153,6 @@ func (o ReportRecurrencePeriodPtrOutput) ToReportRecurrencePeriodPtrOutput() Rep
 
 func (o ReportRecurrencePeriodPtrOutput) ToReportRecurrencePeriodPtrOutputWithContext(ctx context.Context) ReportRecurrencePeriodPtrOutput {
 	return o
-}
-
-func (o ReportRecurrencePeriodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportRecurrencePeriod] {
-	return pulumix.Output[*ReportRecurrencePeriod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportRecurrencePeriodPtrOutput) Elem() ReportRecurrencePeriodOutput {
@@ -2539,12 +2208,6 @@ func (o ReportRecurrencePeriodResponseOutput) ToReportRecurrencePeriodResponseOu
 	return o
 }
 
-func (o ReportRecurrencePeriodResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportRecurrencePeriodResponse] {
-	return pulumix.Output[ReportRecurrencePeriodResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The start date of recurrence.
 func (o ReportRecurrencePeriodResponseOutput) From() pulumi.StringOutput {
 	return o.ApplyT(func(v ReportRecurrencePeriodResponse) string { return v.From }).(pulumi.StringOutput)
@@ -2567,12 +2230,6 @@ func (o ReportRecurrencePeriodResponsePtrOutput) ToReportRecurrencePeriodRespons
 
 func (o ReportRecurrencePeriodResponsePtrOutput) ToReportRecurrencePeriodResponsePtrOutputWithContext(ctx context.Context) ReportRecurrencePeriodResponsePtrOutput {
 	return o
-}
-
-func (o ReportRecurrencePeriodResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportRecurrencePeriodResponse] {
-	return pulumix.Output[*ReportRecurrencePeriodResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportRecurrencePeriodResponsePtrOutput) Elem() ReportRecurrencePeriodResponseOutput {
@@ -2648,12 +2305,6 @@ func (i ReportScheduleArgs) ToReportScheduleOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ReportScheduleOutput)
 }
 
-func (i ReportScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[ReportSchedule] {
-	return pulumix.Output[ReportSchedule]{
-		OutputState: i.ToReportScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ReportScheduleArgs) ToReportSchedulePtrOutput() ReportSchedulePtrOutput {
 	return i.ToReportSchedulePtrOutputWithContext(context.Background())
 }
@@ -2695,12 +2346,6 @@ func (i *reportSchedulePtrType) ToReportSchedulePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ReportSchedulePtrOutput)
 }
 
-func (i *reportSchedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*ReportSchedule] {
-	return pulumix.Output[*ReportSchedule]{
-		OutputState: i.ToReportSchedulePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The schedule associated with a report.
 type ReportScheduleOutput struct{ *pulumi.OutputState }
 
@@ -2724,12 +2369,6 @@ func (o ReportScheduleOutput) ToReportSchedulePtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReportSchedule) *ReportSchedule {
 		return &v
 	}).(ReportSchedulePtrOutput)
-}
-
-func (o ReportScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[ReportSchedule] {
-	return pulumix.Output[ReportSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The schedule recurrence.
@@ -2759,12 +2398,6 @@ func (o ReportSchedulePtrOutput) ToReportSchedulePtrOutput() ReportSchedulePtrOu
 
 func (o ReportSchedulePtrOutput) ToReportSchedulePtrOutputWithContext(ctx context.Context) ReportSchedulePtrOutput {
 	return o
-}
-
-func (o ReportSchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportSchedule] {
-	return pulumix.Output[*ReportSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportSchedulePtrOutput) Elem() ReportScheduleOutput {
@@ -2832,12 +2465,6 @@ func (o ReportScheduleResponseOutput) ToReportScheduleResponseOutputWithContext(
 	return o
 }
 
-func (o ReportScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportScheduleResponse] {
-	return pulumix.Output[ReportScheduleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The schedule recurrence.
 func (o ReportScheduleResponseOutput) Recurrence() pulumi.StringOutput {
 	return o.ApplyT(func(v ReportScheduleResponse) string { return v.Recurrence }).(pulumi.StringOutput)
@@ -2865,12 +2492,6 @@ func (o ReportScheduleResponsePtrOutput) ToReportScheduleResponsePtrOutput() Rep
 
 func (o ReportScheduleResponsePtrOutput) ToReportScheduleResponsePtrOutputWithContext(ctx context.Context) ReportScheduleResponsePtrOutput {
 	return o
-}
-
-func (o ReportScheduleResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportScheduleResponse] {
-	return pulumix.Output[*ReportScheduleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportScheduleResponsePtrOutput) Elem() ReportScheduleResponseOutput {
@@ -2952,12 +2573,6 @@ func (i ReportTimePeriodArgs) ToReportTimePeriodOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ReportTimePeriodOutput)
 }
 
-func (i ReportTimePeriodArgs) ToOutput(ctx context.Context) pulumix.Output[ReportTimePeriod] {
-	return pulumix.Output[ReportTimePeriod]{
-		OutputState: i.ToReportTimePeriodOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ReportTimePeriodArgs) ToReportTimePeriodPtrOutput() ReportTimePeriodPtrOutput {
 	return i.ToReportTimePeriodPtrOutputWithContext(context.Background())
 }
@@ -2999,12 +2614,6 @@ func (i *reportTimePeriodPtrType) ToReportTimePeriodPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ReportTimePeriodPtrOutput)
 }
 
-func (i *reportTimePeriodPtrType) ToOutput(ctx context.Context) pulumix.Output[*ReportTimePeriod] {
-	return pulumix.Output[*ReportTimePeriod]{
-		OutputState: i.ToReportTimePeriodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The start and end date for pulling data for the report.
 type ReportTimePeriodOutput struct{ *pulumi.OutputState }
 
@@ -3030,12 +2639,6 @@ func (o ReportTimePeriodOutput) ToReportTimePeriodPtrOutputWithContext(ctx conte
 	}).(ReportTimePeriodPtrOutput)
 }
 
-func (o ReportTimePeriodOutput) ToOutput(ctx context.Context) pulumix.Output[ReportTimePeriod] {
-	return pulumix.Output[ReportTimePeriod]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The start date to pull data from.
 func (o ReportTimePeriodOutput) From() pulumi.StringOutput {
 	return o.ApplyT(func(v ReportTimePeriod) string { return v.From }).(pulumi.StringOutput)
@@ -3058,12 +2661,6 @@ func (o ReportTimePeriodPtrOutput) ToReportTimePeriodPtrOutput() ReportTimePerio
 
 func (o ReportTimePeriodPtrOutput) ToReportTimePeriodPtrOutputWithContext(ctx context.Context) ReportTimePeriodPtrOutput {
 	return o
-}
-
-func (o ReportTimePeriodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportTimePeriod] {
-	return pulumix.Output[*ReportTimePeriod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportTimePeriodPtrOutput) Elem() ReportTimePeriodOutput {
@@ -3119,12 +2716,6 @@ func (o ReportTimePeriodResponseOutput) ToReportTimePeriodResponseOutputWithCont
 	return o
 }
 
-func (o ReportTimePeriodResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ReportTimePeriodResponse] {
-	return pulumix.Output[ReportTimePeriodResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The start date to pull data from.
 func (o ReportTimePeriodResponseOutput) From() pulumi.StringOutput {
 	return o.ApplyT(func(v ReportTimePeriodResponse) string { return v.From }).(pulumi.StringOutput)
@@ -3147,12 +2738,6 @@ func (o ReportTimePeriodResponsePtrOutput) ToReportTimePeriodResponsePtrOutput()
 
 func (o ReportTimePeriodResponsePtrOutput) ToReportTimePeriodResponsePtrOutputWithContext(ctx context.Context) ReportTimePeriodResponsePtrOutput {
 	return o
-}
-
-func (o ReportTimePeriodResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportTimePeriodResponse] {
-	return pulumix.Output[*ReportTimePeriodResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ReportTimePeriodResponsePtrOutput) Elem() ReportTimePeriodResponseOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a Test Base Account.
@@ -92,12 +91,6 @@ func (o LookupTestBaseAccountResultOutput) ToLookupTestBaseAccountResultOutput()
 
 func (o LookupTestBaseAccountResultOutput) ToLookupTestBaseAccountResultOutputWithContext(ctx context.Context) LookupTestBaseAccountResultOutput {
 	return o
-}
-
-func (o LookupTestBaseAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTestBaseAccountResult] {
-	return pulumix.Output[LookupTestBaseAccountResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The access level of the Test Base Account.

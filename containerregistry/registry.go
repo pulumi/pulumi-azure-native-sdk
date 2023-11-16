@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An object that represents a container registry.
@@ -264,12 +263,6 @@ func (i *Registry) ToRegistryOutputWithContext(ctx context.Context) RegistryOutp
 	return pulumi.ToOutputWithContext(ctx, i).(RegistryOutput)
 }
 
-func (i *Registry) ToOutput(ctx context.Context) pulumix.Output[*Registry] {
-	return pulumix.Output[*Registry]{
-		OutputState: i.ToRegistryOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegistryOutput struct{ *pulumi.OutputState }
 
 func (RegistryOutput) ElementType() reflect.Type {
@@ -282,12 +275,6 @@ func (o RegistryOutput) ToRegistryOutput() RegistryOutput {
 
 func (o RegistryOutput) ToRegistryOutputWithContext(ctx context.Context) RegistryOutput {
 	return o
-}
-
-func (o RegistryOutput) ToOutput(ctx context.Context) pulumix.Output[*Registry] {
-	return pulumix.Output[*Registry]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value that indicates whether the admin user is enabled.

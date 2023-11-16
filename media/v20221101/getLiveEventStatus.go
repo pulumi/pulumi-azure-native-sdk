@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets status telemetry of a live event.
@@ -77,12 +76,6 @@ func (o GetLiveEventStatusResultOutput) ToGetLiveEventStatusResultOutput() GetLi
 
 func (o GetLiveEventStatusResultOutput) ToGetLiveEventStatusResultOutputWithContext(ctx context.Context) GetLiveEventStatusResultOutput {
 	return o
-}
-
-func (o GetLiveEventStatusResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetLiveEventStatusResult] {
-	return pulumix.Output[GetLiveEventStatusResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The result of the get live event status.

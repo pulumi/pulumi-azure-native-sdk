@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type SkusNestedResourceTypeSecond struct {
@@ -143,12 +142,6 @@ func (i *SkusNestedResourceTypeSecond) ToSkusNestedResourceTypeSecondOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(SkusNestedResourceTypeSecondOutput)
 }
 
-func (i *SkusNestedResourceTypeSecond) ToOutput(ctx context.Context) pulumix.Output[*SkusNestedResourceTypeSecond] {
-	return pulumix.Output[*SkusNestedResourceTypeSecond]{
-		OutputState: i.ToSkusNestedResourceTypeSecondOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SkusNestedResourceTypeSecondOutput struct{ *pulumi.OutputState }
 
 func (SkusNestedResourceTypeSecondOutput) ElementType() reflect.Type {
@@ -161,12 +154,6 @@ func (o SkusNestedResourceTypeSecondOutput) ToSkusNestedResourceTypeSecondOutput
 
 func (o SkusNestedResourceTypeSecondOutput) ToSkusNestedResourceTypeSecondOutputWithContext(ctx context.Context) SkusNestedResourceTypeSecondOutput {
 	return o
-}
-
-func (o SkusNestedResourceTypeSecondOutput) ToOutput(ctx context.Context) pulumix.Output[*SkusNestedResourceTypeSecond] {
-	return pulumix.Output[*SkusNestedResourceTypeSecond]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

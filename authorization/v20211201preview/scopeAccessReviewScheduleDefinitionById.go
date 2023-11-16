@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Access Review Schedule Definition.
@@ -281,12 +280,6 @@ func (i *ScopeAccessReviewScheduleDefinitionById) ToScopeAccessReviewScheduleDef
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeAccessReviewScheduleDefinitionByIdOutput)
 }
 
-func (i *ScopeAccessReviewScheduleDefinitionById) ToOutput(ctx context.Context) pulumix.Output[*ScopeAccessReviewScheduleDefinitionById] {
-	return pulumix.Output[*ScopeAccessReviewScheduleDefinitionById]{
-		OutputState: i.ToScopeAccessReviewScheduleDefinitionByIdOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScopeAccessReviewScheduleDefinitionByIdOutput struct{ *pulumi.OutputState }
 
 func (ScopeAccessReviewScheduleDefinitionByIdOutput) ElementType() reflect.Type {
@@ -299,12 +292,6 @@ func (o ScopeAccessReviewScheduleDefinitionByIdOutput) ToScopeAccessReviewSchedu
 
 func (o ScopeAccessReviewScheduleDefinitionByIdOutput) ToScopeAccessReviewScheduleDefinitionByIdOutputWithContext(ctx context.Context) ScopeAccessReviewScheduleDefinitionByIdOutput {
 	return o
-}
-
-func (o ScopeAccessReviewScheduleDefinitionByIdOutput) ToOutput(ctx context.Context) pulumix.Output[*ScopeAccessReviewScheduleDefinitionById] {
-	return pulumix.Output[*ScopeAccessReviewScheduleDefinitionById]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The role assignment state eligible/active to review

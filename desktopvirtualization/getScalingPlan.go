@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a scaling plan.
@@ -124,12 +123,6 @@ func (o LookupScalingPlanResultOutput) ToLookupScalingPlanResultOutput() LookupS
 
 func (o LookupScalingPlanResultOutput) ToLookupScalingPlanResultOutputWithContext(ctx context.Context) LookupScalingPlanResultOutput {
 	return o
-}
-
-func (o LookupScalingPlanResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupScalingPlanResult] {
-	return pulumix.Output[LookupScalingPlanResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of scaling plan.

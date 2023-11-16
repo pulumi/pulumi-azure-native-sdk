@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i AppServiceCertificateArgs) ToAppServiceCertificateOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(AppServiceCertificateOutput)
 }
 
-func (i AppServiceCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[AppServiceCertificate] {
-	return pulumix.Output[AppServiceCertificate]{
-		OutputState: i.ToAppServiceCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AppServiceCertificateMapInput is an input type that accepts AppServiceCertificateMap and AppServiceCertificateMapOutput values.
 // You can construct a concrete instance of `AppServiceCertificateMapInput` via:
 //
@@ -84,12 +77,6 @@ func (i AppServiceCertificateMap) ToAppServiceCertificateMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(AppServiceCertificateMapOutput)
 }
 
-func (i AppServiceCertificateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]AppServiceCertificate] {
-	return pulumix.Output[map[string]AppServiceCertificate]{
-		OutputState: i.ToAppServiceCertificateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Key Vault container for a certificate that is purchased through Azure.
 type AppServiceCertificateOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o AppServiceCertificateOutput) ToAppServiceCertificateOutput() AppServiceC
 
 func (o AppServiceCertificateOutput) ToAppServiceCertificateOutputWithContext(ctx context.Context) AppServiceCertificateOutput {
 	return o
-}
-
-func (o AppServiceCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[AppServiceCertificate] {
-	return pulumix.Output[AppServiceCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Key Vault resource Id.
@@ -133,12 +114,6 @@ func (o AppServiceCertificateMapOutput) ToAppServiceCertificateMapOutput() AppSe
 
 func (o AppServiceCertificateMapOutput) ToAppServiceCertificateMapOutputWithContext(ctx context.Context) AppServiceCertificateMapOutput {
 	return o
-}
-
-func (o AppServiceCertificateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]AppServiceCertificate] {
-	return pulumix.Output[map[string]AppServiceCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppServiceCertificateMapOutput) MapIndex(k pulumi.StringInput) AppServiceCertificateOutput {
@@ -172,12 +147,6 @@ func (o AppServiceCertificateResponseOutput) ToAppServiceCertificateResponseOutp
 	return o
 }
 
-func (o AppServiceCertificateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AppServiceCertificateResponse] {
-	return pulumix.Output[AppServiceCertificateResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Key Vault resource Id.
 func (o AppServiceCertificateResponseOutput) KeyVaultId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppServiceCertificateResponse) *string { return v.KeyVaultId }).(pulumi.StringPtrOutput)
@@ -205,12 +174,6 @@ func (o AppServiceCertificateResponseMapOutput) ToAppServiceCertificateResponseM
 
 func (o AppServiceCertificateResponseMapOutput) ToAppServiceCertificateResponseMapOutputWithContext(ctx context.Context) AppServiceCertificateResponseMapOutput {
 	return o
-}
-
-func (o AppServiceCertificateResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]AppServiceCertificateResponse] {
-	return pulumix.Output[map[string]AppServiceCertificateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppServiceCertificateResponseMapOutput) MapIndex(k pulumi.StringInput) AppServiceCertificateResponseOutput {
@@ -254,12 +217,6 @@ func (o CertificateDetailsResponseOutput) ToCertificateDetailsResponseOutput() C
 
 func (o CertificateDetailsResponseOutput) ToCertificateDetailsResponseOutputWithContext(ctx context.Context) CertificateDetailsResponseOutput {
 	return o
-}
-
-func (o CertificateDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateDetailsResponse] {
-	return pulumix.Output[CertificateDetailsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Certificate Issuer.
@@ -326,12 +283,6 @@ func (o CertificateOrderContactResponseOutput) ToCertificateOrderContactResponse
 
 func (o CertificateOrderContactResponseOutput) ToCertificateOrderContactResponseOutputWithContext(ctx context.Context) CertificateOrderContactResponseOutput {
 	return o
-}
-
-func (o CertificateOrderContactResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateOrderContactResponse] {
-	return pulumix.Output[CertificateOrderContactResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertificateOrderContactResponseOutput) Email() pulumi.StringPtrOutput {

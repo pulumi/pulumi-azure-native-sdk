@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description of a NotificationHub PNS Credentials. This is a response of the POST requests that return namespace or hubs
@@ -95,12 +94,6 @@ func (o GetNotificationHubPnsCredentialsResultOutput) ToGetNotificationHubPnsCre
 
 func (o GetNotificationHubPnsCredentialsResultOutput) ToGetNotificationHubPnsCredentialsResultOutputWithContext(ctx context.Context) GetNotificationHubPnsCredentialsResultOutput {
 	return o
-}
-
-func (o GetNotificationHubPnsCredentialsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNotificationHubPnsCredentialsResult] {
-	return pulumix.Output[GetNotificationHubPnsCredentialsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

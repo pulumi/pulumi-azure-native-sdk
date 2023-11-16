@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the path associated with the subvolumeName provided
@@ -100,12 +99,6 @@ func (o LookupSubvolumeResultOutput) ToLookupSubvolumeResultOutput() LookupSubvo
 
 func (o LookupSubvolumeResultOutput) ToLookupSubvolumeResultOutputWithContext(ctx context.Context) LookupSubvolumeResultOutput {
 	return o
-}
-
-func (o LookupSubvolumeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSubvolumeResult] {
-	return pulumix.Output[LookupSubvolumeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

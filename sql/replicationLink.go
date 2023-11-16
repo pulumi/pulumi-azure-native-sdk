@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A replication link.
@@ -150,12 +149,6 @@ func (i *ReplicationLink) ToReplicationLinkOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationLinkOutput)
 }
 
-func (i *ReplicationLink) ToOutput(ctx context.Context) pulumix.Output[*ReplicationLink] {
-	return pulumix.Output[*ReplicationLink]{
-		OutputState: i.ToReplicationLinkOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReplicationLinkOutput struct{ *pulumi.OutputState }
 
 func (ReplicationLinkOutput) ElementType() reflect.Type {
@@ -168,12 +161,6 @@ func (o ReplicationLinkOutput) ToReplicationLinkOutput() ReplicationLinkOutput {
 
 func (o ReplicationLinkOutput) ToReplicationLinkOutputWithContext(ctx context.Context) ReplicationLinkOutput {
 	return o
-}
-
-func (o ReplicationLinkOutput) ToOutput(ctx context.Context) pulumix.Output[*ReplicationLink] {
-	return pulumix.Output[*ReplicationLink]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether the user is currently allowed to terminate the link.

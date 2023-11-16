@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get build service agent pool.
@@ -92,12 +91,6 @@ func (o LookupBuildServiceAgentPoolResultOutput) ToLookupBuildServiceAgentPoolRe
 
 func (o LookupBuildServiceAgentPoolResultOutput) ToLookupBuildServiceAgentPoolResultOutputWithContext(ctx context.Context) LookupBuildServiceAgentPoolResultOutput {
 	return o
-}
-
-func (o LookupBuildServiceAgentPoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBuildServiceAgentPoolResult] {
-	return pulumix.Output[LookupBuildServiceAgentPoolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource Id for the resource.

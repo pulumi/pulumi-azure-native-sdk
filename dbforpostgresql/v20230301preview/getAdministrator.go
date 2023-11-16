@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about a server.
@@ -91,12 +90,6 @@ func (o LookupAdministratorResultOutput) ToLookupAdministratorResultOutput() Loo
 
 func (o LookupAdministratorResultOutput) ToLookupAdministratorResultOutputWithContext(ctx context.Context) LookupAdministratorResultOutput {
 	return o
-}
-
-func (o LookupAdministratorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAdministratorResult] {
-	return pulumix.Output[LookupAdministratorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

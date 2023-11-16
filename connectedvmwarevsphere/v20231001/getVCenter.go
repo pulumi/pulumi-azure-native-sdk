@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Implements vCenter GET method.
@@ -107,12 +106,6 @@ func (o LookupVCenterResultOutput) ToLookupVCenterResultOutput() LookupVCenterRe
 
 func (o LookupVCenterResultOutput) ToLookupVCenterResultOutputWithContext(ctx context.Context) LookupVCenterResultOutput {
 	return o
-}
-
-func (o LookupVCenterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVCenterResult] {
-	return pulumix.Output[LookupVCenterResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the connection status to the vCenter.

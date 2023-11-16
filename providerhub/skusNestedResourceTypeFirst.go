@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2021-09-01-preview. Prior API version in Azure Native 1.x: 2020-11-20.
@@ -137,12 +136,6 @@ func (i *SkusNestedResourceTypeFirst) ToSkusNestedResourceTypeFirstOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(SkusNestedResourceTypeFirstOutput)
 }
 
-func (i *SkusNestedResourceTypeFirst) ToOutput(ctx context.Context) pulumix.Output[*SkusNestedResourceTypeFirst] {
-	return pulumix.Output[*SkusNestedResourceTypeFirst]{
-		OutputState: i.ToSkusNestedResourceTypeFirstOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SkusNestedResourceTypeFirstOutput struct{ *pulumi.OutputState }
 
 func (SkusNestedResourceTypeFirstOutput) ElementType() reflect.Type {
@@ -155,12 +148,6 @@ func (o SkusNestedResourceTypeFirstOutput) ToSkusNestedResourceTypeFirstOutput()
 
 func (o SkusNestedResourceTypeFirstOutput) ToSkusNestedResourceTypeFirstOutputWithContext(ctx context.Context) SkusNestedResourceTypeFirstOutput {
 	return o
-}
-
-func (o SkusNestedResourceTypeFirstOutput) ToOutput(ctx context.Context) pulumix.Output[*SkusNestedResourceTypeFirst] {
-	return pulumix.Output[*SkusNestedResourceTypeFirst]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

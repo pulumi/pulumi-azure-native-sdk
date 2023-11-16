@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A file resource
@@ -148,12 +147,6 @@ func (i *File) ToFileOutputWithContext(ctx context.Context) FileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FileOutput)
 }
 
-func (i *File) ToOutput(ctx context.Context) pulumix.Output[*File] {
-	return pulumix.Output[*File]{
-		OutputState: i.ToFileOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FileOutput struct{ *pulumi.OutputState }
 
 func (FileOutput) ElementType() reflect.Type {
@@ -166,12 +159,6 @@ func (o FileOutput) ToFileOutput() FileOutput {
 
 func (o FileOutput) ToFileOutputWithContext(ctx context.Context) FileOutput {
 	return o
-}
-
-func (o FileOutput) ToOutput(ctx context.Context) pulumix.Output[*File] {
-	return pulumix.Output[*File]{
-		OutputState: o.OutputState,
-	}
 }
 
 // HTTP strong entity tag value. This is ignored if submitted.

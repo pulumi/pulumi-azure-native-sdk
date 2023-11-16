@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A managed cluster snapshot resource.
@@ -89,12 +88,6 @@ func (o LookupManagedClusterSnapshotResultOutput) ToLookupManagedClusterSnapshot
 
 func (o LookupManagedClusterSnapshotResultOutput) ToLookupManagedClusterSnapshotResultOutputWithContext(ctx context.Context) LookupManagedClusterSnapshotResultOutput {
 	return o
-}
-
-func (o LookupManagedClusterSnapshotResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedClusterSnapshotResult] {
-	return pulumix.Output[LookupManagedClusterSnapshotResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // CreationData to be used to specify the source resource ID to create this snapshot.

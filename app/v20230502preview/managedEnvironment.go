@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An environment for hosting container apps
@@ -227,12 +226,6 @@ func (i *ManagedEnvironment) ToManagedEnvironmentOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedEnvironmentOutput)
 }
 
-func (i *ManagedEnvironment) ToOutput(ctx context.Context) pulumix.Output[*ManagedEnvironment] {
-	return pulumix.Output[*ManagedEnvironment]{
-		OutputState: i.ToManagedEnvironmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagedEnvironmentOutput struct{ *pulumi.OutputState }
 
 func (ManagedEnvironmentOutput) ElementType() reflect.Type {
@@ -245,12 +238,6 @@ func (o ManagedEnvironmentOutput) ToManagedEnvironmentOutput() ManagedEnvironmen
 
 func (o ManagedEnvironmentOutput) ToManagedEnvironmentOutputWithContext(ctx context.Context) ManagedEnvironmentOutput {
 	return o
-}
-
-func (o ManagedEnvironmentOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedEnvironment] {
-	return pulumix.Output[*ManagedEnvironment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cluster configuration which enables the log daemon to export

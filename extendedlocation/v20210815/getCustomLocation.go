@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the customLocation with a specified resource group and name.
@@ -99,12 +98,6 @@ func (o LookupCustomLocationResultOutput) ToLookupCustomLocationResultOutput() L
 
 func (o LookupCustomLocationResultOutput) ToLookupCustomLocationResultOutputWithContext(ctx context.Context) LookupCustomLocationResultOutput {
 	return o
-}
-
-func (o LookupCustomLocationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCustomLocationResult] {
-	return pulumix.Output[LookupCustomLocationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This is optional input that contains the authentication that should be used to generate the namespace.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Content type contract details.
@@ -162,12 +161,6 @@ func (i *ContentItem) ToContentItemOutputWithContext(ctx context.Context) Conten
 	return pulumi.ToOutputWithContext(ctx, i).(ContentItemOutput)
 }
 
-func (i *ContentItem) ToOutput(ctx context.Context) pulumix.Output[*ContentItem] {
-	return pulumix.Output[*ContentItem]{
-		OutputState: i.ToContentItemOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContentItemOutput struct{ *pulumi.OutputState }
 
 func (ContentItemOutput) ElementType() reflect.Type {
@@ -180,12 +173,6 @@ func (o ContentItemOutput) ToContentItemOutput() ContentItemOutput {
 
 func (o ContentItemOutput) ToContentItemOutputWithContext(ctx context.Context) ContentItemOutput {
 	return o
-}
-
-func (o ContentItemOutput) ToOutput(ctx context.Context) pulumix.Output[*ContentItem] {
-	return pulumix.Output[*ContentItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

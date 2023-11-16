@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a managed instance key.
@@ -89,12 +88,6 @@ func (o LookupManagedInstanceKeyResultOutput) ToLookupManagedInstanceKeyResultOu
 
 func (o LookupManagedInstanceKeyResultOutput) ToLookupManagedInstanceKeyResultOutputWithContext(ctx context.Context) LookupManagedInstanceKeyResultOutput {
 	return o
-}
-
-func (o LookupManagedInstanceKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedInstanceKeyResult] {
-	return pulumix.Output[LookupManagedInstanceKeyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Key auto rotation opt-in flag. Either true or false.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a VmwareCollector
@@ -94,12 +93,6 @@ func (o LookupVmwareCollectorsOperationResultOutput) ToLookupVmwareCollectorsOpe
 
 func (o LookupVmwareCollectorsOperationResultOutput) ToLookupVmwareCollectorsOperationResultOutputWithContext(ctx context.Context) LookupVmwareCollectorsOperationResultOutput {
 	return o
-}
-
-func (o LookupVmwareCollectorsOperationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVmwareCollectorsOperationResult] {
-	return pulumix.Output[LookupVmwareCollectorsOperationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the collector agent properties.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Datastore by name.
@@ -102,12 +101,6 @@ func (o LookupMachineLearningDatastoreResultOutput) ToLookupMachineLearningDatas
 
 func (o LookupMachineLearningDatastoreResultOutput) ToLookupMachineLearningDatastoreResultOutputWithContext(ctx context.Context) LookupMachineLearningDatastoreResultOutput {
 	return o
-}
-
-func (o LookupMachineLearningDatastoreResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMachineLearningDatastoreResult] {
-	return pulumix.Output[LookupMachineLearningDatastoreResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the resource ID.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The network group resource
@@ -173,12 +172,6 @@ func (i *NetworkGroup) ToNetworkGroupOutputWithContext(ctx context.Context) Netw
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkGroupOutput)
 }
 
-func (i *NetworkGroup) ToOutput(ctx context.Context) pulumix.Output[*NetworkGroup] {
-	return pulumix.Output[*NetworkGroup]{
-		OutputState: i.ToNetworkGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkGroupOutput struct{ *pulumi.OutputState }
 
 func (NetworkGroupOutput) ElementType() reflect.Type {
@@ -191,12 +184,6 @@ func (o NetworkGroupOutput) ToNetworkGroupOutput() NetworkGroupOutput {
 
 func (o NetworkGroupOutput) ToNetworkGroupOutputWithContext(ctx context.Context) NetworkGroupOutput {
 	return o
-}
-
-func (o NetworkGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkGroup] {
-	return pulumix.Output[*NetworkGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A description of the network group.

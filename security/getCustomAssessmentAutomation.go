@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a single custom assessment automation by name for the provided subscription and resource group.
@@ -94,12 +93,6 @@ func (o LookupCustomAssessmentAutomationResultOutput) ToLookupCustomAssessmentAu
 
 func (o LookupCustomAssessmentAutomationResultOutput) ToLookupCustomAssessmentAutomationResultOutputWithContext(ctx context.Context) LookupCustomAssessmentAutomationResultOutput {
 	return o
-}
-
-func (o LookupCustomAssessmentAutomationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCustomAssessmentAutomationResult] {
-	return pulumix.Output[LookupCustomAssessmentAutomationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The assessment metadata key used when an assessment is generated for this assessment automation.

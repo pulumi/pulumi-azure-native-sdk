@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i AccountEncryptionArgs) ToAccountEncryptionOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AccountEncryptionOutput)
 }
 
-func (i AccountEncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[AccountEncryption] {
-	return pulumix.Output[AccountEncryption]{
-		OutputState: i.ToAccountEncryptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines how the Video Analyzer account is (optionally) encrypted.
 type AccountEncryptionOutput struct{ *pulumi.OutputState }
 
@@ -76,12 +69,6 @@ func (o AccountEncryptionOutput) ToAccountEncryptionOutput() AccountEncryptionOu
 
 func (o AccountEncryptionOutput) ToAccountEncryptionOutputWithContext(ctx context.Context) AccountEncryptionOutput {
 	return o
-}
-
-func (o AccountEncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[AccountEncryption] {
-	return pulumix.Output[AccountEncryption]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Key Vault identity.
@@ -124,12 +111,6 @@ func (o AccountEncryptionResponseOutput) ToAccountEncryptionResponseOutput() Acc
 
 func (o AccountEncryptionResponseOutput) ToAccountEncryptionResponseOutputWithContext(ctx context.Context) AccountEncryptionResponseOutput {
 	return o
-}
-
-func (o AccountEncryptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AccountEncryptionResponse] {
-	return pulumix.Output[AccountEncryptionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Key Vault identity.
@@ -175,12 +156,6 @@ func (o EndpointResponseOutput) ToEndpointResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o EndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EndpointResponse] {
-	return pulumix.Output[EndpointResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The URL of the endpoint.
 func (o EndpointResponseOutput) EndpointUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EndpointResponse) *string { return v.EndpointUrl }).(pulumi.StringPtrOutput)
@@ -203,12 +178,6 @@ func (o EndpointResponseArrayOutput) ToEndpointResponseArrayOutput() EndpointRes
 
 func (o EndpointResponseArrayOutput) ToEndpointResponseArrayOutputWithContext(ctx context.Context) EndpointResponseArrayOutput {
 	return o
-}
-
-func (o EndpointResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EndpointResponse] {
-	return pulumix.Output[[]EndpointResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EndpointResponseArrayOutput) Index(i pulumi.IntInput) EndpointResponseOutput {
@@ -252,12 +221,6 @@ func (i KeyVaultPropertiesArgs) ToKeyVaultPropertiesOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultPropertiesOutput)
 }
 
-func (i KeyVaultPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[KeyVaultProperties] {
-	return pulumix.Output[KeyVaultProperties]{
-		OutputState: i.ToKeyVaultPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KeyVaultPropertiesArgs) ToKeyVaultPropertiesPtrOutput() KeyVaultPropertiesPtrOutput {
 	return i.ToKeyVaultPropertiesPtrOutputWithContext(context.Background())
 }
@@ -299,12 +262,6 @@ func (i *keyVaultPropertiesPtrType) ToKeyVaultPropertiesPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultPropertiesPtrOutput)
 }
 
-func (i *keyVaultPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultProperties] {
-	return pulumix.Output[*KeyVaultProperties]{
-		OutputState: i.ToKeyVaultPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The details for accessing the encryption keys in Key Vault.
 type KeyVaultPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -330,12 +287,6 @@ func (o KeyVaultPropertiesOutput) ToKeyVaultPropertiesPtrOutputWithContext(ctx c
 	}).(KeyVaultPropertiesPtrOutput)
 }
 
-func (o KeyVaultPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultProperties] {
-	return pulumix.Output[KeyVaultProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The URL of the Key Vault key used to encrypt the account. The key may either be versioned (for example https://vault/keys/mykey/version1) or reference a key without a version (for example https://vault/keys/mykey).
 func (o KeyVaultPropertiesOutput) KeyIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultProperties) string { return v.KeyIdentifier }).(pulumi.StringOutput)
@@ -353,12 +304,6 @@ func (o KeyVaultPropertiesPtrOutput) ToKeyVaultPropertiesPtrOutput() KeyVaultPro
 
 func (o KeyVaultPropertiesPtrOutput) ToKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) KeyVaultPropertiesPtrOutput {
 	return o
-}
-
-func (o KeyVaultPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultProperties] {
-	return pulumix.Output[*KeyVaultProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultPropertiesPtrOutput) Elem() KeyVaultPropertiesOutput {
@@ -404,12 +349,6 @@ func (o KeyVaultPropertiesResponseOutput) ToKeyVaultPropertiesResponseOutputWith
 	return o
 }
 
-func (o KeyVaultPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultPropertiesResponse] {
-	return pulumix.Output[KeyVaultPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The current key used to encrypt Video Analyzer account, including the key version.
 func (o KeyVaultPropertiesResponseOutput) CurrentKeyIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultPropertiesResponse) string { return v.CurrentKeyIdentifier }).(pulumi.StringOutput)
@@ -432,12 +371,6 @@ func (o KeyVaultPropertiesResponsePtrOutput) ToKeyVaultPropertiesResponsePtrOutp
 
 func (o KeyVaultPropertiesResponsePtrOutput) ToKeyVaultPropertiesResponsePtrOutputWithContext(ctx context.Context) KeyVaultPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o KeyVaultPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultPropertiesResponse] {
-	return pulumix.Output[*KeyVaultPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultPropertiesResponsePtrOutput) Elem() KeyVaultPropertiesResponseOutput {
@@ -505,12 +438,6 @@ func (i ResourceIdentityArgs) ToResourceIdentityOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceIdentityOutput)
 }
 
-func (i ResourceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentity] {
-	return pulumix.Output[ResourceIdentity]{
-		OutputState: i.ToResourceIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ResourceIdentityArgs) ToResourceIdentityPtrOutput() ResourceIdentityPtrOutput {
 	return i.ToResourceIdentityPtrOutputWithContext(context.Background())
 }
@@ -552,12 +479,6 @@ func (i *resourceIdentityPtrType) ToResourceIdentityPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceIdentityPtrOutput)
 }
 
-func (i *resourceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentity] {
-	return pulumix.Output[*ResourceIdentity]{
-		OutputState: i.ToResourceIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The user assigned managed identity to use when accessing a resource.
 type ResourceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -583,12 +504,6 @@ func (o ResourceIdentityOutput) ToResourceIdentityPtrOutputWithContext(ctx conte
 	}).(ResourceIdentityPtrOutput)
 }
 
-func (o ResourceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentity] {
-	return pulumix.Output[ResourceIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The user assigned managed identity's resource identifier to use when accessing a resource.
 func (o ResourceIdentityOutput) UserAssignedIdentity() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceIdentity) string { return v.UserAssignedIdentity }).(pulumi.StringOutput)
@@ -606,12 +521,6 @@ func (o ResourceIdentityPtrOutput) ToResourceIdentityPtrOutput() ResourceIdentit
 
 func (o ResourceIdentityPtrOutput) ToResourceIdentityPtrOutputWithContext(ctx context.Context) ResourceIdentityPtrOutput {
 	return o
-}
-
-func (o ResourceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentity] {
-	return pulumix.Output[*ResourceIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceIdentityPtrOutput) Elem() ResourceIdentityOutput {
@@ -655,12 +564,6 @@ func (o ResourceIdentityResponseOutput) ToResourceIdentityResponseOutputWithCont
 	return o
 }
 
-func (o ResourceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityResponse] {
-	return pulumix.Output[ResourceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The user assigned managed identity's resource identifier to use when accessing a resource.
 func (o ResourceIdentityResponseOutput) UserAssignedIdentity() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceIdentityResponse) string { return v.UserAssignedIdentity }).(pulumi.StringOutput)
@@ -678,12 +581,6 @@ func (o ResourceIdentityResponsePtrOutput) ToResourceIdentityResponsePtrOutput()
 
 func (o ResourceIdentityResponsePtrOutput) ToResourceIdentityResponsePtrOutputWithContext(ctx context.Context) ResourceIdentityResponsePtrOutput {
 	return o
-}
-
-func (o ResourceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityResponse] {
-	return pulumix.Output[*ResourceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceIdentityResponsePtrOutput) Elem() ResourceIdentityResponseOutput {
@@ -745,12 +642,6 @@ func (i StorageAccountArgs) ToStorageAccountOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(StorageAccountOutput)
 }
 
-func (i StorageAccountArgs) ToOutput(ctx context.Context) pulumix.Output[StorageAccount] {
-	return pulumix.Output[StorageAccount]{
-		OutputState: i.ToStorageAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StorageAccountArrayInput is an input type that accepts StorageAccountArray and StorageAccountArrayOutput values.
 // You can construct a concrete instance of `StorageAccountArrayInput` via:
 //
@@ -776,12 +667,6 @@ func (i StorageAccountArray) ToStorageAccountArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(StorageAccountArrayOutput)
 }
 
-func (i StorageAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]StorageAccount] {
-	return pulumix.Output[[]StorageAccount]{
-		OutputState: i.ToStorageAccountArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The details about the associated storage account.
 type StorageAccountOutput struct{ *pulumi.OutputState }
 
@@ -795,12 +680,6 @@ func (o StorageAccountOutput) ToStorageAccountOutput() StorageAccountOutput {
 
 func (o StorageAccountOutput) ToStorageAccountOutputWithContext(ctx context.Context) StorageAccountOutput {
 	return o
-}
-
-func (o StorageAccountOutput) ToOutput(ctx context.Context) pulumix.Output[StorageAccount] {
-	return pulumix.Output[StorageAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the storage account resource. Video Analyzer relies on tables, queues, and blobs. The primary storage account must be a Standard Storage account (either Microsoft.ClassicStorage or Microsoft.Storage).
@@ -825,12 +704,6 @@ func (o StorageAccountArrayOutput) ToStorageAccountArrayOutput() StorageAccountA
 
 func (o StorageAccountArrayOutput) ToStorageAccountArrayOutputWithContext(ctx context.Context) StorageAccountArrayOutput {
 	return o
-}
-
-func (o StorageAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StorageAccount] {
-	return pulumix.Output[[]StorageAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StorageAccountArrayOutput) Index(i pulumi.IntInput) StorageAccountOutput {
@@ -864,12 +737,6 @@ func (o StorageAccountResponseOutput) ToStorageAccountResponseOutputWithContext(
 	return o
 }
 
-func (o StorageAccountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageAccountResponse] {
-	return pulumix.Output[StorageAccountResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ID of the storage account resource. Video Analyzer relies on tables, queues, and blobs. The primary storage account must be a Standard Storage account (either Microsoft.ClassicStorage or Microsoft.Storage).
 func (o StorageAccountResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageAccountResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -897,12 +764,6 @@ func (o StorageAccountResponseArrayOutput) ToStorageAccountResponseArrayOutput()
 
 func (o StorageAccountResponseArrayOutput) ToStorageAccountResponseArrayOutputWithContext(ctx context.Context) StorageAccountResponseArrayOutput {
 	return o
-}
-
-func (o StorageAccountResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StorageAccountResponse] {
-	return pulumix.Output[[]StorageAccountResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StorageAccountResponseArrayOutput) Index(i pulumi.IntInput) StorageAccountResponseOutput {
@@ -940,12 +801,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -1001,12 +856,6 @@ func (o UserAssignedManagedIdentityResponseOutput) ToUserAssignedManagedIdentity
 	return o
 }
 
-func (o UserAssignedManagedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedManagedIdentityResponse] {
-	return pulumix.Output[UserAssignedManagedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The client ID.
 func (o UserAssignedManagedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedManagedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -1029,12 +878,6 @@ func (o UserAssignedManagedIdentityResponseMapOutput) ToUserAssignedManagedIdent
 
 func (o UserAssignedManagedIdentityResponseMapOutput) ToUserAssignedManagedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedManagedIdentityResponseMapOutput {
 	return o
-}
-
-func (o UserAssignedManagedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedManagedIdentityResponse] {
-	return pulumix.Output[map[string]UserAssignedManagedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedManagedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedManagedIdentityResponseOutput {
@@ -1082,12 +925,6 @@ func (i VideoAnalyzerIdentityArgs) ToVideoAnalyzerIdentityOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(VideoAnalyzerIdentityOutput)
 }
 
-func (i VideoAnalyzerIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[VideoAnalyzerIdentity] {
-	return pulumix.Output[VideoAnalyzerIdentity]{
-		OutputState: i.ToVideoAnalyzerIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VideoAnalyzerIdentityArgs) ToVideoAnalyzerIdentityPtrOutput() VideoAnalyzerIdentityPtrOutput {
 	return i.ToVideoAnalyzerIdentityPtrOutputWithContext(context.Background())
 }
@@ -1129,12 +966,6 @@ func (i *videoAnalyzerIdentityPtrType) ToVideoAnalyzerIdentityPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(VideoAnalyzerIdentityPtrOutput)
 }
 
-func (i *videoAnalyzerIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*VideoAnalyzerIdentity] {
-	return pulumix.Output[*VideoAnalyzerIdentity]{
-		OutputState: i.ToVideoAnalyzerIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The managed identity for the Video Analyzer resource.
 type VideoAnalyzerIdentityOutput struct{ *pulumi.OutputState }
 
@@ -1160,12 +991,6 @@ func (o VideoAnalyzerIdentityOutput) ToVideoAnalyzerIdentityPtrOutputWithContext
 	}).(VideoAnalyzerIdentityPtrOutput)
 }
 
-func (o VideoAnalyzerIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[VideoAnalyzerIdentity] {
-	return pulumix.Output[VideoAnalyzerIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The identity type.
 func (o VideoAnalyzerIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v VideoAnalyzerIdentity) string { return v.Type }).(pulumi.StringOutput)
@@ -1188,12 +1013,6 @@ func (o VideoAnalyzerIdentityPtrOutput) ToVideoAnalyzerIdentityPtrOutput() Video
 
 func (o VideoAnalyzerIdentityPtrOutput) ToVideoAnalyzerIdentityPtrOutputWithContext(ctx context.Context) VideoAnalyzerIdentityPtrOutput {
 	return o
-}
-
-func (o VideoAnalyzerIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VideoAnalyzerIdentity] {
-	return pulumix.Output[*VideoAnalyzerIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VideoAnalyzerIdentityPtrOutput) Elem() VideoAnalyzerIdentityOutput {
@@ -1249,12 +1068,6 @@ func (o VideoAnalyzerIdentityResponseOutput) ToVideoAnalyzerIdentityResponseOutp
 	return o
 }
 
-func (o VideoAnalyzerIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VideoAnalyzerIdentityResponse] {
-	return pulumix.Output[VideoAnalyzerIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The identity type.
 func (o VideoAnalyzerIdentityResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v VideoAnalyzerIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
@@ -1279,12 +1092,6 @@ func (o VideoAnalyzerIdentityResponsePtrOutput) ToVideoAnalyzerIdentityResponseP
 
 func (o VideoAnalyzerIdentityResponsePtrOutput) ToVideoAnalyzerIdentityResponsePtrOutputWithContext(ctx context.Context) VideoAnalyzerIdentityResponsePtrOutput {
 	return o
-}
-
-func (o VideoAnalyzerIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VideoAnalyzerIdentityResponse] {
-	return pulumix.Output[*VideoAnalyzerIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VideoAnalyzerIdentityResponsePtrOutput) Elem() VideoAnalyzerIdentityResponseOutput {
@@ -1342,12 +1149,6 @@ func (o VideoFlagsResponseOutput) ToVideoFlagsResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o VideoFlagsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VideoFlagsResponse] {
-	return pulumix.Output[VideoFlagsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Value indicating whether or not the video can be streamed. Only "archive" type videos can be streamed.
 func (o VideoFlagsResponseOutput) CanStream() pulumi.BoolOutput {
 	return o.ApplyT(func(v VideoFlagsResponse) bool { return v.CanStream }).(pulumi.BoolOutput)
@@ -1384,12 +1185,6 @@ func (o VideoMediaInfoResponseOutput) ToVideoMediaInfoResponseOutputWithContext(
 	return o
 }
 
-func (o VideoMediaInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VideoMediaInfoResponse] {
-	return pulumix.Output[VideoMediaInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Video segment length indicates the length of individual video files (segments) which are persisted to storage. Smaller segments provide lower archive playback latency but generate larger volume of storage transactions. Larger segments reduce the amount of storage transactions while increasing the archive playback latency. Value must be specified in ISO8601 duration format (i.e. "PT30S" equals 30 seconds) and can vary between 30 seconds to 5 minutes, in 30 seconds increments.
 func (o VideoMediaInfoResponseOutput) SegmentLength() pulumi.StringOutput {
 	return o.ApplyT(func(v VideoMediaInfoResponse) string { return v.SegmentLength }).(pulumi.StringOutput)
@@ -1420,12 +1215,6 @@ func (o VideoStreamingResponseOutput) ToVideoStreamingResponseOutput() VideoStre
 
 func (o VideoStreamingResponseOutput) ToVideoStreamingResponseOutputWithContext(ctx context.Context) VideoStreamingResponseOutput {
 	return o
-}
-
-func (o VideoStreamingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VideoStreamingResponse] {
-	return pulumix.Output[VideoStreamingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Video streaming base URL for the video archive. When present, archived video can be played through the Azure Video Analyzer player. Alternatively, this URL can be used with compatible DASH or HLS players by appending the following to the base URL:

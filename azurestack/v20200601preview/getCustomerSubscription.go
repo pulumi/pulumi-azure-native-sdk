@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the specified product.
@@ -87,12 +86,6 @@ func (o LookupCustomerSubscriptionResultOutput) ToLookupCustomerSubscriptionResu
 
 func (o LookupCustomerSubscriptionResultOutput) ToLookupCustomerSubscriptionResultOutputWithContext(ctx context.Context) LookupCustomerSubscriptionResultOutput {
 	return o
-}
-
-func (o LookupCustomerSubscriptionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCustomerSubscriptionResult] {
-	return pulumix.Output[LookupCustomerSubscriptionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The entity tag used for optimistic concurrency when modifying the resource.

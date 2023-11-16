@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Settings about where we should store your security data and logs. If the result is empty, it means that no custom-workspace configuration was set
@@ -77,12 +76,6 @@ func (o LookupWorkspaceSettingResultOutput) ToLookupWorkspaceSettingResultOutput
 
 func (o LookupWorkspaceSettingResultOutput) ToLookupWorkspaceSettingResultOutputWithContext(ctx context.Context) LookupWorkspaceSettingResultOutput {
 	return o
-}
-
-func (o LookupWorkspaceSettingResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkspaceSettingResult] {
-	return pulumix.Output[LookupWorkspaceSettingResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Id

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Workload group operations for a data warehouse
@@ -210,12 +209,6 @@ func (i *WorkloadGroup) ToWorkloadGroupOutputWithContext(ctx context.Context) Wo
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadGroupOutput)
 }
 
-func (i *WorkloadGroup) ToOutput(ctx context.Context) pulumix.Output[*WorkloadGroup] {
-	return pulumix.Output[*WorkloadGroup]{
-		OutputState: i.ToWorkloadGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkloadGroupOutput struct{ *pulumi.OutputState }
 
 func (WorkloadGroupOutput) ElementType() reflect.Type {
@@ -228,12 +221,6 @@ func (o WorkloadGroupOutput) ToWorkloadGroupOutput() WorkloadGroupOutput {
 
 func (o WorkloadGroupOutput) ToWorkloadGroupOutputWithContext(ctx context.Context) WorkloadGroupOutput {
 	return o
-}
-
-func (o WorkloadGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadGroup] {
-	return pulumix.Output[*WorkloadGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The workload group importance level.

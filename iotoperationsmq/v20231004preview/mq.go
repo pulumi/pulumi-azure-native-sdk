@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // MQ resource
@@ -134,12 +133,6 @@ func (i *Mq) ToMqOutputWithContext(ctx context.Context) MqOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MqOutput)
 }
 
-func (i *Mq) ToOutput(ctx context.Context) pulumix.Output[*Mq] {
-	return pulumix.Output[*Mq]{
-		OutputState: i.ToMqOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MqOutput struct{ *pulumi.OutputState }
 
 func (MqOutput) ElementType() reflect.Type {
@@ -152,12 +145,6 @@ func (o MqOutput) ToMqOutput() MqOutput {
 
 func (o MqOutput) ToMqOutputWithContext(ctx context.Context) MqOutput {
 	return o
-}
-
-func (o MqOutput) ToOutput(ctx context.Context) pulumix.Output[*Mq] {
-	return pulumix.Output[*Mq]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Extended Location

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists the IDs of all provisioned SIMs in a mobile network
@@ -75,12 +74,6 @@ func (o ListMobileNetworkSimIdsResultOutput) ToListMobileNetworkSimIdsResultOutp
 
 func (o ListMobileNetworkSimIdsResultOutput) ToListMobileNetworkSimIdsResultOutputWithContext(ctx context.Context) ListMobileNetworkSimIdsResultOutput {
 	return o
-}
-
-func (o ListMobileNetworkSimIdsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListMobileNetworkSimIdsResult] {
-	return pulumix.Output[ListMobileNetworkSimIdsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The URL to get the next set of results.

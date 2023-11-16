@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Dra model.
@@ -127,12 +126,6 @@ func (i *Dra) ToDraOutputWithContext(ctx context.Context) DraOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DraOutput)
 }
 
-func (i *Dra) ToOutput(ctx context.Context) pulumix.Output[*Dra] {
-	return pulumix.Output[*Dra]{
-		OutputState: i.ToDraOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DraOutput struct{ *pulumi.OutputState }
 
 func (DraOutput) ElementType() reflect.Type {
@@ -145,12 +138,6 @@ func (o DraOutput) ToDraOutput() DraOutput {
 
 func (o DraOutput) ToDraOutputWithContext(ctx context.Context) DraOutput {
 	return o
-}
-
-func (o DraOutput) ToOutput(ctx context.Context) pulumix.Output[*Dra] {
-	return pulumix.Output[*Dra]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the name of the resource.

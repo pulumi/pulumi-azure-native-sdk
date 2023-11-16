@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a single custom entity store assignment by name for the provided subscription and resource group.
@@ -84,12 +83,6 @@ func (o LookupCustomEntityStoreAssignmentResultOutput) ToLookupCustomEntityStore
 
 func (o LookupCustomEntityStoreAssignmentResultOutput) ToLookupCustomEntityStoreAssignmentResultOutputWithContext(ctx context.Context) LookupCustomEntityStoreAssignmentResultOutput {
 	return o
-}
-
-func (o LookupCustomEntityStoreAssignmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCustomEntityStoreAssignmentResult] {
-	return pulumix.Output[LookupCustomEntityStoreAssignmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The link to entity store database.

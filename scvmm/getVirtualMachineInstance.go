@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves information about a virtual machine instance.
@@ -96,12 +95,6 @@ func (o LookupVirtualMachineInstanceResultOutput) ToLookupVirtualMachineInstance
 
 func (o LookupVirtualMachineInstanceResultOutput) ToLookupVirtualMachineInstanceResultOutputWithContext(ctx context.Context) LookupVirtualMachineInstanceResultOutput {
 	return o
-}
-
-func (o LookupVirtualMachineInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVirtualMachineInstanceResult] {
-	return pulumix.Output[LookupVirtualMachineInstanceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Availability Sets in vm.

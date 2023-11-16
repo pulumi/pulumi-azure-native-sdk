@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -61,12 +60,6 @@ func (i AclArgs) ToAclOutputWithContext(ctx context.Context) AclOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AclOutput)
 }
 
-func (i AclArgs) ToOutput(ctx context.Context) pulumix.Output[Acl] {
-	return pulumix.Output[Acl]{
-		OutputState: i.ToAclOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AclArrayInput is an input type that accepts AclArray and AclArrayOutput values.
 // You can construct a concrete instance of `AclArrayInput` via:
 //
@@ -92,12 +85,6 @@ func (i AclArray) ToAclArrayOutputWithContext(ctx context.Context) AclArrayOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(AclArrayOutput)
 }
 
-func (i AclArray) ToOutput(ctx context.Context) pulumix.Output[[]Acl] {
-	return pulumix.Output[[]Acl]{
-		OutputState: i.ToAclArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Access Control List (ACL) for an iSCSI target portal group
 type AclOutput struct{ *pulumi.OutputState }
 
@@ -111,12 +98,6 @@ func (o AclOutput) ToAclOutput() AclOutput {
 
 func (o AclOutput) ToAclOutputWithContext(ctx context.Context) AclOutput {
 	return o
-}
-
-func (o AclOutput) ToOutput(ctx context.Context) pulumix.Output[Acl] {
-	return pulumix.Output[Acl]{
-		OutputState: o.OutputState,
-	}
 }
 
 // iSCSI initiator IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:client".
@@ -153,12 +134,6 @@ func (o AclArrayOutput) ToAclArrayOutputWithContext(ctx context.Context) AclArra
 	return o
 }
 
-func (o AclArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Acl] {
-	return pulumix.Output[[]Acl]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AclArrayOutput) Index(i pulumi.IntInput) AclOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Acl {
 		return vs[0].([]Acl)[vs[1].(int)]
@@ -190,12 +165,6 @@ func (o AclResponseOutput) ToAclResponseOutput() AclResponseOutput {
 
 func (o AclResponseOutput) ToAclResponseOutputWithContext(ctx context.Context) AclResponseOutput {
 	return o
-}
-
-func (o AclResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AclResponse] {
-	return pulumix.Output[AclResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // iSCSI initiator IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:client".
@@ -230,12 +199,6 @@ func (o AclResponseArrayOutput) ToAclResponseArrayOutput() AclResponseArrayOutpu
 
 func (o AclResponseArrayOutput) ToAclResponseArrayOutputWithContext(ctx context.Context) AclResponseArrayOutput {
 	return o
-}
-
-func (o AclResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AclResponse] {
-	return pulumix.Output[[]AclResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AclResponseArrayOutput) Index(i pulumi.IntInput) AclResponseOutput {
@@ -283,12 +246,6 @@ func (i AttributesArgs) ToAttributesOutputWithContext(ctx context.Context) Attri
 	return pulumi.ToOutputWithContext(ctx, i).(AttributesOutput)
 }
 
-func (i AttributesArgs) ToOutput(ctx context.Context) pulumix.Output[Attributes] {
-	return pulumix.Output[Attributes]{
-		OutputState: i.ToAttributesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Attributes of a iSCSI target portal group.
 type AttributesOutput struct{ *pulumi.OutputState }
 
@@ -302,12 +259,6 @@ func (o AttributesOutput) ToAttributesOutput() AttributesOutput {
 
 func (o AttributesOutput) ToAttributesOutputWithContext(ctx context.Context) AttributesOutput {
 	return o
-}
-
-func (o AttributesOutput) ToOutput(ctx context.Context) pulumix.Output[Attributes] {
-	return pulumix.Output[Attributes]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates whether or not authentication is enabled on the ACL.
@@ -341,12 +292,6 @@ func (o AttributesResponseOutput) ToAttributesResponseOutput() AttributesRespons
 
 func (o AttributesResponseOutput) ToAttributesResponseOutputWithContext(ctx context.Context) AttributesResponseOutput {
 	return o
-}
-
-func (o AttributesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AttributesResponse] {
-	return pulumix.Output[AttributesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates whether or not authentication is enabled on the ACL.
@@ -394,12 +339,6 @@ func (i DiskArgs) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskOutput)
 }
 
-func (i DiskArgs) ToOutput(ctx context.Context) pulumix.Output[Disk] {
-	return pulumix.Output[Disk]{
-		OutputState: i.ToDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DiskArrayInput is an input type that accepts DiskArray and DiskArrayOutput values.
 // You can construct a concrete instance of `DiskArrayInput` via:
 //
@@ -425,12 +364,6 @@ func (i DiskArray) ToDiskArrayOutputWithContext(ctx context.Context) DiskArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(DiskArrayOutput)
 }
 
-func (i DiskArray) ToOutput(ctx context.Context) pulumix.Output[[]Disk] {
-	return pulumix.Output[[]Disk]{
-		OutputState: i.ToDiskArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Azure Managed Disk to attach to the Disk pool.
 type DiskOutput struct{ *pulumi.OutputState }
 
@@ -444,12 +377,6 @@ func (o DiskOutput) ToDiskOutput() DiskOutput {
 
 func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return o
-}
-
-func (o DiskOutput) ToOutput(ctx context.Context) pulumix.Output[Disk] {
-	return pulumix.Output[Disk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Unique Azure Resource ID of the Managed Disk.
@@ -469,12 +396,6 @@ func (o DiskArrayOutput) ToDiskArrayOutput() DiskArrayOutput {
 
 func (o DiskArrayOutput) ToDiskArrayOutputWithContext(ctx context.Context) DiskArrayOutput {
 	return o
-}
-
-func (o DiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Disk] {
-	return pulumix.Output[[]Disk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskArrayOutput) Index(i pulumi.IntInput) DiskOutput {
@@ -504,12 +425,6 @@ func (o DiskResponseOutput) ToDiskResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o DiskResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiskResponse] {
-	return pulumix.Output[DiskResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Unique Azure Resource ID of the Managed Disk.
 func (o DiskResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -527,12 +442,6 @@ func (o DiskResponseArrayOutput) ToDiskResponseArrayOutput() DiskResponseArrayOu
 
 func (o DiskResponseArrayOutput) ToDiskResponseArrayOutputWithContext(ctx context.Context) DiskResponseArrayOutput {
 	return o
-}
-
-func (o DiskResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DiskResponse] {
-	return pulumix.Output[[]DiskResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskResponseArrayOutput) Index(i pulumi.IntInput) DiskResponseOutput {
@@ -580,12 +489,6 @@ func (i IscsiLunArgs) ToIscsiLunOutputWithContext(ctx context.Context) IscsiLunO
 	return pulumi.ToOutputWithContext(ctx, i).(IscsiLunOutput)
 }
 
-func (i IscsiLunArgs) ToOutput(ctx context.Context) pulumix.Output[IscsiLun] {
-	return pulumix.Output[IscsiLun]{
-		OutputState: i.ToIscsiLunOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IscsiLunArrayInput is an input type that accepts IscsiLunArray and IscsiLunArrayOutput values.
 // You can construct a concrete instance of `IscsiLunArrayInput` via:
 //
@@ -611,12 +514,6 @@ func (i IscsiLunArray) ToIscsiLunArrayOutputWithContext(ctx context.Context) Isc
 	return pulumi.ToOutputWithContext(ctx, i).(IscsiLunArrayOutput)
 }
 
-func (i IscsiLunArray) ToOutput(ctx context.Context) pulumix.Output[[]IscsiLun] {
-	return pulumix.Output[[]IscsiLun]{
-		OutputState: i.ToIscsiLunArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LUN to expose the Azure Managed Disk.
 type IscsiLunOutput struct{ *pulumi.OutputState }
 
@@ -630,12 +527,6 @@ func (o IscsiLunOutput) ToIscsiLunOutput() IscsiLunOutput {
 
 func (o IscsiLunOutput) ToIscsiLunOutputWithContext(ctx context.Context) IscsiLunOutput {
 	return o
-}
-
-func (o IscsiLunOutput) ToOutput(ctx context.Context) pulumix.Output[IscsiLun] {
-	return pulumix.Output[IscsiLun]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Azure Resource ID of the Managed Disk.
@@ -660,12 +551,6 @@ func (o IscsiLunArrayOutput) ToIscsiLunArrayOutput() IscsiLunArrayOutput {
 
 func (o IscsiLunArrayOutput) ToIscsiLunArrayOutputWithContext(ctx context.Context) IscsiLunArrayOutput {
 	return o
-}
-
-func (o IscsiLunArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IscsiLun] {
-	return pulumix.Output[[]IscsiLun]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IscsiLunArrayOutput) Index(i pulumi.IntInput) IscsiLunOutput {
@@ -697,12 +582,6 @@ func (o IscsiLunResponseOutput) ToIscsiLunResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o IscsiLunResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IscsiLunResponse] {
-	return pulumix.Output[IscsiLunResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Azure Resource ID of the Managed Disk.
 func (o IscsiLunResponseOutput) ManagedDiskAzureResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v IscsiLunResponse) string { return v.ManagedDiskAzureResourceId }).(pulumi.StringOutput)
@@ -725,12 +604,6 @@ func (o IscsiLunResponseArrayOutput) ToIscsiLunResponseArrayOutput() IscsiLunRes
 
 func (o IscsiLunResponseArrayOutput) ToIscsiLunResponseArrayOutputWithContext(ctx context.Context) IscsiLunResponseArrayOutput {
 	return o
-}
-
-func (o IscsiLunResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IscsiLunResponse] {
-	return pulumix.Output[[]IscsiLunResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IscsiLunResponseArrayOutput) Index(i pulumi.IntInput) IscsiLunResponseOutput {
@@ -768,12 +641,6 @@ func (o SystemMetadataResponseOutput) ToSystemMetadataResponseOutput() SystemMet
 
 func (o SystemMetadataResponseOutput) ToSystemMetadataResponseOutputWithContext(ctx context.Context) SystemMetadataResponseOutput {
 	return o
-}
-
-func (o SystemMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemMetadataResponse] {
-	return pulumix.Output[SystemMetadataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -849,12 +716,6 @@ func (i TargetPortalGroupCreateArgs) ToTargetPortalGroupCreateOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(TargetPortalGroupCreateOutput)
 }
 
-func (i TargetPortalGroupCreateArgs) ToOutput(ctx context.Context) pulumix.Output[TargetPortalGroupCreate] {
-	return pulumix.Output[TargetPortalGroupCreate]{
-		OutputState: i.ToTargetPortalGroupCreateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TargetPortalGroupCreateArrayInput is an input type that accepts TargetPortalGroupCreateArray and TargetPortalGroupCreateArrayOutput values.
 // You can construct a concrete instance of `TargetPortalGroupCreateArrayInput` via:
 //
@@ -880,12 +741,6 @@ func (i TargetPortalGroupCreateArray) ToTargetPortalGroupCreateArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(TargetPortalGroupCreateArrayOutput)
 }
 
-func (i TargetPortalGroupCreateArray) ToOutput(ctx context.Context) pulumix.Output[[]TargetPortalGroupCreate] {
-	return pulumix.Output[[]TargetPortalGroupCreate]{
-		OutputState: i.ToTargetPortalGroupCreateArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Target portal group properties for create or update iSCSI target request.
 type TargetPortalGroupCreateOutput struct{ *pulumi.OutputState }
 
@@ -899,12 +754,6 @@ func (o TargetPortalGroupCreateOutput) ToTargetPortalGroupCreateOutput() TargetP
 
 func (o TargetPortalGroupCreateOutput) ToTargetPortalGroupCreateOutputWithContext(ctx context.Context) TargetPortalGroupCreateOutput {
 	return o
-}
-
-func (o TargetPortalGroupCreateOutput) ToOutput(ctx context.Context) pulumix.Output[TargetPortalGroupCreate] {
-	return pulumix.Output[TargetPortalGroupCreate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Access Control List (ACL) for an iSCSI target portal group.
@@ -934,12 +783,6 @@ func (o TargetPortalGroupCreateArrayOutput) ToTargetPortalGroupCreateArrayOutput
 
 func (o TargetPortalGroupCreateArrayOutput) ToTargetPortalGroupCreateArrayOutputWithContext(ctx context.Context) TargetPortalGroupCreateArrayOutput {
 	return o
-}
-
-func (o TargetPortalGroupCreateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TargetPortalGroupCreate] {
-	return pulumix.Output[[]TargetPortalGroupCreate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TargetPortalGroupCreateArrayOutput) Index(i pulumi.IntInput) TargetPortalGroupCreateOutput {
@@ -977,12 +820,6 @@ func (o TargetPortalGroupResponseOutput) ToTargetPortalGroupResponseOutput() Tar
 
 func (o TargetPortalGroupResponseOutput) ToTargetPortalGroupResponseOutputWithContext(ctx context.Context) TargetPortalGroupResponseOutput {
 	return o
-}
-
-func (o TargetPortalGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TargetPortalGroupResponse] {
-	return pulumix.Output[TargetPortalGroupResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Access Control List (ACL) for an iSCSI target portal group.
@@ -1027,12 +864,6 @@ func (o TargetPortalGroupResponseArrayOutput) ToTargetPortalGroupResponseArrayOu
 
 func (o TargetPortalGroupResponseArrayOutput) ToTargetPortalGroupResponseArrayOutputWithContext(ctx context.Context) TargetPortalGroupResponseArrayOutput {
 	return o
-}
-
-func (o TargetPortalGroupResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TargetPortalGroupResponse] {
-	return pulumix.Output[[]TargetPortalGroupResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TargetPortalGroupResponseArrayOutput) Index(i pulumi.IntInput) TargetPortalGroupResponseOutput {

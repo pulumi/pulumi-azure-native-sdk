@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Class representing an iot hub data connection.
@@ -208,12 +207,6 @@ func (i *IotHubDataConnection) ToIotHubDataConnectionOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(IotHubDataConnectionOutput)
 }
 
-func (i *IotHubDataConnection) ToOutput(ctx context.Context) pulumix.Output[*IotHubDataConnection] {
-	return pulumix.Output[*IotHubDataConnection]{
-		OutputState: i.ToIotHubDataConnectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IotHubDataConnectionOutput struct{ *pulumi.OutputState }
 
 func (IotHubDataConnectionOutput) ElementType() reflect.Type {
@@ -226,12 +219,6 @@ func (o IotHubDataConnectionOutput) ToIotHubDataConnectionOutput() IotHubDataCon
 
 func (o IotHubDataConnectionOutput) ToIotHubDataConnectionOutputWithContext(ctx context.Context) IotHubDataConnectionOutput {
 	return o
-}
-
-func (o IotHubDataConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*IotHubDataConnection] {
-	return pulumix.Output[*IotHubDataConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The iot hub consumer group.

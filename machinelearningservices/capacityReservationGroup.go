@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2023-08-01-preview.
@@ -148,12 +147,6 @@ func (i *CapacityReservationGroup) ToCapacityReservationGroupOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(CapacityReservationGroupOutput)
 }
 
-func (i *CapacityReservationGroup) ToOutput(ctx context.Context) pulumix.Output[*CapacityReservationGroup] {
-	return pulumix.Output[*CapacityReservationGroup]{
-		OutputState: i.ToCapacityReservationGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CapacityReservationGroupOutput struct{ *pulumi.OutputState }
 
 func (CapacityReservationGroupOutput) ElementType() reflect.Type {
@@ -166,12 +159,6 @@ func (o CapacityReservationGroupOutput) ToCapacityReservationGroupOutput() Capac
 
 func (o CapacityReservationGroupOutput) ToCapacityReservationGroupOutputWithContext(ctx context.Context) CapacityReservationGroupOutput {
 	return o
-}
-
-func (o CapacityReservationGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*CapacityReservationGroup] {
-	return pulumix.Output[*CapacityReservationGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // [Required] Additional attributes of the entity.

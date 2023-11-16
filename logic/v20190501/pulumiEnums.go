@@ -81,12 +81,6 @@ func (o AgreementTypeOutput) ToAgreementTypePtrOutputWithContext(ctx context.Con
 	}).(AgreementTypePtrOutput)
 }
 
-func (o AgreementTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AgreementType] {
-	return pulumix.Output[AgreementType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AgreementTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -120,12 +114,6 @@ func (o AgreementTypePtrOutput) ToAgreementTypePtrOutput() AgreementTypePtrOutpu
 
 func (o AgreementTypePtrOutput) ToAgreementTypePtrOutputWithContext(ctx context.Context) AgreementTypePtrOutput {
 	return o
-}
-
-func (o AgreementTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgreementType] {
-	return pulumix.Output[*AgreementType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AgreementTypePtrOutput) Elem() AgreementTypeOutput {
@@ -269,12 +257,6 @@ func (o DayOfWeekOutput) ToDayOfWeekPtrOutputWithContext(ctx context.Context) Da
 	}).(DayOfWeekPtrOutput)
 }
 
-func (o DayOfWeekOutput) ToOutput(ctx context.Context) pulumix.Output[DayOfWeek] {
-	return pulumix.Output[DayOfWeek]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DayOfWeekOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -308,12 +290,6 @@ func (o DayOfWeekPtrOutput) ToDayOfWeekPtrOutput() DayOfWeekPtrOutput {
 
 func (o DayOfWeekPtrOutput) ToDayOfWeekPtrOutputWithContext(ctx context.Context) DayOfWeekPtrOutput {
 	return o
-}
-
-func (o DayOfWeekPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DayOfWeek] {
-	return pulumix.Output[*DayOfWeek]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DayOfWeekPtrOutput) Elem() DayOfWeekOutput {
@@ -456,12 +432,6 @@ func (o DaysOfWeekOutput) ToDaysOfWeekPtrOutputWithContext(ctx context.Context) 
 	}).(DaysOfWeekPtrOutput)
 }
 
-func (o DaysOfWeekOutput) ToOutput(ctx context.Context) pulumix.Output[DaysOfWeek] {
-	return pulumix.Output[DaysOfWeek]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DaysOfWeekOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -495,12 +465,6 @@ func (o DaysOfWeekPtrOutput) ToDaysOfWeekPtrOutput() DaysOfWeekPtrOutput {
 
 func (o DaysOfWeekPtrOutput) ToDaysOfWeekPtrOutputWithContext(ctx context.Context) DaysOfWeekPtrOutput {
 	return o
-}
-
-func (o DaysOfWeekPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DaysOfWeek] {
-	return pulumix.Output[*DaysOfWeek]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DaysOfWeekPtrOutput) Elem() DaysOfWeekOutput {
@@ -596,12 +560,6 @@ func (i DaysOfWeekArray) ToDaysOfWeekArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(DaysOfWeekArrayOutput)
 }
 
-func (i DaysOfWeekArray) ToOutput(ctx context.Context) pulumix.Output[[]DaysOfWeek] {
-	return pulumix.Output[[]DaysOfWeek]{
-		OutputState: i.ToDaysOfWeekArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DaysOfWeekArrayOutput struct{ *pulumi.OutputState }
 
 func (DaysOfWeekArrayOutput) ElementType() reflect.Type {
@@ -614,12 +572,6 @@ func (o DaysOfWeekArrayOutput) ToDaysOfWeekArrayOutput() DaysOfWeekArrayOutput {
 
 func (o DaysOfWeekArrayOutput) ToDaysOfWeekArrayOutputWithContext(ctx context.Context) DaysOfWeekArrayOutput {
 	return o
-}
-
-func (o DaysOfWeekArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DaysOfWeek] {
-	return pulumix.Output[[]DaysOfWeek]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DaysOfWeekArrayOutput) Index(i pulumi.IntInput) DaysOfWeekOutput {
@@ -718,12 +670,6 @@ func (o EdifactDecimalIndicatorOutput) ToEdifactDecimalIndicatorPtrOutputWithCon
 	}).(EdifactDecimalIndicatorPtrOutput)
 }
 
-func (o EdifactDecimalIndicatorOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactDecimalIndicator] {
-	return pulumix.Output[EdifactDecimalIndicator]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EdifactDecimalIndicatorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -757,12 +703,6 @@ func (o EdifactDecimalIndicatorPtrOutput) ToEdifactDecimalIndicatorPtrOutput() E
 
 func (o EdifactDecimalIndicatorPtrOutput) ToEdifactDecimalIndicatorPtrOutputWithContext(ctx context.Context) EdifactDecimalIndicatorPtrOutput {
 	return o
-}
-
-func (o EdifactDecimalIndicatorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdifactDecimalIndicator] {
-	return pulumix.Output[*EdifactDecimalIndicator]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactDecimalIndicatorPtrOutput) Elem() EdifactDecimalIndicatorOutput {
@@ -1048,12 +988,6 @@ func (o SegmentTerminatorSuffixOutput) ToSegmentTerminatorSuffixPtrOutputWithCon
 	}).(SegmentTerminatorSuffixPtrOutput)
 }
 
-func (o SegmentTerminatorSuffixOutput) ToOutput(ctx context.Context) pulumix.Output[SegmentTerminatorSuffix] {
-	return pulumix.Output[SegmentTerminatorSuffix]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SegmentTerminatorSuffixOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1087,12 +1021,6 @@ func (o SegmentTerminatorSuffixPtrOutput) ToSegmentTerminatorSuffixPtrOutput() S
 
 func (o SegmentTerminatorSuffixPtrOutput) ToSegmentTerminatorSuffixPtrOutputWithContext(ctx context.Context) SegmentTerminatorSuffixPtrOutput {
 	return o
-}
-
-func (o SegmentTerminatorSuffixPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SegmentTerminatorSuffix] {
-	return pulumix.Output[*SegmentTerminatorSuffix]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SegmentTerminatorSuffixPtrOutput) Elem() SegmentTerminatorSuffixOutput {

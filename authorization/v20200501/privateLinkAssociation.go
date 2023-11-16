@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type PrivateLinkAssociation struct {
@@ -114,12 +113,6 @@ func (i *PrivateLinkAssociation) ToPrivateLinkAssociationOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkAssociationOutput)
 }
 
-func (i *PrivateLinkAssociation) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkAssociation] {
-	return pulumix.Output[*PrivateLinkAssociation]{
-		OutputState: i.ToPrivateLinkAssociationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateLinkAssociationOutput struct{ *pulumi.OutputState }
 
 func (PrivateLinkAssociationOutput) ElementType() reflect.Type {
@@ -132,12 +125,6 @@ func (o PrivateLinkAssociationOutput) ToPrivateLinkAssociationOutput() PrivateLi
 
 func (o PrivateLinkAssociationOutput) ToPrivateLinkAssociationOutputWithContext(ctx context.Context) PrivateLinkAssociationOutput {
 	return o
-}
-
-func (o PrivateLinkAssociationOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkAssociation] {
-	return pulumix.Output[*PrivateLinkAssociation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The pla name.

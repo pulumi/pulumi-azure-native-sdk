@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Topic space resource.
@@ -147,12 +146,6 @@ func (i *TopicSpace) ToTopicSpaceOutputWithContext(ctx context.Context) TopicSpa
 	return pulumi.ToOutputWithContext(ctx, i).(TopicSpaceOutput)
 }
 
-func (i *TopicSpace) ToOutput(ctx context.Context) pulumix.Output[*TopicSpace] {
-	return pulumix.Output[*TopicSpace]{
-		OutputState: i.ToTopicSpaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TopicSpaceOutput struct{ *pulumi.OutputState }
 
 func (TopicSpaceOutput) ElementType() reflect.Type {
@@ -165,12 +158,6 @@ func (o TopicSpaceOutput) ToTopicSpaceOutput() TopicSpaceOutput {
 
 func (o TopicSpaceOutput) ToTopicSpaceOutputWithContext(ctx context.Context) TopicSpaceOutput {
 	return o
-}
-
-func (o TopicSpaceOutput) ToOutput(ctx context.Context) pulumix.Output[*TopicSpace] {
-	return pulumix.Output[*TopicSpace]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description for the Topic Space resource.

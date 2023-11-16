@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Gets existing backups of an app.
@@ -82,12 +81,6 @@ func (o ListWebAppSiteBackupsSlotResultOutput) ToListWebAppSiteBackupsSlotResult
 
 func (o ListWebAppSiteBackupsSlotResultOutput) ToListWebAppSiteBackupsSlotResultOutputWithContext(ctx context.Context) ListWebAppSiteBackupsSlotResultOutput {
 	return o
-}
-
-func (o ListWebAppSiteBackupsSlotResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWebAppSiteBackupsSlotResult] {
-	return pulumix.Output[ListWebAppSiteBackupsSlotResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Link to next page of resources.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func ListNotebookKeys(ctx *pulumi.Context, args *ListNotebookKeysArgs, opts ...pulumi.InvokeOption) (*ListNotebookKeysResult, error) {
@@ -70,12 +69,6 @@ func (o ListNotebookKeysResultOutput) ToListNotebookKeysResultOutput() ListNoteb
 
 func (o ListNotebookKeysResultOutput) ToListNotebookKeysResultOutputWithContext(ctx context.Context) ListNotebookKeysResultOutput {
 	return o
-}
-
-func (o ListNotebookKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListNotebookKeysResult] {
-	return pulumix.Output[ListNotebookKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ListNotebookKeysResultOutput) PrimaryAccessKey() pulumi.StringOutput {

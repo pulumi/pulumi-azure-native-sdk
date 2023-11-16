@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func LookupCapacityReservationGroup(ctx *pulumi.Context, args *LookupCapacityReservationGroupArgs, opts ...pulumi.InvokeOption) (*LookupCapacityReservationGroupResult, error) {
@@ -86,12 +85,6 @@ func (o LookupCapacityReservationGroupResultOutput) ToLookupCapacityReservationG
 
 func (o LookupCapacityReservationGroupResultOutput) ToLookupCapacityReservationGroupResultOutputWithContext(ctx context.Context) LookupCapacityReservationGroupResultOutput {
 	return o
-}
-
-func (o LookupCapacityReservationGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCapacityReservationGroupResult] {
-	return pulumix.Output[LookupCapacityReservationGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // [Required] Additional attributes of the entity.

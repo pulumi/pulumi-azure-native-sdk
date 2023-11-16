@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a trigger's event subscription status.
@@ -79,12 +78,6 @@ func (o GetTriggerEventSubscriptionStatusResultOutput) ToGetTriggerEventSubscrip
 
 func (o GetTriggerEventSubscriptionStatusResultOutput) ToGetTriggerEventSubscriptionStatusResultOutputWithContext(ctx context.Context) GetTriggerEventSubscriptionStatusResultOutput {
 	return o
-}
-
-func (o GetTriggerEventSubscriptionStatusResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetTriggerEventSubscriptionStatusResult] {
-	return pulumix.Output[GetTriggerEventSubscriptionStatusResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Event Subscription Status.

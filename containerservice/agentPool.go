@@ -10,13 +10,12 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Agent Pool.
 // Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-03-01.
 //
-// Other available API versions: 2019-02-01, 2019-04-01, 2020-06-01, 2021-02-01, 2021-08-01, 2022-04-02-preview, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01.
+// Other available API versions: 2019-02-01, 2019-04-01, 2020-06-01, 2021-02-01, 2021-08-01, 2022-04-02-preview, 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview.
 type AgentPool struct {
 	pulumi.CustomResourceState
 
@@ -306,6 +305,9 @@ func NewAgentPool(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerservice/v20231001:AgentPool"),
 		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20231002preview:AgentPool"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -534,12 +536,6 @@ func (i *AgentPool) ToAgentPoolOutputWithContext(ctx context.Context) AgentPoolO
 	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolOutput)
 }
 
-func (i *AgentPool) ToOutput(ctx context.Context) pulumix.Output[*AgentPool] {
-	return pulumix.Output[*AgentPool]{
-		OutputState: i.ToAgentPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AgentPoolOutput struct{ *pulumi.OutputState }
 
 func (AgentPoolOutput) ElementType() reflect.Type {
@@ -552,12 +548,6 @@ func (o AgentPoolOutput) ToAgentPoolOutput() AgentPoolOutput {
 
 func (o AgentPoolOutput) ToAgentPoolOutputWithContext(ctx context.Context) AgentPoolOutput {
 	return o
-}
-
-func (o AgentPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*AgentPool] {
-	return pulumix.Output[*AgentPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'.

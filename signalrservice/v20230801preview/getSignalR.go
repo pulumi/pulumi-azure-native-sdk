@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the resource and its properties.
@@ -183,12 +182,6 @@ func (o LookupSignalRResultOutput) ToLookupSignalRResultOutput() LookupSignalRRe
 
 func (o LookupSignalRResultOutput) ToLookupSignalRResultOutputWithContext(ctx context.Context) LookupSignalRResultOutput {
 	return o
-}
-
-func (o LookupSignalRResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSignalRResult] {
-	return pulumix.Output[LookupSignalRResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cross-Origin Resource Sharing (CORS) settings.

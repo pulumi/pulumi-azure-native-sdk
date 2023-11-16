@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the user ManagementConfiguration.
@@ -82,12 +81,6 @@ func (o LookupManagementConfigurationResultOutput) ToLookupManagementConfigurati
 
 func (o LookupManagementConfigurationResultOutput) ToLookupManagementConfigurationResultOutputWithContext(ctx context.Context) LookupManagementConfigurationResultOutput {
 	return o
-}
-
-func (o LookupManagementConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagementConfigurationResult] {
-	return pulumix.Output[LookupManagementConfigurationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource ID.

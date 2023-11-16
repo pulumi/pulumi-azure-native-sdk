@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Contact resource
@@ -162,12 +161,6 @@ func (i *Contact) ToContactOutputWithContext(ctx context.Context) ContactOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ContactOutput)
 }
 
-func (i *Contact) ToOutput(ctx context.Context) pulumix.Output[*Contact] {
-	return pulumix.Output[*Contact]{
-		OutputState: i.ToContactOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContactOutput struct{ *pulumi.OutputState }
 
 func (ContactOutput) ElementType() reflect.Type {
@@ -180,12 +173,6 @@ func (o ContactOutput) ToContactOutput() ContactOutput {
 
 func (o ContactOutput) ToContactOutputWithContext(ctx context.Context) ContactOutput {
 	return o
-}
-
-func (o ContactOutput) ToOutput(ctx context.Context) pulumix.Output[*Contact] {
-	return pulumix.Output[*Contact]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Full name of contact

@@ -88,12 +88,6 @@ func (o AfdQueryStringCachingBehaviorOutput) ToAfdQueryStringCachingBehaviorPtrO
 	}).(AfdQueryStringCachingBehaviorPtrOutput)
 }
 
-func (o AfdQueryStringCachingBehaviorOutput) ToOutput(ctx context.Context) pulumix.Output[AfdQueryStringCachingBehavior] {
-	return pulumix.Output[AfdQueryStringCachingBehavior]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AfdQueryStringCachingBehaviorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -127,12 +121,6 @@ func (o AfdQueryStringCachingBehaviorPtrOutput) ToAfdQueryStringCachingBehaviorP
 
 func (o AfdQueryStringCachingBehaviorPtrOutput) ToAfdQueryStringCachingBehaviorPtrOutputWithContext(ctx context.Context) AfdQueryStringCachingBehaviorPtrOutput {
 	return o
-}
-
-func (o AfdQueryStringCachingBehaviorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AfdQueryStringCachingBehavior] {
-	return pulumix.Output[*AfdQueryStringCachingBehavior]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AfdQueryStringCachingBehaviorPtrOutput) Elem() AfdQueryStringCachingBehaviorOutput {
@@ -289,12 +277,6 @@ func (o HealthProbeRequestTypeOutput) ToHealthProbeRequestTypePtrOutputWithConte
 	}).(HealthProbeRequestTypePtrOutput)
 }
 
-func (o HealthProbeRequestTypeOutput) ToOutput(ctx context.Context) pulumix.Output[HealthProbeRequestType] {
-	return pulumix.Output[HealthProbeRequestType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HealthProbeRequestTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -328,12 +310,6 @@ func (o HealthProbeRequestTypePtrOutput) ToHealthProbeRequestTypePtrOutput() Hea
 
 func (o HealthProbeRequestTypePtrOutput) ToHealthProbeRequestTypePtrOutputWithContext(ctx context.Context) HealthProbeRequestTypePtrOutput {
 	return o
-}
-
-func (o HealthProbeRequestTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HealthProbeRequestType] {
-	return pulumix.Output[*HealthProbeRequestType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HealthProbeRequestTypePtrOutput) Elem() HealthProbeRequestTypeOutput {
@@ -489,12 +465,6 @@ func (o ProbeProtocolOutput) ToProbeProtocolPtrOutputWithContext(ctx context.Con
 	}).(ProbeProtocolPtrOutput)
 }
 
-func (o ProbeProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[ProbeProtocol] {
-	return pulumix.Output[ProbeProtocol]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProbeProtocolOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -528,12 +498,6 @@ func (o ProbeProtocolPtrOutput) ToProbeProtocolPtrOutput() ProbeProtocolPtrOutpu
 
 func (o ProbeProtocolPtrOutput) ToProbeProtocolPtrOutputWithContext(ctx context.Context) ProbeProtocolPtrOutput {
 	return o
-}
-
-func (o ProbeProtocolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ProbeProtocol] {
-	return pulumix.Output[*ProbeProtocol]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProbeProtocolPtrOutput) Elem() ProbeProtocolOutput {
@@ -673,12 +637,6 @@ func (o ResponseBasedDetectedErrorTypesOutput) ToResponseBasedDetectedErrorTypes
 	}).(ResponseBasedDetectedErrorTypesPtrOutput)
 }
 
-func (o ResponseBasedDetectedErrorTypesOutput) ToOutput(ctx context.Context) pulumix.Output[ResponseBasedDetectedErrorTypes] {
-	return pulumix.Output[ResponseBasedDetectedErrorTypes]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ResponseBasedDetectedErrorTypesOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -712,12 +670,6 @@ func (o ResponseBasedDetectedErrorTypesPtrOutput) ToResponseBasedDetectedErrorTy
 
 func (o ResponseBasedDetectedErrorTypesPtrOutput) ToResponseBasedDetectedErrorTypesPtrOutputWithContext(ctx context.Context) ResponseBasedDetectedErrorTypesPtrOutput {
 	return o
-}
-
-func (o ResponseBasedDetectedErrorTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResponseBasedDetectedErrorTypes] {
-	return pulumix.Output[*ResponseBasedDetectedErrorTypes]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResponseBasedDetectedErrorTypesPtrOutput) Elem() ResponseBasedDetectedErrorTypesOutput {

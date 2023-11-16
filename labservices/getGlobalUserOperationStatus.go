@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the status of long running operation
@@ -74,12 +73,6 @@ func (o GetGlobalUserOperationStatusResultOutput) ToGetGlobalUserOperationStatus
 
 func (o GetGlobalUserOperationStatusResultOutput) ToGetGlobalUserOperationStatusResultOutputWithContext(ctx context.Context) GetGlobalUserOperationStatusResultOutput {
 	return o
-}
-
-func (o GetGlobalUserOperationStatusResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGlobalUserOperationStatusResult] {
-	return pulumix.Output[GetGlobalUserOperationStatusResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // status of the long running operation for an environment

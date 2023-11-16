@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about the specified Batch account.
@@ -122,12 +121,6 @@ func (o LookupBatchAccountResultOutput) ToLookupBatchAccountResultOutput() Looku
 
 func (o LookupBatchAccountResultOutput) ToLookupBatchAccountResultOutputWithContext(ctx context.Context) LookupBatchAccountResultOutput {
 	return o
-}
-
-func (o LookupBatchAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBatchAccountResult] {
-	return pulumix.Output[LookupBatchAccountResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account endpoint used to interact with the Batch service.

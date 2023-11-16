@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a MqResource
@@ -87,12 +86,6 @@ func (o LookupMqResultOutput) ToLookupMqResultOutput() LookupMqResultOutput {
 
 func (o LookupMqResultOutput) ToLookupMqResultOutputWithContext(ctx context.Context) LookupMqResultOutput {
 	return o
-}
-
-func (o LookupMqResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMqResult] {
-	return pulumix.Output[LookupMqResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Extended Location

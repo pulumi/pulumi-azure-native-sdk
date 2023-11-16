@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the Security ML Analytics Settings.
@@ -117,12 +116,6 @@ func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) ToLookupAnomalySec
 
 func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) ToLookupAnomalySecurityMLAnalyticsSettingsResultOutputWithContext(ctx context.Context) LookupAnomalySecurityMLAnalyticsSettingsResultOutput {
 	return o
-}
-
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAnomalySecurityMLAnalyticsSettingsResult] {
-	return pulumix.Output[LookupAnomalySecurityMLAnalyticsSettingsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The anomaly settings version of the Anomaly security ml analytics settings that dictates whether job version gets updated or not.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an instance of a orchestrator.
@@ -188,12 +187,6 @@ func (i *OrchestratorInstanceServiceDetails) ToOrchestratorInstanceServiceDetail
 	return pulumi.ToOutputWithContext(ctx, i).(OrchestratorInstanceServiceDetailsOutput)
 }
 
-func (i *OrchestratorInstanceServiceDetails) ToOutput(ctx context.Context) pulumix.Output[*OrchestratorInstanceServiceDetails] {
-	return pulumix.Output[*OrchestratorInstanceServiceDetails]{
-		OutputState: i.ToOrchestratorInstanceServiceDetailsOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrchestratorInstanceServiceDetailsOutput struct{ *pulumi.OutputState }
 
 func (OrchestratorInstanceServiceDetailsOutput) ElementType() reflect.Type {
@@ -206,12 +199,6 @@ func (o OrchestratorInstanceServiceDetailsOutput) ToOrchestratorInstanceServiceD
 
 func (o OrchestratorInstanceServiceDetailsOutput) ToOrchestratorInstanceServiceDetailsOutputWithContext(ctx context.Context) OrchestratorInstanceServiceDetailsOutput {
 	return o
-}
-
-func (o OrchestratorInstanceServiceDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[*OrchestratorInstanceServiceDetails] {
-	return pulumix.Output[*OrchestratorInstanceServiceDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 // K8s APIServer url. Either one of apiServerEndpoint or privateLinkResourceId can be specified

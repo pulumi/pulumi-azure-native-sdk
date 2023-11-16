@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Get the certificate associated with a certificate order.
@@ -96,12 +95,6 @@ func (o LookupAppServiceCertificateOrderCertificateResultOutput) ToLookupAppServ
 
 func (o LookupAppServiceCertificateOrderCertificateResultOutput) ToLookupAppServiceCertificateOrderCertificateResultOutputWithContext(ctx context.Context) LookupAppServiceCertificateOrderCertificateResultOutput {
 	return o
-}
-
-func (o LookupAppServiceCertificateOrderCertificateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAppServiceCertificateOrderCertificateResult] {
-	return pulumix.Output[LookupAppServiceCertificateOrderCertificateResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Id.

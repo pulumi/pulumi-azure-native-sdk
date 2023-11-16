@@ -9,13 +9,12 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Execute Insights for an entity.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2019-01-01-preview, 2021-09-01-preview, 2021-10-01-preview, 2022-01-01-preview, 2022-04-01-preview, 2022-05-01-preview, 2022-06-01-preview, 2022-07-01-preview, 2022-08-01-preview, 2022-09-01-preview, 2022-10-01-preview, 2022-11-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2019-01-01-preview, 2021-09-01-preview, 2021-10-01-preview, 2022-01-01-preview, 2022-04-01-preview, 2022-05-01-preview, 2022-06-01-preview, 2022-07-01-preview, 2022-08-01-preview, 2022-09-01-preview, 2022-10-01-preview, 2022-11-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 func GetEntityInsights(ctx *pulumi.Context, args *GetEntityInsightsArgs, opts ...pulumi.InvokeOption) (*GetEntityInsightsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetEntityInsightsResult
@@ -98,12 +97,6 @@ func (o GetEntityInsightsResultOutput) ToGetEntityInsightsResultOutput() GetEnti
 
 func (o GetEntityInsightsResultOutput) ToGetEntityInsightsResultOutputWithContext(ctx context.Context) GetEntityInsightsResultOutput {
 	return o
-}
-
-func (o GetEntityInsightsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEntityInsightsResult] {
-	return pulumix.Output[GetEntityInsightsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The metadata from the get insights operation results.

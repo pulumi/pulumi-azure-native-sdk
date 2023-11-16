@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve the connection type identified by connection type name.
@@ -94,12 +93,6 @@ func (o LookupConnectionTypeResultOutput) ToLookupConnectionTypeResultOutput() L
 
 func (o LookupConnectionTypeResultOutput) ToLookupConnectionTypeResultOutputWithContext(ctx context.Context) LookupConnectionTypeResultOutput {
 	return o
-}
-
-func (o LookupConnectionTypeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConnectionTypeResult] {
-	return pulumix.Output[LookupConnectionTypeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the creation time.

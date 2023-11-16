@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Solution REST Resource.
@@ -127,12 +126,6 @@ func (i *SolutionsControllerSolution) ToSolutionsControllerSolutionOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(SolutionsControllerSolutionOutput)
 }
 
-func (i *SolutionsControllerSolution) ToOutput(ctx context.Context) pulumix.Output[*SolutionsControllerSolution] {
-	return pulumix.Output[*SolutionsControllerSolution]{
-		OutputState: i.ToSolutionsControllerSolutionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SolutionsControllerSolutionOutput struct{ *pulumi.OutputState }
 
 func (SolutionsControllerSolutionOutput) ElementType() reflect.Type {
@@ -145,12 +138,6 @@ func (o SolutionsControllerSolutionOutput) ToSolutionsControllerSolutionOutput()
 
 func (o SolutionsControllerSolutionOutput) ToSolutionsControllerSolutionOutputWithContext(ctx context.Context) SolutionsControllerSolutionOutput {
 	return o
-}
-
-func (o SolutionsControllerSolutionOutput) ToOutput(ctx context.Context) pulumix.Output[*SolutionsControllerSolution] {
-	return pulumix.Output[*SolutionsControllerSolution]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the ETAG for optimistic concurrency control.

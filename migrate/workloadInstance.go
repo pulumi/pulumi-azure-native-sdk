@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Workload instance model.
@@ -134,12 +133,6 @@ func (i *WorkloadInstance) ToWorkloadInstanceOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadInstanceOutput)
 }
 
-func (i *WorkloadInstance) ToOutput(ctx context.Context) pulumix.Output[*WorkloadInstance] {
-	return pulumix.Output[*WorkloadInstance]{
-		OutputState: i.ToWorkloadInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkloadInstanceOutput struct{ *pulumi.OutputState }
 
 func (WorkloadInstanceOutput) ElementType() reflect.Type {
@@ -152,12 +145,6 @@ func (o WorkloadInstanceOutput) ToWorkloadInstanceOutput() WorkloadInstanceOutpu
 
 func (o WorkloadInstanceOutput) ToWorkloadInstanceOutputWithContext(ctx context.Context) WorkloadInstanceOutput {
 	return o
-}
-
-func (o WorkloadInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkloadInstance] {
-	return pulumix.Output[*WorkloadInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the name of the resource.

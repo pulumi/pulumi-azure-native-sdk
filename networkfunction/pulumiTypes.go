@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i EmissionPoliciesPropertiesFormatArgs) ToEmissionPoliciesPropertiesFormat
 	return pulumi.ToOutputWithContext(ctx, i).(EmissionPoliciesPropertiesFormatOutput)
 }
 
-func (i EmissionPoliciesPropertiesFormatArgs) ToOutput(ctx context.Context) pulumix.Output[EmissionPoliciesPropertiesFormat] {
-	return pulumix.Output[EmissionPoliciesPropertiesFormat]{
-		OutputState: i.ToEmissionPoliciesPropertiesFormatOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EmissionPoliciesPropertiesFormatArrayInput is an input type that accepts EmissionPoliciesPropertiesFormatArray and EmissionPoliciesPropertiesFormatArrayOutput values.
 // You can construct a concrete instance of `EmissionPoliciesPropertiesFormatArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i EmissionPoliciesPropertiesFormatArray) ToEmissionPoliciesPropertiesForma
 	return pulumi.ToOutputWithContext(ctx, i).(EmissionPoliciesPropertiesFormatArrayOutput)
 }
 
-func (i EmissionPoliciesPropertiesFormatArray) ToOutput(ctx context.Context) pulumix.Output[[]EmissionPoliciesPropertiesFormat] {
-	return pulumix.Output[[]EmissionPoliciesPropertiesFormat]{
-		OutputState: i.ToEmissionPoliciesPropertiesFormatArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Emission policy properties.
 type EmissionPoliciesPropertiesFormatOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o EmissionPoliciesPropertiesFormatOutput) ToEmissionPoliciesPropertiesForm
 
 func (o EmissionPoliciesPropertiesFormatOutput) ToEmissionPoliciesPropertiesFormatOutputWithContext(ctx context.Context) EmissionPoliciesPropertiesFormatOutput {
 	return o
-}
-
-func (o EmissionPoliciesPropertiesFormatOutput) ToOutput(ctx context.Context) pulumix.Output[EmissionPoliciesPropertiesFormat] {
-	return pulumix.Output[EmissionPoliciesPropertiesFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Emission policy destinations.
@@ -133,12 +114,6 @@ func (o EmissionPoliciesPropertiesFormatArrayOutput) ToEmissionPoliciesPropertie
 
 func (o EmissionPoliciesPropertiesFormatArrayOutput) ToEmissionPoliciesPropertiesFormatArrayOutputWithContext(ctx context.Context) EmissionPoliciesPropertiesFormatArrayOutput {
 	return o
-}
-
-func (o EmissionPoliciesPropertiesFormatArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EmissionPoliciesPropertiesFormat] {
-	return pulumix.Output[[]EmissionPoliciesPropertiesFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EmissionPoliciesPropertiesFormatArrayOutput) Index(i pulumi.IntInput) EmissionPoliciesPropertiesFormatOutput {
@@ -170,12 +145,6 @@ func (o EmissionPoliciesPropertiesFormatResponseOutput) ToEmissionPoliciesProper
 	return o
 }
 
-func (o EmissionPoliciesPropertiesFormatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EmissionPoliciesPropertiesFormatResponse] {
-	return pulumix.Output[EmissionPoliciesPropertiesFormatResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Emission policy destinations.
 func (o EmissionPoliciesPropertiesFormatResponseOutput) EmissionDestinations() EmissionPolicyDestinationResponseArrayOutput {
 	return o.ApplyT(func(v EmissionPoliciesPropertiesFormatResponse) []EmissionPolicyDestinationResponse {
@@ -200,12 +169,6 @@ func (o EmissionPoliciesPropertiesFormatResponseArrayOutput) ToEmissionPoliciesP
 
 func (o EmissionPoliciesPropertiesFormatResponseArrayOutput) ToEmissionPoliciesPropertiesFormatResponseArrayOutputWithContext(ctx context.Context) EmissionPoliciesPropertiesFormatResponseArrayOutput {
 	return o
-}
-
-func (o EmissionPoliciesPropertiesFormatResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EmissionPoliciesPropertiesFormatResponse] {
-	return pulumix.Output[[]EmissionPoliciesPropertiesFormatResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EmissionPoliciesPropertiesFormatResponseArrayOutput) Index(i pulumi.IntInput) EmissionPoliciesPropertiesFormatResponseOutput {
@@ -249,12 +212,6 @@ func (i EmissionPolicyDestinationArgs) ToEmissionPolicyDestinationOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(EmissionPolicyDestinationOutput)
 }
 
-func (i EmissionPolicyDestinationArgs) ToOutput(ctx context.Context) pulumix.Output[EmissionPolicyDestination] {
-	return pulumix.Output[EmissionPolicyDestination]{
-		OutputState: i.ToEmissionPolicyDestinationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EmissionPolicyDestinationArrayInput is an input type that accepts EmissionPolicyDestinationArray and EmissionPolicyDestinationArrayOutput values.
 // You can construct a concrete instance of `EmissionPolicyDestinationArrayInput` via:
 //
@@ -280,12 +237,6 @@ func (i EmissionPolicyDestinationArray) ToEmissionPolicyDestinationArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(EmissionPolicyDestinationArrayOutput)
 }
 
-func (i EmissionPolicyDestinationArray) ToOutput(ctx context.Context) pulumix.Output[[]EmissionPolicyDestination] {
-	return pulumix.Output[[]EmissionPolicyDestination]{
-		OutputState: i.ToEmissionPolicyDestinationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Emission policy destination properties.
 type EmissionPolicyDestinationOutput struct{ *pulumi.OutputState }
 
@@ -299,12 +250,6 @@ func (o EmissionPolicyDestinationOutput) ToEmissionPolicyDestinationOutput() Emi
 
 func (o EmissionPolicyDestinationOutput) ToEmissionPolicyDestinationOutputWithContext(ctx context.Context) EmissionPolicyDestinationOutput {
 	return o
-}
-
-func (o EmissionPolicyDestinationOutput) ToOutput(ctx context.Context) pulumix.Output[EmissionPolicyDestination] {
-	return pulumix.Output[EmissionPolicyDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Emission destination type.
@@ -324,12 +269,6 @@ func (o EmissionPolicyDestinationArrayOutput) ToEmissionPolicyDestinationArrayOu
 
 func (o EmissionPolicyDestinationArrayOutput) ToEmissionPolicyDestinationArrayOutputWithContext(ctx context.Context) EmissionPolicyDestinationArrayOutput {
 	return o
-}
-
-func (o EmissionPolicyDestinationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EmissionPolicyDestination] {
-	return pulumix.Output[[]EmissionPolicyDestination]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EmissionPolicyDestinationArrayOutput) Index(i pulumi.IntInput) EmissionPolicyDestinationOutput {
@@ -359,12 +298,6 @@ func (o EmissionPolicyDestinationResponseOutput) ToEmissionPolicyDestinationResp
 	return o
 }
 
-func (o EmissionPolicyDestinationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EmissionPolicyDestinationResponse] {
-	return pulumix.Output[EmissionPolicyDestinationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Emission destination type.
 func (o EmissionPolicyDestinationResponseOutput) DestinationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EmissionPolicyDestinationResponse) *string { return v.DestinationType }).(pulumi.StringPtrOutput)
@@ -382,12 +315,6 @@ func (o EmissionPolicyDestinationResponseArrayOutput) ToEmissionPolicyDestinatio
 
 func (o EmissionPolicyDestinationResponseArrayOutput) ToEmissionPolicyDestinationResponseArrayOutputWithContext(ctx context.Context) EmissionPolicyDestinationResponseArrayOutput {
 	return o
-}
-
-func (o EmissionPolicyDestinationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EmissionPolicyDestinationResponse] {
-	return pulumix.Output[[]EmissionPolicyDestinationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EmissionPolicyDestinationResponseArrayOutput) Index(i pulumi.IntInput) EmissionPolicyDestinationResponseOutput {
@@ -435,12 +362,6 @@ func (i IngestionPolicyPropertiesFormatArgs) ToIngestionPolicyPropertiesFormatOu
 	return pulumi.ToOutputWithContext(ctx, i).(IngestionPolicyPropertiesFormatOutput)
 }
 
-func (i IngestionPolicyPropertiesFormatArgs) ToOutput(ctx context.Context) pulumix.Output[IngestionPolicyPropertiesFormat] {
-	return pulumix.Output[IngestionPolicyPropertiesFormat]{
-		OutputState: i.ToIngestionPolicyPropertiesFormatOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IngestionPolicyPropertiesFormatArgs) ToIngestionPolicyPropertiesFormatPtrOutput() IngestionPolicyPropertiesFormatPtrOutput {
 	return i.ToIngestionPolicyPropertiesFormatPtrOutputWithContext(context.Background())
 }
@@ -482,12 +403,6 @@ func (i *ingestionPolicyPropertiesFormatPtrType) ToIngestionPolicyPropertiesForm
 	return pulumi.ToOutputWithContext(ctx, i).(IngestionPolicyPropertiesFormatPtrOutput)
 }
 
-func (i *ingestionPolicyPropertiesFormatPtrType) ToOutput(ctx context.Context) pulumix.Output[*IngestionPolicyPropertiesFormat] {
-	return pulumix.Output[*IngestionPolicyPropertiesFormat]{
-		OutputState: i.ToIngestionPolicyPropertiesFormatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Ingestion Policy properties.
 type IngestionPolicyPropertiesFormatOutput struct{ *pulumi.OutputState }
 
@@ -513,12 +428,6 @@ func (o IngestionPolicyPropertiesFormatOutput) ToIngestionPolicyPropertiesFormat
 	}).(IngestionPolicyPropertiesFormatPtrOutput)
 }
 
-func (o IngestionPolicyPropertiesFormatOutput) ToOutput(ctx context.Context) pulumix.Output[IngestionPolicyPropertiesFormat] {
-	return pulumix.Output[IngestionPolicyPropertiesFormat]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Ingestion Sources.
 func (o IngestionPolicyPropertiesFormatOutput) IngestionSources() IngestionSourcesPropertiesFormatArrayOutput {
 	return o.ApplyT(func(v IngestionPolicyPropertiesFormat) []IngestionSourcesPropertiesFormat { return v.IngestionSources }).(IngestionSourcesPropertiesFormatArrayOutput)
@@ -541,12 +450,6 @@ func (o IngestionPolicyPropertiesFormatPtrOutput) ToIngestionPolicyPropertiesFor
 
 func (o IngestionPolicyPropertiesFormatPtrOutput) ToIngestionPolicyPropertiesFormatPtrOutputWithContext(ctx context.Context) IngestionPolicyPropertiesFormatPtrOutput {
 	return o
-}
-
-func (o IngestionPolicyPropertiesFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IngestionPolicyPropertiesFormat] {
-	return pulumix.Output[*IngestionPolicyPropertiesFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IngestionPolicyPropertiesFormatPtrOutput) Elem() IngestionPolicyPropertiesFormatOutput {
@@ -602,12 +505,6 @@ func (o IngestionPolicyPropertiesFormatResponseOutput) ToIngestionPolicyProperti
 	return o
 }
 
-func (o IngestionPolicyPropertiesFormatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IngestionPolicyPropertiesFormatResponse] {
-	return pulumix.Output[IngestionPolicyPropertiesFormatResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Ingestion Sources.
 func (o IngestionPolicyPropertiesFormatResponseOutput) IngestionSources() IngestionSourcesPropertiesFormatResponseArrayOutput {
 	return o.ApplyT(func(v IngestionPolicyPropertiesFormatResponse) []IngestionSourcesPropertiesFormatResponse {
@@ -632,12 +529,6 @@ func (o IngestionPolicyPropertiesFormatResponsePtrOutput) ToIngestionPolicyPrope
 
 func (o IngestionPolicyPropertiesFormatResponsePtrOutput) ToIngestionPolicyPropertiesFormatResponsePtrOutputWithContext(ctx context.Context) IngestionPolicyPropertiesFormatResponsePtrOutput {
 	return o
-}
-
-func (o IngestionPolicyPropertiesFormatResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IngestionPolicyPropertiesFormatResponse] {
-	return pulumix.Output[*IngestionPolicyPropertiesFormatResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IngestionPolicyPropertiesFormatResponsePtrOutput) Elem() IngestionPolicyPropertiesFormatResponseOutput {
@@ -709,12 +600,6 @@ func (i IngestionSourcesPropertiesFormatArgs) ToIngestionSourcesPropertiesFormat
 	return pulumi.ToOutputWithContext(ctx, i).(IngestionSourcesPropertiesFormatOutput)
 }
 
-func (i IngestionSourcesPropertiesFormatArgs) ToOutput(ctx context.Context) pulumix.Output[IngestionSourcesPropertiesFormat] {
-	return pulumix.Output[IngestionSourcesPropertiesFormat]{
-		OutputState: i.ToIngestionSourcesPropertiesFormatOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IngestionSourcesPropertiesFormatArrayInput is an input type that accepts IngestionSourcesPropertiesFormatArray and IngestionSourcesPropertiesFormatArrayOutput values.
 // You can construct a concrete instance of `IngestionSourcesPropertiesFormatArrayInput` via:
 //
@@ -740,12 +625,6 @@ func (i IngestionSourcesPropertiesFormatArray) ToIngestionSourcesPropertiesForma
 	return pulumi.ToOutputWithContext(ctx, i).(IngestionSourcesPropertiesFormatArrayOutput)
 }
 
-func (i IngestionSourcesPropertiesFormatArray) ToOutput(ctx context.Context) pulumix.Output[[]IngestionSourcesPropertiesFormat] {
-	return pulumix.Output[[]IngestionSourcesPropertiesFormat]{
-		OutputState: i.ToIngestionSourcesPropertiesFormatArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Ingestion policy properties.
 type IngestionSourcesPropertiesFormatOutput struct{ *pulumi.OutputState }
 
@@ -759,12 +638,6 @@ func (o IngestionSourcesPropertiesFormatOutput) ToIngestionSourcesPropertiesForm
 
 func (o IngestionSourcesPropertiesFormatOutput) ToIngestionSourcesPropertiesFormatOutputWithContext(ctx context.Context) IngestionSourcesPropertiesFormatOutput {
 	return o
-}
-
-func (o IngestionSourcesPropertiesFormatOutput) ToOutput(ctx context.Context) pulumix.Output[IngestionSourcesPropertiesFormat] {
-	return pulumix.Output[IngestionSourcesPropertiesFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource ID.
@@ -789,12 +662,6 @@ func (o IngestionSourcesPropertiesFormatArrayOutput) ToIngestionSourcesPropertie
 
 func (o IngestionSourcesPropertiesFormatArrayOutput) ToIngestionSourcesPropertiesFormatArrayOutputWithContext(ctx context.Context) IngestionSourcesPropertiesFormatArrayOutput {
 	return o
-}
-
-func (o IngestionSourcesPropertiesFormatArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IngestionSourcesPropertiesFormat] {
-	return pulumix.Output[[]IngestionSourcesPropertiesFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IngestionSourcesPropertiesFormatArrayOutput) Index(i pulumi.IntInput) IngestionSourcesPropertiesFormatOutput {
@@ -826,12 +693,6 @@ func (o IngestionSourcesPropertiesFormatResponseOutput) ToIngestionSourcesProper
 	return o
 }
 
-func (o IngestionSourcesPropertiesFormatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IngestionSourcesPropertiesFormatResponse] {
-	return pulumix.Output[IngestionSourcesPropertiesFormatResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource ID.
 func (o IngestionSourcesPropertiesFormatResponseOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IngestionSourcesPropertiesFormatResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
@@ -854,12 +715,6 @@ func (o IngestionSourcesPropertiesFormatResponseArrayOutput) ToIngestionSourcesP
 
 func (o IngestionSourcesPropertiesFormatResponseArrayOutput) ToIngestionSourcesPropertiesFormatResponseArrayOutputWithContext(ctx context.Context) IngestionSourcesPropertiesFormatResponseArrayOutput {
 	return o
-}
-
-func (o IngestionSourcesPropertiesFormatResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IngestionSourcesPropertiesFormatResponse] {
-	return pulumix.Output[[]IngestionSourcesPropertiesFormatResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IngestionSourcesPropertiesFormatResponseArrayOutput) Index(i pulumi.IntInput) IngestionSourcesPropertiesFormatResponseOutput {
@@ -889,12 +744,6 @@ func (o ResourceReferenceResponseOutput) ToResourceReferenceResponseOutputWithCo
 	return o
 }
 
-func (o ResourceReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceReferenceResponse] {
-	return pulumix.Output[ResourceReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource ID.
 func (o ResourceReferenceResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceReferenceResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -912,12 +761,6 @@ func (o ResourceReferenceResponsePtrOutput) ToResourceReferenceResponsePtrOutput
 
 func (o ResourceReferenceResponsePtrOutput) ToResourceReferenceResponsePtrOutputWithContext(ctx context.Context) ResourceReferenceResponsePtrOutput {
 	return o
-}
-
-func (o ResourceReferenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceReferenceResponse] {
-	return pulumix.Output[*ResourceReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceReferenceResponsePtrOutput) Elem() ResourceReferenceResponseOutput {
@@ -954,12 +797,6 @@ func (o ResourceReferenceResponseArrayOutput) ToResourceReferenceResponseArrayOu
 	return o
 }
 
-func (o ResourceReferenceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceReferenceResponse] {
-	return pulumix.Output[[]ResourceReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ResourceReferenceResponseArrayOutput) Index(i pulumi.IntInput) ResourceReferenceResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceReferenceResponse {
 		return vs[0].([]ResourceReferenceResponse)[vs[1].(int)]
@@ -993,12 +830,6 @@ func (o TrackedResourceResponseSystemDataOutput) ToTrackedResourceResponseSystem
 
 func (o TrackedResourceResponseSystemDataOutput) ToTrackedResourceResponseSystemDataOutputWithContext(ctx context.Context) TrackedResourceResponseSystemDataOutput {
 	return o
-}
-
-func (o TrackedResourceResponseSystemDataOutput) ToOutput(ctx context.Context) pulumix.Output[TrackedResourceResponseSystemData] {
-	return pulumix.Output[TrackedResourceResponseSystemData]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

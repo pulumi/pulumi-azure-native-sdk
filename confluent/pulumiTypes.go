@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -39,12 +38,6 @@ func (o ClusterByokEntityResponseOutput) ToClusterByokEntityResponseOutputWithCo
 	return o
 }
 
-func (o ClusterByokEntityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterByokEntityResponse] {
-	return pulumix.Output[ClusterByokEntityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ID of the referred resource
 func (o ClusterByokEntityResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterByokEntityResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -72,12 +65,6 @@ func (o ClusterByokEntityResponsePtrOutput) ToClusterByokEntityResponsePtrOutput
 
 func (o ClusterByokEntityResponsePtrOutput) ToClusterByokEntityResponsePtrOutputWithContext(ctx context.Context) ClusterByokEntityResponsePtrOutput {
 	return o
-}
-
-func (o ClusterByokEntityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterByokEntityResponse] {
-	return pulumix.Output[*ClusterByokEntityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterByokEntityResponsePtrOutput) Elem() ClusterByokEntityResponseOutput {
@@ -141,12 +128,6 @@ func (o ClusterConfigEntityResponseOutput) ToClusterConfigEntityResponseOutputWi
 	return o
 }
 
-func (o ClusterConfigEntityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterConfigEntityResponse] {
-	return pulumix.Output[ClusterConfigEntityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The lifecycle phase of the cluster
 func (o ClusterConfigEntityResponseOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterConfigEntityResponse) *string { return v.Kind }).(pulumi.StringPtrOutput)
@@ -164,12 +145,6 @@ func (o ClusterConfigEntityResponsePtrOutput) ToClusterConfigEntityResponsePtrOu
 
 func (o ClusterConfigEntityResponsePtrOutput) ToClusterConfigEntityResponsePtrOutputWithContext(ctx context.Context) ClusterConfigEntityResponsePtrOutput {
 	return o
-}
-
-func (o ClusterConfigEntityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterConfigEntityResponse] {
-	return pulumix.Output[*ClusterConfigEntityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterConfigEntityResponsePtrOutput) Elem() ClusterConfigEntityResponseOutput {
@@ -219,12 +194,6 @@ func (o ClusterEnvironmentEntityResponseOutput) ToClusterEnvironmentEntityRespon
 	return o
 }
 
-func (o ClusterEnvironmentEntityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterEnvironmentEntityResponse] {
-	return pulumix.Output[ClusterEnvironmentEntityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Environment of the referred resource
 func (o ClusterEnvironmentEntityResponseOutput) Environment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterEnvironmentEntityResponse) *string { return v.Environment }).(pulumi.StringPtrOutput)
@@ -257,12 +226,6 @@ func (o ClusterEnvironmentEntityResponsePtrOutput) ToClusterEnvironmentEntityRes
 
 func (o ClusterEnvironmentEntityResponsePtrOutput) ToClusterEnvironmentEntityResponsePtrOutputWithContext(ctx context.Context) ClusterEnvironmentEntityResponsePtrOutput {
 	return o
-}
-
-func (o ClusterEnvironmentEntityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterEnvironmentEntityResponse] {
-	return pulumix.Output[*ClusterEnvironmentEntityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterEnvironmentEntityResponsePtrOutput) Elem() ClusterEnvironmentEntityResponseOutput {
@@ -342,12 +305,6 @@ func (o ClusterNetworkEntityResponseOutput) ToClusterNetworkEntityResponseOutput
 	return o
 }
 
-func (o ClusterNetworkEntityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterNetworkEntityResponse] {
-	return pulumix.Output[ClusterNetworkEntityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Environment of the referred resource
 func (o ClusterNetworkEntityResponseOutput) Environment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNetworkEntityResponse) *string { return v.Environment }).(pulumi.StringPtrOutput)
@@ -380,12 +337,6 @@ func (o ClusterNetworkEntityResponsePtrOutput) ToClusterNetworkEntityResponsePtr
 
 func (o ClusterNetworkEntityResponsePtrOutput) ToClusterNetworkEntityResponsePtrOutputWithContext(ctx context.Context) ClusterNetworkEntityResponsePtrOutput {
 	return o
-}
-
-func (o ClusterNetworkEntityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterNetworkEntityResponse] {
-	return pulumix.Output[*ClusterNetworkEntityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterNetworkEntityResponsePtrOutput) Elem() ClusterNetworkEntityResponseOutput {
@@ -469,12 +420,6 @@ func (o ClusterRecordResponseOutput) ToClusterRecordResponseOutputWithContext(ct
 	return o
 }
 
-func (o ClusterRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterRecordResponse] {
-	return pulumix.Output[ClusterRecordResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Display name of the user
 func (o ClusterRecordResponseOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterRecordResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
@@ -517,12 +462,6 @@ func (o ClusterRecordResponseArrayOutput) ToClusterRecordResponseArrayOutput() C
 
 func (o ClusterRecordResponseArrayOutput) ToClusterRecordResponseArrayOutputWithContext(ctx context.Context) ClusterRecordResponseArrayOutput {
 	return o
-}
-
-func (o ClusterRecordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ClusterRecordResponse] {
-	return pulumix.Output[[]ClusterRecordResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterRecordResponseArrayOutput) Index(i pulumi.IntInput) ClusterRecordResponseOutput {
@@ -572,12 +511,6 @@ func (o ClusterSpecEntityResponseOutput) ToClusterSpecEntityResponseOutput() Clu
 
 func (o ClusterSpecEntityResponseOutput) ToClusterSpecEntityResponseOutputWithContext(ctx context.Context) ClusterSpecEntityResponseOutput {
 	return o
-}
-
-func (o ClusterSpecEntityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterSpecEntityResponse] {
-	return pulumix.Output[ClusterSpecEntityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Kafka API cluster endpoint
@@ -652,12 +585,6 @@ func (o ClusterSpecEntityResponsePtrOutput) ToClusterSpecEntityResponsePtrOutput
 
 func (o ClusterSpecEntityResponsePtrOutput) ToClusterSpecEntityResponsePtrOutputWithContext(ctx context.Context) ClusterSpecEntityResponsePtrOutput {
 	return o
-}
-
-func (o ClusterSpecEntityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterSpecEntityResponse] {
-	return pulumix.Output[*ClusterSpecEntityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterSpecEntityResponsePtrOutput) Elem() ClusterSpecEntityResponseOutput {
@@ -813,12 +740,6 @@ func (o ClusterStatusEntityResponseOutput) ToClusterStatusEntityResponseOutputWi
 	return o
 }
 
-func (o ClusterStatusEntityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterStatusEntityResponse] {
-	return pulumix.Output[ClusterStatusEntityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of Confluent Kafka Units
 func (o ClusterStatusEntityResponseOutput) Cku() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterStatusEntityResponse) *int { return v.Cku }).(pulumi.IntPtrOutput)
@@ -841,12 +762,6 @@ func (o ClusterStatusEntityResponsePtrOutput) ToClusterStatusEntityResponsePtrOu
 
 func (o ClusterStatusEntityResponsePtrOutput) ToClusterStatusEntityResponsePtrOutputWithContext(ctx context.Context) ClusterStatusEntityResponsePtrOutput {
 	return o
-}
-
-func (o ClusterStatusEntityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterStatusEntityResponse] {
-	return pulumix.Output[*ClusterStatusEntityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterStatusEntityResponsePtrOutput) Elem() ClusterStatusEntityResponseOutput {
@@ -908,12 +823,6 @@ func (o ConfluentListMetadataResponseOutput) ToConfluentListMetadataResponseOutp
 	return o
 }
 
-func (o ConfluentListMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConfluentListMetadataResponse] {
-	return pulumix.Output[ConfluentListMetadataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // First page of the list
 func (o ConfluentListMetadataResponseOutput) First() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConfluentListMetadataResponse) *string { return v.First }).(pulumi.StringPtrOutput)
@@ -951,12 +860,6 @@ func (o ConfluentListMetadataResponsePtrOutput) ToConfluentListMetadataResponseP
 
 func (o ConfluentListMetadataResponsePtrOutput) ToConfluentListMetadataResponsePtrOutputWithContext(ctx context.Context) ConfluentListMetadataResponsePtrOutput {
 	return o
-}
-
-func (o ConfluentListMetadataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfluentListMetadataResponse] {
-	return pulumix.Output[*ConfluentListMetadataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfluentListMetadataResponsePtrOutput) Elem() ConfluentListMetadataResponseOutput {
@@ -1046,12 +949,6 @@ func (o EnvironmentRecordResponseOutput) ToEnvironmentRecordResponseOutputWithCo
 	return o
 }
 
-func (o EnvironmentRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentRecordResponse] {
-	return pulumix.Output[EnvironmentRecordResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Display name of the user
 func (o EnvironmentRecordResponseOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentRecordResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
@@ -1084,12 +981,6 @@ func (o EnvironmentRecordResponseArrayOutput) ToEnvironmentRecordResponseArrayOu
 
 func (o EnvironmentRecordResponseArrayOutput) ToEnvironmentRecordResponseArrayOutputWithContext(ctx context.Context) EnvironmentRecordResponseArrayOutput {
 	return o
-}
-
-func (o EnvironmentRecordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EnvironmentRecordResponse] {
-	return pulumix.Output[[]EnvironmentRecordResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentRecordResponseArrayOutput) Index(i pulumi.IntInput) EnvironmentRecordResponseOutput {
@@ -1131,12 +1022,6 @@ func (o InvitationRecordResponseOutput) ToInvitationRecordResponseOutput() Invit
 
 func (o InvitationRecordResponseOutput) ToInvitationRecordResponseOutputWithContext(ctx context.Context) InvitationRecordResponseOutput {
 	return o
-}
-
-func (o InvitationRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InvitationRecordResponse] {
-	return pulumix.Output[InvitationRecordResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Accepted date time of the invitation
@@ -1193,12 +1078,6 @@ func (o InvitationRecordResponseArrayOutput) ToInvitationRecordResponseArrayOutp
 	return o
 }
 
-func (o InvitationRecordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]InvitationRecordResponse] {
-	return pulumix.Output[[]InvitationRecordResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InvitationRecordResponseArrayOutput) Index(i pulumi.IntInput) InvitationRecordResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InvitationRecordResponse {
 		return vs[0].([]InvitationRecordResponse)[vs[1].(int)]
@@ -1232,12 +1111,6 @@ func (o MetadataEntityResponseOutput) ToMetadataEntityResponseOutput() MetadataE
 
 func (o MetadataEntityResponseOutput) ToMetadataEntityResponseOutputWithContext(ctx context.Context) MetadataEntityResponseOutput {
 	return o
-}
-
-func (o MetadataEntityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MetadataEntityResponse] {
-	return pulumix.Output[MetadataEntityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Created Date Time
@@ -1277,12 +1150,6 @@ func (o MetadataEntityResponsePtrOutput) ToMetadataEntityResponsePtrOutput() Met
 
 func (o MetadataEntityResponsePtrOutput) ToMetadataEntityResponsePtrOutputWithContext(ctx context.Context) MetadataEntityResponsePtrOutput {
 	return o
-}
-
-func (o MetadataEntityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetadataEntityResponse] {
-	return pulumix.Output[*MetadataEntityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetadataEntityResponsePtrOutput) Elem() MetadataEntityResponseOutput {
@@ -1396,12 +1263,6 @@ func (i OfferDetailArgs) ToOfferDetailOutputWithContext(ctx context.Context) Off
 	return pulumi.ToOutputWithContext(ctx, i).(OfferDetailOutput)
 }
 
-func (i OfferDetailArgs) ToOutput(ctx context.Context) pulumix.Output[OfferDetail] {
-	return pulumix.Output[OfferDetail]{
-		OutputState: i.ToOfferDetailOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Confluent Offer detail
 type OfferDetailOutput struct{ *pulumi.OutputState }
 
@@ -1415,12 +1276,6 @@ func (o OfferDetailOutput) ToOfferDetailOutput() OfferDetailOutput {
 
 func (o OfferDetailOutput) ToOfferDetailOutputWithContext(ctx context.Context) OfferDetailOutput {
 	return o
-}
-
-func (o OfferDetailOutput) ToOutput(ctx context.Context) pulumix.Output[OfferDetail] {
-	return pulumix.Output[OfferDetail]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Offer Id
@@ -1477,12 +1332,6 @@ func (o OfferDetailResponseOutput) ToOfferDetailResponseOutput() OfferDetailResp
 
 func (o OfferDetailResponseOutput) ToOfferDetailResponseOutputWithContext(ctx context.Context) OfferDetailResponseOutput {
 	return o
-}
-
-func (o OfferDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[OfferDetailResponse] {
-	return pulumix.Output[OfferDetailResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Offer Id
@@ -1546,12 +1395,6 @@ func (o RoleBindingRecordResponseOutput) ToRoleBindingRecordResponseOutputWithCo
 	return o
 }
 
-func (o RoleBindingRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RoleBindingRecordResponse] {
-	return pulumix.Output[RoleBindingRecordResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A CRN that specifies the scope and resource patterns necessary for the role to bind
 func (o RoleBindingRecordResponseOutput) CrnPattern() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RoleBindingRecordResponse) *string { return v.CrnPattern }).(pulumi.StringPtrOutput)
@@ -1596,12 +1439,6 @@ func (o RoleBindingRecordResponseArrayOutput) ToRoleBindingRecordResponseArrayOu
 	return o
 }
 
-func (o RoleBindingRecordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RoleBindingRecordResponse] {
-	return pulumix.Output[[]RoleBindingRecordResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RoleBindingRecordResponseArrayOutput) Index(i pulumi.IntInput) RoleBindingRecordResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoleBindingRecordResponse {
 		return vs[0].([]RoleBindingRecordResponse)[vs[1].(int)]
@@ -1635,12 +1472,6 @@ func (o ServiceAccountRecordResponseOutput) ToServiceAccountRecordResponseOutput
 
 func (o ServiceAccountRecordResponseOutput) ToServiceAccountRecordResponseOutputWithContext(ctx context.Context) ServiceAccountRecordResponseOutput {
 	return o
-}
-
-func (o ServiceAccountRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceAccountRecordResponse] {
-	return pulumix.Output[ServiceAccountRecordResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the service account
@@ -1682,12 +1513,6 @@ func (o ServiceAccountRecordResponseArrayOutput) ToServiceAccountRecordResponseA
 	return o
 }
 
-func (o ServiceAccountRecordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ServiceAccountRecordResponse] {
-	return pulumix.Output[[]ServiceAccountRecordResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServiceAccountRecordResponseArrayOutput) Index(i pulumi.IntInput) ServiceAccountRecordResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceAccountRecordResponse {
 		return vs[0].([]ServiceAccountRecordResponse)[vs[1].(int)]
@@ -1723,12 +1548,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -1804,12 +1623,6 @@ func (i UserDetailArgs) ToUserDetailOutputWithContext(ctx context.Context) UserD
 	return pulumi.ToOutputWithContext(ctx, i).(UserDetailOutput)
 }
 
-func (i UserDetailArgs) ToOutput(ctx context.Context) pulumix.Output[UserDetail] {
-	return pulumix.Output[UserDetail]{
-		OutputState: i.ToUserDetailOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Subscriber detail
 type UserDetailOutput struct{ *pulumi.OutputState }
 
@@ -1823,12 +1636,6 @@ func (o UserDetailOutput) ToUserDetailOutput() UserDetailOutput {
 
 func (o UserDetailOutput) ToUserDetailOutputWithContext(ctx context.Context) UserDetailOutput {
 	return o
-}
-
-func (o UserDetailOutput) ToOutput(ctx context.Context) pulumix.Output[UserDetail] {
-	return pulumix.Output[UserDetail]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Email address
@@ -1869,12 +1676,6 @@ func (o UserDetailResponseOutput) ToUserDetailResponseOutput() UserDetailRespons
 
 func (o UserDetailResponseOutput) ToUserDetailResponseOutputWithContext(ctx context.Context) UserDetailResponseOutput {
 	return o
-}
-
-func (o UserDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserDetailResponse] {
-	return pulumix.Output[UserDetailResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Email address
@@ -1923,12 +1724,6 @@ func (o UserRecordResponseOutput) ToUserRecordResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o UserRecordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserRecordResponse] {
-	return pulumix.Output[UserRecordResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Auth type of the user
 func (o UserRecordResponseOutput) AuthType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserRecordResponse) *string { return v.AuthType }).(pulumi.StringPtrOutput)
@@ -1971,12 +1766,6 @@ func (o UserRecordResponseArrayOutput) ToUserRecordResponseArrayOutput() UserRec
 
 func (o UserRecordResponseArrayOutput) ToUserRecordResponseArrayOutputWithContext(ctx context.Context) UserRecordResponseArrayOutput {
 	return o
-}
-
-func (o UserRecordResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]UserRecordResponse] {
-	return pulumix.Output[[]UserRecordResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserRecordResponseArrayOutput) Index(i pulumi.IntInput) UserRecordResponseOutput {

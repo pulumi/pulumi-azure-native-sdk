@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i AdditionalFeaturesServerConfigurationsArgs) ToAdditionalFeaturesServerCo
 
 func (i AdditionalFeaturesServerConfigurationsArgs) ToAdditionalFeaturesServerConfigurationsOutputWithContext(ctx context.Context) AdditionalFeaturesServerConfigurationsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AdditionalFeaturesServerConfigurationsOutput)
-}
-
-func (i AdditionalFeaturesServerConfigurationsArgs) ToOutput(ctx context.Context) pulumix.Output[AdditionalFeaturesServerConfigurations] {
-	return pulumix.Output[AdditionalFeaturesServerConfigurations]{
-		OutputState: i.ToAdditionalFeaturesServerConfigurationsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i AdditionalFeaturesServerConfigurationsArgs) ToAdditionalFeaturesServerConfigurationsPtrOutput() AdditionalFeaturesServerConfigurationsPtrOutput {
@@ -96,12 +89,6 @@ func (i *additionalFeaturesServerConfigurationsPtrType) ToAdditionalFeaturesServ
 	return pulumi.ToOutputWithContext(ctx, i).(AdditionalFeaturesServerConfigurationsPtrOutput)
 }
 
-func (i *additionalFeaturesServerConfigurationsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AdditionalFeaturesServerConfigurations] {
-	return pulumix.Output[*AdditionalFeaturesServerConfigurations]{
-		OutputState: i.ToAdditionalFeaturesServerConfigurationsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Additional SQL Server feature settings.
 type AdditionalFeaturesServerConfigurationsOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o AdditionalFeaturesServerConfigurationsOutput) ToAdditionalFeaturesServer
 	}).(AdditionalFeaturesServerConfigurationsPtrOutput)
 }
 
-func (o AdditionalFeaturesServerConfigurationsOutput) ToOutput(ctx context.Context) pulumix.Output[AdditionalFeaturesServerConfigurations] {
-	return pulumix.Output[AdditionalFeaturesServerConfigurations]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Enable or disable R services (SQL 2016 onwards).
 func (o AdditionalFeaturesServerConfigurationsOutput) IsRServicesEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AdditionalFeaturesServerConfigurations) *bool { return v.IsRServicesEnabled }).(pulumi.BoolPtrOutput)
@@ -150,12 +131,6 @@ func (o AdditionalFeaturesServerConfigurationsPtrOutput) ToAdditionalFeaturesSer
 
 func (o AdditionalFeaturesServerConfigurationsPtrOutput) ToAdditionalFeaturesServerConfigurationsPtrOutputWithContext(ctx context.Context) AdditionalFeaturesServerConfigurationsPtrOutput {
 	return o
-}
-
-func (o AdditionalFeaturesServerConfigurationsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AdditionalFeaturesServerConfigurations] {
-	return pulumix.Output[*AdditionalFeaturesServerConfigurations]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AdditionalFeaturesServerConfigurationsPtrOutput) Elem() AdditionalFeaturesServerConfigurationsOutput {
@@ -199,12 +174,6 @@ func (o AdditionalFeaturesServerConfigurationsResponseOutput) ToAdditionalFeatur
 	return o
 }
 
-func (o AdditionalFeaturesServerConfigurationsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AdditionalFeaturesServerConfigurationsResponse] {
-	return pulumix.Output[AdditionalFeaturesServerConfigurationsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Enable or disable R services (SQL 2016 onwards).
 func (o AdditionalFeaturesServerConfigurationsResponseOutput) IsRServicesEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AdditionalFeaturesServerConfigurationsResponse) *bool { return v.IsRServicesEnabled }).(pulumi.BoolPtrOutput)
@@ -222,12 +191,6 @@ func (o AdditionalFeaturesServerConfigurationsResponsePtrOutput) ToAdditionalFea
 
 func (o AdditionalFeaturesServerConfigurationsResponsePtrOutput) ToAdditionalFeaturesServerConfigurationsResponsePtrOutputWithContext(ctx context.Context) AdditionalFeaturesServerConfigurationsResponsePtrOutput {
 	return o
-}
-
-func (o AdditionalFeaturesServerConfigurationsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AdditionalFeaturesServerConfigurationsResponse] {
-	return pulumix.Output[*AdditionalFeaturesServerConfigurationsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AdditionalFeaturesServerConfigurationsResponsePtrOutput) Elem() AdditionalFeaturesServerConfigurationsResponseOutput {
@@ -285,12 +248,6 @@ func (i AgConfigurationArgs) ToAgConfigurationOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AgConfigurationOutput)
 }
 
-func (i AgConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[AgConfiguration] {
-	return pulumix.Output[AgConfiguration]{
-		OutputState: i.ToAgConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AgConfigurationArgs) ToAgConfigurationPtrOutput() AgConfigurationPtrOutput {
 	return i.ToAgConfigurationPtrOutputWithContext(context.Background())
 }
@@ -332,12 +289,6 @@ func (i *agConfigurationPtrType) ToAgConfigurationPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(AgConfigurationPtrOutput)
 }
 
-func (i *agConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*AgConfiguration] {
-	return pulumix.Output[*AgConfiguration]{
-		OutputState: i.ToAgConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Availability group configuration.
 type AgConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -363,12 +314,6 @@ func (o AgConfigurationOutput) ToAgConfigurationPtrOutputWithContext(ctx context
 	}).(AgConfigurationPtrOutput)
 }
 
-func (o AgConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[AgConfiguration] {
-	return pulumix.Output[AgConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Replica configurations.
 func (o AgConfigurationOutput) Replicas() AgReplicaArrayOutput {
 	return o.ApplyT(func(v AgConfiguration) []AgReplica { return v.Replicas }).(AgReplicaArrayOutput)
@@ -386,12 +331,6 @@ func (o AgConfigurationPtrOutput) ToAgConfigurationPtrOutput() AgConfigurationPt
 
 func (o AgConfigurationPtrOutput) ToAgConfigurationPtrOutputWithContext(ctx context.Context) AgConfigurationPtrOutput {
 	return o
-}
-
-func (o AgConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgConfiguration] {
-	return pulumix.Output[*AgConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AgConfigurationPtrOutput) Elem() AgConfigurationOutput {
@@ -435,12 +374,6 @@ func (o AgConfigurationResponseOutput) ToAgConfigurationResponseOutputWithContex
 	return o
 }
 
-func (o AgConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AgConfigurationResponse] {
-	return pulumix.Output[AgConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Replica configurations.
 func (o AgConfigurationResponseOutput) Replicas() AgReplicaResponseArrayOutput {
 	return o.ApplyT(func(v AgConfigurationResponse) []AgReplicaResponse { return v.Replicas }).(AgReplicaResponseArrayOutput)
@@ -458,12 +391,6 @@ func (o AgConfigurationResponsePtrOutput) ToAgConfigurationResponsePtrOutput() A
 
 func (o AgConfigurationResponsePtrOutput) ToAgConfigurationResponsePtrOutputWithContext(ctx context.Context) AgConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o AgConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgConfigurationResponse] {
-	return pulumix.Output[*AgConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AgConfigurationResponsePtrOutput) Elem() AgConfigurationResponseOutput {
@@ -537,12 +464,6 @@ func (i AgReplicaArgs) ToAgReplicaOutputWithContext(ctx context.Context) AgRepli
 	return pulumi.ToOutputWithContext(ctx, i).(AgReplicaOutput)
 }
 
-func (i AgReplicaArgs) ToOutput(ctx context.Context) pulumix.Output[AgReplica] {
-	return pulumix.Output[AgReplica]{
-		OutputState: i.ToAgReplicaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AgReplicaArrayInput is an input type that accepts AgReplicaArray and AgReplicaArrayOutput values.
 // You can construct a concrete instance of `AgReplicaArrayInput` via:
 //
@@ -568,12 +489,6 @@ func (i AgReplicaArray) ToAgReplicaArrayOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AgReplicaArrayOutput)
 }
 
-func (i AgReplicaArray) ToOutput(ctx context.Context) pulumix.Output[[]AgReplica] {
-	return pulumix.Output[[]AgReplica]{
-		OutputState: i.ToAgReplicaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Availability group replica configuration.
 type AgReplicaOutput struct{ *pulumi.OutputState }
 
@@ -587,12 +502,6 @@ func (o AgReplicaOutput) ToAgReplicaOutput() AgReplicaOutput {
 
 func (o AgReplicaOutput) ToAgReplicaOutputWithContext(ctx context.Context) AgReplicaOutput {
 	return o
-}
-
-func (o AgReplicaOutput) ToOutput(ctx context.Context) pulumix.Output[AgReplica] {
-	return pulumix.Output[AgReplica]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Replica commit mode in availability group.
@@ -634,12 +543,6 @@ func (o AgReplicaArrayOutput) ToAgReplicaArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o AgReplicaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AgReplica] {
-	return pulumix.Output[[]AgReplica]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AgReplicaArrayOutput) Index(i pulumi.IntInput) AgReplicaOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AgReplica {
 		return vs[0].([]AgReplica)[vs[1].(int)]
@@ -673,12 +576,6 @@ func (o AgReplicaResponseOutput) ToAgReplicaResponseOutput() AgReplicaResponseOu
 
 func (o AgReplicaResponseOutput) ToAgReplicaResponseOutputWithContext(ctx context.Context) AgReplicaResponseOutput {
 	return o
-}
-
-func (o AgReplicaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AgReplicaResponse] {
-	return pulumix.Output[AgReplicaResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Replica commit mode in availability group.
@@ -718,12 +615,6 @@ func (o AgReplicaResponseArrayOutput) ToAgReplicaResponseArrayOutput() AgReplica
 
 func (o AgReplicaResponseArrayOutput) ToAgReplicaResponseArrayOutputWithContext(ctx context.Context) AgReplicaResponseArrayOutput {
 	return o
-}
-
-func (o AgReplicaResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AgReplicaResponse] {
-	return pulumix.Output[[]AgReplicaResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AgReplicaResponseArrayOutput) Index(i pulumi.IntInput) AgReplicaResponseOutput {
@@ -775,12 +666,6 @@ func (i AssessmentSettingsArgs) ToAssessmentSettingsOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AssessmentSettingsOutput)
 }
 
-func (i AssessmentSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[AssessmentSettings] {
-	return pulumix.Output[AssessmentSettings]{
-		OutputState: i.ToAssessmentSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AssessmentSettingsArgs) ToAssessmentSettingsPtrOutput() AssessmentSettingsPtrOutput {
 	return i.ToAssessmentSettingsPtrOutputWithContext(context.Background())
 }
@@ -822,12 +707,6 @@ func (i *assessmentSettingsPtrType) ToAssessmentSettingsPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(AssessmentSettingsPtrOutput)
 }
 
-func (i *assessmentSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AssessmentSettings] {
-	return pulumix.Output[*AssessmentSettings]{
-		OutputState: i.ToAssessmentSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configure assessment for databases in your SQL virtual machine.
 type AssessmentSettingsOutput struct{ *pulumi.OutputState }
 
@@ -851,12 +730,6 @@ func (o AssessmentSettingsOutput) ToAssessmentSettingsPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssessmentSettings) *AssessmentSettings {
 		return &v
 	}).(AssessmentSettingsPtrOutput)
-}
-
-func (o AssessmentSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[AssessmentSettings] {
-	return pulumix.Output[AssessmentSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Enable or disable assessment feature on SQL virtual machine.
@@ -886,12 +759,6 @@ func (o AssessmentSettingsPtrOutput) ToAssessmentSettingsPtrOutput() AssessmentS
 
 func (o AssessmentSettingsPtrOutput) ToAssessmentSettingsPtrOutputWithContext(ctx context.Context) AssessmentSettingsPtrOutput {
 	return o
-}
-
-func (o AssessmentSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssessmentSettings] {
-	return pulumix.Output[*AssessmentSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssessmentSettingsPtrOutput) Elem() AssessmentSettingsOutput {
@@ -959,12 +826,6 @@ func (o AssessmentSettingsResponseOutput) ToAssessmentSettingsResponseOutputWith
 	return o
 }
 
-func (o AssessmentSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssessmentSettingsResponse] {
-	return pulumix.Output[AssessmentSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Enable or disable assessment feature on SQL virtual machine.
 func (o AssessmentSettingsResponseOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AssessmentSettingsResponse) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
@@ -992,12 +853,6 @@ func (o AssessmentSettingsResponsePtrOutput) ToAssessmentSettingsResponsePtrOutp
 
 func (o AssessmentSettingsResponsePtrOutput) ToAssessmentSettingsResponsePtrOutputWithContext(ctx context.Context) AssessmentSettingsResponsePtrOutput {
 	return o
-}
-
-func (o AssessmentSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssessmentSettingsResponse] {
-	return pulumix.Output[*AssessmentSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssessmentSettingsResponsePtrOutput) Elem() AssessmentSettingsResponseOutput {
@@ -1127,12 +982,6 @@ func (i AutoBackupSettingsArgs) ToAutoBackupSettingsOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AutoBackupSettingsOutput)
 }
 
-func (i AutoBackupSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[AutoBackupSettings] {
-	return pulumix.Output[AutoBackupSettings]{
-		OutputState: i.ToAutoBackupSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AutoBackupSettingsArgs) ToAutoBackupSettingsPtrOutput() AutoBackupSettingsPtrOutput {
 	return i.ToAutoBackupSettingsPtrOutputWithContext(context.Background())
 }
@@ -1174,12 +1023,6 @@ func (i *autoBackupSettingsPtrType) ToAutoBackupSettingsPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(AutoBackupSettingsPtrOutput)
 }
 
-func (i *autoBackupSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AutoBackupSettings] {
-	return pulumix.Output[*AutoBackupSettings]{
-		OutputState: i.ToAutoBackupSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configure backups for databases in your SQL virtual machine.
 type AutoBackupSettingsOutput struct{ *pulumi.OutputState }
 
@@ -1203,12 +1046,6 @@ func (o AutoBackupSettingsOutput) ToAutoBackupSettingsPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoBackupSettings) *AutoBackupSettings {
 		return &v
 	}).(AutoBackupSettingsPtrOutput)
-}
-
-func (o AutoBackupSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[AutoBackupSettings] {
-	return pulumix.Output[AutoBackupSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Backup schedule type.
@@ -1293,12 +1130,6 @@ func (o AutoBackupSettingsPtrOutput) ToAutoBackupSettingsPtrOutput() AutoBackupS
 
 func (o AutoBackupSettingsPtrOutput) ToAutoBackupSettingsPtrOutputWithContext(ctx context.Context) AutoBackupSettingsPtrOutput {
 	return o
-}
-
-func (o AutoBackupSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoBackupSettings] {
-	return pulumix.Output[*AutoBackupSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoBackupSettingsPtrOutput) Elem() AutoBackupSettingsOutput {
@@ -1494,12 +1325,6 @@ func (o AutoBackupSettingsResponseOutput) ToAutoBackupSettingsResponseOutputWith
 	return o
 }
 
-func (o AutoBackupSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutoBackupSettingsResponse] {
-	return pulumix.Output[AutoBackupSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Backup schedule type.
 func (o AutoBackupSettingsResponseOutput) BackupScheduleType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutoBackupSettingsResponse) *string { return v.BackupScheduleType }).(pulumi.StringPtrOutput)
@@ -1572,12 +1397,6 @@ func (o AutoBackupSettingsResponsePtrOutput) ToAutoBackupSettingsResponsePtrOutp
 
 func (o AutoBackupSettingsResponsePtrOutput) ToAutoBackupSettingsResponsePtrOutputWithContext(ctx context.Context) AutoBackupSettingsResponsePtrOutput {
 	return o
-}
-
-func (o AutoBackupSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoBackupSettingsResponse] {
-	return pulumix.Output[*AutoBackupSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoBackupSettingsResponsePtrOutput) Elem() AutoBackupSettingsResponseOutput {
@@ -1757,12 +1576,6 @@ func (i AutoPatchingSettingsArgs) ToAutoPatchingSettingsOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AutoPatchingSettingsOutput)
 }
 
-func (i AutoPatchingSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[AutoPatchingSettings] {
-	return pulumix.Output[AutoPatchingSettings]{
-		OutputState: i.ToAutoPatchingSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AutoPatchingSettingsArgs) ToAutoPatchingSettingsPtrOutput() AutoPatchingSettingsPtrOutput {
 	return i.ToAutoPatchingSettingsPtrOutputWithContext(context.Background())
 }
@@ -1804,12 +1617,6 @@ func (i *autoPatchingSettingsPtrType) ToAutoPatchingSettingsPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(AutoPatchingSettingsPtrOutput)
 }
 
-func (i *autoPatchingSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AutoPatchingSettings] {
-	return pulumix.Output[*AutoPatchingSettings]{
-		OutputState: i.ToAutoPatchingSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Set a patching window during which Windows and SQL patches will be applied.
 type AutoPatchingSettingsOutput struct{ *pulumi.OutputState }
 
@@ -1833,12 +1640,6 @@ func (o AutoPatchingSettingsOutput) ToAutoPatchingSettingsPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoPatchingSettings) *AutoPatchingSettings {
 		return &v
 	}).(AutoPatchingSettingsPtrOutput)
-}
-
-func (o AutoPatchingSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[AutoPatchingSettings] {
-	return pulumix.Output[AutoPatchingSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Day of week to apply the patch on.
@@ -1873,12 +1674,6 @@ func (o AutoPatchingSettingsPtrOutput) ToAutoPatchingSettingsPtrOutput() AutoPat
 
 func (o AutoPatchingSettingsPtrOutput) ToAutoPatchingSettingsPtrOutputWithContext(ctx context.Context) AutoPatchingSettingsPtrOutput {
 	return o
-}
-
-func (o AutoPatchingSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoPatchingSettings] {
-	return pulumix.Output[*AutoPatchingSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoPatchingSettingsPtrOutput) Elem() AutoPatchingSettingsOutput {
@@ -1958,12 +1753,6 @@ func (o AutoPatchingSettingsResponseOutput) ToAutoPatchingSettingsResponseOutput
 	return o
 }
 
-func (o AutoPatchingSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutoPatchingSettingsResponse] {
-	return pulumix.Output[AutoPatchingSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Day of week to apply the patch on.
 func (o AutoPatchingSettingsResponseOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutoPatchingSettingsResponse) *string { return v.DayOfWeek }).(pulumi.StringPtrOutput)
@@ -1996,12 +1785,6 @@ func (o AutoPatchingSettingsResponsePtrOutput) ToAutoPatchingSettingsResponsePtr
 
 func (o AutoPatchingSettingsResponsePtrOutput) ToAutoPatchingSettingsResponsePtrOutputWithContext(ctx context.Context) AutoPatchingSettingsResponsePtrOutput {
 	return o
-}
-
-func (o AutoPatchingSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoPatchingSettingsResponse] {
-	return pulumix.Output[*AutoPatchingSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoPatchingSettingsResponsePtrOutput) Elem() AutoPatchingSettingsResponseOutput {
@@ -2105,12 +1888,6 @@ func (i KeyVaultCredentialSettingsArgs) ToKeyVaultCredentialSettingsOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultCredentialSettingsOutput)
 }
 
-func (i KeyVaultCredentialSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[KeyVaultCredentialSettings] {
-	return pulumix.Output[KeyVaultCredentialSettings]{
-		OutputState: i.ToKeyVaultCredentialSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KeyVaultCredentialSettingsArgs) ToKeyVaultCredentialSettingsPtrOutput() KeyVaultCredentialSettingsPtrOutput {
 	return i.ToKeyVaultCredentialSettingsPtrOutputWithContext(context.Background())
 }
@@ -2152,12 +1929,6 @@ func (i *keyVaultCredentialSettingsPtrType) ToKeyVaultCredentialSettingsPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultCredentialSettingsPtrOutput)
 }
 
-func (i *keyVaultCredentialSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultCredentialSettings] {
-	return pulumix.Output[*KeyVaultCredentialSettings]{
-		OutputState: i.ToKeyVaultCredentialSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Configure your SQL virtual machine to be able to connect to the Azure Key Vault service.
 type KeyVaultCredentialSettingsOutput struct{ *pulumi.OutputState }
 
@@ -2181,12 +1952,6 @@ func (o KeyVaultCredentialSettingsOutput) ToKeyVaultCredentialSettingsPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyVaultCredentialSettings) *KeyVaultCredentialSettings {
 		return &v
 	}).(KeyVaultCredentialSettingsPtrOutput)
-}
-
-func (o KeyVaultCredentialSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultCredentialSettings] {
-	return pulumix.Output[KeyVaultCredentialSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Azure Key Vault url.
@@ -2226,12 +1991,6 @@ func (o KeyVaultCredentialSettingsPtrOutput) ToKeyVaultCredentialSettingsPtrOutp
 
 func (o KeyVaultCredentialSettingsPtrOutput) ToKeyVaultCredentialSettingsPtrOutputWithContext(ctx context.Context) KeyVaultCredentialSettingsPtrOutput {
 	return o
-}
-
-func (o KeyVaultCredentialSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultCredentialSettings] {
-	return pulumix.Output[*KeyVaultCredentialSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultCredentialSettingsPtrOutput) Elem() KeyVaultCredentialSettingsOutput {
@@ -2321,12 +2080,6 @@ func (o KeyVaultCredentialSettingsResponseOutput) ToKeyVaultCredentialSettingsRe
 	return o
 }
 
-func (o KeyVaultCredentialSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultCredentialSettingsResponse] {
-	return pulumix.Output[KeyVaultCredentialSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Azure Key Vault url.
 func (o KeyVaultCredentialSettingsResponseOutput) AzureKeyVaultUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyVaultCredentialSettingsResponse) *string { return v.AzureKeyVaultUrl }).(pulumi.StringPtrOutput)
@@ -2359,12 +2112,6 @@ func (o KeyVaultCredentialSettingsResponsePtrOutput) ToKeyVaultCredentialSetting
 
 func (o KeyVaultCredentialSettingsResponsePtrOutput) ToKeyVaultCredentialSettingsResponsePtrOutputWithContext(ctx context.Context) KeyVaultCredentialSettingsResponsePtrOutput {
 	return o
-}
-
-func (o KeyVaultCredentialSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultCredentialSettingsResponse] {
-	return pulumix.Output[*KeyVaultCredentialSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultCredentialSettingsResponsePtrOutput) Elem() KeyVaultCredentialSettingsResponseOutput {
@@ -2468,12 +2215,6 @@ func (i LoadBalancerConfigurationArgs) ToLoadBalancerConfigurationOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerConfigurationOutput)
 }
 
-func (i LoadBalancerConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerConfiguration] {
-	return pulumix.Output[LoadBalancerConfiguration]{
-		OutputState: i.ToLoadBalancerConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LoadBalancerConfigurationArrayInput is an input type that accepts LoadBalancerConfigurationArray and LoadBalancerConfigurationArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerConfigurationArrayInput` via:
 //
@@ -2499,12 +2240,6 @@ func (i LoadBalancerConfigurationArray) ToLoadBalancerConfigurationArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerConfigurationArrayOutput)
 }
 
-func (i LoadBalancerConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]LoadBalancerConfiguration] {
-	return pulumix.Output[[]LoadBalancerConfiguration]{
-		OutputState: i.ToLoadBalancerConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A load balancer configuration for an availability group listener.
 type LoadBalancerConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -2518,12 +2253,6 @@ func (o LoadBalancerConfigurationOutput) ToLoadBalancerConfigurationOutput() Loa
 
 func (o LoadBalancerConfigurationOutput) ToLoadBalancerConfigurationOutputWithContext(ctx context.Context) LoadBalancerConfigurationOutput {
 	return o
-}
-
-func (o LoadBalancerConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerConfiguration] {
-	return pulumix.Output[LoadBalancerConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource id of the load balancer.
@@ -2565,12 +2294,6 @@ func (o LoadBalancerConfigurationArrayOutput) ToLoadBalancerConfigurationArrayOu
 	return o
 }
 
-func (o LoadBalancerConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LoadBalancerConfiguration] {
-	return pulumix.Output[[]LoadBalancerConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LoadBalancerConfigurationArrayOutput) Index(i pulumi.IntInput) LoadBalancerConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerConfiguration {
 		return vs[0].([]LoadBalancerConfiguration)[vs[1].(int)]
@@ -2604,12 +2327,6 @@ func (o LoadBalancerConfigurationResponseOutput) ToLoadBalancerConfigurationResp
 
 func (o LoadBalancerConfigurationResponseOutput) ToLoadBalancerConfigurationResponseOutputWithContext(ctx context.Context) LoadBalancerConfigurationResponseOutput {
 	return o
-}
-
-func (o LoadBalancerConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LoadBalancerConfigurationResponse] {
-	return pulumix.Output[LoadBalancerConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource id of the load balancer.
@@ -2649,12 +2366,6 @@ func (o LoadBalancerConfigurationResponseArrayOutput) ToLoadBalancerConfiguratio
 
 func (o LoadBalancerConfigurationResponseArrayOutput) ToLoadBalancerConfigurationResponseArrayOutputWithContext(ctx context.Context) LoadBalancerConfigurationResponseArrayOutput {
 	return o
-}
-
-func (o LoadBalancerConfigurationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LoadBalancerConfigurationResponse] {
-	return pulumix.Output[[]LoadBalancerConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LoadBalancerConfigurationResponseArrayOutput) Index(i pulumi.IntInput) LoadBalancerConfigurationResponseOutput {
@@ -2702,12 +2413,6 @@ func (i MultiSubnetIpConfigurationArgs) ToMultiSubnetIpConfigurationOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(MultiSubnetIpConfigurationOutput)
 }
 
-func (i MultiSubnetIpConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[MultiSubnetIpConfiguration] {
-	return pulumix.Output[MultiSubnetIpConfiguration]{
-		OutputState: i.ToMultiSubnetIpConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MultiSubnetIpConfigurationArrayInput is an input type that accepts MultiSubnetIpConfigurationArray and MultiSubnetIpConfigurationArrayOutput values.
 // You can construct a concrete instance of `MultiSubnetIpConfigurationArrayInput` via:
 //
@@ -2733,12 +2438,6 @@ func (i MultiSubnetIpConfigurationArray) ToMultiSubnetIpConfigurationArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(MultiSubnetIpConfigurationArrayOutput)
 }
 
-func (i MultiSubnetIpConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]MultiSubnetIpConfiguration] {
-	return pulumix.Output[[]MultiSubnetIpConfiguration]{
-		OutputState: i.ToMultiSubnetIpConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Multi subnet ip configuration for an availability group listener.
 type MultiSubnetIpConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -2752,12 +2451,6 @@ func (o MultiSubnetIpConfigurationOutput) ToMultiSubnetIpConfigurationOutput() M
 
 func (o MultiSubnetIpConfigurationOutput) ToMultiSubnetIpConfigurationOutputWithContext(ctx context.Context) MultiSubnetIpConfigurationOutput {
 	return o
-}
-
-func (o MultiSubnetIpConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[MultiSubnetIpConfiguration] {
-	return pulumix.Output[MultiSubnetIpConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Private IP address.
@@ -2782,12 +2475,6 @@ func (o MultiSubnetIpConfigurationArrayOutput) ToMultiSubnetIpConfigurationArray
 
 func (o MultiSubnetIpConfigurationArrayOutput) ToMultiSubnetIpConfigurationArrayOutputWithContext(ctx context.Context) MultiSubnetIpConfigurationArrayOutput {
 	return o
-}
-
-func (o MultiSubnetIpConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MultiSubnetIpConfiguration] {
-	return pulumix.Output[[]MultiSubnetIpConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MultiSubnetIpConfigurationArrayOutput) Index(i pulumi.IntInput) MultiSubnetIpConfigurationOutput {
@@ -2819,12 +2506,6 @@ func (o MultiSubnetIpConfigurationResponseOutput) ToMultiSubnetIpConfigurationRe
 	return o
 }
 
-func (o MultiSubnetIpConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MultiSubnetIpConfigurationResponse] {
-	return pulumix.Output[MultiSubnetIpConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Private IP address.
 func (o MultiSubnetIpConfigurationResponseOutput) PrivateIpAddress() PrivateIPAddressResponseOutput {
 	return o.ApplyT(func(v MultiSubnetIpConfigurationResponse) PrivateIPAddressResponse { return v.PrivateIpAddress }).(PrivateIPAddressResponseOutput)
@@ -2847,12 +2528,6 @@ func (o MultiSubnetIpConfigurationResponseArrayOutput) ToMultiSubnetIpConfigurat
 
 func (o MultiSubnetIpConfigurationResponseArrayOutput) ToMultiSubnetIpConfigurationResponseArrayOutputWithContext(ctx context.Context) MultiSubnetIpConfigurationResponseArrayOutput {
 	return o
-}
-
-func (o MultiSubnetIpConfigurationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MultiSubnetIpConfigurationResponse] {
-	return pulumix.Output[[]MultiSubnetIpConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MultiSubnetIpConfigurationResponseArrayOutput) Index(i pulumi.IntInput) MultiSubnetIpConfigurationResponseOutput {
@@ -2900,12 +2575,6 @@ func (i PrivateIPAddressArgs) ToPrivateIPAddressOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateIPAddressOutput)
 }
 
-func (i PrivateIPAddressArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateIPAddress] {
-	return pulumix.Output[PrivateIPAddress]{
-		OutputState: i.ToPrivateIPAddressOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PrivateIPAddressArgs) ToPrivateIPAddressPtrOutput() PrivateIPAddressPtrOutput {
 	return i.ToPrivateIPAddressPtrOutputWithContext(context.Background())
 }
@@ -2947,12 +2616,6 @@ func (i *privateIPAddressPtrType) ToPrivateIPAddressPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateIPAddressPtrOutput)
 }
 
-func (i *privateIPAddressPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateIPAddress] {
-	return pulumix.Output[*PrivateIPAddress]{
-		OutputState: i.ToPrivateIPAddressPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A private IP address bound to the availability group listener.
 type PrivateIPAddressOutput struct{ *pulumi.OutputState }
 
@@ -2978,12 +2641,6 @@ func (o PrivateIPAddressOutput) ToPrivateIPAddressPtrOutputWithContext(ctx conte
 	}).(PrivateIPAddressPtrOutput)
 }
 
-func (o PrivateIPAddressOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateIPAddress] {
-	return pulumix.Output[PrivateIPAddress]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Private IP address bound to the availability group listener.
 func (o PrivateIPAddressOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateIPAddress) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
@@ -3006,12 +2663,6 @@ func (o PrivateIPAddressPtrOutput) ToPrivateIPAddressPtrOutput() PrivateIPAddres
 
 func (o PrivateIPAddressPtrOutput) ToPrivateIPAddressPtrOutputWithContext(ctx context.Context) PrivateIPAddressPtrOutput {
 	return o
-}
-
-func (o PrivateIPAddressPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateIPAddress] {
-	return pulumix.Output[*PrivateIPAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateIPAddressPtrOutput) Elem() PrivateIPAddressOutput {
@@ -3067,12 +2718,6 @@ func (o PrivateIPAddressResponseOutput) ToPrivateIPAddressResponseOutputWithCont
 	return o
 }
 
-func (o PrivateIPAddressResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateIPAddressResponse] {
-	return pulumix.Output[PrivateIPAddressResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Private IP address bound to the availability group listener.
 func (o PrivateIPAddressResponseOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateIPAddressResponse) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
@@ -3095,12 +2740,6 @@ func (o PrivateIPAddressResponsePtrOutput) ToPrivateIPAddressResponsePtrOutput()
 
 func (o PrivateIPAddressResponsePtrOutput) ToPrivateIPAddressResponsePtrOutputWithContext(ctx context.Context) PrivateIPAddressResponsePtrOutput {
 	return o
-}
-
-func (o PrivateIPAddressResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateIPAddressResponse] {
-	return pulumix.Output[*PrivateIPAddressResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateIPAddressResponsePtrOutput) Elem() PrivateIPAddressResponseOutput {
@@ -3168,12 +2807,6 @@ func (i ResourceIdentityArgs) ToResourceIdentityOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceIdentityOutput)
 }
 
-func (i ResourceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentity] {
-	return pulumix.Output[ResourceIdentity]{
-		OutputState: i.ToResourceIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ResourceIdentityArgs) ToResourceIdentityPtrOutput() ResourceIdentityPtrOutput {
 	return i.ToResourceIdentityPtrOutputWithContext(context.Background())
 }
@@ -3215,12 +2848,6 @@ func (i *resourceIdentityPtrType) ToResourceIdentityPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceIdentityPtrOutput)
 }
 
-func (i *resourceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentity] {
-	return pulumix.Output[*ResourceIdentity]{
-		OutputState: i.ToResourceIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Azure Active Directory identity configuration for a resource.
 type ResourceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -3246,12 +2873,6 @@ func (o ResourceIdentityOutput) ToResourceIdentityPtrOutputWithContext(ctx conte
 	}).(ResourceIdentityPtrOutput)
 }
 
-func (o ResourceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentity] {
-	return pulumix.Output[ResourceIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
 func (o ResourceIdentityOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceIdentity) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -3269,12 +2890,6 @@ func (o ResourceIdentityPtrOutput) ToResourceIdentityPtrOutput() ResourceIdentit
 
 func (o ResourceIdentityPtrOutput) ToResourceIdentityPtrOutputWithContext(ctx context.Context) ResourceIdentityPtrOutput {
 	return o
-}
-
-func (o ResourceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentity] {
-	return pulumix.Output[*ResourceIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceIdentityPtrOutput) Elem() ResourceIdentityOutput {
@@ -3322,12 +2937,6 @@ func (o ResourceIdentityResponseOutput) ToResourceIdentityResponseOutputWithCont
 	return o
 }
 
-func (o ResourceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityResponse] {
-	return pulumix.Output[ResourceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Azure Active Directory principal id.
 func (o ResourceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -3355,12 +2964,6 @@ func (o ResourceIdentityResponsePtrOutput) ToResourceIdentityResponsePtrOutput()
 
 func (o ResourceIdentityResponsePtrOutput) ToResourceIdentityResponsePtrOutputWithContext(ctx context.Context) ResourceIdentityResponsePtrOutput {
 	return o
-}
-
-func (o ResourceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityResponse] {
-	return pulumix.Output[*ResourceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceIdentityResponsePtrOutput) Elem() ResourceIdentityResponseOutput {
@@ -3462,12 +3065,6 @@ func (i SQLInstanceSettingsArgs) ToSQLInstanceSettingsOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(SQLInstanceSettingsOutput)
 }
 
-func (i SQLInstanceSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[SQLInstanceSettings] {
-	return pulumix.Output[SQLInstanceSettings]{
-		OutputState: i.ToSQLInstanceSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SQLInstanceSettingsArgs) ToSQLInstanceSettingsPtrOutput() SQLInstanceSettingsPtrOutput {
 	return i.ToSQLInstanceSettingsPtrOutputWithContext(context.Background())
 }
@@ -3509,12 +3106,6 @@ func (i *sqlinstanceSettingsPtrType) ToSQLInstanceSettingsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(SQLInstanceSettingsPtrOutput)
 }
 
-func (i *sqlinstanceSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SQLInstanceSettings] {
-	return pulumix.Output[*SQLInstanceSettings]{
-		OutputState: i.ToSQLInstanceSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Set the server/instance-level settings for SQL Server.
 type SQLInstanceSettingsOutput struct{ *pulumi.OutputState }
 
@@ -3538,12 +3129,6 @@ func (o SQLInstanceSettingsOutput) ToSQLInstanceSettingsPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SQLInstanceSettings) *SQLInstanceSettings {
 		return &v
 	}).(SQLInstanceSettingsPtrOutput)
-}
-
-func (o SQLInstanceSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[SQLInstanceSettings] {
-	return pulumix.Output[SQLInstanceSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // SQL Server Collation.
@@ -3593,12 +3178,6 @@ func (o SQLInstanceSettingsPtrOutput) ToSQLInstanceSettingsPtrOutput() SQLInstan
 
 func (o SQLInstanceSettingsPtrOutput) ToSQLInstanceSettingsPtrOutputWithContext(ctx context.Context) SQLInstanceSettingsPtrOutput {
 	return o
-}
-
-func (o SQLInstanceSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SQLInstanceSettings] {
-	return pulumix.Output[*SQLInstanceSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SQLInstanceSettingsPtrOutput) Elem() SQLInstanceSettingsOutput {
@@ -3714,12 +3293,6 @@ func (o SQLInstanceSettingsResponseOutput) ToSQLInstanceSettingsResponseOutputWi
 	return o
 }
 
-func (o SQLInstanceSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SQLInstanceSettingsResponse] {
-	return pulumix.Output[SQLInstanceSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // SQL Server Collation.
 func (o SQLInstanceSettingsResponseOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SQLInstanceSettingsResponse) *string { return v.Collation }).(pulumi.StringPtrOutput)
@@ -3767,12 +3340,6 @@ func (o SQLInstanceSettingsResponsePtrOutput) ToSQLInstanceSettingsResponsePtrOu
 
 func (o SQLInstanceSettingsResponsePtrOutput) ToSQLInstanceSettingsResponsePtrOutputWithContext(ctx context.Context) SQLInstanceSettingsResponsePtrOutput {
 	return o
-}
-
-func (o SQLInstanceSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SQLInstanceSettingsResponse] {
-	return pulumix.Output[*SQLInstanceSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SQLInstanceSettingsResponsePtrOutput) Elem() SQLInstanceSettingsResponseOutput {
@@ -3894,12 +3461,6 @@ func (i SQLStorageSettingsArgs) ToSQLStorageSettingsOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SQLStorageSettingsOutput)
 }
 
-func (i SQLStorageSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[SQLStorageSettings] {
-	return pulumix.Output[SQLStorageSettings]{
-		OutputState: i.ToSQLStorageSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SQLStorageSettingsArgs) ToSQLStorageSettingsPtrOutput() SQLStorageSettingsPtrOutput {
 	return i.ToSQLStorageSettingsPtrOutputWithContext(context.Background())
 }
@@ -3941,12 +3502,6 @@ func (i *sqlstorageSettingsPtrType) ToSQLStorageSettingsPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(SQLStorageSettingsPtrOutput)
 }
 
-func (i *sqlstorageSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SQLStorageSettings] {
-	return pulumix.Output[*SQLStorageSettings]{
-		OutputState: i.ToSQLStorageSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Set disk storage settings for SQL Server.
 type SQLStorageSettingsOutput struct{ *pulumi.OutputState }
 
@@ -3972,12 +3527,6 @@ func (o SQLStorageSettingsOutput) ToSQLStorageSettingsPtrOutputWithContext(ctx c
 	}).(SQLStorageSettingsPtrOutput)
 }
 
-func (o SQLStorageSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[SQLStorageSettings] {
-	return pulumix.Output[SQLStorageSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // SQL Server default file path
 func (o SQLStorageSettingsOutput) DefaultFilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SQLStorageSettings) *string { return v.DefaultFilePath }).(pulumi.StringPtrOutput)
@@ -4000,12 +3549,6 @@ func (o SQLStorageSettingsPtrOutput) ToSQLStorageSettingsPtrOutput() SQLStorageS
 
 func (o SQLStorageSettingsPtrOutput) ToSQLStorageSettingsPtrOutputWithContext(ctx context.Context) SQLStorageSettingsPtrOutput {
 	return o
-}
-
-func (o SQLStorageSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SQLStorageSettings] {
-	return pulumix.Output[*SQLStorageSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SQLStorageSettingsPtrOutput) Elem() SQLStorageSettingsOutput {
@@ -4061,12 +3604,6 @@ func (o SQLStorageSettingsResponseOutput) ToSQLStorageSettingsResponseOutputWith
 	return o
 }
 
-func (o SQLStorageSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SQLStorageSettingsResponse] {
-	return pulumix.Output[SQLStorageSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // SQL Server default file path
 func (o SQLStorageSettingsResponseOutput) DefaultFilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SQLStorageSettingsResponse) *string { return v.DefaultFilePath }).(pulumi.StringPtrOutput)
@@ -4089,12 +3626,6 @@ func (o SQLStorageSettingsResponsePtrOutput) ToSQLStorageSettingsResponsePtrOutp
 
 func (o SQLStorageSettingsResponsePtrOutput) ToSQLStorageSettingsResponsePtrOutputWithContext(ctx context.Context) SQLStorageSettingsResponsePtrOutput {
 	return o
-}
-
-func (o SQLStorageSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SQLStorageSettingsResponse] {
-	return pulumix.Output[*SQLStorageSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SQLStorageSettingsResponsePtrOutput) Elem() SQLStorageSettingsResponseOutput {
@@ -4192,12 +3723,6 @@ func (i SQLTempDbSettingsArgs) ToSQLTempDbSettingsOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SQLTempDbSettingsOutput)
 }
 
-func (i SQLTempDbSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[SQLTempDbSettings] {
-	return pulumix.Output[SQLTempDbSettings]{
-		OutputState: i.ToSQLTempDbSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SQLTempDbSettingsArgs) ToSQLTempDbSettingsPtrOutput() SQLTempDbSettingsPtrOutput {
 	return i.ToSQLTempDbSettingsPtrOutputWithContext(context.Background())
 }
@@ -4239,12 +3764,6 @@ func (i *sqltempDbSettingsPtrType) ToSQLTempDbSettingsPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(SQLTempDbSettingsPtrOutput)
 }
 
-func (i *sqltempDbSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SQLTempDbSettings] {
-	return pulumix.Output[*SQLTempDbSettings]{
-		OutputState: i.ToSQLTempDbSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SQLTempDbSettingsOutput struct{ *pulumi.OutputState }
 
 func (SQLTempDbSettingsOutput) ElementType() reflect.Type {
@@ -4267,12 +3786,6 @@ func (o SQLTempDbSettingsOutput) ToSQLTempDbSettingsPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SQLTempDbSettings) *SQLTempDbSettings {
 		return &v
 	}).(SQLTempDbSettingsPtrOutput)
-}
-
-func (o SQLTempDbSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[SQLTempDbSettings] {
-	return pulumix.Output[SQLTempDbSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // SQL Server tempdb data file count
@@ -4332,12 +3845,6 @@ func (o SQLTempDbSettingsPtrOutput) ToSQLTempDbSettingsPtrOutput() SQLTempDbSett
 
 func (o SQLTempDbSettingsPtrOutput) ToSQLTempDbSettingsPtrOutputWithContext(ctx context.Context) SQLTempDbSettingsPtrOutput {
 	return o
-}
-
-func (o SQLTempDbSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SQLTempDbSettings] {
-	return pulumix.Output[*SQLTempDbSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SQLTempDbSettingsPtrOutput) Elem() SQLTempDbSettingsOutput {
@@ -4475,12 +3982,6 @@ func (o SQLTempDbSettingsResponseOutput) ToSQLTempDbSettingsResponseOutputWithCo
 	return o
 }
 
-func (o SQLTempDbSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SQLTempDbSettingsResponse] {
-	return pulumix.Output[SQLTempDbSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // SQL Server tempdb data file count
 func (o SQLTempDbSettingsResponseOutput) DataFileCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SQLTempDbSettingsResponse) *int { return v.DataFileCount }).(pulumi.IntPtrOutput)
@@ -4538,12 +4039,6 @@ func (o SQLTempDbSettingsResponsePtrOutput) ToSQLTempDbSettingsResponsePtrOutput
 
 func (o SQLTempDbSettingsResponsePtrOutput) ToSQLTempDbSettingsResponsePtrOutputWithContext(ctx context.Context) SQLTempDbSettingsResponsePtrOutput {
 	return o
-}
-
-func (o SQLTempDbSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SQLTempDbSettingsResponse] {
-	return pulumix.Output[*SQLTempDbSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SQLTempDbSettingsResponsePtrOutput) Elem() SQLTempDbSettingsResponseOutput {
@@ -4695,12 +4190,6 @@ func (i ScheduleArgs) ToScheduleOutputWithContext(ctx context.Context) ScheduleO
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleOutput)
 }
 
-func (i ScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[Schedule] {
-	return pulumix.Output[Schedule]{
-		OutputState: i.ToScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ScheduleArgs) ToSchedulePtrOutput() SchedulePtrOutput {
 	return i.ToSchedulePtrOutputWithContext(context.Background())
 }
@@ -4742,12 +4231,6 @@ func (i *schedulePtrType) ToSchedulePtrOutputWithContext(ctx context.Context) Sc
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulePtrOutput)
 }
 
-func (i *schedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*Schedule] {
-	return pulumix.Output[*Schedule]{
-		OutputState: i.ToSchedulePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScheduleOutput struct{ *pulumi.OutputState }
 
 func (ScheduleOutput) ElementType() reflect.Type {
@@ -4770,12 +4253,6 @@ func (o ScheduleOutput) ToSchedulePtrOutputWithContext(ctx context.Context) Sche
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Schedule) *Schedule {
 		return &v
 	}).(SchedulePtrOutput)
-}
-
-func (o ScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[Schedule] {
-	return pulumix.Output[Schedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Day of the week to run assessment.
@@ -4815,12 +4292,6 @@ func (o SchedulePtrOutput) ToSchedulePtrOutput() SchedulePtrOutput {
 
 func (o SchedulePtrOutput) ToSchedulePtrOutputWithContext(ctx context.Context) SchedulePtrOutput {
 	return o
-}
-
-func (o SchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Schedule] {
-	return pulumix.Output[*Schedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SchedulePtrOutput) Elem() ScheduleOutput {
@@ -4910,12 +4381,6 @@ func (o ScheduleResponseOutput) ToScheduleResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o ScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduleResponse] {
-	return pulumix.Output[ScheduleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Day of the week to run assessment.
 func (o ScheduleResponseOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScheduleResponse) *string { return v.DayOfWeek }).(pulumi.StringPtrOutput)
@@ -4953,12 +4418,6 @@ func (o ScheduleResponsePtrOutput) ToScheduleResponsePtrOutput() ScheduleRespons
 
 func (o ScheduleResponsePtrOutput) ToScheduleResponsePtrOutputWithContext(ctx context.Context) ScheduleResponsePtrOutput {
 	return o
-}
-
-func (o ScheduleResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScheduleResponse] {
-	return pulumix.Output[*ScheduleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScheduleResponsePtrOutput) Elem() ScheduleResponseOutput {
@@ -5072,12 +4531,6 @@ func (i ServerConfigurationsManagementSettingsArgs) ToServerConfigurationsManage
 	return pulumi.ToOutputWithContext(ctx, i).(ServerConfigurationsManagementSettingsOutput)
 }
 
-func (i ServerConfigurationsManagementSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[ServerConfigurationsManagementSettings] {
-	return pulumix.Output[ServerConfigurationsManagementSettings]{
-		OutputState: i.ToServerConfigurationsManagementSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServerConfigurationsManagementSettingsArgs) ToServerConfigurationsManagementSettingsPtrOutput() ServerConfigurationsManagementSettingsPtrOutput {
 	return i.ToServerConfigurationsManagementSettingsPtrOutputWithContext(context.Background())
 }
@@ -5119,12 +4572,6 @@ func (i *serverConfigurationsManagementSettingsPtrType) ToServerConfigurationsMa
 	return pulumi.ToOutputWithContext(ctx, i).(ServerConfigurationsManagementSettingsPtrOutput)
 }
 
-func (i *serverConfigurationsManagementSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServerConfigurationsManagementSettings] {
-	return pulumix.Output[*ServerConfigurationsManagementSettings]{
-		OutputState: i.ToServerConfigurationsManagementSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Set the connectivity, storage and workload settings.
 type ServerConfigurationsManagementSettingsOutput struct{ *pulumi.OutputState }
 
@@ -5148,12 +4595,6 @@ func (o ServerConfigurationsManagementSettingsOutput) ToServerConfigurationsMana
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerConfigurationsManagementSettings) *ServerConfigurationsManagementSettings {
 		return &v
 	}).(ServerConfigurationsManagementSettingsPtrOutput)
-}
-
-func (o ServerConfigurationsManagementSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[ServerConfigurationsManagementSettings] {
-	return pulumix.Output[ServerConfigurationsManagementSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional SQL feature settings.
@@ -5201,12 +4642,6 @@ func (o ServerConfigurationsManagementSettingsPtrOutput) ToServerConfigurationsM
 
 func (o ServerConfigurationsManagementSettingsPtrOutput) ToServerConfigurationsManagementSettingsPtrOutputWithContext(ctx context.Context) ServerConfigurationsManagementSettingsPtrOutput {
 	return o
-}
-
-func (o ServerConfigurationsManagementSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerConfigurationsManagementSettings] {
-	return pulumix.Output[*ServerConfigurationsManagementSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerConfigurationsManagementSettingsPtrOutput) Elem() ServerConfigurationsManagementSettingsOutput {
@@ -5298,12 +4733,6 @@ func (o ServerConfigurationsManagementSettingsResponseOutput) ToServerConfigurat
 	return o
 }
 
-func (o ServerConfigurationsManagementSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServerConfigurationsManagementSettingsResponse] {
-	return pulumix.Output[ServerConfigurationsManagementSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Additional SQL feature settings.
 func (o ServerConfigurationsManagementSettingsResponseOutput) AdditionalFeaturesServerConfigurations() AdditionalFeaturesServerConfigurationsResponsePtrOutput {
 	return o.ApplyT(func(v ServerConfigurationsManagementSettingsResponse) *AdditionalFeaturesServerConfigurationsResponse {
@@ -5351,12 +4780,6 @@ func (o ServerConfigurationsManagementSettingsResponsePtrOutput) ToServerConfigu
 
 func (o ServerConfigurationsManagementSettingsResponsePtrOutput) ToServerConfigurationsManagementSettingsResponsePtrOutputWithContext(ctx context.Context) ServerConfigurationsManagementSettingsResponsePtrOutput {
 	return o
-}
-
-func (o ServerConfigurationsManagementSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerConfigurationsManagementSettingsResponse] {
-	return pulumix.Output[*ServerConfigurationsManagementSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerConfigurationsManagementSettingsResponsePtrOutput) Elem() ServerConfigurationsManagementSettingsResponseOutput {
@@ -5466,12 +4889,6 @@ func (i SqlConnectivityUpdateSettingsArgs) ToSqlConnectivityUpdateSettingsOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SqlConnectivityUpdateSettingsOutput)
 }
 
-func (i SqlConnectivityUpdateSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[SqlConnectivityUpdateSettings] {
-	return pulumix.Output[SqlConnectivityUpdateSettings]{
-		OutputState: i.ToSqlConnectivityUpdateSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SqlConnectivityUpdateSettingsArgs) ToSqlConnectivityUpdateSettingsPtrOutput() SqlConnectivityUpdateSettingsPtrOutput {
 	return i.ToSqlConnectivityUpdateSettingsPtrOutputWithContext(context.Background())
 }
@@ -5513,12 +4930,6 @@ func (i *sqlConnectivityUpdateSettingsPtrType) ToSqlConnectivityUpdateSettingsPt
 	return pulumi.ToOutputWithContext(ctx, i).(SqlConnectivityUpdateSettingsPtrOutput)
 }
 
-func (i *sqlConnectivityUpdateSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SqlConnectivityUpdateSettings] {
-	return pulumix.Output[*SqlConnectivityUpdateSettings]{
-		OutputState: i.ToSqlConnectivityUpdateSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Set the access level and network port settings for SQL Server.
 type SqlConnectivityUpdateSettingsOutput struct{ *pulumi.OutputState }
 
@@ -5542,12 +4953,6 @@ func (o SqlConnectivityUpdateSettingsOutput) ToSqlConnectivityUpdateSettingsPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlConnectivityUpdateSettings) *SqlConnectivityUpdateSettings {
 		return &v
 	}).(SqlConnectivityUpdateSettingsPtrOutput)
-}
-
-func (o SqlConnectivityUpdateSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[SqlConnectivityUpdateSettings] {
-	return pulumix.Output[SqlConnectivityUpdateSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // SQL Server connectivity option.
@@ -5582,12 +4987,6 @@ func (o SqlConnectivityUpdateSettingsPtrOutput) ToSqlConnectivityUpdateSettingsP
 
 func (o SqlConnectivityUpdateSettingsPtrOutput) ToSqlConnectivityUpdateSettingsPtrOutputWithContext(ctx context.Context) SqlConnectivityUpdateSettingsPtrOutput {
 	return o
-}
-
-func (o SqlConnectivityUpdateSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlConnectivityUpdateSettings] {
-	return pulumix.Output[*SqlConnectivityUpdateSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SqlConnectivityUpdateSettingsPtrOutput) Elem() SqlConnectivityUpdateSettingsOutput {
@@ -5663,12 +5062,6 @@ func (o SqlConnectivityUpdateSettingsResponseOutput) ToSqlConnectivityUpdateSett
 	return o
 }
 
-func (o SqlConnectivityUpdateSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SqlConnectivityUpdateSettingsResponse] {
-	return pulumix.Output[SqlConnectivityUpdateSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // SQL Server connectivity option.
 func (o SqlConnectivityUpdateSettingsResponseOutput) ConnectivityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlConnectivityUpdateSettingsResponse) *string { return v.ConnectivityType }).(pulumi.StringPtrOutput)
@@ -5691,12 +5084,6 @@ func (o SqlConnectivityUpdateSettingsResponsePtrOutput) ToSqlConnectivityUpdateS
 
 func (o SqlConnectivityUpdateSettingsResponsePtrOutput) ToSqlConnectivityUpdateSettingsResponsePtrOutputWithContext(ctx context.Context) SqlConnectivityUpdateSettingsResponsePtrOutput {
 	return o
-}
-
-func (o SqlConnectivityUpdateSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlConnectivityUpdateSettingsResponse] {
-	return pulumix.Output[*SqlConnectivityUpdateSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SqlConnectivityUpdateSettingsResponsePtrOutput) Elem() SqlConnectivityUpdateSettingsResponseOutput {
@@ -5772,12 +5159,6 @@ func (i SqlStorageUpdateSettingsArgs) ToSqlStorageUpdateSettingsOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(SqlStorageUpdateSettingsOutput)
 }
 
-func (i SqlStorageUpdateSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[SqlStorageUpdateSettings] {
-	return pulumix.Output[SqlStorageUpdateSettings]{
-		OutputState: i.ToSqlStorageUpdateSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SqlStorageUpdateSettingsArgs) ToSqlStorageUpdateSettingsPtrOutput() SqlStorageUpdateSettingsPtrOutput {
 	return i.ToSqlStorageUpdateSettingsPtrOutputWithContext(context.Background())
 }
@@ -5819,12 +5200,6 @@ func (i *sqlStorageUpdateSettingsPtrType) ToSqlStorageUpdateSettingsPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(SqlStorageUpdateSettingsPtrOutput)
 }
 
-func (i *sqlStorageUpdateSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SqlStorageUpdateSettings] {
-	return pulumix.Output[*SqlStorageUpdateSettings]{
-		OutputState: i.ToSqlStorageUpdateSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Set disk storage settings for SQL Server.
 type SqlStorageUpdateSettingsOutput struct{ *pulumi.OutputState }
 
@@ -5848,12 +5223,6 @@ func (o SqlStorageUpdateSettingsOutput) ToSqlStorageUpdateSettingsPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlStorageUpdateSettings) *SqlStorageUpdateSettings {
 		return &v
 	}).(SqlStorageUpdateSettingsPtrOutput)
-}
-
-func (o SqlStorageUpdateSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[SqlStorageUpdateSettings] {
-	return pulumix.Output[SqlStorageUpdateSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Disk configuration to apply to SQL Server.
@@ -5883,12 +5252,6 @@ func (o SqlStorageUpdateSettingsPtrOutput) ToSqlStorageUpdateSettingsPtrOutput()
 
 func (o SqlStorageUpdateSettingsPtrOutput) ToSqlStorageUpdateSettingsPtrOutputWithContext(ctx context.Context) SqlStorageUpdateSettingsPtrOutput {
 	return o
-}
-
-func (o SqlStorageUpdateSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlStorageUpdateSettings] {
-	return pulumix.Output[*SqlStorageUpdateSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SqlStorageUpdateSettingsPtrOutput) Elem() SqlStorageUpdateSettingsOutput {
@@ -5956,12 +5319,6 @@ func (o SqlStorageUpdateSettingsResponseOutput) ToSqlStorageUpdateSettingsRespon
 	return o
 }
 
-func (o SqlStorageUpdateSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SqlStorageUpdateSettingsResponse] {
-	return pulumix.Output[SqlStorageUpdateSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Disk configuration to apply to SQL Server.
 func (o SqlStorageUpdateSettingsResponseOutput) DiskConfigurationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlStorageUpdateSettingsResponse) *string { return v.DiskConfigurationType }).(pulumi.StringPtrOutput)
@@ -5989,12 +5346,6 @@ func (o SqlStorageUpdateSettingsResponsePtrOutput) ToSqlStorageUpdateSettingsRes
 
 func (o SqlStorageUpdateSettingsResponsePtrOutput) ToSqlStorageUpdateSettingsResponsePtrOutputWithContext(ctx context.Context) SqlStorageUpdateSettingsResponsePtrOutput {
 	return o
-}
-
-func (o SqlStorageUpdateSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlStorageUpdateSettingsResponse] {
-	return pulumix.Output[*SqlStorageUpdateSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SqlStorageUpdateSettingsResponsePtrOutput) Elem() SqlStorageUpdateSettingsResponseOutput {
@@ -6072,12 +5423,6 @@ func (i SqlWorkloadTypeUpdateSettingsArgs) ToSqlWorkloadTypeUpdateSettingsOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SqlWorkloadTypeUpdateSettingsOutput)
 }
 
-func (i SqlWorkloadTypeUpdateSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[SqlWorkloadTypeUpdateSettings] {
-	return pulumix.Output[SqlWorkloadTypeUpdateSettings]{
-		OutputState: i.ToSqlWorkloadTypeUpdateSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SqlWorkloadTypeUpdateSettingsArgs) ToSqlWorkloadTypeUpdateSettingsPtrOutput() SqlWorkloadTypeUpdateSettingsPtrOutput {
 	return i.ToSqlWorkloadTypeUpdateSettingsPtrOutputWithContext(context.Background())
 }
@@ -6119,12 +5464,6 @@ func (i *sqlWorkloadTypeUpdateSettingsPtrType) ToSqlWorkloadTypeUpdateSettingsPt
 	return pulumi.ToOutputWithContext(ctx, i).(SqlWorkloadTypeUpdateSettingsPtrOutput)
 }
 
-func (i *sqlWorkloadTypeUpdateSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SqlWorkloadTypeUpdateSettings] {
-	return pulumix.Output[*SqlWorkloadTypeUpdateSettings]{
-		OutputState: i.ToSqlWorkloadTypeUpdateSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Set workload type to optimize storage for SQL Server.
 type SqlWorkloadTypeUpdateSettingsOutput struct{ *pulumi.OutputState }
 
@@ -6150,12 +5489,6 @@ func (o SqlWorkloadTypeUpdateSettingsOutput) ToSqlWorkloadTypeUpdateSettingsPtrO
 	}).(SqlWorkloadTypeUpdateSettingsPtrOutput)
 }
 
-func (o SqlWorkloadTypeUpdateSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[SqlWorkloadTypeUpdateSettings] {
-	return pulumix.Output[SqlWorkloadTypeUpdateSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // SQL Server workload type.
 func (o SqlWorkloadTypeUpdateSettingsOutput) SqlWorkloadType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlWorkloadTypeUpdateSettings) *string { return v.SqlWorkloadType }).(pulumi.StringPtrOutput)
@@ -6173,12 +5506,6 @@ func (o SqlWorkloadTypeUpdateSettingsPtrOutput) ToSqlWorkloadTypeUpdateSettingsP
 
 func (o SqlWorkloadTypeUpdateSettingsPtrOutput) ToSqlWorkloadTypeUpdateSettingsPtrOutputWithContext(ctx context.Context) SqlWorkloadTypeUpdateSettingsPtrOutput {
 	return o
-}
-
-func (o SqlWorkloadTypeUpdateSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlWorkloadTypeUpdateSettings] {
-	return pulumix.Output[*SqlWorkloadTypeUpdateSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SqlWorkloadTypeUpdateSettingsPtrOutput) Elem() SqlWorkloadTypeUpdateSettingsOutput {
@@ -6222,12 +5549,6 @@ func (o SqlWorkloadTypeUpdateSettingsResponseOutput) ToSqlWorkloadTypeUpdateSett
 	return o
 }
 
-func (o SqlWorkloadTypeUpdateSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SqlWorkloadTypeUpdateSettingsResponse] {
-	return pulumix.Output[SqlWorkloadTypeUpdateSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // SQL Server workload type.
 func (o SqlWorkloadTypeUpdateSettingsResponseOutput) SqlWorkloadType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlWorkloadTypeUpdateSettingsResponse) *string { return v.SqlWorkloadType }).(pulumi.StringPtrOutput)
@@ -6245,12 +5566,6 @@ func (o SqlWorkloadTypeUpdateSettingsResponsePtrOutput) ToSqlWorkloadTypeUpdateS
 
 func (o SqlWorkloadTypeUpdateSettingsResponsePtrOutput) ToSqlWorkloadTypeUpdateSettingsResponsePtrOutputWithContext(ctx context.Context) SqlWorkloadTypeUpdateSettingsResponsePtrOutput {
 	return o
-}
-
-func (o SqlWorkloadTypeUpdateSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlWorkloadTypeUpdateSettingsResponse] {
-	return pulumix.Output[*SqlWorkloadTypeUpdateSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SqlWorkloadTypeUpdateSettingsResponsePtrOutput) Elem() SqlWorkloadTypeUpdateSettingsResponseOutput {
@@ -6328,12 +5643,6 @@ func (i StorageConfigurationSettingsArgs) ToStorageConfigurationSettingsOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(StorageConfigurationSettingsOutput)
 }
 
-func (i StorageConfigurationSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[StorageConfigurationSettings] {
-	return pulumix.Output[StorageConfigurationSettings]{
-		OutputState: i.ToStorageConfigurationSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StorageConfigurationSettingsArgs) ToStorageConfigurationSettingsPtrOutput() StorageConfigurationSettingsPtrOutput {
 	return i.ToStorageConfigurationSettingsPtrOutputWithContext(context.Background())
 }
@@ -6375,12 +5684,6 @@ func (i *storageConfigurationSettingsPtrType) ToStorageConfigurationSettingsPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(StorageConfigurationSettingsPtrOutput)
 }
 
-func (i *storageConfigurationSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*StorageConfigurationSettings] {
-	return pulumix.Output[*StorageConfigurationSettings]{
-		OutputState: i.ToStorageConfigurationSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Storage Configurations for SQL Data, Log and TempDb.
 type StorageConfigurationSettingsOutput struct{ *pulumi.OutputState }
 
@@ -6404,12 +5707,6 @@ func (o StorageConfigurationSettingsOutput) ToStorageConfigurationSettingsPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageConfigurationSettings) *StorageConfigurationSettings {
 		return &v
 	}).(StorageConfigurationSettingsPtrOutput)
-}
-
-func (o StorageConfigurationSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[StorageConfigurationSettings] {
-	return pulumix.Output[StorageConfigurationSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Disk configuration to apply to SQL Server.
@@ -6454,12 +5751,6 @@ func (o StorageConfigurationSettingsPtrOutput) ToStorageConfigurationSettingsPtr
 
 func (o StorageConfigurationSettingsPtrOutput) ToStorageConfigurationSettingsPtrOutputWithContext(ctx context.Context) StorageConfigurationSettingsPtrOutput {
 	return o
-}
-
-func (o StorageConfigurationSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageConfigurationSettings] {
-	return pulumix.Output[*StorageConfigurationSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StorageConfigurationSettingsPtrOutput) Elem() StorageConfigurationSettingsOutput {
@@ -6563,12 +5854,6 @@ func (o StorageConfigurationSettingsResponseOutput) ToStorageConfigurationSettin
 	return o
 }
 
-func (o StorageConfigurationSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageConfigurationSettingsResponse] {
-	return pulumix.Output[StorageConfigurationSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Disk configuration to apply to SQL Server.
 func (o StorageConfigurationSettingsResponseOutput) DiskConfigurationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageConfigurationSettingsResponse) *string { return v.DiskConfigurationType }).(pulumi.StringPtrOutput)
@@ -6611,12 +5896,6 @@ func (o StorageConfigurationSettingsResponsePtrOutput) ToStorageConfigurationSet
 
 func (o StorageConfigurationSettingsResponsePtrOutput) ToStorageConfigurationSettingsResponsePtrOutputWithContext(ctx context.Context) StorageConfigurationSettingsResponsePtrOutput {
 	return o
-}
-
-func (o StorageConfigurationSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageConfigurationSettingsResponse] {
-	return pulumix.Output[*StorageConfigurationSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StorageConfigurationSettingsResponsePtrOutput) Elem() StorageConfigurationSettingsResponseOutput {
@@ -6720,12 +5999,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timestamp of resource creation (UTC).
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
@@ -6799,12 +6072,6 @@ func (i WsfcDomainCredentialsArgs) ToWsfcDomainCredentialsOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(WsfcDomainCredentialsOutput)
 }
 
-func (i WsfcDomainCredentialsArgs) ToOutput(ctx context.Context) pulumix.Output[WsfcDomainCredentials] {
-	return pulumix.Output[WsfcDomainCredentials]{
-		OutputState: i.ToWsfcDomainCredentialsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WsfcDomainCredentialsArgs) ToWsfcDomainCredentialsPtrOutput() WsfcDomainCredentialsPtrOutput {
 	return i.ToWsfcDomainCredentialsPtrOutputWithContext(context.Background())
 }
@@ -6846,12 +6113,6 @@ func (i *wsfcDomainCredentialsPtrType) ToWsfcDomainCredentialsPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(WsfcDomainCredentialsPtrOutput)
 }
 
-func (i *wsfcDomainCredentialsPtrType) ToOutput(ctx context.Context) pulumix.Output[*WsfcDomainCredentials] {
-	return pulumix.Output[*WsfcDomainCredentials]{
-		OutputState: i.ToWsfcDomainCredentialsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
 type WsfcDomainCredentialsOutput struct{ *pulumi.OutputState }
 
@@ -6875,12 +6136,6 @@ func (o WsfcDomainCredentialsOutput) ToWsfcDomainCredentialsPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WsfcDomainCredentials) *WsfcDomainCredentials {
 		return &v
 	}).(WsfcDomainCredentialsPtrOutput)
-}
-
-func (o WsfcDomainCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[WsfcDomainCredentials] {
-	return pulumix.Output[WsfcDomainCredentials]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Cluster bootstrap account password.
@@ -6910,12 +6165,6 @@ func (o WsfcDomainCredentialsPtrOutput) ToWsfcDomainCredentialsPtrOutput() WsfcD
 
 func (o WsfcDomainCredentialsPtrOutput) ToWsfcDomainCredentialsPtrOutputWithContext(ctx context.Context) WsfcDomainCredentialsPtrOutput {
 	return o
-}
-
-func (o WsfcDomainCredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WsfcDomainCredentials] {
-	return pulumix.Output[*WsfcDomainCredentials]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WsfcDomainCredentialsPtrOutput) Elem() WsfcDomainCredentialsOutput {
@@ -6983,12 +6232,6 @@ func (o WsfcDomainCredentialsResponseOutput) ToWsfcDomainCredentialsResponseOutp
 	return o
 }
 
-func (o WsfcDomainCredentialsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WsfcDomainCredentialsResponse] {
-	return pulumix.Output[WsfcDomainCredentialsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Cluster bootstrap account password.
 func (o WsfcDomainCredentialsResponseOutput) ClusterBootstrapAccountPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WsfcDomainCredentialsResponse) *string { return v.ClusterBootstrapAccountPassword }).(pulumi.StringPtrOutput)
@@ -7016,12 +6259,6 @@ func (o WsfcDomainCredentialsResponsePtrOutput) ToWsfcDomainCredentialsResponseP
 
 func (o WsfcDomainCredentialsResponsePtrOutput) ToWsfcDomainCredentialsResponsePtrOutputWithContext(ctx context.Context) WsfcDomainCredentialsResponsePtrOutput {
 	return o
-}
-
-func (o WsfcDomainCredentialsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WsfcDomainCredentialsResponse] {
-	return pulumix.Output[*WsfcDomainCredentialsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WsfcDomainCredentialsResponsePtrOutput) Elem() WsfcDomainCredentialsResponseOutput {
@@ -7131,12 +6368,6 @@ func (i WsfcDomainProfileArgs) ToWsfcDomainProfileOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(WsfcDomainProfileOutput)
 }
 
-func (i WsfcDomainProfileArgs) ToOutput(ctx context.Context) pulumix.Output[WsfcDomainProfile] {
-	return pulumix.Output[WsfcDomainProfile]{
-		OutputState: i.ToWsfcDomainProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WsfcDomainProfileArgs) ToWsfcDomainProfilePtrOutput() WsfcDomainProfilePtrOutput {
 	return i.ToWsfcDomainProfilePtrOutputWithContext(context.Background())
 }
@@ -7178,12 +6409,6 @@ func (i *wsfcDomainProfilePtrType) ToWsfcDomainProfilePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(WsfcDomainProfilePtrOutput)
 }
 
-func (i *wsfcDomainProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*WsfcDomainProfile] {
-	return pulumix.Output[*WsfcDomainProfile]{
-		OutputState: i.ToWsfcDomainProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Active Directory account details to operate Windows Server Failover Cluster.
 type WsfcDomainProfileOutput struct{ *pulumi.OutputState }
 
@@ -7207,12 +6432,6 @@ func (o WsfcDomainProfileOutput) ToWsfcDomainProfilePtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WsfcDomainProfile) *WsfcDomainProfile {
 		return &v
 	}).(WsfcDomainProfilePtrOutput)
-}
-
-func (o WsfcDomainProfileOutput) ToOutput(ctx context.Context) pulumix.Output[WsfcDomainProfile] {
-	return pulumix.Output[WsfcDomainProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Account name used for creating cluster (at minimum needs permissions to 'Create Computer Objects' in domain).
@@ -7272,12 +6491,6 @@ func (o WsfcDomainProfilePtrOutput) ToWsfcDomainProfilePtrOutput() WsfcDomainPro
 
 func (o WsfcDomainProfilePtrOutput) ToWsfcDomainProfilePtrOutputWithContext(ctx context.Context) WsfcDomainProfilePtrOutput {
 	return o
-}
-
-func (o WsfcDomainProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WsfcDomainProfile] {
-	return pulumix.Output[*WsfcDomainProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WsfcDomainProfilePtrOutput) Elem() WsfcDomainProfileOutput {
@@ -7415,12 +6628,6 @@ func (o WsfcDomainProfileResponseOutput) ToWsfcDomainProfileResponseOutputWithCo
 	return o
 }
 
-func (o WsfcDomainProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WsfcDomainProfileResponse] {
-	return pulumix.Output[WsfcDomainProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Account name used for creating cluster (at minimum needs permissions to 'Create Computer Objects' in domain).
 func (o WsfcDomainProfileResponseOutput) ClusterBootstrapAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WsfcDomainProfileResponse) *string { return v.ClusterBootstrapAccount }).(pulumi.StringPtrOutput)
@@ -7473,12 +6680,6 @@ func (o WsfcDomainProfileResponsePtrOutput) ToWsfcDomainProfileResponsePtrOutput
 
 func (o WsfcDomainProfileResponsePtrOutput) ToWsfcDomainProfileResponsePtrOutputWithContext(ctx context.Context) WsfcDomainProfileResponsePtrOutput {
 	return o
-}
-
-func (o WsfcDomainProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WsfcDomainProfileResponse] {
-	return pulumix.Output[*WsfcDomainProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WsfcDomainProfileResponsePtrOutput) Elem() WsfcDomainProfileResponseOutput {

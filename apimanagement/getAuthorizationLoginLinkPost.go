@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets authorization login links.
@@ -88,12 +87,6 @@ func (o GetAuthorizationLoginLinkPostResultOutput) ToGetAuthorizationLoginLinkPo
 
 func (o GetAuthorizationLoginLinkPostResultOutput) ToGetAuthorizationLoginLinkPostResultOutputWithContext(ctx context.Context) GetAuthorizationLoginLinkPostResultOutput {
 	return o
-}
-
-func (o GetAuthorizationLoginLinkPostResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAuthorizationLoginLinkPostResult] {
-	return pulumix.Output[GetAuthorizationLoginLinkPostResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The login link

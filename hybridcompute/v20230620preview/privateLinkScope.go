@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure Arc PrivateLinkScope definition.
@@ -89,6 +88,9 @@ func NewPrivateLinkScope(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20230315preview:PrivateLinkScope"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20231003preview:PrivateLinkScope"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -174,12 +176,6 @@ func (i *PrivateLinkScope) ToPrivateLinkScopeOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkScopeOutput)
 }
 
-func (i *PrivateLinkScope) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkScope] {
-	return pulumix.Output[*PrivateLinkScope]{
-		OutputState: i.ToPrivateLinkScopeOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateLinkScopeOutput struct{ *pulumi.OutputState }
 
 func (PrivateLinkScopeOutput) ElementType() reflect.Type {
@@ -192,12 +188,6 @@ func (o PrivateLinkScopeOutput) ToPrivateLinkScopeOutput() PrivateLinkScopeOutpu
 
 func (o PrivateLinkScopeOutput) ToPrivateLinkScopeOutputWithContext(ctx context.Context) PrivateLinkScopeOutput {
 	return o
-}
-
-func (o PrivateLinkScopeOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkScope] {
-	return pulumix.Output[*PrivateLinkScope]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource location

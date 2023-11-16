@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A class represent a replica resource.
@@ -171,12 +170,6 @@ func (i *WebPubSubReplica) ToWebPubSubReplicaOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(WebPubSubReplicaOutput)
 }
 
-func (i *WebPubSubReplica) ToOutput(ctx context.Context) pulumix.Output[*WebPubSubReplica] {
-	return pulumix.Output[*WebPubSubReplica]{
-		OutputState: i.ToWebPubSubReplicaOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebPubSubReplicaOutput struct{ *pulumi.OutputState }
 
 func (WebPubSubReplicaOutput) ElementType() reflect.Type {
@@ -189,12 +182,6 @@ func (o WebPubSubReplicaOutput) ToWebPubSubReplicaOutput() WebPubSubReplicaOutpu
 
 func (o WebPubSubReplicaOutput) ToWebPubSubReplicaOutputWithContext(ctx context.Context) WebPubSubReplicaOutput {
 	return o
-}
-
-func (o WebPubSubReplicaOutput) ToOutput(ctx context.Context) pulumix.Output[*WebPubSubReplica] {
-	return pulumix.Output[*WebPubSubReplica]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

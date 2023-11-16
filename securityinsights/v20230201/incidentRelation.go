@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a relation between two resources
@@ -136,6 +135,9 @@ func NewIncidentRelation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:IncidentRelation"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:IncidentRelation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -220,12 +222,6 @@ func (i *IncidentRelation) ToIncidentRelationOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(IncidentRelationOutput)
 }
 
-func (i *IncidentRelation) ToOutput(ctx context.Context) pulumix.Output[*IncidentRelation] {
-	return pulumix.Output[*IncidentRelation]{
-		OutputState: i.ToIncidentRelationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IncidentRelationOutput struct{ *pulumi.OutputState }
 
 func (IncidentRelationOutput) ElementType() reflect.Type {
@@ -238,12 +234,6 @@ func (o IncidentRelationOutput) ToIncidentRelationOutput() IncidentRelationOutpu
 
 func (o IncidentRelationOutput) ToIncidentRelationOutputWithContext(ctx context.Context) IncidentRelationOutput {
 	return o
-}
-
-func (o IncidentRelationOutput) ToOutput(ctx context.Context) pulumix.Output[*IncidentRelation] {
-	return pulumix.Output[*IncidentRelation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Etag of the azure resource

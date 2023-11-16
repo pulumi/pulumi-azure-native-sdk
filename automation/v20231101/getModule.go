@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve the module identified by module name.
@@ -107,12 +106,6 @@ func (o LookupModuleResultOutput) ToLookupModuleResultOutput() LookupModuleResul
 
 func (o LookupModuleResultOutput) ToLookupModuleResultOutputWithContext(ctx context.Context) LookupModuleResultOutput {
 	return o
-}
-
-func (o LookupModuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupModuleResult] {
-	return pulumix.Output[LookupModuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the activity count of the module.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List synchronizations of a share
@@ -91,12 +90,6 @@ func (o ListShareSynchronizationsResultOutput) ToListShareSynchronizationsResult
 
 func (o ListShareSynchronizationsResultOutput) ToListShareSynchronizationsResultOutputWithContext(ctx context.Context) ListShareSynchronizationsResultOutput {
 	return o
-}
-
-func (o ListShareSynchronizationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListShareSynchronizationsResult] {
-	return pulumix.Output[ListShareSynchronizationsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Url of next result page.

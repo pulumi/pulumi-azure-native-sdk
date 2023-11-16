@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified private endpoint connection associated with the managed HSM Pool.
@@ -99,12 +98,6 @@ func (o LookupMHSMPrivateEndpointConnectionResultOutput) ToLookupMHSMPrivateEndp
 
 func (o LookupMHSMPrivateEndpointConnectionResultOutput) ToLookupMHSMPrivateEndpointConnectionResultOutputWithContext(ctx context.Context) LookupMHSMPrivateEndpointConnectionResultOutput {
 	return o
-}
-
-func (o LookupMHSMPrivateEndpointConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMHSMPrivateEndpointConnectionResult] {
-	return pulumix.Output[LookupMHSMPrivateEndpointConnectionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Modified whenever there is a change in the state of private endpoint connection.

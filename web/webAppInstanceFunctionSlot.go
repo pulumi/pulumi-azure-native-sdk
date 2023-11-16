@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Function information.
@@ -252,12 +251,6 @@ func (i *WebAppInstanceFunctionSlot) ToWebAppInstanceFunctionSlotOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppInstanceFunctionSlotOutput)
 }
 
-func (i *WebAppInstanceFunctionSlot) ToOutput(ctx context.Context) pulumix.Output[*WebAppInstanceFunctionSlot] {
-	return pulumix.Output[*WebAppInstanceFunctionSlot]{
-		OutputState: i.ToWebAppInstanceFunctionSlotOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebAppInstanceFunctionSlotOutput struct{ *pulumi.OutputState }
 
 func (WebAppInstanceFunctionSlotOutput) ElementType() reflect.Type {
@@ -270,12 +263,6 @@ func (o WebAppInstanceFunctionSlotOutput) ToWebAppInstanceFunctionSlotOutput() W
 
 func (o WebAppInstanceFunctionSlotOutput) ToWebAppInstanceFunctionSlotOutputWithContext(ctx context.Context) WebAppInstanceFunctionSlotOutput {
 	return o
-}
-
-func (o WebAppInstanceFunctionSlotOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppInstanceFunctionSlot] {
-	return pulumix.Output[*WebAppInstanceFunctionSlot]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Config information.

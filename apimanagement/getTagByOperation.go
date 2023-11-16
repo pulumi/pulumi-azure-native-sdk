@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get tag associated with the Operation.
@@ -94,12 +93,6 @@ func (o LookupTagByOperationResultOutput) ToLookupTagByOperationResultOutput() L
 
 func (o LookupTagByOperationResultOutput) ToLookupTagByOperationResultOutputWithContext(ctx context.Context) LookupTagByOperationResultOutput {
 	return o
-}
-
-func (o LookupTagByOperationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTagByOperationResult] {
-	return pulumix.Output[LookupTagByOperationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Tag name.

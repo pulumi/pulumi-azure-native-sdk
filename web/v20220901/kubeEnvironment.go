@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Kubernetes cluster specialized for web workloads by Azure App Service
@@ -208,12 +207,6 @@ func (i *KubeEnvironment) ToKubeEnvironmentOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(KubeEnvironmentOutput)
 }
 
-func (i *KubeEnvironment) ToOutput(ctx context.Context) pulumix.Output[*KubeEnvironment] {
-	return pulumix.Output[*KubeEnvironment]{
-		OutputState: i.ToKubeEnvironmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KubeEnvironmentOutput struct{ *pulumi.OutputState }
 
 func (KubeEnvironmentOutput) ElementType() reflect.Type {
@@ -226,12 +219,6 @@ func (o KubeEnvironmentOutput) ToKubeEnvironmentOutput() KubeEnvironmentOutput {
 
 func (o KubeEnvironmentOutput) ToKubeEnvironmentOutputWithContext(ctx context.Context) KubeEnvironmentOutput {
 	return o
-}
-
-func (o KubeEnvironmentOutput) ToOutput(ctx context.Context) pulumix.Output[*KubeEnvironment] {
-	return pulumix.Output[*KubeEnvironment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KubeEnvironmentOutput) AksResourceID() pulumi.StringPtrOutput {

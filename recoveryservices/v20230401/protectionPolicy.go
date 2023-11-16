@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Base class for backup policy. Workload-specific backup policies are derived from this class.
@@ -215,12 +214,6 @@ func (i *ProtectionPolicy) ToProtectionPolicyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ProtectionPolicyOutput)
 }
 
-func (i *ProtectionPolicy) ToOutput(ctx context.Context) pulumix.Output[*ProtectionPolicy] {
-	return pulumix.Output[*ProtectionPolicy]{
-		OutputState: i.ToProtectionPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProtectionPolicyOutput struct{ *pulumi.OutputState }
 
 func (ProtectionPolicyOutput) ElementType() reflect.Type {
@@ -233,12 +226,6 @@ func (o ProtectionPolicyOutput) ToProtectionPolicyOutput() ProtectionPolicyOutpu
 
 func (o ProtectionPolicyOutput) ToProtectionPolicyOutputWithContext(ctx context.Context) ProtectionPolicyOutput {
 	return o
-}
-
-func (o ProtectionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ProtectionPolicy] {
-	return pulumix.Output[*ProtectionPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional ETag.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get information related to a specific migrate project. Returns a json object of type 'migrateProject' as specified in the models section.
@@ -85,12 +84,6 @@ func (o LookupMigrateProjectsControllerMigrateProjectResultOutput) ToLookupMigra
 
 func (o LookupMigrateProjectsControllerMigrateProjectResultOutput) ToLookupMigrateProjectsControllerMigrateProjectResultOutputWithContext(ctx context.Context) LookupMigrateProjectsControllerMigrateProjectResultOutput {
 	return o
-}
-
-func (o LookupMigrateProjectsControllerMigrateProjectResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMigrateProjectsControllerMigrateProjectResult] {
-	return pulumix.Output[LookupMigrateProjectsControllerMigrateProjectResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // For optimistic concurrency control.

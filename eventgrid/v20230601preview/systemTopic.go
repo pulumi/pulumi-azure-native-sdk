@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // EventGrid System Topic.
@@ -166,12 +165,6 @@ func (i *SystemTopic) ToSystemTopicOutputWithContext(ctx context.Context) System
 	return pulumi.ToOutputWithContext(ctx, i).(SystemTopicOutput)
 }
 
-func (i *SystemTopic) ToOutput(ctx context.Context) pulumix.Output[*SystemTopic] {
-	return pulumix.Output[*SystemTopic]{
-		OutputState: i.ToSystemTopicOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SystemTopicOutput struct{ *pulumi.OutputState }
 
 func (SystemTopicOutput) ElementType() reflect.Type {
@@ -184,12 +177,6 @@ func (o SystemTopicOutput) ToSystemTopicOutput() SystemTopicOutput {
 
 func (o SystemTopicOutput) ToSystemTopicOutputWithContext(ctx context.Context) SystemTopicOutput {
 	return o
-}
-
-func (o SystemTopicOutput) ToOutput(ctx context.Context) pulumix.Output[*SystemTopic] {
-	return pulumix.Output[*SystemTopic]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Identity information for the resource.

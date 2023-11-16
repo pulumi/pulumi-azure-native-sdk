@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a markup rule by its rule name.
@@ -94,12 +93,6 @@ func (o LookupMarkupRuleResultOutput) ToLookupMarkupRuleResultOutput() LookupMar
 
 func (o LookupMarkupRuleResultOutput) ToLookupMarkupRuleResultOutputWithContext(ctx context.Context) LookupMarkupRuleResultOutput {
 	return o
-}
-
-func (o LookupMarkupRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMarkupRuleResult] {
-	return pulumix.Output[LookupMarkupRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Customer information for the markup rule.

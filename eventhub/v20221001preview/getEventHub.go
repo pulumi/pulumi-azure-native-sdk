@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an Event Hubs description for the specified Event Hub.
@@ -101,12 +100,6 @@ func (o LookupEventHubResultOutput) ToLookupEventHubResultOutput() LookupEventHu
 
 func (o LookupEventHubResultOutput) ToLookupEventHubResultOutputWithContext(ctx context.Context) LookupEventHubResultOutput {
 	return o
-}
-
-func (o LookupEventHubResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEventHubResult] {
-	return pulumix.Output[LookupEventHubResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Properties of capture description

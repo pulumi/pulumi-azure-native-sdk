@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Software update configuration properties.
@@ -163,12 +162,6 @@ func (i *SoftwareUpdateConfigurationByName) ToSoftwareUpdateConfigurationByNameO
 	return pulumi.ToOutputWithContext(ctx, i).(SoftwareUpdateConfigurationByNameOutput)
 }
 
-func (i *SoftwareUpdateConfigurationByName) ToOutput(ctx context.Context) pulumix.Output[*SoftwareUpdateConfigurationByName] {
-	return pulumix.Output[*SoftwareUpdateConfigurationByName]{
-		OutputState: i.ToSoftwareUpdateConfigurationByNameOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SoftwareUpdateConfigurationByNameOutput struct{ *pulumi.OutputState }
 
 func (SoftwareUpdateConfigurationByNameOutput) ElementType() reflect.Type {
@@ -181,12 +174,6 @@ func (o SoftwareUpdateConfigurationByNameOutput) ToSoftwareUpdateConfigurationBy
 
 func (o SoftwareUpdateConfigurationByNameOutput) ToSoftwareUpdateConfigurationByNameOutputWithContext(ctx context.Context) SoftwareUpdateConfigurationByNameOutput {
 	return o
-}
-
-func (o SoftwareUpdateConfigurationByNameOutput) ToOutput(ctx context.Context) pulumix.Output[*SoftwareUpdateConfigurationByName] {
-	return pulumix.Output[*SoftwareUpdateConfigurationByName]{
-		OutputState: o.OutputState,
-	}
 }
 
 // CreatedBy property, which only appears in the response.

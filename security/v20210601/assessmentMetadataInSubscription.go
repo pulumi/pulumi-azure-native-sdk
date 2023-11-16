@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Security assessment metadata response
@@ -191,12 +190,6 @@ func (i *AssessmentMetadataInSubscription) ToAssessmentMetadataInSubscriptionOut
 	return pulumi.ToOutputWithContext(ctx, i).(AssessmentMetadataInSubscriptionOutput)
 }
 
-func (i *AssessmentMetadataInSubscription) ToOutput(ctx context.Context) pulumix.Output[*AssessmentMetadataInSubscription] {
-	return pulumix.Output[*AssessmentMetadataInSubscription]{
-		OutputState: i.ToAssessmentMetadataInSubscriptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AssessmentMetadataInSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (AssessmentMetadataInSubscriptionOutput) ElementType() reflect.Type {
@@ -209,12 +202,6 @@ func (o AssessmentMetadataInSubscriptionOutput) ToAssessmentMetadataInSubscripti
 
 func (o AssessmentMetadataInSubscriptionOutput) ToAssessmentMetadataInSubscriptionOutputWithContext(ctx context.Context) AssessmentMetadataInSubscriptionOutput {
 	return o
-}
-
-func (o AssessmentMetadataInSubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[*AssessmentMetadataInSubscription] {
-	return pulumix.Output[*AssessmentMetadataInSubscription]{
-		OutputState: o.OutputState,
-	}
 }
 
 // BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A share data transfer object.
@@ -156,12 +155,6 @@ func (i *Share) ToShareOutputWithContext(ctx context.Context) ShareOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ShareOutput)
 }
 
-func (i *Share) ToOutput(ctx context.Context) pulumix.Output[*Share] {
-	return pulumix.Output[*Share]{
-		OutputState: i.ToShareOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ShareOutput struct{ *pulumi.OutputState }
 
 func (ShareOutput) ElementType() reflect.Type {
@@ -174,12 +167,6 @@ func (o ShareOutput) ToShareOutput() ShareOutput {
 
 func (o ShareOutput) ToShareOutputWithContext(ctx context.Context) ShareOutput {
 	return o
-}
-
-func (o ShareOutput) ToOutput(ctx context.Context) pulumix.Output[*Share] {
-	return pulumix.Output[*Share]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time at which the share was created.

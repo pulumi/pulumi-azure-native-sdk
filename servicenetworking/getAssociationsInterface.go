@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Association
@@ -96,12 +95,6 @@ func (o LookupAssociationsInterfaceResultOutput) ToLookupAssociationsInterfaceRe
 
 func (o LookupAssociationsInterfaceResultOutput) ToLookupAssociationsInterfaceResultOutputWithContext(ctx context.Context) LookupAssociationsInterfaceResultOutput {
 	return o
-}
-
-func (o LookupAssociationsInterfaceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAssociationsInterfaceResult] {
-	return pulumix.Output[LookupAssociationsInterfaceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Association Type

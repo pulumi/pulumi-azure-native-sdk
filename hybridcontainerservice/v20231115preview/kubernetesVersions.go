@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The supported kubernetes versions.
@@ -108,12 +107,6 @@ func (i *KubernetesVersions) ToKubernetesVersionsOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesVersionsOutput)
 }
 
-func (i *KubernetesVersions) ToOutput(ctx context.Context) pulumix.Output[*KubernetesVersions] {
-	return pulumix.Output[*KubernetesVersions]{
-		OutputState: i.ToKubernetesVersionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KubernetesVersionsOutput struct{ *pulumi.OutputState }
 
 func (KubernetesVersionsOutput) ElementType() reflect.Type {
@@ -126,12 +119,6 @@ func (o KubernetesVersionsOutput) ToKubernetesVersionsOutput() KubernetesVersion
 
 func (o KubernetesVersionsOutput) ToKubernetesVersionsOutputWithContext(ctx context.Context) KubernetesVersionsOutput {
 	return o
-}
-
-func (o KubernetesVersionsOutput) ToOutput(ctx context.Context) pulumix.Output[*KubernetesVersions] {
-	return pulumix.Output[*KubernetesVersions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Extended Location definition

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (o DeploymentResponseOutput) ToDeploymentResponseOutput() DeploymentRespons
 
 func (o DeploymentResponseOutput) ToDeploymentResponseOutputWithContext(ctx context.Context) DeploymentResponseOutput {
 	return o
-}
-
-func (o DeploymentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeploymentResponse] {
-	return pulumix.Output[DeploymentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Images deployed
@@ -109,12 +102,6 @@ func (o DeploymentResponseArrayOutput) ToDeploymentResponseArrayOutputWithContex
 	return o
 }
 
-func (o DeploymentResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeploymentResponse] {
-	return pulumix.Output[[]DeploymentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DeploymentResponseArrayOutput) Index(i pulumi.IntInput) DeploymentResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeploymentResponse {
 		return vs[0].([]DeploymentResponse)[vs[1].(int)]
@@ -160,12 +147,6 @@ func (o DeviceGroupResponseOutput) ToDeviceGroupResponseOutput() DeviceGroupResp
 
 func (o DeviceGroupResponseOutput) ToDeviceGroupResponseOutputWithContext(ctx context.Context) DeviceGroupResponseOutput {
 	return o
-}
-
-func (o DeviceGroupResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceGroupResponse] {
-	return pulumix.Output[DeviceGroupResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Flag to define if the user allows for crash dump collection.
@@ -237,12 +218,6 @@ func (o DeviceGroupResponseArrayOutput) ToDeviceGroupResponseArrayOutputWithCont
 	return o
 }
 
-func (o DeviceGroupResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeviceGroupResponse] {
-	return pulumix.Output[[]DeviceGroupResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DeviceGroupResponseArrayOutput) Index(i pulumi.IntInput) DeviceGroupResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeviceGroupResponse {
 		return vs[0].([]DeviceGroupResponse)[vs[1].(int)]
@@ -282,12 +257,6 @@ func (o DeviceInsightResponseOutput) ToDeviceInsightResponseOutput() DeviceInsig
 
 func (o DeviceInsightResponseOutput) ToDeviceInsightResponseOutputWithContext(ctx context.Context) DeviceInsightResponseOutput {
 	return o
-}
-
-func (o DeviceInsightResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceInsightResponse] {
-	return pulumix.Output[DeviceInsightResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Event description
@@ -344,12 +313,6 @@ func (o DeviceInsightResponseArrayOutput) ToDeviceInsightResponseArrayOutputWith
 	return o
 }
 
-func (o DeviceInsightResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeviceInsightResponse] {
-	return pulumix.Output[[]DeviceInsightResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DeviceInsightResponseArrayOutput) Index(i pulumi.IntInput) DeviceInsightResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeviceInsightResponse {
 		return vs[0].([]DeviceInsightResponse)[vs[1].(int)]
@@ -395,12 +358,6 @@ func (o DeviceResponseOutput) ToDeviceResponseOutput() DeviceResponseOutput {
 
 func (o DeviceResponseOutput) ToDeviceResponseOutputWithContext(ctx context.Context) DeviceResponseOutput {
 	return o
-}
-
-func (o DeviceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeviceResponse] {
-	return pulumix.Output[DeviceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // SKU of the chip
@@ -472,12 +429,6 @@ func (o DeviceResponseArrayOutput) ToDeviceResponseArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o DeviceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeviceResponse] {
-	return pulumix.Output[[]DeviceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DeviceResponseArrayOutput) Index(i pulumi.IntInput) DeviceResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeviceResponse {
 		return vs[0].([]DeviceResponse)[vs[1].(int)]
@@ -527,12 +478,6 @@ func (i ImageTypeArgs) ToImageTypeOutputWithContext(ctx context.Context) ImageTy
 	return pulumi.ToOutputWithContext(ctx, i).(ImageTypeOutput)
 }
 
-func (i ImageTypeArgs) ToOutput(ctx context.Context) pulumix.Output[ImageType] {
-	return pulumix.Output[ImageType]{
-		OutputState: i.ToImageTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ImageTypeArrayInput is an input type that accepts ImageTypeArray and ImageTypeArrayOutput values.
 // You can construct a concrete instance of `ImageTypeArrayInput` via:
 //
@@ -558,12 +503,6 @@ func (i ImageTypeArray) ToImageTypeArrayOutputWithContext(ctx context.Context) I
 	return pulumi.ToOutputWithContext(ctx, i).(ImageTypeArrayOutput)
 }
 
-func (i ImageTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]ImageType] {
-	return pulumix.Output[[]ImageType]{
-		OutputState: i.ToImageTypeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An image resource belonging to a catalog resource.
 type ImageTypeOutput struct{ *pulumi.OutputState }
 
@@ -577,12 +516,6 @@ func (o ImageTypeOutput) ToImageTypeOutput() ImageTypeOutput {
 
 func (o ImageTypeOutput) ToImageTypeOutputWithContext(ctx context.Context) ImageTypeOutput {
 	return o
-}
-
-func (o ImageTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ImageType] {
-	return pulumix.Output[ImageType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Image as a UTF-8 encoded base 64 string on image create. This field contains the image URI on image reads.
@@ -612,12 +545,6 @@ func (o ImageTypeArrayOutput) ToImageTypeArrayOutput() ImageTypeArrayOutput {
 
 func (o ImageTypeArrayOutput) ToImageTypeArrayOutputWithContext(ctx context.Context) ImageTypeArrayOutput {
 	return o
-}
-
-func (o ImageTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ImageType] {
-	return pulumix.Output[[]ImageType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImageTypeArrayOutput) Index(i pulumi.IntInput) ImageTypeOutput {
@@ -669,12 +596,6 @@ func (o ImageResponseOutput) ToImageResponseOutput() ImageResponseOutput {
 
 func (o ImageResponseOutput) ToImageResponseOutputWithContext(ctx context.Context) ImageResponseOutput {
 	return o
-}
-
-func (o ImageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ImageResponse] {
-	return pulumix.Output[ImageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The image component id.
@@ -756,12 +677,6 @@ func (o ImageResponseArrayOutput) ToImageResponseArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o ImageResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ImageResponse] {
-	return pulumix.Output[[]ImageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ImageResponseArrayOutput) Index(i pulumi.IntInput) ImageResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageResponse {
 		return vs[0].([]ImageResponse)[vs[1].(int)]
@@ -797,12 +712,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

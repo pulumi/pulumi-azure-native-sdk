@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The description of the service.
@@ -152,12 +151,6 @@ func (i *PrivateLinkServicesForO365ManagementActivityAPI) ToPrivateLinkServicesF
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServicesForO365ManagementActivityAPIOutput)
 }
 
-func (i *PrivateLinkServicesForO365ManagementActivityAPI) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServicesForO365ManagementActivityAPI] {
-	return pulumix.Output[*PrivateLinkServicesForO365ManagementActivityAPI]{
-		OutputState: i.ToPrivateLinkServicesForO365ManagementActivityAPIOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateLinkServicesForO365ManagementActivityAPIOutput struct{ *pulumi.OutputState }
 
 func (PrivateLinkServicesForO365ManagementActivityAPIOutput) ElementType() reflect.Type {
@@ -170,12 +163,6 @@ func (o PrivateLinkServicesForO365ManagementActivityAPIOutput) ToPrivateLinkServ
 
 func (o PrivateLinkServicesForO365ManagementActivityAPIOutput) ToPrivateLinkServicesForO365ManagementActivityAPIOutputWithContext(ctx context.Context) PrivateLinkServicesForO365ManagementActivityAPIOutput {
 	return o
-}
-
-func (o PrivateLinkServicesForO365ManagementActivityAPIOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServicesForO365ManagementActivityAPI] {
-	return pulumix.Output[*PrivateLinkServicesForO365ManagementActivityAPI]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An etag associated with the resource, used for optimistic concurrency when editing it.

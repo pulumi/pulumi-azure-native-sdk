@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An API collection as represented by Microsoft Defender for APIs.
@@ -140,12 +139,6 @@ func (i *APICollectionByAzureApiManagementService) ToAPICollectionByAzureApiMana
 	return pulumi.ToOutputWithContext(ctx, i).(APICollectionByAzureApiManagementServiceOutput)
 }
 
-func (i *APICollectionByAzureApiManagementService) ToOutput(ctx context.Context) pulumix.Output[*APICollectionByAzureApiManagementService] {
-	return pulumix.Output[*APICollectionByAzureApiManagementService]{
-		OutputState: i.ToAPICollectionByAzureApiManagementServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type APICollectionByAzureApiManagementServiceOutput struct{ *pulumi.OutputState }
 
 func (APICollectionByAzureApiManagementServiceOutput) ElementType() reflect.Type {
@@ -158,12 +151,6 @@ func (o APICollectionByAzureApiManagementServiceOutput) ToAPICollectionByAzureAp
 
 func (o APICollectionByAzureApiManagementServiceOutput) ToAPICollectionByAzureApiManagementServiceOutputWithContext(ctx context.Context) APICollectionByAzureApiManagementServiceOutput {
 	return o
-}
-
-func (o APICollectionByAzureApiManagementServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*APICollectionByAzureApiManagementService] {
-	return pulumix.Output[*APICollectionByAzureApiManagementService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The base URI for this API collection. All endpoints of this API collection extend this base URI.

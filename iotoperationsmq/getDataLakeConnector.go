@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a DataLakeConnectorResource
@@ -119,12 +118,6 @@ func (o LookupDataLakeConnectorResultOutput) ToLookupDataLakeConnectorResultOutp
 
 func (o LookupDataLakeConnectorResultOutput) ToLookupDataLakeConnectorResultOutputWithContext(ctx context.Context) LookupDataLakeConnectorResultOutput {
 	return o
-}
-
-func (o LookupDataLakeConnectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataLakeConnectorResult] {
-	return pulumix.Output[LookupDataLakeConnectorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // DataLake database format to use.

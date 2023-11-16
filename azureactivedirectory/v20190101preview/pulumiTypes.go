@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i B2CResourceSKUArgs) ToB2CResourceSKUOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(B2CResourceSKUOutput)
 }
 
-func (i B2CResourceSKUArgs) ToOutput(ctx context.Context) pulumix.Output[B2CResourceSKU] {
-	return pulumix.Output[B2CResourceSKU]{
-		OutputState: i.ToB2CResourceSKUOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SKU properties of the Azure AD B2C tenant. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cBilling).
 type B2CResourceSKUOutput struct{ *pulumi.OutputState }
 
@@ -72,12 +65,6 @@ func (o B2CResourceSKUOutput) ToB2CResourceSKUOutput() B2CResourceSKUOutput {
 
 func (o B2CResourceSKUOutput) ToB2CResourceSKUOutputWithContext(ctx context.Context) B2CResourceSKUOutput {
 	return o
-}
-
-func (o B2CResourceSKUOutput) ToOutput(ctx context.Context) pulumix.Output[B2CResourceSKU] {
-	return pulumix.Output[B2CResourceSKU]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the SKU for the tenant.
@@ -113,12 +100,6 @@ func (o B2CResourceSKUResponseOutput) ToB2CResourceSKUResponseOutputWithContext(
 	return o
 }
 
-func (o B2CResourceSKUResponseOutput) ToOutput(ctx context.Context) pulumix.Output[B2CResourceSKUResponse] {
-	return pulumix.Output[B2CResourceSKUResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the SKU for the tenant.
 func (o B2CResourceSKUResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v B2CResourceSKUResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -152,12 +133,6 @@ func (o B2CTenantResourcePropertiesResponseBillingConfigOutput) ToB2CTenantResou
 	return o
 }
 
-func (o B2CTenantResourcePropertiesResponseBillingConfigOutput) ToOutput(ctx context.Context) pulumix.Output[B2CTenantResourcePropertiesResponseBillingConfig] {
-	return pulumix.Output[B2CTenantResourcePropertiesResponseBillingConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The type of billing. Will be MAU for all new customers. If 'Auths', it can be updated to 'MAU'. Cannot be changed if value is 'MAU'. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cbilling).
 func (o B2CTenantResourcePropertiesResponseBillingConfigOutput) BillingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v B2CTenantResourcePropertiesResponseBillingConfig) *string { return v.BillingType }).(pulumi.StringPtrOutput)
@@ -180,12 +155,6 @@ func (o B2CTenantResourcePropertiesResponseBillingConfigPtrOutput) ToB2CTenantRe
 
 func (o B2CTenantResourcePropertiesResponseBillingConfigPtrOutput) ToB2CTenantResourcePropertiesResponseBillingConfigPtrOutputWithContext(ctx context.Context) B2CTenantResourcePropertiesResponseBillingConfigPtrOutput {
 	return o
-}
-
-func (o B2CTenantResourcePropertiesResponseBillingConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*B2CTenantResourcePropertiesResponseBillingConfig] {
-	return pulumix.Output[*B2CTenantResourcePropertiesResponseBillingConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o B2CTenantResourcePropertiesResponseBillingConfigPtrOutput) Elem() B2CTenantResourcePropertiesResponseBillingConfigOutput {
@@ -255,12 +224,6 @@ func (i CreateTenantRequestBodyPropertiesArgs) ToCreateTenantRequestBodyProperti
 	return pulumi.ToOutputWithContext(ctx, i).(CreateTenantRequestBodyPropertiesOutput)
 }
 
-func (i CreateTenantRequestBodyPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[CreateTenantRequestBodyProperties] {
-	return pulumix.Output[CreateTenantRequestBodyProperties]{
-		OutputState: i.ToCreateTenantRequestBodyPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CreateTenantRequestBodyPropertiesOutput struct{ *pulumi.OutputState }
 
 func (CreateTenantRequestBodyPropertiesOutput) ElementType() reflect.Type {
@@ -273,12 +236,6 @@ func (o CreateTenantRequestBodyPropertiesOutput) ToCreateTenantRequestBodyProper
 
 func (o CreateTenantRequestBodyPropertiesOutput) ToCreateTenantRequestBodyPropertiesOutputWithContext(ctx context.Context) CreateTenantRequestBodyPropertiesOutput {
 	return o
-}
-
-func (o CreateTenantRequestBodyPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[CreateTenantRequestBodyProperties] {
-	return pulumix.Output[CreateTenantRequestBodyProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Country code of Azure tenant (e.g. 'US'). Refer to [aka.ms/B2CDataResidency](https://aka.ms/B2CDataResidency) to see valid country codes and corresponding data residency locations. If you do not see a country code in an valid data residency location, choose one from the list.

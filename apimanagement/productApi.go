@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // API details.
@@ -213,12 +212,6 @@ func (i *ProductApi) ToProductApiOutputWithContext(ctx context.Context) ProductA
 	return pulumi.ToOutputWithContext(ctx, i).(ProductApiOutput)
 }
 
-func (i *ProductApi) ToOutput(ctx context.Context) pulumix.Output[*ProductApi] {
-	return pulumix.Output[*ProductApi]{
-		OutputState: i.ToProductApiOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProductApiOutput struct{ *pulumi.OutputState }
 
 func (ProductApiOutput) ElementType() reflect.Type {
@@ -231,12 +224,6 @@ func (o ProductApiOutput) ToProductApiOutput() ProductApiOutput {
 
 func (o ProductApiOutput) ToProductApiOutputWithContext(ctx context.Context) ProductApiOutput {
 	return o
-}
-
-func (o ProductApiOutput) ToOutput(ctx context.Context) pulumix.Output[*ProductApi] {
-	return pulumix.Output[*ProductApi]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Describes the revision of the API. If no value is provided, default revision 1 is created

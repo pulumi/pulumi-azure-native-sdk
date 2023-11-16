@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the specified scope assignment.
@@ -85,12 +84,6 @@ func (o LookupScopeAssignmentResultOutput) ToLookupScopeAssignmentResultOutput()
 
 func (o LookupScopeAssignmentResultOutput) ToLookupScopeAssignmentResultOutputWithContext(ctx context.Context) LookupScopeAssignmentResultOutput {
 	return o
-}
-
-func (o LookupScopeAssignmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupScopeAssignmentResult] {
-	return pulumix.Output[LookupScopeAssignmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The managed network ID with scope will be assigned to.

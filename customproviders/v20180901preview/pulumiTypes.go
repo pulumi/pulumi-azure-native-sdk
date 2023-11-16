@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i CustomRPActionRouteDefinitionArgs) ToCustomRPActionRouteDefinitionOutput
 	return pulumi.ToOutputWithContext(ctx, i).(CustomRPActionRouteDefinitionOutput)
 }
 
-func (i CustomRPActionRouteDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[CustomRPActionRouteDefinition] {
-	return pulumix.Output[CustomRPActionRouteDefinition]{
-		OutputState: i.ToCustomRPActionRouteDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CustomRPActionRouteDefinitionArrayInput is an input type that accepts CustomRPActionRouteDefinitionArray and CustomRPActionRouteDefinitionArrayOutput values.
 // You can construct a concrete instance of `CustomRPActionRouteDefinitionArrayInput` via:
 //
@@ -88,12 +81,6 @@ func (i CustomRPActionRouteDefinitionArray) ToCustomRPActionRouteDefinitionArray
 	return pulumi.ToOutputWithContext(ctx, i).(CustomRPActionRouteDefinitionArrayOutput)
 }
 
-func (i CustomRPActionRouteDefinitionArray) ToOutput(ctx context.Context) pulumix.Output[[]CustomRPActionRouteDefinition] {
-	return pulumix.Output[[]CustomRPActionRouteDefinition]{
-		OutputState: i.ToCustomRPActionRouteDefinitionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The route definition for an action implemented by the custom resource provider.
 type CustomRPActionRouteDefinitionOutput struct{ *pulumi.OutputState }
 
@@ -107,12 +94,6 @@ func (o CustomRPActionRouteDefinitionOutput) ToCustomRPActionRouteDefinitionOutp
 
 func (o CustomRPActionRouteDefinitionOutput) ToCustomRPActionRouteDefinitionOutputWithContext(ctx context.Context) CustomRPActionRouteDefinitionOutput {
 	return o
-}
-
-func (o CustomRPActionRouteDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[CustomRPActionRouteDefinition] {
-	return pulumix.Output[CustomRPActionRouteDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The route definition endpoint URI that the custom resource provider will proxy requests to. This can be in the form of a flat URI (e.g. 'https://testendpoint/') or can specify to route via a path (e.g. 'https://testendpoint/{requestPath}')
@@ -142,12 +123,6 @@ func (o CustomRPActionRouteDefinitionArrayOutput) ToCustomRPActionRouteDefinitio
 
 func (o CustomRPActionRouteDefinitionArrayOutput) ToCustomRPActionRouteDefinitionArrayOutputWithContext(ctx context.Context) CustomRPActionRouteDefinitionArrayOutput {
 	return o
-}
-
-func (o CustomRPActionRouteDefinitionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CustomRPActionRouteDefinition] {
-	return pulumix.Output[[]CustomRPActionRouteDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomRPActionRouteDefinitionArrayOutput) Index(i pulumi.IntInput) CustomRPActionRouteDefinitionOutput {
@@ -181,12 +156,6 @@ func (o CustomRPActionRouteDefinitionResponseOutput) ToCustomRPActionRouteDefini
 	return o
 }
 
-func (o CustomRPActionRouteDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CustomRPActionRouteDefinitionResponse] {
-	return pulumix.Output[CustomRPActionRouteDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The route definition endpoint URI that the custom resource provider will proxy requests to. This can be in the form of a flat URI (e.g. 'https://testendpoint/') or can specify to route via a path (e.g. 'https://testendpoint/{requestPath}')
 func (o CustomRPActionRouteDefinitionResponseOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomRPActionRouteDefinitionResponse) string { return v.Endpoint }).(pulumi.StringOutput)
@@ -214,12 +183,6 @@ func (o CustomRPActionRouteDefinitionResponseArrayOutput) ToCustomRPActionRouteD
 
 func (o CustomRPActionRouteDefinitionResponseArrayOutput) ToCustomRPActionRouteDefinitionResponseArrayOutputWithContext(ctx context.Context) CustomRPActionRouteDefinitionResponseArrayOutput {
 	return o
-}
-
-func (o CustomRPActionRouteDefinitionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CustomRPActionRouteDefinitionResponse] {
-	return pulumix.Output[[]CustomRPActionRouteDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomRPActionRouteDefinitionResponseArrayOutput) Index(i pulumi.IntInput) CustomRPActionRouteDefinitionResponseOutput {
@@ -271,12 +234,6 @@ func (i CustomRPResourceTypeRouteDefinitionArgs) ToCustomRPResourceTypeRouteDefi
 	return pulumi.ToOutputWithContext(ctx, i).(CustomRPResourceTypeRouteDefinitionOutput)
 }
 
-func (i CustomRPResourceTypeRouteDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[CustomRPResourceTypeRouteDefinition] {
-	return pulumix.Output[CustomRPResourceTypeRouteDefinition]{
-		OutputState: i.ToCustomRPResourceTypeRouteDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CustomRPResourceTypeRouteDefinitionArrayInput is an input type that accepts CustomRPResourceTypeRouteDefinitionArray and CustomRPResourceTypeRouteDefinitionArrayOutput values.
 // You can construct a concrete instance of `CustomRPResourceTypeRouteDefinitionArrayInput` via:
 //
@@ -302,12 +259,6 @@ func (i CustomRPResourceTypeRouteDefinitionArray) ToCustomRPResourceTypeRouteDef
 	return pulumi.ToOutputWithContext(ctx, i).(CustomRPResourceTypeRouteDefinitionArrayOutput)
 }
 
-func (i CustomRPResourceTypeRouteDefinitionArray) ToOutput(ctx context.Context) pulumix.Output[[]CustomRPResourceTypeRouteDefinition] {
-	return pulumix.Output[[]CustomRPResourceTypeRouteDefinition]{
-		OutputState: i.ToCustomRPResourceTypeRouteDefinitionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The route definition for a resource implemented by the custom resource provider.
 type CustomRPResourceTypeRouteDefinitionOutput struct{ *pulumi.OutputState }
 
@@ -321,12 +272,6 @@ func (o CustomRPResourceTypeRouteDefinitionOutput) ToCustomRPResourceTypeRouteDe
 
 func (o CustomRPResourceTypeRouteDefinitionOutput) ToCustomRPResourceTypeRouteDefinitionOutputWithContext(ctx context.Context) CustomRPResourceTypeRouteDefinitionOutput {
 	return o
-}
-
-func (o CustomRPResourceTypeRouteDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[CustomRPResourceTypeRouteDefinition] {
-	return pulumix.Output[CustomRPResourceTypeRouteDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The route definition endpoint URI that the custom resource provider will proxy requests to. This can be in the form of a flat URI (e.g. 'https://testendpoint/') or can specify to route via a path (e.g. 'https://testendpoint/{requestPath}')
@@ -356,12 +301,6 @@ func (o CustomRPResourceTypeRouteDefinitionArrayOutput) ToCustomRPResourceTypeRo
 
 func (o CustomRPResourceTypeRouteDefinitionArrayOutput) ToCustomRPResourceTypeRouteDefinitionArrayOutputWithContext(ctx context.Context) CustomRPResourceTypeRouteDefinitionArrayOutput {
 	return o
-}
-
-func (o CustomRPResourceTypeRouteDefinitionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CustomRPResourceTypeRouteDefinition] {
-	return pulumix.Output[[]CustomRPResourceTypeRouteDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomRPResourceTypeRouteDefinitionArrayOutput) Index(i pulumi.IntInput) CustomRPResourceTypeRouteDefinitionOutput {
@@ -395,12 +334,6 @@ func (o CustomRPResourceTypeRouteDefinitionResponseOutput) ToCustomRPResourceTyp
 	return o
 }
 
-func (o CustomRPResourceTypeRouteDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CustomRPResourceTypeRouteDefinitionResponse] {
-	return pulumix.Output[CustomRPResourceTypeRouteDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The route definition endpoint URI that the custom resource provider will proxy requests to. This can be in the form of a flat URI (e.g. 'https://testendpoint/') or can specify to route via a path (e.g. 'https://testendpoint/{requestPath}')
 func (o CustomRPResourceTypeRouteDefinitionResponseOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomRPResourceTypeRouteDefinitionResponse) string { return v.Endpoint }).(pulumi.StringOutput)
@@ -428,12 +361,6 @@ func (o CustomRPResourceTypeRouteDefinitionResponseArrayOutput) ToCustomRPResour
 
 func (o CustomRPResourceTypeRouteDefinitionResponseArrayOutput) ToCustomRPResourceTypeRouteDefinitionResponseArrayOutputWithContext(ctx context.Context) CustomRPResourceTypeRouteDefinitionResponseArrayOutput {
 	return o
-}
-
-func (o CustomRPResourceTypeRouteDefinitionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CustomRPResourceTypeRouteDefinitionResponse] {
-	return pulumix.Output[[]CustomRPResourceTypeRouteDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomRPResourceTypeRouteDefinitionResponseArrayOutput) Index(i pulumi.IntInput) CustomRPResourceTypeRouteDefinitionResponseOutput {
@@ -481,12 +408,6 @@ func (i CustomRPValidationsArgs) ToCustomRPValidationsOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(CustomRPValidationsOutput)
 }
 
-func (i CustomRPValidationsArgs) ToOutput(ctx context.Context) pulumix.Output[CustomRPValidations] {
-	return pulumix.Output[CustomRPValidations]{
-		OutputState: i.ToCustomRPValidationsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CustomRPValidationsArrayInput is an input type that accepts CustomRPValidationsArray and CustomRPValidationsArrayOutput values.
 // You can construct a concrete instance of `CustomRPValidationsArrayInput` via:
 //
@@ -512,12 +433,6 @@ func (i CustomRPValidationsArray) ToCustomRPValidationsArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(CustomRPValidationsArrayOutput)
 }
 
-func (i CustomRPValidationsArray) ToOutput(ctx context.Context) pulumix.Output[[]CustomRPValidations] {
-	return pulumix.Output[[]CustomRPValidations]{
-		OutputState: i.ToCustomRPValidationsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A validation to apply on custom resource provider requests.
 type CustomRPValidationsOutput struct{ *pulumi.OutputState }
 
@@ -531,12 +446,6 @@ func (o CustomRPValidationsOutput) ToCustomRPValidationsOutput() CustomRPValidat
 
 func (o CustomRPValidationsOutput) ToCustomRPValidationsOutputWithContext(ctx context.Context) CustomRPValidationsOutput {
 	return o
-}
-
-func (o CustomRPValidationsOutput) ToOutput(ctx context.Context) pulumix.Output[CustomRPValidations] {
-	return pulumix.Output[CustomRPValidations]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A link to the validation specification. The specification must be hosted on raw.githubusercontent.com.
@@ -561,12 +470,6 @@ func (o CustomRPValidationsArrayOutput) ToCustomRPValidationsArrayOutput() Custo
 
 func (o CustomRPValidationsArrayOutput) ToCustomRPValidationsArrayOutputWithContext(ctx context.Context) CustomRPValidationsArrayOutput {
 	return o
-}
-
-func (o CustomRPValidationsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CustomRPValidations] {
-	return pulumix.Output[[]CustomRPValidations]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomRPValidationsArrayOutput) Index(i pulumi.IntInput) CustomRPValidationsOutput {
@@ -598,12 +501,6 @@ func (o CustomRPValidationsResponseOutput) ToCustomRPValidationsResponseOutputWi
 	return o
 }
 
-func (o CustomRPValidationsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CustomRPValidationsResponse] {
-	return pulumix.Output[CustomRPValidationsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A link to the validation specification. The specification must be hosted on raw.githubusercontent.com.
 func (o CustomRPValidationsResponseOutput) Specification() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomRPValidationsResponse) string { return v.Specification }).(pulumi.StringOutput)
@@ -626,12 +523,6 @@ func (o CustomRPValidationsResponseArrayOutput) ToCustomRPValidationsResponseArr
 
 func (o CustomRPValidationsResponseArrayOutput) ToCustomRPValidationsResponseArrayOutputWithContext(ctx context.Context) CustomRPValidationsResponseArrayOutput {
 	return o
-}
-
-func (o CustomRPValidationsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CustomRPValidationsResponse] {
-	return pulumix.Output[[]CustomRPValidationsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomRPValidationsResponseArrayOutput) Index(i pulumi.IntInput) CustomRPValidationsResponseOutput {

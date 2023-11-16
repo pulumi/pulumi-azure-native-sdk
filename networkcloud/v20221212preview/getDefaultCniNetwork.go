@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of the provided default CNI network.
@@ -126,12 +125,6 @@ func (o LookupDefaultCniNetworkResultOutput) ToLookupDefaultCniNetworkResultOutp
 
 func (o LookupDefaultCniNetworkResultOutput) ToLookupDefaultCniNetworkResultOutputWithContext(ctx context.Context) LookupDefaultCniNetworkResultOutput {
 	return o
-}
-
-func (o LookupDefaultCniNetworkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDefaultCniNetworkResult] {
-	return pulumix.Output[LookupDefaultCniNetworkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource ID of the Network Cloud cluster this default CNI network is associated with.

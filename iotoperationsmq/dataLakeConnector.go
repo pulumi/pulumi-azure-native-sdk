@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // MQ dataLakeConnector resource
@@ -205,12 +204,6 @@ func (i *DataLakeConnector) ToDataLakeConnectorOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DataLakeConnectorOutput)
 }
 
-func (i *DataLakeConnector) ToOutput(ctx context.Context) pulumix.Output[*DataLakeConnector] {
-	return pulumix.Output[*DataLakeConnector]{
-		OutputState: i.ToDataLakeConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataLakeConnectorOutput struct{ *pulumi.OutputState }
 
 func (DataLakeConnectorOutput) ElementType() reflect.Type {
@@ -223,12 +216,6 @@ func (o DataLakeConnectorOutput) ToDataLakeConnectorOutput() DataLakeConnectorOu
 
 func (o DataLakeConnectorOutput) ToDataLakeConnectorOutputWithContext(ctx context.Context) DataLakeConnectorOutput {
 	return o
-}
-
-func (o DataLakeConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*DataLakeConnector] {
-	return pulumix.Output[*DataLakeConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // DataLake database format to use.

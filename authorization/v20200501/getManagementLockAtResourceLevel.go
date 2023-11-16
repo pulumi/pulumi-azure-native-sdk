@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the management lock of a resource or any level below resource.
@@ -101,12 +100,6 @@ func (o LookupManagementLockAtResourceLevelResultOutput) ToLookupManagementLockA
 
 func (o LookupManagementLockAtResourceLevelResultOutput) ToLookupManagementLockAtResourceLevelResultOutputWithContext(ctx context.Context) LookupManagementLockAtResourceLevelResultOutput {
 	return o
-}
-
-func (o LookupManagementLockAtResourceLevelResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagementLockAtResourceLevelResult] {
-	return pulumix.Output[LookupManagementLockAtResourceLevelResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource ID of the lock.

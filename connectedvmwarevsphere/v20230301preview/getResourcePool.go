@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Implements resourcePool GET method.
@@ -133,12 +132,6 @@ func (o LookupResourcePoolResultOutput) ToLookupResourcePoolResultOutput() Looku
 
 func (o LookupResourcePoolResultOutput) ToLookupResourcePoolResultOutputWithContext(ctx context.Context) LookupResourcePoolResultOutput {
 	return o
-}
-
-func (o LookupResourcePoolResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupResourcePoolResult] {
-	return pulumix.Output[LookupResourcePoolResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the max CPU usage across all cores on the pool in MHz.

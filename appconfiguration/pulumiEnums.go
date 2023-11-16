@@ -89,12 +89,6 @@ func (o CreateModeOutput) ToCreateModePtrOutputWithContext(ctx context.Context) 
 	}).(CreateModePtrOutput)
 }
 
-func (o CreateModeOutput) ToOutput(ctx context.Context) pulumix.Output[CreateMode] {
-	return pulumix.Output[CreateMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CreateModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -128,12 +122,6 @@ func (o CreateModePtrOutput) ToCreateModePtrOutput() CreateModePtrOutput {
 
 func (o CreateModePtrOutput) ToCreateModePtrOutputWithContext(ctx context.Context) CreateModePtrOutput {
 	return o
-}
-
-func (o CreateModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CreateMode] {
-	return pulumix.Output[*CreateMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CreateModePtrOutput) Elem() CreateModeOutput {

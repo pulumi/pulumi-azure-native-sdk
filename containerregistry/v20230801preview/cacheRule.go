@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An object that represents a cache rule for a container registry.
@@ -155,12 +154,6 @@ func (i *CacheRule) ToCacheRuleOutputWithContext(ctx context.Context) CacheRuleO
 	return pulumi.ToOutputWithContext(ctx, i).(CacheRuleOutput)
 }
 
-func (i *CacheRule) ToOutput(ctx context.Context) pulumix.Output[*CacheRule] {
-	return pulumix.Output[*CacheRule]{
-		OutputState: i.ToCacheRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CacheRuleOutput struct{ *pulumi.OutputState }
 
 func (CacheRuleOutput) ElementType() reflect.Type {
@@ -173,12 +166,6 @@ func (o CacheRuleOutput) ToCacheRuleOutput() CacheRuleOutput {
 
 func (o CacheRuleOutput) ToCacheRuleOutputWithContext(ctx context.Context) CacheRuleOutput {
 	return o
-}
-
-func (o CacheRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheRule] {
-	return pulumix.Output[*CacheRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation date of the cache rule.

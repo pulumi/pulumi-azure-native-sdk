@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Definition of the Runtime Environment type.
@@ -154,12 +153,6 @@ func (i *RuntimeEnvironment) ToRuntimeEnvironmentOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(RuntimeEnvironmentOutput)
 }
 
-func (i *RuntimeEnvironment) ToOutput(ctx context.Context) pulumix.Output[*RuntimeEnvironment] {
-	return pulumix.Output[*RuntimeEnvironment]{
-		OutputState: i.ToRuntimeEnvironmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RuntimeEnvironmentOutput struct{ *pulumi.OutputState }
 
 func (RuntimeEnvironmentOutput) ElementType() reflect.Type {
@@ -172,12 +165,6 @@ func (o RuntimeEnvironmentOutput) ToRuntimeEnvironmentOutput() RuntimeEnvironmen
 
 func (o RuntimeEnvironmentOutput) ToRuntimeEnvironmentOutputWithContext(ctx context.Context) RuntimeEnvironmentOutput {
 	return o
-}
-
-func (o RuntimeEnvironmentOutput) ToOutput(ctx context.Context) pulumix.Output[*RuntimeEnvironment] {
-	return pulumix.Output[*RuntimeEnvironment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of Default packages for Environment

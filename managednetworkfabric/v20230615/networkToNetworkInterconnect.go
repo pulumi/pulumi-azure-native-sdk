@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Network To Network Interconnect resource definition.
@@ -202,12 +201,6 @@ func (i *NetworkToNetworkInterconnect) ToNetworkToNetworkInterconnectOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkToNetworkInterconnectOutput)
 }
 
-func (i *NetworkToNetworkInterconnect) ToOutput(ctx context.Context) pulumix.Output[*NetworkToNetworkInterconnect] {
-	return pulumix.Output[*NetworkToNetworkInterconnect]{
-		OutputState: i.ToNetworkToNetworkInterconnectOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NetworkToNetworkInterconnectOutput struct{ *pulumi.OutputState }
 
 func (NetworkToNetworkInterconnectOutput) ElementType() reflect.Type {
@@ -220,12 +213,6 @@ func (o NetworkToNetworkInterconnectOutput) ToNetworkToNetworkInterconnectOutput
 
 func (o NetworkToNetworkInterconnectOutput) ToNetworkToNetworkInterconnectOutputWithContext(ctx context.Context) NetworkToNetworkInterconnectOutput {
 	return o
-}
-
-func (o NetworkToNetworkInterconnectOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkToNetworkInterconnect] {
-	return pulumix.Output[*NetworkToNetworkInterconnect]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Administrative state of the resource.

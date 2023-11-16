@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Template resource definition.
@@ -122,6 +121,9 @@ func NewContentTemplate(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:ContentTemplate"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:ContentTemplate"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -291,12 +293,6 @@ func (i *ContentTemplate) ToContentTemplateOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ContentTemplateOutput)
 }
 
-func (i *ContentTemplate) ToOutput(ctx context.Context) pulumix.Output[*ContentTemplate] {
-	return pulumix.Output[*ContentTemplate]{
-		OutputState: i.ToContentTemplateOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContentTemplateOutput struct{ *pulumi.OutputState }
 
 func (ContentTemplateOutput) ElementType() reflect.Type {
@@ -309,12 +305,6 @@ func (o ContentTemplateOutput) ToContentTemplateOutput() ContentTemplateOutput {
 
 func (o ContentTemplateOutput) ToContentTemplateOutputWithContext(ctx context.Context) ContentTemplateOutput {
 	return o
-}
-
-func (o ContentTemplateOutput) ToOutput(ctx context.Context) pulumix.Output[*ContentTemplate] {
-	return pulumix.Output[*ContentTemplate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creator of the content item.

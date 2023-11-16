@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -59,12 +58,6 @@ func (i AS2AcknowledgementConnectionSettingsArgs) ToAS2AcknowledgementConnection
 	return pulumi.ToOutputWithContext(ctx, i).(AS2AcknowledgementConnectionSettingsOutput)
 }
 
-func (i AS2AcknowledgementConnectionSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[AS2AcknowledgementConnectionSettings] {
-	return pulumix.Output[AS2AcknowledgementConnectionSettings]{
-		OutputState: i.ToAS2AcknowledgementConnectionSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AS2AcknowledgementConnectionSettingsArgs) ToAS2AcknowledgementConnectionSettingsPtrOutput() AS2AcknowledgementConnectionSettingsPtrOutput {
 	return i.ToAS2AcknowledgementConnectionSettingsPtrOutputWithContext(context.Background())
 }
@@ -106,12 +99,6 @@ func (i *as2acknowledgementConnectionSettingsPtrType) ToAS2AcknowledgementConnec
 	return pulumi.ToOutputWithContext(ctx, i).(AS2AcknowledgementConnectionSettingsPtrOutput)
 }
 
-func (i *as2acknowledgementConnectionSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AS2AcknowledgementConnectionSettings] {
-	return pulumix.Output[*AS2AcknowledgementConnectionSettings]{
-		OutputState: i.ToAS2AcknowledgementConnectionSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AS2AcknowledgementConnectionSettingsOutput struct{ *pulumi.OutputState }
 
 func (AS2AcknowledgementConnectionSettingsOutput) ElementType() reflect.Type {
@@ -134,12 +121,6 @@ func (o AS2AcknowledgementConnectionSettingsOutput) ToAS2AcknowledgementConnecti
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AS2AcknowledgementConnectionSettings) *AS2AcknowledgementConnectionSettings {
 		return &v
 	}).(AS2AcknowledgementConnectionSettingsPtrOutput)
-}
-
-func (o AS2AcknowledgementConnectionSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[AS2AcknowledgementConnectionSettings] {
-	return pulumix.Output[AS2AcknowledgementConnectionSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value indicating whether to ignore mismatch in certificate name.
@@ -174,12 +155,6 @@ func (o AS2AcknowledgementConnectionSettingsPtrOutput) ToAS2AcknowledgementConne
 
 func (o AS2AcknowledgementConnectionSettingsPtrOutput) ToAS2AcknowledgementConnectionSettingsPtrOutputWithContext(ctx context.Context) AS2AcknowledgementConnectionSettingsPtrOutput {
 	return o
-}
-
-func (o AS2AcknowledgementConnectionSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AS2AcknowledgementConnectionSettings] {
-	return pulumix.Output[*AS2AcknowledgementConnectionSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AS2AcknowledgementConnectionSettingsPtrOutput) Elem() AS2AcknowledgementConnectionSettingsOutput {
@@ -257,12 +232,6 @@ func (o AS2AcknowledgementConnectionSettingsResponseOutput) ToAS2Acknowledgement
 	return o
 }
 
-func (o AS2AcknowledgementConnectionSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AS2AcknowledgementConnectionSettingsResponse] {
-	return pulumix.Output[AS2AcknowledgementConnectionSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The value indicating whether to ignore mismatch in certificate name.
 func (o AS2AcknowledgementConnectionSettingsResponseOutput) IgnoreCertificateNameMismatch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AS2AcknowledgementConnectionSettingsResponse) *bool { return v.IgnoreCertificateNameMismatch }).(pulumi.BoolPtrOutput)
@@ -295,12 +264,6 @@ func (o AS2AcknowledgementConnectionSettingsResponsePtrOutput) ToAS2Acknowledgem
 
 func (o AS2AcknowledgementConnectionSettingsResponsePtrOutput) ToAS2AcknowledgementConnectionSettingsResponsePtrOutputWithContext(ctx context.Context) AS2AcknowledgementConnectionSettingsResponsePtrOutput {
 	return o
-}
-
-func (o AS2AcknowledgementConnectionSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AS2AcknowledgementConnectionSettingsResponse] {
-	return pulumix.Output[*AS2AcknowledgementConnectionSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AS2AcknowledgementConnectionSettingsResponsePtrOutput) Elem() AS2AcknowledgementConnectionSettingsResponseOutput {
@@ -390,12 +353,6 @@ func (i AS2AgreementContentArgs) ToAS2AgreementContentOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AS2AgreementContentOutput)
 }
 
-func (i AS2AgreementContentArgs) ToOutput(ctx context.Context) pulumix.Output[AS2AgreementContent] {
-	return pulumix.Output[AS2AgreementContent]{
-		OutputState: i.ToAS2AgreementContentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AS2AgreementContentArgs) ToAS2AgreementContentPtrOutput() AS2AgreementContentPtrOutput {
 	return i.ToAS2AgreementContentPtrOutputWithContext(context.Background())
 }
@@ -437,12 +394,6 @@ func (i *as2agreementContentPtrType) ToAS2AgreementContentPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(AS2AgreementContentPtrOutput)
 }
 
-func (i *as2agreementContentPtrType) ToOutput(ctx context.Context) pulumix.Output[*AS2AgreementContent] {
-	return pulumix.Output[*AS2AgreementContent]{
-		OutputState: i.ToAS2AgreementContentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AS2AgreementContentOutput struct{ *pulumi.OutputState }
 
 func (AS2AgreementContentOutput) ElementType() reflect.Type {
@@ -467,12 +418,6 @@ func (o AS2AgreementContentOutput) ToAS2AgreementContentPtrOutputWithContext(ctx
 	}).(AS2AgreementContentPtrOutput)
 }
 
-func (o AS2AgreementContentOutput) ToOutput(ctx context.Context) pulumix.Output[AS2AgreementContent] {
-	return pulumix.Output[AS2AgreementContent]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The AS2 one-way receive agreement.
 func (o AS2AgreementContentOutput) ReceiveAgreement() AS2OneWayAgreementPtrOutput {
 	return o.ApplyT(func(v AS2AgreementContent) *AS2OneWayAgreement { return v.ReceiveAgreement }).(AS2OneWayAgreementPtrOutput)
@@ -495,12 +440,6 @@ func (o AS2AgreementContentPtrOutput) ToAS2AgreementContentPtrOutput() AS2Agreem
 
 func (o AS2AgreementContentPtrOutput) ToAS2AgreementContentPtrOutputWithContext(ctx context.Context) AS2AgreementContentPtrOutput {
 	return o
-}
-
-func (o AS2AgreementContentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AS2AgreementContent] {
-	return pulumix.Output[*AS2AgreementContent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AS2AgreementContentPtrOutput) Elem() AS2AgreementContentOutput {
@@ -554,12 +493,6 @@ func (o AS2AgreementContentResponseOutput) ToAS2AgreementContentResponseOutputWi
 	return o
 }
 
-func (o AS2AgreementContentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AS2AgreementContentResponse] {
-	return pulumix.Output[AS2AgreementContentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The AS2 one-way receive agreement.
 func (o AS2AgreementContentResponseOutput) ReceiveAgreement() AS2OneWayAgreementResponsePtrOutput {
 	return o.ApplyT(func(v AS2AgreementContentResponse) *AS2OneWayAgreementResponse { return v.ReceiveAgreement }).(AS2OneWayAgreementResponsePtrOutput)
@@ -582,12 +515,6 @@ func (o AS2AgreementContentResponsePtrOutput) ToAS2AgreementContentResponsePtrOu
 
 func (o AS2AgreementContentResponsePtrOutput) ToAS2AgreementContentResponsePtrOutputWithContext(ctx context.Context) AS2AgreementContentResponsePtrOutput {
 	return o
-}
-
-func (o AS2AgreementContentResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AS2AgreementContentResponse] {
-	return pulumix.Output[*AS2AgreementContentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AS2AgreementContentResponsePtrOutput) Elem() AS2AgreementContentResponseOutput {
@@ -669,12 +596,6 @@ func (i AS2EnvelopeSettingsArgs) ToAS2EnvelopeSettingsOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AS2EnvelopeSettingsOutput)
 }
 
-func (i AS2EnvelopeSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[AS2EnvelopeSettings] {
-	return pulumix.Output[AS2EnvelopeSettings]{
-		OutputState: i.ToAS2EnvelopeSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AS2EnvelopeSettingsArgs) ToAS2EnvelopeSettingsPtrOutput() AS2EnvelopeSettingsPtrOutput {
 	return i.ToAS2EnvelopeSettingsPtrOutputWithContext(context.Background())
 }
@@ -716,12 +637,6 @@ func (i *as2envelopeSettingsPtrType) ToAS2EnvelopeSettingsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(AS2EnvelopeSettingsPtrOutput)
 }
 
-func (i *as2envelopeSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AS2EnvelopeSettings] {
-	return pulumix.Output[*AS2EnvelopeSettings]{
-		OutputState: i.ToAS2EnvelopeSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AS2EnvelopeSettingsOutput struct{ *pulumi.OutputState }
 
 func (AS2EnvelopeSettingsOutput) ElementType() reflect.Type {
@@ -744,12 +659,6 @@ func (o AS2EnvelopeSettingsOutput) ToAS2EnvelopeSettingsPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AS2EnvelopeSettings) *AS2EnvelopeSettings {
 		return &v
 	}).(AS2EnvelopeSettingsPtrOutput)
-}
-
-func (o AS2EnvelopeSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[AS2EnvelopeSettings] {
-	return pulumix.Output[AS2EnvelopeSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value indicating whether to auto generate file name.
@@ -789,12 +698,6 @@ func (o AS2EnvelopeSettingsPtrOutput) ToAS2EnvelopeSettingsPtrOutput() AS2Envelo
 
 func (o AS2EnvelopeSettingsPtrOutput) ToAS2EnvelopeSettingsPtrOutputWithContext(ctx context.Context) AS2EnvelopeSettingsPtrOutput {
 	return o
-}
-
-func (o AS2EnvelopeSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AS2EnvelopeSettings] {
-	return pulumix.Output[*AS2EnvelopeSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AS2EnvelopeSettingsPtrOutput) Elem() AS2EnvelopeSettingsOutput {
@@ -884,12 +787,6 @@ func (o AS2EnvelopeSettingsResponseOutput) ToAS2EnvelopeSettingsResponseOutputWi
 	return o
 }
 
-func (o AS2EnvelopeSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AS2EnvelopeSettingsResponse] {
-	return pulumix.Output[AS2EnvelopeSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The value indicating whether to auto generate file name.
 func (o AS2EnvelopeSettingsResponseOutput) AutogenerateFileName() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AS2EnvelopeSettingsResponse) *bool { return v.AutogenerateFileName }).(pulumi.BoolPtrOutput)
@@ -927,12 +824,6 @@ func (o AS2EnvelopeSettingsResponsePtrOutput) ToAS2EnvelopeSettingsResponsePtrOu
 
 func (o AS2EnvelopeSettingsResponsePtrOutput) ToAS2EnvelopeSettingsResponsePtrOutputWithContext(ctx context.Context) AS2EnvelopeSettingsResponsePtrOutput {
 	return o
-}
-
-func (o AS2EnvelopeSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AS2EnvelopeSettingsResponse] {
-	return pulumix.Output[*AS2EnvelopeSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AS2EnvelopeSettingsResponsePtrOutput) Elem() AS2EnvelopeSettingsResponseOutput {
@@ -1032,12 +923,6 @@ func (i AS2ErrorSettingsArgs) ToAS2ErrorSettingsOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AS2ErrorSettingsOutput)
 }
 
-func (i AS2ErrorSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[AS2ErrorSettings] {
-	return pulumix.Output[AS2ErrorSettings]{
-		OutputState: i.ToAS2ErrorSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AS2ErrorSettingsArgs) ToAS2ErrorSettingsPtrOutput() AS2ErrorSettingsPtrOutput {
 	return i.ToAS2ErrorSettingsPtrOutputWithContext(context.Background())
 }
@@ -1079,12 +964,6 @@ func (i *as2errorSettingsPtrType) ToAS2ErrorSettingsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AS2ErrorSettingsPtrOutput)
 }
 
-func (i *as2errorSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AS2ErrorSettings] {
-	return pulumix.Output[*AS2ErrorSettings]{
-		OutputState: i.ToAS2ErrorSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AS2ErrorSettingsOutput struct{ *pulumi.OutputState }
 
 func (AS2ErrorSettingsOutput) ElementType() reflect.Type {
@@ -1109,12 +988,6 @@ func (o AS2ErrorSettingsOutput) ToAS2ErrorSettingsPtrOutputWithContext(ctx conte
 	}).(AS2ErrorSettingsPtrOutput)
 }
 
-func (o AS2ErrorSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[AS2ErrorSettings] {
-	return pulumix.Output[AS2ErrorSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The value indicating whether to resend message If MDN is not received.
 func (o AS2ErrorSettingsOutput) ResendIfMdnNotReceived() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AS2ErrorSettings) *bool { return v.ResendIfMdnNotReceived }).(pulumi.BoolPtrOutput)
@@ -1137,12 +1010,6 @@ func (o AS2ErrorSettingsPtrOutput) ToAS2ErrorSettingsPtrOutput() AS2ErrorSetting
 
 func (o AS2ErrorSettingsPtrOutput) ToAS2ErrorSettingsPtrOutputWithContext(ctx context.Context) AS2ErrorSettingsPtrOutput {
 	return o
-}
-
-func (o AS2ErrorSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AS2ErrorSettings] {
-	return pulumix.Output[*AS2ErrorSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AS2ErrorSettingsPtrOutput) Elem() AS2ErrorSettingsOutput {
@@ -1196,12 +1063,6 @@ func (o AS2ErrorSettingsResponseOutput) ToAS2ErrorSettingsResponseOutputWithCont
 	return o
 }
 
-func (o AS2ErrorSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AS2ErrorSettingsResponse] {
-	return pulumix.Output[AS2ErrorSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The value indicating whether to resend message If MDN is not received.
 func (o AS2ErrorSettingsResponseOutput) ResendIfMdnNotReceived() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AS2ErrorSettingsResponse) *bool { return v.ResendIfMdnNotReceived }).(pulumi.BoolPtrOutput)
@@ -1224,12 +1085,6 @@ func (o AS2ErrorSettingsResponsePtrOutput) ToAS2ErrorSettingsResponsePtrOutput()
 
 func (o AS2ErrorSettingsResponsePtrOutput) ToAS2ErrorSettingsResponsePtrOutputWithContext(ctx context.Context) AS2ErrorSettingsResponsePtrOutput {
 	return o
-}
-
-func (o AS2ErrorSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AS2ErrorSettingsResponse] {
-	return pulumix.Output[*AS2ErrorSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AS2ErrorSettingsResponsePtrOutput) Elem() AS2ErrorSettingsResponseOutput {
@@ -1327,12 +1182,6 @@ func (i AS2MdnSettingsArgs) ToAS2MdnSettingsOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AS2MdnSettingsOutput)
 }
 
-func (i AS2MdnSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[AS2MdnSettings] {
-	return pulumix.Output[AS2MdnSettings]{
-		OutputState: i.ToAS2MdnSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AS2MdnSettingsArgs) ToAS2MdnSettingsPtrOutput() AS2MdnSettingsPtrOutput {
 	return i.ToAS2MdnSettingsPtrOutputWithContext(context.Background())
 }
@@ -1374,12 +1223,6 @@ func (i *as2mdnSettingsPtrType) ToAS2MdnSettingsPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(AS2MdnSettingsPtrOutput)
 }
 
-func (i *as2mdnSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AS2MdnSettings] {
-	return pulumix.Output[*AS2MdnSettings]{
-		OutputState: i.ToAS2MdnSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AS2MdnSettingsOutput struct{ *pulumi.OutputState }
 
 func (AS2MdnSettingsOutput) ElementType() reflect.Type {
@@ -1402,12 +1245,6 @@ func (o AS2MdnSettingsOutput) ToAS2MdnSettingsPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AS2MdnSettings) *AS2MdnSettings {
 		return &v
 	}).(AS2MdnSettingsPtrOutput)
-}
-
-func (o AS2MdnSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[AS2MdnSettings] {
-	return pulumix.Output[AS2MdnSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The disposition notification to header value.
@@ -1467,12 +1304,6 @@ func (o AS2MdnSettingsPtrOutput) ToAS2MdnSettingsPtrOutput() AS2MdnSettingsPtrOu
 
 func (o AS2MdnSettingsPtrOutput) ToAS2MdnSettingsPtrOutputWithContext(ctx context.Context) AS2MdnSettingsPtrOutput {
 	return o
-}
-
-func (o AS2MdnSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AS2MdnSettings] {
-	return pulumix.Output[*AS2MdnSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AS2MdnSettingsPtrOutput) Elem() AS2MdnSettingsOutput {
@@ -1610,12 +1441,6 @@ func (o AS2MdnSettingsResponseOutput) ToAS2MdnSettingsResponseOutputWithContext(
 	return o
 }
 
-func (o AS2MdnSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AS2MdnSettingsResponse] {
-	return pulumix.Output[AS2MdnSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The disposition notification to header value.
 func (o AS2MdnSettingsResponseOutput) DispositionNotificationTo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AS2MdnSettingsResponse) *string { return v.DispositionNotificationTo }).(pulumi.StringPtrOutput)
@@ -1673,12 +1498,6 @@ func (o AS2MdnSettingsResponsePtrOutput) ToAS2MdnSettingsResponsePtrOutput() AS2
 
 func (o AS2MdnSettingsResponsePtrOutput) ToAS2MdnSettingsResponsePtrOutputWithContext(ctx context.Context) AS2MdnSettingsResponsePtrOutput {
 	return o
-}
-
-func (o AS2MdnSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AS2MdnSettingsResponse] {
-	return pulumix.Output[*AS2MdnSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AS2MdnSettingsResponsePtrOutput) Elem() AS2MdnSettingsResponseOutput {
@@ -1826,12 +1645,6 @@ func (i AS2MessageConnectionSettingsArgs) ToAS2MessageConnectionSettingsOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(AS2MessageConnectionSettingsOutput)
 }
 
-func (i AS2MessageConnectionSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[AS2MessageConnectionSettings] {
-	return pulumix.Output[AS2MessageConnectionSettings]{
-		OutputState: i.ToAS2MessageConnectionSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AS2MessageConnectionSettingsArgs) ToAS2MessageConnectionSettingsPtrOutput() AS2MessageConnectionSettingsPtrOutput {
 	return i.ToAS2MessageConnectionSettingsPtrOutputWithContext(context.Background())
 }
@@ -1873,12 +1686,6 @@ func (i *as2messageConnectionSettingsPtrType) ToAS2MessageConnectionSettingsPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(AS2MessageConnectionSettingsPtrOutput)
 }
 
-func (i *as2messageConnectionSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AS2MessageConnectionSettings] {
-	return pulumix.Output[*AS2MessageConnectionSettings]{
-		OutputState: i.ToAS2MessageConnectionSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AS2MessageConnectionSettingsOutput struct{ *pulumi.OutputState }
 
 func (AS2MessageConnectionSettingsOutput) ElementType() reflect.Type {
@@ -1901,12 +1708,6 @@ func (o AS2MessageConnectionSettingsOutput) ToAS2MessageConnectionSettingsPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AS2MessageConnectionSettings) *AS2MessageConnectionSettings {
 		return &v
 	}).(AS2MessageConnectionSettingsPtrOutput)
-}
-
-func (o AS2MessageConnectionSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[AS2MessageConnectionSettings] {
-	return pulumix.Output[AS2MessageConnectionSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value indicating whether to ignore mismatch in certificate name.
@@ -1941,12 +1742,6 @@ func (o AS2MessageConnectionSettingsPtrOutput) ToAS2MessageConnectionSettingsPtr
 
 func (o AS2MessageConnectionSettingsPtrOutput) ToAS2MessageConnectionSettingsPtrOutputWithContext(ctx context.Context) AS2MessageConnectionSettingsPtrOutput {
 	return o
-}
-
-func (o AS2MessageConnectionSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AS2MessageConnectionSettings] {
-	return pulumix.Output[*AS2MessageConnectionSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AS2MessageConnectionSettingsPtrOutput) Elem() AS2MessageConnectionSettingsOutput {
@@ -2024,12 +1819,6 @@ func (o AS2MessageConnectionSettingsResponseOutput) ToAS2MessageConnectionSettin
 	return o
 }
 
-func (o AS2MessageConnectionSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AS2MessageConnectionSettingsResponse] {
-	return pulumix.Output[AS2MessageConnectionSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The value indicating whether to ignore mismatch in certificate name.
 func (o AS2MessageConnectionSettingsResponseOutput) IgnoreCertificateNameMismatch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AS2MessageConnectionSettingsResponse) *bool { return v.IgnoreCertificateNameMismatch }).(pulumi.BoolPtrOutput)
@@ -2062,12 +1851,6 @@ func (o AS2MessageConnectionSettingsResponsePtrOutput) ToAS2MessageConnectionSet
 
 func (o AS2MessageConnectionSettingsResponsePtrOutput) ToAS2MessageConnectionSettingsResponsePtrOutputWithContext(ctx context.Context) AS2MessageConnectionSettingsResponsePtrOutput {
 	return o
-}
-
-func (o AS2MessageConnectionSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AS2MessageConnectionSettingsResponse] {
-	return pulumix.Output[*AS2MessageConnectionSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AS2MessageConnectionSettingsResponsePtrOutput) Elem() AS2MessageConnectionSettingsResponseOutput {
@@ -2161,12 +1944,6 @@ func (i AS2OneWayAgreementArgs) ToAS2OneWayAgreementOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AS2OneWayAgreementOutput)
 }
 
-func (i AS2OneWayAgreementArgs) ToOutput(ctx context.Context) pulumix.Output[AS2OneWayAgreement] {
-	return pulumix.Output[AS2OneWayAgreement]{
-		OutputState: i.ToAS2OneWayAgreementOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AS2OneWayAgreementArgs) ToAS2OneWayAgreementPtrOutput() AS2OneWayAgreementPtrOutput {
 	return i.ToAS2OneWayAgreementPtrOutputWithContext(context.Background())
 }
@@ -2208,12 +1985,6 @@ func (i *as2oneWayAgreementPtrType) ToAS2OneWayAgreementPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(AS2OneWayAgreementPtrOutput)
 }
 
-func (i *as2oneWayAgreementPtrType) ToOutput(ctx context.Context) pulumix.Output[*AS2OneWayAgreement] {
-	return pulumix.Output[*AS2OneWayAgreement]{
-		OutputState: i.ToAS2OneWayAgreementPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AS2OneWayAgreementOutput struct{ *pulumi.OutputState }
 
 func (AS2OneWayAgreementOutput) ElementType() reflect.Type {
@@ -2236,12 +2007,6 @@ func (o AS2OneWayAgreementOutput) ToAS2OneWayAgreementPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AS2OneWayAgreement) *AS2OneWayAgreement {
 		return &v
 	}).(AS2OneWayAgreementPtrOutput)
-}
-
-func (o AS2OneWayAgreementOutput) ToOutput(ctx context.Context) pulumix.Output[AS2OneWayAgreement] {
-	return pulumix.Output[AS2OneWayAgreement]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The AS2 protocol settings.
@@ -2271,12 +2036,6 @@ func (o AS2OneWayAgreementPtrOutput) ToAS2OneWayAgreementPtrOutput() AS2OneWayAg
 
 func (o AS2OneWayAgreementPtrOutput) ToAS2OneWayAgreementPtrOutputWithContext(ctx context.Context) AS2OneWayAgreementPtrOutput {
 	return o
-}
-
-func (o AS2OneWayAgreementPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AS2OneWayAgreement] {
-	return pulumix.Output[*AS2OneWayAgreement]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AS2OneWayAgreementPtrOutput) Elem() AS2OneWayAgreementOutput {
@@ -2342,12 +2101,6 @@ func (o AS2OneWayAgreementResponseOutput) ToAS2OneWayAgreementResponseOutputWith
 	return o
 }
 
-func (o AS2OneWayAgreementResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AS2OneWayAgreementResponse] {
-	return pulumix.Output[AS2OneWayAgreementResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The AS2 protocol settings.
 func (o AS2OneWayAgreementResponseOutput) ProtocolSettings() AS2ProtocolSettingsResponsePtrOutput {
 	return o.ApplyT(func(v AS2OneWayAgreementResponse) *AS2ProtocolSettingsResponse { return v.ProtocolSettings }).(AS2ProtocolSettingsResponsePtrOutput)
@@ -2375,12 +2128,6 @@ func (o AS2OneWayAgreementResponsePtrOutput) ToAS2OneWayAgreementResponsePtrOutp
 
 func (o AS2OneWayAgreementResponsePtrOutput) ToAS2OneWayAgreementResponsePtrOutputWithContext(ctx context.Context) AS2OneWayAgreementResponsePtrOutput {
 	return o
-}
-
-func (o AS2OneWayAgreementResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AS2OneWayAgreementResponse] {
-	return pulumix.Output[*AS2OneWayAgreementResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AS2OneWayAgreementResponsePtrOutput) Elem() AS2OneWayAgreementResponseOutput {
@@ -2480,12 +2227,6 @@ func (i AS2ProtocolSettingsArgs) ToAS2ProtocolSettingsOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AS2ProtocolSettingsOutput)
 }
 
-func (i AS2ProtocolSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[AS2ProtocolSettings] {
-	return pulumix.Output[AS2ProtocolSettings]{
-		OutputState: i.ToAS2ProtocolSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AS2ProtocolSettingsArgs) ToAS2ProtocolSettingsPtrOutput() AS2ProtocolSettingsPtrOutput {
 	return i.ToAS2ProtocolSettingsPtrOutputWithContext(context.Background())
 }
@@ -2527,12 +2268,6 @@ func (i *as2protocolSettingsPtrType) ToAS2ProtocolSettingsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(AS2ProtocolSettingsPtrOutput)
 }
 
-func (i *as2protocolSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AS2ProtocolSettings] {
-	return pulumix.Output[*AS2ProtocolSettings]{
-		OutputState: i.ToAS2ProtocolSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AS2ProtocolSettingsOutput struct{ *pulumi.OutputState }
 
 func (AS2ProtocolSettingsOutput) ElementType() reflect.Type {
@@ -2555,12 +2290,6 @@ func (o AS2ProtocolSettingsOutput) ToAS2ProtocolSettingsPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AS2ProtocolSettings) *AS2ProtocolSettings {
 		return &v
 	}).(AS2ProtocolSettingsPtrOutput)
-}
-
-func (o AS2ProtocolSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[AS2ProtocolSettings] {
-	return pulumix.Output[AS2ProtocolSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The acknowledgement connection settings.
@@ -2612,12 +2341,6 @@ func (o AS2ProtocolSettingsPtrOutput) ToAS2ProtocolSettingsPtrOutput() AS2Protoc
 
 func (o AS2ProtocolSettingsPtrOutput) ToAS2ProtocolSettingsPtrOutputWithContext(ctx context.Context) AS2ProtocolSettingsPtrOutput {
 	return o
-}
-
-func (o AS2ProtocolSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AS2ProtocolSettings] {
-	return pulumix.Output[*AS2ProtocolSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AS2ProtocolSettingsPtrOutput) Elem() AS2ProtocolSettingsOutput {
@@ -2731,12 +2454,6 @@ func (o AS2ProtocolSettingsResponseOutput) ToAS2ProtocolSettingsResponseOutputWi
 	return o
 }
 
-func (o AS2ProtocolSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AS2ProtocolSettingsResponse] {
-	return pulumix.Output[AS2ProtocolSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The acknowledgement connection settings.
 func (o AS2ProtocolSettingsResponseOutput) AcknowledgementConnectionSettings() AS2AcknowledgementConnectionSettingsResponsePtrOutput {
 	return o.ApplyT(func(v AS2ProtocolSettingsResponse) *AS2AcknowledgementConnectionSettingsResponse {
@@ -2788,12 +2505,6 @@ func (o AS2ProtocolSettingsResponsePtrOutput) ToAS2ProtocolSettingsResponsePtrOu
 
 func (o AS2ProtocolSettingsResponsePtrOutput) ToAS2ProtocolSettingsResponsePtrOutputWithContext(ctx context.Context) AS2ProtocolSettingsResponsePtrOutput {
 	return o
-}
-
-func (o AS2ProtocolSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AS2ProtocolSettingsResponse] {
-	return pulumix.Output[*AS2ProtocolSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AS2ProtocolSettingsResponsePtrOutput) Elem() AS2ProtocolSettingsResponseOutput {
@@ -2941,12 +2652,6 @@ func (i AS2SecuritySettingsArgs) ToAS2SecuritySettingsOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AS2SecuritySettingsOutput)
 }
 
-func (i AS2SecuritySettingsArgs) ToOutput(ctx context.Context) pulumix.Output[AS2SecuritySettings] {
-	return pulumix.Output[AS2SecuritySettings]{
-		OutputState: i.ToAS2SecuritySettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AS2SecuritySettingsArgs) ToAS2SecuritySettingsPtrOutput() AS2SecuritySettingsPtrOutput {
 	return i.ToAS2SecuritySettingsPtrOutputWithContext(context.Background())
 }
@@ -2988,12 +2693,6 @@ func (i *as2securitySettingsPtrType) ToAS2SecuritySettingsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(AS2SecuritySettingsPtrOutput)
 }
 
-func (i *as2securitySettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AS2SecuritySettings] {
-	return pulumix.Output[*AS2SecuritySettings]{
-		OutputState: i.ToAS2SecuritySettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AS2SecuritySettingsOutput struct{ *pulumi.OutputState }
 
 func (AS2SecuritySettingsOutput) ElementType() reflect.Type {
@@ -3016,12 +2715,6 @@ func (o AS2SecuritySettingsOutput) ToAS2SecuritySettingsPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AS2SecuritySettings) *AS2SecuritySettings {
 		return &v
 	}).(AS2SecuritySettingsPtrOutput)
-}
-
-func (o AS2SecuritySettingsOutput) ToOutput(ctx context.Context) pulumix.Output[AS2SecuritySettings] {
-	return pulumix.Output[AS2SecuritySettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value indicating whether to enable NRR for inbound decoded messages.
@@ -3081,12 +2774,6 @@ func (o AS2SecuritySettingsPtrOutput) ToAS2SecuritySettingsPtrOutput() AS2Securi
 
 func (o AS2SecuritySettingsPtrOutput) ToAS2SecuritySettingsPtrOutputWithContext(ctx context.Context) AS2SecuritySettingsPtrOutput {
 	return o
-}
-
-func (o AS2SecuritySettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AS2SecuritySettings] {
-	return pulumix.Output[*AS2SecuritySettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AS2SecuritySettingsPtrOutput) Elem() AS2SecuritySettingsOutput {
@@ -3224,12 +2911,6 @@ func (o AS2SecuritySettingsResponseOutput) ToAS2SecuritySettingsResponseOutputWi
 	return o
 }
 
-func (o AS2SecuritySettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AS2SecuritySettingsResponse] {
-	return pulumix.Output[AS2SecuritySettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The value indicating whether to enable NRR for inbound decoded messages.
 func (o AS2SecuritySettingsResponseOutput) EnableNrrForInboundDecodedMessages() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AS2SecuritySettingsResponse) *bool { return v.EnableNrrForInboundDecodedMessages }).(pulumi.BoolPtrOutput)
@@ -3287,12 +2968,6 @@ func (o AS2SecuritySettingsResponsePtrOutput) ToAS2SecuritySettingsResponsePtrOu
 
 func (o AS2SecuritySettingsResponsePtrOutput) ToAS2SecuritySettingsResponsePtrOutputWithContext(ctx context.Context) AS2SecuritySettingsResponsePtrOutput {
 	return o
-}
-
-func (o AS2SecuritySettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AS2SecuritySettingsResponse] {
-	return pulumix.Output[*AS2SecuritySettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AS2SecuritySettingsResponsePtrOutput) Elem() AS2SecuritySettingsResponseOutput {
@@ -3460,12 +3135,6 @@ func (i AS2ValidationSettingsArgs) ToAS2ValidationSettingsOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(AS2ValidationSettingsOutput)
 }
 
-func (i AS2ValidationSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[AS2ValidationSettings] {
-	return pulumix.Output[AS2ValidationSettings]{
-		OutputState: i.ToAS2ValidationSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AS2ValidationSettingsArgs) ToAS2ValidationSettingsPtrOutput() AS2ValidationSettingsPtrOutput {
 	return i.ToAS2ValidationSettingsPtrOutputWithContext(context.Background())
 }
@@ -3507,12 +3176,6 @@ func (i *as2validationSettingsPtrType) ToAS2ValidationSettingsPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(AS2ValidationSettingsPtrOutput)
 }
 
-func (i *as2validationSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AS2ValidationSettings] {
-	return pulumix.Output[*AS2ValidationSettings]{
-		OutputState: i.ToAS2ValidationSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AS2ValidationSettingsOutput struct{ *pulumi.OutputState }
 
 func (AS2ValidationSettingsOutput) ElementType() reflect.Type {
@@ -3535,12 +3198,6 @@ func (o AS2ValidationSettingsOutput) ToAS2ValidationSettingsPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AS2ValidationSettings) *AS2ValidationSettings {
 		return &v
 	}).(AS2ValidationSettingsPtrOutput)
-}
-
-func (o AS2ValidationSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[AS2ValidationSettings] {
-	return pulumix.Output[AS2ValidationSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value indicating whether to check for certificate revocation list on receive.
@@ -3600,12 +3257,6 @@ func (o AS2ValidationSettingsPtrOutput) ToAS2ValidationSettingsPtrOutput() AS2Va
 
 func (o AS2ValidationSettingsPtrOutput) ToAS2ValidationSettingsPtrOutputWithContext(ctx context.Context) AS2ValidationSettingsPtrOutput {
 	return o
-}
-
-func (o AS2ValidationSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AS2ValidationSettings] {
-	return pulumix.Output[*AS2ValidationSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AS2ValidationSettingsPtrOutput) Elem() AS2ValidationSettingsOutput {
@@ -3743,12 +3394,6 @@ func (o AS2ValidationSettingsResponseOutput) ToAS2ValidationSettingsResponseOutp
 	return o
 }
 
-func (o AS2ValidationSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AS2ValidationSettingsResponse] {
-	return pulumix.Output[AS2ValidationSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The value indicating whether to check for certificate revocation list on receive.
 func (o AS2ValidationSettingsResponseOutput) CheckCertificateRevocationListOnReceive() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AS2ValidationSettingsResponse) *bool { return v.CheckCertificateRevocationListOnReceive }).(pulumi.BoolPtrOutput)
@@ -3806,12 +3451,6 @@ func (o AS2ValidationSettingsResponsePtrOutput) ToAS2ValidationSettingsResponseP
 
 func (o AS2ValidationSettingsResponsePtrOutput) ToAS2ValidationSettingsResponsePtrOutputWithContext(ctx context.Context) AS2ValidationSettingsResponsePtrOutput {
 	return o
-}
-
-func (o AS2ValidationSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AS2ValidationSettingsResponse] {
-	return pulumix.Output[*AS2ValidationSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AS2ValidationSettingsResponsePtrOutput) Elem() AS2ValidationSettingsResponseOutput {
@@ -3955,12 +3594,6 @@ func (i AgreementContentArgs) ToAgreementContentOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AgreementContentOutput)
 }
 
-func (i AgreementContentArgs) ToOutput(ctx context.Context) pulumix.Output[AgreementContent] {
-	return pulumix.Output[AgreementContent]{
-		OutputState: i.ToAgreementContentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AgreementContentArgs) ToAgreementContentPtrOutput() AgreementContentPtrOutput {
 	return i.ToAgreementContentPtrOutputWithContext(context.Background())
 }
@@ -4002,12 +3635,6 @@ func (i *agreementContentPtrType) ToAgreementContentPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AgreementContentPtrOutput)
 }
 
-func (i *agreementContentPtrType) ToOutput(ctx context.Context) pulumix.Output[*AgreementContent] {
-	return pulumix.Output[*AgreementContent]{
-		OutputState: i.ToAgreementContentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AgreementContentOutput struct{ *pulumi.OutputState }
 
 func (AgreementContentOutput) ElementType() reflect.Type {
@@ -4030,12 +3657,6 @@ func (o AgreementContentOutput) ToAgreementContentPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgreementContent) *AgreementContent {
 		return &v
 	}).(AgreementContentPtrOutput)
-}
-
-func (o AgreementContentOutput) ToOutput(ctx context.Context) pulumix.Output[AgreementContent] {
-	return pulumix.Output[AgreementContent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The AS2 agreement content.
@@ -4065,12 +3686,6 @@ func (o AgreementContentPtrOutput) ToAgreementContentPtrOutput() AgreementConten
 
 func (o AgreementContentPtrOutput) ToAgreementContentPtrOutputWithContext(ctx context.Context) AgreementContentPtrOutput {
 	return o
-}
-
-func (o AgreementContentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgreementContent] {
-	return pulumix.Output[*AgreementContent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AgreementContentPtrOutput) Elem() AgreementContentOutput {
@@ -4136,12 +3751,6 @@ func (o AgreementContentResponseOutput) ToAgreementContentResponseOutputWithCont
 	return o
 }
 
-func (o AgreementContentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AgreementContentResponse] {
-	return pulumix.Output[AgreementContentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The AS2 agreement content.
 func (o AgreementContentResponseOutput) AS2() AS2AgreementContentResponsePtrOutput {
 	return o.ApplyT(func(v AgreementContentResponse) *AS2AgreementContentResponse { return v.AS2 }).(AS2AgreementContentResponsePtrOutput)
@@ -4169,12 +3778,6 @@ func (o AgreementContentResponsePtrOutput) ToAgreementContentResponsePtrOutput()
 
 func (o AgreementContentResponsePtrOutput) ToAgreementContentResponsePtrOutputWithContext(ctx context.Context) AgreementContentResponsePtrOutput {
 	return o
-}
-
-func (o AgreementContentResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgreementContentResponse] {
-	return pulumix.Output[*AgreementContentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AgreementContentResponsePtrOutput) Elem() AgreementContentResponseOutput {
@@ -4250,12 +3853,6 @@ func (i B2BPartnerContentArgs) ToB2BPartnerContentOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(B2BPartnerContentOutput)
 }
 
-func (i B2BPartnerContentArgs) ToOutput(ctx context.Context) pulumix.Output[B2BPartnerContent] {
-	return pulumix.Output[B2BPartnerContent]{
-		OutputState: i.ToB2BPartnerContentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i B2BPartnerContentArgs) ToB2BPartnerContentPtrOutput() B2BPartnerContentPtrOutput {
 	return i.ToB2BPartnerContentPtrOutputWithContext(context.Background())
 }
@@ -4297,12 +3894,6 @@ func (i *b2bpartnerContentPtrType) ToB2BPartnerContentPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(B2BPartnerContentPtrOutput)
 }
 
-func (i *b2bpartnerContentPtrType) ToOutput(ctx context.Context) pulumix.Output[*B2BPartnerContent] {
-	return pulumix.Output[*B2BPartnerContent]{
-		OutputState: i.ToB2BPartnerContentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type B2BPartnerContentOutput struct{ *pulumi.OutputState }
 
 func (B2BPartnerContentOutput) ElementType() reflect.Type {
@@ -4327,12 +3918,6 @@ func (o B2BPartnerContentOutput) ToB2BPartnerContentPtrOutputWithContext(ctx con
 	}).(B2BPartnerContentPtrOutput)
 }
 
-func (o B2BPartnerContentOutput) ToOutput(ctx context.Context) pulumix.Output[B2BPartnerContent] {
-	return pulumix.Output[B2BPartnerContent]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of partner business identities.
 func (o B2BPartnerContentOutput) BusinessIdentities() BusinessIdentityArrayOutput {
 	return o.ApplyT(func(v B2BPartnerContent) []BusinessIdentity { return v.BusinessIdentities }).(BusinessIdentityArrayOutput)
@@ -4350,12 +3935,6 @@ func (o B2BPartnerContentPtrOutput) ToB2BPartnerContentPtrOutput() B2BPartnerCon
 
 func (o B2BPartnerContentPtrOutput) ToB2BPartnerContentPtrOutputWithContext(ctx context.Context) B2BPartnerContentPtrOutput {
 	return o
-}
-
-func (o B2BPartnerContentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*B2BPartnerContent] {
-	return pulumix.Output[*B2BPartnerContent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o B2BPartnerContentPtrOutput) Elem() B2BPartnerContentOutput {
@@ -4397,12 +3976,6 @@ func (o B2BPartnerContentResponseOutput) ToB2BPartnerContentResponseOutputWithCo
 	return o
 }
 
-func (o B2BPartnerContentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[B2BPartnerContentResponse] {
-	return pulumix.Output[B2BPartnerContentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of partner business identities.
 func (o B2BPartnerContentResponseOutput) BusinessIdentities() BusinessIdentityResponseArrayOutput {
 	return o.ApplyT(func(v B2BPartnerContentResponse) []BusinessIdentityResponse { return v.BusinessIdentities }).(BusinessIdentityResponseArrayOutput)
@@ -4420,12 +3993,6 @@ func (o B2BPartnerContentResponsePtrOutput) ToB2BPartnerContentResponsePtrOutput
 
 func (o B2BPartnerContentResponsePtrOutput) ToB2BPartnerContentResponsePtrOutputWithContext(ctx context.Context) B2BPartnerContentResponsePtrOutput {
 	return o
-}
-
-func (o B2BPartnerContentResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*B2BPartnerContentResponse] {
-	return pulumix.Output[*B2BPartnerContentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o B2BPartnerContentResponsePtrOutput) Elem() B2BPartnerContentResponseOutput {
@@ -4485,12 +4052,6 @@ func (i BusinessIdentityArgs) ToBusinessIdentityOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(BusinessIdentityOutput)
 }
 
-func (i BusinessIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[BusinessIdentity] {
-	return pulumix.Output[BusinessIdentity]{
-		OutputState: i.ToBusinessIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BusinessIdentityArgs) ToBusinessIdentityPtrOutput() BusinessIdentityPtrOutput {
 	return i.ToBusinessIdentityPtrOutputWithContext(context.Background())
 }
@@ -4532,12 +4093,6 @@ func (i *businessIdentityPtrType) ToBusinessIdentityPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(BusinessIdentityPtrOutput)
 }
 
-func (i *businessIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*BusinessIdentity] {
-	return pulumix.Output[*BusinessIdentity]{
-		OutputState: i.ToBusinessIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BusinessIdentityArrayInput is an input type that accepts BusinessIdentityArray and BusinessIdentityArrayOutput values.
 // You can construct a concrete instance of `BusinessIdentityArrayInput` via:
 //
@@ -4561,12 +4116,6 @@ func (i BusinessIdentityArray) ToBusinessIdentityArrayOutput() BusinessIdentityA
 
 func (i BusinessIdentityArray) ToBusinessIdentityArrayOutputWithContext(ctx context.Context) BusinessIdentityArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BusinessIdentityArrayOutput)
-}
-
-func (i BusinessIdentityArray) ToOutput(ctx context.Context) pulumix.Output[[]BusinessIdentity] {
-	return pulumix.Output[[]BusinessIdentity]{
-		OutputState: i.ToBusinessIdentityArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 type BusinessIdentityOutput struct{ *pulumi.OutputState }
@@ -4593,12 +4142,6 @@ func (o BusinessIdentityOutput) ToBusinessIdentityPtrOutputWithContext(ctx conte
 	}).(BusinessIdentityPtrOutput)
 }
 
-func (o BusinessIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[BusinessIdentity] {
-	return pulumix.Output[BusinessIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The business identity qualifier.
 func (o BusinessIdentityOutput) Qualifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BusinessIdentity) *string { return v.Qualifier }).(pulumi.StringPtrOutput)
@@ -4621,12 +4164,6 @@ func (o BusinessIdentityPtrOutput) ToBusinessIdentityPtrOutput() BusinessIdentit
 
 func (o BusinessIdentityPtrOutput) ToBusinessIdentityPtrOutputWithContext(ctx context.Context) BusinessIdentityPtrOutput {
 	return o
-}
-
-func (o BusinessIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BusinessIdentity] {
-	return pulumix.Output[*BusinessIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BusinessIdentityPtrOutput) Elem() BusinessIdentityOutput {
@@ -4673,12 +4210,6 @@ func (o BusinessIdentityArrayOutput) ToBusinessIdentityArrayOutputWithContext(ct
 	return o
 }
 
-func (o BusinessIdentityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BusinessIdentity] {
-	return pulumix.Output[[]BusinessIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BusinessIdentityArrayOutput) Index(i pulumi.IntInput) BusinessIdentityOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BusinessIdentity {
 		return vs[0].([]BusinessIdentity)[vs[1].(int)]
@@ -4706,12 +4237,6 @@ func (o BusinessIdentityResponseOutput) ToBusinessIdentityResponseOutputWithCont
 	return o
 }
 
-func (o BusinessIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BusinessIdentityResponse] {
-	return pulumix.Output[BusinessIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The business identity qualifier.
 func (o BusinessIdentityResponseOutput) Qualifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BusinessIdentityResponse) *string { return v.Qualifier }).(pulumi.StringPtrOutput)
@@ -4734,12 +4259,6 @@ func (o BusinessIdentityResponsePtrOutput) ToBusinessIdentityResponsePtrOutput()
 
 func (o BusinessIdentityResponsePtrOutput) ToBusinessIdentityResponsePtrOutputWithContext(ctx context.Context) BusinessIdentityResponsePtrOutput {
 	return o
-}
-
-func (o BusinessIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BusinessIdentityResponse] {
-	return pulumix.Output[*BusinessIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BusinessIdentityResponsePtrOutput) Elem() BusinessIdentityResponseOutput {
@@ -4784,12 +4303,6 @@ func (o BusinessIdentityResponseArrayOutput) ToBusinessIdentityResponseArrayOutp
 
 func (o BusinessIdentityResponseArrayOutput) ToBusinessIdentityResponseArrayOutputWithContext(ctx context.Context) BusinessIdentityResponseArrayOutput {
 	return o
-}
-
-func (o BusinessIdentityResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BusinessIdentityResponse] {
-	return pulumix.Output[[]BusinessIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BusinessIdentityResponseArrayOutput) Index(i pulumi.IntInput) BusinessIdentityResponseOutput {
@@ -4871,12 +4384,6 @@ func (i EdifactAcknowledgementSettingsArgs) ToEdifactAcknowledgementSettingsOutp
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactAcknowledgementSettingsOutput)
 }
 
-func (i EdifactAcknowledgementSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[EdifactAcknowledgementSettings] {
-	return pulumix.Output[EdifactAcknowledgementSettings]{
-		OutputState: i.ToEdifactAcknowledgementSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EdifactAcknowledgementSettingsArgs) ToEdifactAcknowledgementSettingsPtrOutput() EdifactAcknowledgementSettingsPtrOutput {
 	return i.ToEdifactAcknowledgementSettingsPtrOutputWithContext(context.Background())
 }
@@ -4918,12 +4425,6 @@ func (i *edifactAcknowledgementSettingsPtrType) ToEdifactAcknowledgementSettings
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactAcknowledgementSettingsPtrOutput)
 }
 
-func (i *edifactAcknowledgementSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdifactAcknowledgementSettings] {
-	return pulumix.Output[*EdifactAcknowledgementSettings]{
-		OutputState: i.ToEdifactAcknowledgementSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EdifactAcknowledgementSettingsOutput struct{ *pulumi.OutputState }
 
 func (EdifactAcknowledgementSettingsOutput) ElementType() reflect.Type {
@@ -4946,12 +4447,6 @@ func (o EdifactAcknowledgementSettingsOutput) ToEdifactAcknowledgementSettingsPt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdifactAcknowledgementSettings) *EdifactAcknowledgementSettings {
 		return &v
 	}).(EdifactAcknowledgementSettingsPtrOutput)
-}
-
-func (o EdifactAcknowledgementSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactAcknowledgementSettings] {
-	return pulumix.Output[EdifactAcknowledgementSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The acknowledgement control number lower bound.
@@ -5021,12 +4516,6 @@ func (o EdifactAcknowledgementSettingsPtrOutput) ToEdifactAcknowledgementSetting
 
 func (o EdifactAcknowledgementSettingsPtrOutput) ToEdifactAcknowledgementSettingsPtrOutputWithContext(ctx context.Context) EdifactAcknowledgementSettingsPtrOutput {
 	return o
-}
-
-func (o EdifactAcknowledgementSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdifactAcknowledgementSettings] {
-	return pulumix.Output[*EdifactAcknowledgementSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactAcknowledgementSettingsPtrOutput) Elem() EdifactAcknowledgementSettingsOutput {
@@ -5188,12 +4677,6 @@ func (o EdifactAcknowledgementSettingsResponseOutput) ToEdifactAcknowledgementSe
 	return o
 }
 
-func (o EdifactAcknowledgementSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactAcknowledgementSettingsResponse] {
-	return pulumix.Output[EdifactAcknowledgementSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The acknowledgement control number lower bound.
 func (o EdifactAcknowledgementSettingsResponseOutput) AcknowledgementControlNumberLowerBound() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EdifactAcknowledgementSettingsResponse) *int { return v.AcknowledgementControlNumberLowerBound }).(pulumi.IntPtrOutput)
@@ -5261,12 +4744,6 @@ func (o EdifactAcknowledgementSettingsResponsePtrOutput) ToEdifactAcknowledgemen
 
 func (o EdifactAcknowledgementSettingsResponsePtrOutput) ToEdifactAcknowledgementSettingsResponsePtrOutputWithContext(ctx context.Context) EdifactAcknowledgementSettingsResponsePtrOutput {
 	return o
-}
-
-func (o EdifactAcknowledgementSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdifactAcknowledgementSettingsResponse] {
-	return pulumix.Output[*EdifactAcknowledgementSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactAcknowledgementSettingsResponsePtrOutput) Elem() EdifactAcknowledgementSettingsResponseOutput {
@@ -5426,12 +4903,6 @@ func (i EdifactAgreementContentArgs) ToEdifactAgreementContentOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactAgreementContentOutput)
 }
 
-func (i EdifactAgreementContentArgs) ToOutput(ctx context.Context) pulumix.Output[EdifactAgreementContent] {
-	return pulumix.Output[EdifactAgreementContent]{
-		OutputState: i.ToEdifactAgreementContentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EdifactAgreementContentArgs) ToEdifactAgreementContentPtrOutput() EdifactAgreementContentPtrOutput {
 	return i.ToEdifactAgreementContentPtrOutputWithContext(context.Background())
 }
@@ -5473,12 +4944,6 @@ func (i *edifactAgreementContentPtrType) ToEdifactAgreementContentPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactAgreementContentPtrOutput)
 }
 
-func (i *edifactAgreementContentPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdifactAgreementContent] {
-	return pulumix.Output[*EdifactAgreementContent]{
-		OutputState: i.ToEdifactAgreementContentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EdifactAgreementContentOutput struct{ *pulumi.OutputState }
 
 func (EdifactAgreementContentOutput) ElementType() reflect.Type {
@@ -5503,12 +4968,6 @@ func (o EdifactAgreementContentOutput) ToEdifactAgreementContentPtrOutputWithCon
 	}).(EdifactAgreementContentPtrOutput)
 }
 
-func (o EdifactAgreementContentOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactAgreementContent] {
-	return pulumix.Output[EdifactAgreementContent]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The EDIFACT one-way receive agreement.
 func (o EdifactAgreementContentOutput) ReceiveAgreement() EdifactOneWayAgreementPtrOutput {
 	return o.ApplyT(func(v EdifactAgreementContent) *EdifactOneWayAgreement { return v.ReceiveAgreement }).(EdifactOneWayAgreementPtrOutput)
@@ -5531,12 +4990,6 @@ func (o EdifactAgreementContentPtrOutput) ToEdifactAgreementContentPtrOutput() E
 
 func (o EdifactAgreementContentPtrOutput) ToEdifactAgreementContentPtrOutputWithContext(ctx context.Context) EdifactAgreementContentPtrOutput {
 	return o
-}
-
-func (o EdifactAgreementContentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdifactAgreementContent] {
-	return pulumix.Output[*EdifactAgreementContent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactAgreementContentPtrOutput) Elem() EdifactAgreementContentOutput {
@@ -5590,12 +5043,6 @@ func (o EdifactAgreementContentResponseOutput) ToEdifactAgreementContentResponse
 	return o
 }
 
-func (o EdifactAgreementContentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactAgreementContentResponse] {
-	return pulumix.Output[EdifactAgreementContentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The EDIFACT one-way receive agreement.
 func (o EdifactAgreementContentResponseOutput) ReceiveAgreement() EdifactOneWayAgreementResponsePtrOutput {
 	return o.ApplyT(func(v EdifactAgreementContentResponse) *EdifactOneWayAgreementResponse { return v.ReceiveAgreement }).(EdifactOneWayAgreementResponsePtrOutput)
@@ -5618,12 +5065,6 @@ func (o EdifactAgreementContentResponsePtrOutput) ToEdifactAgreementContentRespo
 
 func (o EdifactAgreementContentResponsePtrOutput) ToEdifactAgreementContentResponsePtrOutputWithContext(ctx context.Context) EdifactAgreementContentResponsePtrOutput {
 	return o
-}
-
-func (o EdifactAgreementContentResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdifactAgreementContentResponse] {
-	return pulumix.Output[*EdifactAgreementContentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactAgreementContentResponsePtrOutput) Elem() EdifactAgreementContentResponseOutput {
@@ -5733,12 +5174,6 @@ func (i EdifactDelimiterOverrideArgs) ToEdifactDelimiterOverrideOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactDelimiterOverrideOutput)
 }
 
-func (i EdifactDelimiterOverrideArgs) ToOutput(ctx context.Context) pulumix.Output[EdifactDelimiterOverride] {
-	return pulumix.Output[EdifactDelimiterOverride]{
-		OutputState: i.ToEdifactDelimiterOverrideOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EdifactDelimiterOverrideArrayInput is an input type that accepts EdifactDelimiterOverrideArray and EdifactDelimiterOverrideArrayOutput values.
 // You can construct a concrete instance of `EdifactDelimiterOverrideArrayInput` via:
 //
@@ -5764,12 +5199,6 @@ func (i EdifactDelimiterOverrideArray) ToEdifactDelimiterOverrideArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactDelimiterOverrideArrayOutput)
 }
 
-func (i EdifactDelimiterOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]EdifactDelimiterOverride] {
-	return pulumix.Output[[]EdifactDelimiterOverride]{
-		OutputState: i.ToEdifactDelimiterOverrideArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EdifactDelimiterOverrideOutput struct{ *pulumi.OutputState }
 
 func (EdifactDelimiterOverrideOutput) ElementType() reflect.Type {
@@ -5782,12 +5211,6 @@ func (o EdifactDelimiterOverrideOutput) ToEdifactDelimiterOverrideOutput() Edifa
 
 func (o EdifactDelimiterOverrideOutput) ToEdifactDelimiterOverrideOutputWithContext(ctx context.Context) EdifactDelimiterOverrideOutput {
 	return o
-}
-
-func (o EdifactDelimiterOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactDelimiterOverride] {
-	return pulumix.Output[EdifactDelimiterOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The component separator.
@@ -5864,12 +5287,6 @@ func (o EdifactDelimiterOverrideArrayOutput) ToEdifactDelimiterOverrideArrayOutp
 	return o
 }
 
-func (o EdifactDelimiterOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EdifactDelimiterOverride] {
-	return pulumix.Output[[]EdifactDelimiterOverride]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EdifactDelimiterOverrideArrayOutput) Index(i pulumi.IntInput) EdifactDelimiterOverrideOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EdifactDelimiterOverride {
 		return vs[0].([]EdifactDelimiterOverride)[vs[1].(int)]
@@ -5915,12 +5332,6 @@ func (o EdifactDelimiterOverrideResponseOutput) ToEdifactDelimiterOverrideRespon
 
 func (o EdifactDelimiterOverrideResponseOutput) ToEdifactDelimiterOverrideResponseOutputWithContext(ctx context.Context) EdifactDelimiterOverrideResponseOutput {
 	return o
-}
-
-func (o EdifactDelimiterOverrideResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactDelimiterOverrideResponse] {
-	return pulumix.Output[EdifactDelimiterOverrideResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The component separator.
@@ -5995,12 +5406,6 @@ func (o EdifactDelimiterOverrideResponseArrayOutput) ToEdifactDelimiterOverrideR
 
 func (o EdifactDelimiterOverrideResponseArrayOutput) ToEdifactDelimiterOverrideResponseArrayOutputWithContext(ctx context.Context) EdifactDelimiterOverrideResponseArrayOutput {
 	return o
-}
-
-func (o EdifactDelimiterOverrideResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EdifactDelimiterOverrideResponse] {
-	return pulumix.Output[[]EdifactDelimiterOverrideResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactDelimiterOverrideResponseArrayOutput) Index(i pulumi.IntInput) EdifactDelimiterOverrideResponseOutput {
@@ -6098,12 +5503,6 @@ func (i EdifactEnvelopeOverrideArgs) ToEdifactEnvelopeOverrideOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactEnvelopeOverrideOutput)
 }
 
-func (i EdifactEnvelopeOverrideArgs) ToOutput(ctx context.Context) pulumix.Output[EdifactEnvelopeOverride] {
-	return pulumix.Output[EdifactEnvelopeOverride]{
-		OutputState: i.ToEdifactEnvelopeOverrideOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EdifactEnvelopeOverrideArrayInput is an input type that accepts EdifactEnvelopeOverrideArray and EdifactEnvelopeOverrideArrayOutput values.
 // You can construct a concrete instance of `EdifactEnvelopeOverrideArrayInput` via:
 //
@@ -6129,12 +5528,6 @@ func (i EdifactEnvelopeOverrideArray) ToEdifactEnvelopeOverrideArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactEnvelopeOverrideArrayOutput)
 }
 
-func (i EdifactEnvelopeOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]EdifactEnvelopeOverride] {
-	return pulumix.Output[[]EdifactEnvelopeOverride]{
-		OutputState: i.ToEdifactEnvelopeOverrideArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EdifactEnvelopeOverrideOutput struct{ *pulumi.OutputState }
 
 func (EdifactEnvelopeOverrideOutput) ElementType() reflect.Type {
@@ -6147,12 +5540,6 @@ func (o EdifactEnvelopeOverrideOutput) ToEdifactEnvelopeOverrideOutput() Edifact
 
 func (o EdifactEnvelopeOverrideOutput) ToEdifactEnvelopeOverrideOutputWithContext(ctx context.Context) EdifactEnvelopeOverrideOutput {
 	return o
-}
-
-func (o EdifactEnvelopeOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactEnvelopeOverride] {
-	return pulumix.Output[EdifactEnvelopeOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The application password.
@@ -6244,12 +5631,6 @@ func (o EdifactEnvelopeOverrideArrayOutput) ToEdifactEnvelopeOverrideArrayOutput
 	return o
 }
 
-func (o EdifactEnvelopeOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EdifactEnvelopeOverride] {
-	return pulumix.Output[[]EdifactEnvelopeOverride]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EdifactEnvelopeOverrideArrayOutput) Index(i pulumi.IntInput) EdifactEnvelopeOverrideOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EdifactEnvelopeOverride {
 		return vs[0].([]EdifactEnvelopeOverride)[vs[1].(int)]
@@ -6301,12 +5682,6 @@ func (o EdifactEnvelopeOverrideResponseOutput) ToEdifactEnvelopeOverrideResponse
 
 func (o EdifactEnvelopeOverrideResponseOutput) ToEdifactEnvelopeOverrideResponseOutputWithContext(ctx context.Context) EdifactEnvelopeOverrideResponseOutput {
 	return o
-}
-
-func (o EdifactEnvelopeOverrideResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactEnvelopeOverrideResponse] {
-	return pulumix.Output[EdifactEnvelopeOverrideResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The application password.
@@ -6396,12 +5771,6 @@ func (o EdifactEnvelopeOverrideResponseArrayOutput) ToEdifactEnvelopeOverrideRes
 
 func (o EdifactEnvelopeOverrideResponseArrayOutput) ToEdifactEnvelopeOverrideResponseArrayOutputWithContext(ctx context.Context) EdifactEnvelopeOverrideResponseArrayOutput {
 	return o
-}
-
-func (o EdifactEnvelopeOverrideResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EdifactEnvelopeOverrideResponse] {
-	return pulumix.Output[[]EdifactEnvelopeOverrideResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactEnvelopeOverrideResponseArrayOutput) Index(i pulumi.IntInput) EdifactEnvelopeOverrideResponseOutput {
@@ -6603,12 +5972,6 @@ func (i EdifactEnvelopeSettingsArgs) ToEdifactEnvelopeSettingsOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactEnvelopeSettingsOutput)
 }
 
-func (i EdifactEnvelopeSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[EdifactEnvelopeSettings] {
-	return pulumix.Output[EdifactEnvelopeSettings]{
-		OutputState: i.ToEdifactEnvelopeSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EdifactEnvelopeSettingsArgs) ToEdifactEnvelopeSettingsPtrOutput() EdifactEnvelopeSettingsPtrOutput {
 	return i.ToEdifactEnvelopeSettingsPtrOutputWithContext(context.Background())
 }
@@ -6650,12 +6013,6 @@ func (i *edifactEnvelopeSettingsPtrType) ToEdifactEnvelopeSettingsPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactEnvelopeSettingsPtrOutput)
 }
 
-func (i *edifactEnvelopeSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdifactEnvelopeSettings] {
-	return pulumix.Output[*EdifactEnvelopeSettings]{
-		OutputState: i.ToEdifactEnvelopeSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EdifactEnvelopeSettingsOutput struct{ *pulumi.OutputState }
 
 func (EdifactEnvelopeSettingsOutput) ElementType() reflect.Type {
@@ -6678,12 +6035,6 @@ func (o EdifactEnvelopeSettingsOutput) ToEdifactEnvelopeSettingsPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdifactEnvelopeSettings) *EdifactEnvelopeSettings {
 		return &v
 	}).(EdifactEnvelopeSettingsPtrOutput)
-}
-
-func (o EdifactEnvelopeSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactEnvelopeSettings] {
-	return pulumix.Output[EdifactEnvelopeSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The application reference id.
@@ -6903,12 +6254,6 @@ func (o EdifactEnvelopeSettingsPtrOutput) ToEdifactEnvelopeSettingsPtrOutput() E
 
 func (o EdifactEnvelopeSettingsPtrOutput) ToEdifactEnvelopeSettingsPtrOutputWithContext(ctx context.Context) EdifactEnvelopeSettingsPtrOutput {
 	return o
-}
-
-func (o EdifactEnvelopeSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdifactEnvelopeSettings] {
-	return pulumix.Output[*EdifactEnvelopeSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactEnvelopeSettingsPtrOutput) Elem() EdifactEnvelopeSettingsOutput {
@@ -7430,12 +6775,6 @@ func (o EdifactEnvelopeSettingsResponseOutput) ToEdifactEnvelopeSettingsResponse
 	return o
 }
 
-func (o EdifactEnvelopeSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactEnvelopeSettingsResponse] {
-	return pulumix.Output[EdifactEnvelopeSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The application reference id.
 func (o EdifactEnvelopeSettingsResponseOutput) ApplicationReferenceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdifactEnvelopeSettingsResponse) *string { return v.ApplicationReferenceId }).(pulumi.StringPtrOutput)
@@ -7653,12 +6992,6 @@ func (o EdifactEnvelopeSettingsResponsePtrOutput) ToEdifactEnvelopeSettingsRespo
 
 func (o EdifactEnvelopeSettingsResponsePtrOutput) ToEdifactEnvelopeSettingsResponsePtrOutputWithContext(ctx context.Context) EdifactEnvelopeSettingsResponsePtrOutput {
 	return o
-}
-
-func (o EdifactEnvelopeSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdifactEnvelopeSettingsResponse] {
-	return pulumix.Output[*EdifactEnvelopeSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactEnvelopeSettingsResponsePtrOutput) Elem() EdifactEnvelopeSettingsResponseOutput {
@@ -8154,12 +7487,6 @@ func (i EdifactFramingSettingsArgs) ToEdifactFramingSettingsOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactFramingSettingsOutput)
 }
 
-func (i EdifactFramingSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[EdifactFramingSettings] {
-	return pulumix.Output[EdifactFramingSettings]{
-		OutputState: i.ToEdifactFramingSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EdifactFramingSettingsArgs) ToEdifactFramingSettingsPtrOutput() EdifactFramingSettingsPtrOutput {
 	return i.ToEdifactFramingSettingsPtrOutputWithContext(context.Background())
 }
@@ -8201,12 +7528,6 @@ func (i *edifactFramingSettingsPtrType) ToEdifactFramingSettingsPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactFramingSettingsPtrOutput)
 }
 
-func (i *edifactFramingSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdifactFramingSettings] {
-	return pulumix.Output[*EdifactFramingSettings]{
-		OutputState: i.ToEdifactFramingSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EdifactFramingSettingsOutput struct{ *pulumi.OutputState }
 
 func (EdifactFramingSettingsOutput) ElementType() reflect.Type {
@@ -8229,12 +7550,6 @@ func (o EdifactFramingSettingsOutput) ToEdifactFramingSettingsPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdifactFramingSettings) *EdifactFramingSettings {
 		return &v
 	}).(EdifactFramingSettingsPtrOutput)
-}
-
-func (o EdifactFramingSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactFramingSettings] {
-	return pulumix.Output[EdifactFramingSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The character encoding.
@@ -8304,12 +7619,6 @@ func (o EdifactFramingSettingsPtrOutput) ToEdifactFramingSettingsPtrOutput() Edi
 
 func (o EdifactFramingSettingsPtrOutput) ToEdifactFramingSettingsPtrOutputWithContext(ctx context.Context) EdifactFramingSettingsPtrOutput {
 	return o
-}
-
-func (o EdifactFramingSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdifactFramingSettings] {
-	return pulumix.Output[*EdifactFramingSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactFramingSettingsPtrOutput) Elem() EdifactFramingSettingsOutput {
@@ -8471,12 +7780,6 @@ func (o EdifactFramingSettingsResponseOutput) ToEdifactFramingSettingsResponseOu
 	return o
 }
 
-func (o EdifactFramingSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactFramingSettingsResponse] {
-	return pulumix.Output[EdifactFramingSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The character encoding.
 func (o EdifactFramingSettingsResponseOutput) CharacterEncoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdifactFramingSettingsResponse) *string { return v.CharacterEncoding }).(pulumi.StringPtrOutput)
@@ -8544,12 +7847,6 @@ func (o EdifactFramingSettingsResponsePtrOutput) ToEdifactFramingSettingsRespons
 
 func (o EdifactFramingSettingsResponsePtrOutput) ToEdifactFramingSettingsResponsePtrOutputWithContext(ctx context.Context) EdifactFramingSettingsResponsePtrOutput {
 	return o
-}
-
-func (o EdifactFramingSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdifactFramingSettingsResponse] {
-	return pulumix.Output[*EdifactFramingSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactFramingSettingsResponsePtrOutput) Elem() EdifactFramingSettingsResponseOutput {
@@ -8705,12 +8002,6 @@ func (i EdifactMessageFilterArgs) ToEdifactMessageFilterOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactMessageFilterOutput)
 }
 
-func (i EdifactMessageFilterArgs) ToOutput(ctx context.Context) pulumix.Output[EdifactMessageFilter] {
-	return pulumix.Output[EdifactMessageFilter]{
-		OutputState: i.ToEdifactMessageFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EdifactMessageFilterArgs) ToEdifactMessageFilterPtrOutput() EdifactMessageFilterPtrOutput {
 	return i.ToEdifactMessageFilterPtrOutputWithContext(context.Background())
 }
@@ -8752,12 +8043,6 @@ func (i *edifactMessageFilterPtrType) ToEdifactMessageFilterPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactMessageFilterPtrOutput)
 }
 
-func (i *edifactMessageFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdifactMessageFilter] {
-	return pulumix.Output[*EdifactMessageFilter]{
-		OutputState: i.ToEdifactMessageFilterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EdifactMessageFilterOutput struct{ *pulumi.OutputState }
 
 func (EdifactMessageFilterOutput) ElementType() reflect.Type {
@@ -8782,12 +8067,6 @@ func (o EdifactMessageFilterOutput) ToEdifactMessageFilterPtrOutputWithContext(c
 	}).(EdifactMessageFilterPtrOutput)
 }
 
-func (o EdifactMessageFilterOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactMessageFilter] {
-	return pulumix.Output[EdifactMessageFilter]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The message filter type.
 func (o EdifactMessageFilterOutput) MessageFilterType() MessageFilterTypePtrOutput {
 	return o.ApplyT(func(v EdifactMessageFilter) *MessageFilterType { return v.MessageFilterType }).(MessageFilterTypePtrOutput)
@@ -8805,12 +8084,6 @@ func (o EdifactMessageFilterPtrOutput) ToEdifactMessageFilterPtrOutput() Edifact
 
 func (o EdifactMessageFilterPtrOutput) ToEdifactMessageFilterPtrOutputWithContext(ctx context.Context) EdifactMessageFilterPtrOutput {
 	return o
-}
-
-func (o EdifactMessageFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdifactMessageFilter] {
-	return pulumix.Output[*EdifactMessageFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactMessageFilterPtrOutput) Elem() EdifactMessageFilterOutput {
@@ -8852,12 +8125,6 @@ func (o EdifactMessageFilterResponseOutput) ToEdifactMessageFilterResponseOutput
 	return o
 }
 
-func (o EdifactMessageFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactMessageFilterResponse] {
-	return pulumix.Output[EdifactMessageFilterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The message filter type.
 func (o EdifactMessageFilterResponseOutput) MessageFilterType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdifactMessageFilterResponse) *string { return v.MessageFilterType }).(pulumi.StringPtrOutput)
@@ -8875,12 +8142,6 @@ func (o EdifactMessageFilterResponsePtrOutput) ToEdifactMessageFilterResponsePtr
 
 func (o EdifactMessageFilterResponsePtrOutput) ToEdifactMessageFilterResponsePtrOutputWithContext(ctx context.Context) EdifactMessageFilterResponsePtrOutput {
 	return o
-}
-
-func (o EdifactMessageFilterResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdifactMessageFilterResponse] {
-	return pulumix.Output[*EdifactMessageFilterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactMessageFilterResponsePtrOutput) Elem() EdifactMessageFilterResponseOutput {
@@ -8936,12 +8197,6 @@ func (i EdifactMessageIdentifierArgs) ToEdifactMessageIdentifierOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactMessageIdentifierOutput)
 }
 
-func (i EdifactMessageIdentifierArgs) ToOutput(ctx context.Context) pulumix.Output[EdifactMessageIdentifier] {
-	return pulumix.Output[EdifactMessageIdentifier]{
-		OutputState: i.ToEdifactMessageIdentifierOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EdifactMessageIdentifierArrayInput is an input type that accepts EdifactMessageIdentifierArray and EdifactMessageIdentifierArrayOutput values.
 // You can construct a concrete instance of `EdifactMessageIdentifierArrayInput` via:
 //
@@ -8967,12 +8222,6 @@ func (i EdifactMessageIdentifierArray) ToEdifactMessageIdentifierArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactMessageIdentifierArrayOutput)
 }
 
-func (i EdifactMessageIdentifierArray) ToOutput(ctx context.Context) pulumix.Output[[]EdifactMessageIdentifier] {
-	return pulumix.Output[[]EdifactMessageIdentifier]{
-		OutputState: i.ToEdifactMessageIdentifierArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EdifactMessageIdentifierOutput struct{ *pulumi.OutputState }
 
 func (EdifactMessageIdentifierOutput) ElementType() reflect.Type {
@@ -8985,12 +8234,6 @@ func (o EdifactMessageIdentifierOutput) ToEdifactMessageIdentifierOutput() Edifa
 
 func (o EdifactMessageIdentifierOutput) ToEdifactMessageIdentifierOutputWithContext(ctx context.Context) EdifactMessageIdentifierOutput {
 	return o
-}
-
-func (o EdifactMessageIdentifierOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactMessageIdentifier] {
-	return pulumix.Output[EdifactMessageIdentifier]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The message id on which this envelope settings has to be applied.
@@ -9010,12 +8253,6 @@ func (o EdifactMessageIdentifierArrayOutput) ToEdifactMessageIdentifierArrayOutp
 
 func (o EdifactMessageIdentifierArrayOutput) ToEdifactMessageIdentifierArrayOutputWithContext(ctx context.Context) EdifactMessageIdentifierArrayOutput {
 	return o
-}
-
-func (o EdifactMessageIdentifierArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EdifactMessageIdentifier] {
-	return pulumix.Output[[]EdifactMessageIdentifier]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactMessageIdentifierArrayOutput) Index(i pulumi.IntInput) EdifactMessageIdentifierOutput {
@@ -9043,12 +8280,6 @@ func (o EdifactMessageIdentifierResponseOutput) ToEdifactMessageIdentifierRespon
 	return o
 }
 
-func (o EdifactMessageIdentifierResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactMessageIdentifierResponse] {
-	return pulumix.Output[EdifactMessageIdentifierResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The message id on which this envelope settings has to be applied.
 func (o EdifactMessageIdentifierResponseOutput) MessageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdifactMessageIdentifierResponse) *string { return v.MessageId }).(pulumi.StringPtrOutput)
@@ -9066,12 +8297,6 @@ func (o EdifactMessageIdentifierResponseArrayOutput) ToEdifactMessageIdentifierR
 
 func (o EdifactMessageIdentifierResponseArrayOutput) ToEdifactMessageIdentifierResponseArrayOutputWithContext(ctx context.Context) EdifactMessageIdentifierResponseArrayOutput {
 	return o
-}
-
-func (o EdifactMessageIdentifierResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EdifactMessageIdentifierResponse] {
-	return pulumix.Output[[]EdifactMessageIdentifierResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactMessageIdentifierResponseArrayOutput) Index(i pulumi.IntInput) EdifactMessageIdentifierResponseOutput {
@@ -9121,12 +8346,6 @@ func (i EdifactOneWayAgreementArgs) ToEdifactOneWayAgreementOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactOneWayAgreementOutput)
 }
 
-func (i EdifactOneWayAgreementArgs) ToOutput(ctx context.Context) pulumix.Output[EdifactOneWayAgreement] {
-	return pulumix.Output[EdifactOneWayAgreement]{
-		OutputState: i.ToEdifactOneWayAgreementOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EdifactOneWayAgreementArgs) ToEdifactOneWayAgreementPtrOutput() EdifactOneWayAgreementPtrOutput {
 	return i.ToEdifactOneWayAgreementPtrOutputWithContext(context.Background())
 }
@@ -9168,12 +8387,6 @@ func (i *edifactOneWayAgreementPtrType) ToEdifactOneWayAgreementPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactOneWayAgreementPtrOutput)
 }
 
-func (i *edifactOneWayAgreementPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdifactOneWayAgreement] {
-	return pulumix.Output[*EdifactOneWayAgreement]{
-		OutputState: i.ToEdifactOneWayAgreementPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EdifactOneWayAgreementOutput struct{ *pulumi.OutputState }
 
 func (EdifactOneWayAgreementOutput) ElementType() reflect.Type {
@@ -9196,12 +8409,6 @@ func (o EdifactOneWayAgreementOutput) ToEdifactOneWayAgreementPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdifactOneWayAgreement) *EdifactOneWayAgreement {
 		return &v
 	}).(EdifactOneWayAgreementPtrOutput)
-}
-
-func (o EdifactOneWayAgreementOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactOneWayAgreement] {
-	return pulumix.Output[EdifactOneWayAgreement]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The EDIFACT protocol settings.
@@ -9231,12 +8438,6 @@ func (o EdifactOneWayAgreementPtrOutput) ToEdifactOneWayAgreementPtrOutput() Edi
 
 func (o EdifactOneWayAgreementPtrOutput) ToEdifactOneWayAgreementPtrOutputWithContext(ctx context.Context) EdifactOneWayAgreementPtrOutput {
 	return o
-}
-
-func (o EdifactOneWayAgreementPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdifactOneWayAgreement] {
-	return pulumix.Output[*EdifactOneWayAgreement]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactOneWayAgreementPtrOutput) Elem() EdifactOneWayAgreementOutput {
@@ -9302,12 +8503,6 @@ func (o EdifactOneWayAgreementResponseOutput) ToEdifactOneWayAgreementResponseOu
 	return o
 }
 
-func (o EdifactOneWayAgreementResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactOneWayAgreementResponse] {
-	return pulumix.Output[EdifactOneWayAgreementResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The EDIFACT protocol settings.
 func (o EdifactOneWayAgreementResponseOutput) ProtocolSettings() EdifactProtocolSettingsResponsePtrOutput {
 	return o.ApplyT(func(v EdifactOneWayAgreementResponse) *EdifactProtocolSettingsResponse { return v.ProtocolSettings }).(EdifactProtocolSettingsResponsePtrOutput)
@@ -9335,12 +8530,6 @@ func (o EdifactOneWayAgreementResponsePtrOutput) ToEdifactOneWayAgreementRespons
 
 func (o EdifactOneWayAgreementResponsePtrOutput) ToEdifactOneWayAgreementResponsePtrOutputWithContext(ctx context.Context) EdifactOneWayAgreementResponsePtrOutput {
 	return o
-}
-
-func (o EdifactOneWayAgreementResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdifactOneWayAgreementResponse] {
-	return pulumix.Output[*EdifactOneWayAgreementResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactOneWayAgreementResponsePtrOutput) Elem() EdifactOneWayAgreementResponseOutput {
@@ -9432,12 +8621,6 @@ func (i EdifactProcessingSettingsArgs) ToEdifactProcessingSettingsOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactProcessingSettingsOutput)
 }
 
-func (i EdifactProcessingSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[EdifactProcessingSettings] {
-	return pulumix.Output[EdifactProcessingSettings]{
-		OutputState: i.ToEdifactProcessingSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EdifactProcessingSettingsArgs) ToEdifactProcessingSettingsPtrOutput() EdifactProcessingSettingsPtrOutput {
 	return i.ToEdifactProcessingSettingsPtrOutputWithContext(context.Background())
 }
@@ -9479,12 +8662,6 @@ func (i *edifactProcessingSettingsPtrType) ToEdifactProcessingSettingsPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactProcessingSettingsPtrOutput)
 }
 
-func (i *edifactProcessingSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdifactProcessingSettings] {
-	return pulumix.Output[*EdifactProcessingSettings]{
-		OutputState: i.ToEdifactProcessingSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EdifactProcessingSettingsOutput struct{ *pulumi.OutputState }
 
 func (EdifactProcessingSettingsOutput) ElementType() reflect.Type {
@@ -9507,12 +8684,6 @@ func (o EdifactProcessingSettingsOutput) ToEdifactProcessingSettingsPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdifactProcessingSettings) *EdifactProcessingSettings {
 		return &v
 	}).(EdifactProcessingSettingsPtrOutput)
-}
-
-func (o EdifactProcessingSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactProcessingSettings] {
-	return pulumix.Output[EdifactProcessingSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value indicating whether to create empty xml tags for trailing separators.
@@ -9552,12 +8723,6 @@ func (o EdifactProcessingSettingsPtrOutput) ToEdifactProcessingSettingsPtrOutput
 
 func (o EdifactProcessingSettingsPtrOutput) ToEdifactProcessingSettingsPtrOutputWithContext(ctx context.Context) EdifactProcessingSettingsPtrOutput {
 	return o
-}
-
-func (o EdifactProcessingSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdifactProcessingSettings] {
-	return pulumix.Output[*EdifactProcessingSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactProcessingSettingsPtrOutput) Elem() EdifactProcessingSettingsOutput {
@@ -9647,12 +8812,6 @@ func (o EdifactProcessingSettingsResponseOutput) ToEdifactProcessingSettingsResp
 	return o
 }
 
-func (o EdifactProcessingSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactProcessingSettingsResponse] {
-	return pulumix.Output[EdifactProcessingSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The value indicating whether to create empty xml tags for trailing separators.
 func (o EdifactProcessingSettingsResponseOutput) CreateEmptyXmlTagsForTrailingSeparators() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EdifactProcessingSettingsResponse) *bool { return v.CreateEmptyXmlTagsForTrailingSeparators }).(pulumi.BoolPtrOutput)
@@ -9690,12 +8849,6 @@ func (o EdifactProcessingSettingsResponsePtrOutput) ToEdifactProcessingSettingsR
 
 func (o EdifactProcessingSettingsResponsePtrOutput) ToEdifactProcessingSettingsResponsePtrOutputWithContext(ctx context.Context) EdifactProcessingSettingsResponsePtrOutput {
 	return o
-}
-
-func (o EdifactProcessingSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdifactProcessingSettingsResponse] {
-	return pulumix.Output[*EdifactProcessingSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactProcessingSettingsResponsePtrOutput) Elem() EdifactProcessingSettingsResponseOutput {
@@ -9831,12 +8984,6 @@ func (i EdifactProtocolSettingsArgs) ToEdifactProtocolSettingsOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactProtocolSettingsOutput)
 }
 
-func (i EdifactProtocolSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[EdifactProtocolSettings] {
-	return pulumix.Output[EdifactProtocolSettings]{
-		OutputState: i.ToEdifactProtocolSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EdifactProtocolSettingsArgs) ToEdifactProtocolSettingsPtrOutput() EdifactProtocolSettingsPtrOutput {
 	return i.ToEdifactProtocolSettingsPtrOutputWithContext(context.Background())
 }
@@ -9878,12 +9025,6 @@ func (i *edifactProtocolSettingsPtrType) ToEdifactProtocolSettingsPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactProtocolSettingsPtrOutput)
 }
 
-func (i *edifactProtocolSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdifactProtocolSettings] {
-	return pulumix.Output[*EdifactProtocolSettings]{
-		OutputState: i.ToEdifactProtocolSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EdifactProtocolSettingsOutput struct{ *pulumi.OutputState }
 
 func (EdifactProtocolSettingsOutput) ElementType() reflect.Type {
@@ -9906,12 +9047,6 @@ func (o EdifactProtocolSettingsOutput) ToEdifactProtocolSettingsPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdifactProtocolSettings) *EdifactProtocolSettings {
 		return &v
 	}).(EdifactProtocolSettingsPtrOutput)
-}
-
-func (o EdifactProtocolSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactProtocolSettings] {
-	return pulumix.Output[EdifactProtocolSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The EDIFACT acknowledgement settings.
@@ -9981,12 +9116,6 @@ func (o EdifactProtocolSettingsPtrOutput) ToEdifactProtocolSettingsPtrOutput() E
 
 func (o EdifactProtocolSettingsPtrOutput) ToEdifactProtocolSettingsPtrOutputWithContext(ctx context.Context) EdifactProtocolSettingsPtrOutput {
 	return o
-}
-
-func (o EdifactProtocolSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdifactProtocolSettings] {
-	return pulumix.Output[*EdifactProtocolSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactProtocolSettingsPtrOutput) Elem() EdifactProtocolSettingsOutput {
@@ -10148,12 +9277,6 @@ func (o EdifactProtocolSettingsResponseOutput) ToEdifactProtocolSettingsResponse
 	return o
 }
 
-func (o EdifactProtocolSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactProtocolSettingsResponse] {
-	return pulumix.Output[EdifactProtocolSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The EDIFACT acknowledgement settings.
 func (o EdifactProtocolSettingsResponseOutput) AcknowledgementSettings() EdifactAcknowledgementSettingsResponsePtrOutput {
 	return o.ApplyT(func(v EdifactProtocolSettingsResponse) *EdifactAcknowledgementSettingsResponse {
@@ -10231,12 +9354,6 @@ func (o EdifactProtocolSettingsResponsePtrOutput) ToEdifactProtocolSettingsRespo
 
 func (o EdifactProtocolSettingsResponsePtrOutput) ToEdifactProtocolSettingsResponsePtrOutputWithContext(ctx context.Context) EdifactProtocolSettingsResponsePtrOutput {
 	return o
-}
-
-func (o EdifactProtocolSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdifactProtocolSettingsResponse] {
-	return pulumix.Output[*EdifactProtocolSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactProtocolSettingsResponsePtrOutput) Elem() EdifactProtocolSettingsResponseOutput {
@@ -10416,12 +9533,6 @@ func (i EdifactSchemaReferenceArgs) ToEdifactSchemaReferenceOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactSchemaReferenceOutput)
 }
 
-func (i EdifactSchemaReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[EdifactSchemaReference] {
-	return pulumix.Output[EdifactSchemaReference]{
-		OutputState: i.ToEdifactSchemaReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EdifactSchemaReferenceArrayInput is an input type that accepts EdifactSchemaReferenceArray and EdifactSchemaReferenceArrayOutput values.
 // You can construct a concrete instance of `EdifactSchemaReferenceArrayInput` via:
 //
@@ -10447,12 +9558,6 @@ func (i EdifactSchemaReferenceArray) ToEdifactSchemaReferenceArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactSchemaReferenceArrayOutput)
 }
 
-func (i EdifactSchemaReferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]EdifactSchemaReference] {
-	return pulumix.Output[[]EdifactSchemaReference]{
-		OutputState: i.ToEdifactSchemaReferenceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EdifactSchemaReferenceOutput struct{ *pulumi.OutputState }
 
 func (EdifactSchemaReferenceOutput) ElementType() reflect.Type {
@@ -10465,12 +9570,6 @@ func (o EdifactSchemaReferenceOutput) ToEdifactSchemaReferenceOutput() EdifactSc
 
 func (o EdifactSchemaReferenceOutput) ToEdifactSchemaReferenceOutputWithContext(ctx context.Context) EdifactSchemaReferenceOutput {
 	return o
-}
-
-func (o EdifactSchemaReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactSchemaReference] {
-	return pulumix.Output[EdifactSchemaReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The association assigned code.
@@ -10522,12 +9621,6 @@ func (o EdifactSchemaReferenceArrayOutput) ToEdifactSchemaReferenceArrayOutputWi
 	return o
 }
 
-func (o EdifactSchemaReferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EdifactSchemaReference] {
-	return pulumix.Output[[]EdifactSchemaReference]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EdifactSchemaReferenceArrayOutput) Index(i pulumi.IntInput) EdifactSchemaReferenceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EdifactSchemaReference {
 		return vs[0].([]EdifactSchemaReference)[vs[1].(int)]
@@ -10563,12 +9656,6 @@ func (o EdifactSchemaReferenceResponseOutput) ToEdifactSchemaReferenceResponseOu
 
 func (o EdifactSchemaReferenceResponseOutput) ToEdifactSchemaReferenceResponseOutputWithContext(ctx context.Context) EdifactSchemaReferenceResponseOutput {
 	return o
-}
-
-func (o EdifactSchemaReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactSchemaReferenceResponse] {
-	return pulumix.Output[EdifactSchemaReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The association assigned code.
@@ -10618,12 +9705,6 @@ func (o EdifactSchemaReferenceResponseArrayOutput) ToEdifactSchemaReferenceRespo
 
 func (o EdifactSchemaReferenceResponseArrayOutput) ToEdifactSchemaReferenceResponseArrayOutputWithContext(ctx context.Context) EdifactSchemaReferenceResponseArrayOutput {
 	return o
-}
-
-func (o EdifactSchemaReferenceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EdifactSchemaReferenceResponse] {
-	return pulumix.Output[[]EdifactSchemaReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactSchemaReferenceResponseArrayOutput) Index(i pulumi.IntInput) EdifactSchemaReferenceResponseOutput {
@@ -10689,12 +9770,6 @@ func (i EdifactValidationOverrideArgs) ToEdifactValidationOverrideOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactValidationOverrideOutput)
 }
 
-func (i EdifactValidationOverrideArgs) ToOutput(ctx context.Context) pulumix.Output[EdifactValidationOverride] {
-	return pulumix.Output[EdifactValidationOverride]{
-		OutputState: i.ToEdifactValidationOverrideOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EdifactValidationOverrideArrayInput is an input type that accepts EdifactValidationOverrideArray and EdifactValidationOverrideArrayOutput values.
 // You can construct a concrete instance of `EdifactValidationOverrideArrayInput` via:
 //
@@ -10720,12 +9795,6 @@ func (i EdifactValidationOverrideArray) ToEdifactValidationOverrideArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactValidationOverrideArrayOutput)
 }
 
-func (i EdifactValidationOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]EdifactValidationOverride] {
-	return pulumix.Output[[]EdifactValidationOverride]{
-		OutputState: i.ToEdifactValidationOverrideArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EdifactValidationOverrideOutput struct{ *pulumi.OutputState }
 
 func (EdifactValidationOverrideOutput) ElementType() reflect.Type {
@@ -10738,12 +9807,6 @@ func (o EdifactValidationOverrideOutput) ToEdifactValidationOverrideOutput() Edi
 
 func (o EdifactValidationOverrideOutput) ToEdifactValidationOverrideOutputWithContext(ctx context.Context) EdifactValidationOverrideOutput {
 	return o
-}
-
-func (o EdifactValidationOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactValidationOverride] {
-	return pulumix.Output[EdifactValidationOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value indicating whether to allow leading and trailing spaces and zeroes.
@@ -10795,12 +9858,6 @@ func (o EdifactValidationOverrideArrayOutput) ToEdifactValidationOverrideArrayOu
 	return o
 }
 
-func (o EdifactValidationOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EdifactValidationOverride] {
-	return pulumix.Output[[]EdifactValidationOverride]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EdifactValidationOverrideArrayOutput) Index(i pulumi.IntInput) EdifactValidationOverrideOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EdifactValidationOverride {
 		return vs[0].([]EdifactValidationOverride)[vs[1].(int)]
@@ -10836,12 +9893,6 @@ func (o EdifactValidationOverrideResponseOutput) ToEdifactValidationOverrideResp
 
 func (o EdifactValidationOverrideResponseOutput) ToEdifactValidationOverrideResponseOutputWithContext(ctx context.Context) EdifactValidationOverrideResponseOutput {
 	return o
-}
-
-func (o EdifactValidationOverrideResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactValidationOverrideResponse] {
-	return pulumix.Output[EdifactValidationOverrideResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value indicating whether to allow leading and trailing spaces and zeroes.
@@ -10891,12 +9942,6 @@ func (o EdifactValidationOverrideResponseArrayOutput) ToEdifactValidationOverrid
 
 func (o EdifactValidationOverrideResponseArrayOutput) ToEdifactValidationOverrideResponseArrayOutputWithContext(ctx context.Context) EdifactValidationOverrideResponseArrayOutput {
 	return o
-}
-
-func (o EdifactValidationOverrideResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EdifactValidationOverrideResponse] {
-	return pulumix.Output[[]EdifactValidationOverrideResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactValidationOverrideResponseArrayOutput) Index(i pulumi.IntInput) EdifactValidationOverrideResponseOutput {
@@ -10974,12 +10019,6 @@ func (i EdifactValidationSettingsArgs) ToEdifactValidationSettingsOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactValidationSettingsOutput)
 }
 
-func (i EdifactValidationSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[EdifactValidationSettings] {
-	return pulumix.Output[EdifactValidationSettings]{
-		OutputState: i.ToEdifactValidationSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EdifactValidationSettingsArgs) ToEdifactValidationSettingsPtrOutput() EdifactValidationSettingsPtrOutput {
 	return i.ToEdifactValidationSettingsPtrOutputWithContext(context.Background())
 }
@@ -11021,12 +10060,6 @@ func (i *edifactValidationSettingsPtrType) ToEdifactValidationSettingsPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(EdifactValidationSettingsPtrOutput)
 }
 
-func (i *edifactValidationSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*EdifactValidationSettings] {
-	return pulumix.Output[*EdifactValidationSettings]{
-		OutputState: i.ToEdifactValidationSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EdifactValidationSettingsOutput struct{ *pulumi.OutputState }
 
 func (EdifactValidationSettingsOutput) ElementType() reflect.Type {
@@ -11049,12 +10082,6 @@ func (o EdifactValidationSettingsOutput) ToEdifactValidationSettingsPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EdifactValidationSettings) *EdifactValidationSettings {
 		return &v
 	}).(EdifactValidationSettingsPtrOutput)
-}
-
-func (o EdifactValidationSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactValidationSettings] {
-	return pulumix.Output[EdifactValidationSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value indicating whether to allow leading and trailing spaces and zeroes.
@@ -11119,12 +10146,6 @@ func (o EdifactValidationSettingsPtrOutput) ToEdifactValidationSettingsPtrOutput
 
 func (o EdifactValidationSettingsPtrOutput) ToEdifactValidationSettingsPtrOutputWithContext(ctx context.Context) EdifactValidationSettingsPtrOutput {
 	return o
-}
-
-func (o EdifactValidationSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdifactValidationSettings] {
-	return pulumix.Output[*EdifactValidationSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactValidationSettingsPtrOutput) Elem() EdifactValidationSettingsOutput {
@@ -11274,12 +10295,6 @@ func (o EdifactValidationSettingsResponseOutput) ToEdifactValidationSettingsResp
 	return o
 }
 
-func (o EdifactValidationSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EdifactValidationSettingsResponse] {
-	return pulumix.Output[EdifactValidationSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The value indicating whether to allow leading and trailing spaces and zeroes.
 func (o EdifactValidationSettingsResponseOutput) AllowLeadingAndTrailingSpacesAndZeroes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EdifactValidationSettingsResponse) *bool { return v.AllowLeadingAndTrailingSpacesAndZeroes }).(pulumi.BoolPtrOutput)
@@ -11342,12 +10357,6 @@ func (o EdifactValidationSettingsResponsePtrOutput) ToEdifactValidationSettingsR
 
 func (o EdifactValidationSettingsResponsePtrOutput) ToEdifactValidationSettingsResponsePtrOutputWithContext(ctx context.Context) EdifactValidationSettingsResponsePtrOutput {
 	return o
-}
-
-func (o EdifactValidationSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EdifactValidationSettingsResponse] {
-	return pulumix.Output[*EdifactValidationSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EdifactValidationSettingsResponsePtrOutput) Elem() EdifactValidationSettingsResponseOutput {
@@ -11481,12 +10490,6 @@ func (o IntegrationAccountContentHashResponseOutput) ToIntegrationAccountContent
 	return o
 }
 
-func (o IntegrationAccountContentHashResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IntegrationAccountContentHashResponse] {
-	return pulumix.Output[IntegrationAccountContentHashResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The content hash algorithm.
 func (o IntegrationAccountContentHashResponseOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IntegrationAccountContentHashResponse) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
@@ -11509,12 +10512,6 @@ func (o IntegrationAccountContentHashResponsePtrOutput) ToIntegrationAccountCont
 
 func (o IntegrationAccountContentHashResponsePtrOutput) ToIntegrationAccountContentHashResponsePtrOutputWithContext(ctx context.Context) IntegrationAccountContentHashResponsePtrOutput {
 	return o
-}
-
-func (o IntegrationAccountContentHashResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationAccountContentHashResponse] {
-	return pulumix.Output[*IntegrationAccountContentHashResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IntegrationAccountContentHashResponsePtrOutput) Elem() IntegrationAccountContentHashResponseOutput {
@@ -11572,12 +10569,6 @@ func (o IntegrationAccountContentLinkResponseOutput) ToIntegrationAccountContent
 
 func (o IntegrationAccountContentLinkResponseOutput) ToIntegrationAccountContentLinkResponseOutputWithContext(ctx context.Context) IntegrationAccountContentLinkResponseOutput {
 	return o
-}
-
-func (o IntegrationAccountContentLinkResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IntegrationAccountContentLinkResponse] {
-	return pulumix.Output[IntegrationAccountContentLinkResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The content hash.
@@ -11640,12 +10631,6 @@ func (i IntegrationAccountSkuArgs) ToIntegrationAccountSkuOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationAccountSkuOutput)
 }
 
-func (i IntegrationAccountSkuArgs) ToOutput(ctx context.Context) pulumix.Output[IntegrationAccountSku] {
-	return pulumix.Output[IntegrationAccountSku]{
-		OutputState: i.ToIntegrationAccountSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IntegrationAccountSkuArgs) ToIntegrationAccountSkuPtrOutput() IntegrationAccountSkuPtrOutput {
 	return i.ToIntegrationAccountSkuPtrOutputWithContext(context.Background())
 }
@@ -11687,12 +10672,6 @@ func (i *integrationAccountSkuPtrType) ToIntegrationAccountSkuPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationAccountSkuPtrOutput)
 }
 
-func (i *integrationAccountSkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*IntegrationAccountSku] {
-	return pulumix.Output[*IntegrationAccountSku]{
-		OutputState: i.ToIntegrationAccountSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IntegrationAccountSkuOutput struct{ *pulumi.OutputState }
 
 func (IntegrationAccountSkuOutput) ElementType() reflect.Type {
@@ -11717,12 +10696,6 @@ func (o IntegrationAccountSkuOutput) ToIntegrationAccountSkuPtrOutputWithContext
 	}).(IntegrationAccountSkuPtrOutput)
 }
 
-func (o IntegrationAccountSkuOutput) ToOutput(ctx context.Context) pulumix.Output[IntegrationAccountSku] {
-	return pulumix.Output[IntegrationAccountSku]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The sku name.
 func (o IntegrationAccountSkuOutput) Name() SkuNamePtrOutput {
 	return o.ApplyT(func(v IntegrationAccountSku) *SkuName { return v.Name }).(SkuNamePtrOutput)
@@ -11740,12 +10713,6 @@ func (o IntegrationAccountSkuPtrOutput) ToIntegrationAccountSkuPtrOutput() Integ
 
 func (o IntegrationAccountSkuPtrOutput) ToIntegrationAccountSkuPtrOutputWithContext(ctx context.Context) IntegrationAccountSkuPtrOutput {
 	return o
-}
-
-func (o IntegrationAccountSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationAccountSku] {
-	return pulumix.Output[*IntegrationAccountSku]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IntegrationAccountSkuPtrOutput) Elem() IntegrationAccountSkuOutput {
@@ -11787,12 +10754,6 @@ func (o IntegrationAccountSkuResponseOutput) ToIntegrationAccountSkuResponseOutp
 	return o
 }
 
-func (o IntegrationAccountSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IntegrationAccountSkuResponse] {
-	return pulumix.Output[IntegrationAccountSkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The sku name.
 func (o IntegrationAccountSkuResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IntegrationAccountSkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -11810,12 +10771,6 @@ func (o IntegrationAccountSkuResponsePtrOutput) ToIntegrationAccountSkuResponseP
 
 func (o IntegrationAccountSkuResponsePtrOutput) ToIntegrationAccountSkuResponsePtrOutputWithContext(ctx context.Context) IntegrationAccountSkuResponsePtrOutput {
 	return o
-}
-
-func (o IntegrationAccountSkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationAccountSkuResponse] {
-	return pulumix.Output[*IntegrationAccountSkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IntegrationAccountSkuResponsePtrOutput) Elem() IntegrationAccountSkuResponseOutput {
@@ -11879,12 +10834,6 @@ func (i KeyVaultKeyReferenceArgs) ToKeyVaultKeyReferenceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultKeyReferenceOutput)
 }
 
-func (i KeyVaultKeyReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[KeyVaultKeyReference] {
-	return pulumix.Output[KeyVaultKeyReference]{
-		OutputState: i.ToKeyVaultKeyReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KeyVaultKeyReferenceArgs) ToKeyVaultKeyReferencePtrOutput() KeyVaultKeyReferencePtrOutput {
 	return i.ToKeyVaultKeyReferencePtrOutputWithContext(context.Background())
 }
@@ -11926,12 +10875,6 @@ func (i *keyVaultKeyReferencePtrType) ToKeyVaultKeyReferencePtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultKeyReferencePtrOutput)
 }
 
-func (i *keyVaultKeyReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultKeyReference] {
-	return pulumix.Output[*KeyVaultKeyReference]{
-		OutputState: i.ToKeyVaultKeyReferencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KeyVaultKeyReferenceOutput struct{ *pulumi.OutputState }
 
 func (KeyVaultKeyReferenceOutput) ElementType() reflect.Type {
@@ -11954,12 +10897,6 @@ func (o KeyVaultKeyReferenceOutput) ToKeyVaultKeyReferencePtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyVaultKeyReference) *KeyVaultKeyReference {
 		return &v
 	}).(KeyVaultKeyReferencePtrOutput)
-}
-
-func (o KeyVaultKeyReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultKeyReference] {
-	return pulumix.Output[KeyVaultKeyReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The private key name in key vault.
@@ -11989,12 +10926,6 @@ func (o KeyVaultKeyReferencePtrOutput) ToKeyVaultKeyReferencePtrOutput() KeyVaul
 
 func (o KeyVaultKeyReferencePtrOutput) ToKeyVaultKeyReferencePtrOutputWithContext(ctx context.Context) KeyVaultKeyReferencePtrOutput {
 	return o
-}
-
-func (o KeyVaultKeyReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultKeyReference] {
-	return pulumix.Output[*KeyVaultKeyReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultKeyReferencePtrOutput) Elem() KeyVaultKeyReferenceOutput {
@@ -12072,12 +11003,6 @@ func (i KeyVaultKeyReferenceKeyVaultArgs) ToKeyVaultKeyReferenceKeyVaultOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultKeyReferenceKeyVaultOutput)
 }
 
-func (i KeyVaultKeyReferenceKeyVaultArgs) ToOutput(ctx context.Context) pulumix.Output[KeyVaultKeyReferenceKeyVault] {
-	return pulumix.Output[KeyVaultKeyReferenceKeyVault]{
-		OutputState: i.ToKeyVaultKeyReferenceKeyVaultOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KeyVaultKeyReferenceKeyVaultArgs) ToKeyVaultKeyReferenceKeyVaultPtrOutput() KeyVaultKeyReferenceKeyVaultPtrOutput {
 	return i.ToKeyVaultKeyReferenceKeyVaultPtrOutputWithContext(context.Background())
 }
@@ -12119,12 +11044,6 @@ func (i *keyVaultKeyReferenceKeyVaultPtrType) ToKeyVaultKeyReferenceKeyVaultPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultKeyReferenceKeyVaultPtrOutput)
 }
 
-func (i *keyVaultKeyReferenceKeyVaultPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultKeyReferenceKeyVault] {
-	return pulumix.Output[*KeyVaultKeyReferenceKeyVault]{
-		OutputState: i.ToKeyVaultKeyReferenceKeyVaultPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The key vault reference.
 type KeyVaultKeyReferenceKeyVaultOutput struct{ *pulumi.OutputState }
 
@@ -12150,12 +11069,6 @@ func (o KeyVaultKeyReferenceKeyVaultOutput) ToKeyVaultKeyReferenceKeyVaultPtrOut
 	}).(KeyVaultKeyReferenceKeyVaultPtrOutput)
 }
 
-func (o KeyVaultKeyReferenceKeyVaultOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultKeyReferenceKeyVault] {
-	return pulumix.Output[KeyVaultKeyReferenceKeyVault]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resource id.
 func (o KeyVaultKeyReferenceKeyVaultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyVaultKeyReferenceKeyVault) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -12173,12 +11086,6 @@ func (o KeyVaultKeyReferenceKeyVaultPtrOutput) ToKeyVaultKeyReferenceKeyVaultPtr
 
 func (o KeyVaultKeyReferenceKeyVaultPtrOutput) ToKeyVaultKeyReferenceKeyVaultPtrOutputWithContext(ctx context.Context) KeyVaultKeyReferenceKeyVaultPtrOutput {
 	return o
-}
-
-func (o KeyVaultKeyReferenceKeyVaultPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultKeyReferenceKeyVault] {
-	return pulumix.Output[*KeyVaultKeyReferenceKeyVault]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultKeyReferenceKeyVaultPtrOutput) Elem() KeyVaultKeyReferenceKeyVaultOutput {
@@ -12224,12 +11131,6 @@ func (o KeyVaultKeyReferenceResponseOutput) ToKeyVaultKeyReferenceResponseOutput
 	return o
 }
 
-func (o KeyVaultKeyReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultKeyReferenceResponse] {
-	return pulumix.Output[KeyVaultKeyReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The private key name in key vault.
 func (o KeyVaultKeyReferenceResponseOutput) KeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyVaultKeyReferenceResponse) *string { return v.KeyName }).(pulumi.StringPtrOutput)
@@ -12257,12 +11158,6 @@ func (o KeyVaultKeyReferenceResponsePtrOutput) ToKeyVaultKeyReferenceResponsePtr
 
 func (o KeyVaultKeyReferenceResponsePtrOutput) ToKeyVaultKeyReferenceResponsePtrOutputWithContext(ctx context.Context) KeyVaultKeyReferenceResponsePtrOutput {
 	return o
-}
-
-func (o KeyVaultKeyReferenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultKeyReferenceResponse] {
-	return pulumix.Output[*KeyVaultKeyReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultKeyReferenceResponsePtrOutput) Elem() KeyVaultKeyReferenceResponseOutput {
@@ -12330,12 +11225,6 @@ func (o KeyVaultKeyReferenceResponseKeyVaultOutput) ToKeyVaultKeyReferenceRespon
 	return o
 }
 
-func (o KeyVaultKeyReferenceResponseKeyVaultOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultKeyReferenceResponseKeyVault] {
-	return pulumix.Output[KeyVaultKeyReferenceResponseKeyVault]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resource id.
 func (o KeyVaultKeyReferenceResponseKeyVaultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyVaultKeyReferenceResponseKeyVault) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -12363,12 +11252,6 @@ func (o KeyVaultKeyReferenceResponseKeyVaultPtrOutput) ToKeyVaultKeyReferenceRes
 
 func (o KeyVaultKeyReferenceResponseKeyVaultPtrOutput) ToKeyVaultKeyReferenceResponseKeyVaultPtrOutputWithContext(ctx context.Context) KeyVaultKeyReferenceResponseKeyVaultPtrOutput {
 	return o
-}
-
-func (o KeyVaultKeyReferenceResponseKeyVaultPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultKeyReferenceResponseKeyVault] {
-	return pulumix.Output[*KeyVaultKeyReferenceResponseKeyVault]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultKeyReferenceResponseKeyVaultPtrOutput) Elem() KeyVaultKeyReferenceResponseKeyVaultOutput {
@@ -12444,12 +11327,6 @@ func (i PartnerContentArgs) ToPartnerContentOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(PartnerContentOutput)
 }
 
-func (i PartnerContentArgs) ToOutput(ctx context.Context) pulumix.Output[PartnerContent] {
-	return pulumix.Output[PartnerContent]{
-		OutputState: i.ToPartnerContentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PartnerContentArgs) ToPartnerContentPtrOutput() PartnerContentPtrOutput {
 	return i.ToPartnerContentPtrOutputWithContext(context.Background())
 }
@@ -12491,12 +11368,6 @@ func (i *partnerContentPtrType) ToPartnerContentPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(PartnerContentPtrOutput)
 }
 
-func (i *partnerContentPtrType) ToOutput(ctx context.Context) pulumix.Output[*PartnerContent] {
-	return pulumix.Output[*PartnerContent]{
-		OutputState: i.ToPartnerContentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PartnerContentOutput struct{ *pulumi.OutputState }
 
 func (PartnerContentOutput) ElementType() reflect.Type {
@@ -12521,12 +11392,6 @@ func (o PartnerContentOutput) ToPartnerContentPtrOutputWithContext(ctx context.C
 	}).(PartnerContentPtrOutput)
 }
 
-func (o PartnerContentOutput) ToOutput(ctx context.Context) pulumix.Output[PartnerContent] {
-	return pulumix.Output[PartnerContent]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The B2B partner content.
 func (o PartnerContentOutput) B2b() B2BPartnerContentPtrOutput {
 	return o.ApplyT(func(v PartnerContent) *B2BPartnerContent { return v.B2b }).(B2BPartnerContentPtrOutput)
@@ -12544,12 +11409,6 @@ func (o PartnerContentPtrOutput) ToPartnerContentPtrOutput() PartnerContentPtrOu
 
 func (o PartnerContentPtrOutput) ToPartnerContentPtrOutputWithContext(ctx context.Context) PartnerContentPtrOutput {
 	return o
-}
-
-func (o PartnerContentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PartnerContent] {
-	return pulumix.Output[*PartnerContent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PartnerContentPtrOutput) Elem() PartnerContentOutput {
@@ -12591,12 +11450,6 @@ func (o PartnerContentResponseOutput) ToPartnerContentResponseOutputWithContext(
 	return o
 }
 
-func (o PartnerContentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PartnerContentResponse] {
-	return pulumix.Output[PartnerContentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The B2B partner content.
 func (o PartnerContentResponseOutput) B2b() B2BPartnerContentResponsePtrOutput {
 	return o.ApplyT(func(v PartnerContentResponse) *B2BPartnerContentResponse { return v.B2b }).(B2BPartnerContentResponsePtrOutput)
@@ -12614,12 +11467,6 @@ func (o PartnerContentResponsePtrOutput) ToPartnerContentResponsePtrOutput() Par
 
 func (o PartnerContentResponsePtrOutput) ToPartnerContentResponsePtrOutputWithContext(ctx context.Context) PartnerContentResponsePtrOutput {
 	return o
-}
-
-func (o PartnerContentResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PartnerContentResponse] {
-	return pulumix.Output[*PartnerContentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PartnerContentResponsePtrOutput) Elem() PartnerContentResponseOutput {
@@ -12731,12 +11578,6 @@ func (i X12AcknowledgementSettingsArgs) ToX12AcknowledgementSettingsOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(X12AcknowledgementSettingsOutput)
 }
 
-func (i X12AcknowledgementSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[X12AcknowledgementSettings] {
-	return pulumix.Output[X12AcknowledgementSettings]{
-		OutputState: i.ToX12AcknowledgementSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i X12AcknowledgementSettingsArgs) ToX12AcknowledgementSettingsPtrOutput() X12AcknowledgementSettingsPtrOutput {
 	return i.ToX12AcknowledgementSettingsPtrOutputWithContext(context.Background())
 }
@@ -12778,12 +11619,6 @@ func (i *x12acknowledgementSettingsPtrType) ToX12AcknowledgementSettingsPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(X12AcknowledgementSettingsPtrOutput)
 }
 
-func (i *x12acknowledgementSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*X12AcknowledgementSettings] {
-	return pulumix.Output[*X12AcknowledgementSettings]{
-		OutputState: i.ToX12AcknowledgementSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type X12AcknowledgementSettingsOutput struct{ *pulumi.OutputState }
 
 func (X12AcknowledgementSettingsOutput) ElementType() reflect.Type {
@@ -12806,12 +11641,6 @@ func (o X12AcknowledgementSettingsOutput) ToX12AcknowledgementSettingsPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v X12AcknowledgementSettings) *X12AcknowledgementSettings {
 		return &v
 	}).(X12AcknowledgementSettingsPtrOutput)
-}
-
-func (o X12AcknowledgementSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[X12AcknowledgementSettings] {
-	return pulumix.Output[X12AcknowledgementSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The acknowledgement control number lower bound.
@@ -12901,12 +11730,6 @@ func (o X12AcknowledgementSettingsPtrOutput) ToX12AcknowledgementSettingsPtrOutp
 
 func (o X12AcknowledgementSettingsPtrOutput) ToX12AcknowledgementSettingsPtrOutputWithContext(ctx context.Context) X12AcknowledgementSettingsPtrOutput {
 	return o
-}
-
-func (o X12AcknowledgementSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*X12AcknowledgementSettings] {
-	return pulumix.Output[*X12AcknowledgementSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12AcknowledgementSettingsPtrOutput) Elem() X12AcknowledgementSettingsOutput {
@@ -13116,12 +11939,6 @@ func (o X12AcknowledgementSettingsResponseOutput) ToX12AcknowledgementSettingsRe
 	return o
 }
 
-func (o X12AcknowledgementSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[X12AcknowledgementSettingsResponse] {
-	return pulumix.Output[X12AcknowledgementSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The acknowledgement control number lower bound.
 func (o X12AcknowledgementSettingsResponseOutput) AcknowledgementControlNumberLowerBound() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v X12AcknowledgementSettingsResponse) *int { return v.AcknowledgementControlNumberLowerBound }).(pulumi.IntPtrOutput)
@@ -13209,12 +12026,6 @@ func (o X12AcknowledgementSettingsResponsePtrOutput) ToX12AcknowledgementSetting
 
 func (o X12AcknowledgementSettingsResponsePtrOutput) ToX12AcknowledgementSettingsResponsePtrOutputWithContext(ctx context.Context) X12AcknowledgementSettingsResponsePtrOutput {
 	return o
-}
-
-func (o X12AcknowledgementSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*X12AcknowledgementSettingsResponse] {
-	return pulumix.Output[*X12AcknowledgementSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12AcknowledgementSettingsResponsePtrOutput) Elem() X12AcknowledgementSettingsResponseOutput {
@@ -13414,12 +12225,6 @@ func (i X12AgreementContentArgs) ToX12AgreementContentOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(X12AgreementContentOutput)
 }
 
-func (i X12AgreementContentArgs) ToOutput(ctx context.Context) pulumix.Output[X12AgreementContent] {
-	return pulumix.Output[X12AgreementContent]{
-		OutputState: i.ToX12AgreementContentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i X12AgreementContentArgs) ToX12AgreementContentPtrOutput() X12AgreementContentPtrOutput {
 	return i.ToX12AgreementContentPtrOutputWithContext(context.Background())
 }
@@ -13461,12 +12266,6 @@ func (i *x12agreementContentPtrType) ToX12AgreementContentPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(X12AgreementContentPtrOutput)
 }
 
-func (i *x12agreementContentPtrType) ToOutput(ctx context.Context) pulumix.Output[*X12AgreementContent] {
-	return pulumix.Output[*X12AgreementContent]{
-		OutputState: i.ToX12AgreementContentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type X12AgreementContentOutput struct{ *pulumi.OutputState }
 
 func (X12AgreementContentOutput) ElementType() reflect.Type {
@@ -13491,12 +12290,6 @@ func (o X12AgreementContentOutput) ToX12AgreementContentPtrOutputWithContext(ctx
 	}).(X12AgreementContentPtrOutput)
 }
 
-func (o X12AgreementContentOutput) ToOutput(ctx context.Context) pulumix.Output[X12AgreementContent] {
-	return pulumix.Output[X12AgreementContent]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The X12 one-way receive agreement.
 func (o X12AgreementContentOutput) ReceiveAgreement() X12OneWayAgreementPtrOutput {
 	return o.ApplyT(func(v X12AgreementContent) *X12OneWayAgreement { return v.ReceiveAgreement }).(X12OneWayAgreementPtrOutput)
@@ -13519,12 +12312,6 @@ func (o X12AgreementContentPtrOutput) ToX12AgreementContentPtrOutput() X12Agreem
 
 func (o X12AgreementContentPtrOutput) ToX12AgreementContentPtrOutputWithContext(ctx context.Context) X12AgreementContentPtrOutput {
 	return o
-}
-
-func (o X12AgreementContentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*X12AgreementContent] {
-	return pulumix.Output[*X12AgreementContent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12AgreementContentPtrOutput) Elem() X12AgreementContentOutput {
@@ -13578,12 +12365,6 @@ func (o X12AgreementContentResponseOutput) ToX12AgreementContentResponseOutputWi
 	return o
 }
 
-func (o X12AgreementContentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[X12AgreementContentResponse] {
-	return pulumix.Output[X12AgreementContentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The X12 one-way receive agreement.
 func (o X12AgreementContentResponseOutput) ReceiveAgreement() X12OneWayAgreementResponsePtrOutput {
 	return o.ApplyT(func(v X12AgreementContentResponse) *X12OneWayAgreementResponse { return v.ReceiveAgreement }).(X12OneWayAgreementResponsePtrOutput)
@@ -13606,12 +12387,6 @@ func (o X12AgreementContentResponsePtrOutput) ToX12AgreementContentResponsePtrOu
 
 func (o X12AgreementContentResponsePtrOutput) ToX12AgreementContentResponsePtrOutputWithContext(ctx context.Context) X12AgreementContentResponsePtrOutput {
 	return o
-}
-
-func (o X12AgreementContentResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*X12AgreementContentResponse] {
-	return pulumix.Output[*X12AgreementContentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12AgreementContentResponsePtrOutput) Elem() X12AgreementContentResponseOutput {
@@ -13709,12 +12484,6 @@ func (i X12DelimiterOverridesArgs) ToX12DelimiterOverridesOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(X12DelimiterOverridesOutput)
 }
 
-func (i X12DelimiterOverridesArgs) ToOutput(ctx context.Context) pulumix.Output[X12DelimiterOverrides] {
-	return pulumix.Output[X12DelimiterOverrides]{
-		OutputState: i.ToX12DelimiterOverridesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // X12DelimiterOverridesArrayInput is an input type that accepts X12DelimiterOverridesArray and X12DelimiterOverridesArrayOutput values.
 // You can construct a concrete instance of `X12DelimiterOverridesArrayInput` via:
 //
@@ -13740,12 +12509,6 @@ func (i X12DelimiterOverridesArray) ToX12DelimiterOverridesArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(X12DelimiterOverridesArrayOutput)
 }
 
-func (i X12DelimiterOverridesArray) ToOutput(ctx context.Context) pulumix.Output[[]X12DelimiterOverrides] {
-	return pulumix.Output[[]X12DelimiterOverrides]{
-		OutputState: i.ToX12DelimiterOverridesArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type X12DelimiterOverridesOutput struct{ *pulumi.OutputState }
 
 func (X12DelimiterOverridesOutput) ElementType() reflect.Type {
@@ -13758,12 +12521,6 @@ func (o X12DelimiterOverridesOutput) ToX12DelimiterOverridesOutput() X12Delimite
 
 func (o X12DelimiterOverridesOutput) ToX12DelimiterOverridesOutputWithContext(ctx context.Context) X12DelimiterOverridesOutput {
 	return o
-}
-
-func (o X12DelimiterOverridesOutput) ToOutput(ctx context.Context) pulumix.Output[X12DelimiterOverrides] {
-	return pulumix.Output[X12DelimiterOverrides]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The component separator.
@@ -13825,12 +12582,6 @@ func (o X12DelimiterOverridesArrayOutput) ToX12DelimiterOverridesArrayOutputWith
 	return o
 }
 
-func (o X12DelimiterOverridesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]X12DelimiterOverrides] {
-	return pulumix.Output[[]X12DelimiterOverrides]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o X12DelimiterOverridesArrayOutput) Index(i pulumi.IntInput) X12DelimiterOverridesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) X12DelimiterOverrides {
 		return vs[0].([]X12DelimiterOverrides)[vs[1].(int)]
@@ -13870,12 +12621,6 @@ func (o X12DelimiterOverridesResponseOutput) ToX12DelimiterOverridesResponseOutp
 
 func (o X12DelimiterOverridesResponseOutput) ToX12DelimiterOverridesResponseOutputWithContext(ctx context.Context) X12DelimiterOverridesResponseOutput {
 	return o
-}
-
-func (o X12DelimiterOverridesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[X12DelimiterOverridesResponse] {
-	return pulumix.Output[X12DelimiterOverridesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The component separator.
@@ -13935,12 +12680,6 @@ func (o X12DelimiterOverridesResponseArrayOutput) ToX12DelimiterOverridesRespons
 
 func (o X12DelimiterOverridesResponseArrayOutput) ToX12DelimiterOverridesResponseArrayOutputWithContext(ctx context.Context) X12DelimiterOverridesResponseArrayOutput {
 	return o
-}
-
-func (o X12DelimiterOverridesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]X12DelimiterOverridesResponse] {
-	return pulumix.Output[[]X12DelimiterOverridesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12DelimiterOverridesResponseArrayOutput) Index(i pulumi.IntInput) X12DelimiterOverridesResponseOutput {
@@ -14018,12 +12757,6 @@ func (i X12EnvelopeOverrideArgs) ToX12EnvelopeOverrideOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(X12EnvelopeOverrideOutput)
 }
 
-func (i X12EnvelopeOverrideArgs) ToOutput(ctx context.Context) pulumix.Output[X12EnvelopeOverride] {
-	return pulumix.Output[X12EnvelopeOverride]{
-		OutputState: i.ToX12EnvelopeOverrideOutputWithContext(ctx).OutputState,
-	}
-}
-
 // X12EnvelopeOverrideArrayInput is an input type that accepts X12EnvelopeOverrideArray and X12EnvelopeOverrideArrayOutput values.
 // You can construct a concrete instance of `X12EnvelopeOverrideArrayInput` via:
 //
@@ -14049,12 +12782,6 @@ func (i X12EnvelopeOverrideArray) ToX12EnvelopeOverrideArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(X12EnvelopeOverrideArrayOutput)
 }
 
-func (i X12EnvelopeOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]X12EnvelopeOverride] {
-	return pulumix.Output[[]X12EnvelopeOverride]{
-		OutputState: i.ToX12EnvelopeOverrideArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type X12EnvelopeOverrideOutput struct{ *pulumi.OutputState }
 
 func (X12EnvelopeOverrideOutput) ElementType() reflect.Type {
@@ -14067,12 +12794,6 @@ func (o X12EnvelopeOverrideOutput) ToX12EnvelopeOverrideOutput() X12EnvelopeOver
 
 func (o X12EnvelopeOverrideOutput) ToX12EnvelopeOverrideOutputWithContext(ctx context.Context) X12EnvelopeOverrideOutput {
 	return o
-}
-
-func (o X12EnvelopeOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[X12EnvelopeOverride] {
-	return pulumix.Output[X12EnvelopeOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The date format.
@@ -14139,12 +12860,6 @@ func (o X12EnvelopeOverrideArrayOutput) ToX12EnvelopeOverrideArrayOutputWithCont
 	return o
 }
 
-func (o X12EnvelopeOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]X12EnvelopeOverride] {
-	return pulumix.Output[[]X12EnvelopeOverride]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o X12EnvelopeOverrideArrayOutput) Index(i pulumi.IntInput) X12EnvelopeOverrideOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) X12EnvelopeOverride {
 		return vs[0].([]X12EnvelopeOverride)[vs[1].(int)]
@@ -14186,12 +12901,6 @@ func (o X12EnvelopeOverrideResponseOutput) ToX12EnvelopeOverrideResponseOutput()
 
 func (o X12EnvelopeOverrideResponseOutput) ToX12EnvelopeOverrideResponseOutputWithContext(ctx context.Context) X12EnvelopeOverrideResponseOutput {
 	return o
-}
-
-func (o X12EnvelopeOverrideResponseOutput) ToOutput(ctx context.Context) pulumix.Output[X12EnvelopeOverrideResponse] {
-	return pulumix.Output[X12EnvelopeOverrideResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The date format.
@@ -14256,12 +12965,6 @@ func (o X12EnvelopeOverrideResponseArrayOutput) ToX12EnvelopeOverrideResponseArr
 
 func (o X12EnvelopeOverrideResponseArrayOutput) ToX12EnvelopeOverrideResponseArrayOutputWithContext(ctx context.Context) X12EnvelopeOverrideResponseArrayOutput {
 	return o
-}
-
-func (o X12EnvelopeOverrideResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]X12EnvelopeOverrideResponse] {
-	return pulumix.Output[[]X12EnvelopeOverrideResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12EnvelopeOverrideResponseArrayOutput) Index(i pulumi.IntInput) X12EnvelopeOverrideResponseOutput {
@@ -14395,12 +13098,6 @@ func (i X12EnvelopeSettingsArgs) ToX12EnvelopeSettingsOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(X12EnvelopeSettingsOutput)
 }
 
-func (i X12EnvelopeSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[X12EnvelopeSettings] {
-	return pulumix.Output[X12EnvelopeSettings]{
-		OutputState: i.ToX12EnvelopeSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i X12EnvelopeSettingsArgs) ToX12EnvelopeSettingsPtrOutput() X12EnvelopeSettingsPtrOutput {
 	return i.ToX12EnvelopeSettingsPtrOutputWithContext(context.Background())
 }
@@ -14442,12 +13139,6 @@ func (i *x12envelopeSettingsPtrType) ToX12EnvelopeSettingsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(X12EnvelopeSettingsPtrOutput)
 }
 
-func (i *x12envelopeSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*X12EnvelopeSettings] {
-	return pulumix.Output[*X12EnvelopeSettings]{
-		OutputState: i.ToX12EnvelopeSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type X12EnvelopeSettingsOutput struct{ *pulumi.OutputState }
 
 func (X12EnvelopeSettingsOutput) ElementType() reflect.Type {
@@ -14470,12 +13161,6 @@ func (o X12EnvelopeSettingsOutput) ToX12EnvelopeSettingsPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v X12EnvelopeSettings) *X12EnvelopeSettings {
 		return &v
 	}).(X12EnvelopeSettingsPtrOutput)
-}
-
-func (o X12EnvelopeSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[X12EnvelopeSettings] {
-	return pulumix.Output[X12EnvelopeSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The controls standards id.
@@ -14610,12 +13295,6 @@ func (o X12EnvelopeSettingsPtrOutput) ToX12EnvelopeSettingsPtrOutput() X12Envelo
 
 func (o X12EnvelopeSettingsPtrOutput) ToX12EnvelopeSettingsPtrOutputWithContext(ctx context.Context) X12EnvelopeSettingsPtrOutput {
 	return o
-}
-
-func (o X12EnvelopeSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*X12EnvelopeSettings] {
-	return pulumix.Output[*X12EnvelopeSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12EnvelopeSettingsPtrOutput) Elem() X12EnvelopeSettingsOutput {
@@ -14933,12 +13612,6 @@ func (o X12EnvelopeSettingsResponseOutput) ToX12EnvelopeSettingsResponseOutputWi
 	return o
 }
 
-func (o X12EnvelopeSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[X12EnvelopeSettingsResponse] {
-	return pulumix.Output[X12EnvelopeSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The controls standards id.
 func (o X12EnvelopeSettingsResponseOutput) ControlStandardsId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v X12EnvelopeSettingsResponse) *int { return v.ControlStandardsId }).(pulumi.IntPtrOutput)
@@ -15071,12 +13744,6 @@ func (o X12EnvelopeSettingsResponsePtrOutput) ToX12EnvelopeSettingsResponsePtrOu
 
 func (o X12EnvelopeSettingsResponsePtrOutput) ToX12EnvelopeSettingsResponsePtrOutputWithContext(ctx context.Context) X12EnvelopeSettingsResponsePtrOutput {
 	return o
-}
-
-func (o X12EnvelopeSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*X12EnvelopeSettingsResponse] {
-	return pulumix.Output[*X12EnvelopeSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12EnvelopeSettingsResponsePtrOutput) Elem() X12EnvelopeSettingsResponseOutput {
@@ -15386,12 +14053,6 @@ func (i X12FramingSettingsArgs) ToX12FramingSettingsOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(X12FramingSettingsOutput)
 }
 
-func (i X12FramingSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[X12FramingSettings] {
-	return pulumix.Output[X12FramingSettings]{
-		OutputState: i.ToX12FramingSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i X12FramingSettingsArgs) ToX12FramingSettingsPtrOutput() X12FramingSettingsPtrOutput {
 	return i.ToX12FramingSettingsPtrOutputWithContext(context.Background())
 }
@@ -15433,12 +14094,6 @@ func (i *x12framingSettingsPtrType) ToX12FramingSettingsPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(X12FramingSettingsPtrOutput)
 }
 
-func (i *x12framingSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*X12FramingSettings] {
-	return pulumix.Output[*X12FramingSettings]{
-		OutputState: i.ToX12FramingSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type X12FramingSettingsOutput struct{ *pulumi.OutputState }
 
 func (X12FramingSettingsOutput) ElementType() reflect.Type {
@@ -15461,12 +14116,6 @@ func (o X12FramingSettingsOutput) ToX12FramingSettingsPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v X12FramingSettings) *X12FramingSettings {
 		return &v
 	}).(X12FramingSettingsPtrOutput)
-}
-
-func (o X12FramingSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[X12FramingSettings] {
-	return pulumix.Output[X12FramingSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The X12 character set.
@@ -15516,12 +14165,6 @@ func (o X12FramingSettingsPtrOutput) ToX12FramingSettingsPtrOutput() X12FramingS
 
 func (o X12FramingSettingsPtrOutput) ToX12FramingSettingsPtrOutputWithContext(ctx context.Context) X12FramingSettingsPtrOutput {
 	return o
-}
-
-func (o X12FramingSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*X12FramingSettings] {
-	return pulumix.Output[*X12FramingSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12FramingSettingsPtrOutput) Elem() X12FramingSettingsOutput {
@@ -15635,12 +14278,6 @@ func (o X12FramingSettingsResponseOutput) ToX12FramingSettingsResponseOutputWith
 	return o
 }
 
-func (o X12FramingSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[X12FramingSettingsResponse] {
-	return pulumix.Output[X12FramingSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The X12 character set.
 func (o X12FramingSettingsResponseOutput) CharacterSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v X12FramingSettingsResponse) *string { return v.CharacterSet }).(pulumi.StringPtrOutput)
@@ -15688,12 +14325,6 @@ func (o X12FramingSettingsResponsePtrOutput) ToX12FramingSettingsResponsePtrOutp
 
 func (o X12FramingSettingsResponsePtrOutput) ToX12FramingSettingsResponsePtrOutputWithContext(ctx context.Context) X12FramingSettingsResponsePtrOutput {
 	return o
-}
-
-func (o X12FramingSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*X12FramingSettingsResponse] {
-	return pulumix.Output[*X12FramingSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12FramingSettingsResponsePtrOutput) Elem() X12FramingSettingsResponseOutput {
@@ -15809,12 +14440,6 @@ func (i X12MessageFilterArgs) ToX12MessageFilterOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(X12MessageFilterOutput)
 }
 
-func (i X12MessageFilterArgs) ToOutput(ctx context.Context) pulumix.Output[X12MessageFilter] {
-	return pulumix.Output[X12MessageFilter]{
-		OutputState: i.ToX12MessageFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i X12MessageFilterArgs) ToX12MessageFilterPtrOutput() X12MessageFilterPtrOutput {
 	return i.ToX12MessageFilterPtrOutputWithContext(context.Background())
 }
@@ -15856,12 +14481,6 @@ func (i *x12messageFilterPtrType) ToX12MessageFilterPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(X12MessageFilterPtrOutput)
 }
 
-func (i *x12messageFilterPtrType) ToOutput(ctx context.Context) pulumix.Output[*X12MessageFilter] {
-	return pulumix.Output[*X12MessageFilter]{
-		OutputState: i.ToX12MessageFilterPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type X12MessageFilterOutput struct{ *pulumi.OutputState }
 
 func (X12MessageFilterOutput) ElementType() reflect.Type {
@@ -15886,12 +14505,6 @@ func (o X12MessageFilterOutput) ToX12MessageFilterPtrOutputWithContext(ctx conte
 	}).(X12MessageFilterPtrOutput)
 }
 
-func (o X12MessageFilterOutput) ToOutput(ctx context.Context) pulumix.Output[X12MessageFilter] {
-	return pulumix.Output[X12MessageFilter]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The message filter type.
 func (o X12MessageFilterOutput) MessageFilterType() MessageFilterTypePtrOutput {
 	return o.ApplyT(func(v X12MessageFilter) *MessageFilterType { return v.MessageFilterType }).(MessageFilterTypePtrOutput)
@@ -15909,12 +14522,6 @@ func (o X12MessageFilterPtrOutput) ToX12MessageFilterPtrOutput() X12MessageFilte
 
 func (o X12MessageFilterPtrOutput) ToX12MessageFilterPtrOutputWithContext(ctx context.Context) X12MessageFilterPtrOutput {
 	return o
-}
-
-func (o X12MessageFilterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*X12MessageFilter] {
-	return pulumix.Output[*X12MessageFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12MessageFilterPtrOutput) Elem() X12MessageFilterOutput {
@@ -15956,12 +14563,6 @@ func (o X12MessageFilterResponseOutput) ToX12MessageFilterResponseOutputWithCont
 	return o
 }
 
-func (o X12MessageFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[X12MessageFilterResponse] {
-	return pulumix.Output[X12MessageFilterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The message filter type.
 func (o X12MessageFilterResponseOutput) MessageFilterType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v X12MessageFilterResponse) *string { return v.MessageFilterType }).(pulumi.StringPtrOutput)
@@ -15979,12 +14580,6 @@ func (o X12MessageFilterResponsePtrOutput) ToX12MessageFilterResponsePtrOutput()
 
 func (o X12MessageFilterResponsePtrOutput) ToX12MessageFilterResponsePtrOutputWithContext(ctx context.Context) X12MessageFilterResponsePtrOutput {
 	return o
-}
-
-func (o X12MessageFilterResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*X12MessageFilterResponse] {
-	return pulumix.Output[*X12MessageFilterResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12MessageFilterResponsePtrOutput) Elem() X12MessageFilterResponseOutput {
@@ -16040,12 +14635,6 @@ func (i X12MessageIdentifierArgs) ToX12MessageIdentifierOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(X12MessageIdentifierOutput)
 }
 
-func (i X12MessageIdentifierArgs) ToOutput(ctx context.Context) pulumix.Output[X12MessageIdentifier] {
-	return pulumix.Output[X12MessageIdentifier]{
-		OutputState: i.ToX12MessageIdentifierOutputWithContext(ctx).OutputState,
-	}
-}
-
 // X12MessageIdentifierArrayInput is an input type that accepts X12MessageIdentifierArray and X12MessageIdentifierArrayOutput values.
 // You can construct a concrete instance of `X12MessageIdentifierArrayInput` via:
 //
@@ -16071,12 +14660,6 @@ func (i X12MessageIdentifierArray) ToX12MessageIdentifierArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(X12MessageIdentifierArrayOutput)
 }
 
-func (i X12MessageIdentifierArray) ToOutput(ctx context.Context) pulumix.Output[[]X12MessageIdentifier] {
-	return pulumix.Output[[]X12MessageIdentifier]{
-		OutputState: i.ToX12MessageIdentifierArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type X12MessageIdentifierOutput struct{ *pulumi.OutputState }
 
 func (X12MessageIdentifierOutput) ElementType() reflect.Type {
@@ -16089,12 +14672,6 @@ func (o X12MessageIdentifierOutput) ToX12MessageIdentifierOutput() X12MessageIde
 
 func (o X12MessageIdentifierOutput) ToX12MessageIdentifierOutputWithContext(ctx context.Context) X12MessageIdentifierOutput {
 	return o
-}
-
-func (o X12MessageIdentifierOutput) ToOutput(ctx context.Context) pulumix.Output[X12MessageIdentifier] {
-	return pulumix.Output[X12MessageIdentifier]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The message id.
@@ -16114,12 +14691,6 @@ func (o X12MessageIdentifierArrayOutput) ToX12MessageIdentifierArrayOutput() X12
 
 func (o X12MessageIdentifierArrayOutput) ToX12MessageIdentifierArrayOutputWithContext(ctx context.Context) X12MessageIdentifierArrayOutput {
 	return o
-}
-
-func (o X12MessageIdentifierArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]X12MessageIdentifier] {
-	return pulumix.Output[[]X12MessageIdentifier]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12MessageIdentifierArrayOutput) Index(i pulumi.IntInput) X12MessageIdentifierOutput {
@@ -16147,12 +14718,6 @@ func (o X12MessageIdentifierResponseOutput) ToX12MessageIdentifierResponseOutput
 	return o
 }
 
-func (o X12MessageIdentifierResponseOutput) ToOutput(ctx context.Context) pulumix.Output[X12MessageIdentifierResponse] {
-	return pulumix.Output[X12MessageIdentifierResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The message id.
 func (o X12MessageIdentifierResponseOutput) MessageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v X12MessageIdentifierResponse) *string { return v.MessageId }).(pulumi.StringPtrOutput)
@@ -16170,12 +14735,6 @@ func (o X12MessageIdentifierResponseArrayOutput) ToX12MessageIdentifierResponseA
 
 func (o X12MessageIdentifierResponseArrayOutput) ToX12MessageIdentifierResponseArrayOutputWithContext(ctx context.Context) X12MessageIdentifierResponseArrayOutput {
 	return o
-}
-
-func (o X12MessageIdentifierResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]X12MessageIdentifierResponse] {
-	return pulumix.Output[[]X12MessageIdentifierResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12MessageIdentifierResponseArrayOutput) Index(i pulumi.IntInput) X12MessageIdentifierResponseOutput {
@@ -16225,12 +14784,6 @@ func (i X12OneWayAgreementArgs) ToX12OneWayAgreementOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(X12OneWayAgreementOutput)
 }
 
-func (i X12OneWayAgreementArgs) ToOutput(ctx context.Context) pulumix.Output[X12OneWayAgreement] {
-	return pulumix.Output[X12OneWayAgreement]{
-		OutputState: i.ToX12OneWayAgreementOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i X12OneWayAgreementArgs) ToX12OneWayAgreementPtrOutput() X12OneWayAgreementPtrOutput {
 	return i.ToX12OneWayAgreementPtrOutputWithContext(context.Background())
 }
@@ -16272,12 +14825,6 @@ func (i *x12oneWayAgreementPtrType) ToX12OneWayAgreementPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(X12OneWayAgreementPtrOutput)
 }
 
-func (i *x12oneWayAgreementPtrType) ToOutput(ctx context.Context) pulumix.Output[*X12OneWayAgreement] {
-	return pulumix.Output[*X12OneWayAgreement]{
-		OutputState: i.ToX12OneWayAgreementPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type X12OneWayAgreementOutput struct{ *pulumi.OutputState }
 
 func (X12OneWayAgreementOutput) ElementType() reflect.Type {
@@ -16300,12 +14847,6 @@ func (o X12OneWayAgreementOutput) ToX12OneWayAgreementPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v X12OneWayAgreement) *X12OneWayAgreement {
 		return &v
 	}).(X12OneWayAgreementPtrOutput)
-}
-
-func (o X12OneWayAgreementOutput) ToOutput(ctx context.Context) pulumix.Output[X12OneWayAgreement] {
-	return pulumix.Output[X12OneWayAgreement]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The X12 protocol settings.
@@ -16335,12 +14876,6 @@ func (o X12OneWayAgreementPtrOutput) ToX12OneWayAgreementPtrOutput() X12OneWayAg
 
 func (o X12OneWayAgreementPtrOutput) ToX12OneWayAgreementPtrOutputWithContext(ctx context.Context) X12OneWayAgreementPtrOutput {
 	return o
-}
-
-func (o X12OneWayAgreementPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*X12OneWayAgreement] {
-	return pulumix.Output[*X12OneWayAgreement]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12OneWayAgreementPtrOutput) Elem() X12OneWayAgreementOutput {
@@ -16406,12 +14941,6 @@ func (o X12OneWayAgreementResponseOutput) ToX12OneWayAgreementResponseOutputWith
 	return o
 }
 
-func (o X12OneWayAgreementResponseOutput) ToOutput(ctx context.Context) pulumix.Output[X12OneWayAgreementResponse] {
-	return pulumix.Output[X12OneWayAgreementResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The X12 protocol settings.
 func (o X12OneWayAgreementResponseOutput) ProtocolSettings() X12ProtocolSettingsResponsePtrOutput {
 	return o.ApplyT(func(v X12OneWayAgreementResponse) *X12ProtocolSettingsResponse { return v.ProtocolSettings }).(X12ProtocolSettingsResponsePtrOutput)
@@ -16439,12 +14968,6 @@ func (o X12OneWayAgreementResponsePtrOutput) ToX12OneWayAgreementResponsePtrOutp
 
 func (o X12OneWayAgreementResponsePtrOutput) ToX12OneWayAgreementResponsePtrOutputWithContext(ctx context.Context) X12OneWayAgreementResponsePtrOutput {
 	return o
-}
-
-func (o X12OneWayAgreementResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*X12OneWayAgreementResponse] {
-	return pulumix.Output[*X12OneWayAgreementResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12OneWayAgreementResponsePtrOutput) Elem() X12OneWayAgreementResponseOutput {
@@ -16540,12 +15063,6 @@ func (i X12ProcessingSettingsArgs) ToX12ProcessingSettingsOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(X12ProcessingSettingsOutput)
 }
 
-func (i X12ProcessingSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[X12ProcessingSettings] {
-	return pulumix.Output[X12ProcessingSettings]{
-		OutputState: i.ToX12ProcessingSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i X12ProcessingSettingsArgs) ToX12ProcessingSettingsPtrOutput() X12ProcessingSettingsPtrOutput {
 	return i.ToX12ProcessingSettingsPtrOutputWithContext(context.Background())
 }
@@ -16587,12 +15104,6 @@ func (i *x12processingSettingsPtrType) ToX12ProcessingSettingsPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(X12ProcessingSettingsPtrOutput)
 }
 
-func (i *x12processingSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*X12ProcessingSettings] {
-	return pulumix.Output[*X12ProcessingSettings]{
-		OutputState: i.ToX12ProcessingSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type X12ProcessingSettingsOutput struct{ *pulumi.OutputState }
 
 func (X12ProcessingSettingsOutput) ElementType() reflect.Type {
@@ -16615,12 +15126,6 @@ func (o X12ProcessingSettingsOutput) ToX12ProcessingSettingsPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v X12ProcessingSettings) *X12ProcessingSettings {
 		return &v
 	}).(X12ProcessingSettingsPtrOutput)
-}
-
-func (o X12ProcessingSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[X12ProcessingSettings] {
-	return pulumix.Output[X12ProcessingSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value indicating whether to convert numerical type to implied decimal.
@@ -16665,12 +15170,6 @@ func (o X12ProcessingSettingsPtrOutput) ToX12ProcessingSettingsPtrOutput() X12Pr
 
 func (o X12ProcessingSettingsPtrOutput) ToX12ProcessingSettingsPtrOutputWithContext(ctx context.Context) X12ProcessingSettingsPtrOutput {
 	return o
-}
-
-func (o X12ProcessingSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*X12ProcessingSettings] {
-	return pulumix.Output[*X12ProcessingSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12ProcessingSettingsPtrOutput) Elem() X12ProcessingSettingsOutput {
@@ -16772,12 +15271,6 @@ func (o X12ProcessingSettingsResponseOutput) ToX12ProcessingSettingsResponseOutp
 	return o
 }
 
-func (o X12ProcessingSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[X12ProcessingSettingsResponse] {
-	return pulumix.Output[X12ProcessingSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The value indicating whether to convert numerical type to implied decimal.
 func (o X12ProcessingSettingsResponseOutput) ConvertImpliedDecimal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v X12ProcessingSettingsResponse) *bool { return v.ConvertImpliedDecimal }).(pulumi.BoolPtrOutput)
@@ -16820,12 +15313,6 @@ func (o X12ProcessingSettingsResponsePtrOutput) ToX12ProcessingSettingsResponseP
 
 func (o X12ProcessingSettingsResponsePtrOutput) ToX12ProcessingSettingsResponsePtrOutputWithContext(ctx context.Context) X12ProcessingSettingsResponsePtrOutput {
 	return o
-}
-
-func (o X12ProcessingSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*X12ProcessingSettingsResponse] {
-	return pulumix.Output[*X12ProcessingSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12ProcessingSettingsResponsePtrOutput) Elem() X12ProcessingSettingsResponseOutput {
@@ -16975,12 +15462,6 @@ func (i X12ProtocolSettingsArgs) ToX12ProtocolSettingsOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(X12ProtocolSettingsOutput)
 }
 
-func (i X12ProtocolSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[X12ProtocolSettings] {
-	return pulumix.Output[X12ProtocolSettings]{
-		OutputState: i.ToX12ProtocolSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i X12ProtocolSettingsArgs) ToX12ProtocolSettingsPtrOutput() X12ProtocolSettingsPtrOutput {
 	return i.ToX12ProtocolSettingsPtrOutputWithContext(context.Background())
 }
@@ -17022,12 +15503,6 @@ func (i *x12protocolSettingsPtrType) ToX12ProtocolSettingsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(X12ProtocolSettingsPtrOutput)
 }
 
-func (i *x12protocolSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*X12ProtocolSettings] {
-	return pulumix.Output[*X12ProtocolSettings]{
-		OutputState: i.ToX12ProtocolSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type X12ProtocolSettingsOutput struct{ *pulumi.OutputState }
 
 func (X12ProtocolSettingsOutput) ElementType() reflect.Type {
@@ -17050,12 +15525,6 @@ func (o X12ProtocolSettingsOutput) ToX12ProtocolSettingsPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v X12ProtocolSettings) *X12ProtocolSettings {
 		return &v
 	}).(X12ProtocolSettingsPtrOutput)
-}
-
-func (o X12ProtocolSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[X12ProtocolSettings] {
-	return pulumix.Output[X12ProtocolSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The X12 acknowledgment settings.
@@ -17130,12 +15599,6 @@ func (o X12ProtocolSettingsPtrOutput) ToX12ProtocolSettingsPtrOutput() X12Protoc
 
 func (o X12ProtocolSettingsPtrOutput) ToX12ProtocolSettingsPtrOutputWithContext(ctx context.Context) X12ProtocolSettingsPtrOutput {
 	return o
-}
-
-func (o X12ProtocolSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*X12ProtocolSettings] {
-	return pulumix.Output[*X12ProtocolSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12ProtocolSettingsPtrOutput) Elem() X12ProtocolSettingsOutput {
@@ -17309,12 +15772,6 @@ func (o X12ProtocolSettingsResponseOutput) ToX12ProtocolSettingsResponseOutputWi
 	return o
 }
 
-func (o X12ProtocolSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[X12ProtocolSettingsResponse] {
-	return pulumix.Output[X12ProtocolSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The X12 acknowledgment settings.
 func (o X12ProtocolSettingsResponseOutput) AcknowledgementSettings() X12AcknowledgementSettingsResponsePtrOutput {
 	return o.ApplyT(func(v X12ProtocolSettingsResponse) *X12AcknowledgementSettingsResponse {
@@ -17389,12 +15846,6 @@ func (o X12ProtocolSettingsResponsePtrOutput) ToX12ProtocolSettingsResponsePtrOu
 
 func (o X12ProtocolSettingsResponsePtrOutput) ToX12ProtocolSettingsResponsePtrOutputWithContext(ctx context.Context) X12ProtocolSettingsResponsePtrOutput {
 	return o
-}
-
-func (o X12ProtocolSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*X12ProtocolSettingsResponse] {
-	return pulumix.Output[*X12ProtocolSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12ProtocolSettingsResponsePtrOutput) Elem() X12ProtocolSettingsResponseOutput {
@@ -17572,12 +16023,6 @@ func (i X12SchemaReferenceArgs) ToX12SchemaReferenceOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(X12SchemaReferenceOutput)
 }
 
-func (i X12SchemaReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[X12SchemaReference] {
-	return pulumix.Output[X12SchemaReference]{
-		OutputState: i.ToX12SchemaReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // X12SchemaReferenceArrayInput is an input type that accepts X12SchemaReferenceArray and X12SchemaReferenceArrayOutput values.
 // You can construct a concrete instance of `X12SchemaReferenceArrayInput` via:
 //
@@ -17603,12 +16048,6 @@ func (i X12SchemaReferenceArray) ToX12SchemaReferenceArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(X12SchemaReferenceArrayOutput)
 }
 
-func (i X12SchemaReferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]X12SchemaReference] {
-	return pulumix.Output[[]X12SchemaReference]{
-		OutputState: i.ToX12SchemaReferenceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type X12SchemaReferenceOutput struct{ *pulumi.OutputState }
 
 func (X12SchemaReferenceOutput) ElementType() reflect.Type {
@@ -17621,12 +16060,6 @@ func (o X12SchemaReferenceOutput) ToX12SchemaReferenceOutput() X12SchemaReferenc
 
 func (o X12SchemaReferenceOutput) ToX12SchemaReferenceOutputWithContext(ctx context.Context) X12SchemaReferenceOutput {
 	return o
-}
-
-func (o X12SchemaReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[X12SchemaReference] {
-	return pulumix.Output[X12SchemaReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The message id.
@@ -17663,12 +16096,6 @@ func (o X12SchemaReferenceArrayOutput) ToX12SchemaReferenceArrayOutputWithContex
 	return o
 }
 
-func (o X12SchemaReferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]X12SchemaReference] {
-	return pulumix.Output[[]X12SchemaReference]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o X12SchemaReferenceArrayOutput) Index(i pulumi.IntInput) X12SchemaReferenceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) X12SchemaReference {
 		return vs[0].([]X12SchemaReference)[vs[1].(int)]
@@ -17698,12 +16125,6 @@ func (o X12SchemaReferenceResponseOutput) ToX12SchemaReferenceResponseOutput() X
 
 func (o X12SchemaReferenceResponseOutput) ToX12SchemaReferenceResponseOutputWithContext(ctx context.Context) X12SchemaReferenceResponseOutput {
 	return o
-}
-
-func (o X12SchemaReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[X12SchemaReferenceResponse] {
-	return pulumix.Output[X12SchemaReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The message id.
@@ -17738,12 +16159,6 @@ func (o X12SchemaReferenceResponseArrayOutput) ToX12SchemaReferenceResponseArray
 
 func (o X12SchemaReferenceResponseArrayOutput) ToX12SchemaReferenceResponseArrayOutputWithContext(ctx context.Context) X12SchemaReferenceResponseArrayOutput {
 	return o
-}
-
-func (o X12SchemaReferenceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]X12SchemaReferenceResponse] {
-	return pulumix.Output[[]X12SchemaReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12SchemaReferenceResponseArrayOutput) Index(i pulumi.IntInput) X12SchemaReferenceResponseOutput {
@@ -17797,12 +16212,6 @@ func (i X12SecuritySettingsArgs) ToX12SecuritySettingsOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(X12SecuritySettingsOutput)
 }
 
-func (i X12SecuritySettingsArgs) ToOutput(ctx context.Context) pulumix.Output[X12SecuritySettings] {
-	return pulumix.Output[X12SecuritySettings]{
-		OutputState: i.ToX12SecuritySettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i X12SecuritySettingsArgs) ToX12SecuritySettingsPtrOutput() X12SecuritySettingsPtrOutput {
 	return i.ToX12SecuritySettingsPtrOutputWithContext(context.Background())
 }
@@ -17844,12 +16253,6 @@ func (i *x12securitySettingsPtrType) ToX12SecuritySettingsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(X12SecuritySettingsPtrOutput)
 }
 
-func (i *x12securitySettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*X12SecuritySettings] {
-	return pulumix.Output[*X12SecuritySettings]{
-		OutputState: i.ToX12SecuritySettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type X12SecuritySettingsOutput struct{ *pulumi.OutputState }
 
 func (X12SecuritySettingsOutput) ElementType() reflect.Type {
@@ -17872,12 +16275,6 @@ func (o X12SecuritySettingsOutput) ToX12SecuritySettingsPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v X12SecuritySettings) *X12SecuritySettings {
 		return &v
 	}).(X12SecuritySettingsPtrOutput)
-}
-
-func (o X12SecuritySettingsOutput) ToOutput(ctx context.Context) pulumix.Output[X12SecuritySettings] {
-	return pulumix.Output[X12SecuritySettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The authorization qualifier.
@@ -17912,12 +16309,6 @@ func (o X12SecuritySettingsPtrOutput) ToX12SecuritySettingsPtrOutput() X12Securi
 
 func (o X12SecuritySettingsPtrOutput) ToX12SecuritySettingsPtrOutputWithContext(ctx context.Context) X12SecuritySettingsPtrOutput {
 	return o
-}
-
-func (o X12SecuritySettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*X12SecuritySettings] {
-	return pulumix.Output[*X12SecuritySettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12SecuritySettingsPtrOutput) Elem() X12SecuritySettingsOutput {
@@ -17995,12 +16386,6 @@ func (o X12SecuritySettingsResponseOutput) ToX12SecuritySettingsResponseOutputWi
 	return o
 }
 
-func (o X12SecuritySettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[X12SecuritySettingsResponse] {
-	return pulumix.Output[X12SecuritySettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The authorization qualifier.
 func (o X12SecuritySettingsResponseOutput) AuthorizationQualifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v X12SecuritySettingsResponse) *string { return v.AuthorizationQualifier }).(pulumi.StringPtrOutput)
@@ -18033,12 +16418,6 @@ func (o X12SecuritySettingsResponsePtrOutput) ToX12SecuritySettingsResponsePtrOu
 
 func (o X12SecuritySettingsResponsePtrOutput) ToX12SecuritySettingsResponsePtrOutputWithContext(ctx context.Context) X12SecuritySettingsResponsePtrOutput {
 	return o
-}
-
-func (o X12SecuritySettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*X12SecuritySettingsResponse] {
-	return pulumix.Output[*X12SecuritySettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12SecuritySettingsResponsePtrOutput) Elem() X12SecuritySettingsResponseOutput {
@@ -18148,12 +16527,6 @@ func (i X12ValidationOverrideArgs) ToX12ValidationOverrideOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(X12ValidationOverrideOutput)
 }
 
-func (i X12ValidationOverrideArgs) ToOutput(ctx context.Context) pulumix.Output[X12ValidationOverride] {
-	return pulumix.Output[X12ValidationOverride]{
-		OutputState: i.ToX12ValidationOverrideOutputWithContext(ctx).OutputState,
-	}
-}
-
 // X12ValidationOverrideArrayInput is an input type that accepts X12ValidationOverrideArray and X12ValidationOverrideArrayOutput values.
 // You can construct a concrete instance of `X12ValidationOverrideArrayInput` via:
 //
@@ -18179,12 +16552,6 @@ func (i X12ValidationOverrideArray) ToX12ValidationOverrideArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(X12ValidationOverrideArrayOutput)
 }
 
-func (i X12ValidationOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]X12ValidationOverride] {
-	return pulumix.Output[[]X12ValidationOverride]{
-		OutputState: i.ToX12ValidationOverrideArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type X12ValidationOverrideOutput struct{ *pulumi.OutputState }
 
 func (X12ValidationOverrideOutput) ElementType() reflect.Type {
@@ -18197,12 +16564,6 @@ func (o X12ValidationOverrideOutput) ToX12ValidationOverrideOutput() X12Validati
 
 func (o X12ValidationOverrideOutput) ToX12ValidationOverrideOutputWithContext(ctx context.Context) X12ValidationOverrideOutput {
 	return o
-}
-
-func (o X12ValidationOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[X12ValidationOverride] {
-	return pulumix.Output[X12ValidationOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value indicating whether to allow leading and trailing spaces and zeroes.
@@ -18254,12 +16615,6 @@ func (o X12ValidationOverrideArrayOutput) ToX12ValidationOverrideArrayOutputWith
 	return o
 }
 
-func (o X12ValidationOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]X12ValidationOverride] {
-	return pulumix.Output[[]X12ValidationOverride]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o X12ValidationOverrideArrayOutput) Index(i pulumi.IntInput) X12ValidationOverrideOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) X12ValidationOverride {
 		return vs[0].([]X12ValidationOverride)[vs[1].(int)]
@@ -18295,12 +16650,6 @@ func (o X12ValidationOverrideResponseOutput) ToX12ValidationOverrideResponseOutp
 
 func (o X12ValidationOverrideResponseOutput) ToX12ValidationOverrideResponseOutputWithContext(ctx context.Context) X12ValidationOverrideResponseOutput {
 	return o
-}
-
-func (o X12ValidationOverrideResponseOutput) ToOutput(ctx context.Context) pulumix.Output[X12ValidationOverrideResponse] {
-	return pulumix.Output[X12ValidationOverrideResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value indicating whether to allow leading and trailing spaces and zeroes.
@@ -18350,12 +16699,6 @@ func (o X12ValidationOverrideResponseArrayOutput) ToX12ValidationOverrideRespons
 
 func (o X12ValidationOverrideResponseArrayOutput) ToX12ValidationOverrideResponseArrayOutputWithContext(ctx context.Context) X12ValidationOverrideResponseArrayOutput {
 	return o
-}
-
-func (o X12ValidationOverrideResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]X12ValidationOverrideResponse] {
-	return pulumix.Output[[]X12ValidationOverrideResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12ValidationOverrideResponseArrayOutput) Index(i pulumi.IntInput) X12ValidationOverrideResponseOutput {
@@ -18433,12 +16776,6 @@ func (i X12ValidationSettingsArgs) ToX12ValidationSettingsOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(X12ValidationSettingsOutput)
 }
 
-func (i X12ValidationSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[X12ValidationSettings] {
-	return pulumix.Output[X12ValidationSettings]{
-		OutputState: i.ToX12ValidationSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i X12ValidationSettingsArgs) ToX12ValidationSettingsPtrOutput() X12ValidationSettingsPtrOutput {
 	return i.ToX12ValidationSettingsPtrOutputWithContext(context.Background())
 }
@@ -18480,12 +16817,6 @@ func (i *x12validationSettingsPtrType) ToX12ValidationSettingsPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(X12ValidationSettingsPtrOutput)
 }
 
-func (i *x12validationSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*X12ValidationSettings] {
-	return pulumix.Output[*X12ValidationSettings]{
-		OutputState: i.ToX12ValidationSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type X12ValidationSettingsOutput struct{ *pulumi.OutputState }
 
 func (X12ValidationSettingsOutput) ElementType() reflect.Type {
@@ -18508,12 +16839,6 @@ func (o X12ValidationSettingsOutput) ToX12ValidationSettingsPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v X12ValidationSettings) *X12ValidationSettings {
 		return &v
 	}).(X12ValidationSettingsPtrOutput)
-}
-
-func (o X12ValidationSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[X12ValidationSettings] {
-	return pulumix.Output[X12ValidationSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The value indicating whether to allow leading and trailing spaces and zeroes.
@@ -18578,12 +16903,6 @@ func (o X12ValidationSettingsPtrOutput) ToX12ValidationSettingsPtrOutput() X12Va
 
 func (o X12ValidationSettingsPtrOutput) ToX12ValidationSettingsPtrOutputWithContext(ctx context.Context) X12ValidationSettingsPtrOutput {
 	return o
-}
-
-func (o X12ValidationSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*X12ValidationSettings] {
-	return pulumix.Output[*X12ValidationSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12ValidationSettingsPtrOutput) Elem() X12ValidationSettingsOutput {
@@ -18733,12 +17052,6 @@ func (o X12ValidationSettingsResponseOutput) ToX12ValidationSettingsResponseOutp
 	return o
 }
 
-func (o X12ValidationSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[X12ValidationSettingsResponse] {
-	return pulumix.Output[X12ValidationSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The value indicating whether to allow leading and trailing spaces and zeroes.
 func (o X12ValidationSettingsResponseOutput) AllowLeadingAndTrailingSpacesAndZeroes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v X12ValidationSettingsResponse) *bool { return v.AllowLeadingAndTrailingSpacesAndZeroes }).(pulumi.BoolPtrOutput)
@@ -18801,12 +17114,6 @@ func (o X12ValidationSettingsResponsePtrOutput) ToX12ValidationSettingsResponseP
 
 func (o X12ValidationSettingsResponsePtrOutput) ToX12ValidationSettingsResponsePtrOutputWithContext(ctx context.Context) X12ValidationSettingsResponsePtrOutput {
 	return o
-}
-
-func (o X12ValidationSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*X12ValidationSettingsResponse] {
-	return pulumix.Output[*X12ValidationSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o X12ValidationSettingsResponsePtrOutput) Elem() X12ValidationSettingsResponseOutput {

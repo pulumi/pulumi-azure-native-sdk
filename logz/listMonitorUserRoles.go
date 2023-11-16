@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Response for list of user's role for Logz.io account.
@@ -80,12 +79,6 @@ func (o ListMonitorUserRolesResultOutput) ToListMonitorUserRolesResultOutput() L
 
 func (o ListMonitorUserRolesResultOutput) ToListMonitorUserRolesResultOutputWithContext(ctx context.Context) ListMonitorUserRolesResultOutput {
 	return o
-}
-
-func (o ListMonitorUserRolesResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListMonitorUserRolesResult] {
-	return pulumix.Output[ListMonitorUserRolesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Link to the next set of results, if any.

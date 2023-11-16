@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description of a backup which will be performed.
@@ -208,12 +207,6 @@ func (i *WebAppBackupConfigurationSlot) ToWebAppBackupConfigurationSlotOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppBackupConfigurationSlotOutput)
 }
 
-func (i *WebAppBackupConfigurationSlot) ToOutput(ctx context.Context) pulumix.Output[*WebAppBackupConfigurationSlot] {
-	return pulumix.Output[*WebAppBackupConfigurationSlot]{
-		OutputState: i.ToWebAppBackupConfigurationSlotOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebAppBackupConfigurationSlotOutput struct{ *pulumi.OutputState }
 
 func (WebAppBackupConfigurationSlotOutput) ElementType() reflect.Type {
@@ -226,12 +219,6 @@ func (o WebAppBackupConfigurationSlotOutput) ToWebAppBackupConfigurationSlotOutp
 
 func (o WebAppBackupConfigurationSlotOutput) ToWebAppBackupConfigurationSlotOutputWithContext(ctx context.Context) WebAppBackupConfigurationSlotOutput {
 	return o
-}
-
-func (o WebAppBackupConfigurationSlotOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppBackupConfigurationSlot] {
-	return pulumix.Output[*WebAppBackupConfigurationSlot]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the backup.

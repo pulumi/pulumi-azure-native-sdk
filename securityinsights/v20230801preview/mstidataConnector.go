@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents Microsoft Threat Intelligence data connector.
@@ -139,6 +138,9 @@ func NewMSTIDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:MSTIDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:MSTIDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -229,12 +231,6 @@ func (i *MSTIDataConnector) ToMSTIDataConnectorOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(MSTIDataConnectorOutput)
 }
 
-func (i *MSTIDataConnector) ToOutput(ctx context.Context) pulumix.Output[*MSTIDataConnector] {
-	return pulumix.Output[*MSTIDataConnector]{
-		OutputState: i.ToMSTIDataConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MSTIDataConnectorOutput struct{ *pulumi.OutputState }
 
 func (MSTIDataConnectorOutput) ElementType() reflect.Type {
@@ -247,12 +243,6 @@ func (o MSTIDataConnectorOutput) ToMSTIDataConnectorOutput() MSTIDataConnectorOu
 
 func (o MSTIDataConnectorOutput) ToMSTIDataConnectorOutputWithContext(ctx context.Context) MSTIDataConnectorOutput {
 	return o
-}
-
-func (o MSTIDataConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*MSTIDataConnector] {
-	return pulumix.Output[*MSTIDataConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The available data types for the connector.

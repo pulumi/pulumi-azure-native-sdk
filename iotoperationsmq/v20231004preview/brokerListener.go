@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // MQ broker/listener resource
@@ -217,12 +216,6 @@ func (i *BrokerListener) ToBrokerListenerOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerListenerOutput)
 }
 
-func (i *BrokerListener) ToOutput(ctx context.Context) pulumix.Output[*BrokerListener] {
-	return pulumix.Output[*BrokerListener]{
-		OutputState: i.ToBrokerListenerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BrokerListenerOutput struct{ *pulumi.OutputState }
 
 func (BrokerListenerOutput) ElementType() reflect.Type {
@@ -235,12 +228,6 @@ func (o BrokerListenerOutput) ToBrokerListenerOutput() BrokerListenerOutput {
 
 func (o BrokerListenerOutput) ToBrokerListenerOutputWithContext(ctx context.Context) BrokerListenerOutput {
 	return o
-}
-
-func (o BrokerListenerOutput) ToOutput(ctx context.Context) pulumix.Output[*BrokerListener] {
-	return pulumix.Output[*BrokerListener]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The flag for enabling Authentication rules on Listener Port.

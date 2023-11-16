@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the modernize project.
@@ -89,12 +88,6 @@ func (o LookupModernizeProjectResultOutput) ToLookupModernizeProjectResultOutput
 
 func (o LookupModernizeProjectResultOutput) ToLookupModernizeProjectResultOutputWithContext(ctx context.Context) LookupModernizeProjectResultOutput {
 	return o
-}
-
-func (o LookupModernizeProjectResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupModernizeProjectResult] {
-	return pulumix.Output[LookupModernizeProjectResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the Id of the resource.

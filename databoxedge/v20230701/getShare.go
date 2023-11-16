@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a share on the  Data Box Edge/Gateway device.
@@ -103,12 +102,6 @@ func (o LookupShareResultOutput) ToLookupShareResultOutput() LookupShareResultOu
 
 func (o LookupShareResultOutput) ToLookupShareResultOutputWithContext(ctx context.Context) LookupShareResultOutput {
 	return o
-}
-
-func (o LookupShareResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupShareResult] {
-	return pulumix.Output[LookupShareResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Access protocol to be used by the share.

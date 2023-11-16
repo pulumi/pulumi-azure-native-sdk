@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Action to get Az Resiliency Status of all the Base resources constituting Service Fabric Managed Clusters.
@@ -75,12 +74,6 @@ func (o GetmanagedAzResiliencyStatusResultOutput) ToGetmanagedAzResiliencyStatus
 
 func (o GetmanagedAzResiliencyStatusResultOutput) ToGetmanagedAzResiliencyStatusResultOutputWithContext(ctx context.Context) GetmanagedAzResiliencyStatusResultOutput {
 	return o
-}
-
-func (o GetmanagedAzResiliencyStatusResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetmanagedAzResiliencyStatusResult] {
-	return pulumix.Output[GetmanagedAzResiliencyStatusResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of Managed VM Sizes for Service Fabric Managed Clusters.

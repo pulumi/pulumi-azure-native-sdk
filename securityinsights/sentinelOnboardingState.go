@@ -10,13 +10,12 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sentinel onboarding state
 // Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-03-01-preview.
 //
-// Other available API versions: 2021-03-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2021-03-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 type SentinelOnboardingState struct {
 	pulumi.CustomResourceState
 
@@ -121,6 +120,9 @@ func NewSentinelOnboardingState(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:SentinelOnboardingState"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:SentinelOnboardingState"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -201,12 +203,6 @@ func (i *SentinelOnboardingState) ToSentinelOnboardingStateOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(SentinelOnboardingStateOutput)
 }
 
-func (i *SentinelOnboardingState) ToOutput(ctx context.Context) pulumix.Output[*SentinelOnboardingState] {
-	return pulumix.Output[*SentinelOnboardingState]{
-		OutputState: i.ToSentinelOnboardingStateOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SentinelOnboardingStateOutput struct{ *pulumi.OutputState }
 
 func (SentinelOnboardingStateOutput) ElementType() reflect.Type {
@@ -219,12 +215,6 @@ func (o SentinelOnboardingStateOutput) ToSentinelOnboardingStateOutput() Sentine
 
 func (o SentinelOnboardingStateOutput) ToSentinelOnboardingStateOutputWithContext(ctx context.Context) SentinelOnboardingStateOutput {
 	return o
-}
-
-func (o SentinelOnboardingStateOutput) ToOutput(ctx context.Context) pulumix.Output[*SentinelOnboardingState] {
-	return pulumix.Output[*SentinelOnboardingState]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Flag that indicates the status of the CMK setting

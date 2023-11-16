@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Data Lake Analytics compute policy information.
@@ -153,12 +152,6 @@ func (i *ComputePolicy) ToComputePolicyOutputWithContext(ctx context.Context) Co
 	return pulumi.ToOutputWithContext(ctx, i).(ComputePolicyOutput)
 }
 
-func (i *ComputePolicy) ToOutput(ctx context.Context) pulumix.Output[*ComputePolicy] {
-	return pulumix.Output[*ComputePolicy]{
-		OutputState: i.ToComputePolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ComputePolicyOutput struct{ *pulumi.OutputState }
 
 func (ComputePolicyOutput) ElementType() reflect.Type {
@@ -171,12 +164,6 @@ func (o ComputePolicyOutput) ToComputePolicyOutput() ComputePolicyOutput {
 
 func (o ComputePolicyOutput) ToComputePolicyOutputWithContext(ctx context.Context) ComputePolicyOutput {
 	return o
-}
-
-func (o ComputePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputePolicy] {
-	return pulumix.Output[*ComputePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The maximum degree of parallelism per job this user can use to submit jobs.

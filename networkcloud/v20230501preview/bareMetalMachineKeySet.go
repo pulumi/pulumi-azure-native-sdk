@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type BareMetalMachineKeySet struct {
@@ -205,12 +204,6 @@ func (i *BareMetalMachineKeySet) ToBareMetalMachineKeySetOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(BareMetalMachineKeySetOutput)
 }
 
-func (i *BareMetalMachineKeySet) ToOutput(ctx context.Context) pulumix.Output[*BareMetalMachineKeySet] {
-	return pulumix.Output[*BareMetalMachineKeySet]{
-		OutputState: i.ToBareMetalMachineKeySetOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BareMetalMachineKeySetOutput struct{ *pulumi.OutputState }
 
 func (BareMetalMachineKeySetOutput) ElementType() reflect.Type {
@@ -223,12 +216,6 @@ func (o BareMetalMachineKeySetOutput) ToBareMetalMachineKeySetOutput() BareMetal
 
 func (o BareMetalMachineKeySetOutput) ToBareMetalMachineKeySetOutputWithContext(ctx context.Context) BareMetalMachineKeySetOutput {
 	return o
-}
-
-func (o BareMetalMachineKeySetOutput) ToOutput(ctx context.Context) pulumix.Output[*BareMetalMachineKeySet] {
-	return pulumix.Output[*BareMetalMachineKeySet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The object ID of Azure Active Directory group that all users in the list must be in for access to be granted. Users that are not in the group will not have access.

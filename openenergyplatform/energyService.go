@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2022-04-04-preview. Prior API version in Azure Native 1.x: 2022-04-04-preview.
@@ -129,12 +128,6 @@ func (i *EnergyService) ToEnergyServiceOutputWithContext(ctx context.Context) En
 	return pulumi.ToOutputWithContext(ctx, i).(EnergyServiceOutput)
 }
 
-func (i *EnergyService) ToOutput(ctx context.Context) pulumix.Output[*EnergyService] {
-	return pulumix.Output[*EnergyService]{
-		OutputState: i.ToEnergyServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EnergyServiceOutput struct{ *pulumi.OutputState }
 
 func (EnergyServiceOutput) ElementType() reflect.Type {
@@ -147,12 +140,6 @@ func (o EnergyServiceOutput) ToEnergyServiceOutput() EnergyServiceOutput {
 
 func (o EnergyServiceOutput) ToEnergyServiceOutputWithContext(ctx context.Context) EnergyServiceOutput {
 	return o
-}
-
-func (o EnergyServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*EnergyService] {
-	return pulumix.Output[*EnergyService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Geo-location where the resource lives.

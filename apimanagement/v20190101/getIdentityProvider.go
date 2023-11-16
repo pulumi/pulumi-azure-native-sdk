@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the configuration details of the identity Provider configured in specified service instance.
@@ -99,12 +98,6 @@ func (o LookupIdentityProviderResultOutput) ToLookupIdentityProviderResultOutput
 
 func (o LookupIdentityProviderResultOutput) ToLookupIdentityProviderResultOutputWithContext(ctx context.Context) LookupIdentityProviderResultOutput {
 	return o
-}
-
-func (o LookupIdentityProviderResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIdentityProviderResult] {
-	return pulumix.Output[LookupIdentityProviderResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of Allowed Tenants when configuring Azure Active Directory login.

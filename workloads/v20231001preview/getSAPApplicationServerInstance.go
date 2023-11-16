@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the SAP Application Server Instance corresponding to the Virtual Instance for SAP solutions resource.
@@ -119,12 +118,6 @@ func (o LookupSAPApplicationServerInstanceResultOutput) ToLookupSAPApplicationSe
 
 func (o LookupSAPApplicationServerInstanceResultOutput) ToLookupSAPApplicationServerInstanceResultOutputWithContext(ctx context.Context) LookupSAPApplicationServerInstanceResultOutput {
 	return o
-}
-
-func (o LookupSAPApplicationServerInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSAPApplicationServerInstanceResult] {
-	return pulumix.Output[LookupSAPApplicationServerInstanceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Application server instance dispatcher status.

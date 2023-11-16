@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Implements L2 Isolation Domain GET method.
@@ -110,12 +109,6 @@ func (o LookupL2IsolationDomainResultOutput) ToLookupL2IsolationDomainResultOutp
 
 func (o LookupL2IsolationDomainResultOutput) ToLookupL2IsolationDomainResultOutputWithContext(ctx context.Context) LookupL2IsolationDomainResultOutput {
 	return o
-}
-
-func (o LookupL2IsolationDomainResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupL2IsolationDomainResult] {
-	return pulumix.Output[LookupL2IsolationDomainResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Administrative state of the resource.

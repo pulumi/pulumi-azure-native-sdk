@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Configuration Assignment
@@ -168,12 +167,6 @@ func (i *ConfigurationAssignment) ToConfigurationAssignmentOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationAssignmentOutput)
 }
 
-func (i *ConfigurationAssignment) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationAssignment] {
-	return pulumix.Output[*ConfigurationAssignment]{
-		OutputState: i.ToConfigurationAssignmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigurationAssignmentOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationAssignmentOutput) ElementType() reflect.Type {
@@ -186,12 +179,6 @@ func (o ConfigurationAssignmentOutput) ToConfigurationAssignmentOutput() Configu
 
 func (o ConfigurationAssignmentOutput) ToConfigurationAssignmentOutputWithContext(ctx context.Context) ConfigurationAssignmentOutput {
 	return o
-}
-
-func (o ConfigurationAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationAssignment] {
-	return pulumix.Output[*ConfigurationAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Location of the resource

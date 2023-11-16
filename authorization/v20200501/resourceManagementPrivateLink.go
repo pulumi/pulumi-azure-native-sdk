@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type ResourceManagementPrivateLink struct {
@@ -115,12 +114,6 @@ func (i *ResourceManagementPrivateLink) ToResourceManagementPrivateLinkOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceManagementPrivateLinkOutput)
 }
 
-func (i *ResourceManagementPrivateLink) ToOutput(ctx context.Context) pulumix.Output[*ResourceManagementPrivateLink] {
-	return pulumix.Output[*ResourceManagementPrivateLink]{
-		OutputState: i.ToResourceManagementPrivateLinkOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ResourceManagementPrivateLinkOutput struct{ *pulumi.OutputState }
 
 func (ResourceManagementPrivateLinkOutput) ElementType() reflect.Type {
@@ -133,12 +126,6 @@ func (o ResourceManagementPrivateLinkOutput) ToResourceManagementPrivateLinkOutp
 
 func (o ResourceManagementPrivateLinkOutput) ToResourceManagementPrivateLinkOutputWithContext(ctx context.Context) ResourceManagementPrivateLinkOutput {
 	return o
-}
-
-func (o ResourceManagementPrivateLinkOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceManagementPrivateLink] {
-	return pulumix.Output[*ResourceManagementPrivateLink]{
-		OutputState: o.OutputState,
-	}
 }
 
 // the region of the rmpl

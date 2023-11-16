@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a Blueprint definition.
@@ -155,12 +154,6 @@ func (i *Blueprint) ToBlueprintOutputWithContext(ctx context.Context) BlueprintO
 	return pulumi.ToOutputWithContext(ctx, i).(BlueprintOutput)
 }
 
-func (i *Blueprint) ToOutput(ctx context.Context) pulumix.Output[*Blueprint] {
-	return pulumix.Output[*Blueprint]{
-		OutputState: i.ToBlueprintOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BlueprintOutput struct{ *pulumi.OutputState }
 
 func (BlueprintOutput) ElementType() reflect.Type {
@@ -173,12 +166,6 @@ func (o BlueprintOutput) ToBlueprintOutput() BlueprintOutput {
 
 func (o BlueprintOutput) ToBlueprintOutputWithContext(ctx context.Context) BlueprintOutput {
 	return o
-}
-
-func (o BlueprintOutput) ToOutput(ctx context.Context) pulumix.Output[*Blueprint] {
-	return pulumix.Output[*Blueprint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Multi-line explain this resource.

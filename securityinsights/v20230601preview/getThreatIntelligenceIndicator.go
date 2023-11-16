@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // View a threat intelligence indicator by name.
@@ -87,12 +86,6 @@ func (o LookupThreatIntelligenceIndicatorResultOutput) ToLookupThreatIntelligenc
 
 func (o LookupThreatIntelligenceIndicatorResultOutput) ToLookupThreatIntelligenceIndicatorResultOutputWithContext(ctx context.Context) LookupThreatIntelligenceIndicatorResultOutput {
 	return o
-}
-
-func (o LookupThreatIntelligenceIndicatorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupThreatIntelligenceIndicatorResult] {
-	return pulumix.Output[LookupThreatIntelligenceIndicatorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Etag of the azure resource

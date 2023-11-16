@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties of the specified backup schedule name.
@@ -103,12 +102,6 @@ func (o LookupBackupScheduleResultOutput) ToLookupBackupScheduleResultOutput() L
 
 func (o LookupBackupScheduleResultOutput) ToLookupBackupScheduleResultOutputWithContext(ctx context.Context) LookupBackupScheduleResultOutput {
 	return o
-}
-
-func (o LookupBackupScheduleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBackupScheduleResult] {
-	return pulumix.Output[LookupBackupScheduleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of backup which needs to be taken.

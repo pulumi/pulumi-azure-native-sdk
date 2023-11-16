@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // this is the management partner operations response
@@ -117,12 +116,6 @@ func (i *Partner) ToPartnerOutputWithContext(ctx context.Context) PartnerOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(PartnerOutput)
 }
 
-func (i *Partner) ToOutput(ctx context.Context) pulumix.Output[*Partner] {
-	return pulumix.Output[*Partner]{
-		OutputState: i.ToPartnerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PartnerOutput struct{ *pulumi.OutputState }
 
 func (PartnerOutput) ElementType() reflect.Type {
@@ -135,12 +128,6 @@ func (o PartnerOutput) ToPartnerOutput() PartnerOutput {
 
 func (o PartnerOutput) ToPartnerOutputWithContext(ctx context.Context) PartnerOutput {
 	return o
-}
-
-func (o PartnerOutput) ToOutput(ctx context.Context) pulumix.Output[*Partner] {
-	return pulumix.Output[*Partner]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This is the DateTime when the partner was created.

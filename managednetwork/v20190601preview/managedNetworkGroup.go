@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Managed Network Group resource
@@ -156,12 +155,6 @@ func (i *ManagedNetworkGroup) ToManagedNetworkGroupOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedNetworkGroupOutput)
 }
 
-func (i *ManagedNetworkGroup) ToOutput(ctx context.Context) pulumix.Output[*ManagedNetworkGroup] {
-	return pulumix.Output[*ManagedNetworkGroup]{
-		OutputState: i.ToManagedNetworkGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagedNetworkGroupOutput struct{ *pulumi.OutputState }
 
 func (ManagedNetworkGroupOutput) ElementType() reflect.Type {
@@ -174,12 +167,6 @@ func (o ManagedNetworkGroupOutput) ToManagedNetworkGroupOutput() ManagedNetworkG
 
 func (o ManagedNetworkGroupOutput) ToManagedNetworkGroupOutputWithContext(ctx context.Context) ManagedNetworkGroupOutput {
 	return o
-}
-
-func (o ManagedNetworkGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedNetworkGroup] {
-	return pulumix.Output[*ManagedNetworkGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A unique read-only string that changes whenever the resource is updated.

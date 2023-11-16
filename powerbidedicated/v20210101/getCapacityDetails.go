@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details about the specified dedicated capacity.
@@ -97,12 +96,6 @@ func (o LookupCapacityDetailsResultOutput) ToLookupCapacityDetailsResultOutput()
 
 func (o LookupCapacityDetailsResultOutput) ToLookupCapacityDetailsResultOutputWithContext(ctx context.Context) LookupCapacityDetailsResultOutput {
 	return o
-}
-
-func (o LookupCapacityDetailsResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCapacityDetailsResult] {
-	return pulumix.Output[LookupCapacityDetailsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A collection of Dedicated capacity administrators

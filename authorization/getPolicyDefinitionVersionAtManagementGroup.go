@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This operation retrieves the policy definition version in the given management group with the given name.
@@ -113,12 +112,6 @@ func (o LookupPolicyDefinitionVersionAtManagementGroupResultOutput) ToLookupPoli
 
 func (o LookupPolicyDefinitionVersionAtManagementGroupResultOutput) ToLookupPolicyDefinitionVersionAtManagementGroupResultOutputWithContext(ctx context.Context) LookupPolicyDefinitionVersionAtManagementGroupResultOutput {
 	return o
-}
-
-func (o LookupPolicyDefinitionVersionAtManagementGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPolicyDefinitionVersionAtManagementGroupResult] {
-	return pulumix.Output[LookupPolicyDefinitionVersionAtManagementGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The policy definition description.

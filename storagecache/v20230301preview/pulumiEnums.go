@@ -79,12 +79,6 @@ func (o AmlFilesystemIdentityTypeOutput) ToAmlFilesystemIdentityTypePtrOutputWit
 	}).(AmlFilesystemIdentityTypePtrOutput)
 }
 
-func (o AmlFilesystemIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[AmlFilesystemIdentityType] {
-	return pulumix.Output[AmlFilesystemIdentityType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AmlFilesystemIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -118,12 +112,6 @@ func (o AmlFilesystemIdentityTypePtrOutput) ToAmlFilesystemIdentityTypePtrOutput
 
 func (o AmlFilesystemIdentityTypePtrOutput) ToAmlFilesystemIdentityTypePtrOutputWithContext(ctx context.Context) AmlFilesystemIdentityTypePtrOutput {
 	return o
-}
-
-func (o AmlFilesystemIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AmlFilesystemIdentityType] {
-	return pulumix.Output[*AmlFilesystemIdentityType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AmlFilesystemIdentityTypePtrOutput) Elem() AmlFilesystemIdentityTypeOutput {
@@ -264,12 +252,6 @@ func (o CacheIdentityTypeOutput) ToCacheIdentityTypePtrOutputWithContext(ctx con
 	}).(CacheIdentityTypePtrOutput)
 }
 
-func (o CacheIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CacheIdentityType] {
-	return pulumix.Output[CacheIdentityType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CacheIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -303,12 +285,6 @@ func (o CacheIdentityTypePtrOutput) ToCacheIdentityTypePtrOutput() CacheIdentity
 
 func (o CacheIdentityTypePtrOutput) ToCacheIdentityTypePtrOutputWithContext(ctx context.Context) CacheIdentityTypePtrOutput {
 	return o
-}
-
-func (o CacheIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CacheIdentityType] {
-	return pulumix.Output[*CacheIdentityType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CacheIdentityTypePtrOutput) Elem() CacheIdentityTypeOutput {
@@ -452,12 +428,6 @@ func (o MaintenanceDayOfWeekTypeOutput) ToMaintenanceDayOfWeekTypePtrOutputWithC
 	}).(MaintenanceDayOfWeekTypePtrOutput)
 }
 
-func (o MaintenanceDayOfWeekTypeOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenanceDayOfWeekType] {
-	return pulumix.Output[MaintenanceDayOfWeekType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MaintenanceDayOfWeekTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -491,12 +461,6 @@ func (o MaintenanceDayOfWeekTypePtrOutput) ToMaintenanceDayOfWeekTypePtrOutput()
 
 func (o MaintenanceDayOfWeekTypePtrOutput) ToMaintenanceDayOfWeekTypePtrOutputWithContext(ctx context.Context) MaintenanceDayOfWeekTypePtrOutput {
 	return o
-}
-
-func (o MaintenanceDayOfWeekTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceDayOfWeekType] {
-	return pulumix.Output[*MaintenanceDayOfWeekType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MaintenanceDayOfWeekTypePtrOutput) Elem() MaintenanceDayOfWeekTypeOutput {

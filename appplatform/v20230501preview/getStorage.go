@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the storage resource.
@@ -85,12 +84,6 @@ func (o LookupStorageResultOutput) ToLookupStorageResultOutput() LookupStorageRe
 
 func (o LookupStorageResultOutput) ToLookupStorageResultOutputWithContext(ctx context.Context) LookupStorageResultOutput {
 	return o
-}
-
-func (o LookupStorageResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStorageResult] {
-	return pulumix.Output[LookupStorageResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource Id for the resource.

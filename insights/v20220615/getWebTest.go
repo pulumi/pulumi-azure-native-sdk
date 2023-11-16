@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a specific Application Insights web test definition.
@@ -133,12 +132,6 @@ func (o LookupWebTestResultOutput) ToLookupWebTestResultOutput() LookupWebTestRe
 
 func (o LookupWebTestResultOutput) ToLookupWebTestResultOutputWithContext(ctx context.Context) LookupWebTestResultOutput {
 	return o
-}
-
-func (o LookupWebTestResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebTestResult] {
-	return pulumix.Output[LookupWebTestResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An XML configuration specification for a WebTest.

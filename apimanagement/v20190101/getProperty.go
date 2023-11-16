@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the property specified by its identifier.
@@ -89,12 +88,6 @@ func (o LookupPropertyResultOutput) ToLookupPropertyResultOutput() LookupPropert
 
 func (o LookupPropertyResultOutput) ToLookupPropertyResultOutputWithContext(ctx context.Context) LookupPropertyResultOutput {
 	return o
-}
-
-func (o LookupPropertyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPropertyResult] {
-	return pulumix.Output[LookupPropertyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Unique name of Property. It may contain only letters, digits, period, dash, and underscore characters.

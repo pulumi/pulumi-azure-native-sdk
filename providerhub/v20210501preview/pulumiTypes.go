@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -63,12 +62,6 @@ func (i OperationsDefinitionArgs) ToOperationsDefinitionOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(OperationsDefinitionOutput)
 }
 
-func (i OperationsDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[OperationsDefinition] {
-	return pulumix.Output[OperationsDefinition]{
-		OutputState: i.ToOperationsDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OperationsDefinitionArrayInput is an input type that accepts OperationsDefinitionArray and OperationsDefinitionArrayOutput values.
 // You can construct a concrete instance of `OperationsDefinitionArrayInput` via:
 //
@@ -94,12 +87,6 @@ func (i OperationsDefinitionArray) ToOperationsDefinitionArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(OperationsDefinitionArrayOutput)
 }
 
-func (i OperationsDefinitionArray) ToOutput(ctx context.Context) pulumix.Output[[]OperationsDefinition] {
-	return pulumix.Output[[]OperationsDefinition]{
-		OutputState: i.ToOperationsDefinitionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Properties of an Operation.
 type OperationsDefinitionOutput struct{ *pulumi.OutputState }
 
@@ -113,12 +100,6 @@ func (o OperationsDefinitionOutput) ToOperationsDefinitionOutput() OperationsDef
 
 func (o OperationsDefinitionOutput) ToOperationsDefinitionOutputWithContext(ctx context.Context) OperationsDefinitionOutput {
 	return o
-}
-
-func (o OperationsDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[OperationsDefinition] {
-	return pulumix.Output[OperationsDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OperationsDefinitionOutput) ActionType() pulumi.StringPtrOutput {
@@ -160,12 +141,6 @@ func (o OperationsDefinitionArrayOutput) ToOperationsDefinitionArrayOutput() Ope
 
 func (o OperationsDefinitionArrayOutput) ToOperationsDefinitionArrayOutputWithContext(ctx context.Context) OperationsDefinitionArrayOutput {
 	return o
-}
-
-func (o OperationsDefinitionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]OperationsDefinition] {
-	return pulumix.Output[[]OperationsDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OperationsDefinitionArrayOutput) Index(i pulumi.IntInput) OperationsDefinitionOutput {
@@ -213,12 +188,6 @@ func (i OperationsDefinitionDisplayArgs) ToOperationsDefinitionDisplayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(OperationsDefinitionDisplayOutput)
 }
 
-func (i OperationsDefinitionDisplayArgs) ToOutput(ctx context.Context) pulumix.Output[OperationsDefinitionDisplay] {
-	return pulumix.Output[OperationsDefinitionDisplay]{
-		OutputState: i.ToOperationsDefinitionDisplayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Display information of the operation.
 type OperationsDefinitionDisplayOutput struct{ *pulumi.OutputState }
 
@@ -232,12 +201,6 @@ func (o OperationsDefinitionDisplayOutput) ToOperationsDefinitionDisplayOutput()
 
 func (o OperationsDefinitionDisplayOutput) ToOperationsDefinitionDisplayOutputWithContext(ctx context.Context) OperationsDefinitionDisplayOutput {
 	return o
-}
-
-func (o OperationsDefinitionDisplayOutput) ToOutput(ctx context.Context) pulumix.Output[OperationsDefinitionDisplay] {
-	return pulumix.Output[OperationsDefinitionDisplay]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OperationsDefinitionDisplayOutput) Description() pulumi.StringOutput {
@@ -277,12 +240,6 @@ func (o OperationsDefinitionResponseDisplayOutput) ToOperationsDefinitionRespons
 
 func (o OperationsDefinitionResponseDisplayOutput) ToOperationsDefinitionResponseDisplayOutputWithContext(ctx context.Context) OperationsDefinitionResponseDisplayOutput {
 	return o
-}
-
-func (o OperationsDefinitionResponseDisplayOutput) ToOutput(ctx context.Context) pulumix.Output[OperationsDefinitionResponseDisplay] {
-	return pulumix.Output[OperationsDefinitionResponseDisplay]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OperationsDefinitionResponseDisplayOutput) Description() pulumi.StringOutput {

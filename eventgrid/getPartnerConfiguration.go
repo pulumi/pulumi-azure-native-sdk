@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get properties of a partner configuration.
@@ -86,12 +85,6 @@ func (o LookupPartnerConfigurationResultOutput) ToLookupPartnerConfigurationResu
 
 func (o LookupPartnerConfigurationResultOutput) ToLookupPartnerConfigurationResultOutputWithContext(ctx context.Context) LookupPartnerConfigurationResultOutput {
 	return o
-}
-
-func (o LookupPartnerConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPartnerConfigurationResult] {
-	return pulumix.Output[LookupPartnerConfigurationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified identifier of the resource.

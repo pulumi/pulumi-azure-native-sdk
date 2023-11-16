@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a server advisor.
@@ -100,12 +99,6 @@ func (o LookupServerAdvisorResultOutput) ToLookupServerAdvisorResultOutput() Loo
 
 func (o LookupServerAdvisorResultOutput) ToLookupServerAdvisorResultOutputWithContext(ctx context.Context) LookupServerAdvisorResultOutput {
 	return o
-}
-
-func (o LookupServerAdvisorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServerAdvisorResult] {
-	return pulumix.Output[LookupServerAdvisorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the status of availability of this advisor to customers. Possible values are 'GA', 'PublicPreview', 'LimitedPublicPreview' and 'PrivatePreview'.

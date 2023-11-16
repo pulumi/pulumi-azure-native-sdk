@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a sync agent.
@@ -93,12 +92,6 @@ func (o LookupSyncAgentResultOutput) ToLookupSyncAgentResultOutput() LookupSyncA
 
 func (o LookupSyncAgentResultOutput) ToLookupSyncAgentResultOutputWithContext(ctx context.Context) LookupSyncAgentResultOutput {
 	return o
-}
-
-func (o LookupSyncAgentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSyncAgentResult] {
-	return pulumix.Output[LookupSyncAgentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Expiration time of the sync agent version.

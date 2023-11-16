@@ -9,13 +9,12 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a hunt comment
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 func LookupHuntComment(ctx *pulumi.Context, args *LookupHuntCommentArgs, opts ...pulumi.InvokeOption) (*LookupHuntCommentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHuntCommentResult
@@ -94,12 +93,6 @@ func (o LookupHuntCommentResultOutput) ToLookupHuntCommentResultOutput() LookupH
 
 func (o LookupHuntCommentResultOutput) ToLookupHuntCommentResultOutputWithContext(ctx context.Context) LookupHuntCommentResultOutput {
 	return o
-}
-
-func (o LookupHuntCommentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHuntCommentResult] {
-	return pulumix.Output[LookupHuntCommentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Etag of the azure resource

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets list of items that violate tenant's configuration.
@@ -67,12 +66,6 @@ func (o ListListTenantConfigurationViolationResultOutput) ToListListTenantConfig
 
 func (o ListListTenantConfigurationViolationResultOutput) ToListListTenantConfigurationViolationResultOutputWithContext(ctx context.Context) ListListTenantConfigurationViolationResultOutput {
 	return o
-}
-
-func (o ListListTenantConfigurationViolationResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListListTenantConfigurationViolationResult] {
-	return pulumix.Output[ListListTenantConfigurationViolationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The URL to use for getting the next set of results.

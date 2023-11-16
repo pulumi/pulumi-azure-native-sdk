@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Virtual machine guest diagnostic settings resource.
@@ -130,12 +129,6 @@ func (i *GuestDiagnosticsSettingsAssociation) ToGuestDiagnosticsSettingsAssociat
 	return pulumi.ToOutputWithContext(ctx, i).(GuestDiagnosticsSettingsAssociationOutput)
 }
 
-func (i *GuestDiagnosticsSettingsAssociation) ToOutput(ctx context.Context) pulumix.Output[*GuestDiagnosticsSettingsAssociation] {
-	return pulumix.Output[*GuestDiagnosticsSettingsAssociation]{
-		OutputState: i.ToGuestDiagnosticsSettingsAssociationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GuestDiagnosticsSettingsAssociationOutput struct{ *pulumi.OutputState }
 
 func (GuestDiagnosticsSettingsAssociationOutput) ElementType() reflect.Type {
@@ -148,12 +141,6 @@ func (o GuestDiagnosticsSettingsAssociationOutput) ToGuestDiagnosticsSettingsAss
 
 func (o GuestDiagnosticsSettingsAssociationOutput) ToGuestDiagnosticsSettingsAssociationOutputWithContext(ctx context.Context) GuestDiagnosticsSettingsAssociationOutput {
 	return o
-}
-
-func (o GuestDiagnosticsSettingsAssociationOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestDiagnosticsSettingsAssociation] {
-	return pulumix.Output[*GuestDiagnosticsSettingsAssociation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The guest diagnostic settings name.

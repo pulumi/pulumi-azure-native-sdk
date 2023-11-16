@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // OpenId Connect Provider details.
@@ -221,12 +220,6 @@ func (i *OpenIdConnectProvider) ToOpenIdConnectProviderOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(OpenIdConnectProviderOutput)
 }
 
-func (i *OpenIdConnectProvider) ToOutput(ctx context.Context) pulumix.Output[*OpenIdConnectProvider] {
-	return pulumix.Output[*OpenIdConnectProvider]{
-		OutputState: i.ToOpenIdConnectProviderOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OpenIdConnectProviderOutput struct{ *pulumi.OutputState }
 
 func (OpenIdConnectProviderOutput) ElementType() reflect.Type {
@@ -239,12 +232,6 @@ func (o OpenIdConnectProviderOutput) ToOpenIdConnectProviderOutput() OpenIdConne
 
 func (o OpenIdConnectProviderOutput) ToOpenIdConnectProviderOutputWithContext(ctx context.Context) OpenIdConnectProviderOutput {
 	return o
-}
-
-func (o OpenIdConnectProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenIdConnectProvider] {
-	return pulumix.Output[*OpenIdConnectProvider]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Client ID of developer console which is the client application.

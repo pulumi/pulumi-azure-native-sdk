@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i AddDataLakeStoreWithAccountParametersArgs) ToAddDataLakeStoreWithAccount
 	return pulumi.ToOutputWithContext(ctx, i).(AddDataLakeStoreWithAccountParametersOutput)
 }
 
-func (i AddDataLakeStoreWithAccountParametersArgs) ToOutput(ctx context.Context) pulumix.Output[AddDataLakeStoreWithAccountParameters] {
-	return pulumix.Output[AddDataLakeStoreWithAccountParameters]{
-		OutputState: i.ToAddDataLakeStoreWithAccountParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AddDataLakeStoreWithAccountParametersArrayInput is an input type that accepts AddDataLakeStoreWithAccountParametersArray and AddDataLakeStoreWithAccountParametersArrayOutput values.
 // You can construct a concrete instance of `AddDataLakeStoreWithAccountParametersArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i AddDataLakeStoreWithAccountParametersArray) ToAddDataLakeStoreWithAccoun
 	return pulumi.ToOutputWithContext(ctx, i).(AddDataLakeStoreWithAccountParametersArrayOutput)
 }
 
-func (i AddDataLakeStoreWithAccountParametersArray) ToOutput(ctx context.Context) pulumix.Output[[]AddDataLakeStoreWithAccountParameters] {
-	return pulumix.Output[[]AddDataLakeStoreWithAccountParameters]{
-		OutputState: i.ToAddDataLakeStoreWithAccountParametersArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The parameters used to add a new Data Lake Store account while creating a new Data Lake Analytics account.
 type AddDataLakeStoreWithAccountParametersOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o AddDataLakeStoreWithAccountParametersOutput) ToAddDataLakeStoreWithAccou
 
 func (o AddDataLakeStoreWithAccountParametersOutput) ToAddDataLakeStoreWithAccountParametersOutputWithContext(ctx context.Context) AddDataLakeStoreWithAccountParametersOutput {
 	return o
-}
-
-func (o AddDataLakeStoreWithAccountParametersOutput) ToOutput(ctx context.Context) pulumix.Output[AddDataLakeStoreWithAccountParameters] {
-	return pulumix.Output[AddDataLakeStoreWithAccountParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique name of the Data Lake Store account to add.
@@ -133,12 +114,6 @@ func (o AddDataLakeStoreWithAccountParametersArrayOutput) ToAddDataLakeStoreWith
 
 func (o AddDataLakeStoreWithAccountParametersArrayOutput) ToAddDataLakeStoreWithAccountParametersArrayOutputWithContext(ctx context.Context) AddDataLakeStoreWithAccountParametersArrayOutput {
 	return o
-}
-
-func (o AddDataLakeStoreWithAccountParametersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AddDataLakeStoreWithAccountParameters] {
-	return pulumix.Output[[]AddDataLakeStoreWithAccountParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AddDataLakeStoreWithAccountParametersArrayOutput) Index(i pulumi.IntInput) AddDataLakeStoreWithAccountParametersOutput {
@@ -214,12 +189,6 @@ func (i AddStorageAccountWithAccountParametersArgs) ToAddStorageAccountWithAccou
 	return pulumi.ToOutputWithContext(ctx, i).(AddStorageAccountWithAccountParametersOutput)
 }
 
-func (i AddStorageAccountWithAccountParametersArgs) ToOutput(ctx context.Context) pulumix.Output[AddStorageAccountWithAccountParameters] {
-	return pulumix.Output[AddStorageAccountWithAccountParameters]{
-		OutputState: i.ToAddStorageAccountWithAccountParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AddStorageAccountWithAccountParametersArrayInput is an input type that accepts AddStorageAccountWithAccountParametersArray and AddStorageAccountWithAccountParametersArrayOutput values.
 // You can construct a concrete instance of `AddStorageAccountWithAccountParametersArrayInput` via:
 //
@@ -245,12 +214,6 @@ func (i AddStorageAccountWithAccountParametersArray) ToAddStorageAccountWithAcco
 	return pulumi.ToOutputWithContext(ctx, i).(AddStorageAccountWithAccountParametersArrayOutput)
 }
 
-func (i AddStorageAccountWithAccountParametersArray) ToOutput(ctx context.Context) pulumix.Output[[]AddStorageAccountWithAccountParameters] {
-	return pulumix.Output[[]AddStorageAccountWithAccountParameters]{
-		OutputState: i.ToAddStorageAccountWithAccountParametersArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The parameters used to add a new Azure Storage account while creating a new Data Lake Analytics account.
 type AddStorageAccountWithAccountParametersOutput struct{ *pulumi.OutputState }
 
@@ -264,12 +227,6 @@ func (o AddStorageAccountWithAccountParametersOutput) ToAddStorageAccountWithAcc
 
 func (o AddStorageAccountWithAccountParametersOutput) ToAddStorageAccountWithAccountParametersOutputWithContext(ctx context.Context) AddStorageAccountWithAccountParametersOutput {
 	return o
-}
-
-func (o AddStorageAccountWithAccountParametersOutput) ToOutput(ctx context.Context) pulumix.Output[AddStorageAccountWithAccountParameters] {
-	return pulumix.Output[AddStorageAccountWithAccountParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The access key associated with this Azure Storage account that will be used to connect to it.
@@ -299,12 +256,6 @@ func (o AddStorageAccountWithAccountParametersArrayOutput) ToAddStorageAccountWi
 
 func (o AddStorageAccountWithAccountParametersArrayOutput) ToAddStorageAccountWithAccountParametersArrayOutputWithContext(ctx context.Context) AddStorageAccountWithAccountParametersArrayOutput {
 	return o
-}
-
-func (o AddStorageAccountWithAccountParametersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AddStorageAccountWithAccountParameters] {
-	return pulumix.Output[[]AddStorageAccountWithAccountParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AddStorageAccountWithAccountParametersArrayOutput) Index(i pulumi.IntInput) AddStorageAccountWithAccountParametersOutput {
@@ -344,12 +295,6 @@ func (o ComputePolicyResponseOutput) ToComputePolicyResponseOutput() ComputePoli
 
 func (o ComputePolicyResponseOutput) ToComputePolicyResponseOutputWithContext(ctx context.Context) ComputePolicyResponseOutput {
 	return o
-}
-
-func (o ComputePolicyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ComputePolicyResponse] {
-	return pulumix.Output[ComputePolicyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource identifier.
@@ -399,12 +344,6 @@ func (o ComputePolicyResponseArrayOutput) ToComputePolicyResponseArrayOutput() C
 
 func (o ComputePolicyResponseArrayOutput) ToComputePolicyResponseArrayOutputWithContext(ctx context.Context) ComputePolicyResponseArrayOutput {
 	return o
-}
-
-func (o ComputePolicyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ComputePolicyResponse] {
-	return pulumix.Output[[]ComputePolicyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ComputePolicyResponseArrayOutput) Index(i pulumi.IntInput) ComputePolicyResponseOutput {
@@ -464,12 +403,6 @@ func (i CreateComputePolicyWithAccountParametersArgs) ToCreateComputePolicyWithA
 	return pulumi.ToOutputWithContext(ctx, i).(CreateComputePolicyWithAccountParametersOutput)
 }
 
-func (i CreateComputePolicyWithAccountParametersArgs) ToOutput(ctx context.Context) pulumix.Output[CreateComputePolicyWithAccountParameters] {
-	return pulumix.Output[CreateComputePolicyWithAccountParameters]{
-		OutputState: i.ToCreateComputePolicyWithAccountParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CreateComputePolicyWithAccountParametersArrayInput is an input type that accepts CreateComputePolicyWithAccountParametersArray and CreateComputePolicyWithAccountParametersArrayOutput values.
 // You can construct a concrete instance of `CreateComputePolicyWithAccountParametersArrayInput` via:
 //
@@ -495,12 +428,6 @@ func (i CreateComputePolicyWithAccountParametersArray) ToCreateComputePolicyWith
 	return pulumi.ToOutputWithContext(ctx, i).(CreateComputePolicyWithAccountParametersArrayOutput)
 }
 
-func (i CreateComputePolicyWithAccountParametersArray) ToOutput(ctx context.Context) pulumix.Output[[]CreateComputePolicyWithAccountParameters] {
-	return pulumix.Output[[]CreateComputePolicyWithAccountParameters]{
-		OutputState: i.ToCreateComputePolicyWithAccountParametersArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The parameters used to create a new compute policy while creating a new Data Lake Analytics account.
 type CreateComputePolicyWithAccountParametersOutput struct{ *pulumi.OutputState }
 
@@ -514,12 +441,6 @@ func (o CreateComputePolicyWithAccountParametersOutput) ToCreateComputePolicyWit
 
 func (o CreateComputePolicyWithAccountParametersOutput) ToCreateComputePolicyWithAccountParametersOutputWithContext(ctx context.Context) CreateComputePolicyWithAccountParametersOutput {
 	return o
-}
-
-func (o CreateComputePolicyWithAccountParametersOutput) ToOutput(ctx context.Context) pulumix.Output[CreateComputePolicyWithAccountParameters] {
-	return pulumix.Output[CreateComputePolicyWithAccountParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The maximum degree of parallelism per job this user can use to submit jobs. This property, the min priority per job property, or both must be passed.
@@ -559,12 +480,6 @@ func (o CreateComputePolicyWithAccountParametersArrayOutput) ToCreateComputePoli
 
 func (o CreateComputePolicyWithAccountParametersArrayOutput) ToCreateComputePolicyWithAccountParametersArrayOutputWithContext(ctx context.Context) CreateComputePolicyWithAccountParametersArrayOutput {
 	return o
-}
-
-func (o CreateComputePolicyWithAccountParametersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CreateComputePolicyWithAccountParameters] {
-	return pulumix.Output[[]CreateComputePolicyWithAccountParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CreateComputePolicyWithAccountParametersArrayOutput) Index(i pulumi.IntInput) CreateComputePolicyWithAccountParametersOutput {
@@ -616,12 +531,6 @@ func (i CreateFirewallRuleWithAccountParametersArgs) ToCreateFirewallRuleWithAcc
 	return pulumi.ToOutputWithContext(ctx, i).(CreateFirewallRuleWithAccountParametersOutput)
 }
 
-func (i CreateFirewallRuleWithAccountParametersArgs) ToOutput(ctx context.Context) pulumix.Output[CreateFirewallRuleWithAccountParameters] {
-	return pulumix.Output[CreateFirewallRuleWithAccountParameters]{
-		OutputState: i.ToCreateFirewallRuleWithAccountParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CreateFirewallRuleWithAccountParametersArrayInput is an input type that accepts CreateFirewallRuleWithAccountParametersArray and CreateFirewallRuleWithAccountParametersArrayOutput values.
 // You can construct a concrete instance of `CreateFirewallRuleWithAccountParametersArrayInput` via:
 //
@@ -647,12 +556,6 @@ func (i CreateFirewallRuleWithAccountParametersArray) ToCreateFirewallRuleWithAc
 	return pulumi.ToOutputWithContext(ctx, i).(CreateFirewallRuleWithAccountParametersArrayOutput)
 }
 
-func (i CreateFirewallRuleWithAccountParametersArray) ToOutput(ctx context.Context) pulumix.Output[[]CreateFirewallRuleWithAccountParameters] {
-	return pulumix.Output[[]CreateFirewallRuleWithAccountParameters]{
-		OutputState: i.ToCreateFirewallRuleWithAccountParametersArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The parameters used to create a new firewall rule while creating a new Data Lake Analytics account.
 type CreateFirewallRuleWithAccountParametersOutput struct{ *pulumi.OutputState }
 
@@ -666,12 +569,6 @@ func (o CreateFirewallRuleWithAccountParametersOutput) ToCreateFirewallRuleWithA
 
 func (o CreateFirewallRuleWithAccountParametersOutput) ToCreateFirewallRuleWithAccountParametersOutputWithContext(ctx context.Context) CreateFirewallRuleWithAccountParametersOutput {
 	return o
-}
-
-func (o CreateFirewallRuleWithAccountParametersOutput) ToOutput(ctx context.Context) pulumix.Output[CreateFirewallRuleWithAccountParameters] {
-	return pulumix.Output[CreateFirewallRuleWithAccountParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
@@ -701,12 +598,6 @@ func (o CreateFirewallRuleWithAccountParametersArrayOutput) ToCreateFirewallRule
 
 func (o CreateFirewallRuleWithAccountParametersArrayOutput) ToCreateFirewallRuleWithAccountParametersArrayOutputWithContext(ctx context.Context) CreateFirewallRuleWithAccountParametersArrayOutput {
 	return o
-}
-
-func (o CreateFirewallRuleWithAccountParametersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CreateFirewallRuleWithAccountParameters] {
-	return pulumix.Output[[]CreateFirewallRuleWithAccountParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CreateFirewallRuleWithAccountParametersArrayOutput) Index(i pulumi.IntInput) CreateFirewallRuleWithAccountParametersOutput {
@@ -740,12 +631,6 @@ func (o DataLakeStoreAccountInformationResponseOutput) ToDataLakeStoreAccountInf
 
 func (o DataLakeStoreAccountInformationResponseOutput) ToDataLakeStoreAccountInformationResponseOutputWithContext(ctx context.Context) DataLakeStoreAccountInformationResponseOutput {
 	return o
-}
-
-func (o DataLakeStoreAccountInformationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataLakeStoreAccountInformationResponse] {
-	return pulumix.Output[DataLakeStoreAccountInformationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource identifier.
@@ -782,12 +667,6 @@ func (o DataLakeStoreAccountInformationResponseArrayOutput) ToDataLakeStoreAccou
 	return o
 }
 
-func (o DataLakeStoreAccountInformationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataLakeStoreAccountInformationResponse] {
-	return pulumix.Output[[]DataLakeStoreAccountInformationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DataLakeStoreAccountInformationResponseArrayOutput) Index(i pulumi.IntInput) DataLakeStoreAccountInformationResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataLakeStoreAccountInformationResponse {
 		return vs[0].([]DataLakeStoreAccountInformationResponse)[vs[1].(int)]
@@ -821,12 +700,6 @@ func (o FirewallRuleResponseOutput) ToFirewallRuleResponseOutput() FirewallRuleR
 
 func (o FirewallRuleResponseOutput) ToFirewallRuleResponseOutputWithContext(ctx context.Context) FirewallRuleResponseOutput {
 	return o
-}
-
-func (o FirewallRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FirewallRuleResponse] {
-	return pulumix.Output[FirewallRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
@@ -868,12 +741,6 @@ func (o FirewallRuleResponseArrayOutput) ToFirewallRuleResponseArrayOutputWithCo
 	return o
 }
 
-func (o FirewallRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FirewallRuleResponse] {
-	return pulumix.Output[[]FirewallRuleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FirewallRuleResponseArrayOutput) Index(i pulumi.IntInput) FirewallRuleResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallRuleResponse {
 		return vs[0].([]FirewallRuleResponse)[vs[1].(int)]
@@ -913,12 +780,6 @@ func (o HiveMetastoreResponseOutput) ToHiveMetastoreResponseOutput() HiveMetasto
 
 func (o HiveMetastoreResponseOutput) ToHiveMetastoreResponseOutputWithContext(ctx context.Context) HiveMetastoreResponseOutput {
 	return o
-}
-
-func (o HiveMetastoreResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HiveMetastoreResponse] {
-	return pulumix.Output[HiveMetastoreResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The databaseName for the Hive MetaStore
@@ -980,12 +841,6 @@ func (o HiveMetastoreResponseArrayOutput) ToHiveMetastoreResponseArrayOutputWith
 	return o
 }
 
-func (o HiveMetastoreResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HiveMetastoreResponse] {
-	return pulumix.Output[[]HiveMetastoreResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HiveMetastoreResponseArrayOutput) Index(i pulumi.IntInput) HiveMetastoreResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HiveMetastoreResponse {
 		return vs[0].([]HiveMetastoreResponse)[vs[1].(int)]
@@ -1013,12 +868,6 @@ func (o SasTokenInformationResponseOutput) ToSasTokenInformationResponseOutputWi
 	return o
 }
 
-func (o SasTokenInformationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SasTokenInformationResponse] {
-	return pulumix.Output[SasTokenInformationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The access token for the associated Azure Storage Container.
 func (o SasTokenInformationResponseOutput) AccessToken() pulumi.StringOutput {
 	return o.ApplyT(func(v SasTokenInformationResponse) string { return v.AccessToken }).(pulumi.StringOutput)
@@ -1036,12 +885,6 @@ func (o SasTokenInformationResponseArrayOutput) ToSasTokenInformationResponseArr
 
 func (o SasTokenInformationResponseArrayOutput) ToSasTokenInformationResponseArrayOutputWithContext(ctx context.Context) SasTokenInformationResponseArrayOutput {
 	return o
-}
-
-func (o SasTokenInformationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SasTokenInformationResponse] {
-	return pulumix.Output[[]SasTokenInformationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SasTokenInformationResponseArrayOutput) Index(i pulumi.IntInput) SasTokenInformationResponseOutput {
@@ -1075,12 +918,6 @@ func (o StorageAccountInformationResponseOutput) ToStorageAccountInformationResp
 
 func (o StorageAccountInformationResponseOutput) ToStorageAccountInformationResponseOutputWithContext(ctx context.Context) StorageAccountInformationResponseOutput {
 	return o
-}
-
-func (o StorageAccountInformationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageAccountInformationResponse] {
-	return pulumix.Output[StorageAccountInformationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource identifier.
@@ -1117,12 +954,6 @@ func (o StorageAccountInformationResponseArrayOutput) ToStorageAccountInformatio
 	return o
 }
 
-func (o StorageAccountInformationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StorageAccountInformationResponse] {
-	return pulumix.Output[[]StorageAccountInformationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o StorageAccountInformationResponseArrayOutput) Index(i pulumi.IntInput) StorageAccountInformationResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageAccountInformationResponse {
 		return vs[0].([]StorageAccountInformationResponse)[vs[1].(int)]
@@ -1156,12 +987,6 @@ func (o VirtualNetworkRuleResponseOutput) ToVirtualNetworkRuleResponseOutput() V
 
 func (o VirtualNetworkRuleResponseOutput) ToVirtualNetworkRuleResponseOutputWithContext(ctx context.Context) VirtualNetworkRuleResponseOutput {
 	return o
-}
-
-func (o VirtualNetworkRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkRuleResponse] {
-	return pulumix.Output[VirtualNetworkRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource identifier.
@@ -1201,12 +1026,6 @@ func (o VirtualNetworkRuleResponseArrayOutput) ToVirtualNetworkRuleResponseArray
 
 func (o VirtualNetworkRuleResponseArrayOutput) ToVirtualNetworkRuleResponseArrayOutputWithContext(ctx context.Context) VirtualNetworkRuleResponseArrayOutput {
 	return o
-}
-
-func (o VirtualNetworkRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkRuleResponse] {
-	return pulumix.Output[[]VirtualNetworkRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualNetworkRuleResponseArrayOutput) Index(i pulumi.IntInput) VirtualNetworkRuleResponseOutput {

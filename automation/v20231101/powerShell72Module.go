@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Definition of the module type.
@@ -161,12 +160,6 @@ func (i *PowerShell72Module) ToPowerShell72ModuleOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(PowerShell72ModuleOutput)
 }
 
-func (i *PowerShell72Module) ToOutput(ctx context.Context) pulumix.Output[*PowerShell72Module] {
-	return pulumix.Output[*PowerShell72Module]{
-		OutputState: i.ToPowerShell72ModuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PowerShell72ModuleOutput struct{ *pulumi.OutputState }
 
 func (PowerShell72ModuleOutput) ElementType() reflect.Type {
@@ -179,12 +172,6 @@ func (o PowerShell72ModuleOutput) ToPowerShell72ModuleOutput() PowerShell72Modul
 
 func (o PowerShell72ModuleOutput) ToPowerShell72ModuleOutputWithContext(ctx context.Context) PowerShell72ModuleOutput {
 	return o
-}
-
-func (o PowerShell72ModuleOutput) ToOutput(ctx context.Context) pulumix.Output[*PowerShell72Module] {
-	return pulumix.Output[*PowerShell72Module]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the activity count of the module.

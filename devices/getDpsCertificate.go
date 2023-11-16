@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the certificate from the provisioning service.
@@ -90,12 +89,6 @@ func (o LookupDpsCertificateResultOutput) ToLookupDpsCertificateResultOutput() L
 
 func (o LookupDpsCertificateResultOutput) ToLookupDpsCertificateResultOutputWithContext(ctx context.Context) LookupDpsCertificateResultOutput {
 	return o
-}
-
-func (o LookupDpsCertificateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDpsCertificateResult] {
-	return pulumix.Output[LookupDpsCertificateResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The entity tag.

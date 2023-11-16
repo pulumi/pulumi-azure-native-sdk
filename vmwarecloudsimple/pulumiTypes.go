@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -65,12 +64,6 @@ func (i GuestOSCustomizationArgs) ToGuestOSCustomizationOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GuestOSCustomizationOutput)
 }
 
-func (i GuestOSCustomizationArgs) ToOutput(ctx context.Context) pulumix.Output[GuestOSCustomization] {
-	return pulumix.Output[GuestOSCustomization]{
-		OutputState: i.ToGuestOSCustomizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuestOSCustomizationArgs) ToGuestOSCustomizationPtrOutput() GuestOSCustomizationPtrOutput {
 	return i.ToGuestOSCustomizationPtrOutputWithContext(context.Background())
 }
@@ -112,12 +105,6 @@ func (i *guestOSCustomizationPtrType) ToGuestOSCustomizationPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(GuestOSCustomizationPtrOutput)
 }
 
-func (i *guestOSCustomizationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestOSCustomization] {
-	return pulumix.Output[*GuestOSCustomization]{
-		OutputState: i.ToGuestOSCustomizationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Guest OS Customization properties
 type GuestOSCustomizationOutput struct{ *pulumi.OutputState }
 
@@ -141,12 +128,6 @@ func (o GuestOSCustomizationOutput) ToGuestOSCustomizationPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestOSCustomization) *GuestOSCustomization {
 		return &v
 	}).(GuestOSCustomizationPtrOutput)
-}
-
-func (o GuestOSCustomizationOutput) ToOutput(ctx context.Context) pulumix.Output[GuestOSCustomization] {
-	return pulumix.Output[GuestOSCustomization]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of dns servers to use
@@ -186,12 +167,6 @@ func (o GuestOSCustomizationPtrOutput) ToGuestOSCustomizationPtrOutput() GuestOS
 
 func (o GuestOSCustomizationPtrOutput) ToGuestOSCustomizationPtrOutputWithContext(ctx context.Context) GuestOSCustomizationPtrOutput {
 	return o
-}
-
-func (o GuestOSCustomizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestOSCustomization] {
-	return pulumix.Output[*GuestOSCustomization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestOSCustomizationPtrOutput) Elem() GuestOSCustomizationOutput {
@@ -283,12 +258,6 @@ func (o GuestOSCustomizationResponseOutput) ToGuestOSCustomizationResponseOutput
 	return o
 }
 
-func (o GuestOSCustomizationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GuestOSCustomizationResponse] {
-	return pulumix.Output[GuestOSCustomizationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of dns servers to use
 func (o GuestOSCustomizationResponseOutput) DnsServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GuestOSCustomizationResponse) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
@@ -326,12 +295,6 @@ func (o GuestOSCustomizationResponsePtrOutput) ToGuestOSCustomizationResponsePtr
 
 func (o GuestOSCustomizationResponsePtrOutput) ToGuestOSCustomizationResponsePtrOutputWithContext(ctx context.Context) GuestOSCustomizationResponsePtrOutput {
 	return o
-}
-
-func (o GuestOSCustomizationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestOSCustomizationResponse] {
-	return pulumix.Output[*GuestOSCustomizationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestOSCustomizationResponsePtrOutput) Elem() GuestOSCustomizationResponseOutput {
@@ -453,12 +416,6 @@ func (i GuestOSNICCustomizationArgs) ToGuestOSNICCustomizationOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GuestOSNICCustomizationOutput)
 }
 
-func (i GuestOSNICCustomizationArgs) ToOutput(ctx context.Context) pulumix.Output[GuestOSNICCustomization] {
-	return pulumix.Output[GuestOSNICCustomization]{
-		OutputState: i.ToGuestOSNICCustomizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuestOSNICCustomizationArgs) ToGuestOSNICCustomizationPtrOutput() GuestOSNICCustomizationPtrOutput {
 	return i.ToGuestOSNICCustomizationPtrOutputWithContext(context.Background())
 }
@@ -500,12 +457,6 @@ func (i *guestOSNICCustomizationPtrType) ToGuestOSNICCustomizationPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(GuestOSNICCustomizationPtrOutput)
 }
 
-func (i *guestOSNICCustomizationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GuestOSNICCustomization] {
-	return pulumix.Output[*GuestOSNICCustomization]{
-		OutputState: i.ToGuestOSNICCustomizationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Guest OS nic customization
 type GuestOSNICCustomizationOutput struct{ *pulumi.OutputState }
 
@@ -529,12 +480,6 @@ func (o GuestOSNICCustomizationOutput) ToGuestOSNICCustomizationPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuestOSNICCustomization) *GuestOSNICCustomization {
 		return &v
 	}).(GuestOSNICCustomizationPtrOutput)
-}
-
-func (o GuestOSNICCustomizationOutput) ToOutput(ctx context.Context) pulumix.Output[GuestOSNICCustomization] {
-	return pulumix.Output[GuestOSNICCustomization]{
-		OutputState: o.OutputState,
-	}
 }
 
 // IP address allocation method
@@ -584,12 +529,6 @@ func (o GuestOSNICCustomizationPtrOutput) ToGuestOSNICCustomizationPtrOutput() G
 
 func (o GuestOSNICCustomizationPtrOutput) ToGuestOSNICCustomizationPtrOutputWithContext(ctx context.Context) GuestOSNICCustomizationPtrOutput {
 	return o
-}
-
-func (o GuestOSNICCustomizationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestOSNICCustomization] {
-	return pulumix.Output[*GuestOSNICCustomization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestOSNICCustomizationPtrOutput) Elem() GuestOSNICCustomizationOutput {
@@ -705,12 +644,6 @@ func (o GuestOSNICCustomizationResponseOutput) ToGuestOSNICCustomizationResponse
 	return o
 }
 
-func (o GuestOSNICCustomizationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GuestOSNICCustomizationResponse] {
-	return pulumix.Output[GuestOSNICCustomizationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // IP address allocation method
 func (o GuestOSNICCustomizationResponseOutput) Allocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestOSNICCustomizationResponse) *string { return v.Allocation }).(pulumi.StringPtrOutput)
@@ -758,12 +691,6 @@ func (o GuestOSNICCustomizationResponsePtrOutput) ToGuestOSNICCustomizationRespo
 
 func (o GuestOSNICCustomizationResponsePtrOutput) ToGuestOSNICCustomizationResponsePtrOutputWithContext(ctx context.Context) GuestOSNICCustomizationResponsePtrOutput {
 	return o
-}
-
-func (o GuestOSNICCustomizationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuestOSNICCustomizationResponse] {
-	return pulumix.Output[*GuestOSNICCustomizationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuestOSNICCustomizationResponsePtrOutput) Elem() GuestOSNICCustomizationResponseOutput {
@@ -881,12 +808,6 @@ func (i ResourcePoolArgs) ToResourcePoolOutputWithContext(ctx context.Context) R
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcePoolOutput)
 }
 
-func (i ResourcePoolArgs) ToOutput(ctx context.Context) pulumix.Output[ResourcePool] {
-	return pulumix.Output[ResourcePool]{
-		OutputState: i.ToResourcePoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ResourcePoolArgs) ToResourcePoolPtrOutput() ResourcePoolPtrOutput {
 	return i.ToResourcePoolPtrOutputWithContext(context.Background())
 }
@@ -928,12 +849,6 @@ func (i *resourcePoolPtrType) ToResourcePoolPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcePoolPtrOutput)
 }
 
-func (i *resourcePoolPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourcePool] {
-	return pulumix.Output[*ResourcePool]{
-		OutputState: i.ToResourcePoolPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Resource pool model
 type ResourcePoolOutput struct{ *pulumi.OutputState }
 
@@ -959,12 +874,6 @@ func (o ResourcePoolOutput) ToResourcePoolPtrOutputWithContext(ctx context.Conte
 	}).(ResourcePoolPtrOutput)
 }
 
-func (o ResourcePoolOutput) ToOutput(ctx context.Context) pulumix.Output[ResourcePool] {
-	return pulumix.Output[ResourcePool]{
-		OutputState: o.OutputState,
-	}
-}
-
 // resource pool id (privateCloudId:vsphereId)
 func (o ResourcePoolOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourcePool) string { return v.Id }).(pulumi.StringOutput)
@@ -982,12 +891,6 @@ func (o ResourcePoolPtrOutput) ToResourcePoolPtrOutput() ResourcePoolPtrOutput {
 
 func (o ResourcePoolPtrOutput) ToResourcePoolPtrOutputWithContext(ctx context.Context) ResourcePoolPtrOutput {
 	return o
-}
-
-func (o ResourcePoolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourcePool] {
-	return pulumix.Output[*ResourcePool]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourcePoolPtrOutput) Elem() ResourcePoolOutput {
@@ -1041,12 +944,6 @@ func (o ResourcePoolResponseOutput) ToResourcePoolResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o ResourcePoolResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourcePoolResponse] {
-	return pulumix.Output[ResourcePoolResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Hierarchical resource pool name
 func (o ResourcePoolResponseOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourcePoolResponse) string { return v.FullName }).(pulumi.StringOutput)
@@ -1089,12 +986,6 @@ func (o ResourcePoolResponsePtrOutput) ToResourcePoolResponsePtrOutput() Resourc
 
 func (o ResourcePoolResponsePtrOutput) ToResourcePoolResponsePtrOutputWithContext(ctx context.Context) ResourcePoolResponsePtrOutput {
 	return o
-}
-
-func (o ResourcePoolResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourcePoolResponse] {
-	return pulumix.Output[*ResourcePoolResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourcePoolResponsePtrOutput) Elem() ResourcePoolResponseOutput {
@@ -1218,12 +1109,6 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
-func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
 	return i.ToSkuPtrOutputWithContext(context.Background())
 }
@@ -1265,12 +1150,6 @@ func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
 }
 
-func (i *skuPtrType) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
-	return pulumix.Output[*Sku]{
-		OutputState: i.ToSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The purchase SKU for CloudSimple paid resources
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -1294,12 +1173,6 @@ func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Sku) *Sku {
 		return &v
 	}).(SkuPtrOutput)
-}
-
-func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The capacity of the SKU
@@ -1339,12 +1212,6 @@ func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
 
 func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o
-}
-
-func (o SkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
-	return pulumix.Output[*Sku]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuPtrOutput) Elem() SkuOutput {
@@ -1436,12 +1303,6 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
-	return pulumix.Output[SkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The capacity of the SKU
 func (o SkuResponseOutput) Capacity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *string { return v.Capacity }).(pulumi.StringPtrOutput)
@@ -1479,12 +1340,6 @@ func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
 
 func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
 	return o
-}
-
-func (o SkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuResponse] {
-	return pulumix.Output[*SkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
@@ -1594,12 +1449,6 @@ func (i VirtualDiskArgs) ToVirtualDiskOutputWithContext(ctx context.Context) Vir
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualDiskOutput)
 }
 
-func (i VirtualDiskArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualDisk] {
-	return pulumix.Output[VirtualDisk]{
-		OutputState: i.ToVirtualDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VirtualDiskArrayInput is an input type that accepts VirtualDiskArray and VirtualDiskArrayOutput values.
 // You can construct a concrete instance of `VirtualDiskArrayInput` via:
 //
@@ -1625,12 +1474,6 @@ func (i VirtualDiskArray) ToVirtualDiskArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualDiskArrayOutput)
 }
 
-func (i VirtualDiskArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualDisk] {
-	return pulumix.Output[[]VirtualDisk]{
-		OutputState: i.ToVirtualDiskArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Virtual disk model
 type VirtualDiskOutput struct{ *pulumi.OutputState }
 
@@ -1644,12 +1487,6 @@ func (o VirtualDiskOutput) ToVirtualDiskOutput() VirtualDiskOutput {
 
 func (o VirtualDiskOutput) ToVirtualDiskOutputWithContext(ctx context.Context) VirtualDiskOutput {
 	return o
-}
-
-func (o VirtualDiskOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualDisk] {
-	return pulumix.Output[VirtualDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Disk's Controller id
@@ -1686,12 +1523,6 @@ func (o VirtualDiskArrayOutput) ToVirtualDiskArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o VirtualDiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualDisk] {
-	return pulumix.Output[[]VirtualDisk]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VirtualDiskArrayOutput) Index(i pulumi.IntInput) VirtualDiskOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualDisk {
 		return vs[0].([]VirtualDisk)[vs[1].(int)]
@@ -1723,12 +1554,6 @@ func (o VirtualDiskControllerResponseOutput) ToVirtualDiskControllerResponseOutp
 
 func (o VirtualDiskControllerResponseOutput) ToVirtualDiskControllerResponseOutputWithContext(ctx context.Context) VirtualDiskControllerResponseOutput {
 	return o
-}
-
-func (o VirtualDiskControllerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualDiskControllerResponse] {
-	return pulumix.Output[VirtualDiskControllerResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Controller's id
@@ -1765,12 +1590,6 @@ func (o VirtualDiskControllerResponseArrayOutput) ToVirtualDiskControllerRespons
 	return o
 }
 
-func (o VirtualDiskControllerResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualDiskControllerResponse] {
-	return pulumix.Output[[]VirtualDiskControllerResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VirtualDiskControllerResponseArrayOutput) Index(i pulumi.IntInput) VirtualDiskControllerResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualDiskControllerResponse {
 		return vs[0].([]VirtualDiskControllerResponse)[vs[1].(int)]
@@ -1804,12 +1623,6 @@ func (o VirtualDiskResponseOutput) ToVirtualDiskResponseOutput() VirtualDiskResp
 
 func (o VirtualDiskResponseOutput) ToVirtualDiskResponseOutputWithContext(ctx context.Context) VirtualDiskResponseOutput {
 	return o
-}
-
-func (o VirtualDiskResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualDiskResponse] {
-	return pulumix.Output[VirtualDiskResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Disk's Controller id
@@ -1849,12 +1662,6 @@ func (o VirtualDiskResponseArrayOutput) ToVirtualDiskResponseArrayOutput() Virtu
 
 func (o VirtualDiskResponseArrayOutput) ToVirtualDiskResponseArrayOutputWithContext(ctx context.Context) VirtualDiskResponseArrayOutput {
 	return o
-}
-
-func (o VirtualDiskResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualDiskResponse] {
-	return pulumix.Output[[]VirtualDiskResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualDiskResponseArrayOutput) Index(i pulumi.IntInput) VirtualDiskResponseOutput {
@@ -1898,12 +1705,6 @@ func (i VirtualNetworkArgs) ToVirtualNetworkOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkOutput)
 }
 
-func (i VirtualNetworkArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualNetwork] {
-	return pulumix.Output[VirtualNetwork]{
-		OutputState: i.ToVirtualNetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Virtual network model
 type VirtualNetworkOutput struct{ *pulumi.OutputState }
 
@@ -1917,12 +1718,6 @@ func (o VirtualNetworkOutput) ToVirtualNetworkOutput() VirtualNetworkOutput {
 
 func (o VirtualNetworkOutput) ToVirtualNetworkOutputWithContext(ctx context.Context) VirtualNetworkOutput {
 	return o
-}
-
-func (o VirtualNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetwork] {
-	return pulumix.Output[VirtualNetwork]{
-		OutputState: o.OutputState,
-	}
 }
 
 // virtual network id (privateCloudId:vsphereId)
@@ -1959,12 +1754,6 @@ func (o VirtualNetworkResponseOutput) ToVirtualNetworkResponseOutput() VirtualNe
 
 func (o VirtualNetworkResponseOutput) ToVirtualNetworkResponseOutputWithContext(ctx context.Context) VirtualNetworkResponseOutput {
 	return o
-}
-
-func (o VirtualNetworkResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkResponse] {
-	return pulumix.Output[VirtualNetworkResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // can be used in vm creation/deletion
@@ -2056,12 +1845,6 @@ func (i VirtualNicArgs) ToVirtualNicOutputWithContext(ctx context.Context) Virtu
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNicOutput)
 }
 
-func (i VirtualNicArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualNic] {
-	return pulumix.Output[VirtualNic]{
-		OutputState: i.ToVirtualNicOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VirtualNicArrayInput is an input type that accepts VirtualNicArray and VirtualNicArrayOutput values.
 // You can construct a concrete instance of `VirtualNicArrayInput` via:
 //
@@ -2087,12 +1870,6 @@ func (i VirtualNicArray) ToVirtualNicArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNicArrayOutput)
 }
 
-func (i VirtualNicArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNic] {
-	return pulumix.Output[[]VirtualNic]{
-		OutputState: i.ToVirtualNicArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Virtual NIC model
 type VirtualNicOutput struct{ *pulumi.OutputState }
 
@@ -2106,12 +1883,6 @@ func (o VirtualNicOutput) ToVirtualNicOutput() VirtualNicOutput {
 
 func (o VirtualNicOutput) ToVirtualNicOutputWithContext(ctx context.Context) VirtualNicOutput {
 	return o
-}
-
-func (o VirtualNicOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNic] {
-	return pulumix.Output[VirtualNic]{
-		OutputState: o.OutputState,
-	}
 }
 
 // guest OS customization for nic
@@ -2163,12 +1934,6 @@ func (o VirtualNicArrayOutput) ToVirtualNicArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o VirtualNicArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNic] {
-	return pulumix.Output[[]VirtualNic]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o VirtualNicArrayOutput) Index(i pulumi.IntInput) VirtualNicOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualNic {
 		return vs[0].([]VirtualNic)[vs[1].(int)]
@@ -2208,12 +1973,6 @@ func (o VirtualNicResponseOutput) ToVirtualNicResponseOutput() VirtualNicRespons
 
 func (o VirtualNicResponseOutput) ToVirtualNicResponseOutputWithContext(ctx context.Context) VirtualNicResponseOutput {
 	return o
-}
-
-func (o VirtualNicResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNicResponse] {
-	return pulumix.Output[VirtualNicResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // guest OS customization for nic
@@ -2268,12 +2027,6 @@ func (o VirtualNicResponseArrayOutput) ToVirtualNicResponseArrayOutput() Virtual
 
 func (o VirtualNicResponseArrayOutput) ToVirtualNicResponseArrayOutputWithContext(ctx context.Context) VirtualNicResponseArrayOutput {
 	return o
-}
-
-func (o VirtualNicResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNicResponse] {
-	return pulumix.Output[[]VirtualNicResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualNicResponseArrayOutput) Index(i pulumi.IntInput) VirtualNicResponseOutput {

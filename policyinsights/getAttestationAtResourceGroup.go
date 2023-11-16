@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an existing attestation at resource group scope.
@@ -102,12 +101,6 @@ func (o LookupAttestationAtResourceGroupResultOutput) ToLookupAttestationAtResou
 
 func (o LookupAttestationAtResourceGroupResultOutput) ToLookupAttestationAtResourceGroupResultOutputWithContext(ctx context.Context) LookupAttestationAtResourceGroupResultOutput {
 	return o
-}
-
-func (o LookupAttestationAtResourceGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAttestationAtResourceGroupResult] {
-	return pulumix.Output[LookupAttestationAtResourceGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time the evidence was assessed

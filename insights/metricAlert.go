@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The metric alert resource.
@@ -210,12 +209,6 @@ func (i *MetricAlert) ToMetricAlertOutputWithContext(ctx context.Context) Metric
 	return pulumi.ToOutputWithContext(ctx, i).(MetricAlertOutput)
 }
 
-func (i *MetricAlert) ToOutput(ctx context.Context) pulumix.Output[*MetricAlert] {
-	return pulumix.Output[*MetricAlert]{
-		OutputState: i.ToMetricAlertOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetricAlertOutput struct{ *pulumi.OutputState }
 
 func (MetricAlertOutput) ElementType() reflect.Type {
@@ -228,12 +221,6 @@ func (o MetricAlertOutput) ToMetricAlertOutput() MetricAlertOutput {
 
 func (o MetricAlertOutput) ToMetricAlertOutputWithContext(ctx context.Context) MetricAlertOutput {
 	return o
-}
-
-func (o MetricAlertOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricAlert] {
-	return pulumix.Output[*MetricAlert]{
-		OutputState: o.OutputState,
-	}
 }
 
 // the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.

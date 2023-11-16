@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a specific gateway under a subscription and in a specific resource group
@@ -89,12 +88,6 @@ func (o LookupConnectionGatewayResultOutput) ToLookupConnectionGatewayResultOutp
 
 func (o LookupConnectionGatewayResultOutput) ToLookupConnectionGatewayResultOutputWithContext(ctx context.Context) LookupConnectionGatewayResultOutput {
 	return o
-}
-
-func (o LookupConnectionGatewayResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConnectionGatewayResult] {
-	return pulumix.Output[LookupConnectionGatewayResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource ETag

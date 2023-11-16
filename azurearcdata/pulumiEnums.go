@@ -194,12 +194,6 @@ func (o InfrastructureOutput) ToInfrastructurePtrOutputWithContext(ctx context.C
 	}).(InfrastructurePtrOutput)
 }
 
-func (o InfrastructureOutput) ToOutput(ctx context.Context) pulumix.Output[Infrastructure] {
-	return pulumix.Output[Infrastructure]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InfrastructureOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -233,12 +227,6 @@ func (o InfrastructurePtrOutput) ToInfrastructurePtrOutput() InfrastructurePtrOu
 
 func (o InfrastructurePtrOutput) ToInfrastructurePtrOutputWithContext(ctx context.Context) InfrastructurePtrOutput {
 	return o
-}
-
-func (o InfrastructurePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Infrastructure] {
-	return pulumix.Output[*Infrastructure]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InfrastructurePtrOutput) Elem() InfrastructureOutput {
@@ -386,12 +374,6 @@ func (o PostgresInstanceSkuTierOutput) ToPostgresInstanceSkuTierPtrOutputWithCon
 	}).(PostgresInstanceSkuTierPtrOutput)
 }
 
-func (o PostgresInstanceSkuTierOutput) ToOutput(ctx context.Context) pulumix.Output[PostgresInstanceSkuTier] {
-	return pulumix.Output[PostgresInstanceSkuTier]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PostgresInstanceSkuTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -425,12 +407,6 @@ func (o PostgresInstanceSkuTierPtrOutput) ToPostgresInstanceSkuTierPtrOutput() P
 
 func (o PostgresInstanceSkuTierPtrOutput) ToPostgresInstanceSkuTierPtrOutputWithContext(ctx context.Context) PostgresInstanceSkuTierPtrOutput {
 	return o
-}
-
-func (o PostgresInstanceSkuTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PostgresInstanceSkuTier] {
-	return pulumix.Output[*PostgresInstanceSkuTier]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PostgresInstanceSkuTierPtrOutput) Elem() PostgresInstanceSkuTierOutput {
@@ -577,12 +553,6 @@ func (o SqlManagedInstanceSkuNameOutput) ToSqlManagedInstanceSkuNamePtrOutputWit
 	}).(SqlManagedInstanceSkuNamePtrOutput)
 }
 
-func (o SqlManagedInstanceSkuNameOutput) ToOutput(ctx context.Context) pulumix.Output[SqlManagedInstanceSkuName] {
-	return pulumix.Output[SqlManagedInstanceSkuName]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SqlManagedInstanceSkuNameOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -616,12 +586,6 @@ func (o SqlManagedInstanceSkuNamePtrOutput) ToSqlManagedInstanceSkuNamePtrOutput
 
 func (o SqlManagedInstanceSkuNamePtrOutput) ToSqlManagedInstanceSkuNamePtrOutputWithContext(ctx context.Context) SqlManagedInstanceSkuNamePtrOutput {
 	return o
-}
-
-func (o SqlManagedInstanceSkuNamePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlManagedInstanceSkuName] {
-	return pulumix.Output[*SqlManagedInstanceSkuName]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SqlManagedInstanceSkuNamePtrOutput) Elem() SqlManagedInstanceSkuNameOutput {
@@ -760,12 +724,6 @@ func (o SqlManagedInstanceSkuTierOutput) ToSqlManagedInstanceSkuTierPtrOutputWit
 	}).(SqlManagedInstanceSkuTierPtrOutput)
 }
 
-func (o SqlManagedInstanceSkuTierOutput) ToOutput(ctx context.Context) pulumix.Output[SqlManagedInstanceSkuTier] {
-	return pulumix.Output[SqlManagedInstanceSkuTier]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SqlManagedInstanceSkuTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -799,12 +757,6 @@ func (o SqlManagedInstanceSkuTierPtrOutput) ToSqlManagedInstanceSkuTierPtrOutput
 
 func (o SqlManagedInstanceSkuTierPtrOutput) ToSqlManagedInstanceSkuTierPtrOutputWithContext(ctx context.Context) SqlManagedInstanceSkuTierPtrOutput {
 	return o
-}
-
-func (o SqlManagedInstanceSkuTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlManagedInstanceSkuTier] {
-	return pulumix.Output[*SqlManagedInstanceSkuTier]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SqlManagedInstanceSkuTierPtrOutput) Elem() SqlManagedInstanceSkuTierOutput {

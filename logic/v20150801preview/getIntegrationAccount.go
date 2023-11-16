@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an integration account.
@@ -81,12 +80,6 @@ func (o LookupIntegrationAccountResultOutput) ToLookupIntegrationAccountResultOu
 
 func (o LookupIntegrationAccountResultOutput) ToLookupIntegrationAccountResultOutputWithContext(ctx context.Context) LookupIntegrationAccountResultOutput {
 	return o
-}
-
-func (o LookupIntegrationAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIntegrationAccountResult] {
-	return pulumix.Output[LookupIntegrationAccountResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource id.

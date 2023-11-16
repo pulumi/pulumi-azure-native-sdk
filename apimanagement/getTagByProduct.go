@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get tag associated with the Product.
@@ -90,12 +89,6 @@ func (o LookupTagByProductResultOutput) ToLookupTagByProductResultOutput() Looku
 
 func (o LookupTagByProductResultOutput) ToLookupTagByProductResultOutputWithContext(ctx context.Context) LookupTagByProductResultOutput {
 	return o
-}
-
-func (o LookupTagByProductResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTagByProductResult] {
-	return pulumix.Output[LookupTagByProductResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Tag name.

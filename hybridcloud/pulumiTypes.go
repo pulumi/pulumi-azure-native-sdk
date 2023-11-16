@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i ResourceReferenceArgs) ToResourceReferenceOutput() ResourceReferenceOutp
 
 func (i ResourceReferenceArgs) ToResourceReferenceOutputWithContext(ctx context.Context) ResourceReferenceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceReferenceOutput)
-}
-
-func (i ResourceReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceReference] {
-	return pulumix.Output[ResourceReference]{
-		OutputState: i.ToResourceReferenceOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i ResourceReferenceArgs) ToResourceReferencePtrOutput() ResourceReferencePtrOutput {
@@ -96,12 +89,6 @@ func (i *resourceReferencePtrType) ToResourceReferencePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceReferencePtrOutput)
 }
 
-func (i *resourceReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceReference] {
-	return pulumix.Output[*ResourceReference]{
-		OutputState: i.ToResourceReferencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Resource reference properties.
 type ResourceReferenceOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o ResourceReferenceOutput) ToResourceReferencePtrOutputWithContext(ctx con
 	}).(ResourceReferencePtrOutput)
 }
 
-func (o ResourceReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceReference] {
-	return pulumix.Output[ResourceReference]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource ID.
 func (o ResourceReferenceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceReference) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -150,12 +131,6 @@ func (o ResourceReferencePtrOutput) ToResourceReferencePtrOutput() ResourceRefer
 
 func (o ResourceReferencePtrOutput) ToResourceReferencePtrOutputWithContext(ctx context.Context) ResourceReferencePtrOutput {
 	return o
-}
-
-func (o ResourceReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceReference] {
-	return pulumix.Output[*ResourceReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceReferencePtrOutput) Elem() ResourceReferenceOutput {
@@ -199,12 +174,6 @@ func (o ResourceReferenceResponseOutput) ToResourceReferenceResponseOutputWithCo
 	return o
 }
 
-func (o ResourceReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceReferenceResponse] {
-	return pulumix.Output[ResourceReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource ID.
 func (o ResourceReferenceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceReferenceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -222,12 +191,6 @@ func (o ResourceReferenceResponsePtrOutput) ToResourceReferenceResponsePtrOutput
 
 func (o ResourceReferenceResponsePtrOutput) ToResourceReferenceResponsePtrOutputWithContext(ctx context.Context) ResourceReferenceResponsePtrOutput {
 	return o
-}
-
-func (o ResourceReferenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceReferenceResponse] {
-	return pulumix.Output[*ResourceReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceReferenceResponsePtrOutput) Elem() ResourceReferenceResponseOutput {
@@ -279,12 +242,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A ImportSite
@@ -139,12 +138,6 @@ func (i *ImportSitesController) ToImportSitesControllerOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ImportSitesControllerOutput)
 }
 
-func (i *ImportSitesController) ToOutput(ctx context.Context) pulumix.Output[*ImportSitesController] {
-	return pulumix.Output[*ImportSitesController]{
-		OutputState: i.ToImportSitesControllerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ImportSitesControllerOutput struct{ *pulumi.OutputState }
 
 func (ImportSitesControllerOutput) ElementType() reflect.Type {
@@ -157,12 +150,6 @@ func (o ImportSitesControllerOutput) ToImportSitesControllerOutput() ImportSites
 
 func (o ImportSitesControllerOutput) ToImportSitesControllerOutputWithContext(ctx context.Context) ImportSitesControllerOutput {
 	return o
-}
-
-func (o ImportSitesControllerOutput) ToOutput(ctx context.Context) pulumix.Output[*ImportSitesController] {
-	return pulumix.Output[*ImportSitesController]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the ARM ID of migration hub solution for SDS.

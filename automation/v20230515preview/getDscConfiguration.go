@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve the configuration identified by configuration name.
@@ -109,12 +108,6 @@ func (o LookupDscConfigurationResultOutput) ToLookupDscConfigurationResultOutput
 
 func (o LookupDscConfigurationResultOutput) ToLookupDscConfigurationResultOutputWithContext(ctx context.Context) LookupDscConfigurationResultOutput {
 	return o
-}
-
-func (o LookupDscConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDscConfigurationResult] {
-	return pulumix.Output[LookupDscConfigurationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the creation time.

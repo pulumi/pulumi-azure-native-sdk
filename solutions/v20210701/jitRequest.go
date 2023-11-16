@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Information about JIT request definition.
@@ -178,12 +177,6 @@ func (i *JitRequest) ToJitRequestOutputWithContext(ctx context.Context) JitReque
 	return pulumi.ToOutputWithContext(ctx, i).(JitRequestOutput)
 }
 
-func (i *JitRequest) ToOutput(ctx context.Context) pulumix.Output[*JitRequest] {
-	return pulumix.Output[*JitRequest]{
-		OutputState: i.ToJitRequestOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JitRequestOutput struct{ *pulumi.OutputState }
 
 func (JitRequestOutput) ElementType() reflect.Type {
@@ -196,12 +189,6 @@ func (o JitRequestOutput) ToJitRequestOutput() JitRequestOutput {
 
 func (o JitRequestOutput) ToJitRequestOutputWithContext(ctx context.Context) JitRequestOutput {
 	return o
-}
-
-func (o JitRequestOutput) ToOutput(ctx context.Context) pulumix.Output[*JitRequest] {
-	return pulumix.Output[*JitRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The parent application id.

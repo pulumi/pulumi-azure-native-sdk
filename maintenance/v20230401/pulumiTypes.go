@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -65,12 +64,6 @@ func (i ConfigurationAssignmentFilterPropertiesArgs) ToConfigurationAssignmentFi
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationAssignmentFilterPropertiesOutput)
 }
 
-func (i ConfigurationAssignmentFilterPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ConfigurationAssignmentFilterProperties] {
-	return pulumix.Output[ConfigurationAssignmentFilterProperties]{
-		OutputState: i.ToConfigurationAssignmentFilterPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConfigurationAssignmentFilterPropertiesArgs) ToConfigurationAssignmentFilterPropertiesPtrOutput() ConfigurationAssignmentFilterPropertiesPtrOutput {
 	return i.ToConfigurationAssignmentFilterPropertiesPtrOutputWithContext(context.Background())
 }
@@ -112,12 +105,6 @@ func (i *configurationAssignmentFilterPropertiesPtrType) ToConfigurationAssignme
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationAssignmentFilterPropertiesPtrOutput)
 }
 
-func (i *configurationAssignmentFilterPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationAssignmentFilterProperties] {
-	return pulumix.Output[*ConfigurationAssignmentFilterProperties]{
-		OutputState: i.ToConfigurationAssignmentFilterPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Azure query for the update configuration.
 type ConfigurationAssignmentFilterPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -141,12 +128,6 @@ func (o ConfigurationAssignmentFilterPropertiesOutput) ToConfigurationAssignment
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigurationAssignmentFilterProperties) *ConfigurationAssignmentFilterProperties {
 		return &v
 	}).(ConfigurationAssignmentFilterPropertiesPtrOutput)
-}
-
-func (o ConfigurationAssignmentFilterPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationAssignmentFilterProperties] {
-	return pulumix.Output[ConfigurationAssignmentFilterProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of locations to scope the query to.
@@ -186,12 +167,6 @@ func (o ConfigurationAssignmentFilterPropertiesPtrOutput) ToConfigurationAssignm
 
 func (o ConfigurationAssignmentFilterPropertiesPtrOutput) ToConfigurationAssignmentFilterPropertiesPtrOutputWithContext(ctx context.Context) ConfigurationAssignmentFilterPropertiesPtrOutput {
 	return o
-}
-
-func (o ConfigurationAssignmentFilterPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationAssignmentFilterProperties] {
-	return pulumix.Output[*ConfigurationAssignmentFilterProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigurationAssignmentFilterPropertiesPtrOutput) Elem() ConfigurationAssignmentFilterPropertiesOutput {
@@ -283,12 +258,6 @@ func (o ConfigurationAssignmentFilterPropertiesResponseOutput) ToConfigurationAs
 	return o
 }
 
-func (o ConfigurationAssignmentFilterPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConfigurationAssignmentFilterPropertiesResponse] {
-	return pulumix.Output[ConfigurationAssignmentFilterPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of locations to scope the query to.
 func (o ConfigurationAssignmentFilterPropertiesResponseOutput) Locations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConfigurationAssignmentFilterPropertiesResponse) []string { return v.Locations }).(pulumi.StringArrayOutput)
@@ -328,12 +297,6 @@ func (o ConfigurationAssignmentFilterPropertiesResponsePtrOutput) ToConfiguratio
 
 func (o ConfigurationAssignmentFilterPropertiesResponsePtrOutput) ToConfigurationAssignmentFilterPropertiesResponsePtrOutputWithContext(ctx context.Context) ConfigurationAssignmentFilterPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o ConfigurationAssignmentFilterPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigurationAssignmentFilterPropertiesResponse] {
-	return pulumix.Output[*ConfigurationAssignmentFilterPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigurationAssignmentFilterPropertiesResponsePtrOutput) Elem() ConfigurationAssignmentFilterPropertiesResponseOutput {
@@ -439,12 +402,6 @@ func (i InputLinuxParametersArgs) ToInputLinuxParametersOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(InputLinuxParametersOutput)
 }
 
-func (i InputLinuxParametersArgs) ToOutput(ctx context.Context) pulumix.Output[InputLinuxParameters] {
-	return pulumix.Output[InputLinuxParameters]{
-		OutputState: i.ToInputLinuxParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i InputLinuxParametersArgs) ToInputLinuxParametersPtrOutput() InputLinuxParametersPtrOutput {
 	return i.ToInputLinuxParametersPtrOutputWithContext(context.Background())
 }
@@ -486,12 +443,6 @@ func (i *inputLinuxParametersPtrType) ToInputLinuxParametersPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(InputLinuxParametersPtrOutput)
 }
 
-func (i *inputLinuxParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*InputLinuxParameters] {
-	return pulumix.Output[*InputLinuxParameters]{
-		OutputState: i.ToInputLinuxParametersPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Input properties for patching a Linux machine.
 type InputLinuxParametersOutput struct{ *pulumi.OutputState }
 
@@ -515,12 +466,6 @@ func (o InputLinuxParametersOutput) ToInputLinuxParametersPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InputLinuxParameters) *InputLinuxParameters {
 		return &v
 	}).(InputLinuxParametersPtrOutput)
-}
-
-func (o InputLinuxParametersOutput) ToOutput(ctx context.Context) pulumix.Output[InputLinuxParameters] {
-	return pulumix.Output[InputLinuxParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Classification category of patches to be patched
@@ -550,12 +495,6 @@ func (o InputLinuxParametersPtrOutput) ToInputLinuxParametersPtrOutput() InputLi
 
 func (o InputLinuxParametersPtrOutput) ToInputLinuxParametersPtrOutputWithContext(ctx context.Context) InputLinuxParametersPtrOutput {
 	return o
-}
-
-func (o InputLinuxParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InputLinuxParameters] {
-	return pulumix.Output[*InputLinuxParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InputLinuxParametersPtrOutput) Elem() InputLinuxParametersOutput {
@@ -623,12 +562,6 @@ func (o InputLinuxParametersResponseOutput) ToInputLinuxParametersResponseOutput
 	return o
 }
 
-func (o InputLinuxParametersResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InputLinuxParametersResponse] {
-	return pulumix.Output[InputLinuxParametersResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Classification category of patches to be patched
 func (o InputLinuxParametersResponseOutput) ClassificationsToInclude() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InputLinuxParametersResponse) []string { return v.ClassificationsToInclude }).(pulumi.StringArrayOutput)
@@ -656,12 +589,6 @@ func (o InputLinuxParametersResponsePtrOutput) ToInputLinuxParametersResponsePtr
 
 func (o InputLinuxParametersResponsePtrOutput) ToInputLinuxParametersResponsePtrOutputWithContext(ctx context.Context) InputLinuxParametersResponsePtrOutput {
 	return o
-}
-
-func (o InputLinuxParametersResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InputLinuxParametersResponse] {
-	return pulumix.Output[*InputLinuxParametersResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InputLinuxParametersResponsePtrOutput) Elem() InputLinuxParametersResponseOutput {
@@ -771,12 +698,6 @@ func (i InputPatchConfigurationArgs) ToInputPatchConfigurationOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(InputPatchConfigurationOutput)
 }
 
-func (i InputPatchConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[InputPatchConfiguration] {
-	return pulumix.Output[InputPatchConfiguration]{
-		OutputState: i.ToInputPatchConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i InputPatchConfigurationArgs) ToInputPatchConfigurationPtrOutput() InputPatchConfigurationPtrOutput {
 	return i.ToInputPatchConfigurationPtrOutputWithContext(context.Background())
 }
@@ -818,12 +739,6 @@ func (i *inputPatchConfigurationPtrType) ToInputPatchConfigurationPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(InputPatchConfigurationPtrOutput)
 }
 
-func (i *inputPatchConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*InputPatchConfiguration] {
-	return pulumix.Output[*InputPatchConfiguration]{
-		OutputState: i.ToInputPatchConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Input configuration for a patch run
 type InputPatchConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -847,12 +762,6 @@ func (o InputPatchConfigurationOutput) ToInputPatchConfigurationPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InputPatchConfiguration) *InputPatchConfiguration {
 		return &v
 	}).(InputPatchConfigurationPtrOutput)
-}
-
-func (o InputPatchConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[InputPatchConfiguration] {
-	return pulumix.Output[InputPatchConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Input parameters specific to patching Linux machine. For Windows machines, do not pass this property.
@@ -882,12 +791,6 @@ func (o InputPatchConfigurationPtrOutput) ToInputPatchConfigurationPtrOutput() I
 
 func (o InputPatchConfigurationPtrOutput) ToInputPatchConfigurationPtrOutputWithContext(ctx context.Context) InputPatchConfigurationPtrOutput {
 	return o
-}
-
-func (o InputPatchConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InputPatchConfiguration] {
-	return pulumix.Output[*InputPatchConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InputPatchConfigurationPtrOutput) Elem() InputPatchConfigurationOutput {
@@ -968,12 +871,6 @@ func (o InputPatchConfigurationResponseOutput) ToInputPatchConfigurationResponse
 	return o
 }
 
-func (o InputPatchConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InputPatchConfigurationResponse] {
-	return pulumix.Output[InputPatchConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Input parameters specific to patching Linux machine. For Windows machines, do not pass this property.
 func (o InputPatchConfigurationResponseOutput) LinuxParameters() InputLinuxParametersResponsePtrOutput {
 	return o.ApplyT(func(v InputPatchConfigurationResponse) *InputLinuxParametersResponse { return v.LinuxParameters }).(InputLinuxParametersResponsePtrOutput)
@@ -1001,12 +898,6 @@ func (o InputPatchConfigurationResponsePtrOutput) ToInputPatchConfigurationRespo
 
 func (o InputPatchConfigurationResponsePtrOutput) ToInputPatchConfigurationResponsePtrOutputWithContext(ctx context.Context) InputPatchConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o InputPatchConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InputPatchConfigurationResponse] {
-	return pulumix.Output[*InputPatchConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InputPatchConfigurationResponsePtrOutput) Elem() InputPatchConfigurationResponseOutput {
@@ -1096,12 +987,6 @@ func (i InputWindowsParametersArgs) ToInputWindowsParametersOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(InputWindowsParametersOutput)
 }
 
-func (i InputWindowsParametersArgs) ToOutput(ctx context.Context) pulumix.Output[InputWindowsParameters] {
-	return pulumix.Output[InputWindowsParameters]{
-		OutputState: i.ToInputWindowsParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i InputWindowsParametersArgs) ToInputWindowsParametersPtrOutput() InputWindowsParametersPtrOutput {
 	return i.ToInputWindowsParametersPtrOutputWithContext(context.Background())
 }
@@ -1143,12 +1028,6 @@ func (i *inputWindowsParametersPtrType) ToInputWindowsParametersPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(InputWindowsParametersPtrOutput)
 }
 
-func (i *inputWindowsParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*InputWindowsParameters] {
-	return pulumix.Output[*InputWindowsParameters]{
-		OutputState: i.ToInputWindowsParametersPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Input properties for patching a Windows machine.
 type InputWindowsParametersOutput struct{ *pulumi.OutputState }
 
@@ -1172,12 +1051,6 @@ func (o InputWindowsParametersOutput) ToInputWindowsParametersPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v InputWindowsParameters) *InputWindowsParameters {
 		return &v
 	}).(InputWindowsParametersPtrOutput)
-}
-
-func (o InputWindowsParametersOutput) ToOutput(ctx context.Context) pulumix.Output[InputWindowsParameters] {
-	return pulumix.Output[InputWindowsParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Classification category of patches to be patched
@@ -1212,12 +1085,6 @@ func (o InputWindowsParametersPtrOutput) ToInputWindowsParametersPtrOutput() Inp
 
 func (o InputWindowsParametersPtrOutput) ToInputWindowsParametersPtrOutputWithContext(ctx context.Context) InputWindowsParametersPtrOutput {
 	return o
-}
-
-func (o InputWindowsParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InputWindowsParameters] {
-	return pulumix.Output[*InputWindowsParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InputWindowsParametersPtrOutput) Elem() InputWindowsParametersOutput {
@@ -1297,12 +1164,6 @@ func (o InputWindowsParametersResponseOutput) ToInputWindowsParametersResponseOu
 	return o
 }
 
-func (o InputWindowsParametersResponseOutput) ToOutput(ctx context.Context) pulumix.Output[InputWindowsParametersResponse] {
-	return pulumix.Output[InputWindowsParametersResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Classification category of patches to be patched
 func (o InputWindowsParametersResponseOutput) ClassificationsToInclude() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InputWindowsParametersResponse) []string { return v.ClassificationsToInclude }).(pulumi.StringArrayOutput)
@@ -1335,12 +1196,6 @@ func (o InputWindowsParametersResponsePtrOutput) ToInputWindowsParametersRespons
 
 func (o InputWindowsParametersResponsePtrOutput) ToInputWindowsParametersResponsePtrOutputWithContext(ctx context.Context) InputWindowsParametersResponsePtrOutput {
 	return o
-}
-
-func (o InputWindowsParametersResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InputWindowsParametersResponse] {
-	return pulumix.Output[*InputWindowsParametersResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InputWindowsParametersResponsePtrOutput) Elem() InputWindowsParametersResponseOutput {
@@ -1424,12 +1279,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timestamp of resource creation (UTC).
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
@@ -1499,12 +1348,6 @@ func (i TagSettingsPropertiesArgs) ToTagSettingsPropertiesOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(TagSettingsPropertiesOutput)
 }
 
-func (i TagSettingsPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[TagSettingsProperties] {
-	return pulumix.Output[TagSettingsProperties]{
-		OutputState: i.ToTagSettingsPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TagSettingsPropertiesArgs) ToTagSettingsPropertiesPtrOutput() TagSettingsPropertiesPtrOutput {
 	return i.ToTagSettingsPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1546,12 +1389,6 @@ func (i *tagSettingsPropertiesPtrType) ToTagSettingsPropertiesPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(TagSettingsPropertiesPtrOutput)
 }
 
-func (i *tagSettingsPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*TagSettingsProperties] {
-	return pulumix.Output[*TagSettingsProperties]{
-		OutputState: i.ToTagSettingsPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Tag filter information for the VM.
 type TagSettingsPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1577,12 +1414,6 @@ func (o TagSettingsPropertiesOutput) ToTagSettingsPropertiesPtrOutputWithContext
 	}).(TagSettingsPropertiesPtrOutput)
 }
 
-func (o TagSettingsPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[TagSettingsProperties] {
-	return pulumix.Output[TagSettingsProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Filter VMs by Any or All specified tags.
 func (o TagSettingsPropertiesOutput) FilterOperator() TagOperatorsPtrOutput {
 	return o.ApplyT(func(v TagSettingsProperties) *TagOperators { return v.FilterOperator }).(TagOperatorsPtrOutput)
@@ -1605,12 +1436,6 @@ func (o TagSettingsPropertiesPtrOutput) ToTagSettingsPropertiesPtrOutput() TagSe
 
 func (o TagSettingsPropertiesPtrOutput) ToTagSettingsPropertiesPtrOutputWithContext(ctx context.Context) TagSettingsPropertiesPtrOutput {
 	return o
-}
-
-func (o TagSettingsPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TagSettingsProperties] {
-	return pulumix.Output[*TagSettingsProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TagSettingsPropertiesPtrOutput) Elem() TagSettingsPropertiesOutput {
@@ -1666,12 +1491,6 @@ func (o TagSettingsPropertiesResponseOutput) ToTagSettingsPropertiesResponseOutp
 	return o
 }
 
-func (o TagSettingsPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TagSettingsPropertiesResponse] {
-	return pulumix.Output[TagSettingsPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Filter VMs by Any or All specified tags.
 func (o TagSettingsPropertiesResponseOutput) FilterOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TagSettingsPropertiesResponse) *string { return v.FilterOperator }).(pulumi.StringPtrOutput)
@@ -1694,12 +1513,6 @@ func (o TagSettingsPropertiesResponsePtrOutput) ToTagSettingsPropertiesResponseP
 
 func (o TagSettingsPropertiesResponsePtrOutput) ToTagSettingsPropertiesResponsePtrOutputWithContext(ctx context.Context) TagSettingsPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o TagSettingsPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TagSettingsPropertiesResponse] {
-	return pulumix.Output[*TagSettingsPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TagSettingsPropertiesResponsePtrOutput) Elem() TagSettingsPropertiesResponseOutput {

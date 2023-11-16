@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents Storage Task.
@@ -163,12 +162,6 @@ func (i *StorageTask) ToStorageTaskOutputWithContext(ctx context.Context) Storag
 	return pulumi.ToOutputWithContext(ctx, i).(StorageTaskOutput)
 }
 
-func (i *StorageTask) ToOutput(ctx context.Context) pulumix.Output[*StorageTask] {
-	return pulumix.Output[*StorageTask]{
-		OutputState: i.ToStorageTaskOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StorageTaskOutput struct{ *pulumi.OutputState }
 
 func (StorageTaskOutput) ElementType() reflect.Type {
@@ -181,12 +174,6 @@ func (o StorageTaskOutput) ToStorageTaskOutput() StorageTaskOutput {
 
 func (o StorageTaskOutput) ToStorageTaskOutputWithContext(ctx context.Context) StorageTaskOutput {
 	return o
-}
-
-func (o StorageTaskOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageTask] {
-	return pulumix.Output[*StorageTask]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The storage task action that is executed

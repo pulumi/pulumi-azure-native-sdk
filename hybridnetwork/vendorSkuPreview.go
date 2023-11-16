@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Customer subscription which can use a sku.
@@ -127,12 +126,6 @@ func (i *VendorSkuPreview) ToVendorSkuPreviewOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(VendorSkuPreviewOutput)
 }
 
-func (i *VendorSkuPreview) ToOutput(ctx context.Context) pulumix.Output[*VendorSkuPreview] {
-	return pulumix.Output[*VendorSkuPreview]{
-		OutputState: i.ToVendorSkuPreviewOutputWithContext(ctx).OutputState,
-	}
-}
-
 type VendorSkuPreviewOutput struct{ *pulumi.OutputState }
 
 func (VendorSkuPreviewOutput) ElementType() reflect.Type {
@@ -145,12 +138,6 @@ func (o VendorSkuPreviewOutput) ToVendorSkuPreviewOutput() VendorSkuPreviewOutpu
 
 func (o VendorSkuPreviewOutput) ToVendorSkuPreviewOutputWithContext(ctx context.Context) VendorSkuPreviewOutput {
 	return o
-}
-
-func (o VendorSkuPreviewOutput) ToOutput(ctx context.Context) pulumix.Output[*VendorSkuPreview] {
-	return pulumix.Output[*VendorSkuPreview]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The preview subscription ID.

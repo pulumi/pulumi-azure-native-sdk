@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An object that represents an export pipeline for a container registry.
@@ -145,12 +144,6 @@ func (i *ArchiveVersion) ToArchiveVersionOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ArchiveVersionOutput)
 }
 
-func (i *ArchiveVersion) ToOutput(ctx context.Context) pulumix.Output[*ArchiveVersion] {
-	return pulumix.Output[*ArchiveVersion]{
-		OutputState: i.ToArchiveVersionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ArchiveVersionOutput struct{ *pulumi.OutputState }
 
 func (ArchiveVersionOutput) ElementType() reflect.Type {
@@ -163,12 +156,6 @@ func (o ArchiveVersionOutput) ToArchiveVersionOutput() ArchiveVersionOutput {
 
 func (o ArchiveVersionOutput) ToArchiveVersionOutputWithContext(ctx context.Context) ArchiveVersionOutput {
 	return o
-}
-
-func (o ArchiveVersionOutput) ToOutput(ctx context.Context) pulumix.Output[*ArchiveVersion] {
-	return pulumix.Output[*ArchiveVersion]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The detailed error message for the archive version in the case of failure.

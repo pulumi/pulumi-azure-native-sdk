@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Obtains the details of a suppression.
@@ -92,12 +91,6 @@ func (o LookupSuppressionResultOutput) ToLookupSuppressionResultOutput() LookupS
 
 func (o LookupSuppressionResultOutput) ToLookupSuppressionResultOutputWithContext(ctx context.Context) LookupSuppressionResultOutput {
 	return o
-}
-
-func (o LookupSuppressionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSuppressionResult] {
-	return pulumix.Output[LookupSuppressionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the expiration time stamp.

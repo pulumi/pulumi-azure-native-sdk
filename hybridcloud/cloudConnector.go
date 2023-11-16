@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Cloud Connector resource.
@@ -140,12 +139,6 @@ func (i *CloudConnector) ToCloudConnectorOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(CloudConnectorOutput)
 }
 
-func (i *CloudConnector) ToOutput(ctx context.Context) pulumix.Output[*CloudConnector] {
-	return pulumix.Output[*CloudConnector]{
-		OutputState: i.ToCloudConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CloudConnectorOutput struct{ *pulumi.OutputState }
 
 func (CloudConnectorOutput) ElementType() reflect.Type {
@@ -158,12 +151,6 @@ func (o CloudConnectorOutput) ToCloudConnectorOutput() CloudConnectorOutput {
 
 func (o CloudConnectorOutput) ToCloudConnectorOutputWithContext(ctx context.Context) CloudConnectorOutput {
 	return o
-}
-
-func (o CloudConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudConnector] {
-	return pulumix.Output[*CloudConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Account identifier of the remote cloud.

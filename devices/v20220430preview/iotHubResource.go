@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The description of the IoT hub.
@@ -230,12 +229,6 @@ func (i *IotHubResource) ToIotHubResourceOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(IotHubResourceOutput)
 }
 
-func (i *IotHubResource) ToOutput(ctx context.Context) pulumix.Output[*IotHubResource] {
-	return pulumix.Output[*IotHubResource]{
-		OutputState: i.ToIotHubResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IotHubResourceOutput struct{ *pulumi.OutputState }
 
 func (IotHubResourceOutput) ElementType() reflect.Type {
@@ -248,12 +241,6 @@ func (o IotHubResourceOutput) ToIotHubResourceOutput() IotHubResourceOutput {
 
 func (o IotHubResourceOutput) ToIotHubResourceOutputWithContext(ctx context.Context) IotHubResourceOutput {
 	return o
-}
-
-func (o IotHubResourceOutput) ToOutput(ctx context.Context) pulumix.Output[*IotHubResource] {
-	return pulumix.Output[*IotHubResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention.

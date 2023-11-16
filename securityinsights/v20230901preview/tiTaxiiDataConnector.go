@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Data connector to pull Threat intelligence data from TAXII 2.0/2.1 server
@@ -158,6 +157,9 @@ func NewTiTaxiiDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:TiTaxiiDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:TiTaxiiDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -280,12 +282,6 @@ func (i *TiTaxiiDataConnector) ToTiTaxiiDataConnectorOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(TiTaxiiDataConnectorOutput)
 }
 
-func (i *TiTaxiiDataConnector) ToOutput(ctx context.Context) pulumix.Output[*TiTaxiiDataConnector] {
-	return pulumix.Output[*TiTaxiiDataConnector]{
-		OutputState: i.ToTiTaxiiDataConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TiTaxiiDataConnectorOutput struct{ *pulumi.OutputState }
 
 func (TiTaxiiDataConnectorOutput) ElementType() reflect.Type {
@@ -298,12 +294,6 @@ func (o TiTaxiiDataConnectorOutput) ToTiTaxiiDataConnectorOutput() TiTaxiiDataCo
 
 func (o TiTaxiiDataConnectorOutput) ToTiTaxiiDataConnectorOutputWithContext(ctx context.Context) TiTaxiiDataConnectorOutput {
 	return o
-}
-
-func (o TiTaxiiDataConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*TiTaxiiDataConnector] {
-	return pulumix.Output[*TiTaxiiDataConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The collection id of the TAXII server.

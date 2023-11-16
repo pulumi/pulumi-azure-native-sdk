@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get private DNS zone suffix in the cloud.
@@ -65,12 +64,6 @@ func (o GetGetPrivateDnsZoneSuffixExecuteResultOutput) ToGetGetPrivateDnsZoneSuf
 
 func (o GetGetPrivateDnsZoneSuffixExecuteResultOutput) ToGetGetPrivateDnsZoneSuffixExecuteResultOutputWithContext(ctx context.Context) GetGetPrivateDnsZoneSuffixExecuteResultOutput {
 	return o
-}
-
-func (o GetGetPrivateDnsZoneSuffixExecuteResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGetPrivateDnsZoneSuffixExecuteResult] {
-	return pulumix.Output[GetGetPrivateDnsZoneSuffixExecuteResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Represents the private DNS zone suffix.

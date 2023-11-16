@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Private endpoint connection resource.
@@ -136,12 +135,6 @@ func (i *PrivateEndpointConnectionOperation) ToPrivateEndpointConnectionOperatio
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionOperationOutput)
 }
 
-func (i *PrivateEndpointConnectionOperation) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionOperation] {
-	return pulumix.Output[*PrivateEndpointConnectionOperation]{
-		OutputState: i.ToPrivateEndpointConnectionOperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateEndpointConnectionOperationOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointConnectionOperationOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o PrivateEndpointConnectionOperationOutput) ToPrivateEndpointConnectionOpe
 
 func (o PrivateEndpointConnectionOperationOutput) ToPrivateEndpointConnectionOperationOutputWithContext(ctx context.Context) PrivateEndpointConnectionOperationOutput {
 	return o
-}
-
-func (o PrivateEndpointConnectionOperationOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionOperation] {
-	return pulumix.Output[*PrivateEndpointConnectionOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The group ids for the private endpoint resource.

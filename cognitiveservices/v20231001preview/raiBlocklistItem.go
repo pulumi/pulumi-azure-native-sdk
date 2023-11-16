@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Cognitive Services RaiBlocklist Item.
@@ -139,12 +138,6 @@ func (i *RaiBlocklistItem) ToRaiBlocklistItemOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(RaiBlocklistItemOutput)
 }
 
-func (i *RaiBlocklistItem) ToOutput(ctx context.Context) pulumix.Output[*RaiBlocklistItem] {
-	return pulumix.Output[*RaiBlocklistItem]{
-		OutputState: i.ToRaiBlocklistItemOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RaiBlocklistItemOutput struct{ *pulumi.OutputState }
 
 func (RaiBlocklistItemOutput) ElementType() reflect.Type {
@@ -157,12 +150,6 @@ func (o RaiBlocklistItemOutput) ToRaiBlocklistItemOutput() RaiBlocklistItemOutpu
 
 func (o RaiBlocklistItemOutput) ToRaiBlocklistItemOutputWithContext(ctx context.Context) RaiBlocklistItemOutput {
 	return o
-}
-
-func (o RaiBlocklistItemOutput) ToOutput(ctx context.Context) pulumix.Output[*RaiBlocklistItem] {
-	return pulumix.Output[*RaiBlocklistItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Etag.

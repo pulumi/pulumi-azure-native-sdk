@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // DataConnector Model.
@@ -129,12 +128,6 @@ func (i *DataConnector) ToDataConnectorOutputWithContext(ctx context.Context) Da
 	return pulumi.ToOutputWithContext(ctx, i).(DataConnectorOutput)
 }
 
-func (i *DataConnector) ToOutput(ctx context.Context) pulumix.Output[*DataConnector] {
-	return pulumix.Output[*DataConnector]{
-		OutputState: i.ToDataConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataConnectorOutput struct{ *pulumi.OutputState }
 
 func (DataConnectorOutput) ElementType() reflect.Type {
@@ -147,12 +140,6 @@ func (o DataConnectorOutput) ToDataConnectorOutput() DataConnectorOutput {
 
 func (o DataConnectorOutput) ToDataConnectorOutputWithContext(ctx context.Context) DataConnectorOutput {
 	return o
-}
-
-func (o DataConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*DataConnector] {
-	return pulumix.Output[*DataConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ETag value to implement optimistic concurrency.

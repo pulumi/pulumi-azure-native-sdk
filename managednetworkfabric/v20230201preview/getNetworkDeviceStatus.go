@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the running status of the Network Device.
@@ -77,12 +76,6 @@ func (o GetNetworkDeviceStatusResultOutput) ToGetNetworkDeviceStatusResultOutput
 
 func (o GetNetworkDeviceStatusResultOutput) ToGetNetworkDeviceStatusResultOutputWithContext(ctx context.Context) GetNetworkDeviceStatusResultOutput {
 	return o
-}
-
-func (o GetNetworkDeviceStatusResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetNetworkDeviceStatusResult] {
-	return pulumix.Output[GetNetworkDeviceStatusResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Primary or Secondary power end.

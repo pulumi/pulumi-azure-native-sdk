@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The properties of the EventHubConsumerGroupInfo object.
@@ -212,12 +211,6 @@ func (i *IotHubResourceEventHubConsumerGroup) ToIotHubResourceEventHubConsumerGr
 	return pulumi.ToOutputWithContext(ctx, i).(IotHubResourceEventHubConsumerGroupOutput)
 }
 
-func (i *IotHubResourceEventHubConsumerGroup) ToOutput(ctx context.Context) pulumix.Output[*IotHubResourceEventHubConsumerGroup] {
-	return pulumix.Output[*IotHubResourceEventHubConsumerGroup]{
-		OutputState: i.ToIotHubResourceEventHubConsumerGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IotHubResourceEventHubConsumerGroupOutput struct{ *pulumi.OutputState }
 
 func (IotHubResourceEventHubConsumerGroupOutput) ElementType() reflect.Type {
@@ -230,12 +223,6 @@ func (o IotHubResourceEventHubConsumerGroupOutput) ToIotHubResourceEventHubConsu
 
 func (o IotHubResourceEventHubConsumerGroupOutput) ToIotHubResourceEventHubConsumerGroupOutputWithContext(ctx context.Context) IotHubResourceEventHubConsumerGroupOutput {
 	return o
-}
-
-func (o IotHubResourceEventHubConsumerGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*IotHubResourceEventHubConsumerGroup] {
-	return pulumix.Output[*IotHubResourceEventHubConsumerGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The etag.

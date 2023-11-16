@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Subscription details.
@@ -242,12 +241,6 @@ func (i *Subscription) ToSubscriptionOutputWithContext(ctx context.Context) Subs
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionOutput)
 }
 
-func (i *Subscription) ToOutput(ctx context.Context) pulumix.Output[*Subscription] {
-	return pulumix.Output[*Subscription]{
-		OutputState: i.ToSubscriptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SubscriptionOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionOutput) ElementType() reflect.Type {
@@ -260,12 +253,6 @@ func (o SubscriptionOutput) ToSubscriptionOutput() SubscriptionOutput {
 
 func (o SubscriptionOutput) ToSubscriptionOutputWithContext(ctx context.Context) SubscriptionOutput {
 	return o
-}
-
-func (o SubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[*Subscription] {
-	return pulumix.Output[*Subscription]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Determines whether tracing is enabled

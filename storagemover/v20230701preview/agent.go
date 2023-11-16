@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Agent resource.
@@ -168,12 +167,6 @@ func (i *Agent) ToAgentOutputWithContext(ctx context.Context) AgentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AgentOutput)
 }
 
-func (i *Agent) ToOutput(ctx context.Context) pulumix.Output[*Agent] {
-	return pulumix.Output[*Agent]{
-		OutputState: i.ToAgentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AgentOutput struct{ *pulumi.OutputState }
 
 func (AgentOutput) ElementType() reflect.Type {
@@ -186,12 +179,6 @@ func (o AgentOutput) ToAgentOutput() AgentOutput {
 
 func (o AgentOutput) ToAgentOutputWithContext(ctx context.Context) AgentOutput {
 	return o
-}
-
-func (o AgentOutput) ToOutput(ctx context.Context) pulumix.Output[*Agent] {
-	return pulumix.Output[*Agent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Agent status.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -41,12 +40,6 @@ func (o BusinessProcessDevelopmentArtifactPropertiesResponseOutput) ToBusinessPr
 
 func (o BusinessProcessDevelopmentArtifactPropertiesResponseOutput) ToBusinessProcessDevelopmentArtifactPropertiesResponseOutputWithContext(ctx context.Context) BusinessProcessDevelopmentArtifactPropertiesResponseOutput {
 	return o
-}
-
-func (o BusinessProcessDevelopmentArtifactPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BusinessProcessDevelopmentArtifactPropertiesResponse] {
-	return pulumix.Output[BusinessProcessDevelopmentArtifactPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The business process mapping.
@@ -94,12 +87,6 @@ func (o BusinessProcessDevelopmentArtifactPropertiesResponsePtrOutput) ToBusines
 
 func (o BusinessProcessDevelopmentArtifactPropertiesResponsePtrOutput) ToBusinessProcessDevelopmentArtifactPropertiesResponsePtrOutputWithContext(ctx context.Context) BusinessProcessDevelopmentArtifactPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o BusinessProcessDevelopmentArtifactPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BusinessProcessDevelopmentArtifactPropertiesResponse] {
-	return pulumix.Output[*BusinessProcessDevelopmentArtifactPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BusinessProcessDevelopmentArtifactPropertiesResponsePtrOutput) Elem() BusinessProcessDevelopmentArtifactPropertiesResponseOutput {
@@ -201,12 +188,6 @@ func (i BusinessProcessIdentifierArgs) ToBusinessProcessIdentifierOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(BusinessProcessIdentifierOutput)
 }
 
-func (i BusinessProcessIdentifierArgs) ToOutput(ctx context.Context) pulumix.Output[BusinessProcessIdentifier] {
-	return pulumix.Output[BusinessProcessIdentifier]{
-		OutputState: i.ToBusinessProcessIdentifierOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BusinessProcessIdentifierArgs) ToBusinessProcessIdentifierPtrOutput() BusinessProcessIdentifierPtrOutput {
 	return i.ToBusinessProcessIdentifierPtrOutputWithContext(context.Background())
 }
@@ -248,12 +229,6 @@ func (i *businessProcessIdentifierPtrType) ToBusinessProcessIdentifierPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(BusinessProcessIdentifierPtrOutput)
 }
 
-func (i *businessProcessIdentifierPtrType) ToOutput(ctx context.Context) pulumix.Output[*BusinessProcessIdentifier] {
-	return pulumix.Output[*BusinessProcessIdentifier]{
-		OutputState: i.ToBusinessProcessIdentifierPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties of business process identifier.
 type BusinessProcessIdentifierOutput struct{ *pulumi.OutputState }
 
@@ -279,12 +254,6 @@ func (o BusinessProcessIdentifierOutput) ToBusinessProcessIdentifierPtrOutputWit
 	}).(BusinessProcessIdentifierPtrOutput)
 }
 
-func (o BusinessProcessIdentifierOutput) ToOutput(ctx context.Context) pulumix.Output[BusinessProcessIdentifier] {
-	return pulumix.Output[BusinessProcessIdentifier]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The property name of the business process identifier.
 func (o BusinessProcessIdentifierOutput) PropertyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BusinessProcessIdentifier) *string { return v.PropertyName }).(pulumi.StringPtrOutput)
@@ -307,12 +276,6 @@ func (o BusinessProcessIdentifierPtrOutput) ToBusinessProcessIdentifierPtrOutput
 
 func (o BusinessProcessIdentifierPtrOutput) ToBusinessProcessIdentifierPtrOutputWithContext(ctx context.Context) BusinessProcessIdentifierPtrOutput {
 	return o
-}
-
-func (o BusinessProcessIdentifierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BusinessProcessIdentifier] {
-	return pulumix.Output[*BusinessProcessIdentifier]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BusinessProcessIdentifierPtrOutput) Elem() BusinessProcessIdentifierOutput {
@@ -368,12 +331,6 @@ func (o BusinessProcessIdentifierResponseOutput) ToBusinessProcessIdentifierResp
 	return o
 }
 
-func (o BusinessProcessIdentifierResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BusinessProcessIdentifierResponse] {
-	return pulumix.Output[BusinessProcessIdentifierResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The property name of the business process identifier.
 func (o BusinessProcessIdentifierResponseOutput) PropertyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BusinessProcessIdentifierResponse) *string { return v.PropertyName }).(pulumi.StringPtrOutput)
@@ -396,12 +353,6 @@ func (o BusinessProcessIdentifierResponsePtrOutput) ToBusinessProcessIdentifierR
 
 func (o BusinessProcessIdentifierResponsePtrOutput) ToBusinessProcessIdentifierResponsePtrOutputWithContext(ctx context.Context) BusinessProcessIdentifierResponsePtrOutput {
 	return o
-}
-
-func (o BusinessProcessIdentifierResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BusinessProcessIdentifierResponse] {
-	return pulumix.Output[*BusinessProcessIdentifierResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BusinessProcessIdentifierResponsePtrOutput) Elem() BusinessProcessIdentifierResponseOutput {
@@ -481,12 +432,6 @@ func (i BusinessProcessMappingItemArgs) ToBusinessProcessMappingItemOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(BusinessProcessMappingItemOutput)
 }
 
-func (i BusinessProcessMappingItemArgs) ToOutput(ctx context.Context) pulumix.Output[BusinessProcessMappingItem] {
-	return pulumix.Output[BusinessProcessMappingItem]{
-		OutputState: i.ToBusinessProcessMappingItemOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BusinessProcessMappingItemMapInput is an input type that accepts BusinessProcessMappingItemMap and BusinessProcessMappingItemMapOutput values.
 // You can construct a concrete instance of `BusinessProcessMappingItemMapInput` via:
 //
@@ -512,12 +457,6 @@ func (i BusinessProcessMappingItemMap) ToBusinessProcessMappingItemMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(BusinessProcessMappingItemMapOutput)
 }
 
-func (i BusinessProcessMappingItemMap) ToOutput(ctx context.Context) pulumix.Output[map[string]BusinessProcessMappingItem] {
-	return pulumix.Output[map[string]BusinessProcessMappingItem]{
-		OutputState: i.ToBusinessProcessMappingItemMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties of business process mapping.
 type BusinessProcessMappingItemOutput struct{ *pulumi.OutputState }
 
@@ -531,12 +470,6 @@ func (o BusinessProcessMappingItemOutput) ToBusinessProcessMappingItemOutput() B
 
 func (o BusinessProcessMappingItemOutput) ToBusinessProcessMappingItemOutputWithContext(ctx context.Context) BusinessProcessMappingItemOutput {
 	return o
-}
-
-func (o BusinessProcessMappingItemOutput) ToOutput(ctx context.Context) pulumix.Output[BusinessProcessMappingItem] {
-	return pulumix.Output[BusinessProcessMappingItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The logic app resource id.
@@ -573,12 +506,6 @@ func (o BusinessProcessMappingItemMapOutput) ToBusinessProcessMappingItemMapOutp
 	return o
 }
 
-func (o BusinessProcessMappingItemMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]BusinessProcessMappingItem] {
-	return pulumix.Output[map[string]BusinessProcessMappingItem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BusinessProcessMappingItemMapOutput) MapIndex(k pulumi.StringInput) BusinessProcessMappingItemOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BusinessProcessMappingItem {
 		return vs[0].(map[string]BusinessProcessMappingItem)[vs[1].(string)]
@@ -610,12 +537,6 @@ func (o BusinessProcessMappingItemResponseOutput) ToBusinessProcessMappingItemRe
 
 func (o BusinessProcessMappingItemResponseOutput) ToBusinessProcessMappingItemResponseOutputWithContext(ctx context.Context) BusinessProcessMappingItemResponseOutput {
 	return o
-}
-
-func (o BusinessProcessMappingItemResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BusinessProcessMappingItemResponse] {
-	return pulumix.Output[BusinessProcessMappingItemResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The logic app resource id.
@@ -652,12 +573,6 @@ func (o BusinessProcessMappingItemResponseMapOutput) ToBusinessProcessMappingIte
 	return o
 }
 
-func (o BusinessProcessMappingItemResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]BusinessProcessMappingItemResponse] {
-	return pulumix.Output[map[string]BusinessProcessMappingItemResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BusinessProcessMappingItemResponseMapOutput) MapIndex(k pulumi.StringInput) BusinessProcessMappingItemResponseOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BusinessProcessMappingItemResponse {
 		return vs[0].(map[string]BusinessProcessMappingItemResponse)[vs[1].(string)]
@@ -687,12 +602,6 @@ func (o BusinessProcessReferenceResponseOutput) ToBusinessProcessReferenceRespon
 	return o
 }
 
-func (o BusinessProcessReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BusinessProcessReferenceResponse] {
-	return pulumix.Output[BusinessProcessReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The business process name.
 func (o BusinessProcessReferenceResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BusinessProcessReferenceResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -715,12 +624,6 @@ func (o BusinessProcessReferenceResponsePtrOutput) ToBusinessProcessReferenceRes
 
 func (o BusinessProcessReferenceResponsePtrOutput) ToBusinessProcessReferenceResponsePtrOutputWithContext(ctx context.Context) BusinessProcessReferenceResponsePtrOutput {
 	return o
-}
-
-func (o BusinessProcessReferenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BusinessProcessReferenceResponse] {
-	return pulumix.Output[*BusinessProcessReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BusinessProcessReferenceResponsePtrOutput) Elem() BusinessProcessReferenceResponseOutput {
@@ -796,12 +699,6 @@ func (i BusinessProcessStageArgs) ToBusinessProcessStageOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(BusinessProcessStageOutput)
 }
 
-func (i BusinessProcessStageArgs) ToOutput(ctx context.Context) pulumix.Output[BusinessProcessStage] {
-	return pulumix.Output[BusinessProcessStage]{
-		OutputState: i.ToBusinessProcessStageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BusinessProcessStageMapInput is an input type that accepts BusinessProcessStageMap and BusinessProcessStageMapOutput values.
 // You can construct a concrete instance of `BusinessProcessStageMapInput` via:
 //
@@ -827,12 +724,6 @@ func (i BusinessProcessStageMap) ToBusinessProcessStageMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(BusinessProcessStageMapOutput)
 }
 
-func (i BusinessProcessStageMap) ToOutput(ctx context.Context) pulumix.Output[map[string]BusinessProcessStage] {
-	return pulumix.Output[map[string]BusinessProcessStage]{
-		OutputState: i.ToBusinessProcessStageMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties of business process stage.
 type BusinessProcessStageOutput struct{ *pulumi.OutputState }
 
@@ -846,12 +737,6 @@ func (o BusinessProcessStageOutput) ToBusinessProcessStageOutput() BusinessProce
 
 func (o BusinessProcessStageOutput) ToBusinessProcessStageOutputWithContext(ctx context.Context) BusinessProcessStageOutput {
 	return o
-}
-
-func (o BusinessProcessStageOutput) ToOutput(ctx context.Context) pulumix.Output[BusinessProcessStage] {
-	return pulumix.Output[BusinessProcessStage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the business stage.
@@ -881,12 +766,6 @@ func (o BusinessProcessStageMapOutput) ToBusinessProcessStageMapOutput() Busines
 
 func (o BusinessProcessStageMapOutput) ToBusinessProcessStageMapOutputWithContext(ctx context.Context) BusinessProcessStageMapOutput {
 	return o
-}
-
-func (o BusinessProcessStageMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]BusinessProcessStage] {
-	return pulumix.Output[map[string]BusinessProcessStage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BusinessProcessStageMapOutput) MapIndex(k pulumi.StringInput) BusinessProcessStageOutput {
@@ -920,12 +799,6 @@ func (o BusinessProcessStageResponseOutput) ToBusinessProcessStageResponseOutput
 	return o
 }
 
-func (o BusinessProcessStageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BusinessProcessStageResponse] {
-	return pulumix.Output[BusinessProcessStageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The description of the business stage.
 func (o BusinessProcessStageResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BusinessProcessStageResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -953,12 +826,6 @@ func (o BusinessProcessStageResponseMapOutput) ToBusinessProcessStageResponseMap
 
 func (o BusinessProcessStageResponseMapOutput) ToBusinessProcessStageResponseMapOutputWithContext(ctx context.Context) BusinessProcessStageResponseMapOutput {
 	return o
-}
-
-func (o BusinessProcessStageResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]BusinessProcessStageResponse] {
-	return pulumix.Output[map[string]BusinessProcessStageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BusinessProcessStageResponseMapOutput) MapIndex(k pulumi.StringInput) BusinessProcessStageResponseOutput {
@@ -990,12 +857,6 @@ func (o FlowTrackingDefinitionResponseOutput) ToFlowTrackingDefinitionResponseOu
 	return o
 }
 
-func (o FlowTrackingDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FlowTrackingDefinitionResponse] {
-	return pulumix.Output[FlowTrackingDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The tracking correlation context.
 func (o FlowTrackingDefinitionResponseOutput) CorrelationContext() TrackingCorrelationContextResponsePtrOutput {
 	return o.ApplyT(func(v FlowTrackingDefinitionResponse) *TrackingCorrelationContextResponse {
@@ -1020,12 +881,6 @@ func (o FlowTrackingDefinitionResponseMapOutput) ToFlowTrackingDefinitionRespons
 
 func (o FlowTrackingDefinitionResponseMapOutput) ToFlowTrackingDefinitionResponseMapOutputWithContext(ctx context.Context) FlowTrackingDefinitionResponseMapOutput {
 	return o
-}
-
-func (o FlowTrackingDefinitionResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]FlowTrackingDefinitionResponse] {
-	return pulumix.Output[map[string]FlowTrackingDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FlowTrackingDefinitionResponseMapOutput) MapIndex(k pulumi.StringInput) FlowTrackingDefinitionResponseOutput {
@@ -1059,12 +914,6 @@ func (o SaveOrGetBusinessProcessDevelopmentArtifactResponseResponseOutput) ToSav
 	return o
 }
 
-func (o SaveOrGetBusinessProcessDevelopmentArtifactResponseResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SaveOrGetBusinessProcessDevelopmentArtifactResponseResponse] {
-	return pulumix.Output[SaveOrGetBusinessProcessDevelopmentArtifactResponseResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the business process development artifact.
 func (o SaveOrGetBusinessProcessDevelopmentArtifactResponseResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SaveOrGetBusinessProcessDevelopmentArtifactResponseResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -1096,12 +945,6 @@ func (o SaveOrGetBusinessProcessDevelopmentArtifactResponseResponseArrayOutput) 
 
 func (o SaveOrGetBusinessProcessDevelopmentArtifactResponseResponseArrayOutput) ToSaveOrGetBusinessProcessDevelopmentArtifactResponseResponseArrayOutputWithContext(ctx context.Context) SaveOrGetBusinessProcessDevelopmentArtifactResponseResponseArrayOutput {
 	return o
-}
-
-func (o SaveOrGetBusinessProcessDevelopmentArtifactResponseResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SaveOrGetBusinessProcessDevelopmentArtifactResponseResponse] {
-	return pulumix.Output[[]SaveOrGetBusinessProcessDevelopmentArtifactResponseResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SaveOrGetBusinessProcessDevelopmentArtifactResponseResponseArrayOutput) Index(i pulumi.IntInput) SaveOrGetBusinessProcessDevelopmentArtifactResponseResponseOutput {
@@ -1139,12 +982,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -1204,12 +1041,6 @@ func (o TrackingCorrelationContextResponseOutput) ToTrackingCorrelationContextRe
 	return o
 }
 
-func (o TrackingCorrelationContextResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TrackingCorrelationContextResponse] {
-	return pulumix.Output[TrackingCorrelationContextResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The operation name for correlation context.
 func (o TrackingCorrelationContextResponseOutput) OperationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrackingCorrelationContextResponse) *string { return v.OperationName }).(pulumi.StringPtrOutput)
@@ -1242,12 +1073,6 @@ func (o TrackingCorrelationContextResponsePtrOutput) ToTrackingCorrelationContex
 
 func (o TrackingCorrelationContextResponsePtrOutput) ToTrackingCorrelationContextResponsePtrOutputWithContext(ctx context.Context) TrackingCorrelationContextResponsePtrOutput {
 	return o
-}
-
-func (o TrackingCorrelationContextResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TrackingCorrelationContextResponse] {
-	return pulumix.Output[*TrackingCorrelationContextResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TrackingCorrelationContextResponsePtrOutput) Elem() TrackingCorrelationContextResponseOutput {
@@ -1347,12 +1172,6 @@ func (i TrackingDataStoreArgs) ToTrackingDataStoreOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(TrackingDataStoreOutput)
 }
 
-func (i TrackingDataStoreArgs) ToOutput(ctx context.Context) pulumix.Output[TrackingDataStore] {
-	return pulumix.Output[TrackingDataStore]{
-		OutputState: i.ToTrackingDataStoreOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TrackingDataStoreMapInput is an input type that accepts TrackingDataStoreMap and TrackingDataStoreMapOutput values.
 // You can construct a concrete instance of `TrackingDataStoreMapInput` via:
 //
@@ -1378,12 +1197,6 @@ func (i TrackingDataStoreMap) ToTrackingDataStoreMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TrackingDataStoreMapOutput)
 }
 
-func (i TrackingDataStoreMap) ToOutput(ctx context.Context) pulumix.Output[map[string]TrackingDataStore] {
-	return pulumix.Output[map[string]TrackingDataStore]{
-		OutputState: i.ToTrackingDataStoreMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties of tracking data store.
 type TrackingDataStoreOutput struct{ *pulumi.OutputState }
 
@@ -1397,12 +1210,6 @@ func (o TrackingDataStoreOutput) ToTrackingDataStoreOutput() TrackingDataStoreOu
 
 func (o TrackingDataStoreOutput) ToTrackingDataStoreOutputWithContext(ctx context.Context) TrackingDataStoreOutput {
 	return o
-}
-
-func (o TrackingDataStoreOutput) ToOutput(ctx context.Context) pulumix.Output[TrackingDataStore] {
-	return pulumix.Output[TrackingDataStore]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The data store ingestion URI.
@@ -1439,12 +1246,6 @@ func (o TrackingDataStoreMapOutput) ToTrackingDataStoreMapOutputWithContext(ctx 
 	return o
 }
 
-func (o TrackingDataStoreMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]TrackingDataStore] {
-	return pulumix.Output[map[string]TrackingDataStore]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TrackingDataStoreMapOutput) MapIndex(k pulumi.StringInput) TrackingDataStoreOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TrackingDataStore {
 		return vs[0].(map[string]TrackingDataStore)[vs[1].(string)]
@@ -1476,12 +1277,6 @@ func (o TrackingDataStoreResponseOutput) ToTrackingDataStoreResponseOutput() Tra
 
 func (o TrackingDataStoreResponseOutput) ToTrackingDataStoreResponseOutputWithContext(ctx context.Context) TrackingDataStoreResponseOutput {
 	return o
-}
-
-func (o TrackingDataStoreResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TrackingDataStoreResponse] {
-	return pulumix.Output[TrackingDataStoreResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The data store ingestion URI.
@@ -1518,12 +1313,6 @@ func (o TrackingDataStoreResponseMapOutput) ToTrackingDataStoreResponseMapOutput
 	return o
 }
 
-func (o TrackingDataStoreResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]TrackingDataStoreResponse] {
-	return pulumix.Output[map[string]TrackingDataStoreResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TrackingDataStoreResponseMapOutput) MapIndex(k pulumi.StringInput) TrackingDataStoreResponseOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TrackingDataStoreResponse {
 		return vs[0].(map[string]TrackingDataStoreResponse)[vs[1].(string)]
@@ -1555,12 +1344,6 @@ func (o TrackingEventDefinitionResponseOutput) ToTrackingEventDefinitionResponse
 	return o
 }
 
-func (o TrackingEventDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TrackingEventDefinitionResponse] {
-	return pulumix.Output[TrackingEventDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The operation name.
 func (o TrackingEventDefinitionResponseOutput) OperationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrackingEventDefinitionResponse) *string { return v.OperationName }).(pulumi.StringPtrOutput)
@@ -1588,12 +1371,6 @@ func (o TrackingEventDefinitionResponseMapOutput) ToTrackingEventDefinitionRespo
 
 func (o TrackingEventDefinitionResponseMapOutput) ToTrackingEventDefinitionResponseMapOutputWithContext(ctx context.Context) TrackingEventDefinitionResponseMapOutput {
 	return o
-}
-
-func (o TrackingEventDefinitionResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]TrackingEventDefinitionResponse] {
-	return pulumix.Output[map[string]TrackingEventDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TrackingEventDefinitionResponseMapOutput) MapIndex(k pulumi.StringInput) TrackingEventDefinitionResponseOutput {
@@ -1627,12 +1404,6 @@ func (o TrackingProfileDefinitionResponseOutput) ToTrackingProfileDefinitionResp
 	return o
 }
 
-func (o TrackingProfileDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TrackingProfileDefinitionResponse] {
-	return pulumix.Output[TrackingProfileDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The business process reference.
 func (o TrackingProfileDefinitionResponseOutput) BusinessProcess() BusinessProcessReferenceResponsePtrOutput {
 	return o.ApplyT(func(v TrackingProfileDefinitionResponse) *BusinessProcessReferenceResponse { return v.BusinessProcess }).(BusinessProcessReferenceResponsePtrOutput)
@@ -1662,12 +1433,6 @@ func (o TrackingProfileDefinitionResponseMapOutput) ToTrackingProfileDefinitionR
 
 func (o TrackingProfileDefinitionResponseMapOutput) ToTrackingProfileDefinitionResponseMapOutputWithContext(ctx context.Context) TrackingProfileDefinitionResponseMapOutput {
 	return o
-}
-
-func (o TrackingProfileDefinitionResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]TrackingProfileDefinitionResponse] {
-	return pulumix.Output[map[string]TrackingProfileDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TrackingProfileDefinitionResponseMapOutput) MapIndex(k pulumi.StringInput) TrackingProfileDefinitionResponseOutput {

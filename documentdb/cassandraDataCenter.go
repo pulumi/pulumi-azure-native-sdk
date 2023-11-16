@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A managed Cassandra data center.
@@ -179,12 +178,6 @@ func (i *CassandraDataCenter) ToCassandraDataCenterOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(CassandraDataCenterOutput)
 }
 
-func (i *CassandraDataCenter) ToOutput(ctx context.Context) pulumix.Output[*CassandraDataCenter] {
-	return pulumix.Output[*CassandraDataCenter]{
-		OutputState: i.ToCassandraDataCenterOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CassandraDataCenterOutput struct{ *pulumi.OutputState }
 
 func (CassandraDataCenterOutput) ElementType() reflect.Type {
@@ -197,12 +190,6 @@ func (o CassandraDataCenterOutput) ToCassandraDataCenterOutput() CassandraDataCe
 
 func (o CassandraDataCenterOutput) ToCassandraDataCenterOutputWithContext(ctx context.Context) CassandraDataCenterOutput {
 	return o
-}
-
-func (o CassandraDataCenterOutput) ToOutput(ctx context.Context) pulumix.Output[*CassandraDataCenter] {
-	return pulumix.Output[*CassandraDataCenter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the database account.

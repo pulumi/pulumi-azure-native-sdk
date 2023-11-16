@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the ProactiveDetection configuration for this configuration id.
@@ -96,12 +95,6 @@ func (o LookupProactiveDetectionConfigurationResultOutput) ToLookupProactiveDete
 
 func (o LookupProactiveDetectionConfigurationResultOutput) ToLookupProactiveDetectionConfigurationResultOutputWithContext(ctx context.Context) LookupProactiveDetectionConfigurationResultOutput {
 	return o
-}
-
-func (o LookupProactiveDetectionConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProactiveDetectionConfigurationResult] {
-	return pulumix.Output[LookupProactiveDetectionConfigurationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Custom email addresses for this rule notifications

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get baseboard management controller key set of the provided cluster.
@@ -105,12 +104,6 @@ func (o LookupBmcKeySetResultOutput) ToLookupBmcKeySetResultOutput() LookupBmcKe
 
 func (o LookupBmcKeySetResultOutput) ToLookupBmcKeySetResultOutputWithContext(ctx context.Context) LookupBmcKeySetResultOutput {
 	return o
-}
-
-func (o LookupBmcKeySetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBmcKeySetResult] {
-	return pulumix.Output[LookupBmcKeySetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The object ID of Azure Active Directory group that all users in the list must be in for access to be granted. Users that are not in the group will not have access.

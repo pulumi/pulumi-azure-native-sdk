@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the cluster user credentials for the dedicated appliance.
@@ -78,12 +77,6 @@ func (o ListApplianceClusterUserCredentialResultOutput) ToListApplianceClusterUs
 
 func (o ListApplianceClusterUserCredentialResultOutput) ToListApplianceClusterUserCredentialResultOutputWithContext(ctx context.Context) ListApplianceClusterUserCredentialResultOutput {
 	return o
-}
-
-func (o ListApplianceClusterUserCredentialResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListApplianceClusterUserCredentialResult] {
-	return pulumix.Output[ListApplianceClusterUserCredentialResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Contains the REP (rendezvous endpoint) and “Listener” access token from notification service (NS).

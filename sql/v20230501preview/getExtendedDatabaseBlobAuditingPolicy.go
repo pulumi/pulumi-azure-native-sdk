@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an extended database's blob auditing policy.
@@ -176,12 +175,6 @@ func (o LookupExtendedDatabaseBlobAuditingPolicyResultOutput) ToLookupExtendedDa
 
 func (o LookupExtendedDatabaseBlobAuditingPolicyResultOutput) ToLookupExtendedDatabaseBlobAuditingPolicyResultOutputWithContext(ctx context.Context) LookupExtendedDatabaseBlobAuditingPolicyResultOutput {
 	return o
-}
-
-func (o LookupExtendedDatabaseBlobAuditingPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupExtendedDatabaseBlobAuditingPolicyResult] {
-	return pulumix.Output[LookupExtendedDatabaseBlobAuditingPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the Actions-Groups and Actions to audit.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A reference data set provides metadata about the events in an environment. Metadata in the reference data set will be joined with events as they are read from event sources. The metadata that makes up the reference data set is uploaded or modified through the Time Series Insights data plane APIs.
@@ -165,12 +164,6 @@ func (i *ReferenceDataSet) ToReferenceDataSetOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ReferenceDataSetOutput)
 }
 
-func (i *ReferenceDataSet) ToOutput(ctx context.Context) pulumix.Output[*ReferenceDataSet] {
-	return pulumix.Output[*ReferenceDataSet]{
-		OutputState: i.ToReferenceDataSetOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReferenceDataSetOutput struct{ *pulumi.OutputState }
 
 func (ReferenceDataSetOutput) ElementType() reflect.Type {
@@ -183,12 +176,6 @@ func (o ReferenceDataSetOutput) ToReferenceDataSetOutput() ReferenceDataSetOutpu
 
 func (o ReferenceDataSetOutput) ToReferenceDataSetOutputWithContext(ctx context.Context) ReferenceDataSetOutput {
 	return o
-}
-
-func (o ReferenceDataSetOutput) ToOutput(ctx context.Context) pulumix.Output[*ReferenceDataSet] {
-	return pulumix.Output[*ReferenceDataSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time the resource was created.

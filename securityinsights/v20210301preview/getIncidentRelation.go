@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an incident relation.
@@ -101,12 +100,6 @@ func (o LookupIncidentRelationResultOutput) ToLookupIncidentRelationResultOutput
 
 func (o LookupIncidentRelationResultOutput) ToLookupIncidentRelationResultOutputWithContext(ctx context.Context) LookupIncidentRelationResultOutput {
 	return o
-}
-
-func (o LookupIncidentRelationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIncidentRelationResult] {
-	return pulumix.Output[LookupIncidentRelationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Etag of the azure resource

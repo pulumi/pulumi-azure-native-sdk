@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -37,12 +36,6 @@ func (o ApiEndpointResponseOutput) ToApiEndpointResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o ApiEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ApiEndpointResponse] {
-	return pulumix.Output[ApiEndpointResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Media Services REST endpoint.
 func (o ApiEndpointResponseOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiEndpointResponse) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
@@ -65,12 +58,6 @@ func (o ApiEndpointResponseArrayOutput) ToApiEndpointResponseArrayOutput() ApiEn
 
 func (o ApiEndpointResponseArrayOutput) ToApiEndpointResponseArrayOutputWithContext(ctx context.Context) ApiEndpointResponseArrayOutput {
 	return o
-}
-
-func (o ApiEndpointResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ApiEndpointResponse] {
-	return pulumix.Output[[]ApiEndpointResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiEndpointResponseArrayOutput) Index(i pulumi.IntInput) ApiEndpointResponseOutput {
@@ -118,12 +105,6 @@ func (i StorageAccountArgs) ToStorageAccountOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(StorageAccountOutput)
 }
 
-func (i StorageAccountArgs) ToOutput(ctx context.Context) pulumix.Output[StorageAccount] {
-	return pulumix.Output[StorageAccount]{
-		OutputState: i.ToStorageAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 // StorageAccountArrayInput is an input type that accepts StorageAccountArray and StorageAccountArrayOutput values.
 // You can construct a concrete instance of `StorageAccountArrayInput` via:
 //
@@ -149,12 +130,6 @@ func (i StorageAccountArray) ToStorageAccountArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(StorageAccountArrayOutput)
 }
 
-func (i StorageAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]StorageAccount] {
-	return pulumix.Output[[]StorageAccount]{
-		OutputState: i.ToStorageAccountArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The properties of a storage account associated with this resource.
 type StorageAccountOutput struct{ *pulumi.OutputState }
 
@@ -168,12 +143,6 @@ func (o StorageAccountOutput) ToStorageAccountOutput() StorageAccountOutput {
 
 func (o StorageAccountOutput) ToStorageAccountOutputWithContext(ctx context.Context) StorageAccountOutput {
 	return o
-}
-
-func (o StorageAccountOutput) ToOutput(ctx context.Context) pulumix.Output[StorageAccount] {
-	return pulumix.Output[StorageAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the storage account resource. Media Services relies on tables and queues as well as blobs, so the primary storage account must be a Standard Storage account (either Microsoft.ClassicStorage or Microsoft.Storage). Blob only storage accounts can be added as secondary storage accounts (isPrimary false).
@@ -198,12 +167,6 @@ func (o StorageAccountArrayOutput) ToStorageAccountArrayOutput() StorageAccountA
 
 func (o StorageAccountArrayOutput) ToStorageAccountArrayOutputWithContext(ctx context.Context) StorageAccountArrayOutput {
 	return o
-}
-
-func (o StorageAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StorageAccount] {
-	return pulumix.Output[[]StorageAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StorageAccountArrayOutput) Index(i pulumi.IntInput) StorageAccountOutput {
@@ -235,12 +198,6 @@ func (o StorageAccountResponseOutput) ToStorageAccountResponseOutputWithContext(
 	return o
 }
 
-func (o StorageAccountResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageAccountResponse] {
-	return pulumix.Output[StorageAccountResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The id of the storage account resource. Media Services relies on tables and queues as well as blobs, so the primary storage account must be a Standard Storage account (either Microsoft.ClassicStorage or Microsoft.Storage). Blob only storage accounts can be added as secondary storage accounts (isPrimary false).
 func (o StorageAccountResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageAccountResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -263,12 +220,6 @@ func (o StorageAccountResponseArrayOutput) ToStorageAccountResponseArrayOutput()
 
 func (o StorageAccountResponseArrayOutput) ToStorageAccountResponseArrayOutputWithContext(ctx context.Context) StorageAccountResponseArrayOutput {
 	return o
-}
-
-func (o StorageAccountResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]StorageAccountResponse] {
-	return pulumix.Output[[]StorageAccountResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StorageAccountResponseArrayOutput) Index(i pulumi.IntInput) StorageAccountResponseOutput {

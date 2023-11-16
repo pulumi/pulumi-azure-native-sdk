@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.
@@ -88,12 +87,6 @@ func (o LookupRuleSetResultOutput) ToLookupRuleSetResultOutput() LookupRuleSetRe
 
 func (o LookupRuleSetResultOutput) ToLookupRuleSetResultOutputWithContext(ctx context.Context) LookupRuleSetResultOutput {
 	return o
-}
-
-func (o LookupRuleSetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRuleSetResult] {
-	return pulumix.Output[LookupRuleSetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupRuleSetResultOutput) DeploymentStatus() pulumi.StringOutput {

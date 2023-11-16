@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the extended properties of a product.
@@ -97,12 +96,6 @@ func (o ListProductDetailsResultOutput) ToListProductDetailsResultOutput() ListP
 
 func (o ListProductDetailsResultOutput) ToListProductDetailsResultOutputWithContext(ctx context.Context) ListProductDetailsResultOutput {
 	return o
-}
-
-func (o ListProductDetailsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListProductDetailsResult] {
-	return pulumix.Output[ListProductDetailsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies kind of compute role included in the package.

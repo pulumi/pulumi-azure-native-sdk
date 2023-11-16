@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a specific security standard for the requested scope
@@ -99,12 +98,6 @@ func (o LookupStandardResultOutput) ToLookupStandardResultOutput() LookupStandar
 
 func (o LookupStandardResultOutput) ToLookupStandardResultOutputWithContext(ctx context.Context) LookupStandardResultOutput {
 	return o
-}
-
-func (o LookupStandardResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStandardResult] {
-	return pulumix.Output[LookupStandardResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // category of the standard provided

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the report for a resource group under a subscription by report name.
@@ -88,12 +87,6 @@ func (o LookupReportByResourceGroupNameResultOutput) ToLookupReportByResourceGro
 
 func (o LookupReportByResourceGroupNameResultOutput) ToLookupReportByResourceGroupNameResultOutputWithContext(ctx context.Context) LookupReportByResourceGroupNameResultOutput {
 	return o
-}
-
-func (o LookupReportByResourceGroupNameResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReportByResourceGroupNameResult] {
-	return pulumix.Output[LookupReportByResourceGroupNameResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Has definition for the report.

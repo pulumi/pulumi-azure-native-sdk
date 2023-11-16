@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i ADLSGen2StorageAccountPathArgs) ToADLSGen2StorageAccountPathOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ADLSGen2StorageAccountPathOutput)
 }
 
-func (i ADLSGen2StorageAccountPathArgs) ToOutput(ctx context.Context) pulumix.Output[ADLSGen2StorageAccountPath] {
-	return pulumix.Output[ADLSGen2StorageAccountPath]{
-		OutputState: i.ToADLSGen2StorageAccountPathOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ADLSGen2StorageAccountPathArrayInput is an input type that accepts ADLSGen2StorageAccountPathArray and ADLSGen2StorageAccountPathArrayOutput values.
 // You can construct a concrete instance of `ADLSGen2StorageAccountPathArrayInput` via:
 //
@@ -88,12 +81,6 @@ func (i ADLSGen2StorageAccountPathArray) ToADLSGen2StorageAccountPathArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ADLSGen2StorageAccountPathArrayOutput)
 }
 
-func (i ADLSGen2StorageAccountPathArray) ToOutput(ctx context.Context) pulumix.Output[[]ADLSGen2StorageAccountPath] {
-	return pulumix.Output[[]ADLSGen2StorageAccountPath]{
-		OutputState: i.ToADLSGen2StorageAccountPathArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines a single ADLS Gen2 storage account path.
 type ADLSGen2StorageAccountPathOutput struct{ *pulumi.OutputState }
 
@@ -107,12 +94,6 @@ func (o ADLSGen2StorageAccountPathOutput) ToADLSGen2StorageAccountPathOutput() A
 
 func (o ADLSGen2StorageAccountPathOutput) ToADLSGen2StorageAccountPathOutputWithContext(ctx context.Context) ADLSGen2StorageAccountPathOutput {
 	return o
-}
-
-func (o ADLSGen2StorageAccountPathOutput) ToOutput(ctx context.Context) pulumix.Output[ADLSGen2StorageAccountPath] {
-	return pulumix.Output[ADLSGen2StorageAccountPath]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the path on the consumer side where the dataset is to be mapped.
@@ -142,12 +123,6 @@ func (o ADLSGen2StorageAccountPathArrayOutput) ToADLSGen2StorageAccountPathArray
 
 func (o ADLSGen2StorageAccountPathArrayOutput) ToADLSGen2StorageAccountPathArrayOutputWithContext(ctx context.Context) ADLSGen2StorageAccountPathArrayOutput {
 	return o
-}
-
-func (o ADLSGen2StorageAccountPathArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ADLSGen2StorageAccountPath] {
-	return pulumix.Output[[]ADLSGen2StorageAccountPath]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ADLSGen2StorageAccountPathArrayOutput) Index(i pulumi.IntInput) ADLSGen2StorageAccountPathOutput {
@@ -181,12 +156,6 @@ func (o ADLSGen2StorageAccountPathResponseOutput) ToADLSGen2StorageAccountPathRe
 	return o
 }
 
-func (o ADLSGen2StorageAccountPathResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ADLSGen2StorageAccountPathResponse] {
-	return pulumix.Output[ADLSGen2StorageAccountPathResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the path on the consumer side where the dataset is to be mapped.
 func (o ADLSGen2StorageAccountPathResponseOutput) ConsumerPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ADLSGen2StorageAccountPathResponse) *string { return v.ConsumerPath }).(pulumi.StringPtrOutput)
@@ -214,12 +183,6 @@ func (o ADLSGen2StorageAccountPathResponseArrayOutput) ToADLSGen2StorageAccountP
 
 func (o ADLSGen2StorageAccountPathResponseArrayOutput) ToADLSGen2StorageAccountPathResponseArrayOutputWithContext(ctx context.Context) ADLSGen2StorageAccountPathResponseArrayOutput {
 	return o
-}
-
-func (o ADLSGen2StorageAccountPathResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ADLSGen2StorageAccountPathResponse] {
-	return pulumix.Output[[]ADLSGen2StorageAccountPathResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ADLSGen2StorageAccountPathResponseArrayOutput) Index(i pulumi.IntInput) ADLSGen2StorageAccountPathResponseOutput {
@@ -271,12 +234,6 @@ func (i BlobStorageAccountPathArgs) ToBlobStorageAccountPathOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(BlobStorageAccountPathOutput)
 }
 
-func (i BlobStorageAccountPathArgs) ToOutput(ctx context.Context) pulumix.Output[BlobStorageAccountPath] {
-	return pulumix.Output[BlobStorageAccountPath]{
-		OutputState: i.ToBlobStorageAccountPathOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BlobStorageAccountPathArrayInput is an input type that accepts BlobStorageAccountPathArray and BlobStorageAccountPathArrayOutput values.
 // You can construct a concrete instance of `BlobStorageAccountPathArrayInput` via:
 //
@@ -302,12 +259,6 @@ func (i BlobStorageAccountPathArray) ToBlobStorageAccountPathArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(BlobStorageAccountPathArrayOutput)
 }
 
-func (i BlobStorageAccountPathArray) ToOutput(ctx context.Context) pulumix.Output[[]BlobStorageAccountPath] {
-	return pulumix.Output[[]BlobStorageAccountPath]{
-		OutputState: i.ToBlobStorageAccountPathArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines a single blob storage account path.
 type BlobStorageAccountPathOutput struct{ *pulumi.OutputState }
 
@@ -321,12 +272,6 @@ func (o BlobStorageAccountPathOutput) ToBlobStorageAccountPathOutput() BlobStora
 
 func (o BlobStorageAccountPathOutput) ToBlobStorageAccountPathOutputWithContext(ctx context.Context) BlobStorageAccountPathOutput {
 	return o
-}
-
-func (o BlobStorageAccountPathOutput) ToOutput(ctx context.Context) pulumix.Output[BlobStorageAccountPath] {
-	return pulumix.Output[BlobStorageAccountPath]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the path on the consumer side where the dataset is to be mapped.
@@ -356,12 +301,6 @@ func (o BlobStorageAccountPathArrayOutput) ToBlobStorageAccountPathArrayOutput()
 
 func (o BlobStorageAccountPathArrayOutput) ToBlobStorageAccountPathArrayOutputWithContext(ctx context.Context) BlobStorageAccountPathArrayOutput {
 	return o
-}
-
-func (o BlobStorageAccountPathArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BlobStorageAccountPath] {
-	return pulumix.Output[[]BlobStorageAccountPath]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlobStorageAccountPathArrayOutput) Index(i pulumi.IntInput) BlobStorageAccountPathOutput {
@@ -395,12 +334,6 @@ func (o BlobStorageAccountPathResponseOutput) ToBlobStorageAccountPathResponseOu
 	return o
 }
 
-func (o BlobStorageAccountPathResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BlobStorageAccountPathResponse] {
-	return pulumix.Output[BlobStorageAccountPathResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Gets or sets the path on the consumer side where the dataset is to be mapped.
 func (o BlobStorageAccountPathResponseOutput) ConsumerPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlobStorageAccountPathResponse) *string { return v.ConsumerPath }).(pulumi.StringPtrOutput)
@@ -428,12 +361,6 @@ func (o BlobStorageAccountPathResponseArrayOutput) ToBlobStorageAccountPathRespo
 
 func (o BlobStorageAccountPathResponseArrayOutput) ToBlobStorageAccountPathResponseArrayOutputWithContext(ctx context.Context) BlobStorageAccountPathResponseArrayOutput {
 	return o
-}
-
-func (o BlobStorageAccountPathResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BlobStorageAccountPathResponse] {
-	return pulumix.Output[[]BlobStorageAccountPathResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BlobStorageAccountPathResponseArrayOutput) Index(i pulumi.IntInput) BlobStorageAccountPathResponseOutput {
@@ -471,12 +398,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

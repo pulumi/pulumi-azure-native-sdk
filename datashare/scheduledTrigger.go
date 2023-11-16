@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A type of trigger based on schedule
@@ -183,12 +182,6 @@ func (i *ScheduledTrigger) ToScheduledTriggerOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduledTriggerOutput)
 }
 
-func (i *ScheduledTrigger) ToOutput(ctx context.Context) pulumix.Output[*ScheduledTrigger] {
-	return pulumix.Output[*ScheduledTrigger]{
-		OutputState: i.ToScheduledTriggerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScheduledTriggerOutput struct{ *pulumi.OutputState }
 
 func (ScheduledTriggerOutput) ElementType() reflect.Type {
@@ -201,12 +194,6 @@ func (o ScheduledTriggerOutput) ToScheduledTriggerOutput() ScheduledTriggerOutpu
 
 func (o ScheduledTriggerOutput) ToScheduledTriggerOutputWithContext(ctx context.Context) ScheduledTriggerOutput {
 	return o
-}
-
-func (o ScheduledTriggerOutput) ToOutput(ctx context.Context) pulumix.Output[*ScheduledTrigger] {
-	return pulumix.Output[*ScheduledTrigger]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time at which the trigger was created.

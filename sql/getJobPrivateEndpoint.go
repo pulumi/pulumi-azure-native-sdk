@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a private endpoint.
@@ -90,12 +89,6 @@ func (o LookupJobPrivateEndpointResultOutput) ToLookupJobPrivateEndpointResultOu
 
 func (o LookupJobPrivateEndpointResultOutput) ToLookupJobPrivateEndpointResultOutputWithContext(ctx context.Context) LookupJobPrivateEndpointResultOutput {
 	return o
-}
-
-func (o LookupJobPrivateEndpointResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupJobPrivateEndpointResult] {
-	return pulumix.Output[LookupJobPrivateEndpointResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource ID.

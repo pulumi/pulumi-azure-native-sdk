@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns details of the API version.
@@ -96,12 +95,6 @@ func (o LookupApiVersionResultOutput) ToLookupApiVersionResultOutput() LookupApi
 
 func (o LookupApiVersionResultOutput) ToLookupApiVersionResultOutputWithContext(ctx context.Context) LookupApiVersionResultOutput {
 	return o
-}
-
-func (o LookupApiVersionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApiVersionResult] {
-	return pulumix.Output[LookupApiVersionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

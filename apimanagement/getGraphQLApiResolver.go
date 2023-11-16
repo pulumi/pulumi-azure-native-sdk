@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the GraphQL API Resolver specified by its identifier.
@@ -94,12 +93,6 @@ func (o LookupGraphQLApiResolverResultOutput) ToLookupGraphQLApiResolverResultOu
 
 func (o LookupGraphQLApiResolverResultOutput) ToLookupGraphQLApiResolverResultOutputWithContext(ctx context.Context) LookupGraphQLApiResolverResultOutput {
 	return o
-}
-
-func (o LookupGraphQLApiResolverResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGraphQLApiResolverResult] {
-	return pulumix.Output[LookupGraphQLApiResolverResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the resolver. May include HTML formatting tags.

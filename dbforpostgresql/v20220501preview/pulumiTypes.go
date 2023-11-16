@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i AdminCredentialsArgs) ToAdminCredentialsOutput() AdminCredentialsOutput 
 
 func (i AdminCredentialsArgs) ToAdminCredentialsOutputWithContext(ctx context.Context) AdminCredentialsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AdminCredentialsOutput)
-}
-
-func (i AdminCredentialsArgs) ToOutput(ctx context.Context) pulumix.Output[AdminCredentials] {
-	return pulumix.Output[AdminCredentials]{
-		OutputState: i.ToAdminCredentialsOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i AdminCredentialsArgs) ToAdminCredentialsPtrOutput() AdminCredentialsPtrOutput {
@@ -96,12 +89,6 @@ func (i *adminCredentialsPtrType) ToAdminCredentialsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AdminCredentialsPtrOutput)
 }
 
-func (i *adminCredentialsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AdminCredentials] {
-	return pulumix.Output[*AdminCredentials]{
-		OutputState: i.ToAdminCredentialsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Server admin credentials.
 type AdminCredentialsOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o AdminCredentialsOutput) ToAdminCredentialsPtrOutputWithContext(ctx conte
 	}).(AdminCredentialsPtrOutput)
 }
 
-func (o AdminCredentialsOutput) ToOutput(ctx context.Context) pulumix.Output[AdminCredentials] {
-	return pulumix.Output[AdminCredentials]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AdminCredentialsOutput) SourceServerPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v AdminCredentials) string { return v.SourceServerPassword }).(pulumi.StringOutput)
 }
@@ -153,12 +134,6 @@ func (o AdminCredentialsPtrOutput) ToAdminCredentialsPtrOutput() AdminCredential
 
 func (o AdminCredentialsPtrOutput) ToAdminCredentialsPtrOutputWithContext(ctx context.Context) AdminCredentialsPtrOutput {
 	return o
-}
-
-func (o AdminCredentialsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AdminCredentials] {
-	return pulumix.Output[*AdminCredentials]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AdminCredentialsPtrOutput) Elem() AdminCredentialsOutput {
@@ -213,12 +188,6 @@ func (o DBServerMetadataResponseOutput) ToDBServerMetadataResponseOutputWithCont
 	return o
 }
 
-func (o DBServerMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DBServerMetadataResponse] {
-	return pulumix.Output[DBServerMetadataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DBServerMetadataResponseOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DBServerMetadataResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -271,12 +240,6 @@ func (i MigrationSecretParametersArgs) ToMigrationSecretParametersOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(MigrationSecretParametersOutput)
 }
 
-func (i MigrationSecretParametersArgs) ToOutput(ctx context.Context) pulumix.Output[MigrationSecretParameters] {
-	return pulumix.Output[MigrationSecretParameters]{
-		OutputState: i.ToMigrationSecretParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MigrationSecretParametersArgs) ToMigrationSecretParametersPtrOutput() MigrationSecretParametersPtrOutput {
 	return i.ToMigrationSecretParametersPtrOutputWithContext(context.Background())
 }
@@ -318,12 +281,6 @@ func (i *migrationSecretParametersPtrType) ToMigrationSecretParametersPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(MigrationSecretParametersPtrOutput)
 }
 
-func (i *migrationSecretParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*MigrationSecretParameters] {
-	return pulumix.Output[*MigrationSecretParameters]{
-		OutputState: i.ToMigrationSecretParametersPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Migration secret parameters.
 type MigrationSecretParametersOutput struct{ *pulumi.OutputState }
 
@@ -349,12 +306,6 @@ func (o MigrationSecretParametersOutput) ToMigrationSecretParametersPtrOutputWit
 	}).(MigrationSecretParametersPtrOutput)
 }
 
-func (o MigrationSecretParametersOutput) ToOutput(ctx context.Context) pulumix.Output[MigrationSecretParameters] {
-	return pulumix.Output[MigrationSecretParameters]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Server admin credentials.
 func (o MigrationSecretParametersOutput) AdminCredentials() AdminCredentialsOutput {
 	return o.ApplyT(func(v MigrationSecretParameters) AdminCredentials { return v.AdminCredentials }).(AdminCredentialsOutput)
@@ -372,12 +323,6 @@ func (o MigrationSecretParametersPtrOutput) ToMigrationSecretParametersPtrOutput
 
 func (o MigrationSecretParametersPtrOutput) ToMigrationSecretParametersPtrOutputWithContext(ctx context.Context) MigrationSecretParametersPtrOutput {
 	return o
-}
-
-func (o MigrationSecretParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MigrationSecretParameters] {
-	return pulumix.Output[*MigrationSecretParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MigrationSecretParametersPtrOutput) Elem() MigrationSecretParametersOutput {
@@ -424,12 +369,6 @@ func (o MigrationStatusResponseOutput) ToMigrationStatusResponseOutputWithContex
 	return o
 }
 
-func (o MigrationStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MigrationStatusResponse] {
-	return pulumix.Output[MigrationStatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Migration sub state details.
 func (o MigrationStatusResponseOutput) CurrentSubStateDetails() MigrationSubStateDetailsResponseOutput {
 	return o.ApplyT(func(v MigrationStatusResponse) MigrationSubStateDetailsResponse { return v.CurrentSubStateDetails }).(MigrationSubStateDetailsResponseOutput)
@@ -465,12 +404,6 @@ func (o MigrationSubStateDetailsResponseOutput) ToMigrationSubStateDetailsRespon
 	return o
 }
 
-func (o MigrationSubStateDetailsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MigrationSubStateDetailsResponse] {
-	return pulumix.Output[MigrationSubStateDetailsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Migration sub state.
 func (o MigrationSubStateDetailsResponseOutput) CurrentSubState() pulumi.StringOutput {
 	return o.ApplyT(func(v MigrationSubStateDetailsResponse) string { return v.CurrentSubState }).(pulumi.StringOutput)
@@ -499,12 +432,6 @@ func (o ServerSkuResponseOutput) ToServerSkuResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o ServerSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServerSkuResponse] {
-	return pulumix.Output[ServerSkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the sku, typically, tier + family + cores, e.g. Standard_D4s_v3.
 func (o ServerSkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerSkuResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -527,12 +454,6 @@ func (o ServerSkuResponsePtrOutput) ToServerSkuResponsePtrOutput() ServerSkuResp
 
 func (o ServerSkuResponsePtrOutput) ToServerSkuResponsePtrOutputWithContext(ctx context.Context) ServerSkuResponsePtrOutput {
 	return o
-}
-
-func (o ServerSkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerSkuResponse] {
-	return pulumix.Output[*ServerSkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerSkuResponsePtrOutput) Elem() ServerSkuResponseOutput {
@@ -594,12 +515,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

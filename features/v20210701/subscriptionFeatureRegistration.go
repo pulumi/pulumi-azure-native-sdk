@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Subscription feature registration details
@@ -117,12 +116,6 @@ func (i *SubscriptionFeatureRegistration) ToSubscriptionFeatureRegistrationOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionFeatureRegistrationOutput)
 }
 
-func (i *SubscriptionFeatureRegistration) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionFeatureRegistration] {
-	return pulumix.Output[*SubscriptionFeatureRegistration]{
-		OutputState: i.ToSubscriptionFeatureRegistrationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SubscriptionFeatureRegistrationOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionFeatureRegistrationOutput) ElementType() reflect.Type {
@@ -135,12 +128,6 @@ func (o SubscriptionFeatureRegistrationOutput) ToSubscriptionFeatureRegistration
 
 func (o SubscriptionFeatureRegistrationOutput) ToSubscriptionFeatureRegistrationOutputWithContext(ctx context.Context) SubscriptionFeatureRegistrationOutput {
 	return o
-}
-
-func (o SubscriptionFeatureRegistrationOutput) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionFeatureRegistration] {
-	return pulumix.Output[*SubscriptionFeatureRegistration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Azure resource name.

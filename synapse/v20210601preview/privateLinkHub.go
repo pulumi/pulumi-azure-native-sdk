@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A privateLinkHub
@@ -147,12 +146,6 @@ func (i *PrivateLinkHub) ToPrivateLinkHubOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkHubOutput)
 }
 
-func (i *PrivateLinkHub) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkHub] {
-	return pulumix.Output[*PrivateLinkHub]{
-		OutputState: i.ToPrivateLinkHubOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateLinkHubOutput struct{ *pulumi.OutputState }
 
 func (PrivateLinkHubOutput) ElementType() reflect.Type {
@@ -165,12 +158,6 @@ func (o PrivateLinkHubOutput) ToPrivateLinkHubOutput() PrivateLinkHubOutput {
 
 func (o PrivateLinkHubOutput) ToPrivateLinkHubOutputWithContext(ctx context.Context) PrivateLinkHubOutput {
 	return o
-}
-
-func (o PrivateLinkHubOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkHub] {
-	return pulumix.Output[*PrivateLinkHub]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

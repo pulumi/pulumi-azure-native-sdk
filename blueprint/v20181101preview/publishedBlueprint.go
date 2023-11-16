@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a published blueprint.
@@ -156,12 +155,6 @@ func (i *PublishedBlueprint) ToPublishedBlueprintOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(PublishedBlueprintOutput)
 }
 
-func (i *PublishedBlueprint) ToOutput(ctx context.Context) pulumix.Output[*PublishedBlueprint] {
-	return pulumix.Output[*PublishedBlueprint]{
-		OutputState: i.ToPublishedBlueprintOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PublishedBlueprintOutput struct{ *pulumi.OutputState }
 
 func (PublishedBlueprintOutput) ElementType() reflect.Type {
@@ -174,12 +167,6 @@ func (o PublishedBlueprintOutput) ToPublishedBlueprintOutput() PublishedBlueprin
 
 func (o PublishedBlueprintOutput) ToPublishedBlueprintOutputWithContext(ctx context.Context) PublishedBlueprintOutput {
 	return o
-}
-
-func (o PublishedBlueprintOutput) ToOutput(ctx context.Context) pulumix.Output[*PublishedBlueprint] {
-	return pulumix.Output[*PublishedBlueprint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the published blueprint definition.

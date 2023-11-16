@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Action to get Maintenance Window Status of the Service Fabric Managed Clusters.
@@ -88,12 +87,6 @@ func (o GetmanagedMaintenanceWindowStatusResultOutput) ToGetmanagedMaintenanceWi
 
 func (o GetmanagedMaintenanceWindowStatusResultOutput) ToGetmanagedMaintenanceWindowStatusResultOutputWithContext(ctx context.Context) GetmanagedMaintenanceWindowStatusResultOutput {
 	return o
-}
-
-func (o GetmanagedMaintenanceWindowStatusResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetmanagedMaintenanceWindowStatusResult] {
-	return pulumix.Output[GetmanagedMaintenanceWindowStatusResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If updates can be applied.

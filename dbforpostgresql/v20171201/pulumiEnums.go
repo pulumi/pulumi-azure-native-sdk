@@ -139,12 +139,6 @@ func (o ServerSecurityAlertPolicyStateEnumOutput) ToServerSecurityAlertPolicySta
 	}).(ServerSecurityAlertPolicyStateEnumPtrOutput)
 }
 
-func (o ServerSecurityAlertPolicyStateEnumOutput) ToOutput(ctx context.Context) pulumix.Output[ServerSecurityAlertPolicyStateEnum] {
-	return pulumix.Output[ServerSecurityAlertPolicyStateEnum]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ServerSecurityAlertPolicyStateEnumOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -178,12 +172,6 @@ func (o ServerSecurityAlertPolicyStateEnumPtrOutput) ToServerSecurityAlertPolicy
 
 func (o ServerSecurityAlertPolicyStateEnumPtrOutput) ToServerSecurityAlertPolicyStateEnumPtrOutputWithContext(ctx context.Context) ServerSecurityAlertPolicyStateEnumPtrOutput {
 	return o
-}
-
-func (o ServerSecurityAlertPolicyStateEnumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerSecurityAlertPolicyStateEnum] {
-	return pulumix.Output[*ServerSecurityAlertPolicyStateEnum]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServerSecurityAlertPolicyStateEnumPtrOutput) Elem() ServerSecurityAlertPolicyStateEnumOutput {

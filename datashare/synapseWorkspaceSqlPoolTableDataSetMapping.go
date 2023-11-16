@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Synapse Workspace Sql Pool Table data set mapping
@@ -173,12 +172,6 @@ func (i *SynapseWorkspaceSqlPoolTableDataSetMapping) ToSynapseWorkspaceSqlPoolTa
 	return pulumi.ToOutputWithContext(ctx, i).(SynapseWorkspaceSqlPoolTableDataSetMappingOutput)
 }
 
-func (i *SynapseWorkspaceSqlPoolTableDataSetMapping) ToOutput(ctx context.Context) pulumix.Output[*SynapseWorkspaceSqlPoolTableDataSetMapping] {
-	return pulumix.Output[*SynapseWorkspaceSqlPoolTableDataSetMapping]{
-		OutputState: i.ToSynapseWorkspaceSqlPoolTableDataSetMappingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SynapseWorkspaceSqlPoolTableDataSetMappingOutput struct{ *pulumi.OutputState }
 
 func (SynapseWorkspaceSqlPoolTableDataSetMappingOutput) ElementType() reflect.Type {
@@ -191,12 +184,6 @@ func (o SynapseWorkspaceSqlPoolTableDataSetMappingOutput) ToSynapseWorkspaceSqlP
 
 func (o SynapseWorkspaceSqlPoolTableDataSetMappingOutput) ToSynapseWorkspaceSqlPoolTableDataSetMappingOutputWithContext(ctx context.Context) SynapseWorkspaceSqlPoolTableDataSetMappingOutput {
 	return o
-}
-
-func (o SynapseWorkspaceSqlPoolTableDataSetMappingOutput) ToOutput(ctx context.Context) pulumix.Output[*SynapseWorkspaceSqlPoolTableDataSetMapping] {
-	return pulumix.Output[*SynapseWorkspaceSqlPoolTableDataSetMapping]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the source data set.

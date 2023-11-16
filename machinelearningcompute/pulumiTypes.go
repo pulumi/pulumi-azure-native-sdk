@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -107,12 +106,6 @@ func (i AcsClusterPropertiesArgs) ToAcsClusterPropertiesOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AcsClusterPropertiesOutput)
 }
 
-func (i AcsClusterPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[AcsClusterProperties] {
-	return pulumix.Output[AcsClusterProperties]{
-		OutputState: i.ToAcsClusterPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AcsClusterPropertiesArgs) ToAcsClusterPropertiesPtrOutput() AcsClusterPropertiesPtrOutput {
 	return i.ToAcsClusterPropertiesPtrOutputWithContext(context.Background())
 }
@@ -154,12 +147,6 @@ func (i *acsClusterPropertiesPtrType) ToAcsClusterPropertiesPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(AcsClusterPropertiesPtrOutput)
 }
 
-func (i *acsClusterPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*AcsClusterProperties] {
-	return pulumix.Output[*AcsClusterProperties]{
-		OutputState: i.ToAcsClusterPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Information about the container service backing the cluster
 type AcsClusterPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -183,12 +170,6 @@ func (o AcsClusterPropertiesOutput) ToAcsClusterPropertiesPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AcsClusterProperties) *AcsClusterProperties {
 		return &v
 	}).(AcsClusterPropertiesPtrOutput)
-}
-
-func (o AcsClusterPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[AcsClusterProperties] {
-	return pulumix.Output[AcsClusterProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of agent nodes in the Container Service. This can be changed to scale the cluster.
@@ -233,12 +214,6 @@ func (o AcsClusterPropertiesPtrOutput) ToAcsClusterPropertiesPtrOutput() AcsClus
 
 func (o AcsClusterPropertiesPtrOutput) ToAcsClusterPropertiesPtrOutputWithContext(ctx context.Context) AcsClusterPropertiesPtrOutput {
 	return o
-}
-
-func (o AcsClusterPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AcsClusterProperties] {
-	return pulumix.Output[*AcsClusterProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AcsClusterPropertiesPtrOutput) Elem() AcsClusterPropertiesOutput {
@@ -365,12 +340,6 @@ func (o AcsClusterPropertiesResponseOutput) ToAcsClusterPropertiesResponseOutput
 	return o
 }
 
-func (o AcsClusterPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AcsClusterPropertiesResponse] {
-	return pulumix.Output[AcsClusterPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of agent nodes in the Container Service. This can be changed to scale the cluster.
 func (o AcsClusterPropertiesResponseOutput) AgentCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AcsClusterPropertiesResponse) *int { return v.AgentCount }).(pulumi.IntPtrOutput)
@@ -420,12 +389,6 @@ func (o AcsClusterPropertiesResponsePtrOutput) ToAcsClusterPropertiesResponsePtr
 
 func (o AcsClusterPropertiesResponsePtrOutput) ToAcsClusterPropertiesResponsePtrOutputWithContext(ctx context.Context) AcsClusterPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o AcsClusterPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AcsClusterPropertiesResponse] {
-	return pulumix.Output[*AcsClusterPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AcsClusterPropertiesResponsePtrOutput) Elem() AcsClusterPropertiesResponseOutput {
@@ -531,12 +494,6 @@ func (o AppInsightsCredentialsResponseOutput) ToAppInsightsCredentialsResponseOu
 	return o
 }
 
-func (o AppInsightsCredentialsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AppInsightsCredentialsResponse] {
-	return pulumix.Output[AppInsightsCredentialsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The AppInsights application ID.
 func (o AppInsightsCredentialsResponseOutput) AppId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppInsightsCredentialsResponse) *string { return v.AppId }).(pulumi.StringPtrOutput)
@@ -559,12 +516,6 @@ func (o AppInsightsCredentialsResponsePtrOutput) ToAppInsightsCredentialsRespons
 
 func (o AppInsightsCredentialsResponsePtrOutput) ToAppInsightsCredentialsResponsePtrOutputWithContext(ctx context.Context) AppInsightsCredentialsResponsePtrOutput {
 	return o
-}
-
-func (o AppInsightsCredentialsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppInsightsCredentialsResponse] {
-	return pulumix.Output[*AppInsightsCredentialsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppInsightsCredentialsResponsePtrOutput) Elem() AppInsightsCredentialsResponseOutput {
@@ -632,12 +583,6 @@ func (i AppInsightsPropertiesArgs) ToAppInsightsPropertiesOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(AppInsightsPropertiesOutput)
 }
 
-func (i AppInsightsPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[AppInsightsProperties] {
-	return pulumix.Output[AppInsightsProperties]{
-		OutputState: i.ToAppInsightsPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AppInsightsPropertiesArgs) ToAppInsightsPropertiesPtrOutput() AppInsightsPropertiesPtrOutput {
 	return i.ToAppInsightsPropertiesPtrOutputWithContext(context.Background())
 }
@@ -679,12 +624,6 @@ func (i *appInsightsPropertiesPtrType) ToAppInsightsPropertiesPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(AppInsightsPropertiesPtrOutput)
 }
 
-func (i *appInsightsPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*AppInsightsProperties] {
-	return pulumix.Output[*AppInsightsProperties]{
-		OutputState: i.ToAppInsightsPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Properties of App Insights.
 type AppInsightsPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -710,12 +649,6 @@ func (o AppInsightsPropertiesOutput) ToAppInsightsPropertiesPtrOutputWithContext
 	}).(AppInsightsPropertiesPtrOutput)
 }
 
-func (o AppInsightsPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[AppInsightsProperties] {
-	return pulumix.Output[AppInsightsProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ARM resource ID of the App Insights.
 func (o AppInsightsPropertiesOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppInsightsProperties) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
@@ -733,12 +666,6 @@ func (o AppInsightsPropertiesPtrOutput) ToAppInsightsPropertiesPtrOutput() AppIn
 
 func (o AppInsightsPropertiesPtrOutput) ToAppInsightsPropertiesPtrOutputWithContext(ctx context.Context) AppInsightsPropertiesPtrOutput {
 	return o
-}
-
-func (o AppInsightsPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppInsightsProperties] {
-	return pulumix.Output[*AppInsightsProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppInsightsPropertiesPtrOutput) Elem() AppInsightsPropertiesOutput {
@@ -782,12 +709,6 @@ func (o AppInsightsPropertiesResponseOutput) ToAppInsightsPropertiesResponseOutp
 	return o
 }
 
-func (o AppInsightsPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AppInsightsPropertiesResponse] {
-	return pulumix.Output[AppInsightsPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ARM resource ID of the App Insights.
 func (o AppInsightsPropertiesResponseOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AppInsightsPropertiesResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
@@ -805,12 +726,6 @@ func (o AppInsightsPropertiesResponsePtrOutput) ToAppInsightsPropertiesResponseP
 
 func (o AppInsightsPropertiesResponsePtrOutput) ToAppInsightsPropertiesResponsePtrOutputWithContext(ctx context.Context) AppInsightsPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o AppInsightsPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AppInsightsPropertiesResponse] {
-	return pulumix.Output[*AppInsightsPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AppInsightsPropertiesResponsePtrOutput) Elem() AppInsightsPropertiesResponseOutput {
@@ -922,12 +837,6 @@ func (i AutoScaleConfigurationArgs) ToAutoScaleConfigurationOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(AutoScaleConfigurationOutput)
 }
 
-func (i AutoScaleConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[AutoScaleConfiguration] {
-	return pulumix.Output[AutoScaleConfiguration]{
-		OutputState: i.ToAutoScaleConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AutoScaleConfigurationArgs) ToAutoScaleConfigurationPtrOutput() AutoScaleConfigurationPtrOutput {
 	return i.ToAutoScaleConfigurationPtrOutputWithContext(context.Background())
 }
@@ -969,12 +878,6 @@ func (i *autoScaleConfigurationPtrType) ToAutoScaleConfigurationPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(AutoScaleConfigurationPtrOutput)
 }
 
-func (i *autoScaleConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*AutoScaleConfiguration] {
-	return pulumix.Output[*AutoScaleConfiguration]{
-		OutputState: i.ToAutoScaleConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AutoScale configuration properties.
 type AutoScaleConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -998,12 +901,6 @@ func (o AutoScaleConfigurationOutput) ToAutoScaleConfigurationPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoScaleConfiguration) *AutoScaleConfiguration {
 		return &v
 	}).(AutoScaleConfigurationPtrOutput)
-}
-
-func (o AutoScaleConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[AutoScaleConfiguration] {
-	return pulumix.Output[AutoScaleConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The maximum number of replicas for each service.
@@ -1043,12 +940,6 @@ func (o AutoScaleConfigurationPtrOutput) ToAutoScaleConfigurationPtrOutput() Aut
 
 func (o AutoScaleConfigurationPtrOutput) ToAutoScaleConfigurationPtrOutputWithContext(ctx context.Context) AutoScaleConfigurationPtrOutput {
 	return o
-}
-
-func (o AutoScaleConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoScaleConfiguration] {
-	return pulumix.Output[*AutoScaleConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoScaleConfigurationPtrOutput) Elem() AutoScaleConfigurationOutput {
@@ -1161,12 +1052,6 @@ func (o AutoScaleConfigurationResponseOutput) ToAutoScaleConfigurationResponseOu
 	return o
 }
 
-func (o AutoScaleConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutoScaleConfigurationResponse] {
-	return pulumix.Output[AutoScaleConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The maximum number of replicas for each service.
 func (o AutoScaleConfigurationResponseOutput) MaxReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AutoScaleConfigurationResponse) *int { return v.MaxReplicas }).(pulumi.IntPtrOutput)
@@ -1204,12 +1089,6 @@ func (o AutoScaleConfigurationResponsePtrOutput) ToAutoScaleConfigurationRespons
 
 func (o AutoScaleConfigurationResponsePtrOutput) ToAutoScaleConfigurationResponsePtrOutputWithContext(ctx context.Context) AutoScaleConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o AutoScaleConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutoScaleConfigurationResponse] {
-	return pulumix.Output[*AutoScaleConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutoScaleConfigurationResponsePtrOutput) Elem() AutoScaleConfigurationResponseOutput {
@@ -1299,12 +1178,6 @@ func (o ContainerRegistryCredentialsResponseOutput) ToContainerRegistryCredentia
 	return o
 }
 
-func (o ContainerRegistryCredentialsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerRegistryCredentialsResponse] {
-	return pulumix.Output[ContainerRegistryCredentialsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ACR login server name. User name is the first part of the FQDN.
 func (o ContainerRegistryCredentialsResponseOutput) LoginServer() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerRegistryCredentialsResponse) string { return v.LoginServer }).(pulumi.StringOutput)
@@ -1337,12 +1210,6 @@ func (o ContainerRegistryCredentialsResponsePtrOutput) ToContainerRegistryCreden
 
 func (o ContainerRegistryCredentialsResponsePtrOutput) ToContainerRegistryCredentialsResponsePtrOutputWithContext(ctx context.Context) ContainerRegistryCredentialsResponsePtrOutput {
 	return o
-}
-
-func (o ContainerRegistryCredentialsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerRegistryCredentialsResponse] {
-	return pulumix.Output[*ContainerRegistryCredentialsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerRegistryCredentialsResponsePtrOutput) Elem() ContainerRegistryCredentialsResponseOutput {
@@ -1430,12 +1297,6 @@ func (i ContainerRegistryPropertiesArgs) ToContainerRegistryPropertiesOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryPropertiesOutput)
 }
 
-func (i ContainerRegistryPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerRegistryProperties] {
-	return pulumix.Output[ContainerRegistryProperties]{
-		OutputState: i.ToContainerRegistryPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerRegistryPropertiesArgs) ToContainerRegistryPropertiesPtrOutput() ContainerRegistryPropertiesPtrOutput {
 	return i.ToContainerRegistryPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1477,12 +1338,6 @@ func (i *containerRegistryPropertiesPtrType) ToContainerRegistryPropertiesPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryPropertiesPtrOutput)
 }
 
-func (i *containerRegistryPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerRegistryProperties] {
-	return pulumix.Output[*ContainerRegistryProperties]{
-		OutputState: i.ToContainerRegistryPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Properties of Azure Container Registry.
 type ContainerRegistryPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1508,12 +1363,6 @@ func (o ContainerRegistryPropertiesOutput) ToContainerRegistryPropertiesPtrOutpu
 	}).(ContainerRegistryPropertiesPtrOutput)
 }
 
-func (o ContainerRegistryPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerRegistryProperties] {
-	return pulumix.Output[ContainerRegistryProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ARM resource ID of the Azure Container Registry used to store Docker images for web services in the cluster. If not provided one will be created. This cannot be changed once the cluster is created.
 func (o ContainerRegistryPropertiesOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerRegistryProperties) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
@@ -1531,12 +1380,6 @@ func (o ContainerRegistryPropertiesPtrOutput) ToContainerRegistryPropertiesPtrOu
 
 func (o ContainerRegistryPropertiesPtrOutput) ToContainerRegistryPropertiesPtrOutputWithContext(ctx context.Context) ContainerRegistryPropertiesPtrOutput {
 	return o
-}
-
-func (o ContainerRegistryPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerRegistryProperties] {
-	return pulumix.Output[*ContainerRegistryProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerRegistryPropertiesPtrOutput) Elem() ContainerRegistryPropertiesOutput {
@@ -1580,12 +1423,6 @@ func (o ContainerRegistryPropertiesResponseOutput) ToContainerRegistryProperties
 	return o
 }
 
-func (o ContainerRegistryPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerRegistryPropertiesResponse] {
-	return pulumix.Output[ContainerRegistryPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ARM resource ID of the Azure Container Registry used to store Docker images for web services in the cluster. If not provided one will be created. This cannot be changed once the cluster is created.
 func (o ContainerRegistryPropertiesResponseOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerRegistryPropertiesResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
@@ -1603,12 +1440,6 @@ func (o ContainerRegistryPropertiesResponsePtrOutput) ToContainerRegistryPropert
 
 func (o ContainerRegistryPropertiesResponsePtrOutput) ToContainerRegistryPropertiesResponsePtrOutputWithContext(ctx context.Context) ContainerRegistryPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o ContainerRegistryPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerRegistryPropertiesResponse] {
-	return pulumix.Output[*ContainerRegistryPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerRegistryPropertiesResponsePtrOutput) Elem() ContainerRegistryPropertiesResponseOutput {
@@ -1656,12 +1487,6 @@ func (o ContainerServiceCredentialsResponseOutput) ToContainerServiceCredentials
 	return o
 }
 
-func (o ContainerServiceCredentialsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceCredentialsResponse] {
-	return pulumix.Output[ContainerServiceCredentialsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ACS kube config file.
 func (o ContainerServiceCredentialsResponseOutput) AcsKubeConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerServiceCredentialsResponse) string { return v.AcsKubeConfig }).(pulumi.StringOutput)
@@ -1691,12 +1516,6 @@ func (o ContainerServiceCredentialsResponsePtrOutput) ToContainerServiceCredenti
 
 func (o ContainerServiceCredentialsResponsePtrOutput) ToContainerServiceCredentialsResponsePtrOutputWithContext(ctx context.Context) ContainerServiceCredentialsResponsePtrOutput {
 	return o
-}
-
-func (o ContainerServiceCredentialsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceCredentialsResponse] {
-	return pulumix.Output[*ContainerServiceCredentialsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerServiceCredentialsResponsePtrOutput) Elem() ContainerServiceCredentialsResponseOutput {
@@ -1762,12 +1581,6 @@ func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o ErrorDetailResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorDetailResponse] {
-	return pulumix.Output[ErrorDetailResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Error code.
 func (o ErrorDetailResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Code }).(pulumi.StringOutput)
@@ -1790,12 +1603,6 @@ func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutput() Error
 
 func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutputWithContext(ctx context.Context) ErrorDetailResponseArrayOutput {
 	return o
-}
-
-func (o ErrorDetailResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ErrorDetailResponse] {
-	return pulumix.Output[[]ErrorDetailResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailResponseOutput {
@@ -1829,12 +1636,6 @@ func (o ErrorResponseResponseOutput) ToErrorResponseResponseOutputWithContext(ct
 	return o
 }
 
-func (o ErrorResponseResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorResponseResponse] {
-	return pulumix.Output[ErrorResponseResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Error code.
 func (o ErrorResponseResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v ErrorResponseResponse) string { return v.Code }).(pulumi.StringOutput)
@@ -1862,12 +1663,6 @@ func (o ErrorResponseResponsePtrOutput) ToErrorResponseResponsePtrOutput() Error
 
 func (o ErrorResponseResponsePtrOutput) ToErrorResponseResponsePtrOutputWithContext(ctx context.Context) ErrorResponseResponsePtrOutput {
 	return o
-}
-
-func (o ErrorResponseResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ErrorResponseResponse] {
-	return pulumix.Output[*ErrorResponseResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ErrorResponseResponsePtrOutput) Elem() ErrorResponseResponseOutput {
@@ -1931,12 +1726,6 @@ func (o ErrorResponseWrapperResponseOutput) ToErrorResponseWrapperResponseOutput
 	return o
 }
 
-func (o ErrorResponseWrapperResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ErrorResponseWrapperResponse] {
-	return pulumix.Output[ErrorResponseWrapperResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The error response.
 func (o ErrorResponseWrapperResponseOutput) Error() ErrorResponseResponsePtrOutput {
 	return o.ApplyT(func(v ErrorResponseWrapperResponse) *ErrorResponseResponse { return v.Error }).(ErrorResponseResponsePtrOutput)
@@ -1954,12 +1743,6 @@ func (o ErrorResponseWrapperResponseArrayOutput) ToErrorResponseWrapperResponseA
 
 func (o ErrorResponseWrapperResponseArrayOutput) ToErrorResponseWrapperResponseArrayOutputWithContext(ctx context.Context) ErrorResponseWrapperResponseArrayOutput {
 	return o
-}
-
-func (o ErrorResponseWrapperResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ErrorResponseWrapperResponse] {
-	return pulumix.Output[[]ErrorResponseWrapperResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ErrorResponseWrapperResponseArrayOutput) Index(i pulumi.IntInput) ErrorResponseWrapperResponseOutput {
@@ -2037,12 +1820,6 @@ func (i GlobalServiceConfigurationArgs) ToGlobalServiceConfigurationOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalServiceConfigurationOutput)
 }
 
-func (i GlobalServiceConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[GlobalServiceConfiguration] {
-	return pulumix.Output[GlobalServiceConfiguration]{
-		OutputState: i.ToGlobalServiceConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GlobalServiceConfigurationArgs) ToGlobalServiceConfigurationPtrOutput() GlobalServiceConfigurationPtrOutput {
 	return i.ToGlobalServiceConfigurationPtrOutputWithContext(context.Background())
 }
@@ -2084,12 +1861,6 @@ func (i *globalServiceConfigurationPtrType) ToGlobalServiceConfigurationPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalServiceConfigurationPtrOutput)
 }
 
-func (i *globalServiceConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*GlobalServiceConfiguration] {
-	return pulumix.Output[*GlobalServiceConfiguration]{
-		OutputState: i.ToGlobalServiceConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Global configuration for services in the cluster.
 type GlobalServiceConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -2113,12 +1884,6 @@ func (o GlobalServiceConfigurationOutput) ToGlobalServiceConfigurationPtrOutputW
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlobalServiceConfiguration) *GlobalServiceConfiguration {
 		return &v
 	}).(GlobalServiceConfigurationPtrOutput)
-}
-
-func (o GlobalServiceConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalServiceConfiguration] {
-	return pulumix.Output[GlobalServiceConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The auto-scale configuration
@@ -2153,12 +1918,6 @@ func (o GlobalServiceConfigurationPtrOutput) ToGlobalServiceConfigurationPtrOutp
 
 func (o GlobalServiceConfigurationPtrOutput) ToGlobalServiceConfigurationPtrOutputWithContext(ctx context.Context) GlobalServiceConfigurationPtrOutput {
 	return o
-}
-
-func (o GlobalServiceConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalServiceConfiguration] {
-	return pulumix.Output[*GlobalServiceConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GlobalServiceConfigurationPtrOutput) Elem() GlobalServiceConfigurationOutput {
@@ -2251,12 +2010,6 @@ func (o GlobalServiceConfigurationResponseOutput) ToGlobalServiceConfigurationRe
 	return o
 }
 
-func (o GlobalServiceConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GlobalServiceConfigurationResponse] {
-	return pulumix.Output[GlobalServiceConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The auto-scale configuration
 func (o GlobalServiceConfigurationResponseOutput) AutoScale() AutoScaleConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v GlobalServiceConfigurationResponse) *AutoScaleConfigurationResponse { return v.AutoScale }).(AutoScaleConfigurationResponsePtrOutput)
@@ -2289,12 +2042,6 @@ func (o GlobalServiceConfigurationResponsePtrOutput) ToGlobalServiceConfiguratio
 
 func (o GlobalServiceConfigurationResponsePtrOutput) ToGlobalServiceConfigurationResponsePtrOutputWithContext(ctx context.Context) GlobalServiceConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o GlobalServiceConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GlobalServiceConfigurationResponse] {
-	return pulumix.Output[*GlobalServiceConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GlobalServiceConfigurationResponsePtrOutput) Elem() GlobalServiceConfigurationResponseOutput {
@@ -2382,12 +2129,6 @@ func (i KubernetesClusterPropertiesArgs) ToKubernetesClusterPropertiesOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterPropertiesOutput)
 }
 
-func (i KubernetesClusterPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[KubernetesClusterProperties] {
-	return pulumix.Output[KubernetesClusterProperties]{
-		OutputState: i.ToKubernetesClusterPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KubernetesClusterPropertiesArgs) ToKubernetesClusterPropertiesPtrOutput() KubernetesClusterPropertiesPtrOutput {
 	return i.ToKubernetesClusterPropertiesPtrOutputWithContext(context.Background())
 }
@@ -2429,12 +2170,6 @@ func (i *kubernetesClusterPropertiesPtrType) ToKubernetesClusterPropertiesPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterPropertiesPtrOutput)
 }
 
-func (i *kubernetesClusterPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*KubernetesClusterProperties] {
-	return pulumix.Output[*KubernetesClusterProperties]{
-		OutputState: i.ToKubernetesClusterPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Kubernetes cluster specific properties
 type KubernetesClusterPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -2460,12 +2195,6 @@ func (o KubernetesClusterPropertiesOutput) ToKubernetesClusterPropertiesPtrOutpu
 	}).(KubernetesClusterPropertiesPtrOutput)
 }
 
-func (o KubernetesClusterPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[KubernetesClusterProperties] {
-	return pulumix.Output[KubernetesClusterProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Azure Service Principal used by Kubernetes
 func (o KubernetesClusterPropertiesOutput) ServicePrincipal() ServicePrincipalPropertiesPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterProperties) *ServicePrincipalProperties { return v.ServicePrincipal }).(ServicePrincipalPropertiesPtrOutput)
@@ -2483,12 +2212,6 @@ func (o KubernetesClusterPropertiesPtrOutput) ToKubernetesClusterPropertiesPtrOu
 
 func (o KubernetesClusterPropertiesPtrOutput) ToKubernetesClusterPropertiesPtrOutputWithContext(ctx context.Context) KubernetesClusterPropertiesPtrOutput {
 	return o
-}
-
-func (o KubernetesClusterPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KubernetesClusterProperties] {
-	return pulumix.Output[*KubernetesClusterProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KubernetesClusterPropertiesPtrOutput) Elem() KubernetesClusterPropertiesOutput {
@@ -2532,12 +2255,6 @@ func (o KubernetesClusterPropertiesResponseOutput) ToKubernetesClusterProperties
 	return o
 }
 
-func (o KubernetesClusterPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KubernetesClusterPropertiesResponse] {
-	return pulumix.Output[KubernetesClusterPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Azure Service Principal used by Kubernetes
 func (o KubernetesClusterPropertiesResponseOutput) ServicePrincipal() ServicePrincipalPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v KubernetesClusterPropertiesResponse) *ServicePrincipalPropertiesResponse {
@@ -2557,12 +2274,6 @@ func (o KubernetesClusterPropertiesResponsePtrOutput) ToKubernetesClusterPropert
 
 func (o KubernetesClusterPropertiesResponsePtrOutput) ToKubernetesClusterPropertiesResponsePtrOutputWithContext(ctx context.Context) KubernetesClusterPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o KubernetesClusterPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KubernetesClusterPropertiesResponse] {
-	return pulumix.Output[*KubernetesClusterPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KubernetesClusterPropertiesResponsePtrOutput) Elem() KubernetesClusterPropertiesResponseOutput {
@@ -2624,12 +2335,6 @@ func (i ServiceAuthConfigurationArgs) ToServiceAuthConfigurationOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceAuthConfigurationOutput)
 }
 
-func (i ServiceAuthConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceAuthConfiguration] {
-	return pulumix.Output[ServiceAuthConfiguration]{
-		OutputState: i.ToServiceAuthConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceAuthConfigurationArgs) ToServiceAuthConfigurationPtrOutput() ServiceAuthConfigurationPtrOutput {
 	return i.ToServiceAuthConfigurationPtrOutputWithContext(context.Background())
 }
@@ -2671,12 +2376,6 @@ func (i *serviceAuthConfigurationPtrType) ToServiceAuthConfigurationPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceAuthConfigurationPtrOutput)
 }
 
-func (i *serviceAuthConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceAuthConfiguration] {
-	return pulumix.Output[*ServiceAuthConfiguration]{
-		OutputState: i.ToServiceAuthConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Global service auth configuration properties. These are the data-plane authorization keys and are used if a service doesn't define it's own.
 type ServiceAuthConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -2702,12 +2401,6 @@ func (o ServiceAuthConfigurationOutput) ToServiceAuthConfigurationPtrOutputWithC
 	}).(ServiceAuthConfigurationPtrOutput)
 }
 
-func (o ServiceAuthConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceAuthConfiguration] {
-	return pulumix.Output[ServiceAuthConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The primary auth key hash. This is not returned in response of GET/PUT on the resource.. To see this please call listKeys API.
 func (o ServiceAuthConfigurationOutput) PrimaryAuthKeyHash() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceAuthConfiguration) string { return v.PrimaryAuthKeyHash }).(pulumi.StringOutput)
@@ -2730,12 +2423,6 @@ func (o ServiceAuthConfigurationPtrOutput) ToServiceAuthConfigurationPtrOutput()
 
 func (o ServiceAuthConfigurationPtrOutput) ToServiceAuthConfigurationPtrOutputWithContext(ctx context.Context) ServiceAuthConfigurationPtrOutput {
 	return o
-}
-
-func (o ServiceAuthConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceAuthConfiguration] {
-	return pulumix.Output[*ServiceAuthConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceAuthConfigurationPtrOutput) Elem() ServiceAuthConfigurationOutput {
@@ -2791,12 +2478,6 @@ func (o ServiceAuthConfigurationResponseOutput) ToServiceAuthConfigurationRespon
 	return o
 }
 
-func (o ServiceAuthConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceAuthConfigurationResponse] {
-	return pulumix.Output[ServiceAuthConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The primary auth key hash. This is not returned in response of GET/PUT on the resource.. To see this please call listKeys API.
 func (o ServiceAuthConfigurationResponseOutput) PrimaryAuthKeyHash() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceAuthConfigurationResponse) string { return v.PrimaryAuthKeyHash }).(pulumi.StringOutput)
@@ -2819,12 +2500,6 @@ func (o ServiceAuthConfigurationResponsePtrOutput) ToServiceAuthConfigurationRes
 
 func (o ServiceAuthConfigurationResponsePtrOutput) ToServiceAuthConfigurationResponsePtrOutputWithContext(ctx context.Context) ServiceAuthConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o ServiceAuthConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceAuthConfigurationResponse] {
-	return pulumix.Output[*ServiceAuthConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceAuthConfigurationResponsePtrOutput) Elem() ServiceAuthConfigurationResponseOutput {
@@ -2896,12 +2571,6 @@ func (i ServicePrincipalPropertiesArgs) ToServicePrincipalPropertiesOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalPropertiesOutput)
 }
 
-func (i ServicePrincipalPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ServicePrincipalProperties] {
-	return pulumix.Output[ServicePrincipalProperties]{
-		OutputState: i.ToServicePrincipalPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServicePrincipalPropertiesArgs) ToServicePrincipalPropertiesPtrOutput() ServicePrincipalPropertiesPtrOutput {
 	return i.ToServicePrincipalPropertiesPtrOutputWithContext(context.Background())
 }
@@ -2943,12 +2612,6 @@ func (i *servicePrincipalPropertiesPtrType) ToServicePrincipalPropertiesPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalPropertiesPtrOutput)
 }
 
-func (i *servicePrincipalPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalProperties] {
-	return pulumix.Output[*ServicePrincipalProperties]{
-		OutputState: i.ToServicePrincipalPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Azure service principal used by Kubernetes for configuring load balancers
 type ServicePrincipalPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -2974,12 +2637,6 @@ func (o ServicePrincipalPropertiesOutput) ToServicePrincipalPropertiesPtrOutputW
 	}).(ServicePrincipalPropertiesPtrOutput)
 }
 
-func (o ServicePrincipalPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePrincipalProperties] {
-	return pulumix.Output[ServicePrincipalProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The service principal client ID
 func (o ServicePrincipalPropertiesOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v ServicePrincipalProperties) string { return v.ClientId }).(pulumi.StringOutput)
@@ -3002,12 +2659,6 @@ func (o ServicePrincipalPropertiesPtrOutput) ToServicePrincipalPropertiesPtrOutp
 
 func (o ServicePrincipalPropertiesPtrOutput) ToServicePrincipalPropertiesPtrOutputWithContext(ctx context.Context) ServicePrincipalPropertiesPtrOutput {
 	return o
-}
-
-func (o ServicePrincipalPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalProperties] {
-	return pulumix.Output[*ServicePrincipalProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePrincipalPropertiesPtrOutput) Elem() ServicePrincipalPropertiesOutput {
@@ -3063,12 +2714,6 @@ func (o ServicePrincipalPropertiesResponseOutput) ToServicePrincipalPropertiesRe
 	return o
 }
 
-func (o ServicePrincipalPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServicePrincipalPropertiesResponse] {
-	return pulumix.Output[ServicePrincipalPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The service principal client ID
 func (o ServicePrincipalPropertiesResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v ServicePrincipalPropertiesResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -3091,12 +2736,6 @@ func (o ServicePrincipalPropertiesResponsePtrOutput) ToServicePrincipalPropertie
 
 func (o ServicePrincipalPropertiesResponsePtrOutput) ToServicePrincipalPropertiesResponsePtrOutputWithContext(ctx context.Context) ServicePrincipalPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o ServicePrincipalPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalPropertiesResponse] {
-	return pulumix.Output[*ServicePrincipalPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServicePrincipalPropertiesResponsePtrOutput) Elem() ServicePrincipalPropertiesResponseOutput {
@@ -3200,12 +2839,6 @@ func (i SslConfigurationArgs) ToSslConfigurationOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SslConfigurationOutput)
 }
 
-func (i SslConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[SslConfiguration] {
-	return pulumix.Output[SslConfiguration]{
-		OutputState: i.ToSslConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SslConfigurationArgs) ToSslConfigurationPtrOutput() SslConfigurationPtrOutput {
 	return i.ToSslConfigurationPtrOutputWithContext(context.Background())
 }
@@ -3247,12 +2880,6 @@ func (i *sslConfigurationPtrType) ToSslConfigurationPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(SslConfigurationPtrOutput)
 }
 
-func (i *sslConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*SslConfiguration] {
-	return pulumix.Output[*SslConfiguration]{
-		OutputState: i.ToSslConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SSL configuration. If configured data-plane calls to user services will be exposed over SSL only.
 type SslConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -3276,12 +2903,6 @@ func (o SslConfigurationOutput) ToSslConfigurationPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SslConfiguration) *SslConfiguration {
 		return &v
 	}).(SslConfigurationPtrOutput)
-}
-
-func (o SslConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[SslConfiguration] {
-	return pulumix.Output[SslConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The SSL cert data in PEM format.
@@ -3316,12 +2937,6 @@ func (o SslConfigurationPtrOutput) ToSslConfigurationPtrOutput() SslConfiguratio
 
 func (o SslConfigurationPtrOutput) ToSslConfigurationPtrOutputWithContext(ctx context.Context) SslConfigurationPtrOutput {
 	return o
-}
-
-func (o SslConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SslConfiguration] {
-	return pulumix.Output[*SslConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SslConfigurationPtrOutput) Elem() SslConfigurationOutput {
@@ -3414,12 +3029,6 @@ func (o SslConfigurationResponseOutput) ToSslConfigurationResponseOutputWithCont
 	return o
 }
 
-func (o SslConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SslConfigurationResponse] {
-	return pulumix.Output[SslConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The SSL cert data in PEM format.
 func (o SslConfigurationResponseOutput) Cert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SslConfigurationResponse) *string { return v.Cert }).(pulumi.StringPtrOutput)
@@ -3452,12 +3061,6 @@ func (o SslConfigurationResponsePtrOutput) ToSslConfigurationResponsePtrOutput()
 
 func (o SslConfigurationResponsePtrOutput) ToSslConfigurationResponsePtrOutputWithContext(ctx context.Context) SslConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o SslConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SslConfigurationResponse] {
-	return pulumix.Output[*SslConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SslConfigurationResponsePtrOutput) Elem() SslConfigurationResponseOutput {
@@ -3535,12 +3138,6 @@ func (o StorageAccountCredentialsResponseOutput) ToStorageAccountCredentialsResp
 	return o
 }
 
-func (o StorageAccountCredentialsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageAccountCredentialsResponse] {
-	return pulumix.Output[StorageAccountCredentialsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The primary key of the storage account.
 func (o StorageAccountCredentialsResponseOutput) PrimaryKey() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageAccountCredentialsResponse) string { return v.PrimaryKey }).(pulumi.StringOutput)
@@ -3568,12 +3165,6 @@ func (o StorageAccountCredentialsResponsePtrOutput) ToStorageAccountCredentialsR
 
 func (o StorageAccountCredentialsResponsePtrOutput) ToStorageAccountCredentialsResponsePtrOutputWithContext(ctx context.Context) StorageAccountCredentialsResponsePtrOutput {
 	return o
-}
-
-func (o StorageAccountCredentialsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountCredentialsResponse] {
-	return pulumix.Output[*StorageAccountCredentialsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StorageAccountCredentialsResponsePtrOutput) Elem() StorageAccountCredentialsResponseOutput {
@@ -3651,12 +3242,6 @@ func (i StorageAccountPropertiesArgs) ToStorageAccountPropertiesOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(StorageAccountPropertiesOutput)
 }
 
-func (i StorageAccountPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[StorageAccountProperties] {
-	return pulumix.Output[StorageAccountProperties]{
-		OutputState: i.ToStorageAccountPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i StorageAccountPropertiesArgs) ToStorageAccountPropertiesPtrOutput() StorageAccountPropertiesPtrOutput {
 	return i.ToStorageAccountPropertiesPtrOutputWithContext(context.Background())
 }
@@ -3698,12 +3283,6 @@ func (i *storageAccountPropertiesPtrType) ToStorageAccountPropertiesPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(StorageAccountPropertiesPtrOutput)
 }
 
-func (i *storageAccountPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountProperties] {
-	return pulumix.Output[*StorageAccountProperties]{
-		OutputState: i.ToStorageAccountPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Properties of Storage Account.
 type StorageAccountPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -3729,12 +3308,6 @@ func (o StorageAccountPropertiesOutput) ToStorageAccountPropertiesPtrOutputWithC
 	}).(StorageAccountPropertiesPtrOutput)
 }
 
-func (o StorageAccountPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[StorageAccountProperties] {
-	return pulumix.Output[StorageAccountProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ARM resource ID of the Azure Storage Account to store CLI specific files. If not provided one will be created. This cannot be changed once the cluster is created.
 func (o StorageAccountPropertiesOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageAccountProperties) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
@@ -3752,12 +3325,6 @@ func (o StorageAccountPropertiesPtrOutput) ToStorageAccountPropertiesPtrOutput()
 
 func (o StorageAccountPropertiesPtrOutput) ToStorageAccountPropertiesPtrOutputWithContext(ctx context.Context) StorageAccountPropertiesPtrOutput {
 	return o
-}
-
-func (o StorageAccountPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountProperties] {
-	return pulumix.Output[*StorageAccountProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StorageAccountPropertiesPtrOutput) Elem() StorageAccountPropertiesOutput {
@@ -3801,12 +3368,6 @@ func (o StorageAccountPropertiesResponseOutput) ToStorageAccountPropertiesRespon
 	return o
 }
 
-func (o StorageAccountPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[StorageAccountPropertiesResponse] {
-	return pulumix.Output[StorageAccountPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ARM resource ID of the Azure Storage Account to store CLI specific files. If not provided one will be created. This cannot be changed once the cluster is created.
 func (o StorageAccountPropertiesResponseOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageAccountPropertiesResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
@@ -3824,12 +3385,6 @@ func (o StorageAccountPropertiesResponsePtrOutput) ToStorageAccountPropertiesRes
 
 func (o StorageAccountPropertiesResponsePtrOutput) ToStorageAccountPropertiesResponsePtrOutputWithContext(ctx context.Context) StorageAccountPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o StorageAccountPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageAccountPropertiesResponse] {
-	return pulumix.Output[*StorageAccountPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o StorageAccountPropertiesResponsePtrOutput) Elem() StorageAccountPropertiesResponseOutput {
@@ -3887,12 +3442,6 @@ func (i SystemServiceArgs) ToSystemServiceOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(SystemServiceOutput)
 }
 
-func (i SystemServiceArgs) ToOutput(ctx context.Context) pulumix.Output[SystemService] {
-	return pulumix.Output[SystemService]{
-		OutputState: i.ToSystemServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SystemServiceArrayInput is an input type that accepts SystemServiceArray and SystemServiceArrayOutput values.
 // You can construct a concrete instance of `SystemServiceArrayInput` via:
 //
@@ -3918,12 +3467,6 @@ func (i SystemServiceArray) ToSystemServiceArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SystemServiceArrayOutput)
 }
 
-func (i SystemServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]SystemService] {
-	return pulumix.Output[[]SystemService]{
-		OutputState: i.ToSystemServiceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Information about a system service deployed in the cluster
 type SystemServiceOutput struct{ *pulumi.OutputState }
 
@@ -3937,12 +3480,6 @@ func (o SystemServiceOutput) ToSystemServiceOutput() SystemServiceOutput {
 
 func (o SystemServiceOutput) ToSystemServiceOutputWithContext(ctx context.Context) SystemServiceOutput {
 	return o
-}
-
-func (o SystemServiceOutput) ToOutput(ctx context.Context) pulumix.Output[SystemService] {
-	return pulumix.Output[SystemService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The system service type
@@ -3962,12 +3499,6 @@ func (o SystemServiceArrayOutput) ToSystemServiceArrayOutput() SystemServiceArra
 
 func (o SystemServiceArrayOutput) ToSystemServiceArrayOutputWithContext(ctx context.Context) SystemServiceArrayOutput {
 	return o
-}
-
-func (o SystemServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SystemService] {
-	return pulumix.Output[[]SystemService]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SystemServiceArrayOutput) Index(i pulumi.IntInput) SystemServiceOutput {
@@ -4001,12 +3532,6 @@ func (o SystemServiceResponseOutput) ToSystemServiceResponseOutputWithContext(ct
 	return o
 }
 
-func (o SystemServiceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemServiceResponse] {
-	return pulumix.Output[SystemServiceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The public IP address of the system service
 func (o SystemServiceResponseOutput) PublicIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v SystemServiceResponse) string { return v.PublicIpAddress }).(pulumi.StringOutput)
@@ -4034,12 +3559,6 @@ func (o SystemServiceResponseArrayOutput) ToSystemServiceResponseArrayOutput() S
 
 func (o SystemServiceResponseArrayOutput) ToSystemServiceResponseArrayOutputWithContext(ctx context.Context) SystemServiceResponseArrayOutput {
 	return o
-}
-
-func (o SystemServiceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SystemServiceResponse] {
-	return pulumix.Output[[]SystemServiceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SystemServiceResponseArrayOutput) Index(i pulumi.IntInput) SystemServiceResponseOutput {

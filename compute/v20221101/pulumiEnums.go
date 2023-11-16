@@ -90,12 +90,6 @@ func (o IntervalInMinsOutput) ToIntervalInMinsPtrOutputWithContext(ctx context.C
 	}).(IntervalInMinsPtrOutput)
 }
 
-func (o IntervalInMinsOutput) ToOutput(ctx context.Context) pulumix.Output[IntervalInMins] {
-	return pulumix.Output[IntervalInMins]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IntervalInMinsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -129,12 +123,6 @@ func (o IntervalInMinsPtrOutput) ToIntervalInMinsPtrOutput() IntervalInMinsPtrOu
 
 func (o IntervalInMinsPtrOutput) ToIntervalInMinsPtrOutputWithContext(ctx context.Context) IntervalInMinsPtrOutput {
 	return o
-}
-
-func (o IntervalInMinsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IntervalInMins] {
-	return pulumix.Output[*IntervalInMins]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IntervalInMinsPtrOutput) Elem() IntervalInMinsOutput {

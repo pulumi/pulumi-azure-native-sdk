@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a specific trigger by name.
@@ -92,12 +91,6 @@ func (o LookupFileEventTriggerResultOutput) ToLookupFileEventTriggerResultOutput
 
 func (o LookupFileEventTriggerResultOutput) ToLookupFileEventTriggerResultOutputWithContext(ctx context.Context) LookupFileEventTriggerResultOutput {
 	return o
-}
-
-func (o LookupFileEventTriggerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFileEventTriggerResult] {
-	return pulumix.Output[LookupFileEventTriggerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A custom context tag typically used to correlate the trigger against its usage. For example, if a periodic timer trigger is intended for certain specific IoT modules in the device, the tag can be the name or the image URL of the module.

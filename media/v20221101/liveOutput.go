@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Live Output.
@@ -205,12 +204,6 @@ func (i *LiveOutput) ToLiveOutputOutputWithContext(ctx context.Context) LiveOutp
 	return pulumi.ToOutputWithContext(ctx, i).(LiveOutputOutput)
 }
 
-func (i *LiveOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveOutput] {
-	return pulumix.Output[*LiveOutput]{
-		OutputState: i.ToLiveOutputOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LiveOutputOutput struct{ *pulumi.OutputState }
 
 func (LiveOutputOutput) ElementType() reflect.Type {
@@ -223,12 +216,6 @@ func (o LiveOutputOutput) ToLiveOutputOutput() LiveOutputOutput {
 
 func (o LiveOutputOutput) ToLiveOutputOutputWithContext(ctx context.Context) LiveOutputOutput {
 	return o
-}
-
-func (o LiveOutputOutput) ToOutput(ctx context.Context) pulumix.Output[*LiveOutput] {
-	return pulumix.Output[*LiveOutput]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ISO 8601 time between 1 minute to 25 hours to indicate the maximum content length that can be archived in the asset for this live output. This also sets the maximum content length for the rewind window. For example, use PT1H30M to indicate 1 hour and 30 minutes of archive window.

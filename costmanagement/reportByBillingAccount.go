@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A report resource.
@@ -142,12 +141,6 @@ func (i *ReportByBillingAccount) ToReportByBillingAccountOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ReportByBillingAccountOutput)
 }
 
-func (i *ReportByBillingAccount) ToOutput(ctx context.Context) pulumix.Output[*ReportByBillingAccount] {
-	return pulumix.Output[*ReportByBillingAccount]{
-		OutputState: i.ToReportByBillingAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ReportByBillingAccountOutput struct{ *pulumi.OutputState }
 
 func (ReportByBillingAccountOutput) ElementType() reflect.Type {
@@ -160,12 +153,6 @@ func (o ReportByBillingAccountOutput) ToReportByBillingAccountOutput() ReportByB
 
 func (o ReportByBillingAccountOutput) ToReportByBillingAccountOutputWithContext(ctx context.Context) ReportByBillingAccountOutput {
 	return o
-}
-
-func (o ReportByBillingAccountOutput) ToOutput(ctx context.Context) pulumix.Output[*ReportByBillingAccount] {
-	return pulumix.Output[*ReportByBillingAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Has definition for the report.

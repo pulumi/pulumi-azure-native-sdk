@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Group resource.
@@ -151,12 +150,6 @@ func (i *GroupsOperation) ToGroupsOperationOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(GroupsOperationOutput)
 }
 
-func (i *GroupsOperation) ToOutput(ctx context.Context) pulumix.Output[*GroupsOperation] {
-	return pulumix.Output[*GroupsOperation]{
-		OutputState: i.ToGroupsOperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GroupsOperationOutput struct{ *pulumi.OutputState }
 
 func (GroupsOperationOutput) ElementType() reflect.Type {
@@ -169,12 +162,6 @@ func (o GroupsOperationOutput) ToGroupsOperationOutput() GroupsOperationOutput {
 
 func (o GroupsOperationOutput) ToGroupsOperationOutputWithContext(ctx context.Context) GroupsOperationOutput {
 	return o
-}
-
-func (o GroupsOperationOutput) ToOutput(ctx context.Context) pulumix.Output[*GroupsOperation] {
-	return pulumix.Output[*GroupsOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If the assessments are in running state.

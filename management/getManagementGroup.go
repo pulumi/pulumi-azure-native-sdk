@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the details of the management group.
@@ -97,12 +96,6 @@ func (o LookupManagementGroupResultOutput) ToLookupManagementGroupResultOutput()
 
 func (o LookupManagementGroupResultOutput) ToLookupManagementGroupResultOutputWithContext(ctx context.Context) LookupManagementGroupResultOutput {
 	return o
-}
-
-func (o LookupManagementGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagementGroupResult] {
-	return pulumix.Output[LookupManagementGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of children.

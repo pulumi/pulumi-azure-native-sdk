@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure Active Directory only authentication.
@@ -164,12 +163,6 @@ func (i *ManagedInstanceAzureADOnlyAuthentication) ToManagedInstanceAzureADOnlyA
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceAzureADOnlyAuthenticationOutput)
 }
 
-func (i *ManagedInstanceAzureADOnlyAuthentication) ToOutput(ctx context.Context) pulumix.Output[*ManagedInstanceAzureADOnlyAuthentication] {
-	return pulumix.Output[*ManagedInstanceAzureADOnlyAuthentication]{
-		OutputState: i.ToManagedInstanceAzureADOnlyAuthenticationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagedInstanceAzureADOnlyAuthenticationOutput struct{ *pulumi.OutputState }
 
 func (ManagedInstanceAzureADOnlyAuthenticationOutput) ElementType() reflect.Type {
@@ -182,12 +175,6 @@ func (o ManagedInstanceAzureADOnlyAuthenticationOutput) ToManagedInstanceAzureAD
 
 func (o ManagedInstanceAzureADOnlyAuthenticationOutput) ToManagedInstanceAzureADOnlyAuthenticationOutputWithContext(ctx context.Context) ManagedInstanceAzureADOnlyAuthenticationOutput {
 	return o
-}
-
-func (o ManagedInstanceAzureADOnlyAuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedInstanceAzureADOnlyAuthentication] {
-	return pulumix.Output[*ManagedInstanceAzureADOnlyAuthentication]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Azure Active Directory only Authentication enabled.

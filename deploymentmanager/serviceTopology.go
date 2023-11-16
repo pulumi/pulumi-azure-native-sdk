@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The resource representation of a service topology.
@@ -131,12 +130,6 @@ func (i *ServiceTopology) ToServiceTopologyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTopologyOutput)
 }
 
-func (i *ServiceTopology) ToOutput(ctx context.Context) pulumix.Output[*ServiceTopology] {
-	return pulumix.Output[*ServiceTopology]{
-		OutputState: i.ToServiceTopologyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceTopologyOutput struct{ *pulumi.OutputState }
 
 func (ServiceTopologyOutput) ElementType() reflect.Type {
@@ -149,12 +142,6 @@ func (o ServiceTopologyOutput) ToServiceTopologyOutput() ServiceTopologyOutput {
 
 func (o ServiceTopologyOutput) ToServiceTopologyOutputWithContext(ctx context.Context) ServiceTopologyOutput {
 	return o
-}
-
-func (o ServiceTopologyOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceTopology] {
-	return pulumix.Output[*ServiceTopology]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource Id of the artifact source that contains the artifacts that can be referenced in the service units.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The integration account.
@@ -148,12 +147,6 @@ func (i *IntegrationAccount) ToIntegrationAccountOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationAccountOutput)
 }
 
-func (i *IntegrationAccount) ToOutput(ctx context.Context) pulumix.Output[*IntegrationAccount] {
-	return pulumix.Output[*IntegrationAccount]{
-		OutputState: i.ToIntegrationAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IntegrationAccountOutput struct{ *pulumi.OutputState }
 
 func (IntegrationAccountOutput) ElementType() reflect.Type {
@@ -166,12 +159,6 @@ func (o IntegrationAccountOutput) ToIntegrationAccountOutput() IntegrationAccoun
 
 func (o IntegrationAccountOutput) ToIntegrationAccountOutputWithContext(ctx context.Context) IntegrationAccountOutput {
 	return o
-}
-
-func (o IntegrationAccountOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationAccount] {
-	return pulumix.Output[*IntegrationAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The integration service environment.

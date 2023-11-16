@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified Data Lake Store virtual network rule.
@@ -83,12 +82,6 @@ func (o LookupVirtualNetworkRuleResultOutput) ToLookupVirtualNetworkRuleResultOu
 
 func (o LookupVirtualNetworkRuleResultOutput) ToLookupVirtualNetworkRuleResultOutputWithContext(ctx context.Context) LookupVirtualNetworkRuleResultOutput {
 	return o
-}
-
-func (o LookupVirtualNetworkRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVirtualNetworkRuleResult] {
-	return pulumix.Output[LookupVirtualNetworkRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource identifier.

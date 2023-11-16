@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -49,12 +48,6 @@ func (i DatabaseInfoArgs) ToDatabaseInfoOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInfoOutput)
 }
 
-func (i DatabaseInfoArgs) ToOutput(ctx context.Context) pulumix.Output[DatabaseInfo] {
-	return pulumix.Output[DatabaseInfo]{
-		OutputState: i.ToDatabaseInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatabaseInfoArrayInput is an input type that accepts DatabaseInfoArray and DatabaseInfoArrayOutput values.
 // You can construct a concrete instance of `DatabaseInfoArrayInput` via:
 //
@@ -80,12 +73,6 @@ func (i DatabaseInfoArray) ToDatabaseInfoArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInfoArrayOutput)
 }
 
-func (i DatabaseInfoArray) ToOutput(ctx context.Context) pulumix.Output[[]DatabaseInfo] {
-	return pulumix.Output[[]DatabaseInfo]{
-		OutputState: i.ToDatabaseInfoArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Project Database Details
 type DatabaseInfoOutput struct{ *pulumi.OutputState }
 
@@ -99,12 +86,6 @@ func (o DatabaseInfoOutput) ToDatabaseInfoOutput() DatabaseInfoOutput {
 
 func (o DatabaseInfoOutput) ToDatabaseInfoOutputWithContext(ctx context.Context) DatabaseInfoOutput {
 	return o
-}
-
-func (o DatabaseInfoOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInfo] {
-	return pulumix.Output[DatabaseInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the database
@@ -124,12 +105,6 @@ func (o DatabaseInfoArrayOutput) ToDatabaseInfoArrayOutput() DatabaseInfoArrayOu
 
 func (o DatabaseInfoArrayOutput) ToDatabaseInfoArrayOutputWithContext(ctx context.Context) DatabaseInfoArrayOutput {
 	return o
-}
-
-func (o DatabaseInfoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DatabaseInfo] {
-	return pulumix.Output[[]DatabaseInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInfoArrayOutput) Index(i pulumi.IntInput) DatabaseInfoOutput {
@@ -159,12 +134,6 @@ func (o DatabaseInfoResponseOutput) ToDatabaseInfoResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o DatabaseInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DatabaseInfoResponse] {
-	return pulumix.Output[DatabaseInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the database
 func (o DatabaseInfoResponseOutput) SourceDatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseInfoResponse) string { return v.SourceDatabaseName }).(pulumi.StringOutput)
@@ -182,12 +151,6 @@ func (o DatabaseInfoResponseArrayOutput) ToDatabaseInfoResponseArrayOutput() Dat
 
 func (o DatabaseInfoResponseArrayOutput) ToDatabaseInfoResponseArrayOutputWithContext(ctx context.Context) DatabaseInfoResponseArrayOutput {
 	return o
-}
-
-func (o DatabaseInfoResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DatabaseInfoResponse] {
-	return pulumix.Output[[]DatabaseInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatabaseInfoResponseArrayOutput) Index(i pulumi.IntInput) DatabaseInfoResponseOutput {
@@ -557,12 +520,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {

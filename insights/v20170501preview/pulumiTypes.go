@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i SubscriptionLogSettingsArgs) ToSubscriptionLogSettingsOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionLogSettingsOutput)
 }
 
-func (i SubscriptionLogSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[SubscriptionLogSettings] {
-	return pulumix.Output[SubscriptionLogSettings]{
-		OutputState: i.ToSubscriptionLogSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SubscriptionLogSettingsArrayInput is an input type that accepts SubscriptionLogSettingsArray and SubscriptionLogSettingsArrayOutput values.
 // You can construct a concrete instance of `SubscriptionLogSettingsArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i SubscriptionLogSettingsArray) ToSubscriptionLogSettingsArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionLogSettingsArrayOutput)
 }
 
-func (i SubscriptionLogSettingsArray) ToOutput(ctx context.Context) pulumix.Output[[]SubscriptionLogSettings] {
-	return pulumix.Output[[]SubscriptionLogSettings]{
-		OutputState: i.ToSubscriptionLogSettingsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Part of Subscription diagnostic setting. Specifies the settings for a particular log.
 type SubscriptionLogSettingsOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o SubscriptionLogSettingsOutput) ToSubscriptionLogSettingsOutput() Subscri
 
 func (o SubscriptionLogSettingsOutput) ToSubscriptionLogSettingsOutputWithContext(ctx context.Context) SubscriptionLogSettingsOutput {
 	return o
-}
-
-func (o SubscriptionLogSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionLogSettings] {
-	return pulumix.Output[SubscriptionLogSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of a Subscription Diagnostic Log category for a resource type this setting is applied to.
@@ -133,12 +114,6 @@ func (o SubscriptionLogSettingsArrayOutput) ToSubscriptionLogSettingsArrayOutput
 
 func (o SubscriptionLogSettingsArrayOutput) ToSubscriptionLogSettingsArrayOutputWithContext(ctx context.Context) SubscriptionLogSettingsArrayOutput {
 	return o
-}
-
-func (o SubscriptionLogSettingsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubscriptionLogSettings] {
-	return pulumix.Output[[]SubscriptionLogSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubscriptionLogSettingsArrayOutput) Index(i pulumi.IntInput) SubscriptionLogSettingsOutput {
@@ -170,12 +145,6 @@ func (o SubscriptionLogSettingsResponseOutput) ToSubscriptionLogSettingsResponse
 	return o
 }
 
-func (o SubscriptionLogSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionLogSettingsResponse] {
-	return pulumix.Output[SubscriptionLogSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of a Subscription Diagnostic Log category for a resource type this setting is applied to.
 func (o SubscriptionLogSettingsResponseOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubscriptionLogSettingsResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
@@ -198,12 +167,6 @@ func (o SubscriptionLogSettingsResponseArrayOutput) ToSubscriptionLogSettingsRes
 
 func (o SubscriptionLogSettingsResponseArrayOutput) ToSubscriptionLogSettingsResponseArrayOutputWithContext(ctx context.Context) SubscriptionLogSettingsResponseArrayOutput {
 	return o
-}
-
-func (o SubscriptionLogSettingsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SubscriptionLogSettingsResponse] {
-	return pulumix.Output[[]SubscriptionLogSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubscriptionLogSettingsResponseArrayOutput) Index(i pulumi.IntInput) SubscriptionLogSettingsResponseOutput {

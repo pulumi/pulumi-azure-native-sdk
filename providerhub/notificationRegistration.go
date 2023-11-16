@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The notification registration definition.
@@ -124,12 +123,6 @@ func (i *NotificationRegistration) ToNotificationRegistrationOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationRegistrationOutput)
 }
 
-func (i *NotificationRegistration) ToOutput(ctx context.Context) pulumix.Output[*NotificationRegistration] {
-	return pulumix.Output[*NotificationRegistration]{
-		OutputState: i.ToNotificationRegistrationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NotificationRegistrationOutput struct{ *pulumi.OutputState }
 
 func (NotificationRegistrationOutput) ElementType() reflect.Type {
@@ -142,12 +135,6 @@ func (o NotificationRegistrationOutput) ToNotificationRegistrationOutput() Notif
 
 func (o NotificationRegistrationOutput) ToNotificationRegistrationOutputWithContext(ctx context.Context) NotificationRegistrationOutput {
 	return o
-}
-
-func (o NotificationRegistrationOutput) ToOutput(ctx context.Context) pulumix.Output[*NotificationRegistration] {
-	return pulumix.Output[*NotificationRegistration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

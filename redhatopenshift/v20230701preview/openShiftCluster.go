@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // OpenShiftCluster represents an Azure Red Hat OpenShift cluster.
@@ -195,12 +194,6 @@ func (i *OpenShiftCluster) ToOpenShiftClusterOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftClusterOutput)
 }
 
-func (i *OpenShiftCluster) ToOutput(ctx context.Context) pulumix.Output[*OpenShiftCluster] {
-	return pulumix.Output[*OpenShiftCluster]{
-		OutputState: i.ToOpenShiftClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OpenShiftClusterOutput struct{ *pulumi.OutputState }
 
 func (OpenShiftClusterOutput) ElementType() reflect.Type {
@@ -213,12 +206,6 @@ func (o OpenShiftClusterOutput) ToOpenShiftClusterOutput() OpenShiftClusterOutpu
 
 func (o OpenShiftClusterOutput) ToOpenShiftClusterOutputWithContext(ctx context.Context) OpenShiftClusterOutput {
 	return o
-}
-
-func (o OpenShiftClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenShiftCluster] {
-	return pulumix.Output[*OpenShiftCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The cluster API server profile.

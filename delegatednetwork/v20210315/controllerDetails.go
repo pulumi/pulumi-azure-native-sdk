@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an instance of a DNC controller.
@@ -140,12 +139,6 @@ func (i *ControllerDetails) ToControllerDetailsOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ControllerDetailsOutput)
 }
 
-func (i *ControllerDetails) ToOutput(ctx context.Context) pulumix.Output[*ControllerDetails] {
-	return pulumix.Output[*ControllerDetails]{
-		OutputState: i.ToControllerDetailsOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ControllerDetailsOutput struct{ *pulumi.OutputState }
 
 func (ControllerDetailsOutput) ElementType() reflect.Type {
@@ -158,12 +151,6 @@ func (o ControllerDetailsOutput) ToControllerDetailsOutput() ControllerDetailsOu
 
 func (o ControllerDetailsOutput) ToControllerDetailsOutputWithContext(ctx context.Context) ControllerDetailsOutput {
 	return o
-}
-
-func (o ControllerDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[*ControllerDetails] {
-	return pulumix.Output[*ControllerDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 // dnc application id should be used by customer to authenticate with dnc gateway.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the alert rule.
@@ -108,12 +107,6 @@ func (o LookupFusionAlertRuleResultOutput) ToLookupFusionAlertRuleResultOutput()
 
 func (o LookupFusionAlertRuleResultOutput) ToLookupFusionAlertRuleResultOutputWithContext(ctx context.Context) LookupFusionAlertRuleResultOutput {
 	return o
-}
-
-func (o LookupFusionAlertRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFusionAlertRuleResult] {
-	return pulumix.Output[LookupFusionAlertRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Name of the alert rule template used to create this rule.

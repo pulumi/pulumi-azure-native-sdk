@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get custom image.
@@ -116,12 +115,6 @@ func (o LookupCustomImageResultOutput) ToLookupCustomImageResultOutput() LookupC
 
 func (o LookupCustomImageResultOutput) ToLookupCustomImageResultOutputWithContext(ctx context.Context) LookupCustomImageResultOutput {
 	return o
-}
-
-func (o LookupCustomImageResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCustomImageResult] {
-	return pulumix.Output[LookupCustomImageResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The author of the custom image.

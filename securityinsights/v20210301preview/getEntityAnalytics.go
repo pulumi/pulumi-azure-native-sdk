@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a setting.
@@ -94,12 +93,6 @@ func (o LookupEntityAnalyticsResultOutput) ToLookupEntityAnalyticsResultOutput()
 
 func (o LookupEntityAnalyticsResultOutput) ToLookupEntityAnalyticsResultOutputWithContext(ctx context.Context) LookupEntityAnalyticsResultOutput {
 	return o
-}
-
-func (o LookupEntityAnalyticsResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEntityAnalyticsResult] {
-	return pulumix.Output[LookupEntityAnalyticsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Etag of the azure resource

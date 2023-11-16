@@ -79,12 +79,6 @@ func (o DeploymentModeOutput) ToDeploymentModePtrOutputWithContext(ctx context.C
 	}).(DeploymentModePtrOutput)
 }
 
-func (o DeploymentModeOutput) ToOutput(ctx context.Context) pulumix.Output[DeploymentMode] {
-	return pulumix.Output[DeploymentMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DeploymentModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -118,12 +112,6 @@ func (o DeploymentModePtrOutput) ToDeploymentModePtrOutput() DeploymentModePtrOu
 
 func (o DeploymentModePtrOutput) ToDeploymentModePtrOutputWithContext(ctx context.Context) DeploymentModePtrOutput {
 	return o
-}
-
-func (o DeploymentModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DeploymentMode] {
-	return pulumix.Output[*DeploymentMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeploymentModePtrOutput) Elem() DeploymentModeOutput {

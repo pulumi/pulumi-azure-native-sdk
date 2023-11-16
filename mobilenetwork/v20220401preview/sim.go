@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // SIM resource.
@@ -208,12 +207,6 @@ func (i *Sim) ToSimOutputWithContext(ctx context.Context) SimOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SimOutput)
 }
 
-func (i *Sim) ToOutput(ctx context.Context) pulumix.Output[*Sim] {
-	return pulumix.Output[*Sim]{
-		OutputState: i.ToSimOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SimOutput struct{ *pulumi.OutputState }
 
 func (SimOutput) ElementType() reflect.Type {
@@ -226,12 +219,6 @@ func (o SimOutput) ToSimOutput() SimOutput {
 
 func (o SimOutput) ToSimOutputWithContext(ctx context.Context) SimOutput {
 	return o
-}
-
-func (o SimOutput) ToOutput(ctx context.Context) pulumix.Output[*Sim] {
-	return pulumix.Output[*Sim]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

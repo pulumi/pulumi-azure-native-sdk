@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Governance rule over a given scope
@@ -200,12 +199,6 @@ func (i *GovernanceRule) ToGovernanceRuleOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(GovernanceRuleOutput)
 }
 
-func (i *GovernanceRule) ToOutput(ctx context.Context) pulumix.Output[*GovernanceRule] {
-	return pulumix.Output[*GovernanceRule]{
-		OutputState: i.ToGovernanceRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GovernanceRuleOutput struct{ *pulumi.OutputState }
 
 func (GovernanceRuleOutput) ElementType() reflect.Type {
@@ -218,12 +211,6 @@ func (o GovernanceRuleOutput) ToGovernanceRuleOutput() GovernanceRuleOutput {
 
 func (o GovernanceRuleOutput) ToGovernanceRuleOutputWithContext(ctx context.Context) GovernanceRuleOutput {
 	return o
-}
-
-func (o GovernanceRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*GovernanceRule] {
-	return pulumix.Output[*GovernanceRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the governance rule

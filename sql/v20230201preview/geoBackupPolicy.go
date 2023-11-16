@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Geo backup policy.
@@ -159,12 +158,6 @@ func (i *GeoBackupPolicy) ToGeoBackupPolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(GeoBackupPolicyOutput)
 }
 
-func (i *GeoBackupPolicy) ToOutput(ctx context.Context) pulumix.Output[*GeoBackupPolicy] {
-	return pulumix.Output[*GeoBackupPolicy]{
-		OutputState: i.ToGeoBackupPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GeoBackupPolicyOutput struct{ *pulumi.OutputState }
 
 func (GeoBackupPolicyOutput) ElementType() reflect.Type {
@@ -177,12 +170,6 @@ func (o GeoBackupPolicyOutput) ToGeoBackupPolicyOutput() GeoBackupPolicyOutput {
 
 func (o GeoBackupPolicyOutput) ToGeoBackupPolicyOutputWithContext(ctx context.Context) GeoBackupPolicyOutput {
 	return o
-}
-
-func (o GeoBackupPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*GeoBackupPolicy] {
-	return pulumix.Output[*GeoBackupPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Kind of geo backup policy.  This is metadata used for the Azure portal experience.

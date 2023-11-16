@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List stop sell notifications for both stop sell offers and stop sell plans
@@ -70,12 +69,6 @@ func (o ListPrivateStoreStopSellOffersPlansNotificationsResultOutput) ToListPriv
 
 func (o ListPrivateStoreStopSellOffersPlansNotificationsResultOutput) ToListPrivateStoreStopSellOffersPlansNotificationsResultOutputWithContext(ctx context.Context) ListPrivateStoreStopSellOffersPlansNotificationsResultOutput {
 	return o
-}
-
-func (o ListPrivateStoreStopSellOffersPlansNotificationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListPrivateStoreStopSellOffersPlansNotificationsResult] {
-	return pulumix.Output[ListPrivateStoreStopSellOffersPlansNotificationsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ListPrivateStoreStopSellOffersPlansNotificationsResultOutput) StopSellNotifications() StopSellOffersPlansNotificationsListPropertiesResponseArrayOutput {

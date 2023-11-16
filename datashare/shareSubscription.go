@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A share subscription data transfer object.
@@ -181,12 +180,6 @@ func (i *ShareSubscription) ToShareSubscriptionOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ShareSubscriptionOutput)
 }
 
-func (i *ShareSubscription) ToOutput(ctx context.Context) pulumix.Output[*ShareSubscription] {
-	return pulumix.Output[*ShareSubscription]{
-		OutputState: i.ToShareSubscriptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ShareSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (ShareSubscriptionOutput) ElementType() reflect.Type {
@@ -199,12 +192,6 @@ func (o ShareSubscriptionOutput) ToShareSubscriptionOutput() ShareSubscriptionOu
 
 func (o ShareSubscriptionOutput) ToShareSubscriptionOutputWithContext(ctx context.Context) ShareSubscriptionOutput {
 	return o
-}
-
-func (o ShareSubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[*ShareSubscription] {
-	return pulumix.Output[*ShareSubscription]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time at which the share subscription was created.

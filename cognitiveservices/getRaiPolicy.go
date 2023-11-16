@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified Content Filters associated with the Azure OpenAI account.
@@ -90,12 +89,6 @@ func (o LookupRaiPolicyResultOutput) ToLookupRaiPolicyResultOutput() LookupRaiPo
 
 func (o LookupRaiPolicyResultOutput) ToLookupRaiPolicyResultOutputWithContext(ctx context.Context) LookupRaiPolicyResultOutput {
 	return o
-}
-
-func (o LookupRaiPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRaiPolicyResult] {
-	return pulumix.Output[LookupRaiPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Etag.

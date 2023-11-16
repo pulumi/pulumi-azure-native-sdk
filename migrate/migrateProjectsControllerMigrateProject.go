@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Migrate project.
@@ -138,12 +137,6 @@ func (i *MigrateProjectsControllerMigrateProject) ToMigrateProjectsControllerMig
 	return pulumi.ToOutputWithContext(ctx, i).(MigrateProjectsControllerMigrateProjectOutput)
 }
 
-func (i *MigrateProjectsControllerMigrateProject) ToOutput(ctx context.Context) pulumix.Output[*MigrateProjectsControllerMigrateProject] {
-	return pulumix.Output[*MigrateProjectsControllerMigrateProject]{
-		OutputState: i.ToMigrateProjectsControllerMigrateProjectOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MigrateProjectsControllerMigrateProjectOutput struct{ *pulumi.OutputState }
 
 func (MigrateProjectsControllerMigrateProjectOutput) ElementType() reflect.Type {
@@ -156,12 +149,6 @@ func (o MigrateProjectsControllerMigrateProjectOutput) ToMigrateProjectsControll
 
 func (o MigrateProjectsControllerMigrateProjectOutput) ToMigrateProjectsControllerMigrateProjectOutputWithContext(ctx context.Context) MigrateProjectsControllerMigrateProjectOutput {
 	return o
-}
-
-func (o MigrateProjectsControllerMigrateProjectOutput) ToOutput(ctx context.Context) pulumix.Output[*MigrateProjectsControllerMigrateProject] {
-	return pulumix.Output[*MigrateProjectsControllerMigrateProject]{
-		OutputState: o.OutputState,
-	}
 }
 
 // For optimistic concurrency control.

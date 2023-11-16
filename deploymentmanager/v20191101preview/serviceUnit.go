@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents the response of a service unit resource.
@@ -162,12 +161,6 @@ func (i *ServiceUnit) ToServiceUnitOutputWithContext(ctx context.Context) Servic
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceUnitOutput)
 }
 
-func (i *ServiceUnit) ToOutput(ctx context.Context) pulumix.Output[*ServiceUnit] {
-	return pulumix.Output[*ServiceUnit]{
-		OutputState: i.ToServiceUnitOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceUnitOutput struct{ *pulumi.OutputState }
 
 func (ServiceUnitOutput) ElementType() reflect.Type {
@@ -180,12 +173,6 @@ func (o ServiceUnitOutput) ToServiceUnitOutput() ServiceUnitOutput {
 
 func (o ServiceUnitOutput) ToServiceUnitOutputWithContext(ctx context.Context) ServiceUnitOutput {
 	return o
-}
-
-func (o ServiceUnitOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceUnit] {
-	return pulumix.Output[*ServiceUnit]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The artifacts for the service unit.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a disaster recovery configuration.
@@ -133,12 +132,6 @@ func (i *DisasterRecoveryConfiguration) ToDisasterRecoveryConfigurationOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(DisasterRecoveryConfigurationOutput)
 }
 
-func (i *DisasterRecoveryConfiguration) ToOutput(ctx context.Context) pulumix.Output[*DisasterRecoveryConfiguration] {
-	return pulumix.Output[*DisasterRecoveryConfiguration]{
-		OutputState: i.ToDisasterRecoveryConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DisasterRecoveryConfigurationOutput struct{ *pulumi.OutputState }
 
 func (DisasterRecoveryConfigurationOutput) ElementType() reflect.Type {
@@ -151,12 +144,6 @@ func (o DisasterRecoveryConfigurationOutput) ToDisasterRecoveryConfigurationOutp
 
 func (o DisasterRecoveryConfigurationOutput) ToDisasterRecoveryConfigurationOutputWithContext(ctx context.Context) DisasterRecoveryConfigurationOutput {
 	return o
-}
-
-func (o DisasterRecoveryConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*DisasterRecoveryConfiguration] {
-	return pulumix.Output[*DisasterRecoveryConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether or not failover can be done automatically.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns details of the API definition.
@@ -102,12 +101,6 @@ func (o LookupApiDefinitionResultOutput) ToLookupApiDefinitionResultOutput() Loo
 
 func (o LookupApiDefinitionResultOutput) ToLookupApiDefinitionResultOutputWithContext(ctx context.Context) LookupApiDefinitionResultOutput {
 	return o
-}
-
-func (o LookupApiDefinitionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApiDefinitionResult] {
-	return pulumix.Output[LookupApiDefinitionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // API definition description.

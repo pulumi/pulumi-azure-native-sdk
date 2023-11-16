@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get private endpoint connection properties
@@ -88,12 +87,6 @@ func (o LookupIotDpsResourcePrivateEndpointConnectionResultOutput) ToLookupIotDp
 
 func (o LookupIotDpsResourcePrivateEndpointConnectionResultOutput) ToLookupIotDpsResourcePrivateEndpointConnectionResultOutputWithContext(ctx context.Context) LookupIotDpsResourcePrivateEndpointConnectionResultOutput {
 	return o
-}
-
-func (o LookupIotDpsResourcePrivateEndpointConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIotDpsResourcePrivateEndpointConnectionResult] {
-	return pulumix.Output[LookupIotDpsResourcePrivateEndpointConnectionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource identifier.

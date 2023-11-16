@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get Network Tap Rule resource details.
@@ -119,12 +118,6 @@ func (o LookupNetworkTapRuleResultOutput) ToLookupNetworkTapRuleResultOutput() L
 
 func (o LookupNetworkTapRuleResultOutput) ToLookupNetworkTapRuleResultOutputWithContext(ctx context.Context) LookupNetworkTapRuleResultOutput {
 	return o
-}
-
-func (o LookupNetworkTapRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkTapRuleResult] {
-	return pulumix.Output[LookupNetworkTapRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Administrative state of the resource.

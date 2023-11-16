@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get service fabric.
@@ -114,12 +113,6 @@ func (o LookupServiceFabricResultOutput) ToLookupServiceFabricResultOutput() Loo
 
 func (o LookupServiceFabricResultOutput) ToLookupServiceFabricResultOutputWithContext(ctx context.Context) LookupServiceFabricResultOutput {
 	return o
-}
-
-func (o LookupServiceFabricResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceFabricResult] {
-	return pulumix.Output[LookupServiceFabricResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The applicable schedule for the virtual machine.

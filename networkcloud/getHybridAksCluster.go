@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the additional details related to the provided Hybrid AKS provisioned cluster.
@@ -112,12 +111,6 @@ func (o LookupHybridAksClusterResultOutput) ToLookupHybridAksClusterResultOutput
 
 func (o LookupHybridAksClusterResultOutput) ToLookupHybridAksClusterResultOutputWithContext(ctx context.Context) LookupHybridAksClusterResultOutput {
 	return o
-}
-
-func (o LookupHybridAksClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHybridAksClusterResult] {
-	return pulumix.Output[LookupHybridAksClusterResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of resource IDs for the workload networks associated with the Hybrid AKS cluster. It can be any of l2Networks, l3Networks, or trunkedNetworks resources. This field will also contain one cloudServicesNetwork and one defaultCniNetwork.

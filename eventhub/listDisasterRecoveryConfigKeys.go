@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the primary and secondary connection strings for the Namespace.
@@ -96,12 +95,6 @@ func (o ListDisasterRecoveryConfigKeysResultOutput) ToListDisasterRecoveryConfig
 
 func (o ListDisasterRecoveryConfigKeysResultOutput) ToListDisasterRecoveryConfigKeysResultOutputWithContext(ctx context.Context) ListDisasterRecoveryConfigKeysResultOutput {
 	return o
-}
-
-func (o ListDisasterRecoveryConfigKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListDisasterRecoveryConfigKeysResult] {
-	return pulumix.Output[ListDisasterRecoveryConfigKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Primary connection string of the alias if GEO DR is enabled

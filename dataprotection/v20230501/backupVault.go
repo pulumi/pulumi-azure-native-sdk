@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Backup Vault Resource
@@ -207,12 +206,6 @@ func (i *BackupVault) ToBackupVaultOutputWithContext(ctx context.Context) Backup
 	return pulumi.ToOutputWithContext(ctx, i).(BackupVaultOutput)
 }
 
-func (i *BackupVault) ToOutput(ctx context.Context) pulumix.Output[*BackupVault] {
-	return pulumix.Output[*BackupVault]{
-		OutputState: i.ToBackupVaultOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BackupVaultOutput struct{ *pulumi.OutputState }
 
 func (BackupVaultOutput) ElementType() reflect.Type {
@@ -225,12 +218,6 @@ func (o BackupVaultOutput) ToBackupVaultOutput() BackupVaultOutput {
 
 func (o BackupVaultOutput) ToBackupVaultOutputWithContext(ctx context.Context) BackupVaultOutput {
 	return o
-}
-
-func (o BackupVaultOutput) ToOutput(ctx context.Context) pulumix.Output[*BackupVault] {
-	return pulumix.Output[*BackupVault]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional ETag.

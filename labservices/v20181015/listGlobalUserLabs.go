@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List labs for the user.
@@ -69,12 +68,6 @@ func (o ListGlobalUserLabsResultOutput) ToListGlobalUserLabsResultOutput() ListG
 
 func (o ListGlobalUserLabsResultOutput) ToListGlobalUserLabsResultOutputWithContext(ctx context.Context) ListGlobalUserLabsResultOutput {
 	return o
-}
-
-func (o ListGlobalUserLabsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListGlobalUserLabsResult] {
-	return pulumix.Output[ListGlobalUserLabsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of all the labs

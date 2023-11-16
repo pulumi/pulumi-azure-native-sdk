@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties of the specified scope map.
@@ -96,12 +95,6 @@ func (o LookupScopeMapResultOutput) ToLookupScopeMapResultOutput() LookupScopeMa
 
 func (o LookupScopeMapResultOutput) ToLookupScopeMapResultOutputWithContext(ctx context.Context) LookupScopeMapResultOutput {
 	return o
-}
-
-func (o LookupScopeMapResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupScopeMapResult] {
-	return pulumix.Output[LookupScopeMapResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of scoped permissions for registry artifacts.

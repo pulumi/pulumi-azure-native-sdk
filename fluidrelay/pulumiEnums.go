@@ -79,12 +79,6 @@ func (o CmkIdentityTypeOutput) ToCmkIdentityTypePtrOutputWithContext(ctx context
 	}).(CmkIdentityTypePtrOutput)
 }
 
-func (o CmkIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CmkIdentityType] {
-	return pulumix.Output[CmkIdentityType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CmkIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -118,12 +112,6 @@ func (o CmkIdentityTypePtrOutput) ToCmkIdentityTypePtrOutput() CmkIdentityTypePt
 
 func (o CmkIdentityTypePtrOutput) ToCmkIdentityTypePtrOutputWithContext(ctx context.Context) CmkIdentityTypePtrOutput {
 	return o
-}
-
-func (o CmkIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CmkIdentityType] {
-	return pulumix.Output[*CmkIdentityType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CmkIdentityTypePtrOutput) Elem() CmkIdentityTypeOutput {
@@ -273,12 +261,6 @@ func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(c
 	}).(ResourceIdentityTypePtrOutput)
 }
 
-func (o ResourceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityType] {
-	return pulumix.Output[ResourceIdentityType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -312,12 +294,6 @@ func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() Resourc
 
 func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return o
-}
-
-func (o ResourceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {

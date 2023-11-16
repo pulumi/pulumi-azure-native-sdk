@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a SqlAssessmentV2
@@ -169,12 +168,6 @@ func (o LookupSqlAssessmentV2OperationResultOutput) ToLookupSqlAssessmentV2Opera
 
 func (o LookupSqlAssessmentV2OperationResultOutput) ToLookupSqlAssessmentV2OperationResultOutputWithContext(ctx context.Context) LookupSqlAssessmentV2OperationResultOutput {
 	return o
-}
-
-func (o LookupSqlAssessmentV2OperationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSqlAssessmentV2OperationResult] {
-	return pulumix.Output[LookupSqlAssessmentV2OperationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Assessment type of the assessment.

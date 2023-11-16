@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an integration account agreement.
@@ -103,12 +102,6 @@ func (o LookupAgreementResultOutput) ToLookupAgreementResultOutput() LookupAgree
 
 func (o LookupAgreementResultOutput) ToLookupAgreementResultOutputWithContext(ctx context.Context) LookupAgreementResultOutput {
 	return o
-}
-
-func (o LookupAgreementResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAgreementResult] {
-	return pulumix.Output[LookupAgreementResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The agreement type.

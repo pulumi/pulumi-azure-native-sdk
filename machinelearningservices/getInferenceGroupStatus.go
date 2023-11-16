@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2023-08-01-preview.
@@ -108,12 +107,6 @@ func (o GetInferenceGroupStatusResultOutput) ToGetInferenceGroupStatusResultOutp
 
 func (o GetInferenceGroupStatusResultOutput) ToGetInferenceGroupStatusResultOutputWithContext(ctx context.Context) GetInferenceGroupStatusResultOutput {
 	return o
-}
-
-func (o GetInferenceGroupStatusResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetInferenceGroupStatusResult] {
-	return pulumix.Output[GetInferenceGroupStatusResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the actual capacity info for the group.

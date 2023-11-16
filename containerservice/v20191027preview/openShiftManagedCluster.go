@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // OpenShift Managed cluster.
@@ -198,12 +197,6 @@ func (i *OpenShiftManagedCluster) ToOpenShiftManagedClusterOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(OpenShiftManagedClusterOutput)
 }
 
-func (i *OpenShiftManagedCluster) ToOutput(ctx context.Context) pulumix.Output[*OpenShiftManagedCluster] {
-	return pulumix.Output[*OpenShiftManagedCluster]{
-		OutputState: i.ToOpenShiftManagedClusterOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OpenShiftManagedClusterOutput struct{ *pulumi.OutputState }
 
 func (OpenShiftManagedClusterOutput) ElementType() reflect.Type {
@@ -216,12 +209,6 @@ func (o OpenShiftManagedClusterOutput) ToOpenShiftManagedClusterOutput() OpenShi
 
 func (o OpenShiftManagedClusterOutput) ToOpenShiftManagedClusterOutputWithContext(ctx context.Context) OpenShiftManagedClusterOutput {
 	return o
-}
-
-func (o OpenShiftManagedClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*OpenShiftManagedCluster] {
-	return pulumix.Output[*OpenShiftManagedCluster]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration of OpenShift cluster VMs.

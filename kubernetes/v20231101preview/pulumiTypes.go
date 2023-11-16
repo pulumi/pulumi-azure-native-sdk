@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i AadProfileArgs) ToAadProfileOutputWithContext(ctx context.Context) AadPr
 	return pulumi.ToOutputWithContext(ctx, i).(AadProfileOutput)
 }
 
-func (i AadProfileArgs) ToOutput(ctx context.Context) pulumix.Output[AadProfile] {
-	return pulumix.Output[AadProfile]{
-		OutputState: i.ToAadProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AadProfileArgs) ToAadProfilePtrOutput() AadProfilePtrOutput {
 	return i.ToAadProfilePtrOutputWithContext(context.Background())
 }
@@ -104,12 +97,6 @@ func (i *aadProfilePtrType) ToAadProfilePtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(AadProfilePtrOutput)
 }
 
-func (i *aadProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*AadProfile] {
-	return pulumix.Output[*AadProfile]{
-		OutputState: i.ToAadProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AAD Profile specifies attributes for Azure Active Directory integration.
 type AadProfileOutput struct{ *pulumi.OutputState }
 
@@ -133,12 +120,6 @@ func (o AadProfileOutput) ToAadProfilePtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AadProfile) *AadProfile {
 		return &v
 	}).(AadProfilePtrOutput)
-}
-
-func (o AadProfileOutput) ToOutput(ctx context.Context) pulumix.Output[AadProfile] {
-	return pulumix.Output[AadProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of AAD group object IDs that will have admin role of the cluster.
@@ -168,12 +149,6 @@ func (o AadProfilePtrOutput) ToAadProfilePtrOutput() AadProfilePtrOutput {
 
 func (o AadProfilePtrOutput) ToAadProfilePtrOutputWithContext(ctx context.Context) AadProfilePtrOutput {
 	return o
-}
-
-func (o AadProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AadProfile] {
-	return pulumix.Output[*AadProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AadProfilePtrOutput) Elem() AadProfileOutput {
@@ -241,12 +216,6 @@ func (o AadProfileResponseOutput) ToAadProfileResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o AadProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AadProfileResponse] {
-	return pulumix.Output[AadProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of AAD group object IDs that will have admin role of the cluster.
 func (o AadProfileResponseOutput) AdminGroupObjectIDs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AadProfileResponse) []string { return v.AdminGroupObjectIDs }).(pulumi.StringArrayOutput)
@@ -274,12 +243,6 @@ func (o AadProfileResponsePtrOutput) ToAadProfileResponsePtrOutput() AadProfileR
 
 func (o AadProfileResponsePtrOutput) ToAadProfileResponsePtrOutputWithContext(ctx context.Context) AadProfileResponsePtrOutput {
 	return o
-}
-
-func (o AadProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AadProfileResponse] {
-	return pulumix.Output[*AadProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AadProfileResponsePtrOutput) Elem() AadProfileResponseOutput {
@@ -385,12 +348,6 @@ func (i ArcAgentProfileArgs) ToArcAgentProfileOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ArcAgentProfileOutput)
 }
 
-func (i ArcAgentProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ArcAgentProfile] {
-	return pulumix.Output[ArcAgentProfile]{
-		OutputState: i.ToArcAgentProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ArcAgentProfileArgs) ToArcAgentProfilePtrOutput() ArcAgentProfilePtrOutput {
 	return i.ToArcAgentProfilePtrOutputWithContext(context.Background())
 }
@@ -432,12 +389,6 @@ func (i *arcAgentProfilePtrType) ToArcAgentProfilePtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ArcAgentProfilePtrOutput)
 }
 
-func (i *arcAgentProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ArcAgentProfile] {
-	return pulumix.Output[*ArcAgentProfile]{
-		OutputState: i.ToArcAgentProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the Arc Agent properties for the clusters.
 type ArcAgentProfileOutput struct{ *pulumi.OutputState }
 
@@ -463,12 +414,6 @@ func (o ArcAgentProfileOutput) ToArcAgentProfilePtrOutputWithContext(ctx context
 	}).(ArcAgentProfilePtrOutput)
 }
 
-func (o ArcAgentProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ArcAgentProfile] {
-	return pulumix.Output[ArcAgentProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Indicates whether the Arc agents on the be upgraded automatically to the latest version. Defaults to Enabled.
 func (o ArcAgentProfileOutput) AgentAutoUpgrade() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ArcAgentProfile) *string { return v.AgentAutoUpgrade }).(pulumi.StringPtrOutput)
@@ -491,12 +436,6 @@ func (o ArcAgentProfilePtrOutput) ToArcAgentProfilePtrOutput() ArcAgentProfilePt
 
 func (o ArcAgentProfilePtrOutput) ToArcAgentProfilePtrOutputWithContext(ctx context.Context) ArcAgentProfilePtrOutput {
 	return o
-}
-
-func (o ArcAgentProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ArcAgentProfile] {
-	return pulumix.Output[*ArcAgentProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ArcAgentProfilePtrOutput) Elem() ArcAgentProfileOutput {
@@ -565,12 +504,6 @@ func (o ArcAgentProfileResponseOutput) ToArcAgentProfileResponseOutputWithContex
 	return o
 }
 
-func (o ArcAgentProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ArcAgentProfileResponse] {
-	return pulumix.Output[ArcAgentProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Indicates whether the Arc agents on the be upgraded automatically to the latest version. Defaults to Enabled.
 func (o ArcAgentProfileResponseOutput) AgentAutoUpgrade() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ArcAgentProfileResponse) *string { return v.AgentAutoUpgrade }).(pulumi.StringPtrOutput)
@@ -593,12 +526,6 @@ func (o ArcAgentProfileResponsePtrOutput) ToArcAgentProfileResponsePtrOutput() A
 
 func (o ArcAgentProfileResponsePtrOutput) ToArcAgentProfileResponsePtrOutputWithContext(ctx context.Context) ArcAgentProfileResponsePtrOutput {
 	return o
-}
-
-func (o ArcAgentProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ArcAgentProfileResponse] {
-	return pulumix.Output[*ArcAgentProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ArcAgentProfileResponsePtrOutput) Elem() ArcAgentProfileResponseOutput {
@@ -689,12 +616,6 @@ func (i ConnectedClusterIdentityArgs) ToConnectedClusterIdentityOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectedClusterIdentityOutput)
 }
 
-func (i ConnectedClusterIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ConnectedClusterIdentity] {
-	return pulumix.Output[ConnectedClusterIdentity]{
-		OutputState: i.ToConnectedClusterIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Identity for the connected cluster.
 type ConnectedClusterIdentityOutput struct{ *pulumi.OutputState }
 
@@ -708,12 +629,6 @@ func (o ConnectedClusterIdentityOutput) ToConnectedClusterIdentityOutput() Conne
 
 func (o ConnectedClusterIdentityOutput) ToConnectedClusterIdentityOutputWithContext(ctx context.Context) ConnectedClusterIdentityOutput {
 	return o
-}
-
-func (o ConnectedClusterIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectedClusterIdentity] {
-	return pulumix.Output[ConnectedClusterIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The type 'None' means no identity is assigned to the connected cluster.
@@ -758,12 +673,6 @@ func (o ConnectedClusterIdentityResponseOutput) ToConnectedClusterIdentityRespon
 	return o
 }
 
-func (o ConnectedClusterIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectedClusterIdentityResponse] {
-	return pulumix.Output[ConnectedClusterIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The principal id of connected cluster identity. This property will only be provided for a system assigned identity.
 func (o ConnectedClusterIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectedClusterIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -802,12 +711,6 @@ func (o CredentialResultResponseOutput) ToCredentialResultResponseOutputWithCont
 	return o
 }
 
-func (o CredentialResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CredentialResultResponse] {
-	return pulumix.Output[CredentialResultResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the credential.
 func (o CredentialResultResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v CredentialResultResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -830,12 +733,6 @@ func (o CredentialResultResponseArrayOutput) ToCredentialResultResponseArrayOutp
 
 func (o CredentialResultResponseArrayOutput) ToCredentialResultResponseArrayOutputWithContext(ctx context.Context) CredentialResultResponseArrayOutput {
 	return o
-}
-
-func (o CredentialResultResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CredentialResultResponse] {
-	return pulumix.Output[[]CredentialResultResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CredentialResultResponseArrayOutput) Index(i pulumi.IntInput) CredentialResultResponseOutput {
@@ -869,12 +766,6 @@ func (o HybridConnectionConfigResponseOutput) ToHybridConnectionConfigResponseOu
 
 func (o HybridConnectionConfigResponseOutput) ToHybridConnectionConfigResponseOutputWithContext(ctx context.Context) HybridConnectionConfigResponseOutput {
 	return o
-}
-
-func (o HybridConnectionConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HybridConnectionConfigResponse] {
-	return pulumix.Output[HybridConnectionConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Timestamp when this token will be expired.
@@ -926,12 +817,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).

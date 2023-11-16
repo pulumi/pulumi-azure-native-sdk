@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List of all zones and associated hosts for a cluster
@@ -80,12 +79,6 @@ func (o ListClusterZonesResultOutput) ToListClusterZonesResultOutput() ListClust
 
 func (o ListClusterZonesResultOutput) ToListClusterZonesResultOutputWithContext(ctx context.Context) ListClusterZonesResultOutput {
 	return o
-}
-
-func (o ListClusterZonesResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListClusterZonesResult] {
-	return pulumix.Output[ListClusterZonesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Zone and associated hosts info

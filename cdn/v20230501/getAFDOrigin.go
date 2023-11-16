@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an existing origin within an origin group.
@@ -133,12 +132,6 @@ func (o LookupAFDOriginResultOutput) ToLookupAFDOriginResultOutput() LookupAFDOr
 
 func (o LookupAFDOriginResultOutput) ToLookupAFDOriginResultOutputWithContext(ctx context.Context) LookupAFDOriginResultOutput {
 	return o
-}
-
-func (o LookupAFDOriginResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAFDOriginResult] {
-	return pulumix.Output[LookupAFDOriginResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource reference to the Azure origin resource.

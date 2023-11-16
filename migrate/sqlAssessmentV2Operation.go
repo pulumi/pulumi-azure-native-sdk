@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // SQL Assessment REST resource.
@@ -345,12 +344,6 @@ func (i *SqlAssessmentV2Operation) ToSqlAssessmentV2OperationOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(SqlAssessmentV2OperationOutput)
 }
 
-func (i *SqlAssessmentV2Operation) ToOutput(ctx context.Context) pulumix.Output[*SqlAssessmentV2Operation] {
-	return pulumix.Output[*SqlAssessmentV2Operation]{
-		OutputState: i.ToSqlAssessmentV2OperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SqlAssessmentV2OperationOutput struct{ *pulumi.OutputState }
 
 func (SqlAssessmentV2OperationOutput) ElementType() reflect.Type {
@@ -363,12 +356,6 @@ func (o SqlAssessmentV2OperationOutput) ToSqlAssessmentV2OperationOutput() SqlAs
 
 func (o SqlAssessmentV2OperationOutput) ToSqlAssessmentV2OperationOutputWithContext(ctx context.Context) SqlAssessmentV2OperationOutput {
 	return o
-}
-
-func (o SqlAssessmentV2OperationOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlAssessmentV2Operation] {
-	return pulumix.Output[*SqlAssessmentV2Operation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Assessment type of the assessment.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A custom image.
@@ -197,12 +196,6 @@ func (i *CustomImage) ToCustomImageOutputWithContext(ctx context.Context) Custom
 	return pulumi.ToOutputWithContext(ctx, i).(CustomImageOutput)
 }
 
-func (i *CustomImage) ToOutput(ctx context.Context) pulumix.Output[*CustomImage] {
-	return pulumix.Output[*CustomImage]{
-		OutputState: i.ToCustomImageOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CustomImageOutput struct{ *pulumi.OutputState }
 
 func (CustomImageOutput) ElementType() reflect.Type {
@@ -215,12 +208,6 @@ func (o CustomImageOutput) ToCustomImageOutput() CustomImageOutput {
 
 func (o CustomImageOutput) ToCustomImageOutputWithContext(ctx context.Context) CustomImageOutput {
 	return o
-}
-
-func (o CustomImageOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomImage] {
-	return pulumix.Output[*CustomImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The author of the custom image.

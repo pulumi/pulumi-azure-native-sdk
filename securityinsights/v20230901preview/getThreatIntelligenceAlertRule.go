@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the alert rule.
@@ -104,12 +103,6 @@ func (o LookupThreatIntelligenceAlertRuleResultOutput) ToLookupThreatIntelligenc
 
 func (o LookupThreatIntelligenceAlertRuleResultOutput) ToLookupThreatIntelligenceAlertRuleResultOutputWithContext(ctx context.Context) LookupThreatIntelligenceAlertRuleResultOutput {
 	return o
-}
-
-func (o LookupThreatIntelligenceAlertRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupThreatIntelligenceAlertRuleResult] {
-	return pulumix.Output[LookupThreatIntelligenceAlertRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Name of the alert rule template used to create this rule.

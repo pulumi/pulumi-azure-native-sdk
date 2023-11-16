@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the primary and secondary connection strings for the topic.
@@ -93,12 +92,6 @@ func (o ListTopicKeysResultOutput) ToListTopicKeysResultOutput() ListTopicKeysRe
 
 func (o ListTopicKeysResultOutput) ToListTopicKeysResultOutputWithContext(ctx context.Context) ListTopicKeysResultOutput {
 	return o
-}
-
-func (o ListTopicKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListTopicKeysResult] {
-	return pulumix.Output[ListTopicKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Primary connection string of the alias if GEO DR is enabled

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get an App Service plan.
@@ -151,12 +150,6 @@ func (o LookupAppServicePlanResultOutput) ToLookupAppServicePlanResultOutput() L
 
 func (o LookupAppServicePlanResultOutput) ToLookupAppServicePlanResultOutputWithContext(ctx context.Context) LookupAppServicePlanResultOutput {
 	return o
-}
-
-func (o LookupAppServicePlanResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAppServicePlanResult] {
-	return pulumix.Output[LookupAppServicePlanResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time when the server farm free offer expires.

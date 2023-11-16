@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the details of an Asset in the Media Services account
@@ -101,12 +100,6 @@ func (o LookupAssetResultOutput) ToLookupAssetResultOutput() LookupAssetResultOu
 
 func (o LookupAssetResultOutput) ToLookupAssetResultOutputWithContext(ctx context.Context) LookupAssetResultOutput {
 	return o
-}
-
-func (o LookupAssetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAssetResult] {
-	return pulumix.Output[LookupAssetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The alternate ID of the Asset.

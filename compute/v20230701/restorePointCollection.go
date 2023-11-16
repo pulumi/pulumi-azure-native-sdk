@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Create or update Restore Point collection parameters.
@@ -157,12 +156,6 @@ func (i *RestorePointCollection) ToRestorePointCollectionOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(RestorePointCollectionOutput)
 }
 
-func (i *RestorePointCollection) ToOutput(ctx context.Context) pulumix.Output[*RestorePointCollection] {
-	return pulumix.Output[*RestorePointCollection]{
-		OutputState: i.ToRestorePointCollectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RestorePointCollectionOutput struct{ *pulumi.OutputState }
 
 func (RestorePointCollectionOutput) ElementType() reflect.Type {
@@ -175,12 +168,6 @@ func (o RestorePointCollectionOutput) ToRestorePointCollectionOutput() RestorePo
 
 func (o RestorePointCollectionOutput) ToRestorePointCollectionOutputWithContext(ctx context.Context) RestorePointCollectionOutput {
 	return o
-}
-
-func (o RestorePointCollectionOutput) ToOutput(ctx context.Context) pulumix.Output[*RestorePointCollection] {
-	return pulumix.Output[*RestorePointCollection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource location

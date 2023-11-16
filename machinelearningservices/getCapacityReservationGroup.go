@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2023-08-01-preview.
@@ -87,12 +86,6 @@ func (o LookupCapacityReservationGroupResultOutput) ToLookupCapacityReservationG
 
 func (o LookupCapacityReservationGroupResultOutput) ToLookupCapacityReservationGroupResultOutputWithContext(ctx context.Context) LookupCapacityReservationGroupResultOutput {
 	return o
-}
-
-func (o LookupCapacityReservationGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCapacityReservationGroupResult] {
-	return pulumix.Output[LookupCapacityReservationGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // [Required] Additional attributes of the entity.

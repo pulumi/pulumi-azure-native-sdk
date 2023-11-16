@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The description of the Windows IoT Device Service.
@@ -152,12 +151,6 @@ func (i *Service) ToServiceOutputWithContext(ctx context.Context) ServiceOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceOutput)
 }
 
-func (i *Service) ToOutput(ctx context.Context) pulumix.Output[*Service] {
-	return pulumix.Output[*Service]{
-		OutputState: i.ToServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceOutput struct{ *pulumi.OutputState }
 
 func (ServiceOutput) ElementType() reflect.Type {
@@ -170,12 +163,6 @@ func (o ServiceOutput) ToServiceOutput() ServiceOutput {
 
 func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOutput {
 	return o
-}
-
-func (o ServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*Service] {
-	return pulumix.Output[*Service]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Windows IoT Device Service OEM AAD domain

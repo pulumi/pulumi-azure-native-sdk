@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-12-12-preview.
@@ -170,12 +169,6 @@ func (i *MetricsConfiguration) ToMetricsConfigurationOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(MetricsConfigurationOutput)
 }
 
-func (i *MetricsConfiguration) ToOutput(ctx context.Context) pulumix.Output[*MetricsConfiguration] {
-	return pulumix.Output[*MetricsConfiguration]{
-		OutputState: i.ToMetricsConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetricsConfigurationOutput struct{ *pulumi.OutputState }
 
 func (MetricsConfigurationOutput) ElementType() reflect.Type {
@@ -188,12 +181,6 @@ func (o MetricsConfigurationOutput) ToMetricsConfigurationOutput() MetricsConfig
 
 func (o MetricsConfigurationOutput) ToMetricsConfigurationOutputWithContext(ctx context.Context) MetricsConfigurationOutput {
 	return o
-}
-
-func (o MetricsConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricsConfiguration] {
-	return pulumix.Output[*MetricsConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The interval in minutes by which metrics will be collected.

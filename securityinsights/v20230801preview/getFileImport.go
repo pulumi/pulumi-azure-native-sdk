@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a file import.
@@ -109,12 +108,6 @@ func (o LookupFileImportResultOutput) ToLookupFileImportResultOutput() LookupFil
 
 func (o LookupFileImportResultOutput) ToLookupFileImportResultOutputWithContext(ctx context.Context) LookupFileImportResultOutput {
 	return o
-}
-
-func (o LookupFileImportResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFileImportResult] {
-	return pulumix.Output[LookupFileImportResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The content type of this file.

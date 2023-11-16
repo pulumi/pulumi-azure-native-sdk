@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List of elastic traffic filters in the account
@@ -73,12 +72,6 @@ func (o ListlistAssociatedTrafficFilterResultOutput) ToListlistAssociatedTraffic
 
 func (o ListlistAssociatedTrafficFilterResultOutput) ToListlistAssociatedTrafficFilterResultOutputWithContext(ctx context.Context) ListlistAssociatedTrafficFilterResultOutput {
 	return o
-}
-
-func (o ListlistAssociatedTrafficFilterResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListlistAssociatedTrafficFilterResult] {
-	return pulumix.Output[ListlistAssociatedTrafficFilterResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of elastic traffic filters in the account

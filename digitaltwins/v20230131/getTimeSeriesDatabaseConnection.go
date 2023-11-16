@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the description of an existing time series database connection.
@@ -96,12 +95,6 @@ func (o LookupTimeSeriesDatabaseConnectionResultOutput) ToLookupTimeSeriesDataba
 
 func (o LookupTimeSeriesDatabaseConnectionResultOutput) ToLookupTimeSeriesDatabaseConnectionResultOutputWithContext(ctx context.Context) LookupTimeSeriesDatabaseConnectionResultOutput {
 	return o
-}
-
-func (o LookupTimeSeriesDatabaseConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTimeSeriesDatabaseConnectionResult] {
-	return pulumix.Output[LookupTimeSeriesDatabaseConnectionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource identifier.

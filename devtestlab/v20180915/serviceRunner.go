@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A container for a managed identity to execute DevTest lab services.
@@ -137,12 +136,6 @@ func (i *ServiceRunner) ToServiceRunnerOutputWithContext(ctx context.Context) Se
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceRunnerOutput)
 }
 
-func (i *ServiceRunner) ToOutput(ctx context.Context) pulumix.Output[*ServiceRunner] {
-	return pulumix.Output[*ServiceRunner]{
-		OutputState: i.ToServiceRunnerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServiceRunnerOutput struct{ *pulumi.OutputState }
 
 func (ServiceRunnerOutput) ElementType() reflect.Type {
@@ -155,12 +148,6 @@ func (o ServiceRunnerOutput) ToServiceRunnerOutput() ServiceRunnerOutput {
 
 func (o ServiceRunnerOutput) ToServiceRunnerOutputWithContext(ctx context.Context) ServiceRunnerOutput {
 	return o
-}
-
-func (o ServiceRunnerOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceRunner] {
-	return pulumix.Output[*ServiceRunner]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The identity of the resource.

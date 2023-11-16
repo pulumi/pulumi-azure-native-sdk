@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Defines the move resource.
@@ -139,12 +138,6 @@ func (i *MoveResource) ToMoveResourceOutputWithContext(ctx context.Context) Move
 	return pulumi.ToOutputWithContext(ctx, i).(MoveResourceOutput)
 }
 
-func (i *MoveResource) ToOutput(ctx context.Context) pulumix.Output[*MoveResource] {
-	return pulumix.Output[*MoveResource]{
-		OutputState: i.ToMoveResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MoveResourceOutput struct{ *pulumi.OutputState }
 
 func (MoveResourceOutput) ElementType() reflect.Type {
@@ -157,12 +150,6 @@ func (o MoveResourceOutput) ToMoveResourceOutput() MoveResourceOutput {
 
 func (o MoveResourceOutput) ToMoveResourceOutputWithContext(ctx context.Context) MoveResourceOutput {
 	return o
-}
-
-func (o MoveResourceOutput) ToOutput(ctx context.Context) pulumix.Output[*MoveResource] {
-	return pulumix.Output[*MoveResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a marketplace gallery image
@@ -104,12 +103,6 @@ func (o LookupMarketplaceGalleryImageResultOutput) ToLookupMarketplaceGalleryIma
 
 func (o LookupMarketplaceGalleryImageResultOutput) ToLookupMarketplaceGalleryImageResultOutputWithContext(ctx context.Context) LookupMarketplaceGalleryImageResultOutput {
 	return o
-}
-
-func (o LookupMarketplaceGalleryImageResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMarketplaceGalleryImageResult] {
-	return pulumix.Output[LookupMarketplaceGalleryImageResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]

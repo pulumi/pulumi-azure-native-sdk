@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i AuthorizationBasicRuleArgs) ToAuthorizationBasicRuleOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationBasicRuleOutput)
 }
 
-func (i AuthorizationBasicRuleArgs) ToOutput(ctx context.Context) pulumix.Output[AuthorizationBasicRule] {
-	return pulumix.Output[AuthorizationBasicRule]{
-		OutputState: i.ToAuthorizationBasicRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AuthorizationBasicRuleArrayInput is an input type that accepts AuthorizationBasicRuleArray and AuthorizationBasicRuleArrayOutput values.
 // You can construct a concrete instance of `AuthorizationBasicRuleArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i AuthorizationBasicRuleArray) ToAuthorizationBasicRuleArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationBasicRuleArrayOutput)
 }
 
-func (i AuthorizationBasicRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]AuthorizationBasicRule] {
-	return pulumix.Output[[]AuthorizationBasicRule]{
-		OutputState: i.ToAuthorizationBasicRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BasicRules of AuthorizationConfig Polar rules are not supported
 type AuthorizationBasicRuleOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o AuthorizationBasicRuleOutput) ToAuthorizationBasicRuleOutput() Authoriza
 
 func (o AuthorizationBasicRuleOutput) ToAuthorizationBasicRuleOutputWithContext(ctx context.Context) AuthorizationBasicRuleOutput {
 	return o
-}
-
-func (o AuthorizationBasicRuleOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationBasicRule] {
-	return pulumix.Output[AuthorizationBasicRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This subfield defines the broker resources that the Basic Rule is applied on.
@@ -133,12 +114,6 @@ func (o AuthorizationBasicRuleArrayOutput) ToAuthorizationBasicRuleArrayOutput()
 
 func (o AuthorizationBasicRuleArrayOutput) ToAuthorizationBasicRuleArrayOutputWithContext(ctx context.Context) AuthorizationBasicRuleArrayOutput {
 	return o
-}
-
-func (o AuthorizationBasicRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuthorizationBasicRule] {
-	return pulumix.Output[[]AuthorizationBasicRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthorizationBasicRuleArrayOutput) Index(i pulumi.IntInput) AuthorizationBasicRuleOutput {
@@ -170,12 +145,6 @@ func (o AuthorizationBasicRuleResponseOutput) ToAuthorizationBasicRuleResponseOu
 	return o
 }
 
-func (o AuthorizationBasicRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationBasicRuleResponse] {
-	return pulumix.Output[AuthorizationBasicRuleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // This subfield defines the broker resources that the Basic Rule is applied on.
 func (o AuthorizationBasicRuleResponseOutput) BrokerResources() ResourceInfoDefinitionResponseArrayOutput {
 	return o.ApplyT(func(v AuthorizationBasicRuleResponse) []ResourceInfoDefinitionResponse { return v.BrokerResources }).(ResourceInfoDefinitionResponseArrayOutput)
@@ -198,12 +167,6 @@ func (o AuthorizationBasicRuleResponseArrayOutput) ToAuthorizationBasicRuleRespo
 
 func (o AuthorizationBasicRuleResponseArrayOutput) ToAuthorizationBasicRuleResponseArrayOutputWithContext(ctx context.Context) AuthorizationBasicRuleResponseArrayOutput {
 	return o
-}
-
-func (o AuthorizationBasicRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AuthorizationBasicRuleResponse] {
-	return pulumix.Output[[]AuthorizationBasicRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AuthorizationBasicRuleResponseArrayOutput) Index(i pulumi.IntInput) AuthorizationBasicRuleResponseOutput {
@@ -275,12 +238,6 @@ func (i AuthorizationConfigArgs) ToAuthorizationConfigOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationConfigOutput)
 }
 
-func (i AuthorizationConfigArgs) ToOutput(ctx context.Context) pulumix.Output[AuthorizationConfig] {
-	return pulumix.Output[AuthorizationConfig]{
-		OutputState: i.ToAuthorizationConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Broker AuthorizationConfig properties
 type AuthorizationConfigOutput struct{ *pulumi.OutputState }
 
@@ -294,12 +251,6 @@ func (o AuthorizationConfigOutput) ToAuthorizationConfigOutput() AuthorizationCo
 
 func (o AuthorizationConfigOutput) ToAuthorizationConfigOutputWithContext(ctx context.Context) AuthorizationConfigOutput {
 	return o
-}
-
-func (o AuthorizationConfigOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationConfig] {
-	return pulumix.Output[AuthorizationConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Enable caching of the authorization rules.
@@ -346,12 +297,6 @@ func (o AuthorizationConfigResponseOutput) ToAuthorizationConfigResponseOutput()
 
 func (o AuthorizationConfigResponseOutput) ToAuthorizationConfigResponseOutputWithContext(ctx context.Context) AuthorizationConfigResponseOutput {
 	return o
-}
-
-func (o AuthorizationConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AuthorizationConfigResponse] {
-	return pulumix.Output[AuthorizationConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Enable caching of the authorization rules.
@@ -459,12 +404,6 @@ func (i AutomaticCertMethodArgs) ToAutomaticCertMethodOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AutomaticCertMethodOutput)
 }
 
-func (i AutomaticCertMethodArgs) ToOutput(ctx context.Context) pulumix.Output[AutomaticCertMethod] {
-	return pulumix.Output[AutomaticCertMethod]{
-		OutputState: i.ToAutomaticCertMethodOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AutomaticCertMethodArgs) ToAutomaticCertMethodPtrOutput() AutomaticCertMethodPtrOutput {
 	return i.ToAutomaticCertMethodPtrOutputWithContext(context.Background())
 }
@@ -506,12 +445,6 @@ func (i *automaticCertMethodPtrType) ToAutomaticCertMethodPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(AutomaticCertMethodPtrOutput)
 }
 
-func (i *automaticCertMethodPtrType) ToOutput(ctx context.Context) pulumix.Output[*AutomaticCertMethod] {
-	return pulumix.Output[*AutomaticCertMethod]{
-		OutputState: i.ToAutomaticCertMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Automatic TLS server certificate management with cert-manager
 type AutomaticCertMethodOutput struct{ *pulumi.OutputState }
 
@@ -535,12 +468,6 @@ func (o AutomaticCertMethodOutput) ToAutomaticCertMethodPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutomaticCertMethod) *AutomaticCertMethod {
 		return &v
 	}).(AutomaticCertMethodPtrOutput)
-}
-
-func (o AutomaticCertMethodOutput) ToOutput(ctx context.Context) pulumix.Output[AutomaticCertMethod] {
-	return pulumix.Output[AutomaticCertMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Lifetime of automatically-managed certificate.
@@ -590,12 +517,6 @@ func (o AutomaticCertMethodPtrOutput) ToAutomaticCertMethodPtrOutput() Automatic
 
 func (o AutomaticCertMethodPtrOutput) ToAutomaticCertMethodPtrOutputWithContext(ctx context.Context) AutomaticCertMethodPtrOutput {
 	return o
-}
-
-func (o AutomaticCertMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutomaticCertMethod] {
-	return pulumix.Output[*AutomaticCertMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutomaticCertMethodPtrOutput) Elem() AutomaticCertMethodOutput {
@@ -732,12 +653,6 @@ func (o AutomaticCertMethodResponseOutput) ToAutomaticCertMethodResponseOutputWi
 	return o
 }
 
-func (o AutomaticCertMethodResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AutomaticCertMethodResponse] {
-	return pulumix.Output[AutomaticCertMethodResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Lifetime of automatically-managed certificate.
 func (o AutomaticCertMethodResponseOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutomaticCertMethodResponse) *string { return v.Duration }).(pulumi.StringPtrOutput)
@@ -785,12 +700,6 @@ func (o AutomaticCertMethodResponsePtrOutput) ToAutomaticCertMethodResponsePtrOu
 
 func (o AutomaticCertMethodResponsePtrOutput) ToAutomaticCertMethodResponsePtrOutputWithContext(ctx context.Context) AutomaticCertMethodResponsePtrOutput {
 	return o
-}
-
-func (o AutomaticCertMethodResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AutomaticCertMethodResponse] {
-	return pulumix.Output[*AutomaticCertMethodResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AutomaticCertMethodResponsePtrOutput) Elem() AutomaticCertMethodResponseOutput {
@@ -960,12 +869,6 @@ func (i BackendChainArgs) ToBackendChainOutputWithContext(ctx context.Context) B
 	return pulumi.ToOutputWithContext(ctx, i).(BackendChainOutput)
 }
 
-func (i BackendChainArgs) ToOutput(ctx context.Context) pulumix.Output[BackendChain] {
-	return pulumix.Output[BackendChain]{
-		OutputState: i.ToBackendChainOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BackendChainArgs) ToBackendChainPtrOutput() BackendChainPtrOutput {
 	return i.ToBackendChainPtrOutputWithContext(context.Background())
 }
@@ -1007,12 +910,6 @@ func (i *backendChainPtrType) ToBackendChainPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(BackendChainPtrOutput)
 }
 
-func (i *backendChainPtrType) ToOutput(ctx context.Context) pulumix.Output[*BackendChain] {
-	return pulumix.Output[*BackendChain]{
-		OutputState: i.ToBackendChainPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Desired properties of the Frontend Instances of the DMQTT Broker
 type BackendChainOutput struct{ *pulumi.OutputState }
 
@@ -1036,12 +933,6 @@ func (o BackendChainOutput) ToBackendChainPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendChain) *BackendChain {
 		return &v
 	}).(BackendChainPtrOutput)
-}
-
-func (o BackendChainOutput) ToOutput(ctx context.Context) pulumix.Output[BackendChain] {
-	return pulumix.Output[BackendChain]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Partitions is desired number of physical backend chains of the given distributed MQTT broker.
@@ -1096,12 +987,6 @@ func (o BackendChainPtrOutput) ToBackendChainPtrOutput() BackendChainPtrOutput {
 
 func (o BackendChainPtrOutput) ToBackendChainPtrOutputWithContext(ctx context.Context) BackendChainPtrOutput {
 	return o
-}
-
-func (o BackendChainPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendChain] {
-	return pulumix.Output[*BackendChain]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackendChainPtrOutput) Elem() BackendChainOutput {
@@ -1242,12 +1127,6 @@ func (o BackendChainResponseOutput) ToBackendChainResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o BackendChainResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BackendChainResponse] {
-	return pulumix.Output[BackendChainResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Partitions is desired number of physical backend chains of the given distributed MQTT broker.
 func (o BackendChainResponseOutput) Partitions() pulumi.IntOutput {
 	return o.ApplyT(func(v BackendChainResponse) int { return v.Partitions }).(pulumi.IntOutput)
@@ -1300,12 +1179,6 @@ func (o BackendChainResponsePtrOutput) ToBackendChainResponsePtrOutput() Backend
 
 func (o BackendChainResponsePtrOutput) ToBackendChainResponsePtrOutputWithContext(ctx context.Context) BackendChainResponsePtrOutput {
 	return o
-}
-
-func (o BackendChainResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BackendChainResponse] {
-	return pulumix.Output[*BackendChainResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BackendChainResponsePtrOutput) Elem() BackendChainResponseOutput {
@@ -1433,12 +1306,6 @@ func (i BrokerAuthenticatorCustomAuthArgs) ToBrokerAuthenticatorCustomAuthOutput
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerAuthenticatorCustomAuthOutput)
 }
 
-func (i BrokerAuthenticatorCustomAuthArgs) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorCustomAuth] {
-	return pulumix.Output[BrokerAuthenticatorCustomAuth]{
-		OutputState: i.ToBrokerAuthenticatorCustomAuthOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BrokerAuthenticatorCustomAuthArgs) ToBrokerAuthenticatorCustomAuthPtrOutput() BrokerAuthenticatorCustomAuthPtrOutput {
 	return i.ToBrokerAuthenticatorCustomAuthPtrOutputWithContext(context.Background())
 }
@@ -1480,12 +1347,6 @@ func (i *brokerAuthenticatorCustomAuthPtrType) ToBrokerAuthenticatorCustomAuthPt
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerAuthenticatorCustomAuthPtrOutput)
 }
 
-func (i *brokerAuthenticatorCustomAuthPtrType) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorCustomAuth] {
-	return pulumix.Output[*BrokerAuthenticatorCustomAuth]{
-		OutputState: i.ToBrokerAuthenticatorCustomAuthPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Custom Authentication properties
 type BrokerAuthenticatorCustomAuthOutput struct{ *pulumi.OutputState }
 
@@ -1511,12 +1372,6 @@ func (o BrokerAuthenticatorCustomAuthOutput) ToBrokerAuthenticatorCustomAuthPtrO
 	}).(BrokerAuthenticatorCustomAuthPtrOutput)
 }
 
-func (o BrokerAuthenticatorCustomAuthOutput) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorCustomAuth] {
-	return pulumix.Output[BrokerAuthenticatorCustomAuth]{
-		OutputState: o.OutputState,
-	}
-}
-
 // X509 Custom Auth type details.
 func (o BrokerAuthenticatorCustomAuthOutput) X509() BrokerAuthenticatorCustomAuthX509Output {
 	return o.ApplyT(func(v BrokerAuthenticatorCustomAuth) BrokerAuthenticatorCustomAuthX509 { return v.X509 }).(BrokerAuthenticatorCustomAuthX509Output)
@@ -1534,12 +1389,6 @@ func (o BrokerAuthenticatorCustomAuthPtrOutput) ToBrokerAuthenticatorCustomAuthP
 
 func (o BrokerAuthenticatorCustomAuthPtrOutput) ToBrokerAuthenticatorCustomAuthPtrOutputWithContext(ctx context.Context) BrokerAuthenticatorCustomAuthPtrOutput {
 	return o
-}
-
-func (o BrokerAuthenticatorCustomAuthPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorCustomAuth] {
-	return pulumix.Output[*BrokerAuthenticatorCustomAuth]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BrokerAuthenticatorCustomAuthPtrOutput) Elem() BrokerAuthenticatorCustomAuthOutput {
@@ -1583,12 +1432,6 @@ func (o BrokerAuthenticatorCustomAuthResponseOutput) ToBrokerAuthenticatorCustom
 	return o
 }
 
-func (o BrokerAuthenticatorCustomAuthResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorCustomAuthResponse] {
-	return pulumix.Output[BrokerAuthenticatorCustomAuthResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // X509 Custom Auth type details.
 func (o BrokerAuthenticatorCustomAuthResponseOutput) X509() BrokerAuthenticatorCustomAuthX509ResponseOutput {
 	return o.ApplyT(func(v BrokerAuthenticatorCustomAuthResponse) BrokerAuthenticatorCustomAuthX509Response { return v.X509 }).(BrokerAuthenticatorCustomAuthX509ResponseOutput)
@@ -1606,12 +1449,6 @@ func (o BrokerAuthenticatorCustomAuthResponsePtrOutput) ToBrokerAuthenticatorCus
 
 func (o BrokerAuthenticatorCustomAuthResponsePtrOutput) ToBrokerAuthenticatorCustomAuthResponsePtrOutputWithContext(ctx context.Context) BrokerAuthenticatorCustomAuthResponsePtrOutput {
 	return o
-}
-
-func (o BrokerAuthenticatorCustomAuthResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorCustomAuthResponse] {
-	return pulumix.Output[*BrokerAuthenticatorCustomAuthResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BrokerAuthenticatorCustomAuthResponsePtrOutput) Elem() BrokerAuthenticatorCustomAuthResponseOutput {
@@ -1673,12 +1510,6 @@ func (i BrokerAuthenticatorCustomAuthX509Args) ToBrokerAuthenticatorCustomAuthX5
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerAuthenticatorCustomAuthX509Output)
 }
 
-func (i BrokerAuthenticatorCustomAuthX509Args) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorCustomAuthX509] {
-	return pulumix.Output[BrokerAuthenticatorCustomAuthX509]{
-		OutputState: i.ToBrokerAuthenticatorCustomAuthX509OutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BrokerAuthenticatorCustomAuthX509Args) ToBrokerAuthenticatorCustomAuthX509PtrOutput() BrokerAuthenticatorCustomAuthX509PtrOutput {
 	return i.ToBrokerAuthenticatorCustomAuthX509PtrOutputWithContext(context.Background())
 }
@@ -1720,12 +1551,6 @@ func (i *brokerAuthenticatorCustomAuthX509PtrType) ToBrokerAuthenticatorCustomAu
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerAuthenticatorCustomAuthX509PtrOutput)
 }
 
-func (i *brokerAuthenticatorCustomAuthX509PtrType) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorCustomAuthX509] {
-	return pulumix.Output[*BrokerAuthenticatorCustomAuthX509]{
-		OutputState: i.ToBrokerAuthenticatorCustomAuthX509PtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // X509 Custom Authentication properties. NOTE - Enum only authenticator type supported at a time.
 type BrokerAuthenticatorCustomAuthX509Output struct{ *pulumi.OutputState }
 
@@ -1751,12 +1576,6 @@ func (o BrokerAuthenticatorCustomAuthX509Output) ToBrokerAuthenticatorCustomAuth
 	}).(BrokerAuthenticatorCustomAuthX509PtrOutput)
 }
 
-func (o BrokerAuthenticatorCustomAuthX509Output) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorCustomAuthX509] {
-	return pulumix.Output[BrokerAuthenticatorCustomAuthX509]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Keyvault X509 secret properties.
 func (o BrokerAuthenticatorCustomAuthX509Output) KeyVault() KeyVaultCertificatePropertiesPtrOutput {
 	return o.ApplyT(func(v BrokerAuthenticatorCustomAuthX509) *KeyVaultCertificateProperties { return v.KeyVault }).(KeyVaultCertificatePropertiesPtrOutput)
@@ -1779,12 +1598,6 @@ func (o BrokerAuthenticatorCustomAuthX509PtrOutput) ToBrokerAuthenticatorCustomA
 
 func (o BrokerAuthenticatorCustomAuthX509PtrOutput) ToBrokerAuthenticatorCustomAuthX509PtrOutputWithContext(ctx context.Context) BrokerAuthenticatorCustomAuthX509PtrOutput {
 	return o
-}
-
-func (o BrokerAuthenticatorCustomAuthX509PtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorCustomAuthX509] {
-	return pulumix.Output[*BrokerAuthenticatorCustomAuthX509]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BrokerAuthenticatorCustomAuthX509PtrOutput) Elem() BrokerAuthenticatorCustomAuthX509Output {
@@ -1840,12 +1653,6 @@ func (o BrokerAuthenticatorCustomAuthX509ResponseOutput) ToBrokerAuthenticatorCu
 	return o
 }
 
-func (o BrokerAuthenticatorCustomAuthX509ResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorCustomAuthX509Response] {
-	return pulumix.Output[BrokerAuthenticatorCustomAuthX509Response]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Keyvault X509 secret properties.
 func (o BrokerAuthenticatorCustomAuthX509ResponseOutput) KeyVault() KeyVaultCertificatePropertiesResponsePtrOutput {
 	return o.ApplyT(func(v BrokerAuthenticatorCustomAuthX509Response) *KeyVaultCertificatePropertiesResponse {
@@ -1870,12 +1677,6 @@ func (o BrokerAuthenticatorCustomAuthX509ResponsePtrOutput) ToBrokerAuthenticato
 
 func (o BrokerAuthenticatorCustomAuthX509ResponsePtrOutput) ToBrokerAuthenticatorCustomAuthX509ResponsePtrOutputWithContext(ctx context.Context) BrokerAuthenticatorCustomAuthX509ResponsePtrOutput {
 	return o
-}
-
-func (o BrokerAuthenticatorCustomAuthX509ResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorCustomAuthX509Response] {
-	return pulumix.Output[*BrokerAuthenticatorCustomAuthX509Response]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BrokerAuthenticatorCustomAuthX509ResponsePtrOutput) Elem() BrokerAuthenticatorCustomAuthX509ResponseOutput {
@@ -1955,12 +1756,6 @@ func (i BrokerAuthenticatorMethodCustomArgs) ToBrokerAuthenticatorMethodCustomOu
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerAuthenticatorMethodCustomOutput)
 }
 
-func (i BrokerAuthenticatorMethodCustomArgs) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorMethodCustom] {
-	return pulumix.Output[BrokerAuthenticatorMethodCustom]{
-		OutputState: i.ToBrokerAuthenticatorMethodCustomOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BrokerAuthenticatorMethodCustomArgs) ToBrokerAuthenticatorMethodCustomPtrOutput() BrokerAuthenticatorMethodCustomPtrOutput {
 	return i.ToBrokerAuthenticatorMethodCustomPtrOutputWithContext(context.Background())
 }
@@ -2002,12 +1797,6 @@ func (i *brokerAuthenticatorMethodCustomPtrType) ToBrokerAuthenticatorMethodCust
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerAuthenticatorMethodCustomPtrOutput)
 }
 
-func (i *brokerAuthenticatorMethodCustomPtrType) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorMethodCustom] {
-	return pulumix.Output[*BrokerAuthenticatorMethodCustom]{
-		OutputState: i.ToBrokerAuthenticatorMethodCustomPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Custom method for BrokerAuthentication
 type BrokerAuthenticatorMethodCustomOutput struct{ *pulumi.OutputState }
 
@@ -2031,12 +1820,6 @@ func (o BrokerAuthenticatorMethodCustomOutput) ToBrokerAuthenticatorMethodCustom
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BrokerAuthenticatorMethodCustom) *BrokerAuthenticatorMethodCustom {
 		return &v
 	}).(BrokerAuthenticatorMethodCustomPtrOutput)
-}
-
-func (o BrokerAuthenticatorMethodCustomOutput) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorMethodCustom] {
-	return pulumix.Output[BrokerAuthenticatorMethodCustom]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Custom Broker Authentication Method.
@@ -2071,12 +1854,6 @@ func (o BrokerAuthenticatorMethodCustomPtrOutput) ToBrokerAuthenticatorMethodCus
 
 func (o BrokerAuthenticatorMethodCustomPtrOutput) ToBrokerAuthenticatorMethodCustomPtrOutputWithContext(ctx context.Context) BrokerAuthenticatorMethodCustomPtrOutput {
 	return o
-}
-
-func (o BrokerAuthenticatorMethodCustomPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorMethodCustom] {
-	return pulumix.Output[*BrokerAuthenticatorMethodCustom]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BrokerAuthenticatorMethodCustomPtrOutput) Elem() BrokerAuthenticatorMethodCustomOutput {
@@ -2156,12 +1933,6 @@ func (o BrokerAuthenticatorMethodCustomResponseOutput) ToBrokerAuthenticatorMeth
 	return o
 }
 
-func (o BrokerAuthenticatorMethodCustomResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorMethodCustomResponse] {
-	return pulumix.Output[BrokerAuthenticatorMethodCustomResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Custom Broker Authentication Method.
 func (o BrokerAuthenticatorMethodCustomResponseOutput) Auth() BrokerAuthenticatorCustomAuthResponsePtrOutput {
 	return o.ApplyT(func(v BrokerAuthenticatorMethodCustomResponse) *BrokerAuthenticatorCustomAuthResponse { return v.Auth }).(BrokerAuthenticatorCustomAuthResponsePtrOutput)
@@ -2194,12 +1965,6 @@ func (o BrokerAuthenticatorMethodCustomResponsePtrOutput) ToBrokerAuthenticatorM
 
 func (o BrokerAuthenticatorMethodCustomResponsePtrOutput) ToBrokerAuthenticatorMethodCustomResponsePtrOutputWithContext(ctx context.Context) BrokerAuthenticatorMethodCustomResponsePtrOutput {
 	return o
-}
-
-func (o BrokerAuthenticatorMethodCustomResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorMethodCustomResponse] {
-	return pulumix.Output[*BrokerAuthenticatorMethodCustomResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BrokerAuthenticatorMethodCustomResponsePtrOutput) Elem() BrokerAuthenticatorMethodCustomResponseOutput {
@@ -2287,12 +2052,6 @@ func (i BrokerAuthenticatorMethodSatArgs) ToBrokerAuthenticatorMethodSatOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerAuthenticatorMethodSatOutput)
 }
 
-func (i BrokerAuthenticatorMethodSatArgs) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorMethodSat] {
-	return pulumix.Output[BrokerAuthenticatorMethodSat]{
-		OutputState: i.ToBrokerAuthenticatorMethodSatOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BrokerAuthenticatorMethodSatArgs) ToBrokerAuthenticatorMethodSatPtrOutput() BrokerAuthenticatorMethodSatPtrOutput {
 	return i.ToBrokerAuthenticatorMethodSatPtrOutputWithContext(context.Background())
 }
@@ -2334,12 +2093,6 @@ func (i *brokerAuthenticatorMethodSatPtrType) ToBrokerAuthenticatorMethodSatPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerAuthenticatorMethodSatPtrOutput)
 }
 
-func (i *brokerAuthenticatorMethodSatPtrType) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorMethodSat] {
-	return pulumix.Output[*BrokerAuthenticatorMethodSat]{
-		OutputState: i.ToBrokerAuthenticatorMethodSatPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Service Account Token for BrokerAuthentication
 type BrokerAuthenticatorMethodSatOutput struct{ *pulumi.OutputState }
 
@@ -2365,12 +2118,6 @@ func (o BrokerAuthenticatorMethodSatOutput) ToBrokerAuthenticatorMethodSatPtrOut
 	}).(BrokerAuthenticatorMethodSatPtrOutput)
 }
 
-func (o BrokerAuthenticatorMethodSatOutput) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorMethodSat] {
-	return pulumix.Output[BrokerAuthenticatorMethodSat]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of allowed audience.
 func (o BrokerAuthenticatorMethodSatOutput) Audiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BrokerAuthenticatorMethodSat) []string { return v.Audiences }).(pulumi.StringArrayOutput)
@@ -2388,12 +2135,6 @@ func (o BrokerAuthenticatorMethodSatPtrOutput) ToBrokerAuthenticatorMethodSatPtr
 
 func (o BrokerAuthenticatorMethodSatPtrOutput) ToBrokerAuthenticatorMethodSatPtrOutputWithContext(ctx context.Context) BrokerAuthenticatorMethodSatPtrOutput {
 	return o
-}
-
-func (o BrokerAuthenticatorMethodSatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorMethodSat] {
-	return pulumix.Output[*BrokerAuthenticatorMethodSat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BrokerAuthenticatorMethodSatPtrOutput) Elem() BrokerAuthenticatorMethodSatOutput {
@@ -2437,12 +2178,6 @@ func (o BrokerAuthenticatorMethodSatResponseOutput) ToBrokerAuthenticatorMethodS
 	return o
 }
 
-func (o BrokerAuthenticatorMethodSatResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorMethodSatResponse] {
-	return pulumix.Output[BrokerAuthenticatorMethodSatResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of allowed audience.
 func (o BrokerAuthenticatorMethodSatResponseOutput) Audiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BrokerAuthenticatorMethodSatResponse) []string { return v.Audiences }).(pulumi.StringArrayOutput)
@@ -2460,12 +2195,6 @@ func (o BrokerAuthenticatorMethodSatResponsePtrOutput) ToBrokerAuthenticatorMeth
 
 func (o BrokerAuthenticatorMethodSatResponsePtrOutput) ToBrokerAuthenticatorMethodSatResponsePtrOutputWithContext(ctx context.Context) BrokerAuthenticatorMethodSatResponsePtrOutput {
 	return o
-}
-
-func (o BrokerAuthenticatorMethodSatResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorMethodSatResponse] {
-	return pulumix.Output[*BrokerAuthenticatorMethodSatResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BrokerAuthenticatorMethodSatResponsePtrOutput) Elem() BrokerAuthenticatorMethodSatResponseOutput {
@@ -2562,12 +2291,6 @@ func (i BrokerAuthenticatorMethodSvidArgs) ToBrokerAuthenticatorMethodSvidOutput
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerAuthenticatorMethodSvidOutput)
 }
 
-func (i BrokerAuthenticatorMethodSvidArgs) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorMethodSvid] {
-	return pulumix.Output[BrokerAuthenticatorMethodSvid]{
-		OutputState: i.ToBrokerAuthenticatorMethodSvidOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BrokerAuthenticatorMethodSvidArgs) ToBrokerAuthenticatorMethodSvidPtrOutput() BrokerAuthenticatorMethodSvidPtrOutput {
 	return i.ToBrokerAuthenticatorMethodSvidPtrOutputWithContext(context.Background())
 }
@@ -2609,12 +2332,6 @@ func (i *brokerAuthenticatorMethodSvidPtrType) ToBrokerAuthenticatorMethodSvidPt
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerAuthenticatorMethodSvidPtrOutput)
 }
 
-func (i *brokerAuthenticatorMethodSvidPtrType) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorMethodSvid] {
-	return pulumix.Output[*BrokerAuthenticatorMethodSvid]{
-		OutputState: i.ToBrokerAuthenticatorMethodSvidPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SVID for BrokerAuthentication
 type BrokerAuthenticatorMethodSvidOutput struct{ *pulumi.OutputState }
 
@@ -2638,12 +2355,6 @@ func (o BrokerAuthenticatorMethodSvidOutput) ToBrokerAuthenticatorMethodSvidPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BrokerAuthenticatorMethodSvid) *BrokerAuthenticatorMethodSvid {
 		return &v
 	}).(BrokerAuthenticatorMethodSvidPtrOutput)
-}
-
-func (o BrokerAuthenticatorMethodSvidOutput) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorMethodSvid] {
-	return pulumix.Output[BrokerAuthenticatorMethodSvid]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Mounted socket path for spiffe agent.
@@ -2673,12 +2384,6 @@ func (o BrokerAuthenticatorMethodSvidPtrOutput) ToBrokerAuthenticatorMethodSvidP
 
 func (o BrokerAuthenticatorMethodSvidPtrOutput) ToBrokerAuthenticatorMethodSvidPtrOutputWithContext(ctx context.Context) BrokerAuthenticatorMethodSvidPtrOutput {
 	return o
-}
-
-func (o BrokerAuthenticatorMethodSvidPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorMethodSvid] {
-	return pulumix.Output[*BrokerAuthenticatorMethodSvid]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BrokerAuthenticatorMethodSvidPtrOutput) Elem() BrokerAuthenticatorMethodSvidOutput {
@@ -2763,12 +2468,6 @@ func (o BrokerAuthenticatorMethodSvidResponseOutput) ToBrokerAuthenticatorMethod
 	return o
 }
 
-func (o BrokerAuthenticatorMethodSvidResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorMethodSvidResponse] {
-	return pulumix.Output[BrokerAuthenticatorMethodSvidResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Mounted socket path for spiffe agent.
 func (o BrokerAuthenticatorMethodSvidResponseOutput) AgentSocketPath() pulumi.StringOutput {
 	return o.ApplyT(func(v BrokerAuthenticatorMethodSvidResponse) string { return v.AgentSocketPath }).(pulumi.StringOutput)
@@ -2796,12 +2495,6 @@ func (o BrokerAuthenticatorMethodSvidResponsePtrOutput) ToBrokerAuthenticatorMet
 
 func (o BrokerAuthenticatorMethodSvidResponsePtrOutput) ToBrokerAuthenticatorMethodSvidResponsePtrOutputWithContext(ctx context.Context) BrokerAuthenticatorMethodSvidResponsePtrOutput {
 	return o
-}
-
-func (o BrokerAuthenticatorMethodSvidResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorMethodSvidResponse] {
-	return pulumix.Output[*BrokerAuthenticatorMethodSvidResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BrokerAuthenticatorMethodSvidResponsePtrOutput) Elem() BrokerAuthenticatorMethodSvidResponseOutput {
@@ -2883,12 +2576,6 @@ func (i BrokerAuthenticatorMethodUsernamePasswordArgs) ToBrokerAuthenticatorMeth
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerAuthenticatorMethodUsernamePasswordOutput)
 }
 
-func (i BrokerAuthenticatorMethodUsernamePasswordArgs) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorMethodUsernamePassword] {
-	return pulumix.Output[BrokerAuthenticatorMethodUsernamePassword]{
-		OutputState: i.ToBrokerAuthenticatorMethodUsernamePasswordOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BrokerAuthenticatorMethodUsernamePasswordArgs) ToBrokerAuthenticatorMethodUsernamePasswordPtrOutput() BrokerAuthenticatorMethodUsernamePasswordPtrOutput {
 	return i.ToBrokerAuthenticatorMethodUsernamePasswordPtrOutputWithContext(context.Background())
 }
@@ -2930,12 +2617,6 @@ func (i *brokerAuthenticatorMethodUsernamePasswordPtrType) ToBrokerAuthenticator
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerAuthenticatorMethodUsernamePasswordPtrOutput)
 }
 
-func (i *brokerAuthenticatorMethodUsernamePasswordPtrType) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorMethodUsernamePassword] {
-	return pulumix.Output[*BrokerAuthenticatorMethodUsernamePassword]{
-		OutputState: i.ToBrokerAuthenticatorMethodUsernamePasswordPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // UsernamePassword for BrokerAuthentication
 type BrokerAuthenticatorMethodUsernamePasswordOutput struct{ *pulumi.OutputState }
 
@@ -2961,12 +2642,6 @@ func (o BrokerAuthenticatorMethodUsernamePasswordOutput) ToBrokerAuthenticatorMe
 	}).(BrokerAuthenticatorMethodUsernamePasswordPtrOutput)
 }
 
-func (o BrokerAuthenticatorMethodUsernamePasswordOutput) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorMethodUsernamePassword] {
-	return pulumix.Output[BrokerAuthenticatorMethodUsernamePassword]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Keyvault username password secret properties.
 func (o BrokerAuthenticatorMethodUsernamePasswordOutput) KeyVault() KeyVaultSecretPropertiesPtrOutput {
 	return o.ApplyT(func(v BrokerAuthenticatorMethodUsernamePassword) *KeyVaultSecretProperties { return v.KeyVault }).(KeyVaultSecretPropertiesPtrOutput)
@@ -2989,12 +2664,6 @@ func (o BrokerAuthenticatorMethodUsernamePasswordPtrOutput) ToBrokerAuthenticato
 
 func (o BrokerAuthenticatorMethodUsernamePasswordPtrOutput) ToBrokerAuthenticatorMethodUsernamePasswordPtrOutputWithContext(ctx context.Context) BrokerAuthenticatorMethodUsernamePasswordPtrOutput {
 	return o
-}
-
-func (o BrokerAuthenticatorMethodUsernamePasswordPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorMethodUsernamePassword] {
-	return pulumix.Output[*BrokerAuthenticatorMethodUsernamePassword]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BrokerAuthenticatorMethodUsernamePasswordPtrOutput) Elem() BrokerAuthenticatorMethodUsernamePasswordOutput {
@@ -3050,12 +2719,6 @@ func (o BrokerAuthenticatorMethodUsernamePasswordResponseOutput) ToBrokerAuthent
 	return o
 }
 
-func (o BrokerAuthenticatorMethodUsernamePasswordResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorMethodUsernamePasswordResponse] {
-	return pulumix.Output[BrokerAuthenticatorMethodUsernamePasswordResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Keyvault username password secret properties.
 func (o BrokerAuthenticatorMethodUsernamePasswordResponseOutput) KeyVault() KeyVaultSecretPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v BrokerAuthenticatorMethodUsernamePasswordResponse) *KeyVaultSecretPropertiesResponse {
@@ -3080,12 +2743,6 @@ func (o BrokerAuthenticatorMethodUsernamePasswordResponsePtrOutput) ToBrokerAuth
 
 func (o BrokerAuthenticatorMethodUsernamePasswordResponsePtrOutput) ToBrokerAuthenticatorMethodUsernamePasswordResponsePtrOutputWithContext(ctx context.Context) BrokerAuthenticatorMethodUsernamePasswordResponsePtrOutput {
 	return o
-}
-
-func (o BrokerAuthenticatorMethodUsernamePasswordResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorMethodUsernamePasswordResponse] {
-	return pulumix.Output[*BrokerAuthenticatorMethodUsernamePasswordResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BrokerAuthenticatorMethodUsernamePasswordResponsePtrOutput) Elem() BrokerAuthenticatorMethodUsernamePasswordResponseOutput {
@@ -3181,12 +2838,6 @@ func (i BrokerAuthenticatorMethodX509Args) ToBrokerAuthenticatorMethodX509Output
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerAuthenticatorMethodX509Output)
 }
 
-func (i BrokerAuthenticatorMethodX509Args) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorMethodX509] {
-	return pulumix.Output[BrokerAuthenticatorMethodX509]{
-		OutputState: i.ToBrokerAuthenticatorMethodX509OutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BrokerAuthenticatorMethodX509Args) ToBrokerAuthenticatorMethodX509PtrOutput() BrokerAuthenticatorMethodX509PtrOutput {
 	return i.ToBrokerAuthenticatorMethodX509PtrOutputWithContext(context.Background())
 }
@@ -3228,12 +2879,6 @@ func (i *brokerAuthenticatorMethodX509PtrType) ToBrokerAuthenticatorMethodX509Pt
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerAuthenticatorMethodX509PtrOutput)
 }
 
-func (i *brokerAuthenticatorMethodX509PtrType) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorMethodX509] {
-	return pulumix.Output[*BrokerAuthenticatorMethodX509]{
-		OutputState: i.ToBrokerAuthenticatorMethodX509PtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // X509 for BrokerAuthentication.
 type BrokerAuthenticatorMethodX509Output struct{ *pulumi.OutputState }
 
@@ -3259,12 +2904,6 @@ func (o BrokerAuthenticatorMethodX509Output) ToBrokerAuthenticatorMethodX509PtrO
 	}).(BrokerAuthenticatorMethodX509PtrOutput)
 }
 
-func (o BrokerAuthenticatorMethodX509Output) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorMethodX509] {
-	return pulumix.Output[BrokerAuthenticatorMethodX509]{
-		OutputState: o.OutputState,
-	}
-}
-
 // K8S Secret name to mount for username and password.
 func (o BrokerAuthenticatorMethodX509Output) Attributes() BrokerAuthenticatorMethodX509AttributesPtrOutput {
 	return o.ApplyT(func(v BrokerAuthenticatorMethodX509) *BrokerAuthenticatorMethodX509Attributes { return v.Attributes }).(BrokerAuthenticatorMethodX509AttributesPtrOutput)
@@ -3287,12 +2926,6 @@ func (o BrokerAuthenticatorMethodX509PtrOutput) ToBrokerAuthenticatorMethodX509P
 
 func (o BrokerAuthenticatorMethodX509PtrOutput) ToBrokerAuthenticatorMethodX509PtrOutputWithContext(ctx context.Context) BrokerAuthenticatorMethodX509PtrOutput {
 	return o
-}
-
-func (o BrokerAuthenticatorMethodX509PtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorMethodX509] {
-	return pulumix.Output[*BrokerAuthenticatorMethodX509]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BrokerAuthenticatorMethodX509PtrOutput) Elem() BrokerAuthenticatorMethodX509Output {
@@ -3364,12 +2997,6 @@ func (i BrokerAuthenticatorMethodX509AttributesArgs) ToBrokerAuthenticatorMethod
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerAuthenticatorMethodX509AttributesOutput)
 }
 
-func (i BrokerAuthenticatorMethodX509AttributesArgs) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorMethodX509Attributes] {
-	return pulumix.Output[BrokerAuthenticatorMethodX509Attributes]{
-		OutputState: i.ToBrokerAuthenticatorMethodX509AttributesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BrokerAuthenticatorMethodX509AttributesArgs) ToBrokerAuthenticatorMethodX509AttributesPtrOutput() BrokerAuthenticatorMethodX509AttributesPtrOutput {
 	return i.ToBrokerAuthenticatorMethodX509AttributesPtrOutputWithContext(context.Background())
 }
@@ -3411,12 +3038,6 @@ func (i *brokerAuthenticatorMethodX509AttributesPtrType) ToBrokerAuthenticatorMe
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerAuthenticatorMethodX509AttributesPtrOutput)
 }
 
-func (i *brokerAuthenticatorMethodX509AttributesPtrType) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorMethodX509Attributes] {
-	return pulumix.Output[*BrokerAuthenticatorMethodX509Attributes]{
-		OutputState: i.ToBrokerAuthenticatorMethodX509AttributesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BrokerAuthenticatorMethodX509Attributes properties. NOTE - Enum only type supported at a time.
 type BrokerAuthenticatorMethodX509AttributesOutput struct{ *pulumi.OutputState }
 
@@ -3442,12 +3063,6 @@ func (o BrokerAuthenticatorMethodX509AttributesOutput) ToBrokerAuthenticatorMeth
 	}).(BrokerAuthenticatorMethodX509AttributesPtrOutput)
 }
 
-func (o BrokerAuthenticatorMethodX509AttributesOutput) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorMethodX509Attributes] {
-	return pulumix.Output[BrokerAuthenticatorMethodX509Attributes]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Keyvault x509 attributes secret properties.
 func (o BrokerAuthenticatorMethodX509AttributesOutput) KeyVault() KeyVaultSecretPropertiesPtrOutput {
 	return o.ApplyT(func(v BrokerAuthenticatorMethodX509Attributes) *KeyVaultSecretProperties { return v.KeyVault }).(KeyVaultSecretPropertiesPtrOutput)
@@ -3470,12 +3085,6 @@ func (o BrokerAuthenticatorMethodX509AttributesPtrOutput) ToBrokerAuthenticatorM
 
 func (o BrokerAuthenticatorMethodX509AttributesPtrOutput) ToBrokerAuthenticatorMethodX509AttributesPtrOutputWithContext(ctx context.Context) BrokerAuthenticatorMethodX509AttributesPtrOutput {
 	return o
-}
-
-func (o BrokerAuthenticatorMethodX509AttributesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorMethodX509Attributes] {
-	return pulumix.Output[*BrokerAuthenticatorMethodX509Attributes]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BrokerAuthenticatorMethodX509AttributesPtrOutput) Elem() BrokerAuthenticatorMethodX509AttributesOutput {
@@ -3531,12 +3140,6 @@ func (o BrokerAuthenticatorMethodX509AttributesResponseOutput) ToBrokerAuthentic
 	return o
 }
 
-func (o BrokerAuthenticatorMethodX509AttributesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorMethodX509AttributesResponse] {
-	return pulumix.Output[BrokerAuthenticatorMethodX509AttributesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Keyvault x509 attributes secret properties.
 func (o BrokerAuthenticatorMethodX509AttributesResponseOutput) KeyVault() KeyVaultSecretPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v BrokerAuthenticatorMethodX509AttributesResponse) *KeyVaultSecretPropertiesResponse {
@@ -3561,12 +3164,6 @@ func (o BrokerAuthenticatorMethodX509AttributesResponsePtrOutput) ToBrokerAuthen
 
 func (o BrokerAuthenticatorMethodX509AttributesResponsePtrOutput) ToBrokerAuthenticatorMethodX509AttributesResponsePtrOutputWithContext(ctx context.Context) BrokerAuthenticatorMethodX509AttributesResponsePtrOutput {
 	return o
-}
-
-func (o BrokerAuthenticatorMethodX509AttributesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorMethodX509AttributesResponse] {
-	return pulumix.Output[*BrokerAuthenticatorMethodX509AttributesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BrokerAuthenticatorMethodX509AttributesResponsePtrOutput) Elem() BrokerAuthenticatorMethodX509AttributesResponseOutput {
@@ -3635,12 +3232,6 @@ func (o BrokerAuthenticatorMethodX509ResponseOutput) ToBrokerAuthenticatorMethod
 	return o
 }
 
-func (o BrokerAuthenticatorMethodX509ResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorMethodX509Response] {
-	return pulumix.Output[BrokerAuthenticatorMethodX509Response]{
-		OutputState: o.OutputState,
-	}
-}
-
 // K8S Secret name to mount for username and password.
 func (o BrokerAuthenticatorMethodX509ResponseOutput) Attributes() BrokerAuthenticatorMethodX509AttributesResponsePtrOutput {
 	return o.ApplyT(func(v BrokerAuthenticatorMethodX509Response) *BrokerAuthenticatorMethodX509AttributesResponse {
@@ -3665,12 +3256,6 @@ func (o BrokerAuthenticatorMethodX509ResponsePtrOutput) ToBrokerAuthenticatorMet
 
 func (o BrokerAuthenticatorMethodX509ResponsePtrOutput) ToBrokerAuthenticatorMethodX509ResponsePtrOutputWithContext(ctx context.Context) BrokerAuthenticatorMethodX509ResponsePtrOutput {
 	return o
-}
-
-func (o BrokerAuthenticatorMethodX509ResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BrokerAuthenticatorMethodX509Response] {
-	return pulumix.Output[*BrokerAuthenticatorMethodX509Response]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BrokerAuthenticatorMethodX509ResponsePtrOutput) Elem() BrokerAuthenticatorMethodX509ResponseOutput {
@@ -3776,12 +3361,6 @@ func (i BrokerAuthenticatorMethodsArgs) ToBrokerAuthenticatorMethodsOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerAuthenticatorMethodsOutput)
 }
 
-func (i BrokerAuthenticatorMethodsArgs) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorMethods] {
-	return pulumix.Output[BrokerAuthenticatorMethods]{
-		OutputState: i.ToBrokerAuthenticatorMethodsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BrokerAuthenticatorMethodsArrayInput is an input type that accepts BrokerAuthenticatorMethodsArray and BrokerAuthenticatorMethodsArrayOutput values.
 // You can construct a concrete instance of `BrokerAuthenticatorMethodsArrayInput` via:
 //
@@ -3807,12 +3386,6 @@ func (i BrokerAuthenticatorMethodsArray) ToBrokerAuthenticatorMethodsArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerAuthenticatorMethodsArrayOutput)
 }
 
-func (i BrokerAuthenticatorMethodsArray) ToOutput(ctx context.Context) pulumix.Output[[]BrokerAuthenticatorMethods] {
-	return pulumix.Output[[]BrokerAuthenticatorMethods]{
-		OutputState: i.ToBrokerAuthenticatorMethodsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Collection of different CrdAuthenticator methods of Broker Resource. NOTE Enum - Only one method is supported for each entry.
 type BrokerAuthenticatorMethodsOutput struct{ *pulumi.OutputState }
 
@@ -3826,12 +3399,6 @@ func (o BrokerAuthenticatorMethodsOutput) ToBrokerAuthenticatorMethodsOutput() B
 
 func (o BrokerAuthenticatorMethodsOutput) ToBrokerAuthenticatorMethodsOutputWithContext(ctx context.Context) BrokerAuthenticatorMethodsOutput {
 	return o
-}
-
-func (o BrokerAuthenticatorMethodsOutput) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorMethods] {
-	return pulumix.Output[BrokerAuthenticatorMethods]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Custom Authentication Method.
@@ -3873,12 +3440,6 @@ func (o BrokerAuthenticatorMethodsArrayOutput) ToBrokerAuthenticatorMethodsArray
 
 func (o BrokerAuthenticatorMethodsArrayOutput) ToBrokerAuthenticatorMethodsArrayOutputWithContext(ctx context.Context) BrokerAuthenticatorMethodsArrayOutput {
 	return o
-}
-
-func (o BrokerAuthenticatorMethodsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BrokerAuthenticatorMethods] {
-	return pulumix.Output[[]BrokerAuthenticatorMethods]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BrokerAuthenticatorMethodsArrayOutput) Index(i pulumi.IntInput) BrokerAuthenticatorMethodsOutput {
@@ -3929,12 +3490,6 @@ func (o BrokerAuthenticatorMethodsResponseOutput) ToBrokerAuthenticatorMethodsRe
 	return o
 }
 
-func (o BrokerAuthenticatorMethodsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BrokerAuthenticatorMethodsResponse] {
-	return pulumix.Output[BrokerAuthenticatorMethodsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Custom Authentication Method.
 func (o BrokerAuthenticatorMethodsResponseOutput) Custom() BrokerAuthenticatorMethodCustomResponsePtrOutput {
 	return o.ApplyT(func(v BrokerAuthenticatorMethodsResponse) *BrokerAuthenticatorMethodCustomResponse { return v.Custom }).(BrokerAuthenticatorMethodCustomResponsePtrOutput)
@@ -3974,12 +3529,6 @@ func (o BrokerAuthenticatorMethodsResponseArrayOutput) ToBrokerAuthenticatorMeth
 
 func (o BrokerAuthenticatorMethodsResponseArrayOutput) ToBrokerAuthenticatorMethodsResponseArrayOutputWithContext(ctx context.Context) BrokerAuthenticatorMethodsResponseArrayOutput {
 	return o
-}
-
-func (o BrokerAuthenticatorMethodsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]BrokerAuthenticatorMethodsResponse] {
-	return pulumix.Output[[]BrokerAuthenticatorMethodsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BrokerAuthenticatorMethodsResponseArrayOutput) Index(i pulumi.IntInput) BrokerAuthenticatorMethodsResponseOutput {
@@ -4183,12 +3732,6 @@ func (i BrokerDiagnosticsArgs) ToBrokerDiagnosticsOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerDiagnosticsOutput)
 }
 
-func (i BrokerDiagnosticsArgs) ToOutput(ctx context.Context) pulumix.Output[BrokerDiagnostics] {
-	return pulumix.Output[BrokerDiagnostics]{
-		OutputState: i.ToBrokerDiagnosticsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i BrokerDiagnosticsArgs) ToBrokerDiagnosticsPtrOutput() BrokerDiagnosticsPtrOutput {
 	return i.ToBrokerDiagnosticsPtrOutputWithContext(context.Background())
 }
@@ -4230,12 +3773,6 @@ func (i *brokerDiagnosticsPtrType) ToBrokerDiagnosticsPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(BrokerDiagnosticsPtrOutput)
 }
 
-func (i *brokerDiagnosticsPtrType) ToOutput(ctx context.Context) pulumix.Output[*BrokerDiagnostics] {
-	return pulumix.Output[*BrokerDiagnostics]{
-		OutputState: i.ToBrokerDiagnosticsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Diagnostics setting specific to Broker
 type BrokerDiagnosticsOutput struct{ *pulumi.OutputState }
 
@@ -4259,12 +3796,6 @@ func (o BrokerDiagnosticsOutput) ToBrokerDiagnosticsPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v BrokerDiagnostics) *BrokerDiagnostics {
 		return &v
 	}).(BrokerDiagnosticsPtrOutput)
-}
-
-func (o BrokerDiagnosticsOutput) ToOutput(ctx context.Context) pulumix.Output[BrokerDiagnostics] {
-	return pulumix.Output[BrokerDiagnostics]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Diagnostic Service endpoint
@@ -4349,12 +3880,6 @@ func (o BrokerDiagnosticsPtrOutput) ToBrokerDiagnosticsPtrOutput() BrokerDiagnos
 
 func (o BrokerDiagnosticsPtrOutput) ToBrokerDiagnosticsPtrOutputWithContext(ctx context.Context) BrokerDiagnosticsPtrOutput {
 	return o
-}
-
-func (o BrokerDiagnosticsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BrokerDiagnostics] {
-	return pulumix.Output[*BrokerDiagnostics]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BrokerDiagnosticsPtrOutput) Elem() BrokerDiagnosticsOutput {
@@ -4615,12 +4140,6 @@ func (o BrokerDiagnosticsResponseOutput) ToBrokerDiagnosticsResponseOutputWithCo
 	return o
 }
 
-func (o BrokerDiagnosticsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BrokerDiagnosticsResponse] {
-	return pulumix.Output[BrokerDiagnosticsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Diagnostic Service endpoint
 func (o BrokerDiagnosticsResponseOutput) DiagnosticServiceEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BrokerDiagnosticsResponse) *string { return v.DiagnosticServiceEndpoint }).(pulumi.StringPtrOutput)
@@ -4703,12 +4222,6 @@ func (o BrokerDiagnosticsResponsePtrOutput) ToBrokerDiagnosticsResponsePtrOutput
 
 func (o BrokerDiagnosticsResponsePtrOutput) ToBrokerDiagnosticsResponsePtrOutputWithContext(ctx context.Context) BrokerDiagnosticsResponsePtrOutput {
 	return o
-}
-
-func (o BrokerDiagnosticsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*BrokerDiagnosticsResponse] {
-	return pulumix.Output[*BrokerDiagnosticsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BrokerDiagnosticsResponsePtrOutput) Elem() BrokerDiagnosticsResponseOutput {
@@ -4922,12 +4435,6 @@ func (i CardinalityArgs) ToCardinalityOutputWithContext(ctx context.Context) Car
 	return pulumi.ToOutputWithContext(ctx, i).(CardinalityOutput)
 }
 
-func (i CardinalityArgs) ToOutput(ctx context.Context) pulumix.Output[Cardinality] {
-	return pulumix.Output[Cardinality]{
-		OutputState: i.ToCardinalityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CardinalityArgs) ToCardinalityPtrOutput() CardinalityPtrOutput {
 	return i.ToCardinalityPtrOutputWithContext(context.Background())
 }
@@ -4969,12 +4476,6 @@ func (i *cardinalityPtrType) ToCardinalityPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(CardinalityPtrOutput)
 }
 
-func (i *cardinalityPtrType) ToOutput(ctx context.Context) pulumix.Output[*Cardinality] {
-	return pulumix.Output[*Cardinality]{
-		OutputState: i.ToCardinalityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Cardinality properties
 type CardinalityOutput struct{ *pulumi.OutputState }
 
@@ -5000,12 +4501,6 @@ func (o CardinalityOutput) ToCardinalityPtrOutputWithContext(ctx context.Context
 	}).(CardinalityPtrOutput)
 }
 
-func (o CardinalityOutput) ToOutput(ctx context.Context) pulumix.Output[Cardinality] {
-	return pulumix.Output[Cardinality]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The backend broker desired properties
 func (o CardinalityOutput) BackendChain() BackendChainOutput {
 	return o.ApplyT(func(v Cardinality) BackendChain { return v.BackendChain }).(BackendChainOutput)
@@ -5028,12 +4523,6 @@ func (o CardinalityPtrOutput) ToCardinalityPtrOutput() CardinalityPtrOutput {
 
 func (o CardinalityPtrOutput) ToCardinalityPtrOutputWithContext(ctx context.Context) CardinalityPtrOutput {
 	return o
-}
-
-func (o CardinalityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Cardinality] {
-	return pulumix.Output[*Cardinality]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CardinalityPtrOutput) Elem() CardinalityOutput {
@@ -5102,12 +4591,6 @@ func (o CardinalityResponseOutput) ToCardinalityResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o CardinalityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CardinalityResponse] {
-	return pulumix.Output[CardinalityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The backend broker desired properties
 func (o CardinalityResponseOutput) BackendChain() BackendChainResponseOutput {
 	return o.ApplyT(func(v CardinalityResponse) BackendChainResponse { return v.BackendChain }).(BackendChainResponseOutput)
@@ -5130,12 +4613,6 @@ func (o CardinalityResponsePtrOutput) ToCardinalityResponsePtrOutput() Cardinali
 
 func (o CardinalityResponsePtrOutput) ToCardinalityResponsePtrOutputWithContext(ctx context.Context) CardinalityResponsePtrOutput {
 	return o
-}
-
-func (o CardinalityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CardinalityResponse] {
-	return pulumix.Output[*CardinalityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CardinalityResponsePtrOutput) Elem() CardinalityResponseOutput {
@@ -5243,12 +4720,6 @@ func (i CertManagerCertOptionsArgs) ToCertManagerCertOptionsOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(CertManagerCertOptionsOutput)
 }
 
-func (i CertManagerCertOptionsArgs) ToOutput(ctx context.Context) pulumix.Output[CertManagerCertOptions] {
-	return pulumix.Output[CertManagerCertOptions]{
-		OutputState: i.ToCertManagerCertOptionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CertManagerCertOptionsArgs) ToCertManagerCertOptionsPtrOutput() CertManagerCertOptionsPtrOutput {
 	return i.ToCertManagerCertOptionsPtrOutputWithContext(context.Background())
 }
@@ -5290,12 +4761,6 @@ func (i *certManagerCertOptionsPtrType) ToCertManagerCertOptionsPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(CertManagerCertOptionsPtrOutput)
 }
 
-func (i *certManagerCertOptionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CertManagerCertOptions] {
-	return pulumix.Output[*CertManagerCertOptions]{
-		OutputState: i.ToCertManagerCertOptionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Cert Manager CA Cert properties
 type CertManagerCertOptionsOutput struct{ *pulumi.OutputState }
 
@@ -5319,12 +4784,6 @@ func (o CertManagerCertOptionsOutput) ToCertManagerCertOptionsPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertManagerCertOptions) *CertManagerCertOptions {
 		return &v
 	}).(CertManagerCertOptionsPtrOutput)
-}
-
-func (o CertManagerCertOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[CertManagerCertOptions] {
-	return pulumix.Output[CertManagerCertOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Duration of CA cert.
@@ -5354,12 +4813,6 @@ func (o CertManagerCertOptionsPtrOutput) ToCertManagerCertOptionsPtrOutput() Cer
 
 func (o CertManagerCertOptionsPtrOutput) ToCertManagerCertOptionsPtrOutputWithContext(ctx context.Context) CertManagerCertOptionsPtrOutput {
 	return o
-}
-
-func (o CertManagerCertOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertManagerCertOptions] {
-	return pulumix.Output[*CertManagerCertOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertManagerCertOptionsPtrOutput) Elem() CertManagerCertOptionsOutput {
@@ -5444,12 +4897,6 @@ func (o CertManagerCertOptionsResponseOutput) ToCertManagerCertOptionsResponseOu
 	return o
 }
 
-func (o CertManagerCertOptionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertManagerCertOptionsResponse] {
-	return pulumix.Output[CertManagerCertOptionsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Duration of CA cert.
 func (o CertManagerCertOptionsResponseOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v CertManagerCertOptionsResponse) string { return v.Duration }).(pulumi.StringOutput)
@@ -5477,12 +4924,6 @@ func (o CertManagerCertOptionsResponsePtrOutput) ToCertManagerCertOptionsRespons
 
 func (o CertManagerCertOptionsResponsePtrOutput) ToCertManagerCertOptionsResponsePtrOutputWithContext(ctx context.Context) CertManagerCertOptionsResponsePtrOutput {
 	return o
-}
-
-func (o CertManagerCertOptionsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertManagerCertOptionsResponse] {
-	return pulumix.Output[*CertManagerCertOptionsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertManagerCertOptionsResponsePtrOutput) Elem() CertManagerCertOptionsResponseOutput {
@@ -5591,12 +5032,6 @@ func (i CertManagerIssuerRefArgs) ToCertManagerIssuerRefOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(CertManagerIssuerRefOutput)
 }
 
-func (i CertManagerIssuerRefArgs) ToOutput(ctx context.Context) pulumix.Output[CertManagerIssuerRef] {
-	return pulumix.Output[CertManagerIssuerRef]{
-		OutputState: i.ToCertManagerIssuerRefOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CertManagerIssuerRefArgs) ToCertManagerIssuerRefPtrOutput() CertManagerIssuerRefPtrOutput {
 	return i.ToCertManagerIssuerRefPtrOutputWithContext(context.Background())
 }
@@ -5638,12 +5073,6 @@ func (i *certManagerIssuerRefPtrType) ToCertManagerIssuerRefPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(CertManagerIssuerRefPtrOutput)
 }
 
-func (i *certManagerIssuerRefPtrType) ToOutput(ctx context.Context) pulumix.Output[*CertManagerIssuerRef] {
-	return pulumix.Output[*CertManagerIssuerRef]{
-		OutputState: i.ToCertManagerIssuerRefPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Cert-Manager issuerRef properties
 type CertManagerIssuerRefOutput struct{ *pulumi.OutputState }
 
@@ -5667,12 +5096,6 @@ func (o CertManagerIssuerRefOutput) ToCertManagerIssuerRefPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertManagerIssuerRef) *CertManagerIssuerRef {
 		return &v
 	}).(CertManagerIssuerRefPtrOutput)
-}
-
-func (o CertManagerIssuerRefOutput) ToOutput(ctx context.Context) pulumix.Output[CertManagerIssuerRef] {
-	return pulumix.Output[CertManagerIssuerRef]{
-		OutputState: o.OutputState,
-	}
 }
 
 // group of issuer.
@@ -5702,12 +5125,6 @@ func (o CertManagerIssuerRefPtrOutput) ToCertManagerIssuerRefPtrOutput() CertMan
 
 func (o CertManagerIssuerRefPtrOutput) ToCertManagerIssuerRefPtrOutputWithContext(ctx context.Context) CertManagerIssuerRefPtrOutput {
 	return o
-}
-
-func (o CertManagerIssuerRefPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertManagerIssuerRef] {
-	return pulumix.Output[*CertManagerIssuerRef]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertManagerIssuerRefPtrOutput) Elem() CertManagerIssuerRefOutput {
@@ -5787,12 +5204,6 @@ func (o CertManagerIssuerRefResponseOutput) ToCertManagerIssuerRefResponseOutput
 	return o
 }
 
-func (o CertManagerIssuerRefResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertManagerIssuerRefResponse] {
-	return pulumix.Output[CertManagerIssuerRefResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // group of issuer.
 func (o CertManagerIssuerRefResponseOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v CertManagerIssuerRefResponse) string { return v.Group }).(pulumi.StringOutput)
@@ -5820,12 +5231,6 @@ func (o CertManagerIssuerRefResponsePtrOutput) ToCertManagerIssuerRefResponsePtr
 
 func (o CertManagerIssuerRefResponsePtrOutput) ToCertManagerIssuerRefResponsePtrOutputWithContext(ctx context.Context) CertManagerIssuerRefResponsePtrOutput {
 	return o
-}
-
-func (o CertManagerIssuerRefResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertManagerIssuerRefResponse] {
-	return pulumix.Output[*CertManagerIssuerRefResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertManagerIssuerRefResponsePtrOutput) Elem() CertManagerIssuerRefResponseOutput {
@@ -5946,12 +5351,6 @@ func (i CertManagerPrivateKeyArgs) ToCertManagerPrivateKeyOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(CertManagerPrivateKeyOutput)
 }
 
-func (i CertManagerPrivateKeyArgs) ToOutput(ctx context.Context) pulumix.Output[CertManagerPrivateKey] {
-	return pulumix.Output[CertManagerPrivateKey]{
-		OutputState: i.ToCertManagerPrivateKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CertManagerPrivateKeyArgs) ToCertManagerPrivateKeyPtrOutput() CertManagerPrivateKeyPtrOutput {
 	return i.ToCertManagerPrivateKeyPtrOutputWithContext(context.Background())
 }
@@ -5993,12 +5392,6 @@ func (i *certManagerPrivateKeyPtrType) ToCertManagerPrivateKeyPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(CertManagerPrivateKeyPtrOutput)
 }
 
-func (i *certManagerPrivateKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*CertManagerPrivateKey] {
-	return pulumix.Output[*CertManagerPrivateKey]{
-		OutputState: i.ToCertManagerPrivateKeyPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Cert Manager private key properties
 type CertManagerPrivateKeyOutput struct{ *pulumi.OutputState }
 
@@ -6022,12 +5415,6 @@ func (o CertManagerPrivateKeyOutput) ToCertManagerPrivateKeyPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertManagerPrivateKey) *CertManagerPrivateKey {
 		return &v
 	}).(CertManagerPrivateKeyPtrOutput)
-}
-
-func (o CertManagerPrivateKeyOutput) ToOutput(ctx context.Context) pulumix.Output[CertManagerPrivateKey] {
-	return pulumix.Output[CertManagerPrivateKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // algorithm for private key.
@@ -6057,12 +5444,6 @@ func (o CertManagerPrivateKeyPtrOutput) ToCertManagerPrivateKeyPtrOutput() CertM
 
 func (o CertManagerPrivateKeyPtrOutput) ToCertManagerPrivateKeyPtrOutputWithContext(ctx context.Context) CertManagerPrivateKeyPtrOutput {
 	return o
-}
-
-func (o CertManagerPrivateKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertManagerPrivateKey] {
-	return pulumix.Output[*CertManagerPrivateKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertManagerPrivateKeyPtrOutput) Elem() CertManagerPrivateKeyOutput {
@@ -6148,12 +5529,6 @@ func (o CertManagerPrivateKeyResponseOutput) ToCertManagerPrivateKeyResponseOutp
 	return o
 }
 
-func (o CertManagerPrivateKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertManagerPrivateKeyResponse] {
-	return pulumix.Output[CertManagerPrivateKeyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // algorithm for private key.
 func (o CertManagerPrivateKeyResponseOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v CertManagerPrivateKeyResponse) string { return v.Algorithm }).(pulumi.StringOutput)
@@ -6181,12 +5556,6 @@ func (o CertManagerPrivateKeyResponsePtrOutput) ToCertManagerPrivateKeyResponseP
 
 func (o CertManagerPrivateKeyResponsePtrOutput) ToCertManagerPrivateKeyResponsePtrOutputWithContext(ctx context.Context) CertManagerPrivateKeyResponsePtrOutput {
 	return o
-}
-
-func (o CertManagerPrivateKeyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertManagerPrivateKeyResponse] {
-	return pulumix.Output[*CertManagerPrivateKeyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertManagerPrivateKeyResponsePtrOutput) Elem() CertManagerPrivateKeyResponseOutput {
@@ -6276,12 +5645,6 @@ func (i ContainerImageArgs) ToContainerImageOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerImageOutput)
 }
 
-func (i ContainerImageArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerImage] {
-	return pulumix.Output[ContainerImage]{
-		OutputState: i.ToContainerImageOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerImageArgs) ToContainerImagePtrOutput() ContainerImagePtrOutput {
 	return i.ToContainerImagePtrOutputWithContext(context.Background())
 }
@@ -6323,12 +5686,6 @@ func (i *containerImagePtrType) ToContainerImagePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerImagePtrOutput)
 }
 
-func (i *containerImagePtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerImage] {
-	return pulumix.Output[*ContainerImage]{
-		OutputState: i.ToContainerImagePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the Docker image details
 type ContainerImageOutput struct{ *pulumi.OutputState }
 
@@ -6352,12 +5709,6 @@ func (o ContainerImageOutput) ToContainerImagePtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerImage) *ContainerImage {
 		return &v
 	}).(ContainerImagePtrOutput)
-}
-
-func (o ContainerImageOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerImage] {
-	return pulumix.Output[ContainerImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Image pull policy.
@@ -6392,12 +5743,6 @@ func (o ContainerImagePtrOutput) ToContainerImagePtrOutput() ContainerImagePtrOu
 
 func (o ContainerImagePtrOutput) ToContainerImagePtrOutputWithContext(ctx context.Context) ContainerImagePtrOutput {
 	return o
-}
-
-func (o ContainerImagePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerImage] {
-	return pulumix.Output[*ContainerImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerImagePtrOutput) Elem() ContainerImageOutput {
@@ -6477,12 +5822,6 @@ func (o ContainerImageResponseOutput) ToContainerImageResponseOutputWithContext(
 	return o
 }
 
-func (o ContainerImageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerImageResponse] {
-	return pulumix.Output[ContainerImageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Image pull policy.
 func (o ContainerImageResponseOutput) PullPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerImageResponse) *string { return v.PullPolicy }).(pulumi.StringPtrOutput)
@@ -6515,12 +5854,6 @@ func (o ContainerImageResponsePtrOutput) ToContainerImageResponsePtrOutput() Con
 
 func (o ContainerImageResponsePtrOutput) ToContainerImageResponsePtrOutputWithContext(ctx context.Context) ContainerImageResponsePtrOutput {
 	return o
-}
-
-func (o ContainerImageResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerImageResponse] {
-	return pulumix.Output[*ContainerImageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerImageResponsePtrOutput) Elem() ContainerImageResponseOutput {
@@ -6656,12 +5989,6 @@ func (i DataLakeConnectorMapArgs) ToDataLakeConnectorMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DataLakeConnectorMapOutput)
 }
 
-func (i DataLakeConnectorMapArgs) ToOutput(ctx context.Context) pulumix.Output[DataLakeConnectorMap] {
-	return pulumix.Output[DataLakeConnectorMap]{
-		OutputState: i.ToDataLakeConnectorMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataLake connector map route properties
 type DataLakeConnectorMapOutput struct{ *pulumi.OutputState }
 
@@ -6675,12 +6002,6 @@ func (o DataLakeConnectorMapOutput) ToDataLakeConnectorMapOutput() DataLakeConne
 
 func (o DataLakeConnectorMapOutput) ToDataLakeConnectorMapOutputWithContext(ctx context.Context) DataLakeConnectorMapOutput {
 	return o
-}
-
-func (o DataLakeConnectorMapOutput) ToOutput(ctx context.Context) pulumix.Output[DataLakeConnectorMap] {
-	return pulumix.Output[DataLakeConnectorMap]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allowed latency for transferring data.
@@ -6762,12 +6083,6 @@ func (o DataLakeConnectorMapResponseOutput) ToDataLakeConnectorMapResponseOutput
 
 func (o DataLakeConnectorMapResponseOutput) ToDataLakeConnectorMapResponseOutputWithContext(ctx context.Context) DataLakeConnectorMapResponseOutput {
 	return o
-}
-
-func (o DataLakeConnectorMapResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataLakeConnectorMapResponse] {
-	return pulumix.Output[DataLakeConnectorMapResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allowed latency for transferring data.
@@ -6856,12 +6171,6 @@ func (i DataLakeFabricStorageArgs) ToDataLakeFabricStorageOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DataLakeFabricStorageOutput)
 }
 
-func (i DataLakeFabricStorageArgs) ToOutput(ctx context.Context) pulumix.Output[DataLakeFabricStorage] {
-	return pulumix.Output[DataLakeFabricStorage]{
-		OutputState: i.ToDataLakeFabricStorageOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DataLakeFabricStorageArgs) ToDataLakeFabricStoragePtrOutput() DataLakeFabricStoragePtrOutput {
 	return i.ToDataLakeFabricStoragePtrOutputWithContext(context.Background())
 }
@@ -6903,12 +6212,6 @@ func (i *dataLakeFabricStoragePtrType) ToDataLakeFabricStoragePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(DataLakeFabricStoragePtrOutput)
 }
 
-func (i *dataLakeFabricStoragePtrType) ToOutput(ctx context.Context) pulumix.Output[*DataLakeFabricStorage] {
-	return pulumix.Output[*DataLakeFabricStorage]{
-		OutputState: i.ToDataLakeFabricStoragePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataLake Fabric Storage details.
 type DataLakeFabricStorageOutput struct{ *pulumi.OutputState }
 
@@ -6932,12 +6235,6 @@ func (o DataLakeFabricStorageOutput) ToDataLakeFabricStoragePtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataLakeFabricStorage) *DataLakeFabricStorage {
 		return &v
 	}).(DataLakeFabricStoragePtrOutput)
-}
-
-func (o DataLakeFabricStorageOutput) ToOutput(ctx context.Context) pulumix.Output[DataLakeFabricStorage] {
-	return pulumix.Output[DataLakeFabricStorage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // DataLake fabric storage authentication details.
@@ -6977,12 +6274,6 @@ func (o DataLakeFabricStoragePtrOutput) ToDataLakeFabricStoragePtrOutput() DataL
 
 func (o DataLakeFabricStoragePtrOutput) ToDataLakeFabricStoragePtrOutputWithContext(ctx context.Context) DataLakeFabricStoragePtrOutput {
 	return o
-}
-
-func (o DataLakeFabricStoragePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataLakeFabricStorage] {
-	return pulumix.Output[*DataLakeFabricStorage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataLakeFabricStoragePtrOutput) Elem() DataLakeFabricStorageOutput {
@@ -7080,12 +6371,6 @@ func (i DataLakeFabricStorageAuthenticationArgs) ToDataLakeFabricStorageAuthenti
 	return pulumi.ToOutputWithContext(ctx, i).(DataLakeFabricStorageAuthenticationOutput)
 }
 
-func (i DataLakeFabricStorageAuthenticationArgs) ToOutput(ctx context.Context) pulumix.Output[DataLakeFabricStorageAuthentication] {
-	return pulumix.Output[DataLakeFabricStorageAuthentication]{
-		OutputState: i.ToDataLakeFabricStorageAuthenticationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DataLakeFabricStorageAuthenticationArgs) ToDataLakeFabricStorageAuthenticationPtrOutput() DataLakeFabricStorageAuthenticationPtrOutput {
 	return i.ToDataLakeFabricStorageAuthenticationPtrOutputWithContext(context.Background())
 }
@@ -7127,12 +6412,6 @@ func (i *dataLakeFabricStorageAuthenticationPtrType) ToDataLakeFabricStorageAuth
 	return pulumi.ToOutputWithContext(ctx, i).(DataLakeFabricStorageAuthenticationPtrOutput)
 }
 
-func (i *dataLakeFabricStorageAuthenticationPtrType) ToOutput(ctx context.Context) pulumix.Output[*DataLakeFabricStorageAuthentication] {
-	return pulumix.Output[*DataLakeFabricStorageAuthentication]{
-		OutputState: i.ToDataLakeFabricStorageAuthenticationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataLake Fabric Storage authentication details.
 type DataLakeFabricStorageAuthenticationOutput struct{ *pulumi.OutputState }
 
@@ -7158,12 +6437,6 @@ func (o DataLakeFabricStorageAuthenticationOutput) ToDataLakeFabricStorageAuthen
 	}).(DataLakeFabricStorageAuthenticationPtrOutput)
 }
 
-func (o DataLakeFabricStorageAuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[DataLakeFabricStorageAuthentication] {
-	return pulumix.Output[DataLakeFabricStorageAuthentication]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Configuration for managed identity authentication.
 func (o DataLakeFabricStorageAuthenticationOutput) SystemAssignedManagedIdentity() ManagedIdentityAuthenticationOutput {
 	return o.ApplyT(func(v DataLakeFabricStorageAuthentication) ManagedIdentityAuthentication {
@@ -7183,12 +6456,6 @@ func (o DataLakeFabricStorageAuthenticationPtrOutput) ToDataLakeFabricStorageAut
 
 func (o DataLakeFabricStorageAuthenticationPtrOutput) ToDataLakeFabricStorageAuthenticationPtrOutputWithContext(ctx context.Context) DataLakeFabricStorageAuthenticationPtrOutput {
 	return o
-}
-
-func (o DataLakeFabricStorageAuthenticationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataLakeFabricStorageAuthentication] {
-	return pulumix.Output[*DataLakeFabricStorageAuthentication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataLakeFabricStorageAuthenticationPtrOutput) Elem() DataLakeFabricStorageAuthenticationOutput {
@@ -7232,12 +6499,6 @@ func (o DataLakeFabricStorageAuthenticationResponseOutput) ToDataLakeFabricStora
 	return o
 }
 
-func (o DataLakeFabricStorageAuthenticationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataLakeFabricStorageAuthenticationResponse] {
-	return pulumix.Output[DataLakeFabricStorageAuthenticationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Configuration for managed identity authentication.
 func (o DataLakeFabricStorageAuthenticationResponseOutput) SystemAssignedManagedIdentity() ManagedIdentityAuthenticationResponseOutput {
 	return o.ApplyT(func(v DataLakeFabricStorageAuthenticationResponse) ManagedIdentityAuthenticationResponse {
@@ -7257,12 +6518,6 @@ func (o DataLakeFabricStorageAuthenticationResponsePtrOutput) ToDataLakeFabricSt
 
 func (o DataLakeFabricStorageAuthenticationResponsePtrOutput) ToDataLakeFabricStorageAuthenticationResponsePtrOutputWithContext(ctx context.Context) DataLakeFabricStorageAuthenticationResponsePtrOutput {
 	return o
-}
-
-func (o DataLakeFabricStorageAuthenticationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataLakeFabricStorageAuthenticationResponse] {
-	return pulumix.Output[*DataLakeFabricStorageAuthenticationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataLakeFabricStorageAuthenticationResponsePtrOutput) Elem() DataLakeFabricStorageAuthenticationResponseOutput {
@@ -7314,12 +6569,6 @@ func (o DataLakeFabricStorageResponseOutput) ToDataLakeFabricStorageResponseOutp
 	return o
 }
 
-func (o DataLakeFabricStorageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataLakeFabricStorageResponse] {
-	return pulumix.Output[DataLakeFabricStorageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // DataLake fabric storage authentication details.
 func (o DataLakeFabricStorageResponseOutput) Authentication() DataLakeFabricStorageAuthenticationResponseOutput {
 	return o.ApplyT(func(v DataLakeFabricStorageResponse) DataLakeFabricStorageAuthenticationResponse {
@@ -7359,12 +6608,6 @@ func (o DataLakeFabricStorageResponsePtrOutput) ToDataLakeFabricStorageResponseP
 
 func (o DataLakeFabricStorageResponsePtrOutput) ToDataLakeFabricStorageResponsePtrOutputWithContext(ctx context.Context) DataLakeFabricStorageResponsePtrOutput {
 	return o
-}
-
-func (o DataLakeFabricStorageResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataLakeFabricStorageResponse] {
-	return pulumix.Output[*DataLakeFabricStorageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataLakeFabricStorageResponsePtrOutput) Elem() DataLakeFabricStorageResponseOutput {
@@ -7462,12 +6705,6 @@ func (i DataLakeLocalStorageArgs) ToDataLakeLocalStorageOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DataLakeLocalStorageOutput)
 }
 
-func (i DataLakeLocalStorageArgs) ToOutput(ctx context.Context) pulumix.Output[DataLakeLocalStorage] {
-	return pulumix.Output[DataLakeLocalStorage]{
-		OutputState: i.ToDataLakeLocalStorageOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DataLakeLocalStorageArgs) ToDataLakeLocalStoragePtrOutput() DataLakeLocalStoragePtrOutput {
 	return i.ToDataLakeLocalStoragePtrOutputWithContext(context.Background())
 }
@@ -7509,12 +6746,6 @@ func (i *dataLakeLocalStoragePtrType) ToDataLakeLocalStoragePtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(DataLakeLocalStoragePtrOutput)
 }
 
-func (i *dataLakeLocalStoragePtrType) ToOutput(ctx context.Context) pulumix.Output[*DataLakeLocalStorage] {
-	return pulumix.Output[*DataLakeLocalStorage]{
-		OutputState: i.ToDataLakeLocalStoragePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataLake Local Storage details.
 type DataLakeLocalStorageOutput struct{ *pulumi.OutputState }
 
@@ -7540,12 +6771,6 @@ func (o DataLakeLocalStorageOutput) ToDataLakeLocalStoragePtrOutputWithContext(c
 	}).(DataLakeLocalStoragePtrOutput)
 }
 
-func (o DataLakeLocalStorageOutput) ToOutput(ctx context.Context) pulumix.Output[DataLakeLocalStorage] {
-	return pulumix.Output[DataLakeLocalStorage]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Volume name to write to.
 func (o DataLakeLocalStorageOutput) VolumeName() pulumi.StringOutput {
 	return o.ApplyT(func(v DataLakeLocalStorage) string { return v.VolumeName }).(pulumi.StringOutput)
@@ -7563,12 +6788,6 @@ func (o DataLakeLocalStoragePtrOutput) ToDataLakeLocalStoragePtrOutput() DataLak
 
 func (o DataLakeLocalStoragePtrOutput) ToDataLakeLocalStoragePtrOutputWithContext(ctx context.Context) DataLakeLocalStoragePtrOutput {
 	return o
-}
-
-func (o DataLakeLocalStoragePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataLakeLocalStorage] {
-	return pulumix.Output[*DataLakeLocalStorage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataLakeLocalStoragePtrOutput) Elem() DataLakeLocalStorageOutput {
@@ -7612,12 +6831,6 @@ func (o DataLakeLocalStorageResponseOutput) ToDataLakeLocalStorageResponseOutput
 	return o
 }
 
-func (o DataLakeLocalStorageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataLakeLocalStorageResponse] {
-	return pulumix.Output[DataLakeLocalStorageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Volume name to write to.
 func (o DataLakeLocalStorageResponseOutput) VolumeName() pulumi.StringOutput {
 	return o.ApplyT(func(v DataLakeLocalStorageResponse) string { return v.VolumeName }).(pulumi.StringOutput)
@@ -7635,12 +6848,6 @@ func (o DataLakeLocalStorageResponsePtrOutput) ToDataLakeLocalStorageResponsePtr
 
 func (o DataLakeLocalStorageResponsePtrOutput) ToDataLakeLocalStorageResponsePtrOutputWithContext(ctx context.Context) DataLakeLocalStorageResponsePtrOutput {
 	return o
-}
-
-func (o DataLakeLocalStorageResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataLakeLocalStorageResponse] {
-	return pulumix.Output[*DataLakeLocalStorageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataLakeLocalStorageResponsePtrOutput) Elem() DataLakeLocalStorageResponseOutput {
@@ -7702,12 +6909,6 @@ func (i DataLakeServiceStorageArgs) ToDataLakeServiceStorageOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(DataLakeServiceStorageOutput)
 }
 
-func (i DataLakeServiceStorageArgs) ToOutput(ctx context.Context) pulumix.Output[DataLakeServiceStorage] {
-	return pulumix.Output[DataLakeServiceStorage]{
-		OutputState: i.ToDataLakeServiceStorageOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DataLakeServiceStorageArgs) ToDataLakeServiceStoragePtrOutput() DataLakeServiceStoragePtrOutput {
 	return i.ToDataLakeServiceStoragePtrOutputWithContext(context.Background())
 }
@@ -7749,12 +6950,6 @@ func (i *dataLakeServiceStoragePtrType) ToDataLakeServiceStoragePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(DataLakeServiceStoragePtrOutput)
 }
 
-func (i *dataLakeServiceStoragePtrType) ToOutput(ctx context.Context) pulumix.Output[*DataLakeServiceStorage] {
-	return pulumix.Output[*DataLakeServiceStorage]{
-		OutputState: i.ToDataLakeServiceStoragePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataLake Service Storage details.
 type DataLakeServiceStorageOutput struct{ *pulumi.OutputState }
 
@@ -7780,12 +6975,6 @@ func (o DataLakeServiceStorageOutput) ToDataLakeServiceStoragePtrOutputWithConte
 	}).(DataLakeServiceStoragePtrOutput)
 }
 
-func (o DataLakeServiceStorageOutput) ToOutput(ctx context.Context) pulumix.Output[DataLakeServiceStorage] {
-	return pulumix.Output[DataLakeServiceStorage]{
-		OutputState: o.OutputState,
-	}
-}
-
 // DataLake service storage authentication details. NOTE - Enum only one method is supported.
 func (o DataLakeServiceStorageOutput) Authentication() DataLakeServiceStorageAuthenticationOutput {
 	return o.ApplyT(func(v DataLakeServiceStorage) DataLakeServiceStorageAuthentication { return v.Authentication }).(DataLakeServiceStorageAuthenticationOutput)
@@ -7808,12 +6997,6 @@ func (o DataLakeServiceStoragePtrOutput) ToDataLakeServiceStoragePtrOutput() Dat
 
 func (o DataLakeServiceStoragePtrOutput) ToDataLakeServiceStoragePtrOutputWithContext(ctx context.Context) DataLakeServiceStoragePtrOutput {
 	return o
-}
-
-func (o DataLakeServiceStoragePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataLakeServiceStorage] {
-	return pulumix.Output[*DataLakeServiceStorage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataLakeServiceStoragePtrOutput) Elem() DataLakeServiceStorageOutput {
@@ -7885,12 +7068,6 @@ func (i DataLakeServiceStorageAuthenticationArgs) ToDataLakeServiceStorageAuthen
 	return pulumi.ToOutputWithContext(ctx, i).(DataLakeServiceStorageAuthenticationOutput)
 }
 
-func (i DataLakeServiceStorageAuthenticationArgs) ToOutput(ctx context.Context) pulumix.Output[DataLakeServiceStorageAuthentication] {
-	return pulumix.Output[DataLakeServiceStorageAuthentication]{
-		OutputState: i.ToDataLakeServiceStorageAuthenticationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DataLakeServiceStorageAuthenticationArgs) ToDataLakeServiceStorageAuthenticationPtrOutput() DataLakeServiceStorageAuthenticationPtrOutput {
 	return i.ToDataLakeServiceStorageAuthenticationPtrOutputWithContext(context.Background())
 }
@@ -7932,12 +7109,6 @@ func (i *dataLakeServiceStorageAuthenticationPtrType) ToDataLakeServiceStorageAu
 	return pulumi.ToOutputWithContext(ctx, i).(DataLakeServiceStorageAuthenticationPtrOutput)
 }
 
-func (i *dataLakeServiceStorageAuthenticationPtrType) ToOutput(ctx context.Context) pulumix.Output[*DataLakeServiceStorageAuthentication] {
-	return pulumix.Output[*DataLakeServiceStorageAuthentication]{
-		OutputState: i.ToDataLakeServiceStorageAuthenticationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataLake Service Storage authentication details. NOTE - Enum only one method is supported.
 type DataLakeServiceStorageAuthenticationOutput struct{ *pulumi.OutputState }
 
@@ -7961,12 +7132,6 @@ func (o DataLakeServiceStorageAuthenticationOutput) ToDataLakeServiceStorageAuth
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataLakeServiceStorageAuthentication) *DataLakeServiceStorageAuthentication {
 		return &v
 	}).(DataLakeServiceStorageAuthenticationPtrOutput)
-}
-
-func (o DataLakeServiceStorageAuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[DataLakeServiceStorageAuthentication] {
-	return pulumix.Output[DataLakeServiceStorageAuthentication]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Access token secret name.
@@ -7993,12 +7158,6 @@ func (o DataLakeServiceStorageAuthenticationPtrOutput) ToDataLakeServiceStorageA
 
 func (o DataLakeServiceStorageAuthenticationPtrOutput) ToDataLakeServiceStorageAuthenticationPtrOutputWithContext(ctx context.Context) DataLakeServiceStorageAuthenticationPtrOutput {
 	return o
-}
-
-func (o DataLakeServiceStorageAuthenticationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataLakeServiceStorageAuthentication] {
-	return pulumix.Output[*DataLakeServiceStorageAuthentication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataLakeServiceStorageAuthenticationPtrOutput) Elem() DataLakeServiceStorageAuthenticationOutput {
@@ -8054,12 +7213,6 @@ func (o DataLakeServiceStorageAuthenticationResponseOutput) ToDataLakeServiceSto
 	return o
 }
 
-func (o DataLakeServiceStorageAuthenticationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataLakeServiceStorageAuthenticationResponse] {
-	return pulumix.Output[DataLakeServiceStorageAuthenticationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Access token secret name.
 func (o DataLakeServiceStorageAuthenticationResponseOutput) AccessTokenSecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataLakeServiceStorageAuthenticationResponse) *string { return v.AccessTokenSecretName }).(pulumi.StringPtrOutput)
@@ -8084,12 +7237,6 @@ func (o DataLakeServiceStorageAuthenticationResponsePtrOutput) ToDataLakeService
 
 func (o DataLakeServiceStorageAuthenticationResponsePtrOutput) ToDataLakeServiceStorageAuthenticationResponsePtrOutputWithContext(ctx context.Context) DataLakeServiceStorageAuthenticationResponsePtrOutput {
 	return o
-}
-
-func (o DataLakeServiceStorageAuthenticationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataLakeServiceStorageAuthenticationResponse] {
-	return pulumix.Output[*DataLakeServiceStorageAuthenticationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataLakeServiceStorageAuthenticationResponsePtrOutput) Elem() DataLakeServiceStorageAuthenticationResponseOutput {
@@ -8145,12 +7292,6 @@ func (o DataLakeServiceStorageResponseOutput) ToDataLakeServiceStorageResponseOu
 	return o
 }
 
-func (o DataLakeServiceStorageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataLakeServiceStorageResponse] {
-	return pulumix.Output[DataLakeServiceStorageResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // DataLake service storage authentication details. NOTE - Enum only one method is supported.
 func (o DataLakeServiceStorageResponseOutput) Authentication() DataLakeServiceStorageAuthenticationResponseOutput {
 	return o.ApplyT(func(v DataLakeServiceStorageResponse) DataLakeServiceStorageAuthenticationResponse {
@@ -8175,12 +7316,6 @@ func (o DataLakeServiceStorageResponsePtrOutput) ToDataLakeServiceStorageRespons
 
 func (o DataLakeServiceStorageResponsePtrOutput) ToDataLakeServiceStorageResponsePtrOutputWithContext(ctx context.Context) DataLakeServiceStorageResponsePtrOutput {
 	return o
-}
-
-func (o DataLakeServiceStorageResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DataLakeServiceStorageResponse] {
-	return pulumix.Output[*DataLakeServiceStorageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataLakeServiceStorageResponsePtrOutput) Elem() DataLakeServiceStorageResponseOutput {
@@ -8256,12 +7391,6 @@ func (i DataLakeTargetStorageArgs) ToDataLakeTargetStorageOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DataLakeTargetStorageOutput)
 }
 
-func (i DataLakeTargetStorageArgs) ToOutput(ctx context.Context) pulumix.Output[DataLakeTargetStorage] {
-	return pulumix.Output[DataLakeTargetStorage]{
-		OutputState: i.ToDataLakeTargetStorageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Target storage for the DataLake. NOTE - Enum only storage is supported at a time.
 type DataLakeTargetStorageOutput struct{ *pulumi.OutputState }
 
@@ -8275,12 +7404,6 @@ func (o DataLakeTargetStorageOutput) ToDataLakeTargetStorageOutput() DataLakeTar
 
 func (o DataLakeTargetStorageOutput) ToDataLakeTargetStorageOutputWithContext(ctx context.Context) DataLakeTargetStorageOutput {
 	return o
-}
-
-func (o DataLakeTargetStorageOutput) ToOutput(ctx context.Context) pulumix.Output[DataLakeTargetStorage] {
-	return pulumix.Output[DataLakeTargetStorage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // DataLake service storage details.
@@ -8321,12 +7444,6 @@ func (o DataLakeTargetStorageResponseOutput) ToDataLakeTargetStorageResponseOutp
 
 func (o DataLakeTargetStorageResponseOutput) ToDataLakeTargetStorageResponseOutputWithContext(ctx context.Context) DataLakeTargetStorageResponseOutput {
 	return o
-}
-
-func (o DataLakeTargetStorageResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DataLakeTargetStorageResponse] {
-	return pulumix.Output[DataLakeTargetStorageResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // DataLake service storage details.
@@ -8387,12 +7504,6 @@ func (i DeltaTableArgs) ToDeltaTableOutputWithContext(ctx context.Context) Delta
 	return pulumi.ToOutputWithContext(ctx, i).(DeltaTableOutput)
 }
 
-func (i DeltaTableArgs) ToOutput(ctx context.Context) pulumix.Output[DeltaTable] {
-	return pulumix.Output[DeltaTable]{
-		OutputState: i.ToDeltaTableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Delta table properties
 type DeltaTableOutput struct{ *pulumi.OutputState }
 
@@ -8406,12 +7517,6 @@ func (o DeltaTableOutput) ToDeltaTableOutput() DeltaTableOutput {
 
 func (o DeltaTableOutput) ToDeltaTableOutputWithContext(ctx context.Context) DeltaTableOutput {
 	return o
-}
-
-func (o DeltaTableOutput) ToOutput(ctx context.Context) pulumix.Output[DeltaTable] {
-	return pulumix.Output[DeltaTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Schema list supported.
@@ -8452,12 +7557,6 @@ func (o DeltaTableResponseOutput) ToDeltaTableResponseOutput() DeltaTableRespons
 
 func (o DeltaTableResponseOutput) ToDeltaTableResponseOutputWithContext(ctx context.Context) DeltaTableResponseOutput {
 	return o
-}
-
-func (o DeltaTableResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeltaTableResponse] {
-	return pulumix.Output[DeltaTableResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Schema list supported.
@@ -8522,12 +7621,6 @@ func (i DeltaTableSchemaArgs) ToDeltaTableSchemaOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DeltaTableSchemaOutput)
 }
 
-func (i DeltaTableSchemaArgs) ToOutput(ctx context.Context) pulumix.Output[DeltaTableSchema] {
-	return pulumix.Output[DeltaTableSchema]{
-		OutputState: i.ToDeltaTableSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DeltaTableSchemaArrayInput is an input type that accepts DeltaTableSchemaArray and DeltaTableSchemaArrayOutput values.
 // You can construct a concrete instance of `DeltaTableSchemaArrayInput` via:
 //
@@ -8553,12 +7646,6 @@ func (i DeltaTableSchemaArray) ToDeltaTableSchemaArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(DeltaTableSchemaArrayOutput)
 }
 
-func (i DeltaTableSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]DeltaTableSchema] {
-	return pulumix.Output[[]DeltaTableSchema]{
-		OutputState: i.ToDeltaTableSchemaArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Delta table schema properties
 type DeltaTableSchemaOutput struct{ *pulumi.OutputState }
 
@@ -8572,12 +7659,6 @@ func (o DeltaTableSchemaOutput) ToDeltaTableSchemaOutput() DeltaTableSchemaOutpu
 
 func (o DeltaTableSchemaOutput) ToDeltaTableSchemaOutputWithContext(ctx context.Context) DeltaTableSchemaOutput {
 	return o
-}
-
-func (o DeltaTableSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[DeltaTableSchema] {
-	return pulumix.Output[DeltaTableSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Delta table format supported.
@@ -8614,12 +7695,6 @@ func (o DeltaTableSchemaArrayOutput) ToDeltaTableSchemaArrayOutputWithContext(ct
 	return o
 }
 
-func (o DeltaTableSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeltaTableSchema] {
-	return pulumix.Output[[]DeltaTableSchema]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DeltaTableSchemaArrayOutput) Index(i pulumi.IntInput) DeltaTableSchemaOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeltaTableSchema {
 		return vs[0].([]DeltaTableSchema)[vs[1].(int)]
@@ -8651,12 +7726,6 @@ func (o DeltaTableSchemaResponseOutput) ToDeltaTableSchemaResponseOutput() Delta
 
 func (o DeltaTableSchemaResponseOutput) ToDeltaTableSchemaResponseOutputWithContext(ctx context.Context) DeltaTableSchemaResponseOutput {
 	return o
-}
-
-func (o DeltaTableSchemaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DeltaTableSchemaResponse] {
-	return pulumix.Output[DeltaTableSchemaResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Delta table format supported.
@@ -8691,12 +7760,6 @@ func (o DeltaTableSchemaResponseArrayOutput) ToDeltaTableSchemaResponseArrayOutp
 
 func (o DeltaTableSchemaResponseArrayOutput) ToDeltaTableSchemaResponseArrayOutputWithContext(ctx context.Context) DeltaTableSchemaResponseArrayOutput {
 	return o
-}
-
-func (o DeltaTableSchemaResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DeltaTableSchemaResponse] {
-	return pulumix.Output[[]DeltaTableSchemaResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeltaTableSchemaResponseArrayOutput) Index(i pulumi.IntInput) DeltaTableSchemaResponseOutput {
@@ -8748,12 +7811,6 @@ func (i DiskBackedMessageBufferSettingsArgs) ToDiskBackedMessageBufferSettingsOu
 	return pulumi.ToOutputWithContext(ctx, i).(DiskBackedMessageBufferSettingsOutput)
 }
 
-func (i DiskBackedMessageBufferSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[DiskBackedMessageBufferSettings] {
-	return pulumix.Output[DiskBackedMessageBufferSettings]{
-		OutputState: i.ToDiskBackedMessageBufferSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DiskBackedMessageBufferSettingsArgs) ToDiskBackedMessageBufferSettingsPtrOutput() DiskBackedMessageBufferSettingsPtrOutput {
 	return i.ToDiskBackedMessageBufferSettingsPtrOutputWithContext(context.Background())
 }
@@ -8795,12 +7852,6 @@ func (i *diskBackedMessageBufferSettingsPtrType) ToDiskBackedMessageBufferSettin
 	return pulumi.ToOutputWithContext(ctx, i).(DiskBackedMessageBufferSettingsPtrOutput)
 }
 
-func (i *diskBackedMessageBufferSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DiskBackedMessageBufferSettings] {
-	return pulumix.Output[*DiskBackedMessageBufferSettings]{
-		OutputState: i.ToDiskBackedMessageBufferSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DiskBackedMessageBufferSettings properties
 type DiskBackedMessageBufferSettingsOutput struct{ *pulumi.OutputState }
 
@@ -8824,12 +7875,6 @@ func (o DiskBackedMessageBufferSettingsOutput) ToDiskBackedMessageBufferSettings
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskBackedMessageBufferSettings) *DiskBackedMessageBufferSettings {
 		return &v
 	}).(DiskBackedMessageBufferSettingsPtrOutput)
-}
-
-func (o DiskBackedMessageBufferSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[DiskBackedMessageBufferSettings] {
-	return pulumix.Output[DiskBackedMessageBufferSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Use the specified persistent volume claim template to mount a "generic ephemeral volume" for the message buffer. See <https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes> for details.
@@ -8859,12 +7904,6 @@ func (o DiskBackedMessageBufferSettingsPtrOutput) ToDiskBackedMessageBufferSetti
 
 func (o DiskBackedMessageBufferSettingsPtrOutput) ToDiskBackedMessageBufferSettingsPtrOutputWithContext(ctx context.Context) DiskBackedMessageBufferSettingsPtrOutput {
 	return o
-}
-
-func (o DiskBackedMessageBufferSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskBackedMessageBufferSettings] {
-	return pulumix.Output[*DiskBackedMessageBufferSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskBackedMessageBufferSettingsPtrOutput) Elem() DiskBackedMessageBufferSettingsOutput {
@@ -8932,12 +7971,6 @@ func (o DiskBackedMessageBufferSettingsResponseOutput) ToDiskBackedMessageBuffer
 	return o
 }
 
-func (o DiskBackedMessageBufferSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiskBackedMessageBufferSettingsResponse] {
-	return pulumix.Output[DiskBackedMessageBufferSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Use the specified persistent volume claim template to mount a "generic ephemeral volume" for the message buffer. See <https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes> for details.
 func (o DiskBackedMessageBufferSettingsResponseOutput) EphemeralVolumeClaimSpec() VolumeClaimSpecResponsePtrOutput {
 	return o.ApplyT(func(v DiskBackedMessageBufferSettingsResponse) *VolumeClaimSpecResponse {
@@ -8969,12 +8002,6 @@ func (o DiskBackedMessageBufferSettingsResponsePtrOutput) ToDiskBackedMessageBuf
 
 func (o DiskBackedMessageBufferSettingsResponsePtrOutput) ToDiskBackedMessageBufferSettingsResponsePtrOutputWithContext(ctx context.Context) DiskBackedMessageBufferSettingsResponsePtrOutput {
 	return o
-}
-
-func (o DiskBackedMessageBufferSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskBackedMessageBufferSettingsResponse] {
-	return pulumix.Output[*DiskBackedMessageBufferSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskBackedMessageBufferSettingsResponsePtrOutput) Elem() DiskBackedMessageBufferSettingsResponseOutput {
@@ -9056,12 +8083,6 @@ func (i ExtendedLocationPropertyArgs) ToExtendedLocationPropertyOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationPropertyOutput)
 }
 
-func (i ExtendedLocationPropertyArgs) ToOutput(ctx context.Context) pulumix.Output[ExtendedLocationProperty] {
-	return pulumix.Output[ExtendedLocationProperty]{
-		OutputState: i.ToExtendedLocationPropertyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ExtendedLocation properties
 type ExtendedLocationPropertyOutput struct{ *pulumi.OutputState }
 
@@ -9075,12 +8096,6 @@ func (o ExtendedLocationPropertyOutput) ToExtendedLocationPropertyOutput() Exten
 
 func (o ExtendedLocationPropertyOutput) ToExtendedLocationPropertyOutputWithContext(ctx context.Context) ExtendedLocationPropertyOutput {
 	return o
-}
-
-func (o ExtendedLocationPropertyOutput) ToOutput(ctx context.Context) pulumix.Output[ExtendedLocationProperty] {
-	return pulumix.Output[ExtendedLocationProperty]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the extended location.
@@ -9114,12 +8129,6 @@ func (o ExtendedLocationPropertyResponseOutput) ToExtendedLocationPropertyRespon
 
 func (o ExtendedLocationPropertyResponseOutput) ToExtendedLocationPropertyResponseOutputWithContext(ctx context.Context) ExtendedLocationPropertyResponseOutput {
 	return o
-}
-
-func (o ExtendedLocationPropertyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExtendedLocationPropertyResponse] {
-	return pulumix.Output[ExtendedLocationPropertyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the extended location.
@@ -9171,12 +8180,6 @@ func (i FabricGuidsArgs) ToFabricGuidsOutputWithContext(ctx context.Context) Fab
 	return pulumi.ToOutputWithContext(ctx, i).(FabricGuidsOutput)
 }
 
-func (i FabricGuidsArgs) ToOutput(ctx context.Context) pulumix.Output[FabricGuids] {
-	return pulumix.Output[FabricGuids]{
-		OutputState: i.ToFabricGuidsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FabricGuidsArgs) ToFabricGuidsPtrOutput() FabricGuidsPtrOutput {
 	return i.ToFabricGuidsPtrOutputWithContext(context.Background())
 }
@@ -9218,12 +8221,6 @@ func (i *fabricGuidsPtrType) ToFabricGuidsPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(FabricGuidsPtrOutput)
 }
 
-func (i *fabricGuidsPtrType) ToOutput(ctx context.Context) pulumix.Output[*FabricGuids] {
-	return pulumix.Output[*FabricGuids]{
-		OutputState: i.ToFabricGuidsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Fabric one lake guids.
 type FabricGuidsOutput struct{ *pulumi.OutputState }
 
@@ -9249,12 +8246,6 @@ func (o FabricGuidsOutput) ToFabricGuidsPtrOutputWithContext(ctx context.Context
 	}).(FabricGuidsPtrOutput)
 }
 
-func (o FabricGuidsOutput) ToOutput(ctx context.Context) pulumix.Output[FabricGuids] {
-	return pulumix.Output[FabricGuids]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Fabric one lake house guid.
 func (o FabricGuidsOutput) LakehouseGuid() pulumi.StringOutput {
 	return o.ApplyT(func(v FabricGuids) string { return v.LakehouseGuid }).(pulumi.StringOutput)
@@ -9277,12 +8268,6 @@ func (o FabricGuidsPtrOutput) ToFabricGuidsPtrOutput() FabricGuidsPtrOutput {
 
 func (o FabricGuidsPtrOutput) ToFabricGuidsPtrOutputWithContext(ctx context.Context) FabricGuidsPtrOutput {
 	return o
-}
-
-func (o FabricGuidsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FabricGuids] {
-	return pulumix.Output[*FabricGuids]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FabricGuidsPtrOutput) Elem() FabricGuidsOutput {
@@ -9338,12 +8323,6 @@ func (o FabricGuidsResponseOutput) ToFabricGuidsResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o FabricGuidsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FabricGuidsResponse] {
-	return pulumix.Output[FabricGuidsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Fabric one lake house guid.
 func (o FabricGuidsResponseOutput) LakehouseGuid() pulumi.StringOutput {
 	return o.ApplyT(func(v FabricGuidsResponse) string { return v.LakehouseGuid }).(pulumi.StringOutput)
@@ -9366,12 +8345,6 @@ func (o FabricGuidsResponsePtrOutput) ToFabricGuidsResponsePtrOutput() FabricGui
 
 func (o FabricGuidsResponsePtrOutput) ToFabricGuidsResponsePtrOutputWithContext(ctx context.Context) FabricGuidsResponsePtrOutput {
 	return o
-}
-
-func (o FabricGuidsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FabricGuidsResponse] {
-	return pulumix.Output[*FabricGuidsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FabricGuidsResponsePtrOutput) Elem() FabricGuidsResponseOutput {
@@ -9443,12 +8416,6 @@ func (i FabricNamesArgs) ToFabricNamesOutputWithContext(ctx context.Context) Fab
 	return pulumi.ToOutputWithContext(ctx, i).(FabricNamesOutput)
 }
 
-func (i FabricNamesArgs) ToOutput(ctx context.Context) pulumix.Output[FabricNames] {
-	return pulumix.Output[FabricNames]{
-		OutputState: i.ToFabricNamesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FabricNamesArgs) ToFabricNamesPtrOutput() FabricNamesPtrOutput {
 	return i.ToFabricNamesPtrOutputWithContext(context.Background())
 }
@@ -9490,12 +8457,6 @@ func (i *fabricNamesPtrType) ToFabricNamesPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(FabricNamesPtrOutput)
 }
 
-func (i *fabricNamesPtrType) ToOutput(ctx context.Context) pulumix.Output[*FabricNames] {
-	return pulumix.Output[*FabricNames]{
-		OutputState: i.ToFabricNamesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Fabric one lake names.
 type FabricNamesOutput struct{ *pulumi.OutputState }
 
@@ -9521,12 +8482,6 @@ func (o FabricNamesOutput) ToFabricNamesPtrOutputWithContext(ctx context.Context
 	}).(FabricNamesPtrOutput)
 }
 
-func (o FabricNamesOutput) ToOutput(ctx context.Context) pulumix.Output[FabricNames] {
-	return pulumix.Output[FabricNames]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Fabric one lake house name.
 func (o FabricNamesOutput) LakehouseName() pulumi.StringOutput {
 	return o.ApplyT(func(v FabricNames) string { return v.LakehouseName }).(pulumi.StringOutput)
@@ -9549,12 +8504,6 @@ func (o FabricNamesPtrOutput) ToFabricNamesPtrOutput() FabricNamesPtrOutput {
 
 func (o FabricNamesPtrOutput) ToFabricNamesPtrOutputWithContext(ctx context.Context) FabricNamesPtrOutput {
 	return o
-}
-
-func (o FabricNamesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FabricNames] {
-	return pulumix.Output[*FabricNames]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FabricNamesPtrOutput) Elem() FabricNamesOutput {
@@ -9610,12 +8559,6 @@ func (o FabricNamesResponseOutput) ToFabricNamesResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o FabricNamesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FabricNamesResponse] {
-	return pulumix.Output[FabricNamesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Fabric one lake house name.
 func (o FabricNamesResponseOutput) LakehouseName() pulumi.StringOutput {
 	return o.ApplyT(func(v FabricNamesResponse) string { return v.LakehouseName }).(pulumi.StringOutput)
@@ -9638,12 +8581,6 @@ func (o FabricNamesResponsePtrOutput) ToFabricNamesResponsePtrOutput() FabricNam
 
 func (o FabricNamesResponsePtrOutput) ToFabricNamesResponsePtrOutputWithContext(ctx context.Context) FabricNamesResponsePtrOutput {
 	return o
-}
-
-func (o FabricNamesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FabricNamesResponse] {
-	return pulumix.Output[*FabricNamesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FabricNamesResponsePtrOutput) Elem() FabricNamesResponseOutput {
@@ -9743,12 +8680,6 @@ func (i FrontendArgs) ToFrontendOutputWithContext(ctx context.Context) FrontendO
 	return pulumi.ToOutputWithContext(ctx, i).(FrontendOutput)
 }
 
-func (i FrontendArgs) ToOutput(ctx context.Context) pulumix.Output[Frontend] {
-	return pulumix.Output[Frontend]{
-		OutputState: i.ToFrontendOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i FrontendArgs) ToFrontendPtrOutput() FrontendPtrOutput {
 	return i.ToFrontendPtrOutputWithContext(context.Background())
 }
@@ -9790,12 +8721,6 @@ func (i *frontendPtrType) ToFrontendPtrOutputWithContext(ctx context.Context) Fr
 	return pulumi.ToOutputWithContext(ctx, i).(FrontendPtrOutput)
 }
 
-func (i *frontendPtrType) ToOutput(ctx context.Context) pulumix.Output[*Frontend] {
-	return pulumix.Output[*Frontend]{
-		OutputState: i.ToFrontendPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Desired properties of the Frontend Instances of the DMQTT Broker
 type FrontendOutput struct{ *pulumi.OutputState }
 
@@ -9819,12 +8744,6 @@ func (o FrontendOutput) ToFrontendPtrOutputWithContext(ctx context.Context) Fron
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Frontend) *Frontend {
 		return &v
 	}).(FrontendPtrOutput)
-}
-
-func (o FrontendOutput) ToOutput(ctx context.Context) pulumix.Output[Frontend] {
-	return pulumix.Output[Frontend]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Replicas is desired number of frontend replicas of the given distributed MQTT broker.
@@ -9854,12 +8773,6 @@ func (o FrontendPtrOutput) ToFrontendPtrOutput() FrontendPtrOutput {
 
 func (o FrontendPtrOutput) ToFrontendPtrOutputWithContext(ctx context.Context) FrontendPtrOutput {
 	return o
-}
-
-func (o FrontendPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Frontend] {
-	return pulumix.Output[*Frontend]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FrontendPtrOutput) Elem() FrontendOutput {
@@ -9940,12 +8853,6 @@ func (o FrontendResponseOutput) ToFrontendResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o FrontendResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FrontendResponse] {
-	return pulumix.Output[FrontendResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Replicas is desired number of frontend replicas of the given distributed MQTT broker.
 func (o FrontendResponseOutput) Replicas() pulumi.IntOutput {
 	return o.ApplyT(func(v FrontendResponse) int { return v.Replicas }).(pulumi.IntOutput)
@@ -9973,12 +8880,6 @@ func (o FrontendResponsePtrOutput) ToFrontendResponsePtrOutput() FrontendRespons
 
 func (o FrontendResponsePtrOutput) ToFrontendResponsePtrOutputWithContext(ctx context.Context) FrontendResponsePtrOutput {
 	return o
-}
-
-func (o FrontendResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*FrontendResponse] {
-	return pulumix.Output[*FrontendResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FrontendResponsePtrOutput) Elem() FrontendResponseOutput {
@@ -10060,12 +8961,6 @@ func (i KafkaRemoteBrokerAuthenticationPropertiesArgs) ToKafkaRemoteBrokerAuthen
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaRemoteBrokerAuthenticationPropertiesOutput)
 }
 
-func (i KafkaRemoteBrokerAuthenticationPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[KafkaRemoteBrokerAuthenticationProperties] {
-	return pulumix.Output[KafkaRemoteBrokerAuthenticationProperties]{
-		OutputState: i.ToKafkaRemoteBrokerAuthenticationPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Kafka RemoteBrokerConnection Authentication methods
 type KafkaRemoteBrokerAuthenticationPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -10079,12 +8974,6 @@ func (o KafkaRemoteBrokerAuthenticationPropertiesOutput) ToKafkaRemoteBrokerAuth
 
 func (o KafkaRemoteBrokerAuthenticationPropertiesOutput) ToKafkaRemoteBrokerAuthenticationPropertiesOutputWithContext(ctx context.Context) KafkaRemoteBrokerAuthenticationPropertiesOutput {
 	return o
-}
-
-func (o KafkaRemoteBrokerAuthenticationPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[KafkaRemoteBrokerAuthenticationProperties] {
-	return pulumix.Output[KafkaRemoteBrokerAuthenticationProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of authentication to use for Kafka remote broker.
@@ -10120,12 +9009,6 @@ func (o KafkaRemoteBrokerAuthenticationPropertiesResponseOutput) ToKafkaRemoteBr
 
 func (o KafkaRemoteBrokerAuthenticationPropertiesResponseOutput) ToKafkaRemoteBrokerAuthenticationPropertiesResponseOutputWithContext(ctx context.Context) KafkaRemoteBrokerAuthenticationPropertiesResponseOutput {
 	return o
-}
-
-func (o KafkaRemoteBrokerAuthenticationPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KafkaRemoteBrokerAuthenticationPropertiesResponse] {
-	return pulumix.Output[KafkaRemoteBrokerAuthenticationPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of authentication to use for Kafka remote broker.
@@ -10183,12 +9066,6 @@ func (i KafkaRemoteBrokerAuthenticationTypesArgs) ToKafkaRemoteBrokerAuthenticat
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaRemoteBrokerAuthenticationTypesOutput)
 }
 
-func (i KafkaRemoteBrokerAuthenticationTypesArgs) ToOutput(ctx context.Context) pulumix.Output[KafkaRemoteBrokerAuthenticationTypes] {
-	return pulumix.Output[KafkaRemoteBrokerAuthenticationTypes]{
-		OutputState: i.ToKafkaRemoteBrokerAuthenticationTypesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KafkaRemoteBrokerAuthenticationTypesArgs) ToKafkaRemoteBrokerAuthenticationTypesPtrOutput() KafkaRemoteBrokerAuthenticationTypesPtrOutput {
 	return i.ToKafkaRemoteBrokerAuthenticationTypesPtrOutputWithContext(context.Background())
 }
@@ -10230,12 +9107,6 @@ func (i *kafkaRemoteBrokerAuthenticationTypesPtrType) ToKafkaRemoteBrokerAuthent
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaRemoteBrokerAuthenticationTypesPtrOutput)
 }
 
-func (i *kafkaRemoteBrokerAuthenticationTypesPtrType) ToOutput(ctx context.Context) pulumix.Output[*KafkaRemoteBrokerAuthenticationTypes] {
-	return pulumix.Output[*KafkaRemoteBrokerAuthenticationTypes]{
-		OutputState: i.ToKafkaRemoteBrokerAuthenticationTypesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Kafka RemoteBrokerConnection Authentication types. NOTE - Enum only one method is allowed to be passed.
 type KafkaRemoteBrokerAuthenticationTypesOutput struct{ *pulumi.OutputState }
 
@@ -10259,12 +9130,6 @@ func (o KafkaRemoteBrokerAuthenticationTypesOutput) ToKafkaRemoteBrokerAuthentic
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v KafkaRemoteBrokerAuthenticationTypes) *KafkaRemoteBrokerAuthenticationTypes {
 		return &v
 	}).(KafkaRemoteBrokerAuthenticationTypesPtrOutput)
-}
-
-func (o KafkaRemoteBrokerAuthenticationTypesOutput) ToOutput(ctx context.Context) pulumix.Output[KafkaRemoteBrokerAuthenticationTypes] {
-	return pulumix.Output[KafkaRemoteBrokerAuthenticationTypes]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Sasl remote broker authentication method.
@@ -10296,12 +9161,6 @@ func (o KafkaRemoteBrokerAuthenticationTypesPtrOutput) ToKafkaRemoteBrokerAuthen
 
 func (o KafkaRemoteBrokerAuthenticationTypesPtrOutput) ToKafkaRemoteBrokerAuthenticationTypesPtrOutputWithContext(ctx context.Context) KafkaRemoteBrokerAuthenticationTypesPtrOutput {
 	return o
-}
-
-func (o KafkaRemoteBrokerAuthenticationTypesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaRemoteBrokerAuthenticationTypes] {
-	return pulumix.Output[*KafkaRemoteBrokerAuthenticationTypes]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KafkaRemoteBrokerAuthenticationTypesPtrOutput) Elem() KafkaRemoteBrokerAuthenticationTypesOutput {
@@ -10369,12 +9228,6 @@ func (o KafkaRemoteBrokerAuthenticationTypesResponseOutput) ToKafkaRemoteBrokerA
 	return o
 }
 
-func (o KafkaRemoteBrokerAuthenticationTypesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KafkaRemoteBrokerAuthenticationTypesResponse] {
-	return pulumix.Output[KafkaRemoteBrokerAuthenticationTypesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Sasl remote broker authentication method.
 func (o KafkaRemoteBrokerAuthenticationTypesResponseOutput) Sasl() SaslRemoteBrokerBasicAuthenticationResponsePtrOutput {
 	return o.ApplyT(func(v KafkaRemoteBrokerAuthenticationTypesResponse) *SaslRemoteBrokerBasicAuthenticationResponse {
@@ -10406,12 +9259,6 @@ func (o KafkaRemoteBrokerAuthenticationTypesResponsePtrOutput) ToKafkaRemoteBrok
 
 func (o KafkaRemoteBrokerAuthenticationTypesResponsePtrOutput) ToKafkaRemoteBrokerAuthenticationTypesResponsePtrOutputWithContext(ctx context.Context) KafkaRemoteBrokerAuthenticationTypesResponsePtrOutput {
 	return o
-}
-
-func (o KafkaRemoteBrokerAuthenticationTypesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaRemoteBrokerAuthenticationTypesResponse] {
-	return pulumix.Output[*KafkaRemoteBrokerAuthenticationTypesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KafkaRemoteBrokerAuthenticationTypesResponsePtrOutput) Elem() KafkaRemoteBrokerAuthenticationTypesResponseOutput {
@@ -10497,12 +9344,6 @@ func (i KafkaRemoteBrokerConnectionSpecArgs) ToKafkaRemoteBrokerConnectionSpecOu
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaRemoteBrokerConnectionSpecOutput)
 }
 
-func (i KafkaRemoteBrokerConnectionSpecArgs) ToOutput(ctx context.Context) pulumix.Output[KafkaRemoteBrokerConnectionSpec] {
-	return pulumix.Output[KafkaRemoteBrokerConnectionSpec]{
-		OutputState: i.ToKafkaRemoteBrokerConnectionSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Kafka RemoteBrokerConnectionSpec details
 type KafkaRemoteBrokerConnectionSpecOutput struct{ *pulumi.OutputState }
 
@@ -10516,12 +9357,6 @@ func (o KafkaRemoteBrokerConnectionSpecOutput) ToKafkaRemoteBrokerConnectionSpec
 
 func (o KafkaRemoteBrokerConnectionSpecOutput) ToKafkaRemoteBrokerConnectionSpecOutputWithContext(ctx context.Context) KafkaRemoteBrokerConnectionSpecOutput {
 	return o
-}
-
-func (o KafkaRemoteBrokerConnectionSpecOutput) ToOutput(ctx context.Context) pulumix.Output[KafkaRemoteBrokerConnectionSpec] {
-	return pulumix.Output[KafkaRemoteBrokerConnectionSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The remote broker authentication methods.
@@ -10564,12 +9399,6 @@ func (o KafkaRemoteBrokerConnectionSpecResponseOutput) ToKafkaRemoteBrokerConnec
 
 func (o KafkaRemoteBrokerConnectionSpecResponseOutput) ToKafkaRemoteBrokerConnectionSpecResponseOutputWithContext(ctx context.Context) KafkaRemoteBrokerConnectionSpecResponseOutput {
 	return o
-}
-
-func (o KafkaRemoteBrokerConnectionSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KafkaRemoteBrokerConnectionSpecResponse] {
-	return pulumix.Output[KafkaRemoteBrokerConnectionSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The remote broker authentication methods.
@@ -10628,12 +9457,6 @@ func (i KafkaRemoteBrokerConnectionTlsArgs) ToKafkaRemoteBrokerConnectionTlsOutp
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaRemoteBrokerConnectionTlsOutput)
 }
 
-func (i KafkaRemoteBrokerConnectionTlsArgs) ToOutput(ctx context.Context) pulumix.Output[KafkaRemoteBrokerConnectionTls] {
-	return pulumix.Output[KafkaRemoteBrokerConnectionTls]{
-		OutputState: i.ToKafkaRemoteBrokerConnectionTlsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Kafka RemoteBrokerConnection TLS details
 type KafkaRemoteBrokerConnectionTlsOutput struct{ *pulumi.OutputState }
 
@@ -10647,12 +9470,6 @@ func (o KafkaRemoteBrokerConnectionTlsOutput) ToKafkaRemoteBrokerConnectionTlsOu
 
 func (o KafkaRemoteBrokerConnectionTlsOutput) ToKafkaRemoteBrokerConnectionTlsOutputWithContext(ctx context.Context) KafkaRemoteBrokerConnectionTlsOutput {
 	return o
-}
-
-func (o KafkaRemoteBrokerConnectionTlsOutput) ToOutput(ctx context.Context) pulumix.Output[KafkaRemoteBrokerConnectionTls] {
-	return pulumix.Output[KafkaRemoteBrokerConnectionTls]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Tls Enabled on Remote Broker Connection.
@@ -10686,12 +9503,6 @@ func (o KafkaRemoteBrokerConnectionTlsResponseOutput) ToKafkaRemoteBrokerConnect
 
 func (o KafkaRemoteBrokerConnectionTlsResponseOutput) ToKafkaRemoteBrokerConnectionTlsResponseOutputWithContext(ctx context.Context) KafkaRemoteBrokerConnectionTlsResponseOutput {
 	return o
-}
-
-func (o KafkaRemoteBrokerConnectionTlsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KafkaRemoteBrokerConnectionTlsResponse] {
-	return pulumix.Output[KafkaRemoteBrokerConnectionTlsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Tls Enabled on Remote Broker Connection.
@@ -10765,12 +9576,6 @@ func (i KafkaRoutesArgs) ToKafkaRoutesOutputWithContext(ctx context.Context) Kaf
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaRoutesOutput)
 }
 
-func (i KafkaRoutesArgs) ToOutput(ctx context.Context) pulumix.Output[KafkaRoutes] {
-	return pulumix.Output[KafkaRoutes]{
-		OutputState: i.ToKafkaRoutesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KafkaRoutesArrayInput is an input type that accepts KafkaRoutesArray and KafkaRoutesArrayOutput values.
 // You can construct a concrete instance of `KafkaRoutesArrayInput` via:
 //
@@ -10796,12 +9601,6 @@ func (i KafkaRoutesArray) ToKafkaRoutesArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaRoutesArrayOutput)
 }
 
-func (i KafkaRoutesArray) ToOutput(ctx context.Context) pulumix.Output[[]KafkaRoutes] {
-	return pulumix.Output[[]KafkaRoutes]{
-		OutputState: i.ToKafkaRoutesArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Kafka Routes properties. NOTE - Enum only one method is allowed to be passed.
 type KafkaRoutesOutput struct{ *pulumi.OutputState }
 
@@ -10815,12 +9614,6 @@ func (o KafkaRoutesOutput) ToKafkaRoutesOutput() KafkaRoutesOutput {
 
 func (o KafkaRoutesOutput) ToKafkaRoutesOutputWithContext(ctx context.Context) KafkaRoutesOutput {
 	return o
-}
-
-func (o KafkaRoutesOutput) ToOutput(ctx context.Context) pulumix.Output[KafkaRoutes] {
-	return pulumix.Output[KafkaRoutes]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Kafka to Mqtt route.
@@ -10845,12 +9638,6 @@ func (o KafkaRoutesArrayOutput) ToKafkaRoutesArrayOutput() KafkaRoutesArrayOutpu
 
 func (o KafkaRoutesArrayOutput) ToKafkaRoutesArrayOutputWithContext(ctx context.Context) KafkaRoutesArrayOutput {
 	return o
-}
-
-func (o KafkaRoutesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KafkaRoutes] {
-	return pulumix.Output[[]KafkaRoutes]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KafkaRoutesArrayOutput) Index(i pulumi.IntInput) KafkaRoutesOutput {
@@ -10895,12 +9682,6 @@ func (o KafkaRoutesResponseOutput) ToKafkaRoutesResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o KafkaRoutesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KafkaRoutesResponse] {
-	return pulumix.Output[KafkaRoutesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Kafka to Mqtt route.
 func (o KafkaRoutesResponseOutput) KafkaToMqtt() KafkaToMqttRoutesResponsePtrOutput {
 	return o.ApplyT(func(v KafkaRoutesResponse) *KafkaToMqttRoutesResponse { return v.KafkaToMqtt }).(KafkaToMqttRoutesResponsePtrOutput)
@@ -10923,12 +9704,6 @@ func (o KafkaRoutesResponseArrayOutput) ToKafkaRoutesResponseArrayOutput() Kafka
 
 func (o KafkaRoutesResponseArrayOutput) ToKafkaRoutesResponseArrayOutputWithContext(ctx context.Context) KafkaRoutesResponseArrayOutput {
 	return o
-}
-
-func (o KafkaRoutesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]KafkaRoutesResponse] {
-	return pulumix.Output[[]KafkaRoutesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KafkaRoutesResponseArrayOutput) Index(i pulumi.IntInput) KafkaRoutesResponseOutput {
@@ -10976,12 +9751,6 @@ func (i KafkaSharedSubscriptionPropertiesArgs) ToKafkaSharedSubscriptionProperti
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaSharedSubscriptionPropertiesOutput)
 }
 
-func (i KafkaSharedSubscriptionPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[KafkaSharedSubscriptionProperties] {
-	return pulumix.Output[KafkaSharedSubscriptionProperties]{
-		OutputState: i.ToKafkaSharedSubscriptionPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KafkaSharedSubscriptionPropertiesArgs) ToKafkaSharedSubscriptionPropertiesPtrOutput() KafkaSharedSubscriptionPropertiesPtrOutput {
 	return i.ToKafkaSharedSubscriptionPropertiesPtrOutputWithContext(context.Background())
 }
@@ -11023,12 +9792,6 @@ func (i *kafkaSharedSubscriptionPropertiesPtrType) ToKafkaSharedSubscriptionProp
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaSharedSubscriptionPropertiesPtrOutput)
 }
 
-func (i *kafkaSharedSubscriptionPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*KafkaSharedSubscriptionProperties] {
-	return pulumix.Output[*KafkaSharedSubscriptionProperties]{
-		OutputState: i.ToKafkaSharedSubscriptionPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Kafka Shared Subscription properties
 type KafkaSharedSubscriptionPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -11054,12 +9817,6 @@ func (o KafkaSharedSubscriptionPropertiesOutput) ToKafkaSharedSubscriptionProper
 	}).(KafkaSharedSubscriptionPropertiesPtrOutput)
 }
 
-func (o KafkaSharedSubscriptionPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[KafkaSharedSubscriptionProperties] {
-	return pulumix.Output[KafkaSharedSubscriptionProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The minimum number to use in a group for subscription.
 func (o KafkaSharedSubscriptionPropertiesOutput) GroupMinimumShareNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v KafkaSharedSubscriptionProperties) int { return v.GroupMinimumShareNumber }).(pulumi.IntOutput)
@@ -11082,12 +9839,6 @@ func (o KafkaSharedSubscriptionPropertiesPtrOutput) ToKafkaSharedSubscriptionPro
 
 func (o KafkaSharedSubscriptionPropertiesPtrOutput) ToKafkaSharedSubscriptionPropertiesPtrOutputWithContext(ctx context.Context) KafkaSharedSubscriptionPropertiesPtrOutput {
 	return o
-}
-
-func (o KafkaSharedSubscriptionPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaSharedSubscriptionProperties] {
-	return pulumix.Output[*KafkaSharedSubscriptionProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KafkaSharedSubscriptionPropertiesPtrOutput) Elem() KafkaSharedSubscriptionPropertiesOutput {
@@ -11143,12 +9894,6 @@ func (o KafkaSharedSubscriptionPropertiesResponseOutput) ToKafkaSharedSubscripti
 	return o
 }
 
-func (o KafkaSharedSubscriptionPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KafkaSharedSubscriptionPropertiesResponse] {
-	return pulumix.Output[KafkaSharedSubscriptionPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The minimum number to use in a group for subscription.
 func (o KafkaSharedSubscriptionPropertiesResponseOutput) GroupMinimumShareNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v KafkaSharedSubscriptionPropertiesResponse) int { return v.GroupMinimumShareNumber }).(pulumi.IntOutput)
@@ -11171,12 +9916,6 @@ func (o KafkaSharedSubscriptionPropertiesResponsePtrOutput) ToKafkaSharedSubscri
 
 func (o KafkaSharedSubscriptionPropertiesResponsePtrOutput) ToKafkaSharedSubscriptionPropertiesResponsePtrOutputWithContext(ctx context.Context) KafkaSharedSubscriptionPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o KafkaSharedSubscriptionPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaSharedSubscriptionPropertiesResponse] {
-	return pulumix.Output[*KafkaSharedSubscriptionPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KafkaSharedSubscriptionPropertiesResponsePtrOutput) Elem() KafkaSharedSubscriptionPropertiesResponseOutput {
@@ -11284,12 +10023,6 @@ func (i KafkaToMqttRoutesArgs) ToKafkaToMqttRoutesOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaToMqttRoutesOutput)
 }
 
-func (i KafkaToMqttRoutesArgs) ToOutput(ctx context.Context) pulumix.Output[KafkaToMqttRoutes] {
-	return pulumix.Output[KafkaToMqttRoutes]{
-		OutputState: i.ToKafkaToMqttRoutesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KafkaToMqttRoutesArgs) ToKafkaToMqttRoutesPtrOutput() KafkaToMqttRoutesPtrOutput {
 	return i.ToKafkaToMqttRoutesPtrOutputWithContext(context.Background())
 }
@@ -11331,12 +10064,6 @@ func (i *kafkaToMqttRoutesPtrType) ToKafkaToMqttRoutesPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaToMqttRoutesPtrOutput)
 }
 
-func (i *kafkaToMqttRoutesPtrType) ToOutput(ctx context.Context) pulumix.Output[*KafkaToMqttRoutes] {
-	return pulumix.Output[*KafkaToMqttRoutes]{
-		OutputState: i.ToKafkaToMqttRoutesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Kafka to Mqtt route properties
 type KafkaToMqttRoutesOutput struct{ *pulumi.OutputState }
 
@@ -11360,12 +10087,6 @@ func (o KafkaToMqttRoutesOutput) ToKafkaToMqttRoutesPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v KafkaToMqttRoutes) *KafkaToMqttRoutes {
 		return &v
 	}).(KafkaToMqttRoutesPtrOutput)
-}
-
-func (o KafkaToMqttRoutesOutput) ToOutput(ctx context.Context) pulumix.Output[KafkaToMqttRoutes] {
-	return pulumix.Output[KafkaToMqttRoutes]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The consumer group id to use.
@@ -11405,12 +10126,6 @@ func (o KafkaToMqttRoutesPtrOutput) ToKafkaToMqttRoutesPtrOutput() KafkaToMqttRo
 
 func (o KafkaToMqttRoutesPtrOutput) ToKafkaToMqttRoutesPtrOutputWithContext(ctx context.Context) KafkaToMqttRoutesPtrOutput {
 	return o
-}
-
-func (o KafkaToMqttRoutesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaToMqttRoutes] {
-	return pulumix.Output[*KafkaToMqttRoutes]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KafkaToMqttRoutesPtrOutput) Elem() KafkaToMqttRoutesOutput {
@@ -11515,12 +10230,6 @@ func (o KafkaToMqttRoutesResponseOutput) ToKafkaToMqttRoutesResponseOutputWithCo
 	return o
 }
 
-func (o KafkaToMqttRoutesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KafkaToMqttRoutesResponse] {
-	return pulumix.Output[KafkaToMqttRoutesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The consumer group id to use.
 func (o KafkaToMqttRoutesResponseOutput) ConsumerGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaToMqttRoutesResponse) *string { return v.ConsumerGroupId }).(pulumi.StringPtrOutput)
@@ -11558,12 +10267,6 @@ func (o KafkaToMqttRoutesResponsePtrOutput) ToKafkaToMqttRoutesResponsePtrOutput
 
 func (o KafkaToMqttRoutesResponsePtrOutput) ToKafkaToMqttRoutesResponsePtrOutputWithContext(ctx context.Context) KafkaToMqttRoutesResponsePtrOutput {
 	return o
-}
-
-func (o KafkaToMqttRoutesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaToMqttRoutesResponse] {
-	return pulumix.Output[*KafkaToMqttRoutesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KafkaToMqttRoutesResponsePtrOutput) Elem() KafkaToMqttRoutesResponseOutput {
@@ -11669,12 +10372,6 @@ func (i KafkaTokenKeyVaultPropertiesArgs) ToKafkaTokenKeyVaultPropertiesOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaTokenKeyVaultPropertiesOutput)
 }
 
-func (i KafkaTokenKeyVaultPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[KafkaTokenKeyVaultProperties] {
-	return pulumix.Output[KafkaTokenKeyVaultProperties]{
-		OutputState: i.ToKafkaTokenKeyVaultPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KafkaTokenKeyVaultPropertiesArgs) ToKafkaTokenKeyVaultPropertiesPtrOutput() KafkaTokenKeyVaultPropertiesPtrOutput {
 	return i.ToKafkaTokenKeyVaultPropertiesPtrOutputWithContext(context.Background())
 }
@@ -11716,12 +10413,6 @@ func (i *kafkaTokenKeyVaultPropertiesPtrType) ToKafkaTokenKeyVaultPropertiesPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaTokenKeyVaultPropertiesPtrOutput)
 }
 
-func (i *kafkaTokenKeyVaultPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*KafkaTokenKeyVaultProperties] {
-	return pulumix.Output[*KafkaTokenKeyVaultProperties]{
-		OutputState: i.ToKafkaTokenKeyVaultPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Kafka Token KeyVault properties.
 type KafkaTokenKeyVaultPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -11745,12 +10436,6 @@ func (o KafkaTokenKeyVaultPropertiesOutput) ToKafkaTokenKeyVaultPropertiesPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v KafkaTokenKeyVaultProperties) *KafkaTokenKeyVaultProperties {
 		return &v
 	}).(KafkaTokenKeyVaultPropertiesPtrOutput)
-}
-
-func (o KafkaTokenKeyVaultPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[KafkaTokenKeyVaultProperties] {
-	return pulumix.Output[KafkaTokenKeyVaultProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Username to connect with.
@@ -11780,12 +10465,6 @@ func (o KafkaTokenKeyVaultPropertiesPtrOutput) ToKafkaTokenKeyVaultPropertiesPtr
 
 func (o KafkaTokenKeyVaultPropertiesPtrOutput) ToKafkaTokenKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) KafkaTokenKeyVaultPropertiesPtrOutput {
 	return o
-}
-
-func (o KafkaTokenKeyVaultPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaTokenKeyVaultProperties] {
-	return pulumix.Output[*KafkaTokenKeyVaultProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KafkaTokenKeyVaultPropertiesPtrOutput) Elem() KafkaTokenKeyVaultPropertiesOutput {
@@ -11853,12 +10532,6 @@ func (o KafkaTokenKeyVaultPropertiesResponseOutput) ToKafkaTokenKeyVaultProperti
 	return o
 }
 
-func (o KafkaTokenKeyVaultPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KafkaTokenKeyVaultPropertiesResponse] {
-	return pulumix.Output[KafkaTokenKeyVaultPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Username to connect with.
 func (o KafkaTokenKeyVaultPropertiesResponseOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTokenKeyVaultPropertiesResponse) *string { return v.Username }).(pulumi.StringPtrOutput)
@@ -11886,12 +10559,6 @@ func (o KafkaTokenKeyVaultPropertiesResponsePtrOutput) ToKafkaTokenKeyVaultPrope
 
 func (o KafkaTokenKeyVaultPropertiesResponsePtrOutput) ToKafkaTokenKeyVaultPropertiesResponsePtrOutputWithContext(ctx context.Context) KafkaTokenKeyVaultPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o KafkaTokenKeyVaultPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaTokenKeyVaultPropertiesResponse] {
-	return pulumix.Output[*KafkaTokenKeyVaultPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KafkaTokenKeyVaultPropertiesResponsePtrOutput) Elem() KafkaTokenKeyVaultPropertiesResponseOutput {
@@ -12026,12 +10693,6 @@ func (i KafkaTopicMapBatchingArgs) ToKafkaTopicMapBatchingOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaTopicMapBatchingOutput)
 }
 
-func (i KafkaTopicMapBatchingArgs) ToOutput(ctx context.Context) pulumix.Output[KafkaTopicMapBatching] {
-	return pulumix.Output[KafkaTopicMapBatching]{
-		OutputState: i.ToKafkaTopicMapBatchingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KafkaTopicMapBatchingArgs) ToKafkaTopicMapBatchingPtrOutput() KafkaTopicMapBatchingPtrOutput {
 	return i.ToKafkaTopicMapBatchingPtrOutputWithContext(context.Background())
 }
@@ -12073,12 +10734,6 @@ func (i *kafkaTopicMapBatchingPtrType) ToKafkaTopicMapBatchingPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaTopicMapBatchingPtrOutput)
 }
 
-func (i *kafkaTopicMapBatchingPtrType) ToOutput(ctx context.Context) pulumix.Output[*KafkaTopicMapBatching] {
-	return pulumix.Output[*KafkaTopicMapBatching]{
-		OutputState: i.ToKafkaTopicMapBatchingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Kafka TopicMap Batching properties
 type KafkaTopicMapBatchingOutput struct{ *pulumi.OutputState }
 
@@ -12102,12 +10757,6 @@ func (o KafkaTopicMapBatchingOutput) ToKafkaTopicMapBatchingPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v KafkaTopicMapBatching) *KafkaTopicMapBatching {
 		return &v
 	}).(KafkaTopicMapBatchingPtrOutput)
-}
-
-func (o KafkaTopicMapBatchingOutput) ToOutput(ctx context.Context) pulumix.Output[KafkaTopicMapBatching] {
-	return pulumix.Output[KafkaTopicMapBatching]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The setting to enable or disable batching.
@@ -12142,12 +10791,6 @@ func (o KafkaTopicMapBatchingPtrOutput) ToKafkaTopicMapBatchingPtrOutput() Kafka
 
 func (o KafkaTopicMapBatchingPtrOutput) ToKafkaTopicMapBatchingPtrOutputWithContext(ctx context.Context) KafkaTopicMapBatchingPtrOutput {
 	return o
-}
-
-func (o KafkaTopicMapBatchingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaTopicMapBatching] {
-	return pulumix.Output[*KafkaTopicMapBatching]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KafkaTopicMapBatchingPtrOutput) Elem() KafkaTopicMapBatchingOutput {
@@ -12252,12 +10895,6 @@ func (o KafkaTopicMapBatchingResponseOutput) ToKafkaTopicMapBatchingResponseOutp
 	return o
 }
 
-func (o KafkaTopicMapBatchingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KafkaTopicMapBatchingResponse] {
-	return pulumix.Output[KafkaTopicMapBatchingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The setting to enable or disable batching.
 func (o KafkaTopicMapBatchingResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v KafkaTopicMapBatchingResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -12290,12 +10927,6 @@ func (o KafkaTopicMapBatchingResponsePtrOutput) ToKafkaTopicMapBatchingResponseP
 
 func (o KafkaTopicMapBatchingResponsePtrOutput) ToKafkaTopicMapBatchingResponsePtrOutputWithContext(ctx context.Context) KafkaTopicMapBatchingResponsePtrOutput {
 	return o
-}
-
-func (o KafkaTopicMapBatchingResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaTopicMapBatchingResponse] {
-	return pulumix.Output[*KafkaTopicMapBatchingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KafkaTopicMapBatchingResponsePtrOutput) Elem() KafkaTopicMapBatchingResponseOutput {
@@ -12387,12 +11018,6 @@ func (i KafkaX509AuthenticationArgs) ToKafkaX509AuthenticationOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaX509AuthenticationOutput)
 }
 
-func (i KafkaX509AuthenticationArgs) ToOutput(ctx context.Context) pulumix.Output[KafkaX509Authentication] {
-	return pulumix.Output[KafkaX509Authentication]{
-		OutputState: i.ToKafkaX509AuthenticationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KafkaX509AuthenticationArgs) ToKafkaX509AuthenticationPtrOutput() KafkaX509AuthenticationPtrOutput {
 	return i.ToKafkaX509AuthenticationPtrOutputWithContext(context.Background())
 }
@@ -12434,12 +11059,6 @@ func (i *kafkaX509AuthenticationPtrType) ToKafkaX509AuthenticationPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(KafkaX509AuthenticationPtrOutput)
 }
 
-func (i *kafkaX509AuthenticationPtrType) ToOutput(ctx context.Context) pulumix.Output[*KafkaX509Authentication] {
-	return pulumix.Output[*KafkaX509Authentication]{
-		OutputState: i.ToKafkaX509AuthenticationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Kafka RemoteBrokerConnection X509 Authentication properties.
 type KafkaX509AuthenticationOutput struct{ *pulumi.OutputState }
 
@@ -12465,12 +11084,6 @@ func (o KafkaX509AuthenticationOutput) ToKafkaX509AuthenticationPtrOutputWithCon
 	}).(KafkaX509AuthenticationPtrOutput)
 }
 
-func (o KafkaX509AuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[KafkaX509Authentication] {
-	return pulumix.Output[KafkaX509Authentication]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Keyvault X509 secret properties.
 func (o KafkaX509AuthenticationOutput) KeyVault() KeyVaultCertificatePropertiesPtrOutput {
 	return o.ApplyT(func(v KafkaX509Authentication) *KeyVaultCertificateProperties { return v.KeyVault }).(KeyVaultCertificatePropertiesPtrOutput)
@@ -12493,12 +11106,6 @@ func (o KafkaX509AuthenticationPtrOutput) ToKafkaX509AuthenticationPtrOutput() K
 
 func (o KafkaX509AuthenticationPtrOutput) ToKafkaX509AuthenticationPtrOutputWithContext(ctx context.Context) KafkaX509AuthenticationPtrOutput {
 	return o
-}
-
-func (o KafkaX509AuthenticationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaX509Authentication] {
-	return pulumix.Output[*KafkaX509Authentication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KafkaX509AuthenticationPtrOutput) Elem() KafkaX509AuthenticationOutput {
@@ -12554,12 +11161,6 @@ func (o KafkaX509AuthenticationResponseOutput) ToKafkaX509AuthenticationResponse
 	return o
 }
 
-func (o KafkaX509AuthenticationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KafkaX509AuthenticationResponse] {
-	return pulumix.Output[KafkaX509AuthenticationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Keyvault X509 secret properties.
 func (o KafkaX509AuthenticationResponseOutput) KeyVault() KeyVaultCertificatePropertiesResponsePtrOutput {
 	return o.ApplyT(func(v KafkaX509AuthenticationResponse) *KeyVaultCertificatePropertiesResponse { return v.KeyVault }).(KeyVaultCertificatePropertiesResponsePtrOutput)
@@ -12582,12 +11183,6 @@ func (o KafkaX509AuthenticationResponsePtrOutput) ToKafkaX509AuthenticationRespo
 
 func (o KafkaX509AuthenticationResponsePtrOutput) ToKafkaX509AuthenticationResponsePtrOutputWithContext(ctx context.Context) KafkaX509AuthenticationResponsePtrOutput {
 	return o
-}
-
-func (o KafkaX509AuthenticationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KafkaX509AuthenticationResponse] {
-	return pulumix.Output[*KafkaX509AuthenticationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KafkaX509AuthenticationResponsePtrOutput) Elem() KafkaX509AuthenticationResponseOutput {
@@ -12663,12 +11258,6 @@ func (i KeyVaultCertificatePropertiesArgs) ToKeyVaultCertificatePropertiesOutput
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultCertificatePropertiesOutput)
 }
 
-func (i KeyVaultCertificatePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[KeyVaultCertificateProperties] {
-	return pulumix.Output[KeyVaultCertificateProperties]{
-		OutputState: i.ToKeyVaultCertificatePropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KeyVaultCertificatePropertiesArgs) ToKeyVaultCertificatePropertiesPtrOutput() KeyVaultCertificatePropertiesPtrOutput {
 	return i.ToKeyVaultCertificatePropertiesPtrOutputWithContext(context.Background())
 }
@@ -12710,12 +11299,6 @@ func (i *keyVaultCertificatePropertiesPtrType) ToKeyVaultCertificatePropertiesPt
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultCertificatePropertiesPtrOutput)
 }
 
-func (i *keyVaultCertificatePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultCertificateProperties] {
-	return pulumix.Output[*KeyVaultCertificateProperties]{
-		OutputState: i.ToKeyVaultCertificatePropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KeyVault certificate properties
 type KeyVaultCertificatePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -12739,12 +11322,6 @@ func (o KeyVaultCertificatePropertiesOutput) ToKeyVaultCertificatePropertiesPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyVaultCertificateProperties) *KeyVaultCertificateProperties {
 		return &v
 	}).(KeyVaultCertificatePropertiesPtrOutput)
-}
-
-func (o KeyVaultCertificatePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultCertificateProperties] {
-	return pulumix.Output[KeyVaultCertificateProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // KeyVault properties.
@@ -12774,12 +11351,6 @@ func (o KeyVaultCertificatePropertiesPtrOutput) ToKeyVaultCertificatePropertiesP
 
 func (o KeyVaultCertificatePropertiesPtrOutput) ToKeyVaultCertificatePropertiesPtrOutputWithContext(ctx context.Context) KeyVaultCertificatePropertiesPtrOutput {
 	return o
-}
-
-func (o KeyVaultCertificatePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultCertificateProperties] {
-	return pulumix.Output[*KeyVaultCertificateProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultCertificatePropertiesPtrOutput) Elem() KeyVaultCertificatePropertiesOutput {
@@ -12847,12 +11418,6 @@ func (o KeyVaultCertificatePropertiesResponseOutput) ToKeyVaultCertificateProper
 	return o
 }
 
-func (o KeyVaultCertificatePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultCertificatePropertiesResponse] {
-	return pulumix.Output[KeyVaultCertificatePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // KeyVault properties.
 func (o KeyVaultCertificatePropertiesResponseOutput) Vault() KeyVaultConnectionPropertiesResponseOutput {
 	return o.ApplyT(func(v KeyVaultCertificatePropertiesResponse) KeyVaultConnectionPropertiesResponse { return v.Vault }).(KeyVaultConnectionPropertiesResponseOutput)
@@ -12882,12 +11447,6 @@ func (o KeyVaultCertificatePropertiesResponsePtrOutput) ToKeyVaultCertificatePro
 
 func (o KeyVaultCertificatePropertiesResponsePtrOutput) ToKeyVaultCertificatePropertiesResponsePtrOutputWithContext(ctx context.Context) KeyVaultCertificatePropertiesResponsePtrOutput {
 	return o
-}
-
-func (o KeyVaultCertificatePropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultCertificatePropertiesResponse] {
-	return pulumix.Output[*KeyVaultCertificatePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultCertificatePropertiesResponsePtrOutput) Elem() KeyVaultCertificatePropertiesResponseOutput {
@@ -12973,12 +11532,6 @@ func (i KeyVaultConnectionPropertiesArgs) ToKeyVaultConnectionPropertiesOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultConnectionPropertiesOutput)
 }
 
-func (i KeyVaultConnectionPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[KeyVaultConnectionProperties] {
-	return pulumix.Output[KeyVaultConnectionProperties]{
-		OutputState: i.ToKeyVaultConnectionPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KeyVaultConnectionPropertiesArgs) ToKeyVaultConnectionPropertiesPtrOutput() KeyVaultConnectionPropertiesPtrOutput {
 	return i.ToKeyVaultConnectionPropertiesPtrOutputWithContext(context.Background())
 }
@@ -13020,12 +11573,6 @@ func (i *keyVaultConnectionPropertiesPtrType) ToKeyVaultConnectionPropertiesPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultConnectionPropertiesPtrOutput)
 }
 
-func (i *keyVaultConnectionPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultConnectionProperties] {
-	return pulumix.Output[*KeyVaultConnectionProperties]{
-		OutputState: i.ToKeyVaultConnectionPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KeyVault properties
 type KeyVaultConnectionPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -13049,12 +11596,6 @@ func (o KeyVaultConnectionPropertiesOutput) ToKeyVaultConnectionPropertiesPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyVaultConnectionProperties) *KeyVaultConnectionProperties {
 		return &v
 	}).(KeyVaultConnectionPropertiesPtrOutput)
-}
-
-func (o KeyVaultConnectionPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultConnectionProperties] {
-	return pulumix.Output[KeyVaultConnectionProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // KeyVault credentials.
@@ -13084,12 +11625,6 @@ func (o KeyVaultConnectionPropertiesPtrOutput) ToKeyVaultConnectionPropertiesPtr
 
 func (o KeyVaultConnectionPropertiesPtrOutput) ToKeyVaultConnectionPropertiesPtrOutputWithContext(ctx context.Context) KeyVaultConnectionPropertiesPtrOutput {
 	return o
-}
-
-func (o KeyVaultConnectionPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultConnectionProperties] {
-	return pulumix.Output[*KeyVaultConnectionProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultConnectionPropertiesPtrOutput) Elem() KeyVaultConnectionPropertiesOutput {
@@ -13157,12 +11692,6 @@ func (o KeyVaultConnectionPropertiesResponseOutput) ToKeyVaultConnectionProperti
 	return o
 }
 
-func (o KeyVaultConnectionPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultConnectionPropertiesResponse] {
-	return pulumix.Output[KeyVaultConnectionPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // KeyVault credentials.
 func (o KeyVaultConnectionPropertiesResponseOutput) Credentials() KeyVaultCredentialsPropertiesResponseOutput {
 	return o.ApplyT(func(v KeyVaultConnectionPropertiesResponse) KeyVaultCredentialsPropertiesResponse {
@@ -13192,12 +11721,6 @@ func (o KeyVaultConnectionPropertiesResponsePtrOutput) ToKeyVaultConnectionPrope
 
 func (o KeyVaultConnectionPropertiesResponsePtrOutput) ToKeyVaultConnectionPropertiesResponsePtrOutputWithContext(ctx context.Context) KeyVaultConnectionPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o KeyVaultConnectionPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultConnectionPropertiesResponse] {
-	return pulumix.Output[*KeyVaultConnectionPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultConnectionPropertiesResponsePtrOutput) Elem() KeyVaultConnectionPropertiesResponseOutput {
@@ -13275,12 +11798,6 @@ func (i KeyVaultCredentialsPropertiesArgs) ToKeyVaultCredentialsPropertiesOutput
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultCredentialsPropertiesOutput)
 }
 
-func (i KeyVaultCredentialsPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[KeyVaultCredentialsProperties] {
-	return pulumix.Output[KeyVaultCredentialsProperties]{
-		OutputState: i.ToKeyVaultCredentialsPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KeyVaultCredentialsPropertiesArgs) ToKeyVaultCredentialsPropertiesPtrOutput() KeyVaultCredentialsPropertiesPtrOutput {
 	return i.ToKeyVaultCredentialsPropertiesPtrOutputWithContext(context.Background())
 }
@@ -13322,12 +11839,6 @@ func (i *keyVaultCredentialsPropertiesPtrType) ToKeyVaultCredentialsPropertiesPt
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultCredentialsPropertiesPtrOutput)
 }
 
-func (i *keyVaultCredentialsPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultCredentialsProperties] {
-	return pulumix.Output[*KeyVaultCredentialsProperties]{
-		OutputState: i.ToKeyVaultCredentialsPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KeyVault credentials properties. NOTE - Future this will be ENUM.
 type KeyVaultCredentialsPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -13353,12 +11864,6 @@ func (o KeyVaultCredentialsPropertiesOutput) ToKeyVaultCredentialsPropertiesPtrO
 	}).(KeyVaultCredentialsPropertiesPtrOutput)
 }
 
-func (o KeyVaultCredentialsPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultCredentialsProperties] {
-	return pulumix.Output[KeyVaultCredentialsProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // KeyVault service principal local secret name.
 func (o KeyVaultCredentialsPropertiesOutput) ServicePrincipalLocalSecretName() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultCredentialsProperties) string { return v.ServicePrincipalLocalSecretName }).(pulumi.StringOutput)
@@ -13376,12 +11881,6 @@ func (o KeyVaultCredentialsPropertiesPtrOutput) ToKeyVaultCredentialsPropertiesP
 
 func (o KeyVaultCredentialsPropertiesPtrOutput) ToKeyVaultCredentialsPropertiesPtrOutputWithContext(ctx context.Context) KeyVaultCredentialsPropertiesPtrOutput {
 	return o
-}
-
-func (o KeyVaultCredentialsPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultCredentialsProperties] {
-	return pulumix.Output[*KeyVaultCredentialsProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultCredentialsPropertiesPtrOutput) Elem() KeyVaultCredentialsPropertiesOutput {
@@ -13425,12 +11924,6 @@ func (o KeyVaultCredentialsPropertiesResponseOutput) ToKeyVaultCredentialsProper
 	return o
 }
 
-func (o KeyVaultCredentialsPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultCredentialsPropertiesResponse] {
-	return pulumix.Output[KeyVaultCredentialsPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // KeyVault service principal local secret name.
 func (o KeyVaultCredentialsPropertiesResponseOutput) ServicePrincipalLocalSecretName() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultCredentialsPropertiesResponse) string { return v.ServicePrincipalLocalSecretName }).(pulumi.StringOutput)
@@ -13448,12 +11941,6 @@ func (o KeyVaultCredentialsPropertiesResponsePtrOutput) ToKeyVaultCredentialsPro
 
 func (o KeyVaultCredentialsPropertiesResponsePtrOutput) ToKeyVaultCredentialsPropertiesResponsePtrOutputWithContext(ctx context.Context) KeyVaultCredentialsPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o KeyVaultCredentialsPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultCredentialsPropertiesResponse] {
-	return pulumix.Output[*KeyVaultCredentialsPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultCredentialsPropertiesResponsePtrOutput) Elem() KeyVaultCredentialsPropertiesResponseOutput {
@@ -13515,12 +12002,6 @@ func (i KeyVaultSecretObjectArgs) ToKeyVaultSecretObjectOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultSecretObjectOutput)
 }
 
-func (i KeyVaultSecretObjectArgs) ToOutput(ctx context.Context) pulumix.Output[KeyVaultSecretObject] {
-	return pulumix.Output[KeyVaultSecretObject]{
-		OutputState: i.ToKeyVaultSecretObjectOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KeyVaultSecretObjectArgs) ToKeyVaultSecretObjectPtrOutput() KeyVaultSecretObjectPtrOutput {
 	return i.ToKeyVaultSecretObjectPtrOutputWithContext(context.Background())
 }
@@ -13562,12 +12043,6 @@ func (i *keyVaultSecretObjectPtrType) ToKeyVaultSecretObjectPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultSecretObjectPtrOutput)
 }
 
-func (i *keyVaultSecretObjectPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultSecretObject] {
-	return pulumix.Output[*KeyVaultSecretObject]{
-		OutputState: i.ToKeyVaultSecretObjectPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KeyVault secret object properties
 type KeyVaultSecretObjectOutput struct{ *pulumi.OutputState }
 
@@ -13593,12 +12068,6 @@ func (o KeyVaultSecretObjectOutput) ToKeyVaultSecretObjectPtrOutputWithContext(c
 	}).(KeyVaultSecretObjectPtrOutput)
 }
 
-func (o KeyVaultSecretObjectOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultSecretObject] {
-	return pulumix.Output[KeyVaultSecretObject]{
-		OutputState: o.OutputState,
-	}
-}
-
 // KeyVault secret name.
 func (o KeyVaultSecretObjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultSecretObject) string { return v.Name }).(pulumi.StringOutput)
@@ -13621,12 +12090,6 @@ func (o KeyVaultSecretObjectPtrOutput) ToKeyVaultSecretObjectPtrOutput() KeyVaul
 
 func (o KeyVaultSecretObjectPtrOutput) ToKeyVaultSecretObjectPtrOutputWithContext(ctx context.Context) KeyVaultSecretObjectPtrOutput {
 	return o
-}
-
-func (o KeyVaultSecretObjectPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultSecretObject] {
-	return pulumix.Output[*KeyVaultSecretObject]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultSecretObjectPtrOutput) Elem() KeyVaultSecretObjectOutput {
@@ -13682,12 +12145,6 @@ func (o KeyVaultSecretObjectResponseOutput) ToKeyVaultSecretObjectResponseOutput
 	return o
 }
 
-func (o KeyVaultSecretObjectResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultSecretObjectResponse] {
-	return pulumix.Output[KeyVaultSecretObjectResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // KeyVault secret name.
 func (o KeyVaultSecretObjectResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultSecretObjectResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -13710,12 +12167,6 @@ func (o KeyVaultSecretObjectResponsePtrOutput) ToKeyVaultSecretObjectResponsePtr
 
 func (o KeyVaultSecretObjectResponsePtrOutput) ToKeyVaultSecretObjectResponsePtrOutputWithContext(ctx context.Context) KeyVaultSecretObjectResponsePtrOutput {
 	return o
-}
-
-func (o KeyVaultSecretObjectResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultSecretObjectResponse] {
-	return pulumix.Output[*KeyVaultSecretObjectResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultSecretObjectResponsePtrOutput) Elem() KeyVaultSecretObjectResponseOutput {
@@ -13787,12 +12238,6 @@ func (i KeyVaultSecretPropertiesArgs) ToKeyVaultSecretPropertiesOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultSecretPropertiesOutput)
 }
 
-func (i KeyVaultSecretPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[KeyVaultSecretProperties] {
-	return pulumix.Output[KeyVaultSecretProperties]{
-		OutputState: i.ToKeyVaultSecretPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KeyVaultSecretPropertiesArgs) ToKeyVaultSecretPropertiesPtrOutput() KeyVaultSecretPropertiesPtrOutput {
 	return i.ToKeyVaultSecretPropertiesPtrOutputWithContext(context.Background())
 }
@@ -13834,12 +12279,6 @@ func (i *keyVaultSecretPropertiesPtrType) ToKeyVaultSecretPropertiesPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultSecretPropertiesPtrOutput)
 }
 
-func (i *keyVaultSecretPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultSecretProperties] {
-	return pulumix.Output[*KeyVaultSecretProperties]{
-		OutputState: i.ToKeyVaultSecretPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KeyVault secret properties
 type KeyVaultSecretPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -13865,12 +12304,6 @@ func (o KeyVaultSecretPropertiesOutput) ToKeyVaultSecretPropertiesPtrOutputWithC
 	}).(KeyVaultSecretPropertiesPtrOutput)
 }
 
-func (o KeyVaultSecretPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultSecretProperties] {
-	return pulumix.Output[KeyVaultSecretProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // KeyVault properties.
 func (o KeyVaultSecretPropertiesOutput) Vault() KeyVaultConnectionPropertiesOutput {
 	return o.ApplyT(func(v KeyVaultSecretProperties) KeyVaultConnectionProperties { return v.Vault }).(KeyVaultConnectionPropertiesOutput)
@@ -13893,12 +12326,6 @@ func (o KeyVaultSecretPropertiesPtrOutput) ToKeyVaultSecretPropertiesPtrOutput()
 
 func (o KeyVaultSecretPropertiesPtrOutput) ToKeyVaultSecretPropertiesPtrOutputWithContext(ctx context.Context) KeyVaultSecretPropertiesPtrOutput {
 	return o
-}
-
-func (o KeyVaultSecretPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultSecretProperties] {
-	return pulumix.Output[*KeyVaultSecretProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultSecretPropertiesPtrOutput) Elem() KeyVaultSecretPropertiesOutput {
@@ -13954,12 +12381,6 @@ func (o KeyVaultSecretPropertiesResponseOutput) ToKeyVaultSecretPropertiesRespon
 	return o
 }
 
-func (o KeyVaultSecretPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultSecretPropertiesResponse] {
-	return pulumix.Output[KeyVaultSecretPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // KeyVault properties.
 func (o KeyVaultSecretPropertiesResponseOutput) Vault() KeyVaultConnectionPropertiesResponseOutput {
 	return o.ApplyT(func(v KeyVaultSecretPropertiesResponse) KeyVaultConnectionPropertiesResponse { return v.Vault }).(KeyVaultConnectionPropertiesResponseOutput)
@@ -13982,12 +12403,6 @@ func (o KeyVaultSecretPropertiesResponsePtrOutput) ToKeyVaultSecretPropertiesRes
 
 func (o KeyVaultSecretPropertiesResponsePtrOutput) ToKeyVaultSecretPropertiesResponsePtrOutputWithContext(ctx context.Context) KeyVaultSecretPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o KeyVaultSecretPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultSecretPropertiesResponse] {
-	return pulumix.Output[*KeyVaultSecretPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultSecretPropertiesResponsePtrOutput) Elem() KeyVaultSecretPropertiesResponseOutput {
@@ -14075,12 +12490,6 @@ func (i LocalBrokerAuthenticationMethodsArgs) ToLocalBrokerAuthenticationMethods
 	return pulumi.ToOutputWithContext(ctx, i).(LocalBrokerAuthenticationMethodsOutput)
 }
 
-func (i LocalBrokerAuthenticationMethodsArgs) ToOutput(ctx context.Context) pulumix.Output[LocalBrokerAuthenticationMethods] {
-	return pulumix.Output[LocalBrokerAuthenticationMethods]{
-		OutputState: i.ToLocalBrokerAuthenticationMethodsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i LocalBrokerAuthenticationMethodsArgs) ToLocalBrokerAuthenticationMethodsPtrOutput() LocalBrokerAuthenticationMethodsPtrOutput {
 	return i.ToLocalBrokerAuthenticationMethodsPtrOutputWithContext(context.Background())
 }
@@ -14122,12 +12531,6 @@ func (i *localBrokerAuthenticationMethodsPtrType) ToLocalBrokerAuthenticationMet
 	return pulumi.ToOutputWithContext(ctx, i).(LocalBrokerAuthenticationMethodsPtrOutput)
 }
 
-func (i *localBrokerAuthenticationMethodsPtrType) ToOutput(ctx context.Context) pulumix.Output[*LocalBrokerAuthenticationMethods] {
-	return pulumix.Output[*LocalBrokerAuthenticationMethods]{
-		OutputState: i.ToLocalBrokerAuthenticationMethodsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Mqtt Local Broker Authentication details. Only one method at a time is supported. Default - kubernetes authentication
 type LocalBrokerAuthenticationMethodsOutput struct{ *pulumi.OutputState }
 
@@ -14153,12 +12556,6 @@ func (o LocalBrokerAuthenticationMethodsOutput) ToLocalBrokerAuthenticationMetho
 	}).(LocalBrokerAuthenticationMethodsPtrOutput)
 }
 
-func (o LocalBrokerAuthenticationMethodsOutput) ToOutput(ctx context.Context) pulumix.Output[LocalBrokerAuthenticationMethods] {
-	return pulumix.Output[LocalBrokerAuthenticationMethods]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Kubernetes local broker authentication method.
 func (o LocalBrokerAuthenticationMethodsOutput) Kubernetes() LocalBrokerKubernetesAuthenticationOutput {
 	return o.ApplyT(func(v LocalBrokerAuthenticationMethods) LocalBrokerKubernetesAuthentication { return v.Kubernetes }).(LocalBrokerKubernetesAuthenticationOutput)
@@ -14176,12 +12573,6 @@ func (o LocalBrokerAuthenticationMethodsPtrOutput) ToLocalBrokerAuthenticationMe
 
 func (o LocalBrokerAuthenticationMethodsPtrOutput) ToLocalBrokerAuthenticationMethodsPtrOutputWithContext(ctx context.Context) LocalBrokerAuthenticationMethodsPtrOutput {
 	return o
-}
-
-func (o LocalBrokerAuthenticationMethodsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LocalBrokerAuthenticationMethods] {
-	return pulumix.Output[*LocalBrokerAuthenticationMethods]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LocalBrokerAuthenticationMethodsPtrOutput) Elem() LocalBrokerAuthenticationMethodsOutput {
@@ -14236,12 +12627,6 @@ func (o LocalBrokerAuthenticationMethodsResponseOutput) ToLocalBrokerAuthenticat
 	return o
 }
 
-func (o LocalBrokerAuthenticationMethodsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LocalBrokerAuthenticationMethodsResponse] {
-	return pulumix.Output[LocalBrokerAuthenticationMethodsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Kubernetes local broker authentication method.
 func (o LocalBrokerAuthenticationMethodsResponseOutput) Kubernetes() LocalBrokerKubernetesAuthenticationResponseOutput {
 	return o.ApplyT(func(v LocalBrokerAuthenticationMethodsResponse) LocalBrokerKubernetesAuthenticationResponse {
@@ -14261,12 +12646,6 @@ func (o LocalBrokerAuthenticationMethodsResponsePtrOutput) ToLocalBrokerAuthenti
 
 func (o LocalBrokerAuthenticationMethodsResponsePtrOutput) ToLocalBrokerAuthenticationMethodsResponsePtrOutputWithContext(ctx context.Context) LocalBrokerAuthenticationMethodsResponsePtrOutput {
 	return o
-}
-
-func (o LocalBrokerAuthenticationMethodsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LocalBrokerAuthenticationMethodsResponse] {
-	return pulumix.Output[*LocalBrokerAuthenticationMethodsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LocalBrokerAuthenticationMethodsResponsePtrOutput) Elem() LocalBrokerAuthenticationMethodsResponseOutput {
@@ -14362,12 +12741,6 @@ func (i LocalBrokerConnectionSpecArgs) ToLocalBrokerConnectionSpecOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(LocalBrokerConnectionSpecOutput)
 }
 
-func (i LocalBrokerConnectionSpecArgs) ToOutput(ctx context.Context) pulumix.Output[LocalBrokerConnectionSpec] {
-	return pulumix.Output[LocalBrokerConnectionSpec]{
-		OutputState: i.ToLocalBrokerConnectionSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i LocalBrokerConnectionSpecArgs) ToLocalBrokerConnectionSpecPtrOutput() LocalBrokerConnectionSpecPtrOutput {
 	return i.ToLocalBrokerConnectionSpecPtrOutputWithContext(context.Background())
 }
@@ -14409,12 +12782,6 @@ func (i *localBrokerConnectionSpecPtrType) ToLocalBrokerConnectionSpecPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(LocalBrokerConnectionSpecPtrOutput)
 }
 
-func (i *localBrokerConnectionSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*LocalBrokerConnectionSpec] {
-	return pulumix.Output[*LocalBrokerConnectionSpec]{
-		OutputState: i.ToLocalBrokerConnectionSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Mqtt Local Broker ConnectionSpec details
 type LocalBrokerConnectionSpecOutput struct{ *pulumi.OutputState }
 
@@ -14438,12 +12805,6 @@ func (o LocalBrokerConnectionSpecOutput) ToLocalBrokerConnectionSpecPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v LocalBrokerConnectionSpec) *LocalBrokerConnectionSpec {
 		return &v
 	}).(LocalBrokerConnectionSpecPtrOutput)
-}
-
-func (o LocalBrokerConnectionSpecOutput) ToOutput(ctx context.Context) pulumix.Output[LocalBrokerConnectionSpec] {
-	return pulumix.Output[LocalBrokerConnectionSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The authentication methods for LocalBroker connection. NOTE - Enum only one method at a time is supported.
@@ -14473,12 +12834,6 @@ func (o LocalBrokerConnectionSpecPtrOutput) ToLocalBrokerConnectionSpecPtrOutput
 
 func (o LocalBrokerConnectionSpecPtrOutput) ToLocalBrokerConnectionSpecPtrOutputWithContext(ctx context.Context) LocalBrokerConnectionSpecPtrOutput {
 	return o
-}
-
-func (o LocalBrokerConnectionSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LocalBrokerConnectionSpec] {
-	return pulumix.Output[*LocalBrokerConnectionSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LocalBrokerConnectionSpecPtrOutput) Elem() LocalBrokerConnectionSpecOutput {
@@ -14563,12 +12918,6 @@ func (o LocalBrokerConnectionSpecResponseOutput) ToLocalBrokerConnectionSpecResp
 	return o
 }
 
-func (o LocalBrokerConnectionSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LocalBrokerConnectionSpecResponse] {
-	return pulumix.Output[LocalBrokerConnectionSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The authentication methods for LocalBroker connection. NOTE - Enum only one method at a time is supported.
 func (o LocalBrokerConnectionSpecResponseOutput) Authentication() LocalBrokerAuthenticationMethodsResponsePtrOutput {
 	return o.ApplyT(func(v LocalBrokerConnectionSpecResponse) *LocalBrokerAuthenticationMethodsResponse {
@@ -14598,12 +12947,6 @@ func (o LocalBrokerConnectionSpecResponsePtrOutput) ToLocalBrokerConnectionSpecR
 
 func (o LocalBrokerConnectionSpecResponsePtrOutput) ToLocalBrokerConnectionSpecResponsePtrOutputWithContext(ctx context.Context) LocalBrokerConnectionSpecResponsePtrOutput {
 	return o
-}
-
-func (o LocalBrokerConnectionSpecResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LocalBrokerConnectionSpecResponse] {
-	return pulumix.Output[*LocalBrokerConnectionSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LocalBrokerConnectionSpecResponsePtrOutput) Elem() LocalBrokerConnectionSpecResponseOutput {
@@ -14709,12 +13052,6 @@ func (i LocalBrokerConnectionTlsArgs) ToLocalBrokerConnectionTlsOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(LocalBrokerConnectionTlsOutput)
 }
 
-func (i LocalBrokerConnectionTlsArgs) ToOutput(ctx context.Context) pulumix.Output[LocalBrokerConnectionTls] {
-	return pulumix.Output[LocalBrokerConnectionTls]{
-		OutputState: i.ToLocalBrokerConnectionTlsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i LocalBrokerConnectionTlsArgs) ToLocalBrokerConnectionTlsPtrOutput() LocalBrokerConnectionTlsPtrOutput {
 	return i.ToLocalBrokerConnectionTlsPtrOutputWithContext(context.Background())
 }
@@ -14756,12 +13093,6 @@ func (i *localBrokerConnectionTlsPtrType) ToLocalBrokerConnectionTlsPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(LocalBrokerConnectionTlsPtrOutput)
 }
 
-func (i *localBrokerConnectionTlsPtrType) ToOutput(ctx context.Context) pulumix.Output[*LocalBrokerConnectionTls] {
-	return pulumix.Output[*LocalBrokerConnectionTls]{
-		OutputState: i.ToLocalBrokerConnectionTlsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Mqtt Local Broker Connection TLS details
 type LocalBrokerConnectionTlsOutput struct{ *pulumi.OutputState }
 
@@ -14787,12 +13118,6 @@ func (o LocalBrokerConnectionTlsOutput) ToLocalBrokerConnectionTlsPtrOutputWithC
 	}).(LocalBrokerConnectionTlsPtrOutput)
 }
 
-func (o LocalBrokerConnectionTlsOutput) ToOutput(ctx context.Context) pulumix.Output[LocalBrokerConnectionTls] {
-	return pulumix.Output[LocalBrokerConnectionTls]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Tls Enabled on Local Broker Connection.
 func (o LocalBrokerConnectionTlsOutput) TlsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LocalBrokerConnectionTls) *bool { return v.TlsEnabled }).(pulumi.BoolPtrOutput)
@@ -14815,12 +13140,6 @@ func (o LocalBrokerConnectionTlsPtrOutput) ToLocalBrokerConnectionTlsPtrOutput()
 
 func (o LocalBrokerConnectionTlsPtrOutput) ToLocalBrokerConnectionTlsPtrOutputWithContext(ctx context.Context) LocalBrokerConnectionTlsPtrOutput {
 	return o
-}
-
-func (o LocalBrokerConnectionTlsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LocalBrokerConnectionTls] {
-	return pulumix.Output[*LocalBrokerConnectionTls]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LocalBrokerConnectionTlsPtrOutput) Elem() LocalBrokerConnectionTlsOutput {
@@ -14889,12 +13208,6 @@ func (o LocalBrokerConnectionTlsResponseOutput) ToLocalBrokerConnectionTlsRespon
 	return o
 }
 
-func (o LocalBrokerConnectionTlsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LocalBrokerConnectionTlsResponse] {
-	return pulumix.Output[LocalBrokerConnectionTlsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Tls Enabled on Local Broker Connection.
 func (o LocalBrokerConnectionTlsResponseOutput) TlsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LocalBrokerConnectionTlsResponse) *bool { return v.TlsEnabled }).(pulumi.BoolPtrOutput)
@@ -14917,12 +13230,6 @@ func (o LocalBrokerConnectionTlsResponsePtrOutput) ToLocalBrokerConnectionTlsRes
 
 func (o LocalBrokerConnectionTlsResponsePtrOutput) ToLocalBrokerConnectionTlsResponsePtrOutputWithContext(ctx context.Context) LocalBrokerConnectionTlsResponsePtrOutput {
 	return o
-}
-
-func (o LocalBrokerConnectionTlsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LocalBrokerConnectionTlsResponse] {
-	return pulumix.Output[*LocalBrokerConnectionTlsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LocalBrokerConnectionTlsResponsePtrOutput) Elem() LocalBrokerConnectionTlsResponseOutput {
@@ -15025,12 +13332,6 @@ func (i LocalBrokerKubernetesAuthenticationArgs) ToLocalBrokerKubernetesAuthenti
 	return pulumi.ToOutputWithContext(ctx, i).(LocalBrokerKubernetesAuthenticationOutput)
 }
 
-func (i LocalBrokerKubernetesAuthenticationArgs) ToOutput(ctx context.Context) pulumix.Output[LocalBrokerKubernetesAuthentication] {
-	return pulumix.Output[LocalBrokerKubernetesAuthentication]{
-		OutputState: i.ToLocalBrokerKubernetesAuthenticationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i LocalBrokerKubernetesAuthenticationArgs) ToLocalBrokerKubernetesAuthenticationPtrOutput() LocalBrokerKubernetesAuthenticationPtrOutput {
 	return i.ToLocalBrokerKubernetesAuthenticationPtrOutputWithContext(context.Background())
 }
@@ -15072,12 +13373,6 @@ func (i *localBrokerKubernetesAuthenticationPtrType) ToLocalBrokerKubernetesAuth
 	return pulumi.ToOutputWithContext(ctx, i).(LocalBrokerKubernetesAuthenticationPtrOutput)
 }
 
-func (i *localBrokerKubernetesAuthenticationPtrType) ToOutput(ctx context.Context) pulumix.Output[*LocalBrokerKubernetesAuthentication] {
-	return pulumix.Output[*LocalBrokerKubernetesAuthentication]{
-		OutputState: i.ToLocalBrokerKubernetesAuthenticationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Local Broker Kubernetes Authentication
 type LocalBrokerKubernetesAuthenticationOutput struct{ *pulumi.OutputState }
 
@@ -15103,12 +13398,6 @@ func (o LocalBrokerKubernetesAuthenticationOutput) ToLocalBrokerKubernetesAuthen
 	}).(LocalBrokerKubernetesAuthenticationPtrOutput)
 }
 
-func (o LocalBrokerKubernetesAuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[LocalBrokerKubernetesAuthentication] {
-	return pulumix.Output[LocalBrokerKubernetesAuthentication]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Secret Path where SAT is mounted.
 func (o LocalBrokerKubernetesAuthenticationOutput) SecretPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LocalBrokerKubernetesAuthentication) *string { return v.SecretPath }).(pulumi.StringPtrOutput)
@@ -15131,12 +13420,6 @@ func (o LocalBrokerKubernetesAuthenticationPtrOutput) ToLocalBrokerKubernetesAut
 
 func (o LocalBrokerKubernetesAuthenticationPtrOutput) ToLocalBrokerKubernetesAuthenticationPtrOutputWithContext(ctx context.Context) LocalBrokerKubernetesAuthenticationPtrOutput {
 	return o
-}
-
-func (o LocalBrokerKubernetesAuthenticationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LocalBrokerKubernetesAuthentication] {
-	return pulumix.Output[*LocalBrokerKubernetesAuthentication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LocalBrokerKubernetesAuthenticationPtrOutput) Elem() LocalBrokerKubernetesAuthenticationOutput {
@@ -15209,12 +13492,6 @@ func (o LocalBrokerKubernetesAuthenticationResponseOutput) ToLocalBrokerKubernet
 	return o
 }
 
-func (o LocalBrokerKubernetesAuthenticationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LocalBrokerKubernetesAuthenticationResponse] {
-	return pulumix.Output[LocalBrokerKubernetesAuthenticationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Secret Path where SAT is mounted.
 func (o LocalBrokerKubernetesAuthenticationResponseOutput) SecretPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LocalBrokerKubernetesAuthenticationResponse) *string { return v.SecretPath }).(pulumi.StringPtrOutput)
@@ -15237,12 +13514,6 @@ func (o LocalBrokerKubernetesAuthenticationResponsePtrOutput) ToLocalBrokerKuber
 
 func (o LocalBrokerKubernetesAuthenticationResponsePtrOutput) ToLocalBrokerKubernetesAuthenticationResponsePtrOutputWithContext(ctx context.Context) LocalBrokerKubernetesAuthenticationResponsePtrOutput {
 	return o
-}
-
-func (o LocalBrokerKubernetesAuthenticationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LocalBrokerKubernetesAuthenticationResponse] {
-	return pulumix.Output[*LocalBrokerKubernetesAuthenticationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LocalBrokerKubernetesAuthenticationResponsePtrOutput) Elem() LocalBrokerKubernetesAuthenticationResponseOutput {
@@ -15314,12 +13585,6 @@ func (i ManagedIdentityAuthenticationArgs) ToManagedIdentityAuthenticationOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedIdentityAuthenticationOutput)
 }
 
-func (i ManagedIdentityAuthenticationArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedIdentityAuthentication] {
-	return pulumix.Output[ManagedIdentityAuthentication]{
-		OutputState: i.ToManagedIdentityAuthenticationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedIdentityAuthenticationArgs) ToManagedIdentityAuthenticationPtrOutput() ManagedIdentityAuthenticationPtrOutput {
 	return i.ToManagedIdentityAuthenticationPtrOutputWithContext(context.Background())
 }
@@ -15361,12 +13626,6 @@ func (i *managedIdentityAuthenticationPtrType) ToManagedIdentityAuthenticationPt
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedIdentityAuthenticationPtrOutput)
 }
 
-func (i *managedIdentityAuthenticationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedIdentityAuthentication] {
-	return pulumix.Output[*ManagedIdentityAuthentication]{
-		OutputState: i.ToManagedIdentityAuthenticationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Managed identity authentication details.
 type ManagedIdentityAuthenticationOutput struct{ *pulumi.OutputState }
 
@@ -15392,12 +13651,6 @@ func (o ManagedIdentityAuthenticationOutput) ToManagedIdentityAuthenticationPtrO
 	}).(ManagedIdentityAuthenticationPtrOutput)
 }
 
-func (o ManagedIdentityAuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedIdentityAuthentication] {
-	return pulumix.Output[ManagedIdentityAuthentication]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Token audience.
 func (o ManagedIdentityAuthenticationOutput) Audience() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedIdentityAuthentication) string { return v.Audience }).(pulumi.StringOutput)
@@ -15420,12 +13673,6 @@ func (o ManagedIdentityAuthenticationPtrOutput) ToManagedIdentityAuthenticationP
 
 func (o ManagedIdentityAuthenticationPtrOutput) ToManagedIdentityAuthenticationPtrOutputWithContext(ctx context.Context) ManagedIdentityAuthenticationPtrOutput {
 	return o
-}
-
-func (o ManagedIdentityAuthenticationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedIdentityAuthentication] {
-	return pulumix.Output[*ManagedIdentityAuthentication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedIdentityAuthenticationPtrOutput) Elem() ManagedIdentityAuthenticationOutput {
@@ -15481,12 +13728,6 @@ func (o ManagedIdentityAuthenticationResponseOutput) ToManagedIdentityAuthentica
 	return o
 }
 
-func (o ManagedIdentityAuthenticationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedIdentityAuthenticationResponse] {
-	return pulumix.Output[ManagedIdentityAuthenticationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Token audience.
 func (o ManagedIdentityAuthenticationResponseOutput) Audience() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedIdentityAuthenticationResponse) string { return v.Audience }).(pulumi.StringOutput)
@@ -15509,12 +13750,6 @@ func (o ManagedIdentityAuthenticationResponsePtrOutput) ToManagedIdentityAuthent
 
 func (o ManagedIdentityAuthenticationResponsePtrOutput) ToManagedIdentityAuthenticationResponsePtrOutputWithContext(ctx context.Context) ManagedIdentityAuthenticationResponsePtrOutput {
 	return o
-}
-
-func (o ManagedIdentityAuthenticationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedIdentityAuthenticationResponse] {
-	return pulumix.Output[*ManagedIdentityAuthenticationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedIdentityAuthenticationResponsePtrOutput) Elem() ManagedIdentityAuthenticationResponseOutput {
@@ -15586,12 +13821,6 @@ func (i ManualCertMethodArgs) ToManualCertMethodOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ManualCertMethodOutput)
 }
 
-func (i ManualCertMethodArgs) ToOutput(ctx context.Context) pulumix.Output[ManualCertMethod] {
-	return pulumix.Output[ManualCertMethod]{
-		OutputState: i.ToManualCertMethodOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManualCertMethodArgs) ToManualCertMethodPtrOutput() ManualCertMethodPtrOutput {
 	return i.ToManualCertMethodPtrOutputWithContext(context.Background())
 }
@@ -15633,12 +13862,6 @@ func (i *manualCertMethodPtrType) ToManualCertMethodPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ManualCertMethodPtrOutput)
 }
 
-func (i *manualCertMethodPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManualCertMethod] {
-	return pulumix.Output[*ManualCertMethod]{
-		OutputState: i.ToManualCertMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Manual TLS server certificate management through a defined secret
 type ManualCertMethodOutput struct{ *pulumi.OutputState }
 
@@ -15664,12 +13887,6 @@ func (o ManualCertMethodOutput) ToManualCertMethodPtrOutputWithContext(ctx conte
 	}).(ManualCertMethodPtrOutput)
 }
 
-func (o ManualCertMethodOutput) ToOutput(ctx context.Context) pulumix.Output[ManualCertMethod] {
-	return pulumix.Output[ManualCertMethod]{
-		OutputState: o.OutputState,
-	}
-}
-
 // secret containing TLS cert.
 func (o ManualCertMethodOutput) SecretName() pulumi.StringOutput {
 	return o.ApplyT(func(v ManualCertMethod) string { return v.SecretName }).(pulumi.StringOutput)
@@ -15692,12 +13909,6 @@ func (o ManualCertMethodPtrOutput) ToManualCertMethodPtrOutput() ManualCertMetho
 
 func (o ManualCertMethodPtrOutput) ToManualCertMethodPtrOutputWithContext(ctx context.Context) ManualCertMethodPtrOutput {
 	return o
-}
-
-func (o ManualCertMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManualCertMethod] {
-	return pulumix.Output[*ManualCertMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManualCertMethodPtrOutput) Elem() ManualCertMethodOutput {
@@ -15753,12 +13964,6 @@ func (o ManualCertMethodResponseOutput) ToManualCertMethodResponseOutputWithCont
 	return o
 }
 
-func (o ManualCertMethodResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManualCertMethodResponse] {
-	return pulumix.Output[ManualCertMethodResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // secret containing TLS cert.
 func (o ManualCertMethodResponseOutput) SecretName() pulumi.StringOutput {
 	return o.ApplyT(func(v ManualCertMethodResponse) string { return v.SecretName }).(pulumi.StringOutput)
@@ -15781,12 +13986,6 @@ func (o ManualCertMethodResponsePtrOutput) ToManualCertMethodResponsePtrOutput()
 
 func (o ManualCertMethodResponsePtrOutput) ToManualCertMethodResponsePtrOutputWithContext(ctx context.Context) ManualCertMethodResponsePtrOutput {
 	return o
-}
-
-func (o ManualCertMethodResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManualCertMethodResponse] {
-	return pulumix.Output[*ManualCertMethodResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManualCertMethodResponsePtrOutput) Elem() ManualCertMethodResponseOutput {
@@ -15858,12 +14057,6 @@ func (i MqttBridgeRemoteBrokerAuthenticationMethodsArgs) ToMqttBridgeRemoteBroke
 	return pulumi.ToOutputWithContext(ctx, i).(MqttBridgeRemoteBrokerAuthenticationMethodsOutput)
 }
 
-func (i MqttBridgeRemoteBrokerAuthenticationMethodsArgs) ToOutput(ctx context.Context) pulumix.Output[MqttBridgeRemoteBrokerAuthenticationMethods] {
-	return pulumix.Output[MqttBridgeRemoteBrokerAuthenticationMethods]{
-		OutputState: i.ToMqttBridgeRemoteBrokerAuthenticationMethodsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MqttBridge RemoteBrokerConnection Authentication methods. NOTE - Enum only one is allowed to be passed.
 type MqttBridgeRemoteBrokerAuthenticationMethodsOutput struct{ *pulumi.OutputState }
 
@@ -15877,12 +14070,6 @@ func (o MqttBridgeRemoteBrokerAuthenticationMethodsOutput) ToMqttBridgeRemoteBro
 
 func (o MqttBridgeRemoteBrokerAuthenticationMethodsOutput) ToMqttBridgeRemoteBrokerAuthenticationMethodsOutputWithContext(ctx context.Context) MqttBridgeRemoteBrokerAuthenticationMethodsOutput {
 	return o
-}
-
-func (o MqttBridgeRemoteBrokerAuthenticationMethodsOutput) ToOutput(ctx context.Context) pulumix.Output[MqttBridgeRemoteBrokerAuthenticationMethods] {
-	return pulumix.Output[MqttBridgeRemoteBrokerAuthenticationMethods]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Managed identity remote broker authentication method.
@@ -15920,12 +14107,6 @@ func (o MqttBridgeRemoteBrokerAuthenticationMethodsResponseOutput) ToMqttBridgeR
 
 func (o MqttBridgeRemoteBrokerAuthenticationMethodsResponseOutput) ToMqttBridgeRemoteBrokerAuthenticationMethodsResponseOutputWithContext(ctx context.Context) MqttBridgeRemoteBrokerAuthenticationMethodsResponseOutput {
 	return o
-}
-
-func (o MqttBridgeRemoteBrokerAuthenticationMethodsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MqttBridgeRemoteBrokerAuthenticationMethodsResponse] {
-	return pulumix.Output[MqttBridgeRemoteBrokerAuthenticationMethodsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Managed identity remote broker authentication method.
@@ -16013,12 +14194,6 @@ func (i MqttBridgeRemoteBrokerConnectionSpecArgs) ToMqttBridgeRemoteBrokerConnec
 	return pulumi.ToOutputWithContext(ctx, i).(MqttBridgeRemoteBrokerConnectionSpecOutput)
 }
 
-func (i MqttBridgeRemoteBrokerConnectionSpecArgs) ToOutput(ctx context.Context) pulumix.Output[MqttBridgeRemoteBrokerConnectionSpec] {
-	return pulumix.Output[MqttBridgeRemoteBrokerConnectionSpec]{
-		OutputState: i.ToMqttBridgeRemoteBrokerConnectionSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MqttBridge RemoteBrokerConnectionSpec details
 type MqttBridgeRemoteBrokerConnectionSpecOutput struct{ *pulumi.OutputState }
 
@@ -16032,12 +14207,6 @@ func (o MqttBridgeRemoteBrokerConnectionSpecOutput) ToMqttBridgeRemoteBrokerConn
 
 func (o MqttBridgeRemoteBrokerConnectionSpecOutput) ToMqttBridgeRemoteBrokerConnectionSpecOutputWithContext(ctx context.Context) MqttBridgeRemoteBrokerConnectionSpecOutput {
 	return o
-}
-
-func (o MqttBridgeRemoteBrokerConnectionSpecOutput) ToOutput(ctx context.Context) pulumix.Output[MqttBridgeRemoteBrokerConnectionSpec] {
-	return pulumix.Output[MqttBridgeRemoteBrokerConnectionSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The remote broker authentication methods. NOTE - Enum only one method is allowed to be passed.
@@ -16100,12 +14269,6 @@ func (o MqttBridgeRemoteBrokerConnectionSpecResponseOutput) ToMqttBridgeRemoteBr
 
 func (o MqttBridgeRemoteBrokerConnectionSpecResponseOutput) ToMqttBridgeRemoteBrokerConnectionSpecResponseOutputWithContext(ctx context.Context) MqttBridgeRemoteBrokerConnectionSpecResponseOutput {
 	return o
-}
-
-func (o MqttBridgeRemoteBrokerConnectionSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MqttBridgeRemoteBrokerConnectionSpecResponse] {
-	return pulumix.Output[MqttBridgeRemoteBrokerConnectionSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The remote broker authentication methods. NOTE - Enum only one method is allowed to be passed.
@@ -16171,12 +14334,6 @@ func (i MqttBridgeRemoteBrokerConnectionTlsArgs) ToMqttBridgeRemoteBrokerConnect
 	return pulumi.ToOutputWithContext(ctx, i).(MqttBridgeRemoteBrokerConnectionTlsOutput)
 }
 
-func (i MqttBridgeRemoteBrokerConnectionTlsArgs) ToOutput(ctx context.Context) pulumix.Output[MqttBridgeRemoteBrokerConnectionTls] {
-	return pulumix.Output[MqttBridgeRemoteBrokerConnectionTls]{
-		OutputState: i.ToMqttBridgeRemoteBrokerConnectionTlsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MqttBridge RemoteBrokerConnection TLS details
 type MqttBridgeRemoteBrokerConnectionTlsOutput struct{ *pulumi.OutputState }
 
@@ -16190,12 +14347,6 @@ func (o MqttBridgeRemoteBrokerConnectionTlsOutput) ToMqttBridgeRemoteBrokerConne
 
 func (o MqttBridgeRemoteBrokerConnectionTlsOutput) ToMqttBridgeRemoteBrokerConnectionTlsOutputWithContext(ctx context.Context) MqttBridgeRemoteBrokerConnectionTlsOutput {
 	return o
-}
-
-func (o MqttBridgeRemoteBrokerConnectionTlsOutput) ToOutput(ctx context.Context) pulumix.Output[MqttBridgeRemoteBrokerConnectionTls] {
-	return pulumix.Output[MqttBridgeRemoteBrokerConnectionTls]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Tls Enabled on Remote Broker Connection.
@@ -16229,12 +14380,6 @@ func (o MqttBridgeRemoteBrokerConnectionTlsResponseOutput) ToMqttBridgeRemoteBro
 
 func (o MqttBridgeRemoteBrokerConnectionTlsResponseOutput) ToMqttBridgeRemoteBrokerConnectionTlsResponseOutputWithContext(ctx context.Context) MqttBridgeRemoteBrokerConnectionTlsResponseOutput {
 	return o
-}
-
-func (o MqttBridgeRemoteBrokerConnectionTlsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MqttBridgeRemoteBrokerConnectionTlsResponse] {
-	return pulumix.Output[MqttBridgeRemoteBrokerConnectionTlsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Tls Enabled on Remote Broker Connection.
@@ -16286,12 +14431,6 @@ func (i MqttBridgeRemoteBrokerX509AuthenticationArgs) ToMqttBridgeRemoteBrokerX5
 	return pulumi.ToOutputWithContext(ctx, i).(MqttBridgeRemoteBrokerX509AuthenticationOutput)
 }
 
-func (i MqttBridgeRemoteBrokerX509AuthenticationArgs) ToOutput(ctx context.Context) pulumix.Output[MqttBridgeRemoteBrokerX509Authentication] {
-	return pulumix.Output[MqttBridgeRemoteBrokerX509Authentication]{
-		OutputState: i.ToMqttBridgeRemoteBrokerX509AuthenticationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MqttBridgeRemoteBrokerX509AuthenticationArgs) ToMqttBridgeRemoteBrokerX509AuthenticationPtrOutput() MqttBridgeRemoteBrokerX509AuthenticationPtrOutput {
 	return i.ToMqttBridgeRemoteBrokerX509AuthenticationPtrOutputWithContext(context.Background())
 }
@@ -16333,12 +14472,6 @@ func (i *mqttBridgeRemoteBrokerX509AuthenticationPtrType) ToMqttBridgeRemoteBrok
 	return pulumi.ToOutputWithContext(ctx, i).(MqttBridgeRemoteBrokerX509AuthenticationPtrOutput)
 }
 
-func (i *mqttBridgeRemoteBrokerX509AuthenticationPtrType) ToOutput(ctx context.Context) pulumix.Output[*MqttBridgeRemoteBrokerX509Authentication] {
-	return pulumix.Output[*MqttBridgeRemoteBrokerX509Authentication]{
-		OutputState: i.ToMqttBridgeRemoteBrokerX509AuthenticationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MqttBridge RemoteBroker X509 Authentication properties.
 type MqttBridgeRemoteBrokerX509AuthenticationOutput struct{ *pulumi.OutputState }
 
@@ -16364,12 +14497,6 @@ func (o MqttBridgeRemoteBrokerX509AuthenticationOutput) ToMqttBridgeRemoteBroker
 	}).(MqttBridgeRemoteBrokerX509AuthenticationPtrOutput)
 }
 
-func (o MqttBridgeRemoteBrokerX509AuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[MqttBridgeRemoteBrokerX509Authentication] {
-	return pulumix.Output[MqttBridgeRemoteBrokerX509Authentication]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Keyvault X509 secret properties.
 func (o MqttBridgeRemoteBrokerX509AuthenticationOutput) KeyVault() KeyVaultCertificatePropertiesPtrOutput {
 	return o.ApplyT(func(v MqttBridgeRemoteBrokerX509Authentication) *KeyVaultCertificateProperties { return v.KeyVault }).(KeyVaultCertificatePropertiesPtrOutput)
@@ -16392,12 +14519,6 @@ func (o MqttBridgeRemoteBrokerX509AuthenticationPtrOutput) ToMqttBridgeRemoteBro
 
 func (o MqttBridgeRemoteBrokerX509AuthenticationPtrOutput) ToMqttBridgeRemoteBrokerX509AuthenticationPtrOutputWithContext(ctx context.Context) MqttBridgeRemoteBrokerX509AuthenticationPtrOutput {
 	return o
-}
-
-func (o MqttBridgeRemoteBrokerX509AuthenticationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MqttBridgeRemoteBrokerX509Authentication] {
-	return pulumix.Output[*MqttBridgeRemoteBrokerX509Authentication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MqttBridgeRemoteBrokerX509AuthenticationPtrOutput) Elem() MqttBridgeRemoteBrokerX509AuthenticationOutput {
@@ -16453,12 +14574,6 @@ func (o MqttBridgeRemoteBrokerX509AuthenticationResponseOutput) ToMqttBridgeRemo
 	return o
 }
 
-func (o MqttBridgeRemoteBrokerX509AuthenticationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MqttBridgeRemoteBrokerX509AuthenticationResponse] {
-	return pulumix.Output[MqttBridgeRemoteBrokerX509AuthenticationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Keyvault X509 secret properties.
 func (o MqttBridgeRemoteBrokerX509AuthenticationResponseOutput) KeyVault() KeyVaultCertificatePropertiesResponsePtrOutput {
 	return o.ApplyT(func(v MqttBridgeRemoteBrokerX509AuthenticationResponse) *KeyVaultCertificatePropertiesResponse {
@@ -16483,12 +14598,6 @@ func (o MqttBridgeRemoteBrokerX509AuthenticationResponsePtrOutput) ToMqttBridgeR
 
 func (o MqttBridgeRemoteBrokerX509AuthenticationResponsePtrOutput) ToMqttBridgeRemoteBrokerX509AuthenticationResponsePtrOutputWithContext(ctx context.Context) MqttBridgeRemoteBrokerX509AuthenticationResponsePtrOutput {
 	return o
-}
-
-func (o MqttBridgeRemoteBrokerX509AuthenticationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MqttBridgeRemoteBrokerX509AuthenticationResponse] {
-	return pulumix.Output[*MqttBridgeRemoteBrokerX509AuthenticationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MqttBridgeRemoteBrokerX509AuthenticationResponsePtrOutput) Elem() MqttBridgeRemoteBrokerX509AuthenticationResponseOutput {
@@ -16560,12 +14669,6 @@ func (i MqttBridgeRouteSharedSubscriptionArgs) ToMqttBridgeRouteSharedSubscripti
 	return pulumi.ToOutputWithContext(ctx, i).(MqttBridgeRouteSharedSubscriptionOutput)
 }
 
-func (i MqttBridgeRouteSharedSubscriptionArgs) ToOutput(ctx context.Context) pulumix.Output[MqttBridgeRouteSharedSubscription] {
-	return pulumix.Output[MqttBridgeRouteSharedSubscription]{
-		OutputState: i.ToMqttBridgeRouteSharedSubscriptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MqttBridgeRouteSharedSubscriptionArgs) ToMqttBridgeRouteSharedSubscriptionPtrOutput() MqttBridgeRouteSharedSubscriptionPtrOutput {
 	return i.ToMqttBridgeRouteSharedSubscriptionPtrOutputWithContext(context.Background())
 }
@@ -16607,12 +14710,6 @@ func (i *mqttBridgeRouteSharedSubscriptionPtrType) ToMqttBridgeRouteSharedSubscr
 	return pulumi.ToOutputWithContext(ctx, i).(MqttBridgeRouteSharedSubscriptionPtrOutput)
 }
 
-func (i *mqttBridgeRouteSharedSubscriptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*MqttBridgeRouteSharedSubscription] {
-	return pulumix.Output[*MqttBridgeRouteSharedSubscription]{
-		OutputState: i.ToMqttBridgeRouteSharedSubscriptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MqttBridgeRoute Shared subscription properties
 type MqttBridgeRouteSharedSubscriptionOutput struct{ *pulumi.OutputState }
 
@@ -16638,12 +14735,6 @@ func (o MqttBridgeRouteSharedSubscriptionOutput) ToMqttBridgeRouteSharedSubscrip
 	}).(MqttBridgeRouteSharedSubscriptionPtrOutput)
 }
 
-func (o MqttBridgeRouteSharedSubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[MqttBridgeRouteSharedSubscription] {
-	return pulumix.Output[MqttBridgeRouteSharedSubscription]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The group shared subscription minimum share number.
 func (o MqttBridgeRouteSharedSubscriptionOutput) GroupMinimumShareNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v MqttBridgeRouteSharedSubscription) int { return v.GroupMinimumShareNumber }).(pulumi.IntOutput)
@@ -16666,12 +14757,6 @@ func (o MqttBridgeRouteSharedSubscriptionPtrOutput) ToMqttBridgeRouteSharedSubsc
 
 func (o MqttBridgeRouteSharedSubscriptionPtrOutput) ToMqttBridgeRouteSharedSubscriptionPtrOutputWithContext(ctx context.Context) MqttBridgeRouteSharedSubscriptionPtrOutput {
 	return o
-}
-
-func (o MqttBridgeRouteSharedSubscriptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MqttBridgeRouteSharedSubscription] {
-	return pulumix.Output[*MqttBridgeRouteSharedSubscription]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MqttBridgeRouteSharedSubscriptionPtrOutput) Elem() MqttBridgeRouteSharedSubscriptionOutput {
@@ -16727,12 +14812,6 @@ func (o MqttBridgeRouteSharedSubscriptionResponseOutput) ToMqttBridgeRouteShared
 	return o
 }
 
-func (o MqttBridgeRouteSharedSubscriptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MqttBridgeRouteSharedSubscriptionResponse] {
-	return pulumix.Output[MqttBridgeRouteSharedSubscriptionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The group shared subscription minimum share number.
 func (o MqttBridgeRouteSharedSubscriptionResponseOutput) GroupMinimumShareNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v MqttBridgeRouteSharedSubscriptionResponse) int { return v.GroupMinimumShareNumber }).(pulumi.IntOutput)
@@ -16755,12 +14834,6 @@ func (o MqttBridgeRouteSharedSubscriptionResponsePtrOutput) ToMqttBridgeRouteSha
 
 func (o MqttBridgeRouteSharedSubscriptionResponsePtrOutput) ToMqttBridgeRouteSharedSubscriptionResponsePtrOutputWithContext(ctx context.Context) MqttBridgeRouteSharedSubscriptionResponsePtrOutput {
 	return o
-}
-
-func (o MqttBridgeRouteSharedSubscriptionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MqttBridgeRouteSharedSubscriptionResponse] {
-	return pulumix.Output[*MqttBridgeRouteSharedSubscriptionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MqttBridgeRouteSharedSubscriptionResponsePtrOutput) Elem() MqttBridgeRouteSharedSubscriptionResponseOutput {
@@ -16872,12 +14945,6 @@ func (i MqttBridgeRoutesArgs) ToMqttBridgeRoutesOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(MqttBridgeRoutesOutput)
 }
 
-func (i MqttBridgeRoutesArgs) ToOutput(ctx context.Context) pulumix.Output[MqttBridgeRoutes] {
-	return pulumix.Output[MqttBridgeRoutes]{
-		OutputState: i.ToMqttBridgeRoutesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MqttBridgeRoutesArrayInput is an input type that accepts MqttBridgeRoutesArray and MqttBridgeRoutesArrayOutput values.
 // You can construct a concrete instance of `MqttBridgeRoutesArrayInput` via:
 //
@@ -16903,12 +14970,6 @@ func (i MqttBridgeRoutesArray) ToMqttBridgeRoutesArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(MqttBridgeRoutesArrayOutput)
 }
 
-func (i MqttBridgeRoutesArray) ToOutput(ctx context.Context) pulumix.Output[[]MqttBridgeRoutes] {
-	return pulumix.Output[[]MqttBridgeRoutes]{
-		OutputState: i.ToMqttBridgeRoutesArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MqttBridgeTopicMap route properties
 type MqttBridgeRoutesOutput struct{ *pulumi.OutputState }
 
@@ -16922,12 +14983,6 @@ func (o MqttBridgeRoutesOutput) ToMqttBridgeRoutesOutput() MqttBridgeRoutesOutpu
 
 func (o MqttBridgeRoutesOutput) ToMqttBridgeRoutesOutputWithContext(ctx context.Context) MqttBridgeRoutesOutput {
 	return o
-}
-
-func (o MqttBridgeRoutesOutput) ToOutput(ctx context.Context) pulumix.Output[MqttBridgeRoutes] {
-	return pulumix.Output[MqttBridgeRoutes]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Direction of the route.
@@ -16972,12 +15027,6 @@ func (o MqttBridgeRoutesArrayOutput) ToMqttBridgeRoutesArrayOutput() MqttBridgeR
 
 func (o MqttBridgeRoutesArrayOutput) ToMqttBridgeRoutesArrayOutputWithContext(ctx context.Context) MqttBridgeRoutesArrayOutput {
 	return o
-}
-
-func (o MqttBridgeRoutesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MqttBridgeRoutes] {
-	return pulumix.Output[[]MqttBridgeRoutes]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MqttBridgeRoutesArrayOutput) Index(i pulumi.IntInput) MqttBridgeRoutesOutput {
@@ -17030,12 +15079,6 @@ func (o MqttBridgeRoutesResponseOutput) ToMqttBridgeRoutesResponseOutputWithCont
 	return o
 }
 
-func (o MqttBridgeRoutesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MqttBridgeRoutesResponse] {
-	return pulumix.Output[MqttBridgeRoutesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Direction of the route.
 func (o MqttBridgeRoutesResponseOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v MqttBridgeRoutesResponse) string { return v.Direction }).(pulumi.StringOutput)
@@ -17080,12 +15123,6 @@ func (o MqttBridgeRoutesResponseArrayOutput) ToMqttBridgeRoutesResponseArrayOutp
 
 func (o MqttBridgeRoutesResponseArrayOutput) ToMqttBridgeRoutesResponseArrayOutputWithContext(ctx context.Context) MqttBridgeRoutesResponseArrayOutput {
 	return o
-}
-
-func (o MqttBridgeRoutesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MqttBridgeRoutesResponse] {
-	return pulumix.Output[[]MqttBridgeRoutesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MqttBridgeRoutesResponseArrayOutput) Index(i pulumi.IntInput) MqttBridgeRoutesResponseOutput {
@@ -17173,12 +15210,6 @@ func (i MqttToKafkaRoutesArgs) ToMqttToKafkaRoutesOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MqttToKafkaRoutesOutput)
 }
 
-func (i MqttToKafkaRoutesArgs) ToOutput(ctx context.Context) pulumix.Output[MqttToKafkaRoutes] {
-	return pulumix.Output[MqttToKafkaRoutes]{
-		OutputState: i.ToMqttToKafkaRoutesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MqttToKafkaRoutesArgs) ToMqttToKafkaRoutesPtrOutput() MqttToKafkaRoutesPtrOutput {
 	return i.ToMqttToKafkaRoutesPtrOutputWithContext(context.Background())
 }
@@ -17220,12 +15251,6 @@ func (i *mqttToKafkaRoutesPtrType) ToMqttToKafkaRoutesPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(MqttToKafkaRoutesPtrOutput)
 }
 
-func (i *mqttToKafkaRoutesPtrType) ToOutput(ctx context.Context) pulumix.Output[*MqttToKafkaRoutes] {
-	return pulumix.Output[*MqttToKafkaRoutes]{
-		OutputState: i.ToMqttToKafkaRoutesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Mqtt to Kafka route properties
 type MqttToKafkaRoutesOutput struct{ *pulumi.OutputState }
 
@@ -17249,12 +15274,6 @@ func (o MqttToKafkaRoutesOutput) ToMqttToKafkaRoutesPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MqttToKafkaRoutes) *MqttToKafkaRoutes {
 		return &v
 	}).(MqttToKafkaRoutesPtrOutput)
-}
-
-func (o MqttToKafkaRoutesOutput) ToOutput(ctx context.Context) pulumix.Output[MqttToKafkaRoutes] {
-	return pulumix.Output[MqttToKafkaRoutes]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The kafka acks to use.
@@ -17299,12 +15318,6 @@ func (o MqttToKafkaRoutesPtrOutput) ToMqttToKafkaRoutesPtrOutput() MqttToKafkaRo
 
 func (o MqttToKafkaRoutesPtrOutput) ToMqttToKafkaRoutesPtrOutputWithContext(ctx context.Context) MqttToKafkaRoutesPtrOutput {
 	return o
-}
-
-func (o MqttToKafkaRoutesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MqttToKafkaRoutes] {
-	return pulumix.Output[*MqttToKafkaRoutes]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MqttToKafkaRoutesPtrOutput) Elem() MqttToKafkaRoutesOutput {
@@ -17421,12 +15434,6 @@ func (o MqttToKafkaRoutesResponseOutput) ToMqttToKafkaRoutesResponseOutputWithCo
 	return o
 }
 
-func (o MqttToKafkaRoutesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MqttToKafkaRoutesResponse] {
-	return pulumix.Output[MqttToKafkaRoutesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The kafka acks to use.
 func (o MqttToKafkaRoutesResponseOutput) KafkaAcks() pulumi.StringOutput {
 	return o.ApplyT(func(v MqttToKafkaRoutesResponse) string { return v.KafkaAcks }).(pulumi.StringOutput)
@@ -17471,12 +15478,6 @@ func (o MqttToKafkaRoutesResponsePtrOutput) ToMqttToKafkaRoutesResponsePtrOutput
 
 func (o MqttToKafkaRoutesResponsePtrOutput) ToMqttToKafkaRoutesResponsePtrOutputWithContext(ctx context.Context) MqttToKafkaRoutesResponsePtrOutput {
 	return o
-}
-
-func (o MqttToKafkaRoutesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MqttToKafkaRoutesResponse] {
-	return pulumix.Output[*MqttToKafkaRoutesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MqttToKafkaRoutesResponsePtrOutput) Elem() MqttToKafkaRoutesResponseOutput {
@@ -17596,12 +15597,6 @@ func (i NodeTolerationsArgs) ToNodeTolerationsOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(NodeTolerationsOutput)
 }
 
-func (i NodeTolerationsArgs) ToOutput(ctx context.Context) pulumix.Output[NodeTolerations] {
-	return pulumix.Output[NodeTolerations]{
-		OutputState: i.ToNodeTolerationsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i NodeTolerationsArgs) ToNodeTolerationsPtrOutput() NodeTolerationsPtrOutput {
 	return i.ToNodeTolerationsPtrOutputWithContext(context.Background())
 }
@@ -17643,12 +15638,6 @@ func (i *nodeTolerationsPtrType) ToNodeTolerationsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(NodeTolerationsPtrOutput)
 }
 
-func (i *nodeTolerationsPtrType) ToOutput(ctx context.Context) pulumix.Output[*NodeTolerations] {
-	return pulumix.Output[*NodeTolerations]{
-		OutputState: i.ToNodeTolerationsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines the Node Tolerations details
 type NodeTolerationsOutput struct{ *pulumi.OutputState }
 
@@ -17672,12 +15661,6 @@ func (o NodeTolerationsOutput) ToNodeTolerationsPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeTolerations) *NodeTolerations {
 		return &v
 	}).(NodeTolerationsPtrOutput)
-}
-
-func (o NodeTolerationsOutput) ToOutput(ctx context.Context) pulumix.Output[NodeTolerations] {
-	return pulumix.Output[NodeTolerations]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Toleration effect.
@@ -17712,12 +15695,6 @@ func (o NodeTolerationsPtrOutput) ToNodeTolerationsPtrOutput() NodeTolerationsPt
 
 func (o NodeTolerationsPtrOutput) ToNodeTolerationsPtrOutputWithContext(ctx context.Context) NodeTolerationsPtrOutput {
 	return o
-}
-
-func (o NodeTolerationsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeTolerations] {
-	return pulumix.Output[*NodeTolerations]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NodeTolerationsPtrOutput) Elem() NodeTolerationsOutput {
@@ -17797,12 +15774,6 @@ func (o NodeTolerationsResponseOutput) ToNodeTolerationsResponseOutputWithContex
 	return o
 }
 
-func (o NodeTolerationsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NodeTolerationsResponse] {
-	return pulumix.Output[NodeTolerationsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Toleration effect.
 func (o NodeTolerationsResponseOutput) Effect() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeTolerationsResponse) string { return v.Effect }).(pulumi.StringOutput)
@@ -17835,12 +15806,6 @@ func (o NodeTolerationsResponsePtrOutput) ToNodeTolerationsResponsePtrOutput() N
 
 func (o NodeTolerationsResponsePtrOutput) ToNodeTolerationsResponsePtrOutputWithContext(ctx context.Context) NodeTolerationsResponsePtrOutput {
 	return o
-}
-
-func (o NodeTolerationsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeTolerationsResponse] {
-	return pulumix.Output[*NodeTolerationsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NodeTolerationsResponsePtrOutput) Elem() NodeTolerationsResponseOutput {
@@ -17936,12 +15901,6 @@ func (i PrincipalDefinitionArgs) ToPrincipalDefinitionOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(PrincipalDefinitionOutput)
 }
 
-func (i PrincipalDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[PrincipalDefinition] {
-	return pulumix.Output[PrincipalDefinition]{
-		OutputState: i.ToPrincipalDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PrincipalDefinition properties of Basic Rule
 type PrincipalDefinitionOutput struct{ *pulumi.OutputState }
 
@@ -17955,12 +15914,6 @@ func (o PrincipalDefinitionOutput) ToPrincipalDefinitionOutput() PrincipalDefini
 
 func (o PrincipalDefinitionOutput) ToPrincipalDefinitionOutputWithContext(ctx context.Context) PrincipalDefinitionOutput {
 	return o
-}
-
-func (o PrincipalDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[PrincipalDefinition] {
-	return pulumix.Output[PrincipalDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of key-value pairs that match the attributes of the clients. The attributes are case-sensitive and must match the attributes provided by the clients during authentication.
@@ -18001,12 +15954,6 @@ func (o PrincipalDefinitionResponseOutput) ToPrincipalDefinitionResponseOutput()
 
 func (o PrincipalDefinitionResponseOutput) ToPrincipalDefinitionResponseOutputWithContext(ctx context.Context) PrincipalDefinitionResponseOutput {
 	return o
-}
-
-func (o PrincipalDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrincipalDefinitionResponse] {
-	return pulumix.Output[PrincipalDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of key-value pairs that match the attributes of the clients. The attributes are case-sensitive and must match the attributes provided by the clients during authentication.
@@ -18063,12 +16010,6 @@ func (i ResourceInfoDefinitionArgs) ToResourceInfoDefinitionOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceInfoDefinitionOutput)
 }
 
-func (i ResourceInfoDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceInfoDefinition] {
-	return pulumix.Output[ResourceInfoDefinition]{
-		OutputState: i.ToResourceInfoDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ResourceInfoDefinitionArrayInput is an input type that accepts ResourceInfoDefinitionArray and ResourceInfoDefinitionArrayOutput values.
 // You can construct a concrete instance of `ResourceInfoDefinitionArrayInput` via:
 //
@@ -18094,12 +16035,6 @@ func (i ResourceInfoDefinitionArray) ToResourceInfoDefinitionArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceInfoDefinitionArrayOutput)
 }
 
-func (i ResourceInfoDefinitionArray) ToOutput(ctx context.Context) pulumix.Output[[]ResourceInfoDefinition] {
-	return pulumix.Output[[]ResourceInfoDefinition]{
-		OutputState: i.ToResourceInfoDefinitionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ResourceInfoDefinition properties of Basic Rule. This defines the objects that represent the actions or topics, such as - method.Connect, method.Publish, etc.
 type ResourceInfoDefinitionOutput struct{ *pulumi.OutputState }
 
@@ -18113,12 +16048,6 @@ func (o ResourceInfoDefinitionOutput) ToResourceInfoDefinitionOutput() ResourceI
 
 func (o ResourceInfoDefinitionOutput) ToResourceInfoDefinitionOutputWithContext(ctx context.Context) ResourceInfoDefinitionOutput {
 	return o
-}
-
-func (o ResourceInfoDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceInfoDefinition] {
-	return pulumix.Output[ResourceInfoDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of action that the clients can perform on the broker: Connect, Publish or Subscribe.
@@ -18143,12 +16072,6 @@ func (o ResourceInfoDefinitionArrayOutput) ToResourceInfoDefinitionArrayOutput()
 
 func (o ResourceInfoDefinitionArrayOutput) ToResourceInfoDefinitionArrayOutputWithContext(ctx context.Context) ResourceInfoDefinitionArrayOutput {
 	return o
-}
-
-func (o ResourceInfoDefinitionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceInfoDefinition] {
-	return pulumix.Output[[]ResourceInfoDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceInfoDefinitionArrayOutput) Index(i pulumi.IntInput) ResourceInfoDefinitionOutput {
@@ -18180,12 +16103,6 @@ func (o ResourceInfoDefinitionResponseOutput) ToResourceInfoDefinitionResponseOu
 	return o
 }
 
-func (o ResourceInfoDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceInfoDefinitionResponse] {
-	return pulumix.Output[ResourceInfoDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The type of action that the clients can perform on the broker: Connect, Publish or Subscribe.
 func (o ResourceInfoDefinitionResponseOutput) Method() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceInfoDefinitionResponse) string { return v.Method }).(pulumi.StringOutput)
@@ -18208,12 +16125,6 @@ func (o ResourceInfoDefinitionResponseArrayOutput) ToResourceInfoDefinitionRespo
 
 func (o ResourceInfoDefinitionResponseArrayOutput) ToResourceInfoDefinitionResponseArrayOutputWithContext(ctx context.Context) ResourceInfoDefinitionResponseArrayOutput {
 	return o
-}
-
-func (o ResourceInfoDefinitionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceInfoDefinitionResponse] {
-	return pulumix.Output[[]ResourceInfoDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceInfoDefinitionResponseArrayOutput) Index(i pulumi.IntInput) ResourceInfoDefinitionResponseOutput {
@@ -18261,12 +16172,6 @@ func (i SanForCertArgs) ToSanForCertOutputWithContext(ctx context.Context) SanFo
 	return pulumi.ToOutputWithContext(ctx, i).(SanForCertOutput)
 }
 
-func (i SanForCertArgs) ToOutput(ctx context.Context) pulumix.Output[SanForCert] {
-	return pulumix.Output[SanForCert]{
-		OutputState: i.ToSanForCertOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SanForCertArgs) ToSanForCertPtrOutput() SanForCertPtrOutput {
 	return i.ToSanForCertPtrOutputWithContext(context.Background())
 }
@@ -18308,12 +16213,6 @@ func (i *sanForCertPtrType) ToSanForCertPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SanForCertPtrOutput)
 }
 
-func (i *sanForCertPtrType) ToOutput(ctx context.Context) pulumix.Output[*SanForCert] {
-	return pulumix.Output[*SanForCert]{
-		OutputState: i.ToSanForCertPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SANs for certificate.
 type SanForCertOutput struct{ *pulumi.OutputState }
 
@@ -18339,12 +16238,6 @@ func (o SanForCertOutput) ToSanForCertPtrOutputWithContext(ctx context.Context) 
 	}).(SanForCertPtrOutput)
 }
 
-func (o SanForCertOutput) ToOutput(ctx context.Context) pulumix.Output[SanForCert] {
-	return pulumix.Output[SanForCert]{
-		OutputState: o.OutputState,
-	}
-}
-
 // DNS SANs.
 func (o SanForCertOutput) Dns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SanForCert) []string { return v.Dns }).(pulumi.StringArrayOutput)
@@ -18367,12 +16260,6 @@ func (o SanForCertPtrOutput) ToSanForCertPtrOutput() SanForCertPtrOutput {
 
 func (o SanForCertPtrOutput) ToSanForCertPtrOutputWithContext(ctx context.Context) SanForCertPtrOutput {
 	return o
-}
-
-func (o SanForCertPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SanForCert] {
-	return pulumix.Output[*SanForCert]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SanForCertPtrOutput) Elem() SanForCertOutput {
@@ -18428,12 +16315,6 @@ func (o SanForCertResponseOutput) ToSanForCertResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o SanForCertResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SanForCertResponse] {
-	return pulumix.Output[SanForCertResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // DNS SANs.
 func (o SanForCertResponseOutput) Dns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SanForCertResponse) []string { return v.Dns }).(pulumi.StringArrayOutput)
@@ -18456,12 +16337,6 @@ func (o SanForCertResponsePtrOutput) ToSanForCertResponsePtrOutput() SanForCertR
 
 func (o SanForCertResponsePtrOutput) ToSanForCertResponsePtrOutputWithContext(ctx context.Context) SanForCertResponsePtrOutput {
 	return o
-}
-
-func (o SanForCertResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SanForCertResponse] {
-	return pulumix.Output[*SanForCertResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SanForCertResponsePtrOutput) Elem() SanForCertResponseOutput {
@@ -18533,12 +16408,6 @@ func (i SaslRemoteBrokerBasicAuthenticationArgs) ToSaslRemoteBrokerBasicAuthenti
 	return pulumi.ToOutputWithContext(ctx, i).(SaslRemoteBrokerBasicAuthenticationOutput)
 }
 
-func (i SaslRemoteBrokerBasicAuthenticationArgs) ToOutput(ctx context.Context) pulumix.Output[SaslRemoteBrokerBasicAuthentication] {
-	return pulumix.Output[SaslRemoteBrokerBasicAuthentication]{
-		OutputState: i.ToSaslRemoteBrokerBasicAuthenticationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SaslRemoteBrokerBasicAuthenticationArgs) ToSaslRemoteBrokerBasicAuthenticationPtrOutput() SaslRemoteBrokerBasicAuthenticationPtrOutput {
 	return i.ToSaslRemoteBrokerBasicAuthenticationPtrOutputWithContext(context.Background())
 }
@@ -18580,12 +16449,6 @@ func (i *saslRemoteBrokerBasicAuthenticationPtrType) ToSaslRemoteBrokerBasicAuth
 	return pulumi.ToOutputWithContext(ctx, i).(SaslRemoteBrokerBasicAuthenticationPtrOutput)
 }
 
-func (i *saslRemoteBrokerBasicAuthenticationPtrType) ToOutput(ctx context.Context) pulumix.Output[*SaslRemoteBrokerBasicAuthentication] {
-	return pulumix.Output[*SaslRemoteBrokerBasicAuthentication]{
-		OutputState: i.ToSaslRemoteBrokerBasicAuthenticationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Kafka RemoteBrokerConnection Sasl Authentication properties.
 type SaslRemoteBrokerBasicAuthenticationOutput struct{ *pulumi.OutputState }
 
@@ -18611,12 +16474,6 @@ func (o SaslRemoteBrokerBasicAuthenticationOutput) ToSaslRemoteBrokerBasicAuthen
 	}).(SaslRemoteBrokerBasicAuthenticationPtrOutput)
 }
 
-func (o SaslRemoteBrokerBasicAuthenticationOutput) ToOutput(ctx context.Context) pulumix.Output[SaslRemoteBrokerBasicAuthentication] {
-	return pulumix.Output[SaslRemoteBrokerBasicAuthentication]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Sasl Mechanism for remote broker authentication.
 func (o SaslRemoteBrokerBasicAuthenticationOutput) SaslType() pulumi.StringOutput {
 	return o.ApplyT(func(v SaslRemoteBrokerBasicAuthentication) string { return v.SaslType }).(pulumi.StringOutput)
@@ -18639,12 +16496,6 @@ func (o SaslRemoteBrokerBasicAuthenticationPtrOutput) ToSaslRemoteBrokerBasicAut
 
 func (o SaslRemoteBrokerBasicAuthenticationPtrOutput) ToSaslRemoteBrokerBasicAuthenticationPtrOutputWithContext(ctx context.Context) SaslRemoteBrokerBasicAuthenticationPtrOutput {
 	return o
-}
-
-func (o SaslRemoteBrokerBasicAuthenticationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SaslRemoteBrokerBasicAuthentication] {
-	return pulumix.Output[*SaslRemoteBrokerBasicAuthentication]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SaslRemoteBrokerBasicAuthenticationPtrOutput) Elem() SaslRemoteBrokerBasicAuthenticationOutput {
@@ -18700,12 +16551,6 @@ func (o SaslRemoteBrokerBasicAuthenticationResponseOutput) ToSaslRemoteBrokerBas
 	return o
 }
 
-func (o SaslRemoteBrokerBasicAuthenticationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SaslRemoteBrokerBasicAuthenticationResponse] {
-	return pulumix.Output[SaslRemoteBrokerBasicAuthenticationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Sasl Mechanism for remote broker authentication.
 func (o SaslRemoteBrokerBasicAuthenticationResponseOutput) SaslType() pulumi.StringOutput {
 	return o.ApplyT(func(v SaslRemoteBrokerBasicAuthenticationResponse) string { return v.SaslType }).(pulumi.StringOutput)
@@ -18730,12 +16575,6 @@ func (o SaslRemoteBrokerBasicAuthenticationResponsePtrOutput) ToSaslRemoteBroker
 
 func (o SaslRemoteBrokerBasicAuthenticationResponsePtrOutput) ToSaslRemoteBrokerBasicAuthenticationResponsePtrOutputWithContext(ctx context.Context) SaslRemoteBrokerBasicAuthenticationResponsePtrOutput {
 	return o
-}
-
-func (o SaslRemoteBrokerBasicAuthenticationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SaslRemoteBrokerBasicAuthenticationResponse] {
-	return pulumix.Output[*SaslRemoteBrokerBasicAuthenticationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SaslRemoteBrokerBasicAuthenticationResponsePtrOutput) Elem() SaslRemoteBrokerBasicAuthenticationResponseOutput {
@@ -18807,12 +16646,6 @@ func (i SaslRemoteBrokerBasicAuthenticationTokenArgs) ToSaslRemoteBrokerBasicAut
 	return pulumi.ToOutputWithContext(ctx, i).(SaslRemoteBrokerBasicAuthenticationTokenOutput)
 }
 
-func (i SaslRemoteBrokerBasicAuthenticationTokenArgs) ToOutput(ctx context.Context) pulumix.Output[SaslRemoteBrokerBasicAuthenticationToken] {
-	return pulumix.Output[SaslRemoteBrokerBasicAuthenticationToken]{
-		OutputState: i.ToSaslRemoteBrokerBasicAuthenticationTokenOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SaslRemoteBrokerBasicAuthenticationTokenArgs) ToSaslRemoteBrokerBasicAuthenticationTokenPtrOutput() SaslRemoteBrokerBasicAuthenticationTokenPtrOutput {
 	return i.ToSaslRemoteBrokerBasicAuthenticationTokenPtrOutputWithContext(context.Background())
 }
@@ -18854,12 +16687,6 @@ func (i *saslRemoteBrokerBasicAuthenticationTokenPtrType) ToSaslRemoteBrokerBasi
 	return pulumi.ToOutputWithContext(ctx, i).(SaslRemoteBrokerBasicAuthenticationTokenPtrOutput)
 }
 
-func (i *saslRemoteBrokerBasicAuthenticationTokenPtrType) ToOutput(ctx context.Context) pulumix.Output[*SaslRemoteBrokerBasicAuthenticationToken] {
-	return pulumix.Output[*SaslRemoteBrokerBasicAuthenticationToken]{
-		OutputState: i.ToSaslRemoteBrokerBasicAuthenticationTokenPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Kafka RemoteBrokerConnection Sasl Authentication token properties. NOTE - Enum only one method is allowed to be passed.
 type SaslRemoteBrokerBasicAuthenticationTokenOutput struct{ *pulumi.OutputState }
 
@@ -18885,12 +16712,6 @@ func (o SaslRemoteBrokerBasicAuthenticationTokenOutput) ToSaslRemoteBrokerBasicA
 	}).(SaslRemoteBrokerBasicAuthenticationTokenPtrOutput)
 }
 
-func (o SaslRemoteBrokerBasicAuthenticationTokenOutput) ToOutput(ctx context.Context) pulumix.Output[SaslRemoteBrokerBasicAuthenticationToken] {
-	return pulumix.Output[SaslRemoteBrokerBasicAuthenticationToken]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Keyvault token keyvault secret properties.
 func (o SaslRemoteBrokerBasicAuthenticationTokenOutput) KeyVault() KafkaTokenKeyVaultPropertiesPtrOutput {
 	return o.ApplyT(func(v SaslRemoteBrokerBasicAuthenticationToken) *KafkaTokenKeyVaultProperties { return v.KeyVault }).(KafkaTokenKeyVaultPropertiesPtrOutput)
@@ -18913,12 +16734,6 @@ func (o SaslRemoteBrokerBasicAuthenticationTokenPtrOutput) ToSaslRemoteBrokerBas
 
 func (o SaslRemoteBrokerBasicAuthenticationTokenPtrOutput) ToSaslRemoteBrokerBasicAuthenticationTokenPtrOutputWithContext(ctx context.Context) SaslRemoteBrokerBasicAuthenticationTokenPtrOutput {
 	return o
-}
-
-func (o SaslRemoteBrokerBasicAuthenticationTokenPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SaslRemoteBrokerBasicAuthenticationToken] {
-	return pulumix.Output[*SaslRemoteBrokerBasicAuthenticationToken]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SaslRemoteBrokerBasicAuthenticationTokenPtrOutput) Elem() SaslRemoteBrokerBasicAuthenticationTokenOutput {
@@ -18974,12 +16789,6 @@ func (o SaslRemoteBrokerBasicAuthenticationTokenResponseOutput) ToSaslRemoteBrok
 	return o
 }
 
-func (o SaslRemoteBrokerBasicAuthenticationTokenResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SaslRemoteBrokerBasicAuthenticationTokenResponse] {
-	return pulumix.Output[SaslRemoteBrokerBasicAuthenticationTokenResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Keyvault token keyvault secret properties.
 func (o SaslRemoteBrokerBasicAuthenticationTokenResponseOutput) KeyVault() KafkaTokenKeyVaultPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v SaslRemoteBrokerBasicAuthenticationTokenResponse) *KafkaTokenKeyVaultPropertiesResponse {
@@ -19004,12 +16813,6 @@ func (o SaslRemoteBrokerBasicAuthenticationTokenResponsePtrOutput) ToSaslRemoteB
 
 func (o SaslRemoteBrokerBasicAuthenticationTokenResponsePtrOutput) ToSaslRemoteBrokerBasicAuthenticationTokenResponsePtrOutputWithContext(ctx context.Context) SaslRemoteBrokerBasicAuthenticationTokenResponsePtrOutput {
 	return o
-}
-
-func (o SaslRemoteBrokerBasicAuthenticationTokenResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SaslRemoteBrokerBasicAuthenticationTokenResponse] {
-	return pulumix.Output[*SaslRemoteBrokerBasicAuthenticationTokenResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SaslRemoteBrokerBasicAuthenticationTokenResponsePtrOutput) Elem() SaslRemoteBrokerBasicAuthenticationTokenResponseOutput {
@@ -19071,12 +16874,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -19168,12 +16965,6 @@ func (i TemporaryResourceLimitsConfigArgs) ToTemporaryResourceLimitsConfigOutput
 	return pulumi.ToOutputWithContext(ctx, i).(TemporaryResourceLimitsConfigOutput)
 }
 
-func (i TemporaryResourceLimitsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[TemporaryResourceLimitsConfig] {
-	return pulumix.Output[TemporaryResourceLimitsConfig]{
-		OutputState: i.ToTemporaryResourceLimitsConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TemporaryResourceLimitsConfigArgs) ToTemporaryResourceLimitsConfigPtrOutput() TemporaryResourceLimitsConfigPtrOutput {
 	return i.ToTemporaryResourceLimitsConfigPtrOutputWithContext(context.Background())
 }
@@ -19215,12 +17006,6 @@ func (i *temporaryResourceLimitsConfigPtrType) ToTemporaryResourceLimitsConfigPt
 	return pulumi.ToOutputWithContext(ctx, i).(TemporaryResourceLimitsConfigPtrOutput)
 }
 
-func (i *temporaryResourceLimitsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*TemporaryResourceLimitsConfig] {
-	return pulumix.Output[*TemporaryResourceLimitsConfig]{
-		OutputState: i.ToTemporaryResourceLimitsConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Internal knobs of Resource Limits for FE and BE
 type TemporaryResourceLimitsConfigOutput struct{ *pulumi.OutputState }
 
@@ -19244,12 +17029,6 @@ func (o TemporaryResourceLimitsConfigOutput) ToTemporaryResourceLimitsConfigPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TemporaryResourceLimitsConfig) *TemporaryResourceLimitsConfig {
 		return &v
 	}).(TemporaryResourceLimitsConfigPtrOutput)
-}
-
-func (o TemporaryResourceLimitsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[TemporaryResourceLimitsConfig] {
-	return pulumix.Output[TemporaryResourceLimitsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Maximum number of messages a client can have inflight.
@@ -19299,12 +17078,6 @@ func (o TemporaryResourceLimitsConfigPtrOutput) ToTemporaryResourceLimitsConfigP
 
 func (o TemporaryResourceLimitsConfigPtrOutput) ToTemporaryResourceLimitsConfigPtrOutputWithContext(ctx context.Context) TemporaryResourceLimitsConfigPtrOutput {
 	return o
-}
-
-func (o TemporaryResourceLimitsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TemporaryResourceLimitsConfig] {
-	return pulumix.Output[*TemporaryResourceLimitsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TemporaryResourceLimitsConfigPtrOutput) Elem() TemporaryResourceLimitsConfigOutput {
@@ -19420,12 +17193,6 @@ func (o TemporaryResourceLimitsConfigResponseOutput) ToTemporaryResourceLimitsCo
 	return o
 }
 
-func (o TemporaryResourceLimitsConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TemporaryResourceLimitsConfigResponse] {
-	return pulumix.Output[TemporaryResourceLimitsConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Maximum number of messages a client can have inflight.
 func (o TemporaryResourceLimitsConfigResponseOutput) MaxInflightMessages() pulumi.IntOutput {
 	return o.ApplyT(func(v TemporaryResourceLimitsConfigResponse) int { return v.MaxInflightMessages }).(pulumi.IntOutput)
@@ -19473,12 +17240,6 @@ func (o TemporaryResourceLimitsConfigResponsePtrOutput) ToTemporaryResourceLimit
 
 func (o TemporaryResourceLimitsConfigResponsePtrOutput) ToTemporaryResourceLimitsConfigResponsePtrOutputWithContext(ctx context.Context) TemporaryResourceLimitsConfigResponsePtrOutput {
 	return o
-}
-
-func (o TemporaryResourceLimitsConfigResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TemporaryResourceLimitsConfigResponse] {
-	return pulumix.Output[*TemporaryResourceLimitsConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TemporaryResourceLimitsConfigResponsePtrOutput) Elem() TemporaryResourceLimitsConfigResponseOutput {
@@ -19624,12 +17385,6 @@ func (i TlsCertMethodArgs) ToTlsCertMethodOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(TlsCertMethodOutput)
 }
 
-func (i TlsCertMethodArgs) ToOutput(ctx context.Context) pulumix.Output[TlsCertMethod] {
-	return pulumix.Output[TlsCertMethod]{
-		OutputState: i.ToTlsCertMethodOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TlsCertMethodArgs) ToTlsCertMethodPtrOutput() TlsCertMethodPtrOutput {
 	return i.ToTlsCertMethodPtrOutputWithContext(context.Background())
 }
@@ -19671,12 +17426,6 @@ func (i *tlsCertMethodPtrType) ToTlsCertMethodPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(TlsCertMethodPtrOutput)
 }
 
-func (i *tlsCertMethodPtrType) ToOutput(ctx context.Context) pulumix.Output[*TlsCertMethod] {
-	return pulumix.Output[*TlsCertMethod]{
-		OutputState: i.ToTlsCertMethodPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Collection of different TLS types, NOTE- Enum at a time only one of them needs to be supported
 type TlsCertMethodOutput struct{ *pulumi.OutputState }
 
@@ -19700,12 +17449,6 @@ func (o TlsCertMethodOutput) ToTlsCertMethodPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TlsCertMethod) *TlsCertMethod {
 		return &v
 	}).(TlsCertMethodPtrOutput)
-}
-
-func (o TlsCertMethodOutput) ToOutput(ctx context.Context) pulumix.Output[TlsCertMethod] {
-	return pulumix.Output[TlsCertMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Option 1 - Automatic TLS server certificate management with cert-manager.
@@ -19735,12 +17478,6 @@ func (o TlsCertMethodPtrOutput) ToTlsCertMethodPtrOutput() TlsCertMethodPtrOutpu
 
 func (o TlsCertMethodPtrOutput) ToTlsCertMethodPtrOutputWithContext(ctx context.Context) TlsCertMethodPtrOutput {
 	return o
-}
-
-func (o TlsCertMethodPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TlsCertMethod] {
-	return pulumix.Output[*TlsCertMethod]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TlsCertMethodPtrOutput) Elem() TlsCertMethodOutput {
@@ -19819,12 +17556,6 @@ func (o TlsCertMethodResponseOutput) ToTlsCertMethodResponseOutputWithContext(ct
 	return o
 }
 
-func (o TlsCertMethodResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TlsCertMethodResponse] {
-	return pulumix.Output[TlsCertMethodResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Option 1 - Automatic TLS server certificate management with cert-manager.
 func (o TlsCertMethodResponseOutput) Automatic() AutomaticCertMethodResponsePtrOutput {
 	return o.ApplyT(func(v TlsCertMethodResponse) *AutomaticCertMethodResponse { return v.Automatic }).(AutomaticCertMethodResponsePtrOutput)
@@ -19852,12 +17583,6 @@ func (o TlsCertMethodResponsePtrOutput) ToTlsCertMethodResponsePtrOutput() TlsCe
 
 func (o TlsCertMethodResponsePtrOutput) ToTlsCertMethodResponsePtrOutputWithContext(ctx context.Context) TlsCertMethodResponsePtrOutput {
 	return o
-}
-
-func (o TlsCertMethodResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TlsCertMethodResponse] {
-	return pulumix.Output[*TlsCertMethodResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TlsCertMethodResponsePtrOutput) Elem() TlsCertMethodResponseOutput {
@@ -19943,12 +17668,6 @@ func (i VolumeClaimDataSourceArgs) ToVolumeClaimDataSourceOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeClaimDataSourceOutput)
 }
 
-func (i VolumeClaimDataSourceArgs) ToOutput(ctx context.Context) pulumix.Output[VolumeClaimDataSource] {
-	return pulumix.Output[VolumeClaimDataSource]{
-		OutputState: i.ToVolumeClaimDataSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VolumeClaimDataSourceArgs) ToVolumeClaimDataSourcePtrOutput() VolumeClaimDataSourcePtrOutput {
 	return i.ToVolumeClaimDataSourcePtrOutputWithContext(context.Background())
 }
@@ -19990,12 +17709,6 @@ func (i *volumeClaimDataSourcePtrType) ToVolumeClaimDataSourcePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeClaimDataSourcePtrOutput)
 }
 
-func (i *volumeClaimDataSourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*VolumeClaimDataSource] {
-	return pulumix.Output[*VolumeClaimDataSource]{
-		OutputState: i.ToVolumeClaimDataSourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VolumeClaimDataSource properties
 type VolumeClaimDataSourceOutput struct{ *pulumi.OutputState }
 
@@ -20019,12 +17732,6 @@ func (o VolumeClaimDataSourceOutput) ToVolumeClaimDataSourcePtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeClaimDataSource) *VolumeClaimDataSource {
 		return &v
 	}).(VolumeClaimDataSourcePtrOutput)
-}
-
-func (o VolumeClaimDataSourceOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeClaimDataSource] {
-	return pulumix.Output[VolumeClaimDataSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.
@@ -20054,12 +17761,6 @@ func (o VolumeClaimDataSourcePtrOutput) ToVolumeClaimDataSourcePtrOutput() Volum
 
 func (o VolumeClaimDataSourcePtrOutput) ToVolumeClaimDataSourcePtrOutputWithContext(ctx context.Context) VolumeClaimDataSourcePtrOutput {
 	return o
-}
-
-func (o VolumeClaimDataSourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeClaimDataSource] {
-	return pulumix.Output[*VolumeClaimDataSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeClaimDataSourcePtrOutput) Elem() VolumeClaimDataSourceOutput {
@@ -20145,12 +17846,6 @@ func (i VolumeClaimDataSourceRefArgs) ToVolumeClaimDataSourceRefOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeClaimDataSourceRefOutput)
 }
 
-func (i VolumeClaimDataSourceRefArgs) ToOutput(ctx context.Context) pulumix.Output[VolumeClaimDataSourceRef] {
-	return pulumix.Output[VolumeClaimDataSourceRef]{
-		OutputState: i.ToVolumeClaimDataSourceRefOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VolumeClaimDataSourceRefArgs) ToVolumeClaimDataSourceRefPtrOutput() VolumeClaimDataSourceRefPtrOutput {
 	return i.ToVolumeClaimDataSourceRefPtrOutputWithContext(context.Background())
 }
@@ -20192,12 +17887,6 @@ func (i *volumeClaimDataSourceRefPtrType) ToVolumeClaimDataSourceRefPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeClaimDataSourceRefPtrOutput)
 }
 
-func (i *volumeClaimDataSourceRefPtrType) ToOutput(ctx context.Context) pulumix.Output[*VolumeClaimDataSourceRef] {
-	return pulumix.Output[*VolumeClaimDataSourceRef]{
-		OutputState: i.ToVolumeClaimDataSourceRefPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VolumeClaimDataSourceRef properties
 type VolumeClaimDataSourceRefOutput struct{ *pulumi.OutputState }
 
@@ -20221,12 +17910,6 @@ func (o VolumeClaimDataSourceRefOutput) ToVolumeClaimDataSourceRefPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeClaimDataSourceRef) *VolumeClaimDataSourceRef {
 		return &v
 	}).(VolumeClaimDataSourceRefPtrOutput)
-}
-
-func (o VolumeClaimDataSourceRefOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeClaimDataSourceRef] {
-	return pulumix.Output[VolumeClaimDataSourceRef]{
-		OutputState: o.OutputState,
-	}
 }
 
 // APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.
@@ -20256,12 +17939,6 @@ func (o VolumeClaimDataSourceRefPtrOutput) ToVolumeClaimDataSourceRefPtrOutput()
 
 func (o VolumeClaimDataSourceRefPtrOutput) ToVolumeClaimDataSourceRefPtrOutputWithContext(ctx context.Context) VolumeClaimDataSourceRefPtrOutput {
 	return o
-}
-
-func (o VolumeClaimDataSourceRefPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeClaimDataSourceRef] {
-	return pulumix.Output[*VolumeClaimDataSourceRef]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeClaimDataSourceRefPtrOutput) Elem() VolumeClaimDataSourceRefOutput {
@@ -20329,12 +18006,6 @@ func (o VolumeClaimDataSourceRefResponseOutput) ToVolumeClaimDataSourceRefRespon
 	return o
 }
 
-func (o VolumeClaimDataSourceRefResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeClaimDataSourceRefResponse] {
-	return pulumix.Output[VolumeClaimDataSourceRefResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.
 func (o VolumeClaimDataSourceRefResponseOutput) ApiGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeClaimDataSourceRefResponse) *string { return v.ApiGroup }).(pulumi.StringPtrOutput)
@@ -20362,12 +18033,6 @@ func (o VolumeClaimDataSourceRefResponsePtrOutput) ToVolumeClaimDataSourceRefRes
 
 func (o VolumeClaimDataSourceRefResponsePtrOutput) ToVolumeClaimDataSourceRefResponsePtrOutputWithContext(ctx context.Context) VolumeClaimDataSourceRefResponsePtrOutput {
 	return o
-}
-
-func (o VolumeClaimDataSourceRefResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeClaimDataSourceRefResponse] {
-	return pulumix.Output[*VolumeClaimDataSourceRefResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeClaimDataSourceRefResponsePtrOutput) Elem() VolumeClaimDataSourceRefResponseOutput {
@@ -20435,12 +18100,6 @@ func (o VolumeClaimDataSourceResponseOutput) ToVolumeClaimDataSourceResponseOutp
 	return o
 }
 
-func (o VolumeClaimDataSourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeClaimDataSourceResponse] {
-	return pulumix.Output[VolumeClaimDataSourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.
 func (o VolumeClaimDataSourceResponseOutput) ApiGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeClaimDataSourceResponse) *string { return v.ApiGroup }).(pulumi.StringPtrOutput)
@@ -20468,12 +18127,6 @@ func (o VolumeClaimDataSourceResponsePtrOutput) ToVolumeClaimDataSourceResponseP
 
 func (o VolumeClaimDataSourceResponsePtrOutput) ToVolumeClaimDataSourceResponsePtrOutputWithContext(ctx context.Context) VolumeClaimDataSourceResponsePtrOutput {
 	return o
-}
-
-func (o VolumeClaimDataSourceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeClaimDataSourceResponse] {
-	return pulumix.Output[*VolumeClaimDataSourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeClaimDataSourceResponsePtrOutput) Elem() VolumeClaimDataSourceResponseOutput {
@@ -20555,12 +18208,6 @@ func (i VolumeClaimResourceRequirementsArgs) ToVolumeClaimResourceRequirementsOu
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeClaimResourceRequirementsOutput)
 }
 
-func (i VolumeClaimResourceRequirementsArgs) ToOutput(ctx context.Context) pulumix.Output[VolumeClaimResourceRequirements] {
-	return pulumix.Output[VolumeClaimResourceRequirements]{
-		OutputState: i.ToVolumeClaimResourceRequirementsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VolumeClaimResourceRequirementsArgs) ToVolumeClaimResourceRequirementsPtrOutput() VolumeClaimResourceRequirementsPtrOutput {
 	return i.ToVolumeClaimResourceRequirementsPtrOutputWithContext(context.Background())
 }
@@ -20602,12 +18249,6 @@ func (i *volumeClaimResourceRequirementsPtrType) ToVolumeClaimResourceRequiremen
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeClaimResourceRequirementsPtrOutput)
 }
 
-func (i *volumeClaimResourceRequirementsPtrType) ToOutput(ctx context.Context) pulumix.Output[*VolumeClaimResourceRequirements] {
-	return pulumix.Output[*VolumeClaimResourceRequirements]{
-		OutputState: i.ToVolumeClaimResourceRequirementsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VolumeClaimResourceRequirements properties
 type VolumeClaimResourceRequirementsOutput struct{ *pulumi.OutputState }
 
@@ -20633,12 +18274,6 @@ func (o VolumeClaimResourceRequirementsOutput) ToVolumeClaimResourceRequirements
 	}).(VolumeClaimResourceRequirementsPtrOutput)
 }
 
-func (o VolumeClaimResourceRequirementsOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeClaimResourceRequirements] {
-	return pulumix.Output[VolumeClaimResourceRequirements]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
 func (o VolumeClaimResourceRequirementsOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v VolumeClaimResourceRequirements) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
@@ -20661,12 +18296,6 @@ func (o VolumeClaimResourceRequirementsPtrOutput) ToVolumeClaimResourceRequireme
 
 func (o VolumeClaimResourceRequirementsPtrOutput) ToVolumeClaimResourceRequirementsPtrOutputWithContext(ctx context.Context) VolumeClaimResourceRequirementsPtrOutput {
 	return o
-}
-
-func (o VolumeClaimResourceRequirementsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeClaimResourceRequirements] {
-	return pulumix.Output[*VolumeClaimResourceRequirements]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeClaimResourceRequirementsPtrOutput) Elem() VolumeClaimResourceRequirementsOutput {
@@ -20722,12 +18351,6 @@ func (o VolumeClaimResourceRequirementsResponseOutput) ToVolumeClaimResourceRequ
 	return o
 }
 
-func (o VolumeClaimResourceRequirementsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeClaimResourceRequirementsResponse] {
-	return pulumix.Output[VolumeClaimResourceRequirementsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
 func (o VolumeClaimResourceRequirementsResponseOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v VolumeClaimResourceRequirementsResponse) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
@@ -20750,12 +18373,6 @@ func (o VolumeClaimResourceRequirementsResponsePtrOutput) ToVolumeClaimResourceR
 
 func (o VolumeClaimResourceRequirementsResponsePtrOutput) ToVolumeClaimResourceRequirementsResponsePtrOutputWithContext(ctx context.Context) VolumeClaimResourceRequirementsResponsePtrOutput {
 	return o
-}
-
-func (o VolumeClaimResourceRequirementsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeClaimResourceRequirementsResponse] {
-	return pulumix.Output[*VolumeClaimResourceRequirementsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeClaimResourceRequirementsResponsePtrOutput) Elem() VolumeClaimResourceRequirementsResponseOutput {
@@ -20851,12 +18468,6 @@ func (i VolumeClaimSpecArgs) ToVolumeClaimSpecOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeClaimSpecOutput)
 }
 
-func (i VolumeClaimSpecArgs) ToOutput(ctx context.Context) pulumix.Output[VolumeClaimSpec] {
-	return pulumix.Output[VolumeClaimSpec]{
-		OutputState: i.ToVolumeClaimSpecOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VolumeClaimSpecArgs) ToVolumeClaimSpecPtrOutput() VolumeClaimSpecPtrOutput {
 	return i.ToVolumeClaimSpecPtrOutputWithContext(context.Background())
 }
@@ -20898,12 +18509,6 @@ func (i *volumeClaimSpecPtrType) ToVolumeClaimSpecPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeClaimSpecPtrOutput)
 }
 
-func (i *volumeClaimSpecPtrType) ToOutput(ctx context.Context) pulumix.Output[*VolumeClaimSpec] {
-	return pulumix.Output[*VolumeClaimSpec]{
-		OutputState: i.ToVolumeClaimSpecPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VolumeClaimSpec properties
 type VolumeClaimSpecOutput struct{ *pulumi.OutputState }
 
@@ -20927,12 +18532,6 @@ func (o VolumeClaimSpecOutput) ToVolumeClaimSpecPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeClaimSpec) *VolumeClaimSpec {
 		return &v
 	}).(VolumeClaimSpecPtrOutput)
-}
-
-func (o VolumeClaimSpecOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeClaimSpec] {
-	return pulumix.Output[VolumeClaimSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 // AccessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
@@ -20987,12 +18586,6 @@ func (o VolumeClaimSpecPtrOutput) ToVolumeClaimSpecPtrOutput() VolumeClaimSpecPt
 
 func (o VolumeClaimSpecPtrOutput) ToVolumeClaimSpecPtrOutputWithContext(ctx context.Context) VolumeClaimSpecPtrOutput {
 	return o
-}
-
-func (o VolumeClaimSpecPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeClaimSpec] {
-	return pulumix.Output[*VolumeClaimSpec]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeClaimSpecPtrOutput) Elem() VolumeClaimSpecOutput {
@@ -21120,12 +18713,6 @@ func (o VolumeClaimSpecResponseOutput) ToVolumeClaimSpecResponseOutputWithContex
 	return o
 }
 
-func (o VolumeClaimSpecResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeClaimSpecResponse] {
-	return pulumix.Output[VolumeClaimSpecResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // AccessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
 func (o VolumeClaimSpecResponseOutput) AccessModes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VolumeClaimSpecResponse) []string { return v.AccessModes }).(pulumi.StringArrayOutput)
@@ -21178,12 +18765,6 @@ func (o VolumeClaimSpecResponsePtrOutput) ToVolumeClaimSpecResponsePtrOutput() V
 
 func (o VolumeClaimSpecResponsePtrOutput) ToVolumeClaimSpecResponsePtrOutputWithContext(ctx context.Context) VolumeClaimSpecResponsePtrOutput {
 	return o
-}
-
-func (o VolumeClaimSpecResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeClaimSpecResponse] {
-	return pulumix.Output[*VolumeClaimSpecResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeClaimSpecResponsePtrOutput) Elem() VolumeClaimSpecResponseOutput {
@@ -21315,12 +18896,6 @@ func (i VolumeClaimSpecSelectorArgs) ToVolumeClaimSpecSelectorOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeClaimSpecSelectorOutput)
 }
 
-func (i VolumeClaimSpecSelectorArgs) ToOutput(ctx context.Context) pulumix.Output[VolumeClaimSpecSelector] {
-	return pulumix.Output[VolumeClaimSpecSelector]{
-		OutputState: i.ToVolumeClaimSpecSelectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i VolumeClaimSpecSelectorArgs) ToVolumeClaimSpecSelectorPtrOutput() VolumeClaimSpecSelectorPtrOutput {
 	return i.ToVolumeClaimSpecSelectorPtrOutputWithContext(context.Background())
 }
@@ -21362,12 +18937,6 @@ func (i *volumeClaimSpecSelectorPtrType) ToVolumeClaimSpecSelectorPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeClaimSpecSelectorPtrOutput)
 }
 
-func (i *volumeClaimSpecSelectorPtrType) ToOutput(ctx context.Context) pulumix.Output[*VolumeClaimSpecSelector] {
-	return pulumix.Output[*VolumeClaimSpecSelector]{
-		OutputState: i.ToVolumeClaimSpecSelectorPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VolumeClaimSpecSelector properties
 type VolumeClaimSpecSelectorOutput struct{ *pulumi.OutputState }
 
@@ -21393,12 +18962,6 @@ func (o VolumeClaimSpecSelectorOutput) ToVolumeClaimSpecSelectorPtrOutputWithCon
 	}).(VolumeClaimSpecSelectorPtrOutput)
 }
 
-func (o VolumeClaimSpecSelectorOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeClaimSpecSelector] {
-	return pulumix.Output[VolumeClaimSpecSelector]{
-		OutputState: o.OutputState,
-	}
-}
-
 // MatchExpressions is a list of label selector requirements. The requirements are ANDed.
 func (o VolumeClaimSpecSelectorOutput) MatchExpressions() VolumeClaimSpecSelectorMatchExpressionsArrayOutput {
 	return o.ApplyT(func(v VolumeClaimSpecSelector) []VolumeClaimSpecSelectorMatchExpressions { return v.MatchExpressions }).(VolumeClaimSpecSelectorMatchExpressionsArrayOutput)
@@ -21421,12 +18984,6 @@ func (o VolumeClaimSpecSelectorPtrOutput) ToVolumeClaimSpecSelectorPtrOutput() V
 
 func (o VolumeClaimSpecSelectorPtrOutput) ToVolumeClaimSpecSelectorPtrOutputWithContext(ctx context.Context) VolumeClaimSpecSelectorPtrOutput {
 	return o
-}
-
-func (o VolumeClaimSpecSelectorPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeClaimSpecSelector] {
-	return pulumix.Output[*VolumeClaimSpecSelector]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeClaimSpecSelectorPtrOutput) Elem() VolumeClaimSpecSelectorOutput {
@@ -21502,12 +19059,6 @@ func (i VolumeClaimSpecSelectorMatchExpressionsArgs) ToVolumeClaimSpecSelectorMa
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeClaimSpecSelectorMatchExpressionsOutput)
 }
 
-func (i VolumeClaimSpecSelectorMatchExpressionsArgs) ToOutput(ctx context.Context) pulumix.Output[VolumeClaimSpecSelectorMatchExpressions] {
-	return pulumix.Output[VolumeClaimSpecSelectorMatchExpressions]{
-		OutputState: i.ToVolumeClaimSpecSelectorMatchExpressionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VolumeClaimSpecSelectorMatchExpressionsArrayInput is an input type that accepts VolumeClaimSpecSelectorMatchExpressionsArray and VolumeClaimSpecSelectorMatchExpressionsArrayOutput values.
 // You can construct a concrete instance of `VolumeClaimSpecSelectorMatchExpressionsArrayInput` via:
 //
@@ -21533,12 +19084,6 @@ func (i VolumeClaimSpecSelectorMatchExpressionsArray) ToVolumeClaimSpecSelectorM
 	return pulumi.ToOutputWithContext(ctx, i).(VolumeClaimSpecSelectorMatchExpressionsArrayOutput)
 }
 
-func (i VolumeClaimSpecSelectorMatchExpressionsArray) ToOutput(ctx context.Context) pulumix.Output[[]VolumeClaimSpecSelectorMatchExpressions] {
-	return pulumix.Output[[]VolumeClaimSpecSelectorMatchExpressions]{
-		OutputState: i.ToVolumeClaimSpecSelectorMatchExpressionsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VolumeClaimSpecSelectorMatchExpressions properties
 type VolumeClaimSpecSelectorMatchExpressionsOutput struct{ *pulumi.OutputState }
 
@@ -21552,12 +19097,6 @@ func (o VolumeClaimSpecSelectorMatchExpressionsOutput) ToVolumeClaimSpecSelector
 
 func (o VolumeClaimSpecSelectorMatchExpressionsOutput) ToVolumeClaimSpecSelectorMatchExpressionsOutputWithContext(ctx context.Context) VolumeClaimSpecSelectorMatchExpressionsOutput {
 	return o
-}
-
-func (o VolumeClaimSpecSelectorMatchExpressionsOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeClaimSpecSelectorMatchExpressions] {
-	return pulumix.Output[VolumeClaimSpecSelectorMatchExpressions]{
-		OutputState: o.OutputState,
-	}
 }
 
 // key is the label key that the selector applies to.
@@ -21587,12 +19126,6 @@ func (o VolumeClaimSpecSelectorMatchExpressionsArrayOutput) ToVolumeClaimSpecSel
 
 func (o VolumeClaimSpecSelectorMatchExpressionsArrayOutput) ToVolumeClaimSpecSelectorMatchExpressionsArrayOutputWithContext(ctx context.Context) VolumeClaimSpecSelectorMatchExpressionsArrayOutput {
 	return o
-}
-
-func (o VolumeClaimSpecSelectorMatchExpressionsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VolumeClaimSpecSelectorMatchExpressions] {
-	return pulumix.Output[[]VolumeClaimSpecSelectorMatchExpressions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeClaimSpecSelectorMatchExpressionsArrayOutput) Index(i pulumi.IntInput) VolumeClaimSpecSelectorMatchExpressionsOutput {
@@ -21626,12 +19159,6 @@ func (o VolumeClaimSpecSelectorMatchExpressionsResponseOutput) ToVolumeClaimSpec
 	return o
 }
 
-func (o VolumeClaimSpecSelectorMatchExpressionsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeClaimSpecSelectorMatchExpressionsResponse] {
-	return pulumix.Output[VolumeClaimSpecSelectorMatchExpressionsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // key is the label key that the selector applies to.
 func (o VolumeClaimSpecSelectorMatchExpressionsResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeClaimSpecSelectorMatchExpressionsResponse) string { return v.Key }).(pulumi.StringOutput)
@@ -21659,12 +19186,6 @@ func (o VolumeClaimSpecSelectorMatchExpressionsResponseArrayOutput) ToVolumeClai
 
 func (o VolumeClaimSpecSelectorMatchExpressionsResponseArrayOutput) ToVolumeClaimSpecSelectorMatchExpressionsResponseArrayOutputWithContext(ctx context.Context) VolumeClaimSpecSelectorMatchExpressionsResponseArrayOutput {
 	return o
-}
-
-func (o VolumeClaimSpecSelectorMatchExpressionsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VolumeClaimSpecSelectorMatchExpressionsResponse] {
-	return pulumix.Output[[]VolumeClaimSpecSelectorMatchExpressionsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeClaimSpecSelectorMatchExpressionsResponseArrayOutput) Index(i pulumi.IntInput) VolumeClaimSpecSelectorMatchExpressionsResponseOutput {
@@ -21696,12 +19217,6 @@ func (o VolumeClaimSpecSelectorResponseOutput) ToVolumeClaimSpecSelectorResponse
 	return o
 }
 
-func (o VolumeClaimSpecSelectorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeClaimSpecSelectorResponse] {
-	return pulumix.Output[VolumeClaimSpecSelectorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // MatchExpressions is a list of label selector requirements. The requirements are ANDed.
 func (o VolumeClaimSpecSelectorResponseOutput) MatchExpressions() VolumeClaimSpecSelectorMatchExpressionsResponseArrayOutput {
 	return o.ApplyT(func(v VolumeClaimSpecSelectorResponse) []VolumeClaimSpecSelectorMatchExpressionsResponse {
@@ -21726,12 +19241,6 @@ func (o VolumeClaimSpecSelectorResponsePtrOutput) ToVolumeClaimSpecSelectorRespo
 
 func (o VolumeClaimSpecSelectorResponsePtrOutput) ToVolumeClaimSpecSelectorResponsePtrOutputWithContext(ctx context.Context) VolumeClaimSpecSelectorResponsePtrOutput {
 	return o
-}
-
-func (o VolumeClaimSpecSelectorResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*VolumeClaimSpecSelectorResponse] {
-	return pulumix.Output[*VolumeClaimSpecSelectorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VolumeClaimSpecSelectorResponsePtrOutput) Elem() VolumeClaimSpecSelectorResponseOutput {

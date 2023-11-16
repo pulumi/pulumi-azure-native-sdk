@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the details of the specified Video Analyzer account
@@ -91,12 +90,6 @@ func (o LookupVideoAnalyzerResultOutput) ToLookupVideoAnalyzerResultOutput() Loo
 
 func (o LookupVideoAnalyzerResultOutput) ToLookupVideoAnalyzerResultOutputWithContext(ctx context.Context) LookupVideoAnalyzerResultOutput {
 	return o
-}
-
-func (o LookupVideoAnalyzerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVideoAnalyzerResult] {
-	return pulumix.Output[LookupVideoAnalyzerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account encryption properties.

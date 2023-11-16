@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Defines the inventory item.
@@ -168,12 +167,6 @@ func (i *InventoryItem) ToInventoryItemOutputWithContext(ctx context.Context) In
 	return pulumi.ToOutputWithContext(ctx, i).(InventoryItemOutput)
 }
 
-func (i *InventoryItem) ToOutput(ctx context.Context) pulumix.Output[*InventoryItem] {
-	return pulumix.Output[*InventoryItem]{
-		OutputState: i.ToInventoryItemOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InventoryItemOutput struct{ *pulumi.OutputState }
 
 func (InventoryItemOutput) ElementType() reflect.Type {
@@ -186,12 +179,6 @@ func (o InventoryItemOutput) ToInventoryItemOutput() InventoryItemOutput {
 
 func (o InventoryItemOutput) ToInventoryItemOutputWithContext(ctx context.Context) InventoryItemOutput {
 	return o
-}
-
-func (o InventoryItemOutput) ToOutput(ctx context.Context) pulumix.Output[*InventoryItem] {
-	return pulumix.Output[*InventoryItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 // They inventory type.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i ActionArgs) ToActionOutputWithContext(ctx context.Context) ActionOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ActionOutput)
 }
 
-func (i ActionArgs) ToOutput(ctx context.Context) pulumix.Output[Action] {
-	return pulumix.Output[Action]{
-		OutputState: i.ToActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ActionArrayInput is an input type that accepts ActionArray and ActionArrayOutput values.
 // You can construct a concrete instance of `ActionArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i ActionArray) ToActionArrayOutputWithContext(ctx context.Context) ActionA
 	return pulumi.ToOutputWithContext(ctx, i).(ActionArrayOutput)
 }
 
-func (i ActionArray) ToOutput(ctx context.Context) pulumix.Output[[]Action] {
-	return pulumix.Output[[]Action]{
-		OutputState: i.ToActionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Actions to invoke when the alert fires.
 type ActionOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o ActionOutput) ToActionOutput() ActionOutput {
 
 func (o ActionOutput) ToActionOutputWithContext(ctx context.Context) ActionOutput {
 	return o
-}
-
-func (o ActionOutput) ToOutput(ctx context.Context) pulumix.Output[Action] {
-	return pulumix.Output[Action]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Action Group resource Id to invoke when the alert fires.
@@ -133,12 +114,6 @@ func (o ActionArrayOutput) ToActionArrayOutput() ActionArrayOutput {
 
 func (o ActionArrayOutput) ToActionArrayOutputWithContext(ctx context.Context) ActionArrayOutput {
 	return o
-}
-
-func (o ActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Action] {
-	return pulumix.Output[[]Action]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionArrayOutput) Index(i pulumi.IntInput) ActionOutput {
@@ -170,12 +145,6 @@ func (o ActionResponseOutput) ToActionResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o ActionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ActionResponse] {
-	return pulumix.Output[ActionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Action Group resource Id to invoke when the alert fires.
 func (o ActionResponseOutput) ActionGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionResponse) *string { return v.ActionGroupId }).(pulumi.StringPtrOutput)
@@ -198,12 +167,6 @@ func (o ActionResponseArrayOutput) ToActionResponseArrayOutput() ActionResponseA
 
 func (o ActionResponseArrayOutput) ToActionResponseArrayOutputWithContext(ctx context.Context) ActionResponseArrayOutput {
 	return o
-}
-
-func (o ActionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ActionResponse] {
-	return pulumix.Output[[]ActionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionResponseArrayOutput) Index(i pulumi.IntInput) ActionResponseOutput {
@@ -295,12 +258,6 @@ func (i ConditionArgs) ToConditionOutputWithContext(ctx context.Context) Conditi
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionOutput)
 }
 
-func (i ConditionArgs) ToOutput(ctx context.Context) pulumix.Output[Condition] {
-	return pulumix.Output[Condition]{
-		OutputState: i.ToConditionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConditionArrayInput is an input type that accepts ConditionArray and ConditionArrayOutput values.
 // You can construct a concrete instance of `ConditionArrayInput` via:
 //
@@ -326,12 +283,6 @@ func (i ConditionArray) ToConditionArrayOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionArrayOutput)
 }
 
-func (i ConditionArray) ToOutput(ctx context.Context) pulumix.Output[[]Condition] {
-	return pulumix.Output[[]Condition]{
-		OutputState: i.ToConditionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A condition of the scheduled query rule.
 type ConditionOutput struct{ *pulumi.OutputState }
 
@@ -345,12 +296,6 @@ func (o ConditionOutput) ToConditionOutput() ConditionOutput {
 
 func (o ConditionOutput) ToConditionOutputWithContext(ctx context.Context) ConditionOutput {
 	return o
-}
-
-func (o ConditionOutput) ToOutput(ctx context.Context) pulumix.Output[Condition] {
-	return pulumix.Output[Condition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of Dimensions conditions
@@ -405,12 +350,6 @@ func (o ConditionArrayOutput) ToConditionArrayOutput() ConditionArrayOutput {
 
 func (o ConditionArrayOutput) ToConditionArrayOutputWithContext(ctx context.Context) ConditionArrayOutput {
 	return o
-}
-
-func (o ConditionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Condition] {
-	return pulumix.Output[[]Condition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConditionArrayOutput) Index(i pulumi.IntInput) ConditionOutput {
@@ -489,12 +428,6 @@ func (i ConditionFailingPeriodsArgs) ToConditionFailingPeriodsOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionFailingPeriodsOutput)
 }
 
-func (i ConditionFailingPeriodsArgs) ToOutput(ctx context.Context) pulumix.Output[ConditionFailingPeriods] {
-	return pulumix.Output[ConditionFailingPeriods]{
-		OutputState: i.ToConditionFailingPeriodsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ConditionFailingPeriodsArgs) ToConditionFailingPeriodsPtrOutput() ConditionFailingPeriodsPtrOutput {
 	return i.ToConditionFailingPeriodsPtrOutputWithContext(context.Background())
 }
@@ -536,12 +469,6 @@ func (i *conditionFailingPeriodsPtrType) ToConditionFailingPeriodsPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionFailingPeriodsPtrOutput)
 }
 
-func (i *conditionFailingPeriodsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ConditionFailingPeriods] {
-	return pulumix.Output[*ConditionFailingPeriods]{
-		OutputState: i.ToConditionFailingPeriodsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The minimum number of violations required within the selected lookback time window required to raise an alert.
 type ConditionFailingPeriodsOutput struct{ *pulumi.OutputState }
 
@@ -567,12 +494,6 @@ func (o ConditionFailingPeriodsOutput) ToConditionFailingPeriodsPtrOutputWithCon
 	}).(ConditionFailingPeriodsPtrOutput)
 }
 
-func (o ConditionFailingPeriodsOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionFailingPeriods] {
-	return pulumix.Output[ConditionFailingPeriods]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods. Default value is 1
 func (o ConditionFailingPeriodsOutput) MinFailingPeriodsToAlert() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ConditionFailingPeriods) *float64 { return v.MinFailingPeriodsToAlert }).(pulumi.Float64PtrOutput)
@@ -595,12 +516,6 @@ func (o ConditionFailingPeriodsPtrOutput) ToConditionFailingPeriodsPtrOutput() C
 
 func (o ConditionFailingPeriodsPtrOutput) ToConditionFailingPeriodsPtrOutputWithContext(ctx context.Context) ConditionFailingPeriodsPtrOutput {
 	return o
-}
-
-func (o ConditionFailingPeriodsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConditionFailingPeriods] {
-	return pulumix.Output[*ConditionFailingPeriods]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConditionFailingPeriodsPtrOutput) Elem() ConditionFailingPeriodsOutput {
@@ -679,12 +594,6 @@ func (o ConditionResponseOutput) ToConditionResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o ConditionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionResponse] {
-	return pulumix.Output[ConditionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of Dimensions conditions
 func (o ConditionResponseOutput) Dimensions() DimensionResponseArrayOutput {
 	return o.ApplyT(func(v ConditionResponse) []DimensionResponse { return v.Dimensions }).(DimensionResponseArrayOutput)
@@ -739,12 +648,6 @@ func (o ConditionResponseArrayOutput) ToConditionResponseArrayOutputWithContext(
 	return o
 }
 
-func (o ConditionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ConditionResponse] {
-	return pulumix.Output[[]ConditionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConditionResponseArrayOutput) Index(i pulumi.IntInput) ConditionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConditionResponse {
 		return vs[0].([]ConditionResponse)[vs[1].(int)]
@@ -791,12 +694,6 @@ func (o ConditionResponseFailingPeriodsOutput) ToConditionResponseFailingPeriods
 	return o
 }
 
-func (o ConditionResponseFailingPeriodsOutput) ToOutput(ctx context.Context) pulumix.Output[ConditionResponseFailingPeriods] {
-	return pulumix.Output[ConditionResponseFailingPeriods]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods. Default value is 1
 func (o ConditionResponseFailingPeriodsOutput) MinFailingPeriodsToAlert() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ConditionResponseFailingPeriods) *float64 { return v.MinFailingPeriodsToAlert }).(pulumi.Float64PtrOutput)
@@ -819,12 +716,6 @@ func (o ConditionResponseFailingPeriodsPtrOutput) ToConditionResponseFailingPeri
 
 func (o ConditionResponseFailingPeriodsPtrOutput) ToConditionResponseFailingPeriodsPtrOutputWithContext(ctx context.Context) ConditionResponseFailingPeriodsPtrOutput {
 	return o
-}
-
-func (o ConditionResponseFailingPeriodsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConditionResponseFailingPeriods] {
-	return pulumix.Output[*ConditionResponseFailingPeriods]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConditionResponseFailingPeriodsPtrOutput) Elem() ConditionResponseFailingPeriodsOutput {
@@ -900,12 +791,6 @@ func (i DimensionArgs) ToDimensionOutputWithContext(ctx context.Context) Dimensi
 	return pulumi.ToOutputWithContext(ctx, i).(DimensionOutput)
 }
 
-func (i DimensionArgs) ToOutput(ctx context.Context) pulumix.Output[Dimension] {
-	return pulumix.Output[Dimension]{
-		OutputState: i.ToDimensionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DimensionArrayInput is an input type that accepts DimensionArray and DimensionArrayOutput values.
 // You can construct a concrete instance of `DimensionArrayInput` via:
 //
@@ -931,12 +816,6 @@ func (i DimensionArray) ToDimensionArrayOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DimensionArrayOutput)
 }
 
-func (i DimensionArray) ToOutput(ctx context.Context) pulumix.Output[[]Dimension] {
-	return pulumix.Output[[]Dimension]{
-		OutputState: i.ToDimensionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Dimension splitting and filtering definition
 type DimensionOutput struct{ *pulumi.OutputState }
 
@@ -950,12 +829,6 @@ func (o DimensionOutput) ToDimensionOutput() DimensionOutput {
 
 func (o DimensionOutput) ToDimensionOutputWithContext(ctx context.Context) DimensionOutput {
 	return o
-}
-
-func (o DimensionOutput) ToOutput(ctx context.Context) pulumix.Output[Dimension] {
-	return pulumix.Output[Dimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the dimension
@@ -985,12 +858,6 @@ func (o DimensionArrayOutput) ToDimensionArrayOutput() DimensionArrayOutput {
 
 func (o DimensionArrayOutput) ToDimensionArrayOutputWithContext(ctx context.Context) DimensionArrayOutput {
 	return o
-}
-
-func (o DimensionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Dimension] {
-	return pulumix.Output[[]Dimension]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DimensionArrayOutput) Index(i pulumi.IntInput) DimensionOutput {
@@ -1024,12 +891,6 @@ func (o DimensionResponseOutput) ToDimensionResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o DimensionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DimensionResponse] {
-	return pulumix.Output[DimensionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the dimension
 func (o DimensionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DimensionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -1057,12 +918,6 @@ func (o DimensionResponseArrayOutput) ToDimensionResponseArrayOutput() Dimension
 
 func (o DimensionResponseArrayOutput) ToDimensionResponseArrayOutputWithContext(ctx context.Context) DimensionResponseArrayOutput {
 	return o
-}
-
-func (o DimensionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DimensionResponse] {
-	return pulumix.Output[[]DimensionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DimensionResponseArrayOutput) Index(i pulumi.IntInput) DimensionResponseOutput {
@@ -1106,12 +961,6 @@ func (i ScheduledQueryRuleCriteriaArgs) ToScheduledQueryRuleCriteriaOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduledQueryRuleCriteriaOutput)
 }
 
-func (i ScheduledQueryRuleCriteriaArgs) ToOutput(ctx context.Context) pulumix.Output[ScheduledQueryRuleCriteria] {
-	return pulumix.Output[ScheduledQueryRuleCriteria]{
-		OutputState: i.ToScheduledQueryRuleCriteriaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The rule criteria that defines the conditions of the scheduled query rule.
 type ScheduledQueryRuleCriteriaOutput struct{ *pulumi.OutputState }
 
@@ -1125,12 +974,6 @@ func (o ScheduledQueryRuleCriteriaOutput) ToScheduledQueryRuleCriteriaOutput() S
 
 func (o ScheduledQueryRuleCriteriaOutput) ToScheduledQueryRuleCriteriaOutputWithContext(ctx context.Context) ScheduledQueryRuleCriteriaOutput {
 	return o
-}
-
-func (o ScheduledQueryRuleCriteriaOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduledQueryRuleCriteria] {
-	return pulumix.Output[ScheduledQueryRuleCriteria]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of conditions to evaluate against the specified scopes
@@ -1157,12 +1000,6 @@ func (o ScheduledQueryRuleCriteriaResponseOutput) ToScheduledQueryRuleCriteriaRe
 
 func (o ScheduledQueryRuleCriteriaResponseOutput) ToScheduledQueryRuleCriteriaResponseOutputWithContext(ctx context.Context) ScheduledQueryRuleCriteriaResponseOutput {
 	return o
-}
-
-func (o ScheduledQueryRuleCriteriaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduledQueryRuleCriteriaResponse] {
-	return pulumix.Output[ScheduledQueryRuleCriteriaResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of conditions to evaluate against the specified scopes

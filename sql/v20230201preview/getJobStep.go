@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a job step in a job's current version.
@@ -116,12 +115,6 @@ func (o LookupJobStepResultOutput) ToLookupJobStepResultOutput() LookupJobStepRe
 
 func (o LookupJobStepResultOutput) ToLookupJobStepResultOutputWithContext(ctx context.Context) LookupJobStepResultOutput {
 	return o
-}
-
-func (o LookupJobStepResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupJobStepResult] {
-	return pulumix.Output[LookupJobStepResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The action payload of the job step.

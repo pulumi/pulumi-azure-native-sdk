@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists the API keys for a blockchain member.
@@ -74,12 +73,6 @@ func (o ListBlockchainMemberApiKeysResultOutput) ToListBlockchainMemberApiKeysRe
 
 func (o ListBlockchainMemberApiKeysResultOutput) ToListBlockchainMemberApiKeysResultOutputWithContext(ctx context.Context) ListBlockchainMemberApiKeysResultOutput {
 	return o
-}
-
-func (o ListBlockchainMemberApiKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListBlockchainMemberApiKeysResult] {
-	return pulumix.Output[ListBlockchainMemberApiKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the collection of API key.

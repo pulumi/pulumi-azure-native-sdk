@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Vcenter
@@ -106,12 +105,6 @@ func (o LookupVcenterControllerResultOutput) ToLookupVcenterControllerResultOutp
 
 func (o LookupVcenterControllerResultOutput) ToLookupVcenterControllerResultOutputWithContext(ctx context.Context) LookupVcenterControllerResultOutput {
 	return o
-}
-
-func (o LookupVcenterControllerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVcenterControllerResult] {
-	return pulumix.Output[LookupVcenterControllerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets the timestamp marking vCenter creation.

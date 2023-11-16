@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The management group diagnostic setting resource.
@@ -159,12 +158,6 @@ func (i *ManagementGroupDiagnosticSetting) ToManagementGroupDiagnosticSettingOut
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementGroupDiagnosticSettingOutput)
 }
 
-func (i *ManagementGroupDiagnosticSetting) ToOutput(ctx context.Context) pulumix.Output[*ManagementGroupDiagnosticSetting] {
-	return pulumix.Output[*ManagementGroupDiagnosticSetting]{
-		OutputState: i.ToManagementGroupDiagnosticSettingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagementGroupDiagnosticSettingOutput struct{ *pulumi.OutputState }
 
 func (ManagementGroupDiagnosticSettingOutput) ElementType() reflect.Type {
@@ -177,12 +170,6 @@ func (o ManagementGroupDiagnosticSettingOutput) ToManagementGroupDiagnosticSetti
 
 func (o ManagementGroupDiagnosticSettingOutput) ToManagementGroupDiagnosticSettingOutputWithContext(ctx context.Context) ManagementGroupDiagnosticSettingOutput {
 	return o
-}
-
-func (o ManagementGroupDiagnosticSettingOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagementGroupDiagnosticSetting] {
-	return pulumix.Output[*ManagementGroupDiagnosticSetting]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource Id for the event hub authorization rule.

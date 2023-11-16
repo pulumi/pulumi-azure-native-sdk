@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the developer portal's content type. Content types describe content items' properties, validation rules, and constraints.
@@ -90,12 +89,6 @@ func (o LookupContentTypeResultOutput) ToLookupContentTypeResultOutput() LookupC
 
 func (o LookupContentTypeResultOutput) ToLookupContentTypeResultOutputWithContext(ctx context.Context) LookupContentTypeResultOutput {
 	return o
-}
-
-func (o LookupContentTypeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContentTypeResult] {
-	return pulumix.Output[LookupContentTypeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Content type description.

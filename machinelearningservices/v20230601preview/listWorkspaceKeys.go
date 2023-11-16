@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 func ListWorkspaceKeys(ctx *pulumi.Context, args *ListWorkspaceKeysArgs, opts ...pulumi.InvokeOption) (*ListWorkspaceKeysResult, error) {
@@ -76,12 +75,6 @@ func (o ListWorkspaceKeysResultOutput) ToListWorkspaceKeysResultOutput() ListWor
 
 func (o ListWorkspaceKeysResultOutput) ToListWorkspaceKeysResultOutputWithContext(ctx context.Context) ListWorkspaceKeysResultOutput {
 	return o
-}
-
-func (o ListWorkspaceKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListWorkspaceKeysResult] {
-	return pulumix.Output[ListWorkspaceKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The access key of the workspace app insights

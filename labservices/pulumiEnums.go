@@ -101,12 +101,6 @@ func (o ConnectionTypeOutput) ToConnectionTypePtrOutputWithContext(ctx context.C
 	}).(ConnectionTypePtrOutput)
 }
 
-func (o ConnectionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ConnectionType] {
-	return pulumix.Output[ConnectionType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConnectionTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -140,12 +134,6 @@ func (o ConnectionTypePtrOutput) ToConnectionTypePtrOutput() ConnectionTypePtrOu
 
 func (o ConnectionTypePtrOutput) ToConnectionTypePtrOutputWithContext(ctx context.Context) ConnectionTypePtrOutput {
 	return o
-}
-
-func (o ConnectionTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionType] {
-	return pulumix.Output[*ConnectionType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConnectionTypePtrOutput) Elem() ConnectionTypeOutput {
@@ -286,12 +274,6 @@ func (o CreateOptionOutput) ToCreateOptionPtrOutputWithContext(ctx context.Conte
 	}).(CreateOptionPtrOutput)
 }
 
-func (o CreateOptionOutput) ToOutput(ctx context.Context) pulumix.Output[CreateOption] {
-	return pulumix.Output[CreateOption]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CreateOptionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -325,12 +307,6 @@ func (o CreateOptionPtrOutput) ToCreateOptionPtrOutput() CreateOptionPtrOutput {
 
 func (o CreateOptionPtrOutput) ToCreateOptionPtrOutputWithContext(ctx context.Context) CreateOptionPtrOutput {
 	return o
-}
-
-func (o CreateOptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CreateOption] {
-	return pulumix.Output[*CreateOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CreateOptionPtrOutput) Elem() CreateOptionOutput {
@@ -469,12 +445,6 @@ func (o EnableStateOutput) ToEnableStatePtrOutputWithContext(ctx context.Context
 	}).(EnableStatePtrOutput)
 }
 
-func (o EnableStateOutput) ToOutput(ctx context.Context) pulumix.Output[EnableState] {
-	return pulumix.Output[EnableState]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EnableStateOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -508,12 +478,6 @@ func (o EnableStatePtrOutput) ToEnableStatePtrOutput() EnableStatePtrOutput {
 
 func (o EnableStatePtrOutput) ToEnableStatePtrOutputWithContext(ctx context.Context) EnableStatePtrOutput {
 	return o
-}
-
-func (o EnableStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnableState] {
-	return pulumix.Output[*EnableState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnableStatePtrOutput) Elem() EnableStateOutput {
@@ -666,12 +630,6 @@ func (o RecurrenceFrequencyOutput) ToRecurrenceFrequencyPtrOutputWithContext(ctx
 	}).(RecurrenceFrequencyPtrOutput)
 }
 
-func (o RecurrenceFrequencyOutput) ToOutput(ctx context.Context) pulumix.Output[RecurrenceFrequency] {
-	return pulumix.Output[RecurrenceFrequency]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RecurrenceFrequencyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -705,12 +663,6 @@ func (o RecurrenceFrequencyPtrOutput) ToRecurrenceFrequencyPtrOutput() Recurrenc
 
 func (o RecurrenceFrequencyPtrOutput) ToRecurrenceFrequencyPtrOutputWithContext(ctx context.Context) RecurrenceFrequencyPtrOutput {
 	return o
-}
-
-func (o RecurrenceFrequencyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RecurrenceFrequency] {
-	return pulumix.Output[*RecurrenceFrequency]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RecurrenceFrequencyPtrOutput) Elem() RecurrenceFrequencyOutput {
@@ -848,12 +800,6 @@ func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(c
 	}).(ResourceIdentityTypePtrOutput)
 }
 
-func (o ResourceIdentityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceIdentityType] {
-	return pulumix.Output[ResourceIdentityType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -887,12 +833,6 @@ func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() Resourc
 
 func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
 	return o
-}
-
-func (o ResourceIdentityTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceIdentityType] {
-	return pulumix.Output[*ResourceIdentityType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {
@@ -1035,12 +975,6 @@ func (o ShutdownOnIdleModeOutput) ToShutdownOnIdleModePtrOutputWithContext(ctx c
 	}).(ShutdownOnIdleModePtrOutput)
 }
 
-func (o ShutdownOnIdleModeOutput) ToOutput(ctx context.Context) pulumix.Output[ShutdownOnIdleMode] {
-	return pulumix.Output[ShutdownOnIdleMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ShutdownOnIdleModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1074,12 +1008,6 @@ func (o ShutdownOnIdleModePtrOutput) ToShutdownOnIdleModePtrOutput() ShutdownOnI
 
 func (o ShutdownOnIdleModePtrOutput) ToShutdownOnIdleModePtrOutputWithContext(ctx context.Context) ShutdownOnIdleModePtrOutput {
 	return o
-}
-
-func (o ShutdownOnIdleModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ShutdownOnIdleMode] {
-	return pulumix.Output[*ShutdownOnIdleMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ShutdownOnIdleModePtrOutput) Elem() ShutdownOnIdleModeOutput {
@@ -1220,12 +1148,6 @@ func (o SkuTierOutput) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTie
 	}).(SkuTierPtrOutput)
 }
 
-func (o SkuTierOutput) ToOutput(ctx context.Context) pulumix.Output[SkuTier] {
-	return pulumix.Output[SkuTier]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SkuTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1259,12 +1181,6 @@ func (o SkuTierPtrOutput) ToSkuTierPtrOutput() SkuTierPtrOutput {
 
 func (o SkuTierPtrOutput) ToSkuTierPtrOutputWithContext(ctx context.Context) SkuTierPtrOutput {
 	return o
-}
-
-func (o SkuTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
-	return pulumix.Output[*SkuTier]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuTierPtrOutput) Elem() SkuTierOutput {
@@ -1415,12 +1331,6 @@ func (o WeekDayOutput) ToWeekDayPtrOutputWithContext(ctx context.Context) WeekDa
 	}).(WeekDayPtrOutput)
 }
 
-func (o WeekDayOutput) ToOutput(ctx context.Context) pulumix.Output[WeekDay] {
-	return pulumix.Output[WeekDay]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WeekDayOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1454,12 +1364,6 @@ func (o WeekDayPtrOutput) ToWeekDayPtrOutput() WeekDayPtrOutput {
 
 func (o WeekDayPtrOutput) ToWeekDayPtrOutputWithContext(ctx context.Context) WeekDayPtrOutput {
 	return o
-}
-
-func (o WeekDayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WeekDay] {
-	return pulumix.Output[*WeekDay]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WeekDayPtrOutput) Elem() WeekDayOutput {
@@ -1555,12 +1459,6 @@ func (i WeekDayArray) ToWeekDayArrayOutputWithContext(ctx context.Context) WeekD
 	return pulumi.ToOutputWithContext(ctx, i).(WeekDayArrayOutput)
 }
 
-func (i WeekDayArray) ToOutput(ctx context.Context) pulumix.Output[[]WeekDay] {
-	return pulumix.Output[[]WeekDay]{
-		OutputState: i.ToWeekDayArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WeekDayArrayOutput struct{ *pulumi.OutputState }
 
 func (WeekDayArrayOutput) ElementType() reflect.Type {
@@ -1573,12 +1471,6 @@ func (o WeekDayArrayOutput) ToWeekDayArrayOutput() WeekDayArrayOutput {
 
 func (o WeekDayArrayOutput) ToWeekDayArrayOutputWithContext(ctx context.Context) WeekDayArrayOutput {
 	return o
-}
-
-func (o WeekDayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WeekDay] {
-	return pulumix.Output[[]WeekDay]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WeekDayArrayOutput) Index(i pulumi.IntInput) WeekDayOutput {

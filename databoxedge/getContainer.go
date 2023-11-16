@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a container on the  Data Box Edge/Gateway device.
@@ -98,12 +97,6 @@ func (o LookupContainerResultOutput) ToLookupContainerResultOutput() LookupConta
 
 func (o LookupContainerResultOutput) ToLookupContainerResultOutputWithContext(ctx context.Context) LookupContainerResultOutput {
 	return o
-}
-
-func (o LookupContainerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContainerResult] {
-	return pulumix.Output[LookupContainerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Current status of the container.

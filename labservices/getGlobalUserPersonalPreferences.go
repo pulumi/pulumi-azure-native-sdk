@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get personal preferences for a user
@@ -84,12 +83,6 @@ func (o GetGlobalUserPersonalPreferencesResultOutput) ToGetGlobalUserPersonalPre
 
 func (o GetGlobalUserPersonalPreferencesResultOutput) ToGetGlobalUserPersonalPreferencesResultOutputWithContext(ctx context.Context) GetGlobalUserPersonalPreferencesResultOutput {
 	return o
-}
-
-func (o GetGlobalUserPersonalPreferencesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGlobalUserPersonalPreferencesResult] {
-	return pulumix.Output[GetGlobalUserPersonalPreferencesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Array of favorite lab resource ids

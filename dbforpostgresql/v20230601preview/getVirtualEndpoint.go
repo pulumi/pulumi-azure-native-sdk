@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about a virtual endpoint.
@@ -89,12 +88,6 @@ func (o LookupVirtualEndpointResultOutput) ToLookupVirtualEndpointResultOutput()
 
 func (o LookupVirtualEndpointResultOutput) ToLookupVirtualEndpointResultOutputWithContext(ctx context.Context) LookupVirtualEndpointResultOutput {
 	return o
-}
-
-func (o LookupVirtualEndpointResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupVirtualEndpointResult] {
-	return pulumix.Output[LookupVirtualEndpointResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The endpoint type for the virtual endpoint.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a FleetMember
@@ -91,12 +90,6 @@ func (o LookupFleetMemberResultOutput) ToLookupFleetMemberResultOutput() LookupF
 
 func (o LookupFleetMemberResultOutput) ToLookupFleetMemberResultOutputWithContext(ctx context.Context) LookupFleetMemberResultOutput {
 	return o
-}
-
-func (o LookupFleetMemberResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFleetMemberResult] {
-	return pulumix.Output[LookupFleetMemberResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ARM resource id of the cluster that joins the Fleet. Must be a valid Azure resource id. e.g.: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{clusterName}'.

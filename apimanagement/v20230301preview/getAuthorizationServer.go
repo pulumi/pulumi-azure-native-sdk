@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the authorization server specified by its identifier.
@@ -117,12 +116,6 @@ func (o LookupAuthorizationServerResultOutput) ToLookupAuthorizationServerResult
 
 func (o LookupAuthorizationServerResultOutput) ToLookupAuthorizationServerResultOutputWithContext(ctx context.Context) LookupAuthorizationServerResultOutput {
 	return o
-}
-
-func (o LookupAuthorizationServerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAuthorizationServerResult] {
-	return pulumix.Output[LookupAuthorizationServerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // OAuth authorization endpoint. See http://tools.ietf.org/html/rfc6749#section-3.2.

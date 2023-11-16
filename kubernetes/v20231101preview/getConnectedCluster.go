@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the properties of the specified connected cluster, including name, identity, properties, and additional cluster details.
@@ -146,12 +145,6 @@ func (o LookupConnectedClusterResultOutput) ToLookupConnectedClusterResultOutput
 
 func (o LookupConnectedClusterResultOutput) ToLookupConnectedClusterResultOutputWithContext(ctx context.Context) LookupConnectedClusterResultOutput {
 	return o
-}
-
-func (o LookupConnectedClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConnectedClusterResult] {
-	return pulumix.Output[LookupConnectedClusterResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // AAD profile for the connected cluster.

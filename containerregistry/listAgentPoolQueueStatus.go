@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the count of queued runs for a given agent pool.
@@ -78,12 +77,6 @@ func (o ListAgentPoolQueueStatusResultOutput) ToListAgentPoolQueueStatusResultOu
 
 func (o ListAgentPoolQueueStatusResultOutput) ToListAgentPoolQueueStatusResultOutputWithContext(ctx context.Context) ListAgentPoolQueueStatusResultOutput {
 	return o
-}
-
-func (o ListAgentPoolQueueStatusResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListAgentPoolQueueStatusResult] {
-	return pulumix.Output[ListAgentPoolQueueStatusResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of pending runs in the queue

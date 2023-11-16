@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A job agent private endpoint.
@@ -135,12 +134,6 @@ func (i *JobPrivateEndpoint) ToJobPrivateEndpointOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(JobPrivateEndpointOutput)
 }
 
-func (i *JobPrivateEndpoint) ToOutput(ctx context.Context) pulumix.Output[*JobPrivateEndpoint] {
-	return pulumix.Output[*JobPrivateEndpoint]{
-		OutputState: i.ToJobPrivateEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 type JobPrivateEndpointOutput struct{ *pulumi.OutputState }
 
 func (JobPrivateEndpointOutput) ElementType() reflect.Type {
@@ -153,12 +146,6 @@ func (o JobPrivateEndpointOutput) ToJobPrivateEndpointOutput() JobPrivateEndpoin
 
 func (o JobPrivateEndpointOutput) ToJobPrivateEndpointOutputWithContext(ctx context.Context) JobPrivateEndpointOutput {
 	return o
-}
-
-func (o JobPrivateEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*JobPrivateEndpoint] {
-	return pulumix.Output[*JobPrivateEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource name.

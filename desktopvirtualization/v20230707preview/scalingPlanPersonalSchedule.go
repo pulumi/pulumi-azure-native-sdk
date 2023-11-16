@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a ScalingPlanPersonalSchedule definition.
@@ -292,12 +291,6 @@ func (i *ScalingPlanPersonalSchedule) ToScalingPlanPersonalScheduleOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ScalingPlanPersonalScheduleOutput)
 }
 
-func (i *ScalingPlanPersonalSchedule) ToOutput(ctx context.Context) pulumix.Output[*ScalingPlanPersonalSchedule] {
-	return pulumix.Output[*ScalingPlanPersonalSchedule]{
-		OutputState: i.ToScalingPlanPersonalScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScalingPlanPersonalScheduleOutput struct{ *pulumi.OutputState }
 
 func (ScalingPlanPersonalScheduleOutput) ElementType() reflect.Type {
@@ -310,12 +303,6 @@ func (o ScalingPlanPersonalScheduleOutput) ToScalingPlanPersonalScheduleOutput()
 
 func (o ScalingPlanPersonalScheduleOutput) ToScalingPlanPersonalScheduleOutputWithContext(ctx context.Context) ScalingPlanPersonalScheduleOutput {
 	return o
-}
-
-func (o ScalingPlanPersonalScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[*ScalingPlanPersonalSchedule] {
-	return pulumix.Output[*ScalingPlanPersonalSchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Set of days of the week on which this schedule is active.

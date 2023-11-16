@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Contact details for security issues
@@ -138,12 +137,6 @@ func (i *SecurityContact) ToSecurityContactOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityContactOutput)
 }
 
-func (i *SecurityContact) ToOutput(ctx context.Context) pulumix.Output[*SecurityContact] {
-	return pulumix.Output[*SecurityContact]{
-		OutputState: i.ToSecurityContactOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecurityContactOutput struct{ *pulumi.OutputState }
 
 func (SecurityContactOutput) ElementType() reflect.Type {
@@ -156,12 +149,6 @@ func (o SecurityContactOutput) ToSecurityContactOutput() SecurityContactOutput {
 
 func (o SecurityContactOutput) ToSecurityContactOutputWithContext(ctx context.Context) SecurityContactOutput {
 	return o
-}
-
-func (o SecurityContactOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityContact] {
-	return pulumix.Output[*SecurityContact]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to send security alerts notifications to the security contact

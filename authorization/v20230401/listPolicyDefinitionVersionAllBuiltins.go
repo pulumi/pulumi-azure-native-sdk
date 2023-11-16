@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This operation lists all the built-in policy definition versions for all built-in policy definitions.
@@ -67,12 +66,6 @@ func (o ListPolicyDefinitionVersionAllBuiltinsResultOutput) ToListPolicyDefiniti
 
 func (o ListPolicyDefinitionVersionAllBuiltinsResultOutput) ToListPolicyDefinitionVersionAllBuiltinsResultOutputWithContext(ctx context.Context) ListPolicyDefinitionVersionAllBuiltinsResultOutput {
 	return o
-}
-
-func (o ListPolicyDefinitionVersionAllBuiltinsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListPolicyDefinitionVersionAllBuiltinsResult] {
-	return pulumix.Output[ListPolicyDefinitionVersionAllBuiltinsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The URL to use for getting the next set of results.

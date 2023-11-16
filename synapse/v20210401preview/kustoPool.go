@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Class representing a Kusto kusto pool.
@@ -175,12 +174,6 @@ func (i *KustoPool) ToKustoPoolOutputWithContext(ctx context.Context) KustoPoolO
 	return pulumi.ToOutputWithContext(ctx, i).(KustoPoolOutput)
 }
 
-func (i *KustoPool) ToOutput(ctx context.Context) pulumix.Output[*KustoPool] {
-	return pulumix.Output[*KustoPool]{
-		OutputState: i.ToKustoPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KustoPoolOutput struct{ *pulumi.OutputState }
 
 func (KustoPoolOutput) ElementType() reflect.Type {
@@ -193,12 +186,6 @@ func (o KustoPoolOutput) ToKustoPoolOutput() KustoPoolOutput {
 
 func (o KustoPoolOutput) ToKustoPoolOutputWithContext(ctx context.Context) KustoPoolOutput {
 	return o
-}
-
-func (o KustoPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*KustoPool] {
-	return pulumix.Output[*KustoPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Kusto Pool data ingestion URI.

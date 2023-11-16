@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // APM Resource object
@@ -133,12 +132,6 @@ func (i *Apm) ToApmOutputWithContext(ctx context.Context) ApmOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApmOutput)
 }
 
-func (i *Apm) ToOutput(ctx context.Context) pulumix.Output[*Apm] {
-	return pulumix.Output[*Apm]{
-		OutputState: i.ToApmOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApmOutput struct{ *pulumi.OutputState }
 
 func (ApmOutput) ElementType() reflect.Type {
@@ -151,12 +144,6 @@ func (o ApmOutput) ToApmOutput() ApmOutput {
 
 func (o ApmOutput) ToApmOutputWithContext(ctx context.Context) ApmOutput {
 	return o
-}
-
-func (o ApmOutput) ToOutput(ctx context.Context) pulumix.Output[*Apm] {
-	return pulumix.Output[*Apm]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource.

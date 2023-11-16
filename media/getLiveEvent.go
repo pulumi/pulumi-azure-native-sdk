@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets properties of a live event.
@@ -116,12 +115,6 @@ func (o LookupLiveEventResultOutput) ToLookupLiveEventResultOutput() LookupLiveE
 
 func (o LookupLiveEventResultOutput) ToLookupLiveEventResultOutputWithContext(ctx context.Context) LookupLiveEventResultOutput {
 	return o
-}
-
-func (o LookupLiveEventResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLiveEventResult] {
-	return pulumix.Output[LookupLiveEventResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation time for the live event

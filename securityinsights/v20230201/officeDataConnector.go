@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents office data connector.
@@ -133,6 +132,9 @@ func NewOfficeDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:OfficeDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:OfficeDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -223,12 +225,6 @@ func (i *OfficeDataConnector) ToOfficeDataConnectorOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(OfficeDataConnectorOutput)
 }
 
-func (i *OfficeDataConnector) ToOutput(ctx context.Context) pulumix.Output[*OfficeDataConnector] {
-	return pulumix.Output[*OfficeDataConnector]{
-		OutputState: i.ToOfficeDataConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OfficeDataConnectorOutput struct{ *pulumi.OutputState }
 
 func (OfficeDataConnectorOutput) ElementType() reflect.Type {
@@ -241,12 +237,6 @@ func (o OfficeDataConnectorOutput) ToOfficeDataConnectorOutput() OfficeDataConne
 
 func (o OfficeDataConnectorOutput) ToOfficeDataConnectorOutputWithContext(ctx context.Context) OfficeDataConnectorOutput {
 	return o
-}
-
-func (o OfficeDataConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*OfficeDataConnector] {
-	return pulumix.Output[*OfficeDataConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The available data types for the connector.

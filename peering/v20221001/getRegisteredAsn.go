@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an existing registered ASN with the specified name under the given subscription, resource group and peering.
@@ -87,12 +86,6 @@ func (o LookupRegisteredAsnResultOutput) ToLookupRegisteredAsnResultOutput() Loo
 
 func (o LookupRegisteredAsnResultOutput) ToLookupRegisteredAsnResultOutputWithContext(ctx context.Context) LookupRegisteredAsnResultOutput {
 	return o
-}
-
-func (o LookupRegisteredAsnResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegisteredAsnResult] {
-	return pulumix.Output[LookupRegisteredAsnResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The customer's ASN from which traffic originates.

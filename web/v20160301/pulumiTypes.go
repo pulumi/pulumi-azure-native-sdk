@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -37,12 +36,6 @@ func (o HostingEnvironmentProfileResponseOutput) ToHostingEnvironmentProfileResp
 
 func (o HostingEnvironmentProfileResponseOutput) ToHostingEnvironmentProfileResponseOutputWithContext(ctx context.Context) HostingEnvironmentProfileResponseOutput {
 	return o
-}
-
-func (o HostingEnvironmentProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HostingEnvironmentProfileResponse] {
-	return pulumix.Output[HostingEnvironmentProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource ID of the App Service Environment.
@@ -87,12 +80,6 @@ func (o IdentifierResponseOutput) ToIdentifierResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o IdentifierResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentifierResponse] {
-	return pulumix.Output[IdentifierResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource Id.
 func (o IdentifierResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentifierResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -125,12 +112,6 @@ func (o IdentifierResponseArrayOutput) ToIdentifierResponseArrayOutput() Identif
 
 func (o IdentifierResponseArrayOutput) ToIdentifierResponseArrayOutputWithContext(ctx context.Context) IdentifierResponseArrayOutput {
 	return o
-}
-
-func (o IdentifierResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IdentifierResponse] {
-	return pulumix.Output[[]IdentifierResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentifierResponseArrayOutput) Index(i pulumi.IntInput) IdentifierResponseOutput {

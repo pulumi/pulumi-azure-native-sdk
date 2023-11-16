@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a Transform.
@@ -92,12 +91,6 @@ func (o LookupTransformResultOutput) ToLookupTransformResultOutput() LookupTrans
 
 func (o LookupTransformResultOutput) ToLookupTransformResultOutputWithContext(ctx context.Context) LookupTransformResultOutput {
 	return o
-}
-
-func (o LookupTransformResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTransformResult] {
-	return pulumix.Output[LookupTransformResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The UTC date and time when the Transform was created, in 'YYYY-MM-DDThh:mm:ssZ' format.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -49,12 +48,6 @@ func (i AppSkuInfoArgs) ToAppSkuInfoOutputWithContext(ctx context.Context) AppSk
 	return pulumi.ToOutputWithContext(ctx, i).(AppSkuInfoOutput)
 }
 
-func (i AppSkuInfoArgs) ToOutput(ctx context.Context) pulumix.Output[AppSkuInfo] {
-	return pulumix.Output[AppSkuInfo]{
-		OutputState: i.ToAppSkuInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Information about the SKU of the IoT Central application.
 type AppSkuInfoOutput struct{ *pulumi.OutputState }
 
@@ -68,12 +61,6 @@ func (o AppSkuInfoOutput) ToAppSkuInfoOutput() AppSkuInfoOutput {
 
 func (o AppSkuInfoOutput) ToAppSkuInfoOutputWithContext(ctx context.Context) AppSkuInfoOutput {
 	return o
-}
-
-func (o AppSkuInfoOutput) ToOutput(ctx context.Context) pulumix.Output[AppSkuInfo] {
-	return pulumix.Output[AppSkuInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the SKU.
@@ -100,12 +87,6 @@ func (o AppSkuInfoResponseOutput) ToAppSkuInfoResponseOutput() AppSkuInfoRespons
 
 func (o AppSkuInfoResponseOutput) ToAppSkuInfoResponseOutputWithContext(ctx context.Context) AppSkuInfoResponseOutput {
 	return o
-}
-
-func (o AppSkuInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AppSkuInfoResponse] {
-	return pulumix.Output[AppSkuInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the SKU.
@@ -146,12 +127,6 @@ func (i SystemAssignedServiceIdentityArgs) ToSystemAssignedServiceIdentityOutput
 
 func (i SystemAssignedServiceIdentityArgs) ToSystemAssignedServiceIdentityOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SystemAssignedServiceIdentityOutput)
-}
-
-func (i SystemAssignedServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[SystemAssignedServiceIdentity] {
-	return pulumix.Output[SystemAssignedServiceIdentity]{
-		OutputState: i.ToSystemAssignedServiceIdentityOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i SystemAssignedServiceIdentityArgs) ToSystemAssignedServiceIdentityPtrOutput() SystemAssignedServiceIdentityPtrOutput {
@@ -195,12 +170,6 @@ func (i *systemAssignedServiceIdentityPtrType) ToSystemAssignedServiceIdentityPt
 	return pulumi.ToOutputWithContext(ctx, i).(SystemAssignedServiceIdentityPtrOutput)
 }
 
-func (i *systemAssignedServiceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*SystemAssignedServiceIdentity] {
-	return pulumix.Output[*SystemAssignedServiceIdentity]{
-		OutputState: i.ToSystemAssignedServiceIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Managed service identity (either system assigned, or none)
 type SystemAssignedServiceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -226,12 +195,6 @@ func (o SystemAssignedServiceIdentityOutput) ToSystemAssignedServiceIdentityPtrO
 	}).(SystemAssignedServiceIdentityPtrOutput)
 }
 
-func (o SystemAssignedServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[SystemAssignedServiceIdentity] {
-	return pulumix.Output[SystemAssignedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Type of managed service identity (either system assigned, or none).
 func (o SystemAssignedServiceIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SystemAssignedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
@@ -249,12 +212,6 @@ func (o SystemAssignedServiceIdentityPtrOutput) ToSystemAssignedServiceIdentityP
 
 func (o SystemAssignedServiceIdentityPtrOutput) ToSystemAssignedServiceIdentityPtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityPtrOutput {
 	return o
-}
-
-func (o SystemAssignedServiceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SystemAssignedServiceIdentity] {
-	return pulumix.Output[*SystemAssignedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SystemAssignedServiceIdentityPtrOutput) Elem() SystemAssignedServiceIdentityOutput {
@@ -302,12 +259,6 @@ func (o SystemAssignedServiceIdentityResponseOutput) ToSystemAssignedServiceIden
 	return o
 }
 
-func (o SystemAssignedServiceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemAssignedServiceIdentityResponse] {
-	return pulumix.Output[SystemAssignedServiceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
 func (o SystemAssignedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v SystemAssignedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -335,12 +286,6 @@ func (o SystemAssignedServiceIdentityResponsePtrOutput) ToSystemAssignedServiceI
 
 func (o SystemAssignedServiceIdentityResponsePtrOutput) ToSystemAssignedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityResponsePtrOutput {
 	return o
-}
-
-func (o SystemAssignedServiceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SystemAssignedServiceIdentityResponse] {
-	return pulumix.Output[*SystemAssignedServiceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SystemAssignedServiceIdentityResponsePtrOutput) Elem() SystemAssignedServiceIdentityResponseOutput {

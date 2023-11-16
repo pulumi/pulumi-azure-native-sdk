@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the Hybrid AKS provisioned cluster
@@ -101,12 +100,6 @@ func (o LookupProvisionedClusterResultOutput) ToLookupProvisionedClusterResultOu
 
 func (o LookupProvisionedClusterResultOutput) ToLookupProvisionedClusterResultOutputWithContext(ctx context.Context) LookupProvisionedClusterResultOutput {
 	return o
-}
-
-func (o LookupProvisionedClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProvisionedClusterResult] {
-	return pulumix.Output[LookupProvisionedClusterResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupProvisionedClusterResultOutput) ExtendedLocation() ProvisionedClustersResponseResponseExtendedLocationPtrOutput {

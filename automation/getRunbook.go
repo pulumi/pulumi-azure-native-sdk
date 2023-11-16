@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve the runbook identified by runbook name.
@@ -120,12 +119,6 @@ func (o LookupRunbookResultOutput) ToLookupRunbookResultOutput() LookupRunbookRe
 
 func (o LookupRunbookResultOutput) ToLookupRunbookResultOutputWithContext(ctx context.Context) LookupRunbookResultOutput {
 	return o
-}
-
-func (o LookupRunbookResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRunbookResult] {
-	return pulumix.Output[LookupRunbookResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the creation time.

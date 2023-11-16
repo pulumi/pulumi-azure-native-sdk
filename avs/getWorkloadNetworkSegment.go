@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // NSX Segment
@@ -98,12 +97,6 @@ func (o LookupWorkloadNetworkSegmentResultOutput) ToLookupWorkloadNetworkSegment
 
 func (o LookupWorkloadNetworkSegmentResultOutput) ToLookupWorkloadNetworkSegmentResultOutputWithContext(ctx context.Context) LookupWorkloadNetworkSegmentResultOutput {
 	return o
-}
-
-func (o LookupWorkloadNetworkSegmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkloadNetworkSegmentResult] {
-	return pulumix.Output[LookupWorkloadNetworkSegmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gateway which to connect segment to.

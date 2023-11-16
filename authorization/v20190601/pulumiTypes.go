@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -47,12 +46,6 @@ func (i IdentityArgs) ToIdentityOutput() IdentityOutput {
 
 func (i IdentityArgs) ToIdentityOutputWithContext(ctx context.Context) IdentityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityOutput)
-}
-
-func (i IdentityArgs) ToOutput(ctx context.Context) pulumix.Output[Identity] {
-	return pulumix.Output[Identity]{
-		OutputState: i.ToIdentityOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i IdentityArgs) ToIdentityPtrOutput() IdentityPtrOutput {
@@ -96,12 +89,6 @@ func (i *identityPtrType) ToIdentityPtrOutputWithContext(ctx context.Context) Id
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPtrOutput)
 }
 
-func (i *identityPtrType) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
-	return pulumix.Output[*Identity]{
-		OutputState: i.ToIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Identity for the resource.
 type IdentityOutput struct{ *pulumi.OutputState }
 
@@ -127,12 +114,6 @@ func (o IdentityOutput) ToIdentityPtrOutputWithContext(ctx context.Context) Iden
 	}).(IdentityPtrOutput)
 }
 
-func (o IdentityOutput) ToOutput(ctx context.Context) pulumix.Output[Identity] {
-	return pulumix.Output[Identity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The identity type.
 func (o IdentityOutput) Type() ResourceIdentityTypePtrOutput {
 	return o.ApplyT(func(v Identity) *ResourceIdentityType { return v.Type }).(ResourceIdentityTypePtrOutput)
@@ -150,12 +131,6 @@ func (o IdentityPtrOutput) ToIdentityPtrOutput() IdentityPtrOutput {
 
 func (o IdentityPtrOutput) ToIdentityPtrOutputWithContext(ctx context.Context) IdentityPtrOutput {
 	return o
-}
-
-func (o IdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
-	return pulumix.Output[*Identity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityPtrOutput) Elem() IdentityOutput {
@@ -203,12 +178,6 @@ func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o IdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityResponse] {
-	return pulumix.Output[IdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The principal ID of the resource identity.
 func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -236,12 +205,6 @@ func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutput() IdentityRespons
 
 func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
 	return o
-}
-
-func (o IdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityResponse] {
-	return pulumix.Output[*IdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
@@ -323,12 +286,6 @@ func (i PolicyDefinitionReferenceArgs) ToPolicyDefinitionReferenceOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyDefinitionReferenceOutput)
 }
 
-func (i PolicyDefinitionReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[PolicyDefinitionReference] {
-	return pulumix.Output[PolicyDefinitionReference]{
-		OutputState: i.ToPolicyDefinitionReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PolicyDefinitionReferenceArrayInput is an input type that accepts PolicyDefinitionReferenceArray and PolicyDefinitionReferenceArrayOutput values.
 // You can construct a concrete instance of `PolicyDefinitionReferenceArrayInput` via:
 //
@@ -354,12 +311,6 @@ func (i PolicyDefinitionReferenceArray) ToPolicyDefinitionReferenceArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyDefinitionReferenceArrayOutput)
 }
 
-func (i PolicyDefinitionReferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]PolicyDefinitionReference] {
-	return pulumix.Output[[]PolicyDefinitionReference]{
-		OutputState: i.ToPolicyDefinitionReferenceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The policy definition reference.
 type PolicyDefinitionReferenceOutput struct{ *pulumi.OutputState }
 
@@ -373,12 +324,6 @@ func (o PolicyDefinitionReferenceOutput) ToPolicyDefinitionReferenceOutput() Pol
 
 func (o PolicyDefinitionReferenceOutput) ToPolicyDefinitionReferenceOutputWithContext(ctx context.Context) PolicyDefinitionReferenceOutput {
 	return o
-}
-
-func (o PolicyDefinitionReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyDefinitionReference] {
-	return pulumix.Output[PolicyDefinitionReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Required if a parameter is used in policy rule.
@@ -403,12 +348,6 @@ func (o PolicyDefinitionReferenceArrayOutput) ToPolicyDefinitionReferenceArrayOu
 
 func (o PolicyDefinitionReferenceArrayOutput) ToPolicyDefinitionReferenceArrayOutputWithContext(ctx context.Context) PolicyDefinitionReferenceArrayOutput {
 	return o
-}
-
-func (o PolicyDefinitionReferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyDefinitionReference] {
-	return pulumix.Output[[]PolicyDefinitionReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyDefinitionReferenceArrayOutput) Index(i pulumi.IntInput) PolicyDefinitionReferenceOutput {
@@ -440,12 +379,6 @@ func (o PolicyDefinitionReferenceResponseOutput) ToPolicyDefinitionReferenceResp
 	return o
 }
 
-func (o PolicyDefinitionReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyDefinitionReferenceResponse] {
-	return pulumix.Output[PolicyDefinitionReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Required if a parameter is used in policy rule.
 func (o PolicyDefinitionReferenceResponseOutput) Parameters() pulumi.AnyOutput {
 	return o.ApplyT(func(v PolicyDefinitionReferenceResponse) interface{} { return v.Parameters }).(pulumi.AnyOutput)
@@ -468,12 +401,6 @@ func (o PolicyDefinitionReferenceResponseArrayOutput) ToPolicyDefinitionReferenc
 
 func (o PolicyDefinitionReferenceResponseArrayOutput) ToPolicyDefinitionReferenceResponseArrayOutputWithContext(ctx context.Context) PolicyDefinitionReferenceResponseArrayOutput {
 	return o
-}
-
-func (o PolicyDefinitionReferenceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PolicyDefinitionReferenceResponse] {
-	return pulumix.Output[[]PolicyDefinitionReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyDefinitionReferenceResponseArrayOutput) Index(i pulumi.IntInput) PolicyDefinitionReferenceResponseOutput {
@@ -521,12 +448,6 @@ func (i PolicySkuArgs) ToPolicySkuOutputWithContext(ctx context.Context) PolicyS
 	return pulumi.ToOutputWithContext(ctx, i).(PolicySkuOutput)
 }
 
-func (i PolicySkuArgs) ToOutput(ctx context.Context) pulumix.Output[PolicySku] {
-	return pulumix.Output[PolicySku]{
-		OutputState: i.ToPolicySkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PolicySkuArgs) ToPolicySkuPtrOutput() PolicySkuPtrOutput {
 	return i.ToPolicySkuPtrOutputWithContext(context.Background())
 }
@@ -568,12 +489,6 @@ func (i *policySkuPtrType) ToPolicySkuPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(PolicySkuPtrOutput)
 }
 
-func (i *policySkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*PolicySku] {
-	return pulumix.Output[*PolicySku]{
-		OutputState: i.ToPolicySkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The policy sku. This property is optional, obsolete, and will be ignored.
 type PolicySkuOutput struct{ *pulumi.OutputState }
 
@@ -599,12 +514,6 @@ func (o PolicySkuOutput) ToPolicySkuPtrOutputWithContext(ctx context.Context) Po
 	}).(PolicySkuPtrOutput)
 }
 
-func (o PolicySkuOutput) ToOutput(ctx context.Context) pulumix.Output[PolicySku] {
-	return pulumix.Output[PolicySku]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the policy sku. Possible values are A0 and A1.
 func (o PolicySkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicySku) string { return v.Name }).(pulumi.StringOutput)
@@ -627,12 +536,6 @@ func (o PolicySkuPtrOutput) ToPolicySkuPtrOutput() PolicySkuPtrOutput {
 
 func (o PolicySkuPtrOutput) ToPolicySkuPtrOutputWithContext(ctx context.Context) PolicySkuPtrOutput {
 	return o
-}
-
-func (o PolicySkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicySku] {
-	return pulumix.Output[*PolicySku]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicySkuPtrOutput) Elem() PolicySkuOutput {
@@ -688,12 +591,6 @@ func (o PolicySkuResponseOutput) ToPolicySkuResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o PolicySkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PolicySkuResponse] {
-	return pulumix.Output[PolicySkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the policy sku. Possible values are A0 and A1.
 func (o PolicySkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicySkuResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -716,12 +613,6 @@ func (o PolicySkuResponsePtrOutput) ToPolicySkuResponsePtrOutput() PolicySkuResp
 
 func (o PolicySkuResponsePtrOutput) ToPolicySkuResponsePtrOutputWithContext(ctx context.Context) PolicySkuResponsePtrOutput {
 	return o
-}
-
-func (o PolicySkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicySkuResponse] {
-	return pulumix.Output[*PolicySkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicySkuResponsePtrOutput) Elem() PolicySkuResponseOutput {

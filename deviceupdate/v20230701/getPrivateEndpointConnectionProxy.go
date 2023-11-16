@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // (INTERNAL - DO NOT USE) Get the specified private endpoint connection proxy associated with the device update account.
@@ -91,12 +90,6 @@ func (o LookupPrivateEndpointConnectionProxyResultOutput) ToLookupPrivateEndpoin
 
 func (o LookupPrivateEndpointConnectionProxyResultOutput) ToLookupPrivateEndpointConnectionProxyResultOutputWithContext(ctx context.Context) LookupPrivateEndpointConnectionProxyResultOutput {
 	return o
-}
-
-func (o LookupPrivateEndpointConnectionProxyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateEndpointConnectionProxyResult] {
-	return pulumix.Output[LookupPrivateEndpointConnectionProxyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ETag from NRP.

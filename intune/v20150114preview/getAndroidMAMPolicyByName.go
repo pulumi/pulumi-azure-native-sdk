@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns AndroidMAMPolicy with given name.
@@ -161,12 +160,6 @@ func (o LookupAndroidMAMPolicyByNameResultOutput) ToLookupAndroidMAMPolicyByName
 
 func (o LookupAndroidMAMPolicyByNameResultOutput) ToLookupAndroidMAMPolicyByNameResultOutputWithContext(ctx context.Context) LookupAndroidMAMPolicyByNameResultOutput {
 	return o
-}
-
-func (o LookupAndroidMAMPolicyByNameResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAndroidMAMPolicyByNameResult] {
-	return pulumix.Output[LookupAndroidMAMPolicyByNameResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupAndroidMAMPolicyByNameResultOutput) AccessRecheckOfflineTimeout() pulumi.StringPtrOutput {

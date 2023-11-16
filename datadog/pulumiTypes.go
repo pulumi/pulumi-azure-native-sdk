@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -37,12 +36,6 @@ func (o DatadogApiKeyResponseOutput) ToDatadogApiKeyResponseOutput() DatadogApiK
 
 func (o DatadogApiKeyResponseOutput) ToDatadogApiKeyResponseOutputWithContext(ctx context.Context) DatadogApiKeyResponseOutput {
 	return o
-}
-
-func (o DatadogApiKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DatadogApiKeyResponse] {
-	return pulumix.Output[DatadogApiKeyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time of creation of the API key.
@@ -79,12 +72,6 @@ func (o DatadogApiKeyResponseArrayOutput) ToDatadogApiKeyResponseArrayOutputWith
 	return o
 }
 
-func (o DatadogApiKeyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DatadogApiKeyResponse] {
-	return pulumix.Output[[]DatadogApiKeyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatadogApiKeyResponseArrayOutput) Index(i pulumi.IntInput) DatadogApiKeyResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatadogApiKeyResponse {
 		return vs[0].([]DatadogApiKeyResponse)[vs[1].(int)]
@@ -112,12 +99,6 @@ func (o DatadogHostMetadataResponseOutput) ToDatadogHostMetadataResponseOutputWi
 	return o
 }
 
-func (o DatadogHostMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DatadogHostMetadataResponse] {
-	return pulumix.Output[DatadogHostMetadataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The agent version.
 func (o DatadogHostMetadataResponseOutput) AgentVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatadogHostMetadataResponse) *string { return v.AgentVersion }).(pulumi.StringPtrOutput)
@@ -143,12 +124,6 @@ func (o DatadogHostMetadataResponsePtrOutput) ToDatadogHostMetadataResponsePtrOu
 
 func (o DatadogHostMetadataResponsePtrOutput) ToDatadogHostMetadataResponsePtrOutputWithContext(ctx context.Context) DatadogHostMetadataResponsePtrOutput {
 	return o
-}
-
-func (o DatadogHostMetadataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatadogHostMetadataResponse] {
-	return pulumix.Output[*DatadogHostMetadataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatadogHostMetadataResponsePtrOutput) Elem() DatadogHostMetadataResponseOutput {
@@ -213,12 +188,6 @@ func (o DatadogHostResponseOutput) ToDatadogHostResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o DatadogHostResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DatadogHostResponse] {
-	return pulumix.Output[DatadogHostResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The aliases for the host.
 func (o DatadogHostResponseOutput) Aliases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DatadogHostResponse) []string { return v.Aliases }).(pulumi.StringArrayOutput)
@@ -252,12 +221,6 @@ func (o DatadogHostResponseArrayOutput) ToDatadogHostResponseArrayOutputWithCont
 	return o
 }
 
-func (o DatadogHostResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DatadogHostResponse] {
-	return pulumix.Output[[]DatadogHostResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DatadogHostResponseArrayOutput) Index(i pulumi.IntInput) DatadogHostResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatadogHostResponse {
 		return vs[0].([]DatadogHostResponse)[vs[1].(int)]
@@ -287,12 +250,6 @@ func (o DatadogInstallMethodResponseOutput) ToDatadogInstallMethodResponseOutput
 	return o
 }
 
-func (o DatadogInstallMethodResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DatadogInstallMethodResponse] {
-	return pulumix.Output[DatadogInstallMethodResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The installer version.
 func (o DatadogInstallMethodResponseOutput) InstallerVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatadogInstallMethodResponse) *string { return v.InstallerVersion }).(pulumi.StringPtrOutput)
@@ -320,12 +277,6 @@ func (o DatadogInstallMethodResponsePtrOutput) ToDatadogInstallMethodResponsePtr
 
 func (o DatadogInstallMethodResponsePtrOutput) ToDatadogInstallMethodResponsePtrOutputWithContext(ctx context.Context) DatadogInstallMethodResponsePtrOutput {
 	return o
-}
-
-func (o DatadogInstallMethodResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatadogInstallMethodResponse] {
-	return pulumix.Output[*DatadogInstallMethodResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatadogInstallMethodResponsePtrOutput) Elem() DatadogInstallMethodResponseOutput {
@@ -387,12 +338,6 @@ func (o DatadogLogsAgentResponseOutput) ToDatadogLogsAgentResponseOutputWithCont
 	return o
 }
 
-func (o DatadogLogsAgentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DatadogLogsAgentResponse] {
-	return pulumix.Output[DatadogLogsAgentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The transport.
 func (o DatadogLogsAgentResponseOutput) Transport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatadogLogsAgentResponse) *string { return v.Transport }).(pulumi.StringPtrOutput)
@@ -410,12 +355,6 @@ func (o DatadogLogsAgentResponsePtrOutput) ToDatadogLogsAgentResponsePtrOutput()
 
 func (o DatadogLogsAgentResponsePtrOutput) ToDatadogLogsAgentResponsePtrOutputWithContext(ctx context.Context) DatadogLogsAgentResponsePtrOutput {
 	return o
-}
-
-func (o DatadogLogsAgentResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatadogLogsAgentResponse] {
-	return pulumix.Output[*DatadogLogsAgentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatadogLogsAgentResponsePtrOutput) Elem() DatadogLogsAgentResponseOutput {
@@ -501,12 +440,6 @@ func (i DatadogOrganizationPropertiesArgs) ToDatadogOrganizationPropertiesOutput
 	return pulumi.ToOutputWithContext(ctx, i).(DatadogOrganizationPropertiesOutput)
 }
 
-func (i DatadogOrganizationPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[DatadogOrganizationProperties] {
-	return pulumix.Output[DatadogOrganizationProperties]{
-		OutputState: i.ToDatadogOrganizationPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DatadogOrganizationPropertiesArgs) ToDatadogOrganizationPropertiesPtrOutput() DatadogOrganizationPropertiesPtrOutput {
 	return i.ToDatadogOrganizationPropertiesPtrOutputWithContext(context.Background())
 }
@@ -548,12 +481,6 @@ func (i *datadogOrganizationPropertiesPtrType) ToDatadogOrganizationPropertiesPt
 	return pulumi.ToOutputWithContext(ctx, i).(DatadogOrganizationPropertiesPtrOutput)
 }
 
-func (i *datadogOrganizationPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*DatadogOrganizationProperties] {
-	return pulumix.Output[*DatadogOrganizationProperties]{
-		OutputState: i.ToDatadogOrganizationPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Datadog organization properties
 type DatadogOrganizationPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -577,12 +504,6 @@ func (o DatadogOrganizationPropertiesOutput) ToDatadogOrganizationPropertiesPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatadogOrganizationProperties) *DatadogOrganizationProperties {
 		return &v
 	}).(DatadogOrganizationPropertiesPtrOutput)
-}
-
-func (o DatadogOrganizationPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[DatadogOrganizationProperties] {
-	return pulumix.Output[DatadogOrganizationProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Api key associated to the Datadog organization.
@@ -637,12 +558,6 @@ func (o DatadogOrganizationPropertiesPtrOutput) ToDatadogOrganizationPropertiesP
 
 func (o DatadogOrganizationPropertiesPtrOutput) ToDatadogOrganizationPropertiesPtrOutputWithContext(ctx context.Context) DatadogOrganizationPropertiesPtrOutput {
 	return o
-}
-
-func (o DatadogOrganizationPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatadogOrganizationProperties] {
-	return pulumix.Output[*DatadogOrganizationProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatadogOrganizationPropertiesPtrOutput) Elem() DatadogOrganizationPropertiesOutput {
@@ -758,12 +673,6 @@ func (o DatadogOrganizationPropertiesResponseOutput) ToDatadogOrganizationProper
 	return o
 }
 
-func (o DatadogOrganizationPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DatadogOrganizationPropertiesResponse] {
-	return pulumix.Output[DatadogOrganizationPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Id of the Datadog organization.
 func (o DatadogOrganizationPropertiesResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatadogOrganizationPropertiesResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -786,12 +695,6 @@ func (o DatadogOrganizationPropertiesResponsePtrOutput) ToDatadogOrganizationPro
 
 func (o DatadogOrganizationPropertiesResponsePtrOutput) ToDatadogOrganizationPropertiesResponsePtrOutputWithContext(ctx context.Context) DatadogOrganizationPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o DatadogOrganizationPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DatadogOrganizationPropertiesResponse] {
-	return pulumix.Output[*DatadogOrganizationPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatadogOrganizationPropertiesResponsePtrOutput) Elem() DatadogOrganizationPropertiesResponseOutput {
@@ -867,12 +770,6 @@ func (i FilteringTagArgs) ToFilteringTagOutputWithContext(ctx context.Context) F
 	return pulumi.ToOutputWithContext(ctx, i).(FilteringTagOutput)
 }
 
-func (i FilteringTagArgs) ToOutput(ctx context.Context) pulumix.Output[FilteringTag] {
-	return pulumix.Output[FilteringTag]{
-		OutputState: i.ToFilteringTagOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FilteringTagArrayInput is an input type that accepts FilteringTagArray and FilteringTagArrayOutput values.
 // You can construct a concrete instance of `FilteringTagArrayInput` via:
 //
@@ -898,12 +795,6 @@ func (i FilteringTagArray) ToFilteringTagArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(FilteringTagArrayOutput)
 }
 
-func (i FilteringTagArray) ToOutput(ctx context.Context) pulumix.Output[[]FilteringTag] {
-	return pulumix.Output[[]FilteringTag]{
-		OutputState: i.ToFilteringTagArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The definition of a filtering tag. Filtering tags are used for capturing resources and include/exclude them from being monitored.
 type FilteringTagOutput struct{ *pulumi.OutputState }
 
@@ -917,12 +808,6 @@ func (o FilteringTagOutput) ToFilteringTagOutput() FilteringTagOutput {
 
 func (o FilteringTagOutput) ToFilteringTagOutputWithContext(ctx context.Context) FilteringTagOutput {
 	return o
-}
-
-func (o FilteringTagOutput) ToOutput(ctx context.Context) pulumix.Output[FilteringTag] {
-	return pulumix.Output[FilteringTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Valid actions for a filtering tag. Exclusion takes priority over inclusion.
@@ -952,12 +837,6 @@ func (o FilteringTagArrayOutput) ToFilteringTagArrayOutput() FilteringTagArrayOu
 
 func (o FilteringTagArrayOutput) ToFilteringTagArrayOutputWithContext(ctx context.Context) FilteringTagArrayOutput {
 	return o
-}
-
-func (o FilteringTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FilteringTag] {
-	return pulumix.Output[[]FilteringTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FilteringTagArrayOutput) Index(i pulumi.IntInput) FilteringTagOutput {
@@ -991,12 +870,6 @@ func (o FilteringTagResponseOutput) ToFilteringTagResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o FilteringTagResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FilteringTagResponse] {
-	return pulumix.Output[FilteringTagResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Valid actions for a filtering tag. Exclusion takes priority over inclusion.
 func (o FilteringTagResponseOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FilteringTagResponse) *string { return v.Action }).(pulumi.StringPtrOutput)
@@ -1024,12 +897,6 @@ func (o FilteringTagResponseArrayOutput) ToFilteringTagResponseArrayOutput() Fil
 
 func (o FilteringTagResponseArrayOutput) ToFilteringTagResponseArrayOutputWithContext(ctx context.Context) FilteringTagResponseArrayOutput {
 	return o
-}
-
-func (o FilteringTagResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FilteringTagResponse] {
-	return pulumix.Output[[]FilteringTagResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FilteringTagResponseArrayOutput) Index(i pulumi.IntInput) FilteringTagResponseOutput {
@@ -1069,12 +936,6 @@ func (i IdentityPropertiesArgs) ToIdentityPropertiesOutput() IdentityPropertiesO
 
 func (i IdentityPropertiesArgs) ToIdentityPropertiesOutputWithContext(ctx context.Context) IdentityPropertiesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPropertiesOutput)
-}
-
-func (i IdentityPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[IdentityProperties] {
-	return pulumix.Output[IdentityProperties]{
-		OutputState: i.ToIdentityPropertiesOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i IdentityPropertiesArgs) ToIdentityPropertiesPtrOutput() IdentityPropertiesPtrOutput {
@@ -1118,12 +979,6 @@ func (i *identityPropertiesPtrType) ToIdentityPropertiesPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPropertiesPtrOutput)
 }
 
-func (i *identityPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*IdentityProperties] {
-	return pulumix.Output[*IdentityProperties]{
-		OutputState: i.ToIdentityPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IdentityPropertiesOutput struct{ *pulumi.OutputState }
 
 func (IdentityPropertiesOutput) ElementType() reflect.Type {
@@ -1148,12 +1003,6 @@ func (o IdentityPropertiesOutput) ToIdentityPropertiesPtrOutputWithContext(ctx c
 	}).(IdentityPropertiesPtrOutput)
 }
 
-func (o IdentityPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityProperties] {
-	return pulumix.Output[IdentityProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Identity type
 func (o IdentityPropertiesOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentityProperties) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -1171,12 +1020,6 @@ func (o IdentityPropertiesPtrOutput) ToIdentityPropertiesPtrOutput() IdentityPro
 
 func (o IdentityPropertiesPtrOutput) ToIdentityPropertiesPtrOutputWithContext(ctx context.Context) IdentityPropertiesPtrOutput {
 	return o
-}
-
-func (o IdentityPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityProperties] {
-	return pulumix.Output[*IdentityProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityPropertiesPtrOutput) Elem() IdentityPropertiesOutput {
@@ -1222,12 +1065,6 @@ func (o IdentityPropertiesResponseOutput) ToIdentityPropertiesResponseOutputWith
 	return o
 }
 
-func (o IdentityPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityPropertiesResponse] {
-	return pulumix.Output[IdentityPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The identity ID.
 func (o IdentityPropertiesResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityPropertiesResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -1255,12 +1092,6 @@ func (o IdentityPropertiesResponsePtrOutput) ToIdentityPropertiesResponsePtrOutp
 
 func (o IdentityPropertiesResponsePtrOutput) ToIdentityPropertiesResponsePtrOutputWithContext(ctx context.Context) IdentityPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o IdentityPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityPropertiesResponse] {
-	return pulumix.Output[*IdentityPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityPropertiesResponsePtrOutput) Elem() IdentityPropertiesResponseOutput {
@@ -1324,12 +1155,6 @@ func (o LinkedResourceResponseOutput) ToLinkedResourceResponseOutputWithContext(
 	return o
 }
 
-func (o LinkedResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LinkedResourceResponse] {
-	return pulumix.Output[LinkedResourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ARM id of the linked resource.
 func (o LinkedResourceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LinkedResourceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -1347,12 +1172,6 @@ func (o LinkedResourceResponseArrayOutput) ToLinkedResourceResponseArrayOutput()
 
 func (o LinkedResourceResponseArrayOutput) ToLinkedResourceResponseArrayOutputWithContext(ctx context.Context) LinkedResourceResponseArrayOutput {
 	return o
-}
-
-func (o LinkedResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]LinkedResourceResponse] {
-	return pulumix.Output[[]LinkedResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LinkedResourceResponseArrayOutput) Index(i pulumi.IntInput) LinkedResourceResponseOutput {
@@ -1408,12 +1227,6 @@ func (i LogRulesArgs) ToLogRulesOutputWithContext(ctx context.Context) LogRulesO
 	return pulumi.ToOutputWithContext(ctx, i).(LogRulesOutput)
 }
 
-func (i LogRulesArgs) ToOutput(ctx context.Context) pulumix.Output[LogRules] {
-	return pulumix.Output[LogRules]{
-		OutputState: i.ToLogRulesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i LogRulesArgs) ToLogRulesPtrOutput() LogRulesPtrOutput {
 	return i.ToLogRulesPtrOutputWithContext(context.Background())
 }
@@ -1455,12 +1268,6 @@ func (i *logRulesPtrType) ToLogRulesPtrOutputWithContext(ctx context.Context) Lo
 	return pulumi.ToOutputWithContext(ctx, i).(LogRulesPtrOutput)
 }
 
-func (i *logRulesPtrType) ToOutput(ctx context.Context) pulumix.Output[*LogRules] {
-	return pulumix.Output[*LogRules]{
-		OutputState: i.ToLogRulesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Set of rules for sending logs for the Monitor resource.
 type LogRulesOutput struct{ *pulumi.OutputState }
 
@@ -1484,12 +1291,6 @@ func (o LogRulesOutput) ToLogRulesPtrOutputWithContext(ctx context.Context) LogR
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogRules) *LogRules {
 		return &v
 	}).(LogRulesPtrOutput)
-}
-
-func (o LogRulesOutput) ToOutput(ctx context.Context) pulumix.Output[LogRules] {
-	return pulumix.Output[LogRules]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
@@ -1524,12 +1325,6 @@ func (o LogRulesPtrOutput) ToLogRulesPtrOutput() LogRulesPtrOutput {
 
 func (o LogRulesPtrOutput) ToLogRulesPtrOutputWithContext(ctx context.Context) LogRulesPtrOutput {
 	return o
-}
-
-func (o LogRulesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogRules] {
-	return pulumix.Output[*LogRules]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LogRulesPtrOutput) Elem() LogRulesOutput {
@@ -1609,12 +1404,6 @@ func (o LogRulesResponseOutput) ToLogRulesResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o LogRulesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LogRulesResponse] {
-	return pulumix.Output[LogRulesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
 func (o LogRulesResponseOutput) FilteringTags() FilteringTagResponseArrayOutput {
 	return o.ApplyT(func(v LogRulesResponse) []FilteringTagResponse { return v.FilteringTags }).(FilteringTagResponseArrayOutput)
@@ -1647,12 +1436,6 @@ func (o LogRulesResponsePtrOutput) ToLogRulesResponsePtrOutput() LogRulesRespons
 
 func (o LogRulesResponsePtrOutput) ToLogRulesResponsePtrOutputWithContext(ctx context.Context) LogRulesResponsePtrOutput {
 	return o
-}
-
-func (o LogRulesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogRulesResponse] {
-	return pulumix.Output[*LogRulesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LogRulesResponsePtrOutput) Elem() LogRulesResponseOutput {
@@ -1740,12 +1523,6 @@ func (i MetricRulesArgs) ToMetricRulesOutputWithContext(ctx context.Context) Met
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesOutput)
 }
 
-func (i MetricRulesArgs) ToOutput(ctx context.Context) pulumix.Output[MetricRules] {
-	return pulumix.Output[MetricRules]{
-		OutputState: i.ToMetricRulesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MetricRulesArgs) ToMetricRulesPtrOutput() MetricRulesPtrOutput {
 	return i.ToMetricRulesPtrOutputWithContext(context.Background())
 }
@@ -1787,12 +1564,6 @@ func (i *metricRulesPtrType) ToMetricRulesPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesPtrOutput)
 }
 
-func (i *metricRulesPtrType) ToOutput(ctx context.Context) pulumix.Output[*MetricRules] {
-	return pulumix.Output[*MetricRules]{
-		OutputState: i.ToMetricRulesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Set of rules for sending metrics for the Monitor resource.
 type MetricRulesOutput struct{ *pulumi.OutputState }
 
@@ -1818,12 +1589,6 @@ func (o MetricRulesOutput) ToMetricRulesPtrOutputWithContext(ctx context.Context
 	}).(MetricRulesPtrOutput)
 }
 
-func (o MetricRulesOutput) ToOutput(ctx context.Context) pulumix.Output[MetricRules] {
-	return pulumix.Output[MetricRules]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
 func (o MetricRulesOutput) FilteringTags() FilteringTagArrayOutput {
 	return o.ApplyT(func(v MetricRules) []FilteringTag { return v.FilteringTags }).(FilteringTagArrayOutput)
@@ -1841,12 +1606,6 @@ func (o MetricRulesPtrOutput) ToMetricRulesPtrOutput() MetricRulesPtrOutput {
 
 func (o MetricRulesPtrOutput) ToMetricRulesPtrOutputWithContext(ctx context.Context) MetricRulesPtrOutput {
 	return o
-}
-
-func (o MetricRulesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricRules] {
-	return pulumix.Output[*MetricRules]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricRulesPtrOutput) Elem() MetricRulesOutput {
@@ -1890,12 +1649,6 @@ func (o MetricRulesResponseOutput) ToMetricRulesResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o MetricRulesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MetricRulesResponse] {
-	return pulumix.Output[MetricRulesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
 func (o MetricRulesResponseOutput) FilteringTags() FilteringTagResponseArrayOutput {
 	return o.ApplyT(func(v MetricRulesResponse) []FilteringTagResponse { return v.FilteringTags }).(FilteringTagResponseArrayOutput)
@@ -1913,12 +1666,6 @@ func (o MetricRulesResponsePtrOutput) ToMetricRulesResponsePtrOutput() MetricRul
 
 func (o MetricRulesResponsePtrOutput) ToMetricRulesResponsePtrOutputWithContext(ctx context.Context) MetricRulesResponsePtrOutput {
 	return o
-}
-
-func (o MetricRulesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricRulesResponse] {
-	return pulumix.Output[*MetricRulesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricRulesResponsePtrOutput) Elem() MetricRulesResponseOutput {
@@ -1984,12 +1731,6 @@ func (i MonitorPropertiesArgs) ToMonitorPropertiesOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorPropertiesOutput)
 }
 
-func (i MonitorPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[MonitorProperties] {
-	return pulumix.Output[MonitorProperties]{
-		OutputState: i.ToMonitorPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MonitorPropertiesArgs) ToMonitorPropertiesPtrOutput() MonitorPropertiesPtrOutput {
 	return i.ToMonitorPropertiesPtrOutputWithContext(context.Background())
 }
@@ -2031,12 +1772,6 @@ func (i *monitorPropertiesPtrType) ToMonitorPropertiesPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorPropertiesPtrOutput)
 }
 
-func (i *monitorPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*MonitorProperties] {
-	return pulumix.Output[*MonitorProperties]{
-		OutputState: i.ToMonitorPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Properties specific to the monitor resource.
 type MonitorPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -2060,12 +1795,6 @@ func (o MonitorPropertiesOutput) ToMonitorPropertiesPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorProperties) *MonitorProperties {
 		return &v
 	}).(MonitorPropertiesPtrOutput)
-}
-
-func (o MonitorPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[MonitorProperties] {
-	return pulumix.Output[MonitorProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Datadog organization properties
@@ -2095,12 +1824,6 @@ func (o MonitorPropertiesPtrOutput) ToMonitorPropertiesPtrOutput() MonitorProper
 
 func (o MonitorPropertiesPtrOutput) ToMonitorPropertiesPtrOutputWithContext(ctx context.Context) MonitorPropertiesPtrOutput {
 	return o
-}
-
-func (o MonitorPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitorProperties] {
-	return pulumix.Output[*MonitorProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitorPropertiesPtrOutput) Elem() MonitorPropertiesOutput {
@@ -2174,12 +1897,6 @@ func (o MonitorPropertiesResponseOutput) ToMonitorPropertiesResponseOutputWithCo
 	return o
 }
 
-func (o MonitorPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MonitorPropertiesResponse] {
-	return pulumix.Output[MonitorPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Datadog organization properties
 func (o MonitorPropertiesResponseOutput) DatadogOrganizationProperties() DatadogOrganizationPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v MonitorPropertiesResponse) *DatadogOrganizationPropertiesResponse {
@@ -2244,12 +1961,6 @@ func (o MonitoredResourceResponseOutput) ToMonitoredResourceResponseOutputWithCo
 	return o
 }
 
-func (o MonitoredResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoredResourceResponse] {
-	return pulumix.Output[MonitoredResourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ARM id of the resource.
 func (o MonitoredResourceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MonitoredResourceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -2287,12 +1998,6 @@ func (o MonitoredResourceResponseArrayOutput) ToMonitoredResourceResponseArrayOu
 
 func (o MonitoredResourceResponseArrayOutput) ToMonitoredResourceResponseArrayOutputWithContext(ctx context.Context) MonitoredResourceResponseArrayOutput {
 	return o
-}
-
-func (o MonitoredResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MonitoredResourceResponse] {
-	return pulumix.Output[[]MonitoredResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitoredResourceResponseArrayOutput) Index(i pulumi.IntInput) MonitoredResourceResponseOutput {
@@ -2348,12 +2053,6 @@ func (i MonitoredSubscriptionTypeArgs) ToMonitoredSubscriptionTypeOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoredSubscriptionTypeOutput)
 }
 
-func (i MonitoredSubscriptionTypeArgs) ToOutput(ctx context.Context) pulumix.Output[MonitoredSubscriptionType] {
-	return pulumix.Output[MonitoredSubscriptionType]{
-		OutputState: i.ToMonitoredSubscriptionTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MonitoredSubscriptionTypeArrayInput is an input type that accepts MonitoredSubscriptionTypeArray and MonitoredSubscriptionTypeArrayOutput values.
 // You can construct a concrete instance of `MonitoredSubscriptionTypeArrayInput` via:
 //
@@ -2379,12 +2078,6 @@ func (i MonitoredSubscriptionTypeArray) ToMonitoredSubscriptionTypeArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoredSubscriptionTypeArrayOutput)
 }
 
-func (i MonitoredSubscriptionTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]MonitoredSubscriptionType] {
-	return pulumix.Output[[]MonitoredSubscriptionType]{
-		OutputState: i.ToMonitoredSubscriptionTypeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The list of subscriptions and it's monitoring status by current Datadog monitor.
 type MonitoredSubscriptionTypeOutput struct{ *pulumi.OutputState }
 
@@ -2398,12 +2091,6 @@ func (o MonitoredSubscriptionTypeOutput) ToMonitoredSubscriptionTypeOutput() Mon
 
 func (o MonitoredSubscriptionTypeOutput) ToMonitoredSubscriptionTypeOutputWithContext(ctx context.Context) MonitoredSubscriptionTypeOutput {
 	return o
-}
-
-func (o MonitoredSubscriptionTypeOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoredSubscriptionType] {
-	return pulumix.Output[MonitoredSubscriptionType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The reason of not monitoring the subscription.
@@ -2440,12 +2127,6 @@ func (o MonitoredSubscriptionTypeArrayOutput) ToMonitoredSubscriptionTypeArrayOu
 	return o
 }
 
-func (o MonitoredSubscriptionTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MonitoredSubscriptionType] {
-	return pulumix.Output[[]MonitoredSubscriptionType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MonitoredSubscriptionTypeArrayOutput) Index(i pulumi.IntInput) MonitoredSubscriptionTypeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MonitoredSubscriptionType {
 		return vs[0].([]MonitoredSubscriptionType)[vs[1].(int)]
@@ -2477,12 +2158,6 @@ func (o MonitoredSubscriptionResponseOutput) ToMonitoredSubscriptionResponseOutp
 
 func (o MonitoredSubscriptionResponseOutput) ToMonitoredSubscriptionResponseOutputWithContext(ctx context.Context) MonitoredSubscriptionResponseOutput {
 	return o
-}
-
-func (o MonitoredSubscriptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoredSubscriptionResponse] {
-	return pulumix.Output[MonitoredSubscriptionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The reason of not monitoring the subscription.
@@ -2517,12 +2192,6 @@ func (o MonitoredSubscriptionResponseArrayOutput) ToMonitoredSubscriptionRespons
 
 func (o MonitoredSubscriptionResponseArrayOutput) ToMonitoredSubscriptionResponseArrayOutputWithContext(ctx context.Context) MonitoredSubscriptionResponseArrayOutput {
 	return o
-}
-
-func (o MonitoredSubscriptionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MonitoredSubscriptionResponse] {
-	return pulumix.Output[[]MonitoredSubscriptionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitoredSubscriptionResponseArrayOutput) Index(i pulumi.IntInput) MonitoredSubscriptionResponseOutput {
@@ -2574,12 +2243,6 @@ func (i MonitoringTagRulesPropertiesArgs) ToMonitoringTagRulesPropertiesOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoringTagRulesPropertiesOutput)
 }
 
-func (i MonitoringTagRulesPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[MonitoringTagRulesProperties] {
-	return pulumix.Output[MonitoringTagRulesProperties]{
-		OutputState: i.ToMonitoringTagRulesPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MonitoringTagRulesPropertiesArgs) ToMonitoringTagRulesPropertiesPtrOutput() MonitoringTagRulesPropertiesPtrOutput {
 	return i.ToMonitoringTagRulesPropertiesPtrOutputWithContext(context.Background())
 }
@@ -2621,12 +2284,6 @@ func (i *monitoringTagRulesPropertiesPtrType) ToMonitoringTagRulesPropertiesPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoringTagRulesPropertiesPtrOutput)
 }
 
-func (i *monitoringTagRulesPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*MonitoringTagRulesProperties] {
-	return pulumix.Output[*MonitoringTagRulesProperties]{
-		OutputState: i.ToMonitoringTagRulesPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Definition of the properties for a TagRules resource.
 type MonitoringTagRulesPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -2650,12 +2307,6 @@ func (o MonitoringTagRulesPropertiesOutput) ToMonitoringTagRulesPropertiesPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitoringTagRulesProperties) *MonitoringTagRulesProperties {
 		return &v
 	}).(MonitoringTagRulesPropertiesPtrOutput)
-}
-
-func (o MonitoringTagRulesPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoringTagRulesProperties] {
-	return pulumix.Output[MonitoringTagRulesProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Configuration to enable/disable auto-muting flag
@@ -2685,12 +2336,6 @@ func (o MonitoringTagRulesPropertiesPtrOutput) ToMonitoringTagRulesPropertiesPtr
 
 func (o MonitoringTagRulesPropertiesPtrOutput) ToMonitoringTagRulesPropertiesPtrOutputWithContext(ctx context.Context) MonitoringTagRulesPropertiesPtrOutput {
 	return o
-}
-
-func (o MonitoringTagRulesPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitoringTagRulesProperties] {
-	return pulumix.Output[*MonitoringTagRulesProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitoringTagRulesPropertiesPtrOutput) Elem() MonitoringTagRulesPropertiesOutput {
@@ -2759,12 +2404,6 @@ func (o MonitoringTagRulesPropertiesResponseOutput) ToMonitoringTagRulesProperti
 	return o
 }
 
-func (o MonitoringTagRulesPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoringTagRulesPropertiesResponse] {
-	return pulumix.Output[MonitoringTagRulesPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Configuration to enable/disable auto-muting flag
 func (o MonitoringTagRulesPropertiesResponseOutput) Automuting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MonitoringTagRulesPropertiesResponse) *bool { return v.Automuting }).(pulumi.BoolPtrOutput)
@@ -2796,12 +2435,6 @@ func (o MonitoringTagRulesPropertiesResponsePtrOutput) ToMonitoringTagRulesPrope
 
 func (o MonitoringTagRulesPropertiesResponsePtrOutput) ToMonitoringTagRulesPropertiesResponsePtrOutputWithContext(ctx context.Context) MonitoringTagRulesPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o MonitoringTagRulesPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitoringTagRulesPropertiesResponse] {
-	return pulumix.Output[*MonitoringTagRulesPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitoringTagRulesPropertiesResponsePtrOutput) Elem() MonitoringTagRulesPropertiesResponseOutput {
@@ -2886,12 +2519,6 @@ func (i ResourceSkuArgs) ToResourceSkuOutputWithContext(ctx context.Context) Res
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSkuOutput)
 }
 
-func (i ResourceSkuArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceSku] {
-	return pulumix.Output[ResourceSku]{
-		OutputState: i.ToResourceSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ResourceSkuArgs) ToResourceSkuPtrOutput() ResourceSkuPtrOutput {
 	return i.ToResourceSkuPtrOutputWithContext(context.Background())
 }
@@ -2933,12 +2560,6 @@ func (i *resourceSkuPtrType) ToResourceSkuPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSkuPtrOutput)
 }
 
-func (i *resourceSkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceSku] {
-	return pulumix.Output[*ResourceSku]{
-		OutputState: i.ToResourceSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ResourceSkuOutput struct{ *pulumi.OutputState }
 
 func (ResourceSkuOutput) ElementType() reflect.Type {
@@ -2963,12 +2584,6 @@ func (o ResourceSkuOutput) ToResourceSkuPtrOutputWithContext(ctx context.Context
 	}).(ResourceSkuPtrOutput)
 }
 
-func (o ResourceSkuOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSku] {
-	return pulumix.Output[ResourceSku]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the SKU.
 func (o ResourceSkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceSku) string { return v.Name }).(pulumi.StringOutput)
@@ -2986,12 +2601,6 @@ func (o ResourceSkuPtrOutput) ToResourceSkuPtrOutput() ResourceSkuPtrOutput {
 
 func (o ResourceSkuPtrOutput) ToResourceSkuPtrOutputWithContext(ctx context.Context) ResourceSkuPtrOutput {
 	return o
-}
-
-func (o ResourceSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSku] {
-	return pulumix.Output[*ResourceSku]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceSkuPtrOutput) Elem() ResourceSkuOutput {
@@ -3033,12 +2642,6 @@ func (o ResourceSkuResponseOutput) ToResourceSkuResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o ResourceSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSkuResponse] {
-	return pulumix.Output[ResourceSkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the SKU.
 func (o ResourceSkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceSkuResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -3056,12 +2659,6 @@ func (o ResourceSkuResponsePtrOutput) ToResourceSkuResponsePtrOutput() ResourceS
 
 func (o ResourceSkuResponsePtrOutput) ToResourceSkuResponsePtrOutputWithContext(ctx context.Context) ResourceSkuResponsePtrOutput {
 	return o
-}
-
-func (o ResourceSkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSkuResponse] {
-	return pulumix.Output[*ResourceSkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceSkuResponsePtrOutput) Elem() ResourceSkuResponseOutput {
@@ -3123,12 +2720,6 @@ func (i SubscriptionListArgs) ToSubscriptionListOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionListOutput)
 }
 
-func (i SubscriptionListArgs) ToOutput(ctx context.Context) pulumix.Output[SubscriptionList] {
-	return pulumix.Output[SubscriptionList]{
-		OutputState: i.ToSubscriptionListOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SubscriptionListArgs) ToSubscriptionListPtrOutput() SubscriptionListPtrOutput {
 	return i.ToSubscriptionListPtrOutputWithContext(context.Background())
 }
@@ -3170,12 +2761,6 @@ func (i *subscriptionListPtrType) ToSubscriptionListPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionListPtrOutput)
 }
 
-func (i *subscriptionListPtrType) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionList] {
-	return pulumix.Output[*SubscriptionList]{
-		OutputState: i.ToSubscriptionListPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The request to update subscriptions needed to be monitored by the Datadog monitor resource.
 type SubscriptionListOutput struct{ *pulumi.OutputState }
 
@@ -3201,12 +2786,6 @@ func (o SubscriptionListOutput) ToSubscriptionListPtrOutputWithContext(ctx conte
 	}).(SubscriptionListPtrOutput)
 }
 
-func (o SubscriptionListOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionList] {
-	return pulumix.Output[SubscriptionList]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of subscriptions and the state of the monitoring.
 func (o SubscriptionListOutput) MonitoredSubscriptionList() MonitoredSubscriptionTypeArrayOutput {
 	return o.ApplyT(func(v SubscriptionList) []MonitoredSubscriptionType { return v.MonitoredSubscriptionList }).(MonitoredSubscriptionTypeArrayOutput)
@@ -3229,12 +2808,6 @@ func (o SubscriptionListPtrOutput) ToSubscriptionListPtrOutput() SubscriptionLis
 
 func (o SubscriptionListPtrOutput) ToSubscriptionListPtrOutputWithContext(ctx context.Context) SubscriptionListPtrOutput {
 	return o
-}
-
-func (o SubscriptionListPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionList] {
-	return pulumix.Output[*SubscriptionList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubscriptionListPtrOutput) Elem() SubscriptionListOutput {
@@ -3288,12 +2861,6 @@ func (o SubscriptionListResponseOutput) ToSubscriptionListResponseOutputWithCont
 	return o
 }
 
-func (o SubscriptionListResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SubscriptionListResponse] {
-	return pulumix.Output[SubscriptionListResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of subscriptions and the state of the monitoring.
 func (o SubscriptionListResponseOutput) MonitoredSubscriptionList() MonitoredSubscriptionResponseArrayOutput {
 	return o.ApplyT(func(v SubscriptionListResponse) []MonitoredSubscriptionResponse { return v.MonitoredSubscriptionList }).(MonitoredSubscriptionResponseArrayOutput)
@@ -3328,12 +2895,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -3409,12 +2970,6 @@ func (i UserInfoArgs) ToUserInfoOutputWithContext(ctx context.Context) UserInfoO
 	return pulumi.ToOutputWithContext(ctx, i).(UserInfoOutput)
 }
 
-func (i UserInfoArgs) ToOutput(ctx context.Context) pulumix.Output[UserInfo] {
-	return pulumix.Output[UserInfo]{
-		OutputState: i.ToUserInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i UserInfoArgs) ToUserInfoPtrOutput() UserInfoPtrOutput {
 	return i.ToUserInfoPtrOutputWithContext(context.Background())
 }
@@ -3456,12 +3011,6 @@ func (i *userInfoPtrType) ToUserInfoPtrOutputWithContext(ctx context.Context) Us
 	return pulumi.ToOutputWithContext(ctx, i).(UserInfoPtrOutput)
 }
 
-func (i *userInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*UserInfo] {
-	return pulumix.Output[*UserInfo]{
-		OutputState: i.ToUserInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // User info
 type UserInfoOutput struct{ *pulumi.OutputState }
 
@@ -3485,12 +3034,6 @@ func (o UserInfoOutput) ToUserInfoPtrOutputWithContext(ctx context.Context) User
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserInfo) *UserInfo {
 		return &v
 	}).(UserInfoPtrOutput)
-}
-
-func (o UserInfoOutput) ToOutput(ctx context.Context) pulumix.Output[UserInfo] {
-	return pulumix.Output[UserInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Email of the user used by Datadog for contacting them if needed
@@ -3520,12 +3063,6 @@ func (o UserInfoPtrOutput) ToUserInfoPtrOutput() UserInfoPtrOutput {
 
 func (o UserInfoPtrOutput) ToUserInfoPtrOutputWithContext(ctx context.Context) UserInfoPtrOutput {
 	return o
-}
-
-func (o UserInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserInfo] {
-	return pulumix.Output[*UserInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserInfoPtrOutput) Elem() UserInfoOutput {
@@ -3593,12 +3130,6 @@ func (o UserInfoResponseOutput) ToUserInfoResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o UserInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserInfoResponse] {
-	return pulumix.Output[UserInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Email of the user used by Datadog for contacting them if needed
 func (o UserInfoResponseOutput) EmailAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserInfoResponse) *string { return v.EmailAddress }).(pulumi.StringPtrOutput)
@@ -3626,12 +3157,6 @@ func (o UserInfoResponsePtrOutput) ToUserInfoResponsePtrOutput() UserInfoRespons
 
 func (o UserInfoResponsePtrOutput) ToUserInfoResponsePtrOutputWithContext(ctx context.Context) UserInfoResponsePtrOutput {
 	return o
-}
-
-func (o UserInfoResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserInfoResponse] {
-	return pulumix.Output[*UserInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserInfoResponsePtrOutput) Elem() UserInfoResponseOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the environment with the specified name in the specified subscription and resource group.
@@ -107,12 +106,6 @@ func (o LookupGen2EnvironmentResultOutput) ToLookupGen2EnvironmentResultOutput()
 
 func (o LookupGen2EnvironmentResultOutput) ToLookupGen2EnvironmentResultOutputWithContext(ctx context.Context) LookupGen2EnvironmentResultOutput {
 	return o
-}
-
-func (o LookupGen2EnvironmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGen2EnvironmentResult] {
-	return pulumix.Output[LookupGen2EnvironmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time the resource was created.

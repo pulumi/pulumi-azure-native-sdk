@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a server encryption protector.
@@ -97,12 +96,6 @@ func (o LookupEncryptionProtectorResultOutput) ToLookupEncryptionProtectorResult
 
 func (o LookupEncryptionProtectorResultOutput) ToLookupEncryptionProtectorResultOutputWithContext(ctx context.Context) LookupEncryptionProtectorResultOutput {
 	return o
-}
-
-func (o LookupEncryptionProtectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEncryptionProtectorResult] {
-	return pulumix.Output[LookupEncryptionProtectorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Key auto rotation opt-in flag. Either true or false.

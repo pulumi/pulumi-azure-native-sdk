@@ -79,12 +79,6 @@ func (o AccessRightsOutput) ToAccessRightsPtrOutputWithContext(ctx context.Conte
 	}).(AccessRightsPtrOutput)
 }
 
-func (o AccessRightsOutput) ToOutput(ctx context.Context) pulumix.Output[AccessRights] {
-	return pulumix.Output[AccessRights]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessRightsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -118,12 +112,6 @@ func (o AccessRightsPtrOutput) ToAccessRightsPtrOutput() AccessRightsPtrOutput {
 
 func (o AccessRightsPtrOutput) ToAccessRightsPtrOutputWithContext(ctx context.Context) AccessRightsPtrOutput {
 	return o
-}
-
-func (o AccessRightsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessRights] {
-	return pulumix.Output[*AccessRights]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessRightsPtrOutput) Elem() AccessRightsOutput {
@@ -219,12 +207,6 @@ func (i AccessRightsArray) ToAccessRightsArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(AccessRightsArrayOutput)
 }
 
-func (i AccessRightsArray) ToOutput(ctx context.Context) pulumix.Output[[]AccessRights] {
-	return pulumix.Output[[]AccessRights]{
-		OutputState: i.ToAccessRightsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessRightsArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessRightsArrayOutput) ElementType() reflect.Type {
@@ -237,12 +219,6 @@ func (o AccessRightsArrayOutput) ToAccessRightsArrayOutput() AccessRightsArrayOu
 
 func (o AccessRightsArrayOutput) ToAccessRightsArrayOutputWithContext(ctx context.Context) AccessRightsArrayOutput {
 	return o
-}
-
-func (o AccessRightsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AccessRights] {
-	return pulumix.Output[[]AccessRights]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessRightsArrayOutput) Index(i pulumi.IntInput) AccessRightsOutput {
@@ -319,12 +295,6 @@ func (o NamespaceTypeOutput) ToNamespaceTypePtrOutputWithContext(ctx context.Con
 	}).(NamespaceTypePtrOutput)
 }
 
-func (o NamespaceTypeOutput) ToOutput(ctx context.Context) pulumix.Output[NamespaceType] {
-	return pulumix.Output[NamespaceType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NamespaceTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -358,12 +328,6 @@ func (o NamespaceTypePtrOutput) ToNamespaceTypePtrOutput() NamespaceTypePtrOutpu
 
 func (o NamespaceTypePtrOutput) ToNamespaceTypePtrOutputWithContext(ctx context.Context) NamespaceTypePtrOutput {
 	return o
-}
-
-func (o NamespaceTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NamespaceType] {
-	return pulumix.Output[*NamespaceType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NamespaceTypePtrOutput) Elem() NamespaceTypeOutput {

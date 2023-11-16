@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A datastore resource
@@ -104,12 +103,6 @@ func (o LookupDatastoreResultOutput) ToLookupDatastoreResultOutput() LookupDatas
 
 func (o LookupDatastoreResultOutput) ToLookupDatastoreResultOutputWithContext(ctx context.Context) LookupDatastoreResultOutput {
 	return o
-}
-
-func (o LookupDatastoreResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDatastoreResult] {
-	return pulumix.Output[LookupDatastoreResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An iSCSI volume

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the extended information of the specified manager name.
@@ -93,12 +92,6 @@ func (o LookupManagerExtendedInfoResultOutput) ToLookupManagerExtendedInfoResult
 
 func (o LookupManagerExtendedInfoResultOutput) ToLookupManagerExtendedInfoResultOutputWithContext(ctx context.Context) LookupManagerExtendedInfoResultOutput {
 	return o
-}
-
-func (o LookupManagerExtendedInfoResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagerExtendedInfoResult] {
-	return pulumix.Output[LookupManagerExtendedInfoResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Represents the encryption algorithm used to encrypt the keys. None - if Key is saved in plain text format. Algorithm name - if key is encrypted

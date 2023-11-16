@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Integration runtime resource type.
@@ -130,12 +129,6 @@ func (i *IntegrationRuntime) ToIntegrationRuntimeOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeOutput)
 }
 
-func (i *IntegrationRuntime) ToOutput(ctx context.Context) pulumix.Output[*IntegrationRuntime] {
-	return pulumix.Output[*IntegrationRuntime]{
-		OutputState: i.ToIntegrationRuntimeOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IntegrationRuntimeOutput struct{ *pulumi.OutputState }
 
 func (IntegrationRuntimeOutput) ElementType() reflect.Type {
@@ -148,12 +141,6 @@ func (o IntegrationRuntimeOutput) ToIntegrationRuntimeOutput() IntegrationRuntim
 
 func (o IntegrationRuntimeOutput) ToIntegrationRuntimeOutputWithContext(ctx context.Context) IntegrationRuntimeOutput {
 	return o
-}
-
-func (o IntegrationRuntimeOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationRuntime] {
-	return pulumix.Output[*IntegrationRuntime]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Etag identifies change in the resource.

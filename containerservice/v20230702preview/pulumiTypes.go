@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i AbsoluteMonthlyScheduleArgs) ToAbsoluteMonthlyScheduleOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AbsoluteMonthlyScheduleOutput)
 }
 
-func (i AbsoluteMonthlyScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[AbsoluteMonthlySchedule] {
-	return pulumix.Output[AbsoluteMonthlySchedule]{
-		OutputState: i.ToAbsoluteMonthlyScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AbsoluteMonthlyScheduleArgs) ToAbsoluteMonthlySchedulePtrOutput() AbsoluteMonthlySchedulePtrOutput {
 	return i.ToAbsoluteMonthlySchedulePtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *absoluteMonthlySchedulePtrType) ToAbsoluteMonthlySchedulePtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(AbsoluteMonthlySchedulePtrOutput)
 }
 
-func (i *absoluteMonthlySchedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*AbsoluteMonthlySchedule] {
-	return pulumix.Output[*AbsoluteMonthlySchedule]{
-		OutputState: i.ToAbsoluteMonthlySchedulePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
 type AbsoluteMonthlyScheduleOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o AbsoluteMonthlyScheduleOutput) ToAbsoluteMonthlySchedulePtrOutputWithCon
 	}).(AbsoluteMonthlySchedulePtrOutput)
 }
 
-func (o AbsoluteMonthlyScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[AbsoluteMonthlySchedule] {
-	return pulumix.Output[AbsoluteMonthlySchedule]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The date of the month.
 func (o AbsoluteMonthlyScheduleOutput) DayOfMonth() pulumi.IntOutput {
 	return o.ApplyT(func(v AbsoluteMonthlySchedule) int { return v.DayOfMonth }).(pulumi.IntOutput)
@@ -159,12 +140,6 @@ func (o AbsoluteMonthlySchedulePtrOutput) ToAbsoluteMonthlySchedulePtrOutput() A
 
 func (o AbsoluteMonthlySchedulePtrOutput) ToAbsoluteMonthlySchedulePtrOutputWithContext(ctx context.Context) AbsoluteMonthlySchedulePtrOutput {
 	return o
-}
-
-func (o AbsoluteMonthlySchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AbsoluteMonthlySchedule] {
-	return pulumix.Output[*AbsoluteMonthlySchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AbsoluteMonthlySchedulePtrOutput) Elem() AbsoluteMonthlyScheduleOutput {
@@ -220,12 +195,6 @@ func (o AbsoluteMonthlyScheduleResponseOutput) ToAbsoluteMonthlyScheduleResponse
 	return o
 }
 
-func (o AbsoluteMonthlyScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AbsoluteMonthlyScheduleResponse] {
-	return pulumix.Output[AbsoluteMonthlyScheduleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The date of the month.
 func (o AbsoluteMonthlyScheduleResponseOutput) DayOfMonth() pulumi.IntOutput {
 	return o.ApplyT(func(v AbsoluteMonthlyScheduleResponse) int { return v.DayOfMonth }).(pulumi.IntOutput)
@@ -248,12 +217,6 @@ func (o AbsoluteMonthlyScheduleResponsePtrOutput) ToAbsoluteMonthlyScheduleRespo
 
 func (o AbsoluteMonthlyScheduleResponsePtrOutput) ToAbsoluteMonthlyScheduleResponsePtrOutputWithContext(ctx context.Context) AbsoluteMonthlyScheduleResponsePtrOutput {
 	return o
-}
-
-func (o AbsoluteMonthlyScheduleResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AbsoluteMonthlyScheduleResponse] {
-	return pulumix.Output[*AbsoluteMonthlyScheduleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AbsoluteMonthlyScheduleResponsePtrOutput) Elem() AbsoluteMonthlyScheduleResponseOutput {
@@ -329,12 +292,6 @@ func (i AgentPoolNetworkProfileArgs) ToAgentPoolNetworkProfileOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolNetworkProfileOutput)
 }
 
-func (i AgentPoolNetworkProfileArgs) ToOutput(ctx context.Context) pulumix.Output[AgentPoolNetworkProfile] {
-	return pulumix.Output[AgentPoolNetworkProfile]{
-		OutputState: i.ToAgentPoolNetworkProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AgentPoolNetworkProfileArgs) ToAgentPoolNetworkProfilePtrOutput() AgentPoolNetworkProfilePtrOutput {
 	return i.ToAgentPoolNetworkProfilePtrOutputWithContext(context.Background())
 }
@@ -376,12 +333,6 @@ func (i *agentPoolNetworkProfilePtrType) ToAgentPoolNetworkProfilePtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolNetworkProfilePtrOutput)
 }
 
-func (i *agentPoolNetworkProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolNetworkProfile] {
-	return pulumix.Output[*AgentPoolNetworkProfile]{
-		OutputState: i.ToAgentPoolNetworkProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Network settings of an agent pool.
 type AgentPoolNetworkProfileOutput struct{ *pulumi.OutputState }
 
@@ -405,12 +356,6 @@ func (o AgentPoolNetworkProfileOutput) ToAgentPoolNetworkProfilePtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AgentPoolNetworkProfile) *AgentPoolNetworkProfile {
 		return &v
 	}).(AgentPoolNetworkProfilePtrOutput)
-}
-
-func (o AgentPoolNetworkProfileOutput) ToOutput(ctx context.Context) pulumix.Output[AgentPoolNetworkProfile] {
-	return pulumix.Output[AgentPoolNetworkProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The port ranges that are allowed to access. The specified ranges are allowed to overlap.
@@ -440,12 +385,6 @@ func (o AgentPoolNetworkProfilePtrOutput) ToAgentPoolNetworkProfilePtrOutput() A
 
 func (o AgentPoolNetworkProfilePtrOutput) ToAgentPoolNetworkProfilePtrOutputWithContext(ctx context.Context) AgentPoolNetworkProfilePtrOutput {
 	return o
-}
-
-func (o AgentPoolNetworkProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolNetworkProfile] {
-	return pulumix.Output[*AgentPoolNetworkProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AgentPoolNetworkProfilePtrOutput) Elem() AgentPoolNetworkProfileOutput {
@@ -513,12 +452,6 @@ func (o AgentPoolNetworkProfileResponseOutput) ToAgentPoolNetworkProfileResponse
 	return o
 }
 
-func (o AgentPoolNetworkProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AgentPoolNetworkProfileResponse] {
-	return pulumix.Output[AgentPoolNetworkProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The port ranges that are allowed to access. The specified ranges are allowed to overlap.
 func (o AgentPoolNetworkProfileResponseOutput) AllowedHostPorts() PortRangeResponseArrayOutput {
 	return o.ApplyT(func(v AgentPoolNetworkProfileResponse) []PortRangeResponse { return v.AllowedHostPorts }).(PortRangeResponseArrayOutput)
@@ -546,12 +479,6 @@ func (o AgentPoolNetworkProfileResponsePtrOutput) ToAgentPoolNetworkProfileRespo
 
 func (o AgentPoolNetworkProfileResponsePtrOutput) ToAgentPoolNetworkProfileResponsePtrOutputWithContext(ctx context.Context) AgentPoolNetworkProfileResponsePtrOutput {
 	return o
-}
-
-func (o AgentPoolNetworkProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolNetworkProfileResponse] {
-	return pulumix.Output[*AgentPoolNetworkProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AgentPoolNetworkProfileResponsePtrOutput) Elem() AgentPoolNetworkProfileResponseOutput {
@@ -629,12 +556,6 @@ func (i AgentPoolSecurityProfileArgs) ToAgentPoolSecurityProfileOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolSecurityProfileOutput)
 }
 
-func (i AgentPoolSecurityProfileArgs) ToOutput(ctx context.Context) pulumix.Output[AgentPoolSecurityProfile] {
-	return pulumix.Output[AgentPoolSecurityProfile]{
-		OutputState: i.ToAgentPoolSecurityProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AgentPoolSecurityProfileArgs) ToAgentPoolSecurityProfilePtrOutput() AgentPoolSecurityProfilePtrOutput {
 	return i.ToAgentPoolSecurityProfilePtrOutputWithContext(context.Background())
 }
@@ -676,12 +597,6 @@ func (i *agentPoolSecurityProfilePtrType) ToAgentPoolSecurityProfilePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolSecurityProfilePtrOutput)
 }
 
-func (i *agentPoolSecurityProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolSecurityProfile] {
-	return pulumix.Output[*AgentPoolSecurityProfile]{
-		OutputState: i.ToAgentPoolSecurityProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The security settings of an agent pool.
 type AgentPoolSecurityProfileOutput struct{ *pulumi.OutputState }
 
@@ -707,12 +622,6 @@ func (o AgentPoolSecurityProfileOutput) ToAgentPoolSecurityProfilePtrOutputWithC
 	}).(AgentPoolSecurityProfilePtrOutput)
 }
 
-func (o AgentPoolSecurityProfileOutput) ToOutput(ctx context.Context) pulumix.Output[AgentPoolSecurityProfile] {
-	return pulumix.Output[AgentPoolSecurityProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // SSH access method of an agent pool.
 func (o AgentPoolSecurityProfileOutput) SshAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AgentPoolSecurityProfile) *string { return v.SshAccess }).(pulumi.StringPtrOutput)
@@ -730,12 +639,6 @@ func (o AgentPoolSecurityProfilePtrOutput) ToAgentPoolSecurityProfilePtrOutput()
 
 func (o AgentPoolSecurityProfilePtrOutput) ToAgentPoolSecurityProfilePtrOutputWithContext(ctx context.Context) AgentPoolSecurityProfilePtrOutput {
 	return o
-}
-
-func (o AgentPoolSecurityProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolSecurityProfile] {
-	return pulumix.Output[*AgentPoolSecurityProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AgentPoolSecurityProfilePtrOutput) Elem() AgentPoolSecurityProfileOutput {
@@ -779,12 +682,6 @@ func (o AgentPoolSecurityProfileResponseOutput) ToAgentPoolSecurityProfileRespon
 	return o
 }
 
-func (o AgentPoolSecurityProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AgentPoolSecurityProfileResponse] {
-	return pulumix.Output[AgentPoolSecurityProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // SSH access method of an agent pool.
 func (o AgentPoolSecurityProfileResponseOutput) SshAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AgentPoolSecurityProfileResponse) *string { return v.SshAccess }).(pulumi.StringPtrOutput)
@@ -802,12 +699,6 @@ func (o AgentPoolSecurityProfileResponsePtrOutput) ToAgentPoolSecurityProfileRes
 
 func (o AgentPoolSecurityProfileResponsePtrOutput) ToAgentPoolSecurityProfileResponsePtrOutputWithContext(ctx context.Context) AgentPoolSecurityProfileResponsePtrOutput {
 	return o
-}
-
-func (o AgentPoolSecurityProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolSecurityProfileResponse] {
-	return pulumix.Output[*AgentPoolSecurityProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AgentPoolSecurityProfileResponsePtrOutput) Elem() AgentPoolSecurityProfileResponseOutput {
@@ -869,12 +760,6 @@ func (i AgentPoolUpgradeSettingsArgs) ToAgentPoolUpgradeSettingsOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolUpgradeSettingsOutput)
 }
 
-func (i AgentPoolUpgradeSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[AgentPoolUpgradeSettings] {
-	return pulumix.Output[AgentPoolUpgradeSettings]{
-		OutputState: i.ToAgentPoolUpgradeSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AgentPoolUpgradeSettingsArgs) ToAgentPoolUpgradeSettingsPtrOutput() AgentPoolUpgradeSettingsPtrOutput {
 	return i.ToAgentPoolUpgradeSettingsPtrOutputWithContext(context.Background())
 }
@@ -916,12 +801,6 @@ func (i *agentPoolUpgradeSettingsPtrType) ToAgentPoolUpgradeSettingsPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolUpgradeSettingsPtrOutput)
 }
 
-func (i *agentPoolUpgradeSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolUpgradeSettings] {
-	return pulumix.Output[*AgentPoolUpgradeSettings]{
-		OutputState: i.ToAgentPoolUpgradeSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Settings for upgrading an agentpool
 type AgentPoolUpgradeSettingsOutput struct{ *pulumi.OutputState }
 
@@ -947,12 +826,6 @@ func (o AgentPoolUpgradeSettingsOutput) ToAgentPoolUpgradeSettingsPtrOutputWithC
 	}).(AgentPoolUpgradeSettingsPtrOutput)
 }
 
-func (o AgentPoolUpgradeSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[AgentPoolUpgradeSettings] {
-	return pulumix.Output[AgentPoolUpgradeSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The amount of time (in minutes) to wait on eviction of pods and graceful termination per node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If not specified, the default is 30 minutes.
 func (o AgentPoolUpgradeSettingsOutput) DrainTimeoutInMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AgentPoolUpgradeSettings) *int { return v.DrainTimeoutInMinutes }).(pulumi.IntPtrOutput)
@@ -975,12 +848,6 @@ func (o AgentPoolUpgradeSettingsPtrOutput) ToAgentPoolUpgradeSettingsPtrOutput()
 
 func (o AgentPoolUpgradeSettingsPtrOutput) ToAgentPoolUpgradeSettingsPtrOutputWithContext(ctx context.Context) AgentPoolUpgradeSettingsPtrOutput {
 	return o
-}
-
-func (o AgentPoolUpgradeSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolUpgradeSettings] {
-	return pulumix.Output[*AgentPoolUpgradeSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AgentPoolUpgradeSettingsPtrOutput) Elem() AgentPoolUpgradeSettingsOutput {
@@ -1036,12 +903,6 @@ func (o AgentPoolUpgradeSettingsResponseOutput) ToAgentPoolUpgradeSettingsRespon
 	return o
 }
 
-func (o AgentPoolUpgradeSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AgentPoolUpgradeSettingsResponse] {
-	return pulumix.Output[AgentPoolUpgradeSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The amount of time (in minutes) to wait on eviction of pods and graceful termination per node. This eviction wait time honors waiting on pod disruption budgets. If this time is exceeded, the upgrade fails. If not specified, the default is 30 minutes.
 func (o AgentPoolUpgradeSettingsResponseOutput) DrainTimeoutInMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AgentPoolUpgradeSettingsResponse) *int { return v.DrainTimeoutInMinutes }).(pulumi.IntPtrOutput)
@@ -1064,12 +925,6 @@ func (o AgentPoolUpgradeSettingsResponsePtrOutput) ToAgentPoolUpgradeSettingsRes
 
 func (o AgentPoolUpgradeSettingsResponsePtrOutput) ToAgentPoolUpgradeSettingsResponsePtrOutputWithContext(ctx context.Context) AgentPoolUpgradeSettingsResponsePtrOutput {
 	return o
-}
-
-func (o AgentPoolUpgradeSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolUpgradeSettingsResponse] {
-	return pulumix.Output[*AgentPoolUpgradeSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AgentPoolUpgradeSettingsResponsePtrOutput) Elem() AgentPoolUpgradeSettingsResponseOutput {
@@ -1137,12 +992,6 @@ func (i AgentPoolWindowsProfileArgs) ToAgentPoolWindowsProfileOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolWindowsProfileOutput)
 }
 
-func (i AgentPoolWindowsProfileArgs) ToOutput(ctx context.Context) pulumix.Output[AgentPoolWindowsProfile] {
-	return pulumix.Output[AgentPoolWindowsProfile]{
-		OutputState: i.ToAgentPoolWindowsProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AgentPoolWindowsProfileArgs) ToAgentPoolWindowsProfilePtrOutput() AgentPoolWindowsProfilePtrOutput {
 	return i.ToAgentPoolWindowsProfilePtrOutputWithContext(context.Background())
 }
@@ -1184,12 +1033,6 @@ func (i *agentPoolWindowsProfilePtrType) ToAgentPoolWindowsProfilePtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(AgentPoolWindowsProfilePtrOutput)
 }
 
-func (i *agentPoolWindowsProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolWindowsProfile] {
-	return pulumix.Output[*AgentPoolWindowsProfile]{
-		OutputState: i.ToAgentPoolWindowsProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Windows agent pool's specific profile.
 type AgentPoolWindowsProfileOutput struct{ *pulumi.OutputState }
 
@@ -1215,12 +1058,6 @@ func (o AgentPoolWindowsProfileOutput) ToAgentPoolWindowsProfilePtrOutputWithCon
 	}).(AgentPoolWindowsProfilePtrOutput)
 }
 
-func (o AgentPoolWindowsProfileOutput) ToOutput(ctx context.Context) pulumix.Output[AgentPoolWindowsProfile] {
-	return pulumix.Output[AgentPoolWindowsProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The default value is false. Outbound NAT can only be disabled if the cluster outboundType is NAT Gateway and the Windows agent pool does not have node public IP enabled.
 func (o AgentPoolWindowsProfileOutput) DisableOutboundNat() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AgentPoolWindowsProfile) *bool { return v.DisableOutboundNat }).(pulumi.BoolPtrOutput)
@@ -1238,12 +1075,6 @@ func (o AgentPoolWindowsProfilePtrOutput) ToAgentPoolWindowsProfilePtrOutput() A
 
 func (o AgentPoolWindowsProfilePtrOutput) ToAgentPoolWindowsProfilePtrOutputWithContext(ctx context.Context) AgentPoolWindowsProfilePtrOutput {
 	return o
-}
-
-func (o AgentPoolWindowsProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolWindowsProfile] {
-	return pulumix.Output[*AgentPoolWindowsProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AgentPoolWindowsProfilePtrOutput) Elem() AgentPoolWindowsProfileOutput {
@@ -1287,12 +1118,6 @@ func (o AgentPoolWindowsProfileResponseOutput) ToAgentPoolWindowsProfileResponse
 	return o
 }
 
-func (o AgentPoolWindowsProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AgentPoolWindowsProfileResponse] {
-	return pulumix.Output[AgentPoolWindowsProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The default value is false. Outbound NAT can only be disabled if the cluster outboundType is NAT Gateway and the Windows agent pool does not have node public IP enabled.
 func (o AgentPoolWindowsProfileResponseOutput) DisableOutboundNat() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AgentPoolWindowsProfileResponse) *bool { return v.DisableOutboundNat }).(pulumi.BoolPtrOutput)
@@ -1310,12 +1135,6 @@ func (o AgentPoolWindowsProfileResponsePtrOutput) ToAgentPoolWindowsProfileRespo
 
 func (o AgentPoolWindowsProfileResponsePtrOutput) ToAgentPoolWindowsProfileResponsePtrOutputWithContext(ctx context.Context) AgentPoolWindowsProfileResponsePtrOutput {
 	return o
-}
-
-func (o AgentPoolWindowsProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AgentPoolWindowsProfileResponse] {
-	return pulumix.Output[*AgentPoolWindowsProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AgentPoolWindowsProfileResponsePtrOutput) Elem() AgentPoolWindowsProfileResponseOutput {
@@ -1409,12 +1228,6 @@ func (i AzureKeyVaultKmsArgs) ToAzureKeyVaultKmsOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AzureKeyVaultKmsOutput)
 }
 
-func (i AzureKeyVaultKmsArgs) ToOutput(ctx context.Context) pulumix.Output[AzureKeyVaultKms] {
-	return pulumix.Output[AzureKeyVaultKms]{
-		OutputState: i.ToAzureKeyVaultKmsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AzureKeyVaultKmsArgs) ToAzureKeyVaultKmsPtrOutput() AzureKeyVaultKmsPtrOutput {
 	return i.ToAzureKeyVaultKmsPtrOutputWithContext(context.Background())
 }
@@ -1456,12 +1269,6 @@ func (i *azureKeyVaultKmsPtrType) ToAzureKeyVaultKmsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(AzureKeyVaultKmsPtrOutput)
 }
 
-func (i *azureKeyVaultKmsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AzureKeyVaultKms] {
-	return pulumix.Output[*AzureKeyVaultKms]{
-		OutputState: i.ToAzureKeyVaultKmsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Azure Key Vault key management service settings for the security profile.
 type AzureKeyVaultKmsOutput struct{ *pulumi.OutputState }
 
@@ -1485,12 +1292,6 @@ func (o AzureKeyVaultKmsOutput) ToAzureKeyVaultKmsPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureKeyVaultKms) *AzureKeyVaultKms {
 		return &v
 	}).(AzureKeyVaultKmsPtrOutput)
-}
-
-func (o AzureKeyVaultKmsOutput) ToOutput(ctx context.Context) pulumix.Output[AzureKeyVaultKms] {
-	return pulumix.Output[AzureKeyVaultKms]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to enable Azure Key Vault key management service. The default is false.
@@ -1525,12 +1326,6 @@ func (o AzureKeyVaultKmsPtrOutput) ToAzureKeyVaultKmsPtrOutput() AzureKeyVaultKm
 
 func (o AzureKeyVaultKmsPtrOutput) ToAzureKeyVaultKmsPtrOutputWithContext(ctx context.Context) AzureKeyVaultKmsPtrOutput {
 	return o
-}
-
-func (o AzureKeyVaultKmsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureKeyVaultKms] {
-	return pulumix.Output[*AzureKeyVaultKms]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureKeyVaultKmsPtrOutput) Elem() AzureKeyVaultKmsOutput {
@@ -1623,12 +1418,6 @@ func (o AzureKeyVaultKmsResponseOutput) ToAzureKeyVaultKmsResponseOutputWithCont
 	return o
 }
 
-func (o AzureKeyVaultKmsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureKeyVaultKmsResponse] {
-	return pulumix.Output[AzureKeyVaultKmsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable Azure Key Vault key management service. The default is false.
 func (o AzureKeyVaultKmsResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AzureKeyVaultKmsResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -1661,12 +1450,6 @@ func (o AzureKeyVaultKmsResponsePtrOutput) ToAzureKeyVaultKmsResponsePtrOutput()
 
 func (o AzureKeyVaultKmsResponsePtrOutput) ToAzureKeyVaultKmsResponsePtrOutputWithContext(ctx context.Context) AzureKeyVaultKmsResponsePtrOutput {
 	return o
-}
-
-func (o AzureKeyVaultKmsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureKeyVaultKmsResponse] {
-	return pulumix.Output[*AzureKeyVaultKmsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureKeyVaultKmsResponsePtrOutput) Elem() AzureKeyVaultKmsResponseOutput {
@@ -1754,12 +1537,6 @@ func (i ClusterUpgradeSettingsArgs) ToClusterUpgradeSettingsOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterUpgradeSettingsOutput)
 }
 
-func (i ClusterUpgradeSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[ClusterUpgradeSettings] {
-	return pulumix.Output[ClusterUpgradeSettings]{
-		OutputState: i.ToClusterUpgradeSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ClusterUpgradeSettingsArgs) ToClusterUpgradeSettingsPtrOutput() ClusterUpgradeSettingsPtrOutput {
 	return i.ToClusterUpgradeSettingsPtrOutputWithContext(context.Background())
 }
@@ -1801,12 +1578,6 @@ func (i *clusterUpgradeSettingsPtrType) ToClusterUpgradeSettingsPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterUpgradeSettingsPtrOutput)
 }
 
-func (i *clusterUpgradeSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ClusterUpgradeSettings] {
-	return pulumix.Output[*ClusterUpgradeSettings]{
-		OutputState: i.ToClusterUpgradeSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Settings for upgrading a cluster.
 type ClusterUpgradeSettingsOutput struct{ *pulumi.OutputState }
 
@@ -1832,12 +1603,6 @@ func (o ClusterUpgradeSettingsOutput) ToClusterUpgradeSettingsPtrOutputWithConte
 	}).(ClusterUpgradeSettingsPtrOutput)
 }
 
-func (o ClusterUpgradeSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterUpgradeSettings] {
-	return pulumix.Output[ClusterUpgradeSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Settings for overrides.
 func (o ClusterUpgradeSettingsOutput) OverrideSettings() UpgradeOverrideSettingsPtrOutput {
 	return o.ApplyT(func(v ClusterUpgradeSettings) *UpgradeOverrideSettings { return v.OverrideSettings }).(UpgradeOverrideSettingsPtrOutput)
@@ -1855,12 +1620,6 @@ func (o ClusterUpgradeSettingsPtrOutput) ToClusterUpgradeSettingsPtrOutput() Clu
 
 func (o ClusterUpgradeSettingsPtrOutput) ToClusterUpgradeSettingsPtrOutputWithContext(ctx context.Context) ClusterUpgradeSettingsPtrOutput {
 	return o
-}
-
-func (o ClusterUpgradeSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterUpgradeSettings] {
-	return pulumix.Output[*ClusterUpgradeSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterUpgradeSettingsPtrOutput) Elem() ClusterUpgradeSettingsOutput {
@@ -1904,12 +1663,6 @@ func (o ClusterUpgradeSettingsResponseOutput) ToClusterUpgradeSettingsResponseOu
 	return o
 }
 
-func (o ClusterUpgradeSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ClusterUpgradeSettingsResponse] {
-	return pulumix.Output[ClusterUpgradeSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Settings for overrides.
 func (o ClusterUpgradeSettingsResponseOutput) OverrideSettings() UpgradeOverrideSettingsResponsePtrOutput {
 	return o.ApplyT(func(v ClusterUpgradeSettingsResponse) *UpgradeOverrideSettingsResponse { return v.OverrideSettings }).(UpgradeOverrideSettingsResponsePtrOutput)
@@ -1927,12 +1680,6 @@ func (o ClusterUpgradeSettingsResponsePtrOutput) ToClusterUpgradeSettingsRespons
 
 func (o ClusterUpgradeSettingsResponsePtrOutput) ToClusterUpgradeSettingsResponsePtrOutputWithContext(ctx context.Context) ClusterUpgradeSettingsResponsePtrOutput {
 	return o
-}
-
-func (o ClusterUpgradeSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ClusterUpgradeSettingsResponse] {
-	return pulumix.Output[*ClusterUpgradeSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ClusterUpgradeSettingsResponsePtrOutput) Elem() ClusterUpgradeSettingsResponseOutput {
@@ -1994,12 +1741,6 @@ func (i ContainerServiceLinuxProfileArgs) ToContainerServiceLinuxProfileOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerServiceLinuxProfileOutput)
 }
 
-func (i ContainerServiceLinuxProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceLinuxProfile] {
-	return pulumix.Output[ContainerServiceLinuxProfile]{
-		OutputState: i.ToContainerServiceLinuxProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerServiceLinuxProfileArgs) ToContainerServiceLinuxProfilePtrOutput() ContainerServiceLinuxProfilePtrOutput {
 	return i.ToContainerServiceLinuxProfilePtrOutputWithContext(context.Background())
 }
@@ -2041,12 +1782,6 @@ func (i *containerServiceLinuxProfilePtrType) ToContainerServiceLinuxProfilePtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerServiceLinuxProfilePtrOutput)
 }
 
-func (i *containerServiceLinuxProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceLinuxProfile] {
-	return pulumix.Output[*ContainerServiceLinuxProfile]{
-		OutputState: i.ToContainerServiceLinuxProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Profile for Linux VMs in the container service cluster.
 type ContainerServiceLinuxProfileOutput struct{ *pulumi.OutputState }
 
@@ -2072,12 +1807,6 @@ func (o ContainerServiceLinuxProfileOutput) ToContainerServiceLinuxProfilePtrOut
 	}).(ContainerServiceLinuxProfilePtrOutput)
 }
 
-func (o ContainerServiceLinuxProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceLinuxProfile] {
-	return pulumix.Output[ContainerServiceLinuxProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The administrator username to use for Linux VMs.
 func (o ContainerServiceLinuxProfileOutput) AdminUsername() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerServiceLinuxProfile) string { return v.AdminUsername }).(pulumi.StringOutput)
@@ -2100,12 +1829,6 @@ func (o ContainerServiceLinuxProfilePtrOutput) ToContainerServiceLinuxProfilePtr
 
 func (o ContainerServiceLinuxProfilePtrOutput) ToContainerServiceLinuxProfilePtrOutputWithContext(ctx context.Context) ContainerServiceLinuxProfilePtrOutput {
 	return o
-}
-
-func (o ContainerServiceLinuxProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceLinuxProfile] {
-	return pulumix.Output[*ContainerServiceLinuxProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerServiceLinuxProfilePtrOutput) Elem() ContainerServiceLinuxProfileOutput {
@@ -2161,12 +1884,6 @@ func (o ContainerServiceLinuxProfileResponseOutput) ToContainerServiceLinuxProfi
 	return o
 }
 
-func (o ContainerServiceLinuxProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceLinuxProfileResponse] {
-	return pulumix.Output[ContainerServiceLinuxProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The administrator username to use for Linux VMs.
 func (o ContainerServiceLinuxProfileResponseOutput) AdminUsername() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerServiceLinuxProfileResponse) string { return v.AdminUsername }).(pulumi.StringOutput)
@@ -2189,12 +1906,6 @@ func (o ContainerServiceLinuxProfileResponsePtrOutput) ToContainerServiceLinuxPr
 
 func (o ContainerServiceLinuxProfileResponsePtrOutput) ToContainerServiceLinuxProfileResponsePtrOutputWithContext(ctx context.Context) ContainerServiceLinuxProfileResponsePtrOutput {
 	return o
-}
-
-func (o ContainerServiceLinuxProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceLinuxProfileResponse] {
-	return pulumix.Output[*ContainerServiceLinuxProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerServiceLinuxProfileResponsePtrOutput) Elem() ContainerServiceLinuxProfileResponseOutput {
@@ -2376,12 +2087,6 @@ func (i ContainerServiceNetworkProfileArgs) ToContainerServiceNetworkProfileOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerServiceNetworkProfileOutput)
 }
 
-func (i ContainerServiceNetworkProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceNetworkProfile] {
-	return pulumix.Output[ContainerServiceNetworkProfile]{
-		OutputState: i.ToContainerServiceNetworkProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerServiceNetworkProfileArgs) ToContainerServiceNetworkProfilePtrOutput() ContainerServiceNetworkProfilePtrOutput {
 	return i.ToContainerServiceNetworkProfilePtrOutputWithContext(context.Background())
 }
@@ -2423,12 +2128,6 @@ func (i *containerServiceNetworkProfilePtrType) ToContainerServiceNetworkProfile
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerServiceNetworkProfilePtrOutput)
 }
 
-func (i *containerServiceNetworkProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceNetworkProfile] {
-	return pulumix.Output[*ContainerServiceNetworkProfile]{
-		OutputState: i.ToContainerServiceNetworkProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Profile of network configuration.
 type ContainerServiceNetworkProfileOutput struct{ *pulumi.OutputState }
 
@@ -2452,12 +2151,6 @@ func (o ContainerServiceNetworkProfileOutput) ToContainerServiceNetworkProfilePt
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerServiceNetworkProfile) *ContainerServiceNetworkProfile {
 		return &v
 	}).(ContainerServiceNetworkProfilePtrOutput)
-}
-
-func (o ContainerServiceNetworkProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceNetworkProfile] {
-	return pulumix.Output[ContainerServiceNetworkProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
@@ -2561,12 +2254,6 @@ func (o ContainerServiceNetworkProfilePtrOutput) ToContainerServiceNetworkProfil
 
 func (o ContainerServiceNetworkProfilePtrOutput) ToContainerServiceNetworkProfilePtrOutputWithContext(ctx context.Context) ContainerServiceNetworkProfilePtrOutput {
 	return o
-}
-
-func (o ContainerServiceNetworkProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceNetworkProfile] {
-	return pulumix.Output[*ContainerServiceNetworkProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerServiceNetworkProfilePtrOutput) Elem() ContainerServiceNetworkProfileOutput {
@@ -2796,12 +2483,6 @@ func (i ContainerServiceNetworkProfileIpvsConfigArgs) ToContainerServiceNetworkP
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerServiceNetworkProfileIpvsConfigOutput)
 }
 
-func (i ContainerServiceNetworkProfileIpvsConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceNetworkProfileIpvsConfig] {
-	return pulumix.Output[ContainerServiceNetworkProfileIpvsConfig]{
-		OutputState: i.ToContainerServiceNetworkProfileIpvsConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerServiceNetworkProfileIpvsConfigArgs) ToContainerServiceNetworkProfileIpvsConfigPtrOutput() ContainerServiceNetworkProfileIpvsConfigPtrOutput {
 	return i.ToContainerServiceNetworkProfileIpvsConfigPtrOutputWithContext(context.Background())
 }
@@ -2843,12 +2524,6 @@ func (i *containerServiceNetworkProfileIpvsConfigPtrType) ToContainerServiceNetw
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerServiceNetworkProfileIpvsConfigPtrOutput)
 }
 
-func (i *containerServiceNetworkProfileIpvsConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceNetworkProfileIpvsConfig] {
-	return pulumix.Output[*ContainerServiceNetworkProfileIpvsConfig]{
-		OutputState: i.ToContainerServiceNetworkProfileIpvsConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Holds configuration customizations for IPVS. May only be specified if 'mode' is set to 'IPVS'.
 type ContainerServiceNetworkProfileIpvsConfigOutput struct{ *pulumi.OutputState }
 
@@ -2872,12 +2547,6 @@ func (o ContainerServiceNetworkProfileIpvsConfigOutput) ToContainerServiceNetwor
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerServiceNetworkProfileIpvsConfig) *ContainerServiceNetworkProfileIpvsConfig {
 		return &v
 	}).(ContainerServiceNetworkProfileIpvsConfigPtrOutput)
-}
-
-func (o ContainerServiceNetworkProfileIpvsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceNetworkProfileIpvsConfig] {
-	return pulumix.Output[ContainerServiceNetworkProfileIpvsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // IPVS scheduler, for more information please see http://www.linuxvirtualserver.org/docs/scheduling.html.
@@ -2912,12 +2581,6 @@ func (o ContainerServiceNetworkProfileIpvsConfigPtrOutput) ToContainerServiceNet
 
 func (o ContainerServiceNetworkProfileIpvsConfigPtrOutput) ToContainerServiceNetworkProfileIpvsConfigPtrOutputWithContext(ctx context.Context) ContainerServiceNetworkProfileIpvsConfigPtrOutput {
 	return o
-}
-
-func (o ContainerServiceNetworkProfileIpvsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceNetworkProfileIpvsConfig] {
-	return pulumix.Output[*ContainerServiceNetworkProfileIpvsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerServiceNetworkProfileIpvsConfigPtrOutput) Elem() ContainerServiceNetworkProfileIpvsConfigOutput {
@@ -3013,12 +2676,6 @@ func (i ContainerServiceNetworkProfileKubeProxyConfigArgs) ToContainerServiceNet
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerServiceNetworkProfileKubeProxyConfigOutput)
 }
 
-func (i ContainerServiceNetworkProfileKubeProxyConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceNetworkProfileKubeProxyConfig] {
-	return pulumix.Output[ContainerServiceNetworkProfileKubeProxyConfig]{
-		OutputState: i.ToContainerServiceNetworkProfileKubeProxyConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerServiceNetworkProfileKubeProxyConfigArgs) ToContainerServiceNetworkProfileKubeProxyConfigPtrOutput() ContainerServiceNetworkProfileKubeProxyConfigPtrOutput {
 	return i.ToContainerServiceNetworkProfileKubeProxyConfigPtrOutputWithContext(context.Background())
 }
@@ -3060,12 +2717,6 @@ func (i *containerServiceNetworkProfileKubeProxyConfigPtrType) ToContainerServic
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerServiceNetworkProfileKubeProxyConfigPtrOutput)
 }
 
-func (i *containerServiceNetworkProfileKubeProxyConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceNetworkProfileKubeProxyConfig] {
-	return pulumix.Output[*ContainerServiceNetworkProfileKubeProxyConfig]{
-		OutputState: i.ToContainerServiceNetworkProfileKubeProxyConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Holds configuration customizations for kube-proxy. Any values not defined will use the kube-proxy defaulting behavior. See https://v<version>.docs.kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/ where <version> is represented by a <major version>-<minor version> string. Kubernetes version 1.23 would be '1-23'.
 type ContainerServiceNetworkProfileKubeProxyConfigOutput struct{ *pulumi.OutputState }
 
@@ -3089,12 +2740,6 @@ func (o ContainerServiceNetworkProfileKubeProxyConfigOutput) ToContainerServiceN
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerServiceNetworkProfileKubeProxyConfig) *ContainerServiceNetworkProfileKubeProxyConfig {
 		return &v
 	}).(ContainerServiceNetworkProfileKubeProxyConfigPtrOutput)
-}
-
-func (o ContainerServiceNetworkProfileKubeProxyConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceNetworkProfileKubeProxyConfig] {
-	return pulumix.Output[ContainerServiceNetworkProfileKubeProxyConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to enable on kube-proxy on the cluster (if no 'kubeProxyConfig' exists, kube-proxy is enabled in AKS by default without these customizations).
@@ -3126,12 +2771,6 @@ func (o ContainerServiceNetworkProfileKubeProxyConfigPtrOutput) ToContainerServi
 
 func (o ContainerServiceNetworkProfileKubeProxyConfigPtrOutput) ToContainerServiceNetworkProfileKubeProxyConfigPtrOutputWithContext(ctx context.Context) ContainerServiceNetworkProfileKubeProxyConfigPtrOutput {
 	return o
-}
-
-func (o ContainerServiceNetworkProfileKubeProxyConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceNetworkProfileKubeProxyConfig] {
-	return pulumix.Output[*ContainerServiceNetworkProfileKubeProxyConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerServiceNetworkProfileKubeProxyConfigPtrOutput) Elem() ContainerServiceNetworkProfileKubeProxyConfigOutput {
@@ -3256,12 +2895,6 @@ func (o ContainerServiceNetworkProfileResponseOutput) ToContainerServiceNetworkP
 	return o
 }
 
-func (o ContainerServiceNetworkProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceNetworkProfileResponse] {
-	return pulumix.Output[ContainerServiceNetworkProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
 func (o ContainerServiceNetworkProfileResponseOutput) DnsServiceIP() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerServiceNetworkProfileResponse) *string { return v.DnsServiceIP }).(pulumi.StringPtrOutput)
@@ -3365,12 +2998,6 @@ func (o ContainerServiceNetworkProfileResponsePtrOutput) ToContainerServiceNetwo
 
 func (o ContainerServiceNetworkProfileResponsePtrOutput) ToContainerServiceNetworkProfileResponsePtrOutputWithContext(ctx context.Context) ContainerServiceNetworkProfileResponsePtrOutput {
 	return o
-}
-
-func (o ContainerServiceNetworkProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceNetworkProfileResponse] {
-	return pulumix.Output[*ContainerServiceNetworkProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerServiceNetworkProfileResponsePtrOutput) Elem() ContainerServiceNetworkProfileResponseOutput {
@@ -3580,12 +3207,6 @@ func (o ContainerServiceNetworkProfileResponseIpvsConfigOutput) ToContainerServi
 	return o
 }
 
-func (o ContainerServiceNetworkProfileResponseIpvsConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceNetworkProfileResponseIpvsConfig] {
-	return pulumix.Output[ContainerServiceNetworkProfileResponseIpvsConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // IPVS scheduler, for more information please see http://www.linuxvirtualserver.org/docs/scheduling.html.
 func (o ContainerServiceNetworkProfileResponseIpvsConfigOutput) Scheduler() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerServiceNetworkProfileResponseIpvsConfig) *string { return v.Scheduler }).(pulumi.StringPtrOutput)
@@ -3618,12 +3239,6 @@ func (o ContainerServiceNetworkProfileResponseIpvsConfigPtrOutput) ToContainerSe
 
 func (o ContainerServiceNetworkProfileResponseIpvsConfigPtrOutput) ToContainerServiceNetworkProfileResponseIpvsConfigPtrOutputWithContext(ctx context.Context) ContainerServiceNetworkProfileResponseIpvsConfigPtrOutput {
 	return o
-}
-
-func (o ContainerServiceNetworkProfileResponseIpvsConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceNetworkProfileResponseIpvsConfig] {
-	return pulumix.Output[*ContainerServiceNetworkProfileResponseIpvsConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerServiceNetworkProfileResponseIpvsConfigPtrOutput) Elem() ContainerServiceNetworkProfileResponseIpvsConfigOutput {
@@ -3701,12 +3316,6 @@ func (o ContainerServiceNetworkProfileResponseKubeProxyConfigOutput) ToContainer
 	return o
 }
 
-func (o ContainerServiceNetworkProfileResponseKubeProxyConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceNetworkProfileResponseKubeProxyConfig] {
-	return pulumix.Output[ContainerServiceNetworkProfileResponseKubeProxyConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable on kube-proxy on the cluster (if no 'kubeProxyConfig' exists, kube-proxy is enabled in AKS by default without these customizations).
 func (o ContainerServiceNetworkProfileResponseKubeProxyConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerServiceNetworkProfileResponseKubeProxyConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -3736,12 +3345,6 @@ func (o ContainerServiceNetworkProfileResponseKubeProxyConfigPtrOutput) ToContai
 
 func (o ContainerServiceNetworkProfileResponseKubeProxyConfigPtrOutput) ToContainerServiceNetworkProfileResponseKubeProxyConfigPtrOutputWithContext(ctx context.Context) ContainerServiceNetworkProfileResponseKubeProxyConfigPtrOutput {
 	return o
-}
-
-func (o ContainerServiceNetworkProfileResponseKubeProxyConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceNetworkProfileResponseKubeProxyConfig] {
-	return pulumix.Output[*ContainerServiceNetworkProfileResponseKubeProxyConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerServiceNetworkProfileResponseKubeProxyConfigPtrOutput) Elem() ContainerServiceNetworkProfileResponseKubeProxyConfigOutput {
@@ -3819,12 +3422,6 @@ func (i ContainerServiceSshConfigurationArgs) ToContainerServiceSshConfiguration
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerServiceSshConfigurationOutput)
 }
 
-func (i ContainerServiceSshConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceSshConfiguration] {
-	return pulumix.Output[ContainerServiceSshConfiguration]{
-		OutputState: i.ToContainerServiceSshConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerServiceSshConfigurationArgs) ToContainerServiceSshConfigurationPtrOutput() ContainerServiceSshConfigurationPtrOutput {
 	return i.ToContainerServiceSshConfigurationPtrOutputWithContext(context.Background())
 }
@@ -3866,12 +3463,6 @@ func (i *containerServiceSshConfigurationPtrType) ToContainerServiceSshConfigura
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerServiceSshConfigurationPtrOutput)
 }
 
-func (i *containerServiceSshConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceSshConfiguration] {
-	return pulumix.Output[*ContainerServiceSshConfiguration]{
-		OutputState: i.ToContainerServiceSshConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SSH configuration for Linux-based VMs running on Azure.
 type ContainerServiceSshConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -3897,12 +3488,6 @@ func (o ContainerServiceSshConfigurationOutput) ToContainerServiceSshConfigurati
 	}).(ContainerServiceSshConfigurationPtrOutput)
 }
 
-func (o ContainerServiceSshConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceSshConfiguration] {
-	return pulumix.Output[ContainerServiceSshConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of SSH public keys used to authenticate with Linux-based VMs. A maximum of 1 key may be specified.
 func (o ContainerServiceSshConfigurationOutput) PublicKeys() ContainerServiceSshPublicKeyArrayOutput {
 	return o.ApplyT(func(v ContainerServiceSshConfiguration) []ContainerServiceSshPublicKey { return v.PublicKeys }).(ContainerServiceSshPublicKeyArrayOutput)
@@ -3920,12 +3505,6 @@ func (o ContainerServiceSshConfigurationPtrOutput) ToContainerServiceSshConfigur
 
 func (o ContainerServiceSshConfigurationPtrOutput) ToContainerServiceSshConfigurationPtrOutputWithContext(ctx context.Context) ContainerServiceSshConfigurationPtrOutput {
 	return o
-}
-
-func (o ContainerServiceSshConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceSshConfiguration] {
-	return pulumix.Output[*ContainerServiceSshConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerServiceSshConfigurationPtrOutput) Elem() ContainerServiceSshConfigurationOutput {
@@ -3969,12 +3548,6 @@ func (o ContainerServiceSshConfigurationResponseOutput) ToContainerServiceSshCon
 	return o
 }
 
-func (o ContainerServiceSshConfigurationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceSshConfigurationResponse] {
-	return pulumix.Output[ContainerServiceSshConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of SSH public keys used to authenticate with Linux-based VMs. A maximum of 1 key may be specified.
 func (o ContainerServiceSshConfigurationResponseOutput) PublicKeys() ContainerServiceSshPublicKeyResponseArrayOutput {
 	return o.ApplyT(func(v ContainerServiceSshConfigurationResponse) []ContainerServiceSshPublicKeyResponse {
@@ -3994,12 +3567,6 @@ func (o ContainerServiceSshConfigurationResponsePtrOutput) ToContainerServiceSsh
 
 func (o ContainerServiceSshConfigurationResponsePtrOutput) ToContainerServiceSshConfigurationResponsePtrOutputWithContext(ctx context.Context) ContainerServiceSshConfigurationResponsePtrOutput {
 	return o
-}
-
-func (o ContainerServiceSshConfigurationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerServiceSshConfigurationResponse] {
-	return pulumix.Output[*ContainerServiceSshConfigurationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerServiceSshConfigurationResponsePtrOutput) Elem() ContainerServiceSshConfigurationResponseOutput {
@@ -4057,12 +3624,6 @@ func (i ContainerServiceSshPublicKeyArgs) ToContainerServiceSshPublicKeyOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerServiceSshPublicKeyOutput)
 }
 
-func (i ContainerServiceSshPublicKeyArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceSshPublicKey] {
-	return pulumix.Output[ContainerServiceSshPublicKey]{
-		OutputState: i.ToContainerServiceSshPublicKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ContainerServiceSshPublicKeyArrayInput is an input type that accepts ContainerServiceSshPublicKeyArray and ContainerServiceSshPublicKeyArrayOutput values.
 // You can construct a concrete instance of `ContainerServiceSshPublicKeyArrayInput` via:
 //
@@ -4088,12 +3649,6 @@ func (i ContainerServiceSshPublicKeyArray) ToContainerServiceSshPublicKeyArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerServiceSshPublicKeyArrayOutput)
 }
 
-func (i ContainerServiceSshPublicKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]ContainerServiceSshPublicKey] {
-	return pulumix.Output[[]ContainerServiceSshPublicKey]{
-		OutputState: i.ToContainerServiceSshPublicKeyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contains information about SSH certificate public key data.
 type ContainerServiceSshPublicKeyOutput struct{ *pulumi.OutputState }
 
@@ -4107,12 +3662,6 @@ func (o ContainerServiceSshPublicKeyOutput) ToContainerServiceSshPublicKeyOutput
 
 func (o ContainerServiceSshPublicKeyOutput) ToContainerServiceSshPublicKeyOutputWithContext(ctx context.Context) ContainerServiceSshPublicKeyOutput {
 	return o
-}
-
-func (o ContainerServiceSshPublicKeyOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceSshPublicKey] {
-	return pulumix.Output[ContainerServiceSshPublicKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Certificate public key used to authenticate with VMs through SSH. The certificate must be in PEM format with or without headers.
@@ -4132,12 +3681,6 @@ func (o ContainerServiceSshPublicKeyArrayOutput) ToContainerServiceSshPublicKeyA
 
 func (o ContainerServiceSshPublicKeyArrayOutput) ToContainerServiceSshPublicKeyArrayOutputWithContext(ctx context.Context) ContainerServiceSshPublicKeyArrayOutput {
 	return o
-}
-
-func (o ContainerServiceSshPublicKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerServiceSshPublicKey] {
-	return pulumix.Output[[]ContainerServiceSshPublicKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerServiceSshPublicKeyArrayOutput) Index(i pulumi.IntInput) ContainerServiceSshPublicKeyOutput {
@@ -4167,12 +3710,6 @@ func (o ContainerServiceSshPublicKeyResponseOutput) ToContainerServiceSshPublicK
 	return o
 }
 
-func (o ContainerServiceSshPublicKeyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerServiceSshPublicKeyResponse] {
-	return pulumix.Output[ContainerServiceSshPublicKeyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Certificate public key used to authenticate with VMs through SSH. The certificate must be in PEM format with or without headers.
 func (o ContainerServiceSshPublicKeyResponseOutput) KeyData() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerServiceSshPublicKeyResponse) string { return v.KeyData }).(pulumi.StringOutput)
@@ -4190,12 +3727,6 @@ func (o ContainerServiceSshPublicKeyResponseArrayOutput) ToContainerServiceSshPu
 
 func (o ContainerServiceSshPublicKeyResponseArrayOutput) ToContainerServiceSshPublicKeyResponseArrayOutputWithContext(ctx context.Context) ContainerServiceSshPublicKeyResponseArrayOutput {
 	return o
-}
-
-func (o ContainerServiceSshPublicKeyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ContainerServiceSshPublicKeyResponse] {
-	return pulumix.Output[[]ContainerServiceSshPublicKeyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerServiceSshPublicKeyResponseArrayOutput) Index(i pulumi.IntInput) ContainerServiceSshPublicKeyResponseOutput {
@@ -4239,12 +3770,6 @@ func (i CreationDataArgs) ToCreationDataOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(CreationDataOutput)
 }
 
-func (i CreationDataArgs) ToOutput(ctx context.Context) pulumix.Output[CreationData] {
-	return pulumix.Output[CreationData]{
-		OutputState: i.ToCreationDataOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CreationDataArgs) ToCreationDataPtrOutput() CreationDataPtrOutput {
 	return i.ToCreationDataPtrOutputWithContext(context.Background())
 }
@@ -4286,12 +3811,6 @@ func (i *creationDataPtrType) ToCreationDataPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(CreationDataPtrOutput)
 }
 
-func (i *creationDataPtrType) ToOutput(ctx context.Context) pulumix.Output[*CreationData] {
-	return pulumix.Output[*CreationData]{
-		OutputState: i.ToCreationDataPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Data used when creating a target resource from a source resource.
 type CreationDataOutput struct{ *pulumi.OutputState }
 
@@ -4317,12 +3836,6 @@ func (o CreationDataOutput) ToCreationDataPtrOutputWithContext(ctx context.Conte
 	}).(CreationDataPtrOutput)
 }
 
-func (o CreationDataOutput) ToOutput(ctx context.Context) pulumix.Output[CreationData] {
-	return pulumix.Output[CreationData]{
-		OutputState: o.OutputState,
-	}
-}
-
 // This is the ARM ID of the source object to be used to create the target object.
 func (o CreationDataOutput) SourceResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CreationData) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
@@ -4340,12 +3853,6 @@ func (o CreationDataPtrOutput) ToCreationDataPtrOutput() CreationDataPtrOutput {
 
 func (o CreationDataPtrOutput) ToCreationDataPtrOutputWithContext(ctx context.Context) CreationDataPtrOutput {
 	return o
-}
-
-func (o CreationDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CreationData] {
-	return pulumix.Output[*CreationData]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CreationDataPtrOutput) Elem() CreationDataOutput {
@@ -4389,12 +3896,6 @@ func (o CreationDataResponseOutput) ToCreationDataResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o CreationDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CreationDataResponse] {
-	return pulumix.Output[CreationDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // This is the ARM ID of the source object to be used to create the target object.
 func (o CreationDataResponseOutput) SourceResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CreationDataResponse) *string { return v.SourceResourceId }).(pulumi.StringPtrOutput)
@@ -4412,12 +3913,6 @@ func (o CreationDataResponsePtrOutput) ToCreationDataResponsePtrOutput() Creatio
 
 func (o CreationDataResponsePtrOutput) ToCreationDataResponsePtrOutputWithContext(ctx context.Context) CreationDataResponsePtrOutput {
 	return o
-}
-
-func (o CreationDataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CreationDataResponse] {
-	return pulumix.Output[*CreationDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CreationDataResponsePtrOutput) Elem() CreationDataResponseOutput {
@@ -4463,12 +3958,6 @@ func (o CredentialResultResponseOutput) ToCredentialResultResponseOutputWithCont
 	return o
 }
 
-func (o CredentialResultResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CredentialResultResponse] {
-	return pulumix.Output[CredentialResultResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the credential.
 func (o CredentialResultResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v CredentialResultResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -4491,12 +3980,6 @@ func (o CredentialResultResponseArrayOutput) ToCredentialResultResponseArrayOutp
 
 func (o CredentialResultResponseArrayOutput) ToCredentialResultResponseArrayOutputWithContext(ctx context.Context) CredentialResultResponseArrayOutput {
 	return o
-}
-
-func (o CredentialResultResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]CredentialResultResponse] {
-	return pulumix.Output[[]CredentialResultResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CredentialResultResponseArrayOutput) Index(i pulumi.IntInput) CredentialResultResponseOutput {
@@ -4540,12 +4023,6 @@ func (i DailyScheduleArgs) ToDailyScheduleOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(DailyScheduleOutput)
 }
 
-func (i DailyScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[DailySchedule] {
-	return pulumix.Output[DailySchedule]{
-		OutputState: i.ToDailyScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DailyScheduleArgs) ToDailySchedulePtrOutput() DailySchedulePtrOutput {
 	return i.ToDailySchedulePtrOutputWithContext(context.Background())
 }
@@ -4587,12 +4064,6 @@ func (i *dailySchedulePtrType) ToDailySchedulePtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(DailySchedulePtrOutput)
 }
 
-func (i *dailySchedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*DailySchedule] {
-	return pulumix.Output[*DailySchedule]{
-		OutputState: i.ToDailySchedulePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // For schedules like: 'recur every day' or 'recur every 3 days'.
 type DailyScheduleOutput struct{ *pulumi.OutputState }
 
@@ -4618,12 +4089,6 @@ func (o DailyScheduleOutput) ToDailySchedulePtrOutputWithContext(ctx context.Con
 	}).(DailySchedulePtrOutput)
 }
 
-func (o DailyScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[DailySchedule] {
-	return pulumix.Output[DailySchedule]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the number of days between each set of occurrences.
 func (o DailyScheduleOutput) IntervalDays() pulumi.IntOutput {
 	return o.ApplyT(func(v DailySchedule) int { return v.IntervalDays }).(pulumi.IntOutput)
@@ -4641,12 +4106,6 @@ func (o DailySchedulePtrOutput) ToDailySchedulePtrOutput() DailySchedulePtrOutpu
 
 func (o DailySchedulePtrOutput) ToDailySchedulePtrOutputWithContext(ctx context.Context) DailySchedulePtrOutput {
 	return o
-}
-
-func (o DailySchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DailySchedule] {
-	return pulumix.Output[*DailySchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DailySchedulePtrOutput) Elem() DailyScheduleOutput {
@@ -4690,12 +4149,6 @@ func (o DailyScheduleResponseOutput) ToDailyScheduleResponseOutputWithContext(ct
 	return o
 }
 
-func (o DailyScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DailyScheduleResponse] {
-	return pulumix.Output[DailyScheduleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the number of days between each set of occurrences.
 func (o DailyScheduleResponseOutput) IntervalDays() pulumi.IntOutput {
 	return o.ApplyT(func(v DailyScheduleResponse) int { return v.IntervalDays }).(pulumi.IntOutput)
@@ -4713,12 +4166,6 @@ func (o DailyScheduleResponsePtrOutput) ToDailyScheduleResponsePtrOutput() Daily
 
 func (o DailyScheduleResponsePtrOutput) ToDailyScheduleResponsePtrOutputWithContext(ctx context.Context) DailyScheduleResponsePtrOutput {
 	return o
-}
-
-func (o DailyScheduleResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DailyScheduleResponse] {
-	return pulumix.Output[*DailyScheduleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DailyScheduleResponsePtrOutput) Elem() DailyScheduleResponseOutput {
@@ -4780,12 +4227,6 @@ func (i DateSpanArgs) ToDateSpanOutputWithContext(ctx context.Context) DateSpanO
 	return pulumi.ToOutputWithContext(ctx, i).(DateSpanOutput)
 }
 
-func (i DateSpanArgs) ToOutput(ctx context.Context) pulumix.Output[DateSpan] {
-	return pulumix.Output[DateSpan]{
-		OutputState: i.ToDateSpanOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DateSpanArrayInput is an input type that accepts DateSpanArray and DateSpanArrayOutput values.
 // You can construct a concrete instance of `DateSpanArrayInput` via:
 //
@@ -4811,12 +4252,6 @@ func (i DateSpanArray) ToDateSpanArrayOutputWithContext(ctx context.Context) Dat
 	return pulumi.ToOutputWithContext(ctx, i).(DateSpanArrayOutput)
 }
 
-func (i DateSpanArray) ToOutput(ctx context.Context) pulumix.Output[[]DateSpan] {
-	return pulumix.Output[[]DateSpan]{
-		OutputState: i.ToDateSpanArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // For example, between '2022-12-23' and '2023-01-05'.
 type DateSpanOutput struct{ *pulumi.OutputState }
 
@@ -4830,12 +4265,6 @@ func (o DateSpanOutput) ToDateSpanOutput() DateSpanOutput {
 
 func (o DateSpanOutput) ToDateSpanOutputWithContext(ctx context.Context) DateSpanOutput {
 	return o
-}
-
-func (o DateSpanOutput) ToOutput(ctx context.Context) pulumix.Output[DateSpan] {
-	return pulumix.Output[DateSpan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The end date of the date span.
@@ -4860,12 +4289,6 @@ func (o DateSpanArrayOutput) ToDateSpanArrayOutput() DateSpanArrayOutput {
 
 func (o DateSpanArrayOutput) ToDateSpanArrayOutputWithContext(ctx context.Context) DateSpanArrayOutput {
 	return o
-}
-
-func (o DateSpanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DateSpan] {
-	return pulumix.Output[[]DateSpan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DateSpanArrayOutput) Index(i pulumi.IntInput) DateSpanOutput {
@@ -4897,12 +4320,6 @@ func (o DateSpanResponseOutput) ToDateSpanResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o DateSpanResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DateSpanResponse] {
-	return pulumix.Output[DateSpanResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The end date of the date span.
 func (o DateSpanResponseOutput) End() pulumi.StringOutput {
 	return o.ApplyT(func(v DateSpanResponse) string { return v.End }).(pulumi.StringOutput)
@@ -4925,12 +4342,6 @@ func (o DateSpanResponseArrayOutput) ToDateSpanResponseArrayOutput() DateSpanRes
 
 func (o DateSpanResponseArrayOutput) ToDateSpanResponseArrayOutputWithContext(ctx context.Context) DateSpanResponseArrayOutput {
 	return o
-}
-
-func (o DateSpanResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DateSpanResponse] {
-	return pulumix.Output[[]DateSpanResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DateSpanResponseArrayOutput) Index(i pulumi.IntInput) DateSpanResponseOutput {
@@ -4986,12 +4397,6 @@ func (i DelegatedResourceArgs) ToDelegatedResourceOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DelegatedResourceOutput)
 }
 
-func (i DelegatedResourceArgs) ToOutput(ctx context.Context) pulumix.Output[DelegatedResource] {
-	return pulumix.Output[DelegatedResource]{
-		OutputState: i.ToDelegatedResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DelegatedResourceMapInput is an input type that accepts DelegatedResourceMap and DelegatedResourceMapOutput values.
 // You can construct a concrete instance of `DelegatedResourceMapInput` via:
 //
@@ -5017,12 +4422,6 @@ func (i DelegatedResourceMap) ToDelegatedResourceMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DelegatedResourceMapOutput)
 }
 
-func (i DelegatedResourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]DelegatedResource] {
-	return pulumix.Output[map[string]DelegatedResource]{
-		OutputState: i.ToDelegatedResourceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Delegated resource properties - internal use only.
 type DelegatedResourceOutput struct{ *pulumi.OutputState }
 
@@ -5036,12 +4435,6 @@ func (o DelegatedResourceOutput) ToDelegatedResourceOutput() DelegatedResourceOu
 
 func (o DelegatedResourceOutput) ToDelegatedResourceOutputWithContext(ctx context.Context) DelegatedResourceOutput {
 	return o
-}
-
-func (o DelegatedResourceOutput) ToOutput(ctx context.Context) pulumix.Output[DelegatedResource] {
-	return pulumix.Output[DelegatedResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The source resource location - internal use only.
@@ -5078,12 +4471,6 @@ func (o DelegatedResourceMapOutput) ToDelegatedResourceMapOutputWithContext(ctx 
 	return o
 }
 
-func (o DelegatedResourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]DelegatedResource] {
-	return pulumix.Output[map[string]DelegatedResource]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DelegatedResourceMapOutput) MapIndex(k pulumi.StringInput) DelegatedResourceOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DelegatedResource {
 		return vs[0].(map[string]DelegatedResource)[vs[1].(string)]
@@ -5115,12 +4502,6 @@ func (o DelegatedResourceResponseOutput) ToDelegatedResourceResponseOutput() Del
 
 func (o DelegatedResourceResponseOutput) ToDelegatedResourceResponseOutputWithContext(ctx context.Context) DelegatedResourceResponseOutput {
 	return o
-}
-
-func (o DelegatedResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DelegatedResourceResponse] {
-	return pulumix.Output[DelegatedResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The source resource location - internal use only.
@@ -5155,12 +4536,6 @@ func (o DelegatedResourceResponseMapOutput) ToDelegatedResourceResponseMapOutput
 
 func (o DelegatedResourceResponseMapOutput) ToDelegatedResourceResponseMapOutputWithContext(ctx context.Context) DelegatedResourceResponseMapOutput {
 	return o
-}
-
-func (o DelegatedResourceResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]DelegatedResourceResponse] {
-	return pulumix.Output[map[string]DelegatedResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DelegatedResourceResponseMapOutput) MapIndex(k pulumi.StringInput) DelegatedResourceResponseOutput {
@@ -5208,12 +4583,6 @@ func (i ExtendedLocationArgs) ToExtendedLocationOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationOutput)
 }
 
-func (i ExtendedLocationArgs) ToOutput(ctx context.Context) pulumix.Output[ExtendedLocation] {
-	return pulumix.Output[ExtendedLocation]{
-		OutputState: i.ToExtendedLocationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ExtendedLocationArgs) ToExtendedLocationPtrOutput() ExtendedLocationPtrOutput {
 	return i.ToExtendedLocationPtrOutputWithContext(context.Background())
 }
@@ -5255,12 +4624,6 @@ func (i *extendedLocationPtrType) ToExtendedLocationPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ExtendedLocationPtrOutput)
 }
 
-func (i *extendedLocationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocation] {
-	return pulumix.Output[*ExtendedLocation]{
-		OutputState: i.ToExtendedLocationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The complex type of the extended location.
 type ExtendedLocationOutput struct{ *pulumi.OutputState }
 
@@ -5286,12 +4649,6 @@ func (o ExtendedLocationOutput) ToExtendedLocationPtrOutputWithContext(ctx conte
 	}).(ExtendedLocationPtrOutput)
 }
 
-func (o ExtendedLocationOutput) ToOutput(ctx context.Context) pulumix.Output[ExtendedLocation] {
-	return pulumix.Output[ExtendedLocation]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the extended location.
 func (o ExtendedLocationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExtendedLocation) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -5314,12 +4671,6 @@ func (o ExtendedLocationPtrOutput) ToExtendedLocationPtrOutput() ExtendedLocatio
 
 func (o ExtendedLocationPtrOutput) ToExtendedLocationPtrOutputWithContext(ctx context.Context) ExtendedLocationPtrOutput {
 	return o
-}
-
-func (o ExtendedLocationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocation] {
-	return pulumix.Output[*ExtendedLocation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExtendedLocationPtrOutput) Elem() ExtendedLocationOutput {
@@ -5375,12 +4726,6 @@ func (o ExtendedLocationResponseOutput) ToExtendedLocationResponseOutputWithCont
 	return o
 }
 
-func (o ExtendedLocationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ExtendedLocationResponse] {
-	return pulumix.Output[ExtendedLocationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the extended location.
 func (o ExtendedLocationResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExtendedLocationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -5403,12 +4748,6 @@ func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutput()
 
 func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutputWithContext(ctx context.Context) ExtendedLocationResponsePtrOutput {
 	return o
-}
-
-func (o ExtendedLocationResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocationResponse] {
-	return pulumix.Output[*ExtendedLocationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExtendedLocationResponsePtrOutput) Elem() ExtendedLocationResponseOutput {
@@ -5484,12 +4823,6 @@ func (i GuardrailsProfileArgs) ToGuardrailsProfileOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GuardrailsProfileOutput)
 }
 
-func (i GuardrailsProfileArgs) ToOutput(ctx context.Context) pulumix.Output[GuardrailsProfile] {
-	return pulumix.Output[GuardrailsProfile]{
-		OutputState: i.ToGuardrailsProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i GuardrailsProfileArgs) ToGuardrailsProfilePtrOutput() GuardrailsProfilePtrOutput {
 	return i.ToGuardrailsProfilePtrOutputWithContext(context.Background())
 }
@@ -5531,12 +4864,6 @@ func (i *guardrailsProfilePtrType) ToGuardrailsProfilePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(GuardrailsProfilePtrOutput)
 }
 
-func (i *guardrailsProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*GuardrailsProfile] {
-	return pulumix.Output[*GuardrailsProfile]{
-		OutputState: i.ToGuardrailsProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Guardrails profile.
 type GuardrailsProfileOutput struct{ *pulumi.OutputState }
 
@@ -5560,12 +4887,6 @@ func (o GuardrailsProfileOutput) ToGuardrailsProfilePtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GuardrailsProfile) *GuardrailsProfile {
 		return &v
 	}).(GuardrailsProfilePtrOutput)
-}
-
-func (o GuardrailsProfileOutput) ToOutput(ctx context.Context) pulumix.Output[GuardrailsProfile] {
-	return pulumix.Output[GuardrailsProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of namespaces excluded from guardrails checks
@@ -5595,12 +4916,6 @@ func (o GuardrailsProfilePtrOutput) ToGuardrailsProfilePtrOutput() GuardrailsPro
 
 func (o GuardrailsProfilePtrOutput) ToGuardrailsProfilePtrOutputWithContext(ctx context.Context) GuardrailsProfilePtrOutput {
 	return o
-}
-
-func (o GuardrailsProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuardrailsProfile] {
-	return pulumix.Output[*GuardrailsProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuardrailsProfilePtrOutput) Elem() GuardrailsProfileOutput {
@@ -5670,12 +4985,6 @@ func (o GuardrailsProfileResponseOutput) ToGuardrailsProfileResponseOutputWithCo
 	return o
 }
 
-func (o GuardrailsProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[GuardrailsProfileResponse] {
-	return pulumix.Output[GuardrailsProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of namespaces excluded from guardrails checks
 func (o GuardrailsProfileResponseOutput) ExcludedNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GuardrailsProfileResponse) []string { return v.ExcludedNamespaces }).(pulumi.StringArrayOutput)
@@ -5708,12 +5017,6 @@ func (o GuardrailsProfileResponsePtrOutput) ToGuardrailsProfileResponsePtrOutput
 
 func (o GuardrailsProfileResponsePtrOutput) ToGuardrailsProfileResponsePtrOutputWithContext(ctx context.Context) GuardrailsProfileResponsePtrOutput {
 	return o
-}
-
-func (o GuardrailsProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*GuardrailsProfileResponse] {
-	return pulumix.Output[*GuardrailsProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GuardrailsProfileResponsePtrOutput) Elem() GuardrailsProfileResponseOutput {
@@ -5805,12 +5108,6 @@ func (i IPTagArgs) ToIPTagOutputWithContext(ctx context.Context) IPTagOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IPTagOutput)
 }
 
-func (i IPTagArgs) ToOutput(ctx context.Context) pulumix.Output[IPTag] {
-	return pulumix.Output[IPTag]{
-		OutputState: i.ToIPTagOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IPTagArrayInput is an input type that accepts IPTagArray and IPTagArrayOutput values.
 // You can construct a concrete instance of `IPTagArrayInput` via:
 //
@@ -5836,12 +5133,6 @@ func (i IPTagArray) ToIPTagArrayOutputWithContext(ctx context.Context) IPTagArra
 	return pulumi.ToOutputWithContext(ctx, i).(IPTagArrayOutput)
 }
 
-func (i IPTagArray) ToOutput(ctx context.Context) pulumix.Output[[]IPTag] {
-	return pulumix.Output[[]IPTag]{
-		OutputState: i.ToIPTagArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Contains the IPTag associated with the object.
 type IPTagOutput struct{ *pulumi.OutputState }
 
@@ -5855,12 +5146,6 @@ func (o IPTagOutput) ToIPTagOutput() IPTagOutput {
 
 func (o IPTagOutput) ToIPTagOutputWithContext(ctx context.Context) IPTagOutput {
 	return o
-}
-
-func (o IPTagOutput) ToOutput(ctx context.Context) pulumix.Output[IPTag] {
-	return pulumix.Output[IPTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The IP tag type. Example: RoutingPreference.
@@ -5885,12 +5170,6 @@ func (o IPTagArrayOutput) ToIPTagArrayOutput() IPTagArrayOutput {
 
 func (o IPTagArrayOutput) ToIPTagArrayOutputWithContext(ctx context.Context) IPTagArrayOutput {
 	return o
-}
-
-func (o IPTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IPTag] {
-	return pulumix.Output[[]IPTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IPTagArrayOutput) Index(i pulumi.IntInput) IPTagOutput {
@@ -5922,12 +5201,6 @@ func (o IPTagResponseOutput) ToIPTagResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o IPTagResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IPTagResponse] {
-	return pulumix.Output[IPTagResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The IP tag type. Example: RoutingPreference.
 func (o IPTagResponseOutput) IpTagType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPTagResponse) *string { return v.IpTagType }).(pulumi.StringPtrOutput)
@@ -5950,12 +5223,6 @@ func (o IPTagResponseArrayOutput) ToIPTagResponseArrayOutput() IPTagResponseArra
 
 func (o IPTagResponseArrayOutput) ToIPTagResponseArrayOutputWithContext(ctx context.Context) IPTagResponseArrayOutput {
 	return o
-}
-
-func (o IPTagResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IPTagResponse] {
-	return pulumix.Output[[]IPTagResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IPTagResponseArrayOutput) Index(i pulumi.IntInput) IPTagResponseOutput {
@@ -5999,12 +5266,6 @@ func (i IstioCertificateAuthorityArgs) ToIstioCertificateAuthorityOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(IstioCertificateAuthorityOutput)
 }
 
-func (i IstioCertificateAuthorityArgs) ToOutput(ctx context.Context) pulumix.Output[IstioCertificateAuthority] {
-	return pulumix.Output[IstioCertificateAuthority]{
-		OutputState: i.ToIstioCertificateAuthorityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IstioCertificateAuthorityArgs) ToIstioCertificateAuthorityPtrOutput() IstioCertificateAuthorityPtrOutput {
 	return i.ToIstioCertificateAuthorityPtrOutputWithContext(context.Background())
 }
@@ -6046,12 +5307,6 @@ func (i *istioCertificateAuthorityPtrType) ToIstioCertificateAuthorityPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(IstioCertificateAuthorityPtrOutput)
 }
 
-func (i *istioCertificateAuthorityPtrType) ToOutput(ctx context.Context) pulumix.Output[*IstioCertificateAuthority] {
-	return pulumix.Output[*IstioCertificateAuthority]{
-		OutputState: i.ToIstioCertificateAuthorityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
 type IstioCertificateAuthorityOutput struct{ *pulumi.OutputState }
 
@@ -6077,12 +5332,6 @@ func (o IstioCertificateAuthorityOutput) ToIstioCertificateAuthorityPtrOutputWit
 	}).(IstioCertificateAuthorityPtrOutput)
 }
 
-func (o IstioCertificateAuthorityOutput) ToOutput(ctx context.Context) pulumix.Output[IstioCertificateAuthority] {
-	return pulumix.Output[IstioCertificateAuthority]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Plugin certificates information for Service Mesh.
 func (o IstioCertificateAuthorityOutput) Plugin() IstioPluginCertificateAuthorityPtrOutput {
 	return o.ApplyT(func(v IstioCertificateAuthority) *IstioPluginCertificateAuthority { return v.Plugin }).(IstioPluginCertificateAuthorityPtrOutput)
@@ -6100,12 +5349,6 @@ func (o IstioCertificateAuthorityPtrOutput) ToIstioCertificateAuthorityPtrOutput
 
 func (o IstioCertificateAuthorityPtrOutput) ToIstioCertificateAuthorityPtrOutputWithContext(ctx context.Context) IstioCertificateAuthorityPtrOutput {
 	return o
-}
-
-func (o IstioCertificateAuthorityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IstioCertificateAuthority] {
-	return pulumix.Output[*IstioCertificateAuthority]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IstioCertificateAuthorityPtrOutput) Elem() IstioCertificateAuthorityOutput {
@@ -6149,12 +5392,6 @@ func (o IstioCertificateAuthorityResponseOutput) ToIstioCertificateAuthorityResp
 	return o
 }
 
-func (o IstioCertificateAuthorityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IstioCertificateAuthorityResponse] {
-	return pulumix.Output[IstioCertificateAuthorityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Plugin certificates information for Service Mesh.
 func (o IstioCertificateAuthorityResponseOutput) Plugin() IstioPluginCertificateAuthorityResponsePtrOutput {
 	return o.ApplyT(func(v IstioCertificateAuthorityResponse) *IstioPluginCertificateAuthorityResponse { return v.Plugin }).(IstioPluginCertificateAuthorityResponsePtrOutput)
@@ -6172,12 +5409,6 @@ func (o IstioCertificateAuthorityResponsePtrOutput) ToIstioCertificateAuthorityR
 
 func (o IstioCertificateAuthorityResponsePtrOutput) ToIstioCertificateAuthorityResponsePtrOutputWithContext(ctx context.Context) IstioCertificateAuthorityResponsePtrOutput {
 	return o
-}
-
-func (o IstioCertificateAuthorityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IstioCertificateAuthorityResponse] {
-	return pulumix.Output[*IstioCertificateAuthorityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IstioCertificateAuthorityResponsePtrOutput) Elem() IstioCertificateAuthorityResponseOutput {
@@ -6239,12 +5470,6 @@ func (i IstioComponentsArgs) ToIstioComponentsOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(IstioComponentsOutput)
 }
 
-func (i IstioComponentsArgs) ToOutput(ctx context.Context) pulumix.Output[IstioComponents] {
-	return pulumix.Output[IstioComponents]{
-		OutputState: i.ToIstioComponentsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IstioComponentsArgs) ToIstioComponentsPtrOutput() IstioComponentsPtrOutput {
 	return i.ToIstioComponentsPtrOutputWithContext(context.Background())
 }
@@ -6286,12 +5511,6 @@ func (i *istioComponentsPtrType) ToIstioComponentsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(IstioComponentsPtrOutput)
 }
 
-func (i *istioComponentsPtrType) ToOutput(ctx context.Context) pulumix.Output[*IstioComponents] {
-	return pulumix.Output[*IstioComponents]{
-		OutputState: i.ToIstioComponentsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Istio components configuration.
 type IstioComponentsOutput struct{ *pulumi.OutputState }
 
@@ -6317,12 +5536,6 @@ func (o IstioComponentsOutput) ToIstioComponentsPtrOutputWithContext(ctx context
 	}).(IstioComponentsPtrOutput)
 }
 
-func (o IstioComponentsOutput) ToOutput(ctx context.Context) pulumix.Output[IstioComponents] {
-	return pulumix.Output[IstioComponents]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Istio egress gateways.
 func (o IstioComponentsOutput) EgressGateways() IstioEgressGatewayArrayOutput {
 	return o.ApplyT(func(v IstioComponents) []IstioEgressGateway { return v.EgressGateways }).(IstioEgressGatewayArrayOutput)
@@ -6345,12 +5558,6 @@ func (o IstioComponentsPtrOutput) ToIstioComponentsPtrOutput() IstioComponentsPt
 
 func (o IstioComponentsPtrOutput) ToIstioComponentsPtrOutputWithContext(ctx context.Context) IstioComponentsPtrOutput {
 	return o
-}
-
-func (o IstioComponentsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IstioComponents] {
-	return pulumix.Output[*IstioComponents]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IstioComponentsPtrOutput) Elem() IstioComponentsOutput {
@@ -6406,12 +5613,6 @@ func (o IstioComponentsResponseOutput) ToIstioComponentsResponseOutputWithContex
 	return o
 }
 
-func (o IstioComponentsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IstioComponentsResponse] {
-	return pulumix.Output[IstioComponentsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Istio egress gateways.
 func (o IstioComponentsResponseOutput) EgressGateways() IstioEgressGatewayResponseArrayOutput {
 	return o.ApplyT(func(v IstioComponentsResponse) []IstioEgressGatewayResponse { return v.EgressGateways }).(IstioEgressGatewayResponseArrayOutput)
@@ -6434,12 +5635,6 @@ func (o IstioComponentsResponsePtrOutput) ToIstioComponentsResponsePtrOutput() I
 
 func (o IstioComponentsResponsePtrOutput) ToIstioComponentsResponsePtrOutputWithContext(ctx context.Context) IstioComponentsResponsePtrOutput {
 	return o
-}
-
-func (o IstioComponentsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IstioComponentsResponse] {
-	return pulumix.Output[*IstioComponentsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IstioComponentsResponsePtrOutput) Elem() IstioComponentsResponseOutput {
@@ -6511,12 +5706,6 @@ func (i IstioEgressGatewayArgs) ToIstioEgressGatewayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(IstioEgressGatewayOutput)
 }
 
-func (i IstioEgressGatewayArgs) ToOutput(ctx context.Context) pulumix.Output[IstioEgressGateway] {
-	return pulumix.Output[IstioEgressGateway]{
-		OutputState: i.ToIstioEgressGatewayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IstioEgressGatewayArrayInput is an input type that accepts IstioEgressGatewayArray and IstioEgressGatewayArrayOutput values.
 // You can construct a concrete instance of `IstioEgressGatewayArrayInput` via:
 //
@@ -6542,12 +5731,6 @@ func (i IstioEgressGatewayArray) ToIstioEgressGatewayArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(IstioEgressGatewayArrayOutput)
 }
 
-func (i IstioEgressGatewayArray) ToOutput(ctx context.Context) pulumix.Output[[]IstioEgressGateway] {
-	return pulumix.Output[[]IstioEgressGateway]{
-		OutputState: i.ToIstioEgressGatewayArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Istio egress gateway configuration.
 type IstioEgressGatewayOutput struct{ *pulumi.OutputState }
 
@@ -6561,12 +5744,6 @@ func (o IstioEgressGatewayOutput) ToIstioEgressGatewayOutput() IstioEgressGatewa
 
 func (o IstioEgressGatewayOutput) ToIstioEgressGatewayOutputWithContext(ctx context.Context) IstioEgressGatewayOutput {
 	return o
-}
-
-func (o IstioEgressGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[IstioEgressGateway] {
-	return pulumix.Output[IstioEgressGateway]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to enable the egress gateway.
@@ -6591,12 +5768,6 @@ func (o IstioEgressGatewayArrayOutput) ToIstioEgressGatewayArrayOutput() IstioEg
 
 func (o IstioEgressGatewayArrayOutput) ToIstioEgressGatewayArrayOutputWithContext(ctx context.Context) IstioEgressGatewayArrayOutput {
 	return o
-}
-
-func (o IstioEgressGatewayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IstioEgressGateway] {
-	return pulumix.Output[[]IstioEgressGateway]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IstioEgressGatewayArrayOutput) Index(i pulumi.IntInput) IstioEgressGatewayOutput {
@@ -6628,12 +5799,6 @@ func (o IstioEgressGatewayResponseOutput) ToIstioEgressGatewayResponseOutputWith
 	return o
 }
 
-func (o IstioEgressGatewayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IstioEgressGatewayResponse] {
-	return pulumix.Output[IstioEgressGatewayResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable the egress gateway.
 func (o IstioEgressGatewayResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v IstioEgressGatewayResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -6656,12 +5821,6 @@ func (o IstioEgressGatewayResponseArrayOutput) ToIstioEgressGatewayResponseArray
 
 func (o IstioEgressGatewayResponseArrayOutput) ToIstioEgressGatewayResponseArrayOutputWithContext(ctx context.Context) IstioEgressGatewayResponseArrayOutput {
 	return o
-}
-
-func (o IstioEgressGatewayResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IstioEgressGatewayResponse] {
-	return pulumix.Output[[]IstioEgressGatewayResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IstioEgressGatewayResponseArrayOutput) Index(i pulumi.IntInput) IstioEgressGatewayResponseOutput {
@@ -6709,12 +5868,6 @@ func (i IstioIngressGatewayArgs) ToIstioIngressGatewayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(IstioIngressGatewayOutput)
 }
 
-func (i IstioIngressGatewayArgs) ToOutput(ctx context.Context) pulumix.Output[IstioIngressGateway] {
-	return pulumix.Output[IstioIngressGateway]{
-		OutputState: i.ToIstioIngressGatewayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IstioIngressGatewayArrayInput is an input type that accepts IstioIngressGatewayArray and IstioIngressGatewayArrayOutput values.
 // You can construct a concrete instance of `IstioIngressGatewayArrayInput` via:
 //
@@ -6740,12 +5893,6 @@ func (i IstioIngressGatewayArray) ToIstioIngressGatewayArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(IstioIngressGatewayArrayOutput)
 }
 
-func (i IstioIngressGatewayArray) ToOutput(ctx context.Context) pulumix.Output[[]IstioIngressGateway] {
-	return pulumix.Output[[]IstioIngressGateway]{
-		OutputState: i.ToIstioIngressGatewayArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Istio ingress gateway configuration. For now, we support up to one external ingress gateway named `aks-istio-ingressgateway-external` and one internal ingress gateway named `aks-istio-ingressgateway-internal`.
 type IstioIngressGatewayOutput struct{ *pulumi.OutputState }
 
@@ -6759,12 +5906,6 @@ func (o IstioIngressGatewayOutput) ToIstioIngressGatewayOutput() IstioIngressGat
 
 func (o IstioIngressGatewayOutput) ToIstioIngressGatewayOutputWithContext(ctx context.Context) IstioIngressGatewayOutput {
 	return o
-}
-
-func (o IstioIngressGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[IstioIngressGateway] {
-	return pulumix.Output[IstioIngressGateway]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to enable the ingress gateway.
@@ -6789,12 +5930,6 @@ func (o IstioIngressGatewayArrayOutput) ToIstioIngressGatewayArrayOutput() Istio
 
 func (o IstioIngressGatewayArrayOutput) ToIstioIngressGatewayArrayOutputWithContext(ctx context.Context) IstioIngressGatewayArrayOutput {
 	return o
-}
-
-func (o IstioIngressGatewayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IstioIngressGateway] {
-	return pulumix.Output[[]IstioIngressGateway]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IstioIngressGatewayArrayOutput) Index(i pulumi.IntInput) IstioIngressGatewayOutput {
@@ -6826,12 +5961,6 @@ func (o IstioIngressGatewayResponseOutput) ToIstioIngressGatewayResponseOutputWi
 	return o
 }
 
-func (o IstioIngressGatewayResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IstioIngressGatewayResponse] {
-	return pulumix.Output[IstioIngressGatewayResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable the ingress gateway.
 func (o IstioIngressGatewayResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v IstioIngressGatewayResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -6854,12 +5983,6 @@ func (o IstioIngressGatewayResponseArrayOutput) ToIstioIngressGatewayResponseArr
 
 func (o IstioIngressGatewayResponseArrayOutput) ToIstioIngressGatewayResponseArrayOutputWithContext(ctx context.Context) IstioIngressGatewayResponseArrayOutput {
 	return o
-}
-
-func (o IstioIngressGatewayResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IstioIngressGatewayResponse] {
-	return pulumix.Output[[]IstioIngressGatewayResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IstioIngressGatewayResponseArrayOutput) Index(i pulumi.IntInput) IstioIngressGatewayResponseOutput {
@@ -6919,12 +6042,6 @@ func (i IstioPluginCertificateAuthorityArgs) ToIstioPluginCertificateAuthorityOu
 	return pulumi.ToOutputWithContext(ctx, i).(IstioPluginCertificateAuthorityOutput)
 }
 
-func (i IstioPluginCertificateAuthorityArgs) ToOutput(ctx context.Context) pulumix.Output[IstioPluginCertificateAuthority] {
-	return pulumix.Output[IstioPluginCertificateAuthority]{
-		OutputState: i.ToIstioPluginCertificateAuthorityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IstioPluginCertificateAuthorityArgs) ToIstioPluginCertificateAuthorityPtrOutput() IstioPluginCertificateAuthorityPtrOutput {
 	return i.ToIstioPluginCertificateAuthorityPtrOutputWithContext(context.Background())
 }
@@ -6966,12 +6083,6 @@ func (i *istioPluginCertificateAuthorityPtrType) ToIstioPluginCertificateAuthori
 	return pulumi.ToOutputWithContext(ctx, i).(IstioPluginCertificateAuthorityPtrOutput)
 }
 
-func (i *istioPluginCertificateAuthorityPtrType) ToOutput(ctx context.Context) pulumix.Output[*IstioPluginCertificateAuthority] {
-	return pulumix.Output[*IstioPluginCertificateAuthority]{
-		OutputState: i.ToIstioPluginCertificateAuthorityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Plugin certificates information for Service Mesh.
 type IstioPluginCertificateAuthorityOutput struct{ *pulumi.OutputState }
 
@@ -6995,12 +6106,6 @@ func (o IstioPluginCertificateAuthorityOutput) ToIstioPluginCertificateAuthority
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v IstioPluginCertificateAuthority) *IstioPluginCertificateAuthority {
 		return &v
 	}).(IstioPluginCertificateAuthorityPtrOutput)
-}
-
-func (o IstioPluginCertificateAuthorityOutput) ToOutput(ctx context.Context) pulumix.Output[IstioPluginCertificateAuthority] {
-	return pulumix.Output[IstioPluginCertificateAuthority]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Certificate chain object name in Azure Key Vault.
@@ -7040,12 +6145,6 @@ func (o IstioPluginCertificateAuthorityPtrOutput) ToIstioPluginCertificateAuthor
 
 func (o IstioPluginCertificateAuthorityPtrOutput) ToIstioPluginCertificateAuthorityPtrOutputWithContext(ctx context.Context) IstioPluginCertificateAuthorityPtrOutput {
 	return o
-}
-
-func (o IstioPluginCertificateAuthorityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IstioPluginCertificateAuthority] {
-	return pulumix.Output[*IstioPluginCertificateAuthority]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IstioPluginCertificateAuthorityPtrOutput) Elem() IstioPluginCertificateAuthorityOutput {
@@ -7137,12 +6236,6 @@ func (o IstioPluginCertificateAuthorityResponseOutput) ToIstioPluginCertificateA
 	return o
 }
 
-func (o IstioPluginCertificateAuthorityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IstioPluginCertificateAuthorityResponse] {
-	return pulumix.Output[IstioPluginCertificateAuthorityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Certificate chain object name in Azure Key Vault.
 func (o IstioPluginCertificateAuthorityResponseOutput) CertChainObjectName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IstioPluginCertificateAuthorityResponse) *string { return v.CertChainObjectName }).(pulumi.StringPtrOutput)
@@ -7180,12 +6273,6 @@ func (o IstioPluginCertificateAuthorityResponsePtrOutput) ToIstioPluginCertifica
 
 func (o IstioPluginCertificateAuthorityResponsePtrOutput) ToIstioPluginCertificateAuthorityResponsePtrOutputWithContext(ctx context.Context) IstioPluginCertificateAuthorityResponsePtrOutput {
 	return o
-}
-
-func (o IstioPluginCertificateAuthorityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IstioPluginCertificateAuthorityResponse] {
-	return pulumix.Output[*IstioPluginCertificateAuthorityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IstioPluginCertificateAuthorityResponsePtrOutput) Elem() IstioPluginCertificateAuthorityResponseOutput {
@@ -7291,12 +6378,6 @@ func (i IstioServiceMeshArgs) ToIstioServiceMeshOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(IstioServiceMeshOutput)
 }
 
-func (i IstioServiceMeshArgs) ToOutput(ctx context.Context) pulumix.Output[IstioServiceMesh] {
-	return pulumix.Output[IstioServiceMesh]{
-		OutputState: i.ToIstioServiceMeshOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IstioServiceMeshArgs) ToIstioServiceMeshPtrOutput() IstioServiceMeshPtrOutput {
 	return i.ToIstioServiceMeshPtrOutputWithContext(context.Background())
 }
@@ -7338,12 +6419,6 @@ func (i *istioServiceMeshPtrType) ToIstioServiceMeshPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(IstioServiceMeshPtrOutput)
 }
 
-func (i *istioServiceMeshPtrType) ToOutput(ctx context.Context) pulumix.Output[*IstioServiceMesh] {
-	return pulumix.Output[*IstioServiceMesh]{
-		OutputState: i.ToIstioServiceMeshPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Istio service mesh configuration.
 type IstioServiceMeshOutput struct{ *pulumi.OutputState }
 
@@ -7367,12 +6442,6 @@ func (o IstioServiceMeshOutput) ToIstioServiceMeshPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v IstioServiceMesh) *IstioServiceMesh {
 		return &v
 	}).(IstioServiceMeshPtrOutput)
-}
-
-func (o IstioServiceMeshOutput) ToOutput(ctx context.Context) pulumix.Output[IstioServiceMesh] {
-	return pulumix.Output[IstioServiceMesh]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
@@ -7402,12 +6471,6 @@ func (o IstioServiceMeshPtrOutput) ToIstioServiceMeshPtrOutput() IstioServiceMes
 
 func (o IstioServiceMeshPtrOutput) ToIstioServiceMeshPtrOutputWithContext(ctx context.Context) IstioServiceMeshPtrOutput {
 	return o
-}
-
-func (o IstioServiceMeshPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IstioServiceMesh] {
-	return pulumix.Output[*IstioServiceMesh]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IstioServiceMeshPtrOutput) Elem() IstioServiceMeshOutput {
@@ -7475,12 +6538,6 @@ func (o IstioServiceMeshResponseOutput) ToIstioServiceMeshResponseOutputWithCont
 	return o
 }
 
-func (o IstioServiceMeshResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IstioServiceMeshResponse] {
-	return pulumix.Output[IstioServiceMeshResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
 func (o IstioServiceMeshResponseOutput) CertificateAuthority() IstioCertificateAuthorityResponsePtrOutput {
 	return o.ApplyT(func(v IstioServiceMeshResponse) *IstioCertificateAuthorityResponse { return v.CertificateAuthority }).(IstioCertificateAuthorityResponsePtrOutput)
@@ -7508,12 +6565,6 @@ func (o IstioServiceMeshResponsePtrOutput) ToIstioServiceMeshResponsePtrOutput()
 
 func (o IstioServiceMeshResponsePtrOutput) ToIstioServiceMeshResponsePtrOutputWithContext(ctx context.Context) IstioServiceMeshResponsePtrOutput {
 	return o
-}
-
-func (o IstioServiceMeshResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IstioServiceMeshResponse] {
-	return pulumix.Output[*IstioServiceMeshResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IstioServiceMeshResponsePtrOutput) Elem() IstioServiceMeshResponseOutput {
@@ -7631,12 +6682,6 @@ func (i KubeletConfigArgs) ToKubeletConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(KubeletConfigOutput)
 }
 
-func (i KubeletConfigArgs) ToOutput(ctx context.Context) pulumix.Output[KubeletConfig] {
-	return pulumix.Output[KubeletConfig]{
-		OutputState: i.ToKubeletConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KubeletConfigArgs) ToKubeletConfigPtrOutput() KubeletConfigPtrOutput {
 	return i.ToKubeletConfigPtrOutputWithContext(context.Background())
 }
@@ -7678,12 +6723,6 @@ func (i *kubeletConfigPtrType) ToKubeletConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(KubeletConfigPtrOutput)
 }
 
-func (i *kubeletConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*KubeletConfig] {
-	return pulumix.Output[*KubeletConfig]{
-		OutputState: i.ToKubeletConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
 type KubeletConfigOutput struct{ *pulumi.OutputState }
 
@@ -7707,12 +6746,6 @@ func (o KubeletConfigOutput) ToKubeletConfigPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubeletConfig) *KubeletConfig {
 		return &v
 	}).(KubeletConfigPtrOutput)
-}
-
-func (o KubeletConfigOutput) ToOutput(ctx context.Context) pulumix.Output[KubeletConfig] {
-	return pulumix.Output[KubeletConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allowed list of unsafe sysctls or unsafe sysctl patterns (ending in `*`).
@@ -7782,12 +6815,6 @@ func (o KubeletConfigPtrOutput) ToKubeletConfigPtrOutput() KubeletConfigPtrOutpu
 
 func (o KubeletConfigPtrOutput) ToKubeletConfigPtrOutputWithContext(ctx context.Context) KubeletConfigPtrOutput {
 	return o
-}
-
-func (o KubeletConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KubeletConfig] {
-	return pulumix.Output[*KubeletConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KubeletConfigPtrOutput) Elem() KubeletConfigOutput {
@@ -7951,12 +6978,6 @@ func (o KubeletConfigResponseOutput) ToKubeletConfigResponseOutputWithContext(ct
 	return o
 }
 
-func (o KubeletConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KubeletConfigResponse] {
-	return pulumix.Output[KubeletConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Allowed list of unsafe sysctls or unsafe sysctl patterns (ending in `*`).
 func (o KubeletConfigResponseOutput) AllowedUnsafeSysctls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubeletConfigResponse) []string { return v.AllowedUnsafeSysctls }).(pulumi.StringArrayOutput)
@@ -8024,12 +7045,6 @@ func (o KubeletConfigResponsePtrOutput) ToKubeletConfigResponsePtrOutput() Kubel
 
 func (o KubeletConfigResponsePtrOutput) ToKubeletConfigResponsePtrOutputWithContext(ctx context.Context) KubeletConfigResponsePtrOutput {
 	return o
-}
-
-func (o KubeletConfigResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KubeletConfigResponse] {
-	return pulumix.Output[*KubeletConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KubeletConfigResponsePtrOutput) Elem() KubeletConfigResponseOutput {
@@ -8199,12 +7214,6 @@ func (i LinuxOSConfigArgs) ToLinuxOSConfigOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(LinuxOSConfigOutput)
 }
 
-func (i LinuxOSConfigArgs) ToOutput(ctx context.Context) pulumix.Output[LinuxOSConfig] {
-	return pulumix.Output[LinuxOSConfig]{
-		OutputState: i.ToLinuxOSConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i LinuxOSConfigArgs) ToLinuxOSConfigPtrOutput() LinuxOSConfigPtrOutput {
 	return i.ToLinuxOSConfigPtrOutputWithContext(context.Background())
 }
@@ -8246,12 +7255,6 @@ func (i *linuxOSConfigPtrType) ToLinuxOSConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(LinuxOSConfigPtrOutput)
 }
 
-func (i *linuxOSConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*LinuxOSConfig] {
-	return pulumix.Output[*LinuxOSConfig]{
-		OutputState: i.ToLinuxOSConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
 type LinuxOSConfigOutput struct{ *pulumi.OutputState }
 
@@ -8275,12 +7278,6 @@ func (o LinuxOSConfigOutput) ToLinuxOSConfigPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v LinuxOSConfig) *LinuxOSConfig {
 		return &v
 	}).(LinuxOSConfigPtrOutput)
-}
-
-func (o LinuxOSConfigOutput) ToOutput(ctx context.Context) pulumix.Output[LinuxOSConfig] {
-	return pulumix.Output[LinuxOSConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The size in MB of a swap file that will be created on each node.
@@ -8315,12 +7312,6 @@ func (o LinuxOSConfigPtrOutput) ToLinuxOSConfigPtrOutput() LinuxOSConfigPtrOutpu
 
 func (o LinuxOSConfigPtrOutput) ToLinuxOSConfigPtrOutputWithContext(ctx context.Context) LinuxOSConfigPtrOutput {
 	return o
-}
-
-func (o LinuxOSConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LinuxOSConfig] {
-	return pulumix.Output[*LinuxOSConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LinuxOSConfigPtrOutput) Elem() LinuxOSConfigOutput {
@@ -8400,12 +7391,6 @@ func (o LinuxOSConfigResponseOutput) ToLinuxOSConfigResponseOutputWithContext(ct
 	return o
 }
 
-func (o LinuxOSConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LinuxOSConfigResponse] {
-	return pulumix.Output[LinuxOSConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The size in MB of a swap file that will be created on each node.
 func (o LinuxOSConfigResponseOutput) SwapFileSizeMB() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LinuxOSConfigResponse) *int { return v.SwapFileSizeMB }).(pulumi.IntPtrOutput)
@@ -8438,12 +7423,6 @@ func (o LinuxOSConfigResponsePtrOutput) ToLinuxOSConfigResponsePtrOutput() Linux
 
 func (o LinuxOSConfigResponsePtrOutput) ToLinuxOSConfigResponsePtrOutputWithContext(ctx context.Context) LinuxOSConfigResponsePtrOutput {
 	return o
-}
-
-func (o LinuxOSConfigResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LinuxOSConfigResponse] {
-	return pulumix.Output[*LinuxOSConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LinuxOSConfigResponsePtrOutput) Elem() LinuxOSConfigResponseOutput {
@@ -8574,12 +7553,6 @@ func (i MaintenanceWindowArgs) ToMaintenanceWindowOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowOutput)
 }
 
-func (i MaintenanceWindowArgs) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindow] {
-	return pulumix.Output[MaintenanceWindow]{
-		OutputState: i.ToMaintenanceWindowOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MaintenanceWindowArgs) ToMaintenanceWindowPtrOutput() MaintenanceWindowPtrOutput {
 	return i.ToMaintenanceWindowPtrOutputWithContext(context.Background())
 }
@@ -8621,12 +7594,6 @@ func (i *maintenanceWindowPtrType) ToMaintenanceWindowPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceWindowPtrOutput)
 }
 
-func (i *maintenanceWindowPtrType) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindow] {
-	return pulumix.Output[*MaintenanceWindow]{
-		OutputState: i.ToMaintenanceWindowPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Maintenance window used to configure scheduled auto-upgrade for a Managed Cluster.
 type MaintenanceWindowOutput struct{ *pulumi.OutputState }
 
@@ -8650,12 +7617,6 @@ func (o MaintenanceWindowOutput) ToMaintenanceWindowPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceWindow) *MaintenanceWindow {
 		return &v
 	}).(MaintenanceWindowPtrOutput)
-}
-
-func (o MaintenanceWindowOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindow] {
-	return pulumix.Output[MaintenanceWindow]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Length of maintenance window range from 4 to 24 hours.
@@ -8700,12 +7661,6 @@ func (o MaintenanceWindowPtrOutput) ToMaintenanceWindowPtrOutput() MaintenanceWi
 
 func (o MaintenanceWindowPtrOutput) ToMaintenanceWindowPtrOutputWithContext(ctx context.Context) MaintenanceWindowPtrOutput {
 	return o
-}
-
-func (o MaintenanceWindowPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindow] {
-	return pulumix.Output[*MaintenanceWindow]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MaintenanceWindowPtrOutput) Elem() MaintenanceWindowOutput {
@@ -8821,12 +7776,6 @@ func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponseOutputWithCo
 	return o
 }
 
-func (o MaintenanceWindowResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MaintenanceWindowResponse] {
-	return pulumix.Output[MaintenanceWindowResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Length of maintenance window range from 4 to 24 hours.
 func (o MaintenanceWindowResponseOutput) DurationHours() pulumi.IntOutput {
 	return o.ApplyT(func(v MaintenanceWindowResponse) int { return v.DurationHours }).(pulumi.IntOutput)
@@ -8869,12 +7818,6 @@ func (o MaintenanceWindowResponsePtrOutput) ToMaintenanceWindowResponsePtrOutput
 
 func (o MaintenanceWindowResponsePtrOutput) ToMaintenanceWindowResponsePtrOutputWithContext(ctx context.Context) MaintenanceWindowResponsePtrOutput {
 	return o
-}
-
-func (o MaintenanceWindowResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceWindowResponse] {
-	return pulumix.Output[*MaintenanceWindowResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MaintenanceWindowResponsePtrOutput) Elem() MaintenanceWindowResponseOutput {
@@ -9006,12 +7949,6 @@ func (i ManagedClusterAADProfileArgs) ToManagedClusterAADProfileOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAADProfileOutput)
 }
 
-func (i ManagedClusterAADProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAADProfile] {
-	return pulumix.Output[ManagedClusterAADProfile]{
-		OutputState: i.ToManagedClusterAADProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterAADProfileArgs) ToManagedClusterAADProfilePtrOutput() ManagedClusterAADProfilePtrOutput {
 	return i.ToManagedClusterAADProfilePtrOutputWithContext(context.Background())
 }
@@ -9053,12 +7990,6 @@ func (i *managedClusterAADProfilePtrType) ToManagedClusterAADProfilePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAADProfilePtrOutput)
 }
 
-func (i *managedClusterAADProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAADProfile] {
-	return pulumix.Output[*ManagedClusterAADProfile]{
-		OutputState: i.ToManagedClusterAADProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
 type ManagedClusterAADProfileOutput struct{ *pulumi.OutputState }
 
@@ -9082,12 +8013,6 @@ func (o ManagedClusterAADProfileOutput) ToManagedClusterAADProfilePtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterAADProfile) *ManagedClusterAADProfile {
 		return &v
 	}).(ManagedClusterAADProfilePtrOutput)
-}
-
-func (o ManagedClusterAADProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAADProfile] {
-	return pulumix.Output[ManagedClusterAADProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of AAD group object IDs that will have admin role of the cluster.
@@ -9137,12 +8062,6 @@ func (o ManagedClusterAADProfilePtrOutput) ToManagedClusterAADProfilePtrOutput()
 
 func (o ManagedClusterAADProfilePtrOutput) ToManagedClusterAADProfilePtrOutputWithContext(ctx context.Context) ManagedClusterAADProfilePtrOutput {
 	return o
-}
-
-func (o ManagedClusterAADProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAADProfile] {
-	return pulumix.Output[*ManagedClusterAADProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAADProfilePtrOutput) Elem() ManagedClusterAADProfileOutput {
@@ -9258,12 +8177,6 @@ func (o ManagedClusterAADProfileResponseOutput) ToManagedClusterAADProfileRespon
 	return o
 }
 
-func (o ManagedClusterAADProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAADProfileResponse] {
-	return pulumix.Output[ManagedClusterAADProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of AAD group object IDs that will have admin role of the cluster.
 func (o ManagedClusterAADProfileResponseOutput) AdminGroupObjectIDs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ManagedClusterAADProfileResponse) []string { return v.AdminGroupObjectIDs }).(pulumi.StringArrayOutput)
@@ -9311,12 +8224,6 @@ func (o ManagedClusterAADProfileResponsePtrOutput) ToManagedClusterAADProfileRes
 
 func (o ManagedClusterAADProfileResponsePtrOutput) ToManagedClusterAADProfileResponsePtrOutputWithContext(ctx context.Context) ManagedClusterAADProfileResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterAADProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAADProfileResponse] {
-	return pulumix.Output[*ManagedClusterAADProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAADProfileResponsePtrOutput) Elem() ManagedClusterAADProfileResponseOutput {
@@ -9458,12 +8365,6 @@ func (i ManagedClusterAPIServerAccessProfileArgs) ToManagedClusterAPIServerAcces
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAPIServerAccessProfileOutput)
 }
 
-func (i ManagedClusterAPIServerAccessProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAPIServerAccessProfile] {
-	return pulumix.Output[ManagedClusterAPIServerAccessProfile]{
-		OutputState: i.ToManagedClusterAPIServerAccessProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterAPIServerAccessProfileArgs) ToManagedClusterAPIServerAccessProfilePtrOutput() ManagedClusterAPIServerAccessProfilePtrOutput {
 	return i.ToManagedClusterAPIServerAccessProfilePtrOutputWithContext(context.Background())
 }
@@ -9505,12 +8406,6 @@ func (i *managedClusterAPIServerAccessProfilePtrType) ToManagedClusterAPIServerA
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAPIServerAccessProfilePtrOutput)
 }
 
-func (i *managedClusterAPIServerAccessProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAPIServerAccessProfile] {
-	return pulumix.Output[*ManagedClusterAPIServerAccessProfile]{
-		OutputState: i.ToManagedClusterAPIServerAccessProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Access profile for managed cluster API server.
 type ManagedClusterAPIServerAccessProfileOutput struct{ *pulumi.OutputState }
 
@@ -9534,12 +8429,6 @@ func (o ManagedClusterAPIServerAccessProfileOutput) ToManagedClusterAPIServerAcc
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterAPIServerAccessProfile) *ManagedClusterAPIServerAccessProfile {
 		return &v
 	}).(ManagedClusterAPIServerAccessProfilePtrOutput)
-}
-
-func (o ManagedClusterAPIServerAccessProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAPIServerAccessProfile] {
-	return pulumix.Output[ManagedClusterAPIServerAccessProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with clusters that use Public IP Per Node, or clusters that are using a Basic Load Balancer. For more information see [API server authorized IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).
@@ -9589,12 +8478,6 @@ func (o ManagedClusterAPIServerAccessProfilePtrOutput) ToManagedClusterAPIServer
 
 func (o ManagedClusterAPIServerAccessProfilePtrOutput) ToManagedClusterAPIServerAccessProfilePtrOutputWithContext(ctx context.Context) ManagedClusterAPIServerAccessProfilePtrOutput {
 	return o
-}
-
-func (o ManagedClusterAPIServerAccessProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAPIServerAccessProfile] {
-	return pulumix.Output[*ManagedClusterAPIServerAccessProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAPIServerAccessProfilePtrOutput) Elem() ManagedClusterAPIServerAccessProfileOutput {
@@ -9710,12 +8593,6 @@ func (o ManagedClusterAPIServerAccessProfileResponseOutput) ToManagedClusterAPIS
 	return o
 }
 
-func (o ManagedClusterAPIServerAccessProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAPIServerAccessProfileResponse] {
-	return pulumix.Output[ManagedClusterAPIServerAccessProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with clusters that use Public IP Per Node, or clusters that are using a Basic Load Balancer. For more information see [API server authorized IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges).
 func (o ManagedClusterAPIServerAccessProfileResponseOutput) AuthorizedIPRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ManagedClusterAPIServerAccessProfileResponse) []string { return v.AuthorizedIPRanges }).(pulumi.StringArrayOutput)
@@ -9763,12 +8640,6 @@ func (o ManagedClusterAPIServerAccessProfileResponsePtrOutput) ToManagedClusterA
 
 func (o ManagedClusterAPIServerAccessProfileResponsePtrOutput) ToManagedClusterAPIServerAccessProfileResponsePtrOutputWithContext(ctx context.Context) ManagedClusterAPIServerAccessProfileResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterAPIServerAccessProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAPIServerAccessProfileResponse] {
-	return pulumix.Output[*ManagedClusterAPIServerAccessProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAPIServerAccessProfileResponsePtrOutput) Elem() ManagedClusterAPIServerAccessProfileResponseOutput {
@@ -9890,12 +8761,6 @@ func (i ManagedClusterAddonProfileArgs) ToManagedClusterAddonProfileOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAddonProfileOutput)
 }
 
-func (i ManagedClusterAddonProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAddonProfile] {
-	return pulumix.Output[ManagedClusterAddonProfile]{
-		OutputState: i.ToManagedClusterAddonProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ManagedClusterAddonProfileMapInput is an input type that accepts ManagedClusterAddonProfileMap and ManagedClusterAddonProfileMapOutput values.
 // You can construct a concrete instance of `ManagedClusterAddonProfileMapInput` via:
 //
@@ -9921,12 +8786,6 @@ func (i ManagedClusterAddonProfileMap) ToManagedClusterAddonProfileMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAddonProfileMapOutput)
 }
 
-func (i ManagedClusterAddonProfileMap) ToOutput(ctx context.Context) pulumix.Output[map[string]ManagedClusterAddonProfile] {
-	return pulumix.Output[map[string]ManagedClusterAddonProfile]{
-		OutputState: i.ToManagedClusterAddonProfileMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A Kubernetes add-on profile for a managed cluster.
 type ManagedClusterAddonProfileOutput struct{ *pulumi.OutputState }
 
@@ -9940,12 +8799,6 @@ func (o ManagedClusterAddonProfileOutput) ToManagedClusterAddonProfileOutput() M
 
 func (o ManagedClusterAddonProfileOutput) ToManagedClusterAddonProfileOutputWithContext(ctx context.Context) ManagedClusterAddonProfileOutput {
 	return o
-}
-
-func (o ManagedClusterAddonProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAddonProfile] {
-	return pulumix.Output[ManagedClusterAddonProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Key-value pairs for configuring an add-on.
@@ -9970,12 +8823,6 @@ func (o ManagedClusterAddonProfileMapOutput) ToManagedClusterAddonProfileMapOutp
 
 func (o ManagedClusterAddonProfileMapOutput) ToManagedClusterAddonProfileMapOutputWithContext(ctx context.Context) ManagedClusterAddonProfileMapOutput {
 	return o
-}
-
-func (o ManagedClusterAddonProfileMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ManagedClusterAddonProfile] {
-	return pulumix.Output[map[string]ManagedClusterAddonProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAddonProfileMapOutput) MapIndex(k pulumi.StringInput) ManagedClusterAddonProfileOutput {
@@ -10009,12 +8856,6 @@ func (o ManagedClusterAddonProfileResponseOutput) ToManagedClusterAddonProfileRe
 	return o
 }
 
-func (o ManagedClusterAddonProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAddonProfileResponse] {
-	return pulumix.Output[ManagedClusterAddonProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Key-value pairs for configuring an add-on.
 func (o ManagedClusterAddonProfileResponseOutput) Config() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ManagedClusterAddonProfileResponse) map[string]string { return v.Config }).(pulumi.StringMapOutput)
@@ -10046,12 +8887,6 @@ func (o ManagedClusterAddonProfileResponseMapOutput) ToManagedClusterAddonProfil
 	return o
 }
 
-func (o ManagedClusterAddonProfileResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ManagedClusterAddonProfileResponse] {
-	return pulumix.Output[map[string]ManagedClusterAddonProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ManagedClusterAddonProfileResponseMapOutput) MapIndex(k pulumi.StringInput) ManagedClusterAddonProfileResponseOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ManagedClusterAddonProfileResponse {
 		return vs[0].(map[string]ManagedClusterAddonProfileResponse)[vs[1].(string)]
@@ -10081,12 +8916,6 @@ func (o ManagedClusterAddonProfileResponseIdentityOutput) ToManagedClusterAddonP
 
 func (o ManagedClusterAddonProfileResponseIdentityOutput) ToManagedClusterAddonProfileResponseIdentityOutputWithContext(ctx context.Context) ManagedClusterAddonProfileResponseIdentityOutput {
 	return o
-}
-
-func (o ManagedClusterAddonProfileResponseIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAddonProfileResponseIdentity] {
-	return pulumix.Output[ManagedClusterAddonProfileResponseIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The client ID of the user assigned identity.
@@ -10315,12 +9144,6 @@ func (i ManagedClusterAgentPoolProfileArgs) ToManagedClusterAgentPoolProfileOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAgentPoolProfileOutput)
 }
 
-func (i ManagedClusterAgentPoolProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAgentPoolProfile] {
-	return pulumix.Output[ManagedClusterAgentPoolProfile]{
-		OutputState: i.ToManagedClusterAgentPoolProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ManagedClusterAgentPoolProfileArrayInput is an input type that accepts ManagedClusterAgentPoolProfileArray and ManagedClusterAgentPoolProfileArrayOutput values.
 // You can construct a concrete instance of `ManagedClusterAgentPoolProfileArrayInput` via:
 //
@@ -10346,12 +9169,6 @@ func (i ManagedClusterAgentPoolProfileArray) ToManagedClusterAgentPoolProfileArr
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAgentPoolProfileArrayOutput)
 }
 
-func (i ManagedClusterAgentPoolProfileArray) ToOutput(ctx context.Context) pulumix.Output[[]ManagedClusterAgentPoolProfile] {
-	return pulumix.Output[[]ManagedClusterAgentPoolProfile]{
-		OutputState: i.ToManagedClusterAgentPoolProfileArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Profile for the container service agent pool.
 type ManagedClusterAgentPoolProfileOutput struct{ *pulumi.OutputState }
 
@@ -10365,12 +9182,6 @@ func (o ManagedClusterAgentPoolProfileOutput) ToManagedClusterAgentPoolProfileOu
 
 func (o ManagedClusterAgentPoolProfileOutput) ToManagedClusterAgentPoolProfileOutputWithContext(ctx context.Context) ManagedClusterAgentPoolProfileOutput {
 	return o
-}
-
-func (o ManagedClusterAgentPoolProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAgentPoolProfile] {
-	return pulumix.Output[ManagedClusterAgentPoolProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'.
@@ -10612,12 +9423,6 @@ func (o ManagedClusterAgentPoolProfileArrayOutput) ToManagedClusterAgentPoolProf
 	return o
 }
 
-func (o ManagedClusterAgentPoolProfileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagedClusterAgentPoolProfile] {
-	return pulumix.Output[[]ManagedClusterAgentPoolProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ManagedClusterAgentPoolProfileArrayOutput) Index(i pulumi.IntInput) ManagedClusterAgentPoolProfileOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedClusterAgentPoolProfile {
 		return vs[0].([]ManagedClusterAgentPoolProfile)[vs[1].(int)]
@@ -10737,12 +9542,6 @@ func (o ManagedClusterAgentPoolProfileResponseOutput) ToManagedClusterAgentPoolP
 
 func (o ManagedClusterAgentPoolProfileResponseOutput) ToManagedClusterAgentPoolProfileResponseOutputWithContext(ctx context.Context) ManagedClusterAgentPoolProfileResponseOutput {
 	return o
-}
-
-func (o ManagedClusterAgentPoolProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAgentPoolProfileResponse] {
-	return pulumix.Output[ManagedClusterAgentPoolProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'.
@@ -11007,12 +9806,6 @@ func (o ManagedClusterAgentPoolProfileResponseArrayOutput) ToManagedClusterAgent
 	return o
 }
 
-func (o ManagedClusterAgentPoolProfileResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagedClusterAgentPoolProfileResponse] {
-	return pulumix.Output[[]ManagedClusterAgentPoolProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ManagedClusterAgentPoolProfileResponseArrayOutput) Index(i pulumi.IntInput) ManagedClusterAgentPoolProfileResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedClusterAgentPoolProfileResponse {
 		return vs[0].([]ManagedClusterAgentPoolProfileResponse)[vs[1].(int)]
@@ -11058,12 +9851,6 @@ func (i ManagedClusterAutoUpgradeProfileArgs) ToManagedClusterAutoUpgradeProfile
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAutoUpgradeProfileOutput)
 }
 
-func (i ManagedClusterAutoUpgradeProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAutoUpgradeProfile] {
-	return pulumix.Output[ManagedClusterAutoUpgradeProfile]{
-		OutputState: i.ToManagedClusterAutoUpgradeProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterAutoUpgradeProfileArgs) ToManagedClusterAutoUpgradeProfilePtrOutput() ManagedClusterAutoUpgradeProfilePtrOutput {
 	return i.ToManagedClusterAutoUpgradeProfilePtrOutputWithContext(context.Background())
 }
@@ -11105,12 +9892,6 @@ func (i *managedClusterAutoUpgradeProfilePtrType) ToManagedClusterAutoUpgradePro
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAutoUpgradeProfilePtrOutput)
 }
 
-func (i *managedClusterAutoUpgradeProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAutoUpgradeProfile] {
-	return pulumix.Output[*ManagedClusterAutoUpgradeProfile]{
-		OutputState: i.ToManagedClusterAutoUpgradeProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Auto upgrade profile for a managed cluster.
 type ManagedClusterAutoUpgradeProfileOutput struct{ *pulumi.OutputState }
 
@@ -11136,12 +9917,6 @@ func (o ManagedClusterAutoUpgradeProfileOutput) ToManagedClusterAutoUpgradeProfi
 	}).(ManagedClusterAutoUpgradeProfilePtrOutput)
 }
 
-func (o ManagedClusterAutoUpgradeProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAutoUpgradeProfile] {
-	return pulumix.Output[ManagedClusterAutoUpgradeProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The default is Unmanaged, but may change to either NodeImage or SecurityPatch at GA.
 func (o ManagedClusterAutoUpgradeProfileOutput) NodeOSUpgradeChannel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedClusterAutoUpgradeProfile) *string { return v.NodeOSUpgradeChannel }).(pulumi.StringPtrOutput)
@@ -11164,12 +9939,6 @@ func (o ManagedClusterAutoUpgradeProfilePtrOutput) ToManagedClusterAutoUpgradePr
 
 func (o ManagedClusterAutoUpgradeProfilePtrOutput) ToManagedClusterAutoUpgradeProfilePtrOutputWithContext(ctx context.Context) ManagedClusterAutoUpgradeProfilePtrOutput {
 	return o
-}
-
-func (o ManagedClusterAutoUpgradeProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAutoUpgradeProfile] {
-	return pulumix.Output[*ManagedClusterAutoUpgradeProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAutoUpgradeProfilePtrOutput) Elem() ManagedClusterAutoUpgradeProfileOutput {
@@ -11225,12 +9994,6 @@ func (o ManagedClusterAutoUpgradeProfileResponseOutput) ToManagedClusterAutoUpgr
 	return o
 }
 
-func (o ManagedClusterAutoUpgradeProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAutoUpgradeProfileResponse] {
-	return pulumix.Output[ManagedClusterAutoUpgradeProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The default is Unmanaged, but may change to either NodeImage or SecurityPatch at GA.
 func (o ManagedClusterAutoUpgradeProfileResponseOutput) NodeOSUpgradeChannel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedClusterAutoUpgradeProfileResponse) *string { return v.NodeOSUpgradeChannel }).(pulumi.StringPtrOutput)
@@ -11253,12 +10016,6 @@ func (o ManagedClusterAutoUpgradeProfileResponsePtrOutput) ToManagedClusterAutoU
 
 func (o ManagedClusterAutoUpgradeProfileResponsePtrOutput) ToManagedClusterAutoUpgradeProfileResponsePtrOutputWithContext(ctx context.Context) ManagedClusterAutoUpgradeProfileResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterAutoUpgradeProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAutoUpgradeProfileResponse] {
-	return pulumix.Output[*ManagedClusterAutoUpgradeProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAutoUpgradeProfileResponsePtrOutput) Elem() ManagedClusterAutoUpgradeProfileResponseOutput {
@@ -11330,12 +10087,6 @@ func (i ManagedClusterAzureMonitorProfileArgs) ToManagedClusterAzureMonitorProfi
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAzureMonitorProfileOutput)
 }
 
-func (i ManagedClusterAzureMonitorProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfile] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfile]{
-		OutputState: i.ToManagedClusterAzureMonitorProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterAzureMonitorProfileArgs) ToManagedClusterAzureMonitorProfilePtrOutput() ManagedClusterAzureMonitorProfilePtrOutput {
 	return i.ToManagedClusterAzureMonitorProfilePtrOutputWithContext(context.Background())
 }
@@ -11377,12 +10128,6 @@ func (i *managedClusterAzureMonitorProfilePtrType) ToManagedClusterAzureMonitorP
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAzureMonitorProfilePtrOutput)
 }
 
-func (i *managedClusterAzureMonitorProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfile] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfile]{
-		OutputState: i.ToManagedClusterAzureMonitorProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Prometheus addon profile for the container service cluster
 type ManagedClusterAzureMonitorProfileOutput struct{ *pulumi.OutputState }
 
@@ -11408,12 +10153,6 @@ func (o ManagedClusterAzureMonitorProfileOutput) ToManagedClusterAzureMonitorPro
 	}).(ManagedClusterAzureMonitorProfilePtrOutput)
 }
 
-func (o ManagedClusterAzureMonitorProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfile] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Logs profile for the Azure Monitor Infrastructure and Application Logs. Collect out-of-the-box Kubernetes infrastructure & application logs to send to Azure Monitor. See aka.ms/AzureMonitorContainerInsights for an overview.
 func (o ManagedClusterAzureMonitorProfileOutput) Logs() ManagedClusterAzureMonitorProfileLogsPtrOutput {
 	return o.ApplyT(func(v ManagedClusterAzureMonitorProfile) *ManagedClusterAzureMonitorProfileLogs { return v.Logs }).(ManagedClusterAzureMonitorProfileLogsPtrOutput)
@@ -11436,12 +10175,6 @@ func (o ManagedClusterAzureMonitorProfilePtrOutput) ToManagedClusterAzureMonitor
 
 func (o ManagedClusterAzureMonitorProfilePtrOutput) ToManagedClusterAzureMonitorProfilePtrOutputWithContext(ctx context.Context) ManagedClusterAzureMonitorProfilePtrOutput {
 	return o
-}
-
-func (o ManagedClusterAzureMonitorProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfile] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAzureMonitorProfilePtrOutput) Elem() ManagedClusterAzureMonitorProfileOutput {
@@ -11509,12 +10242,6 @@ func (i ManagedClusterAzureMonitorProfileAppMonitoringArgs) ToManagedClusterAzur
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAzureMonitorProfileAppMonitoringOutput)
 }
 
-func (i ManagedClusterAzureMonitorProfileAppMonitoringArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfileAppMonitoring] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfileAppMonitoring]{
-		OutputState: i.ToManagedClusterAzureMonitorProfileAppMonitoringOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterAzureMonitorProfileAppMonitoringArgs) ToManagedClusterAzureMonitorProfileAppMonitoringPtrOutput() ManagedClusterAzureMonitorProfileAppMonitoringPtrOutput {
 	return i.ToManagedClusterAzureMonitorProfileAppMonitoringPtrOutputWithContext(context.Background())
 }
@@ -11556,12 +10283,6 @@ func (i *managedClusterAzureMonitorProfileAppMonitoringPtrType) ToManagedCluster
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAzureMonitorProfileAppMonitoringPtrOutput)
 }
 
-func (i *managedClusterAzureMonitorProfileAppMonitoringPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfileAppMonitoring] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfileAppMonitoring]{
-		OutputState: i.ToManagedClusterAzureMonitorProfileAppMonitoringPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Application Monitoring Profile for Kubernetes Application Container. Collects application logs, metrics and traces through auto-instrumentation of the application using Azure Monitor OpenTelemetry based SDKs. See aka.ms/AzureMonitorApplicationMonitoring for an overview.
 type ManagedClusterAzureMonitorProfileAppMonitoringOutput struct{ *pulumi.OutputState }
 
@@ -11587,12 +10308,6 @@ func (o ManagedClusterAzureMonitorProfileAppMonitoringOutput) ToManagedClusterAz
 	}).(ManagedClusterAzureMonitorProfileAppMonitoringPtrOutput)
 }
 
-func (o ManagedClusterAzureMonitorProfileAppMonitoringOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfileAppMonitoring] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfileAppMonitoring]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Indicates if Application Monitoring enabled or not.
 func (o ManagedClusterAzureMonitorProfileAppMonitoringOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterAzureMonitorProfileAppMonitoring) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -11610,12 +10325,6 @@ func (o ManagedClusterAzureMonitorProfileAppMonitoringPtrOutput) ToManagedCluste
 
 func (o ManagedClusterAzureMonitorProfileAppMonitoringPtrOutput) ToManagedClusterAzureMonitorProfileAppMonitoringPtrOutputWithContext(ctx context.Context) ManagedClusterAzureMonitorProfileAppMonitoringPtrOutput {
 	return o
-}
-
-func (o ManagedClusterAzureMonitorProfileAppMonitoringPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfileAppMonitoring] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfileAppMonitoring]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAzureMonitorProfileAppMonitoringPtrOutput) Elem() ManagedClusterAzureMonitorProfileAppMonitoringOutput {
@@ -11673,12 +10382,6 @@ func (i ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsArgs) 
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsOutput)
 }
 
-func (i ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetrics] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetrics]{
-		OutputState: i.ToManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsArgs) ToManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsPtrOutput() ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsPtrOutput {
 	return i.ToManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsPtrOutputWithContext(context.Background())
 }
@@ -11720,12 +10423,6 @@ func (i *managedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsPtrTy
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsPtrOutput)
 }
 
-func (i *managedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetrics] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetrics]{
-		OutputState: i.ToManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Application Monitoring Open Telemetry Metrics Profile for Kubernetes Application Container Metrics. Collects OpenTelemetry metrics through auto-instrumentation of the application using Azure Monitor OpenTelemetry based SDKs. See aka.ms/AzureMonitorApplicationMonitoring for an overview.
 type ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsOutput struct{ *pulumi.OutputState }
 
@@ -11751,12 +10448,6 @@ func (o ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsOutput
 	}).(ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsPtrOutput)
 }
 
-func (o ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetrics] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetrics]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Indicates if Application Monitoring Open Telemetry Metrics is enabled or not.
 func (o ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetrics) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -11774,12 +10465,6 @@ func (o ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsPtrOut
 
 func (o ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsPtrOutput) ToManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsPtrOutputWithContext(ctx context.Context) ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsPtrOutput {
 	return o
-}
-
-func (o ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetrics] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetrics]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsPtrOutput) Elem() ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsOutput {
@@ -11823,12 +10508,6 @@ func (o ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsRespon
 	return o
 }
 
-func (o ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsResponse] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Indicates if Application Monitoring Open Telemetry Metrics is enabled or not.
 func (o ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsResponse) *bool {
@@ -11848,12 +10527,6 @@ func (o ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsRespon
 
 func (o ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsResponsePtrOutput) ToManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsResponsePtrOutputWithContext(ctx context.Context) ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsResponse] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsResponsePtrOutput) Elem() ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsResponseOutput {
@@ -11897,12 +10570,6 @@ func (o ManagedClusterAzureMonitorProfileAppMonitoringResponseOutput) ToManagedC
 	return o
 }
 
-func (o ManagedClusterAzureMonitorProfileAppMonitoringResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfileAppMonitoringResponse] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfileAppMonitoringResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Indicates if Application Monitoring enabled or not.
 func (o ManagedClusterAzureMonitorProfileAppMonitoringResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterAzureMonitorProfileAppMonitoringResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -11920,12 +10587,6 @@ func (o ManagedClusterAzureMonitorProfileAppMonitoringResponsePtrOutput) ToManag
 
 func (o ManagedClusterAzureMonitorProfileAppMonitoringResponsePtrOutput) ToManagedClusterAzureMonitorProfileAppMonitoringResponsePtrOutputWithContext(ctx context.Context) ManagedClusterAzureMonitorProfileAppMonitoringResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterAzureMonitorProfileAppMonitoringResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfileAppMonitoringResponse] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfileAppMonitoringResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAzureMonitorProfileAppMonitoringResponsePtrOutput) Elem() ManagedClusterAzureMonitorProfileAppMonitoringResponseOutput {
@@ -11991,12 +10652,6 @@ func (i ManagedClusterAzureMonitorProfileContainerInsightsArgs) ToManagedCluster
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAzureMonitorProfileContainerInsightsOutput)
 }
 
-func (i ManagedClusterAzureMonitorProfileContainerInsightsArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfileContainerInsights] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfileContainerInsights]{
-		OutputState: i.ToManagedClusterAzureMonitorProfileContainerInsightsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterAzureMonitorProfileContainerInsightsArgs) ToManagedClusterAzureMonitorProfileContainerInsightsPtrOutput() ManagedClusterAzureMonitorProfileContainerInsightsPtrOutput {
 	return i.ToManagedClusterAzureMonitorProfileContainerInsightsPtrOutputWithContext(context.Background())
 }
@@ -12038,12 +10693,6 @@ func (i *managedClusterAzureMonitorProfileContainerInsightsPtrType) ToManagedClu
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAzureMonitorProfileContainerInsightsPtrOutput)
 }
 
-func (i *managedClusterAzureMonitorProfileContainerInsightsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfileContainerInsights] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfileContainerInsights]{
-		OutputState: i.ToManagedClusterAzureMonitorProfileContainerInsightsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Azure Monitor Container Insights Profile for Kubernetes Events, Inventory and Container stdout & stderr logs etc. See aka.ms/AzureMonitorContainerInsights for an overview.
 type ManagedClusterAzureMonitorProfileContainerInsightsOutput struct{ *pulumi.OutputState }
 
@@ -12067,12 +10716,6 @@ func (o ManagedClusterAzureMonitorProfileContainerInsightsOutput) ToManagedClust
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterAzureMonitorProfileContainerInsights) *ManagedClusterAzureMonitorProfileContainerInsights {
 		return &v
 	}).(ManagedClusterAzureMonitorProfileContainerInsightsPtrOutput)
-}
-
-func (o ManagedClusterAzureMonitorProfileContainerInsightsOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfileContainerInsights] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfileContainerInsights]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates if Azure Monitor Container Insights Logs Addon is enabled or not.
@@ -12106,12 +10749,6 @@ func (o ManagedClusterAzureMonitorProfileContainerInsightsPtrOutput) ToManagedCl
 
 func (o ManagedClusterAzureMonitorProfileContainerInsightsPtrOutput) ToManagedClusterAzureMonitorProfileContainerInsightsPtrOutputWithContext(ctx context.Context) ManagedClusterAzureMonitorProfileContainerInsightsPtrOutput {
 	return o
-}
-
-func (o ManagedClusterAzureMonitorProfileContainerInsightsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfileContainerInsights] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfileContainerInsights]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAzureMonitorProfileContainerInsightsPtrOutput) Elem() ManagedClusterAzureMonitorProfileContainerInsightsOutput {
@@ -12179,12 +10816,6 @@ func (o ManagedClusterAzureMonitorProfileContainerInsightsResponseOutput) ToMana
 	return o
 }
 
-func (o ManagedClusterAzureMonitorProfileContainerInsightsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfileContainerInsightsResponse] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfileContainerInsightsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Indicates if Azure Monitor Container Insights Logs Addon is enabled or not.
 func (o ManagedClusterAzureMonitorProfileContainerInsightsResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterAzureMonitorProfileContainerInsightsResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -12216,12 +10847,6 @@ func (o ManagedClusterAzureMonitorProfileContainerInsightsResponsePtrOutput) ToM
 
 func (o ManagedClusterAzureMonitorProfileContainerInsightsResponsePtrOutput) ToManagedClusterAzureMonitorProfileContainerInsightsResponsePtrOutputWithContext(ctx context.Context) ManagedClusterAzureMonitorProfileContainerInsightsResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterAzureMonitorProfileContainerInsightsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfileContainerInsightsResponse] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfileContainerInsightsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAzureMonitorProfileContainerInsightsResponsePtrOutput) Elem() ManagedClusterAzureMonitorProfileContainerInsightsResponseOutput {
@@ -12303,12 +10928,6 @@ func (i ManagedClusterAzureMonitorProfileKubeStateMetricsArgs) ToManagedClusterA
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAzureMonitorProfileKubeStateMetricsOutput)
 }
 
-func (i ManagedClusterAzureMonitorProfileKubeStateMetricsArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfileKubeStateMetrics] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfileKubeStateMetrics]{
-		OutputState: i.ToManagedClusterAzureMonitorProfileKubeStateMetricsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterAzureMonitorProfileKubeStateMetricsArgs) ToManagedClusterAzureMonitorProfileKubeStateMetricsPtrOutput() ManagedClusterAzureMonitorProfileKubeStateMetricsPtrOutput {
 	return i.ToManagedClusterAzureMonitorProfileKubeStateMetricsPtrOutputWithContext(context.Background())
 }
@@ -12350,12 +10969,6 @@ func (i *managedClusterAzureMonitorProfileKubeStateMetricsPtrType) ToManagedClus
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAzureMonitorProfileKubeStateMetricsPtrOutput)
 }
 
-func (i *managedClusterAzureMonitorProfileKubeStateMetricsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfileKubeStateMetrics] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfileKubeStateMetrics]{
-		OutputState: i.ToManagedClusterAzureMonitorProfileKubeStateMetricsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Kube State Metrics for prometheus addon profile for the container service cluster
 type ManagedClusterAzureMonitorProfileKubeStateMetricsOutput struct{ *pulumi.OutputState }
 
@@ -12381,12 +10994,6 @@ func (o ManagedClusterAzureMonitorProfileKubeStateMetricsOutput) ToManagedCluste
 	}).(ManagedClusterAzureMonitorProfileKubeStateMetricsPtrOutput)
 }
 
-func (o ManagedClusterAzureMonitorProfileKubeStateMetricsOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfileKubeStateMetrics] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfileKubeStateMetrics]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Comma-separated list of additional Kubernetes label keys that will be used in the resource's labels metric.
 func (o ManagedClusterAzureMonitorProfileKubeStateMetricsOutput) MetricAnnotationsAllowList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedClusterAzureMonitorProfileKubeStateMetrics) *string { return v.MetricAnnotationsAllowList }).(pulumi.StringPtrOutput)
@@ -12409,12 +11016,6 @@ func (o ManagedClusterAzureMonitorProfileKubeStateMetricsPtrOutput) ToManagedClu
 
 func (o ManagedClusterAzureMonitorProfileKubeStateMetricsPtrOutput) ToManagedClusterAzureMonitorProfileKubeStateMetricsPtrOutputWithContext(ctx context.Context) ManagedClusterAzureMonitorProfileKubeStateMetricsPtrOutput {
 	return o
-}
-
-func (o ManagedClusterAzureMonitorProfileKubeStateMetricsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfileKubeStateMetrics] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfileKubeStateMetrics]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAzureMonitorProfileKubeStateMetricsPtrOutput) Elem() ManagedClusterAzureMonitorProfileKubeStateMetricsOutput {
@@ -12470,12 +11071,6 @@ func (o ManagedClusterAzureMonitorProfileKubeStateMetricsResponseOutput) ToManag
 	return o
 }
 
-func (o ManagedClusterAzureMonitorProfileKubeStateMetricsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfileKubeStateMetricsResponse] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfileKubeStateMetricsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Comma-separated list of additional Kubernetes label keys that will be used in the resource's labels metric.
 func (o ManagedClusterAzureMonitorProfileKubeStateMetricsResponseOutput) MetricAnnotationsAllowList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedClusterAzureMonitorProfileKubeStateMetricsResponse) *string {
@@ -12502,12 +11097,6 @@ func (o ManagedClusterAzureMonitorProfileKubeStateMetricsResponsePtrOutput) ToMa
 
 func (o ManagedClusterAzureMonitorProfileKubeStateMetricsResponsePtrOutput) ToManagedClusterAzureMonitorProfileKubeStateMetricsResponsePtrOutputWithContext(ctx context.Context) ManagedClusterAzureMonitorProfileKubeStateMetricsResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterAzureMonitorProfileKubeStateMetricsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfileKubeStateMetricsResponse] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfileKubeStateMetricsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAzureMonitorProfileKubeStateMetricsResponsePtrOutput) Elem() ManagedClusterAzureMonitorProfileKubeStateMetricsResponseOutput {
@@ -12579,12 +11168,6 @@ func (i ManagedClusterAzureMonitorProfileLogsArgs) ToManagedClusterAzureMonitorP
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAzureMonitorProfileLogsOutput)
 }
 
-func (i ManagedClusterAzureMonitorProfileLogsArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfileLogs] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfileLogs]{
-		OutputState: i.ToManagedClusterAzureMonitorProfileLogsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterAzureMonitorProfileLogsArgs) ToManagedClusterAzureMonitorProfileLogsPtrOutput() ManagedClusterAzureMonitorProfileLogsPtrOutput {
 	return i.ToManagedClusterAzureMonitorProfileLogsPtrOutputWithContext(context.Background())
 }
@@ -12626,12 +11209,6 @@ func (i *managedClusterAzureMonitorProfileLogsPtrType) ToManagedClusterAzureMoni
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAzureMonitorProfileLogsPtrOutput)
 }
 
-func (i *managedClusterAzureMonitorProfileLogsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfileLogs] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfileLogs]{
-		OutputState: i.ToManagedClusterAzureMonitorProfileLogsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Logs profile for the Azure Monitor Infrastructure and Application Logs. Collect out-of-the-box Kubernetes infrastructure & application logs to send to Azure Monitor. See aka.ms/AzureMonitorContainerInsights for an overview.
 type ManagedClusterAzureMonitorProfileLogsOutput struct{ *pulumi.OutputState }
 
@@ -12655,12 +11232,6 @@ func (o ManagedClusterAzureMonitorProfileLogsOutput) ToManagedClusterAzureMonito
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterAzureMonitorProfileLogs) *ManagedClusterAzureMonitorProfileLogs {
 		return &v
 	}).(ManagedClusterAzureMonitorProfileLogsPtrOutput)
-}
-
-func (o ManagedClusterAzureMonitorProfileLogsOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfileLogs] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfileLogs]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Application Monitoring Profile for Kubernetes Application Container. Collects application logs, metrics and traces through auto-instrumentation of the application using Azure Monitor OpenTelemetry based SDKs. See aka.ms/AzureMonitorApplicationMonitoring for an overview.
@@ -12689,12 +11260,6 @@ func (o ManagedClusterAzureMonitorProfileLogsPtrOutput) ToManagedClusterAzureMon
 
 func (o ManagedClusterAzureMonitorProfileLogsPtrOutput) ToManagedClusterAzureMonitorProfileLogsPtrOutputWithContext(ctx context.Context) ManagedClusterAzureMonitorProfileLogsPtrOutput {
 	return o
-}
-
-func (o ManagedClusterAzureMonitorProfileLogsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfileLogs] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfileLogs]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAzureMonitorProfileLogsPtrOutput) Elem() ManagedClusterAzureMonitorProfileLogsOutput {
@@ -12750,12 +11315,6 @@ func (o ManagedClusterAzureMonitorProfileLogsResponseOutput) ToManagedClusterAzu
 	return o
 }
 
-func (o ManagedClusterAzureMonitorProfileLogsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfileLogsResponse] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfileLogsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Application Monitoring Profile for Kubernetes Application Container. Collects application logs, metrics and traces through auto-instrumentation of the application using Azure Monitor OpenTelemetry based SDKs. See aka.ms/AzureMonitorApplicationMonitoring for an overview.
 func (o ManagedClusterAzureMonitorProfileLogsResponseOutput) AppMonitoring() ManagedClusterAzureMonitorProfileAppMonitoringResponsePtrOutput {
 	return o.ApplyT(func(v ManagedClusterAzureMonitorProfileLogsResponse) *ManagedClusterAzureMonitorProfileAppMonitoringResponse {
@@ -12782,12 +11341,6 @@ func (o ManagedClusterAzureMonitorProfileLogsResponsePtrOutput) ToManagedCluster
 
 func (o ManagedClusterAzureMonitorProfileLogsResponsePtrOutput) ToManagedClusterAzureMonitorProfileLogsResponsePtrOutputWithContext(ctx context.Context) ManagedClusterAzureMonitorProfileLogsResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterAzureMonitorProfileLogsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfileLogsResponse] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfileLogsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAzureMonitorProfileLogsResponsePtrOutput) Elem() ManagedClusterAzureMonitorProfileLogsResponseOutput {
@@ -12863,12 +11416,6 @@ func (i ManagedClusterAzureMonitorProfileMetricsArgs) ToManagedClusterAzureMonit
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAzureMonitorProfileMetricsOutput)
 }
 
-func (i ManagedClusterAzureMonitorProfileMetricsArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfileMetrics] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfileMetrics]{
-		OutputState: i.ToManagedClusterAzureMonitorProfileMetricsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterAzureMonitorProfileMetricsArgs) ToManagedClusterAzureMonitorProfileMetricsPtrOutput() ManagedClusterAzureMonitorProfileMetricsPtrOutput {
 	return i.ToManagedClusterAzureMonitorProfileMetricsPtrOutputWithContext(context.Background())
 }
@@ -12910,12 +11457,6 @@ func (i *managedClusterAzureMonitorProfileMetricsPtrType) ToManagedClusterAzureM
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAzureMonitorProfileMetricsPtrOutput)
 }
 
-func (i *managedClusterAzureMonitorProfileMetricsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfileMetrics] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfileMetrics]{
-		OutputState: i.ToManagedClusterAzureMonitorProfileMetricsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Metrics profile for the prometheus service addon
 type ManagedClusterAzureMonitorProfileMetricsOutput struct{ *pulumi.OutputState }
 
@@ -12939,12 +11480,6 @@ func (o ManagedClusterAzureMonitorProfileMetricsOutput) ToManagedClusterAzureMon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterAzureMonitorProfileMetrics) *ManagedClusterAzureMonitorProfileMetrics {
 		return &v
 	}).(ManagedClusterAzureMonitorProfileMetricsPtrOutput)
-}
-
-func (o ManagedClusterAzureMonitorProfileMetricsOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfileMetrics] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfileMetrics]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Application Monitoring Open Telemetry Metrics Profile for Kubernetes Application Container Metrics. Collects OpenTelemetry metrics through auto-instrumentation of the application using Azure Monitor OpenTelemetry based SDKs. See aka.ms/AzureMonitorApplicationMonitoring for an overview.
@@ -12978,12 +11513,6 @@ func (o ManagedClusterAzureMonitorProfileMetricsPtrOutput) ToManagedClusterAzure
 
 func (o ManagedClusterAzureMonitorProfileMetricsPtrOutput) ToManagedClusterAzureMonitorProfileMetricsPtrOutputWithContext(ctx context.Context) ManagedClusterAzureMonitorProfileMetricsPtrOutput {
 	return o
-}
-
-func (o ManagedClusterAzureMonitorProfileMetricsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfileMetrics] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfileMetrics]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAzureMonitorProfileMetricsPtrOutput) Elem() ManagedClusterAzureMonitorProfileMetricsOutput {
@@ -13051,12 +11580,6 @@ func (o ManagedClusterAzureMonitorProfileMetricsResponseOutput) ToManagedCluster
 	return o
 }
 
-func (o ManagedClusterAzureMonitorProfileMetricsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfileMetricsResponse] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfileMetricsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Application Monitoring Open Telemetry Metrics Profile for Kubernetes Application Container Metrics. Collects OpenTelemetry metrics through auto-instrumentation of the application using Azure Monitor OpenTelemetry based SDKs. See aka.ms/AzureMonitorApplicationMonitoring for an overview.
 func (o ManagedClusterAzureMonitorProfileMetricsResponseOutput) AppMonitoringOpenTelemetryMetrics() ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsResponsePtrOutput {
 	return o.ApplyT(func(v ManagedClusterAzureMonitorProfileMetricsResponse) *ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetricsResponse {
@@ -13088,12 +11611,6 @@ func (o ManagedClusterAzureMonitorProfileMetricsResponsePtrOutput) ToManagedClus
 
 func (o ManagedClusterAzureMonitorProfileMetricsResponsePtrOutput) ToManagedClusterAzureMonitorProfileMetricsResponsePtrOutputWithContext(ctx context.Context) ManagedClusterAzureMonitorProfileMetricsResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterAzureMonitorProfileMetricsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfileMetricsResponse] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfileMetricsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAzureMonitorProfileMetricsResponsePtrOutput) Elem() ManagedClusterAzureMonitorProfileMetricsResponseOutput {
@@ -13159,12 +11676,6 @@ func (o ManagedClusterAzureMonitorProfileResponseOutput) ToManagedClusterAzureMo
 	return o
 }
 
-func (o ManagedClusterAzureMonitorProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfileResponse] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Logs profile for the Azure Monitor Infrastructure and Application Logs. Collect out-of-the-box Kubernetes infrastructure & application logs to send to Azure Monitor. See aka.ms/AzureMonitorContainerInsights for an overview.
 func (o ManagedClusterAzureMonitorProfileResponseOutput) Logs() ManagedClusterAzureMonitorProfileLogsResponsePtrOutput {
 	return o.ApplyT(func(v ManagedClusterAzureMonitorProfileResponse) *ManagedClusterAzureMonitorProfileLogsResponse {
@@ -13191,12 +11702,6 @@ func (o ManagedClusterAzureMonitorProfileResponsePtrOutput) ToManagedClusterAzur
 
 func (o ManagedClusterAzureMonitorProfileResponsePtrOutput) ToManagedClusterAzureMonitorProfileResponsePtrOutputWithContext(ctx context.Context) ManagedClusterAzureMonitorProfileResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterAzureMonitorProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfileResponse] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAzureMonitorProfileResponsePtrOutput) Elem() ManagedClusterAzureMonitorProfileResponseOutput {
@@ -13264,12 +11769,6 @@ func (i ManagedClusterAzureMonitorProfileWindowsHostLogsArgs) ToManagedClusterAz
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAzureMonitorProfileWindowsHostLogsOutput)
 }
 
-func (i ManagedClusterAzureMonitorProfileWindowsHostLogsArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfileWindowsHostLogs] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfileWindowsHostLogs]{
-		OutputState: i.ToManagedClusterAzureMonitorProfileWindowsHostLogsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterAzureMonitorProfileWindowsHostLogsArgs) ToManagedClusterAzureMonitorProfileWindowsHostLogsPtrOutput() ManagedClusterAzureMonitorProfileWindowsHostLogsPtrOutput {
 	return i.ToManagedClusterAzureMonitorProfileWindowsHostLogsPtrOutputWithContext(context.Background())
 }
@@ -13311,12 +11810,6 @@ func (i *managedClusterAzureMonitorProfileWindowsHostLogsPtrType) ToManagedClust
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterAzureMonitorProfileWindowsHostLogsPtrOutput)
 }
 
-func (i *managedClusterAzureMonitorProfileWindowsHostLogsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfileWindowsHostLogs] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfileWindowsHostLogs]{
-		OutputState: i.ToManagedClusterAzureMonitorProfileWindowsHostLogsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Windows Host Logs Profile for Kubernetes Windows Nodes Log Collection. Collects ETW, Event Logs and Text logs etc. See aka.ms/AzureMonitorContainerInsights for an overview.
 type ManagedClusterAzureMonitorProfileWindowsHostLogsOutput struct{ *pulumi.OutputState }
 
@@ -13342,12 +11835,6 @@ func (o ManagedClusterAzureMonitorProfileWindowsHostLogsOutput) ToManagedCluster
 	}).(ManagedClusterAzureMonitorProfileWindowsHostLogsPtrOutput)
 }
 
-func (o ManagedClusterAzureMonitorProfileWindowsHostLogsOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfileWindowsHostLogs] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfileWindowsHostLogs]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Indicates if Windows Host Log Collection is enabled or not for Azure Monitor Container Insights Logs Addon.
 func (o ManagedClusterAzureMonitorProfileWindowsHostLogsOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterAzureMonitorProfileWindowsHostLogs) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -13365,12 +11852,6 @@ func (o ManagedClusterAzureMonitorProfileWindowsHostLogsPtrOutput) ToManagedClus
 
 func (o ManagedClusterAzureMonitorProfileWindowsHostLogsPtrOutput) ToManagedClusterAzureMonitorProfileWindowsHostLogsPtrOutputWithContext(ctx context.Context) ManagedClusterAzureMonitorProfileWindowsHostLogsPtrOutput {
 	return o
-}
-
-func (o ManagedClusterAzureMonitorProfileWindowsHostLogsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfileWindowsHostLogs] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfileWindowsHostLogs]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAzureMonitorProfileWindowsHostLogsPtrOutput) Elem() ManagedClusterAzureMonitorProfileWindowsHostLogsOutput {
@@ -13414,12 +11895,6 @@ func (o ManagedClusterAzureMonitorProfileWindowsHostLogsResponseOutput) ToManage
 	return o
 }
 
-func (o ManagedClusterAzureMonitorProfileWindowsHostLogsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterAzureMonitorProfileWindowsHostLogsResponse] {
-	return pulumix.Output[ManagedClusterAzureMonitorProfileWindowsHostLogsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Indicates if Windows Host Log Collection is enabled or not for Azure Monitor Container Insights Logs Addon.
 func (o ManagedClusterAzureMonitorProfileWindowsHostLogsResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterAzureMonitorProfileWindowsHostLogsResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -13437,12 +11912,6 @@ func (o ManagedClusterAzureMonitorProfileWindowsHostLogsResponsePtrOutput) ToMan
 
 func (o ManagedClusterAzureMonitorProfileWindowsHostLogsResponsePtrOutput) ToManagedClusterAzureMonitorProfileWindowsHostLogsResponsePtrOutputWithContext(ctx context.Context) ManagedClusterAzureMonitorProfileWindowsHostLogsResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterAzureMonitorProfileWindowsHostLogsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterAzureMonitorProfileWindowsHostLogsResponse] {
-	return pulumix.Output[*ManagedClusterAzureMonitorProfileWindowsHostLogsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterAzureMonitorProfileWindowsHostLogsResponsePtrOutput) Elem() ManagedClusterAzureMonitorProfileWindowsHostLogsResponseOutput {
@@ -13500,12 +11969,6 @@ func (i ManagedClusterCostAnalysisArgs) ToManagedClusterCostAnalysisOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterCostAnalysisOutput)
 }
 
-func (i ManagedClusterCostAnalysisArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterCostAnalysis] {
-	return pulumix.Output[ManagedClusterCostAnalysis]{
-		OutputState: i.ToManagedClusterCostAnalysisOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterCostAnalysisArgs) ToManagedClusterCostAnalysisPtrOutput() ManagedClusterCostAnalysisPtrOutput {
 	return i.ToManagedClusterCostAnalysisPtrOutputWithContext(context.Background())
 }
@@ -13547,12 +12010,6 @@ func (i *managedClusterCostAnalysisPtrType) ToManagedClusterCostAnalysisPtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterCostAnalysisPtrOutput)
 }
 
-func (i *managedClusterCostAnalysisPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterCostAnalysis] {
-	return pulumix.Output[*ManagedClusterCostAnalysis]{
-		OutputState: i.ToManagedClusterCostAnalysisPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The cost analysis configuration for the cluster
 type ManagedClusterCostAnalysisOutput struct{ *pulumi.OutputState }
 
@@ -13578,12 +12035,6 @@ func (o ManagedClusterCostAnalysisOutput) ToManagedClusterCostAnalysisPtrOutputW
 	}).(ManagedClusterCostAnalysisPtrOutput)
 }
 
-func (o ManagedClusterCostAnalysisOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterCostAnalysis] {
-	return pulumix.Output[ManagedClusterCostAnalysis]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Managed Cluster sku.tier must be set to 'Standard' to enable this feature. Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If not specified, the default is false. For more information see aka.ms/aks/docs/cost-analysis.
 func (o ManagedClusterCostAnalysisOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterCostAnalysis) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -13601,12 +12052,6 @@ func (o ManagedClusterCostAnalysisPtrOutput) ToManagedClusterCostAnalysisPtrOutp
 
 func (o ManagedClusterCostAnalysisPtrOutput) ToManagedClusterCostAnalysisPtrOutputWithContext(ctx context.Context) ManagedClusterCostAnalysisPtrOutput {
 	return o
-}
-
-func (o ManagedClusterCostAnalysisPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterCostAnalysis] {
-	return pulumix.Output[*ManagedClusterCostAnalysis]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterCostAnalysisPtrOutput) Elem() ManagedClusterCostAnalysisOutput {
@@ -13650,12 +12095,6 @@ func (o ManagedClusterCostAnalysisResponseOutput) ToManagedClusterCostAnalysisRe
 	return o
 }
 
-func (o ManagedClusterCostAnalysisResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterCostAnalysisResponse] {
-	return pulumix.Output[ManagedClusterCostAnalysisResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The Managed Cluster sku.tier must be set to 'Standard' to enable this feature. Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If not specified, the default is false. For more information see aka.ms/aks/docs/cost-analysis.
 func (o ManagedClusterCostAnalysisResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterCostAnalysisResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -13673,12 +12112,6 @@ func (o ManagedClusterCostAnalysisResponsePtrOutput) ToManagedClusterCostAnalysi
 
 func (o ManagedClusterCostAnalysisResponsePtrOutput) ToManagedClusterCostAnalysisResponsePtrOutputWithContext(ctx context.Context) ManagedClusterCostAnalysisResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterCostAnalysisResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterCostAnalysisResponse] {
-	return pulumix.Output[*ManagedClusterCostAnalysisResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterCostAnalysisResponsePtrOutput) Elem() ManagedClusterCostAnalysisResponseOutput {
@@ -13748,12 +12181,6 @@ func (i ManagedClusterHTTPProxyConfigArgs) ToManagedClusterHTTPProxyConfigOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterHTTPProxyConfigOutput)
 }
 
-func (i ManagedClusterHTTPProxyConfigArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterHTTPProxyConfig] {
-	return pulumix.Output[ManagedClusterHTTPProxyConfig]{
-		OutputState: i.ToManagedClusterHTTPProxyConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterHTTPProxyConfigArgs) ToManagedClusterHTTPProxyConfigPtrOutput() ManagedClusterHTTPProxyConfigPtrOutput {
 	return i.ToManagedClusterHTTPProxyConfigPtrOutputWithContext(context.Background())
 }
@@ -13795,12 +12222,6 @@ func (i *managedClusterHTTPProxyConfigPtrType) ToManagedClusterHTTPProxyConfigPt
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterHTTPProxyConfigPtrOutput)
 }
 
-func (i *managedClusterHTTPProxyConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterHTTPProxyConfig] {
-	return pulumix.Output[*ManagedClusterHTTPProxyConfig]{
-		OutputState: i.ToManagedClusterHTTPProxyConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Cluster HTTP proxy configuration.
 type ManagedClusterHTTPProxyConfigOutput struct{ *pulumi.OutputState }
 
@@ -13824,12 +12245,6 @@ func (o ManagedClusterHTTPProxyConfigOutput) ToManagedClusterHTTPProxyConfigPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterHTTPProxyConfig) *ManagedClusterHTTPProxyConfig {
 		return &v
 	}).(ManagedClusterHTTPProxyConfigPtrOutput)
-}
-
-func (o ManagedClusterHTTPProxyConfigOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterHTTPProxyConfig] {
-	return pulumix.Output[ManagedClusterHTTPProxyConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The HTTP proxy server endpoint to use.
@@ -13864,12 +12279,6 @@ func (o ManagedClusterHTTPProxyConfigPtrOutput) ToManagedClusterHTTPProxyConfigP
 
 func (o ManagedClusterHTTPProxyConfigPtrOutput) ToManagedClusterHTTPProxyConfigPtrOutputWithContext(ctx context.Context) ManagedClusterHTTPProxyConfigPtrOutput {
 	return o
-}
-
-func (o ManagedClusterHTTPProxyConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterHTTPProxyConfig] {
-	return pulumix.Output[*ManagedClusterHTTPProxyConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterHTTPProxyConfigPtrOutput) Elem() ManagedClusterHTTPProxyConfigOutput {
@@ -13951,12 +12360,6 @@ func (o ManagedClusterHTTPProxyConfigResponseOutput) ToManagedClusterHTTPProxyCo
 	return o
 }
 
-func (o ManagedClusterHTTPProxyConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterHTTPProxyConfigResponse] {
-	return pulumix.Output[ManagedClusterHTTPProxyConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A read-only list of all endpoints for which traffic should not be sent to the proxy. This list is a superset of noProxy and values injected by AKS.
 func (o ManagedClusterHTTPProxyConfigResponseOutput) EffectiveNoProxy() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ManagedClusterHTTPProxyConfigResponse) []string { return v.EffectiveNoProxy }).(pulumi.StringArrayOutput)
@@ -13994,12 +12397,6 @@ func (o ManagedClusterHTTPProxyConfigResponsePtrOutput) ToManagedClusterHTTPProx
 
 func (o ManagedClusterHTTPProxyConfigResponsePtrOutput) ToManagedClusterHTTPProxyConfigResponsePtrOutputWithContext(ctx context.Context) ManagedClusterHTTPProxyConfigResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterHTTPProxyConfigResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterHTTPProxyConfigResponse] {
-	return pulumix.Output[*ManagedClusterHTTPProxyConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterHTTPProxyConfigResponsePtrOutput) Elem() ManagedClusterHTTPProxyConfigResponseOutput {
@@ -14105,12 +12502,6 @@ func (i ManagedClusterIdentityArgs) ToManagedClusterIdentityOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterIdentityOutput)
 }
 
-func (i ManagedClusterIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterIdentity] {
-	return pulumix.Output[ManagedClusterIdentity]{
-		OutputState: i.ToManagedClusterIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterIdentityArgs) ToManagedClusterIdentityPtrOutput() ManagedClusterIdentityPtrOutput {
 	return i.ToManagedClusterIdentityPtrOutputWithContext(context.Background())
 }
@@ -14152,12 +12543,6 @@ func (i *managedClusterIdentityPtrType) ToManagedClusterIdentityPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterIdentityPtrOutput)
 }
 
-func (i *managedClusterIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterIdentity] {
-	return pulumix.Output[*ManagedClusterIdentity]{
-		OutputState: i.ToManagedClusterIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Identity for the managed cluster.
 type ManagedClusterIdentityOutput struct{ *pulumi.OutputState }
 
@@ -14181,12 +12566,6 @@ func (o ManagedClusterIdentityOutput) ToManagedClusterIdentityPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterIdentity) *ManagedClusterIdentity {
 		return &v
 	}).(ManagedClusterIdentityPtrOutput)
-}
-
-func (o ManagedClusterIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterIdentity] {
-	return pulumix.Output[ManagedClusterIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The delegated identity resources assigned to this managed cluster. This can only be set by another Azure Resource Provider, and managed cluster only accept one delegated identity resource. Internal use only.
@@ -14216,12 +12595,6 @@ func (o ManagedClusterIdentityPtrOutput) ToManagedClusterIdentityPtrOutput() Man
 
 func (o ManagedClusterIdentityPtrOutput) ToManagedClusterIdentityPtrOutputWithContext(ctx context.Context) ManagedClusterIdentityPtrOutput {
 	return o
-}
-
-func (o ManagedClusterIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterIdentity] {
-	return pulumix.Output[*ManagedClusterIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterIdentityPtrOutput) Elem() ManagedClusterIdentityOutput {
@@ -14293,12 +12666,6 @@ func (o ManagedClusterIdentityResponseOutput) ToManagedClusterIdentityResponseOu
 	return o
 }
 
-func (o ManagedClusterIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterIdentityResponse] {
-	return pulumix.Output[ManagedClusterIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The delegated identity resources assigned to this managed cluster. This can only be set by another Azure Resource Provider, and managed cluster only accept one delegated identity resource. Internal use only.
 func (o ManagedClusterIdentityResponseOutput) DelegatedResources() DelegatedResourceResponseMapOutput {
 	return o.ApplyT(func(v ManagedClusterIdentityResponse) map[string]DelegatedResourceResponse {
@@ -14340,12 +12707,6 @@ func (o ManagedClusterIdentityResponsePtrOutput) ToManagedClusterIdentityRespons
 
 func (o ManagedClusterIdentityResponsePtrOutput) ToManagedClusterIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedClusterIdentityResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterIdentityResponse] {
-	return pulumix.Output[*ManagedClusterIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterIdentityResponsePtrOutput) Elem() ManagedClusterIdentityResponseOutput {
@@ -14429,12 +12790,6 @@ func (o ManagedClusterIdentityResponseUserAssignedIdentitiesOutput) ToManagedClu
 	return o
 }
 
-func (o ManagedClusterIdentityResponseUserAssignedIdentitiesOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterIdentityResponseUserAssignedIdentities] {
-	return pulumix.Output[ManagedClusterIdentityResponseUserAssignedIdentities]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The client id of user assigned identity.
 func (o ManagedClusterIdentityResponseUserAssignedIdentitiesOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedClusterIdentityResponseUserAssignedIdentities) string { return v.ClientId }).(pulumi.StringOutput)
@@ -14457,12 +12812,6 @@ func (o ManagedClusterIdentityResponseUserAssignedIdentitiesMapOutput) ToManaged
 
 func (o ManagedClusterIdentityResponseUserAssignedIdentitiesMapOutput) ToManagedClusterIdentityResponseUserAssignedIdentitiesMapOutputWithContext(ctx context.Context) ManagedClusterIdentityResponseUserAssignedIdentitiesMapOutput {
 	return o
-}
-
-func (o ManagedClusterIdentityResponseUserAssignedIdentitiesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ManagedClusterIdentityResponseUserAssignedIdentities] {
-	return pulumix.Output[map[string]ManagedClusterIdentityResponseUserAssignedIdentities]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterIdentityResponseUserAssignedIdentitiesMapOutput) MapIndex(k pulumi.StringInput) ManagedClusterIdentityResponseUserAssignedIdentitiesOutput {
@@ -14506,12 +12855,6 @@ func (i ManagedClusterIngressProfileArgs) ToManagedClusterIngressProfileOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterIngressProfileOutput)
 }
 
-func (i ManagedClusterIngressProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterIngressProfile] {
-	return pulumix.Output[ManagedClusterIngressProfile]{
-		OutputState: i.ToManagedClusterIngressProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterIngressProfileArgs) ToManagedClusterIngressProfilePtrOutput() ManagedClusterIngressProfilePtrOutput {
 	return i.ToManagedClusterIngressProfilePtrOutputWithContext(context.Background())
 }
@@ -14553,12 +12896,6 @@ func (i *managedClusterIngressProfilePtrType) ToManagedClusterIngressProfilePtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterIngressProfilePtrOutput)
 }
 
-func (i *managedClusterIngressProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterIngressProfile] {
-	return pulumix.Output[*ManagedClusterIngressProfile]{
-		OutputState: i.ToManagedClusterIngressProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Ingress profile for the container service cluster.
 type ManagedClusterIngressProfileOutput struct{ *pulumi.OutputState }
 
@@ -14584,12 +12921,6 @@ func (o ManagedClusterIngressProfileOutput) ToManagedClusterIngressProfilePtrOut
 	}).(ManagedClusterIngressProfilePtrOutput)
 }
 
-func (o ManagedClusterIngressProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterIngressProfile] {
-	return pulumix.Output[ManagedClusterIngressProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Web App Routing settings for the ingress profile.
 func (o ManagedClusterIngressProfileOutput) WebAppRouting() ManagedClusterIngressProfileWebAppRoutingPtrOutput {
 	return o.ApplyT(func(v ManagedClusterIngressProfile) *ManagedClusterIngressProfileWebAppRouting {
@@ -14609,12 +12940,6 @@ func (o ManagedClusterIngressProfilePtrOutput) ToManagedClusterIngressProfilePtr
 
 func (o ManagedClusterIngressProfilePtrOutput) ToManagedClusterIngressProfilePtrOutputWithContext(ctx context.Context) ManagedClusterIngressProfilePtrOutput {
 	return o
-}
-
-func (o ManagedClusterIngressProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterIngressProfile] {
-	return pulumix.Output[*ManagedClusterIngressProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterIngressProfilePtrOutput) Elem() ManagedClusterIngressProfileOutput {
@@ -14658,12 +12983,6 @@ func (o ManagedClusterIngressProfileResponseOutput) ToManagedClusterIngressProfi
 	return o
 }
 
-func (o ManagedClusterIngressProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterIngressProfileResponse] {
-	return pulumix.Output[ManagedClusterIngressProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Web App Routing settings for the ingress profile.
 func (o ManagedClusterIngressProfileResponseOutput) WebAppRouting() ManagedClusterIngressProfileWebAppRoutingResponsePtrOutput {
 	return o.ApplyT(func(v ManagedClusterIngressProfileResponse) *ManagedClusterIngressProfileWebAppRoutingResponse {
@@ -14683,12 +13002,6 @@ func (o ManagedClusterIngressProfileResponsePtrOutput) ToManagedClusterIngressPr
 
 func (o ManagedClusterIngressProfileResponsePtrOutput) ToManagedClusterIngressProfileResponsePtrOutputWithContext(ctx context.Context) ManagedClusterIngressProfileResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterIngressProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterIngressProfileResponse] {
-	return pulumix.Output[*ManagedClusterIngressProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterIngressProfileResponsePtrOutput) Elem() ManagedClusterIngressProfileResponseOutput {
@@ -14750,12 +13063,6 @@ func (i ManagedClusterIngressProfileWebAppRoutingArgs) ToManagedClusterIngressPr
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterIngressProfileWebAppRoutingOutput)
 }
 
-func (i ManagedClusterIngressProfileWebAppRoutingArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterIngressProfileWebAppRouting] {
-	return pulumix.Output[ManagedClusterIngressProfileWebAppRouting]{
-		OutputState: i.ToManagedClusterIngressProfileWebAppRoutingOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterIngressProfileWebAppRoutingArgs) ToManagedClusterIngressProfileWebAppRoutingPtrOutput() ManagedClusterIngressProfileWebAppRoutingPtrOutput {
 	return i.ToManagedClusterIngressProfileWebAppRoutingPtrOutputWithContext(context.Background())
 }
@@ -14797,12 +13104,6 @@ func (i *managedClusterIngressProfileWebAppRoutingPtrType) ToManagedClusterIngre
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterIngressProfileWebAppRoutingPtrOutput)
 }
 
-func (i *managedClusterIngressProfileWebAppRoutingPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterIngressProfileWebAppRouting] {
-	return pulumix.Output[*ManagedClusterIngressProfileWebAppRouting]{
-		OutputState: i.ToManagedClusterIngressProfileWebAppRoutingPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Web App Routing settings for the ingress profile.
 type ManagedClusterIngressProfileWebAppRoutingOutput struct{ *pulumi.OutputState }
 
@@ -14828,12 +13129,6 @@ func (o ManagedClusterIngressProfileWebAppRoutingOutput) ToManagedClusterIngress
 	}).(ManagedClusterIngressProfileWebAppRoutingPtrOutput)
 }
 
-func (o ManagedClusterIngressProfileWebAppRoutingOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterIngressProfileWebAppRouting] {
-	return pulumix.Output[ManagedClusterIngressProfileWebAppRouting]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource IDs of the public DNS zones to be associated with the Web App Routing add-on. Used only when Web App Routing is enabled. All public DNS zones must be in the same resource group.
 func (o ManagedClusterIngressProfileWebAppRoutingOutput) DnsZoneResourceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ManagedClusterIngressProfileWebAppRouting) []string { return v.DnsZoneResourceIds }).(pulumi.StringArrayOutput)
@@ -14856,12 +13151,6 @@ func (o ManagedClusterIngressProfileWebAppRoutingPtrOutput) ToManagedClusterIngr
 
 func (o ManagedClusterIngressProfileWebAppRoutingPtrOutput) ToManagedClusterIngressProfileWebAppRoutingPtrOutputWithContext(ctx context.Context) ManagedClusterIngressProfileWebAppRoutingPtrOutput {
 	return o
-}
-
-func (o ManagedClusterIngressProfileWebAppRoutingPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterIngressProfileWebAppRouting] {
-	return pulumix.Output[*ManagedClusterIngressProfileWebAppRouting]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterIngressProfileWebAppRoutingPtrOutput) Elem() ManagedClusterIngressProfileWebAppRoutingOutput {
@@ -14919,12 +13208,6 @@ func (o ManagedClusterIngressProfileWebAppRoutingResponseOutput) ToManagedCluste
 	return o
 }
 
-func (o ManagedClusterIngressProfileWebAppRoutingResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterIngressProfileWebAppRoutingResponse] {
-	return pulumix.Output[ManagedClusterIngressProfileWebAppRoutingResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource IDs of the public DNS zones to be associated with the Web App Routing add-on. Used only when Web App Routing is enabled. All public DNS zones must be in the same resource group.
 func (o ManagedClusterIngressProfileWebAppRoutingResponseOutput) DnsZoneResourceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ManagedClusterIngressProfileWebAppRoutingResponse) []string { return v.DnsZoneResourceIds }).(pulumi.StringArrayOutput)
@@ -14954,12 +13237,6 @@ func (o ManagedClusterIngressProfileWebAppRoutingResponsePtrOutput) ToManagedClu
 
 func (o ManagedClusterIngressProfileWebAppRoutingResponsePtrOutput) ToManagedClusterIngressProfileWebAppRoutingResponsePtrOutputWithContext(ctx context.Context) ManagedClusterIngressProfileWebAppRoutingResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterIngressProfileWebAppRoutingResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterIngressProfileWebAppRoutingResponse] {
-	return pulumix.Output[*ManagedClusterIngressProfileWebAppRoutingResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterIngressProfileWebAppRoutingResponsePtrOutput) Elem() ManagedClusterIngressProfileWebAppRoutingResponseOutput {
@@ -15106,12 +13383,6 @@ func (i ManagedClusterLoadBalancerProfileArgs) ToManagedClusterLoadBalancerProfi
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterLoadBalancerProfileOutput)
 }
 
-func (i ManagedClusterLoadBalancerProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterLoadBalancerProfile] {
-	return pulumix.Output[ManagedClusterLoadBalancerProfile]{
-		OutputState: i.ToManagedClusterLoadBalancerProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterLoadBalancerProfileArgs) ToManagedClusterLoadBalancerProfilePtrOutput() ManagedClusterLoadBalancerProfilePtrOutput {
 	return i.ToManagedClusterLoadBalancerProfilePtrOutputWithContext(context.Background())
 }
@@ -15153,12 +13424,6 @@ func (i *managedClusterLoadBalancerProfilePtrType) ToManagedClusterLoadBalancerP
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterLoadBalancerProfilePtrOutput)
 }
 
-func (i *managedClusterLoadBalancerProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterLoadBalancerProfile] {
-	return pulumix.Output[*ManagedClusterLoadBalancerProfile]{
-		OutputState: i.ToManagedClusterLoadBalancerProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Profile of the managed cluster load balancer.
 type ManagedClusterLoadBalancerProfileOutput struct{ *pulumi.OutputState }
 
@@ -15182,12 +13447,6 @@ func (o ManagedClusterLoadBalancerProfileOutput) ToManagedClusterLoadBalancerPro
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterLoadBalancerProfile) *ManagedClusterLoadBalancerProfile {
 		return &v
 	}).(ManagedClusterLoadBalancerProfilePtrOutput)
-}
-
-func (o ManagedClusterLoadBalancerProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterLoadBalancerProfile] {
-	return pulumix.Output[ManagedClusterLoadBalancerProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The desired number of allocated SNAT ports per VM. Allowed values are in the range of 0 to 64000 (inclusive). The default value is 0 which results in Azure dynamically allocating ports.
@@ -15248,12 +13507,6 @@ func (o ManagedClusterLoadBalancerProfilePtrOutput) ToManagedClusterLoadBalancer
 
 func (o ManagedClusterLoadBalancerProfilePtrOutput) ToManagedClusterLoadBalancerProfilePtrOutputWithContext(ctx context.Context) ManagedClusterLoadBalancerProfilePtrOutput {
 	return o
-}
-
-func (o ManagedClusterLoadBalancerProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterLoadBalancerProfile] {
-	return pulumix.Output[*ManagedClusterLoadBalancerProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterLoadBalancerProfilePtrOutput) Elem() ManagedClusterLoadBalancerProfileOutput {
@@ -15416,12 +13669,6 @@ func (i ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs) ToManagedCluste
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterLoadBalancerProfileManagedOutboundIPsOutput)
 }
 
-func (i ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterLoadBalancerProfileManagedOutboundIPs] {
-	return pulumix.Output[ManagedClusterLoadBalancerProfileManagedOutboundIPs]{
-		OutputState: i.ToManagedClusterLoadBalancerProfileManagedOutboundIPsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterLoadBalancerProfileManagedOutboundIPsArgs) ToManagedClusterLoadBalancerProfileManagedOutboundIPsPtrOutput() ManagedClusterLoadBalancerProfileManagedOutboundIPsPtrOutput {
 	return i.ToManagedClusterLoadBalancerProfileManagedOutboundIPsPtrOutputWithContext(context.Background())
 }
@@ -15463,12 +13710,6 @@ func (i *managedClusterLoadBalancerProfileManagedOutboundIPsPtrType) ToManagedCl
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterLoadBalancerProfileManagedOutboundIPsPtrOutput)
 }
 
-func (i *managedClusterLoadBalancerProfileManagedOutboundIPsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterLoadBalancerProfileManagedOutboundIPs] {
-	return pulumix.Output[*ManagedClusterLoadBalancerProfileManagedOutboundIPs]{
-		OutputState: i.ToManagedClusterLoadBalancerProfileManagedOutboundIPsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Desired managed outbound IPs for the cluster load balancer.
 type ManagedClusterLoadBalancerProfileManagedOutboundIPsOutput struct{ *pulumi.OutputState }
 
@@ -15494,12 +13735,6 @@ func (o ManagedClusterLoadBalancerProfileManagedOutboundIPsOutput) ToManagedClus
 	}).(ManagedClusterLoadBalancerProfileManagedOutboundIPsPtrOutput)
 }
 
-func (o ManagedClusterLoadBalancerProfileManagedOutboundIPsOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterLoadBalancerProfileManagedOutboundIPs] {
-	return pulumix.Output[ManagedClusterLoadBalancerProfileManagedOutboundIPs]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The desired number of IPv4 outbound IPs created/managed by Azure for the cluster load balancer. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1.
 func (o ManagedClusterLoadBalancerProfileManagedOutboundIPsOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManagedClusterLoadBalancerProfileManagedOutboundIPs) *int { return v.Count }).(pulumi.IntPtrOutput)
@@ -15522,12 +13757,6 @@ func (o ManagedClusterLoadBalancerProfileManagedOutboundIPsPtrOutput) ToManagedC
 
 func (o ManagedClusterLoadBalancerProfileManagedOutboundIPsPtrOutput) ToManagedClusterLoadBalancerProfileManagedOutboundIPsPtrOutputWithContext(ctx context.Context) ManagedClusterLoadBalancerProfileManagedOutboundIPsPtrOutput {
 	return o
-}
-
-func (o ManagedClusterLoadBalancerProfileManagedOutboundIPsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterLoadBalancerProfileManagedOutboundIPs] {
-	return pulumix.Output[*ManagedClusterLoadBalancerProfileManagedOutboundIPs]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterLoadBalancerProfileManagedOutboundIPsPtrOutput) Elem() ManagedClusterLoadBalancerProfileManagedOutboundIPsOutput {
@@ -15595,12 +13824,6 @@ func (i ManagedClusterLoadBalancerProfileOutboundIPPrefixesArgs) ToManagedCluste
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterLoadBalancerProfileOutboundIPPrefixesOutput)
 }
 
-func (i ManagedClusterLoadBalancerProfileOutboundIPPrefixesArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterLoadBalancerProfileOutboundIPPrefixes] {
-	return pulumix.Output[ManagedClusterLoadBalancerProfileOutboundIPPrefixes]{
-		OutputState: i.ToManagedClusterLoadBalancerProfileOutboundIPPrefixesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterLoadBalancerProfileOutboundIPPrefixesArgs) ToManagedClusterLoadBalancerProfileOutboundIPPrefixesPtrOutput() ManagedClusterLoadBalancerProfileOutboundIPPrefixesPtrOutput {
 	return i.ToManagedClusterLoadBalancerProfileOutboundIPPrefixesPtrOutputWithContext(context.Background())
 }
@@ -15642,12 +13865,6 @@ func (i *managedClusterLoadBalancerProfileOutboundIPPrefixesPtrType) ToManagedCl
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterLoadBalancerProfileOutboundIPPrefixesPtrOutput)
 }
 
-func (i *managedClusterLoadBalancerProfileOutboundIPPrefixesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterLoadBalancerProfileOutboundIPPrefixes] {
-	return pulumix.Output[*ManagedClusterLoadBalancerProfileOutboundIPPrefixes]{
-		OutputState: i.ToManagedClusterLoadBalancerProfileOutboundIPPrefixesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Desired outbound IP Prefix resources for the cluster load balancer.
 type ManagedClusterLoadBalancerProfileOutboundIPPrefixesOutput struct{ *pulumi.OutputState }
 
@@ -15673,12 +13890,6 @@ func (o ManagedClusterLoadBalancerProfileOutboundIPPrefixesOutput) ToManagedClus
 	}).(ManagedClusterLoadBalancerProfileOutboundIPPrefixesPtrOutput)
 }
 
-func (o ManagedClusterLoadBalancerProfileOutboundIPPrefixesOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterLoadBalancerProfileOutboundIPPrefixes] {
-	return pulumix.Output[ManagedClusterLoadBalancerProfileOutboundIPPrefixes]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of public IP prefix resources.
 func (o ManagedClusterLoadBalancerProfileOutboundIPPrefixesOutput) PublicIPPrefixes() ResourceReferenceArrayOutput {
 	return o.ApplyT(func(v ManagedClusterLoadBalancerProfileOutboundIPPrefixes) []ResourceReference {
@@ -15698,12 +13909,6 @@ func (o ManagedClusterLoadBalancerProfileOutboundIPPrefixesPtrOutput) ToManagedC
 
 func (o ManagedClusterLoadBalancerProfileOutboundIPPrefixesPtrOutput) ToManagedClusterLoadBalancerProfileOutboundIPPrefixesPtrOutputWithContext(ctx context.Context) ManagedClusterLoadBalancerProfileOutboundIPPrefixesPtrOutput {
 	return o
-}
-
-func (o ManagedClusterLoadBalancerProfileOutboundIPPrefixesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterLoadBalancerProfileOutboundIPPrefixes] {
-	return pulumix.Output[*ManagedClusterLoadBalancerProfileOutboundIPPrefixes]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterLoadBalancerProfileOutboundIPPrefixesPtrOutput) Elem() ManagedClusterLoadBalancerProfileOutboundIPPrefixesOutput {
@@ -15761,12 +13966,6 @@ func (i ManagedClusterLoadBalancerProfileOutboundIPsArgs) ToManagedClusterLoadBa
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterLoadBalancerProfileOutboundIPsOutput)
 }
 
-func (i ManagedClusterLoadBalancerProfileOutboundIPsArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterLoadBalancerProfileOutboundIPs] {
-	return pulumix.Output[ManagedClusterLoadBalancerProfileOutboundIPs]{
-		OutputState: i.ToManagedClusterLoadBalancerProfileOutboundIPsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterLoadBalancerProfileOutboundIPsArgs) ToManagedClusterLoadBalancerProfileOutboundIPsPtrOutput() ManagedClusterLoadBalancerProfileOutboundIPsPtrOutput {
 	return i.ToManagedClusterLoadBalancerProfileOutboundIPsPtrOutputWithContext(context.Background())
 }
@@ -15808,12 +14007,6 @@ func (i *managedClusterLoadBalancerProfileOutboundIPsPtrType) ToManagedClusterLo
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterLoadBalancerProfileOutboundIPsPtrOutput)
 }
 
-func (i *managedClusterLoadBalancerProfileOutboundIPsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterLoadBalancerProfileOutboundIPs] {
-	return pulumix.Output[*ManagedClusterLoadBalancerProfileOutboundIPs]{
-		OutputState: i.ToManagedClusterLoadBalancerProfileOutboundIPsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Desired outbound IP resources for the cluster load balancer.
 type ManagedClusterLoadBalancerProfileOutboundIPsOutput struct{ *pulumi.OutputState }
 
@@ -15839,12 +14032,6 @@ func (o ManagedClusterLoadBalancerProfileOutboundIPsOutput) ToManagedClusterLoad
 	}).(ManagedClusterLoadBalancerProfileOutboundIPsPtrOutput)
 }
 
-func (o ManagedClusterLoadBalancerProfileOutboundIPsOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterLoadBalancerProfileOutboundIPs] {
-	return pulumix.Output[ManagedClusterLoadBalancerProfileOutboundIPs]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of public IP resources.
 func (o ManagedClusterLoadBalancerProfileOutboundIPsOutput) PublicIPs() ResourceReferenceArrayOutput {
 	return o.ApplyT(func(v ManagedClusterLoadBalancerProfileOutboundIPs) []ResourceReference { return v.PublicIPs }).(ResourceReferenceArrayOutput)
@@ -15862,12 +14049,6 @@ func (o ManagedClusterLoadBalancerProfileOutboundIPsPtrOutput) ToManagedClusterL
 
 func (o ManagedClusterLoadBalancerProfileOutboundIPsPtrOutput) ToManagedClusterLoadBalancerProfileOutboundIPsPtrOutputWithContext(ctx context.Context) ManagedClusterLoadBalancerProfileOutboundIPsPtrOutput {
 	return o
-}
-
-func (o ManagedClusterLoadBalancerProfileOutboundIPsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterLoadBalancerProfileOutboundIPs] {
-	return pulumix.Output[*ManagedClusterLoadBalancerProfileOutboundIPs]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterLoadBalancerProfileOutboundIPsPtrOutput) Elem() ManagedClusterLoadBalancerProfileOutboundIPsOutput {
@@ -15948,12 +14129,6 @@ func (o ManagedClusterLoadBalancerProfileResponseOutput) ToManagedClusterLoadBal
 	return o
 }
 
-func (o ManagedClusterLoadBalancerProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterLoadBalancerProfileResponse] {
-	return pulumix.Output[ManagedClusterLoadBalancerProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The desired number of allocated SNAT ports per VM. Allowed values are in the range of 0 to 64000 (inclusive). The default value is 0 which results in Azure dynamically allocating ports.
 func (o ManagedClusterLoadBalancerProfileResponseOutput) AllocatedOutboundPorts() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManagedClusterLoadBalancerProfileResponse) *int { return v.AllocatedOutboundPorts }).(pulumi.IntPtrOutput)
@@ -16014,12 +14189,6 @@ func (o ManagedClusterLoadBalancerProfileResponsePtrOutput) ToManagedClusterLoad
 
 func (o ManagedClusterLoadBalancerProfileResponsePtrOutput) ToManagedClusterLoadBalancerProfileResponsePtrOutputWithContext(ctx context.Context) ManagedClusterLoadBalancerProfileResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterLoadBalancerProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterLoadBalancerProfileResponse] {
-	return pulumix.Output[*ManagedClusterLoadBalancerProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterLoadBalancerProfileResponsePtrOutput) Elem() ManagedClusterLoadBalancerProfileResponseOutput {
@@ -16152,12 +14321,6 @@ func (o ManagedClusterLoadBalancerProfileResponseManagedOutboundIPsOutput) ToMan
 	return o
 }
 
-func (o ManagedClusterLoadBalancerProfileResponseManagedOutboundIPsOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterLoadBalancerProfileResponseManagedOutboundIPs] {
-	return pulumix.Output[ManagedClusterLoadBalancerProfileResponseManagedOutboundIPs]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The desired number of IPv4 outbound IPs created/managed by Azure for the cluster load balancer. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1.
 func (o ManagedClusterLoadBalancerProfileResponseManagedOutboundIPsOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManagedClusterLoadBalancerProfileResponseManagedOutboundIPs) *int { return v.Count }).(pulumi.IntPtrOutput)
@@ -16180,12 +14343,6 @@ func (o ManagedClusterLoadBalancerProfileResponseManagedOutboundIPsPtrOutput) To
 
 func (o ManagedClusterLoadBalancerProfileResponseManagedOutboundIPsPtrOutput) ToManagedClusterLoadBalancerProfileResponseManagedOutboundIPsPtrOutputWithContext(ctx context.Context) ManagedClusterLoadBalancerProfileResponseManagedOutboundIPsPtrOutput {
 	return o
-}
-
-func (o ManagedClusterLoadBalancerProfileResponseManagedOutboundIPsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterLoadBalancerProfileResponseManagedOutboundIPs] {
-	return pulumix.Output[*ManagedClusterLoadBalancerProfileResponseManagedOutboundIPs]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterLoadBalancerProfileResponseManagedOutboundIPsPtrOutput) Elem() ManagedClusterLoadBalancerProfileResponseManagedOutboundIPsOutput {
@@ -16239,12 +14396,6 @@ func (o ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixesOutput) ToMan
 	return o
 }
 
-func (o ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixesOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes] {
-	return pulumix.Output[ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of public IP prefix resources.
 func (o ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixesOutput) PublicIPPrefixes() ResourceReferenceResponseArrayOutput {
 	return o.ApplyT(func(v ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes) []ResourceReferenceResponse {
@@ -16264,12 +14415,6 @@ func (o ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixesPtrOutput) To
 
 func (o ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixesPtrOutput) ToManagedClusterLoadBalancerProfileResponseOutboundIPPrefixesPtrOutputWithContext(ctx context.Context) ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixesPtrOutput {
 	return o
-}
-
-func (o ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes] {
-	return pulumix.Output[*ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixesPtrOutput) Elem() ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixesOutput {
@@ -16313,12 +14458,6 @@ func (o ManagedClusterLoadBalancerProfileResponseOutboundIPsOutput) ToManagedClu
 	return o
 }
 
-func (o ManagedClusterLoadBalancerProfileResponseOutboundIPsOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterLoadBalancerProfileResponseOutboundIPs] {
-	return pulumix.Output[ManagedClusterLoadBalancerProfileResponseOutboundIPs]{
-		OutputState: o.OutputState,
-	}
-}
-
 // A list of public IP resources.
 func (o ManagedClusterLoadBalancerProfileResponseOutboundIPsOutput) PublicIPs() ResourceReferenceResponseArrayOutput {
 	return o.ApplyT(func(v ManagedClusterLoadBalancerProfileResponseOutboundIPs) []ResourceReferenceResponse {
@@ -16338,12 +14477,6 @@ func (o ManagedClusterLoadBalancerProfileResponseOutboundIPsPtrOutput) ToManaged
 
 func (o ManagedClusterLoadBalancerProfileResponseOutboundIPsPtrOutput) ToManagedClusterLoadBalancerProfileResponseOutboundIPsPtrOutputWithContext(ctx context.Context) ManagedClusterLoadBalancerProfileResponseOutboundIPsPtrOutput {
 	return o
-}
-
-func (o ManagedClusterLoadBalancerProfileResponseOutboundIPsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterLoadBalancerProfileResponseOutboundIPs] {
-	return pulumix.Output[*ManagedClusterLoadBalancerProfileResponseOutboundIPs]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterLoadBalancerProfileResponseOutboundIPsPtrOutput) Elem() ManagedClusterLoadBalancerProfileResponseOutboundIPsOutput {
@@ -16425,12 +14558,6 @@ func (i ManagedClusterManagedOutboundIPProfileArgs) ToManagedClusterManagedOutbo
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterManagedOutboundIPProfileOutput)
 }
 
-func (i ManagedClusterManagedOutboundIPProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterManagedOutboundIPProfile] {
-	return pulumix.Output[ManagedClusterManagedOutboundIPProfile]{
-		OutputState: i.ToManagedClusterManagedOutboundIPProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterManagedOutboundIPProfileArgs) ToManagedClusterManagedOutboundIPProfilePtrOutput() ManagedClusterManagedOutboundIPProfilePtrOutput {
 	return i.ToManagedClusterManagedOutboundIPProfilePtrOutputWithContext(context.Background())
 }
@@ -16472,12 +14599,6 @@ func (i *managedClusterManagedOutboundIPProfilePtrType) ToManagedClusterManagedO
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterManagedOutboundIPProfilePtrOutput)
 }
 
-func (i *managedClusterManagedOutboundIPProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterManagedOutboundIPProfile] {
-	return pulumix.Output[*ManagedClusterManagedOutboundIPProfile]{
-		OutputState: i.ToManagedClusterManagedOutboundIPProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Profile of the managed outbound IP resources of the managed cluster.
 type ManagedClusterManagedOutboundIPProfileOutput struct{ *pulumi.OutputState }
 
@@ -16503,12 +14624,6 @@ func (o ManagedClusterManagedOutboundIPProfileOutput) ToManagedClusterManagedOut
 	}).(ManagedClusterManagedOutboundIPProfilePtrOutput)
 }
 
-func (o ManagedClusterManagedOutboundIPProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterManagedOutboundIPProfile] {
-	return pulumix.Output[ManagedClusterManagedOutboundIPProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The desired number of outbound IPs created/managed by Azure. Allowed values must be in the range of 1 to 16 (inclusive). The default value is 1.
 func (o ManagedClusterManagedOutboundIPProfileOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManagedClusterManagedOutboundIPProfile) *int { return v.Count }).(pulumi.IntPtrOutput)
@@ -16526,12 +14641,6 @@ func (o ManagedClusterManagedOutboundIPProfilePtrOutput) ToManagedClusterManaged
 
 func (o ManagedClusterManagedOutboundIPProfilePtrOutput) ToManagedClusterManagedOutboundIPProfilePtrOutputWithContext(ctx context.Context) ManagedClusterManagedOutboundIPProfilePtrOutput {
 	return o
-}
-
-func (o ManagedClusterManagedOutboundIPProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterManagedOutboundIPProfile] {
-	return pulumix.Output[*ManagedClusterManagedOutboundIPProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterManagedOutboundIPProfilePtrOutput) Elem() ManagedClusterManagedOutboundIPProfileOutput {
@@ -16588,12 +14697,6 @@ func (o ManagedClusterManagedOutboundIPProfileResponseOutput) ToManagedClusterMa
 	return o
 }
 
-func (o ManagedClusterManagedOutboundIPProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterManagedOutboundIPProfileResponse] {
-	return pulumix.Output[ManagedClusterManagedOutboundIPProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The desired number of outbound IPs created/managed by Azure. Allowed values must be in the range of 1 to 16 (inclusive). The default value is 1.
 func (o ManagedClusterManagedOutboundIPProfileResponseOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ManagedClusterManagedOutboundIPProfileResponse) *int { return v.Count }).(pulumi.IntPtrOutput)
@@ -16611,12 +14714,6 @@ func (o ManagedClusterManagedOutboundIPProfileResponsePtrOutput) ToManagedCluste
 
 func (o ManagedClusterManagedOutboundIPProfileResponsePtrOutput) ToManagedClusterManagedOutboundIPProfileResponsePtrOutputWithContext(ctx context.Context) ManagedClusterManagedOutboundIPProfileResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterManagedOutboundIPProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterManagedOutboundIPProfileResponse] {
-	return pulumix.Output[*ManagedClusterManagedOutboundIPProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterManagedOutboundIPProfileResponsePtrOutput) Elem() ManagedClusterManagedOutboundIPProfileResponseOutput {
@@ -16674,12 +14771,6 @@ func (i ManagedClusterMetricsProfileArgs) ToManagedClusterMetricsProfileOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterMetricsProfileOutput)
 }
 
-func (i ManagedClusterMetricsProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterMetricsProfile] {
-	return pulumix.Output[ManagedClusterMetricsProfile]{
-		OutputState: i.ToManagedClusterMetricsProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterMetricsProfileArgs) ToManagedClusterMetricsProfilePtrOutput() ManagedClusterMetricsProfilePtrOutput {
 	return i.ToManagedClusterMetricsProfilePtrOutputWithContext(context.Background())
 }
@@ -16721,12 +14812,6 @@ func (i *managedClusterMetricsProfilePtrType) ToManagedClusterMetricsProfilePtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterMetricsProfilePtrOutput)
 }
 
-func (i *managedClusterMetricsProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterMetricsProfile] {
-	return pulumix.Output[*ManagedClusterMetricsProfile]{
-		OutputState: i.ToManagedClusterMetricsProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The metrics profile for the ManagedCluster.
 type ManagedClusterMetricsProfileOutput struct{ *pulumi.OutputState }
 
@@ -16752,12 +14837,6 @@ func (o ManagedClusterMetricsProfileOutput) ToManagedClusterMetricsProfilePtrOut
 	}).(ManagedClusterMetricsProfilePtrOutput)
 }
 
-func (o ManagedClusterMetricsProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterMetricsProfile] {
-	return pulumix.Output[ManagedClusterMetricsProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The cost analysis configuration for the cluster
 func (o ManagedClusterMetricsProfileOutput) CostAnalysis() ManagedClusterCostAnalysisPtrOutput {
 	return o.ApplyT(func(v ManagedClusterMetricsProfile) *ManagedClusterCostAnalysis { return v.CostAnalysis }).(ManagedClusterCostAnalysisPtrOutput)
@@ -16775,12 +14854,6 @@ func (o ManagedClusterMetricsProfilePtrOutput) ToManagedClusterMetricsProfilePtr
 
 func (o ManagedClusterMetricsProfilePtrOutput) ToManagedClusterMetricsProfilePtrOutputWithContext(ctx context.Context) ManagedClusterMetricsProfilePtrOutput {
 	return o
-}
-
-func (o ManagedClusterMetricsProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterMetricsProfile] {
-	return pulumix.Output[*ManagedClusterMetricsProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterMetricsProfilePtrOutput) Elem() ManagedClusterMetricsProfileOutput {
@@ -16824,12 +14897,6 @@ func (o ManagedClusterMetricsProfileResponseOutput) ToManagedClusterMetricsProfi
 	return o
 }
 
-func (o ManagedClusterMetricsProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterMetricsProfileResponse] {
-	return pulumix.Output[ManagedClusterMetricsProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The cost analysis configuration for the cluster
 func (o ManagedClusterMetricsProfileResponseOutput) CostAnalysis() ManagedClusterCostAnalysisResponsePtrOutput {
 	return o.ApplyT(func(v ManagedClusterMetricsProfileResponse) *ManagedClusterCostAnalysisResponse {
@@ -16849,12 +14916,6 @@ func (o ManagedClusterMetricsProfileResponsePtrOutput) ToManagedClusterMetricsPr
 
 func (o ManagedClusterMetricsProfileResponsePtrOutput) ToManagedClusterMetricsProfileResponsePtrOutputWithContext(ctx context.Context) ManagedClusterMetricsProfileResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterMetricsProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterMetricsProfileResponse] {
-	return pulumix.Output[*ManagedClusterMetricsProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterMetricsProfileResponsePtrOutput) Elem() ManagedClusterMetricsProfileResponseOutput {
@@ -16947,12 +15008,6 @@ func (i ManagedClusterNATGatewayProfileArgs) ToManagedClusterNATGatewayProfileOu
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterNATGatewayProfileOutput)
 }
 
-func (i ManagedClusterNATGatewayProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterNATGatewayProfile] {
-	return pulumix.Output[ManagedClusterNATGatewayProfile]{
-		OutputState: i.ToManagedClusterNATGatewayProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterNATGatewayProfileArgs) ToManagedClusterNATGatewayProfilePtrOutput() ManagedClusterNATGatewayProfilePtrOutput {
 	return i.ToManagedClusterNATGatewayProfilePtrOutputWithContext(context.Background())
 }
@@ -16994,12 +15049,6 @@ func (i *managedClusterNATGatewayProfilePtrType) ToManagedClusterNATGatewayProfi
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterNATGatewayProfilePtrOutput)
 }
 
-func (i *managedClusterNATGatewayProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterNATGatewayProfile] {
-	return pulumix.Output[*ManagedClusterNATGatewayProfile]{
-		OutputState: i.ToManagedClusterNATGatewayProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Profile of the managed cluster NAT gateway.
 type ManagedClusterNATGatewayProfileOutput struct{ *pulumi.OutputState }
 
@@ -17023,12 +15072,6 @@ func (o ManagedClusterNATGatewayProfileOutput) ToManagedClusterNATGatewayProfile
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterNATGatewayProfile) *ManagedClusterNATGatewayProfile {
 		return &v
 	}).(ManagedClusterNATGatewayProfilePtrOutput)
-}
-
-func (o ManagedClusterNATGatewayProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterNATGatewayProfile] {
-	return pulumix.Output[ManagedClusterNATGatewayProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The effective outbound IP resources of the cluster NAT gateway.
@@ -17060,12 +15103,6 @@ func (o ManagedClusterNATGatewayProfilePtrOutput) ToManagedClusterNATGatewayProf
 
 func (o ManagedClusterNATGatewayProfilePtrOutput) ToManagedClusterNATGatewayProfilePtrOutputWithContext(ctx context.Context) ManagedClusterNATGatewayProfilePtrOutput {
 	return o
-}
-
-func (o ManagedClusterNATGatewayProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterNATGatewayProfile] {
-	return pulumix.Output[*ManagedClusterNATGatewayProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterNATGatewayProfilePtrOutput) Elem() ManagedClusterNATGatewayProfileOutput {
@@ -17148,12 +15185,6 @@ func (o ManagedClusterNATGatewayProfileResponseOutput) ToManagedClusterNATGatewa
 	return o
 }
 
-func (o ManagedClusterNATGatewayProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterNATGatewayProfileResponse] {
-	return pulumix.Output[ManagedClusterNATGatewayProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The effective outbound IP resources of the cluster NAT gateway.
 func (o ManagedClusterNATGatewayProfileResponseOutput) EffectiveOutboundIPs() ResourceReferenceResponseArrayOutput {
 	return o.ApplyT(func(v ManagedClusterNATGatewayProfileResponse) []ResourceReferenceResponse {
@@ -17185,12 +15216,6 @@ func (o ManagedClusterNATGatewayProfileResponsePtrOutput) ToManagedClusterNATGat
 
 func (o ManagedClusterNATGatewayProfileResponsePtrOutput) ToManagedClusterNATGatewayProfileResponsePtrOutputWithContext(ctx context.Context) ManagedClusterNATGatewayProfileResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterNATGatewayProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterNATGatewayProfileResponse] {
-	return pulumix.Output[*ManagedClusterNATGatewayProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterNATGatewayProfileResponsePtrOutput) Elem() ManagedClusterNATGatewayProfileResponseOutput {
@@ -17268,12 +15293,6 @@ func (i ManagedClusterNodeResourceGroupProfileArgs) ToManagedClusterNodeResource
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterNodeResourceGroupProfileOutput)
 }
 
-func (i ManagedClusterNodeResourceGroupProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterNodeResourceGroupProfile] {
-	return pulumix.Output[ManagedClusterNodeResourceGroupProfile]{
-		OutputState: i.ToManagedClusterNodeResourceGroupProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterNodeResourceGroupProfileArgs) ToManagedClusterNodeResourceGroupProfilePtrOutput() ManagedClusterNodeResourceGroupProfilePtrOutput {
 	return i.ToManagedClusterNodeResourceGroupProfilePtrOutputWithContext(context.Background())
 }
@@ -17315,12 +15334,6 @@ func (i *managedClusterNodeResourceGroupProfilePtrType) ToManagedClusterNodeReso
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterNodeResourceGroupProfilePtrOutput)
 }
 
-func (i *managedClusterNodeResourceGroupProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterNodeResourceGroupProfile] {
-	return pulumix.Output[*ManagedClusterNodeResourceGroupProfile]{
-		OutputState: i.ToManagedClusterNodeResourceGroupProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Node resource group lockdown profile for a managed cluster.
 type ManagedClusterNodeResourceGroupProfileOutput struct{ *pulumi.OutputState }
 
@@ -17346,12 +15359,6 @@ func (o ManagedClusterNodeResourceGroupProfileOutput) ToManagedClusterNodeResour
 	}).(ManagedClusterNodeResourceGroupProfilePtrOutput)
 }
 
-func (o ManagedClusterNodeResourceGroupProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterNodeResourceGroupProfile] {
-	return pulumix.Output[ManagedClusterNodeResourceGroupProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The restriction level applied to the cluster's node resource group
 func (o ManagedClusterNodeResourceGroupProfileOutput) RestrictionLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedClusterNodeResourceGroupProfile) *string { return v.RestrictionLevel }).(pulumi.StringPtrOutput)
@@ -17369,12 +15376,6 @@ func (o ManagedClusterNodeResourceGroupProfilePtrOutput) ToManagedClusterNodeRes
 
 func (o ManagedClusterNodeResourceGroupProfilePtrOutput) ToManagedClusterNodeResourceGroupProfilePtrOutputWithContext(ctx context.Context) ManagedClusterNodeResourceGroupProfilePtrOutput {
 	return o
-}
-
-func (o ManagedClusterNodeResourceGroupProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterNodeResourceGroupProfile] {
-	return pulumix.Output[*ManagedClusterNodeResourceGroupProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterNodeResourceGroupProfilePtrOutput) Elem() ManagedClusterNodeResourceGroupProfileOutput {
@@ -17418,12 +15419,6 @@ func (o ManagedClusterNodeResourceGroupProfileResponseOutput) ToManagedClusterNo
 	return o
 }
 
-func (o ManagedClusterNodeResourceGroupProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterNodeResourceGroupProfileResponse] {
-	return pulumix.Output[ManagedClusterNodeResourceGroupProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The restriction level applied to the cluster's node resource group
 func (o ManagedClusterNodeResourceGroupProfileResponseOutput) RestrictionLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedClusterNodeResourceGroupProfileResponse) *string { return v.RestrictionLevel }).(pulumi.StringPtrOutput)
@@ -17441,12 +15436,6 @@ func (o ManagedClusterNodeResourceGroupProfileResponsePtrOutput) ToManagedCluste
 
 func (o ManagedClusterNodeResourceGroupProfileResponsePtrOutput) ToManagedClusterNodeResourceGroupProfileResponsePtrOutputWithContext(ctx context.Context) ManagedClusterNodeResourceGroupProfileResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterNodeResourceGroupProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterNodeResourceGroupProfileResponse] {
-	return pulumix.Output[*ManagedClusterNodeResourceGroupProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterNodeResourceGroupProfileResponsePtrOutput) Elem() ManagedClusterNodeResourceGroupProfileResponseOutput {
@@ -17504,12 +15493,6 @@ func (i ManagedClusterOIDCIssuerProfileArgs) ToManagedClusterOIDCIssuerProfileOu
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterOIDCIssuerProfileOutput)
 }
 
-func (i ManagedClusterOIDCIssuerProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterOIDCIssuerProfile] {
-	return pulumix.Output[ManagedClusterOIDCIssuerProfile]{
-		OutputState: i.ToManagedClusterOIDCIssuerProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterOIDCIssuerProfileArgs) ToManagedClusterOIDCIssuerProfilePtrOutput() ManagedClusterOIDCIssuerProfilePtrOutput {
 	return i.ToManagedClusterOIDCIssuerProfilePtrOutputWithContext(context.Background())
 }
@@ -17551,12 +15534,6 @@ func (i *managedClusterOIDCIssuerProfilePtrType) ToManagedClusterOIDCIssuerProfi
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterOIDCIssuerProfilePtrOutput)
 }
 
-func (i *managedClusterOIDCIssuerProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterOIDCIssuerProfile] {
-	return pulumix.Output[*ManagedClusterOIDCIssuerProfile]{
-		OutputState: i.ToManagedClusterOIDCIssuerProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The OIDC issuer profile of the Managed Cluster.
 type ManagedClusterOIDCIssuerProfileOutput struct{ *pulumi.OutputState }
 
@@ -17582,12 +15559,6 @@ func (o ManagedClusterOIDCIssuerProfileOutput) ToManagedClusterOIDCIssuerProfile
 	}).(ManagedClusterOIDCIssuerProfilePtrOutput)
 }
 
-func (o ManagedClusterOIDCIssuerProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterOIDCIssuerProfile] {
-	return pulumix.Output[ManagedClusterOIDCIssuerProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether the OIDC issuer is enabled.
 func (o ManagedClusterOIDCIssuerProfileOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterOIDCIssuerProfile) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -17605,12 +15576,6 @@ func (o ManagedClusterOIDCIssuerProfilePtrOutput) ToManagedClusterOIDCIssuerProf
 
 func (o ManagedClusterOIDCIssuerProfilePtrOutput) ToManagedClusterOIDCIssuerProfilePtrOutputWithContext(ctx context.Context) ManagedClusterOIDCIssuerProfilePtrOutput {
 	return o
-}
-
-func (o ManagedClusterOIDCIssuerProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterOIDCIssuerProfile] {
-	return pulumix.Output[*ManagedClusterOIDCIssuerProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterOIDCIssuerProfilePtrOutput) Elem() ManagedClusterOIDCIssuerProfileOutput {
@@ -17656,12 +15621,6 @@ func (o ManagedClusterOIDCIssuerProfileResponseOutput) ToManagedClusterOIDCIssue
 	return o
 }
 
-func (o ManagedClusterOIDCIssuerProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterOIDCIssuerProfileResponse] {
-	return pulumix.Output[ManagedClusterOIDCIssuerProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether the OIDC issuer is enabled.
 func (o ManagedClusterOIDCIssuerProfileResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterOIDCIssuerProfileResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -17684,12 +15643,6 @@ func (o ManagedClusterOIDCIssuerProfileResponsePtrOutput) ToManagedClusterOIDCIs
 
 func (o ManagedClusterOIDCIssuerProfileResponsePtrOutput) ToManagedClusterOIDCIssuerProfileResponsePtrOutputWithContext(ctx context.Context) ManagedClusterOIDCIssuerProfileResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterOIDCIssuerProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterOIDCIssuerProfileResponse] {
-	return pulumix.Output[*ManagedClusterOIDCIssuerProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterOIDCIssuerProfileResponsePtrOutput) Elem() ManagedClusterOIDCIssuerProfileResponseOutput {
@@ -17769,12 +15722,6 @@ func (i ManagedClusterPodIdentityArgs) ToManagedClusterPodIdentityOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterPodIdentityOutput)
 }
 
-func (i ManagedClusterPodIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterPodIdentity] {
-	return pulumix.Output[ManagedClusterPodIdentity]{
-		OutputState: i.ToManagedClusterPodIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ManagedClusterPodIdentityArrayInput is an input type that accepts ManagedClusterPodIdentityArray and ManagedClusterPodIdentityArrayOutput values.
 // You can construct a concrete instance of `ManagedClusterPodIdentityArrayInput` via:
 //
@@ -17800,12 +15747,6 @@ func (i ManagedClusterPodIdentityArray) ToManagedClusterPodIdentityArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterPodIdentityArrayOutput)
 }
 
-func (i ManagedClusterPodIdentityArray) ToOutput(ctx context.Context) pulumix.Output[[]ManagedClusterPodIdentity] {
-	return pulumix.Output[[]ManagedClusterPodIdentity]{
-		OutputState: i.ToManagedClusterPodIdentityArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Details about the pod identity assigned to the Managed Cluster.
 type ManagedClusterPodIdentityOutput struct{ *pulumi.OutputState }
 
@@ -17819,12 +15760,6 @@ func (o ManagedClusterPodIdentityOutput) ToManagedClusterPodIdentityOutput() Man
 
 func (o ManagedClusterPodIdentityOutput) ToManagedClusterPodIdentityOutputWithContext(ctx context.Context) ManagedClusterPodIdentityOutput {
 	return o
-}
-
-func (o ManagedClusterPodIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterPodIdentity] {
-	return pulumix.Output[ManagedClusterPodIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The binding selector to use for the AzureIdentityBinding resource.
@@ -17859,12 +15794,6 @@ func (o ManagedClusterPodIdentityArrayOutput) ToManagedClusterPodIdentityArrayOu
 
 func (o ManagedClusterPodIdentityArrayOutput) ToManagedClusterPodIdentityArrayOutputWithContext(ctx context.Context) ManagedClusterPodIdentityArrayOutput {
 	return o
-}
-
-func (o ManagedClusterPodIdentityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagedClusterPodIdentity] {
-	return pulumix.Output[[]ManagedClusterPodIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterPodIdentityArrayOutput) Index(i pulumi.IntInput) ManagedClusterPodIdentityOutput {
@@ -17916,12 +15845,6 @@ func (i ManagedClusterPodIdentityExceptionArgs) ToManagedClusterPodIdentityExcep
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterPodIdentityExceptionOutput)
 }
 
-func (i ManagedClusterPodIdentityExceptionArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterPodIdentityException] {
-	return pulumix.Output[ManagedClusterPodIdentityException]{
-		OutputState: i.ToManagedClusterPodIdentityExceptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ManagedClusterPodIdentityExceptionArrayInput is an input type that accepts ManagedClusterPodIdentityExceptionArray and ManagedClusterPodIdentityExceptionArrayOutput values.
 // You can construct a concrete instance of `ManagedClusterPodIdentityExceptionArrayInput` via:
 //
@@ -17947,12 +15870,6 @@ func (i ManagedClusterPodIdentityExceptionArray) ToManagedClusterPodIdentityExce
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterPodIdentityExceptionArrayOutput)
 }
 
-func (i ManagedClusterPodIdentityExceptionArray) ToOutput(ctx context.Context) pulumix.Output[[]ManagedClusterPodIdentityException] {
-	return pulumix.Output[[]ManagedClusterPodIdentityException]{
-		OutputState: i.ToManagedClusterPodIdentityExceptionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // See [disable AAD Pod Identity for a specific Pod/Application](https://azure.github.io/aad-pod-identity/docs/configure/application_exception/) for more details.
 type ManagedClusterPodIdentityExceptionOutput struct{ *pulumi.OutputState }
 
@@ -17966,12 +15883,6 @@ func (o ManagedClusterPodIdentityExceptionOutput) ToManagedClusterPodIdentityExc
 
 func (o ManagedClusterPodIdentityExceptionOutput) ToManagedClusterPodIdentityExceptionOutputWithContext(ctx context.Context) ManagedClusterPodIdentityExceptionOutput {
 	return o
-}
-
-func (o ManagedClusterPodIdentityExceptionOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterPodIdentityException] {
-	return pulumix.Output[ManagedClusterPodIdentityException]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the pod identity exception.
@@ -18001,12 +15912,6 @@ func (o ManagedClusterPodIdentityExceptionArrayOutput) ToManagedClusterPodIdenti
 
 func (o ManagedClusterPodIdentityExceptionArrayOutput) ToManagedClusterPodIdentityExceptionArrayOutputWithContext(ctx context.Context) ManagedClusterPodIdentityExceptionArrayOutput {
 	return o
-}
-
-func (o ManagedClusterPodIdentityExceptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagedClusterPodIdentityException] {
-	return pulumix.Output[[]ManagedClusterPodIdentityException]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterPodIdentityExceptionArrayOutput) Index(i pulumi.IntInput) ManagedClusterPodIdentityExceptionOutput {
@@ -18040,12 +15945,6 @@ func (o ManagedClusterPodIdentityExceptionResponseOutput) ToManagedClusterPodIde
 	return o
 }
 
-func (o ManagedClusterPodIdentityExceptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterPodIdentityExceptionResponse] {
-	return pulumix.Output[ManagedClusterPodIdentityExceptionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the pod identity exception.
 func (o ManagedClusterPodIdentityExceptionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedClusterPodIdentityExceptionResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -18073,12 +15972,6 @@ func (o ManagedClusterPodIdentityExceptionResponseArrayOutput) ToManagedClusterP
 
 func (o ManagedClusterPodIdentityExceptionResponseArrayOutput) ToManagedClusterPodIdentityExceptionResponseArrayOutputWithContext(ctx context.Context) ManagedClusterPodIdentityExceptionResponseArrayOutput {
 	return o
-}
-
-func (o ManagedClusterPodIdentityExceptionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagedClusterPodIdentityExceptionResponse] {
-	return pulumix.Output[[]ManagedClusterPodIdentityExceptionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterPodIdentityExceptionResponseArrayOutput) Index(i pulumi.IntInput) ManagedClusterPodIdentityExceptionResponseOutput {
@@ -18134,12 +16027,6 @@ func (i ManagedClusterPodIdentityProfileArgs) ToManagedClusterPodIdentityProfile
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterPodIdentityProfileOutput)
 }
 
-func (i ManagedClusterPodIdentityProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterPodIdentityProfile] {
-	return pulumix.Output[ManagedClusterPodIdentityProfile]{
-		OutputState: i.ToManagedClusterPodIdentityProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterPodIdentityProfileArgs) ToManagedClusterPodIdentityProfilePtrOutput() ManagedClusterPodIdentityProfilePtrOutput {
 	return i.ToManagedClusterPodIdentityProfilePtrOutputWithContext(context.Background())
 }
@@ -18181,12 +16068,6 @@ func (i *managedClusterPodIdentityProfilePtrType) ToManagedClusterPodIdentityPro
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterPodIdentityProfilePtrOutput)
 }
 
-func (i *managedClusterPodIdentityProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterPodIdentityProfile] {
-	return pulumix.Output[*ManagedClusterPodIdentityProfile]{
-		OutputState: i.ToManagedClusterPodIdentityProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on pod identity integration.
 type ManagedClusterPodIdentityProfileOutput struct{ *pulumi.OutputState }
 
@@ -18210,12 +16091,6 @@ func (o ManagedClusterPodIdentityProfileOutput) ToManagedClusterPodIdentityProfi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterPodIdentityProfile) *ManagedClusterPodIdentityProfile {
 		return &v
 	}).(ManagedClusterPodIdentityProfilePtrOutput)
-}
-
-func (o ManagedClusterPodIdentityProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterPodIdentityProfile] {
-	return pulumix.Output[ManagedClusterPodIdentityProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Running in Kubenet is disabled by default due to the security related nature of AAD Pod Identity and the risks of IP spoofing. See [using Kubenet network plugin with AAD Pod Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities) for more information.
@@ -18252,12 +16127,6 @@ func (o ManagedClusterPodIdentityProfilePtrOutput) ToManagedClusterPodIdentityPr
 
 func (o ManagedClusterPodIdentityProfilePtrOutput) ToManagedClusterPodIdentityProfilePtrOutputWithContext(ctx context.Context) ManagedClusterPodIdentityProfilePtrOutput {
 	return o
-}
-
-func (o ManagedClusterPodIdentityProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterPodIdentityProfile] {
-	return pulumix.Output[*ManagedClusterPodIdentityProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterPodIdentityProfilePtrOutput) Elem() ManagedClusterPodIdentityProfileOutput {
@@ -18337,12 +16206,6 @@ func (o ManagedClusterPodIdentityProfileResponseOutput) ToManagedClusterPodIdent
 	return o
 }
 
-func (o ManagedClusterPodIdentityProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterPodIdentityProfileResponse] {
-	return pulumix.Output[ManagedClusterPodIdentityProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Running in Kubenet is disabled by default due to the security related nature of AAD Pod Identity and the risks of IP spoofing. See [using Kubenet network plugin with AAD Pod Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities) for more information.
 func (o ManagedClusterPodIdentityProfileResponseOutput) AllowNetworkPluginKubenet() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterPodIdentityProfileResponse) *bool { return v.AllowNetworkPluginKubenet }).(pulumi.BoolPtrOutput)
@@ -18379,12 +16242,6 @@ func (o ManagedClusterPodIdentityProfileResponsePtrOutput) ToManagedClusterPodId
 
 func (o ManagedClusterPodIdentityProfileResponsePtrOutput) ToManagedClusterPodIdentityProfileResponsePtrOutputWithContext(ctx context.Context) ManagedClusterPodIdentityProfileResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterPodIdentityProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterPodIdentityProfileResponse] {
-	return pulumix.Output[*ManagedClusterPodIdentityProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterPodIdentityProfileResponsePtrOutput) Elem() ManagedClusterPodIdentityProfileResponseOutput {
@@ -18464,12 +16321,6 @@ func (o ManagedClusterPodIdentityProvisioningErrorBodyResponseOutput) ToManagedC
 	return o
 }
 
-func (o ManagedClusterPodIdentityProvisioningErrorBodyResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterPodIdentityProvisioningErrorBodyResponse] {
-	return pulumix.Output[ManagedClusterPodIdentityProvisioningErrorBodyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
 func (o ManagedClusterPodIdentityProvisioningErrorBodyResponseOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedClusterPodIdentityProvisioningErrorBodyResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
@@ -18504,12 +16355,6 @@ func (o ManagedClusterPodIdentityProvisioningErrorBodyResponsePtrOutput) ToManag
 
 func (o ManagedClusterPodIdentityProvisioningErrorBodyResponsePtrOutput) ToManagedClusterPodIdentityProvisioningErrorBodyResponsePtrOutputWithContext(ctx context.Context) ManagedClusterPodIdentityProvisioningErrorBodyResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterPodIdentityProvisioningErrorBodyResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterPodIdentityProvisioningErrorBodyResponse] {
-	return pulumix.Output[*ManagedClusterPodIdentityProvisioningErrorBodyResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterPodIdentityProvisioningErrorBodyResponsePtrOutput) Elem() ManagedClusterPodIdentityProvisioningErrorBodyResponseOutput {
@@ -18576,12 +16421,6 @@ func (o ManagedClusterPodIdentityProvisioningErrorBodyResponseArrayOutput) ToMan
 	return o
 }
 
-func (o ManagedClusterPodIdentityProvisioningErrorBodyResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagedClusterPodIdentityProvisioningErrorBodyResponse] {
-	return pulumix.Output[[]ManagedClusterPodIdentityProvisioningErrorBodyResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ManagedClusterPodIdentityProvisioningErrorBodyResponseArrayOutput) Index(i pulumi.IntInput) ManagedClusterPodIdentityProvisioningErrorBodyResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedClusterPodIdentityProvisioningErrorBodyResponse {
 		return vs[0].([]ManagedClusterPodIdentityProvisioningErrorBodyResponse)[vs[1].(int)]
@@ -18609,12 +16448,6 @@ func (o ManagedClusterPodIdentityProvisioningErrorResponseOutput) ToManagedClust
 	return o
 }
 
-func (o ManagedClusterPodIdentityProvisioningErrorResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterPodIdentityProvisioningErrorResponse] {
-	return pulumix.Output[ManagedClusterPodIdentityProvisioningErrorResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Details about the error.
 func (o ManagedClusterPodIdentityProvisioningErrorResponseOutput) Error() ManagedClusterPodIdentityProvisioningErrorBodyResponsePtrOutput {
 	return o.ApplyT(func(v ManagedClusterPodIdentityProvisioningErrorResponse) *ManagedClusterPodIdentityProvisioningErrorBodyResponse {
@@ -18634,12 +16467,6 @@ func (o ManagedClusterPodIdentityProvisioningErrorResponsePtrOutput) ToManagedCl
 
 func (o ManagedClusterPodIdentityProvisioningErrorResponsePtrOutput) ToManagedClusterPodIdentityProvisioningErrorResponsePtrOutputWithContext(ctx context.Context) ManagedClusterPodIdentityProvisioningErrorResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterPodIdentityProvisioningErrorResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterPodIdentityProvisioningErrorResponse] {
-	return pulumix.Output[*ManagedClusterPodIdentityProvisioningErrorResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterPodIdentityProvisioningErrorResponsePtrOutput) Elem() ManagedClusterPodIdentityProvisioningErrorResponseOutput {
@@ -18692,12 +16519,6 @@ func (o ManagedClusterPodIdentityResponseOutput) ToManagedClusterPodIdentityResp
 	return o
 }
 
-func (o ManagedClusterPodIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterPodIdentityResponse] {
-	return pulumix.Output[ManagedClusterPodIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The binding selector to use for the AzureIdentityBinding resource.
 func (o ManagedClusterPodIdentityResponseOutput) BindingSelector() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedClusterPodIdentityResponse) *string { return v.BindingSelector }).(pulumi.StringPtrOutput)
@@ -18743,12 +16564,6 @@ func (o ManagedClusterPodIdentityResponseArrayOutput) ToManagedClusterPodIdentit
 	return o
 }
 
-func (o ManagedClusterPodIdentityResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ManagedClusterPodIdentityResponse] {
-	return pulumix.Output[[]ManagedClusterPodIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ManagedClusterPodIdentityResponseArrayOutput) Index(i pulumi.IntInput) ManagedClusterPodIdentityResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedClusterPodIdentityResponse {
 		return vs[0].([]ManagedClusterPodIdentityResponse)[vs[1].(int)]
@@ -18772,12 +16587,6 @@ func (o ManagedClusterPodIdentityResponseProvisioningInfoOutput) ToManagedCluste
 
 func (o ManagedClusterPodIdentityResponseProvisioningInfoOutput) ToManagedClusterPodIdentityResponseProvisioningInfoOutputWithContext(ctx context.Context) ManagedClusterPodIdentityResponseProvisioningInfoOutput {
 	return o
-}
-
-func (o ManagedClusterPodIdentityResponseProvisioningInfoOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterPodIdentityResponseProvisioningInfo] {
-	return pulumix.Output[ManagedClusterPodIdentityResponseProvisioningInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Pod identity assignment error (if any).
@@ -18886,12 +16695,6 @@ func (i ManagedClusterPropertiesAutoScalerProfileArgs) ToManagedClusterPropertie
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterPropertiesAutoScalerProfileOutput)
 }
 
-func (i ManagedClusterPropertiesAutoScalerProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterPropertiesAutoScalerProfile] {
-	return pulumix.Output[ManagedClusterPropertiesAutoScalerProfile]{
-		OutputState: i.ToManagedClusterPropertiesAutoScalerProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterPropertiesAutoScalerProfileArgs) ToManagedClusterPropertiesAutoScalerProfilePtrOutput() ManagedClusterPropertiesAutoScalerProfilePtrOutput {
 	return i.ToManagedClusterPropertiesAutoScalerProfilePtrOutputWithContext(context.Background())
 }
@@ -18933,12 +16736,6 @@ func (i *managedClusterPropertiesAutoScalerProfilePtrType) ToManagedClusterPrope
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterPropertiesAutoScalerProfilePtrOutput)
 }
 
-func (i *managedClusterPropertiesAutoScalerProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterPropertiesAutoScalerProfile] {
-	return pulumix.Output[*ManagedClusterPropertiesAutoScalerProfile]{
-		OutputState: i.ToManagedClusterPropertiesAutoScalerProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Parameters to be applied to the cluster-autoscaler when enabled
 type ManagedClusterPropertiesAutoScalerProfileOutput struct{ *pulumi.OutputState }
 
@@ -18962,12 +16759,6 @@ func (o ManagedClusterPropertiesAutoScalerProfileOutput) ToManagedClusterPropert
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterPropertiesAutoScalerProfile) *ManagedClusterPropertiesAutoScalerProfile {
 		return &v
 	}).(ManagedClusterPropertiesAutoScalerProfilePtrOutput)
-}
-
-func (o ManagedClusterPropertiesAutoScalerProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterPropertiesAutoScalerProfile] {
-	return pulumix.Output[ManagedClusterPropertiesAutoScalerProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Valid values are 'true' and 'false'
@@ -19067,12 +16858,6 @@ func (o ManagedClusterPropertiesAutoScalerProfilePtrOutput) ToManagedClusterProp
 
 func (o ManagedClusterPropertiesAutoScalerProfilePtrOutput) ToManagedClusterPropertiesAutoScalerProfilePtrOutputWithContext(ctx context.Context) ManagedClusterPropertiesAutoScalerProfilePtrOutput {
 	return o
-}
-
-func (o ManagedClusterPropertiesAutoScalerProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterPropertiesAutoScalerProfile] {
-	return pulumix.Output[*ManagedClusterPropertiesAutoScalerProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterPropertiesAutoScalerProfilePtrOutput) Elem() ManagedClusterPropertiesAutoScalerProfileOutput {
@@ -19282,12 +17067,6 @@ func (o ManagedClusterPropertiesForSnapshotResponseOutput) ToManagedClusterPrope
 	return o
 }
 
-func (o ManagedClusterPropertiesForSnapshotResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterPropertiesForSnapshotResponse] {
-	return pulumix.Output[ManagedClusterPropertiesForSnapshotResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether the cluster has enabled Kubernetes Role-Based Access Control or not.
 func (o ManagedClusterPropertiesForSnapshotResponseOutput) EnableRbac() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterPropertiesForSnapshotResponse) *bool { return v.EnableRbac }).(pulumi.BoolPtrOutput)
@@ -19361,12 +17140,6 @@ func (o ManagedClusterPropertiesResponseAutoScalerProfileOutput) ToManagedCluste
 
 func (o ManagedClusterPropertiesResponseAutoScalerProfileOutput) ToManagedClusterPropertiesResponseAutoScalerProfileOutputWithContext(ctx context.Context) ManagedClusterPropertiesResponseAutoScalerProfileOutput {
 	return o
-}
-
-func (o ManagedClusterPropertiesResponseAutoScalerProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterPropertiesResponseAutoScalerProfile] {
-	return pulumix.Output[ManagedClusterPropertiesResponseAutoScalerProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Valid values are 'true' and 'false'
@@ -19468,12 +17241,6 @@ func (o ManagedClusterPropertiesResponseAutoScalerProfilePtrOutput) ToManagedClu
 
 func (o ManagedClusterPropertiesResponseAutoScalerProfilePtrOutput) ToManagedClusterPropertiesResponseAutoScalerProfilePtrOutputWithContext(ctx context.Context) ManagedClusterPropertiesResponseAutoScalerProfilePtrOutput {
 	return o
-}
-
-func (o ManagedClusterPropertiesResponseAutoScalerProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterPropertiesResponseAutoScalerProfile] {
-	return pulumix.Output[*ManagedClusterPropertiesResponseAutoScalerProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterPropertiesResponseAutoScalerProfilePtrOutput) Elem() ManagedClusterPropertiesResponseAutoScalerProfileOutput {
@@ -19695,12 +17462,6 @@ func (i ManagedClusterSKUArgs) ToManagedClusterSKUOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterSKUOutput)
 }
 
-func (i ManagedClusterSKUArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSKU] {
-	return pulumix.Output[ManagedClusterSKU]{
-		OutputState: i.ToManagedClusterSKUOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterSKUArgs) ToManagedClusterSKUPtrOutput() ManagedClusterSKUPtrOutput {
 	return i.ToManagedClusterSKUPtrOutputWithContext(context.Background())
 }
@@ -19742,12 +17503,6 @@ func (i *managedClusterSKUPtrType) ToManagedClusterSKUPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterSKUPtrOutput)
 }
 
-func (i *managedClusterSKUPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSKU] {
-	return pulumix.Output[*ManagedClusterSKU]{
-		OutputState: i.ToManagedClusterSKUPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The SKU of a Managed Cluster.
 type ManagedClusterSKUOutput struct{ *pulumi.OutputState }
 
@@ -19773,12 +17528,6 @@ func (o ManagedClusterSKUOutput) ToManagedClusterSKUPtrOutputWithContext(ctx con
 	}).(ManagedClusterSKUPtrOutput)
 }
 
-func (o ManagedClusterSKUOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSKU] {
-	return pulumix.Output[ManagedClusterSKU]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of a managed cluster SKU.
 func (o ManagedClusterSKUOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedClusterSKU) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -19801,12 +17550,6 @@ func (o ManagedClusterSKUPtrOutput) ToManagedClusterSKUPtrOutput() ManagedCluste
 
 func (o ManagedClusterSKUPtrOutput) ToManagedClusterSKUPtrOutputWithContext(ctx context.Context) ManagedClusterSKUPtrOutput {
 	return o
-}
-
-func (o ManagedClusterSKUPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSKU] {
-	return pulumix.Output[*ManagedClusterSKU]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterSKUPtrOutput) Elem() ManagedClusterSKUOutput {
@@ -19862,12 +17605,6 @@ func (o ManagedClusterSKUResponseOutput) ToManagedClusterSKUResponseOutputWithCo
 	return o
 }
 
-func (o ManagedClusterSKUResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSKUResponse] {
-	return pulumix.Output[ManagedClusterSKUResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of a managed cluster SKU.
 func (o ManagedClusterSKUResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedClusterSKUResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -19890,12 +17627,6 @@ func (o ManagedClusterSKUResponsePtrOutput) ToManagedClusterSKUResponsePtrOutput
 
 func (o ManagedClusterSKUResponsePtrOutput) ToManagedClusterSKUResponsePtrOutputWithContext(ctx context.Context) ManagedClusterSKUResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterSKUResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSKUResponse] {
-	return pulumix.Output[*ManagedClusterSKUResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterSKUResponsePtrOutput) Elem() ManagedClusterSKUResponseOutput {
@@ -20007,12 +17738,6 @@ func (i ManagedClusterSecurityProfileArgs) ToManagedClusterSecurityProfileOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterSecurityProfileOutput)
 }
 
-func (i ManagedClusterSecurityProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSecurityProfile] {
-	return pulumix.Output[ManagedClusterSecurityProfile]{
-		OutputState: i.ToManagedClusterSecurityProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterSecurityProfileArgs) ToManagedClusterSecurityProfilePtrOutput() ManagedClusterSecurityProfilePtrOutput {
 	return i.ToManagedClusterSecurityProfilePtrOutputWithContext(context.Background())
 }
@@ -20054,12 +17779,6 @@ func (i *managedClusterSecurityProfilePtrType) ToManagedClusterSecurityProfilePt
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterSecurityProfilePtrOutput)
 }
 
-func (i *managedClusterSecurityProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSecurityProfile] {
-	return pulumix.Output[*ManagedClusterSecurityProfile]{
-		OutputState: i.ToManagedClusterSecurityProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Security profile for the container service cluster.
 type ManagedClusterSecurityProfileOutput struct{ *pulumi.OutputState }
 
@@ -20083,12 +17802,6 @@ func (o ManagedClusterSecurityProfileOutput) ToManagedClusterSecurityProfilePtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterSecurityProfile) *ManagedClusterSecurityProfile {
 		return &v
 	}).(ManagedClusterSecurityProfilePtrOutput)
-}
-
-func (o ManagedClusterSecurityProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSecurityProfile] {
-	return pulumix.Output[ManagedClusterSecurityProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Azure Key Vault [key management service](https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/) settings for the security profile.
@@ -20146,12 +17859,6 @@ func (o ManagedClusterSecurityProfilePtrOutput) ToManagedClusterSecurityProfileP
 
 func (o ManagedClusterSecurityProfilePtrOutput) ToManagedClusterSecurityProfilePtrOutputWithContext(ctx context.Context) ManagedClusterSecurityProfilePtrOutput {
 	return o
-}
-
-func (o ManagedClusterSecurityProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSecurityProfile] {
-	return pulumix.Output[*ManagedClusterSecurityProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterSecurityProfilePtrOutput) Elem() ManagedClusterSecurityProfileOutput {
@@ -20273,12 +17980,6 @@ func (i ManagedClusterSecurityProfileDefenderArgs) ToManagedClusterSecurityProfi
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterSecurityProfileDefenderOutput)
 }
 
-func (i ManagedClusterSecurityProfileDefenderArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSecurityProfileDefender] {
-	return pulumix.Output[ManagedClusterSecurityProfileDefender]{
-		OutputState: i.ToManagedClusterSecurityProfileDefenderOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterSecurityProfileDefenderArgs) ToManagedClusterSecurityProfileDefenderPtrOutput() ManagedClusterSecurityProfileDefenderPtrOutput {
 	return i.ToManagedClusterSecurityProfileDefenderPtrOutputWithContext(context.Background())
 }
@@ -20320,12 +18021,6 @@ func (i *managedClusterSecurityProfileDefenderPtrType) ToManagedClusterSecurityP
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterSecurityProfileDefenderPtrOutput)
 }
 
-func (i *managedClusterSecurityProfileDefenderPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSecurityProfileDefender] {
-	return pulumix.Output[*ManagedClusterSecurityProfileDefender]{
-		OutputState: i.ToManagedClusterSecurityProfileDefenderPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Microsoft Defender settings for the security profile.
 type ManagedClusterSecurityProfileDefenderOutput struct{ *pulumi.OutputState }
 
@@ -20349,12 +18044,6 @@ func (o ManagedClusterSecurityProfileDefenderOutput) ToManagedClusterSecurityPro
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterSecurityProfileDefender) *ManagedClusterSecurityProfileDefender {
 		return &v
 	}).(ManagedClusterSecurityProfileDefenderPtrOutput)
-}
-
-func (o ManagedClusterSecurityProfileDefenderOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSecurityProfileDefender] {
-	return pulumix.Output[ManagedClusterSecurityProfileDefender]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource ID of the Log Analytics workspace to be associated with Microsoft Defender. When Microsoft Defender is enabled, this field is required and must be a valid workspace resource ID. When Microsoft Defender is disabled, leave the field empty.
@@ -20381,12 +18070,6 @@ func (o ManagedClusterSecurityProfileDefenderPtrOutput) ToManagedClusterSecurity
 
 func (o ManagedClusterSecurityProfileDefenderPtrOutput) ToManagedClusterSecurityProfileDefenderPtrOutputWithContext(ctx context.Context) ManagedClusterSecurityProfileDefenderPtrOutput {
 	return o
-}
-
-func (o ManagedClusterSecurityProfileDefenderPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSecurityProfileDefender] {
-	return pulumix.Output[*ManagedClusterSecurityProfileDefender]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterSecurityProfileDefenderPtrOutput) Elem() ManagedClusterSecurityProfileDefenderOutput {
@@ -20442,12 +18125,6 @@ func (o ManagedClusterSecurityProfileDefenderResponseOutput) ToManagedClusterSec
 	return o
 }
 
-func (o ManagedClusterSecurityProfileDefenderResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSecurityProfileDefenderResponse] {
-	return pulumix.Output[ManagedClusterSecurityProfileDefenderResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource ID of the Log Analytics workspace to be associated with Microsoft Defender. When Microsoft Defender is enabled, this field is required and must be a valid workspace resource ID. When Microsoft Defender is disabled, leave the field empty.
 func (o ManagedClusterSecurityProfileDefenderResponseOutput) LogAnalyticsWorkspaceResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedClusterSecurityProfileDefenderResponse) *string {
@@ -20474,12 +18151,6 @@ func (o ManagedClusterSecurityProfileDefenderResponsePtrOutput) ToManagedCluster
 
 func (o ManagedClusterSecurityProfileDefenderResponsePtrOutput) ToManagedClusterSecurityProfileDefenderResponsePtrOutputWithContext(ctx context.Context) ManagedClusterSecurityProfileDefenderResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterSecurityProfileDefenderResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSecurityProfileDefenderResponse] {
-	return pulumix.Output[*ManagedClusterSecurityProfileDefenderResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterSecurityProfileDefenderResponsePtrOutput) Elem() ManagedClusterSecurityProfileDefenderResponseOutput {
@@ -20547,12 +18218,6 @@ func (i ManagedClusterSecurityProfileDefenderSecurityMonitoringArgs) ToManagedCl
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterSecurityProfileDefenderSecurityMonitoringOutput)
 }
 
-func (i ManagedClusterSecurityProfileDefenderSecurityMonitoringArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSecurityProfileDefenderSecurityMonitoring] {
-	return pulumix.Output[ManagedClusterSecurityProfileDefenderSecurityMonitoring]{
-		OutputState: i.ToManagedClusterSecurityProfileDefenderSecurityMonitoringOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterSecurityProfileDefenderSecurityMonitoringArgs) ToManagedClusterSecurityProfileDefenderSecurityMonitoringPtrOutput() ManagedClusterSecurityProfileDefenderSecurityMonitoringPtrOutput {
 	return i.ToManagedClusterSecurityProfileDefenderSecurityMonitoringPtrOutputWithContext(context.Background())
 }
@@ -20594,12 +18259,6 @@ func (i *managedClusterSecurityProfileDefenderSecurityMonitoringPtrType) ToManag
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterSecurityProfileDefenderSecurityMonitoringPtrOutput)
 }
 
-func (i *managedClusterSecurityProfileDefenderSecurityMonitoringPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSecurityProfileDefenderSecurityMonitoring] {
-	return pulumix.Output[*ManagedClusterSecurityProfileDefenderSecurityMonitoring]{
-		OutputState: i.ToManagedClusterSecurityProfileDefenderSecurityMonitoringPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Microsoft Defender settings for the security profile threat detection.
 type ManagedClusterSecurityProfileDefenderSecurityMonitoringOutput struct{ *pulumi.OutputState }
 
@@ -20625,12 +18284,6 @@ func (o ManagedClusterSecurityProfileDefenderSecurityMonitoringOutput) ToManaged
 	}).(ManagedClusterSecurityProfileDefenderSecurityMonitoringPtrOutput)
 }
 
-func (o ManagedClusterSecurityProfileDefenderSecurityMonitoringOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSecurityProfileDefenderSecurityMonitoring] {
-	return pulumix.Output[ManagedClusterSecurityProfileDefenderSecurityMonitoring]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable Defender threat detection
 func (o ManagedClusterSecurityProfileDefenderSecurityMonitoringOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterSecurityProfileDefenderSecurityMonitoring) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -20648,12 +18301,6 @@ func (o ManagedClusterSecurityProfileDefenderSecurityMonitoringPtrOutput) ToMana
 
 func (o ManagedClusterSecurityProfileDefenderSecurityMonitoringPtrOutput) ToManagedClusterSecurityProfileDefenderSecurityMonitoringPtrOutputWithContext(ctx context.Context) ManagedClusterSecurityProfileDefenderSecurityMonitoringPtrOutput {
 	return o
-}
-
-func (o ManagedClusterSecurityProfileDefenderSecurityMonitoringPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSecurityProfileDefenderSecurityMonitoring] {
-	return pulumix.Output[*ManagedClusterSecurityProfileDefenderSecurityMonitoring]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterSecurityProfileDefenderSecurityMonitoringPtrOutput) Elem() ManagedClusterSecurityProfileDefenderSecurityMonitoringOutput {
@@ -20697,12 +18344,6 @@ func (o ManagedClusterSecurityProfileDefenderSecurityMonitoringResponseOutput) T
 	return o
 }
 
-func (o ManagedClusterSecurityProfileDefenderSecurityMonitoringResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSecurityProfileDefenderSecurityMonitoringResponse] {
-	return pulumix.Output[ManagedClusterSecurityProfileDefenderSecurityMonitoringResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable Defender threat detection
 func (o ManagedClusterSecurityProfileDefenderSecurityMonitoringResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterSecurityProfileDefenderSecurityMonitoringResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -20720,12 +18361,6 @@ func (o ManagedClusterSecurityProfileDefenderSecurityMonitoringResponsePtrOutput
 
 func (o ManagedClusterSecurityProfileDefenderSecurityMonitoringResponsePtrOutput) ToManagedClusterSecurityProfileDefenderSecurityMonitoringResponsePtrOutputWithContext(ctx context.Context) ManagedClusterSecurityProfileDefenderSecurityMonitoringResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterSecurityProfileDefenderSecurityMonitoringResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSecurityProfileDefenderSecurityMonitoringResponse] {
-	return pulumix.Output[*ManagedClusterSecurityProfileDefenderSecurityMonitoringResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterSecurityProfileDefenderSecurityMonitoringResponsePtrOutput) Elem() ManagedClusterSecurityProfileDefenderSecurityMonitoringResponseOutput {
@@ -20787,12 +18422,6 @@ func (i ManagedClusterSecurityProfileImageCleanerArgs) ToManagedClusterSecurityP
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterSecurityProfileImageCleanerOutput)
 }
 
-func (i ManagedClusterSecurityProfileImageCleanerArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSecurityProfileImageCleaner] {
-	return pulumix.Output[ManagedClusterSecurityProfileImageCleaner]{
-		OutputState: i.ToManagedClusterSecurityProfileImageCleanerOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterSecurityProfileImageCleanerArgs) ToManagedClusterSecurityProfileImageCleanerPtrOutput() ManagedClusterSecurityProfileImageCleanerPtrOutput {
 	return i.ToManagedClusterSecurityProfileImageCleanerPtrOutputWithContext(context.Background())
 }
@@ -20834,12 +18463,6 @@ func (i *managedClusterSecurityProfileImageCleanerPtrType) ToManagedClusterSecur
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterSecurityProfileImageCleanerPtrOutput)
 }
 
-func (i *managedClusterSecurityProfileImageCleanerPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSecurityProfileImageCleaner] {
-	return pulumix.Output[*ManagedClusterSecurityProfileImageCleaner]{
-		OutputState: i.ToManagedClusterSecurityProfileImageCleanerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Image Cleaner removes unused images from nodes, freeing up disk space and helping to reduce attack surface area. Here are settings for the security profile.
 type ManagedClusterSecurityProfileImageCleanerOutput struct{ *pulumi.OutputState }
 
@@ -20865,12 +18488,6 @@ func (o ManagedClusterSecurityProfileImageCleanerOutput) ToManagedClusterSecurit
 	}).(ManagedClusterSecurityProfileImageCleanerPtrOutput)
 }
 
-func (o ManagedClusterSecurityProfileImageCleanerOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSecurityProfileImageCleaner] {
-	return pulumix.Output[ManagedClusterSecurityProfileImageCleaner]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable Image Cleaner on AKS cluster.
 func (o ManagedClusterSecurityProfileImageCleanerOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterSecurityProfileImageCleaner) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -20893,12 +18510,6 @@ func (o ManagedClusterSecurityProfileImageCleanerPtrOutput) ToManagedClusterSecu
 
 func (o ManagedClusterSecurityProfileImageCleanerPtrOutput) ToManagedClusterSecurityProfileImageCleanerPtrOutputWithContext(ctx context.Context) ManagedClusterSecurityProfileImageCleanerPtrOutput {
 	return o
-}
-
-func (o ManagedClusterSecurityProfileImageCleanerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSecurityProfileImageCleaner] {
-	return pulumix.Output[*ManagedClusterSecurityProfileImageCleaner]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterSecurityProfileImageCleanerPtrOutput) Elem() ManagedClusterSecurityProfileImageCleanerOutput {
@@ -20954,12 +18565,6 @@ func (o ManagedClusterSecurityProfileImageCleanerResponseOutput) ToManagedCluste
 	return o
 }
 
-func (o ManagedClusterSecurityProfileImageCleanerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSecurityProfileImageCleanerResponse] {
-	return pulumix.Output[ManagedClusterSecurityProfileImageCleanerResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable Image Cleaner on AKS cluster.
 func (o ManagedClusterSecurityProfileImageCleanerResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterSecurityProfileImageCleanerResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -20982,12 +18587,6 @@ func (o ManagedClusterSecurityProfileImageCleanerResponsePtrOutput) ToManagedClu
 
 func (o ManagedClusterSecurityProfileImageCleanerResponsePtrOutput) ToManagedClusterSecurityProfileImageCleanerResponsePtrOutputWithContext(ctx context.Context) ManagedClusterSecurityProfileImageCleanerResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterSecurityProfileImageCleanerResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSecurityProfileImageCleanerResponse] {
-	return pulumix.Output[*ManagedClusterSecurityProfileImageCleanerResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterSecurityProfileImageCleanerResponsePtrOutput) Elem() ManagedClusterSecurityProfileImageCleanerResponseOutput {
@@ -21055,12 +18654,6 @@ func (i ManagedClusterSecurityProfileImageIntegrityArgs) ToManagedClusterSecurit
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterSecurityProfileImageIntegrityOutput)
 }
 
-func (i ManagedClusterSecurityProfileImageIntegrityArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSecurityProfileImageIntegrity] {
-	return pulumix.Output[ManagedClusterSecurityProfileImageIntegrity]{
-		OutputState: i.ToManagedClusterSecurityProfileImageIntegrityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterSecurityProfileImageIntegrityArgs) ToManagedClusterSecurityProfileImageIntegrityPtrOutput() ManagedClusterSecurityProfileImageIntegrityPtrOutput {
 	return i.ToManagedClusterSecurityProfileImageIntegrityPtrOutputWithContext(context.Background())
 }
@@ -21102,12 +18695,6 @@ func (i *managedClusterSecurityProfileImageIntegrityPtrType) ToManagedClusterSec
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterSecurityProfileImageIntegrityPtrOutput)
 }
 
-func (i *managedClusterSecurityProfileImageIntegrityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSecurityProfileImageIntegrity] {
-	return pulumix.Output[*ManagedClusterSecurityProfileImageIntegrity]{
-		OutputState: i.ToManagedClusterSecurityProfileImageIntegrityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Image integrity related settings for the security profile.
 type ManagedClusterSecurityProfileImageIntegrityOutput struct{ *pulumi.OutputState }
 
@@ -21133,12 +18720,6 @@ func (o ManagedClusterSecurityProfileImageIntegrityOutput) ToManagedClusterSecur
 	}).(ManagedClusterSecurityProfileImageIntegrityPtrOutput)
 }
 
-func (o ManagedClusterSecurityProfileImageIntegrityOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSecurityProfileImageIntegrity] {
-	return pulumix.Output[ManagedClusterSecurityProfileImageIntegrity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable image integrity. The default value is false.
 func (o ManagedClusterSecurityProfileImageIntegrityOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterSecurityProfileImageIntegrity) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -21156,12 +18737,6 @@ func (o ManagedClusterSecurityProfileImageIntegrityPtrOutput) ToManagedClusterSe
 
 func (o ManagedClusterSecurityProfileImageIntegrityPtrOutput) ToManagedClusterSecurityProfileImageIntegrityPtrOutputWithContext(ctx context.Context) ManagedClusterSecurityProfileImageIntegrityPtrOutput {
 	return o
-}
-
-func (o ManagedClusterSecurityProfileImageIntegrityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSecurityProfileImageIntegrity] {
-	return pulumix.Output[*ManagedClusterSecurityProfileImageIntegrity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterSecurityProfileImageIntegrityPtrOutput) Elem() ManagedClusterSecurityProfileImageIntegrityOutput {
@@ -21205,12 +18780,6 @@ func (o ManagedClusterSecurityProfileImageIntegrityResponseOutput) ToManagedClus
 	return o
 }
 
-func (o ManagedClusterSecurityProfileImageIntegrityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSecurityProfileImageIntegrityResponse] {
-	return pulumix.Output[ManagedClusterSecurityProfileImageIntegrityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable image integrity. The default value is false.
 func (o ManagedClusterSecurityProfileImageIntegrityResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterSecurityProfileImageIntegrityResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -21228,12 +18797,6 @@ func (o ManagedClusterSecurityProfileImageIntegrityResponsePtrOutput) ToManagedC
 
 func (o ManagedClusterSecurityProfileImageIntegrityResponsePtrOutput) ToManagedClusterSecurityProfileImageIntegrityResponsePtrOutputWithContext(ctx context.Context) ManagedClusterSecurityProfileImageIntegrityResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterSecurityProfileImageIntegrityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSecurityProfileImageIntegrityResponse] {
-	return pulumix.Output[*ManagedClusterSecurityProfileImageIntegrityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterSecurityProfileImageIntegrityResponsePtrOutput) Elem() ManagedClusterSecurityProfileImageIntegrityResponseOutput {
@@ -21291,12 +18854,6 @@ func (i ManagedClusterSecurityProfileNodeRestrictionArgs) ToManagedClusterSecuri
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterSecurityProfileNodeRestrictionOutput)
 }
 
-func (i ManagedClusterSecurityProfileNodeRestrictionArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSecurityProfileNodeRestriction] {
-	return pulumix.Output[ManagedClusterSecurityProfileNodeRestriction]{
-		OutputState: i.ToManagedClusterSecurityProfileNodeRestrictionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterSecurityProfileNodeRestrictionArgs) ToManagedClusterSecurityProfileNodeRestrictionPtrOutput() ManagedClusterSecurityProfileNodeRestrictionPtrOutput {
 	return i.ToManagedClusterSecurityProfileNodeRestrictionPtrOutputWithContext(context.Background())
 }
@@ -21338,12 +18895,6 @@ func (i *managedClusterSecurityProfileNodeRestrictionPtrType) ToManagedClusterSe
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterSecurityProfileNodeRestrictionPtrOutput)
 }
 
-func (i *managedClusterSecurityProfileNodeRestrictionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSecurityProfileNodeRestriction] {
-	return pulumix.Output[*ManagedClusterSecurityProfileNodeRestriction]{
-		OutputState: i.ToManagedClusterSecurityProfileNodeRestrictionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Node Restriction settings for the security profile.
 type ManagedClusterSecurityProfileNodeRestrictionOutput struct{ *pulumi.OutputState }
 
@@ -21369,12 +18920,6 @@ func (o ManagedClusterSecurityProfileNodeRestrictionOutput) ToManagedClusterSecu
 	}).(ManagedClusterSecurityProfileNodeRestrictionPtrOutput)
 }
 
-func (o ManagedClusterSecurityProfileNodeRestrictionOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSecurityProfileNodeRestriction] {
-	return pulumix.Output[ManagedClusterSecurityProfileNodeRestriction]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable Node Restriction
 func (o ManagedClusterSecurityProfileNodeRestrictionOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterSecurityProfileNodeRestriction) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -21392,12 +18937,6 @@ func (o ManagedClusterSecurityProfileNodeRestrictionPtrOutput) ToManagedClusterS
 
 func (o ManagedClusterSecurityProfileNodeRestrictionPtrOutput) ToManagedClusterSecurityProfileNodeRestrictionPtrOutputWithContext(ctx context.Context) ManagedClusterSecurityProfileNodeRestrictionPtrOutput {
 	return o
-}
-
-func (o ManagedClusterSecurityProfileNodeRestrictionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSecurityProfileNodeRestriction] {
-	return pulumix.Output[*ManagedClusterSecurityProfileNodeRestriction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterSecurityProfileNodeRestrictionPtrOutput) Elem() ManagedClusterSecurityProfileNodeRestrictionOutput {
@@ -21441,12 +18980,6 @@ func (o ManagedClusterSecurityProfileNodeRestrictionResponseOutput) ToManagedClu
 	return o
 }
 
-func (o ManagedClusterSecurityProfileNodeRestrictionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSecurityProfileNodeRestrictionResponse] {
-	return pulumix.Output[ManagedClusterSecurityProfileNodeRestrictionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable Node Restriction
 func (o ManagedClusterSecurityProfileNodeRestrictionResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterSecurityProfileNodeRestrictionResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -21464,12 +18997,6 @@ func (o ManagedClusterSecurityProfileNodeRestrictionResponsePtrOutput) ToManaged
 
 func (o ManagedClusterSecurityProfileNodeRestrictionResponsePtrOutput) ToManagedClusterSecurityProfileNodeRestrictionResponsePtrOutputWithContext(ctx context.Context) ManagedClusterSecurityProfileNodeRestrictionResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterSecurityProfileNodeRestrictionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSecurityProfileNodeRestrictionResponse] {
-	return pulumix.Output[*ManagedClusterSecurityProfileNodeRestrictionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterSecurityProfileNodeRestrictionResponsePtrOutput) Elem() ManagedClusterSecurityProfileNodeRestrictionResponseOutput {
@@ -21536,12 +19063,6 @@ func (o ManagedClusterSecurityProfileResponseOutput) ToManagedClusterSecurityPro
 	return o
 }
 
-func (o ManagedClusterSecurityProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSecurityProfileResponse] {
-	return pulumix.Output[ManagedClusterSecurityProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Azure Key Vault [key management service](https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/) settings for the security profile.
 func (o ManagedClusterSecurityProfileResponseOutput) AzureKeyVaultKms() AzureKeyVaultKmsResponsePtrOutput {
 	return o.ApplyT(func(v ManagedClusterSecurityProfileResponse) *AzureKeyVaultKmsResponse { return v.AzureKeyVaultKms }).(AzureKeyVaultKmsResponsePtrOutput)
@@ -21599,12 +19120,6 @@ func (o ManagedClusterSecurityProfileResponsePtrOutput) ToManagedClusterSecurity
 
 func (o ManagedClusterSecurityProfileResponsePtrOutput) ToManagedClusterSecurityProfileResponsePtrOutputWithContext(ctx context.Context) ManagedClusterSecurityProfileResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterSecurityProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSecurityProfileResponse] {
-	return pulumix.Output[*ManagedClusterSecurityProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterSecurityProfileResponsePtrOutput) Elem() ManagedClusterSecurityProfileResponseOutput {
@@ -21722,12 +19237,6 @@ func (i ManagedClusterSecurityProfileWorkloadIdentityArgs) ToManagedClusterSecur
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterSecurityProfileWorkloadIdentityOutput)
 }
 
-func (i ManagedClusterSecurityProfileWorkloadIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSecurityProfileWorkloadIdentity] {
-	return pulumix.Output[ManagedClusterSecurityProfileWorkloadIdentity]{
-		OutputState: i.ToManagedClusterSecurityProfileWorkloadIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterSecurityProfileWorkloadIdentityArgs) ToManagedClusterSecurityProfileWorkloadIdentityPtrOutput() ManagedClusterSecurityProfileWorkloadIdentityPtrOutput {
 	return i.ToManagedClusterSecurityProfileWorkloadIdentityPtrOutputWithContext(context.Background())
 }
@@ -21769,12 +19278,6 @@ func (i *managedClusterSecurityProfileWorkloadIdentityPtrType) ToManagedClusterS
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterSecurityProfileWorkloadIdentityPtrOutput)
 }
 
-func (i *managedClusterSecurityProfileWorkloadIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSecurityProfileWorkloadIdentity] {
-	return pulumix.Output[*ManagedClusterSecurityProfileWorkloadIdentity]{
-		OutputState: i.ToManagedClusterSecurityProfileWorkloadIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Workload identity settings for the security profile.
 type ManagedClusterSecurityProfileWorkloadIdentityOutput struct{ *pulumi.OutputState }
 
@@ -21800,12 +19303,6 @@ func (o ManagedClusterSecurityProfileWorkloadIdentityOutput) ToManagedClusterSec
 	}).(ManagedClusterSecurityProfileWorkloadIdentityPtrOutput)
 }
 
-func (o ManagedClusterSecurityProfileWorkloadIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSecurityProfileWorkloadIdentity] {
-	return pulumix.Output[ManagedClusterSecurityProfileWorkloadIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable workload identity.
 func (o ManagedClusterSecurityProfileWorkloadIdentityOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterSecurityProfileWorkloadIdentity) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -21823,12 +19320,6 @@ func (o ManagedClusterSecurityProfileWorkloadIdentityPtrOutput) ToManagedCluster
 
 func (o ManagedClusterSecurityProfileWorkloadIdentityPtrOutput) ToManagedClusterSecurityProfileWorkloadIdentityPtrOutputWithContext(ctx context.Context) ManagedClusterSecurityProfileWorkloadIdentityPtrOutput {
 	return o
-}
-
-func (o ManagedClusterSecurityProfileWorkloadIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSecurityProfileWorkloadIdentity] {
-	return pulumix.Output[*ManagedClusterSecurityProfileWorkloadIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterSecurityProfileWorkloadIdentityPtrOutput) Elem() ManagedClusterSecurityProfileWorkloadIdentityOutput {
@@ -21872,12 +19363,6 @@ func (o ManagedClusterSecurityProfileWorkloadIdentityResponseOutput) ToManagedCl
 	return o
 }
 
-func (o ManagedClusterSecurityProfileWorkloadIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterSecurityProfileWorkloadIdentityResponse] {
-	return pulumix.Output[ManagedClusterSecurityProfileWorkloadIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable workload identity.
 func (o ManagedClusterSecurityProfileWorkloadIdentityResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterSecurityProfileWorkloadIdentityResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -21895,12 +19380,6 @@ func (o ManagedClusterSecurityProfileWorkloadIdentityResponsePtrOutput) ToManage
 
 func (o ManagedClusterSecurityProfileWorkloadIdentityResponsePtrOutput) ToManagedClusterSecurityProfileWorkloadIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedClusterSecurityProfileWorkloadIdentityResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterSecurityProfileWorkloadIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterSecurityProfileWorkloadIdentityResponse] {
-	return pulumix.Output[*ManagedClusterSecurityProfileWorkloadIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterSecurityProfileWorkloadIdentityResponsePtrOutput) Elem() ManagedClusterSecurityProfileWorkloadIdentityResponseOutput {
@@ -21962,12 +19441,6 @@ func (i ManagedClusterServicePrincipalProfileArgs) ToManagedClusterServicePrinci
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterServicePrincipalProfileOutput)
 }
 
-func (i ManagedClusterServicePrincipalProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterServicePrincipalProfile] {
-	return pulumix.Output[ManagedClusterServicePrincipalProfile]{
-		OutputState: i.ToManagedClusterServicePrincipalProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterServicePrincipalProfileArgs) ToManagedClusterServicePrincipalProfilePtrOutput() ManagedClusterServicePrincipalProfilePtrOutput {
 	return i.ToManagedClusterServicePrincipalProfilePtrOutputWithContext(context.Background())
 }
@@ -22009,12 +19482,6 @@ func (i *managedClusterServicePrincipalProfilePtrType) ToManagedClusterServicePr
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterServicePrincipalProfilePtrOutput)
 }
 
-func (i *managedClusterServicePrincipalProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterServicePrincipalProfile] {
-	return pulumix.Output[*ManagedClusterServicePrincipalProfile]{
-		OutputState: i.ToManagedClusterServicePrincipalProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Information about a service principal identity for the cluster to use for manipulating Azure APIs.
 type ManagedClusterServicePrincipalProfileOutput struct{ *pulumi.OutputState }
 
@@ -22040,12 +19507,6 @@ func (o ManagedClusterServicePrincipalProfileOutput) ToManagedClusterServicePrin
 	}).(ManagedClusterServicePrincipalProfilePtrOutput)
 }
 
-func (o ManagedClusterServicePrincipalProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterServicePrincipalProfile] {
-	return pulumix.Output[ManagedClusterServicePrincipalProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ID for the service principal.
 func (o ManagedClusterServicePrincipalProfileOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedClusterServicePrincipalProfile) string { return v.ClientId }).(pulumi.StringOutput)
@@ -22068,12 +19529,6 @@ func (o ManagedClusterServicePrincipalProfilePtrOutput) ToManagedClusterServiceP
 
 func (o ManagedClusterServicePrincipalProfilePtrOutput) ToManagedClusterServicePrincipalProfilePtrOutputWithContext(ctx context.Context) ManagedClusterServicePrincipalProfilePtrOutput {
 	return o
-}
-
-func (o ManagedClusterServicePrincipalProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterServicePrincipalProfile] {
-	return pulumix.Output[*ManagedClusterServicePrincipalProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterServicePrincipalProfilePtrOutput) Elem() ManagedClusterServicePrincipalProfileOutput {
@@ -22129,12 +19584,6 @@ func (o ManagedClusterServicePrincipalProfileResponseOutput) ToManagedClusterSer
 	return o
 }
 
-func (o ManagedClusterServicePrincipalProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterServicePrincipalProfileResponse] {
-	return pulumix.Output[ManagedClusterServicePrincipalProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ID for the service principal.
 func (o ManagedClusterServicePrincipalProfileResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedClusterServicePrincipalProfileResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -22157,12 +19606,6 @@ func (o ManagedClusterServicePrincipalProfileResponsePtrOutput) ToManagedCluster
 
 func (o ManagedClusterServicePrincipalProfileResponsePtrOutput) ToManagedClusterServicePrincipalProfileResponsePtrOutputWithContext(ctx context.Context) ManagedClusterServicePrincipalProfileResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterServicePrincipalProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterServicePrincipalProfileResponse] {
-	return pulumix.Output[*ManagedClusterServicePrincipalProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterServicePrincipalProfileResponsePtrOutput) Elem() ManagedClusterServicePrincipalProfileResponseOutput {
@@ -22242,12 +19685,6 @@ func (i ManagedClusterStorageProfileArgs) ToManagedClusterStorageProfileOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterStorageProfileOutput)
 }
 
-func (i ManagedClusterStorageProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterStorageProfile] {
-	return pulumix.Output[ManagedClusterStorageProfile]{
-		OutputState: i.ToManagedClusterStorageProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterStorageProfileArgs) ToManagedClusterStorageProfilePtrOutput() ManagedClusterStorageProfilePtrOutput {
 	return i.ToManagedClusterStorageProfilePtrOutputWithContext(context.Background())
 }
@@ -22289,12 +19726,6 @@ func (i *managedClusterStorageProfilePtrType) ToManagedClusterStorageProfilePtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterStorageProfilePtrOutput)
 }
 
-func (i *managedClusterStorageProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterStorageProfile] {
-	return pulumix.Output[*ManagedClusterStorageProfile]{
-		OutputState: i.ToManagedClusterStorageProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Storage profile for the container service cluster.
 type ManagedClusterStorageProfileOutput struct{ *pulumi.OutputState }
 
@@ -22318,12 +19749,6 @@ func (o ManagedClusterStorageProfileOutput) ToManagedClusterStorageProfilePtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterStorageProfile) *ManagedClusterStorageProfile {
 		return &v
 	}).(ManagedClusterStorageProfilePtrOutput)
-}
-
-func (o ManagedClusterStorageProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterStorageProfile] {
-	return pulumix.Output[ManagedClusterStorageProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // AzureBlob CSI Driver settings for the storage profile.
@@ -22366,12 +19791,6 @@ func (o ManagedClusterStorageProfilePtrOutput) ToManagedClusterStorageProfilePtr
 
 func (o ManagedClusterStorageProfilePtrOutput) ToManagedClusterStorageProfilePtrOutputWithContext(ctx context.Context) ManagedClusterStorageProfilePtrOutput {
 	return o
-}
-
-func (o ManagedClusterStorageProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterStorageProfile] {
-	return pulumix.Output[*ManagedClusterStorageProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterStorageProfilePtrOutput) Elem() ManagedClusterStorageProfileOutput {
@@ -22459,12 +19878,6 @@ func (i ManagedClusterStorageProfileBlobCSIDriverArgs) ToManagedClusterStoragePr
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterStorageProfileBlobCSIDriverOutput)
 }
 
-func (i ManagedClusterStorageProfileBlobCSIDriverArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterStorageProfileBlobCSIDriver] {
-	return pulumix.Output[ManagedClusterStorageProfileBlobCSIDriver]{
-		OutputState: i.ToManagedClusterStorageProfileBlobCSIDriverOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterStorageProfileBlobCSIDriverArgs) ToManagedClusterStorageProfileBlobCSIDriverPtrOutput() ManagedClusterStorageProfileBlobCSIDriverPtrOutput {
 	return i.ToManagedClusterStorageProfileBlobCSIDriverPtrOutputWithContext(context.Background())
 }
@@ -22506,12 +19919,6 @@ func (i *managedClusterStorageProfileBlobCSIDriverPtrType) ToManagedClusterStora
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterStorageProfileBlobCSIDriverPtrOutput)
 }
 
-func (i *managedClusterStorageProfileBlobCSIDriverPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterStorageProfileBlobCSIDriver] {
-	return pulumix.Output[*ManagedClusterStorageProfileBlobCSIDriver]{
-		OutputState: i.ToManagedClusterStorageProfileBlobCSIDriverPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AzureBlob CSI Driver settings for the storage profile.
 type ManagedClusterStorageProfileBlobCSIDriverOutput struct{ *pulumi.OutputState }
 
@@ -22537,12 +19944,6 @@ func (o ManagedClusterStorageProfileBlobCSIDriverOutput) ToManagedClusterStorage
 	}).(ManagedClusterStorageProfileBlobCSIDriverPtrOutput)
 }
 
-func (o ManagedClusterStorageProfileBlobCSIDriverOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterStorageProfileBlobCSIDriver] {
-	return pulumix.Output[ManagedClusterStorageProfileBlobCSIDriver]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable AzureBlob CSI Driver. The default value is false.
 func (o ManagedClusterStorageProfileBlobCSIDriverOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterStorageProfileBlobCSIDriver) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -22560,12 +19961,6 @@ func (o ManagedClusterStorageProfileBlobCSIDriverPtrOutput) ToManagedClusterStor
 
 func (o ManagedClusterStorageProfileBlobCSIDriverPtrOutput) ToManagedClusterStorageProfileBlobCSIDriverPtrOutputWithContext(ctx context.Context) ManagedClusterStorageProfileBlobCSIDriverPtrOutput {
 	return o
-}
-
-func (o ManagedClusterStorageProfileBlobCSIDriverPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterStorageProfileBlobCSIDriver] {
-	return pulumix.Output[*ManagedClusterStorageProfileBlobCSIDriver]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterStorageProfileBlobCSIDriverPtrOutput) Elem() ManagedClusterStorageProfileBlobCSIDriverOutput {
@@ -22609,12 +20004,6 @@ func (o ManagedClusterStorageProfileBlobCSIDriverResponseOutput) ToManagedCluste
 	return o
 }
 
-func (o ManagedClusterStorageProfileBlobCSIDriverResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterStorageProfileBlobCSIDriverResponse] {
-	return pulumix.Output[ManagedClusterStorageProfileBlobCSIDriverResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable AzureBlob CSI Driver. The default value is false.
 func (o ManagedClusterStorageProfileBlobCSIDriverResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterStorageProfileBlobCSIDriverResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -22632,12 +20021,6 @@ func (o ManagedClusterStorageProfileBlobCSIDriverResponsePtrOutput) ToManagedClu
 
 func (o ManagedClusterStorageProfileBlobCSIDriverResponsePtrOutput) ToManagedClusterStorageProfileBlobCSIDriverResponsePtrOutputWithContext(ctx context.Context) ManagedClusterStorageProfileBlobCSIDriverResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterStorageProfileBlobCSIDriverResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterStorageProfileBlobCSIDriverResponse] {
-	return pulumix.Output[*ManagedClusterStorageProfileBlobCSIDriverResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterStorageProfileBlobCSIDriverResponsePtrOutput) Elem() ManagedClusterStorageProfileBlobCSIDriverResponseOutput {
@@ -22699,12 +20082,6 @@ func (i ManagedClusterStorageProfileDiskCSIDriverArgs) ToManagedClusterStoragePr
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterStorageProfileDiskCSIDriverOutput)
 }
 
-func (i ManagedClusterStorageProfileDiskCSIDriverArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterStorageProfileDiskCSIDriver] {
-	return pulumix.Output[ManagedClusterStorageProfileDiskCSIDriver]{
-		OutputState: i.ToManagedClusterStorageProfileDiskCSIDriverOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterStorageProfileDiskCSIDriverArgs) ToManagedClusterStorageProfileDiskCSIDriverPtrOutput() ManagedClusterStorageProfileDiskCSIDriverPtrOutput {
 	return i.ToManagedClusterStorageProfileDiskCSIDriverPtrOutputWithContext(context.Background())
 }
@@ -22746,12 +20123,6 @@ func (i *managedClusterStorageProfileDiskCSIDriverPtrType) ToManagedClusterStora
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterStorageProfileDiskCSIDriverPtrOutput)
 }
 
-func (i *managedClusterStorageProfileDiskCSIDriverPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterStorageProfileDiskCSIDriver] {
-	return pulumix.Output[*ManagedClusterStorageProfileDiskCSIDriver]{
-		OutputState: i.ToManagedClusterStorageProfileDiskCSIDriverPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AzureDisk CSI Driver settings for the storage profile.
 type ManagedClusterStorageProfileDiskCSIDriverOutput struct{ *pulumi.OutputState }
 
@@ -22777,12 +20148,6 @@ func (o ManagedClusterStorageProfileDiskCSIDriverOutput) ToManagedClusterStorage
 	}).(ManagedClusterStorageProfileDiskCSIDriverPtrOutput)
 }
 
-func (o ManagedClusterStorageProfileDiskCSIDriverOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterStorageProfileDiskCSIDriver] {
-	return pulumix.Output[ManagedClusterStorageProfileDiskCSIDriver]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable AzureDisk CSI Driver. The default value is true.
 func (o ManagedClusterStorageProfileDiskCSIDriverOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterStorageProfileDiskCSIDriver) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -22805,12 +20170,6 @@ func (o ManagedClusterStorageProfileDiskCSIDriverPtrOutput) ToManagedClusterStor
 
 func (o ManagedClusterStorageProfileDiskCSIDriverPtrOutput) ToManagedClusterStorageProfileDiskCSIDriverPtrOutputWithContext(ctx context.Context) ManagedClusterStorageProfileDiskCSIDriverPtrOutput {
 	return o
-}
-
-func (o ManagedClusterStorageProfileDiskCSIDriverPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterStorageProfileDiskCSIDriver] {
-	return pulumix.Output[*ManagedClusterStorageProfileDiskCSIDriver]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterStorageProfileDiskCSIDriverPtrOutput) Elem() ManagedClusterStorageProfileDiskCSIDriverOutput {
@@ -22866,12 +20225,6 @@ func (o ManagedClusterStorageProfileDiskCSIDriverResponseOutput) ToManagedCluste
 	return o
 }
 
-func (o ManagedClusterStorageProfileDiskCSIDriverResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterStorageProfileDiskCSIDriverResponse] {
-	return pulumix.Output[ManagedClusterStorageProfileDiskCSIDriverResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable AzureDisk CSI Driver. The default value is true.
 func (o ManagedClusterStorageProfileDiskCSIDriverResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterStorageProfileDiskCSIDriverResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -22894,12 +20247,6 @@ func (o ManagedClusterStorageProfileDiskCSIDriverResponsePtrOutput) ToManagedClu
 
 func (o ManagedClusterStorageProfileDiskCSIDriverResponsePtrOutput) ToManagedClusterStorageProfileDiskCSIDriverResponsePtrOutputWithContext(ctx context.Context) ManagedClusterStorageProfileDiskCSIDriverResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterStorageProfileDiskCSIDriverResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterStorageProfileDiskCSIDriverResponse] {
-	return pulumix.Output[*ManagedClusterStorageProfileDiskCSIDriverResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterStorageProfileDiskCSIDriverResponsePtrOutput) Elem() ManagedClusterStorageProfileDiskCSIDriverResponseOutput {
@@ -22967,12 +20314,6 @@ func (i ManagedClusterStorageProfileFileCSIDriverArgs) ToManagedClusterStoragePr
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterStorageProfileFileCSIDriverOutput)
 }
 
-func (i ManagedClusterStorageProfileFileCSIDriverArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterStorageProfileFileCSIDriver] {
-	return pulumix.Output[ManagedClusterStorageProfileFileCSIDriver]{
-		OutputState: i.ToManagedClusterStorageProfileFileCSIDriverOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterStorageProfileFileCSIDriverArgs) ToManagedClusterStorageProfileFileCSIDriverPtrOutput() ManagedClusterStorageProfileFileCSIDriverPtrOutput {
 	return i.ToManagedClusterStorageProfileFileCSIDriverPtrOutputWithContext(context.Background())
 }
@@ -23014,12 +20355,6 @@ func (i *managedClusterStorageProfileFileCSIDriverPtrType) ToManagedClusterStora
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterStorageProfileFileCSIDriverPtrOutput)
 }
 
-func (i *managedClusterStorageProfileFileCSIDriverPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterStorageProfileFileCSIDriver] {
-	return pulumix.Output[*ManagedClusterStorageProfileFileCSIDriver]{
-		OutputState: i.ToManagedClusterStorageProfileFileCSIDriverPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AzureFile CSI Driver settings for the storage profile.
 type ManagedClusterStorageProfileFileCSIDriverOutput struct{ *pulumi.OutputState }
 
@@ -23045,12 +20380,6 @@ func (o ManagedClusterStorageProfileFileCSIDriverOutput) ToManagedClusterStorage
 	}).(ManagedClusterStorageProfileFileCSIDriverPtrOutput)
 }
 
-func (o ManagedClusterStorageProfileFileCSIDriverOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterStorageProfileFileCSIDriver] {
-	return pulumix.Output[ManagedClusterStorageProfileFileCSIDriver]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable AzureFile CSI Driver. The default value is true.
 func (o ManagedClusterStorageProfileFileCSIDriverOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterStorageProfileFileCSIDriver) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -23068,12 +20397,6 @@ func (o ManagedClusterStorageProfileFileCSIDriverPtrOutput) ToManagedClusterStor
 
 func (o ManagedClusterStorageProfileFileCSIDriverPtrOutput) ToManagedClusterStorageProfileFileCSIDriverPtrOutputWithContext(ctx context.Context) ManagedClusterStorageProfileFileCSIDriverPtrOutput {
 	return o
-}
-
-func (o ManagedClusterStorageProfileFileCSIDriverPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterStorageProfileFileCSIDriver] {
-	return pulumix.Output[*ManagedClusterStorageProfileFileCSIDriver]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterStorageProfileFileCSIDriverPtrOutput) Elem() ManagedClusterStorageProfileFileCSIDriverOutput {
@@ -23117,12 +20440,6 @@ func (o ManagedClusterStorageProfileFileCSIDriverResponseOutput) ToManagedCluste
 	return o
 }
 
-func (o ManagedClusterStorageProfileFileCSIDriverResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterStorageProfileFileCSIDriverResponse] {
-	return pulumix.Output[ManagedClusterStorageProfileFileCSIDriverResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable AzureFile CSI Driver. The default value is true.
 func (o ManagedClusterStorageProfileFileCSIDriverResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterStorageProfileFileCSIDriverResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -23140,12 +20457,6 @@ func (o ManagedClusterStorageProfileFileCSIDriverResponsePtrOutput) ToManagedClu
 
 func (o ManagedClusterStorageProfileFileCSIDriverResponsePtrOutput) ToManagedClusterStorageProfileFileCSIDriverResponsePtrOutputWithContext(ctx context.Context) ManagedClusterStorageProfileFileCSIDriverResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterStorageProfileFileCSIDriverResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterStorageProfileFileCSIDriverResponse] {
-	return pulumix.Output[*ManagedClusterStorageProfileFileCSIDriverResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterStorageProfileFileCSIDriverResponsePtrOutput) Elem() ManagedClusterStorageProfileFileCSIDriverResponseOutput {
@@ -23195,12 +20506,6 @@ func (o ManagedClusterStorageProfileResponseOutput) ToManagedClusterStorageProfi
 	return o
 }
 
-func (o ManagedClusterStorageProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterStorageProfileResponse] {
-	return pulumix.Output[ManagedClusterStorageProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // AzureBlob CSI Driver settings for the storage profile.
 func (o ManagedClusterStorageProfileResponseOutput) BlobCSIDriver() ManagedClusterStorageProfileBlobCSIDriverResponsePtrOutput {
 	return o.ApplyT(func(v ManagedClusterStorageProfileResponse) *ManagedClusterStorageProfileBlobCSIDriverResponse {
@@ -23241,12 +20546,6 @@ func (o ManagedClusterStorageProfileResponsePtrOutput) ToManagedClusterStoragePr
 
 func (o ManagedClusterStorageProfileResponsePtrOutput) ToManagedClusterStorageProfileResponsePtrOutputWithContext(ctx context.Context) ManagedClusterStorageProfileResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterStorageProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterStorageProfileResponse] {
-	return pulumix.Output[*ManagedClusterStorageProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterStorageProfileResponsePtrOutput) Elem() ManagedClusterStorageProfileResponseOutput {
@@ -23334,12 +20633,6 @@ func (i ManagedClusterStorageProfileSnapshotControllerArgs) ToManagedClusterStor
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterStorageProfileSnapshotControllerOutput)
 }
 
-func (i ManagedClusterStorageProfileSnapshotControllerArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterStorageProfileSnapshotController] {
-	return pulumix.Output[ManagedClusterStorageProfileSnapshotController]{
-		OutputState: i.ToManagedClusterStorageProfileSnapshotControllerOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterStorageProfileSnapshotControllerArgs) ToManagedClusterStorageProfileSnapshotControllerPtrOutput() ManagedClusterStorageProfileSnapshotControllerPtrOutput {
 	return i.ToManagedClusterStorageProfileSnapshotControllerPtrOutputWithContext(context.Background())
 }
@@ -23381,12 +20674,6 @@ func (i *managedClusterStorageProfileSnapshotControllerPtrType) ToManagedCluster
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterStorageProfileSnapshotControllerPtrOutput)
 }
 
-func (i *managedClusterStorageProfileSnapshotControllerPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterStorageProfileSnapshotController] {
-	return pulumix.Output[*ManagedClusterStorageProfileSnapshotController]{
-		OutputState: i.ToManagedClusterStorageProfileSnapshotControllerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Snapshot Controller settings for the storage profile.
 type ManagedClusterStorageProfileSnapshotControllerOutput struct{ *pulumi.OutputState }
 
@@ -23412,12 +20699,6 @@ func (o ManagedClusterStorageProfileSnapshotControllerOutput) ToManagedClusterSt
 	}).(ManagedClusterStorageProfileSnapshotControllerPtrOutput)
 }
 
-func (o ManagedClusterStorageProfileSnapshotControllerOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterStorageProfileSnapshotController] {
-	return pulumix.Output[ManagedClusterStorageProfileSnapshotController]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable Snapshot Controller. The default value is true.
 func (o ManagedClusterStorageProfileSnapshotControllerOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterStorageProfileSnapshotController) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -23435,12 +20716,6 @@ func (o ManagedClusterStorageProfileSnapshotControllerPtrOutput) ToManagedCluste
 
 func (o ManagedClusterStorageProfileSnapshotControllerPtrOutput) ToManagedClusterStorageProfileSnapshotControllerPtrOutputWithContext(ctx context.Context) ManagedClusterStorageProfileSnapshotControllerPtrOutput {
 	return o
-}
-
-func (o ManagedClusterStorageProfileSnapshotControllerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterStorageProfileSnapshotController] {
-	return pulumix.Output[*ManagedClusterStorageProfileSnapshotController]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterStorageProfileSnapshotControllerPtrOutput) Elem() ManagedClusterStorageProfileSnapshotControllerOutput {
@@ -23484,12 +20759,6 @@ func (o ManagedClusterStorageProfileSnapshotControllerResponseOutput) ToManagedC
 	return o
 }
 
-func (o ManagedClusterStorageProfileSnapshotControllerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterStorageProfileSnapshotControllerResponse] {
-	return pulumix.Output[ManagedClusterStorageProfileSnapshotControllerResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable Snapshot Controller. The default value is true.
 func (o ManagedClusterStorageProfileSnapshotControllerResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ManagedClusterStorageProfileSnapshotControllerResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -23507,12 +20776,6 @@ func (o ManagedClusterStorageProfileSnapshotControllerResponsePtrOutput) ToManag
 
 func (o ManagedClusterStorageProfileSnapshotControllerResponsePtrOutput) ToManagedClusterStorageProfileSnapshotControllerResponsePtrOutputWithContext(ctx context.Context) ManagedClusterStorageProfileSnapshotControllerResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterStorageProfileSnapshotControllerResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterStorageProfileSnapshotControllerResponse] {
-	return pulumix.Output[*ManagedClusterStorageProfileSnapshotControllerResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterStorageProfileSnapshotControllerResponsePtrOutput) Elem() ManagedClusterStorageProfileSnapshotControllerResponseOutput {
@@ -23586,12 +20849,6 @@ func (i ManagedClusterWindowsProfileArgs) ToManagedClusterWindowsProfileOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterWindowsProfileOutput)
 }
 
-func (i ManagedClusterWindowsProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterWindowsProfile] {
-	return pulumix.Output[ManagedClusterWindowsProfile]{
-		OutputState: i.ToManagedClusterWindowsProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterWindowsProfileArgs) ToManagedClusterWindowsProfilePtrOutput() ManagedClusterWindowsProfilePtrOutput {
 	return i.ToManagedClusterWindowsProfilePtrOutputWithContext(context.Background())
 }
@@ -23633,12 +20890,6 @@ func (i *managedClusterWindowsProfilePtrType) ToManagedClusterWindowsProfilePtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterWindowsProfilePtrOutput)
 }
 
-func (i *managedClusterWindowsProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterWindowsProfile] {
-	return pulumix.Output[*ManagedClusterWindowsProfile]{
-		OutputState: i.ToManagedClusterWindowsProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Profile for Windows VMs in the managed cluster.
 type ManagedClusterWindowsProfileOutput struct{ *pulumi.OutputState }
 
@@ -23662,12 +20913,6 @@ func (o ManagedClusterWindowsProfileOutput) ToManagedClusterWindowsProfilePtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterWindowsProfile) *ManagedClusterWindowsProfile {
 		return &v
 	}).(ManagedClusterWindowsProfilePtrOutput)
-}
-
-func (o ManagedClusterWindowsProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterWindowsProfile] {
-	return pulumix.Output[ManagedClusterWindowsProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
@@ -23707,12 +20952,6 @@ func (o ManagedClusterWindowsProfilePtrOutput) ToManagedClusterWindowsProfilePtr
 
 func (o ManagedClusterWindowsProfilePtrOutput) ToManagedClusterWindowsProfilePtrOutputWithContext(ctx context.Context) ManagedClusterWindowsProfilePtrOutput {
 	return o
-}
-
-func (o ManagedClusterWindowsProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterWindowsProfile] {
-	return pulumix.Output[*ManagedClusterWindowsProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterWindowsProfilePtrOutput) Elem() ManagedClusterWindowsProfileOutput {
@@ -23804,12 +21043,6 @@ func (o ManagedClusterWindowsProfileResponseOutput) ToManagedClusterWindowsProfi
 	return o
 }
 
-func (o ManagedClusterWindowsProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterWindowsProfileResponse] {
-	return pulumix.Output[ManagedClusterWindowsProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the password of the administrator account. <br><br> **Minimum-length:** 8 characters <br><br> **Max-length:** 123 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
 func (o ManagedClusterWindowsProfileResponseOutput) AdminPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedClusterWindowsProfileResponse) *string { return v.AdminPassword }).(pulumi.StringPtrOutput)
@@ -23847,12 +21080,6 @@ func (o ManagedClusterWindowsProfileResponsePtrOutput) ToManagedClusterWindowsPr
 
 func (o ManagedClusterWindowsProfileResponsePtrOutput) ToManagedClusterWindowsProfileResponsePtrOutputWithContext(ctx context.Context) ManagedClusterWindowsProfileResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterWindowsProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterWindowsProfileResponse] {
-	return pulumix.Output[*ManagedClusterWindowsProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterWindowsProfileResponsePtrOutput) Elem() ManagedClusterWindowsProfileResponseOutput {
@@ -23972,12 +21199,6 @@ func (i ManagedClusterWorkloadAutoScalerProfileArgs) ToManagedClusterWorkloadAut
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterWorkloadAutoScalerProfileOutput)
 }
 
-func (i ManagedClusterWorkloadAutoScalerProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterWorkloadAutoScalerProfile] {
-	return pulumix.Output[ManagedClusterWorkloadAutoScalerProfile]{
-		OutputState: i.ToManagedClusterWorkloadAutoScalerProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterWorkloadAutoScalerProfileArgs) ToManagedClusterWorkloadAutoScalerProfilePtrOutput() ManagedClusterWorkloadAutoScalerProfilePtrOutput {
 	return i.ToManagedClusterWorkloadAutoScalerProfilePtrOutputWithContext(context.Background())
 }
@@ -24019,12 +21240,6 @@ func (i *managedClusterWorkloadAutoScalerProfilePtrType) ToManagedClusterWorkloa
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterWorkloadAutoScalerProfilePtrOutput)
 }
 
-func (i *managedClusterWorkloadAutoScalerProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterWorkloadAutoScalerProfile] {
-	return pulumix.Output[*ManagedClusterWorkloadAutoScalerProfile]{
-		OutputState: i.ToManagedClusterWorkloadAutoScalerProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Workload Auto-scaler profile for the managed cluster.
 type ManagedClusterWorkloadAutoScalerProfileOutput struct{ *pulumi.OutputState }
 
@@ -24048,12 +21263,6 @@ func (o ManagedClusterWorkloadAutoScalerProfileOutput) ToManagedClusterWorkloadA
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedClusterWorkloadAutoScalerProfile) *ManagedClusterWorkloadAutoScalerProfile {
 		return &v
 	}).(ManagedClusterWorkloadAutoScalerProfilePtrOutput)
-}
-
-func (o ManagedClusterWorkloadAutoScalerProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterWorkloadAutoScalerProfile] {
-	return pulumix.Output[ManagedClusterWorkloadAutoScalerProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // KEDA (Kubernetes Event-driven Autoscaling) settings for the workload auto-scaler profile.
@@ -24081,12 +21290,6 @@ func (o ManagedClusterWorkloadAutoScalerProfilePtrOutput) ToManagedClusterWorklo
 
 func (o ManagedClusterWorkloadAutoScalerProfilePtrOutput) ToManagedClusterWorkloadAutoScalerProfilePtrOutputWithContext(ctx context.Context) ManagedClusterWorkloadAutoScalerProfilePtrOutput {
 	return o
-}
-
-func (o ManagedClusterWorkloadAutoScalerProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterWorkloadAutoScalerProfile] {
-	return pulumix.Output[*ManagedClusterWorkloadAutoScalerProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterWorkloadAutoScalerProfilePtrOutput) Elem() ManagedClusterWorkloadAutoScalerProfileOutput {
@@ -24153,12 +21356,6 @@ func (i ManagedClusterWorkloadAutoScalerProfileKedaArgs) ToManagedClusterWorkloa
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterWorkloadAutoScalerProfileKedaOutput)
 }
 
-func (i ManagedClusterWorkloadAutoScalerProfileKedaArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterWorkloadAutoScalerProfileKeda] {
-	return pulumix.Output[ManagedClusterWorkloadAutoScalerProfileKeda]{
-		OutputState: i.ToManagedClusterWorkloadAutoScalerProfileKedaOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterWorkloadAutoScalerProfileKedaArgs) ToManagedClusterWorkloadAutoScalerProfileKedaPtrOutput() ManagedClusterWorkloadAutoScalerProfileKedaPtrOutput {
 	return i.ToManagedClusterWorkloadAutoScalerProfileKedaPtrOutputWithContext(context.Background())
 }
@@ -24200,12 +21397,6 @@ func (i *managedClusterWorkloadAutoScalerProfileKedaPtrType) ToManagedClusterWor
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterWorkloadAutoScalerProfileKedaPtrOutput)
 }
 
-func (i *managedClusterWorkloadAutoScalerProfileKedaPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterWorkloadAutoScalerProfileKeda] {
-	return pulumix.Output[*ManagedClusterWorkloadAutoScalerProfileKeda]{
-		OutputState: i.ToManagedClusterWorkloadAutoScalerProfileKedaPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // KEDA (Kubernetes Event-driven Autoscaling) settings for the workload auto-scaler profile.
 type ManagedClusterWorkloadAutoScalerProfileKedaOutput struct{ *pulumi.OutputState }
 
@@ -24231,12 +21422,6 @@ func (o ManagedClusterWorkloadAutoScalerProfileKedaOutput) ToManagedClusterWorkl
 	}).(ManagedClusterWorkloadAutoScalerProfileKedaPtrOutput)
 }
 
-func (o ManagedClusterWorkloadAutoScalerProfileKedaOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterWorkloadAutoScalerProfileKeda] {
-	return pulumix.Output[ManagedClusterWorkloadAutoScalerProfileKeda]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable KEDA.
 func (o ManagedClusterWorkloadAutoScalerProfileKedaOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ManagedClusterWorkloadAutoScalerProfileKeda) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -24254,12 +21439,6 @@ func (o ManagedClusterWorkloadAutoScalerProfileKedaPtrOutput) ToManagedClusterWo
 
 func (o ManagedClusterWorkloadAutoScalerProfileKedaPtrOutput) ToManagedClusterWorkloadAutoScalerProfileKedaPtrOutputWithContext(ctx context.Context) ManagedClusterWorkloadAutoScalerProfileKedaPtrOutput {
 	return o
-}
-
-func (o ManagedClusterWorkloadAutoScalerProfileKedaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterWorkloadAutoScalerProfileKeda] {
-	return pulumix.Output[*ManagedClusterWorkloadAutoScalerProfileKeda]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterWorkloadAutoScalerProfileKedaPtrOutput) Elem() ManagedClusterWorkloadAutoScalerProfileKedaOutput {
@@ -24303,12 +21482,6 @@ func (o ManagedClusterWorkloadAutoScalerProfileKedaResponseOutput) ToManagedClus
 	return o
 }
 
-func (o ManagedClusterWorkloadAutoScalerProfileKedaResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterWorkloadAutoScalerProfileKedaResponse] {
-	return pulumix.Output[ManagedClusterWorkloadAutoScalerProfileKedaResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable KEDA.
 func (o ManagedClusterWorkloadAutoScalerProfileKedaResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ManagedClusterWorkloadAutoScalerProfileKedaResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -24326,12 +21499,6 @@ func (o ManagedClusterWorkloadAutoScalerProfileKedaResponsePtrOutput) ToManagedC
 
 func (o ManagedClusterWorkloadAutoScalerProfileKedaResponsePtrOutput) ToManagedClusterWorkloadAutoScalerProfileKedaResponsePtrOutputWithContext(ctx context.Context) ManagedClusterWorkloadAutoScalerProfileKedaResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterWorkloadAutoScalerProfileKedaResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterWorkloadAutoScalerProfileKedaResponse] {
-	return pulumix.Output[*ManagedClusterWorkloadAutoScalerProfileKedaResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterWorkloadAutoScalerProfileKedaResponsePtrOutput) Elem() ManagedClusterWorkloadAutoScalerProfileKedaResponseOutput {
@@ -24387,12 +21554,6 @@ func (o ManagedClusterWorkloadAutoScalerProfileResponseOutput) ToManagedClusterW
 	return o
 }
 
-func (o ManagedClusterWorkloadAutoScalerProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterWorkloadAutoScalerProfileResponse] {
-	return pulumix.Output[ManagedClusterWorkloadAutoScalerProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // KEDA (Kubernetes Event-driven Autoscaling) settings for the workload auto-scaler profile.
 func (o ManagedClusterWorkloadAutoScalerProfileResponseOutput) Keda() ManagedClusterWorkloadAutoScalerProfileKedaResponsePtrOutput {
 	return o.ApplyT(func(v ManagedClusterWorkloadAutoScalerProfileResponse) *ManagedClusterWorkloadAutoScalerProfileKedaResponse {
@@ -24418,12 +21579,6 @@ func (o ManagedClusterWorkloadAutoScalerProfileResponsePtrOutput) ToManagedClust
 
 func (o ManagedClusterWorkloadAutoScalerProfileResponsePtrOutput) ToManagedClusterWorkloadAutoScalerProfileResponsePtrOutputWithContext(ctx context.Context) ManagedClusterWorkloadAutoScalerProfileResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterWorkloadAutoScalerProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterWorkloadAutoScalerProfileResponse] {
-	return pulumix.Output[*ManagedClusterWorkloadAutoScalerProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterWorkloadAutoScalerProfileResponsePtrOutput) Elem() ManagedClusterWorkloadAutoScalerProfileResponseOutput {
@@ -24511,12 +21666,6 @@ func (i ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs) ToMana
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput)
 }
 
-func (i ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler] {
-	return pulumix.Output[ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler]{
-		OutputState: i.ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerArgs) ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput() ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput {
 	return i.ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutputWithContext(context.Background())
 }
@@ -24558,12 +21707,6 @@ func (i *managedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrType) To
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput)
 }
 
-func (i *managedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler] {
-	return pulumix.Output[*ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler]{
-		OutputState: i.ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput struct{ *pulumi.OutputState }
 
 func (ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput) ElementType() reflect.Type {
@@ -24588,12 +21731,6 @@ func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput) ToMa
 	}).(ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput)
 }
 
-func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler] {
-	return pulumix.Output[ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable VPA. Default value is false.
 func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -24611,12 +21748,6 @@ func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput) T
 
 func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput) ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutputWithContext(ctx context.Context) ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput {
 	return o
-}
-
-func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler] {
-	return pulumix.Output[*ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerPtrOutput) Elem() ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerOutput {
@@ -24670,12 +21801,6 @@ func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponseOutp
 	return o
 }
 
-func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse] {
-	return pulumix.Output[ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to enable VPA. Default value is false.
 func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -24693,12 +21818,6 @@ func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponsePtrO
 
 func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponsePtrOutput) ToManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponsePtrOutputWithContext(ctx context.Context) ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponsePtrOutput {
 	return o
-}
-
-func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse] {
-	return pulumix.Output[*ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponsePtrOutput) Elem() ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponseOutput {
@@ -24756,12 +21875,6 @@ func (i NetworkMonitoringArgs) ToNetworkMonitoringOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkMonitoringOutput)
 }
 
-func (i NetworkMonitoringArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkMonitoring] {
-	return pulumix.Output[NetworkMonitoring]{
-		OutputState: i.ToNetworkMonitoringOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i NetworkMonitoringArgs) ToNetworkMonitoringPtrOutput() NetworkMonitoringPtrOutput {
 	return i.ToNetworkMonitoringPtrOutputWithContext(context.Background())
 }
@@ -24803,12 +21916,6 @@ func (i *networkMonitoringPtrType) ToNetworkMonitoringPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkMonitoringPtrOutput)
 }
 
-func (i *networkMonitoringPtrType) ToOutput(ctx context.Context) pulumix.Output[*NetworkMonitoring] {
-	return pulumix.Output[*NetworkMonitoring]{
-		OutputState: i.ToNetworkMonitoringPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // This addon can be used to configure network monitoring and generate network monitoring data in Prometheus format
 type NetworkMonitoringOutput struct{ *pulumi.OutputState }
 
@@ -24834,12 +21941,6 @@ func (o NetworkMonitoringOutput) ToNetworkMonitoringPtrOutputWithContext(ctx con
 	}).(NetworkMonitoringPtrOutput)
 }
 
-func (o NetworkMonitoringOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkMonitoring] {
-	return pulumix.Output[NetworkMonitoring]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Enable or disable the network monitoring plugin on the cluster
 func (o NetworkMonitoringOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworkMonitoring) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -24857,12 +21958,6 @@ func (o NetworkMonitoringPtrOutput) ToNetworkMonitoringPtrOutput() NetworkMonito
 
 func (o NetworkMonitoringPtrOutput) ToNetworkMonitoringPtrOutputWithContext(ctx context.Context) NetworkMonitoringPtrOutput {
 	return o
-}
-
-func (o NetworkMonitoringPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkMonitoring] {
-	return pulumix.Output[*NetworkMonitoring]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkMonitoringPtrOutput) Elem() NetworkMonitoringOutput {
@@ -24906,12 +22001,6 @@ func (o NetworkMonitoringResponseOutput) ToNetworkMonitoringResponseOutputWithCo
 	return o
 }
 
-func (o NetworkMonitoringResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkMonitoringResponse] {
-	return pulumix.Output[NetworkMonitoringResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Enable or disable the network monitoring plugin on the cluster
 func (o NetworkMonitoringResponseOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworkMonitoringResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -24929,12 +22018,6 @@ func (o NetworkMonitoringResponsePtrOutput) ToNetworkMonitoringResponsePtrOutput
 
 func (o NetworkMonitoringResponsePtrOutput) ToNetworkMonitoringResponsePtrOutputWithContext(ctx context.Context) NetworkMonitoringResponsePtrOutput {
 	return o
-}
-
-func (o NetworkMonitoringResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkMonitoringResponse] {
-	return pulumix.Output[*NetworkMonitoringResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkMonitoringResponsePtrOutput) Elem() NetworkMonitoringResponseOutput {
@@ -24984,12 +22067,6 @@ func (o NetworkProfileForSnapshotResponseOutput) ToNetworkProfileForSnapshotResp
 
 func (o NetworkProfileForSnapshotResponseOutput) ToNetworkProfileForSnapshotResponseOutputWithContext(ctx context.Context) NetworkProfileForSnapshotResponseOutput {
 	return o
-}
-
-func (o NetworkProfileForSnapshotResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkProfileForSnapshotResponse] {
-	return pulumix.Output[NetworkProfileForSnapshotResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // loadBalancerSku for managed cluster snapshot.
@@ -25060,12 +22137,6 @@ func (i PortRangeArgs) ToPortRangeOutputWithContext(ctx context.Context) PortRan
 	return pulumi.ToOutputWithContext(ctx, i).(PortRangeOutput)
 }
 
-func (i PortRangeArgs) ToOutput(ctx context.Context) pulumix.Output[PortRange] {
-	return pulumix.Output[PortRange]{
-		OutputState: i.ToPortRangeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PortRangeArrayInput is an input type that accepts PortRangeArray and PortRangeArrayOutput values.
 // You can construct a concrete instance of `PortRangeArrayInput` via:
 //
@@ -25091,12 +22162,6 @@ func (i PortRangeArray) ToPortRangeArrayOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(PortRangeArrayOutput)
 }
 
-func (i PortRangeArray) ToOutput(ctx context.Context) pulumix.Output[[]PortRange] {
-	return pulumix.Output[[]PortRange]{
-		OutputState: i.ToPortRangeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The port range.
 type PortRangeOutput struct{ *pulumi.OutputState }
 
@@ -25110,12 +22175,6 @@ func (o PortRangeOutput) ToPortRangeOutput() PortRangeOutput {
 
 func (o PortRangeOutput) ToPortRangeOutputWithContext(ctx context.Context) PortRangeOutput {
 	return o
-}
-
-func (o PortRangeOutput) ToOutput(ctx context.Context) pulumix.Output[PortRange] {
-	return pulumix.Output[PortRange]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The maximum port that is included in the range. It should be ranged from 1 to 65535, and be greater than or equal to portStart.
@@ -25145,12 +22204,6 @@ func (o PortRangeArrayOutput) ToPortRangeArrayOutput() PortRangeArrayOutput {
 
 func (o PortRangeArrayOutput) ToPortRangeArrayOutputWithContext(ctx context.Context) PortRangeArrayOutput {
 	return o
-}
-
-func (o PortRangeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PortRange] {
-	return pulumix.Output[[]PortRange]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PortRangeArrayOutput) Index(i pulumi.IntInput) PortRangeOutput {
@@ -25184,12 +22237,6 @@ func (o PortRangeResponseOutput) ToPortRangeResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o PortRangeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PortRangeResponse] {
-	return pulumix.Output[PortRangeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The maximum port that is included in the range. It should be ranged from 1 to 65535, and be greater than or equal to portStart.
 func (o PortRangeResponseOutput) PortEnd() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PortRangeResponse) *int { return v.PortEnd }).(pulumi.IntPtrOutput)
@@ -25217,12 +22264,6 @@ func (o PortRangeResponseArrayOutput) ToPortRangeResponseArrayOutput() PortRange
 
 func (o PortRangeResponseArrayOutput) ToPortRangeResponseArrayOutputWithContext(ctx context.Context) PortRangeResponseArrayOutput {
 	return o
-}
-
-func (o PortRangeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PortRangeResponse] {
-	return pulumix.Output[[]PortRangeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PortRangeResponseArrayOutput) Index(i pulumi.IntInput) PortRangeResponseOutput {
@@ -25266,12 +22307,6 @@ func (i PowerStateArgs) ToPowerStateOutputWithContext(ctx context.Context) Power
 	return pulumi.ToOutputWithContext(ctx, i).(PowerStateOutput)
 }
 
-func (i PowerStateArgs) ToOutput(ctx context.Context) pulumix.Output[PowerState] {
-	return pulumix.Output[PowerState]{
-		OutputState: i.ToPowerStateOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PowerStateArgs) ToPowerStatePtrOutput() PowerStatePtrOutput {
 	return i.ToPowerStatePtrOutputWithContext(context.Background())
 }
@@ -25313,12 +22348,6 @@ func (i *powerStatePtrType) ToPowerStatePtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PowerStatePtrOutput)
 }
 
-func (i *powerStatePtrType) ToOutput(ctx context.Context) pulumix.Output[*PowerState] {
-	return pulumix.Output[*PowerState]{
-		OutputState: i.ToPowerStatePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Describes the Power State of the cluster
 type PowerStateOutput struct{ *pulumi.OutputState }
 
@@ -25344,12 +22373,6 @@ func (o PowerStateOutput) ToPowerStatePtrOutputWithContext(ctx context.Context) 
 	}).(PowerStatePtrOutput)
 }
 
-func (o PowerStateOutput) ToOutput(ctx context.Context) pulumix.Output[PowerState] {
-	return pulumix.Output[PowerState]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Tells whether the cluster is Running or Stopped
 func (o PowerStateOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PowerState) *string { return v.Code }).(pulumi.StringPtrOutput)
@@ -25367,12 +22390,6 @@ func (o PowerStatePtrOutput) ToPowerStatePtrOutput() PowerStatePtrOutput {
 
 func (o PowerStatePtrOutput) ToPowerStatePtrOutputWithContext(ctx context.Context) PowerStatePtrOutput {
 	return o
-}
-
-func (o PowerStatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PowerState] {
-	return pulumix.Output[*PowerState]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PowerStatePtrOutput) Elem() PowerStateOutput {
@@ -25416,12 +22433,6 @@ func (o PowerStateResponseOutput) ToPowerStateResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o PowerStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PowerStateResponse] {
-	return pulumix.Output[PowerStateResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Tells whether the cluster is Running or Stopped
 func (o PowerStateResponseOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PowerStateResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
@@ -25439,12 +22450,6 @@ func (o PowerStateResponsePtrOutput) ToPowerStateResponsePtrOutput() PowerStateR
 
 func (o PowerStateResponsePtrOutput) ToPowerStateResponsePtrOutputWithContext(ctx context.Context) PowerStateResponsePtrOutput {
 	return o
-}
-
-func (o PowerStateResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PowerStateResponse] {
-	return pulumix.Output[*PowerStateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PowerStateResponsePtrOutput) Elem() PowerStateResponseOutput {
@@ -25502,12 +22507,6 @@ func (i PrivateEndpointArgs) ToPrivateEndpointOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointOutput)
 }
 
-func (i PrivateEndpointArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpoint] {
-	return pulumix.Output[PrivateEndpoint]{
-		OutputState: i.ToPrivateEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PrivateEndpointArgs) ToPrivateEndpointPtrOutput() PrivateEndpointPtrOutput {
 	return i.ToPrivateEndpointPtrOutputWithContext(context.Background())
 }
@@ -25549,12 +22548,6 @@ func (i *privateEndpointPtrType) ToPrivateEndpointPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointPtrOutput)
 }
 
-func (i *privateEndpointPtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpoint] {
-	return pulumix.Output[*PrivateEndpoint]{
-		OutputState: i.ToPrivateEndpointPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Private endpoint which a connection belongs to.
 type PrivateEndpointOutput struct{ *pulumi.OutputState }
 
@@ -25580,12 +22573,6 @@ func (o PrivateEndpointOutput) ToPrivateEndpointPtrOutputWithContext(ctx context
 	}).(PrivateEndpointPtrOutput)
 }
 
-func (o PrivateEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpoint] {
-	return pulumix.Output[PrivateEndpoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resource ID of the private endpoint
 func (o PrivateEndpointOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateEndpoint) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -25603,12 +22590,6 @@ func (o PrivateEndpointPtrOutput) ToPrivateEndpointPtrOutput() PrivateEndpointPt
 
 func (o PrivateEndpointPtrOutput) ToPrivateEndpointPtrOutputWithContext(ctx context.Context) PrivateEndpointPtrOutput {
 	return o
-}
-
-func (o PrivateEndpointPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpoint] {
-	return pulumix.Output[*PrivateEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateEndpointPtrOutput) Elem() PrivateEndpointOutput {
@@ -25652,12 +22633,6 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
-func (o PrivateEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointResponse] {
-	return pulumix.Output[PrivateEndpointResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The resource ID of the private endpoint
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -25675,12 +22650,6 @@ func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() P
 
 func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
 	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointResponse] {
-	return pulumix.Output[*PrivateEndpointResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
@@ -25754,12 +22723,6 @@ func (i PrivateLinkResourceArgs) ToPrivateLinkResourceOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkResourceOutput)
 }
 
-func (i PrivateLinkResourceArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkResource] {
-	return pulumix.Output[PrivateLinkResource]{
-		OutputState: i.ToPrivateLinkResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PrivateLinkResourceArrayInput is an input type that accepts PrivateLinkResourceArray and PrivateLinkResourceArrayOutput values.
 // You can construct a concrete instance of `PrivateLinkResourceArrayInput` via:
 //
@@ -25785,12 +22748,6 @@ func (i PrivateLinkResourceArray) ToPrivateLinkResourceArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkResourceArrayOutput)
 }
 
-func (i PrivateLinkResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]PrivateLinkResource] {
-	return pulumix.Output[[]PrivateLinkResource]{
-		OutputState: i.ToPrivateLinkResourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A private link resource
 type PrivateLinkResourceOutput struct{ *pulumi.OutputState }
 
@@ -25804,12 +22761,6 @@ func (o PrivateLinkResourceOutput) ToPrivateLinkResourceOutput() PrivateLinkReso
 
 func (o PrivateLinkResourceOutput) ToPrivateLinkResourceOutputWithContext(ctx context.Context) PrivateLinkResourceOutput {
 	return o
-}
-
-func (o PrivateLinkResourceOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkResource] {
-	return pulumix.Output[PrivateLinkResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The group ID of the resource.
@@ -25851,12 +22802,6 @@ func (o PrivateLinkResourceArrayOutput) ToPrivateLinkResourceArrayOutputWithCont
 	return o
 }
 
-func (o PrivateLinkResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateLinkResource] {
-	return pulumix.Output[[]PrivateLinkResource]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrivateLinkResourceArrayOutput) Index(i pulumi.IntInput) PrivateLinkResourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateLinkResource {
 		return vs[0].([]PrivateLinkResource)[vs[1].(int)]
@@ -25892,12 +22837,6 @@ func (o PrivateLinkResourceResponseOutput) ToPrivateLinkResourceResponseOutput()
 
 func (o PrivateLinkResourceResponseOutput) ToPrivateLinkResourceResponseOutputWithContext(ctx context.Context) PrivateLinkResourceResponseOutput {
 	return o
-}
-
-func (o PrivateLinkResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkResourceResponse] {
-	return pulumix.Output[PrivateLinkResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The group ID of the resource.
@@ -25942,12 +22881,6 @@ func (o PrivateLinkResourceResponseArrayOutput) ToPrivateLinkResourceResponseArr
 
 func (o PrivateLinkResourceResponseArrayOutput) ToPrivateLinkResourceResponseArrayOutputWithContext(ctx context.Context) PrivateLinkResourceResponseArrayOutput {
 	return o
-}
-
-func (o PrivateLinkResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateLinkResourceResponse] {
-	return pulumix.Output[[]PrivateLinkResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateLinkResourceResponseArrayOutput) Index(i pulumi.IntInput) PrivateLinkResourceResponseOutput {
@@ -25995,12 +22928,6 @@ func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionSta
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
 }
 
-func (i PrivateLinkServiceConnectionStateArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
-	return pulumix.Output[PrivateLinkServiceConnectionState]{
-		OutputState: i.ToPrivateLinkServiceConnectionStateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The state of a private link service connection.
 type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
@@ -26014,12 +22941,6 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 
 func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
-	return pulumix.Output[PrivateLinkServiceConnectionState]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The private link service connection description.
@@ -26053,12 +22974,6 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 
 func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateResponse] {
-	return pulumix.Output[PrivateLinkServiceConnectionStateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The private link service connection description.
@@ -26114,12 +23029,6 @@ func (i RelativeMonthlyScheduleArgs) ToRelativeMonthlyScheduleOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(RelativeMonthlyScheduleOutput)
 }
 
-func (i RelativeMonthlyScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[RelativeMonthlySchedule] {
-	return pulumix.Output[RelativeMonthlySchedule]{
-		OutputState: i.ToRelativeMonthlyScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RelativeMonthlyScheduleArgs) ToRelativeMonthlySchedulePtrOutput() RelativeMonthlySchedulePtrOutput {
 	return i.ToRelativeMonthlySchedulePtrOutputWithContext(context.Background())
 }
@@ -26161,12 +23070,6 @@ func (i *relativeMonthlySchedulePtrType) ToRelativeMonthlySchedulePtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(RelativeMonthlySchedulePtrOutput)
 }
 
-func (i *relativeMonthlySchedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*RelativeMonthlySchedule] {
-	return pulumix.Output[*RelativeMonthlySchedule]{
-		OutputState: i.ToRelativeMonthlySchedulePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'.
 type RelativeMonthlyScheduleOutput struct{ *pulumi.OutputState }
 
@@ -26190,12 +23093,6 @@ func (o RelativeMonthlyScheduleOutput) ToRelativeMonthlySchedulePtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v RelativeMonthlySchedule) *RelativeMonthlySchedule {
 		return &v
 	}).(RelativeMonthlySchedulePtrOutput)
-}
-
-func (o RelativeMonthlyScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[RelativeMonthlySchedule] {
-	return pulumix.Output[RelativeMonthlySchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies on which day of the week the maintenance occurs.
@@ -26225,12 +23122,6 @@ func (o RelativeMonthlySchedulePtrOutput) ToRelativeMonthlySchedulePtrOutput() R
 
 func (o RelativeMonthlySchedulePtrOutput) ToRelativeMonthlySchedulePtrOutputWithContext(ctx context.Context) RelativeMonthlySchedulePtrOutput {
 	return o
-}
-
-func (o RelativeMonthlySchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RelativeMonthlySchedule] {
-	return pulumix.Output[*RelativeMonthlySchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RelativeMonthlySchedulePtrOutput) Elem() RelativeMonthlyScheduleOutput {
@@ -26298,12 +23189,6 @@ func (o RelativeMonthlyScheduleResponseOutput) ToRelativeMonthlyScheduleResponse
 	return o
 }
 
-func (o RelativeMonthlyScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RelativeMonthlyScheduleResponse] {
-	return pulumix.Output[RelativeMonthlyScheduleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies on which day of the week the maintenance occurs.
 func (o RelativeMonthlyScheduleResponseOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v RelativeMonthlyScheduleResponse) string { return v.DayOfWeek }).(pulumi.StringOutput)
@@ -26331,12 +23216,6 @@ func (o RelativeMonthlyScheduleResponsePtrOutput) ToRelativeMonthlyScheduleRespo
 
 func (o RelativeMonthlyScheduleResponsePtrOutput) ToRelativeMonthlyScheduleResponsePtrOutputWithContext(ctx context.Context) RelativeMonthlyScheduleResponsePtrOutput {
 	return o
-}
-
-func (o RelativeMonthlyScheduleResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RelativeMonthlyScheduleResponse] {
-	return pulumix.Output[*RelativeMonthlyScheduleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RelativeMonthlyScheduleResponsePtrOutput) Elem() RelativeMonthlyScheduleResponseOutput {
@@ -26414,12 +23293,6 @@ func (i ResourceReferenceArgs) ToResourceReferenceOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceReferenceOutput)
 }
 
-func (i ResourceReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceReference] {
-	return pulumix.Output[ResourceReference]{
-		OutputState: i.ToResourceReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ResourceReferenceArrayInput is an input type that accepts ResourceReferenceArray and ResourceReferenceArrayOutput values.
 // You can construct a concrete instance of `ResourceReferenceArrayInput` via:
 //
@@ -26445,12 +23318,6 @@ func (i ResourceReferenceArray) ToResourceReferenceArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceReferenceArrayOutput)
 }
 
-func (i ResourceReferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]ResourceReference] {
-	return pulumix.Output[[]ResourceReference]{
-		OutputState: i.ToResourceReferenceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A reference to an Azure resource.
 type ResourceReferenceOutput struct{ *pulumi.OutputState }
 
@@ -26464,12 +23331,6 @@ func (o ResourceReferenceOutput) ToResourceReferenceOutput() ResourceReferenceOu
 
 func (o ResourceReferenceOutput) ToResourceReferenceOutputWithContext(ctx context.Context) ResourceReferenceOutput {
 	return o
-}
-
-func (o ResourceReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceReference] {
-	return pulumix.Output[ResourceReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The fully qualified Azure resource id.
@@ -26489,12 +23350,6 @@ func (o ResourceReferenceArrayOutput) ToResourceReferenceArrayOutput() ResourceR
 
 func (o ResourceReferenceArrayOutput) ToResourceReferenceArrayOutputWithContext(ctx context.Context) ResourceReferenceArrayOutput {
 	return o
-}
-
-func (o ResourceReferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceReference] {
-	return pulumix.Output[[]ResourceReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceReferenceArrayOutput) Index(i pulumi.IntInput) ResourceReferenceOutput {
@@ -26524,12 +23379,6 @@ func (o ResourceReferenceResponseOutput) ToResourceReferenceResponseOutputWithCo
 	return o
 }
 
-func (o ResourceReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceReferenceResponse] {
-	return pulumix.Output[ResourceReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The fully qualified Azure resource id.
 func (o ResourceReferenceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceReferenceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -26547,12 +23396,6 @@ func (o ResourceReferenceResponseArrayOutput) ToResourceReferenceResponseArrayOu
 
 func (o ResourceReferenceResponseArrayOutput) ToResourceReferenceResponseArrayOutputWithContext(ctx context.Context) ResourceReferenceResponseArrayOutput {
 	return o
-}
-
-func (o ResourceReferenceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceReferenceResponse] {
-	return pulumix.Output[[]ResourceReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceReferenceResponseArrayOutput) Index(i pulumi.IntInput) ResourceReferenceResponseOutput {
@@ -26608,12 +23451,6 @@ func (i ScheduleArgs) ToScheduleOutputWithContext(ctx context.Context) ScheduleO
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleOutput)
 }
 
-func (i ScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[Schedule] {
-	return pulumix.Output[Schedule]{
-		OutputState: i.ToScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ScheduleArgs) ToSchedulePtrOutput() SchedulePtrOutput {
 	return i.ToSchedulePtrOutputWithContext(context.Background())
 }
@@ -26655,12 +23492,6 @@ func (i *schedulePtrType) ToSchedulePtrOutputWithContext(ctx context.Context) Sc
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulePtrOutput)
 }
 
-func (i *schedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*Schedule] {
-	return pulumix.Output[*Schedule]{
-		OutputState: i.ToSchedulePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // One and only one of the schedule types should be specified. Choose either 'daily', 'weekly', 'absoluteMonthly' or 'relativeMonthly' for your maintenance schedule.
 type ScheduleOutput struct{ *pulumi.OutputState }
 
@@ -26684,12 +23515,6 @@ func (o ScheduleOutput) ToSchedulePtrOutputWithContext(ctx context.Context) Sche
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Schedule) *Schedule {
 		return &v
 	}).(SchedulePtrOutput)
-}
-
-func (o ScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[Schedule] {
-	return pulumix.Output[Schedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
@@ -26724,12 +23549,6 @@ func (o SchedulePtrOutput) ToSchedulePtrOutput() SchedulePtrOutput {
 
 func (o SchedulePtrOutput) ToSchedulePtrOutputWithContext(ctx context.Context) SchedulePtrOutput {
 	return o
-}
-
-func (o SchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Schedule] {
-	return pulumix.Output[*Schedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SchedulePtrOutput) Elem() ScheduleOutput {
@@ -26809,12 +23628,6 @@ func (o ScheduleResponseOutput) ToScheduleResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o ScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ScheduleResponse] {
-	return pulumix.Output[ScheduleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
 func (o ScheduleResponseOutput) AbsoluteMonthly() AbsoluteMonthlyScheduleResponsePtrOutput {
 	return o.ApplyT(func(v ScheduleResponse) *AbsoluteMonthlyScheduleResponse { return v.AbsoluteMonthly }).(AbsoluteMonthlyScheduleResponsePtrOutput)
@@ -26847,12 +23660,6 @@ func (o ScheduleResponsePtrOutput) ToScheduleResponsePtrOutput() ScheduleRespons
 
 func (o ScheduleResponsePtrOutput) ToScheduleResponsePtrOutputWithContext(ctx context.Context) ScheduleResponsePtrOutput {
 	return o
-}
-
-func (o ScheduleResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScheduleResponse] {
-	return pulumix.Output[*ScheduleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScheduleResponsePtrOutput) Elem() ScheduleResponseOutput {
@@ -26944,12 +23751,6 @@ func (i ServiceMeshProfileArgs) ToServiceMeshProfileOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshProfileOutput)
 }
 
-func (i ServiceMeshProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshProfile] {
-	return pulumix.Output[ServiceMeshProfile]{
-		OutputState: i.ToServiceMeshProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ServiceMeshProfileArgs) ToServiceMeshProfilePtrOutput() ServiceMeshProfilePtrOutput {
 	return i.ToServiceMeshProfilePtrOutputWithContext(context.Background())
 }
@@ -26991,12 +23792,6 @@ func (i *serviceMeshProfilePtrType) ToServiceMeshProfilePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshProfilePtrOutput)
 }
 
-func (i *serviceMeshProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshProfile] {
-	return pulumix.Output[*ServiceMeshProfile]{
-		OutputState: i.ToServiceMeshProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Service mesh profile for a managed cluster.
 type ServiceMeshProfileOutput struct{ *pulumi.OutputState }
 
@@ -27022,12 +23817,6 @@ func (o ServiceMeshProfileOutput) ToServiceMeshProfilePtrOutputWithContext(ctx c
 	}).(ServiceMeshProfilePtrOutput)
 }
 
-func (o ServiceMeshProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshProfile] {
-	return pulumix.Output[ServiceMeshProfile]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Istio service mesh configuration.
 func (o ServiceMeshProfileOutput) Istio() IstioServiceMeshPtrOutput {
 	return o.ApplyT(func(v ServiceMeshProfile) *IstioServiceMesh { return v.Istio }).(IstioServiceMeshPtrOutput)
@@ -27050,12 +23839,6 @@ func (o ServiceMeshProfilePtrOutput) ToServiceMeshProfilePtrOutput() ServiceMesh
 
 func (o ServiceMeshProfilePtrOutput) ToServiceMeshProfilePtrOutputWithContext(ctx context.Context) ServiceMeshProfilePtrOutput {
 	return o
-}
-
-func (o ServiceMeshProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshProfile] {
-	return pulumix.Output[*ServiceMeshProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceMeshProfilePtrOutput) Elem() ServiceMeshProfileOutput {
@@ -27111,12 +23894,6 @@ func (o ServiceMeshProfileResponseOutput) ToServiceMeshProfileResponseOutputWith
 	return o
 }
 
-func (o ServiceMeshProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshProfileResponse] {
-	return pulumix.Output[ServiceMeshProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Istio service mesh configuration.
 func (o ServiceMeshProfileResponseOutput) Istio() IstioServiceMeshResponsePtrOutput {
 	return o.ApplyT(func(v ServiceMeshProfileResponse) *IstioServiceMeshResponse { return v.Istio }).(IstioServiceMeshResponsePtrOutput)
@@ -27139,12 +23916,6 @@ func (o ServiceMeshProfileResponsePtrOutput) ToServiceMeshProfileResponsePtrOutp
 
 func (o ServiceMeshProfileResponsePtrOutput) ToServiceMeshProfileResponsePtrOutputWithContext(ctx context.Context) ServiceMeshProfileResponsePtrOutput {
 	return o
-}
-
-func (o ServiceMeshProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshProfileResponse] {
-	return pulumix.Output[*ServiceMeshProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ServiceMeshProfileResponsePtrOutput) Elem() ServiceMeshProfileResponseOutput {
@@ -27320,12 +24091,6 @@ func (i SysctlConfigArgs) ToSysctlConfigOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(SysctlConfigOutput)
 }
 
-func (i SysctlConfigArgs) ToOutput(ctx context.Context) pulumix.Output[SysctlConfig] {
-	return pulumix.Output[SysctlConfig]{
-		OutputState: i.ToSysctlConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SysctlConfigArgs) ToSysctlConfigPtrOutput() SysctlConfigPtrOutput {
 	return i.ToSysctlConfigPtrOutputWithContext(context.Background())
 }
@@ -27367,12 +24132,6 @@ func (i *sysctlConfigPtrType) ToSysctlConfigPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(SysctlConfigPtrOutput)
 }
 
-func (i *sysctlConfigPtrType) ToOutput(ctx context.Context) pulumix.Output[*SysctlConfig] {
-	return pulumix.Output[*SysctlConfig]{
-		OutputState: i.ToSysctlConfigPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sysctl settings for Linux agent nodes.
 type SysctlConfigOutput struct{ *pulumi.OutputState }
 
@@ -27396,12 +24155,6 @@ func (o SysctlConfigOutput) ToSysctlConfigPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SysctlConfig) *SysctlConfig {
 		return &v
 	}).(SysctlConfigPtrOutput)
-}
-
-func (o SysctlConfigOutput) ToOutput(ctx context.Context) pulumix.Output[SysctlConfig] {
-	return pulumix.Output[SysctlConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Sysctl setting fs.aio-max-nr.
@@ -27556,12 +24309,6 @@ func (o SysctlConfigPtrOutput) ToSysctlConfigPtrOutput() SysctlConfigPtrOutput {
 
 func (o SysctlConfigPtrOutput) ToSysctlConfigPtrOutputWithContext(ctx context.Context) SysctlConfigPtrOutput {
 	return o
-}
-
-func (o SysctlConfigPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SysctlConfig] {
-	return pulumix.Output[*SysctlConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SysctlConfigPtrOutput) Elem() SysctlConfigOutput {
@@ -27929,12 +24676,6 @@ func (o SysctlConfigResponseOutput) ToSysctlConfigResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o SysctlConfigResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SysctlConfigResponse] {
-	return pulumix.Output[SysctlConfigResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Sysctl setting fs.aio-max-nr.
 func (o SysctlConfigResponseOutput) FsAioMaxNr() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SysctlConfigResponse) *int { return v.FsAioMaxNr }).(pulumi.IntPtrOutput)
@@ -28087,12 +24828,6 @@ func (o SysctlConfigResponsePtrOutput) ToSysctlConfigResponsePtrOutput() SysctlC
 
 func (o SysctlConfigResponsePtrOutput) ToSysctlConfigResponsePtrOutputWithContext(ctx context.Context) SysctlConfigResponsePtrOutput {
 	return o
-}
-
-func (o SysctlConfigResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SysctlConfigResponse] {
-	return pulumix.Output[*SysctlConfigResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SysctlConfigResponsePtrOutput) Elem() SysctlConfigResponseOutput {
@@ -28416,12 +25151,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timestamp of resource creation (UTC).
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
@@ -28491,12 +25220,6 @@ func (i TimeInWeekArgs) ToTimeInWeekOutputWithContext(ctx context.Context) TimeI
 	return pulumi.ToOutputWithContext(ctx, i).(TimeInWeekOutput)
 }
 
-func (i TimeInWeekArgs) ToOutput(ctx context.Context) pulumix.Output[TimeInWeek] {
-	return pulumix.Output[TimeInWeek]{
-		OutputState: i.ToTimeInWeekOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TimeInWeekArrayInput is an input type that accepts TimeInWeekArray and TimeInWeekArrayOutput values.
 // You can construct a concrete instance of `TimeInWeekArrayInput` via:
 //
@@ -28522,12 +25245,6 @@ func (i TimeInWeekArray) ToTimeInWeekArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(TimeInWeekArrayOutput)
 }
 
-func (i TimeInWeekArray) ToOutput(ctx context.Context) pulumix.Output[[]TimeInWeek] {
-	return pulumix.Output[[]TimeInWeek]{
-		OutputState: i.ToTimeInWeekArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Time in a week.
 type TimeInWeekOutput struct{ *pulumi.OutputState }
 
@@ -28541,12 +25258,6 @@ func (o TimeInWeekOutput) ToTimeInWeekOutput() TimeInWeekOutput {
 
 func (o TimeInWeekOutput) ToTimeInWeekOutputWithContext(ctx context.Context) TimeInWeekOutput {
 	return o
-}
-
-func (o TimeInWeekOutput) ToOutput(ctx context.Context) pulumix.Output[TimeInWeek] {
-	return pulumix.Output[TimeInWeek]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The day of the week.
@@ -28571,12 +25282,6 @@ func (o TimeInWeekArrayOutput) ToTimeInWeekArrayOutput() TimeInWeekArrayOutput {
 
 func (o TimeInWeekArrayOutput) ToTimeInWeekArrayOutputWithContext(ctx context.Context) TimeInWeekArrayOutput {
 	return o
-}
-
-func (o TimeInWeekArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TimeInWeek] {
-	return pulumix.Output[[]TimeInWeek]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeInWeekArrayOutput) Index(i pulumi.IntInput) TimeInWeekOutput {
@@ -28608,12 +25313,6 @@ func (o TimeInWeekResponseOutput) ToTimeInWeekResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o TimeInWeekResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimeInWeekResponse] {
-	return pulumix.Output[TimeInWeekResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The day of the week.
 func (o TimeInWeekResponseOutput) Day() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeInWeekResponse) *string { return v.Day }).(pulumi.StringPtrOutput)
@@ -28636,12 +25335,6 @@ func (o TimeInWeekResponseArrayOutput) ToTimeInWeekResponseArrayOutput() TimeInW
 
 func (o TimeInWeekResponseArrayOutput) ToTimeInWeekResponseArrayOutputWithContext(ctx context.Context) TimeInWeekResponseArrayOutput {
 	return o
-}
-
-func (o TimeInWeekResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TimeInWeekResponse] {
-	return pulumix.Output[[]TimeInWeekResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeInWeekResponseArrayOutput) Index(i pulumi.IntInput) TimeInWeekResponseOutput {
@@ -28689,12 +25382,6 @@ func (i TimeSpanArgs) ToTimeSpanOutputWithContext(ctx context.Context) TimeSpanO
 	return pulumi.ToOutputWithContext(ctx, i).(TimeSpanOutput)
 }
 
-func (i TimeSpanArgs) ToOutput(ctx context.Context) pulumix.Output[TimeSpan] {
-	return pulumix.Output[TimeSpan]{
-		OutputState: i.ToTimeSpanOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TimeSpanArrayInput is an input type that accepts TimeSpanArray and TimeSpanArrayOutput values.
 // You can construct a concrete instance of `TimeSpanArrayInput` via:
 //
@@ -28720,12 +25407,6 @@ func (i TimeSpanArray) ToTimeSpanArrayOutputWithContext(ctx context.Context) Tim
 	return pulumi.ToOutputWithContext(ctx, i).(TimeSpanArrayOutput)
 }
 
-func (i TimeSpanArray) ToOutput(ctx context.Context) pulumix.Output[[]TimeSpan] {
-	return pulumix.Output[[]TimeSpan]{
-		OutputState: i.ToTimeSpanArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // For example, between 2021-05-25T13:00:00Z and 2021-05-25T14:00:00Z.
 type TimeSpanOutput struct{ *pulumi.OutputState }
 
@@ -28739,12 +25420,6 @@ func (o TimeSpanOutput) ToTimeSpanOutput() TimeSpanOutput {
 
 func (o TimeSpanOutput) ToTimeSpanOutputWithContext(ctx context.Context) TimeSpanOutput {
 	return o
-}
-
-func (o TimeSpanOutput) ToOutput(ctx context.Context) pulumix.Output[TimeSpan] {
-	return pulumix.Output[TimeSpan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The end of a time span
@@ -28769,12 +25444,6 @@ func (o TimeSpanArrayOutput) ToTimeSpanArrayOutput() TimeSpanArrayOutput {
 
 func (o TimeSpanArrayOutput) ToTimeSpanArrayOutputWithContext(ctx context.Context) TimeSpanArrayOutput {
 	return o
-}
-
-func (o TimeSpanArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TimeSpan] {
-	return pulumix.Output[[]TimeSpan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeSpanArrayOutput) Index(i pulumi.IntInput) TimeSpanOutput {
@@ -28806,12 +25475,6 @@ func (o TimeSpanResponseOutput) ToTimeSpanResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o TimeSpanResponseOutput) ToOutput(ctx context.Context) pulumix.Output[TimeSpanResponse] {
-	return pulumix.Output[TimeSpanResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The end of a time span
 func (o TimeSpanResponseOutput) End() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeSpanResponse) *string { return v.End }).(pulumi.StringPtrOutput)
@@ -28834,12 +25497,6 @@ func (o TimeSpanResponseArrayOutput) ToTimeSpanResponseArrayOutput() TimeSpanRes
 
 func (o TimeSpanResponseArrayOutput) ToTimeSpanResponseArrayOutputWithContext(ctx context.Context) TimeSpanResponseArrayOutput {
 	return o
-}
-
-func (o TimeSpanResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TimeSpanResponse] {
-	return pulumix.Output[[]TimeSpanResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeSpanResponseArrayOutput) Index(i pulumi.IntInput) TimeSpanResponseOutput {
@@ -28887,12 +25544,6 @@ func (i UpgradeOverrideSettingsArgs) ToUpgradeOverrideSettingsOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(UpgradeOverrideSettingsOutput)
 }
 
-func (i UpgradeOverrideSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[UpgradeOverrideSettings] {
-	return pulumix.Output[UpgradeOverrideSettings]{
-		OutputState: i.ToUpgradeOverrideSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i UpgradeOverrideSettingsArgs) ToUpgradeOverrideSettingsPtrOutput() UpgradeOverrideSettingsPtrOutput {
 	return i.ToUpgradeOverrideSettingsPtrOutputWithContext(context.Background())
 }
@@ -28934,12 +25585,6 @@ func (i *upgradeOverrideSettingsPtrType) ToUpgradeOverrideSettingsPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(UpgradeOverrideSettingsPtrOutput)
 }
 
-func (i *upgradeOverrideSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*UpgradeOverrideSettings] {
-	return pulumix.Output[*UpgradeOverrideSettings]{
-		OutputState: i.ToUpgradeOverrideSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Settings for overrides when upgrading a cluster.
 type UpgradeOverrideSettingsOutput struct{ *pulumi.OutputState }
 
@@ -28965,12 +25610,6 @@ func (o UpgradeOverrideSettingsOutput) ToUpgradeOverrideSettingsPtrOutputWithCon
 	}).(UpgradeOverrideSettingsPtrOutput)
 }
 
-func (o UpgradeOverrideSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[UpgradeOverrideSettings] {
-	return pulumix.Output[UpgradeOverrideSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to force upgrade the cluster. Note that this option instructs upgrade operation to bypass upgrade protections such as checking for deprecated API usage. Enable this option only with caution.
 func (o UpgradeOverrideSettingsOutput) ForceUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UpgradeOverrideSettings) *bool { return v.ForceUpgrade }).(pulumi.BoolPtrOutput)
@@ -28993,12 +25632,6 @@ func (o UpgradeOverrideSettingsPtrOutput) ToUpgradeOverrideSettingsPtrOutput() U
 
 func (o UpgradeOverrideSettingsPtrOutput) ToUpgradeOverrideSettingsPtrOutputWithContext(ctx context.Context) UpgradeOverrideSettingsPtrOutput {
 	return o
-}
-
-func (o UpgradeOverrideSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UpgradeOverrideSettings] {
-	return pulumix.Output[*UpgradeOverrideSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UpgradeOverrideSettingsPtrOutput) Elem() UpgradeOverrideSettingsOutput {
@@ -29054,12 +25687,6 @@ func (o UpgradeOverrideSettingsResponseOutput) ToUpgradeOverrideSettingsResponse
 	return o
 }
 
-func (o UpgradeOverrideSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UpgradeOverrideSettingsResponse] {
-	return pulumix.Output[UpgradeOverrideSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Whether to force upgrade the cluster. Note that this option instructs upgrade operation to bypass upgrade protections such as checking for deprecated API usage. Enable this option only with caution.
 func (o UpgradeOverrideSettingsResponseOutput) ForceUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v UpgradeOverrideSettingsResponse) *bool { return v.ForceUpgrade }).(pulumi.BoolPtrOutput)
@@ -29082,12 +25709,6 @@ func (o UpgradeOverrideSettingsResponsePtrOutput) ToUpgradeOverrideSettingsRespo
 
 func (o UpgradeOverrideSettingsResponsePtrOutput) ToUpgradeOverrideSettingsResponsePtrOutputWithContext(ctx context.Context) UpgradeOverrideSettingsResponsePtrOutput {
 	return o
-}
-
-func (o UpgradeOverrideSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UpgradeOverrideSettingsResponse] {
-	return pulumix.Output[*UpgradeOverrideSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UpgradeOverrideSettingsResponsePtrOutput) Elem() UpgradeOverrideSettingsResponseOutput {
@@ -29163,12 +25784,6 @@ func (i UserAssignedIdentityArgs) ToUserAssignedIdentityOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(UserAssignedIdentityOutput)
 }
 
-func (i UserAssignedIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentity] {
-	return pulumix.Output[UserAssignedIdentity]{
-		OutputState: i.ToUserAssignedIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 // UserAssignedIdentityMapInput is an input type that accepts UserAssignedIdentityMap and UserAssignedIdentityMapOutput values.
 // You can construct a concrete instance of `UserAssignedIdentityMapInput` via:
 //
@@ -29194,12 +25809,6 @@ func (i UserAssignedIdentityMap) ToUserAssignedIdentityMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(UserAssignedIdentityMapOutput)
 }
 
-func (i UserAssignedIdentityMap) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentity] {
-	return pulumix.Output[map[string]UserAssignedIdentity]{
-		OutputState: i.ToUserAssignedIdentityMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Details about a user assigned identity.
 type UserAssignedIdentityOutput struct{ *pulumi.OutputState }
 
@@ -29213,12 +25822,6 @@ func (o UserAssignedIdentityOutput) ToUserAssignedIdentityOutput() UserAssignedI
 
 func (o UserAssignedIdentityOutput) ToUserAssignedIdentityOutputWithContext(ctx context.Context) UserAssignedIdentityOutput {
 	return o
-}
-
-func (o UserAssignedIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentity] {
-	return pulumix.Output[UserAssignedIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The client ID of the user assigned identity.
@@ -29248,12 +25851,6 @@ func (o UserAssignedIdentityMapOutput) ToUserAssignedIdentityMapOutput() UserAss
 
 func (o UserAssignedIdentityMapOutput) ToUserAssignedIdentityMapOutputWithContext(ctx context.Context) UserAssignedIdentityMapOutput {
 	return o
-}
-
-func (o UserAssignedIdentityMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentity] {
-	return pulumix.Output[map[string]UserAssignedIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedIdentityMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityOutput {
@@ -29287,12 +25884,6 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
-func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
-	return pulumix.Output[UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The client ID of the user assigned identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) *string { return v.ClientId }).(pulumi.StringPtrOutput)
@@ -29320,12 +25911,6 @@ func (o UserAssignedIdentityResponsePtrOutput) ToUserAssignedIdentityResponsePtr
 
 func (o UserAssignedIdentityResponsePtrOutput) ToUserAssignedIdentityResponsePtrOutputWithContext(ctx context.Context) UserAssignedIdentityResponsePtrOutput {
 	return o
-}
-
-func (o UserAssignedIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserAssignedIdentityResponse] {
-	return pulumix.Output[*UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedIdentityResponsePtrOutput) Elem() UserAssignedIdentityResponseOutput {
@@ -29382,12 +25967,6 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 	return o
 }
 
-func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
-	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
 		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
@@ -29433,12 +26012,6 @@ func (i WeeklyScheduleArgs) ToWeeklyScheduleOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(WeeklyScheduleOutput)
 }
 
-func (i WeeklyScheduleArgs) ToOutput(ctx context.Context) pulumix.Output[WeeklySchedule] {
-	return pulumix.Output[WeeklySchedule]{
-		OutputState: i.ToWeeklyScheduleOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WeeklyScheduleArgs) ToWeeklySchedulePtrOutput() WeeklySchedulePtrOutput {
 	return i.ToWeeklySchedulePtrOutputWithContext(context.Background())
 }
@@ -29480,12 +26053,6 @@ func (i *weeklySchedulePtrType) ToWeeklySchedulePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(WeeklySchedulePtrOutput)
 }
 
-func (i *weeklySchedulePtrType) ToOutput(ctx context.Context) pulumix.Output[*WeeklySchedule] {
-	return pulumix.Output[*WeeklySchedule]{
-		OutputState: i.ToWeeklySchedulePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
 type WeeklyScheduleOutput struct{ *pulumi.OutputState }
 
@@ -29511,12 +26078,6 @@ func (o WeeklyScheduleOutput) ToWeeklySchedulePtrOutputWithContext(ctx context.C
 	}).(WeeklySchedulePtrOutput)
 }
 
-func (o WeeklyScheduleOutput) ToOutput(ctx context.Context) pulumix.Output[WeeklySchedule] {
-	return pulumix.Output[WeeklySchedule]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies on which day of the week the maintenance occurs.
 func (o WeeklyScheduleOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v WeeklySchedule) string { return v.DayOfWeek }).(pulumi.StringOutput)
@@ -29539,12 +26100,6 @@ func (o WeeklySchedulePtrOutput) ToWeeklySchedulePtrOutput() WeeklySchedulePtrOu
 
 func (o WeeklySchedulePtrOutput) ToWeeklySchedulePtrOutputWithContext(ctx context.Context) WeeklySchedulePtrOutput {
 	return o
-}
-
-func (o WeeklySchedulePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WeeklySchedule] {
-	return pulumix.Output[*WeeklySchedule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WeeklySchedulePtrOutput) Elem() WeeklyScheduleOutput {
@@ -29600,12 +26155,6 @@ func (o WeeklyScheduleResponseOutput) ToWeeklyScheduleResponseOutputWithContext(
 	return o
 }
 
-func (o WeeklyScheduleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WeeklyScheduleResponse] {
-	return pulumix.Output[WeeklyScheduleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies on which day of the week the maintenance occurs.
 func (o WeeklyScheduleResponseOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v WeeklyScheduleResponse) string { return v.DayOfWeek }).(pulumi.StringOutput)
@@ -29628,12 +26177,6 @@ func (o WeeklyScheduleResponsePtrOutput) ToWeeklyScheduleResponsePtrOutput() Wee
 
 func (o WeeklyScheduleResponsePtrOutput) ToWeeklyScheduleResponsePtrOutputWithContext(ctx context.Context) WeeklyScheduleResponsePtrOutput {
 	return o
-}
-
-func (o WeeklyScheduleResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WeeklyScheduleResponse] {
-	return pulumix.Output[*WeeklyScheduleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WeeklyScheduleResponsePtrOutput) Elem() WeeklyScheduleResponseOutput {
@@ -29709,12 +26252,6 @@ func (i WindowsGmsaProfileArgs) ToWindowsGmsaProfileOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(WindowsGmsaProfileOutput)
 }
 
-func (i WindowsGmsaProfileArgs) ToOutput(ctx context.Context) pulumix.Output[WindowsGmsaProfile] {
-	return pulumix.Output[WindowsGmsaProfile]{
-		OutputState: i.ToWindowsGmsaProfileOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WindowsGmsaProfileArgs) ToWindowsGmsaProfilePtrOutput() WindowsGmsaProfilePtrOutput {
 	return i.ToWindowsGmsaProfilePtrOutputWithContext(context.Background())
 }
@@ -29756,12 +26293,6 @@ func (i *windowsGmsaProfilePtrType) ToWindowsGmsaProfilePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(WindowsGmsaProfilePtrOutput)
 }
 
-func (i *windowsGmsaProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*WindowsGmsaProfile] {
-	return pulumix.Output[*WindowsGmsaProfile]{
-		OutputState: i.ToWindowsGmsaProfilePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Windows gMSA Profile in the managed cluster.
 type WindowsGmsaProfileOutput struct{ *pulumi.OutputState }
 
@@ -29785,12 +26316,6 @@ func (o WindowsGmsaProfileOutput) ToWindowsGmsaProfilePtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WindowsGmsaProfile) *WindowsGmsaProfile {
 		return &v
 	}).(WindowsGmsaProfilePtrOutput)
-}
-
-func (o WindowsGmsaProfileOutput) ToOutput(ctx context.Context) pulumix.Output[WindowsGmsaProfile] {
-	return pulumix.Output[WindowsGmsaProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the DNS server for Windows gMSA. <br><br> Set it to empty if you have configured the DNS server in the vnet which is used to create the managed cluster.
@@ -29820,12 +26345,6 @@ func (o WindowsGmsaProfilePtrOutput) ToWindowsGmsaProfilePtrOutput() WindowsGmsa
 
 func (o WindowsGmsaProfilePtrOutput) ToWindowsGmsaProfilePtrOutputWithContext(ctx context.Context) WindowsGmsaProfilePtrOutput {
 	return o
-}
-
-func (o WindowsGmsaProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WindowsGmsaProfile] {
-	return pulumix.Output[*WindowsGmsaProfile]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WindowsGmsaProfilePtrOutput) Elem() WindowsGmsaProfileOutput {
@@ -29893,12 +26412,6 @@ func (o WindowsGmsaProfileResponseOutput) ToWindowsGmsaProfileResponseOutputWith
 	return o
 }
 
-func (o WindowsGmsaProfileResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WindowsGmsaProfileResponse] {
-	return pulumix.Output[WindowsGmsaProfileResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the DNS server for Windows gMSA. <br><br> Set it to empty if you have configured the DNS server in the vnet which is used to create the managed cluster.
 func (o WindowsGmsaProfileResponseOutput) DnsServer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WindowsGmsaProfileResponse) *string { return v.DnsServer }).(pulumi.StringPtrOutput)
@@ -29926,12 +26439,6 @@ func (o WindowsGmsaProfileResponsePtrOutput) ToWindowsGmsaProfileResponsePtrOutp
 
 func (o WindowsGmsaProfileResponsePtrOutput) ToWindowsGmsaProfileResponsePtrOutputWithContext(ctx context.Context) WindowsGmsaProfileResponsePtrOutput {
 	return o
-}
-
-func (o WindowsGmsaProfileResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WindowsGmsaProfileResponse] {
-	return pulumix.Output[*WindowsGmsaProfileResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WindowsGmsaProfileResponsePtrOutput) Elem() WindowsGmsaProfileResponseOutput {

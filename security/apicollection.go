@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An API collection as represented by Defender for APIs.
@@ -124,12 +123,6 @@ func (i *APICollection) ToAPICollectionOutputWithContext(ctx context.Context) AP
 	return pulumi.ToOutputWithContext(ctx, i).(APICollectionOutput)
 }
 
-func (i *APICollection) ToOutput(ctx context.Context) pulumix.Output[*APICollection] {
-	return pulumix.Output[*APICollection]{
-		OutputState: i.ToAPICollectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type APICollectionOutput struct{ *pulumi.OutputState }
 
 func (APICollectionOutput) ElementType() reflect.Type {
@@ -142,12 +135,6 @@ func (o APICollectionOutput) ToAPICollectionOutput() APICollectionOutput {
 
 func (o APICollectionOutput) ToAPICollectionOutputWithContext(ctx context.Context) APICollectionOutput {
 	return o
-}
-
-func (o APICollectionOutput) ToOutput(ctx context.Context) pulumix.Output[*APICollection] {
-	return pulumix.Output[*APICollection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional data regarding the API collection.

@@ -80,12 +80,6 @@ func (o AccessTierOutput) ToAccessTierPtrOutputWithContext(ctx context.Context) 
 	}).(AccessTierPtrOutput)
 }
 
-func (o AccessTierOutput) ToOutput(ctx context.Context) pulumix.Output[AccessTier] {
-	return pulumix.Output[AccessTier]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -119,12 +113,6 @@ func (o AccessTierPtrOutput) ToAccessTierPtrOutput() AccessTierPtrOutput {
 
 func (o AccessTierPtrOutput) ToAccessTierPtrOutputWithContext(ctx context.Context) AccessTierPtrOutput {
 	return o
-}
-
-func (o AccessTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessTier] {
-	return pulumix.Output[*AccessTier]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessTierPtrOutput) Elem() AccessTierOutput {
@@ -279,12 +267,6 @@ func (o ActionOutput) ToActionPtrOutputWithContext(ctx context.Context) ActionPt
 	}).(ActionPtrOutput)
 }
 
-func (o ActionOutput) ToOutput(ctx context.Context) pulumix.Output[Action] {
-	return pulumix.Output[Action]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -318,12 +300,6 @@ func (o ActionPtrOutput) ToActionPtrOutput() ActionPtrOutput {
 
 func (o ActionPtrOutput) ToActionPtrOutputWithContext(ctx context.Context) ActionPtrOutput {
 	return o
-}
-
-func (o ActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Action] {
-	return pulumix.Output[*Action]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ActionPtrOutput) Elem() ActionOutput {
@@ -495,12 +471,6 @@ func (o DefaultActionOutput) ToDefaultActionPtrOutputWithContext(ctx context.Con
 	}).(DefaultActionPtrOutput)
 }
 
-func (o DefaultActionOutput) ToOutput(ctx context.Context) pulumix.Output[DefaultAction] {
-	return pulumix.Output[DefaultAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DefaultActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -534,12 +504,6 @@ func (o DefaultActionPtrOutput) ToDefaultActionPtrOutput() DefaultActionPtrOutpu
 
 func (o DefaultActionPtrOutput) ToDefaultActionPtrOutputWithContext(ctx context.Context) DefaultActionPtrOutput {
 	return o
-}
-
-func (o DefaultActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DefaultAction] {
-	return pulumix.Output[*DefaultAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DefaultActionPtrOutput) Elem() DefaultActionOutput {
@@ -752,12 +716,6 @@ func (o HttpProtocolOutput) ToHttpProtocolPtrOutputWithContext(ctx context.Conte
 	}).(HttpProtocolPtrOutput)
 }
 
-func (o HttpProtocolOutput) ToOutput(ctx context.Context) pulumix.Output[HttpProtocol] {
-	return pulumix.Output[HttpProtocol]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HttpProtocolOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -791,12 +749,6 @@ func (o HttpProtocolPtrOutput) ToHttpProtocolPtrOutput() HttpProtocolPtrOutput {
 
 func (o HttpProtocolPtrOutput) ToHttpProtocolPtrOutputWithContext(ctx context.Context) HttpProtocolPtrOutput {
 	return o
-}
-
-func (o HttpProtocolPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HttpProtocol] {
-	return pulumix.Output[*HttpProtocol]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpProtocolPtrOutput) Elem() HttpProtocolOutput {
@@ -1035,12 +987,6 @@ func (o PublicAccessOutput) ToPublicAccessPtrOutputWithContext(ctx context.Conte
 	}).(PublicAccessPtrOutput)
 }
 
-func (o PublicAccessOutput) ToOutput(ctx context.Context) pulumix.Output[PublicAccess] {
-	return pulumix.Output[PublicAccess]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PublicAccessOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1074,12 +1020,6 @@ func (o PublicAccessPtrOutput) ToPublicAccessPtrOutput() PublicAccessPtrOutput {
 
 func (o PublicAccessPtrOutput) ToPublicAccessPtrOutputWithContext(ctx context.Context) PublicAccessPtrOutput {
 	return o
-}
-
-func (o PublicAccessPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PublicAccess] {
-	return pulumix.Output[*PublicAccess]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PublicAccessPtrOutput) Elem() PublicAccessOutput {

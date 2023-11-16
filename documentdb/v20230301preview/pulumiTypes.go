@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i PrivilegeArgs) ToPrivilegeOutputWithContext(ctx context.Context) Privile
 	return pulumi.ToOutputWithContext(ctx, i).(PrivilegeOutput)
 }
 
-func (i PrivilegeArgs) ToOutput(ctx context.Context) pulumix.Output[Privilege] {
-	return pulumix.Output[Privilege]{
-		OutputState: i.ToPrivilegeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PrivilegeArrayInput is an input type that accepts PrivilegeArray and PrivilegeArrayOutput values.
 // You can construct a concrete instance of `PrivilegeArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i PrivilegeArray) ToPrivilegeArrayOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(PrivilegeArrayOutput)
 }
 
-func (i PrivilegeArray) ToOutput(ctx context.Context) pulumix.Output[[]Privilege] {
-	return pulumix.Output[[]Privilege]{
-		OutputState: i.ToPrivilegeArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The set of data plane operations permitted through this Role Definition.
 type PrivilegeOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o PrivilegeOutput) ToPrivilegeOutput() PrivilegeOutput {
 
 func (o PrivilegeOutput) ToPrivilegeOutputWithContext(ctx context.Context) PrivilegeOutput {
 	return o
-}
-
-func (o PrivilegeOutput) ToOutput(ctx context.Context) pulumix.Output[Privilege] {
-	return pulumix.Output[Privilege]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An array of actions that are allowed.
@@ -133,12 +114,6 @@ func (o PrivilegeArrayOutput) ToPrivilegeArrayOutput() PrivilegeArrayOutput {
 
 func (o PrivilegeArrayOutput) ToPrivilegeArrayOutputWithContext(ctx context.Context) PrivilegeArrayOutput {
 	return o
-}
-
-func (o PrivilegeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Privilege] {
-	return pulumix.Output[[]Privilege]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivilegeArrayOutput) Index(i pulumi.IntInput) PrivilegeOutput {
@@ -186,12 +161,6 @@ func (i PrivilegeResourceArgs) ToPrivilegeResourceOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(PrivilegeResourceOutput)
 }
 
-func (i PrivilegeResourceArgs) ToOutput(ctx context.Context) pulumix.Output[PrivilegeResource] {
-	return pulumix.Output[PrivilegeResource]{
-		OutputState: i.ToPrivilegeResourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i PrivilegeResourceArgs) ToPrivilegeResourcePtrOutput() PrivilegeResourcePtrOutput {
 	return i.ToPrivilegeResourcePtrOutputWithContext(context.Background())
 }
@@ -233,12 +202,6 @@ func (i *privilegeResourcePtrType) ToPrivilegeResourcePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(PrivilegeResourcePtrOutput)
 }
 
-func (i *privilegeResourcePtrType) ToOutput(ctx context.Context) pulumix.Output[*PrivilegeResource] {
-	return pulumix.Output[*PrivilegeResource]{
-		OutputState: i.ToPrivilegeResourcePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An Azure Cosmos DB Mongo DB Resource.
 type PrivilegeResourceOutput struct{ *pulumi.OutputState }
 
@@ -264,12 +227,6 @@ func (o PrivilegeResourceOutput) ToPrivilegeResourcePtrOutputWithContext(ctx con
 	}).(PrivilegeResourcePtrOutput)
 }
 
-func (o PrivilegeResourceOutput) ToOutput(ctx context.Context) pulumix.Output[PrivilegeResource] {
-	return pulumix.Output[PrivilegeResource]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The collection name the role is applied.
 func (o PrivilegeResourceOutput) Collection() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivilegeResource) *string { return v.Collection }).(pulumi.StringPtrOutput)
@@ -292,12 +249,6 @@ func (o PrivilegeResourcePtrOutput) ToPrivilegeResourcePtrOutput() PrivilegeReso
 
 func (o PrivilegeResourcePtrOutput) ToPrivilegeResourcePtrOutputWithContext(ctx context.Context) PrivilegeResourcePtrOutput {
 	return o
-}
-
-func (o PrivilegeResourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivilegeResource] {
-	return pulumix.Output[*PrivilegeResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivilegeResourcePtrOutput) Elem() PrivilegeResourceOutput {
@@ -353,12 +304,6 @@ func (o PrivilegeResponseOutput) ToPrivilegeResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o PrivilegeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivilegeResponse] {
-	return pulumix.Output[PrivilegeResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // An array of actions that are allowed.
 func (o PrivilegeResponseOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PrivilegeResponse) []string { return v.Actions }).(pulumi.StringArrayOutput)
@@ -381,12 +326,6 @@ func (o PrivilegeResponseArrayOutput) ToPrivilegeResponseArrayOutput() Privilege
 
 func (o PrivilegeResponseArrayOutput) ToPrivilegeResponseArrayOutputWithContext(ctx context.Context) PrivilegeResponseArrayOutput {
 	return o
-}
-
-func (o PrivilegeResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivilegeResponse] {
-	return pulumix.Output[[]PrivilegeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivilegeResponseArrayOutput) Index(i pulumi.IntInput) PrivilegeResponseOutput {
@@ -418,12 +357,6 @@ func (o PrivilegeResponseResourceOutput) ToPrivilegeResponseResourceOutputWithCo
 	return o
 }
 
-func (o PrivilegeResponseResourceOutput) ToOutput(ctx context.Context) pulumix.Output[PrivilegeResponseResource] {
-	return pulumix.Output[PrivilegeResponseResource]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The collection name the role is applied.
 func (o PrivilegeResponseResourceOutput) Collection() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivilegeResponseResource) *string { return v.Collection }).(pulumi.StringPtrOutput)
@@ -446,12 +379,6 @@ func (o PrivilegeResponseResourcePtrOutput) ToPrivilegeResponseResourcePtrOutput
 
 func (o PrivilegeResponseResourcePtrOutput) ToPrivilegeResponseResourcePtrOutputWithContext(ctx context.Context) PrivilegeResponseResourcePtrOutput {
 	return o
-}
-
-func (o PrivilegeResponseResourcePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivilegeResponseResource] {
-	return pulumix.Output[*PrivilegeResponseResource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivilegeResponseResourcePtrOutput) Elem() PrivilegeResponseResourceOutput {
@@ -523,12 +450,6 @@ func (i RoleArgs) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoleOutput)
 }
 
-func (i RoleArgs) ToOutput(ctx context.Context) pulumix.Output[Role] {
-	return pulumix.Output[Role]{
-		OutputState: i.ToRoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RoleArrayInput is an input type that accepts RoleArray and RoleArrayOutput values.
 // You can construct a concrete instance of `RoleArrayInput` via:
 //
@@ -554,12 +475,6 @@ func (i RoleArray) ToRoleArrayOutputWithContext(ctx context.Context) RoleArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(RoleArrayOutput)
 }
 
-func (i RoleArray) ToOutput(ctx context.Context) pulumix.Output[[]Role] {
-	return pulumix.Output[[]Role]{
-		OutputState: i.ToRoleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The set of roles permitted through this Role Definition.
 type RoleOutput struct{ *pulumi.OutputState }
 
@@ -573,12 +488,6 @@ func (o RoleOutput) ToRoleOutput() RoleOutput {
 
 func (o RoleOutput) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 	return o
-}
-
-func (o RoleOutput) ToOutput(ctx context.Context) pulumix.Output[Role] {
-	return pulumix.Output[Role]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The database name the role is applied.
@@ -603,12 +512,6 @@ func (o RoleArrayOutput) ToRoleArrayOutput() RoleArrayOutput {
 
 func (o RoleArrayOutput) ToRoleArrayOutputWithContext(ctx context.Context) RoleArrayOutput {
 	return o
-}
-
-func (o RoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Role] {
-	return pulumix.Output[[]Role]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RoleArrayOutput) Index(i pulumi.IntInput) RoleOutput {
@@ -640,12 +543,6 @@ func (o RoleResponseOutput) ToRoleResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o RoleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RoleResponse] {
-	return pulumix.Output[RoleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The database name the role is applied.
 func (o RoleResponseOutput) Db() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RoleResponse) *string { return v.Db }).(pulumi.StringPtrOutput)
@@ -668,12 +565,6 @@ func (o RoleResponseArrayOutput) ToRoleResponseArrayOutput() RoleResponseArrayOu
 
 func (o RoleResponseArrayOutput) ToRoleResponseArrayOutputWithContext(ctx context.Context) RoleResponseArrayOutput {
 	return o
-}
-
-func (o RoleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RoleResponse] {
-	return pulumix.Output[[]RoleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RoleResponseArrayOutput) Index(i pulumi.IntInput) RoleResponseOutput {

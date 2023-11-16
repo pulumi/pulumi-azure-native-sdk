@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List primary and secondary keys for a specific key name
@@ -83,12 +82,6 @@ func (o ListIotDpsResourceKeysForKeyNameResultOutput) ToListIotDpsResourceKeysFo
 
 func (o ListIotDpsResourceKeysForKeyNameResultOutput) ToListIotDpsResourceKeysForKeyNameResultOutputWithContext(ctx context.Context) ListIotDpsResourceKeysForKeyNameResultOutput {
 	return o
-}
-
-func (o ListIotDpsResourceKeysForKeyNameResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListIotDpsResourceKeysForKeyNameResult] {
-	return pulumix.Output[ListIotDpsResourceKeysForKeyNameResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the key.

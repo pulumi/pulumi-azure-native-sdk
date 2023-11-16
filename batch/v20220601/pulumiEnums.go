@@ -81,12 +81,6 @@ func (o CertificateFormatOutput) ToCertificateFormatPtrOutputWithContext(ctx con
 	}).(CertificateFormatPtrOutput)
 }
 
-func (o CertificateFormatOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateFormat] {
-	return pulumix.Output[CertificateFormat]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CertificateFormatOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -120,12 +114,6 @@ func (o CertificateFormatPtrOutput) ToCertificateFormatPtrOutput() CertificateFo
 
 func (o CertificateFormatPtrOutput) ToCertificateFormatPtrOutputWithContext(ctx context.Context) CertificateFormatPtrOutput {
 	return o
-}
-
-func (o CertificateFormatPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateFormat] {
-	return pulumix.Output[*CertificateFormat]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertificateFormatPtrOutput) Elem() CertificateFormatOutput {

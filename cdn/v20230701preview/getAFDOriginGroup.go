@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an existing origin group within a profile.
@@ -96,12 +95,6 @@ func (o LookupAFDOriginGroupResultOutput) ToLookupAFDOriginGroupResultOutput() L
 
 func (o LookupAFDOriginGroupResultOutput) ToLookupAFDOriginGroupResultOutputWithContext(ctx context.Context) LookupAFDOriginGroupResultOutput {
 	return o
-}
-
-func (o LookupAFDOriginGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAFDOriginGroupResult] {
-	return pulumix.Output[LookupAFDOriginGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupAFDOriginGroupResultOutput) DeploymentStatus() pulumi.StringOutput {

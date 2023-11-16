@@ -9,13 +9,12 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a template byt its identifier.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 func LookupContentTemplate(ctx *pulumi.Context, args *LookupContentTemplateArgs, opts ...pulumi.InvokeOption) (*LookupContentTemplateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContentTemplateResult
@@ -134,12 +133,6 @@ func (o LookupContentTemplateResultOutput) ToLookupContentTemplateResultOutput()
 
 func (o LookupContentTemplateResultOutput) ToLookupContentTemplateResultOutputWithContext(ctx context.Context) LookupContentTemplateResultOutput {
 	return o
-}
-
-func (o LookupContentTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContentTemplateResult] {
-	return pulumix.Output[LookupContentTemplateResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creator of the content item.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Container App Secrets Collection ARM resource.
@@ -76,12 +75,6 @@ func (o ListContainerAppSecretsResultOutput) ToListContainerAppSecretsResultOutp
 
 func (o ListContainerAppSecretsResultOutput) ToListContainerAppSecretsResultOutputWithContext(ctx context.Context) ListContainerAppSecretsResultOutput {
 	return o
-}
-
-func (o ListContainerAppSecretsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListContainerAppSecretsResult] {
-	return pulumix.Output[ListContainerAppSecretsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Collection of resources.

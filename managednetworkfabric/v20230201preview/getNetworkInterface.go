@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the Network Interface resource details.
@@ -99,12 +98,6 @@ func (o LookupNetworkInterfaceResultOutput) ToLookupNetworkInterfaceResultOutput
 
 func (o LookupNetworkInterfaceResultOutput) ToLookupNetworkInterfaceResultOutputWithContext(ctx context.Context) LookupNetworkInterfaceResultOutput {
 	return o
-}
-
-func (o LookupNetworkInterfaceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNetworkInterfaceResult] {
-	return pulumix.Output[LookupNetworkInterfaceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // administrativeState of the network interface. Example: Enabled | Disabled.

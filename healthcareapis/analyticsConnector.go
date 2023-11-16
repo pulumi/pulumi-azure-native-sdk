@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Analytics Connector definition.
@@ -168,12 +167,6 @@ func (i *AnalyticsConnector) ToAnalyticsConnectorOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsConnectorOutput)
 }
 
-func (i *AnalyticsConnector) ToOutput(ctx context.Context) pulumix.Output[*AnalyticsConnector] {
-	return pulumix.Output[*AnalyticsConnector]{
-		OutputState: i.ToAnalyticsConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AnalyticsConnectorOutput struct{ *pulumi.OutputState }
 
 func (AnalyticsConnectorOutput) ElementType() reflect.Type {
@@ -186,12 +179,6 @@ func (o AnalyticsConnectorOutput) ToAnalyticsConnectorOutput() AnalyticsConnecto
 
 func (o AnalyticsConnectorOutput) ToAnalyticsConnectorOutputWithContext(ctx context.Context) AnalyticsConnectorOutput {
 	return o
-}
-
-func (o AnalyticsConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*AnalyticsConnector] {
-	return pulumix.Output[*AnalyticsConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Data destination configuration for Analytics Connector.

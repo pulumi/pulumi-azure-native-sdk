@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get the Azure AD for customers tenant resource.
@@ -97,12 +96,6 @@ func (o LookupCIAMTenantResultOutput) ToLookupCIAMTenantResultOutput() LookupCIA
 
 func (o LookupCIAMTenantResultOutput) ToLookupCIAMTenantResultOutputWithContext(ctx context.Context) LookupCIAMTenantResultOutput {
 	return o
-}
-
-func (o LookupCIAMTenantResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCIAMTenantResult] {
-	return pulumix.Output[LookupCIAMTenantResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of billing. Will be MAU for all new customers. Cannot be changed if value is 'MAU'. Learn more about Azure AD for customers billing at [aka.ms/b2cBilling](https://aka.ms/b2cbilling).

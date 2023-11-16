@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns the cluster customer credentials for the dedicated appliance.
@@ -82,12 +81,6 @@ func (o ListApplianceKeysResultOutput) ToListApplianceKeysResultOutput() ListApp
 
 func (o ListApplianceKeysResultOutput) ToListApplianceKeysResultOutputWithContext(ctx context.Context) ListApplianceKeysResultOutput {
 	return o
-}
-
-func (o ListApplianceKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListApplianceKeysResult] {
-	return pulumix.Output[ListApplianceKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Map of artifacts that contains a list of ArtifactProfile used to upload artifacts such as logs.

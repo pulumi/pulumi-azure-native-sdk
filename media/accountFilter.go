@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Account Filter.
@@ -152,12 +151,6 @@ func (i *AccountFilter) ToAccountFilterOutputWithContext(ctx context.Context) Ac
 	return pulumi.ToOutputWithContext(ctx, i).(AccountFilterOutput)
 }
 
-func (i *AccountFilter) ToOutput(ctx context.Context) pulumix.Output[*AccountFilter] {
-	return pulumix.Output[*AccountFilter]{
-		OutputState: i.ToAccountFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccountFilterOutput struct{ *pulumi.OutputState }
 
 func (AccountFilterOutput) ElementType() reflect.Type {
@@ -170,12 +163,6 @@ func (o AccountFilterOutput) ToAccountFilterOutput() AccountFilterOutput {
 
 func (o AccountFilterOutput) ToAccountFilterOutputWithContext(ctx context.Context) AccountFilterOutput {
 	return o
-}
-
-func (o AccountFilterOutput) ToOutput(ctx context.Context) pulumix.Output[*AccountFilter] {
-	return pulumix.Output[*AccountFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The first quality.

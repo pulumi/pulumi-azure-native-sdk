@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a server DNS alias.
@@ -83,12 +82,6 @@ func (o LookupManagedServerDnsAliasResultOutput) ToLookupManagedServerDnsAliasRe
 
 func (o LookupManagedServerDnsAliasResultOutput) ToLookupManagedServerDnsAliasResultOutputWithContext(ctx context.Context) LookupManagedServerDnsAliasResultOutput {
 	return o
-}
-
-func (o LookupManagedServerDnsAliasResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedServerDnsAliasResult] {
-	return pulumix.Output[LookupManagedServerDnsAliasResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The fully qualified DNS record for managed server alias

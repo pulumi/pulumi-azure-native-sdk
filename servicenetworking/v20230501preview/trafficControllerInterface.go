@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Concrete tracked resource types can be created by aliasing this type using a specific property type.
@@ -137,12 +136,6 @@ func (i *TrafficControllerInterface) ToTrafficControllerInterfaceOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(TrafficControllerInterfaceOutput)
 }
 
-func (i *TrafficControllerInterface) ToOutput(ctx context.Context) pulumix.Output[*TrafficControllerInterface] {
-	return pulumix.Output[*TrafficControllerInterface]{
-		OutputState: i.ToTrafficControllerInterfaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TrafficControllerInterfaceOutput struct{ *pulumi.OutputState }
 
 func (TrafficControllerInterfaceOutput) ElementType() reflect.Type {
@@ -155,12 +148,6 @@ func (o TrafficControllerInterfaceOutput) ToTrafficControllerInterfaceOutput() T
 
 func (o TrafficControllerInterfaceOutput) ToTrafficControllerInterfaceOutputWithContext(ctx context.Context) TrafficControllerInterfaceOutput {
 	return o
-}
-
-func (o TrafficControllerInterfaceOutput) ToOutput(ctx context.Context) pulumix.Output[*TrafficControllerInterface] {
-	return pulumix.Output[*TrafficControllerInterface]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Associations References List

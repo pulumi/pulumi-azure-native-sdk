@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an existing KeyGroup within a profile.
@@ -88,12 +87,6 @@ func (o LookupKeyGroupResultOutput) ToLookupKeyGroupResultOutput() LookupKeyGrou
 
 func (o LookupKeyGroupResultOutput) ToLookupKeyGroupResultOutputWithContext(ctx context.Context) LookupKeyGroupResultOutput {
 	return o
-}
-
-func (o LookupKeyGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupKeyGroupResult] {
-	return pulumix.Output[LookupKeyGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupKeyGroupResultOutput) DeploymentStatus() pulumi.StringOutput {

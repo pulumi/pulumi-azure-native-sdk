@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Method that gets called when list of partitions is requested.
@@ -74,12 +73,6 @@ func (o ListEnergyServicePartitionsResultOutput) ToListEnergyServicePartitionsRe
 
 func (o ListEnergyServicePartitionsResultOutput) ToListEnergyServicePartitionsResultOutputWithContext(ctx context.Context) ListEnergyServicePartitionsResultOutput {
 	return o
-}
-
-func (o ListEnergyServicePartitionsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListEnergyServicePartitionsResult] {
-	return pulumix.Output[ListEnergyServicePartitionsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of data partitions along with their properties in a given OEP resource.

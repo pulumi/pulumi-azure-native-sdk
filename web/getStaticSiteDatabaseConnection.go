@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Static Site Database Connection resource.
@@ -96,12 +95,6 @@ func (o LookupStaticSiteDatabaseConnectionResultOutput) ToLookupStaticSiteDataba
 
 func (o LookupStaticSiteDatabaseConnectionResultOutput) ToLookupStaticSiteDatabaseConnectionResultOutputWithContext(ctx context.Context) LookupStaticSiteDatabaseConnectionResultOutput {
 	return o
-}
-
-func (o LookupStaticSiteDatabaseConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStaticSiteDatabaseConnectionResult] {
-	return pulumix.Output[LookupStaticSiteDatabaseConnectionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of configuration files associated with this database connection.

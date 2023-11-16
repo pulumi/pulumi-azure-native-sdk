@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -49,12 +48,6 @@ func (i AssignmentArgs) ToAssignmentOutputWithContext(ctx context.Context) Assig
 	return pulumi.ToOutputWithContext(ctx, i).(AssignmentOutput)
 }
 
-func (i AssignmentArgs) ToOutput(ctx context.Context) pulumix.Output[Assignment] {
-	return pulumix.Output[Assignment]{
-		OutputState: i.ToAssignmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AssignmentArrayInput is an input type that accepts AssignmentArray and AssignmentArrayOutput values.
 // You can construct a concrete instance of `AssignmentArrayInput` via:
 //
@@ -80,12 +73,6 @@ func (i AssignmentArray) ToAssignmentArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(AssignmentArrayOutput)
 }
 
-func (i AssignmentArray) ToOutput(ctx context.Context) pulumix.Output[[]Assignment] {
-	return pulumix.Output[[]Assignment]{
-		OutputState: i.ToAssignmentArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Assignment Properties
 type AssignmentOutput struct{ *pulumi.OutputState }
 
@@ -99,12 +86,6 @@ func (o AssignmentOutput) ToAssignmentOutput() AssignmentOutput {
 
 func (o AssignmentOutput) ToAssignmentOutputWithContext(ctx context.Context) AssignmentOutput {
 	return o
-}
-
-func (o AssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[Assignment] {
-	return pulumix.Output[Assignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource id for the assigned resource
@@ -124,12 +105,6 @@ func (o AssignmentArrayOutput) ToAssignmentArrayOutput() AssignmentArrayOutput {
 
 func (o AssignmentArrayOutput) ToAssignmentArrayOutputWithContext(ctx context.Context) AssignmentArrayOutput {
 	return o
-}
-
-func (o AssignmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Assignment] {
-	return pulumix.Output[[]Assignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssignmentArrayOutput) Index(i pulumi.IntInput) AssignmentOutput {
@@ -161,12 +136,6 @@ func (o AssignmentResponseOutput) ToAssignmentResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o AssignmentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssignmentResponse] {
-	return pulumix.Output[AssignmentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource id for the assigned resource
 func (o AssignmentResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v AssignmentResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -189,12 +158,6 @@ func (o AssignmentResponseArrayOutput) ToAssignmentResponseArrayOutput() Assignm
 
 func (o AssignmentResponseArrayOutput) ToAssignmentResponseArrayOutputWithContext(ctx context.Context) AssignmentResponseArrayOutput {
 	return o
-}
-
-func (o AssignmentResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AssignmentResponse] {
-	return pulumix.Output[[]AssignmentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssignmentResponseArrayOutput) Index(i pulumi.IntInput) AssignmentResponseOutput {
@@ -224,12 +187,6 @@ func (o AssignmentStatusResponseOutput) ToAssignmentStatusResponseOutput() Assig
 
 func (o AssignmentStatusResponseOutput) ToAssignmentStatusResponseOutputWithContext(ctx context.Context) AssignmentStatusResponseOutput {
 	return o
-}
-
-func (o AssignmentStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssignmentStatusResponse] {
-	return pulumix.Output[AssignmentStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Reason for the status
@@ -285,12 +242,6 @@ func (i AzureDiskArgs) ToAzureDiskOutputWithContext(ctx context.Context) AzureDi
 	return pulumi.ToOutputWithContext(ctx, i).(AzureDiskOutput)
 }
 
-func (i AzureDiskArgs) ToOutput(ctx context.Context) pulumix.Output[AzureDisk] {
-	return pulumix.Output[AzureDisk]{
-		OutputState: i.ToAzureDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AzureDiskArgs) ToAzureDiskPtrOutput() AzureDiskPtrOutput {
 	return i.ToAzureDiskPtrOutputWithContext(context.Background())
 }
@@ -332,12 +283,6 @@ func (i *azureDiskPtrType) ToAzureDiskPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AzureDiskPtrOutput)
 }
 
-func (i *azureDiskPtrType) ToOutput(ctx context.Context) pulumix.Output[*AzureDisk] {
-	return pulumix.Output[*AzureDisk]{
-		OutputState: i.ToAzureDiskPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Azure Disk Pool Properties
 type AzureDiskOutput struct{ *pulumi.OutputState }
 
@@ -361,12 +306,6 @@ func (o AzureDiskOutput) ToAzureDiskPtrOutputWithContext(ctx context.Context) Az
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureDisk) *AzureDisk {
 		return &v
 	}).(AzureDiskPtrOutput)
-}
-
-func (o AzureDiskOutput) ToOutput(ctx context.Context) pulumix.Output[AzureDisk] {
-	return pulumix.Output[AzureDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Only required if individual disk selection is desired. Path to disk, e.g. <nodename>:/dev/sda or WWN. Supports specifying multiple disks (same syntax as tags).
@@ -396,12 +335,6 @@ func (o AzureDiskPtrOutput) ToAzureDiskPtrOutput() AzureDiskPtrOutput {
 
 func (o AzureDiskPtrOutput) ToAzureDiskPtrOutputWithContext(ctx context.Context) AzureDiskPtrOutput {
 	return o
-}
-
-func (o AzureDiskPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureDisk] {
-	return pulumix.Output[*AzureDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureDiskPtrOutput) Elem() AzureDiskOutput {
@@ -471,12 +404,6 @@ func (o AzureDiskResponseOutput) ToAzureDiskResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o AzureDiskResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AzureDiskResponse] {
-	return pulumix.Output[AzureDiskResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Only required if individual disk selection is desired. Path to disk, e.g. <nodename>:/dev/sda or WWN. Supports specifying multiple disks (same syntax as tags).
 func (o AzureDiskResponseOutput) Disks() DiskResponseArrayOutput {
 	return o.ApplyT(func(v AzureDiskResponse) []DiskResponse { return v.Disks }).(DiskResponseArrayOutput)
@@ -509,12 +436,6 @@ func (o AzureDiskResponsePtrOutput) ToAzureDiskResponsePtrOutput() AzureDiskResp
 
 func (o AzureDiskResponsePtrOutput) ToAzureDiskResponsePtrOutputWithContext(ctx context.Context) AzureDiskResponsePtrOutput {
 	return o
-}
-
-func (o AzureDiskResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureDiskResponse] {
-	return pulumix.Output[*AzureDiskResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AzureDiskResponsePtrOutput) Elem() AzureDiskResponseOutput {
@@ -606,12 +527,6 @@ func (i DiskArgs) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskOutput)
 }
 
-func (i DiskArgs) ToOutput(ctx context.Context) pulumix.Output[Disk] {
-	return pulumix.Output[Disk]{
-		OutputState: i.ToDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DiskArrayInput is an input type that accepts DiskArray and DiskArrayOutput values.
 // You can construct a concrete instance of `DiskArrayInput` via:
 //
@@ -637,12 +552,6 @@ func (i DiskArray) ToDiskArrayOutputWithContext(ctx context.Context) DiskArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(DiskArrayOutput)
 }
 
-func (i DiskArray) ToOutput(ctx context.Context) pulumix.Output[[]Disk] {
-	return pulumix.Output[[]Disk]{
-		OutputState: i.ToDiskArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Model for disk for that pool is using
 type DiskOutput struct{ *pulumi.OutputState }
 
@@ -656,12 +565,6 @@ func (o DiskOutput) ToDiskOutput() DiskOutput {
 
 func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return o
-}
-
-func (o DiskOutput) ToOutput(ctx context.Context) pulumix.Output[Disk] {
-	return pulumix.Output[Disk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ID is the disk identifier visible to the OS. It is typically the WWN or disk ID in formats such as eui.e8238fa6bf530001001b448b45263379 or 0x5002cf6cbc5dd460
@@ -686,12 +589,6 @@ func (o DiskArrayOutput) ToDiskArrayOutput() DiskArrayOutput {
 
 func (o DiskArrayOutput) ToDiskArrayOutputWithContext(ctx context.Context) DiskArrayOutput {
 	return o
-}
-
-func (o DiskArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Disk] {
-	return pulumix.Output[[]Disk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskArrayOutput) Index(i pulumi.IntInput) DiskOutput {
@@ -723,12 +620,6 @@ func (o DiskResponseOutput) ToDiskResponseOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o DiskResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DiskResponse] {
-	return pulumix.Output[DiskResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // ID is the disk identifier visible to the OS. It is typically the WWN or disk ID in formats such as eui.e8238fa6bf530001001b448b45263379 or 0x5002cf6cbc5dd460
 func (o DiskResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -751,12 +642,6 @@ func (o DiskResponseArrayOutput) ToDiskResponseArrayOutput() DiskResponseArrayOu
 
 func (o DiskResponseArrayOutput) ToDiskResponseArrayOutputWithContext(ctx context.Context) DiskResponseArrayOutput {
 	return o
-}
-
-func (o DiskResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DiskResponse] {
-	return pulumix.Output[[]DiskResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DiskResponseArrayOutput) Index(i pulumi.IntInput) DiskResponseOutput {
@@ -804,12 +689,6 @@ func (i ElasticSanArgs) ToElasticSanOutputWithContext(ctx context.Context) Elast
 	return pulumi.ToOutputWithContext(ctx, i).(ElasticSanOutput)
 }
 
-func (i ElasticSanArgs) ToOutput(ctx context.Context) pulumix.Output[ElasticSan] {
-	return pulumix.Output[ElasticSan]{
-		OutputState: i.ToElasticSanOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ElasticSanArgs) ToElasticSanPtrOutput() ElasticSanPtrOutput {
 	return i.ToElasticSanPtrOutputWithContext(context.Background())
 }
@@ -851,12 +730,6 @@ func (i *elasticSanPtrType) ToElasticSanPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ElasticSanPtrOutput)
 }
 
-func (i *elasticSanPtrType) ToOutput(ctx context.Context) pulumix.Output[*ElasticSan] {
-	return pulumix.Output[*ElasticSan]{
-		OutputState: i.ToElasticSanPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Elastic San Pool Properties
 type ElasticSanOutput struct{ *pulumi.OutputState }
 
@@ -882,12 +755,6 @@ func (o ElasticSanOutput) ToElasticSanPtrOutputWithContext(ctx context.Context) 
 	}).(ElasticSanPtrOutput)
 }
 
-func (o ElasticSanOutput) ToOutput(ctx context.Context) pulumix.Output[ElasticSan] {
-	return pulumix.Output[ElasticSan]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Encryption specifies the encryption configuration for the Azure Disk pool
 func (o ElasticSanOutput) Encryption() EncryptionPtrOutput {
 	return o.ApplyT(func(v ElasticSan) *Encryption { return v.Encryption }).(EncryptionPtrOutput)
@@ -910,12 +777,6 @@ func (o ElasticSanPtrOutput) ToElasticSanPtrOutput() ElasticSanPtrOutput {
 
 func (o ElasticSanPtrOutput) ToElasticSanPtrOutputWithContext(ctx context.Context) ElasticSanPtrOutput {
 	return o
-}
-
-func (o ElasticSanPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ElasticSan] {
-	return pulumix.Output[*ElasticSan]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElasticSanPtrOutput) Elem() ElasticSanOutput {
@@ -973,12 +834,6 @@ func (o ElasticSanResponseOutput) ToElasticSanResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o ElasticSanResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ElasticSanResponse] {
-	return pulumix.Output[ElasticSanResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Encryption specifies the encryption configuration for the Azure Disk pool
 func (o ElasticSanResponseOutput) Encryption() EncryptionResponsePtrOutput {
 	return o.ApplyT(func(v ElasticSanResponse) *EncryptionResponse { return v.Encryption }).(EncryptionResponsePtrOutput)
@@ -1006,12 +861,6 @@ func (o ElasticSanResponsePtrOutput) ToElasticSanResponsePtrOutput() ElasticSanR
 
 func (o ElasticSanResponsePtrOutput) ToElasticSanResponsePtrOutputWithContext(ctx context.Context) ElasticSanResponsePtrOutput {
 	return o
-}
-
-func (o ElasticSanResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ElasticSanResponse] {
-	return pulumix.Output[*ElasticSanResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElasticSanResponsePtrOutput) Elem() ElasticSanResponseOutput {
@@ -1079,12 +928,6 @@ func (o ElasticSanVolumePropertiesResponseOutput) ToElasticSanVolumePropertiesRe
 	return o
 }
 
-func (o ElasticSanVolumePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ElasticSanVolumePropertiesResponse] {
-	return pulumix.Output[ElasticSanVolumePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // iSCSI Target IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:server"
 func (o ElasticSanVolumePropertiesResponseOutput) TargetIqn() pulumi.StringOutput {
 	return o.ApplyT(func(v ElasticSanVolumePropertiesResponse) string { return v.TargetIqn }).(pulumi.StringOutput)
@@ -1143,12 +986,6 @@ func (i EncryptionArgs) ToEncryptionOutputWithContext(ctx context.Context) Encry
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionOutput)
 }
 
-func (i EncryptionArgs) ToOutput(ctx context.Context) pulumix.Output[Encryption] {
-	return pulumix.Output[Encryption]{
-		OutputState: i.ToEncryptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EncryptionArgs) ToEncryptionPtrOutput() EncryptionPtrOutput {
 	return i.ToEncryptionPtrOutputWithContext(context.Background())
 }
@@ -1190,12 +1027,6 @@ func (i *encryptionPtrType) ToEncryptionPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionPtrOutput)
 }
 
-func (i *encryptionPtrType) ToOutput(ctx context.Context) pulumix.Output[*Encryption] {
-	return pulumix.Output[*Encryption]{
-		OutputState: i.ToEncryptionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Encryption key properties for the pool.
 type EncryptionOutput struct{ *pulumi.OutputState }
 
@@ -1219,12 +1050,6 @@ func (o EncryptionOutput) ToEncryptionPtrOutputWithContext(ctx context.Context) 
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v Encryption) *Encryption {
 		return &v
 	}).(EncryptionPtrOutput)
-}
-
-func (o EncryptionOutput) ToOutput(ctx context.Context) pulumix.Output[Encryption] {
-	return pulumix.Output[Encryption]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The managed service identities assigned to this resource.
@@ -1254,12 +1079,6 @@ func (o EncryptionPtrOutput) ToEncryptionPtrOutput() EncryptionPtrOutput {
 
 func (o EncryptionPtrOutput) ToEncryptionPtrOutputWithContext(ctx context.Context) EncryptionPtrOutput {
 	return o
-}
-
-func (o EncryptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Encryption] {
-	return pulumix.Output[*Encryption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EncryptionPtrOutput) Elem() EncryptionOutput {
@@ -1327,12 +1146,6 @@ func (o EncryptionResponseOutput) ToEncryptionResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o EncryptionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EncryptionResponse] {
-	return pulumix.Output[EncryptionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The managed service identities assigned to this resource.
 func (o EncryptionResponseOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v EncryptionResponse) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
@@ -1360,12 +1173,6 @@ func (o EncryptionResponsePtrOutput) ToEncryptionResponsePtrOutput() EncryptionR
 
 func (o EncryptionResponsePtrOutput) ToEncryptionResponsePtrOutputWithContext(ctx context.Context) EncryptionResponsePtrOutput {
 	return o
-}
-
-func (o EncryptionResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EncryptionResponse] {
-	return pulumix.Output[*EncryptionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EncryptionResponsePtrOutput) Elem() EncryptionResponseOutput {
@@ -1471,12 +1278,6 @@ func (i EphemeralDiskArgs) ToEphemeralDiskOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(EphemeralDiskOutput)
 }
 
-func (i EphemeralDiskArgs) ToOutput(ctx context.Context) pulumix.Output[EphemeralDisk] {
-	return pulumix.Output[EphemeralDisk]{
-		OutputState: i.ToEphemeralDiskOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EphemeralDiskArgs) ToEphemeralDiskPtrOutput() EphemeralDiskPtrOutput {
 	return i.ToEphemeralDiskPtrOutputWithContext(context.Background())
 }
@@ -1518,12 +1319,6 @@ func (i *ephemeralDiskPtrType) ToEphemeralDiskPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(EphemeralDiskPtrOutput)
 }
 
-func (i *ephemeralDiskPtrType) ToOutput(ctx context.Context) pulumix.Output[*EphemeralDisk] {
-	return pulumix.Output[*EphemeralDisk]{
-		OutputState: i.ToEphemeralDiskPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Ephemeral Disk Pool Properties
 type EphemeralDiskOutput struct{ *pulumi.OutputState }
 
@@ -1549,12 +1344,6 @@ func (o EphemeralDiskOutput) ToEphemeralDiskPtrOutputWithContext(ctx context.Con
 	}).(EphemeralDiskPtrOutput)
 }
 
-func (o EphemeralDiskOutput) ToOutput(ctx context.Context) pulumix.Output[EphemeralDisk] {
-	return pulumix.Output[EphemeralDisk]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Only required if individual disk selection is desired. Path to disk, e.g. <nodename>:/dev/sda or WWN. Supports specifying multiple disks (same syntax as tags).
 func (o EphemeralDiskOutput) Disks() DiskArrayOutput {
 	return o.ApplyT(func(v EphemeralDisk) []Disk { return v.Disks }).(DiskArrayOutput)
@@ -1577,12 +1366,6 @@ func (o EphemeralDiskPtrOutput) ToEphemeralDiskPtrOutput() EphemeralDiskPtrOutpu
 
 func (o EphemeralDiskPtrOutput) ToEphemeralDiskPtrOutputWithContext(ctx context.Context) EphemeralDiskPtrOutput {
 	return o
-}
-
-func (o EphemeralDiskPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EphemeralDisk] {
-	return pulumix.Output[*EphemeralDisk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EphemeralDiskPtrOutput) Elem() EphemeralDiskOutput {
@@ -1651,12 +1434,6 @@ func (o EphemeralDiskResponseOutput) ToEphemeralDiskResponseOutputWithContext(ct
 	return o
 }
 
-func (o EphemeralDiskResponseOutput) ToOutput(ctx context.Context) pulumix.Output[EphemeralDiskResponse] {
-	return pulumix.Output[EphemeralDiskResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Only required if individual disk selection is desired. Path to disk, e.g. <nodename>:/dev/sda or WWN. Supports specifying multiple disks (same syntax as tags).
 func (o EphemeralDiskResponseOutput) Disks() DiskResponseArrayOutput {
 	return o.ApplyT(func(v EphemeralDiskResponse) []DiskResponse { return v.Disks }).(DiskResponseArrayOutput)
@@ -1679,12 +1456,6 @@ func (o EphemeralDiskResponsePtrOutput) ToEphemeralDiskResponsePtrOutput() Ephem
 
 func (o EphemeralDiskResponsePtrOutput) ToEphemeralDiskResponsePtrOutputWithContext(ctx context.Context) EphemeralDiskResponsePtrOutput {
 	return o
-}
-
-func (o EphemeralDiskResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EphemeralDiskResponse] {
-	return pulumix.Output[*EphemeralDiskResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EphemeralDiskResponsePtrOutput) Elem() EphemeralDiskResponseOutput {
@@ -1756,12 +1527,6 @@ func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
 }
 
-func (i ManagedServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
-	return pulumix.Output[ManagedServiceIdentity]{
-		OutputState: i.ToManagedServiceIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
 	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
 }
@@ -1803,12 +1568,6 @@ func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
 }
 
-func (i *managedServiceIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
-	return pulumix.Output[*ManagedServiceIdentity]{
-		OutputState: i.ToManagedServiceIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Managed service identity (system assigned and/or user assigned identities)
 type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -1834,12 +1593,6 @@ func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithConte
 	}).(ManagedServiceIdentityPtrOutput)
 }
 
-func (o ManagedServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
-	return pulumix.Output[ManagedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
@@ -1862,12 +1615,6 @@ func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() Man
 
 func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
 	return o
-}
-
-func (o ManagedServiceIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentity] {
-	return pulumix.Output[*ManagedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
@@ -1927,12 +1674,6 @@ func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOu
 	return o
 }
 
-func (o ManagedServiceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentityResponse] {
-	return pulumix.Output[ManagedServiceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
 func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -1967,12 +1708,6 @@ func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityRespons
 
 func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
 	return o
-}
-
-func (o ManagedServiceIdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityResponse] {
-	return pulumix.Output[*ManagedServiceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
@@ -2088,12 +1823,6 @@ func (i PoolTypeArgs) ToPoolTypeOutputWithContext(ctx context.Context) PoolTypeO
 	return pulumi.ToOutputWithContext(ctx, i).(PoolTypeOutput)
 }
 
-func (i PoolTypeArgs) ToOutput(ctx context.Context) pulumix.Output[PoolType] {
-	return pulumix.Output[PoolType]{
-		OutputState: i.ToPoolTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Type of the Pool: ephemeralDisk, azureDisk, or elasticsan
 type PoolTypeOutput struct{ *pulumi.OutputState }
 
@@ -2107,12 +1836,6 @@ func (o PoolTypeOutput) ToPoolTypeOutput() PoolTypeOutput {
 
 func (o PoolTypeOutput) ToPoolTypeOutputWithContext(ctx context.Context) PoolTypeOutput {
 	return o
-}
-
-func (o PoolTypeOutput) ToOutput(ctx context.Context) pulumix.Output[PoolType] {
-	return pulumix.Output[PoolType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Disk Pool Properties
@@ -2164,12 +1887,6 @@ func (o PoolTypeResponseOutput) ToPoolTypeResponseOutput() PoolTypeResponseOutpu
 
 func (o PoolTypeResponseOutput) ToPoolTypeResponseOutputWithContext(ctx context.Context) PoolTypeResponseOutput {
 	return o
-}
-
-func (o PoolTypeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PoolTypeResponse] {
-	return pulumix.Output[PoolTypeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Disk Pool Properties
@@ -2246,12 +1963,6 @@ func (i RequestsArgs) ToRequestsOutputWithContext(ctx context.Context) RequestsO
 	return pulumi.ToOutputWithContext(ctx, i).(RequestsOutput)
 }
 
-func (i RequestsArgs) ToOutput(ctx context.Context) pulumix.Output[Requests] {
-	return pulumix.Output[Requests]{
-		OutputState: i.ToRequestsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i RequestsArgs) ToRequestsPtrOutput() RequestsPtrOutput {
 	return i.ToRequestsPtrOutputWithContext(context.Background())
 }
@@ -2293,12 +2004,6 @@ func (i *requestsPtrType) ToRequestsPtrOutputWithContext(ctx context.Context) Re
 	return pulumi.ToOutputWithContext(ctx, i).(RequestsPtrOutput)
 }
 
-func (i *requestsPtrType) ToOutput(ctx context.Context) pulumix.Output[*Requests] {
-	return pulumix.Output[*Requests]{
-		OutputState: i.ToRequestsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Requests for capacity for the pool.
 type RequestsOutput struct{ *pulumi.OutputState }
 
@@ -2324,12 +2029,6 @@ func (o RequestsOutput) ToRequestsPtrOutputWithContext(ctx context.Context) Requ
 	}).(RequestsPtrOutput)
 }
 
-func (o RequestsOutput) ToOutput(ctx context.Context) pulumix.Output[Requests] {
-	return pulumix.Output[Requests]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Requested capacity of the pool in GiB.
 func (o RequestsOutput) Storage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v Requests) *float64 { return v.Storage }).(pulumi.Float64PtrOutput)
@@ -2347,12 +2046,6 @@ func (o RequestsPtrOutput) ToRequestsPtrOutput() RequestsPtrOutput {
 
 func (o RequestsPtrOutput) ToRequestsPtrOutputWithContext(ctx context.Context) RequestsPtrOutput {
 	return o
-}
-
-func (o RequestsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Requests] {
-	return pulumix.Output[*Requests]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RequestsPtrOutput) Elem() RequestsOutput {
@@ -2409,12 +2102,6 @@ func (o RequestsResponseOutput) ToRequestsResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o RequestsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[RequestsResponse] {
-	return pulumix.Output[RequestsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Requested capacity of the pool in GiB.
 func (o RequestsResponseOutput) Storage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v RequestsResponse) *float64 { return v.Storage }).(pulumi.Float64PtrOutput)
@@ -2432,12 +2119,6 @@ func (o RequestsResponsePtrOutput) ToRequestsResponsePtrOutput() RequestsRespons
 
 func (o RequestsResponsePtrOutput) ToRequestsResponsePtrOutputWithContext(ctx context.Context) RequestsResponsePtrOutput {
 	return o
-}
-
-func (o RequestsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RequestsResponse] {
-	return pulumix.Output[*RequestsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RequestsResponsePtrOutput) Elem() RequestsResponseOutput {
@@ -2481,12 +2162,6 @@ func (o ResourceOperationalStatusResponseOutput) ToResourceOperationalStatusResp
 
 func (o ResourceOperationalStatusResponseOutput) ToResourceOperationalStatusResponseOutputWithContext(ctx context.Context) ResourceOperationalStatusResponseOutput {
 	return o
-}
-
-func (o ResourceOperationalStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceOperationalStatusResponse] {
-	return pulumix.Output[ResourceOperationalStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Reason for state.
@@ -2554,12 +2229,6 @@ func (i ResourcesArgs) ToResourcesOutputWithContext(ctx context.Context) Resourc
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcesOutput)
 }
 
-func (i ResourcesArgs) ToOutput(ctx context.Context) pulumix.Output[Resources] {
-	return pulumix.Output[Resources]{
-		OutputState: i.ToResourcesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ResourcesArgs) ToResourcesPtrOutput() ResourcesPtrOutput {
 	return i.ToResourcesPtrOutputWithContext(context.Background())
 }
@@ -2601,12 +2270,6 @@ func (i *resourcesPtrType) ToResourcesPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcesPtrOutput)
 }
 
-func (i *resourcesPtrType) ToOutput(ctx context.Context) pulumix.Output[*Resources] {
-	return pulumix.Output[*Resources]{
-		OutputState: i.ToResourcesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Resource Requests for the pool.
 type ResourcesOutput struct{ *pulumi.OutputState }
 
@@ -2632,12 +2295,6 @@ func (o ResourcesOutput) ToResourcesPtrOutputWithContext(ctx context.Context) Re
 	}).(ResourcesPtrOutput)
 }
 
-func (o ResourcesOutput) ToOutput(ctx context.Context) pulumix.Output[Resources] {
-	return pulumix.Output[Resources]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Requests for capacity for the pool.
 func (o ResourcesOutput) Requests() RequestsPtrOutput {
 	return o.ApplyT(func(v Resources) *Requests { return v.Requests }).(RequestsPtrOutput)
@@ -2655,12 +2312,6 @@ func (o ResourcesPtrOutput) ToResourcesPtrOutput() ResourcesPtrOutput {
 
 func (o ResourcesPtrOutput) ToResourcesPtrOutputWithContext(ctx context.Context) ResourcesPtrOutput {
 	return o
-}
-
-func (o ResourcesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Resources] {
-	return pulumix.Output[*Resources]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourcesPtrOutput) Elem() ResourcesOutput {
@@ -2715,12 +2366,6 @@ func (o ResourcesResponseOutput) ToResourcesResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o ResourcesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourcesResponse] {
-	return pulumix.Output[ResourcesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Requests for capacity for the pool.
 func (o ResourcesResponseOutput) Requests() RequestsResponsePtrOutput {
 	return o.ApplyT(func(v ResourcesResponse) *RequestsResponse { return v.Requests }).(RequestsResponsePtrOutput)
@@ -2738,12 +2383,6 @@ func (o ResourcesResponsePtrOutput) ToResourcesResponsePtrOutput() ResourcesResp
 
 func (o ResourcesResponsePtrOutput) ToResourcesResponsePtrOutputWithContext(ctx context.Context) ResourcesResponsePtrOutput {
 	return o
-}
-
-func (o ResourcesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourcesResponse] {
-	return pulumix.Output[*ResourcesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourcesResponsePtrOutput) Elem() ResourcesResponseOutput {
@@ -2795,12 +2434,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -2856,12 +2489,6 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
-func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
-	return pulumix.Output[UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The client ID of the assigned identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -2884,12 +2511,6 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
-	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
@@ -2917,12 +2538,6 @@ func (o VolumeTypeResponseOutput) ToVolumeTypeResponseOutput() VolumeTypeRespons
 
 func (o VolumeTypeResponseOutput) ToVolumeTypeResponseOutputWithContext(ctx context.Context) VolumeTypeResponseOutput {
 	return o
-}
-
-func (o VolumeTypeResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VolumeTypeResponse] {
-	return pulumix.Output[VolumeTypeResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Properties of the ElasticSAN iSCSI target

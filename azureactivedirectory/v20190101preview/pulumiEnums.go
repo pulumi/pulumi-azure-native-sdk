@@ -83,12 +83,6 @@ func (o B2CResourceSKUNameOutput) ToB2CResourceSKUNamePtrOutputWithContext(ctx c
 	}).(B2CResourceSKUNamePtrOutput)
 }
 
-func (o B2CResourceSKUNameOutput) ToOutput(ctx context.Context) pulumix.Output[B2CResourceSKUName] {
-	return pulumix.Output[B2CResourceSKUName]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o B2CResourceSKUNameOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o B2CResourceSKUNamePtrOutput) ToB2CResourceSKUNamePtrOutput() B2CResource
 
 func (o B2CResourceSKUNamePtrOutput) ToB2CResourceSKUNamePtrOutputWithContext(ctx context.Context) B2CResourceSKUNamePtrOutput {
 	return o
-}
-
-func (o B2CResourceSKUNamePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*B2CResourceSKUName] {
-	return pulumix.Output[*B2CResourceSKUName]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o B2CResourceSKUNamePtrOutput) Elem() B2CResourceSKUNameOutput {
@@ -266,12 +254,6 @@ func (o B2CResourceSKUTierOutput) ToB2CResourceSKUTierPtrOutputWithContext(ctx c
 	}).(B2CResourceSKUTierPtrOutput)
 }
 
-func (o B2CResourceSKUTierOutput) ToOutput(ctx context.Context) pulumix.Output[B2CResourceSKUTier] {
-	return pulumix.Output[B2CResourceSKUTier]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o B2CResourceSKUTierOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -305,12 +287,6 @@ func (o B2CResourceSKUTierPtrOutput) ToB2CResourceSKUTierPtrOutput() B2CResource
 
 func (o B2CResourceSKUTierPtrOutput) ToB2CResourceSKUTierPtrOutputWithContext(ctx context.Context) B2CResourceSKUTierPtrOutput {
 	return o
-}
-
-func (o B2CResourceSKUTierPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*B2CResourceSKUTier] {
-	return pulumix.Output[*B2CResourceSKUTier]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o B2CResourceSKUTierPtrOutput) Elem() B2CResourceSKUTierOutput {

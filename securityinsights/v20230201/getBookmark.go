@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a bookmark.
@@ -111,12 +110,6 @@ func (o LookupBookmarkResultOutput) ToLookupBookmarkResultOutput() LookupBookmar
 
 func (o LookupBookmarkResultOutput) ToLookupBookmarkResultOutputWithContext(ctx context.Context) LookupBookmarkResultOutput {
 	return o
-}
-
-func (o LookupBookmarkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBookmarkResult] {
-	return pulumix.Output[LookupBookmarkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time the bookmark was created

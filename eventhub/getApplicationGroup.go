@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an ApplicationGroup for a Namespace.
@@ -94,12 +93,6 @@ func (o LookupApplicationGroupResultOutput) ToLookupApplicationGroupResultOutput
 
 func (o LookupApplicationGroupResultOutput) ToLookupApplicationGroupResultOutputWithContext(ctx context.Context) LookupApplicationGroupResultOutput {
 	return o
-}
-
-func (o LookupApplicationGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApplicationGroupResult] {
-	return pulumix.Output[LookupApplicationGroupResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Unique identifier for application group.Supports SAS(SASKeyName=KeyName) or AAD(AADAppID=Guid)

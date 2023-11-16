@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -41,12 +40,6 @@ func (o IscsiTargetInfoResponseOutput) ToIscsiTargetInfoResponseOutput() IscsiTa
 
 func (o IscsiTargetInfoResponseOutput) ToIscsiTargetInfoResponseOutputWithContext(ctx context.Context) IscsiTargetInfoResponseOutput {
 	return o
-}
-
-func (o IscsiTargetInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IscsiTargetInfoResponse] {
-	return pulumix.Output[IscsiTargetInfoResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // State of the operation on the resource.
@@ -109,12 +102,6 @@ func (i NetworkRuleSetArgs) ToNetworkRuleSetOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkRuleSetOutput)
 }
 
-func (i NetworkRuleSetArgs) ToOutput(ctx context.Context) pulumix.Output[NetworkRuleSet] {
-	return pulumix.Output[NetworkRuleSet]{
-		OutputState: i.ToNetworkRuleSetOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i NetworkRuleSetArgs) ToNetworkRuleSetPtrOutput() NetworkRuleSetPtrOutput {
 	return i.ToNetworkRuleSetPtrOutputWithContext(context.Background())
 }
@@ -156,12 +143,6 @@ func (i *networkRuleSetPtrType) ToNetworkRuleSetPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkRuleSetPtrOutput)
 }
 
-func (i *networkRuleSetPtrType) ToOutput(ctx context.Context) pulumix.Output[*NetworkRuleSet] {
-	return pulumix.Output[*NetworkRuleSet]{
-		OutputState: i.ToNetworkRuleSetPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A set of rules governing the network accessibility.
 type NetworkRuleSetOutput struct{ *pulumi.OutputState }
 
@@ -187,12 +168,6 @@ func (o NetworkRuleSetOutput) ToNetworkRuleSetPtrOutputWithContext(ctx context.C
 	}).(NetworkRuleSetPtrOutput)
 }
 
-func (o NetworkRuleSetOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkRuleSet] {
-	return pulumix.Output[NetworkRuleSet]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of virtual network rules.
 func (o NetworkRuleSetOutput) VirtualNetworkRules() VirtualNetworkRuleArrayOutput {
 	return o.ApplyT(func(v NetworkRuleSet) []VirtualNetworkRule { return v.VirtualNetworkRules }).(VirtualNetworkRuleArrayOutput)
@@ -210,12 +185,6 @@ func (o NetworkRuleSetPtrOutput) ToNetworkRuleSetPtrOutput() NetworkRuleSetPtrOu
 
 func (o NetworkRuleSetPtrOutput) ToNetworkRuleSetPtrOutputWithContext(ctx context.Context) NetworkRuleSetPtrOutput {
 	return o
-}
-
-func (o NetworkRuleSetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkRuleSet] {
-	return pulumix.Output[*NetworkRuleSet]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkRuleSetPtrOutput) Elem() NetworkRuleSetOutput {
@@ -259,12 +228,6 @@ func (o NetworkRuleSetResponseOutput) ToNetworkRuleSetResponseOutputWithContext(
 	return o
 }
 
-func (o NetworkRuleSetResponseOutput) ToOutput(ctx context.Context) pulumix.Output[NetworkRuleSetResponse] {
-	return pulumix.Output[NetworkRuleSetResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of virtual network rules.
 func (o NetworkRuleSetResponseOutput) VirtualNetworkRules() VirtualNetworkRuleResponseArrayOutput {
 	return o.ApplyT(func(v NetworkRuleSetResponse) []VirtualNetworkRuleResponse { return v.VirtualNetworkRules }).(VirtualNetworkRuleResponseArrayOutput)
@@ -282,12 +245,6 @@ func (o NetworkRuleSetResponsePtrOutput) ToNetworkRuleSetResponsePtrOutput() Net
 
 func (o NetworkRuleSetResponsePtrOutput) ToNetworkRuleSetResponsePtrOutputWithContext(ctx context.Context) NetworkRuleSetResponsePtrOutput {
 	return o
-}
-
-func (o NetworkRuleSetResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NetworkRuleSetResponse] {
-	return pulumix.Output[*NetworkRuleSetResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NetworkRuleSetResponsePtrOutput) Elem() NetworkRuleSetResponseOutput {
@@ -343,12 +300,6 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 
 func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseOutput {
 	return o
-}
-
-func (o PrivateEndpointConnectionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointConnectionResponse] {
-	return pulumix.Output[PrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of resources private endpoint is mapped
@@ -407,12 +358,6 @@ func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectio
 	return o
 }
 
-func (o PrivateEndpointConnectionResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]PrivateEndpointConnectionResponse] {
-	return pulumix.Output[[]PrivateEndpointConnectionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
@@ -440,12 +385,6 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
-func (o PrivateEndpointResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateEndpointResponse] {
-	return pulumix.Output[PrivateEndpointResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ARM identifier for Private Endpoint
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -463,12 +402,6 @@ func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() P
 
 func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
 	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointResponse] {
-	return pulumix.Output[*PrivateEndpointResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
@@ -534,12 +467,6 @@ func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionSta
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
 }
 
-func (i PrivateLinkServiceConnectionStateArgs) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
-	return pulumix.Output[PrivateLinkServiceConnectionState]{
-		OutputState: i.ToPrivateLinkServiceConnectionStateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Response for Private Link Service Connection state
 type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
@@ -553,12 +480,6 @@ func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionS
 
 func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionState] {
-	return pulumix.Output[PrivateLinkServiceConnectionState]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -599,12 +520,6 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 
 func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
 	return o
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrivateLinkServiceConnectionStateResponse] {
-	return pulumix.Output[PrivateLinkServiceConnectionStateResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A message indicating if changes on the service provider require any updates on the consumer.
@@ -661,12 +576,6 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
-func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The SKU name. Required for account creation; optional for update.
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -680,12 +589,6 @@ func (o SkuOutput) ToSkuOutput() SkuOutput {
 
 func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return o
-}
-
-func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The sku name.
@@ -719,12 +622,6 @@ func (o SkuResponseOutput) ToSkuResponseOutput() SkuResponseOutput {
 
 func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) SkuResponseOutput {
 	return o
-}
-
-func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
-	return pulumix.Output[SkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The sku name.
@@ -776,12 +673,6 @@ func (i SourceCreationDataArgs) ToSourceCreationDataOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(SourceCreationDataOutput)
 }
 
-func (i SourceCreationDataArgs) ToOutput(ctx context.Context) pulumix.Output[SourceCreationData] {
-	return pulumix.Output[SourceCreationData]{
-		OutputState: i.ToSourceCreationDataOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SourceCreationDataArgs) ToSourceCreationDataPtrOutput() SourceCreationDataPtrOutput {
 	return i.ToSourceCreationDataPtrOutputWithContext(context.Background())
 }
@@ -823,12 +714,6 @@ func (i *sourceCreationDataPtrType) ToSourceCreationDataPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(SourceCreationDataPtrOutput)
 }
 
-func (i *sourceCreationDataPtrType) ToOutput(ctx context.Context) pulumix.Output[*SourceCreationData] {
-	return pulumix.Output[*SourceCreationData]{
-		OutputState: i.ToSourceCreationDataPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Data source used when creating the volume.
 type SourceCreationDataOutput struct{ *pulumi.OutputState }
 
@@ -854,12 +739,6 @@ func (o SourceCreationDataOutput) ToSourceCreationDataPtrOutputWithContext(ctx c
 	}).(SourceCreationDataPtrOutput)
 }
 
-func (o SourceCreationDataOutput) ToOutput(ctx context.Context) pulumix.Output[SourceCreationData] {
-	return pulumix.Output[SourceCreationData]{
-		OutputState: o.OutputState,
-	}
-}
-
 // This enumerates the possible sources of a volume creation.
 func (o SourceCreationDataOutput) CreateSource() VolumeCreateOptionPtrOutput {
 	return o.ApplyT(func(v SourceCreationData) *VolumeCreateOption { return v.CreateSource }).(VolumeCreateOptionPtrOutput)
@@ -882,12 +761,6 @@ func (o SourceCreationDataPtrOutput) ToSourceCreationDataPtrOutput() SourceCreat
 
 func (o SourceCreationDataPtrOutput) ToSourceCreationDataPtrOutputWithContext(ctx context.Context) SourceCreationDataPtrOutput {
 	return o
-}
-
-func (o SourceCreationDataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceCreationData] {
-	return pulumix.Output[*SourceCreationData]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceCreationDataPtrOutput) Elem() SourceCreationDataOutput {
@@ -943,12 +816,6 @@ func (o SourceCreationDataResponseOutput) ToSourceCreationDataResponseOutputWith
 	return o
 }
 
-func (o SourceCreationDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SourceCreationDataResponse] {
-	return pulumix.Output[SourceCreationDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // This enumerates the possible sources of a volume creation.
 func (o SourceCreationDataResponseOutput) CreateSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SourceCreationDataResponse) *string { return v.CreateSource }).(pulumi.StringPtrOutput)
@@ -971,12 +838,6 @@ func (o SourceCreationDataResponsePtrOutput) ToSourceCreationDataResponsePtrOutp
 
 func (o SourceCreationDataResponsePtrOutput) ToSourceCreationDataResponsePtrOutputWithContext(ctx context.Context) SourceCreationDataResponsePtrOutput {
 	return o
-}
-
-func (o SourceCreationDataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceCreationDataResponse] {
-	return pulumix.Output[*SourceCreationDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SourceCreationDataResponsePtrOutput) Elem() SourceCreationDataResponseOutput {
@@ -1038,12 +899,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC).
@@ -1139,12 +994,6 @@ func (i VirtualNetworkRuleArgs) ToVirtualNetworkRuleOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkRuleOutput)
 }
 
-func (i VirtualNetworkRuleArgs) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkRule] {
-	return pulumix.Output[VirtualNetworkRule]{
-		OutputState: i.ToVirtualNetworkRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // VirtualNetworkRuleArrayInput is an input type that accepts VirtualNetworkRuleArray and VirtualNetworkRuleArrayOutput values.
 // You can construct a concrete instance of `VirtualNetworkRuleArrayInput` via:
 //
@@ -1170,12 +1019,6 @@ func (i VirtualNetworkRuleArray) ToVirtualNetworkRuleArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkRuleArrayOutput)
 }
 
-func (i VirtualNetworkRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkRule] {
-	return pulumix.Output[[]VirtualNetworkRule]{
-		OutputState: i.ToVirtualNetworkRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Virtual Network rule.
 type VirtualNetworkRuleOutput struct{ *pulumi.OutputState }
 
@@ -1189,12 +1032,6 @@ func (o VirtualNetworkRuleOutput) ToVirtualNetworkRuleOutput() VirtualNetworkRul
 
 func (o VirtualNetworkRuleOutput) ToVirtualNetworkRuleOutputWithContext(ctx context.Context) VirtualNetworkRuleOutput {
 	return o
-}
-
-func (o VirtualNetworkRuleOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkRule] {
-	return pulumix.Output[VirtualNetworkRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The action of virtual network rule.
@@ -1219,12 +1056,6 @@ func (o VirtualNetworkRuleArrayOutput) ToVirtualNetworkRuleArrayOutput() Virtual
 
 func (o VirtualNetworkRuleArrayOutput) ToVirtualNetworkRuleArrayOutputWithContext(ctx context.Context) VirtualNetworkRuleArrayOutput {
 	return o
-}
-
-func (o VirtualNetworkRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkRule] {
-	return pulumix.Output[[]VirtualNetworkRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualNetworkRuleArrayOutput) Index(i pulumi.IntInput) VirtualNetworkRuleOutput {
@@ -1271,12 +1102,6 @@ func (o VirtualNetworkRuleResponseOutput) ToVirtualNetworkRuleResponseOutputWith
 	return o
 }
 
-func (o VirtualNetworkRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VirtualNetworkRuleResponse] {
-	return pulumix.Output[VirtualNetworkRuleResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The action of virtual network rule.
 func (o VirtualNetworkRuleResponseOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkRuleResponse) *string { return v.Action }).(pulumi.StringPtrOutput)
@@ -1304,12 +1129,6 @@ func (o VirtualNetworkRuleResponseArrayOutput) ToVirtualNetworkRuleResponseArray
 
 func (o VirtualNetworkRuleResponseArrayOutput) ToVirtualNetworkRuleResponseArrayOutputWithContext(ctx context.Context) VirtualNetworkRuleResponseArrayOutput {
 	return o
-}
-
-func (o VirtualNetworkRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VirtualNetworkRuleResponse] {
-	return pulumix.Output[[]VirtualNetworkRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VirtualNetworkRuleResponseArrayOutput) Index(i pulumi.IntInput) VirtualNetworkRuleResponseOutput {

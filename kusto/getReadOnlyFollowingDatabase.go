@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a database.
@@ -107,12 +106,6 @@ func (o LookupReadOnlyFollowingDatabaseResultOutput) ToLookupReadOnlyFollowingDa
 
 func (o LookupReadOnlyFollowingDatabaseResultOutput) ToLookupReadOnlyFollowingDatabaseResultOutputWithContext(ctx context.Context) LookupReadOnlyFollowingDatabaseResultOutput {
 	return o
-}
-
-func (o LookupReadOnlyFollowingDatabaseResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupReadOnlyFollowingDatabaseResult] {
-	return pulumix.Output[LookupReadOnlyFollowingDatabaseResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the attached database configuration cluster

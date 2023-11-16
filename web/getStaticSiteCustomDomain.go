@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Description for Gets an existing custom domain for a particular static site.
@@ -95,12 +94,6 @@ func (o LookupStaticSiteCustomDomainResultOutput) ToLookupStaticSiteCustomDomain
 
 func (o LookupStaticSiteCustomDomainResultOutput) ToLookupStaticSiteCustomDomainResultOutputWithContext(ctx context.Context) LookupStaticSiteCustomDomainResultOutput {
 	return o
-}
-
-func (o LookupStaticSiteCustomDomainResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStaticSiteCustomDomainResult] {
-	return pulumix.Output[LookupStaticSiteCustomDomainResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The date and time on which the custom domain was created for the static site.

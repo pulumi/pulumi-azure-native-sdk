@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // list source configurations for a Linker.
@@ -73,12 +72,6 @@ func (o ListLinkerConfigurationsResultOutput) ToListLinkerConfigurationsResultOu
 
 func (o ListLinkerConfigurationsResultOutput) ToListLinkerConfigurationsResultOutputWithContext(ctx context.Context) ListLinkerConfigurationsResultOutput {
 	return o
-}
-
-func (o ListLinkerConfigurationsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListLinkerConfigurationsResult] {
-	return pulumix.Output[ListLinkerConfigurationsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The configuration properties for source resource.

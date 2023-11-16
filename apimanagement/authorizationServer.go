@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // External OAuth authorization server settings.
@@ -293,12 +292,6 @@ func (i *AuthorizationServer) ToAuthorizationServerOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationServerOutput)
 }
 
-func (i *AuthorizationServer) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationServer] {
-	return pulumix.Output[*AuthorizationServer]{
-		OutputState: i.ToAuthorizationServerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AuthorizationServerOutput struct{ *pulumi.OutputState }
 
 func (AuthorizationServerOutput) ElementType() reflect.Type {
@@ -311,12 +304,6 @@ func (o AuthorizationServerOutput) ToAuthorizationServerOutput() AuthorizationSe
 
 func (o AuthorizationServerOutput) ToAuthorizationServerOutputWithContext(ctx context.Context) AuthorizationServerOutput {
 	return o
-}
-
-func (o AuthorizationServerOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthorizationServer] {
-	return pulumix.Output[*AuthorizationServer]{
-		OutputState: o.OutputState,
-	}
 }
 
 // OAuth authorization endpoint. See http://tools.ietf.org/html/rfc6749#section-3.2.

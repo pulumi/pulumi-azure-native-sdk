@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an attached NetworkConnection.
@@ -93,12 +92,6 @@ func (o LookupAttachedNetworkByDevCenterResultOutput) ToLookupAttachedNetworkByD
 
 func (o LookupAttachedNetworkByDevCenterResultOutput) ToLookupAttachedNetworkByDevCenterResultOutputWithContext(ctx context.Context) LookupAttachedNetworkByDevCenterResultOutput {
 	return o
-}
-
-func (o LookupAttachedNetworkByDevCenterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAttachedNetworkByDevCenterResult] {
-	return pulumix.Output[LookupAttachedNetworkByDevCenterResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // AAD Join type of the network. This is populated based on the referenced Network Connection.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Storage Mover resource, which is a container for a group of Agents, Projects, and Endpoints.
@@ -143,12 +142,6 @@ func (i *StorageMover) ToStorageMoverOutputWithContext(ctx context.Context) Stor
 	return pulumi.ToOutputWithContext(ctx, i).(StorageMoverOutput)
 }
 
-func (i *StorageMover) ToOutput(ctx context.Context) pulumix.Output[*StorageMover] {
-	return pulumix.Output[*StorageMover]{
-		OutputState: i.ToStorageMoverOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StorageMoverOutput struct{ *pulumi.OutputState }
 
 func (StorageMoverOutput) ElementType() reflect.Type {
@@ -161,12 +154,6 @@ func (o StorageMoverOutput) ToStorageMoverOutput() StorageMoverOutput {
 
 func (o StorageMoverOutput) ToStorageMoverOutputWithContext(ctx context.Context) StorageMoverOutput {
 	return o
-}
-
-func (o StorageMoverOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageMover] {
-	return pulumix.Output[*StorageMover]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A description for the Storage Mover.

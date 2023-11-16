@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // AzureBareMetalStorageInstance info on Azure (ARM properties and AzureBareMetalStorage properties)
@@ -141,12 +140,6 @@ func (i *AzureBareMetalStorageInstance) ToAzureBareMetalStorageInstanceOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(AzureBareMetalStorageInstanceOutput)
 }
 
-func (i *AzureBareMetalStorageInstance) ToOutput(ctx context.Context) pulumix.Output[*AzureBareMetalStorageInstance] {
-	return pulumix.Output[*AzureBareMetalStorageInstance]{
-		OutputState: i.ToAzureBareMetalStorageInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AzureBareMetalStorageInstanceOutput struct{ *pulumi.OutputState }
 
 func (AzureBareMetalStorageInstanceOutput) ElementType() reflect.Type {
@@ -159,12 +152,6 @@ func (o AzureBareMetalStorageInstanceOutput) ToAzureBareMetalStorageInstanceOutp
 
 func (o AzureBareMetalStorageInstanceOutput) ToAzureBareMetalStorageInstanceOutputWithContext(ctx context.Context) AzureBareMetalStorageInstanceOutput {
 	return o
-}
-
-func (o AzureBareMetalStorageInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureBareMetalStorageInstance] {
-	return pulumix.Output[*AzureBareMetalStorageInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the AzureBareMetaStorageInstance unique ID.

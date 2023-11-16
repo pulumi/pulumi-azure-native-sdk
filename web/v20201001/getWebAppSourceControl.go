@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the source control configuration of an app.
@@ -93,12 +92,6 @@ func (o LookupWebAppSourceControlResultOutput) ToLookupWebAppSourceControlResult
 
 func (o LookupWebAppSourceControlResultOutput) ToLookupWebAppSourceControlResultOutputWithContext(ctx context.Context) LookupWebAppSourceControlResultOutput {
 	return o
-}
-
-func (o LookupWebAppSourceControlResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebAppSourceControlResult] {
-	return pulumix.Output[LookupWebAppSourceControlResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of branch to use for deployment.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties of the import pipeline.
@@ -108,12 +107,6 @@ func (o LookupImportPipelineResultOutput) ToLookupImportPipelineResultOutput() L
 
 func (o LookupImportPipelineResultOutput) ToLookupImportPipelineResultOutputWithContext(ctx context.Context) LookupImportPipelineResultOutput {
 	return o
-}
-
-func (o LookupImportPipelineResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupImportPipelineResult] {
-	return pulumix.Output[LookupImportPipelineResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource ID.

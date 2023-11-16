@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists connection keys.
@@ -101,12 +100,6 @@ func (o ListConnectionKeysResultOutput) ToListConnectionKeysResultOutput() ListC
 
 func (o ListConnectionKeysResultOutput) ToListConnectionKeysResultOutputWithContext(ctx context.Context) ListConnectionKeysResultOutput {
 	return o
-}
-
-func (o ListConnectionKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListConnectionKeysResult] {
-	return pulumix.Output[ListConnectionKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Connection Key

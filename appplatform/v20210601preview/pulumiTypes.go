@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i CertificatePropertiesArgs) ToCertificatePropertiesOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(CertificatePropertiesOutput)
 }
 
-func (i CertificatePropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[CertificateProperties] {
-	return pulumix.Output[CertificateProperties]{
-		OutputState: i.ToCertificatePropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CertificatePropertiesArgs) ToCertificatePropertiesPtrOutput() CertificatePropertiesPtrOutput {
 	return i.ToCertificatePropertiesPtrOutputWithContext(context.Background())
 }
@@ -104,12 +97,6 @@ func (i *certificatePropertiesPtrType) ToCertificatePropertiesPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(CertificatePropertiesPtrOutput)
 }
 
-func (i *certificatePropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*CertificateProperties] {
-	return pulumix.Output[*CertificateProperties]{
-		OutputState: i.ToCertificatePropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Certificate resource payload.
 type CertificatePropertiesOutput struct{ *pulumi.OutputState }
 
@@ -133,12 +120,6 @@ func (o CertificatePropertiesOutput) ToCertificatePropertiesPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateProperties) *CertificateProperties {
 		return &v
 	}).(CertificatePropertiesPtrOutput)
-}
-
-func (o CertificatePropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateProperties] {
-	return pulumix.Output[CertificateProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The certificate version of key vault.
@@ -168,12 +149,6 @@ func (o CertificatePropertiesPtrOutput) ToCertificatePropertiesPtrOutput() Certi
 
 func (o CertificatePropertiesPtrOutput) ToCertificatePropertiesPtrOutputWithContext(ctx context.Context) CertificatePropertiesPtrOutput {
 	return o
-}
-
-func (o CertificatePropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateProperties] {
-	return pulumix.Output[*CertificateProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertificatePropertiesPtrOutput) Elem() CertificatePropertiesOutput {
@@ -253,12 +228,6 @@ func (o CertificatePropertiesResponseOutput) ToCertificatePropertiesResponseOutp
 
 func (o CertificatePropertiesResponseOutput) ToCertificatePropertiesResponseOutputWithContext(ctx context.Context) CertificatePropertiesResponseOutput {
 	return o
-}
-
-func (o CertificatePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CertificatePropertiesResponse] {
-	return pulumix.Output[CertificatePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The activate date of certificate.

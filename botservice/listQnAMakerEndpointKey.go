@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lists the QnA Maker endpoint keys
@@ -82,12 +81,6 @@ func (o ListQnAMakerEndpointKeyResultOutput) ToListQnAMakerEndpointKeyResultOutp
 
 func (o ListQnAMakerEndpointKeyResultOutput) ToListQnAMakerEndpointKeyResultOutputWithContext(ctx context.Context) ListQnAMakerEndpointKeyResultOutput {
 	return o
-}
-
-func (o ListQnAMakerEndpointKeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListQnAMakerEndpointKeyResult] {
-	return pulumix.Output[ListQnAMakerEndpointKeyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Current version of runtime.

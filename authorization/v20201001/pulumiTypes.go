@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -69,12 +68,6 @@ func (o PolicyAssignmentPropertiesResponseOutput) ToPolicyAssignmentPropertiesRe
 	return o
 }
 
-func (o PolicyAssignmentPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyAssignmentPropertiesResponse] {
-	return pulumix.Output[PolicyAssignmentPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Details of the policy
 func (o PolicyAssignmentPropertiesResponseOutput) Policy() PolicyAssignmentPropertiesResponsePolicyPtrOutput {
 	return o.ApplyT(func(v PolicyAssignmentPropertiesResponse) *PolicyAssignmentPropertiesResponsePolicy { return v.Policy }).(PolicyAssignmentPropertiesResponsePolicyPtrOutput)
@@ -117,12 +110,6 @@ func (o PolicyAssignmentPropertiesResponsePolicyOutput) ToPolicyAssignmentProper
 	return o
 }
 
-func (o PolicyAssignmentPropertiesResponsePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyAssignmentPropertiesResponsePolicy] {
-	return pulumix.Output[PolicyAssignmentPropertiesResponsePolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Id of the policy
 func (o PolicyAssignmentPropertiesResponsePolicyOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyAssignmentPropertiesResponsePolicy) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -150,12 +137,6 @@ func (o PolicyAssignmentPropertiesResponsePolicyPtrOutput) ToPolicyAssignmentPro
 
 func (o PolicyAssignmentPropertiesResponsePolicyPtrOutput) ToPolicyAssignmentPropertiesResponsePolicyPtrOutputWithContext(ctx context.Context) PolicyAssignmentPropertiesResponsePolicyPtrOutput {
 	return o
-}
-
-func (o PolicyAssignmentPropertiesResponsePolicyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyAssignmentPropertiesResponsePolicy] {
-	return pulumix.Output[*PolicyAssignmentPropertiesResponsePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyAssignmentPropertiesResponsePolicyPtrOutput) Elem() PolicyAssignmentPropertiesResponsePolicyOutput {
@@ -223,12 +204,6 @@ func (o PolicyAssignmentPropertiesResponseRoleDefinitionOutput) ToPolicyAssignme
 	return o
 }
 
-func (o PolicyAssignmentPropertiesResponseRoleDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyAssignmentPropertiesResponseRoleDefinition] {
-	return pulumix.Output[PolicyAssignmentPropertiesResponseRoleDefinition]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Display name of the role definition
 func (o PolicyAssignmentPropertiesResponseRoleDefinitionOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyAssignmentPropertiesResponseRoleDefinition) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
@@ -256,12 +231,6 @@ func (o PolicyAssignmentPropertiesResponseRoleDefinitionPtrOutput) ToPolicyAssig
 
 func (o PolicyAssignmentPropertiesResponseRoleDefinitionPtrOutput) ToPolicyAssignmentPropertiesResponseRoleDefinitionPtrOutputWithContext(ctx context.Context) PolicyAssignmentPropertiesResponseRoleDefinitionPtrOutput {
 	return o
-}
-
-func (o PolicyAssignmentPropertiesResponseRoleDefinitionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyAssignmentPropertiesResponseRoleDefinition] {
-	return pulumix.Output[*PolicyAssignmentPropertiesResponseRoleDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyAssignmentPropertiesResponseRoleDefinitionPtrOutput) Elem() PolicyAssignmentPropertiesResponseRoleDefinitionOutput {
@@ -329,12 +298,6 @@ func (o PolicyAssignmentPropertiesResponseScopeOutput) ToPolicyAssignmentPropert
 	return o
 }
 
-func (o PolicyAssignmentPropertiesResponseScopeOutput) ToOutput(ctx context.Context) pulumix.Output[PolicyAssignmentPropertiesResponseScope] {
-	return pulumix.Output[PolicyAssignmentPropertiesResponseScope]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Display name of the resource
 func (o PolicyAssignmentPropertiesResponseScopeOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyAssignmentPropertiesResponseScope) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
@@ -362,12 +325,6 @@ func (o PolicyAssignmentPropertiesResponseScopePtrOutput) ToPolicyAssignmentProp
 
 func (o PolicyAssignmentPropertiesResponseScopePtrOutput) ToPolicyAssignmentPropertiesResponseScopePtrOutputWithContext(ctx context.Context) PolicyAssignmentPropertiesResponseScopePtrOutput {
 	return o
-}
-
-func (o PolicyAssignmentPropertiesResponseScopePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PolicyAssignmentPropertiesResponseScope] {
-	return pulumix.Output[*PolicyAssignmentPropertiesResponseScope]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PolicyAssignmentPropertiesResponseScopePtrOutput) Elem() PolicyAssignmentPropertiesResponseScopeOutput {
@@ -437,12 +394,6 @@ func (o PrincipalResponseOutput) ToPrincipalResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o PrincipalResponseOutput) ToOutput(ctx context.Context) pulumix.Output[PrincipalResponse] {
-	return pulumix.Output[PrincipalResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the principal made changes
 func (o PrincipalResponseOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrincipalResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
@@ -475,12 +426,6 @@ func (o PrincipalResponsePtrOutput) ToPrincipalResponsePtrOutput() PrincipalResp
 
 func (o PrincipalResponsePtrOutput) ToPrincipalResponsePtrOutputWithContext(ctx context.Context) PrincipalResponsePtrOutput {
 	return o
-}
-
-func (o PrincipalResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PrincipalResponse] {
-	return pulumix.Output[*PrincipalResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PrincipalResponsePtrOutput) Elem() PrincipalResponseOutput {

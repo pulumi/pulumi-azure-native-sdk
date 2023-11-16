@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i AssignmentLockSettingsArgs) ToAssignmentLockSettingsOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(AssignmentLockSettingsOutput)
 }
 
-func (i AssignmentLockSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[AssignmentLockSettings] {
-	return pulumix.Output[AssignmentLockSettings]{
-		OutputState: i.ToAssignmentLockSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AssignmentLockSettingsArgs) ToAssignmentLockSettingsPtrOutput() AssignmentLockSettingsPtrOutput {
 	return i.ToAssignmentLockSettingsPtrOutputWithContext(context.Background())
 }
@@ -104,12 +97,6 @@ func (i *assignmentLockSettingsPtrType) ToAssignmentLockSettingsPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(AssignmentLockSettingsPtrOutput)
 }
 
-func (i *assignmentLockSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AssignmentLockSettings] {
-	return pulumix.Output[*AssignmentLockSettings]{
-		OutputState: i.ToAssignmentLockSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Defines how resources deployed by a blueprint assignment are locked.
 type AssignmentLockSettingsOutput struct{ *pulumi.OutputState }
 
@@ -133,12 +120,6 @@ func (o AssignmentLockSettingsOutput) ToAssignmentLockSettingsPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssignmentLockSettings) *AssignmentLockSettings {
 		return &v
 	}).(AssignmentLockSettingsPtrOutput)
-}
-
-func (o AssignmentLockSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[AssignmentLockSettings] {
-	return pulumix.Output[AssignmentLockSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of management operations that are excluded from blueprint locks. Up to 200 actions are permitted. If the lock mode is set to 'AllResourcesReadOnly', then the following actions are automatically appended to 'excludedActions': '*/read', 'Microsoft.Network/virtualNetworks/subnets/join/action' and 'Microsoft.Authorization/locks/delete'. If the lock mode is set to 'AllResourcesDoNotDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will get removed.
@@ -168,12 +149,6 @@ func (o AssignmentLockSettingsPtrOutput) ToAssignmentLockSettingsPtrOutput() Ass
 
 func (o AssignmentLockSettingsPtrOutput) ToAssignmentLockSettingsPtrOutputWithContext(ctx context.Context) AssignmentLockSettingsPtrOutput {
 	return o
-}
-
-func (o AssignmentLockSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssignmentLockSettings] {
-	return pulumix.Output[*AssignmentLockSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssignmentLockSettingsPtrOutput) Elem() AssignmentLockSettingsOutput {
@@ -241,12 +216,6 @@ func (o AssignmentLockSettingsResponseOutput) ToAssignmentLockSettingsResponseOu
 	return o
 }
 
-func (o AssignmentLockSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssignmentLockSettingsResponse] {
-	return pulumix.Output[AssignmentLockSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of management operations that are excluded from blueprint locks. Up to 200 actions are permitted. If the lock mode is set to 'AllResourcesReadOnly', then the following actions are automatically appended to 'excludedActions': '*/read', 'Microsoft.Network/virtualNetworks/subnets/join/action' and 'Microsoft.Authorization/locks/delete'. If the lock mode is set to 'AllResourcesDoNotDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will get removed.
 func (o AssignmentLockSettingsResponseOutput) ExcludedActions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AssignmentLockSettingsResponse) []string { return v.ExcludedActions }).(pulumi.StringArrayOutput)
@@ -274,12 +243,6 @@ func (o AssignmentLockSettingsResponsePtrOutput) ToAssignmentLockSettingsRespons
 
 func (o AssignmentLockSettingsResponsePtrOutput) ToAssignmentLockSettingsResponsePtrOutputWithContext(ctx context.Context) AssignmentLockSettingsResponsePtrOutput {
 	return o
-}
-
-func (o AssignmentLockSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AssignmentLockSettingsResponse] {
-	return pulumix.Output[*AssignmentLockSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AssignmentLockSettingsResponsePtrOutput) Elem() AssignmentLockSettingsResponseOutput {
@@ -347,12 +310,6 @@ func (o AssignmentStatusResponseOutput) ToAssignmentStatusResponseOutputWithCont
 	return o
 }
 
-func (o AssignmentStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[AssignmentStatusResponse] {
-	return pulumix.Output[AssignmentStatusResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Last modified time of this blueprint definition.
 func (o AssignmentStatusResponseOutput) LastModified() pulumi.StringOutput {
 	return o.ApplyT(func(v AssignmentStatusResponse) string { return v.LastModified }).(pulumi.StringOutput)
@@ -389,12 +346,6 @@ func (o BlueprintStatusResponseOutput) ToBlueprintStatusResponseOutput() Bluepri
 
 func (o BlueprintStatusResponseOutput) ToBlueprintStatusResponseOutputWithContext(ctx context.Context) BlueprintStatusResponseOutput {
 	return o
-}
-
-func (o BlueprintStatusResponseOutput) ToOutput(ctx context.Context) pulumix.Output[BlueprintStatusResponse] {
-	return pulumix.Output[BlueprintStatusResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Last modified time of this blueprint definition.
@@ -442,12 +393,6 @@ func (i KeyVaultReferenceArgs) ToKeyVaultReferenceOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultReferenceOutput)
 }
 
-func (i KeyVaultReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[KeyVaultReference] {
-	return pulumix.Output[KeyVaultReference]{
-		OutputState: i.ToKeyVaultReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i KeyVaultReferenceArgs) ToKeyVaultReferencePtrOutput() KeyVaultReferencePtrOutput {
 	return i.ToKeyVaultReferencePtrOutputWithContext(context.Background())
 }
@@ -489,12 +434,6 @@ func (i *keyVaultReferencePtrType) ToKeyVaultReferencePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultReferencePtrOutput)
 }
 
-func (i *keyVaultReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultReference] {
-	return pulumix.Output[*KeyVaultReference]{
-		OutputState: i.ToKeyVaultReferencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Specifies the link to a Key Vault.
 type KeyVaultReferenceOutput struct{ *pulumi.OutputState }
 
@@ -520,12 +459,6 @@ func (o KeyVaultReferenceOutput) ToKeyVaultReferencePtrOutputWithContext(ctx con
 	}).(KeyVaultReferencePtrOutput)
 }
 
-func (o KeyVaultReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultReference] {
-	return pulumix.Output[KeyVaultReference]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Azure resource ID of the Key Vault.
 func (o KeyVaultReferenceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultReference) string { return v.Id }).(pulumi.StringOutput)
@@ -543,12 +476,6 @@ func (o KeyVaultReferencePtrOutput) ToKeyVaultReferencePtrOutput() KeyVaultRefer
 
 func (o KeyVaultReferencePtrOutput) ToKeyVaultReferencePtrOutputWithContext(ctx context.Context) KeyVaultReferencePtrOutput {
 	return o
-}
-
-func (o KeyVaultReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultReference] {
-	return pulumix.Output[*KeyVaultReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultReferencePtrOutput) Elem() KeyVaultReferenceOutput {
@@ -592,12 +519,6 @@ func (o KeyVaultReferenceResponseOutput) ToKeyVaultReferenceResponseOutputWithCo
 	return o
 }
 
-func (o KeyVaultReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[KeyVaultReferenceResponse] {
-	return pulumix.Output[KeyVaultReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Azure resource ID of the Key Vault.
 func (o KeyVaultReferenceResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultReferenceResponse) string { return v.Id }).(pulumi.StringOutput)
@@ -615,12 +536,6 @@ func (o KeyVaultReferenceResponsePtrOutput) ToKeyVaultReferenceResponsePtrOutput
 
 func (o KeyVaultReferenceResponsePtrOutput) ToKeyVaultReferenceResponsePtrOutputWithContext(ctx context.Context) KeyVaultReferenceResponsePtrOutput {
 	return o
-}
-
-func (o KeyVaultReferenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*KeyVaultReferenceResponse] {
-	return pulumix.Output[*KeyVaultReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o KeyVaultReferenceResponsePtrOutput) Elem() KeyVaultReferenceResponseOutput {
@@ -690,12 +605,6 @@ func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
 }
 
-func (i ManagedServiceIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
-	return pulumix.Output[ManagedServiceIdentity]{
-		OutputState: i.ToManagedServiceIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Managed identity generic object.
 type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
 
@@ -709,12 +618,6 @@ func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutput() ManagedSe
 
 func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
 	return o
-}
-
-func (o ManagedServiceIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentity] {
-	return pulumix.Output[ManagedServiceIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Azure Active Directory principal ID associated with this Identity.
@@ -762,12 +665,6 @@ func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOu
 
 func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutputWithContext(ctx context.Context) ManagedServiceIdentityResponseOutput {
 	return o
-}
-
-func (o ManagedServiceIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ManagedServiceIdentityResponse] {
-	return pulumix.Output[ManagedServiceIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Azure Active Directory principal ID associated with this Identity.
@@ -847,12 +744,6 @@ func (i ParameterDefinitionArgs) ToParameterDefinitionOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterDefinitionOutput)
 }
 
-func (i ParameterDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[ParameterDefinition] {
-	return pulumix.Output[ParameterDefinition]{
-		OutputState: i.ToParameterDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ParameterDefinitionMapInput is an input type that accepts ParameterDefinitionMap and ParameterDefinitionMapOutput values.
 // You can construct a concrete instance of `ParameterDefinitionMapInput` via:
 //
@@ -878,12 +769,6 @@ func (i ParameterDefinitionMap) ToParameterDefinitionMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterDefinitionMapOutput)
 }
 
-func (i ParameterDefinitionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterDefinition] {
-	return pulumix.Output[map[string]ParameterDefinition]{
-		OutputState: i.ToParameterDefinitionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represent a parameter with constrains and metadata.
 type ParameterDefinitionOutput struct{ *pulumi.OutputState }
 
@@ -897,12 +782,6 @@ func (o ParameterDefinitionOutput) ToParameterDefinitionOutput() ParameterDefini
 
 func (o ParameterDefinitionOutput) ToParameterDefinitionOutputWithContext(ctx context.Context) ParameterDefinitionOutput {
 	return o
-}
-
-func (o ParameterDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterDefinition] {
-	return pulumix.Output[ParameterDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Array of allowed values for this parameter.
@@ -949,12 +828,6 @@ func (o ParameterDefinitionMapOutput) ToParameterDefinitionMapOutputWithContext(
 	return o
 }
 
-func (o ParameterDefinitionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterDefinition] {
-	return pulumix.Output[map[string]ParameterDefinition]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ParameterDefinitionMapOutput) MapIndex(k pulumi.StringInput) ParameterDefinitionOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ParameterDefinition {
 		return vs[0].(map[string]ParameterDefinition)[vs[1].(string)]
@@ -990,12 +863,6 @@ func (o ParameterDefinitionResponseOutput) ToParameterDefinitionResponseOutput()
 
 func (o ParameterDefinitionResponseOutput) ToParameterDefinitionResponseOutputWithContext(ctx context.Context) ParameterDefinitionResponseOutput {
 	return o
-}
-
-func (o ParameterDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterDefinitionResponse] {
-	return pulumix.Output[ParameterDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Array of allowed values for this parameter.
@@ -1040,12 +907,6 @@ func (o ParameterDefinitionResponseMapOutput) ToParameterDefinitionResponseMapOu
 
 func (o ParameterDefinitionResponseMapOutput) ToParameterDefinitionResponseMapOutputWithContext(ctx context.Context) ParameterDefinitionResponseMapOutput {
 	return o
-}
-
-func (o ParameterDefinitionResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterDefinitionResponse] {
-	return pulumix.Output[map[string]ParameterDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ParameterDefinitionResponseMapOutput) MapIndex(k pulumi.StringInput) ParameterDefinitionResponseOutput {
@@ -1093,12 +954,6 @@ func (i ParameterValueArgs) ToParameterValueOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterValueOutput)
 }
 
-func (i ParameterValueArgs) ToOutput(ctx context.Context) pulumix.Output[ParameterValue] {
-	return pulumix.Output[ParameterValue]{
-		OutputState: i.ToParameterValueOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ParameterValueMapInput is an input type that accepts ParameterValueMap and ParameterValueMapOutput values.
 // You can construct a concrete instance of `ParameterValueMapInput` via:
 //
@@ -1124,12 +979,6 @@ func (i ParameterValueMap) ToParameterValueMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ParameterValueMapOutput)
 }
 
-func (i ParameterValueMap) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterValue] {
-	return pulumix.Output[map[string]ParameterValue]{
-		OutputState: i.ToParameterValueMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Value for the specified parameter. Can be either 'value' or 'reference' but not both.
 type ParameterValueOutput struct{ *pulumi.OutputState }
 
@@ -1143,12 +992,6 @@ func (o ParameterValueOutput) ToParameterValueOutput() ParameterValueOutput {
 
 func (o ParameterValueOutput) ToParameterValueOutputWithContext(ctx context.Context) ParameterValueOutput {
 	return o
-}
-
-func (o ParameterValueOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterValue] {
-	return pulumix.Output[ParameterValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Parameter value as reference type.
@@ -1173,12 +1016,6 @@ func (o ParameterValueMapOutput) ToParameterValueMapOutput() ParameterValueMapOu
 
 func (o ParameterValueMapOutput) ToParameterValueMapOutputWithContext(ctx context.Context) ParameterValueMapOutput {
 	return o
-}
-
-func (o ParameterValueMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterValue] {
-	return pulumix.Output[map[string]ParameterValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ParameterValueMapOutput) MapIndex(k pulumi.StringInput) ParameterValueOutput {
@@ -1210,12 +1047,6 @@ func (o ParameterValueResponseOutput) ToParameterValueResponseOutputWithContext(
 	return o
 }
 
-func (o ParameterValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ParameterValueResponse] {
-	return pulumix.Output[ParameterValueResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Parameter value as reference type.
 func (o ParameterValueResponseOutput) Reference() SecretValueReferenceResponsePtrOutput {
 	return o.ApplyT(func(v ParameterValueResponse) *SecretValueReferenceResponse { return v.Reference }).(SecretValueReferenceResponsePtrOutput)
@@ -1238,12 +1069,6 @@ func (o ParameterValueResponseMapOutput) ToParameterValueResponseMapOutput() Par
 
 func (o ParameterValueResponseMapOutput) ToParameterValueResponseMapOutputWithContext(ctx context.Context) ParameterValueResponseMapOutput {
 	return o
-}
-
-func (o ParameterValueResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ParameterValueResponse] {
-	return pulumix.Output[map[string]ParameterValueResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ParameterValueResponseMapOutput) MapIndex(k pulumi.StringInput) ParameterValueResponseOutput {
@@ -1311,12 +1136,6 @@ func (i ResourceGroupDefinitionArgs) ToResourceGroupDefinitionOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupDefinitionOutput)
 }
 
-func (i ResourceGroupDefinitionArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceGroupDefinition] {
-	return pulumix.Output[ResourceGroupDefinition]{
-		OutputState: i.ToResourceGroupDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ResourceGroupDefinitionMapInput is an input type that accepts ResourceGroupDefinitionMap and ResourceGroupDefinitionMapOutput values.
 // You can construct a concrete instance of `ResourceGroupDefinitionMapInput` via:
 //
@@ -1342,12 +1161,6 @@ func (i ResourceGroupDefinitionMap) ToResourceGroupDefinitionMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupDefinitionMapOutput)
 }
 
-func (i ResourceGroupDefinitionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]ResourceGroupDefinition] {
-	return pulumix.Output[map[string]ResourceGroupDefinition]{
-		OutputState: i.ToResourceGroupDefinitionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents an Azure resource group in a blueprint definition.
 type ResourceGroupDefinitionOutput struct{ *pulumi.OutputState }
 
@@ -1361,12 +1174,6 @@ func (o ResourceGroupDefinitionOutput) ToResourceGroupDefinitionOutput() Resourc
 
 func (o ResourceGroupDefinitionOutput) ToResourceGroupDefinitionOutputWithContext(ctx context.Context) ResourceGroupDefinitionOutput {
 	return o
-}
-
-func (o ResourceGroupDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceGroupDefinition] {
-	return pulumix.Output[ResourceGroupDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Artifacts which need to be deployed before this resource group.
@@ -1418,12 +1225,6 @@ func (o ResourceGroupDefinitionMapOutput) ToResourceGroupDefinitionMapOutputWith
 	return o
 }
 
-func (o ResourceGroupDefinitionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ResourceGroupDefinition] {
-	return pulumix.Output[map[string]ResourceGroupDefinition]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ResourceGroupDefinitionMapOutput) MapIndex(k pulumi.StringInput) ResourceGroupDefinitionOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ResourceGroupDefinition {
 		return vs[0].(map[string]ResourceGroupDefinition)[vs[1].(string)]
@@ -1461,12 +1262,6 @@ func (o ResourceGroupDefinitionResponseOutput) ToResourceGroupDefinitionResponse
 
 func (o ResourceGroupDefinitionResponseOutput) ToResourceGroupDefinitionResponseOutputWithContext(ctx context.Context) ResourceGroupDefinitionResponseOutput {
 	return o
-}
-
-func (o ResourceGroupDefinitionResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceGroupDefinitionResponse] {
-	return pulumix.Output[ResourceGroupDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Artifacts which need to be deployed before this resource group.
@@ -1518,12 +1313,6 @@ func (o ResourceGroupDefinitionResponseMapOutput) ToResourceGroupDefinitionRespo
 	return o
 }
 
-func (o ResourceGroupDefinitionResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ResourceGroupDefinitionResponse] {
-	return pulumix.Output[map[string]ResourceGroupDefinitionResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ResourceGroupDefinitionResponseMapOutput) MapIndex(k pulumi.StringInput) ResourceGroupDefinitionResponseOutput {
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ResourceGroupDefinitionResponse {
 		return vs[0].(map[string]ResourceGroupDefinitionResponse)[vs[1].(string)]
@@ -1569,12 +1358,6 @@ func (i ResourceGroupValueArgs) ToResourceGroupValueOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupValueOutput)
 }
 
-func (i ResourceGroupValueArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceGroupValue] {
-	return pulumix.Output[ResourceGroupValue]{
-		OutputState: i.ToResourceGroupValueOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ResourceGroupValueMapInput is an input type that accepts ResourceGroupValueMap and ResourceGroupValueMapOutput values.
 // You can construct a concrete instance of `ResourceGroupValueMapInput` via:
 //
@@ -1600,12 +1383,6 @@ func (i ResourceGroupValueMap) ToResourceGroupValueMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupValueMapOutput)
 }
 
-func (i ResourceGroupValueMap) ToOutput(ctx context.Context) pulumix.Output[map[string]ResourceGroupValue] {
-	return pulumix.Output[map[string]ResourceGroupValue]{
-		OutputState: i.ToResourceGroupValueMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Represents an Azure resource group.
 type ResourceGroupValueOutput struct{ *pulumi.OutputState }
 
@@ -1619,12 +1396,6 @@ func (o ResourceGroupValueOutput) ToResourceGroupValueOutput() ResourceGroupValu
 
 func (o ResourceGroupValueOutput) ToResourceGroupValueOutputWithContext(ctx context.Context) ResourceGroupValueOutput {
 	return o
-}
-
-func (o ResourceGroupValueOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceGroupValue] {
-	return pulumix.Output[ResourceGroupValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Location of the resource group.
@@ -1649,12 +1420,6 @@ func (o ResourceGroupValueMapOutput) ToResourceGroupValueMapOutput() ResourceGro
 
 func (o ResourceGroupValueMapOutput) ToResourceGroupValueMapOutputWithContext(ctx context.Context) ResourceGroupValueMapOutput {
 	return o
-}
-
-func (o ResourceGroupValueMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ResourceGroupValue] {
-	return pulumix.Output[map[string]ResourceGroupValue]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceGroupValueMapOutput) MapIndex(k pulumi.StringInput) ResourceGroupValueOutput {
@@ -1686,12 +1451,6 @@ func (o ResourceGroupValueResponseOutput) ToResourceGroupValueResponseOutputWith
 	return o
 }
 
-func (o ResourceGroupValueResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceGroupValueResponse] {
-	return pulumix.Output[ResourceGroupValueResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Location of the resource group.
 func (o ResourceGroupValueResponseOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceGroupValueResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
@@ -1714,12 +1473,6 @@ func (o ResourceGroupValueResponseMapOutput) ToResourceGroupValueResponseMapOutp
 
 func (o ResourceGroupValueResponseMapOutput) ToResourceGroupValueResponseMapOutputWithContext(ctx context.Context) ResourceGroupValueResponseMapOutput {
 	return o
-}
-
-func (o ResourceGroupValueResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]ResourceGroupValueResponse] {
-	return pulumix.Output[map[string]ResourceGroupValueResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceGroupValueResponseMapOutput) MapIndex(k pulumi.StringInput) ResourceGroupValueResponseOutput {
@@ -1771,12 +1524,6 @@ func (i SecretValueReferenceArgs) ToSecretValueReferenceOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(SecretValueReferenceOutput)
 }
 
-func (i SecretValueReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[SecretValueReference] {
-	return pulumix.Output[SecretValueReference]{
-		OutputState: i.ToSecretValueReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SecretValueReferenceArgs) ToSecretValueReferencePtrOutput() SecretValueReferencePtrOutput {
 	return i.ToSecretValueReferencePtrOutputWithContext(context.Background())
 }
@@ -1818,12 +1565,6 @@ func (i *secretValueReferencePtrType) ToSecretValueReferencePtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(SecretValueReferencePtrOutput)
 }
 
-func (i *secretValueReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretValueReference] {
-	return pulumix.Output[*SecretValueReference]{
-		OutputState: i.ToSecretValueReferencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Reference to a Key Vault secret.
 type SecretValueReferenceOutput struct{ *pulumi.OutputState }
 
@@ -1847,12 +1588,6 @@ func (o SecretValueReferenceOutput) ToSecretValueReferencePtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretValueReference) *SecretValueReference {
 		return &v
 	}).(SecretValueReferencePtrOutput)
-}
-
-func (o SecretValueReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[SecretValueReference] {
-	return pulumix.Output[SecretValueReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the reference to a given Azure Key Vault.
@@ -1882,12 +1617,6 @@ func (o SecretValueReferencePtrOutput) ToSecretValueReferencePtrOutput() SecretV
 
 func (o SecretValueReferencePtrOutput) ToSecretValueReferencePtrOutputWithContext(ctx context.Context) SecretValueReferencePtrOutput {
 	return o
-}
-
-func (o SecretValueReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretValueReference] {
-	return pulumix.Output[*SecretValueReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretValueReferencePtrOutput) Elem() SecretValueReferenceOutput {
@@ -1955,12 +1684,6 @@ func (o SecretValueReferenceResponseOutput) ToSecretValueReferenceResponseOutput
 	return o
 }
 
-func (o SecretValueReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SecretValueReferenceResponse] {
-	return pulumix.Output[SecretValueReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Specifies the reference to a given Azure Key Vault.
 func (o SecretValueReferenceResponseOutput) KeyVault() KeyVaultReferenceResponseOutput {
 	return o.ApplyT(func(v SecretValueReferenceResponse) KeyVaultReferenceResponse { return v.KeyVault }).(KeyVaultReferenceResponseOutput)
@@ -1988,12 +1711,6 @@ func (o SecretValueReferenceResponsePtrOutput) ToSecretValueReferenceResponsePtr
 
 func (o SecretValueReferenceResponsePtrOutput) ToSecretValueReferenceResponsePtrOutputWithContext(ctx context.Context) SecretValueReferenceResponsePtrOutput {
 	return o
-}
-
-func (o SecretValueReferenceResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretValueReferenceResponse] {
-	return pulumix.Output[*SecretValueReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SecretValueReferenceResponsePtrOutput) Elem() SecretValueReferenceResponseOutput {
@@ -2075,12 +1792,6 @@ func (i UserAssignedIdentityArgs) ToUserAssignedIdentityOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(UserAssignedIdentityOutput)
 }
 
-func (i UserAssignedIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentity] {
-	return pulumix.Output[UserAssignedIdentity]{
-		OutputState: i.ToUserAssignedIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 // UserAssignedIdentityMapInput is an input type that accepts UserAssignedIdentityMap and UserAssignedIdentityMapOutput values.
 // You can construct a concrete instance of `UserAssignedIdentityMapInput` via:
 //
@@ -2106,12 +1817,6 @@ func (i UserAssignedIdentityMap) ToUserAssignedIdentityMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(UserAssignedIdentityMapOutput)
 }
 
-func (i UserAssignedIdentityMap) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentity] {
-	return pulumix.Output[map[string]UserAssignedIdentity]{
-		OutputState: i.ToUserAssignedIdentityMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 // User-assigned managed identity.
 type UserAssignedIdentityOutput struct{ *pulumi.OutputState }
 
@@ -2125,12 +1830,6 @@ func (o UserAssignedIdentityOutput) ToUserAssignedIdentityOutput() UserAssignedI
 
 func (o UserAssignedIdentityOutput) ToUserAssignedIdentityOutputWithContext(ctx context.Context) UserAssignedIdentityOutput {
 	return o
-}
-
-func (o UserAssignedIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentity] {
-	return pulumix.Output[UserAssignedIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Client App Id associated with this identity.
@@ -2155,12 +1854,6 @@ func (o UserAssignedIdentityMapOutput) ToUserAssignedIdentityMapOutput() UserAss
 
 func (o UserAssignedIdentityMapOutput) ToUserAssignedIdentityMapOutputWithContext(ctx context.Context) UserAssignedIdentityMapOutput {
 	return o
-}
-
-func (o UserAssignedIdentityMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentity] {
-	return pulumix.Output[map[string]UserAssignedIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedIdentityMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityOutput {
@@ -2192,12 +1885,6 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
-func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
-	return pulumix.Output[UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Client App Id associated with this identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) *string { return v.ClientId }).(pulumi.StringPtrOutput)
@@ -2220,12 +1907,6 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
-	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {

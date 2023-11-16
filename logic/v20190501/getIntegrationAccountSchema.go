@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an integration account schema.
@@ -105,12 +104,6 @@ func (o LookupIntegrationAccountSchemaResultOutput) ToLookupIntegrationAccountSc
 
 func (o LookupIntegrationAccountSchemaResultOutput) ToLookupIntegrationAccountSchemaResultOutputWithContext(ctx context.Context) LookupIntegrationAccountSchemaResultOutput {
 	return o
-}
-
-func (o LookupIntegrationAccountSchemaResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIntegrationAccountSchemaResult] {
-	return pulumix.Output[LookupIntegrationAccountSchemaResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The changed time.

@@ -79,12 +79,6 @@ func (o CertificateProductTypeOutput) ToCertificateProductTypePtrOutputWithConte
 	}).(CertificateProductTypePtrOutput)
 }
 
-func (o CertificateProductTypeOutput) ToOutput(ctx context.Context) pulumix.Output[CertificateProductType] {
-	return pulumix.Output[CertificateProductType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CertificateProductTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -118,12 +112,6 @@ func (o CertificateProductTypePtrOutput) ToCertificateProductTypePtrOutput() Cer
 
 func (o CertificateProductTypePtrOutput) ToCertificateProductTypePtrOutputWithContext(ctx context.Context) CertificateProductTypePtrOutput {
 	return o
-}
-
-func (o CertificateProductTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificateProductType] {
-	return pulumix.Output[*CertificateProductType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CertificateProductTypePtrOutput) Elem() CertificateProductTypeOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type L3Network struct {
@@ -220,12 +219,6 @@ func (i *L3Network) ToL3NetworkOutputWithContext(ctx context.Context) L3NetworkO
 	return pulumi.ToOutputWithContext(ctx, i).(L3NetworkOutput)
 }
 
-func (i *L3Network) ToOutput(ctx context.Context) pulumix.Output[*L3Network] {
-	return pulumix.Output[*L3Network]{
-		OutputState: i.ToL3NetworkOutputWithContext(ctx).OutputState,
-	}
-}
-
 type L3NetworkOutput struct{ *pulumi.OutputState }
 
 func (L3NetworkOutput) ElementType() reflect.Type {
@@ -238,12 +231,6 @@ func (o L3NetworkOutput) ToL3NetworkOutput() L3NetworkOutput {
 
 func (o L3NetworkOutput) ToL3NetworkOutputWithContext(ctx context.Context) L3NetworkOutput {
 	return o
-}
-
-func (o L3NetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*L3Network] {
-	return pulumix.Output[*L3Network]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.

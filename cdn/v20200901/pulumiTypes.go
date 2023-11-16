@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i CompressionSettingsArgs) ToCompressionSettingsOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(CompressionSettingsOutput)
 }
 
-func (i CompressionSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[CompressionSettings] {
-	return pulumix.Output[CompressionSettings]{
-		OutputState: i.ToCompressionSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CompressionSettingsArgs) ToCompressionSettingsPtrOutput() CompressionSettingsPtrOutput {
 	return i.ToCompressionSettingsPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *compressionSettingsPtrType) ToCompressionSettingsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(CompressionSettingsPtrOutput)
 }
 
-func (i *compressionSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*CompressionSettings] {
-	return pulumix.Output[*CompressionSettings]{
-		OutputState: i.ToCompressionSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // settings for compression.
 type CompressionSettingsOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o CompressionSettingsOutput) ToCompressionSettingsPtrOutputWithContext(ctx
 	}).(CompressionSettingsPtrOutput)
 }
 
-func (o CompressionSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[CompressionSettings] {
-	return pulumix.Output[CompressionSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of content types on which compression applies. The value should be a valid MIME type.
 func (o CompressionSettingsOutput) ContentTypesToCompress() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CompressionSettings) []string { return v.ContentTypesToCompress }).(pulumi.StringArrayOutput)
@@ -159,12 +140,6 @@ func (o CompressionSettingsPtrOutput) ToCompressionSettingsPtrOutput() Compressi
 
 func (o CompressionSettingsPtrOutput) ToCompressionSettingsPtrOutputWithContext(ctx context.Context) CompressionSettingsPtrOutput {
 	return o
-}
-
-func (o CompressionSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CompressionSettings] {
-	return pulumix.Output[*CompressionSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CompressionSettingsPtrOutput) Elem() CompressionSettingsOutput {
@@ -220,12 +195,6 @@ func (o CompressionSettingsResponseOutput) ToCompressionSettingsResponseOutputWi
 	return o
 }
 
-func (o CompressionSettingsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[CompressionSettingsResponse] {
-	return pulumix.Output[CompressionSettingsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of content types on which compression applies. The value should be a valid MIME type.
 func (o CompressionSettingsResponseOutput) ContentTypesToCompress() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CompressionSettingsResponse) []string { return v.ContentTypesToCompress }).(pulumi.StringArrayOutput)
@@ -248,12 +217,6 @@ func (o CompressionSettingsResponsePtrOutput) ToCompressionSettingsResponsePtrOu
 
 func (o CompressionSettingsResponsePtrOutput) ToCompressionSettingsResponsePtrOutputWithContext(ctx context.Context) CompressionSettingsResponsePtrOutput {
 	return o
-}
-
-func (o CompressionSettingsResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CompressionSettingsResponse] {
-	return pulumix.Output[*CompressionSettingsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CompressionSettingsResponsePtrOutput) Elem() CompressionSettingsResponseOutput {
@@ -333,12 +296,6 @@ func (i HealthProbeParametersArgs) ToHealthProbeParametersOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(HealthProbeParametersOutput)
 }
 
-func (i HealthProbeParametersArgs) ToOutput(ctx context.Context) pulumix.Output[HealthProbeParameters] {
-	return pulumix.Output[HealthProbeParameters]{
-		OutputState: i.ToHealthProbeParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HealthProbeParametersArgs) ToHealthProbeParametersPtrOutput() HealthProbeParametersPtrOutput {
 	return i.ToHealthProbeParametersPtrOutputWithContext(context.Background())
 }
@@ -380,12 +337,6 @@ func (i *healthProbeParametersPtrType) ToHealthProbeParametersPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(HealthProbeParametersPtrOutput)
 }
 
-func (i *healthProbeParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*HealthProbeParameters] {
-	return pulumix.Output[*HealthProbeParameters]{
-		OutputState: i.ToHealthProbeParametersPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The JSON object that contains the properties to send health probes to origin.
 type HealthProbeParametersOutput struct{ *pulumi.OutputState }
 
@@ -409,12 +360,6 @@ func (o HealthProbeParametersOutput) ToHealthProbeParametersPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HealthProbeParameters) *HealthProbeParameters {
 		return &v
 	}).(HealthProbeParametersPtrOutput)
-}
-
-func (o HealthProbeParametersOutput) ToOutput(ctx context.Context) pulumix.Output[HealthProbeParameters] {
-	return pulumix.Output[HealthProbeParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of seconds between health probes.Default is 240sec.
@@ -449,12 +394,6 @@ func (o HealthProbeParametersPtrOutput) ToHealthProbeParametersPtrOutput() Healt
 
 func (o HealthProbeParametersPtrOutput) ToHealthProbeParametersPtrOutputWithContext(ctx context.Context) HealthProbeParametersPtrOutput {
 	return o
-}
-
-func (o HealthProbeParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HealthProbeParameters] {
-	return pulumix.Output[*HealthProbeParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HealthProbeParametersPtrOutput) Elem() HealthProbeParametersOutput {
@@ -534,12 +473,6 @@ func (o HealthProbeParametersResponseOutput) ToHealthProbeParametersResponseOutp
 	return o
 }
 
-func (o HealthProbeParametersResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HealthProbeParametersResponse] {
-	return pulumix.Output[HealthProbeParametersResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The number of seconds between health probes.Default is 240sec.
 func (o HealthProbeParametersResponseOutput) ProbeIntervalInSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HealthProbeParametersResponse) *int { return v.ProbeIntervalInSeconds }).(pulumi.IntPtrOutput)
@@ -572,12 +505,6 @@ func (o HealthProbeParametersResponsePtrOutput) ToHealthProbeParametersResponseP
 
 func (o HealthProbeParametersResponsePtrOutput) ToHealthProbeParametersResponsePtrOutputWithContext(ctx context.Context) HealthProbeParametersResponsePtrOutput {
 	return o
-}
-
-func (o HealthProbeParametersResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HealthProbeParametersResponse] {
-	return pulumix.Output[*HealthProbeParametersResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HealthProbeParametersResponsePtrOutput) Elem() HealthProbeParametersResponseOutput {
@@ -669,12 +596,6 @@ func (i HttpErrorRangeParametersArgs) ToHttpErrorRangeParametersOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(HttpErrorRangeParametersOutput)
 }
 
-func (i HttpErrorRangeParametersArgs) ToOutput(ctx context.Context) pulumix.Output[HttpErrorRangeParameters] {
-	return pulumix.Output[HttpErrorRangeParameters]{
-		OutputState: i.ToHttpErrorRangeParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HttpErrorRangeParametersArrayInput is an input type that accepts HttpErrorRangeParametersArray and HttpErrorRangeParametersArrayOutput values.
 // You can construct a concrete instance of `HttpErrorRangeParametersArrayInput` via:
 //
@@ -700,12 +621,6 @@ func (i HttpErrorRangeParametersArray) ToHttpErrorRangeParametersArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(HttpErrorRangeParametersArrayOutput)
 }
 
-func (i HttpErrorRangeParametersArray) ToOutput(ctx context.Context) pulumix.Output[[]HttpErrorRangeParameters] {
-	return pulumix.Output[[]HttpErrorRangeParameters]{
-		OutputState: i.ToHttpErrorRangeParametersArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The JSON object that represents the range for http status codes
 type HttpErrorRangeParametersOutput struct{ *pulumi.OutputState }
 
@@ -719,12 +634,6 @@ func (o HttpErrorRangeParametersOutput) ToHttpErrorRangeParametersOutput() HttpE
 
 func (o HttpErrorRangeParametersOutput) ToHttpErrorRangeParametersOutputWithContext(ctx context.Context) HttpErrorRangeParametersOutput {
 	return o
-}
-
-func (o HttpErrorRangeParametersOutput) ToOutput(ctx context.Context) pulumix.Output[HttpErrorRangeParameters] {
-	return pulumix.Output[HttpErrorRangeParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The inclusive start of the http status code range.
@@ -749,12 +658,6 @@ func (o HttpErrorRangeParametersArrayOutput) ToHttpErrorRangeParametersArrayOutp
 
 func (o HttpErrorRangeParametersArrayOutput) ToHttpErrorRangeParametersArrayOutputWithContext(ctx context.Context) HttpErrorRangeParametersArrayOutput {
 	return o
-}
-
-func (o HttpErrorRangeParametersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HttpErrorRangeParameters] {
-	return pulumix.Output[[]HttpErrorRangeParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpErrorRangeParametersArrayOutput) Index(i pulumi.IntInput) HttpErrorRangeParametersOutput {
@@ -786,12 +689,6 @@ func (o HttpErrorRangeParametersResponseOutput) ToHttpErrorRangeParametersRespon
 	return o
 }
 
-func (o HttpErrorRangeParametersResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HttpErrorRangeParametersResponse] {
-	return pulumix.Output[HttpErrorRangeParametersResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The inclusive start of the http status code range.
 func (o HttpErrorRangeParametersResponseOutput) Begin() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HttpErrorRangeParametersResponse) *int { return v.Begin }).(pulumi.IntPtrOutput)
@@ -814,12 +711,6 @@ func (o HttpErrorRangeParametersResponseArrayOutput) ToHttpErrorRangeParametersR
 
 func (o HttpErrorRangeParametersResponseArrayOutput) ToHttpErrorRangeParametersResponseArrayOutputWithContext(ctx context.Context) HttpErrorRangeParametersResponseArrayOutput {
 	return o
-}
-
-func (o HttpErrorRangeParametersResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HttpErrorRangeParametersResponse] {
-	return pulumix.Output[[]HttpErrorRangeParametersResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HttpErrorRangeParametersResponseArrayOutput) Index(i pulumi.IntInput) HttpErrorRangeParametersResponseOutput {
@@ -871,12 +762,6 @@ func (i LoadBalancingSettingsParametersArgs) ToLoadBalancingSettingsParametersOu
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancingSettingsParametersOutput)
 }
 
-func (i LoadBalancingSettingsParametersArgs) ToOutput(ctx context.Context) pulumix.Output[LoadBalancingSettingsParameters] {
-	return pulumix.Output[LoadBalancingSettingsParameters]{
-		OutputState: i.ToLoadBalancingSettingsParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i LoadBalancingSettingsParametersArgs) ToLoadBalancingSettingsParametersPtrOutput() LoadBalancingSettingsParametersPtrOutput {
 	return i.ToLoadBalancingSettingsParametersPtrOutputWithContext(context.Background())
 }
@@ -918,12 +803,6 @@ func (i *loadBalancingSettingsParametersPtrType) ToLoadBalancingSettingsParamete
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancingSettingsParametersPtrOutput)
 }
 
-func (i *loadBalancingSettingsParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancingSettingsParameters] {
-	return pulumix.Output[*LoadBalancingSettingsParameters]{
-		OutputState: i.ToLoadBalancingSettingsParametersPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Round-Robin load balancing settings for a backend pool
 type LoadBalancingSettingsParametersOutput struct{ *pulumi.OutputState }
 
@@ -947,12 +826,6 @@ func (o LoadBalancingSettingsParametersOutput) ToLoadBalancingSettingsParameters
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancingSettingsParameters) *LoadBalancingSettingsParameters {
 		return &v
 	}).(LoadBalancingSettingsParametersPtrOutput)
-}
-
-func (o LoadBalancingSettingsParametersOutput) ToOutput(ctx context.Context) pulumix.Output[LoadBalancingSettingsParameters] {
-	return pulumix.Output[LoadBalancingSettingsParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The additional latency in milliseconds for probes to fall into the lowest latency bucket
@@ -982,12 +855,6 @@ func (o LoadBalancingSettingsParametersPtrOutput) ToLoadBalancingSettingsParamet
 
 func (o LoadBalancingSettingsParametersPtrOutput) ToLoadBalancingSettingsParametersPtrOutputWithContext(ctx context.Context) LoadBalancingSettingsParametersPtrOutput {
 	return o
-}
-
-func (o LoadBalancingSettingsParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancingSettingsParameters] {
-	return pulumix.Output[*LoadBalancingSettingsParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LoadBalancingSettingsParametersPtrOutput) Elem() LoadBalancingSettingsParametersOutput {
@@ -1055,12 +922,6 @@ func (o LoadBalancingSettingsParametersResponseOutput) ToLoadBalancingSettingsPa
 	return o
 }
 
-func (o LoadBalancingSettingsParametersResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LoadBalancingSettingsParametersResponse] {
-	return pulumix.Output[LoadBalancingSettingsParametersResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The additional latency in milliseconds for probes to fall into the lowest latency bucket
 func (o LoadBalancingSettingsParametersResponseOutput) AdditionalLatencyInMilliseconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LoadBalancingSettingsParametersResponse) *int { return v.AdditionalLatencyInMilliseconds }).(pulumi.IntPtrOutput)
@@ -1088,12 +949,6 @@ func (o LoadBalancingSettingsParametersResponsePtrOutput) ToLoadBalancingSetting
 
 func (o LoadBalancingSettingsParametersResponsePtrOutput) ToLoadBalancingSettingsParametersResponsePtrOutputWithContext(ctx context.Context) LoadBalancingSettingsParametersResponsePtrOutput {
 	return o
-}
-
-func (o LoadBalancingSettingsParametersResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancingSettingsParametersResponse] {
-	return pulumix.Output[*LoadBalancingSettingsParametersResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LoadBalancingSettingsParametersResponsePtrOutput) Elem() LoadBalancingSettingsParametersResponseOutput {
@@ -1171,12 +1026,6 @@ func (i ResourceReferenceArgs) ToResourceReferenceOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceReferenceOutput)
 }
 
-func (i ResourceReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceReference] {
-	return pulumix.Output[ResourceReference]{
-		OutputState: i.ToResourceReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ResourceReferenceArrayInput is an input type that accepts ResourceReferenceArray and ResourceReferenceArrayOutput values.
 // You can construct a concrete instance of `ResourceReferenceArrayInput` via:
 //
@@ -1202,12 +1051,6 @@ func (i ResourceReferenceArray) ToResourceReferenceArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceReferenceArrayOutput)
 }
 
-func (i ResourceReferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]ResourceReference] {
-	return pulumix.Output[[]ResourceReference]{
-		OutputState: i.ToResourceReferenceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Reference to another resource.
 type ResourceReferenceOutput struct{ *pulumi.OutputState }
 
@@ -1221,12 +1064,6 @@ func (o ResourceReferenceOutput) ToResourceReferenceOutput() ResourceReferenceOu
 
 func (o ResourceReferenceOutput) ToResourceReferenceOutputWithContext(ctx context.Context) ResourceReferenceOutput {
 	return o
-}
-
-func (o ResourceReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceReference] {
-	return pulumix.Output[ResourceReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource ID.
@@ -1246,12 +1083,6 @@ func (o ResourceReferenceArrayOutput) ToResourceReferenceArrayOutput() ResourceR
 
 func (o ResourceReferenceArrayOutput) ToResourceReferenceArrayOutputWithContext(ctx context.Context) ResourceReferenceArrayOutput {
 	return o
-}
-
-func (o ResourceReferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceReference] {
-	return pulumix.Output[[]ResourceReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceReferenceArrayOutput) Index(i pulumi.IntInput) ResourceReferenceOutput {
@@ -1281,12 +1112,6 @@ func (o ResourceReferenceResponseOutput) ToResourceReferenceResponseOutputWithCo
 	return o
 }
 
-func (o ResourceReferenceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceReferenceResponse] {
-	return pulumix.Output[ResourceReferenceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Resource ID.
 func (o ResourceReferenceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceReferenceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -1304,12 +1129,6 @@ func (o ResourceReferenceResponseArrayOutput) ToResourceReferenceResponseArrayOu
 
 func (o ResourceReferenceResponseArrayOutput) ToResourceReferenceResponseArrayOutputWithContext(ctx context.Context) ResourceReferenceResponseArrayOutput {
 	return o
-}
-
-func (o ResourceReferenceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ResourceReferenceResponse] {
-	return pulumix.Output[[]ResourceReferenceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceReferenceResponseArrayOutput) Index(i pulumi.IntInput) ResourceReferenceResponseOutput {
@@ -1361,12 +1180,6 @@ func (i ResponseBasedOriginErrorDetectionParametersArgs) ToResponseBasedOriginEr
 	return pulumi.ToOutputWithContext(ctx, i).(ResponseBasedOriginErrorDetectionParametersOutput)
 }
 
-func (i ResponseBasedOriginErrorDetectionParametersArgs) ToOutput(ctx context.Context) pulumix.Output[ResponseBasedOriginErrorDetectionParameters] {
-	return pulumix.Output[ResponseBasedOriginErrorDetectionParameters]{
-		OutputState: i.ToResponseBasedOriginErrorDetectionParametersOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ResponseBasedOriginErrorDetectionParametersArgs) ToResponseBasedOriginErrorDetectionParametersPtrOutput() ResponseBasedOriginErrorDetectionParametersPtrOutput {
 	return i.ToResponseBasedOriginErrorDetectionParametersPtrOutputWithContext(context.Background())
 }
@@ -1408,12 +1221,6 @@ func (i *responseBasedOriginErrorDetectionParametersPtrType) ToResponseBasedOrig
 	return pulumi.ToOutputWithContext(ctx, i).(ResponseBasedOriginErrorDetectionParametersPtrOutput)
 }
 
-func (i *responseBasedOriginErrorDetectionParametersPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResponseBasedOriginErrorDetectionParameters] {
-	return pulumix.Output[*ResponseBasedOriginErrorDetectionParameters]{
-		OutputState: i.ToResponseBasedOriginErrorDetectionParametersPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The JSON object that contains the properties to determine origin health using real requests/responses.
 type ResponseBasedOriginErrorDetectionParametersOutput struct{ *pulumi.OutputState }
 
@@ -1437,12 +1244,6 @@ func (o ResponseBasedOriginErrorDetectionParametersOutput) ToResponseBasedOrigin
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResponseBasedOriginErrorDetectionParameters) *ResponseBasedOriginErrorDetectionParameters {
 		return &v
 	}).(ResponseBasedOriginErrorDetectionParametersPtrOutput)
-}
-
-func (o ResponseBasedOriginErrorDetectionParametersOutput) ToOutput(ctx context.Context) pulumix.Output[ResponseBasedOriginErrorDetectionParameters] {
-	return pulumix.Output[ResponseBasedOriginErrorDetectionParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
@@ -1478,12 +1279,6 @@ func (o ResponseBasedOriginErrorDetectionParametersPtrOutput) ToResponseBasedOri
 
 func (o ResponseBasedOriginErrorDetectionParametersPtrOutput) ToResponseBasedOriginErrorDetectionParametersPtrOutputWithContext(ctx context.Context) ResponseBasedOriginErrorDetectionParametersPtrOutput {
 	return o
-}
-
-func (o ResponseBasedOriginErrorDetectionParametersPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResponseBasedOriginErrorDetectionParameters] {
-	return pulumix.Output[*ResponseBasedOriginErrorDetectionParameters]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResponseBasedOriginErrorDetectionParametersPtrOutput) Elem() ResponseBasedOriginErrorDetectionParametersOutput {
@@ -1551,12 +1346,6 @@ func (o ResponseBasedOriginErrorDetectionParametersResponseOutput) ToResponseBas
 	return o
 }
 
-func (o ResponseBasedOriginErrorDetectionParametersResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResponseBasedOriginErrorDetectionParametersResponse] {
-	return pulumix.Output[ResponseBasedOriginErrorDetectionParametersResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
 func (o ResponseBasedOriginErrorDetectionParametersResponseOutput) HttpErrorRanges() HttpErrorRangeParametersResponseArrayOutput {
 	return o.ApplyT(func(v ResponseBasedOriginErrorDetectionParametersResponse) []HttpErrorRangeParametersResponse {
@@ -1590,12 +1379,6 @@ func (o ResponseBasedOriginErrorDetectionParametersResponsePtrOutput) ToResponse
 
 func (o ResponseBasedOriginErrorDetectionParametersResponsePtrOutput) ToResponseBasedOriginErrorDetectionParametersResponsePtrOutputWithContext(ctx context.Context) ResponseBasedOriginErrorDetectionParametersResponsePtrOutput {
 	return o
-}
-
-func (o ResponseBasedOriginErrorDetectionParametersResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResponseBasedOriginErrorDetectionParametersResponse] {
-	return pulumix.Output[*ResponseBasedOriginErrorDetectionParametersResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResponseBasedOriginErrorDetectionParametersResponsePtrOutput) Elem() ResponseBasedOriginErrorDetectionParametersResponseOutput {
@@ -1673,12 +1456,6 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
-func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The pricing tier (defines a CDN provider, feature list and rate) of the CDN profile.
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -1692,12 +1469,6 @@ func (o SkuOutput) ToSkuOutput() SkuOutput {
 
 func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return o
-}
-
-func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the pricing tier.
@@ -1724,12 +1495,6 @@ func (o SkuResponseOutput) ToSkuResponseOutput() SkuResponseOutput {
 
 func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) SkuResponseOutput {
 	return o
-}
-
-func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
-	return pulumix.Output[SkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Name of the pricing tier.
@@ -1766,12 +1531,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataRespons
 
 func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
 	return o
-}
-
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The timestamp of resource creation (UTC)

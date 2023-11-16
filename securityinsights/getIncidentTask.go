@@ -9,13 +9,12 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an incident task.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 func LookupIncidentTask(ctx *pulumi.Context, args *LookupIncidentTaskArgs, opts ...pulumi.InvokeOption) (*LookupIncidentTaskResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIncidentTaskResult
@@ -103,12 +102,6 @@ func (o LookupIncidentTaskResultOutput) ToLookupIncidentTaskResultOutput() Looku
 
 func (o LookupIncidentTaskResultOutput) ToLookupIncidentTaskResultOutputWithContext(ctx context.Context) LookupIncidentTaskResultOutput {
 	return o
-}
-
-func (o LookupIncidentTaskResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIncidentTaskResult] {
-	return pulumix.Output[LookupIncidentTaskResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Information on the client (user or application) that made some action

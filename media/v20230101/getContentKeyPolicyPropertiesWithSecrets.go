@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a Content Key Policy including secret values
@@ -85,12 +84,6 @@ func (o GetContentKeyPolicyPropertiesWithSecretsResultOutput) ToGetContentKeyPol
 
 func (o GetContentKeyPolicyPropertiesWithSecretsResultOutput) ToGetContentKeyPolicyPropertiesWithSecretsResultOutputWithContext(ctx context.Context) GetContentKeyPolicyPropertiesWithSecretsResultOutput {
 	return o
-}
-
-func (o GetContentKeyPolicyPropertiesWithSecretsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetContentKeyPolicyPropertiesWithSecretsResult] {
-	return pulumix.Output[GetContentKeyPolicyPropertiesWithSecretsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation date of the Policy

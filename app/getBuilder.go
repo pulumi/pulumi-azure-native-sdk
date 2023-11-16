@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a BuilderResource
@@ -92,12 +91,6 @@ func (o LookupBuilderResultOutput) ToLookupBuilderResultOutput() LookupBuilderRe
 
 func (o LookupBuilderResultOutput) ToLookupBuilderResultOutputWithContext(ctx context.Context) LookupBuilderResultOutput {
 	return o
-}
-
-func (o LookupBuilderResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBuilderResult] {
-	return pulumix.Output[LookupBuilderResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of mappings of container registries and the managed identity used to connect to it.

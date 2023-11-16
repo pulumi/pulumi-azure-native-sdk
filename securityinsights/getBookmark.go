@@ -9,13 +9,12 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a bookmark.
 // Azure REST API version: 2023-02-01.
 //
-// Other available API versions: 2019-01-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2019-01-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 func LookupBookmark(ctx *pulumi.Context, args *LookupBookmarkArgs, opts ...pulumi.InvokeOption) (*LookupBookmarkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBookmarkResult
@@ -114,12 +113,6 @@ func (o LookupBookmarkResultOutput) ToLookupBookmarkResultOutput() LookupBookmar
 
 func (o LookupBookmarkResultOutput) ToLookupBookmarkResultOutputWithContext(ctx context.Context) LookupBookmarkResultOutput {
 	return o
-}
-
-func (o LookupBookmarkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBookmarkResult] {
-	return pulumix.Output[LookupBookmarkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time the bookmark was created

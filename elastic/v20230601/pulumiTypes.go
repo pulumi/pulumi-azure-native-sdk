@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -65,12 +64,6 @@ func (i CompanyInfoArgs) ToCompanyInfoOutputWithContext(ctx context.Context) Com
 	return pulumi.ToOutputWithContext(ctx, i).(CompanyInfoOutput)
 }
 
-func (i CompanyInfoArgs) ToOutput(ctx context.Context) pulumix.Output[CompanyInfo] {
-	return pulumix.Output[CompanyInfo]{
-		OutputState: i.ToCompanyInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CompanyInfoArgs) ToCompanyInfoPtrOutput() CompanyInfoPtrOutput {
 	return i.ToCompanyInfoPtrOutputWithContext(context.Background())
 }
@@ -112,12 +105,6 @@ func (i *companyInfoPtrType) ToCompanyInfoPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(CompanyInfoPtrOutput)
 }
 
-func (i *companyInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*CompanyInfo] {
-	return pulumix.Output[*CompanyInfo]{
-		OutputState: i.ToCompanyInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Company information of the user to be passed to partners.
 type CompanyInfoOutput struct{ *pulumi.OutputState }
 
@@ -141,12 +128,6 @@ func (o CompanyInfoOutput) ToCompanyInfoPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CompanyInfo) *CompanyInfo {
 		return &v
 	}).(CompanyInfoPtrOutput)
-}
-
-func (o CompanyInfoOutput) ToOutput(ctx context.Context) pulumix.Output[CompanyInfo] {
-	return pulumix.Output[CompanyInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Business of the company
@@ -186,12 +167,6 @@ func (o CompanyInfoPtrOutput) ToCompanyInfoPtrOutput() CompanyInfoPtrOutput {
 
 func (o CompanyInfoPtrOutput) ToCompanyInfoPtrOutputWithContext(ctx context.Context) CompanyInfoPtrOutput {
 	return o
-}
-
-func (o CompanyInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CompanyInfo] {
-	return pulumix.Output[*CompanyInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CompanyInfoPtrOutput) Elem() CompanyInfoOutput {
@@ -287,12 +262,6 @@ func (o ElasticCloudDeploymentResponseOutput) ToElasticCloudDeploymentResponseOu
 	return o
 }
 
-func (o ElasticCloudDeploymentResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ElasticCloudDeploymentResponse] {
-	return pulumix.Output[ElasticCloudDeploymentResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Associated Azure subscription Id for the elastic deployment.
 func (o ElasticCloudDeploymentResponseOutput) AzureSubscriptionId() pulumi.StringOutput {
 	return o.ApplyT(func(v ElasticCloudDeploymentResponse) string { return v.AzureSubscriptionId }).(pulumi.StringOutput)
@@ -340,12 +309,6 @@ func (o ElasticCloudDeploymentResponsePtrOutput) ToElasticCloudDeploymentRespons
 
 func (o ElasticCloudDeploymentResponsePtrOutput) ToElasticCloudDeploymentResponsePtrOutputWithContext(ctx context.Context) ElasticCloudDeploymentResponsePtrOutput {
 	return o
-}
-
-func (o ElasticCloudDeploymentResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ElasticCloudDeploymentResponse] {
-	return pulumix.Output[*ElasticCloudDeploymentResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElasticCloudDeploymentResponsePtrOutput) Elem() ElasticCloudDeploymentResponseOutput {
@@ -453,12 +416,6 @@ func (o ElasticCloudUserResponseOutput) ToElasticCloudUserResponseOutputWithCont
 	return o
 }
 
-func (o ElasticCloudUserResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ElasticCloudUserResponse] {
-	return pulumix.Output[ElasticCloudUserResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Elastic cloud default dashboard sso URL of the Elastic user account.
 func (o ElasticCloudUserResponseOutput) ElasticCloudSsoDefaultUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v ElasticCloudUserResponse) string { return v.ElasticCloudSsoDefaultUrl }).(pulumi.StringOutput)
@@ -486,12 +443,6 @@ func (o ElasticCloudUserResponsePtrOutput) ToElasticCloudUserResponsePtrOutput()
 
 func (o ElasticCloudUserResponsePtrOutput) ToElasticCloudUserResponsePtrOutputWithContext(ctx context.Context) ElasticCloudUserResponsePtrOutput {
 	return o
-}
-
-func (o ElasticCloudUserResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ElasticCloudUserResponse] {
-	return pulumix.Output[*ElasticCloudUserResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElasticCloudUserResponsePtrOutput) Elem() ElasticCloudUserResponseOutput {
@@ -557,12 +508,6 @@ func (o ElasticPropertiesResponseOutput) ToElasticPropertiesResponseOutputWithCo
 	return o
 }
 
-func (o ElasticPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ElasticPropertiesResponse] {
-	return pulumix.Output[ElasticPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Details of the elastic cloud deployment.
 func (o ElasticPropertiesResponseOutput) ElasticCloudDeployment() ElasticCloudDeploymentResponsePtrOutput {
 	return o.ApplyT(func(v ElasticPropertiesResponse) *ElasticCloudDeploymentResponse { return v.ElasticCloudDeployment }).(ElasticCloudDeploymentResponsePtrOutput)
@@ -585,12 +530,6 @@ func (o ElasticPropertiesResponsePtrOutput) ToElasticPropertiesResponsePtrOutput
 
 func (o ElasticPropertiesResponsePtrOutput) ToElasticPropertiesResponsePtrOutputWithContext(ctx context.Context) ElasticPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o ElasticPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ElasticPropertiesResponse] {
-	return pulumix.Output[*ElasticPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElasticPropertiesResponsePtrOutput) Elem() ElasticPropertiesResponseOutput {
@@ -656,12 +595,6 @@ func (o ElasticTrafficFilterResponseOutput) ToElasticTrafficFilterResponseOutput
 	return o
 }
 
-func (o ElasticTrafficFilterResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ElasticTrafficFilterResponse] {
-	return pulumix.Output[ElasticTrafficFilterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Description of the elastic filter
 func (o ElasticTrafficFilterResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ElasticTrafficFilterResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -711,12 +644,6 @@ func (o ElasticTrafficFilterResponseArrayOutput) ToElasticTrafficFilterResponseA
 	return o
 }
 
-func (o ElasticTrafficFilterResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElasticTrafficFilterResponse] {
-	return pulumix.Output[[]ElasticTrafficFilterResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ElasticTrafficFilterResponseArrayOutput) Index(i pulumi.IntInput) ElasticTrafficFilterResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ElasticTrafficFilterResponse {
 		return vs[0].([]ElasticTrafficFilterResponse)[vs[1].(int)]
@@ -750,12 +677,6 @@ func (o ElasticTrafficFilterRuleResponseOutput) ToElasticTrafficFilterRuleRespon
 
 func (o ElasticTrafficFilterRuleResponseOutput) ToElasticTrafficFilterRuleResponseOutputWithContext(ctx context.Context) ElasticTrafficFilterRuleResponseOutput {
 	return o
-}
-
-func (o ElasticTrafficFilterRuleResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ElasticTrafficFilterRuleResponse] {
-	return pulumix.Output[ElasticTrafficFilterRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Guid of Private Endpoint in the elastic filter rule
@@ -795,12 +716,6 @@ func (o ElasticTrafficFilterRuleResponseArrayOutput) ToElasticTrafficFilterRuleR
 
 func (o ElasticTrafficFilterRuleResponseArrayOutput) ToElasticTrafficFilterRuleResponseArrayOutputWithContext(ctx context.Context) ElasticTrafficFilterRuleResponseArrayOutput {
 	return o
-}
-
-func (o ElasticTrafficFilterRuleResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ElasticTrafficFilterRuleResponse] {
-	return pulumix.Output[[]ElasticTrafficFilterRuleResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ElasticTrafficFilterRuleResponseArrayOutput) Index(i pulumi.IntInput) ElasticTrafficFilterRuleResponseOutput {
@@ -852,12 +767,6 @@ func (i FilteringTagArgs) ToFilteringTagOutputWithContext(ctx context.Context) F
 	return pulumi.ToOutputWithContext(ctx, i).(FilteringTagOutput)
 }
 
-func (i FilteringTagArgs) ToOutput(ctx context.Context) pulumix.Output[FilteringTag] {
-	return pulumix.Output[FilteringTag]{
-		OutputState: i.ToFilteringTagOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FilteringTagArrayInput is an input type that accepts FilteringTagArray and FilteringTagArrayOutput values.
 // You can construct a concrete instance of `FilteringTagArrayInput` via:
 //
@@ -883,12 +792,6 @@ func (i FilteringTagArray) ToFilteringTagArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(FilteringTagArrayOutput)
 }
 
-func (i FilteringTagArray) ToOutput(ctx context.Context) pulumix.Output[[]FilteringTag] {
-	return pulumix.Output[[]FilteringTag]{
-		OutputState: i.ToFilteringTagArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The definition of a filtering tag. Filtering tags are used for capturing resources and include/exclude them from being monitored.
 type FilteringTagOutput struct{ *pulumi.OutputState }
 
@@ -902,12 +805,6 @@ func (o FilteringTagOutput) ToFilteringTagOutput() FilteringTagOutput {
 
 func (o FilteringTagOutput) ToFilteringTagOutputWithContext(ctx context.Context) FilteringTagOutput {
 	return o
-}
-
-func (o FilteringTagOutput) ToOutput(ctx context.Context) pulumix.Output[FilteringTag] {
-	return pulumix.Output[FilteringTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Valid actions for a filtering tag.
@@ -937,12 +834,6 @@ func (o FilteringTagArrayOutput) ToFilteringTagArrayOutput() FilteringTagArrayOu
 
 func (o FilteringTagArrayOutput) ToFilteringTagArrayOutputWithContext(ctx context.Context) FilteringTagArrayOutput {
 	return o
-}
-
-func (o FilteringTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FilteringTag] {
-	return pulumix.Output[[]FilteringTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FilteringTagArrayOutput) Index(i pulumi.IntInput) FilteringTagOutput {
@@ -976,12 +867,6 @@ func (o FilteringTagResponseOutput) ToFilteringTagResponseOutputWithContext(ctx 
 	return o
 }
 
-func (o FilteringTagResponseOutput) ToOutput(ctx context.Context) pulumix.Output[FilteringTagResponse] {
-	return pulumix.Output[FilteringTagResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Valid actions for a filtering tag.
 func (o FilteringTagResponseOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FilteringTagResponse) *string { return v.Action }).(pulumi.StringPtrOutput)
@@ -1009,12 +894,6 @@ func (o FilteringTagResponseArrayOutput) ToFilteringTagResponseArrayOutput() Fil
 
 func (o FilteringTagResponseArrayOutput) ToFilteringTagResponseArrayOutputWithContext(ctx context.Context) FilteringTagResponseArrayOutput {
 	return o
-}
-
-func (o FilteringTagResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]FilteringTagResponse] {
-	return pulumix.Output[[]FilteringTagResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FilteringTagResponseArrayOutput) Index(i pulumi.IntInput) FilteringTagResponseOutput {
@@ -1058,12 +937,6 @@ func (i IdentityPropertiesArgs) ToIdentityPropertiesOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPropertiesOutput)
 }
 
-func (i IdentityPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[IdentityProperties] {
-	return pulumix.Output[IdentityProperties]{
-		OutputState: i.ToIdentityPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IdentityPropertiesArgs) ToIdentityPropertiesPtrOutput() IdentityPropertiesPtrOutput {
 	return i.ToIdentityPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1105,12 +978,6 @@ func (i *identityPropertiesPtrType) ToIdentityPropertiesPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPropertiesPtrOutput)
 }
 
-func (i *identityPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*IdentityProperties] {
-	return pulumix.Output[*IdentityProperties]{
-		OutputState: i.ToIdentityPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Identity properties.
 type IdentityPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1136,12 +1003,6 @@ func (o IdentityPropertiesOutput) ToIdentityPropertiesPtrOutputWithContext(ctx c
 	}).(IdentityPropertiesPtrOutput)
 }
 
-func (o IdentityPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityProperties] {
-	return pulumix.Output[IdentityProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Managed identity type.
 func (o IdentityPropertiesOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IdentityProperties) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -1159,12 +1020,6 @@ func (o IdentityPropertiesPtrOutput) ToIdentityPropertiesPtrOutput() IdentityPro
 
 func (o IdentityPropertiesPtrOutput) ToIdentityPropertiesPtrOutputWithContext(ctx context.Context) IdentityPropertiesPtrOutput {
 	return o
-}
-
-func (o IdentityPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityProperties] {
-	return pulumix.Output[*IdentityProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityPropertiesPtrOutput) Elem() IdentityPropertiesOutput {
@@ -1212,12 +1067,6 @@ func (o IdentityPropertiesResponseOutput) ToIdentityPropertiesResponseOutputWith
 	return o
 }
 
-func (o IdentityPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityPropertiesResponse] {
-	return pulumix.Output[IdentityPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The identity ID.
 func (o IdentityPropertiesResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityPropertiesResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -1245,12 +1094,6 @@ func (o IdentityPropertiesResponsePtrOutput) ToIdentityPropertiesResponsePtrOutp
 
 func (o IdentityPropertiesResponsePtrOutput) ToIdentityPropertiesResponsePtrOutputWithContext(ctx context.Context) IdentityPropertiesResponsePtrOutput {
 	return o
-}
-
-func (o IdentityPropertiesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityPropertiesResponse] {
-	return pulumix.Output[*IdentityPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityPropertiesResponsePtrOutput) Elem() IdentityPropertiesResponseOutput {
@@ -1340,12 +1183,6 @@ func (i LogRulesArgs) ToLogRulesOutputWithContext(ctx context.Context) LogRulesO
 	return pulumi.ToOutputWithContext(ctx, i).(LogRulesOutput)
 }
 
-func (i LogRulesArgs) ToOutput(ctx context.Context) pulumix.Output[LogRules] {
-	return pulumix.Output[LogRules]{
-		OutputState: i.ToLogRulesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i LogRulesArgs) ToLogRulesPtrOutput() LogRulesPtrOutput {
 	return i.ToLogRulesPtrOutputWithContext(context.Background())
 }
@@ -1387,12 +1224,6 @@ func (i *logRulesPtrType) ToLogRulesPtrOutputWithContext(ctx context.Context) Lo
 	return pulumi.ToOutputWithContext(ctx, i).(LogRulesPtrOutput)
 }
 
-func (i *logRulesPtrType) ToOutput(ctx context.Context) pulumix.Output[*LogRules] {
-	return pulumix.Output[*LogRules]{
-		OutputState: i.ToLogRulesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Set of rules for sending logs for the Monitor resource.
 type LogRulesOutput struct{ *pulumi.OutputState }
 
@@ -1416,12 +1247,6 @@ func (o LogRulesOutput) ToLogRulesPtrOutputWithContext(ctx context.Context) LogR
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogRules) *LogRules {
 		return &v
 	}).(LogRulesPtrOutput)
-}
-
-func (o LogRulesOutput) ToOutput(ctx context.Context) pulumix.Output[LogRules] {
-	return pulumix.Output[LogRules]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of filtering tags to be used for capturing logs. This only takes effect if SendActivityLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
@@ -1456,12 +1281,6 @@ func (o LogRulesPtrOutput) ToLogRulesPtrOutput() LogRulesPtrOutput {
 
 func (o LogRulesPtrOutput) ToLogRulesPtrOutputWithContext(ctx context.Context) LogRulesPtrOutput {
 	return o
-}
-
-func (o LogRulesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogRules] {
-	return pulumix.Output[*LogRules]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LogRulesPtrOutput) Elem() LogRulesOutput {
@@ -1541,12 +1360,6 @@ func (o LogRulesResponseOutput) ToLogRulesResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o LogRulesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[LogRulesResponse] {
-	return pulumix.Output[LogRulesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of filtering tags to be used for capturing logs. This only takes effect if SendActivityLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
 func (o LogRulesResponseOutput) FilteringTags() FilteringTagResponseArrayOutput {
 	return o.ApplyT(func(v LogRulesResponse) []FilteringTagResponse { return v.FilteringTags }).(FilteringTagResponseArrayOutput)
@@ -1579,12 +1392,6 @@ func (o LogRulesResponsePtrOutput) ToLogRulesResponsePtrOutput() LogRulesRespons
 
 func (o LogRulesResponsePtrOutput) ToLogRulesResponsePtrOutputWithContext(ctx context.Context) LogRulesResponsePtrOutput {
 	return o
-}
-
-func (o LogRulesResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*LogRulesResponse] {
-	return pulumix.Output[*LogRulesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LogRulesResponsePtrOutput) Elem() LogRulesResponseOutput {
@@ -1664,12 +1471,6 @@ func (o MarketplaceSaaSInfoResponseOutput) ToMarketplaceSaaSInfoResponseOutputWi
 	return o
 }
 
-func (o MarketplaceSaaSInfoResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MarketplaceSaaSInfoResponse] {
-	return pulumix.Output[MarketplaceSaaSInfoResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Marketplace Subscription Details: SAAS Name
 func (o MarketplaceSaaSInfoResponseOutput) MarketplaceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MarketplaceSaaSInfoResponse) *string { return v.MarketplaceName }).(pulumi.StringPtrOutput)
@@ -1713,12 +1514,6 @@ func (o MarketplaceSaaSInfoResponseMarketplaceSubscriptionOutput) ToMarketplaceS
 	return o
 }
 
-func (o MarketplaceSaaSInfoResponseMarketplaceSubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[MarketplaceSaaSInfoResponseMarketplaceSubscription] {
-	return pulumix.Output[MarketplaceSaaSInfoResponseMarketplaceSubscription]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Marketplace Subscription Id. This is a GUID-formatted string.
 func (o MarketplaceSaaSInfoResponseMarketplaceSubscriptionOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MarketplaceSaaSInfoResponseMarketplaceSubscription) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -1736,12 +1531,6 @@ func (o MarketplaceSaaSInfoResponseMarketplaceSubscriptionPtrOutput) ToMarketpla
 
 func (o MarketplaceSaaSInfoResponseMarketplaceSubscriptionPtrOutput) ToMarketplaceSaaSInfoResponseMarketplaceSubscriptionPtrOutputWithContext(ctx context.Context) MarketplaceSaaSInfoResponseMarketplaceSubscriptionPtrOutput {
 	return o
-}
-
-func (o MarketplaceSaaSInfoResponseMarketplaceSubscriptionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MarketplaceSaaSInfoResponseMarketplaceSubscription] {
-	return pulumix.Output[*MarketplaceSaaSInfoResponseMarketplaceSubscription]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MarketplaceSaaSInfoResponseMarketplaceSubscriptionPtrOutput) Elem() MarketplaceSaaSInfoResponseMarketplaceSubscriptionOutput {
@@ -1815,12 +1604,6 @@ func (i MonitorPropertiesArgs) ToMonitorPropertiesOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorPropertiesOutput)
 }
 
-func (i MonitorPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[MonitorProperties] {
-	return pulumix.Output[MonitorProperties]{
-		OutputState: i.ToMonitorPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MonitorPropertiesArgs) ToMonitorPropertiesPtrOutput() MonitorPropertiesPtrOutput {
 	return i.ToMonitorPropertiesPtrOutputWithContext(context.Background())
 }
@@ -1862,12 +1645,6 @@ func (i *monitorPropertiesPtrType) ToMonitorPropertiesPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorPropertiesPtrOutput)
 }
 
-func (i *monitorPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*MonitorProperties] {
-	return pulumix.Output[*MonitorProperties]{
-		OutputState: i.ToMonitorPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Properties specific to the monitor resource.
 type MonitorPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -1891,12 +1668,6 @@ func (o MonitorPropertiesOutput) ToMonitorPropertiesPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorProperties) *MonitorProperties {
 		return &v
 	}).(MonitorPropertiesPtrOutput)
-}
-
-func (o MonitorPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[MonitorProperties] {
-	return pulumix.Output[MonitorProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Flag to determine if User API Key has to be generated and shared.
@@ -1936,12 +1707,6 @@ func (o MonitorPropertiesPtrOutput) ToMonitorPropertiesPtrOutput() MonitorProper
 
 func (o MonitorPropertiesPtrOutput) ToMonitorPropertiesPtrOutputWithContext(ctx context.Context) MonitorPropertiesPtrOutput {
 	return o
-}
-
-func (o MonitorPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitorProperties] {
-	return pulumix.Output[*MonitorProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitorPropertiesPtrOutput) Elem() MonitorPropertiesOutput {
@@ -2036,12 +1801,6 @@ func (o MonitorPropertiesResponseOutput) ToMonitorPropertiesResponseOutputWithCo
 	return o
 }
 
-func (o MonitorPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MonitorPropertiesResponse] {
-	return pulumix.Output[MonitorPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Elastic cloud properties.
 func (o MonitorPropertiesResponseOutput) ElasticProperties() ElasticPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v MonitorPropertiesResponse) *ElasticPropertiesResponse { return v.ElasticProperties }).(ElasticPropertiesResponsePtrOutput)
@@ -2101,12 +1860,6 @@ func (o MonitoredResourceResponseOutput) ToMonitoredResourceResponseOutputWithCo
 	return o
 }
 
-func (o MonitoredResourceResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoredResourceResponse] {
-	return pulumix.Output[MonitoredResourceResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ARM id of the resource.
 func (o MonitoredResourceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MonitoredResourceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -2134,12 +1887,6 @@ func (o MonitoredResourceResponseArrayOutput) ToMonitoredResourceResponseArrayOu
 
 func (o MonitoredResourceResponseArrayOutput) ToMonitoredResourceResponseArrayOutputWithContext(ctx context.Context) MonitoredResourceResponseArrayOutput {
 	return o
-}
-
-func (o MonitoredResourceResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MonitoredResourceResponse] {
-	return pulumix.Output[[]MonitoredResourceResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitoredResourceResponseArrayOutput) Index(i pulumi.IntInput) MonitoredResourceResponseOutput {
@@ -2187,12 +1934,6 @@ func (i MonitoringTagRulesPropertiesArgs) ToMonitoringTagRulesPropertiesOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoringTagRulesPropertiesOutput)
 }
 
-func (i MonitoringTagRulesPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[MonitoringTagRulesProperties] {
-	return pulumix.Output[MonitoringTagRulesProperties]{
-		OutputState: i.ToMonitoringTagRulesPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MonitoringTagRulesPropertiesArgs) ToMonitoringTagRulesPropertiesPtrOutput() MonitoringTagRulesPropertiesPtrOutput {
 	return i.ToMonitoringTagRulesPropertiesPtrOutputWithContext(context.Background())
 }
@@ -2234,12 +1975,6 @@ func (i *monitoringTagRulesPropertiesPtrType) ToMonitoringTagRulesPropertiesPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(MonitoringTagRulesPropertiesPtrOutput)
 }
 
-func (i *monitoringTagRulesPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*MonitoringTagRulesProperties] {
-	return pulumix.Output[*MonitoringTagRulesProperties]{
-		OutputState: i.ToMonitoringTagRulesPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Definition of the properties for a TagRules resource.
 type MonitoringTagRulesPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -2265,12 +2000,6 @@ func (o MonitoringTagRulesPropertiesOutput) ToMonitoringTagRulesPropertiesPtrOut
 	}).(MonitoringTagRulesPropertiesPtrOutput)
 }
 
-func (o MonitoringTagRulesPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoringTagRulesProperties] {
-	return pulumix.Output[MonitoringTagRulesProperties]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Rules for sending logs.
 func (o MonitoringTagRulesPropertiesOutput) LogRules() LogRulesPtrOutput {
 	return o.ApplyT(func(v MonitoringTagRulesProperties) *LogRules { return v.LogRules }).(LogRulesPtrOutput)
@@ -2293,12 +2022,6 @@ func (o MonitoringTagRulesPropertiesPtrOutput) ToMonitoringTagRulesPropertiesPtr
 
 func (o MonitoringTagRulesPropertiesPtrOutput) ToMonitoringTagRulesPropertiesPtrOutputWithContext(ctx context.Context) MonitoringTagRulesPropertiesPtrOutput {
 	return o
-}
-
-func (o MonitoringTagRulesPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitoringTagRulesProperties] {
-	return pulumix.Output[*MonitoringTagRulesProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitoringTagRulesPropertiesPtrOutput) Elem() MonitoringTagRulesPropertiesOutput {
@@ -2354,12 +2077,6 @@ func (o MonitoringTagRulesPropertiesResponseOutput) ToMonitoringTagRulesProperti
 	return o
 }
 
-func (o MonitoringTagRulesPropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MonitoringTagRulesPropertiesResponse] {
-	return pulumix.Output[MonitoringTagRulesPropertiesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Rules for sending logs.
 func (o MonitoringTagRulesPropertiesResponseOutput) LogRules() LogRulesResponsePtrOutput {
 	return o.ApplyT(func(v MonitoringTagRulesPropertiesResponse) *LogRulesResponse { return v.LogRules }).(LogRulesResponsePtrOutput)
@@ -2405,12 +2122,6 @@ func (i ResourceSkuArgs) ToResourceSkuOutputWithContext(ctx context.Context) Res
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSkuOutput)
 }
 
-func (i ResourceSkuArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceSku] {
-	return pulumix.Output[ResourceSku]{
-		OutputState: i.ToResourceSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ResourceSkuArgs) ToResourceSkuPtrOutput() ResourceSkuPtrOutput {
 	return i.ToResourceSkuPtrOutputWithContext(context.Background())
 }
@@ -2452,12 +2163,6 @@ func (i *resourceSkuPtrType) ToResourceSkuPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSkuPtrOutput)
 }
 
-func (i *resourceSkuPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceSku] {
-	return pulumix.Output[*ResourceSku]{
-		OutputState: i.ToResourceSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Microsoft.Elastic SKU.
 type ResourceSkuOutput struct{ *pulumi.OutputState }
 
@@ -2483,12 +2188,6 @@ func (o ResourceSkuOutput) ToResourceSkuPtrOutputWithContext(ctx context.Context
 	}).(ResourceSkuPtrOutput)
 }
 
-func (o ResourceSkuOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSku] {
-	return pulumix.Output[ResourceSku]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the SKU.
 func (o ResourceSkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceSku) string { return v.Name }).(pulumi.StringOutput)
@@ -2506,12 +2205,6 @@ func (o ResourceSkuPtrOutput) ToResourceSkuPtrOutput() ResourceSkuPtrOutput {
 
 func (o ResourceSkuPtrOutput) ToResourceSkuPtrOutputWithContext(ctx context.Context) ResourceSkuPtrOutput {
 	return o
-}
-
-func (o ResourceSkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSku] {
-	return pulumix.Output[*ResourceSku]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceSkuPtrOutput) Elem() ResourceSkuOutput {
@@ -2555,12 +2248,6 @@ func (o ResourceSkuResponseOutput) ToResourceSkuResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o ResourceSkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSkuResponse] {
-	return pulumix.Output[ResourceSkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the SKU.
 func (o ResourceSkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceSkuResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -2578,12 +2265,6 @@ func (o ResourceSkuResponsePtrOutput) ToResourceSkuResponsePtrOutput() ResourceS
 
 func (o ResourceSkuResponsePtrOutput) ToResourceSkuResponsePtrOutputWithContext(ctx context.Context) ResourceSkuResponsePtrOutput {
 	return o
-}
-
-func (o ResourceSkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSkuResponse] {
-	return pulumix.Output[*ResourceSkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ResourceSkuResponsePtrOutput) Elem() ResourceSkuResponseOutput {
@@ -2637,12 +2318,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timestamp of resource creation (UTC).
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
@@ -2690,12 +2365,6 @@ func (o UserApiKeyResponsePropertiesResponseOutput) ToUserApiKeyResponseProperti
 
 func (o UserApiKeyResponsePropertiesResponseOutput) ToUserApiKeyResponsePropertiesResponseOutputWithContext(ctx context.Context) UserApiKeyResponsePropertiesResponseOutput {
 	return o
-}
-
-func (o UserApiKeyResponsePropertiesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserApiKeyResponsePropertiesResponse] {
-	return pulumix.Output[UserApiKeyResponsePropertiesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The User Api Key Generated based on GenerateApiKey flag. This is applicable for non-Portal clients only.
@@ -2754,12 +2423,6 @@ func (i UserInfoArgs) ToUserInfoOutputWithContext(ctx context.Context) UserInfoO
 	return pulumi.ToOutputWithContext(ctx, i).(UserInfoOutput)
 }
 
-func (i UserInfoArgs) ToOutput(ctx context.Context) pulumix.Output[UserInfo] {
-	return pulumix.Output[UserInfo]{
-		OutputState: i.ToUserInfoOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i UserInfoArgs) ToUserInfoPtrOutput() UserInfoPtrOutput {
 	return i.ToUserInfoPtrOutputWithContext(context.Background())
 }
@@ -2801,12 +2464,6 @@ func (i *userInfoPtrType) ToUserInfoPtrOutputWithContext(ctx context.Context) Us
 	return pulumi.ToOutputWithContext(ctx, i).(UserInfoPtrOutput)
 }
 
-func (i *userInfoPtrType) ToOutput(ctx context.Context) pulumix.Output[*UserInfo] {
-	return pulumix.Output[*UserInfo]{
-		OutputState: i.ToUserInfoPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // User Information to be passed to partners.
 type UserInfoOutput struct{ *pulumi.OutputState }
 
@@ -2830,12 +2487,6 @@ func (o UserInfoOutput) ToUserInfoPtrOutputWithContext(ctx context.Context) User
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserInfo) *UserInfo {
 		return &v
 	}).(UserInfoPtrOutput)
-}
-
-func (o UserInfoOutput) ToOutput(ctx context.Context) pulumix.Output[UserInfo] {
-	return pulumix.Output[UserInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Company information of the user to be passed to partners.
@@ -2875,12 +2526,6 @@ func (o UserInfoPtrOutput) ToUserInfoPtrOutput() UserInfoPtrOutput {
 
 func (o UserInfoPtrOutput) ToUserInfoPtrOutputWithContext(ctx context.Context) UserInfoPtrOutput {
 	return o
-}
-
-func (o UserInfoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*UserInfo] {
-	return pulumix.Output[*UserInfo]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserInfoPtrOutput) Elem() UserInfoOutput {
@@ -2964,12 +2609,6 @@ func (o VMResourcesResponseOutput) ToVMResourcesResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o VMResourcesResponseOutput) ToOutput(ctx context.Context) pulumix.Output[VMResourcesResponse] {
-	return pulumix.Output[VMResourcesResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The ARM id of the VM resource.
 func (o VMResourcesResponseOutput) VmResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMResourcesResponse) *string { return v.VmResourceId }).(pulumi.StringPtrOutput)
@@ -2987,12 +2626,6 @@ func (o VMResourcesResponseArrayOutput) ToVMResourcesResponseArrayOutput() VMRes
 
 func (o VMResourcesResponseArrayOutput) ToVMResourcesResponseArrayOutputWithContext(ctx context.Context) VMResourcesResponseArrayOutput {
 	return o
-}
-
-func (o VMResourcesResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]VMResourcesResponse] {
-	return pulumix.Output[[]VMResourcesResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o VMResourcesResponseArrayOutput) Index(i pulumi.IntInput) VMResourcesResponseOutput {

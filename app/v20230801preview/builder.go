@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Information about the SourceToCloud builder resource.
@@ -146,12 +145,6 @@ func (i *Builder) ToBuilderOutputWithContext(ctx context.Context) BuilderOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(BuilderOutput)
 }
 
-func (i *Builder) ToOutput(ctx context.Context) pulumix.Output[*Builder] {
-	return pulumix.Output[*Builder]{
-		OutputState: i.ToBuilderOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BuilderOutput struct{ *pulumi.OutputState }
 
 func (BuilderOutput) ElementType() reflect.Type {
@@ -164,12 +157,6 @@ func (o BuilderOutput) ToBuilderOutput() BuilderOutput {
 
 func (o BuilderOutput) ToBuilderOutputWithContext(ctx context.Context) BuilderOutput {
 	return o
-}
-
-func (o BuilderOutput) ToOutput(ctx context.Context) pulumix.Output[*Builder] {
-	return pulumix.Output[*Builder]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of mappings of container registries and the managed identity used to connect to it.

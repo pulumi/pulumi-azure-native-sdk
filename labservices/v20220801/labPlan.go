@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Lab Plans act as a permission container for creating labs via labs.azure.com. Additionally, they can provide a set of default configurations that will apply at the time of creating a lab, but these defaults can still be overwritten.
@@ -188,12 +187,6 @@ func (i *LabPlan) ToLabPlanOutputWithContext(ctx context.Context) LabPlanOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(LabPlanOutput)
 }
 
-func (i *LabPlan) ToOutput(ctx context.Context) pulumix.Output[*LabPlan] {
-	return pulumix.Output[*LabPlan]{
-		OutputState: i.ToLabPlanOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LabPlanOutput struct{ *pulumi.OutputState }
 
 func (LabPlanOutput) ElementType() reflect.Type {
@@ -206,12 +199,6 @@ func (o LabPlanOutput) ToLabPlanOutput() LabPlanOutput {
 
 func (o LabPlanOutput) ToLabPlanOutputWithContext(ctx context.Context) LabPlanOutput {
 	return o
-}
-
-func (o LabPlanOutput) ToOutput(ctx context.Context) pulumix.Output[*LabPlan] {
-	return pulumix.Output[*LabPlan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The allowed regions for the lab creator to use when creating labs using this lab plan.

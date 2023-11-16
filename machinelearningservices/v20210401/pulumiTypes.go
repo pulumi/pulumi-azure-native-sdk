@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i ACIServiceCreateRequestDataCollectionArgs) ToACIServiceCreateRequestData
 	return pulumi.ToOutputWithContext(ctx, i).(ACIServiceCreateRequestDataCollectionOutput)
 }
 
-func (i ACIServiceCreateRequestDataCollectionArgs) ToOutput(ctx context.Context) pulumix.Output[ACIServiceCreateRequestDataCollection] {
-	return pulumix.Output[ACIServiceCreateRequestDataCollection]{
-		OutputState: i.ToACIServiceCreateRequestDataCollectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ACIServiceCreateRequestDataCollectionArgs) ToACIServiceCreateRequestDataCollectionPtrOutput() ACIServiceCreateRequestDataCollectionPtrOutput {
 	return i.ToACIServiceCreateRequestDataCollectionPtrOutputWithContext(context.Background())
 }
@@ -100,12 +93,6 @@ func (i *aciserviceCreateRequestDataCollectionPtrType) ToACIServiceCreateRequest
 	return pulumi.ToOutputWithContext(ctx, i).(ACIServiceCreateRequestDataCollectionPtrOutput)
 }
 
-func (i *aciserviceCreateRequestDataCollectionPtrType) ToOutput(ctx context.Context) pulumix.Output[*ACIServiceCreateRequestDataCollection] {
-	return pulumix.Output[*ACIServiceCreateRequestDataCollection]{
-		OutputState: i.ToACIServiceCreateRequestDataCollectionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Details of the data collection options specified.
 type ACIServiceCreateRequestDataCollectionOutput struct{ *pulumi.OutputState }
 
@@ -131,12 +118,6 @@ func (o ACIServiceCreateRequestDataCollectionOutput) ToACIServiceCreateRequestDa
 	}).(ACIServiceCreateRequestDataCollectionPtrOutput)
 }
 
-func (o ACIServiceCreateRequestDataCollectionOutput) ToOutput(ctx context.Context) pulumix.Output[ACIServiceCreateRequestDataCollection] {
-	return pulumix.Output[ACIServiceCreateRequestDataCollection]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Option for enabling/disabling Event Hub.
 func (o ACIServiceCreateRequestDataCollectionOutput) EventHubEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ACIServiceCreateRequestDataCollection) *bool { return v.EventHubEnabled }).(pulumi.BoolPtrOutput)
@@ -159,12 +140,6 @@ func (o ACIServiceCreateRequestDataCollectionPtrOutput) ToACIServiceCreateReques
 
 func (o ACIServiceCreateRequestDataCollectionPtrOutput) ToACIServiceCreateRequestDataCollectionPtrOutputWithContext(ctx context.Context) ACIServiceCreateRequestDataCollectionPtrOutput {
 	return o
-}
-
-func (o ACIServiceCreateRequestDataCollectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ACIServiceCreateRequestDataCollection] {
-	return pulumix.Output[*ACIServiceCreateRequestDataCollection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ACIServiceCreateRequestDataCollectionPtrOutput) Elem() ACIServiceCreateRequestDataCollectionOutput {
@@ -240,12 +215,6 @@ func (i ACIServiceCreateRequestEncryptionPropertiesArgs) ToACIServiceCreateReque
 	return pulumi.ToOutputWithContext(ctx, i).(ACIServiceCreateRequestEncryptionPropertiesOutput)
 }
 
-func (i ACIServiceCreateRequestEncryptionPropertiesArgs) ToOutput(ctx context.Context) pulumix.Output[ACIServiceCreateRequestEncryptionProperties] {
-	return pulumix.Output[ACIServiceCreateRequestEncryptionProperties]{
-		OutputState: i.ToACIServiceCreateRequestEncryptionPropertiesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ACIServiceCreateRequestEncryptionPropertiesArgs) ToACIServiceCreateRequestEncryptionPropertiesPtrOutput() ACIServiceCreateRequestEncryptionPropertiesPtrOutput {
 	return i.ToACIServiceCreateRequestEncryptionPropertiesPtrOutputWithContext(context.Background())
 }
@@ -287,12 +256,6 @@ func (i *aciserviceCreateRequestEncryptionPropertiesPtrType) ToACIServiceCreateR
 	return pulumi.ToOutputWithContext(ctx, i).(ACIServiceCreateRequestEncryptionPropertiesPtrOutput)
 }
 
-func (i *aciserviceCreateRequestEncryptionPropertiesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ACIServiceCreateRequestEncryptionProperties] {
-	return pulumix.Output[*ACIServiceCreateRequestEncryptionProperties]{
-		OutputState: i.ToACIServiceCreateRequestEncryptionPropertiesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The encryption properties.
 type ACIServiceCreateRequestEncryptionPropertiesOutput struct{ *pulumi.OutputState }
 
@@ -316,12 +279,6 @@ func (o ACIServiceCreateRequestEncryptionPropertiesOutput) ToACIServiceCreateReq
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ACIServiceCreateRequestEncryptionProperties) *ACIServiceCreateRequestEncryptionProperties {
 		return &v
 	}).(ACIServiceCreateRequestEncryptionPropertiesPtrOutput)
-}
-
-func (o ACIServiceCreateRequestEncryptionPropertiesOutput) ToOutput(ctx context.Context) pulumix.Output[ACIServiceCreateRequestEncryptionProperties] {
-	return pulumix.Output[ACIServiceCreateRequestEncryptionProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Encryption Key name
@@ -351,12 +308,6 @@ func (o ACIServiceCreateRequestEncryptionPropertiesPtrOutput) ToACIServiceCreate
 
 func (o ACIServiceCreateRequestEncryptionPropertiesPtrOutput) ToACIServiceCreateRequestEncryptionPropertiesPtrOutputWithContext(ctx context.Context) ACIServiceCreateRequestEncryptionPropertiesPtrOutput {
 	return o
-}
-
-func (o ACIServiceCreateRequestEncryptionPropertiesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ACIServiceCreateRequestEncryptionProperties] {
-	return pulumix.Output[*ACIServiceCreateRequestEncryptionProperties]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ACIServiceCreateRequestEncryptionPropertiesPtrOutput) Elem() ACIServiceCreateRequestEncryptionPropertiesOutput {
@@ -438,12 +389,6 @@ func (i ACIServiceCreateRequestVnetConfigurationArgs) ToACIServiceCreateRequestV
 	return pulumi.ToOutputWithContext(ctx, i).(ACIServiceCreateRequestVnetConfigurationOutput)
 }
 
-func (i ACIServiceCreateRequestVnetConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ACIServiceCreateRequestVnetConfiguration] {
-	return pulumix.Output[ACIServiceCreateRequestVnetConfiguration]{
-		OutputState: i.ToACIServiceCreateRequestVnetConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ACIServiceCreateRequestVnetConfigurationArgs) ToACIServiceCreateRequestVnetConfigurationPtrOutput() ACIServiceCreateRequestVnetConfigurationPtrOutput {
 	return i.ToACIServiceCreateRequestVnetConfigurationPtrOutputWithContext(context.Background())
 }
@@ -485,12 +430,6 @@ func (i *aciserviceCreateRequestVnetConfigurationPtrType) ToACIServiceCreateRequ
 	return pulumi.ToOutputWithContext(ctx, i).(ACIServiceCreateRequestVnetConfigurationPtrOutput)
 }
 
-func (i *aciserviceCreateRequestVnetConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ACIServiceCreateRequestVnetConfiguration] {
-	return pulumix.Output[*ACIServiceCreateRequestVnetConfiguration]{
-		OutputState: i.ToACIServiceCreateRequestVnetConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The virtual network configuration.
 type ACIServiceCreateRequestVnetConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -516,12 +455,6 @@ func (o ACIServiceCreateRequestVnetConfigurationOutput) ToACIServiceCreateReques
 	}).(ACIServiceCreateRequestVnetConfigurationPtrOutput)
 }
 
-func (o ACIServiceCreateRequestVnetConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ACIServiceCreateRequestVnetConfiguration] {
-	return pulumix.Output[ACIServiceCreateRequestVnetConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the virtual network subnet.
 func (o ACIServiceCreateRequestVnetConfigurationOutput) SubnetName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ACIServiceCreateRequestVnetConfiguration) *string { return v.SubnetName }).(pulumi.StringPtrOutput)
@@ -544,12 +477,6 @@ func (o ACIServiceCreateRequestVnetConfigurationPtrOutput) ToACIServiceCreateReq
 
 func (o ACIServiceCreateRequestVnetConfigurationPtrOutput) ToACIServiceCreateRequestVnetConfigurationPtrOutputWithContext(ctx context.Context) ACIServiceCreateRequestVnetConfigurationPtrOutput {
 	return o
-}
-
-func (o ACIServiceCreateRequestVnetConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ACIServiceCreateRequestVnetConfiguration] {
-	return pulumix.Output[*ACIServiceCreateRequestVnetConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ACIServiceCreateRequestVnetConfigurationPtrOutput) Elem() ACIServiceCreateRequestVnetConfigurationOutput {
@@ -878,12 +805,6 @@ func (i AKSServiceCreateRequestAutoScalerArgs) ToAKSServiceCreateRequestAutoScal
 	return pulumi.ToOutputWithContext(ctx, i).(AKSServiceCreateRequestAutoScalerOutput)
 }
 
-func (i AKSServiceCreateRequestAutoScalerArgs) ToOutput(ctx context.Context) pulumix.Output[AKSServiceCreateRequestAutoScaler] {
-	return pulumix.Output[AKSServiceCreateRequestAutoScaler]{
-		OutputState: i.ToAKSServiceCreateRequestAutoScalerOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AKSServiceCreateRequestAutoScalerArgs) ToAKSServiceCreateRequestAutoScalerPtrOutput() AKSServiceCreateRequestAutoScalerPtrOutput {
 	return i.ToAKSServiceCreateRequestAutoScalerPtrOutputWithContext(context.Background())
 }
@@ -925,12 +846,6 @@ func (i *aksserviceCreateRequestAutoScalerPtrType) ToAKSServiceCreateRequestAuto
 	return pulumi.ToOutputWithContext(ctx, i).(AKSServiceCreateRequestAutoScalerPtrOutput)
 }
 
-func (i *aksserviceCreateRequestAutoScalerPtrType) ToOutput(ctx context.Context) pulumix.Output[*AKSServiceCreateRequestAutoScaler] {
-	return pulumix.Output[*AKSServiceCreateRequestAutoScaler]{
-		OutputState: i.ToAKSServiceCreateRequestAutoScalerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The auto scaler properties.
 type AKSServiceCreateRequestAutoScalerOutput struct{ *pulumi.OutputState }
 
@@ -954,12 +869,6 @@ func (o AKSServiceCreateRequestAutoScalerOutput) ToAKSServiceCreateRequestAutoSc
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AKSServiceCreateRequestAutoScaler) *AKSServiceCreateRequestAutoScaler {
 		return &v
 	}).(AKSServiceCreateRequestAutoScalerPtrOutput)
-}
-
-func (o AKSServiceCreateRequestAutoScalerOutput) ToOutput(ctx context.Context) pulumix.Output[AKSServiceCreateRequestAutoScaler] {
-	return pulumix.Output[AKSServiceCreateRequestAutoScaler]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Option to enable/disable auto scaling.
@@ -999,12 +908,6 @@ func (o AKSServiceCreateRequestAutoScalerPtrOutput) ToAKSServiceCreateRequestAut
 
 func (o AKSServiceCreateRequestAutoScalerPtrOutput) ToAKSServiceCreateRequestAutoScalerPtrOutputWithContext(ctx context.Context) AKSServiceCreateRequestAutoScalerPtrOutput {
 	return o
-}
-
-func (o AKSServiceCreateRequestAutoScalerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AKSServiceCreateRequestAutoScaler] {
-	return pulumix.Output[*AKSServiceCreateRequestAutoScaler]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AKSServiceCreateRequestAutoScalerPtrOutput) Elem() AKSServiceCreateRequestAutoScalerOutput {
@@ -1106,12 +1009,6 @@ func (i AKSServiceCreateRequestDataCollectionArgs) ToAKSServiceCreateRequestData
 	return pulumi.ToOutputWithContext(ctx, i).(AKSServiceCreateRequestDataCollectionOutput)
 }
 
-func (i AKSServiceCreateRequestDataCollectionArgs) ToOutput(ctx context.Context) pulumix.Output[AKSServiceCreateRequestDataCollection] {
-	return pulumix.Output[AKSServiceCreateRequestDataCollection]{
-		OutputState: i.ToAKSServiceCreateRequestDataCollectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AKSServiceCreateRequestDataCollectionArgs) ToAKSServiceCreateRequestDataCollectionPtrOutput() AKSServiceCreateRequestDataCollectionPtrOutput {
 	return i.ToAKSServiceCreateRequestDataCollectionPtrOutputWithContext(context.Background())
 }
@@ -1153,12 +1050,6 @@ func (i *aksserviceCreateRequestDataCollectionPtrType) ToAKSServiceCreateRequest
 	return pulumi.ToOutputWithContext(ctx, i).(AKSServiceCreateRequestDataCollectionPtrOutput)
 }
 
-func (i *aksserviceCreateRequestDataCollectionPtrType) ToOutput(ctx context.Context) pulumix.Output[*AKSServiceCreateRequestDataCollection] {
-	return pulumix.Output[*AKSServiceCreateRequestDataCollection]{
-		OutputState: i.ToAKSServiceCreateRequestDataCollectionPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Details of the data collection options specified.
 type AKSServiceCreateRequestDataCollectionOutput struct{ *pulumi.OutputState }
 
@@ -1184,12 +1075,6 @@ func (o AKSServiceCreateRequestDataCollectionOutput) ToAKSServiceCreateRequestDa
 	}).(AKSServiceCreateRequestDataCollectionPtrOutput)
 }
 
-func (o AKSServiceCreateRequestDataCollectionOutput) ToOutput(ctx context.Context) pulumix.Output[AKSServiceCreateRequestDataCollection] {
-	return pulumix.Output[AKSServiceCreateRequestDataCollection]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Option for enabling/disabling Event Hub.
 func (o AKSServiceCreateRequestDataCollectionOutput) EventHubEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AKSServiceCreateRequestDataCollection) *bool { return v.EventHubEnabled }).(pulumi.BoolPtrOutput)
@@ -1212,12 +1097,6 @@ func (o AKSServiceCreateRequestDataCollectionPtrOutput) ToAKSServiceCreateReques
 
 func (o AKSServiceCreateRequestDataCollectionPtrOutput) ToAKSServiceCreateRequestDataCollectionPtrOutputWithContext(ctx context.Context) AKSServiceCreateRequestDataCollectionPtrOutput {
 	return o
-}
-
-func (o AKSServiceCreateRequestDataCollectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AKSServiceCreateRequestDataCollection] {
-	return pulumix.Output[*AKSServiceCreateRequestDataCollection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AKSServiceCreateRequestDataCollectionPtrOutput) Elem() AKSServiceCreateRequestDataCollectionOutput {
@@ -1301,12 +1180,6 @@ func (i AKSServiceCreateRequestLivenessProbeRequirementsArgs) ToAKSServiceCreate
 	return pulumi.ToOutputWithContext(ctx, i).(AKSServiceCreateRequestLivenessProbeRequirementsOutput)
 }
 
-func (i AKSServiceCreateRequestLivenessProbeRequirementsArgs) ToOutput(ctx context.Context) pulumix.Output[AKSServiceCreateRequestLivenessProbeRequirements] {
-	return pulumix.Output[AKSServiceCreateRequestLivenessProbeRequirements]{
-		OutputState: i.ToAKSServiceCreateRequestLivenessProbeRequirementsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i AKSServiceCreateRequestLivenessProbeRequirementsArgs) ToAKSServiceCreateRequestLivenessProbeRequirementsPtrOutput() AKSServiceCreateRequestLivenessProbeRequirementsPtrOutput {
 	return i.ToAKSServiceCreateRequestLivenessProbeRequirementsPtrOutputWithContext(context.Background())
 }
@@ -1348,12 +1221,6 @@ func (i *aksserviceCreateRequestLivenessProbeRequirementsPtrType) ToAKSServiceCr
 	return pulumi.ToOutputWithContext(ctx, i).(AKSServiceCreateRequestLivenessProbeRequirementsPtrOutput)
 }
 
-func (i *aksserviceCreateRequestLivenessProbeRequirementsPtrType) ToOutput(ctx context.Context) pulumix.Output[*AKSServiceCreateRequestLivenessProbeRequirements] {
-	return pulumix.Output[*AKSServiceCreateRequestLivenessProbeRequirements]{
-		OutputState: i.ToAKSServiceCreateRequestLivenessProbeRequirementsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The liveness probe requirements.
 type AKSServiceCreateRequestLivenessProbeRequirementsOutput struct{ *pulumi.OutputState }
 
@@ -1377,12 +1244,6 @@ func (o AKSServiceCreateRequestLivenessProbeRequirementsOutput) ToAKSServiceCrea
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AKSServiceCreateRequestLivenessProbeRequirements) *AKSServiceCreateRequestLivenessProbeRequirements {
 		return &v
 	}).(AKSServiceCreateRequestLivenessProbeRequirementsPtrOutput)
-}
-
-func (o AKSServiceCreateRequestLivenessProbeRequirementsOutput) ToOutput(ctx context.Context) pulumix.Output[AKSServiceCreateRequestLivenessProbeRequirements] {
-	return pulumix.Output[AKSServiceCreateRequestLivenessProbeRequirements]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The number of failures to allow before returning an unhealthy status.
@@ -1422,12 +1283,6 @@ func (o AKSServiceCreateRequestLivenessProbeRequirementsPtrOutput) ToAKSServiceC
 
 func (o AKSServiceCreateRequestLivenessProbeRequirementsPtrOutput) ToAKSServiceCreateRequestLivenessProbeRequirementsPtrOutputWithContext(ctx context.Context) AKSServiceCreateRequestLivenessProbeRequirementsPtrOutput {
 	return o
-}
-
-func (o AKSServiceCreateRequestLivenessProbeRequirementsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AKSServiceCreateRequestLivenessProbeRequirements] {
-	return pulumix.Output[*AKSServiceCreateRequestLivenessProbeRequirements]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AKSServiceCreateRequestLivenessProbeRequirementsPtrOutput) Elem() AKSServiceCreateRequestLivenessProbeRequirementsOutput {
@@ -2177,12 +2032,6 @@ func (i ContainerResourceRequirementsArgs) ToContainerResourceRequirementsOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerResourceRequirementsOutput)
 }
 
-func (i ContainerResourceRequirementsArgs) ToOutput(ctx context.Context) pulumix.Output[ContainerResourceRequirements] {
-	return pulumix.Output[ContainerResourceRequirements]{
-		OutputState: i.ToContainerResourceRequirementsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ContainerResourceRequirementsArgs) ToContainerResourceRequirementsPtrOutput() ContainerResourceRequirementsPtrOutput {
 	return i.ToContainerResourceRequirementsPtrOutputWithContext(context.Background())
 }
@@ -2224,12 +2073,6 @@ func (i *containerResourceRequirementsPtrType) ToContainerResourceRequirementsPt
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerResourceRequirementsPtrOutput)
 }
 
-func (i *containerResourceRequirementsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ContainerResourceRequirements] {
-	return pulumix.Output[*ContainerResourceRequirements]{
-		OutputState: i.ToContainerResourceRequirementsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The resource requirements for the container (cpu and memory).
 type ContainerResourceRequirementsOutput struct{ *pulumi.OutputState }
 
@@ -2253,12 +2096,6 @@ func (o ContainerResourceRequirementsOutput) ToContainerResourceRequirementsPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerResourceRequirements) *ContainerResourceRequirements {
 		return &v
 	}).(ContainerResourceRequirementsPtrOutput)
-}
-
-func (o ContainerResourceRequirementsOutput) ToOutput(ctx context.Context) pulumix.Output[ContainerResourceRequirements] {
-	return pulumix.Output[ContainerResourceRequirements]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The minimum amount of CPU cores to be used by the container. More info:
@@ -2307,12 +2144,6 @@ func (o ContainerResourceRequirementsPtrOutput) ToContainerResourceRequirementsP
 
 func (o ContainerResourceRequirementsPtrOutput) ToContainerResourceRequirementsPtrOutputWithContext(ctx context.Context) ContainerResourceRequirementsPtrOutput {
 	return o
-}
-
-func (o ContainerResourceRequirementsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerResourceRequirements] {
-	return pulumix.Output[*ContainerResourceRequirements]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContainerResourceRequirementsPtrOutput) Elem() ContainerResourceRequirementsOutput {
@@ -2464,12 +2295,6 @@ func (i CreateServiceRequestEnvironmentImageRequestArgs) ToCreateServiceRequestE
 	return pulumi.ToOutputWithContext(ctx, i).(CreateServiceRequestEnvironmentImageRequestOutput)
 }
 
-func (i CreateServiceRequestEnvironmentImageRequestArgs) ToOutput(ctx context.Context) pulumix.Output[CreateServiceRequestEnvironmentImageRequest] {
-	return pulumix.Output[CreateServiceRequestEnvironmentImageRequest]{
-		OutputState: i.ToCreateServiceRequestEnvironmentImageRequestOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CreateServiceRequestEnvironmentImageRequestArgs) ToCreateServiceRequestEnvironmentImageRequestPtrOutput() CreateServiceRequestEnvironmentImageRequestPtrOutput {
 	return i.ToCreateServiceRequestEnvironmentImageRequestPtrOutputWithContext(context.Background())
 }
@@ -2511,12 +2336,6 @@ func (i *createServiceRequestEnvironmentImageRequestPtrType) ToCreateServiceRequ
 	return pulumi.ToOutputWithContext(ctx, i).(CreateServiceRequestEnvironmentImageRequestPtrOutput)
 }
 
-func (i *createServiceRequestEnvironmentImageRequestPtrType) ToOutput(ctx context.Context) pulumix.Output[*CreateServiceRequestEnvironmentImageRequest] {
-	return pulumix.Output[*CreateServiceRequestEnvironmentImageRequest]{
-		OutputState: i.ToCreateServiceRequestEnvironmentImageRequestPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The Environment, models and assets needed for inferencing.
 type CreateServiceRequestEnvironmentImageRequestOutput struct{ *pulumi.OutputState }
 
@@ -2540,12 +2359,6 @@ func (o CreateServiceRequestEnvironmentImageRequestOutput) ToCreateServiceReques
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v CreateServiceRequestEnvironmentImageRequest) *CreateServiceRequestEnvironmentImageRequest {
 		return &v
 	}).(CreateServiceRequestEnvironmentImageRequestPtrOutput)
-}
-
-func (o CreateServiceRequestEnvironmentImageRequestOutput) ToOutput(ctx context.Context) pulumix.Output[CreateServiceRequestEnvironmentImageRequest] {
-	return pulumix.Output[CreateServiceRequestEnvironmentImageRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of assets.
@@ -2594,12 +2407,6 @@ func (o CreateServiceRequestEnvironmentImageRequestPtrOutput) ToCreateServiceReq
 
 func (o CreateServiceRequestEnvironmentImageRequestPtrOutput) ToCreateServiceRequestEnvironmentImageRequestPtrOutputWithContext(ctx context.Context) CreateServiceRequestEnvironmentImageRequestPtrOutput {
 	return o
-}
-
-func (o CreateServiceRequestEnvironmentImageRequestPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CreateServiceRequestEnvironmentImageRequest] {
-	return pulumix.Output[*CreateServiceRequestEnvironmentImageRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CreateServiceRequestEnvironmentImageRequestPtrOutput) Elem() CreateServiceRequestEnvironmentImageRequestOutput {
@@ -2711,12 +2518,6 @@ func (i CreateServiceRequestKeysArgs) ToCreateServiceRequestKeysOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(CreateServiceRequestKeysOutput)
 }
 
-func (i CreateServiceRequestKeysArgs) ToOutput(ctx context.Context) pulumix.Output[CreateServiceRequestKeys] {
-	return pulumix.Output[CreateServiceRequestKeys]{
-		OutputState: i.ToCreateServiceRequestKeysOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i CreateServiceRequestKeysArgs) ToCreateServiceRequestKeysPtrOutput() CreateServiceRequestKeysPtrOutput {
 	return i.ToCreateServiceRequestKeysPtrOutputWithContext(context.Background())
 }
@@ -2758,12 +2559,6 @@ func (i *createServiceRequestKeysPtrType) ToCreateServiceRequestKeysPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(CreateServiceRequestKeysPtrOutput)
 }
 
-func (i *createServiceRequestKeysPtrType) ToOutput(ctx context.Context) pulumix.Output[*CreateServiceRequestKeys] {
-	return pulumix.Output[*CreateServiceRequestKeys]{
-		OutputState: i.ToCreateServiceRequestKeysPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The authentication keys.
 type CreateServiceRequestKeysOutput struct{ *pulumi.OutputState }
 
@@ -2789,12 +2584,6 @@ func (o CreateServiceRequestKeysOutput) ToCreateServiceRequestKeysPtrOutputWithC
 	}).(CreateServiceRequestKeysPtrOutput)
 }
 
-func (o CreateServiceRequestKeysOutput) ToOutput(ctx context.Context) pulumix.Output[CreateServiceRequestKeys] {
-	return pulumix.Output[CreateServiceRequestKeys]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The primary key.
 func (o CreateServiceRequestKeysOutput) PrimaryKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CreateServiceRequestKeys) *string { return v.PrimaryKey }).(pulumi.StringPtrOutput)
@@ -2817,12 +2606,6 @@ func (o CreateServiceRequestKeysPtrOutput) ToCreateServiceRequestKeysPtrOutput()
 
 func (o CreateServiceRequestKeysPtrOutput) ToCreateServiceRequestKeysPtrOutputWithContext(ctx context.Context) CreateServiceRequestKeysPtrOutput {
 	return o
-}
-
-func (o CreateServiceRequestKeysPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*CreateServiceRequestKeys] {
-	return pulumix.Output[*CreateServiceRequestKeys]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CreateServiceRequestKeysPtrOutput) Elem() CreateServiceRequestKeysOutput {
@@ -3042,12 +2825,6 @@ func (i DatasetReferenceArgs) ToDatasetReferenceOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetReferenceOutput)
 }
 
-func (i DatasetReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[DatasetReference] {
-	return pulumix.Output[DatasetReference]{
-		OutputState: i.ToDatasetReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DatasetReferenceArrayInput is an input type that accepts DatasetReferenceArray and DatasetReferenceArrayOutput values.
 // You can construct a concrete instance of `DatasetReferenceArrayInput` via:
 //
@@ -3073,12 +2850,6 @@ func (i DatasetReferenceArray) ToDatasetReferenceArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetReferenceArrayOutput)
 }
 
-func (i DatasetReferenceArray) ToOutput(ctx context.Context) pulumix.Output[[]DatasetReference] {
-	return pulumix.Output[[]DatasetReference]{
-		OutputState: i.ToDatasetReferenceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The dataset reference object.
 type DatasetReferenceOutput struct{ *pulumi.OutputState }
 
@@ -3092,12 +2863,6 @@ func (o DatasetReferenceOutput) ToDatasetReferenceOutput() DatasetReferenceOutpu
 
 func (o DatasetReferenceOutput) ToDatasetReferenceOutputWithContext(ctx context.Context) DatasetReferenceOutput {
 	return o
-}
-
-func (o DatasetReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[DatasetReference] {
-	return pulumix.Output[DatasetReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the dataset reference.
@@ -3122,12 +2887,6 @@ func (o DatasetReferenceArrayOutput) ToDatasetReferenceArrayOutput() DatasetRefe
 
 func (o DatasetReferenceArrayOutput) ToDatasetReferenceArrayOutputWithContext(ctx context.Context) DatasetReferenceArrayOutput {
 	return o
-}
-
-func (o DatasetReferenceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DatasetReference] {
-	return pulumix.Output[[]DatasetReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DatasetReferenceArrayOutput) Index(i pulumi.IntInput) DatasetReferenceOutput {
@@ -3207,12 +2966,6 @@ func (i EnvironmentImageRequestEnvironmentArgs) ToEnvironmentImageRequestEnviron
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentImageRequestEnvironmentOutput)
 }
 
-func (i EnvironmentImageRequestEnvironmentArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentImageRequestEnvironment] {
-	return pulumix.Output[EnvironmentImageRequestEnvironment]{
-		OutputState: i.ToEnvironmentImageRequestEnvironmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EnvironmentImageRequestEnvironmentArgs) ToEnvironmentImageRequestEnvironmentPtrOutput() EnvironmentImageRequestEnvironmentPtrOutput {
 	return i.ToEnvironmentImageRequestEnvironmentPtrOutputWithContext(context.Background())
 }
@@ -3254,12 +3007,6 @@ func (i *environmentImageRequestEnvironmentPtrType) ToEnvironmentImageRequestEnv
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentImageRequestEnvironmentPtrOutput)
 }
 
-func (i *environmentImageRequestEnvironmentPtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentImageRequestEnvironment] {
-	return pulumix.Output[*EnvironmentImageRequestEnvironment]{
-		OutputState: i.ToEnvironmentImageRequestEnvironmentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The details of the AZURE ML environment.
 type EnvironmentImageRequestEnvironmentOutput struct{ *pulumi.OutputState }
 
@@ -3283,12 +3030,6 @@ func (o EnvironmentImageRequestEnvironmentOutput) ToEnvironmentImageRequestEnvir
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentImageRequestEnvironment) *EnvironmentImageRequestEnvironment {
 		return &v
 	}).(EnvironmentImageRequestEnvironmentPtrOutput)
-}
-
-func (o EnvironmentImageRequestEnvironmentOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentImageRequestEnvironment] {
-	return pulumix.Output[EnvironmentImageRequestEnvironment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The definition of a Docker container.
@@ -3343,12 +3084,6 @@ func (o EnvironmentImageRequestEnvironmentPtrOutput) ToEnvironmentImageRequestEn
 
 func (o EnvironmentImageRequestEnvironmentPtrOutput) ToEnvironmentImageRequestEnvironmentPtrOutputWithContext(ctx context.Context) EnvironmentImageRequestEnvironmentPtrOutput {
 	return o
-}
-
-func (o EnvironmentImageRequestEnvironmentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentImageRequestEnvironment] {
-	return pulumix.Output[*EnvironmentImageRequestEnvironment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentImageRequestEnvironmentPtrOutput) Elem() EnvironmentImageRequestEnvironmentOutput {
@@ -3480,12 +3215,6 @@ func (i EnvironmentImageRequestEnvironmentReferenceArgs) ToEnvironmentImageReque
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentImageRequestEnvironmentReferenceOutput)
 }
 
-func (i EnvironmentImageRequestEnvironmentReferenceArgs) ToOutput(ctx context.Context) pulumix.Output[EnvironmentImageRequestEnvironmentReference] {
-	return pulumix.Output[EnvironmentImageRequestEnvironmentReference]{
-		OutputState: i.ToEnvironmentImageRequestEnvironmentReferenceOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i EnvironmentImageRequestEnvironmentReferenceArgs) ToEnvironmentImageRequestEnvironmentReferencePtrOutput() EnvironmentImageRequestEnvironmentReferencePtrOutput {
 	return i.ToEnvironmentImageRequestEnvironmentReferencePtrOutputWithContext(context.Background())
 }
@@ -3527,12 +3256,6 @@ func (i *environmentImageRequestEnvironmentReferencePtrType) ToEnvironmentImageR
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentImageRequestEnvironmentReferencePtrOutput)
 }
 
-func (i *environmentImageRequestEnvironmentReferencePtrType) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentImageRequestEnvironmentReference] {
-	return pulumix.Output[*EnvironmentImageRequestEnvironmentReference]{
-		OutputState: i.ToEnvironmentImageRequestEnvironmentReferencePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The unique identifying details of the AZURE ML environment.
 type EnvironmentImageRequestEnvironmentReferenceOutput struct{ *pulumi.OutputState }
 
@@ -3558,12 +3281,6 @@ func (o EnvironmentImageRequestEnvironmentReferenceOutput) ToEnvironmentImageReq
 	}).(EnvironmentImageRequestEnvironmentReferencePtrOutput)
 }
 
-func (o EnvironmentImageRequestEnvironmentReferenceOutput) ToOutput(ctx context.Context) pulumix.Output[EnvironmentImageRequestEnvironmentReference] {
-	return pulumix.Output[EnvironmentImageRequestEnvironmentReference]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the environment.
 func (o EnvironmentImageRequestEnvironmentReferenceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentImageRequestEnvironmentReference) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -3586,12 +3303,6 @@ func (o EnvironmentImageRequestEnvironmentReferencePtrOutput) ToEnvironmentImage
 
 func (o EnvironmentImageRequestEnvironmentReferencePtrOutput) ToEnvironmentImageRequestEnvironmentReferencePtrOutputWithContext(ctx context.Context) EnvironmentImageRequestEnvironmentReferencePtrOutput {
 	return o
-}
-
-func (o EnvironmentImageRequestEnvironmentReferencePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*EnvironmentImageRequestEnvironmentReference] {
-	return pulumix.Output[*EnvironmentImageRequestEnvironmentReference]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EnvironmentImageRequestEnvironmentReferencePtrOutput) Elem() EnvironmentImageRequestEnvironmentReferenceOutput {
@@ -3771,12 +3482,6 @@ func (i IdentityArgs) ToIdentityOutputWithContext(ctx context.Context) IdentityO
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityOutput)
 }
 
-func (i IdentityArgs) ToOutput(ctx context.Context) pulumix.Output[Identity] {
-	return pulumix.Output[Identity]{
-		OutputState: i.ToIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i IdentityArgs) ToIdentityPtrOutput() IdentityPtrOutput {
 	return i.ToIdentityPtrOutputWithContext(context.Background())
 }
@@ -3818,12 +3523,6 @@ func (i *identityPtrType) ToIdentityPtrOutputWithContext(ctx context.Context) Id
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityPtrOutput)
 }
 
-func (i *identityPtrType) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
-	return pulumix.Output[*Identity]{
-		OutputState: i.ToIdentityPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Identity for the resource.
 type IdentityOutput struct{ *pulumi.OutputState }
 
@@ -3849,12 +3548,6 @@ func (o IdentityOutput) ToIdentityPtrOutputWithContext(ctx context.Context) Iden
 	}).(IdentityPtrOutput)
 }
 
-func (o IdentityOutput) ToOutput(ctx context.Context) pulumix.Output[Identity] {
-	return pulumix.Output[Identity]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The identity type.
 func (o IdentityOutput) Type() ResourceIdentityTypePtrOutput {
 	return o.ApplyT(func(v Identity) *ResourceIdentityType { return v.Type }).(ResourceIdentityTypePtrOutput)
@@ -3877,12 +3570,6 @@ func (o IdentityPtrOutput) ToIdentityPtrOutput() IdentityPtrOutput {
 
 func (o IdentityPtrOutput) ToIdentityPtrOutputWithContext(ctx context.Context) IdentityPtrOutput {
 	return o
-}
-
-func (o IdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Identity] {
-	return pulumix.Output[*Identity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityPtrOutput) Elem() IdentityOutput {
@@ -3942,12 +3629,6 @@ func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.
 	return o
 }
 
-func (o IdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[IdentityResponse] {
-	return pulumix.Output[IdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The principal ID of resource identity.
 func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
@@ -3980,12 +3661,6 @@ func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutput() IdentityRespons
 
 func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
 	return o
-}
-
-func (o IdentityResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*IdentityResponse] {
-	return pulumix.Output[*IdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
@@ -4085,12 +3760,6 @@ func (i ImageAssetArgs) ToImageAssetOutputWithContext(ctx context.Context) Image
 	return pulumi.ToOutputWithContext(ctx, i).(ImageAssetOutput)
 }
 
-func (i ImageAssetArgs) ToOutput(ctx context.Context) pulumix.Output[ImageAsset] {
-	return pulumix.Output[ImageAsset]{
-		OutputState: i.ToImageAssetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ImageAssetArrayInput is an input type that accepts ImageAssetArray and ImageAssetArrayOutput values.
 // You can construct a concrete instance of `ImageAssetArrayInput` via:
 //
@@ -4116,12 +3785,6 @@ func (i ImageAssetArray) ToImageAssetArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ImageAssetArrayOutput)
 }
 
-func (i ImageAssetArray) ToOutput(ctx context.Context) pulumix.Output[[]ImageAsset] {
-	return pulumix.Output[[]ImageAsset]{
-		OutputState: i.ToImageAssetArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An Image asset.
 type ImageAssetOutput struct{ *pulumi.OutputState }
 
@@ -4135,12 +3798,6 @@ func (o ImageAssetOutput) ToImageAssetOutput() ImageAssetOutput {
 
 func (o ImageAssetOutput) ToImageAssetOutputWithContext(ctx context.Context) ImageAssetOutput {
 	return o
-}
-
-func (o ImageAssetOutput) ToOutput(ctx context.Context) pulumix.Output[ImageAsset] {
-	return pulumix.Output[ImageAsset]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Asset Id.
@@ -4175,12 +3832,6 @@ func (o ImageAssetArrayOutput) ToImageAssetArrayOutput() ImageAssetArrayOutput {
 
 func (o ImageAssetArrayOutput) ToImageAssetArrayOutputWithContext(ctx context.Context) ImageAssetArrayOutput {
 	return o
-}
-
-func (o ImageAssetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ImageAsset] {
-	return pulumix.Output[[]ImageAsset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImageAssetArrayOutput) Index(i pulumi.IntInput) ImageAssetOutput {
@@ -4322,12 +3973,6 @@ func (i ModelArgs) ToModelOutputWithContext(ctx context.Context) ModelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ModelOutput)
 }
 
-func (i ModelArgs) ToOutput(ctx context.Context) pulumix.Output[Model] {
-	return pulumix.Output[Model]{
-		OutputState: i.ToModelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ModelArrayInput is an input type that accepts ModelArray and ModelArrayOutput values.
 // You can construct a concrete instance of `ModelArrayInput` via:
 //
@@ -4353,12 +3998,6 @@ func (i ModelArray) ToModelArrayOutputWithContext(ctx context.Context) ModelArra
 	return pulumi.ToOutputWithContext(ctx, i).(ModelArrayOutput)
 }
 
-func (i ModelArray) ToOutput(ctx context.Context) pulumix.Output[[]Model] {
-	return pulumix.Output[[]Model]{
-		OutputState: i.ToModelArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An Azure Machine Learning Model.
 type ModelOutput struct{ *pulumi.OutputState }
 
@@ -4372,12 +4011,6 @@ func (o ModelOutput) ToModelOutput() ModelOutput {
 
 func (o ModelOutput) ToModelOutputWithContext(ctx context.Context) ModelOutput {
 	return o
-}
-
-func (o ModelOutput) ToOutput(ctx context.Context) pulumix.Output[Model] {
-	return pulumix.Output[Model]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Model creation time (UTC).
@@ -4499,12 +4132,6 @@ func (o ModelArrayOutput) ToModelArrayOutputWithContext(ctx context.Context) Mod
 	return o
 }
 
-func (o ModelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]Model] {
-	return pulumix.Output[[]Model]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ModelArrayOutput) Index(i pulumi.IntInput) ModelOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Model {
 		return vs[0].([]Model)[vs[1].(int)]
@@ -4548,12 +4175,6 @@ func (i ModelDockerSectionBaseImageRegistryArgs) ToModelDockerSectionBaseImageRe
 	return pulumi.ToOutputWithContext(ctx, i).(ModelDockerSectionBaseImageRegistryOutput)
 }
 
-func (i ModelDockerSectionBaseImageRegistryArgs) ToOutput(ctx context.Context) pulumix.Output[ModelDockerSectionBaseImageRegistry] {
-	return pulumix.Output[ModelDockerSectionBaseImageRegistry]{
-		OutputState: i.ToModelDockerSectionBaseImageRegistryOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ModelDockerSectionBaseImageRegistryArgs) ToModelDockerSectionBaseImageRegistryPtrOutput() ModelDockerSectionBaseImageRegistryPtrOutput {
 	return i.ToModelDockerSectionBaseImageRegistryPtrOutputWithContext(context.Background())
 }
@@ -4595,12 +4216,6 @@ func (i *modelDockerSectionBaseImageRegistryPtrType) ToModelDockerSectionBaseIma
 	return pulumi.ToOutputWithContext(ctx, i).(ModelDockerSectionBaseImageRegistryPtrOutput)
 }
 
-func (i *modelDockerSectionBaseImageRegistryPtrType) ToOutput(ctx context.Context) pulumix.Output[*ModelDockerSectionBaseImageRegistry] {
-	return pulumix.Output[*ModelDockerSectionBaseImageRegistry]{
-		OutputState: i.ToModelDockerSectionBaseImageRegistryPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Image registry that contains the base image.
 type ModelDockerSectionBaseImageRegistryOutput struct{ *pulumi.OutputState }
 
@@ -4624,12 +4239,6 @@ func (o ModelDockerSectionBaseImageRegistryOutput) ToModelDockerSectionBaseImage
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelDockerSectionBaseImageRegistry) *ModelDockerSectionBaseImageRegistry {
 		return &v
 	}).(ModelDockerSectionBaseImageRegistryPtrOutput)
-}
-
-func (o ModelDockerSectionBaseImageRegistryOutput) ToOutput(ctx context.Context) pulumix.Output[ModelDockerSectionBaseImageRegistry] {
-	return pulumix.Output[ModelDockerSectionBaseImageRegistry]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ModelDockerSectionBaseImageRegistryOutput) Address() pulumi.StringPtrOutput {
@@ -4656,12 +4265,6 @@ func (o ModelDockerSectionBaseImageRegistryPtrOutput) ToModelDockerSectionBaseIm
 
 func (o ModelDockerSectionBaseImageRegistryPtrOutput) ToModelDockerSectionBaseImageRegistryPtrOutputWithContext(ctx context.Context) ModelDockerSectionBaseImageRegistryPtrOutput {
 	return o
-}
-
-func (o ModelDockerSectionBaseImageRegistryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ModelDockerSectionBaseImageRegistry] {
-	return pulumix.Output[*ModelDockerSectionBaseImageRegistry]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ModelDockerSectionBaseImageRegistryPtrOutput) Elem() ModelDockerSectionBaseImageRegistryOutput {
@@ -4749,12 +4352,6 @@ func (i ModelEnvironmentDefinitionDockerArgs) ToModelEnvironmentDefinitionDocker
 	return pulumi.ToOutputWithContext(ctx, i).(ModelEnvironmentDefinitionDockerOutput)
 }
 
-func (i ModelEnvironmentDefinitionDockerArgs) ToOutput(ctx context.Context) pulumix.Output[ModelEnvironmentDefinitionDocker] {
-	return pulumix.Output[ModelEnvironmentDefinitionDocker]{
-		OutputState: i.ToModelEnvironmentDefinitionDockerOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ModelEnvironmentDefinitionDockerArgs) ToModelEnvironmentDefinitionDockerPtrOutput() ModelEnvironmentDefinitionDockerPtrOutput {
 	return i.ToModelEnvironmentDefinitionDockerPtrOutputWithContext(context.Background())
 }
@@ -4796,12 +4393,6 @@ func (i *modelEnvironmentDefinitionDockerPtrType) ToModelEnvironmentDefinitionDo
 	return pulumi.ToOutputWithContext(ctx, i).(ModelEnvironmentDefinitionDockerPtrOutput)
 }
 
-func (i *modelEnvironmentDefinitionDockerPtrType) ToOutput(ctx context.Context) pulumix.Output[*ModelEnvironmentDefinitionDocker] {
-	return pulumix.Output[*ModelEnvironmentDefinitionDocker]{
-		OutputState: i.ToModelEnvironmentDefinitionDockerPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The definition of a Docker container.
 type ModelEnvironmentDefinitionDockerOutput struct{ *pulumi.OutputState }
 
@@ -4825,12 +4416,6 @@ func (o ModelEnvironmentDefinitionDockerOutput) ToModelEnvironmentDefinitionDock
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelEnvironmentDefinitionDocker) *ModelEnvironmentDefinitionDocker {
 		return &v
 	}).(ModelEnvironmentDefinitionDockerPtrOutput)
-}
-
-func (o ModelEnvironmentDefinitionDockerOutput) ToOutput(ctx context.Context) pulumix.Output[ModelEnvironmentDefinitionDocker] {
-	return pulumix.Output[ModelEnvironmentDefinitionDocker]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Base Dockerfile used for Docker-based runs. Mutually exclusive with BaseImage.
@@ -4862,12 +4447,6 @@ func (o ModelEnvironmentDefinitionDockerPtrOutput) ToModelEnvironmentDefinitionD
 
 func (o ModelEnvironmentDefinitionDockerPtrOutput) ToModelEnvironmentDefinitionDockerPtrOutputWithContext(ctx context.Context) ModelEnvironmentDefinitionDockerPtrOutput {
 	return o
-}
-
-func (o ModelEnvironmentDefinitionDockerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ModelEnvironmentDefinitionDocker] {
-	return pulumix.Output[*ModelEnvironmentDefinitionDocker]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ModelEnvironmentDefinitionDockerPtrOutput) Elem() ModelEnvironmentDefinitionDockerOutput {
@@ -4955,12 +4534,6 @@ func (i ModelEnvironmentDefinitionPythonArgs) ToModelEnvironmentDefinitionPython
 	return pulumi.ToOutputWithContext(ctx, i).(ModelEnvironmentDefinitionPythonOutput)
 }
 
-func (i ModelEnvironmentDefinitionPythonArgs) ToOutput(ctx context.Context) pulumix.Output[ModelEnvironmentDefinitionPython] {
-	return pulumix.Output[ModelEnvironmentDefinitionPython]{
-		OutputState: i.ToModelEnvironmentDefinitionPythonOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ModelEnvironmentDefinitionPythonArgs) ToModelEnvironmentDefinitionPythonPtrOutput() ModelEnvironmentDefinitionPythonPtrOutput {
 	return i.ToModelEnvironmentDefinitionPythonPtrOutputWithContext(context.Background())
 }
@@ -5002,12 +4575,6 @@ func (i *modelEnvironmentDefinitionPythonPtrType) ToModelEnvironmentDefinitionPy
 	return pulumi.ToOutputWithContext(ctx, i).(ModelEnvironmentDefinitionPythonPtrOutput)
 }
 
-func (i *modelEnvironmentDefinitionPythonPtrType) ToOutput(ctx context.Context) pulumix.Output[*ModelEnvironmentDefinitionPython] {
-	return pulumix.Output[*ModelEnvironmentDefinitionPython]{
-		OutputState: i.ToModelEnvironmentDefinitionPythonPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Settings for a Python environment.
 type ModelEnvironmentDefinitionPythonOutput struct{ *pulumi.OutputState }
 
@@ -5031,12 +4598,6 @@ func (o ModelEnvironmentDefinitionPythonOutput) ToModelEnvironmentDefinitionPyth
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelEnvironmentDefinitionPython) *ModelEnvironmentDefinitionPython {
 		return &v
 	}).(ModelEnvironmentDefinitionPythonPtrOutput)
-}
-
-func (o ModelEnvironmentDefinitionPythonOutput) ToOutput(ctx context.Context) pulumix.Output[ModelEnvironmentDefinitionPython] {
-	return pulumix.Output[ModelEnvironmentDefinitionPython]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ModelEnvironmentDefinitionPythonOutput) BaseCondaEnvironment() pulumi.StringPtrOutput {
@@ -5070,12 +4631,6 @@ func (o ModelEnvironmentDefinitionPythonPtrOutput) ToModelEnvironmentDefinitionP
 
 func (o ModelEnvironmentDefinitionPythonPtrOutput) ToModelEnvironmentDefinitionPythonPtrOutputWithContext(ctx context.Context) ModelEnvironmentDefinitionPythonPtrOutput {
 	return o
-}
-
-func (o ModelEnvironmentDefinitionPythonPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ModelEnvironmentDefinitionPython] {
-	return pulumix.Output[*ModelEnvironmentDefinitionPython]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ModelEnvironmentDefinitionPythonPtrOutput) Elem() ModelEnvironmentDefinitionPythonOutput {
@@ -5192,12 +4747,6 @@ func (i ModelEnvironmentDefinitionRArgs) ToModelEnvironmentDefinitionROutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ModelEnvironmentDefinitionROutput)
 }
 
-func (i ModelEnvironmentDefinitionRArgs) ToOutput(ctx context.Context) pulumix.Output[ModelEnvironmentDefinitionR] {
-	return pulumix.Output[ModelEnvironmentDefinitionR]{
-		OutputState: i.ToModelEnvironmentDefinitionROutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ModelEnvironmentDefinitionRArgs) ToModelEnvironmentDefinitionRPtrOutput() ModelEnvironmentDefinitionRPtrOutput {
 	return i.ToModelEnvironmentDefinitionRPtrOutputWithContext(context.Background())
 }
@@ -5239,12 +4788,6 @@ func (i *modelEnvironmentDefinitionRPtrType) ToModelEnvironmentDefinitionRPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ModelEnvironmentDefinitionRPtrOutput)
 }
 
-func (i *modelEnvironmentDefinitionRPtrType) ToOutput(ctx context.Context) pulumix.Output[*ModelEnvironmentDefinitionR] {
-	return pulumix.Output[*ModelEnvironmentDefinitionR]{
-		OutputState: i.ToModelEnvironmentDefinitionRPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Settings for a R environment.
 type ModelEnvironmentDefinitionROutput struct{ *pulumi.OutputState }
 
@@ -5268,12 +4811,6 @@ func (o ModelEnvironmentDefinitionROutput) ToModelEnvironmentDefinitionRPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelEnvironmentDefinitionR) *ModelEnvironmentDefinitionR {
 		return &v
 	}).(ModelEnvironmentDefinitionRPtrOutput)
-}
-
-func (o ModelEnvironmentDefinitionROutput) ToOutput(ctx context.Context) pulumix.Output[ModelEnvironmentDefinitionR] {
-	return pulumix.Output[ModelEnvironmentDefinitionR]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The packages from Bioconductor.
@@ -5329,12 +4866,6 @@ func (o ModelEnvironmentDefinitionRPtrOutput) ToModelEnvironmentDefinitionRPtrOu
 
 func (o ModelEnvironmentDefinitionRPtrOutput) ToModelEnvironmentDefinitionRPtrOutputWithContext(ctx context.Context) ModelEnvironmentDefinitionRPtrOutput {
 	return o
-}
-
-func (o ModelEnvironmentDefinitionRPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ModelEnvironmentDefinitionR] {
-	return pulumix.Output[*ModelEnvironmentDefinitionR]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ModelEnvironmentDefinitionRPtrOutput) Elem() ModelEnvironmentDefinitionROutput {
@@ -5523,12 +5054,6 @@ func (i ModelEnvironmentDefinitionSparkArgs) ToModelEnvironmentDefinitionSparkOu
 	return pulumi.ToOutputWithContext(ctx, i).(ModelEnvironmentDefinitionSparkOutput)
 }
 
-func (i ModelEnvironmentDefinitionSparkArgs) ToOutput(ctx context.Context) pulumix.Output[ModelEnvironmentDefinitionSpark] {
-	return pulumix.Output[ModelEnvironmentDefinitionSpark]{
-		OutputState: i.ToModelEnvironmentDefinitionSparkOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i ModelEnvironmentDefinitionSparkArgs) ToModelEnvironmentDefinitionSparkPtrOutput() ModelEnvironmentDefinitionSparkPtrOutput {
 	return i.ToModelEnvironmentDefinitionSparkPtrOutputWithContext(context.Background())
 }
@@ -5570,12 +5095,6 @@ func (i *modelEnvironmentDefinitionSparkPtrType) ToModelEnvironmentDefinitionSpa
 	return pulumi.ToOutputWithContext(ctx, i).(ModelEnvironmentDefinitionSparkPtrOutput)
 }
 
-func (i *modelEnvironmentDefinitionSparkPtrType) ToOutput(ctx context.Context) pulumix.Output[*ModelEnvironmentDefinitionSpark] {
-	return pulumix.Output[*ModelEnvironmentDefinitionSpark]{
-		OutputState: i.ToModelEnvironmentDefinitionSparkPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The configuration for a Spark environment.
 type ModelEnvironmentDefinitionSparkOutput struct{ *pulumi.OutputState }
 
@@ -5599,12 +5118,6 @@ func (o ModelEnvironmentDefinitionSparkOutput) ToModelEnvironmentDefinitionSpark
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelEnvironmentDefinitionSpark) *ModelEnvironmentDefinitionSpark {
 		return &v
 	}).(ModelEnvironmentDefinitionSparkPtrOutput)
-}
-
-func (o ModelEnvironmentDefinitionSparkOutput) ToOutput(ctx context.Context) pulumix.Output[ModelEnvironmentDefinitionSpark] {
-	return pulumix.Output[ModelEnvironmentDefinitionSpark]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Spark packages to use.
@@ -5634,12 +5147,6 @@ func (o ModelEnvironmentDefinitionSparkPtrOutput) ToModelEnvironmentDefinitionSp
 
 func (o ModelEnvironmentDefinitionSparkPtrOutput) ToModelEnvironmentDefinitionSparkPtrOutputWithContext(ctx context.Context) ModelEnvironmentDefinitionSparkPtrOutput {
 	return o
-}
-
-func (o ModelEnvironmentDefinitionSparkPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ModelEnvironmentDefinitionSpark] {
-	return pulumix.Output[*ModelEnvironmentDefinitionSpark]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ModelEnvironmentDefinitionSparkPtrOutput) Elem() ModelEnvironmentDefinitionSparkOutput {
@@ -5793,12 +5300,6 @@ func (i RCranPackageArgs) ToRCranPackageOutputWithContext(ctx context.Context) R
 	return pulumi.ToOutputWithContext(ctx, i).(RCranPackageOutput)
 }
 
-func (i RCranPackageArgs) ToOutput(ctx context.Context) pulumix.Output[RCranPackage] {
-	return pulumix.Output[RCranPackage]{
-		OutputState: i.ToRCranPackageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RCranPackageArrayInput is an input type that accepts RCranPackageArray and RCranPackageArrayOutput values.
 // You can construct a concrete instance of `RCranPackageArrayInput` via:
 //
@@ -5824,12 +5325,6 @@ func (i RCranPackageArray) ToRCranPackageArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(RCranPackageArrayOutput)
 }
 
-func (i RCranPackageArray) ToOutput(ctx context.Context) pulumix.Output[[]RCranPackage] {
-	return pulumix.Output[[]RCranPackage]{
-		OutputState: i.ToRCranPackageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RCranPackageOutput struct{ *pulumi.OutputState }
 
 func (RCranPackageOutput) ElementType() reflect.Type {
@@ -5842,12 +5337,6 @@ func (o RCranPackageOutput) ToRCranPackageOutput() RCranPackageOutput {
 
 func (o RCranPackageOutput) ToRCranPackageOutputWithContext(ctx context.Context) RCranPackageOutput {
 	return o
-}
-
-func (o RCranPackageOutput) ToOutput(ctx context.Context) pulumix.Output[RCranPackage] {
-	return pulumix.Output[RCranPackage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The package name.
@@ -5872,12 +5361,6 @@ func (o RCranPackageArrayOutput) ToRCranPackageArrayOutput() RCranPackageArrayOu
 
 func (o RCranPackageArrayOutput) ToRCranPackageArrayOutputWithContext(ctx context.Context) RCranPackageArrayOutput {
 	return o
-}
-
-func (o RCranPackageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RCranPackage] {
-	return pulumix.Output[[]RCranPackage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RCranPackageArrayOutput) Index(i pulumi.IntInput) RCranPackageOutput {
@@ -5930,12 +5413,6 @@ func (i RGitHubPackageArgs) ToRGitHubPackageOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(RGitHubPackageOutput)
 }
 
-func (i RGitHubPackageArgs) ToOutput(ctx context.Context) pulumix.Output[RGitHubPackage] {
-	return pulumix.Output[RGitHubPackage]{
-		OutputState: i.ToRGitHubPackageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RGitHubPackageArrayInput is an input type that accepts RGitHubPackageArray and RGitHubPackageArrayOutput values.
 // You can construct a concrete instance of `RGitHubPackageArrayInput` via:
 //
@@ -5961,12 +5438,6 @@ func (i RGitHubPackageArray) ToRGitHubPackageArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(RGitHubPackageArrayOutput)
 }
 
-func (i RGitHubPackageArray) ToOutput(ctx context.Context) pulumix.Output[[]RGitHubPackage] {
-	return pulumix.Output[[]RGitHubPackage]{
-		OutputState: i.ToRGitHubPackageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RGitHubPackageOutput struct{ *pulumi.OutputState }
 
 func (RGitHubPackageOutput) ElementType() reflect.Type {
@@ -5979,12 +5450,6 @@ func (o RGitHubPackageOutput) ToRGitHubPackageOutput() RGitHubPackageOutput {
 
 func (o RGitHubPackageOutput) ToRGitHubPackageOutputWithContext(ctx context.Context) RGitHubPackageOutput {
 	return o
-}
-
-func (o RGitHubPackageOutput) ToOutput(ctx context.Context) pulumix.Output[RGitHubPackage] {
-	return pulumix.Output[RGitHubPackage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Personal access token to install from a private repo
@@ -6009,12 +5474,6 @@ func (o RGitHubPackageArrayOutput) ToRGitHubPackageArrayOutput() RGitHubPackageA
 
 func (o RGitHubPackageArrayOutput) ToRGitHubPackageArrayOutputWithContext(ctx context.Context) RGitHubPackageArrayOutput {
 	return o
-}
-
-func (o RGitHubPackageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]RGitHubPackage] {
-	return pulumix.Output[[]RGitHubPackage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RGitHubPackageArrayOutput) Index(i pulumi.IntInput) RGitHubPackageOutput {
@@ -6183,12 +5642,6 @@ func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
 }
 
-func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
 	return i.ToSkuPtrOutputWithContext(context.Background())
 }
@@ -6230,12 +5683,6 @@ func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
 }
 
-func (i *skuPtrType) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
-	return pulumix.Output[*Sku]{
-		OutputState: i.ToSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Sku of the resource
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -6261,12 +5708,6 @@ func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	}).(SkuPtrOutput)
 }
 
-func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the sku
 func (o SkuOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Sku) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -6289,12 +5730,6 @@ func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
 
 func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o
-}
-
-func (o SkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
-	return pulumix.Output[*Sku]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuPtrOutput) Elem() SkuOutput {
@@ -6350,12 +5785,6 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
-	return pulumix.Output[SkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Name of the sku
 func (o SkuResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -6378,12 +5807,6 @@ func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
 
 func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
 	return o
-}
-
-func (o SkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuResponse] {
-	return pulumix.Output[*SkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
@@ -6451,12 +5874,6 @@ func (i SparkMavenPackageArgs) ToSparkMavenPackageOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SparkMavenPackageOutput)
 }
 
-func (i SparkMavenPackageArgs) ToOutput(ctx context.Context) pulumix.Output[SparkMavenPackage] {
-	return pulumix.Output[SparkMavenPackage]{
-		OutputState: i.ToSparkMavenPackageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SparkMavenPackageArrayInput is an input type that accepts SparkMavenPackageArray and SparkMavenPackageArrayOutput values.
 // You can construct a concrete instance of `SparkMavenPackageArrayInput` via:
 //
@@ -6482,12 +5899,6 @@ func (i SparkMavenPackageArray) ToSparkMavenPackageArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(SparkMavenPackageArrayOutput)
 }
 
-func (i SparkMavenPackageArray) ToOutput(ctx context.Context) pulumix.Output[[]SparkMavenPackage] {
-	return pulumix.Output[[]SparkMavenPackage]{
-		OutputState: i.ToSparkMavenPackageArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SparkMavenPackageOutput struct{ *pulumi.OutputState }
 
 func (SparkMavenPackageOutput) ElementType() reflect.Type {
@@ -6500,12 +5911,6 @@ func (o SparkMavenPackageOutput) ToSparkMavenPackageOutput() SparkMavenPackageOu
 
 func (o SparkMavenPackageOutput) ToSparkMavenPackageOutputWithContext(ctx context.Context) SparkMavenPackageOutput {
 	return o
-}
-
-func (o SparkMavenPackageOutput) ToOutput(ctx context.Context) pulumix.Output[SparkMavenPackage] {
-	return pulumix.Output[SparkMavenPackage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SparkMavenPackageOutput) Artifact() pulumi.StringPtrOutput {
@@ -6532,12 +5937,6 @@ func (o SparkMavenPackageArrayOutput) ToSparkMavenPackageArrayOutput() SparkMave
 
 func (o SparkMavenPackageArrayOutput) ToSparkMavenPackageArrayOutputWithContext(ctx context.Context) SparkMavenPackageArrayOutput {
 	return o
-}
-
-func (o SparkMavenPackageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SparkMavenPackage] {
-	return pulumix.Output[[]SparkMavenPackage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SparkMavenPackageArrayOutput) Index(i pulumi.IntInput) SparkMavenPackageOutput {
@@ -6707,12 +6106,6 @@ func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx cont
 	return o
 }
 
-func (o SystemDataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SystemDataResponse] {
-	return pulumix.Output[SystemDataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The timestamp of resource creation (UTC)
 func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
@@ -6798,12 +6191,6 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
-func (o UserAssignedIdentityResponseOutput) ToOutput(ctx context.Context) pulumix.Output[UserAssignedIdentityResponse] {
-	return pulumix.Output[UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The clientId(aka appId) of the user assigned identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
@@ -6831,12 +6218,6 @@ func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMap
 
 func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
 	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]UserAssignedIdentityResponse] {
-	return pulumix.Output[map[string]UserAssignedIdentityResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {

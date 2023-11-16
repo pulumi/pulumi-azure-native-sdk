@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The SourceControl Configuration object returned in Get & Put response.
@@ -234,12 +233,6 @@ func (i *SourceControlConfiguration) ToSourceControlConfigurationOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(SourceControlConfigurationOutput)
 }
 
-func (i *SourceControlConfiguration) ToOutput(ctx context.Context) pulumix.Output[*SourceControlConfiguration] {
-	return pulumix.Output[*SourceControlConfiguration]{
-		OutputState: i.ToSourceControlConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SourceControlConfigurationOutput struct{ *pulumi.OutputState }
 
 func (SourceControlConfigurationOutput) ElementType() reflect.Type {
@@ -252,12 +245,6 @@ func (o SourceControlConfigurationOutput) ToSourceControlConfigurationOutput() S
 
 func (o SourceControlConfigurationOutput) ToSourceControlConfigurationOutputWithContext(ctx context.Context) SourceControlConfigurationOutput {
 	return o
-}
-
-func (o SourceControlConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceControlConfiguration] {
-	return pulumix.Output[*SourceControlConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Compliance Status of the Configuration

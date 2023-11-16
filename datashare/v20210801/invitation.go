@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Invitation data transfer object.
@@ -179,12 +178,6 @@ func (i *Invitation) ToInvitationOutputWithContext(ctx context.Context) Invitati
 	return pulumi.ToOutputWithContext(ctx, i).(InvitationOutput)
 }
 
-func (i *Invitation) ToOutput(ctx context.Context) pulumix.Output[*Invitation] {
-	return pulumix.Output[*Invitation]{
-		OutputState: i.ToInvitationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InvitationOutput struct{ *pulumi.OutputState }
 
 func (InvitationOutput) ElementType() reflect.Type {
@@ -197,12 +190,6 @@ func (o InvitationOutput) ToInvitationOutput() InvitationOutput {
 
 func (o InvitationOutput) ToInvitationOutputWithContext(ctx context.Context) InvitationOutput {
 	return o
-}
-
-func (o InvitationOutput) ToOutput(ctx context.Context) pulumix.Output[*Invitation] {
-	return pulumix.Output[*Invitation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The expiration date for the invitation and share subscription.

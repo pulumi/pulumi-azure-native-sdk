@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get notification channel.
@@ -105,12 +104,6 @@ func (o LookupNotificationChannelResultOutput) ToLookupNotificationChannelResult
 
 func (o LookupNotificationChannelResultOutput) ToLookupNotificationChannelResultOutputWithContext(ctx context.Context) LookupNotificationChannelResultOutput {
 	return o
-}
-
-func (o LookupNotificationChannelResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNotificationChannelResult] {
-	return pulumix.Output[LookupNotificationChannelResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation date of the notification channel.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about the specified application package.
@@ -97,12 +96,6 @@ func (o LookupApplicationPackageResultOutput) ToLookupApplicationPackageResultOu
 
 func (o LookupApplicationPackageResultOutput) ToLookupApplicationPackageResultOutputWithContext(ctx context.Context) LookupApplicationPackageResultOutput {
 	return o
-}
-
-func (o LookupApplicationPackageResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApplicationPackageResult] {
-	return pulumix.Output[LookupApplicationPackageResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ETag of the resource, used for concurrency statements.

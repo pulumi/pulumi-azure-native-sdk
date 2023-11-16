@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a data connector.
@@ -96,12 +95,6 @@ func (o LookupGCPDataConnectorResultOutput) ToLookupGCPDataConnectorResultOutput
 
 func (o LookupGCPDataConnectorResultOutput) ToLookupGCPDataConnectorResultOutputWithContext(ctx context.Context) LookupGCPDataConnectorResultOutput {
 	return o
-}
-
-func (o LookupGCPDataConnectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupGCPDataConnectorResult] {
-	return pulumix.Output[LookupGCPDataConnectorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The auth section of the connector.

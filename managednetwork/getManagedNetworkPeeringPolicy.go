@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Get ManagedNetworkPeeringPolicies operation gets a Managed Network Peering Policy resource, specified by the  resource group, Managed Network name, and peering policy name
@@ -86,12 +85,6 @@ func (o LookupManagedNetworkPeeringPolicyResultOutput) ToLookupManagedNetworkPee
 
 func (o LookupManagedNetworkPeeringPolicyResultOutput) ToLookupManagedNetworkPeeringPolicyResultOutputWithContext(ctx context.Context) LookupManagedNetworkPeeringPolicyResultOutput {
 	return o
-}
-
-func (o LookupManagedNetworkPeeringPolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupManagedNetworkPeeringPolicyResult] {
-	return pulumix.Output[LookupManagedNetworkPeeringPolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

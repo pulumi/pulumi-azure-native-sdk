@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get OuContainer in DomainService instance.
@@ -105,12 +104,6 @@ func (o LookupOuContainerResultOutput) ToLookupOuContainerResultOutput() LookupO
 
 func (o LookupOuContainerResultOutput) ToLookupOuContainerResultOutputWithContext(ctx context.Context) LookupOuContainerResultOutput {
 	return o
-}
-
-func (o LookupOuContainerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupOuContainerResult] {
-	return pulumix.Output[LookupOuContainerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of container accounts

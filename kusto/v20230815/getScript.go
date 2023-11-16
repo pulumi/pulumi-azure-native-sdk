@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a Kusto cluster database script.
@@ -108,12 +107,6 @@ func (o LookupScriptResultOutput) ToLookupScriptResultOutput() LookupScriptResul
 
 func (o LookupScriptResultOutput) ToLookupScriptResultOutputWithContext(ctx context.Context) LookupScriptResultOutput {
 	return o
-}
-
-func (o LookupScriptResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupScriptResult] {
-	return pulumix.Output[LookupScriptResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Flag that indicates whether to continue if one of the command fails.

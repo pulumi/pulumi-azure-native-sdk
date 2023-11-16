@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The KPI resource format.
@@ -228,12 +227,6 @@ func (i *Kpi) ToKpiOutputWithContext(ctx context.Context) KpiOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KpiOutput)
 }
 
-func (i *Kpi) ToOutput(ctx context.Context) pulumix.Output[*Kpi] {
-	return pulumix.Output[*Kpi]{
-		OutputState: i.ToKpiOutputWithContext(ctx).OutputState,
-	}
-}
-
 type KpiOutput struct{ *pulumi.OutputState }
 
 func (KpiOutput) ElementType() reflect.Type {
@@ -246,12 +239,6 @@ func (o KpiOutput) ToKpiOutput() KpiOutput {
 
 func (o KpiOutput) ToKpiOutputWithContext(ctx context.Context) KpiOutput {
 	return o
-}
-
-func (o KpiOutput) ToOutput(ctx context.Context) pulumix.Output[*Kpi] {
-	return pulumix.Output[*Kpi]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The aliases.

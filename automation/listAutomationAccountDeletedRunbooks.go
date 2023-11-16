@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve the deleted runbooks for an automation account.
@@ -76,12 +75,6 @@ func (o ListAutomationAccountDeletedRunbooksResultOutput) ToListAutomationAccoun
 
 func (o ListAutomationAccountDeletedRunbooksResultOutput) ToListAutomationAccountDeletedRunbooksResultOutputWithContext(ctx context.Context) ListAutomationAccountDeletedRunbooksResultOutput {
 	return o
-}
-
-func (o ListAutomationAccountDeletedRunbooksResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListAutomationAccountDeletedRunbooksResult] {
-	return pulumix.Output[ListAutomationAccountDeletedRunbooksResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the next link.

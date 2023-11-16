@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure Cosmos DB User Definition
@@ -191,12 +190,6 @@ func (i *MongoDBResourceMongoUserDefinition) ToMongoDBResourceMongoUserDefinitio
 	return pulumi.ToOutputWithContext(ctx, i).(MongoDBResourceMongoUserDefinitionOutput)
 }
 
-func (i *MongoDBResourceMongoUserDefinition) ToOutput(ctx context.Context) pulumix.Output[*MongoDBResourceMongoUserDefinition] {
-	return pulumix.Output[*MongoDBResourceMongoUserDefinition]{
-		OutputState: i.ToMongoDBResourceMongoUserDefinitionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MongoDBResourceMongoUserDefinitionOutput struct{ *pulumi.OutputState }
 
 func (MongoDBResourceMongoUserDefinitionOutput) ElementType() reflect.Type {
@@ -209,12 +202,6 @@ func (o MongoDBResourceMongoUserDefinitionOutput) ToMongoDBResourceMongoUserDefi
 
 func (o MongoDBResourceMongoUserDefinitionOutput) ToMongoDBResourceMongoUserDefinitionOutputWithContext(ctx context.Context) MongoDBResourceMongoUserDefinitionOutput {
 	return o
-}
-
-func (o MongoDBResourceMongoUserDefinitionOutput) ToOutput(ctx context.Context) pulumix.Output[*MongoDBResourceMongoUserDefinition] {
-	return pulumix.Output[*MongoDBResourceMongoUserDefinition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A custom definition for the USer Definition.

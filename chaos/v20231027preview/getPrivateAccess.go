@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a private access resource
@@ -85,12 +84,6 @@ func (o LookupPrivateAccessResultOutput) ToLookupPrivateAccessResultOutput() Loo
 
 func (o LookupPrivateAccessResultOutput) ToLookupPrivateAccessResultOutputWithContext(ctx context.Context) LookupPrivateAccessResultOutput {
 	return o
-}
-
-func (o LookupPrivateAccessResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateAccessResult] {
-	return pulumix.Output[LookupPrivateAccessResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

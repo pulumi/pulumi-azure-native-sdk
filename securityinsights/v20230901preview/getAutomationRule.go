@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the automation rule.
@@ -99,12 +98,6 @@ func (o LookupAutomationRuleResultOutput) ToLookupAutomationRuleResultOutput() L
 
 func (o LookupAutomationRuleResultOutput) ToLookupAutomationRuleResultOutputWithContext(ctx context.Context) LookupAutomationRuleResultOutput {
 	return o
-}
-
-func (o LookupAutomationRuleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAutomationRuleResult] {
-	return pulumix.Output[LookupAutomationRuleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The actions to execute when the automation rule is triggered.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The gallery images resource definition.
@@ -187,12 +186,6 @@ func (i *GalleryImage) ToGalleryImageOutputWithContext(ctx context.Context) Gall
 	return pulumi.ToOutputWithContext(ctx, i).(GalleryImageOutput)
 }
 
-func (i *GalleryImage) ToOutput(ctx context.Context) pulumix.Output[*GalleryImage] {
-	return pulumix.Output[*GalleryImage]{
-		OutputState: i.ToGalleryImageOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GalleryImageOutput struct{ *pulumi.OutputState }
 
 func (GalleryImageOutput) ElementType() reflect.Type {
@@ -205,12 +198,6 @@ func (o GalleryImageOutput) ToGalleryImageOutput() GalleryImageOutput {
 
 func (o GalleryImageOutput) ToGalleryImageOutputWithContext(ctx context.Context) GalleryImageOutput {
 	return o
-}
-
-func (o GalleryImageOutput) ToOutput(ctx context.Context) pulumix.Output[*GalleryImage] {
-	return pulumix.Output[*GalleryImage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]

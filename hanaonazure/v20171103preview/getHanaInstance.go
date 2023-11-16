@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets properties of a SAP HANA instance for the specified subscription, resource group, and instance name.
@@ -101,12 +100,6 @@ func (o LookupHanaInstanceResultOutput) ToLookupHanaInstanceResultOutput() Looku
 
 func (o LookupHanaInstanceResultOutput) ToLookupHanaInstanceResultOutputWithContext(ctx context.Context) LookupHanaInstanceResultOutput {
 	return o
-}
-
-func (o LookupHanaInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHanaInstanceResult] {
-	return pulumix.Output[LookupHanaInstanceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies the HANA instance unique ID.

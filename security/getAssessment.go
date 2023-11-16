@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a security assessment on your scanned resource
@@ -98,12 +97,6 @@ func (o LookupAssessmentResultOutput) ToLookupAssessmentResultOutput() LookupAss
 
 func (o LookupAssessmentResultOutput) ToLookupAssessmentResultOutputWithContext(ctx context.Context) LookupAssessmentResultOutput {
 	return o
-}
-
-func (o LookupAssessmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAssessmentResult] {
-	return pulumix.Output[LookupAssessmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional data regarding the assessment

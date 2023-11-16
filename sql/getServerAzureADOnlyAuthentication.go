@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a specific Azure Active Directory only authentication property.
@@ -86,12 +85,6 @@ func (o LookupServerAzureADOnlyAuthenticationResultOutput) ToLookupServerAzureAD
 
 func (o LookupServerAzureADOnlyAuthenticationResultOutput) ToLookupServerAzureADOnlyAuthenticationResultOutputWithContext(ctx context.Context) LookupServerAzureADOnlyAuthenticationResultOutput {
 	return o
-}
-
-func (o LookupServerAzureADOnlyAuthenticationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServerAzureADOnlyAuthenticationResult] {
-	return pulumix.Output[LookupServerAzureADOnlyAuthenticationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Azure Active Directory only Authentication enabled.

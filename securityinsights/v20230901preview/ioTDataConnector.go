@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents IoT data connector.
@@ -133,6 +132,9 @@ func NewIoTDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:IoTDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:IoTDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -223,12 +225,6 @@ func (i *IoTDataConnector) ToIoTDataConnectorOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(IoTDataConnectorOutput)
 }
 
-func (i *IoTDataConnector) ToOutput(ctx context.Context) pulumix.Output[*IoTDataConnector] {
-	return pulumix.Output[*IoTDataConnector]{
-		OutputState: i.ToIoTDataConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IoTDataConnectorOutput struct{ *pulumi.OutputState }
 
 func (IoTDataConnectorOutput) ElementType() reflect.Type {
@@ -241,12 +237,6 @@ func (o IoTDataConnectorOutput) ToIoTDataConnectorOutput() IoTDataConnectorOutpu
 
 func (o IoTDataConnectorOutput) ToIoTDataConnectorOutputWithContext(ctx context.Context) IoTDataConnectorOutput {
 	return o
-}
-
-func (o IoTDataConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*IoTDataConnector] {
-	return pulumix.Output[*IoTDataConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The available data types for the connector.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Azure REST API version: 2023-08-01-preview.
@@ -75,12 +74,6 @@ func (o GetServerlessEndpointStatusResultOutput) ToGetServerlessEndpointStatusRe
 
 func (o GetServerlessEndpointStatusResultOutput) ToGetServerlessEndpointStatusResultOutputWithContext(ctx context.Context) GetServerlessEndpointStatusResultOutput {
 	return o
-}
-
-func (o GetServerlessEndpointStatusResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetServerlessEndpointStatusResult] {
-	return pulumix.Output[GetServerlessEndpointStatusResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The model-specific metrics from the backing inference endpoint.

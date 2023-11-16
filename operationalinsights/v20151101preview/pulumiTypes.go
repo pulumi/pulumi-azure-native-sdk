@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -55,12 +54,6 @@ func (i MachineReferenceWithHintsArgs) ToMachineReferenceWithHintsOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(MachineReferenceWithHintsOutput)
 }
 
-func (i MachineReferenceWithHintsArgs) ToOutput(ctx context.Context) pulumix.Output[MachineReferenceWithHints] {
-	return pulumix.Output[MachineReferenceWithHints]{
-		OutputState: i.ToMachineReferenceWithHintsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MachineReferenceWithHintsArrayInput is an input type that accepts MachineReferenceWithHintsArray and MachineReferenceWithHintsArrayOutput values.
 // You can construct a concrete instance of `MachineReferenceWithHintsArrayInput` via:
 //
@@ -86,12 +79,6 @@ func (i MachineReferenceWithHintsArray) ToMachineReferenceWithHintsArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(MachineReferenceWithHintsArrayOutput)
 }
 
-func (i MachineReferenceWithHintsArray) ToOutput(ctx context.Context) pulumix.Output[[]MachineReferenceWithHints] {
-	return pulumix.Output[[]MachineReferenceWithHints]{
-		OutputState: i.ToMachineReferenceWithHintsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A machine reference with a hint of the machine's name and operating system.
 type MachineReferenceWithHintsOutput struct{ *pulumi.OutputState }
 
@@ -105,12 +92,6 @@ func (o MachineReferenceWithHintsOutput) ToMachineReferenceWithHintsOutput() Mac
 
 func (o MachineReferenceWithHintsOutput) ToMachineReferenceWithHintsOutputWithContext(ctx context.Context) MachineReferenceWithHintsOutput {
 	return o
-}
-
-func (o MachineReferenceWithHintsOutput) ToOutput(ctx context.Context) pulumix.Output[MachineReferenceWithHints] {
-	return pulumix.Output[MachineReferenceWithHints]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource URI.
@@ -136,12 +117,6 @@ func (o MachineReferenceWithHintsArrayOutput) ToMachineReferenceWithHintsArrayOu
 
 func (o MachineReferenceWithHintsArrayOutput) ToMachineReferenceWithHintsArrayOutputWithContext(ctx context.Context) MachineReferenceWithHintsArrayOutput {
 	return o
-}
-
-func (o MachineReferenceWithHintsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MachineReferenceWithHints] {
-	return pulumix.Output[[]MachineReferenceWithHints]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MachineReferenceWithHintsArrayOutput) Index(i pulumi.IntInput) MachineReferenceWithHintsOutput {
@@ -180,12 +155,6 @@ func (o MachineReferenceWithHintsResponseOutput) ToMachineReferenceWithHintsResp
 
 func (o MachineReferenceWithHintsResponseOutput) ToMachineReferenceWithHintsResponseOutputWithContext(ctx context.Context) MachineReferenceWithHintsResponseOutput {
 	return o
-}
-
-func (o MachineReferenceWithHintsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MachineReferenceWithHintsResponse] {
-	return pulumix.Output[MachineReferenceWithHintsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Last known display name.
@@ -233,12 +202,6 @@ func (o MachineReferenceWithHintsResponseArrayOutput) ToMachineReferenceWithHint
 	return o
 }
 
-func (o MachineReferenceWithHintsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MachineReferenceWithHintsResponse] {
-	return pulumix.Output[[]MachineReferenceWithHintsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MachineReferenceWithHintsResponseArrayOutput) Index(i pulumi.IntInput) MachineReferenceWithHintsResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MachineReferenceWithHintsResponse {
 		return vs[0].([]MachineReferenceWithHintsResponse)[vs[1].(int)]
@@ -278,12 +241,6 @@ func (i SkuArgs) ToSkuOutput() SkuOutput {
 
 func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
-}
-
-func (i SkuArgs) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: i.ToSkuOutputWithContext(ctx).OutputState,
-	}
 }
 
 func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
@@ -327,12 +284,6 @@ func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
 }
 
-func (i *skuPtrType) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
-	return pulumix.Output[*Sku]{
-		OutputState: i.ToSkuPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The SKU (tier) of a workspace.
 type SkuOutput struct{ *pulumi.OutputState }
 
@@ -358,12 +309,6 @@ func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	}).(SkuPtrOutput)
 }
 
-func (o SkuOutput) ToOutput(ctx context.Context) pulumix.Output[Sku] {
-	return pulumix.Output[Sku]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the SKU.
 func (o SkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v Sku) string { return v.Name }).(pulumi.StringOutput)
@@ -381,12 +326,6 @@ func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
 
 func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	return o
-}
-
-func (o SkuPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*Sku] {
-	return pulumix.Output[*Sku]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuPtrOutput) Elem() SkuOutput {
@@ -430,12 +369,6 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o SkuResponseOutput) ToOutput(ctx context.Context) pulumix.Output[SkuResponse] {
-	return pulumix.Output[SkuResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the SKU.
 func (o SkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SkuResponse) string { return v.Name }).(pulumi.StringOutput)
@@ -453,12 +386,6 @@ func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
 
 func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
 	return o
-}
-
-func (o SkuResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SkuResponse] {
-	return pulumix.Output[*SkuResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {

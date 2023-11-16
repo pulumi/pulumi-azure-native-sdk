@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Properties that define an Analytics item that is associated to an Application Insights component.
@@ -159,12 +158,6 @@ func (i *AnalyticsItem) ToAnalyticsItemOutputWithContext(ctx context.Context) An
 	return pulumi.ToOutputWithContext(ctx, i).(AnalyticsItemOutput)
 }
 
-func (i *AnalyticsItem) ToOutput(ctx context.Context) pulumix.Output[*AnalyticsItem] {
-	return pulumix.Output[*AnalyticsItem]{
-		OutputState: i.ToAnalyticsItemOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AnalyticsItemOutput struct{ *pulumi.OutputState }
 
 func (AnalyticsItemOutput) ElementType() reflect.Type {
@@ -177,12 +170,6 @@ func (o AnalyticsItemOutput) ToAnalyticsItemOutput() AnalyticsItemOutput {
 
 func (o AnalyticsItemOutput) ToAnalyticsItemOutputWithContext(ctx context.Context) AnalyticsItemOutput {
 	return o
-}
-
-func (o AnalyticsItemOutput) ToOutput(ctx context.Context) pulumix.Output[*AnalyticsItem] {
-	return pulumix.Output[*AnalyticsItem]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The content of this item

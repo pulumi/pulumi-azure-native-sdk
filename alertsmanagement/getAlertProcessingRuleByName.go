@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get an alert processing rule by name.
@@ -97,12 +96,6 @@ func (o LookupAlertProcessingRuleByNameResultOutput) ToLookupAlertProcessingRule
 
 func (o LookupAlertProcessingRuleByNameResultOutput) ToLookupAlertProcessingRuleByNameResultOutputWithContext(ctx context.Context) LookupAlertProcessingRuleByNameResultOutput {
 	return o
-}
-
-func (o LookupAlertProcessingRuleByNameResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAlertProcessingRuleByNameResult] {
-	return pulumix.Output[LookupAlertProcessingRuleByNameResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Azure resource Id

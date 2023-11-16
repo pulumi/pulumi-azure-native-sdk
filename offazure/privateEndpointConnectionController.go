@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // REST model used to encapsulate Private Link properties for tracked resources.
@@ -134,12 +133,6 @@ func (i *PrivateEndpointConnectionController) ToPrivateEndpointConnectionControl
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionControllerOutput)
 }
 
-func (i *PrivateEndpointConnectionController) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionController] {
-	return pulumix.Output[*PrivateEndpointConnectionController]{
-		OutputState: i.ToPrivateEndpointConnectionControllerOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PrivateEndpointConnectionControllerOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointConnectionControllerOutput) ElementType() reflect.Type {
@@ -152,12 +145,6 @@ func (o PrivateEndpointConnectionControllerOutput) ToPrivateEndpointConnectionCo
 
 func (o PrivateEndpointConnectionControllerOutput) ToPrivateEndpointConnectionControllerOutputWithContext(ctx context.Context) PrivateEndpointConnectionControllerOutput {
 	return o
-}
-
-func (o PrivateEndpointConnectionControllerOutput) ToOutput(ctx context.Context) pulumix.Output[*PrivateEndpointConnectionController] {
-	return pulumix.Output[*PrivateEndpointConnectionController]{
-		OutputState: o.OutputState,
-	}
 }
 
 // array of group ids

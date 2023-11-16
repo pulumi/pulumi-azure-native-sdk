@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified spacecraft in a specified resource group.
@@ -95,12 +94,6 @@ func (o LookupSpacecraftResultOutput) ToLookupSpacecraftResultOutput() LookupSpa
 
 func (o LookupSpacecraftResultOutput) ToLookupSpacecraftResultOutputWithContext(ctx context.Context) LookupSpacecraftResultOutput {
 	return o
-}
-
-func (o LookupSpacecraftResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSpacecraftResult] {
-	return pulumix.Output[LookupSpacecraftResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A unique read-only string that changes whenever the resource is updated.

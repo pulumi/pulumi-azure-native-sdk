@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // String dictionary resource.
@@ -169,12 +168,6 @@ func (i *WebAppMetadata) ToWebAppMetadataOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(WebAppMetadataOutput)
 }
 
-func (i *WebAppMetadata) ToOutput(ctx context.Context) pulumix.Output[*WebAppMetadata] {
-	return pulumix.Output[*WebAppMetadata]{
-		OutputState: i.ToWebAppMetadataOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebAppMetadataOutput struct{ *pulumi.OutputState }
 
 func (WebAppMetadataOutput) ElementType() reflect.Type {
@@ -187,12 +180,6 @@ func (o WebAppMetadataOutput) ToWebAppMetadataOutput() WebAppMetadataOutput {
 
 func (o WebAppMetadataOutput) ToWebAppMetadataOutputWithContext(ctx context.Context) WebAppMetadataOutput {
 	return o
-}
-
-func (o WebAppMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAppMetadata] {
-	return pulumix.Output[*WebAppMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Kind of resource.

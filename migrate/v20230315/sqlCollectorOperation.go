@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The SQL collector REST object.
@@ -140,12 +139,6 @@ func (i *SqlCollectorOperation) ToSqlCollectorOperationOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(SqlCollectorOperationOutput)
 }
 
-func (i *SqlCollectorOperation) ToOutput(ctx context.Context) pulumix.Output[*SqlCollectorOperation] {
-	return pulumix.Output[*SqlCollectorOperation]{
-		OutputState: i.ToSqlCollectorOperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SqlCollectorOperationOutput struct{ *pulumi.OutputState }
 
 func (SqlCollectorOperationOutput) ElementType() reflect.Type {
@@ -158,12 +151,6 @@ func (o SqlCollectorOperationOutput) ToSqlCollectorOperationOutput() SqlCollecto
 
 func (o SqlCollectorOperationOutput) ToSqlCollectorOperationOutputWithContext(ctx context.Context) SqlCollectorOperationOutput {
 	return o
-}
-
-func (o SqlCollectorOperationOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlCollectorOperation] {
-	return pulumix.Output[*SqlCollectorOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the collector agent properties.

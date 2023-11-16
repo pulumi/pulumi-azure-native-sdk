@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets Environment Definition error details
@@ -81,12 +80,6 @@ func (o GetEnvironmentDefinitionErrorDetailsResultOutput) ToGetEnvironmentDefini
 
 func (o GetEnvironmentDefinitionErrorDetailsResultOutput) ToGetEnvironmentDefinitionErrorDetailsResultOutputWithContext(ctx context.Context) GetEnvironmentDefinitionErrorDetailsResultOutput {
 	return o
-}
-
-func (o GetEnvironmentDefinitionErrorDetailsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetEnvironmentDefinitionErrorDetailsResult] {
-	return pulumix.Output[GetEnvironmentDefinitionErrorDetailsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Errors associated with resources synchronized from the catalog.

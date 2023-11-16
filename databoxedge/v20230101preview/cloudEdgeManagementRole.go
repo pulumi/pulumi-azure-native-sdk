@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The preview of Virtual Machine Cloud Management from the Azure supports deploying and managing VMs on your Azure Stack Edge device from Azure Portal.
@@ -191,12 +190,6 @@ func (i *CloudEdgeManagementRole) ToCloudEdgeManagementRoleOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(CloudEdgeManagementRoleOutput)
 }
 
-func (i *CloudEdgeManagementRole) ToOutput(ctx context.Context) pulumix.Output[*CloudEdgeManagementRole] {
-	return pulumix.Output[*CloudEdgeManagementRole]{
-		OutputState: i.ToCloudEdgeManagementRoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CloudEdgeManagementRoleOutput struct{ *pulumi.OutputState }
 
 func (CloudEdgeManagementRoleOutput) ElementType() reflect.Type {
@@ -209,12 +202,6 @@ func (o CloudEdgeManagementRoleOutput) ToCloudEdgeManagementRoleOutput() CloudEd
 
 func (o CloudEdgeManagementRoleOutput) ToCloudEdgeManagementRoleOutputWithContext(ctx context.Context) CloudEdgeManagementRoleOutput {
 	return o
-}
-
-func (o CloudEdgeManagementRoleOutput) ToOutput(ctx context.Context) pulumix.Output[*CloudEdgeManagementRole] {
-	return pulumix.Output[*CloudEdgeManagementRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Edge Profile of the resource

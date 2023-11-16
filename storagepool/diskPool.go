@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Response for Disk Pool request.
@@ -184,12 +183,6 @@ func (i *DiskPool) ToDiskPoolOutputWithContext(ctx context.Context) DiskPoolOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DiskPoolOutput)
 }
 
-func (i *DiskPool) ToOutput(ctx context.Context) pulumix.Output[*DiskPool] {
-	return pulumix.Output[*DiskPool]{
-		OutputState: i.ToDiskPoolOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DiskPoolOutput struct{ *pulumi.OutputState }
 
 func (DiskPoolOutput) ElementType() reflect.Type {
@@ -202,12 +195,6 @@ func (o DiskPoolOutput) ToDiskPoolOutput() DiskPoolOutput {
 
 func (o DiskPoolOutput) ToDiskPoolOutputWithContext(ctx context.Context) DiskPoolOutput {
 	return o
-}
-
-func (o DiskPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*DiskPool] {
-	return pulumix.Output[*DiskPool]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of additional capabilities for Disk Pool.

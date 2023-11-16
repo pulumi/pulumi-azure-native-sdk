@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Information about the connection monitor.
@@ -286,12 +285,6 @@ func (i *ConnectionMonitor) ToConnectionMonitorOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectionMonitorOutput)
 }
 
-func (i *ConnectionMonitor) ToOutput(ctx context.Context) pulumix.Output[*ConnectionMonitor] {
-	return pulumix.Output[*ConnectionMonitor]{
-		OutputState: i.ToConnectionMonitorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConnectionMonitorOutput struct{ *pulumi.OutputState }
 
 func (ConnectionMonitorOutput) ElementType() reflect.Type {
@@ -304,12 +297,6 @@ func (o ConnectionMonitorOutput) ToConnectionMonitorOutput() ConnectionMonitorOu
 
 func (o ConnectionMonitorOutput) ToConnectionMonitorOutputWithContext(ctx context.Context) ConnectionMonitorOutput {
 	return o
-}
-
-func (o ConnectionMonitorOutput) ToOutput(ctx context.Context) pulumix.Output[*ConnectionMonitor] {
-	return pulumix.Output[*ConnectionMonitor]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Determines if the connection monitor will start automatically once created.

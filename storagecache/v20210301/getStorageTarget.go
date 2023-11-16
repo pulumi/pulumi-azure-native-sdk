@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Returns a Storage Target from a Cache.
@@ -99,12 +98,6 @@ func (o LookupStorageTargetResultOutput) ToLookupStorageTargetResultOutput() Loo
 
 func (o LookupStorageTargetResultOutput) ToLookupStorageTargetResultOutputWithContext(ctx context.Context) LookupStorageTargetResultOutput {
 	return o
-}
-
-func (o LookupStorageTargetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupStorageTargetResult] {
-	return pulumix.Output[LookupStorageTargetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Properties when targetType is blobNfs.

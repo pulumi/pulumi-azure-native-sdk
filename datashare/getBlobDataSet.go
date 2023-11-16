@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a DataSet in a share
@@ -103,12 +102,6 @@ func (o LookupBlobDataSetResultOutput) ToLookupBlobDataSetResultOutput() LookupB
 
 func (o LookupBlobDataSetResultOutput) ToLookupBlobDataSetResultOutputWithContext(ctx context.Context) LookupBlobDataSetResultOutput {
 	return o
-}
-
-func (o LookupBlobDataSetResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupBlobDataSetResult] {
-	return pulumix.Output[LookupBlobDataSetResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Container that has the file path.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets a datasource instance.
@@ -92,12 +91,6 @@ func (o LookupDataSourceResultOutput) ToLookupDataSourceResultOutput() LookupDat
 
 func (o LookupDataSourceResultOutput) ToLookupDataSourceResultOutputWithContext(ctx context.Context) LookupDataSourceResultOutput {
 	return o
-}
-
-func (o LookupDataSourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataSourceResult] {
-	return pulumix.Output[LookupDataSourceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ETag of the data source.

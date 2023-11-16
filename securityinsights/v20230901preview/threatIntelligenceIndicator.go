@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Threat intelligence information object.
@@ -124,6 +123,9 @@ func NewThreatIntelligenceIndicator(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:ThreatIntelligenceIndicator"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:ThreatIntelligenceIndicator"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -319,12 +321,6 @@ func (i *ThreatIntelligenceIndicator) ToThreatIntelligenceIndicatorOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ThreatIntelligenceIndicatorOutput)
 }
 
-func (i *ThreatIntelligenceIndicator) ToOutput(ctx context.Context) pulumix.Output[*ThreatIntelligenceIndicator] {
-	return pulumix.Output[*ThreatIntelligenceIndicator]{
-		OutputState: i.ToThreatIntelligenceIndicatorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ThreatIntelligenceIndicatorOutput struct{ *pulumi.OutputState }
 
 func (ThreatIntelligenceIndicatorOutput) ElementType() reflect.Type {
@@ -337,12 +333,6 @@ func (o ThreatIntelligenceIndicatorOutput) ToThreatIntelligenceIndicatorOutput()
 
 func (o ThreatIntelligenceIndicatorOutput) ToThreatIntelligenceIndicatorOutputWithContext(ctx context.Context) ThreatIntelligenceIndicatorOutput {
 	return o
-}
-
-func (o ThreatIntelligenceIndicatorOutput) ToOutput(ctx context.Context) pulumix.Output[*ThreatIntelligenceIndicator] {
-	return pulumix.Output[*ThreatIntelligenceIndicator]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Etag of the azure resource

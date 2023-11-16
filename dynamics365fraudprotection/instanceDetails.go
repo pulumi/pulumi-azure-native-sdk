@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents an instance of a DFP instance resource.
@@ -132,12 +131,6 @@ func (i *InstanceDetails) ToInstanceDetailsOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceDetailsOutput)
 }
 
-func (i *InstanceDetails) ToOutput(ctx context.Context) pulumix.Output[*InstanceDetails] {
-	return pulumix.Output[*InstanceDetails]{
-		OutputState: i.ToInstanceDetailsOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InstanceDetailsOutput struct{ *pulumi.OutputState }
 
 func (InstanceDetailsOutput) ElementType() reflect.Type {
@@ -150,12 +143,6 @@ func (o InstanceDetailsOutput) ToInstanceDetailsOutput() InstanceDetailsOutput {
 
 func (o InstanceDetailsOutput) ToInstanceDetailsOutputWithContext(ctx context.Context) InstanceDetailsOutput {
 	return o
-}
-
-func (o InstanceDetailsOutput) ToOutput(ctx context.Context) pulumix.Output[*InstanceDetails] {
-	return pulumix.Output[*InstanceDetails]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A collection of DFP instance administrators

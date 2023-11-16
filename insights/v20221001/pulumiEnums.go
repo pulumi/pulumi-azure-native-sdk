@@ -83,12 +83,6 @@ func (o ComparisonOperationTypeOutput) ToComparisonOperationTypePtrOutputWithCon
 	}).(ComparisonOperationTypePtrOutput)
 }
 
-func (o ComparisonOperationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ComparisonOperationType] {
-	return pulumix.Output[ComparisonOperationType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ComparisonOperationTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -122,12 +116,6 @@ func (o ComparisonOperationTypePtrOutput) ToComparisonOperationTypePtrOutput() C
 
 func (o ComparisonOperationTypePtrOutput) ToComparisonOperationTypePtrOutputWithContext(ctx context.Context) ComparisonOperationTypePtrOutput {
 	return o
-}
-
-func (o ComparisonOperationTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ComparisonOperationType] {
-	return pulumix.Output[*ComparisonOperationType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ComparisonOperationTypePtrOutput) Elem() ComparisonOperationTypeOutput {
@@ -269,12 +257,6 @@ func (o MetricStatisticTypeOutput) ToMetricStatisticTypePtrOutputWithContext(ctx
 	}).(MetricStatisticTypePtrOutput)
 }
 
-func (o MetricStatisticTypeOutput) ToOutput(ctx context.Context) pulumix.Output[MetricStatisticType] {
-	return pulumix.Output[MetricStatisticType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MetricStatisticTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -308,12 +290,6 @@ func (o MetricStatisticTypePtrOutput) ToMetricStatisticTypePtrOutput() MetricSta
 
 func (o MetricStatisticTypePtrOutput) ToMetricStatisticTypePtrOutputWithContext(ctx context.Context) MetricStatisticTypePtrOutput {
 	return o
-}
-
-func (o MetricStatisticTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricStatisticType] {
-	return pulumix.Output[*MetricStatisticType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricStatisticTypePtrOutput) Elem() MetricStatisticTypeOutput {
@@ -451,12 +427,6 @@ func (o OperationTypeOutput) ToOperationTypePtrOutputWithContext(ctx context.Con
 	}).(OperationTypePtrOutput)
 }
 
-func (o OperationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[OperationType] {
-	return pulumix.Output[OperationType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OperationTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -490,12 +460,6 @@ func (o OperationTypePtrOutput) ToOperationTypePtrOutput() OperationTypePtrOutpu
 
 func (o OperationTypePtrOutput) ToOperationTypePtrOutputWithContext(ctx context.Context) OperationTypePtrOutput {
 	return o
-}
-
-func (o OperationTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OperationType] {
-	return pulumix.Output[*OperationType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OperationTypePtrOutput) Elem() OperationTypeOutput {
@@ -635,12 +599,6 @@ func (o PredictiveAutoscalePolicyScaleModeOutput) ToPredictiveAutoscalePolicySca
 	}).(PredictiveAutoscalePolicyScaleModePtrOutput)
 }
 
-func (o PredictiveAutoscalePolicyScaleModeOutput) ToOutput(ctx context.Context) pulumix.Output[PredictiveAutoscalePolicyScaleMode] {
-	return pulumix.Output[PredictiveAutoscalePolicyScaleMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PredictiveAutoscalePolicyScaleModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -674,12 +632,6 @@ func (o PredictiveAutoscalePolicyScaleModePtrOutput) ToPredictiveAutoscalePolicy
 
 func (o PredictiveAutoscalePolicyScaleModePtrOutput) ToPredictiveAutoscalePolicyScaleModePtrOutputWithContext(ctx context.Context) PredictiveAutoscalePolicyScaleModePtrOutput {
 	return o
-}
-
-func (o PredictiveAutoscalePolicyScaleModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*PredictiveAutoscalePolicyScaleMode] {
-	return pulumix.Output[*PredictiveAutoscalePolicyScaleMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PredictiveAutoscalePolicyScaleModePtrOutput) Elem() PredictiveAutoscalePolicyScaleModeOutput {
@@ -824,12 +776,6 @@ func (o RecurrenceFrequencyOutput) ToRecurrenceFrequencyPtrOutputWithContext(ctx
 	}).(RecurrenceFrequencyPtrOutput)
 }
 
-func (o RecurrenceFrequencyOutput) ToOutput(ctx context.Context) pulumix.Output[RecurrenceFrequency] {
-	return pulumix.Output[RecurrenceFrequency]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RecurrenceFrequencyOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -863,12 +809,6 @@ func (o RecurrenceFrequencyPtrOutput) ToRecurrenceFrequencyPtrOutput() Recurrenc
 
 func (o RecurrenceFrequencyPtrOutput) ToRecurrenceFrequencyPtrOutputWithContext(ctx context.Context) RecurrenceFrequencyPtrOutput {
 	return o
-}
-
-func (o RecurrenceFrequencyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*RecurrenceFrequency] {
-	return pulumix.Output[*RecurrenceFrequency]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RecurrenceFrequencyPtrOutput) Elem() RecurrenceFrequencyOutput {
@@ -1008,12 +948,6 @@ func (o ScaleDirectionOutput) ToScaleDirectionPtrOutputWithContext(ctx context.C
 	}).(ScaleDirectionPtrOutput)
 }
 
-func (o ScaleDirectionOutput) ToOutput(ctx context.Context) pulumix.Output[ScaleDirection] {
-	return pulumix.Output[ScaleDirection]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ScaleDirectionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1047,12 +981,6 @@ func (o ScaleDirectionPtrOutput) ToScaleDirectionPtrOutput() ScaleDirectionPtrOu
 
 func (o ScaleDirectionPtrOutput) ToScaleDirectionPtrOutputWithContext(ctx context.Context) ScaleDirectionPtrOutput {
 	return o
-}
-
-func (o ScaleDirectionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScaleDirection] {
-	return pulumix.Output[*ScaleDirection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScaleDirectionPtrOutput) Elem() ScaleDirectionOutput {
@@ -1201,12 +1129,6 @@ func (o ScaleTypeOutput) ToScaleTypePtrOutputWithContext(ctx context.Context) Sc
 	}).(ScaleTypePtrOutput)
 }
 
-func (o ScaleTypeOutput) ToOutput(ctx context.Context) pulumix.Output[ScaleType] {
-	return pulumix.Output[ScaleType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ScaleTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1240,12 +1162,6 @@ func (o ScaleTypePtrOutput) ToScaleTypePtrOutput() ScaleTypePtrOutput {
 
 func (o ScaleTypePtrOutput) ToScaleTypePtrOutputWithContext(ctx context.Context) ScaleTypePtrOutput {
 	return o
-}
-
-func (o ScaleTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ScaleType] {
-	return pulumix.Output[*ScaleType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScaleTypePtrOutput) Elem() ScaleTypeOutput {
@@ -1388,12 +1304,6 @@ func (o TimeAggregationTypeOutput) ToTimeAggregationTypePtrOutputWithContext(ctx
 	}).(TimeAggregationTypePtrOutput)
 }
 
-func (o TimeAggregationTypeOutput) ToOutput(ctx context.Context) pulumix.Output[TimeAggregationType] {
-	return pulumix.Output[TimeAggregationType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TimeAggregationTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -1427,12 +1337,6 @@ func (o TimeAggregationTypePtrOutput) ToTimeAggregationTypePtrOutput() TimeAggre
 
 func (o TimeAggregationTypePtrOutput) ToTimeAggregationTypePtrOutputWithContext(ctx context.Context) TimeAggregationTypePtrOutput {
 	return o
-}
-
-func (o TimeAggregationTypePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TimeAggregationType] {
-	return pulumix.Output[*TimeAggregationType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeAggregationTypePtrOutput) Elem() TimeAggregationTypeOutput {

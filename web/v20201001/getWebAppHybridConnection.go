@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves a specific Service Bus Hybrid Connection used by this Web App.
@@ -106,12 +105,6 @@ func (o LookupWebAppHybridConnectionResultOutput) ToLookupWebAppHybridConnection
 
 func (o LookupWebAppHybridConnectionResultOutput) ToLookupWebAppHybridConnectionResultOutputWithContext(ctx context.Context) LookupWebAppHybridConnectionResultOutput {
 	return o
-}
-
-func (o LookupWebAppHybridConnectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWebAppHybridConnectionResult] {
-	return pulumix.Output[LookupWebAppHybridConnectionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The hostname of the endpoint.

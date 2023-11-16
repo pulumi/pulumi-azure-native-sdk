@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List Paths supported by this Streaming Locator
@@ -79,12 +78,6 @@ func (o ListStreamingLocatorPathsResultOutput) ToListStreamingLocatorPathsResult
 
 func (o ListStreamingLocatorPathsResultOutput) ToListStreamingLocatorPathsResultOutputWithContext(ctx context.Context) ListStreamingLocatorPathsResultOutput {
 	return o
-}
-
-func (o ListStreamingLocatorPathsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListStreamingLocatorPathsResult] {
-	return pulumix.Output[ListStreamingLocatorPathsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Download Paths supported by current Streaming Locator

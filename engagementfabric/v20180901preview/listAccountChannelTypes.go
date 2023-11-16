@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // List of the EngagementFabric channel descriptions
@@ -73,12 +72,6 @@ func (o ListAccountChannelTypesResultOutput) ToListAccountChannelTypesResultOutp
 
 func (o ListAccountChannelTypesResultOutput) ToListAccountChannelTypesResultOutputWithContext(ctx context.Context) ListAccountChannelTypesResultOutput {
 	return o
-}
-
-func (o ListAccountChannelTypesResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListAccountChannelTypesResult] {
-	return pulumix.Output[ListAccountChannelTypesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Channel descriptions

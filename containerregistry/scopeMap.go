@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An object that represents a scope map for a container registry.
@@ -179,12 +178,6 @@ func (i *ScopeMap) ToScopeMapOutputWithContext(ctx context.Context) ScopeMapOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ScopeMapOutput)
 }
 
-func (i *ScopeMap) ToOutput(ctx context.Context) pulumix.Output[*ScopeMap] {
-	return pulumix.Output[*ScopeMap]{
-		OutputState: i.ToScopeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScopeMapOutput struct{ *pulumi.OutputState }
 
 func (ScopeMapOutput) ElementType() reflect.Type {
@@ -197,12 +190,6 @@ func (o ScopeMapOutput) ToScopeMapOutput() ScopeMapOutput {
 
 func (o ScopeMapOutput) ToScopeMapOutputWithContext(ctx context.Context) ScopeMapOutput {
 	return o
-}
-
-func (o ScopeMapOutput) ToOutput(ctx context.Context) pulumix.Output[*ScopeMap] {
-	return pulumix.Output[*ScopeMap]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of scoped permissions for registry artifacts.

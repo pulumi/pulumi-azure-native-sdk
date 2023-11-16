@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The security connector resource.
@@ -172,12 +171,6 @@ func (i *SecurityConnector) ToSecurityConnectorOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityConnectorOutput)
 }
 
-func (i *SecurityConnector) ToOutput(ctx context.Context) pulumix.Output[*SecurityConnector] {
-	return pulumix.Output[*SecurityConnector]{
-		OutputState: i.ToSecurityConnectorOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SecurityConnectorOutput struct{ *pulumi.OutputState }
 
 func (SecurityConnectorOutput) ElementType() reflect.Type {
@@ -190,12 +183,6 @@ func (o SecurityConnectorOutput) ToSecurityConnectorOutput() SecurityConnectorOu
 
 func (o SecurityConnectorOutput) ToSecurityConnectorOutputWithContext(ctx context.Context) SecurityConnectorOutput {
 	return o
-}
-
-func (o SecurityConnectorOutput) ToOutput(ctx context.Context) pulumix.Output[*SecurityConnector] {
-	return pulumix.Output[*SecurityConnector]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The security connector environment data.

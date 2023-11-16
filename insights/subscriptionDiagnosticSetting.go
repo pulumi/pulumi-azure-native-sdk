@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The subscription diagnostic setting resource.
@@ -151,12 +150,6 @@ func (i *SubscriptionDiagnosticSetting) ToSubscriptionDiagnosticSettingOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionDiagnosticSettingOutput)
 }
 
-func (i *SubscriptionDiagnosticSetting) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionDiagnosticSetting] {
-	return pulumix.Output[*SubscriptionDiagnosticSetting]{
-		OutputState: i.ToSubscriptionDiagnosticSettingOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SubscriptionDiagnosticSettingOutput struct{ *pulumi.OutputState }
 
 func (SubscriptionDiagnosticSettingOutput) ElementType() reflect.Type {
@@ -169,12 +162,6 @@ func (o SubscriptionDiagnosticSettingOutput) ToSubscriptionDiagnosticSettingOutp
 
 func (o SubscriptionDiagnosticSettingOutput) ToSubscriptionDiagnosticSettingOutputWithContext(ctx context.Context) SubscriptionDiagnosticSettingOutput {
 	return o
-}
-
-func (o SubscriptionDiagnosticSettingOutput) ToOutput(ctx context.Context) pulumix.Output[*SubscriptionDiagnosticSetting] {
-	return pulumix.Output[*SubscriptionDiagnosticSetting]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The resource Id for the event hub authorization rule.

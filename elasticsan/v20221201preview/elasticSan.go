@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Response for ElasticSan request.
@@ -176,12 +175,6 @@ func (i *ElasticSan) ToElasticSanOutputWithContext(ctx context.Context) ElasticS
 	return pulumi.ToOutputWithContext(ctx, i).(ElasticSanOutput)
 }
 
-func (i *ElasticSan) ToOutput(ctx context.Context) pulumix.Output[*ElasticSan] {
-	return pulumix.Output[*ElasticSan]{
-		OutputState: i.ToElasticSanOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ElasticSanOutput struct{ *pulumi.OutputState }
 
 func (ElasticSanOutput) ElementType() reflect.Type {
@@ -194,12 +187,6 @@ func (o ElasticSanOutput) ToElasticSanOutput() ElasticSanOutput {
 
 func (o ElasticSanOutput) ToElasticSanOutputWithContext(ctx context.Context) ElasticSanOutput {
 	return o
-}
-
-func (o ElasticSanOutput) ToOutput(ctx context.Context) pulumix.Output[*ElasticSan] {
-	return pulumix.Output[*ElasticSan]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Logical zone for Elastic San resource; example: ["1"].

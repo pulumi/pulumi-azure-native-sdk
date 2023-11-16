@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the specified saved search for a given workspace.
@@ -100,12 +99,6 @@ func (o LookupSavedSearchResultOutput) ToLookupSavedSearchResultOutput() LookupS
 
 func (o LookupSavedSearchResultOutput) ToLookupSavedSearchResultOutputWithContext(ctx context.Context) LookupSavedSearchResultOutput {
 	return o
-}
-
-func (o LookupSavedSearchResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSavedSearchResult] {
-	return pulumix.Output[LookupSavedSearchResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The category of the saved search. This helps the user to find a saved search faster.

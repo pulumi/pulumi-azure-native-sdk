@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // AzureADMetrics resource.
@@ -129,12 +128,6 @@ func (i *AzureADMetric) ToAzureADMetricOutputWithContext(ctx context.Context) Az
 	return pulumi.ToOutputWithContext(ctx, i).(AzureADMetricOutput)
 }
 
-func (i *AzureADMetric) ToOutput(ctx context.Context) pulumix.Output[*AzureADMetric] {
-	return pulumix.Output[*AzureADMetric]{
-		OutputState: i.ToAzureADMetricOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AzureADMetricOutput struct{ *pulumi.OutputState }
 
 func (AzureADMetricOutput) ElementType() reflect.Type {
@@ -147,12 +140,6 @@ func (o AzureADMetricOutput) ToAzureADMetricOutput() AzureADMetricOutput {
 
 func (o AzureADMetricOutput) ToAzureADMetricOutputWithContext(ctx context.Context) AzureADMetricOutput {
 	return o
-}
-
-func (o AzureADMetricOutput) ToOutput(ctx context.Context) pulumix.Output[*AzureADMetric] {
-	return pulumix.Output[*AzureADMetric]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

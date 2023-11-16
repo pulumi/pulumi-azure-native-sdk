@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A single Redis item in List or Get Operation.
@@ -272,12 +271,6 @@ func (i *Redis) ToRedisOutputWithContext(ctx context.Context) RedisOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RedisOutput)
 }
 
-func (i *Redis) ToOutput(ctx context.Context) pulumix.Output[*Redis] {
-	return pulumix.Output[*Redis]{
-		OutputState: i.ToRedisOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RedisOutput struct{ *pulumi.OutputState }
 
 func (RedisOutput) ElementType() reflect.Type {
@@ -290,12 +283,6 @@ func (o RedisOutput) ToRedisOutput() RedisOutput {
 
 func (o RedisOutput) ToRedisOutputWithContext(ctx context.Context) RedisOutput {
 	return o
-}
-
-func (o RedisOutput) ToOutput(ctx context.Context) pulumix.Output[*Redis] {
-	return pulumix.Output[*Redis]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The keys of the Redis cache - not set if this object is not the response to Create or Update redis cache

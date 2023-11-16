@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -53,12 +52,6 @@ func (i HeaderFieldArgs) ToHeaderFieldOutputWithContext(ctx context.Context) Hea
 	return pulumi.ToOutputWithContext(ctx, i).(HeaderFieldOutput)
 }
 
-func (i HeaderFieldArgs) ToOutput(ctx context.Context) pulumix.Output[HeaderField] {
-	return pulumix.Output[HeaderField]{
-		OutputState: i.ToHeaderFieldOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HeaderFieldArrayInput is an input type that accepts HeaderFieldArray and HeaderFieldArrayOutput values.
 // You can construct a concrete instance of `HeaderFieldArrayInput` via:
 //
@@ -84,12 +77,6 @@ func (i HeaderFieldArray) ToHeaderFieldArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(HeaderFieldArrayOutput)
 }
 
-func (i HeaderFieldArray) ToOutput(ctx context.Context) pulumix.Output[[]HeaderField] {
-	return pulumix.Output[[]HeaderField]{
-		OutputState: i.ToHeaderFieldArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A header to add to the WebTest.
 type HeaderFieldOutput struct{ *pulumi.OutputState }
 
@@ -103,12 +90,6 @@ func (o HeaderFieldOutput) ToHeaderFieldOutput() HeaderFieldOutput {
 
 func (o HeaderFieldOutput) ToHeaderFieldOutputWithContext(ctx context.Context) HeaderFieldOutput {
 	return o
-}
-
-func (o HeaderFieldOutput) ToOutput(ctx context.Context) pulumix.Output[HeaderField] {
-	return pulumix.Output[HeaderField]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the header.
@@ -133,12 +114,6 @@ func (o HeaderFieldArrayOutput) ToHeaderFieldArrayOutput() HeaderFieldArrayOutpu
 
 func (o HeaderFieldArrayOutput) ToHeaderFieldArrayOutputWithContext(ctx context.Context) HeaderFieldArrayOutput {
 	return o
-}
-
-func (o HeaderFieldArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HeaderField] {
-	return pulumix.Output[[]HeaderField]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HeaderFieldArrayOutput) Index(i pulumi.IntInput) HeaderFieldOutput {
@@ -170,12 +145,6 @@ func (o HeaderFieldResponseOutput) ToHeaderFieldResponseOutputWithContext(ctx co
 	return o
 }
 
-func (o HeaderFieldResponseOutput) ToOutput(ctx context.Context) pulumix.Output[HeaderFieldResponse] {
-	return pulumix.Output[HeaderFieldResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The name of the header.
 func (o HeaderFieldResponseOutput) HeaderFieldName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HeaderFieldResponse) *string { return v.HeaderFieldName }).(pulumi.StringPtrOutput)
@@ -198,12 +167,6 @@ func (o HeaderFieldResponseArrayOutput) ToHeaderFieldResponseArrayOutput() Heade
 
 func (o HeaderFieldResponseArrayOutput) ToHeaderFieldResponseArrayOutputWithContext(ctx context.Context) HeaderFieldResponseArrayOutput {
 	return o
-}
-
-func (o HeaderFieldResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HeaderFieldResponse] {
-	return pulumix.Output[[]HeaderFieldResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HeaderFieldResponseArrayOutput) Index(i pulumi.IntInput) HeaderFieldResponseOutput {
@@ -247,12 +210,6 @@ func (i WebTestGeolocationArgs) ToWebTestGeolocationOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(WebTestGeolocationOutput)
 }
 
-func (i WebTestGeolocationArgs) ToOutput(ctx context.Context) pulumix.Output[WebTestGeolocation] {
-	return pulumix.Output[WebTestGeolocation]{
-		OutputState: i.ToWebTestGeolocationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WebTestGeolocationArrayInput is an input type that accepts WebTestGeolocationArray and WebTestGeolocationArrayOutput values.
 // You can construct a concrete instance of `WebTestGeolocationArrayInput` via:
 //
@@ -278,12 +235,6 @@ func (i WebTestGeolocationArray) ToWebTestGeolocationArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(WebTestGeolocationArrayOutput)
 }
 
-func (i WebTestGeolocationArray) ToOutput(ctx context.Context) pulumix.Output[[]WebTestGeolocation] {
-	return pulumix.Output[[]WebTestGeolocation]{
-		OutputState: i.ToWebTestGeolocationArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Geo-physical location to run a WebTest from. You must specify one or more locations for the test to run from.
 type WebTestGeolocationOutput struct{ *pulumi.OutputState }
 
@@ -297,12 +248,6 @@ func (o WebTestGeolocationOutput) ToWebTestGeolocationOutput() WebTestGeolocatio
 
 func (o WebTestGeolocationOutput) ToWebTestGeolocationOutputWithContext(ctx context.Context) WebTestGeolocationOutput {
 	return o
-}
-
-func (o WebTestGeolocationOutput) ToOutput(ctx context.Context) pulumix.Output[WebTestGeolocation] {
-	return pulumix.Output[WebTestGeolocation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Location ID for the WebTest to run from.
@@ -322,12 +267,6 @@ func (o WebTestGeolocationArrayOutput) ToWebTestGeolocationArrayOutput() WebTest
 
 func (o WebTestGeolocationArrayOutput) ToWebTestGeolocationArrayOutputWithContext(ctx context.Context) WebTestGeolocationArrayOutput {
 	return o
-}
-
-func (o WebTestGeolocationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WebTestGeolocation] {
-	return pulumix.Output[[]WebTestGeolocation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebTestGeolocationArrayOutput) Index(i pulumi.IntInput) WebTestGeolocationOutput {
@@ -357,12 +296,6 @@ func (o WebTestGeolocationResponseOutput) ToWebTestGeolocationResponseOutputWith
 	return o
 }
 
-func (o WebTestGeolocationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[WebTestGeolocationResponse] {
-	return pulumix.Output[WebTestGeolocationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Location ID for the WebTest to run from.
 func (o WebTestGeolocationResponseOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebTestGeolocationResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
@@ -380,12 +313,6 @@ func (o WebTestGeolocationResponseArrayOutput) ToWebTestGeolocationResponseArray
 
 func (o WebTestGeolocationResponseArrayOutput) ToWebTestGeolocationResponseArrayOutputWithContext(ctx context.Context) WebTestGeolocationResponseArrayOutput {
 	return o
-}
-
-func (o WebTestGeolocationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WebTestGeolocationResponse] {
-	return pulumix.Output[[]WebTestGeolocationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebTestGeolocationResponseArrayOutput) Index(i pulumi.IntInput) WebTestGeolocationResponseOutput {
@@ -429,12 +356,6 @@ func (i WebTestPropertiesConfigurationArgs) ToWebTestPropertiesConfigurationOutp
 	return pulumi.ToOutputWithContext(ctx, i).(WebTestPropertiesConfigurationOutput)
 }
 
-func (i WebTestPropertiesConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[WebTestPropertiesConfiguration] {
-	return pulumix.Output[WebTestPropertiesConfiguration]{
-		OutputState: i.ToWebTestPropertiesConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WebTestPropertiesConfigurationArgs) ToWebTestPropertiesConfigurationPtrOutput() WebTestPropertiesConfigurationPtrOutput {
 	return i.ToWebTestPropertiesConfigurationPtrOutputWithContext(context.Background())
 }
@@ -476,12 +397,6 @@ func (i *webTestPropertiesConfigurationPtrType) ToWebTestPropertiesConfiguration
 	return pulumi.ToOutputWithContext(ctx, i).(WebTestPropertiesConfigurationPtrOutput)
 }
 
-func (i *webTestPropertiesConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*WebTestPropertiesConfiguration] {
-	return pulumix.Output[*WebTestPropertiesConfiguration]{
-		OutputState: i.ToWebTestPropertiesConfigurationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // An XML configuration specification for a WebTest.
 type WebTestPropertiesConfigurationOutput struct{ *pulumi.OutputState }
 
@@ -507,12 +422,6 @@ func (o WebTestPropertiesConfigurationOutput) ToWebTestPropertiesConfigurationPt
 	}).(WebTestPropertiesConfigurationPtrOutput)
 }
 
-func (o WebTestPropertiesConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[WebTestPropertiesConfiguration] {
-	return pulumix.Output[WebTestPropertiesConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The XML specification of a WebTest to run against an application.
 func (o WebTestPropertiesConfigurationOutput) WebTest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebTestPropertiesConfiguration) *string { return v.WebTest }).(pulumi.StringPtrOutput)
@@ -530,12 +439,6 @@ func (o WebTestPropertiesConfigurationPtrOutput) ToWebTestPropertiesConfiguratio
 
 func (o WebTestPropertiesConfigurationPtrOutput) ToWebTestPropertiesConfigurationPtrOutputWithContext(ctx context.Context) WebTestPropertiesConfigurationPtrOutput {
 	return o
-}
-
-func (o WebTestPropertiesConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WebTestPropertiesConfiguration] {
-	return pulumix.Output[*WebTestPropertiesConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebTestPropertiesConfigurationPtrOutput) Elem() WebTestPropertiesConfigurationOutput {
@@ -601,12 +504,6 @@ func (i WebTestPropertiesContentValidationArgs) ToWebTestPropertiesContentValida
 	return pulumi.ToOutputWithContext(ctx, i).(WebTestPropertiesContentValidationOutput)
 }
 
-func (i WebTestPropertiesContentValidationArgs) ToOutput(ctx context.Context) pulumix.Output[WebTestPropertiesContentValidation] {
-	return pulumix.Output[WebTestPropertiesContentValidation]{
-		OutputState: i.ToWebTestPropertiesContentValidationOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WebTestPropertiesContentValidationArgs) ToWebTestPropertiesContentValidationPtrOutput() WebTestPropertiesContentValidationPtrOutput {
 	return i.ToWebTestPropertiesContentValidationPtrOutputWithContext(context.Background())
 }
@@ -648,12 +545,6 @@ func (i *webTestPropertiesContentValidationPtrType) ToWebTestPropertiesContentVa
 	return pulumi.ToOutputWithContext(ctx, i).(WebTestPropertiesContentValidationPtrOutput)
 }
 
-func (i *webTestPropertiesContentValidationPtrType) ToOutput(ctx context.Context) pulumix.Output[*WebTestPropertiesContentValidation] {
-	return pulumix.Output[*WebTestPropertiesContentValidation]{
-		OutputState: i.ToWebTestPropertiesContentValidationPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The collection of content validation properties
 type WebTestPropertiesContentValidationOutput struct{ *pulumi.OutputState }
 
@@ -677,12 +568,6 @@ func (o WebTestPropertiesContentValidationOutput) ToWebTestPropertiesContentVali
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebTestPropertiesContentValidation) *WebTestPropertiesContentValidation {
 		return &v
 	}).(WebTestPropertiesContentValidationPtrOutput)
-}
-
-func (o WebTestPropertiesContentValidationOutput) ToOutput(ctx context.Context) pulumix.Output[WebTestPropertiesContentValidation] {
-	return pulumix.Output[WebTestPropertiesContentValidation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Content to look for in the return of the WebTest.  Must not be null or empty.
@@ -712,12 +597,6 @@ func (o WebTestPropertiesContentValidationPtrOutput) ToWebTestPropertiesContentV
 
 func (o WebTestPropertiesContentValidationPtrOutput) ToWebTestPropertiesContentValidationPtrOutputWithContext(ctx context.Context) WebTestPropertiesContentValidationPtrOutput {
 	return o
-}
-
-func (o WebTestPropertiesContentValidationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WebTestPropertiesContentValidation] {
-	return pulumix.Output[*WebTestPropertiesContentValidation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebTestPropertiesContentValidationPtrOutput) Elem() WebTestPropertiesContentValidationOutput {
@@ -815,12 +694,6 @@ func (i WebTestPropertiesRequestArgs) ToWebTestPropertiesRequestOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(WebTestPropertiesRequestOutput)
 }
 
-func (i WebTestPropertiesRequestArgs) ToOutput(ctx context.Context) pulumix.Output[WebTestPropertiesRequest] {
-	return pulumix.Output[WebTestPropertiesRequest]{
-		OutputState: i.ToWebTestPropertiesRequestOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WebTestPropertiesRequestArgs) ToWebTestPropertiesRequestPtrOutput() WebTestPropertiesRequestPtrOutput {
 	return i.ToWebTestPropertiesRequestPtrOutputWithContext(context.Background())
 }
@@ -862,12 +735,6 @@ func (i *webTestPropertiesRequestPtrType) ToWebTestPropertiesRequestPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(WebTestPropertiesRequestPtrOutput)
 }
 
-func (i *webTestPropertiesRequestPtrType) ToOutput(ctx context.Context) pulumix.Output[*WebTestPropertiesRequest] {
-	return pulumix.Output[*WebTestPropertiesRequest]{
-		OutputState: i.ToWebTestPropertiesRequestPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The collection of request properties
 type WebTestPropertiesRequestOutput struct{ *pulumi.OutputState }
 
@@ -891,12 +758,6 @@ func (o WebTestPropertiesRequestOutput) ToWebTestPropertiesRequestPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebTestPropertiesRequest) *WebTestPropertiesRequest {
 		return &v
 	}).(WebTestPropertiesRequestPtrOutput)
-}
-
-func (o WebTestPropertiesRequestOutput) ToOutput(ctx context.Context) pulumix.Output[WebTestPropertiesRequest] {
-	return pulumix.Output[WebTestPropertiesRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Follow redirects for this web test.
@@ -941,12 +802,6 @@ func (o WebTestPropertiesRequestPtrOutput) ToWebTestPropertiesRequestPtrOutput()
 
 func (o WebTestPropertiesRequestPtrOutput) ToWebTestPropertiesRequestPtrOutputWithContext(ctx context.Context) WebTestPropertiesRequestPtrOutput {
 	return o
-}
-
-func (o WebTestPropertiesRequestPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WebTestPropertiesRequest] {
-	return pulumix.Output[*WebTestPropertiesRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebTestPropertiesRequestPtrOutput) Elem() WebTestPropertiesRequestOutput {
@@ -1040,12 +895,6 @@ func (o WebTestPropertiesResponseConfigurationOutput) ToWebTestPropertiesRespons
 	return o
 }
 
-func (o WebTestPropertiesResponseConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[WebTestPropertiesResponseConfiguration] {
-	return pulumix.Output[WebTestPropertiesResponseConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The XML specification of a WebTest to run against an application.
 func (o WebTestPropertiesResponseConfigurationOutput) WebTest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebTestPropertiesResponseConfiguration) *string { return v.WebTest }).(pulumi.StringPtrOutput)
@@ -1063,12 +912,6 @@ func (o WebTestPropertiesResponseConfigurationPtrOutput) ToWebTestPropertiesResp
 
 func (o WebTestPropertiesResponseConfigurationPtrOutput) ToWebTestPropertiesResponseConfigurationPtrOutputWithContext(ctx context.Context) WebTestPropertiesResponseConfigurationPtrOutput {
 	return o
-}
-
-func (o WebTestPropertiesResponseConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WebTestPropertiesResponseConfiguration] {
-	return pulumix.Output[*WebTestPropertiesResponseConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebTestPropertiesResponseConfigurationPtrOutput) Elem() WebTestPropertiesResponseConfigurationOutput {
@@ -1116,12 +959,6 @@ func (o WebTestPropertiesResponseContentValidationOutput) ToWebTestPropertiesRes
 	return o
 }
 
-func (o WebTestPropertiesResponseContentValidationOutput) ToOutput(ctx context.Context) pulumix.Output[WebTestPropertiesResponseContentValidation] {
-	return pulumix.Output[WebTestPropertiesResponseContentValidation]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Content to look for in the return of the WebTest.  Must not be null or empty.
 func (o WebTestPropertiesResponseContentValidationOutput) ContentMatch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WebTestPropertiesResponseContentValidation) *string { return v.ContentMatch }).(pulumi.StringPtrOutput)
@@ -1149,12 +986,6 @@ func (o WebTestPropertiesResponseContentValidationPtrOutput) ToWebTestProperties
 
 func (o WebTestPropertiesResponseContentValidationPtrOutput) ToWebTestPropertiesResponseContentValidationPtrOutputWithContext(ctx context.Context) WebTestPropertiesResponseContentValidationPtrOutput {
 	return o
-}
-
-func (o WebTestPropertiesResponseContentValidationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WebTestPropertiesResponseContentValidation] {
-	return pulumix.Output[*WebTestPropertiesResponseContentValidation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebTestPropertiesResponseContentValidationPtrOutput) Elem() WebTestPropertiesResponseContentValidationOutput {
@@ -1228,12 +1059,6 @@ func (o WebTestPropertiesResponseRequestOutput) ToWebTestPropertiesResponseReque
 	return o
 }
 
-func (o WebTestPropertiesResponseRequestOutput) ToOutput(ctx context.Context) pulumix.Output[WebTestPropertiesResponseRequest] {
-	return pulumix.Output[WebTestPropertiesResponseRequest]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Follow redirects for this web test.
 func (o WebTestPropertiesResponseRequestOutput) FollowRedirects() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WebTestPropertiesResponseRequest) *bool { return v.FollowRedirects }).(pulumi.BoolPtrOutput)
@@ -1276,12 +1101,6 @@ func (o WebTestPropertiesResponseRequestPtrOutput) ToWebTestPropertiesResponseRe
 
 func (o WebTestPropertiesResponseRequestPtrOutput) ToWebTestPropertiesResponseRequestPtrOutputWithContext(ctx context.Context) WebTestPropertiesResponseRequestPtrOutput {
 	return o
-}
-
-func (o WebTestPropertiesResponseRequestPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WebTestPropertiesResponseRequest] {
-	return pulumix.Output[*WebTestPropertiesResponseRequest]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebTestPropertiesResponseRequestPtrOutput) Elem() WebTestPropertiesResponseRequestOutput {
@@ -1383,12 +1202,6 @@ func (o WebTestPropertiesResponseValidationRulesOutput) ToWebTestPropertiesRespo
 	return o
 }
 
-func (o WebTestPropertiesResponseValidationRulesOutput) ToOutput(ctx context.Context) pulumix.Output[WebTestPropertiesResponseValidationRules] {
-	return pulumix.Output[WebTestPropertiesResponseValidationRules]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The collection of content validation properties
 func (o WebTestPropertiesResponseValidationRulesOutput) ContentValidation() WebTestPropertiesResponseContentValidationPtrOutput {
 	return o.ApplyT(func(v WebTestPropertiesResponseValidationRules) *WebTestPropertiesResponseContentValidation {
@@ -1428,12 +1241,6 @@ func (o WebTestPropertiesResponseValidationRulesPtrOutput) ToWebTestPropertiesRe
 
 func (o WebTestPropertiesResponseValidationRulesPtrOutput) ToWebTestPropertiesResponseValidationRulesPtrOutputWithContext(ctx context.Context) WebTestPropertiesResponseValidationRulesPtrOutput {
 	return o
-}
-
-func (o WebTestPropertiesResponseValidationRulesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WebTestPropertiesResponseValidationRules] {
-	return pulumix.Output[*WebTestPropertiesResponseValidationRules]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebTestPropertiesResponseValidationRulesPtrOutput) Elem() WebTestPropertiesResponseValidationRulesOutput {
@@ -1547,12 +1354,6 @@ func (i WebTestPropertiesValidationRulesArgs) ToWebTestPropertiesValidationRules
 	return pulumi.ToOutputWithContext(ctx, i).(WebTestPropertiesValidationRulesOutput)
 }
 
-func (i WebTestPropertiesValidationRulesArgs) ToOutput(ctx context.Context) pulumix.Output[WebTestPropertiesValidationRules] {
-	return pulumix.Output[WebTestPropertiesValidationRules]{
-		OutputState: i.ToWebTestPropertiesValidationRulesOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i WebTestPropertiesValidationRulesArgs) ToWebTestPropertiesValidationRulesPtrOutput() WebTestPropertiesValidationRulesPtrOutput {
 	return i.ToWebTestPropertiesValidationRulesPtrOutputWithContext(context.Background())
 }
@@ -1594,12 +1395,6 @@ func (i *webTestPropertiesValidationRulesPtrType) ToWebTestPropertiesValidationR
 	return pulumi.ToOutputWithContext(ctx, i).(WebTestPropertiesValidationRulesPtrOutput)
 }
 
-func (i *webTestPropertiesValidationRulesPtrType) ToOutput(ctx context.Context) pulumix.Output[*WebTestPropertiesValidationRules] {
-	return pulumix.Output[*WebTestPropertiesValidationRules]{
-		OutputState: i.ToWebTestPropertiesValidationRulesPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The collection of validation rule properties
 type WebTestPropertiesValidationRulesOutput struct{ *pulumi.OutputState }
 
@@ -1623,12 +1418,6 @@ func (o WebTestPropertiesValidationRulesOutput) ToWebTestPropertiesValidationRul
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebTestPropertiesValidationRules) *WebTestPropertiesValidationRules {
 		return &v
 	}).(WebTestPropertiesValidationRulesPtrOutput)
-}
-
-func (o WebTestPropertiesValidationRulesOutput) ToOutput(ctx context.Context) pulumix.Output[WebTestPropertiesValidationRules] {
-	return pulumix.Output[WebTestPropertiesValidationRules]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The collection of content validation properties
@@ -1670,12 +1459,6 @@ func (o WebTestPropertiesValidationRulesPtrOutput) ToWebTestPropertiesValidation
 
 func (o WebTestPropertiesValidationRulesPtrOutput) ToWebTestPropertiesValidationRulesPtrOutputWithContext(ctx context.Context) WebTestPropertiesValidationRulesPtrOutput {
 	return o
-}
-
-func (o WebTestPropertiesValidationRulesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*WebTestPropertiesValidationRules] {
-	return pulumix.Output[*WebTestPropertiesValidationRules]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebTestPropertiesValidationRulesPtrOutput) Elem() WebTestPropertiesValidationRulesOutput {

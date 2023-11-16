@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Response of a list VM Host Update Operation.
@@ -80,12 +79,6 @@ func (o ListSubAccountVMHostsResultOutput) ToListSubAccountVMHostsResultOutput()
 
 func (o ListSubAccountVMHostsResultOutput) ToListSubAccountVMHostsResultOutputWithContext(ctx context.Context) ListSubAccountVMHostsResultOutput {
 	return o
-}
-
-func (o ListSubAccountVMHostsResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListSubAccountVMHostsResult] {
-	return pulumix.Output[ListSubAccountVMHostsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Link to the next set of results, if any.

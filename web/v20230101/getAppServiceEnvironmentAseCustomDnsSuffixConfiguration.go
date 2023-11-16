@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Full view of the custom domain suffix configuration for ASEv3.
@@ -87,12 +86,6 @@ func (o LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput) 
 
 func (o LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput) ToLookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutputWithContext(ctx context.Context) LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput {
 	return o
-}
-
-func (o LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult] {
-	return pulumix.Output[LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The URL referencing the Azure Key Vault certificate secret that should be used as the default SSL/TLS certificate for sites with the custom domain suffix.

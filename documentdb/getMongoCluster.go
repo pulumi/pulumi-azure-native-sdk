@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about a mongo cluster.
@@ -100,12 +99,6 @@ func (o LookupMongoClusterResultOutput) ToLookupMongoClusterResultOutput() Looku
 
 func (o LookupMongoClusterResultOutput) ToLookupMongoClusterResultOutputWithContext(ctx context.Context) LookupMongoClusterResultOutput {
 	return o
-}
-
-func (o LookupMongoClusterResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMongoClusterResult] {
-	return pulumix.Output[LookupMongoClusterResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The administrator's login for the mongo cluster.

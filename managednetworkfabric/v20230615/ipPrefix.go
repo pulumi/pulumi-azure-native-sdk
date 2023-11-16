@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The IP Prefix resource definition.
@@ -147,12 +146,6 @@ func (i *IpPrefix) ToIpPrefixOutputWithContext(ctx context.Context) IpPrefixOutp
 	return pulumi.ToOutputWithContext(ctx, i).(IpPrefixOutput)
 }
 
-func (i *IpPrefix) ToOutput(ctx context.Context) pulumix.Output[*IpPrefix] {
-	return pulumix.Output[*IpPrefix]{
-		OutputState: i.ToIpPrefixOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IpPrefixOutput struct{ *pulumi.OutputState }
 
 func (IpPrefixOutput) ElementType() reflect.Type {
@@ -165,12 +158,6 @@ func (o IpPrefixOutput) ToIpPrefixOutput() IpPrefixOutput {
 
 func (o IpPrefixOutput) ToIpPrefixOutputWithContext(ctx context.Context) IpPrefixOutput {
 	return o
-}
-
-func (o IpPrefixOutput) ToOutput(ctx context.Context) pulumix.Output[*IpPrefix] {
-	return pulumix.Output[*IpPrefix]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Administrative state of the resource.

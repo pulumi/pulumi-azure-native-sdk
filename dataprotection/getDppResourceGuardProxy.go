@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ResourceGuardProxyBaseResource object, used for response and request bodies for ResourceGuardProxy APIs
@@ -88,12 +87,6 @@ func (o LookupDppResourceGuardProxyResultOutput) ToLookupDppResourceGuardProxyRe
 
 func (o LookupDppResourceGuardProxyResultOutput) ToLookupDppResourceGuardProxyResultOutputWithContext(ctx context.Context) LookupDppResourceGuardProxyResultOutput {
 	return o
-}
-
-func (o LookupDppResourceGuardProxyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDppResourceGuardProxyResult] {
-	return pulumix.Output[LookupDppResourceGuardProxyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Id represents the complete path to the resource.

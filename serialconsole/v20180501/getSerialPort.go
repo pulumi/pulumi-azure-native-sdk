@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the configured settings for a serial port
@@ -91,12 +90,6 @@ func (o LookupSerialPortResultOutput) ToLookupSerialPortResultOutput() LookupSer
 
 func (o LookupSerialPortResultOutput) ToLookupSerialPortResultOutputWithContext(ctx context.Context) LookupSerialPortResultOutput {
 	return o
-}
-
-func (o LookupSerialPortResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSerialPortResult] {
-	return pulumix.Output[LookupSerialPortResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Id

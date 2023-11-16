@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the accessProfile for the specified role name of the managed cluster with a specified resource group and name.
@@ -90,12 +89,6 @@ func (o ListManagedClusterAccessProfileResultOutput) ToListManagedClusterAccessP
 
 func (o ListManagedClusterAccessProfileResultOutput) ToListManagedClusterAccessProfileResultOutputWithContext(ctx context.Context) ListManagedClusterAccessProfileResultOutput {
 	return o
-}
-
-func (o ListManagedClusterAccessProfileResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListManagedClusterAccessProfileResult] {
-	return pulumix.Output[ListManagedClusterAccessProfileResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource Id

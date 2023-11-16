@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The Azure AD for customers resource.
@@ -155,12 +154,6 @@ func (i *CIAMTenant) ToCIAMTenantOutputWithContext(ctx context.Context) CIAMTena
 	return pulumi.ToOutputWithContext(ctx, i).(CIAMTenantOutput)
 }
 
-func (i *CIAMTenant) ToOutput(ctx context.Context) pulumix.Output[*CIAMTenant] {
-	return pulumix.Output[*CIAMTenant]{
-		OutputState: i.ToCIAMTenantOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CIAMTenantOutput struct{ *pulumi.OutputState }
 
 func (CIAMTenantOutput) ElementType() reflect.Type {
@@ -173,12 +166,6 @@ func (o CIAMTenantOutput) ToCIAMTenantOutput() CIAMTenantOutput {
 
 func (o CIAMTenantOutput) ToCIAMTenantOutputWithContext(ctx context.Context) CIAMTenantOutput {
 	return o
-}
-
-func (o CIAMTenantOutput) ToOutput(ctx context.Context) pulumix.Output[*CIAMTenant] {
-	return pulumix.Output[*CIAMTenant]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The type of billing. Will be MAU for all new customers. Cannot be changed if value is 'MAU'. Learn more about Azure AD for customers billing at [aka.ms/b2cBilling](https://aka.ms/b2cbilling).

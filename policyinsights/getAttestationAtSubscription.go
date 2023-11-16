@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets an existing attestation at subscription scope.
@@ -98,12 +97,6 @@ func (o LookupAttestationAtSubscriptionResultOutput) ToLookupAttestationAtSubscr
 
 func (o LookupAttestationAtSubscriptionResultOutput) ToLookupAttestationAtSubscriptionResultOutputWithContext(ctx context.Context) LookupAttestationAtSubscriptionResultOutput {
 	return o
-}
-
-func (o LookupAttestationAtSubscriptionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAttestationAtSubscriptionResult] {
-	return pulumix.Output[LookupAttestationAtSubscriptionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The time the evidence was assessed

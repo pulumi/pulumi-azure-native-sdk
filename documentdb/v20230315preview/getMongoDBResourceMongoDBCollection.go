@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the MongoDB collection under an existing Azure Cosmos DB database account.
@@ -93,12 +92,6 @@ func (o LookupMongoDBResourceMongoDBCollectionResultOutput) ToLookupMongoDBResou
 
 func (o LookupMongoDBResourceMongoDBCollectionResultOutput) ToLookupMongoDBResourceMongoDBCollectionResultOutputWithContext(ctx context.Context) LookupMongoDBResourceMongoDBCollectionResultOutput {
 	return o
-}
-
-func (o LookupMongoDBResourceMongoDBCollectionResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMongoDBResourceMongoDBCollectionResult] {
-	return pulumix.Output[LookupMongoDBResourceMongoDBCollectionResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The unique resource identifier of the ARM resource.

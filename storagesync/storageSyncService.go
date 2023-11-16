@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Storage Sync Service object.
@@ -177,12 +176,6 @@ func (i *StorageSyncService) ToStorageSyncServiceOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(StorageSyncServiceOutput)
 }
 
-func (i *StorageSyncService) ToOutput(ctx context.Context) pulumix.Output[*StorageSyncService] {
-	return pulumix.Output[*StorageSyncService]{
-		OutputState: i.ToStorageSyncServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type StorageSyncServiceOutput struct{ *pulumi.OutputState }
 
 func (StorageSyncServiceOutput) ElementType() reflect.Type {
@@ -195,12 +188,6 @@ func (o StorageSyncServiceOutput) ToStorageSyncServiceOutput() StorageSyncServic
 
 func (o StorageSyncServiceOutput) ToStorageSyncServiceOutputWithContext(ctx context.Context) StorageSyncServiceOutput {
 	return o
-}
-
-func (o StorageSyncServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*StorageSyncService] {
-	return pulumix.Output[*StorageSyncService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Incoming Traffic Policy

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A MariaDB Server key.
@@ -129,12 +128,6 @@ func (i *ServerKey) ToServerKeyOutputWithContext(ctx context.Context) ServerKeyO
 	return pulumi.ToOutputWithContext(ctx, i).(ServerKeyOutput)
 }
 
-func (i *ServerKey) ToOutput(ctx context.Context) pulumix.Output[*ServerKey] {
-	return pulumix.Output[*ServerKey]{
-		OutputState: i.ToServerKeyOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerKeyOutput struct{ *pulumi.OutputState }
 
 func (ServerKeyOutput) ElementType() reflect.Type {
@@ -147,12 +140,6 @@ func (o ServerKeyOutput) ToServerKeyOutput() ServerKeyOutput {
 
 func (o ServerKeyOutput) ToServerKeyOutputWithContext(ctx context.Context) ServerKeyOutput {
 	return o
-}
-
-func (o ServerKeyOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerKey] {
-	return pulumix.Output[*ServerKey]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The key creation date.

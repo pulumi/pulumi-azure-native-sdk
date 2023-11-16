@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = utilities.GetEnvOrDefault
@@ -57,12 +56,6 @@ func (i DashboardLensArgs) ToDashboardLensOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardLensOutput)
 }
 
-func (i DashboardLensArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardLens] {
-	return pulumix.Output[DashboardLens]{
-		OutputState: i.ToDashboardLensOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DashboardLensArrayInput is an input type that accepts DashboardLensArray and DashboardLensArrayOutput values.
 // You can construct a concrete instance of `DashboardLensArrayInput` via:
 //
@@ -88,12 +81,6 @@ func (i DashboardLensArray) ToDashboardLensArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardLensArrayOutput)
 }
 
-func (i DashboardLensArray) ToOutput(ctx context.Context) pulumix.Output[[]DashboardLens] {
-	return pulumix.Output[[]DashboardLens]{
-		OutputState: i.ToDashboardLensArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A dashboard lens.
 type DashboardLensOutput struct{ *pulumi.OutputState }
 
@@ -107,12 +94,6 @@ func (o DashboardLensOutput) ToDashboardLensOutput() DashboardLensOutput {
 
 func (o DashboardLensOutput) ToDashboardLensOutputWithContext(ctx context.Context) DashboardLensOutput {
 	return o
-}
-
-func (o DashboardLensOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardLens] {
-	return pulumix.Output[DashboardLens]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The dashboard len's metadata.
@@ -142,12 +123,6 @@ func (o DashboardLensArrayOutput) ToDashboardLensArrayOutput() DashboardLensArra
 
 func (o DashboardLensArrayOutput) ToDashboardLensArrayOutputWithContext(ctx context.Context) DashboardLensArrayOutput {
 	return o
-}
-
-func (o DashboardLensArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DashboardLens] {
-	return pulumix.Output[[]DashboardLens]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardLensArrayOutput) Index(i pulumi.IntInput) DashboardLensOutput {
@@ -181,12 +156,6 @@ func (o DashboardLensResponseOutput) ToDashboardLensResponseOutputWithContext(ct
 	return o
 }
 
-func (o DashboardLensResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardLensResponse] {
-	return pulumix.Output[DashboardLensResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The dashboard len's metadata.
 func (o DashboardLensResponseOutput) Metadata() pulumi.MapOutput {
 	return o.ApplyT(func(v DashboardLensResponse) map[string]interface{} { return v.Metadata }).(pulumi.MapOutput)
@@ -214,12 +183,6 @@ func (o DashboardLensResponseArrayOutput) ToDashboardLensResponseArrayOutput() D
 
 func (o DashboardLensResponseArrayOutput) ToDashboardLensResponseArrayOutputWithContext(ctx context.Context) DashboardLensResponseArrayOutput {
 	return o
-}
-
-func (o DashboardLensResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DashboardLensResponse] {
-	return pulumix.Output[[]DashboardLensResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardLensResponseArrayOutput) Index(i pulumi.IntInput) DashboardLensResponseOutput {
@@ -267,12 +230,6 @@ func (i DashboardPartsArgs) ToDashboardPartsOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardPartsOutput)
 }
 
-func (i DashboardPartsArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardParts] {
-	return pulumix.Output[DashboardParts]{
-		OutputState: i.ToDashboardPartsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DashboardPartsArrayInput is an input type that accepts DashboardPartsArray and DashboardPartsArrayOutput values.
 // You can construct a concrete instance of `DashboardPartsArrayInput` via:
 //
@@ -298,12 +255,6 @@ func (i DashboardPartsArray) ToDashboardPartsArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardPartsArrayOutput)
 }
 
-func (i DashboardPartsArray) ToOutput(ctx context.Context) pulumix.Output[[]DashboardParts] {
-	return pulumix.Output[[]DashboardParts]{
-		OutputState: i.ToDashboardPartsArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // A dashboard part.
 type DashboardPartsOutput struct{ *pulumi.OutputState }
 
@@ -317,12 +268,6 @@ func (o DashboardPartsOutput) ToDashboardPartsOutput() DashboardPartsOutput {
 
 func (o DashboardPartsOutput) ToDashboardPartsOutputWithContext(ctx context.Context) DashboardPartsOutput {
 	return o
-}
-
-func (o DashboardPartsOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardParts] {
-	return pulumix.Output[DashboardParts]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The dashboard part's metadata.
@@ -347,12 +292,6 @@ func (o DashboardPartsArrayOutput) ToDashboardPartsArrayOutput() DashboardPartsA
 
 func (o DashboardPartsArrayOutput) ToDashboardPartsArrayOutputWithContext(ctx context.Context) DashboardPartsArrayOutput {
 	return o
-}
-
-func (o DashboardPartsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DashboardParts] {
-	return pulumix.Output[[]DashboardParts]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardPartsArrayOutput) Index(i pulumi.IntInput) DashboardPartsOutput {
@@ -412,12 +351,6 @@ func (i DashboardPartsPositionArgs) ToDashboardPartsPositionOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardPartsPositionOutput)
 }
 
-func (i DashboardPartsPositionArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardPartsPosition] {
-	return pulumix.Output[DashboardPartsPosition]{
-		OutputState: i.ToDashboardPartsPositionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The dashboard's part position.
 type DashboardPartsPositionOutput struct{ *pulumi.OutputState }
 
@@ -431,12 +364,6 @@ func (o DashboardPartsPositionOutput) ToDashboardPartsPositionOutput() Dashboard
 
 func (o DashboardPartsPositionOutput) ToDashboardPartsPositionOutputWithContext(ctx context.Context) DashboardPartsPositionOutput {
 	return o
-}
-
-func (o DashboardPartsPositionOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardPartsPosition] {
-	return pulumix.Output[DashboardPartsPosition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The dashboard's part column span.
@@ -487,12 +414,6 @@ func (o DashboardPartsResponseOutput) ToDashboardPartsResponseOutputWithContext(
 	return o
 }
 
-func (o DashboardPartsResponseOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardPartsResponse] {
-	return pulumix.Output[DashboardPartsResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The dashboard part's metadata.
 func (o DashboardPartsResponseOutput) Metadata() MarkdownPartMetadataResponsePtrOutput {
 	return o.ApplyT(func(v DashboardPartsResponse) *MarkdownPartMetadataResponse { return v.Metadata }).(MarkdownPartMetadataResponsePtrOutput)
@@ -515,12 +436,6 @@ func (o DashboardPartsResponseArrayOutput) ToDashboardPartsResponseArrayOutput()
 
 func (o DashboardPartsResponseArrayOutput) ToDashboardPartsResponseArrayOutputWithContext(ctx context.Context) DashboardPartsResponseArrayOutput {
 	return o
-}
-
-func (o DashboardPartsResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DashboardPartsResponse] {
-	return pulumix.Output[[]DashboardPartsResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardPartsResponseArrayOutput) Index(i pulumi.IntInput) DashboardPartsResponseOutput {
@@ -556,12 +471,6 @@ func (o DashboardPartsResponsePositionOutput) ToDashboardPartsResponsePositionOu
 
 func (o DashboardPartsResponsePositionOutput) ToDashboardPartsResponsePositionOutputWithContext(ctx context.Context) DashboardPartsResponsePositionOutput {
 	return o
-}
-
-func (o DashboardPartsResponsePositionOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardPartsResponsePosition] {
-	return pulumix.Output[DashboardPartsResponsePosition]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The dashboard's part column span.
@@ -634,12 +543,6 @@ func (i MarkdownPartMetadataArgs) ToMarkdownPartMetadataOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(MarkdownPartMetadataOutput)
 }
 
-func (i MarkdownPartMetadataArgs) ToOutput(ctx context.Context) pulumix.Output[MarkdownPartMetadata] {
-	return pulumix.Output[MarkdownPartMetadata]{
-		OutputState: i.ToMarkdownPartMetadataOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MarkdownPartMetadataArgs) ToMarkdownPartMetadataPtrOutput() MarkdownPartMetadataPtrOutput {
 	return i.ToMarkdownPartMetadataPtrOutputWithContext(context.Background())
 }
@@ -681,12 +584,6 @@ func (i *markdownPartMetadataPtrType) ToMarkdownPartMetadataPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(MarkdownPartMetadataPtrOutput)
 }
 
-func (i *markdownPartMetadataPtrType) ToOutput(ctx context.Context) pulumix.Output[*MarkdownPartMetadata] {
-	return pulumix.Output[*MarkdownPartMetadata]{
-		OutputState: i.ToMarkdownPartMetadataPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Markdown part metadata.
 type MarkdownPartMetadataOutput struct{ *pulumi.OutputState }
 
@@ -710,12 +607,6 @@ func (o MarkdownPartMetadataOutput) ToMarkdownPartMetadataPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MarkdownPartMetadata) *MarkdownPartMetadata {
 		return &v
 	}).(MarkdownPartMetadataPtrOutput)
-}
-
-func (o MarkdownPartMetadataOutput) ToOutput(ctx context.Context) pulumix.Output[MarkdownPartMetadata] {
-	return pulumix.Output[MarkdownPartMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Input to dashboard part.
@@ -746,12 +637,6 @@ func (o MarkdownPartMetadataPtrOutput) ToMarkdownPartMetadataPtrOutput() Markdow
 
 func (o MarkdownPartMetadataPtrOutput) ToMarkdownPartMetadataPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataPtrOutput {
 	return o
-}
-
-func (o MarkdownPartMetadataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MarkdownPartMetadata] {
-	return pulumix.Output[*MarkdownPartMetadata]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MarkdownPartMetadataPtrOutput) Elem() MarkdownPartMetadataOutput {
@@ -830,12 +715,6 @@ func (i MarkdownPartMetadataContentArgs) ToMarkdownPartMetadataContentOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(MarkdownPartMetadataContentOutput)
 }
 
-func (i MarkdownPartMetadataContentArgs) ToOutput(ctx context.Context) pulumix.Output[MarkdownPartMetadataContent] {
-	return pulumix.Output[MarkdownPartMetadataContent]{
-		OutputState: i.ToMarkdownPartMetadataContentOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MarkdownPartMetadataContentArgs) ToMarkdownPartMetadataContentPtrOutput() MarkdownPartMetadataContentPtrOutput {
 	return i.ToMarkdownPartMetadataContentPtrOutputWithContext(context.Background())
 }
@@ -877,12 +756,6 @@ func (i *markdownPartMetadataContentPtrType) ToMarkdownPartMetadataContentPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(MarkdownPartMetadataContentPtrOutput)
 }
 
-func (i *markdownPartMetadataContentPtrType) ToOutput(ctx context.Context) pulumix.Output[*MarkdownPartMetadataContent] {
-	return pulumix.Output[*MarkdownPartMetadataContent]{
-		OutputState: i.ToMarkdownPartMetadataContentPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The content of markdown part.
 type MarkdownPartMetadataContentOutput struct{ *pulumi.OutputState }
 
@@ -908,12 +781,6 @@ func (o MarkdownPartMetadataContentOutput) ToMarkdownPartMetadataContentPtrOutpu
 	}).(MarkdownPartMetadataContentPtrOutput)
 }
 
-func (o MarkdownPartMetadataContentOutput) ToOutput(ctx context.Context) pulumix.Output[MarkdownPartMetadataContent] {
-	return pulumix.Output[MarkdownPartMetadataContent]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The setting of the content of markdown part.
 func (o MarkdownPartMetadataContentOutput) Settings() MarkdownPartMetadataSettingsSettingsPtrOutput {
 	return o.ApplyT(func(v MarkdownPartMetadataContent) *MarkdownPartMetadataSettingsSettings { return v.Settings }).(MarkdownPartMetadataSettingsSettingsPtrOutput)
@@ -931,12 +798,6 @@ func (o MarkdownPartMetadataContentPtrOutput) ToMarkdownPartMetadataContentPtrOu
 
 func (o MarkdownPartMetadataContentPtrOutput) ToMarkdownPartMetadataContentPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataContentPtrOutput {
 	return o
-}
-
-func (o MarkdownPartMetadataContentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MarkdownPartMetadataContent] {
-	return pulumix.Output[*MarkdownPartMetadataContent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MarkdownPartMetadataContentPtrOutput) Elem() MarkdownPartMetadataContentOutput {
@@ -985,12 +846,6 @@ func (o MarkdownPartMetadataResponseOutput) ToMarkdownPartMetadataResponseOutput
 	return o
 }
 
-func (o MarkdownPartMetadataResponseOutput) ToOutput(ctx context.Context) pulumix.Output[MarkdownPartMetadataResponse] {
-	return pulumix.Output[MarkdownPartMetadataResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Input to dashboard part.
 func (o MarkdownPartMetadataResponseOutput) Inputs() pulumi.ArrayOutput {
 	return o.ApplyT(func(v MarkdownPartMetadataResponse) []interface{} { return v.Inputs }).(pulumi.ArrayOutput)
@@ -1019,12 +874,6 @@ func (o MarkdownPartMetadataResponsePtrOutput) ToMarkdownPartMetadataResponsePtr
 
 func (o MarkdownPartMetadataResponsePtrOutput) ToMarkdownPartMetadataResponsePtrOutputWithContext(ctx context.Context) MarkdownPartMetadataResponsePtrOutput {
 	return o
-}
-
-func (o MarkdownPartMetadataResponsePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MarkdownPartMetadataResponse] {
-	return pulumix.Output[*MarkdownPartMetadataResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MarkdownPartMetadataResponsePtrOutput) Elem() MarkdownPartMetadataResponseOutput {
@@ -1089,12 +938,6 @@ func (o MarkdownPartMetadataResponseContentOutput) ToMarkdownPartMetadataRespons
 	return o
 }
 
-func (o MarkdownPartMetadataResponseContentOutput) ToOutput(ctx context.Context) pulumix.Output[MarkdownPartMetadataResponseContent] {
-	return pulumix.Output[MarkdownPartMetadataResponseContent]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The setting of the content of markdown part.
 func (o MarkdownPartMetadataResponseContentOutput) Settings() MarkdownPartMetadataResponseSettingsSettingsPtrOutput {
 	return o.ApplyT(func(v MarkdownPartMetadataResponseContent) *MarkdownPartMetadataResponseSettingsSettings {
@@ -1114,12 +957,6 @@ func (o MarkdownPartMetadataResponseContentPtrOutput) ToMarkdownPartMetadataResp
 
 func (o MarkdownPartMetadataResponseContentPtrOutput) ToMarkdownPartMetadataResponseContentPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataResponseContentPtrOutput {
 	return o
-}
-
-func (o MarkdownPartMetadataResponseContentPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MarkdownPartMetadataResponseContent] {
-	return pulumix.Output[*MarkdownPartMetadataResponseContent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MarkdownPartMetadataResponseContentPtrOutput) Elem() MarkdownPartMetadataResponseContentOutput {
@@ -1163,12 +1000,6 @@ func (o MarkdownPartMetadataResponseSettingsOutput) ToMarkdownPartMetadataRespon
 	return o
 }
 
-func (o MarkdownPartMetadataResponseSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[MarkdownPartMetadataResponseSettings] {
-	return pulumix.Output[MarkdownPartMetadataResponseSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The content of markdown part.
 func (o MarkdownPartMetadataResponseSettingsOutput) Content() MarkdownPartMetadataResponseContentPtrOutput {
 	return o.ApplyT(func(v MarkdownPartMetadataResponseSettings) *MarkdownPartMetadataResponseContent { return v.Content }).(MarkdownPartMetadataResponseContentPtrOutput)
@@ -1186,12 +1017,6 @@ func (o MarkdownPartMetadataResponseSettingsPtrOutput) ToMarkdownPartMetadataRes
 
 func (o MarkdownPartMetadataResponseSettingsPtrOutput) ToMarkdownPartMetadataResponseSettingsPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataResponseSettingsPtrOutput {
 	return o
-}
-
-func (o MarkdownPartMetadataResponseSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MarkdownPartMetadataResponseSettings] {
-	return pulumix.Output[*MarkdownPartMetadataResponseSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MarkdownPartMetadataResponseSettingsPtrOutput) Elem() MarkdownPartMetadataResponseSettingsOutput {
@@ -1243,12 +1068,6 @@ func (o MarkdownPartMetadataResponseSettingsSettingsOutput) ToMarkdownPartMetada
 	return o
 }
 
-func (o MarkdownPartMetadataResponseSettingsSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[MarkdownPartMetadataResponseSettingsSettings] {
-	return pulumix.Output[MarkdownPartMetadataResponseSettingsSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The content of the markdown part.
 func (o MarkdownPartMetadataResponseSettingsSettingsOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MarkdownPartMetadataResponseSettingsSettings) *string { return v.Content }).(pulumi.StringPtrOutput)
@@ -1286,12 +1105,6 @@ func (o MarkdownPartMetadataResponseSettingsSettingsPtrOutput) ToMarkdownPartMet
 
 func (o MarkdownPartMetadataResponseSettingsSettingsPtrOutput) ToMarkdownPartMetadataResponseSettingsSettingsPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataResponseSettingsSettingsPtrOutput {
 	return o
-}
-
-func (o MarkdownPartMetadataResponseSettingsSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MarkdownPartMetadataResponseSettingsSettings] {
-	return pulumix.Output[*MarkdownPartMetadataResponseSettingsSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MarkdownPartMetadataResponseSettingsSettingsPtrOutput) Elem() MarkdownPartMetadataResponseSettingsSettingsOutput {
@@ -1389,12 +1202,6 @@ func (i MarkdownPartMetadataSettingsArgs) ToMarkdownPartMetadataSettingsOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(MarkdownPartMetadataSettingsOutput)
 }
 
-func (i MarkdownPartMetadataSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[MarkdownPartMetadataSettings] {
-	return pulumix.Output[MarkdownPartMetadataSettings]{
-		OutputState: i.ToMarkdownPartMetadataSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MarkdownPartMetadataSettingsArgs) ToMarkdownPartMetadataSettingsPtrOutput() MarkdownPartMetadataSettingsPtrOutput {
 	return i.ToMarkdownPartMetadataSettingsPtrOutputWithContext(context.Background())
 }
@@ -1436,12 +1243,6 @@ func (i *markdownPartMetadataSettingsPtrType) ToMarkdownPartMetadataSettingsPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(MarkdownPartMetadataSettingsPtrOutput)
 }
 
-func (i *markdownPartMetadataSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*MarkdownPartMetadataSettings] {
-	return pulumix.Output[*MarkdownPartMetadataSettings]{
-		OutputState: i.ToMarkdownPartMetadataSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // Markdown part settings.
 type MarkdownPartMetadataSettingsOutput struct{ *pulumi.OutputState }
 
@@ -1467,12 +1268,6 @@ func (o MarkdownPartMetadataSettingsOutput) ToMarkdownPartMetadataSettingsPtrOut
 	}).(MarkdownPartMetadataSettingsPtrOutput)
 }
 
-func (o MarkdownPartMetadataSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[MarkdownPartMetadataSettings] {
-	return pulumix.Output[MarkdownPartMetadataSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The content of markdown part.
 func (o MarkdownPartMetadataSettingsOutput) Content() MarkdownPartMetadataContentPtrOutput {
 	return o.ApplyT(func(v MarkdownPartMetadataSettings) *MarkdownPartMetadataContent { return v.Content }).(MarkdownPartMetadataContentPtrOutput)
@@ -1490,12 +1285,6 @@ func (o MarkdownPartMetadataSettingsPtrOutput) ToMarkdownPartMetadataSettingsPtr
 
 func (o MarkdownPartMetadataSettingsPtrOutput) ToMarkdownPartMetadataSettingsPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsPtrOutput {
 	return o
-}
-
-func (o MarkdownPartMetadataSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MarkdownPartMetadataSettings] {
-	return pulumix.Output[*MarkdownPartMetadataSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MarkdownPartMetadataSettingsPtrOutput) Elem() MarkdownPartMetadataSettingsOutput {
@@ -1569,12 +1358,6 @@ func (i MarkdownPartMetadataSettingsSettingsArgs) ToMarkdownPartMetadataSettings
 	return pulumi.ToOutputWithContext(ctx, i).(MarkdownPartMetadataSettingsSettingsOutput)
 }
 
-func (i MarkdownPartMetadataSettingsSettingsArgs) ToOutput(ctx context.Context) pulumix.Output[MarkdownPartMetadataSettingsSettings] {
-	return pulumix.Output[MarkdownPartMetadataSettingsSettings]{
-		OutputState: i.ToMarkdownPartMetadataSettingsSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i MarkdownPartMetadataSettingsSettingsArgs) ToMarkdownPartMetadataSettingsSettingsPtrOutput() MarkdownPartMetadataSettingsSettingsPtrOutput {
 	return i.ToMarkdownPartMetadataSettingsSettingsPtrOutputWithContext(context.Background())
 }
@@ -1616,12 +1399,6 @@ func (i *markdownPartMetadataSettingsSettingsPtrType) ToMarkdownPartMetadataSett
 	return pulumi.ToOutputWithContext(ctx, i).(MarkdownPartMetadataSettingsSettingsPtrOutput)
 }
 
-func (i *markdownPartMetadataSettingsSettingsPtrType) ToOutput(ctx context.Context) pulumix.Output[*MarkdownPartMetadataSettingsSettings] {
-	return pulumix.Output[*MarkdownPartMetadataSettingsSettings]{
-		OutputState: i.ToMarkdownPartMetadataSettingsSettingsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 // The setting of the content of markdown part.
 type MarkdownPartMetadataSettingsSettingsOutput struct{ *pulumi.OutputState }
 
@@ -1645,12 +1422,6 @@ func (o MarkdownPartMetadataSettingsSettingsOutput) ToMarkdownPartMetadataSettin
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v MarkdownPartMetadataSettingsSettings) *MarkdownPartMetadataSettingsSettings {
 		return &v
 	}).(MarkdownPartMetadataSettingsSettingsPtrOutput)
-}
-
-func (o MarkdownPartMetadataSettingsSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[MarkdownPartMetadataSettingsSettings] {
-	return pulumix.Output[MarkdownPartMetadataSettingsSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The content of the markdown part.
@@ -1690,12 +1461,6 @@ func (o MarkdownPartMetadataSettingsSettingsPtrOutput) ToMarkdownPartMetadataSet
 
 func (o MarkdownPartMetadataSettingsSettingsPtrOutput) ToMarkdownPartMetadataSettingsSettingsPtrOutputWithContext(ctx context.Context) MarkdownPartMetadataSettingsSettingsPtrOutput {
 	return o
-}
-
-func (o MarkdownPartMetadataSettingsSettingsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*MarkdownPartMetadataSettingsSettings] {
-	return pulumix.Output[*MarkdownPartMetadataSettingsSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MarkdownPartMetadataSettingsSettingsPtrOutput) Elem() MarkdownPartMetadataSettingsSettingsOutput {
@@ -1783,12 +1548,6 @@ func (o ViolationResponseOutput) ToViolationResponseOutputWithContext(ctx contex
 	return o
 }
 
-func (o ViolationResponseOutput) ToOutput(ctx context.Context) pulumix.Output[ViolationResponse] {
-	return pulumix.Output[ViolationResponse]{
-		OutputState: o.OutputState,
-	}
-}
-
 // Error message.
 func (o ViolationResponseOutput) ErrorMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v ViolationResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
@@ -1816,12 +1575,6 @@ func (o ViolationResponseArrayOutput) ToViolationResponseArrayOutput() Violation
 
 func (o ViolationResponseArrayOutput) ToViolationResponseArrayOutputWithContext(ctx context.Context) ViolationResponseArrayOutput {
 	return o
-}
-
-func (o ViolationResponseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ViolationResponse] {
-	return pulumix.Output[[]ViolationResponse]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ViolationResponseArrayOutput) Index(i pulumi.IntInput) ViolationResponseOutput {

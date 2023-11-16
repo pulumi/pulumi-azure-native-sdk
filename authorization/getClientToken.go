@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this function to get an Azure authentication token for the current login context.
@@ -69,12 +68,6 @@ func (o GetClientTokenResultOutput) ToGetClientTokenResultOutput() GetClientToke
 
 func (o GetClientTokenResultOutput) ToGetClientTokenResultOutputWithContext(ctx context.Context) GetClientTokenResultOutput {
 	return o
-}
-
-func (o GetClientTokenResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetClientTokenResult] {
-	return pulumix.Output[GetClientTokenResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // OAuth token for Azure Management API and SDK authentication.

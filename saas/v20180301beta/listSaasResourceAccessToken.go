@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the ISV access token for a SaaS resource.
@@ -71,12 +70,6 @@ func (o ListSaasResourceAccessTokenResultOutput) ToListSaasResourceAccessTokenRe
 
 func (o ListSaasResourceAccessTokenResultOutput) ToListSaasResourceAccessTokenResultOutputWithContext(ctx context.Context) ListSaasResourceAccessTokenResultOutput {
 	return o
-}
-
-func (o ListSaasResourceAccessTokenResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListSaasResourceAccessTokenResult] {
-	return pulumix.Output[ListSaasResourceAccessTokenResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Publisher Offer Base Uri

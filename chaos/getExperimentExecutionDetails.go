@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Execution details of an experiment resource.
@@ -94,12 +93,6 @@ func (o GetExperimentExecutionDetailsResultOutput) ToGetExperimentExecutionDetai
 
 func (o GetExperimentExecutionDetailsResultOutput) ToGetExperimentExecutionDetailsResultOutputWithContext(ctx context.Context) GetExperimentExecutionDetailsResultOutput {
 	return o
-}
-
-func (o GetExperimentExecutionDetailsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetExperimentExecutionDetailsResult] {
-	return pulumix.Output[GetExperimentExecutionDetailsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The reason why the execution failed.

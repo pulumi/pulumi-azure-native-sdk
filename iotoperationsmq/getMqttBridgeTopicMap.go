@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get a MqttBridgeTopicMapResource
@@ -100,12 +99,6 @@ func (o LookupMqttBridgeTopicMapResultOutput) ToLookupMqttBridgeTopicMapResultOu
 
 func (o LookupMqttBridgeTopicMapResultOutput) ToLookupMqttBridgeTopicMapResultOutputWithContext(ctx context.Context) LookupMqttBridgeTopicMapResultOutput {
 	return o
-}
-
-func (o LookupMqttBridgeTopicMapResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMqttBridgeTopicMapResult] {
-	return pulumix.Output[LookupMqttBridgeTopicMapResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Extended Location

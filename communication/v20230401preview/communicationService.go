@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A class representing a CommunicationService resource.
@@ -178,12 +177,6 @@ func (i *CommunicationService) ToCommunicationServiceOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(CommunicationServiceOutput)
 }
 
-func (i *CommunicationService) ToOutput(ctx context.Context) pulumix.Output[*CommunicationService] {
-	return pulumix.Output[*CommunicationService]{
-		OutputState: i.ToCommunicationServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CommunicationServiceOutput struct{ *pulumi.OutputState }
 
 func (CommunicationServiceOutput) ElementType() reflect.Type {
@@ -196,12 +189,6 @@ func (o CommunicationServiceOutput) ToCommunicationServiceOutput() Communication
 
 func (o CommunicationServiceOutput) ToCommunicationServiceOutputWithContext(ctx context.Context) CommunicationServiceOutput {
 	return o
-}
-
-func (o CommunicationServiceOutput) ToOutput(ctx context.Context) pulumix.Output[*CommunicationService] {
-	return pulumix.Output[*CommunicationService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The location where the communication service stores its data at rest.

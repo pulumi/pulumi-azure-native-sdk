@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieve data product resource.
@@ -124,12 +123,6 @@ func (o LookupDataProductResultOutput) ToLookupDataProductResultOutput() LookupD
 
 func (o LookupDataProductResultOutput) ToLookupDataProductResultOutputWithContext(ctx context.Context) LookupDataProductResultOutput {
 	return o
-}
-
-func (o LookupDataProductResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataProductResult] {
-	return pulumix.Output[LookupDataProductResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of available minor versions of the data product resource.

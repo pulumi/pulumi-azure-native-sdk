@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the on-premises integration runtime connection information for encrypting the on-premises data source credentials.
@@ -87,12 +86,6 @@ func (o GetIntegrationRuntimeConnectionInfoResultOutput) ToGetIntegrationRuntime
 
 func (o GetIntegrationRuntimeConnectionInfoResultOutput) ToGetIntegrationRuntimeConnectionInfoResultOutputWithContext(ctx context.Context) GetIntegrationRuntimeConnectionInfoResultOutput {
 	return o
-}
-
-func (o GetIntegrationRuntimeConnectionInfoResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIntegrationRuntimeConnectionInfoResult] {
-	return pulumix.Output[GetIntegrationRuntimeConnectionInfoResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The on-premises integration runtime host URL.

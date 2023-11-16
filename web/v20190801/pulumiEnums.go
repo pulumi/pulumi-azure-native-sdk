@@ -79,12 +79,6 @@ func (o AccessControlEntryActionOutput) ToAccessControlEntryActionPtrOutputWithC
 	}).(AccessControlEntryActionPtrOutput)
 }
 
-func (o AccessControlEntryActionOutput) ToOutput(ctx context.Context) pulumix.Output[AccessControlEntryAction] {
-	return pulumix.Output[AccessControlEntryAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessControlEntryActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -118,12 +112,6 @@ func (o AccessControlEntryActionPtrOutput) ToAccessControlEntryActionPtrOutput()
 
 func (o AccessControlEntryActionPtrOutput) ToAccessControlEntryActionPtrOutputWithContext(ctx context.Context) AccessControlEntryActionPtrOutput {
 	return o
-}
-
-func (o AccessControlEntryActionPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessControlEntryAction] {
-	return pulumix.Output[*AccessControlEntryAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessControlEntryActionPtrOutput) Elem() AccessControlEntryActionOutput {
@@ -263,12 +251,6 @@ func (o ComputeModeOptionsOutput) ToComputeModeOptionsPtrOutputWithContext(ctx c
 	}).(ComputeModeOptionsPtrOutput)
 }
 
-func (o ComputeModeOptionsOutput) ToOutput(ctx context.Context) pulumix.Output[ComputeModeOptions] {
-	return pulumix.Output[ComputeModeOptions]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ComputeModeOptionsOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -302,12 +284,6 @@ func (o ComputeModeOptionsPtrOutput) ToComputeModeOptionsPtrOutput() ComputeMode
 
 func (o ComputeModeOptionsPtrOutput) ToComputeModeOptionsPtrOutputWithContext(ctx context.Context) ComputeModeOptionsPtrOutput {
 	return o
-}
-
-func (o ComputeModeOptionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ComputeModeOptions] {
-	return pulumix.Output[*ComputeModeOptions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ComputeModeOptionsPtrOutput) Elem() ComputeModeOptionsOutput {
@@ -447,12 +423,6 @@ func (o InternalLoadBalancingModeOutput) ToInternalLoadBalancingModePtrOutputWit
 	}).(InternalLoadBalancingModePtrOutput)
 }
 
-func (o InternalLoadBalancingModeOutput) ToOutput(ctx context.Context) pulumix.Output[InternalLoadBalancingMode] {
-	return pulumix.Output[InternalLoadBalancingMode]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InternalLoadBalancingModeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
@@ -486,12 +456,6 @@ func (o InternalLoadBalancingModePtrOutput) ToInternalLoadBalancingModePtrOutput
 
 func (o InternalLoadBalancingModePtrOutput) ToInternalLoadBalancingModePtrOutputWithContext(ctx context.Context) InternalLoadBalancingModePtrOutput {
 	return o
-}
-
-func (o InternalLoadBalancingModePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*InternalLoadBalancingMode] {
-	return pulumix.Output[*InternalLoadBalancingMode]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InternalLoadBalancingModePtrOutput) Elem() InternalLoadBalancingModeOutput {

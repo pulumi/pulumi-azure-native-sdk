@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the product specified by its identifier.
@@ -102,12 +101,6 @@ func (o LookupWorkspaceProductResultOutput) ToLookupWorkspaceProductResultOutput
 
 func (o LookupWorkspaceProductResultOutput) ToLookupWorkspaceProductResultOutputWithContext(ctx context.Context) LookupWorkspaceProductResultOutput {
 	return o
-}
-
-func (o LookupWorkspaceProductResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkspaceProductResult] {
-	return pulumix.Output[LookupWorkspaceProductResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // whether subscription approval is required. If false, new subscriptions will be approved automatically enabling developers to call the product’s APIs immediately after subscribing. If true, administrators must manually approve the subscription before the developer can any of the product’s APIs. Can be present only if subscriptionRequired property is present and has a value of false.

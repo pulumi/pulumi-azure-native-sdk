@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the Diagnostic for an API specified by its identifier.
@@ -108,12 +107,6 @@ func (o LookupApiDiagnosticResultOutput) ToLookupApiDiagnosticResultOutput() Loo
 
 func (o LookupApiDiagnosticResultOutput) ToLookupApiDiagnosticResultOutputWithContext(ctx context.Context) LookupApiDiagnosticResultOutput {
 	return o
-}
-
-func (o LookupApiDiagnosticResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApiDiagnosticResult] {
-	return pulumix.Output[LookupApiDiagnosticResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Specifies for what type of messages sampling settings should not apply.

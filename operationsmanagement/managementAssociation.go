@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The container for solution.
@@ -143,12 +142,6 @@ func (i *ManagementAssociation) ToManagementAssociationOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ManagementAssociationOutput)
 }
 
-func (i *ManagementAssociation) ToOutput(ctx context.Context) pulumix.Output[*ManagementAssociation] {
-	return pulumix.Output[*ManagementAssociation]{
-		OutputState: i.ToManagementAssociationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagementAssociationOutput struct{ *pulumi.OutputState }
 
 func (ManagementAssociationOutput) ElementType() reflect.Type {
@@ -161,12 +154,6 @@ func (o ManagementAssociationOutput) ToManagementAssociationOutput() ManagementA
 
 func (o ManagementAssociationOutput) ToManagementAssociationOutputWithContext(ctx context.Context) ManagementAssociationOutput {
 	return o
-}
-
-func (o ManagementAssociationOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagementAssociation] {
-	return pulumix.Output[*ManagementAssociation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Resource location

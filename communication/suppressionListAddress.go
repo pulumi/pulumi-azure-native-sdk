@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A object that represents a SuppressionList record.
@@ -164,12 +163,6 @@ func (i *SuppressionListAddress) ToSuppressionListAddressOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(SuppressionListAddressOutput)
 }
 
-func (i *SuppressionListAddress) ToOutput(ctx context.Context) pulumix.Output[*SuppressionListAddress] {
-	return pulumix.Output[*SuppressionListAddress]{
-		OutputState: i.ToSuppressionListAddressOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SuppressionListAddressOutput struct{ *pulumi.OutputState }
 
 func (SuppressionListAddressOutput) ElementType() reflect.Type {
@@ -182,12 +175,6 @@ func (o SuppressionListAddressOutput) ToSuppressionListAddressOutput() Suppressi
 
 func (o SuppressionListAddressOutput) ToSuppressionListAddressOutputWithContext(ctx context.Context) SuppressionListAddressOutput {
 	return o
-}
-
-func (o SuppressionListAddressOutput) ToOutput(ctx context.Context) pulumix.Output[*SuppressionListAddress] {
-	return pulumix.Output[*SuppressionListAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The location where the SuppressionListAddress data is stored at rest. This value is inherited from the parent Domains resource.

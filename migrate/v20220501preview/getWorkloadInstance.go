@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the details of the workload instance.
@@ -90,12 +89,6 @@ func (o LookupWorkloadInstanceResultOutput) ToLookupWorkloadInstanceResultOutput
 
 func (o LookupWorkloadInstanceResultOutput) ToLookupWorkloadInstanceResultOutputWithContext(ctx context.Context) LookupWorkloadInstanceResultOutput {
 	return o
-}
-
-func (o LookupWorkloadInstanceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkloadInstanceResult] {
-	return pulumix.Output[LookupWorkloadInstanceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the Id of the resource.

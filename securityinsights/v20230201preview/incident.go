@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type Incident struct {
@@ -173,6 +172,9 @@ func NewIncident(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:Incident"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:Incident"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -301,12 +303,6 @@ func (i *Incident) ToIncidentOutputWithContext(ctx context.Context) IncidentOutp
 	return pulumi.ToOutputWithContext(ctx, i).(IncidentOutput)
 }
 
-func (i *Incident) ToOutput(ctx context.Context) pulumix.Output[*Incident] {
-	return pulumix.Output[*Incident]{
-		OutputState: i.ToIncidentOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IncidentOutput struct{ *pulumi.OutputState }
 
 func (IncidentOutput) ElementType() reflect.Type {
@@ -319,12 +315,6 @@ func (o IncidentOutput) ToIncidentOutput() IncidentOutput {
 
 func (o IncidentOutput) ToIncidentOutputWithContext(ctx context.Context) IncidentOutput {
 	return o
-}
-
-func (o IncidentOutput) ToOutput(ctx context.Context) pulumix.Output[*Incident] {
-	return pulumix.Output[*Incident]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Additional data on the incident

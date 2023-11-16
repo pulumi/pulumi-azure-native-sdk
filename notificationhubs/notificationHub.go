@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Notification Hub Resource.
@@ -157,12 +156,6 @@ func (i *NotificationHub) ToNotificationHubOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationHubOutput)
 }
 
-func (i *NotificationHub) ToOutput(ctx context.Context) pulumix.Output[*NotificationHub] {
-	return pulumix.Output[*NotificationHub]{
-		OutputState: i.ToNotificationHubOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NotificationHubOutput struct{ *pulumi.OutputState }
 
 func (NotificationHubOutput) ElementType() reflect.Type {
@@ -175,12 +168,6 @@ func (o NotificationHubOutput) ToNotificationHubOutput() NotificationHubOutput {
 
 func (o NotificationHubOutput) ToNotificationHubOutputWithContext(ctx context.Context) NotificationHubOutput {
 	return o
-}
-
-func (o NotificationHubOutput) ToOutput(ctx context.Context) pulumix.Output[*NotificationHub] {
-	return pulumix.Output[*NotificationHub]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

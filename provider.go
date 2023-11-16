@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The provider type for the native Azure package.
@@ -68,10 +67,12 @@ type providerArgs struct {
 	Environment *string `pulumi:"environment"`
 	// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected automatically.
 	MsiEndpoint *string `pulumi:"msiEndpoint"`
-	// Your cloud service or provider’s token to exchange for an Azure token.
+	// Your provider’s token to exchange for an OIDC token.
 	OidcRequestToken *string `pulumi:"oidcRequestToken"`
-	// The URL to initiate the OIDC token exchange.
+	// The URL to initiate the `oidcRequestToken` OIDC token exchange.
 	OidcRequestUrl *string `pulumi:"oidcRequestUrl"`
+	// The OIDC token to exchange for an Azure token.
+	OidcToken *string `pulumi:"oidcToken"`
 	// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
 	PartnerId *string `pulumi:"partnerId"`
 	// The Subscription ID which should be used.
@@ -102,10 +103,12 @@ type ProviderArgs struct {
 	Environment pulumi.StringPtrInput
 	// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected automatically.
 	MsiEndpoint pulumi.StringPtrInput
-	// Your cloud service or provider’s token to exchange for an Azure token.
+	// Your provider’s token to exchange for an OIDC token.
 	OidcRequestToken pulumi.StringPtrInput
-	// The URL to initiate the OIDC token exchange.
+	// The URL to initiate the `oidcRequestToken` OIDC token exchange.
 	OidcRequestUrl pulumi.StringPtrInput
+	// The OIDC token to exchange for an Azure token.
+	OidcToken pulumi.StringPtrInput
 	// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
 	PartnerId pulumi.StringPtrInput
 	// The Subscription ID which should be used.
@@ -141,12 +144,6 @@ func (i *Provider) ToProviderOutputWithContext(ctx context.Context) ProviderOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderOutput)
 }
 
-func (i *Provider) ToOutput(ctx context.Context) pulumix.Output[*Provider] {
-	return pulumix.Output[*Provider]{
-		OutputState: i.ToProviderOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProviderOutput struct{ *pulumi.OutputState }
 
 func (ProviderOutput) ElementType() reflect.Type {
@@ -159,12 +156,6 @@ func (o ProviderOutput) ToProviderOutput() ProviderOutput {
 
 func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) ProviderOutput {
 	return o
-}
-
-func (o ProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*Provider] {
-	return pulumix.Output[*Provider]{
-		OutputState: o.OutputState,
-	}
 }
 
 func init() {

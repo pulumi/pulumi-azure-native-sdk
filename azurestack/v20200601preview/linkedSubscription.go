@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Linked Subscription information.
@@ -151,12 +150,6 @@ func (i *LinkedSubscription) ToLinkedSubscriptionOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(LinkedSubscriptionOutput)
 }
 
-func (i *LinkedSubscription) ToOutput(ctx context.Context) pulumix.Output[*LinkedSubscription] {
-	return pulumix.Output[*LinkedSubscription]{
-		OutputState: i.ToLinkedSubscriptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LinkedSubscriptionOutput struct{ *pulumi.OutputState }
 
 func (LinkedSubscriptionOutput) ElementType() reflect.Type {
@@ -169,12 +162,6 @@ func (o LinkedSubscriptionOutput) ToLinkedSubscriptionOutput() LinkedSubscriptio
 
 func (o LinkedSubscriptionOutput) ToLinkedSubscriptionOutputWithContext(ctx context.Context) LinkedSubscriptionOutput {
 	return o
-}
-
-func (o LinkedSubscriptionOutput) ToOutput(ctx context.Context) pulumix.Output[*LinkedSubscription] {
-	return pulumix.Output[*LinkedSubscription]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The status of the remote management connection of the Azure Stack device.

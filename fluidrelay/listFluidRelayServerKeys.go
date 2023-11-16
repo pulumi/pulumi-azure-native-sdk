@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The set of available keys for this server.
@@ -76,12 +75,6 @@ func (o ListFluidRelayServerKeysResultOutput) ToListFluidRelayServerKeysResultOu
 
 func (o ListFluidRelayServerKeysResultOutput) ToListFluidRelayServerKeysResultOutputWithContext(ctx context.Context) ListFluidRelayServerKeysResultOutput {
 	return o
-}
-
-func (o ListFluidRelayServerKeysResultOutput) ToOutput(ctx context.Context) pulumix.Output[ListFluidRelayServerKeysResult] {
-	return pulumix.Output[ListFluidRelayServerKeysResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The primary key for this server

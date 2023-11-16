@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // [Deprecated] Get a Private Atlas resource.
@@ -88,12 +87,6 @@ func (o LookupPrivateAtlaseResultOutput) ToLookupPrivateAtlaseResultOutput() Loo
 
 func (o LookupPrivateAtlaseResultOutput) ToLookupPrivateAtlaseResultOutputWithContext(ctx context.Context) LookupPrivateAtlaseResultOutput {
 	return o
-}
-
-func (o LookupPrivateAtlaseResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPrivateAtlaseResult] {
-	return pulumix.Output[LookupPrivateAtlaseResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Dev Tool Portal resource
@@ -148,12 +147,6 @@ func (i *DevToolPortal) ToDevToolPortalOutputWithContext(ctx context.Context) De
 	return pulumi.ToOutputWithContext(ctx, i).(DevToolPortalOutput)
 }
 
-func (i *DevToolPortal) ToOutput(ctx context.Context) pulumix.Output[*DevToolPortal] {
-	return pulumix.Output[*DevToolPortal]{
-		OutputState: i.ToDevToolPortalOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DevToolPortalOutput struct{ *pulumi.OutputState }
 
 func (DevToolPortalOutput) ElementType() reflect.Type {
@@ -166,12 +159,6 @@ func (o DevToolPortalOutput) ToDevToolPortalOutput() DevToolPortalOutput {
 
 func (o DevToolPortalOutput) ToDevToolPortalOutputWithContext(ctx context.Context) DevToolPortalOutput {
 	return o
-}
-
-func (o DevToolPortalOutput) ToOutput(ctx context.Context) pulumix.Output[*DevToolPortal] {
-	return pulumix.Output[*DevToolPortal]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the resource.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Represents a SourceControl in Azure Security Insights.
@@ -235,12 +234,6 @@ func (i *SourceControl) ToSourceControlOutputWithContext(ctx context.Context) So
 	return pulumi.ToOutputWithContext(ctx, i).(SourceControlOutput)
 }
 
-func (i *SourceControl) ToOutput(ctx context.Context) pulumix.Output[*SourceControl] {
-	return pulumix.Output[*SourceControl]{
-		OutputState: i.ToSourceControlOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SourceControlOutput struct{ *pulumi.OutputState }
 
 func (SourceControlOutput) ElementType() reflect.Type {
@@ -253,12 +246,6 @@ func (o SourceControlOutput) ToSourceControlOutput() SourceControlOutput {
 
 func (o SourceControlOutput) ToSourceControlOutputWithContext(ctx context.Context) SourceControlOutput {
 	return o
-}
-
-func (o SourceControlOutput) ToOutput(ctx context.Context) pulumix.Output[*SourceControl] {
-	return pulumix.Output[*SourceControl]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Array of source control content types.

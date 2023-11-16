@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A sensitivity label.
@@ -226,12 +225,6 @@ func (i *SensitivityLabel) ToSensitivityLabelOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SensitivityLabelOutput)
 }
 
-func (i *SensitivityLabel) ToOutput(ctx context.Context) pulumix.Output[*SensitivityLabel] {
-	return pulumix.Output[*SensitivityLabel]{
-		OutputState: i.ToSensitivityLabelOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SensitivityLabelOutput struct{ *pulumi.OutputState }
 
 func (SensitivityLabelOutput) ElementType() reflect.Type {
@@ -244,12 +237,6 @@ func (o SensitivityLabelOutput) ToSensitivityLabelOutput() SensitivityLabelOutpu
 
 func (o SensitivityLabelOutput) ToSensitivityLabelOutputWithContext(ctx context.Context) SensitivityLabelOutput {
 	return o
-}
-
-func (o SensitivityLabelOutput) ToOutput(ctx context.Context) pulumix.Output[*SensitivityLabel] {
-	return pulumix.Output[*SensitivityLabel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The column name.

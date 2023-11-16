@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Distributed availability group between box and Sql Managed Instance.
@@ -186,12 +185,6 @@ func (i *DistributedAvailabilityGroup) ToDistributedAvailabilityGroupOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(DistributedAvailabilityGroupOutput)
 }
 
-func (i *DistributedAvailabilityGroup) ToOutput(ctx context.Context) pulumix.Output[*DistributedAvailabilityGroup] {
-	return pulumix.Output[*DistributedAvailabilityGroup]{
-		OutputState: i.ToDistributedAvailabilityGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DistributedAvailabilityGroupOutput struct{ *pulumi.OutputState }
 
 func (DistributedAvailabilityGroupOutput) ElementType() reflect.Type {
@@ -204,12 +197,6 @@ func (o DistributedAvailabilityGroupOutput) ToDistributedAvailabilityGroupOutput
 
 func (o DistributedAvailabilityGroupOutput) ToDistributedAvailabilityGroupOutputWithContext(ctx context.Context) DistributedAvailabilityGroupOutput {
 	return o
-}
-
-func (o DistributedAvailabilityGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*DistributedAvailabilityGroup] {
-	return pulumix.Output[*DistributedAvailabilityGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The distributed availability group id

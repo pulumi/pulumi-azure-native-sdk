@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Arc Sql Server database
@@ -142,12 +141,6 @@ func (i *SqlServerDatabase) ToSqlServerDatabaseOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(SqlServerDatabaseOutput)
 }
 
-func (i *SqlServerDatabase) ToOutput(ctx context.Context) pulumix.Output[*SqlServerDatabase] {
-	return pulumix.Output[*SqlServerDatabase]{
-		OutputState: i.ToSqlServerDatabaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SqlServerDatabaseOutput struct{ *pulumi.OutputState }
 
 func (SqlServerDatabaseOutput) ElementType() reflect.Type {
@@ -160,12 +153,6 @@ func (o SqlServerDatabaseOutput) ToSqlServerDatabaseOutput() SqlServerDatabaseOu
 
 func (o SqlServerDatabaseOutput) ToSqlServerDatabaseOutputWithContext(ctx context.Context) SqlServerDatabaseOutput {
 	return o
-}
-
-func (o SqlServerDatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[*SqlServerDatabase] {
-	return pulumix.Output[*SqlServerDatabase]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The geo-location where the resource lives

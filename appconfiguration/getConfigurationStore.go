@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the properties of the specified configuration store.
@@ -129,12 +128,6 @@ func (o LookupConfigurationStoreResultOutput) ToLookupConfigurationStoreResultOu
 
 func (o LookupConfigurationStoreResultOutput) ToLookupConfigurationStoreResultOutputWithContext(ctx context.Context) LookupConfigurationStoreResultOutput {
 	return o
-}
-
-func (o LookupConfigurationStoreResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupConfigurationStoreResult] {
-	return pulumix.Output[LookupConfigurationStoreResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The creation date of configuration store.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // API Schema Contract details.
@@ -195,12 +194,6 @@ func (i *ApiSchema) ToApiSchemaOutputWithContext(ctx context.Context) ApiSchemaO
 	return pulumi.ToOutputWithContext(ctx, i).(ApiSchemaOutput)
 }
 
-func (i *ApiSchema) ToOutput(ctx context.Context) pulumix.Output[*ApiSchema] {
-	return pulumix.Output[*ApiSchema]{
-		OutputState: i.ToApiSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiSchemaOutput struct{ *pulumi.OutputState }
 
 func (ApiSchemaOutput) ElementType() reflect.Type {
@@ -213,12 +206,6 @@ func (o ApiSchemaOutput) ToApiSchemaOutput() ApiSchemaOutput {
 
 func (o ApiSchemaOutput) ToApiSchemaOutputWithContext(ctx context.Context) ApiSchemaOutput {
 	return o
-}
-
-func (o ApiSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiSchema] {
-	return pulumix.Output[*ApiSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Types definitions. Used for Swagger/OpenAPI v2/v3 schemas only, null otherwise.

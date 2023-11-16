@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Physical server collector resource.
@@ -144,12 +143,6 @@ func (i *ServerCollectorsOperation) ToServerCollectorsOperationOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ServerCollectorsOperationOutput)
 }
 
-func (i *ServerCollectorsOperation) ToOutput(ctx context.Context) pulumix.Output[*ServerCollectorsOperation] {
-	return pulumix.Output[*ServerCollectorsOperation]{
-		OutputState: i.ToServerCollectorsOperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ServerCollectorsOperationOutput struct{ *pulumi.OutputState }
 
 func (ServerCollectorsOperationOutput) ElementType() reflect.Type {
@@ -162,12 +155,6 @@ func (o ServerCollectorsOperationOutput) ToServerCollectorsOperationOutput() Ser
 
 func (o ServerCollectorsOperationOutput) ToServerCollectorsOperationOutputWithContext(ctx context.Context) ServerCollectorsOperationOutput {
 	return o
-}
-
-func (o ServerCollectorsOperationOutput) ToOutput(ctx context.Context) pulumix.Output[*ServerCollectorsOperation] {
-	return pulumix.Output[*ServerCollectorsOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the collector agent properties.

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets details of a migration.
@@ -119,12 +118,6 @@ func (o LookupMigrationResultOutput) ToLookupMigrationResultOutput() LookupMigra
 
 func (o LookupMigrationResultOutput) ToLookupMigrationResultOutputWithContext(ctx context.Context) LookupMigrationResultOutput {
 	return o
-}
-
-func (o LookupMigrationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupMigrationResult] {
-	return pulumix.Output[LookupMigrationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // To trigger cancel for entire migration we need to send this flag as true

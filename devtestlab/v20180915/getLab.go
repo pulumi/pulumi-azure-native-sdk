@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Get lab.
@@ -140,12 +139,6 @@ func (o LookupLabResultOutput) ToLookupLabResultOutput() LookupLabResultOutput {
 
 func (o LookupLabResultOutput) ToLookupLabResultOutputWithContext(ctx context.Context) LookupLabResultOutput {
 	return o
-}
-
-func (o LookupLabResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupLabResult] {
-	return pulumix.Output[LookupLabResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The properties of any lab announcement associated with this lab

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets the group link for the product.
@@ -87,12 +86,6 @@ func (o LookupProductGroupLinkResultOutput) ToLookupProductGroupLinkResultOutput
 
 func (o LookupProductGroupLinkResultOutput) ToLookupProductGroupLinkResultOutputWithContext(ctx context.Context) LookupProductGroupLinkResultOutput {
 	return o
-}
-
-func (o LookupProductGroupLinkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupProductGroupLinkResult] {
-	return pulumix.Output[LookupProductGroupLinkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Full resource Id of a group.

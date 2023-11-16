@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A class representing a SuppressionList resource.
@@ -138,12 +137,6 @@ func (i *SuppressionList) ToSuppressionListOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SuppressionListOutput)
 }
 
-func (i *SuppressionList) ToOutput(ctx context.Context) pulumix.Output[*SuppressionList] {
-	return pulumix.Output[*SuppressionList]{
-		OutputState: i.ToSuppressionListOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SuppressionListOutput struct{ *pulumi.OutputState }
 
 func (SuppressionListOutput) ElementType() reflect.Type {
@@ -156,12 +149,6 @@ func (o SuppressionListOutput) ToSuppressionListOutput() SuppressionListOutput {
 
 func (o SuppressionListOutput) ToSuppressionListOutputWithContext(ctx context.Context) SuppressionListOutput {
 	return o
-}
-
-func (o SuppressionListOutput) ToOutput(ctx context.Context) pulumix.Output[*SuppressionList] {
-	return pulumix.Output[*SuppressionList]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The date the resource was created.

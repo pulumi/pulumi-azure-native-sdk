@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Fabric model.
@@ -131,12 +130,6 @@ func (i *Fabric) ToFabricOutputWithContext(ctx context.Context) FabricOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FabricOutput)
 }
 
-func (i *Fabric) ToOutput(ctx context.Context) pulumix.Output[*Fabric] {
-	return pulumix.Output[*Fabric]{
-		OutputState: i.ToFabricOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FabricOutput struct{ *pulumi.OutputState }
 
 func (FabricOutput) ElementType() reflect.Type {
@@ -149,12 +142,6 @@ func (o FabricOutput) ToFabricOutput() FabricOutput {
 
 func (o FabricOutput) ToFabricOutputWithContext(ctx context.Context) FabricOutput {
 	return o
-}
-
-func (o FabricOutput) ToOutput(ctx context.Context) pulumix.Output[*Fabric] {
-	return pulumix.Output[*Fabric]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gets or sets the location of the fabric.

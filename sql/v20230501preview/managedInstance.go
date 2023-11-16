@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // An Azure SQL managed instance.
@@ -391,12 +390,6 @@ func (i *ManagedInstance) ToManagedInstanceOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedInstanceOutput)
 }
 
-func (i *ManagedInstance) ToOutput(ctx context.Context) pulumix.Output[*ManagedInstance] {
-	return pulumix.Output[*ManagedInstance]{
-		OutputState: i.ToManagedInstanceOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagedInstanceOutput struct{ *pulumi.OutputState }
 
 func (ManagedInstanceOutput) ElementType() reflect.Type {
@@ -409,12 +402,6 @@ func (o ManagedInstanceOutput) ToManagedInstanceOutput() ManagedInstanceOutput {
 
 func (o ManagedInstanceOutput) ToManagedInstanceOutputWithContext(ctx context.Context) ManagedInstanceOutput {
 	return o
-}
-
-func (o ManagedInstanceOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedInstance] {
-	return pulumix.Output[*ManagedInstance]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Administrator username for the managed instance. Can only be specified when the managed instance is being created (and is required for creation).

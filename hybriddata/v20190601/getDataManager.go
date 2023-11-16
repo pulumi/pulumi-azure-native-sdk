@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about the specified data manager resource.
@@ -88,12 +87,6 @@ func (o LookupDataManagerResultOutput) ToLookupDataManagerResultOutput() LookupD
 
 func (o LookupDataManagerResultOutput) ToLookupDataManagerResultOutputWithContext(ctx context.Context) LookupDataManagerResultOutput {
 	return o
-}
-
-func (o LookupDataManagerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDataManagerResult] {
-	return pulumix.Output[LookupDataManagerResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Etag of the Resource.

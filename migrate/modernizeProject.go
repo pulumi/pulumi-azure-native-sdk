@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ModernizeProject model.
@@ -136,12 +135,6 @@ func (i *ModernizeProject) ToModernizeProjectOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ModernizeProjectOutput)
 }
 
-func (i *ModernizeProject) ToOutput(ctx context.Context) pulumix.Output[*ModernizeProject] {
-	return pulumix.Output[*ModernizeProject]{
-		OutputState: i.ToModernizeProjectOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ModernizeProjectOutput struct{ *pulumi.OutputState }
 
 func (ModernizeProjectOutput) ElementType() reflect.Type {
@@ -154,12 +147,6 @@ func (o ModernizeProjectOutput) ToModernizeProjectOutput() ModernizeProjectOutpu
 
 func (o ModernizeProjectOutput) ToModernizeProjectOutputWithContext(ctx context.Context) ModernizeProjectOutput {
 	return o
-}
-
-func (o ModernizeProjectOutput) ToOutput(ctx context.Context) pulumix.Output[*ModernizeProject] {
-	return pulumix.Output[*ModernizeProject]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ModernizeProjectOutput) Identity() ResourceIdentityResponsePtrOutput {

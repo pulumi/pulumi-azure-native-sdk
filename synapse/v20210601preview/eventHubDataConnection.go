@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Class representing an event hub data connection.
@@ -210,12 +209,6 @@ func (i *EventHubDataConnection) ToEventHubDataConnectionOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(EventHubDataConnectionOutput)
 }
 
-func (i *EventHubDataConnection) ToOutput(ctx context.Context) pulumix.Output[*EventHubDataConnection] {
-	return pulumix.Output[*EventHubDataConnection]{
-		OutputState: i.ToEventHubDataConnectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EventHubDataConnectionOutput struct{ *pulumi.OutputState }
 
 func (EventHubDataConnectionOutput) ElementType() reflect.Type {
@@ -228,12 +221,6 @@ func (o EventHubDataConnectionOutput) ToEventHubDataConnectionOutput() EventHubD
 
 func (o EventHubDataConnectionOutput) ToEventHubDataConnectionOutputWithContext(ctx context.Context) EventHubDataConnectionOutput {
 	return o
-}
-
-func (o EventHubDataConnectionOutput) ToOutput(ctx context.Context) pulumix.Output[*EventHubDataConnection] {
-	return pulumix.Output[*EventHubDataConnection]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The event hub messages compression type
