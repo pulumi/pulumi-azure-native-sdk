@@ -14,6 +14,8 @@ import (
 
 // Retrieves information about the view of a license.
 // Azure REST API version: 2023-06-20-preview.
+//
+// Other available API versions: 2023-10-03-preview.
 func LookupLicense(ctx *pulumi.Context, args *LookupLicenseArgs, opts ...pulumi.InvokeOption) (*LookupLicenseResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLicenseResult

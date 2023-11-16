@@ -15,7 +15,7 @@ import (
 // Gets an incident task.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 func LookupIncidentTask(ctx *pulumi.Context, args *LookupIncidentTaskArgs, opts ...pulumi.InvokeOption) (*LookupIncidentTaskResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIncidentTaskResult

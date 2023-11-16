@@ -15,6 +15,8 @@ import (
 
 // Describes a license in a hybrid machine.
 // Azure REST API version: 2023-06-20-preview.
+//
+// Other available API versions: 2023-10-03-preview.
 type License struct {
 	pulumi.CustomResourceState
 
@@ -51,6 +53,9 @@ func NewLicense(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20230620preview:License"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20231003preview:License"),
 		},
 	})
 	opts = append(opts, aliases)

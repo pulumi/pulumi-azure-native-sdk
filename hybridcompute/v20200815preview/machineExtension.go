@@ -117,6 +117,9 @@ func NewMachineExtension(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20230620preview:MachineExtension"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20231003preview:MachineExtension"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

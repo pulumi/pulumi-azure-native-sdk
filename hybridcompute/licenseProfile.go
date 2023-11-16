@@ -15,6 +15,8 @@ import (
 
 // Describes a license profile in a hybrid machine.
 // Azure REST API version: 2023-06-20-preview.
+//
+// Other available API versions: 2023-10-03-preview.
 type LicenseProfile struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +62,9 @@ func NewLicenseProfile(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20230620preview:LicenseProfile"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20231003preview:LicenseProfile"),
 		},
 	})
 	opts = append(opts, aliases)

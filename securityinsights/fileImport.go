@@ -16,7 +16,7 @@ import (
 // Represents a file import in Azure Security Insights.
 // Azure REST API version: 2023-06-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 type FileImport struct {
 	pulumi.CustomResourceState
 
@@ -118,6 +118,9 @@ func NewFileImport(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:FileImport"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:FileImport"),
 		},
 	})
 	opts = append(opts, aliases)

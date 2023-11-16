@@ -136,6 +136,9 @@ func NewAwsCloudTrailDataConnector(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:AwsCloudTrailDataConnector"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:AwsCloudTrailDataConnector"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

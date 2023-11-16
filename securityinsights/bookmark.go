@@ -16,7 +16,7 @@ import (
 // Represents a bookmark in Azure Security Insights.
 // Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2020-01-01.
 //
-// Other available API versions: 2019-01-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
+// Other available API versions: 2019-01-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview.
 type Bookmark struct {
 	pulumi.CustomResourceState
 
@@ -153,6 +153,9 @@ func NewBookmark(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:Bookmark"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20231001preview:Bookmark"),
 		},
 	})
 	opts = append(opts, aliases)

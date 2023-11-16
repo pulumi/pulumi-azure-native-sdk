@@ -16,7 +16,7 @@ import (
 // See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance.
 // Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-03-01.
 //
-// Other available API versions: 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01.
+// Other available API versions: 2023-05-02-preview, 2023-06-01, 2023-06-02-preview, 2023-07-01, 2023-07-02-preview, 2023-08-01, 2023-08-02-preview, 2023-09-01, 2023-09-02-preview, 2023-10-01, 2023-10-02-preview.
 type MaintenanceConfiguration struct {
 	pulumi.CustomResourceState
 
@@ -189,6 +189,9 @@ func NewMaintenanceConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:containerservice/v20231001:MaintenanceConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerservice/v20231002preview:MaintenanceConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)
