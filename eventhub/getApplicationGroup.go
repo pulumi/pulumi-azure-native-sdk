@@ -14,7 +14,7 @@ import (
 // Gets an ApplicationGroup for a Namespace.
 // Azure REST API version: 2022-10-01-preview.
 //
-// Other available API versions: 2023-01-01-preview.
+// Other available API versions: 2023-01-01-preview, 2024-01-01.
 func LookupApplicationGroup(ctx *pulumi.Context, args *LookupApplicationGroupArgs, opts ...pulumi.InvokeOption) (*LookupApplicationGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplicationGroupResult

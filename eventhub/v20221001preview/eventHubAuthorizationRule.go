@@ -78,6 +78,9 @@ func NewEventHubAuthorizationRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:eventhub/v20230101preview:EventHubAuthorizationRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:eventhub/v20240101:EventHubAuthorizationRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

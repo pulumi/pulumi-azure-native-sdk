@@ -33,7 +33,7 @@ type LookupAlertsSuppressionRuleResult struct {
 	AlertType string `pulumi:"alertType"`
 	// Any comment regarding the rule
 	Comment *string `pulumi:"comment"`
-	// Expiration date of the rule, if value is not provided or provided as null this field will default to the maximum allowed expiration date.
+	// Expiration date of the rule, if value is not provided or provided as null there will no expiration at all
 	ExpirationDateUtc *string `pulumi:"expirationDateUtc"`
 	// Resource Id
 	Id string `pulumi:"id"`
@@ -98,7 +98,7 @@ func (o LookupAlertsSuppressionRuleResultOutput) Comment() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v LookupAlertsSuppressionRuleResult) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// Expiration date of the rule, if value is not provided or provided as null this field will default to the maximum allowed expiration date.
+// Expiration date of the rule, if value is not provided or provided as null there will no expiration at all
 func (o LookupAlertsSuppressionRuleResultOutput) ExpirationDateUtc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAlertsSuppressionRuleResult) *string { return v.ExpirationDateUtc }).(pulumi.StringPtrOutput)
 }

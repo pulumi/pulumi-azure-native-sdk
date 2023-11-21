@@ -20,7 +20,7 @@ type AlertsSuppressionRule struct {
 	AlertType pulumi.StringOutput `pulumi:"alertType"`
 	// Any comment regarding the rule
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// Expiration date of the rule, if value is not provided or provided as null this field will default to the maximum allowed expiration date.
+	// Expiration date of the rule, if value is not provided or provided as null there will no expiration at all
 	ExpirationDateUtc pulumi.StringPtrOutput `pulumi:"expirationDateUtc"`
 	// The last time this rule was modified
 	LastModifiedUtc pulumi.StringOutput `pulumi:"lastModifiedUtc"`
@@ -97,7 +97,7 @@ type alertsSuppressionRuleArgs struct {
 	AlertsSuppressionRuleName *string `pulumi:"alertsSuppressionRuleName"`
 	// Any comment regarding the rule
 	Comment *string `pulumi:"comment"`
-	// Expiration date of the rule, if value is not provided or provided as null this field will default to the maximum allowed expiration date.
+	// Expiration date of the rule, if value is not provided or provided as null there will no expiration at all
 	ExpirationDateUtc *string `pulumi:"expirationDateUtc"`
 	// The reason for dismissing the alert
 	Reason string `pulumi:"reason"`
@@ -115,7 +115,7 @@ type AlertsSuppressionRuleArgs struct {
 	AlertsSuppressionRuleName pulumi.StringPtrInput
 	// Any comment regarding the rule
 	Comment pulumi.StringPtrInput
-	// Expiration date of the rule, if value is not provided or provided as null this field will default to the maximum allowed expiration date.
+	// Expiration date of the rule, if value is not provided or provided as null there will no expiration at all
 	ExpirationDateUtc pulumi.StringPtrInput
 	// The reason for dismissing the alert
 	Reason pulumi.StringInput
@@ -172,7 +172,7 @@ func (o AlertsSuppressionRuleOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertsSuppressionRule) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// Expiration date of the rule, if value is not provided or provided as null this field will default to the maximum allowed expiration date.
+// Expiration date of the rule, if value is not provided or provided as null there will no expiration at all
 func (o AlertsSuppressionRuleOutput) ExpirationDateUtc() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertsSuppressionRule) pulumi.StringPtrOutput { return v.ExpirationDateUtc }).(pulumi.StringPtrOutput)
 }

@@ -14,7 +14,7 @@ import (
 // Gets the primary and secondary connection strings for the Namespace.
 // Azure REST API version: 2022-10-01-preview.
 //
-// Other available API versions: 2015-08-01, 2023-01-01-preview.
+// Other available API versions: 2015-08-01, 2023-01-01-preview, 2024-01-01.
 func ListNamespaceKeys(ctx *pulumi.Context, args *ListNamespaceKeysArgs, opts ...pulumi.InvokeOption) (*ListNamespaceKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListNamespaceKeysResult
