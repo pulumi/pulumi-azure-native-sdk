@@ -15,7 +15,7 @@ import (
 // The Application Group object
 // Azure REST API version: 2022-10-01-preview. Prior API version in Azure Native 1.x: 2022-01-01-preview.
 //
-// Other available API versions: 2023-01-01-preview.
+// Other available API versions: 2023-01-01-preview, 2024-01-01.
 type ApplicationGroup struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +60,9 @@ func NewApplicationGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventhub/v20230101preview:ApplicationGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventhub/v20240101:ApplicationGroup"),
 		},
 	})
 	opts = append(opts, aliases)

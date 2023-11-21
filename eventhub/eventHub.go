@@ -15,7 +15,7 @@ import (
 // Single item in List or Get Event Hub operation
 // Azure REST API version: 2022-10-01-preview. Prior API version in Azure Native 1.x: 2017-04-01.
 //
-// Other available API versions: 2015-08-01, 2023-01-01-preview.
+// Other available API versions: 2015-08-01, 2023-01-01-preview, 2024-01-01.
 type EventHub struct {
 	pulumi.CustomResourceState
 
@@ -88,6 +88,9 @@ func NewEventHub(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventhub/v20230101preview:EventHub"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventhub/v20240101:EventHub"),
 		},
 	})
 	opts = append(opts, aliases)

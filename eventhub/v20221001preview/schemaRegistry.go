@@ -62,6 +62,9 @@ func NewSchemaRegistry(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:eventhub/v20230101preview:SchemaRegistry"),
 		},
+		{
+			Type: pulumi.String("azure-native:eventhub/v20240101:SchemaRegistry"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
