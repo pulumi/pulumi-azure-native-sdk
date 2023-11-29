@@ -14,7 +14,7 @@ import (
 // Notification Hub Resource.
 // Azure REST API version: 2023-01-01-preview.
 //
-// Other available API versions: 2014-09-01, 2016-03-01, 2017-04-01, 2023-09-01.
+// Other available API versions: 2014-09-01, 2016-03-01, 2017-04-01, 2023-09-01, 2023-10-01-preview.
 func LookupNotificationHub(ctx *pulumi.Context, args *LookupNotificationHubArgs, opts ...pulumi.InvokeOption) (*LookupNotificationHubResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNotificationHubResult

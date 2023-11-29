@@ -15,7 +15,7 @@ import (
 // PNS credentials.
 // Azure REST API version: 2023-01-01-preview.
 //
-// Other available API versions: 2014-09-01, 2016-03-01, 2017-04-01, 2023-09-01.
+// Other available API versions: 2014-09-01, 2016-03-01, 2017-04-01, 2023-09-01, 2023-10-01-preview.
 func GetNotificationHubPnsCredentials(ctx *pulumi.Context, args *GetNotificationHubPnsCredentialsArgs, opts ...pulumi.InvokeOption) (*GetNotificationHubPnsCredentialsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetNotificationHubPnsCredentialsResult

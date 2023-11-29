@@ -14,7 +14,7 @@ import (
 // Represents a Private Endpoint Connection ARM resource - a sub-resource of Notification Hubs namespace.
 // Azure REST API version: 2023-01-01-preview.
 //
-// Other available API versions: 2023-09-01.
+// Other available API versions: 2023-09-01, 2023-10-01-preview.
 func LookupPrivateEndpointConnection(ctx *pulumi.Context, args *LookupPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPrivateEndpointConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateEndpointConnectionResult

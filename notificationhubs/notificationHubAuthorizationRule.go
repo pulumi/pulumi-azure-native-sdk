@@ -15,7 +15,7 @@ import (
 // Response for POST requests that return single SharedAccessAuthorizationRule.
 // Azure REST API version: 2023-01-01-preview. Prior API version in Azure Native 1.x: 2017-04-01.
 //
-// Other available API versions: 2016-03-01, 2017-04-01, 2023-09-01.
+// Other available API versions: 2016-03-01, 2017-04-01, 2023-09-01, 2023-10-01-preview.
 type NotificationHubAuthorizationRule struct {
 	pulumi.CustomResourceState
 
@@ -61,6 +61,9 @@ func NewNotificationHubAuthorizationRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:notificationhubs/v20230901:NotificationHubAuthorizationRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:notificationhubs/v20231001preview:NotificationHubAuthorizationRule"),
 		},
 	})
 	opts = append(opts, aliases)

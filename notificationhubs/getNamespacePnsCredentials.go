@@ -15,7 +15,7 @@ import (
 // PNS credentials.
 // Azure REST API version: 2023-01-01-preview.
 //
-// Other available API versions: 2023-09-01.
+// Other available API versions: 2023-09-01, 2023-10-01-preview.
 func GetNamespacePnsCredentials(ctx *pulumi.Context, args *GetNamespacePnsCredentialsArgs, opts ...pulumi.InvokeOption) (*GetNamespacePnsCredentialsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetNamespacePnsCredentialsResult
