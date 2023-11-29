@@ -2553,82 +2553,11 @@ func (o KubernetesVersionCapabilitiesResponseOutput) SupportPlan() pulumi.String
 	return o.ApplyT(func(v KubernetesVersionCapabilitiesResponse) []string { return v.SupportPlan }).(pulumi.StringArrayOutput)
 }
 
-// Kubernetes version profile for given major.minor release
-type KubernetesVersionProfilePropertiesResponse struct {
-	// Capabilities on this kubernetes version
-	Capabilities KubernetesVersionCapabilitiesResponse `pulumi:"capabilities"`
-	// Whether this version is in preview mode.
-	IsPreview bool `pulumi:"isPreview"`
-	// Patch versions of a Kubernetes release
-	PatchVersions map[string]KubernetesPatchVersionsResponse `pulumi:"patchVersions"`
-	// major.minor version of Kubernetes release
-	Version string `pulumi:"version"`
-}
-
-// Kubernetes version profile for given major.minor release
-type KubernetesVersionProfilePropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (KubernetesVersionProfilePropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KubernetesVersionProfilePropertiesResponse)(nil)).Elem()
-}
-
-func (o KubernetesVersionProfilePropertiesResponseOutput) ToKubernetesVersionProfilePropertiesResponseOutput() KubernetesVersionProfilePropertiesResponseOutput {
-	return o
-}
-
-func (o KubernetesVersionProfilePropertiesResponseOutput) ToKubernetesVersionProfilePropertiesResponseOutputWithContext(ctx context.Context) KubernetesVersionProfilePropertiesResponseOutput {
-	return o
-}
-
-// Capabilities on this kubernetes version
-func (o KubernetesVersionProfilePropertiesResponseOutput) Capabilities() KubernetesVersionCapabilitiesResponseOutput {
-	return o.ApplyT(func(v KubernetesVersionProfilePropertiesResponse) KubernetesVersionCapabilitiesResponse {
-		return v.Capabilities
-	}).(KubernetesVersionCapabilitiesResponseOutput)
-}
-
-// Whether this version is in preview mode.
-func (o KubernetesVersionProfilePropertiesResponseOutput) IsPreview() pulumi.BoolOutput {
-	return o.ApplyT(func(v KubernetesVersionProfilePropertiesResponse) bool { return v.IsPreview }).(pulumi.BoolOutput)
-}
-
-// Patch versions of a Kubernetes release
-func (o KubernetesVersionProfilePropertiesResponseOutput) PatchVersions() KubernetesPatchVersionsResponseMapOutput {
-	return o.ApplyT(func(v KubernetesVersionProfilePropertiesResponse) map[string]KubernetesPatchVersionsResponse {
-		return v.PatchVersions
-	}).(KubernetesPatchVersionsResponseMapOutput)
-}
-
-// major.minor version of Kubernetes release
-func (o KubernetesVersionProfilePropertiesResponseOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v KubernetesVersionProfilePropertiesResponse) string { return v.Version }).(pulumi.StringOutput)
-}
-
-type KubernetesVersionProfilePropertiesResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (KubernetesVersionProfilePropertiesResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KubernetesVersionProfilePropertiesResponse)(nil)).Elem()
-}
-
-func (o KubernetesVersionProfilePropertiesResponseArrayOutput) ToKubernetesVersionProfilePropertiesResponseArrayOutput() KubernetesVersionProfilePropertiesResponseArrayOutput {
-	return o
-}
-
-func (o KubernetesVersionProfilePropertiesResponseArrayOutput) ToKubernetesVersionProfilePropertiesResponseArrayOutputWithContext(ctx context.Context) KubernetesVersionProfilePropertiesResponseArrayOutput {
-	return o
-}
-
-func (o KubernetesVersionProfilePropertiesResponseArrayOutput) Index(i pulumi.IntInput) KubernetesVersionProfilePropertiesResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesVersionProfilePropertiesResponse {
-		return vs[0].([]KubernetesVersionProfilePropertiesResponse)[vs[1].(int)]
-	}).(KubernetesVersionProfilePropertiesResponseOutput)
-}
-
 type KubernetesVersionProfileResponseProperties struct {
 	// Provisioning state of the resource
 	ProvisioningState string `pulumi:"provisioningState"`
 	// List of supported Kubernetes versions
-	Values []KubernetesVersionProfilePropertiesResponse `pulumi:"values"`
+	Values []KubernetesVersionPropertiesResponse `pulumi:"values"`
 }
 
 type KubernetesVersionProfileResponsePropertiesOutput struct{ *pulumi.OutputState }
@@ -2651,18 +2580,89 @@ func (o KubernetesVersionProfileResponsePropertiesOutput) ProvisioningState() pu
 }
 
 // List of supported Kubernetes versions
-func (o KubernetesVersionProfileResponsePropertiesOutput) Values() KubernetesVersionProfilePropertiesResponseArrayOutput {
-	return o.ApplyT(func(v KubernetesVersionProfileResponseProperties) []KubernetesVersionProfilePropertiesResponse {
+func (o KubernetesVersionProfileResponsePropertiesOutput) Values() KubernetesVersionPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v KubernetesVersionProfileResponseProperties) []KubernetesVersionPropertiesResponse {
 		return v.Values
-	}).(KubernetesVersionProfilePropertiesResponseArrayOutput)
+	}).(KubernetesVersionPropertiesResponseArrayOutput)
+}
+
+// Kubernetes version profile for given major.minor release
+type KubernetesVersionPropertiesResponse struct {
+	// Capabilities on this kubernetes version
+	Capabilities KubernetesVersionCapabilitiesResponse `pulumi:"capabilities"`
+	// Whether this version is in preview mode.
+	IsPreview bool `pulumi:"isPreview"`
+	// Patch versions of a Kubernetes release
+	PatchVersions map[string]KubernetesPatchVersionsResponse `pulumi:"patchVersions"`
+	// major.minor version of Kubernetes release
+	Version string `pulumi:"version"`
+}
+
+// Kubernetes version profile for given major.minor release
+type KubernetesVersionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (KubernetesVersionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesVersionPropertiesResponse)(nil)).Elem()
+}
+
+func (o KubernetesVersionPropertiesResponseOutput) ToKubernetesVersionPropertiesResponseOutput() KubernetesVersionPropertiesResponseOutput {
+	return o
+}
+
+func (o KubernetesVersionPropertiesResponseOutput) ToKubernetesVersionPropertiesResponseOutputWithContext(ctx context.Context) KubernetesVersionPropertiesResponseOutput {
+	return o
+}
+
+// Capabilities on this kubernetes version
+func (o KubernetesVersionPropertiesResponseOutput) Capabilities() KubernetesVersionCapabilitiesResponseOutput {
+	return o.ApplyT(func(v KubernetesVersionPropertiesResponse) KubernetesVersionCapabilitiesResponse {
+		return v.Capabilities
+	}).(KubernetesVersionCapabilitiesResponseOutput)
+}
+
+// Whether this version is in preview mode.
+func (o KubernetesVersionPropertiesResponseOutput) IsPreview() pulumi.BoolOutput {
+	return o.ApplyT(func(v KubernetesVersionPropertiesResponse) bool { return v.IsPreview }).(pulumi.BoolOutput)
+}
+
+// Patch versions of a Kubernetes release
+func (o KubernetesVersionPropertiesResponseOutput) PatchVersions() KubernetesPatchVersionsResponseMapOutput {
+	return o.ApplyT(func(v KubernetesVersionPropertiesResponse) map[string]KubernetesPatchVersionsResponse {
+		return v.PatchVersions
+	}).(KubernetesPatchVersionsResponseMapOutput)
+}
+
+// major.minor version of Kubernetes release
+func (o KubernetesVersionPropertiesResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesVersionPropertiesResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type KubernetesVersionPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (KubernetesVersionPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesVersionPropertiesResponse)(nil)).Elem()
+}
+
+func (o KubernetesVersionPropertiesResponseArrayOutput) ToKubernetesVersionPropertiesResponseArrayOutput() KubernetesVersionPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o KubernetesVersionPropertiesResponseArrayOutput) ToKubernetesVersionPropertiesResponseArrayOutputWithContext(ctx context.Context) KubernetesVersionPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o KubernetesVersionPropertiesResponseArrayOutput) Index(i pulumi.IntInput) KubernetesVersionPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesVersionPropertiesResponse {
+		return vs[0].([]KubernetesVersionPropertiesResponse)[vs[1].(int)]
+	}).(KubernetesVersionPropertiesResponseOutput)
 }
 
 // Whether a particular kubernetes version's variant (CBLMariner, Windows, Windows2022) is ready or not
 type KubernetesVersionReadinessResponse struct {
 	// If image is not ready, the error message for version not being ready
 	ErrorMessage string `pulumi:"errorMessage"`
-	// The particular KubernetesVersion's Image's OS SKU (CBLMariner, Windows, Windows2022)
-	OsSku string `pulumi:"osSku"`
+	// Specifies the OS SKU used by the agent pool. The default is CBLMariner if OSType is Linux. The default is Windows2019 when OSType is Windows.
+	OsSku *string `pulumi:"osSku"`
 	// The particular KubernetesVersion's Image's OS Type (Linux, Windows)
 	OsType string `pulumi:"osType"`
 	// Whether or not the given image is ready
@@ -2675,9 +2675,6 @@ func (val *KubernetesVersionReadinessResponse) Defaults() *KubernetesVersionRead
 		return nil
 	}
 	tmp := *val
-	if utilities.IsZero(tmp.OsSku) {
-		tmp.OsSku = "CBLMariner"
-	}
 	if utilities.IsZero(tmp.OsType) {
 		tmp.OsType = "Linux"
 	}
@@ -2704,9 +2701,9 @@ func (o KubernetesVersionReadinessResponseOutput) ErrorMessage() pulumi.StringOu
 	return o.ApplyT(func(v KubernetesVersionReadinessResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
 }
 
-// The particular KubernetesVersion's Image's OS SKU (CBLMariner, Windows, Windows2022)
-func (o KubernetesVersionReadinessResponseOutput) OsSku() pulumi.StringOutput {
-	return o.ApplyT(func(v KubernetesVersionReadinessResponse) string { return v.OsSku }).(pulumi.StringOutput)
+// Specifies the OS SKU used by the agent pool. The default is CBLMariner if OSType is Linux. The default is Windows2019 when OSType is Windows.
+func (o KubernetesVersionReadinessResponseOutput) OsSku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesVersionReadinessResponse) *string { return v.OsSku }).(pulumi.StringPtrOutput)
 }
 
 // The particular KubernetesVersion's Image's OS Type (Linux, Windows)
@@ -6950,85 +6947,11 @@ func (o VmSkuCapabilitiesResponseArrayOutput) Index(i pulumi.IntInput) VmSkuCapa
 	}).(VmSkuCapabilitiesResponseOutput)
 }
 
-// The profile for supported VM skus
-type VmSkuProfilePropertiesResponse struct {
-	// A name value pair to describe the specific vm's capability
-	Capabilities []VmSkuCapabilitiesResponse `pulumi:"capabilities"`
-	// The name of the VM Family
-	Name string `pulumi:"name"`
-	// The resource type of the vm
-	ResourceType string `pulumi:"resourceType"`
-	// The size of the VM Family
-	Size string `pulumi:"size"`
-	// The tier of the VM Family
-	Tier string `pulumi:"tier"`
-}
-
-// The profile for supported VM skus
-type VmSkuProfilePropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (VmSkuProfilePropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmSkuProfilePropertiesResponse)(nil)).Elem()
-}
-
-func (o VmSkuProfilePropertiesResponseOutput) ToVmSkuProfilePropertiesResponseOutput() VmSkuProfilePropertiesResponseOutput {
-	return o
-}
-
-func (o VmSkuProfilePropertiesResponseOutput) ToVmSkuProfilePropertiesResponseOutputWithContext(ctx context.Context) VmSkuProfilePropertiesResponseOutput {
-	return o
-}
-
-// A name value pair to describe the specific vm's capability
-func (o VmSkuProfilePropertiesResponseOutput) Capabilities() VmSkuCapabilitiesResponseArrayOutput {
-	return o.ApplyT(func(v VmSkuProfilePropertiesResponse) []VmSkuCapabilitiesResponse { return v.Capabilities }).(VmSkuCapabilitiesResponseArrayOutput)
-}
-
-// The name of the VM Family
-func (o VmSkuProfilePropertiesResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v VmSkuProfilePropertiesResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The resource type of the vm
-func (o VmSkuProfilePropertiesResponseOutput) ResourceType() pulumi.StringOutput {
-	return o.ApplyT(func(v VmSkuProfilePropertiesResponse) string { return v.ResourceType }).(pulumi.StringOutput)
-}
-
-// The size of the VM Family
-func (o VmSkuProfilePropertiesResponseOutput) Size() pulumi.StringOutput {
-	return o.ApplyT(func(v VmSkuProfilePropertiesResponse) string { return v.Size }).(pulumi.StringOutput)
-}
-
-// The tier of the VM Family
-func (o VmSkuProfilePropertiesResponseOutput) Tier() pulumi.StringOutput {
-	return o.ApplyT(func(v VmSkuProfilePropertiesResponse) string { return v.Tier }).(pulumi.StringOutput)
-}
-
-type VmSkuProfilePropertiesResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (VmSkuProfilePropertiesResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VmSkuProfilePropertiesResponse)(nil)).Elem()
-}
-
-func (o VmSkuProfilePropertiesResponseArrayOutput) ToVmSkuProfilePropertiesResponseArrayOutput() VmSkuProfilePropertiesResponseArrayOutput {
-	return o
-}
-
-func (o VmSkuProfilePropertiesResponseArrayOutput) ToVmSkuProfilePropertiesResponseArrayOutputWithContext(ctx context.Context) VmSkuProfilePropertiesResponseArrayOutput {
-	return o
-}
-
-func (o VmSkuProfilePropertiesResponseArrayOutput) Index(i pulumi.IntInput) VmSkuProfilePropertiesResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmSkuProfilePropertiesResponse {
-		return vs[0].([]VmSkuProfilePropertiesResponse)[vs[1].(int)]
-	}).(VmSkuProfilePropertiesResponseOutput)
-}
-
 type VmSkuProfileResponseProperties struct {
 	// Provisioning state of the resource
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Array of HybridAKS Support VM Skus
-	Values []VmSkuProfilePropertiesResponse `pulumi:"values"`
+	Values []VmSkuPropertiesResponse `pulumi:"values"`
 }
 
 type VmSkuProfileResponsePropertiesOutput struct{ *pulumi.OutputState }
@@ -7051,8 +6974,82 @@ func (o VmSkuProfileResponsePropertiesOutput) ProvisioningState() pulumi.StringO
 }
 
 // Array of HybridAKS Support VM Skus
-func (o VmSkuProfileResponsePropertiesOutput) Values() VmSkuProfilePropertiesResponseArrayOutput {
-	return o.ApplyT(func(v VmSkuProfileResponseProperties) []VmSkuProfilePropertiesResponse { return v.Values }).(VmSkuProfilePropertiesResponseArrayOutput)
+func (o VmSkuProfileResponsePropertiesOutput) Values() VmSkuPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v VmSkuProfileResponseProperties) []VmSkuPropertiesResponse { return v.Values }).(VmSkuPropertiesResponseArrayOutput)
+}
+
+// The profile for supported VM skus
+type VmSkuPropertiesResponse struct {
+	// A name value pair to describe the specific vm's capability
+	Capabilities []VmSkuCapabilitiesResponse `pulumi:"capabilities"`
+	// The name of the VM Family
+	Name string `pulumi:"name"`
+	// The resource type of the vm
+	ResourceType string `pulumi:"resourceType"`
+	// The size of the VM Family
+	Size string `pulumi:"size"`
+	// The tier of the VM Family
+	Tier string `pulumi:"tier"`
+}
+
+// The profile for supported VM skus
+type VmSkuPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (VmSkuPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmSkuPropertiesResponse)(nil)).Elem()
+}
+
+func (o VmSkuPropertiesResponseOutput) ToVmSkuPropertiesResponseOutput() VmSkuPropertiesResponseOutput {
+	return o
+}
+
+func (o VmSkuPropertiesResponseOutput) ToVmSkuPropertiesResponseOutputWithContext(ctx context.Context) VmSkuPropertiesResponseOutput {
+	return o
+}
+
+// A name value pair to describe the specific vm's capability
+func (o VmSkuPropertiesResponseOutput) Capabilities() VmSkuCapabilitiesResponseArrayOutput {
+	return o.ApplyT(func(v VmSkuPropertiesResponse) []VmSkuCapabilitiesResponse { return v.Capabilities }).(VmSkuCapabilitiesResponseArrayOutput)
+}
+
+// The name of the VM Family
+func (o VmSkuPropertiesResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v VmSkuPropertiesResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The resource type of the vm
+func (o VmSkuPropertiesResponseOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v VmSkuPropertiesResponse) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// The size of the VM Family
+func (o VmSkuPropertiesResponseOutput) Size() pulumi.StringOutput {
+	return o.ApplyT(func(v VmSkuPropertiesResponse) string { return v.Size }).(pulumi.StringOutput)
+}
+
+// The tier of the VM Family
+func (o VmSkuPropertiesResponseOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v VmSkuPropertiesResponse) string { return v.Tier }).(pulumi.StringOutput)
+}
+
+type VmSkuPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VmSkuPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmSkuPropertiesResponse)(nil)).Elem()
+}
+
+func (o VmSkuPropertiesResponseArrayOutput) ToVmSkuPropertiesResponseArrayOutput() VmSkuPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o VmSkuPropertiesResponseArrayOutput) ToVmSkuPropertiesResponseArrayOutputWithContext(ctx context.Context) VmSkuPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o VmSkuPropertiesResponseArrayOutput) Index(i pulumi.IntInput) VmSkuPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmSkuPropertiesResponse {
+		return vs[0].([]VmSkuPropertiesResponse)[vs[1].(int)]
+	}).(VmSkuPropertiesResponseOutput)
 }
 
 func init() {
@@ -7099,9 +7096,9 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesPatchVersionsResponseOutput{})
 	pulumi.RegisterOutputType(KubernetesPatchVersionsResponseMapOutput{})
 	pulumi.RegisterOutputType(KubernetesVersionCapabilitiesResponseOutput{})
-	pulumi.RegisterOutputType(KubernetesVersionProfilePropertiesResponseOutput{})
-	pulumi.RegisterOutputType(KubernetesVersionProfilePropertiesResponseArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesVersionProfileResponsePropertiesOutput{})
+	pulumi.RegisterOutputType(KubernetesVersionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(KubernetesVersionPropertiesResponseArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesVersionReadinessResponseOutput{})
 	pulumi.RegisterOutputType(KubernetesVersionReadinessResponseArrayOutput{})
 	pulumi.RegisterOutputType(LinuxProfilePropertiesOutput{})
@@ -7178,7 +7175,7 @@ func init() {
 	pulumi.RegisterOutputType(VirtualNetworkResponseExtendedLocationPtrOutput{})
 	pulumi.RegisterOutputType(VmSkuCapabilitiesResponseOutput{})
 	pulumi.RegisterOutputType(VmSkuCapabilitiesResponseArrayOutput{})
-	pulumi.RegisterOutputType(VmSkuProfilePropertiesResponseOutput{})
-	pulumi.RegisterOutputType(VmSkuProfilePropertiesResponseArrayOutput{})
 	pulumi.RegisterOutputType(VmSkuProfileResponsePropertiesOutput{})
+	pulumi.RegisterOutputType(VmSkuPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(VmSkuPropertiesResponseArrayOutput{})
 }
