@@ -26,7 +26,6 @@ type ActionType string
 const (
 	ActionTypeAddActionGroups       = ActionType("AddActionGroups")
 	ActionTypeRemoveAllActionGroups = ActionType("RemoveAllActionGroups")
-	ActionTypeCorrelateAlerts       = ActionType("CorrelateAlerts")
 )
 
 // The alert rule state.
@@ -65,14 +64,6 @@ const (
 	FieldAlertRuleName       = Field("AlertRuleName")
 	FieldDescription         = Field("Description")
 	FieldAlertContext        = Field("AlertContext")
-)
-
-// Indicates how to handle child alerts notifications.
-type NotificationsForCorrelatedAlerts string
-
-const (
-	NotificationsForCorrelatedAlertsNotifyAlways   = NotificationsForCorrelatedAlerts("NotifyAlways")
-	NotificationsForCorrelatedAlertsSuppressAlways = NotificationsForCorrelatedAlerts("SuppressAlways")
 )
 
 // Operator for a given condition.
