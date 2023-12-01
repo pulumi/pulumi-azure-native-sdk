@@ -13,7 +13,9 @@ import (
 )
 
 // Alert processing rule object containing target scopes, conditions and scheduling logic.
-// Azure REST API version: 2023-05-01-preview.
+// Azure REST API version: 2021-08-08.
+//
+// Other available API versions: 2023-05-01-preview.
 type AlertProcessingRuleByName struct {
 	pulumi.CustomResourceState
 
