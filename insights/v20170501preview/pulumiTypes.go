@@ -13,6 +13,73 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// The diagnostic settings category resource.
+type DiagnosticSettingsCategoryResourceResponse struct {
+	// The type of the diagnostic settings category.
+	CategoryType *string `pulumi:"categoryType"`
+	// Azure resource Id
+	Id string `pulumi:"id"`
+	// Azure resource name
+	Name string `pulumi:"name"`
+	// Azure resource type
+	Type string `pulumi:"type"`
+}
+
+// The diagnostic settings category resource.
+type DiagnosticSettingsCategoryResourceResponseOutput struct{ *pulumi.OutputState }
+
+func (DiagnosticSettingsCategoryResourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiagnosticSettingsCategoryResourceResponse)(nil)).Elem()
+}
+
+func (o DiagnosticSettingsCategoryResourceResponseOutput) ToDiagnosticSettingsCategoryResourceResponseOutput() DiagnosticSettingsCategoryResourceResponseOutput {
+	return o
+}
+
+func (o DiagnosticSettingsCategoryResourceResponseOutput) ToDiagnosticSettingsCategoryResourceResponseOutputWithContext(ctx context.Context) DiagnosticSettingsCategoryResourceResponseOutput {
+	return o
+}
+
+// The type of the diagnostic settings category.
+func (o DiagnosticSettingsCategoryResourceResponseOutput) CategoryType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiagnosticSettingsCategoryResourceResponse) *string { return v.CategoryType }).(pulumi.StringPtrOutput)
+}
+
+// Azure resource Id
+func (o DiagnosticSettingsCategoryResourceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v DiagnosticSettingsCategoryResourceResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Azure resource name
+func (o DiagnosticSettingsCategoryResourceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DiagnosticSettingsCategoryResourceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Azure resource type
+func (o DiagnosticSettingsCategoryResourceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DiagnosticSettingsCategoryResourceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DiagnosticSettingsCategoryResourceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DiagnosticSettingsCategoryResourceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiagnosticSettingsCategoryResourceResponse)(nil)).Elem()
+}
+
+func (o DiagnosticSettingsCategoryResourceResponseArrayOutput) ToDiagnosticSettingsCategoryResourceResponseArrayOutput() DiagnosticSettingsCategoryResourceResponseArrayOutput {
+	return o
+}
+
+func (o DiagnosticSettingsCategoryResourceResponseArrayOutput) ToDiagnosticSettingsCategoryResourceResponseArrayOutputWithContext(ctx context.Context) DiagnosticSettingsCategoryResourceResponseArrayOutput {
+	return o
+}
+
+func (o DiagnosticSettingsCategoryResourceResponseArrayOutput) Index(i pulumi.IntInput) DiagnosticSettingsCategoryResourceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiagnosticSettingsCategoryResourceResponse {
+		return vs[0].([]DiagnosticSettingsCategoryResourceResponse)[vs[1].(int)]
+	}).(DiagnosticSettingsCategoryResourceResponseOutput)
+}
+
 // Part of Subscription diagnostic setting. Specifies the settings for a particular log.
 type SubscriptionLogSettings struct {
 	// Name of a Subscription Diagnostic Log category for a resource type this setting is applied to.
@@ -176,6 +243,8 @@ func (o SubscriptionLogSettingsResponseArrayOutput) Index(i pulumi.IntInput) Sub
 }
 
 func init() {
+	pulumi.RegisterOutputType(DiagnosticSettingsCategoryResourceResponseOutput{})
+	pulumi.RegisterOutputType(DiagnosticSettingsCategoryResourceResponseArrayOutput{})
 	pulumi.RegisterOutputType(SubscriptionLogSettingsOutput{})
 	pulumi.RegisterOutputType(SubscriptionLogSettingsArrayOutput{})
 	pulumi.RegisterOutputType(SubscriptionLogSettingsResponseOutput{})

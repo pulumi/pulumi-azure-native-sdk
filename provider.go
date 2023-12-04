@@ -63,11 +63,15 @@ type providerArgs struct {
 	ClientSecret *string `pulumi:"clientSecret"`
 	// This will disable the Pulumi Partner ID which is used if a custom `partnerId` isn't specified.
 	DisablePulumiPartnerId *bool `pulumi:"disablePulumiPartnerId"`
-	// The Cloud Environment which should be used. Possible values are public, usgovernment, german, and china. Defaults to public.
+	// The Cloud Environment which should be used. Possible values are public, usgovernment, and china. Defaults to public.
 	Environment *string `pulumi:"environment"`
+	// The location to use. ResourceGroups will consult this property for a default location, if one was not supplied explicitly when defining the resource.
+	Location *string `pulumi:"location"`
+	// The Hostname of the Azure Metadata Service.
+	MetadataHost *string `pulumi:"metadataHost"`
 	// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected automatically.
 	MsiEndpoint *string `pulumi:"msiEndpoint"`
-	// Your provider’s token to exchange for an OIDC token.
+	// Your cloud service or provider’s bearer token to exchange for an OIDC ID token.
 	OidcRequestToken *string `pulumi:"oidcRequestToken"`
 	// The URL to initiate the `oidcRequestToken` OIDC token exchange.
 	OidcRequestUrl *string `pulumi:"oidcRequestUrl"`
@@ -99,11 +103,15 @@ type ProviderArgs struct {
 	ClientSecret pulumi.StringPtrInput
 	// This will disable the Pulumi Partner ID which is used if a custom `partnerId` isn't specified.
 	DisablePulumiPartnerId pulumi.BoolPtrInput
-	// The Cloud Environment which should be used. Possible values are public, usgovernment, german, and china. Defaults to public.
+	// The Cloud Environment which should be used. Possible values are public, usgovernment, and china. Defaults to public.
 	Environment pulumi.StringPtrInput
+	// The location to use. ResourceGroups will consult this property for a default location, if one was not supplied explicitly when defining the resource.
+	Location pulumi.StringPtrInput
+	// The Hostname of the Azure Metadata Service.
+	MetadataHost pulumi.StringPtrInput
 	// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected automatically.
 	MsiEndpoint pulumi.StringPtrInput
-	// Your provider’s token to exchange for an OIDC token.
+	// Your cloud service or provider’s bearer token to exchange for an OIDC ID token.
 	OidcRequestToken pulumi.StringPtrInput
 	// The URL to initiate the `oidcRequestToken` OIDC token exchange.
 	OidcRequestUrl pulumi.StringPtrInput
