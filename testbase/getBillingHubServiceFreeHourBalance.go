@@ -12,6 +12,8 @@ import (
 )
 
 // Azure REST API version: 2022-04-01-preview.
+//
+// Other available API versions: 2023-11-01-preview.
 func GetBillingHubServiceFreeHourBalance(ctx *pulumi.Context, args *GetBillingHubServiceFreeHourBalanceArgs, opts ...pulumi.InvokeOption) (*GetBillingHubServiceFreeHourBalanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetBillingHubServiceFreeHourBalanceResult

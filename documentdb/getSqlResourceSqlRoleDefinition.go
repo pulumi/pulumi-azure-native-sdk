@@ -14,7 +14,7 @@ import (
 // Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition with the given Id.
 // Azure REST API version: 2023-04-15.
 //
-// Other available API versions: 2023-09-15, 2023-09-15-preview.
+// Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15.
 func LookupSqlResourceSqlRoleDefinition(ctx *pulumi.Context, args *LookupSqlResourceSqlRoleDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupSqlResourceSqlRoleDefinitionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlResourceSqlRoleDefinitionResult

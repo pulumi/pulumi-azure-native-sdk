@@ -13,6 +13,8 @@ import (
 
 // Gets the file upload URL of a Test Base Account.
 // Azure REST API version: 2022-04-01-preview.
+//
+// Other available API versions: 2023-11-01-preview.
 func GetTestBaseAccountFileUploadUrl(ctx *pulumi.Context, args *GetTestBaseAccountFileUploadUrlArgs, opts ...pulumi.InvokeOption) (*GetTestBaseAccountFileUploadUrlResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetTestBaseAccountFileUploadUrlResult

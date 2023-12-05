@@ -268,6 +268,9 @@ func NewVolume(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:netapp/v20230501:Volume"),
 		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20230501preview:Volume"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

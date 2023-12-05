@@ -98,6 +98,9 @@ func NewCassandraCluster(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20230915:CassandraCluster"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20231115:CassandraCluster"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

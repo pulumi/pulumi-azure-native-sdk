@@ -14,6 +14,8 @@ import (
 
 // Describes a federated identity credential.
 // Azure REST API version: 2023-01-31. Prior API version in Azure Native 1.x: 2022-01-31-preview.
+//
+// Other available API versions: 2023-07-31-preview.
 type FederatedIdentityCredential struct {
 	pulumi.CustomResourceState
 
@@ -59,6 +61,9 @@ func NewFederatedIdentityCredential(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:managedidentity/v20230131:FederatedIdentityCredential"),
+		},
+		{
+			Type: pulumi.String("azure-native:managedidentity/v20230731preview:FederatedIdentityCredential"),
 		},
 	})
 	opts = append(opts, aliases)

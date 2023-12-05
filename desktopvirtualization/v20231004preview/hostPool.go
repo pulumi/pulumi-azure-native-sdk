@@ -165,6 +165,9 @@ func NewHostPool(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230905:HostPool"),
 		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20231101preview:HostPool"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

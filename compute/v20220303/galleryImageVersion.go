@@ -83,6 +83,9 @@ func NewGalleryImageVersion(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20220103:GalleryImageVersion"),
 		},
+		{
+			Type: pulumi.String("azure-native:compute/v20220803:GalleryImageVersion"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -14,7 +14,7 @@ import (
 
 // Azure REST API version: 2023-05-01-preview.
 //
-// Other available API versions: 2023-07-01.
+// Other available API versions: 2023-07-01, 2023-10-01-preview.
 type AgentPool struct {
 	pulumi.CustomResourceState
 
@@ -94,6 +94,9 @@ func NewAgentPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20230701:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20231001preview:AgentPool"),
 		},
 	})
 	opts = append(opts, aliases)

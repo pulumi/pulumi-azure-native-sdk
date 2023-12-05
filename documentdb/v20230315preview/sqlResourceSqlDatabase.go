@@ -152,6 +152,9 @@ func NewSqlResourceSqlDatabase(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:documentdb/v20230915preview:SqlResourceSqlDatabase"),
 		},
+		{
+			Type: pulumi.String("azure-native:documentdb/v20231115:SqlResourceSqlDatabase"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

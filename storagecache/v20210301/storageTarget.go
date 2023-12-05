@@ -93,6 +93,9 @@ func NewStorageTarget(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storagecache/v20230501:StorageTarget"),
 		},
+		{
+			Type: pulumi.String("azure-native:storagecache/v20231101preview:StorageTarget"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

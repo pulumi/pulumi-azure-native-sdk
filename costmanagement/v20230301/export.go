@@ -91,6 +91,9 @@ func NewExport(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20230801:Export"),
 		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20231101:Export"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

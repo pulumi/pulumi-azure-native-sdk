@@ -13,6 +13,8 @@ import (
 
 // Gets a Test Base Account.
 // Azure REST API version: 2022-04-01-preview.
+//
+// Other available API versions: 2023-11-01-preview.
 func LookupTestBaseAccount(ctx *pulumi.Context, args *LookupTestBaseAccountArgs, opts ...pulumi.InvokeOption) (*LookupTestBaseAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTestBaseAccountResult

@@ -73,10 +73,10 @@ func NewL2Network(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:networkcloud:L2Network"),
 		},
 		{
-			Type: pulumi.String("azure-native:networkcloud/v20221212preview:L2Network"),
+			Type: pulumi.String("azure-native:networkcloud/v20230701:L2Network"),
 		},
 		{
-			Type: pulumi.String("azure-native:networkcloud/v20230701:L2Network"),
+			Type: pulumi.String("azure-native:networkcloud/v20231001preview:L2Network"),
 		},
 	})
 	opts = append(opts, aliases)

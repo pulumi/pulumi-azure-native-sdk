@@ -92,6 +92,9 @@ func NewPackage(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:testbase/v20201216preview:Package"),
 		},
+		{
+			Type: pulumi.String("azure-native:testbase/v20231101preview:Package"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

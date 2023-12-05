@@ -14,7 +14,7 @@ import (
 // Get properties of the provided Kubernetes cluster agent pool.
 // Azure REST API version: 2023-05-01-preview.
 //
-// Other available API versions: 2023-07-01.
+// Other available API versions: 2023-07-01, 2023-10-01-preview.
 func LookupAgentPool(ctx *pulumi.Context, args *LookupAgentPoolArgs, opts ...pulumi.InvokeOption) (*LookupAgentPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAgentPoolResult

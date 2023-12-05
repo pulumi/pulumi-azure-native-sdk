@@ -14,7 +14,7 @@ import (
 // Get properties of the provided trunked network.
 // Azure REST API version: 2023-05-01-preview.
 //
-// Other available API versions: 2023-07-01.
+// Other available API versions: 2023-07-01, 2023-10-01-preview.
 func LookupTrunkedNetwork(ctx *pulumi.Context, args *LookupTrunkedNetworkArgs, opts ...pulumi.InvokeOption) (*LookupTrunkedNetworkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTrunkedNetworkResult

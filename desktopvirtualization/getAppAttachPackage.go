@@ -13,6 +13,8 @@ import (
 
 // Get an app attach package.
 // Azure REST API version: 2023-10-04-preview.
+//
+// Other available API versions: 2023-11-01-preview.
 func LookupAppAttachPackage(ctx *pulumi.Context, args *LookupAppAttachPackageArgs, opts ...pulumi.InvokeOption) (*LookupAppAttachPackageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppAttachPackageResult

@@ -518,10 +518,18 @@ type Command struct {
 	Content string `pulumi:"content"`
 	// The type of command content.
 	ContentType string `pulumi:"contentType"`
+	// Specifies whether to enroll Intune before the command.
+	EnrollIntuneBefore *bool `pulumi:"enrollIntuneBefore"`
+	// Specifies whether to install first party applications before running the command.
+	Install1PAppBefore *bool `pulumi:"install1PAppBefore"`
 	// Specifies the max run time of the command.
 	MaxRunTime *int `pulumi:"maxRunTime"`
 	// The name of the command.
 	Name string `pulumi:"name"`
+	// Specifies whether the command is assigned to be executed after in-place upgrade.
+	PostUpgrade *bool `pulumi:"postUpgrade"`
+	// Specifies whether the command is assigned to be executed before in-place upgrade.
+	PreUpgrade *bool `pulumi:"preUpgrade"`
 	// Specifies whether to restart the VM after the command executed.
 	RestartAfter *bool `pulumi:"restartAfter"`
 	// Specifies whether to run the command in interactive mode.
@@ -553,10 +561,18 @@ type CommandArgs struct {
 	Content pulumi.StringInput `pulumi:"content"`
 	// The type of command content.
 	ContentType pulumi.StringInput `pulumi:"contentType"`
+	// Specifies whether to enroll Intune before the command.
+	EnrollIntuneBefore pulumi.BoolPtrInput `pulumi:"enrollIntuneBefore"`
+	// Specifies whether to install first party applications before running the command.
+	Install1PAppBefore pulumi.BoolPtrInput `pulumi:"install1PAppBefore"`
 	// Specifies the max run time of the command.
 	MaxRunTime pulumi.IntPtrInput `pulumi:"maxRunTime"`
 	// The name of the command.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Specifies whether the command is assigned to be executed after in-place upgrade.
+	PostUpgrade pulumi.BoolPtrInput `pulumi:"postUpgrade"`
+	// Specifies whether the command is assigned to be executed before in-place upgrade.
+	PreUpgrade pulumi.BoolPtrInput `pulumi:"preUpgrade"`
 	// Specifies whether to restart the VM after the command executed.
 	RestartAfter pulumi.BoolPtrInput `pulumi:"restartAfter"`
 	// Specifies whether to run the command in interactive mode.
@@ -642,6 +658,16 @@ func (o CommandOutput) ContentType() pulumi.StringOutput {
 	return o.ApplyT(func(v Command) string { return v.ContentType }).(pulumi.StringOutput)
 }
 
+// Specifies whether to enroll Intune before the command.
+func (o CommandOutput) EnrollIntuneBefore() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Command) *bool { return v.EnrollIntuneBefore }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to install first party applications before running the command.
+func (o CommandOutput) Install1PAppBefore() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Command) *bool { return v.Install1PAppBefore }).(pulumi.BoolPtrOutput)
+}
+
 // Specifies the max run time of the command.
 func (o CommandOutput) MaxRunTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Command) *int { return v.MaxRunTime }).(pulumi.IntPtrOutput)
@@ -650,6 +676,16 @@ func (o CommandOutput) MaxRunTime() pulumi.IntPtrOutput {
 // The name of the command.
 func (o CommandOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v Command) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies whether the command is assigned to be executed after in-place upgrade.
+func (o CommandOutput) PostUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Command) *bool { return v.PostUpgrade }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether the command is assigned to be executed before in-place upgrade.
+func (o CommandOutput) PreUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Command) *bool { return v.PreUpgrade }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies whether to restart the VM after the command executed.
@@ -699,10 +735,18 @@ type CommandResponse struct {
 	Content string `pulumi:"content"`
 	// The type of command content.
 	ContentType string `pulumi:"contentType"`
+	// Specifies whether to enroll Intune before the command.
+	EnrollIntuneBefore *bool `pulumi:"enrollIntuneBefore"`
+	// Specifies whether to install first party applications before running the command.
+	Install1PAppBefore *bool `pulumi:"install1PAppBefore"`
 	// Specifies the max run time of the command.
 	MaxRunTime *int `pulumi:"maxRunTime"`
 	// The name of the command.
 	Name string `pulumi:"name"`
+	// Specifies whether the command is assigned to be executed after in-place upgrade.
+	PostUpgrade *bool `pulumi:"postUpgrade"`
+	// Specifies whether the command is assigned to be executed before in-place upgrade.
+	PreUpgrade *bool `pulumi:"preUpgrade"`
 	// Specifies whether to restart the VM after the command executed.
 	RestartAfter *bool `pulumi:"restartAfter"`
 	// Specifies whether to run the command in interactive mode.
@@ -751,6 +795,16 @@ func (o CommandResponseOutput) ContentType() pulumi.StringOutput {
 	return o.ApplyT(func(v CommandResponse) string { return v.ContentType }).(pulumi.StringOutput)
 }
 
+// Specifies whether to enroll Intune before the command.
+func (o CommandResponseOutput) EnrollIntuneBefore() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CommandResponse) *bool { return v.EnrollIntuneBefore }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether to install first party applications before running the command.
+func (o CommandResponseOutput) Install1PAppBefore() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CommandResponse) *bool { return v.Install1PAppBefore }).(pulumi.BoolPtrOutput)
+}
+
 // Specifies the max run time of the command.
 func (o CommandResponseOutput) MaxRunTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CommandResponse) *int { return v.MaxRunTime }).(pulumi.IntPtrOutput)
@@ -759,6 +813,16 @@ func (o CommandResponseOutput) MaxRunTime() pulumi.IntPtrOutput {
 // The name of the command.
 func (o CommandResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v CommandResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies whether the command is assigned to be executed after in-place upgrade.
+func (o CommandResponseOutput) PostUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CommandResponse) *bool { return v.PostUpgrade }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether the command is assigned to be executed before in-place upgrade.
+func (o CommandResponseOutput) PreUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CommandResponse) *bool { return v.PreUpgrade }).(pulumi.BoolPtrOutput)
 }
 
 // Specifies whether to restart the VM after the command executed.
@@ -994,6 +1058,2426 @@ func (o DistributionGroupListReceiverValueResponsePtrOutput) DistributionGroups(
 		}
 		return v.DistributionGroups
 	}).(pulumi.StringArrayOutput)
+}
+
+// The metadata of Intune app(s) used for generation.
+type DraftPackageIntuneAppMetadata struct {
+	// The Metadata of the Intune App through intunewin file uploading.
+	IntuneApp *DraftPackageIntuneAppMetadataItem `pulumi:"intuneApp"`
+	// The Metadata of dependencies of the Intune App through intunewin file uploading.
+	IntuneAppDependencies []DraftPackageIntuneAppMetadataItem `pulumi:"intuneAppDependencies"`
+}
+
+// DraftPackageIntuneAppMetadataInput is an input type that accepts DraftPackageIntuneAppMetadataArgs and DraftPackageIntuneAppMetadataOutput values.
+// You can construct a concrete instance of `DraftPackageIntuneAppMetadataInput` via:
+//
+//	DraftPackageIntuneAppMetadataArgs{...}
+type DraftPackageIntuneAppMetadataInput interface {
+	pulumi.Input
+
+	ToDraftPackageIntuneAppMetadataOutput() DraftPackageIntuneAppMetadataOutput
+	ToDraftPackageIntuneAppMetadataOutputWithContext(context.Context) DraftPackageIntuneAppMetadataOutput
+}
+
+// The metadata of Intune app(s) used for generation.
+type DraftPackageIntuneAppMetadataArgs struct {
+	// The Metadata of the Intune App through intunewin file uploading.
+	IntuneApp DraftPackageIntuneAppMetadataItemPtrInput `pulumi:"intuneApp"`
+	// The Metadata of dependencies of the Intune App through intunewin file uploading.
+	IntuneAppDependencies DraftPackageIntuneAppMetadataItemArrayInput `pulumi:"intuneAppDependencies"`
+}
+
+func (DraftPackageIntuneAppMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DraftPackageIntuneAppMetadata)(nil)).Elem()
+}
+
+func (i DraftPackageIntuneAppMetadataArgs) ToDraftPackageIntuneAppMetadataOutput() DraftPackageIntuneAppMetadataOutput {
+	return i.ToDraftPackageIntuneAppMetadataOutputWithContext(context.Background())
+}
+
+func (i DraftPackageIntuneAppMetadataArgs) ToDraftPackageIntuneAppMetadataOutputWithContext(ctx context.Context) DraftPackageIntuneAppMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DraftPackageIntuneAppMetadataOutput)
+}
+
+func (i DraftPackageIntuneAppMetadataArgs) ToDraftPackageIntuneAppMetadataPtrOutput() DraftPackageIntuneAppMetadataPtrOutput {
+	return i.ToDraftPackageIntuneAppMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i DraftPackageIntuneAppMetadataArgs) ToDraftPackageIntuneAppMetadataPtrOutputWithContext(ctx context.Context) DraftPackageIntuneAppMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DraftPackageIntuneAppMetadataOutput).ToDraftPackageIntuneAppMetadataPtrOutputWithContext(ctx)
+}
+
+// DraftPackageIntuneAppMetadataPtrInput is an input type that accepts DraftPackageIntuneAppMetadataArgs, DraftPackageIntuneAppMetadataPtr and DraftPackageIntuneAppMetadataPtrOutput values.
+// You can construct a concrete instance of `DraftPackageIntuneAppMetadataPtrInput` via:
+//
+//	        DraftPackageIntuneAppMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type DraftPackageIntuneAppMetadataPtrInput interface {
+	pulumi.Input
+
+	ToDraftPackageIntuneAppMetadataPtrOutput() DraftPackageIntuneAppMetadataPtrOutput
+	ToDraftPackageIntuneAppMetadataPtrOutputWithContext(context.Context) DraftPackageIntuneAppMetadataPtrOutput
+}
+
+type draftPackageIntuneAppMetadataPtrType DraftPackageIntuneAppMetadataArgs
+
+func DraftPackageIntuneAppMetadataPtr(v *DraftPackageIntuneAppMetadataArgs) DraftPackageIntuneAppMetadataPtrInput {
+	return (*draftPackageIntuneAppMetadataPtrType)(v)
+}
+
+func (*draftPackageIntuneAppMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DraftPackageIntuneAppMetadata)(nil)).Elem()
+}
+
+func (i *draftPackageIntuneAppMetadataPtrType) ToDraftPackageIntuneAppMetadataPtrOutput() DraftPackageIntuneAppMetadataPtrOutput {
+	return i.ToDraftPackageIntuneAppMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *draftPackageIntuneAppMetadataPtrType) ToDraftPackageIntuneAppMetadataPtrOutputWithContext(ctx context.Context) DraftPackageIntuneAppMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DraftPackageIntuneAppMetadataPtrOutput)
+}
+
+// The metadata of Intune app(s) used for generation.
+type DraftPackageIntuneAppMetadataOutput struct{ *pulumi.OutputState }
+
+func (DraftPackageIntuneAppMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DraftPackageIntuneAppMetadata)(nil)).Elem()
+}
+
+func (o DraftPackageIntuneAppMetadataOutput) ToDraftPackageIntuneAppMetadataOutput() DraftPackageIntuneAppMetadataOutput {
+	return o
+}
+
+func (o DraftPackageIntuneAppMetadataOutput) ToDraftPackageIntuneAppMetadataOutputWithContext(ctx context.Context) DraftPackageIntuneAppMetadataOutput {
+	return o
+}
+
+func (o DraftPackageIntuneAppMetadataOutput) ToDraftPackageIntuneAppMetadataPtrOutput() DraftPackageIntuneAppMetadataPtrOutput {
+	return o.ToDraftPackageIntuneAppMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o DraftPackageIntuneAppMetadataOutput) ToDraftPackageIntuneAppMetadataPtrOutputWithContext(ctx context.Context) DraftPackageIntuneAppMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DraftPackageIntuneAppMetadata) *DraftPackageIntuneAppMetadata {
+		return &v
+	}).(DraftPackageIntuneAppMetadataPtrOutput)
+}
+
+// The Metadata of the Intune App through intunewin file uploading.
+func (o DraftPackageIntuneAppMetadataOutput) IntuneApp() DraftPackageIntuneAppMetadataItemPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadata) *DraftPackageIntuneAppMetadataItem { return v.IntuneApp }).(DraftPackageIntuneAppMetadataItemPtrOutput)
+}
+
+// The Metadata of dependencies of the Intune App through intunewin file uploading.
+func (o DraftPackageIntuneAppMetadataOutput) IntuneAppDependencies() DraftPackageIntuneAppMetadataItemArrayOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadata) []DraftPackageIntuneAppMetadataItem {
+		return v.IntuneAppDependencies
+	}).(DraftPackageIntuneAppMetadataItemArrayOutput)
+}
+
+type DraftPackageIntuneAppMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (DraftPackageIntuneAppMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DraftPackageIntuneAppMetadata)(nil)).Elem()
+}
+
+func (o DraftPackageIntuneAppMetadataPtrOutput) ToDraftPackageIntuneAppMetadataPtrOutput() DraftPackageIntuneAppMetadataPtrOutput {
+	return o
+}
+
+func (o DraftPackageIntuneAppMetadataPtrOutput) ToDraftPackageIntuneAppMetadataPtrOutputWithContext(ctx context.Context) DraftPackageIntuneAppMetadataPtrOutput {
+	return o
+}
+
+func (o DraftPackageIntuneAppMetadataPtrOutput) Elem() DraftPackageIntuneAppMetadataOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadata) DraftPackageIntuneAppMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret DraftPackageIntuneAppMetadata
+		return ret
+	}).(DraftPackageIntuneAppMetadataOutput)
+}
+
+// The Metadata of the Intune App through intunewin file uploading.
+func (o DraftPackageIntuneAppMetadataPtrOutput) IntuneApp() DraftPackageIntuneAppMetadataItemPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadata) *DraftPackageIntuneAppMetadataItem {
+		if v == nil {
+			return nil
+		}
+		return v.IntuneApp
+	}).(DraftPackageIntuneAppMetadataItemPtrOutput)
+}
+
+// The Metadata of dependencies of the Intune App through intunewin file uploading.
+func (o DraftPackageIntuneAppMetadataPtrOutput) IntuneAppDependencies() DraftPackageIntuneAppMetadataItemArrayOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadata) []DraftPackageIntuneAppMetadataItem {
+		if v == nil {
+			return nil
+		}
+		return v.IntuneAppDependencies
+	}).(DraftPackageIntuneAppMetadataItemArrayOutput)
+}
+
+// The Metadata of a single Intune App.
+type DraftPackageIntuneAppMetadataItem struct {
+	// Intune app id.
+	AppId *string `pulumi:"appId"`
+	// Intune app name.
+	AppName *string `pulumi:"appName"`
+	// Creation date of the app.
+	CreateDate *string `pulumi:"createDate"`
+	// Ids of dependency apps.
+	DependencyIds []string `pulumi:"dependencyIds"`
+	// Count of dependency apps.
+	DependentAppCount *int `pulumi:"dependentAppCount"`
+	// Description of the app.
+	Description *string `pulumi:"description"`
+	// Expected exit codes returned from Intune App.
+	ExpectedExitCodes []string `pulumi:"expectedExitCodes"`
+	// Install command.
+	InstallCommand *string `pulumi:"installCommand"`
+	// last processed time tickets.
+	LastProcessed *float64 `pulumi:"lastProcessed"`
+	// Minimum supported OS. The OS version must be greater than this version to run this app.
+	MinimumSupportedOS *string `pulumi:"minimumSupportedOS"`
+	// Owner of the app.
+	Owner *string `pulumi:"owner"`
+	// Publisher of the app.
+	Publisher *string `pulumi:"publisher"`
+	// Setup file path.
+	SetupFile *string `pulumi:"setupFile"`
+	// Extract status.
+	Status *string `pulumi:"status"`
+	// Uninstall command.
+	UninstallCommand *string `pulumi:"uninstallCommand"`
+	// Intune app version.
+	Version *string `pulumi:"version"`
+}
+
+// DraftPackageIntuneAppMetadataItemInput is an input type that accepts DraftPackageIntuneAppMetadataItemArgs and DraftPackageIntuneAppMetadataItemOutput values.
+// You can construct a concrete instance of `DraftPackageIntuneAppMetadataItemInput` via:
+//
+//	DraftPackageIntuneAppMetadataItemArgs{...}
+type DraftPackageIntuneAppMetadataItemInput interface {
+	pulumi.Input
+
+	ToDraftPackageIntuneAppMetadataItemOutput() DraftPackageIntuneAppMetadataItemOutput
+	ToDraftPackageIntuneAppMetadataItemOutputWithContext(context.Context) DraftPackageIntuneAppMetadataItemOutput
+}
+
+// The Metadata of a single Intune App.
+type DraftPackageIntuneAppMetadataItemArgs struct {
+	// Intune app id.
+	AppId pulumi.StringPtrInput `pulumi:"appId"`
+	// Intune app name.
+	AppName pulumi.StringPtrInput `pulumi:"appName"`
+	// Creation date of the app.
+	CreateDate pulumi.StringPtrInput `pulumi:"createDate"`
+	// Ids of dependency apps.
+	DependencyIds pulumi.StringArrayInput `pulumi:"dependencyIds"`
+	// Count of dependency apps.
+	DependentAppCount pulumi.IntPtrInput `pulumi:"dependentAppCount"`
+	// Description of the app.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Expected exit codes returned from Intune App.
+	ExpectedExitCodes pulumi.StringArrayInput `pulumi:"expectedExitCodes"`
+	// Install command.
+	InstallCommand pulumi.StringPtrInput `pulumi:"installCommand"`
+	// last processed time tickets.
+	LastProcessed pulumi.Float64PtrInput `pulumi:"lastProcessed"`
+	// Minimum supported OS. The OS version must be greater than this version to run this app.
+	MinimumSupportedOS pulumi.StringPtrInput `pulumi:"minimumSupportedOS"`
+	// Owner of the app.
+	Owner pulumi.StringPtrInput `pulumi:"owner"`
+	// Publisher of the app.
+	Publisher pulumi.StringPtrInput `pulumi:"publisher"`
+	// Setup file path.
+	SetupFile pulumi.StringPtrInput `pulumi:"setupFile"`
+	// Extract status.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Uninstall command.
+	UninstallCommand pulumi.StringPtrInput `pulumi:"uninstallCommand"`
+	// Intune app version.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (DraftPackageIntuneAppMetadataItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DraftPackageIntuneAppMetadataItem)(nil)).Elem()
+}
+
+func (i DraftPackageIntuneAppMetadataItemArgs) ToDraftPackageIntuneAppMetadataItemOutput() DraftPackageIntuneAppMetadataItemOutput {
+	return i.ToDraftPackageIntuneAppMetadataItemOutputWithContext(context.Background())
+}
+
+func (i DraftPackageIntuneAppMetadataItemArgs) ToDraftPackageIntuneAppMetadataItemOutputWithContext(ctx context.Context) DraftPackageIntuneAppMetadataItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DraftPackageIntuneAppMetadataItemOutput)
+}
+
+func (i DraftPackageIntuneAppMetadataItemArgs) ToDraftPackageIntuneAppMetadataItemPtrOutput() DraftPackageIntuneAppMetadataItemPtrOutput {
+	return i.ToDraftPackageIntuneAppMetadataItemPtrOutputWithContext(context.Background())
+}
+
+func (i DraftPackageIntuneAppMetadataItemArgs) ToDraftPackageIntuneAppMetadataItemPtrOutputWithContext(ctx context.Context) DraftPackageIntuneAppMetadataItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DraftPackageIntuneAppMetadataItemOutput).ToDraftPackageIntuneAppMetadataItemPtrOutputWithContext(ctx)
+}
+
+// DraftPackageIntuneAppMetadataItemPtrInput is an input type that accepts DraftPackageIntuneAppMetadataItemArgs, DraftPackageIntuneAppMetadataItemPtr and DraftPackageIntuneAppMetadataItemPtrOutput values.
+// You can construct a concrete instance of `DraftPackageIntuneAppMetadataItemPtrInput` via:
+//
+//	        DraftPackageIntuneAppMetadataItemArgs{...}
+//
+//	or:
+//
+//	        nil
+type DraftPackageIntuneAppMetadataItemPtrInput interface {
+	pulumi.Input
+
+	ToDraftPackageIntuneAppMetadataItemPtrOutput() DraftPackageIntuneAppMetadataItemPtrOutput
+	ToDraftPackageIntuneAppMetadataItemPtrOutputWithContext(context.Context) DraftPackageIntuneAppMetadataItemPtrOutput
+}
+
+type draftPackageIntuneAppMetadataItemPtrType DraftPackageIntuneAppMetadataItemArgs
+
+func DraftPackageIntuneAppMetadataItemPtr(v *DraftPackageIntuneAppMetadataItemArgs) DraftPackageIntuneAppMetadataItemPtrInput {
+	return (*draftPackageIntuneAppMetadataItemPtrType)(v)
+}
+
+func (*draftPackageIntuneAppMetadataItemPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DraftPackageIntuneAppMetadataItem)(nil)).Elem()
+}
+
+func (i *draftPackageIntuneAppMetadataItemPtrType) ToDraftPackageIntuneAppMetadataItemPtrOutput() DraftPackageIntuneAppMetadataItemPtrOutput {
+	return i.ToDraftPackageIntuneAppMetadataItemPtrOutputWithContext(context.Background())
+}
+
+func (i *draftPackageIntuneAppMetadataItemPtrType) ToDraftPackageIntuneAppMetadataItemPtrOutputWithContext(ctx context.Context) DraftPackageIntuneAppMetadataItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DraftPackageIntuneAppMetadataItemPtrOutput)
+}
+
+// DraftPackageIntuneAppMetadataItemArrayInput is an input type that accepts DraftPackageIntuneAppMetadataItemArray and DraftPackageIntuneAppMetadataItemArrayOutput values.
+// You can construct a concrete instance of `DraftPackageIntuneAppMetadataItemArrayInput` via:
+//
+//	DraftPackageIntuneAppMetadataItemArray{ DraftPackageIntuneAppMetadataItemArgs{...} }
+type DraftPackageIntuneAppMetadataItemArrayInput interface {
+	pulumi.Input
+
+	ToDraftPackageIntuneAppMetadataItemArrayOutput() DraftPackageIntuneAppMetadataItemArrayOutput
+	ToDraftPackageIntuneAppMetadataItemArrayOutputWithContext(context.Context) DraftPackageIntuneAppMetadataItemArrayOutput
+}
+
+type DraftPackageIntuneAppMetadataItemArray []DraftPackageIntuneAppMetadataItemInput
+
+func (DraftPackageIntuneAppMetadataItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DraftPackageIntuneAppMetadataItem)(nil)).Elem()
+}
+
+func (i DraftPackageIntuneAppMetadataItemArray) ToDraftPackageIntuneAppMetadataItemArrayOutput() DraftPackageIntuneAppMetadataItemArrayOutput {
+	return i.ToDraftPackageIntuneAppMetadataItemArrayOutputWithContext(context.Background())
+}
+
+func (i DraftPackageIntuneAppMetadataItemArray) ToDraftPackageIntuneAppMetadataItemArrayOutputWithContext(ctx context.Context) DraftPackageIntuneAppMetadataItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DraftPackageIntuneAppMetadataItemArrayOutput)
+}
+
+// The Metadata of a single Intune App.
+type DraftPackageIntuneAppMetadataItemOutput struct{ *pulumi.OutputState }
+
+func (DraftPackageIntuneAppMetadataItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DraftPackageIntuneAppMetadataItem)(nil)).Elem()
+}
+
+func (o DraftPackageIntuneAppMetadataItemOutput) ToDraftPackageIntuneAppMetadataItemOutput() DraftPackageIntuneAppMetadataItemOutput {
+	return o
+}
+
+func (o DraftPackageIntuneAppMetadataItemOutput) ToDraftPackageIntuneAppMetadataItemOutputWithContext(ctx context.Context) DraftPackageIntuneAppMetadataItemOutput {
+	return o
+}
+
+func (o DraftPackageIntuneAppMetadataItemOutput) ToDraftPackageIntuneAppMetadataItemPtrOutput() DraftPackageIntuneAppMetadataItemPtrOutput {
+	return o.ToDraftPackageIntuneAppMetadataItemPtrOutputWithContext(context.Background())
+}
+
+func (o DraftPackageIntuneAppMetadataItemOutput) ToDraftPackageIntuneAppMetadataItemPtrOutputWithContext(ctx context.Context) DraftPackageIntuneAppMetadataItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DraftPackageIntuneAppMetadataItem) *DraftPackageIntuneAppMetadataItem {
+		return &v
+	}).(DraftPackageIntuneAppMetadataItemPtrOutput)
+}
+
+// Intune app id.
+func (o DraftPackageIntuneAppMetadataItemOutput) AppId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItem) *string { return v.AppId }).(pulumi.StringPtrOutput)
+}
+
+// Intune app name.
+func (o DraftPackageIntuneAppMetadataItemOutput) AppName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItem) *string { return v.AppName }).(pulumi.StringPtrOutput)
+}
+
+// Creation date of the app.
+func (o DraftPackageIntuneAppMetadataItemOutput) CreateDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItem) *string { return v.CreateDate }).(pulumi.StringPtrOutput)
+}
+
+// Ids of dependency apps.
+func (o DraftPackageIntuneAppMetadataItemOutput) DependencyIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItem) []string { return v.DependencyIds }).(pulumi.StringArrayOutput)
+}
+
+// Count of dependency apps.
+func (o DraftPackageIntuneAppMetadataItemOutput) DependentAppCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItem) *int { return v.DependentAppCount }).(pulumi.IntPtrOutput)
+}
+
+// Description of the app.
+func (o DraftPackageIntuneAppMetadataItemOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItem) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Expected exit codes returned from Intune App.
+func (o DraftPackageIntuneAppMetadataItemOutput) ExpectedExitCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItem) []string { return v.ExpectedExitCodes }).(pulumi.StringArrayOutput)
+}
+
+// Install command.
+func (o DraftPackageIntuneAppMetadataItemOutput) InstallCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItem) *string { return v.InstallCommand }).(pulumi.StringPtrOutput)
+}
+
+// last processed time tickets.
+func (o DraftPackageIntuneAppMetadataItemOutput) LastProcessed() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItem) *float64 { return v.LastProcessed }).(pulumi.Float64PtrOutput)
+}
+
+// Minimum supported OS. The OS version must be greater than this version to run this app.
+func (o DraftPackageIntuneAppMetadataItemOutput) MinimumSupportedOS() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItem) *string { return v.MinimumSupportedOS }).(pulumi.StringPtrOutput)
+}
+
+// Owner of the app.
+func (o DraftPackageIntuneAppMetadataItemOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItem) *string { return v.Owner }).(pulumi.StringPtrOutput)
+}
+
+// Publisher of the app.
+func (o DraftPackageIntuneAppMetadataItemOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItem) *string { return v.Publisher }).(pulumi.StringPtrOutput)
+}
+
+// Setup file path.
+func (o DraftPackageIntuneAppMetadataItemOutput) SetupFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItem) *string { return v.SetupFile }).(pulumi.StringPtrOutput)
+}
+
+// Extract status.
+func (o DraftPackageIntuneAppMetadataItemOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItem) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Uninstall command.
+func (o DraftPackageIntuneAppMetadataItemOutput) UninstallCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItem) *string { return v.UninstallCommand }).(pulumi.StringPtrOutput)
+}
+
+// Intune app version.
+func (o DraftPackageIntuneAppMetadataItemOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItem) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type DraftPackageIntuneAppMetadataItemPtrOutput struct{ *pulumi.OutputState }
+
+func (DraftPackageIntuneAppMetadataItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DraftPackageIntuneAppMetadataItem)(nil)).Elem()
+}
+
+func (o DraftPackageIntuneAppMetadataItemPtrOutput) ToDraftPackageIntuneAppMetadataItemPtrOutput() DraftPackageIntuneAppMetadataItemPtrOutput {
+	return o
+}
+
+func (o DraftPackageIntuneAppMetadataItemPtrOutput) ToDraftPackageIntuneAppMetadataItemPtrOutputWithContext(ctx context.Context) DraftPackageIntuneAppMetadataItemPtrOutput {
+	return o
+}
+
+func (o DraftPackageIntuneAppMetadataItemPtrOutput) Elem() DraftPackageIntuneAppMetadataItemOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItem) DraftPackageIntuneAppMetadataItem {
+		if v != nil {
+			return *v
+		}
+		var ret DraftPackageIntuneAppMetadataItem
+		return ret
+	}).(DraftPackageIntuneAppMetadataItemOutput)
+}
+
+// Intune app id.
+func (o DraftPackageIntuneAppMetadataItemPtrOutput) AppId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItem) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Intune app name.
+func (o DraftPackageIntuneAppMetadataItemPtrOutput) AppName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItem) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Creation date of the app.
+func (o DraftPackageIntuneAppMetadataItemPtrOutput) CreateDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItem) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreateDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Ids of dependency apps.
+func (o DraftPackageIntuneAppMetadataItemPtrOutput) DependencyIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItem) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DependencyIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Count of dependency apps.
+func (o DraftPackageIntuneAppMetadataItemPtrOutput) DependentAppCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItem) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DependentAppCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Description of the app.
+func (o DraftPackageIntuneAppMetadataItemPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItem) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Expected exit codes returned from Intune App.
+func (o DraftPackageIntuneAppMetadataItemPtrOutput) ExpectedExitCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItem) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpectedExitCodes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Install command.
+func (o DraftPackageIntuneAppMetadataItemPtrOutput) InstallCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItem) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstallCommand
+	}).(pulumi.StringPtrOutput)
+}
+
+// last processed time tickets.
+func (o DraftPackageIntuneAppMetadataItemPtrOutput) LastProcessed() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItem) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LastProcessed
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Minimum supported OS. The OS version must be greater than this version to run this app.
+func (o DraftPackageIntuneAppMetadataItemPtrOutput) MinimumSupportedOS() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItem) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinimumSupportedOS
+	}).(pulumi.StringPtrOutput)
+}
+
+// Owner of the app.
+func (o DraftPackageIntuneAppMetadataItemPtrOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItem) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Owner
+	}).(pulumi.StringPtrOutput)
+}
+
+// Publisher of the app.
+func (o DraftPackageIntuneAppMetadataItemPtrOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItem) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Publisher
+	}).(pulumi.StringPtrOutput)
+}
+
+// Setup file path.
+func (o DraftPackageIntuneAppMetadataItemPtrOutput) SetupFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItem) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SetupFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Extract status.
+func (o DraftPackageIntuneAppMetadataItemPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItem) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Uninstall command.
+func (o DraftPackageIntuneAppMetadataItemPtrOutput) UninstallCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItem) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UninstallCommand
+	}).(pulumi.StringPtrOutput)
+}
+
+// Intune app version.
+func (o DraftPackageIntuneAppMetadataItemPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItem) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type DraftPackageIntuneAppMetadataItemArrayOutput struct{ *pulumi.OutputState }
+
+func (DraftPackageIntuneAppMetadataItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DraftPackageIntuneAppMetadataItem)(nil)).Elem()
+}
+
+func (o DraftPackageIntuneAppMetadataItemArrayOutput) ToDraftPackageIntuneAppMetadataItemArrayOutput() DraftPackageIntuneAppMetadataItemArrayOutput {
+	return o
+}
+
+func (o DraftPackageIntuneAppMetadataItemArrayOutput) ToDraftPackageIntuneAppMetadataItemArrayOutputWithContext(ctx context.Context) DraftPackageIntuneAppMetadataItemArrayOutput {
+	return o
+}
+
+func (o DraftPackageIntuneAppMetadataItemArrayOutput) Index(i pulumi.IntInput) DraftPackageIntuneAppMetadataItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DraftPackageIntuneAppMetadataItem {
+		return vs[0].([]DraftPackageIntuneAppMetadataItem)[vs[1].(int)]
+	}).(DraftPackageIntuneAppMetadataItemOutput)
+}
+
+// The Metadata of a single Intune App.
+type DraftPackageIntuneAppMetadataItemResponse struct {
+	// Intune app id.
+	AppId *string `pulumi:"appId"`
+	// Intune app name.
+	AppName *string `pulumi:"appName"`
+	// Creation date of the app.
+	CreateDate *string `pulumi:"createDate"`
+	// Ids of dependency apps.
+	DependencyIds []string `pulumi:"dependencyIds"`
+	// Count of dependency apps.
+	DependentAppCount *int `pulumi:"dependentAppCount"`
+	// Description of the app.
+	Description *string `pulumi:"description"`
+	// Expected exit codes returned from Intune App.
+	ExpectedExitCodes []string `pulumi:"expectedExitCodes"`
+	// Install command.
+	InstallCommand *string `pulumi:"installCommand"`
+	// last processed time tickets.
+	LastProcessed *float64 `pulumi:"lastProcessed"`
+	// Minimum supported OS. The OS version must be greater than this version to run this app.
+	MinimumSupportedOS *string `pulumi:"minimumSupportedOS"`
+	// Owner of the app.
+	Owner *string `pulumi:"owner"`
+	// Publisher of the app.
+	Publisher *string `pulumi:"publisher"`
+	// Setup file path.
+	SetupFile *string `pulumi:"setupFile"`
+	// Extract status.
+	Status *string `pulumi:"status"`
+	// Uninstall command.
+	UninstallCommand *string `pulumi:"uninstallCommand"`
+	// Intune app version.
+	Version *string `pulumi:"version"`
+}
+
+// The Metadata of a single Intune App.
+type DraftPackageIntuneAppMetadataItemResponseOutput struct{ *pulumi.OutputState }
+
+func (DraftPackageIntuneAppMetadataItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DraftPackageIntuneAppMetadataItemResponse)(nil)).Elem()
+}
+
+func (o DraftPackageIntuneAppMetadataItemResponseOutput) ToDraftPackageIntuneAppMetadataItemResponseOutput() DraftPackageIntuneAppMetadataItemResponseOutput {
+	return o
+}
+
+func (o DraftPackageIntuneAppMetadataItemResponseOutput) ToDraftPackageIntuneAppMetadataItemResponseOutputWithContext(ctx context.Context) DraftPackageIntuneAppMetadataItemResponseOutput {
+	return o
+}
+
+// Intune app id.
+func (o DraftPackageIntuneAppMetadataItemResponseOutput) AppId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItemResponse) *string { return v.AppId }).(pulumi.StringPtrOutput)
+}
+
+// Intune app name.
+func (o DraftPackageIntuneAppMetadataItemResponseOutput) AppName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItemResponse) *string { return v.AppName }).(pulumi.StringPtrOutput)
+}
+
+// Creation date of the app.
+func (o DraftPackageIntuneAppMetadataItemResponseOutput) CreateDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItemResponse) *string { return v.CreateDate }).(pulumi.StringPtrOutput)
+}
+
+// Ids of dependency apps.
+func (o DraftPackageIntuneAppMetadataItemResponseOutput) DependencyIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItemResponse) []string { return v.DependencyIds }).(pulumi.StringArrayOutput)
+}
+
+// Count of dependency apps.
+func (o DraftPackageIntuneAppMetadataItemResponseOutput) DependentAppCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItemResponse) *int { return v.DependentAppCount }).(pulumi.IntPtrOutput)
+}
+
+// Description of the app.
+func (o DraftPackageIntuneAppMetadataItemResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItemResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Expected exit codes returned from Intune App.
+func (o DraftPackageIntuneAppMetadataItemResponseOutput) ExpectedExitCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItemResponse) []string { return v.ExpectedExitCodes }).(pulumi.StringArrayOutput)
+}
+
+// Install command.
+func (o DraftPackageIntuneAppMetadataItemResponseOutput) InstallCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItemResponse) *string { return v.InstallCommand }).(pulumi.StringPtrOutput)
+}
+
+// last processed time tickets.
+func (o DraftPackageIntuneAppMetadataItemResponseOutput) LastProcessed() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItemResponse) *float64 { return v.LastProcessed }).(pulumi.Float64PtrOutput)
+}
+
+// Minimum supported OS. The OS version must be greater than this version to run this app.
+func (o DraftPackageIntuneAppMetadataItemResponseOutput) MinimumSupportedOS() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItemResponse) *string { return v.MinimumSupportedOS }).(pulumi.StringPtrOutput)
+}
+
+// Owner of the app.
+func (o DraftPackageIntuneAppMetadataItemResponseOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItemResponse) *string { return v.Owner }).(pulumi.StringPtrOutput)
+}
+
+// Publisher of the app.
+func (o DraftPackageIntuneAppMetadataItemResponseOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItemResponse) *string { return v.Publisher }).(pulumi.StringPtrOutput)
+}
+
+// Setup file path.
+func (o DraftPackageIntuneAppMetadataItemResponseOutput) SetupFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItemResponse) *string { return v.SetupFile }).(pulumi.StringPtrOutput)
+}
+
+// Extract status.
+func (o DraftPackageIntuneAppMetadataItemResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItemResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Uninstall command.
+func (o DraftPackageIntuneAppMetadataItemResponseOutput) UninstallCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItemResponse) *string { return v.UninstallCommand }).(pulumi.StringPtrOutput)
+}
+
+// Intune app version.
+func (o DraftPackageIntuneAppMetadataItemResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataItemResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type DraftPackageIntuneAppMetadataItemResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DraftPackageIntuneAppMetadataItemResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DraftPackageIntuneAppMetadataItemResponse)(nil)).Elem()
+}
+
+func (o DraftPackageIntuneAppMetadataItemResponsePtrOutput) ToDraftPackageIntuneAppMetadataItemResponsePtrOutput() DraftPackageIntuneAppMetadataItemResponsePtrOutput {
+	return o
+}
+
+func (o DraftPackageIntuneAppMetadataItemResponsePtrOutput) ToDraftPackageIntuneAppMetadataItemResponsePtrOutputWithContext(ctx context.Context) DraftPackageIntuneAppMetadataItemResponsePtrOutput {
+	return o
+}
+
+func (o DraftPackageIntuneAppMetadataItemResponsePtrOutput) Elem() DraftPackageIntuneAppMetadataItemResponseOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItemResponse) DraftPackageIntuneAppMetadataItemResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DraftPackageIntuneAppMetadataItemResponse
+		return ret
+	}).(DraftPackageIntuneAppMetadataItemResponseOutput)
+}
+
+// Intune app id.
+func (o DraftPackageIntuneAppMetadataItemResponsePtrOutput) AppId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItemResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Intune app name.
+func (o DraftPackageIntuneAppMetadataItemResponsePtrOutput) AppName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItemResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Creation date of the app.
+func (o DraftPackageIntuneAppMetadataItemResponsePtrOutput) CreateDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItemResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreateDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Ids of dependency apps.
+func (o DraftPackageIntuneAppMetadataItemResponsePtrOutput) DependencyIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItemResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DependencyIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Count of dependency apps.
+func (o DraftPackageIntuneAppMetadataItemResponsePtrOutput) DependentAppCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItemResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DependentAppCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Description of the app.
+func (o DraftPackageIntuneAppMetadataItemResponsePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItemResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Expected exit codes returned from Intune App.
+func (o DraftPackageIntuneAppMetadataItemResponsePtrOutput) ExpectedExitCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItemResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpectedExitCodes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Install command.
+func (o DraftPackageIntuneAppMetadataItemResponsePtrOutput) InstallCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItemResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstallCommand
+	}).(pulumi.StringPtrOutput)
+}
+
+// last processed time tickets.
+func (o DraftPackageIntuneAppMetadataItemResponsePtrOutput) LastProcessed() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItemResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LastProcessed
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Minimum supported OS. The OS version must be greater than this version to run this app.
+func (o DraftPackageIntuneAppMetadataItemResponsePtrOutput) MinimumSupportedOS() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItemResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinimumSupportedOS
+	}).(pulumi.StringPtrOutput)
+}
+
+// Owner of the app.
+func (o DraftPackageIntuneAppMetadataItemResponsePtrOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItemResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Owner
+	}).(pulumi.StringPtrOutput)
+}
+
+// Publisher of the app.
+func (o DraftPackageIntuneAppMetadataItemResponsePtrOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItemResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Publisher
+	}).(pulumi.StringPtrOutput)
+}
+
+// Setup file path.
+func (o DraftPackageIntuneAppMetadataItemResponsePtrOutput) SetupFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItemResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SetupFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// Extract status.
+func (o DraftPackageIntuneAppMetadataItemResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItemResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Uninstall command.
+func (o DraftPackageIntuneAppMetadataItemResponsePtrOutput) UninstallCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItemResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UninstallCommand
+	}).(pulumi.StringPtrOutput)
+}
+
+// Intune app version.
+func (o DraftPackageIntuneAppMetadataItemResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataItemResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type DraftPackageIntuneAppMetadataItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DraftPackageIntuneAppMetadataItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DraftPackageIntuneAppMetadataItemResponse)(nil)).Elem()
+}
+
+func (o DraftPackageIntuneAppMetadataItemResponseArrayOutput) ToDraftPackageIntuneAppMetadataItemResponseArrayOutput() DraftPackageIntuneAppMetadataItemResponseArrayOutput {
+	return o
+}
+
+func (o DraftPackageIntuneAppMetadataItemResponseArrayOutput) ToDraftPackageIntuneAppMetadataItemResponseArrayOutputWithContext(ctx context.Context) DraftPackageIntuneAppMetadataItemResponseArrayOutput {
+	return o
+}
+
+func (o DraftPackageIntuneAppMetadataItemResponseArrayOutput) Index(i pulumi.IntInput) DraftPackageIntuneAppMetadataItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DraftPackageIntuneAppMetadataItemResponse {
+		return vs[0].([]DraftPackageIntuneAppMetadataItemResponse)[vs[1].(int)]
+	}).(DraftPackageIntuneAppMetadataItemResponseOutput)
+}
+
+// The metadata of Intune app(s) used for generation.
+type DraftPackageIntuneAppMetadataResponse struct {
+	// The Metadata of the Intune App through intunewin file uploading.
+	IntuneApp *DraftPackageIntuneAppMetadataItemResponse `pulumi:"intuneApp"`
+	// The Metadata of dependencies of the Intune App through intunewin file uploading.
+	IntuneAppDependencies []DraftPackageIntuneAppMetadataItemResponse `pulumi:"intuneAppDependencies"`
+}
+
+// The metadata of Intune app(s) used for generation.
+type DraftPackageIntuneAppMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (DraftPackageIntuneAppMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DraftPackageIntuneAppMetadataResponse)(nil)).Elem()
+}
+
+func (o DraftPackageIntuneAppMetadataResponseOutput) ToDraftPackageIntuneAppMetadataResponseOutput() DraftPackageIntuneAppMetadataResponseOutput {
+	return o
+}
+
+func (o DraftPackageIntuneAppMetadataResponseOutput) ToDraftPackageIntuneAppMetadataResponseOutputWithContext(ctx context.Context) DraftPackageIntuneAppMetadataResponseOutput {
+	return o
+}
+
+// The Metadata of the Intune App through intunewin file uploading.
+func (o DraftPackageIntuneAppMetadataResponseOutput) IntuneApp() DraftPackageIntuneAppMetadataItemResponsePtrOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataResponse) *DraftPackageIntuneAppMetadataItemResponse {
+		return v.IntuneApp
+	}).(DraftPackageIntuneAppMetadataItemResponsePtrOutput)
+}
+
+// The Metadata of dependencies of the Intune App through intunewin file uploading.
+func (o DraftPackageIntuneAppMetadataResponseOutput) IntuneAppDependencies() DraftPackageIntuneAppMetadataItemResponseArrayOutput {
+	return o.ApplyT(func(v DraftPackageIntuneAppMetadataResponse) []DraftPackageIntuneAppMetadataItemResponse {
+		return v.IntuneAppDependencies
+	}).(DraftPackageIntuneAppMetadataItemResponseArrayOutput)
+}
+
+type DraftPackageIntuneAppMetadataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DraftPackageIntuneAppMetadataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DraftPackageIntuneAppMetadataResponse)(nil)).Elem()
+}
+
+func (o DraftPackageIntuneAppMetadataResponsePtrOutput) ToDraftPackageIntuneAppMetadataResponsePtrOutput() DraftPackageIntuneAppMetadataResponsePtrOutput {
+	return o
+}
+
+func (o DraftPackageIntuneAppMetadataResponsePtrOutput) ToDraftPackageIntuneAppMetadataResponsePtrOutputWithContext(ctx context.Context) DraftPackageIntuneAppMetadataResponsePtrOutput {
+	return o
+}
+
+func (o DraftPackageIntuneAppMetadataResponsePtrOutput) Elem() DraftPackageIntuneAppMetadataResponseOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataResponse) DraftPackageIntuneAppMetadataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DraftPackageIntuneAppMetadataResponse
+		return ret
+	}).(DraftPackageIntuneAppMetadataResponseOutput)
+}
+
+// The Metadata of the Intune App through intunewin file uploading.
+func (o DraftPackageIntuneAppMetadataResponsePtrOutput) IntuneApp() DraftPackageIntuneAppMetadataItemResponsePtrOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataResponse) *DraftPackageIntuneAppMetadataItemResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IntuneApp
+	}).(DraftPackageIntuneAppMetadataItemResponsePtrOutput)
+}
+
+// The Metadata of dependencies of the Intune App through intunewin file uploading.
+func (o DraftPackageIntuneAppMetadataResponsePtrOutput) IntuneAppDependencies() DraftPackageIntuneAppMetadataItemResponseArrayOutput {
+	return o.ApplyT(func(v *DraftPackageIntuneAppMetadataResponse) []DraftPackageIntuneAppMetadataItemResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IntuneAppDependencies
+	}).(DraftPackageIntuneAppMetadataItemResponseArrayOutput)
+}
+
+// Metadata of the enrolled Intune app.
+type EnrolledIntuneApp struct {
+	// Intune app id.
+	AppId string `pulumi:"appId"`
+	// Intune app name.
+	AppName string `pulumi:"appName"`
+	// Intune app expected installation path.
+	ExpectedInstallationPath string `pulumi:"expectedInstallationPath"`
+}
+
+// EnrolledIntuneAppInput is an input type that accepts EnrolledIntuneAppArgs and EnrolledIntuneAppOutput values.
+// You can construct a concrete instance of `EnrolledIntuneAppInput` via:
+//
+//	EnrolledIntuneAppArgs{...}
+type EnrolledIntuneAppInput interface {
+	pulumi.Input
+
+	ToEnrolledIntuneAppOutput() EnrolledIntuneAppOutput
+	ToEnrolledIntuneAppOutputWithContext(context.Context) EnrolledIntuneAppOutput
+}
+
+// Metadata of the enrolled Intune app.
+type EnrolledIntuneAppArgs struct {
+	// Intune app id.
+	AppId pulumi.StringInput `pulumi:"appId"`
+	// Intune app name.
+	AppName pulumi.StringInput `pulumi:"appName"`
+	// Intune app expected installation path.
+	ExpectedInstallationPath pulumi.StringInput `pulumi:"expectedInstallationPath"`
+}
+
+func (EnrolledIntuneAppArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnrolledIntuneApp)(nil)).Elem()
+}
+
+func (i EnrolledIntuneAppArgs) ToEnrolledIntuneAppOutput() EnrolledIntuneAppOutput {
+	return i.ToEnrolledIntuneAppOutputWithContext(context.Background())
+}
+
+func (i EnrolledIntuneAppArgs) ToEnrolledIntuneAppOutputWithContext(ctx context.Context) EnrolledIntuneAppOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnrolledIntuneAppOutput)
+}
+
+// EnrolledIntuneAppArrayInput is an input type that accepts EnrolledIntuneAppArray and EnrolledIntuneAppArrayOutput values.
+// You can construct a concrete instance of `EnrolledIntuneAppArrayInput` via:
+//
+//	EnrolledIntuneAppArray{ EnrolledIntuneAppArgs{...} }
+type EnrolledIntuneAppArrayInput interface {
+	pulumi.Input
+
+	ToEnrolledIntuneAppArrayOutput() EnrolledIntuneAppArrayOutput
+	ToEnrolledIntuneAppArrayOutputWithContext(context.Context) EnrolledIntuneAppArrayOutput
+}
+
+type EnrolledIntuneAppArray []EnrolledIntuneAppInput
+
+func (EnrolledIntuneAppArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnrolledIntuneApp)(nil)).Elem()
+}
+
+func (i EnrolledIntuneAppArray) ToEnrolledIntuneAppArrayOutput() EnrolledIntuneAppArrayOutput {
+	return i.ToEnrolledIntuneAppArrayOutputWithContext(context.Background())
+}
+
+func (i EnrolledIntuneAppArray) ToEnrolledIntuneAppArrayOutputWithContext(ctx context.Context) EnrolledIntuneAppArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnrolledIntuneAppArrayOutput)
+}
+
+// Metadata of the enrolled Intune app.
+type EnrolledIntuneAppOutput struct{ *pulumi.OutputState }
+
+func (EnrolledIntuneAppOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnrolledIntuneApp)(nil)).Elem()
+}
+
+func (o EnrolledIntuneAppOutput) ToEnrolledIntuneAppOutput() EnrolledIntuneAppOutput {
+	return o
+}
+
+func (o EnrolledIntuneAppOutput) ToEnrolledIntuneAppOutputWithContext(ctx context.Context) EnrolledIntuneAppOutput {
+	return o
+}
+
+// Intune app id.
+func (o EnrolledIntuneAppOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v EnrolledIntuneApp) string { return v.AppId }).(pulumi.StringOutput)
+}
+
+// Intune app name.
+func (o EnrolledIntuneAppOutput) AppName() pulumi.StringOutput {
+	return o.ApplyT(func(v EnrolledIntuneApp) string { return v.AppName }).(pulumi.StringOutput)
+}
+
+// Intune app expected installation path.
+func (o EnrolledIntuneAppOutput) ExpectedInstallationPath() pulumi.StringOutput {
+	return o.ApplyT(func(v EnrolledIntuneApp) string { return v.ExpectedInstallationPath }).(pulumi.StringOutput)
+}
+
+type EnrolledIntuneAppArrayOutput struct{ *pulumi.OutputState }
+
+func (EnrolledIntuneAppArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnrolledIntuneApp)(nil)).Elem()
+}
+
+func (o EnrolledIntuneAppArrayOutput) ToEnrolledIntuneAppArrayOutput() EnrolledIntuneAppArrayOutput {
+	return o
+}
+
+func (o EnrolledIntuneAppArrayOutput) ToEnrolledIntuneAppArrayOutputWithContext(ctx context.Context) EnrolledIntuneAppArrayOutput {
+	return o
+}
+
+func (o EnrolledIntuneAppArrayOutput) Index(i pulumi.IntInput) EnrolledIntuneAppOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnrolledIntuneApp {
+		return vs[0].([]EnrolledIntuneApp)[vs[1].(int)]
+	}).(EnrolledIntuneAppOutput)
+}
+
+// Metadata of the enrolled Intune app.
+type EnrolledIntuneAppResponse struct {
+	// Intune app id.
+	AppId string `pulumi:"appId"`
+	// Intune app name.
+	AppName string `pulumi:"appName"`
+	// Intune app expected installation path.
+	ExpectedInstallationPath string `pulumi:"expectedInstallationPath"`
+}
+
+// Metadata of the enrolled Intune app.
+type EnrolledIntuneAppResponseOutput struct{ *pulumi.OutputState }
+
+func (EnrolledIntuneAppResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnrolledIntuneAppResponse)(nil)).Elem()
+}
+
+func (o EnrolledIntuneAppResponseOutput) ToEnrolledIntuneAppResponseOutput() EnrolledIntuneAppResponseOutput {
+	return o
+}
+
+func (o EnrolledIntuneAppResponseOutput) ToEnrolledIntuneAppResponseOutputWithContext(ctx context.Context) EnrolledIntuneAppResponseOutput {
+	return o
+}
+
+// Intune app id.
+func (o EnrolledIntuneAppResponseOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v EnrolledIntuneAppResponse) string { return v.AppId }).(pulumi.StringOutput)
+}
+
+// Intune app name.
+func (o EnrolledIntuneAppResponseOutput) AppName() pulumi.StringOutput {
+	return o.ApplyT(func(v EnrolledIntuneAppResponse) string { return v.AppName }).(pulumi.StringOutput)
+}
+
+// Intune app expected installation path.
+func (o EnrolledIntuneAppResponseOutput) ExpectedInstallationPath() pulumi.StringOutput {
+	return o.ApplyT(func(v EnrolledIntuneAppResponse) string { return v.ExpectedInstallationPath }).(pulumi.StringOutput)
+}
+
+type EnrolledIntuneAppResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EnrolledIntuneAppResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnrolledIntuneAppResponse)(nil)).Elem()
+}
+
+func (o EnrolledIntuneAppResponseArrayOutput) ToEnrolledIntuneAppResponseArrayOutput() EnrolledIntuneAppResponseArrayOutput {
+	return o
+}
+
+func (o EnrolledIntuneAppResponseArrayOutput) ToEnrolledIntuneAppResponseArrayOutputWithContext(ctx context.Context) EnrolledIntuneAppResponseArrayOutput {
+	return o
+}
+
+func (o EnrolledIntuneAppResponseArrayOutput) Index(i pulumi.IntInput) EnrolledIntuneAppResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnrolledIntuneAppResponse {
+		return vs[0].([]EnrolledIntuneAppResponse)[vs[1].(int)]
+	}).(EnrolledIntuneAppResponseOutput)
+}
+
+// Properties of the definition of a first party application of the Test Base package.
+type FirstPartyAppDefinition struct {
+	// The architecture of a first party application of a Test Base Account.
+	Architecture *string `pulumi:"architecture"`
+	// The channel info of a first party application of a Test Base Account.
+	Channel *string `pulumi:"channel"`
+	// Specifies how the first party applications should be inter-operated with user's application.
+	InteropExecutionMode *string `pulumi:"interopExecutionMode"`
+	// The media name of a first party application of a Test Base Account.
+	Name *string `pulumi:"name"`
+	// The ring info of a first party application of a Test Base Account.
+	Ring *string `pulumi:"ring"`
+}
+
+// Defaults sets the appropriate defaults for FirstPartyAppDefinition
+func (val *FirstPartyAppDefinition) Defaults() *FirstPartyAppDefinition {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.InteropExecutionMode == nil {
+		interopExecutionMode_ := "firstPartyAppWithTests"
+		tmp.InteropExecutionMode = &interopExecutionMode_
+	}
+	return &tmp
+}
+
+// FirstPartyAppDefinitionInput is an input type that accepts FirstPartyAppDefinitionArgs and FirstPartyAppDefinitionOutput values.
+// You can construct a concrete instance of `FirstPartyAppDefinitionInput` via:
+//
+//	FirstPartyAppDefinitionArgs{...}
+type FirstPartyAppDefinitionInput interface {
+	pulumi.Input
+
+	ToFirstPartyAppDefinitionOutput() FirstPartyAppDefinitionOutput
+	ToFirstPartyAppDefinitionOutputWithContext(context.Context) FirstPartyAppDefinitionOutput
+}
+
+// Properties of the definition of a first party application of the Test Base package.
+type FirstPartyAppDefinitionArgs struct {
+	// The architecture of a first party application of a Test Base Account.
+	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
+	// The channel info of a first party application of a Test Base Account.
+	Channel pulumi.StringPtrInput `pulumi:"channel"`
+	// Specifies how the first party applications should be inter-operated with user's application.
+	InteropExecutionMode pulumi.StringPtrInput `pulumi:"interopExecutionMode"`
+	// The media name of a first party application of a Test Base Account.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The ring info of a first party application of a Test Base Account.
+	Ring pulumi.StringPtrInput `pulumi:"ring"`
+}
+
+// Defaults sets the appropriate defaults for FirstPartyAppDefinitionArgs
+func (val *FirstPartyAppDefinitionArgs) Defaults() *FirstPartyAppDefinitionArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.InteropExecutionMode == nil {
+		tmp.InteropExecutionMode = pulumi.StringPtr("firstPartyAppWithTests")
+	}
+	return &tmp
+}
+func (FirstPartyAppDefinitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirstPartyAppDefinition)(nil)).Elem()
+}
+
+func (i FirstPartyAppDefinitionArgs) ToFirstPartyAppDefinitionOutput() FirstPartyAppDefinitionOutput {
+	return i.ToFirstPartyAppDefinitionOutputWithContext(context.Background())
+}
+
+func (i FirstPartyAppDefinitionArgs) ToFirstPartyAppDefinitionOutputWithContext(ctx context.Context) FirstPartyAppDefinitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirstPartyAppDefinitionOutput)
+}
+
+// FirstPartyAppDefinitionArrayInput is an input type that accepts FirstPartyAppDefinitionArray and FirstPartyAppDefinitionArrayOutput values.
+// You can construct a concrete instance of `FirstPartyAppDefinitionArrayInput` via:
+//
+//	FirstPartyAppDefinitionArray{ FirstPartyAppDefinitionArgs{...} }
+type FirstPartyAppDefinitionArrayInput interface {
+	pulumi.Input
+
+	ToFirstPartyAppDefinitionArrayOutput() FirstPartyAppDefinitionArrayOutput
+	ToFirstPartyAppDefinitionArrayOutputWithContext(context.Context) FirstPartyAppDefinitionArrayOutput
+}
+
+type FirstPartyAppDefinitionArray []FirstPartyAppDefinitionInput
+
+func (FirstPartyAppDefinitionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirstPartyAppDefinition)(nil)).Elem()
+}
+
+func (i FirstPartyAppDefinitionArray) ToFirstPartyAppDefinitionArrayOutput() FirstPartyAppDefinitionArrayOutput {
+	return i.ToFirstPartyAppDefinitionArrayOutputWithContext(context.Background())
+}
+
+func (i FirstPartyAppDefinitionArray) ToFirstPartyAppDefinitionArrayOutputWithContext(ctx context.Context) FirstPartyAppDefinitionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirstPartyAppDefinitionArrayOutput)
+}
+
+// Properties of the definition of a first party application of the Test Base package.
+type FirstPartyAppDefinitionOutput struct{ *pulumi.OutputState }
+
+func (FirstPartyAppDefinitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirstPartyAppDefinition)(nil)).Elem()
+}
+
+func (o FirstPartyAppDefinitionOutput) ToFirstPartyAppDefinitionOutput() FirstPartyAppDefinitionOutput {
+	return o
+}
+
+func (o FirstPartyAppDefinitionOutput) ToFirstPartyAppDefinitionOutputWithContext(ctx context.Context) FirstPartyAppDefinitionOutput {
+	return o
+}
+
+// The architecture of a first party application of a Test Base Account.
+func (o FirstPartyAppDefinitionOutput) Architecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirstPartyAppDefinition) *string { return v.Architecture }).(pulumi.StringPtrOutput)
+}
+
+// The channel info of a first party application of a Test Base Account.
+func (o FirstPartyAppDefinitionOutput) Channel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirstPartyAppDefinition) *string { return v.Channel }).(pulumi.StringPtrOutput)
+}
+
+// Specifies how the first party applications should be inter-operated with user's application.
+func (o FirstPartyAppDefinitionOutput) InteropExecutionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirstPartyAppDefinition) *string { return v.InteropExecutionMode }).(pulumi.StringPtrOutput)
+}
+
+// The media name of a first party application of a Test Base Account.
+func (o FirstPartyAppDefinitionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirstPartyAppDefinition) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The ring info of a first party application of a Test Base Account.
+func (o FirstPartyAppDefinitionOutput) Ring() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirstPartyAppDefinition) *string { return v.Ring }).(pulumi.StringPtrOutput)
+}
+
+type FirstPartyAppDefinitionArrayOutput struct{ *pulumi.OutputState }
+
+func (FirstPartyAppDefinitionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirstPartyAppDefinition)(nil)).Elem()
+}
+
+func (o FirstPartyAppDefinitionArrayOutput) ToFirstPartyAppDefinitionArrayOutput() FirstPartyAppDefinitionArrayOutput {
+	return o
+}
+
+func (o FirstPartyAppDefinitionArrayOutput) ToFirstPartyAppDefinitionArrayOutputWithContext(ctx context.Context) FirstPartyAppDefinitionArrayOutput {
+	return o
+}
+
+func (o FirstPartyAppDefinitionArrayOutput) Index(i pulumi.IntInput) FirstPartyAppDefinitionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirstPartyAppDefinition {
+		return vs[0].([]FirstPartyAppDefinition)[vs[1].(int)]
+	}).(FirstPartyAppDefinitionOutput)
+}
+
+// Properties of the definition of a first party application of the Test Base package.
+type FirstPartyAppDefinitionResponse struct {
+	// The architecture of a first party application of a Test Base Account.
+	Architecture *string `pulumi:"architecture"`
+	// The channel info of a first party application of a Test Base Account.
+	Channel *string `pulumi:"channel"`
+	// Specifies how the first party applications should be inter-operated with user's application.
+	InteropExecutionMode *string `pulumi:"interopExecutionMode"`
+	// The media name of a first party application of a Test Base Account.
+	Name *string `pulumi:"name"`
+	// The ring info of a first party application of a Test Base Account.
+	Ring *string `pulumi:"ring"`
+}
+
+// Defaults sets the appropriate defaults for FirstPartyAppDefinitionResponse
+func (val *FirstPartyAppDefinitionResponse) Defaults() *FirstPartyAppDefinitionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.InteropExecutionMode == nil {
+		interopExecutionMode_ := "firstPartyAppWithTests"
+		tmp.InteropExecutionMode = &interopExecutionMode_
+	}
+	return &tmp
+}
+
+// Properties of the definition of a first party application of the Test Base package.
+type FirstPartyAppDefinitionResponseOutput struct{ *pulumi.OutputState }
+
+func (FirstPartyAppDefinitionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirstPartyAppDefinitionResponse)(nil)).Elem()
+}
+
+func (o FirstPartyAppDefinitionResponseOutput) ToFirstPartyAppDefinitionResponseOutput() FirstPartyAppDefinitionResponseOutput {
+	return o
+}
+
+func (o FirstPartyAppDefinitionResponseOutput) ToFirstPartyAppDefinitionResponseOutputWithContext(ctx context.Context) FirstPartyAppDefinitionResponseOutput {
+	return o
+}
+
+// The architecture of a first party application of a Test Base Account.
+func (o FirstPartyAppDefinitionResponseOutput) Architecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirstPartyAppDefinitionResponse) *string { return v.Architecture }).(pulumi.StringPtrOutput)
+}
+
+// The channel info of a first party application of a Test Base Account.
+func (o FirstPartyAppDefinitionResponseOutput) Channel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirstPartyAppDefinitionResponse) *string { return v.Channel }).(pulumi.StringPtrOutput)
+}
+
+// Specifies how the first party applications should be inter-operated with user's application.
+func (o FirstPartyAppDefinitionResponseOutput) InteropExecutionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirstPartyAppDefinitionResponse) *string { return v.InteropExecutionMode }).(pulumi.StringPtrOutput)
+}
+
+// The media name of a first party application of a Test Base Account.
+func (o FirstPartyAppDefinitionResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirstPartyAppDefinitionResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The ring info of a first party application of a Test Base Account.
+func (o FirstPartyAppDefinitionResponseOutput) Ring() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirstPartyAppDefinitionResponse) *string { return v.Ring }).(pulumi.StringPtrOutput)
+}
+
+type FirstPartyAppDefinitionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FirstPartyAppDefinitionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirstPartyAppDefinitionResponse)(nil)).Elem()
+}
+
+func (o FirstPartyAppDefinitionResponseArrayOutput) ToFirstPartyAppDefinitionResponseArrayOutput() FirstPartyAppDefinitionResponseArrayOutput {
+	return o
+}
+
+func (o FirstPartyAppDefinitionResponseArrayOutput) ToFirstPartyAppDefinitionResponseArrayOutputWithContext(ctx context.Context) FirstPartyAppDefinitionResponseArrayOutput {
+	return o
+}
+
+func (o FirstPartyAppDefinitionResponseArrayOutput) Index(i pulumi.IntInput) FirstPartyAppDefinitionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirstPartyAppDefinitionResponse {
+		return vs[0].([]FirstPartyAppDefinitionResponse)[vs[1].(int)]
+	}).(FirstPartyAppDefinitionResponseOutput)
+}
+
+// Properties of the definition of a gallery application used in Test Base package.
+type GalleryAppDefinition struct {
+	// Whether the disclaimer of the gallery application is accepted.
+	IsConsented *bool `pulumi:"isConsented"`
+	// The SKU id of the gallery application.
+	SkuId string `pulumi:"skuId"`
+}
+
+// Defaults sets the appropriate defaults for GalleryAppDefinition
+func (val *GalleryAppDefinition) Defaults() *GalleryAppDefinition {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IsConsented == nil {
+		isConsented_ := false
+		tmp.IsConsented = &isConsented_
+	}
+	return &tmp
+}
+
+// GalleryAppDefinitionInput is an input type that accepts GalleryAppDefinitionArgs and GalleryAppDefinitionOutput values.
+// You can construct a concrete instance of `GalleryAppDefinitionInput` via:
+//
+//	GalleryAppDefinitionArgs{...}
+type GalleryAppDefinitionInput interface {
+	pulumi.Input
+
+	ToGalleryAppDefinitionOutput() GalleryAppDefinitionOutput
+	ToGalleryAppDefinitionOutputWithContext(context.Context) GalleryAppDefinitionOutput
+}
+
+// Properties of the definition of a gallery application used in Test Base package.
+type GalleryAppDefinitionArgs struct {
+	// Whether the disclaimer of the gallery application is accepted.
+	IsConsented pulumi.BoolPtrInput `pulumi:"isConsented"`
+	// The SKU id of the gallery application.
+	SkuId pulumi.StringInput `pulumi:"skuId"`
+}
+
+// Defaults sets the appropriate defaults for GalleryAppDefinitionArgs
+func (val *GalleryAppDefinitionArgs) Defaults() *GalleryAppDefinitionArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IsConsented == nil {
+		tmp.IsConsented = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (GalleryAppDefinitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GalleryAppDefinition)(nil)).Elem()
+}
+
+func (i GalleryAppDefinitionArgs) ToGalleryAppDefinitionOutput() GalleryAppDefinitionOutput {
+	return i.ToGalleryAppDefinitionOutputWithContext(context.Background())
+}
+
+func (i GalleryAppDefinitionArgs) ToGalleryAppDefinitionOutputWithContext(ctx context.Context) GalleryAppDefinitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GalleryAppDefinitionOutput)
+}
+
+// GalleryAppDefinitionArrayInput is an input type that accepts GalleryAppDefinitionArray and GalleryAppDefinitionArrayOutput values.
+// You can construct a concrete instance of `GalleryAppDefinitionArrayInput` via:
+//
+//	GalleryAppDefinitionArray{ GalleryAppDefinitionArgs{...} }
+type GalleryAppDefinitionArrayInput interface {
+	pulumi.Input
+
+	ToGalleryAppDefinitionArrayOutput() GalleryAppDefinitionArrayOutput
+	ToGalleryAppDefinitionArrayOutputWithContext(context.Context) GalleryAppDefinitionArrayOutput
+}
+
+type GalleryAppDefinitionArray []GalleryAppDefinitionInput
+
+func (GalleryAppDefinitionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GalleryAppDefinition)(nil)).Elem()
+}
+
+func (i GalleryAppDefinitionArray) ToGalleryAppDefinitionArrayOutput() GalleryAppDefinitionArrayOutput {
+	return i.ToGalleryAppDefinitionArrayOutputWithContext(context.Background())
+}
+
+func (i GalleryAppDefinitionArray) ToGalleryAppDefinitionArrayOutputWithContext(ctx context.Context) GalleryAppDefinitionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GalleryAppDefinitionArrayOutput)
+}
+
+// Properties of the definition of a gallery application used in Test Base package.
+type GalleryAppDefinitionOutput struct{ *pulumi.OutputState }
+
+func (GalleryAppDefinitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GalleryAppDefinition)(nil)).Elem()
+}
+
+func (o GalleryAppDefinitionOutput) ToGalleryAppDefinitionOutput() GalleryAppDefinitionOutput {
+	return o
+}
+
+func (o GalleryAppDefinitionOutput) ToGalleryAppDefinitionOutputWithContext(ctx context.Context) GalleryAppDefinitionOutput {
+	return o
+}
+
+// Whether the disclaimer of the gallery application is accepted.
+func (o GalleryAppDefinitionOutput) IsConsented() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GalleryAppDefinition) *bool { return v.IsConsented }).(pulumi.BoolPtrOutput)
+}
+
+// The SKU id of the gallery application.
+func (o GalleryAppDefinitionOutput) SkuId() pulumi.StringOutput {
+	return o.ApplyT(func(v GalleryAppDefinition) string { return v.SkuId }).(pulumi.StringOutput)
+}
+
+type GalleryAppDefinitionArrayOutput struct{ *pulumi.OutputState }
+
+func (GalleryAppDefinitionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GalleryAppDefinition)(nil)).Elem()
+}
+
+func (o GalleryAppDefinitionArrayOutput) ToGalleryAppDefinitionArrayOutput() GalleryAppDefinitionArrayOutput {
+	return o
+}
+
+func (o GalleryAppDefinitionArrayOutput) ToGalleryAppDefinitionArrayOutputWithContext(ctx context.Context) GalleryAppDefinitionArrayOutput {
+	return o
+}
+
+func (o GalleryAppDefinitionArrayOutput) Index(i pulumi.IntInput) GalleryAppDefinitionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GalleryAppDefinition {
+		return vs[0].([]GalleryAppDefinition)[vs[1].(int)]
+	}).(GalleryAppDefinitionOutput)
+}
+
+// Properties of the definition of a gallery application used in Test Base package.
+type GalleryAppDefinitionResponse struct {
+	// Whether the disclaimer of the gallery application is accepted.
+	IsConsented *bool `pulumi:"isConsented"`
+	// The SKU id of the gallery application.
+	SkuId string `pulumi:"skuId"`
+}
+
+// Defaults sets the appropriate defaults for GalleryAppDefinitionResponse
+func (val *GalleryAppDefinitionResponse) Defaults() *GalleryAppDefinitionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IsConsented == nil {
+		isConsented_ := false
+		tmp.IsConsented = &isConsented_
+	}
+	return &tmp
+}
+
+// Properties of the definition of a gallery application used in Test Base package.
+type GalleryAppDefinitionResponseOutput struct{ *pulumi.OutputState }
+
+func (GalleryAppDefinitionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GalleryAppDefinitionResponse)(nil)).Elem()
+}
+
+func (o GalleryAppDefinitionResponseOutput) ToGalleryAppDefinitionResponseOutput() GalleryAppDefinitionResponseOutput {
+	return o
+}
+
+func (o GalleryAppDefinitionResponseOutput) ToGalleryAppDefinitionResponseOutputWithContext(ctx context.Context) GalleryAppDefinitionResponseOutput {
+	return o
+}
+
+// Whether the disclaimer of the gallery application is accepted.
+func (o GalleryAppDefinitionResponseOutput) IsConsented() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GalleryAppDefinitionResponse) *bool { return v.IsConsented }).(pulumi.BoolPtrOutput)
+}
+
+// The SKU id of the gallery application.
+func (o GalleryAppDefinitionResponseOutput) SkuId() pulumi.StringOutput {
+	return o.ApplyT(func(v GalleryAppDefinitionResponse) string { return v.SkuId }).(pulumi.StringOutput)
+}
+
+type GalleryAppDefinitionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GalleryAppDefinitionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GalleryAppDefinitionResponse)(nil)).Elem()
+}
+
+func (o GalleryAppDefinitionResponseArrayOutput) ToGalleryAppDefinitionResponseArrayOutput() GalleryAppDefinitionResponseArrayOutput {
+	return o
+}
+
+func (o GalleryAppDefinitionResponseArrayOutput) ToGalleryAppDefinitionResponseArrayOutputWithContext(ctx context.Context) GalleryAppDefinitionResponseArrayOutput {
+	return o
+}
+
+func (o GalleryAppDefinitionResponseArrayOutput) Index(i pulumi.IntInput) GalleryAppDefinitionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GalleryAppDefinitionResponse {
+		return vs[0].([]GalleryAppDefinitionResponse)[vs[1].(int)]
+	}).(GalleryAppDefinitionResponseOutput)
+}
+
+// The information of a highlighted file that user should pay attention to.
+type HighlightedFile struct {
+	// The path of the highlighted file.
+	Path string `pulumi:"path"`
+	// The name of sections to highlight.
+	Sections []string `pulumi:"sections"`
+	// A flag to save whether this file is viewed by user.
+	Visited *bool `pulumi:"visited"`
+}
+
+// Defaults sets the appropriate defaults for HighlightedFile
+func (val *HighlightedFile) Defaults() *HighlightedFile {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Visited == nil {
+		visited_ := false
+		tmp.Visited = &visited_
+	}
+	return &tmp
+}
+
+// HighlightedFileInput is an input type that accepts HighlightedFileArgs and HighlightedFileOutput values.
+// You can construct a concrete instance of `HighlightedFileInput` via:
+//
+//	HighlightedFileArgs{...}
+type HighlightedFileInput interface {
+	pulumi.Input
+
+	ToHighlightedFileOutput() HighlightedFileOutput
+	ToHighlightedFileOutputWithContext(context.Context) HighlightedFileOutput
+}
+
+// The information of a highlighted file that user should pay attention to.
+type HighlightedFileArgs struct {
+	// The path of the highlighted file.
+	Path pulumi.StringInput `pulumi:"path"`
+	// The name of sections to highlight.
+	Sections pulumi.StringArrayInput `pulumi:"sections"`
+	// A flag to save whether this file is viewed by user.
+	Visited pulumi.BoolPtrInput `pulumi:"visited"`
+}
+
+// Defaults sets the appropriate defaults for HighlightedFileArgs
+func (val *HighlightedFileArgs) Defaults() *HighlightedFileArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Visited == nil {
+		tmp.Visited = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (HighlightedFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HighlightedFile)(nil)).Elem()
+}
+
+func (i HighlightedFileArgs) ToHighlightedFileOutput() HighlightedFileOutput {
+	return i.ToHighlightedFileOutputWithContext(context.Background())
+}
+
+func (i HighlightedFileArgs) ToHighlightedFileOutputWithContext(ctx context.Context) HighlightedFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HighlightedFileOutput)
+}
+
+// HighlightedFileArrayInput is an input type that accepts HighlightedFileArray and HighlightedFileArrayOutput values.
+// You can construct a concrete instance of `HighlightedFileArrayInput` via:
+//
+//	HighlightedFileArray{ HighlightedFileArgs{...} }
+type HighlightedFileArrayInput interface {
+	pulumi.Input
+
+	ToHighlightedFileArrayOutput() HighlightedFileArrayOutput
+	ToHighlightedFileArrayOutputWithContext(context.Context) HighlightedFileArrayOutput
+}
+
+type HighlightedFileArray []HighlightedFileInput
+
+func (HighlightedFileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HighlightedFile)(nil)).Elem()
+}
+
+func (i HighlightedFileArray) ToHighlightedFileArrayOutput() HighlightedFileArrayOutput {
+	return i.ToHighlightedFileArrayOutputWithContext(context.Background())
+}
+
+func (i HighlightedFileArray) ToHighlightedFileArrayOutputWithContext(ctx context.Context) HighlightedFileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HighlightedFileArrayOutput)
+}
+
+// The information of a highlighted file that user should pay attention to.
+type HighlightedFileOutput struct{ *pulumi.OutputState }
+
+func (HighlightedFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HighlightedFile)(nil)).Elem()
+}
+
+func (o HighlightedFileOutput) ToHighlightedFileOutput() HighlightedFileOutput {
+	return o
+}
+
+func (o HighlightedFileOutput) ToHighlightedFileOutputWithContext(ctx context.Context) HighlightedFileOutput {
+	return o
+}
+
+// The path of the highlighted file.
+func (o HighlightedFileOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v HighlightedFile) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The name of sections to highlight.
+func (o HighlightedFileOutput) Sections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HighlightedFile) []string { return v.Sections }).(pulumi.StringArrayOutput)
+}
+
+// A flag to save whether this file is viewed by user.
+func (o HighlightedFileOutput) Visited() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HighlightedFile) *bool { return v.Visited }).(pulumi.BoolPtrOutput)
+}
+
+type HighlightedFileArrayOutput struct{ *pulumi.OutputState }
+
+func (HighlightedFileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HighlightedFile)(nil)).Elem()
+}
+
+func (o HighlightedFileArrayOutput) ToHighlightedFileArrayOutput() HighlightedFileArrayOutput {
+	return o
+}
+
+func (o HighlightedFileArrayOutput) ToHighlightedFileArrayOutputWithContext(ctx context.Context) HighlightedFileArrayOutput {
+	return o
+}
+
+func (o HighlightedFileArrayOutput) Index(i pulumi.IntInput) HighlightedFileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HighlightedFile {
+		return vs[0].([]HighlightedFile)[vs[1].(int)]
+	}).(HighlightedFileOutput)
+}
+
+// The information of a highlighted file that user should pay attention to.
+type HighlightedFileResponse struct {
+	// The path of the highlighted file.
+	Path string `pulumi:"path"`
+	// The name of sections to highlight.
+	Sections []string `pulumi:"sections"`
+	// A flag to save whether this file is viewed by user.
+	Visited *bool `pulumi:"visited"`
+}
+
+// Defaults sets the appropriate defaults for HighlightedFileResponse
+func (val *HighlightedFileResponse) Defaults() *HighlightedFileResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Visited == nil {
+		visited_ := false
+		tmp.Visited = &visited_
+	}
+	return &tmp
+}
+
+// The information of a highlighted file that user should pay attention to.
+type HighlightedFileResponseOutput struct{ *pulumi.OutputState }
+
+func (HighlightedFileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HighlightedFileResponse)(nil)).Elem()
+}
+
+func (o HighlightedFileResponseOutput) ToHighlightedFileResponseOutput() HighlightedFileResponseOutput {
+	return o
+}
+
+func (o HighlightedFileResponseOutput) ToHighlightedFileResponseOutputWithContext(ctx context.Context) HighlightedFileResponseOutput {
+	return o
+}
+
+// The path of the highlighted file.
+func (o HighlightedFileResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v HighlightedFileResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The name of sections to highlight.
+func (o HighlightedFileResponseOutput) Sections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HighlightedFileResponse) []string { return v.Sections }).(pulumi.StringArrayOutput)
+}
+
+// A flag to save whether this file is viewed by user.
+func (o HighlightedFileResponseOutput) Visited() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HighlightedFileResponse) *bool { return v.Visited }).(pulumi.BoolPtrOutput)
+}
+
+type HighlightedFileResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HighlightedFileResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HighlightedFileResponse)(nil)).Elem()
+}
+
+func (o HighlightedFileResponseArrayOutput) ToHighlightedFileResponseArrayOutput() HighlightedFileResponseArrayOutput {
+	return o
+}
+
+func (o HighlightedFileResponseArrayOutput) ToHighlightedFileResponseArrayOutputWithContext(ctx context.Context) HighlightedFileResponseArrayOutput {
+	return o
+}
+
+func (o HighlightedFileResponseArrayOutput) Index(i pulumi.IntInput) HighlightedFileResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HighlightedFileResponse {
+		return vs[0].([]HighlightedFileResponse)[vs[1].(int)]
+	}).(HighlightedFileResponseOutput)
+}
+
+// The image validation result.
+type ImageValidationResultsResponse struct {
+	// The validation results of the image.
+	Results []VerificationResultResponse `pulumi:"results"`
+}
+
+// The image validation result.
+type ImageValidationResultsResponseOutput struct{ *pulumi.OutputState }
+
+func (ImageValidationResultsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageValidationResultsResponse)(nil)).Elem()
+}
+
+func (o ImageValidationResultsResponseOutput) ToImageValidationResultsResponseOutput() ImageValidationResultsResponseOutput {
+	return o
+}
+
+func (o ImageValidationResultsResponseOutput) ToImageValidationResultsResponseOutputWithContext(ctx context.Context) ImageValidationResultsResponseOutput {
+	return o
+}
+
+// The validation results of the image.
+func (o ImageValidationResultsResponseOutput) Results() VerificationResultResponseArrayOutput {
+	return o.ApplyT(func(v ImageValidationResultsResponse) []VerificationResultResponse { return v.Results }).(VerificationResultResponseArrayOutput)
+}
+
+// Specifies the baseline os and target os for in-place upgrade tests.
+type InplaceUpgradeOSInfo struct {
+	// Specifies the baseline os for in-place upgrade tests.
+	BaselineOS *OsProperties `pulumi:"baselineOS"`
+	// Specifies the target os for in-place upgrade tests.
+	TargetOS *string `pulumi:"targetOS"`
+}
+
+// InplaceUpgradeOSInfoInput is an input type that accepts InplaceUpgradeOSInfoArgs and InplaceUpgradeOSInfoOutput values.
+// You can construct a concrete instance of `InplaceUpgradeOSInfoInput` via:
+//
+//	InplaceUpgradeOSInfoArgs{...}
+type InplaceUpgradeOSInfoInput interface {
+	pulumi.Input
+
+	ToInplaceUpgradeOSInfoOutput() InplaceUpgradeOSInfoOutput
+	ToInplaceUpgradeOSInfoOutputWithContext(context.Context) InplaceUpgradeOSInfoOutput
+}
+
+// Specifies the baseline os and target os for in-place upgrade tests.
+type InplaceUpgradeOSInfoArgs struct {
+	// Specifies the baseline os for in-place upgrade tests.
+	BaselineOS OsPropertiesPtrInput `pulumi:"baselineOS"`
+	// Specifies the target os for in-place upgrade tests.
+	TargetOS pulumi.StringPtrInput `pulumi:"targetOS"`
+}
+
+func (InplaceUpgradeOSInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InplaceUpgradeOSInfo)(nil)).Elem()
+}
+
+func (i InplaceUpgradeOSInfoArgs) ToInplaceUpgradeOSInfoOutput() InplaceUpgradeOSInfoOutput {
+	return i.ToInplaceUpgradeOSInfoOutputWithContext(context.Background())
+}
+
+func (i InplaceUpgradeOSInfoArgs) ToInplaceUpgradeOSInfoOutputWithContext(ctx context.Context) InplaceUpgradeOSInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InplaceUpgradeOSInfoOutput)
+}
+
+func (i InplaceUpgradeOSInfoArgs) ToInplaceUpgradeOSInfoPtrOutput() InplaceUpgradeOSInfoPtrOutput {
+	return i.ToInplaceUpgradeOSInfoPtrOutputWithContext(context.Background())
+}
+
+func (i InplaceUpgradeOSInfoArgs) ToInplaceUpgradeOSInfoPtrOutputWithContext(ctx context.Context) InplaceUpgradeOSInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InplaceUpgradeOSInfoOutput).ToInplaceUpgradeOSInfoPtrOutputWithContext(ctx)
+}
+
+// InplaceUpgradeOSInfoPtrInput is an input type that accepts InplaceUpgradeOSInfoArgs, InplaceUpgradeOSInfoPtr and InplaceUpgradeOSInfoPtrOutput values.
+// You can construct a concrete instance of `InplaceUpgradeOSInfoPtrInput` via:
+//
+//	        InplaceUpgradeOSInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type InplaceUpgradeOSInfoPtrInput interface {
+	pulumi.Input
+
+	ToInplaceUpgradeOSInfoPtrOutput() InplaceUpgradeOSInfoPtrOutput
+	ToInplaceUpgradeOSInfoPtrOutputWithContext(context.Context) InplaceUpgradeOSInfoPtrOutput
+}
+
+type inplaceUpgradeOSInfoPtrType InplaceUpgradeOSInfoArgs
+
+func InplaceUpgradeOSInfoPtr(v *InplaceUpgradeOSInfoArgs) InplaceUpgradeOSInfoPtrInput {
+	return (*inplaceUpgradeOSInfoPtrType)(v)
+}
+
+func (*inplaceUpgradeOSInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InplaceUpgradeOSInfo)(nil)).Elem()
+}
+
+func (i *inplaceUpgradeOSInfoPtrType) ToInplaceUpgradeOSInfoPtrOutput() InplaceUpgradeOSInfoPtrOutput {
+	return i.ToInplaceUpgradeOSInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *inplaceUpgradeOSInfoPtrType) ToInplaceUpgradeOSInfoPtrOutputWithContext(ctx context.Context) InplaceUpgradeOSInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InplaceUpgradeOSInfoPtrOutput)
+}
+
+// Specifies the baseline os and target os for in-place upgrade tests.
+type InplaceUpgradeOSInfoOutput struct{ *pulumi.OutputState }
+
+func (InplaceUpgradeOSInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InplaceUpgradeOSInfo)(nil)).Elem()
+}
+
+func (o InplaceUpgradeOSInfoOutput) ToInplaceUpgradeOSInfoOutput() InplaceUpgradeOSInfoOutput {
+	return o
+}
+
+func (o InplaceUpgradeOSInfoOutput) ToInplaceUpgradeOSInfoOutputWithContext(ctx context.Context) InplaceUpgradeOSInfoOutput {
+	return o
+}
+
+func (o InplaceUpgradeOSInfoOutput) ToInplaceUpgradeOSInfoPtrOutput() InplaceUpgradeOSInfoPtrOutput {
+	return o.ToInplaceUpgradeOSInfoPtrOutputWithContext(context.Background())
+}
+
+func (o InplaceUpgradeOSInfoOutput) ToInplaceUpgradeOSInfoPtrOutputWithContext(ctx context.Context) InplaceUpgradeOSInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InplaceUpgradeOSInfo) *InplaceUpgradeOSInfo {
+		return &v
+	}).(InplaceUpgradeOSInfoPtrOutput)
+}
+
+// Specifies the baseline os for in-place upgrade tests.
+func (o InplaceUpgradeOSInfoOutput) BaselineOS() OsPropertiesPtrOutput {
+	return o.ApplyT(func(v InplaceUpgradeOSInfo) *OsProperties { return v.BaselineOS }).(OsPropertiesPtrOutput)
+}
+
+// Specifies the target os for in-place upgrade tests.
+func (o InplaceUpgradeOSInfoOutput) TargetOS() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InplaceUpgradeOSInfo) *string { return v.TargetOS }).(pulumi.StringPtrOutput)
+}
+
+type InplaceUpgradeOSInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (InplaceUpgradeOSInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InplaceUpgradeOSInfo)(nil)).Elem()
+}
+
+func (o InplaceUpgradeOSInfoPtrOutput) ToInplaceUpgradeOSInfoPtrOutput() InplaceUpgradeOSInfoPtrOutput {
+	return o
+}
+
+func (o InplaceUpgradeOSInfoPtrOutput) ToInplaceUpgradeOSInfoPtrOutputWithContext(ctx context.Context) InplaceUpgradeOSInfoPtrOutput {
+	return o
+}
+
+func (o InplaceUpgradeOSInfoPtrOutput) Elem() InplaceUpgradeOSInfoOutput {
+	return o.ApplyT(func(v *InplaceUpgradeOSInfo) InplaceUpgradeOSInfo {
+		if v != nil {
+			return *v
+		}
+		var ret InplaceUpgradeOSInfo
+		return ret
+	}).(InplaceUpgradeOSInfoOutput)
+}
+
+// Specifies the baseline os for in-place upgrade tests.
+func (o InplaceUpgradeOSInfoPtrOutput) BaselineOS() OsPropertiesPtrOutput {
+	return o.ApplyT(func(v *InplaceUpgradeOSInfo) *OsProperties {
+		if v == nil {
+			return nil
+		}
+		return v.BaselineOS
+	}).(OsPropertiesPtrOutput)
+}
+
+// Specifies the target os for in-place upgrade tests.
+func (o InplaceUpgradeOSInfoPtrOutput) TargetOS() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InplaceUpgradeOSInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetOS
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the baseline os and target os for in-place upgrade tests.
+type InplaceUpgradeOSInfoResponse struct {
+	// Specifies the baseline os for in-place upgrade tests.
+	BaselineOS *OsPropertiesResponse `pulumi:"baselineOS"`
+	// Specifies the target os for in-place upgrade tests.
+	TargetOS *string `pulumi:"targetOS"`
+}
+
+// Specifies the baseline os and target os for in-place upgrade tests.
+type InplaceUpgradeOSInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (InplaceUpgradeOSInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InplaceUpgradeOSInfoResponse)(nil)).Elem()
+}
+
+func (o InplaceUpgradeOSInfoResponseOutput) ToInplaceUpgradeOSInfoResponseOutput() InplaceUpgradeOSInfoResponseOutput {
+	return o
+}
+
+func (o InplaceUpgradeOSInfoResponseOutput) ToInplaceUpgradeOSInfoResponseOutputWithContext(ctx context.Context) InplaceUpgradeOSInfoResponseOutput {
+	return o
+}
+
+// Specifies the baseline os for in-place upgrade tests.
+func (o InplaceUpgradeOSInfoResponseOutput) BaselineOS() OsPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v InplaceUpgradeOSInfoResponse) *OsPropertiesResponse { return v.BaselineOS }).(OsPropertiesResponsePtrOutput)
+}
+
+// Specifies the target os for in-place upgrade tests.
+func (o InplaceUpgradeOSInfoResponseOutput) TargetOS() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InplaceUpgradeOSInfoResponse) *string { return v.TargetOS }).(pulumi.StringPtrOutput)
+}
+
+type InplaceUpgradeOSInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (InplaceUpgradeOSInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InplaceUpgradeOSInfoResponse)(nil)).Elem()
+}
+
+func (o InplaceUpgradeOSInfoResponsePtrOutput) ToInplaceUpgradeOSInfoResponsePtrOutput() InplaceUpgradeOSInfoResponsePtrOutput {
+	return o
+}
+
+func (o InplaceUpgradeOSInfoResponsePtrOutput) ToInplaceUpgradeOSInfoResponsePtrOutputWithContext(ctx context.Context) InplaceUpgradeOSInfoResponsePtrOutput {
+	return o
+}
+
+func (o InplaceUpgradeOSInfoResponsePtrOutput) Elem() InplaceUpgradeOSInfoResponseOutput {
+	return o.ApplyT(func(v *InplaceUpgradeOSInfoResponse) InplaceUpgradeOSInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret InplaceUpgradeOSInfoResponse
+		return ret
+	}).(InplaceUpgradeOSInfoResponseOutput)
+}
+
+// Specifies the baseline os for in-place upgrade tests.
+func (o InplaceUpgradeOSInfoResponsePtrOutput) BaselineOS() OsPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *InplaceUpgradeOSInfoResponse) *OsPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.BaselineOS
+	}).(OsPropertiesResponsePtrOutput)
+}
+
+// Specifies the target os for in-place upgrade tests.
+func (o InplaceUpgradeOSInfoResponsePtrOutput) TargetOS() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InplaceUpgradeOSInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetOS
+	}).(pulumi.StringPtrOutput)
+}
+
+// The metadata of Intune enrollment.
+type IntuneEnrollmentMetadata struct {
+	// The enrolled Intune apps.
+	AppList []EnrolledIntuneApp `pulumi:"appList"`
+	// The id of the Intune enrollment credential.
+	CredentialId *string `pulumi:"credentialId"`
+	// The expected duration of Intune applications and policies deployment.
+	ExpectedDeploymentDurationInMinute *int `pulumi:"expectedDeploymentDurationInMinute"`
+}
+
+// IntuneEnrollmentMetadataInput is an input type that accepts IntuneEnrollmentMetadataArgs and IntuneEnrollmentMetadataOutput values.
+// You can construct a concrete instance of `IntuneEnrollmentMetadataInput` via:
+//
+//	IntuneEnrollmentMetadataArgs{...}
+type IntuneEnrollmentMetadataInput interface {
+	pulumi.Input
+
+	ToIntuneEnrollmentMetadataOutput() IntuneEnrollmentMetadataOutput
+	ToIntuneEnrollmentMetadataOutputWithContext(context.Context) IntuneEnrollmentMetadataOutput
+}
+
+// The metadata of Intune enrollment.
+type IntuneEnrollmentMetadataArgs struct {
+	// The enrolled Intune apps.
+	AppList EnrolledIntuneAppArrayInput `pulumi:"appList"`
+	// The id of the Intune enrollment credential.
+	CredentialId pulumi.StringPtrInput `pulumi:"credentialId"`
+	// The expected duration of Intune applications and policies deployment.
+	ExpectedDeploymentDurationInMinute pulumi.IntPtrInput `pulumi:"expectedDeploymentDurationInMinute"`
+}
+
+func (IntuneEnrollmentMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntuneEnrollmentMetadata)(nil)).Elem()
+}
+
+func (i IntuneEnrollmentMetadataArgs) ToIntuneEnrollmentMetadataOutput() IntuneEnrollmentMetadataOutput {
+	return i.ToIntuneEnrollmentMetadataOutputWithContext(context.Background())
+}
+
+func (i IntuneEnrollmentMetadataArgs) ToIntuneEnrollmentMetadataOutputWithContext(ctx context.Context) IntuneEnrollmentMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntuneEnrollmentMetadataOutput)
+}
+
+func (i IntuneEnrollmentMetadataArgs) ToIntuneEnrollmentMetadataPtrOutput() IntuneEnrollmentMetadataPtrOutput {
+	return i.ToIntuneEnrollmentMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i IntuneEnrollmentMetadataArgs) ToIntuneEnrollmentMetadataPtrOutputWithContext(ctx context.Context) IntuneEnrollmentMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntuneEnrollmentMetadataOutput).ToIntuneEnrollmentMetadataPtrOutputWithContext(ctx)
+}
+
+// IntuneEnrollmentMetadataPtrInput is an input type that accepts IntuneEnrollmentMetadataArgs, IntuneEnrollmentMetadataPtr and IntuneEnrollmentMetadataPtrOutput values.
+// You can construct a concrete instance of `IntuneEnrollmentMetadataPtrInput` via:
+//
+//	        IntuneEnrollmentMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type IntuneEnrollmentMetadataPtrInput interface {
+	pulumi.Input
+
+	ToIntuneEnrollmentMetadataPtrOutput() IntuneEnrollmentMetadataPtrOutput
+	ToIntuneEnrollmentMetadataPtrOutputWithContext(context.Context) IntuneEnrollmentMetadataPtrOutput
+}
+
+type intuneEnrollmentMetadataPtrType IntuneEnrollmentMetadataArgs
+
+func IntuneEnrollmentMetadataPtr(v *IntuneEnrollmentMetadataArgs) IntuneEnrollmentMetadataPtrInput {
+	return (*intuneEnrollmentMetadataPtrType)(v)
+}
+
+func (*intuneEnrollmentMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntuneEnrollmentMetadata)(nil)).Elem()
+}
+
+func (i *intuneEnrollmentMetadataPtrType) ToIntuneEnrollmentMetadataPtrOutput() IntuneEnrollmentMetadataPtrOutput {
+	return i.ToIntuneEnrollmentMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *intuneEnrollmentMetadataPtrType) ToIntuneEnrollmentMetadataPtrOutputWithContext(ctx context.Context) IntuneEnrollmentMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntuneEnrollmentMetadataPtrOutput)
+}
+
+// The metadata of Intune enrollment.
+type IntuneEnrollmentMetadataOutput struct{ *pulumi.OutputState }
+
+func (IntuneEnrollmentMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntuneEnrollmentMetadata)(nil)).Elem()
+}
+
+func (o IntuneEnrollmentMetadataOutput) ToIntuneEnrollmentMetadataOutput() IntuneEnrollmentMetadataOutput {
+	return o
+}
+
+func (o IntuneEnrollmentMetadataOutput) ToIntuneEnrollmentMetadataOutputWithContext(ctx context.Context) IntuneEnrollmentMetadataOutput {
+	return o
+}
+
+func (o IntuneEnrollmentMetadataOutput) ToIntuneEnrollmentMetadataPtrOutput() IntuneEnrollmentMetadataPtrOutput {
+	return o.ToIntuneEnrollmentMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o IntuneEnrollmentMetadataOutput) ToIntuneEnrollmentMetadataPtrOutputWithContext(ctx context.Context) IntuneEnrollmentMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IntuneEnrollmentMetadata) *IntuneEnrollmentMetadata {
+		return &v
+	}).(IntuneEnrollmentMetadataPtrOutput)
+}
+
+// The enrolled Intune apps.
+func (o IntuneEnrollmentMetadataOutput) AppList() EnrolledIntuneAppArrayOutput {
+	return o.ApplyT(func(v IntuneEnrollmentMetadata) []EnrolledIntuneApp { return v.AppList }).(EnrolledIntuneAppArrayOutput)
+}
+
+// The id of the Intune enrollment credential.
+func (o IntuneEnrollmentMetadataOutput) CredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntuneEnrollmentMetadata) *string { return v.CredentialId }).(pulumi.StringPtrOutput)
+}
+
+// The expected duration of Intune applications and policies deployment.
+func (o IntuneEnrollmentMetadataOutput) ExpectedDeploymentDurationInMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IntuneEnrollmentMetadata) *int { return v.ExpectedDeploymentDurationInMinute }).(pulumi.IntPtrOutput)
+}
+
+type IntuneEnrollmentMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (IntuneEnrollmentMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntuneEnrollmentMetadata)(nil)).Elem()
+}
+
+func (o IntuneEnrollmentMetadataPtrOutput) ToIntuneEnrollmentMetadataPtrOutput() IntuneEnrollmentMetadataPtrOutput {
+	return o
+}
+
+func (o IntuneEnrollmentMetadataPtrOutput) ToIntuneEnrollmentMetadataPtrOutputWithContext(ctx context.Context) IntuneEnrollmentMetadataPtrOutput {
+	return o
+}
+
+func (o IntuneEnrollmentMetadataPtrOutput) Elem() IntuneEnrollmentMetadataOutput {
+	return o.ApplyT(func(v *IntuneEnrollmentMetadata) IntuneEnrollmentMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret IntuneEnrollmentMetadata
+		return ret
+	}).(IntuneEnrollmentMetadataOutput)
+}
+
+// The enrolled Intune apps.
+func (o IntuneEnrollmentMetadataPtrOutput) AppList() EnrolledIntuneAppArrayOutput {
+	return o.ApplyT(func(v *IntuneEnrollmentMetadata) []EnrolledIntuneApp {
+		if v == nil {
+			return nil
+		}
+		return v.AppList
+	}).(EnrolledIntuneAppArrayOutput)
+}
+
+// The id of the Intune enrollment credential.
+func (o IntuneEnrollmentMetadataPtrOutput) CredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntuneEnrollmentMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CredentialId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The expected duration of Intune applications and policies deployment.
+func (o IntuneEnrollmentMetadataPtrOutput) ExpectedDeploymentDurationInMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *IntuneEnrollmentMetadata) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ExpectedDeploymentDurationInMinute
+	}).(pulumi.IntPtrOutput)
+}
+
+// The metadata of Intune enrollment.
+type IntuneEnrollmentMetadataResponse struct {
+	// The enrolled Intune apps.
+	AppList []EnrolledIntuneAppResponse `pulumi:"appList"`
+	// The id of the Intune enrollment credential.
+	CredentialId *string `pulumi:"credentialId"`
+	// The expected duration of Intune applications and policies deployment.
+	ExpectedDeploymentDurationInMinute *int `pulumi:"expectedDeploymentDurationInMinute"`
+}
+
+// The metadata of Intune enrollment.
+type IntuneEnrollmentMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (IntuneEnrollmentMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntuneEnrollmentMetadataResponse)(nil)).Elem()
+}
+
+func (o IntuneEnrollmentMetadataResponseOutput) ToIntuneEnrollmentMetadataResponseOutput() IntuneEnrollmentMetadataResponseOutput {
+	return o
+}
+
+func (o IntuneEnrollmentMetadataResponseOutput) ToIntuneEnrollmentMetadataResponseOutputWithContext(ctx context.Context) IntuneEnrollmentMetadataResponseOutput {
+	return o
+}
+
+// The enrolled Intune apps.
+func (o IntuneEnrollmentMetadataResponseOutput) AppList() EnrolledIntuneAppResponseArrayOutput {
+	return o.ApplyT(func(v IntuneEnrollmentMetadataResponse) []EnrolledIntuneAppResponse { return v.AppList }).(EnrolledIntuneAppResponseArrayOutput)
+}
+
+// The id of the Intune enrollment credential.
+func (o IntuneEnrollmentMetadataResponseOutput) CredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntuneEnrollmentMetadataResponse) *string { return v.CredentialId }).(pulumi.StringPtrOutput)
+}
+
+// The expected duration of Intune applications and policies deployment.
+func (o IntuneEnrollmentMetadataResponseOutput) ExpectedDeploymentDurationInMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IntuneEnrollmentMetadataResponse) *int { return v.ExpectedDeploymentDurationInMinute }).(pulumi.IntPtrOutput)
+}
+
+type IntuneEnrollmentMetadataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IntuneEnrollmentMetadataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntuneEnrollmentMetadataResponse)(nil)).Elem()
+}
+
+func (o IntuneEnrollmentMetadataResponsePtrOutput) ToIntuneEnrollmentMetadataResponsePtrOutput() IntuneEnrollmentMetadataResponsePtrOutput {
+	return o
+}
+
+func (o IntuneEnrollmentMetadataResponsePtrOutput) ToIntuneEnrollmentMetadataResponsePtrOutputWithContext(ctx context.Context) IntuneEnrollmentMetadataResponsePtrOutput {
+	return o
+}
+
+func (o IntuneEnrollmentMetadataResponsePtrOutput) Elem() IntuneEnrollmentMetadataResponseOutput {
+	return o.ApplyT(func(v *IntuneEnrollmentMetadataResponse) IntuneEnrollmentMetadataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IntuneEnrollmentMetadataResponse
+		return ret
+	}).(IntuneEnrollmentMetadataResponseOutput)
+}
+
+// The enrolled Intune apps.
+func (o IntuneEnrollmentMetadataResponsePtrOutput) AppList() EnrolledIntuneAppResponseArrayOutput {
+	return o.ApplyT(func(v *IntuneEnrollmentMetadataResponse) []EnrolledIntuneAppResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AppList
+	}).(EnrolledIntuneAppResponseArrayOutput)
+}
+
+// The id of the Intune enrollment credential.
+func (o IntuneEnrollmentMetadataResponsePtrOutput) CredentialId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntuneEnrollmentMetadataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CredentialId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The expected duration of Intune applications and policies deployment.
+func (o IntuneEnrollmentMetadataResponsePtrOutput) ExpectedDeploymentDurationInMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *IntuneEnrollmentMetadataResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ExpectedDeploymentDurationInMinute
+	}).(pulumi.IntPtrOutput)
 }
 
 // A notification event receivers.
@@ -1438,6 +3922,295 @@ func (o NotificationReceiverValueResponsePtrOutput) UserObjectReceiverValue() Us
 	}).(UserObjectReceiverValueResponsePtrOutput)
 }
 
+// The properties of an operating system.
+type OsProperties struct {
+	// Specify the referenced Test Base Custom Image Id if available.
+	CustomImageId *string `pulumi:"customImageId"`
+	// The name of the OS.
+	OsName *string `pulumi:"osName"`
+	// The properties of the OS release.
+	ReleaseProperties *ReleaseProperties `pulumi:"releaseProperties"`
+}
+
+// OsPropertiesInput is an input type that accepts OsPropertiesArgs and OsPropertiesOutput values.
+// You can construct a concrete instance of `OsPropertiesInput` via:
+//
+//	OsPropertiesArgs{...}
+type OsPropertiesInput interface {
+	pulumi.Input
+
+	ToOsPropertiesOutput() OsPropertiesOutput
+	ToOsPropertiesOutputWithContext(context.Context) OsPropertiesOutput
+}
+
+// The properties of an operating system.
+type OsPropertiesArgs struct {
+	// Specify the referenced Test Base Custom Image Id if available.
+	CustomImageId pulumi.StringPtrInput `pulumi:"customImageId"`
+	// The name of the OS.
+	OsName pulumi.StringPtrInput `pulumi:"osName"`
+	// The properties of the OS release.
+	ReleaseProperties ReleasePropertiesPtrInput `pulumi:"releaseProperties"`
+}
+
+func (OsPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsProperties)(nil)).Elem()
+}
+
+func (i OsPropertiesArgs) ToOsPropertiesOutput() OsPropertiesOutput {
+	return i.ToOsPropertiesOutputWithContext(context.Background())
+}
+
+func (i OsPropertiesArgs) ToOsPropertiesOutputWithContext(ctx context.Context) OsPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPropertiesOutput)
+}
+
+func (i OsPropertiesArgs) ToOsPropertiesPtrOutput() OsPropertiesPtrOutput {
+	return i.ToOsPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i OsPropertiesArgs) ToOsPropertiesPtrOutputWithContext(ctx context.Context) OsPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPropertiesOutput).ToOsPropertiesPtrOutputWithContext(ctx)
+}
+
+// OsPropertiesPtrInput is an input type that accepts OsPropertiesArgs, OsPropertiesPtr and OsPropertiesPtrOutput values.
+// You can construct a concrete instance of `OsPropertiesPtrInput` via:
+//
+//	        OsPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type OsPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToOsPropertiesPtrOutput() OsPropertiesPtrOutput
+	ToOsPropertiesPtrOutputWithContext(context.Context) OsPropertiesPtrOutput
+}
+
+type osPropertiesPtrType OsPropertiesArgs
+
+func OsPropertiesPtr(v *OsPropertiesArgs) OsPropertiesPtrInput {
+	return (*osPropertiesPtrType)(v)
+}
+
+func (*osPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsProperties)(nil)).Elem()
+}
+
+func (i *osPropertiesPtrType) ToOsPropertiesPtrOutput() OsPropertiesPtrOutput {
+	return i.ToOsPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *osPropertiesPtrType) ToOsPropertiesPtrOutputWithContext(ctx context.Context) OsPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OsPropertiesPtrOutput)
+}
+
+// The properties of an operating system.
+type OsPropertiesOutput struct{ *pulumi.OutputState }
+
+func (OsPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsProperties)(nil)).Elem()
+}
+
+func (o OsPropertiesOutput) ToOsPropertiesOutput() OsPropertiesOutput {
+	return o
+}
+
+func (o OsPropertiesOutput) ToOsPropertiesOutputWithContext(ctx context.Context) OsPropertiesOutput {
+	return o
+}
+
+func (o OsPropertiesOutput) ToOsPropertiesPtrOutput() OsPropertiesPtrOutput {
+	return o.ToOsPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o OsPropertiesOutput) ToOsPropertiesPtrOutputWithContext(ctx context.Context) OsPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OsProperties) *OsProperties {
+		return &v
+	}).(OsPropertiesPtrOutput)
+}
+
+// Specify the referenced Test Base Custom Image Id if available.
+func (o OsPropertiesOutput) CustomImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProperties) *string { return v.CustomImageId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the OS.
+func (o OsPropertiesOutput) OsName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsProperties) *string { return v.OsName }).(pulumi.StringPtrOutput)
+}
+
+// The properties of the OS release.
+func (o OsPropertiesOutput) ReleaseProperties() ReleasePropertiesPtrOutput {
+	return o.ApplyT(func(v OsProperties) *ReleaseProperties { return v.ReleaseProperties }).(ReleasePropertiesPtrOutput)
+}
+
+type OsPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (OsPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsProperties)(nil)).Elem()
+}
+
+func (o OsPropertiesPtrOutput) ToOsPropertiesPtrOutput() OsPropertiesPtrOutput {
+	return o
+}
+
+func (o OsPropertiesPtrOutput) ToOsPropertiesPtrOutputWithContext(ctx context.Context) OsPropertiesPtrOutput {
+	return o
+}
+
+func (o OsPropertiesPtrOutput) Elem() OsPropertiesOutput {
+	return o.ApplyT(func(v *OsProperties) OsProperties {
+		if v != nil {
+			return *v
+		}
+		var ret OsProperties
+		return ret
+	}).(OsPropertiesOutput)
+}
+
+// Specify the referenced Test Base Custom Image Id if available.
+func (o OsPropertiesPtrOutput) CustomImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomImageId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the OS.
+func (o OsPropertiesPtrOutput) OsName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OsName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties of the OS release.
+func (o OsPropertiesPtrOutput) ReleaseProperties() ReleasePropertiesPtrOutput {
+	return o.ApplyT(func(v *OsProperties) *ReleaseProperties {
+		if v == nil {
+			return nil
+		}
+		return v.ReleaseProperties
+	}).(ReleasePropertiesPtrOutput)
+}
+
+// The properties of an operating system.
+type OsPropertiesResponse struct {
+	// The name of the custom image resource.
+	CustomImageDisplayName string `pulumi:"customImageDisplayName"`
+	// Specify the referenced Test Base Custom Image Id if available.
+	CustomImageId *string `pulumi:"customImageId"`
+	// The name of the OS.
+	OsName *string `pulumi:"osName"`
+	// The properties of the OS release.
+	ReleaseProperties *ReleasePropertiesResponse `pulumi:"releaseProperties"`
+}
+
+// The properties of an operating system.
+type OsPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (OsPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OsPropertiesResponse)(nil)).Elem()
+}
+
+func (o OsPropertiesResponseOutput) ToOsPropertiesResponseOutput() OsPropertiesResponseOutput {
+	return o
+}
+
+func (o OsPropertiesResponseOutput) ToOsPropertiesResponseOutputWithContext(ctx context.Context) OsPropertiesResponseOutput {
+	return o
+}
+
+// The name of the custom image resource.
+func (o OsPropertiesResponseOutput) CustomImageDisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v OsPropertiesResponse) string { return v.CustomImageDisplayName }).(pulumi.StringOutput)
+}
+
+// Specify the referenced Test Base Custom Image Id if available.
+func (o OsPropertiesResponseOutput) CustomImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPropertiesResponse) *string { return v.CustomImageId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the OS.
+func (o OsPropertiesResponseOutput) OsName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OsPropertiesResponse) *string { return v.OsName }).(pulumi.StringPtrOutput)
+}
+
+// The properties of the OS release.
+func (o OsPropertiesResponseOutput) ReleaseProperties() ReleasePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v OsPropertiesResponse) *ReleasePropertiesResponse { return v.ReleaseProperties }).(ReleasePropertiesResponsePtrOutput)
+}
+
+type OsPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (OsPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OsPropertiesResponse)(nil)).Elem()
+}
+
+func (o OsPropertiesResponsePtrOutput) ToOsPropertiesResponsePtrOutput() OsPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o OsPropertiesResponsePtrOutput) ToOsPropertiesResponsePtrOutputWithContext(ctx context.Context) OsPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o OsPropertiesResponsePtrOutput) Elem() OsPropertiesResponseOutput {
+	return o.ApplyT(func(v *OsPropertiesResponse) OsPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret OsPropertiesResponse
+		return ret
+	}).(OsPropertiesResponseOutput)
+}
+
+// The name of the custom image resource.
+func (o OsPropertiesResponsePtrOutput) CustomImageDisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CustomImageDisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify the referenced Test Base Custom Image Id if available.
+func (o OsPropertiesResponsePtrOutput) CustomImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomImageId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the OS.
+func (o OsPropertiesResponsePtrOutput) OsName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OsPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OsName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties of the OS release.
+func (o OsPropertiesResponsePtrOutput) ReleaseProperties() ReleasePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *OsPropertiesResponse) *ReleasePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ReleaseProperties
+	}).(ReleasePropertiesResponsePtrOutput)
+}
+
 // The validation results. There's validation on package when it's created or updated.
 type PackageValidationResultResponse struct {
 	// Error information.
@@ -1496,6 +4269,734 @@ func (o PackageValidationResultResponseArrayOutput) Index(i pulumi.IntInput) Pac
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PackageValidationResultResponse {
 		return vs[0].([]PackageValidationResultResponse)[vs[1].(int)]
 	}).(PackageValidationResultResponseOutput)
+}
+
+type PreReleaseAccessRequestSpec struct {
+	City             *string  `pulumi:"city"`
+	CompanyWebsite   *string  `pulumi:"companyWebsite"`
+	CountryAndRegion *string  `pulumi:"countryAndRegion"`
+	Email            *string  `pulumi:"email"`
+	Engagements      []string `pulumi:"engagements"`
+	OrganizationName *string  `pulumi:"organizationName"`
+	StateOrProvince  *string  `pulumi:"stateOrProvince"`
+	StreetAddress    *string  `pulumi:"streetAddress"`
+	ZipCode          *string  `pulumi:"zipCode"`
+}
+
+// PreReleaseAccessRequestSpecInput is an input type that accepts PreReleaseAccessRequestSpecArgs and PreReleaseAccessRequestSpecOutput values.
+// You can construct a concrete instance of `PreReleaseAccessRequestSpecInput` via:
+//
+//	PreReleaseAccessRequestSpecArgs{...}
+type PreReleaseAccessRequestSpecInput interface {
+	pulumi.Input
+
+	ToPreReleaseAccessRequestSpecOutput() PreReleaseAccessRequestSpecOutput
+	ToPreReleaseAccessRequestSpecOutputWithContext(context.Context) PreReleaseAccessRequestSpecOutput
+}
+
+type PreReleaseAccessRequestSpecArgs struct {
+	City             pulumi.StringPtrInput   `pulumi:"city"`
+	CompanyWebsite   pulumi.StringPtrInput   `pulumi:"companyWebsite"`
+	CountryAndRegion pulumi.StringPtrInput   `pulumi:"countryAndRegion"`
+	Email            pulumi.StringPtrInput   `pulumi:"email"`
+	Engagements      pulumi.StringArrayInput `pulumi:"engagements"`
+	OrganizationName pulumi.StringPtrInput   `pulumi:"organizationName"`
+	StateOrProvince  pulumi.StringPtrInput   `pulumi:"stateOrProvince"`
+	StreetAddress    pulumi.StringPtrInput   `pulumi:"streetAddress"`
+	ZipCode          pulumi.StringPtrInput   `pulumi:"zipCode"`
+}
+
+func (PreReleaseAccessRequestSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreReleaseAccessRequestSpec)(nil)).Elem()
+}
+
+func (i PreReleaseAccessRequestSpecArgs) ToPreReleaseAccessRequestSpecOutput() PreReleaseAccessRequestSpecOutput {
+	return i.ToPreReleaseAccessRequestSpecOutputWithContext(context.Background())
+}
+
+func (i PreReleaseAccessRequestSpecArgs) ToPreReleaseAccessRequestSpecOutputWithContext(ctx context.Context) PreReleaseAccessRequestSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreReleaseAccessRequestSpecOutput)
+}
+
+func (i PreReleaseAccessRequestSpecArgs) ToPreReleaseAccessRequestSpecPtrOutput() PreReleaseAccessRequestSpecPtrOutput {
+	return i.ToPreReleaseAccessRequestSpecPtrOutputWithContext(context.Background())
+}
+
+func (i PreReleaseAccessRequestSpecArgs) ToPreReleaseAccessRequestSpecPtrOutputWithContext(ctx context.Context) PreReleaseAccessRequestSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreReleaseAccessRequestSpecOutput).ToPreReleaseAccessRequestSpecPtrOutputWithContext(ctx)
+}
+
+// PreReleaseAccessRequestSpecPtrInput is an input type that accepts PreReleaseAccessRequestSpecArgs, PreReleaseAccessRequestSpecPtr and PreReleaseAccessRequestSpecPtrOutput values.
+// You can construct a concrete instance of `PreReleaseAccessRequestSpecPtrInput` via:
+//
+//	        PreReleaseAccessRequestSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreReleaseAccessRequestSpecPtrInput interface {
+	pulumi.Input
+
+	ToPreReleaseAccessRequestSpecPtrOutput() PreReleaseAccessRequestSpecPtrOutput
+	ToPreReleaseAccessRequestSpecPtrOutputWithContext(context.Context) PreReleaseAccessRequestSpecPtrOutput
+}
+
+type preReleaseAccessRequestSpecPtrType PreReleaseAccessRequestSpecArgs
+
+func PreReleaseAccessRequestSpecPtr(v *PreReleaseAccessRequestSpecArgs) PreReleaseAccessRequestSpecPtrInput {
+	return (*preReleaseAccessRequestSpecPtrType)(v)
+}
+
+func (*preReleaseAccessRequestSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreReleaseAccessRequestSpec)(nil)).Elem()
+}
+
+func (i *preReleaseAccessRequestSpecPtrType) ToPreReleaseAccessRequestSpecPtrOutput() PreReleaseAccessRequestSpecPtrOutput {
+	return i.ToPreReleaseAccessRequestSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *preReleaseAccessRequestSpecPtrType) ToPreReleaseAccessRequestSpecPtrOutputWithContext(ctx context.Context) PreReleaseAccessRequestSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreReleaseAccessRequestSpecPtrOutput)
+}
+
+type PreReleaseAccessRequestSpecOutput struct{ *pulumi.OutputState }
+
+func (PreReleaseAccessRequestSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreReleaseAccessRequestSpec)(nil)).Elem()
+}
+
+func (o PreReleaseAccessRequestSpecOutput) ToPreReleaseAccessRequestSpecOutput() PreReleaseAccessRequestSpecOutput {
+	return o
+}
+
+func (o PreReleaseAccessRequestSpecOutput) ToPreReleaseAccessRequestSpecOutputWithContext(ctx context.Context) PreReleaseAccessRequestSpecOutput {
+	return o
+}
+
+func (o PreReleaseAccessRequestSpecOutput) ToPreReleaseAccessRequestSpecPtrOutput() PreReleaseAccessRequestSpecPtrOutput {
+	return o.ToPreReleaseAccessRequestSpecPtrOutputWithContext(context.Background())
+}
+
+func (o PreReleaseAccessRequestSpecOutput) ToPreReleaseAccessRequestSpecPtrOutputWithContext(ctx context.Context) PreReleaseAccessRequestSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreReleaseAccessRequestSpec) *PreReleaseAccessRequestSpec {
+		return &v
+	}).(PreReleaseAccessRequestSpecPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreReleaseAccessRequestSpec) *string { return v.City }).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecOutput) CompanyWebsite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreReleaseAccessRequestSpec) *string { return v.CompanyWebsite }).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecOutput) CountryAndRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreReleaseAccessRequestSpec) *string { return v.CountryAndRegion }).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreReleaseAccessRequestSpec) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecOutput) Engagements() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PreReleaseAccessRequestSpec) []string { return v.Engagements }).(pulumi.StringArrayOutput)
+}
+
+func (o PreReleaseAccessRequestSpecOutput) OrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreReleaseAccessRequestSpec) *string { return v.OrganizationName }).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecOutput) StateOrProvince() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreReleaseAccessRequestSpec) *string { return v.StateOrProvince }).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecOutput) StreetAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreReleaseAccessRequestSpec) *string { return v.StreetAddress }).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecOutput) ZipCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreReleaseAccessRequestSpec) *string { return v.ZipCode }).(pulumi.StringPtrOutput)
+}
+
+type PreReleaseAccessRequestSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (PreReleaseAccessRequestSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreReleaseAccessRequestSpec)(nil)).Elem()
+}
+
+func (o PreReleaseAccessRequestSpecPtrOutput) ToPreReleaseAccessRequestSpecPtrOutput() PreReleaseAccessRequestSpecPtrOutput {
+	return o
+}
+
+func (o PreReleaseAccessRequestSpecPtrOutput) ToPreReleaseAccessRequestSpecPtrOutputWithContext(ctx context.Context) PreReleaseAccessRequestSpecPtrOutput {
+	return o
+}
+
+func (o PreReleaseAccessRequestSpecPtrOutput) Elem() PreReleaseAccessRequestSpecOutput {
+	return o.ApplyT(func(v *PreReleaseAccessRequestSpec) PreReleaseAccessRequestSpec {
+		if v != nil {
+			return *v
+		}
+		var ret PreReleaseAccessRequestSpec
+		return ret
+	}).(PreReleaseAccessRequestSpecOutput)
+}
+
+func (o PreReleaseAccessRequestSpecPtrOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreReleaseAccessRequestSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.City
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecPtrOutput) CompanyWebsite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreReleaseAccessRequestSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompanyWebsite
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecPtrOutput) CountryAndRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreReleaseAccessRequestSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CountryAndRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreReleaseAccessRequestSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecPtrOutput) Engagements() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PreReleaseAccessRequestSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Engagements
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o PreReleaseAccessRequestSpecPtrOutput) OrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreReleaseAccessRequestSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrganizationName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecPtrOutput) StateOrProvince() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreReleaseAccessRequestSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StateOrProvince
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecPtrOutput) StreetAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreReleaseAccessRequestSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StreetAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecPtrOutput) ZipCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreReleaseAccessRequestSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ZipCode
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreReleaseAccessRequestSpecResponse struct {
+	City             *string  `pulumi:"city"`
+	CompanyWebsite   *string  `pulumi:"companyWebsite"`
+	CountryAndRegion *string  `pulumi:"countryAndRegion"`
+	Email            *string  `pulumi:"email"`
+	Engagements      []string `pulumi:"engagements"`
+	OrganizationName *string  `pulumi:"organizationName"`
+	StateOrProvince  *string  `pulumi:"stateOrProvince"`
+	StreetAddress    *string  `pulumi:"streetAddress"`
+	ZipCode          *string  `pulumi:"zipCode"`
+}
+
+type PreReleaseAccessRequestSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (PreReleaseAccessRequestSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreReleaseAccessRequestSpecResponse)(nil)).Elem()
+}
+
+func (o PreReleaseAccessRequestSpecResponseOutput) ToPreReleaseAccessRequestSpecResponseOutput() PreReleaseAccessRequestSpecResponseOutput {
+	return o
+}
+
+func (o PreReleaseAccessRequestSpecResponseOutput) ToPreReleaseAccessRequestSpecResponseOutputWithContext(ctx context.Context) PreReleaseAccessRequestSpecResponseOutput {
+	return o
+}
+
+func (o PreReleaseAccessRequestSpecResponseOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreReleaseAccessRequestSpecResponse) *string { return v.City }).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecResponseOutput) CompanyWebsite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreReleaseAccessRequestSpecResponse) *string { return v.CompanyWebsite }).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecResponseOutput) CountryAndRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreReleaseAccessRequestSpecResponse) *string { return v.CountryAndRegion }).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecResponseOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreReleaseAccessRequestSpecResponse) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecResponseOutput) Engagements() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PreReleaseAccessRequestSpecResponse) []string { return v.Engagements }).(pulumi.StringArrayOutput)
+}
+
+func (o PreReleaseAccessRequestSpecResponseOutput) OrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreReleaseAccessRequestSpecResponse) *string { return v.OrganizationName }).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecResponseOutput) StateOrProvince() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreReleaseAccessRequestSpecResponse) *string { return v.StateOrProvince }).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecResponseOutput) StreetAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreReleaseAccessRequestSpecResponse) *string { return v.StreetAddress }).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecResponseOutput) ZipCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreReleaseAccessRequestSpecResponse) *string { return v.ZipCode }).(pulumi.StringPtrOutput)
+}
+
+type PreReleaseAccessRequestSpecResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PreReleaseAccessRequestSpecResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreReleaseAccessRequestSpecResponse)(nil)).Elem()
+}
+
+func (o PreReleaseAccessRequestSpecResponsePtrOutput) ToPreReleaseAccessRequestSpecResponsePtrOutput() PreReleaseAccessRequestSpecResponsePtrOutput {
+	return o
+}
+
+func (o PreReleaseAccessRequestSpecResponsePtrOutput) ToPreReleaseAccessRequestSpecResponsePtrOutputWithContext(ctx context.Context) PreReleaseAccessRequestSpecResponsePtrOutput {
+	return o
+}
+
+func (o PreReleaseAccessRequestSpecResponsePtrOutput) Elem() PreReleaseAccessRequestSpecResponseOutput {
+	return o.ApplyT(func(v *PreReleaseAccessRequestSpecResponse) PreReleaseAccessRequestSpecResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PreReleaseAccessRequestSpecResponse
+		return ret
+	}).(PreReleaseAccessRequestSpecResponseOutput)
+}
+
+func (o PreReleaseAccessRequestSpecResponsePtrOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreReleaseAccessRequestSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.City
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecResponsePtrOutput) CompanyWebsite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreReleaseAccessRequestSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompanyWebsite
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecResponsePtrOutput) CountryAndRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreReleaseAccessRequestSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CountryAndRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecResponsePtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreReleaseAccessRequestSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecResponsePtrOutput) Engagements() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PreReleaseAccessRequestSpecResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Engagements
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o PreReleaseAccessRequestSpecResponsePtrOutput) OrganizationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreReleaseAccessRequestSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrganizationName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecResponsePtrOutput) StateOrProvince() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreReleaseAccessRequestSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StateOrProvince
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecResponsePtrOutput) StreetAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreReleaseAccessRequestSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StreetAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PreReleaseAccessRequestSpecResponsePtrOutput) ZipCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreReleaseAccessRequestSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ZipCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties of an operating system release.
+type ReleaseProperties struct {
+	// The build number of the OS release.
+	BuildNumber *string `pulumi:"buildNumber"`
+	// The build revision of the OS release.
+	BuildRevision *string `pulumi:"buildRevision"`
+	// The name of the OS release.
+	ReleaseName *string `pulumi:"releaseName"`
+	// The release version date of the OS release.
+	ReleaseVersionDate *string `pulumi:"releaseVersionDate"`
+}
+
+// ReleasePropertiesInput is an input type that accepts ReleasePropertiesArgs and ReleasePropertiesOutput values.
+// You can construct a concrete instance of `ReleasePropertiesInput` via:
+//
+//	ReleasePropertiesArgs{...}
+type ReleasePropertiesInput interface {
+	pulumi.Input
+
+	ToReleasePropertiesOutput() ReleasePropertiesOutput
+	ToReleasePropertiesOutputWithContext(context.Context) ReleasePropertiesOutput
+}
+
+// The properties of an operating system release.
+type ReleasePropertiesArgs struct {
+	// The build number of the OS release.
+	BuildNumber pulumi.StringPtrInput `pulumi:"buildNumber"`
+	// The build revision of the OS release.
+	BuildRevision pulumi.StringPtrInput `pulumi:"buildRevision"`
+	// The name of the OS release.
+	ReleaseName pulumi.StringPtrInput `pulumi:"releaseName"`
+	// The release version date of the OS release.
+	ReleaseVersionDate pulumi.StringPtrInput `pulumi:"releaseVersionDate"`
+}
+
+func (ReleasePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseProperties)(nil)).Elem()
+}
+
+func (i ReleasePropertiesArgs) ToReleasePropertiesOutput() ReleasePropertiesOutput {
+	return i.ToReleasePropertiesOutputWithContext(context.Background())
+}
+
+func (i ReleasePropertiesArgs) ToReleasePropertiesOutputWithContext(ctx context.Context) ReleasePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleasePropertiesOutput)
+}
+
+func (i ReleasePropertiesArgs) ToReleasePropertiesPtrOutput() ReleasePropertiesPtrOutput {
+	return i.ToReleasePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ReleasePropertiesArgs) ToReleasePropertiesPtrOutputWithContext(ctx context.Context) ReleasePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleasePropertiesOutput).ToReleasePropertiesPtrOutputWithContext(ctx)
+}
+
+// ReleasePropertiesPtrInput is an input type that accepts ReleasePropertiesArgs, ReleasePropertiesPtr and ReleasePropertiesPtrOutput values.
+// You can construct a concrete instance of `ReleasePropertiesPtrInput` via:
+//
+//	        ReleasePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReleasePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToReleasePropertiesPtrOutput() ReleasePropertiesPtrOutput
+	ToReleasePropertiesPtrOutputWithContext(context.Context) ReleasePropertiesPtrOutput
+}
+
+type releasePropertiesPtrType ReleasePropertiesArgs
+
+func ReleasePropertiesPtr(v *ReleasePropertiesArgs) ReleasePropertiesPtrInput {
+	return (*releasePropertiesPtrType)(v)
+}
+
+func (*releasePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseProperties)(nil)).Elem()
+}
+
+func (i *releasePropertiesPtrType) ToReleasePropertiesPtrOutput() ReleasePropertiesPtrOutput {
+	return i.ToReleasePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *releasePropertiesPtrType) ToReleasePropertiesPtrOutputWithContext(ctx context.Context) ReleasePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReleasePropertiesPtrOutput)
+}
+
+// The properties of an operating system release.
+type ReleasePropertiesOutput struct{ *pulumi.OutputState }
+
+func (ReleasePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseProperties)(nil)).Elem()
+}
+
+func (o ReleasePropertiesOutput) ToReleasePropertiesOutput() ReleasePropertiesOutput {
+	return o
+}
+
+func (o ReleasePropertiesOutput) ToReleasePropertiesOutputWithContext(ctx context.Context) ReleasePropertiesOutput {
+	return o
+}
+
+func (o ReleasePropertiesOutput) ToReleasePropertiesPtrOutput() ReleasePropertiesPtrOutput {
+	return o.ToReleasePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ReleasePropertiesOutput) ToReleasePropertiesPtrOutputWithContext(ctx context.Context) ReleasePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReleaseProperties) *ReleaseProperties {
+		return &v
+	}).(ReleasePropertiesPtrOutput)
+}
+
+// The build number of the OS release.
+func (o ReleasePropertiesOutput) BuildNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseProperties) *string { return v.BuildNumber }).(pulumi.StringPtrOutput)
+}
+
+// The build revision of the OS release.
+func (o ReleasePropertiesOutput) BuildRevision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseProperties) *string { return v.BuildRevision }).(pulumi.StringPtrOutput)
+}
+
+// The name of the OS release.
+func (o ReleasePropertiesOutput) ReleaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseProperties) *string { return v.ReleaseName }).(pulumi.StringPtrOutput)
+}
+
+// The release version date of the OS release.
+func (o ReleasePropertiesOutput) ReleaseVersionDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleaseProperties) *string { return v.ReleaseVersionDate }).(pulumi.StringPtrOutput)
+}
+
+type ReleasePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ReleasePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleaseProperties)(nil)).Elem()
+}
+
+func (o ReleasePropertiesPtrOutput) ToReleasePropertiesPtrOutput() ReleasePropertiesPtrOutput {
+	return o
+}
+
+func (o ReleasePropertiesPtrOutput) ToReleasePropertiesPtrOutputWithContext(ctx context.Context) ReleasePropertiesPtrOutput {
+	return o
+}
+
+func (o ReleasePropertiesPtrOutput) Elem() ReleasePropertiesOutput {
+	return o.ApplyT(func(v *ReleaseProperties) ReleaseProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ReleaseProperties
+		return ret
+	}).(ReleasePropertiesOutput)
+}
+
+// The build number of the OS release.
+func (o ReleasePropertiesPtrOutput) BuildNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BuildNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// The build revision of the OS release.
+func (o ReleasePropertiesPtrOutput) BuildRevision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BuildRevision
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the OS release.
+func (o ReleasePropertiesPtrOutput) ReleaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReleaseName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The release version date of the OS release.
+func (o ReleasePropertiesPtrOutput) ReleaseVersionDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleaseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReleaseVersionDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The properties of an operating system release.
+type ReleasePropertiesResponse struct {
+	// The build number of the OS release.
+	BuildNumber *string `pulumi:"buildNumber"`
+	// The build revision of the OS release.
+	BuildRevision *string `pulumi:"buildRevision"`
+	// The name of the OS release.
+	ReleaseName *string `pulumi:"releaseName"`
+	// The release version date of the OS release.
+	ReleaseVersionDate *string `pulumi:"releaseVersionDate"`
+}
+
+// The properties of an operating system release.
+type ReleasePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ReleasePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleasePropertiesResponse)(nil)).Elem()
+}
+
+func (o ReleasePropertiesResponseOutput) ToReleasePropertiesResponseOutput() ReleasePropertiesResponseOutput {
+	return o
+}
+
+func (o ReleasePropertiesResponseOutput) ToReleasePropertiesResponseOutputWithContext(ctx context.Context) ReleasePropertiesResponseOutput {
+	return o
+}
+
+// The build number of the OS release.
+func (o ReleasePropertiesResponseOutput) BuildNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleasePropertiesResponse) *string { return v.BuildNumber }).(pulumi.StringPtrOutput)
+}
+
+// The build revision of the OS release.
+func (o ReleasePropertiesResponseOutput) BuildRevision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleasePropertiesResponse) *string { return v.BuildRevision }).(pulumi.StringPtrOutput)
+}
+
+// The name of the OS release.
+func (o ReleasePropertiesResponseOutput) ReleaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleasePropertiesResponse) *string { return v.ReleaseName }).(pulumi.StringPtrOutput)
+}
+
+// The release version date of the OS release.
+func (o ReleasePropertiesResponseOutput) ReleaseVersionDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReleasePropertiesResponse) *string { return v.ReleaseVersionDate }).(pulumi.StringPtrOutput)
+}
+
+type ReleasePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ReleasePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReleasePropertiesResponse)(nil)).Elem()
+}
+
+func (o ReleasePropertiesResponsePtrOutput) ToReleasePropertiesResponsePtrOutput() ReleasePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ReleasePropertiesResponsePtrOutput) ToReleasePropertiesResponsePtrOutputWithContext(ctx context.Context) ReleasePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ReleasePropertiesResponsePtrOutput) Elem() ReleasePropertiesResponseOutput {
+	return o.ApplyT(func(v *ReleasePropertiesResponse) ReleasePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ReleasePropertiesResponse
+		return ret
+	}).(ReleasePropertiesResponseOutput)
+}
+
+// The build number of the OS release.
+func (o ReleasePropertiesResponsePtrOutput) BuildNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleasePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BuildNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// The build revision of the OS release.
+func (o ReleasePropertiesResponsePtrOutput) BuildRevision() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleasePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BuildRevision
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the OS release.
+func (o ReleasePropertiesResponsePtrOutput) ReleaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleasePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReleaseName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The release version date of the OS release.
+func (o ReleasePropertiesResponsePtrOutput) ReleaseVersionDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReleasePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReleaseVersionDate
+	}).(pulumi.StringPtrOutput)
 }
 
 // The subscription role receiver value.
@@ -1831,12 +5332,252 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
+// Specifies current state of tabs.
+type TabState struct {
+	// Current tab.
+	CurrentTab *string `pulumi:"currentTab"`
+	// visited tabs.
+	VisitedTabs []string `pulumi:"visitedTabs"`
+}
+
+// TabStateInput is an input type that accepts TabStateArgs and TabStateOutput values.
+// You can construct a concrete instance of `TabStateInput` via:
+//
+//	TabStateArgs{...}
+type TabStateInput interface {
+	pulumi.Input
+
+	ToTabStateOutput() TabStateOutput
+	ToTabStateOutputWithContext(context.Context) TabStateOutput
+}
+
+// Specifies current state of tabs.
+type TabStateArgs struct {
+	// Current tab.
+	CurrentTab pulumi.StringPtrInput `pulumi:"currentTab"`
+	// visited tabs.
+	VisitedTabs pulumi.StringArrayInput `pulumi:"visitedTabs"`
+}
+
+func (TabStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TabState)(nil)).Elem()
+}
+
+func (i TabStateArgs) ToTabStateOutput() TabStateOutput {
+	return i.ToTabStateOutputWithContext(context.Background())
+}
+
+func (i TabStateArgs) ToTabStateOutputWithContext(ctx context.Context) TabStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TabStateOutput)
+}
+
+func (i TabStateArgs) ToTabStatePtrOutput() TabStatePtrOutput {
+	return i.ToTabStatePtrOutputWithContext(context.Background())
+}
+
+func (i TabStateArgs) ToTabStatePtrOutputWithContext(ctx context.Context) TabStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TabStateOutput).ToTabStatePtrOutputWithContext(ctx)
+}
+
+// TabStatePtrInput is an input type that accepts TabStateArgs, TabStatePtr and TabStatePtrOutput values.
+// You can construct a concrete instance of `TabStatePtrInput` via:
+//
+//	        TabStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type TabStatePtrInput interface {
+	pulumi.Input
+
+	ToTabStatePtrOutput() TabStatePtrOutput
+	ToTabStatePtrOutputWithContext(context.Context) TabStatePtrOutput
+}
+
+type tabStatePtrType TabStateArgs
+
+func TabStatePtr(v *TabStateArgs) TabStatePtrInput {
+	return (*tabStatePtrType)(v)
+}
+
+func (*tabStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TabState)(nil)).Elem()
+}
+
+func (i *tabStatePtrType) ToTabStatePtrOutput() TabStatePtrOutput {
+	return i.ToTabStatePtrOutputWithContext(context.Background())
+}
+
+func (i *tabStatePtrType) ToTabStatePtrOutputWithContext(ctx context.Context) TabStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TabStatePtrOutput)
+}
+
+// Specifies current state of tabs.
+type TabStateOutput struct{ *pulumi.OutputState }
+
+func (TabStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TabState)(nil)).Elem()
+}
+
+func (o TabStateOutput) ToTabStateOutput() TabStateOutput {
+	return o
+}
+
+func (o TabStateOutput) ToTabStateOutputWithContext(ctx context.Context) TabStateOutput {
+	return o
+}
+
+func (o TabStateOutput) ToTabStatePtrOutput() TabStatePtrOutput {
+	return o.ToTabStatePtrOutputWithContext(context.Background())
+}
+
+func (o TabStateOutput) ToTabStatePtrOutputWithContext(ctx context.Context) TabStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TabState) *TabState {
+		return &v
+	}).(TabStatePtrOutput)
+}
+
+// Current tab.
+func (o TabStateOutput) CurrentTab() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TabState) *string { return v.CurrentTab }).(pulumi.StringPtrOutput)
+}
+
+// visited tabs.
+func (o TabStateOutput) VisitedTabs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TabState) []string { return v.VisitedTabs }).(pulumi.StringArrayOutput)
+}
+
+type TabStatePtrOutput struct{ *pulumi.OutputState }
+
+func (TabStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TabState)(nil)).Elem()
+}
+
+func (o TabStatePtrOutput) ToTabStatePtrOutput() TabStatePtrOutput {
+	return o
+}
+
+func (o TabStatePtrOutput) ToTabStatePtrOutputWithContext(ctx context.Context) TabStatePtrOutput {
+	return o
+}
+
+func (o TabStatePtrOutput) Elem() TabStateOutput {
+	return o.ApplyT(func(v *TabState) TabState {
+		if v != nil {
+			return *v
+		}
+		var ret TabState
+		return ret
+	}).(TabStateOutput)
+}
+
+// Current tab.
+func (o TabStatePtrOutput) CurrentTab() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TabState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CurrentTab
+	}).(pulumi.StringPtrOutput)
+}
+
+// visited tabs.
+func (o TabStatePtrOutput) VisitedTabs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TabState) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VisitedTabs
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies current state of tabs.
+type TabStateResponse struct {
+	// Current tab.
+	CurrentTab *string `pulumi:"currentTab"`
+	// visited tabs.
+	VisitedTabs []string `pulumi:"visitedTabs"`
+}
+
+// Specifies current state of tabs.
+type TabStateResponseOutput struct{ *pulumi.OutputState }
+
+func (TabStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TabStateResponse)(nil)).Elem()
+}
+
+func (o TabStateResponseOutput) ToTabStateResponseOutput() TabStateResponseOutput {
+	return o
+}
+
+func (o TabStateResponseOutput) ToTabStateResponseOutputWithContext(ctx context.Context) TabStateResponseOutput {
+	return o
+}
+
+// Current tab.
+func (o TabStateResponseOutput) CurrentTab() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TabStateResponse) *string { return v.CurrentTab }).(pulumi.StringPtrOutput)
+}
+
+// visited tabs.
+func (o TabStateResponseOutput) VisitedTabs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TabStateResponse) []string { return v.VisitedTabs }).(pulumi.StringArrayOutput)
+}
+
+type TabStateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TabStateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TabStateResponse)(nil)).Elem()
+}
+
+func (o TabStateResponsePtrOutput) ToTabStateResponsePtrOutput() TabStateResponsePtrOutput {
+	return o
+}
+
+func (o TabStateResponsePtrOutput) ToTabStateResponsePtrOutputWithContext(ctx context.Context) TabStateResponsePtrOutput {
+	return o
+}
+
+func (o TabStateResponsePtrOutput) Elem() TabStateResponseOutput {
+	return o.ApplyT(func(v *TabStateResponse) TabStateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TabStateResponse
+		return ret
+	}).(TabStateResponseOutput)
+}
+
+// Current tab.
+func (o TabStateResponsePtrOutput) CurrentTab() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TabStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CurrentTab
+	}).(pulumi.StringPtrOutput)
+}
+
+// visited tabs.
+func (o TabStateResponsePtrOutput) VisitedTabs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TabStateResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VisitedTabs
+	}).(pulumi.StringArrayOutput)
+}
+
 // The information of the target OS to be tested.
 type TargetOSInfo struct {
 	// Specifies the baseline OSs to be tested.
 	BaselineOSs []string `pulumi:"baselineOSs"`
+	// Insider Channel Ids. Only used for feature update.
+	InsiderChannelIds []string `pulumi:"insiderChannelIds"`
 	// Specifies the OS update type to test against, e.g., 'Security updates' or 'Feature updates'.
 	OsUpdateType string `pulumi:"osUpdateType"`
+	// Specifies the ids of the target OSs from Custom Images to be tested.
+	TargetOSImageIds []string `pulumi:"targetOSImageIds"`
 	// Specifies the target OSs to be tested.
 	TargetOSs []string `pulumi:"targetOSs"`
 }
@@ -1856,8 +5597,12 @@ type TargetOSInfoInput interface {
 type TargetOSInfoArgs struct {
 	// Specifies the baseline OSs to be tested.
 	BaselineOSs pulumi.StringArrayInput `pulumi:"baselineOSs"`
+	// Insider Channel Ids. Only used for feature update.
+	InsiderChannelIds pulumi.StringArrayInput `pulumi:"insiderChannelIds"`
 	// Specifies the OS update type to test against, e.g., 'Security updates' or 'Feature updates'.
 	OsUpdateType pulumi.StringInput `pulumi:"osUpdateType"`
+	// Specifies the ids of the target OSs from Custom Images to be tested.
+	TargetOSImageIds pulumi.StringArrayInput `pulumi:"targetOSImageIds"`
 	// Specifies the target OSs to be tested.
 	TargetOSs pulumi.StringArrayInput `pulumi:"targetOSs"`
 }
@@ -1919,9 +5664,19 @@ func (o TargetOSInfoOutput) BaselineOSs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TargetOSInfo) []string { return v.BaselineOSs }).(pulumi.StringArrayOutput)
 }
 
+// Insider Channel Ids. Only used for feature update.
+func (o TargetOSInfoOutput) InsiderChannelIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TargetOSInfo) []string { return v.InsiderChannelIds }).(pulumi.StringArrayOutput)
+}
+
 // Specifies the OS update type to test against, e.g., 'Security updates' or 'Feature updates'.
 func (o TargetOSInfoOutput) OsUpdateType() pulumi.StringOutput {
 	return o.ApplyT(func(v TargetOSInfo) string { return v.OsUpdateType }).(pulumi.StringOutput)
+}
+
+// Specifies the ids of the target OSs from Custom Images to be tested.
+func (o TargetOSInfoOutput) TargetOSImageIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TargetOSInfo) []string { return v.TargetOSImageIds }).(pulumi.StringArrayOutput)
 }
 
 // Specifies the target OSs to be tested.
@@ -1953,8 +5708,12 @@ func (o TargetOSInfoArrayOutput) Index(i pulumi.IntInput) TargetOSInfoOutput {
 type TargetOSInfoResponse struct {
 	// Specifies the baseline OSs to be tested.
 	BaselineOSs []string `pulumi:"baselineOSs"`
+	// Insider Channel Ids. Only used for feature update.
+	InsiderChannelIds []string `pulumi:"insiderChannelIds"`
 	// Specifies the OS update type to test against, e.g., 'Security updates' or 'Feature updates'.
 	OsUpdateType string `pulumi:"osUpdateType"`
+	// Specifies the ids of the target OSs from Custom Images to be tested.
+	TargetOSImageIds []string `pulumi:"targetOSImageIds"`
 	// Specifies the target OSs to be tested.
 	TargetOSs []string `pulumi:"targetOSs"`
 }
@@ -1979,9 +5738,19 @@ func (o TargetOSInfoResponseOutput) BaselineOSs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TargetOSInfoResponse) []string { return v.BaselineOSs }).(pulumi.StringArrayOutput)
 }
 
+// Insider Channel Ids. Only used for feature update.
+func (o TargetOSInfoResponseOutput) InsiderChannelIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TargetOSInfoResponse) []string { return v.InsiderChannelIds }).(pulumi.StringArrayOutput)
+}
+
 // Specifies the OS update type to test against, e.g., 'Security updates' or 'Feature updates'.
 func (o TargetOSInfoResponseOutput) OsUpdateType() pulumi.StringOutput {
 	return o.ApplyT(func(v TargetOSInfoResponse) string { return v.OsUpdateType }).(pulumi.StringOutput)
+}
+
+// Specifies the ids of the target OSs from Custom Images to be tested.
+func (o TargetOSInfoResponseOutput) TargetOSImageIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TargetOSInfoResponse) []string { return v.TargetOSImageIds }).(pulumi.StringArrayOutput)
 }
 
 // Specifies the target OSs to be tested.
@@ -2590,6 +6359,66 @@ func (o UserObjectReceiverValueResponsePtrOutput) UserObjectIds() pulumi.StringA
 	}).(pulumi.StringArrayOutput)
 }
 
+// The detailed result of a validation or rule checking.
+type VerificationResultResponse struct {
+	// Message for clarification.
+	Message *string `pulumi:"message"`
+	// Indicates if the validation or rule checking is passed.
+	Result string `pulumi:"result"`
+	// The name of the verification rule.
+	VerificationName *string `pulumi:"verificationName"`
+}
+
+// The detailed result of a validation or rule checking.
+type VerificationResultResponseOutput struct{ *pulumi.OutputState }
+
+func (VerificationResultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VerificationResultResponse)(nil)).Elem()
+}
+
+func (o VerificationResultResponseOutput) ToVerificationResultResponseOutput() VerificationResultResponseOutput {
+	return o
+}
+
+func (o VerificationResultResponseOutput) ToVerificationResultResponseOutputWithContext(ctx context.Context) VerificationResultResponseOutput {
+	return o
+}
+
+// Message for clarification.
+func (o VerificationResultResponseOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VerificationResultResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the validation or rule checking is passed.
+func (o VerificationResultResponseOutput) Result() pulumi.StringOutput {
+	return o.ApplyT(func(v VerificationResultResponse) string { return v.Result }).(pulumi.StringOutput)
+}
+
+// The name of the verification rule.
+func (o VerificationResultResponseOutput) VerificationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VerificationResultResponse) *string { return v.VerificationName }).(pulumi.StringPtrOutput)
+}
+
+type VerificationResultResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VerificationResultResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VerificationResultResponse)(nil)).Elem()
+}
+
+func (o VerificationResultResponseArrayOutput) ToVerificationResultResponseArrayOutput() VerificationResultResponseArrayOutput {
+	return o
+}
+
+func (o VerificationResultResponseArrayOutput) ToVerificationResultResponseArrayOutputWithContext(ctx context.Context) VerificationResultResponseArrayOutput {
+	return o
+}
+
+func (o VerificationResultResponseArrayOutput) Index(i pulumi.IntInput) VerificationResultResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VerificationResultResponse {
+		return vs[0].([]VerificationResultResponse)[vs[1].(int)]
+	}).(VerificationResultResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BillingHubExecutionUsageDetailResponseOutput{})
 	pulumi.RegisterOutputType(BillingHubExecutionUsageDetailResponseArrayOutput{})
@@ -2611,6 +6440,41 @@ func init() {
 	pulumi.RegisterOutputType(DistributionGroupListReceiverValuePtrOutput{})
 	pulumi.RegisterOutputType(DistributionGroupListReceiverValueResponseOutput{})
 	pulumi.RegisterOutputType(DistributionGroupListReceiverValueResponsePtrOutput{})
+	pulumi.RegisterOutputType(DraftPackageIntuneAppMetadataOutput{})
+	pulumi.RegisterOutputType(DraftPackageIntuneAppMetadataPtrOutput{})
+	pulumi.RegisterOutputType(DraftPackageIntuneAppMetadataItemOutput{})
+	pulumi.RegisterOutputType(DraftPackageIntuneAppMetadataItemPtrOutput{})
+	pulumi.RegisterOutputType(DraftPackageIntuneAppMetadataItemArrayOutput{})
+	pulumi.RegisterOutputType(DraftPackageIntuneAppMetadataItemResponseOutput{})
+	pulumi.RegisterOutputType(DraftPackageIntuneAppMetadataItemResponsePtrOutput{})
+	pulumi.RegisterOutputType(DraftPackageIntuneAppMetadataItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(DraftPackageIntuneAppMetadataResponseOutput{})
+	pulumi.RegisterOutputType(DraftPackageIntuneAppMetadataResponsePtrOutput{})
+	pulumi.RegisterOutputType(EnrolledIntuneAppOutput{})
+	pulumi.RegisterOutputType(EnrolledIntuneAppArrayOutput{})
+	pulumi.RegisterOutputType(EnrolledIntuneAppResponseOutput{})
+	pulumi.RegisterOutputType(EnrolledIntuneAppResponseArrayOutput{})
+	pulumi.RegisterOutputType(FirstPartyAppDefinitionOutput{})
+	pulumi.RegisterOutputType(FirstPartyAppDefinitionArrayOutput{})
+	pulumi.RegisterOutputType(FirstPartyAppDefinitionResponseOutput{})
+	pulumi.RegisterOutputType(FirstPartyAppDefinitionResponseArrayOutput{})
+	pulumi.RegisterOutputType(GalleryAppDefinitionOutput{})
+	pulumi.RegisterOutputType(GalleryAppDefinitionArrayOutput{})
+	pulumi.RegisterOutputType(GalleryAppDefinitionResponseOutput{})
+	pulumi.RegisterOutputType(GalleryAppDefinitionResponseArrayOutput{})
+	pulumi.RegisterOutputType(HighlightedFileOutput{})
+	pulumi.RegisterOutputType(HighlightedFileArrayOutput{})
+	pulumi.RegisterOutputType(HighlightedFileResponseOutput{})
+	pulumi.RegisterOutputType(HighlightedFileResponseArrayOutput{})
+	pulumi.RegisterOutputType(ImageValidationResultsResponseOutput{})
+	pulumi.RegisterOutputType(InplaceUpgradeOSInfoOutput{})
+	pulumi.RegisterOutputType(InplaceUpgradeOSInfoPtrOutput{})
+	pulumi.RegisterOutputType(InplaceUpgradeOSInfoResponseOutput{})
+	pulumi.RegisterOutputType(InplaceUpgradeOSInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(IntuneEnrollmentMetadataOutput{})
+	pulumi.RegisterOutputType(IntuneEnrollmentMetadataPtrOutput{})
+	pulumi.RegisterOutputType(IntuneEnrollmentMetadataResponseOutput{})
+	pulumi.RegisterOutputType(IntuneEnrollmentMetadataResponsePtrOutput{})
 	pulumi.RegisterOutputType(NotificationEventReceiverOutput{})
 	pulumi.RegisterOutputType(NotificationEventReceiverArrayOutput{})
 	pulumi.RegisterOutputType(NotificationEventReceiverResponseOutput{})
@@ -2619,13 +6483,29 @@ func init() {
 	pulumi.RegisterOutputType(NotificationReceiverValuePtrOutput{})
 	pulumi.RegisterOutputType(NotificationReceiverValueResponseOutput{})
 	pulumi.RegisterOutputType(NotificationReceiverValueResponsePtrOutput{})
+	pulumi.RegisterOutputType(OsPropertiesOutput{})
+	pulumi.RegisterOutputType(OsPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(OsPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(OsPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(PackageValidationResultResponseOutput{})
 	pulumi.RegisterOutputType(PackageValidationResultResponseArrayOutput{})
+	pulumi.RegisterOutputType(PreReleaseAccessRequestSpecOutput{})
+	pulumi.RegisterOutputType(PreReleaseAccessRequestSpecPtrOutput{})
+	pulumi.RegisterOutputType(PreReleaseAccessRequestSpecResponseOutput{})
+	pulumi.RegisterOutputType(PreReleaseAccessRequestSpecResponsePtrOutput{})
+	pulumi.RegisterOutputType(ReleasePropertiesOutput{})
+	pulumi.RegisterOutputType(ReleasePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ReleasePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ReleasePropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionReceiverValueOutput{})
 	pulumi.RegisterOutputType(SubscriptionReceiverValuePtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionReceiverValueResponseOutput{})
 	pulumi.RegisterOutputType(SubscriptionReceiverValueResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(TabStateOutput{})
+	pulumi.RegisterOutputType(TabStatePtrOutput{})
+	pulumi.RegisterOutputType(TabStateResponseOutput{})
+	pulumi.RegisterOutputType(TabStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(TargetOSInfoOutput{})
 	pulumi.RegisterOutputType(TargetOSInfoArrayOutput{})
 	pulumi.RegisterOutputType(TargetOSInfoResponseOutput{})
@@ -2642,4 +6522,6 @@ func init() {
 	pulumi.RegisterOutputType(UserObjectReceiverValuePtrOutput{})
 	pulumi.RegisterOutputType(UserObjectReceiverValueResponseOutput{})
 	pulumi.RegisterOutputType(UserObjectReceiverValueResponsePtrOutput{})
+	pulumi.RegisterOutputType(VerificationResultResponseOutput{})
+	pulumi.RegisterOutputType(VerificationResultResponseArrayOutput{})
 }

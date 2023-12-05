@@ -21,10 +21,20 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:testbase:ActionRequest":
+		r = &ActionRequest{}
+	case "azure-native:testbase:Credential":
+		r = &Credential{}
+	case "azure-native:testbase:CustomImage":
+		r = &CustomImage{}
 	case "azure-native:testbase:CustomerEvent":
 		r = &CustomerEvent{}
+	case "azure-native:testbase:DraftPackage":
+		r = &DraftPackage{}
 	case "azure-native:testbase:FavoriteProcess":
 		r = &FavoriteProcess{}
+	case "azure-native:testbase:ImageDefinition":
+		r = &ImageDefinition{}
 	case "azure-native:testbase:Package":
 		r = &Package{}
 	case "azure-native:testbase:TestBaseAccount":

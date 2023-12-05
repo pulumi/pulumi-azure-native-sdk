@@ -13,6 +13,8 @@ import (
 
 // get access token.
 // Azure REST API version: 2023-08-01-preview.
+//
+// Other available API versions: 2023-08-01.
 func GetOfferAccessToken(ctx *pulumi.Context, args *GetOfferAccessTokenArgs, opts ...pulumi.InvokeOption) (*GetOfferAccessTokenResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetOfferAccessTokenResult

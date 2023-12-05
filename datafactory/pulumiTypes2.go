@@ -1107,7 +1107,7 @@ type SqlDWSource struct {
 	IsolationLevel interface{} `pulumi:"isolationLevel"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange". Type: string (or Expression with resultType string).
 	PartitionOption interface{} `pulumi:"partitionOption"`
 	// The settings that will be leveraged for Sql source partitioning.
 	PartitionSettings *SqlPartitionSettings `pulumi:"partitionSettings"`
@@ -1138,7 +1138,7 @@ type SqlDWSourceResponse struct {
 	IsolationLevel interface{} `pulumi:"isolationLevel"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange". Type: string (or Expression with resultType string).
 	PartitionOption interface{} `pulumi:"partitionOption"`
 	// The settings that will be leveraged for Sql source partitioning.
 	PartitionSettings *SqlPartitionSettingsResponse `pulumi:"partitionSettings"`
@@ -1208,7 +1208,7 @@ type SqlMISink struct {
 	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
 	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
-	// White behavior when copying data into azure SQL MI. Type: SqlWriteBehaviorEnum (or Expression with resultType SqlWriteBehaviorEnum)
+	// White behavior when copying data into azure SQL MI. Type: string (or Expression with resultType string)
 	WriteBehavior interface{} `pulumi:"writeBehavior"`
 }
 
@@ -1245,7 +1245,7 @@ type SqlMISinkResponse struct {
 	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
 	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
-	// White behavior when copying data into azure SQL MI. Type: SqlWriteBehaviorEnum (or Expression with resultType SqlWriteBehaviorEnum)
+	// White behavior when copying data into azure SQL MI. Type: string (or Expression with resultType string)
 	WriteBehavior interface{} `pulumi:"writeBehavior"`
 }
 
@@ -1259,7 +1259,7 @@ type SqlMISource struct {
 	IsolationLevel interface{} `pulumi:"isolationLevel"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange". Type: string (or Expression with resultType string).
 	PartitionOption interface{} `pulumi:"partitionOption"`
 	// The settings that will be leveraged for Sql source partitioning.
 	PartitionSettings *SqlPartitionSettings `pulumi:"partitionSettings"`
@@ -1292,7 +1292,7 @@ type SqlMISourceResponse struct {
 	IsolationLevel interface{} `pulumi:"isolationLevel"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange". Type: string (or Expression with resultType string).
 	PartitionOption interface{} `pulumi:"partitionOption"`
 	// The settings that will be leveraged for Sql source partitioning.
 	PartitionSettings *SqlPartitionSettingsResponse `pulumi:"partitionSettings"`
@@ -1418,7 +1418,7 @@ type SqlServerSink struct {
 	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
 	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
-	// Write behavior when copying data into sql server. Type: SqlWriteBehaviorEnum (or Expression with resultType SqlWriteBehaviorEnum)
+	// Write behavior when copying data into sql server. Type: string (or Expression with resultType string).
 	WriteBehavior interface{} `pulumi:"writeBehavior"`
 }
 
@@ -1455,7 +1455,7 @@ type SqlServerSinkResponse struct {
 	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
 	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
-	// Write behavior when copying data into sql server. Type: SqlWriteBehaviorEnum (or Expression with resultType SqlWriteBehaviorEnum)
+	// Write behavior when copying data into sql server. Type: string (or Expression with resultType string).
 	WriteBehavior interface{} `pulumi:"writeBehavior"`
 }
 
@@ -1469,7 +1469,7 @@ type SqlServerSource struct {
 	IsolationLevel interface{} `pulumi:"isolationLevel"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange". Type: string (or Expression with resultType string).
 	PartitionOption interface{} `pulumi:"partitionOption"`
 	// The settings that will be leveraged for Sql source partitioning.
 	PartitionSettings *SqlPartitionSettings `pulumi:"partitionSettings"`
@@ -1502,7 +1502,7 @@ type SqlServerSourceResponse struct {
 	IsolationLevel interface{} `pulumi:"isolationLevel"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange". Type: string (or Expression with resultType string).
 	PartitionOption interface{} `pulumi:"partitionOption"`
 	// The settings that will be leveraged for Sql source partitioning.
 	PartitionSettings *SqlPartitionSettingsResponse `pulumi:"partitionSettings"`
@@ -1662,7 +1662,7 @@ type SqlSink struct {
 	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
 	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
-	// Write behavior when copying data into sql. Type: SqlWriteBehaviorEnum (or Expression with resultType SqlWriteBehaviorEnum)
+	// Write behavior when copying data into sql. Type: string (or Expression with resultType string).
 	WriteBehavior interface{} `pulumi:"writeBehavior"`
 }
 
@@ -1699,7 +1699,7 @@ type SqlSinkResponse struct {
 	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
 	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	WriteBatchTimeout interface{} `pulumi:"writeBatchTimeout"`
-	// Write behavior when copying data into sql. Type: SqlWriteBehaviorEnum (or Expression with resultType SqlWriteBehaviorEnum)
+	// Write behavior when copying data into sql. Type: string (or Expression with resultType string).
 	WriteBehavior interface{} `pulumi:"writeBehavior"`
 }
 
@@ -1713,7 +1713,7 @@ type SqlSource struct {
 	IsolationLevel interface{} `pulumi:"isolationLevel"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange". Type: string (or Expression with resultType string).
 	PartitionOption interface{} `pulumi:"partitionOption"`
 	// The settings that will be leveraged for Sql source partitioning.
 	PartitionSettings *SqlPartitionSettings `pulumi:"partitionSettings"`
@@ -1744,7 +1744,7 @@ type SqlSourceResponse struct {
 	IsolationLevel interface{} `pulumi:"isolationLevel"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange". Type: string (or Expression with resultType string).
 	PartitionOption interface{} `pulumi:"partitionOption"`
 	// The settings that will be leveraged for Sql source partitioning.
 	PartitionSettings *SqlPartitionSettingsResponse `pulumi:"partitionSettings"`
@@ -3697,8 +3697,10 @@ type WebActivity struct {
 	Description *string `pulumi:"description"`
 	// When set to true, Certificate validation will be disabled.
 	DisableCertValidation *bool `pulumi:"disableCertValidation"`
-	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
 	Headers interface{} `pulumi:"headers"`
+	// Timeout for the HTTP request to get a response. Format is in TimeSpan (hh:mm:ss). This value is the timeout to get a response, not the activity timeout. The default value is 00:01:00 (1 minute). The range is from 1 to 10 minutes
+	HttpRequestTimeout interface{} `pulumi:"httpRequestTimeout"`
 	// Linked service reference.
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
 	// List of linked services passed to web endpoint.
@@ -3713,6 +3715,8 @@ type WebActivity struct {
 	Policy *ActivityPolicy `pulumi:"policy"`
 	// Activity state. This is an optional property and if not provided, the state will be Active by default.
 	State *string `pulumi:"state"`
+	// Option to disable invoking HTTP GET on location given in response header of a HTTP 202 Response. If set true, it stops invoking HTTP GET on http location given in response header. If set false then continues to invoke HTTP GET call on location given in http response headers.
+	TurnOffAsync *bool `pulumi:"turnOffAsync"`
 	// Type of activity.
 	// Expected value is 'WebActivity'.
 	Type string `pulumi:"type"`
@@ -3774,8 +3778,10 @@ type WebActivityResponse struct {
 	Description *string `pulumi:"description"`
 	// When set to true, Certificate validation will be disabled.
 	DisableCertValidation *bool `pulumi:"disableCertValidation"`
-	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
 	Headers interface{} `pulumi:"headers"`
+	// Timeout for the HTTP request to get a response. Format is in TimeSpan (hh:mm:ss). This value is the timeout to get a response, not the activity timeout. The default value is 00:01:00 (1 minute). The range is from 1 to 10 minutes
+	HttpRequestTimeout interface{} `pulumi:"httpRequestTimeout"`
 	// Linked service reference.
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// List of linked services passed to web endpoint.
@@ -3790,6 +3796,8 @@ type WebActivityResponse struct {
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
 	// Activity state. This is an optional property and if not provided, the state will be Active by default.
 	State *string `pulumi:"state"`
+	// Option to disable invoking HTTP GET on location given in response header of a HTTP 202 Response. If set true, it stops invoking HTTP GET on http location given in response header. If set false then continues to invoke HTTP GET call on location given in http response headers.
+	TurnOffAsync *bool `pulumi:"turnOffAsync"`
 	// Type of activity.
 	// Expected value is 'WebActivity'.
 	Type string `pulumi:"type"`
@@ -3879,7 +3887,7 @@ type WebHookActivity struct {
 	DependsOn []ActivityDependency `pulumi:"dependsOn"`
 	// Activity description.
 	Description *string `pulumi:"description"`
-	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
 	Headers interface{} `pulumi:"headers"`
 	// Rest API method for target endpoint.
 	Method string `pulumi:"method"`
@@ -3914,7 +3922,7 @@ type WebHookActivityResponse struct {
 	DependsOn []ActivityDependencyResponse `pulumi:"dependsOn"`
 	// Activity description.
 	Description *string `pulumi:"description"`
-	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
 	Headers interface{} `pulumi:"headers"`
 	// Rest API method for target endpoint.
 	Method string `pulumi:"method"`

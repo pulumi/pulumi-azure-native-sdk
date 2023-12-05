@@ -52,6 +52,9 @@ func NewFavoriteProcess(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:testbase/v20201216preview:FavoriteProcess"),
 		},
+		{
+			Type: pulumi.String("azure-native:testbase/v20231101preview:FavoriteProcess"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

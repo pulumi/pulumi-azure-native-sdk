@@ -14415,15 +14415,17 @@ func (o SkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 
 // Snapshot Backup related fields for WorkloadType SaPHanaSystem
 type SnapshotBackupAdditionalDetails struct {
-	InstantRPDetails                   *string                             `pulumi:"instantRPDetails"`
-	InstantRpRetentionRangeInDays      *int                                `pulumi:"instantRpRetentionRangeInDays"`
+	InstantRPDetails              *string `pulumi:"instantRPDetails"`
+	InstantRpRetentionRangeInDays *int    `pulumi:"instantRpRetentionRangeInDays"`
+	// User assigned managed identity details
 	UserAssignedManagedIdentityDetails *UserAssignedManagedIdentityDetails `pulumi:"userAssignedManagedIdentityDetails"`
 }
 
 // Snapshot Backup related fields for WorkloadType SaPHanaSystem
 type SnapshotBackupAdditionalDetailsResponse struct {
-	InstantRPDetails                   *string                                     `pulumi:"instantRPDetails"`
-	InstantRpRetentionRangeInDays      *int                                        `pulumi:"instantRpRetentionRangeInDays"`
+	InstantRPDetails              *string `pulumi:"instantRPDetails"`
+	InstantRpRetentionRangeInDays *int    `pulumi:"instantRpRetentionRangeInDays"`
+	// User assigned managed identity details
 	UserAssignedManagedIdentityDetails *UserAssignedManagedIdentityDetailsResponse `pulumi:"userAssignedManagedIdentityDetails"`
 }
 
@@ -15143,24 +15145,40 @@ func (o UpgradeDetailsResponsePtrOutput) UpgradedResourceId() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// User assigned identity properties
-type UserAssignedIdentityResponse struct {
+// User assigned managed identity properties
+type UserAssignedIdentityProperties struct {
 	// The client ID of the assigned identity.
-	ClientId string `pulumi:"clientId"`
+	ClientId *string `pulumi:"clientId"`
 	// The principal ID of the assigned identity.
-	PrincipalId string `pulumi:"principalId"`
+	PrincipalId *string `pulumi:"principalId"`
 }
 
+// User assigned managed identity properties
+type UserAssignedIdentityPropertiesResponse struct {
+	// The client ID of the assigned identity.
+	ClientId *string `pulumi:"clientId"`
+	// The principal ID of the assigned identity.
+	PrincipalId *string `pulumi:"principalId"`
+}
+
+// User assigned managed identity details
 type UserAssignedManagedIdentityDetails struct {
+	// The ARM id of the assigned identity.
 	IdentityArmId *string `pulumi:"identityArmId"`
-	IdentityName  *string `pulumi:"identityName"`
+	// The name of the assigned identity.
+	IdentityName *string `pulumi:"identityName"`
+	// User assigned managed identity properties
+	UserAssignedIdentityProperties *UserAssignedIdentityProperties `pulumi:"userAssignedIdentityProperties"`
 }
 
+// User assigned managed identity details
 type UserAssignedManagedIdentityDetailsResponse struct {
+	// The ARM id of the assigned identity.
 	IdentityArmId *string `pulumi:"identityArmId"`
-	IdentityName  *string `pulumi:"identityName"`
-	// User assigned identity properties
-	UserAssignedIdentityProperties *UserAssignedIdentityResponse `pulumi:"userAssignedIdentityProperties"`
+	// The name of the assigned identity.
+	IdentityName *string `pulumi:"identityName"`
+	// User assigned managed identity properties
+	UserAssignedIdentityProperties *UserAssignedIdentityPropertiesResponse `pulumi:"userAssignedIdentityProperties"`
 }
 
 // A resource identity that is managed by the user of the service.

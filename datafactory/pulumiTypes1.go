@@ -103,7 +103,7 @@ type HDInsightOnDemandLinkedService struct {
 	ClusterPassword interface{} `pulumi:"clusterPassword"`
 	// The resource group where the cluster belongs. Type: string (or Expression with resultType string).
 	ClusterResourceGroup interface{} `pulumi:"clusterResourceGroup"`
-	// Number of worker/data nodes in the cluster. Suggestion value: 4. Type: string (or Expression with resultType string).
+	// Number of worker/data nodes in the cluster. Suggestion value: 4. Type: int (or Expression with resultType int).
 	ClusterSize interface{} `pulumi:"clusterSize"`
 	// The password to SSH remotely connect cluster’s node (for Linux).
 	ClusterSshPassword interface{} `pulumi:"clusterSshPassword"`
@@ -186,7 +186,7 @@ type HDInsightOnDemandLinkedServiceResponse struct {
 	ClusterPassword interface{} `pulumi:"clusterPassword"`
 	// The resource group where the cluster belongs. Type: string (or Expression with resultType string).
 	ClusterResourceGroup interface{} `pulumi:"clusterResourceGroup"`
-	// Number of worker/data nodes in the cluster. Suggestion value: 4. Type: string (or Expression with resultType string).
+	// Number of worker/data nodes in the cluster. Suggestion value: 4. Type: int (or Expression with resultType int).
 	ClusterSize interface{} `pulumi:"clusterSize"`
 	// The password to SSH remotely connect cluster’s node (for Linux).
 	ClusterSshPassword interface{} `pulumi:"clusterSshPassword"`
@@ -935,7 +935,7 @@ type HttpDatasetResponse struct {
 type HttpLinkedService struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
-	// The additional HTTP headers in the request to RESTful API used for authorization. Type: object (or Expression with resultType object).
+	// The additional HTTP headers in the request to RESTful API used for authorization. Type: key value pairs (value should be string type).
 	AuthHeaders interface{} `pulumi:"authHeaders"`
 	// The authentication type to be used to connect to the HTTP server.
 	AuthenticationType *string `pulumi:"authenticationType"`
@@ -968,7 +968,7 @@ type HttpLinkedService struct {
 type HttpLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
-	// The additional HTTP headers in the request to RESTful API used for authorization. Type: object (or Expression with resultType object).
+	// The additional HTTP headers in the request to RESTful API used for authorization. Type: key value pairs (value should be string type).
 	AuthHeaders interface{} `pulumi:"authHeaders"`
 	// The authentication type to be used to connect to the HTTP server.
 	AuthenticationType *string `pulumi:"authenticationType"`
@@ -7466,7 +7466,7 @@ type ODataLinkedService struct {
 	AadServicePrincipalCredentialType *string `pulumi:"aadServicePrincipalCredentialType"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
-	// The additional HTTP headers in the request to RESTful API used for authorization. Type: object (or Expression with resultType object).
+	// The additional HTTP headers in the request to RESTful API used for authorization. Type: key value pairs (value should be string type).
 	AuthHeaders interface{} `pulumi:"authHeaders"`
 	// Type of authentication used to connect to the OData service.
 	AuthenticationType *string `pulumi:"authenticationType"`
@@ -7509,7 +7509,7 @@ type ODataLinkedServiceResponse struct {
 	AadServicePrincipalCredentialType *string `pulumi:"aadServicePrincipalCredentialType"`
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
-	// The additional HTTP headers in the request to RESTful API used for authorization. Type: object (or Expression with resultType object).
+	// The additional HTTP headers in the request to RESTful API used for authorization. Type: key value pairs (value should be string type).
 	AuthHeaders interface{} `pulumi:"authHeaders"`
 	// Type of authentication used to connect to the OData service.
 	AuthenticationType *string `pulumi:"authenticationType"`
@@ -11923,11 +11923,11 @@ type RestServiceLinkedServiceResponse struct {
 
 // A copy activity Rest service Sink.
 type RestSink struct {
-	// The additional HTTP headers in the request to the RESTful API. Type: string (or Expression with resultType string).
+	// The additional HTTP headers in the request to the RESTful API. Type: key value pairs (value should be string type).
 	AdditionalHeaders interface{} `pulumi:"additionalHeaders"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Http Compression Type to Send data in compressed format with Optimal Compression Level, Default is None. And The Only Supported option is Gzip.
+	// Http Compression Type to Send data in compressed format with Optimal Compression Level, Default is None. And The Only Supported option is Gzip. Type: string (or Expression with resultType string).
 	HttpCompressionType interface{} `pulumi:"httpCompressionType"`
 	// The timeout (TimeSpan) to get an HTTP response. It is the timeout to get a response, not the timeout to read response data. Default value: 00:01:40. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	HttpRequestTimeout interface{} `pulumi:"httpRequestTimeout"`
@@ -11952,11 +11952,11 @@ type RestSink struct {
 
 // A copy activity Rest service Sink.
 type RestSinkResponse struct {
-	// The additional HTTP headers in the request to the RESTful API. Type: string (or Expression with resultType string).
+	// The additional HTTP headers in the request to the RESTful API. Type: key value pairs (value should be string type).
 	AdditionalHeaders interface{} `pulumi:"additionalHeaders"`
 	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// Http Compression Type to Send data in compressed format with Optimal Compression Level, Default is None. And The Only Supported option is Gzip.
+	// Http Compression Type to Send data in compressed format with Optimal Compression Level, Default is None. And The Only Supported option is Gzip. Type: string (or Expression with resultType string).
 	HttpCompressionType interface{} `pulumi:"httpCompressionType"`
 	// The timeout (TimeSpan) to get an HTTP response. It is the timeout to get a response, not the timeout to read response data. Default value: 00:01:40. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
 	HttpRequestTimeout interface{} `pulumi:"httpRequestTimeout"`
@@ -11981,7 +11981,7 @@ type RestSinkResponse struct {
 
 // A copy activity Rest service source.
 type RestSource struct {
-	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	// Specifies the additional columns to be added to source data. Type: key value pairs (value should be string type).
 	AdditionalColumns interface{} `pulumi:"additionalColumns"`
 	// The additional HTTP headers in the request to the RESTful API. Type: string (or Expression with resultType string).
 	AdditionalHeaders interface{} `pulumi:"additionalHeaders"`
@@ -12010,7 +12010,7 @@ type RestSource struct {
 
 // A copy activity Rest service source.
 type RestSourceResponse struct {
-	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+	// Specifies the additional columns to be added to source data. Type: key value pairs (value should be string type).
 	AdditionalColumns interface{} `pulumi:"additionalColumns"`
 	// The additional HTTP headers in the request to the RESTful API. Type: string (or Expression with resultType string).
 	AdditionalHeaders interface{} `pulumi:"additionalHeaders"`

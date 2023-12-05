@@ -3276,7 +3276,7 @@ type AzureFunctionActivity struct {
 	Description *string `pulumi:"description"`
 	// Name of the Function that the Azure Function Activity will call. Type: string (or Expression with resultType string)
 	FunctionName interface{} `pulumi:"functionName"`
-	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
 	Headers interface{} `pulumi:"headers"`
 	// Linked service reference.
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
@@ -3307,7 +3307,7 @@ type AzureFunctionActivityResponse struct {
 	Description *string `pulumi:"description"`
 	// Name of the Function that the Azure Function Activity will call. Type: string (or Expression with resultType string)
 	FunctionName interface{} `pulumi:"functionName"`
-	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
 	Headers interface{} `pulumi:"headers"`
 	// Linked service reference.
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
@@ -3342,13 +3342,13 @@ type AzureFunctionLinkedService struct {
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
-	// The endpoint of the Azure Function App. URL will be in the format https://<accountName>.azurewebsites.net.
+	// The endpoint of the Azure Function App. URL will be in the format https://<accountName>.azurewebsites.net. Type: string (or Expression with resultType string).
 	FunctionAppUrl interface{} `pulumi:"functionAppUrl"`
 	// Function or Host key for Azure Function App.
 	FunctionKey interface{} `pulumi:"functionKey"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
-	// Allowed token audiences for azure function.
+	// Allowed token audiences for azure function. Type: string (or Expression with resultType string).
 	ResourceId interface{} `pulumi:"resourceId"`
 	// Type of linked service.
 	// Expected value is 'AzureFunction'.
@@ -3369,13 +3369,13 @@ type AzureFunctionLinkedServiceResponse struct {
 	Description *string `pulumi:"description"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
-	// The endpoint of the Azure Function App. URL will be in the format https://<accountName>.azurewebsites.net.
+	// The endpoint of the Azure Function App. URL will be in the format https://<accountName>.azurewebsites.net. Type: string (or Expression with resultType string).
 	FunctionAppUrl interface{} `pulumi:"functionAppUrl"`
 	// Function or Host key for Azure Function App.
 	FunctionKey interface{} `pulumi:"functionKey"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
-	// Allowed token audiences for azure function.
+	// Allowed token audiences for azure function. Type: string (or Expression with resultType string).
 	ResourceId interface{} `pulumi:"resourceId"`
 	// Type of linked service.
 	// Expected value is 'AzureFunction'.
@@ -3508,7 +3508,7 @@ type AzureMLBatchExecutionActivityResponse struct {
 type AzureMLExecutePipelineActivity struct {
 	// Whether to continue execution of other steps in the PipelineRun if a step fails. This information will be passed in the continueOnStepFailure property of the published pipeline execution request. Type: boolean (or Expression with resultType boolean).
 	ContinueOnStepFailure interface{} `pulumi:"continueOnStepFailure"`
-	// Dictionary used for changing data path assignments without retraining. Values will be passed in the dataPathAssignments property of the published pipeline execution request. Type: object with key value pairs (or Expression with resultType object).
+	// Dictionary used for changing data path assignments without retraining. Values will be passed in the dataPathAssignments property of the published pipeline execution request. Type: object (or Expression with resultType object).
 	DataPathAssignments interface{} `pulumi:"dataPathAssignments"`
 	// Activity depends on condition.
 	DependsOn []ActivityDependency `pulumi:"dependsOn"`
@@ -3547,7 +3547,7 @@ type AzureMLExecutePipelineActivity struct {
 type AzureMLExecutePipelineActivityResponse struct {
 	// Whether to continue execution of other steps in the PipelineRun if a step fails. This information will be passed in the continueOnStepFailure property of the published pipeline execution request. Type: boolean (or Expression with resultType boolean).
 	ContinueOnStepFailure interface{} `pulumi:"continueOnStepFailure"`
-	// Dictionary used for changing data path assignments without retraining. Values will be passed in the dataPathAssignments property of the published pipeline execution request. Type: object with key value pairs (or Expression with resultType object).
+	// Dictionary used for changing data path assignments without retraining. Values will be passed in the dataPathAssignments property of the published pipeline execution request. Type: object (or Expression with resultType object).
 	DataPathAssignments interface{} `pulumi:"dataPathAssignments"`
 	// Activity depends on condition.
 	DependsOn []ActivityDependencyResponse `pulumi:"dependsOn"`
@@ -4808,7 +4808,7 @@ type AzureSqlSource struct {
 	IsolationLevel interface{} `pulumi:"isolationLevel"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange". Type: string (or Expression with resultType string).
 	PartitionOption interface{} `pulumi:"partitionOption"`
 	// The settings that will be leveraged for Sql source partitioning.
 	PartitionSettings *SqlPartitionSettings `pulumi:"partitionSettings"`
@@ -4841,7 +4841,7 @@ type AzureSqlSourceResponse struct {
 	IsolationLevel interface{} `pulumi:"isolationLevel"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+	// The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange". Type: string (or Expression with resultType string).
 	PartitionOption interface{} `pulumi:"partitionOption"`
 	// The settings that will be leveraged for Sql source partitioning.
 	PartitionSettings *SqlPartitionSettingsResponse `pulumi:"partitionSettings"`
@@ -6144,12 +6144,12 @@ func (o ChangeDataCaptureResponseFolderPtrOutput) Name() pulumi.StringPtrOutput 
 type CmdkeySetup struct {
 	// The password of data source access.
 	Password interface{} `pulumi:"password"`
-	// The server name of data source access.
+	// The server name of data source access. Type: string.
 	TargetName interface{} `pulumi:"targetName"`
 	// The type of custom setup.
 	// Expected value is 'CmdkeySetup'.
 	Type string `pulumi:"type"`
-	// The user name of data source access.
+	// The user name of data source access. Type: string.
 	UserName interface{} `pulumi:"userName"`
 }
 
@@ -6157,12 +6157,12 @@ type CmdkeySetup struct {
 type CmdkeySetupResponse struct {
 	// The password of data source access.
 	Password interface{} `pulumi:"password"`
-	// The server name of data source access.
+	// The server name of data source access. Type: string.
 	TargetName interface{} `pulumi:"targetName"`
 	// The type of custom setup.
 	// Expected value is 'CmdkeySetup'.
 	Type string `pulumi:"type"`
-	// The user name of data source access.
+	// The user name of data source access. Type: string.
 	UserName interface{} `pulumi:"userName"`
 }
 

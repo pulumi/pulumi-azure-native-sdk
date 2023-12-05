@@ -15,7 +15,7 @@ import (
 // The cost allocation rule model definition
 // Azure REST API version: 2020-03-01-preview. Prior API version in Azure Native 1.x: 2020-03-01-preview.
 //
-// Other available API versions: 2023-08-01.
+// Other available API versions: 2023-08-01, 2023-11-01.
 type CostAllocationRule struct {
 	pulumi.CustomResourceState
 
@@ -43,6 +43,9 @@ func NewCostAllocationRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20230801:CostAllocationRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20231101:CostAllocationRule"),
 		},
 	})
 	opts = append(opts, aliases)

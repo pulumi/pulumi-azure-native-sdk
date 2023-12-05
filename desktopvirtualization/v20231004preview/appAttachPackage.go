@@ -56,6 +56,9 @@ func NewAppAttachPackage(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization:AppAttachPackage"),
 		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20231101preview:AppAttachPackage"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -90,10 +90,10 @@ func NewStorageAppliance(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:networkcloud:StorageAppliance"),
 		},
 		{
-			Type: pulumi.String("azure-native:networkcloud/v20221212preview:StorageAppliance"),
+			Type: pulumi.String("azure-native:networkcloud/v20230501preview:StorageAppliance"),
 		},
 		{
-			Type: pulumi.String("azure-native:networkcloud/v20230501preview:StorageAppliance"),
+			Type: pulumi.String("azure-native:networkcloud/v20231001preview:StorageAppliance"),
 		},
 	})
 	opts = append(opts, aliases)

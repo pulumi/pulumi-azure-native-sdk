@@ -15,7 +15,7 @@ import (
 // Represents a Workspace definition.
 // Azure REST API version: 2022-09-09. Prior API version in Azure Native 1.x: 2021-02-01-preview.
 //
-// Other available API versions: 2020-11-10-preview, 2022-10-14-preview, 2023-07-07-preview, 2023-09-05, 2023-10-04-preview.
+// Other available API versions: 2020-11-10-preview, 2022-10-14-preview, 2023-07-07-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview.
 type Workspace struct {
 	pulumi.CustomResourceState
 
@@ -120,6 +120,9 @@ func NewWorkspace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20231004preview:Workspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20231101preview:Workspace"),
 		},
 	})
 	opts = append(opts, aliases)
