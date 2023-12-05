@@ -14,6 +14,15 @@ const (
 	ActionCustom    = Action("Custom")
 )
 
+// The architecture of a first party application of a Test Base Account.
+type Architecture string
+
+const (
+	ArchitectureX86   = Architecture("x86")
+	ArchitectureX64   = Architecture("x64")
+	ArchitectureArm64 = Architecture("arm64")
+)
+
 // The type of command content.
 type ContentType string
 
@@ -21,6 +30,113 @@ const (
 	ContentTypeInline = ContentType("Inline")
 	ContentTypeFile   = ContentType("File")
 	ContentTypePath   = ContentType("Path")
+)
+
+// Credential type.
+type CredentialType string
+
+const (
+	// Username password credential for intune enrollment.
+	CredentialTypeIntuneAccount = CredentialType("IntuneAccount")
+)
+
+// The source type.
+type DraftPackageSourceType string
+
+const (
+	DraftPackageSourceTypeNative           = DraftPackageSourceType("Native")
+	DraftPackageSourceTypeIntuneWin        = DraftPackageSourceType("IntuneWin")
+	DraftPackageSourceTypeTestBasePackage  = DraftPackageSourceType("TestBasePackage")
+	DraftPackageSourceTypeGalleryApp       = DraftPackageSourceType("GalleryApp")
+	DraftPackageSourceTypeIntuneEnrollment = DraftPackageSourceType("IntuneEnrollment")
+)
+
+type Engagements string
+
+const (
+	EngagementsMVI   = Engagements("MVI")
+	EngagementsMVP   = Engagements("MVP")
+	EngagementsSUVP  = Engagements("SUVP")
+	EngagementsMAPP  = Engagements("MAPP")
+	EngagementsOther = Engagements("Other")
+)
+
+// Custom image architecture.
+type ImageArchitecture string
+
+const (
+	// 64-bit architecture.
+	ImageArchitectureX64 = ImageArchitecture("x64")
+)
+
+// Custom image OS state.
+type ImageOSState string
+
+const (
+	// Sysprep generalization processed.
+	ImageOSStateGeneralized = ImageOSState("Generalized")
+	// Fully kept with user specified settings.
+	ImageOSStateSpecialized = ImageOSState("Specialized")
+)
+
+// Custom image security type.
+type ImageSecurityType string
+
+const (
+	// Standard security type.
+	ImageSecurityTypeStandard = ImageSecurityType("Standard")
+	// Specify higher security level compared to Standard.
+	ImageSecurityTypeTrustedLaunch = ImageSecurityType("TrustedLaunch")
+)
+
+// Custom image source type.
+type ImageSource string
+
+const (
+	// Unknown image source type.
+	ImageSourceUnknown = ImageSource("Unknown")
+	// Specify image onboarding through VHD.
+	ImageSourceVHD = ImageSource("VHD")
+)
+
+// Specifies how the first party applications should be inter-operated with user's application.
+type InteropExecutionMode string
+
+const (
+	// User application will test with the first party applications. For out-of-box tests, additional test cases for first party applications will also be run.
+	InteropExecutionModeFirstPartyAppWithTests = InteropExecutionMode("firstPartyAppWithTests")
+	// User application will test with the first party applications.
+	InteropExecutionModeFirstPartyApp = InteropExecutionMode("firstPartyApp")
+)
+
+// Extract status.
+type IntuneExtractStatus string
+
+const (
+	IntuneExtractStatusReady           = IntuneExtractStatus("Ready")
+	IntuneExtractStatusUploading       = IntuneExtractStatus("Uploading")
+	IntuneExtractStatusUploadFailed    = IntuneExtractStatus("UploadFailed")
+	IntuneExtractStatusExtractFailed   = IntuneExtractStatus("ExtractFailed")
+	IntuneExtractStatusNoDependencyApp = IntuneExtractStatus("NoDependencyApp")
+)
+
+// Specifies the tabs when creating / cloning / editing a package.
+type PackageStudioTabs string
+
+const (
+	PackageStudioTabsUnspecified        = PackageStudioTabs("Unspecified")
+	PackageStudioTabsBasicsTab          = PackageStudioTabs("BasicsTab")
+	PackageStudioTabsConfigureTestTab   = PackageStudioTabs("ConfigureTestTab")
+	PackageStudioTabsEditPackageTab     = PackageStudioTabs("EditPackageTab")
+	PackageStudioTabsTestMatrixTab      = PackageStudioTabs("TestMatrixTab")
+	PackageStudioTabsTagsTab            = PackageStudioTabs("TagsTab")
+	PackageStudioTabsReviewAndCreateTab = PackageStudioTabs("ReviewAndCreateTab")
+)
+
+type RequestTypes string
+
+const (
+	RequestTypesPreReleaseAccess = RequestTypes("PreReleaseAccess")
 )
 
 // The type of the test.

@@ -13,6 +13,8 @@ import (
 
 // Gets the download URL of a package.
 // Azure REST API version: 2022-04-01-preview.
+//
+// Other available API versions: 2023-11-01-preview.
 func GetPackageDownloadURL(ctx *pulumi.Context, args *GetPackageDownloadURLArgs, opts ...pulumi.InvokeOption) (*GetPackageDownloadURLResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetPackageDownloadURLResult

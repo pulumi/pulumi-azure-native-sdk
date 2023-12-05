@@ -14,7 +14,7 @@ import (
 // The operation to get the export for the defined scope by export name.
 // Azure REST API version: 2023-03-01.
 //
-// Other available API versions: 2019-10-01, 2023-04-01-preview, 2023-08-01.
+// Other available API versions: 2019-10-01, 2023-04-01-preview, 2023-08-01, 2023-11-01.
 func LookupExport(ctx *pulumi.Context, args *LookupExportArgs, opts ...pulumi.InvokeOption) (*LookupExportResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExportResult

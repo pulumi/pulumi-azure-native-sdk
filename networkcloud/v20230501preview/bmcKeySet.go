@@ -80,10 +80,10 @@ func NewBmcKeySet(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:networkcloud:BmcKeySet"),
 		},
 		{
-			Type: pulumi.String("azure-native:networkcloud/v20221212preview:BmcKeySet"),
+			Type: pulumi.String("azure-native:networkcloud/v20230701:BmcKeySet"),
 		},
 		{
-			Type: pulumi.String("azure-native:networkcloud/v20230701:BmcKeySet"),
+			Type: pulumi.String("azure-native:networkcloud/v20231001preview:BmcKeySet"),
 		},
 	})
 	opts = append(opts, aliases)

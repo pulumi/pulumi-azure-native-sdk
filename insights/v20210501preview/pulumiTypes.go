@@ -13,6 +13,87 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// The diagnostic settings category resource.
+type DiagnosticSettingsCategoryResourceResponse struct {
+	// the collection of what category groups are supported.
+	CategoryGroups []string `pulumi:"categoryGroups"`
+	// The type of the diagnostic settings category.
+	CategoryType *string `pulumi:"categoryType"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The system metadata related to this resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+}
+
+// The diagnostic settings category resource.
+type DiagnosticSettingsCategoryResourceResponseOutput struct{ *pulumi.OutputState }
+
+func (DiagnosticSettingsCategoryResourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiagnosticSettingsCategoryResourceResponse)(nil)).Elem()
+}
+
+func (o DiagnosticSettingsCategoryResourceResponseOutput) ToDiagnosticSettingsCategoryResourceResponseOutput() DiagnosticSettingsCategoryResourceResponseOutput {
+	return o
+}
+
+func (o DiagnosticSettingsCategoryResourceResponseOutput) ToDiagnosticSettingsCategoryResourceResponseOutputWithContext(ctx context.Context) DiagnosticSettingsCategoryResourceResponseOutput {
+	return o
+}
+
+// the collection of what category groups are supported.
+func (o DiagnosticSettingsCategoryResourceResponseOutput) CategoryGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DiagnosticSettingsCategoryResourceResponse) []string { return v.CategoryGroups }).(pulumi.StringArrayOutput)
+}
+
+// The type of the diagnostic settings category.
+func (o DiagnosticSettingsCategoryResourceResponseOutput) CategoryType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiagnosticSettingsCategoryResourceResponse) *string { return v.CategoryType }).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+func (o DiagnosticSettingsCategoryResourceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v DiagnosticSettingsCategoryResourceResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the resource
+func (o DiagnosticSettingsCategoryResourceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DiagnosticSettingsCategoryResourceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The system metadata related to this resource.
+func (o DiagnosticSettingsCategoryResourceResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v DiagnosticSettingsCategoryResourceResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+func (o DiagnosticSettingsCategoryResourceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DiagnosticSettingsCategoryResourceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DiagnosticSettingsCategoryResourceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DiagnosticSettingsCategoryResourceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiagnosticSettingsCategoryResourceResponse)(nil)).Elem()
+}
+
+func (o DiagnosticSettingsCategoryResourceResponseArrayOutput) ToDiagnosticSettingsCategoryResourceResponseArrayOutput() DiagnosticSettingsCategoryResourceResponseArrayOutput {
+	return o
+}
+
+func (o DiagnosticSettingsCategoryResourceResponseArrayOutput) ToDiagnosticSettingsCategoryResourceResponseArrayOutputWithContext(ctx context.Context) DiagnosticSettingsCategoryResourceResponseArrayOutput {
+	return o
+}
+
+func (o DiagnosticSettingsCategoryResourceResponseArrayOutput) Index(i pulumi.IntInput) DiagnosticSettingsCategoryResourceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiagnosticSettingsCategoryResourceResponse {
+		return vs[0].([]DiagnosticSettingsCategoryResourceResponse)[vs[1].(int)]
+	}).(DiagnosticSettingsCategoryResourceResponseOutput)
+}
+
 // Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular log.
 type LogSettings struct {
 	// Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
@@ -1055,6 +1136,8 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(DiagnosticSettingsCategoryResourceResponseOutput{})
+	pulumi.RegisterOutputType(DiagnosticSettingsCategoryResourceResponseArrayOutput{})
 	pulumi.RegisterOutputType(LogSettingsOutput{})
 	pulumi.RegisterOutputType(LogSettingsArrayOutput{})
 	pulumi.RegisterOutputType(LogSettingsResponseOutput{})

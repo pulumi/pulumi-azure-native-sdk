@@ -14,6 +14,8 @@ import (
 
 // The Test Base Package resource.
 // Azure REST API version: 2022-04-01-preview. Prior API version in Azure Native 1.x: 2022-04-01-preview.
+//
+// Other available API versions: 2023-11-01-preview.
 type Package struct {
 	pulumi.CustomResourceState
 
@@ -92,6 +94,9 @@ func NewPackage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:testbase/v20220401preview:Package"),
+		},
+		{
+			Type: pulumi.String("azure-native:testbase/v20231101preview:Package"),
 		},
 	})
 	opts = append(opts, aliases)

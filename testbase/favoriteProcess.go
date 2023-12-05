@@ -14,6 +14,8 @@ import (
 
 // A favorite process identifier.
 // Azure REST API version: 2022-04-01-preview. Prior API version in Azure Native 1.x: 2022-04-01-preview.
+//
+// Other available API versions: 2023-11-01-preview.
 type FavoriteProcess struct {
 	pulumi.CustomResourceState
 
@@ -52,6 +54,9 @@ func NewFavoriteProcess(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:testbase/v20220401preview:FavoriteProcess"),
+		},
+		{
+			Type: pulumi.String("azure-native:testbase/v20231101preview:FavoriteProcess"),
 		},
 	})
 	opts = append(opts, aliases)

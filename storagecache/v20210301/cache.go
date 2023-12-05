@@ -105,6 +105,9 @@ func NewCache(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:storagecache/v20230501:Cache"),
 		},
+		{
+			Type: pulumi.String("azure-native:storagecache/v20231101preview:Cache"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

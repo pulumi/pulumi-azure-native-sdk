@@ -141,6 +141,9 @@ func NewAccount(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:netapp/v20230501:Account"),
 		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20230501preview:Account"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

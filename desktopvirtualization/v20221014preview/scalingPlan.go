@@ -112,6 +112,9 @@ func NewScalingPlan(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20231004preview:ScalingPlan"),
 		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20231101preview:ScalingPlan"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

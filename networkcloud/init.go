@@ -37,10 +37,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClusterManager{}
 	case "azure-native:networkcloud:Console":
 		r = &Console{}
-	case "azure-native:networkcloud:DefaultCniNetwork":
-		r = &DefaultCniNetwork{}
-	case "azure-native:networkcloud:HybridAksCluster":
-		r = &HybridAksCluster{}
 	case "azure-native:networkcloud:KubernetesCluster":
 		r = &KubernetesCluster{}
 	case "azure-native:networkcloud:L2Network":

@@ -66,6 +66,12 @@ func NewBackup(ctx *pulumi.Context,
 	if args.UseExistingSnapshot == nil {
 		args.UseExistingSnapshot = pulumi.BoolPtr(false)
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:netapp/v20230501preview:Backup"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource Backup
 	err := ctx.RegisterResource("azure-native:netapp/v20221101preview:Backup", name, args, &resource, opts...)

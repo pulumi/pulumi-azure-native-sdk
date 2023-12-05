@@ -72,10 +72,10 @@ func NewConsole(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:networkcloud:Console"),
 		},
 		{
-			Type: pulumi.String("azure-native:networkcloud/v20221212preview:Console"),
+			Type: pulumi.String("azure-native:networkcloud/v20230501preview:Console"),
 		},
 		{
-			Type: pulumi.String("azure-native:networkcloud/v20230501preview:Console"),
+			Type: pulumi.String("azure-native:networkcloud/v20231001preview:Console"),
 		},
 	})
 	opts = append(opts, aliases)

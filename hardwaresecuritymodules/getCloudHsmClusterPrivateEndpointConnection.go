@@ -13,6 +13,8 @@ import (
 
 // Gets the private endpoint connection for the Cloud Hsm Cluster.
 // Azure REST API version: 2022-08-31-preview.
+//
+// Other available API versions: 2023-12-10-preview.
 func LookupCloudHsmClusterPrivateEndpointConnection(ctx *pulumi.Context, args *LookupCloudHsmClusterPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupCloudHsmClusterPrivateEndpointConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudHsmClusterPrivateEndpointConnectionResult

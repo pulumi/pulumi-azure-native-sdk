@@ -14,7 +14,7 @@ import (
 // Get Elastic Organization To Azure Subscription Mapping details for the logged-in user.
 // Azure REST API version: 2023-06-15-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-10-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-10-01-preview, 2023-11-01-preview.
 func GetOrganizationElasticToAzureSubscriptionMapping(ctx *pulumi.Context, args *GetOrganizationElasticToAzureSubscriptionMappingArgs, opts ...pulumi.InvokeOption) (*GetOrganizationElasticToAzureSubscriptionMappingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetOrganizationElasticToAzureSubscriptionMappingResult

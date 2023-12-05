@@ -14,6 +14,8 @@ import (
 
 // The Test Base Account resource.
 // Azure REST API version: 2022-04-01-preview. Prior API version in Azure Native 1.x: 2022-04-01-preview.
+//
+// Other available API versions: 2023-11-01-preview.
 type TestBaseAccount struct {
 	pulumi.CustomResourceState
 
@@ -56,6 +58,9 @@ func NewTestBaseAccount(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:testbase/v20220401preview:TestBaseAccount"),
+		},
+		{
+			Type: pulumi.String("azure-native:testbase/v20231101preview:TestBaseAccount"),
 		},
 	})
 	opts = append(opts, aliases)
