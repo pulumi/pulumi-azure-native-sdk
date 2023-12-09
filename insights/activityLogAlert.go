@@ -13,9 +13,9 @@ import (
 )
 
 // An Activity Log Alert rule resource.
-// Azure REST API version: 2023-01-01-preview. Prior API version in Azure Native 1.x: 2020-10-01.
+// Azure REST API version: 2020-10-01. Prior API version in Azure Native 1.x: 2020-10-01.
 //
-// Other available API versions: 2017-04-01, 2020-10-01.
+// Other available API versions: 2017-04-01, 2023-01-01-preview.
 type ActivityLogAlert struct {
 	pulumi.CustomResourceState
 
@@ -35,8 +35,6 @@ type ActivityLogAlert struct {
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// The tags of the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The tenant GUID. Must be provided for tenant-level and management group events rules.
-	TenantScope pulumi.StringPtrOutput `pulumi:"tenantScope"`
 	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -56,6 +54,9 @@ func NewActivityLogAlert(ctx *pulumi.Context,
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Scopes == nil {
+		return nil, errors.New("invalid value for required argument 'Scopes'")
 	}
 	if args.Enabled == nil {
 		args.Enabled = pulumi.BoolPtr(true)
@@ -126,8 +127,6 @@ type activityLogAlertArgs struct {
 	Scopes []string `pulumi:"scopes"`
 	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The tenant GUID. Must be provided for tenant-level and management group events rules.
-	TenantScope *string `pulumi:"tenantScope"`
 }
 
 // The set of arguments for constructing a ActivityLogAlert resource.
@@ -150,8 +149,6 @@ type ActivityLogAlertArgs struct {
 	Scopes pulumi.StringArrayInput
 	// The tags of the resource.
 	Tags pulumi.StringMapInput
-	// The tenant GUID. Must be provided for tenant-level and management group events rules.
-	TenantScope pulumi.StringPtrInput
 }
 
 func (ActivityLogAlertArgs) ElementType() reflect.Type {
@@ -229,11 +226,6 @@ func (o ActivityLogAlertOutput) Scopes() pulumi.StringArrayOutput {
 // The tags of the resource.
 func (o ActivityLogAlertOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ActivityLogAlert) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// The tenant GUID. Must be provided for tenant-level and management group events rules.
-func (o ActivityLogAlertOutput) TenantScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ActivityLogAlert) pulumi.StringPtrOutput { return v.TenantScope }).(pulumi.StringPtrOutput)
 }
 
 // The type of the resource.
