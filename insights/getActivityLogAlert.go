@@ -12,9 +12,9 @@ import (
 )
 
 // Get an Activity Log Alert rule.
-// Azure REST API version: 2023-01-01-preview.
+// Azure REST API version: 2020-10-01.
 //
-// Other available API versions: 2017-04-01, 2020-10-01.
+// Other available API versions: 2017-04-01, 2023-01-01-preview.
 func LookupActivityLogAlert(ctx *pulumi.Context, args *LookupActivityLogAlertArgs, opts ...pulumi.InvokeOption) (*LookupActivityLogAlertResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupActivityLogAlertResult
@@ -52,8 +52,6 @@ type LookupActivityLogAlertResult struct {
 	Scopes []string `pulumi:"scopes"`
 	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The tenant GUID. Must be provided for tenant-level and management group events rules.
-	TenantScope *string `pulumi:"tenantScope"`
 	// The type of the resource.
 	Type string `pulumi:"type"`
 }
@@ -157,11 +155,6 @@ func (o LookupActivityLogAlertResultOutput) Scopes() pulumi.StringArrayOutput {
 // The tags of the resource.
 func (o LookupActivityLogAlertResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupActivityLogAlertResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// The tenant GUID. Must be provided for tenant-level and management group events rules.
-func (o LookupActivityLogAlertResultOutput) TenantScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupActivityLogAlertResult) *string { return v.TenantScope }).(pulumi.StringPtrOutput)
 }
 
 // The type of the resource.

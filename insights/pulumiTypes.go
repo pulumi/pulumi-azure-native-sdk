@@ -308,8 +308,6 @@ func (o AccessModeSettingsResponseOutput) QueryAccessMode() pulumi.StringOutput 
 type ActionGroupType struct {
 	// The resource ID of the Action Group. This cannot be null or empty.
 	ActionGroupId string `pulumi:"actionGroupId"`
-	// Predefined list of properties and configuration items for the action group.
-	ActionProperties map[string]string `pulumi:"actionProperties"`
 	// the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
 	WebhookProperties map[string]string `pulumi:"webhookProperties"`
 }
@@ -329,8 +327,6 @@ type ActionGroupTypeInput interface {
 type ActionGroupTypeArgs struct {
 	// The resource ID of the Action Group. This cannot be null or empty.
 	ActionGroupId pulumi.StringInput `pulumi:"actionGroupId"`
-	// Predefined list of properties and configuration items for the action group.
-	ActionProperties pulumi.StringMapInput `pulumi:"actionProperties"`
 	// the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
 	WebhookProperties pulumi.StringMapInput `pulumi:"webhookProperties"`
 }
@@ -392,11 +388,6 @@ func (o ActionGroupTypeOutput) ActionGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionGroupType) string { return v.ActionGroupId }).(pulumi.StringOutput)
 }
 
-// Predefined list of properties and configuration items for the action group.
-func (o ActionGroupTypeOutput) ActionProperties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ActionGroupType) map[string]string { return v.ActionProperties }).(pulumi.StringMapOutput)
-}
-
 // the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
 func (o ActionGroupTypeOutput) WebhookProperties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ActionGroupType) map[string]string { return v.WebhookProperties }).(pulumi.StringMapOutput)
@@ -426,8 +417,6 @@ func (o ActionGroupTypeArrayOutput) Index(i pulumi.IntInput) ActionGroupTypeOutp
 type ActionGroupResponse struct {
 	// The resource ID of the Action Group. This cannot be null or empty.
 	ActionGroupId string `pulumi:"actionGroupId"`
-	// Predefined list of properties and configuration items for the action group.
-	ActionProperties map[string]string `pulumi:"actionProperties"`
 	// the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
 	WebhookProperties map[string]string `pulumi:"webhookProperties"`
 }
@@ -450,11 +439,6 @@ func (o ActionGroupResponseOutput) ToActionGroupResponseOutputWithContext(ctx co
 // The resource ID of the Action Group. This cannot be null or empty.
 func (o ActionGroupResponseOutput) ActionGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v ActionGroupResponse) string { return v.ActionGroupId }).(pulumi.StringOutput)
-}
-
-// Predefined list of properties and configuration items for the action group.
-func (o ActionGroupResponseOutput) ActionProperties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ActionGroupResponse) map[string]string { return v.ActionProperties }).(pulumi.StringMapOutput)
 }
 
 // the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
