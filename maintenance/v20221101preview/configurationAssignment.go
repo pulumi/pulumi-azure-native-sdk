@@ -68,6 +68,9 @@ func NewConfigurationAssignment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:maintenance/v20230901preview:ConfigurationAssignment"),
 		},
+		{
+			Type: pulumi.String("azure-native:maintenance/v20231001preview:ConfigurationAssignment"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

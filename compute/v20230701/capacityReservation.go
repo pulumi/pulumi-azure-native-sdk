@@ -85,6 +85,9 @@ func NewCapacityReservation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20230301:CapacityReservation"),
 		},
+		{
+			Type: pulumi.String("azure-native:compute/v20230901:CapacityReservation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

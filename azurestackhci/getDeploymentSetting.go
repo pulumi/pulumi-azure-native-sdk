@@ -13,6 +13,8 @@ import (
 
 // Get a DeploymentSetting
 // Azure REST API version: 2023-08-01-preview.
+//
+// Other available API versions: 2023-11-01-preview.
 func LookupDeploymentSetting(ctx *pulumi.Context, args *LookupDeploymentSettingArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentSettingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeploymentSettingResult

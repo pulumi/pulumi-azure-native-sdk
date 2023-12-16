@@ -74,6 +74,9 @@ func NewConfigurationAssignmentParent(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:maintenance/v20230901preview:ConfigurationAssignmentParent"),
 		},
+		{
+			Type: pulumi.String("azure-native:maintenance/v20231001preview:ConfigurationAssignmentParent"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

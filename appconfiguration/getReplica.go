@@ -13,6 +13,8 @@ import (
 
 // Gets the properties of the specified replica.
 // Azure REST API version: 2023-03-01.
+//
+// Other available API versions: 2023-08-01-preview.
 func LookupReplica(ctx *pulumi.Context, args *LookupReplicaArgs, opts ...pulumi.InvokeOption) (*LookupReplicaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReplicaResult

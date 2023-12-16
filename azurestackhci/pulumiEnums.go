@@ -28,6 +28,16 @@ const (
 	CloudInitDataSourceAzure   = CloudInitDataSource("Azure")
 )
 
+// Secured Core Compliance Assignment
+type ComplianceAssignmentType string
+
+const (
+	// Report on the state of the machine, but don't make changes.
+	ComplianceAssignmentTypeAudit = ComplianceAssignmentType("Audit")
+	// Applied to the machine. If it drifts, the local service inside the machine makes a correction at the next evaluation.
+	ComplianceAssignmentTypeApplyAndAutoCorrect = ComplianceAssignmentType("ApplyAndAutoCorrect")
+)
+
 // The deployment mode for cluster deployment.
 type DeploymentMode string
 

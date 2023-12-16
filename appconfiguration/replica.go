@@ -14,6 +14,8 @@ import (
 
 // The replica resource.
 // Azure REST API version: 2023-03-01.
+//
+// Other available API versions: 2023-08-01-preview.
 type Replica struct {
 	pulumi.CustomResourceState
 
@@ -50,6 +52,9 @@ func NewReplica(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appconfiguration/v20230301:Replica"),
+		},
+		{
+			Type: pulumi.String("azure-native:appconfiguration/v20230801preview:Replica"),
 		},
 	})
 	opts = append(opts, aliases)

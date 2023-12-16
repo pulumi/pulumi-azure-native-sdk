@@ -35,8 +35,12 @@ type LookupLongTermRetentionPolicyArgs struct {
 
 // A long term retention policy.
 type LookupLongTermRetentionPolicyResult struct {
+	// The BackupStorageAccessTier for the LTR backups
+	BackupStorageAccessTier *string `pulumi:"backupStorageAccessTier"`
 	// Resource ID.
 	Id string `pulumi:"id"`
+	// The setting whether to make LTR backups immutable
+	MakeBackupsImmutable *bool `pulumi:"makeBackupsImmutable"`
 	// The monthly retention policy for an LTR backup in an ISO 8601 format.
 	MonthlyRetention *string `pulumi:"monthlyRetention"`
 	// Resource name.
@@ -94,9 +98,19 @@ func (o LookupLongTermRetentionPolicyResultOutput) ToLookupLongTermRetentionPoli
 	return o
 }
 
+// The BackupStorageAccessTier for the LTR backups
+func (o LookupLongTermRetentionPolicyResultOutput) BackupStorageAccessTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupLongTermRetentionPolicyResult) *string { return v.BackupStorageAccessTier }).(pulumi.StringPtrOutput)
+}
+
 // Resource ID.
 func (o LookupLongTermRetentionPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLongTermRetentionPolicyResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The setting whether to make LTR backups immutable
+func (o LookupLongTermRetentionPolicyResultOutput) MakeBackupsImmutable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupLongTermRetentionPolicyResult) *bool { return v.MakeBackupsImmutable }).(pulumi.BoolPtrOutput)
 }
 
 // The monthly retention policy for an LTR backup in an ISO 8601 format.

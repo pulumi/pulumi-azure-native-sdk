@@ -130,6 +130,9 @@ func NewVirtualMachineExtension(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20230301:VirtualMachineExtension"),
 		},
+		{
+			Type: pulumi.String("azure-native:compute/v20230901:VirtualMachineExtension"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

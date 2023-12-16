@@ -107,6 +107,9 @@ func NewVirtualMachineRunCommandByVirtualMachine(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20230701:VirtualMachineRunCommandByVirtualMachine"),
 		},
+		{
+			Type: pulumi.String("azure-native:compute/v20230901:VirtualMachineRunCommandByVirtualMachine"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

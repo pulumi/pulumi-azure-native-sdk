@@ -110,6 +110,9 @@ func NewVirtualMachineScaleSetVMRunCommand(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20230301:VirtualMachineScaleSetVMRunCommand"),
 		},
+		{
+			Type: pulumi.String("azure-native:compute/v20230901:VirtualMachineScaleSetVMRunCommand"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

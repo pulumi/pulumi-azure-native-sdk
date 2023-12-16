@@ -149,6 +149,16 @@ const (
 	DevOpsProvisioningStateDeletionFailure = DevOpsProvisioningState("DeletionFailure")
 )
 
+// If set to "False", it allows the descendants of this scope to override the pricing configuration set on this scope (allows setting inherited="False"). If set to "True", it prevents overrides and forces this pricing configuration on all the descendants of this scope. This field is only available for subscription-level pricing.
+type Enforce string
+
+const (
+	// Allows the descendants of this scope to override the pricing configuration set on this scope (allows setting inherited="False")
+	EnforceFalse = Enforce("False")
+	// Prevents overrides and forces the current scope's pricing configuration to all descendants
+	EnforceTrue = Enforce("True")
+)
+
 // The type of the environment data.
 type EnvironmentType string
 
@@ -221,6 +231,16 @@ const (
 	ImplementationEffortHigh     = ImplementationEffort("High")
 )
 
+// Indicates whether the extension is enabled.
+type IsEnabled string
+
+const (
+	// Indicates the extension is enabled
+	IsEnabledTrue = IsEnabled("True")
+	// Indicates the extension is disabled
+	IsEnabledFalse = IsEnabled("False")
+)
+
 // Defines the minimal alert severity which will be sent as email notifications
 type MinimalSeverity string
 
@@ -286,6 +306,16 @@ type OrganizationMembershipType string
 const (
 	OrganizationMembershipTypeMember       = OrganizationMembershipType("Member")
 	OrganizationMembershipTypeOrganization = OrganizationMembershipType("Organization")
+)
+
+// Indicates whether the Defender plan is enabled on the selected scope. Microsoft Defender for Cloud is provided in two pricing tiers: free and standard. The standard tier offers advanced security capabilities, while the free tier offers basic security features.
+type PricingTier string
+
+const (
+	// Get free Microsoft Defender for Cloud experience with basic security features
+	PricingTierFree = PricingTier("Free")
+	// Get the standard Microsoft Defender for Cloud experience with advanced security features
+	PricingTierStandard = PricingTier("Standard")
 )
 
 // The data type of the compared operands (string, integer, floating point number or a boolean [true/false]]
