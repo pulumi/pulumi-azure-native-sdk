@@ -14,7 +14,7 @@ import (
 // Get configuration for resource.
 // Azure REST API version: 2022-11-01-preview.
 //
-// Other available API versions: 2023-04-01, 2023-09-01-preview.
+// Other available API versions: 2023-04-01, 2023-09-01-preview, 2023-10-01-preview.
 func LookupConfigurationAssignmentParent(ctx *pulumi.Context, args *LookupConfigurationAssignmentParentArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationAssignmentParentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationAssignmentParentResult

@@ -4422,7 +4422,7 @@ func (o BlobStorageTokenStoreResponsePtrOutput) SasUrlSettingName() pulumi.Strin
 type BuildConfiguration struct {
 	// Base OS used to build and run the app.
 	BaseOs *string `pulumi:"baseOs"`
-	// List of environment variables to be passed to the build and application runtime.
+	// List of environment variables to be passed to the build.
 	EnvironmentVariables []EnvironmentVariable `pulumi:"environmentVariables"`
 	// Platform to be used to build and run the app.
 	Platform *string `pulumi:"platform"`
@@ -4447,7 +4447,7 @@ type BuildConfigurationInput interface {
 type BuildConfigurationArgs struct {
 	// Base OS used to build and run the app.
 	BaseOs pulumi.StringPtrInput `pulumi:"baseOs"`
-	// List of environment variables to be passed to the build and application runtime.
+	// List of environment variables to be passed to the build.
 	EnvironmentVariables EnvironmentVariableArrayInput `pulumi:"environmentVariables"`
 	// Platform to be used to build and run the app.
 	Platform pulumi.StringPtrInput `pulumi:"platform"`
@@ -4540,7 +4540,7 @@ func (o BuildConfigurationOutput) BaseOs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildConfiguration) *string { return v.BaseOs }).(pulumi.StringPtrOutput)
 }
 
-// List of environment variables to be passed to the build and application runtime.
+// List of environment variables to be passed to the build.
 func (o BuildConfigurationOutput) EnvironmentVariables() EnvironmentVariableArrayOutput {
 	return o.ApplyT(func(v BuildConfiguration) []EnvironmentVariable { return v.EnvironmentVariables }).(EnvironmentVariableArrayOutput)
 }
@@ -4594,7 +4594,7 @@ func (o BuildConfigurationPtrOutput) BaseOs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of environment variables to be passed to the build and application runtime.
+// List of environment variables to be passed to the build.
 func (o BuildConfigurationPtrOutput) EnvironmentVariables() EnvironmentVariableArrayOutput {
 	return o.ApplyT(func(v *BuildConfiguration) []EnvironmentVariable {
 		if v == nil {
@@ -4638,7 +4638,7 @@ func (o BuildConfigurationPtrOutput) PreBuildSteps() PreBuildStepArrayOutput {
 type BuildConfigurationResponse struct {
 	// Base OS used to build and run the app.
 	BaseOs *string `pulumi:"baseOs"`
-	// List of environment variables to be passed to the build and application runtime.
+	// List of environment variables to be passed to the build.
 	EnvironmentVariables []EnvironmentVariableResponse `pulumi:"environmentVariables"`
 	// Platform to be used to build and run the app.
 	Platform *string `pulumi:"platform"`
@@ -4668,7 +4668,7 @@ func (o BuildConfigurationResponseOutput) BaseOs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildConfigurationResponse) *string { return v.BaseOs }).(pulumi.StringPtrOutput)
 }
 
-// List of environment variables to be passed to the build and application runtime.
+// List of environment variables to be passed to the build.
 func (o BuildConfigurationResponseOutput) EnvironmentVariables() EnvironmentVariableResponseArrayOutput {
 	return o.ApplyT(func(v BuildConfigurationResponse) []EnvironmentVariableResponse { return v.EnvironmentVariables }).(EnvironmentVariableResponseArrayOutput)
 }
@@ -4722,7 +4722,7 @@ func (o BuildConfigurationResponsePtrOutput) BaseOs() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of environment variables to be passed to the build and application runtime.
+// List of environment variables to be passed to the build.
 func (o BuildConfigurationResponsePtrOutput) EnvironmentVariables() EnvironmentVariableResponseArrayOutput {
 	return o.ApplyT(func(v *BuildConfigurationResponse) []EnvironmentVariableResponse {
 		if v == nil {

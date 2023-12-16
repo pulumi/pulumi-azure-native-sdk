@@ -45,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MarketplaceGalleryImage{}
 	case "azure-native:azurestackhci:NetworkInterface":
 		r = &NetworkInterface{}
+	case "azure-native:azurestackhci:SecuritySetting":
+		r = &SecuritySetting{}
 	case "azure-native:azurestackhci:StorageContainer":
 		r = &StorageContainer{}
 	case "azure-native:azurestackhci:Update":

@@ -88,6 +88,9 @@ func NewUpdateRun(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20230801:UpdateRun"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20231101preview:UpdateRun"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

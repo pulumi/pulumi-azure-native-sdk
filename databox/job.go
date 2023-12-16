@@ -15,7 +15,7 @@ import (
 // Job Resource.
 // Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2020-11-01.
 //
-// Other available API versions: 2019-09-01, 2023-03-01.
+// Other available API versions: 2019-09-01, 2023-03-01, 2023-12-01.
 type Job struct {
 	pulumi.CustomResourceState
 
@@ -126,6 +126,9 @@ func NewJob(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databox/v20230301:Job"),
+		},
+		{
+			Type: pulumi.String("azure-native:databox/v20231201:Job"),
 		},
 	})
 	opts = append(opts, aliases)

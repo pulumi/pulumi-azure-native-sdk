@@ -13,6 +13,8 @@ import (
 
 // Get a EdgeDevice
 // Azure REST API version: 2023-08-01-preview.
+//
+// Other available API versions: 2023-11-01-preview.
 func LookupEdgeDevice(ctx *pulumi.Context, args *LookupEdgeDeviceArgs, opts ...pulumi.InvokeOption) (*LookupEdgeDeviceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEdgeDeviceResult

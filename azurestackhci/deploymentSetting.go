@@ -14,6 +14,8 @@ import (
 
 // Edge device resource
 // Azure REST API version: 2023-08-01-preview.
+//
+// Other available API versions: 2023-11-01-preview.
 type DeploymentSetting struct {
 	pulumi.CustomResourceState
 
@@ -60,6 +62,9 @@ func NewDeploymentSetting(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20230801preview:DeploymentSetting"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20231101preview:DeploymentSetting"),
 		},
 	})
 	opts = append(opts, aliases)

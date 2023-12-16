@@ -9207,6 +9207,60 @@ func (o ScaleUnitsResponseArrayOutput) Index(i pulumi.IntInput) ScaleUnitsRespon
 	}).(ScaleUnitsResponseOutput)
 }
 
+// Security compliance properties of the resource
+type SecurityComplianceStatusResponse struct {
+	// Indicates whether data at-rest encryption is enabled on Azure Stack HCI clustered volumes.
+	DataAtRestEncrypted string `pulumi:"dataAtRestEncrypted"`
+	// Indicates whether HCI cluster has data in-transit protection.
+	DataInTransitProtected string `pulumi:"dataInTransitProtected"`
+	// Time in UTC when compliance status was last updated.
+	LastUpdated string `pulumi:"lastUpdated"`
+	// Indicates whether HCI hosts meets secured-core server requirements.
+	SecuredCoreCompliance string `pulumi:"securedCoreCompliance"`
+	// Indicates whether HCI hosts have enforced consistent Windows Defender Application Control.
+	WdacCompliance string `pulumi:"wdacCompliance"`
+}
+
+// Security compliance properties of the resource
+type SecurityComplianceStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityComplianceStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityComplianceStatusResponse)(nil)).Elem()
+}
+
+func (o SecurityComplianceStatusResponseOutput) ToSecurityComplianceStatusResponseOutput() SecurityComplianceStatusResponseOutput {
+	return o
+}
+
+func (o SecurityComplianceStatusResponseOutput) ToSecurityComplianceStatusResponseOutputWithContext(ctx context.Context) SecurityComplianceStatusResponseOutput {
+	return o
+}
+
+// Indicates whether data at-rest encryption is enabled on Azure Stack HCI clustered volumes.
+func (o SecurityComplianceStatusResponseOutput) DataAtRestEncrypted() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityComplianceStatusResponse) string { return v.DataAtRestEncrypted }).(pulumi.StringOutput)
+}
+
+// Indicates whether HCI cluster has data in-transit protection.
+func (o SecurityComplianceStatusResponseOutput) DataInTransitProtected() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityComplianceStatusResponse) string { return v.DataInTransitProtected }).(pulumi.StringOutput)
+}
+
+// Time in UTC when compliance status was last updated.
+func (o SecurityComplianceStatusResponseOutput) LastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityComplianceStatusResponse) string { return v.LastUpdated }).(pulumi.StringOutput)
+}
+
+// Indicates whether HCI hosts meets secured-core server requirements.
+func (o SecurityComplianceStatusResponseOutput) SecuredCoreCompliance() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityComplianceStatusResponse) string { return v.SecuredCoreCompliance }).(pulumi.StringOutput)
+}
+
+// Indicates whether HCI hosts have enforced consistent Windows Defender Application Control.
+func (o SecurityComplianceStatusResponseOutput) WdacCompliance() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityComplianceStatusResponse) string { return v.WdacCompliance }).(pulumi.StringOutput)
+}
+
 // The SecuritySettings of AzureStackHCI Cluster.
 type SecuritySettings struct {
 	// When set to true, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This setting is TPM-hardware dependent.
@@ -21573,6 +21627,7 @@ func init() {
 	pulumi.RegisterOutputType(ScaleUnitsArrayOutput{})
 	pulumi.RegisterOutputType(ScaleUnitsResponseOutput{})
 	pulumi.RegisterOutputType(ScaleUnitsResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecurityComplianceStatusResponseOutput{})
 	pulumi.RegisterOutputType(SecuritySettingsOutput{})
 	pulumi.RegisterOutputType(SecuritySettingsPtrOutput{})
 	pulumi.RegisterOutputType(SecuritySettingsResponseOutput{})

@@ -21,7 +21,7 @@ type BigDataPool struct {
 	// Auto-scaling properties
 	AutoScale AutoScalePropertiesResponsePtrOutput `pulumi:"autoScale"`
 	// The cache size
-	CacheSize pulumi.IntOutput `pulumi:"cacheSize"`
+	CacheSize pulumi.IntPtrOutput `pulumi:"cacheSize"`
 	// The time when the Big Data pool was created.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
 	// List of custom libraries/packages associated with the spark pool.
@@ -140,6 +140,8 @@ type bigDataPoolArgs struct {
 	AutoScale *AutoScaleProperties `pulumi:"autoScale"`
 	// Big Data pool name
 	BigDataPoolName *string `pulumi:"bigDataPoolName"`
+	// The cache size
+	CacheSize *int `pulumi:"cacheSize"`
 	// List of custom libraries/packages associated with the spark pool.
 	CustomLibraries []LibraryInfo `pulumi:"customLibraries"`
 	// The default folder where Spark logs will be written.
@@ -188,6 +190,8 @@ type BigDataPoolArgs struct {
 	AutoScale AutoScalePropertiesPtrInput
 	// Big Data pool name
 	BigDataPoolName pulumi.StringPtrInput
+	// The cache size
+	CacheSize pulumi.IntPtrInput
 	// List of custom libraries/packages associated with the spark pool.
 	CustomLibraries LibraryInfoArrayInput
 	// The default folder where Spark logs will be written.
@@ -276,8 +280,8 @@ func (o BigDataPoolOutput) AutoScale() AutoScalePropertiesResponsePtrOutput {
 }
 
 // The cache size
-func (o BigDataPoolOutput) CacheSize() pulumi.IntOutput {
-	return o.ApplyT(func(v *BigDataPool) pulumi.IntOutput { return v.CacheSize }).(pulumi.IntOutput)
+func (o BigDataPoolOutput) CacheSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BigDataPool) pulumi.IntPtrOutput { return v.CacheSize }).(pulumi.IntPtrOutput)
 }
 
 // The time when the Big Data pool was created.

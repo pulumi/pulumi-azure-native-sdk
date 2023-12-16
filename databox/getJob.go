@@ -14,7 +14,7 @@ import (
 // Gets information about the specified job.
 // Azure REST API version: 2022-12-01.
 //
-// Other available API versions: 2019-09-01, 2023-03-01.
+// Other available API versions: 2019-09-01, 2023-03-01, 2023-12-01.
 func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOption) (*LookupJobResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobResult

@@ -75,6 +75,9 @@ func NewSshPublicKey(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20230301:SshPublicKey"),
 		},
+		{
+			Type: pulumi.String("azure-native:compute/v20230901:SshPublicKey"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
