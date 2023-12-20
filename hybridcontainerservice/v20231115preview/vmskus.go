@@ -37,6 +37,12 @@ func NewVMSkus(ctx *pulumi.Context,
 	if args.CustomLocationResourceUri == nil {
 		return nil, errors.New("invalid value for required argument 'CustomLocationResourceUri'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20240101:VMSkus"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource VMSkus
 	err := ctx.RegisterResource("azure-native:hybridcontainerservice/v20231115preview:VMSkus", name, args, &resource, opts...)

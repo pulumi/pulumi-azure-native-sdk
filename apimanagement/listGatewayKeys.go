@@ -14,7 +14,7 @@ import (
 // Retrieves gateway keys.
 // Azure REST API version: 2022-08-01.
 //
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview.
+// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview.
 func ListGatewayKeys(ctx *pulumi.Context, args *ListGatewayKeysArgs, opts ...pulumi.InvokeOption) (*ListGatewayKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListGatewayKeysResult

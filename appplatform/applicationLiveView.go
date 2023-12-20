@@ -15,7 +15,7 @@ import (
 // Application Live View resource
 // Azure REST API version: 2023-05-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01.
 type ApplicationLiveView struct {
 	pulumi.CustomResourceState
 
@@ -63,6 +63,9 @@ func NewApplicationLiveView(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20231101preview:ApplicationLiveView"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20231201:ApplicationLiveView"),
 		},
 	})
 	opts = append(opts, aliases)

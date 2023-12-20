@@ -104,6 +104,8 @@ func (AppServiceEnvironmentPrivateEndpointConnectionState) ElementType() reflect
 }
 
 type appServiceEnvironmentPrivateEndpointConnectionArgs struct {
+	// Private IPAddresses mapped to the remote private endpoint
+	IpAddresses []string `pulumi:"ipAddresses"`
 	// Kind of resource.
 	Kind *string `pulumi:"kind"`
 	// Name of the App Service Environment.
@@ -117,6 +119,8 @@ type appServiceEnvironmentPrivateEndpointConnectionArgs struct {
 
 // The set of arguments for constructing a AppServiceEnvironmentPrivateEndpointConnection resource.
 type AppServiceEnvironmentPrivateEndpointConnectionArgs struct {
+	// Private IPAddresses mapped to the remote private endpoint
+	IpAddresses pulumi.StringArrayInput
 	// Kind of resource.
 	Kind pulumi.StringPtrInput
 	// Name of the App Service Environment.

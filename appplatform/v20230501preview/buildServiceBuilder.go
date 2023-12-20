@@ -82,6 +82,9 @@ func NewBuildServiceBuilder(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20231101preview:BuildServiceBuilder"),
 		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20231201:BuildServiceBuilder"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

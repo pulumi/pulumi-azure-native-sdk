@@ -14,6 +14,8 @@ import (
 
 // Concrete tracked resource types can be created by aliasing this type using a specific property type.
 // Azure REST API version: 2023-10-30-preview.
+//
+// Other available API versions: 2023-12-13-preview.
 type Pool struct {
 	pulumi.CustomResourceState
 
@@ -72,6 +74,9 @@ func NewPool(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:devopsinfrastructure/v20231030preview:Pool"),
+		},
+		{
+			Type: pulumi.String("azure-native:devopsinfrastructure/v20231213preview:Pool"),
 		},
 	})
 	opts = append(opts, aliases)

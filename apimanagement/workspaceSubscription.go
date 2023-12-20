@@ -15,7 +15,7 @@ import (
 // Subscription details.
 // Azure REST API version: 2022-09-01-preview.
 //
-// Other available API versions: 2023-03-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-05-01-preview.
 type WorkspaceSubscription struct {
 	pulumi.CustomResourceState
 
@@ -79,6 +79,9 @@ func NewWorkspaceSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230301preview:WorkspaceSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230501preview:WorkspaceSubscription"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -14,7 +14,7 @@ import (
 // Get the config server and its properties.
 // Azure REST API version: 2023-05-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01.
 func LookupConfigServer(ctx *pulumi.Context, args *LookupConfigServerArgs, opts ...pulumi.InvokeOption) (*LookupConfigServerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigServerResult

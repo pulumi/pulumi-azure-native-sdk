@@ -14,7 +14,7 @@ import (
 // Gets the product link for the tag.
 // Azure REST API version: 2022-09-01-preview.
 //
-// Other available API versions: 2023-03-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-05-01-preview.
 func LookupTagProductLink(ctx *pulumi.Context, args *LookupTagProductLinkArgs, opts ...pulumi.InvokeOption) (*LookupTagProductLinkResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagProductLinkResult

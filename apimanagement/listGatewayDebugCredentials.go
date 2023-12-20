@@ -13,6 +13,8 @@ import (
 
 // Create new debug credentials for gateway.
 // Azure REST API version: 2023-03-01-preview.
+//
+// Other available API versions: 2023-05-01-preview.
 func ListGatewayDebugCredentials(ctx *pulumi.Context, args *ListGatewayDebugCredentialsArgs, opts ...pulumi.InvokeOption) (*ListGatewayDebugCredentialsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListGatewayDebugCredentialsResult

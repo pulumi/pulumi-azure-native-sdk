@@ -21,10 +21,16 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:datamigration:DatabaseMigrationsMongoToCosmosDbRUMongo":
+		r = &DatabaseMigrationsMongoToCosmosDbRUMongo{}
+	case "azure-native:datamigration:DatabaseMigrationsMongoToCosmosDbvCoreMongo":
+		r = &DatabaseMigrationsMongoToCosmosDbvCoreMongo{}
 	case "azure-native:datamigration:DatabaseMigrationsSqlDb":
 		r = &DatabaseMigrationsSqlDb{}
 	case "azure-native:datamigration:File":
 		r = &File{}
+	case "azure-native:datamigration:MigrationService":
+		r = &MigrationService{}
 	case "azure-native:datamigration:Project":
 		r = &Project{}
 	case "azure-native:datamigration:Service":

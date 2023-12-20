@@ -13,6 +13,8 @@ import (
 
 // Retrieve the List of Authentication Keys for Self Hosted Integration Runtime.
 // Azure REST API version: 2022-03-30-preview.
+//
+// Other available API versions: 2023-07-15-preview.
 func ListSqlMigrationServiceAuthKeys(ctx *pulumi.Context, args *ListSqlMigrationServiceAuthKeysArgs, opts ...pulumi.InvokeOption) (*ListSqlMigrationServiceAuthKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListSqlMigrationServiceAuthKeysResult

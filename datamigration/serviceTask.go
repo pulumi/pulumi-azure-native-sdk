@@ -15,7 +15,7 @@ import (
 // A task resource
 // Azure REST API version: 2021-06-30.
 //
-// Other available API versions: 2022-03-30-preview.
+// Other available API versions: 2022-03-30-preview, 2023-07-15-preview.
 type ServiceTask struct {
 	pulumi.CustomResourceState
 
@@ -59,6 +59,9 @@ func NewServiceTask(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:datamigration/v20220330preview:ServiceTask"),
+		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20230715preview:ServiceTask"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -61,6 +61,9 @@ func NewApplicationLiveView(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20231101preview:ApplicationLiveView"),
 		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20231201:ApplicationLiveView"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

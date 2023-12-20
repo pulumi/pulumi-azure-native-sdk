@@ -11,6 +11,21 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// The cluster's billing type.
+type BillingType string
+
+const (
+	BillingTypeCluster    = BillingType("Cluster")
+	BillingTypeWorkspaces = BillingType("Workspaces")
+)
+
+// The SKU (tier) of a cluster.
+type ClusterSkuNameEnum string
+
+const (
+	ClusterSkuNameEnumCapacityReservation = ClusterSkuNameEnum("CapacityReservation")
+)
+
 // Column data type logical hint.
 type ColumnDataTypeHintEnum string
 
@@ -210,6 +225,16 @@ func (in *identityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*Identit
 		OutputState: in.ToIdentityTypePtrOutputWithContext(ctx).OutputState,
 	}
 }
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+type ManagedServiceIdentityType string
+
+const (
+	ManagedServiceIdentityTypeNone                         = ManagedServiceIdentityType("None")
+	ManagedServiceIdentityTypeSystemAssigned               = ManagedServiceIdentityType("SystemAssigned")
+	ManagedServiceIdentityTypeUserAssigned                 = ManagedServiceIdentityType("UserAssigned")
+	ManagedServiceIdentityType_SystemAssigned_UserAssigned = ManagedServiceIdentityType("SystemAssigned,UserAssigned")
+)
 
 // The network access type for accessing Log Analytics query.
 type PublicNetworkAccessType string

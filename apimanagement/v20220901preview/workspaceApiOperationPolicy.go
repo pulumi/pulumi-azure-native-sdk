@@ -61,6 +61,9 @@ func NewWorkspaceApiOperationPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230301preview:WorkspaceApiOperationPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230501preview:WorkspaceApiOperationPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

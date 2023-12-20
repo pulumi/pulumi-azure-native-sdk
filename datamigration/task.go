@@ -15,7 +15,7 @@ import (
 // A task resource
 // Azure REST API version: 2021-06-30. Prior API version in Azure Native 1.x: 2018-04-19.
 //
-// Other available API versions: 2022-03-30-preview.
+// Other available API versions: 2022-03-30-preview, 2023-07-15-preview.
 type Task struct {
 	pulumi.CustomResourceState
 
@@ -74,6 +74,9 @@ func NewTask(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:datamigration/v20220330preview:Task"),
+		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20230715preview:Task"),
 		},
 	})
 	opts = append(opts, aliases)

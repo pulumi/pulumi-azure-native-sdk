@@ -50,6 +50,9 @@ func NewWorkspaceTag(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230301preview:WorkspaceTag"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230501preview:WorkspaceTag"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

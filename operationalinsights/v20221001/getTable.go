@@ -59,7 +59,7 @@ type LookupTableResult struct {
 	SearchResults *SearchResultsResponse `pulumi:"searchResults"`
 	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The table total retention in days, between 4 and 2556. Setting this property to -1 will default to table retention.
+	// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
 	TotalRetentionInDays *int `pulumi:"totalRetentionInDays"`
 	// True - Value originates from retention in days, False - Customer specific.
 	TotalRetentionInDaysAsDefault bool `pulumi:"totalRetentionInDaysAsDefault"`
@@ -173,7 +173,7 @@ func (o LookupTableResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupTableResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The table total retention in days, between 4 and 2556. Setting this property to -1 will default to table retention.
+// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
 func (o LookupTableResultOutput) TotalRetentionInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupTableResult) *int { return v.TotalRetentionInDays }).(pulumi.IntPtrOutput)
 }

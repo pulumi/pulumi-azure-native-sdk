@@ -15,7 +15,7 @@ import (
 // Contract details.
 // Azure REST API version: 2022-09-01-preview.
 //
-// Other available API versions: 2023-03-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-05-01-preview.
 type WorkspaceGroup struct {
 	pulumi.CustomResourceState
 
@@ -58,6 +58,9 @@ func NewWorkspaceGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230301preview:WorkspaceGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230501preview:WorkspaceGroup"),
 		},
 	})
 	opts = append(opts, aliases)

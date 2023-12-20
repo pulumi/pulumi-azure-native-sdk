@@ -233,6 +233,8 @@ type SftpWriteSettings struct {
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+	Metadata []MetadataItem `pulumi:"metadata"`
 	// Specifies the timeout for writing each chunk to SFTP server. Default value: 01:00:00 (one hour). Type: string (or Expression with resultType string).
 	OperationTimeout interface{} `pulumi:"operationTimeout"`
 	// The write setting type.
@@ -250,6 +252,8 @@ type SftpWriteSettingsResponse struct {
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+	Metadata []MetadataItemResponse `pulumi:"metadata"`
 	// Specifies the timeout for writing each chunk to SFTP server. Default value: 01:00:00 (one hour). Type: string (or Expression with resultType string).
 	OperationTimeout interface{} `pulumi:"operationTimeout"`
 	// The write setting type.

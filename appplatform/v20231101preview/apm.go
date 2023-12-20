@@ -52,6 +52,9 @@ func NewApm(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20230901preview:Apm"),
 		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20231201:Apm"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

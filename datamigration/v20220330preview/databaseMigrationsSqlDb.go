@@ -41,6 +41,9 @@ func NewDatabaseMigrationsSqlDb(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:datamigration:DatabaseMigrationsSqlDb"),
 		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20230715preview:DatabaseMigrationsSqlDb"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

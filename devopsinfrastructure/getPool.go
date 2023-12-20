@@ -13,6 +13,8 @@ import (
 
 // Get a Pool
 // Azure REST API version: 2023-10-30-preview.
+//
+// Other available API versions: 2023-12-13-preview.
 func LookupPool(ctx *pulumi.Context, args *LookupPoolArgs, opts ...pulumi.InvokeOption) (*LookupPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPoolResult

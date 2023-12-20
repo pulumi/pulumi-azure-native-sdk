@@ -40,7 +40,7 @@ type Table struct {
 	SearchResults SearchResultsResponsePtrOutput `pulumi:"searchResults"`
 	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The table total retention in days, between 4 and 2556. Setting this property to -1 will default to table retention.
+	// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
 	TotalRetentionInDays pulumi.IntPtrOutput `pulumi:"totalRetentionInDays"`
 	// True - Value originates from retention in days, False - Customer specific.
 	TotalRetentionInDaysAsDefault pulumi.BoolOutput `pulumi:"totalRetentionInDaysAsDefault"`
@@ -117,7 +117,7 @@ type tableArgs struct {
 	SearchResults *SearchResults `pulumi:"searchResults"`
 	// The name of the table.
 	TableName *string `pulumi:"tableName"`
-	// The table total retention in days, between 4 and 2556. Setting this property to -1 will default to table retention.
+	// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
 	TotalRetentionInDays *int `pulumi:"totalRetentionInDays"`
 	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
@@ -139,7 +139,7 @@ type TableArgs struct {
 	SearchResults SearchResultsPtrInput
 	// The name of the table.
 	TableName pulumi.StringPtrInput
-	// The table total retention in days, between 4 and 2556. Setting this property to -1 will default to table retention.
+	// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
 	TotalRetentionInDays pulumi.IntPtrInput
 	// The name of the workspace.
 	WorkspaceName pulumi.StringInput
@@ -242,7 +242,7 @@ func (o TableOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Table) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The table total retention in days, between 4 and 2556. Setting this property to -1 will default to table retention.
+// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
 func (o TableOutput) TotalRetentionInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Table) pulumi.IntPtrOutput { return v.TotalRetentionInDays }).(pulumi.IntPtrOutput)
 }

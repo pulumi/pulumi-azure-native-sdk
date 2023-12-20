@@ -1351,6 +1351,17 @@ const (
 	ManagedServerCreateModePointInTimeRestore = ManagedServerCreateMode("PointInTimeRestore")
 )
 
+// Minimal TLS version. Allowed values: 'None', 1.0', '1.1', '1.2', '1.3'
+type MinimalTlsVersion string
+
+const (
+	MinimalTlsVersionNone = MinimalTlsVersion("None")
+	MinimalTlsVersion_1_0 = MinimalTlsVersion("1.0")
+	MinimalTlsVersion_1_1 = MinimalTlsVersion("1.1")
+	MinimalTlsVersion_1_2 = MinimalTlsVersion("1.2")
+	MinimalTlsVersion_1_3 = MinimalTlsVersion("1.3")
+)
+
 // Principal Type of the sever administrator.
 type PrincipalType string
 

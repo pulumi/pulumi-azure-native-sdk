@@ -15,7 +15,7 @@ import (
 // Describes a node type in the cluster, each node type represents sub set of nodes in the cluster.
 // Azure REST API version: 2023-03-01-preview. Prior API version in Azure Native 1.x: 2020-01-01-preview.
 //
-// Other available API versions: 2021-09-01-privatepreview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview.
+// Other available API versions: 2021-09-01-privatepreview, 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01-preview.
 type NodeType struct {
 	pulumi.CustomResourceState
 
@@ -193,6 +193,9 @@ func NewNodeType(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:servicefabric/v20231101preview:NodeType"),
+		},
+		{
+			Type: pulumi.String("azure-native:servicefabric/v20231201preview:NodeType"),
 		},
 	})
 	opts = append(opts, aliases)

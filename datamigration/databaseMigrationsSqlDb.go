@@ -14,6 +14,8 @@ import (
 
 // Database Migration Resource for SQL Database.
 // Azure REST API version: 2022-03-30-preview. Prior API version in Azure Native 1.x: 2022-03-30-preview.
+//
+// Other available API versions: 2023-07-15-preview.
 type DatabaseMigrationsSqlDb struct {
 	pulumi.CustomResourceState
 
@@ -41,6 +43,9 @@ func NewDatabaseMigrationsSqlDb(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:datamigration/v20220330preview:DatabaseMigrationsSqlDb"),
+		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20230715preview:DatabaseMigrationsSqlDb"),
 		},
 	})
 	opts = append(opts, aliases)

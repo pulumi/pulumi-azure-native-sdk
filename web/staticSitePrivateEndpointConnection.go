@@ -107,6 +107,8 @@ func (StaticSitePrivateEndpointConnectionState) ElementType() reflect.Type {
 }
 
 type staticSitePrivateEndpointConnectionArgs struct {
+	// Private IPAddresses mapped to the remote private endpoint
+	IpAddresses []string `pulumi:"ipAddresses"`
 	// Kind of resource.
 	Kind *string `pulumi:"kind"`
 	// Name of the static site.
@@ -121,6 +123,8 @@ type staticSitePrivateEndpointConnectionArgs struct {
 
 // The set of arguments for constructing a StaticSitePrivateEndpointConnection resource.
 type StaticSitePrivateEndpointConnectionArgs struct {
+	// Private IPAddresses mapped to the remote private endpoint
+	IpAddresses pulumi.StringArrayInput
 	// Kind of resource.
 	Kind pulumi.StringPtrInput
 	// Name of the static site.
