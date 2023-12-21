@@ -37,6 +37,12 @@ func NewKubernetesVersions(ctx *pulumi.Context,
 	if args.CustomLocationResourceUri == nil {
 		return nil, errors.New("invalid value for required argument 'CustomLocationResourceUri'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20240101:KubernetesVersions"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource KubernetesVersions
 	err := ctx.RegisterResource("azure-native:hybridcontainerservice/v20231115preview:KubernetesVersions", name, args, &resource, opts...)

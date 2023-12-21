@@ -14,7 +14,7 @@ import (
 // Get the policy configuration at the API level.
 // Azure REST API version: 2022-09-01-preview.
 //
-// Other available API versions: 2023-03-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-05-01-preview.
 func LookupWorkspacePolicy(ctx *pulumi.Context, args *LookupWorkspacePolicyArgs, opts ...pulumi.InvokeOption) (*LookupWorkspacePolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspacePolicyResult

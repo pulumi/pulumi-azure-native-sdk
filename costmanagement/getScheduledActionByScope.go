@@ -14,7 +14,7 @@ import (
 // Get the shared scheduled action from the given scope by name.
 // Azure REST API version: 2023-03-01.
 //
-// Other available API versions: 2023-04-01-preview, 2023-08-01, 2023-11-01.
+// Other available API versions: 2023-04-01-preview, 2023-08-01, 2023-09-01, 2023-11-01.
 func LookupScheduledActionByScope(ctx *pulumi.Context, args *LookupScheduledActionByScopeArgs, opts ...pulumi.InvokeOption) (*LookupScheduledActionByScopeResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScheduledActionByScopeResult

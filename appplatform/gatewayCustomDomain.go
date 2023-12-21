@@ -15,7 +15,7 @@ import (
 // Custom domain of the Spring Cloud Gateway
 // Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-01-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01.
 type GatewayCustomDomain struct {
 	pulumi.CustomResourceState
 
@@ -81,6 +81,9 @@ func NewGatewayCustomDomain(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20231101preview:GatewayCustomDomain"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20231201:GatewayCustomDomain"),
 		},
 	})
 	opts = append(opts, aliases)

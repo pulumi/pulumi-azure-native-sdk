@@ -47,6 +47,9 @@ func NewSqlMigrationService(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:datamigration/v20220130preview:SqlMigrationService"),
 		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20230715preview:SqlMigrationService"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -15,7 +15,7 @@ import (
 // Policy fragment contract details.
 // Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2021-12-01-preview.
 //
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview.
+// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview.
 type PolicyFragment struct {
 	pulumi.CustomResourceState
 
@@ -65,6 +65,9 @@ func NewPolicyFragment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230301preview:PolicyFragment"),
+		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230501preview:PolicyFragment"),
 		},
 	})
 	opts = append(opts, aliases)

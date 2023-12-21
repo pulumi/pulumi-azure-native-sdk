@@ -149,6 +149,9 @@ func NewSnapshot(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20230102:Snapshot"),
 		},
+		{
+			Type: pulumi.String("azure-native:compute/v20231002:Snapshot"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

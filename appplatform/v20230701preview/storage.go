@@ -79,6 +79,9 @@ func NewStorage(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:appplatform/v20231101preview:Storage"),
 		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20231201:Storage"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

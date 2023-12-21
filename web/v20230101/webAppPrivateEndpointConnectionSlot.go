@@ -107,6 +107,8 @@ func (WebAppPrivateEndpointConnectionSlotState) ElementType() reflect.Type {
 }
 
 type webAppPrivateEndpointConnectionSlotArgs struct {
+	// Private IPAddresses mapped to the remote private endpoint
+	IpAddresses []string `pulumi:"ipAddresses"`
 	// Kind of resource.
 	Kind *string `pulumi:"kind"`
 	// Name of the site.
@@ -121,6 +123,8 @@ type webAppPrivateEndpointConnectionSlotArgs struct {
 
 // The set of arguments for constructing a WebAppPrivateEndpointConnectionSlot resource.
 type WebAppPrivateEndpointConnectionSlotArgs struct {
+	// Private IPAddresses mapped to the remote private endpoint
+	IpAddresses pulumi.StringArrayInput
 	// Kind of resource.
 	Kind pulumi.StringPtrInput
 	// Name of the site.

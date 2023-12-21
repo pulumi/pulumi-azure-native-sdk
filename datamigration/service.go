@@ -15,7 +15,7 @@ import (
 // A Database Migration Service resource
 // Azure REST API version: 2021-06-30. Prior API version in Azure Native 1.x: 2018-04-19.
 //
-// Other available API versions: 2022-03-30-preview.
+// Other available API versions: 2022-03-30-preview, 2023-07-15-preview.
 type Service struct {
 	pulumi.CustomResourceState
 
@@ -85,6 +85,9 @@ func NewService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:datamigration/v20220330preview:Service"),
+		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20230715preview:Service"),
 		},
 	})
 	opts = append(opts, aliases)

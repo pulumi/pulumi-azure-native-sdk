@@ -40,6 +40,12 @@ func NewHybridIdentityMetadatum(ctx *pulumi.Context,
 	if args.ConnectedClusterResourceUri == nil {
 		return nil, errors.New("invalid value for required argument 'ConnectedClusterResourceUri'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20240101:HybridIdentityMetadatum"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource HybridIdentityMetadatum
 	err := ctx.RegisterResource("azure-native:hybridcontainerservice/v20231115preview:HybridIdentityMetadatum", name, args, &resource, opts...)

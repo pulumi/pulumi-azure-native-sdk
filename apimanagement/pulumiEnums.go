@@ -852,6 +852,16 @@ const (
 	PolicyFragmentContentFormatRawxml = PolicyFragmentContentFormat("rawxml")
 )
 
+// Indicates if base policy should be enforced for the policy document.
+type PolicyRestrictionRequireBase string
+
+const (
+	// The policy is required to have base policy
+	PolicyRestrictionRequireBaseTrue = PolicyRestrictionRequireBase("true")
+	// The policy does not require to have base policy
+	PolicyRestrictionRequireBaseFalse = PolicyRestrictionRequireBase("false")
+)
+
 // Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 type PrivateEndpointServiceConnectionStatus string
 

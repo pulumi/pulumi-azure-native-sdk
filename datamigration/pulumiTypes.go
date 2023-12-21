@@ -5166,6 +5166,318 @@ type MigrationValidationResultResponse struct {
 	SummaryResults map[string]MigrationValidationDatabaseSummaryResultResponse `pulumi:"summaryResults"`
 }
 
+// Mongo Connection
+type MongoConnectionInformation struct {
+	// ConnectionString to connect to Mongo.
+	ConnectionString *string `pulumi:"connectionString"`
+	// Host of mongo connection.
+	Host *string `pulumi:"host"`
+	// Password to connect to Mongo.
+	Password *string `pulumi:"password"`
+	// Port of mongo connection.
+	Port *int `pulumi:"port"`
+	// Whether to UseSsl or UseTls to connect to Mongo. Default is true.
+	UseSsl *bool `pulumi:"useSsl"`
+	// User name to connect to Mongo.
+	UserName *string `pulumi:"userName"`
+}
+
+// MongoConnectionInformationInput is an input type that accepts MongoConnectionInformationArgs and MongoConnectionInformationOutput values.
+// You can construct a concrete instance of `MongoConnectionInformationInput` via:
+//
+//	MongoConnectionInformationArgs{...}
+type MongoConnectionInformationInput interface {
+	pulumi.Input
+
+	ToMongoConnectionInformationOutput() MongoConnectionInformationOutput
+	ToMongoConnectionInformationOutputWithContext(context.Context) MongoConnectionInformationOutput
+}
+
+// Mongo Connection
+type MongoConnectionInformationArgs struct {
+	// ConnectionString to connect to Mongo.
+	ConnectionString pulumi.StringPtrInput `pulumi:"connectionString"`
+	// Host of mongo connection.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Password to connect to Mongo.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Port of mongo connection.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Whether to UseSsl or UseTls to connect to Mongo. Default is true.
+	UseSsl pulumi.BoolPtrInput `pulumi:"useSsl"`
+	// User name to connect to Mongo.
+	UserName pulumi.StringPtrInput `pulumi:"userName"`
+}
+
+func (MongoConnectionInformationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MongoConnectionInformation)(nil)).Elem()
+}
+
+func (i MongoConnectionInformationArgs) ToMongoConnectionInformationOutput() MongoConnectionInformationOutput {
+	return i.ToMongoConnectionInformationOutputWithContext(context.Background())
+}
+
+func (i MongoConnectionInformationArgs) ToMongoConnectionInformationOutputWithContext(ctx context.Context) MongoConnectionInformationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MongoConnectionInformationOutput)
+}
+
+func (i MongoConnectionInformationArgs) ToMongoConnectionInformationPtrOutput() MongoConnectionInformationPtrOutput {
+	return i.ToMongoConnectionInformationPtrOutputWithContext(context.Background())
+}
+
+func (i MongoConnectionInformationArgs) ToMongoConnectionInformationPtrOutputWithContext(ctx context.Context) MongoConnectionInformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MongoConnectionInformationOutput).ToMongoConnectionInformationPtrOutputWithContext(ctx)
+}
+
+// MongoConnectionInformationPtrInput is an input type that accepts MongoConnectionInformationArgs, MongoConnectionInformationPtr and MongoConnectionInformationPtrOutput values.
+// You can construct a concrete instance of `MongoConnectionInformationPtrInput` via:
+//
+//	        MongoConnectionInformationArgs{...}
+//
+//	or:
+//
+//	        nil
+type MongoConnectionInformationPtrInput interface {
+	pulumi.Input
+
+	ToMongoConnectionInformationPtrOutput() MongoConnectionInformationPtrOutput
+	ToMongoConnectionInformationPtrOutputWithContext(context.Context) MongoConnectionInformationPtrOutput
+}
+
+type mongoConnectionInformationPtrType MongoConnectionInformationArgs
+
+func MongoConnectionInformationPtr(v *MongoConnectionInformationArgs) MongoConnectionInformationPtrInput {
+	return (*mongoConnectionInformationPtrType)(v)
+}
+
+func (*mongoConnectionInformationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MongoConnectionInformation)(nil)).Elem()
+}
+
+func (i *mongoConnectionInformationPtrType) ToMongoConnectionInformationPtrOutput() MongoConnectionInformationPtrOutput {
+	return i.ToMongoConnectionInformationPtrOutputWithContext(context.Background())
+}
+
+func (i *mongoConnectionInformationPtrType) ToMongoConnectionInformationPtrOutputWithContext(ctx context.Context) MongoConnectionInformationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MongoConnectionInformationPtrOutput)
+}
+
+// Mongo Connection
+type MongoConnectionInformationOutput struct{ *pulumi.OutputState }
+
+func (MongoConnectionInformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MongoConnectionInformation)(nil)).Elem()
+}
+
+func (o MongoConnectionInformationOutput) ToMongoConnectionInformationOutput() MongoConnectionInformationOutput {
+	return o
+}
+
+func (o MongoConnectionInformationOutput) ToMongoConnectionInformationOutputWithContext(ctx context.Context) MongoConnectionInformationOutput {
+	return o
+}
+
+func (o MongoConnectionInformationOutput) ToMongoConnectionInformationPtrOutput() MongoConnectionInformationPtrOutput {
+	return o.ToMongoConnectionInformationPtrOutputWithContext(context.Background())
+}
+
+func (o MongoConnectionInformationOutput) ToMongoConnectionInformationPtrOutputWithContext(ctx context.Context) MongoConnectionInformationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MongoConnectionInformation) *MongoConnectionInformation {
+		return &v
+	}).(MongoConnectionInformationPtrOutput)
+}
+
+// ConnectionString to connect to Mongo.
+func (o MongoConnectionInformationOutput) ConnectionString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoConnectionInformation) *string { return v.ConnectionString }).(pulumi.StringPtrOutput)
+}
+
+// Host of mongo connection.
+func (o MongoConnectionInformationOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoConnectionInformation) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Password to connect to Mongo.
+func (o MongoConnectionInformationOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoConnectionInformation) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Port of mongo connection.
+func (o MongoConnectionInformationOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MongoConnectionInformation) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Whether to UseSsl or UseTls to connect to Mongo. Default is true.
+func (o MongoConnectionInformationOutput) UseSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MongoConnectionInformation) *bool { return v.UseSsl }).(pulumi.BoolPtrOutput)
+}
+
+// User name to connect to Mongo.
+func (o MongoConnectionInformationOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoConnectionInformation) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+type MongoConnectionInformationPtrOutput struct{ *pulumi.OutputState }
+
+func (MongoConnectionInformationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MongoConnectionInformation)(nil)).Elem()
+}
+
+func (o MongoConnectionInformationPtrOutput) ToMongoConnectionInformationPtrOutput() MongoConnectionInformationPtrOutput {
+	return o
+}
+
+func (o MongoConnectionInformationPtrOutput) ToMongoConnectionInformationPtrOutputWithContext(ctx context.Context) MongoConnectionInformationPtrOutput {
+	return o
+}
+
+func (o MongoConnectionInformationPtrOutput) Elem() MongoConnectionInformationOutput {
+	return o.ApplyT(func(v *MongoConnectionInformation) MongoConnectionInformation {
+		if v != nil {
+			return *v
+		}
+		var ret MongoConnectionInformation
+		return ret
+	}).(MongoConnectionInformationOutput)
+}
+
+// ConnectionString to connect to Mongo.
+func (o MongoConnectionInformationPtrOutput) ConnectionString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MongoConnectionInformation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionString
+	}).(pulumi.StringPtrOutput)
+}
+
+// Host of mongo connection.
+func (o MongoConnectionInformationPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MongoConnectionInformation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Password to connect to Mongo.
+func (o MongoConnectionInformationPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MongoConnectionInformation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port of mongo connection.
+func (o MongoConnectionInformationPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MongoConnectionInformation) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether to UseSsl or UseTls to connect to Mongo. Default is true.
+func (o MongoConnectionInformationPtrOutput) UseSsl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MongoConnectionInformation) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseSsl
+	}).(pulumi.BoolPtrOutput)
+}
+
+// User name to connect to Mongo.
+func (o MongoConnectionInformationPtrOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MongoConnectionInformation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Mongo Connection
+type MongoConnectionInformationResponse struct {
+	// Host of mongo connection.
+	Host *string `pulumi:"host"`
+	// Port of mongo connection.
+	Port *int `pulumi:"port"`
+}
+
+// Mongo Connection
+type MongoConnectionInformationResponseOutput struct{ *pulumi.OutputState }
+
+func (MongoConnectionInformationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MongoConnectionInformationResponse)(nil)).Elem()
+}
+
+func (o MongoConnectionInformationResponseOutput) ToMongoConnectionInformationResponseOutput() MongoConnectionInformationResponseOutput {
+	return o
+}
+
+func (o MongoConnectionInformationResponseOutput) ToMongoConnectionInformationResponseOutputWithContext(ctx context.Context) MongoConnectionInformationResponseOutput {
+	return o
+}
+
+// Host of mongo connection.
+func (o MongoConnectionInformationResponseOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoConnectionInformationResponse) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Port of mongo connection.
+func (o MongoConnectionInformationResponseOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MongoConnectionInformationResponse) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type MongoConnectionInformationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MongoConnectionInformationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MongoConnectionInformationResponse)(nil)).Elem()
+}
+
+func (o MongoConnectionInformationResponsePtrOutput) ToMongoConnectionInformationResponsePtrOutput() MongoConnectionInformationResponsePtrOutput {
+	return o
+}
+
+func (o MongoConnectionInformationResponsePtrOutput) ToMongoConnectionInformationResponsePtrOutputWithContext(ctx context.Context) MongoConnectionInformationResponsePtrOutput {
+	return o
+}
+
+func (o MongoConnectionInformationResponsePtrOutput) Elem() MongoConnectionInformationResponseOutput {
+	return o.ApplyT(func(v *MongoConnectionInformationResponse) MongoConnectionInformationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret MongoConnectionInformationResponse
+		return ret
+	}).(MongoConnectionInformationResponseOutput)
+}
+
+// Host of mongo connection.
+func (o MongoConnectionInformationResponsePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MongoConnectionInformationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port of mongo connection.
+func (o MongoConnectionInformationResponsePtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MongoConnectionInformationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
 // Describes a MongoDB data source
 type MongoDbClusterInfoResponse struct {
 	// A list of non-system databases in the cluster
@@ -5488,6 +5800,263 @@ type MongoDbThrottlingSettingsResponse struct {
 	MinFreeCpu *int `pulumi:"minFreeCpu"`
 	// The number of megabytes of RAM that the migrator will try to avoid using
 	MinFreeMemoryMb *int `pulumi:"minFreeMemoryMb"`
+}
+
+// Mongo source and target database and collection details.
+type MongoMigrationCollection struct {
+	// Source collection name.
+	SourceCollection *string `pulumi:"sourceCollection"`
+	// Source database name.
+	SourceDatabase *string `pulumi:"sourceDatabase"`
+	// Target collection name.
+	TargetCollection *string `pulumi:"targetCollection"`
+	// Target database name.
+	TargetDatabase *string `pulumi:"targetDatabase"`
+}
+
+// MongoMigrationCollectionInput is an input type that accepts MongoMigrationCollectionArgs and MongoMigrationCollectionOutput values.
+// You can construct a concrete instance of `MongoMigrationCollectionInput` via:
+//
+//	MongoMigrationCollectionArgs{...}
+type MongoMigrationCollectionInput interface {
+	pulumi.Input
+
+	ToMongoMigrationCollectionOutput() MongoMigrationCollectionOutput
+	ToMongoMigrationCollectionOutputWithContext(context.Context) MongoMigrationCollectionOutput
+}
+
+// Mongo source and target database and collection details.
+type MongoMigrationCollectionArgs struct {
+	// Source collection name.
+	SourceCollection pulumi.StringPtrInput `pulumi:"sourceCollection"`
+	// Source database name.
+	SourceDatabase pulumi.StringPtrInput `pulumi:"sourceDatabase"`
+	// Target collection name.
+	TargetCollection pulumi.StringPtrInput `pulumi:"targetCollection"`
+	// Target database name.
+	TargetDatabase pulumi.StringPtrInput `pulumi:"targetDatabase"`
+}
+
+func (MongoMigrationCollectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MongoMigrationCollection)(nil)).Elem()
+}
+
+func (i MongoMigrationCollectionArgs) ToMongoMigrationCollectionOutput() MongoMigrationCollectionOutput {
+	return i.ToMongoMigrationCollectionOutputWithContext(context.Background())
+}
+
+func (i MongoMigrationCollectionArgs) ToMongoMigrationCollectionOutputWithContext(ctx context.Context) MongoMigrationCollectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MongoMigrationCollectionOutput)
+}
+
+// MongoMigrationCollectionArrayInput is an input type that accepts MongoMigrationCollectionArray and MongoMigrationCollectionArrayOutput values.
+// You can construct a concrete instance of `MongoMigrationCollectionArrayInput` via:
+//
+//	MongoMigrationCollectionArray{ MongoMigrationCollectionArgs{...} }
+type MongoMigrationCollectionArrayInput interface {
+	pulumi.Input
+
+	ToMongoMigrationCollectionArrayOutput() MongoMigrationCollectionArrayOutput
+	ToMongoMigrationCollectionArrayOutputWithContext(context.Context) MongoMigrationCollectionArrayOutput
+}
+
+type MongoMigrationCollectionArray []MongoMigrationCollectionInput
+
+func (MongoMigrationCollectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MongoMigrationCollection)(nil)).Elem()
+}
+
+func (i MongoMigrationCollectionArray) ToMongoMigrationCollectionArrayOutput() MongoMigrationCollectionArrayOutput {
+	return i.ToMongoMigrationCollectionArrayOutputWithContext(context.Background())
+}
+
+func (i MongoMigrationCollectionArray) ToMongoMigrationCollectionArrayOutputWithContext(ctx context.Context) MongoMigrationCollectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MongoMigrationCollectionArrayOutput)
+}
+
+// Mongo source and target database and collection details.
+type MongoMigrationCollectionOutput struct{ *pulumi.OutputState }
+
+func (MongoMigrationCollectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MongoMigrationCollection)(nil)).Elem()
+}
+
+func (o MongoMigrationCollectionOutput) ToMongoMigrationCollectionOutput() MongoMigrationCollectionOutput {
+	return o
+}
+
+func (o MongoMigrationCollectionOutput) ToMongoMigrationCollectionOutputWithContext(ctx context.Context) MongoMigrationCollectionOutput {
+	return o
+}
+
+// Source collection name.
+func (o MongoMigrationCollectionOutput) SourceCollection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoMigrationCollection) *string { return v.SourceCollection }).(pulumi.StringPtrOutput)
+}
+
+// Source database name.
+func (o MongoMigrationCollectionOutput) SourceDatabase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoMigrationCollection) *string { return v.SourceDatabase }).(pulumi.StringPtrOutput)
+}
+
+// Target collection name.
+func (o MongoMigrationCollectionOutput) TargetCollection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoMigrationCollection) *string { return v.TargetCollection }).(pulumi.StringPtrOutput)
+}
+
+// Target database name.
+func (o MongoMigrationCollectionOutput) TargetDatabase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoMigrationCollection) *string { return v.TargetDatabase }).(pulumi.StringPtrOutput)
+}
+
+type MongoMigrationCollectionArrayOutput struct{ *pulumi.OutputState }
+
+func (MongoMigrationCollectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MongoMigrationCollection)(nil)).Elem()
+}
+
+func (o MongoMigrationCollectionArrayOutput) ToMongoMigrationCollectionArrayOutput() MongoMigrationCollectionArrayOutput {
+	return o
+}
+
+func (o MongoMigrationCollectionArrayOutput) ToMongoMigrationCollectionArrayOutputWithContext(ctx context.Context) MongoMigrationCollectionArrayOutput {
+	return o
+}
+
+func (o MongoMigrationCollectionArrayOutput) Index(i pulumi.IntInput) MongoMigrationCollectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MongoMigrationCollection {
+		return vs[0].([]MongoMigrationCollection)[vs[1].(int)]
+	}).(MongoMigrationCollectionOutput)
+}
+
+// Mongo source and target database and collection details.
+type MongoMigrationCollectionResponse struct {
+	// Detailed migration status. Not included by default.
+	MigrationProgressDetails MongoMigrationProgressDetailsResponse `pulumi:"migrationProgressDetails"`
+	// Source collection name.
+	SourceCollection *string `pulumi:"sourceCollection"`
+	// Source database name.
+	SourceDatabase *string `pulumi:"sourceDatabase"`
+	// Target collection name.
+	TargetCollection *string `pulumi:"targetCollection"`
+	// Target database name.
+	TargetDatabase *string `pulumi:"targetDatabase"`
+}
+
+// Mongo source and target database and collection details.
+type MongoMigrationCollectionResponseOutput struct{ *pulumi.OutputState }
+
+func (MongoMigrationCollectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MongoMigrationCollectionResponse)(nil)).Elem()
+}
+
+func (o MongoMigrationCollectionResponseOutput) ToMongoMigrationCollectionResponseOutput() MongoMigrationCollectionResponseOutput {
+	return o
+}
+
+func (o MongoMigrationCollectionResponseOutput) ToMongoMigrationCollectionResponseOutputWithContext(ctx context.Context) MongoMigrationCollectionResponseOutput {
+	return o
+}
+
+// Detailed migration status. Not included by default.
+func (o MongoMigrationCollectionResponseOutput) MigrationProgressDetails() MongoMigrationProgressDetailsResponseOutput {
+	return o.ApplyT(func(v MongoMigrationCollectionResponse) MongoMigrationProgressDetailsResponse {
+		return v.MigrationProgressDetails
+	}).(MongoMigrationProgressDetailsResponseOutput)
+}
+
+// Source collection name.
+func (o MongoMigrationCollectionResponseOutput) SourceCollection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoMigrationCollectionResponse) *string { return v.SourceCollection }).(pulumi.StringPtrOutput)
+}
+
+// Source database name.
+func (o MongoMigrationCollectionResponseOutput) SourceDatabase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoMigrationCollectionResponse) *string { return v.SourceDatabase }).(pulumi.StringPtrOutput)
+}
+
+// Target collection name.
+func (o MongoMigrationCollectionResponseOutput) TargetCollection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoMigrationCollectionResponse) *string { return v.TargetCollection }).(pulumi.StringPtrOutput)
+}
+
+// Target database name.
+func (o MongoMigrationCollectionResponseOutput) TargetDatabase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MongoMigrationCollectionResponse) *string { return v.TargetDatabase }).(pulumi.StringPtrOutput)
+}
+
+type MongoMigrationCollectionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MongoMigrationCollectionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MongoMigrationCollectionResponse)(nil)).Elem()
+}
+
+func (o MongoMigrationCollectionResponseArrayOutput) ToMongoMigrationCollectionResponseArrayOutput() MongoMigrationCollectionResponseArrayOutput {
+	return o
+}
+
+func (o MongoMigrationCollectionResponseArrayOutput) ToMongoMigrationCollectionResponseArrayOutputWithContext(ctx context.Context) MongoMigrationCollectionResponseArrayOutput {
+	return o
+}
+
+func (o MongoMigrationCollectionResponseArrayOutput) Index(i pulumi.IntInput) MongoMigrationCollectionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MongoMigrationCollectionResponse {
+		return vs[0].([]MongoMigrationCollectionResponse)[vs[1].(int)]
+	}).(MongoMigrationCollectionResponseOutput)
+}
+
+// Detailed status of collection migration.
+type MongoMigrationProgressDetailsResponse struct {
+	// Migration duration
+	DurationInSeconds int `pulumi:"durationInSeconds"`
+	// Migration Error
+	MigrationError string `pulumi:"migrationError"`
+	// Migration Status
+	MigrationStatus string `pulumi:"migrationStatus"`
+	// Processed Document Count
+	ProcessedDocumentCount float64 `pulumi:"processedDocumentCount"`
+	// Source Document Count
+	SourceDocumentCount float64 `pulumi:"sourceDocumentCount"`
+}
+
+// Detailed status of collection migration.
+type MongoMigrationProgressDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (MongoMigrationProgressDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MongoMigrationProgressDetailsResponse)(nil)).Elem()
+}
+
+func (o MongoMigrationProgressDetailsResponseOutput) ToMongoMigrationProgressDetailsResponseOutput() MongoMigrationProgressDetailsResponseOutput {
+	return o
+}
+
+func (o MongoMigrationProgressDetailsResponseOutput) ToMongoMigrationProgressDetailsResponseOutputWithContext(ctx context.Context) MongoMigrationProgressDetailsResponseOutput {
+	return o
+}
+
+// Migration duration
+func (o MongoMigrationProgressDetailsResponseOutput) DurationInSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v MongoMigrationProgressDetailsResponse) int { return v.DurationInSeconds }).(pulumi.IntOutput)
+}
+
+// Migration Error
+func (o MongoMigrationProgressDetailsResponseOutput) MigrationError() pulumi.StringOutput {
+	return o.ApplyT(func(v MongoMigrationProgressDetailsResponse) string { return v.MigrationError }).(pulumi.StringOutput)
+}
+
+// Migration Status
+func (o MongoMigrationProgressDetailsResponseOutput) MigrationStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v MongoMigrationProgressDetailsResponse) string { return v.MigrationStatus }).(pulumi.StringOutput)
+}
+
+// Processed Document Count
+func (o MongoMigrationProgressDetailsResponseOutput) ProcessedDocumentCount() pulumi.Float64Output {
+	return o.ApplyT(func(v MongoMigrationProgressDetailsResponse) float64 { return v.ProcessedDocumentCount }).(pulumi.Float64Output)
+}
+
+// Source Document Count
+func (o MongoMigrationProgressDetailsResponseOutput) SourceDocumentCount() pulumi.Float64Output {
+	return o.ApplyT(func(v MongoMigrationProgressDetailsResponse) float64 { return v.SourceDocumentCount }).(pulumi.Float64Output)
 }
 
 // Information for connecting to MySQL server
@@ -7552,6 +8121,15 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseMigrationPropertiesSqlDbPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseMigrationPropertiesSqlDbResponseOutput{})
 	pulumi.RegisterOutputType(ErrorInfoResponseOutput{})
+	pulumi.RegisterOutputType(MongoConnectionInformationOutput{})
+	pulumi.RegisterOutputType(MongoConnectionInformationPtrOutput{})
+	pulumi.RegisterOutputType(MongoConnectionInformationResponseOutput{})
+	pulumi.RegisterOutputType(MongoConnectionInformationResponsePtrOutput{})
+	pulumi.RegisterOutputType(MongoMigrationCollectionOutput{})
+	pulumi.RegisterOutputType(MongoMigrationCollectionArrayOutput{})
+	pulumi.RegisterOutputType(MongoMigrationCollectionResponseOutput{})
+	pulumi.RegisterOutputType(MongoMigrationCollectionResponseArrayOutput{})
+	pulumi.RegisterOutputType(MongoMigrationProgressDetailsResponseOutput{})
 	pulumi.RegisterOutputType(NodeMonitoringDataResponseOutput{})
 	pulumi.RegisterOutputType(NodeMonitoringDataResponseArrayOutput{})
 	pulumi.RegisterOutputType(ProjectFilePropertiesOutput{})

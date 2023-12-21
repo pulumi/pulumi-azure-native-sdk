@@ -15,7 +15,7 @@ import (
 // Dev Tool Portal resource
 // Azure REST API version: 2023-05-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01.
 type DevToolPortal struct {
 	pulumi.CustomResourceState
 
@@ -66,6 +66,9 @@ func NewDevToolPortal(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20231101preview:DevToolPortal"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20231201:DevToolPortal"),
 		},
 	})
 	opts = append(opts, aliases)

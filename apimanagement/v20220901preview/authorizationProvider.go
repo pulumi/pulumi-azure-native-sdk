@@ -54,6 +54,9 @@ func NewAuthorizationProvider(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20230301preview:AuthorizationProvider"),
 		},
+		{
+			Type: pulumi.String("azure-native:apimanagement/v20230501preview:AuthorizationProvider"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

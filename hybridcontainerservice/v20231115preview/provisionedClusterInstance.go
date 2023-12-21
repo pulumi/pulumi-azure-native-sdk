@@ -45,6 +45,12 @@ func NewProvisionedClusterInstance(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20231115preview:provisionedClusterInstance"),
 		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20240101:ProvisionedClusterInstance"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20240101:provisionedClusterInstance"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

@@ -15,7 +15,7 @@ import (
 // Storage resource payload.
 // Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2021-09-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview.
+// Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview, 2023-12-01.
 type Storage struct {
 	pulumi.CustomResourceState
 
@@ -81,6 +81,9 @@ func NewStorage(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appplatform/v20231101preview:Storage"),
+		},
+		{
+			Type: pulumi.String("azure-native:appplatform/v20231201:Storage"),
 		},
 	})
 	opts = append(opts, aliases)

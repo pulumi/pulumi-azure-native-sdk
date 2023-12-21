@@ -54,6 +54,9 @@ func NewTagInheritanceSetting(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20230801:TagInheritanceSetting"),
 		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20230901:TagInheritanceSetting"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

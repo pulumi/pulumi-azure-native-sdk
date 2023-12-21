@@ -107,6 +107,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Policy{}
 	case "azure-native:apimanagement:PolicyFragment":
 		r = &PolicyFragment{}
+	case "azure-native:apimanagement:PolicyRestriction":
+		r = &PolicyRestriction{}
 	case "azure-native:apimanagement:PrivateEndpointConnectionByName":
 		r = &PrivateEndpointConnectionByName{}
 	case "azure-native:apimanagement:Product":

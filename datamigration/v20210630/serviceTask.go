@@ -57,6 +57,9 @@ func NewServiceTask(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:datamigration/v20220330preview:ServiceTask"),
 		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20230715preview:ServiceTask"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

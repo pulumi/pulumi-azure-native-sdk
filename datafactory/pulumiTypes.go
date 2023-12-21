@@ -1886,6 +1886,8 @@ type AzureBlobFSWriteSettings struct {
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+	Metadata []MetadataItem `pulumi:"metadata"`
 	// The write setting type.
 	// Expected value is 'AzureBlobFSWriteSettings'.
 	Type string `pulumi:"type"`
@@ -1901,6 +1903,8 @@ type AzureBlobFSWriteSettingsResponse struct {
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+	Metadata []MetadataItemResponse `pulumi:"metadata"`
 	// The write setting type.
 	// Expected value is 'AzureBlobFSWriteSettings'.
 	Type string `pulumi:"type"`
@@ -2090,6 +2094,8 @@ type AzureBlobStorageWriteSettings struct {
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+	Metadata []MetadataItem `pulumi:"metadata"`
 	// The write setting type.
 	// Expected value is 'AzureBlobStorageWriteSettings'.
 	Type string `pulumi:"type"`
@@ -2105,6 +2111,8 @@ type AzureBlobStorageWriteSettingsResponse struct {
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+	Metadata []MetadataItemResponse `pulumi:"metadata"`
 	// The write setting type.
 	// Expected value is 'AzureBlobStorageWriteSettings'.
 	Type string `pulumi:"type"`
@@ -2728,6 +2736,8 @@ type AzureDataLakeStoreWriteSettings struct {
 	ExpiryDateTime interface{} `pulumi:"expiryDateTime"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+	Metadata []MetadataItem `pulumi:"metadata"`
 	// The write setting type.
 	// Expected value is 'AzureDataLakeStoreWriteSettings'.
 	Type string `pulumi:"type"`
@@ -2743,6 +2753,8 @@ type AzureDataLakeStoreWriteSettingsResponse struct {
 	ExpiryDateTime interface{} `pulumi:"expiryDateTime"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+	Metadata []MetadataItemResponse `pulumi:"metadata"`
 	// The write setting type.
 	// Expected value is 'AzureDataLakeStoreWriteSettings'.
 	Type string `pulumi:"type"`
@@ -3248,6 +3260,8 @@ type AzureFileStorageWriteSettings struct {
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+	Metadata []MetadataItem `pulumi:"metadata"`
 	// The write setting type.
 	// Expected value is 'AzureFileStorageWriteSettings'.
 	Type string `pulumi:"type"`
@@ -3261,6 +3275,8 @@ type AzureFileStorageWriteSettingsResponse struct {
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+	Metadata []MetadataItemResponse `pulumi:"metadata"`
 	// The write setting type.
 	// Expected value is 'AzureFileStorageWriteSettings'.
 	Type string `pulumi:"type"`
@@ -11138,6 +11154,8 @@ type FileServerWriteSettings struct {
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+	Metadata []MetadataItem `pulumi:"metadata"`
 	// The write setting type.
 	// Expected value is 'FileServerWriteSettings'.
 	Type string `pulumi:"type"`
@@ -11151,6 +11169,8 @@ type FileServerWriteSettingsResponse struct {
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+	Metadata []MetadataItemResponse `pulumi:"metadata"`
 	// The write setting type.
 	// Expected value is 'FileServerWriteSettings'.
 	Type string `pulumi:"type"`

@@ -15,7 +15,7 @@ import (
 // A project resource
 // Azure REST API version: 2021-06-30. Prior API version in Azure Native 1.x: 2018-04-19.
 //
-// Other available API versions: 2017-11-15-preview, 2018-03-31-preview, 2021-10-30-preview, 2022-03-30-preview.
+// Other available API versions: 2017-11-15-preview, 2018-03-31-preview, 2021-10-30-preview, 2022-03-30-preview, 2023-07-15-preview.
 type Project struct {
 	pulumi.CustomResourceState
 
@@ -91,6 +91,9 @@ func NewProject(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:datamigration/v20220330preview:Project"),
+		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20230715preview:Project"),
 		},
 	})
 	opts = append(opts, aliases)
