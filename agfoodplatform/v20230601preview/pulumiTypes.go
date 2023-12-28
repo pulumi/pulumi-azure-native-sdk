@@ -22,6 +22,64 @@ type ApiKeyAuthCredentials struct {
 	Kind string `pulumi:"kind"`
 }
 
+// ApiKeyAuthCredentialsInput is an input type that accepts ApiKeyAuthCredentialsArgs and ApiKeyAuthCredentialsOutput values.
+// You can construct a concrete instance of `ApiKeyAuthCredentialsInput` via:
+//
+//	ApiKeyAuthCredentialsArgs{...}
+type ApiKeyAuthCredentialsInput interface {
+	pulumi.Input
+
+	ToApiKeyAuthCredentialsOutput() ApiKeyAuthCredentialsOutput
+	ToApiKeyAuthCredentialsOutputWithContext(context.Context) ApiKeyAuthCredentialsOutput
+}
+
+// ApiKeyAuthCredentials class for ApiKey based Auth.
+type ApiKeyAuthCredentialsArgs struct {
+	// Properties of the key vault.
+	ApiKey KeyVaultPropertiesInput `pulumi:"apiKey"`
+	// Enum for different types of AuthCredentials supported.
+	// Expected value is 'ApiKeyAuthCredentials'.
+	Kind pulumi.StringInput `pulumi:"kind"`
+}
+
+func (ApiKeyAuthCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiKeyAuthCredentials)(nil)).Elem()
+}
+
+func (i ApiKeyAuthCredentialsArgs) ToApiKeyAuthCredentialsOutput() ApiKeyAuthCredentialsOutput {
+	return i.ToApiKeyAuthCredentialsOutputWithContext(context.Background())
+}
+
+func (i ApiKeyAuthCredentialsArgs) ToApiKeyAuthCredentialsOutputWithContext(ctx context.Context) ApiKeyAuthCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiKeyAuthCredentialsOutput)
+}
+
+// ApiKeyAuthCredentials class for ApiKey based Auth.
+type ApiKeyAuthCredentialsOutput struct{ *pulumi.OutputState }
+
+func (ApiKeyAuthCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiKeyAuthCredentials)(nil)).Elem()
+}
+
+func (o ApiKeyAuthCredentialsOutput) ToApiKeyAuthCredentialsOutput() ApiKeyAuthCredentialsOutput {
+	return o
+}
+
+func (o ApiKeyAuthCredentialsOutput) ToApiKeyAuthCredentialsOutputWithContext(ctx context.Context) ApiKeyAuthCredentialsOutput {
+	return o
+}
+
+// Properties of the key vault.
+func (o ApiKeyAuthCredentialsOutput) ApiKey() KeyVaultPropertiesOutput {
+	return o.ApplyT(func(v ApiKeyAuthCredentials) KeyVaultProperties { return v.ApiKey }).(KeyVaultPropertiesOutput)
+}
+
+// Enum for different types of AuthCredentials supported.
+// Expected value is 'ApiKeyAuthCredentials'.
+func (o ApiKeyAuthCredentialsOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ApiKeyAuthCredentials) string { return v.Kind }).(pulumi.StringOutput)
+}
+
 // ApiKeyAuthCredentials class for ApiKey based Auth.
 type ApiKeyAuthCredentialsResponse struct {
 	// Properties of the key vault.
@@ -29,6 +87,32 @@ type ApiKeyAuthCredentialsResponse struct {
 	// Enum for different types of AuthCredentials supported.
 	// Expected value is 'ApiKeyAuthCredentials'.
 	Kind string `pulumi:"kind"`
+}
+
+// ApiKeyAuthCredentials class for ApiKey based Auth.
+type ApiKeyAuthCredentialsResponseOutput struct{ *pulumi.OutputState }
+
+func (ApiKeyAuthCredentialsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiKeyAuthCredentialsResponse)(nil)).Elem()
+}
+
+func (o ApiKeyAuthCredentialsResponseOutput) ToApiKeyAuthCredentialsResponseOutput() ApiKeyAuthCredentialsResponseOutput {
+	return o
+}
+
+func (o ApiKeyAuthCredentialsResponseOutput) ToApiKeyAuthCredentialsResponseOutputWithContext(ctx context.Context) ApiKeyAuthCredentialsResponseOutput {
+	return o
+}
+
+// Properties of the key vault.
+func (o ApiKeyAuthCredentialsResponseOutput) ApiKey() KeyVaultPropertiesResponseOutput {
+	return o.ApplyT(func(v ApiKeyAuthCredentialsResponse) KeyVaultPropertiesResponse { return v.ApiKey }).(KeyVaultPropertiesResponseOutput)
+}
+
+// Enum for different types of AuthCredentials supported.
+// Expected value is 'ApiKeyAuthCredentials'.
+func (o ApiKeyAuthCredentialsResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ApiKeyAuthCredentialsResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Api properties.
@@ -763,6 +847,69 @@ type KeyVaultProperties struct {
 	KeyVersion string `pulumi:"keyVersion"`
 }
 
+// KeyVaultPropertiesInput is an input type that accepts KeyVaultPropertiesArgs and KeyVaultPropertiesOutput values.
+// You can construct a concrete instance of `KeyVaultPropertiesInput` via:
+//
+//	KeyVaultPropertiesArgs{...}
+type KeyVaultPropertiesInput interface {
+	pulumi.Input
+
+	ToKeyVaultPropertiesOutput() KeyVaultPropertiesOutput
+	ToKeyVaultPropertiesOutputWithContext(context.Context) KeyVaultPropertiesOutput
+}
+
+// Properties of the key vault.
+type KeyVaultPropertiesArgs struct {
+	// Name of Key Vault key.
+	KeyName pulumi.StringInput `pulumi:"keyName"`
+	// Uri of the key vault.
+	KeyVaultUri pulumi.StringInput `pulumi:"keyVaultUri"`
+	// Version of Key Vault key.
+	KeyVersion pulumi.StringInput `pulumi:"keyVersion"`
+}
+
+func (KeyVaultPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultProperties)(nil)).Elem()
+}
+
+func (i KeyVaultPropertiesArgs) ToKeyVaultPropertiesOutput() KeyVaultPropertiesOutput {
+	return i.ToKeyVaultPropertiesOutputWithContext(context.Background())
+}
+
+func (i KeyVaultPropertiesArgs) ToKeyVaultPropertiesOutputWithContext(ctx context.Context) KeyVaultPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultPropertiesOutput)
+}
+
+// Properties of the key vault.
+type KeyVaultPropertiesOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultProperties)(nil)).Elem()
+}
+
+func (o KeyVaultPropertiesOutput) ToKeyVaultPropertiesOutput() KeyVaultPropertiesOutput {
+	return o
+}
+
+func (o KeyVaultPropertiesOutput) ToKeyVaultPropertiesOutputWithContext(ctx context.Context) KeyVaultPropertiesOutput {
+	return o
+}
+
+// Name of Key Vault key.
+func (o KeyVaultPropertiesOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultProperties) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+// Uri of the key vault.
+func (o KeyVaultPropertiesOutput) KeyVaultUri() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultProperties) string { return v.KeyVaultUri }).(pulumi.StringOutput)
+}
+
+// Version of Key Vault key.
+func (o KeyVaultPropertiesOutput) KeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultProperties) string { return v.KeyVersion }).(pulumi.StringOutput)
+}
+
 // Properties of the key vault.
 type KeyVaultPropertiesResponse struct {
 	// Name of Key Vault key.
@@ -771,6 +918,36 @@ type KeyVaultPropertiesResponse struct {
 	KeyVaultUri string `pulumi:"keyVaultUri"`
 	// Version of Key Vault key.
 	KeyVersion string `pulumi:"keyVersion"`
+}
+
+// Properties of the key vault.
+type KeyVaultPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultPropertiesResponse)(nil)).Elem()
+}
+
+func (o KeyVaultPropertiesResponseOutput) ToKeyVaultPropertiesResponseOutput() KeyVaultPropertiesResponseOutput {
+	return o
+}
+
+func (o KeyVaultPropertiesResponseOutput) ToKeyVaultPropertiesResponseOutputWithContext(ctx context.Context) KeyVaultPropertiesResponseOutput {
+	return o
+}
+
+// Name of Key Vault key.
+func (o KeyVaultPropertiesResponseOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultPropertiesResponse) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+// Uri of the key vault.
+func (o KeyVaultPropertiesResponseOutput) KeyVaultUri() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultPropertiesResponse) string { return v.KeyVaultUri }).(pulumi.StringOutput)
+}
+
+// Version of Key Vault key.
+func (o KeyVaultPropertiesResponseOutput) KeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultPropertiesResponse) string { return v.KeyVersion }).(pulumi.StringOutput)
 }
 
 // OAuthClientCredentials for clientId clientSecret auth.
@@ -784,6 +961,71 @@ type OAuthClientCredentials struct {
 	Kind string `pulumi:"kind"`
 }
 
+// OAuthClientCredentialsInput is an input type that accepts OAuthClientCredentialsArgs and OAuthClientCredentialsOutput values.
+// You can construct a concrete instance of `OAuthClientCredentialsInput` via:
+//
+//	OAuthClientCredentialsArgs{...}
+type OAuthClientCredentialsInput interface {
+	pulumi.Input
+
+	ToOAuthClientCredentialsOutput() OAuthClientCredentialsOutput
+	ToOAuthClientCredentialsOutputWithContext(context.Context) OAuthClientCredentialsOutput
+}
+
+// OAuthClientCredentials for clientId clientSecret auth.
+type OAuthClientCredentialsArgs struct {
+	// ClientId associated with the provider.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// Properties of the key vault.
+	ClientSecret KeyVaultPropertiesInput `pulumi:"clientSecret"`
+	// Enum for different types of AuthCredentials supported.
+	// Expected value is 'OAuthClientCredentials'.
+	Kind pulumi.StringInput `pulumi:"kind"`
+}
+
+func (OAuthClientCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OAuthClientCredentials)(nil)).Elem()
+}
+
+func (i OAuthClientCredentialsArgs) ToOAuthClientCredentialsOutput() OAuthClientCredentialsOutput {
+	return i.ToOAuthClientCredentialsOutputWithContext(context.Background())
+}
+
+func (i OAuthClientCredentialsArgs) ToOAuthClientCredentialsOutputWithContext(ctx context.Context) OAuthClientCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OAuthClientCredentialsOutput)
+}
+
+// OAuthClientCredentials for clientId clientSecret auth.
+type OAuthClientCredentialsOutput struct{ *pulumi.OutputState }
+
+func (OAuthClientCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OAuthClientCredentials)(nil)).Elem()
+}
+
+func (o OAuthClientCredentialsOutput) ToOAuthClientCredentialsOutput() OAuthClientCredentialsOutput {
+	return o
+}
+
+func (o OAuthClientCredentialsOutput) ToOAuthClientCredentialsOutputWithContext(ctx context.Context) OAuthClientCredentialsOutput {
+	return o
+}
+
+// ClientId associated with the provider.
+func (o OAuthClientCredentialsOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v OAuthClientCredentials) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Properties of the key vault.
+func (o OAuthClientCredentialsOutput) ClientSecret() KeyVaultPropertiesOutput {
+	return o.ApplyT(func(v OAuthClientCredentials) KeyVaultProperties { return v.ClientSecret }).(KeyVaultPropertiesOutput)
+}
+
+// Enum for different types of AuthCredentials supported.
+// Expected value is 'OAuthClientCredentials'.
+func (o OAuthClientCredentialsOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v OAuthClientCredentials) string { return v.Kind }).(pulumi.StringOutput)
+}
+
 // OAuthClientCredentials for clientId clientSecret auth.
 type OAuthClientCredentialsResponse struct {
 	// ClientId associated with the provider.
@@ -793,6 +1035,37 @@ type OAuthClientCredentialsResponse struct {
 	// Enum for different types of AuthCredentials supported.
 	// Expected value is 'OAuthClientCredentials'.
 	Kind string `pulumi:"kind"`
+}
+
+// OAuthClientCredentials for clientId clientSecret auth.
+type OAuthClientCredentialsResponseOutput struct{ *pulumi.OutputState }
+
+func (OAuthClientCredentialsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OAuthClientCredentialsResponse)(nil)).Elem()
+}
+
+func (o OAuthClientCredentialsResponseOutput) ToOAuthClientCredentialsResponseOutput() OAuthClientCredentialsResponseOutput {
+	return o
+}
+
+func (o OAuthClientCredentialsResponseOutput) ToOAuthClientCredentialsResponseOutputWithContext(ctx context.Context) OAuthClientCredentialsResponseOutput {
+	return o
+}
+
+// ClientId associated with the provider.
+func (o OAuthClientCredentialsResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v OAuthClientCredentialsResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Properties of the key vault.
+func (o OAuthClientCredentialsResponseOutput) ClientSecret() KeyVaultPropertiesResponseOutput {
+	return o.ApplyT(func(v OAuthClientCredentialsResponse) KeyVaultPropertiesResponse { return v.ClientSecret }).(KeyVaultPropertiesResponseOutput)
+}
+
+// Enum for different types of AuthCredentials supported.
+// Expected value is 'OAuthClientCredentials'.
+func (o OAuthClientCredentialsResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v OAuthClientCredentialsResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The private endpoint connection resource.
@@ -1690,6 +1963,8 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(ApiKeyAuthCredentialsOutput{})
+	pulumi.RegisterOutputType(ApiKeyAuthCredentialsResponseOutput{})
 	pulumi.RegisterOutputType(ApiPropertiesOutput{})
 	pulumi.RegisterOutputType(ApiPropertiesMapOutput{})
 	pulumi.RegisterOutputType(ApiPropertiesResponseOutput{})
@@ -1707,6 +1982,10 @@ func init() {
 	pulumi.RegisterOutputType(IdentityPtrOutput{})
 	pulumi.RegisterOutputType(IdentityResponseOutput{})
 	pulumi.RegisterOutputType(IdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(KeyVaultPropertiesOutput{})
+	pulumi.RegisterOutputType(KeyVaultPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(OAuthClientCredentialsOutput{})
+	pulumi.RegisterOutputType(OAuthClientCredentialsResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})

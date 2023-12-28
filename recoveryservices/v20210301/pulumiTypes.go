@@ -238,6 +238,160 @@ type AzureToAzureCreateNetworkMappingInput struct {
 	PrimaryNetworkId *string `pulumi:"primaryNetworkId"`
 }
 
+// AzureToAzureCreateNetworkMappingInputInput is an input type that accepts AzureToAzureCreateNetworkMappingInputArgs and AzureToAzureCreateNetworkMappingInputOutput values.
+// You can construct a concrete instance of `AzureToAzureCreateNetworkMappingInputInput` via:
+//
+//	AzureToAzureCreateNetworkMappingInputArgs{...}
+type AzureToAzureCreateNetworkMappingInputInput interface {
+	pulumi.Input
+
+	ToAzureToAzureCreateNetworkMappingInputOutput() AzureToAzureCreateNetworkMappingInputOutput
+	ToAzureToAzureCreateNetworkMappingInputOutputWithContext(context.Context) AzureToAzureCreateNetworkMappingInputOutput
+}
+
+// Create network mappings input properties/behavior specific to Azure to Azure Network mapping.
+type AzureToAzureCreateNetworkMappingInputArgs struct {
+	// The instance type.
+	// Expected value is 'AzureToAzure'.
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// The primary azure vnet Id.
+	PrimaryNetworkId pulumi.StringPtrInput `pulumi:"primaryNetworkId"`
+}
+
+func (AzureToAzureCreateNetworkMappingInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureToAzureCreateNetworkMappingInput)(nil)).Elem()
+}
+
+func (i AzureToAzureCreateNetworkMappingInputArgs) ToAzureToAzureCreateNetworkMappingInputOutput() AzureToAzureCreateNetworkMappingInputOutput {
+	return i.ToAzureToAzureCreateNetworkMappingInputOutputWithContext(context.Background())
+}
+
+func (i AzureToAzureCreateNetworkMappingInputArgs) ToAzureToAzureCreateNetworkMappingInputOutputWithContext(ctx context.Context) AzureToAzureCreateNetworkMappingInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureToAzureCreateNetworkMappingInputOutput)
+}
+
+func (i AzureToAzureCreateNetworkMappingInputArgs) ToAzureToAzureCreateNetworkMappingInputPtrOutput() AzureToAzureCreateNetworkMappingInputPtrOutput {
+	return i.ToAzureToAzureCreateNetworkMappingInputPtrOutputWithContext(context.Background())
+}
+
+func (i AzureToAzureCreateNetworkMappingInputArgs) ToAzureToAzureCreateNetworkMappingInputPtrOutputWithContext(ctx context.Context) AzureToAzureCreateNetworkMappingInputPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureToAzureCreateNetworkMappingInputOutput).ToAzureToAzureCreateNetworkMappingInputPtrOutputWithContext(ctx)
+}
+
+// AzureToAzureCreateNetworkMappingInputPtrInput is an input type that accepts AzureToAzureCreateNetworkMappingInputArgs, AzureToAzureCreateNetworkMappingInputPtr and AzureToAzureCreateNetworkMappingInputPtrOutput values.
+// You can construct a concrete instance of `AzureToAzureCreateNetworkMappingInputPtrInput` via:
+//
+//	        AzureToAzureCreateNetworkMappingInputArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureToAzureCreateNetworkMappingInputPtrInput interface {
+	pulumi.Input
+
+	ToAzureToAzureCreateNetworkMappingInputPtrOutput() AzureToAzureCreateNetworkMappingInputPtrOutput
+	ToAzureToAzureCreateNetworkMappingInputPtrOutputWithContext(context.Context) AzureToAzureCreateNetworkMappingInputPtrOutput
+}
+
+type azureToAzureCreateNetworkMappingInputPtrType AzureToAzureCreateNetworkMappingInputArgs
+
+func AzureToAzureCreateNetworkMappingInputPtr(v *AzureToAzureCreateNetworkMappingInputArgs) AzureToAzureCreateNetworkMappingInputPtrInput {
+	return (*azureToAzureCreateNetworkMappingInputPtrType)(v)
+}
+
+func (*azureToAzureCreateNetworkMappingInputPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureToAzureCreateNetworkMappingInput)(nil)).Elem()
+}
+
+func (i *azureToAzureCreateNetworkMappingInputPtrType) ToAzureToAzureCreateNetworkMappingInputPtrOutput() AzureToAzureCreateNetworkMappingInputPtrOutput {
+	return i.ToAzureToAzureCreateNetworkMappingInputPtrOutputWithContext(context.Background())
+}
+
+func (i *azureToAzureCreateNetworkMappingInputPtrType) ToAzureToAzureCreateNetworkMappingInputPtrOutputWithContext(ctx context.Context) AzureToAzureCreateNetworkMappingInputPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureToAzureCreateNetworkMappingInputPtrOutput)
+}
+
+// Create network mappings input properties/behavior specific to Azure to Azure Network mapping.
+type AzureToAzureCreateNetworkMappingInputOutput struct{ *pulumi.OutputState }
+
+func (AzureToAzureCreateNetworkMappingInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureToAzureCreateNetworkMappingInput)(nil)).Elem()
+}
+
+func (o AzureToAzureCreateNetworkMappingInputOutput) ToAzureToAzureCreateNetworkMappingInputOutput() AzureToAzureCreateNetworkMappingInputOutput {
+	return o
+}
+
+func (o AzureToAzureCreateNetworkMappingInputOutput) ToAzureToAzureCreateNetworkMappingInputOutputWithContext(ctx context.Context) AzureToAzureCreateNetworkMappingInputOutput {
+	return o
+}
+
+func (o AzureToAzureCreateNetworkMappingInputOutput) ToAzureToAzureCreateNetworkMappingInputPtrOutput() AzureToAzureCreateNetworkMappingInputPtrOutput {
+	return o.ToAzureToAzureCreateNetworkMappingInputPtrOutputWithContext(context.Background())
+}
+
+func (o AzureToAzureCreateNetworkMappingInputOutput) ToAzureToAzureCreateNetworkMappingInputPtrOutputWithContext(ctx context.Context) AzureToAzureCreateNetworkMappingInputPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureToAzureCreateNetworkMappingInput) *AzureToAzureCreateNetworkMappingInput {
+		return &v
+	}).(AzureToAzureCreateNetworkMappingInputPtrOutput)
+}
+
+// The instance type.
+// Expected value is 'AzureToAzure'.
+func (o AzureToAzureCreateNetworkMappingInputOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureToAzureCreateNetworkMappingInput) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// The primary azure vnet Id.
+func (o AzureToAzureCreateNetworkMappingInputOutput) PrimaryNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureToAzureCreateNetworkMappingInput) *string { return v.PrimaryNetworkId }).(pulumi.StringPtrOutput)
+}
+
+type AzureToAzureCreateNetworkMappingInputPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureToAzureCreateNetworkMappingInputPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureToAzureCreateNetworkMappingInput)(nil)).Elem()
+}
+
+func (o AzureToAzureCreateNetworkMappingInputPtrOutput) ToAzureToAzureCreateNetworkMappingInputPtrOutput() AzureToAzureCreateNetworkMappingInputPtrOutput {
+	return o
+}
+
+func (o AzureToAzureCreateNetworkMappingInputPtrOutput) ToAzureToAzureCreateNetworkMappingInputPtrOutputWithContext(ctx context.Context) AzureToAzureCreateNetworkMappingInputPtrOutput {
+	return o
+}
+
+func (o AzureToAzureCreateNetworkMappingInputPtrOutput) Elem() AzureToAzureCreateNetworkMappingInputOutput {
+	return o.ApplyT(func(v *AzureToAzureCreateNetworkMappingInput) AzureToAzureCreateNetworkMappingInput {
+		if v != nil {
+			return *v
+		}
+		var ret AzureToAzureCreateNetworkMappingInput
+		return ret
+	}).(AzureToAzureCreateNetworkMappingInputOutput)
+}
+
+// The instance type.
+// Expected value is 'AzureToAzure'.
+func (o AzureToAzureCreateNetworkMappingInputPtrOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureToAzureCreateNetworkMappingInput) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The primary azure vnet Id.
+func (o AzureToAzureCreateNetworkMappingInputPtrOutput) PrimaryNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureToAzureCreateNetworkMappingInput) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryNetworkId
+	}).(pulumi.StringPtrOutput)
+}
+
 // A2A Network Mapping fabric specific settings.
 type AzureToAzureNetworkMappingSettingsResponse struct {
 	// Gets the Instance type.
@@ -247,6 +401,92 @@ type AzureToAzureNetworkMappingSettingsResponse struct {
 	PrimaryFabricLocation *string `pulumi:"primaryFabricLocation"`
 	// The recovery fabric location.
 	RecoveryFabricLocation *string `pulumi:"recoveryFabricLocation"`
+}
+
+// A2A Network Mapping fabric specific settings.
+type AzureToAzureNetworkMappingSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureToAzureNetworkMappingSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureToAzureNetworkMappingSettingsResponse)(nil)).Elem()
+}
+
+func (o AzureToAzureNetworkMappingSettingsResponseOutput) ToAzureToAzureNetworkMappingSettingsResponseOutput() AzureToAzureNetworkMappingSettingsResponseOutput {
+	return o
+}
+
+func (o AzureToAzureNetworkMappingSettingsResponseOutput) ToAzureToAzureNetworkMappingSettingsResponseOutputWithContext(ctx context.Context) AzureToAzureNetworkMappingSettingsResponseOutput {
+	return o
+}
+
+// Gets the Instance type.
+// Expected value is 'AzureToAzure'.
+func (o AzureToAzureNetworkMappingSettingsResponseOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureToAzureNetworkMappingSettingsResponse) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The primary fabric location.
+func (o AzureToAzureNetworkMappingSettingsResponseOutput) PrimaryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureToAzureNetworkMappingSettingsResponse) *string { return v.PrimaryFabricLocation }).(pulumi.StringPtrOutput)
+}
+
+// The recovery fabric location.
+func (o AzureToAzureNetworkMappingSettingsResponseOutput) RecoveryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureToAzureNetworkMappingSettingsResponse) *string { return v.RecoveryFabricLocation }).(pulumi.StringPtrOutput)
+}
+
+type AzureToAzureNetworkMappingSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureToAzureNetworkMappingSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureToAzureNetworkMappingSettingsResponse)(nil)).Elem()
+}
+
+func (o AzureToAzureNetworkMappingSettingsResponsePtrOutput) ToAzureToAzureNetworkMappingSettingsResponsePtrOutput() AzureToAzureNetworkMappingSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AzureToAzureNetworkMappingSettingsResponsePtrOutput) ToAzureToAzureNetworkMappingSettingsResponsePtrOutputWithContext(ctx context.Context) AzureToAzureNetworkMappingSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AzureToAzureNetworkMappingSettingsResponsePtrOutput) Elem() AzureToAzureNetworkMappingSettingsResponseOutput {
+	return o.ApplyT(func(v *AzureToAzureNetworkMappingSettingsResponse) AzureToAzureNetworkMappingSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureToAzureNetworkMappingSettingsResponse
+		return ret
+	}).(AzureToAzureNetworkMappingSettingsResponseOutput)
+}
+
+// Gets the Instance type.
+// Expected value is 'AzureToAzure'.
+func (o AzureToAzureNetworkMappingSettingsResponsePtrOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureToAzureNetworkMappingSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The primary fabric location.
+func (o AzureToAzureNetworkMappingSettingsResponsePtrOutput) PrimaryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureToAzureNetworkMappingSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryFabricLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The recovery fabric location.
+func (o AzureToAzureNetworkMappingSettingsResponsePtrOutput) RecoveryFabricLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureToAzureNetworkMappingSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryFabricLocation
+	}).(pulumi.StringPtrOutput)
 }
 
 // Common input details for network mapping operation.
@@ -879,11 +1119,204 @@ type VmmToAzureCreateNetworkMappingInput struct {
 	InstanceType *string `pulumi:"instanceType"`
 }
 
+// VmmToAzureCreateNetworkMappingInputInput is an input type that accepts VmmToAzureCreateNetworkMappingInputArgs and VmmToAzureCreateNetworkMappingInputOutput values.
+// You can construct a concrete instance of `VmmToAzureCreateNetworkMappingInputInput` via:
+//
+//	VmmToAzureCreateNetworkMappingInputArgs{...}
+type VmmToAzureCreateNetworkMappingInputInput interface {
+	pulumi.Input
+
+	ToVmmToAzureCreateNetworkMappingInputOutput() VmmToAzureCreateNetworkMappingInputOutput
+	ToVmmToAzureCreateNetworkMappingInputOutputWithContext(context.Context) VmmToAzureCreateNetworkMappingInputOutput
+}
+
+// Create network mappings input properties/behavior specific to Vmm to Azure Network mapping.
+type VmmToAzureCreateNetworkMappingInputArgs struct {
+	// The instance type.
+	// Expected value is 'VmmToAzure'.
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+}
+
+func (VmmToAzureCreateNetworkMappingInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmmToAzureCreateNetworkMappingInput)(nil)).Elem()
+}
+
+func (i VmmToAzureCreateNetworkMappingInputArgs) ToVmmToAzureCreateNetworkMappingInputOutput() VmmToAzureCreateNetworkMappingInputOutput {
+	return i.ToVmmToAzureCreateNetworkMappingInputOutputWithContext(context.Background())
+}
+
+func (i VmmToAzureCreateNetworkMappingInputArgs) ToVmmToAzureCreateNetworkMappingInputOutputWithContext(ctx context.Context) VmmToAzureCreateNetworkMappingInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmmToAzureCreateNetworkMappingInputOutput)
+}
+
+func (i VmmToAzureCreateNetworkMappingInputArgs) ToVmmToAzureCreateNetworkMappingInputPtrOutput() VmmToAzureCreateNetworkMappingInputPtrOutput {
+	return i.ToVmmToAzureCreateNetworkMappingInputPtrOutputWithContext(context.Background())
+}
+
+func (i VmmToAzureCreateNetworkMappingInputArgs) ToVmmToAzureCreateNetworkMappingInputPtrOutputWithContext(ctx context.Context) VmmToAzureCreateNetworkMappingInputPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmmToAzureCreateNetworkMappingInputOutput).ToVmmToAzureCreateNetworkMappingInputPtrOutputWithContext(ctx)
+}
+
+// VmmToAzureCreateNetworkMappingInputPtrInput is an input type that accepts VmmToAzureCreateNetworkMappingInputArgs, VmmToAzureCreateNetworkMappingInputPtr and VmmToAzureCreateNetworkMappingInputPtrOutput values.
+// You can construct a concrete instance of `VmmToAzureCreateNetworkMappingInputPtrInput` via:
+//
+//	        VmmToAzureCreateNetworkMappingInputArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmmToAzureCreateNetworkMappingInputPtrInput interface {
+	pulumi.Input
+
+	ToVmmToAzureCreateNetworkMappingInputPtrOutput() VmmToAzureCreateNetworkMappingInputPtrOutput
+	ToVmmToAzureCreateNetworkMappingInputPtrOutputWithContext(context.Context) VmmToAzureCreateNetworkMappingInputPtrOutput
+}
+
+type vmmToAzureCreateNetworkMappingInputPtrType VmmToAzureCreateNetworkMappingInputArgs
+
+func VmmToAzureCreateNetworkMappingInputPtr(v *VmmToAzureCreateNetworkMappingInputArgs) VmmToAzureCreateNetworkMappingInputPtrInput {
+	return (*vmmToAzureCreateNetworkMappingInputPtrType)(v)
+}
+
+func (*vmmToAzureCreateNetworkMappingInputPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmmToAzureCreateNetworkMappingInput)(nil)).Elem()
+}
+
+func (i *vmmToAzureCreateNetworkMappingInputPtrType) ToVmmToAzureCreateNetworkMappingInputPtrOutput() VmmToAzureCreateNetworkMappingInputPtrOutput {
+	return i.ToVmmToAzureCreateNetworkMappingInputPtrOutputWithContext(context.Background())
+}
+
+func (i *vmmToAzureCreateNetworkMappingInputPtrType) ToVmmToAzureCreateNetworkMappingInputPtrOutputWithContext(ctx context.Context) VmmToAzureCreateNetworkMappingInputPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmmToAzureCreateNetworkMappingInputPtrOutput)
+}
+
+// Create network mappings input properties/behavior specific to Vmm to Azure Network mapping.
+type VmmToAzureCreateNetworkMappingInputOutput struct{ *pulumi.OutputState }
+
+func (VmmToAzureCreateNetworkMappingInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmmToAzureCreateNetworkMappingInput)(nil)).Elem()
+}
+
+func (o VmmToAzureCreateNetworkMappingInputOutput) ToVmmToAzureCreateNetworkMappingInputOutput() VmmToAzureCreateNetworkMappingInputOutput {
+	return o
+}
+
+func (o VmmToAzureCreateNetworkMappingInputOutput) ToVmmToAzureCreateNetworkMappingInputOutputWithContext(ctx context.Context) VmmToAzureCreateNetworkMappingInputOutput {
+	return o
+}
+
+func (o VmmToAzureCreateNetworkMappingInputOutput) ToVmmToAzureCreateNetworkMappingInputPtrOutput() VmmToAzureCreateNetworkMappingInputPtrOutput {
+	return o.ToVmmToAzureCreateNetworkMappingInputPtrOutputWithContext(context.Background())
+}
+
+func (o VmmToAzureCreateNetworkMappingInputOutput) ToVmmToAzureCreateNetworkMappingInputPtrOutputWithContext(ctx context.Context) VmmToAzureCreateNetworkMappingInputPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmmToAzureCreateNetworkMappingInput) *VmmToAzureCreateNetworkMappingInput {
+		return &v
+	}).(VmmToAzureCreateNetworkMappingInputPtrOutput)
+}
+
+// The instance type.
+// Expected value is 'VmmToAzure'.
+func (o VmmToAzureCreateNetworkMappingInputOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmmToAzureCreateNetworkMappingInput) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+type VmmToAzureCreateNetworkMappingInputPtrOutput struct{ *pulumi.OutputState }
+
+func (VmmToAzureCreateNetworkMappingInputPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmmToAzureCreateNetworkMappingInput)(nil)).Elem()
+}
+
+func (o VmmToAzureCreateNetworkMappingInputPtrOutput) ToVmmToAzureCreateNetworkMappingInputPtrOutput() VmmToAzureCreateNetworkMappingInputPtrOutput {
+	return o
+}
+
+func (o VmmToAzureCreateNetworkMappingInputPtrOutput) ToVmmToAzureCreateNetworkMappingInputPtrOutputWithContext(ctx context.Context) VmmToAzureCreateNetworkMappingInputPtrOutput {
+	return o
+}
+
+func (o VmmToAzureCreateNetworkMappingInputPtrOutput) Elem() VmmToAzureCreateNetworkMappingInputOutput {
+	return o.ApplyT(func(v *VmmToAzureCreateNetworkMappingInput) VmmToAzureCreateNetworkMappingInput {
+		if v != nil {
+			return *v
+		}
+		var ret VmmToAzureCreateNetworkMappingInput
+		return ret
+	}).(VmmToAzureCreateNetworkMappingInputOutput)
+}
+
+// The instance type.
+// Expected value is 'VmmToAzure'.
+func (o VmmToAzureCreateNetworkMappingInputPtrOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmmToAzureCreateNetworkMappingInput) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
 // E2A Network Mapping fabric specific settings.
 type VmmToAzureNetworkMappingSettingsResponse struct {
 	// Gets the Instance type.
 	// Expected value is 'VmmToAzure'.
 	InstanceType string `pulumi:"instanceType"`
+}
+
+// E2A Network Mapping fabric specific settings.
+type VmmToAzureNetworkMappingSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (VmmToAzureNetworkMappingSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmmToAzureNetworkMappingSettingsResponse)(nil)).Elem()
+}
+
+func (o VmmToAzureNetworkMappingSettingsResponseOutput) ToVmmToAzureNetworkMappingSettingsResponseOutput() VmmToAzureNetworkMappingSettingsResponseOutput {
+	return o
+}
+
+func (o VmmToAzureNetworkMappingSettingsResponseOutput) ToVmmToAzureNetworkMappingSettingsResponseOutputWithContext(ctx context.Context) VmmToAzureNetworkMappingSettingsResponseOutput {
+	return o
+}
+
+// Gets the Instance type.
+// Expected value is 'VmmToAzure'.
+func (o VmmToAzureNetworkMappingSettingsResponseOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v VmmToAzureNetworkMappingSettingsResponse) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+type VmmToAzureNetworkMappingSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VmmToAzureNetworkMappingSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmmToAzureNetworkMappingSettingsResponse)(nil)).Elem()
+}
+
+func (o VmmToAzureNetworkMappingSettingsResponsePtrOutput) ToVmmToAzureNetworkMappingSettingsResponsePtrOutput() VmmToAzureNetworkMappingSettingsResponsePtrOutput {
+	return o
+}
+
+func (o VmmToAzureNetworkMappingSettingsResponsePtrOutput) ToVmmToAzureNetworkMappingSettingsResponsePtrOutputWithContext(ctx context.Context) VmmToAzureNetworkMappingSettingsResponsePtrOutput {
+	return o
+}
+
+func (o VmmToAzureNetworkMappingSettingsResponsePtrOutput) Elem() VmmToAzureNetworkMappingSettingsResponseOutput {
+	return o.ApplyT(func(v *VmmToAzureNetworkMappingSettingsResponse) VmmToAzureNetworkMappingSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VmmToAzureNetworkMappingSettingsResponse
+		return ret
+	}).(VmmToAzureNetworkMappingSettingsResponseOutput)
+}
+
+// Gets the Instance type.
+// Expected value is 'VmmToAzure'.
+func (o VmmToAzureNetworkMappingSettingsResponsePtrOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmmToAzureNetworkMappingSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceType
+	}).(pulumi.StringPtrOutput)
 }
 
 // Create network mappings input properties/behavior specific to vmm to vmm Network mapping.
@@ -893,6 +1326,143 @@ type VmmToVmmCreateNetworkMappingInput struct {
 	InstanceType *string `pulumi:"instanceType"`
 }
 
+// VmmToVmmCreateNetworkMappingInputInput is an input type that accepts VmmToVmmCreateNetworkMappingInputArgs and VmmToVmmCreateNetworkMappingInputOutput values.
+// You can construct a concrete instance of `VmmToVmmCreateNetworkMappingInputInput` via:
+//
+//	VmmToVmmCreateNetworkMappingInputArgs{...}
+type VmmToVmmCreateNetworkMappingInputInput interface {
+	pulumi.Input
+
+	ToVmmToVmmCreateNetworkMappingInputOutput() VmmToVmmCreateNetworkMappingInputOutput
+	ToVmmToVmmCreateNetworkMappingInputOutputWithContext(context.Context) VmmToVmmCreateNetworkMappingInputOutput
+}
+
+// Create network mappings input properties/behavior specific to vmm to vmm Network mapping.
+type VmmToVmmCreateNetworkMappingInputArgs struct {
+	// The instance type.
+	// Expected value is 'VmmToVmm'.
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+}
+
+func (VmmToVmmCreateNetworkMappingInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmmToVmmCreateNetworkMappingInput)(nil)).Elem()
+}
+
+func (i VmmToVmmCreateNetworkMappingInputArgs) ToVmmToVmmCreateNetworkMappingInputOutput() VmmToVmmCreateNetworkMappingInputOutput {
+	return i.ToVmmToVmmCreateNetworkMappingInputOutputWithContext(context.Background())
+}
+
+func (i VmmToVmmCreateNetworkMappingInputArgs) ToVmmToVmmCreateNetworkMappingInputOutputWithContext(ctx context.Context) VmmToVmmCreateNetworkMappingInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmmToVmmCreateNetworkMappingInputOutput)
+}
+
+func (i VmmToVmmCreateNetworkMappingInputArgs) ToVmmToVmmCreateNetworkMappingInputPtrOutput() VmmToVmmCreateNetworkMappingInputPtrOutput {
+	return i.ToVmmToVmmCreateNetworkMappingInputPtrOutputWithContext(context.Background())
+}
+
+func (i VmmToVmmCreateNetworkMappingInputArgs) ToVmmToVmmCreateNetworkMappingInputPtrOutputWithContext(ctx context.Context) VmmToVmmCreateNetworkMappingInputPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmmToVmmCreateNetworkMappingInputOutput).ToVmmToVmmCreateNetworkMappingInputPtrOutputWithContext(ctx)
+}
+
+// VmmToVmmCreateNetworkMappingInputPtrInput is an input type that accepts VmmToVmmCreateNetworkMappingInputArgs, VmmToVmmCreateNetworkMappingInputPtr and VmmToVmmCreateNetworkMappingInputPtrOutput values.
+// You can construct a concrete instance of `VmmToVmmCreateNetworkMappingInputPtrInput` via:
+//
+//	        VmmToVmmCreateNetworkMappingInputArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmmToVmmCreateNetworkMappingInputPtrInput interface {
+	pulumi.Input
+
+	ToVmmToVmmCreateNetworkMappingInputPtrOutput() VmmToVmmCreateNetworkMappingInputPtrOutput
+	ToVmmToVmmCreateNetworkMappingInputPtrOutputWithContext(context.Context) VmmToVmmCreateNetworkMappingInputPtrOutput
+}
+
+type vmmToVmmCreateNetworkMappingInputPtrType VmmToVmmCreateNetworkMappingInputArgs
+
+func VmmToVmmCreateNetworkMappingInputPtr(v *VmmToVmmCreateNetworkMappingInputArgs) VmmToVmmCreateNetworkMappingInputPtrInput {
+	return (*vmmToVmmCreateNetworkMappingInputPtrType)(v)
+}
+
+func (*vmmToVmmCreateNetworkMappingInputPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmmToVmmCreateNetworkMappingInput)(nil)).Elem()
+}
+
+func (i *vmmToVmmCreateNetworkMappingInputPtrType) ToVmmToVmmCreateNetworkMappingInputPtrOutput() VmmToVmmCreateNetworkMappingInputPtrOutput {
+	return i.ToVmmToVmmCreateNetworkMappingInputPtrOutputWithContext(context.Background())
+}
+
+func (i *vmmToVmmCreateNetworkMappingInputPtrType) ToVmmToVmmCreateNetworkMappingInputPtrOutputWithContext(ctx context.Context) VmmToVmmCreateNetworkMappingInputPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmmToVmmCreateNetworkMappingInputPtrOutput)
+}
+
+// Create network mappings input properties/behavior specific to vmm to vmm Network mapping.
+type VmmToVmmCreateNetworkMappingInputOutput struct{ *pulumi.OutputState }
+
+func (VmmToVmmCreateNetworkMappingInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmmToVmmCreateNetworkMappingInput)(nil)).Elem()
+}
+
+func (o VmmToVmmCreateNetworkMappingInputOutput) ToVmmToVmmCreateNetworkMappingInputOutput() VmmToVmmCreateNetworkMappingInputOutput {
+	return o
+}
+
+func (o VmmToVmmCreateNetworkMappingInputOutput) ToVmmToVmmCreateNetworkMappingInputOutputWithContext(ctx context.Context) VmmToVmmCreateNetworkMappingInputOutput {
+	return o
+}
+
+func (o VmmToVmmCreateNetworkMappingInputOutput) ToVmmToVmmCreateNetworkMappingInputPtrOutput() VmmToVmmCreateNetworkMappingInputPtrOutput {
+	return o.ToVmmToVmmCreateNetworkMappingInputPtrOutputWithContext(context.Background())
+}
+
+func (o VmmToVmmCreateNetworkMappingInputOutput) ToVmmToVmmCreateNetworkMappingInputPtrOutputWithContext(ctx context.Context) VmmToVmmCreateNetworkMappingInputPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmmToVmmCreateNetworkMappingInput) *VmmToVmmCreateNetworkMappingInput {
+		return &v
+	}).(VmmToVmmCreateNetworkMappingInputPtrOutput)
+}
+
+// The instance type.
+// Expected value is 'VmmToVmm'.
+func (o VmmToVmmCreateNetworkMappingInputOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmmToVmmCreateNetworkMappingInput) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+type VmmToVmmCreateNetworkMappingInputPtrOutput struct{ *pulumi.OutputState }
+
+func (VmmToVmmCreateNetworkMappingInputPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmmToVmmCreateNetworkMappingInput)(nil)).Elem()
+}
+
+func (o VmmToVmmCreateNetworkMappingInputPtrOutput) ToVmmToVmmCreateNetworkMappingInputPtrOutput() VmmToVmmCreateNetworkMappingInputPtrOutput {
+	return o
+}
+
+func (o VmmToVmmCreateNetworkMappingInputPtrOutput) ToVmmToVmmCreateNetworkMappingInputPtrOutputWithContext(ctx context.Context) VmmToVmmCreateNetworkMappingInputPtrOutput {
+	return o
+}
+
+func (o VmmToVmmCreateNetworkMappingInputPtrOutput) Elem() VmmToVmmCreateNetworkMappingInputOutput {
+	return o.ApplyT(func(v *VmmToVmmCreateNetworkMappingInput) VmmToVmmCreateNetworkMappingInput {
+		if v != nil {
+			return *v
+		}
+		var ret VmmToVmmCreateNetworkMappingInput
+		return ret
+	}).(VmmToVmmCreateNetworkMappingInputOutput)
+}
+
+// The instance type.
+// Expected value is 'VmmToVmm'.
+func (o VmmToVmmCreateNetworkMappingInputPtrOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmmToVmmCreateNetworkMappingInput) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
 // E2E Network Mapping fabric specific settings.
 type VmmToVmmNetworkMappingSettingsResponse struct {
 	// Gets the Instance type.
@@ -900,9 +1470,69 @@ type VmmToVmmNetworkMappingSettingsResponse struct {
 	InstanceType string `pulumi:"instanceType"`
 }
 
+// E2E Network Mapping fabric specific settings.
+type VmmToVmmNetworkMappingSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (VmmToVmmNetworkMappingSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmmToVmmNetworkMappingSettingsResponse)(nil)).Elem()
+}
+
+func (o VmmToVmmNetworkMappingSettingsResponseOutput) ToVmmToVmmNetworkMappingSettingsResponseOutput() VmmToVmmNetworkMappingSettingsResponseOutput {
+	return o
+}
+
+func (o VmmToVmmNetworkMappingSettingsResponseOutput) ToVmmToVmmNetworkMappingSettingsResponseOutputWithContext(ctx context.Context) VmmToVmmNetworkMappingSettingsResponseOutput {
+	return o
+}
+
+// Gets the Instance type.
+// Expected value is 'VmmToVmm'.
+func (o VmmToVmmNetworkMappingSettingsResponseOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v VmmToVmmNetworkMappingSettingsResponse) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+type VmmToVmmNetworkMappingSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VmmToVmmNetworkMappingSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmmToVmmNetworkMappingSettingsResponse)(nil)).Elem()
+}
+
+func (o VmmToVmmNetworkMappingSettingsResponsePtrOutput) ToVmmToVmmNetworkMappingSettingsResponsePtrOutput() VmmToVmmNetworkMappingSettingsResponsePtrOutput {
+	return o
+}
+
+func (o VmmToVmmNetworkMappingSettingsResponsePtrOutput) ToVmmToVmmNetworkMappingSettingsResponsePtrOutputWithContext(ctx context.Context) VmmToVmmNetworkMappingSettingsResponsePtrOutput {
+	return o
+}
+
+func (o VmmToVmmNetworkMappingSettingsResponsePtrOutput) Elem() VmmToVmmNetworkMappingSettingsResponseOutput {
+	return o.ApplyT(func(v *VmmToVmmNetworkMappingSettingsResponse) VmmToVmmNetworkMappingSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VmmToVmmNetworkMappingSettingsResponse
+		return ret
+	}).(VmmToVmmNetworkMappingSettingsResponseOutput)
+}
+
+// Gets the Instance type.
+// Expected value is 'VmmToVmm'.
+func (o VmmToVmmNetworkMappingSettingsResponsePtrOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmmToVmmNetworkMappingSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AddVCenterRequestPropertiesOutput{})
 	pulumi.RegisterOutputType(AddVCenterRequestPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(AzureToAzureCreateNetworkMappingInputOutput{})
+	pulumi.RegisterOutputType(AzureToAzureCreateNetworkMappingInputPtrOutput{})
+	pulumi.RegisterOutputType(AzureToAzureNetworkMappingSettingsResponseOutput{})
+	pulumi.RegisterOutputType(AzureToAzureNetworkMappingSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(CreateNetworkMappingInputPropertiesOutput{})
 	pulumi.RegisterOutputType(CreateNetworkMappingInputPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(HealthErrorResponseOutput{})
@@ -911,4 +1541,12 @@ func init() {
 	pulumi.RegisterOutputType(InnerHealthErrorResponseArrayOutput{})
 	pulumi.RegisterOutputType(NetworkMappingPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(VCenterPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(VmmToAzureCreateNetworkMappingInputOutput{})
+	pulumi.RegisterOutputType(VmmToAzureCreateNetworkMappingInputPtrOutput{})
+	pulumi.RegisterOutputType(VmmToAzureNetworkMappingSettingsResponseOutput{})
+	pulumi.RegisterOutputType(VmmToAzureNetworkMappingSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(VmmToVmmCreateNetworkMappingInputOutput{})
+	pulumi.RegisterOutputType(VmmToVmmCreateNetworkMappingInputPtrOutput{})
+	pulumi.RegisterOutputType(VmmToVmmNetworkMappingSettingsResponseOutput{})
+	pulumi.RegisterOutputType(VmmToVmmNetworkMappingSettingsResponsePtrOutput{})
 }

@@ -26,6 +26,194 @@ type AcceleratorBasicAuthSetting struct {
 	Username string `pulumi:"username"`
 }
 
+// AcceleratorBasicAuthSettingInput is an input type that accepts AcceleratorBasicAuthSettingArgs and AcceleratorBasicAuthSettingOutput values.
+// You can construct a concrete instance of `AcceleratorBasicAuthSettingInput` via:
+//
+//	AcceleratorBasicAuthSettingArgs{...}
+type AcceleratorBasicAuthSettingInput interface {
+	pulumi.Input
+
+	ToAcceleratorBasicAuthSettingOutput() AcceleratorBasicAuthSettingOutput
+	ToAcceleratorBasicAuthSettingOutputWithContext(context.Context) AcceleratorBasicAuthSettingOutput
+}
+
+// Auth setting for basic auth.
+type AcceleratorBasicAuthSettingArgs struct {
+	// The type of the auth setting.
+	// Expected value is 'BasicAuth'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Resource Id of CA certificate for https URL of Git repository.
+	CaCertResourceId pulumi.StringPtrInput `pulumi:"caCertResourceId"`
+	// Password of git repository basic auth.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Username of git repository basic auth.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (AcceleratorBasicAuthSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorBasicAuthSetting)(nil)).Elem()
+}
+
+func (i AcceleratorBasicAuthSettingArgs) ToAcceleratorBasicAuthSettingOutput() AcceleratorBasicAuthSettingOutput {
+	return i.ToAcceleratorBasicAuthSettingOutputWithContext(context.Background())
+}
+
+func (i AcceleratorBasicAuthSettingArgs) ToAcceleratorBasicAuthSettingOutputWithContext(ctx context.Context) AcceleratorBasicAuthSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorBasicAuthSettingOutput)
+}
+
+func (i AcceleratorBasicAuthSettingArgs) ToAcceleratorBasicAuthSettingPtrOutput() AcceleratorBasicAuthSettingPtrOutput {
+	return i.ToAcceleratorBasicAuthSettingPtrOutputWithContext(context.Background())
+}
+
+func (i AcceleratorBasicAuthSettingArgs) ToAcceleratorBasicAuthSettingPtrOutputWithContext(ctx context.Context) AcceleratorBasicAuthSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorBasicAuthSettingOutput).ToAcceleratorBasicAuthSettingPtrOutputWithContext(ctx)
+}
+
+// AcceleratorBasicAuthSettingPtrInput is an input type that accepts AcceleratorBasicAuthSettingArgs, AcceleratorBasicAuthSettingPtr and AcceleratorBasicAuthSettingPtrOutput values.
+// You can construct a concrete instance of `AcceleratorBasicAuthSettingPtrInput` via:
+//
+//	        AcceleratorBasicAuthSettingArgs{...}
+//
+//	or:
+//
+//	        nil
+type AcceleratorBasicAuthSettingPtrInput interface {
+	pulumi.Input
+
+	ToAcceleratorBasicAuthSettingPtrOutput() AcceleratorBasicAuthSettingPtrOutput
+	ToAcceleratorBasicAuthSettingPtrOutputWithContext(context.Context) AcceleratorBasicAuthSettingPtrOutput
+}
+
+type acceleratorBasicAuthSettingPtrType AcceleratorBasicAuthSettingArgs
+
+func AcceleratorBasicAuthSettingPtr(v *AcceleratorBasicAuthSettingArgs) AcceleratorBasicAuthSettingPtrInput {
+	return (*acceleratorBasicAuthSettingPtrType)(v)
+}
+
+func (*acceleratorBasicAuthSettingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AcceleratorBasicAuthSetting)(nil)).Elem()
+}
+
+func (i *acceleratorBasicAuthSettingPtrType) ToAcceleratorBasicAuthSettingPtrOutput() AcceleratorBasicAuthSettingPtrOutput {
+	return i.ToAcceleratorBasicAuthSettingPtrOutputWithContext(context.Background())
+}
+
+func (i *acceleratorBasicAuthSettingPtrType) ToAcceleratorBasicAuthSettingPtrOutputWithContext(ctx context.Context) AcceleratorBasicAuthSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorBasicAuthSettingPtrOutput)
+}
+
+// Auth setting for basic auth.
+type AcceleratorBasicAuthSettingOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorBasicAuthSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorBasicAuthSetting)(nil)).Elem()
+}
+
+func (o AcceleratorBasicAuthSettingOutput) ToAcceleratorBasicAuthSettingOutput() AcceleratorBasicAuthSettingOutput {
+	return o
+}
+
+func (o AcceleratorBasicAuthSettingOutput) ToAcceleratorBasicAuthSettingOutputWithContext(ctx context.Context) AcceleratorBasicAuthSettingOutput {
+	return o
+}
+
+func (o AcceleratorBasicAuthSettingOutput) ToAcceleratorBasicAuthSettingPtrOutput() AcceleratorBasicAuthSettingPtrOutput {
+	return o.ToAcceleratorBasicAuthSettingPtrOutputWithContext(context.Background())
+}
+
+func (o AcceleratorBasicAuthSettingOutput) ToAcceleratorBasicAuthSettingPtrOutputWithContext(ctx context.Context) AcceleratorBasicAuthSettingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AcceleratorBasicAuthSetting) *AcceleratorBasicAuthSetting {
+		return &v
+	}).(AcceleratorBasicAuthSettingPtrOutput)
+}
+
+// The type of the auth setting.
+// Expected value is 'BasicAuth'.
+func (o AcceleratorBasicAuthSettingOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v AcceleratorBasicAuthSetting) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Resource Id of CA certificate for https URL of Git repository.
+func (o AcceleratorBasicAuthSettingOutput) CaCertResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcceleratorBasicAuthSetting) *string { return v.CaCertResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Password of git repository basic auth.
+func (o AcceleratorBasicAuthSettingOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcceleratorBasicAuthSetting) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Username of git repository basic auth.
+func (o AcceleratorBasicAuthSettingOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v AcceleratorBasicAuthSetting) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type AcceleratorBasicAuthSettingPtrOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorBasicAuthSettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AcceleratorBasicAuthSetting)(nil)).Elem()
+}
+
+func (o AcceleratorBasicAuthSettingPtrOutput) ToAcceleratorBasicAuthSettingPtrOutput() AcceleratorBasicAuthSettingPtrOutput {
+	return o
+}
+
+func (o AcceleratorBasicAuthSettingPtrOutput) ToAcceleratorBasicAuthSettingPtrOutputWithContext(ctx context.Context) AcceleratorBasicAuthSettingPtrOutput {
+	return o
+}
+
+func (o AcceleratorBasicAuthSettingPtrOutput) Elem() AcceleratorBasicAuthSettingOutput {
+	return o.ApplyT(func(v *AcceleratorBasicAuthSetting) AcceleratorBasicAuthSetting {
+		if v != nil {
+			return *v
+		}
+		var ret AcceleratorBasicAuthSetting
+		return ret
+	}).(AcceleratorBasicAuthSettingOutput)
+}
+
+// The type of the auth setting.
+// Expected value is 'BasicAuth'.
+func (o AcceleratorBasicAuthSettingPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AcceleratorBasicAuthSetting) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource Id of CA certificate for https URL of Git repository.
+func (o AcceleratorBasicAuthSettingPtrOutput) CaCertResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AcceleratorBasicAuthSetting) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaCertResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Password of git repository basic auth.
+func (o AcceleratorBasicAuthSettingPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AcceleratorBasicAuthSetting) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username of git repository basic auth.
+func (o AcceleratorBasicAuthSettingPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AcceleratorBasicAuthSetting) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 // Auth setting for basic auth.
 type AcceleratorBasicAuthSettingResponse struct {
 	// The type of the auth setting.
@@ -35,6 +223,37 @@ type AcceleratorBasicAuthSettingResponse struct {
 	CaCertResourceId *string `pulumi:"caCertResourceId"`
 	// Username of git repository basic auth.
 	Username string `pulumi:"username"`
+}
+
+// Auth setting for basic auth.
+type AcceleratorBasicAuthSettingResponseOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorBasicAuthSettingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorBasicAuthSettingResponse)(nil)).Elem()
+}
+
+func (o AcceleratorBasicAuthSettingResponseOutput) ToAcceleratorBasicAuthSettingResponseOutput() AcceleratorBasicAuthSettingResponseOutput {
+	return o
+}
+
+func (o AcceleratorBasicAuthSettingResponseOutput) ToAcceleratorBasicAuthSettingResponseOutputWithContext(ctx context.Context) AcceleratorBasicAuthSettingResponseOutput {
+	return o
+}
+
+// The type of the auth setting.
+// Expected value is 'BasicAuth'.
+func (o AcceleratorBasicAuthSettingResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v AcceleratorBasicAuthSettingResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Resource Id of CA certificate for https URL of Git repository.
+func (o AcceleratorBasicAuthSettingResponseOutput) CaCertResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcceleratorBasicAuthSettingResponse) *string { return v.CaCertResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Username of git repository basic auth.
+func (o AcceleratorBasicAuthSettingResponseOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v AcceleratorBasicAuthSettingResponse) string { return v.Username }).(pulumi.StringOutput)
 }
 
 type AcceleratorGitRepository struct {
@@ -337,6 +556,160 @@ type AcceleratorPublicSetting struct {
 	CaCertResourceId *string `pulumi:"caCertResourceId"`
 }
 
+// AcceleratorPublicSettingInput is an input type that accepts AcceleratorPublicSettingArgs and AcceleratorPublicSettingOutput values.
+// You can construct a concrete instance of `AcceleratorPublicSettingInput` via:
+//
+//	AcceleratorPublicSettingArgs{...}
+type AcceleratorPublicSettingInput interface {
+	pulumi.Input
+
+	ToAcceleratorPublicSettingOutput() AcceleratorPublicSettingOutput
+	ToAcceleratorPublicSettingOutputWithContext(context.Context) AcceleratorPublicSettingOutput
+}
+
+// Auth setting for public url.
+type AcceleratorPublicSettingArgs struct {
+	// The type of the auth setting.
+	// Expected value is 'Public'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Resource Id of CA certificate for https URL of Git repository.
+	CaCertResourceId pulumi.StringPtrInput `pulumi:"caCertResourceId"`
+}
+
+func (AcceleratorPublicSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorPublicSetting)(nil)).Elem()
+}
+
+func (i AcceleratorPublicSettingArgs) ToAcceleratorPublicSettingOutput() AcceleratorPublicSettingOutput {
+	return i.ToAcceleratorPublicSettingOutputWithContext(context.Background())
+}
+
+func (i AcceleratorPublicSettingArgs) ToAcceleratorPublicSettingOutputWithContext(ctx context.Context) AcceleratorPublicSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorPublicSettingOutput)
+}
+
+func (i AcceleratorPublicSettingArgs) ToAcceleratorPublicSettingPtrOutput() AcceleratorPublicSettingPtrOutput {
+	return i.ToAcceleratorPublicSettingPtrOutputWithContext(context.Background())
+}
+
+func (i AcceleratorPublicSettingArgs) ToAcceleratorPublicSettingPtrOutputWithContext(ctx context.Context) AcceleratorPublicSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorPublicSettingOutput).ToAcceleratorPublicSettingPtrOutputWithContext(ctx)
+}
+
+// AcceleratorPublicSettingPtrInput is an input type that accepts AcceleratorPublicSettingArgs, AcceleratorPublicSettingPtr and AcceleratorPublicSettingPtrOutput values.
+// You can construct a concrete instance of `AcceleratorPublicSettingPtrInput` via:
+//
+//	        AcceleratorPublicSettingArgs{...}
+//
+//	or:
+//
+//	        nil
+type AcceleratorPublicSettingPtrInput interface {
+	pulumi.Input
+
+	ToAcceleratorPublicSettingPtrOutput() AcceleratorPublicSettingPtrOutput
+	ToAcceleratorPublicSettingPtrOutputWithContext(context.Context) AcceleratorPublicSettingPtrOutput
+}
+
+type acceleratorPublicSettingPtrType AcceleratorPublicSettingArgs
+
+func AcceleratorPublicSettingPtr(v *AcceleratorPublicSettingArgs) AcceleratorPublicSettingPtrInput {
+	return (*acceleratorPublicSettingPtrType)(v)
+}
+
+func (*acceleratorPublicSettingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AcceleratorPublicSetting)(nil)).Elem()
+}
+
+func (i *acceleratorPublicSettingPtrType) ToAcceleratorPublicSettingPtrOutput() AcceleratorPublicSettingPtrOutput {
+	return i.ToAcceleratorPublicSettingPtrOutputWithContext(context.Background())
+}
+
+func (i *acceleratorPublicSettingPtrType) ToAcceleratorPublicSettingPtrOutputWithContext(ctx context.Context) AcceleratorPublicSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorPublicSettingPtrOutput)
+}
+
+// Auth setting for public url.
+type AcceleratorPublicSettingOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorPublicSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorPublicSetting)(nil)).Elem()
+}
+
+func (o AcceleratorPublicSettingOutput) ToAcceleratorPublicSettingOutput() AcceleratorPublicSettingOutput {
+	return o
+}
+
+func (o AcceleratorPublicSettingOutput) ToAcceleratorPublicSettingOutputWithContext(ctx context.Context) AcceleratorPublicSettingOutput {
+	return o
+}
+
+func (o AcceleratorPublicSettingOutput) ToAcceleratorPublicSettingPtrOutput() AcceleratorPublicSettingPtrOutput {
+	return o.ToAcceleratorPublicSettingPtrOutputWithContext(context.Background())
+}
+
+func (o AcceleratorPublicSettingOutput) ToAcceleratorPublicSettingPtrOutputWithContext(ctx context.Context) AcceleratorPublicSettingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AcceleratorPublicSetting) *AcceleratorPublicSetting {
+		return &v
+	}).(AcceleratorPublicSettingPtrOutput)
+}
+
+// The type of the auth setting.
+// Expected value is 'Public'.
+func (o AcceleratorPublicSettingOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v AcceleratorPublicSetting) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Resource Id of CA certificate for https URL of Git repository.
+func (o AcceleratorPublicSettingOutput) CaCertResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcceleratorPublicSetting) *string { return v.CaCertResourceId }).(pulumi.StringPtrOutput)
+}
+
+type AcceleratorPublicSettingPtrOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorPublicSettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AcceleratorPublicSetting)(nil)).Elem()
+}
+
+func (o AcceleratorPublicSettingPtrOutput) ToAcceleratorPublicSettingPtrOutput() AcceleratorPublicSettingPtrOutput {
+	return o
+}
+
+func (o AcceleratorPublicSettingPtrOutput) ToAcceleratorPublicSettingPtrOutputWithContext(ctx context.Context) AcceleratorPublicSettingPtrOutput {
+	return o
+}
+
+func (o AcceleratorPublicSettingPtrOutput) Elem() AcceleratorPublicSettingOutput {
+	return o.ApplyT(func(v *AcceleratorPublicSetting) AcceleratorPublicSetting {
+		if v != nil {
+			return *v
+		}
+		var ret AcceleratorPublicSetting
+		return ret
+	}).(AcceleratorPublicSettingOutput)
+}
+
+// The type of the auth setting.
+// Expected value is 'Public'.
+func (o AcceleratorPublicSettingPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AcceleratorPublicSetting) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource Id of CA certificate for https URL of Git repository.
+func (o AcceleratorPublicSettingPtrOutput) CaCertResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AcceleratorPublicSetting) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaCertResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Auth setting for public url.
 type AcceleratorPublicSettingResponse struct {
 	// The type of the auth setting.
@@ -344,6 +717,32 @@ type AcceleratorPublicSettingResponse struct {
 	AuthType string `pulumi:"authType"`
 	// Resource Id of CA certificate for https URL of Git repository.
 	CaCertResourceId *string `pulumi:"caCertResourceId"`
+}
+
+// Auth setting for public url.
+type AcceleratorPublicSettingResponseOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorPublicSettingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorPublicSettingResponse)(nil)).Elem()
+}
+
+func (o AcceleratorPublicSettingResponseOutput) ToAcceleratorPublicSettingResponseOutput() AcceleratorPublicSettingResponseOutput {
+	return o
+}
+
+func (o AcceleratorPublicSettingResponseOutput) ToAcceleratorPublicSettingResponseOutputWithContext(ctx context.Context) AcceleratorPublicSettingResponseOutput {
+	return o
+}
+
+// The type of the auth setting.
+// Expected value is 'Public'.
+func (o AcceleratorPublicSettingResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v AcceleratorPublicSettingResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Resource Id of CA certificate for https URL of Git repository.
+func (o AcceleratorPublicSettingResponseOutput) CaCertResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcceleratorPublicSettingResponse) *string { return v.CaCertResourceId }).(pulumi.StringPtrOutput)
 }
 
 // Auth setting for SSH auth.
@@ -359,11 +758,220 @@ type AcceleratorSshSetting struct {
 	PrivateKey *string `pulumi:"privateKey"`
 }
 
+// AcceleratorSshSettingInput is an input type that accepts AcceleratorSshSettingArgs and AcceleratorSshSettingOutput values.
+// You can construct a concrete instance of `AcceleratorSshSettingInput` via:
+//
+//	AcceleratorSshSettingArgs{...}
+type AcceleratorSshSettingInput interface {
+	pulumi.Input
+
+	ToAcceleratorSshSettingOutput() AcceleratorSshSettingOutput
+	ToAcceleratorSshSettingOutputWithContext(context.Context) AcceleratorSshSettingOutput
+}
+
+// Auth setting for SSH auth.
+type AcceleratorSshSettingArgs struct {
+	// The type of the auth setting.
+	// Expected value is 'SSH'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Public SSH Key of git repository.
+	HostKey pulumi.StringPtrInput `pulumi:"hostKey"`
+	// SSH Key algorithm of git repository.
+	HostKeyAlgorithm pulumi.StringPtrInput `pulumi:"hostKeyAlgorithm"`
+	// Private SSH Key algorithm of git repository.
+	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
+}
+
+func (AcceleratorSshSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorSshSetting)(nil)).Elem()
+}
+
+func (i AcceleratorSshSettingArgs) ToAcceleratorSshSettingOutput() AcceleratorSshSettingOutput {
+	return i.ToAcceleratorSshSettingOutputWithContext(context.Background())
+}
+
+func (i AcceleratorSshSettingArgs) ToAcceleratorSshSettingOutputWithContext(ctx context.Context) AcceleratorSshSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorSshSettingOutput)
+}
+
+func (i AcceleratorSshSettingArgs) ToAcceleratorSshSettingPtrOutput() AcceleratorSshSettingPtrOutput {
+	return i.ToAcceleratorSshSettingPtrOutputWithContext(context.Background())
+}
+
+func (i AcceleratorSshSettingArgs) ToAcceleratorSshSettingPtrOutputWithContext(ctx context.Context) AcceleratorSshSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorSshSettingOutput).ToAcceleratorSshSettingPtrOutputWithContext(ctx)
+}
+
+// AcceleratorSshSettingPtrInput is an input type that accepts AcceleratorSshSettingArgs, AcceleratorSshSettingPtr and AcceleratorSshSettingPtrOutput values.
+// You can construct a concrete instance of `AcceleratorSshSettingPtrInput` via:
+//
+//	        AcceleratorSshSettingArgs{...}
+//
+//	or:
+//
+//	        nil
+type AcceleratorSshSettingPtrInput interface {
+	pulumi.Input
+
+	ToAcceleratorSshSettingPtrOutput() AcceleratorSshSettingPtrOutput
+	ToAcceleratorSshSettingPtrOutputWithContext(context.Context) AcceleratorSshSettingPtrOutput
+}
+
+type acceleratorSshSettingPtrType AcceleratorSshSettingArgs
+
+func AcceleratorSshSettingPtr(v *AcceleratorSshSettingArgs) AcceleratorSshSettingPtrInput {
+	return (*acceleratorSshSettingPtrType)(v)
+}
+
+func (*acceleratorSshSettingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AcceleratorSshSetting)(nil)).Elem()
+}
+
+func (i *acceleratorSshSettingPtrType) ToAcceleratorSshSettingPtrOutput() AcceleratorSshSettingPtrOutput {
+	return i.ToAcceleratorSshSettingPtrOutputWithContext(context.Background())
+}
+
+func (i *acceleratorSshSettingPtrType) ToAcceleratorSshSettingPtrOutputWithContext(ctx context.Context) AcceleratorSshSettingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorSshSettingPtrOutput)
+}
+
+// Auth setting for SSH auth.
+type AcceleratorSshSettingOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorSshSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorSshSetting)(nil)).Elem()
+}
+
+func (o AcceleratorSshSettingOutput) ToAcceleratorSshSettingOutput() AcceleratorSshSettingOutput {
+	return o
+}
+
+func (o AcceleratorSshSettingOutput) ToAcceleratorSshSettingOutputWithContext(ctx context.Context) AcceleratorSshSettingOutput {
+	return o
+}
+
+func (o AcceleratorSshSettingOutput) ToAcceleratorSshSettingPtrOutput() AcceleratorSshSettingPtrOutput {
+	return o.ToAcceleratorSshSettingPtrOutputWithContext(context.Background())
+}
+
+func (o AcceleratorSshSettingOutput) ToAcceleratorSshSettingPtrOutputWithContext(ctx context.Context) AcceleratorSshSettingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AcceleratorSshSetting) *AcceleratorSshSetting {
+		return &v
+	}).(AcceleratorSshSettingPtrOutput)
+}
+
+// The type of the auth setting.
+// Expected value is 'SSH'.
+func (o AcceleratorSshSettingOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v AcceleratorSshSetting) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Public SSH Key of git repository.
+func (o AcceleratorSshSettingOutput) HostKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcceleratorSshSetting) *string { return v.HostKey }).(pulumi.StringPtrOutput)
+}
+
+// SSH Key algorithm of git repository.
+func (o AcceleratorSshSettingOutput) HostKeyAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcceleratorSshSetting) *string { return v.HostKeyAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+// Private SSH Key algorithm of git repository.
+func (o AcceleratorSshSettingOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcceleratorSshSetting) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+type AcceleratorSshSettingPtrOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorSshSettingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AcceleratorSshSetting)(nil)).Elem()
+}
+
+func (o AcceleratorSshSettingPtrOutput) ToAcceleratorSshSettingPtrOutput() AcceleratorSshSettingPtrOutput {
+	return o
+}
+
+func (o AcceleratorSshSettingPtrOutput) ToAcceleratorSshSettingPtrOutputWithContext(ctx context.Context) AcceleratorSshSettingPtrOutput {
+	return o
+}
+
+func (o AcceleratorSshSettingPtrOutput) Elem() AcceleratorSshSettingOutput {
+	return o.ApplyT(func(v *AcceleratorSshSetting) AcceleratorSshSetting {
+		if v != nil {
+			return *v
+		}
+		var ret AcceleratorSshSetting
+		return ret
+	}).(AcceleratorSshSettingOutput)
+}
+
+// The type of the auth setting.
+// Expected value is 'SSH'.
+func (o AcceleratorSshSettingPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AcceleratorSshSetting) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Public SSH Key of git repository.
+func (o AcceleratorSshSettingPtrOutput) HostKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AcceleratorSshSetting) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// SSH Key algorithm of git repository.
+func (o AcceleratorSshSettingPtrOutput) HostKeyAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AcceleratorSshSetting) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostKeyAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+// Private SSH Key algorithm of git repository.
+func (o AcceleratorSshSettingPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AcceleratorSshSetting) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
 // Auth setting for SSH auth.
 type AcceleratorSshSettingResponse struct {
 	// The type of the auth setting.
 	// Expected value is 'SSH'.
 	AuthType string `pulumi:"authType"`
+}
+
+// Auth setting for SSH auth.
+type AcceleratorSshSettingResponseOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorSshSettingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorSshSettingResponse)(nil)).Elem()
+}
+
+func (o AcceleratorSshSettingResponseOutput) ToAcceleratorSshSettingResponseOutput() AcceleratorSshSettingResponseOutput {
+	return o
+}
+
+func (o AcceleratorSshSettingResponseOutput) ToAcceleratorSshSettingResponseOutputWithContext(ctx context.Context) AcceleratorSshSettingResponseOutput {
+	return o
+}
+
+// The type of the auth setting.
+// Expected value is 'SSH'.
+func (o AcceleratorSshSettingResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v AcceleratorSshSettingResponse) string { return v.AuthType }).(pulumi.StringOutput)
 }
 
 // The properties of custom domain for API portal
@@ -3951,6 +4559,177 @@ type BuildResultUserSourceInfo struct {
 	Version *string `pulumi:"version"`
 }
 
+// BuildResultUserSourceInfoInput is an input type that accepts BuildResultUserSourceInfoArgs and BuildResultUserSourceInfoOutput values.
+// You can construct a concrete instance of `BuildResultUserSourceInfoInput` via:
+//
+//	BuildResultUserSourceInfoArgs{...}
+type BuildResultUserSourceInfoInput interface {
+	pulumi.Input
+
+	ToBuildResultUserSourceInfoOutput() BuildResultUserSourceInfoOutput
+	ToBuildResultUserSourceInfoOutputWithContext(context.Context) BuildResultUserSourceInfoOutput
+}
+
+// Reference to a build result
+type BuildResultUserSourceInfoArgs struct {
+	// Resource id of an existing succeeded build result under the same Spring instance.
+	BuildResultId pulumi.StringPtrInput `pulumi:"buildResultId"`
+	// Type of the source uploaded
+	// Expected value is 'BuildResult'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Version of the source
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (BuildResultUserSourceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildResultUserSourceInfo)(nil)).Elem()
+}
+
+func (i BuildResultUserSourceInfoArgs) ToBuildResultUserSourceInfoOutput() BuildResultUserSourceInfoOutput {
+	return i.ToBuildResultUserSourceInfoOutputWithContext(context.Background())
+}
+
+func (i BuildResultUserSourceInfoArgs) ToBuildResultUserSourceInfoOutputWithContext(ctx context.Context) BuildResultUserSourceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildResultUserSourceInfoOutput)
+}
+
+func (i BuildResultUserSourceInfoArgs) ToBuildResultUserSourceInfoPtrOutput() BuildResultUserSourceInfoPtrOutput {
+	return i.ToBuildResultUserSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i BuildResultUserSourceInfoArgs) ToBuildResultUserSourceInfoPtrOutputWithContext(ctx context.Context) BuildResultUserSourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildResultUserSourceInfoOutput).ToBuildResultUserSourceInfoPtrOutputWithContext(ctx)
+}
+
+// BuildResultUserSourceInfoPtrInput is an input type that accepts BuildResultUserSourceInfoArgs, BuildResultUserSourceInfoPtr and BuildResultUserSourceInfoPtrOutput values.
+// You can construct a concrete instance of `BuildResultUserSourceInfoPtrInput` via:
+//
+//	        BuildResultUserSourceInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type BuildResultUserSourceInfoPtrInput interface {
+	pulumi.Input
+
+	ToBuildResultUserSourceInfoPtrOutput() BuildResultUserSourceInfoPtrOutput
+	ToBuildResultUserSourceInfoPtrOutputWithContext(context.Context) BuildResultUserSourceInfoPtrOutput
+}
+
+type buildResultUserSourceInfoPtrType BuildResultUserSourceInfoArgs
+
+func BuildResultUserSourceInfoPtr(v *BuildResultUserSourceInfoArgs) BuildResultUserSourceInfoPtrInput {
+	return (*buildResultUserSourceInfoPtrType)(v)
+}
+
+func (*buildResultUserSourceInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildResultUserSourceInfo)(nil)).Elem()
+}
+
+func (i *buildResultUserSourceInfoPtrType) ToBuildResultUserSourceInfoPtrOutput() BuildResultUserSourceInfoPtrOutput {
+	return i.ToBuildResultUserSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *buildResultUserSourceInfoPtrType) ToBuildResultUserSourceInfoPtrOutputWithContext(ctx context.Context) BuildResultUserSourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BuildResultUserSourceInfoPtrOutput)
+}
+
+// Reference to a build result
+type BuildResultUserSourceInfoOutput struct{ *pulumi.OutputState }
+
+func (BuildResultUserSourceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildResultUserSourceInfo)(nil)).Elem()
+}
+
+func (o BuildResultUserSourceInfoOutput) ToBuildResultUserSourceInfoOutput() BuildResultUserSourceInfoOutput {
+	return o
+}
+
+func (o BuildResultUserSourceInfoOutput) ToBuildResultUserSourceInfoOutputWithContext(ctx context.Context) BuildResultUserSourceInfoOutput {
+	return o
+}
+
+func (o BuildResultUserSourceInfoOutput) ToBuildResultUserSourceInfoPtrOutput() BuildResultUserSourceInfoPtrOutput {
+	return o.ToBuildResultUserSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (o BuildResultUserSourceInfoOutput) ToBuildResultUserSourceInfoPtrOutputWithContext(ctx context.Context) BuildResultUserSourceInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildResultUserSourceInfo) *BuildResultUserSourceInfo {
+		return &v
+	}).(BuildResultUserSourceInfoPtrOutput)
+}
+
+// Resource id of an existing succeeded build result under the same Spring instance.
+func (o BuildResultUserSourceInfoOutput) BuildResultId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BuildResultUserSourceInfo) *string { return v.BuildResultId }).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'BuildResult'.
+func (o BuildResultUserSourceInfoOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildResultUserSourceInfo) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the source
+func (o BuildResultUserSourceInfoOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BuildResultUserSourceInfo) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type BuildResultUserSourceInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (BuildResultUserSourceInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildResultUserSourceInfo)(nil)).Elem()
+}
+
+func (o BuildResultUserSourceInfoPtrOutput) ToBuildResultUserSourceInfoPtrOutput() BuildResultUserSourceInfoPtrOutput {
+	return o
+}
+
+func (o BuildResultUserSourceInfoPtrOutput) ToBuildResultUserSourceInfoPtrOutputWithContext(ctx context.Context) BuildResultUserSourceInfoPtrOutput {
+	return o
+}
+
+func (o BuildResultUserSourceInfoPtrOutput) Elem() BuildResultUserSourceInfoOutput {
+	return o.ApplyT(func(v *BuildResultUserSourceInfo) BuildResultUserSourceInfo {
+		if v != nil {
+			return *v
+		}
+		var ret BuildResultUserSourceInfo
+		return ret
+	}).(BuildResultUserSourceInfoOutput)
+}
+
+// Resource id of an existing succeeded build result under the same Spring instance.
+func (o BuildResultUserSourceInfoPtrOutput) BuildResultId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildResultUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BuildResultId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'BuildResult'.
+func (o BuildResultUserSourceInfoPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildResultUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of the source
+func (o BuildResultUserSourceInfoPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildResultUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 // Reference to a build result
 type BuildResultUserSourceInfoResponse struct {
 	// Resource id of an existing succeeded build result under the same Spring instance.
@@ -3960,6 +4739,92 @@ type BuildResultUserSourceInfoResponse struct {
 	Type string `pulumi:"type"`
 	// Version of the source
 	Version *string `pulumi:"version"`
+}
+
+// Reference to a build result
+type BuildResultUserSourceInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (BuildResultUserSourceInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildResultUserSourceInfoResponse)(nil)).Elem()
+}
+
+func (o BuildResultUserSourceInfoResponseOutput) ToBuildResultUserSourceInfoResponseOutput() BuildResultUserSourceInfoResponseOutput {
+	return o
+}
+
+func (o BuildResultUserSourceInfoResponseOutput) ToBuildResultUserSourceInfoResponseOutputWithContext(ctx context.Context) BuildResultUserSourceInfoResponseOutput {
+	return o
+}
+
+// Resource id of an existing succeeded build result under the same Spring instance.
+func (o BuildResultUserSourceInfoResponseOutput) BuildResultId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BuildResultUserSourceInfoResponse) *string { return v.BuildResultId }).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'BuildResult'.
+func (o BuildResultUserSourceInfoResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildResultUserSourceInfoResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the source
+func (o BuildResultUserSourceInfoResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BuildResultUserSourceInfoResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type BuildResultUserSourceInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BuildResultUserSourceInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BuildResultUserSourceInfoResponse)(nil)).Elem()
+}
+
+func (o BuildResultUserSourceInfoResponsePtrOutput) ToBuildResultUserSourceInfoResponsePtrOutput() BuildResultUserSourceInfoResponsePtrOutput {
+	return o
+}
+
+func (o BuildResultUserSourceInfoResponsePtrOutput) ToBuildResultUserSourceInfoResponsePtrOutputWithContext(ctx context.Context) BuildResultUserSourceInfoResponsePtrOutput {
+	return o
+}
+
+func (o BuildResultUserSourceInfoResponsePtrOutput) Elem() BuildResultUserSourceInfoResponseOutput {
+	return o.ApplyT(func(v *BuildResultUserSourceInfoResponse) BuildResultUserSourceInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BuildResultUserSourceInfoResponse
+		return ret
+	}).(BuildResultUserSourceInfoResponseOutput)
+}
+
+// Resource id of an existing succeeded build result under the same Spring instance.
+func (o BuildResultUserSourceInfoResponsePtrOutput) BuildResultId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildResultUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BuildResultId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'BuildResult'.
+func (o BuildResultUserSourceInfoResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildResultUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of the source
+func (o BuildResultUserSourceInfoResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BuildResultUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
 }
 
 // Build service agent pool properties
@@ -8495,6 +9360,160 @@ type ContentCertificateProperties struct {
 	Type string `pulumi:"type"`
 }
 
+// ContentCertificatePropertiesInput is an input type that accepts ContentCertificatePropertiesArgs and ContentCertificatePropertiesOutput values.
+// You can construct a concrete instance of `ContentCertificatePropertiesInput` via:
+//
+//	ContentCertificatePropertiesArgs{...}
+type ContentCertificatePropertiesInput interface {
+	pulumi.Input
+
+	ToContentCertificatePropertiesOutput() ContentCertificatePropertiesOutput
+	ToContentCertificatePropertiesOutputWithContext(context.Context) ContentCertificatePropertiesOutput
+}
+
+// Properties of certificate imported from key vault.
+type ContentCertificatePropertiesArgs struct {
+	// The content of uploaded certificate.
+	Content pulumi.StringPtrInput `pulumi:"content"`
+	// The type of the certificate source.
+	// Expected value is 'ContentCertificate'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ContentCertificatePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentCertificateProperties)(nil)).Elem()
+}
+
+func (i ContentCertificatePropertiesArgs) ToContentCertificatePropertiesOutput() ContentCertificatePropertiesOutput {
+	return i.ToContentCertificatePropertiesOutputWithContext(context.Background())
+}
+
+func (i ContentCertificatePropertiesArgs) ToContentCertificatePropertiesOutputWithContext(ctx context.Context) ContentCertificatePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentCertificatePropertiesOutput)
+}
+
+func (i ContentCertificatePropertiesArgs) ToContentCertificatePropertiesPtrOutput() ContentCertificatePropertiesPtrOutput {
+	return i.ToContentCertificatePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ContentCertificatePropertiesArgs) ToContentCertificatePropertiesPtrOutputWithContext(ctx context.Context) ContentCertificatePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentCertificatePropertiesOutput).ToContentCertificatePropertiesPtrOutputWithContext(ctx)
+}
+
+// ContentCertificatePropertiesPtrInput is an input type that accepts ContentCertificatePropertiesArgs, ContentCertificatePropertiesPtr and ContentCertificatePropertiesPtrOutput values.
+// You can construct a concrete instance of `ContentCertificatePropertiesPtrInput` via:
+//
+//	        ContentCertificatePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ContentCertificatePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToContentCertificatePropertiesPtrOutput() ContentCertificatePropertiesPtrOutput
+	ToContentCertificatePropertiesPtrOutputWithContext(context.Context) ContentCertificatePropertiesPtrOutput
+}
+
+type contentCertificatePropertiesPtrType ContentCertificatePropertiesArgs
+
+func ContentCertificatePropertiesPtr(v *ContentCertificatePropertiesArgs) ContentCertificatePropertiesPtrInput {
+	return (*contentCertificatePropertiesPtrType)(v)
+}
+
+func (*contentCertificatePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContentCertificateProperties)(nil)).Elem()
+}
+
+func (i *contentCertificatePropertiesPtrType) ToContentCertificatePropertiesPtrOutput() ContentCertificatePropertiesPtrOutput {
+	return i.ToContentCertificatePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *contentCertificatePropertiesPtrType) ToContentCertificatePropertiesPtrOutputWithContext(ctx context.Context) ContentCertificatePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContentCertificatePropertiesPtrOutput)
+}
+
+// Properties of certificate imported from key vault.
+type ContentCertificatePropertiesOutput struct{ *pulumi.OutputState }
+
+func (ContentCertificatePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentCertificateProperties)(nil)).Elem()
+}
+
+func (o ContentCertificatePropertiesOutput) ToContentCertificatePropertiesOutput() ContentCertificatePropertiesOutput {
+	return o
+}
+
+func (o ContentCertificatePropertiesOutput) ToContentCertificatePropertiesOutputWithContext(ctx context.Context) ContentCertificatePropertiesOutput {
+	return o
+}
+
+func (o ContentCertificatePropertiesOutput) ToContentCertificatePropertiesPtrOutput() ContentCertificatePropertiesPtrOutput {
+	return o.ToContentCertificatePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ContentCertificatePropertiesOutput) ToContentCertificatePropertiesPtrOutputWithContext(ctx context.Context) ContentCertificatePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContentCertificateProperties) *ContentCertificateProperties {
+		return &v
+	}).(ContentCertificatePropertiesPtrOutput)
+}
+
+// The content of uploaded certificate.
+func (o ContentCertificatePropertiesOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContentCertificateProperties) *string { return v.Content }).(pulumi.StringPtrOutput)
+}
+
+// The type of the certificate source.
+// Expected value is 'ContentCertificate'.
+func (o ContentCertificatePropertiesOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ContentCertificateProperties) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ContentCertificatePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ContentCertificatePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContentCertificateProperties)(nil)).Elem()
+}
+
+func (o ContentCertificatePropertiesPtrOutput) ToContentCertificatePropertiesPtrOutput() ContentCertificatePropertiesPtrOutput {
+	return o
+}
+
+func (o ContentCertificatePropertiesPtrOutput) ToContentCertificatePropertiesPtrOutputWithContext(ctx context.Context) ContentCertificatePropertiesPtrOutput {
+	return o
+}
+
+func (o ContentCertificatePropertiesPtrOutput) Elem() ContentCertificatePropertiesOutput {
+	return o.ApplyT(func(v *ContentCertificateProperties) ContentCertificateProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ContentCertificateProperties
+		return ret
+	}).(ContentCertificatePropertiesOutput)
+}
+
+// The content of uploaded certificate.
+func (o ContentCertificatePropertiesPtrOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContentCertificateProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Content
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the certificate source.
+// Expected value is 'ContentCertificate'.
+func (o ContentCertificatePropertiesPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContentCertificateProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // Properties of certificate imported from key vault.
 type ContentCertificatePropertiesResponse struct {
 	// The activate date of certificate.
@@ -8518,6 +9537,67 @@ type ContentCertificatePropertiesResponse struct {
 	Type string `pulumi:"type"`
 }
 
+// Properties of certificate imported from key vault.
+type ContentCertificatePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ContentCertificatePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentCertificatePropertiesResponse)(nil)).Elem()
+}
+
+func (o ContentCertificatePropertiesResponseOutput) ToContentCertificatePropertiesResponseOutput() ContentCertificatePropertiesResponseOutput {
+	return o
+}
+
+func (o ContentCertificatePropertiesResponseOutput) ToContentCertificatePropertiesResponseOutputWithContext(ctx context.Context) ContentCertificatePropertiesResponseOutput {
+	return o
+}
+
+// The activate date of certificate.
+func (o ContentCertificatePropertiesResponseOutput) ActivateDate() pulumi.StringOutput {
+	return o.ApplyT(func(v ContentCertificatePropertiesResponse) string { return v.ActivateDate }).(pulumi.StringOutput)
+}
+
+// The domain list of certificate.
+func (o ContentCertificatePropertiesResponseOutput) DnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContentCertificatePropertiesResponse) []string { return v.DnsNames }).(pulumi.StringArrayOutput)
+}
+
+// The expiration date of certificate.
+func (o ContentCertificatePropertiesResponseOutput) ExpirationDate() pulumi.StringOutput {
+	return o.ApplyT(func(v ContentCertificatePropertiesResponse) string { return v.ExpirationDate }).(pulumi.StringOutput)
+}
+
+// The issue date of certificate.
+func (o ContentCertificatePropertiesResponseOutput) IssuedDate() pulumi.StringOutput {
+	return o.ApplyT(func(v ContentCertificatePropertiesResponse) string { return v.IssuedDate }).(pulumi.StringOutput)
+}
+
+// The issuer of certificate.
+func (o ContentCertificatePropertiesResponseOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v ContentCertificatePropertiesResponse) string { return v.Issuer }).(pulumi.StringOutput)
+}
+
+// Provisioning state of the Certificate
+func (o ContentCertificatePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ContentCertificatePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The subject name of certificate.
+func (o ContentCertificatePropertiesResponseOutput) SubjectName() pulumi.StringOutput {
+	return o.ApplyT(func(v ContentCertificatePropertiesResponse) string { return v.SubjectName }).(pulumi.StringOutput)
+}
+
+// The thumbprint of certificate.
+func (o ContentCertificatePropertiesResponseOutput) Thumbprint() pulumi.StringOutput {
+	return o.ApplyT(func(v ContentCertificatePropertiesResponse) string { return v.Thumbprint }).(pulumi.StringOutput)
+}
+
+// The type of the certificate source.
+// Expected value is 'ContentCertificate'.
+func (o ContentCertificatePropertiesResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ContentCertificatePropertiesResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Custom container payload
 type CustomContainer struct {
 	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
@@ -8532,6 +9612,225 @@ type CustomContainer struct {
 	LanguageFramework *string `pulumi:"languageFramework"`
 	// The name of the registry that contains the container image
 	Server *string `pulumi:"server"`
+}
+
+// CustomContainerInput is an input type that accepts CustomContainerArgs and CustomContainerOutput values.
+// You can construct a concrete instance of `CustomContainerInput` via:
+//
+//	CustomContainerArgs{...}
+type CustomContainerInput interface {
+	pulumi.Input
+
+	ToCustomContainerOutput() CustomContainerOutput
+	ToCustomContainerOutputWithContext(context.Context) CustomContainerOutput
+}
+
+// Custom container payload
+type CustomContainerArgs struct {
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+	Command pulumi.StringArrayInput `pulumi:"command"`
+	// Container image of the custom container. This should be in the form of <repository>:<tag> without the server name of the registry
+	ContainerImage pulumi.StringPtrInput `pulumi:"containerImage"`
+	// Credential of the image registry
+	ImageRegistryCredential ImageRegistryCredentialPtrInput `pulumi:"imageRegistryCredential"`
+	// Language framework of the container image uploaded
+	LanguageFramework pulumi.StringPtrInput `pulumi:"languageFramework"`
+	// The name of the registry that contains the container image
+	Server pulumi.StringPtrInput `pulumi:"server"`
+}
+
+func (CustomContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomContainer)(nil)).Elem()
+}
+
+func (i CustomContainerArgs) ToCustomContainerOutput() CustomContainerOutput {
+	return i.ToCustomContainerOutputWithContext(context.Background())
+}
+
+func (i CustomContainerArgs) ToCustomContainerOutputWithContext(ctx context.Context) CustomContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomContainerOutput)
+}
+
+func (i CustomContainerArgs) ToCustomContainerPtrOutput() CustomContainerPtrOutput {
+	return i.ToCustomContainerPtrOutputWithContext(context.Background())
+}
+
+func (i CustomContainerArgs) ToCustomContainerPtrOutputWithContext(ctx context.Context) CustomContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomContainerOutput).ToCustomContainerPtrOutputWithContext(ctx)
+}
+
+// CustomContainerPtrInput is an input type that accepts CustomContainerArgs, CustomContainerPtr and CustomContainerPtrOutput values.
+// You can construct a concrete instance of `CustomContainerPtrInput` via:
+//
+//	        CustomContainerArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomContainerPtrInput interface {
+	pulumi.Input
+
+	ToCustomContainerPtrOutput() CustomContainerPtrOutput
+	ToCustomContainerPtrOutputWithContext(context.Context) CustomContainerPtrOutput
+}
+
+type customContainerPtrType CustomContainerArgs
+
+func CustomContainerPtr(v *CustomContainerArgs) CustomContainerPtrInput {
+	return (*customContainerPtrType)(v)
+}
+
+func (*customContainerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomContainer)(nil)).Elem()
+}
+
+func (i *customContainerPtrType) ToCustomContainerPtrOutput() CustomContainerPtrOutput {
+	return i.ToCustomContainerPtrOutputWithContext(context.Background())
+}
+
+func (i *customContainerPtrType) ToCustomContainerPtrOutputWithContext(ctx context.Context) CustomContainerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomContainerPtrOutput)
+}
+
+// Custom container payload
+type CustomContainerOutput struct{ *pulumi.OutputState }
+
+func (CustomContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomContainer)(nil)).Elem()
+}
+
+func (o CustomContainerOutput) ToCustomContainerOutput() CustomContainerOutput {
+	return o
+}
+
+func (o CustomContainerOutput) ToCustomContainerOutputWithContext(ctx context.Context) CustomContainerOutput {
+	return o
+}
+
+func (o CustomContainerOutput) ToCustomContainerPtrOutput() CustomContainerPtrOutput {
+	return o.ToCustomContainerPtrOutputWithContext(context.Background())
+}
+
+func (o CustomContainerOutput) ToCustomContainerPtrOutputWithContext(ctx context.Context) CustomContainerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomContainer) *CustomContainer {
+		return &v
+	}).(CustomContainerPtrOutput)
+}
+
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+func (o CustomContainerOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+func (o CustomContainerOutput) Command() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomContainer) []string { return v.Command }).(pulumi.StringArrayOutput)
+}
+
+// Container image of the custom container. This should be in the form of <repository>:<tag> without the server name of the registry
+func (o CustomContainerOutput) ContainerImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomContainer) *string { return v.ContainerImage }).(pulumi.StringPtrOutput)
+}
+
+// Credential of the image registry
+func (o CustomContainerOutput) ImageRegistryCredential() ImageRegistryCredentialPtrOutput {
+	return o.ApplyT(func(v CustomContainer) *ImageRegistryCredential { return v.ImageRegistryCredential }).(ImageRegistryCredentialPtrOutput)
+}
+
+// Language framework of the container image uploaded
+func (o CustomContainerOutput) LanguageFramework() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomContainer) *string { return v.LanguageFramework }).(pulumi.StringPtrOutput)
+}
+
+// The name of the registry that contains the container image
+func (o CustomContainerOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomContainer) *string { return v.Server }).(pulumi.StringPtrOutput)
+}
+
+type CustomContainerPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomContainerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomContainer)(nil)).Elem()
+}
+
+func (o CustomContainerPtrOutput) ToCustomContainerPtrOutput() CustomContainerPtrOutput {
+	return o
+}
+
+func (o CustomContainerPtrOutput) ToCustomContainerPtrOutputWithContext(ctx context.Context) CustomContainerPtrOutput {
+	return o
+}
+
+func (o CustomContainerPtrOutput) Elem() CustomContainerOutput {
+	return o.ApplyT(func(v *CustomContainer) CustomContainer {
+		if v != nil {
+			return *v
+		}
+		var ret CustomContainer
+		return ret
+	}).(CustomContainerOutput)
+}
+
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+func (o CustomContainerPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+func (o CustomContainerPtrOutput) Command() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomContainer) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Command
+	}).(pulumi.StringArrayOutput)
+}
+
+// Container image of the custom container. This should be in the form of <repository>:<tag> without the server name of the registry
+func (o CustomContainerPtrOutput) ContainerImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomContainer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerImage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Credential of the image registry
+func (o CustomContainerPtrOutput) ImageRegistryCredential() ImageRegistryCredentialPtrOutput {
+	return o.ApplyT(func(v *CustomContainer) *ImageRegistryCredential {
+		if v == nil {
+			return nil
+		}
+		return v.ImageRegistryCredential
+	}).(ImageRegistryCredentialPtrOutput)
+}
+
+// Language framework of the container image uploaded
+func (o CustomContainerPtrOutput) LanguageFramework() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomContainer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LanguageFramework
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the registry that contains the container image
+func (o CustomContainerPtrOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomContainer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Server
+	}).(pulumi.StringPtrOutput)
 }
 
 // Custom container payload
@@ -8550,6 +9849,135 @@ type CustomContainerResponse struct {
 	Server *string `pulumi:"server"`
 }
 
+// Custom container payload
+type CustomContainerResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomContainerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomContainerResponse)(nil)).Elem()
+}
+
+func (o CustomContainerResponseOutput) ToCustomContainerResponseOutput() CustomContainerResponseOutput {
+	return o
+}
+
+func (o CustomContainerResponseOutput) ToCustomContainerResponseOutputWithContext(ctx context.Context) CustomContainerResponseOutput {
+	return o
+}
+
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+func (o CustomContainerResponseOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomContainerResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+func (o CustomContainerResponseOutput) Command() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomContainerResponse) []string { return v.Command }).(pulumi.StringArrayOutput)
+}
+
+// Container image of the custom container. This should be in the form of <repository>:<tag> without the server name of the registry
+func (o CustomContainerResponseOutput) ContainerImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomContainerResponse) *string { return v.ContainerImage }).(pulumi.StringPtrOutput)
+}
+
+// Credential of the image registry
+func (o CustomContainerResponseOutput) ImageRegistryCredential() ImageRegistryCredentialResponsePtrOutput {
+	return o.ApplyT(func(v CustomContainerResponse) *ImageRegistryCredentialResponse { return v.ImageRegistryCredential }).(ImageRegistryCredentialResponsePtrOutput)
+}
+
+// Language framework of the container image uploaded
+func (o CustomContainerResponseOutput) LanguageFramework() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomContainerResponse) *string { return v.LanguageFramework }).(pulumi.StringPtrOutput)
+}
+
+// The name of the registry that contains the container image
+func (o CustomContainerResponseOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomContainerResponse) *string { return v.Server }).(pulumi.StringPtrOutput)
+}
+
+type CustomContainerResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomContainerResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomContainerResponse)(nil)).Elem()
+}
+
+func (o CustomContainerResponsePtrOutput) ToCustomContainerResponsePtrOutput() CustomContainerResponsePtrOutput {
+	return o
+}
+
+func (o CustomContainerResponsePtrOutput) ToCustomContainerResponsePtrOutputWithContext(ctx context.Context) CustomContainerResponsePtrOutput {
+	return o
+}
+
+func (o CustomContainerResponsePtrOutput) Elem() CustomContainerResponseOutput {
+	return o.ApplyT(func(v *CustomContainerResponse) CustomContainerResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CustomContainerResponse
+		return ret
+	}).(CustomContainerResponseOutput)
+}
+
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+func (o CustomContainerResponsePtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomContainerResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+func (o CustomContainerResponsePtrOutput) Command() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomContainerResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Command
+	}).(pulumi.StringArrayOutput)
+}
+
+// Container image of the custom container. This should be in the form of <repository>:<tag> without the server name of the registry
+func (o CustomContainerResponsePtrOutput) ContainerImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomContainerResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerImage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Credential of the image registry
+func (o CustomContainerResponsePtrOutput) ImageRegistryCredential() ImageRegistryCredentialResponsePtrOutput {
+	return o.ApplyT(func(v *CustomContainerResponse) *ImageRegistryCredentialResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ImageRegistryCredential
+	}).(ImageRegistryCredentialResponsePtrOutput)
+}
+
+// Language framework of the container image uploaded
+func (o CustomContainerResponsePtrOutput) LanguageFramework() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomContainerResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LanguageFramework
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the registry that contains the container image
+func (o CustomContainerResponsePtrOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomContainerResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Server
+	}).(pulumi.StringPtrOutput)
+}
+
 // Custom container user source info
 type CustomContainerUserSourceInfo struct {
 	// Custom container payload
@@ -8561,6 +9989,177 @@ type CustomContainerUserSourceInfo struct {
 	Version *string `pulumi:"version"`
 }
 
+// CustomContainerUserSourceInfoInput is an input type that accepts CustomContainerUserSourceInfoArgs and CustomContainerUserSourceInfoOutput values.
+// You can construct a concrete instance of `CustomContainerUserSourceInfoInput` via:
+//
+//	CustomContainerUserSourceInfoArgs{...}
+type CustomContainerUserSourceInfoInput interface {
+	pulumi.Input
+
+	ToCustomContainerUserSourceInfoOutput() CustomContainerUserSourceInfoOutput
+	ToCustomContainerUserSourceInfoOutputWithContext(context.Context) CustomContainerUserSourceInfoOutput
+}
+
+// Custom container user source info
+type CustomContainerUserSourceInfoArgs struct {
+	// Custom container payload
+	CustomContainer CustomContainerPtrInput `pulumi:"customContainer"`
+	// Type of the source uploaded
+	// Expected value is 'Container'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Version of the source
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (CustomContainerUserSourceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomContainerUserSourceInfo)(nil)).Elem()
+}
+
+func (i CustomContainerUserSourceInfoArgs) ToCustomContainerUserSourceInfoOutput() CustomContainerUserSourceInfoOutput {
+	return i.ToCustomContainerUserSourceInfoOutputWithContext(context.Background())
+}
+
+func (i CustomContainerUserSourceInfoArgs) ToCustomContainerUserSourceInfoOutputWithContext(ctx context.Context) CustomContainerUserSourceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomContainerUserSourceInfoOutput)
+}
+
+func (i CustomContainerUserSourceInfoArgs) ToCustomContainerUserSourceInfoPtrOutput() CustomContainerUserSourceInfoPtrOutput {
+	return i.ToCustomContainerUserSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i CustomContainerUserSourceInfoArgs) ToCustomContainerUserSourceInfoPtrOutputWithContext(ctx context.Context) CustomContainerUserSourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomContainerUserSourceInfoOutput).ToCustomContainerUserSourceInfoPtrOutputWithContext(ctx)
+}
+
+// CustomContainerUserSourceInfoPtrInput is an input type that accepts CustomContainerUserSourceInfoArgs, CustomContainerUserSourceInfoPtr and CustomContainerUserSourceInfoPtrOutput values.
+// You can construct a concrete instance of `CustomContainerUserSourceInfoPtrInput` via:
+//
+//	        CustomContainerUserSourceInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomContainerUserSourceInfoPtrInput interface {
+	pulumi.Input
+
+	ToCustomContainerUserSourceInfoPtrOutput() CustomContainerUserSourceInfoPtrOutput
+	ToCustomContainerUserSourceInfoPtrOutputWithContext(context.Context) CustomContainerUserSourceInfoPtrOutput
+}
+
+type customContainerUserSourceInfoPtrType CustomContainerUserSourceInfoArgs
+
+func CustomContainerUserSourceInfoPtr(v *CustomContainerUserSourceInfoArgs) CustomContainerUserSourceInfoPtrInput {
+	return (*customContainerUserSourceInfoPtrType)(v)
+}
+
+func (*customContainerUserSourceInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomContainerUserSourceInfo)(nil)).Elem()
+}
+
+func (i *customContainerUserSourceInfoPtrType) ToCustomContainerUserSourceInfoPtrOutput() CustomContainerUserSourceInfoPtrOutput {
+	return i.ToCustomContainerUserSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *customContainerUserSourceInfoPtrType) ToCustomContainerUserSourceInfoPtrOutputWithContext(ctx context.Context) CustomContainerUserSourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomContainerUserSourceInfoPtrOutput)
+}
+
+// Custom container user source info
+type CustomContainerUserSourceInfoOutput struct{ *pulumi.OutputState }
+
+func (CustomContainerUserSourceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomContainerUserSourceInfo)(nil)).Elem()
+}
+
+func (o CustomContainerUserSourceInfoOutput) ToCustomContainerUserSourceInfoOutput() CustomContainerUserSourceInfoOutput {
+	return o
+}
+
+func (o CustomContainerUserSourceInfoOutput) ToCustomContainerUserSourceInfoOutputWithContext(ctx context.Context) CustomContainerUserSourceInfoOutput {
+	return o
+}
+
+func (o CustomContainerUserSourceInfoOutput) ToCustomContainerUserSourceInfoPtrOutput() CustomContainerUserSourceInfoPtrOutput {
+	return o.ToCustomContainerUserSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (o CustomContainerUserSourceInfoOutput) ToCustomContainerUserSourceInfoPtrOutputWithContext(ctx context.Context) CustomContainerUserSourceInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomContainerUserSourceInfo) *CustomContainerUserSourceInfo {
+		return &v
+	}).(CustomContainerUserSourceInfoPtrOutput)
+}
+
+// Custom container payload
+func (o CustomContainerUserSourceInfoOutput) CustomContainer() CustomContainerPtrOutput {
+	return o.ApplyT(func(v CustomContainerUserSourceInfo) *CustomContainer { return v.CustomContainer }).(CustomContainerPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'Container'.
+func (o CustomContainerUserSourceInfoOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomContainerUserSourceInfo) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the source
+func (o CustomContainerUserSourceInfoOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomContainerUserSourceInfo) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type CustomContainerUserSourceInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomContainerUserSourceInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomContainerUserSourceInfo)(nil)).Elem()
+}
+
+func (o CustomContainerUserSourceInfoPtrOutput) ToCustomContainerUserSourceInfoPtrOutput() CustomContainerUserSourceInfoPtrOutput {
+	return o
+}
+
+func (o CustomContainerUserSourceInfoPtrOutput) ToCustomContainerUserSourceInfoPtrOutputWithContext(ctx context.Context) CustomContainerUserSourceInfoPtrOutput {
+	return o
+}
+
+func (o CustomContainerUserSourceInfoPtrOutput) Elem() CustomContainerUserSourceInfoOutput {
+	return o.ApplyT(func(v *CustomContainerUserSourceInfo) CustomContainerUserSourceInfo {
+		if v != nil {
+			return *v
+		}
+		var ret CustomContainerUserSourceInfo
+		return ret
+	}).(CustomContainerUserSourceInfoOutput)
+}
+
+// Custom container payload
+func (o CustomContainerUserSourceInfoPtrOutput) CustomContainer() CustomContainerPtrOutput {
+	return o.ApplyT(func(v *CustomContainerUserSourceInfo) *CustomContainer {
+		if v == nil {
+			return nil
+		}
+		return v.CustomContainer
+	}).(CustomContainerPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'Container'.
+func (o CustomContainerUserSourceInfoPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomContainerUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of the source
+func (o CustomContainerUserSourceInfoPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomContainerUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 // Custom container user source info
 type CustomContainerUserSourceInfoResponse struct {
 	// Custom container payload
@@ -8570,6 +10169,92 @@ type CustomContainerUserSourceInfoResponse struct {
 	Type string `pulumi:"type"`
 	// Version of the source
 	Version *string `pulumi:"version"`
+}
+
+// Custom container user source info
+type CustomContainerUserSourceInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomContainerUserSourceInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomContainerUserSourceInfoResponse)(nil)).Elem()
+}
+
+func (o CustomContainerUserSourceInfoResponseOutput) ToCustomContainerUserSourceInfoResponseOutput() CustomContainerUserSourceInfoResponseOutput {
+	return o
+}
+
+func (o CustomContainerUserSourceInfoResponseOutput) ToCustomContainerUserSourceInfoResponseOutputWithContext(ctx context.Context) CustomContainerUserSourceInfoResponseOutput {
+	return o
+}
+
+// Custom container payload
+func (o CustomContainerUserSourceInfoResponseOutput) CustomContainer() CustomContainerResponsePtrOutput {
+	return o.ApplyT(func(v CustomContainerUserSourceInfoResponse) *CustomContainerResponse { return v.CustomContainer }).(CustomContainerResponsePtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'Container'.
+func (o CustomContainerUserSourceInfoResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomContainerUserSourceInfoResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the source
+func (o CustomContainerUserSourceInfoResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomContainerUserSourceInfoResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type CustomContainerUserSourceInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomContainerUserSourceInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomContainerUserSourceInfoResponse)(nil)).Elem()
+}
+
+func (o CustomContainerUserSourceInfoResponsePtrOutput) ToCustomContainerUserSourceInfoResponsePtrOutput() CustomContainerUserSourceInfoResponsePtrOutput {
+	return o
+}
+
+func (o CustomContainerUserSourceInfoResponsePtrOutput) ToCustomContainerUserSourceInfoResponsePtrOutputWithContext(ctx context.Context) CustomContainerUserSourceInfoResponsePtrOutput {
+	return o
+}
+
+func (o CustomContainerUserSourceInfoResponsePtrOutput) Elem() CustomContainerUserSourceInfoResponseOutput {
+	return o.ApplyT(func(v *CustomContainerUserSourceInfoResponse) CustomContainerUserSourceInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CustomContainerUserSourceInfoResponse
+		return ret
+	}).(CustomContainerUserSourceInfoResponseOutput)
+}
+
+// Custom container payload
+func (o CustomContainerUserSourceInfoResponsePtrOutput) CustomContainer() CustomContainerResponsePtrOutput {
+	return o.ApplyT(func(v *CustomContainerUserSourceInfoResponse) *CustomContainerResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CustomContainer
+	}).(CustomContainerResponsePtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'Container'.
+func (o CustomContainerUserSourceInfoResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomContainerUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of the source
+func (o CustomContainerUserSourceInfoResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomContainerUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
 }
 
 // Custom domain of app resource payload.
@@ -11944,6 +13629,160 @@ type ExecAction struct {
 	Type string `pulumi:"type"`
 }
 
+// ExecActionInput is an input type that accepts ExecActionArgs and ExecActionOutput values.
+// You can construct a concrete instance of `ExecActionInput` via:
+//
+//	ExecActionArgs{...}
+type ExecActionInput interface {
+	pulumi.Input
+
+	ToExecActionOutput() ExecActionOutput
+	ToExecActionOutputWithContext(context.Context) ExecActionOutput
+}
+
+// ExecAction describes a "run in container" action.
+type ExecActionArgs struct {
+	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+	Command pulumi.StringArrayInput `pulumi:"command"`
+	// The type of the action to take to perform the health check.
+	// Expected value is 'ExecAction'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ExecActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecAction)(nil)).Elem()
+}
+
+func (i ExecActionArgs) ToExecActionOutput() ExecActionOutput {
+	return i.ToExecActionOutputWithContext(context.Background())
+}
+
+func (i ExecActionArgs) ToExecActionOutputWithContext(ctx context.Context) ExecActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExecActionOutput)
+}
+
+func (i ExecActionArgs) ToExecActionPtrOutput() ExecActionPtrOutput {
+	return i.ToExecActionPtrOutputWithContext(context.Background())
+}
+
+func (i ExecActionArgs) ToExecActionPtrOutputWithContext(ctx context.Context) ExecActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExecActionOutput).ToExecActionPtrOutputWithContext(ctx)
+}
+
+// ExecActionPtrInput is an input type that accepts ExecActionArgs, ExecActionPtr and ExecActionPtrOutput values.
+// You can construct a concrete instance of `ExecActionPtrInput` via:
+//
+//	        ExecActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExecActionPtrInput interface {
+	pulumi.Input
+
+	ToExecActionPtrOutput() ExecActionPtrOutput
+	ToExecActionPtrOutputWithContext(context.Context) ExecActionPtrOutput
+}
+
+type execActionPtrType ExecActionArgs
+
+func ExecActionPtr(v *ExecActionArgs) ExecActionPtrInput {
+	return (*execActionPtrType)(v)
+}
+
+func (*execActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExecAction)(nil)).Elem()
+}
+
+func (i *execActionPtrType) ToExecActionPtrOutput() ExecActionPtrOutput {
+	return i.ToExecActionPtrOutputWithContext(context.Background())
+}
+
+func (i *execActionPtrType) ToExecActionPtrOutputWithContext(ctx context.Context) ExecActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExecActionPtrOutput)
+}
+
+// ExecAction describes a "run in container" action.
+type ExecActionOutput struct{ *pulumi.OutputState }
+
+func (ExecActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecAction)(nil)).Elem()
+}
+
+func (o ExecActionOutput) ToExecActionOutput() ExecActionOutput {
+	return o
+}
+
+func (o ExecActionOutput) ToExecActionOutputWithContext(ctx context.Context) ExecActionOutput {
+	return o
+}
+
+func (o ExecActionOutput) ToExecActionPtrOutput() ExecActionPtrOutput {
+	return o.ToExecActionPtrOutputWithContext(context.Background())
+}
+
+func (o ExecActionOutput) ToExecActionPtrOutputWithContext(ctx context.Context) ExecActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExecAction) *ExecAction {
+		return &v
+	}).(ExecActionPtrOutput)
+}
+
+// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+func (o ExecActionOutput) Command() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ExecAction) []string { return v.Command }).(pulumi.StringArrayOutput)
+}
+
+// The type of the action to take to perform the health check.
+// Expected value is 'ExecAction'.
+func (o ExecActionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecAction) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ExecActionPtrOutput struct{ *pulumi.OutputState }
+
+func (ExecActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExecAction)(nil)).Elem()
+}
+
+func (o ExecActionPtrOutput) ToExecActionPtrOutput() ExecActionPtrOutput {
+	return o
+}
+
+func (o ExecActionPtrOutput) ToExecActionPtrOutputWithContext(ctx context.Context) ExecActionPtrOutput {
+	return o
+}
+
+func (o ExecActionPtrOutput) Elem() ExecActionOutput {
+	return o.ApplyT(func(v *ExecAction) ExecAction {
+		if v != nil {
+			return *v
+		}
+		var ret ExecAction
+		return ret
+	}).(ExecActionOutput)
+}
+
+// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+func (o ExecActionPtrOutput) Command() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ExecAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Command
+	}).(pulumi.StringArrayOutput)
+}
+
+// The type of the action to take to perform the health check.
+// Expected value is 'ExecAction'.
+func (o ExecActionPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExecAction) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // ExecAction describes a "run in container" action.
 type ExecActionResponse struct {
 	// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
@@ -11951,6 +13790,77 @@ type ExecActionResponse struct {
 	// The type of the action to take to perform the health check.
 	// Expected value is 'ExecAction'.
 	Type string `pulumi:"type"`
+}
+
+// ExecAction describes a "run in container" action.
+type ExecActionResponseOutput struct{ *pulumi.OutputState }
+
+func (ExecActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecActionResponse)(nil)).Elem()
+}
+
+func (o ExecActionResponseOutput) ToExecActionResponseOutput() ExecActionResponseOutput {
+	return o
+}
+
+func (o ExecActionResponseOutput) ToExecActionResponseOutputWithContext(ctx context.Context) ExecActionResponseOutput {
+	return o
+}
+
+// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+func (o ExecActionResponseOutput) Command() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ExecActionResponse) []string { return v.Command }).(pulumi.StringArrayOutput)
+}
+
+// The type of the action to take to perform the health check.
+// Expected value is 'ExecAction'.
+func (o ExecActionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecActionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ExecActionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ExecActionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExecActionResponse)(nil)).Elem()
+}
+
+func (o ExecActionResponsePtrOutput) ToExecActionResponsePtrOutput() ExecActionResponsePtrOutput {
+	return o
+}
+
+func (o ExecActionResponsePtrOutput) ToExecActionResponsePtrOutputWithContext(ctx context.Context) ExecActionResponsePtrOutput {
+	return o
+}
+
+func (o ExecActionResponsePtrOutput) Elem() ExecActionResponseOutput {
+	return o.ApplyT(func(v *ExecActionResponse) ExecActionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ExecActionResponse
+		return ret
+	}).(ExecActionResponseOutput)
+}
+
+// Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+func (o ExecActionResponsePtrOutput) Command() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ExecActionResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Command
+	}).(pulumi.StringArrayOutput)
+}
+
+// The type of the action to take to perform the health check.
+// Expected value is 'ExecAction'.
+func (o ExecActionResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExecActionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // API metadata property for Spring Cloud Gateway
@@ -15453,6 +17363,189 @@ type HTTPGetAction struct {
 	Type string `pulumi:"type"`
 }
 
+// HTTPGetActionInput is an input type that accepts HTTPGetActionArgs and HTTPGetActionOutput values.
+// You can construct a concrete instance of `HTTPGetActionInput` via:
+//
+//	HTTPGetActionArgs{...}
+type HTTPGetActionInput interface {
+	pulumi.Input
+
+	ToHTTPGetActionOutput() HTTPGetActionOutput
+	ToHTTPGetActionOutputWithContext(context.Context) HTTPGetActionOutput
+}
+
+// HTTPGetAction describes an action based on HTTP Get requests.
+type HTTPGetActionArgs struct {
+	// Path to access on the HTTP server.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Scheme to use for connecting to the host. Defaults to HTTP.
+	//
+	// Possible enum values:
+	//  - `"HTTP"` means that the scheme used will be http://
+	//  - `"HTTPS"` means that the scheme used will be https://
+	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
+	// The type of the action to take to perform the health check.
+	// Expected value is 'HTTPGetAction'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (HTTPGetActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HTTPGetAction)(nil)).Elem()
+}
+
+func (i HTTPGetActionArgs) ToHTTPGetActionOutput() HTTPGetActionOutput {
+	return i.ToHTTPGetActionOutputWithContext(context.Background())
+}
+
+func (i HTTPGetActionArgs) ToHTTPGetActionOutputWithContext(ctx context.Context) HTTPGetActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HTTPGetActionOutput)
+}
+
+func (i HTTPGetActionArgs) ToHTTPGetActionPtrOutput() HTTPGetActionPtrOutput {
+	return i.ToHTTPGetActionPtrOutputWithContext(context.Background())
+}
+
+func (i HTTPGetActionArgs) ToHTTPGetActionPtrOutputWithContext(ctx context.Context) HTTPGetActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HTTPGetActionOutput).ToHTTPGetActionPtrOutputWithContext(ctx)
+}
+
+// HTTPGetActionPtrInput is an input type that accepts HTTPGetActionArgs, HTTPGetActionPtr and HTTPGetActionPtrOutput values.
+// You can construct a concrete instance of `HTTPGetActionPtrInput` via:
+//
+//	        HTTPGetActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type HTTPGetActionPtrInput interface {
+	pulumi.Input
+
+	ToHTTPGetActionPtrOutput() HTTPGetActionPtrOutput
+	ToHTTPGetActionPtrOutputWithContext(context.Context) HTTPGetActionPtrOutput
+}
+
+type httpgetActionPtrType HTTPGetActionArgs
+
+func HTTPGetActionPtr(v *HTTPGetActionArgs) HTTPGetActionPtrInput {
+	return (*httpgetActionPtrType)(v)
+}
+
+func (*httpgetActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HTTPGetAction)(nil)).Elem()
+}
+
+func (i *httpgetActionPtrType) ToHTTPGetActionPtrOutput() HTTPGetActionPtrOutput {
+	return i.ToHTTPGetActionPtrOutputWithContext(context.Background())
+}
+
+func (i *httpgetActionPtrType) ToHTTPGetActionPtrOutputWithContext(ctx context.Context) HTTPGetActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HTTPGetActionPtrOutput)
+}
+
+// HTTPGetAction describes an action based on HTTP Get requests.
+type HTTPGetActionOutput struct{ *pulumi.OutputState }
+
+func (HTTPGetActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HTTPGetAction)(nil)).Elem()
+}
+
+func (o HTTPGetActionOutput) ToHTTPGetActionOutput() HTTPGetActionOutput {
+	return o
+}
+
+func (o HTTPGetActionOutput) ToHTTPGetActionOutputWithContext(ctx context.Context) HTTPGetActionOutput {
+	return o
+}
+
+func (o HTTPGetActionOutput) ToHTTPGetActionPtrOutput() HTTPGetActionPtrOutput {
+	return o.ToHTTPGetActionPtrOutputWithContext(context.Background())
+}
+
+func (o HTTPGetActionOutput) ToHTTPGetActionPtrOutputWithContext(ctx context.Context) HTTPGetActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HTTPGetAction) *HTTPGetAction {
+		return &v
+	}).(HTTPGetActionPtrOutput)
+}
+
+// Path to access on the HTTP server.
+func (o HTTPGetActionOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HTTPGetAction) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host. Defaults to HTTP.
+//
+// Possible enum values:
+//   - `"HTTP"` means that the scheme used will be http://
+//   - `"HTTPS"` means that the scheme used will be https://
+func (o HTTPGetActionOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HTTPGetAction) *string { return v.Scheme }).(pulumi.StringPtrOutput)
+}
+
+// The type of the action to take to perform the health check.
+// Expected value is 'HTTPGetAction'.
+func (o HTTPGetActionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v HTTPGetAction) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type HTTPGetActionPtrOutput struct{ *pulumi.OutputState }
+
+func (HTTPGetActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HTTPGetAction)(nil)).Elem()
+}
+
+func (o HTTPGetActionPtrOutput) ToHTTPGetActionPtrOutput() HTTPGetActionPtrOutput {
+	return o
+}
+
+func (o HTTPGetActionPtrOutput) ToHTTPGetActionPtrOutputWithContext(ctx context.Context) HTTPGetActionPtrOutput {
+	return o
+}
+
+func (o HTTPGetActionPtrOutput) Elem() HTTPGetActionOutput {
+	return o.ApplyT(func(v *HTTPGetAction) HTTPGetAction {
+		if v != nil {
+			return *v
+		}
+		var ret HTTPGetAction
+		return ret
+	}).(HTTPGetActionOutput)
+}
+
+// Path to access on the HTTP server.
+func (o HTTPGetActionPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HTTPGetAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host. Defaults to HTTP.
+//
+// Possible enum values:
+//   - `"HTTP"` means that the scheme used will be http://
+//   - `"HTTPS"` means that the scheme used will be https://
+func (o HTTPGetActionPtrOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HTTPGetAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scheme
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the action to take to perform the health check.
+// Expected value is 'HTTPGetAction'.
+func (o HTTPGetActionPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HTTPGetAction) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // HTTPGetAction describes an action based on HTTP Get requests.
 type HTTPGetActionResponse struct {
 	// Path to access on the HTTP server.
@@ -15466,6 +17559,100 @@ type HTTPGetActionResponse struct {
 	// The type of the action to take to perform the health check.
 	// Expected value is 'HTTPGetAction'.
 	Type string `pulumi:"type"`
+}
+
+// HTTPGetAction describes an action based on HTTP Get requests.
+type HTTPGetActionResponseOutput struct{ *pulumi.OutputState }
+
+func (HTTPGetActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HTTPGetActionResponse)(nil)).Elem()
+}
+
+func (o HTTPGetActionResponseOutput) ToHTTPGetActionResponseOutput() HTTPGetActionResponseOutput {
+	return o
+}
+
+func (o HTTPGetActionResponseOutput) ToHTTPGetActionResponseOutputWithContext(ctx context.Context) HTTPGetActionResponseOutput {
+	return o
+}
+
+// Path to access on the HTTP server.
+func (o HTTPGetActionResponseOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HTTPGetActionResponse) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host. Defaults to HTTP.
+//
+// Possible enum values:
+//   - `"HTTP"` means that the scheme used will be http://
+//   - `"HTTPS"` means that the scheme used will be https://
+func (o HTTPGetActionResponseOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HTTPGetActionResponse) *string { return v.Scheme }).(pulumi.StringPtrOutput)
+}
+
+// The type of the action to take to perform the health check.
+// Expected value is 'HTTPGetAction'.
+func (o HTTPGetActionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v HTTPGetActionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type HTTPGetActionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HTTPGetActionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HTTPGetActionResponse)(nil)).Elem()
+}
+
+func (o HTTPGetActionResponsePtrOutput) ToHTTPGetActionResponsePtrOutput() HTTPGetActionResponsePtrOutput {
+	return o
+}
+
+func (o HTTPGetActionResponsePtrOutput) ToHTTPGetActionResponsePtrOutputWithContext(ctx context.Context) HTTPGetActionResponsePtrOutput {
+	return o
+}
+
+func (o HTTPGetActionResponsePtrOutput) Elem() HTTPGetActionResponseOutput {
+	return o.ApplyT(func(v *HTTPGetActionResponse) HTTPGetActionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HTTPGetActionResponse
+		return ret
+	}).(HTTPGetActionResponseOutput)
+}
+
+// Path to access on the HTTP server.
+func (o HTTPGetActionResponsePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HTTPGetActionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scheme to use for connecting to the host. Defaults to HTTP.
+//
+// Possible enum values:
+//   - `"HTTP"` means that the scheme used will be http://
+//   - `"HTTPS"` means that the scheme used will be https://
+func (o HTTPGetActionResponsePtrOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HTTPGetActionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scheme
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the action to take to perform the health check.
+// Expected value is 'HTTPGetAction'.
+func (o HTTPGetActionResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HTTPGetActionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // Azure Spring Apps App Instance Http scaling rule.
@@ -15712,12 +17899,232 @@ type ImageRegistryCredential struct {
 	Username *string `pulumi:"username"`
 }
 
+// ImageRegistryCredentialInput is an input type that accepts ImageRegistryCredentialArgs and ImageRegistryCredentialOutput values.
+// You can construct a concrete instance of `ImageRegistryCredentialInput` via:
+//
+//	ImageRegistryCredentialArgs{...}
+type ImageRegistryCredentialInput interface {
+	pulumi.Input
+
+	ToImageRegistryCredentialOutput() ImageRegistryCredentialOutput
+	ToImageRegistryCredentialOutputWithContext(context.Context) ImageRegistryCredentialOutput
+}
+
+// Credential of the image registry
+type ImageRegistryCredentialArgs struct {
+	// The password of the image registry credential
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The username of the image registry credential
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ImageRegistryCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageRegistryCredential)(nil)).Elem()
+}
+
+func (i ImageRegistryCredentialArgs) ToImageRegistryCredentialOutput() ImageRegistryCredentialOutput {
+	return i.ToImageRegistryCredentialOutputWithContext(context.Background())
+}
+
+func (i ImageRegistryCredentialArgs) ToImageRegistryCredentialOutputWithContext(ctx context.Context) ImageRegistryCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageRegistryCredentialOutput)
+}
+
+func (i ImageRegistryCredentialArgs) ToImageRegistryCredentialPtrOutput() ImageRegistryCredentialPtrOutput {
+	return i.ToImageRegistryCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i ImageRegistryCredentialArgs) ToImageRegistryCredentialPtrOutputWithContext(ctx context.Context) ImageRegistryCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageRegistryCredentialOutput).ToImageRegistryCredentialPtrOutputWithContext(ctx)
+}
+
+// ImageRegistryCredentialPtrInput is an input type that accepts ImageRegistryCredentialArgs, ImageRegistryCredentialPtr and ImageRegistryCredentialPtrOutput values.
+// You can construct a concrete instance of `ImageRegistryCredentialPtrInput` via:
+//
+//	        ImageRegistryCredentialArgs{...}
+//
+//	or:
+//
+//	        nil
+type ImageRegistryCredentialPtrInput interface {
+	pulumi.Input
+
+	ToImageRegistryCredentialPtrOutput() ImageRegistryCredentialPtrOutput
+	ToImageRegistryCredentialPtrOutputWithContext(context.Context) ImageRegistryCredentialPtrOutput
+}
+
+type imageRegistryCredentialPtrType ImageRegistryCredentialArgs
+
+func ImageRegistryCredentialPtr(v *ImageRegistryCredentialArgs) ImageRegistryCredentialPtrInput {
+	return (*imageRegistryCredentialPtrType)(v)
+}
+
+func (*imageRegistryCredentialPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageRegistryCredential)(nil)).Elem()
+}
+
+func (i *imageRegistryCredentialPtrType) ToImageRegistryCredentialPtrOutput() ImageRegistryCredentialPtrOutput {
+	return i.ToImageRegistryCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i *imageRegistryCredentialPtrType) ToImageRegistryCredentialPtrOutputWithContext(ctx context.Context) ImageRegistryCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageRegistryCredentialPtrOutput)
+}
+
+// Credential of the image registry
+type ImageRegistryCredentialOutput struct{ *pulumi.OutputState }
+
+func (ImageRegistryCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageRegistryCredential)(nil)).Elem()
+}
+
+func (o ImageRegistryCredentialOutput) ToImageRegistryCredentialOutput() ImageRegistryCredentialOutput {
+	return o
+}
+
+func (o ImageRegistryCredentialOutput) ToImageRegistryCredentialOutputWithContext(ctx context.Context) ImageRegistryCredentialOutput {
+	return o
+}
+
+func (o ImageRegistryCredentialOutput) ToImageRegistryCredentialPtrOutput() ImageRegistryCredentialPtrOutput {
+	return o.ToImageRegistryCredentialPtrOutputWithContext(context.Background())
+}
+
+func (o ImageRegistryCredentialOutput) ToImageRegistryCredentialPtrOutputWithContext(ctx context.Context) ImageRegistryCredentialPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageRegistryCredential) *ImageRegistryCredential {
+		return &v
+	}).(ImageRegistryCredentialPtrOutput)
+}
+
+// The password of the image registry credential
+func (o ImageRegistryCredentialOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageRegistryCredential) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The username of the image registry credential
+func (o ImageRegistryCredentialOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageRegistryCredential) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ImageRegistryCredentialPtrOutput struct{ *pulumi.OutputState }
+
+func (ImageRegistryCredentialPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageRegistryCredential)(nil)).Elem()
+}
+
+func (o ImageRegistryCredentialPtrOutput) ToImageRegistryCredentialPtrOutput() ImageRegistryCredentialPtrOutput {
+	return o
+}
+
+func (o ImageRegistryCredentialPtrOutput) ToImageRegistryCredentialPtrOutputWithContext(ctx context.Context) ImageRegistryCredentialPtrOutput {
+	return o
+}
+
+func (o ImageRegistryCredentialPtrOutput) Elem() ImageRegistryCredentialOutput {
+	return o.ApplyT(func(v *ImageRegistryCredential) ImageRegistryCredential {
+		if v != nil {
+			return *v
+		}
+		var ret ImageRegistryCredential
+		return ret
+	}).(ImageRegistryCredentialOutput)
+}
+
+// The password of the image registry credential
+func (o ImageRegistryCredentialPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageRegistryCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username of the image registry credential
+func (o ImageRegistryCredentialPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageRegistryCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 // Credential of the image registry
 type ImageRegistryCredentialResponse struct {
 	// The password of the image registry credential
 	Password *string `pulumi:"password"`
 	// The username of the image registry credential
 	Username *string `pulumi:"username"`
+}
+
+// Credential of the image registry
+type ImageRegistryCredentialResponseOutput struct{ *pulumi.OutputState }
+
+func (ImageRegistryCredentialResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageRegistryCredentialResponse)(nil)).Elem()
+}
+
+func (o ImageRegistryCredentialResponseOutput) ToImageRegistryCredentialResponseOutput() ImageRegistryCredentialResponseOutput {
+	return o
+}
+
+func (o ImageRegistryCredentialResponseOutput) ToImageRegistryCredentialResponseOutputWithContext(ctx context.Context) ImageRegistryCredentialResponseOutput {
+	return o
+}
+
+// The password of the image registry credential
+func (o ImageRegistryCredentialResponseOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageRegistryCredentialResponse) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The username of the image registry credential
+func (o ImageRegistryCredentialResponseOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageRegistryCredentialResponse) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ImageRegistryCredentialResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ImageRegistryCredentialResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageRegistryCredentialResponse)(nil)).Elem()
+}
+
+func (o ImageRegistryCredentialResponsePtrOutput) ToImageRegistryCredentialResponsePtrOutput() ImageRegistryCredentialResponsePtrOutput {
+	return o
+}
+
+func (o ImageRegistryCredentialResponsePtrOutput) ToImageRegistryCredentialResponsePtrOutputWithContext(ctx context.Context) ImageRegistryCredentialResponsePtrOutput {
+	return o
+}
+
+func (o ImageRegistryCredentialResponsePtrOutput) Elem() ImageRegistryCredentialResponseOutput {
+	return o.ApplyT(func(v *ImageRegistryCredentialResponse) ImageRegistryCredentialResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ImageRegistryCredentialResponse
+		return ret
+	}).(ImageRegistryCredentialResponseOutput)
+}
+
+// The password of the image registry credential
+func (o ImageRegistryCredentialResponsePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageRegistryCredentialResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username of the image registry credential
+func (o ImageRegistryCredentialResponsePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageRegistryCredentialResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
 }
 
 // Ingress configuration payload for Azure Spring Apps resource.
@@ -16515,6 +18922,211 @@ type JarUploadedUserSourceInfo struct {
 	Version *string `pulumi:"version"`
 }
 
+// JarUploadedUserSourceInfoInput is an input type that accepts JarUploadedUserSourceInfoArgs and JarUploadedUserSourceInfoOutput values.
+// You can construct a concrete instance of `JarUploadedUserSourceInfoInput` via:
+//
+//	JarUploadedUserSourceInfoArgs{...}
+type JarUploadedUserSourceInfoInput interface {
+	pulumi.Input
+
+	ToJarUploadedUserSourceInfoOutput() JarUploadedUserSourceInfoOutput
+	ToJarUploadedUserSourceInfoOutputWithContext(context.Context) JarUploadedUserSourceInfoOutput
+}
+
+// Uploaded Jar binary for a deployment
+type JarUploadedUserSourceInfoArgs struct {
+	// JVM parameter
+	JvmOptions pulumi.StringPtrInput `pulumi:"jvmOptions"`
+	// Relative path of the storage which stores the source
+	RelativePath pulumi.StringPtrInput `pulumi:"relativePath"`
+	// Runtime version of the Jar file
+	RuntimeVersion pulumi.StringPtrInput `pulumi:"runtimeVersion"`
+	// Type of the source uploaded
+	// Expected value is 'Jar'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Version of the source
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (JarUploadedUserSourceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JarUploadedUserSourceInfo)(nil)).Elem()
+}
+
+func (i JarUploadedUserSourceInfoArgs) ToJarUploadedUserSourceInfoOutput() JarUploadedUserSourceInfoOutput {
+	return i.ToJarUploadedUserSourceInfoOutputWithContext(context.Background())
+}
+
+func (i JarUploadedUserSourceInfoArgs) ToJarUploadedUserSourceInfoOutputWithContext(ctx context.Context) JarUploadedUserSourceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JarUploadedUserSourceInfoOutput)
+}
+
+func (i JarUploadedUserSourceInfoArgs) ToJarUploadedUserSourceInfoPtrOutput() JarUploadedUserSourceInfoPtrOutput {
+	return i.ToJarUploadedUserSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i JarUploadedUserSourceInfoArgs) ToJarUploadedUserSourceInfoPtrOutputWithContext(ctx context.Context) JarUploadedUserSourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JarUploadedUserSourceInfoOutput).ToJarUploadedUserSourceInfoPtrOutputWithContext(ctx)
+}
+
+// JarUploadedUserSourceInfoPtrInput is an input type that accepts JarUploadedUserSourceInfoArgs, JarUploadedUserSourceInfoPtr and JarUploadedUserSourceInfoPtrOutput values.
+// You can construct a concrete instance of `JarUploadedUserSourceInfoPtrInput` via:
+//
+//	        JarUploadedUserSourceInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type JarUploadedUserSourceInfoPtrInput interface {
+	pulumi.Input
+
+	ToJarUploadedUserSourceInfoPtrOutput() JarUploadedUserSourceInfoPtrOutput
+	ToJarUploadedUserSourceInfoPtrOutputWithContext(context.Context) JarUploadedUserSourceInfoPtrOutput
+}
+
+type jarUploadedUserSourceInfoPtrType JarUploadedUserSourceInfoArgs
+
+func JarUploadedUserSourceInfoPtr(v *JarUploadedUserSourceInfoArgs) JarUploadedUserSourceInfoPtrInput {
+	return (*jarUploadedUserSourceInfoPtrType)(v)
+}
+
+func (*jarUploadedUserSourceInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JarUploadedUserSourceInfo)(nil)).Elem()
+}
+
+func (i *jarUploadedUserSourceInfoPtrType) ToJarUploadedUserSourceInfoPtrOutput() JarUploadedUserSourceInfoPtrOutput {
+	return i.ToJarUploadedUserSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *jarUploadedUserSourceInfoPtrType) ToJarUploadedUserSourceInfoPtrOutputWithContext(ctx context.Context) JarUploadedUserSourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JarUploadedUserSourceInfoPtrOutput)
+}
+
+// Uploaded Jar binary for a deployment
+type JarUploadedUserSourceInfoOutput struct{ *pulumi.OutputState }
+
+func (JarUploadedUserSourceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JarUploadedUserSourceInfo)(nil)).Elem()
+}
+
+func (o JarUploadedUserSourceInfoOutput) ToJarUploadedUserSourceInfoOutput() JarUploadedUserSourceInfoOutput {
+	return o
+}
+
+func (o JarUploadedUserSourceInfoOutput) ToJarUploadedUserSourceInfoOutputWithContext(ctx context.Context) JarUploadedUserSourceInfoOutput {
+	return o
+}
+
+func (o JarUploadedUserSourceInfoOutput) ToJarUploadedUserSourceInfoPtrOutput() JarUploadedUserSourceInfoPtrOutput {
+	return o.ToJarUploadedUserSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (o JarUploadedUserSourceInfoOutput) ToJarUploadedUserSourceInfoPtrOutputWithContext(ctx context.Context) JarUploadedUserSourceInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JarUploadedUserSourceInfo) *JarUploadedUserSourceInfo {
+		return &v
+	}).(JarUploadedUserSourceInfoPtrOutput)
+}
+
+// JVM parameter
+func (o JarUploadedUserSourceInfoOutput) JvmOptions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JarUploadedUserSourceInfo) *string { return v.JvmOptions }).(pulumi.StringPtrOutput)
+}
+
+// Relative path of the storage which stores the source
+func (o JarUploadedUserSourceInfoOutput) RelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JarUploadedUserSourceInfo) *string { return v.RelativePath }).(pulumi.StringPtrOutput)
+}
+
+// Runtime version of the Jar file
+func (o JarUploadedUserSourceInfoOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JarUploadedUserSourceInfo) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'Jar'.
+func (o JarUploadedUserSourceInfoOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v JarUploadedUserSourceInfo) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the source
+func (o JarUploadedUserSourceInfoOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JarUploadedUserSourceInfo) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type JarUploadedUserSourceInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (JarUploadedUserSourceInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JarUploadedUserSourceInfo)(nil)).Elem()
+}
+
+func (o JarUploadedUserSourceInfoPtrOutput) ToJarUploadedUserSourceInfoPtrOutput() JarUploadedUserSourceInfoPtrOutput {
+	return o
+}
+
+func (o JarUploadedUserSourceInfoPtrOutput) ToJarUploadedUserSourceInfoPtrOutputWithContext(ctx context.Context) JarUploadedUserSourceInfoPtrOutput {
+	return o
+}
+
+func (o JarUploadedUserSourceInfoPtrOutput) Elem() JarUploadedUserSourceInfoOutput {
+	return o.ApplyT(func(v *JarUploadedUserSourceInfo) JarUploadedUserSourceInfo {
+		if v != nil {
+			return *v
+		}
+		var ret JarUploadedUserSourceInfo
+		return ret
+	}).(JarUploadedUserSourceInfoOutput)
+}
+
+// JVM parameter
+func (o JarUploadedUserSourceInfoPtrOutput) JvmOptions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JarUploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JvmOptions
+	}).(pulumi.StringPtrOutput)
+}
+
+// Relative path of the storage which stores the source
+func (o JarUploadedUserSourceInfoPtrOutput) RelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JarUploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RelativePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Runtime version of the Jar file
+func (o JarUploadedUserSourceInfoPtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JarUploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'Jar'.
+func (o JarUploadedUserSourceInfoPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JarUploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of the source
+func (o JarUploadedUserSourceInfoPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JarUploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 // Uploaded Jar binary for a deployment
 type JarUploadedUserSourceInfoResponse struct {
 	// JVM parameter
@@ -16528,6 +19140,122 @@ type JarUploadedUserSourceInfoResponse struct {
 	Type string `pulumi:"type"`
 	// Version of the source
 	Version *string `pulumi:"version"`
+}
+
+// Uploaded Jar binary for a deployment
+type JarUploadedUserSourceInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (JarUploadedUserSourceInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JarUploadedUserSourceInfoResponse)(nil)).Elem()
+}
+
+func (o JarUploadedUserSourceInfoResponseOutput) ToJarUploadedUserSourceInfoResponseOutput() JarUploadedUserSourceInfoResponseOutput {
+	return o
+}
+
+func (o JarUploadedUserSourceInfoResponseOutput) ToJarUploadedUserSourceInfoResponseOutputWithContext(ctx context.Context) JarUploadedUserSourceInfoResponseOutput {
+	return o
+}
+
+// JVM parameter
+func (o JarUploadedUserSourceInfoResponseOutput) JvmOptions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JarUploadedUserSourceInfoResponse) *string { return v.JvmOptions }).(pulumi.StringPtrOutput)
+}
+
+// Relative path of the storage which stores the source
+func (o JarUploadedUserSourceInfoResponseOutput) RelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JarUploadedUserSourceInfoResponse) *string { return v.RelativePath }).(pulumi.StringPtrOutput)
+}
+
+// Runtime version of the Jar file
+func (o JarUploadedUserSourceInfoResponseOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JarUploadedUserSourceInfoResponse) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'Jar'.
+func (o JarUploadedUserSourceInfoResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v JarUploadedUserSourceInfoResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the source
+func (o JarUploadedUserSourceInfoResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JarUploadedUserSourceInfoResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type JarUploadedUserSourceInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (JarUploadedUserSourceInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JarUploadedUserSourceInfoResponse)(nil)).Elem()
+}
+
+func (o JarUploadedUserSourceInfoResponsePtrOutput) ToJarUploadedUserSourceInfoResponsePtrOutput() JarUploadedUserSourceInfoResponsePtrOutput {
+	return o
+}
+
+func (o JarUploadedUserSourceInfoResponsePtrOutput) ToJarUploadedUserSourceInfoResponsePtrOutputWithContext(ctx context.Context) JarUploadedUserSourceInfoResponsePtrOutput {
+	return o
+}
+
+func (o JarUploadedUserSourceInfoResponsePtrOutput) Elem() JarUploadedUserSourceInfoResponseOutput {
+	return o.ApplyT(func(v *JarUploadedUserSourceInfoResponse) JarUploadedUserSourceInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret JarUploadedUserSourceInfoResponse
+		return ret
+	}).(JarUploadedUserSourceInfoResponseOutput)
+}
+
+// JVM parameter
+func (o JarUploadedUserSourceInfoResponsePtrOutput) JvmOptions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JarUploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JvmOptions
+	}).(pulumi.StringPtrOutput)
+}
+
+// Relative path of the storage which stores the source
+func (o JarUploadedUserSourceInfoResponsePtrOutput) RelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JarUploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RelativePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Runtime version of the Jar file
+func (o JarUploadedUserSourceInfoResponsePtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JarUploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'Jar'.
+func (o JarUploadedUserSourceInfoResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JarUploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of the source
+func (o JarUploadedUserSourceInfoResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JarUploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
 }
 
 // Properties of certificate imported from key vault.
@@ -16556,6 +19284,222 @@ func (val *KeyVaultCertificateProperties) Defaults() *KeyVaultCertificatePropert
 		tmp.ExcludePrivateKey = &excludePrivateKey_
 	}
 	return &tmp
+}
+
+// KeyVaultCertificatePropertiesInput is an input type that accepts KeyVaultCertificatePropertiesArgs and KeyVaultCertificatePropertiesOutput values.
+// You can construct a concrete instance of `KeyVaultCertificatePropertiesInput` via:
+//
+//	KeyVaultCertificatePropertiesArgs{...}
+type KeyVaultCertificatePropertiesInput interface {
+	pulumi.Input
+
+	ToKeyVaultCertificatePropertiesOutput() KeyVaultCertificatePropertiesOutput
+	ToKeyVaultCertificatePropertiesOutputWithContext(context.Context) KeyVaultCertificatePropertiesOutput
+}
+
+// Properties of certificate imported from key vault.
+type KeyVaultCertificatePropertiesArgs struct {
+	// The certificate version of key vault.
+	CertVersion pulumi.StringPtrInput `pulumi:"certVersion"`
+	// Optional. If set to true, it will not import private key from key vault.
+	ExcludePrivateKey pulumi.BoolPtrInput `pulumi:"excludePrivateKey"`
+	// The certificate name of key vault.
+	KeyVaultCertName pulumi.StringInput `pulumi:"keyVaultCertName"`
+	// The type of the certificate source.
+	// Expected value is 'KeyVaultCertificate'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The vault uri of user key vault.
+	VaultUri pulumi.StringInput `pulumi:"vaultUri"`
+}
+
+// Defaults sets the appropriate defaults for KeyVaultCertificatePropertiesArgs
+func (val *KeyVaultCertificatePropertiesArgs) Defaults() *KeyVaultCertificatePropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ExcludePrivateKey == nil {
+		tmp.ExcludePrivateKey = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (KeyVaultCertificatePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultCertificateProperties)(nil)).Elem()
+}
+
+func (i KeyVaultCertificatePropertiesArgs) ToKeyVaultCertificatePropertiesOutput() KeyVaultCertificatePropertiesOutput {
+	return i.ToKeyVaultCertificatePropertiesOutputWithContext(context.Background())
+}
+
+func (i KeyVaultCertificatePropertiesArgs) ToKeyVaultCertificatePropertiesOutputWithContext(ctx context.Context) KeyVaultCertificatePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultCertificatePropertiesOutput)
+}
+
+func (i KeyVaultCertificatePropertiesArgs) ToKeyVaultCertificatePropertiesPtrOutput() KeyVaultCertificatePropertiesPtrOutput {
+	return i.ToKeyVaultCertificatePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i KeyVaultCertificatePropertiesArgs) ToKeyVaultCertificatePropertiesPtrOutputWithContext(ctx context.Context) KeyVaultCertificatePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultCertificatePropertiesOutput).ToKeyVaultCertificatePropertiesPtrOutputWithContext(ctx)
+}
+
+// KeyVaultCertificatePropertiesPtrInput is an input type that accepts KeyVaultCertificatePropertiesArgs, KeyVaultCertificatePropertiesPtr and KeyVaultCertificatePropertiesPtrOutput values.
+// You can construct a concrete instance of `KeyVaultCertificatePropertiesPtrInput` via:
+//
+//	        KeyVaultCertificatePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type KeyVaultCertificatePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToKeyVaultCertificatePropertiesPtrOutput() KeyVaultCertificatePropertiesPtrOutput
+	ToKeyVaultCertificatePropertiesPtrOutputWithContext(context.Context) KeyVaultCertificatePropertiesPtrOutput
+}
+
+type keyVaultCertificatePropertiesPtrType KeyVaultCertificatePropertiesArgs
+
+func KeyVaultCertificatePropertiesPtr(v *KeyVaultCertificatePropertiesArgs) KeyVaultCertificatePropertiesPtrInput {
+	return (*keyVaultCertificatePropertiesPtrType)(v)
+}
+
+func (*keyVaultCertificatePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVaultCertificateProperties)(nil)).Elem()
+}
+
+func (i *keyVaultCertificatePropertiesPtrType) ToKeyVaultCertificatePropertiesPtrOutput() KeyVaultCertificatePropertiesPtrOutput {
+	return i.ToKeyVaultCertificatePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *keyVaultCertificatePropertiesPtrType) ToKeyVaultCertificatePropertiesPtrOutputWithContext(ctx context.Context) KeyVaultCertificatePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultCertificatePropertiesPtrOutput)
+}
+
+// Properties of certificate imported from key vault.
+type KeyVaultCertificatePropertiesOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultCertificatePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultCertificateProperties)(nil)).Elem()
+}
+
+func (o KeyVaultCertificatePropertiesOutput) ToKeyVaultCertificatePropertiesOutput() KeyVaultCertificatePropertiesOutput {
+	return o
+}
+
+func (o KeyVaultCertificatePropertiesOutput) ToKeyVaultCertificatePropertiesOutputWithContext(ctx context.Context) KeyVaultCertificatePropertiesOutput {
+	return o
+}
+
+func (o KeyVaultCertificatePropertiesOutput) ToKeyVaultCertificatePropertiesPtrOutput() KeyVaultCertificatePropertiesPtrOutput {
+	return o.ToKeyVaultCertificatePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o KeyVaultCertificatePropertiesOutput) ToKeyVaultCertificatePropertiesPtrOutputWithContext(ctx context.Context) KeyVaultCertificatePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyVaultCertificateProperties) *KeyVaultCertificateProperties {
+		return &v
+	}).(KeyVaultCertificatePropertiesPtrOutput)
+}
+
+// The certificate version of key vault.
+func (o KeyVaultCertificatePropertiesOutput) CertVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyVaultCertificateProperties) *string { return v.CertVersion }).(pulumi.StringPtrOutput)
+}
+
+// Optional. If set to true, it will not import private key from key vault.
+func (o KeyVaultCertificatePropertiesOutput) ExcludePrivateKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KeyVaultCertificateProperties) *bool { return v.ExcludePrivateKey }).(pulumi.BoolPtrOutput)
+}
+
+// The certificate name of key vault.
+func (o KeyVaultCertificatePropertiesOutput) KeyVaultCertName() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultCertificateProperties) string { return v.KeyVaultCertName }).(pulumi.StringOutput)
+}
+
+// The type of the certificate source.
+// Expected value is 'KeyVaultCertificate'.
+func (o KeyVaultCertificatePropertiesOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultCertificateProperties) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The vault uri of user key vault.
+func (o KeyVaultCertificatePropertiesOutput) VaultUri() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultCertificateProperties) string { return v.VaultUri }).(pulumi.StringOutput)
+}
+
+type KeyVaultCertificatePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultCertificatePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVaultCertificateProperties)(nil)).Elem()
+}
+
+func (o KeyVaultCertificatePropertiesPtrOutput) ToKeyVaultCertificatePropertiesPtrOutput() KeyVaultCertificatePropertiesPtrOutput {
+	return o
+}
+
+func (o KeyVaultCertificatePropertiesPtrOutput) ToKeyVaultCertificatePropertiesPtrOutputWithContext(ctx context.Context) KeyVaultCertificatePropertiesPtrOutput {
+	return o
+}
+
+func (o KeyVaultCertificatePropertiesPtrOutput) Elem() KeyVaultCertificatePropertiesOutput {
+	return o.ApplyT(func(v *KeyVaultCertificateProperties) KeyVaultCertificateProperties {
+		if v != nil {
+			return *v
+		}
+		var ret KeyVaultCertificateProperties
+		return ret
+	}).(KeyVaultCertificatePropertiesOutput)
+}
+
+// The certificate version of key vault.
+func (o KeyVaultCertificatePropertiesPtrOutput) CertVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultCertificateProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CertVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. If set to true, it will not import private key from key vault.
+func (o KeyVaultCertificatePropertiesPtrOutput) ExcludePrivateKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KeyVaultCertificateProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludePrivateKey
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The certificate name of key vault.
+func (o KeyVaultCertificatePropertiesPtrOutput) KeyVaultCertName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultCertificateProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVaultCertName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the certificate source.
+// Expected value is 'KeyVaultCertificate'.
+func (o KeyVaultCertificatePropertiesPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultCertificateProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The vault uri of user key vault.
+func (o KeyVaultCertificatePropertiesPtrOutput) VaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultCertificateProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VaultUri
+	}).(pulumi.StringPtrOutput)
 }
 
 // Properties of certificate imported from key vault.
@@ -16600,6 +19544,87 @@ func (val *KeyVaultCertificatePropertiesResponse) Defaults() *KeyVaultCertificat
 		tmp.ExcludePrivateKey = &excludePrivateKey_
 	}
 	return &tmp
+}
+
+// Properties of certificate imported from key vault.
+type KeyVaultCertificatePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultCertificatePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultCertificatePropertiesResponse)(nil)).Elem()
+}
+
+func (o KeyVaultCertificatePropertiesResponseOutput) ToKeyVaultCertificatePropertiesResponseOutput() KeyVaultCertificatePropertiesResponseOutput {
+	return o
+}
+
+func (o KeyVaultCertificatePropertiesResponseOutput) ToKeyVaultCertificatePropertiesResponseOutputWithContext(ctx context.Context) KeyVaultCertificatePropertiesResponseOutput {
+	return o
+}
+
+// The activate date of certificate.
+func (o KeyVaultCertificatePropertiesResponseOutput) ActivateDate() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultCertificatePropertiesResponse) string { return v.ActivateDate }).(pulumi.StringOutput)
+}
+
+// The certificate version of key vault.
+func (o KeyVaultCertificatePropertiesResponseOutput) CertVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyVaultCertificatePropertiesResponse) *string { return v.CertVersion }).(pulumi.StringPtrOutput)
+}
+
+// The domain list of certificate.
+func (o KeyVaultCertificatePropertiesResponseOutput) DnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v KeyVaultCertificatePropertiesResponse) []string { return v.DnsNames }).(pulumi.StringArrayOutput)
+}
+
+// Optional. If set to true, it will not import private key from key vault.
+func (o KeyVaultCertificatePropertiesResponseOutput) ExcludePrivateKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KeyVaultCertificatePropertiesResponse) *bool { return v.ExcludePrivateKey }).(pulumi.BoolPtrOutput)
+}
+
+// The expiration date of certificate.
+func (o KeyVaultCertificatePropertiesResponseOutput) ExpirationDate() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultCertificatePropertiesResponse) string { return v.ExpirationDate }).(pulumi.StringOutput)
+}
+
+// The issue date of certificate.
+func (o KeyVaultCertificatePropertiesResponseOutput) IssuedDate() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultCertificatePropertiesResponse) string { return v.IssuedDate }).(pulumi.StringOutput)
+}
+
+// The issuer of certificate.
+func (o KeyVaultCertificatePropertiesResponseOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultCertificatePropertiesResponse) string { return v.Issuer }).(pulumi.StringOutput)
+}
+
+// The certificate name of key vault.
+func (o KeyVaultCertificatePropertiesResponseOutput) KeyVaultCertName() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultCertificatePropertiesResponse) string { return v.KeyVaultCertName }).(pulumi.StringOutput)
+}
+
+// Provisioning state of the Certificate
+func (o KeyVaultCertificatePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultCertificatePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The subject name of certificate.
+func (o KeyVaultCertificatePropertiesResponseOutput) SubjectName() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultCertificatePropertiesResponse) string { return v.SubjectName }).(pulumi.StringOutput)
+}
+
+// The thumbprint of certificate.
+func (o KeyVaultCertificatePropertiesResponseOutput) Thumbprint() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultCertificatePropertiesResponse) string { return v.Thumbprint }).(pulumi.StringOutput)
+}
+
+// The type of the certificate source.
+// Expected value is 'KeyVaultCertificate'.
+func (o KeyVaultCertificatePropertiesResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultCertificatePropertiesResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The vault uri of user key vault.
+func (o KeyVaultCertificatePropertiesResponseOutput) VaultUri() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultCertificatePropertiesResponse) string { return v.VaultUri }).(pulumi.StringOutput)
 }
 
 // Loaded certificate payload
@@ -17658,6 +20683,211 @@ type NetCoreZipUploadedUserSourceInfo struct {
 	Version *string `pulumi:"version"`
 }
 
+// NetCoreZipUploadedUserSourceInfoInput is an input type that accepts NetCoreZipUploadedUserSourceInfoArgs and NetCoreZipUploadedUserSourceInfoOutput values.
+// You can construct a concrete instance of `NetCoreZipUploadedUserSourceInfoInput` via:
+//
+//	NetCoreZipUploadedUserSourceInfoArgs{...}
+type NetCoreZipUploadedUserSourceInfoInput interface {
+	pulumi.Input
+
+	ToNetCoreZipUploadedUserSourceInfoOutput() NetCoreZipUploadedUserSourceInfoOutput
+	ToNetCoreZipUploadedUserSourceInfoOutputWithContext(context.Context) NetCoreZipUploadedUserSourceInfoOutput
+}
+
+// Uploaded Jar binary for a deployment
+type NetCoreZipUploadedUserSourceInfoArgs struct {
+	// The path to the .NET executable relative to zip root
+	NetCoreMainEntryPath pulumi.StringPtrInput `pulumi:"netCoreMainEntryPath"`
+	// Relative path of the storage which stores the source
+	RelativePath pulumi.StringPtrInput `pulumi:"relativePath"`
+	// Runtime version of the .Net file
+	RuntimeVersion pulumi.StringPtrInput `pulumi:"runtimeVersion"`
+	// Type of the source uploaded
+	// Expected value is 'NetCoreZip'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Version of the source
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (NetCoreZipUploadedUserSourceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetCoreZipUploadedUserSourceInfo)(nil)).Elem()
+}
+
+func (i NetCoreZipUploadedUserSourceInfoArgs) ToNetCoreZipUploadedUserSourceInfoOutput() NetCoreZipUploadedUserSourceInfoOutput {
+	return i.ToNetCoreZipUploadedUserSourceInfoOutputWithContext(context.Background())
+}
+
+func (i NetCoreZipUploadedUserSourceInfoArgs) ToNetCoreZipUploadedUserSourceInfoOutputWithContext(ctx context.Context) NetCoreZipUploadedUserSourceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetCoreZipUploadedUserSourceInfoOutput)
+}
+
+func (i NetCoreZipUploadedUserSourceInfoArgs) ToNetCoreZipUploadedUserSourceInfoPtrOutput() NetCoreZipUploadedUserSourceInfoPtrOutput {
+	return i.ToNetCoreZipUploadedUserSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i NetCoreZipUploadedUserSourceInfoArgs) ToNetCoreZipUploadedUserSourceInfoPtrOutputWithContext(ctx context.Context) NetCoreZipUploadedUserSourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetCoreZipUploadedUserSourceInfoOutput).ToNetCoreZipUploadedUserSourceInfoPtrOutputWithContext(ctx)
+}
+
+// NetCoreZipUploadedUserSourceInfoPtrInput is an input type that accepts NetCoreZipUploadedUserSourceInfoArgs, NetCoreZipUploadedUserSourceInfoPtr and NetCoreZipUploadedUserSourceInfoPtrOutput values.
+// You can construct a concrete instance of `NetCoreZipUploadedUserSourceInfoPtrInput` via:
+//
+//	        NetCoreZipUploadedUserSourceInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetCoreZipUploadedUserSourceInfoPtrInput interface {
+	pulumi.Input
+
+	ToNetCoreZipUploadedUserSourceInfoPtrOutput() NetCoreZipUploadedUserSourceInfoPtrOutput
+	ToNetCoreZipUploadedUserSourceInfoPtrOutputWithContext(context.Context) NetCoreZipUploadedUserSourceInfoPtrOutput
+}
+
+type netCoreZipUploadedUserSourceInfoPtrType NetCoreZipUploadedUserSourceInfoArgs
+
+func NetCoreZipUploadedUserSourceInfoPtr(v *NetCoreZipUploadedUserSourceInfoArgs) NetCoreZipUploadedUserSourceInfoPtrInput {
+	return (*netCoreZipUploadedUserSourceInfoPtrType)(v)
+}
+
+func (*netCoreZipUploadedUserSourceInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetCoreZipUploadedUserSourceInfo)(nil)).Elem()
+}
+
+func (i *netCoreZipUploadedUserSourceInfoPtrType) ToNetCoreZipUploadedUserSourceInfoPtrOutput() NetCoreZipUploadedUserSourceInfoPtrOutput {
+	return i.ToNetCoreZipUploadedUserSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *netCoreZipUploadedUserSourceInfoPtrType) ToNetCoreZipUploadedUserSourceInfoPtrOutputWithContext(ctx context.Context) NetCoreZipUploadedUserSourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetCoreZipUploadedUserSourceInfoPtrOutput)
+}
+
+// Uploaded Jar binary for a deployment
+type NetCoreZipUploadedUserSourceInfoOutput struct{ *pulumi.OutputState }
+
+func (NetCoreZipUploadedUserSourceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetCoreZipUploadedUserSourceInfo)(nil)).Elem()
+}
+
+func (o NetCoreZipUploadedUserSourceInfoOutput) ToNetCoreZipUploadedUserSourceInfoOutput() NetCoreZipUploadedUserSourceInfoOutput {
+	return o
+}
+
+func (o NetCoreZipUploadedUserSourceInfoOutput) ToNetCoreZipUploadedUserSourceInfoOutputWithContext(ctx context.Context) NetCoreZipUploadedUserSourceInfoOutput {
+	return o
+}
+
+func (o NetCoreZipUploadedUserSourceInfoOutput) ToNetCoreZipUploadedUserSourceInfoPtrOutput() NetCoreZipUploadedUserSourceInfoPtrOutput {
+	return o.ToNetCoreZipUploadedUserSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (o NetCoreZipUploadedUserSourceInfoOutput) ToNetCoreZipUploadedUserSourceInfoPtrOutputWithContext(ctx context.Context) NetCoreZipUploadedUserSourceInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetCoreZipUploadedUserSourceInfo) *NetCoreZipUploadedUserSourceInfo {
+		return &v
+	}).(NetCoreZipUploadedUserSourceInfoPtrOutput)
+}
+
+// The path to the .NET executable relative to zip root
+func (o NetCoreZipUploadedUserSourceInfoOutput) NetCoreMainEntryPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetCoreZipUploadedUserSourceInfo) *string { return v.NetCoreMainEntryPath }).(pulumi.StringPtrOutput)
+}
+
+// Relative path of the storage which stores the source
+func (o NetCoreZipUploadedUserSourceInfoOutput) RelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetCoreZipUploadedUserSourceInfo) *string { return v.RelativePath }).(pulumi.StringPtrOutput)
+}
+
+// Runtime version of the .Net file
+func (o NetCoreZipUploadedUserSourceInfoOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetCoreZipUploadedUserSourceInfo) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'NetCoreZip'.
+func (o NetCoreZipUploadedUserSourceInfoOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v NetCoreZipUploadedUserSourceInfo) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the source
+func (o NetCoreZipUploadedUserSourceInfoOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetCoreZipUploadedUserSourceInfo) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type NetCoreZipUploadedUserSourceInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (NetCoreZipUploadedUserSourceInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetCoreZipUploadedUserSourceInfo)(nil)).Elem()
+}
+
+func (o NetCoreZipUploadedUserSourceInfoPtrOutput) ToNetCoreZipUploadedUserSourceInfoPtrOutput() NetCoreZipUploadedUserSourceInfoPtrOutput {
+	return o
+}
+
+func (o NetCoreZipUploadedUserSourceInfoPtrOutput) ToNetCoreZipUploadedUserSourceInfoPtrOutputWithContext(ctx context.Context) NetCoreZipUploadedUserSourceInfoPtrOutput {
+	return o
+}
+
+func (o NetCoreZipUploadedUserSourceInfoPtrOutput) Elem() NetCoreZipUploadedUserSourceInfoOutput {
+	return o.ApplyT(func(v *NetCoreZipUploadedUserSourceInfo) NetCoreZipUploadedUserSourceInfo {
+		if v != nil {
+			return *v
+		}
+		var ret NetCoreZipUploadedUserSourceInfo
+		return ret
+	}).(NetCoreZipUploadedUserSourceInfoOutput)
+}
+
+// The path to the .NET executable relative to zip root
+func (o NetCoreZipUploadedUserSourceInfoPtrOutput) NetCoreMainEntryPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetCoreZipUploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetCoreMainEntryPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Relative path of the storage which stores the source
+func (o NetCoreZipUploadedUserSourceInfoPtrOutput) RelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetCoreZipUploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RelativePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Runtime version of the .Net file
+func (o NetCoreZipUploadedUserSourceInfoPtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetCoreZipUploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'NetCoreZip'.
+func (o NetCoreZipUploadedUserSourceInfoPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetCoreZipUploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of the source
+func (o NetCoreZipUploadedUserSourceInfoPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetCoreZipUploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 // Uploaded Jar binary for a deployment
 type NetCoreZipUploadedUserSourceInfoResponse struct {
 	// The path to the .NET executable relative to zip root
@@ -17671,6 +20901,122 @@ type NetCoreZipUploadedUserSourceInfoResponse struct {
 	Type string `pulumi:"type"`
 	// Version of the source
 	Version *string `pulumi:"version"`
+}
+
+// Uploaded Jar binary for a deployment
+type NetCoreZipUploadedUserSourceInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (NetCoreZipUploadedUserSourceInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetCoreZipUploadedUserSourceInfoResponse)(nil)).Elem()
+}
+
+func (o NetCoreZipUploadedUserSourceInfoResponseOutput) ToNetCoreZipUploadedUserSourceInfoResponseOutput() NetCoreZipUploadedUserSourceInfoResponseOutput {
+	return o
+}
+
+func (o NetCoreZipUploadedUserSourceInfoResponseOutput) ToNetCoreZipUploadedUserSourceInfoResponseOutputWithContext(ctx context.Context) NetCoreZipUploadedUserSourceInfoResponseOutput {
+	return o
+}
+
+// The path to the .NET executable relative to zip root
+func (o NetCoreZipUploadedUserSourceInfoResponseOutput) NetCoreMainEntryPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetCoreZipUploadedUserSourceInfoResponse) *string { return v.NetCoreMainEntryPath }).(pulumi.StringPtrOutput)
+}
+
+// Relative path of the storage which stores the source
+func (o NetCoreZipUploadedUserSourceInfoResponseOutput) RelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetCoreZipUploadedUserSourceInfoResponse) *string { return v.RelativePath }).(pulumi.StringPtrOutput)
+}
+
+// Runtime version of the .Net file
+func (o NetCoreZipUploadedUserSourceInfoResponseOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetCoreZipUploadedUserSourceInfoResponse) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'NetCoreZip'.
+func (o NetCoreZipUploadedUserSourceInfoResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v NetCoreZipUploadedUserSourceInfoResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the source
+func (o NetCoreZipUploadedUserSourceInfoResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetCoreZipUploadedUserSourceInfoResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type NetCoreZipUploadedUserSourceInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NetCoreZipUploadedUserSourceInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetCoreZipUploadedUserSourceInfoResponse)(nil)).Elem()
+}
+
+func (o NetCoreZipUploadedUserSourceInfoResponsePtrOutput) ToNetCoreZipUploadedUserSourceInfoResponsePtrOutput() NetCoreZipUploadedUserSourceInfoResponsePtrOutput {
+	return o
+}
+
+func (o NetCoreZipUploadedUserSourceInfoResponsePtrOutput) ToNetCoreZipUploadedUserSourceInfoResponsePtrOutputWithContext(ctx context.Context) NetCoreZipUploadedUserSourceInfoResponsePtrOutput {
+	return o
+}
+
+func (o NetCoreZipUploadedUserSourceInfoResponsePtrOutput) Elem() NetCoreZipUploadedUserSourceInfoResponseOutput {
+	return o.ApplyT(func(v *NetCoreZipUploadedUserSourceInfoResponse) NetCoreZipUploadedUserSourceInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NetCoreZipUploadedUserSourceInfoResponse
+		return ret
+	}).(NetCoreZipUploadedUserSourceInfoResponseOutput)
+}
+
+// The path to the .NET executable relative to zip root
+func (o NetCoreZipUploadedUserSourceInfoResponsePtrOutput) NetCoreMainEntryPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetCoreZipUploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetCoreMainEntryPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Relative path of the storage which stores the source
+func (o NetCoreZipUploadedUserSourceInfoResponsePtrOutput) RelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetCoreZipUploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RelativePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Runtime version of the .Net file
+func (o NetCoreZipUploadedUserSourceInfoResponsePtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetCoreZipUploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'NetCoreZip'.
+func (o NetCoreZipUploadedUserSourceInfoResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetCoreZipUploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of the source
+func (o NetCoreZipUploadedUserSourceInfoResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetCoreZipUploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
 }
 
 // Service network profile payload
@@ -21060,6 +24406,214 @@ type SourceUploadedUserSourceInfo struct {
 	Version *string `pulumi:"version"`
 }
 
+// SourceUploadedUserSourceInfoInput is an input type that accepts SourceUploadedUserSourceInfoArgs and SourceUploadedUserSourceInfoOutput values.
+// You can construct a concrete instance of `SourceUploadedUserSourceInfoInput` via:
+//
+//	SourceUploadedUserSourceInfoArgs{...}
+type SourceUploadedUserSourceInfoInput interface {
+	pulumi.Input
+
+	ToSourceUploadedUserSourceInfoOutput() SourceUploadedUserSourceInfoOutput
+	ToSourceUploadedUserSourceInfoOutputWithContext(context.Context) SourceUploadedUserSourceInfoOutput
+}
+
+// Uploaded Java source code binary for a deployment
+type SourceUploadedUserSourceInfoArgs struct {
+	// Selector for the artifact to be used for the deployment for multi-module projects. This should be
+	// the relative path to the target module/project.
+	ArtifactSelector pulumi.StringPtrInput `pulumi:"artifactSelector"`
+	// Relative path of the storage which stores the source
+	RelativePath pulumi.StringPtrInput `pulumi:"relativePath"`
+	// Runtime version of the source file
+	RuntimeVersion pulumi.StringPtrInput `pulumi:"runtimeVersion"`
+	// Type of the source uploaded
+	// Expected value is 'Source'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Version of the source
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (SourceUploadedUserSourceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceUploadedUserSourceInfo)(nil)).Elem()
+}
+
+func (i SourceUploadedUserSourceInfoArgs) ToSourceUploadedUserSourceInfoOutput() SourceUploadedUserSourceInfoOutput {
+	return i.ToSourceUploadedUserSourceInfoOutputWithContext(context.Background())
+}
+
+func (i SourceUploadedUserSourceInfoArgs) ToSourceUploadedUserSourceInfoOutputWithContext(ctx context.Context) SourceUploadedUserSourceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceUploadedUserSourceInfoOutput)
+}
+
+func (i SourceUploadedUserSourceInfoArgs) ToSourceUploadedUserSourceInfoPtrOutput() SourceUploadedUserSourceInfoPtrOutput {
+	return i.ToSourceUploadedUserSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i SourceUploadedUserSourceInfoArgs) ToSourceUploadedUserSourceInfoPtrOutputWithContext(ctx context.Context) SourceUploadedUserSourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceUploadedUserSourceInfoOutput).ToSourceUploadedUserSourceInfoPtrOutputWithContext(ctx)
+}
+
+// SourceUploadedUserSourceInfoPtrInput is an input type that accepts SourceUploadedUserSourceInfoArgs, SourceUploadedUserSourceInfoPtr and SourceUploadedUserSourceInfoPtrOutput values.
+// You can construct a concrete instance of `SourceUploadedUserSourceInfoPtrInput` via:
+//
+//	        SourceUploadedUserSourceInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type SourceUploadedUserSourceInfoPtrInput interface {
+	pulumi.Input
+
+	ToSourceUploadedUserSourceInfoPtrOutput() SourceUploadedUserSourceInfoPtrOutput
+	ToSourceUploadedUserSourceInfoPtrOutputWithContext(context.Context) SourceUploadedUserSourceInfoPtrOutput
+}
+
+type sourceUploadedUserSourceInfoPtrType SourceUploadedUserSourceInfoArgs
+
+func SourceUploadedUserSourceInfoPtr(v *SourceUploadedUserSourceInfoArgs) SourceUploadedUserSourceInfoPtrInput {
+	return (*sourceUploadedUserSourceInfoPtrType)(v)
+}
+
+func (*sourceUploadedUserSourceInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceUploadedUserSourceInfo)(nil)).Elem()
+}
+
+func (i *sourceUploadedUserSourceInfoPtrType) ToSourceUploadedUserSourceInfoPtrOutput() SourceUploadedUserSourceInfoPtrOutput {
+	return i.ToSourceUploadedUserSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *sourceUploadedUserSourceInfoPtrType) ToSourceUploadedUserSourceInfoPtrOutputWithContext(ctx context.Context) SourceUploadedUserSourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceUploadedUserSourceInfoPtrOutput)
+}
+
+// Uploaded Java source code binary for a deployment
+type SourceUploadedUserSourceInfoOutput struct{ *pulumi.OutputState }
+
+func (SourceUploadedUserSourceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceUploadedUserSourceInfo)(nil)).Elem()
+}
+
+func (o SourceUploadedUserSourceInfoOutput) ToSourceUploadedUserSourceInfoOutput() SourceUploadedUserSourceInfoOutput {
+	return o
+}
+
+func (o SourceUploadedUserSourceInfoOutput) ToSourceUploadedUserSourceInfoOutputWithContext(ctx context.Context) SourceUploadedUserSourceInfoOutput {
+	return o
+}
+
+func (o SourceUploadedUserSourceInfoOutput) ToSourceUploadedUserSourceInfoPtrOutput() SourceUploadedUserSourceInfoPtrOutput {
+	return o.ToSourceUploadedUserSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (o SourceUploadedUserSourceInfoOutput) ToSourceUploadedUserSourceInfoPtrOutputWithContext(ctx context.Context) SourceUploadedUserSourceInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceUploadedUserSourceInfo) *SourceUploadedUserSourceInfo {
+		return &v
+	}).(SourceUploadedUserSourceInfoPtrOutput)
+}
+
+// Selector for the artifact to be used for the deployment for multi-module projects. This should be
+// the relative path to the target module/project.
+func (o SourceUploadedUserSourceInfoOutput) ArtifactSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceUploadedUserSourceInfo) *string { return v.ArtifactSelector }).(pulumi.StringPtrOutput)
+}
+
+// Relative path of the storage which stores the source
+func (o SourceUploadedUserSourceInfoOutput) RelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceUploadedUserSourceInfo) *string { return v.RelativePath }).(pulumi.StringPtrOutput)
+}
+
+// Runtime version of the source file
+func (o SourceUploadedUserSourceInfoOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceUploadedUserSourceInfo) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'Source'.
+func (o SourceUploadedUserSourceInfoOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SourceUploadedUserSourceInfo) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the source
+func (o SourceUploadedUserSourceInfoOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceUploadedUserSourceInfo) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type SourceUploadedUserSourceInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (SourceUploadedUserSourceInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceUploadedUserSourceInfo)(nil)).Elem()
+}
+
+func (o SourceUploadedUserSourceInfoPtrOutput) ToSourceUploadedUserSourceInfoPtrOutput() SourceUploadedUserSourceInfoPtrOutput {
+	return o
+}
+
+func (o SourceUploadedUserSourceInfoPtrOutput) ToSourceUploadedUserSourceInfoPtrOutputWithContext(ctx context.Context) SourceUploadedUserSourceInfoPtrOutput {
+	return o
+}
+
+func (o SourceUploadedUserSourceInfoPtrOutput) Elem() SourceUploadedUserSourceInfoOutput {
+	return o.ApplyT(func(v *SourceUploadedUserSourceInfo) SourceUploadedUserSourceInfo {
+		if v != nil {
+			return *v
+		}
+		var ret SourceUploadedUserSourceInfo
+		return ret
+	}).(SourceUploadedUserSourceInfoOutput)
+}
+
+// Selector for the artifact to be used for the deployment for multi-module projects. This should be
+// the relative path to the target module/project.
+func (o SourceUploadedUserSourceInfoPtrOutput) ArtifactSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceUploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ArtifactSelector
+	}).(pulumi.StringPtrOutput)
+}
+
+// Relative path of the storage which stores the source
+func (o SourceUploadedUserSourceInfoPtrOutput) RelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceUploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RelativePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Runtime version of the source file
+func (o SourceUploadedUserSourceInfoPtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceUploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'Source'.
+func (o SourceUploadedUserSourceInfoPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceUploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of the source
+func (o SourceUploadedUserSourceInfoPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceUploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 // Uploaded Java source code binary for a deployment
 type SourceUploadedUserSourceInfoResponse struct {
 	// Selector for the artifact to be used for the deployment for multi-module projects. This should be
@@ -21074,6 +24628,124 @@ type SourceUploadedUserSourceInfoResponse struct {
 	Type string `pulumi:"type"`
 	// Version of the source
 	Version *string `pulumi:"version"`
+}
+
+// Uploaded Java source code binary for a deployment
+type SourceUploadedUserSourceInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (SourceUploadedUserSourceInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceUploadedUserSourceInfoResponse)(nil)).Elem()
+}
+
+func (o SourceUploadedUserSourceInfoResponseOutput) ToSourceUploadedUserSourceInfoResponseOutput() SourceUploadedUserSourceInfoResponseOutput {
+	return o
+}
+
+func (o SourceUploadedUserSourceInfoResponseOutput) ToSourceUploadedUserSourceInfoResponseOutputWithContext(ctx context.Context) SourceUploadedUserSourceInfoResponseOutput {
+	return o
+}
+
+// Selector for the artifact to be used for the deployment for multi-module projects. This should be
+// the relative path to the target module/project.
+func (o SourceUploadedUserSourceInfoResponseOutput) ArtifactSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceUploadedUserSourceInfoResponse) *string { return v.ArtifactSelector }).(pulumi.StringPtrOutput)
+}
+
+// Relative path of the storage which stores the source
+func (o SourceUploadedUserSourceInfoResponseOutput) RelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceUploadedUserSourceInfoResponse) *string { return v.RelativePath }).(pulumi.StringPtrOutput)
+}
+
+// Runtime version of the source file
+func (o SourceUploadedUserSourceInfoResponseOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceUploadedUserSourceInfoResponse) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'Source'.
+func (o SourceUploadedUserSourceInfoResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SourceUploadedUserSourceInfoResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the source
+func (o SourceUploadedUserSourceInfoResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceUploadedUserSourceInfoResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type SourceUploadedUserSourceInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SourceUploadedUserSourceInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceUploadedUserSourceInfoResponse)(nil)).Elem()
+}
+
+func (o SourceUploadedUserSourceInfoResponsePtrOutput) ToSourceUploadedUserSourceInfoResponsePtrOutput() SourceUploadedUserSourceInfoResponsePtrOutput {
+	return o
+}
+
+func (o SourceUploadedUserSourceInfoResponsePtrOutput) ToSourceUploadedUserSourceInfoResponsePtrOutputWithContext(ctx context.Context) SourceUploadedUserSourceInfoResponsePtrOutput {
+	return o
+}
+
+func (o SourceUploadedUserSourceInfoResponsePtrOutput) Elem() SourceUploadedUserSourceInfoResponseOutput {
+	return o.ApplyT(func(v *SourceUploadedUserSourceInfoResponse) SourceUploadedUserSourceInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SourceUploadedUserSourceInfoResponse
+		return ret
+	}).(SourceUploadedUserSourceInfoResponseOutput)
+}
+
+// Selector for the artifact to be used for the deployment for multi-module projects. This should be
+// the relative path to the target module/project.
+func (o SourceUploadedUserSourceInfoResponsePtrOutput) ArtifactSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceUploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ArtifactSelector
+	}).(pulumi.StringPtrOutput)
+}
+
+// Relative path of the storage which stores the source
+func (o SourceUploadedUserSourceInfoResponsePtrOutput) RelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceUploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RelativePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Runtime version of the source file
+func (o SourceUploadedUserSourceInfoResponsePtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceUploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'Source'.
+func (o SourceUploadedUserSourceInfoResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceUploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of the source
+func (o SourceUploadedUserSourceInfoResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceUploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
 }
 
 // Single sign-on related configuration
@@ -21905,11 +25577,204 @@ type TCPSocketAction struct {
 	Type string `pulumi:"type"`
 }
 
+// TCPSocketActionInput is an input type that accepts TCPSocketActionArgs and TCPSocketActionOutput values.
+// You can construct a concrete instance of `TCPSocketActionInput` via:
+//
+//	TCPSocketActionArgs{...}
+type TCPSocketActionInput interface {
+	pulumi.Input
+
+	ToTCPSocketActionOutput() TCPSocketActionOutput
+	ToTCPSocketActionOutputWithContext(context.Context) TCPSocketActionOutput
+}
+
+// TCPSocketAction describes an action based on opening a socket
+type TCPSocketActionArgs struct {
+	// The type of the action to take to perform the health check.
+	// Expected value is 'TCPSocketAction'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (TCPSocketActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TCPSocketAction)(nil)).Elem()
+}
+
+func (i TCPSocketActionArgs) ToTCPSocketActionOutput() TCPSocketActionOutput {
+	return i.ToTCPSocketActionOutputWithContext(context.Background())
+}
+
+func (i TCPSocketActionArgs) ToTCPSocketActionOutputWithContext(ctx context.Context) TCPSocketActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TCPSocketActionOutput)
+}
+
+func (i TCPSocketActionArgs) ToTCPSocketActionPtrOutput() TCPSocketActionPtrOutput {
+	return i.ToTCPSocketActionPtrOutputWithContext(context.Background())
+}
+
+func (i TCPSocketActionArgs) ToTCPSocketActionPtrOutputWithContext(ctx context.Context) TCPSocketActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TCPSocketActionOutput).ToTCPSocketActionPtrOutputWithContext(ctx)
+}
+
+// TCPSocketActionPtrInput is an input type that accepts TCPSocketActionArgs, TCPSocketActionPtr and TCPSocketActionPtrOutput values.
+// You can construct a concrete instance of `TCPSocketActionPtrInput` via:
+//
+//	        TCPSocketActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type TCPSocketActionPtrInput interface {
+	pulumi.Input
+
+	ToTCPSocketActionPtrOutput() TCPSocketActionPtrOutput
+	ToTCPSocketActionPtrOutputWithContext(context.Context) TCPSocketActionPtrOutput
+}
+
+type tcpsocketActionPtrType TCPSocketActionArgs
+
+func TCPSocketActionPtr(v *TCPSocketActionArgs) TCPSocketActionPtrInput {
+	return (*tcpsocketActionPtrType)(v)
+}
+
+func (*tcpsocketActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TCPSocketAction)(nil)).Elem()
+}
+
+func (i *tcpsocketActionPtrType) ToTCPSocketActionPtrOutput() TCPSocketActionPtrOutput {
+	return i.ToTCPSocketActionPtrOutputWithContext(context.Background())
+}
+
+func (i *tcpsocketActionPtrType) ToTCPSocketActionPtrOutputWithContext(ctx context.Context) TCPSocketActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TCPSocketActionPtrOutput)
+}
+
+// TCPSocketAction describes an action based on opening a socket
+type TCPSocketActionOutput struct{ *pulumi.OutputState }
+
+func (TCPSocketActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TCPSocketAction)(nil)).Elem()
+}
+
+func (o TCPSocketActionOutput) ToTCPSocketActionOutput() TCPSocketActionOutput {
+	return o
+}
+
+func (o TCPSocketActionOutput) ToTCPSocketActionOutputWithContext(ctx context.Context) TCPSocketActionOutput {
+	return o
+}
+
+func (o TCPSocketActionOutput) ToTCPSocketActionPtrOutput() TCPSocketActionPtrOutput {
+	return o.ToTCPSocketActionPtrOutputWithContext(context.Background())
+}
+
+func (o TCPSocketActionOutput) ToTCPSocketActionPtrOutputWithContext(ctx context.Context) TCPSocketActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TCPSocketAction) *TCPSocketAction {
+		return &v
+	}).(TCPSocketActionPtrOutput)
+}
+
+// The type of the action to take to perform the health check.
+// Expected value is 'TCPSocketAction'.
+func (o TCPSocketActionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TCPSocketAction) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type TCPSocketActionPtrOutput struct{ *pulumi.OutputState }
+
+func (TCPSocketActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TCPSocketAction)(nil)).Elem()
+}
+
+func (o TCPSocketActionPtrOutput) ToTCPSocketActionPtrOutput() TCPSocketActionPtrOutput {
+	return o
+}
+
+func (o TCPSocketActionPtrOutput) ToTCPSocketActionPtrOutputWithContext(ctx context.Context) TCPSocketActionPtrOutput {
+	return o
+}
+
+func (o TCPSocketActionPtrOutput) Elem() TCPSocketActionOutput {
+	return o.ApplyT(func(v *TCPSocketAction) TCPSocketAction {
+		if v != nil {
+			return *v
+		}
+		var ret TCPSocketAction
+		return ret
+	}).(TCPSocketActionOutput)
+}
+
+// The type of the action to take to perform the health check.
+// Expected value is 'TCPSocketAction'.
+func (o TCPSocketActionPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TCPSocketAction) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // TCPSocketAction describes an action based on opening a socket
 type TCPSocketActionResponse struct {
 	// The type of the action to take to perform the health check.
 	// Expected value is 'TCPSocketAction'.
 	Type string `pulumi:"type"`
+}
+
+// TCPSocketAction describes an action based on opening a socket
+type TCPSocketActionResponseOutput struct{ *pulumi.OutputState }
+
+func (TCPSocketActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TCPSocketActionResponse)(nil)).Elem()
+}
+
+func (o TCPSocketActionResponseOutput) ToTCPSocketActionResponseOutput() TCPSocketActionResponseOutput {
+	return o
+}
+
+func (o TCPSocketActionResponseOutput) ToTCPSocketActionResponseOutputWithContext(ctx context.Context) TCPSocketActionResponseOutput {
+	return o
+}
+
+// The type of the action to take to perform the health check.
+// Expected value is 'TCPSocketAction'.
+func (o TCPSocketActionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TCPSocketActionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type TCPSocketActionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TCPSocketActionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TCPSocketActionResponse)(nil)).Elem()
+}
+
+func (o TCPSocketActionResponsePtrOutput) ToTCPSocketActionResponsePtrOutput() TCPSocketActionResponsePtrOutput {
+	return o
+}
+
+func (o TCPSocketActionResponsePtrOutput) ToTCPSocketActionResponsePtrOutputWithContext(ctx context.Context) TCPSocketActionResponsePtrOutput {
+	return o
+}
+
+func (o TCPSocketActionResponsePtrOutput) Elem() TCPSocketActionResponseOutput {
+	return o.ApplyT(func(v *TCPSocketActionResponse) TCPSocketActionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TCPSocketActionResponse
+		return ret
+	}).(TCPSocketActionResponseOutput)
+}
+
+// The type of the action to take to perform the health check.
+// Expected value is 'TCPSocketAction'.
+func (o TCPSocketActionResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TCPSocketActionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // Azure Spring Apps App Instance Tcp scaling rule.
@@ -22458,6 +26323,177 @@ type UploadedUserSourceInfo struct {
 	Version *string `pulumi:"version"`
 }
 
+// UploadedUserSourceInfoInput is an input type that accepts UploadedUserSourceInfoArgs and UploadedUserSourceInfoOutput values.
+// You can construct a concrete instance of `UploadedUserSourceInfoInput` via:
+//
+//	UploadedUserSourceInfoArgs{...}
+type UploadedUserSourceInfoInput interface {
+	pulumi.Input
+
+	ToUploadedUserSourceInfoOutput() UploadedUserSourceInfoOutput
+	ToUploadedUserSourceInfoOutputWithContext(context.Context) UploadedUserSourceInfoOutput
+}
+
+// Source with uploaded location
+type UploadedUserSourceInfoArgs struct {
+	// Relative path of the storage which stores the source
+	RelativePath pulumi.StringPtrInput `pulumi:"relativePath"`
+	// Type of the source uploaded
+	// Expected value is 'UploadedUserSourceInfo'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Version of the source
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (UploadedUserSourceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UploadedUserSourceInfo)(nil)).Elem()
+}
+
+func (i UploadedUserSourceInfoArgs) ToUploadedUserSourceInfoOutput() UploadedUserSourceInfoOutput {
+	return i.ToUploadedUserSourceInfoOutputWithContext(context.Background())
+}
+
+func (i UploadedUserSourceInfoArgs) ToUploadedUserSourceInfoOutputWithContext(ctx context.Context) UploadedUserSourceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UploadedUserSourceInfoOutput)
+}
+
+func (i UploadedUserSourceInfoArgs) ToUploadedUserSourceInfoPtrOutput() UploadedUserSourceInfoPtrOutput {
+	return i.ToUploadedUserSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i UploadedUserSourceInfoArgs) ToUploadedUserSourceInfoPtrOutputWithContext(ctx context.Context) UploadedUserSourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UploadedUserSourceInfoOutput).ToUploadedUserSourceInfoPtrOutputWithContext(ctx)
+}
+
+// UploadedUserSourceInfoPtrInput is an input type that accepts UploadedUserSourceInfoArgs, UploadedUserSourceInfoPtr and UploadedUserSourceInfoPtrOutput values.
+// You can construct a concrete instance of `UploadedUserSourceInfoPtrInput` via:
+//
+//	        UploadedUserSourceInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type UploadedUserSourceInfoPtrInput interface {
+	pulumi.Input
+
+	ToUploadedUserSourceInfoPtrOutput() UploadedUserSourceInfoPtrOutput
+	ToUploadedUserSourceInfoPtrOutputWithContext(context.Context) UploadedUserSourceInfoPtrOutput
+}
+
+type uploadedUserSourceInfoPtrType UploadedUserSourceInfoArgs
+
+func UploadedUserSourceInfoPtr(v *UploadedUserSourceInfoArgs) UploadedUserSourceInfoPtrInput {
+	return (*uploadedUserSourceInfoPtrType)(v)
+}
+
+func (*uploadedUserSourceInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UploadedUserSourceInfo)(nil)).Elem()
+}
+
+func (i *uploadedUserSourceInfoPtrType) ToUploadedUserSourceInfoPtrOutput() UploadedUserSourceInfoPtrOutput {
+	return i.ToUploadedUserSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *uploadedUserSourceInfoPtrType) ToUploadedUserSourceInfoPtrOutputWithContext(ctx context.Context) UploadedUserSourceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UploadedUserSourceInfoPtrOutput)
+}
+
+// Source with uploaded location
+type UploadedUserSourceInfoOutput struct{ *pulumi.OutputState }
+
+func (UploadedUserSourceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UploadedUserSourceInfo)(nil)).Elem()
+}
+
+func (o UploadedUserSourceInfoOutput) ToUploadedUserSourceInfoOutput() UploadedUserSourceInfoOutput {
+	return o
+}
+
+func (o UploadedUserSourceInfoOutput) ToUploadedUserSourceInfoOutputWithContext(ctx context.Context) UploadedUserSourceInfoOutput {
+	return o
+}
+
+func (o UploadedUserSourceInfoOutput) ToUploadedUserSourceInfoPtrOutput() UploadedUserSourceInfoPtrOutput {
+	return o.ToUploadedUserSourceInfoPtrOutputWithContext(context.Background())
+}
+
+func (o UploadedUserSourceInfoOutput) ToUploadedUserSourceInfoPtrOutputWithContext(ctx context.Context) UploadedUserSourceInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UploadedUserSourceInfo) *UploadedUserSourceInfo {
+		return &v
+	}).(UploadedUserSourceInfoPtrOutput)
+}
+
+// Relative path of the storage which stores the source
+func (o UploadedUserSourceInfoOutput) RelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UploadedUserSourceInfo) *string { return v.RelativePath }).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'UploadedUserSourceInfo'.
+func (o UploadedUserSourceInfoOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v UploadedUserSourceInfo) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the source
+func (o UploadedUserSourceInfoOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UploadedUserSourceInfo) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type UploadedUserSourceInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (UploadedUserSourceInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UploadedUserSourceInfo)(nil)).Elem()
+}
+
+func (o UploadedUserSourceInfoPtrOutput) ToUploadedUserSourceInfoPtrOutput() UploadedUserSourceInfoPtrOutput {
+	return o
+}
+
+func (o UploadedUserSourceInfoPtrOutput) ToUploadedUserSourceInfoPtrOutputWithContext(ctx context.Context) UploadedUserSourceInfoPtrOutput {
+	return o
+}
+
+func (o UploadedUserSourceInfoPtrOutput) Elem() UploadedUserSourceInfoOutput {
+	return o.ApplyT(func(v *UploadedUserSourceInfo) UploadedUserSourceInfo {
+		if v != nil {
+			return *v
+		}
+		var ret UploadedUserSourceInfo
+		return ret
+	}).(UploadedUserSourceInfoOutput)
+}
+
+// Relative path of the storage which stores the source
+func (o UploadedUserSourceInfoPtrOutput) RelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RelativePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'UploadedUserSourceInfo'.
+func (o UploadedUserSourceInfoPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of the source
+func (o UploadedUserSourceInfoPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UploadedUserSourceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 // Source with uploaded location
 type UploadedUserSourceInfoResponse struct {
 	// Relative path of the storage which stores the source
@@ -22467,6 +26503,92 @@ type UploadedUserSourceInfoResponse struct {
 	Type string `pulumi:"type"`
 	// Version of the source
 	Version *string `pulumi:"version"`
+}
+
+// Source with uploaded location
+type UploadedUserSourceInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (UploadedUserSourceInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UploadedUserSourceInfoResponse)(nil)).Elem()
+}
+
+func (o UploadedUserSourceInfoResponseOutput) ToUploadedUserSourceInfoResponseOutput() UploadedUserSourceInfoResponseOutput {
+	return o
+}
+
+func (o UploadedUserSourceInfoResponseOutput) ToUploadedUserSourceInfoResponseOutputWithContext(ctx context.Context) UploadedUserSourceInfoResponseOutput {
+	return o
+}
+
+// Relative path of the storage which stores the source
+func (o UploadedUserSourceInfoResponseOutput) RelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UploadedUserSourceInfoResponse) *string { return v.RelativePath }).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'UploadedUserSourceInfo'.
+func (o UploadedUserSourceInfoResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v UploadedUserSourceInfoResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Version of the source
+func (o UploadedUserSourceInfoResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UploadedUserSourceInfoResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type UploadedUserSourceInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UploadedUserSourceInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UploadedUserSourceInfoResponse)(nil)).Elem()
+}
+
+func (o UploadedUserSourceInfoResponsePtrOutput) ToUploadedUserSourceInfoResponsePtrOutput() UploadedUserSourceInfoResponsePtrOutput {
+	return o
+}
+
+func (o UploadedUserSourceInfoResponsePtrOutput) ToUploadedUserSourceInfoResponsePtrOutputWithContext(ctx context.Context) UploadedUserSourceInfoResponsePtrOutput {
+	return o
+}
+
+func (o UploadedUserSourceInfoResponsePtrOutput) Elem() UploadedUserSourceInfoResponseOutput {
+	return o.ApplyT(func(v *UploadedUserSourceInfoResponse) UploadedUserSourceInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UploadedUserSourceInfoResponse
+		return ret
+	}).(UploadedUserSourceInfoResponseOutput)
+}
+
+// Relative path of the storage which stores the source
+func (o UploadedUserSourceInfoResponsePtrOutput) RelativePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RelativePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the source uploaded
+// Expected value is 'UploadedUserSourceInfo'.
+func (o UploadedUserSourceInfoResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of the source
+func (o UploadedUserSourceInfoResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UploadedUserSourceInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
 }
 
 // The details of the user-assigned managed identity assigned to an App.
@@ -22523,9 +26645,18 @@ func (o UserAssignedManagedIdentityResponseMapOutput) MapIndex(k pulumi.StringIn
 }
 
 func init() {
+	pulumi.RegisterOutputType(AcceleratorBasicAuthSettingOutput{})
+	pulumi.RegisterOutputType(AcceleratorBasicAuthSettingPtrOutput{})
+	pulumi.RegisterOutputType(AcceleratorBasicAuthSettingResponseOutput{})
 	pulumi.RegisterOutputType(AcceleratorGitRepositoryOutput{})
 	pulumi.RegisterOutputType(AcceleratorGitRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(AcceleratorGitRepositoryResponseOutput{})
+	pulumi.RegisterOutputType(AcceleratorPublicSettingOutput{})
+	pulumi.RegisterOutputType(AcceleratorPublicSettingPtrOutput{})
+	pulumi.RegisterOutputType(AcceleratorPublicSettingResponseOutput{})
+	pulumi.RegisterOutputType(AcceleratorSshSettingOutput{})
+	pulumi.RegisterOutputType(AcceleratorSshSettingPtrOutput{})
+	pulumi.RegisterOutputType(AcceleratorSshSettingResponseOutput{})
 	pulumi.RegisterOutputType(ApiPortalCustomDomainPropertiesOutput{})
 	pulumi.RegisterOutputType(ApiPortalCustomDomainPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ApiPortalCustomDomainPropertiesResponseOutput{})
@@ -22578,6 +26709,10 @@ func init() {
 	pulumi.RegisterOutputType(BuildResourceRequestsPtrOutput{})
 	pulumi.RegisterOutputType(BuildResourceRequestsResponseOutput{})
 	pulumi.RegisterOutputType(BuildResourceRequestsResponsePtrOutput{})
+	pulumi.RegisterOutputType(BuildResultUserSourceInfoOutput{})
+	pulumi.RegisterOutputType(BuildResultUserSourceInfoPtrOutput{})
+	pulumi.RegisterOutputType(BuildResultUserSourceInfoResponseOutput{})
+	pulumi.RegisterOutputType(BuildResultUserSourceInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(BuildServiceAgentPoolPropertiesOutput{})
 	pulumi.RegisterOutputType(BuildServiceAgentPoolPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(BuildServiceAgentPoolPropertiesResponseOutput{})
@@ -22649,6 +26784,17 @@ func init() {
 	pulumi.RegisterOutputType(ContainerRegistryPropertiesOutput{})
 	pulumi.RegisterOutputType(ContainerRegistryPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ContainerRegistryPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ContentCertificatePropertiesOutput{})
+	pulumi.RegisterOutputType(ContentCertificatePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ContentCertificatePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(CustomContainerOutput{})
+	pulumi.RegisterOutputType(CustomContainerPtrOutput{})
+	pulumi.RegisterOutputType(CustomContainerResponseOutput{})
+	pulumi.RegisterOutputType(CustomContainerResponsePtrOutput{})
+	pulumi.RegisterOutputType(CustomContainerUserSourceInfoOutput{})
+	pulumi.RegisterOutputType(CustomContainerUserSourceInfoPtrOutput{})
+	pulumi.RegisterOutputType(CustomContainerUserSourceInfoResponseOutput{})
+	pulumi.RegisterOutputType(CustomContainerUserSourceInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(CustomDomainPropertiesOutput{})
 	pulumi.RegisterOutputType(CustomDomainPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(CustomDomainPropertiesResponseOutput{})
@@ -22696,6 +26842,10 @@ func init() {
 	pulumi.RegisterOutputType(ErrorPtrOutput{})
 	pulumi.RegisterOutputType(ErrorResponseOutput{})
 	pulumi.RegisterOutputType(ErrorResponsePtrOutput{})
+	pulumi.RegisterOutputType(ExecActionOutput{})
+	pulumi.RegisterOutputType(ExecActionPtrOutput{})
+	pulumi.RegisterOutputType(ExecActionResponseOutput{})
+	pulumi.RegisterOutputType(ExecActionResponsePtrOutput{})
 	pulumi.RegisterOutputType(GatewayApiMetadataPropertiesOutput{})
 	pulumi.RegisterOutputType(GatewayApiMetadataPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(GatewayApiMetadataPropertiesResponseOutput{})
@@ -22741,10 +26891,18 @@ func init() {
 	pulumi.RegisterOutputType(GitPatternRepositoryArrayOutput{})
 	pulumi.RegisterOutputType(GitPatternRepositoryResponseOutput{})
 	pulumi.RegisterOutputType(GitPatternRepositoryResponseArrayOutput{})
+	pulumi.RegisterOutputType(HTTPGetActionOutput{})
+	pulumi.RegisterOutputType(HTTPGetActionPtrOutput{})
+	pulumi.RegisterOutputType(HTTPGetActionResponseOutput{})
+	pulumi.RegisterOutputType(HTTPGetActionResponsePtrOutput{})
 	pulumi.RegisterOutputType(HttpScaleRuleOutput{})
 	pulumi.RegisterOutputType(HttpScaleRulePtrOutput{})
 	pulumi.RegisterOutputType(HttpScaleRuleResponseOutput{})
 	pulumi.RegisterOutputType(HttpScaleRuleResponsePtrOutput{})
+	pulumi.RegisterOutputType(ImageRegistryCredentialOutput{})
+	pulumi.RegisterOutputType(ImageRegistryCredentialPtrOutput{})
+	pulumi.RegisterOutputType(ImageRegistryCredentialResponseOutput{})
+	pulumi.RegisterOutputType(ImageRegistryCredentialResponsePtrOutput{})
 	pulumi.RegisterOutputType(IngressConfigOutput{})
 	pulumi.RegisterOutputType(IngressConfigPtrOutput{})
 	pulumi.RegisterOutputType(IngressConfigResponseOutput{})
@@ -22757,6 +26915,13 @@ func init() {
 	pulumi.RegisterOutputType(IngressSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(IngressSettingsResponseClientAuthOutput{})
 	pulumi.RegisterOutputType(IngressSettingsResponseClientAuthPtrOutput{})
+	pulumi.RegisterOutputType(JarUploadedUserSourceInfoOutput{})
+	pulumi.RegisterOutputType(JarUploadedUserSourceInfoPtrOutput{})
+	pulumi.RegisterOutputType(JarUploadedUserSourceInfoResponseOutput{})
+	pulumi.RegisterOutputType(JarUploadedUserSourceInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(KeyVaultCertificatePropertiesOutput{})
+	pulumi.RegisterOutputType(KeyVaultCertificatePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(KeyVaultCertificatePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(LoadedCertificateOutput{})
 	pulumi.RegisterOutputType(LoadedCertificateArrayOutput{})
 	pulumi.RegisterOutputType(LoadedCertificateResponseOutput{})
@@ -22772,6 +26937,10 @@ func init() {
 	pulumi.RegisterOutputType(MonitoringSettingPropertiesOutput{})
 	pulumi.RegisterOutputType(MonitoringSettingPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(MonitoringSettingPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(NetCoreZipUploadedUserSourceInfoOutput{})
+	pulumi.RegisterOutputType(NetCoreZipUploadedUserSourceInfoPtrOutput{})
+	pulumi.RegisterOutputType(NetCoreZipUploadedUserSourceInfoResponseOutput{})
+	pulumi.RegisterOutputType(NetCoreZipUploadedUserSourceInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(NetworkProfileOutput{})
 	pulumi.RegisterOutputType(NetworkProfilePtrOutput{})
 	pulumi.RegisterOutputType(NetworkProfileResponseOutput{})
@@ -22824,6 +26993,10 @@ func init() {
 	pulumi.RegisterOutputType(SkuPtrOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
 	pulumi.RegisterOutputType(SkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(SourceUploadedUserSourceInfoOutput{})
+	pulumi.RegisterOutputType(SourceUploadedUserSourceInfoPtrOutput{})
+	pulumi.RegisterOutputType(SourceUploadedUserSourceInfoResponseOutput{})
+	pulumi.RegisterOutputType(SourceUploadedUserSourceInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(SsoPropertiesOutput{})
 	pulumi.RegisterOutputType(SsoPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SsoPropertiesResponseOutput{})
@@ -22836,6 +27009,10 @@ func init() {
 	pulumi.RegisterOutputType(StorageAccountPtrOutput{})
 	pulumi.RegisterOutputType(StorageAccountResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(TCPSocketActionOutput{})
+	pulumi.RegisterOutputType(TCPSocketActionPtrOutput{})
+	pulumi.RegisterOutputType(TCPSocketActionResponseOutput{})
+	pulumi.RegisterOutputType(TCPSocketActionResponsePtrOutput{})
 	pulumi.RegisterOutputType(TcpScaleRuleOutput{})
 	pulumi.RegisterOutputType(TcpScaleRulePtrOutput{})
 	pulumi.RegisterOutputType(TcpScaleRuleResponseOutput{})
@@ -22845,6 +27022,10 @@ func init() {
 	pulumi.RegisterOutputType(TemporaryDiskResponseOutput{})
 	pulumi.RegisterOutputType(TemporaryDiskResponsePtrOutput{})
 	pulumi.RegisterOutputType(TriggeredBuildResultResponseOutput{})
+	pulumi.RegisterOutputType(UploadedUserSourceInfoOutput{})
+	pulumi.RegisterOutputType(UploadedUserSourceInfoPtrOutput{})
+	pulumi.RegisterOutputType(UploadedUserSourceInfoResponseOutput{})
+	pulumi.RegisterOutputType(UploadedUserSourceInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserAssignedManagedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedManagedIdentityResponseMapOutput{})
 }

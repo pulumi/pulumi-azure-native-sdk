@@ -20,6 +20,171 @@ const (
 	ConsistencyModeTypesApplicationConsistent = ConsistencyModeTypes("ApplicationConsistent")
 )
 
+func (ConsistencyModeTypes) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsistencyModeTypes)(nil)).Elem()
+}
+
+func (e ConsistencyModeTypes) ToConsistencyModeTypesOutput() ConsistencyModeTypesOutput {
+	return pulumi.ToOutput(e).(ConsistencyModeTypesOutput)
+}
+
+func (e ConsistencyModeTypes) ToConsistencyModeTypesOutputWithContext(ctx context.Context) ConsistencyModeTypesOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ConsistencyModeTypesOutput)
+}
+
+func (e ConsistencyModeTypes) ToConsistencyModeTypesPtrOutput() ConsistencyModeTypesPtrOutput {
+	return e.ToConsistencyModeTypesPtrOutputWithContext(context.Background())
+}
+
+func (e ConsistencyModeTypes) ToConsistencyModeTypesPtrOutputWithContext(ctx context.Context) ConsistencyModeTypesPtrOutput {
+	return ConsistencyModeTypes(e).ToConsistencyModeTypesOutputWithContext(ctx).ToConsistencyModeTypesPtrOutputWithContext(ctx)
+}
+
+func (e ConsistencyModeTypes) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConsistencyModeTypes) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConsistencyModeTypes) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ConsistencyModeTypes) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ConsistencyModeTypesOutput struct{ *pulumi.OutputState }
+
+func (ConsistencyModeTypesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsistencyModeTypes)(nil)).Elem()
+}
+
+func (o ConsistencyModeTypesOutput) ToConsistencyModeTypesOutput() ConsistencyModeTypesOutput {
+	return o
+}
+
+func (o ConsistencyModeTypesOutput) ToConsistencyModeTypesOutputWithContext(ctx context.Context) ConsistencyModeTypesOutput {
+	return o
+}
+
+func (o ConsistencyModeTypesOutput) ToConsistencyModeTypesPtrOutput() ConsistencyModeTypesPtrOutput {
+	return o.ToConsistencyModeTypesPtrOutputWithContext(context.Background())
+}
+
+func (o ConsistencyModeTypesOutput) ToConsistencyModeTypesPtrOutputWithContext(ctx context.Context) ConsistencyModeTypesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsistencyModeTypes) *ConsistencyModeTypes {
+		return &v
+	}).(ConsistencyModeTypesPtrOutput)
+}
+
+func (o ConsistencyModeTypesOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ConsistencyModeTypesOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConsistencyModeTypes) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ConsistencyModeTypesOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConsistencyModeTypesOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConsistencyModeTypes) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConsistencyModeTypesPtrOutput struct{ *pulumi.OutputState }
+
+func (ConsistencyModeTypesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsistencyModeTypes)(nil)).Elem()
+}
+
+func (o ConsistencyModeTypesPtrOutput) ToConsistencyModeTypesPtrOutput() ConsistencyModeTypesPtrOutput {
+	return o
+}
+
+func (o ConsistencyModeTypesPtrOutput) ToConsistencyModeTypesPtrOutputWithContext(ctx context.Context) ConsistencyModeTypesPtrOutput {
+	return o
+}
+
+func (o ConsistencyModeTypesPtrOutput) Elem() ConsistencyModeTypesOutput {
+	return o.ApplyT(func(v *ConsistencyModeTypes) ConsistencyModeTypes {
+		if v != nil {
+			return *v
+		}
+		var ret ConsistencyModeTypes
+		return ret
+	}).(ConsistencyModeTypesOutput)
+}
+
+func (o ConsistencyModeTypesPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConsistencyModeTypesPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ConsistencyModeTypes) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ConsistencyModeTypesInput is an input type that accepts values of the ConsistencyModeTypes enum
+// A concrete instance of `ConsistencyModeTypesInput` can be one of the following:
+//
+//	ConsistencyModeTypesCrashConsistent
+//	ConsistencyModeTypesFileSystemConsistent
+//	ConsistencyModeTypesApplicationConsistent
+type ConsistencyModeTypesInput interface {
+	pulumi.Input
+
+	ToConsistencyModeTypesOutput() ConsistencyModeTypesOutput
+	ToConsistencyModeTypesOutputWithContext(context.Context) ConsistencyModeTypesOutput
+}
+
+var consistencyModeTypesPtrType = reflect.TypeOf((**ConsistencyModeTypes)(nil)).Elem()
+
+type ConsistencyModeTypesPtrInput interface {
+	pulumi.Input
+
+	ToConsistencyModeTypesPtrOutput() ConsistencyModeTypesPtrOutput
+	ToConsistencyModeTypesPtrOutputWithContext(context.Context) ConsistencyModeTypesPtrOutput
+}
+
+type consistencyModeTypesPtr string
+
+func ConsistencyModeTypesPtr(v string) ConsistencyModeTypesPtrInput {
+	return (*consistencyModeTypesPtr)(&v)
+}
+
+func (*consistencyModeTypesPtr) ElementType() reflect.Type {
+	return consistencyModeTypesPtrType
+}
+
+func (in *consistencyModeTypesPtr) ToConsistencyModeTypesPtrOutput() ConsistencyModeTypesPtrOutput {
+	return pulumi.ToOutput(in).(ConsistencyModeTypesPtrOutput)
+}
+
+func (in *consistencyModeTypesPtr) ToConsistencyModeTypesPtrOutputWithContext(ctx context.Context) ConsistencyModeTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ConsistencyModeTypesPtrOutput)
+}
+
+func (in *consistencyModeTypesPtr) ToOutput(ctx context.Context) pulumix.Output[*ConsistencyModeTypes] {
+	return pulumix.Output[*ConsistencyModeTypes]{
+		OutputState: in.ToConsistencyModeTypesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Interval value in minutes used to create LogAnalytics call rate logs.
 type IntervalInMins string
 
@@ -149,10 +314,13 @@ func (o IntervalInMinsPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// IntervalInMinsInput is an input type that accepts IntervalInMinsArgs and IntervalInMinsOutput values.
-// You can construct a concrete instance of `IntervalInMinsInput` via:
+// IntervalInMinsInput is an input type that accepts values of the IntervalInMins enum
+// A concrete instance of `IntervalInMinsInput` can be one of the following:
 //
-//	IntervalInMinsArgs{...}
+//	IntervalInMinsThreeMins
+//	IntervalInMinsFiveMins
+//	IntervalInMinsThirtyMins
+//	IntervalInMinsSixtyMins
 type IntervalInMinsInput interface {
 	pulumi.Input
 
@@ -194,6 +362,8 @@ func (in *intervalInMinsPtr) ToOutput(ctx context.Context) pulumix.Output[*Inter
 }
 
 func init() {
+	pulumi.RegisterOutputType(ConsistencyModeTypesOutput{})
+	pulumi.RegisterOutputType(ConsistencyModeTypesPtrOutput{})
 	pulumi.RegisterOutputType(IntervalInMinsOutput{})
 	pulumi.RegisterOutputType(IntervalInMinsPtrOutput{})
 }

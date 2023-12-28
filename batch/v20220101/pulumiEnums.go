@@ -142,10 +142,12 @@ func (o AuthenticationModePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuthenticationModeInput is an input type that accepts AuthenticationModeArgs and AuthenticationModeOutput values.
-// You can construct a concrete instance of `AuthenticationModeInput` via:
+// AuthenticationModeInput is an input type that accepts values of the AuthenticationMode enum
+// A concrete instance of `AuthenticationModeInput` can be one of the following:
 //
-//	AuthenticationModeArgs{...}
+//	AuthenticationModeSharedKey
+//	AuthenticationModeAAD
+//	AuthenticationModeTaskAuthenticationToken
 type AuthenticationModeInput interface {
 	pulumi.Input
 
@@ -360,10 +362,11 @@ func (o AutoStorageAuthenticationModePtrOutput) ToStringPtrOutputWithContext(ctx
 	}).(pulumi.StringPtrOutput)
 }
 
-// AutoStorageAuthenticationModeInput is an input type that accepts AutoStorageAuthenticationModeArgs and AutoStorageAuthenticationModeOutput values.
-// You can construct a concrete instance of `AutoStorageAuthenticationModeInput` via:
+// AutoStorageAuthenticationModeInput is an input type that accepts values of the AutoStorageAuthenticationMode enum
+// A concrete instance of `AutoStorageAuthenticationModeInput` can be one of the following:
 //
-//	AutoStorageAuthenticationModeArgs{...}
+//	AutoStorageAuthenticationModeStorageKeys
+//	AutoStorageAuthenticationModeBatchAccountManagedIdentity
 type AutoStorageAuthenticationModeInput interface {
 	pulumi.Input
 
@@ -533,10 +536,11 @@ func (o KeySourcePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// KeySourceInput is an input type that accepts KeySourceArgs and KeySourceOutput values.
-// You can construct a concrete instance of `KeySourceInput` via:
+// KeySourceInput is an input type that accepts values of the KeySource enum
+// A concrete instance of `KeySourceInput` can be one of the following:
 //
-//	KeySourceArgs{...}
+//	KeySource_Microsoft_Batch
+//	KeySource_Microsoft_KeyVault
 type KeySourceInput interface {
 	pulumi.Input
 
@@ -706,10 +710,11 @@ func (o PoolAllocationModePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// PoolAllocationModeInput is an input type that accepts PoolAllocationModeArgs and PoolAllocationModeOutput values.
-// You can construct a concrete instance of `PoolAllocationModeInput` via:
+// PoolAllocationModeInput is an input type that accepts values of the PoolAllocationMode enum
+// A concrete instance of `PoolAllocationModeInput` can be one of the following:
 //
-//	PoolAllocationModeArgs{...}
+//	PoolAllocationModeBatchService
+//	PoolAllocationModeUserSubscription
 type PoolAllocationModeInput interface {
 	pulumi.Input
 
@@ -879,10 +884,11 @@ func (o PublicNetworkAccessTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// PublicNetworkAccessTypeInput is an input type that accepts PublicNetworkAccessTypeArgs and PublicNetworkAccessTypeOutput values.
-// You can construct a concrete instance of `PublicNetworkAccessTypeInput` via:
+// PublicNetworkAccessTypeInput is an input type that accepts values of the PublicNetworkAccessType enum
+// A concrete instance of `PublicNetworkAccessTypeInput` can be one of the following:
 //
-//	PublicNetworkAccessTypeArgs{...}
+//	PublicNetworkAccessTypeEnabled
+//	PublicNetworkAccessTypeDisabled
 type PublicNetworkAccessTypeInput interface {
 	pulumi.Input
 
@@ -1054,10 +1060,12 @@ func (o ResourceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// ResourceIdentityTypeInput is an input type that accepts ResourceIdentityTypeArgs and ResourceIdentityTypeOutput values.
-// You can construct a concrete instance of `ResourceIdentityTypeInput` via:
+// ResourceIdentityTypeInput is an input type that accepts values of the ResourceIdentityType enum
+// A concrete instance of `ResourceIdentityTypeInput` can be one of the following:
 //
-//	ResourceIdentityTypeArgs{...}
+//	ResourceIdentityTypeSystemAssigned
+//	ResourceIdentityTypeUserAssigned
+//	ResourceIdentityTypeNone
 type ResourceIdentityTypeInput interface {
 	pulumi.Input
 

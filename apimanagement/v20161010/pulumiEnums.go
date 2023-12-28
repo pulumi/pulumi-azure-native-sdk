@@ -140,10 +140,13 @@ func (o HostnameTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// HostnameTypeInput is an input type that accepts HostnameTypeArgs and HostnameTypeOutput values.
-// You can construct a concrete instance of `HostnameTypeInput` via:
+// HostnameTypeInput is an input type that accepts values of the HostnameType enum
+// A concrete instance of `HostnameTypeInput` can be one of the following:
 //
-//	HostnameTypeArgs{...}
+//	HostnameTypeProxy
+//	HostnameTypePortal
+//	HostnameTypeManagement
+//	HostnameTypeScm
 type HostnameTypeInput interface {
 	pulumi.Input
 
@@ -311,10 +314,11 @@ func (o KeyTypeContractPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// KeyTypeContractInput is an input type that accepts KeyTypeContractArgs and KeyTypeContractOutput values.
-// You can construct a concrete instance of `KeyTypeContractInput` via:
+// KeyTypeContractInput is an input type that accepts values of the KeyTypeContract enum
+// A concrete instance of `KeyTypeContractInput` can be one of the following:
 //
-//	KeyTypeContractArgs{...}
+//	KeyTypeContractPrimary
+//	KeyTypeContractSecondary
 type KeyTypeContractInput interface {
 	pulumi.Input
 
@@ -483,10 +487,12 @@ func (o SkuTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// SkuTypeInput is an input type that accepts SkuTypeArgs and SkuTypeOutput values.
-// You can construct a concrete instance of `SkuTypeInput` via:
+// SkuTypeInput is an input type that accepts values of the SkuType enum
+// A concrete instance of `SkuTypeInput` can be one of the following:
 //
-//	SkuTypeArgs{...}
+//	SkuTypeDeveloper
+//	SkuTypeStandard
+//	SkuTypePremium
 type SkuTypeInput interface {
 	pulumi.Input
 
@@ -655,10 +661,12 @@ func (o VirtualNetworkTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// VirtualNetworkTypeInput is an input type that accepts VirtualNetworkTypeArgs and VirtualNetworkTypeOutput values.
-// You can construct a concrete instance of `VirtualNetworkTypeInput` via:
+// VirtualNetworkTypeInput is an input type that accepts values of the VirtualNetworkType enum
+// A concrete instance of `VirtualNetworkTypeInput` can be one of the following:
 //
-//	VirtualNetworkTypeArgs{...}
+//	VirtualNetworkTypeNone
+//	VirtualNetworkTypeExternal
+//	VirtualNetworkTypeInternal
 type VirtualNetworkTypeInput interface {
 	pulumi.Input
 

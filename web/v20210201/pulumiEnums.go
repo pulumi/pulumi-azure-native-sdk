@@ -137,10 +137,10 @@ func (o ClientCredentialMethodPtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// ClientCredentialMethodInput is an input type that accepts ClientCredentialMethodArgs and ClientCredentialMethodOutput values.
-// You can construct a concrete instance of `ClientCredentialMethodInput` via:
+// ClientCredentialMethodInput is an input type that accepts values of the ClientCredentialMethod enum
+// A concrete instance of `ClientCredentialMethodInput` can be one of the following:
 //
-//	ClientCredentialMethodArgs{...}
+//	ClientCredentialMethodClientSecretPost
 type ClientCredentialMethodInput interface {
 	pulumi.Input
 
@@ -308,10 +308,11 @@ func (o CookieExpirationConventionPtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// CookieExpirationConventionInput is an input type that accepts CookieExpirationConventionArgs and CookieExpirationConventionOutput values.
-// You can construct a concrete instance of `CookieExpirationConventionInput` via:
+// CookieExpirationConventionInput is an input type that accepts values of the CookieExpirationConvention enum
+// A concrete instance of `CookieExpirationConventionInput` can be one of the following:
 //
-//	CookieExpirationConventionArgs{...}
+//	CookieExpirationConventionFixedTime
+//	CookieExpirationConventionIdentityProviderDerived
 type CookieExpirationConventionInput interface {
 	pulumi.Input
 
@@ -480,10 +481,12 @@ func (o ForwardProxyConventionPtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// ForwardProxyConventionInput is an input type that accepts ForwardProxyConventionArgs and ForwardProxyConventionOutput values.
-// You can construct a concrete instance of `ForwardProxyConventionInput` via:
+// ForwardProxyConventionInput is an input type that accepts values of the ForwardProxyConvention enum
+// A concrete instance of `ForwardProxyConventionInput` can be one of the following:
 //
-//	ForwardProxyConventionArgs{...}
+//	ForwardProxyConventionNoProxy
+//	ForwardProxyConventionStandard
+//	ForwardProxyConventionCustom
 type ForwardProxyConventionInput interface {
 	pulumi.Input
 
@@ -653,10 +656,13 @@ func (o ManagedServiceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// ManagedServiceIdentityTypeInput is an input type that accepts ManagedServiceIdentityTypeArgs and ManagedServiceIdentityTypeOutput values.
-// You can construct a concrete instance of `ManagedServiceIdentityTypeInput` via:
+// ManagedServiceIdentityTypeInput is an input type that accepts values of the ManagedServiceIdentityType enum
+// A concrete instance of `ManagedServiceIdentityTypeInput` can be one of the following:
 //
-//	ManagedServiceIdentityTypeArgs{...}
+//	ManagedServiceIdentityTypeSystemAssigned
+//	ManagedServiceIdentityTypeUserAssigned
+//	ManagedServiceIdentityType_SystemAssigned_UserAssigned
+//	ManagedServiceIdentityTypeNone
 type ManagedServiceIdentityTypeInput interface {
 	pulumi.Input
 
@@ -824,10 +830,11 @@ func (o StagingEnvironmentPolicyPtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// StagingEnvironmentPolicyInput is an input type that accepts StagingEnvironmentPolicyArgs and StagingEnvironmentPolicyOutput values.
-// You can construct a concrete instance of `StagingEnvironmentPolicyInput` via:
+// StagingEnvironmentPolicyInput is an input type that accepts values of the StagingEnvironmentPolicy enum
+// A concrete instance of `StagingEnvironmentPolicyInput` can be one of the following:
 //
-//	StagingEnvironmentPolicyArgs{...}
+//	StagingEnvironmentPolicyEnabled
+//	StagingEnvironmentPolicyDisabled
 type StagingEnvironmentPolicyInput interface {
 	pulumi.Input
 
@@ -997,10 +1004,13 @@ func (o UnauthenticatedClientActionV2PtrOutput) ToStringPtrOutputWithContext(ctx
 	}).(pulumi.StringPtrOutput)
 }
 
-// UnauthenticatedClientActionV2Input is an input type that accepts UnauthenticatedClientActionV2Args and UnauthenticatedClientActionV2Output values.
-// You can construct a concrete instance of `UnauthenticatedClientActionV2Input` via:
+// UnauthenticatedClientActionV2Input is an input type that accepts values of the UnauthenticatedClientActionV2 enum
+// A concrete instance of `UnauthenticatedClientActionV2Input` can be one of the following:
 //
-//	UnauthenticatedClientActionV2Args{...}
+//	UnauthenticatedClientActionV2RedirectToLoginPage
+//	UnauthenticatedClientActionV2AllowAnonymous
+//	UnauthenticatedClientActionV2Return401
+//	UnauthenticatedClientActionV2Return403
 type UnauthenticatedClientActionV2Input interface {
 	pulumi.Input
 

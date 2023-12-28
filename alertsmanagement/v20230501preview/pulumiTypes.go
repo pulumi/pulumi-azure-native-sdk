@@ -22,6 +22,64 @@ type AddActionGroups struct {
 	ActionType string `pulumi:"actionType"`
 }
 
+// AddActionGroupsInput is an input type that accepts AddActionGroupsArgs and AddActionGroupsOutput values.
+// You can construct a concrete instance of `AddActionGroupsInput` via:
+//
+//	AddActionGroupsArgs{...}
+type AddActionGroupsInput interface {
+	pulumi.Input
+
+	ToAddActionGroupsOutput() AddActionGroupsOutput
+	ToAddActionGroupsOutputWithContext(context.Context) AddActionGroupsOutput
+}
+
+// Add action groups to alert processing rule.
+type AddActionGroupsArgs struct {
+	// List of action group Ids to add to alert processing rule.
+	ActionGroupIds pulumi.StringArrayInput `pulumi:"actionGroupIds"`
+	// Action that should be applied.
+	// Expected value is 'AddActionGroups'.
+	ActionType pulumi.StringInput `pulumi:"actionType"`
+}
+
+func (AddActionGroupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddActionGroups)(nil)).Elem()
+}
+
+func (i AddActionGroupsArgs) ToAddActionGroupsOutput() AddActionGroupsOutput {
+	return i.ToAddActionGroupsOutputWithContext(context.Background())
+}
+
+func (i AddActionGroupsArgs) ToAddActionGroupsOutputWithContext(ctx context.Context) AddActionGroupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddActionGroupsOutput)
+}
+
+// Add action groups to alert processing rule.
+type AddActionGroupsOutput struct{ *pulumi.OutputState }
+
+func (AddActionGroupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddActionGroups)(nil)).Elem()
+}
+
+func (o AddActionGroupsOutput) ToAddActionGroupsOutput() AddActionGroupsOutput {
+	return o
+}
+
+func (o AddActionGroupsOutput) ToAddActionGroupsOutputWithContext(ctx context.Context) AddActionGroupsOutput {
+	return o
+}
+
+// List of action group Ids to add to alert processing rule.
+func (o AddActionGroupsOutput) ActionGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AddActionGroups) []string { return v.ActionGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Action that should be applied.
+// Expected value is 'AddActionGroups'.
+func (o AddActionGroupsOutput) ActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v AddActionGroups) string { return v.ActionType }).(pulumi.StringOutput)
+}
+
 // Add action groups to alert processing rule.
 type AddActionGroupsResponse struct {
 	// List of action group Ids to add to alert processing rule.
@@ -29,6 +87,32 @@ type AddActionGroupsResponse struct {
 	// Action that should be applied.
 	// Expected value is 'AddActionGroups'.
 	ActionType string `pulumi:"actionType"`
+}
+
+// Add action groups to alert processing rule.
+type AddActionGroupsResponseOutput struct{ *pulumi.OutputState }
+
+func (AddActionGroupsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddActionGroupsResponse)(nil)).Elem()
+}
+
+func (o AddActionGroupsResponseOutput) ToAddActionGroupsResponseOutput() AddActionGroupsResponseOutput {
+	return o
+}
+
+func (o AddActionGroupsResponseOutput) ToAddActionGroupsResponseOutputWithContext(ctx context.Context) AddActionGroupsResponseOutput {
+	return o
+}
+
+// List of action group Ids to add to alert processing rule.
+func (o AddActionGroupsResponseOutput) ActionGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AddActionGroupsResponse) []string { return v.ActionGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Action that should be applied.
+// Expected value is 'AddActionGroups'.
+func (o AddActionGroupsResponseOutput) ActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v AddActionGroupsResponse) string { return v.ActionType }).(pulumi.StringOutput)
 }
 
 // Alert processing rule properties defining scopes, conditions and scheduling logic for alert processing rule.
@@ -570,6 +654,96 @@ func (val *CorrelateAlerts) Defaults() *CorrelateAlerts {
 	return &tmp
 }
 
+// CorrelateAlertsInput is an input type that accepts CorrelateAlertsArgs and CorrelateAlertsOutput values.
+// You can construct a concrete instance of `CorrelateAlertsInput` via:
+//
+//	CorrelateAlertsArgs{...}
+type CorrelateAlertsInput interface {
+	pulumi.Input
+
+	ToCorrelateAlertsOutput() CorrelateAlertsOutput
+	ToCorrelateAlertsOutputWithContext(context.Context) CorrelateAlertsOutput
+}
+
+// Add logic for alerts correlation.
+type CorrelateAlertsArgs struct {
+	// Action that should be applied.
+	// Expected value is 'CorrelateAlerts'.
+	ActionType pulumi.StringInput `pulumi:"actionType"`
+	// The list of conditions for the alerts correlations.
+	CorrelateBy CorrelateByArrayInput `pulumi:"correlateBy"`
+	// The required duration (in ISO8601 format) for the alerts correlation.
+	CorrelationInterval pulumi.StringInput `pulumi:"correlationInterval"`
+	// Indicates how to handle child alerts notifications.
+	NotificationsForCorrelatedAlerts pulumi.StringPtrInput `pulumi:"notificationsForCorrelatedAlerts"`
+	// The priority of this correlation.
+	Priority pulumi.IntInput `pulumi:"priority"`
+}
+
+// Defaults sets the appropriate defaults for CorrelateAlertsArgs
+func (val *CorrelateAlertsArgs) Defaults() *CorrelateAlertsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.NotificationsForCorrelatedAlerts == nil {
+		tmp.NotificationsForCorrelatedAlerts = pulumi.StringPtr("SuppressAlways")
+	}
+	return &tmp
+}
+func (CorrelateAlertsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CorrelateAlerts)(nil)).Elem()
+}
+
+func (i CorrelateAlertsArgs) ToCorrelateAlertsOutput() CorrelateAlertsOutput {
+	return i.ToCorrelateAlertsOutputWithContext(context.Background())
+}
+
+func (i CorrelateAlertsArgs) ToCorrelateAlertsOutputWithContext(ctx context.Context) CorrelateAlertsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CorrelateAlertsOutput)
+}
+
+// Add logic for alerts correlation.
+type CorrelateAlertsOutput struct{ *pulumi.OutputState }
+
+func (CorrelateAlertsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CorrelateAlerts)(nil)).Elem()
+}
+
+func (o CorrelateAlertsOutput) ToCorrelateAlertsOutput() CorrelateAlertsOutput {
+	return o
+}
+
+func (o CorrelateAlertsOutput) ToCorrelateAlertsOutputWithContext(ctx context.Context) CorrelateAlertsOutput {
+	return o
+}
+
+// Action that should be applied.
+// Expected value is 'CorrelateAlerts'.
+func (o CorrelateAlertsOutput) ActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v CorrelateAlerts) string { return v.ActionType }).(pulumi.StringOutput)
+}
+
+// The list of conditions for the alerts correlations.
+func (o CorrelateAlertsOutput) CorrelateBy() CorrelateByArrayOutput {
+	return o.ApplyT(func(v CorrelateAlerts) []CorrelateBy { return v.CorrelateBy }).(CorrelateByArrayOutput)
+}
+
+// The required duration (in ISO8601 format) for the alerts correlation.
+func (o CorrelateAlertsOutput) CorrelationInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v CorrelateAlerts) string { return v.CorrelationInterval }).(pulumi.StringOutput)
+}
+
+// Indicates how to handle child alerts notifications.
+func (o CorrelateAlertsOutput) NotificationsForCorrelatedAlerts() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CorrelateAlerts) *string { return v.NotificationsForCorrelatedAlerts }).(pulumi.StringPtrOutput)
+}
+
+// The priority of this correlation.
+func (o CorrelateAlertsOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v CorrelateAlerts) int { return v.Priority }).(pulumi.IntOutput)
+}
+
 // Add logic for alerts correlation.
 type CorrelateAlertsResponse struct {
 	// Action that should be applied.
@@ -598,16 +772,191 @@ func (val *CorrelateAlertsResponse) Defaults() *CorrelateAlertsResponse {
 	return &tmp
 }
 
+// Add logic for alerts correlation.
+type CorrelateAlertsResponseOutput struct{ *pulumi.OutputState }
+
+func (CorrelateAlertsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CorrelateAlertsResponse)(nil)).Elem()
+}
+
+func (o CorrelateAlertsResponseOutput) ToCorrelateAlertsResponseOutput() CorrelateAlertsResponseOutput {
+	return o
+}
+
+func (o CorrelateAlertsResponseOutput) ToCorrelateAlertsResponseOutputWithContext(ctx context.Context) CorrelateAlertsResponseOutput {
+	return o
+}
+
+// Action that should be applied.
+// Expected value is 'CorrelateAlerts'.
+func (o CorrelateAlertsResponseOutput) ActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v CorrelateAlertsResponse) string { return v.ActionType }).(pulumi.StringOutput)
+}
+
+// The list of conditions for the alerts correlations.
+func (o CorrelateAlertsResponseOutput) CorrelateBy() CorrelateByResponseArrayOutput {
+	return o.ApplyT(func(v CorrelateAlertsResponse) []CorrelateByResponse { return v.CorrelateBy }).(CorrelateByResponseArrayOutput)
+}
+
+// The required duration (in ISO8601 format) for the alerts correlation.
+func (o CorrelateAlertsResponseOutput) CorrelationInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v CorrelateAlertsResponse) string { return v.CorrelationInterval }).(pulumi.StringOutput)
+}
+
+// Indicates how to handle child alerts notifications.
+func (o CorrelateAlertsResponseOutput) NotificationsForCorrelatedAlerts() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CorrelateAlertsResponse) *string { return v.NotificationsForCorrelatedAlerts }).(pulumi.StringPtrOutput)
+}
+
+// The priority of this correlation.
+func (o CorrelateAlertsResponseOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v CorrelateAlertsResponse) int { return v.Priority }).(pulumi.IntOutput)
+}
+
 // The logic for the correlation.
 type CorrelateBy struct {
 	// The JPath of the property that the alerts should be correlated by.
 	Field *string `pulumi:"field"`
 }
 
+// CorrelateByInput is an input type that accepts CorrelateByArgs and CorrelateByOutput values.
+// You can construct a concrete instance of `CorrelateByInput` via:
+//
+//	CorrelateByArgs{...}
+type CorrelateByInput interface {
+	pulumi.Input
+
+	ToCorrelateByOutput() CorrelateByOutput
+	ToCorrelateByOutputWithContext(context.Context) CorrelateByOutput
+}
+
+// The logic for the correlation.
+type CorrelateByArgs struct {
+	// The JPath of the property that the alerts should be correlated by.
+	Field pulumi.StringPtrInput `pulumi:"field"`
+}
+
+func (CorrelateByArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CorrelateBy)(nil)).Elem()
+}
+
+func (i CorrelateByArgs) ToCorrelateByOutput() CorrelateByOutput {
+	return i.ToCorrelateByOutputWithContext(context.Background())
+}
+
+func (i CorrelateByArgs) ToCorrelateByOutputWithContext(ctx context.Context) CorrelateByOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CorrelateByOutput)
+}
+
+// CorrelateByArrayInput is an input type that accepts CorrelateByArray and CorrelateByArrayOutput values.
+// You can construct a concrete instance of `CorrelateByArrayInput` via:
+//
+//	CorrelateByArray{ CorrelateByArgs{...} }
+type CorrelateByArrayInput interface {
+	pulumi.Input
+
+	ToCorrelateByArrayOutput() CorrelateByArrayOutput
+	ToCorrelateByArrayOutputWithContext(context.Context) CorrelateByArrayOutput
+}
+
+type CorrelateByArray []CorrelateByInput
+
+func (CorrelateByArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CorrelateBy)(nil)).Elem()
+}
+
+func (i CorrelateByArray) ToCorrelateByArrayOutput() CorrelateByArrayOutput {
+	return i.ToCorrelateByArrayOutputWithContext(context.Background())
+}
+
+func (i CorrelateByArray) ToCorrelateByArrayOutputWithContext(ctx context.Context) CorrelateByArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CorrelateByArrayOutput)
+}
+
+// The logic for the correlation.
+type CorrelateByOutput struct{ *pulumi.OutputState }
+
+func (CorrelateByOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CorrelateBy)(nil)).Elem()
+}
+
+func (o CorrelateByOutput) ToCorrelateByOutput() CorrelateByOutput {
+	return o
+}
+
+func (o CorrelateByOutput) ToCorrelateByOutputWithContext(ctx context.Context) CorrelateByOutput {
+	return o
+}
+
+// The JPath of the property that the alerts should be correlated by.
+func (o CorrelateByOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CorrelateBy) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+type CorrelateByArrayOutput struct{ *pulumi.OutputState }
+
+func (CorrelateByArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CorrelateBy)(nil)).Elem()
+}
+
+func (o CorrelateByArrayOutput) ToCorrelateByArrayOutput() CorrelateByArrayOutput {
+	return o
+}
+
+func (o CorrelateByArrayOutput) ToCorrelateByArrayOutputWithContext(ctx context.Context) CorrelateByArrayOutput {
+	return o
+}
+
+func (o CorrelateByArrayOutput) Index(i pulumi.IntInput) CorrelateByOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CorrelateBy {
+		return vs[0].([]CorrelateBy)[vs[1].(int)]
+	}).(CorrelateByOutput)
+}
+
 // The logic for the correlation.
 type CorrelateByResponse struct {
 	// The JPath of the property that the alerts should be correlated by.
 	Field *string `pulumi:"field"`
+}
+
+// The logic for the correlation.
+type CorrelateByResponseOutput struct{ *pulumi.OutputState }
+
+func (CorrelateByResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CorrelateByResponse)(nil)).Elem()
+}
+
+func (o CorrelateByResponseOutput) ToCorrelateByResponseOutput() CorrelateByResponseOutput {
+	return o
+}
+
+func (o CorrelateByResponseOutput) ToCorrelateByResponseOutputWithContext(ctx context.Context) CorrelateByResponseOutput {
+	return o
+}
+
+// The JPath of the property that the alerts should be correlated by.
+func (o CorrelateByResponseOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CorrelateByResponse) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+type CorrelateByResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CorrelateByResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CorrelateByResponse)(nil)).Elem()
+}
+
+func (o CorrelateByResponseArrayOutput) ToCorrelateByResponseArrayOutput() CorrelateByResponseArrayOutput {
+	return o
+}
+
+func (o CorrelateByResponseArrayOutput) ToCorrelateByResponseArrayOutputWithContext(ctx context.Context) CorrelateByResponseArrayOutput {
+	return o
+}
+
+func (o CorrelateByResponseArrayOutput) Index(i pulumi.IntInput) CorrelateByResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CorrelateByResponse {
+		return vs[0].([]CorrelateByResponse)[vs[1].(int)]
+	}).(CorrelateByResponseOutput)
 }
 
 // Daily recurrence object.
@@ -621,6 +970,71 @@ type DailyRecurrence struct {
 	StartTime string `pulumi:"startTime"`
 }
 
+// DailyRecurrenceInput is an input type that accepts DailyRecurrenceArgs and DailyRecurrenceOutput values.
+// You can construct a concrete instance of `DailyRecurrenceInput` via:
+//
+//	DailyRecurrenceArgs{...}
+type DailyRecurrenceInput interface {
+	pulumi.Input
+
+	ToDailyRecurrenceOutput() DailyRecurrenceOutput
+	ToDailyRecurrenceOutputWithContext(context.Context) DailyRecurrenceOutput
+}
+
+// Daily recurrence object.
+type DailyRecurrenceArgs struct {
+	// End time for recurrence.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// Specifies when the recurrence should be applied.
+	// Expected value is 'Daily'.
+	RecurrenceType pulumi.StringInput `pulumi:"recurrenceType"`
+	// Start time for recurrence.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (DailyRecurrenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DailyRecurrence)(nil)).Elem()
+}
+
+func (i DailyRecurrenceArgs) ToDailyRecurrenceOutput() DailyRecurrenceOutput {
+	return i.ToDailyRecurrenceOutputWithContext(context.Background())
+}
+
+func (i DailyRecurrenceArgs) ToDailyRecurrenceOutputWithContext(ctx context.Context) DailyRecurrenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DailyRecurrenceOutput)
+}
+
+// Daily recurrence object.
+type DailyRecurrenceOutput struct{ *pulumi.OutputState }
+
+func (DailyRecurrenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DailyRecurrence)(nil)).Elem()
+}
+
+func (o DailyRecurrenceOutput) ToDailyRecurrenceOutput() DailyRecurrenceOutput {
+	return o
+}
+
+func (o DailyRecurrenceOutput) ToDailyRecurrenceOutputWithContext(ctx context.Context) DailyRecurrenceOutput {
+	return o
+}
+
+// End time for recurrence.
+func (o DailyRecurrenceOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DailyRecurrence) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Specifies when the recurrence should be applied.
+// Expected value is 'Daily'.
+func (o DailyRecurrenceOutput) RecurrenceType() pulumi.StringOutput {
+	return o.ApplyT(func(v DailyRecurrence) string { return v.RecurrenceType }).(pulumi.StringOutput)
+}
+
+// Start time for recurrence.
+func (o DailyRecurrenceOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DailyRecurrence) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
 // Daily recurrence object.
 type DailyRecurrenceResponse struct {
 	// End time for recurrence.
@@ -630,6 +1044,37 @@ type DailyRecurrenceResponse struct {
 	RecurrenceType string `pulumi:"recurrenceType"`
 	// Start time for recurrence.
 	StartTime string `pulumi:"startTime"`
+}
+
+// Daily recurrence object.
+type DailyRecurrenceResponseOutput struct{ *pulumi.OutputState }
+
+func (DailyRecurrenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DailyRecurrenceResponse)(nil)).Elem()
+}
+
+func (o DailyRecurrenceResponseOutput) ToDailyRecurrenceResponseOutput() DailyRecurrenceResponseOutput {
+	return o
+}
+
+func (o DailyRecurrenceResponseOutput) ToDailyRecurrenceResponseOutputWithContext(ctx context.Context) DailyRecurrenceResponseOutput {
+	return o
+}
+
+// End time for recurrence.
+func (o DailyRecurrenceResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DailyRecurrenceResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Specifies when the recurrence should be applied.
+// Expected value is 'Daily'.
+func (o DailyRecurrenceResponseOutput) RecurrenceType() pulumi.StringOutput {
+	return o.ApplyT(func(v DailyRecurrenceResponse) string { return v.RecurrenceType }).(pulumi.StringOutput)
+}
+
+// Start time for recurrence.
+func (o DailyRecurrenceResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DailyRecurrenceResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
 // Monthly recurrence object.
@@ -645,6 +1090,78 @@ type MonthlyRecurrence struct {
 	StartTime *string `pulumi:"startTime"`
 }
 
+// MonthlyRecurrenceInput is an input type that accepts MonthlyRecurrenceArgs and MonthlyRecurrenceOutput values.
+// You can construct a concrete instance of `MonthlyRecurrenceInput` via:
+//
+//	MonthlyRecurrenceArgs{...}
+type MonthlyRecurrenceInput interface {
+	pulumi.Input
+
+	ToMonthlyRecurrenceOutput() MonthlyRecurrenceOutput
+	ToMonthlyRecurrenceOutputWithContext(context.Context) MonthlyRecurrenceOutput
+}
+
+// Monthly recurrence object.
+type MonthlyRecurrenceArgs struct {
+	// Specifies the values for monthly recurrence pattern.
+	DaysOfMonth pulumi.IntArrayInput `pulumi:"daysOfMonth"`
+	// End time for recurrence.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Specifies when the recurrence should be applied.
+	// Expected value is 'Monthly'.
+	RecurrenceType pulumi.StringInput `pulumi:"recurrenceType"`
+	// Start time for recurrence.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (MonthlyRecurrenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonthlyRecurrence)(nil)).Elem()
+}
+
+func (i MonthlyRecurrenceArgs) ToMonthlyRecurrenceOutput() MonthlyRecurrenceOutput {
+	return i.ToMonthlyRecurrenceOutputWithContext(context.Background())
+}
+
+func (i MonthlyRecurrenceArgs) ToMonthlyRecurrenceOutputWithContext(ctx context.Context) MonthlyRecurrenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonthlyRecurrenceOutput)
+}
+
+// Monthly recurrence object.
+type MonthlyRecurrenceOutput struct{ *pulumi.OutputState }
+
+func (MonthlyRecurrenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonthlyRecurrence)(nil)).Elem()
+}
+
+func (o MonthlyRecurrenceOutput) ToMonthlyRecurrenceOutput() MonthlyRecurrenceOutput {
+	return o
+}
+
+func (o MonthlyRecurrenceOutput) ToMonthlyRecurrenceOutputWithContext(ctx context.Context) MonthlyRecurrenceOutput {
+	return o
+}
+
+// Specifies the values for monthly recurrence pattern.
+func (o MonthlyRecurrenceOutput) DaysOfMonth() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v MonthlyRecurrence) []int { return v.DaysOfMonth }).(pulumi.IntArrayOutput)
+}
+
+// End time for recurrence.
+func (o MonthlyRecurrenceOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonthlyRecurrence) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Specifies when the recurrence should be applied.
+// Expected value is 'Monthly'.
+func (o MonthlyRecurrenceOutput) RecurrenceType() pulumi.StringOutput {
+	return o.ApplyT(func(v MonthlyRecurrence) string { return v.RecurrenceType }).(pulumi.StringOutput)
+}
+
+// Start time for recurrence.
+func (o MonthlyRecurrenceOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonthlyRecurrence) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
 // Monthly recurrence object.
 type MonthlyRecurrenceResponse struct {
 	// Specifies the values for monthly recurrence pattern.
@@ -658,6 +1175,42 @@ type MonthlyRecurrenceResponse struct {
 	StartTime *string `pulumi:"startTime"`
 }
 
+// Monthly recurrence object.
+type MonthlyRecurrenceResponseOutput struct{ *pulumi.OutputState }
+
+func (MonthlyRecurrenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonthlyRecurrenceResponse)(nil)).Elem()
+}
+
+func (o MonthlyRecurrenceResponseOutput) ToMonthlyRecurrenceResponseOutput() MonthlyRecurrenceResponseOutput {
+	return o
+}
+
+func (o MonthlyRecurrenceResponseOutput) ToMonthlyRecurrenceResponseOutputWithContext(ctx context.Context) MonthlyRecurrenceResponseOutput {
+	return o
+}
+
+// Specifies the values for monthly recurrence pattern.
+func (o MonthlyRecurrenceResponseOutput) DaysOfMonth() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v MonthlyRecurrenceResponse) []int { return v.DaysOfMonth }).(pulumi.IntArrayOutput)
+}
+
+// End time for recurrence.
+func (o MonthlyRecurrenceResponseOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonthlyRecurrenceResponse) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Specifies when the recurrence should be applied.
+// Expected value is 'Monthly'.
+func (o MonthlyRecurrenceResponseOutput) RecurrenceType() pulumi.StringOutput {
+	return o.ApplyT(func(v MonthlyRecurrenceResponse) string { return v.RecurrenceType }).(pulumi.StringOutput)
+}
+
+// Start time for recurrence.
+func (o MonthlyRecurrenceResponseOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonthlyRecurrenceResponse) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
 // Indicates if all action groups should be removed.
 type RemoveAllActionGroups struct {
 	// Action that should be applied.
@@ -665,11 +1218,83 @@ type RemoveAllActionGroups struct {
 	ActionType string `pulumi:"actionType"`
 }
 
+// RemoveAllActionGroupsInput is an input type that accepts RemoveAllActionGroupsArgs and RemoveAllActionGroupsOutput values.
+// You can construct a concrete instance of `RemoveAllActionGroupsInput` via:
+//
+//	RemoveAllActionGroupsArgs{...}
+type RemoveAllActionGroupsInput interface {
+	pulumi.Input
+
+	ToRemoveAllActionGroupsOutput() RemoveAllActionGroupsOutput
+	ToRemoveAllActionGroupsOutputWithContext(context.Context) RemoveAllActionGroupsOutput
+}
+
+// Indicates if all action groups should be removed.
+type RemoveAllActionGroupsArgs struct {
+	// Action that should be applied.
+	// Expected value is 'RemoveAllActionGroups'.
+	ActionType pulumi.StringInput `pulumi:"actionType"`
+}
+
+func (RemoveAllActionGroupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoveAllActionGroups)(nil)).Elem()
+}
+
+func (i RemoveAllActionGroupsArgs) ToRemoveAllActionGroupsOutput() RemoveAllActionGroupsOutput {
+	return i.ToRemoveAllActionGroupsOutputWithContext(context.Background())
+}
+
+func (i RemoveAllActionGroupsArgs) ToRemoveAllActionGroupsOutputWithContext(ctx context.Context) RemoveAllActionGroupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoveAllActionGroupsOutput)
+}
+
+// Indicates if all action groups should be removed.
+type RemoveAllActionGroupsOutput struct{ *pulumi.OutputState }
+
+func (RemoveAllActionGroupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoveAllActionGroups)(nil)).Elem()
+}
+
+func (o RemoveAllActionGroupsOutput) ToRemoveAllActionGroupsOutput() RemoveAllActionGroupsOutput {
+	return o
+}
+
+func (o RemoveAllActionGroupsOutput) ToRemoveAllActionGroupsOutputWithContext(ctx context.Context) RemoveAllActionGroupsOutput {
+	return o
+}
+
+// Action that should be applied.
+// Expected value is 'RemoveAllActionGroups'.
+func (o RemoveAllActionGroupsOutput) ActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoveAllActionGroups) string { return v.ActionType }).(pulumi.StringOutput)
+}
+
 // Indicates if all action groups should be removed.
 type RemoveAllActionGroupsResponse struct {
 	// Action that should be applied.
 	// Expected value is 'RemoveAllActionGroups'.
 	ActionType string `pulumi:"actionType"`
+}
+
+// Indicates if all action groups should be removed.
+type RemoveAllActionGroupsResponseOutput struct{ *pulumi.OutputState }
+
+func (RemoveAllActionGroupsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoveAllActionGroupsResponse)(nil)).Elem()
+}
+
+func (o RemoveAllActionGroupsResponseOutput) ToRemoveAllActionGroupsResponseOutput() RemoveAllActionGroupsResponseOutput {
+	return o
+}
+
+func (o RemoveAllActionGroupsResponseOutput) ToRemoveAllActionGroupsResponseOutputWithContext(ctx context.Context) RemoveAllActionGroupsResponseOutput {
+	return o
+}
+
+// Action that should be applied.
+// Expected value is 'RemoveAllActionGroups'.
+func (o RemoveAllActionGroupsResponseOutput) ActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoveAllActionGroupsResponse) string { return v.ActionType }).(pulumi.StringOutput)
 }
 
 // Scheduling configuration for a given alert processing rule.
@@ -1054,6 +1679,78 @@ type WeeklyRecurrence struct {
 	StartTime *string `pulumi:"startTime"`
 }
 
+// WeeklyRecurrenceInput is an input type that accepts WeeklyRecurrenceArgs and WeeklyRecurrenceOutput values.
+// You can construct a concrete instance of `WeeklyRecurrenceInput` via:
+//
+//	WeeklyRecurrenceArgs{...}
+type WeeklyRecurrenceInput interface {
+	pulumi.Input
+
+	ToWeeklyRecurrenceOutput() WeeklyRecurrenceOutput
+	ToWeeklyRecurrenceOutputWithContext(context.Context) WeeklyRecurrenceOutput
+}
+
+// Weekly recurrence object.
+type WeeklyRecurrenceArgs struct {
+	// Specifies the values for weekly recurrence pattern.
+	DaysOfWeek pulumi.StringArrayInput `pulumi:"daysOfWeek"`
+	// End time for recurrence.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Specifies when the recurrence should be applied.
+	// Expected value is 'Weekly'.
+	RecurrenceType pulumi.StringInput `pulumi:"recurrenceType"`
+	// Start time for recurrence.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (WeeklyRecurrenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeeklyRecurrence)(nil)).Elem()
+}
+
+func (i WeeklyRecurrenceArgs) ToWeeklyRecurrenceOutput() WeeklyRecurrenceOutput {
+	return i.ToWeeklyRecurrenceOutputWithContext(context.Background())
+}
+
+func (i WeeklyRecurrenceArgs) ToWeeklyRecurrenceOutputWithContext(ctx context.Context) WeeklyRecurrenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WeeklyRecurrenceOutput)
+}
+
+// Weekly recurrence object.
+type WeeklyRecurrenceOutput struct{ *pulumi.OutputState }
+
+func (WeeklyRecurrenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeeklyRecurrence)(nil)).Elem()
+}
+
+func (o WeeklyRecurrenceOutput) ToWeeklyRecurrenceOutput() WeeklyRecurrenceOutput {
+	return o
+}
+
+func (o WeeklyRecurrenceOutput) ToWeeklyRecurrenceOutputWithContext(ctx context.Context) WeeklyRecurrenceOutput {
+	return o
+}
+
+// Specifies the values for weekly recurrence pattern.
+func (o WeeklyRecurrenceOutput) DaysOfWeek() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WeeklyRecurrence) []string { return v.DaysOfWeek }).(pulumi.StringArrayOutput)
+}
+
+// End time for recurrence.
+func (o WeeklyRecurrenceOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WeeklyRecurrence) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Specifies when the recurrence should be applied.
+// Expected value is 'Weekly'.
+func (o WeeklyRecurrenceOutput) RecurrenceType() pulumi.StringOutput {
+	return o.ApplyT(func(v WeeklyRecurrence) string { return v.RecurrenceType }).(pulumi.StringOutput)
+}
+
+// Start time for recurrence.
+func (o WeeklyRecurrenceOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WeeklyRecurrence) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
 // Weekly recurrence object.
 type WeeklyRecurrenceResponse struct {
 	// Specifies the values for weekly recurrence pattern.
@@ -1067,7 +1764,45 @@ type WeeklyRecurrenceResponse struct {
 	StartTime *string `pulumi:"startTime"`
 }
 
+// Weekly recurrence object.
+type WeeklyRecurrenceResponseOutput struct{ *pulumi.OutputState }
+
+func (WeeklyRecurrenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeeklyRecurrenceResponse)(nil)).Elem()
+}
+
+func (o WeeklyRecurrenceResponseOutput) ToWeeklyRecurrenceResponseOutput() WeeklyRecurrenceResponseOutput {
+	return o
+}
+
+func (o WeeklyRecurrenceResponseOutput) ToWeeklyRecurrenceResponseOutputWithContext(ctx context.Context) WeeklyRecurrenceResponseOutput {
+	return o
+}
+
+// Specifies the values for weekly recurrence pattern.
+func (o WeeklyRecurrenceResponseOutput) DaysOfWeek() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WeeklyRecurrenceResponse) []string { return v.DaysOfWeek }).(pulumi.StringArrayOutput)
+}
+
+// End time for recurrence.
+func (o WeeklyRecurrenceResponseOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WeeklyRecurrenceResponse) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Specifies when the recurrence should be applied.
+// Expected value is 'Weekly'.
+func (o WeeklyRecurrenceResponseOutput) RecurrenceType() pulumi.StringOutput {
+	return o.ApplyT(func(v WeeklyRecurrenceResponse) string { return v.RecurrenceType }).(pulumi.StringOutput)
+}
+
+// Start time for recurrence.
+func (o WeeklyRecurrenceResponseOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WeeklyRecurrenceResponse) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(AddActionGroupsOutput{})
+	pulumi.RegisterOutputType(AddActionGroupsResponseOutput{})
 	pulumi.RegisterOutputType(AlertProcessingRulePropertiesOutput{})
 	pulumi.RegisterOutputType(AlertProcessingRulePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(AlertProcessingRulePropertiesResponseOutput{})
@@ -1075,9 +1810,23 @@ func init() {
 	pulumi.RegisterOutputType(ConditionArrayOutput{})
 	pulumi.RegisterOutputType(ConditionResponseOutput{})
 	pulumi.RegisterOutputType(ConditionResponseArrayOutput{})
+	pulumi.RegisterOutputType(CorrelateAlertsOutput{})
+	pulumi.RegisterOutputType(CorrelateAlertsResponseOutput{})
+	pulumi.RegisterOutputType(CorrelateByOutput{})
+	pulumi.RegisterOutputType(CorrelateByArrayOutput{})
+	pulumi.RegisterOutputType(CorrelateByResponseOutput{})
+	pulumi.RegisterOutputType(CorrelateByResponseArrayOutput{})
+	pulumi.RegisterOutputType(DailyRecurrenceOutput{})
+	pulumi.RegisterOutputType(DailyRecurrenceResponseOutput{})
+	pulumi.RegisterOutputType(MonthlyRecurrenceOutput{})
+	pulumi.RegisterOutputType(MonthlyRecurrenceResponseOutput{})
+	pulumi.RegisterOutputType(RemoveAllActionGroupsOutput{})
+	pulumi.RegisterOutputType(RemoveAllActionGroupsResponseOutput{})
 	pulumi.RegisterOutputType(ScheduleOutput{})
 	pulumi.RegisterOutputType(SchedulePtrOutput{})
 	pulumi.RegisterOutputType(ScheduleResponseOutput{})
 	pulumi.RegisterOutputType(ScheduleResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(WeeklyRecurrenceOutput{})
+	pulumi.RegisterOutputType(WeeklyRecurrenceResponseOutput{})
 }

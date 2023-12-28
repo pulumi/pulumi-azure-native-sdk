@@ -30,6 +30,232 @@ type AzureMachineLearningWebServiceFunctionBinding struct {
 	Type string `pulumi:"type"`
 }
 
+// AzureMachineLearningWebServiceFunctionBindingInput is an input type that accepts AzureMachineLearningWebServiceFunctionBindingArgs and AzureMachineLearningWebServiceFunctionBindingOutput values.
+// You can construct a concrete instance of `AzureMachineLearningWebServiceFunctionBindingInput` via:
+//
+//	AzureMachineLearningWebServiceFunctionBindingArgs{...}
+type AzureMachineLearningWebServiceFunctionBindingInput interface {
+	pulumi.Input
+
+	ToAzureMachineLearningWebServiceFunctionBindingOutput() AzureMachineLearningWebServiceFunctionBindingOutput
+	ToAzureMachineLearningWebServiceFunctionBindingOutputWithContext(context.Context) AzureMachineLearningWebServiceFunctionBindingOutput
+}
+
+// The binding to an Azure Machine Learning web service.
+type AzureMachineLearningWebServiceFunctionBindingArgs struct {
+	// The API key used to authenticate with Request-Response endpoint.
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
+	// Number between 1 and 10000 describing maximum number of rows for every Azure ML RRS execute request. Default is 1000.
+	BatchSize pulumi.IntPtrInput `pulumi:"batchSize"`
+	// The Request-Response execute endpoint of the Azure Machine Learning web service. Find out more here: https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-consume-web-services#request-response-service-rrs
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// The inputs for the Azure Machine Learning web service endpoint.
+	Inputs AzureMachineLearningWebServiceInputsPtrInput `pulumi:"inputs"`
+	// A list of outputs from the Azure Machine Learning web service endpoint execution.
+	Outputs AzureMachineLearningWebServiceOutputColumnArrayInput `pulumi:"outputs"`
+	// Indicates the function binding type.
+	// Expected value is 'Microsoft.MachineLearning/WebService'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (AzureMachineLearningWebServiceFunctionBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMachineLearningWebServiceFunctionBinding)(nil)).Elem()
+}
+
+func (i AzureMachineLearningWebServiceFunctionBindingArgs) ToAzureMachineLearningWebServiceFunctionBindingOutput() AzureMachineLearningWebServiceFunctionBindingOutput {
+	return i.ToAzureMachineLearningWebServiceFunctionBindingOutputWithContext(context.Background())
+}
+
+func (i AzureMachineLearningWebServiceFunctionBindingArgs) ToAzureMachineLearningWebServiceFunctionBindingOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceFunctionBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureMachineLearningWebServiceFunctionBindingOutput)
+}
+
+func (i AzureMachineLearningWebServiceFunctionBindingArgs) ToAzureMachineLearningWebServiceFunctionBindingPtrOutput() AzureMachineLearningWebServiceFunctionBindingPtrOutput {
+	return i.ToAzureMachineLearningWebServiceFunctionBindingPtrOutputWithContext(context.Background())
+}
+
+func (i AzureMachineLearningWebServiceFunctionBindingArgs) ToAzureMachineLearningWebServiceFunctionBindingPtrOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceFunctionBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureMachineLearningWebServiceFunctionBindingOutput).ToAzureMachineLearningWebServiceFunctionBindingPtrOutputWithContext(ctx)
+}
+
+// AzureMachineLearningWebServiceFunctionBindingPtrInput is an input type that accepts AzureMachineLearningWebServiceFunctionBindingArgs, AzureMachineLearningWebServiceFunctionBindingPtr and AzureMachineLearningWebServiceFunctionBindingPtrOutput values.
+// You can construct a concrete instance of `AzureMachineLearningWebServiceFunctionBindingPtrInput` via:
+//
+//	        AzureMachineLearningWebServiceFunctionBindingArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureMachineLearningWebServiceFunctionBindingPtrInput interface {
+	pulumi.Input
+
+	ToAzureMachineLearningWebServiceFunctionBindingPtrOutput() AzureMachineLearningWebServiceFunctionBindingPtrOutput
+	ToAzureMachineLearningWebServiceFunctionBindingPtrOutputWithContext(context.Context) AzureMachineLearningWebServiceFunctionBindingPtrOutput
+}
+
+type azureMachineLearningWebServiceFunctionBindingPtrType AzureMachineLearningWebServiceFunctionBindingArgs
+
+func AzureMachineLearningWebServiceFunctionBindingPtr(v *AzureMachineLearningWebServiceFunctionBindingArgs) AzureMachineLearningWebServiceFunctionBindingPtrInput {
+	return (*azureMachineLearningWebServiceFunctionBindingPtrType)(v)
+}
+
+func (*azureMachineLearningWebServiceFunctionBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureMachineLearningWebServiceFunctionBinding)(nil)).Elem()
+}
+
+func (i *azureMachineLearningWebServiceFunctionBindingPtrType) ToAzureMachineLearningWebServiceFunctionBindingPtrOutput() AzureMachineLearningWebServiceFunctionBindingPtrOutput {
+	return i.ToAzureMachineLearningWebServiceFunctionBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *azureMachineLearningWebServiceFunctionBindingPtrType) ToAzureMachineLearningWebServiceFunctionBindingPtrOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceFunctionBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureMachineLearningWebServiceFunctionBindingPtrOutput)
+}
+
+// The binding to an Azure Machine Learning web service.
+type AzureMachineLearningWebServiceFunctionBindingOutput struct{ *pulumi.OutputState }
+
+func (AzureMachineLearningWebServiceFunctionBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMachineLearningWebServiceFunctionBinding)(nil)).Elem()
+}
+
+func (o AzureMachineLearningWebServiceFunctionBindingOutput) ToAzureMachineLearningWebServiceFunctionBindingOutput() AzureMachineLearningWebServiceFunctionBindingOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceFunctionBindingOutput) ToAzureMachineLearningWebServiceFunctionBindingOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceFunctionBindingOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceFunctionBindingOutput) ToAzureMachineLearningWebServiceFunctionBindingPtrOutput() AzureMachineLearningWebServiceFunctionBindingPtrOutput {
+	return o.ToAzureMachineLearningWebServiceFunctionBindingPtrOutputWithContext(context.Background())
+}
+
+func (o AzureMachineLearningWebServiceFunctionBindingOutput) ToAzureMachineLearningWebServiceFunctionBindingPtrOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceFunctionBindingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureMachineLearningWebServiceFunctionBinding) *AzureMachineLearningWebServiceFunctionBinding {
+		return &v
+	}).(AzureMachineLearningWebServiceFunctionBindingPtrOutput)
+}
+
+// The API key used to authenticate with Request-Response endpoint.
+func (o AzureMachineLearningWebServiceFunctionBindingOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceFunctionBinding) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+// Number between 1 and 10000 describing maximum number of rows for every Azure ML RRS execute request. Default is 1000.
+func (o AzureMachineLearningWebServiceFunctionBindingOutput) BatchSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceFunctionBinding) *int { return v.BatchSize }).(pulumi.IntPtrOutput)
+}
+
+// The Request-Response execute endpoint of the Azure Machine Learning web service. Find out more here: https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-consume-web-services#request-response-service-rrs
+func (o AzureMachineLearningWebServiceFunctionBindingOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceFunctionBinding) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The inputs for the Azure Machine Learning web service endpoint.
+func (o AzureMachineLearningWebServiceFunctionBindingOutput) Inputs() AzureMachineLearningWebServiceInputsPtrOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceFunctionBinding) *AzureMachineLearningWebServiceInputs {
+		return v.Inputs
+	}).(AzureMachineLearningWebServiceInputsPtrOutput)
+}
+
+// A list of outputs from the Azure Machine Learning web service endpoint execution.
+func (o AzureMachineLearningWebServiceFunctionBindingOutput) Outputs() AzureMachineLearningWebServiceOutputColumnArrayOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceFunctionBinding) []AzureMachineLearningWebServiceOutputColumn {
+		return v.Outputs
+	}).(AzureMachineLearningWebServiceOutputColumnArrayOutput)
+}
+
+// Indicates the function binding type.
+// Expected value is 'Microsoft.MachineLearning/WebService'.
+func (o AzureMachineLearningWebServiceFunctionBindingOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceFunctionBinding) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AzureMachineLearningWebServiceFunctionBindingPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureMachineLearningWebServiceFunctionBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureMachineLearningWebServiceFunctionBinding)(nil)).Elem()
+}
+
+func (o AzureMachineLearningWebServiceFunctionBindingPtrOutput) ToAzureMachineLearningWebServiceFunctionBindingPtrOutput() AzureMachineLearningWebServiceFunctionBindingPtrOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceFunctionBindingPtrOutput) ToAzureMachineLearningWebServiceFunctionBindingPtrOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceFunctionBindingPtrOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceFunctionBindingPtrOutput) Elem() AzureMachineLearningWebServiceFunctionBindingOutput {
+	return o.ApplyT(func(v *AzureMachineLearningWebServiceFunctionBinding) AzureMachineLearningWebServiceFunctionBinding {
+		if v != nil {
+			return *v
+		}
+		var ret AzureMachineLearningWebServiceFunctionBinding
+		return ret
+	}).(AzureMachineLearningWebServiceFunctionBindingOutput)
+}
+
+// The API key used to authenticate with Request-Response endpoint.
+func (o AzureMachineLearningWebServiceFunctionBindingPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureMachineLearningWebServiceFunctionBinding) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number between 1 and 10000 describing maximum number of rows for every Azure ML RRS execute request. Default is 1000.
+func (o AzureMachineLearningWebServiceFunctionBindingPtrOutput) BatchSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AzureMachineLearningWebServiceFunctionBinding) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BatchSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// The Request-Response execute endpoint of the Azure Machine Learning web service. Find out more here: https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-consume-web-services#request-response-service-rrs
+func (o AzureMachineLearningWebServiceFunctionBindingPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureMachineLearningWebServiceFunctionBinding) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The inputs for the Azure Machine Learning web service endpoint.
+func (o AzureMachineLearningWebServiceFunctionBindingPtrOutput) Inputs() AzureMachineLearningWebServiceInputsPtrOutput {
+	return o.ApplyT(func(v *AzureMachineLearningWebServiceFunctionBinding) *AzureMachineLearningWebServiceInputs {
+		if v == nil {
+			return nil
+		}
+		return v.Inputs
+	}).(AzureMachineLearningWebServiceInputsPtrOutput)
+}
+
+// A list of outputs from the Azure Machine Learning web service endpoint execution.
+func (o AzureMachineLearningWebServiceFunctionBindingPtrOutput) Outputs() AzureMachineLearningWebServiceOutputColumnArrayOutput {
+	return o.ApplyT(func(v *AzureMachineLearningWebServiceFunctionBinding) []AzureMachineLearningWebServiceOutputColumn {
+		if v == nil {
+			return nil
+		}
+		return v.Outputs
+	}).(AzureMachineLearningWebServiceOutputColumnArrayOutput)
+}
+
+// Indicates the function binding type.
+// Expected value is 'Microsoft.MachineLearning/WebService'.
+func (o AzureMachineLearningWebServiceFunctionBindingPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureMachineLearningWebServiceFunctionBinding) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // The binding to an Azure Machine Learning web service.
 type AzureMachineLearningWebServiceFunctionBindingResponse struct {
 	// The API key used to authenticate with Request-Response endpoint.
@@ -47,6 +273,141 @@ type AzureMachineLearningWebServiceFunctionBindingResponse struct {
 	Type string `pulumi:"type"`
 }
 
+// The binding to an Azure Machine Learning web service.
+type AzureMachineLearningWebServiceFunctionBindingResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureMachineLearningWebServiceFunctionBindingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMachineLearningWebServiceFunctionBindingResponse)(nil)).Elem()
+}
+
+func (o AzureMachineLearningWebServiceFunctionBindingResponseOutput) ToAzureMachineLearningWebServiceFunctionBindingResponseOutput() AzureMachineLearningWebServiceFunctionBindingResponseOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceFunctionBindingResponseOutput) ToAzureMachineLearningWebServiceFunctionBindingResponseOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceFunctionBindingResponseOutput {
+	return o
+}
+
+// The API key used to authenticate with Request-Response endpoint.
+func (o AzureMachineLearningWebServiceFunctionBindingResponseOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceFunctionBindingResponse) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+// Number between 1 and 10000 describing maximum number of rows for every Azure ML RRS execute request. Default is 1000.
+func (o AzureMachineLearningWebServiceFunctionBindingResponseOutput) BatchSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceFunctionBindingResponse) *int { return v.BatchSize }).(pulumi.IntPtrOutput)
+}
+
+// The Request-Response execute endpoint of the Azure Machine Learning web service. Find out more here: https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-consume-web-services#request-response-service-rrs
+func (o AzureMachineLearningWebServiceFunctionBindingResponseOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceFunctionBindingResponse) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The inputs for the Azure Machine Learning web service endpoint.
+func (o AzureMachineLearningWebServiceFunctionBindingResponseOutput) Inputs() AzureMachineLearningWebServiceInputsResponsePtrOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceFunctionBindingResponse) *AzureMachineLearningWebServiceInputsResponse {
+		return v.Inputs
+	}).(AzureMachineLearningWebServiceInputsResponsePtrOutput)
+}
+
+// A list of outputs from the Azure Machine Learning web service endpoint execution.
+func (o AzureMachineLearningWebServiceFunctionBindingResponseOutput) Outputs() AzureMachineLearningWebServiceOutputColumnResponseArrayOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceFunctionBindingResponse) []AzureMachineLearningWebServiceOutputColumnResponse {
+		return v.Outputs
+	}).(AzureMachineLearningWebServiceOutputColumnResponseArrayOutput)
+}
+
+// Indicates the function binding type.
+// Expected value is 'Microsoft.MachineLearning/WebService'.
+func (o AzureMachineLearningWebServiceFunctionBindingResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceFunctionBindingResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AzureMachineLearningWebServiceFunctionBindingResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureMachineLearningWebServiceFunctionBindingResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureMachineLearningWebServiceFunctionBindingResponse)(nil)).Elem()
+}
+
+func (o AzureMachineLearningWebServiceFunctionBindingResponsePtrOutput) ToAzureMachineLearningWebServiceFunctionBindingResponsePtrOutput() AzureMachineLearningWebServiceFunctionBindingResponsePtrOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceFunctionBindingResponsePtrOutput) ToAzureMachineLearningWebServiceFunctionBindingResponsePtrOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceFunctionBindingResponsePtrOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceFunctionBindingResponsePtrOutput) Elem() AzureMachineLearningWebServiceFunctionBindingResponseOutput {
+	return o.ApplyT(func(v *AzureMachineLearningWebServiceFunctionBindingResponse) AzureMachineLearningWebServiceFunctionBindingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureMachineLearningWebServiceFunctionBindingResponse
+		return ret
+	}).(AzureMachineLearningWebServiceFunctionBindingResponseOutput)
+}
+
+// The API key used to authenticate with Request-Response endpoint.
+func (o AzureMachineLearningWebServiceFunctionBindingResponsePtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureMachineLearningWebServiceFunctionBindingResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number between 1 and 10000 describing maximum number of rows for every Azure ML RRS execute request. Default is 1000.
+func (o AzureMachineLearningWebServiceFunctionBindingResponsePtrOutput) BatchSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AzureMachineLearningWebServiceFunctionBindingResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BatchSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// The Request-Response execute endpoint of the Azure Machine Learning web service. Find out more here: https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-consume-web-services#request-response-service-rrs
+func (o AzureMachineLearningWebServiceFunctionBindingResponsePtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureMachineLearningWebServiceFunctionBindingResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The inputs for the Azure Machine Learning web service endpoint.
+func (o AzureMachineLearningWebServiceFunctionBindingResponsePtrOutput) Inputs() AzureMachineLearningWebServiceInputsResponsePtrOutput {
+	return o.ApplyT(func(v *AzureMachineLearningWebServiceFunctionBindingResponse) *AzureMachineLearningWebServiceInputsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Inputs
+	}).(AzureMachineLearningWebServiceInputsResponsePtrOutput)
+}
+
+// A list of outputs from the Azure Machine Learning web service endpoint execution.
+func (o AzureMachineLearningWebServiceFunctionBindingResponsePtrOutput) Outputs() AzureMachineLearningWebServiceOutputColumnResponseArrayOutput {
+	return o.ApplyT(func(v *AzureMachineLearningWebServiceFunctionBindingResponse) []AzureMachineLearningWebServiceOutputColumnResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Outputs
+	}).(AzureMachineLearningWebServiceOutputColumnResponseArrayOutput)
+}
+
+// Indicates the function binding type.
+// Expected value is 'Microsoft.MachineLearning/WebService'.
+func (o AzureMachineLearningWebServiceFunctionBindingResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureMachineLearningWebServiceFunctionBindingResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // Describes an input column for the Azure Machine Learning web service endpoint.
 type AzureMachineLearningWebServiceInputColumn struct {
 	// The (Azure Machine Learning supported) data type of the input column. A list of valid  Azure Machine Learning data types are described at https://msdn.microsoft.com/en-us/library/azure/dn905923.aspx .
@@ -55,6 +416,114 @@ type AzureMachineLearningWebServiceInputColumn struct {
 	MapTo *int `pulumi:"mapTo"`
 	// The name of the input column.
 	Name *string `pulumi:"name"`
+}
+
+// AzureMachineLearningWebServiceInputColumnInput is an input type that accepts AzureMachineLearningWebServiceInputColumnArgs and AzureMachineLearningWebServiceInputColumnOutput values.
+// You can construct a concrete instance of `AzureMachineLearningWebServiceInputColumnInput` via:
+//
+//	AzureMachineLearningWebServiceInputColumnArgs{...}
+type AzureMachineLearningWebServiceInputColumnInput interface {
+	pulumi.Input
+
+	ToAzureMachineLearningWebServiceInputColumnOutput() AzureMachineLearningWebServiceInputColumnOutput
+	ToAzureMachineLearningWebServiceInputColumnOutputWithContext(context.Context) AzureMachineLearningWebServiceInputColumnOutput
+}
+
+// Describes an input column for the Azure Machine Learning web service endpoint.
+type AzureMachineLearningWebServiceInputColumnArgs struct {
+	// The (Azure Machine Learning supported) data type of the input column. A list of valid  Azure Machine Learning data types are described at https://msdn.microsoft.com/en-us/library/azure/dn905923.aspx .
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// The zero based index of the function parameter this input maps to.
+	MapTo pulumi.IntPtrInput `pulumi:"mapTo"`
+	// The name of the input column.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AzureMachineLearningWebServiceInputColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMachineLearningWebServiceInputColumn)(nil)).Elem()
+}
+
+func (i AzureMachineLearningWebServiceInputColumnArgs) ToAzureMachineLearningWebServiceInputColumnOutput() AzureMachineLearningWebServiceInputColumnOutput {
+	return i.ToAzureMachineLearningWebServiceInputColumnOutputWithContext(context.Background())
+}
+
+func (i AzureMachineLearningWebServiceInputColumnArgs) ToAzureMachineLearningWebServiceInputColumnOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceInputColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureMachineLearningWebServiceInputColumnOutput)
+}
+
+// AzureMachineLearningWebServiceInputColumnArrayInput is an input type that accepts AzureMachineLearningWebServiceInputColumnArray and AzureMachineLearningWebServiceInputColumnArrayOutput values.
+// You can construct a concrete instance of `AzureMachineLearningWebServiceInputColumnArrayInput` via:
+//
+//	AzureMachineLearningWebServiceInputColumnArray{ AzureMachineLearningWebServiceInputColumnArgs{...} }
+type AzureMachineLearningWebServiceInputColumnArrayInput interface {
+	pulumi.Input
+
+	ToAzureMachineLearningWebServiceInputColumnArrayOutput() AzureMachineLearningWebServiceInputColumnArrayOutput
+	ToAzureMachineLearningWebServiceInputColumnArrayOutputWithContext(context.Context) AzureMachineLearningWebServiceInputColumnArrayOutput
+}
+
+type AzureMachineLearningWebServiceInputColumnArray []AzureMachineLearningWebServiceInputColumnInput
+
+func (AzureMachineLearningWebServiceInputColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AzureMachineLearningWebServiceInputColumn)(nil)).Elem()
+}
+
+func (i AzureMachineLearningWebServiceInputColumnArray) ToAzureMachineLearningWebServiceInputColumnArrayOutput() AzureMachineLearningWebServiceInputColumnArrayOutput {
+	return i.ToAzureMachineLearningWebServiceInputColumnArrayOutputWithContext(context.Background())
+}
+
+func (i AzureMachineLearningWebServiceInputColumnArray) ToAzureMachineLearningWebServiceInputColumnArrayOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceInputColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureMachineLearningWebServiceInputColumnArrayOutput)
+}
+
+// Describes an input column for the Azure Machine Learning web service endpoint.
+type AzureMachineLearningWebServiceInputColumnOutput struct{ *pulumi.OutputState }
+
+func (AzureMachineLearningWebServiceInputColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMachineLearningWebServiceInputColumn)(nil)).Elem()
+}
+
+func (o AzureMachineLearningWebServiceInputColumnOutput) ToAzureMachineLearningWebServiceInputColumnOutput() AzureMachineLearningWebServiceInputColumnOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceInputColumnOutput) ToAzureMachineLearningWebServiceInputColumnOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceInputColumnOutput {
+	return o
+}
+
+// The (Azure Machine Learning supported) data type of the input column. A list of valid  Azure Machine Learning data types are described at https://msdn.microsoft.com/en-us/library/azure/dn905923.aspx .
+func (o AzureMachineLearningWebServiceInputColumnOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceInputColumn) *string { return v.DataType }).(pulumi.StringPtrOutput)
+}
+
+// The zero based index of the function parameter this input maps to.
+func (o AzureMachineLearningWebServiceInputColumnOutput) MapTo() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceInputColumn) *int { return v.MapTo }).(pulumi.IntPtrOutput)
+}
+
+// The name of the input column.
+func (o AzureMachineLearningWebServiceInputColumnOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceInputColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AzureMachineLearningWebServiceInputColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (AzureMachineLearningWebServiceInputColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AzureMachineLearningWebServiceInputColumn)(nil)).Elem()
+}
+
+func (o AzureMachineLearningWebServiceInputColumnArrayOutput) ToAzureMachineLearningWebServiceInputColumnArrayOutput() AzureMachineLearningWebServiceInputColumnArrayOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceInputColumnArrayOutput) ToAzureMachineLearningWebServiceInputColumnArrayOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceInputColumnArrayOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceInputColumnArrayOutput) Index(i pulumi.IntInput) AzureMachineLearningWebServiceInputColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AzureMachineLearningWebServiceInputColumn {
+		return vs[0].([]AzureMachineLearningWebServiceInputColumn)[vs[1].(int)]
+	}).(AzureMachineLearningWebServiceInputColumnOutput)
 }
 
 // Describes an input column for the Azure Machine Learning web service endpoint.
@@ -67,12 +536,215 @@ type AzureMachineLearningWebServiceInputColumnResponse struct {
 	Name *string `pulumi:"name"`
 }
 
+// Describes an input column for the Azure Machine Learning web service endpoint.
+type AzureMachineLearningWebServiceInputColumnResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureMachineLearningWebServiceInputColumnResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMachineLearningWebServiceInputColumnResponse)(nil)).Elem()
+}
+
+func (o AzureMachineLearningWebServiceInputColumnResponseOutput) ToAzureMachineLearningWebServiceInputColumnResponseOutput() AzureMachineLearningWebServiceInputColumnResponseOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceInputColumnResponseOutput) ToAzureMachineLearningWebServiceInputColumnResponseOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceInputColumnResponseOutput {
+	return o
+}
+
+// The (Azure Machine Learning supported) data type of the input column. A list of valid  Azure Machine Learning data types are described at https://msdn.microsoft.com/en-us/library/azure/dn905923.aspx .
+func (o AzureMachineLearningWebServiceInputColumnResponseOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceInputColumnResponse) *string { return v.DataType }).(pulumi.StringPtrOutput)
+}
+
+// The zero based index of the function parameter this input maps to.
+func (o AzureMachineLearningWebServiceInputColumnResponseOutput) MapTo() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceInputColumnResponse) *int { return v.MapTo }).(pulumi.IntPtrOutput)
+}
+
+// The name of the input column.
+func (o AzureMachineLearningWebServiceInputColumnResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceInputColumnResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AzureMachineLearningWebServiceInputColumnResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AzureMachineLearningWebServiceInputColumnResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AzureMachineLearningWebServiceInputColumnResponse)(nil)).Elem()
+}
+
+func (o AzureMachineLearningWebServiceInputColumnResponseArrayOutput) ToAzureMachineLearningWebServiceInputColumnResponseArrayOutput() AzureMachineLearningWebServiceInputColumnResponseArrayOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceInputColumnResponseArrayOutput) ToAzureMachineLearningWebServiceInputColumnResponseArrayOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceInputColumnResponseArrayOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceInputColumnResponseArrayOutput) Index(i pulumi.IntInput) AzureMachineLearningWebServiceInputColumnResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AzureMachineLearningWebServiceInputColumnResponse {
+		return vs[0].([]AzureMachineLearningWebServiceInputColumnResponse)[vs[1].(int)]
+	}).(AzureMachineLearningWebServiceInputColumnResponseOutput)
+}
+
 // The inputs for the Azure Machine Learning web service endpoint.
 type AzureMachineLearningWebServiceInputs struct {
 	// A list of input columns for the Azure Machine Learning web service endpoint.
 	ColumnNames []AzureMachineLearningWebServiceInputColumn `pulumi:"columnNames"`
 	// The name of the input. This is the name provided while authoring the endpoint.
 	Name *string `pulumi:"name"`
+}
+
+// AzureMachineLearningWebServiceInputsInput is an input type that accepts AzureMachineLearningWebServiceInputsArgs and AzureMachineLearningWebServiceInputsOutput values.
+// You can construct a concrete instance of `AzureMachineLearningWebServiceInputsInput` via:
+//
+//	AzureMachineLearningWebServiceInputsArgs{...}
+type AzureMachineLearningWebServiceInputsInput interface {
+	pulumi.Input
+
+	ToAzureMachineLearningWebServiceInputsOutput() AzureMachineLearningWebServiceInputsOutput
+	ToAzureMachineLearningWebServiceInputsOutputWithContext(context.Context) AzureMachineLearningWebServiceInputsOutput
+}
+
+// The inputs for the Azure Machine Learning web service endpoint.
+type AzureMachineLearningWebServiceInputsArgs struct {
+	// A list of input columns for the Azure Machine Learning web service endpoint.
+	ColumnNames AzureMachineLearningWebServiceInputColumnArrayInput `pulumi:"columnNames"`
+	// The name of the input. This is the name provided while authoring the endpoint.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AzureMachineLearningWebServiceInputsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMachineLearningWebServiceInputs)(nil)).Elem()
+}
+
+func (i AzureMachineLearningWebServiceInputsArgs) ToAzureMachineLearningWebServiceInputsOutput() AzureMachineLearningWebServiceInputsOutput {
+	return i.ToAzureMachineLearningWebServiceInputsOutputWithContext(context.Background())
+}
+
+func (i AzureMachineLearningWebServiceInputsArgs) ToAzureMachineLearningWebServiceInputsOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceInputsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureMachineLearningWebServiceInputsOutput)
+}
+
+func (i AzureMachineLearningWebServiceInputsArgs) ToAzureMachineLearningWebServiceInputsPtrOutput() AzureMachineLearningWebServiceInputsPtrOutput {
+	return i.ToAzureMachineLearningWebServiceInputsPtrOutputWithContext(context.Background())
+}
+
+func (i AzureMachineLearningWebServiceInputsArgs) ToAzureMachineLearningWebServiceInputsPtrOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceInputsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureMachineLearningWebServiceInputsOutput).ToAzureMachineLearningWebServiceInputsPtrOutputWithContext(ctx)
+}
+
+// AzureMachineLearningWebServiceInputsPtrInput is an input type that accepts AzureMachineLearningWebServiceInputsArgs, AzureMachineLearningWebServiceInputsPtr and AzureMachineLearningWebServiceInputsPtrOutput values.
+// You can construct a concrete instance of `AzureMachineLearningWebServiceInputsPtrInput` via:
+//
+//	        AzureMachineLearningWebServiceInputsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureMachineLearningWebServiceInputsPtrInput interface {
+	pulumi.Input
+
+	ToAzureMachineLearningWebServiceInputsPtrOutput() AzureMachineLearningWebServiceInputsPtrOutput
+	ToAzureMachineLearningWebServiceInputsPtrOutputWithContext(context.Context) AzureMachineLearningWebServiceInputsPtrOutput
+}
+
+type azureMachineLearningWebServiceInputsPtrType AzureMachineLearningWebServiceInputsArgs
+
+func AzureMachineLearningWebServiceInputsPtr(v *AzureMachineLearningWebServiceInputsArgs) AzureMachineLearningWebServiceInputsPtrInput {
+	return (*azureMachineLearningWebServiceInputsPtrType)(v)
+}
+
+func (*azureMachineLearningWebServiceInputsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureMachineLearningWebServiceInputs)(nil)).Elem()
+}
+
+func (i *azureMachineLearningWebServiceInputsPtrType) ToAzureMachineLearningWebServiceInputsPtrOutput() AzureMachineLearningWebServiceInputsPtrOutput {
+	return i.ToAzureMachineLearningWebServiceInputsPtrOutputWithContext(context.Background())
+}
+
+func (i *azureMachineLearningWebServiceInputsPtrType) ToAzureMachineLearningWebServiceInputsPtrOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceInputsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureMachineLearningWebServiceInputsPtrOutput)
+}
+
+// The inputs for the Azure Machine Learning web service endpoint.
+type AzureMachineLearningWebServiceInputsOutput struct{ *pulumi.OutputState }
+
+func (AzureMachineLearningWebServiceInputsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMachineLearningWebServiceInputs)(nil)).Elem()
+}
+
+func (o AzureMachineLearningWebServiceInputsOutput) ToAzureMachineLearningWebServiceInputsOutput() AzureMachineLearningWebServiceInputsOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceInputsOutput) ToAzureMachineLearningWebServiceInputsOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceInputsOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceInputsOutput) ToAzureMachineLearningWebServiceInputsPtrOutput() AzureMachineLearningWebServiceInputsPtrOutput {
+	return o.ToAzureMachineLearningWebServiceInputsPtrOutputWithContext(context.Background())
+}
+
+func (o AzureMachineLearningWebServiceInputsOutput) ToAzureMachineLearningWebServiceInputsPtrOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceInputsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureMachineLearningWebServiceInputs) *AzureMachineLearningWebServiceInputs {
+		return &v
+	}).(AzureMachineLearningWebServiceInputsPtrOutput)
+}
+
+// A list of input columns for the Azure Machine Learning web service endpoint.
+func (o AzureMachineLearningWebServiceInputsOutput) ColumnNames() AzureMachineLearningWebServiceInputColumnArrayOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceInputs) []AzureMachineLearningWebServiceInputColumn {
+		return v.ColumnNames
+	}).(AzureMachineLearningWebServiceInputColumnArrayOutput)
+}
+
+// The name of the input. This is the name provided while authoring the endpoint.
+func (o AzureMachineLearningWebServiceInputsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceInputs) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AzureMachineLearningWebServiceInputsPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureMachineLearningWebServiceInputsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureMachineLearningWebServiceInputs)(nil)).Elem()
+}
+
+func (o AzureMachineLearningWebServiceInputsPtrOutput) ToAzureMachineLearningWebServiceInputsPtrOutput() AzureMachineLearningWebServiceInputsPtrOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceInputsPtrOutput) ToAzureMachineLearningWebServiceInputsPtrOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceInputsPtrOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceInputsPtrOutput) Elem() AzureMachineLearningWebServiceInputsOutput {
+	return o.ApplyT(func(v *AzureMachineLearningWebServiceInputs) AzureMachineLearningWebServiceInputs {
+		if v != nil {
+			return *v
+		}
+		var ret AzureMachineLearningWebServiceInputs
+		return ret
+	}).(AzureMachineLearningWebServiceInputsOutput)
+}
+
+// A list of input columns for the Azure Machine Learning web service endpoint.
+func (o AzureMachineLearningWebServiceInputsPtrOutput) ColumnNames() AzureMachineLearningWebServiceInputColumnArrayOutput {
+	return o.ApplyT(func(v *AzureMachineLearningWebServiceInputs) []AzureMachineLearningWebServiceInputColumn {
+		if v == nil {
+			return nil
+		}
+		return v.ColumnNames
+	}).(AzureMachineLearningWebServiceInputColumnArrayOutput)
+}
+
+// The name of the input. This is the name provided while authoring the endpoint.
+func (o AzureMachineLearningWebServiceInputsPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureMachineLearningWebServiceInputs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 // The inputs for the Azure Machine Learning web service endpoint.
@@ -83,6 +755,77 @@ type AzureMachineLearningWebServiceInputsResponse struct {
 	Name *string `pulumi:"name"`
 }
 
+// The inputs for the Azure Machine Learning web service endpoint.
+type AzureMachineLearningWebServiceInputsResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureMachineLearningWebServiceInputsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMachineLearningWebServiceInputsResponse)(nil)).Elem()
+}
+
+func (o AzureMachineLearningWebServiceInputsResponseOutput) ToAzureMachineLearningWebServiceInputsResponseOutput() AzureMachineLearningWebServiceInputsResponseOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceInputsResponseOutput) ToAzureMachineLearningWebServiceInputsResponseOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceInputsResponseOutput {
+	return o
+}
+
+// A list of input columns for the Azure Machine Learning web service endpoint.
+func (o AzureMachineLearningWebServiceInputsResponseOutput) ColumnNames() AzureMachineLearningWebServiceInputColumnResponseArrayOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceInputsResponse) []AzureMachineLearningWebServiceInputColumnResponse {
+		return v.ColumnNames
+	}).(AzureMachineLearningWebServiceInputColumnResponseArrayOutput)
+}
+
+// The name of the input. This is the name provided while authoring the endpoint.
+func (o AzureMachineLearningWebServiceInputsResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceInputsResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AzureMachineLearningWebServiceInputsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureMachineLearningWebServiceInputsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureMachineLearningWebServiceInputsResponse)(nil)).Elem()
+}
+
+func (o AzureMachineLearningWebServiceInputsResponsePtrOutput) ToAzureMachineLearningWebServiceInputsResponsePtrOutput() AzureMachineLearningWebServiceInputsResponsePtrOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceInputsResponsePtrOutput) ToAzureMachineLearningWebServiceInputsResponsePtrOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceInputsResponsePtrOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceInputsResponsePtrOutput) Elem() AzureMachineLearningWebServiceInputsResponseOutput {
+	return o.ApplyT(func(v *AzureMachineLearningWebServiceInputsResponse) AzureMachineLearningWebServiceInputsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureMachineLearningWebServiceInputsResponse
+		return ret
+	}).(AzureMachineLearningWebServiceInputsResponseOutput)
+}
+
+// A list of input columns for the Azure Machine Learning web service endpoint.
+func (o AzureMachineLearningWebServiceInputsResponsePtrOutput) ColumnNames() AzureMachineLearningWebServiceInputColumnResponseArrayOutput {
+	return o.ApplyT(func(v *AzureMachineLearningWebServiceInputsResponse) []AzureMachineLearningWebServiceInputColumnResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ColumnNames
+	}).(AzureMachineLearningWebServiceInputColumnResponseArrayOutput)
+}
+
+// The name of the input. This is the name provided while authoring the endpoint.
+func (o AzureMachineLearningWebServiceInputsResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureMachineLearningWebServiceInputsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 // Describes an output column for the Azure Machine Learning web service endpoint.
 type AzureMachineLearningWebServiceOutputColumn struct {
 	// The (Azure Machine Learning supported) data type of the output column. A list of valid  Azure Machine Learning data types are described at https://msdn.microsoft.com/en-us/library/azure/dn905923.aspx .
@@ -91,12 +834,158 @@ type AzureMachineLearningWebServiceOutputColumn struct {
 	Name *string `pulumi:"name"`
 }
 
+// AzureMachineLearningWebServiceOutputColumnInput is an input type that accepts AzureMachineLearningWebServiceOutputColumnArgs and AzureMachineLearningWebServiceOutputColumnOutput values.
+// You can construct a concrete instance of `AzureMachineLearningWebServiceOutputColumnInput` via:
+//
+//	AzureMachineLearningWebServiceOutputColumnArgs{...}
+type AzureMachineLearningWebServiceOutputColumnInput interface {
+	pulumi.Input
+
+	ToAzureMachineLearningWebServiceOutputColumnOutput() AzureMachineLearningWebServiceOutputColumnOutput
+	ToAzureMachineLearningWebServiceOutputColumnOutputWithContext(context.Context) AzureMachineLearningWebServiceOutputColumnOutput
+}
+
+// Describes an output column for the Azure Machine Learning web service endpoint.
+type AzureMachineLearningWebServiceOutputColumnArgs struct {
+	// The (Azure Machine Learning supported) data type of the output column. A list of valid  Azure Machine Learning data types are described at https://msdn.microsoft.com/en-us/library/azure/dn905923.aspx .
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// The name of the output column.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AzureMachineLearningWebServiceOutputColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMachineLearningWebServiceOutputColumn)(nil)).Elem()
+}
+
+func (i AzureMachineLearningWebServiceOutputColumnArgs) ToAzureMachineLearningWebServiceOutputColumnOutput() AzureMachineLearningWebServiceOutputColumnOutput {
+	return i.ToAzureMachineLearningWebServiceOutputColumnOutputWithContext(context.Background())
+}
+
+func (i AzureMachineLearningWebServiceOutputColumnArgs) ToAzureMachineLearningWebServiceOutputColumnOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceOutputColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureMachineLearningWebServiceOutputColumnOutput)
+}
+
+// AzureMachineLearningWebServiceOutputColumnArrayInput is an input type that accepts AzureMachineLearningWebServiceOutputColumnArray and AzureMachineLearningWebServiceOutputColumnArrayOutput values.
+// You can construct a concrete instance of `AzureMachineLearningWebServiceOutputColumnArrayInput` via:
+//
+//	AzureMachineLearningWebServiceOutputColumnArray{ AzureMachineLearningWebServiceOutputColumnArgs{...} }
+type AzureMachineLearningWebServiceOutputColumnArrayInput interface {
+	pulumi.Input
+
+	ToAzureMachineLearningWebServiceOutputColumnArrayOutput() AzureMachineLearningWebServiceOutputColumnArrayOutput
+	ToAzureMachineLearningWebServiceOutputColumnArrayOutputWithContext(context.Context) AzureMachineLearningWebServiceOutputColumnArrayOutput
+}
+
+type AzureMachineLearningWebServiceOutputColumnArray []AzureMachineLearningWebServiceOutputColumnInput
+
+func (AzureMachineLearningWebServiceOutputColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AzureMachineLearningWebServiceOutputColumn)(nil)).Elem()
+}
+
+func (i AzureMachineLearningWebServiceOutputColumnArray) ToAzureMachineLearningWebServiceOutputColumnArrayOutput() AzureMachineLearningWebServiceOutputColumnArrayOutput {
+	return i.ToAzureMachineLearningWebServiceOutputColumnArrayOutputWithContext(context.Background())
+}
+
+func (i AzureMachineLearningWebServiceOutputColumnArray) ToAzureMachineLearningWebServiceOutputColumnArrayOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceOutputColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureMachineLearningWebServiceOutputColumnArrayOutput)
+}
+
+// Describes an output column for the Azure Machine Learning web service endpoint.
+type AzureMachineLearningWebServiceOutputColumnOutput struct{ *pulumi.OutputState }
+
+func (AzureMachineLearningWebServiceOutputColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMachineLearningWebServiceOutputColumn)(nil)).Elem()
+}
+
+func (o AzureMachineLearningWebServiceOutputColumnOutput) ToAzureMachineLearningWebServiceOutputColumnOutput() AzureMachineLearningWebServiceOutputColumnOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceOutputColumnOutput) ToAzureMachineLearningWebServiceOutputColumnOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceOutputColumnOutput {
+	return o
+}
+
+// The (Azure Machine Learning supported) data type of the output column. A list of valid  Azure Machine Learning data types are described at https://msdn.microsoft.com/en-us/library/azure/dn905923.aspx .
+func (o AzureMachineLearningWebServiceOutputColumnOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceOutputColumn) *string { return v.DataType }).(pulumi.StringPtrOutput)
+}
+
+// The name of the output column.
+func (o AzureMachineLearningWebServiceOutputColumnOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceOutputColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AzureMachineLearningWebServiceOutputColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (AzureMachineLearningWebServiceOutputColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AzureMachineLearningWebServiceOutputColumn)(nil)).Elem()
+}
+
+func (o AzureMachineLearningWebServiceOutputColumnArrayOutput) ToAzureMachineLearningWebServiceOutputColumnArrayOutput() AzureMachineLearningWebServiceOutputColumnArrayOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceOutputColumnArrayOutput) ToAzureMachineLearningWebServiceOutputColumnArrayOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceOutputColumnArrayOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceOutputColumnArrayOutput) Index(i pulumi.IntInput) AzureMachineLearningWebServiceOutputColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AzureMachineLearningWebServiceOutputColumn {
+		return vs[0].([]AzureMachineLearningWebServiceOutputColumn)[vs[1].(int)]
+	}).(AzureMachineLearningWebServiceOutputColumnOutput)
+}
+
 // Describes an output column for the Azure Machine Learning web service endpoint.
 type AzureMachineLearningWebServiceOutputColumnResponse struct {
 	// The (Azure Machine Learning supported) data type of the output column. A list of valid  Azure Machine Learning data types are described at https://msdn.microsoft.com/en-us/library/azure/dn905923.aspx .
 	DataType *string `pulumi:"dataType"`
 	// The name of the output column.
 	Name *string `pulumi:"name"`
+}
+
+// Describes an output column for the Azure Machine Learning web service endpoint.
+type AzureMachineLearningWebServiceOutputColumnResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureMachineLearningWebServiceOutputColumnResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureMachineLearningWebServiceOutputColumnResponse)(nil)).Elem()
+}
+
+func (o AzureMachineLearningWebServiceOutputColumnResponseOutput) ToAzureMachineLearningWebServiceOutputColumnResponseOutput() AzureMachineLearningWebServiceOutputColumnResponseOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceOutputColumnResponseOutput) ToAzureMachineLearningWebServiceOutputColumnResponseOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceOutputColumnResponseOutput {
+	return o
+}
+
+// The (Azure Machine Learning supported) data type of the output column. A list of valid  Azure Machine Learning data types are described at https://msdn.microsoft.com/en-us/library/azure/dn905923.aspx .
+func (o AzureMachineLearningWebServiceOutputColumnResponseOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceOutputColumnResponse) *string { return v.DataType }).(pulumi.StringPtrOutput)
+}
+
+// The name of the output column.
+func (o AzureMachineLearningWebServiceOutputColumnResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureMachineLearningWebServiceOutputColumnResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AzureMachineLearningWebServiceOutputColumnResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AzureMachineLearningWebServiceOutputColumnResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AzureMachineLearningWebServiceOutputColumnResponse)(nil)).Elem()
+}
+
+func (o AzureMachineLearningWebServiceOutputColumnResponseArrayOutput) ToAzureMachineLearningWebServiceOutputColumnResponseArrayOutput() AzureMachineLearningWebServiceOutputColumnResponseArrayOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceOutputColumnResponseArrayOutput) ToAzureMachineLearningWebServiceOutputColumnResponseArrayOutputWithContext(ctx context.Context) AzureMachineLearningWebServiceOutputColumnResponseArrayOutput {
+	return o
+}
+
+func (o AzureMachineLearningWebServiceOutputColumnResponseArrayOutput) Index(i pulumi.IntInput) AzureMachineLearningWebServiceOutputColumnResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AzureMachineLearningWebServiceOutputColumnResponse {
+		return vs[0].([]AzureMachineLearningWebServiceOutputColumnResponse)[vs[1].(int)]
+	}).(AzureMachineLearningWebServiceOutputColumnResponseOutput)
 }
 
 // Describes one input parameter of a function.
@@ -470,6 +1359,160 @@ type JavaScriptFunctionBinding struct {
 	Type string `pulumi:"type"`
 }
 
+// JavaScriptFunctionBindingInput is an input type that accepts JavaScriptFunctionBindingArgs and JavaScriptFunctionBindingOutput values.
+// You can construct a concrete instance of `JavaScriptFunctionBindingInput` via:
+//
+//	JavaScriptFunctionBindingArgs{...}
+type JavaScriptFunctionBindingInput interface {
+	pulumi.Input
+
+	ToJavaScriptFunctionBindingOutput() JavaScriptFunctionBindingOutput
+	ToJavaScriptFunctionBindingOutputWithContext(context.Context) JavaScriptFunctionBindingOutput
+}
+
+// The binding to a JavaScript function.
+type JavaScriptFunctionBindingArgs struct {
+	// The JavaScript code containing a single function definition. For example: 'function (x, y) { return x + y; }'
+	Script pulumi.StringPtrInput `pulumi:"script"`
+	// Indicates the function binding type.
+	// Expected value is 'Microsoft.StreamAnalytics/JavascriptUdf'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (JavaScriptFunctionBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaScriptFunctionBinding)(nil)).Elem()
+}
+
+func (i JavaScriptFunctionBindingArgs) ToJavaScriptFunctionBindingOutput() JavaScriptFunctionBindingOutput {
+	return i.ToJavaScriptFunctionBindingOutputWithContext(context.Background())
+}
+
+func (i JavaScriptFunctionBindingArgs) ToJavaScriptFunctionBindingOutputWithContext(ctx context.Context) JavaScriptFunctionBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JavaScriptFunctionBindingOutput)
+}
+
+func (i JavaScriptFunctionBindingArgs) ToJavaScriptFunctionBindingPtrOutput() JavaScriptFunctionBindingPtrOutput {
+	return i.ToJavaScriptFunctionBindingPtrOutputWithContext(context.Background())
+}
+
+func (i JavaScriptFunctionBindingArgs) ToJavaScriptFunctionBindingPtrOutputWithContext(ctx context.Context) JavaScriptFunctionBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JavaScriptFunctionBindingOutput).ToJavaScriptFunctionBindingPtrOutputWithContext(ctx)
+}
+
+// JavaScriptFunctionBindingPtrInput is an input type that accepts JavaScriptFunctionBindingArgs, JavaScriptFunctionBindingPtr and JavaScriptFunctionBindingPtrOutput values.
+// You can construct a concrete instance of `JavaScriptFunctionBindingPtrInput` via:
+//
+//	        JavaScriptFunctionBindingArgs{...}
+//
+//	or:
+//
+//	        nil
+type JavaScriptFunctionBindingPtrInput interface {
+	pulumi.Input
+
+	ToJavaScriptFunctionBindingPtrOutput() JavaScriptFunctionBindingPtrOutput
+	ToJavaScriptFunctionBindingPtrOutputWithContext(context.Context) JavaScriptFunctionBindingPtrOutput
+}
+
+type javaScriptFunctionBindingPtrType JavaScriptFunctionBindingArgs
+
+func JavaScriptFunctionBindingPtr(v *JavaScriptFunctionBindingArgs) JavaScriptFunctionBindingPtrInput {
+	return (*javaScriptFunctionBindingPtrType)(v)
+}
+
+func (*javaScriptFunctionBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JavaScriptFunctionBinding)(nil)).Elem()
+}
+
+func (i *javaScriptFunctionBindingPtrType) ToJavaScriptFunctionBindingPtrOutput() JavaScriptFunctionBindingPtrOutput {
+	return i.ToJavaScriptFunctionBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *javaScriptFunctionBindingPtrType) ToJavaScriptFunctionBindingPtrOutputWithContext(ctx context.Context) JavaScriptFunctionBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JavaScriptFunctionBindingPtrOutput)
+}
+
+// The binding to a JavaScript function.
+type JavaScriptFunctionBindingOutput struct{ *pulumi.OutputState }
+
+func (JavaScriptFunctionBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaScriptFunctionBinding)(nil)).Elem()
+}
+
+func (o JavaScriptFunctionBindingOutput) ToJavaScriptFunctionBindingOutput() JavaScriptFunctionBindingOutput {
+	return o
+}
+
+func (o JavaScriptFunctionBindingOutput) ToJavaScriptFunctionBindingOutputWithContext(ctx context.Context) JavaScriptFunctionBindingOutput {
+	return o
+}
+
+func (o JavaScriptFunctionBindingOutput) ToJavaScriptFunctionBindingPtrOutput() JavaScriptFunctionBindingPtrOutput {
+	return o.ToJavaScriptFunctionBindingPtrOutputWithContext(context.Background())
+}
+
+func (o JavaScriptFunctionBindingOutput) ToJavaScriptFunctionBindingPtrOutputWithContext(ctx context.Context) JavaScriptFunctionBindingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JavaScriptFunctionBinding) *JavaScriptFunctionBinding {
+		return &v
+	}).(JavaScriptFunctionBindingPtrOutput)
+}
+
+// The JavaScript code containing a single function definition. For example: 'function (x, y) { return x + y; }'
+func (o JavaScriptFunctionBindingOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JavaScriptFunctionBinding) *string { return v.Script }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the function binding type.
+// Expected value is 'Microsoft.StreamAnalytics/JavascriptUdf'.
+func (o JavaScriptFunctionBindingOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v JavaScriptFunctionBinding) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type JavaScriptFunctionBindingPtrOutput struct{ *pulumi.OutputState }
+
+func (JavaScriptFunctionBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JavaScriptFunctionBinding)(nil)).Elem()
+}
+
+func (o JavaScriptFunctionBindingPtrOutput) ToJavaScriptFunctionBindingPtrOutput() JavaScriptFunctionBindingPtrOutput {
+	return o
+}
+
+func (o JavaScriptFunctionBindingPtrOutput) ToJavaScriptFunctionBindingPtrOutputWithContext(ctx context.Context) JavaScriptFunctionBindingPtrOutput {
+	return o
+}
+
+func (o JavaScriptFunctionBindingPtrOutput) Elem() JavaScriptFunctionBindingOutput {
+	return o.ApplyT(func(v *JavaScriptFunctionBinding) JavaScriptFunctionBinding {
+		if v != nil {
+			return *v
+		}
+		var ret JavaScriptFunctionBinding
+		return ret
+	}).(JavaScriptFunctionBindingOutput)
+}
+
+// The JavaScript code containing a single function definition. For example: 'function (x, y) { return x + y; }'
+func (o JavaScriptFunctionBindingPtrOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JavaScriptFunctionBinding) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Script
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates the function binding type.
+// Expected value is 'Microsoft.StreamAnalytics/JavascriptUdf'.
+func (o JavaScriptFunctionBindingPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JavaScriptFunctionBinding) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // The binding to a JavaScript function.
 type JavaScriptFunctionBindingResponse struct {
 	// The JavaScript code containing a single function definition. For example: 'function (x, y) { return x + y; }'
@@ -477,6 +1520,77 @@ type JavaScriptFunctionBindingResponse struct {
 	// Indicates the function binding type.
 	// Expected value is 'Microsoft.StreamAnalytics/JavascriptUdf'.
 	Type string `pulumi:"type"`
+}
+
+// The binding to a JavaScript function.
+type JavaScriptFunctionBindingResponseOutput struct{ *pulumi.OutputState }
+
+func (JavaScriptFunctionBindingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaScriptFunctionBindingResponse)(nil)).Elem()
+}
+
+func (o JavaScriptFunctionBindingResponseOutput) ToJavaScriptFunctionBindingResponseOutput() JavaScriptFunctionBindingResponseOutput {
+	return o
+}
+
+func (o JavaScriptFunctionBindingResponseOutput) ToJavaScriptFunctionBindingResponseOutputWithContext(ctx context.Context) JavaScriptFunctionBindingResponseOutput {
+	return o
+}
+
+// The JavaScript code containing a single function definition. For example: 'function (x, y) { return x + y; }'
+func (o JavaScriptFunctionBindingResponseOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JavaScriptFunctionBindingResponse) *string { return v.Script }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the function binding type.
+// Expected value is 'Microsoft.StreamAnalytics/JavascriptUdf'.
+func (o JavaScriptFunctionBindingResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v JavaScriptFunctionBindingResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type JavaScriptFunctionBindingResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (JavaScriptFunctionBindingResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JavaScriptFunctionBindingResponse)(nil)).Elem()
+}
+
+func (o JavaScriptFunctionBindingResponsePtrOutput) ToJavaScriptFunctionBindingResponsePtrOutput() JavaScriptFunctionBindingResponsePtrOutput {
+	return o
+}
+
+func (o JavaScriptFunctionBindingResponsePtrOutput) ToJavaScriptFunctionBindingResponsePtrOutputWithContext(ctx context.Context) JavaScriptFunctionBindingResponsePtrOutput {
+	return o
+}
+
+func (o JavaScriptFunctionBindingResponsePtrOutput) Elem() JavaScriptFunctionBindingResponseOutput {
+	return o.ApplyT(func(v *JavaScriptFunctionBindingResponse) JavaScriptFunctionBindingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret JavaScriptFunctionBindingResponse
+		return ret
+	}).(JavaScriptFunctionBindingResponseOutput)
+}
+
+// The JavaScript code containing a single function definition. For example: 'function (x, y) { return x + y; }'
+func (o JavaScriptFunctionBindingResponsePtrOutput) Script() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JavaScriptFunctionBindingResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Script
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates the function binding type.
+// Expected value is 'Microsoft.StreamAnalytics/JavascriptUdf'.
+func (o JavaScriptFunctionBindingResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JavaScriptFunctionBindingResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // The properties that are associated with a scalar function.
@@ -737,6 +1851,22 @@ func (o ScalarFunctionPropertiesResponseOutput) Type() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(AzureMachineLearningWebServiceFunctionBindingOutput{})
+	pulumi.RegisterOutputType(AzureMachineLearningWebServiceFunctionBindingPtrOutput{})
+	pulumi.RegisterOutputType(AzureMachineLearningWebServiceFunctionBindingResponseOutput{})
+	pulumi.RegisterOutputType(AzureMachineLearningWebServiceFunctionBindingResponsePtrOutput{})
+	pulumi.RegisterOutputType(AzureMachineLearningWebServiceInputColumnOutput{})
+	pulumi.RegisterOutputType(AzureMachineLearningWebServiceInputColumnArrayOutput{})
+	pulumi.RegisterOutputType(AzureMachineLearningWebServiceInputColumnResponseOutput{})
+	pulumi.RegisterOutputType(AzureMachineLearningWebServiceInputColumnResponseArrayOutput{})
+	pulumi.RegisterOutputType(AzureMachineLearningWebServiceInputsOutput{})
+	pulumi.RegisterOutputType(AzureMachineLearningWebServiceInputsPtrOutput{})
+	pulumi.RegisterOutputType(AzureMachineLearningWebServiceInputsResponseOutput{})
+	pulumi.RegisterOutputType(AzureMachineLearningWebServiceInputsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AzureMachineLearningWebServiceOutputColumnOutput{})
+	pulumi.RegisterOutputType(AzureMachineLearningWebServiceOutputColumnArrayOutput{})
+	pulumi.RegisterOutputType(AzureMachineLearningWebServiceOutputColumnResponseOutput{})
+	pulumi.RegisterOutputType(AzureMachineLearningWebServiceOutputColumnResponseArrayOutput{})
 	pulumi.RegisterOutputType(FunctionInputTypeOutput{})
 	pulumi.RegisterOutputType(FunctionInputTypeArrayOutput{})
 	pulumi.RegisterOutputType(FunctionInputResponseOutput{})
@@ -745,6 +1875,10 @@ func init() {
 	pulumi.RegisterOutputType(FunctionOutputTypePtrOutput{})
 	pulumi.RegisterOutputType(FunctionOutputResponseOutput{})
 	pulumi.RegisterOutputType(FunctionOutputResponsePtrOutput{})
+	pulumi.RegisterOutputType(JavaScriptFunctionBindingOutput{})
+	pulumi.RegisterOutputType(JavaScriptFunctionBindingPtrOutput{})
+	pulumi.RegisterOutputType(JavaScriptFunctionBindingResponseOutput{})
+	pulumi.RegisterOutputType(JavaScriptFunctionBindingResponsePtrOutput{})
 	pulumi.RegisterOutputType(ScalarFunctionPropertiesOutput{})
 	pulumi.RegisterOutputType(ScalarFunctionPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ScalarFunctionPropertiesResponseOutput{})

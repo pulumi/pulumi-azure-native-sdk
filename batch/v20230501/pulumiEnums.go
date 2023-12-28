@@ -142,10 +142,12 @@ func (o AuthenticationModePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// AuthenticationModeInput is an input type that accepts AuthenticationModeArgs and AuthenticationModeOutput values.
-// You can construct a concrete instance of `AuthenticationModeInput` via:
+// AuthenticationModeInput is an input type that accepts values of the AuthenticationMode enum
+// A concrete instance of `AuthenticationModeInput` can be one of the following:
 //
-//	AuthenticationModeArgs{...}
+//	AuthenticationModeSharedKey
+//	AuthenticationModeAAD
+//	AuthenticationModeTaskAuthenticationToken
 type AuthenticationModeInput interface {
 	pulumi.Input
 
@@ -360,10 +362,11 @@ func (o AutoStorageAuthenticationModePtrOutput) ToStringPtrOutputWithContext(ctx
 	}).(pulumi.StringPtrOutput)
 }
 
-// AutoStorageAuthenticationModeInput is an input type that accepts AutoStorageAuthenticationModeArgs and AutoStorageAuthenticationModeOutput values.
-// You can construct a concrete instance of `AutoStorageAuthenticationModeInput` via:
+// AutoStorageAuthenticationModeInput is an input type that accepts values of the AutoStorageAuthenticationMode enum
+// A concrete instance of `AutoStorageAuthenticationModeInput` can be one of the following:
 //
-//	AutoStorageAuthenticationModeArgs{...}
+//	AutoStorageAuthenticationModeStorageKeys
+//	AutoStorageAuthenticationModeBatchAccountManagedIdentity
 type AutoStorageAuthenticationModeInput interface {
 	pulumi.Input
 
@@ -533,10 +536,11 @@ func (o AutoUserScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AutoUserScopeInput is an input type that accepts AutoUserScopeArgs and AutoUserScopeOutput values.
-// You can construct a concrete instance of `AutoUserScopeInput` via:
+// AutoUserScopeInput is an input type that accepts values of the AutoUserScope enum
+// A concrete instance of `AutoUserScopeInput` can be one of the following:
 //
-//	AutoUserScopeArgs{...}
+//	AutoUserScopeTask
+//	AutoUserScopePool
 type AutoUserScopeInput interface {
 	pulumi.Input
 
@@ -714,10 +718,12 @@ func (o CachingTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// CachingTypeInput is an input type that accepts CachingTypeArgs and CachingTypeOutput values.
-// You can construct a concrete instance of `CachingTypeInput` via:
+// CachingTypeInput is an input type that accepts values of the CachingType enum
+// A concrete instance of `CachingTypeInput` can be one of the following:
 //
-//	CachingTypeArgs{...}
+//	CachingTypeNone
+//	CachingTypeReadOnly
+//	CachingTypeReadWrite
 type CachingTypeInput interface {
 	pulumi.Input
 
@@ -887,10 +893,11 @@ func (o CertificateStoreLocationPtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// CertificateStoreLocationInput is an input type that accepts CertificateStoreLocationArgs and CertificateStoreLocationOutput values.
-// You can construct a concrete instance of `CertificateStoreLocationInput` via:
+// CertificateStoreLocationInput is an input type that accepts values of the CertificateStoreLocation enum
+// A concrete instance of `CertificateStoreLocationInput` can be one of the following:
 //
-//	CertificateStoreLocationArgs{...}
+//	CertificateStoreLocationCurrentUser
+//	CertificateStoreLocationLocalMachine
 type CertificateStoreLocationInput interface {
 	pulumi.Input
 
@@ -1061,10 +1068,12 @@ func (o CertificateVisibilityPtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// CertificateVisibilityInput is an input type that accepts CertificateVisibilityArgs and CertificateVisibilityOutput values.
-// You can construct a concrete instance of `CertificateVisibilityInput` via:
+// CertificateVisibilityInput is an input type that accepts values of the CertificateVisibility enum
+// A concrete instance of `CertificateVisibilityInput` can be one of the following:
 //
-//	CertificateVisibilityArgs{...}
+//	CertificateVisibilityStartTask
+//	CertificateVisibilityTask
+//	CertificateVisibilityRemoteUser
 type CertificateVisibilityInput interface {
 	pulumi.Input
 
@@ -1283,10 +1292,13 @@ func (o ComputeNodeDeallocationOptionPtrOutput) ToStringPtrOutputWithContext(ctx
 	}).(pulumi.StringPtrOutput)
 }
 
-// ComputeNodeDeallocationOptionInput is an input type that accepts ComputeNodeDeallocationOptionArgs and ComputeNodeDeallocationOptionOutput values.
-// You can construct a concrete instance of `ComputeNodeDeallocationOptionInput` via:
+// ComputeNodeDeallocationOptionInput is an input type that accepts values of the ComputeNodeDeallocationOption enum
+// A concrete instance of `ComputeNodeDeallocationOptionInput` can be one of the following:
 //
-//	ComputeNodeDeallocationOptionArgs{...}
+//	ComputeNodeDeallocationOptionRequeue
+//	ComputeNodeDeallocationOptionTerminate
+//	ComputeNodeDeallocationOptionTaskCompletion
+//	ComputeNodeDeallocationOptionRetainedData
 type ComputeNodeDeallocationOptionInput interface {
 	pulumi.Input
 
@@ -1455,10 +1467,11 @@ func (o ComputeNodeFillTypePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// ComputeNodeFillTypeInput is an input type that accepts ComputeNodeFillTypeArgs and ComputeNodeFillTypeOutput values.
-// You can construct a concrete instance of `ComputeNodeFillTypeInput` via:
+// ComputeNodeFillTypeInput is an input type that accepts values of the ComputeNodeFillType enum
+// A concrete instance of `ComputeNodeFillTypeInput` can be one of the following:
 //
-//	ComputeNodeFillTypeArgs{...}
+//	ComputeNodeFillTypeSpread
+//	ComputeNodeFillTypePack
 type ComputeNodeFillTypeInput interface {
 	pulumi.Input
 
@@ -1507,6 +1520,170 @@ const (
 	// A CRI based technology will be used to launch the containers.
 	ContainerTypeCriCompatible = ContainerType("CriCompatible")
 )
+
+func (ContainerType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerType)(nil)).Elem()
+}
+
+func (e ContainerType) ToContainerTypeOutput() ContainerTypeOutput {
+	return pulumi.ToOutput(e).(ContainerTypeOutput)
+}
+
+func (e ContainerType) ToContainerTypeOutputWithContext(ctx context.Context) ContainerTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ContainerTypeOutput)
+}
+
+func (e ContainerType) ToContainerTypePtrOutput() ContainerTypePtrOutput {
+	return e.ToContainerTypePtrOutputWithContext(context.Background())
+}
+
+func (e ContainerType) ToContainerTypePtrOutputWithContext(ctx context.Context) ContainerTypePtrOutput {
+	return ContainerType(e).ToContainerTypeOutputWithContext(ctx).ToContainerTypePtrOutputWithContext(ctx)
+}
+
+func (e ContainerType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ContainerType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ContainerType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ContainerType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ContainerTypeOutput struct{ *pulumi.OutputState }
+
+func (ContainerTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerType)(nil)).Elem()
+}
+
+func (o ContainerTypeOutput) ToContainerTypeOutput() ContainerTypeOutput {
+	return o
+}
+
+func (o ContainerTypeOutput) ToContainerTypeOutputWithContext(ctx context.Context) ContainerTypeOutput {
+	return o
+}
+
+func (o ContainerTypeOutput) ToContainerTypePtrOutput() ContainerTypePtrOutput {
+	return o.ToContainerTypePtrOutputWithContext(context.Background())
+}
+
+func (o ContainerTypeOutput) ToContainerTypePtrOutputWithContext(ctx context.Context) ContainerTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerType) *ContainerType {
+		return &v
+	}).(ContainerTypePtrOutput)
+}
+
+func (o ContainerTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ContainerTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ContainerType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ContainerTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ContainerTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ContainerType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ContainerTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerType)(nil)).Elem()
+}
+
+func (o ContainerTypePtrOutput) ToContainerTypePtrOutput() ContainerTypePtrOutput {
+	return o
+}
+
+func (o ContainerTypePtrOutput) ToContainerTypePtrOutputWithContext(ctx context.Context) ContainerTypePtrOutput {
+	return o
+}
+
+func (o ContainerTypePtrOutput) Elem() ContainerTypeOutput {
+	return o.ApplyT(func(v *ContainerType) ContainerType {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerType
+		return ret
+	}).(ContainerTypeOutput)
+}
+
+func (o ContainerTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ContainerTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ContainerType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ContainerTypeInput is an input type that accepts values of the ContainerType enum
+// A concrete instance of `ContainerTypeInput` can be one of the following:
+//
+//	ContainerTypeDockerCompatible
+//	ContainerTypeCriCompatible
+type ContainerTypeInput interface {
+	pulumi.Input
+
+	ToContainerTypeOutput() ContainerTypeOutput
+	ToContainerTypeOutputWithContext(context.Context) ContainerTypeOutput
+}
+
+var containerTypePtrType = reflect.TypeOf((**ContainerType)(nil)).Elem()
+
+type ContainerTypePtrInput interface {
+	pulumi.Input
+
+	ToContainerTypePtrOutput() ContainerTypePtrOutput
+	ToContainerTypePtrOutputWithContext(context.Context) ContainerTypePtrOutput
+}
+
+type containerTypePtr string
+
+func ContainerTypePtr(v string) ContainerTypePtrInput {
+	return (*containerTypePtr)(&v)
+}
+
+func (*containerTypePtr) ElementType() reflect.Type {
+	return containerTypePtrType
+}
+
+func (in *containerTypePtr) ToContainerTypePtrOutput() ContainerTypePtrOutput {
+	return pulumi.ToOutput(in).(ContainerTypePtrOutput)
+}
+
+func (in *containerTypePtr) ToContainerTypePtrOutputWithContext(ctx context.Context) ContainerTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ContainerTypePtrOutput)
+}
+
+func (in *containerTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ContainerType] {
+	return pulumix.Output[*ContainerType]{
+		OutputState: in.ToContainerTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
 
 type ContainerWorkingDirectory string
 
@@ -1636,10 +1813,11 @@ func (o ContainerWorkingDirectoryPtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// ContainerWorkingDirectoryInput is an input type that accepts ContainerWorkingDirectoryArgs and ContainerWorkingDirectoryOutput values.
-// You can construct a concrete instance of `ContainerWorkingDirectoryInput` via:
+// ContainerWorkingDirectoryInput is an input type that accepts values of the ContainerWorkingDirectory enum
+// A concrete instance of `ContainerWorkingDirectoryInput` can be one of the following:
 //
-//	ContainerWorkingDirectoryArgs{...}
+//	ContainerWorkingDirectoryTaskWorkingDirectory
+//	ContainerWorkingDirectoryContainerImageDefault
 type ContainerWorkingDirectoryInput interface {
 	pulumi.Input
 
@@ -1807,10 +1985,10 @@ func (o DiffDiskPlacementPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// DiffDiskPlacementInput is an input type that accepts DiffDiskPlacementArgs and DiffDiskPlacementOutput values.
-// You can construct a concrete instance of `DiffDiskPlacementInput` via:
+// DiffDiskPlacementInput is an input type that accepts values of the DiffDiskPlacement enum
+// A concrete instance of `DiffDiskPlacementInput` can be one of the following:
 //
-//	DiffDiskPlacementArgs{...}
+//	DiffDiskPlacementCacheDisk
 type DiffDiskPlacementInput interface {
 	pulumi.Input
 
@@ -1980,10 +2158,11 @@ func (o DiskEncryptionTargetPtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// DiskEncryptionTargetInput is an input type that accepts DiskEncryptionTargetArgs and DiskEncryptionTargetOutput values.
-// You can construct a concrete instance of `DiskEncryptionTargetInput` via:
+// DiskEncryptionTargetInput is an input type that accepts values of the DiskEncryptionTarget enum
+// A concrete instance of `DiskEncryptionTargetInput` can be one of the following:
 //
-//	DiskEncryptionTargetArgs{...}
+//	DiskEncryptionTargetOsDisk
+//	DiskEncryptionTargetTemporaryDisk
 type DiskEncryptionTargetInput interface {
 	pulumi.Input
 
@@ -2197,10 +2376,11 @@ func (o DynamicVNetAssignmentScopePtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// DynamicVNetAssignmentScopeInput is an input type that accepts DynamicVNetAssignmentScopeArgs and DynamicVNetAssignmentScopeOutput values.
-// You can construct a concrete instance of `DynamicVNetAssignmentScopeInput` via:
+// DynamicVNetAssignmentScopeInput is an input type that accepts values of the DynamicVNetAssignmentScope enum
+// A concrete instance of `DynamicVNetAssignmentScopeInput` can be one of the following:
 //
-//	DynamicVNetAssignmentScopeArgs{...}
+//	DynamicVNetAssignmentScopeNone
+//	DynamicVNetAssignmentScopeJob
 type DynamicVNetAssignmentScopeInput interface {
 	pulumi.Input
 
@@ -2370,10 +2550,11 @@ func (o ElevationLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// ElevationLevelInput is an input type that accepts ElevationLevelArgs and ElevationLevelOutput values.
-// You can construct a concrete instance of `ElevationLevelInput` via:
+// ElevationLevelInput is an input type that accepts values of the ElevationLevel enum
+// A concrete instance of `ElevationLevelInput` can be one of the following:
 //
-//	ElevationLevelArgs{...}
+//	ElevationLevelNonAdmin
+//	ElevationLevelAdmin
 type ElevationLevelInput interface {
 	pulumi.Input
 
@@ -2543,10 +2724,11 @@ func (o EndpointAccessDefaultActionPtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// EndpointAccessDefaultActionInput is an input type that accepts EndpointAccessDefaultActionArgs and EndpointAccessDefaultActionOutput values.
-// You can construct a concrete instance of `EndpointAccessDefaultActionInput` via:
+// EndpointAccessDefaultActionInput is an input type that accepts values of the EndpointAccessDefaultAction enum
+// A concrete instance of `EndpointAccessDefaultActionInput` can be one of the following:
 //
-//	EndpointAccessDefaultActionArgs{...}
+//	EndpointAccessDefaultActionAllow
+//	EndpointAccessDefaultActionDeny
 type EndpointAccessDefaultActionInput interface {
 	pulumi.Input
 
@@ -2718,10 +2900,12 @@ func (o IPAddressProvisioningTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// IPAddressProvisioningTypeInput is an input type that accepts IPAddressProvisioningTypeArgs and IPAddressProvisioningTypeOutput values.
-// You can construct a concrete instance of `IPAddressProvisioningTypeInput` via:
+// IPAddressProvisioningTypeInput is an input type that accepts values of the IPAddressProvisioningType enum
+// A concrete instance of `IPAddressProvisioningTypeInput` can be one of the following:
 //
-//	IPAddressProvisioningTypeArgs{...}
+//	IPAddressProvisioningTypeBatchManaged
+//	IPAddressProvisioningTypeUserManaged
+//	IPAddressProvisioningTypeNoPublicIPAddresses
 type IPAddressProvisioningTypeInput interface {
 	pulumi.Input
 
@@ -2889,10 +3073,10 @@ func (o IPRuleActionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// IPRuleActionInput is an input type that accepts IPRuleActionArgs and IPRuleActionOutput values.
-// You can construct a concrete instance of `IPRuleActionInput` via:
+// IPRuleActionInput is an input type that accepts values of the IPRuleAction enum
+// A concrete instance of `IPRuleActionInput` can be one of the following:
 //
-//	IPRuleActionArgs{...}
+//	IPRuleActionAllow
 type IPRuleActionInput interface {
 	pulumi.Input
 
@@ -3061,10 +3245,11 @@ func (o InboundEndpointProtocolPtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// InboundEndpointProtocolInput is an input type that accepts InboundEndpointProtocolArgs and InboundEndpointProtocolOutput values.
-// You can construct a concrete instance of `InboundEndpointProtocolInput` via:
+// InboundEndpointProtocolInput is an input type that accepts values of the InboundEndpointProtocol enum
+// A concrete instance of `InboundEndpointProtocolInput` can be one of the following:
 //
-//	InboundEndpointProtocolArgs{...}
+//	InboundEndpointProtocolTCP
+//	InboundEndpointProtocolUDP
 type InboundEndpointProtocolInput interface {
 	pulumi.Input
 
@@ -3234,10 +3419,11 @@ func (o InterNodeCommunicationStatePtrOutput) ToStringPtrOutputWithContext(ctx c
 	}).(pulumi.StringPtrOutput)
 }
 
-// InterNodeCommunicationStateInput is an input type that accepts InterNodeCommunicationStateArgs and InterNodeCommunicationStateOutput values.
-// You can construct a concrete instance of `InterNodeCommunicationStateInput` via:
+// InterNodeCommunicationStateInput is an input type that accepts values of the InterNodeCommunicationState enum
+// A concrete instance of `InterNodeCommunicationStateInput` can be one of the following:
 //
-//	InterNodeCommunicationStateArgs{...}
+//	InterNodeCommunicationStateEnabled
+//	InterNodeCommunicationStateDisabled
 type InterNodeCommunicationStateInput interface {
 	pulumi.Input
 
@@ -3407,10 +3593,11 @@ func (o KeySourcePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// KeySourceInput is an input type that accepts KeySourceArgs and KeySourceOutput values.
-// You can construct a concrete instance of `KeySourceInput` via:
+// KeySourceInput is an input type that accepts values of the KeySource enum
+// A concrete instance of `KeySourceInput` can be one of the following:
 //
-//	KeySourceArgs{...}
+//	KeySource_Microsoft_Batch
+//	KeySource_Microsoft_KeyVault
 type KeySourceInput interface {
 	pulumi.Input
 
@@ -3580,10 +3767,11 @@ func (o LoginModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// LoginModeInput is an input type that accepts LoginModeArgs and LoginModeOutput values.
-// You can construct a concrete instance of `LoginModeInput` via:
+// LoginModeInput is an input type that accepts values of the LoginMode enum
+// A concrete instance of `LoginModeInput` can be one of the following:
 //
-//	LoginModeArgs{...}
+//	LoginModeBatch
+//	LoginModeInteractive
 type LoginModeInput interface {
 	pulumi.Input
 
@@ -3752,10 +3940,11 @@ func (o NetworkSecurityGroupRuleAccessPtrOutput) ToStringPtrOutputWithContext(ct
 	}).(pulumi.StringPtrOutput)
 }
 
-// NetworkSecurityGroupRuleAccessInput is an input type that accepts NetworkSecurityGroupRuleAccessArgs and NetworkSecurityGroupRuleAccessOutput values.
-// You can construct a concrete instance of `NetworkSecurityGroupRuleAccessInput` via:
+// NetworkSecurityGroupRuleAccessInput is an input type that accepts values of the NetworkSecurityGroupRuleAccess enum
+// A concrete instance of `NetworkSecurityGroupRuleAccessInput` can be one of the following:
 //
-//	NetworkSecurityGroupRuleAccessArgs{...}
+//	NetworkSecurityGroupRuleAccessAllow
+//	NetworkSecurityGroupRuleAccessDeny
 type NetworkSecurityGroupRuleAccessInput interface {
 	pulumi.Input
 
@@ -3927,10 +4116,12 @@ func (o NodeCommunicationModePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// NodeCommunicationModeInput is an input type that accepts NodeCommunicationModeArgs and NodeCommunicationModeOutput values.
-// You can construct a concrete instance of `NodeCommunicationModeInput` via:
+// NodeCommunicationModeInput is an input type that accepts values of the NodeCommunicationMode enum
+// A concrete instance of `NodeCommunicationModeInput` can be one of the following:
 //
-//	NodeCommunicationModeArgs{...}
+//	NodeCommunicationModeDefault
+//	NodeCommunicationModeClassic
+//	NodeCommunicationModeSimplified
 type NodeCommunicationModeInput interface {
 	pulumi.Input
 
@@ -4100,10 +4291,11 @@ func (o NodePlacementPolicyTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// NodePlacementPolicyTypeInput is an input type that accepts NodePlacementPolicyTypeArgs and NodePlacementPolicyTypeOutput values.
-// You can construct a concrete instance of `NodePlacementPolicyTypeInput` via:
+// NodePlacementPolicyTypeInput is an input type that accepts values of the NodePlacementPolicyType enum
+// A concrete instance of `NodePlacementPolicyTypeInput` can be one of the following:
 //
-//	NodePlacementPolicyTypeArgs{...}
+//	NodePlacementPolicyTypeRegional
+//	NodePlacementPolicyTypeZonal
 type NodePlacementPolicyTypeInput interface {
 	pulumi.Input
 
@@ -4273,10 +4465,11 @@ func (o PoolAllocationModePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// PoolAllocationModeInput is an input type that accepts PoolAllocationModeArgs and PoolAllocationModeOutput values.
-// You can construct a concrete instance of `PoolAllocationModeInput` via:
+// PoolAllocationModeInput is an input type that accepts values of the PoolAllocationMode enum
+// A concrete instance of `PoolAllocationModeInput` can be one of the following:
 //
-//	PoolAllocationModeArgs{...}
+//	PoolAllocationModeBatchService
+//	PoolAllocationModeUserSubscription
 type PoolAllocationModeInput interface {
 	pulumi.Input
 
@@ -4446,10 +4639,11 @@ func (o PoolIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// PoolIdentityTypeInput is an input type that accepts PoolIdentityTypeArgs and PoolIdentityTypeOutput values.
-// You can construct a concrete instance of `PoolIdentityTypeInput` via:
+// PoolIdentityTypeInput is an input type that accepts values of the PoolIdentityType enum
+// A concrete instance of `PoolIdentityTypeInput` can be one of the following:
 //
-//	PoolIdentityTypeArgs{...}
+//	PoolIdentityTypeUserAssigned
+//	PoolIdentityTypeNone
 type PoolIdentityTypeInput interface {
 	pulumi.Input
 
@@ -4619,10 +4813,11 @@ func (o PublicNetworkAccessTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// PublicNetworkAccessTypeInput is an input type that accepts PublicNetworkAccessTypeArgs and PublicNetworkAccessTypeOutput values.
-// You can construct a concrete instance of `PublicNetworkAccessTypeInput` via:
+// PublicNetworkAccessTypeInput is an input type that accepts values of the PublicNetworkAccessType enum
+// A concrete instance of `PublicNetworkAccessTypeInput` can be one of the following:
 //
-//	PublicNetworkAccessTypeArgs{...}
+//	PublicNetworkAccessTypeEnabled
+//	PublicNetworkAccessTypeDisabled
 type PublicNetworkAccessTypeInput interface {
 	pulumi.Input
 
@@ -4794,10 +4989,12 @@ func (o ResourceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// ResourceIdentityTypeInput is an input type that accepts ResourceIdentityTypeArgs and ResourceIdentityTypeOutput values.
-// You can construct a concrete instance of `ResourceIdentityTypeInput` via:
+// ResourceIdentityTypeInput is an input type that accepts values of the ResourceIdentityType enum
+// A concrete instance of `ResourceIdentityTypeInput` can be one of the following:
 //
-//	ResourceIdentityTypeArgs{...}
+//	ResourceIdentityTypeSystemAssigned
+//	ResourceIdentityTypeUserAssigned
+//	ResourceIdentityTypeNone
 type ResourceIdentityTypeInput interface {
 	pulumi.Input
 
@@ -4970,10 +5167,11 @@ func (o StorageAccountTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// StorageAccountTypeInput is an input type that accepts StorageAccountTypeArgs and StorageAccountTypeOutput values.
-// You can construct a concrete instance of `StorageAccountTypeInput` via:
+// StorageAccountTypeInput is an input type that accepts values of the StorageAccountType enum
+// A concrete instance of `StorageAccountTypeInput` can be one of the following:
 //
-//	StorageAccountTypeArgs{...}
+//	StorageAccountType_Standard_LRS
+//	StorageAccountType_Premium_LRS
 type StorageAccountTypeInput interface {
 	pulumi.Input
 
@@ -5033,6 +5231,8 @@ func init() {
 	pulumi.RegisterOutputType(ComputeNodeDeallocationOptionPtrOutput{})
 	pulumi.RegisterOutputType(ComputeNodeFillTypeOutput{})
 	pulumi.RegisterOutputType(ComputeNodeFillTypePtrOutput{})
+	pulumi.RegisterOutputType(ContainerTypeOutput{})
+	pulumi.RegisterOutputType(ContainerTypePtrOutput{})
 	pulumi.RegisterOutputType(ContainerWorkingDirectoryOutput{})
 	pulumi.RegisterOutputType(ContainerWorkingDirectoryPtrOutput{})
 	pulumi.RegisterOutputType(DiffDiskPlacementOutput{})

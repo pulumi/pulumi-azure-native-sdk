@@ -142,10 +142,16 @@ func (o DayOfWeekPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// DayOfWeekInput is an input type that accepts DayOfWeekArgs and DayOfWeekOutput values.
-// You can construct a concrete instance of `DayOfWeekInput` via:
+// DayOfWeekInput is an input type that accepts values of the DayOfWeek enum
+// A concrete instance of `DayOfWeekInput` can be one of the following:
 //
-//	DayOfWeekArgs{...}
+//	DayOfWeekSunday
+//	DayOfWeekMonday
+//	DayOfWeekTuesday
+//	DayOfWeekWednesday
+//	DayOfWeekThursday
+//	DayOfWeekFriday
+//	DayOfWeekSaturday
 type DayOfWeekInput interface {
 	pulumi.Input
 
@@ -371,10 +377,14 @@ func (o JobActionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 	}).(pulumi.StringPtrOutput)
 }
 
-// JobActionTypeInput is an input type that accepts JobActionTypeArgs and JobActionTypeOutput values.
-// You can construct a concrete instance of `JobActionTypeInput` via:
+// JobActionTypeInput is an input type that accepts values of the JobActionType enum
+// A concrete instance of `JobActionTypeInput` can be one of the following:
 //
-//	JobActionTypeArgs{...}
+//	JobActionTypeHttp
+//	JobActionTypeHttps
+//	JobActionTypeStorageQueue
+//	JobActionTypeServiceBusQueue
+//	JobActionTypeServiceBusTopic
 type JobActionTypeInput interface {
 	pulumi.Input
 
@@ -544,10 +554,13 @@ func (o JobCollectionStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// JobCollectionStateEnumInput is an input type that accepts JobCollectionStateEnumArgs and JobCollectionStateEnumOutput values.
-// You can construct a concrete instance of `JobCollectionStateEnumInput` via:
+// JobCollectionStateEnumInput is an input type that accepts values of the JobCollectionStateEnum enum
+// A concrete instance of `JobCollectionStateEnumInput` can be one of the following:
 //
-//	JobCollectionStateEnumArgs{...}
+//	JobCollectionStateEnumEnabled
+//	JobCollectionStateEnumDisabled
+//	JobCollectionStateEnumSuspended
+//	JobCollectionStateEnumDeleted
 type JobCollectionStateEnumInput interface {
 	pulumi.Input
 
@@ -720,10 +733,16 @@ func (o JobScheduleDayPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// JobScheduleDayInput is an input type that accepts JobScheduleDayArgs and JobScheduleDayOutput values.
-// You can construct a concrete instance of `JobScheduleDayInput` via:
+// JobScheduleDayInput is an input type that accepts values of the JobScheduleDay enum
+// A concrete instance of `JobScheduleDayInput` can be one of the following:
 //
-//	JobScheduleDayArgs{...}
+//	JobScheduleDayMonday
+//	JobScheduleDayTuesday
+//	JobScheduleDayWednesday
+//	JobScheduleDayThursday
+//	JobScheduleDayFriday
+//	JobScheduleDaySaturday
+//	JobScheduleDaySunday
 type JobScheduleDayInput interface {
 	pulumi.Input
 
@@ -893,10 +912,13 @@ func (o JobStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// JobStateEnumInput is an input type that accepts JobStateEnumArgs and JobStateEnumOutput values.
-// You can construct a concrete instance of `JobStateEnumInput` via:
+// JobStateEnumInput is an input type that accepts values of the JobStateEnum enum
+// A concrete instance of `JobStateEnumInput` can be one of the following:
 //
-//	JobStateEnumArgs{...}
+//	JobStateEnumEnabled
+//	JobStateEnumDisabled
+//	JobStateEnumFaulted
+//	JobStateEnumCompleted
 type JobStateEnumInput interface {
 	pulumi.Input
 
@@ -1067,10 +1089,14 @@ func (o RecurrenceFrequencyPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// RecurrenceFrequencyInput is an input type that accepts RecurrenceFrequencyArgs and RecurrenceFrequencyOutput values.
-// You can construct a concrete instance of `RecurrenceFrequencyInput` via:
+// RecurrenceFrequencyInput is an input type that accepts values of the RecurrenceFrequency enum
+// A concrete instance of `RecurrenceFrequencyInput` can be one of the following:
 //
-//	RecurrenceFrequencyArgs{...}
+//	RecurrenceFrequencyMinute
+//	RecurrenceFrequencyHour
+//	RecurrenceFrequencyDay
+//	RecurrenceFrequencyWeek
+//	RecurrenceFrequencyMonth
 type RecurrenceFrequencyInput interface {
 	pulumi.Input
 
@@ -1238,10 +1264,11 @@ func (o RetryTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// RetryTypeInput is an input type that accepts RetryTypeArgs and RetryTypeOutput values.
-// You can construct a concrete instance of `RetryTypeInput` via:
+// RetryTypeInput is an input type that accepts values of the RetryType enum
+// A concrete instance of `RetryTypeInput` can be one of the following:
 //
-//	RetryTypeArgs{...}
+//	RetryTypeNone
+//	RetryTypeFixed
 type RetryTypeInput interface {
 	pulumi.Input
 
@@ -1409,10 +1436,11 @@ func (o ServiceBusAuthenticationTypePtrOutput) ToStringPtrOutputWithContext(ctx 
 	}).(pulumi.StringPtrOutput)
 }
 
-// ServiceBusAuthenticationTypeInput is an input type that accepts ServiceBusAuthenticationTypeArgs and ServiceBusAuthenticationTypeOutput values.
-// You can construct a concrete instance of `ServiceBusAuthenticationTypeInput` via:
+// ServiceBusAuthenticationTypeInput is an input type that accepts values of the ServiceBusAuthenticationType enum
+// A concrete instance of `ServiceBusAuthenticationTypeInput` can be one of the following:
 //
-//	ServiceBusAuthenticationTypeArgs{...}
+//	ServiceBusAuthenticationTypeNotSpecified
+//	ServiceBusAuthenticationTypeSharedAccessKey
 type ServiceBusAuthenticationTypeInput interface {
 	pulumi.Input
 
@@ -1581,10 +1609,12 @@ func (o ServiceBusTransportTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// ServiceBusTransportTypeInput is an input type that accepts ServiceBusTransportTypeArgs and ServiceBusTransportTypeOutput values.
-// You can construct a concrete instance of `ServiceBusTransportTypeInput` via:
+// ServiceBusTransportTypeInput is an input type that accepts values of the ServiceBusTransportType enum
+// A concrete instance of `ServiceBusTransportTypeInput` can be one of the following:
 //
-//	ServiceBusTransportTypeArgs{...}
+//	ServiceBusTransportTypeNotSpecified
+//	ServiceBusTransportTypeNetMessaging
+//	ServiceBusTransportTypeAMQP
 type ServiceBusTransportTypeInput interface {
 	pulumi.Input
 
@@ -1754,10 +1784,13 @@ func (o SkuDefinitionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 	}).(pulumi.StringPtrOutput)
 }
 
-// SkuDefinitionInput is an input type that accepts SkuDefinitionArgs and SkuDefinitionOutput values.
-// You can construct a concrete instance of `SkuDefinitionInput` via:
+// SkuDefinitionInput is an input type that accepts values of the SkuDefinition enum
+// A concrete instance of `SkuDefinitionInput` can be one of the following:
 //
-//	SkuDefinitionArgs{...}
+//	SkuDefinitionStandard
+//	SkuDefinitionFree
+//	SkuDefinitionP10Premium
+//	SkuDefinitionP20Premium
 type SkuDefinitionInput interface {
 	pulumi.Input
 

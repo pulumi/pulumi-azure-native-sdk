@@ -56,6 +56,76 @@ type AzureStorageBlobContainerEndpointProperties struct {
 	StorageAccountResourceId string `pulumi:"storageAccountResourceId"`
 }
 
+// AzureStorageBlobContainerEndpointPropertiesInput is an input type that accepts AzureStorageBlobContainerEndpointPropertiesArgs and AzureStorageBlobContainerEndpointPropertiesOutput values.
+// You can construct a concrete instance of `AzureStorageBlobContainerEndpointPropertiesInput` via:
+//
+//	AzureStorageBlobContainerEndpointPropertiesArgs{...}
+type AzureStorageBlobContainerEndpointPropertiesInput interface {
+	pulumi.Input
+
+	ToAzureStorageBlobContainerEndpointPropertiesOutput() AzureStorageBlobContainerEndpointPropertiesOutput
+	ToAzureStorageBlobContainerEndpointPropertiesOutputWithContext(context.Context) AzureStorageBlobContainerEndpointPropertiesOutput
+}
+
+type AzureStorageBlobContainerEndpointPropertiesArgs struct {
+	// The name of the Storage blob container that is the target destination.
+	BlobContainerName pulumi.StringInput `pulumi:"blobContainerName"`
+	// A description for the Endpoint.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The Endpoint resource type.
+	// Expected value is 'AzureStorageBlobContainer'.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// The Azure Resource ID of the storage account that is the target destination.
+	StorageAccountResourceId pulumi.StringInput `pulumi:"storageAccountResourceId"`
+}
+
+func (AzureStorageBlobContainerEndpointPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureStorageBlobContainerEndpointProperties)(nil)).Elem()
+}
+
+func (i AzureStorageBlobContainerEndpointPropertiesArgs) ToAzureStorageBlobContainerEndpointPropertiesOutput() AzureStorageBlobContainerEndpointPropertiesOutput {
+	return i.ToAzureStorageBlobContainerEndpointPropertiesOutputWithContext(context.Background())
+}
+
+func (i AzureStorageBlobContainerEndpointPropertiesArgs) ToAzureStorageBlobContainerEndpointPropertiesOutputWithContext(ctx context.Context) AzureStorageBlobContainerEndpointPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureStorageBlobContainerEndpointPropertiesOutput)
+}
+
+type AzureStorageBlobContainerEndpointPropertiesOutput struct{ *pulumi.OutputState }
+
+func (AzureStorageBlobContainerEndpointPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureStorageBlobContainerEndpointProperties)(nil)).Elem()
+}
+
+func (o AzureStorageBlobContainerEndpointPropertiesOutput) ToAzureStorageBlobContainerEndpointPropertiesOutput() AzureStorageBlobContainerEndpointPropertiesOutput {
+	return o
+}
+
+func (o AzureStorageBlobContainerEndpointPropertiesOutput) ToAzureStorageBlobContainerEndpointPropertiesOutputWithContext(ctx context.Context) AzureStorageBlobContainerEndpointPropertiesOutput {
+	return o
+}
+
+// The name of the Storage blob container that is the target destination.
+func (o AzureStorageBlobContainerEndpointPropertiesOutput) BlobContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureStorageBlobContainerEndpointProperties) string { return v.BlobContainerName }).(pulumi.StringOutput)
+}
+
+// A description for the Endpoint.
+func (o AzureStorageBlobContainerEndpointPropertiesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureStorageBlobContainerEndpointProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Endpoint resource type.
+// Expected value is 'AzureStorageBlobContainer'.
+func (o AzureStorageBlobContainerEndpointPropertiesOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureStorageBlobContainerEndpointProperties) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The Azure Resource ID of the storage account that is the target destination.
+func (o AzureStorageBlobContainerEndpointPropertiesOutput) StorageAccountResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureStorageBlobContainerEndpointProperties) string { return v.StorageAccountResourceId }).(pulumi.StringOutput)
+}
+
 type AzureStorageBlobContainerEndpointPropertiesResponse struct {
 	// The name of the Storage blob container that is the target destination.
 	BlobContainerName string `pulumi:"blobContainerName"`
@@ -68,6 +138,46 @@ type AzureStorageBlobContainerEndpointPropertiesResponse struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The Azure Resource ID of the storage account that is the target destination.
 	StorageAccountResourceId string `pulumi:"storageAccountResourceId"`
+}
+
+type AzureStorageBlobContainerEndpointPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureStorageBlobContainerEndpointPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureStorageBlobContainerEndpointPropertiesResponse)(nil)).Elem()
+}
+
+func (o AzureStorageBlobContainerEndpointPropertiesResponseOutput) ToAzureStorageBlobContainerEndpointPropertiesResponseOutput() AzureStorageBlobContainerEndpointPropertiesResponseOutput {
+	return o
+}
+
+func (o AzureStorageBlobContainerEndpointPropertiesResponseOutput) ToAzureStorageBlobContainerEndpointPropertiesResponseOutputWithContext(ctx context.Context) AzureStorageBlobContainerEndpointPropertiesResponseOutput {
+	return o
+}
+
+// The name of the Storage blob container that is the target destination.
+func (o AzureStorageBlobContainerEndpointPropertiesResponseOutput) BlobContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureStorageBlobContainerEndpointPropertiesResponse) string { return v.BlobContainerName }).(pulumi.StringOutput)
+}
+
+// A description for the Endpoint.
+func (o AzureStorageBlobContainerEndpointPropertiesResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureStorageBlobContainerEndpointPropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Endpoint resource type.
+// Expected value is 'AzureStorageBlobContainer'.
+func (o AzureStorageBlobContainerEndpointPropertiesResponseOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureStorageBlobContainerEndpointPropertiesResponse) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The provisioning state of this resource.
+func (o AzureStorageBlobContainerEndpointPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureStorageBlobContainerEndpointPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The Azure Resource ID of the storage account that is the target destination.
+func (o AzureStorageBlobContainerEndpointPropertiesResponseOutput) StorageAccountResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureStorageBlobContainerEndpointPropertiesResponse) string { return v.StorageAccountResourceId }).(pulumi.StringOutput)
 }
 
 type NfsMountEndpointProperties struct {
@@ -84,6 +194,83 @@ type NfsMountEndpointProperties struct {
 	NfsVersion *string `pulumi:"nfsVersion"`
 }
 
+// NfsMountEndpointPropertiesInput is an input type that accepts NfsMountEndpointPropertiesArgs and NfsMountEndpointPropertiesOutput values.
+// You can construct a concrete instance of `NfsMountEndpointPropertiesInput` via:
+//
+//	NfsMountEndpointPropertiesArgs{...}
+type NfsMountEndpointPropertiesInput interface {
+	pulumi.Input
+
+	ToNfsMountEndpointPropertiesOutput() NfsMountEndpointPropertiesOutput
+	ToNfsMountEndpointPropertiesOutputWithContext(context.Context) NfsMountEndpointPropertiesOutput
+}
+
+type NfsMountEndpointPropertiesArgs struct {
+	// A description for the Endpoint.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The Endpoint resource type.
+	// Expected value is 'NfsMount'.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// The directory being exported from the server.
+	Export pulumi.StringInput `pulumi:"export"`
+	// The host name or IP address of the server exporting the file system.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The NFS protocol version.
+	NfsVersion pulumi.StringPtrInput `pulumi:"nfsVersion"`
+}
+
+func (NfsMountEndpointPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsMountEndpointProperties)(nil)).Elem()
+}
+
+func (i NfsMountEndpointPropertiesArgs) ToNfsMountEndpointPropertiesOutput() NfsMountEndpointPropertiesOutput {
+	return i.ToNfsMountEndpointPropertiesOutputWithContext(context.Background())
+}
+
+func (i NfsMountEndpointPropertiesArgs) ToNfsMountEndpointPropertiesOutputWithContext(ctx context.Context) NfsMountEndpointPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NfsMountEndpointPropertiesOutput)
+}
+
+type NfsMountEndpointPropertiesOutput struct{ *pulumi.OutputState }
+
+func (NfsMountEndpointPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsMountEndpointProperties)(nil)).Elem()
+}
+
+func (o NfsMountEndpointPropertiesOutput) ToNfsMountEndpointPropertiesOutput() NfsMountEndpointPropertiesOutput {
+	return o
+}
+
+func (o NfsMountEndpointPropertiesOutput) ToNfsMountEndpointPropertiesOutputWithContext(ctx context.Context) NfsMountEndpointPropertiesOutput {
+	return o
+}
+
+// A description for the Endpoint.
+func (o NfsMountEndpointPropertiesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NfsMountEndpointProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Endpoint resource type.
+// Expected value is 'NfsMount'.
+func (o NfsMountEndpointPropertiesOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v NfsMountEndpointProperties) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The directory being exported from the server.
+func (o NfsMountEndpointPropertiesOutput) Export() pulumi.StringOutput {
+	return o.ApplyT(func(v NfsMountEndpointProperties) string { return v.Export }).(pulumi.StringOutput)
+}
+
+// The host name or IP address of the server exporting the file system.
+func (o NfsMountEndpointPropertiesOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v NfsMountEndpointProperties) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The NFS protocol version.
+func (o NfsMountEndpointPropertiesOutput) NfsVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NfsMountEndpointProperties) *string { return v.NfsVersion }).(pulumi.StringPtrOutput)
+}
+
 type NfsMountEndpointPropertiesResponse struct {
 	// A description for the Endpoint.
 	Description *string `pulumi:"description"`
@@ -98,6 +285,51 @@ type NfsMountEndpointPropertiesResponse struct {
 	NfsVersion *string `pulumi:"nfsVersion"`
 	// The provisioning state of this resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+type NfsMountEndpointPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (NfsMountEndpointPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsMountEndpointPropertiesResponse)(nil)).Elem()
+}
+
+func (o NfsMountEndpointPropertiesResponseOutput) ToNfsMountEndpointPropertiesResponseOutput() NfsMountEndpointPropertiesResponseOutput {
+	return o
+}
+
+func (o NfsMountEndpointPropertiesResponseOutput) ToNfsMountEndpointPropertiesResponseOutputWithContext(ctx context.Context) NfsMountEndpointPropertiesResponseOutput {
+	return o
+}
+
+// A description for the Endpoint.
+func (o NfsMountEndpointPropertiesResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NfsMountEndpointPropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Endpoint resource type.
+// Expected value is 'NfsMount'.
+func (o NfsMountEndpointPropertiesResponseOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v NfsMountEndpointPropertiesResponse) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The directory being exported from the server.
+func (o NfsMountEndpointPropertiesResponseOutput) Export() pulumi.StringOutput {
+	return o.ApplyT(func(v NfsMountEndpointPropertiesResponse) string { return v.Export }).(pulumi.StringOutput)
+}
+
+// The host name or IP address of the server exporting the file system.
+func (o NfsMountEndpointPropertiesResponseOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v NfsMountEndpointPropertiesResponse) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The NFS protocol version.
+func (o NfsMountEndpointPropertiesResponseOutput) NfsVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NfsMountEndpointPropertiesResponse) *string { return v.NfsVersion }).(pulumi.StringPtrOutput)
+}
+
+// The provisioning state of this resource.
+func (o NfsMountEndpointPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v NfsMountEndpointPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -163,5 +395,9 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 
 func init() {
 	pulumi.RegisterOutputType(AgentPropertiesResponseErrorDetailsOutput{})
+	pulumi.RegisterOutputType(AzureStorageBlobContainerEndpointPropertiesOutput{})
+	pulumi.RegisterOutputType(AzureStorageBlobContainerEndpointPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(NfsMountEndpointPropertiesOutput{})
+	pulumi.RegisterOutputType(NfsMountEndpointPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 }

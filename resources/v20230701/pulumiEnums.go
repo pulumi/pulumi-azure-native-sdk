@@ -138,10 +138,11 @@ func (o DeploymentModePtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// DeploymentModeInput is an input type that accepts DeploymentModeArgs and DeploymentModeOutput values.
-// You can construct a concrete instance of `DeploymentModeInput` via:
+// DeploymentModeInput is an input type that accepts values of the DeploymentMode enum
+// A concrete instance of `DeploymentModeInput` can be one of the following:
 //
-//	DeploymentModeArgs{...}
+//	DeploymentModeIncremental
+//	DeploymentModeComplete
 type DeploymentModeInput interface {
 	pulumi.Input
 
@@ -191,12 +192,340 @@ const (
 	ExpressionEvaluationOptionsScopeTypeInner        = ExpressionEvaluationOptionsScopeType("Inner")
 )
 
+func (ExpressionEvaluationOptionsScopeType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpressionEvaluationOptionsScopeType)(nil)).Elem()
+}
+
+func (e ExpressionEvaluationOptionsScopeType) ToExpressionEvaluationOptionsScopeTypeOutput() ExpressionEvaluationOptionsScopeTypeOutput {
+	return pulumi.ToOutput(e).(ExpressionEvaluationOptionsScopeTypeOutput)
+}
+
+func (e ExpressionEvaluationOptionsScopeType) ToExpressionEvaluationOptionsScopeTypeOutputWithContext(ctx context.Context) ExpressionEvaluationOptionsScopeTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ExpressionEvaluationOptionsScopeTypeOutput)
+}
+
+func (e ExpressionEvaluationOptionsScopeType) ToExpressionEvaluationOptionsScopeTypePtrOutput() ExpressionEvaluationOptionsScopeTypePtrOutput {
+	return e.ToExpressionEvaluationOptionsScopeTypePtrOutputWithContext(context.Background())
+}
+
+func (e ExpressionEvaluationOptionsScopeType) ToExpressionEvaluationOptionsScopeTypePtrOutputWithContext(ctx context.Context) ExpressionEvaluationOptionsScopeTypePtrOutput {
+	return ExpressionEvaluationOptionsScopeType(e).ToExpressionEvaluationOptionsScopeTypeOutputWithContext(ctx).ToExpressionEvaluationOptionsScopeTypePtrOutputWithContext(ctx)
+}
+
+func (e ExpressionEvaluationOptionsScopeType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExpressionEvaluationOptionsScopeType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExpressionEvaluationOptionsScopeType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ExpressionEvaluationOptionsScopeType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ExpressionEvaluationOptionsScopeTypeOutput struct{ *pulumi.OutputState }
+
+func (ExpressionEvaluationOptionsScopeTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpressionEvaluationOptionsScopeType)(nil)).Elem()
+}
+
+func (o ExpressionEvaluationOptionsScopeTypeOutput) ToExpressionEvaluationOptionsScopeTypeOutput() ExpressionEvaluationOptionsScopeTypeOutput {
+	return o
+}
+
+func (o ExpressionEvaluationOptionsScopeTypeOutput) ToExpressionEvaluationOptionsScopeTypeOutputWithContext(ctx context.Context) ExpressionEvaluationOptionsScopeTypeOutput {
+	return o
+}
+
+func (o ExpressionEvaluationOptionsScopeTypeOutput) ToExpressionEvaluationOptionsScopeTypePtrOutput() ExpressionEvaluationOptionsScopeTypePtrOutput {
+	return o.ToExpressionEvaluationOptionsScopeTypePtrOutputWithContext(context.Background())
+}
+
+func (o ExpressionEvaluationOptionsScopeTypeOutput) ToExpressionEvaluationOptionsScopeTypePtrOutputWithContext(ctx context.Context) ExpressionEvaluationOptionsScopeTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExpressionEvaluationOptionsScopeType) *ExpressionEvaluationOptionsScopeType {
+		return &v
+	}).(ExpressionEvaluationOptionsScopeTypePtrOutput)
+}
+
+func (o ExpressionEvaluationOptionsScopeTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ExpressionEvaluationOptionsScopeTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExpressionEvaluationOptionsScopeType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ExpressionEvaluationOptionsScopeTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExpressionEvaluationOptionsScopeTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExpressionEvaluationOptionsScopeType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ExpressionEvaluationOptionsScopeTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ExpressionEvaluationOptionsScopeTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExpressionEvaluationOptionsScopeType)(nil)).Elem()
+}
+
+func (o ExpressionEvaluationOptionsScopeTypePtrOutput) ToExpressionEvaluationOptionsScopeTypePtrOutput() ExpressionEvaluationOptionsScopeTypePtrOutput {
+	return o
+}
+
+func (o ExpressionEvaluationOptionsScopeTypePtrOutput) ToExpressionEvaluationOptionsScopeTypePtrOutputWithContext(ctx context.Context) ExpressionEvaluationOptionsScopeTypePtrOutput {
+	return o
+}
+
+func (o ExpressionEvaluationOptionsScopeTypePtrOutput) Elem() ExpressionEvaluationOptionsScopeTypeOutput {
+	return o.ApplyT(func(v *ExpressionEvaluationOptionsScopeType) ExpressionEvaluationOptionsScopeType {
+		if v != nil {
+			return *v
+		}
+		var ret ExpressionEvaluationOptionsScopeType
+		return ret
+	}).(ExpressionEvaluationOptionsScopeTypeOutput)
+}
+
+func (o ExpressionEvaluationOptionsScopeTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExpressionEvaluationOptionsScopeTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ExpressionEvaluationOptionsScopeType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ExpressionEvaluationOptionsScopeTypeInput is an input type that accepts values of the ExpressionEvaluationOptionsScopeType enum
+// A concrete instance of `ExpressionEvaluationOptionsScopeTypeInput` can be one of the following:
+//
+//	ExpressionEvaluationOptionsScopeTypeNotSpecified
+//	ExpressionEvaluationOptionsScopeTypeOuter
+//	ExpressionEvaluationOptionsScopeTypeInner
+type ExpressionEvaluationOptionsScopeTypeInput interface {
+	pulumi.Input
+
+	ToExpressionEvaluationOptionsScopeTypeOutput() ExpressionEvaluationOptionsScopeTypeOutput
+	ToExpressionEvaluationOptionsScopeTypeOutputWithContext(context.Context) ExpressionEvaluationOptionsScopeTypeOutput
+}
+
+var expressionEvaluationOptionsScopeTypePtrType = reflect.TypeOf((**ExpressionEvaluationOptionsScopeType)(nil)).Elem()
+
+type ExpressionEvaluationOptionsScopeTypePtrInput interface {
+	pulumi.Input
+
+	ToExpressionEvaluationOptionsScopeTypePtrOutput() ExpressionEvaluationOptionsScopeTypePtrOutput
+	ToExpressionEvaluationOptionsScopeTypePtrOutputWithContext(context.Context) ExpressionEvaluationOptionsScopeTypePtrOutput
+}
+
+type expressionEvaluationOptionsScopeTypePtr string
+
+func ExpressionEvaluationOptionsScopeTypePtr(v string) ExpressionEvaluationOptionsScopeTypePtrInput {
+	return (*expressionEvaluationOptionsScopeTypePtr)(&v)
+}
+
+func (*expressionEvaluationOptionsScopeTypePtr) ElementType() reflect.Type {
+	return expressionEvaluationOptionsScopeTypePtrType
+}
+
+func (in *expressionEvaluationOptionsScopeTypePtr) ToExpressionEvaluationOptionsScopeTypePtrOutput() ExpressionEvaluationOptionsScopeTypePtrOutput {
+	return pulumi.ToOutput(in).(ExpressionEvaluationOptionsScopeTypePtrOutput)
+}
+
+func (in *expressionEvaluationOptionsScopeTypePtr) ToExpressionEvaluationOptionsScopeTypePtrOutputWithContext(ctx context.Context) ExpressionEvaluationOptionsScopeTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ExpressionEvaluationOptionsScopeTypePtrOutput)
+}
+
+func (in *expressionEvaluationOptionsScopeTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ExpressionEvaluationOptionsScopeType] {
+	return pulumix.Output[*ExpressionEvaluationOptionsScopeType]{
+		OutputState: in.ToExpressionEvaluationOptionsScopeTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The extended location type.
 type ExtendedLocationType string
 
 const (
 	ExtendedLocationTypeEdgeZone = ExtendedLocationType("EdgeZone")
 )
+
+func (ExtendedLocationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtendedLocationType)(nil)).Elem()
+}
+
+func (e ExtendedLocationType) ToExtendedLocationTypeOutput() ExtendedLocationTypeOutput {
+	return pulumi.ToOutput(e).(ExtendedLocationTypeOutput)
+}
+
+func (e ExtendedLocationType) ToExtendedLocationTypeOutputWithContext(ctx context.Context) ExtendedLocationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ExtendedLocationTypeOutput)
+}
+
+func (e ExtendedLocationType) ToExtendedLocationTypePtrOutput() ExtendedLocationTypePtrOutput {
+	return e.ToExtendedLocationTypePtrOutputWithContext(context.Background())
+}
+
+func (e ExtendedLocationType) ToExtendedLocationTypePtrOutputWithContext(ctx context.Context) ExtendedLocationTypePtrOutput {
+	return ExtendedLocationType(e).ToExtendedLocationTypeOutputWithContext(ctx).ToExtendedLocationTypePtrOutputWithContext(ctx)
+}
+
+func (e ExtendedLocationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExtendedLocationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExtendedLocationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ExtendedLocationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ExtendedLocationTypeOutput struct{ *pulumi.OutputState }
+
+func (ExtendedLocationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtendedLocationType)(nil)).Elem()
+}
+
+func (o ExtendedLocationTypeOutput) ToExtendedLocationTypeOutput() ExtendedLocationTypeOutput {
+	return o
+}
+
+func (o ExtendedLocationTypeOutput) ToExtendedLocationTypeOutputWithContext(ctx context.Context) ExtendedLocationTypeOutput {
+	return o
+}
+
+func (o ExtendedLocationTypeOutput) ToExtendedLocationTypePtrOutput() ExtendedLocationTypePtrOutput {
+	return o.ToExtendedLocationTypePtrOutputWithContext(context.Background())
+}
+
+func (o ExtendedLocationTypeOutput) ToExtendedLocationTypePtrOutputWithContext(ctx context.Context) ExtendedLocationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExtendedLocationType) *ExtendedLocationType {
+		return &v
+	}).(ExtendedLocationTypePtrOutput)
+}
+
+func (o ExtendedLocationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ExtendedLocationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExtendedLocationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ExtendedLocationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExtendedLocationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExtendedLocationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ExtendedLocationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ExtendedLocationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtendedLocationType)(nil)).Elem()
+}
+
+func (o ExtendedLocationTypePtrOutput) ToExtendedLocationTypePtrOutput() ExtendedLocationTypePtrOutput {
+	return o
+}
+
+func (o ExtendedLocationTypePtrOutput) ToExtendedLocationTypePtrOutputWithContext(ctx context.Context) ExtendedLocationTypePtrOutput {
+	return o
+}
+
+func (o ExtendedLocationTypePtrOutput) Elem() ExtendedLocationTypeOutput {
+	return o.ApplyT(func(v *ExtendedLocationType) ExtendedLocationType {
+		if v != nil {
+			return *v
+		}
+		var ret ExtendedLocationType
+		return ret
+	}).(ExtendedLocationTypeOutput)
+}
+
+func (o ExtendedLocationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExtendedLocationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ExtendedLocationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ExtendedLocationTypeInput is an input type that accepts values of the ExtendedLocationType enum
+// A concrete instance of `ExtendedLocationTypeInput` can be one of the following:
+//
+//	ExtendedLocationTypeEdgeZone
+type ExtendedLocationTypeInput interface {
+	pulumi.Input
+
+	ToExtendedLocationTypeOutput() ExtendedLocationTypeOutput
+	ToExtendedLocationTypeOutputWithContext(context.Context) ExtendedLocationTypeOutput
+}
+
+var extendedLocationTypePtrType = reflect.TypeOf((**ExtendedLocationType)(nil)).Elem()
+
+type ExtendedLocationTypePtrInput interface {
+	pulumi.Input
+
+	ToExtendedLocationTypePtrOutput() ExtendedLocationTypePtrOutput
+	ToExtendedLocationTypePtrOutputWithContext(context.Context) ExtendedLocationTypePtrOutput
+}
+
+type extendedLocationTypePtr string
+
+func ExtendedLocationTypePtr(v string) ExtendedLocationTypePtrInput {
+	return (*extendedLocationTypePtr)(&v)
+}
+
+func (*extendedLocationTypePtr) ElementType() reflect.Type {
+	return extendedLocationTypePtrType
+}
+
+func (in *extendedLocationTypePtr) ToExtendedLocationTypePtrOutput() ExtendedLocationTypePtrOutput {
+	return pulumi.ToOutput(in).(ExtendedLocationTypePtrOutput)
+}
+
+func (in *extendedLocationTypePtr) ToExtendedLocationTypePtrOutputWithContext(ctx context.Context) ExtendedLocationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ExtendedLocationTypePtrOutput)
+}
+
+func (in *extendedLocationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ExtendedLocationType] {
+	return pulumix.Output[*ExtendedLocationType]{
+		OutputState: in.ToExtendedLocationTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
 
 // The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
 type OnErrorDeploymentType string
@@ -325,10 +654,11 @@ func (o OnErrorDeploymentTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// OnErrorDeploymentTypeInput is an input type that accepts OnErrorDeploymentTypeArgs and OnErrorDeploymentTypeOutput values.
-// You can construct a concrete instance of `OnErrorDeploymentTypeInput` via:
+// OnErrorDeploymentTypeInput is an input type that accepts values of the OnErrorDeploymentType enum
+// A concrete instance of `OnErrorDeploymentTypeInput` can be one of the following:
 //
-//	OnErrorDeploymentTypeArgs{...}
+//	OnErrorDeploymentTypeLastSuccessful
+//	OnErrorDeploymentTypeSpecificDeployment
 type OnErrorDeploymentTypeInput interface {
 	pulumi.Input
 
@@ -498,10 +828,13 @@ func (o ResourceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// ResourceIdentityTypeInput is an input type that accepts ResourceIdentityTypeArgs and ResourceIdentityTypeOutput values.
-// You can construct a concrete instance of `ResourceIdentityTypeInput` via:
+// ResourceIdentityTypeInput is an input type that accepts values of the ResourceIdentityType enum
+// A concrete instance of `ResourceIdentityTypeInput` can be one of the following:
 //
-//	ResourceIdentityTypeArgs{...}
+//	ResourceIdentityTypeSystemAssigned
+//	ResourceIdentityTypeUserAssigned
+//	ResourceIdentityType_SystemAssigned_UserAssigned
+//	ResourceIdentityTypeNone
 type ResourceIdentityTypeInput interface {
 	pulumi.Input
 
@@ -545,6 +878,10 @@ func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[
 func init() {
 	pulumi.RegisterOutputType(DeploymentModeOutput{})
 	pulumi.RegisterOutputType(DeploymentModePtrOutput{})
+	pulumi.RegisterOutputType(ExpressionEvaluationOptionsScopeTypeOutput{})
+	pulumi.RegisterOutputType(ExpressionEvaluationOptionsScopeTypePtrOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationTypeOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationTypePtrOutput{})
 	pulumi.RegisterOutputType(OnErrorDeploymentTypeOutput{})
 	pulumi.RegisterOutputType(OnErrorDeploymentTypePtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})

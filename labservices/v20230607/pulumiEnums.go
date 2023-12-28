@@ -139,10 +139,12 @@ func (o ConnectionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// ConnectionTypeInput is an input type that accepts ConnectionTypeArgs and ConnectionTypeOutput values.
-// You can construct a concrete instance of `ConnectionTypeInput` via:
+// ConnectionTypeInput is an input type that accepts values of the ConnectionType enum
+// A concrete instance of `ConnectionTypeInput` can be one of the following:
 //
-//	ConnectionTypeArgs{...}
+//	ConnectionTypePublic
+//	ConnectionTypePrivate
+//	ConnectionTypeNone
 type ConnectionTypeInput interface {
 	pulumi.Input
 
@@ -312,10 +314,11 @@ func (o CreateOptionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// CreateOptionInput is an input type that accepts CreateOptionArgs and CreateOptionOutput values.
-// You can construct a concrete instance of `CreateOptionInput` via:
+// CreateOptionInput is an input type that accepts values of the CreateOption enum
+// A concrete instance of `CreateOptionInput` can be one of the following:
 //
-//	CreateOptionArgs{...}
+//	CreateOptionImage
+//	CreateOptionTemplateVM
 type CreateOptionInput interface {
 	pulumi.Input
 
@@ -483,10 +486,11 @@ func (o EnableStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// EnableStateInput is an input type that accepts EnableStateArgs and EnableStateOutput values.
-// You can construct a concrete instance of `EnableStateInput` via:
+// EnableStateInput is an input type that accepts values of the EnableState enum
+// A concrete instance of `EnableStateInput` can be one of the following:
 //
-//	EnableStateArgs{...}
+//	EnableStateEnabled
+//	EnableStateDisabled
 type EnableStateInput interface {
 	pulumi.Input
 
@@ -656,10 +660,11 @@ func (o RecurrenceFrequencyPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// RecurrenceFrequencyInput is an input type that accepts RecurrenceFrequencyArgs and RecurrenceFrequencyOutput values.
-// You can construct a concrete instance of `RecurrenceFrequencyInput` via:
+// RecurrenceFrequencyInput is an input type that accepts values of the RecurrenceFrequency enum
+// A concrete instance of `RecurrenceFrequencyInput` can be one of the following:
 //
-//	RecurrenceFrequencyArgs{...}
+//	RecurrenceFrequencyDaily
+//	RecurrenceFrequencyWeekly
 type RecurrenceFrequencyInput interface {
 	pulumi.Input
 
@@ -826,10 +831,10 @@ func (o ResourceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// ResourceIdentityTypeInput is an input type that accepts ResourceIdentityTypeArgs and ResourceIdentityTypeOutput values.
-// You can construct a concrete instance of `ResourceIdentityTypeInput` via:
+// ResourceIdentityTypeInput is an input type that accepts values of the ResourceIdentityType enum
+// A concrete instance of `ResourceIdentityTypeInput` can be one of the following:
 //
-//	ResourceIdentityTypeArgs{...}
+//	ResourceIdentityTypeSystemAssigned
 type ResourceIdentityTypeInput interface {
 	pulumi.Input
 
@@ -1001,10 +1006,12 @@ func (o ShutdownOnIdleModePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// ShutdownOnIdleModeInput is an input type that accepts ShutdownOnIdleModeArgs and ShutdownOnIdleModeOutput values.
-// You can construct a concrete instance of `ShutdownOnIdleModeInput` via:
+// ShutdownOnIdleModeInput is an input type that accepts values of the ShutdownOnIdleMode enum
+// A concrete instance of `ShutdownOnIdleModeInput` can be one of the following:
 //
-//	ShutdownOnIdleModeArgs{...}
+//	ShutdownOnIdleModeNone
+//	ShutdownOnIdleModeUserAbsence
+//	ShutdownOnIdleModeLowUsage
 type ShutdownOnIdleModeInput interface {
 	pulumi.Input
 
@@ -1174,10 +1181,13 @@ func (o SkuTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// SkuTierInput is an input type that accepts SkuTierArgs and SkuTierOutput values.
-// You can construct a concrete instance of `SkuTierInput` via:
+// SkuTierInput is an input type that accepts values of the SkuTier enum
+// A concrete instance of `SkuTierInput` can be one of the following:
 //
-//	SkuTierArgs{...}
+//	SkuTierFree
+//	SkuTierBasic
+//	SkuTierStandard
+//	SkuTierPremium
 type SkuTierInput interface {
 	pulumi.Input
 
@@ -1357,10 +1367,16 @@ func (o WeekDayPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// WeekDayInput is an input type that accepts WeekDayArgs and WeekDayOutput values.
-// You can construct a concrete instance of `WeekDayInput` via:
+// WeekDayInput is an input type that accepts values of the WeekDay enum
+// A concrete instance of `WeekDayInput` can be one of the following:
 //
-//	WeekDayArgs{...}
+//	WeekDaySunday
+//	WeekDayMonday
+//	WeekDayTuesday
+//	WeekDayWednesday
+//	WeekDayThursday
+//	WeekDayFriday
+//	WeekDaySaturday
 type WeekDayInput interface {
 	pulumi.Input
 

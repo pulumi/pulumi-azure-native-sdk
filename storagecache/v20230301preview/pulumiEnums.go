@@ -138,10 +138,11 @@ func (o AmlFilesystemIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// AmlFilesystemIdentityTypeInput is an input type that accepts AmlFilesystemIdentityTypeArgs and AmlFilesystemIdentityTypeOutput values.
-// You can construct a concrete instance of `AmlFilesystemIdentityTypeInput` via:
+// AmlFilesystemIdentityTypeInput is an input type that accepts values of the AmlFilesystemIdentityType enum
+// A concrete instance of `AmlFilesystemIdentityTypeInput` can be one of the following:
 //
-//	AmlFilesystemIdentityTypeArgs{...}
+//	AmlFilesystemIdentityTypeUserAssigned
+//	AmlFilesystemIdentityTypeNone
 type AmlFilesystemIdentityTypeInput interface {
 	pulumi.Input
 
@@ -311,10 +312,13 @@ func (o CacheIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// CacheIdentityTypeInput is an input type that accepts CacheIdentityTypeArgs and CacheIdentityTypeOutput values.
-// You can construct a concrete instance of `CacheIdentityTypeInput` via:
+// CacheIdentityTypeInput is an input type that accepts values of the CacheIdentityType enum
+// A concrete instance of `CacheIdentityTypeInput` can be one of the following:
 //
-//	CacheIdentityTypeArgs{...}
+//	CacheIdentityTypeSystemAssigned
+//	CacheIdentityTypeUserAssigned
+//	CacheIdentityType_SystemAssigned_UserAssigned
+//	CacheIdentityTypeNone
 type CacheIdentityTypeInput interface {
 	pulumi.Input
 
@@ -487,10 +491,16 @@ func (o MaintenanceDayOfWeekTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// MaintenanceDayOfWeekTypeInput is an input type that accepts MaintenanceDayOfWeekTypeArgs and MaintenanceDayOfWeekTypeOutput values.
-// You can construct a concrete instance of `MaintenanceDayOfWeekTypeInput` via:
+// MaintenanceDayOfWeekTypeInput is an input type that accepts values of the MaintenanceDayOfWeekType enum
+// A concrete instance of `MaintenanceDayOfWeekTypeInput` can be one of the following:
 //
-//	MaintenanceDayOfWeekTypeArgs{...}
+//	MaintenanceDayOfWeekTypeMonday
+//	MaintenanceDayOfWeekTypeTuesday
+//	MaintenanceDayOfWeekTypeWednesday
+//	MaintenanceDayOfWeekTypeThursday
+//	MaintenanceDayOfWeekTypeFriday
+//	MaintenanceDayOfWeekTypeSaturday
+//	MaintenanceDayOfWeekTypeSunday
 type MaintenanceDayOfWeekTypeInput interface {
 	pulumi.Input
 
@@ -540,6 +550,171 @@ const (
 	NfsAccessRuleAccessRw = NfsAccessRuleAccess("rw")
 )
 
+func (NfsAccessRuleAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsAccessRuleAccess)(nil)).Elem()
+}
+
+func (e NfsAccessRuleAccess) ToNfsAccessRuleAccessOutput() NfsAccessRuleAccessOutput {
+	return pulumi.ToOutput(e).(NfsAccessRuleAccessOutput)
+}
+
+func (e NfsAccessRuleAccess) ToNfsAccessRuleAccessOutputWithContext(ctx context.Context) NfsAccessRuleAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NfsAccessRuleAccessOutput)
+}
+
+func (e NfsAccessRuleAccess) ToNfsAccessRuleAccessPtrOutput() NfsAccessRuleAccessPtrOutput {
+	return e.ToNfsAccessRuleAccessPtrOutputWithContext(context.Background())
+}
+
+func (e NfsAccessRuleAccess) ToNfsAccessRuleAccessPtrOutputWithContext(ctx context.Context) NfsAccessRuleAccessPtrOutput {
+	return NfsAccessRuleAccess(e).ToNfsAccessRuleAccessOutputWithContext(ctx).ToNfsAccessRuleAccessPtrOutputWithContext(ctx)
+}
+
+func (e NfsAccessRuleAccess) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NfsAccessRuleAccess) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NfsAccessRuleAccess) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NfsAccessRuleAccess) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NfsAccessRuleAccessOutput struct{ *pulumi.OutputState }
+
+func (NfsAccessRuleAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsAccessRuleAccess)(nil)).Elem()
+}
+
+func (o NfsAccessRuleAccessOutput) ToNfsAccessRuleAccessOutput() NfsAccessRuleAccessOutput {
+	return o
+}
+
+func (o NfsAccessRuleAccessOutput) ToNfsAccessRuleAccessOutputWithContext(ctx context.Context) NfsAccessRuleAccessOutput {
+	return o
+}
+
+func (o NfsAccessRuleAccessOutput) ToNfsAccessRuleAccessPtrOutput() NfsAccessRuleAccessPtrOutput {
+	return o.ToNfsAccessRuleAccessPtrOutputWithContext(context.Background())
+}
+
+func (o NfsAccessRuleAccessOutput) ToNfsAccessRuleAccessPtrOutputWithContext(ctx context.Context) NfsAccessRuleAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NfsAccessRuleAccess) *NfsAccessRuleAccess {
+		return &v
+	}).(NfsAccessRuleAccessPtrOutput)
+}
+
+func (o NfsAccessRuleAccessOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NfsAccessRuleAccessOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NfsAccessRuleAccess) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NfsAccessRuleAccessOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NfsAccessRuleAccessOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NfsAccessRuleAccess) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NfsAccessRuleAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (NfsAccessRuleAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NfsAccessRuleAccess)(nil)).Elem()
+}
+
+func (o NfsAccessRuleAccessPtrOutput) ToNfsAccessRuleAccessPtrOutput() NfsAccessRuleAccessPtrOutput {
+	return o
+}
+
+func (o NfsAccessRuleAccessPtrOutput) ToNfsAccessRuleAccessPtrOutputWithContext(ctx context.Context) NfsAccessRuleAccessPtrOutput {
+	return o
+}
+
+func (o NfsAccessRuleAccessPtrOutput) Elem() NfsAccessRuleAccessOutput {
+	return o.ApplyT(func(v *NfsAccessRuleAccess) NfsAccessRuleAccess {
+		if v != nil {
+			return *v
+		}
+		var ret NfsAccessRuleAccess
+		return ret
+	}).(NfsAccessRuleAccessOutput)
+}
+
+func (o NfsAccessRuleAccessPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NfsAccessRuleAccessPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NfsAccessRuleAccess) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NfsAccessRuleAccessInput is an input type that accepts values of the NfsAccessRuleAccess enum
+// A concrete instance of `NfsAccessRuleAccessInput` can be one of the following:
+//
+//	NfsAccessRuleAccessNo
+//	NfsAccessRuleAccessRo
+//	NfsAccessRuleAccessRw
+type NfsAccessRuleAccessInput interface {
+	pulumi.Input
+
+	ToNfsAccessRuleAccessOutput() NfsAccessRuleAccessOutput
+	ToNfsAccessRuleAccessOutputWithContext(context.Context) NfsAccessRuleAccessOutput
+}
+
+var nfsAccessRuleAccessPtrType = reflect.TypeOf((**NfsAccessRuleAccess)(nil)).Elem()
+
+type NfsAccessRuleAccessPtrInput interface {
+	pulumi.Input
+
+	ToNfsAccessRuleAccessPtrOutput() NfsAccessRuleAccessPtrOutput
+	ToNfsAccessRuleAccessPtrOutputWithContext(context.Context) NfsAccessRuleAccessPtrOutput
+}
+
+type nfsAccessRuleAccessPtr string
+
+func NfsAccessRuleAccessPtr(v string) NfsAccessRuleAccessPtrInput {
+	return (*nfsAccessRuleAccessPtr)(&v)
+}
+
+func (*nfsAccessRuleAccessPtr) ElementType() reflect.Type {
+	return nfsAccessRuleAccessPtrType
+}
+
+func (in *nfsAccessRuleAccessPtr) ToNfsAccessRuleAccessPtrOutput() NfsAccessRuleAccessPtrOutput {
+	return pulumi.ToOutput(in).(NfsAccessRuleAccessPtrOutput)
+}
+
+func (in *nfsAccessRuleAccessPtr) ToNfsAccessRuleAccessPtrOutputWithContext(ctx context.Context) NfsAccessRuleAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NfsAccessRuleAccessPtrOutput)
+}
+
+func (in *nfsAccessRuleAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*NfsAccessRuleAccess] {
+	return pulumix.Output[*NfsAccessRuleAccess]{
+		OutputState: in.ToNfsAccessRuleAccessPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Scope for this rule. The scope and filter determine which clients match the rule.
 type NfsAccessRuleScope string
 
@@ -548,6 +723,171 @@ const (
 	NfsAccessRuleScopeNetwork = NfsAccessRuleScope("network")
 	NfsAccessRuleScopeHost    = NfsAccessRuleScope("host")
 )
+
+func (NfsAccessRuleScope) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsAccessRuleScope)(nil)).Elem()
+}
+
+func (e NfsAccessRuleScope) ToNfsAccessRuleScopeOutput() NfsAccessRuleScopeOutput {
+	return pulumi.ToOutput(e).(NfsAccessRuleScopeOutput)
+}
+
+func (e NfsAccessRuleScope) ToNfsAccessRuleScopeOutputWithContext(ctx context.Context) NfsAccessRuleScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NfsAccessRuleScopeOutput)
+}
+
+func (e NfsAccessRuleScope) ToNfsAccessRuleScopePtrOutput() NfsAccessRuleScopePtrOutput {
+	return e.ToNfsAccessRuleScopePtrOutputWithContext(context.Background())
+}
+
+func (e NfsAccessRuleScope) ToNfsAccessRuleScopePtrOutputWithContext(ctx context.Context) NfsAccessRuleScopePtrOutput {
+	return NfsAccessRuleScope(e).ToNfsAccessRuleScopeOutputWithContext(ctx).ToNfsAccessRuleScopePtrOutputWithContext(ctx)
+}
+
+func (e NfsAccessRuleScope) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NfsAccessRuleScope) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NfsAccessRuleScope) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NfsAccessRuleScope) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NfsAccessRuleScopeOutput struct{ *pulumi.OutputState }
+
+func (NfsAccessRuleScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsAccessRuleScope)(nil)).Elem()
+}
+
+func (o NfsAccessRuleScopeOutput) ToNfsAccessRuleScopeOutput() NfsAccessRuleScopeOutput {
+	return o
+}
+
+func (o NfsAccessRuleScopeOutput) ToNfsAccessRuleScopeOutputWithContext(ctx context.Context) NfsAccessRuleScopeOutput {
+	return o
+}
+
+func (o NfsAccessRuleScopeOutput) ToNfsAccessRuleScopePtrOutput() NfsAccessRuleScopePtrOutput {
+	return o.ToNfsAccessRuleScopePtrOutputWithContext(context.Background())
+}
+
+func (o NfsAccessRuleScopeOutput) ToNfsAccessRuleScopePtrOutputWithContext(ctx context.Context) NfsAccessRuleScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NfsAccessRuleScope) *NfsAccessRuleScope {
+		return &v
+	}).(NfsAccessRuleScopePtrOutput)
+}
+
+func (o NfsAccessRuleScopeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NfsAccessRuleScopeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NfsAccessRuleScope) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NfsAccessRuleScopeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NfsAccessRuleScopeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NfsAccessRuleScope) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NfsAccessRuleScopePtrOutput struct{ *pulumi.OutputState }
+
+func (NfsAccessRuleScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NfsAccessRuleScope)(nil)).Elem()
+}
+
+func (o NfsAccessRuleScopePtrOutput) ToNfsAccessRuleScopePtrOutput() NfsAccessRuleScopePtrOutput {
+	return o
+}
+
+func (o NfsAccessRuleScopePtrOutput) ToNfsAccessRuleScopePtrOutputWithContext(ctx context.Context) NfsAccessRuleScopePtrOutput {
+	return o
+}
+
+func (o NfsAccessRuleScopePtrOutput) Elem() NfsAccessRuleScopeOutput {
+	return o.ApplyT(func(v *NfsAccessRuleScope) NfsAccessRuleScope {
+		if v != nil {
+			return *v
+		}
+		var ret NfsAccessRuleScope
+		return ret
+	}).(NfsAccessRuleScopeOutput)
+}
+
+func (o NfsAccessRuleScopePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NfsAccessRuleScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NfsAccessRuleScope) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NfsAccessRuleScopeInput is an input type that accepts values of the NfsAccessRuleScope enum
+// A concrete instance of `NfsAccessRuleScopeInput` can be one of the following:
+//
+//	NfsAccessRuleScopeDefault
+//	NfsAccessRuleScopeNetwork
+//	NfsAccessRuleScopeHost
+type NfsAccessRuleScopeInput interface {
+	pulumi.Input
+
+	ToNfsAccessRuleScopeOutput() NfsAccessRuleScopeOutput
+	ToNfsAccessRuleScopeOutputWithContext(context.Context) NfsAccessRuleScopeOutput
+}
+
+var nfsAccessRuleScopePtrType = reflect.TypeOf((**NfsAccessRuleScope)(nil)).Elem()
+
+type NfsAccessRuleScopePtrInput interface {
+	pulumi.Input
+
+	ToNfsAccessRuleScopePtrOutput() NfsAccessRuleScopePtrOutput
+	ToNfsAccessRuleScopePtrOutputWithContext(context.Context) NfsAccessRuleScopePtrOutput
+}
+
+type nfsAccessRuleScopePtr string
+
+func NfsAccessRuleScopePtr(v string) NfsAccessRuleScopePtrInput {
+	return (*nfsAccessRuleScopePtr)(&v)
+}
+
+func (*nfsAccessRuleScopePtr) ElementType() reflect.Type {
+	return nfsAccessRuleScopePtrType
+}
+
+func (in *nfsAccessRuleScopePtr) ToNfsAccessRuleScopePtrOutput() NfsAccessRuleScopePtrOutput {
+	return pulumi.ToOutput(in).(NfsAccessRuleScopePtrOutput)
+}
+
+func (in *nfsAccessRuleScopePtr) ToNfsAccessRuleScopePtrOutputWithContext(ctx context.Context) NfsAccessRuleScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NfsAccessRuleScopePtrOutput)
+}
+
+func (in *nfsAccessRuleScopePtr) ToOutput(ctx context.Context) pulumix.Output[*NfsAccessRuleScope] {
+	return pulumix.Output[*NfsAccessRuleScope]{
+		OutputState: in.ToNfsAccessRuleScopePtrOutputWithContext(ctx).OutputState,
+	}
+}
 
 // This setting determines how the cache gets username and group names for clients.
 type UsernameSource string
@@ -559,6 +899,172 @@ const (
 	UsernameSourceNone = UsernameSource("None")
 )
 
+func (UsernameSource) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsernameSource)(nil)).Elem()
+}
+
+func (e UsernameSource) ToUsernameSourceOutput() UsernameSourceOutput {
+	return pulumi.ToOutput(e).(UsernameSourceOutput)
+}
+
+func (e UsernameSource) ToUsernameSourceOutputWithContext(ctx context.Context) UsernameSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(UsernameSourceOutput)
+}
+
+func (e UsernameSource) ToUsernameSourcePtrOutput() UsernameSourcePtrOutput {
+	return e.ToUsernameSourcePtrOutputWithContext(context.Background())
+}
+
+func (e UsernameSource) ToUsernameSourcePtrOutputWithContext(ctx context.Context) UsernameSourcePtrOutput {
+	return UsernameSource(e).ToUsernameSourceOutputWithContext(ctx).ToUsernameSourcePtrOutputWithContext(ctx)
+}
+
+func (e UsernameSource) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e UsernameSource) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e UsernameSource) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e UsernameSource) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type UsernameSourceOutput struct{ *pulumi.OutputState }
+
+func (UsernameSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsernameSource)(nil)).Elem()
+}
+
+func (o UsernameSourceOutput) ToUsernameSourceOutput() UsernameSourceOutput {
+	return o
+}
+
+func (o UsernameSourceOutput) ToUsernameSourceOutputWithContext(ctx context.Context) UsernameSourceOutput {
+	return o
+}
+
+func (o UsernameSourceOutput) ToUsernameSourcePtrOutput() UsernameSourcePtrOutput {
+	return o.ToUsernameSourcePtrOutputWithContext(context.Background())
+}
+
+func (o UsernameSourceOutput) ToUsernameSourcePtrOutputWithContext(ctx context.Context) UsernameSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UsernameSource) *UsernameSource {
+		return &v
+	}).(UsernameSourcePtrOutput)
+}
+
+func (o UsernameSourceOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o UsernameSourceOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UsernameSource) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o UsernameSourceOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o UsernameSourceOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UsernameSource) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type UsernameSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (UsernameSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UsernameSource)(nil)).Elem()
+}
+
+func (o UsernameSourcePtrOutput) ToUsernameSourcePtrOutput() UsernameSourcePtrOutput {
+	return o
+}
+
+func (o UsernameSourcePtrOutput) ToUsernameSourcePtrOutputWithContext(ctx context.Context) UsernameSourcePtrOutput {
+	return o
+}
+
+func (o UsernameSourcePtrOutput) Elem() UsernameSourceOutput {
+	return o.ApplyT(func(v *UsernameSource) UsernameSource {
+		if v != nil {
+			return *v
+		}
+		var ret UsernameSource
+		return ret
+	}).(UsernameSourceOutput)
+}
+
+func (o UsernameSourcePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o UsernameSourcePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *UsernameSource) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// UsernameSourceInput is an input type that accepts values of the UsernameSource enum
+// A concrete instance of `UsernameSourceInput` can be one of the following:
+//
+//	UsernameSourceAD
+//	UsernameSourceLDAP
+//	UsernameSourceFile
+//	UsernameSourceNone
+type UsernameSourceInput interface {
+	pulumi.Input
+
+	ToUsernameSourceOutput() UsernameSourceOutput
+	ToUsernameSourceOutputWithContext(context.Context) UsernameSourceOutput
+}
+
+var usernameSourcePtrType = reflect.TypeOf((**UsernameSource)(nil)).Elem()
+
+type UsernameSourcePtrInput interface {
+	pulumi.Input
+
+	ToUsernameSourcePtrOutput() UsernameSourcePtrOutput
+	ToUsernameSourcePtrOutputWithContext(context.Context) UsernameSourcePtrOutput
+}
+
+type usernameSourcePtr string
+
+func UsernameSourcePtr(v string) UsernameSourcePtrInput {
+	return (*usernameSourcePtr)(&v)
+}
+
+func (*usernameSourcePtr) ElementType() reflect.Type {
+	return usernameSourcePtrType
+}
+
+func (in *usernameSourcePtr) ToUsernameSourcePtrOutput() UsernameSourcePtrOutput {
+	return pulumi.ToOutput(in).(UsernameSourcePtrOutput)
+}
+
+func (in *usernameSourcePtr) ToUsernameSourcePtrOutputWithContext(ctx context.Context) UsernameSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(UsernameSourcePtrOutput)
+}
+
+func (in *usernameSourcePtr) ToOutput(ctx context.Context) pulumix.Output[*UsernameSource] {
+	return pulumix.Output[*UsernameSource]{
+		OutputState: in.ToUsernameSourcePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
 	pulumi.RegisterOutputType(AmlFilesystemIdentityTypeOutput{})
 	pulumi.RegisterOutputType(AmlFilesystemIdentityTypePtrOutput{})
@@ -566,4 +1072,10 @@ func init() {
 	pulumi.RegisterOutputType(CacheIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(MaintenanceDayOfWeekTypeOutput{})
 	pulumi.RegisterOutputType(MaintenanceDayOfWeekTypePtrOutput{})
+	pulumi.RegisterOutputType(NfsAccessRuleAccessOutput{})
+	pulumi.RegisterOutputType(NfsAccessRuleAccessPtrOutput{})
+	pulumi.RegisterOutputType(NfsAccessRuleScopeOutput{})
+	pulumi.RegisterOutputType(NfsAccessRuleScopePtrOutput{})
+	pulumi.RegisterOutputType(UsernameSourceOutput{})
+	pulumi.RegisterOutputType(UsernameSourcePtrOutput{})
 }

@@ -26,6 +26,78 @@ type AddRemoveIncrementalNamedPartitionScalingMechanism struct {
 	ScaleIncrement int `pulumi:"scaleIncrement"`
 }
 
+// AddRemoveIncrementalNamedPartitionScalingMechanismInput is an input type that accepts AddRemoveIncrementalNamedPartitionScalingMechanismArgs and AddRemoveIncrementalNamedPartitionScalingMechanismOutput values.
+// You can construct a concrete instance of `AddRemoveIncrementalNamedPartitionScalingMechanismInput` via:
+//
+//	AddRemoveIncrementalNamedPartitionScalingMechanismArgs{...}
+type AddRemoveIncrementalNamedPartitionScalingMechanismInput interface {
+	pulumi.Input
+
+	ToAddRemoveIncrementalNamedPartitionScalingMechanismOutput() AddRemoveIncrementalNamedPartitionScalingMechanismOutput
+	ToAddRemoveIncrementalNamedPartitionScalingMechanismOutputWithContext(context.Context) AddRemoveIncrementalNamedPartitionScalingMechanismOutput
+}
+
+// Represents a scaling mechanism for adding or removing named partitions of a stateless service. Partition names are in the format '0','1'...'N-1'.
+type AddRemoveIncrementalNamedPartitionScalingMechanismArgs struct {
+	// Enumerates the ways that a service can be partitioned.
+	// Expected value is 'AddRemoveIncrementalNamedPartition'.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// Maximum number of named partitions of the service.
+	MaxPartitionCount pulumi.IntInput `pulumi:"maxPartitionCount"`
+	// Minimum number of named partitions of the service.
+	MinPartitionCount pulumi.IntInput `pulumi:"minPartitionCount"`
+	// The number of instances to add or remove during a scaling operation.
+	ScaleIncrement pulumi.IntInput `pulumi:"scaleIncrement"`
+}
+
+func (AddRemoveIncrementalNamedPartitionScalingMechanismArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddRemoveIncrementalNamedPartitionScalingMechanism)(nil)).Elem()
+}
+
+func (i AddRemoveIncrementalNamedPartitionScalingMechanismArgs) ToAddRemoveIncrementalNamedPartitionScalingMechanismOutput() AddRemoveIncrementalNamedPartitionScalingMechanismOutput {
+	return i.ToAddRemoveIncrementalNamedPartitionScalingMechanismOutputWithContext(context.Background())
+}
+
+func (i AddRemoveIncrementalNamedPartitionScalingMechanismArgs) ToAddRemoveIncrementalNamedPartitionScalingMechanismOutputWithContext(ctx context.Context) AddRemoveIncrementalNamedPartitionScalingMechanismOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddRemoveIncrementalNamedPartitionScalingMechanismOutput)
+}
+
+// Represents a scaling mechanism for adding or removing named partitions of a stateless service. Partition names are in the format '0','1'...'N-1'.
+type AddRemoveIncrementalNamedPartitionScalingMechanismOutput struct{ *pulumi.OutputState }
+
+func (AddRemoveIncrementalNamedPartitionScalingMechanismOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddRemoveIncrementalNamedPartitionScalingMechanism)(nil)).Elem()
+}
+
+func (o AddRemoveIncrementalNamedPartitionScalingMechanismOutput) ToAddRemoveIncrementalNamedPartitionScalingMechanismOutput() AddRemoveIncrementalNamedPartitionScalingMechanismOutput {
+	return o
+}
+
+func (o AddRemoveIncrementalNamedPartitionScalingMechanismOutput) ToAddRemoveIncrementalNamedPartitionScalingMechanismOutputWithContext(ctx context.Context) AddRemoveIncrementalNamedPartitionScalingMechanismOutput {
+	return o
+}
+
+// Enumerates the ways that a service can be partitioned.
+// Expected value is 'AddRemoveIncrementalNamedPartition'.
+func (o AddRemoveIncrementalNamedPartitionScalingMechanismOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v AddRemoveIncrementalNamedPartitionScalingMechanism) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Maximum number of named partitions of the service.
+func (o AddRemoveIncrementalNamedPartitionScalingMechanismOutput) MaxPartitionCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AddRemoveIncrementalNamedPartitionScalingMechanism) int { return v.MaxPartitionCount }).(pulumi.IntOutput)
+}
+
+// Minimum number of named partitions of the service.
+func (o AddRemoveIncrementalNamedPartitionScalingMechanismOutput) MinPartitionCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AddRemoveIncrementalNamedPartitionScalingMechanism) int { return v.MinPartitionCount }).(pulumi.IntOutput)
+}
+
+// The number of instances to add or remove during a scaling operation.
+func (o AddRemoveIncrementalNamedPartitionScalingMechanismOutput) ScaleIncrement() pulumi.IntOutput {
+	return o.ApplyT(func(v AddRemoveIncrementalNamedPartitionScalingMechanism) int { return v.ScaleIncrement }).(pulumi.IntOutput)
+}
+
 // Represents a scaling mechanism for adding or removing named partitions of a stateless service. Partition names are in the format '0','1'...'N-1'.
 type AddRemoveIncrementalNamedPartitionScalingMechanismResponse struct {
 	// Enumerates the ways that a service can be partitioned.
@@ -37,6 +109,42 @@ type AddRemoveIncrementalNamedPartitionScalingMechanismResponse struct {
 	MinPartitionCount int `pulumi:"minPartitionCount"`
 	// The number of instances to add or remove during a scaling operation.
 	ScaleIncrement int `pulumi:"scaleIncrement"`
+}
+
+// Represents a scaling mechanism for adding or removing named partitions of a stateless service. Partition names are in the format '0','1'...'N-1'.
+type AddRemoveIncrementalNamedPartitionScalingMechanismResponseOutput struct{ *pulumi.OutputState }
+
+func (AddRemoveIncrementalNamedPartitionScalingMechanismResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddRemoveIncrementalNamedPartitionScalingMechanismResponse)(nil)).Elem()
+}
+
+func (o AddRemoveIncrementalNamedPartitionScalingMechanismResponseOutput) ToAddRemoveIncrementalNamedPartitionScalingMechanismResponseOutput() AddRemoveIncrementalNamedPartitionScalingMechanismResponseOutput {
+	return o
+}
+
+func (o AddRemoveIncrementalNamedPartitionScalingMechanismResponseOutput) ToAddRemoveIncrementalNamedPartitionScalingMechanismResponseOutputWithContext(ctx context.Context) AddRemoveIncrementalNamedPartitionScalingMechanismResponseOutput {
+	return o
+}
+
+// Enumerates the ways that a service can be partitioned.
+// Expected value is 'AddRemoveIncrementalNamedPartition'.
+func (o AddRemoveIncrementalNamedPartitionScalingMechanismResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v AddRemoveIncrementalNamedPartitionScalingMechanismResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Maximum number of named partitions of the service.
+func (o AddRemoveIncrementalNamedPartitionScalingMechanismResponseOutput) MaxPartitionCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AddRemoveIncrementalNamedPartitionScalingMechanismResponse) int { return v.MaxPartitionCount }).(pulumi.IntOutput)
+}
+
+// Minimum number of named partitions of the service.
+func (o AddRemoveIncrementalNamedPartitionScalingMechanismResponseOutput) MinPartitionCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AddRemoveIncrementalNamedPartitionScalingMechanismResponse) int { return v.MinPartitionCount }).(pulumi.IntOutput)
+}
+
+// The number of instances to add or remove during a scaling operation.
+func (o AddRemoveIncrementalNamedPartitionScalingMechanismResponseOutput) ScaleIncrement() pulumi.IntOutput {
+	return o.ApplyT(func(v AddRemoveIncrementalNamedPartitionScalingMechanismResponse) int { return v.ScaleIncrement }).(pulumi.IntOutput)
 }
 
 // Defines a health policy used to evaluate the health of an application or one of its children entities.
@@ -1168,6 +1276,85 @@ type AveragePartitionLoadScalingTrigger struct {
 	UpperLoadThreshold float64 `pulumi:"upperLoadThreshold"`
 }
 
+// AveragePartitionLoadScalingTriggerInput is an input type that accepts AveragePartitionLoadScalingTriggerArgs and AveragePartitionLoadScalingTriggerOutput values.
+// You can construct a concrete instance of `AveragePartitionLoadScalingTriggerInput` via:
+//
+//	AveragePartitionLoadScalingTriggerArgs{...}
+type AveragePartitionLoadScalingTriggerInput interface {
+	pulumi.Input
+
+	ToAveragePartitionLoadScalingTriggerOutput() AveragePartitionLoadScalingTriggerOutput
+	ToAveragePartitionLoadScalingTriggerOutputWithContext(context.Context) AveragePartitionLoadScalingTriggerOutput
+}
+
+// Represents a scaling trigger related to an average load of a metric/resource of a partition.
+type AveragePartitionLoadScalingTriggerArgs struct {
+	// Enumerates the ways that a service can be partitioned.
+	// Expected value is 'AveragePartitionLoadTrigger'.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The lower limit of the load below which a scale in operation should be performed.
+	LowerLoadThreshold pulumi.Float64Input `pulumi:"lowerLoadThreshold"`
+	// The name of the metric for which usage should be tracked.
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// The period in seconds on which a decision is made whether to scale or not. This property should come in ISO 8601 format "hh:mm:ss".
+	ScaleInterval pulumi.StringInput `pulumi:"scaleInterval"`
+	// The upper limit of the load beyond which a scale out operation should be performed.
+	UpperLoadThreshold pulumi.Float64Input `pulumi:"upperLoadThreshold"`
+}
+
+func (AveragePartitionLoadScalingTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AveragePartitionLoadScalingTrigger)(nil)).Elem()
+}
+
+func (i AveragePartitionLoadScalingTriggerArgs) ToAveragePartitionLoadScalingTriggerOutput() AveragePartitionLoadScalingTriggerOutput {
+	return i.ToAveragePartitionLoadScalingTriggerOutputWithContext(context.Background())
+}
+
+func (i AveragePartitionLoadScalingTriggerArgs) ToAveragePartitionLoadScalingTriggerOutputWithContext(ctx context.Context) AveragePartitionLoadScalingTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AveragePartitionLoadScalingTriggerOutput)
+}
+
+// Represents a scaling trigger related to an average load of a metric/resource of a partition.
+type AveragePartitionLoadScalingTriggerOutput struct{ *pulumi.OutputState }
+
+func (AveragePartitionLoadScalingTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AveragePartitionLoadScalingTrigger)(nil)).Elem()
+}
+
+func (o AveragePartitionLoadScalingTriggerOutput) ToAveragePartitionLoadScalingTriggerOutput() AveragePartitionLoadScalingTriggerOutput {
+	return o
+}
+
+func (o AveragePartitionLoadScalingTriggerOutput) ToAveragePartitionLoadScalingTriggerOutputWithContext(ctx context.Context) AveragePartitionLoadScalingTriggerOutput {
+	return o
+}
+
+// Enumerates the ways that a service can be partitioned.
+// Expected value is 'AveragePartitionLoadTrigger'.
+func (o AveragePartitionLoadScalingTriggerOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v AveragePartitionLoadScalingTrigger) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The lower limit of the load below which a scale in operation should be performed.
+func (o AveragePartitionLoadScalingTriggerOutput) LowerLoadThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v AveragePartitionLoadScalingTrigger) float64 { return v.LowerLoadThreshold }).(pulumi.Float64Output)
+}
+
+// The name of the metric for which usage should be tracked.
+func (o AveragePartitionLoadScalingTriggerOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v AveragePartitionLoadScalingTrigger) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// The period in seconds on which a decision is made whether to scale or not. This property should come in ISO 8601 format "hh:mm:ss".
+func (o AveragePartitionLoadScalingTriggerOutput) ScaleInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v AveragePartitionLoadScalingTrigger) string { return v.ScaleInterval }).(pulumi.StringOutput)
+}
+
+// The upper limit of the load beyond which a scale out operation should be performed.
+func (o AveragePartitionLoadScalingTriggerOutput) UpperLoadThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v AveragePartitionLoadScalingTrigger) float64 { return v.UpperLoadThreshold }).(pulumi.Float64Output)
+}
+
 // Represents a scaling trigger related to an average load of a metric/resource of a partition.
 type AveragePartitionLoadScalingTriggerResponse struct {
 	// Enumerates the ways that a service can be partitioned.
@@ -1181,6 +1368,47 @@ type AveragePartitionLoadScalingTriggerResponse struct {
 	ScaleInterval string `pulumi:"scaleInterval"`
 	// The upper limit of the load beyond which a scale out operation should be performed.
 	UpperLoadThreshold float64 `pulumi:"upperLoadThreshold"`
+}
+
+// Represents a scaling trigger related to an average load of a metric/resource of a partition.
+type AveragePartitionLoadScalingTriggerResponseOutput struct{ *pulumi.OutputState }
+
+func (AveragePartitionLoadScalingTriggerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AveragePartitionLoadScalingTriggerResponse)(nil)).Elem()
+}
+
+func (o AveragePartitionLoadScalingTriggerResponseOutput) ToAveragePartitionLoadScalingTriggerResponseOutput() AveragePartitionLoadScalingTriggerResponseOutput {
+	return o
+}
+
+func (o AveragePartitionLoadScalingTriggerResponseOutput) ToAveragePartitionLoadScalingTriggerResponseOutputWithContext(ctx context.Context) AveragePartitionLoadScalingTriggerResponseOutput {
+	return o
+}
+
+// Enumerates the ways that a service can be partitioned.
+// Expected value is 'AveragePartitionLoadTrigger'.
+func (o AveragePartitionLoadScalingTriggerResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v AveragePartitionLoadScalingTriggerResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The lower limit of the load below which a scale in operation should be performed.
+func (o AveragePartitionLoadScalingTriggerResponseOutput) LowerLoadThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v AveragePartitionLoadScalingTriggerResponse) float64 { return v.LowerLoadThreshold }).(pulumi.Float64Output)
+}
+
+// The name of the metric for which usage should be tracked.
+func (o AveragePartitionLoadScalingTriggerResponseOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v AveragePartitionLoadScalingTriggerResponse) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// The period in seconds on which a decision is made whether to scale or not. This property should come in ISO 8601 format "hh:mm:ss".
+func (o AveragePartitionLoadScalingTriggerResponseOutput) ScaleInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v AveragePartitionLoadScalingTriggerResponse) string { return v.ScaleInterval }).(pulumi.StringOutput)
+}
+
+// The upper limit of the load beyond which a scale out operation should be performed.
+func (o AveragePartitionLoadScalingTriggerResponseOutput) UpperLoadThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v AveragePartitionLoadScalingTriggerResponse) float64 { return v.UpperLoadThreshold }).(pulumi.Float64Output)
 }
 
 // Represents a scaling policy related to an average load of a metric/resource of a service.
@@ -1200,6 +1428,92 @@ type AverageServiceLoadScalingTrigger struct {
 	UseOnlyPrimaryLoad bool `pulumi:"useOnlyPrimaryLoad"`
 }
 
+// AverageServiceLoadScalingTriggerInput is an input type that accepts AverageServiceLoadScalingTriggerArgs and AverageServiceLoadScalingTriggerOutput values.
+// You can construct a concrete instance of `AverageServiceLoadScalingTriggerInput` via:
+//
+//	AverageServiceLoadScalingTriggerArgs{...}
+type AverageServiceLoadScalingTriggerInput interface {
+	pulumi.Input
+
+	ToAverageServiceLoadScalingTriggerOutput() AverageServiceLoadScalingTriggerOutput
+	ToAverageServiceLoadScalingTriggerOutputWithContext(context.Context) AverageServiceLoadScalingTriggerOutput
+}
+
+// Represents a scaling policy related to an average load of a metric/resource of a service.
+type AverageServiceLoadScalingTriggerArgs struct {
+	// Enumerates the ways that a service can be partitioned.
+	// Expected value is 'AverageServiceLoadTrigger'.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// The lower limit of the load below which a scale in operation should be performed.
+	LowerLoadThreshold pulumi.Float64Input `pulumi:"lowerLoadThreshold"`
+	// The name of the metric for which usage should be tracked.
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// The period in seconds on which a decision is made whether to scale or not. This property should come in ISO 8601 format "hh:mm:ss".
+	ScaleInterval pulumi.StringInput `pulumi:"scaleInterval"`
+	// The upper limit of the load beyond which a scale out operation should be performed.
+	UpperLoadThreshold pulumi.Float64Input `pulumi:"upperLoadThreshold"`
+	// Flag determines whether only the load of primary replica should be considered for scaling. If set to true, then trigger will only consider the load of primary replicas of stateful service. If set to false, trigger will consider load of all replicas. This parameter cannot be set to true for stateless service.
+	UseOnlyPrimaryLoad pulumi.BoolInput `pulumi:"useOnlyPrimaryLoad"`
+}
+
+func (AverageServiceLoadScalingTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AverageServiceLoadScalingTrigger)(nil)).Elem()
+}
+
+func (i AverageServiceLoadScalingTriggerArgs) ToAverageServiceLoadScalingTriggerOutput() AverageServiceLoadScalingTriggerOutput {
+	return i.ToAverageServiceLoadScalingTriggerOutputWithContext(context.Background())
+}
+
+func (i AverageServiceLoadScalingTriggerArgs) ToAverageServiceLoadScalingTriggerOutputWithContext(ctx context.Context) AverageServiceLoadScalingTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AverageServiceLoadScalingTriggerOutput)
+}
+
+// Represents a scaling policy related to an average load of a metric/resource of a service.
+type AverageServiceLoadScalingTriggerOutput struct{ *pulumi.OutputState }
+
+func (AverageServiceLoadScalingTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AverageServiceLoadScalingTrigger)(nil)).Elem()
+}
+
+func (o AverageServiceLoadScalingTriggerOutput) ToAverageServiceLoadScalingTriggerOutput() AverageServiceLoadScalingTriggerOutput {
+	return o
+}
+
+func (o AverageServiceLoadScalingTriggerOutput) ToAverageServiceLoadScalingTriggerOutputWithContext(ctx context.Context) AverageServiceLoadScalingTriggerOutput {
+	return o
+}
+
+// Enumerates the ways that a service can be partitioned.
+// Expected value is 'AverageServiceLoadTrigger'.
+func (o AverageServiceLoadScalingTriggerOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v AverageServiceLoadScalingTrigger) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The lower limit of the load below which a scale in operation should be performed.
+func (o AverageServiceLoadScalingTriggerOutput) LowerLoadThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v AverageServiceLoadScalingTrigger) float64 { return v.LowerLoadThreshold }).(pulumi.Float64Output)
+}
+
+// The name of the metric for which usage should be tracked.
+func (o AverageServiceLoadScalingTriggerOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v AverageServiceLoadScalingTrigger) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// The period in seconds on which a decision is made whether to scale or not. This property should come in ISO 8601 format "hh:mm:ss".
+func (o AverageServiceLoadScalingTriggerOutput) ScaleInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v AverageServiceLoadScalingTrigger) string { return v.ScaleInterval }).(pulumi.StringOutput)
+}
+
+// The upper limit of the load beyond which a scale out operation should be performed.
+func (o AverageServiceLoadScalingTriggerOutput) UpperLoadThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v AverageServiceLoadScalingTrigger) float64 { return v.UpperLoadThreshold }).(pulumi.Float64Output)
+}
+
+// Flag determines whether only the load of primary replica should be considered for scaling. If set to true, then trigger will only consider the load of primary replicas of stateful service. If set to false, trigger will consider load of all replicas. This parameter cannot be set to true for stateless service.
+func (o AverageServiceLoadScalingTriggerOutput) UseOnlyPrimaryLoad() pulumi.BoolOutput {
+	return o.ApplyT(func(v AverageServiceLoadScalingTrigger) bool { return v.UseOnlyPrimaryLoad }).(pulumi.BoolOutput)
+}
+
 // Represents a scaling policy related to an average load of a metric/resource of a service.
 type AverageServiceLoadScalingTriggerResponse struct {
 	// Enumerates the ways that a service can be partitioned.
@@ -1215,6 +1529,52 @@ type AverageServiceLoadScalingTriggerResponse struct {
 	UpperLoadThreshold float64 `pulumi:"upperLoadThreshold"`
 	// Flag determines whether only the load of primary replica should be considered for scaling. If set to true, then trigger will only consider the load of primary replicas of stateful service. If set to false, trigger will consider load of all replicas. This parameter cannot be set to true for stateless service.
 	UseOnlyPrimaryLoad bool `pulumi:"useOnlyPrimaryLoad"`
+}
+
+// Represents a scaling policy related to an average load of a metric/resource of a service.
+type AverageServiceLoadScalingTriggerResponseOutput struct{ *pulumi.OutputState }
+
+func (AverageServiceLoadScalingTriggerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AverageServiceLoadScalingTriggerResponse)(nil)).Elem()
+}
+
+func (o AverageServiceLoadScalingTriggerResponseOutput) ToAverageServiceLoadScalingTriggerResponseOutput() AverageServiceLoadScalingTriggerResponseOutput {
+	return o
+}
+
+func (o AverageServiceLoadScalingTriggerResponseOutput) ToAverageServiceLoadScalingTriggerResponseOutputWithContext(ctx context.Context) AverageServiceLoadScalingTriggerResponseOutput {
+	return o
+}
+
+// Enumerates the ways that a service can be partitioned.
+// Expected value is 'AverageServiceLoadTrigger'.
+func (o AverageServiceLoadScalingTriggerResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v AverageServiceLoadScalingTriggerResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The lower limit of the load below which a scale in operation should be performed.
+func (o AverageServiceLoadScalingTriggerResponseOutput) LowerLoadThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v AverageServiceLoadScalingTriggerResponse) float64 { return v.LowerLoadThreshold }).(pulumi.Float64Output)
+}
+
+// The name of the metric for which usage should be tracked.
+func (o AverageServiceLoadScalingTriggerResponseOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v AverageServiceLoadScalingTriggerResponse) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// The period in seconds on which a decision is made whether to scale or not. This property should come in ISO 8601 format "hh:mm:ss".
+func (o AverageServiceLoadScalingTriggerResponseOutput) ScaleInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v AverageServiceLoadScalingTriggerResponse) string { return v.ScaleInterval }).(pulumi.StringOutput)
+}
+
+// The upper limit of the load beyond which a scale out operation should be performed.
+func (o AverageServiceLoadScalingTriggerResponseOutput) UpperLoadThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v AverageServiceLoadScalingTriggerResponse) float64 { return v.UpperLoadThreshold }).(pulumi.Float64Output)
+}
+
+// Flag determines whether only the load of primary replica should be considered for scaling. If set to true, then trigger will only consider the load of primary replicas of stateful service. If set to false, trigger will consider load of all replicas. This parameter cannot be set to true for stateless service.
+func (o AverageServiceLoadScalingTriggerResponseOutput) UseOnlyPrimaryLoad() pulumi.BoolOutput {
+	return o.ApplyT(func(v AverageServiceLoadScalingTriggerResponse) bool { return v.UseOnlyPrimaryLoad }).(pulumi.BoolOutput)
 }
 
 // The settings to enable AAD authentication on the cluster.
@@ -2805,6 +3165,160 @@ type NamedPartitionScheme struct {
 	PartitionScheme string `pulumi:"partitionScheme"`
 }
 
+// NamedPartitionSchemeInput is an input type that accepts NamedPartitionSchemeArgs and NamedPartitionSchemeOutput values.
+// You can construct a concrete instance of `NamedPartitionSchemeInput` via:
+//
+//	NamedPartitionSchemeArgs{...}
+type NamedPartitionSchemeInput interface {
+	pulumi.Input
+
+	ToNamedPartitionSchemeOutput() NamedPartitionSchemeOutput
+	ToNamedPartitionSchemeOutputWithContext(context.Context) NamedPartitionSchemeOutput
+}
+
+// Describes the named partition scheme of the service.
+type NamedPartitionSchemeArgs struct {
+	// Array for the names of the partitions.
+	Names pulumi.StringArrayInput `pulumi:"names"`
+	// Enumerates the ways that a service can be partitioned.
+	// Expected value is 'Named'.
+	PartitionScheme pulumi.StringInput `pulumi:"partitionScheme"`
+}
+
+func (NamedPartitionSchemeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamedPartitionScheme)(nil)).Elem()
+}
+
+func (i NamedPartitionSchemeArgs) ToNamedPartitionSchemeOutput() NamedPartitionSchemeOutput {
+	return i.ToNamedPartitionSchemeOutputWithContext(context.Background())
+}
+
+func (i NamedPartitionSchemeArgs) ToNamedPartitionSchemeOutputWithContext(ctx context.Context) NamedPartitionSchemeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamedPartitionSchemeOutput)
+}
+
+func (i NamedPartitionSchemeArgs) ToNamedPartitionSchemePtrOutput() NamedPartitionSchemePtrOutput {
+	return i.ToNamedPartitionSchemePtrOutputWithContext(context.Background())
+}
+
+func (i NamedPartitionSchemeArgs) ToNamedPartitionSchemePtrOutputWithContext(ctx context.Context) NamedPartitionSchemePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamedPartitionSchemeOutput).ToNamedPartitionSchemePtrOutputWithContext(ctx)
+}
+
+// NamedPartitionSchemePtrInput is an input type that accepts NamedPartitionSchemeArgs, NamedPartitionSchemePtr and NamedPartitionSchemePtrOutput values.
+// You can construct a concrete instance of `NamedPartitionSchemePtrInput` via:
+//
+//	        NamedPartitionSchemeArgs{...}
+//
+//	or:
+//
+//	        nil
+type NamedPartitionSchemePtrInput interface {
+	pulumi.Input
+
+	ToNamedPartitionSchemePtrOutput() NamedPartitionSchemePtrOutput
+	ToNamedPartitionSchemePtrOutputWithContext(context.Context) NamedPartitionSchemePtrOutput
+}
+
+type namedPartitionSchemePtrType NamedPartitionSchemeArgs
+
+func NamedPartitionSchemePtr(v *NamedPartitionSchemeArgs) NamedPartitionSchemePtrInput {
+	return (*namedPartitionSchemePtrType)(v)
+}
+
+func (*namedPartitionSchemePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamedPartitionScheme)(nil)).Elem()
+}
+
+func (i *namedPartitionSchemePtrType) ToNamedPartitionSchemePtrOutput() NamedPartitionSchemePtrOutput {
+	return i.ToNamedPartitionSchemePtrOutputWithContext(context.Background())
+}
+
+func (i *namedPartitionSchemePtrType) ToNamedPartitionSchemePtrOutputWithContext(ctx context.Context) NamedPartitionSchemePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamedPartitionSchemePtrOutput)
+}
+
+// Describes the named partition scheme of the service.
+type NamedPartitionSchemeOutput struct{ *pulumi.OutputState }
+
+func (NamedPartitionSchemeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamedPartitionScheme)(nil)).Elem()
+}
+
+func (o NamedPartitionSchemeOutput) ToNamedPartitionSchemeOutput() NamedPartitionSchemeOutput {
+	return o
+}
+
+func (o NamedPartitionSchemeOutput) ToNamedPartitionSchemeOutputWithContext(ctx context.Context) NamedPartitionSchemeOutput {
+	return o
+}
+
+func (o NamedPartitionSchemeOutput) ToNamedPartitionSchemePtrOutput() NamedPartitionSchemePtrOutput {
+	return o.ToNamedPartitionSchemePtrOutputWithContext(context.Background())
+}
+
+func (o NamedPartitionSchemeOutput) ToNamedPartitionSchemePtrOutputWithContext(ctx context.Context) NamedPartitionSchemePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamedPartitionScheme) *NamedPartitionScheme {
+		return &v
+	}).(NamedPartitionSchemePtrOutput)
+}
+
+// Array for the names of the partitions.
+func (o NamedPartitionSchemeOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NamedPartitionScheme) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+// Enumerates the ways that a service can be partitioned.
+// Expected value is 'Named'.
+func (o NamedPartitionSchemeOutput) PartitionScheme() pulumi.StringOutput {
+	return o.ApplyT(func(v NamedPartitionScheme) string { return v.PartitionScheme }).(pulumi.StringOutput)
+}
+
+type NamedPartitionSchemePtrOutput struct{ *pulumi.OutputState }
+
+func (NamedPartitionSchemePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamedPartitionScheme)(nil)).Elem()
+}
+
+func (o NamedPartitionSchemePtrOutput) ToNamedPartitionSchemePtrOutput() NamedPartitionSchemePtrOutput {
+	return o
+}
+
+func (o NamedPartitionSchemePtrOutput) ToNamedPartitionSchemePtrOutputWithContext(ctx context.Context) NamedPartitionSchemePtrOutput {
+	return o
+}
+
+func (o NamedPartitionSchemePtrOutput) Elem() NamedPartitionSchemeOutput {
+	return o.ApplyT(func(v *NamedPartitionScheme) NamedPartitionScheme {
+		if v != nil {
+			return *v
+		}
+		var ret NamedPartitionScheme
+		return ret
+	}).(NamedPartitionSchemeOutput)
+}
+
+// Array for the names of the partitions.
+func (o NamedPartitionSchemePtrOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NamedPartitionScheme) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Names
+	}).(pulumi.StringArrayOutput)
+}
+
+// Enumerates the ways that a service can be partitioned.
+// Expected value is 'Named'.
+func (o NamedPartitionSchemePtrOutput) PartitionScheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NamedPartitionScheme) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PartitionScheme
+	}).(pulumi.StringPtrOutput)
+}
+
 // Describes the named partition scheme of the service.
 type NamedPartitionSchemeResponse struct {
 	// Array for the names of the partitions.
@@ -2812,6 +3326,32 @@ type NamedPartitionSchemeResponse struct {
 	// Enumerates the ways that a service can be partitioned.
 	// Expected value is 'Named'.
 	PartitionScheme string `pulumi:"partitionScheme"`
+}
+
+// Describes the named partition scheme of the service.
+type NamedPartitionSchemeResponseOutput struct{ *pulumi.OutputState }
+
+func (NamedPartitionSchemeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamedPartitionSchemeResponse)(nil)).Elem()
+}
+
+func (o NamedPartitionSchemeResponseOutput) ToNamedPartitionSchemeResponseOutput() NamedPartitionSchemeResponseOutput {
+	return o
+}
+
+func (o NamedPartitionSchemeResponseOutput) ToNamedPartitionSchemeResponseOutputWithContext(ctx context.Context) NamedPartitionSchemeResponseOutput {
+	return o
+}
+
+// Array for the names of the partitions.
+func (o NamedPartitionSchemeResponseOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NamedPartitionSchemeResponse) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+// Enumerates the ways that a service can be partitioned.
+// Expected value is 'Named'.
+func (o NamedPartitionSchemeResponseOutput) PartitionScheme() pulumi.StringOutput {
+	return o.ApplyT(func(v NamedPartitionSchemeResponse) string { return v.PartitionScheme }).(pulumi.StringOutput)
 }
 
 // Describes a network security rule.
@@ -3453,6 +3993,78 @@ type PartitionInstanceCountScaleMechanism struct {
 	ScaleIncrement int `pulumi:"scaleIncrement"`
 }
 
+// PartitionInstanceCountScaleMechanismInput is an input type that accepts PartitionInstanceCountScaleMechanismArgs and PartitionInstanceCountScaleMechanismOutput values.
+// You can construct a concrete instance of `PartitionInstanceCountScaleMechanismInput` via:
+//
+//	PartitionInstanceCountScaleMechanismArgs{...}
+type PartitionInstanceCountScaleMechanismInput interface {
+	pulumi.Input
+
+	ToPartitionInstanceCountScaleMechanismOutput() PartitionInstanceCountScaleMechanismOutput
+	ToPartitionInstanceCountScaleMechanismOutputWithContext(context.Context) PartitionInstanceCountScaleMechanismOutput
+}
+
+// Represents a scaling mechanism for adding or removing instances of stateless service partition.
+type PartitionInstanceCountScaleMechanismArgs struct {
+	// Enumerates the ways that a service can be partitioned.
+	// Expected value is 'ScalePartitionInstanceCount'.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// Maximum number of instances of the partition.
+	MaxInstanceCount pulumi.IntInput `pulumi:"maxInstanceCount"`
+	// Minimum number of instances of the partition.
+	MinInstanceCount pulumi.IntInput `pulumi:"minInstanceCount"`
+	// The number of instances to add or remove during a scaling operation.
+	ScaleIncrement pulumi.IntInput `pulumi:"scaleIncrement"`
+}
+
+func (PartitionInstanceCountScaleMechanismArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PartitionInstanceCountScaleMechanism)(nil)).Elem()
+}
+
+func (i PartitionInstanceCountScaleMechanismArgs) ToPartitionInstanceCountScaleMechanismOutput() PartitionInstanceCountScaleMechanismOutput {
+	return i.ToPartitionInstanceCountScaleMechanismOutputWithContext(context.Background())
+}
+
+func (i PartitionInstanceCountScaleMechanismArgs) ToPartitionInstanceCountScaleMechanismOutputWithContext(ctx context.Context) PartitionInstanceCountScaleMechanismOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PartitionInstanceCountScaleMechanismOutput)
+}
+
+// Represents a scaling mechanism for adding or removing instances of stateless service partition.
+type PartitionInstanceCountScaleMechanismOutput struct{ *pulumi.OutputState }
+
+func (PartitionInstanceCountScaleMechanismOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PartitionInstanceCountScaleMechanism)(nil)).Elem()
+}
+
+func (o PartitionInstanceCountScaleMechanismOutput) ToPartitionInstanceCountScaleMechanismOutput() PartitionInstanceCountScaleMechanismOutput {
+	return o
+}
+
+func (o PartitionInstanceCountScaleMechanismOutput) ToPartitionInstanceCountScaleMechanismOutputWithContext(ctx context.Context) PartitionInstanceCountScaleMechanismOutput {
+	return o
+}
+
+// Enumerates the ways that a service can be partitioned.
+// Expected value is 'ScalePartitionInstanceCount'.
+func (o PartitionInstanceCountScaleMechanismOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v PartitionInstanceCountScaleMechanism) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Maximum number of instances of the partition.
+func (o PartitionInstanceCountScaleMechanismOutput) MaxInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v PartitionInstanceCountScaleMechanism) int { return v.MaxInstanceCount }).(pulumi.IntOutput)
+}
+
+// Minimum number of instances of the partition.
+func (o PartitionInstanceCountScaleMechanismOutput) MinInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v PartitionInstanceCountScaleMechanism) int { return v.MinInstanceCount }).(pulumi.IntOutput)
+}
+
+// The number of instances to add or remove during a scaling operation.
+func (o PartitionInstanceCountScaleMechanismOutput) ScaleIncrement() pulumi.IntOutput {
+	return o.ApplyT(func(v PartitionInstanceCountScaleMechanism) int { return v.ScaleIncrement }).(pulumi.IntOutput)
+}
+
 // Represents a scaling mechanism for adding or removing instances of stateless service partition.
 type PartitionInstanceCountScaleMechanismResponse struct {
 	// Enumerates the ways that a service can be partitioned.
@@ -3464,6 +4076,42 @@ type PartitionInstanceCountScaleMechanismResponse struct {
 	MinInstanceCount int `pulumi:"minInstanceCount"`
 	// The number of instances to add or remove during a scaling operation.
 	ScaleIncrement int `pulumi:"scaleIncrement"`
+}
+
+// Represents a scaling mechanism for adding or removing instances of stateless service partition.
+type PartitionInstanceCountScaleMechanismResponseOutput struct{ *pulumi.OutputState }
+
+func (PartitionInstanceCountScaleMechanismResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PartitionInstanceCountScaleMechanismResponse)(nil)).Elem()
+}
+
+func (o PartitionInstanceCountScaleMechanismResponseOutput) ToPartitionInstanceCountScaleMechanismResponseOutput() PartitionInstanceCountScaleMechanismResponseOutput {
+	return o
+}
+
+func (o PartitionInstanceCountScaleMechanismResponseOutput) ToPartitionInstanceCountScaleMechanismResponseOutputWithContext(ctx context.Context) PartitionInstanceCountScaleMechanismResponseOutput {
+	return o
+}
+
+// Enumerates the ways that a service can be partitioned.
+// Expected value is 'ScalePartitionInstanceCount'.
+func (o PartitionInstanceCountScaleMechanismResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v PartitionInstanceCountScaleMechanismResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Maximum number of instances of the partition.
+func (o PartitionInstanceCountScaleMechanismResponseOutput) MaxInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v PartitionInstanceCountScaleMechanismResponse) int { return v.MaxInstanceCount }).(pulumi.IntOutput)
+}
+
+// Minimum number of instances of the partition.
+func (o PartitionInstanceCountScaleMechanismResponseOutput) MinInstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v PartitionInstanceCountScaleMechanismResponse) int { return v.MinInstanceCount }).(pulumi.IntOutput)
+}
+
+// The number of instances to add or remove during a scaling operation.
+func (o PartitionInstanceCountScaleMechanismResponseOutput) ScaleIncrement() pulumi.IntOutput {
+	return o.ApplyT(func(v PartitionInstanceCountScaleMechanismResponse) int { return v.ScaleIncrement }).(pulumi.IntOutput)
 }
 
 // Describes Az Resiliency status of Base resources
@@ -3914,12 +4562,158 @@ type ScalingPolicy struct {
 	ScalingTrigger interface{} `pulumi:"scalingTrigger"`
 }
 
+// ScalingPolicyInput is an input type that accepts ScalingPolicyArgs and ScalingPolicyOutput values.
+// You can construct a concrete instance of `ScalingPolicyInput` via:
+//
+//	ScalingPolicyArgs{...}
+type ScalingPolicyInput interface {
+	pulumi.Input
+
+	ToScalingPolicyOutput() ScalingPolicyOutput
+	ToScalingPolicyOutputWithContext(context.Context) ScalingPolicyOutput
+}
+
+// Specifies a metric to load balance a service during runtime.
+type ScalingPolicyArgs struct {
+	// Specifies the mechanism associated with this scaling policy
+	ScalingMechanism pulumi.Input `pulumi:"scalingMechanism"`
+	// Specifies the trigger associated with this scaling policy.
+	ScalingTrigger pulumi.Input `pulumi:"scalingTrigger"`
+}
+
+func (ScalingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingPolicy)(nil)).Elem()
+}
+
+func (i ScalingPolicyArgs) ToScalingPolicyOutput() ScalingPolicyOutput {
+	return i.ToScalingPolicyOutputWithContext(context.Background())
+}
+
+func (i ScalingPolicyArgs) ToScalingPolicyOutputWithContext(ctx context.Context) ScalingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingPolicyOutput)
+}
+
+// ScalingPolicyArrayInput is an input type that accepts ScalingPolicyArray and ScalingPolicyArrayOutput values.
+// You can construct a concrete instance of `ScalingPolicyArrayInput` via:
+//
+//	ScalingPolicyArray{ ScalingPolicyArgs{...} }
+type ScalingPolicyArrayInput interface {
+	pulumi.Input
+
+	ToScalingPolicyArrayOutput() ScalingPolicyArrayOutput
+	ToScalingPolicyArrayOutputWithContext(context.Context) ScalingPolicyArrayOutput
+}
+
+type ScalingPolicyArray []ScalingPolicyInput
+
+func (ScalingPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingPolicy)(nil)).Elem()
+}
+
+func (i ScalingPolicyArray) ToScalingPolicyArrayOutput() ScalingPolicyArrayOutput {
+	return i.ToScalingPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i ScalingPolicyArray) ToScalingPolicyArrayOutputWithContext(ctx context.Context) ScalingPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingPolicyArrayOutput)
+}
+
+// Specifies a metric to load balance a service during runtime.
+type ScalingPolicyOutput struct{ *pulumi.OutputState }
+
+func (ScalingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingPolicy)(nil)).Elem()
+}
+
+func (o ScalingPolicyOutput) ToScalingPolicyOutput() ScalingPolicyOutput {
+	return o
+}
+
+func (o ScalingPolicyOutput) ToScalingPolicyOutputWithContext(ctx context.Context) ScalingPolicyOutput {
+	return o
+}
+
+// Specifies the mechanism associated with this scaling policy
+func (o ScalingPolicyOutput) ScalingMechanism() pulumi.AnyOutput {
+	return o.ApplyT(func(v ScalingPolicy) interface{} { return v.ScalingMechanism }).(pulumi.AnyOutput)
+}
+
+// Specifies the trigger associated with this scaling policy.
+func (o ScalingPolicyOutput) ScalingTrigger() pulumi.AnyOutput {
+	return o.ApplyT(func(v ScalingPolicy) interface{} { return v.ScalingTrigger }).(pulumi.AnyOutput)
+}
+
+type ScalingPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (ScalingPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingPolicy)(nil)).Elem()
+}
+
+func (o ScalingPolicyArrayOutput) ToScalingPolicyArrayOutput() ScalingPolicyArrayOutput {
+	return o
+}
+
+func (o ScalingPolicyArrayOutput) ToScalingPolicyArrayOutputWithContext(ctx context.Context) ScalingPolicyArrayOutput {
+	return o
+}
+
+func (o ScalingPolicyArrayOutput) Index(i pulumi.IntInput) ScalingPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingPolicy {
+		return vs[0].([]ScalingPolicy)[vs[1].(int)]
+	}).(ScalingPolicyOutput)
+}
+
 // Specifies a metric to load balance a service during runtime.
 type ScalingPolicyResponse struct {
 	// Specifies the mechanism associated with this scaling policy
 	ScalingMechanism interface{} `pulumi:"scalingMechanism"`
 	// Specifies the trigger associated with this scaling policy.
 	ScalingTrigger interface{} `pulumi:"scalingTrigger"`
+}
+
+// Specifies a metric to load balance a service during runtime.
+type ScalingPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (ScalingPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingPolicyResponse)(nil)).Elem()
+}
+
+func (o ScalingPolicyResponseOutput) ToScalingPolicyResponseOutput() ScalingPolicyResponseOutput {
+	return o
+}
+
+func (o ScalingPolicyResponseOutput) ToScalingPolicyResponseOutputWithContext(ctx context.Context) ScalingPolicyResponseOutput {
+	return o
+}
+
+// Specifies the mechanism associated with this scaling policy
+func (o ScalingPolicyResponseOutput) ScalingMechanism() pulumi.AnyOutput {
+	return o.ApplyT(func(v ScalingPolicyResponse) interface{} { return v.ScalingMechanism }).(pulumi.AnyOutput)
+}
+
+// Specifies the trigger associated with this scaling policy.
+func (o ScalingPolicyResponseOutput) ScalingTrigger() pulumi.AnyOutput {
+	return o.ApplyT(func(v ScalingPolicyResponse) interface{} { return v.ScalingTrigger }).(pulumi.AnyOutput)
+}
+
+type ScalingPolicyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ScalingPolicyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingPolicyResponse)(nil)).Elem()
+}
+
+func (o ScalingPolicyResponseArrayOutput) ToScalingPolicyResponseArrayOutput() ScalingPolicyResponseArrayOutput {
+	return o
+}
+
+func (o ScalingPolicyResponseArrayOutput) ToScalingPolicyResponseArrayOutputWithContext(ctx context.Context) ScalingPolicyResponseArrayOutput {
+	return o
+}
+
+func (o ScalingPolicyResponseArrayOutput) Index(i pulumi.IntInput) ScalingPolicyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingPolicyResponse {
+		return vs[0].([]ScalingPolicyResponse)[vs[1].(int)]
+	}).(ScalingPolicyResponseOutput)
 }
 
 // Creates a particular correlation between services.
@@ -3930,12 +4724,158 @@ type ServiceCorrelation struct {
 	ServiceName string `pulumi:"serviceName"`
 }
 
+// ServiceCorrelationInput is an input type that accepts ServiceCorrelationArgs and ServiceCorrelationOutput values.
+// You can construct a concrete instance of `ServiceCorrelationInput` via:
+//
+//	ServiceCorrelationArgs{...}
+type ServiceCorrelationInput interface {
+	pulumi.Input
+
+	ToServiceCorrelationOutput() ServiceCorrelationOutput
+	ToServiceCorrelationOutputWithContext(context.Context) ServiceCorrelationOutput
+}
+
+// Creates a particular correlation between services.
+type ServiceCorrelationArgs struct {
+	// The ServiceCorrelationScheme which describes the relationship between this service and the service specified via ServiceName.
+	Scheme pulumi.StringInput `pulumi:"scheme"`
+	// The Arm Resource ID of the service that the correlation relationship is established with.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+}
+
+func (ServiceCorrelationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceCorrelation)(nil)).Elem()
+}
+
+func (i ServiceCorrelationArgs) ToServiceCorrelationOutput() ServiceCorrelationOutput {
+	return i.ToServiceCorrelationOutputWithContext(context.Background())
+}
+
+func (i ServiceCorrelationArgs) ToServiceCorrelationOutputWithContext(ctx context.Context) ServiceCorrelationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceCorrelationOutput)
+}
+
+// ServiceCorrelationArrayInput is an input type that accepts ServiceCorrelationArray and ServiceCorrelationArrayOutput values.
+// You can construct a concrete instance of `ServiceCorrelationArrayInput` via:
+//
+//	ServiceCorrelationArray{ ServiceCorrelationArgs{...} }
+type ServiceCorrelationArrayInput interface {
+	pulumi.Input
+
+	ToServiceCorrelationArrayOutput() ServiceCorrelationArrayOutput
+	ToServiceCorrelationArrayOutputWithContext(context.Context) ServiceCorrelationArrayOutput
+}
+
+type ServiceCorrelationArray []ServiceCorrelationInput
+
+func (ServiceCorrelationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceCorrelation)(nil)).Elem()
+}
+
+func (i ServiceCorrelationArray) ToServiceCorrelationArrayOutput() ServiceCorrelationArrayOutput {
+	return i.ToServiceCorrelationArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceCorrelationArray) ToServiceCorrelationArrayOutputWithContext(ctx context.Context) ServiceCorrelationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceCorrelationArrayOutput)
+}
+
+// Creates a particular correlation between services.
+type ServiceCorrelationOutput struct{ *pulumi.OutputState }
+
+func (ServiceCorrelationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceCorrelation)(nil)).Elem()
+}
+
+func (o ServiceCorrelationOutput) ToServiceCorrelationOutput() ServiceCorrelationOutput {
+	return o
+}
+
+func (o ServiceCorrelationOutput) ToServiceCorrelationOutputWithContext(ctx context.Context) ServiceCorrelationOutput {
+	return o
+}
+
+// The ServiceCorrelationScheme which describes the relationship between this service and the service specified via ServiceName.
+func (o ServiceCorrelationOutput) Scheme() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceCorrelation) string { return v.Scheme }).(pulumi.StringOutput)
+}
+
+// The Arm Resource ID of the service that the correlation relationship is established with.
+func (o ServiceCorrelationOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceCorrelation) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+type ServiceCorrelationArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceCorrelationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceCorrelation)(nil)).Elem()
+}
+
+func (o ServiceCorrelationArrayOutput) ToServiceCorrelationArrayOutput() ServiceCorrelationArrayOutput {
+	return o
+}
+
+func (o ServiceCorrelationArrayOutput) ToServiceCorrelationArrayOutputWithContext(ctx context.Context) ServiceCorrelationArrayOutput {
+	return o
+}
+
+func (o ServiceCorrelationArrayOutput) Index(i pulumi.IntInput) ServiceCorrelationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceCorrelation {
+		return vs[0].([]ServiceCorrelation)[vs[1].(int)]
+	}).(ServiceCorrelationOutput)
+}
+
 // Creates a particular correlation between services.
 type ServiceCorrelationResponse struct {
 	// The ServiceCorrelationScheme which describes the relationship between this service and the service specified via ServiceName.
 	Scheme string `pulumi:"scheme"`
 	// The Arm Resource ID of the service that the correlation relationship is established with.
 	ServiceName string `pulumi:"serviceName"`
+}
+
+// Creates a particular correlation between services.
+type ServiceCorrelationResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceCorrelationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceCorrelationResponse)(nil)).Elem()
+}
+
+func (o ServiceCorrelationResponseOutput) ToServiceCorrelationResponseOutput() ServiceCorrelationResponseOutput {
+	return o
+}
+
+func (o ServiceCorrelationResponseOutput) ToServiceCorrelationResponseOutputWithContext(ctx context.Context) ServiceCorrelationResponseOutput {
+	return o
+}
+
+// The ServiceCorrelationScheme which describes the relationship between this service and the service specified via ServiceName.
+func (o ServiceCorrelationResponseOutput) Scheme() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceCorrelationResponse) string { return v.Scheme }).(pulumi.StringOutput)
+}
+
+// The Arm Resource ID of the service that the correlation relationship is established with.
+func (o ServiceCorrelationResponseOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceCorrelationResponse) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+type ServiceCorrelationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceCorrelationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceCorrelationResponse)(nil)).Elem()
+}
+
+func (o ServiceCorrelationResponseArrayOutput) ToServiceCorrelationResponseArrayOutput() ServiceCorrelationResponseArrayOutput {
+	return o
+}
+
+func (o ServiceCorrelationResponseArrayOutput) ToServiceCorrelationResponseArrayOutputWithContext(ctx context.Context) ServiceCorrelationResponseArrayOutput {
+	return o
+}
+
+func (o ServiceCorrelationResponseArrayOutput) Index(i pulumi.IntInput) ServiceCorrelationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceCorrelationResponse {
+		return vs[0].([]ServiceCorrelationResponse)[vs[1].(int)]
+	}).(ServiceCorrelationResponseOutput)
 }
 
 // The service endpoint properties.
@@ -4114,6 +5054,128 @@ type ServiceLoadMetric struct {
 	Weight *string `pulumi:"weight"`
 }
 
+// ServiceLoadMetricInput is an input type that accepts ServiceLoadMetricArgs and ServiceLoadMetricOutput values.
+// You can construct a concrete instance of `ServiceLoadMetricInput` via:
+//
+//	ServiceLoadMetricArgs{...}
+type ServiceLoadMetricInput interface {
+	pulumi.Input
+
+	ToServiceLoadMetricOutput() ServiceLoadMetricOutput
+	ToServiceLoadMetricOutputWithContext(context.Context) ServiceLoadMetricOutput
+}
+
+// Specifies a metric to load balance a service during runtime.
+type ServiceLoadMetricArgs struct {
+	// Used only for Stateless services. The default amount of load, as a number, that this service creates for this metric.
+	DefaultLoad pulumi.IntPtrInput `pulumi:"defaultLoad"`
+	// The name of the metric. If the service chooses to report load during runtime, the load metric name should match the name that is specified in Name exactly. Note that metric names are case sensitive.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Used only for Stateful services. The default amount of load, as a number, that this service creates for this metric when it is a Primary replica.
+	PrimaryDefaultLoad pulumi.IntPtrInput `pulumi:"primaryDefaultLoad"`
+	// Used only for Stateful services. The default amount of load, as a number, that this service creates for this metric when it is a Secondary replica.
+	SecondaryDefaultLoad pulumi.IntPtrInput `pulumi:"secondaryDefaultLoad"`
+	// The service load metric relative weight, compared to other metrics configured for this service, as a number.
+	Weight pulumi.StringPtrInput `pulumi:"weight"`
+}
+
+func (ServiceLoadMetricArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLoadMetric)(nil)).Elem()
+}
+
+func (i ServiceLoadMetricArgs) ToServiceLoadMetricOutput() ServiceLoadMetricOutput {
+	return i.ToServiceLoadMetricOutputWithContext(context.Background())
+}
+
+func (i ServiceLoadMetricArgs) ToServiceLoadMetricOutputWithContext(ctx context.Context) ServiceLoadMetricOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLoadMetricOutput)
+}
+
+// ServiceLoadMetricArrayInput is an input type that accepts ServiceLoadMetricArray and ServiceLoadMetricArrayOutput values.
+// You can construct a concrete instance of `ServiceLoadMetricArrayInput` via:
+//
+//	ServiceLoadMetricArray{ ServiceLoadMetricArgs{...} }
+type ServiceLoadMetricArrayInput interface {
+	pulumi.Input
+
+	ToServiceLoadMetricArrayOutput() ServiceLoadMetricArrayOutput
+	ToServiceLoadMetricArrayOutputWithContext(context.Context) ServiceLoadMetricArrayOutput
+}
+
+type ServiceLoadMetricArray []ServiceLoadMetricInput
+
+func (ServiceLoadMetricArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceLoadMetric)(nil)).Elem()
+}
+
+func (i ServiceLoadMetricArray) ToServiceLoadMetricArrayOutput() ServiceLoadMetricArrayOutput {
+	return i.ToServiceLoadMetricArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceLoadMetricArray) ToServiceLoadMetricArrayOutputWithContext(ctx context.Context) ServiceLoadMetricArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceLoadMetricArrayOutput)
+}
+
+// Specifies a metric to load balance a service during runtime.
+type ServiceLoadMetricOutput struct{ *pulumi.OutputState }
+
+func (ServiceLoadMetricOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLoadMetric)(nil)).Elem()
+}
+
+func (o ServiceLoadMetricOutput) ToServiceLoadMetricOutput() ServiceLoadMetricOutput {
+	return o
+}
+
+func (o ServiceLoadMetricOutput) ToServiceLoadMetricOutputWithContext(ctx context.Context) ServiceLoadMetricOutput {
+	return o
+}
+
+// Used only for Stateless services. The default amount of load, as a number, that this service creates for this metric.
+func (o ServiceLoadMetricOutput) DefaultLoad() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceLoadMetric) *int { return v.DefaultLoad }).(pulumi.IntPtrOutput)
+}
+
+// The name of the metric. If the service chooses to report load during runtime, the load metric name should match the name that is specified in Name exactly. Note that metric names are case sensitive.
+func (o ServiceLoadMetricOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceLoadMetric) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Used only for Stateful services. The default amount of load, as a number, that this service creates for this metric when it is a Primary replica.
+func (o ServiceLoadMetricOutput) PrimaryDefaultLoad() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceLoadMetric) *int { return v.PrimaryDefaultLoad }).(pulumi.IntPtrOutput)
+}
+
+// Used only for Stateful services. The default amount of load, as a number, that this service creates for this metric when it is a Secondary replica.
+func (o ServiceLoadMetricOutput) SecondaryDefaultLoad() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceLoadMetric) *int { return v.SecondaryDefaultLoad }).(pulumi.IntPtrOutput)
+}
+
+// The service load metric relative weight, compared to other metrics configured for this service, as a number.
+func (o ServiceLoadMetricOutput) Weight() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceLoadMetric) *string { return v.Weight }).(pulumi.StringPtrOutput)
+}
+
+type ServiceLoadMetricArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceLoadMetricArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceLoadMetric)(nil)).Elem()
+}
+
+func (o ServiceLoadMetricArrayOutput) ToServiceLoadMetricArrayOutput() ServiceLoadMetricArrayOutput {
+	return o
+}
+
+func (o ServiceLoadMetricArrayOutput) ToServiceLoadMetricArrayOutputWithContext(ctx context.Context) ServiceLoadMetricArrayOutput {
+	return o
+}
+
+func (o ServiceLoadMetricArrayOutput) Index(i pulumi.IntInput) ServiceLoadMetricOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceLoadMetric {
+		return vs[0].([]ServiceLoadMetric)[vs[1].(int)]
+	}).(ServiceLoadMetricOutput)
+}
+
 // Specifies a metric to load balance a service during runtime.
 type ServiceLoadMetricResponse struct {
 	// Used only for Stateless services. The default amount of load, as a number, that this service creates for this metric.
@@ -4128,6 +5190,66 @@ type ServiceLoadMetricResponse struct {
 	Weight *string `pulumi:"weight"`
 }
 
+// Specifies a metric to load balance a service during runtime.
+type ServiceLoadMetricResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceLoadMetricResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLoadMetricResponse)(nil)).Elem()
+}
+
+func (o ServiceLoadMetricResponseOutput) ToServiceLoadMetricResponseOutput() ServiceLoadMetricResponseOutput {
+	return o
+}
+
+func (o ServiceLoadMetricResponseOutput) ToServiceLoadMetricResponseOutputWithContext(ctx context.Context) ServiceLoadMetricResponseOutput {
+	return o
+}
+
+// Used only for Stateless services. The default amount of load, as a number, that this service creates for this metric.
+func (o ServiceLoadMetricResponseOutput) DefaultLoad() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceLoadMetricResponse) *int { return v.DefaultLoad }).(pulumi.IntPtrOutput)
+}
+
+// The name of the metric. If the service chooses to report load during runtime, the load metric name should match the name that is specified in Name exactly. Note that metric names are case sensitive.
+func (o ServiceLoadMetricResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceLoadMetricResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Used only for Stateful services. The default amount of load, as a number, that this service creates for this metric when it is a Primary replica.
+func (o ServiceLoadMetricResponseOutput) PrimaryDefaultLoad() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceLoadMetricResponse) *int { return v.PrimaryDefaultLoad }).(pulumi.IntPtrOutput)
+}
+
+// Used only for Stateful services. The default amount of load, as a number, that this service creates for this metric when it is a Secondary replica.
+func (o ServiceLoadMetricResponseOutput) SecondaryDefaultLoad() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceLoadMetricResponse) *int { return v.SecondaryDefaultLoad }).(pulumi.IntPtrOutput)
+}
+
+// The service load metric relative weight, compared to other metrics configured for this service, as a number.
+func (o ServiceLoadMetricResponseOutput) Weight() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceLoadMetricResponse) *string { return v.Weight }).(pulumi.StringPtrOutput)
+}
+
+type ServiceLoadMetricResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceLoadMetricResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceLoadMetricResponse)(nil)).Elem()
+}
+
+func (o ServiceLoadMetricResponseArrayOutput) ToServiceLoadMetricResponseArrayOutput() ServiceLoadMetricResponseArrayOutput {
+	return o
+}
+
+func (o ServiceLoadMetricResponseArrayOutput) ToServiceLoadMetricResponseArrayOutputWithContext(ctx context.Context) ServiceLoadMetricResponseArrayOutput {
+	return o
+}
+
+func (o ServiceLoadMetricResponseArrayOutput) Index(i pulumi.IntInput) ServiceLoadMetricResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceLoadMetricResponse {
+		return vs[0].([]ServiceLoadMetricResponse)[vs[1].(int)]
+	}).(ServiceLoadMetricResponseOutput)
+}
+
 // Describes the policy to be used for placement of a Service Fabric service where a particular fault or upgrade domain should not be used for placement of the instances or replicas of that service.
 type ServicePlacementInvalidDomainPolicy struct {
 	// The name of the domain that should not be used for placement.
@@ -4135,6 +5257,64 @@ type ServicePlacementInvalidDomainPolicy struct {
 	// The type of placement policy for a service fabric service. Following are the possible values.
 	// Expected value is 'InvalidDomain'.
 	Type string `pulumi:"type"`
+}
+
+// ServicePlacementInvalidDomainPolicyInput is an input type that accepts ServicePlacementInvalidDomainPolicyArgs and ServicePlacementInvalidDomainPolicyOutput values.
+// You can construct a concrete instance of `ServicePlacementInvalidDomainPolicyInput` via:
+//
+//	ServicePlacementInvalidDomainPolicyArgs{...}
+type ServicePlacementInvalidDomainPolicyInput interface {
+	pulumi.Input
+
+	ToServicePlacementInvalidDomainPolicyOutput() ServicePlacementInvalidDomainPolicyOutput
+	ToServicePlacementInvalidDomainPolicyOutputWithContext(context.Context) ServicePlacementInvalidDomainPolicyOutput
+}
+
+// Describes the policy to be used for placement of a Service Fabric service where a particular fault or upgrade domain should not be used for placement of the instances or replicas of that service.
+type ServicePlacementInvalidDomainPolicyArgs struct {
+	// The name of the domain that should not be used for placement.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// The type of placement policy for a service fabric service. Following are the possible values.
+	// Expected value is 'InvalidDomain'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ServicePlacementInvalidDomainPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePlacementInvalidDomainPolicy)(nil)).Elem()
+}
+
+func (i ServicePlacementInvalidDomainPolicyArgs) ToServicePlacementInvalidDomainPolicyOutput() ServicePlacementInvalidDomainPolicyOutput {
+	return i.ToServicePlacementInvalidDomainPolicyOutputWithContext(context.Background())
+}
+
+func (i ServicePlacementInvalidDomainPolicyArgs) ToServicePlacementInvalidDomainPolicyOutputWithContext(ctx context.Context) ServicePlacementInvalidDomainPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePlacementInvalidDomainPolicyOutput)
+}
+
+// Describes the policy to be used for placement of a Service Fabric service where a particular fault or upgrade domain should not be used for placement of the instances or replicas of that service.
+type ServicePlacementInvalidDomainPolicyOutput struct{ *pulumi.OutputState }
+
+func (ServicePlacementInvalidDomainPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePlacementInvalidDomainPolicy)(nil)).Elem()
+}
+
+func (o ServicePlacementInvalidDomainPolicyOutput) ToServicePlacementInvalidDomainPolicyOutput() ServicePlacementInvalidDomainPolicyOutput {
+	return o
+}
+
+func (o ServicePlacementInvalidDomainPolicyOutput) ToServicePlacementInvalidDomainPolicyOutputWithContext(ctx context.Context) ServicePlacementInvalidDomainPolicyOutput {
+	return o
+}
+
+// The name of the domain that should not be used for placement.
+func (o ServicePlacementInvalidDomainPolicyOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePlacementInvalidDomainPolicy) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The type of placement policy for a service fabric service. Following are the possible values.
+// Expected value is 'InvalidDomain'.
+func (o ServicePlacementInvalidDomainPolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePlacementInvalidDomainPolicy) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Describes the policy to be used for placement of a Service Fabric service where a particular fault or upgrade domain should not be used for placement of the instances or replicas of that service.
@@ -4146,6 +5326,32 @@ type ServicePlacementInvalidDomainPolicyResponse struct {
 	Type string `pulumi:"type"`
 }
 
+// Describes the policy to be used for placement of a Service Fabric service where a particular fault or upgrade domain should not be used for placement of the instances or replicas of that service.
+type ServicePlacementInvalidDomainPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (ServicePlacementInvalidDomainPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePlacementInvalidDomainPolicyResponse)(nil)).Elem()
+}
+
+func (o ServicePlacementInvalidDomainPolicyResponseOutput) ToServicePlacementInvalidDomainPolicyResponseOutput() ServicePlacementInvalidDomainPolicyResponseOutput {
+	return o
+}
+
+func (o ServicePlacementInvalidDomainPolicyResponseOutput) ToServicePlacementInvalidDomainPolicyResponseOutputWithContext(ctx context.Context) ServicePlacementInvalidDomainPolicyResponseOutput {
+	return o
+}
+
+// The name of the domain that should not be used for placement.
+func (o ServicePlacementInvalidDomainPolicyResponseOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePlacementInvalidDomainPolicyResponse) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The type of placement policy for a service fabric service. Following are the possible values.
+// Expected value is 'InvalidDomain'.
+func (o ServicePlacementInvalidDomainPolicyResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePlacementInvalidDomainPolicyResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // The name of the domain that should used for placement as per this policy.
 type ServicePlacementNonPartiallyPlaceServicePolicy struct {
 	// The type of placement policy for a service fabric service. Following are the possible values.
@@ -4153,11 +5359,83 @@ type ServicePlacementNonPartiallyPlaceServicePolicy struct {
 	Type string `pulumi:"type"`
 }
 
+// ServicePlacementNonPartiallyPlaceServicePolicyInput is an input type that accepts ServicePlacementNonPartiallyPlaceServicePolicyArgs and ServicePlacementNonPartiallyPlaceServicePolicyOutput values.
+// You can construct a concrete instance of `ServicePlacementNonPartiallyPlaceServicePolicyInput` via:
+//
+//	ServicePlacementNonPartiallyPlaceServicePolicyArgs{...}
+type ServicePlacementNonPartiallyPlaceServicePolicyInput interface {
+	pulumi.Input
+
+	ToServicePlacementNonPartiallyPlaceServicePolicyOutput() ServicePlacementNonPartiallyPlaceServicePolicyOutput
+	ToServicePlacementNonPartiallyPlaceServicePolicyOutputWithContext(context.Context) ServicePlacementNonPartiallyPlaceServicePolicyOutput
+}
+
+// The name of the domain that should used for placement as per this policy.
+type ServicePlacementNonPartiallyPlaceServicePolicyArgs struct {
+	// The type of placement policy for a service fabric service. Following are the possible values.
+	// Expected value is 'NonPartiallyPlaceService'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ServicePlacementNonPartiallyPlaceServicePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePlacementNonPartiallyPlaceServicePolicy)(nil)).Elem()
+}
+
+func (i ServicePlacementNonPartiallyPlaceServicePolicyArgs) ToServicePlacementNonPartiallyPlaceServicePolicyOutput() ServicePlacementNonPartiallyPlaceServicePolicyOutput {
+	return i.ToServicePlacementNonPartiallyPlaceServicePolicyOutputWithContext(context.Background())
+}
+
+func (i ServicePlacementNonPartiallyPlaceServicePolicyArgs) ToServicePlacementNonPartiallyPlaceServicePolicyOutputWithContext(ctx context.Context) ServicePlacementNonPartiallyPlaceServicePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePlacementNonPartiallyPlaceServicePolicyOutput)
+}
+
+// The name of the domain that should used for placement as per this policy.
+type ServicePlacementNonPartiallyPlaceServicePolicyOutput struct{ *pulumi.OutputState }
+
+func (ServicePlacementNonPartiallyPlaceServicePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePlacementNonPartiallyPlaceServicePolicy)(nil)).Elem()
+}
+
+func (o ServicePlacementNonPartiallyPlaceServicePolicyOutput) ToServicePlacementNonPartiallyPlaceServicePolicyOutput() ServicePlacementNonPartiallyPlaceServicePolicyOutput {
+	return o
+}
+
+func (o ServicePlacementNonPartiallyPlaceServicePolicyOutput) ToServicePlacementNonPartiallyPlaceServicePolicyOutputWithContext(ctx context.Context) ServicePlacementNonPartiallyPlaceServicePolicyOutput {
+	return o
+}
+
+// The type of placement policy for a service fabric service. Following are the possible values.
+// Expected value is 'NonPartiallyPlaceService'.
+func (o ServicePlacementNonPartiallyPlaceServicePolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePlacementNonPartiallyPlaceServicePolicy) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // The name of the domain that should used for placement as per this policy.
 type ServicePlacementNonPartiallyPlaceServicePolicyResponse struct {
 	// The type of placement policy for a service fabric service. Following are the possible values.
 	// Expected value is 'NonPartiallyPlaceService'.
 	Type string `pulumi:"type"`
+}
+
+// The name of the domain that should used for placement as per this policy.
+type ServicePlacementNonPartiallyPlaceServicePolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (ServicePlacementNonPartiallyPlaceServicePolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePlacementNonPartiallyPlaceServicePolicyResponse)(nil)).Elem()
+}
+
+func (o ServicePlacementNonPartiallyPlaceServicePolicyResponseOutput) ToServicePlacementNonPartiallyPlaceServicePolicyResponseOutput() ServicePlacementNonPartiallyPlaceServicePolicyResponseOutput {
+	return o
+}
+
+func (o ServicePlacementNonPartiallyPlaceServicePolicyResponseOutput) ToServicePlacementNonPartiallyPlaceServicePolicyResponseOutputWithContext(ctx context.Context) ServicePlacementNonPartiallyPlaceServicePolicyResponseOutput {
+	return o
+}
+
+// The type of placement policy for a service fabric service. Following are the possible values.
+// Expected value is 'NonPartiallyPlaceService'.
+func (o ServicePlacementNonPartiallyPlaceServicePolicyResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePlacementNonPartiallyPlaceServicePolicyResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Describes the policy to be used for placement of a Service Fabric service where the service's
@@ -4176,6 +5454,78 @@ type ServicePlacementPreferPrimaryDomainPolicy struct {
 	Type string `pulumi:"type"`
 }
 
+// ServicePlacementPreferPrimaryDomainPolicyInput is an input type that accepts ServicePlacementPreferPrimaryDomainPolicyArgs and ServicePlacementPreferPrimaryDomainPolicyOutput values.
+// You can construct a concrete instance of `ServicePlacementPreferPrimaryDomainPolicyInput` via:
+//
+//	ServicePlacementPreferPrimaryDomainPolicyArgs{...}
+type ServicePlacementPreferPrimaryDomainPolicyInput interface {
+	pulumi.Input
+
+	ToServicePlacementPreferPrimaryDomainPolicyOutput() ServicePlacementPreferPrimaryDomainPolicyOutput
+	ToServicePlacementPreferPrimaryDomainPolicyOutputWithContext(context.Context) ServicePlacementPreferPrimaryDomainPolicyOutput
+}
+
+// Describes the policy to be used for placement of a Service Fabric service where the service's
+// Primary replicas should optimally be placed in a particular domain.
+//
+// This placement policy is usually used with fault domains in scenarios where the Service Fabric
+// cluster is geographically distributed in order to indicate that a service's primary replica should
+// be located in a particular fault domain, which in geo-distributed scenarios usually aligns with regional
+// or datacenter boundaries. Note that since this is an optimization it is possible that the Primary replica
+// may not end up located in this domain due to failures, capacity limits, or other constraints.
+type ServicePlacementPreferPrimaryDomainPolicyArgs struct {
+	// The name of the domain that should used for placement as per this policy.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// The type of placement policy for a service fabric service. Following are the possible values.
+	// Expected value is 'PreferredPrimaryDomain'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ServicePlacementPreferPrimaryDomainPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePlacementPreferPrimaryDomainPolicy)(nil)).Elem()
+}
+
+func (i ServicePlacementPreferPrimaryDomainPolicyArgs) ToServicePlacementPreferPrimaryDomainPolicyOutput() ServicePlacementPreferPrimaryDomainPolicyOutput {
+	return i.ToServicePlacementPreferPrimaryDomainPolicyOutputWithContext(context.Background())
+}
+
+func (i ServicePlacementPreferPrimaryDomainPolicyArgs) ToServicePlacementPreferPrimaryDomainPolicyOutputWithContext(ctx context.Context) ServicePlacementPreferPrimaryDomainPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePlacementPreferPrimaryDomainPolicyOutput)
+}
+
+// Describes the policy to be used for placement of a Service Fabric service where the service's
+// Primary replicas should optimally be placed in a particular domain.
+//
+// This placement policy is usually used with fault domains in scenarios where the Service Fabric
+// cluster is geographically distributed in order to indicate that a service's primary replica should
+// be located in a particular fault domain, which in geo-distributed scenarios usually aligns with regional
+// or datacenter boundaries. Note that since this is an optimization it is possible that the Primary replica
+// may not end up located in this domain due to failures, capacity limits, or other constraints.
+type ServicePlacementPreferPrimaryDomainPolicyOutput struct{ *pulumi.OutputState }
+
+func (ServicePlacementPreferPrimaryDomainPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePlacementPreferPrimaryDomainPolicy)(nil)).Elem()
+}
+
+func (o ServicePlacementPreferPrimaryDomainPolicyOutput) ToServicePlacementPreferPrimaryDomainPolicyOutput() ServicePlacementPreferPrimaryDomainPolicyOutput {
+	return o
+}
+
+func (o ServicePlacementPreferPrimaryDomainPolicyOutput) ToServicePlacementPreferPrimaryDomainPolicyOutputWithContext(ctx context.Context) ServicePlacementPreferPrimaryDomainPolicyOutput {
+	return o
+}
+
+// The name of the domain that should used for placement as per this policy.
+func (o ServicePlacementPreferPrimaryDomainPolicyOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePlacementPreferPrimaryDomainPolicy) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The type of placement policy for a service fabric service. Following are the possible values.
+// Expected value is 'PreferredPrimaryDomain'.
+func (o ServicePlacementPreferPrimaryDomainPolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePlacementPreferPrimaryDomainPolicy) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Describes the policy to be used for placement of a Service Fabric service where the service's
 // Primary replicas should optimally be placed in a particular domain.
 //
@@ -4190,6 +5540,39 @@ type ServicePlacementPreferPrimaryDomainPolicyResponse struct {
 	// The type of placement policy for a service fabric service. Following are the possible values.
 	// Expected value is 'PreferredPrimaryDomain'.
 	Type string `pulumi:"type"`
+}
+
+// Describes the policy to be used for placement of a Service Fabric service where the service's
+// Primary replicas should optimally be placed in a particular domain.
+//
+// This placement policy is usually used with fault domains in scenarios where the Service Fabric
+// cluster is geographically distributed in order to indicate that a service's primary replica should
+// be located in a particular fault domain, which in geo-distributed scenarios usually aligns with regional
+// or datacenter boundaries. Note that since this is an optimization it is possible that the Primary replica
+// may not end up located in this domain due to failures, capacity limits, or other constraints.
+type ServicePlacementPreferPrimaryDomainPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (ServicePlacementPreferPrimaryDomainPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePlacementPreferPrimaryDomainPolicyResponse)(nil)).Elem()
+}
+
+func (o ServicePlacementPreferPrimaryDomainPolicyResponseOutput) ToServicePlacementPreferPrimaryDomainPolicyResponseOutput() ServicePlacementPreferPrimaryDomainPolicyResponseOutput {
+	return o
+}
+
+func (o ServicePlacementPreferPrimaryDomainPolicyResponseOutput) ToServicePlacementPreferPrimaryDomainPolicyResponseOutputWithContext(ctx context.Context) ServicePlacementPreferPrimaryDomainPolicyResponseOutput {
+	return o
+}
+
+// The name of the domain that should used for placement as per this policy.
+func (o ServicePlacementPreferPrimaryDomainPolicyResponseOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePlacementPreferPrimaryDomainPolicyResponse) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The type of placement policy for a service fabric service. Following are the possible values.
+// Expected value is 'PreferredPrimaryDomain'.
+func (o ServicePlacementPreferPrimaryDomainPolicyResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePlacementPreferPrimaryDomainPolicyResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Describes the policy to be used for placement of a Service Fabric service where two replicas
@@ -4209,6 +5592,80 @@ type ServicePlacementRequireDomainDistributionPolicy struct {
 	Type string `pulumi:"type"`
 }
 
+// ServicePlacementRequireDomainDistributionPolicyInput is an input type that accepts ServicePlacementRequireDomainDistributionPolicyArgs and ServicePlacementRequireDomainDistributionPolicyOutput values.
+// You can construct a concrete instance of `ServicePlacementRequireDomainDistributionPolicyInput` via:
+//
+//	ServicePlacementRequireDomainDistributionPolicyArgs{...}
+type ServicePlacementRequireDomainDistributionPolicyInput interface {
+	pulumi.Input
+
+	ToServicePlacementRequireDomainDistributionPolicyOutput() ServicePlacementRequireDomainDistributionPolicyOutput
+	ToServicePlacementRequireDomainDistributionPolicyOutputWithContext(context.Context) ServicePlacementRequireDomainDistributionPolicyOutput
+}
+
+// Describes the policy to be used for placement of a Service Fabric service where two replicas
+// from the same partition should never be placed in the same fault or upgrade domain.
+//
+// While this is not common it can expose the service to an increased risk of concurrent failures
+// due to unplanned outages or other cases of subsequent/concurrent failures. As an example, consider
+// a case where replicas are deployed across different data center, with one replica per location.
+// In the event that one of the datacenters goes offline, normally the replica that was placed in that
+// datacenter will be packed into one of the remaining datacenters. If this is not desirable then this
+// policy should be set.
+type ServicePlacementRequireDomainDistributionPolicyArgs struct {
+	// The name of the domain that should used for placement as per this policy.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// The type of placement policy for a service fabric service. Following are the possible values.
+	// Expected value is 'RequiredDomainDistribution'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ServicePlacementRequireDomainDistributionPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePlacementRequireDomainDistributionPolicy)(nil)).Elem()
+}
+
+func (i ServicePlacementRequireDomainDistributionPolicyArgs) ToServicePlacementRequireDomainDistributionPolicyOutput() ServicePlacementRequireDomainDistributionPolicyOutput {
+	return i.ToServicePlacementRequireDomainDistributionPolicyOutputWithContext(context.Background())
+}
+
+func (i ServicePlacementRequireDomainDistributionPolicyArgs) ToServicePlacementRequireDomainDistributionPolicyOutputWithContext(ctx context.Context) ServicePlacementRequireDomainDistributionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePlacementRequireDomainDistributionPolicyOutput)
+}
+
+// Describes the policy to be used for placement of a Service Fabric service where two replicas
+// from the same partition should never be placed in the same fault or upgrade domain.
+//
+// While this is not common it can expose the service to an increased risk of concurrent failures
+// due to unplanned outages or other cases of subsequent/concurrent failures. As an example, consider
+// a case where replicas are deployed across different data center, with one replica per location.
+// In the event that one of the datacenters goes offline, normally the replica that was placed in that
+// datacenter will be packed into one of the remaining datacenters. If this is not desirable then this
+// policy should be set.
+type ServicePlacementRequireDomainDistributionPolicyOutput struct{ *pulumi.OutputState }
+
+func (ServicePlacementRequireDomainDistributionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePlacementRequireDomainDistributionPolicy)(nil)).Elem()
+}
+
+func (o ServicePlacementRequireDomainDistributionPolicyOutput) ToServicePlacementRequireDomainDistributionPolicyOutput() ServicePlacementRequireDomainDistributionPolicyOutput {
+	return o
+}
+
+func (o ServicePlacementRequireDomainDistributionPolicyOutput) ToServicePlacementRequireDomainDistributionPolicyOutputWithContext(ctx context.Context) ServicePlacementRequireDomainDistributionPolicyOutput {
+	return o
+}
+
+// The name of the domain that should used for placement as per this policy.
+func (o ServicePlacementRequireDomainDistributionPolicyOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePlacementRequireDomainDistributionPolicy) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The type of placement policy for a service fabric service. Following are the possible values.
+// Expected value is 'RequiredDomainDistribution'.
+func (o ServicePlacementRequireDomainDistributionPolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePlacementRequireDomainDistributionPolicy) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Describes the policy to be used for placement of a Service Fabric service where two replicas
 // from the same partition should never be placed in the same fault or upgrade domain.
 //
@@ -4226,6 +5683,40 @@ type ServicePlacementRequireDomainDistributionPolicyResponse struct {
 	Type string `pulumi:"type"`
 }
 
+// Describes the policy to be used for placement of a Service Fabric service where two replicas
+// from the same partition should never be placed in the same fault or upgrade domain.
+//
+// While this is not common it can expose the service to an increased risk of concurrent failures
+// due to unplanned outages or other cases of subsequent/concurrent failures. As an example, consider
+// a case where replicas are deployed across different data center, with one replica per location.
+// In the event that one of the datacenters goes offline, normally the replica that was placed in that
+// datacenter will be packed into one of the remaining datacenters. If this is not desirable then this
+// policy should be set.
+type ServicePlacementRequireDomainDistributionPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (ServicePlacementRequireDomainDistributionPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePlacementRequireDomainDistributionPolicyResponse)(nil)).Elem()
+}
+
+func (o ServicePlacementRequireDomainDistributionPolicyResponseOutput) ToServicePlacementRequireDomainDistributionPolicyResponseOutput() ServicePlacementRequireDomainDistributionPolicyResponseOutput {
+	return o
+}
+
+func (o ServicePlacementRequireDomainDistributionPolicyResponseOutput) ToServicePlacementRequireDomainDistributionPolicyResponseOutputWithContext(ctx context.Context) ServicePlacementRequireDomainDistributionPolicyResponseOutput {
+	return o
+}
+
+// The name of the domain that should used for placement as per this policy.
+func (o ServicePlacementRequireDomainDistributionPolicyResponseOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePlacementRequireDomainDistributionPolicyResponse) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The type of placement policy for a service fabric service. Following are the possible values.
+// Expected value is 'RequiredDomainDistribution'.
+func (o ServicePlacementRequireDomainDistributionPolicyResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePlacementRequireDomainDistributionPolicyResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Describes the policy to be used for placement of a Service Fabric service where the instances or replicas of that service must be placed in a particular domain.
 type ServicePlacementRequiredDomainPolicy struct {
 	// The name of the domain that should used for placement as per this policy.
@@ -4235,6 +5726,64 @@ type ServicePlacementRequiredDomainPolicy struct {
 	Type string `pulumi:"type"`
 }
 
+// ServicePlacementRequiredDomainPolicyInput is an input type that accepts ServicePlacementRequiredDomainPolicyArgs and ServicePlacementRequiredDomainPolicyOutput values.
+// You can construct a concrete instance of `ServicePlacementRequiredDomainPolicyInput` via:
+//
+//	ServicePlacementRequiredDomainPolicyArgs{...}
+type ServicePlacementRequiredDomainPolicyInput interface {
+	pulumi.Input
+
+	ToServicePlacementRequiredDomainPolicyOutput() ServicePlacementRequiredDomainPolicyOutput
+	ToServicePlacementRequiredDomainPolicyOutputWithContext(context.Context) ServicePlacementRequiredDomainPolicyOutput
+}
+
+// Describes the policy to be used for placement of a Service Fabric service where the instances or replicas of that service must be placed in a particular domain.
+type ServicePlacementRequiredDomainPolicyArgs struct {
+	// The name of the domain that should used for placement as per this policy.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// The type of placement policy for a service fabric service. Following are the possible values.
+	// Expected value is 'RequiredDomain'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ServicePlacementRequiredDomainPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePlacementRequiredDomainPolicy)(nil)).Elem()
+}
+
+func (i ServicePlacementRequiredDomainPolicyArgs) ToServicePlacementRequiredDomainPolicyOutput() ServicePlacementRequiredDomainPolicyOutput {
+	return i.ToServicePlacementRequiredDomainPolicyOutputWithContext(context.Background())
+}
+
+func (i ServicePlacementRequiredDomainPolicyArgs) ToServicePlacementRequiredDomainPolicyOutputWithContext(ctx context.Context) ServicePlacementRequiredDomainPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePlacementRequiredDomainPolicyOutput)
+}
+
+// Describes the policy to be used for placement of a Service Fabric service where the instances or replicas of that service must be placed in a particular domain.
+type ServicePlacementRequiredDomainPolicyOutput struct{ *pulumi.OutputState }
+
+func (ServicePlacementRequiredDomainPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePlacementRequiredDomainPolicy)(nil)).Elem()
+}
+
+func (o ServicePlacementRequiredDomainPolicyOutput) ToServicePlacementRequiredDomainPolicyOutput() ServicePlacementRequiredDomainPolicyOutput {
+	return o
+}
+
+func (o ServicePlacementRequiredDomainPolicyOutput) ToServicePlacementRequiredDomainPolicyOutputWithContext(ctx context.Context) ServicePlacementRequiredDomainPolicyOutput {
+	return o
+}
+
+// The name of the domain that should used for placement as per this policy.
+func (o ServicePlacementRequiredDomainPolicyOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePlacementRequiredDomainPolicy) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The type of placement policy for a service fabric service. Following are the possible values.
+// Expected value is 'RequiredDomain'.
+func (o ServicePlacementRequiredDomainPolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePlacementRequiredDomainPolicy) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Describes the policy to be used for placement of a Service Fabric service where the instances or replicas of that service must be placed in a particular domain.
 type ServicePlacementRequiredDomainPolicyResponse struct {
 	// The name of the domain that should used for placement as per this policy.
@@ -4242,6 +5791,32 @@ type ServicePlacementRequiredDomainPolicyResponse struct {
 	// The type of placement policy for a service fabric service. Following are the possible values.
 	// Expected value is 'RequiredDomain'.
 	Type string `pulumi:"type"`
+}
+
+// Describes the policy to be used for placement of a Service Fabric service where the instances or replicas of that service must be placed in a particular domain.
+type ServicePlacementRequiredDomainPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (ServicePlacementRequiredDomainPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePlacementRequiredDomainPolicyResponse)(nil)).Elem()
+}
+
+func (o ServicePlacementRequiredDomainPolicyResponseOutput) ToServicePlacementRequiredDomainPolicyResponseOutput() ServicePlacementRequiredDomainPolicyResponseOutput {
+	return o
+}
+
+func (o ServicePlacementRequiredDomainPolicyResponseOutput) ToServicePlacementRequiredDomainPolicyResponseOutputWithContext(ctx context.Context) ServicePlacementRequiredDomainPolicyResponseOutput {
+	return o
+}
+
+// The name of the domain that should used for placement as per this policy.
+func (o ServicePlacementRequiredDomainPolicyResponseOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePlacementRequiredDomainPolicyResponse) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The type of placement policy for a service fabric service. Following are the possible values.
+// Expected value is 'RequiredDomain'.
+func (o ServicePlacementRequiredDomainPolicyResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePlacementRequiredDomainPolicyResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Represents the health policy used to evaluate the health of services belonging to a service type.
@@ -5017,11 +6592,169 @@ type SingletonPartitionScheme struct {
 	PartitionScheme string `pulumi:"partitionScheme"`
 }
 
+// SingletonPartitionSchemeInput is an input type that accepts SingletonPartitionSchemeArgs and SingletonPartitionSchemeOutput values.
+// You can construct a concrete instance of `SingletonPartitionSchemeInput` via:
+//
+//	SingletonPartitionSchemeArgs{...}
+type SingletonPartitionSchemeInput interface {
+	pulumi.Input
+
+	ToSingletonPartitionSchemeOutput() SingletonPartitionSchemeOutput
+	ToSingletonPartitionSchemeOutputWithContext(context.Context) SingletonPartitionSchemeOutput
+}
+
+// Describes the partition scheme of a singleton-partitioned, or non-partitioned service.
+type SingletonPartitionSchemeArgs struct {
+	// Enumerates the ways that a service can be partitioned.
+	// Expected value is 'Singleton'.
+	PartitionScheme pulumi.StringInput `pulumi:"partitionScheme"`
+}
+
+func (SingletonPartitionSchemeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingletonPartitionScheme)(nil)).Elem()
+}
+
+func (i SingletonPartitionSchemeArgs) ToSingletonPartitionSchemeOutput() SingletonPartitionSchemeOutput {
+	return i.ToSingletonPartitionSchemeOutputWithContext(context.Background())
+}
+
+func (i SingletonPartitionSchemeArgs) ToSingletonPartitionSchemeOutputWithContext(ctx context.Context) SingletonPartitionSchemeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingletonPartitionSchemeOutput)
+}
+
+func (i SingletonPartitionSchemeArgs) ToSingletonPartitionSchemePtrOutput() SingletonPartitionSchemePtrOutput {
+	return i.ToSingletonPartitionSchemePtrOutputWithContext(context.Background())
+}
+
+func (i SingletonPartitionSchemeArgs) ToSingletonPartitionSchemePtrOutputWithContext(ctx context.Context) SingletonPartitionSchemePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingletonPartitionSchemeOutput).ToSingletonPartitionSchemePtrOutputWithContext(ctx)
+}
+
+// SingletonPartitionSchemePtrInput is an input type that accepts SingletonPartitionSchemeArgs, SingletonPartitionSchemePtr and SingletonPartitionSchemePtrOutput values.
+// You can construct a concrete instance of `SingletonPartitionSchemePtrInput` via:
+//
+//	        SingletonPartitionSchemeArgs{...}
+//
+//	or:
+//
+//	        nil
+type SingletonPartitionSchemePtrInput interface {
+	pulumi.Input
+
+	ToSingletonPartitionSchemePtrOutput() SingletonPartitionSchemePtrOutput
+	ToSingletonPartitionSchemePtrOutputWithContext(context.Context) SingletonPartitionSchemePtrOutput
+}
+
+type singletonPartitionSchemePtrType SingletonPartitionSchemeArgs
+
+func SingletonPartitionSchemePtr(v *SingletonPartitionSchemeArgs) SingletonPartitionSchemePtrInput {
+	return (*singletonPartitionSchemePtrType)(v)
+}
+
+func (*singletonPartitionSchemePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SingletonPartitionScheme)(nil)).Elem()
+}
+
+func (i *singletonPartitionSchemePtrType) ToSingletonPartitionSchemePtrOutput() SingletonPartitionSchemePtrOutput {
+	return i.ToSingletonPartitionSchemePtrOutputWithContext(context.Background())
+}
+
+func (i *singletonPartitionSchemePtrType) ToSingletonPartitionSchemePtrOutputWithContext(ctx context.Context) SingletonPartitionSchemePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingletonPartitionSchemePtrOutput)
+}
+
+// Describes the partition scheme of a singleton-partitioned, or non-partitioned service.
+type SingletonPartitionSchemeOutput struct{ *pulumi.OutputState }
+
+func (SingletonPartitionSchemeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingletonPartitionScheme)(nil)).Elem()
+}
+
+func (o SingletonPartitionSchemeOutput) ToSingletonPartitionSchemeOutput() SingletonPartitionSchemeOutput {
+	return o
+}
+
+func (o SingletonPartitionSchemeOutput) ToSingletonPartitionSchemeOutputWithContext(ctx context.Context) SingletonPartitionSchemeOutput {
+	return o
+}
+
+func (o SingletonPartitionSchemeOutput) ToSingletonPartitionSchemePtrOutput() SingletonPartitionSchemePtrOutput {
+	return o.ToSingletonPartitionSchemePtrOutputWithContext(context.Background())
+}
+
+func (o SingletonPartitionSchemeOutput) ToSingletonPartitionSchemePtrOutputWithContext(ctx context.Context) SingletonPartitionSchemePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SingletonPartitionScheme) *SingletonPartitionScheme {
+		return &v
+	}).(SingletonPartitionSchemePtrOutput)
+}
+
+// Enumerates the ways that a service can be partitioned.
+// Expected value is 'Singleton'.
+func (o SingletonPartitionSchemeOutput) PartitionScheme() pulumi.StringOutput {
+	return o.ApplyT(func(v SingletonPartitionScheme) string { return v.PartitionScheme }).(pulumi.StringOutput)
+}
+
+type SingletonPartitionSchemePtrOutput struct{ *pulumi.OutputState }
+
+func (SingletonPartitionSchemePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SingletonPartitionScheme)(nil)).Elem()
+}
+
+func (o SingletonPartitionSchemePtrOutput) ToSingletonPartitionSchemePtrOutput() SingletonPartitionSchemePtrOutput {
+	return o
+}
+
+func (o SingletonPartitionSchemePtrOutput) ToSingletonPartitionSchemePtrOutputWithContext(ctx context.Context) SingletonPartitionSchemePtrOutput {
+	return o
+}
+
+func (o SingletonPartitionSchemePtrOutput) Elem() SingletonPartitionSchemeOutput {
+	return o.ApplyT(func(v *SingletonPartitionScheme) SingletonPartitionScheme {
+		if v != nil {
+			return *v
+		}
+		var ret SingletonPartitionScheme
+		return ret
+	}).(SingletonPartitionSchemeOutput)
+}
+
+// Enumerates the ways that a service can be partitioned.
+// Expected value is 'Singleton'.
+func (o SingletonPartitionSchemePtrOutput) PartitionScheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingletonPartitionScheme) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PartitionScheme
+	}).(pulumi.StringPtrOutput)
+}
+
 // Describes the partition scheme of a singleton-partitioned, or non-partitioned service.
 type SingletonPartitionSchemeResponse struct {
 	// Enumerates the ways that a service can be partitioned.
 	// Expected value is 'Singleton'.
 	PartitionScheme string `pulumi:"partitionScheme"`
+}
+
+// Describes the partition scheme of a singleton-partitioned, or non-partitioned service.
+type SingletonPartitionSchemeResponseOutput struct{ *pulumi.OutputState }
+
+func (SingletonPartitionSchemeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingletonPartitionSchemeResponse)(nil)).Elem()
+}
+
+func (o SingletonPartitionSchemeResponseOutput) ToSingletonPartitionSchemeResponseOutput() SingletonPartitionSchemeResponseOutput {
+	return o
+}
+
+func (o SingletonPartitionSchemeResponseOutput) ToSingletonPartitionSchemeResponseOutputWithContext(ctx context.Context) SingletonPartitionSchemeResponseOutput {
+	return o
+}
+
+// Enumerates the ways that a service can be partitioned.
+// Expected value is 'Singleton'.
+func (o SingletonPartitionSchemeResponseOutput) PartitionScheme() pulumi.StringOutput {
+	return o.ApplyT(func(v SingletonPartitionSchemeResponse) string { return v.PartitionScheme }).(pulumi.StringOutput)
 }
 
 // Service Fabric managed cluster Sku definition
@@ -5148,6 +6881,438 @@ type StatefulServiceProperties struct {
 	TargetReplicaSetSize *int `pulumi:"targetReplicaSetSize"`
 }
 
+// StatefulServicePropertiesInput is an input type that accepts StatefulServicePropertiesArgs and StatefulServicePropertiesOutput values.
+// You can construct a concrete instance of `StatefulServicePropertiesInput` via:
+//
+//	StatefulServicePropertiesArgs{...}
+type StatefulServicePropertiesInput interface {
+	pulumi.Input
+
+	ToStatefulServicePropertiesOutput() StatefulServicePropertiesOutput
+	ToStatefulServicePropertiesOutputWithContext(context.Context) StatefulServicePropertiesOutput
+}
+
+// The properties of a stateful service resource.
+type StatefulServicePropertiesArgs struct {
+	// A list that describes the correlation of the service with other services.
+	CorrelationScheme ServiceCorrelationArrayInput `pulumi:"correlationScheme"`
+	// Specifies the move cost for the service.
+	DefaultMoveCost pulumi.StringPtrInput `pulumi:"defaultMoveCost"`
+	// A flag indicating whether this is a persistent service which stores states on the local disk. If it is then the value of this property is true, if not it is false.
+	HasPersistedState pulumi.BoolPtrInput `pulumi:"hasPersistedState"`
+	// The minimum replica set size as a number.
+	MinReplicaSetSize pulumi.IntPtrInput `pulumi:"minReplicaSetSize"`
+	// Describes how the service is partitioned.
+	PartitionDescription pulumi.Input `pulumi:"partitionDescription"`
+	// The placement constraints as a string. Placement constraints are boolean expressions on node properties and allow for restricting a service to particular nodes based on the service requirements. For example, to place a service on nodes where NodeType is blue specify the following: "NodeColor == blue)".
+	PlacementConstraints pulumi.StringPtrInput `pulumi:"placementConstraints"`
+	// The maximum duration for which a partition is allowed to be in a state of quorum loss, represented in ISO 8601 format "hh:mm:ss".
+	QuorumLossWaitDuration pulumi.StringPtrInput `pulumi:"quorumLossWaitDuration"`
+	// The duration between when a replica goes down and when a new replica is created, represented in ISO 8601 format "hh:mm:ss".
+	ReplicaRestartWaitDuration pulumi.StringPtrInput `pulumi:"replicaRestartWaitDuration"`
+	// Scaling policies for this service.
+	ScalingPolicies ScalingPolicyArrayInput `pulumi:"scalingPolicies"`
+	// Dns name used for the service. If this is specified, then the DNS name can be used to return the IP addresses of service endpoints for application layer protocols (e.g., HTTP).
+	// When updating serviceDnsName, old name may be temporarily resolvable. However, rely on new name.
+	// When removing serviceDnsName, removed name may temporarily be resolvable. Do not rely on the name being unresolvable.
+	ServiceDnsName pulumi.StringPtrInput `pulumi:"serviceDnsName"`
+	// The kind of service (Stateless or Stateful).
+	// Expected value is 'Stateful'.
+	ServiceKind pulumi.StringInput `pulumi:"serviceKind"`
+	// The service load metrics is given as an array of ServiceLoadMetric objects.
+	ServiceLoadMetrics ServiceLoadMetricArrayInput `pulumi:"serviceLoadMetrics"`
+	// The activation Mode of the service package
+	ServicePackageActivationMode pulumi.StringPtrInput `pulumi:"servicePackageActivationMode"`
+	// A list that describes the correlation of the service with other services.
+	ServicePlacementPolicies pulumi.ArrayInput `pulumi:"servicePlacementPolicies"`
+	// The duration for which replicas can stay InBuild before reporting that build is stuck, represented in ISO 8601 format "hh:mm:ss".
+	ServicePlacementTimeLimit pulumi.StringPtrInput `pulumi:"servicePlacementTimeLimit"`
+	// The name of the service type
+	ServiceTypeName pulumi.StringInput `pulumi:"serviceTypeName"`
+	// The definition on how long StandBy replicas should be maintained before being removed, represented in ISO 8601 format "hh:mm:ss".
+	StandByReplicaKeepDuration pulumi.StringPtrInput `pulumi:"standByReplicaKeepDuration"`
+	// The target replica set size as a number.
+	TargetReplicaSetSize pulumi.IntPtrInput `pulumi:"targetReplicaSetSize"`
+}
+
+func (StatefulServicePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulServiceProperties)(nil)).Elem()
+}
+
+func (i StatefulServicePropertiesArgs) ToStatefulServicePropertiesOutput() StatefulServicePropertiesOutput {
+	return i.ToStatefulServicePropertiesOutputWithContext(context.Background())
+}
+
+func (i StatefulServicePropertiesArgs) ToStatefulServicePropertiesOutputWithContext(ctx context.Context) StatefulServicePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulServicePropertiesOutput)
+}
+
+func (i StatefulServicePropertiesArgs) ToStatefulServicePropertiesPtrOutput() StatefulServicePropertiesPtrOutput {
+	return i.ToStatefulServicePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i StatefulServicePropertiesArgs) ToStatefulServicePropertiesPtrOutputWithContext(ctx context.Context) StatefulServicePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulServicePropertiesOutput).ToStatefulServicePropertiesPtrOutputWithContext(ctx)
+}
+
+// StatefulServicePropertiesPtrInput is an input type that accepts StatefulServicePropertiesArgs, StatefulServicePropertiesPtr and StatefulServicePropertiesPtrOutput values.
+// You can construct a concrete instance of `StatefulServicePropertiesPtrInput` via:
+//
+//	        StatefulServicePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type StatefulServicePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToStatefulServicePropertiesPtrOutput() StatefulServicePropertiesPtrOutput
+	ToStatefulServicePropertiesPtrOutputWithContext(context.Context) StatefulServicePropertiesPtrOutput
+}
+
+type statefulServicePropertiesPtrType StatefulServicePropertiesArgs
+
+func StatefulServicePropertiesPtr(v *StatefulServicePropertiesArgs) StatefulServicePropertiesPtrInput {
+	return (*statefulServicePropertiesPtrType)(v)
+}
+
+func (*statefulServicePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulServiceProperties)(nil)).Elem()
+}
+
+func (i *statefulServicePropertiesPtrType) ToStatefulServicePropertiesPtrOutput() StatefulServicePropertiesPtrOutput {
+	return i.ToStatefulServicePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *statefulServicePropertiesPtrType) ToStatefulServicePropertiesPtrOutputWithContext(ctx context.Context) StatefulServicePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulServicePropertiesPtrOutput)
+}
+
+// The properties of a stateful service resource.
+type StatefulServicePropertiesOutput struct{ *pulumi.OutputState }
+
+func (StatefulServicePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulServiceProperties)(nil)).Elem()
+}
+
+func (o StatefulServicePropertiesOutput) ToStatefulServicePropertiesOutput() StatefulServicePropertiesOutput {
+	return o
+}
+
+func (o StatefulServicePropertiesOutput) ToStatefulServicePropertiesOutputWithContext(ctx context.Context) StatefulServicePropertiesOutput {
+	return o
+}
+
+func (o StatefulServicePropertiesOutput) ToStatefulServicePropertiesPtrOutput() StatefulServicePropertiesPtrOutput {
+	return o.ToStatefulServicePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o StatefulServicePropertiesOutput) ToStatefulServicePropertiesPtrOutputWithContext(ctx context.Context) StatefulServicePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatefulServiceProperties) *StatefulServiceProperties {
+		return &v
+	}).(StatefulServicePropertiesPtrOutput)
+}
+
+// A list that describes the correlation of the service with other services.
+func (o StatefulServicePropertiesOutput) CorrelationScheme() ServiceCorrelationArrayOutput {
+	return o.ApplyT(func(v StatefulServiceProperties) []ServiceCorrelation { return v.CorrelationScheme }).(ServiceCorrelationArrayOutput)
+}
+
+// Specifies the move cost for the service.
+func (o StatefulServicePropertiesOutput) DefaultMoveCost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulServiceProperties) *string { return v.DefaultMoveCost }).(pulumi.StringPtrOutput)
+}
+
+// A flag indicating whether this is a persistent service which stores states on the local disk. If it is then the value of this property is true, if not it is false.
+func (o StatefulServicePropertiesOutput) HasPersistedState() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StatefulServiceProperties) *bool { return v.HasPersistedState }).(pulumi.BoolPtrOutput)
+}
+
+// The minimum replica set size as a number.
+func (o StatefulServicePropertiesOutput) MinReplicaSetSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulServiceProperties) *int { return v.MinReplicaSetSize }).(pulumi.IntPtrOutput)
+}
+
+// Describes how the service is partitioned.
+func (o StatefulServicePropertiesOutput) PartitionDescription() pulumi.AnyOutput {
+	return o.ApplyT(func(v StatefulServiceProperties) interface{} { return v.PartitionDescription }).(pulumi.AnyOutput)
+}
+
+// The placement constraints as a string. Placement constraints are boolean expressions on node properties and allow for restricting a service to particular nodes based on the service requirements. For example, to place a service on nodes where NodeType is blue specify the following: "NodeColor == blue)".
+func (o StatefulServicePropertiesOutput) PlacementConstraints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulServiceProperties) *string { return v.PlacementConstraints }).(pulumi.StringPtrOutput)
+}
+
+// The maximum duration for which a partition is allowed to be in a state of quorum loss, represented in ISO 8601 format "hh:mm:ss".
+func (o StatefulServicePropertiesOutput) QuorumLossWaitDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulServiceProperties) *string { return v.QuorumLossWaitDuration }).(pulumi.StringPtrOutput)
+}
+
+// The duration between when a replica goes down and when a new replica is created, represented in ISO 8601 format "hh:mm:ss".
+func (o StatefulServicePropertiesOutput) ReplicaRestartWaitDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulServiceProperties) *string { return v.ReplicaRestartWaitDuration }).(pulumi.StringPtrOutput)
+}
+
+// Scaling policies for this service.
+func (o StatefulServicePropertiesOutput) ScalingPolicies() ScalingPolicyArrayOutput {
+	return o.ApplyT(func(v StatefulServiceProperties) []ScalingPolicy { return v.ScalingPolicies }).(ScalingPolicyArrayOutput)
+}
+
+// Dns name used for the service. If this is specified, then the DNS name can be used to return the IP addresses of service endpoints for application layer protocols (e.g., HTTP).
+// When updating serviceDnsName, old name may be temporarily resolvable. However, rely on new name.
+// When removing serviceDnsName, removed name may temporarily be resolvable. Do not rely on the name being unresolvable.
+func (o StatefulServicePropertiesOutput) ServiceDnsName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulServiceProperties) *string { return v.ServiceDnsName }).(pulumi.StringPtrOutput)
+}
+
+// The kind of service (Stateless or Stateful).
+// Expected value is 'Stateful'.
+func (o StatefulServicePropertiesOutput) ServiceKind() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulServiceProperties) string { return v.ServiceKind }).(pulumi.StringOutput)
+}
+
+// The service load metrics is given as an array of ServiceLoadMetric objects.
+func (o StatefulServicePropertiesOutput) ServiceLoadMetrics() ServiceLoadMetricArrayOutput {
+	return o.ApplyT(func(v StatefulServiceProperties) []ServiceLoadMetric { return v.ServiceLoadMetrics }).(ServiceLoadMetricArrayOutput)
+}
+
+// The activation Mode of the service package
+func (o StatefulServicePropertiesOutput) ServicePackageActivationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulServiceProperties) *string { return v.ServicePackageActivationMode }).(pulumi.StringPtrOutput)
+}
+
+// A list that describes the correlation of the service with other services.
+func (o StatefulServicePropertiesOutput) ServicePlacementPolicies() pulumi.ArrayOutput {
+	return o.ApplyT(func(v StatefulServiceProperties) []interface{} { return v.ServicePlacementPolicies }).(pulumi.ArrayOutput)
+}
+
+// The duration for which replicas can stay InBuild before reporting that build is stuck, represented in ISO 8601 format "hh:mm:ss".
+func (o StatefulServicePropertiesOutput) ServicePlacementTimeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulServiceProperties) *string { return v.ServicePlacementTimeLimit }).(pulumi.StringPtrOutput)
+}
+
+// The name of the service type
+func (o StatefulServicePropertiesOutput) ServiceTypeName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulServiceProperties) string { return v.ServiceTypeName }).(pulumi.StringOutput)
+}
+
+// The definition on how long StandBy replicas should be maintained before being removed, represented in ISO 8601 format "hh:mm:ss".
+func (o StatefulServicePropertiesOutput) StandByReplicaKeepDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulServiceProperties) *string { return v.StandByReplicaKeepDuration }).(pulumi.StringPtrOutput)
+}
+
+// The target replica set size as a number.
+func (o StatefulServicePropertiesOutput) TargetReplicaSetSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulServiceProperties) *int { return v.TargetReplicaSetSize }).(pulumi.IntPtrOutput)
+}
+
+type StatefulServicePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (StatefulServicePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatefulServiceProperties)(nil)).Elem()
+}
+
+func (o StatefulServicePropertiesPtrOutput) ToStatefulServicePropertiesPtrOutput() StatefulServicePropertiesPtrOutput {
+	return o
+}
+
+func (o StatefulServicePropertiesPtrOutput) ToStatefulServicePropertiesPtrOutputWithContext(ctx context.Context) StatefulServicePropertiesPtrOutput {
+	return o
+}
+
+func (o StatefulServicePropertiesPtrOutput) Elem() StatefulServicePropertiesOutput {
+	return o.ApplyT(func(v *StatefulServiceProperties) StatefulServiceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret StatefulServiceProperties
+		return ret
+	}).(StatefulServicePropertiesOutput)
+}
+
+// A list that describes the correlation of the service with other services.
+func (o StatefulServicePropertiesPtrOutput) CorrelationScheme() ServiceCorrelationArrayOutput {
+	return o.ApplyT(func(v *StatefulServiceProperties) []ServiceCorrelation {
+		if v == nil {
+			return nil
+		}
+		return v.CorrelationScheme
+	}).(ServiceCorrelationArrayOutput)
+}
+
+// Specifies the move cost for the service.
+func (o StatefulServicePropertiesPtrOutput) DefaultMoveCost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatefulServiceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultMoveCost
+	}).(pulumi.StringPtrOutput)
+}
+
+// A flag indicating whether this is a persistent service which stores states on the local disk. If it is then the value of this property is true, if not it is false.
+func (o StatefulServicePropertiesPtrOutput) HasPersistedState() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StatefulServiceProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HasPersistedState
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The minimum replica set size as a number.
+func (o StatefulServicePropertiesPtrOutput) MinReplicaSetSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatefulServiceProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinReplicaSetSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Describes how the service is partitioned.
+func (o StatefulServicePropertiesPtrOutput) PartitionDescription() pulumi.AnyOutput {
+	return o.ApplyT(func(v *StatefulServiceProperties) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.PartitionDescription
+	}).(pulumi.AnyOutput)
+}
+
+// The placement constraints as a string. Placement constraints are boolean expressions on node properties and allow for restricting a service to particular nodes based on the service requirements. For example, to place a service on nodes where NodeType is blue specify the following: "NodeColor == blue)".
+func (o StatefulServicePropertiesPtrOutput) PlacementConstraints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatefulServiceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlacementConstraints
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum duration for which a partition is allowed to be in a state of quorum loss, represented in ISO 8601 format "hh:mm:ss".
+func (o StatefulServicePropertiesPtrOutput) QuorumLossWaitDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatefulServiceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QuorumLossWaitDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// The duration between when a replica goes down and when a new replica is created, represented in ISO 8601 format "hh:mm:ss".
+func (o StatefulServicePropertiesPtrOutput) ReplicaRestartWaitDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatefulServiceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicaRestartWaitDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scaling policies for this service.
+func (o StatefulServicePropertiesPtrOutput) ScalingPolicies() ScalingPolicyArrayOutput {
+	return o.ApplyT(func(v *StatefulServiceProperties) []ScalingPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.ScalingPolicies
+	}).(ScalingPolicyArrayOutput)
+}
+
+// Dns name used for the service. If this is specified, then the DNS name can be used to return the IP addresses of service endpoints for application layer protocols (e.g., HTTP).
+// When updating serviceDnsName, old name may be temporarily resolvable. However, rely on new name.
+// When removing serviceDnsName, removed name may temporarily be resolvable. Do not rely on the name being unresolvable.
+func (o StatefulServicePropertiesPtrOutput) ServiceDnsName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatefulServiceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceDnsName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The kind of service (Stateless or Stateful).
+// Expected value is 'Stateful'.
+func (o StatefulServicePropertiesPtrOutput) ServiceKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatefulServiceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceKind
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service load metrics is given as an array of ServiceLoadMetric objects.
+func (o StatefulServicePropertiesPtrOutput) ServiceLoadMetrics() ServiceLoadMetricArrayOutput {
+	return o.ApplyT(func(v *StatefulServiceProperties) []ServiceLoadMetric {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceLoadMetrics
+	}).(ServiceLoadMetricArrayOutput)
+}
+
+// The activation Mode of the service package
+func (o StatefulServicePropertiesPtrOutput) ServicePackageActivationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatefulServiceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServicePackageActivationMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list that describes the correlation of the service with other services.
+func (o StatefulServicePropertiesPtrOutput) ServicePlacementPolicies() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *StatefulServiceProperties) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.ServicePlacementPolicies
+	}).(pulumi.ArrayOutput)
+}
+
+// The duration for which replicas can stay InBuild before reporting that build is stuck, represented in ISO 8601 format "hh:mm:ss".
+func (o StatefulServicePropertiesPtrOutput) ServicePlacementTimeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatefulServiceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServicePlacementTimeLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the service type
+func (o StatefulServicePropertiesPtrOutput) ServiceTypeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatefulServiceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceTypeName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The definition on how long StandBy replicas should be maintained before being removed, represented in ISO 8601 format "hh:mm:ss".
+func (o StatefulServicePropertiesPtrOutput) StandByReplicaKeepDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatefulServiceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StandByReplicaKeepDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// The target replica set size as a number.
+func (o StatefulServicePropertiesPtrOutput) TargetReplicaSetSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatefulServiceProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TargetReplicaSetSize
+	}).(pulumi.IntPtrOutput)
+}
+
 // The properties of a stateful service resource.
 type StatefulServicePropertiesResponse struct {
 	// A list that describes the correlation of the service with other services.
@@ -5193,6 +7358,119 @@ type StatefulServicePropertiesResponse struct {
 	TargetReplicaSetSize *int `pulumi:"targetReplicaSetSize"`
 }
 
+// The properties of a stateful service resource.
+type StatefulServicePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (StatefulServicePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulServicePropertiesResponse)(nil)).Elem()
+}
+
+func (o StatefulServicePropertiesResponseOutput) ToStatefulServicePropertiesResponseOutput() StatefulServicePropertiesResponseOutput {
+	return o
+}
+
+func (o StatefulServicePropertiesResponseOutput) ToStatefulServicePropertiesResponseOutputWithContext(ctx context.Context) StatefulServicePropertiesResponseOutput {
+	return o
+}
+
+// A list that describes the correlation of the service with other services.
+func (o StatefulServicePropertiesResponseOutput) CorrelationScheme() ServiceCorrelationResponseArrayOutput {
+	return o.ApplyT(func(v StatefulServicePropertiesResponse) []ServiceCorrelationResponse { return v.CorrelationScheme }).(ServiceCorrelationResponseArrayOutput)
+}
+
+// Specifies the move cost for the service.
+func (o StatefulServicePropertiesResponseOutput) DefaultMoveCost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulServicePropertiesResponse) *string { return v.DefaultMoveCost }).(pulumi.StringPtrOutput)
+}
+
+// A flag indicating whether this is a persistent service which stores states on the local disk. If it is then the value of this property is true, if not it is false.
+func (o StatefulServicePropertiesResponseOutput) HasPersistedState() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StatefulServicePropertiesResponse) *bool { return v.HasPersistedState }).(pulumi.BoolPtrOutput)
+}
+
+// The minimum replica set size as a number.
+func (o StatefulServicePropertiesResponseOutput) MinReplicaSetSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulServicePropertiesResponse) *int { return v.MinReplicaSetSize }).(pulumi.IntPtrOutput)
+}
+
+// Describes how the service is partitioned.
+func (o StatefulServicePropertiesResponseOutput) PartitionDescription() pulumi.AnyOutput {
+	return o.ApplyT(func(v StatefulServicePropertiesResponse) interface{} { return v.PartitionDescription }).(pulumi.AnyOutput)
+}
+
+// The placement constraints as a string. Placement constraints are boolean expressions on node properties and allow for restricting a service to particular nodes based on the service requirements. For example, to place a service on nodes where NodeType is blue specify the following: "NodeColor == blue)".
+func (o StatefulServicePropertiesResponseOutput) PlacementConstraints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulServicePropertiesResponse) *string { return v.PlacementConstraints }).(pulumi.StringPtrOutput)
+}
+
+// The current deployment or provisioning state, which only appears in the response
+func (o StatefulServicePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulServicePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The maximum duration for which a partition is allowed to be in a state of quorum loss, represented in ISO 8601 format "hh:mm:ss".
+func (o StatefulServicePropertiesResponseOutput) QuorumLossWaitDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulServicePropertiesResponse) *string { return v.QuorumLossWaitDuration }).(pulumi.StringPtrOutput)
+}
+
+// The duration between when a replica goes down and when a new replica is created, represented in ISO 8601 format "hh:mm:ss".
+func (o StatefulServicePropertiesResponseOutput) ReplicaRestartWaitDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulServicePropertiesResponse) *string { return v.ReplicaRestartWaitDuration }).(pulumi.StringPtrOutput)
+}
+
+// Scaling policies for this service.
+func (o StatefulServicePropertiesResponseOutput) ScalingPolicies() ScalingPolicyResponseArrayOutput {
+	return o.ApplyT(func(v StatefulServicePropertiesResponse) []ScalingPolicyResponse { return v.ScalingPolicies }).(ScalingPolicyResponseArrayOutput)
+}
+
+// Dns name used for the service. If this is specified, then the DNS name can be used to return the IP addresses of service endpoints for application layer protocols (e.g., HTTP).
+// When updating serviceDnsName, old name may be temporarily resolvable. However, rely on new name.
+// When removing serviceDnsName, removed name may temporarily be resolvable. Do not rely on the name being unresolvable.
+func (o StatefulServicePropertiesResponseOutput) ServiceDnsName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulServicePropertiesResponse) *string { return v.ServiceDnsName }).(pulumi.StringPtrOutput)
+}
+
+// The kind of service (Stateless or Stateful).
+// Expected value is 'Stateful'.
+func (o StatefulServicePropertiesResponseOutput) ServiceKind() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulServicePropertiesResponse) string { return v.ServiceKind }).(pulumi.StringOutput)
+}
+
+// The service load metrics is given as an array of ServiceLoadMetric objects.
+func (o StatefulServicePropertiesResponseOutput) ServiceLoadMetrics() ServiceLoadMetricResponseArrayOutput {
+	return o.ApplyT(func(v StatefulServicePropertiesResponse) []ServiceLoadMetricResponse { return v.ServiceLoadMetrics }).(ServiceLoadMetricResponseArrayOutput)
+}
+
+// The activation Mode of the service package
+func (o StatefulServicePropertiesResponseOutput) ServicePackageActivationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulServicePropertiesResponse) *string { return v.ServicePackageActivationMode }).(pulumi.StringPtrOutput)
+}
+
+// A list that describes the correlation of the service with other services.
+func (o StatefulServicePropertiesResponseOutput) ServicePlacementPolicies() pulumi.ArrayOutput {
+	return o.ApplyT(func(v StatefulServicePropertiesResponse) []interface{} { return v.ServicePlacementPolicies }).(pulumi.ArrayOutput)
+}
+
+// The duration for which replicas can stay InBuild before reporting that build is stuck, represented in ISO 8601 format "hh:mm:ss".
+func (o StatefulServicePropertiesResponseOutput) ServicePlacementTimeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulServicePropertiesResponse) *string { return v.ServicePlacementTimeLimit }).(pulumi.StringPtrOutput)
+}
+
+// The name of the service type
+func (o StatefulServicePropertiesResponseOutput) ServiceTypeName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulServicePropertiesResponse) string { return v.ServiceTypeName }).(pulumi.StringOutput)
+}
+
+// The definition on how long StandBy replicas should be maintained before being removed, represented in ISO 8601 format "hh:mm:ss".
+func (o StatefulServicePropertiesResponseOutput) StandByReplicaKeepDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatefulServicePropertiesResponse) *string { return v.StandByReplicaKeepDuration }).(pulumi.StringPtrOutput)
+}
+
+// The target replica set size as a number.
+func (o StatefulServicePropertiesResponseOutput) TargetReplicaSetSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatefulServicePropertiesResponse) *int { return v.TargetReplicaSetSize }).(pulumi.IntPtrOutput)
+}
+
 // The properties of a stateless service resource.
 type StatelessServiceProperties struct {
 	// A list that describes the correlation of the service with other services.
@@ -5226,6 +7504,370 @@ type StatelessServiceProperties struct {
 	ServicePlacementPolicies []interface{} `pulumi:"servicePlacementPolicies"`
 	// The name of the service type
 	ServiceTypeName string `pulumi:"serviceTypeName"`
+}
+
+// StatelessServicePropertiesInput is an input type that accepts StatelessServicePropertiesArgs and StatelessServicePropertiesOutput values.
+// You can construct a concrete instance of `StatelessServicePropertiesInput` via:
+//
+//	StatelessServicePropertiesArgs{...}
+type StatelessServicePropertiesInput interface {
+	pulumi.Input
+
+	ToStatelessServicePropertiesOutput() StatelessServicePropertiesOutput
+	ToStatelessServicePropertiesOutputWithContext(context.Context) StatelessServicePropertiesOutput
+}
+
+// The properties of a stateless service resource.
+type StatelessServicePropertiesArgs struct {
+	// A list that describes the correlation of the service with other services.
+	CorrelationScheme ServiceCorrelationArrayInput `pulumi:"correlationScheme"`
+	// Specifies the move cost for the service.
+	DefaultMoveCost pulumi.StringPtrInput `pulumi:"defaultMoveCost"`
+	// The instance count.
+	InstanceCount pulumi.IntInput `pulumi:"instanceCount"`
+	// MinInstanceCount is the minimum number of instances that must be up to meet the EnsureAvailability safety check during operations like upgrade or deactivate node. The actual number that is used is max( MinInstanceCount, ceil( MinInstancePercentage/100.0 * InstanceCount) ). Note, if InstanceCount is set to -1, during MinInstanceCount computation -1 is first converted into the number of nodes on which the instances are allowed to be placed according to the placement constraints on the service.
+	MinInstanceCount pulumi.IntPtrInput `pulumi:"minInstanceCount"`
+	// MinInstancePercentage is the minimum percentage of InstanceCount that must be up to meet the EnsureAvailability safety check during operations like upgrade or deactivate node. The actual number that is used is max( MinInstanceCount, ceil( MinInstancePercentage/100.0 * InstanceCount) ). Note, if InstanceCount is set to -1, during MinInstancePercentage computation, -1 is first converted into the number of nodes on which the instances are allowed to be placed according to the placement constraints on the service.
+	MinInstancePercentage pulumi.IntPtrInput `pulumi:"minInstancePercentage"`
+	// Describes how the service is partitioned.
+	PartitionDescription pulumi.Input `pulumi:"partitionDescription"`
+	// The placement constraints as a string. Placement constraints are boolean expressions on node properties and allow for restricting a service to particular nodes based on the service requirements. For example, to place a service on nodes where NodeType is blue specify the following: "NodeColor == blue)".
+	PlacementConstraints pulumi.StringPtrInput `pulumi:"placementConstraints"`
+	// Scaling policies for this service.
+	ScalingPolicies ScalingPolicyArrayInput `pulumi:"scalingPolicies"`
+	// Dns name used for the service. If this is specified, then the DNS name can be used to return the IP addresses of service endpoints for application layer protocols (e.g., HTTP).
+	// When updating serviceDnsName, old name may be temporarily resolvable. However, rely on new name.
+	// When removing serviceDnsName, removed name may temporarily be resolvable. Do not rely on the name being unresolvable.
+	ServiceDnsName pulumi.StringPtrInput `pulumi:"serviceDnsName"`
+	// The kind of service (Stateless or Stateful).
+	// Expected value is 'Stateless'.
+	ServiceKind pulumi.StringInput `pulumi:"serviceKind"`
+	// The service load metrics is given as an array of ServiceLoadMetric objects.
+	ServiceLoadMetrics ServiceLoadMetricArrayInput `pulumi:"serviceLoadMetrics"`
+	// The activation Mode of the service package
+	ServicePackageActivationMode pulumi.StringPtrInput `pulumi:"servicePackageActivationMode"`
+	// A list that describes the correlation of the service with other services.
+	ServicePlacementPolicies pulumi.ArrayInput `pulumi:"servicePlacementPolicies"`
+	// The name of the service type
+	ServiceTypeName pulumi.StringInput `pulumi:"serviceTypeName"`
+}
+
+func (StatelessServicePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatelessServiceProperties)(nil)).Elem()
+}
+
+func (i StatelessServicePropertiesArgs) ToStatelessServicePropertiesOutput() StatelessServicePropertiesOutput {
+	return i.ToStatelessServicePropertiesOutputWithContext(context.Background())
+}
+
+func (i StatelessServicePropertiesArgs) ToStatelessServicePropertiesOutputWithContext(ctx context.Context) StatelessServicePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatelessServicePropertiesOutput)
+}
+
+func (i StatelessServicePropertiesArgs) ToStatelessServicePropertiesPtrOutput() StatelessServicePropertiesPtrOutput {
+	return i.ToStatelessServicePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i StatelessServicePropertiesArgs) ToStatelessServicePropertiesPtrOutputWithContext(ctx context.Context) StatelessServicePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatelessServicePropertiesOutput).ToStatelessServicePropertiesPtrOutputWithContext(ctx)
+}
+
+// StatelessServicePropertiesPtrInput is an input type that accepts StatelessServicePropertiesArgs, StatelessServicePropertiesPtr and StatelessServicePropertiesPtrOutput values.
+// You can construct a concrete instance of `StatelessServicePropertiesPtrInput` via:
+//
+//	        StatelessServicePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type StatelessServicePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToStatelessServicePropertiesPtrOutput() StatelessServicePropertiesPtrOutput
+	ToStatelessServicePropertiesPtrOutputWithContext(context.Context) StatelessServicePropertiesPtrOutput
+}
+
+type statelessServicePropertiesPtrType StatelessServicePropertiesArgs
+
+func StatelessServicePropertiesPtr(v *StatelessServicePropertiesArgs) StatelessServicePropertiesPtrInput {
+	return (*statelessServicePropertiesPtrType)(v)
+}
+
+func (*statelessServicePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatelessServiceProperties)(nil)).Elem()
+}
+
+func (i *statelessServicePropertiesPtrType) ToStatelessServicePropertiesPtrOutput() StatelessServicePropertiesPtrOutput {
+	return i.ToStatelessServicePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *statelessServicePropertiesPtrType) ToStatelessServicePropertiesPtrOutputWithContext(ctx context.Context) StatelessServicePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatelessServicePropertiesPtrOutput)
+}
+
+// The properties of a stateless service resource.
+type StatelessServicePropertiesOutput struct{ *pulumi.OutputState }
+
+func (StatelessServicePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatelessServiceProperties)(nil)).Elem()
+}
+
+func (o StatelessServicePropertiesOutput) ToStatelessServicePropertiesOutput() StatelessServicePropertiesOutput {
+	return o
+}
+
+func (o StatelessServicePropertiesOutput) ToStatelessServicePropertiesOutputWithContext(ctx context.Context) StatelessServicePropertiesOutput {
+	return o
+}
+
+func (o StatelessServicePropertiesOutput) ToStatelessServicePropertiesPtrOutput() StatelessServicePropertiesPtrOutput {
+	return o.ToStatelessServicePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o StatelessServicePropertiesOutput) ToStatelessServicePropertiesPtrOutputWithContext(ctx context.Context) StatelessServicePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatelessServiceProperties) *StatelessServiceProperties {
+		return &v
+	}).(StatelessServicePropertiesPtrOutput)
+}
+
+// A list that describes the correlation of the service with other services.
+func (o StatelessServicePropertiesOutput) CorrelationScheme() ServiceCorrelationArrayOutput {
+	return o.ApplyT(func(v StatelessServiceProperties) []ServiceCorrelation { return v.CorrelationScheme }).(ServiceCorrelationArrayOutput)
+}
+
+// Specifies the move cost for the service.
+func (o StatelessServicePropertiesOutput) DefaultMoveCost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatelessServiceProperties) *string { return v.DefaultMoveCost }).(pulumi.StringPtrOutput)
+}
+
+// The instance count.
+func (o StatelessServicePropertiesOutput) InstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v StatelessServiceProperties) int { return v.InstanceCount }).(pulumi.IntOutput)
+}
+
+// MinInstanceCount is the minimum number of instances that must be up to meet the EnsureAvailability safety check during operations like upgrade or deactivate node. The actual number that is used is max( MinInstanceCount, ceil( MinInstancePercentage/100.0 * InstanceCount) ). Note, if InstanceCount is set to -1, during MinInstanceCount computation -1 is first converted into the number of nodes on which the instances are allowed to be placed according to the placement constraints on the service.
+func (o StatelessServicePropertiesOutput) MinInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatelessServiceProperties) *int { return v.MinInstanceCount }).(pulumi.IntPtrOutput)
+}
+
+// MinInstancePercentage is the minimum percentage of InstanceCount that must be up to meet the EnsureAvailability safety check during operations like upgrade or deactivate node. The actual number that is used is max( MinInstanceCount, ceil( MinInstancePercentage/100.0 * InstanceCount) ). Note, if InstanceCount is set to -1, during MinInstancePercentage computation, -1 is first converted into the number of nodes on which the instances are allowed to be placed according to the placement constraints on the service.
+func (o StatelessServicePropertiesOutput) MinInstancePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatelessServiceProperties) *int { return v.MinInstancePercentage }).(pulumi.IntPtrOutput)
+}
+
+// Describes how the service is partitioned.
+func (o StatelessServicePropertiesOutput) PartitionDescription() pulumi.AnyOutput {
+	return o.ApplyT(func(v StatelessServiceProperties) interface{} { return v.PartitionDescription }).(pulumi.AnyOutput)
+}
+
+// The placement constraints as a string. Placement constraints are boolean expressions on node properties and allow for restricting a service to particular nodes based on the service requirements. For example, to place a service on nodes where NodeType is blue specify the following: "NodeColor == blue)".
+func (o StatelessServicePropertiesOutput) PlacementConstraints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatelessServiceProperties) *string { return v.PlacementConstraints }).(pulumi.StringPtrOutput)
+}
+
+// Scaling policies for this service.
+func (o StatelessServicePropertiesOutput) ScalingPolicies() ScalingPolicyArrayOutput {
+	return o.ApplyT(func(v StatelessServiceProperties) []ScalingPolicy { return v.ScalingPolicies }).(ScalingPolicyArrayOutput)
+}
+
+// Dns name used for the service. If this is specified, then the DNS name can be used to return the IP addresses of service endpoints for application layer protocols (e.g., HTTP).
+// When updating serviceDnsName, old name may be temporarily resolvable. However, rely on new name.
+// When removing serviceDnsName, removed name may temporarily be resolvable. Do not rely on the name being unresolvable.
+func (o StatelessServicePropertiesOutput) ServiceDnsName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatelessServiceProperties) *string { return v.ServiceDnsName }).(pulumi.StringPtrOutput)
+}
+
+// The kind of service (Stateless or Stateful).
+// Expected value is 'Stateless'.
+func (o StatelessServicePropertiesOutput) ServiceKind() pulumi.StringOutput {
+	return o.ApplyT(func(v StatelessServiceProperties) string { return v.ServiceKind }).(pulumi.StringOutput)
+}
+
+// The service load metrics is given as an array of ServiceLoadMetric objects.
+func (o StatelessServicePropertiesOutput) ServiceLoadMetrics() ServiceLoadMetricArrayOutput {
+	return o.ApplyT(func(v StatelessServiceProperties) []ServiceLoadMetric { return v.ServiceLoadMetrics }).(ServiceLoadMetricArrayOutput)
+}
+
+// The activation Mode of the service package
+func (o StatelessServicePropertiesOutput) ServicePackageActivationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatelessServiceProperties) *string { return v.ServicePackageActivationMode }).(pulumi.StringPtrOutput)
+}
+
+// A list that describes the correlation of the service with other services.
+func (o StatelessServicePropertiesOutput) ServicePlacementPolicies() pulumi.ArrayOutput {
+	return o.ApplyT(func(v StatelessServiceProperties) []interface{} { return v.ServicePlacementPolicies }).(pulumi.ArrayOutput)
+}
+
+// The name of the service type
+func (o StatelessServicePropertiesOutput) ServiceTypeName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatelessServiceProperties) string { return v.ServiceTypeName }).(pulumi.StringOutput)
+}
+
+type StatelessServicePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (StatelessServicePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatelessServiceProperties)(nil)).Elem()
+}
+
+func (o StatelessServicePropertiesPtrOutput) ToStatelessServicePropertiesPtrOutput() StatelessServicePropertiesPtrOutput {
+	return o
+}
+
+func (o StatelessServicePropertiesPtrOutput) ToStatelessServicePropertiesPtrOutputWithContext(ctx context.Context) StatelessServicePropertiesPtrOutput {
+	return o
+}
+
+func (o StatelessServicePropertiesPtrOutput) Elem() StatelessServicePropertiesOutput {
+	return o.ApplyT(func(v *StatelessServiceProperties) StatelessServiceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret StatelessServiceProperties
+		return ret
+	}).(StatelessServicePropertiesOutput)
+}
+
+// A list that describes the correlation of the service with other services.
+func (o StatelessServicePropertiesPtrOutput) CorrelationScheme() ServiceCorrelationArrayOutput {
+	return o.ApplyT(func(v *StatelessServiceProperties) []ServiceCorrelation {
+		if v == nil {
+			return nil
+		}
+		return v.CorrelationScheme
+	}).(ServiceCorrelationArrayOutput)
+}
+
+// Specifies the move cost for the service.
+func (o StatelessServicePropertiesPtrOutput) DefaultMoveCost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatelessServiceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultMoveCost
+	}).(pulumi.StringPtrOutput)
+}
+
+// The instance count.
+func (o StatelessServicePropertiesPtrOutput) InstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatelessServiceProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// MinInstanceCount is the minimum number of instances that must be up to meet the EnsureAvailability safety check during operations like upgrade or deactivate node. The actual number that is used is max( MinInstanceCount, ceil( MinInstancePercentage/100.0 * InstanceCount) ). Note, if InstanceCount is set to -1, during MinInstanceCount computation -1 is first converted into the number of nodes on which the instances are allowed to be placed according to the placement constraints on the service.
+func (o StatelessServicePropertiesPtrOutput) MinInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatelessServiceProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinInstanceCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// MinInstancePercentage is the minimum percentage of InstanceCount that must be up to meet the EnsureAvailability safety check during operations like upgrade or deactivate node. The actual number that is used is max( MinInstanceCount, ceil( MinInstancePercentage/100.0 * InstanceCount) ). Note, if InstanceCount is set to -1, during MinInstancePercentage computation, -1 is first converted into the number of nodes on which the instances are allowed to be placed according to the placement constraints on the service.
+func (o StatelessServicePropertiesPtrOutput) MinInstancePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StatelessServiceProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinInstancePercentage
+	}).(pulumi.IntPtrOutput)
+}
+
+// Describes how the service is partitioned.
+func (o StatelessServicePropertiesPtrOutput) PartitionDescription() pulumi.AnyOutput {
+	return o.ApplyT(func(v *StatelessServiceProperties) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.PartitionDescription
+	}).(pulumi.AnyOutput)
+}
+
+// The placement constraints as a string. Placement constraints are boolean expressions on node properties and allow for restricting a service to particular nodes based on the service requirements. For example, to place a service on nodes where NodeType is blue specify the following: "NodeColor == blue)".
+func (o StatelessServicePropertiesPtrOutput) PlacementConstraints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatelessServiceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlacementConstraints
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scaling policies for this service.
+func (o StatelessServicePropertiesPtrOutput) ScalingPolicies() ScalingPolicyArrayOutput {
+	return o.ApplyT(func(v *StatelessServiceProperties) []ScalingPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.ScalingPolicies
+	}).(ScalingPolicyArrayOutput)
+}
+
+// Dns name used for the service. If this is specified, then the DNS name can be used to return the IP addresses of service endpoints for application layer protocols (e.g., HTTP).
+// When updating serviceDnsName, old name may be temporarily resolvable. However, rely on new name.
+// When removing serviceDnsName, removed name may temporarily be resolvable. Do not rely on the name being unresolvable.
+func (o StatelessServicePropertiesPtrOutput) ServiceDnsName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatelessServiceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceDnsName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The kind of service (Stateless or Stateful).
+// Expected value is 'Stateless'.
+func (o StatelessServicePropertiesPtrOutput) ServiceKind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatelessServiceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceKind
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service load metrics is given as an array of ServiceLoadMetric objects.
+func (o StatelessServicePropertiesPtrOutput) ServiceLoadMetrics() ServiceLoadMetricArrayOutput {
+	return o.ApplyT(func(v *StatelessServiceProperties) []ServiceLoadMetric {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceLoadMetrics
+	}).(ServiceLoadMetricArrayOutput)
+}
+
+// The activation Mode of the service package
+func (o StatelessServicePropertiesPtrOutput) ServicePackageActivationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatelessServiceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServicePackageActivationMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list that describes the correlation of the service with other services.
+func (o StatelessServicePropertiesPtrOutput) ServicePlacementPolicies() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *StatelessServiceProperties) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.ServicePlacementPolicies
+	}).(pulumi.ArrayOutput)
+}
+
+// The name of the service type
+func (o StatelessServicePropertiesPtrOutput) ServiceTypeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StatelessServiceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceTypeName
+	}).(pulumi.StringPtrOutput)
 }
 
 // The properties of a stateless service resource.
@@ -5263,6 +7905,99 @@ type StatelessServicePropertiesResponse struct {
 	ServicePlacementPolicies []interface{} `pulumi:"servicePlacementPolicies"`
 	// The name of the service type
 	ServiceTypeName string `pulumi:"serviceTypeName"`
+}
+
+// The properties of a stateless service resource.
+type StatelessServicePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (StatelessServicePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatelessServicePropertiesResponse)(nil)).Elem()
+}
+
+func (o StatelessServicePropertiesResponseOutput) ToStatelessServicePropertiesResponseOutput() StatelessServicePropertiesResponseOutput {
+	return o
+}
+
+func (o StatelessServicePropertiesResponseOutput) ToStatelessServicePropertiesResponseOutputWithContext(ctx context.Context) StatelessServicePropertiesResponseOutput {
+	return o
+}
+
+// A list that describes the correlation of the service with other services.
+func (o StatelessServicePropertiesResponseOutput) CorrelationScheme() ServiceCorrelationResponseArrayOutput {
+	return o.ApplyT(func(v StatelessServicePropertiesResponse) []ServiceCorrelationResponse { return v.CorrelationScheme }).(ServiceCorrelationResponseArrayOutput)
+}
+
+// Specifies the move cost for the service.
+func (o StatelessServicePropertiesResponseOutput) DefaultMoveCost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatelessServicePropertiesResponse) *string { return v.DefaultMoveCost }).(pulumi.StringPtrOutput)
+}
+
+// The instance count.
+func (o StatelessServicePropertiesResponseOutput) InstanceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v StatelessServicePropertiesResponse) int { return v.InstanceCount }).(pulumi.IntOutput)
+}
+
+// MinInstanceCount is the minimum number of instances that must be up to meet the EnsureAvailability safety check during operations like upgrade or deactivate node. The actual number that is used is max( MinInstanceCount, ceil( MinInstancePercentage/100.0 * InstanceCount) ). Note, if InstanceCount is set to -1, during MinInstanceCount computation -1 is first converted into the number of nodes on which the instances are allowed to be placed according to the placement constraints on the service.
+func (o StatelessServicePropertiesResponseOutput) MinInstanceCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatelessServicePropertiesResponse) *int { return v.MinInstanceCount }).(pulumi.IntPtrOutput)
+}
+
+// MinInstancePercentage is the minimum percentage of InstanceCount that must be up to meet the EnsureAvailability safety check during operations like upgrade or deactivate node. The actual number that is used is max( MinInstanceCount, ceil( MinInstancePercentage/100.0 * InstanceCount) ). Note, if InstanceCount is set to -1, during MinInstancePercentage computation, -1 is first converted into the number of nodes on which the instances are allowed to be placed according to the placement constraints on the service.
+func (o StatelessServicePropertiesResponseOutput) MinInstancePercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StatelessServicePropertiesResponse) *int { return v.MinInstancePercentage }).(pulumi.IntPtrOutput)
+}
+
+// Describes how the service is partitioned.
+func (o StatelessServicePropertiesResponseOutput) PartitionDescription() pulumi.AnyOutput {
+	return o.ApplyT(func(v StatelessServicePropertiesResponse) interface{} { return v.PartitionDescription }).(pulumi.AnyOutput)
+}
+
+// The placement constraints as a string. Placement constraints are boolean expressions on node properties and allow for restricting a service to particular nodes based on the service requirements. For example, to place a service on nodes where NodeType is blue specify the following: "NodeColor == blue)".
+func (o StatelessServicePropertiesResponseOutput) PlacementConstraints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatelessServicePropertiesResponse) *string { return v.PlacementConstraints }).(pulumi.StringPtrOutput)
+}
+
+// The current deployment or provisioning state, which only appears in the response
+func (o StatelessServicePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v StatelessServicePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Scaling policies for this service.
+func (o StatelessServicePropertiesResponseOutput) ScalingPolicies() ScalingPolicyResponseArrayOutput {
+	return o.ApplyT(func(v StatelessServicePropertiesResponse) []ScalingPolicyResponse { return v.ScalingPolicies }).(ScalingPolicyResponseArrayOutput)
+}
+
+// Dns name used for the service. If this is specified, then the DNS name can be used to return the IP addresses of service endpoints for application layer protocols (e.g., HTTP).
+// When updating serviceDnsName, old name may be temporarily resolvable. However, rely on new name.
+// When removing serviceDnsName, removed name may temporarily be resolvable. Do not rely on the name being unresolvable.
+func (o StatelessServicePropertiesResponseOutput) ServiceDnsName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatelessServicePropertiesResponse) *string { return v.ServiceDnsName }).(pulumi.StringPtrOutput)
+}
+
+// The kind of service (Stateless or Stateful).
+// Expected value is 'Stateless'.
+func (o StatelessServicePropertiesResponseOutput) ServiceKind() pulumi.StringOutput {
+	return o.ApplyT(func(v StatelessServicePropertiesResponse) string { return v.ServiceKind }).(pulumi.StringOutput)
+}
+
+// The service load metrics is given as an array of ServiceLoadMetric objects.
+func (o StatelessServicePropertiesResponseOutput) ServiceLoadMetrics() ServiceLoadMetricResponseArrayOutput {
+	return o.ApplyT(func(v StatelessServicePropertiesResponse) []ServiceLoadMetricResponse { return v.ServiceLoadMetrics }).(ServiceLoadMetricResponseArrayOutput)
+}
+
+// The activation Mode of the service package
+func (o StatelessServicePropertiesResponseOutput) ServicePackageActivationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StatelessServicePropertiesResponse) *string { return v.ServicePackageActivationMode }).(pulumi.StringPtrOutput)
+}
+
+// A list that describes the correlation of the service with other services.
+func (o StatelessServicePropertiesResponseOutput) ServicePlacementPolicies() pulumi.ArrayOutput {
+	return o.ApplyT(func(v StatelessServicePropertiesResponse) []interface{} { return v.ServicePlacementPolicies }).(pulumi.ArrayOutput)
+}
+
+// The name of the service type
+func (o StatelessServicePropertiesResponseOutput) ServiceTypeName() pulumi.StringOutput {
+	return o.ApplyT(func(v StatelessServicePropertiesResponse) string { return v.ServiceTypeName }).(pulumi.StringOutput)
 }
 
 // Azure resource identifier.
@@ -5641,6 +8376,200 @@ type UniformInt64RangePartitionScheme struct {
 	PartitionScheme string `pulumi:"partitionScheme"`
 }
 
+// UniformInt64RangePartitionSchemeInput is an input type that accepts UniformInt64RangePartitionSchemeArgs and UniformInt64RangePartitionSchemeOutput values.
+// You can construct a concrete instance of `UniformInt64RangePartitionSchemeInput` via:
+//
+//	UniformInt64RangePartitionSchemeArgs{...}
+type UniformInt64RangePartitionSchemeInput interface {
+	pulumi.Input
+
+	ToUniformInt64RangePartitionSchemeOutput() UniformInt64RangePartitionSchemeOutput
+	ToUniformInt64RangePartitionSchemeOutputWithContext(context.Context) UniformInt64RangePartitionSchemeOutput
+}
+
+// Describes a partitioning scheme where an integer range is allocated evenly across a number of partitions.
+type UniformInt64RangePartitionSchemeArgs struct {
+	// The number of partitions.
+	Count pulumi.IntInput `pulumi:"count"`
+	// The upper bound of the partition key range that
+	// should be split between the partition ‘Count’
+	HighKey pulumi.Float64Input `pulumi:"highKey"`
+	// The lower bound of the partition key range that
+	// should be split between the partition ‘Count’
+	LowKey pulumi.Float64Input `pulumi:"lowKey"`
+	// Enumerates the ways that a service can be partitioned.
+	// Expected value is 'UniformInt64Range'.
+	PartitionScheme pulumi.StringInput `pulumi:"partitionScheme"`
+}
+
+func (UniformInt64RangePartitionSchemeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UniformInt64RangePartitionScheme)(nil)).Elem()
+}
+
+func (i UniformInt64RangePartitionSchemeArgs) ToUniformInt64RangePartitionSchemeOutput() UniformInt64RangePartitionSchemeOutput {
+	return i.ToUniformInt64RangePartitionSchemeOutputWithContext(context.Background())
+}
+
+func (i UniformInt64RangePartitionSchemeArgs) ToUniformInt64RangePartitionSchemeOutputWithContext(ctx context.Context) UniformInt64RangePartitionSchemeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UniformInt64RangePartitionSchemeOutput)
+}
+
+func (i UniformInt64RangePartitionSchemeArgs) ToUniformInt64RangePartitionSchemePtrOutput() UniformInt64RangePartitionSchemePtrOutput {
+	return i.ToUniformInt64RangePartitionSchemePtrOutputWithContext(context.Background())
+}
+
+func (i UniformInt64RangePartitionSchemeArgs) ToUniformInt64RangePartitionSchemePtrOutputWithContext(ctx context.Context) UniformInt64RangePartitionSchemePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UniformInt64RangePartitionSchemeOutput).ToUniformInt64RangePartitionSchemePtrOutputWithContext(ctx)
+}
+
+// UniformInt64RangePartitionSchemePtrInput is an input type that accepts UniformInt64RangePartitionSchemeArgs, UniformInt64RangePartitionSchemePtr and UniformInt64RangePartitionSchemePtrOutput values.
+// You can construct a concrete instance of `UniformInt64RangePartitionSchemePtrInput` via:
+//
+//	        UniformInt64RangePartitionSchemeArgs{...}
+//
+//	or:
+//
+//	        nil
+type UniformInt64RangePartitionSchemePtrInput interface {
+	pulumi.Input
+
+	ToUniformInt64RangePartitionSchemePtrOutput() UniformInt64RangePartitionSchemePtrOutput
+	ToUniformInt64RangePartitionSchemePtrOutputWithContext(context.Context) UniformInt64RangePartitionSchemePtrOutput
+}
+
+type uniformInt64RangePartitionSchemePtrType UniformInt64RangePartitionSchemeArgs
+
+func UniformInt64RangePartitionSchemePtr(v *UniformInt64RangePartitionSchemeArgs) UniformInt64RangePartitionSchemePtrInput {
+	return (*uniformInt64RangePartitionSchemePtrType)(v)
+}
+
+func (*uniformInt64RangePartitionSchemePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UniformInt64RangePartitionScheme)(nil)).Elem()
+}
+
+func (i *uniformInt64RangePartitionSchemePtrType) ToUniformInt64RangePartitionSchemePtrOutput() UniformInt64RangePartitionSchemePtrOutput {
+	return i.ToUniformInt64RangePartitionSchemePtrOutputWithContext(context.Background())
+}
+
+func (i *uniformInt64RangePartitionSchemePtrType) ToUniformInt64RangePartitionSchemePtrOutputWithContext(ctx context.Context) UniformInt64RangePartitionSchemePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UniformInt64RangePartitionSchemePtrOutput)
+}
+
+// Describes a partitioning scheme where an integer range is allocated evenly across a number of partitions.
+type UniformInt64RangePartitionSchemeOutput struct{ *pulumi.OutputState }
+
+func (UniformInt64RangePartitionSchemeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UniformInt64RangePartitionScheme)(nil)).Elem()
+}
+
+func (o UniformInt64RangePartitionSchemeOutput) ToUniformInt64RangePartitionSchemeOutput() UniformInt64RangePartitionSchemeOutput {
+	return o
+}
+
+func (o UniformInt64RangePartitionSchemeOutput) ToUniformInt64RangePartitionSchemeOutputWithContext(ctx context.Context) UniformInt64RangePartitionSchemeOutput {
+	return o
+}
+
+func (o UniformInt64RangePartitionSchemeOutput) ToUniformInt64RangePartitionSchemePtrOutput() UniformInt64RangePartitionSchemePtrOutput {
+	return o.ToUniformInt64RangePartitionSchemePtrOutputWithContext(context.Background())
+}
+
+func (o UniformInt64RangePartitionSchemeOutput) ToUniformInt64RangePartitionSchemePtrOutputWithContext(ctx context.Context) UniformInt64RangePartitionSchemePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UniformInt64RangePartitionScheme) *UniformInt64RangePartitionScheme {
+		return &v
+	}).(UniformInt64RangePartitionSchemePtrOutput)
+}
+
+// The number of partitions.
+func (o UniformInt64RangePartitionSchemeOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v UniformInt64RangePartitionScheme) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// The upper bound of the partition key range that
+// should be split between the partition ‘Count’
+func (o UniformInt64RangePartitionSchemeOutput) HighKey() pulumi.Float64Output {
+	return o.ApplyT(func(v UniformInt64RangePartitionScheme) float64 { return v.HighKey }).(pulumi.Float64Output)
+}
+
+// The lower bound of the partition key range that
+// should be split between the partition ‘Count’
+func (o UniformInt64RangePartitionSchemeOutput) LowKey() pulumi.Float64Output {
+	return o.ApplyT(func(v UniformInt64RangePartitionScheme) float64 { return v.LowKey }).(pulumi.Float64Output)
+}
+
+// Enumerates the ways that a service can be partitioned.
+// Expected value is 'UniformInt64Range'.
+func (o UniformInt64RangePartitionSchemeOutput) PartitionScheme() pulumi.StringOutput {
+	return o.ApplyT(func(v UniformInt64RangePartitionScheme) string { return v.PartitionScheme }).(pulumi.StringOutput)
+}
+
+type UniformInt64RangePartitionSchemePtrOutput struct{ *pulumi.OutputState }
+
+func (UniformInt64RangePartitionSchemePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UniformInt64RangePartitionScheme)(nil)).Elem()
+}
+
+func (o UniformInt64RangePartitionSchemePtrOutput) ToUniformInt64RangePartitionSchemePtrOutput() UniformInt64RangePartitionSchemePtrOutput {
+	return o
+}
+
+func (o UniformInt64RangePartitionSchemePtrOutput) ToUniformInt64RangePartitionSchemePtrOutputWithContext(ctx context.Context) UniformInt64RangePartitionSchemePtrOutput {
+	return o
+}
+
+func (o UniformInt64RangePartitionSchemePtrOutput) Elem() UniformInt64RangePartitionSchemeOutput {
+	return o.ApplyT(func(v *UniformInt64RangePartitionScheme) UniformInt64RangePartitionScheme {
+		if v != nil {
+			return *v
+		}
+		var ret UniformInt64RangePartitionScheme
+		return ret
+	}).(UniformInt64RangePartitionSchemeOutput)
+}
+
+// The number of partitions.
+func (o UniformInt64RangePartitionSchemePtrOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *UniformInt64RangePartitionScheme) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Count
+	}).(pulumi.IntPtrOutput)
+}
+
+// The upper bound of the partition key range that
+// should be split between the partition ‘Count’
+func (o UniformInt64RangePartitionSchemePtrOutput) HighKey() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *UniformInt64RangePartitionScheme) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.HighKey
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The lower bound of the partition key range that
+// should be split between the partition ‘Count’
+func (o UniformInt64RangePartitionSchemePtrOutput) LowKey() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *UniformInt64RangePartitionScheme) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.LowKey
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Enumerates the ways that a service can be partitioned.
+// Expected value is 'UniformInt64Range'.
+func (o UniformInt64RangePartitionSchemePtrOutput) PartitionScheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UniformInt64RangePartitionScheme) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PartitionScheme
+	}).(pulumi.StringPtrOutput)
+}
+
 // Describes a partitioning scheme where an integer range is allocated evenly across a number of partitions.
 type UniformInt64RangePartitionSchemeResponse struct {
 	// The number of partitions.
@@ -5654,6 +8583,44 @@ type UniformInt64RangePartitionSchemeResponse struct {
 	// Enumerates the ways that a service can be partitioned.
 	// Expected value is 'UniformInt64Range'.
 	PartitionScheme string `pulumi:"partitionScheme"`
+}
+
+// Describes a partitioning scheme where an integer range is allocated evenly across a number of partitions.
+type UniformInt64RangePartitionSchemeResponseOutput struct{ *pulumi.OutputState }
+
+func (UniformInt64RangePartitionSchemeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UniformInt64RangePartitionSchemeResponse)(nil)).Elem()
+}
+
+func (o UniformInt64RangePartitionSchemeResponseOutput) ToUniformInt64RangePartitionSchemeResponseOutput() UniformInt64RangePartitionSchemeResponseOutput {
+	return o
+}
+
+func (o UniformInt64RangePartitionSchemeResponseOutput) ToUniformInt64RangePartitionSchemeResponseOutputWithContext(ctx context.Context) UniformInt64RangePartitionSchemeResponseOutput {
+	return o
+}
+
+// The number of partitions.
+func (o UniformInt64RangePartitionSchemeResponseOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v UniformInt64RangePartitionSchemeResponse) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// The upper bound of the partition key range that
+// should be split between the partition ‘Count’
+func (o UniformInt64RangePartitionSchemeResponseOutput) HighKey() pulumi.Float64Output {
+	return o.ApplyT(func(v UniformInt64RangePartitionSchemeResponse) float64 { return v.HighKey }).(pulumi.Float64Output)
+}
+
+// The lower bound of the partition key range that
+// should be split between the partition ‘Count’
+func (o UniformInt64RangePartitionSchemeResponseOutput) LowKey() pulumi.Float64Output {
+	return o.ApplyT(func(v UniformInt64RangePartitionSchemeResponse) float64 { return v.LowKey }).(pulumi.Float64Output)
+}
+
+// Enumerates the ways that a service can be partitioned.
+// Expected value is 'UniformInt64Range'.
+func (o UniformInt64RangePartitionSchemeResponseOutput) PartitionScheme() pulumi.StringOutput {
+	return o.ApplyT(func(v UniformInt64RangePartitionSchemeResponse) string { return v.PartitionScheme }).(pulumi.StringOutput)
 }
 
 type UserAssignedIdentityResponse struct {
@@ -7031,6 +9998,8 @@ func (o VmssDataDiskResponseArrayOutput) Index(i pulumi.IntInput) VmssDataDiskRe
 }
 
 func init() {
+	pulumi.RegisterOutputType(AddRemoveIncrementalNamedPartitionScalingMechanismOutput{})
+	pulumi.RegisterOutputType(AddRemoveIncrementalNamedPartitionScalingMechanismResponseOutput{})
 	pulumi.RegisterOutputType(ApplicationHealthPolicyOutput{})
 	pulumi.RegisterOutputType(ApplicationHealthPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationHealthPolicyResponseOutput{})
@@ -7047,6 +10016,10 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationUserAssignedIdentityArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationUserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(ApplicationUserAssignedIdentityResponseArrayOutput{})
+	pulumi.RegisterOutputType(AveragePartitionLoadScalingTriggerOutput{})
+	pulumi.RegisterOutputType(AveragePartitionLoadScalingTriggerResponseOutput{})
+	pulumi.RegisterOutputType(AverageServiceLoadScalingTriggerOutput{})
+	pulumi.RegisterOutputType(AverageServiceLoadScalingTriggerResponseOutput{})
 	pulumi.RegisterOutputType(AzureActiveDirectoryOutput{})
 	pulumi.RegisterOutputType(AzureActiveDirectoryPtrOutput{})
 	pulumi.RegisterOutputType(AzureActiveDirectoryResponseOutput{})
@@ -7075,6 +10048,9 @@ func init() {
 	pulumi.RegisterOutputType(ManagedIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(NamedPartitionSchemeOutput{})
+	pulumi.RegisterOutputType(NamedPartitionSchemePtrOutput{})
+	pulumi.RegisterOutputType(NamedPartitionSchemeResponseOutput{})
 	pulumi.RegisterOutputType(NetworkSecurityRuleOutput{})
 	pulumi.RegisterOutputType(NetworkSecurityRuleArrayOutput{})
 	pulumi.RegisterOutputType(NetworkSecurityRuleResponseOutput{})
@@ -7083,16 +10059,40 @@ func init() {
 	pulumi.RegisterOutputType(NodeTypeSkuPtrOutput{})
 	pulumi.RegisterOutputType(NodeTypeSkuResponseOutput{})
 	pulumi.RegisterOutputType(NodeTypeSkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(PartitionInstanceCountScaleMechanismOutput{})
+	pulumi.RegisterOutputType(PartitionInstanceCountScaleMechanismResponseOutput{})
 	pulumi.RegisterOutputType(ResourceAzStatusResponseOutput{})
 	pulumi.RegisterOutputType(ResourceAzStatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(RollingUpgradeMonitoringPolicyOutput{})
 	pulumi.RegisterOutputType(RollingUpgradeMonitoringPolicyPtrOutput{})
 	pulumi.RegisterOutputType(RollingUpgradeMonitoringPolicyResponseOutput{})
 	pulumi.RegisterOutputType(RollingUpgradeMonitoringPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(ScalingPolicyOutput{})
+	pulumi.RegisterOutputType(ScalingPolicyArrayOutput{})
+	pulumi.RegisterOutputType(ScalingPolicyResponseOutput{})
+	pulumi.RegisterOutputType(ScalingPolicyResponseArrayOutput{})
+	pulumi.RegisterOutputType(ServiceCorrelationOutput{})
+	pulumi.RegisterOutputType(ServiceCorrelationArrayOutput{})
+	pulumi.RegisterOutputType(ServiceCorrelationResponseOutput{})
+	pulumi.RegisterOutputType(ServiceCorrelationResponseArrayOutput{})
 	pulumi.RegisterOutputType(ServiceEndpointOutput{})
 	pulumi.RegisterOutputType(ServiceEndpointArrayOutput{})
 	pulumi.RegisterOutputType(ServiceEndpointResponseOutput{})
 	pulumi.RegisterOutputType(ServiceEndpointResponseArrayOutput{})
+	pulumi.RegisterOutputType(ServiceLoadMetricOutput{})
+	pulumi.RegisterOutputType(ServiceLoadMetricArrayOutput{})
+	pulumi.RegisterOutputType(ServiceLoadMetricResponseOutput{})
+	pulumi.RegisterOutputType(ServiceLoadMetricResponseArrayOutput{})
+	pulumi.RegisterOutputType(ServicePlacementInvalidDomainPolicyOutput{})
+	pulumi.RegisterOutputType(ServicePlacementInvalidDomainPolicyResponseOutput{})
+	pulumi.RegisterOutputType(ServicePlacementNonPartiallyPlaceServicePolicyOutput{})
+	pulumi.RegisterOutputType(ServicePlacementNonPartiallyPlaceServicePolicyResponseOutput{})
+	pulumi.RegisterOutputType(ServicePlacementPreferPrimaryDomainPolicyOutput{})
+	pulumi.RegisterOutputType(ServicePlacementPreferPrimaryDomainPolicyResponseOutput{})
+	pulumi.RegisterOutputType(ServicePlacementRequireDomainDistributionPolicyOutput{})
+	pulumi.RegisterOutputType(ServicePlacementRequireDomainDistributionPolicyResponseOutput{})
+	pulumi.RegisterOutputType(ServicePlacementRequiredDomainPolicyOutput{})
+	pulumi.RegisterOutputType(ServicePlacementRequiredDomainPolicyResponseOutput{})
 	pulumi.RegisterOutputType(ServiceTypeHealthPolicyOutput{})
 	pulumi.RegisterOutputType(ServiceTypeHealthPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTypeHealthPolicyMapOutput{})
@@ -7107,8 +10107,17 @@ func init() {
 	pulumi.RegisterOutputType(SettingsSectionDescriptionArrayOutput{})
 	pulumi.RegisterOutputType(SettingsSectionDescriptionResponseOutput{})
 	pulumi.RegisterOutputType(SettingsSectionDescriptionResponseArrayOutput{})
+	pulumi.RegisterOutputType(SingletonPartitionSchemeOutput{})
+	pulumi.RegisterOutputType(SingletonPartitionSchemePtrOutput{})
+	pulumi.RegisterOutputType(SingletonPartitionSchemeResponseOutput{})
 	pulumi.RegisterOutputType(SkuOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
+	pulumi.RegisterOutputType(StatefulServicePropertiesOutput{})
+	pulumi.RegisterOutputType(StatefulServicePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(StatefulServicePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(StatelessServicePropertiesOutput{})
+	pulumi.RegisterOutputType(StatelessServicePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(StatelessServicePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SubResourceOutput{})
 	pulumi.RegisterOutputType(SubResourceResponseOutput{})
 	pulumi.RegisterOutputType(SubnetOutput{})
@@ -7116,6 +10125,9 @@ func init() {
 	pulumi.RegisterOutputType(SubnetResponseOutput{})
 	pulumi.RegisterOutputType(SubnetResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(UniformInt64RangePartitionSchemeOutput{})
+	pulumi.RegisterOutputType(UniformInt64RangePartitionSchemePtrOutput{})
+	pulumi.RegisterOutputType(UniformInt64RangePartitionSchemeResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(VMSSExtensionOutput{})

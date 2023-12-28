@@ -31,6 +31,175 @@ const (
 	MaintenanceScopeSQLManagedInstance = MaintenanceScope("SQLManagedInstance")
 )
 
+func (MaintenanceScope) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceScope)(nil)).Elem()
+}
+
+func (e MaintenanceScope) ToMaintenanceScopeOutput() MaintenanceScopeOutput {
+	return pulumi.ToOutput(e).(MaintenanceScopeOutput)
+}
+
+func (e MaintenanceScope) ToMaintenanceScopeOutputWithContext(ctx context.Context) MaintenanceScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MaintenanceScopeOutput)
+}
+
+func (e MaintenanceScope) ToMaintenanceScopePtrOutput() MaintenanceScopePtrOutput {
+	return e.ToMaintenanceScopePtrOutputWithContext(context.Background())
+}
+
+func (e MaintenanceScope) ToMaintenanceScopePtrOutputWithContext(ctx context.Context) MaintenanceScopePtrOutput {
+	return MaintenanceScope(e).ToMaintenanceScopeOutputWithContext(ctx).ToMaintenanceScopePtrOutputWithContext(ctx)
+}
+
+func (e MaintenanceScope) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MaintenanceScope) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MaintenanceScope) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MaintenanceScope) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MaintenanceScopeOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceScope)(nil)).Elem()
+}
+
+func (o MaintenanceScopeOutput) ToMaintenanceScopeOutput() MaintenanceScopeOutput {
+	return o
+}
+
+func (o MaintenanceScopeOutput) ToMaintenanceScopeOutputWithContext(ctx context.Context) MaintenanceScopeOutput {
+	return o
+}
+
+func (o MaintenanceScopeOutput) ToMaintenanceScopePtrOutput() MaintenanceScopePtrOutput {
+	return o.ToMaintenanceScopePtrOutputWithContext(context.Background())
+}
+
+func (o MaintenanceScopeOutput) ToMaintenanceScopePtrOutputWithContext(ctx context.Context) MaintenanceScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MaintenanceScope) *MaintenanceScope {
+		return &v
+	}).(MaintenanceScopePtrOutput)
+}
+
+func (o MaintenanceScopeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MaintenanceScopeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MaintenanceScope) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MaintenanceScopeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MaintenanceScopeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MaintenanceScope) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MaintenanceScopePtrOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenanceScope)(nil)).Elem()
+}
+
+func (o MaintenanceScopePtrOutput) ToMaintenanceScopePtrOutput() MaintenanceScopePtrOutput {
+	return o
+}
+
+func (o MaintenanceScopePtrOutput) ToMaintenanceScopePtrOutputWithContext(ctx context.Context) MaintenanceScopePtrOutput {
+	return o
+}
+
+func (o MaintenanceScopePtrOutput) Elem() MaintenanceScopeOutput {
+	return o.ApplyT(func(v *MaintenanceScope) MaintenanceScope {
+		if v != nil {
+			return *v
+		}
+		var ret MaintenanceScope
+		return ret
+	}).(MaintenanceScopeOutput)
+}
+
+func (o MaintenanceScopePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MaintenanceScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MaintenanceScope) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MaintenanceScopeInput is an input type that accepts values of the MaintenanceScope enum
+// A concrete instance of `MaintenanceScopeInput` can be one of the following:
+//
+//	MaintenanceScopeHost
+//	MaintenanceScopeResource
+//	MaintenanceScopeOSImage
+//	MaintenanceScopeExtension
+//	MaintenanceScopeInGuestPatch
+//	MaintenanceScopeSQLDB
+//	MaintenanceScopeSQLManagedInstance
+type MaintenanceScopeInput interface {
+	pulumi.Input
+
+	ToMaintenanceScopeOutput() MaintenanceScopeOutput
+	ToMaintenanceScopeOutputWithContext(context.Context) MaintenanceScopeOutput
+}
+
+var maintenanceScopePtrType = reflect.TypeOf((**MaintenanceScope)(nil)).Elem()
+
+type MaintenanceScopePtrInput interface {
+	pulumi.Input
+
+	ToMaintenanceScopePtrOutput() MaintenanceScopePtrOutput
+	ToMaintenanceScopePtrOutputWithContext(context.Context) MaintenanceScopePtrOutput
+}
+
+type maintenanceScopePtr string
+
+func MaintenanceScopePtr(v string) MaintenanceScopePtrInput {
+	return (*maintenanceScopePtr)(&v)
+}
+
+func (*maintenanceScopePtr) ElementType() reflect.Type {
+	return maintenanceScopePtrType
+}
+
+func (in *maintenanceScopePtr) ToMaintenanceScopePtrOutput() MaintenanceScopePtrOutput {
+	return pulumi.ToOutput(in).(MaintenanceScopePtrOutput)
+}
+
+func (in *maintenanceScopePtr) ToMaintenanceScopePtrOutputWithContext(ctx context.Context) MaintenanceScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MaintenanceScopePtrOutput)
+}
+
+func (in *maintenanceScopePtr) ToOutput(ctx context.Context) pulumix.Output[*MaintenanceScope] {
+	return pulumix.Output[*MaintenanceScope]{
+		OutputState: in.ToMaintenanceScopePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
 type RebootOptions string
 
@@ -39,6 +208,171 @@ const (
 	RebootOptionsNever      = RebootOptions("Never")
 	RebootOptionsAlways     = RebootOptions("Always")
 )
+
+func (RebootOptions) ElementType() reflect.Type {
+	return reflect.TypeOf((*RebootOptions)(nil)).Elem()
+}
+
+func (e RebootOptions) ToRebootOptionsOutput() RebootOptionsOutput {
+	return pulumi.ToOutput(e).(RebootOptionsOutput)
+}
+
+func (e RebootOptions) ToRebootOptionsOutputWithContext(ctx context.Context) RebootOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RebootOptionsOutput)
+}
+
+func (e RebootOptions) ToRebootOptionsPtrOutput() RebootOptionsPtrOutput {
+	return e.ToRebootOptionsPtrOutputWithContext(context.Background())
+}
+
+func (e RebootOptions) ToRebootOptionsPtrOutputWithContext(ctx context.Context) RebootOptionsPtrOutput {
+	return RebootOptions(e).ToRebootOptionsOutputWithContext(ctx).ToRebootOptionsPtrOutputWithContext(ctx)
+}
+
+func (e RebootOptions) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RebootOptions) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RebootOptions) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RebootOptions) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RebootOptionsOutput struct{ *pulumi.OutputState }
+
+func (RebootOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RebootOptions)(nil)).Elem()
+}
+
+func (o RebootOptionsOutput) ToRebootOptionsOutput() RebootOptionsOutput {
+	return o
+}
+
+func (o RebootOptionsOutput) ToRebootOptionsOutputWithContext(ctx context.Context) RebootOptionsOutput {
+	return o
+}
+
+func (o RebootOptionsOutput) ToRebootOptionsPtrOutput() RebootOptionsPtrOutput {
+	return o.ToRebootOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o RebootOptionsOutput) ToRebootOptionsPtrOutputWithContext(ctx context.Context) RebootOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RebootOptions) *RebootOptions {
+		return &v
+	}).(RebootOptionsPtrOutput)
+}
+
+func (o RebootOptionsOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RebootOptionsOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RebootOptions) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RebootOptionsOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RebootOptionsOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RebootOptions) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RebootOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (RebootOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RebootOptions)(nil)).Elem()
+}
+
+func (o RebootOptionsPtrOutput) ToRebootOptionsPtrOutput() RebootOptionsPtrOutput {
+	return o
+}
+
+func (o RebootOptionsPtrOutput) ToRebootOptionsPtrOutputWithContext(ctx context.Context) RebootOptionsPtrOutput {
+	return o
+}
+
+func (o RebootOptionsPtrOutput) Elem() RebootOptionsOutput {
+	return o.ApplyT(func(v *RebootOptions) RebootOptions {
+		if v != nil {
+			return *v
+		}
+		var ret RebootOptions
+		return ret
+	}).(RebootOptionsOutput)
+}
+
+func (o RebootOptionsPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RebootOptionsPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RebootOptions) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RebootOptionsInput is an input type that accepts values of the RebootOptions enum
+// A concrete instance of `RebootOptionsInput` can be one of the following:
+//
+//	RebootOptionsIfRequired
+//	RebootOptionsNever
+//	RebootOptionsAlways
+type RebootOptionsInput interface {
+	pulumi.Input
+
+	ToRebootOptionsOutput() RebootOptionsOutput
+	ToRebootOptionsOutputWithContext(context.Context) RebootOptionsOutput
+}
+
+var rebootOptionsPtrType = reflect.TypeOf((**RebootOptions)(nil)).Elem()
+
+type RebootOptionsPtrInput interface {
+	pulumi.Input
+
+	ToRebootOptionsPtrOutput() RebootOptionsPtrOutput
+	ToRebootOptionsPtrOutputWithContext(context.Context) RebootOptionsPtrOutput
+}
+
+type rebootOptionsPtr string
+
+func RebootOptionsPtr(v string) RebootOptionsPtrInput {
+	return (*rebootOptionsPtr)(&v)
+}
+
+func (*rebootOptionsPtr) ElementType() reflect.Type {
+	return rebootOptionsPtrType
+}
+
+func (in *rebootOptionsPtr) ToRebootOptionsPtrOutput() RebootOptionsPtrOutput {
+	return pulumi.ToOutput(in).(RebootOptionsPtrOutput)
+}
+
+func (in *rebootOptionsPtr) ToRebootOptionsPtrOutputWithContext(ctx context.Context) RebootOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RebootOptionsPtrOutput)
+}
+
+func (in *rebootOptionsPtr) ToOutput(ctx context.Context) pulumix.Output[*RebootOptions] {
+	return pulumix.Output[*RebootOptions]{
+		OutputState: in.ToRebootOptionsPtrOutputWithContext(ctx).OutputState,
+	}
+}
 
 // Filter VMs by Any or All specified tags.
 type TagOperators string
@@ -167,10 +501,11 @@ func (o TagOperatorsPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// TagOperatorsInput is an input type that accepts TagOperatorsArgs and TagOperatorsOutput values.
-// You can construct a concrete instance of `TagOperatorsInput` via:
+// TagOperatorsInput is an input type that accepts values of the TagOperators enum
+// A concrete instance of `TagOperatorsInput` can be one of the following:
 //
-//	TagOperatorsArgs{...}
+//	TagOperatorsAll
+//	TagOperatorsAny
 type TagOperatorsInput interface {
 	pulumi.Input
 
@@ -221,7 +556,177 @@ const (
 	VisibilityPublic = Visibility("Public")
 )
 
+func (Visibility) ElementType() reflect.Type {
+	return reflect.TypeOf((*Visibility)(nil)).Elem()
+}
+
+func (e Visibility) ToVisibilityOutput() VisibilityOutput {
+	return pulumi.ToOutput(e).(VisibilityOutput)
+}
+
+func (e Visibility) ToVisibilityOutputWithContext(ctx context.Context) VisibilityOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(VisibilityOutput)
+}
+
+func (e Visibility) ToVisibilityPtrOutput() VisibilityPtrOutput {
+	return e.ToVisibilityPtrOutputWithContext(context.Background())
+}
+
+func (e Visibility) ToVisibilityPtrOutputWithContext(ctx context.Context) VisibilityPtrOutput {
+	return Visibility(e).ToVisibilityOutputWithContext(ctx).ToVisibilityPtrOutputWithContext(ctx)
+}
+
+func (e Visibility) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e Visibility) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e Visibility) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e Visibility) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type VisibilityOutput struct{ *pulumi.OutputState }
+
+func (VisibilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Visibility)(nil)).Elem()
+}
+
+func (o VisibilityOutput) ToVisibilityOutput() VisibilityOutput {
+	return o
+}
+
+func (o VisibilityOutput) ToVisibilityOutputWithContext(ctx context.Context) VisibilityOutput {
+	return o
+}
+
+func (o VisibilityOutput) ToVisibilityPtrOutput() VisibilityPtrOutput {
+	return o.ToVisibilityPtrOutputWithContext(context.Background())
+}
+
+func (o VisibilityOutput) ToVisibilityPtrOutputWithContext(ctx context.Context) VisibilityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Visibility) *Visibility {
+		return &v
+	}).(VisibilityPtrOutput)
+}
+
+func (o VisibilityOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o VisibilityOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e Visibility) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o VisibilityOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VisibilityOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e Visibility) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type VisibilityPtrOutput struct{ *pulumi.OutputState }
+
+func (VisibilityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Visibility)(nil)).Elem()
+}
+
+func (o VisibilityPtrOutput) ToVisibilityPtrOutput() VisibilityPtrOutput {
+	return o
+}
+
+func (o VisibilityPtrOutput) ToVisibilityPtrOutputWithContext(ctx context.Context) VisibilityPtrOutput {
+	return o
+}
+
+func (o VisibilityPtrOutput) Elem() VisibilityOutput {
+	return o.ApplyT(func(v *Visibility) Visibility {
+		if v != nil {
+			return *v
+		}
+		var ret Visibility
+		return ret
+	}).(VisibilityOutput)
+}
+
+func (o VisibilityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VisibilityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *Visibility) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// VisibilityInput is an input type that accepts values of the Visibility enum
+// A concrete instance of `VisibilityInput` can be one of the following:
+//
+//	VisibilityCustom
+//	VisibilityPublic
+type VisibilityInput interface {
+	pulumi.Input
+
+	ToVisibilityOutput() VisibilityOutput
+	ToVisibilityOutputWithContext(context.Context) VisibilityOutput
+}
+
+var visibilityPtrType = reflect.TypeOf((**Visibility)(nil)).Elem()
+
+type VisibilityPtrInput interface {
+	pulumi.Input
+
+	ToVisibilityPtrOutput() VisibilityPtrOutput
+	ToVisibilityPtrOutputWithContext(context.Context) VisibilityPtrOutput
+}
+
+type visibilityPtr string
+
+func VisibilityPtr(v string) VisibilityPtrInput {
+	return (*visibilityPtr)(&v)
+}
+
+func (*visibilityPtr) ElementType() reflect.Type {
+	return visibilityPtrType
+}
+
+func (in *visibilityPtr) ToVisibilityPtrOutput() VisibilityPtrOutput {
+	return pulumi.ToOutput(in).(VisibilityPtrOutput)
+}
+
+func (in *visibilityPtr) ToVisibilityPtrOutputWithContext(ctx context.Context) VisibilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(VisibilityPtrOutput)
+}
+
+func (in *visibilityPtr) ToOutput(ctx context.Context) pulumix.Output[*Visibility] {
+	return pulumix.Output[*Visibility]{
+		OutputState: in.ToVisibilityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
+	pulumi.RegisterOutputType(MaintenanceScopeOutput{})
+	pulumi.RegisterOutputType(MaintenanceScopePtrOutput{})
+	pulumi.RegisterOutputType(RebootOptionsOutput{})
+	pulumi.RegisterOutputType(RebootOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TagOperatorsOutput{})
 	pulumi.RegisterOutputType(TagOperatorsPtrOutput{})
+	pulumi.RegisterOutputType(VisibilityOutput{})
+	pulumi.RegisterOutputType(VisibilityPtrOutput{})
 }

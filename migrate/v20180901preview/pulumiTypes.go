@@ -26,6 +26,42 @@ type DatabaseProjectSummaryResponse struct {
 	RefreshSummaryState *string `pulumi:"refreshSummaryState"`
 }
 
+// The database project summary class.
+type DatabaseProjectSummaryResponseOutput struct{ *pulumi.OutputState }
+
+func (DatabaseProjectSummaryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseProjectSummaryResponse)(nil)).Elem()
+}
+
+func (o DatabaseProjectSummaryResponseOutput) ToDatabaseProjectSummaryResponseOutput() DatabaseProjectSummaryResponseOutput {
+	return o
+}
+
+func (o DatabaseProjectSummaryResponseOutput) ToDatabaseProjectSummaryResponseOutputWithContext(ctx context.Context) DatabaseProjectSummaryResponseOutput {
+	return o
+}
+
+// Gets or sets the extended summary.
+func (o DatabaseProjectSummaryResponseOutput) ExtendedSummary() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DatabaseProjectSummaryResponse) map[string]string { return v.ExtendedSummary }).(pulumi.StringMapOutput)
+}
+
+// Gets the Instance type.
+// Expected value is 'Databases'.
+func (o DatabaseProjectSummaryResponseOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseProjectSummaryResponse) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the time when summary was last refreshed.
+func (o DatabaseProjectSummaryResponseOutput) LastSummaryRefreshedTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseProjectSummaryResponse) *string { return v.LastSummaryRefreshedTime }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the state of refresh summary.
+func (o DatabaseProjectSummaryResponseOutput) RefreshSummaryState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseProjectSummaryResponse) *string { return v.RefreshSummaryState }).(pulumi.StringPtrOutput)
+}
+
 // Class representing the databases solution summary.
 type DatabasesSolutionSummaryResponse struct {
 	// Gets or sets the count of database instances assessed.
@@ -37,6 +73,107 @@ type DatabasesSolutionSummaryResponse struct {
 	InstanceType string `pulumi:"instanceType"`
 	// Gets or sets the count of databases ready for migration.
 	MigrationReadyCount *int `pulumi:"migrationReadyCount"`
+}
+
+// Class representing the databases solution summary.
+type DatabasesSolutionSummaryResponseOutput struct{ *pulumi.OutputState }
+
+func (DatabasesSolutionSummaryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabasesSolutionSummaryResponse)(nil)).Elem()
+}
+
+func (o DatabasesSolutionSummaryResponseOutput) ToDatabasesSolutionSummaryResponseOutput() DatabasesSolutionSummaryResponseOutput {
+	return o
+}
+
+func (o DatabasesSolutionSummaryResponseOutput) ToDatabasesSolutionSummaryResponseOutputWithContext(ctx context.Context) DatabasesSolutionSummaryResponseOutput {
+	return o
+}
+
+// Gets or sets the count of database instances assessed.
+func (o DatabasesSolutionSummaryResponseOutput) DatabaseInstancesAssessedCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabasesSolutionSummaryResponse) *int { return v.DatabaseInstancesAssessedCount }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the count of databases assessed.
+func (o DatabasesSolutionSummaryResponseOutput) DatabasesAssessedCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabasesSolutionSummaryResponse) *int { return v.DatabasesAssessedCount }).(pulumi.IntPtrOutput)
+}
+
+// Gets the Instance type.
+// Expected value is 'Databases'.
+func (o DatabasesSolutionSummaryResponseOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabasesSolutionSummaryResponse) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the count of databases ready for migration.
+func (o DatabasesSolutionSummaryResponseOutput) MigrationReadyCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabasesSolutionSummaryResponse) *int { return v.MigrationReadyCount }).(pulumi.IntPtrOutput)
+}
+
+type DatabasesSolutionSummaryResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DatabasesSolutionSummaryResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabasesSolutionSummaryResponse)(nil)).Elem()
+}
+
+func (o DatabasesSolutionSummaryResponsePtrOutput) ToDatabasesSolutionSummaryResponsePtrOutput() DatabasesSolutionSummaryResponsePtrOutput {
+	return o
+}
+
+func (o DatabasesSolutionSummaryResponsePtrOutput) ToDatabasesSolutionSummaryResponsePtrOutputWithContext(ctx context.Context) DatabasesSolutionSummaryResponsePtrOutput {
+	return o
+}
+
+func (o DatabasesSolutionSummaryResponsePtrOutput) Elem() DatabasesSolutionSummaryResponseOutput {
+	return o.ApplyT(func(v *DatabasesSolutionSummaryResponse) DatabasesSolutionSummaryResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DatabasesSolutionSummaryResponse
+		return ret
+	}).(DatabasesSolutionSummaryResponseOutput)
+}
+
+// Gets or sets the count of database instances assessed.
+func (o DatabasesSolutionSummaryResponsePtrOutput) DatabaseInstancesAssessedCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabasesSolutionSummaryResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DatabaseInstancesAssessedCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the count of databases assessed.
+func (o DatabasesSolutionSummaryResponsePtrOutput) DatabasesAssessedCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabasesSolutionSummaryResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DatabasesAssessedCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Gets the Instance type.
+// Expected value is 'Databases'.
+func (o DatabasesSolutionSummaryResponsePtrOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabasesSolutionSummaryResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the count of databases ready for migration.
+func (o DatabasesSolutionSummaryResponsePtrOutput) MigrationReadyCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabasesSolutionSummaryResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MigrationReadyCount
+	}).(pulumi.IntPtrOutput)
 }
 
 // Class for migrate project properties.
@@ -468,6 +605,67 @@ type ServersProjectSummaryResponse struct {
 	TestMigratedCount *int `pulumi:"testMigratedCount"`
 }
 
+// Class representing the servers project summary.
+type ServersProjectSummaryResponseOutput struct{ *pulumi.OutputState }
+
+func (ServersProjectSummaryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServersProjectSummaryResponse)(nil)).Elem()
+}
+
+func (o ServersProjectSummaryResponseOutput) ToServersProjectSummaryResponseOutput() ServersProjectSummaryResponseOutput {
+	return o
+}
+
+func (o ServersProjectSummaryResponseOutput) ToServersProjectSummaryResponseOutputWithContext(ctx context.Context) ServersProjectSummaryResponseOutput {
+	return o
+}
+
+// Gets or sets the count of entities assessed.
+func (o ServersProjectSummaryResponseOutput) AssessedCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServersProjectSummaryResponse) *int { return v.AssessedCount }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the count of entities discovered.
+func (o ServersProjectSummaryResponseOutput) DiscoveredCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServersProjectSummaryResponse) *int { return v.DiscoveredCount }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the extended summary.
+func (o ServersProjectSummaryResponseOutput) ExtendedSummary() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServersProjectSummaryResponse) map[string]string { return v.ExtendedSummary }).(pulumi.StringMapOutput)
+}
+
+// Gets the Instance type.
+// Expected value is 'Servers'.
+func (o ServersProjectSummaryResponseOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v ServersProjectSummaryResponse) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the time when summary was last refreshed.
+func (o ServersProjectSummaryResponseOutput) LastSummaryRefreshedTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServersProjectSummaryResponse) *string { return v.LastSummaryRefreshedTime }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the count of entities migrated.
+func (o ServersProjectSummaryResponseOutput) MigratedCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServersProjectSummaryResponse) *int { return v.MigratedCount }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the state of refresh summary.
+func (o ServersProjectSummaryResponseOutput) RefreshSummaryState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServersProjectSummaryResponse) *string { return v.RefreshSummaryState }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the count of entities being replicated.
+func (o ServersProjectSummaryResponseOutput) ReplicatingCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServersProjectSummaryResponse) *int { return v.ReplicatingCount }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the count of entities test migrated.
+func (o ServersProjectSummaryResponseOutput) TestMigratedCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServersProjectSummaryResponse) *int { return v.TestMigratedCount }).(pulumi.IntPtrOutput)
+}
+
 // Class representing the servers solution summary.
 type ServersSolutionSummaryResponse struct {
 	// Gets or sets the count of servers assessed.
@@ -483,6 +681,137 @@ type ServersSolutionSummaryResponse struct {
 	ReplicatingCount *int `pulumi:"replicatingCount"`
 	// Gets or sets the count of servers test migrated.
 	TestMigratedCount *int `pulumi:"testMigratedCount"`
+}
+
+// Class representing the servers solution summary.
+type ServersSolutionSummaryResponseOutput struct{ *pulumi.OutputState }
+
+func (ServersSolutionSummaryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServersSolutionSummaryResponse)(nil)).Elem()
+}
+
+func (o ServersSolutionSummaryResponseOutput) ToServersSolutionSummaryResponseOutput() ServersSolutionSummaryResponseOutput {
+	return o
+}
+
+func (o ServersSolutionSummaryResponseOutput) ToServersSolutionSummaryResponseOutputWithContext(ctx context.Context) ServersSolutionSummaryResponseOutput {
+	return o
+}
+
+// Gets or sets the count of servers assessed.
+func (o ServersSolutionSummaryResponseOutput) AssessedCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServersSolutionSummaryResponse) *int { return v.AssessedCount }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the count of servers discovered.
+func (o ServersSolutionSummaryResponseOutput) DiscoveredCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServersSolutionSummaryResponse) *int { return v.DiscoveredCount }).(pulumi.IntPtrOutput)
+}
+
+// Gets the Instance type.
+// Expected value is 'Servers'.
+func (o ServersSolutionSummaryResponseOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v ServersSolutionSummaryResponse) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the count of servers migrated.
+func (o ServersSolutionSummaryResponseOutput) MigratedCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServersSolutionSummaryResponse) *int { return v.MigratedCount }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the count of servers being replicated.
+func (o ServersSolutionSummaryResponseOutput) ReplicatingCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServersSolutionSummaryResponse) *int { return v.ReplicatingCount }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the count of servers test migrated.
+func (o ServersSolutionSummaryResponseOutput) TestMigratedCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServersSolutionSummaryResponse) *int { return v.TestMigratedCount }).(pulumi.IntPtrOutput)
+}
+
+type ServersSolutionSummaryResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServersSolutionSummaryResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServersSolutionSummaryResponse)(nil)).Elem()
+}
+
+func (o ServersSolutionSummaryResponsePtrOutput) ToServersSolutionSummaryResponsePtrOutput() ServersSolutionSummaryResponsePtrOutput {
+	return o
+}
+
+func (o ServersSolutionSummaryResponsePtrOutput) ToServersSolutionSummaryResponsePtrOutputWithContext(ctx context.Context) ServersSolutionSummaryResponsePtrOutput {
+	return o
+}
+
+func (o ServersSolutionSummaryResponsePtrOutput) Elem() ServersSolutionSummaryResponseOutput {
+	return o.ApplyT(func(v *ServersSolutionSummaryResponse) ServersSolutionSummaryResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServersSolutionSummaryResponse
+		return ret
+	}).(ServersSolutionSummaryResponseOutput)
+}
+
+// Gets or sets the count of servers assessed.
+func (o ServersSolutionSummaryResponsePtrOutput) AssessedCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServersSolutionSummaryResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AssessedCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the count of servers discovered.
+func (o ServersSolutionSummaryResponsePtrOutput) DiscoveredCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServersSolutionSummaryResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DiscoveredCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Gets the Instance type.
+// Expected value is 'Servers'.
+func (o ServersSolutionSummaryResponsePtrOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServersSolutionSummaryResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the count of servers migrated.
+func (o ServersSolutionSummaryResponsePtrOutput) MigratedCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServersSolutionSummaryResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MigratedCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the count of servers being replicated.
+func (o ServersSolutionSummaryResponsePtrOutput) ReplicatingCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServersSolutionSummaryResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicatingCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the count of servers test migrated.
+func (o ServersSolutionSummaryResponsePtrOutput) TestMigratedCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServersSolutionSummaryResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TestMigratedCount
+	}).(pulumi.IntPtrOutput)
 }
 
 // Class representing the details of the solution.
@@ -1061,6 +1390,9 @@ func (o SolutionPropertiesResponseOutput) Tool() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(DatabaseProjectSummaryResponseOutput{})
+	pulumi.RegisterOutputType(DatabasesSolutionSummaryResponseOutput{})
+	pulumi.RegisterOutputType(DatabasesSolutionSummaryResponsePtrOutput{})
 	pulumi.RegisterOutputType(MigrateProjectPropertiesOutput{})
 	pulumi.RegisterOutputType(MigrateProjectPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(MigrateProjectPropertiesResponseOutput{})
@@ -1068,6 +1400,9 @@ func init() {
 	pulumi.RegisterOutputType(MigrateProjectResponseTagsPtrOutput{})
 	pulumi.RegisterOutputType(MigrateProjectTagsOutput{})
 	pulumi.RegisterOutputType(MigrateProjectTagsPtrOutput{})
+	pulumi.RegisterOutputType(ServersProjectSummaryResponseOutput{})
+	pulumi.RegisterOutputType(ServersSolutionSummaryResponseOutput{})
+	pulumi.RegisterOutputType(ServersSolutionSummaryResponsePtrOutput{})
 	pulumi.RegisterOutputType(SolutionDetailsOutput{})
 	pulumi.RegisterOutputType(SolutionDetailsPtrOutput{})
 	pulumi.RegisterOutputType(SolutionDetailsResponseOutput{})

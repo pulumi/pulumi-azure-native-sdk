@@ -20,6 +20,171 @@ const (
 	AADObjectTypeServicePrincipal = AADObjectType("ServicePrincipal")
 )
 
+func (AADObjectType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AADObjectType)(nil)).Elem()
+}
+
+func (e AADObjectType) ToAADObjectTypeOutput() AADObjectTypeOutput {
+	return pulumi.ToOutput(e).(AADObjectTypeOutput)
+}
+
+func (e AADObjectType) ToAADObjectTypeOutputWithContext(ctx context.Context) AADObjectTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AADObjectTypeOutput)
+}
+
+func (e AADObjectType) ToAADObjectTypePtrOutput() AADObjectTypePtrOutput {
+	return e.ToAADObjectTypePtrOutputWithContext(context.Background())
+}
+
+func (e AADObjectType) ToAADObjectTypePtrOutputWithContext(ctx context.Context) AADObjectTypePtrOutput {
+	return AADObjectType(e).ToAADObjectTypeOutputWithContext(ctx).ToAADObjectTypePtrOutputWithContext(ctx)
+}
+
+func (e AADObjectType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AADObjectType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AADObjectType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AADObjectType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AADObjectTypeOutput struct{ *pulumi.OutputState }
+
+func (AADObjectTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AADObjectType)(nil)).Elem()
+}
+
+func (o AADObjectTypeOutput) ToAADObjectTypeOutput() AADObjectTypeOutput {
+	return o
+}
+
+func (o AADObjectTypeOutput) ToAADObjectTypeOutputWithContext(ctx context.Context) AADObjectTypeOutput {
+	return o
+}
+
+func (o AADObjectTypeOutput) ToAADObjectTypePtrOutput() AADObjectTypePtrOutput {
+	return o.ToAADObjectTypePtrOutputWithContext(context.Background())
+}
+
+func (o AADObjectTypeOutput) ToAADObjectTypePtrOutputWithContext(ctx context.Context) AADObjectTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AADObjectType) *AADObjectType {
+		return &v
+	}).(AADObjectTypePtrOutput)
+}
+
+func (o AADObjectTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AADObjectTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AADObjectType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AADObjectTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AADObjectTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AADObjectType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AADObjectTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AADObjectTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AADObjectType)(nil)).Elem()
+}
+
+func (o AADObjectTypePtrOutput) ToAADObjectTypePtrOutput() AADObjectTypePtrOutput {
+	return o
+}
+
+func (o AADObjectTypePtrOutput) ToAADObjectTypePtrOutputWithContext(ctx context.Context) AADObjectTypePtrOutput {
+	return o
+}
+
+func (o AADObjectTypePtrOutput) Elem() AADObjectTypeOutput {
+	return o.ApplyT(func(v *AADObjectType) AADObjectType {
+		if v != nil {
+			return *v
+		}
+		var ret AADObjectType
+		return ret
+	}).(AADObjectTypeOutput)
+}
+
+func (o AADObjectTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AADObjectTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AADObjectType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AADObjectTypeInput is an input type that accepts values of the AADObjectType enum
+// A concrete instance of `AADObjectTypeInput` can be one of the following:
+//
+//	AADObjectTypeUser
+//	AADObjectTypeGroup
+//	AADObjectTypeServicePrincipal
+type AADObjectTypeInput interface {
+	pulumi.Input
+
+	ToAADObjectTypeOutput() AADObjectTypeOutput
+	ToAADObjectTypeOutputWithContext(context.Context) AADObjectTypeOutput
+}
+
+var aadobjectTypePtrType = reflect.TypeOf((**AADObjectType)(nil)).Elem()
+
+type AADObjectTypePtrInput interface {
+	pulumi.Input
+
+	ToAADObjectTypePtrOutput() AADObjectTypePtrOutput
+	ToAADObjectTypePtrOutputWithContext(context.Context) AADObjectTypePtrOutput
+}
+
+type aadobjectTypePtr string
+
+func AADObjectTypePtr(v string) AADObjectTypePtrInput {
+	return (*aadobjectTypePtr)(&v)
+}
+
+func (*aadobjectTypePtr) ElementType() reflect.Type {
+	return aadobjectTypePtrType
+}
+
+func (in *aadobjectTypePtr) ToAADObjectTypePtrOutput() AADObjectTypePtrOutput {
+	return pulumi.ToOutput(in).(AADObjectTypePtrOutput)
+}
+
+func (in *aadobjectTypePtr) ToAADObjectTypePtrOutputWithContext(ctx context.Context) AADObjectTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AADObjectTypePtrOutput)
+}
+
+func (in *aadobjectTypePtr) ToOutput(ctx context.Context) pulumix.Output[*AADObjectType] {
+	return pulumix.Output[*AADObjectType]{
+		OutputState: in.ToAADObjectTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced.
 type FirewallAllowAzureIpsState string
 
@@ -147,10 +312,11 @@ func (o FirewallAllowAzureIpsStatePtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// FirewallAllowAzureIpsStateInput is an input type that accepts FirewallAllowAzureIpsStateArgs and FirewallAllowAzureIpsStateOutput values.
-// You can construct a concrete instance of `FirewallAllowAzureIpsStateInput` via:
+// FirewallAllowAzureIpsStateInput is an input type that accepts values of the FirewallAllowAzureIpsState enum
+// A concrete instance of `FirewallAllowAzureIpsStateInput` can be one of the following:
 //
-//	FirewallAllowAzureIpsStateArgs{...}
+//	FirewallAllowAzureIpsStateEnabled
+//	FirewallAllowAzureIpsStateDisabled
 type FirewallAllowAzureIpsStateInput interface {
 	pulumi.Input
 
@@ -318,10 +484,11 @@ func (o FirewallStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 	}).(pulumi.StringPtrOutput)
 }
 
-// FirewallStateInput is an input type that accepts FirewallStateArgs and FirewallStateOutput values.
-// You can construct a concrete instance of `FirewallStateInput` via:
+// FirewallStateInput is an input type that accepts values of the FirewallState enum
+// A concrete instance of `FirewallStateInput` can be one of the following:
 //
-//	FirewallStateArgs{...}
+//	FirewallStateEnabled
+//	FirewallStateDisabled
 type FirewallStateInput interface {
 	pulumi.Input
 
@@ -496,10 +663,18 @@ func (o TierTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// TierTypeInput is an input type that accepts TierTypeArgs and TierTypeOutput values.
-// You can construct a concrete instance of `TierTypeInput` via:
+// TierTypeInput is an input type that accepts values of the TierType enum
+// A concrete instance of `TierTypeInput` can be one of the following:
 //
-//	TierTypeArgs{...}
+//	TierTypeConsumption
+//	TierType_Commitment_100AUHours
+//	TierType_Commitment_500AUHours
+//	TierType_Commitment_1000AUHours
+//	TierType_Commitment_5000AUHours
+//	TierType_Commitment_10000AUHours
+//	TierType_Commitment_50000AUHours
+//	TierType_Commitment_100000AUHours
+//	TierType_Commitment_500000AUHours
 type TierTypeInput interface {
 	pulumi.Input
 
@@ -541,6 +716,8 @@ func (in *tierTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TierType] {
 }
 
 func init() {
+	pulumi.RegisterOutputType(AADObjectTypeOutput{})
+	pulumi.RegisterOutputType(AADObjectTypePtrOutput{})
 	pulumi.RegisterOutputType(FirewallAllowAzureIpsStateOutput{})
 	pulumi.RegisterOutputType(FirewallAllowAzureIpsStatePtrOutput{})
 	pulumi.RegisterOutputType(FirewallStateOutput{})

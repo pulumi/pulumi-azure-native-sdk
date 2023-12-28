@@ -140,10 +140,13 @@ func (o IntervalInMinsPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// IntervalInMinsInput is an input type that accepts IntervalInMinsArgs and IntervalInMinsOutput values.
-// You can construct a concrete instance of `IntervalInMinsInput` via:
+// IntervalInMinsInput is an input type that accepts values of the IntervalInMins enum
+// A concrete instance of `IntervalInMinsInput` can be one of the following:
 //
-//	IntervalInMinsArgs{...}
+//	IntervalInMinsThreeMins
+//	IntervalInMinsFiveMins
+//	IntervalInMinsThirtyMins
+//	IntervalInMinsSixtyMins
 type IntervalInMinsInput interface {
 	pulumi.Input
 

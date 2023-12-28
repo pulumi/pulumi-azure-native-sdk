@@ -835,6 +835,191 @@ type CacheConfiguration struct {
 	QueryParameters *string `pulumi:"queryParameters"`
 }
 
+// CacheConfigurationInput is an input type that accepts CacheConfigurationArgs and CacheConfigurationOutput values.
+// You can construct a concrete instance of `CacheConfigurationInput` via:
+//
+//	CacheConfigurationArgs{...}
+type CacheConfigurationInput interface {
+	pulumi.Input
+
+	ToCacheConfigurationOutput() CacheConfigurationOutput
+	ToCacheConfigurationOutputWithContext(context.Context) CacheConfigurationOutput
+}
+
+// Caching settings for a caching-type route. To disable caching, do not provide a cacheConfiguration object.
+type CacheConfigurationArgs struct {
+	// The duration for which the content needs to be cached. Allowed format is in ISO 8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations). HTTP requires the value to be no more than a year
+	CacheDuration pulumi.StringPtrInput `pulumi:"cacheDuration"`
+	// Whether to use dynamic compression for cached content
+	DynamicCompression pulumi.StringPtrInput `pulumi:"dynamicCompression"`
+	// Treatment of URL query terms when forming the cache key.
+	QueryParameterStripDirective pulumi.StringPtrInput `pulumi:"queryParameterStripDirective"`
+	// query parameters to include or exclude (comma separated).
+	QueryParameters pulumi.StringPtrInput `pulumi:"queryParameters"`
+}
+
+func (CacheConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CacheConfiguration)(nil)).Elem()
+}
+
+func (i CacheConfigurationArgs) ToCacheConfigurationOutput() CacheConfigurationOutput {
+	return i.ToCacheConfigurationOutputWithContext(context.Background())
+}
+
+func (i CacheConfigurationArgs) ToCacheConfigurationOutputWithContext(ctx context.Context) CacheConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CacheConfigurationOutput)
+}
+
+func (i CacheConfigurationArgs) ToCacheConfigurationPtrOutput() CacheConfigurationPtrOutput {
+	return i.ToCacheConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i CacheConfigurationArgs) ToCacheConfigurationPtrOutputWithContext(ctx context.Context) CacheConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CacheConfigurationOutput).ToCacheConfigurationPtrOutputWithContext(ctx)
+}
+
+// CacheConfigurationPtrInput is an input type that accepts CacheConfigurationArgs, CacheConfigurationPtr and CacheConfigurationPtrOutput values.
+// You can construct a concrete instance of `CacheConfigurationPtrInput` via:
+//
+//	        CacheConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CacheConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToCacheConfigurationPtrOutput() CacheConfigurationPtrOutput
+	ToCacheConfigurationPtrOutputWithContext(context.Context) CacheConfigurationPtrOutput
+}
+
+type cacheConfigurationPtrType CacheConfigurationArgs
+
+func CacheConfigurationPtr(v *CacheConfigurationArgs) CacheConfigurationPtrInput {
+	return (*cacheConfigurationPtrType)(v)
+}
+
+func (*cacheConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CacheConfiguration)(nil)).Elem()
+}
+
+func (i *cacheConfigurationPtrType) ToCacheConfigurationPtrOutput() CacheConfigurationPtrOutput {
+	return i.ToCacheConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *cacheConfigurationPtrType) ToCacheConfigurationPtrOutputWithContext(ctx context.Context) CacheConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CacheConfigurationPtrOutput)
+}
+
+// Caching settings for a caching-type route. To disable caching, do not provide a cacheConfiguration object.
+type CacheConfigurationOutput struct{ *pulumi.OutputState }
+
+func (CacheConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CacheConfiguration)(nil)).Elem()
+}
+
+func (o CacheConfigurationOutput) ToCacheConfigurationOutput() CacheConfigurationOutput {
+	return o
+}
+
+func (o CacheConfigurationOutput) ToCacheConfigurationOutputWithContext(ctx context.Context) CacheConfigurationOutput {
+	return o
+}
+
+func (o CacheConfigurationOutput) ToCacheConfigurationPtrOutput() CacheConfigurationPtrOutput {
+	return o.ToCacheConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o CacheConfigurationOutput) ToCacheConfigurationPtrOutputWithContext(ctx context.Context) CacheConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CacheConfiguration) *CacheConfiguration {
+		return &v
+	}).(CacheConfigurationPtrOutput)
+}
+
+// The duration for which the content needs to be cached. Allowed format is in ISO 8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations). HTTP requires the value to be no more than a year
+func (o CacheConfigurationOutput) CacheDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheConfiguration) *string { return v.CacheDuration }).(pulumi.StringPtrOutput)
+}
+
+// Whether to use dynamic compression for cached content
+func (o CacheConfigurationOutput) DynamicCompression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheConfiguration) *string { return v.DynamicCompression }).(pulumi.StringPtrOutput)
+}
+
+// Treatment of URL query terms when forming the cache key.
+func (o CacheConfigurationOutput) QueryParameterStripDirective() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheConfiguration) *string { return v.QueryParameterStripDirective }).(pulumi.StringPtrOutput)
+}
+
+// query parameters to include or exclude (comma separated).
+func (o CacheConfigurationOutput) QueryParameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheConfiguration) *string { return v.QueryParameters }).(pulumi.StringPtrOutput)
+}
+
+type CacheConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (CacheConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CacheConfiguration)(nil)).Elem()
+}
+
+func (o CacheConfigurationPtrOutput) ToCacheConfigurationPtrOutput() CacheConfigurationPtrOutput {
+	return o
+}
+
+func (o CacheConfigurationPtrOutput) ToCacheConfigurationPtrOutputWithContext(ctx context.Context) CacheConfigurationPtrOutput {
+	return o
+}
+
+func (o CacheConfigurationPtrOutput) Elem() CacheConfigurationOutput {
+	return o.ApplyT(func(v *CacheConfiguration) CacheConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret CacheConfiguration
+		return ret
+	}).(CacheConfigurationOutput)
+}
+
+// The duration for which the content needs to be cached. Allowed format is in ISO 8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations). HTTP requires the value to be no more than a year
+func (o CacheConfigurationPtrOutput) CacheDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CacheDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to use dynamic compression for cached content
+func (o CacheConfigurationPtrOutput) DynamicCompression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DynamicCompression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Treatment of URL query terms when forming the cache key.
+func (o CacheConfigurationPtrOutput) QueryParameterStripDirective() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryParameterStripDirective
+	}).(pulumi.StringPtrOutput)
+}
+
+// query parameters to include or exclude (comma separated).
+func (o CacheConfigurationPtrOutput) QueryParameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryParameters
+	}).(pulumi.StringPtrOutput)
+}
+
 // Caching settings for a caching-type route. To disable caching, do not provide a cacheConfiguration object.
 type CacheConfigurationResponse struct {
 	// The duration for which the content needs to be cached. Allowed format is in ISO 8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations). HTTP requires the value to be no more than a year
@@ -845,6 +1030,105 @@ type CacheConfigurationResponse struct {
 	QueryParameterStripDirective *string `pulumi:"queryParameterStripDirective"`
 	// query parameters to include or exclude (comma separated).
 	QueryParameters *string `pulumi:"queryParameters"`
+}
+
+// Caching settings for a caching-type route. To disable caching, do not provide a cacheConfiguration object.
+type CacheConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (CacheConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CacheConfigurationResponse)(nil)).Elem()
+}
+
+func (o CacheConfigurationResponseOutput) ToCacheConfigurationResponseOutput() CacheConfigurationResponseOutput {
+	return o
+}
+
+func (o CacheConfigurationResponseOutput) ToCacheConfigurationResponseOutputWithContext(ctx context.Context) CacheConfigurationResponseOutput {
+	return o
+}
+
+// The duration for which the content needs to be cached. Allowed format is in ISO 8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations). HTTP requires the value to be no more than a year
+func (o CacheConfigurationResponseOutput) CacheDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheConfigurationResponse) *string { return v.CacheDuration }).(pulumi.StringPtrOutput)
+}
+
+// Whether to use dynamic compression for cached content
+func (o CacheConfigurationResponseOutput) DynamicCompression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheConfigurationResponse) *string { return v.DynamicCompression }).(pulumi.StringPtrOutput)
+}
+
+// Treatment of URL query terms when forming the cache key.
+func (o CacheConfigurationResponseOutput) QueryParameterStripDirective() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheConfigurationResponse) *string { return v.QueryParameterStripDirective }).(pulumi.StringPtrOutput)
+}
+
+// query parameters to include or exclude (comma separated).
+func (o CacheConfigurationResponseOutput) QueryParameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CacheConfigurationResponse) *string { return v.QueryParameters }).(pulumi.StringPtrOutput)
+}
+
+type CacheConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CacheConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CacheConfigurationResponse)(nil)).Elem()
+}
+
+func (o CacheConfigurationResponsePtrOutput) ToCacheConfigurationResponsePtrOutput() CacheConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o CacheConfigurationResponsePtrOutput) ToCacheConfigurationResponsePtrOutputWithContext(ctx context.Context) CacheConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o CacheConfigurationResponsePtrOutput) Elem() CacheConfigurationResponseOutput {
+	return o.ApplyT(func(v *CacheConfigurationResponse) CacheConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CacheConfigurationResponse
+		return ret
+	}).(CacheConfigurationResponseOutput)
+}
+
+// The duration for which the content needs to be cached. Allowed format is in ISO 8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations). HTTP requires the value to be no more than a year
+func (o CacheConfigurationResponsePtrOutput) CacheDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CacheDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to use dynamic compression for cached content
+func (o CacheConfigurationResponsePtrOutput) DynamicCompression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DynamicCompression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Treatment of URL query terms when forming the cache key.
+func (o CacheConfigurationResponsePtrOutput) QueryParameterStripDirective() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryParameterStripDirective
+	}).(pulumi.StringPtrOutput)
+}
+
+// query parameters to include or exclude (comma separated).
+func (o CacheConfigurationResponsePtrOutput) QueryParameters() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CacheConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryParameters
+	}).(pulumi.StringPtrOutput)
 }
 
 // Https settings for a domain
@@ -1389,6 +1673,208 @@ type ForwardingConfiguration struct {
 	OdataType string `pulumi:"odataType"`
 }
 
+// ForwardingConfigurationInput is an input type that accepts ForwardingConfigurationArgs and ForwardingConfigurationOutput values.
+// You can construct a concrete instance of `ForwardingConfigurationInput` via:
+//
+//	ForwardingConfigurationArgs{...}
+type ForwardingConfigurationInput interface {
+	pulumi.Input
+
+	ToForwardingConfigurationOutput() ForwardingConfigurationOutput
+	ToForwardingConfigurationOutputWithContext(context.Context) ForwardingConfigurationOutput
+}
+
+// Describes Forwarding Route.
+type ForwardingConfigurationArgs struct {
+	// A reference to the BackendPool which this rule routes to.
+	BackendPool SubResourcePtrInput `pulumi:"backendPool"`
+	// The caching configuration associated with this rule.
+	CacheConfiguration CacheConfigurationPtrInput `pulumi:"cacheConfiguration"`
+	// A custom path used to rewrite resource paths matched by this rule. Leave empty to use incoming path.
+	CustomForwardingPath pulumi.StringPtrInput `pulumi:"customForwardingPath"`
+	// Protocol this rule will use when forwarding traffic to backends.
+	ForwardingProtocol pulumi.StringPtrInput `pulumi:"forwardingProtocol"`
+	// Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration'.
+	OdataType pulumi.StringInput `pulumi:"odataType"`
+}
+
+func (ForwardingConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardingConfiguration)(nil)).Elem()
+}
+
+func (i ForwardingConfigurationArgs) ToForwardingConfigurationOutput() ForwardingConfigurationOutput {
+	return i.ToForwardingConfigurationOutputWithContext(context.Background())
+}
+
+func (i ForwardingConfigurationArgs) ToForwardingConfigurationOutputWithContext(ctx context.Context) ForwardingConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardingConfigurationOutput)
+}
+
+func (i ForwardingConfigurationArgs) ToForwardingConfigurationPtrOutput() ForwardingConfigurationPtrOutput {
+	return i.ToForwardingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ForwardingConfigurationArgs) ToForwardingConfigurationPtrOutputWithContext(ctx context.Context) ForwardingConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardingConfigurationOutput).ToForwardingConfigurationPtrOutputWithContext(ctx)
+}
+
+// ForwardingConfigurationPtrInput is an input type that accepts ForwardingConfigurationArgs, ForwardingConfigurationPtr and ForwardingConfigurationPtrOutput values.
+// You can construct a concrete instance of `ForwardingConfigurationPtrInput` via:
+//
+//	        ForwardingConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ForwardingConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToForwardingConfigurationPtrOutput() ForwardingConfigurationPtrOutput
+	ToForwardingConfigurationPtrOutputWithContext(context.Context) ForwardingConfigurationPtrOutput
+}
+
+type forwardingConfigurationPtrType ForwardingConfigurationArgs
+
+func ForwardingConfigurationPtr(v *ForwardingConfigurationArgs) ForwardingConfigurationPtrInput {
+	return (*forwardingConfigurationPtrType)(v)
+}
+
+func (*forwardingConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ForwardingConfiguration)(nil)).Elem()
+}
+
+func (i *forwardingConfigurationPtrType) ToForwardingConfigurationPtrOutput() ForwardingConfigurationPtrOutput {
+	return i.ToForwardingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *forwardingConfigurationPtrType) ToForwardingConfigurationPtrOutputWithContext(ctx context.Context) ForwardingConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardingConfigurationPtrOutput)
+}
+
+// Describes Forwarding Route.
+type ForwardingConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ForwardingConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardingConfiguration)(nil)).Elem()
+}
+
+func (o ForwardingConfigurationOutput) ToForwardingConfigurationOutput() ForwardingConfigurationOutput {
+	return o
+}
+
+func (o ForwardingConfigurationOutput) ToForwardingConfigurationOutputWithContext(ctx context.Context) ForwardingConfigurationOutput {
+	return o
+}
+
+func (o ForwardingConfigurationOutput) ToForwardingConfigurationPtrOutput() ForwardingConfigurationPtrOutput {
+	return o.ToForwardingConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ForwardingConfigurationOutput) ToForwardingConfigurationPtrOutputWithContext(ctx context.Context) ForwardingConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ForwardingConfiguration) *ForwardingConfiguration {
+		return &v
+	}).(ForwardingConfigurationPtrOutput)
+}
+
+// A reference to the BackendPool which this rule routes to.
+func (o ForwardingConfigurationOutput) BackendPool() SubResourcePtrOutput {
+	return o.ApplyT(func(v ForwardingConfiguration) *SubResource { return v.BackendPool }).(SubResourcePtrOutput)
+}
+
+// The caching configuration associated with this rule.
+func (o ForwardingConfigurationOutput) CacheConfiguration() CacheConfigurationPtrOutput {
+	return o.ApplyT(func(v ForwardingConfiguration) *CacheConfiguration { return v.CacheConfiguration }).(CacheConfigurationPtrOutput)
+}
+
+// A custom path used to rewrite resource paths matched by this rule. Leave empty to use incoming path.
+func (o ForwardingConfigurationOutput) CustomForwardingPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ForwardingConfiguration) *string { return v.CustomForwardingPath }).(pulumi.StringPtrOutput)
+}
+
+// Protocol this rule will use when forwarding traffic to backends.
+func (o ForwardingConfigurationOutput) ForwardingProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ForwardingConfiguration) *string { return v.ForwardingProtocol }).(pulumi.StringPtrOutput)
+}
+
+// Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration'.
+func (o ForwardingConfigurationOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v ForwardingConfiguration) string { return v.OdataType }).(pulumi.StringOutput)
+}
+
+type ForwardingConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ForwardingConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ForwardingConfiguration)(nil)).Elem()
+}
+
+func (o ForwardingConfigurationPtrOutput) ToForwardingConfigurationPtrOutput() ForwardingConfigurationPtrOutput {
+	return o
+}
+
+func (o ForwardingConfigurationPtrOutput) ToForwardingConfigurationPtrOutputWithContext(ctx context.Context) ForwardingConfigurationPtrOutput {
+	return o
+}
+
+func (o ForwardingConfigurationPtrOutput) Elem() ForwardingConfigurationOutput {
+	return o.ApplyT(func(v *ForwardingConfiguration) ForwardingConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ForwardingConfiguration
+		return ret
+	}).(ForwardingConfigurationOutput)
+}
+
+// A reference to the BackendPool which this rule routes to.
+func (o ForwardingConfigurationPtrOutput) BackendPool() SubResourcePtrOutput {
+	return o.ApplyT(func(v *ForwardingConfiguration) *SubResource {
+		if v == nil {
+			return nil
+		}
+		return v.BackendPool
+	}).(SubResourcePtrOutput)
+}
+
+// The caching configuration associated with this rule.
+func (o ForwardingConfigurationPtrOutput) CacheConfiguration() CacheConfigurationPtrOutput {
+	return o.ApplyT(func(v *ForwardingConfiguration) *CacheConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.CacheConfiguration
+	}).(CacheConfigurationPtrOutput)
+}
+
+// A custom path used to rewrite resource paths matched by this rule. Leave empty to use incoming path.
+func (o ForwardingConfigurationPtrOutput) CustomForwardingPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ForwardingConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomForwardingPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Protocol this rule will use when forwarding traffic to backends.
+func (o ForwardingConfigurationPtrOutput) ForwardingProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ForwardingConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardingProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration'.
+func (o ForwardingConfigurationPtrOutput) OdataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ForwardingConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OdataType
+	}).(pulumi.StringPtrOutput)
+}
+
 // Describes Forwarding Route.
 type ForwardingConfigurationResponse struct {
 	// A reference to the BackendPool which this rule routes to.
@@ -1401,6 +1887,120 @@ type ForwardingConfigurationResponse struct {
 	ForwardingProtocol *string `pulumi:"forwardingProtocol"`
 	// Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration'.
 	OdataType string `pulumi:"odataType"`
+}
+
+// Describes Forwarding Route.
+type ForwardingConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (ForwardingConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardingConfigurationResponse)(nil)).Elem()
+}
+
+func (o ForwardingConfigurationResponseOutput) ToForwardingConfigurationResponseOutput() ForwardingConfigurationResponseOutput {
+	return o
+}
+
+func (o ForwardingConfigurationResponseOutput) ToForwardingConfigurationResponseOutputWithContext(ctx context.Context) ForwardingConfigurationResponseOutput {
+	return o
+}
+
+// A reference to the BackendPool which this rule routes to.
+func (o ForwardingConfigurationResponseOutput) BackendPool() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v ForwardingConfigurationResponse) *SubResourceResponse { return v.BackendPool }).(SubResourceResponsePtrOutput)
+}
+
+// The caching configuration associated with this rule.
+func (o ForwardingConfigurationResponseOutput) CacheConfiguration() CacheConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v ForwardingConfigurationResponse) *CacheConfigurationResponse { return v.CacheConfiguration }).(CacheConfigurationResponsePtrOutput)
+}
+
+// A custom path used to rewrite resource paths matched by this rule. Leave empty to use incoming path.
+func (o ForwardingConfigurationResponseOutput) CustomForwardingPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ForwardingConfigurationResponse) *string { return v.CustomForwardingPath }).(pulumi.StringPtrOutput)
+}
+
+// Protocol this rule will use when forwarding traffic to backends.
+func (o ForwardingConfigurationResponseOutput) ForwardingProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ForwardingConfigurationResponse) *string { return v.ForwardingProtocol }).(pulumi.StringPtrOutput)
+}
+
+// Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration'.
+func (o ForwardingConfigurationResponseOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v ForwardingConfigurationResponse) string { return v.OdataType }).(pulumi.StringOutput)
+}
+
+type ForwardingConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ForwardingConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ForwardingConfigurationResponse)(nil)).Elem()
+}
+
+func (o ForwardingConfigurationResponsePtrOutput) ToForwardingConfigurationResponsePtrOutput() ForwardingConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ForwardingConfigurationResponsePtrOutput) ToForwardingConfigurationResponsePtrOutputWithContext(ctx context.Context) ForwardingConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o ForwardingConfigurationResponsePtrOutput) Elem() ForwardingConfigurationResponseOutput {
+	return o.ApplyT(func(v *ForwardingConfigurationResponse) ForwardingConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ForwardingConfigurationResponse
+		return ret
+	}).(ForwardingConfigurationResponseOutput)
+}
+
+// A reference to the BackendPool which this rule routes to.
+func (o ForwardingConfigurationResponsePtrOutput) BackendPool() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v *ForwardingConfigurationResponse) *SubResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.BackendPool
+	}).(SubResourceResponsePtrOutput)
+}
+
+// The caching configuration associated with this rule.
+func (o ForwardingConfigurationResponsePtrOutput) CacheConfiguration() CacheConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *ForwardingConfigurationResponse) *CacheConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CacheConfiguration
+	}).(CacheConfigurationResponsePtrOutput)
+}
+
+// A custom path used to rewrite resource paths matched by this rule. Leave empty to use incoming path.
+func (o ForwardingConfigurationResponsePtrOutput) CustomForwardingPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ForwardingConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomForwardingPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Protocol this rule will use when forwarding traffic to backends.
+func (o ForwardingConfigurationResponsePtrOutput) ForwardingProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ForwardingConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardingProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration'.
+func (o ForwardingConfigurationResponsePtrOutput) OdataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ForwardingConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OdataType
+	}).(pulumi.StringPtrOutput)
 }
 
 // Defines a managed rule group override setting.
@@ -4257,6 +4857,242 @@ type RedirectConfiguration struct {
 	RedirectType *string `pulumi:"redirectType"`
 }
 
+// RedirectConfigurationInput is an input type that accepts RedirectConfigurationArgs and RedirectConfigurationOutput values.
+// You can construct a concrete instance of `RedirectConfigurationInput` via:
+//
+//	RedirectConfigurationArgs{...}
+type RedirectConfigurationInput interface {
+	pulumi.Input
+
+	ToRedirectConfigurationOutput() RedirectConfigurationOutput
+	ToRedirectConfigurationOutputWithContext(context.Context) RedirectConfigurationOutput
+}
+
+// Describes Redirect Route.
+type RedirectConfigurationArgs struct {
+	// Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
+	CustomFragment pulumi.StringPtrInput `pulumi:"customFragment"`
+	// Host to redirect. Leave empty to use the incoming host as the destination host.
+	CustomHost pulumi.StringPtrInput `pulumi:"customHost"`
+	// The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.
+	CustomPath pulumi.StringPtrInput `pulumi:"customPath"`
+	// The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.
+	CustomQueryString pulumi.StringPtrInput `pulumi:"customQueryString"`
+	// Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration'.
+	OdataType pulumi.StringInput `pulumi:"odataType"`
+	// The protocol of the destination to where the traffic is redirected
+	RedirectProtocol pulumi.StringPtrInput `pulumi:"redirectProtocol"`
+	// The redirect type the rule will use when redirecting traffic.
+	RedirectType pulumi.StringPtrInput `pulumi:"redirectType"`
+}
+
+func (RedirectConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RedirectConfiguration)(nil)).Elem()
+}
+
+func (i RedirectConfigurationArgs) ToRedirectConfigurationOutput() RedirectConfigurationOutput {
+	return i.ToRedirectConfigurationOutputWithContext(context.Background())
+}
+
+func (i RedirectConfigurationArgs) ToRedirectConfigurationOutputWithContext(ctx context.Context) RedirectConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RedirectConfigurationOutput)
+}
+
+func (i RedirectConfigurationArgs) ToRedirectConfigurationPtrOutput() RedirectConfigurationPtrOutput {
+	return i.ToRedirectConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i RedirectConfigurationArgs) ToRedirectConfigurationPtrOutputWithContext(ctx context.Context) RedirectConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RedirectConfigurationOutput).ToRedirectConfigurationPtrOutputWithContext(ctx)
+}
+
+// RedirectConfigurationPtrInput is an input type that accepts RedirectConfigurationArgs, RedirectConfigurationPtr and RedirectConfigurationPtrOutput values.
+// You can construct a concrete instance of `RedirectConfigurationPtrInput` via:
+//
+//	        RedirectConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type RedirectConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToRedirectConfigurationPtrOutput() RedirectConfigurationPtrOutput
+	ToRedirectConfigurationPtrOutputWithContext(context.Context) RedirectConfigurationPtrOutput
+}
+
+type redirectConfigurationPtrType RedirectConfigurationArgs
+
+func RedirectConfigurationPtr(v *RedirectConfigurationArgs) RedirectConfigurationPtrInput {
+	return (*redirectConfigurationPtrType)(v)
+}
+
+func (*redirectConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RedirectConfiguration)(nil)).Elem()
+}
+
+func (i *redirectConfigurationPtrType) ToRedirectConfigurationPtrOutput() RedirectConfigurationPtrOutput {
+	return i.ToRedirectConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *redirectConfigurationPtrType) ToRedirectConfigurationPtrOutputWithContext(ctx context.Context) RedirectConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RedirectConfigurationPtrOutput)
+}
+
+// Describes Redirect Route.
+type RedirectConfigurationOutput struct{ *pulumi.OutputState }
+
+func (RedirectConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RedirectConfiguration)(nil)).Elem()
+}
+
+func (o RedirectConfigurationOutput) ToRedirectConfigurationOutput() RedirectConfigurationOutput {
+	return o
+}
+
+func (o RedirectConfigurationOutput) ToRedirectConfigurationOutputWithContext(ctx context.Context) RedirectConfigurationOutput {
+	return o
+}
+
+func (o RedirectConfigurationOutput) ToRedirectConfigurationPtrOutput() RedirectConfigurationPtrOutput {
+	return o.ToRedirectConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o RedirectConfigurationOutput) ToRedirectConfigurationPtrOutputWithContext(ctx context.Context) RedirectConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RedirectConfiguration) *RedirectConfiguration {
+		return &v
+	}).(RedirectConfigurationPtrOutput)
+}
+
+// Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
+func (o RedirectConfigurationOutput) CustomFragment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedirectConfiguration) *string { return v.CustomFragment }).(pulumi.StringPtrOutput)
+}
+
+// Host to redirect. Leave empty to use the incoming host as the destination host.
+func (o RedirectConfigurationOutput) CustomHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedirectConfiguration) *string { return v.CustomHost }).(pulumi.StringPtrOutput)
+}
+
+// The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.
+func (o RedirectConfigurationOutput) CustomPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedirectConfiguration) *string { return v.CustomPath }).(pulumi.StringPtrOutput)
+}
+
+// The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.
+func (o RedirectConfigurationOutput) CustomQueryString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedirectConfiguration) *string { return v.CustomQueryString }).(pulumi.StringPtrOutput)
+}
+
+// Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration'.
+func (o RedirectConfigurationOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v RedirectConfiguration) string { return v.OdataType }).(pulumi.StringOutput)
+}
+
+// The protocol of the destination to where the traffic is redirected
+func (o RedirectConfigurationOutput) RedirectProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedirectConfiguration) *string { return v.RedirectProtocol }).(pulumi.StringPtrOutput)
+}
+
+// The redirect type the rule will use when redirecting traffic.
+func (o RedirectConfigurationOutput) RedirectType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedirectConfiguration) *string { return v.RedirectType }).(pulumi.StringPtrOutput)
+}
+
+type RedirectConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (RedirectConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RedirectConfiguration)(nil)).Elem()
+}
+
+func (o RedirectConfigurationPtrOutput) ToRedirectConfigurationPtrOutput() RedirectConfigurationPtrOutput {
+	return o
+}
+
+func (o RedirectConfigurationPtrOutput) ToRedirectConfigurationPtrOutputWithContext(ctx context.Context) RedirectConfigurationPtrOutput {
+	return o
+}
+
+func (o RedirectConfigurationPtrOutput) Elem() RedirectConfigurationOutput {
+	return o.ApplyT(func(v *RedirectConfiguration) RedirectConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret RedirectConfiguration
+		return ret
+	}).(RedirectConfigurationOutput)
+}
+
+// Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
+func (o RedirectConfigurationPtrOutput) CustomFragment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedirectConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomFragment
+	}).(pulumi.StringPtrOutput)
+}
+
+// Host to redirect. Leave empty to use the incoming host as the destination host.
+func (o RedirectConfigurationPtrOutput) CustomHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedirectConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomHost
+	}).(pulumi.StringPtrOutput)
+}
+
+// The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.
+func (o RedirectConfigurationPtrOutput) CustomPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedirectConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.
+func (o RedirectConfigurationPtrOutput) CustomQueryString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedirectConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomQueryString
+	}).(pulumi.StringPtrOutput)
+}
+
+// Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration'.
+func (o RedirectConfigurationPtrOutput) OdataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedirectConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OdataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The protocol of the destination to where the traffic is redirected
+func (o RedirectConfigurationPtrOutput) RedirectProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedirectConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// The redirect type the rule will use when redirecting traffic.
+func (o RedirectConfigurationPtrOutput) RedirectType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedirectConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectType
+	}).(pulumi.StringPtrOutput)
+}
+
 // Describes Redirect Route.
 type RedirectConfigurationResponse struct {
 	// Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
@@ -4273,6 +5109,150 @@ type RedirectConfigurationResponse struct {
 	RedirectProtocol *string `pulumi:"redirectProtocol"`
 	// The redirect type the rule will use when redirecting traffic.
 	RedirectType *string `pulumi:"redirectType"`
+}
+
+// Describes Redirect Route.
+type RedirectConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (RedirectConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RedirectConfigurationResponse)(nil)).Elem()
+}
+
+func (o RedirectConfigurationResponseOutput) ToRedirectConfigurationResponseOutput() RedirectConfigurationResponseOutput {
+	return o
+}
+
+func (o RedirectConfigurationResponseOutput) ToRedirectConfigurationResponseOutputWithContext(ctx context.Context) RedirectConfigurationResponseOutput {
+	return o
+}
+
+// Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
+func (o RedirectConfigurationResponseOutput) CustomFragment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedirectConfigurationResponse) *string { return v.CustomFragment }).(pulumi.StringPtrOutput)
+}
+
+// Host to redirect. Leave empty to use the incoming host as the destination host.
+func (o RedirectConfigurationResponseOutput) CustomHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedirectConfigurationResponse) *string { return v.CustomHost }).(pulumi.StringPtrOutput)
+}
+
+// The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.
+func (o RedirectConfigurationResponseOutput) CustomPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedirectConfigurationResponse) *string { return v.CustomPath }).(pulumi.StringPtrOutput)
+}
+
+// The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.
+func (o RedirectConfigurationResponseOutput) CustomQueryString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedirectConfigurationResponse) *string { return v.CustomQueryString }).(pulumi.StringPtrOutput)
+}
+
+// Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration'.
+func (o RedirectConfigurationResponseOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v RedirectConfigurationResponse) string { return v.OdataType }).(pulumi.StringOutput)
+}
+
+// The protocol of the destination to where the traffic is redirected
+func (o RedirectConfigurationResponseOutput) RedirectProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedirectConfigurationResponse) *string { return v.RedirectProtocol }).(pulumi.StringPtrOutput)
+}
+
+// The redirect type the rule will use when redirecting traffic.
+func (o RedirectConfigurationResponseOutput) RedirectType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedirectConfigurationResponse) *string { return v.RedirectType }).(pulumi.StringPtrOutput)
+}
+
+type RedirectConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RedirectConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RedirectConfigurationResponse)(nil)).Elem()
+}
+
+func (o RedirectConfigurationResponsePtrOutput) ToRedirectConfigurationResponsePtrOutput() RedirectConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o RedirectConfigurationResponsePtrOutput) ToRedirectConfigurationResponsePtrOutputWithContext(ctx context.Context) RedirectConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o RedirectConfigurationResponsePtrOutput) Elem() RedirectConfigurationResponseOutput {
+	return o.ApplyT(func(v *RedirectConfigurationResponse) RedirectConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RedirectConfigurationResponse
+		return ret
+	}).(RedirectConfigurationResponseOutput)
+}
+
+// Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
+func (o RedirectConfigurationResponsePtrOutput) CustomFragment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedirectConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomFragment
+	}).(pulumi.StringPtrOutput)
+}
+
+// Host to redirect. Leave empty to use the incoming host as the destination host.
+func (o RedirectConfigurationResponsePtrOutput) CustomHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedirectConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomHost
+	}).(pulumi.StringPtrOutput)
+}
+
+// The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.
+func (o RedirectConfigurationResponsePtrOutput) CustomPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedirectConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.
+func (o RedirectConfigurationResponsePtrOutput) CustomQueryString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedirectConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomQueryString
+	}).(pulumi.StringPtrOutput)
+}
+
+// Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration'.
+func (o RedirectConfigurationResponsePtrOutput) OdataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedirectConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OdataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The protocol of the destination to where the traffic is redirected
+func (o RedirectConfigurationResponsePtrOutput) RedirectProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedirectConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectProtocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// The redirect type the rule will use when redirecting traffic.
+func (o RedirectConfigurationResponsePtrOutput) RedirectType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedirectConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectType
+	}).(pulumi.StringPtrOutput)
 }
 
 // A routing rule represents a specification for traffic to treat and where to send it, along with health probe information.
@@ -5972,6 +6952,10 @@ func init() {
 	pulumi.RegisterOutputType(BackendPoolsSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(BackendResponseOutput{})
 	pulumi.RegisterOutputType(BackendResponseArrayOutput{})
+	pulumi.RegisterOutputType(CacheConfigurationOutput{})
+	pulumi.RegisterOutputType(CacheConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(CacheConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(CacheConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(CustomHttpsConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(CustomRuleOutput{})
 	pulumi.RegisterOutputType(CustomRuleArrayOutput{})
@@ -5981,6 +6965,10 @@ func init() {
 	pulumi.RegisterOutputType(CustomRuleListResponsePtrOutput{})
 	pulumi.RegisterOutputType(CustomRuleResponseOutput{})
 	pulumi.RegisterOutputType(CustomRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(ForwardingConfigurationOutput{})
+	pulumi.RegisterOutputType(ForwardingConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ForwardingConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(ForwardingConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(FrontDoorManagedRuleGroupOverrideOutput{})
 	pulumi.RegisterOutputType(FrontDoorManagedRuleGroupOverrideArrayOutput{})
 	pulumi.RegisterOutputType(FrontDoorManagedRuleGroupOverrideResponseOutput{})
@@ -6033,6 +7021,10 @@ func init() {
 	pulumi.RegisterOutputType(ManagedRuleSetListPtrOutput{})
 	pulumi.RegisterOutputType(ManagedRuleSetListResponseOutput{})
 	pulumi.RegisterOutputType(ManagedRuleSetListResponsePtrOutput{})
+	pulumi.RegisterOutputType(RedirectConfigurationOutput{})
+	pulumi.RegisterOutputType(RedirectConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(RedirectConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(RedirectConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(RoutingRuleOutput{})
 	pulumi.RegisterOutputType(RoutingRuleArrayOutput{})
 	pulumi.RegisterOutputType(RoutingRuleLinkResponseOutput{})
