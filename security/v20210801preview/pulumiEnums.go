@@ -138,10 +138,11 @@ func (o StandardSupportedCloudsPtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// StandardSupportedCloudsInput is an input type that accepts StandardSupportedCloudsArgs and StandardSupportedCloudsOutput values.
-// You can construct a concrete instance of `StandardSupportedCloudsInput` via:
+// StandardSupportedCloudsInput is an input type that accepts values of the StandardSupportedClouds enum
+// A concrete instance of `StandardSupportedCloudsInput` can be one of the following:
 //
-//	StandardSupportedCloudsArgs{...}
+//	StandardSupportedCloudsAWS
+//	StandardSupportedCloudsGCP
 type StandardSupportedCloudsInput interface {
 	pulumi.Input
 

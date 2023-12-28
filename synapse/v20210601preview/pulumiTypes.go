@@ -647,6 +647,78 @@ type CmdkeySetup struct {
 	UserName interface{} `pulumi:"userName"`
 }
 
+// CmdkeySetupInput is an input type that accepts CmdkeySetupArgs and CmdkeySetupOutput values.
+// You can construct a concrete instance of `CmdkeySetupInput` via:
+//
+//	CmdkeySetupArgs{...}
+type CmdkeySetupInput interface {
+	pulumi.Input
+
+	ToCmdkeySetupOutput() CmdkeySetupOutput
+	ToCmdkeySetupOutputWithContext(context.Context) CmdkeySetupOutput
+}
+
+// The custom setup of running cmdkey commands.
+type CmdkeySetupArgs struct {
+	// The password of data source access.
+	Password SecureStringInput `pulumi:"password"`
+	// The server name of data source access.
+	TargetName pulumi.Input `pulumi:"targetName"`
+	// The type of custom setup.
+	// Expected value is 'CmdkeySetup'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The user name of data source access.
+	UserName pulumi.Input `pulumi:"userName"`
+}
+
+func (CmdkeySetupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CmdkeySetup)(nil)).Elem()
+}
+
+func (i CmdkeySetupArgs) ToCmdkeySetupOutput() CmdkeySetupOutput {
+	return i.ToCmdkeySetupOutputWithContext(context.Background())
+}
+
+func (i CmdkeySetupArgs) ToCmdkeySetupOutputWithContext(ctx context.Context) CmdkeySetupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CmdkeySetupOutput)
+}
+
+// The custom setup of running cmdkey commands.
+type CmdkeySetupOutput struct{ *pulumi.OutputState }
+
+func (CmdkeySetupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CmdkeySetup)(nil)).Elem()
+}
+
+func (o CmdkeySetupOutput) ToCmdkeySetupOutput() CmdkeySetupOutput {
+	return o
+}
+
+func (o CmdkeySetupOutput) ToCmdkeySetupOutputWithContext(ctx context.Context) CmdkeySetupOutput {
+	return o
+}
+
+// The password of data source access.
+func (o CmdkeySetupOutput) Password() SecureStringOutput {
+	return o.ApplyT(func(v CmdkeySetup) SecureString { return v.Password }).(SecureStringOutput)
+}
+
+// The server name of data source access.
+func (o CmdkeySetupOutput) TargetName() pulumi.AnyOutput {
+	return o.ApplyT(func(v CmdkeySetup) interface{} { return v.TargetName }).(pulumi.AnyOutput)
+}
+
+// The type of custom setup.
+// Expected value is 'CmdkeySetup'.
+func (o CmdkeySetupOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v CmdkeySetup) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The user name of data source access.
+func (o CmdkeySetupOutput) UserName() pulumi.AnyOutput {
+	return o.ApplyT(func(v CmdkeySetup) interface{} { return v.UserName }).(pulumi.AnyOutput)
+}
+
 // The custom setup of running cmdkey commands.
 type CmdkeySetupResponse struct {
 	// The password of data source access.
@@ -660,6 +732,42 @@ type CmdkeySetupResponse struct {
 	UserName interface{} `pulumi:"userName"`
 }
 
+// The custom setup of running cmdkey commands.
+type CmdkeySetupResponseOutput struct{ *pulumi.OutputState }
+
+func (CmdkeySetupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CmdkeySetupResponse)(nil)).Elem()
+}
+
+func (o CmdkeySetupResponseOutput) ToCmdkeySetupResponseOutput() CmdkeySetupResponseOutput {
+	return o
+}
+
+func (o CmdkeySetupResponseOutput) ToCmdkeySetupResponseOutputWithContext(ctx context.Context) CmdkeySetupResponseOutput {
+	return o
+}
+
+// The password of data source access.
+func (o CmdkeySetupResponseOutput) Password() SecureStringResponseOutput {
+	return o.ApplyT(func(v CmdkeySetupResponse) SecureStringResponse { return v.Password }).(SecureStringResponseOutput)
+}
+
+// The server name of data source access.
+func (o CmdkeySetupResponseOutput) TargetName() pulumi.AnyOutput {
+	return o.ApplyT(func(v CmdkeySetupResponse) interface{} { return v.TargetName }).(pulumi.AnyOutput)
+}
+
+// The type of custom setup.
+// Expected value is 'CmdkeySetup'.
+func (o CmdkeySetupResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v CmdkeySetupResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The user name of data source access.
+func (o CmdkeySetupResponseOutput) UserName() pulumi.AnyOutput {
+	return o.ApplyT(func(v CmdkeySetupResponse) interface{} { return v.UserName }).(pulumi.AnyOutput)
+}
+
 // The custom setup of installing 3rd party components.
 type ComponentSetup struct {
 	// The name of the 3rd party component.
@@ -671,6 +779,71 @@ type ComponentSetup struct {
 	Type string `pulumi:"type"`
 }
 
+// ComponentSetupInput is an input type that accepts ComponentSetupArgs and ComponentSetupOutput values.
+// You can construct a concrete instance of `ComponentSetupInput` via:
+//
+//	ComponentSetupArgs{...}
+type ComponentSetupInput interface {
+	pulumi.Input
+
+	ToComponentSetupOutput() ComponentSetupOutput
+	ToComponentSetupOutputWithContext(context.Context) ComponentSetupOutput
+}
+
+// The custom setup of installing 3rd party components.
+type ComponentSetupArgs struct {
+	// The name of the 3rd party component.
+	ComponentName pulumi.StringInput `pulumi:"componentName"`
+	// The license key to activate the component.
+	LicenseKey SecureStringPtrInput `pulumi:"licenseKey"`
+	// The type of custom setup.
+	// Expected value is 'ComponentSetup'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ComponentSetupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComponentSetup)(nil)).Elem()
+}
+
+func (i ComponentSetupArgs) ToComponentSetupOutput() ComponentSetupOutput {
+	return i.ToComponentSetupOutputWithContext(context.Background())
+}
+
+func (i ComponentSetupArgs) ToComponentSetupOutputWithContext(ctx context.Context) ComponentSetupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComponentSetupOutput)
+}
+
+// The custom setup of installing 3rd party components.
+type ComponentSetupOutput struct{ *pulumi.OutputState }
+
+func (ComponentSetupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComponentSetup)(nil)).Elem()
+}
+
+func (o ComponentSetupOutput) ToComponentSetupOutput() ComponentSetupOutput {
+	return o
+}
+
+func (o ComponentSetupOutput) ToComponentSetupOutputWithContext(ctx context.Context) ComponentSetupOutput {
+	return o
+}
+
+// The name of the 3rd party component.
+func (o ComponentSetupOutput) ComponentName() pulumi.StringOutput {
+	return o.ApplyT(func(v ComponentSetup) string { return v.ComponentName }).(pulumi.StringOutput)
+}
+
+// The license key to activate the component.
+func (o ComponentSetupOutput) LicenseKey() SecureStringPtrOutput {
+	return o.ApplyT(func(v ComponentSetup) *SecureString { return v.LicenseKey }).(SecureStringPtrOutput)
+}
+
+// The type of custom setup.
+// Expected value is 'ComponentSetup'.
+func (o ComponentSetupOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ComponentSetup) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // The custom setup of installing 3rd party components.
 type ComponentSetupResponse struct {
 	// The name of the 3rd party component.
@@ -680,6 +853,37 @@ type ComponentSetupResponse struct {
 	// The type of custom setup.
 	// Expected value is 'ComponentSetup'.
 	Type string `pulumi:"type"`
+}
+
+// The custom setup of installing 3rd party components.
+type ComponentSetupResponseOutput struct{ *pulumi.OutputState }
+
+func (ComponentSetupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComponentSetupResponse)(nil)).Elem()
+}
+
+func (o ComponentSetupResponseOutput) ToComponentSetupResponseOutput() ComponentSetupResponseOutput {
+	return o
+}
+
+func (o ComponentSetupResponseOutput) ToComponentSetupResponseOutputWithContext(ctx context.Context) ComponentSetupResponseOutput {
+	return o
+}
+
+// The name of the 3rd party component.
+func (o ComponentSetupResponseOutput) ComponentName() pulumi.StringOutput {
+	return o.ApplyT(func(v ComponentSetupResponse) string { return v.ComponentName }).(pulumi.StringOutput)
+}
+
+// The license key to activate the component.
+func (o ComponentSetupResponseOutput) LicenseKey() SecureStringResponsePtrOutput {
+	return o.ApplyT(func(v ComponentSetupResponse) *SecureStringResponse { return v.LicenseKey }).(SecureStringResponsePtrOutput)
+}
+
+// The type of custom setup.
+// Expected value is 'ComponentSetup'.
+func (o ComponentSetupResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ComponentSetupResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Initial workspace AAD admin properties for a CSP subscription
@@ -1966,12 +2170,232 @@ type EntityReference struct {
 	Type *string `pulumi:"type"`
 }
 
+// EntityReferenceInput is an input type that accepts EntityReferenceArgs and EntityReferenceOutput values.
+// You can construct a concrete instance of `EntityReferenceInput` via:
+//
+//	EntityReferenceArgs{...}
+type EntityReferenceInput interface {
+	pulumi.Input
+
+	ToEntityReferenceOutput() EntityReferenceOutput
+	ToEntityReferenceOutputWithContext(context.Context) EntityReferenceOutput
+}
+
+// The entity reference.
+type EntityReferenceArgs struct {
+	// The name of this referenced entity.
+	ReferenceName pulumi.StringPtrInput `pulumi:"referenceName"`
+	// The type of this referenced entity.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (EntityReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityReference)(nil)).Elem()
+}
+
+func (i EntityReferenceArgs) ToEntityReferenceOutput() EntityReferenceOutput {
+	return i.ToEntityReferenceOutputWithContext(context.Background())
+}
+
+func (i EntityReferenceArgs) ToEntityReferenceOutputWithContext(ctx context.Context) EntityReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityReferenceOutput)
+}
+
+func (i EntityReferenceArgs) ToEntityReferencePtrOutput() EntityReferencePtrOutput {
+	return i.ToEntityReferencePtrOutputWithContext(context.Background())
+}
+
+func (i EntityReferenceArgs) ToEntityReferencePtrOutputWithContext(ctx context.Context) EntityReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityReferenceOutput).ToEntityReferencePtrOutputWithContext(ctx)
+}
+
+// EntityReferencePtrInput is an input type that accepts EntityReferenceArgs, EntityReferencePtr and EntityReferencePtrOutput values.
+// You can construct a concrete instance of `EntityReferencePtrInput` via:
+//
+//	        EntityReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type EntityReferencePtrInput interface {
+	pulumi.Input
+
+	ToEntityReferencePtrOutput() EntityReferencePtrOutput
+	ToEntityReferencePtrOutputWithContext(context.Context) EntityReferencePtrOutput
+}
+
+type entityReferencePtrType EntityReferenceArgs
+
+func EntityReferencePtr(v *EntityReferenceArgs) EntityReferencePtrInput {
+	return (*entityReferencePtrType)(v)
+}
+
+func (*entityReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityReference)(nil)).Elem()
+}
+
+func (i *entityReferencePtrType) ToEntityReferencePtrOutput() EntityReferencePtrOutput {
+	return i.ToEntityReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *entityReferencePtrType) ToEntityReferencePtrOutputWithContext(ctx context.Context) EntityReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityReferencePtrOutput)
+}
+
+// The entity reference.
+type EntityReferenceOutput struct{ *pulumi.OutputState }
+
+func (EntityReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityReference)(nil)).Elem()
+}
+
+func (o EntityReferenceOutput) ToEntityReferenceOutput() EntityReferenceOutput {
+	return o
+}
+
+func (o EntityReferenceOutput) ToEntityReferenceOutputWithContext(ctx context.Context) EntityReferenceOutput {
+	return o
+}
+
+func (o EntityReferenceOutput) ToEntityReferencePtrOutput() EntityReferencePtrOutput {
+	return o.ToEntityReferencePtrOutputWithContext(context.Background())
+}
+
+func (o EntityReferenceOutput) ToEntityReferencePtrOutputWithContext(ctx context.Context) EntityReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntityReference) *EntityReference {
+		return &v
+	}).(EntityReferencePtrOutput)
+}
+
+// The name of this referenced entity.
+func (o EntityReferenceOutput) ReferenceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityReference) *string { return v.ReferenceName }).(pulumi.StringPtrOutput)
+}
+
+// The type of this referenced entity.
+func (o EntityReferenceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityReference) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type EntityReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (EntityReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityReference)(nil)).Elem()
+}
+
+func (o EntityReferencePtrOutput) ToEntityReferencePtrOutput() EntityReferencePtrOutput {
+	return o
+}
+
+func (o EntityReferencePtrOutput) ToEntityReferencePtrOutputWithContext(ctx context.Context) EntityReferencePtrOutput {
+	return o
+}
+
+func (o EntityReferencePtrOutput) Elem() EntityReferenceOutput {
+	return o.ApplyT(func(v *EntityReference) EntityReference {
+		if v != nil {
+			return *v
+		}
+		var ret EntityReference
+		return ret
+	}).(EntityReferenceOutput)
+}
+
+// The name of this referenced entity.
+func (o EntityReferencePtrOutput) ReferenceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReferenceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of this referenced entity.
+func (o EntityReferencePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // The entity reference.
 type EntityReferenceResponse struct {
 	// The name of this referenced entity.
 	ReferenceName *string `pulumi:"referenceName"`
 	// The type of this referenced entity.
 	Type *string `pulumi:"type"`
+}
+
+// The entity reference.
+type EntityReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (EntityReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityReferenceResponse)(nil)).Elem()
+}
+
+func (o EntityReferenceResponseOutput) ToEntityReferenceResponseOutput() EntityReferenceResponseOutput {
+	return o
+}
+
+func (o EntityReferenceResponseOutput) ToEntityReferenceResponseOutputWithContext(ctx context.Context) EntityReferenceResponseOutput {
+	return o
+}
+
+// The name of this referenced entity.
+func (o EntityReferenceResponseOutput) ReferenceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityReferenceResponse) *string { return v.ReferenceName }).(pulumi.StringPtrOutput)
+}
+
+// The type of this referenced entity.
+func (o EntityReferenceResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityReferenceResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type EntityReferenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EntityReferenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityReferenceResponse)(nil)).Elem()
+}
+
+func (o EntityReferenceResponsePtrOutput) ToEntityReferenceResponsePtrOutput() EntityReferenceResponsePtrOutput {
+	return o
+}
+
+func (o EntityReferenceResponsePtrOutput) ToEntityReferenceResponsePtrOutputWithContext(ctx context.Context) EntityReferenceResponsePtrOutput {
+	return o
+}
+
+func (o EntityReferenceResponsePtrOutput) Elem() EntityReferenceResponseOutput {
+	return o.ApplyT(func(v *EntityReferenceResponse) EntityReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EntityReferenceResponse
+		return ret
+	}).(EntityReferenceResponseOutput)
+}
+
+// The name of this referenced entity.
+func (o EntityReferenceResponsePtrOutput) ReferenceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReferenceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of this referenced entity.
+func (o EntityReferenceResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // The custom setup of setting environment variable.
@@ -1985,6 +2409,71 @@ type EnvironmentVariableSetup struct {
 	VariableValue string `pulumi:"variableValue"`
 }
 
+// EnvironmentVariableSetupInput is an input type that accepts EnvironmentVariableSetupArgs and EnvironmentVariableSetupOutput values.
+// You can construct a concrete instance of `EnvironmentVariableSetupInput` via:
+//
+//	EnvironmentVariableSetupArgs{...}
+type EnvironmentVariableSetupInput interface {
+	pulumi.Input
+
+	ToEnvironmentVariableSetupOutput() EnvironmentVariableSetupOutput
+	ToEnvironmentVariableSetupOutputWithContext(context.Context) EnvironmentVariableSetupOutput
+}
+
+// The custom setup of setting environment variable.
+type EnvironmentVariableSetupArgs struct {
+	// The type of custom setup.
+	// Expected value is 'EnvironmentVariableSetup'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The name of the environment variable.
+	VariableName pulumi.StringInput `pulumi:"variableName"`
+	// The value of the environment variable.
+	VariableValue pulumi.StringInput `pulumi:"variableValue"`
+}
+
+func (EnvironmentVariableSetupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentVariableSetup)(nil)).Elem()
+}
+
+func (i EnvironmentVariableSetupArgs) ToEnvironmentVariableSetupOutput() EnvironmentVariableSetupOutput {
+	return i.ToEnvironmentVariableSetupOutputWithContext(context.Background())
+}
+
+func (i EnvironmentVariableSetupArgs) ToEnvironmentVariableSetupOutputWithContext(ctx context.Context) EnvironmentVariableSetupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentVariableSetupOutput)
+}
+
+// The custom setup of setting environment variable.
+type EnvironmentVariableSetupOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentVariableSetupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentVariableSetup)(nil)).Elem()
+}
+
+func (o EnvironmentVariableSetupOutput) ToEnvironmentVariableSetupOutput() EnvironmentVariableSetupOutput {
+	return o
+}
+
+func (o EnvironmentVariableSetupOutput) ToEnvironmentVariableSetupOutputWithContext(ctx context.Context) EnvironmentVariableSetupOutput {
+	return o
+}
+
+// The type of custom setup.
+// Expected value is 'EnvironmentVariableSetup'.
+func (o EnvironmentVariableSetupOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentVariableSetup) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The name of the environment variable.
+func (o EnvironmentVariableSetupOutput) VariableName() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentVariableSetup) string { return v.VariableName }).(pulumi.StringOutput)
+}
+
+// The value of the environment variable.
+func (o EnvironmentVariableSetupOutput) VariableValue() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentVariableSetup) string { return v.VariableValue }).(pulumi.StringOutput)
+}
+
 // The custom setup of setting environment variable.
 type EnvironmentVariableSetupResponse struct {
 	// The type of custom setup.
@@ -1994,6 +2483,37 @@ type EnvironmentVariableSetupResponse struct {
 	VariableName string `pulumi:"variableName"`
 	// The value of the environment variable.
 	VariableValue string `pulumi:"variableValue"`
+}
+
+// The custom setup of setting environment variable.
+type EnvironmentVariableSetupResponseOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentVariableSetupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentVariableSetupResponse)(nil)).Elem()
+}
+
+func (o EnvironmentVariableSetupResponseOutput) ToEnvironmentVariableSetupResponseOutput() EnvironmentVariableSetupResponseOutput {
+	return o
+}
+
+func (o EnvironmentVariableSetupResponseOutput) ToEnvironmentVariableSetupResponseOutputWithContext(ctx context.Context) EnvironmentVariableSetupResponseOutput {
+	return o
+}
+
+// The type of custom setup.
+// Expected value is 'EnvironmentVariableSetup'.
+func (o EnvironmentVariableSetupResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentVariableSetupResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The name of the environment variable.
+func (o EnvironmentVariableSetupResponseOutput) VariableName() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentVariableSetupResponse) string { return v.VariableName }).(pulumi.StringOutput)
+}
+
+// The value of the environment variable.
+func (o EnvironmentVariableSetupResponseOutput) VariableValue() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentVariableSetupResponse) string { return v.VariableValue }).(pulumi.StringOutput)
 }
 
 // A class representing follower database request.
@@ -2072,6 +2592,227 @@ type IntegrationRuntimeComputeProperties struct {
 	VNetProperties *IntegrationRuntimeVNetProperties `pulumi:"vNetProperties"`
 }
 
+// IntegrationRuntimeComputePropertiesInput is an input type that accepts IntegrationRuntimeComputePropertiesArgs and IntegrationRuntimeComputePropertiesOutput values.
+// You can construct a concrete instance of `IntegrationRuntimeComputePropertiesInput` via:
+//
+//	IntegrationRuntimeComputePropertiesArgs{...}
+type IntegrationRuntimeComputePropertiesInput interface {
+	pulumi.Input
+
+	ToIntegrationRuntimeComputePropertiesOutput() IntegrationRuntimeComputePropertiesOutput
+	ToIntegrationRuntimeComputePropertiesOutputWithContext(context.Context) IntegrationRuntimeComputePropertiesOutput
+}
+
+// The compute resource properties for managed integration runtime.
+type IntegrationRuntimeComputePropertiesArgs struct {
+	// Data flow properties for managed integration runtime.
+	DataFlowProperties IntegrationRuntimeDataFlowPropertiesPtrInput `pulumi:"dataFlowProperties"`
+	// The location for managed integration runtime. The supported regions could be found on https://docs.microsoft.com/en-us/azure/data-factory/data-factory-data-movement-activities
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Maximum parallel executions count per node for managed integration runtime.
+	MaxParallelExecutionsPerNode pulumi.IntPtrInput `pulumi:"maxParallelExecutionsPerNode"`
+	// The node size requirement to managed integration runtime.
+	NodeSize pulumi.StringPtrInput `pulumi:"nodeSize"`
+	// The required number of nodes for managed integration runtime.
+	NumberOfNodes pulumi.IntPtrInput `pulumi:"numberOfNodes"`
+	// VNet properties for managed integration runtime.
+	VNetProperties IntegrationRuntimeVNetPropertiesPtrInput `pulumi:"vNetProperties"`
+}
+
+func (IntegrationRuntimeComputePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeComputeProperties)(nil)).Elem()
+}
+
+func (i IntegrationRuntimeComputePropertiesArgs) ToIntegrationRuntimeComputePropertiesOutput() IntegrationRuntimeComputePropertiesOutput {
+	return i.ToIntegrationRuntimeComputePropertiesOutputWithContext(context.Background())
+}
+
+func (i IntegrationRuntimeComputePropertiesArgs) ToIntegrationRuntimeComputePropertiesOutputWithContext(ctx context.Context) IntegrationRuntimeComputePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeComputePropertiesOutput)
+}
+
+func (i IntegrationRuntimeComputePropertiesArgs) ToIntegrationRuntimeComputePropertiesPtrOutput() IntegrationRuntimeComputePropertiesPtrOutput {
+	return i.ToIntegrationRuntimeComputePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i IntegrationRuntimeComputePropertiesArgs) ToIntegrationRuntimeComputePropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeComputePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeComputePropertiesOutput).ToIntegrationRuntimeComputePropertiesPtrOutputWithContext(ctx)
+}
+
+// IntegrationRuntimeComputePropertiesPtrInput is an input type that accepts IntegrationRuntimeComputePropertiesArgs, IntegrationRuntimeComputePropertiesPtr and IntegrationRuntimeComputePropertiesPtrOutput values.
+// You can construct a concrete instance of `IntegrationRuntimeComputePropertiesPtrInput` via:
+//
+//	        IntegrationRuntimeComputePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type IntegrationRuntimeComputePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToIntegrationRuntimeComputePropertiesPtrOutput() IntegrationRuntimeComputePropertiesPtrOutput
+	ToIntegrationRuntimeComputePropertiesPtrOutputWithContext(context.Context) IntegrationRuntimeComputePropertiesPtrOutput
+}
+
+type integrationRuntimeComputePropertiesPtrType IntegrationRuntimeComputePropertiesArgs
+
+func IntegrationRuntimeComputePropertiesPtr(v *IntegrationRuntimeComputePropertiesArgs) IntegrationRuntimeComputePropertiesPtrInput {
+	return (*integrationRuntimeComputePropertiesPtrType)(v)
+}
+
+func (*integrationRuntimeComputePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationRuntimeComputeProperties)(nil)).Elem()
+}
+
+func (i *integrationRuntimeComputePropertiesPtrType) ToIntegrationRuntimeComputePropertiesPtrOutput() IntegrationRuntimeComputePropertiesPtrOutput {
+	return i.ToIntegrationRuntimeComputePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *integrationRuntimeComputePropertiesPtrType) ToIntegrationRuntimeComputePropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeComputePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeComputePropertiesPtrOutput)
+}
+
+// The compute resource properties for managed integration runtime.
+type IntegrationRuntimeComputePropertiesOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeComputePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeComputeProperties)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeComputePropertiesOutput) ToIntegrationRuntimeComputePropertiesOutput() IntegrationRuntimeComputePropertiesOutput {
+	return o
+}
+
+func (o IntegrationRuntimeComputePropertiesOutput) ToIntegrationRuntimeComputePropertiesOutputWithContext(ctx context.Context) IntegrationRuntimeComputePropertiesOutput {
+	return o
+}
+
+func (o IntegrationRuntimeComputePropertiesOutput) ToIntegrationRuntimeComputePropertiesPtrOutput() IntegrationRuntimeComputePropertiesPtrOutput {
+	return o.ToIntegrationRuntimeComputePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o IntegrationRuntimeComputePropertiesOutput) ToIntegrationRuntimeComputePropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeComputePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IntegrationRuntimeComputeProperties) *IntegrationRuntimeComputeProperties {
+		return &v
+	}).(IntegrationRuntimeComputePropertiesPtrOutput)
+}
+
+// Data flow properties for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesOutput) DataFlowProperties() IntegrationRuntimeDataFlowPropertiesPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeComputeProperties) *IntegrationRuntimeDataFlowProperties {
+		return v.DataFlowProperties
+	}).(IntegrationRuntimeDataFlowPropertiesPtrOutput)
+}
+
+// The location for managed integration runtime. The supported regions could be found on https://docs.microsoft.com/en-us/azure/data-factory/data-factory-data-movement-activities
+func (o IntegrationRuntimeComputePropertiesOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeComputeProperties) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Maximum parallel executions count per node for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesOutput) MaxParallelExecutionsPerNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeComputeProperties) *int { return v.MaxParallelExecutionsPerNode }).(pulumi.IntPtrOutput)
+}
+
+// The node size requirement to managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesOutput) NodeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeComputeProperties) *string { return v.NodeSize }).(pulumi.StringPtrOutput)
+}
+
+// The required number of nodes for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesOutput) NumberOfNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeComputeProperties) *int { return v.NumberOfNodes }).(pulumi.IntPtrOutput)
+}
+
+// VNet properties for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesOutput) VNetProperties() IntegrationRuntimeVNetPropertiesPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeComputeProperties) *IntegrationRuntimeVNetProperties { return v.VNetProperties }).(IntegrationRuntimeVNetPropertiesPtrOutput)
+}
+
+type IntegrationRuntimeComputePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeComputePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationRuntimeComputeProperties)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeComputePropertiesPtrOutput) ToIntegrationRuntimeComputePropertiesPtrOutput() IntegrationRuntimeComputePropertiesPtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeComputePropertiesPtrOutput) ToIntegrationRuntimeComputePropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeComputePropertiesPtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeComputePropertiesPtrOutput) Elem() IntegrationRuntimeComputePropertiesOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeComputeProperties) IntegrationRuntimeComputeProperties {
+		if v != nil {
+			return *v
+		}
+		var ret IntegrationRuntimeComputeProperties
+		return ret
+	}).(IntegrationRuntimeComputePropertiesOutput)
+}
+
+// Data flow properties for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesPtrOutput) DataFlowProperties() IntegrationRuntimeDataFlowPropertiesPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeComputeProperties) *IntegrationRuntimeDataFlowProperties {
+		if v == nil {
+			return nil
+		}
+		return v.DataFlowProperties
+	}).(IntegrationRuntimeDataFlowPropertiesPtrOutput)
+}
+
+// The location for managed integration runtime. The supported regions could be found on https://docs.microsoft.com/en-us/azure/data-factory/data-factory-data-movement-activities
+func (o IntegrationRuntimeComputePropertiesPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeComputeProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum parallel executions count per node for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesPtrOutput) MaxParallelExecutionsPerNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeComputeProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxParallelExecutionsPerNode
+	}).(pulumi.IntPtrOutput)
+}
+
+// The node size requirement to managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesPtrOutput) NodeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeComputeProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// The required number of nodes for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesPtrOutput) NumberOfNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeComputeProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumberOfNodes
+	}).(pulumi.IntPtrOutput)
+}
+
+// VNet properties for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesPtrOutput) VNetProperties() IntegrationRuntimeVNetPropertiesPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeComputeProperties) *IntegrationRuntimeVNetProperties {
+		if v == nil {
+			return nil
+		}
+		return v.VNetProperties
+	}).(IntegrationRuntimeVNetPropertiesPtrOutput)
+}
+
 // The compute resource properties for managed integration runtime.
 type IntegrationRuntimeComputePropertiesResponse struct {
 	// Data flow properties for managed integration runtime.
@@ -2088,6 +2829,139 @@ type IntegrationRuntimeComputePropertiesResponse struct {
 	VNetProperties *IntegrationRuntimeVNetPropertiesResponse `pulumi:"vNetProperties"`
 }
 
+// The compute resource properties for managed integration runtime.
+type IntegrationRuntimeComputePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeComputePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeComputePropertiesResponse)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeComputePropertiesResponseOutput) ToIntegrationRuntimeComputePropertiesResponseOutput() IntegrationRuntimeComputePropertiesResponseOutput {
+	return o
+}
+
+func (o IntegrationRuntimeComputePropertiesResponseOutput) ToIntegrationRuntimeComputePropertiesResponseOutputWithContext(ctx context.Context) IntegrationRuntimeComputePropertiesResponseOutput {
+	return o
+}
+
+// Data flow properties for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesResponseOutput) DataFlowProperties() IntegrationRuntimeDataFlowPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeComputePropertiesResponse) *IntegrationRuntimeDataFlowPropertiesResponse {
+		return v.DataFlowProperties
+	}).(IntegrationRuntimeDataFlowPropertiesResponsePtrOutput)
+}
+
+// The location for managed integration runtime. The supported regions could be found on https://docs.microsoft.com/en-us/azure/data-factory/data-factory-data-movement-activities
+func (o IntegrationRuntimeComputePropertiesResponseOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeComputePropertiesResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Maximum parallel executions count per node for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesResponseOutput) MaxParallelExecutionsPerNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeComputePropertiesResponse) *int { return v.MaxParallelExecutionsPerNode }).(pulumi.IntPtrOutput)
+}
+
+// The node size requirement to managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesResponseOutput) NodeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeComputePropertiesResponse) *string { return v.NodeSize }).(pulumi.StringPtrOutput)
+}
+
+// The required number of nodes for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesResponseOutput) NumberOfNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeComputePropertiesResponse) *int { return v.NumberOfNodes }).(pulumi.IntPtrOutput)
+}
+
+// VNet properties for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesResponseOutput) VNetProperties() IntegrationRuntimeVNetPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeComputePropertiesResponse) *IntegrationRuntimeVNetPropertiesResponse {
+		return v.VNetProperties
+	}).(IntegrationRuntimeVNetPropertiesResponsePtrOutput)
+}
+
+type IntegrationRuntimeComputePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeComputePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationRuntimeComputePropertiesResponse)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeComputePropertiesResponsePtrOutput) ToIntegrationRuntimeComputePropertiesResponsePtrOutput() IntegrationRuntimeComputePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeComputePropertiesResponsePtrOutput) ToIntegrationRuntimeComputePropertiesResponsePtrOutputWithContext(ctx context.Context) IntegrationRuntimeComputePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeComputePropertiesResponsePtrOutput) Elem() IntegrationRuntimeComputePropertiesResponseOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeComputePropertiesResponse) IntegrationRuntimeComputePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IntegrationRuntimeComputePropertiesResponse
+		return ret
+	}).(IntegrationRuntimeComputePropertiesResponseOutput)
+}
+
+// Data flow properties for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesResponsePtrOutput) DataFlowProperties() IntegrationRuntimeDataFlowPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeComputePropertiesResponse) *IntegrationRuntimeDataFlowPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DataFlowProperties
+	}).(IntegrationRuntimeDataFlowPropertiesResponsePtrOutput)
+}
+
+// The location for managed integration runtime. The supported regions could be found on https://docs.microsoft.com/en-us/azure/data-factory/data-factory-data-movement-activities
+func (o IntegrationRuntimeComputePropertiesResponsePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeComputePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum parallel executions count per node for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesResponsePtrOutput) MaxParallelExecutionsPerNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeComputePropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxParallelExecutionsPerNode
+	}).(pulumi.IntPtrOutput)
+}
+
+// The node size requirement to managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesResponsePtrOutput) NodeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeComputePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// The required number of nodes for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesResponsePtrOutput) NumberOfNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeComputePropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumberOfNodes
+	}).(pulumi.IntPtrOutput)
+}
+
+// VNet properties for managed integration runtime.
+func (o IntegrationRuntimeComputePropertiesResponsePtrOutput) VNetProperties() IntegrationRuntimeVNetPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeComputePropertiesResponse) *IntegrationRuntimeVNetPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.VNetProperties
+	}).(IntegrationRuntimeVNetPropertiesResponsePtrOutput)
+}
+
 // Custom setup script properties for a managed dedicated integration runtime.
 type IntegrationRuntimeCustomSetupScriptProperties struct {
 	// The URI of the Azure blob container that contains the custom setup script.
@@ -2096,12 +2970,232 @@ type IntegrationRuntimeCustomSetupScriptProperties struct {
 	SasToken *SecureString `pulumi:"sasToken"`
 }
 
+// IntegrationRuntimeCustomSetupScriptPropertiesInput is an input type that accepts IntegrationRuntimeCustomSetupScriptPropertiesArgs and IntegrationRuntimeCustomSetupScriptPropertiesOutput values.
+// You can construct a concrete instance of `IntegrationRuntimeCustomSetupScriptPropertiesInput` via:
+//
+//	IntegrationRuntimeCustomSetupScriptPropertiesArgs{...}
+type IntegrationRuntimeCustomSetupScriptPropertiesInput interface {
+	pulumi.Input
+
+	ToIntegrationRuntimeCustomSetupScriptPropertiesOutput() IntegrationRuntimeCustomSetupScriptPropertiesOutput
+	ToIntegrationRuntimeCustomSetupScriptPropertiesOutputWithContext(context.Context) IntegrationRuntimeCustomSetupScriptPropertiesOutput
+}
+
+// Custom setup script properties for a managed dedicated integration runtime.
+type IntegrationRuntimeCustomSetupScriptPropertiesArgs struct {
+	// The URI of the Azure blob container that contains the custom setup script.
+	BlobContainerUri pulumi.StringPtrInput `pulumi:"blobContainerUri"`
+	// The SAS token of the Azure blob container.
+	SasToken SecureStringPtrInput `pulumi:"sasToken"`
+}
+
+func (IntegrationRuntimeCustomSetupScriptPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeCustomSetupScriptProperties)(nil)).Elem()
+}
+
+func (i IntegrationRuntimeCustomSetupScriptPropertiesArgs) ToIntegrationRuntimeCustomSetupScriptPropertiesOutput() IntegrationRuntimeCustomSetupScriptPropertiesOutput {
+	return i.ToIntegrationRuntimeCustomSetupScriptPropertiesOutputWithContext(context.Background())
+}
+
+func (i IntegrationRuntimeCustomSetupScriptPropertiesArgs) ToIntegrationRuntimeCustomSetupScriptPropertiesOutputWithContext(ctx context.Context) IntegrationRuntimeCustomSetupScriptPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeCustomSetupScriptPropertiesOutput)
+}
+
+func (i IntegrationRuntimeCustomSetupScriptPropertiesArgs) ToIntegrationRuntimeCustomSetupScriptPropertiesPtrOutput() IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput {
+	return i.ToIntegrationRuntimeCustomSetupScriptPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i IntegrationRuntimeCustomSetupScriptPropertiesArgs) ToIntegrationRuntimeCustomSetupScriptPropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeCustomSetupScriptPropertiesOutput).ToIntegrationRuntimeCustomSetupScriptPropertiesPtrOutputWithContext(ctx)
+}
+
+// IntegrationRuntimeCustomSetupScriptPropertiesPtrInput is an input type that accepts IntegrationRuntimeCustomSetupScriptPropertiesArgs, IntegrationRuntimeCustomSetupScriptPropertiesPtr and IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput values.
+// You can construct a concrete instance of `IntegrationRuntimeCustomSetupScriptPropertiesPtrInput` via:
+//
+//	        IntegrationRuntimeCustomSetupScriptPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type IntegrationRuntimeCustomSetupScriptPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToIntegrationRuntimeCustomSetupScriptPropertiesPtrOutput() IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput
+	ToIntegrationRuntimeCustomSetupScriptPropertiesPtrOutputWithContext(context.Context) IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput
+}
+
+type integrationRuntimeCustomSetupScriptPropertiesPtrType IntegrationRuntimeCustomSetupScriptPropertiesArgs
+
+func IntegrationRuntimeCustomSetupScriptPropertiesPtr(v *IntegrationRuntimeCustomSetupScriptPropertiesArgs) IntegrationRuntimeCustomSetupScriptPropertiesPtrInput {
+	return (*integrationRuntimeCustomSetupScriptPropertiesPtrType)(v)
+}
+
+func (*integrationRuntimeCustomSetupScriptPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationRuntimeCustomSetupScriptProperties)(nil)).Elem()
+}
+
+func (i *integrationRuntimeCustomSetupScriptPropertiesPtrType) ToIntegrationRuntimeCustomSetupScriptPropertiesPtrOutput() IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput {
+	return i.ToIntegrationRuntimeCustomSetupScriptPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *integrationRuntimeCustomSetupScriptPropertiesPtrType) ToIntegrationRuntimeCustomSetupScriptPropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput)
+}
+
+// Custom setup script properties for a managed dedicated integration runtime.
+type IntegrationRuntimeCustomSetupScriptPropertiesOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeCustomSetupScriptPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeCustomSetupScriptProperties)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeCustomSetupScriptPropertiesOutput) ToIntegrationRuntimeCustomSetupScriptPropertiesOutput() IntegrationRuntimeCustomSetupScriptPropertiesOutput {
+	return o
+}
+
+func (o IntegrationRuntimeCustomSetupScriptPropertiesOutput) ToIntegrationRuntimeCustomSetupScriptPropertiesOutputWithContext(ctx context.Context) IntegrationRuntimeCustomSetupScriptPropertiesOutput {
+	return o
+}
+
+func (o IntegrationRuntimeCustomSetupScriptPropertiesOutput) ToIntegrationRuntimeCustomSetupScriptPropertiesPtrOutput() IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput {
+	return o.ToIntegrationRuntimeCustomSetupScriptPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o IntegrationRuntimeCustomSetupScriptPropertiesOutput) ToIntegrationRuntimeCustomSetupScriptPropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IntegrationRuntimeCustomSetupScriptProperties) *IntegrationRuntimeCustomSetupScriptProperties {
+		return &v
+	}).(IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput)
+}
+
+// The URI of the Azure blob container that contains the custom setup script.
+func (o IntegrationRuntimeCustomSetupScriptPropertiesOutput) BlobContainerUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeCustomSetupScriptProperties) *string { return v.BlobContainerUri }).(pulumi.StringPtrOutput)
+}
+
+// The SAS token of the Azure blob container.
+func (o IntegrationRuntimeCustomSetupScriptPropertiesOutput) SasToken() SecureStringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeCustomSetupScriptProperties) *SecureString { return v.SasToken }).(SecureStringPtrOutput)
+}
+
+type IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationRuntimeCustomSetupScriptProperties)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput) ToIntegrationRuntimeCustomSetupScriptPropertiesPtrOutput() IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput) ToIntegrationRuntimeCustomSetupScriptPropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput) Elem() IntegrationRuntimeCustomSetupScriptPropertiesOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeCustomSetupScriptProperties) IntegrationRuntimeCustomSetupScriptProperties {
+		if v != nil {
+			return *v
+		}
+		var ret IntegrationRuntimeCustomSetupScriptProperties
+		return ret
+	}).(IntegrationRuntimeCustomSetupScriptPropertiesOutput)
+}
+
+// The URI of the Azure blob container that contains the custom setup script.
+func (o IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput) BlobContainerUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeCustomSetupScriptProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BlobContainerUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SAS token of the Azure blob container.
+func (o IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput) SasToken() SecureStringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeCustomSetupScriptProperties) *SecureString {
+		if v == nil {
+			return nil
+		}
+		return v.SasToken
+	}).(SecureStringPtrOutput)
+}
+
 // Custom setup script properties for a managed dedicated integration runtime.
 type IntegrationRuntimeCustomSetupScriptPropertiesResponse struct {
 	// The URI of the Azure blob container that contains the custom setup script.
 	BlobContainerUri *string `pulumi:"blobContainerUri"`
 	// The SAS token of the Azure blob container.
 	SasToken *SecureStringResponse `pulumi:"sasToken"`
+}
+
+// Custom setup script properties for a managed dedicated integration runtime.
+type IntegrationRuntimeCustomSetupScriptPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeCustomSetupScriptPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeCustomSetupScriptPropertiesResponse)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeCustomSetupScriptPropertiesResponseOutput) ToIntegrationRuntimeCustomSetupScriptPropertiesResponseOutput() IntegrationRuntimeCustomSetupScriptPropertiesResponseOutput {
+	return o
+}
+
+func (o IntegrationRuntimeCustomSetupScriptPropertiesResponseOutput) ToIntegrationRuntimeCustomSetupScriptPropertiesResponseOutputWithContext(ctx context.Context) IntegrationRuntimeCustomSetupScriptPropertiesResponseOutput {
+	return o
+}
+
+// The URI of the Azure blob container that contains the custom setup script.
+func (o IntegrationRuntimeCustomSetupScriptPropertiesResponseOutput) BlobContainerUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeCustomSetupScriptPropertiesResponse) *string { return v.BlobContainerUri }).(pulumi.StringPtrOutput)
+}
+
+// The SAS token of the Azure blob container.
+func (o IntegrationRuntimeCustomSetupScriptPropertiesResponseOutput) SasToken() SecureStringResponsePtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeCustomSetupScriptPropertiesResponse) *SecureStringResponse { return v.SasToken }).(SecureStringResponsePtrOutput)
+}
+
+type IntegrationRuntimeCustomSetupScriptPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeCustomSetupScriptPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationRuntimeCustomSetupScriptPropertiesResponse)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeCustomSetupScriptPropertiesResponsePtrOutput) ToIntegrationRuntimeCustomSetupScriptPropertiesResponsePtrOutput() IntegrationRuntimeCustomSetupScriptPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeCustomSetupScriptPropertiesResponsePtrOutput) ToIntegrationRuntimeCustomSetupScriptPropertiesResponsePtrOutputWithContext(ctx context.Context) IntegrationRuntimeCustomSetupScriptPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeCustomSetupScriptPropertiesResponsePtrOutput) Elem() IntegrationRuntimeCustomSetupScriptPropertiesResponseOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeCustomSetupScriptPropertiesResponse) IntegrationRuntimeCustomSetupScriptPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IntegrationRuntimeCustomSetupScriptPropertiesResponse
+		return ret
+	}).(IntegrationRuntimeCustomSetupScriptPropertiesResponseOutput)
+}
+
+// The URI of the Azure blob container that contains the custom setup script.
+func (o IntegrationRuntimeCustomSetupScriptPropertiesResponsePtrOutput) BlobContainerUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeCustomSetupScriptPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BlobContainerUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SAS token of the Azure blob container.
+func (o IntegrationRuntimeCustomSetupScriptPropertiesResponsePtrOutput) SasToken() SecureStringResponsePtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeCustomSetupScriptPropertiesResponse) *SecureStringResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SasToken
+	}).(SecureStringResponsePtrOutput)
 }
 
 // Data flow properties for managed integration runtime.
@@ -2116,6 +3210,191 @@ type IntegrationRuntimeDataFlowProperties struct {
 	TimeToLive *int `pulumi:"timeToLive"`
 }
 
+// IntegrationRuntimeDataFlowPropertiesInput is an input type that accepts IntegrationRuntimeDataFlowPropertiesArgs and IntegrationRuntimeDataFlowPropertiesOutput values.
+// You can construct a concrete instance of `IntegrationRuntimeDataFlowPropertiesInput` via:
+//
+//	IntegrationRuntimeDataFlowPropertiesArgs{...}
+type IntegrationRuntimeDataFlowPropertiesInput interface {
+	pulumi.Input
+
+	ToIntegrationRuntimeDataFlowPropertiesOutput() IntegrationRuntimeDataFlowPropertiesOutput
+	ToIntegrationRuntimeDataFlowPropertiesOutputWithContext(context.Context) IntegrationRuntimeDataFlowPropertiesOutput
+}
+
+// Data flow properties for managed integration runtime.
+type IntegrationRuntimeDataFlowPropertiesArgs struct {
+	// Cluster will not be recycled and it will be used in next data flow activity run until TTL (time to live) is reached if this is set as false. Default is true.
+	Cleanup pulumi.BoolPtrInput `pulumi:"cleanup"`
+	// Compute type of the cluster which will execute data flow job.
+	ComputeType pulumi.StringPtrInput `pulumi:"computeType"`
+	// Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272.
+	CoreCount pulumi.IntPtrInput `pulumi:"coreCount"`
+	// Time to live (in minutes) setting of the cluster which will execute data flow job.
+	TimeToLive pulumi.IntPtrInput `pulumi:"timeToLive"`
+}
+
+func (IntegrationRuntimeDataFlowPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeDataFlowProperties)(nil)).Elem()
+}
+
+func (i IntegrationRuntimeDataFlowPropertiesArgs) ToIntegrationRuntimeDataFlowPropertiesOutput() IntegrationRuntimeDataFlowPropertiesOutput {
+	return i.ToIntegrationRuntimeDataFlowPropertiesOutputWithContext(context.Background())
+}
+
+func (i IntegrationRuntimeDataFlowPropertiesArgs) ToIntegrationRuntimeDataFlowPropertiesOutputWithContext(ctx context.Context) IntegrationRuntimeDataFlowPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeDataFlowPropertiesOutput)
+}
+
+func (i IntegrationRuntimeDataFlowPropertiesArgs) ToIntegrationRuntimeDataFlowPropertiesPtrOutput() IntegrationRuntimeDataFlowPropertiesPtrOutput {
+	return i.ToIntegrationRuntimeDataFlowPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i IntegrationRuntimeDataFlowPropertiesArgs) ToIntegrationRuntimeDataFlowPropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeDataFlowPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeDataFlowPropertiesOutput).ToIntegrationRuntimeDataFlowPropertiesPtrOutputWithContext(ctx)
+}
+
+// IntegrationRuntimeDataFlowPropertiesPtrInput is an input type that accepts IntegrationRuntimeDataFlowPropertiesArgs, IntegrationRuntimeDataFlowPropertiesPtr and IntegrationRuntimeDataFlowPropertiesPtrOutput values.
+// You can construct a concrete instance of `IntegrationRuntimeDataFlowPropertiesPtrInput` via:
+//
+//	        IntegrationRuntimeDataFlowPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type IntegrationRuntimeDataFlowPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToIntegrationRuntimeDataFlowPropertiesPtrOutput() IntegrationRuntimeDataFlowPropertiesPtrOutput
+	ToIntegrationRuntimeDataFlowPropertiesPtrOutputWithContext(context.Context) IntegrationRuntimeDataFlowPropertiesPtrOutput
+}
+
+type integrationRuntimeDataFlowPropertiesPtrType IntegrationRuntimeDataFlowPropertiesArgs
+
+func IntegrationRuntimeDataFlowPropertiesPtr(v *IntegrationRuntimeDataFlowPropertiesArgs) IntegrationRuntimeDataFlowPropertiesPtrInput {
+	return (*integrationRuntimeDataFlowPropertiesPtrType)(v)
+}
+
+func (*integrationRuntimeDataFlowPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationRuntimeDataFlowProperties)(nil)).Elem()
+}
+
+func (i *integrationRuntimeDataFlowPropertiesPtrType) ToIntegrationRuntimeDataFlowPropertiesPtrOutput() IntegrationRuntimeDataFlowPropertiesPtrOutput {
+	return i.ToIntegrationRuntimeDataFlowPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *integrationRuntimeDataFlowPropertiesPtrType) ToIntegrationRuntimeDataFlowPropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeDataFlowPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeDataFlowPropertiesPtrOutput)
+}
+
+// Data flow properties for managed integration runtime.
+type IntegrationRuntimeDataFlowPropertiesOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeDataFlowPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeDataFlowProperties)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeDataFlowPropertiesOutput) ToIntegrationRuntimeDataFlowPropertiesOutput() IntegrationRuntimeDataFlowPropertiesOutput {
+	return o
+}
+
+func (o IntegrationRuntimeDataFlowPropertiesOutput) ToIntegrationRuntimeDataFlowPropertiesOutputWithContext(ctx context.Context) IntegrationRuntimeDataFlowPropertiesOutput {
+	return o
+}
+
+func (o IntegrationRuntimeDataFlowPropertiesOutput) ToIntegrationRuntimeDataFlowPropertiesPtrOutput() IntegrationRuntimeDataFlowPropertiesPtrOutput {
+	return o.ToIntegrationRuntimeDataFlowPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o IntegrationRuntimeDataFlowPropertiesOutput) ToIntegrationRuntimeDataFlowPropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeDataFlowPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IntegrationRuntimeDataFlowProperties) *IntegrationRuntimeDataFlowProperties {
+		return &v
+	}).(IntegrationRuntimeDataFlowPropertiesPtrOutput)
+}
+
+// Cluster will not be recycled and it will be used in next data flow activity run until TTL (time to live) is reached if this is set as false. Default is true.
+func (o IntegrationRuntimeDataFlowPropertiesOutput) Cleanup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeDataFlowProperties) *bool { return v.Cleanup }).(pulumi.BoolPtrOutput)
+}
+
+// Compute type of the cluster which will execute data flow job.
+func (o IntegrationRuntimeDataFlowPropertiesOutput) ComputeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeDataFlowProperties) *string { return v.ComputeType }).(pulumi.StringPtrOutput)
+}
+
+// Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272.
+func (o IntegrationRuntimeDataFlowPropertiesOutput) CoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeDataFlowProperties) *int { return v.CoreCount }).(pulumi.IntPtrOutput)
+}
+
+// Time to live (in minutes) setting of the cluster which will execute data flow job.
+func (o IntegrationRuntimeDataFlowPropertiesOutput) TimeToLive() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeDataFlowProperties) *int { return v.TimeToLive }).(pulumi.IntPtrOutput)
+}
+
+type IntegrationRuntimeDataFlowPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeDataFlowPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationRuntimeDataFlowProperties)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeDataFlowPropertiesPtrOutput) ToIntegrationRuntimeDataFlowPropertiesPtrOutput() IntegrationRuntimeDataFlowPropertiesPtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeDataFlowPropertiesPtrOutput) ToIntegrationRuntimeDataFlowPropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeDataFlowPropertiesPtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeDataFlowPropertiesPtrOutput) Elem() IntegrationRuntimeDataFlowPropertiesOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeDataFlowProperties) IntegrationRuntimeDataFlowProperties {
+		if v != nil {
+			return *v
+		}
+		var ret IntegrationRuntimeDataFlowProperties
+		return ret
+	}).(IntegrationRuntimeDataFlowPropertiesOutput)
+}
+
+// Cluster will not be recycled and it will be used in next data flow activity run until TTL (time to live) is reached if this is set as false. Default is true.
+func (o IntegrationRuntimeDataFlowPropertiesPtrOutput) Cleanup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeDataFlowProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Cleanup
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Compute type of the cluster which will execute data flow job.
+func (o IntegrationRuntimeDataFlowPropertiesPtrOutput) ComputeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeDataFlowProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComputeType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272.
+func (o IntegrationRuntimeDataFlowPropertiesPtrOutput) CoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeDataFlowProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CoreCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Time to live (in minutes) setting of the cluster which will execute data flow job.
+func (o IntegrationRuntimeDataFlowPropertiesPtrOutput) TimeToLive() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeDataFlowProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeToLive
+	}).(pulumi.IntPtrOutput)
+}
+
 // Data flow properties for managed integration runtime.
 type IntegrationRuntimeDataFlowPropertiesResponse struct {
 	// Cluster will not be recycled and it will be used in next data flow activity run until TTL (time to live) is reached if this is set as false. Default is true.
@@ -2128,6 +3407,105 @@ type IntegrationRuntimeDataFlowPropertiesResponse struct {
 	TimeToLive *int `pulumi:"timeToLive"`
 }
 
+// Data flow properties for managed integration runtime.
+type IntegrationRuntimeDataFlowPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeDataFlowPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeDataFlowPropertiesResponse)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeDataFlowPropertiesResponseOutput) ToIntegrationRuntimeDataFlowPropertiesResponseOutput() IntegrationRuntimeDataFlowPropertiesResponseOutput {
+	return o
+}
+
+func (o IntegrationRuntimeDataFlowPropertiesResponseOutput) ToIntegrationRuntimeDataFlowPropertiesResponseOutputWithContext(ctx context.Context) IntegrationRuntimeDataFlowPropertiesResponseOutput {
+	return o
+}
+
+// Cluster will not be recycled and it will be used in next data flow activity run until TTL (time to live) is reached if this is set as false. Default is true.
+func (o IntegrationRuntimeDataFlowPropertiesResponseOutput) Cleanup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeDataFlowPropertiesResponse) *bool { return v.Cleanup }).(pulumi.BoolPtrOutput)
+}
+
+// Compute type of the cluster which will execute data flow job.
+func (o IntegrationRuntimeDataFlowPropertiesResponseOutput) ComputeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeDataFlowPropertiesResponse) *string { return v.ComputeType }).(pulumi.StringPtrOutput)
+}
+
+// Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272.
+func (o IntegrationRuntimeDataFlowPropertiesResponseOutput) CoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeDataFlowPropertiesResponse) *int { return v.CoreCount }).(pulumi.IntPtrOutput)
+}
+
+// Time to live (in minutes) setting of the cluster which will execute data flow job.
+func (o IntegrationRuntimeDataFlowPropertiesResponseOutput) TimeToLive() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeDataFlowPropertiesResponse) *int { return v.TimeToLive }).(pulumi.IntPtrOutput)
+}
+
+type IntegrationRuntimeDataFlowPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeDataFlowPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationRuntimeDataFlowPropertiesResponse)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeDataFlowPropertiesResponsePtrOutput) ToIntegrationRuntimeDataFlowPropertiesResponsePtrOutput() IntegrationRuntimeDataFlowPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeDataFlowPropertiesResponsePtrOutput) ToIntegrationRuntimeDataFlowPropertiesResponsePtrOutputWithContext(ctx context.Context) IntegrationRuntimeDataFlowPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeDataFlowPropertiesResponsePtrOutput) Elem() IntegrationRuntimeDataFlowPropertiesResponseOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeDataFlowPropertiesResponse) IntegrationRuntimeDataFlowPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IntegrationRuntimeDataFlowPropertiesResponse
+		return ret
+	}).(IntegrationRuntimeDataFlowPropertiesResponseOutput)
+}
+
+// Cluster will not be recycled and it will be used in next data flow activity run until TTL (time to live) is reached if this is set as false. Default is true.
+func (o IntegrationRuntimeDataFlowPropertiesResponsePtrOutput) Cleanup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeDataFlowPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Cleanup
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Compute type of the cluster which will execute data flow job.
+func (o IntegrationRuntimeDataFlowPropertiesResponsePtrOutput) ComputeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeDataFlowPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComputeType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272.
+func (o IntegrationRuntimeDataFlowPropertiesResponsePtrOutput) CoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeDataFlowPropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CoreCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Time to live (in minutes) setting of the cluster which will execute data flow job.
+func (o IntegrationRuntimeDataFlowPropertiesResponsePtrOutput) TimeToLive() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeDataFlowPropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeToLive
+	}).(pulumi.IntPtrOutput)
+}
+
 // Data proxy properties for a managed dedicated integration runtime.
 type IntegrationRuntimeDataProxyProperties struct {
 	// The self-hosted integration runtime reference.
@@ -2138,6 +3516,174 @@ type IntegrationRuntimeDataProxyProperties struct {
 	StagingLinkedService *EntityReference `pulumi:"stagingLinkedService"`
 }
 
+// IntegrationRuntimeDataProxyPropertiesInput is an input type that accepts IntegrationRuntimeDataProxyPropertiesArgs and IntegrationRuntimeDataProxyPropertiesOutput values.
+// You can construct a concrete instance of `IntegrationRuntimeDataProxyPropertiesInput` via:
+//
+//	IntegrationRuntimeDataProxyPropertiesArgs{...}
+type IntegrationRuntimeDataProxyPropertiesInput interface {
+	pulumi.Input
+
+	ToIntegrationRuntimeDataProxyPropertiesOutput() IntegrationRuntimeDataProxyPropertiesOutput
+	ToIntegrationRuntimeDataProxyPropertiesOutputWithContext(context.Context) IntegrationRuntimeDataProxyPropertiesOutput
+}
+
+// Data proxy properties for a managed dedicated integration runtime.
+type IntegrationRuntimeDataProxyPropertiesArgs struct {
+	// The self-hosted integration runtime reference.
+	ConnectVia EntityReferencePtrInput `pulumi:"connectVia"`
+	// The path to contain the staged data in the Blob storage.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// The staging linked service reference.
+	StagingLinkedService EntityReferencePtrInput `pulumi:"stagingLinkedService"`
+}
+
+func (IntegrationRuntimeDataProxyPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeDataProxyProperties)(nil)).Elem()
+}
+
+func (i IntegrationRuntimeDataProxyPropertiesArgs) ToIntegrationRuntimeDataProxyPropertiesOutput() IntegrationRuntimeDataProxyPropertiesOutput {
+	return i.ToIntegrationRuntimeDataProxyPropertiesOutputWithContext(context.Background())
+}
+
+func (i IntegrationRuntimeDataProxyPropertiesArgs) ToIntegrationRuntimeDataProxyPropertiesOutputWithContext(ctx context.Context) IntegrationRuntimeDataProxyPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeDataProxyPropertiesOutput)
+}
+
+func (i IntegrationRuntimeDataProxyPropertiesArgs) ToIntegrationRuntimeDataProxyPropertiesPtrOutput() IntegrationRuntimeDataProxyPropertiesPtrOutput {
+	return i.ToIntegrationRuntimeDataProxyPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i IntegrationRuntimeDataProxyPropertiesArgs) ToIntegrationRuntimeDataProxyPropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeDataProxyPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeDataProxyPropertiesOutput).ToIntegrationRuntimeDataProxyPropertiesPtrOutputWithContext(ctx)
+}
+
+// IntegrationRuntimeDataProxyPropertiesPtrInput is an input type that accepts IntegrationRuntimeDataProxyPropertiesArgs, IntegrationRuntimeDataProxyPropertiesPtr and IntegrationRuntimeDataProxyPropertiesPtrOutput values.
+// You can construct a concrete instance of `IntegrationRuntimeDataProxyPropertiesPtrInput` via:
+//
+//	        IntegrationRuntimeDataProxyPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type IntegrationRuntimeDataProxyPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToIntegrationRuntimeDataProxyPropertiesPtrOutput() IntegrationRuntimeDataProxyPropertiesPtrOutput
+	ToIntegrationRuntimeDataProxyPropertiesPtrOutputWithContext(context.Context) IntegrationRuntimeDataProxyPropertiesPtrOutput
+}
+
+type integrationRuntimeDataProxyPropertiesPtrType IntegrationRuntimeDataProxyPropertiesArgs
+
+func IntegrationRuntimeDataProxyPropertiesPtr(v *IntegrationRuntimeDataProxyPropertiesArgs) IntegrationRuntimeDataProxyPropertiesPtrInput {
+	return (*integrationRuntimeDataProxyPropertiesPtrType)(v)
+}
+
+func (*integrationRuntimeDataProxyPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationRuntimeDataProxyProperties)(nil)).Elem()
+}
+
+func (i *integrationRuntimeDataProxyPropertiesPtrType) ToIntegrationRuntimeDataProxyPropertiesPtrOutput() IntegrationRuntimeDataProxyPropertiesPtrOutput {
+	return i.ToIntegrationRuntimeDataProxyPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *integrationRuntimeDataProxyPropertiesPtrType) ToIntegrationRuntimeDataProxyPropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeDataProxyPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeDataProxyPropertiesPtrOutput)
+}
+
+// Data proxy properties for a managed dedicated integration runtime.
+type IntegrationRuntimeDataProxyPropertiesOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeDataProxyPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeDataProxyProperties)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeDataProxyPropertiesOutput) ToIntegrationRuntimeDataProxyPropertiesOutput() IntegrationRuntimeDataProxyPropertiesOutput {
+	return o
+}
+
+func (o IntegrationRuntimeDataProxyPropertiesOutput) ToIntegrationRuntimeDataProxyPropertiesOutputWithContext(ctx context.Context) IntegrationRuntimeDataProxyPropertiesOutput {
+	return o
+}
+
+func (o IntegrationRuntimeDataProxyPropertiesOutput) ToIntegrationRuntimeDataProxyPropertiesPtrOutput() IntegrationRuntimeDataProxyPropertiesPtrOutput {
+	return o.ToIntegrationRuntimeDataProxyPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o IntegrationRuntimeDataProxyPropertiesOutput) ToIntegrationRuntimeDataProxyPropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeDataProxyPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IntegrationRuntimeDataProxyProperties) *IntegrationRuntimeDataProxyProperties {
+		return &v
+	}).(IntegrationRuntimeDataProxyPropertiesPtrOutput)
+}
+
+// The self-hosted integration runtime reference.
+func (o IntegrationRuntimeDataProxyPropertiesOutput) ConnectVia() EntityReferencePtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeDataProxyProperties) *EntityReference { return v.ConnectVia }).(EntityReferencePtrOutput)
+}
+
+// The path to contain the staged data in the Blob storage.
+func (o IntegrationRuntimeDataProxyPropertiesOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeDataProxyProperties) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// The staging linked service reference.
+func (o IntegrationRuntimeDataProxyPropertiesOutput) StagingLinkedService() EntityReferencePtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeDataProxyProperties) *EntityReference { return v.StagingLinkedService }).(EntityReferencePtrOutput)
+}
+
+type IntegrationRuntimeDataProxyPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeDataProxyPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationRuntimeDataProxyProperties)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeDataProxyPropertiesPtrOutput) ToIntegrationRuntimeDataProxyPropertiesPtrOutput() IntegrationRuntimeDataProxyPropertiesPtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeDataProxyPropertiesPtrOutput) ToIntegrationRuntimeDataProxyPropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeDataProxyPropertiesPtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeDataProxyPropertiesPtrOutput) Elem() IntegrationRuntimeDataProxyPropertiesOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeDataProxyProperties) IntegrationRuntimeDataProxyProperties {
+		if v != nil {
+			return *v
+		}
+		var ret IntegrationRuntimeDataProxyProperties
+		return ret
+	}).(IntegrationRuntimeDataProxyPropertiesOutput)
+}
+
+// The self-hosted integration runtime reference.
+func (o IntegrationRuntimeDataProxyPropertiesPtrOutput) ConnectVia() EntityReferencePtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeDataProxyProperties) *EntityReference {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectVia
+	}).(EntityReferencePtrOutput)
+}
+
+// The path to contain the staged data in the Blob storage.
+func (o IntegrationRuntimeDataProxyPropertiesPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeDataProxyProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// The staging linked service reference.
+func (o IntegrationRuntimeDataProxyPropertiesPtrOutput) StagingLinkedService() EntityReferencePtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeDataProxyProperties) *EntityReference {
+		if v == nil {
+			return nil
+		}
+		return v.StagingLinkedService
+	}).(EntityReferencePtrOutput)
+}
+
 // Data proxy properties for a managed dedicated integration runtime.
 type IntegrationRuntimeDataProxyPropertiesResponse struct {
 	// The self-hosted integration runtime reference.
@@ -2146,6 +3692,92 @@ type IntegrationRuntimeDataProxyPropertiesResponse struct {
 	Path *string `pulumi:"path"`
 	// The staging linked service reference.
 	StagingLinkedService *EntityReferenceResponse `pulumi:"stagingLinkedService"`
+}
+
+// Data proxy properties for a managed dedicated integration runtime.
+type IntegrationRuntimeDataProxyPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeDataProxyPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeDataProxyPropertiesResponse)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeDataProxyPropertiesResponseOutput) ToIntegrationRuntimeDataProxyPropertiesResponseOutput() IntegrationRuntimeDataProxyPropertiesResponseOutput {
+	return o
+}
+
+func (o IntegrationRuntimeDataProxyPropertiesResponseOutput) ToIntegrationRuntimeDataProxyPropertiesResponseOutputWithContext(ctx context.Context) IntegrationRuntimeDataProxyPropertiesResponseOutput {
+	return o
+}
+
+// The self-hosted integration runtime reference.
+func (o IntegrationRuntimeDataProxyPropertiesResponseOutput) ConnectVia() EntityReferenceResponsePtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeDataProxyPropertiesResponse) *EntityReferenceResponse { return v.ConnectVia }).(EntityReferenceResponsePtrOutput)
+}
+
+// The path to contain the staged data in the Blob storage.
+func (o IntegrationRuntimeDataProxyPropertiesResponseOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeDataProxyPropertiesResponse) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// The staging linked service reference.
+func (o IntegrationRuntimeDataProxyPropertiesResponseOutput) StagingLinkedService() EntityReferenceResponsePtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeDataProxyPropertiesResponse) *EntityReferenceResponse {
+		return v.StagingLinkedService
+	}).(EntityReferenceResponsePtrOutput)
+}
+
+type IntegrationRuntimeDataProxyPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeDataProxyPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationRuntimeDataProxyPropertiesResponse)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeDataProxyPropertiesResponsePtrOutput) ToIntegrationRuntimeDataProxyPropertiesResponsePtrOutput() IntegrationRuntimeDataProxyPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeDataProxyPropertiesResponsePtrOutput) ToIntegrationRuntimeDataProxyPropertiesResponsePtrOutputWithContext(ctx context.Context) IntegrationRuntimeDataProxyPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeDataProxyPropertiesResponsePtrOutput) Elem() IntegrationRuntimeDataProxyPropertiesResponseOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeDataProxyPropertiesResponse) IntegrationRuntimeDataProxyPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IntegrationRuntimeDataProxyPropertiesResponse
+		return ret
+	}).(IntegrationRuntimeDataProxyPropertiesResponseOutput)
+}
+
+// The self-hosted integration runtime reference.
+func (o IntegrationRuntimeDataProxyPropertiesResponsePtrOutput) ConnectVia() EntityReferenceResponsePtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeDataProxyPropertiesResponse) *EntityReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectVia
+	}).(EntityReferenceResponsePtrOutput)
+}
+
+// The path to contain the staged data in the Blob storage.
+func (o IntegrationRuntimeDataProxyPropertiesResponsePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeDataProxyPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// The staging linked service reference.
+func (o IntegrationRuntimeDataProxyPropertiesResponsePtrOutput) StagingLinkedService() EntityReferenceResponsePtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeDataProxyPropertiesResponse) *EntityReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.StagingLinkedService
+	}).(EntityReferenceResponsePtrOutput)
 }
 
 // Catalog information for managed dedicated integration runtime.
@@ -2160,6 +3792,191 @@ type IntegrationRuntimeSsisCatalogInfo struct {
 	CatalogServerEndpoint *string `pulumi:"catalogServerEndpoint"`
 }
 
+// IntegrationRuntimeSsisCatalogInfoInput is an input type that accepts IntegrationRuntimeSsisCatalogInfoArgs and IntegrationRuntimeSsisCatalogInfoOutput values.
+// You can construct a concrete instance of `IntegrationRuntimeSsisCatalogInfoInput` via:
+//
+//	IntegrationRuntimeSsisCatalogInfoArgs{...}
+type IntegrationRuntimeSsisCatalogInfoInput interface {
+	pulumi.Input
+
+	ToIntegrationRuntimeSsisCatalogInfoOutput() IntegrationRuntimeSsisCatalogInfoOutput
+	ToIntegrationRuntimeSsisCatalogInfoOutputWithContext(context.Context) IntegrationRuntimeSsisCatalogInfoOutput
+}
+
+// Catalog information for managed dedicated integration runtime.
+type IntegrationRuntimeSsisCatalogInfoArgs struct {
+	// The password of the administrator user account of the catalog database.
+	CatalogAdminPassword SecureStringPtrInput `pulumi:"catalogAdminPassword"`
+	// The administrator user name of catalog database.
+	CatalogAdminUserName pulumi.StringPtrInput `pulumi:"catalogAdminUserName"`
+	// The pricing tier for the catalog database. The valid values could be found in https://azure.microsoft.com/en-us/pricing/details/sql-database/
+	CatalogPricingTier pulumi.StringPtrInput `pulumi:"catalogPricingTier"`
+	// The catalog database server URL.
+	CatalogServerEndpoint pulumi.StringPtrInput `pulumi:"catalogServerEndpoint"`
+}
+
+func (IntegrationRuntimeSsisCatalogInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeSsisCatalogInfo)(nil)).Elem()
+}
+
+func (i IntegrationRuntimeSsisCatalogInfoArgs) ToIntegrationRuntimeSsisCatalogInfoOutput() IntegrationRuntimeSsisCatalogInfoOutput {
+	return i.ToIntegrationRuntimeSsisCatalogInfoOutputWithContext(context.Background())
+}
+
+func (i IntegrationRuntimeSsisCatalogInfoArgs) ToIntegrationRuntimeSsisCatalogInfoOutputWithContext(ctx context.Context) IntegrationRuntimeSsisCatalogInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeSsisCatalogInfoOutput)
+}
+
+func (i IntegrationRuntimeSsisCatalogInfoArgs) ToIntegrationRuntimeSsisCatalogInfoPtrOutput() IntegrationRuntimeSsisCatalogInfoPtrOutput {
+	return i.ToIntegrationRuntimeSsisCatalogInfoPtrOutputWithContext(context.Background())
+}
+
+func (i IntegrationRuntimeSsisCatalogInfoArgs) ToIntegrationRuntimeSsisCatalogInfoPtrOutputWithContext(ctx context.Context) IntegrationRuntimeSsisCatalogInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeSsisCatalogInfoOutput).ToIntegrationRuntimeSsisCatalogInfoPtrOutputWithContext(ctx)
+}
+
+// IntegrationRuntimeSsisCatalogInfoPtrInput is an input type that accepts IntegrationRuntimeSsisCatalogInfoArgs, IntegrationRuntimeSsisCatalogInfoPtr and IntegrationRuntimeSsisCatalogInfoPtrOutput values.
+// You can construct a concrete instance of `IntegrationRuntimeSsisCatalogInfoPtrInput` via:
+//
+//	        IntegrationRuntimeSsisCatalogInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type IntegrationRuntimeSsisCatalogInfoPtrInput interface {
+	pulumi.Input
+
+	ToIntegrationRuntimeSsisCatalogInfoPtrOutput() IntegrationRuntimeSsisCatalogInfoPtrOutput
+	ToIntegrationRuntimeSsisCatalogInfoPtrOutputWithContext(context.Context) IntegrationRuntimeSsisCatalogInfoPtrOutput
+}
+
+type integrationRuntimeSsisCatalogInfoPtrType IntegrationRuntimeSsisCatalogInfoArgs
+
+func IntegrationRuntimeSsisCatalogInfoPtr(v *IntegrationRuntimeSsisCatalogInfoArgs) IntegrationRuntimeSsisCatalogInfoPtrInput {
+	return (*integrationRuntimeSsisCatalogInfoPtrType)(v)
+}
+
+func (*integrationRuntimeSsisCatalogInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationRuntimeSsisCatalogInfo)(nil)).Elem()
+}
+
+func (i *integrationRuntimeSsisCatalogInfoPtrType) ToIntegrationRuntimeSsisCatalogInfoPtrOutput() IntegrationRuntimeSsisCatalogInfoPtrOutput {
+	return i.ToIntegrationRuntimeSsisCatalogInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *integrationRuntimeSsisCatalogInfoPtrType) ToIntegrationRuntimeSsisCatalogInfoPtrOutputWithContext(ctx context.Context) IntegrationRuntimeSsisCatalogInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeSsisCatalogInfoPtrOutput)
+}
+
+// Catalog information for managed dedicated integration runtime.
+type IntegrationRuntimeSsisCatalogInfoOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeSsisCatalogInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeSsisCatalogInfo)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeSsisCatalogInfoOutput) ToIntegrationRuntimeSsisCatalogInfoOutput() IntegrationRuntimeSsisCatalogInfoOutput {
+	return o
+}
+
+func (o IntegrationRuntimeSsisCatalogInfoOutput) ToIntegrationRuntimeSsisCatalogInfoOutputWithContext(ctx context.Context) IntegrationRuntimeSsisCatalogInfoOutput {
+	return o
+}
+
+func (o IntegrationRuntimeSsisCatalogInfoOutput) ToIntegrationRuntimeSsisCatalogInfoPtrOutput() IntegrationRuntimeSsisCatalogInfoPtrOutput {
+	return o.ToIntegrationRuntimeSsisCatalogInfoPtrOutputWithContext(context.Background())
+}
+
+func (o IntegrationRuntimeSsisCatalogInfoOutput) ToIntegrationRuntimeSsisCatalogInfoPtrOutputWithContext(ctx context.Context) IntegrationRuntimeSsisCatalogInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IntegrationRuntimeSsisCatalogInfo) *IntegrationRuntimeSsisCatalogInfo {
+		return &v
+	}).(IntegrationRuntimeSsisCatalogInfoPtrOutput)
+}
+
+// The password of the administrator user account of the catalog database.
+func (o IntegrationRuntimeSsisCatalogInfoOutput) CatalogAdminPassword() SecureStringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeSsisCatalogInfo) *SecureString { return v.CatalogAdminPassword }).(SecureStringPtrOutput)
+}
+
+// The administrator user name of catalog database.
+func (o IntegrationRuntimeSsisCatalogInfoOutput) CatalogAdminUserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeSsisCatalogInfo) *string { return v.CatalogAdminUserName }).(pulumi.StringPtrOutput)
+}
+
+// The pricing tier for the catalog database. The valid values could be found in https://azure.microsoft.com/en-us/pricing/details/sql-database/
+func (o IntegrationRuntimeSsisCatalogInfoOutput) CatalogPricingTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeSsisCatalogInfo) *string { return v.CatalogPricingTier }).(pulumi.StringPtrOutput)
+}
+
+// The catalog database server URL.
+func (o IntegrationRuntimeSsisCatalogInfoOutput) CatalogServerEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeSsisCatalogInfo) *string { return v.CatalogServerEndpoint }).(pulumi.StringPtrOutput)
+}
+
+type IntegrationRuntimeSsisCatalogInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeSsisCatalogInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationRuntimeSsisCatalogInfo)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeSsisCatalogInfoPtrOutput) ToIntegrationRuntimeSsisCatalogInfoPtrOutput() IntegrationRuntimeSsisCatalogInfoPtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeSsisCatalogInfoPtrOutput) ToIntegrationRuntimeSsisCatalogInfoPtrOutputWithContext(ctx context.Context) IntegrationRuntimeSsisCatalogInfoPtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeSsisCatalogInfoPtrOutput) Elem() IntegrationRuntimeSsisCatalogInfoOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisCatalogInfo) IntegrationRuntimeSsisCatalogInfo {
+		if v != nil {
+			return *v
+		}
+		var ret IntegrationRuntimeSsisCatalogInfo
+		return ret
+	}).(IntegrationRuntimeSsisCatalogInfoOutput)
+}
+
+// The password of the administrator user account of the catalog database.
+func (o IntegrationRuntimeSsisCatalogInfoPtrOutput) CatalogAdminPassword() SecureStringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisCatalogInfo) *SecureString {
+		if v == nil {
+			return nil
+		}
+		return v.CatalogAdminPassword
+	}).(SecureStringPtrOutput)
+}
+
+// The administrator user name of catalog database.
+func (o IntegrationRuntimeSsisCatalogInfoPtrOutput) CatalogAdminUserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CatalogAdminUserName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The pricing tier for the catalog database. The valid values could be found in https://azure.microsoft.com/en-us/pricing/details/sql-database/
+func (o IntegrationRuntimeSsisCatalogInfoPtrOutput) CatalogPricingTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CatalogPricingTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// The catalog database server URL.
+func (o IntegrationRuntimeSsisCatalogInfoPtrOutput) CatalogServerEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CatalogServerEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
 // Catalog information for managed dedicated integration runtime.
 type IntegrationRuntimeSsisCatalogInfoResponse struct {
 	// The password of the administrator user account of the catalog database.
@@ -2170,6 +3987,105 @@ type IntegrationRuntimeSsisCatalogInfoResponse struct {
 	CatalogPricingTier *string `pulumi:"catalogPricingTier"`
 	// The catalog database server URL.
 	CatalogServerEndpoint *string `pulumi:"catalogServerEndpoint"`
+}
+
+// Catalog information for managed dedicated integration runtime.
+type IntegrationRuntimeSsisCatalogInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeSsisCatalogInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeSsisCatalogInfoResponse)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeSsisCatalogInfoResponseOutput) ToIntegrationRuntimeSsisCatalogInfoResponseOutput() IntegrationRuntimeSsisCatalogInfoResponseOutput {
+	return o
+}
+
+func (o IntegrationRuntimeSsisCatalogInfoResponseOutput) ToIntegrationRuntimeSsisCatalogInfoResponseOutputWithContext(ctx context.Context) IntegrationRuntimeSsisCatalogInfoResponseOutput {
+	return o
+}
+
+// The password of the administrator user account of the catalog database.
+func (o IntegrationRuntimeSsisCatalogInfoResponseOutput) CatalogAdminPassword() SecureStringResponsePtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeSsisCatalogInfoResponse) *SecureStringResponse { return v.CatalogAdminPassword }).(SecureStringResponsePtrOutput)
+}
+
+// The administrator user name of catalog database.
+func (o IntegrationRuntimeSsisCatalogInfoResponseOutput) CatalogAdminUserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeSsisCatalogInfoResponse) *string { return v.CatalogAdminUserName }).(pulumi.StringPtrOutput)
+}
+
+// The pricing tier for the catalog database. The valid values could be found in https://azure.microsoft.com/en-us/pricing/details/sql-database/
+func (o IntegrationRuntimeSsisCatalogInfoResponseOutput) CatalogPricingTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeSsisCatalogInfoResponse) *string { return v.CatalogPricingTier }).(pulumi.StringPtrOutput)
+}
+
+// The catalog database server URL.
+func (o IntegrationRuntimeSsisCatalogInfoResponseOutput) CatalogServerEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeSsisCatalogInfoResponse) *string { return v.CatalogServerEndpoint }).(pulumi.StringPtrOutput)
+}
+
+type IntegrationRuntimeSsisCatalogInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeSsisCatalogInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationRuntimeSsisCatalogInfoResponse)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeSsisCatalogInfoResponsePtrOutput) ToIntegrationRuntimeSsisCatalogInfoResponsePtrOutput() IntegrationRuntimeSsisCatalogInfoResponsePtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeSsisCatalogInfoResponsePtrOutput) ToIntegrationRuntimeSsisCatalogInfoResponsePtrOutputWithContext(ctx context.Context) IntegrationRuntimeSsisCatalogInfoResponsePtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeSsisCatalogInfoResponsePtrOutput) Elem() IntegrationRuntimeSsisCatalogInfoResponseOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisCatalogInfoResponse) IntegrationRuntimeSsisCatalogInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IntegrationRuntimeSsisCatalogInfoResponse
+		return ret
+	}).(IntegrationRuntimeSsisCatalogInfoResponseOutput)
+}
+
+// The password of the administrator user account of the catalog database.
+func (o IntegrationRuntimeSsisCatalogInfoResponsePtrOutput) CatalogAdminPassword() SecureStringResponsePtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisCatalogInfoResponse) *SecureStringResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CatalogAdminPassword
+	}).(SecureStringResponsePtrOutput)
+}
+
+// The administrator user name of catalog database.
+func (o IntegrationRuntimeSsisCatalogInfoResponsePtrOutput) CatalogAdminUserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisCatalogInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CatalogAdminUserName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The pricing tier for the catalog database. The valid values could be found in https://azure.microsoft.com/en-us/pricing/details/sql-database/
+func (o IntegrationRuntimeSsisCatalogInfoResponsePtrOutput) CatalogPricingTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisCatalogInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CatalogPricingTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// The catalog database server URL.
+func (o IntegrationRuntimeSsisCatalogInfoResponsePtrOutput) CatalogServerEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisCatalogInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CatalogServerEndpoint
+	}).(pulumi.StringPtrOutput)
 }
 
 // SSIS properties for managed integration runtime.
@@ -2188,6 +4104,229 @@ type IntegrationRuntimeSsisProperties struct {
 	LicenseType *string `pulumi:"licenseType"`
 }
 
+// IntegrationRuntimeSsisPropertiesInput is an input type that accepts IntegrationRuntimeSsisPropertiesArgs and IntegrationRuntimeSsisPropertiesOutput values.
+// You can construct a concrete instance of `IntegrationRuntimeSsisPropertiesInput` via:
+//
+//	IntegrationRuntimeSsisPropertiesArgs{...}
+type IntegrationRuntimeSsisPropertiesInput interface {
+	pulumi.Input
+
+	ToIntegrationRuntimeSsisPropertiesOutput() IntegrationRuntimeSsisPropertiesOutput
+	ToIntegrationRuntimeSsisPropertiesOutputWithContext(context.Context) IntegrationRuntimeSsisPropertiesOutput
+}
+
+// SSIS properties for managed integration runtime.
+type IntegrationRuntimeSsisPropertiesArgs struct {
+	// Catalog information for managed dedicated integration runtime.
+	CatalogInfo IntegrationRuntimeSsisCatalogInfoPtrInput `pulumi:"catalogInfo"`
+	// Custom setup script properties for a managed dedicated integration runtime.
+	CustomSetupScriptProperties IntegrationRuntimeCustomSetupScriptPropertiesPtrInput `pulumi:"customSetupScriptProperties"`
+	// Data proxy properties for a managed dedicated integration runtime.
+	DataProxyProperties IntegrationRuntimeDataProxyPropertiesPtrInput `pulumi:"dataProxyProperties"`
+	// The edition for the SSIS Integration Runtime
+	Edition pulumi.StringPtrInput `pulumi:"edition"`
+	// Custom setup without script properties for a SSIS integration runtime.
+	ExpressCustomSetupProperties pulumi.ArrayInput `pulumi:"expressCustomSetupProperties"`
+	// License type for bringing your own license scenario.
+	LicenseType pulumi.StringPtrInput `pulumi:"licenseType"`
+}
+
+func (IntegrationRuntimeSsisPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeSsisProperties)(nil)).Elem()
+}
+
+func (i IntegrationRuntimeSsisPropertiesArgs) ToIntegrationRuntimeSsisPropertiesOutput() IntegrationRuntimeSsisPropertiesOutput {
+	return i.ToIntegrationRuntimeSsisPropertiesOutputWithContext(context.Background())
+}
+
+func (i IntegrationRuntimeSsisPropertiesArgs) ToIntegrationRuntimeSsisPropertiesOutputWithContext(ctx context.Context) IntegrationRuntimeSsisPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeSsisPropertiesOutput)
+}
+
+func (i IntegrationRuntimeSsisPropertiesArgs) ToIntegrationRuntimeSsisPropertiesPtrOutput() IntegrationRuntimeSsisPropertiesPtrOutput {
+	return i.ToIntegrationRuntimeSsisPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i IntegrationRuntimeSsisPropertiesArgs) ToIntegrationRuntimeSsisPropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeSsisPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeSsisPropertiesOutput).ToIntegrationRuntimeSsisPropertiesPtrOutputWithContext(ctx)
+}
+
+// IntegrationRuntimeSsisPropertiesPtrInput is an input type that accepts IntegrationRuntimeSsisPropertiesArgs, IntegrationRuntimeSsisPropertiesPtr and IntegrationRuntimeSsisPropertiesPtrOutput values.
+// You can construct a concrete instance of `IntegrationRuntimeSsisPropertiesPtrInput` via:
+//
+//	        IntegrationRuntimeSsisPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type IntegrationRuntimeSsisPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToIntegrationRuntimeSsisPropertiesPtrOutput() IntegrationRuntimeSsisPropertiesPtrOutput
+	ToIntegrationRuntimeSsisPropertiesPtrOutputWithContext(context.Context) IntegrationRuntimeSsisPropertiesPtrOutput
+}
+
+type integrationRuntimeSsisPropertiesPtrType IntegrationRuntimeSsisPropertiesArgs
+
+func IntegrationRuntimeSsisPropertiesPtr(v *IntegrationRuntimeSsisPropertiesArgs) IntegrationRuntimeSsisPropertiesPtrInput {
+	return (*integrationRuntimeSsisPropertiesPtrType)(v)
+}
+
+func (*integrationRuntimeSsisPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationRuntimeSsisProperties)(nil)).Elem()
+}
+
+func (i *integrationRuntimeSsisPropertiesPtrType) ToIntegrationRuntimeSsisPropertiesPtrOutput() IntegrationRuntimeSsisPropertiesPtrOutput {
+	return i.ToIntegrationRuntimeSsisPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *integrationRuntimeSsisPropertiesPtrType) ToIntegrationRuntimeSsisPropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeSsisPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeSsisPropertiesPtrOutput)
+}
+
+// SSIS properties for managed integration runtime.
+type IntegrationRuntimeSsisPropertiesOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeSsisPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeSsisProperties)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeSsisPropertiesOutput) ToIntegrationRuntimeSsisPropertiesOutput() IntegrationRuntimeSsisPropertiesOutput {
+	return o
+}
+
+func (o IntegrationRuntimeSsisPropertiesOutput) ToIntegrationRuntimeSsisPropertiesOutputWithContext(ctx context.Context) IntegrationRuntimeSsisPropertiesOutput {
+	return o
+}
+
+func (o IntegrationRuntimeSsisPropertiesOutput) ToIntegrationRuntimeSsisPropertiesPtrOutput() IntegrationRuntimeSsisPropertiesPtrOutput {
+	return o.ToIntegrationRuntimeSsisPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o IntegrationRuntimeSsisPropertiesOutput) ToIntegrationRuntimeSsisPropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeSsisPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IntegrationRuntimeSsisProperties) *IntegrationRuntimeSsisProperties {
+		return &v
+	}).(IntegrationRuntimeSsisPropertiesPtrOutput)
+}
+
+// Catalog information for managed dedicated integration runtime.
+func (o IntegrationRuntimeSsisPropertiesOutput) CatalogInfo() IntegrationRuntimeSsisCatalogInfoPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeSsisProperties) *IntegrationRuntimeSsisCatalogInfo { return v.CatalogInfo }).(IntegrationRuntimeSsisCatalogInfoPtrOutput)
+}
+
+// Custom setup script properties for a managed dedicated integration runtime.
+func (o IntegrationRuntimeSsisPropertiesOutput) CustomSetupScriptProperties() IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeSsisProperties) *IntegrationRuntimeCustomSetupScriptProperties {
+		return v.CustomSetupScriptProperties
+	}).(IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput)
+}
+
+// Data proxy properties for a managed dedicated integration runtime.
+func (o IntegrationRuntimeSsisPropertiesOutput) DataProxyProperties() IntegrationRuntimeDataProxyPropertiesPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeSsisProperties) *IntegrationRuntimeDataProxyProperties {
+		return v.DataProxyProperties
+	}).(IntegrationRuntimeDataProxyPropertiesPtrOutput)
+}
+
+// The edition for the SSIS Integration Runtime
+func (o IntegrationRuntimeSsisPropertiesOutput) Edition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeSsisProperties) *string { return v.Edition }).(pulumi.StringPtrOutput)
+}
+
+// Custom setup without script properties for a SSIS integration runtime.
+func (o IntegrationRuntimeSsisPropertiesOutput) ExpressCustomSetupProperties() pulumi.ArrayOutput {
+	return o.ApplyT(func(v IntegrationRuntimeSsisProperties) []interface{} { return v.ExpressCustomSetupProperties }).(pulumi.ArrayOutput)
+}
+
+// License type for bringing your own license scenario.
+func (o IntegrationRuntimeSsisPropertiesOutput) LicenseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeSsisProperties) *string { return v.LicenseType }).(pulumi.StringPtrOutput)
+}
+
+type IntegrationRuntimeSsisPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeSsisPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationRuntimeSsisProperties)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeSsisPropertiesPtrOutput) ToIntegrationRuntimeSsisPropertiesPtrOutput() IntegrationRuntimeSsisPropertiesPtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeSsisPropertiesPtrOutput) ToIntegrationRuntimeSsisPropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeSsisPropertiesPtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeSsisPropertiesPtrOutput) Elem() IntegrationRuntimeSsisPropertiesOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisProperties) IntegrationRuntimeSsisProperties {
+		if v != nil {
+			return *v
+		}
+		var ret IntegrationRuntimeSsisProperties
+		return ret
+	}).(IntegrationRuntimeSsisPropertiesOutput)
+}
+
+// Catalog information for managed dedicated integration runtime.
+func (o IntegrationRuntimeSsisPropertiesPtrOutput) CatalogInfo() IntegrationRuntimeSsisCatalogInfoPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisProperties) *IntegrationRuntimeSsisCatalogInfo {
+		if v == nil {
+			return nil
+		}
+		return v.CatalogInfo
+	}).(IntegrationRuntimeSsisCatalogInfoPtrOutput)
+}
+
+// Custom setup script properties for a managed dedicated integration runtime.
+func (o IntegrationRuntimeSsisPropertiesPtrOutput) CustomSetupScriptProperties() IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisProperties) *IntegrationRuntimeCustomSetupScriptProperties {
+		if v == nil {
+			return nil
+		}
+		return v.CustomSetupScriptProperties
+	}).(IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput)
+}
+
+// Data proxy properties for a managed dedicated integration runtime.
+func (o IntegrationRuntimeSsisPropertiesPtrOutput) DataProxyProperties() IntegrationRuntimeDataProxyPropertiesPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisProperties) *IntegrationRuntimeDataProxyProperties {
+		if v == nil {
+			return nil
+		}
+		return v.DataProxyProperties
+	}).(IntegrationRuntimeDataProxyPropertiesPtrOutput)
+}
+
+// The edition for the SSIS Integration Runtime
+func (o IntegrationRuntimeSsisPropertiesPtrOutput) Edition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Edition
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom setup without script properties for a SSIS integration runtime.
+func (o IntegrationRuntimeSsisPropertiesPtrOutput) ExpressCustomSetupProperties() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisProperties) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.ExpressCustomSetupProperties
+	}).(pulumi.ArrayOutput)
+}
+
+// License type for bringing your own license scenario.
+func (o IntegrationRuntimeSsisPropertiesPtrOutput) LicenseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LicenseType
+	}).(pulumi.StringPtrOutput)
+}
+
 // SSIS properties for managed integration runtime.
 type IntegrationRuntimeSsisPropertiesResponse struct {
 	// Catalog information for managed dedicated integration runtime.
@@ -2204,6 +4343,141 @@ type IntegrationRuntimeSsisPropertiesResponse struct {
 	LicenseType *string `pulumi:"licenseType"`
 }
 
+// SSIS properties for managed integration runtime.
+type IntegrationRuntimeSsisPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeSsisPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeSsisPropertiesResponse)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeSsisPropertiesResponseOutput) ToIntegrationRuntimeSsisPropertiesResponseOutput() IntegrationRuntimeSsisPropertiesResponseOutput {
+	return o
+}
+
+func (o IntegrationRuntimeSsisPropertiesResponseOutput) ToIntegrationRuntimeSsisPropertiesResponseOutputWithContext(ctx context.Context) IntegrationRuntimeSsisPropertiesResponseOutput {
+	return o
+}
+
+// Catalog information for managed dedicated integration runtime.
+func (o IntegrationRuntimeSsisPropertiesResponseOutput) CatalogInfo() IntegrationRuntimeSsisCatalogInfoResponsePtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeSsisPropertiesResponse) *IntegrationRuntimeSsisCatalogInfoResponse {
+		return v.CatalogInfo
+	}).(IntegrationRuntimeSsisCatalogInfoResponsePtrOutput)
+}
+
+// Custom setup script properties for a managed dedicated integration runtime.
+func (o IntegrationRuntimeSsisPropertiesResponseOutput) CustomSetupScriptProperties() IntegrationRuntimeCustomSetupScriptPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeSsisPropertiesResponse) *IntegrationRuntimeCustomSetupScriptPropertiesResponse {
+		return v.CustomSetupScriptProperties
+	}).(IntegrationRuntimeCustomSetupScriptPropertiesResponsePtrOutput)
+}
+
+// Data proxy properties for a managed dedicated integration runtime.
+func (o IntegrationRuntimeSsisPropertiesResponseOutput) DataProxyProperties() IntegrationRuntimeDataProxyPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeSsisPropertiesResponse) *IntegrationRuntimeDataProxyPropertiesResponse {
+		return v.DataProxyProperties
+	}).(IntegrationRuntimeDataProxyPropertiesResponsePtrOutput)
+}
+
+// The edition for the SSIS Integration Runtime
+func (o IntegrationRuntimeSsisPropertiesResponseOutput) Edition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeSsisPropertiesResponse) *string { return v.Edition }).(pulumi.StringPtrOutput)
+}
+
+// Custom setup without script properties for a SSIS integration runtime.
+func (o IntegrationRuntimeSsisPropertiesResponseOutput) ExpressCustomSetupProperties() pulumi.ArrayOutput {
+	return o.ApplyT(func(v IntegrationRuntimeSsisPropertiesResponse) []interface{} { return v.ExpressCustomSetupProperties }).(pulumi.ArrayOutput)
+}
+
+// License type for bringing your own license scenario.
+func (o IntegrationRuntimeSsisPropertiesResponseOutput) LicenseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeSsisPropertiesResponse) *string { return v.LicenseType }).(pulumi.StringPtrOutput)
+}
+
+type IntegrationRuntimeSsisPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeSsisPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationRuntimeSsisPropertiesResponse)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeSsisPropertiesResponsePtrOutput) ToIntegrationRuntimeSsisPropertiesResponsePtrOutput() IntegrationRuntimeSsisPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeSsisPropertiesResponsePtrOutput) ToIntegrationRuntimeSsisPropertiesResponsePtrOutputWithContext(ctx context.Context) IntegrationRuntimeSsisPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeSsisPropertiesResponsePtrOutput) Elem() IntegrationRuntimeSsisPropertiesResponseOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisPropertiesResponse) IntegrationRuntimeSsisPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IntegrationRuntimeSsisPropertiesResponse
+		return ret
+	}).(IntegrationRuntimeSsisPropertiesResponseOutput)
+}
+
+// Catalog information for managed dedicated integration runtime.
+func (o IntegrationRuntimeSsisPropertiesResponsePtrOutput) CatalogInfo() IntegrationRuntimeSsisCatalogInfoResponsePtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisPropertiesResponse) *IntegrationRuntimeSsisCatalogInfoResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CatalogInfo
+	}).(IntegrationRuntimeSsisCatalogInfoResponsePtrOutput)
+}
+
+// Custom setup script properties for a managed dedicated integration runtime.
+func (o IntegrationRuntimeSsisPropertiesResponsePtrOutput) CustomSetupScriptProperties() IntegrationRuntimeCustomSetupScriptPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisPropertiesResponse) *IntegrationRuntimeCustomSetupScriptPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CustomSetupScriptProperties
+	}).(IntegrationRuntimeCustomSetupScriptPropertiesResponsePtrOutput)
+}
+
+// Data proxy properties for a managed dedicated integration runtime.
+func (o IntegrationRuntimeSsisPropertiesResponsePtrOutput) DataProxyProperties() IntegrationRuntimeDataProxyPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisPropertiesResponse) *IntegrationRuntimeDataProxyPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DataProxyProperties
+	}).(IntegrationRuntimeDataProxyPropertiesResponsePtrOutput)
+}
+
+// The edition for the SSIS Integration Runtime
+func (o IntegrationRuntimeSsisPropertiesResponsePtrOutput) Edition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Edition
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom setup without script properties for a SSIS integration runtime.
+func (o IntegrationRuntimeSsisPropertiesResponsePtrOutput) ExpressCustomSetupProperties() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisPropertiesResponse) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.ExpressCustomSetupProperties
+	}).(pulumi.ArrayOutput)
+}
+
+// License type for bringing your own license scenario.
+func (o IntegrationRuntimeSsisPropertiesResponsePtrOutput) LicenseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeSsisPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LicenseType
+	}).(pulumi.StringPtrOutput)
+}
+
 // VNet properties for managed integration runtime.
 type IntegrationRuntimeVNetProperties struct {
 	// Resource IDs of the public IP addresses that this integration runtime will use.
@@ -2216,6 +4490,191 @@ type IntegrationRuntimeVNetProperties struct {
 	VNetId *string `pulumi:"vNetId"`
 }
 
+// IntegrationRuntimeVNetPropertiesInput is an input type that accepts IntegrationRuntimeVNetPropertiesArgs and IntegrationRuntimeVNetPropertiesOutput values.
+// You can construct a concrete instance of `IntegrationRuntimeVNetPropertiesInput` via:
+//
+//	IntegrationRuntimeVNetPropertiesArgs{...}
+type IntegrationRuntimeVNetPropertiesInput interface {
+	pulumi.Input
+
+	ToIntegrationRuntimeVNetPropertiesOutput() IntegrationRuntimeVNetPropertiesOutput
+	ToIntegrationRuntimeVNetPropertiesOutputWithContext(context.Context) IntegrationRuntimeVNetPropertiesOutput
+}
+
+// VNet properties for managed integration runtime.
+type IntegrationRuntimeVNetPropertiesArgs struct {
+	// Resource IDs of the public IP addresses that this integration runtime will use.
+	PublicIPs pulumi.StringArrayInput `pulumi:"publicIPs"`
+	// The name of the subnet this integration runtime will join.
+	Subnet pulumi.StringPtrInput `pulumi:"subnet"`
+	// The ID of subnet, to which this Azure-SSIS integration runtime will be joined.
+	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
+	// The ID of the VNet that this integration runtime will join.
+	VNetId pulumi.StringPtrInput `pulumi:"vNetId"`
+}
+
+func (IntegrationRuntimeVNetPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeVNetProperties)(nil)).Elem()
+}
+
+func (i IntegrationRuntimeVNetPropertiesArgs) ToIntegrationRuntimeVNetPropertiesOutput() IntegrationRuntimeVNetPropertiesOutput {
+	return i.ToIntegrationRuntimeVNetPropertiesOutputWithContext(context.Background())
+}
+
+func (i IntegrationRuntimeVNetPropertiesArgs) ToIntegrationRuntimeVNetPropertiesOutputWithContext(ctx context.Context) IntegrationRuntimeVNetPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeVNetPropertiesOutput)
+}
+
+func (i IntegrationRuntimeVNetPropertiesArgs) ToIntegrationRuntimeVNetPropertiesPtrOutput() IntegrationRuntimeVNetPropertiesPtrOutput {
+	return i.ToIntegrationRuntimeVNetPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i IntegrationRuntimeVNetPropertiesArgs) ToIntegrationRuntimeVNetPropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeVNetPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeVNetPropertiesOutput).ToIntegrationRuntimeVNetPropertiesPtrOutputWithContext(ctx)
+}
+
+// IntegrationRuntimeVNetPropertiesPtrInput is an input type that accepts IntegrationRuntimeVNetPropertiesArgs, IntegrationRuntimeVNetPropertiesPtr and IntegrationRuntimeVNetPropertiesPtrOutput values.
+// You can construct a concrete instance of `IntegrationRuntimeVNetPropertiesPtrInput` via:
+//
+//	        IntegrationRuntimeVNetPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type IntegrationRuntimeVNetPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToIntegrationRuntimeVNetPropertiesPtrOutput() IntegrationRuntimeVNetPropertiesPtrOutput
+	ToIntegrationRuntimeVNetPropertiesPtrOutputWithContext(context.Context) IntegrationRuntimeVNetPropertiesPtrOutput
+}
+
+type integrationRuntimeVNetPropertiesPtrType IntegrationRuntimeVNetPropertiesArgs
+
+func IntegrationRuntimeVNetPropertiesPtr(v *IntegrationRuntimeVNetPropertiesArgs) IntegrationRuntimeVNetPropertiesPtrInput {
+	return (*integrationRuntimeVNetPropertiesPtrType)(v)
+}
+
+func (*integrationRuntimeVNetPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationRuntimeVNetProperties)(nil)).Elem()
+}
+
+func (i *integrationRuntimeVNetPropertiesPtrType) ToIntegrationRuntimeVNetPropertiesPtrOutput() IntegrationRuntimeVNetPropertiesPtrOutput {
+	return i.ToIntegrationRuntimeVNetPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *integrationRuntimeVNetPropertiesPtrType) ToIntegrationRuntimeVNetPropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeVNetPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRuntimeVNetPropertiesPtrOutput)
+}
+
+// VNet properties for managed integration runtime.
+type IntegrationRuntimeVNetPropertiesOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeVNetPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeVNetProperties)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeVNetPropertiesOutput) ToIntegrationRuntimeVNetPropertiesOutput() IntegrationRuntimeVNetPropertiesOutput {
+	return o
+}
+
+func (o IntegrationRuntimeVNetPropertiesOutput) ToIntegrationRuntimeVNetPropertiesOutputWithContext(ctx context.Context) IntegrationRuntimeVNetPropertiesOutput {
+	return o
+}
+
+func (o IntegrationRuntimeVNetPropertiesOutput) ToIntegrationRuntimeVNetPropertiesPtrOutput() IntegrationRuntimeVNetPropertiesPtrOutput {
+	return o.ToIntegrationRuntimeVNetPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o IntegrationRuntimeVNetPropertiesOutput) ToIntegrationRuntimeVNetPropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeVNetPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IntegrationRuntimeVNetProperties) *IntegrationRuntimeVNetProperties {
+		return &v
+	}).(IntegrationRuntimeVNetPropertiesPtrOutput)
+}
+
+// Resource IDs of the public IP addresses that this integration runtime will use.
+func (o IntegrationRuntimeVNetPropertiesOutput) PublicIPs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IntegrationRuntimeVNetProperties) []string { return v.PublicIPs }).(pulumi.StringArrayOutput)
+}
+
+// The name of the subnet this integration runtime will join.
+func (o IntegrationRuntimeVNetPropertiesOutput) Subnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeVNetProperties) *string { return v.Subnet }).(pulumi.StringPtrOutput)
+}
+
+// The ID of subnet, to which this Azure-SSIS integration runtime will be joined.
+func (o IntegrationRuntimeVNetPropertiesOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeVNetProperties) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the VNet that this integration runtime will join.
+func (o IntegrationRuntimeVNetPropertiesOutput) VNetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeVNetProperties) *string { return v.VNetId }).(pulumi.StringPtrOutput)
+}
+
+type IntegrationRuntimeVNetPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeVNetPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationRuntimeVNetProperties)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeVNetPropertiesPtrOutput) ToIntegrationRuntimeVNetPropertiesPtrOutput() IntegrationRuntimeVNetPropertiesPtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeVNetPropertiesPtrOutput) ToIntegrationRuntimeVNetPropertiesPtrOutputWithContext(ctx context.Context) IntegrationRuntimeVNetPropertiesPtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeVNetPropertiesPtrOutput) Elem() IntegrationRuntimeVNetPropertiesOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeVNetProperties) IntegrationRuntimeVNetProperties {
+		if v != nil {
+			return *v
+		}
+		var ret IntegrationRuntimeVNetProperties
+		return ret
+	}).(IntegrationRuntimeVNetPropertiesOutput)
+}
+
+// Resource IDs of the public IP addresses that this integration runtime will use.
+func (o IntegrationRuntimeVNetPropertiesPtrOutput) PublicIPs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeVNetProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicIPs
+	}).(pulumi.StringArrayOutput)
+}
+
+// The name of the subnet this integration runtime will join.
+func (o IntegrationRuntimeVNetPropertiesPtrOutput) Subnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeVNetProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subnet
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of subnet, to which this Azure-SSIS integration runtime will be joined.
+func (o IntegrationRuntimeVNetPropertiesPtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeVNetProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the VNet that this integration runtime will join.
+func (o IntegrationRuntimeVNetPropertiesPtrOutput) VNetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeVNetProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VNetId
+	}).(pulumi.StringPtrOutput)
+}
+
 // VNet properties for managed integration runtime.
 type IntegrationRuntimeVNetPropertiesResponse struct {
 	// Resource IDs of the public IP addresses that this integration runtime will use.
@@ -2226,6 +4685,105 @@ type IntegrationRuntimeVNetPropertiesResponse struct {
 	SubnetId *string `pulumi:"subnetId"`
 	// The ID of the VNet that this integration runtime will join.
 	VNetId *string `pulumi:"vNetId"`
+}
+
+// VNet properties for managed integration runtime.
+type IntegrationRuntimeVNetPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeVNetPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeVNetPropertiesResponse)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeVNetPropertiesResponseOutput) ToIntegrationRuntimeVNetPropertiesResponseOutput() IntegrationRuntimeVNetPropertiesResponseOutput {
+	return o
+}
+
+func (o IntegrationRuntimeVNetPropertiesResponseOutput) ToIntegrationRuntimeVNetPropertiesResponseOutputWithContext(ctx context.Context) IntegrationRuntimeVNetPropertiesResponseOutput {
+	return o
+}
+
+// Resource IDs of the public IP addresses that this integration runtime will use.
+func (o IntegrationRuntimeVNetPropertiesResponseOutput) PublicIPs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IntegrationRuntimeVNetPropertiesResponse) []string { return v.PublicIPs }).(pulumi.StringArrayOutput)
+}
+
+// The name of the subnet this integration runtime will join.
+func (o IntegrationRuntimeVNetPropertiesResponseOutput) Subnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeVNetPropertiesResponse) *string { return v.Subnet }).(pulumi.StringPtrOutput)
+}
+
+// The ID of subnet, to which this Azure-SSIS integration runtime will be joined.
+func (o IntegrationRuntimeVNetPropertiesResponseOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeVNetPropertiesResponse) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the VNet that this integration runtime will join.
+func (o IntegrationRuntimeVNetPropertiesResponseOutput) VNetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IntegrationRuntimeVNetPropertiesResponse) *string { return v.VNetId }).(pulumi.StringPtrOutput)
+}
+
+type IntegrationRuntimeVNetPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeVNetPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationRuntimeVNetPropertiesResponse)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeVNetPropertiesResponsePtrOutput) ToIntegrationRuntimeVNetPropertiesResponsePtrOutput() IntegrationRuntimeVNetPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeVNetPropertiesResponsePtrOutput) ToIntegrationRuntimeVNetPropertiesResponsePtrOutputWithContext(ctx context.Context) IntegrationRuntimeVNetPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeVNetPropertiesResponsePtrOutput) Elem() IntegrationRuntimeVNetPropertiesResponseOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeVNetPropertiesResponse) IntegrationRuntimeVNetPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IntegrationRuntimeVNetPropertiesResponse
+		return ret
+	}).(IntegrationRuntimeVNetPropertiesResponseOutput)
+}
+
+// Resource IDs of the public IP addresses that this integration runtime will use.
+func (o IntegrationRuntimeVNetPropertiesResponsePtrOutput) PublicIPs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeVNetPropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicIPs
+	}).(pulumi.StringArrayOutput)
+}
+
+// The name of the subnet this integration runtime will join.
+func (o IntegrationRuntimeVNetPropertiesResponsePtrOutput) Subnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeVNetPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subnet
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of subnet, to which this Azure-SSIS integration runtime will be joined.
+func (o IntegrationRuntimeVNetPropertiesResponsePtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeVNetPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the VNet that this integration runtime will join.
+func (o IntegrationRuntimeVNetPropertiesResponsePtrOutput) VNetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeVNetPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VNetId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Key encryption key properties
@@ -3013,6 +5571,160 @@ type LinkedIntegrationRuntimeKeyAuthorization struct {
 	Key SecureString `pulumi:"key"`
 }
 
+// LinkedIntegrationRuntimeKeyAuthorizationInput is an input type that accepts LinkedIntegrationRuntimeKeyAuthorizationArgs and LinkedIntegrationRuntimeKeyAuthorizationOutput values.
+// You can construct a concrete instance of `LinkedIntegrationRuntimeKeyAuthorizationInput` via:
+//
+//	LinkedIntegrationRuntimeKeyAuthorizationArgs{...}
+type LinkedIntegrationRuntimeKeyAuthorizationInput interface {
+	pulumi.Input
+
+	ToLinkedIntegrationRuntimeKeyAuthorizationOutput() LinkedIntegrationRuntimeKeyAuthorizationOutput
+	ToLinkedIntegrationRuntimeKeyAuthorizationOutputWithContext(context.Context) LinkedIntegrationRuntimeKeyAuthorizationOutput
+}
+
+// The key authorization type integration runtime.
+type LinkedIntegrationRuntimeKeyAuthorizationArgs struct {
+	// The authorization type for integration runtime sharing.
+	// Expected value is 'Key'.
+	AuthorizationType pulumi.StringInput `pulumi:"authorizationType"`
+	// The key used for authorization.
+	Key SecureStringInput `pulumi:"key"`
+}
+
+func (LinkedIntegrationRuntimeKeyAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedIntegrationRuntimeKeyAuthorization)(nil)).Elem()
+}
+
+func (i LinkedIntegrationRuntimeKeyAuthorizationArgs) ToLinkedIntegrationRuntimeKeyAuthorizationOutput() LinkedIntegrationRuntimeKeyAuthorizationOutput {
+	return i.ToLinkedIntegrationRuntimeKeyAuthorizationOutputWithContext(context.Background())
+}
+
+func (i LinkedIntegrationRuntimeKeyAuthorizationArgs) ToLinkedIntegrationRuntimeKeyAuthorizationOutputWithContext(ctx context.Context) LinkedIntegrationRuntimeKeyAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedIntegrationRuntimeKeyAuthorizationOutput)
+}
+
+func (i LinkedIntegrationRuntimeKeyAuthorizationArgs) ToLinkedIntegrationRuntimeKeyAuthorizationPtrOutput() LinkedIntegrationRuntimeKeyAuthorizationPtrOutput {
+	return i.ToLinkedIntegrationRuntimeKeyAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i LinkedIntegrationRuntimeKeyAuthorizationArgs) ToLinkedIntegrationRuntimeKeyAuthorizationPtrOutputWithContext(ctx context.Context) LinkedIntegrationRuntimeKeyAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedIntegrationRuntimeKeyAuthorizationOutput).ToLinkedIntegrationRuntimeKeyAuthorizationPtrOutputWithContext(ctx)
+}
+
+// LinkedIntegrationRuntimeKeyAuthorizationPtrInput is an input type that accepts LinkedIntegrationRuntimeKeyAuthorizationArgs, LinkedIntegrationRuntimeKeyAuthorizationPtr and LinkedIntegrationRuntimeKeyAuthorizationPtrOutput values.
+// You can construct a concrete instance of `LinkedIntegrationRuntimeKeyAuthorizationPtrInput` via:
+//
+//	        LinkedIntegrationRuntimeKeyAuthorizationArgs{...}
+//
+//	or:
+//
+//	        nil
+type LinkedIntegrationRuntimeKeyAuthorizationPtrInput interface {
+	pulumi.Input
+
+	ToLinkedIntegrationRuntimeKeyAuthorizationPtrOutput() LinkedIntegrationRuntimeKeyAuthorizationPtrOutput
+	ToLinkedIntegrationRuntimeKeyAuthorizationPtrOutputWithContext(context.Context) LinkedIntegrationRuntimeKeyAuthorizationPtrOutput
+}
+
+type linkedIntegrationRuntimeKeyAuthorizationPtrType LinkedIntegrationRuntimeKeyAuthorizationArgs
+
+func LinkedIntegrationRuntimeKeyAuthorizationPtr(v *LinkedIntegrationRuntimeKeyAuthorizationArgs) LinkedIntegrationRuntimeKeyAuthorizationPtrInput {
+	return (*linkedIntegrationRuntimeKeyAuthorizationPtrType)(v)
+}
+
+func (*linkedIntegrationRuntimeKeyAuthorizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkedIntegrationRuntimeKeyAuthorization)(nil)).Elem()
+}
+
+func (i *linkedIntegrationRuntimeKeyAuthorizationPtrType) ToLinkedIntegrationRuntimeKeyAuthorizationPtrOutput() LinkedIntegrationRuntimeKeyAuthorizationPtrOutput {
+	return i.ToLinkedIntegrationRuntimeKeyAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i *linkedIntegrationRuntimeKeyAuthorizationPtrType) ToLinkedIntegrationRuntimeKeyAuthorizationPtrOutputWithContext(ctx context.Context) LinkedIntegrationRuntimeKeyAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedIntegrationRuntimeKeyAuthorizationPtrOutput)
+}
+
+// The key authorization type integration runtime.
+type LinkedIntegrationRuntimeKeyAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (LinkedIntegrationRuntimeKeyAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedIntegrationRuntimeKeyAuthorization)(nil)).Elem()
+}
+
+func (o LinkedIntegrationRuntimeKeyAuthorizationOutput) ToLinkedIntegrationRuntimeKeyAuthorizationOutput() LinkedIntegrationRuntimeKeyAuthorizationOutput {
+	return o
+}
+
+func (o LinkedIntegrationRuntimeKeyAuthorizationOutput) ToLinkedIntegrationRuntimeKeyAuthorizationOutputWithContext(ctx context.Context) LinkedIntegrationRuntimeKeyAuthorizationOutput {
+	return o
+}
+
+func (o LinkedIntegrationRuntimeKeyAuthorizationOutput) ToLinkedIntegrationRuntimeKeyAuthorizationPtrOutput() LinkedIntegrationRuntimeKeyAuthorizationPtrOutput {
+	return o.ToLinkedIntegrationRuntimeKeyAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (o LinkedIntegrationRuntimeKeyAuthorizationOutput) ToLinkedIntegrationRuntimeKeyAuthorizationPtrOutputWithContext(ctx context.Context) LinkedIntegrationRuntimeKeyAuthorizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LinkedIntegrationRuntimeKeyAuthorization) *LinkedIntegrationRuntimeKeyAuthorization {
+		return &v
+	}).(LinkedIntegrationRuntimeKeyAuthorizationPtrOutput)
+}
+
+// The authorization type for integration runtime sharing.
+// Expected value is 'Key'.
+func (o LinkedIntegrationRuntimeKeyAuthorizationOutput) AuthorizationType() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedIntegrationRuntimeKeyAuthorization) string { return v.AuthorizationType }).(pulumi.StringOutput)
+}
+
+// The key used for authorization.
+func (o LinkedIntegrationRuntimeKeyAuthorizationOutput) Key() SecureStringOutput {
+	return o.ApplyT(func(v LinkedIntegrationRuntimeKeyAuthorization) SecureString { return v.Key }).(SecureStringOutput)
+}
+
+type LinkedIntegrationRuntimeKeyAuthorizationPtrOutput struct{ *pulumi.OutputState }
+
+func (LinkedIntegrationRuntimeKeyAuthorizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkedIntegrationRuntimeKeyAuthorization)(nil)).Elem()
+}
+
+func (o LinkedIntegrationRuntimeKeyAuthorizationPtrOutput) ToLinkedIntegrationRuntimeKeyAuthorizationPtrOutput() LinkedIntegrationRuntimeKeyAuthorizationPtrOutput {
+	return o
+}
+
+func (o LinkedIntegrationRuntimeKeyAuthorizationPtrOutput) ToLinkedIntegrationRuntimeKeyAuthorizationPtrOutputWithContext(ctx context.Context) LinkedIntegrationRuntimeKeyAuthorizationPtrOutput {
+	return o
+}
+
+func (o LinkedIntegrationRuntimeKeyAuthorizationPtrOutput) Elem() LinkedIntegrationRuntimeKeyAuthorizationOutput {
+	return o.ApplyT(func(v *LinkedIntegrationRuntimeKeyAuthorization) LinkedIntegrationRuntimeKeyAuthorization {
+		if v != nil {
+			return *v
+		}
+		var ret LinkedIntegrationRuntimeKeyAuthorization
+		return ret
+	}).(LinkedIntegrationRuntimeKeyAuthorizationOutput)
+}
+
+// The authorization type for integration runtime sharing.
+// Expected value is 'Key'.
+func (o LinkedIntegrationRuntimeKeyAuthorizationPtrOutput) AuthorizationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LinkedIntegrationRuntimeKeyAuthorization) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthorizationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The key used for authorization.
+func (o LinkedIntegrationRuntimeKeyAuthorizationPtrOutput) Key() SecureStringPtrOutput {
+	return o.ApplyT(func(v *LinkedIntegrationRuntimeKeyAuthorization) *SecureString {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(SecureStringPtrOutput)
+}
+
 // The key authorization type integration runtime.
 type LinkedIntegrationRuntimeKeyAuthorizationResponse struct {
 	// The authorization type for integration runtime sharing.
@@ -3020,6 +5732,77 @@ type LinkedIntegrationRuntimeKeyAuthorizationResponse struct {
 	AuthorizationType string `pulumi:"authorizationType"`
 	// The key used for authorization.
 	Key SecureStringResponse `pulumi:"key"`
+}
+
+// The key authorization type integration runtime.
+type LinkedIntegrationRuntimeKeyAuthorizationResponseOutput struct{ *pulumi.OutputState }
+
+func (LinkedIntegrationRuntimeKeyAuthorizationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedIntegrationRuntimeKeyAuthorizationResponse)(nil)).Elem()
+}
+
+func (o LinkedIntegrationRuntimeKeyAuthorizationResponseOutput) ToLinkedIntegrationRuntimeKeyAuthorizationResponseOutput() LinkedIntegrationRuntimeKeyAuthorizationResponseOutput {
+	return o
+}
+
+func (o LinkedIntegrationRuntimeKeyAuthorizationResponseOutput) ToLinkedIntegrationRuntimeKeyAuthorizationResponseOutputWithContext(ctx context.Context) LinkedIntegrationRuntimeKeyAuthorizationResponseOutput {
+	return o
+}
+
+// The authorization type for integration runtime sharing.
+// Expected value is 'Key'.
+func (o LinkedIntegrationRuntimeKeyAuthorizationResponseOutput) AuthorizationType() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedIntegrationRuntimeKeyAuthorizationResponse) string { return v.AuthorizationType }).(pulumi.StringOutput)
+}
+
+// The key used for authorization.
+func (o LinkedIntegrationRuntimeKeyAuthorizationResponseOutput) Key() SecureStringResponseOutput {
+	return o.ApplyT(func(v LinkedIntegrationRuntimeKeyAuthorizationResponse) SecureStringResponse { return v.Key }).(SecureStringResponseOutput)
+}
+
+type LinkedIntegrationRuntimeKeyAuthorizationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LinkedIntegrationRuntimeKeyAuthorizationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkedIntegrationRuntimeKeyAuthorizationResponse)(nil)).Elem()
+}
+
+func (o LinkedIntegrationRuntimeKeyAuthorizationResponsePtrOutput) ToLinkedIntegrationRuntimeKeyAuthorizationResponsePtrOutput() LinkedIntegrationRuntimeKeyAuthorizationResponsePtrOutput {
+	return o
+}
+
+func (o LinkedIntegrationRuntimeKeyAuthorizationResponsePtrOutput) ToLinkedIntegrationRuntimeKeyAuthorizationResponsePtrOutputWithContext(ctx context.Context) LinkedIntegrationRuntimeKeyAuthorizationResponsePtrOutput {
+	return o
+}
+
+func (o LinkedIntegrationRuntimeKeyAuthorizationResponsePtrOutput) Elem() LinkedIntegrationRuntimeKeyAuthorizationResponseOutput {
+	return o.ApplyT(func(v *LinkedIntegrationRuntimeKeyAuthorizationResponse) LinkedIntegrationRuntimeKeyAuthorizationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LinkedIntegrationRuntimeKeyAuthorizationResponse
+		return ret
+	}).(LinkedIntegrationRuntimeKeyAuthorizationResponseOutput)
+}
+
+// The authorization type for integration runtime sharing.
+// Expected value is 'Key'.
+func (o LinkedIntegrationRuntimeKeyAuthorizationResponsePtrOutput) AuthorizationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LinkedIntegrationRuntimeKeyAuthorizationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthorizationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The key used for authorization.
+func (o LinkedIntegrationRuntimeKeyAuthorizationResponsePtrOutput) Key() SecureStringResponsePtrOutput {
+	return o.ApplyT(func(v *LinkedIntegrationRuntimeKeyAuthorizationResponse) *SecureStringResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(SecureStringResponsePtrOutput)
 }
 
 // The role based access control (RBAC) authorization type integration runtime.
@@ -3031,6 +5814,160 @@ type LinkedIntegrationRuntimeRbacAuthorization struct {
 	ResourceId string `pulumi:"resourceId"`
 }
 
+// LinkedIntegrationRuntimeRbacAuthorizationInput is an input type that accepts LinkedIntegrationRuntimeRbacAuthorizationArgs and LinkedIntegrationRuntimeRbacAuthorizationOutput values.
+// You can construct a concrete instance of `LinkedIntegrationRuntimeRbacAuthorizationInput` via:
+//
+//	LinkedIntegrationRuntimeRbacAuthorizationArgs{...}
+type LinkedIntegrationRuntimeRbacAuthorizationInput interface {
+	pulumi.Input
+
+	ToLinkedIntegrationRuntimeRbacAuthorizationOutput() LinkedIntegrationRuntimeRbacAuthorizationOutput
+	ToLinkedIntegrationRuntimeRbacAuthorizationOutputWithContext(context.Context) LinkedIntegrationRuntimeRbacAuthorizationOutput
+}
+
+// The role based access control (RBAC) authorization type integration runtime.
+type LinkedIntegrationRuntimeRbacAuthorizationArgs struct {
+	// The authorization type for integration runtime sharing.
+	// Expected value is 'RBAC'.
+	AuthorizationType pulumi.StringInput `pulumi:"authorizationType"`
+	// The resource identifier of the integration runtime to be shared.
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+}
+
+func (LinkedIntegrationRuntimeRbacAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedIntegrationRuntimeRbacAuthorization)(nil)).Elem()
+}
+
+func (i LinkedIntegrationRuntimeRbacAuthorizationArgs) ToLinkedIntegrationRuntimeRbacAuthorizationOutput() LinkedIntegrationRuntimeRbacAuthorizationOutput {
+	return i.ToLinkedIntegrationRuntimeRbacAuthorizationOutputWithContext(context.Background())
+}
+
+func (i LinkedIntegrationRuntimeRbacAuthorizationArgs) ToLinkedIntegrationRuntimeRbacAuthorizationOutputWithContext(ctx context.Context) LinkedIntegrationRuntimeRbacAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedIntegrationRuntimeRbacAuthorizationOutput)
+}
+
+func (i LinkedIntegrationRuntimeRbacAuthorizationArgs) ToLinkedIntegrationRuntimeRbacAuthorizationPtrOutput() LinkedIntegrationRuntimeRbacAuthorizationPtrOutput {
+	return i.ToLinkedIntegrationRuntimeRbacAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i LinkedIntegrationRuntimeRbacAuthorizationArgs) ToLinkedIntegrationRuntimeRbacAuthorizationPtrOutputWithContext(ctx context.Context) LinkedIntegrationRuntimeRbacAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedIntegrationRuntimeRbacAuthorizationOutput).ToLinkedIntegrationRuntimeRbacAuthorizationPtrOutputWithContext(ctx)
+}
+
+// LinkedIntegrationRuntimeRbacAuthorizationPtrInput is an input type that accepts LinkedIntegrationRuntimeRbacAuthorizationArgs, LinkedIntegrationRuntimeRbacAuthorizationPtr and LinkedIntegrationRuntimeRbacAuthorizationPtrOutput values.
+// You can construct a concrete instance of `LinkedIntegrationRuntimeRbacAuthorizationPtrInput` via:
+//
+//	        LinkedIntegrationRuntimeRbacAuthorizationArgs{...}
+//
+//	or:
+//
+//	        nil
+type LinkedIntegrationRuntimeRbacAuthorizationPtrInput interface {
+	pulumi.Input
+
+	ToLinkedIntegrationRuntimeRbacAuthorizationPtrOutput() LinkedIntegrationRuntimeRbacAuthorizationPtrOutput
+	ToLinkedIntegrationRuntimeRbacAuthorizationPtrOutputWithContext(context.Context) LinkedIntegrationRuntimeRbacAuthorizationPtrOutput
+}
+
+type linkedIntegrationRuntimeRbacAuthorizationPtrType LinkedIntegrationRuntimeRbacAuthorizationArgs
+
+func LinkedIntegrationRuntimeRbacAuthorizationPtr(v *LinkedIntegrationRuntimeRbacAuthorizationArgs) LinkedIntegrationRuntimeRbacAuthorizationPtrInput {
+	return (*linkedIntegrationRuntimeRbacAuthorizationPtrType)(v)
+}
+
+func (*linkedIntegrationRuntimeRbacAuthorizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkedIntegrationRuntimeRbacAuthorization)(nil)).Elem()
+}
+
+func (i *linkedIntegrationRuntimeRbacAuthorizationPtrType) ToLinkedIntegrationRuntimeRbacAuthorizationPtrOutput() LinkedIntegrationRuntimeRbacAuthorizationPtrOutput {
+	return i.ToLinkedIntegrationRuntimeRbacAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i *linkedIntegrationRuntimeRbacAuthorizationPtrType) ToLinkedIntegrationRuntimeRbacAuthorizationPtrOutputWithContext(ctx context.Context) LinkedIntegrationRuntimeRbacAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedIntegrationRuntimeRbacAuthorizationPtrOutput)
+}
+
+// The role based access control (RBAC) authorization type integration runtime.
+type LinkedIntegrationRuntimeRbacAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (LinkedIntegrationRuntimeRbacAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedIntegrationRuntimeRbacAuthorization)(nil)).Elem()
+}
+
+func (o LinkedIntegrationRuntimeRbacAuthorizationOutput) ToLinkedIntegrationRuntimeRbacAuthorizationOutput() LinkedIntegrationRuntimeRbacAuthorizationOutput {
+	return o
+}
+
+func (o LinkedIntegrationRuntimeRbacAuthorizationOutput) ToLinkedIntegrationRuntimeRbacAuthorizationOutputWithContext(ctx context.Context) LinkedIntegrationRuntimeRbacAuthorizationOutput {
+	return o
+}
+
+func (o LinkedIntegrationRuntimeRbacAuthorizationOutput) ToLinkedIntegrationRuntimeRbacAuthorizationPtrOutput() LinkedIntegrationRuntimeRbacAuthorizationPtrOutput {
+	return o.ToLinkedIntegrationRuntimeRbacAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (o LinkedIntegrationRuntimeRbacAuthorizationOutput) ToLinkedIntegrationRuntimeRbacAuthorizationPtrOutputWithContext(ctx context.Context) LinkedIntegrationRuntimeRbacAuthorizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LinkedIntegrationRuntimeRbacAuthorization) *LinkedIntegrationRuntimeRbacAuthorization {
+		return &v
+	}).(LinkedIntegrationRuntimeRbacAuthorizationPtrOutput)
+}
+
+// The authorization type for integration runtime sharing.
+// Expected value is 'RBAC'.
+func (o LinkedIntegrationRuntimeRbacAuthorizationOutput) AuthorizationType() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedIntegrationRuntimeRbacAuthorization) string { return v.AuthorizationType }).(pulumi.StringOutput)
+}
+
+// The resource identifier of the integration runtime to be shared.
+func (o LinkedIntegrationRuntimeRbacAuthorizationOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedIntegrationRuntimeRbacAuthorization) string { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+type LinkedIntegrationRuntimeRbacAuthorizationPtrOutput struct{ *pulumi.OutputState }
+
+func (LinkedIntegrationRuntimeRbacAuthorizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkedIntegrationRuntimeRbacAuthorization)(nil)).Elem()
+}
+
+func (o LinkedIntegrationRuntimeRbacAuthorizationPtrOutput) ToLinkedIntegrationRuntimeRbacAuthorizationPtrOutput() LinkedIntegrationRuntimeRbacAuthorizationPtrOutput {
+	return o
+}
+
+func (o LinkedIntegrationRuntimeRbacAuthorizationPtrOutput) ToLinkedIntegrationRuntimeRbacAuthorizationPtrOutputWithContext(ctx context.Context) LinkedIntegrationRuntimeRbacAuthorizationPtrOutput {
+	return o
+}
+
+func (o LinkedIntegrationRuntimeRbacAuthorizationPtrOutput) Elem() LinkedIntegrationRuntimeRbacAuthorizationOutput {
+	return o.ApplyT(func(v *LinkedIntegrationRuntimeRbacAuthorization) LinkedIntegrationRuntimeRbacAuthorization {
+		if v != nil {
+			return *v
+		}
+		var ret LinkedIntegrationRuntimeRbacAuthorization
+		return ret
+	}).(LinkedIntegrationRuntimeRbacAuthorizationOutput)
+}
+
+// The authorization type for integration runtime sharing.
+// Expected value is 'RBAC'.
+func (o LinkedIntegrationRuntimeRbacAuthorizationPtrOutput) AuthorizationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LinkedIntegrationRuntimeRbacAuthorization) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthorizationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource identifier of the integration runtime to be shared.
+func (o LinkedIntegrationRuntimeRbacAuthorizationPtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LinkedIntegrationRuntimeRbacAuthorization) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The role based access control (RBAC) authorization type integration runtime.
 type LinkedIntegrationRuntimeRbacAuthorizationResponse struct {
 	// The authorization type for integration runtime sharing.
@@ -3038,6 +5975,77 @@ type LinkedIntegrationRuntimeRbacAuthorizationResponse struct {
 	AuthorizationType string `pulumi:"authorizationType"`
 	// The resource identifier of the integration runtime to be shared.
 	ResourceId string `pulumi:"resourceId"`
+}
+
+// The role based access control (RBAC) authorization type integration runtime.
+type LinkedIntegrationRuntimeRbacAuthorizationResponseOutput struct{ *pulumi.OutputState }
+
+func (LinkedIntegrationRuntimeRbacAuthorizationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedIntegrationRuntimeRbacAuthorizationResponse)(nil)).Elem()
+}
+
+func (o LinkedIntegrationRuntimeRbacAuthorizationResponseOutput) ToLinkedIntegrationRuntimeRbacAuthorizationResponseOutput() LinkedIntegrationRuntimeRbacAuthorizationResponseOutput {
+	return o
+}
+
+func (o LinkedIntegrationRuntimeRbacAuthorizationResponseOutput) ToLinkedIntegrationRuntimeRbacAuthorizationResponseOutputWithContext(ctx context.Context) LinkedIntegrationRuntimeRbacAuthorizationResponseOutput {
+	return o
+}
+
+// The authorization type for integration runtime sharing.
+// Expected value is 'RBAC'.
+func (o LinkedIntegrationRuntimeRbacAuthorizationResponseOutput) AuthorizationType() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedIntegrationRuntimeRbacAuthorizationResponse) string { return v.AuthorizationType }).(pulumi.StringOutput)
+}
+
+// The resource identifier of the integration runtime to be shared.
+func (o LinkedIntegrationRuntimeRbacAuthorizationResponseOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedIntegrationRuntimeRbacAuthorizationResponse) string { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+type LinkedIntegrationRuntimeRbacAuthorizationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LinkedIntegrationRuntimeRbacAuthorizationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LinkedIntegrationRuntimeRbacAuthorizationResponse)(nil)).Elem()
+}
+
+func (o LinkedIntegrationRuntimeRbacAuthorizationResponsePtrOutput) ToLinkedIntegrationRuntimeRbacAuthorizationResponsePtrOutput() LinkedIntegrationRuntimeRbacAuthorizationResponsePtrOutput {
+	return o
+}
+
+func (o LinkedIntegrationRuntimeRbacAuthorizationResponsePtrOutput) ToLinkedIntegrationRuntimeRbacAuthorizationResponsePtrOutputWithContext(ctx context.Context) LinkedIntegrationRuntimeRbacAuthorizationResponsePtrOutput {
+	return o
+}
+
+func (o LinkedIntegrationRuntimeRbacAuthorizationResponsePtrOutput) Elem() LinkedIntegrationRuntimeRbacAuthorizationResponseOutput {
+	return o.ApplyT(func(v *LinkedIntegrationRuntimeRbacAuthorizationResponse) LinkedIntegrationRuntimeRbacAuthorizationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LinkedIntegrationRuntimeRbacAuthorizationResponse
+		return ret
+	}).(LinkedIntegrationRuntimeRbacAuthorizationResponseOutput)
+}
+
+// The authorization type for integration runtime sharing.
+// Expected value is 'RBAC'.
+func (o LinkedIntegrationRuntimeRbacAuthorizationResponsePtrOutput) AuthorizationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LinkedIntegrationRuntimeRbacAuthorizationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthorizationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource identifier of the integration runtime to be shared.
+func (o LinkedIntegrationRuntimeRbacAuthorizationResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LinkedIntegrationRuntimeRbacAuthorizationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceId
+	}).(pulumi.StringPtrOutput)
 }
 
 // The linked integration runtime information.
@@ -3052,6 +6060,66 @@ type LinkedIntegrationRuntimeResponse struct {
 	Name string `pulumi:"name"`
 	// The subscription ID for which the linked integration runtime belong to.
 	SubscriptionId string `pulumi:"subscriptionId"`
+}
+
+// The linked integration runtime information.
+type LinkedIntegrationRuntimeResponseOutput struct{ *pulumi.OutputState }
+
+func (LinkedIntegrationRuntimeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedIntegrationRuntimeResponse)(nil)).Elem()
+}
+
+func (o LinkedIntegrationRuntimeResponseOutput) ToLinkedIntegrationRuntimeResponseOutput() LinkedIntegrationRuntimeResponseOutput {
+	return o
+}
+
+func (o LinkedIntegrationRuntimeResponseOutput) ToLinkedIntegrationRuntimeResponseOutputWithContext(ctx context.Context) LinkedIntegrationRuntimeResponseOutput {
+	return o
+}
+
+// The creating time of the linked integration runtime.
+func (o LinkedIntegrationRuntimeResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedIntegrationRuntimeResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The location of the workspace for which the linked integration runtime belong to.
+func (o LinkedIntegrationRuntimeResponseOutput) DataFactoryLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedIntegrationRuntimeResponse) string { return v.DataFactoryLocation }).(pulumi.StringOutput)
+}
+
+// The name of the workspace for which the linked integration runtime belong to.
+func (o LinkedIntegrationRuntimeResponseOutput) DataFactoryName() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedIntegrationRuntimeResponse) string { return v.DataFactoryName }).(pulumi.StringOutput)
+}
+
+// The name of the linked integration runtime.
+func (o LinkedIntegrationRuntimeResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedIntegrationRuntimeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The subscription ID for which the linked integration runtime belong to.
+func (o LinkedIntegrationRuntimeResponseOutput) SubscriptionId() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedIntegrationRuntimeResponse) string { return v.SubscriptionId }).(pulumi.StringOutput)
+}
+
+type LinkedIntegrationRuntimeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LinkedIntegrationRuntimeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LinkedIntegrationRuntimeResponse)(nil)).Elem()
+}
+
+func (o LinkedIntegrationRuntimeResponseArrayOutput) ToLinkedIntegrationRuntimeResponseArrayOutput() LinkedIntegrationRuntimeResponseArrayOutput {
+	return o
+}
+
+func (o LinkedIntegrationRuntimeResponseArrayOutput) ToLinkedIntegrationRuntimeResponseArrayOutputWithContext(ctx context.Context) LinkedIntegrationRuntimeResponseArrayOutput {
+	return o
+}
+
+func (o LinkedIntegrationRuntimeResponseArrayOutput) Index(i pulumi.IntInput) LinkedIntegrationRuntimeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LinkedIntegrationRuntimeResponse {
+		return vs[0].([]LinkedIntegrationRuntimeResponse)[vs[1].(int)]
+	}).(LinkedIntegrationRuntimeResponseOutput)
 }
 
 // The workspace managed identity
@@ -3343,6 +6411,92 @@ type ManagedIntegrationRuntime struct {
 	Type string `pulumi:"type"`
 }
 
+// ManagedIntegrationRuntimeInput is an input type that accepts ManagedIntegrationRuntimeArgs and ManagedIntegrationRuntimeOutput values.
+// You can construct a concrete instance of `ManagedIntegrationRuntimeInput` via:
+//
+//	ManagedIntegrationRuntimeArgs{...}
+type ManagedIntegrationRuntimeInput interface {
+	pulumi.Input
+
+	ToManagedIntegrationRuntimeOutput() ManagedIntegrationRuntimeOutput
+	ToManagedIntegrationRuntimeOutputWithContext(context.Context) ManagedIntegrationRuntimeOutput
+}
+
+// Managed integration runtime, including managed elastic and managed dedicated integration runtimes.
+type ManagedIntegrationRuntimeArgs struct {
+	// The compute resource for managed integration runtime.
+	ComputeProperties IntegrationRuntimeComputePropertiesPtrInput `pulumi:"computeProperties"`
+	// Integration runtime description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The id of the managed virtual network.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The reference name of the managed virtual network.
+	ReferenceName pulumi.StringPtrInput `pulumi:"referenceName"`
+	// SSIS properties for managed integration runtime.
+	SsisProperties IntegrationRuntimeSsisPropertiesPtrInput `pulumi:"ssisProperties"`
+	// The type of integration runtime.
+	// Expected value is 'Managed'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ManagedIntegrationRuntimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIntegrationRuntime)(nil)).Elem()
+}
+
+func (i ManagedIntegrationRuntimeArgs) ToManagedIntegrationRuntimeOutput() ManagedIntegrationRuntimeOutput {
+	return i.ToManagedIntegrationRuntimeOutputWithContext(context.Background())
+}
+
+func (i ManagedIntegrationRuntimeArgs) ToManagedIntegrationRuntimeOutputWithContext(ctx context.Context) ManagedIntegrationRuntimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedIntegrationRuntimeOutput)
+}
+
+// Managed integration runtime, including managed elastic and managed dedicated integration runtimes.
+type ManagedIntegrationRuntimeOutput struct{ *pulumi.OutputState }
+
+func (ManagedIntegrationRuntimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIntegrationRuntime)(nil)).Elem()
+}
+
+func (o ManagedIntegrationRuntimeOutput) ToManagedIntegrationRuntimeOutput() ManagedIntegrationRuntimeOutput {
+	return o
+}
+
+func (o ManagedIntegrationRuntimeOutput) ToManagedIntegrationRuntimeOutputWithContext(ctx context.Context) ManagedIntegrationRuntimeOutput {
+	return o
+}
+
+// The compute resource for managed integration runtime.
+func (o ManagedIntegrationRuntimeOutput) ComputeProperties() IntegrationRuntimeComputePropertiesPtrOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntime) *IntegrationRuntimeComputeProperties { return v.ComputeProperties }).(IntegrationRuntimeComputePropertiesPtrOutput)
+}
+
+// Integration runtime description.
+func (o ManagedIntegrationRuntimeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntime) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The id of the managed virtual network.
+func (o ManagedIntegrationRuntimeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntime) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The reference name of the managed virtual network.
+func (o ManagedIntegrationRuntimeOutput) ReferenceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntime) *string { return v.ReferenceName }).(pulumi.StringPtrOutput)
+}
+
+// SSIS properties for managed integration runtime.
+func (o ManagedIntegrationRuntimeOutput) SsisProperties() IntegrationRuntimeSsisPropertiesPtrOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntime) *IntegrationRuntimeSsisProperties { return v.SsisProperties }).(IntegrationRuntimeSsisPropertiesPtrOutput)
+}
+
+// The type of integration runtime.
+// Expected value is 'Managed'.
+func (o ManagedIntegrationRuntimeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntime) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Error definition for managed integration runtime.
 type ManagedIntegrationRuntimeErrorResponse struct {
 	// Error code.
@@ -3355,6 +6509,61 @@ type ManagedIntegrationRuntimeErrorResponse struct {
 	Time string `pulumi:"time"`
 }
 
+// Error definition for managed integration runtime.
+type ManagedIntegrationRuntimeErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedIntegrationRuntimeErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIntegrationRuntimeErrorResponse)(nil)).Elem()
+}
+
+func (o ManagedIntegrationRuntimeErrorResponseOutput) ToManagedIntegrationRuntimeErrorResponseOutput() ManagedIntegrationRuntimeErrorResponseOutput {
+	return o
+}
+
+func (o ManagedIntegrationRuntimeErrorResponseOutput) ToManagedIntegrationRuntimeErrorResponseOutputWithContext(ctx context.Context) ManagedIntegrationRuntimeErrorResponseOutput {
+	return o
+}
+
+// Error code.
+func (o ManagedIntegrationRuntimeErrorResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeErrorResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Error message.
+func (o ManagedIntegrationRuntimeErrorResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeErrorResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Managed integration runtime error parameters.
+func (o ManagedIntegrationRuntimeErrorResponseOutput) Parameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeErrorResponse) []string { return v.Parameters }).(pulumi.StringArrayOutput)
+}
+
+// The time when the error occurred.
+func (o ManagedIntegrationRuntimeErrorResponseOutput) Time() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeErrorResponse) string { return v.Time }).(pulumi.StringOutput)
+}
+
+type ManagedIntegrationRuntimeErrorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedIntegrationRuntimeErrorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedIntegrationRuntimeErrorResponse)(nil)).Elem()
+}
+
+func (o ManagedIntegrationRuntimeErrorResponseArrayOutput) ToManagedIntegrationRuntimeErrorResponseArrayOutput() ManagedIntegrationRuntimeErrorResponseArrayOutput {
+	return o
+}
+
+func (o ManagedIntegrationRuntimeErrorResponseArrayOutput) ToManagedIntegrationRuntimeErrorResponseArrayOutputWithContext(ctx context.Context) ManagedIntegrationRuntimeErrorResponseArrayOutput {
+	return o
+}
+
+func (o ManagedIntegrationRuntimeErrorResponseArrayOutput) Index(i pulumi.IntInput) ManagedIntegrationRuntimeErrorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedIntegrationRuntimeErrorResponse {
+		return vs[0].([]ManagedIntegrationRuntimeErrorResponse)[vs[1].(int)]
+	}).(ManagedIntegrationRuntimeErrorResponseOutput)
+}
+
 // Properties of integration runtime node.
 type ManagedIntegrationRuntimeNodeResponse struct {
 	// The errors that occurred on this integration runtime node.
@@ -3363,6 +6572,58 @@ type ManagedIntegrationRuntimeNodeResponse struct {
 	NodeId string `pulumi:"nodeId"`
 	// The managed integration runtime node status.
 	Status string `pulumi:"status"`
+}
+
+// Properties of integration runtime node.
+type ManagedIntegrationRuntimeNodeResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedIntegrationRuntimeNodeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIntegrationRuntimeNodeResponse)(nil)).Elem()
+}
+
+func (o ManagedIntegrationRuntimeNodeResponseOutput) ToManagedIntegrationRuntimeNodeResponseOutput() ManagedIntegrationRuntimeNodeResponseOutput {
+	return o
+}
+
+func (o ManagedIntegrationRuntimeNodeResponseOutput) ToManagedIntegrationRuntimeNodeResponseOutputWithContext(ctx context.Context) ManagedIntegrationRuntimeNodeResponseOutput {
+	return o
+}
+
+// The errors that occurred on this integration runtime node.
+func (o ManagedIntegrationRuntimeNodeResponseOutput) Errors() ManagedIntegrationRuntimeErrorResponseArrayOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeNodeResponse) []ManagedIntegrationRuntimeErrorResponse {
+		return v.Errors
+	}).(ManagedIntegrationRuntimeErrorResponseArrayOutput)
+}
+
+// The managed integration runtime node id.
+func (o ManagedIntegrationRuntimeNodeResponseOutput) NodeId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeNodeResponse) string { return v.NodeId }).(pulumi.StringOutput)
+}
+
+// The managed integration runtime node status.
+func (o ManagedIntegrationRuntimeNodeResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeNodeResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type ManagedIntegrationRuntimeNodeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedIntegrationRuntimeNodeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedIntegrationRuntimeNodeResponse)(nil)).Elem()
+}
+
+func (o ManagedIntegrationRuntimeNodeResponseArrayOutput) ToManagedIntegrationRuntimeNodeResponseArrayOutput() ManagedIntegrationRuntimeNodeResponseArrayOutput {
+	return o
+}
+
+func (o ManagedIntegrationRuntimeNodeResponseArrayOutput) ToManagedIntegrationRuntimeNodeResponseArrayOutputWithContext(ctx context.Context) ManagedIntegrationRuntimeNodeResponseArrayOutput {
+	return o
+}
+
+func (o ManagedIntegrationRuntimeNodeResponseArrayOutput) Index(i pulumi.IntInput) ManagedIntegrationRuntimeNodeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedIntegrationRuntimeNodeResponse {
+		return vs[0].([]ManagedIntegrationRuntimeNodeResponse)[vs[1].(int)]
+	}).(ManagedIntegrationRuntimeNodeResponseOutput)
 }
 
 // Properties of managed integration runtime operation result.
@@ -3379,6 +6640,51 @@ type ManagedIntegrationRuntimeOperationResultResponse struct {
 	StartTime string `pulumi:"startTime"`
 	// The operation type. Could be start or stop.
 	Type string `pulumi:"type"`
+}
+
+// Properties of managed integration runtime operation result.
+type ManagedIntegrationRuntimeOperationResultResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedIntegrationRuntimeOperationResultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIntegrationRuntimeOperationResultResponse)(nil)).Elem()
+}
+
+func (o ManagedIntegrationRuntimeOperationResultResponseOutput) ToManagedIntegrationRuntimeOperationResultResponseOutput() ManagedIntegrationRuntimeOperationResultResponseOutput {
+	return o
+}
+
+func (o ManagedIntegrationRuntimeOperationResultResponseOutput) ToManagedIntegrationRuntimeOperationResultResponseOutputWithContext(ctx context.Context) ManagedIntegrationRuntimeOperationResultResponseOutput {
+	return o
+}
+
+// The activity id for the operation request.
+func (o ManagedIntegrationRuntimeOperationResultResponseOutput) ActivityId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeOperationResultResponse) string { return v.ActivityId }).(pulumi.StringOutput)
+}
+
+// The error code.
+func (o ManagedIntegrationRuntimeOperationResultResponseOutput) ErrorCode() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeOperationResultResponse) string { return v.ErrorCode }).(pulumi.StringOutput)
+}
+
+// Managed integration runtime error parameters.
+func (o ManagedIntegrationRuntimeOperationResultResponseOutput) Parameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeOperationResultResponse) []string { return v.Parameters }).(pulumi.StringArrayOutput)
+}
+
+// The operation result.
+func (o ManagedIntegrationRuntimeOperationResultResponseOutput) Result() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeOperationResultResponse) string { return v.Result }).(pulumi.StringOutput)
+}
+
+// The start time of the operation.
+func (o ManagedIntegrationRuntimeOperationResultResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeOperationResultResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The operation type. Could be start or stop.
+func (o ManagedIntegrationRuntimeOperationResultResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeOperationResultResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Managed integration runtime, including managed elastic and managed dedicated integration runtimes.
@@ -3400,6 +6706,61 @@ type ManagedIntegrationRuntimeResponse struct {
 	Type string `pulumi:"type"`
 }
 
+// Managed integration runtime, including managed elastic and managed dedicated integration runtimes.
+type ManagedIntegrationRuntimeResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedIntegrationRuntimeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIntegrationRuntimeResponse)(nil)).Elem()
+}
+
+func (o ManagedIntegrationRuntimeResponseOutput) ToManagedIntegrationRuntimeResponseOutput() ManagedIntegrationRuntimeResponseOutput {
+	return o
+}
+
+func (o ManagedIntegrationRuntimeResponseOutput) ToManagedIntegrationRuntimeResponseOutputWithContext(ctx context.Context) ManagedIntegrationRuntimeResponseOutput {
+	return o
+}
+
+// The compute resource for managed integration runtime.
+func (o ManagedIntegrationRuntimeResponseOutput) ComputeProperties() IntegrationRuntimeComputePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeResponse) *IntegrationRuntimeComputePropertiesResponse {
+		return v.ComputeProperties
+	}).(IntegrationRuntimeComputePropertiesResponsePtrOutput)
+}
+
+// Integration runtime description.
+func (o ManagedIntegrationRuntimeResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The id of the managed virtual network.
+func (o ManagedIntegrationRuntimeResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The reference name of the managed virtual network.
+func (o ManagedIntegrationRuntimeResponseOutput) ReferenceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeResponse) *string { return v.ReferenceName }).(pulumi.StringPtrOutput)
+}
+
+// SSIS properties for managed integration runtime.
+func (o ManagedIntegrationRuntimeResponseOutput) SsisProperties() IntegrationRuntimeSsisPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeResponse) *IntegrationRuntimeSsisPropertiesResponse {
+		return v.SsisProperties
+	}).(IntegrationRuntimeSsisPropertiesResponsePtrOutput)
+}
+
+// Integration runtime state, only valid for managed dedicated integration runtime.
+func (o ManagedIntegrationRuntimeResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The type of integration runtime.
+// Expected value is 'Managed'.
+func (o ManagedIntegrationRuntimeResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Managed integration runtime status.
 type ManagedIntegrationRuntimeStatusResponse struct {
 	// The time at which the integration runtime was created, in ISO8601 format.
@@ -3417,6 +6778,63 @@ type ManagedIntegrationRuntimeStatusResponse struct {
 	// The type of integration runtime.
 	// Expected value is 'Managed'.
 	Type string `pulumi:"type"`
+}
+
+// Managed integration runtime status.
+type ManagedIntegrationRuntimeStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedIntegrationRuntimeStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIntegrationRuntimeStatusResponse)(nil)).Elem()
+}
+
+func (o ManagedIntegrationRuntimeStatusResponseOutput) ToManagedIntegrationRuntimeStatusResponseOutput() ManagedIntegrationRuntimeStatusResponseOutput {
+	return o
+}
+
+func (o ManagedIntegrationRuntimeStatusResponseOutput) ToManagedIntegrationRuntimeStatusResponseOutputWithContext(ctx context.Context) ManagedIntegrationRuntimeStatusResponseOutput {
+	return o
+}
+
+// The time at which the integration runtime was created, in ISO8601 format.
+func (o ManagedIntegrationRuntimeStatusResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeStatusResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The workspace name which the integration runtime belong to.
+func (o ManagedIntegrationRuntimeStatusResponseOutput) DataFactoryName() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeStatusResponse) string { return v.DataFactoryName }).(pulumi.StringOutput)
+}
+
+// The last operation result that occurred on this integration runtime.
+func (o ManagedIntegrationRuntimeStatusResponseOutput) LastOperation() ManagedIntegrationRuntimeOperationResultResponseOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeStatusResponse) ManagedIntegrationRuntimeOperationResultResponse {
+		return v.LastOperation
+	}).(ManagedIntegrationRuntimeOperationResultResponseOutput)
+}
+
+// The list of nodes for managed integration runtime.
+func (o ManagedIntegrationRuntimeStatusResponseOutput) Nodes() ManagedIntegrationRuntimeNodeResponseArrayOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeStatusResponse) []ManagedIntegrationRuntimeNodeResponse {
+		return v.Nodes
+	}).(ManagedIntegrationRuntimeNodeResponseArrayOutput)
+}
+
+// The errors that occurred on this integration runtime.
+func (o ManagedIntegrationRuntimeStatusResponseOutput) OtherErrors() ManagedIntegrationRuntimeErrorResponseArrayOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeStatusResponse) []ManagedIntegrationRuntimeErrorResponse {
+		return v.OtherErrors
+	}).(ManagedIntegrationRuntimeErrorResponseArrayOutput)
+}
+
+// The state of integration runtime.
+func (o ManagedIntegrationRuntimeStatusResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeStatusResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The type of integration runtime.
+// Expected value is 'Managed'.
+func (o ManagedIntegrationRuntimeStatusResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIntegrationRuntimeStatusResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Managed Virtual Network Settings
@@ -4777,6 +8195,160 @@ type SecureString struct {
 	Value string `pulumi:"value"`
 }
 
+// SecureStringInput is an input type that accepts SecureStringArgs and SecureStringOutput values.
+// You can construct a concrete instance of `SecureStringInput` via:
+//
+//	SecureStringArgs{...}
+type SecureStringInput interface {
+	pulumi.Input
+
+	ToSecureStringOutput() SecureStringOutput
+	ToSecureStringOutputWithContext(context.Context) SecureStringOutput
+}
+
+// Azure Synapse secure string definition. The string value will be masked with asterisks '*' during Get or List API calls.
+type SecureStringArgs struct {
+	// Type of the secret.
+	// Expected value is 'SecureString'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Value of secure string.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (SecureStringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecureString)(nil)).Elem()
+}
+
+func (i SecureStringArgs) ToSecureStringOutput() SecureStringOutput {
+	return i.ToSecureStringOutputWithContext(context.Background())
+}
+
+func (i SecureStringArgs) ToSecureStringOutputWithContext(ctx context.Context) SecureStringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecureStringOutput)
+}
+
+func (i SecureStringArgs) ToSecureStringPtrOutput() SecureStringPtrOutput {
+	return i.ToSecureStringPtrOutputWithContext(context.Background())
+}
+
+func (i SecureStringArgs) ToSecureStringPtrOutputWithContext(ctx context.Context) SecureStringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecureStringOutput).ToSecureStringPtrOutputWithContext(ctx)
+}
+
+// SecureStringPtrInput is an input type that accepts SecureStringArgs, SecureStringPtr and SecureStringPtrOutput values.
+// You can construct a concrete instance of `SecureStringPtrInput` via:
+//
+//	        SecureStringArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecureStringPtrInput interface {
+	pulumi.Input
+
+	ToSecureStringPtrOutput() SecureStringPtrOutput
+	ToSecureStringPtrOutputWithContext(context.Context) SecureStringPtrOutput
+}
+
+type secureStringPtrType SecureStringArgs
+
+func SecureStringPtr(v *SecureStringArgs) SecureStringPtrInput {
+	return (*secureStringPtrType)(v)
+}
+
+func (*secureStringPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecureString)(nil)).Elem()
+}
+
+func (i *secureStringPtrType) ToSecureStringPtrOutput() SecureStringPtrOutput {
+	return i.ToSecureStringPtrOutputWithContext(context.Background())
+}
+
+func (i *secureStringPtrType) ToSecureStringPtrOutputWithContext(ctx context.Context) SecureStringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecureStringPtrOutput)
+}
+
+// Azure Synapse secure string definition. The string value will be masked with asterisks '*' during Get or List API calls.
+type SecureStringOutput struct{ *pulumi.OutputState }
+
+func (SecureStringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecureString)(nil)).Elem()
+}
+
+func (o SecureStringOutput) ToSecureStringOutput() SecureStringOutput {
+	return o
+}
+
+func (o SecureStringOutput) ToSecureStringOutputWithContext(ctx context.Context) SecureStringOutput {
+	return o
+}
+
+func (o SecureStringOutput) ToSecureStringPtrOutput() SecureStringPtrOutput {
+	return o.ToSecureStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecureStringOutput) ToSecureStringPtrOutputWithContext(ctx context.Context) SecureStringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecureString) *SecureString {
+		return &v
+	}).(SecureStringPtrOutput)
+}
+
+// Type of the secret.
+// Expected value is 'SecureString'.
+func (o SecureStringOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SecureString) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Value of secure string.
+func (o SecureStringOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v SecureString) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type SecureStringPtrOutput struct{ *pulumi.OutputState }
+
+func (SecureStringPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecureString)(nil)).Elem()
+}
+
+func (o SecureStringPtrOutput) ToSecureStringPtrOutput() SecureStringPtrOutput {
+	return o
+}
+
+func (o SecureStringPtrOutput) ToSecureStringPtrOutputWithContext(ctx context.Context) SecureStringPtrOutput {
+	return o
+}
+
+func (o SecureStringPtrOutput) Elem() SecureStringOutput {
+	return o.ApplyT(func(v *SecureString) SecureString {
+		if v != nil {
+			return *v
+		}
+		var ret SecureString
+		return ret
+	}).(SecureStringOutput)
+}
+
+// Type of the secret.
+// Expected value is 'SecureString'.
+func (o SecureStringPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecureString) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value of secure string.
+func (o SecureStringPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecureString) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
 // Azure Synapse secure string definition. The string value will be masked with asterisks '*' during Get or List API calls.
 type SecureStringResponse struct {
 	// Type of the secret.
@@ -4784,6 +8356,77 @@ type SecureStringResponse struct {
 	Type string `pulumi:"type"`
 	// Value of secure string.
 	Value string `pulumi:"value"`
+}
+
+// Azure Synapse secure string definition. The string value will be masked with asterisks '*' during Get or List API calls.
+type SecureStringResponseOutput struct{ *pulumi.OutputState }
+
+func (SecureStringResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecureStringResponse)(nil)).Elem()
+}
+
+func (o SecureStringResponseOutput) ToSecureStringResponseOutput() SecureStringResponseOutput {
+	return o
+}
+
+func (o SecureStringResponseOutput) ToSecureStringResponseOutputWithContext(ctx context.Context) SecureStringResponseOutput {
+	return o
+}
+
+// Type of the secret.
+// Expected value is 'SecureString'.
+func (o SecureStringResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SecureStringResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Value of secure string.
+func (o SecureStringResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v SecureStringResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type SecureStringResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SecureStringResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecureStringResponse)(nil)).Elem()
+}
+
+func (o SecureStringResponsePtrOutput) ToSecureStringResponsePtrOutput() SecureStringResponsePtrOutput {
+	return o
+}
+
+func (o SecureStringResponsePtrOutput) ToSecureStringResponsePtrOutputWithContext(ctx context.Context) SecureStringResponsePtrOutput {
+	return o
+}
+
+func (o SecureStringResponsePtrOutput) Elem() SecureStringResponseOutput {
+	return o.ApplyT(func(v *SecureStringResponse) SecureStringResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SecureStringResponse
+		return ret
+	}).(SecureStringResponseOutput)
+}
+
+// Type of the secret.
+// Expected value is 'SecureString'.
+func (o SecureStringResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecureStringResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value of secure string.
+func (o SecureStringResponsePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecureStringResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
 }
 
 // Self-hosted integration runtime.
@@ -4795,6 +8438,71 @@ type SelfHostedIntegrationRuntime struct {
 	// The type of integration runtime.
 	// Expected value is 'SelfHosted'.
 	Type string `pulumi:"type"`
+}
+
+// SelfHostedIntegrationRuntimeInput is an input type that accepts SelfHostedIntegrationRuntimeArgs and SelfHostedIntegrationRuntimeOutput values.
+// You can construct a concrete instance of `SelfHostedIntegrationRuntimeInput` via:
+//
+//	SelfHostedIntegrationRuntimeArgs{...}
+type SelfHostedIntegrationRuntimeInput interface {
+	pulumi.Input
+
+	ToSelfHostedIntegrationRuntimeOutput() SelfHostedIntegrationRuntimeOutput
+	ToSelfHostedIntegrationRuntimeOutputWithContext(context.Context) SelfHostedIntegrationRuntimeOutput
+}
+
+// Self-hosted integration runtime.
+type SelfHostedIntegrationRuntimeArgs struct {
+	// Integration runtime description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Linked integration runtime type from data factory
+	LinkedInfo pulumi.Input `pulumi:"linkedInfo"`
+	// The type of integration runtime.
+	// Expected value is 'SelfHosted'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SelfHostedIntegrationRuntimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SelfHostedIntegrationRuntime)(nil)).Elem()
+}
+
+func (i SelfHostedIntegrationRuntimeArgs) ToSelfHostedIntegrationRuntimeOutput() SelfHostedIntegrationRuntimeOutput {
+	return i.ToSelfHostedIntegrationRuntimeOutputWithContext(context.Background())
+}
+
+func (i SelfHostedIntegrationRuntimeArgs) ToSelfHostedIntegrationRuntimeOutputWithContext(ctx context.Context) SelfHostedIntegrationRuntimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SelfHostedIntegrationRuntimeOutput)
+}
+
+// Self-hosted integration runtime.
+type SelfHostedIntegrationRuntimeOutput struct{ *pulumi.OutputState }
+
+func (SelfHostedIntegrationRuntimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SelfHostedIntegrationRuntime)(nil)).Elem()
+}
+
+func (o SelfHostedIntegrationRuntimeOutput) ToSelfHostedIntegrationRuntimeOutput() SelfHostedIntegrationRuntimeOutput {
+	return o
+}
+
+func (o SelfHostedIntegrationRuntimeOutput) ToSelfHostedIntegrationRuntimeOutputWithContext(ctx context.Context) SelfHostedIntegrationRuntimeOutput {
+	return o
+}
+
+// Integration runtime description.
+func (o SelfHostedIntegrationRuntimeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntime) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Linked integration runtime type from data factory
+func (o SelfHostedIntegrationRuntimeOutput) LinkedInfo() pulumi.AnyOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntime) interface{} { return v.LinkedInfo }).(pulumi.AnyOutput)
+}
+
+// The type of integration runtime.
+// Expected value is 'SelfHosted'.
+func (o SelfHostedIntegrationRuntimeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntime) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Properties of Self-hosted integration runtime node.
@@ -4837,6 +8545,131 @@ type SelfHostedIntegrationRuntimeNodeResponse struct {
 	VersionStatus string `pulumi:"versionStatus"`
 }
 
+// Properties of Self-hosted integration runtime node.
+type SelfHostedIntegrationRuntimeNodeResponseOutput struct{ *pulumi.OutputState }
+
+func (SelfHostedIntegrationRuntimeNodeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SelfHostedIntegrationRuntimeNodeResponse)(nil)).Elem()
+}
+
+func (o SelfHostedIntegrationRuntimeNodeResponseOutput) ToSelfHostedIntegrationRuntimeNodeResponseOutput() SelfHostedIntegrationRuntimeNodeResponseOutput {
+	return o
+}
+
+func (o SelfHostedIntegrationRuntimeNodeResponseOutput) ToSelfHostedIntegrationRuntimeNodeResponseOutputWithContext(ctx context.Context) SelfHostedIntegrationRuntimeNodeResponseOutput {
+	return o
+}
+
+// The integration runtime capabilities dictionary
+func (o SelfHostedIntegrationRuntimeNodeResponseOutput) Capabilities() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeNodeResponse) map[string]string { return v.Capabilities }).(pulumi.StringMapOutput)
+}
+
+// Maximum concurrent jobs on the integration runtime node.
+func (o SelfHostedIntegrationRuntimeNodeResponseOutput) ConcurrentJobsLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeNodeResponse) int { return v.ConcurrentJobsLimit }).(pulumi.IntOutput)
+}
+
+// The time at which the integration runtime will expire in ISO8601 format.
+func (o SelfHostedIntegrationRuntimeNodeResponseOutput) ExpiryTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeNodeResponse) string { return v.ExpiryTime }).(pulumi.StringOutput)
+}
+
+// URI for the host machine of the integration runtime.
+func (o SelfHostedIntegrationRuntimeNodeResponseOutput) HostServiceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeNodeResponse) string { return v.HostServiceUri }).(pulumi.StringOutput)
+}
+
+// Indicates whether this node is the active dispatcher for integration runtime requests.
+func (o SelfHostedIntegrationRuntimeNodeResponseOutput) IsActiveDispatcher() pulumi.BoolOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeNodeResponse) bool { return v.IsActiveDispatcher }).(pulumi.BoolOutput)
+}
+
+// The most recent time at which the integration runtime was connected in ISO8601 format.
+func (o SelfHostedIntegrationRuntimeNodeResponseOutput) LastConnectTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeNodeResponse) string { return v.LastConnectTime }).(pulumi.StringOutput)
+}
+
+// The last time for the integration runtime node update end.
+func (o SelfHostedIntegrationRuntimeNodeResponseOutput) LastEndUpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeNodeResponse) string { return v.LastEndUpdateTime }).(pulumi.StringOutput)
+}
+
+// The time the node last started up.
+func (o SelfHostedIntegrationRuntimeNodeResponseOutput) LastStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeNodeResponse) string { return v.LastStartTime }).(pulumi.StringOutput)
+}
+
+// The last time for the integration runtime node update start.
+func (o SelfHostedIntegrationRuntimeNodeResponseOutput) LastStartUpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeNodeResponse) string { return v.LastStartUpdateTime }).(pulumi.StringOutput)
+}
+
+// The integration runtime node last stop time.
+func (o SelfHostedIntegrationRuntimeNodeResponseOutput) LastStopTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeNodeResponse) string { return v.LastStopTime }).(pulumi.StringOutput)
+}
+
+// The result of the last integration runtime node update.
+func (o SelfHostedIntegrationRuntimeNodeResponseOutput) LastUpdateResult() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeNodeResponse) string { return v.LastUpdateResult }).(pulumi.StringOutput)
+}
+
+// Machine name of the integration runtime node.
+func (o SelfHostedIntegrationRuntimeNodeResponseOutput) MachineName() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeNodeResponse) string { return v.MachineName }).(pulumi.StringOutput)
+}
+
+// The maximum concurrent jobs in this integration runtime.
+func (o SelfHostedIntegrationRuntimeNodeResponseOutput) MaxConcurrentJobs() pulumi.IntOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeNodeResponse) int { return v.MaxConcurrentJobs }).(pulumi.IntOutput)
+}
+
+// Name of the integration runtime node.
+func (o SelfHostedIntegrationRuntimeNodeResponseOutput) NodeName() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeNodeResponse) string { return v.NodeName }).(pulumi.StringOutput)
+}
+
+// The time at which the integration runtime node was registered in ISO8601 format.
+func (o SelfHostedIntegrationRuntimeNodeResponseOutput) RegisterTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeNodeResponse) string { return v.RegisterTime }).(pulumi.StringOutput)
+}
+
+// Status of the integration runtime node.
+func (o SelfHostedIntegrationRuntimeNodeResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeNodeResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Version of the integration runtime node.
+func (o SelfHostedIntegrationRuntimeNodeResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeNodeResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// Status of the integration runtime node version.
+func (o SelfHostedIntegrationRuntimeNodeResponseOutput) VersionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeNodeResponse) string { return v.VersionStatus }).(pulumi.StringOutput)
+}
+
+type SelfHostedIntegrationRuntimeNodeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SelfHostedIntegrationRuntimeNodeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SelfHostedIntegrationRuntimeNodeResponse)(nil)).Elem()
+}
+
+func (o SelfHostedIntegrationRuntimeNodeResponseArrayOutput) ToSelfHostedIntegrationRuntimeNodeResponseArrayOutput() SelfHostedIntegrationRuntimeNodeResponseArrayOutput {
+	return o
+}
+
+func (o SelfHostedIntegrationRuntimeNodeResponseArrayOutput) ToSelfHostedIntegrationRuntimeNodeResponseArrayOutputWithContext(ctx context.Context) SelfHostedIntegrationRuntimeNodeResponseArrayOutput {
+	return o
+}
+
+func (o SelfHostedIntegrationRuntimeNodeResponseArrayOutput) Index(i pulumi.IntInput) SelfHostedIntegrationRuntimeNodeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SelfHostedIntegrationRuntimeNodeResponse {
+		return vs[0].([]SelfHostedIntegrationRuntimeNodeResponse)[vs[1].(int)]
+	}).(SelfHostedIntegrationRuntimeNodeResponseOutput)
+}
+
 // Self-hosted integration runtime.
 type SelfHostedIntegrationRuntimeResponse struct {
 	// Integration runtime description.
@@ -4846,6 +8679,37 @@ type SelfHostedIntegrationRuntimeResponse struct {
 	// The type of integration runtime.
 	// Expected value is 'SelfHosted'.
 	Type string `pulumi:"type"`
+}
+
+// Self-hosted integration runtime.
+type SelfHostedIntegrationRuntimeResponseOutput struct{ *pulumi.OutputState }
+
+func (SelfHostedIntegrationRuntimeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SelfHostedIntegrationRuntimeResponse)(nil)).Elem()
+}
+
+func (o SelfHostedIntegrationRuntimeResponseOutput) ToSelfHostedIntegrationRuntimeResponseOutput() SelfHostedIntegrationRuntimeResponseOutput {
+	return o
+}
+
+func (o SelfHostedIntegrationRuntimeResponseOutput) ToSelfHostedIntegrationRuntimeResponseOutputWithContext(ctx context.Context) SelfHostedIntegrationRuntimeResponseOutput {
+	return o
+}
+
+// Integration runtime description.
+func (o SelfHostedIntegrationRuntimeResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Linked integration runtime type from data factory
+func (o SelfHostedIntegrationRuntimeResponseOutput) LinkedInfo() pulumi.AnyOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeResponse) interface{} { return v.LinkedInfo }).(pulumi.AnyOutput)
+}
+
+// The type of integration runtime.
+// Expected value is 'SelfHosted'.
+func (o SelfHostedIntegrationRuntimeResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Self-hosted integration runtime status.
@@ -4897,6 +8761,144 @@ type SelfHostedIntegrationRuntimeStatusResponse struct {
 	Version string `pulumi:"version"`
 	// Status of the integration runtime version.
 	VersionStatus string `pulumi:"versionStatus"`
+}
+
+// Self-hosted integration runtime status.
+type SelfHostedIntegrationRuntimeStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (SelfHostedIntegrationRuntimeStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SelfHostedIntegrationRuntimeStatusResponse)(nil)).Elem()
+}
+
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) ToSelfHostedIntegrationRuntimeStatusResponseOutput() SelfHostedIntegrationRuntimeStatusResponseOutput {
+	return o
+}
+
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) ToSelfHostedIntegrationRuntimeStatusResponseOutputWithContext(ctx context.Context) SelfHostedIntegrationRuntimeStatusResponseOutput {
+	return o
+}
+
+// Whether Self-hosted integration runtime auto update has been turned on.
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) AutoUpdate() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) string { return v.AutoUpdate }).(pulumi.StringOutput)
+}
+
+// The estimated time when the self-hosted integration runtime will be updated.
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) AutoUpdateETA() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) string { return v.AutoUpdateETA }).(pulumi.StringOutput)
+}
+
+// Object with additional information about integration runtime capabilities.
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) Capabilities() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) map[string]string { return v.Capabilities }).(pulumi.StringMapOutput)
+}
+
+// The time at which the integration runtime was created, in ISO8601 format.
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The workspace name which the integration runtime belong to.
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) DataFactoryName() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) string { return v.DataFactoryName }).(pulumi.StringOutput)
+}
+
+// It is used to set the encryption mode for node-node communication channel (when more than 2 self-hosted integration runtime nodes exist).
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) InternalChannelEncryption() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) string { return v.InternalChannelEncryption }).(pulumi.StringOutput)
+}
+
+// The latest version on download center.
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) LatestVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) string { return v.LatestVersion }).(pulumi.StringOutput)
+}
+
+// The list of linked integration runtimes that are created to share with this integration runtime.
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) Links() LinkedIntegrationRuntimeResponseArrayOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) []LinkedIntegrationRuntimeResponse { return v.Links }).(LinkedIntegrationRuntimeResponseArrayOutput)
+}
+
+// The local time zone offset in hours.
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) LocalTimeZoneOffset() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) string { return v.LocalTimeZoneOffset }).(pulumi.StringOutput)
+}
+
+// The newer versions on download center.
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) NewerVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) []string { return v.NewerVersions }).(pulumi.StringArrayOutput)
+}
+
+// The node communication Channel encryption mode
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) NodeCommunicationChannelEncryptionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) string {
+		return v.NodeCommunicationChannelEncryptionMode
+	}).(pulumi.StringOutput)
+}
+
+// The list of nodes for this integration runtime.
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) Nodes() SelfHostedIntegrationRuntimeNodeResponseArrayOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) []SelfHostedIntegrationRuntimeNodeResponse {
+		return v.Nodes
+	}).(SelfHostedIntegrationRuntimeNodeResponseArrayOutput)
+}
+
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) OsType() pulumi.IntOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) int { return v.OsType }).(pulumi.IntOutput)
+}
+
+// The version that the integration runtime is going to update to.
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) PushedVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) string { return v.PushedVersion }).(pulumi.StringOutput)
+}
+
+// The date at which the integration runtime will be scheduled to update, in ISO8601 format.
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) ScheduledUpdateDate() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) string { return v.ScheduledUpdateDate }).(pulumi.StringOutput)
+}
+
+// The service region of the integration runtime
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) ServiceRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) *string { return v.ServiceRegion }).(pulumi.StringPtrOutput)
+}
+
+// The URLs for the services used in integration runtime backend service.
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) ServiceUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) []string { return v.ServiceUrls }).(pulumi.StringArrayOutput)
+}
+
+// The state of integration runtime.
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) TargetFramework() pulumi.IntOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) int { return v.TargetFramework }).(pulumi.IntOutput)
+}
+
+// The task queue id of the integration runtime.
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) TaskQueueId() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) string { return v.TaskQueueId }).(pulumi.StringOutput)
+}
+
+// The type of integration runtime.
+// Expected value is 'SelfHosted'.
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The time in the date scheduled by service to update the integration runtime, e.g., PT03H is 3 hours
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) UpdateDelayOffset() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) string { return v.UpdateDelayOffset }).(pulumi.StringOutput)
+}
+
+// Version of the integration runtime.
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// Status of the integration runtime version.
+func (o SelfHostedIntegrationRuntimeStatusResponseOutput) VersionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v SelfHostedIntegrationRuntimeStatusResponse) string { return v.VersionStatus }).(pulumi.StringOutput)
 }
 
 // SQL pool SKU
@@ -5618,6 +9620,61 @@ type SsisEnvironmentReferenceResponse struct {
 	ReferenceType *string `pulumi:"referenceType"`
 }
 
+// Ssis environment reference.
+type SsisEnvironmentReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (SsisEnvironmentReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsisEnvironmentReferenceResponse)(nil)).Elem()
+}
+
+func (o SsisEnvironmentReferenceResponseOutput) ToSsisEnvironmentReferenceResponseOutput() SsisEnvironmentReferenceResponseOutput {
+	return o
+}
+
+func (o SsisEnvironmentReferenceResponseOutput) ToSsisEnvironmentReferenceResponseOutputWithContext(ctx context.Context) SsisEnvironmentReferenceResponseOutput {
+	return o
+}
+
+// Environment folder name.
+func (o SsisEnvironmentReferenceResponseOutput) EnvironmentFolderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisEnvironmentReferenceResponse) *string { return v.EnvironmentFolderName }).(pulumi.StringPtrOutput)
+}
+
+// Environment name.
+func (o SsisEnvironmentReferenceResponseOutput) EnvironmentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisEnvironmentReferenceResponse) *string { return v.EnvironmentName }).(pulumi.StringPtrOutput)
+}
+
+// Environment reference id.
+func (o SsisEnvironmentReferenceResponseOutput) Id() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SsisEnvironmentReferenceResponse) *float64 { return v.Id }).(pulumi.Float64PtrOutput)
+}
+
+// Reference type
+func (o SsisEnvironmentReferenceResponseOutput) ReferenceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisEnvironmentReferenceResponse) *string { return v.ReferenceType }).(pulumi.StringPtrOutput)
+}
+
+type SsisEnvironmentReferenceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SsisEnvironmentReferenceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SsisEnvironmentReferenceResponse)(nil)).Elem()
+}
+
+func (o SsisEnvironmentReferenceResponseArrayOutput) ToSsisEnvironmentReferenceResponseArrayOutput() SsisEnvironmentReferenceResponseArrayOutput {
+	return o
+}
+
+func (o SsisEnvironmentReferenceResponseArrayOutput) ToSsisEnvironmentReferenceResponseArrayOutputWithContext(ctx context.Context) SsisEnvironmentReferenceResponseArrayOutput {
+	return o
+}
+
+func (o SsisEnvironmentReferenceResponseArrayOutput) Index(i pulumi.IntInput) SsisEnvironmentReferenceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SsisEnvironmentReferenceResponse {
+		return vs[0].([]SsisEnvironmentReferenceResponse)[vs[1].(int)]
+	}).(SsisEnvironmentReferenceResponseOutput)
+}
+
 // Ssis environment.
 type SsisEnvironmentResponse struct {
 	// Metadata description.
@@ -5635,6 +9692,52 @@ type SsisEnvironmentResponse struct {
 	Variables []SsisVariableResponse `pulumi:"variables"`
 }
 
+// Ssis environment.
+type SsisEnvironmentResponseOutput struct{ *pulumi.OutputState }
+
+func (SsisEnvironmentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsisEnvironmentResponse)(nil)).Elem()
+}
+
+func (o SsisEnvironmentResponseOutput) ToSsisEnvironmentResponseOutput() SsisEnvironmentResponseOutput {
+	return o
+}
+
+func (o SsisEnvironmentResponseOutput) ToSsisEnvironmentResponseOutputWithContext(ctx context.Context) SsisEnvironmentResponseOutput {
+	return o
+}
+
+// Metadata description.
+func (o SsisEnvironmentResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisEnvironmentResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Folder id which contains environment.
+func (o SsisEnvironmentResponseOutput) FolderId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SsisEnvironmentResponse) *float64 { return v.FolderId }).(pulumi.Float64PtrOutput)
+}
+
+// Metadata id.
+func (o SsisEnvironmentResponseOutput) Id() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SsisEnvironmentResponse) *float64 { return v.Id }).(pulumi.Float64PtrOutput)
+}
+
+// Metadata name.
+func (o SsisEnvironmentResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisEnvironmentResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The type of SSIS object metadata.
+// Expected value is 'Environment'.
+func (o SsisEnvironmentResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SsisEnvironmentResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Variable in environment
+func (o SsisEnvironmentResponseOutput) Variables() SsisVariableResponseArrayOutput {
+	return o.ApplyT(func(v SsisEnvironmentResponse) []SsisVariableResponse { return v.Variables }).(SsisVariableResponseArrayOutput)
+}
+
 // Ssis folder.
 type SsisFolderResponse struct {
 	// Metadata description.
@@ -5646,6 +9749,42 @@ type SsisFolderResponse struct {
 	// The type of SSIS object metadata.
 	// Expected value is 'Folder'.
 	Type string `pulumi:"type"`
+}
+
+// Ssis folder.
+type SsisFolderResponseOutput struct{ *pulumi.OutputState }
+
+func (SsisFolderResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsisFolderResponse)(nil)).Elem()
+}
+
+func (o SsisFolderResponseOutput) ToSsisFolderResponseOutput() SsisFolderResponseOutput {
+	return o
+}
+
+func (o SsisFolderResponseOutput) ToSsisFolderResponseOutputWithContext(ctx context.Context) SsisFolderResponseOutput {
+	return o
+}
+
+// Metadata description.
+func (o SsisFolderResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisFolderResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Metadata id.
+func (o SsisFolderResponseOutput) Id() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SsisFolderResponse) *float64 { return v.Id }).(pulumi.Float64PtrOutput)
+}
+
+// Metadata name.
+func (o SsisFolderResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisFolderResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The type of SSIS object metadata.
+// Expected value is 'Folder'.
+func (o SsisFolderResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SsisFolderResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Ssis Package.
@@ -5667,6 +9806,62 @@ type SsisPackageResponse struct {
 	// The type of SSIS object metadata.
 	// Expected value is 'Package'.
 	Type string `pulumi:"type"`
+}
+
+// Ssis Package.
+type SsisPackageResponseOutput struct{ *pulumi.OutputState }
+
+func (SsisPackageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsisPackageResponse)(nil)).Elem()
+}
+
+func (o SsisPackageResponseOutput) ToSsisPackageResponseOutput() SsisPackageResponseOutput {
+	return o
+}
+
+func (o SsisPackageResponseOutput) ToSsisPackageResponseOutputWithContext(ctx context.Context) SsisPackageResponseOutput {
+	return o
+}
+
+// Metadata description.
+func (o SsisPackageResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisPackageResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Folder id which contains package.
+func (o SsisPackageResponseOutput) FolderId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SsisPackageResponse) *float64 { return v.FolderId }).(pulumi.Float64PtrOutput)
+}
+
+// Metadata id.
+func (o SsisPackageResponseOutput) Id() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SsisPackageResponse) *float64 { return v.Id }).(pulumi.Float64PtrOutput)
+}
+
+// Metadata name.
+func (o SsisPackageResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisPackageResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Parameters in package
+func (o SsisPackageResponseOutput) Parameters() SsisParameterResponseArrayOutput {
+	return o.ApplyT(func(v SsisPackageResponse) []SsisParameterResponse { return v.Parameters }).(SsisParameterResponseArrayOutput)
+}
+
+// Project id which contains package.
+func (o SsisPackageResponseOutput) ProjectId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SsisPackageResponse) *float64 { return v.ProjectId }).(pulumi.Float64PtrOutput)
+}
+
+// Project version which contains package.
+func (o SsisPackageResponseOutput) ProjectVersion() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SsisPackageResponse) *float64 { return v.ProjectVersion }).(pulumi.Float64PtrOutput)
+}
+
+// The type of SSIS object metadata.
+// Expected value is 'Package'.
+func (o SsisPackageResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SsisPackageResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Ssis parameter.
@@ -5697,6 +9892,101 @@ type SsisParameterResponse struct {
 	Variable *string `pulumi:"variable"`
 }
 
+// Ssis parameter.
+type SsisParameterResponseOutput struct{ *pulumi.OutputState }
+
+func (SsisParameterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsisParameterResponse)(nil)).Elem()
+}
+
+func (o SsisParameterResponseOutput) ToSsisParameterResponseOutput() SsisParameterResponseOutput {
+	return o
+}
+
+func (o SsisParameterResponseOutput) ToSsisParameterResponseOutputWithContext(ctx context.Context) SsisParameterResponseOutput {
+	return o
+}
+
+// Parameter type.
+func (o SsisParameterResponseOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisParameterResponse) *string { return v.DataType }).(pulumi.StringPtrOutput)
+}
+
+// Default value of parameter.
+func (o SsisParameterResponseOutput) DefaultValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisParameterResponse) *string { return v.DefaultValue }).(pulumi.StringPtrOutput)
+}
+
+// Parameter description.
+func (o SsisParameterResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisParameterResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Design default value of parameter.
+func (o SsisParameterResponseOutput) DesignDefaultValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisParameterResponse) *string { return v.DesignDefaultValue }).(pulumi.StringPtrOutput)
+}
+
+// Parameter id.
+func (o SsisParameterResponseOutput) Id() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SsisParameterResponse) *float64 { return v.Id }).(pulumi.Float64PtrOutput)
+}
+
+// Parameter name.
+func (o SsisParameterResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisParameterResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Whether parameter is required.
+func (o SsisParameterResponseOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SsisParameterResponse) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+// Whether parameter is sensitive.
+func (o SsisParameterResponseOutput) Sensitive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SsisParameterResponse) *bool { return v.Sensitive }).(pulumi.BoolPtrOutput)
+}
+
+// Default sensitive value of parameter.
+func (o SsisParameterResponseOutput) SensitiveDefaultValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisParameterResponse) *string { return v.SensitiveDefaultValue }).(pulumi.StringPtrOutput)
+}
+
+// Parameter value set.
+func (o SsisParameterResponseOutput) ValueSet() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SsisParameterResponse) *bool { return v.ValueSet }).(pulumi.BoolPtrOutput)
+}
+
+// Parameter value type.
+func (o SsisParameterResponseOutput) ValueType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisParameterResponse) *string { return v.ValueType }).(pulumi.StringPtrOutput)
+}
+
+// Parameter reference variable.
+func (o SsisParameterResponseOutput) Variable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisParameterResponse) *string { return v.Variable }).(pulumi.StringPtrOutput)
+}
+
+type SsisParameterResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SsisParameterResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SsisParameterResponse)(nil)).Elem()
+}
+
+func (o SsisParameterResponseArrayOutput) ToSsisParameterResponseArrayOutput() SsisParameterResponseArrayOutput {
+	return o
+}
+
+func (o SsisParameterResponseArrayOutput) ToSsisParameterResponseArrayOutputWithContext(ctx context.Context) SsisParameterResponseArrayOutput {
+	return o
+}
+
+func (o SsisParameterResponseArrayOutput) Index(i pulumi.IntInput) SsisParameterResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SsisParameterResponse {
+		return vs[0].([]SsisParameterResponse)[vs[1].(int)]
+	}).(SsisParameterResponseOutput)
+}
+
 // Ssis project.
 type SsisProjectResponse struct {
 	// Metadata description.
@@ -5718,6 +10008,62 @@ type SsisProjectResponse struct {
 	Version *float64 `pulumi:"version"`
 }
 
+// Ssis project.
+type SsisProjectResponseOutput struct{ *pulumi.OutputState }
+
+func (SsisProjectResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsisProjectResponse)(nil)).Elem()
+}
+
+func (o SsisProjectResponseOutput) ToSsisProjectResponseOutput() SsisProjectResponseOutput {
+	return o
+}
+
+func (o SsisProjectResponseOutput) ToSsisProjectResponseOutputWithContext(ctx context.Context) SsisProjectResponseOutput {
+	return o
+}
+
+// Metadata description.
+func (o SsisProjectResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisProjectResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Environment reference in project
+func (o SsisProjectResponseOutput) EnvironmentRefs() SsisEnvironmentReferenceResponseArrayOutput {
+	return o.ApplyT(func(v SsisProjectResponse) []SsisEnvironmentReferenceResponse { return v.EnvironmentRefs }).(SsisEnvironmentReferenceResponseArrayOutput)
+}
+
+// Folder id which contains project.
+func (o SsisProjectResponseOutput) FolderId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SsisProjectResponse) *float64 { return v.FolderId }).(pulumi.Float64PtrOutput)
+}
+
+// Metadata id.
+func (o SsisProjectResponseOutput) Id() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SsisProjectResponse) *float64 { return v.Id }).(pulumi.Float64PtrOutput)
+}
+
+// Metadata name.
+func (o SsisProjectResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisProjectResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Parameters in project
+func (o SsisProjectResponseOutput) Parameters() SsisParameterResponseArrayOutput {
+	return o.ApplyT(func(v SsisProjectResponse) []SsisParameterResponse { return v.Parameters }).(SsisParameterResponseArrayOutput)
+}
+
+// The type of SSIS object metadata.
+// Expected value is 'Project'.
+func (o SsisProjectResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SsisProjectResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Project version.
+func (o SsisProjectResponseOutput) Version() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SsisProjectResponse) *float64 { return v.Version }).(pulumi.Float64PtrOutput)
+}
+
 // Ssis variable.
 type SsisVariableResponse struct {
 	// Variable type.
@@ -5734,6 +10080,76 @@ type SsisVariableResponse struct {
 	SensitiveValue *string `pulumi:"sensitiveValue"`
 	// Variable value.
 	Value *string `pulumi:"value"`
+}
+
+// Ssis variable.
+type SsisVariableResponseOutput struct{ *pulumi.OutputState }
+
+func (SsisVariableResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsisVariableResponse)(nil)).Elem()
+}
+
+func (o SsisVariableResponseOutput) ToSsisVariableResponseOutput() SsisVariableResponseOutput {
+	return o
+}
+
+func (o SsisVariableResponseOutput) ToSsisVariableResponseOutputWithContext(ctx context.Context) SsisVariableResponseOutput {
+	return o
+}
+
+// Variable type.
+func (o SsisVariableResponseOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisVariableResponse) *string { return v.DataType }).(pulumi.StringPtrOutput)
+}
+
+// Variable description.
+func (o SsisVariableResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisVariableResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Variable id.
+func (o SsisVariableResponseOutput) Id() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SsisVariableResponse) *float64 { return v.Id }).(pulumi.Float64PtrOutput)
+}
+
+// Variable name.
+func (o SsisVariableResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisVariableResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Whether variable is sensitive.
+func (o SsisVariableResponseOutput) Sensitive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SsisVariableResponse) *bool { return v.Sensitive }).(pulumi.BoolPtrOutput)
+}
+
+// Variable sensitive value.
+func (o SsisVariableResponseOutput) SensitiveValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisVariableResponse) *string { return v.SensitiveValue }).(pulumi.StringPtrOutput)
+}
+
+// Variable value.
+func (o SsisVariableResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsisVariableResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type SsisVariableResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SsisVariableResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SsisVariableResponse)(nil)).Elem()
+}
+
+func (o SsisVariableResponseArrayOutput) ToSsisVariableResponseArrayOutput() SsisVariableResponseArrayOutput {
+	return o
+}
+
+func (o SsisVariableResponseArrayOutput) ToSsisVariableResponseArrayOutputWithContext(ctx context.Context) SsisVariableResponseArrayOutput {
+	return o
+}
+
+func (o SsisVariableResponseArrayOutput) Index(i pulumi.IntInput) SsisVariableResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SsisVariableResponse {
+		return vs[0].([]SsisVariableResponse)[vs[1].(int)]
+	}).(SsisVariableResponseOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -7476,6 +11892,10 @@ func init() {
 	pulumi.RegisterOutputType(AutoScalePropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzureSkuOutput{})
 	pulumi.RegisterOutputType(AzureSkuResponseOutput{})
+	pulumi.RegisterOutputType(CmdkeySetupOutput{})
+	pulumi.RegisterOutputType(CmdkeySetupResponseOutput{})
+	pulumi.RegisterOutputType(ComponentSetupOutput{})
+	pulumi.RegisterOutputType(ComponentSetupResponseOutput{})
 	pulumi.RegisterOutputType(CspWorkspaceAdminPropertiesOutput{})
 	pulumi.RegisterOutputType(CspWorkspaceAdminPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(CspWorkspaceAdminPropertiesResponseOutput{})
@@ -7497,8 +11917,42 @@ func init() {
 	pulumi.RegisterOutputType(EncryptionDetailsPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionDetailsResponseOutput{})
 	pulumi.RegisterOutputType(EncryptionDetailsResponsePtrOutput{})
+	pulumi.RegisterOutputType(EntityReferenceOutput{})
+	pulumi.RegisterOutputType(EntityReferencePtrOutput{})
+	pulumi.RegisterOutputType(EntityReferenceResponseOutput{})
+	pulumi.RegisterOutputType(EntityReferenceResponsePtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentVariableSetupOutput{})
+	pulumi.RegisterOutputType(EnvironmentVariableSetupResponseOutput{})
 	pulumi.RegisterOutputType(FollowerDatabaseDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(FollowerDatabaseDefinitionResponseArrayOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeComputePropertiesOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeComputePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeComputePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeComputePropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeCustomSetupScriptPropertiesOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeCustomSetupScriptPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeCustomSetupScriptPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeCustomSetupScriptPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeDataFlowPropertiesOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeDataFlowPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeDataFlowPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeDataFlowPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeDataProxyPropertiesOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeDataProxyPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeDataProxyPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeDataProxyPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeSsisCatalogInfoOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeSsisCatalogInfoPtrOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeSsisCatalogInfoResponseOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeSsisCatalogInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeSsisPropertiesOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeSsisPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeSsisPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeSsisPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeVNetPropertiesOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeVNetPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeVNetPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeVNetPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(KekIdentityPropertiesOutput{})
 	pulumi.RegisterOutputType(KekIdentityPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(KekIdentityPropertiesResponseOutput{})
@@ -7514,10 +11968,28 @@ func init() {
 	pulumi.RegisterOutputType(LibraryRequirementsPtrOutput{})
 	pulumi.RegisterOutputType(LibraryRequirementsResponseOutput{})
 	pulumi.RegisterOutputType(LibraryRequirementsResponsePtrOutput{})
+	pulumi.RegisterOutputType(LinkedIntegrationRuntimeKeyAuthorizationOutput{})
+	pulumi.RegisterOutputType(LinkedIntegrationRuntimeKeyAuthorizationPtrOutput{})
+	pulumi.RegisterOutputType(LinkedIntegrationRuntimeKeyAuthorizationResponseOutput{})
+	pulumi.RegisterOutputType(LinkedIntegrationRuntimeKeyAuthorizationResponsePtrOutput{})
+	pulumi.RegisterOutputType(LinkedIntegrationRuntimeRbacAuthorizationOutput{})
+	pulumi.RegisterOutputType(LinkedIntegrationRuntimeRbacAuthorizationPtrOutput{})
+	pulumi.RegisterOutputType(LinkedIntegrationRuntimeRbacAuthorizationResponseOutput{})
+	pulumi.RegisterOutputType(LinkedIntegrationRuntimeRbacAuthorizationResponsePtrOutput{})
+	pulumi.RegisterOutputType(LinkedIntegrationRuntimeResponseOutput{})
+	pulumi.RegisterOutputType(LinkedIntegrationRuntimeResponseArrayOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedIntegrationRuntimeOutput{})
+	pulumi.RegisterOutputType(ManagedIntegrationRuntimeErrorResponseOutput{})
+	pulumi.RegisterOutputType(ManagedIntegrationRuntimeErrorResponseArrayOutput{})
+	pulumi.RegisterOutputType(ManagedIntegrationRuntimeNodeResponseOutput{})
+	pulumi.RegisterOutputType(ManagedIntegrationRuntimeNodeResponseArrayOutput{})
+	pulumi.RegisterOutputType(ManagedIntegrationRuntimeOperationResultResponseOutput{})
+	pulumi.RegisterOutputType(ManagedIntegrationRuntimeResponseOutput{})
+	pulumi.RegisterOutputType(ManagedIntegrationRuntimeStatusResponseOutput{})
 	pulumi.RegisterOutputType(ManagedVirtualNetworkSettingsOutput{})
 	pulumi.RegisterOutputType(ManagedVirtualNetworkSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ManagedVirtualNetworkSettingsResponseOutput{})
@@ -7542,6 +12014,15 @@ func init() {
 	pulumi.RegisterOutputType(PurviewConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(PurviewConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(PurviewConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(SecureStringOutput{})
+	pulumi.RegisterOutputType(SecureStringPtrOutput{})
+	pulumi.RegisterOutputType(SecureStringResponseOutput{})
+	pulumi.RegisterOutputType(SecureStringResponsePtrOutput{})
+	pulumi.RegisterOutputType(SelfHostedIntegrationRuntimeOutput{})
+	pulumi.RegisterOutputType(SelfHostedIntegrationRuntimeNodeResponseOutput{})
+	pulumi.RegisterOutputType(SelfHostedIntegrationRuntimeNodeResponseArrayOutput{})
+	pulumi.RegisterOutputType(SelfHostedIntegrationRuntimeResponseOutput{})
+	pulumi.RegisterOutputType(SelfHostedIntegrationRuntimeStatusResponseOutput{})
 	pulumi.RegisterOutputType(SkuOutput{})
 	pulumi.RegisterOutputType(SkuPtrOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
@@ -7554,6 +12035,16 @@ func init() {
 	pulumi.RegisterOutputType(SqlPoolVulnerabilityAssessmentRuleBaselineItemArrayOutput{})
 	pulumi.RegisterOutputType(SqlPoolVulnerabilityAssessmentRuleBaselineItemResponseOutput{})
 	pulumi.RegisterOutputType(SqlPoolVulnerabilityAssessmentRuleBaselineItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(SsisEnvironmentReferenceResponseOutput{})
+	pulumi.RegisterOutputType(SsisEnvironmentReferenceResponseArrayOutput{})
+	pulumi.RegisterOutputType(SsisEnvironmentResponseOutput{})
+	pulumi.RegisterOutputType(SsisFolderResponseOutput{})
+	pulumi.RegisterOutputType(SsisPackageResponseOutput{})
+	pulumi.RegisterOutputType(SsisParameterResponseOutput{})
+	pulumi.RegisterOutputType(SsisParameterResponseArrayOutput{})
+	pulumi.RegisterOutputType(SsisProjectResponseOutput{})
+	pulumi.RegisterOutputType(SsisVariableResponseOutput{})
+	pulumi.RegisterOutputType(SsisVariableResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(TableLevelSharingPropertiesOutput{})
 	pulumi.RegisterOutputType(TableLevelSharingPropertiesPtrOutput{})

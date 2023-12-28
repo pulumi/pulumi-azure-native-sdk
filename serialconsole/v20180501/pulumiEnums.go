@@ -138,10 +138,11 @@ func (o SerialPortStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// SerialPortStateEnumInput is an input type that accepts SerialPortStateEnumArgs and SerialPortStateEnumOutput values.
-// You can construct a concrete instance of `SerialPortStateEnumInput` via:
+// SerialPortStateEnumInput is an input type that accepts values of the SerialPortStateEnum enum
+// A concrete instance of `SerialPortStateEnumInput` can be one of the following:
 //
-//	SerialPortStateEnumArgs{...}
+//	SerialPortStateEnumEnabled
+//	SerialPortStateEnumDisabled
 type SerialPortStateEnumInput interface {
 	pulumi.Input
 

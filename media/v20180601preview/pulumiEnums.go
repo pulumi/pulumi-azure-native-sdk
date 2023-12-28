@@ -138,10 +138,11 @@ func (o LiveEventEncodingTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// LiveEventEncodingTypeInput is an input type that accepts LiveEventEncodingTypeArgs and LiveEventEncodingTypeOutput values.
-// You can construct a concrete instance of `LiveEventEncodingTypeInput` via:
+// LiveEventEncodingTypeInput is an input type that accepts values of the LiveEventEncodingType enum
+// A concrete instance of `LiveEventEncodingTypeInput` can be one of the following:
 //
-//	LiveEventEncodingTypeArgs{...}
+//	LiveEventEncodingTypeNone
+//	LiveEventEncodingTypeBasic
 type LiveEventEncodingTypeInput interface {
 	pulumi.Input
 
@@ -309,10 +310,11 @@ func (o LiveEventInputProtocolPtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// LiveEventInputProtocolInput is an input type that accepts LiveEventInputProtocolArgs and LiveEventInputProtocolOutput values.
-// You can construct a concrete instance of `LiveEventInputProtocolInput` via:
+// LiveEventInputProtocolInput is an input type that accepts values of the LiveEventInputProtocol enum
+// A concrete instance of `LiveEventInputProtocolInput` can be one of the following:
 //
-//	LiveEventInputProtocolArgs{...}
+//	LiveEventInputProtocolFragmentedMP4
+//	LiveEventInputProtocolRTMP
 type LiveEventInputProtocolInput interface {
 	pulumi.Input
 
@@ -479,10 +481,11 @@ func (o StreamOptionsFlagPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// StreamOptionsFlagInput is an input type that accepts StreamOptionsFlagArgs and StreamOptionsFlagOutput values.
-// You can construct a concrete instance of `StreamOptionsFlagInput` via:
+// StreamOptionsFlagInput is an input type that accepts values of the StreamOptionsFlag enum
+// A concrete instance of `StreamOptionsFlagInput` can be one of the following:
 //
-//	StreamOptionsFlagArgs{...}
+//	StreamOptionsFlagDefault
+//	StreamOptionsFlagLowLatency
 type StreamOptionsFlagInput interface {
 	pulumi.Input
 

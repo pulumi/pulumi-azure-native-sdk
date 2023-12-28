@@ -137,10 +137,10 @@ func (o ResourceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// ResourceIdentityTypeInput is an input type that accepts ResourceIdentityTypeArgs and ResourceIdentityTypeOutput values.
-// You can construct a concrete instance of `ResourceIdentityTypeInput` via:
+// ResourceIdentityTypeInput is an input type that accepts values of the ResourceIdentityType enum
+// A concrete instance of `ResourceIdentityTypeInput` can be one of the following:
 //
-//	ResourceIdentityTypeArgs{...}
+//	ResourceIdentityTypeSystemAssigned
 type ResourceIdentityTypeInput interface {
 	pulumi.Input
 
@@ -310,10 +310,13 @@ func (o SkuTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// SkuTierInput is an input type that accepts SkuTierArgs and SkuTierOutput values.
-// You can construct a concrete instance of `SkuTierInput` via:
+// SkuTierInput is an input type that accepts values of the SkuTier enum
+// A concrete instance of `SkuTierInput` can be one of the following:
 //
-//	SkuTierArgs{...}
+//	SkuTierFree
+//	SkuTierBasic
+//	SkuTierStandard
+//	SkuTierPremium
 type SkuTierInput interface {
 	pulumi.Input
 

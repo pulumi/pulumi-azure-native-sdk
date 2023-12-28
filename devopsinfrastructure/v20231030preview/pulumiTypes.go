@@ -1597,6 +1597,71 @@ type Stateful struct {
 	ResourcePredictions interface{} `pulumi:"resourcePredictions"`
 }
 
+// StatefulInput is an input type that accepts StatefulArgs and StatefulOutput values.
+// You can construct a concrete instance of `StatefulInput` via:
+//
+//	StatefulArgs{...}
+type StatefulInput interface {
+	pulumi.Input
+
+	ToStatefulOutput() StatefulOutput
+	ToStatefulOutputWithContext(context.Context) StatefulOutput
+}
+
+// Stateful profile meaning that the machines will be returned to the pool after running a job.
+type StatefulArgs struct {
+	// Discriminator property for AgentProfile.
+	// Expected value is 'Stateful'.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// How long should stateful machines be kept around. The maximum is one week.
+	MaxAgentLifetime pulumi.StringInput `pulumi:"maxAgentLifetime"`
+	// Defines pool buffer.
+	ResourcePredictions pulumi.Input `pulumi:"resourcePredictions"`
+}
+
+func (StatefulArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Stateful)(nil)).Elem()
+}
+
+func (i StatefulArgs) ToStatefulOutput() StatefulOutput {
+	return i.ToStatefulOutputWithContext(context.Background())
+}
+
+func (i StatefulArgs) ToStatefulOutputWithContext(ctx context.Context) StatefulOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatefulOutput)
+}
+
+// Stateful profile meaning that the machines will be returned to the pool after running a job.
+type StatefulOutput struct{ *pulumi.OutputState }
+
+func (StatefulOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Stateful)(nil)).Elem()
+}
+
+func (o StatefulOutput) ToStatefulOutput() StatefulOutput {
+	return o
+}
+
+func (o StatefulOutput) ToStatefulOutputWithContext(ctx context.Context) StatefulOutput {
+	return o
+}
+
+// Discriminator property for AgentProfile.
+// Expected value is 'Stateful'.
+func (o StatefulOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v Stateful) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// How long should stateful machines be kept around. The maximum is one week.
+func (o StatefulOutput) MaxAgentLifetime() pulumi.StringOutput {
+	return o.ApplyT(func(v Stateful) string { return v.MaxAgentLifetime }).(pulumi.StringOutput)
+}
+
+// Defines pool buffer.
+func (o StatefulOutput) ResourcePredictions() pulumi.AnyOutput {
+	return o.ApplyT(func(v Stateful) interface{} { return v.ResourcePredictions }).(pulumi.AnyOutput)
+}
+
 // Stateful profile meaning that the machines will be returned to the pool after running a job.
 type StatefulResponse struct {
 	// Discriminator property for AgentProfile.
@@ -1608,6 +1673,37 @@ type StatefulResponse struct {
 	ResourcePredictions interface{} `pulumi:"resourcePredictions"`
 }
 
+// Stateful profile meaning that the machines will be returned to the pool after running a job.
+type StatefulResponseOutput struct{ *pulumi.OutputState }
+
+func (StatefulResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatefulResponse)(nil)).Elem()
+}
+
+func (o StatefulResponseOutput) ToStatefulResponseOutput() StatefulResponseOutput {
+	return o
+}
+
+func (o StatefulResponseOutput) ToStatefulResponseOutputWithContext(ctx context.Context) StatefulResponseOutput {
+	return o
+}
+
+// Discriminator property for AgentProfile.
+// Expected value is 'Stateful'.
+func (o StatefulResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// How long should stateful machines be kept around. The maximum is one week.
+func (o StatefulResponseOutput) MaxAgentLifetime() pulumi.StringOutput {
+	return o.ApplyT(func(v StatefulResponse) string { return v.MaxAgentLifetime }).(pulumi.StringOutput)
+}
+
+// Defines pool buffer.
+func (o StatefulResponseOutput) ResourcePredictions() pulumi.AnyOutput {
+	return o.ApplyT(func(v StatefulResponse) interface{} { return v.ResourcePredictions }).(pulumi.AnyOutput)
+}
+
 // Stateless profile meaning that the machines will be cleaned up after running a job.
 type StatelessAgentProfile struct {
 	// Discriminator property for AgentProfile.
@@ -1617,6 +1713,64 @@ type StatelessAgentProfile struct {
 	ResourcePredictions interface{} `pulumi:"resourcePredictions"`
 }
 
+// StatelessAgentProfileInput is an input type that accepts StatelessAgentProfileArgs and StatelessAgentProfileOutput values.
+// You can construct a concrete instance of `StatelessAgentProfileInput` via:
+//
+//	StatelessAgentProfileArgs{...}
+type StatelessAgentProfileInput interface {
+	pulumi.Input
+
+	ToStatelessAgentProfileOutput() StatelessAgentProfileOutput
+	ToStatelessAgentProfileOutputWithContext(context.Context) StatelessAgentProfileOutput
+}
+
+// Stateless profile meaning that the machines will be cleaned up after running a job.
+type StatelessAgentProfileArgs struct {
+	// Discriminator property for AgentProfile.
+	// Expected value is 'Stateless'.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// Defines pool buffer.
+	ResourcePredictions pulumi.Input `pulumi:"resourcePredictions"`
+}
+
+func (StatelessAgentProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatelessAgentProfile)(nil)).Elem()
+}
+
+func (i StatelessAgentProfileArgs) ToStatelessAgentProfileOutput() StatelessAgentProfileOutput {
+	return i.ToStatelessAgentProfileOutputWithContext(context.Background())
+}
+
+func (i StatelessAgentProfileArgs) ToStatelessAgentProfileOutputWithContext(ctx context.Context) StatelessAgentProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatelessAgentProfileOutput)
+}
+
+// Stateless profile meaning that the machines will be cleaned up after running a job.
+type StatelessAgentProfileOutput struct{ *pulumi.OutputState }
+
+func (StatelessAgentProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatelessAgentProfile)(nil)).Elem()
+}
+
+func (o StatelessAgentProfileOutput) ToStatelessAgentProfileOutput() StatelessAgentProfileOutput {
+	return o
+}
+
+func (o StatelessAgentProfileOutput) ToStatelessAgentProfileOutputWithContext(ctx context.Context) StatelessAgentProfileOutput {
+	return o
+}
+
+// Discriminator property for AgentProfile.
+// Expected value is 'Stateless'.
+func (o StatelessAgentProfileOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v StatelessAgentProfile) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Defines pool buffer.
+func (o StatelessAgentProfileOutput) ResourcePredictions() pulumi.AnyOutput {
+	return o.ApplyT(func(v StatelessAgentProfile) interface{} { return v.ResourcePredictions }).(pulumi.AnyOutput)
+}
+
 // Stateless profile meaning that the machines will be cleaned up after running a job.
 type StatelessAgentProfileResponse struct {
 	// Discriminator property for AgentProfile.
@@ -1624,6 +1778,32 @@ type StatelessAgentProfileResponse struct {
 	Kind string `pulumi:"kind"`
 	// Defines pool buffer.
 	ResourcePredictions interface{} `pulumi:"resourcePredictions"`
+}
+
+// Stateless profile meaning that the machines will be cleaned up after running a job.
+type StatelessAgentProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (StatelessAgentProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatelessAgentProfileResponse)(nil)).Elem()
+}
+
+func (o StatelessAgentProfileResponseOutput) ToStatelessAgentProfileResponseOutput() StatelessAgentProfileResponseOutput {
+	return o
+}
+
+func (o StatelessAgentProfileResponseOutput) ToStatelessAgentProfileResponseOutputWithContext(ctx context.Context) StatelessAgentProfileResponseOutput {
+	return o
+}
+
+// Discriminator property for AgentProfile.
+// Expected value is 'Stateless'.
+func (o StatelessAgentProfileResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v StatelessAgentProfileResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Defines pool buffer.
+func (o StatelessAgentProfileResponseOutput) ResourcePredictions() pulumi.AnyOutput {
+	return o.ApplyT(func(v StatelessAgentProfileResponse) interface{} { return v.ResourcePredictions }).(pulumi.AnyOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -1950,6 +2130,10 @@ func init() {
 	pulumi.RegisterOutputType(SecretsManagementSettingsPtrOutput{})
 	pulumi.RegisterOutputType(SecretsManagementSettingsResponseOutput{})
 	pulumi.RegisterOutputType(SecretsManagementSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(StatefulOutput{})
+	pulumi.RegisterOutputType(StatefulResponseOutput{})
+	pulumi.RegisterOutputType(StatelessAgentProfileOutput{})
+	pulumi.RegisterOutputType(StatelessAgentProfileResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})

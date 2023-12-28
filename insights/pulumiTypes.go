@@ -8102,6 +8102,127 @@ type DynamicMetricCriteria struct {
 	TimeAggregation string `pulumi:"timeAggregation"`
 }
 
+// DynamicMetricCriteriaInput is an input type that accepts DynamicMetricCriteriaArgs and DynamicMetricCriteriaOutput values.
+// You can construct a concrete instance of `DynamicMetricCriteriaInput` via:
+//
+//	DynamicMetricCriteriaArgs{...}
+type DynamicMetricCriteriaInput interface {
+	pulumi.Input
+
+	ToDynamicMetricCriteriaOutput() DynamicMetricCriteriaOutput
+	ToDynamicMetricCriteriaOutputWithContext(context.Context) DynamicMetricCriteriaOutput
+}
+
+// Criterion for dynamic threshold.
+type DynamicMetricCriteriaArgs struct {
+	// The extent of deviation required to trigger an alert. This will affect how tight the threshold is to the metric series pattern.
+	AlertSensitivity pulumi.StringInput `pulumi:"alertSensitivity"`
+	// Specifies the type of threshold criteria
+	// Expected value is 'DynamicThresholdCriterion'.
+	CriterionType pulumi.StringInput `pulumi:"criterionType"`
+	// List of dimension conditions.
+	Dimensions MetricDimensionArrayInput `pulumi:"dimensions"`
+	// The minimum number of violations required within the selected lookback time window required to raise an alert.
+	FailingPeriods DynamicThresholdFailingPeriodsInput `pulumi:"failingPeriods"`
+	// Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format)
+	IgnoreDataBefore pulumi.StringPtrInput `pulumi:"ignoreDataBefore"`
+	// Name of the metric.
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// Namespace of the metric.
+	MetricNamespace pulumi.StringPtrInput `pulumi:"metricNamespace"`
+	// Name of the criteria.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The operator used to compare the metric value against the threshold.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped.
+	SkipMetricValidation pulumi.BoolPtrInput `pulumi:"skipMetricValidation"`
+	// the criteria time aggregation types.
+	TimeAggregation pulumi.StringInput `pulumi:"timeAggregation"`
+}
+
+func (DynamicMetricCriteriaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicMetricCriteria)(nil)).Elem()
+}
+
+func (i DynamicMetricCriteriaArgs) ToDynamicMetricCriteriaOutput() DynamicMetricCriteriaOutput {
+	return i.ToDynamicMetricCriteriaOutputWithContext(context.Background())
+}
+
+func (i DynamicMetricCriteriaArgs) ToDynamicMetricCriteriaOutputWithContext(ctx context.Context) DynamicMetricCriteriaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicMetricCriteriaOutput)
+}
+
+// Criterion for dynamic threshold.
+type DynamicMetricCriteriaOutput struct{ *pulumi.OutputState }
+
+func (DynamicMetricCriteriaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicMetricCriteria)(nil)).Elem()
+}
+
+func (o DynamicMetricCriteriaOutput) ToDynamicMetricCriteriaOutput() DynamicMetricCriteriaOutput {
+	return o
+}
+
+func (o DynamicMetricCriteriaOutput) ToDynamicMetricCriteriaOutputWithContext(ctx context.Context) DynamicMetricCriteriaOutput {
+	return o
+}
+
+// The extent of deviation required to trigger an alert. This will affect how tight the threshold is to the metric series pattern.
+func (o DynamicMetricCriteriaOutput) AlertSensitivity() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicMetricCriteria) string { return v.AlertSensitivity }).(pulumi.StringOutput)
+}
+
+// Specifies the type of threshold criteria
+// Expected value is 'DynamicThresholdCriterion'.
+func (o DynamicMetricCriteriaOutput) CriterionType() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicMetricCriteria) string { return v.CriterionType }).(pulumi.StringOutput)
+}
+
+// List of dimension conditions.
+func (o DynamicMetricCriteriaOutput) Dimensions() MetricDimensionArrayOutput {
+	return o.ApplyT(func(v DynamicMetricCriteria) []MetricDimension { return v.Dimensions }).(MetricDimensionArrayOutput)
+}
+
+// The minimum number of violations required within the selected lookback time window required to raise an alert.
+func (o DynamicMetricCriteriaOutput) FailingPeriods() DynamicThresholdFailingPeriodsOutput {
+	return o.ApplyT(func(v DynamicMetricCriteria) DynamicThresholdFailingPeriods { return v.FailingPeriods }).(DynamicThresholdFailingPeriodsOutput)
+}
+
+// Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format)
+func (o DynamicMetricCriteriaOutput) IgnoreDataBefore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DynamicMetricCriteria) *string { return v.IgnoreDataBefore }).(pulumi.StringPtrOutput)
+}
+
+// Name of the metric.
+func (o DynamicMetricCriteriaOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicMetricCriteria) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// Namespace of the metric.
+func (o DynamicMetricCriteriaOutput) MetricNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DynamicMetricCriteria) *string { return v.MetricNamespace }).(pulumi.StringPtrOutput)
+}
+
+// Name of the criteria.
+func (o DynamicMetricCriteriaOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicMetricCriteria) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The operator used to compare the metric value against the threshold.
+func (o DynamicMetricCriteriaOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicMetricCriteria) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped.
+func (o DynamicMetricCriteriaOutput) SkipMetricValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DynamicMetricCriteria) *bool { return v.SkipMetricValidation }).(pulumi.BoolPtrOutput)
+}
+
+// the criteria time aggregation types.
+func (o DynamicMetricCriteriaOutput) TimeAggregation() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicMetricCriteria) string { return v.TimeAggregation }).(pulumi.StringOutput)
+}
+
 // Criterion for dynamic threshold.
 type DynamicMetricCriteriaResponse struct {
 	// The extent of deviation required to trigger an alert. This will affect how tight the threshold is to the metric series pattern.
@@ -8129,6 +8250,77 @@ type DynamicMetricCriteriaResponse struct {
 	TimeAggregation string `pulumi:"timeAggregation"`
 }
 
+// Criterion for dynamic threshold.
+type DynamicMetricCriteriaResponseOutput struct{ *pulumi.OutputState }
+
+func (DynamicMetricCriteriaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicMetricCriteriaResponse)(nil)).Elem()
+}
+
+func (o DynamicMetricCriteriaResponseOutput) ToDynamicMetricCriteriaResponseOutput() DynamicMetricCriteriaResponseOutput {
+	return o
+}
+
+func (o DynamicMetricCriteriaResponseOutput) ToDynamicMetricCriteriaResponseOutputWithContext(ctx context.Context) DynamicMetricCriteriaResponseOutput {
+	return o
+}
+
+// The extent of deviation required to trigger an alert. This will affect how tight the threshold is to the metric series pattern.
+func (o DynamicMetricCriteriaResponseOutput) AlertSensitivity() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicMetricCriteriaResponse) string { return v.AlertSensitivity }).(pulumi.StringOutput)
+}
+
+// Specifies the type of threshold criteria
+// Expected value is 'DynamicThresholdCriterion'.
+func (o DynamicMetricCriteriaResponseOutput) CriterionType() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicMetricCriteriaResponse) string { return v.CriterionType }).(pulumi.StringOutput)
+}
+
+// List of dimension conditions.
+func (o DynamicMetricCriteriaResponseOutput) Dimensions() MetricDimensionResponseArrayOutput {
+	return o.ApplyT(func(v DynamicMetricCriteriaResponse) []MetricDimensionResponse { return v.Dimensions }).(MetricDimensionResponseArrayOutput)
+}
+
+// The minimum number of violations required within the selected lookback time window required to raise an alert.
+func (o DynamicMetricCriteriaResponseOutput) FailingPeriods() DynamicThresholdFailingPeriodsResponseOutput {
+	return o.ApplyT(func(v DynamicMetricCriteriaResponse) DynamicThresholdFailingPeriodsResponse { return v.FailingPeriods }).(DynamicThresholdFailingPeriodsResponseOutput)
+}
+
+// Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format)
+func (o DynamicMetricCriteriaResponseOutput) IgnoreDataBefore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DynamicMetricCriteriaResponse) *string { return v.IgnoreDataBefore }).(pulumi.StringPtrOutput)
+}
+
+// Name of the metric.
+func (o DynamicMetricCriteriaResponseOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicMetricCriteriaResponse) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// Namespace of the metric.
+func (o DynamicMetricCriteriaResponseOutput) MetricNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DynamicMetricCriteriaResponse) *string { return v.MetricNamespace }).(pulumi.StringPtrOutput)
+}
+
+// Name of the criteria.
+func (o DynamicMetricCriteriaResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicMetricCriteriaResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The operator used to compare the metric value against the threshold.
+func (o DynamicMetricCriteriaResponseOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicMetricCriteriaResponse) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped.
+func (o DynamicMetricCriteriaResponseOutput) SkipMetricValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DynamicMetricCriteriaResponse) *bool { return v.SkipMetricValidation }).(pulumi.BoolPtrOutput)
+}
+
+// the criteria time aggregation types.
+func (o DynamicMetricCriteriaResponseOutput) TimeAggregation() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicMetricCriteriaResponse) string { return v.TimeAggregation }).(pulumi.StringOutput)
+}
+
 // The minimum number of violations required within the selected lookback time window required to raise an alert.
 type DynamicThresholdFailingPeriods struct {
 	// The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods.
@@ -8137,12 +8329,93 @@ type DynamicThresholdFailingPeriods struct {
 	NumberOfEvaluationPeriods float64 `pulumi:"numberOfEvaluationPeriods"`
 }
 
+// DynamicThresholdFailingPeriodsInput is an input type that accepts DynamicThresholdFailingPeriodsArgs and DynamicThresholdFailingPeriodsOutput values.
+// You can construct a concrete instance of `DynamicThresholdFailingPeriodsInput` via:
+//
+//	DynamicThresholdFailingPeriodsArgs{...}
+type DynamicThresholdFailingPeriodsInput interface {
+	pulumi.Input
+
+	ToDynamicThresholdFailingPeriodsOutput() DynamicThresholdFailingPeriodsOutput
+	ToDynamicThresholdFailingPeriodsOutputWithContext(context.Context) DynamicThresholdFailingPeriodsOutput
+}
+
+// The minimum number of violations required within the selected lookback time window required to raise an alert.
+type DynamicThresholdFailingPeriodsArgs struct {
+	// The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods.
+	MinFailingPeriodsToAlert pulumi.Float64Input `pulumi:"minFailingPeriodsToAlert"`
+	// The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points.
+	NumberOfEvaluationPeriods pulumi.Float64Input `pulumi:"numberOfEvaluationPeriods"`
+}
+
+func (DynamicThresholdFailingPeriodsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicThresholdFailingPeriods)(nil)).Elem()
+}
+
+func (i DynamicThresholdFailingPeriodsArgs) ToDynamicThresholdFailingPeriodsOutput() DynamicThresholdFailingPeriodsOutput {
+	return i.ToDynamicThresholdFailingPeriodsOutputWithContext(context.Background())
+}
+
+func (i DynamicThresholdFailingPeriodsArgs) ToDynamicThresholdFailingPeriodsOutputWithContext(ctx context.Context) DynamicThresholdFailingPeriodsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicThresholdFailingPeriodsOutput)
+}
+
+// The minimum number of violations required within the selected lookback time window required to raise an alert.
+type DynamicThresholdFailingPeriodsOutput struct{ *pulumi.OutputState }
+
+func (DynamicThresholdFailingPeriodsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicThresholdFailingPeriods)(nil)).Elem()
+}
+
+func (o DynamicThresholdFailingPeriodsOutput) ToDynamicThresholdFailingPeriodsOutput() DynamicThresholdFailingPeriodsOutput {
+	return o
+}
+
+func (o DynamicThresholdFailingPeriodsOutput) ToDynamicThresholdFailingPeriodsOutputWithContext(ctx context.Context) DynamicThresholdFailingPeriodsOutput {
+	return o
+}
+
+// The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods.
+func (o DynamicThresholdFailingPeriodsOutput) MinFailingPeriodsToAlert() pulumi.Float64Output {
+	return o.ApplyT(func(v DynamicThresholdFailingPeriods) float64 { return v.MinFailingPeriodsToAlert }).(pulumi.Float64Output)
+}
+
+// The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points.
+func (o DynamicThresholdFailingPeriodsOutput) NumberOfEvaluationPeriods() pulumi.Float64Output {
+	return o.ApplyT(func(v DynamicThresholdFailingPeriods) float64 { return v.NumberOfEvaluationPeriods }).(pulumi.Float64Output)
+}
+
 // The minimum number of violations required within the selected lookback time window required to raise an alert.
 type DynamicThresholdFailingPeriodsResponse struct {
 	// The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods.
 	MinFailingPeriodsToAlert float64 `pulumi:"minFailingPeriodsToAlert"`
 	// The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points.
 	NumberOfEvaluationPeriods float64 `pulumi:"numberOfEvaluationPeriods"`
+}
+
+// The minimum number of violations required within the selected lookback time window required to raise an alert.
+type DynamicThresholdFailingPeriodsResponseOutput struct{ *pulumi.OutputState }
+
+func (DynamicThresholdFailingPeriodsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicThresholdFailingPeriodsResponse)(nil)).Elem()
+}
+
+func (o DynamicThresholdFailingPeriodsResponseOutput) ToDynamicThresholdFailingPeriodsResponseOutput() DynamicThresholdFailingPeriodsResponseOutput {
+	return o
+}
+
+func (o DynamicThresholdFailingPeriodsResponseOutput) ToDynamicThresholdFailingPeriodsResponseOutputWithContext(ctx context.Context) DynamicThresholdFailingPeriodsResponseOutput {
+	return o
+}
+
+// The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods.
+func (o DynamicThresholdFailingPeriodsResponseOutput) MinFailingPeriodsToAlert() pulumi.Float64Output {
+	return o.ApplyT(func(v DynamicThresholdFailingPeriodsResponse) float64 { return v.MinFailingPeriodsToAlert }).(pulumi.Float64Output)
+}
+
+// The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points.
+func (o DynamicThresholdFailingPeriodsResponseOutput) NumberOfEvaluationPeriods() pulumi.Float64Output {
+	return o.ApplyT(func(v DynamicThresholdFailingPeriodsResponse) float64 { return v.NumberOfEvaluationPeriods }).(pulumi.Float64Output)
 }
 
 // Email notification of an autoscale event.
@@ -10840,6 +11113,78 @@ type LocationThresholdRuleCondition struct {
 	WindowSize *string `pulumi:"windowSize"`
 }
 
+// LocationThresholdRuleConditionInput is an input type that accepts LocationThresholdRuleConditionArgs and LocationThresholdRuleConditionOutput values.
+// You can construct a concrete instance of `LocationThresholdRuleConditionInput` via:
+//
+//	LocationThresholdRuleConditionArgs{...}
+type LocationThresholdRuleConditionInput interface {
+	pulumi.Input
+
+	ToLocationThresholdRuleConditionOutput() LocationThresholdRuleConditionOutput
+	ToLocationThresholdRuleConditionOutputWithContext(context.Context) LocationThresholdRuleConditionOutput
+}
+
+// A rule condition based on a certain number of locations failing.
+type LocationThresholdRuleConditionArgs struct {
+	// the resource from which the rule collects its data. For this type dataSource will always be of type RuleMetricDataSource.
+	DataSource pulumi.Input `pulumi:"dataSource"`
+	// the number of locations that must fail to activate the alert.
+	FailedLocationCount pulumi.IntInput `pulumi:"failedLocationCount"`
+	// specifies the type of condition. This can be one of three types: ManagementEventRuleCondition (occurrences of management events), LocationThresholdRuleCondition (based on the number of failures of a web test), and ThresholdRuleCondition (based on the threshold of a metric).
+	// Expected value is 'Microsoft.Azure.Management.Insights.Models.LocationThresholdRuleCondition'.
+	OdataType pulumi.StringInput `pulumi:"odataType"`
+	// the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold. If specified then it must be between 5 minutes and 1 day.
+	WindowSize pulumi.StringPtrInput `pulumi:"windowSize"`
+}
+
+func (LocationThresholdRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationThresholdRuleCondition)(nil)).Elem()
+}
+
+func (i LocationThresholdRuleConditionArgs) ToLocationThresholdRuleConditionOutput() LocationThresholdRuleConditionOutput {
+	return i.ToLocationThresholdRuleConditionOutputWithContext(context.Background())
+}
+
+func (i LocationThresholdRuleConditionArgs) ToLocationThresholdRuleConditionOutputWithContext(ctx context.Context) LocationThresholdRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationThresholdRuleConditionOutput)
+}
+
+// A rule condition based on a certain number of locations failing.
+type LocationThresholdRuleConditionOutput struct{ *pulumi.OutputState }
+
+func (LocationThresholdRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationThresholdRuleCondition)(nil)).Elem()
+}
+
+func (o LocationThresholdRuleConditionOutput) ToLocationThresholdRuleConditionOutput() LocationThresholdRuleConditionOutput {
+	return o
+}
+
+func (o LocationThresholdRuleConditionOutput) ToLocationThresholdRuleConditionOutputWithContext(ctx context.Context) LocationThresholdRuleConditionOutput {
+	return o
+}
+
+// the resource from which the rule collects its data. For this type dataSource will always be of type RuleMetricDataSource.
+func (o LocationThresholdRuleConditionOutput) DataSource() pulumi.AnyOutput {
+	return o.ApplyT(func(v LocationThresholdRuleCondition) interface{} { return v.DataSource }).(pulumi.AnyOutput)
+}
+
+// the number of locations that must fail to activate the alert.
+func (o LocationThresholdRuleConditionOutput) FailedLocationCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LocationThresholdRuleCondition) int { return v.FailedLocationCount }).(pulumi.IntOutput)
+}
+
+// specifies the type of condition. This can be one of three types: ManagementEventRuleCondition (occurrences of management events), LocationThresholdRuleCondition (based on the number of failures of a web test), and ThresholdRuleCondition (based on the threshold of a metric).
+// Expected value is 'Microsoft.Azure.Management.Insights.Models.LocationThresholdRuleCondition'.
+func (o LocationThresholdRuleConditionOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v LocationThresholdRuleCondition) string { return v.OdataType }).(pulumi.StringOutput)
+}
+
+// the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold. If specified then it must be between 5 minutes and 1 day.
+func (o LocationThresholdRuleConditionOutput) WindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocationThresholdRuleCondition) *string { return v.WindowSize }).(pulumi.StringPtrOutput)
+}
+
 // A rule condition based on a certain number of locations failing.
 type LocationThresholdRuleConditionResponse struct {
 	// the resource from which the rule collects its data. For this type dataSource will always be of type RuleMetricDataSource.
@@ -10851,6 +11196,42 @@ type LocationThresholdRuleConditionResponse struct {
 	OdataType string `pulumi:"odataType"`
 	// the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold. If specified then it must be between 5 minutes and 1 day.
 	WindowSize *string `pulumi:"windowSize"`
+}
+
+// A rule condition based on a certain number of locations failing.
+type LocationThresholdRuleConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (LocationThresholdRuleConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationThresholdRuleConditionResponse)(nil)).Elem()
+}
+
+func (o LocationThresholdRuleConditionResponseOutput) ToLocationThresholdRuleConditionResponseOutput() LocationThresholdRuleConditionResponseOutput {
+	return o
+}
+
+func (o LocationThresholdRuleConditionResponseOutput) ToLocationThresholdRuleConditionResponseOutputWithContext(ctx context.Context) LocationThresholdRuleConditionResponseOutput {
+	return o
+}
+
+// the resource from which the rule collects its data. For this type dataSource will always be of type RuleMetricDataSource.
+func (o LocationThresholdRuleConditionResponseOutput) DataSource() pulumi.AnyOutput {
+	return o.ApplyT(func(v LocationThresholdRuleConditionResponse) interface{} { return v.DataSource }).(pulumi.AnyOutput)
+}
+
+// the number of locations that must fail to activate the alert.
+func (o LocationThresholdRuleConditionResponseOutput) FailedLocationCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LocationThresholdRuleConditionResponse) int { return v.FailedLocationCount }).(pulumi.IntOutput)
+}
+
+// specifies the type of condition. This can be one of three types: ManagementEventRuleCondition (occurrences of management events), LocationThresholdRuleCondition (based on the number of failures of a web test), and ThresholdRuleCondition (based on the threshold of a metric).
+// Expected value is 'Microsoft.Azure.Management.Insights.Models.LocationThresholdRuleCondition'.
+func (o LocationThresholdRuleConditionResponseOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v LocationThresholdRuleConditionResponse) string { return v.OdataType }).(pulumi.StringOutput)
+}
+
+// the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold. If specified then it must be between 5 minutes and 1 day.
+func (o LocationThresholdRuleConditionResponseOutput) WindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocationThresholdRuleConditionResponse) *string { return v.WindowSize }).(pulumi.StringPtrOutput)
 }
 
 // Log Analytics destination.
@@ -12082,6 +12463,174 @@ type ManagementEventAggregationCondition struct {
 	WindowSize *string `pulumi:"windowSize"`
 }
 
+// ManagementEventAggregationConditionInput is an input type that accepts ManagementEventAggregationConditionArgs and ManagementEventAggregationConditionOutput values.
+// You can construct a concrete instance of `ManagementEventAggregationConditionInput` via:
+//
+//	ManagementEventAggregationConditionArgs{...}
+type ManagementEventAggregationConditionInput interface {
+	pulumi.Input
+
+	ToManagementEventAggregationConditionOutput() ManagementEventAggregationConditionOutput
+	ToManagementEventAggregationConditionOutputWithContext(context.Context) ManagementEventAggregationConditionOutput
+}
+
+// How the data that is collected should be combined over time.
+type ManagementEventAggregationConditionArgs struct {
+	// the condition operator.
+	Operator ConditionOperatorPtrInput `pulumi:"operator"`
+	// The threshold value that activates the alert.
+	Threshold pulumi.Float64PtrInput `pulumi:"threshold"`
+	// the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold. If specified then it must be between 5 minutes and 1 day.
+	WindowSize pulumi.StringPtrInput `pulumi:"windowSize"`
+}
+
+func (ManagementEventAggregationConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementEventAggregationCondition)(nil)).Elem()
+}
+
+func (i ManagementEventAggregationConditionArgs) ToManagementEventAggregationConditionOutput() ManagementEventAggregationConditionOutput {
+	return i.ToManagementEventAggregationConditionOutputWithContext(context.Background())
+}
+
+func (i ManagementEventAggregationConditionArgs) ToManagementEventAggregationConditionOutputWithContext(ctx context.Context) ManagementEventAggregationConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementEventAggregationConditionOutput)
+}
+
+func (i ManagementEventAggregationConditionArgs) ToManagementEventAggregationConditionPtrOutput() ManagementEventAggregationConditionPtrOutput {
+	return i.ToManagementEventAggregationConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ManagementEventAggregationConditionArgs) ToManagementEventAggregationConditionPtrOutputWithContext(ctx context.Context) ManagementEventAggregationConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementEventAggregationConditionOutput).ToManagementEventAggregationConditionPtrOutputWithContext(ctx)
+}
+
+// ManagementEventAggregationConditionPtrInput is an input type that accepts ManagementEventAggregationConditionArgs, ManagementEventAggregationConditionPtr and ManagementEventAggregationConditionPtrOutput values.
+// You can construct a concrete instance of `ManagementEventAggregationConditionPtrInput` via:
+//
+//	        ManagementEventAggregationConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagementEventAggregationConditionPtrInput interface {
+	pulumi.Input
+
+	ToManagementEventAggregationConditionPtrOutput() ManagementEventAggregationConditionPtrOutput
+	ToManagementEventAggregationConditionPtrOutputWithContext(context.Context) ManagementEventAggregationConditionPtrOutput
+}
+
+type managementEventAggregationConditionPtrType ManagementEventAggregationConditionArgs
+
+func ManagementEventAggregationConditionPtr(v *ManagementEventAggregationConditionArgs) ManagementEventAggregationConditionPtrInput {
+	return (*managementEventAggregationConditionPtrType)(v)
+}
+
+func (*managementEventAggregationConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagementEventAggregationCondition)(nil)).Elem()
+}
+
+func (i *managementEventAggregationConditionPtrType) ToManagementEventAggregationConditionPtrOutput() ManagementEventAggregationConditionPtrOutput {
+	return i.ToManagementEventAggregationConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *managementEventAggregationConditionPtrType) ToManagementEventAggregationConditionPtrOutputWithContext(ctx context.Context) ManagementEventAggregationConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementEventAggregationConditionPtrOutput)
+}
+
+// How the data that is collected should be combined over time.
+type ManagementEventAggregationConditionOutput struct{ *pulumi.OutputState }
+
+func (ManagementEventAggregationConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementEventAggregationCondition)(nil)).Elem()
+}
+
+func (o ManagementEventAggregationConditionOutput) ToManagementEventAggregationConditionOutput() ManagementEventAggregationConditionOutput {
+	return o
+}
+
+func (o ManagementEventAggregationConditionOutput) ToManagementEventAggregationConditionOutputWithContext(ctx context.Context) ManagementEventAggregationConditionOutput {
+	return o
+}
+
+func (o ManagementEventAggregationConditionOutput) ToManagementEventAggregationConditionPtrOutput() ManagementEventAggregationConditionPtrOutput {
+	return o.ToManagementEventAggregationConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ManagementEventAggregationConditionOutput) ToManagementEventAggregationConditionPtrOutputWithContext(ctx context.Context) ManagementEventAggregationConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagementEventAggregationCondition) *ManagementEventAggregationCondition {
+		return &v
+	}).(ManagementEventAggregationConditionPtrOutput)
+}
+
+// the condition operator.
+func (o ManagementEventAggregationConditionOutput) Operator() ConditionOperatorPtrOutput {
+	return o.ApplyT(func(v ManagementEventAggregationCondition) *ConditionOperator { return v.Operator }).(ConditionOperatorPtrOutput)
+}
+
+// The threshold value that activates the alert.
+func (o ManagementEventAggregationConditionOutput) Threshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ManagementEventAggregationCondition) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
+}
+
+// the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold. If specified then it must be between 5 minutes and 1 day.
+func (o ManagementEventAggregationConditionOutput) WindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagementEventAggregationCondition) *string { return v.WindowSize }).(pulumi.StringPtrOutput)
+}
+
+type ManagementEventAggregationConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagementEventAggregationConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagementEventAggregationCondition)(nil)).Elem()
+}
+
+func (o ManagementEventAggregationConditionPtrOutput) ToManagementEventAggregationConditionPtrOutput() ManagementEventAggregationConditionPtrOutput {
+	return o
+}
+
+func (o ManagementEventAggregationConditionPtrOutput) ToManagementEventAggregationConditionPtrOutputWithContext(ctx context.Context) ManagementEventAggregationConditionPtrOutput {
+	return o
+}
+
+func (o ManagementEventAggregationConditionPtrOutput) Elem() ManagementEventAggregationConditionOutput {
+	return o.ApplyT(func(v *ManagementEventAggregationCondition) ManagementEventAggregationCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ManagementEventAggregationCondition
+		return ret
+	}).(ManagementEventAggregationConditionOutput)
+}
+
+// the condition operator.
+func (o ManagementEventAggregationConditionPtrOutput) Operator() ConditionOperatorPtrOutput {
+	return o.ApplyT(func(v *ManagementEventAggregationCondition) *ConditionOperator {
+		if v == nil {
+			return nil
+		}
+		return v.Operator
+	}).(ConditionOperatorPtrOutput)
+}
+
+// The threshold value that activates the alert.
+func (o ManagementEventAggregationConditionPtrOutput) Threshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ManagementEventAggregationCondition) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Threshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold. If specified then it must be between 5 minutes and 1 day.
+func (o ManagementEventAggregationConditionPtrOutput) WindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagementEventAggregationCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WindowSize
+	}).(pulumi.StringPtrOutput)
+}
+
 // How the data that is collected should be combined over time.
 type ManagementEventAggregationConditionResponse struct {
 	// the condition operator.
@@ -12090,6 +12639,90 @@ type ManagementEventAggregationConditionResponse struct {
 	Threshold *float64 `pulumi:"threshold"`
 	// the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold. If specified then it must be between 5 minutes and 1 day.
 	WindowSize *string `pulumi:"windowSize"`
+}
+
+// How the data that is collected should be combined over time.
+type ManagementEventAggregationConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagementEventAggregationConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementEventAggregationConditionResponse)(nil)).Elem()
+}
+
+func (o ManagementEventAggregationConditionResponseOutput) ToManagementEventAggregationConditionResponseOutput() ManagementEventAggregationConditionResponseOutput {
+	return o
+}
+
+func (o ManagementEventAggregationConditionResponseOutput) ToManagementEventAggregationConditionResponseOutputWithContext(ctx context.Context) ManagementEventAggregationConditionResponseOutput {
+	return o
+}
+
+// the condition operator.
+func (o ManagementEventAggregationConditionResponseOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagementEventAggregationConditionResponse) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// The threshold value that activates the alert.
+func (o ManagementEventAggregationConditionResponseOutput) Threshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ManagementEventAggregationConditionResponse) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
+}
+
+// the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold. If specified then it must be between 5 minutes and 1 day.
+func (o ManagementEventAggregationConditionResponseOutput) WindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagementEventAggregationConditionResponse) *string { return v.WindowSize }).(pulumi.StringPtrOutput)
+}
+
+type ManagementEventAggregationConditionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagementEventAggregationConditionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagementEventAggregationConditionResponse)(nil)).Elem()
+}
+
+func (o ManagementEventAggregationConditionResponsePtrOutput) ToManagementEventAggregationConditionResponsePtrOutput() ManagementEventAggregationConditionResponsePtrOutput {
+	return o
+}
+
+func (o ManagementEventAggregationConditionResponsePtrOutput) ToManagementEventAggregationConditionResponsePtrOutputWithContext(ctx context.Context) ManagementEventAggregationConditionResponsePtrOutput {
+	return o
+}
+
+func (o ManagementEventAggregationConditionResponsePtrOutput) Elem() ManagementEventAggregationConditionResponseOutput {
+	return o.ApplyT(func(v *ManagementEventAggregationConditionResponse) ManagementEventAggregationConditionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagementEventAggregationConditionResponse
+		return ret
+	}).(ManagementEventAggregationConditionResponseOutput)
+}
+
+// the condition operator.
+func (o ManagementEventAggregationConditionResponsePtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagementEventAggregationConditionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// The threshold value that activates the alert.
+func (o ManagementEventAggregationConditionResponsePtrOutput) Threshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ManagementEventAggregationConditionResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Threshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold. If specified then it must be between 5 minutes and 1 day.
+func (o ManagementEventAggregationConditionResponsePtrOutput) WindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagementEventAggregationConditionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WindowSize
+	}).(pulumi.StringPtrOutput)
 }
 
 // A management event rule condition.
@@ -12103,6 +12736,71 @@ type ManagementEventRuleCondition struct {
 	OdataType string `pulumi:"odataType"`
 }
 
+// ManagementEventRuleConditionInput is an input type that accepts ManagementEventRuleConditionArgs and ManagementEventRuleConditionOutput values.
+// You can construct a concrete instance of `ManagementEventRuleConditionInput` via:
+//
+//	ManagementEventRuleConditionArgs{...}
+type ManagementEventRuleConditionInput interface {
+	pulumi.Input
+
+	ToManagementEventRuleConditionOutput() ManagementEventRuleConditionOutput
+	ToManagementEventRuleConditionOutputWithContext(context.Context) ManagementEventRuleConditionOutput
+}
+
+// A management event rule condition.
+type ManagementEventRuleConditionArgs struct {
+	// How the data that is collected should be combined over time and when the alert is activated. Note that for management event alerts aggregation is optional – if it is not provided then any event will cause the alert to activate.
+	Aggregation ManagementEventAggregationConditionPtrInput `pulumi:"aggregation"`
+	// the resource from which the rule collects its data. For this type dataSource will always be of type RuleMetricDataSource.
+	DataSource pulumi.Input `pulumi:"dataSource"`
+	// specifies the type of condition. This can be one of three types: ManagementEventRuleCondition (occurrences of management events), LocationThresholdRuleCondition (based on the number of failures of a web test), and ThresholdRuleCondition (based on the threshold of a metric).
+	// Expected value is 'Microsoft.Azure.Management.Insights.Models.ManagementEventRuleCondition'.
+	OdataType pulumi.StringInput `pulumi:"odataType"`
+}
+
+func (ManagementEventRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementEventRuleCondition)(nil)).Elem()
+}
+
+func (i ManagementEventRuleConditionArgs) ToManagementEventRuleConditionOutput() ManagementEventRuleConditionOutput {
+	return i.ToManagementEventRuleConditionOutputWithContext(context.Background())
+}
+
+func (i ManagementEventRuleConditionArgs) ToManagementEventRuleConditionOutputWithContext(ctx context.Context) ManagementEventRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementEventRuleConditionOutput)
+}
+
+// A management event rule condition.
+type ManagementEventRuleConditionOutput struct{ *pulumi.OutputState }
+
+func (ManagementEventRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementEventRuleCondition)(nil)).Elem()
+}
+
+func (o ManagementEventRuleConditionOutput) ToManagementEventRuleConditionOutput() ManagementEventRuleConditionOutput {
+	return o
+}
+
+func (o ManagementEventRuleConditionOutput) ToManagementEventRuleConditionOutputWithContext(ctx context.Context) ManagementEventRuleConditionOutput {
+	return o
+}
+
+// How the data that is collected should be combined over time and when the alert is activated. Note that for management event alerts aggregation is optional – if it is not provided then any event will cause the alert to activate.
+func (o ManagementEventRuleConditionOutput) Aggregation() ManagementEventAggregationConditionPtrOutput {
+	return o.ApplyT(func(v ManagementEventRuleCondition) *ManagementEventAggregationCondition { return v.Aggregation }).(ManagementEventAggregationConditionPtrOutput)
+}
+
+// the resource from which the rule collects its data. For this type dataSource will always be of type RuleMetricDataSource.
+func (o ManagementEventRuleConditionOutput) DataSource() pulumi.AnyOutput {
+	return o.ApplyT(func(v ManagementEventRuleCondition) interface{} { return v.DataSource }).(pulumi.AnyOutput)
+}
+
+// specifies the type of condition. This can be one of three types: ManagementEventRuleCondition (occurrences of management events), LocationThresholdRuleCondition (based on the number of failures of a web test), and ThresholdRuleCondition (based on the threshold of a metric).
+// Expected value is 'Microsoft.Azure.Management.Insights.Models.ManagementEventRuleCondition'.
+func (o ManagementEventRuleConditionOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagementEventRuleCondition) string { return v.OdataType }).(pulumi.StringOutput)
+}
+
 // A management event rule condition.
 type ManagementEventRuleConditionResponse struct {
 	// How the data that is collected should be combined over time and when the alert is activated. Note that for management event alerts aggregation is optional – if it is not provided then any event will cause the alert to activate.
@@ -12112,6 +12810,39 @@ type ManagementEventRuleConditionResponse struct {
 	// specifies the type of condition. This can be one of three types: ManagementEventRuleCondition (occurrences of management events), LocationThresholdRuleCondition (based on the number of failures of a web test), and ThresholdRuleCondition (based on the threshold of a metric).
 	// Expected value is 'Microsoft.Azure.Management.Insights.Models.ManagementEventRuleCondition'.
 	OdataType string `pulumi:"odataType"`
+}
+
+// A management event rule condition.
+type ManagementEventRuleConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagementEventRuleConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementEventRuleConditionResponse)(nil)).Elem()
+}
+
+func (o ManagementEventRuleConditionResponseOutput) ToManagementEventRuleConditionResponseOutput() ManagementEventRuleConditionResponseOutput {
+	return o
+}
+
+func (o ManagementEventRuleConditionResponseOutput) ToManagementEventRuleConditionResponseOutputWithContext(ctx context.Context) ManagementEventRuleConditionResponseOutput {
+	return o
+}
+
+// How the data that is collected should be combined over time and when the alert is activated. Note that for management event alerts aggregation is optional – if it is not provided then any event will cause the alert to activate.
+func (o ManagementEventRuleConditionResponseOutput) Aggregation() ManagementEventAggregationConditionResponsePtrOutput {
+	return o.ApplyT(func(v ManagementEventRuleConditionResponse) *ManagementEventAggregationConditionResponse {
+		return v.Aggregation
+	}).(ManagementEventAggregationConditionResponsePtrOutput)
+}
+
+// the resource from which the rule collects its data. For this type dataSource will always be of type RuleMetricDataSource.
+func (o ManagementEventRuleConditionResponseOutput) DataSource() pulumi.AnyOutput {
+	return o.ApplyT(func(v ManagementEventRuleConditionResponse) interface{} { return v.DataSource }).(pulumi.AnyOutput)
+}
+
+// specifies the type of condition. This can be one of three types: ManagementEventRuleCondition (occurrences of management events), LocationThresholdRuleCondition (based on the number of failures of a web test), and ThresholdRuleCondition (based on the threshold of a metric).
+// Expected value is 'Microsoft.Azure.Management.Insights.Models.ManagementEventRuleCondition'.
+func (o ManagementEventRuleConditionResponseOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagementEventRuleConditionResponse) string { return v.OdataType }).(pulumi.StringOutput)
 }
 
 // Part of Management Group diagnostic setting. Specifies the settings for a particular log.
@@ -12463,6 +13194,64 @@ type MetricAlertMultipleResourceMultipleMetricCriteria struct {
 	OdataType string `pulumi:"odataType"`
 }
 
+// MetricAlertMultipleResourceMultipleMetricCriteriaInput is an input type that accepts MetricAlertMultipleResourceMultipleMetricCriteriaArgs and MetricAlertMultipleResourceMultipleMetricCriteriaOutput values.
+// You can construct a concrete instance of `MetricAlertMultipleResourceMultipleMetricCriteriaInput` via:
+//
+//	MetricAlertMultipleResourceMultipleMetricCriteriaArgs{...}
+type MetricAlertMultipleResourceMultipleMetricCriteriaInput interface {
+	pulumi.Input
+
+	ToMetricAlertMultipleResourceMultipleMetricCriteriaOutput() MetricAlertMultipleResourceMultipleMetricCriteriaOutput
+	ToMetricAlertMultipleResourceMultipleMetricCriteriaOutputWithContext(context.Context) MetricAlertMultipleResourceMultipleMetricCriteriaOutput
+}
+
+// Specifies the metric alert criteria for multiple resource that has multiple metric criteria.
+type MetricAlertMultipleResourceMultipleMetricCriteriaArgs struct {
+	// the list of multiple metric criteria for this 'all of' operation.
+	AllOf pulumi.ArrayInput `pulumi:"allOf"`
+	// specifies the type of the alert criteria.
+	// Expected value is 'Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria'.
+	OdataType pulumi.StringInput `pulumi:"odataType"`
+}
+
+func (MetricAlertMultipleResourceMultipleMetricCriteriaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricAlertMultipleResourceMultipleMetricCriteria)(nil)).Elem()
+}
+
+func (i MetricAlertMultipleResourceMultipleMetricCriteriaArgs) ToMetricAlertMultipleResourceMultipleMetricCriteriaOutput() MetricAlertMultipleResourceMultipleMetricCriteriaOutput {
+	return i.ToMetricAlertMultipleResourceMultipleMetricCriteriaOutputWithContext(context.Background())
+}
+
+func (i MetricAlertMultipleResourceMultipleMetricCriteriaArgs) ToMetricAlertMultipleResourceMultipleMetricCriteriaOutputWithContext(ctx context.Context) MetricAlertMultipleResourceMultipleMetricCriteriaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricAlertMultipleResourceMultipleMetricCriteriaOutput)
+}
+
+// Specifies the metric alert criteria for multiple resource that has multiple metric criteria.
+type MetricAlertMultipleResourceMultipleMetricCriteriaOutput struct{ *pulumi.OutputState }
+
+func (MetricAlertMultipleResourceMultipleMetricCriteriaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricAlertMultipleResourceMultipleMetricCriteria)(nil)).Elem()
+}
+
+func (o MetricAlertMultipleResourceMultipleMetricCriteriaOutput) ToMetricAlertMultipleResourceMultipleMetricCriteriaOutput() MetricAlertMultipleResourceMultipleMetricCriteriaOutput {
+	return o
+}
+
+func (o MetricAlertMultipleResourceMultipleMetricCriteriaOutput) ToMetricAlertMultipleResourceMultipleMetricCriteriaOutputWithContext(ctx context.Context) MetricAlertMultipleResourceMultipleMetricCriteriaOutput {
+	return o
+}
+
+// the list of multiple metric criteria for this 'all of' operation.
+func (o MetricAlertMultipleResourceMultipleMetricCriteriaOutput) AllOf() pulumi.ArrayOutput {
+	return o.ApplyT(func(v MetricAlertMultipleResourceMultipleMetricCriteria) []interface{} { return v.AllOf }).(pulumi.ArrayOutput)
+}
+
+// specifies the type of the alert criteria.
+// Expected value is 'Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria'.
+func (o MetricAlertMultipleResourceMultipleMetricCriteriaOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricAlertMultipleResourceMultipleMetricCriteria) string { return v.OdataType }).(pulumi.StringOutput)
+}
+
 // Specifies the metric alert criteria for multiple resource that has multiple metric criteria.
 type MetricAlertMultipleResourceMultipleMetricCriteriaResponse struct {
 	// the list of multiple metric criteria for this 'all of' operation.
@@ -12470,6 +13259,32 @@ type MetricAlertMultipleResourceMultipleMetricCriteriaResponse struct {
 	// specifies the type of the alert criteria.
 	// Expected value is 'Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria'.
 	OdataType string `pulumi:"odataType"`
+}
+
+// Specifies the metric alert criteria for multiple resource that has multiple metric criteria.
+type MetricAlertMultipleResourceMultipleMetricCriteriaResponseOutput struct{ *pulumi.OutputState }
+
+func (MetricAlertMultipleResourceMultipleMetricCriteriaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricAlertMultipleResourceMultipleMetricCriteriaResponse)(nil)).Elem()
+}
+
+func (o MetricAlertMultipleResourceMultipleMetricCriteriaResponseOutput) ToMetricAlertMultipleResourceMultipleMetricCriteriaResponseOutput() MetricAlertMultipleResourceMultipleMetricCriteriaResponseOutput {
+	return o
+}
+
+func (o MetricAlertMultipleResourceMultipleMetricCriteriaResponseOutput) ToMetricAlertMultipleResourceMultipleMetricCriteriaResponseOutputWithContext(ctx context.Context) MetricAlertMultipleResourceMultipleMetricCriteriaResponseOutput {
+	return o
+}
+
+// the list of multiple metric criteria for this 'all of' operation.
+func (o MetricAlertMultipleResourceMultipleMetricCriteriaResponseOutput) AllOf() pulumi.ArrayOutput {
+	return o.ApplyT(func(v MetricAlertMultipleResourceMultipleMetricCriteriaResponse) []interface{} { return v.AllOf }).(pulumi.ArrayOutput)
+}
+
+// specifies the type of the alert criteria.
+// Expected value is 'Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria'.
+func (o MetricAlertMultipleResourceMultipleMetricCriteriaResponseOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricAlertMultipleResourceMultipleMetricCriteriaResponse) string { return v.OdataType }).(pulumi.StringOutput)
 }
 
 // Specifies the metric alert criteria for a single resource that has multiple metric criteria.
@@ -12481,6 +13296,64 @@ type MetricAlertSingleResourceMultipleMetricCriteria struct {
 	OdataType string `pulumi:"odataType"`
 }
 
+// MetricAlertSingleResourceMultipleMetricCriteriaInput is an input type that accepts MetricAlertSingleResourceMultipleMetricCriteriaArgs and MetricAlertSingleResourceMultipleMetricCriteriaOutput values.
+// You can construct a concrete instance of `MetricAlertSingleResourceMultipleMetricCriteriaInput` via:
+//
+//	MetricAlertSingleResourceMultipleMetricCriteriaArgs{...}
+type MetricAlertSingleResourceMultipleMetricCriteriaInput interface {
+	pulumi.Input
+
+	ToMetricAlertSingleResourceMultipleMetricCriteriaOutput() MetricAlertSingleResourceMultipleMetricCriteriaOutput
+	ToMetricAlertSingleResourceMultipleMetricCriteriaOutputWithContext(context.Context) MetricAlertSingleResourceMultipleMetricCriteriaOutput
+}
+
+// Specifies the metric alert criteria for a single resource that has multiple metric criteria.
+type MetricAlertSingleResourceMultipleMetricCriteriaArgs struct {
+	// The list of metric criteria for this 'all of' operation.
+	AllOf MetricCriteriaArrayInput `pulumi:"allOf"`
+	// specifies the type of the alert criteria.
+	// Expected value is 'Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria'.
+	OdataType pulumi.StringInput `pulumi:"odataType"`
+}
+
+func (MetricAlertSingleResourceMultipleMetricCriteriaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricAlertSingleResourceMultipleMetricCriteria)(nil)).Elem()
+}
+
+func (i MetricAlertSingleResourceMultipleMetricCriteriaArgs) ToMetricAlertSingleResourceMultipleMetricCriteriaOutput() MetricAlertSingleResourceMultipleMetricCriteriaOutput {
+	return i.ToMetricAlertSingleResourceMultipleMetricCriteriaOutputWithContext(context.Background())
+}
+
+func (i MetricAlertSingleResourceMultipleMetricCriteriaArgs) ToMetricAlertSingleResourceMultipleMetricCriteriaOutputWithContext(ctx context.Context) MetricAlertSingleResourceMultipleMetricCriteriaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricAlertSingleResourceMultipleMetricCriteriaOutput)
+}
+
+// Specifies the metric alert criteria for a single resource that has multiple metric criteria.
+type MetricAlertSingleResourceMultipleMetricCriteriaOutput struct{ *pulumi.OutputState }
+
+func (MetricAlertSingleResourceMultipleMetricCriteriaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricAlertSingleResourceMultipleMetricCriteria)(nil)).Elem()
+}
+
+func (o MetricAlertSingleResourceMultipleMetricCriteriaOutput) ToMetricAlertSingleResourceMultipleMetricCriteriaOutput() MetricAlertSingleResourceMultipleMetricCriteriaOutput {
+	return o
+}
+
+func (o MetricAlertSingleResourceMultipleMetricCriteriaOutput) ToMetricAlertSingleResourceMultipleMetricCriteriaOutputWithContext(ctx context.Context) MetricAlertSingleResourceMultipleMetricCriteriaOutput {
+	return o
+}
+
+// The list of metric criteria for this 'all of' operation.
+func (o MetricAlertSingleResourceMultipleMetricCriteriaOutput) AllOf() MetricCriteriaArrayOutput {
+	return o.ApplyT(func(v MetricAlertSingleResourceMultipleMetricCriteria) []MetricCriteria { return v.AllOf }).(MetricCriteriaArrayOutput)
+}
+
+// specifies the type of the alert criteria.
+// Expected value is 'Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria'.
+func (o MetricAlertSingleResourceMultipleMetricCriteriaOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricAlertSingleResourceMultipleMetricCriteria) string { return v.OdataType }).(pulumi.StringOutput)
+}
+
 // Specifies the metric alert criteria for a single resource that has multiple metric criteria.
 type MetricAlertSingleResourceMultipleMetricCriteriaResponse struct {
 	// The list of metric criteria for this 'all of' operation.
@@ -12488,6 +13361,34 @@ type MetricAlertSingleResourceMultipleMetricCriteriaResponse struct {
 	// specifies the type of the alert criteria.
 	// Expected value is 'Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria'.
 	OdataType string `pulumi:"odataType"`
+}
+
+// Specifies the metric alert criteria for a single resource that has multiple metric criteria.
+type MetricAlertSingleResourceMultipleMetricCriteriaResponseOutput struct{ *pulumi.OutputState }
+
+func (MetricAlertSingleResourceMultipleMetricCriteriaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricAlertSingleResourceMultipleMetricCriteriaResponse)(nil)).Elem()
+}
+
+func (o MetricAlertSingleResourceMultipleMetricCriteriaResponseOutput) ToMetricAlertSingleResourceMultipleMetricCriteriaResponseOutput() MetricAlertSingleResourceMultipleMetricCriteriaResponseOutput {
+	return o
+}
+
+func (o MetricAlertSingleResourceMultipleMetricCriteriaResponseOutput) ToMetricAlertSingleResourceMultipleMetricCriteriaResponseOutputWithContext(ctx context.Context) MetricAlertSingleResourceMultipleMetricCriteriaResponseOutput {
+	return o
+}
+
+// The list of metric criteria for this 'all of' operation.
+func (o MetricAlertSingleResourceMultipleMetricCriteriaResponseOutput) AllOf() MetricCriteriaResponseArrayOutput {
+	return o.ApplyT(func(v MetricAlertSingleResourceMultipleMetricCriteriaResponse) []MetricCriteriaResponse {
+		return v.AllOf
+	}).(MetricCriteriaResponseArrayOutput)
+}
+
+// specifies the type of the alert criteria.
+// Expected value is 'Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria'.
+func (o MetricAlertSingleResourceMultipleMetricCriteriaResponseOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricAlertSingleResourceMultipleMetricCriteriaResponse) string { return v.OdataType }).(pulumi.StringOutput)
 }
 
 // Criterion to filter metrics.
@@ -12513,6 +13414,158 @@ type MetricCriteria struct {
 	TimeAggregation string `pulumi:"timeAggregation"`
 }
 
+// MetricCriteriaInput is an input type that accepts MetricCriteriaArgs and MetricCriteriaOutput values.
+// You can construct a concrete instance of `MetricCriteriaInput` via:
+//
+//	MetricCriteriaArgs{...}
+type MetricCriteriaInput interface {
+	pulumi.Input
+
+	ToMetricCriteriaOutput() MetricCriteriaOutput
+	ToMetricCriteriaOutputWithContext(context.Context) MetricCriteriaOutput
+}
+
+// Criterion to filter metrics.
+type MetricCriteriaArgs struct {
+	// Specifies the type of threshold criteria
+	// Expected value is 'StaticThresholdCriterion'.
+	CriterionType pulumi.StringInput `pulumi:"criterionType"`
+	// List of dimension conditions.
+	Dimensions MetricDimensionArrayInput `pulumi:"dimensions"`
+	// Name of the metric.
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// Namespace of the metric.
+	MetricNamespace pulumi.StringPtrInput `pulumi:"metricNamespace"`
+	// Name of the criteria.
+	Name pulumi.StringInput `pulumi:"name"`
+	// the criteria operator.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped.
+	SkipMetricValidation pulumi.BoolPtrInput `pulumi:"skipMetricValidation"`
+	// the criteria threshold value that activates the alert.
+	Threshold pulumi.Float64Input `pulumi:"threshold"`
+	// the criteria time aggregation types.
+	TimeAggregation pulumi.StringInput `pulumi:"timeAggregation"`
+}
+
+func (MetricCriteriaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricCriteria)(nil)).Elem()
+}
+
+func (i MetricCriteriaArgs) ToMetricCriteriaOutput() MetricCriteriaOutput {
+	return i.ToMetricCriteriaOutputWithContext(context.Background())
+}
+
+func (i MetricCriteriaArgs) ToMetricCriteriaOutputWithContext(ctx context.Context) MetricCriteriaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricCriteriaOutput)
+}
+
+// MetricCriteriaArrayInput is an input type that accepts MetricCriteriaArray and MetricCriteriaArrayOutput values.
+// You can construct a concrete instance of `MetricCriteriaArrayInput` via:
+//
+//	MetricCriteriaArray{ MetricCriteriaArgs{...} }
+type MetricCriteriaArrayInput interface {
+	pulumi.Input
+
+	ToMetricCriteriaArrayOutput() MetricCriteriaArrayOutput
+	ToMetricCriteriaArrayOutputWithContext(context.Context) MetricCriteriaArrayOutput
+}
+
+type MetricCriteriaArray []MetricCriteriaInput
+
+func (MetricCriteriaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricCriteria)(nil)).Elem()
+}
+
+func (i MetricCriteriaArray) ToMetricCriteriaArrayOutput() MetricCriteriaArrayOutput {
+	return i.ToMetricCriteriaArrayOutputWithContext(context.Background())
+}
+
+func (i MetricCriteriaArray) ToMetricCriteriaArrayOutputWithContext(ctx context.Context) MetricCriteriaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricCriteriaArrayOutput)
+}
+
+// Criterion to filter metrics.
+type MetricCriteriaOutput struct{ *pulumi.OutputState }
+
+func (MetricCriteriaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricCriteria)(nil)).Elem()
+}
+
+func (o MetricCriteriaOutput) ToMetricCriteriaOutput() MetricCriteriaOutput {
+	return o
+}
+
+func (o MetricCriteriaOutput) ToMetricCriteriaOutputWithContext(ctx context.Context) MetricCriteriaOutput {
+	return o
+}
+
+// Specifies the type of threshold criteria
+// Expected value is 'StaticThresholdCriterion'.
+func (o MetricCriteriaOutput) CriterionType() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricCriteria) string { return v.CriterionType }).(pulumi.StringOutput)
+}
+
+// List of dimension conditions.
+func (o MetricCriteriaOutput) Dimensions() MetricDimensionArrayOutput {
+	return o.ApplyT(func(v MetricCriteria) []MetricDimension { return v.Dimensions }).(MetricDimensionArrayOutput)
+}
+
+// Name of the metric.
+func (o MetricCriteriaOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricCriteria) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// Namespace of the metric.
+func (o MetricCriteriaOutput) MetricNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricCriteria) *string { return v.MetricNamespace }).(pulumi.StringPtrOutput)
+}
+
+// Name of the criteria.
+func (o MetricCriteriaOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricCriteria) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// the criteria operator.
+func (o MetricCriteriaOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricCriteria) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped.
+func (o MetricCriteriaOutput) SkipMetricValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MetricCriteria) *bool { return v.SkipMetricValidation }).(pulumi.BoolPtrOutput)
+}
+
+// the criteria threshold value that activates the alert.
+func (o MetricCriteriaOutput) Threshold() pulumi.Float64Output {
+	return o.ApplyT(func(v MetricCriteria) float64 { return v.Threshold }).(pulumi.Float64Output)
+}
+
+// the criteria time aggregation types.
+func (o MetricCriteriaOutput) TimeAggregation() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricCriteria) string { return v.TimeAggregation }).(pulumi.StringOutput)
+}
+
+type MetricCriteriaArrayOutput struct{ *pulumi.OutputState }
+
+func (MetricCriteriaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricCriteria)(nil)).Elem()
+}
+
+func (o MetricCriteriaArrayOutput) ToMetricCriteriaArrayOutput() MetricCriteriaArrayOutput {
+	return o
+}
+
+func (o MetricCriteriaArrayOutput) ToMetricCriteriaArrayOutputWithContext(ctx context.Context) MetricCriteriaArrayOutput {
+	return o
+}
+
+func (o MetricCriteriaArrayOutput) Index(i pulumi.IntInput) MetricCriteriaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricCriteria {
+		return vs[0].([]MetricCriteria)[vs[1].(int)]
+	}).(MetricCriteriaOutput)
+}
+
 // Criterion to filter metrics.
 type MetricCriteriaResponse struct {
 	// Specifies the type of threshold criteria
@@ -12536,6 +13589,87 @@ type MetricCriteriaResponse struct {
 	TimeAggregation string `pulumi:"timeAggregation"`
 }
 
+// Criterion to filter metrics.
+type MetricCriteriaResponseOutput struct{ *pulumi.OutputState }
+
+func (MetricCriteriaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricCriteriaResponse)(nil)).Elem()
+}
+
+func (o MetricCriteriaResponseOutput) ToMetricCriteriaResponseOutput() MetricCriteriaResponseOutput {
+	return o
+}
+
+func (o MetricCriteriaResponseOutput) ToMetricCriteriaResponseOutputWithContext(ctx context.Context) MetricCriteriaResponseOutput {
+	return o
+}
+
+// Specifies the type of threshold criteria
+// Expected value is 'StaticThresholdCriterion'.
+func (o MetricCriteriaResponseOutput) CriterionType() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricCriteriaResponse) string { return v.CriterionType }).(pulumi.StringOutput)
+}
+
+// List of dimension conditions.
+func (o MetricCriteriaResponseOutput) Dimensions() MetricDimensionResponseArrayOutput {
+	return o.ApplyT(func(v MetricCriteriaResponse) []MetricDimensionResponse { return v.Dimensions }).(MetricDimensionResponseArrayOutput)
+}
+
+// Name of the metric.
+func (o MetricCriteriaResponseOutput) MetricName() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricCriteriaResponse) string { return v.MetricName }).(pulumi.StringOutput)
+}
+
+// Namespace of the metric.
+func (o MetricCriteriaResponseOutput) MetricNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricCriteriaResponse) *string { return v.MetricNamespace }).(pulumi.StringPtrOutput)
+}
+
+// Name of the criteria.
+func (o MetricCriteriaResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricCriteriaResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// the criteria operator.
+func (o MetricCriteriaResponseOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricCriteriaResponse) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped.
+func (o MetricCriteriaResponseOutput) SkipMetricValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MetricCriteriaResponse) *bool { return v.SkipMetricValidation }).(pulumi.BoolPtrOutput)
+}
+
+// the criteria threshold value that activates the alert.
+func (o MetricCriteriaResponseOutput) Threshold() pulumi.Float64Output {
+	return o.ApplyT(func(v MetricCriteriaResponse) float64 { return v.Threshold }).(pulumi.Float64Output)
+}
+
+// the criteria time aggregation types.
+func (o MetricCriteriaResponseOutput) TimeAggregation() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricCriteriaResponse) string { return v.TimeAggregation }).(pulumi.StringOutput)
+}
+
+type MetricCriteriaResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MetricCriteriaResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricCriteriaResponse)(nil)).Elem()
+}
+
+func (o MetricCriteriaResponseArrayOutput) ToMetricCriteriaResponseArrayOutput() MetricCriteriaResponseArrayOutput {
+	return o
+}
+
+func (o MetricCriteriaResponseArrayOutput) ToMetricCriteriaResponseArrayOutputWithContext(ctx context.Context) MetricCriteriaResponseArrayOutput {
+	return o
+}
+
+func (o MetricCriteriaResponseArrayOutput) Index(i pulumi.IntInput) MetricCriteriaResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricCriteriaResponse {
+		return vs[0].([]MetricCriteriaResponse)[vs[1].(int)]
+	}).(MetricCriteriaResponseOutput)
+}
+
 // Specifies a metric dimension.
 type MetricDimension struct {
 	// Name of the dimension.
@@ -12546,6 +13680,114 @@ type MetricDimension struct {
 	Values []string `pulumi:"values"`
 }
 
+// MetricDimensionInput is an input type that accepts MetricDimensionArgs and MetricDimensionOutput values.
+// You can construct a concrete instance of `MetricDimensionInput` via:
+//
+//	MetricDimensionArgs{...}
+type MetricDimensionInput interface {
+	pulumi.Input
+
+	ToMetricDimensionOutput() MetricDimensionOutput
+	ToMetricDimensionOutputWithContext(context.Context) MetricDimensionOutput
+}
+
+// Specifies a metric dimension.
+type MetricDimensionArgs struct {
+	// Name of the dimension.
+	Name pulumi.StringInput `pulumi:"name"`
+	// the dimension operator. Only 'Include' and 'Exclude' are supported
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// list of dimension values.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (MetricDimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDimension)(nil)).Elem()
+}
+
+func (i MetricDimensionArgs) ToMetricDimensionOutput() MetricDimensionOutput {
+	return i.ToMetricDimensionOutputWithContext(context.Background())
+}
+
+func (i MetricDimensionArgs) ToMetricDimensionOutputWithContext(ctx context.Context) MetricDimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDimensionOutput)
+}
+
+// MetricDimensionArrayInput is an input type that accepts MetricDimensionArray and MetricDimensionArrayOutput values.
+// You can construct a concrete instance of `MetricDimensionArrayInput` via:
+//
+//	MetricDimensionArray{ MetricDimensionArgs{...} }
+type MetricDimensionArrayInput interface {
+	pulumi.Input
+
+	ToMetricDimensionArrayOutput() MetricDimensionArrayOutput
+	ToMetricDimensionArrayOutputWithContext(context.Context) MetricDimensionArrayOutput
+}
+
+type MetricDimensionArray []MetricDimensionInput
+
+func (MetricDimensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricDimension)(nil)).Elem()
+}
+
+func (i MetricDimensionArray) ToMetricDimensionArrayOutput() MetricDimensionArrayOutput {
+	return i.ToMetricDimensionArrayOutputWithContext(context.Background())
+}
+
+func (i MetricDimensionArray) ToMetricDimensionArrayOutputWithContext(ctx context.Context) MetricDimensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDimensionArrayOutput)
+}
+
+// Specifies a metric dimension.
+type MetricDimensionOutput struct{ *pulumi.OutputState }
+
+func (MetricDimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDimension)(nil)).Elem()
+}
+
+func (o MetricDimensionOutput) ToMetricDimensionOutput() MetricDimensionOutput {
+	return o
+}
+
+func (o MetricDimensionOutput) ToMetricDimensionOutputWithContext(ctx context.Context) MetricDimensionOutput {
+	return o
+}
+
+// Name of the dimension.
+func (o MetricDimensionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDimension) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// the dimension operator. Only 'Include' and 'Exclude' are supported
+func (o MetricDimensionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDimension) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// list of dimension values.
+func (o MetricDimensionOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MetricDimension) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type MetricDimensionArrayOutput struct{ *pulumi.OutputState }
+
+func (MetricDimensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricDimension)(nil)).Elem()
+}
+
+func (o MetricDimensionArrayOutput) ToMetricDimensionArrayOutput() MetricDimensionArrayOutput {
+	return o
+}
+
+func (o MetricDimensionArrayOutput) ToMetricDimensionArrayOutputWithContext(ctx context.Context) MetricDimensionArrayOutput {
+	return o
+}
+
+func (o MetricDimensionArrayOutput) Index(i pulumi.IntInput) MetricDimensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricDimension {
+		return vs[0].([]MetricDimension)[vs[1].(int)]
+	}).(MetricDimensionOutput)
+}
+
 // Specifies a metric dimension.
 type MetricDimensionResponse struct {
 	// Name of the dimension.
@@ -12554,6 +13796,56 @@ type MetricDimensionResponse struct {
 	Operator string `pulumi:"operator"`
 	// list of dimension values.
 	Values []string `pulumi:"values"`
+}
+
+// Specifies a metric dimension.
+type MetricDimensionResponseOutput struct{ *pulumi.OutputState }
+
+func (MetricDimensionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDimensionResponse)(nil)).Elem()
+}
+
+func (o MetricDimensionResponseOutput) ToMetricDimensionResponseOutput() MetricDimensionResponseOutput {
+	return o
+}
+
+func (o MetricDimensionResponseOutput) ToMetricDimensionResponseOutputWithContext(ctx context.Context) MetricDimensionResponseOutput {
+	return o
+}
+
+// Name of the dimension.
+func (o MetricDimensionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDimensionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// the dimension operator. Only 'Include' and 'Exclude' are supported
+func (o MetricDimensionResponseOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDimensionResponse) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// list of dimension values.
+func (o MetricDimensionResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MetricDimensionResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type MetricDimensionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MetricDimensionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricDimensionResponse)(nil)).Elem()
+}
+
+func (o MetricDimensionResponseArrayOutput) ToMetricDimensionResponseArrayOutput() MetricDimensionResponseArrayOutput {
+	return o
+}
+
+func (o MetricDimensionResponseArrayOutput) ToMetricDimensionResponseArrayOutputWithContext(ctx context.Context) MetricDimensionResponseArrayOutput {
+	return o
+}
+
+func (o MetricDimensionResponseArrayOutput) Index(i pulumi.IntInput) MetricDimensionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricDimensionResponse {
+		return vs[0].([]MetricDimensionResponse)[vs[1].(int)]
+	}).(MetricDimensionResponseOutput)
 }
 
 // Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular metric.
@@ -15548,6 +16840,177 @@ type RuleEmailAction struct {
 	SendToServiceOwners *bool `pulumi:"sendToServiceOwners"`
 }
 
+// RuleEmailActionInput is an input type that accepts RuleEmailActionArgs and RuleEmailActionOutput values.
+// You can construct a concrete instance of `RuleEmailActionInput` via:
+//
+//	RuleEmailActionArgs{...}
+type RuleEmailActionInput interface {
+	pulumi.Input
+
+	ToRuleEmailActionOutput() RuleEmailActionOutput
+	ToRuleEmailActionOutputWithContext(context.Context) RuleEmailActionOutput
+}
+
+// Specifies the action to send email when the rule condition is evaluated. The discriminator is always RuleEmailAction in this case.
+type RuleEmailActionArgs struct {
+	// the list of administrator's custom email addresses to notify of the activation of the alert.
+	CustomEmails pulumi.StringArrayInput `pulumi:"customEmails"`
+	// specifies the type of the action. There are two types of actions: RuleEmailAction and RuleWebhookAction.
+	// Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleEmailAction'.
+	OdataType pulumi.StringInput `pulumi:"odataType"`
+	// Whether the administrators (service and co-administrators) of the service should be notified when the alert is activated.
+	SendToServiceOwners pulumi.BoolPtrInput `pulumi:"sendToServiceOwners"`
+}
+
+func (RuleEmailActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleEmailAction)(nil)).Elem()
+}
+
+func (i RuleEmailActionArgs) ToRuleEmailActionOutput() RuleEmailActionOutput {
+	return i.ToRuleEmailActionOutputWithContext(context.Background())
+}
+
+func (i RuleEmailActionArgs) ToRuleEmailActionOutputWithContext(ctx context.Context) RuleEmailActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleEmailActionOutput)
+}
+
+func (i RuleEmailActionArgs) ToRuleEmailActionPtrOutput() RuleEmailActionPtrOutput {
+	return i.ToRuleEmailActionPtrOutputWithContext(context.Background())
+}
+
+func (i RuleEmailActionArgs) ToRuleEmailActionPtrOutputWithContext(ctx context.Context) RuleEmailActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleEmailActionOutput).ToRuleEmailActionPtrOutputWithContext(ctx)
+}
+
+// RuleEmailActionPtrInput is an input type that accepts RuleEmailActionArgs, RuleEmailActionPtr and RuleEmailActionPtrOutput values.
+// You can construct a concrete instance of `RuleEmailActionPtrInput` via:
+//
+//	        RuleEmailActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuleEmailActionPtrInput interface {
+	pulumi.Input
+
+	ToRuleEmailActionPtrOutput() RuleEmailActionPtrOutput
+	ToRuleEmailActionPtrOutputWithContext(context.Context) RuleEmailActionPtrOutput
+}
+
+type ruleEmailActionPtrType RuleEmailActionArgs
+
+func RuleEmailActionPtr(v *RuleEmailActionArgs) RuleEmailActionPtrInput {
+	return (*ruleEmailActionPtrType)(v)
+}
+
+func (*ruleEmailActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleEmailAction)(nil)).Elem()
+}
+
+func (i *ruleEmailActionPtrType) ToRuleEmailActionPtrOutput() RuleEmailActionPtrOutput {
+	return i.ToRuleEmailActionPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleEmailActionPtrType) ToRuleEmailActionPtrOutputWithContext(ctx context.Context) RuleEmailActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleEmailActionPtrOutput)
+}
+
+// Specifies the action to send email when the rule condition is evaluated. The discriminator is always RuleEmailAction in this case.
+type RuleEmailActionOutput struct{ *pulumi.OutputState }
+
+func (RuleEmailActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleEmailAction)(nil)).Elem()
+}
+
+func (o RuleEmailActionOutput) ToRuleEmailActionOutput() RuleEmailActionOutput {
+	return o
+}
+
+func (o RuleEmailActionOutput) ToRuleEmailActionOutputWithContext(ctx context.Context) RuleEmailActionOutput {
+	return o
+}
+
+func (o RuleEmailActionOutput) ToRuleEmailActionPtrOutput() RuleEmailActionPtrOutput {
+	return o.ToRuleEmailActionPtrOutputWithContext(context.Background())
+}
+
+func (o RuleEmailActionOutput) ToRuleEmailActionPtrOutputWithContext(ctx context.Context) RuleEmailActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleEmailAction) *RuleEmailAction {
+		return &v
+	}).(RuleEmailActionPtrOutput)
+}
+
+// the list of administrator's custom email addresses to notify of the activation of the alert.
+func (o RuleEmailActionOutput) CustomEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuleEmailAction) []string { return v.CustomEmails }).(pulumi.StringArrayOutput)
+}
+
+// specifies the type of the action. There are two types of actions: RuleEmailAction and RuleWebhookAction.
+// Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleEmailAction'.
+func (o RuleEmailActionOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleEmailAction) string { return v.OdataType }).(pulumi.StringOutput)
+}
+
+// Whether the administrators (service and co-administrators) of the service should be notified when the alert is activated.
+func (o RuleEmailActionOutput) SendToServiceOwners() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RuleEmailAction) *bool { return v.SendToServiceOwners }).(pulumi.BoolPtrOutput)
+}
+
+type RuleEmailActionPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleEmailActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleEmailAction)(nil)).Elem()
+}
+
+func (o RuleEmailActionPtrOutput) ToRuleEmailActionPtrOutput() RuleEmailActionPtrOutput {
+	return o
+}
+
+func (o RuleEmailActionPtrOutput) ToRuleEmailActionPtrOutputWithContext(ctx context.Context) RuleEmailActionPtrOutput {
+	return o
+}
+
+func (o RuleEmailActionPtrOutput) Elem() RuleEmailActionOutput {
+	return o.ApplyT(func(v *RuleEmailAction) RuleEmailAction {
+		if v != nil {
+			return *v
+		}
+		var ret RuleEmailAction
+		return ret
+	}).(RuleEmailActionOutput)
+}
+
+// the list of administrator's custom email addresses to notify of the activation of the alert.
+func (o RuleEmailActionPtrOutput) CustomEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RuleEmailAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomEmails
+	}).(pulumi.StringArrayOutput)
+}
+
+// specifies the type of the action. There are two types of actions: RuleEmailAction and RuleWebhookAction.
+// Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleEmailAction'.
+func (o RuleEmailActionPtrOutput) OdataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleEmailAction) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OdataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the administrators (service and co-administrators) of the service should be notified when the alert is activated.
+func (o RuleEmailActionPtrOutput) SendToServiceOwners() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RuleEmailAction) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SendToServiceOwners
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Specifies the action to send email when the rule condition is evaluated. The discriminator is always RuleEmailAction in this case.
 type RuleEmailActionResponse struct {
 	// the list of administrator's custom email addresses to notify of the activation of the alert.
@@ -15559,16 +17022,290 @@ type RuleEmailActionResponse struct {
 	SendToServiceOwners *bool `pulumi:"sendToServiceOwners"`
 }
 
+// Specifies the action to send email when the rule condition is evaluated. The discriminator is always RuleEmailAction in this case.
+type RuleEmailActionResponseOutput struct{ *pulumi.OutputState }
+
+func (RuleEmailActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleEmailActionResponse)(nil)).Elem()
+}
+
+func (o RuleEmailActionResponseOutput) ToRuleEmailActionResponseOutput() RuleEmailActionResponseOutput {
+	return o
+}
+
+func (o RuleEmailActionResponseOutput) ToRuleEmailActionResponseOutputWithContext(ctx context.Context) RuleEmailActionResponseOutput {
+	return o
+}
+
+// the list of administrator's custom email addresses to notify of the activation of the alert.
+func (o RuleEmailActionResponseOutput) CustomEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RuleEmailActionResponse) []string { return v.CustomEmails }).(pulumi.StringArrayOutput)
+}
+
+// specifies the type of the action. There are two types of actions: RuleEmailAction and RuleWebhookAction.
+// Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleEmailAction'.
+func (o RuleEmailActionResponseOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleEmailActionResponse) string { return v.OdataType }).(pulumi.StringOutput)
+}
+
+// Whether the administrators (service and co-administrators) of the service should be notified when the alert is activated.
+func (o RuleEmailActionResponseOutput) SendToServiceOwners() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RuleEmailActionResponse) *bool { return v.SendToServiceOwners }).(pulumi.BoolPtrOutput)
+}
+
+type RuleEmailActionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RuleEmailActionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleEmailActionResponse)(nil)).Elem()
+}
+
+func (o RuleEmailActionResponsePtrOutput) ToRuleEmailActionResponsePtrOutput() RuleEmailActionResponsePtrOutput {
+	return o
+}
+
+func (o RuleEmailActionResponsePtrOutput) ToRuleEmailActionResponsePtrOutputWithContext(ctx context.Context) RuleEmailActionResponsePtrOutput {
+	return o
+}
+
+func (o RuleEmailActionResponsePtrOutput) Elem() RuleEmailActionResponseOutput {
+	return o.ApplyT(func(v *RuleEmailActionResponse) RuleEmailActionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RuleEmailActionResponse
+		return ret
+	}).(RuleEmailActionResponseOutput)
+}
+
+// the list of administrator's custom email addresses to notify of the activation of the alert.
+func (o RuleEmailActionResponsePtrOutput) CustomEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RuleEmailActionResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomEmails
+	}).(pulumi.StringArrayOutput)
+}
+
+// specifies the type of the action. There are two types of actions: RuleEmailAction and RuleWebhookAction.
+// Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleEmailAction'.
+func (o RuleEmailActionResponsePtrOutput) OdataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleEmailActionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OdataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the administrators (service and co-administrators) of the service should be notified when the alert is activated.
+func (o RuleEmailActionResponsePtrOutput) SendToServiceOwners() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RuleEmailActionResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SendToServiceOwners
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The claims for a rule management event data source.
 type RuleManagementEventClaimsDataSource struct {
 	// the email address.
 	EmailAddress *string `pulumi:"emailAddress"`
 }
 
+// RuleManagementEventClaimsDataSourceInput is an input type that accepts RuleManagementEventClaimsDataSourceArgs and RuleManagementEventClaimsDataSourceOutput values.
+// You can construct a concrete instance of `RuleManagementEventClaimsDataSourceInput` via:
+//
+//	RuleManagementEventClaimsDataSourceArgs{...}
+type RuleManagementEventClaimsDataSourceInput interface {
+	pulumi.Input
+
+	ToRuleManagementEventClaimsDataSourceOutput() RuleManagementEventClaimsDataSourceOutput
+	ToRuleManagementEventClaimsDataSourceOutputWithContext(context.Context) RuleManagementEventClaimsDataSourceOutput
+}
+
+// The claims for a rule management event data source.
+type RuleManagementEventClaimsDataSourceArgs struct {
+	// the email address.
+	EmailAddress pulumi.StringPtrInput `pulumi:"emailAddress"`
+}
+
+func (RuleManagementEventClaimsDataSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleManagementEventClaimsDataSource)(nil)).Elem()
+}
+
+func (i RuleManagementEventClaimsDataSourceArgs) ToRuleManagementEventClaimsDataSourceOutput() RuleManagementEventClaimsDataSourceOutput {
+	return i.ToRuleManagementEventClaimsDataSourceOutputWithContext(context.Background())
+}
+
+func (i RuleManagementEventClaimsDataSourceArgs) ToRuleManagementEventClaimsDataSourceOutputWithContext(ctx context.Context) RuleManagementEventClaimsDataSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleManagementEventClaimsDataSourceOutput)
+}
+
+func (i RuleManagementEventClaimsDataSourceArgs) ToRuleManagementEventClaimsDataSourcePtrOutput() RuleManagementEventClaimsDataSourcePtrOutput {
+	return i.ToRuleManagementEventClaimsDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (i RuleManagementEventClaimsDataSourceArgs) ToRuleManagementEventClaimsDataSourcePtrOutputWithContext(ctx context.Context) RuleManagementEventClaimsDataSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleManagementEventClaimsDataSourceOutput).ToRuleManagementEventClaimsDataSourcePtrOutputWithContext(ctx)
+}
+
+// RuleManagementEventClaimsDataSourcePtrInput is an input type that accepts RuleManagementEventClaimsDataSourceArgs, RuleManagementEventClaimsDataSourcePtr and RuleManagementEventClaimsDataSourcePtrOutput values.
+// You can construct a concrete instance of `RuleManagementEventClaimsDataSourcePtrInput` via:
+//
+//	        RuleManagementEventClaimsDataSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuleManagementEventClaimsDataSourcePtrInput interface {
+	pulumi.Input
+
+	ToRuleManagementEventClaimsDataSourcePtrOutput() RuleManagementEventClaimsDataSourcePtrOutput
+	ToRuleManagementEventClaimsDataSourcePtrOutputWithContext(context.Context) RuleManagementEventClaimsDataSourcePtrOutput
+}
+
+type ruleManagementEventClaimsDataSourcePtrType RuleManagementEventClaimsDataSourceArgs
+
+func RuleManagementEventClaimsDataSourcePtr(v *RuleManagementEventClaimsDataSourceArgs) RuleManagementEventClaimsDataSourcePtrInput {
+	return (*ruleManagementEventClaimsDataSourcePtrType)(v)
+}
+
+func (*ruleManagementEventClaimsDataSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleManagementEventClaimsDataSource)(nil)).Elem()
+}
+
+func (i *ruleManagementEventClaimsDataSourcePtrType) ToRuleManagementEventClaimsDataSourcePtrOutput() RuleManagementEventClaimsDataSourcePtrOutput {
+	return i.ToRuleManagementEventClaimsDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *ruleManagementEventClaimsDataSourcePtrType) ToRuleManagementEventClaimsDataSourcePtrOutputWithContext(ctx context.Context) RuleManagementEventClaimsDataSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleManagementEventClaimsDataSourcePtrOutput)
+}
+
+// The claims for a rule management event data source.
+type RuleManagementEventClaimsDataSourceOutput struct{ *pulumi.OutputState }
+
+func (RuleManagementEventClaimsDataSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleManagementEventClaimsDataSource)(nil)).Elem()
+}
+
+func (o RuleManagementEventClaimsDataSourceOutput) ToRuleManagementEventClaimsDataSourceOutput() RuleManagementEventClaimsDataSourceOutput {
+	return o
+}
+
+func (o RuleManagementEventClaimsDataSourceOutput) ToRuleManagementEventClaimsDataSourceOutputWithContext(ctx context.Context) RuleManagementEventClaimsDataSourceOutput {
+	return o
+}
+
+func (o RuleManagementEventClaimsDataSourceOutput) ToRuleManagementEventClaimsDataSourcePtrOutput() RuleManagementEventClaimsDataSourcePtrOutput {
+	return o.ToRuleManagementEventClaimsDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (o RuleManagementEventClaimsDataSourceOutput) ToRuleManagementEventClaimsDataSourcePtrOutputWithContext(ctx context.Context) RuleManagementEventClaimsDataSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleManagementEventClaimsDataSource) *RuleManagementEventClaimsDataSource {
+		return &v
+	}).(RuleManagementEventClaimsDataSourcePtrOutput)
+}
+
+// the email address.
+func (o RuleManagementEventClaimsDataSourceOutput) EmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventClaimsDataSource) *string { return v.EmailAddress }).(pulumi.StringPtrOutput)
+}
+
+type RuleManagementEventClaimsDataSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (RuleManagementEventClaimsDataSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleManagementEventClaimsDataSource)(nil)).Elem()
+}
+
+func (o RuleManagementEventClaimsDataSourcePtrOutput) ToRuleManagementEventClaimsDataSourcePtrOutput() RuleManagementEventClaimsDataSourcePtrOutput {
+	return o
+}
+
+func (o RuleManagementEventClaimsDataSourcePtrOutput) ToRuleManagementEventClaimsDataSourcePtrOutputWithContext(ctx context.Context) RuleManagementEventClaimsDataSourcePtrOutput {
+	return o
+}
+
+func (o RuleManagementEventClaimsDataSourcePtrOutput) Elem() RuleManagementEventClaimsDataSourceOutput {
+	return o.ApplyT(func(v *RuleManagementEventClaimsDataSource) RuleManagementEventClaimsDataSource {
+		if v != nil {
+			return *v
+		}
+		var ret RuleManagementEventClaimsDataSource
+		return ret
+	}).(RuleManagementEventClaimsDataSourceOutput)
+}
+
+// the email address.
+func (o RuleManagementEventClaimsDataSourcePtrOutput) EmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventClaimsDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddress
+	}).(pulumi.StringPtrOutput)
+}
+
 // The claims for a rule management event data source.
 type RuleManagementEventClaimsDataSourceResponse struct {
 	// the email address.
 	EmailAddress *string `pulumi:"emailAddress"`
+}
+
+// The claims for a rule management event data source.
+type RuleManagementEventClaimsDataSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (RuleManagementEventClaimsDataSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleManagementEventClaimsDataSourceResponse)(nil)).Elem()
+}
+
+func (o RuleManagementEventClaimsDataSourceResponseOutput) ToRuleManagementEventClaimsDataSourceResponseOutput() RuleManagementEventClaimsDataSourceResponseOutput {
+	return o
+}
+
+func (o RuleManagementEventClaimsDataSourceResponseOutput) ToRuleManagementEventClaimsDataSourceResponseOutputWithContext(ctx context.Context) RuleManagementEventClaimsDataSourceResponseOutput {
+	return o
+}
+
+// the email address.
+func (o RuleManagementEventClaimsDataSourceResponseOutput) EmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventClaimsDataSourceResponse) *string { return v.EmailAddress }).(pulumi.StringPtrOutput)
+}
+
+type RuleManagementEventClaimsDataSourceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RuleManagementEventClaimsDataSourceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleManagementEventClaimsDataSourceResponse)(nil)).Elem()
+}
+
+func (o RuleManagementEventClaimsDataSourceResponsePtrOutput) ToRuleManagementEventClaimsDataSourceResponsePtrOutput() RuleManagementEventClaimsDataSourceResponsePtrOutput {
+	return o
+}
+
+func (o RuleManagementEventClaimsDataSourceResponsePtrOutput) ToRuleManagementEventClaimsDataSourceResponsePtrOutputWithContext(ctx context.Context) RuleManagementEventClaimsDataSourceResponsePtrOutput {
+	return o
+}
+
+func (o RuleManagementEventClaimsDataSourceResponsePtrOutput) Elem() RuleManagementEventClaimsDataSourceResponseOutput {
+	return o.ApplyT(func(v *RuleManagementEventClaimsDataSourceResponse) RuleManagementEventClaimsDataSourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RuleManagementEventClaimsDataSourceResponse
+		return ret
+	}).(RuleManagementEventClaimsDataSourceResponseOutput)
+}
+
+// the email address.
+func (o RuleManagementEventClaimsDataSourceResponsePtrOutput) EmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventClaimsDataSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddress
+	}).(pulumi.StringPtrOutput)
 }
 
 // A rule management event data source. The discriminator fields is always RuleManagementEventDataSource in this case.
@@ -15604,6 +17341,364 @@ type RuleManagementEventDataSource struct {
 	SubStatus *string `pulumi:"subStatus"`
 }
 
+// RuleManagementEventDataSourceInput is an input type that accepts RuleManagementEventDataSourceArgs and RuleManagementEventDataSourceOutput values.
+// You can construct a concrete instance of `RuleManagementEventDataSourceInput` via:
+//
+//	RuleManagementEventDataSourceArgs{...}
+type RuleManagementEventDataSourceInput interface {
+	pulumi.Input
+
+	ToRuleManagementEventDataSourceOutput() RuleManagementEventDataSourceOutput
+	ToRuleManagementEventDataSourceOutputWithContext(context.Context) RuleManagementEventDataSourceOutput
+}
+
+// A rule management event data source. The discriminator fields is always RuleManagementEventDataSource in this case.
+type RuleManagementEventDataSourceArgs struct {
+	// the claims.
+	Claims RuleManagementEventClaimsDataSourcePtrInput `pulumi:"claims"`
+	// the event name.
+	EventName pulumi.StringPtrInput `pulumi:"eventName"`
+	// the event source.
+	EventSource pulumi.StringPtrInput `pulumi:"eventSource"`
+	// the legacy resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+	LegacyResourceId pulumi.StringPtrInput `pulumi:"legacyResourceId"`
+	// the level.
+	Level pulumi.StringPtrInput `pulumi:"level"`
+	// the namespace of the metric.
+	MetricNamespace pulumi.StringPtrInput `pulumi:"metricNamespace"`
+	// specifies the type of data source. There are two types of rule data sources: RuleMetricDataSource and RuleManagementEventDataSource
+	// Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource'.
+	OdataType pulumi.StringInput `pulumi:"odataType"`
+	// The name of the operation that should be checked for. If no name is provided, any operation will match.
+	OperationName pulumi.StringPtrInput `pulumi:"operationName"`
+	// the resource group name.
+	ResourceGroupName pulumi.StringPtrInput `pulumi:"resourceGroupName"`
+	// the location of the resource.
+	ResourceLocation pulumi.StringPtrInput `pulumi:"resourceLocation"`
+	// the resource provider name.
+	ResourceProviderName pulumi.StringPtrInput `pulumi:"resourceProviderName"`
+	// the resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+	ResourceUri pulumi.StringPtrInput `pulumi:"resourceUri"`
+	// The status of the operation that should be checked for. If no status is provided, any status will match.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// the substatus.
+	SubStatus pulumi.StringPtrInput `pulumi:"subStatus"`
+}
+
+func (RuleManagementEventDataSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleManagementEventDataSource)(nil)).Elem()
+}
+
+func (i RuleManagementEventDataSourceArgs) ToRuleManagementEventDataSourceOutput() RuleManagementEventDataSourceOutput {
+	return i.ToRuleManagementEventDataSourceOutputWithContext(context.Background())
+}
+
+func (i RuleManagementEventDataSourceArgs) ToRuleManagementEventDataSourceOutputWithContext(ctx context.Context) RuleManagementEventDataSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleManagementEventDataSourceOutput)
+}
+
+func (i RuleManagementEventDataSourceArgs) ToRuleManagementEventDataSourcePtrOutput() RuleManagementEventDataSourcePtrOutput {
+	return i.ToRuleManagementEventDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (i RuleManagementEventDataSourceArgs) ToRuleManagementEventDataSourcePtrOutputWithContext(ctx context.Context) RuleManagementEventDataSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleManagementEventDataSourceOutput).ToRuleManagementEventDataSourcePtrOutputWithContext(ctx)
+}
+
+// RuleManagementEventDataSourcePtrInput is an input type that accepts RuleManagementEventDataSourceArgs, RuleManagementEventDataSourcePtr and RuleManagementEventDataSourcePtrOutput values.
+// You can construct a concrete instance of `RuleManagementEventDataSourcePtrInput` via:
+//
+//	        RuleManagementEventDataSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuleManagementEventDataSourcePtrInput interface {
+	pulumi.Input
+
+	ToRuleManagementEventDataSourcePtrOutput() RuleManagementEventDataSourcePtrOutput
+	ToRuleManagementEventDataSourcePtrOutputWithContext(context.Context) RuleManagementEventDataSourcePtrOutput
+}
+
+type ruleManagementEventDataSourcePtrType RuleManagementEventDataSourceArgs
+
+func RuleManagementEventDataSourcePtr(v *RuleManagementEventDataSourceArgs) RuleManagementEventDataSourcePtrInput {
+	return (*ruleManagementEventDataSourcePtrType)(v)
+}
+
+func (*ruleManagementEventDataSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleManagementEventDataSource)(nil)).Elem()
+}
+
+func (i *ruleManagementEventDataSourcePtrType) ToRuleManagementEventDataSourcePtrOutput() RuleManagementEventDataSourcePtrOutput {
+	return i.ToRuleManagementEventDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *ruleManagementEventDataSourcePtrType) ToRuleManagementEventDataSourcePtrOutputWithContext(ctx context.Context) RuleManagementEventDataSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleManagementEventDataSourcePtrOutput)
+}
+
+// A rule management event data source. The discriminator fields is always RuleManagementEventDataSource in this case.
+type RuleManagementEventDataSourceOutput struct{ *pulumi.OutputState }
+
+func (RuleManagementEventDataSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleManagementEventDataSource)(nil)).Elem()
+}
+
+func (o RuleManagementEventDataSourceOutput) ToRuleManagementEventDataSourceOutput() RuleManagementEventDataSourceOutput {
+	return o
+}
+
+func (o RuleManagementEventDataSourceOutput) ToRuleManagementEventDataSourceOutputWithContext(ctx context.Context) RuleManagementEventDataSourceOutput {
+	return o
+}
+
+func (o RuleManagementEventDataSourceOutput) ToRuleManagementEventDataSourcePtrOutput() RuleManagementEventDataSourcePtrOutput {
+	return o.ToRuleManagementEventDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (o RuleManagementEventDataSourceOutput) ToRuleManagementEventDataSourcePtrOutputWithContext(ctx context.Context) RuleManagementEventDataSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleManagementEventDataSource) *RuleManagementEventDataSource {
+		return &v
+	}).(RuleManagementEventDataSourcePtrOutput)
+}
+
+// the claims.
+func (o RuleManagementEventDataSourceOutput) Claims() RuleManagementEventClaimsDataSourcePtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSource) *RuleManagementEventClaimsDataSource { return v.Claims }).(RuleManagementEventClaimsDataSourcePtrOutput)
+}
+
+// the event name.
+func (o RuleManagementEventDataSourceOutput) EventName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSource) *string { return v.EventName }).(pulumi.StringPtrOutput)
+}
+
+// the event source.
+func (o RuleManagementEventDataSourceOutput) EventSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSource) *string { return v.EventSource }).(pulumi.StringPtrOutput)
+}
+
+// the legacy resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+func (o RuleManagementEventDataSourceOutput) LegacyResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSource) *string { return v.LegacyResourceId }).(pulumi.StringPtrOutput)
+}
+
+// the level.
+func (o RuleManagementEventDataSourceOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSource) *string { return v.Level }).(pulumi.StringPtrOutput)
+}
+
+// the namespace of the metric.
+func (o RuleManagementEventDataSourceOutput) MetricNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSource) *string { return v.MetricNamespace }).(pulumi.StringPtrOutput)
+}
+
+// specifies the type of data source. There are two types of rule data sources: RuleMetricDataSource and RuleManagementEventDataSource
+// Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource'.
+func (o RuleManagementEventDataSourceOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSource) string { return v.OdataType }).(pulumi.StringOutput)
+}
+
+// The name of the operation that should be checked for. If no name is provided, any operation will match.
+func (o RuleManagementEventDataSourceOutput) OperationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSource) *string { return v.OperationName }).(pulumi.StringPtrOutput)
+}
+
+// the resource group name.
+func (o RuleManagementEventDataSourceOutput) ResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSource) *string { return v.ResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// the location of the resource.
+func (o RuleManagementEventDataSourceOutput) ResourceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSource) *string { return v.ResourceLocation }).(pulumi.StringPtrOutput)
+}
+
+// the resource provider name.
+func (o RuleManagementEventDataSourceOutput) ResourceProviderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSource) *string { return v.ResourceProviderName }).(pulumi.StringPtrOutput)
+}
+
+// the resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+func (o RuleManagementEventDataSourceOutput) ResourceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSource) *string { return v.ResourceUri }).(pulumi.StringPtrOutput)
+}
+
+// The status of the operation that should be checked for. If no status is provided, any status will match.
+func (o RuleManagementEventDataSourceOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSource) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// the substatus.
+func (o RuleManagementEventDataSourceOutput) SubStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSource) *string { return v.SubStatus }).(pulumi.StringPtrOutput)
+}
+
+type RuleManagementEventDataSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (RuleManagementEventDataSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleManagementEventDataSource)(nil)).Elem()
+}
+
+func (o RuleManagementEventDataSourcePtrOutput) ToRuleManagementEventDataSourcePtrOutput() RuleManagementEventDataSourcePtrOutput {
+	return o
+}
+
+func (o RuleManagementEventDataSourcePtrOutput) ToRuleManagementEventDataSourcePtrOutputWithContext(ctx context.Context) RuleManagementEventDataSourcePtrOutput {
+	return o
+}
+
+func (o RuleManagementEventDataSourcePtrOutput) Elem() RuleManagementEventDataSourceOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSource) RuleManagementEventDataSource {
+		if v != nil {
+			return *v
+		}
+		var ret RuleManagementEventDataSource
+		return ret
+	}).(RuleManagementEventDataSourceOutput)
+}
+
+// the claims.
+func (o RuleManagementEventDataSourcePtrOutput) Claims() RuleManagementEventClaimsDataSourcePtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSource) *RuleManagementEventClaimsDataSource {
+		if v == nil {
+			return nil
+		}
+		return v.Claims
+	}).(RuleManagementEventClaimsDataSourcePtrOutput)
+}
+
+// the event name.
+func (o RuleManagementEventDataSourcePtrOutput) EventName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventName
+	}).(pulumi.StringPtrOutput)
+}
+
+// the event source.
+func (o RuleManagementEventDataSourcePtrOutput) EventSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventSource
+	}).(pulumi.StringPtrOutput)
+}
+
+// the legacy resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+func (o RuleManagementEventDataSourcePtrOutput) LegacyResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LegacyResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// the level.
+func (o RuleManagementEventDataSourcePtrOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Level
+	}).(pulumi.StringPtrOutput)
+}
+
+// the namespace of the metric.
+func (o RuleManagementEventDataSourcePtrOutput) MetricNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetricNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// specifies the type of data source. There are two types of rule data sources: RuleMetricDataSource and RuleManagementEventDataSource
+// Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource'.
+func (o RuleManagementEventDataSourcePtrOutput) OdataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OdataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the operation that should be checked for. If no name is provided, any operation will match.
+func (o RuleManagementEventDataSourcePtrOutput) OperationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperationName
+	}).(pulumi.StringPtrOutput)
+}
+
+// the resource group name.
+func (o RuleManagementEventDataSourcePtrOutput) ResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// the location of the resource.
+func (o RuleManagementEventDataSourcePtrOutput) ResourceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// the resource provider name.
+func (o RuleManagementEventDataSourcePtrOutput) ResourceProviderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceProviderName
+	}).(pulumi.StringPtrOutput)
+}
+
+// the resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+func (o RuleManagementEventDataSourcePtrOutput) ResourceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The status of the operation that should be checked for. If no status is provided, any status will match.
+func (o RuleManagementEventDataSourcePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// the substatus.
+func (o RuleManagementEventDataSourcePtrOutput) SubStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubStatus
+	}).(pulumi.StringPtrOutput)
+}
+
 // A rule management event data source. The discriminator fields is always RuleManagementEventDataSource in this case.
 type RuleManagementEventDataSourceResponse struct {
 	// the claims.
@@ -15637,6 +17732,259 @@ type RuleManagementEventDataSourceResponse struct {
 	SubStatus *string `pulumi:"subStatus"`
 }
 
+// A rule management event data source. The discriminator fields is always RuleManagementEventDataSource in this case.
+type RuleManagementEventDataSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (RuleManagementEventDataSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleManagementEventDataSourceResponse)(nil)).Elem()
+}
+
+func (o RuleManagementEventDataSourceResponseOutput) ToRuleManagementEventDataSourceResponseOutput() RuleManagementEventDataSourceResponseOutput {
+	return o
+}
+
+func (o RuleManagementEventDataSourceResponseOutput) ToRuleManagementEventDataSourceResponseOutputWithContext(ctx context.Context) RuleManagementEventDataSourceResponseOutput {
+	return o
+}
+
+// the claims.
+func (o RuleManagementEventDataSourceResponseOutput) Claims() RuleManagementEventClaimsDataSourceResponsePtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSourceResponse) *RuleManagementEventClaimsDataSourceResponse {
+		return v.Claims
+	}).(RuleManagementEventClaimsDataSourceResponsePtrOutput)
+}
+
+// the event name.
+func (o RuleManagementEventDataSourceResponseOutput) EventName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSourceResponse) *string { return v.EventName }).(pulumi.StringPtrOutput)
+}
+
+// the event source.
+func (o RuleManagementEventDataSourceResponseOutput) EventSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSourceResponse) *string { return v.EventSource }).(pulumi.StringPtrOutput)
+}
+
+// the legacy resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+func (o RuleManagementEventDataSourceResponseOutput) LegacyResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSourceResponse) *string { return v.LegacyResourceId }).(pulumi.StringPtrOutput)
+}
+
+// the level.
+func (o RuleManagementEventDataSourceResponseOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSourceResponse) *string { return v.Level }).(pulumi.StringPtrOutput)
+}
+
+// the namespace of the metric.
+func (o RuleManagementEventDataSourceResponseOutput) MetricNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSourceResponse) *string { return v.MetricNamespace }).(pulumi.StringPtrOutput)
+}
+
+// specifies the type of data source. There are two types of rule data sources: RuleMetricDataSource and RuleManagementEventDataSource
+// Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource'.
+func (o RuleManagementEventDataSourceResponseOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSourceResponse) string { return v.OdataType }).(pulumi.StringOutput)
+}
+
+// The name of the operation that should be checked for. If no name is provided, any operation will match.
+func (o RuleManagementEventDataSourceResponseOutput) OperationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSourceResponse) *string { return v.OperationName }).(pulumi.StringPtrOutput)
+}
+
+// the resource group name.
+func (o RuleManagementEventDataSourceResponseOutput) ResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSourceResponse) *string { return v.ResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// the location of the resource.
+func (o RuleManagementEventDataSourceResponseOutput) ResourceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSourceResponse) *string { return v.ResourceLocation }).(pulumi.StringPtrOutput)
+}
+
+// the resource provider name.
+func (o RuleManagementEventDataSourceResponseOutput) ResourceProviderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSourceResponse) *string { return v.ResourceProviderName }).(pulumi.StringPtrOutput)
+}
+
+// the resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+func (o RuleManagementEventDataSourceResponseOutput) ResourceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSourceResponse) *string { return v.ResourceUri }).(pulumi.StringPtrOutput)
+}
+
+// The status of the operation that should be checked for. If no status is provided, any status will match.
+func (o RuleManagementEventDataSourceResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSourceResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// the substatus.
+func (o RuleManagementEventDataSourceResponseOutput) SubStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleManagementEventDataSourceResponse) *string { return v.SubStatus }).(pulumi.StringPtrOutput)
+}
+
+type RuleManagementEventDataSourceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RuleManagementEventDataSourceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleManagementEventDataSourceResponse)(nil)).Elem()
+}
+
+func (o RuleManagementEventDataSourceResponsePtrOutput) ToRuleManagementEventDataSourceResponsePtrOutput() RuleManagementEventDataSourceResponsePtrOutput {
+	return o
+}
+
+func (o RuleManagementEventDataSourceResponsePtrOutput) ToRuleManagementEventDataSourceResponsePtrOutputWithContext(ctx context.Context) RuleManagementEventDataSourceResponsePtrOutput {
+	return o
+}
+
+func (o RuleManagementEventDataSourceResponsePtrOutput) Elem() RuleManagementEventDataSourceResponseOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSourceResponse) RuleManagementEventDataSourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RuleManagementEventDataSourceResponse
+		return ret
+	}).(RuleManagementEventDataSourceResponseOutput)
+}
+
+// the claims.
+func (o RuleManagementEventDataSourceResponsePtrOutput) Claims() RuleManagementEventClaimsDataSourceResponsePtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSourceResponse) *RuleManagementEventClaimsDataSourceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Claims
+	}).(RuleManagementEventClaimsDataSourceResponsePtrOutput)
+}
+
+// the event name.
+func (o RuleManagementEventDataSourceResponsePtrOutput) EventName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventName
+	}).(pulumi.StringPtrOutput)
+}
+
+// the event source.
+func (o RuleManagementEventDataSourceResponsePtrOutput) EventSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventSource
+	}).(pulumi.StringPtrOutput)
+}
+
+// the legacy resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+func (o RuleManagementEventDataSourceResponsePtrOutput) LegacyResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LegacyResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// the level.
+func (o RuleManagementEventDataSourceResponsePtrOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Level
+	}).(pulumi.StringPtrOutput)
+}
+
+// the namespace of the metric.
+func (o RuleManagementEventDataSourceResponsePtrOutput) MetricNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetricNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// specifies the type of data source. There are two types of rule data sources: RuleMetricDataSource and RuleManagementEventDataSource
+// Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource'.
+func (o RuleManagementEventDataSourceResponsePtrOutput) OdataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OdataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the operation that should be checked for. If no name is provided, any operation will match.
+func (o RuleManagementEventDataSourceResponsePtrOutput) OperationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperationName
+	}).(pulumi.StringPtrOutput)
+}
+
+// the resource group name.
+func (o RuleManagementEventDataSourceResponsePtrOutput) ResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// the location of the resource.
+func (o RuleManagementEventDataSourceResponsePtrOutput) ResourceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// the resource provider name.
+func (o RuleManagementEventDataSourceResponsePtrOutput) ResourceProviderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceProviderName
+	}).(pulumi.StringPtrOutput)
+}
+
+// the resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+func (o RuleManagementEventDataSourceResponsePtrOutput) ResourceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The status of the operation that should be checked for. If no status is provided, any status will match.
+func (o RuleManagementEventDataSourceResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// the substatus.
+func (o RuleManagementEventDataSourceResponsePtrOutput) SubStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleManagementEventDataSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubStatus
+	}).(pulumi.StringPtrOutput)
+}
+
 // A rule metric data source. The discriminator value is always RuleMetricDataSource in this case.
 type RuleMetricDataSource struct {
 	// the legacy resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
@@ -15654,6 +18002,228 @@ type RuleMetricDataSource struct {
 	ResourceUri *string `pulumi:"resourceUri"`
 }
 
+// RuleMetricDataSourceInput is an input type that accepts RuleMetricDataSourceArgs and RuleMetricDataSourceOutput values.
+// You can construct a concrete instance of `RuleMetricDataSourceInput` via:
+//
+//	RuleMetricDataSourceArgs{...}
+type RuleMetricDataSourceInput interface {
+	pulumi.Input
+
+	ToRuleMetricDataSourceOutput() RuleMetricDataSourceOutput
+	ToRuleMetricDataSourceOutputWithContext(context.Context) RuleMetricDataSourceOutput
+}
+
+// A rule metric data source. The discriminator value is always RuleMetricDataSource in this case.
+type RuleMetricDataSourceArgs struct {
+	// the legacy resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+	LegacyResourceId pulumi.StringPtrInput `pulumi:"legacyResourceId"`
+	// the name of the metric that defines what the rule monitors.
+	MetricName pulumi.StringPtrInput `pulumi:"metricName"`
+	// the namespace of the metric.
+	MetricNamespace pulumi.StringPtrInput `pulumi:"metricNamespace"`
+	// specifies the type of data source. There are two types of rule data sources: RuleMetricDataSource and RuleManagementEventDataSource
+	// Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource'.
+	OdataType pulumi.StringInput `pulumi:"odataType"`
+	// the location of the resource.
+	ResourceLocation pulumi.StringPtrInput `pulumi:"resourceLocation"`
+	// the resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+	ResourceUri pulumi.StringPtrInput `pulumi:"resourceUri"`
+}
+
+func (RuleMetricDataSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleMetricDataSource)(nil)).Elem()
+}
+
+func (i RuleMetricDataSourceArgs) ToRuleMetricDataSourceOutput() RuleMetricDataSourceOutput {
+	return i.ToRuleMetricDataSourceOutputWithContext(context.Background())
+}
+
+func (i RuleMetricDataSourceArgs) ToRuleMetricDataSourceOutputWithContext(ctx context.Context) RuleMetricDataSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleMetricDataSourceOutput)
+}
+
+func (i RuleMetricDataSourceArgs) ToRuleMetricDataSourcePtrOutput() RuleMetricDataSourcePtrOutput {
+	return i.ToRuleMetricDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (i RuleMetricDataSourceArgs) ToRuleMetricDataSourcePtrOutputWithContext(ctx context.Context) RuleMetricDataSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleMetricDataSourceOutput).ToRuleMetricDataSourcePtrOutputWithContext(ctx)
+}
+
+// RuleMetricDataSourcePtrInput is an input type that accepts RuleMetricDataSourceArgs, RuleMetricDataSourcePtr and RuleMetricDataSourcePtrOutput values.
+// You can construct a concrete instance of `RuleMetricDataSourcePtrInput` via:
+//
+//	        RuleMetricDataSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuleMetricDataSourcePtrInput interface {
+	pulumi.Input
+
+	ToRuleMetricDataSourcePtrOutput() RuleMetricDataSourcePtrOutput
+	ToRuleMetricDataSourcePtrOutputWithContext(context.Context) RuleMetricDataSourcePtrOutput
+}
+
+type ruleMetricDataSourcePtrType RuleMetricDataSourceArgs
+
+func RuleMetricDataSourcePtr(v *RuleMetricDataSourceArgs) RuleMetricDataSourcePtrInput {
+	return (*ruleMetricDataSourcePtrType)(v)
+}
+
+func (*ruleMetricDataSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleMetricDataSource)(nil)).Elem()
+}
+
+func (i *ruleMetricDataSourcePtrType) ToRuleMetricDataSourcePtrOutput() RuleMetricDataSourcePtrOutput {
+	return i.ToRuleMetricDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *ruleMetricDataSourcePtrType) ToRuleMetricDataSourcePtrOutputWithContext(ctx context.Context) RuleMetricDataSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleMetricDataSourcePtrOutput)
+}
+
+// A rule metric data source. The discriminator value is always RuleMetricDataSource in this case.
+type RuleMetricDataSourceOutput struct{ *pulumi.OutputState }
+
+func (RuleMetricDataSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleMetricDataSource)(nil)).Elem()
+}
+
+func (o RuleMetricDataSourceOutput) ToRuleMetricDataSourceOutput() RuleMetricDataSourceOutput {
+	return o
+}
+
+func (o RuleMetricDataSourceOutput) ToRuleMetricDataSourceOutputWithContext(ctx context.Context) RuleMetricDataSourceOutput {
+	return o
+}
+
+func (o RuleMetricDataSourceOutput) ToRuleMetricDataSourcePtrOutput() RuleMetricDataSourcePtrOutput {
+	return o.ToRuleMetricDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (o RuleMetricDataSourceOutput) ToRuleMetricDataSourcePtrOutputWithContext(ctx context.Context) RuleMetricDataSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleMetricDataSource) *RuleMetricDataSource {
+		return &v
+	}).(RuleMetricDataSourcePtrOutput)
+}
+
+// the legacy resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+func (o RuleMetricDataSourceOutput) LegacyResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleMetricDataSource) *string { return v.LegacyResourceId }).(pulumi.StringPtrOutput)
+}
+
+// the name of the metric that defines what the rule monitors.
+func (o RuleMetricDataSourceOutput) MetricName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleMetricDataSource) *string { return v.MetricName }).(pulumi.StringPtrOutput)
+}
+
+// the namespace of the metric.
+func (o RuleMetricDataSourceOutput) MetricNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleMetricDataSource) *string { return v.MetricNamespace }).(pulumi.StringPtrOutput)
+}
+
+// specifies the type of data source. There are two types of rule data sources: RuleMetricDataSource and RuleManagementEventDataSource
+// Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource'.
+func (o RuleMetricDataSourceOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleMetricDataSource) string { return v.OdataType }).(pulumi.StringOutput)
+}
+
+// the location of the resource.
+func (o RuleMetricDataSourceOutput) ResourceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleMetricDataSource) *string { return v.ResourceLocation }).(pulumi.StringPtrOutput)
+}
+
+// the resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+func (o RuleMetricDataSourceOutput) ResourceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleMetricDataSource) *string { return v.ResourceUri }).(pulumi.StringPtrOutput)
+}
+
+type RuleMetricDataSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (RuleMetricDataSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleMetricDataSource)(nil)).Elem()
+}
+
+func (o RuleMetricDataSourcePtrOutput) ToRuleMetricDataSourcePtrOutput() RuleMetricDataSourcePtrOutput {
+	return o
+}
+
+func (o RuleMetricDataSourcePtrOutput) ToRuleMetricDataSourcePtrOutputWithContext(ctx context.Context) RuleMetricDataSourcePtrOutput {
+	return o
+}
+
+func (o RuleMetricDataSourcePtrOutput) Elem() RuleMetricDataSourceOutput {
+	return o.ApplyT(func(v *RuleMetricDataSource) RuleMetricDataSource {
+		if v != nil {
+			return *v
+		}
+		var ret RuleMetricDataSource
+		return ret
+	}).(RuleMetricDataSourceOutput)
+}
+
+// the legacy resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+func (o RuleMetricDataSourcePtrOutput) LegacyResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleMetricDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LegacyResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// the name of the metric that defines what the rule monitors.
+func (o RuleMetricDataSourcePtrOutput) MetricName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleMetricDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetricName
+	}).(pulumi.StringPtrOutput)
+}
+
+// the namespace of the metric.
+func (o RuleMetricDataSourcePtrOutput) MetricNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleMetricDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetricNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// specifies the type of data source. There are two types of rule data sources: RuleMetricDataSource and RuleManagementEventDataSource
+// Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource'.
+func (o RuleMetricDataSourcePtrOutput) OdataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleMetricDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OdataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// the location of the resource.
+func (o RuleMetricDataSourcePtrOutput) ResourceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleMetricDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// the resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+func (o RuleMetricDataSourcePtrOutput) ResourceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleMetricDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceUri
+	}).(pulumi.StringPtrOutput)
+}
+
 // A rule metric data source. The discriminator value is always RuleMetricDataSource in this case.
 type RuleMetricDataSourceResponse struct {
 	// the legacy resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
@@ -15669,6 +18239,137 @@ type RuleMetricDataSourceResponse struct {
 	ResourceLocation *string `pulumi:"resourceLocation"`
 	// the resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
 	ResourceUri *string `pulumi:"resourceUri"`
+}
+
+// A rule metric data source. The discriminator value is always RuleMetricDataSource in this case.
+type RuleMetricDataSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (RuleMetricDataSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleMetricDataSourceResponse)(nil)).Elem()
+}
+
+func (o RuleMetricDataSourceResponseOutput) ToRuleMetricDataSourceResponseOutput() RuleMetricDataSourceResponseOutput {
+	return o
+}
+
+func (o RuleMetricDataSourceResponseOutput) ToRuleMetricDataSourceResponseOutputWithContext(ctx context.Context) RuleMetricDataSourceResponseOutput {
+	return o
+}
+
+// the legacy resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+func (o RuleMetricDataSourceResponseOutput) LegacyResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleMetricDataSourceResponse) *string { return v.LegacyResourceId }).(pulumi.StringPtrOutput)
+}
+
+// the name of the metric that defines what the rule monitors.
+func (o RuleMetricDataSourceResponseOutput) MetricName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleMetricDataSourceResponse) *string { return v.MetricName }).(pulumi.StringPtrOutput)
+}
+
+// the namespace of the metric.
+func (o RuleMetricDataSourceResponseOutput) MetricNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleMetricDataSourceResponse) *string { return v.MetricNamespace }).(pulumi.StringPtrOutput)
+}
+
+// specifies the type of data source. There are two types of rule data sources: RuleMetricDataSource and RuleManagementEventDataSource
+// Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource'.
+func (o RuleMetricDataSourceResponseOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleMetricDataSourceResponse) string { return v.OdataType }).(pulumi.StringOutput)
+}
+
+// the location of the resource.
+func (o RuleMetricDataSourceResponseOutput) ResourceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleMetricDataSourceResponse) *string { return v.ResourceLocation }).(pulumi.StringPtrOutput)
+}
+
+// the resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+func (o RuleMetricDataSourceResponseOutput) ResourceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleMetricDataSourceResponse) *string { return v.ResourceUri }).(pulumi.StringPtrOutput)
+}
+
+type RuleMetricDataSourceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RuleMetricDataSourceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleMetricDataSourceResponse)(nil)).Elem()
+}
+
+func (o RuleMetricDataSourceResponsePtrOutput) ToRuleMetricDataSourceResponsePtrOutput() RuleMetricDataSourceResponsePtrOutput {
+	return o
+}
+
+func (o RuleMetricDataSourceResponsePtrOutput) ToRuleMetricDataSourceResponsePtrOutputWithContext(ctx context.Context) RuleMetricDataSourceResponsePtrOutput {
+	return o
+}
+
+func (o RuleMetricDataSourceResponsePtrOutput) Elem() RuleMetricDataSourceResponseOutput {
+	return o.ApplyT(func(v *RuleMetricDataSourceResponse) RuleMetricDataSourceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RuleMetricDataSourceResponse
+		return ret
+	}).(RuleMetricDataSourceResponseOutput)
+}
+
+// the legacy resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+func (o RuleMetricDataSourceResponsePtrOutput) LegacyResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleMetricDataSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LegacyResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// the name of the metric that defines what the rule monitors.
+func (o RuleMetricDataSourceResponsePtrOutput) MetricName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleMetricDataSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetricName
+	}).(pulumi.StringPtrOutput)
+}
+
+// the namespace of the metric.
+func (o RuleMetricDataSourceResponsePtrOutput) MetricNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleMetricDataSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetricNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// specifies the type of data source. There are two types of rule data sources: RuleMetricDataSource and RuleManagementEventDataSource
+// Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource'.
+func (o RuleMetricDataSourceResponsePtrOutput) OdataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleMetricDataSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OdataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// the location of the resource.
+func (o RuleMetricDataSourceResponsePtrOutput) ResourceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleMetricDataSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// the resource identifier of the resource the rule monitors. **NOTE**: this property cannot be updated for an existing rule.
+func (o RuleMetricDataSourceResponsePtrOutput) ResourceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleMetricDataSourceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceUri
+	}).(pulumi.StringPtrOutput)
 }
 
 // TBD. Relevant only for rules of the kind LogAlert.
@@ -15918,6 +18619,177 @@ type RuleWebhookAction struct {
 	ServiceUri *string `pulumi:"serviceUri"`
 }
 
+// RuleWebhookActionInput is an input type that accepts RuleWebhookActionArgs and RuleWebhookActionOutput values.
+// You can construct a concrete instance of `RuleWebhookActionInput` via:
+//
+//	RuleWebhookActionArgs{...}
+type RuleWebhookActionInput interface {
+	pulumi.Input
+
+	ToRuleWebhookActionOutput() RuleWebhookActionOutput
+	ToRuleWebhookActionOutputWithContext(context.Context) RuleWebhookActionOutput
+}
+
+// Specifies the action to post to service when the rule condition is evaluated. The discriminator is always RuleWebhookAction in this case.
+type RuleWebhookActionArgs struct {
+	// specifies the type of the action. There are two types of actions: RuleEmailAction and RuleWebhookAction.
+	// Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleWebhookAction'.
+	OdataType pulumi.StringInput `pulumi:"odataType"`
+	// the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// the service uri to Post the notification when the alert activates or resolves.
+	ServiceUri pulumi.StringPtrInput `pulumi:"serviceUri"`
+}
+
+func (RuleWebhookActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleWebhookAction)(nil)).Elem()
+}
+
+func (i RuleWebhookActionArgs) ToRuleWebhookActionOutput() RuleWebhookActionOutput {
+	return i.ToRuleWebhookActionOutputWithContext(context.Background())
+}
+
+func (i RuleWebhookActionArgs) ToRuleWebhookActionOutputWithContext(ctx context.Context) RuleWebhookActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleWebhookActionOutput)
+}
+
+func (i RuleWebhookActionArgs) ToRuleWebhookActionPtrOutput() RuleWebhookActionPtrOutput {
+	return i.ToRuleWebhookActionPtrOutputWithContext(context.Background())
+}
+
+func (i RuleWebhookActionArgs) ToRuleWebhookActionPtrOutputWithContext(ctx context.Context) RuleWebhookActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleWebhookActionOutput).ToRuleWebhookActionPtrOutputWithContext(ctx)
+}
+
+// RuleWebhookActionPtrInput is an input type that accepts RuleWebhookActionArgs, RuleWebhookActionPtr and RuleWebhookActionPtrOutput values.
+// You can construct a concrete instance of `RuleWebhookActionPtrInput` via:
+//
+//	        RuleWebhookActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuleWebhookActionPtrInput interface {
+	pulumi.Input
+
+	ToRuleWebhookActionPtrOutput() RuleWebhookActionPtrOutput
+	ToRuleWebhookActionPtrOutputWithContext(context.Context) RuleWebhookActionPtrOutput
+}
+
+type ruleWebhookActionPtrType RuleWebhookActionArgs
+
+func RuleWebhookActionPtr(v *RuleWebhookActionArgs) RuleWebhookActionPtrInput {
+	return (*ruleWebhookActionPtrType)(v)
+}
+
+func (*ruleWebhookActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleWebhookAction)(nil)).Elem()
+}
+
+func (i *ruleWebhookActionPtrType) ToRuleWebhookActionPtrOutput() RuleWebhookActionPtrOutput {
+	return i.ToRuleWebhookActionPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleWebhookActionPtrType) ToRuleWebhookActionPtrOutputWithContext(ctx context.Context) RuleWebhookActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleWebhookActionPtrOutput)
+}
+
+// Specifies the action to post to service when the rule condition is evaluated. The discriminator is always RuleWebhookAction in this case.
+type RuleWebhookActionOutput struct{ *pulumi.OutputState }
+
+func (RuleWebhookActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleWebhookAction)(nil)).Elem()
+}
+
+func (o RuleWebhookActionOutput) ToRuleWebhookActionOutput() RuleWebhookActionOutput {
+	return o
+}
+
+func (o RuleWebhookActionOutput) ToRuleWebhookActionOutputWithContext(ctx context.Context) RuleWebhookActionOutput {
+	return o
+}
+
+func (o RuleWebhookActionOutput) ToRuleWebhookActionPtrOutput() RuleWebhookActionPtrOutput {
+	return o.ToRuleWebhookActionPtrOutputWithContext(context.Background())
+}
+
+func (o RuleWebhookActionOutput) ToRuleWebhookActionPtrOutputWithContext(ctx context.Context) RuleWebhookActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleWebhookAction) *RuleWebhookAction {
+		return &v
+	}).(RuleWebhookActionPtrOutput)
+}
+
+// specifies the type of the action. There are two types of actions: RuleEmailAction and RuleWebhookAction.
+// Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleWebhookAction'.
+func (o RuleWebhookActionOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleWebhookAction) string { return v.OdataType }).(pulumi.StringOutput)
+}
+
+// the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
+func (o RuleWebhookActionOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RuleWebhookAction) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// the service uri to Post the notification when the alert activates or resolves.
+func (o RuleWebhookActionOutput) ServiceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleWebhookAction) *string { return v.ServiceUri }).(pulumi.StringPtrOutput)
+}
+
+type RuleWebhookActionPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleWebhookActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleWebhookAction)(nil)).Elem()
+}
+
+func (o RuleWebhookActionPtrOutput) ToRuleWebhookActionPtrOutput() RuleWebhookActionPtrOutput {
+	return o
+}
+
+func (o RuleWebhookActionPtrOutput) ToRuleWebhookActionPtrOutputWithContext(ctx context.Context) RuleWebhookActionPtrOutput {
+	return o
+}
+
+func (o RuleWebhookActionPtrOutput) Elem() RuleWebhookActionOutput {
+	return o.ApplyT(func(v *RuleWebhookAction) RuleWebhookAction {
+		if v != nil {
+			return *v
+		}
+		var ret RuleWebhookAction
+		return ret
+	}).(RuleWebhookActionOutput)
+}
+
+// specifies the type of the action. There are two types of actions: RuleEmailAction and RuleWebhookAction.
+// Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleWebhookAction'.
+func (o RuleWebhookActionPtrOutput) OdataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleWebhookAction) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OdataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
+func (o RuleWebhookActionPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RuleWebhookAction) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// the service uri to Post the notification when the alert activates or resolves.
+func (o RuleWebhookActionPtrOutput) ServiceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleWebhookAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceUri
+	}).(pulumi.StringPtrOutput)
+}
+
 // Specifies the action to post to service when the rule condition is evaluated. The discriminator is always RuleWebhookAction in this case.
 type RuleWebhookActionResponse struct {
 	// specifies the type of the action. There are two types of actions: RuleEmailAction and RuleWebhookAction.
@@ -15927,6 +18799,92 @@ type RuleWebhookActionResponse struct {
 	Properties map[string]string `pulumi:"properties"`
 	// the service uri to Post the notification when the alert activates or resolves.
 	ServiceUri *string `pulumi:"serviceUri"`
+}
+
+// Specifies the action to post to service when the rule condition is evaluated. The discriminator is always RuleWebhookAction in this case.
+type RuleWebhookActionResponseOutput struct{ *pulumi.OutputState }
+
+func (RuleWebhookActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleWebhookActionResponse)(nil)).Elem()
+}
+
+func (o RuleWebhookActionResponseOutput) ToRuleWebhookActionResponseOutput() RuleWebhookActionResponseOutput {
+	return o
+}
+
+func (o RuleWebhookActionResponseOutput) ToRuleWebhookActionResponseOutputWithContext(ctx context.Context) RuleWebhookActionResponseOutput {
+	return o
+}
+
+// specifies the type of the action. There are two types of actions: RuleEmailAction and RuleWebhookAction.
+// Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleWebhookAction'.
+func (o RuleWebhookActionResponseOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v RuleWebhookActionResponse) string { return v.OdataType }).(pulumi.StringOutput)
+}
+
+// the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
+func (o RuleWebhookActionResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RuleWebhookActionResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// the service uri to Post the notification when the alert activates or resolves.
+func (o RuleWebhookActionResponseOutput) ServiceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleWebhookActionResponse) *string { return v.ServiceUri }).(pulumi.StringPtrOutput)
+}
+
+type RuleWebhookActionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RuleWebhookActionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleWebhookActionResponse)(nil)).Elem()
+}
+
+func (o RuleWebhookActionResponsePtrOutput) ToRuleWebhookActionResponsePtrOutput() RuleWebhookActionResponsePtrOutput {
+	return o
+}
+
+func (o RuleWebhookActionResponsePtrOutput) ToRuleWebhookActionResponsePtrOutputWithContext(ctx context.Context) RuleWebhookActionResponsePtrOutput {
+	return o
+}
+
+func (o RuleWebhookActionResponsePtrOutput) Elem() RuleWebhookActionResponseOutput {
+	return o.ApplyT(func(v *RuleWebhookActionResponse) RuleWebhookActionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RuleWebhookActionResponse
+		return ret
+	}).(RuleWebhookActionResponseOutput)
+}
+
+// specifies the type of the action. There are two types of actions: RuleEmailAction and RuleWebhookAction.
+// Expected value is 'Microsoft.Azure.Management.Insights.Models.RuleWebhookAction'.
+func (o RuleWebhookActionResponsePtrOutput) OdataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleWebhookActionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OdataType
+	}).(pulumi.StringPtrOutput)
+}
+
+// the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
+func (o RuleWebhookActionResponsePtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RuleWebhookActionResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// the service uri to Post the notification when the alert activates or resolves.
+func (o RuleWebhookActionResponsePtrOutput) ServiceUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleWebhookActionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceUri
+	}).(pulumi.StringPtrOutput)
 }
 
 // The parameters for the scaling action.
@@ -17948,6 +20906,92 @@ type ThresholdRuleCondition struct {
 	WindowSize *string `pulumi:"windowSize"`
 }
 
+// ThresholdRuleConditionInput is an input type that accepts ThresholdRuleConditionArgs and ThresholdRuleConditionOutput values.
+// You can construct a concrete instance of `ThresholdRuleConditionInput` via:
+//
+//	ThresholdRuleConditionArgs{...}
+type ThresholdRuleConditionInput interface {
+	pulumi.Input
+
+	ToThresholdRuleConditionOutput() ThresholdRuleConditionOutput
+	ToThresholdRuleConditionOutputWithContext(context.Context) ThresholdRuleConditionOutput
+}
+
+// A rule condition based on a metric crossing a threshold.
+type ThresholdRuleConditionArgs struct {
+	// the resource from which the rule collects its data. For this type dataSource will always be of type RuleMetricDataSource.
+	DataSource pulumi.Input `pulumi:"dataSource"`
+	// specifies the type of condition. This can be one of three types: ManagementEventRuleCondition (occurrences of management events), LocationThresholdRuleCondition (based on the number of failures of a web test), and ThresholdRuleCondition (based on the threshold of a metric).
+	// Expected value is 'Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition'.
+	OdataType pulumi.StringInput `pulumi:"odataType"`
+	// the operator used to compare the data and the threshold.
+	Operator ConditionOperatorInput `pulumi:"operator"`
+	// the threshold value that activates the alert.
+	Threshold pulumi.Float64Input `pulumi:"threshold"`
+	// the time aggregation operator. How the data that are collected should be combined over time. The default value is the PrimaryAggregationType of the Metric.
+	TimeAggregation TimeAggregationOperatorPtrInput `pulumi:"timeAggregation"`
+	// the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold. If specified then it must be between 5 minutes and 1 day.
+	WindowSize pulumi.StringPtrInput `pulumi:"windowSize"`
+}
+
+func (ThresholdRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThresholdRuleCondition)(nil)).Elem()
+}
+
+func (i ThresholdRuleConditionArgs) ToThresholdRuleConditionOutput() ThresholdRuleConditionOutput {
+	return i.ToThresholdRuleConditionOutputWithContext(context.Background())
+}
+
+func (i ThresholdRuleConditionArgs) ToThresholdRuleConditionOutputWithContext(ctx context.Context) ThresholdRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ThresholdRuleConditionOutput)
+}
+
+// A rule condition based on a metric crossing a threshold.
+type ThresholdRuleConditionOutput struct{ *pulumi.OutputState }
+
+func (ThresholdRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThresholdRuleCondition)(nil)).Elem()
+}
+
+func (o ThresholdRuleConditionOutput) ToThresholdRuleConditionOutput() ThresholdRuleConditionOutput {
+	return o
+}
+
+func (o ThresholdRuleConditionOutput) ToThresholdRuleConditionOutputWithContext(ctx context.Context) ThresholdRuleConditionOutput {
+	return o
+}
+
+// the resource from which the rule collects its data. For this type dataSource will always be of type RuleMetricDataSource.
+func (o ThresholdRuleConditionOutput) DataSource() pulumi.AnyOutput {
+	return o.ApplyT(func(v ThresholdRuleCondition) interface{} { return v.DataSource }).(pulumi.AnyOutput)
+}
+
+// specifies the type of condition. This can be one of three types: ManagementEventRuleCondition (occurrences of management events), LocationThresholdRuleCondition (based on the number of failures of a web test), and ThresholdRuleCondition (based on the threshold of a metric).
+// Expected value is 'Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition'.
+func (o ThresholdRuleConditionOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v ThresholdRuleCondition) string { return v.OdataType }).(pulumi.StringOutput)
+}
+
+// the operator used to compare the data and the threshold.
+func (o ThresholdRuleConditionOutput) Operator() ConditionOperatorOutput {
+	return o.ApplyT(func(v ThresholdRuleCondition) ConditionOperator { return v.Operator }).(ConditionOperatorOutput)
+}
+
+// the threshold value that activates the alert.
+func (o ThresholdRuleConditionOutput) Threshold() pulumi.Float64Output {
+	return o.ApplyT(func(v ThresholdRuleCondition) float64 { return v.Threshold }).(pulumi.Float64Output)
+}
+
+// the time aggregation operator. How the data that are collected should be combined over time. The default value is the PrimaryAggregationType of the Metric.
+func (o ThresholdRuleConditionOutput) TimeAggregation() TimeAggregationOperatorPtrOutput {
+	return o.ApplyT(func(v ThresholdRuleCondition) *TimeAggregationOperator { return v.TimeAggregation }).(TimeAggregationOperatorPtrOutput)
+}
+
+// the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold. If specified then it must be between 5 minutes and 1 day.
+func (o ThresholdRuleConditionOutput) WindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ThresholdRuleCondition) *string { return v.WindowSize }).(pulumi.StringPtrOutput)
+}
+
 // A rule condition based on a metric crossing a threshold.
 type ThresholdRuleConditionResponse struct {
 	// the resource from which the rule collects its data. For this type dataSource will always be of type RuleMetricDataSource.
@@ -17963,6 +21007,52 @@ type ThresholdRuleConditionResponse struct {
 	TimeAggregation *string `pulumi:"timeAggregation"`
 	// the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold. If specified then it must be between 5 minutes and 1 day.
 	WindowSize *string `pulumi:"windowSize"`
+}
+
+// A rule condition based on a metric crossing a threshold.
+type ThresholdRuleConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (ThresholdRuleConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThresholdRuleConditionResponse)(nil)).Elem()
+}
+
+func (o ThresholdRuleConditionResponseOutput) ToThresholdRuleConditionResponseOutput() ThresholdRuleConditionResponseOutput {
+	return o
+}
+
+func (o ThresholdRuleConditionResponseOutput) ToThresholdRuleConditionResponseOutputWithContext(ctx context.Context) ThresholdRuleConditionResponseOutput {
+	return o
+}
+
+// the resource from which the rule collects its data. For this type dataSource will always be of type RuleMetricDataSource.
+func (o ThresholdRuleConditionResponseOutput) DataSource() pulumi.AnyOutput {
+	return o.ApplyT(func(v ThresholdRuleConditionResponse) interface{} { return v.DataSource }).(pulumi.AnyOutput)
+}
+
+// specifies the type of condition. This can be one of three types: ManagementEventRuleCondition (occurrences of management events), LocationThresholdRuleCondition (based on the number of failures of a web test), and ThresholdRuleCondition (based on the threshold of a metric).
+// Expected value is 'Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition'.
+func (o ThresholdRuleConditionResponseOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v ThresholdRuleConditionResponse) string { return v.OdataType }).(pulumi.StringOutput)
+}
+
+// the operator used to compare the data and the threshold.
+func (o ThresholdRuleConditionResponseOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v ThresholdRuleConditionResponse) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// the threshold value that activates the alert.
+func (o ThresholdRuleConditionResponseOutput) Threshold() pulumi.Float64Output {
+	return o.ApplyT(func(v ThresholdRuleConditionResponse) float64 { return v.Threshold }).(pulumi.Float64Output)
+}
+
+// the time aggregation operator. How the data that are collected should be combined over time. The default value is the PrimaryAggregationType of the Metric.
+func (o ThresholdRuleConditionResponseOutput) TimeAggregation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ThresholdRuleConditionResponse) *string { return v.TimeAggregation }).(pulumi.StringPtrOutput)
+}
+
+// the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold. If specified then it must be between 5 minutes and 1 day.
+func (o ThresholdRuleConditionResponseOutput) WindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ThresholdRuleConditionResponse) *string { return v.WindowSize }).(pulumi.StringPtrOutput)
 }
 
 // A specific date-time for the profile.
@@ -20332,6 +23422,78 @@ type WebtestLocationAvailabilityCriteria struct {
 	WebTestId string `pulumi:"webTestId"`
 }
 
+// WebtestLocationAvailabilityCriteriaInput is an input type that accepts WebtestLocationAvailabilityCriteriaArgs and WebtestLocationAvailabilityCriteriaOutput values.
+// You can construct a concrete instance of `WebtestLocationAvailabilityCriteriaInput` via:
+//
+//	WebtestLocationAvailabilityCriteriaArgs{...}
+type WebtestLocationAvailabilityCriteriaInput interface {
+	pulumi.Input
+
+	ToWebtestLocationAvailabilityCriteriaOutput() WebtestLocationAvailabilityCriteriaOutput
+	ToWebtestLocationAvailabilityCriteriaOutputWithContext(context.Context) WebtestLocationAvailabilityCriteriaOutput
+}
+
+// Specifies the metric alert rule criteria for a web test resource.
+type WebtestLocationAvailabilityCriteriaArgs struct {
+	// The Application Insights resource Id.
+	ComponentId pulumi.StringInput `pulumi:"componentId"`
+	// The number of failed locations.
+	FailedLocationCount pulumi.Float64Input `pulumi:"failedLocationCount"`
+	// specifies the type of the alert criteria.
+	// Expected value is 'Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria'.
+	OdataType pulumi.StringInput `pulumi:"odataType"`
+	// The Application Insights web test Id.
+	WebTestId pulumi.StringInput `pulumi:"webTestId"`
+}
+
+func (WebtestLocationAvailabilityCriteriaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebtestLocationAvailabilityCriteria)(nil)).Elem()
+}
+
+func (i WebtestLocationAvailabilityCriteriaArgs) ToWebtestLocationAvailabilityCriteriaOutput() WebtestLocationAvailabilityCriteriaOutput {
+	return i.ToWebtestLocationAvailabilityCriteriaOutputWithContext(context.Background())
+}
+
+func (i WebtestLocationAvailabilityCriteriaArgs) ToWebtestLocationAvailabilityCriteriaOutputWithContext(ctx context.Context) WebtestLocationAvailabilityCriteriaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebtestLocationAvailabilityCriteriaOutput)
+}
+
+// Specifies the metric alert rule criteria for a web test resource.
+type WebtestLocationAvailabilityCriteriaOutput struct{ *pulumi.OutputState }
+
+func (WebtestLocationAvailabilityCriteriaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebtestLocationAvailabilityCriteria)(nil)).Elem()
+}
+
+func (o WebtestLocationAvailabilityCriteriaOutput) ToWebtestLocationAvailabilityCriteriaOutput() WebtestLocationAvailabilityCriteriaOutput {
+	return o
+}
+
+func (o WebtestLocationAvailabilityCriteriaOutput) ToWebtestLocationAvailabilityCriteriaOutputWithContext(ctx context.Context) WebtestLocationAvailabilityCriteriaOutput {
+	return o
+}
+
+// The Application Insights resource Id.
+func (o WebtestLocationAvailabilityCriteriaOutput) ComponentId() pulumi.StringOutput {
+	return o.ApplyT(func(v WebtestLocationAvailabilityCriteria) string { return v.ComponentId }).(pulumi.StringOutput)
+}
+
+// The number of failed locations.
+func (o WebtestLocationAvailabilityCriteriaOutput) FailedLocationCount() pulumi.Float64Output {
+	return o.ApplyT(func(v WebtestLocationAvailabilityCriteria) float64 { return v.FailedLocationCount }).(pulumi.Float64Output)
+}
+
+// specifies the type of the alert criteria.
+// Expected value is 'Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria'.
+func (o WebtestLocationAvailabilityCriteriaOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v WebtestLocationAvailabilityCriteria) string { return v.OdataType }).(pulumi.StringOutput)
+}
+
+// The Application Insights web test Id.
+func (o WebtestLocationAvailabilityCriteriaOutput) WebTestId() pulumi.StringOutput {
+	return o.ApplyT(func(v WebtestLocationAvailabilityCriteria) string { return v.WebTestId }).(pulumi.StringOutput)
+}
+
 // Specifies the metric alert rule criteria for a web test resource.
 type WebtestLocationAvailabilityCriteriaResponse struct {
 	// The Application Insights resource Id.
@@ -20343,6 +23505,42 @@ type WebtestLocationAvailabilityCriteriaResponse struct {
 	OdataType string `pulumi:"odataType"`
 	// The Application Insights web test Id.
 	WebTestId string `pulumi:"webTestId"`
+}
+
+// Specifies the metric alert rule criteria for a web test resource.
+type WebtestLocationAvailabilityCriteriaResponseOutput struct{ *pulumi.OutputState }
+
+func (WebtestLocationAvailabilityCriteriaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebtestLocationAvailabilityCriteriaResponse)(nil)).Elem()
+}
+
+func (o WebtestLocationAvailabilityCriteriaResponseOutput) ToWebtestLocationAvailabilityCriteriaResponseOutput() WebtestLocationAvailabilityCriteriaResponseOutput {
+	return o
+}
+
+func (o WebtestLocationAvailabilityCriteriaResponseOutput) ToWebtestLocationAvailabilityCriteriaResponseOutputWithContext(ctx context.Context) WebtestLocationAvailabilityCriteriaResponseOutput {
+	return o
+}
+
+// The Application Insights resource Id.
+func (o WebtestLocationAvailabilityCriteriaResponseOutput) ComponentId() pulumi.StringOutput {
+	return o.ApplyT(func(v WebtestLocationAvailabilityCriteriaResponse) string { return v.ComponentId }).(pulumi.StringOutput)
+}
+
+// The number of failed locations.
+func (o WebtestLocationAvailabilityCriteriaResponseOutput) FailedLocationCount() pulumi.Float64Output {
+	return o.ApplyT(func(v WebtestLocationAvailabilityCriteriaResponse) float64 { return v.FailedLocationCount }).(pulumi.Float64Output)
+}
+
+// specifies the type of the alert criteria.
+// Expected value is 'Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria'.
+func (o WebtestLocationAvailabilityCriteriaResponseOutput) OdataType() pulumi.StringOutput {
+	return o.ApplyT(func(v WebtestLocationAvailabilityCriteriaResponse) string { return v.OdataType }).(pulumi.StringOutput)
+}
+
+// The Application Insights web test Id.
+func (o WebtestLocationAvailabilityCriteriaResponseOutput) WebTestId() pulumi.StringOutput {
+	return o.ApplyT(func(v WebtestLocationAvailabilityCriteriaResponse) string { return v.WebTestId }).(pulumi.StringOutput)
 }
 
 // Definition of which Windows Event Log events will be collected and how they will be collected.
@@ -21549,6 +24747,10 @@ func init() {
 	pulumi.RegisterOutputType(DimensionArrayOutput{})
 	pulumi.RegisterOutputType(DimensionResponseOutput{})
 	pulumi.RegisterOutputType(DimensionResponseArrayOutput{})
+	pulumi.RegisterOutputType(DynamicMetricCriteriaOutput{})
+	pulumi.RegisterOutputType(DynamicMetricCriteriaResponseOutput{})
+	pulumi.RegisterOutputType(DynamicThresholdFailingPeriodsOutput{})
+	pulumi.RegisterOutputType(DynamicThresholdFailingPeriodsResponseOutput{})
 	pulumi.RegisterOutputType(EmailNotificationOutput{})
 	pulumi.RegisterOutputType(EmailNotificationPtrOutput{})
 	pulumi.RegisterOutputType(EmailNotificationResponseOutput{})
@@ -21603,6 +24805,8 @@ func init() {
 	pulumi.RegisterOutputType(ItsmReceiverResponseArrayOutput{})
 	pulumi.RegisterOutputType(LocationSpecResponseOutput{})
 	pulumi.RegisterOutputType(LocationSpecResponseArrayOutput{})
+	pulumi.RegisterOutputType(LocationThresholdRuleConditionOutput{})
+	pulumi.RegisterOutputType(LocationThresholdRuleConditionResponseOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsDestinationOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsDestinationArrayOutput{})
 	pulumi.RegisterOutputType(LogAnalyticsDestinationResponseOutput{})
@@ -21627,6 +24831,12 @@ func init() {
 	pulumi.RegisterOutputType(LogicAppReceiverArrayOutput{})
 	pulumi.RegisterOutputType(LogicAppReceiverResponseOutput{})
 	pulumi.RegisterOutputType(LogicAppReceiverResponseArrayOutput{})
+	pulumi.RegisterOutputType(ManagementEventAggregationConditionOutput{})
+	pulumi.RegisterOutputType(ManagementEventAggregationConditionPtrOutput{})
+	pulumi.RegisterOutputType(ManagementEventAggregationConditionResponseOutput{})
+	pulumi.RegisterOutputType(ManagementEventAggregationConditionResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagementEventRuleConditionOutput{})
+	pulumi.RegisterOutputType(ManagementEventRuleConditionResponseOutput{})
 	pulumi.RegisterOutputType(ManagementGroupLogSettingsOutput{})
 	pulumi.RegisterOutputType(ManagementGroupLogSettingsArrayOutput{})
 	pulumi.RegisterOutputType(ManagementGroupLogSettingsResponseOutput{})
@@ -21635,6 +24845,18 @@ func init() {
 	pulumi.RegisterOutputType(MetricAlertActionArrayOutput{})
 	pulumi.RegisterOutputType(MetricAlertActionResponseOutput{})
 	pulumi.RegisterOutputType(MetricAlertActionResponseArrayOutput{})
+	pulumi.RegisterOutputType(MetricAlertMultipleResourceMultipleMetricCriteriaOutput{})
+	pulumi.RegisterOutputType(MetricAlertMultipleResourceMultipleMetricCriteriaResponseOutput{})
+	pulumi.RegisterOutputType(MetricAlertSingleResourceMultipleMetricCriteriaOutput{})
+	pulumi.RegisterOutputType(MetricAlertSingleResourceMultipleMetricCriteriaResponseOutput{})
+	pulumi.RegisterOutputType(MetricCriteriaOutput{})
+	pulumi.RegisterOutputType(MetricCriteriaArrayOutput{})
+	pulumi.RegisterOutputType(MetricCriteriaResponseOutput{})
+	pulumi.RegisterOutputType(MetricCriteriaResponseArrayOutput{})
+	pulumi.RegisterOutputType(MetricDimensionOutput{})
+	pulumi.RegisterOutputType(MetricDimensionArrayOutput{})
+	pulumi.RegisterOutputType(MetricDimensionResponseOutput{})
+	pulumi.RegisterOutputType(MetricDimensionResponseArrayOutput{})
 	pulumi.RegisterOutputType(MetricSettingsOutput{})
 	pulumi.RegisterOutputType(MetricSettingsArrayOutput{})
 	pulumi.RegisterOutputType(MetricSettingsResponseOutput{})
@@ -21691,10 +24913,30 @@ func init() {
 	pulumi.RegisterOutputType(RetentionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(RetentionPolicyResponseOutput{})
 	pulumi.RegisterOutputType(RetentionPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(RuleEmailActionOutput{})
+	pulumi.RegisterOutputType(RuleEmailActionPtrOutput{})
+	pulumi.RegisterOutputType(RuleEmailActionResponseOutput{})
+	pulumi.RegisterOutputType(RuleEmailActionResponsePtrOutput{})
+	pulumi.RegisterOutputType(RuleManagementEventClaimsDataSourceOutput{})
+	pulumi.RegisterOutputType(RuleManagementEventClaimsDataSourcePtrOutput{})
+	pulumi.RegisterOutputType(RuleManagementEventClaimsDataSourceResponseOutput{})
+	pulumi.RegisterOutputType(RuleManagementEventClaimsDataSourceResponsePtrOutput{})
+	pulumi.RegisterOutputType(RuleManagementEventDataSourceOutput{})
+	pulumi.RegisterOutputType(RuleManagementEventDataSourcePtrOutput{})
+	pulumi.RegisterOutputType(RuleManagementEventDataSourceResponseOutput{})
+	pulumi.RegisterOutputType(RuleManagementEventDataSourceResponsePtrOutput{})
+	pulumi.RegisterOutputType(RuleMetricDataSourceOutput{})
+	pulumi.RegisterOutputType(RuleMetricDataSourcePtrOutput{})
+	pulumi.RegisterOutputType(RuleMetricDataSourceResponseOutput{})
+	pulumi.RegisterOutputType(RuleMetricDataSourceResponsePtrOutput{})
 	pulumi.RegisterOutputType(RuleResolveConfigurationOutput{})
 	pulumi.RegisterOutputType(RuleResolveConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(RuleResolveConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(RuleResolveConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(RuleWebhookActionOutput{})
+	pulumi.RegisterOutputType(RuleWebhookActionPtrOutput{})
+	pulumi.RegisterOutputType(RuleWebhookActionResponseOutput{})
+	pulumi.RegisterOutputType(RuleWebhookActionResponsePtrOutput{})
 	pulumi.RegisterOutputType(ScaleActionOutput{})
 	pulumi.RegisterOutputType(ScaleActionResponseOutput{})
 	pulumi.RegisterOutputType(ScaleCapacityOutput{})
@@ -21738,6 +24980,8 @@ func init() {
 	pulumi.RegisterOutputType(SyslogDataSourceResponseOutput{})
 	pulumi.RegisterOutputType(SyslogDataSourceResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(ThresholdRuleConditionOutput{})
+	pulumi.RegisterOutputType(ThresholdRuleConditionResponseOutput{})
 	pulumi.RegisterOutputType(TimeWindowOutput{})
 	pulumi.RegisterOutputType(TimeWindowPtrOutput{})
 	pulumi.RegisterOutputType(TimeWindowResponseOutput{})
@@ -21778,6 +25022,8 @@ func init() {
 	pulumi.RegisterOutputType(WebhookReceiverArrayOutput{})
 	pulumi.RegisterOutputType(WebhookReceiverResponseOutput{})
 	pulumi.RegisterOutputType(WebhookReceiverResponseArrayOutput{})
+	pulumi.RegisterOutputType(WebtestLocationAvailabilityCriteriaOutput{})
+	pulumi.RegisterOutputType(WebtestLocationAvailabilityCriteriaResponseOutput{})
 	pulumi.RegisterOutputType(WindowsEventLogDataSourceOutput{})
 	pulumi.RegisterOutputType(WindowsEventLogDataSourceArrayOutput{})
 	pulumi.RegisterOutputType(WindowsEventLogDataSourceResponseOutput{})

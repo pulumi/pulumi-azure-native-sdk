@@ -236,6 +236,125 @@ func (val *Argument) Defaults() *Argument {
 	return &tmp
 }
 
+// ArgumentInput is an input type that accepts ArgumentArgs and ArgumentOutput values.
+// You can construct a concrete instance of `ArgumentInput` via:
+//
+//	ArgumentArgs{...}
+type ArgumentInput interface {
+	pulumi.Input
+
+	ToArgumentOutput() ArgumentOutput
+	ToArgumentOutputWithContext(context.Context) ArgumentOutput
+}
+
+// The properties of a run argument.
+type ArgumentArgs struct {
+	// Flag to indicate whether the argument represents a secret and want to be removed from build logs.
+	IsSecret pulumi.BoolPtrInput `pulumi:"isSecret"`
+	// The name of the argument.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the argument.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+// Defaults sets the appropriate defaults for ArgumentArgs
+func (val *ArgumentArgs) Defaults() *ArgumentArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IsSecret == nil {
+		tmp.IsSecret = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (ArgumentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Argument)(nil)).Elem()
+}
+
+func (i ArgumentArgs) ToArgumentOutput() ArgumentOutput {
+	return i.ToArgumentOutputWithContext(context.Background())
+}
+
+func (i ArgumentArgs) ToArgumentOutputWithContext(ctx context.Context) ArgumentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArgumentOutput)
+}
+
+// ArgumentArrayInput is an input type that accepts ArgumentArray and ArgumentArrayOutput values.
+// You can construct a concrete instance of `ArgumentArrayInput` via:
+//
+//	ArgumentArray{ ArgumentArgs{...} }
+type ArgumentArrayInput interface {
+	pulumi.Input
+
+	ToArgumentArrayOutput() ArgumentArrayOutput
+	ToArgumentArrayOutputWithContext(context.Context) ArgumentArrayOutput
+}
+
+type ArgumentArray []ArgumentInput
+
+func (ArgumentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Argument)(nil)).Elem()
+}
+
+func (i ArgumentArray) ToArgumentArrayOutput() ArgumentArrayOutput {
+	return i.ToArgumentArrayOutputWithContext(context.Background())
+}
+
+func (i ArgumentArray) ToArgumentArrayOutputWithContext(ctx context.Context) ArgumentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArgumentArrayOutput)
+}
+
+// The properties of a run argument.
+type ArgumentOutput struct{ *pulumi.OutputState }
+
+func (ArgumentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Argument)(nil)).Elem()
+}
+
+func (o ArgumentOutput) ToArgumentOutput() ArgumentOutput {
+	return o
+}
+
+func (o ArgumentOutput) ToArgumentOutputWithContext(ctx context.Context) ArgumentOutput {
+	return o
+}
+
+// Flag to indicate whether the argument represents a secret and want to be removed from build logs.
+func (o ArgumentOutput) GetIsSecret() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Argument) *bool { return v.IsSecret }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the argument.
+func (o ArgumentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v Argument) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the argument.
+func (o ArgumentOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v Argument) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ArgumentArrayOutput struct{ *pulumi.OutputState }
+
+func (ArgumentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Argument)(nil)).Elem()
+}
+
+func (o ArgumentArrayOutput) ToArgumentArrayOutput() ArgumentArrayOutput {
+	return o
+}
+
+func (o ArgumentArrayOutput) ToArgumentArrayOutputWithContext(ctx context.Context) ArgumentArrayOutput {
+	return o
+}
+
+func (o ArgumentArrayOutput) Index(i pulumi.IntInput) ArgumentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Argument {
+		return vs[0].([]Argument)[vs[1].(int)]
+	}).(ArgumentOutput)
+}
+
 // The properties of a run argument.
 type ArgumentResponse struct {
 	// Flag to indicate whether the argument represents a secret and want to be removed from build logs.
@@ -257,6 +376,56 @@ func (val *ArgumentResponse) Defaults() *ArgumentResponse {
 		tmp.IsSecret = &isSecret_
 	}
 	return &tmp
+}
+
+// The properties of a run argument.
+type ArgumentResponseOutput struct{ *pulumi.OutputState }
+
+func (ArgumentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArgumentResponse)(nil)).Elem()
+}
+
+func (o ArgumentResponseOutput) ToArgumentResponseOutput() ArgumentResponseOutput {
+	return o
+}
+
+func (o ArgumentResponseOutput) ToArgumentResponseOutputWithContext(ctx context.Context) ArgumentResponseOutput {
+	return o
+}
+
+// Flag to indicate whether the argument represents a secret and want to be removed from build logs.
+func (o ArgumentResponseOutput) GetIsSecret() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ArgumentResponse) *bool { return v.IsSecret }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the argument.
+func (o ArgumentResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ArgumentResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the argument.
+func (o ArgumentResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ArgumentResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ArgumentResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ArgumentResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ArgumentResponse)(nil)).Elem()
+}
+
+func (o ArgumentResponseArrayOutput) ToArgumentResponseArrayOutput() ArgumentResponseArrayOutput {
+	return o
+}
+
+func (o ArgumentResponseArrayOutput) ToArgumentResponseArrayOutputWithContext(ctx context.Context) ArgumentResponseArrayOutput {
+	return o
+}
+
+func (o ArgumentResponseArrayOutput) Index(i pulumi.IntInput) ArgumentResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ArgumentResponse {
+		return vs[0].([]ArgumentResponse)[vs[1].(int)]
+	}).(ArgumentResponseOutput)
 }
 
 // The authorization properties for accessing the source code repository.
@@ -615,6 +784,66 @@ type BaseImageDependencyResponse struct {
 	Tag *string `pulumi:"tag"`
 	// The type of the base image dependency.
 	Type *string `pulumi:"type"`
+}
+
+// Properties that describe a base image dependency.
+type BaseImageDependencyResponseOutput struct{ *pulumi.OutputState }
+
+func (BaseImageDependencyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BaseImageDependencyResponse)(nil)).Elem()
+}
+
+func (o BaseImageDependencyResponseOutput) ToBaseImageDependencyResponseOutput() BaseImageDependencyResponseOutput {
+	return o
+}
+
+func (o BaseImageDependencyResponseOutput) ToBaseImageDependencyResponseOutputWithContext(ctx context.Context) BaseImageDependencyResponseOutput {
+	return o
+}
+
+// The sha256-based digest of the image manifest.
+func (o BaseImageDependencyResponseOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BaseImageDependencyResponse) *string { return v.Digest }).(pulumi.StringPtrOutput)
+}
+
+// The registry login server.
+func (o BaseImageDependencyResponseOutput) Registry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BaseImageDependencyResponse) *string { return v.Registry }).(pulumi.StringPtrOutput)
+}
+
+// The repository name.
+func (o BaseImageDependencyResponseOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BaseImageDependencyResponse) *string { return v.Repository }).(pulumi.StringPtrOutput)
+}
+
+// The tag name.
+func (o BaseImageDependencyResponseOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BaseImageDependencyResponse) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+// The type of the base image dependency.
+func (o BaseImageDependencyResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BaseImageDependencyResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type BaseImageDependencyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BaseImageDependencyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BaseImageDependencyResponse)(nil)).Elem()
+}
+
+func (o BaseImageDependencyResponseArrayOutput) ToBaseImageDependencyResponseArrayOutput() BaseImageDependencyResponseArrayOutput {
+	return o
+}
+
+func (o BaseImageDependencyResponseArrayOutput) ToBaseImageDependencyResponseArrayOutputWithContext(ctx context.Context) BaseImageDependencyResponseArrayOutput {
+	return o
+}
+
+func (o BaseImageDependencyResponseArrayOutput) Index(i pulumi.IntInput) BaseImageDependencyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BaseImageDependencyResponse {
+		return vs[0].([]BaseImageDependencyResponse)[vs[1].(int)]
+	}).(BaseImageDependencyResponseOutput)
 }
 
 // The trigger based on base image dependency.
@@ -1419,6 +1648,127 @@ func (val *DockerBuildStep) Defaults() *DockerBuildStep {
 	return &tmp
 }
 
+// DockerBuildStepInput is an input type that accepts DockerBuildStepArgs and DockerBuildStepOutput values.
+// You can construct a concrete instance of `DockerBuildStepInput` via:
+//
+//	DockerBuildStepArgs{...}
+type DockerBuildStepInput interface {
+	pulumi.Input
+
+	ToDockerBuildStepOutput() DockerBuildStepOutput
+	ToDockerBuildStepOutputWithContext(context.Context) DockerBuildStepOutput
+}
+
+// The Docker build step.
+type DockerBuildStepArgs struct {
+	// The collection of override arguments to be used when executing this build step.
+	Arguments ArgumentArrayInput `pulumi:"arguments"`
+	// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+	ContextAccessToken pulumi.StringPtrInput `pulumi:"contextAccessToken"`
+	// The URL(absolute or relative) of the source context for the task step.
+	ContextPath pulumi.StringPtrInput `pulumi:"contextPath"`
+	// The Docker file path relative to the source context.
+	DockerFilePath pulumi.StringInput `pulumi:"dockerFilePath"`
+	// The fully qualified image names including the repository and tag.
+	ImageNames pulumi.StringArrayInput `pulumi:"imageNames"`
+	// The value of this property indicates whether the image built should be pushed to the registry or not.
+	IsPushEnabled pulumi.BoolPtrInput `pulumi:"isPushEnabled"`
+	// The value of this property indicates whether the image cache is enabled or not.
+	NoCache pulumi.BoolPtrInput `pulumi:"noCache"`
+	// The name of the target build stage for the docker build.
+	Target pulumi.StringPtrInput `pulumi:"target"`
+	// The type of the step.
+	// Expected value is 'Docker'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for DockerBuildStepArgs
+func (val *DockerBuildStepArgs) Defaults() *DockerBuildStepArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IsPushEnabled == nil {
+		tmp.IsPushEnabled = pulumi.BoolPtr(true)
+	}
+	if tmp.NoCache == nil {
+		tmp.NoCache = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (DockerBuildStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DockerBuildStep)(nil)).Elem()
+}
+
+func (i DockerBuildStepArgs) ToDockerBuildStepOutput() DockerBuildStepOutput {
+	return i.ToDockerBuildStepOutputWithContext(context.Background())
+}
+
+func (i DockerBuildStepArgs) ToDockerBuildStepOutputWithContext(ctx context.Context) DockerBuildStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DockerBuildStepOutput)
+}
+
+// The Docker build step.
+type DockerBuildStepOutput struct{ *pulumi.OutputState }
+
+func (DockerBuildStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DockerBuildStep)(nil)).Elem()
+}
+
+func (o DockerBuildStepOutput) ToDockerBuildStepOutput() DockerBuildStepOutput {
+	return o
+}
+
+func (o DockerBuildStepOutput) ToDockerBuildStepOutputWithContext(ctx context.Context) DockerBuildStepOutput {
+	return o
+}
+
+// The collection of override arguments to be used when executing this build step.
+func (o DockerBuildStepOutput) Arguments() ArgumentArrayOutput {
+	return o.ApplyT(func(v DockerBuildStep) []Argument { return v.Arguments }).(ArgumentArrayOutput)
+}
+
+// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+func (o DockerBuildStepOutput) ContextAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DockerBuildStep) *string { return v.ContextAccessToken }).(pulumi.StringPtrOutput)
+}
+
+// The URL(absolute or relative) of the source context for the task step.
+func (o DockerBuildStepOutput) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DockerBuildStep) *string { return v.ContextPath }).(pulumi.StringPtrOutput)
+}
+
+// The Docker file path relative to the source context.
+func (o DockerBuildStepOutput) DockerFilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v DockerBuildStep) string { return v.DockerFilePath }).(pulumi.StringOutput)
+}
+
+// The fully qualified image names including the repository and tag.
+func (o DockerBuildStepOutput) ImageNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DockerBuildStep) []string { return v.ImageNames }).(pulumi.StringArrayOutput)
+}
+
+// The value of this property indicates whether the image built should be pushed to the registry or not.
+func (o DockerBuildStepOutput) IsPushEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DockerBuildStep) *bool { return v.IsPushEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The value of this property indicates whether the image cache is enabled or not.
+func (o DockerBuildStepOutput) NoCache() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DockerBuildStep) *bool { return v.NoCache }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the target build stage for the docker build.
+func (o DockerBuildStepOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DockerBuildStep) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// The type of the step.
+// Expected value is 'Docker'.
+func (o DockerBuildStepOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DockerBuildStep) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // The Docker build step.
 type DockerBuildStepResponse struct {
 	// The collection of override arguments to be used when executing this build step.
@@ -1461,6 +1811,72 @@ func (val *DockerBuildStepResponse) Defaults() *DockerBuildStepResponse {
 	return &tmp
 }
 
+// The Docker build step.
+type DockerBuildStepResponseOutput struct{ *pulumi.OutputState }
+
+func (DockerBuildStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DockerBuildStepResponse)(nil)).Elem()
+}
+
+func (o DockerBuildStepResponseOutput) ToDockerBuildStepResponseOutput() DockerBuildStepResponseOutput {
+	return o
+}
+
+func (o DockerBuildStepResponseOutput) ToDockerBuildStepResponseOutputWithContext(ctx context.Context) DockerBuildStepResponseOutput {
+	return o
+}
+
+// The collection of override arguments to be used when executing this build step.
+func (o DockerBuildStepResponseOutput) Arguments() ArgumentResponseArrayOutput {
+	return o.ApplyT(func(v DockerBuildStepResponse) []ArgumentResponse { return v.Arguments }).(ArgumentResponseArrayOutput)
+}
+
+// List of base image dependencies for a step.
+func (o DockerBuildStepResponseOutput) BaseImageDependencies() BaseImageDependencyResponseArrayOutput {
+	return o.ApplyT(func(v DockerBuildStepResponse) []BaseImageDependencyResponse { return v.BaseImageDependencies }).(BaseImageDependencyResponseArrayOutput)
+}
+
+// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+func (o DockerBuildStepResponseOutput) ContextAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DockerBuildStepResponse) *string { return v.ContextAccessToken }).(pulumi.StringPtrOutput)
+}
+
+// The URL(absolute or relative) of the source context for the task step.
+func (o DockerBuildStepResponseOutput) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DockerBuildStepResponse) *string { return v.ContextPath }).(pulumi.StringPtrOutput)
+}
+
+// The Docker file path relative to the source context.
+func (o DockerBuildStepResponseOutput) DockerFilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v DockerBuildStepResponse) string { return v.DockerFilePath }).(pulumi.StringOutput)
+}
+
+// The fully qualified image names including the repository and tag.
+func (o DockerBuildStepResponseOutput) ImageNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DockerBuildStepResponse) []string { return v.ImageNames }).(pulumi.StringArrayOutput)
+}
+
+// The value of this property indicates whether the image built should be pushed to the registry or not.
+func (o DockerBuildStepResponseOutput) IsPushEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DockerBuildStepResponse) *bool { return v.IsPushEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The value of this property indicates whether the image cache is enabled or not.
+func (o DockerBuildStepResponseOutput) NoCache() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DockerBuildStepResponse) *bool { return v.NoCache }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the target build stage for the docker build.
+func (o DockerBuildStepResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DockerBuildStepResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// The type of the step.
+// Expected value is 'Docker'.
+func (o DockerBuildStepResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DockerBuildStepResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // The properties of a encoded task step.
 type EncodedTaskStep struct {
 	// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
@@ -1476,6 +1892,92 @@ type EncodedTaskStep struct {
 	Type string `pulumi:"type"`
 	// The collection of overridable values that can be passed when running a task.
 	Values []SetValue `pulumi:"values"`
+}
+
+// EncodedTaskStepInput is an input type that accepts EncodedTaskStepArgs and EncodedTaskStepOutput values.
+// You can construct a concrete instance of `EncodedTaskStepInput` via:
+//
+//	EncodedTaskStepArgs{...}
+type EncodedTaskStepInput interface {
+	pulumi.Input
+
+	ToEncodedTaskStepOutput() EncodedTaskStepOutput
+	ToEncodedTaskStepOutputWithContext(context.Context) EncodedTaskStepOutput
+}
+
+// The properties of a encoded task step.
+type EncodedTaskStepArgs struct {
+	// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+	ContextAccessToken pulumi.StringPtrInput `pulumi:"contextAccessToken"`
+	// The URL(absolute or relative) of the source context for the task step.
+	ContextPath pulumi.StringPtrInput `pulumi:"contextPath"`
+	// Base64 encoded value of the template/definition file content.
+	EncodedTaskContent pulumi.StringInput `pulumi:"encodedTaskContent"`
+	// Base64 encoded value of the parameters/values file content.
+	EncodedValuesContent pulumi.StringPtrInput `pulumi:"encodedValuesContent"`
+	// The type of the step.
+	// Expected value is 'EncodedTask'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The collection of overridable values that can be passed when running a task.
+	Values SetValueArrayInput `pulumi:"values"`
+}
+
+func (EncodedTaskStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncodedTaskStep)(nil)).Elem()
+}
+
+func (i EncodedTaskStepArgs) ToEncodedTaskStepOutput() EncodedTaskStepOutput {
+	return i.ToEncodedTaskStepOutputWithContext(context.Background())
+}
+
+func (i EncodedTaskStepArgs) ToEncodedTaskStepOutputWithContext(ctx context.Context) EncodedTaskStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncodedTaskStepOutput)
+}
+
+// The properties of a encoded task step.
+type EncodedTaskStepOutput struct{ *pulumi.OutputState }
+
+func (EncodedTaskStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncodedTaskStep)(nil)).Elem()
+}
+
+func (o EncodedTaskStepOutput) ToEncodedTaskStepOutput() EncodedTaskStepOutput {
+	return o
+}
+
+func (o EncodedTaskStepOutput) ToEncodedTaskStepOutputWithContext(ctx context.Context) EncodedTaskStepOutput {
+	return o
+}
+
+// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+func (o EncodedTaskStepOutput) ContextAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncodedTaskStep) *string { return v.ContextAccessToken }).(pulumi.StringPtrOutput)
+}
+
+// The URL(absolute or relative) of the source context for the task step.
+func (o EncodedTaskStepOutput) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncodedTaskStep) *string { return v.ContextPath }).(pulumi.StringPtrOutput)
+}
+
+// Base64 encoded value of the template/definition file content.
+func (o EncodedTaskStepOutput) EncodedTaskContent() pulumi.StringOutput {
+	return o.ApplyT(func(v EncodedTaskStep) string { return v.EncodedTaskContent }).(pulumi.StringOutput)
+}
+
+// Base64 encoded value of the parameters/values file content.
+func (o EncodedTaskStepOutput) EncodedValuesContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncodedTaskStep) *string { return v.EncodedValuesContent }).(pulumi.StringPtrOutput)
+}
+
+// The type of the step.
+// Expected value is 'EncodedTask'.
+func (o EncodedTaskStepOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v EncodedTaskStep) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The collection of overridable values that can be passed when running a task.
+func (o EncodedTaskStepOutput) Values() SetValueArrayOutput {
+	return o.ApplyT(func(v EncodedTaskStep) []SetValue { return v.Values }).(SetValueArrayOutput)
 }
 
 // The properties of a encoded task step.
@@ -1497,6 +1999,57 @@ type EncodedTaskStepResponse struct {
 	Values []SetValueResponse `pulumi:"values"`
 }
 
+// The properties of a encoded task step.
+type EncodedTaskStepResponseOutput struct{ *pulumi.OutputState }
+
+func (EncodedTaskStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncodedTaskStepResponse)(nil)).Elem()
+}
+
+func (o EncodedTaskStepResponseOutput) ToEncodedTaskStepResponseOutput() EncodedTaskStepResponseOutput {
+	return o
+}
+
+func (o EncodedTaskStepResponseOutput) ToEncodedTaskStepResponseOutputWithContext(ctx context.Context) EncodedTaskStepResponseOutput {
+	return o
+}
+
+// List of base image dependencies for a step.
+func (o EncodedTaskStepResponseOutput) BaseImageDependencies() BaseImageDependencyResponseArrayOutput {
+	return o.ApplyT(func(v EncodedTaskStepResponse) []BaseImageDependencyResponse { return v.BaseImageDependencies }).(BaseImageDependencyResponseArrayOutput)
+}
+
+// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+func (o EncodedTaskStepResponseOutput) ContextAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncodedTaskStepResponse) *string { return v.ContextAccessToken }).(pulumi.StringPtrOutput)
+}
+
+// The URL(absolute or relative) of the source context for the task step.
+func (o EncodedTaskStepResponseOutput) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncodedTaskStepResponse) *string { return v.ContextPath }).(pulumi.StringPtrOutput)
+}
+
+// Base64 encoded value of the template/definition file content.
+func (o EncodedTaskStepResponseOutput) EncodedTaskContent() pulumi.StringOutput {
+	return o.ApplyT(func(v EncodedTaskStepResponse) string { return v.EncodedTaskContent }).(pulumi.StringOutput)
+}
+
+// Base64 encoded value of the parameters/values file content.
+func (o EncodedTaskStepResponseOutput) EncodedValuesContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncodedTaskStepResponse) *string { return v.EncodedValuesContent }).(pulumi.StringPtrOutput)
+}
+
+// The type of the step.
+// Expected value is 'EncodedTask'.
+func (o EncodedTaskStepResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v EncodedTaskStepResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The collection of overridable values that can be passed when running a task.
+func (o EncodedTaskStepResponseOutput) Values() SetValueResponseArrayOutput {
+	return o.ApplyT(func(v EncodedTaskStepResponse) []SetValueResponse { return v.Values }).(SetValueResponseArrayOutput)
+}
+
 // The properties of a task step.
 type FileTaskStep struct {
 	// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
@@ -1512,6 +2065,92 @@ type FileTaskStep struct {
 	Values []SetValue `pulumi:"values"`
 	// The task values/parameters file path relative to the source context.
 	ValuesFilePath *string `pulumi:"valuesFilePath"`
+}
+
+// FileTaskStepInput is an input type that accepts FileTaskStepArgs and FileTaskStepOutput values.
+// You can construct a concrete instance of `FileTaskStepInput` via:
+//
+//	FileTaskStepArgs{...}
+type FileTaskStepInput interface {
+	pulumi.Input
+
+	ToFileTaskStepOutput() FileTaskStepOutput
+	ToFileTaskStepOutputWithContext(context.Context) FileTaskStepOutput
+}
+
+// The properties of a task step.
+type FileTaskStepArgs struct {
+	// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+	ContextAccessToken pulumi.StringPtrInput `pulumi:"contextAccessToken"`
+	// The URL(absolute or relative) of the source context for the task step.
+	ContextPath pulumi.StringPtrInput `pulumi:"contextPath"`
+	// The task template/definition file path relative to the source context.
+	TaskFilePath pulumi.StringInput `pulumi:"taskFilePath"`
+	// The type of the step.
+	// Expected value is 'FileTask'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The collection of overridable values that can be passed when running a task.
+	Values SetValueArrayInput `pulumi:"values"`
+	// The task values/parameters file path relative to the source context.
+	ValuesFilePath pulumi.StringPtrInput `pulumi:"valuesFilePath"`
+}
+
+func (FileTaskStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileTaskStep)(nil)).Elem()
+}
+
+func (i FileTaskStepArgs) ToFileTaskStepOutput() FileTaskStepOutput {
+	return i.ToFileTaskStepOutputWithContext(context.Background())
+}
+
+func (i FileTaskStepArgs) ToFileTaskStepOutputWithContext(ctx context.Context) FileTaskStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileTaskStepOutput)
+}
+
+// The properties of a task step.
+type FileTaskStepOutput struct{ *pulumi.OutputState }
+
+func (FileTaskStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileTaskStep)(nil)).Elem()
+}
+
+func (o FileTaskStepOutput) ToFileTaskStepOutput() FileTaskStepOutput {
+	return o
+}
+
+func (o FileTaskStepOutput) ToFileTaskStepOutputWithContext(ctx context.Context) FileTaskStepOutput {
+	return o
+}
+
+// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+func (o FileTaskStepOutput) ContextAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileTaskStep) *string { return v.ContextAccessToken }).(pulumi.StringPtrOutput)
+}
+
+// The URL(absolute or relative) of the source context for the task step.
+func (o FileTaskStepOutput) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileTaskStep) *string { return v.ContextPath }).(pulumi.StringPtrOutput)
+}
+
+// The task template/definition file path relative to the source context.
+func (o FileTaskStepOutput) TaskFilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v FileTaskStep) string { return v.TaskFilePath }).(pulumi.StringOutput)
+}
+
+// The type of the step.
+// Expected value is 'FileTask'.
+func (o FileTaskStepOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v FileTaskStep) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The collection of overridable values that can be passed when running a task.
+func (o FileTaskStepOutput) Values() SetValueArrayOutput {
+	return o.ApplyT(func(v FileTaskStep) []SetValue { return v.Values }).(SetValueArrayOutput)
+}
+
+// The task values/parameters file path relative to the source context.
+func (o FileTaskStepOutput) ValuesFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileTaskStep) *string { return v.ValuesFilePath }).(pulumi.StringPtrOutput)
 }
 
 // The properties of a task step.
@@ -1531,6 +2170,57 @@ type FileTaskStepResponse struct {
 	Values []SetValueResponse `pulumi:"values"`
 	// The task values/parameters file path relative to the source context.
 	ValuesFilePath *string `pulumi:"valuesFilePath"`
+}
+
+// The properties of a task step.
+type FileTaskStepResponseOutput struct{ *pulumi.OutputState }
+
+func (FileTaskStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileTaskStepResponse)(nil)).Elem()
+}
+
+func (o FileTaskStepResponseOutput) ToFileTaskStepResponseOutput() FileTaskStepResponseOutput {
+	return o
+}
+
+func (o FileTaskStepResponseOutput) ToFileTaskStepResponseOutputWithContext(ctx context.Context) FileTaskStepResponseOutput {
+	return o
+}
+
+// List of base image dependencies for a step.
+func (o FileTaskStepResponseOutput) BaseImageDependencies() BaseImageDependencyResponseArrayOutput {
+	return o.ApplyT(func(v FileTaskStepResponse) []BaseImageDependencyResponse { return v.BaseImageDependencies }).(BaseImageDependencyResponseArrayOutput)
+}
+
+// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
+func (o FileTaskStepResponseOutput) ContextAccessToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileTaskStepResponse) *string { return v.ContextAccessToken }).(pulumi.StringPtrOutput)
+}
+
+// The URL(absolute or relative) of the source context for the task step.
+func (o FileTaskStepResponseOutput) ContextPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileTaskStepResponse) *string { return v.ContextPath }).(pulumi.StringPtrOutput)
+}
+
+// The task template/definition file path relative to the source context.
+func (o FileTaskStepResponseOutput) TaskFilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v FileTaskStepResponse) string { return v.TaskFilePath }).(pulumi.StringOutput)
+}
+
+// The type of the step.
+// Expected value is 'FileTask'.
+func (o FileTaskStepResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v FileTaskStepResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The collection of overridable values that can be passed when running a task.
+func (o FileTaskStepResponseOutput) Values() SetValueResponseArrayOutput {
+	return o.ApplyT(func(v FileTaskStepResponse) []SetValueResponse { return v.Values }).(SetValueResponseArrayOutput)
+}
+
+// The task values/parameters file path relative to the source context.
+func (o FileTaskStepResponseOutput) ValuesFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileTaskStepResponse) *string { return v.ValuesFilePath }).(pulumi.StringPtrOutput)
 }
 
 // Managed identity for the resource.
@@ -2261,6 +2951,125 @@ func (val *SetValue) Defaults() *SetValue {
 	return &tmp
 }
 
+// SetValueInput is an input type that accepts SetValueArgs and SetValueOutput values.
+// You can construct a concrete instance of `SetValueInput` via:
+//
+//	SetValueArgs{...}
+type SetValueInput interface {
+	pulumi.Input
+
+	ToSetValueOutput() SetValueOutput
+	ToSetValueOutputWithContext(context.Context) SetValueOutput
+}
+
+// The properties of a overridable value that can be passed to a task template.
+type SetValueArgs struct {
+	// Flag to indicate whether the value represents a secret or not.
+	IsSecret pulumi.BoolPtrInput `pulumi:"isSecret"`
+	// The name of the overridable value.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The overridable value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+// Defaults sets the appropriate defaults for SetValueArgs
+func (val *SetValueArgs) Defaults() *SetValueArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IsSecret == nil {
+		tmp.IsSecret = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (SetValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SetValue)(nil)).Elem()
+}
+
+func (i SetValueArgs) ToSetValueOutput() SetValueOutput {
+	return i.ToSetValueOutputWithContext(context.Background())
+}
+
+func (i SetValueArgs) ToSetValueOutputWithContext(ctx context.Context) SetValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SetValueOutput)
+}
+
+// SetValueArrayInput is an input type that accepts SetValueArray and SetValueArrayOutput values.
+// You can construct a concrete instance of `SetValueArrayInput` via:
+//
+//	SetValueArray{ SetValueArgs{...} }
+type SetValueArrayInput interface {
+	pulumi.Input
+
+	ToSetValueArrayOutput() SetValueArrayOutput
+	ToSetValueArrayOutputWithContext(context.Context) SetValueArrayOutput
+}
+
+type SetValueArray []SetValueInput
+
+func (SetValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SetValue)(nil)).Elem()
+}
+
+func (i SetValueArray) ToSetValueArrayOutput() SetValueArrayOutput {
+	return i.ToSetValueArrayOutputWithContext(context.Background())
+}
+
+func (i SetValueArray) ToSetValueArrayOutputWithContext(ctx context.Context) SetValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SetValueArrayOutput)
+}
+
+// The properties of a overridable value that can be passed to a task template.
+type SetValueOutput struct{ *pulumi.OutputState }
+
+func (SetValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SetValue)(nil)).Elem()
+}
+
+func (o SetValueOutput) ToSetValueOutput() SetValueOutput {
+	return o
+}
+
+func (o SetValueOutput) ToSetValueOutputWithContext(ctx context.Context) SetValueOutput {
+	return o
+}
+
+// Flag to indicate whether the value represents a secret or not.
+func (o SetValueOutput) GetIsSecret() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SetValue) *bool { return v.IsSecret }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the overridable value.
+func (o SetValueOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SetValue) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The overridable value.
+func (o SetValueOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v SetValue) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type SetValueArrayOutput struct{ *pulumi.OutputState }
+
+func (SetValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SetValue)(nil)).Elem()
+}
+
+func (o SetValueArrayOutput) ToSetValueArrayOutput() SetValueArrayOutput {
+	return o
+}
+
+func (o SetValueArrayOutput) ToSetValueArrayOutputWithContext(ctx context.Context) SetValueArrayOutput {
+	return o
+}
+
+func (o SetValueArrayOutput) Index(i pulumi.IntInput) SetValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SetValue {
+		return vs[0].([]SetValue)[vs[1].(int)]
+	}).(SetValueOutput)
+}
+
 // The properties of a overridable value that can be passed to a task template.
 type SetValueResponse struct {
 	// Flag to indicate whether the value represents a secret or not.
@@ -2282,6 +3091,56 @@ func (val *SetValueResponse) Defaults() *SetValueResponse {
 		tmp.IsSecret = &isSecret_
 	}
 	return &tmp
+}
+
+// The properties of a overridable value that can be passed to a task template.
+type SetValueResponseOutput struct{ *pulumi.OutputState }
+
+func (SetValueResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SetValueResponse)(nil)).Elem()
+}
+
+func (o SetValueResponseOutput) ToSetValueResponseOutput() SetValueResponseOutput {
+	return o
+}
+
+func (o SetValueResponseOutput) ToSetValueResponseOutputWithContext(ctx context.Context) SetValueResponseOutput {
+	return o
+}
+
+// Flag to indicate whether the value represents a secret or not.
+func (o SetValueResponseOutput) GetIsSecret() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SetValueResponse) *bool { return v.IsSecret }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the overridable value.
+func (o SetValueResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SetValueResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The overridable value.
+func (o SetValueResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v SetValueResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type SetValueResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SetValueResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SetValueResponse)(nil)).Elem()
+}
+
+func (o SetValueResponseArrayOutput) ToSetValueResponseArrayOutput() SetValueResponseArrayOutput {
+	return o
+}
+
+func (o SetValueResponseArrayOutput) ToSetValueResponseArrayOutputWithContext(ctx context.Context) SetValueResponseArrayOutput {
+	return o
+}
+
+func (o SetValueResponseArrayOutput) Index(i pulumi.IntInput) SetValueResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SetValueResponse {
+		return vs[0].([]SetValueResponse)[vs[1].(int)]
+	}).(SetValueResponseOutput)
 }
 
 // The properties of the source code repository.
@@ -3543,10 +4402,16 @@ func init() {
 	pulumi.RegisterOutputType(AgentPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(AgentPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(AgentPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(ArgumentOutput{})
+	pulumi.RegisterOutputType(ArgumentArrayOutput{})
+	pulumi.RegisterOutputType(ArgumentResponseOutput{})
+	pulumi.RegisterOutputType(ArgumentResponseArrayOutput{})
 	pulumi.RegisterOutputType(AuthInfoOutput{})
 	pulumi.RegisterOutputType(AuthInfoPtrOutput{})
 	pulumi.RegisterOutputType(AuthInfoResponseOutput{})
 	pulumi.RegisterOutputType(AuthInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(BaseImageDependencyResponseOutput{})
+	pulumi.RegisterOutputType(BaseImageDependencyResponseArrayOutput{})
 	pulumi.RegisterOutputType(BaseImageTriggerOutput{})
 	pulumi.RegisterOutputType(BaseImageTriggerPtrOutput{})
 	pulumi.RegisterOutputType(BaseImageTriggerResponseOutput{})
@@ -3559,6 +4424,12 @@ func init() {
 	pulumi.RegisterOutputType(CustomRegistryCredentialsMapOutput{})
 	pulumi.RegisterOutputType(CustomRegistryCredentialsResponseOutput{})
 	pulumi.RegisterOutputType(CustomRegistryCredentialsResponseMapOutput{})
+	pulumi.RegisterOutputType(DockerBuildStepOutput{})
+	pulumi.RegisterOutputType(DockerBuildStepResponseOutput{})
+	pulumi.RegisterOutputType(EncodedTaskStepOutput{})
+	pulumi.RegisterOutputType(EncodedTaskStepResponseOutput{})
+	pulumi.RegisterOutputType(FileTaskStepOutput{})
+	pulumi.RegisterOutputType(FileTaskStepResponseOutput{})
 	pulumi.RegisterOutputType(IdentityPropertiesOutput{})
 	pulumi.RegisterOutputType(IdentityPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(IdentityPropertiesResponseOutput{})
@@ -3569,6 +4440,10 @@ func init() {
 	pulumi.RegisterOutputType(SecretObjectPtrOutput{})
 	pulumi.RegisterOutputType(SecretObjectResponseOutput{})
 	pulumi.RegisterOutputType(SecretObjectResponsePtrOutput{})
+	pulumi.RegisterOutputType(SetValueOutput{})
+	pulumi.RegisterOutputType(SetValueArrayOutput{})
+	pulumi.RegisterOutputType(SetValueResponseOutput{})
+	pulumi.RegisterOutputType(SetValueResponseArrayOutput{})
 	pulumi.RegisterOutputType(SourcePropertiesOutput{})
 	pulumi.RegisterOutputType(SourcePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SourceRegistryCredentialsOutput{})

@@ -142,10 +142,15 @@ func (o ComparisonOperationTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// ComparisonOperationTypeInput is an input type that accepts ComparisonOperationTypeArgs and ComparisonOperationTypeOutput values.
-// You can construct a concrete instance of `ComparisonOperationTypeInput` via:
+// ComparisonOperationTypeInput is an input type that accepts values of the ComparisonOperationType enum
+// A concrete instance of `ComparisonOperationTypeInput` can be one of the following:
 //
-//	ComparisonOperationTypeArgs{...}
+//	ComparisonOperationTypeEquals
+//	ComparisonOperationTypeNotEquals
+//	ComparisonOperationTypeGreaterThan
+//	ComparisonOperationTypeGreaterThanOrEqual
+//	ComparisonOperationTypeLessThan
+//	ComparisonOperationTypeLessThanOrEqual
 type ComparisonOperationTypeInput interface {
 	pulumi.Input
 
@@ -316,10 +321,14 @@ func (o MetricStatisticTypePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// MetricStatisticTypeInput is an input type that accepts MetricStatisticTypeArgs and MetricStatisticTypeOutput values.
-// You can construct a concrete instance of `MetricStatisticTypeInput` via:
+// MetricStatisticTypeInput is an input type that accepts values of the MetricStatisticType enum
+// A concrete instance of `MetricStatisticTypeInput` can be one of the following:
 //
-//	MetricStatisticTypeArgs{...}
+//	MetricStatisticTypeAverage
+//	MetricStatisticTypeMin
+//	MetricStatisticTypeMax
+//	MetricStatisticTypeSum
+//	MetricStatisticTypeCount
 type MetricStatisticTypeInput interface {
 	pulumi.Input
 
@@ -486,10 +495,10 @@ func (o OperationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 	}).(pulumi.StringPtrOutput)
 }
 
-// OperationTypeInput is an input type that accepts OperationTypeArgs and OperationTypeOutput values.
-// You can construct a concrete instance of `OperationTypeInput` via:
+// OperationTypeInput is an input type that accepts values of the OperationType enum
+// A concrete instance of `OperationTypeInput` can be one of the following:
 //
-//	OperationTypeArgs{...}
+//	OperationTypeScale
 type OperationTypeInput interface {
 	pulumi.Input
 
@@ -658,10 +667,12 @@ func (o PredictiveAutoscalePolicyScaleModePtrOutput) ToStringPtrOutputWithContex
 	}).(pulumi.StringPtrOutput)
 }
 
-// PredictiveAutoscalePolicyScaleModeInput is an input type that accepts PredictiveAutoscalePolicyScaleModeArgs and PredictiveAutoscalePolicyScaleModeOutput values.
-// You can construct a concrete instance of `PredictiveAutoscalePolicyScaleModeInput` via:
+// PredictiveAutoscalePolicyScaleModeInput is an input type that accepts values of the PredictiveAutoscalePolicyScaleMode enum
+// A concrete instance of `PredictiveAutoscalePolicyScaleModeInput` can be one of the following:
 //
-//	PredictiveAutoscalePolicyScaleModeArgs{...}
+//	PredictiveAutoscalePolicyScaleModeDisabled
+//	PredictiveAutoscalePolicyScaleModeForecastOnly
+//	PredictiveAutoscalePolicyScaleModeEnabled
 type PredictiveAutoscalePolicyScaleModeInput interface {
 	pulumi.Input
 
@@ -835,10 +846,17 @@ func (o RecurrenceFrequencyPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// RecurrenceFrequencyInput is an input type that accepts RecurrenceFrequencyArgs and RecurrenceFrequencyOutput values.
-// You can construct a concrete instance of `RecurrenceFrequencyInput` via:
+// RecurrenceFrequencyInput is an input type that accepts values of the RecurrenceFrequency enum
+// A concrete instance of `RecurrenceFrequencyInput` can be one of the following:
 //
-//	RecurrenceFrequencyArgs{...}
+//	RecurrenceFrequencyNone
+//	RecurrenceFrequencySecond
+//	RecurrenceFrequencyMinute
+//	RecurrenceFrequencyHour
+//	RecurrenceFrequencyDay
+//	RecurrenceFrequencyWeek
+//	RecurrenceFrequencyMonth
+//	RecurrenceFrequencyYear
 type RecurrenceFrequencyInput interface {
 	pulumi.Input
 
@@ -1007,10 +1025,12 @@ func (o ScaleDirectionPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// ScaleDirectionInput is an input type that accepts ScaleDirectionArgs and ScaleDirectionOutput values.
-// You can construct a concrete instance of `ScaleDirectionInput` via:
+// ScaleDirectionInput is an input type that accepts values of the ScaleDirection enum
+// A concrete instance of `ScaleDirectionInput` can be one of the following:
 //
-//	ScaleDirectionArgs{...}
+//	ScaleDirectionNone
+//	ScaleDirectionIncrease
+//	ScaleDirectionDecrease
 type ScaleDirectionInput interface {
 	pulumi.Input
 
@@ -1058,6 +1078,170 @@ const (
 	ScaleRuleMetricDimensionOperationTypeEquals    = ScaleRuleMetricDimensionOperationType("Equals")
 	ScaleRuleMetricDimensionOperationTypeNotEquals = ScaleRuleMetricDimensionOperationType("NotEquals")
 )
+
+func (ScaleRuleMetricDimensionOperationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScaleRuleMetricDimensionOperationType)(nil)).Elem()
+}
+
+func (e ScaleRuleMetricDimensionOperationType) ToScaleRuleMetricDimensionOperationTypeOutput() ScaleRuleMetricDimensionOperationTypeOutput {
+	return pulumi.ToOutput(e).(ScaleRuleMetricDimensionOperationTypeOutput)
+}
+
+func (e ScaleRuleMetricDimensionOperationType) ToScaleRuleMetricDimensionOperationTypeOutputWithContext(ctx context.Context) ScaleRuleMetricDimensionOperationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ScaleRuleMetricDimensionOperationTypeOutput)
+}
+
+func (e ScaleRuleMetricDimensionOperationType) ToScaleRuleMetricDimensionOperationTypePtrOutput() ScaleRuleMetricDimensionOperationTypePtrOutput {
+	return e.ToScaleRuleMetricDimensionOperationTypePtrOutputWithContext(context.Background())
+}
+
+func (e ScaleRuleMetricDimensionOperationType) ToScaleRuleMetricDimensionOperationTypePtrOutputWithContext(ctx context.Context) ScaleRuleMetricDimensionOperationTypePtrOutput {
+	return ScaleRuleMetricDimensionOperationType(e).ToScaleRuleMetricDimensionOperationTypeOutputWithContext(ctx).ToScaleRuleMetricDimensionOperationTypePtrOutputWithContext(ctx)
+}
+
+func (e ScaleRuleMetricDimensionOperationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ScaleRuleMetricDimensionOperationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ScaleRuleMetricDimensionOperationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ScaleRuleMetricDimensionOperationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ScaleRuleMetricDimensionOperationTypeOutput struct{ *pulumi.OutputState }
+
+func (ScaleRuleMetricDimensionOperationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScaleRuleMetricDimensionOperationType)(nil)).Elem()
+}
+
+func (o ScaleRuleMetricDimensionOperationTypeOutput) ToScaleRuleMetricDimensionOperationTypeOutput() ScaleRuleMetricDimensionOperationTypeOutput {
+	return o
+}
+
+func (o ScaleRuleMetricDimensionOperationTypeOutput) ToScaleRuleMetricDimensionOperationTypeOutputWithContext(ctx context.Context) ScaleRuleMetricDimensionOperationTypeOutput {
+	return o
+}
+
+func (o ScaleRuleMetricDimensionOperationTypeOutput) ToScaleRuleMetricDimensionOperationTypePtrOutput() ScaleRuleMetricDimensionOperationTypePtrOutput {
+	return o.ToScaleRuleMetricDimensionOperationTypePtrOutputWithContext(context.Background())
+}
+
+func (o ScaleRuleMetricDimensionOperationTypeOutput) ToScaleRuleMetricDimensionOperationTypePtrOutputWithContext(ctx context.Context) ScaleRuleMetricDimensionOperationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScaleRuleMetricDimensionOperationType) *ScaleRuleMetricDimensionOperationType {
+		return &v
+	}).(ScaleRuleMetricDimensionOperationTypePtrOutput)
+}
+
+func (o ScaleRuleMetricDimensionOperationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ScaleRuleMetricDimensionOperationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ScaleRuleMetricDimensionOperationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ScaleRuleMetricDimensionOperationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ScaleRuleMetricDimensionOperationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ScaleRuleMetricDimensionOperationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ScaleRuleMetricDimensionOperationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ScaleRuleMetricDimensionOperationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScaleRuleMetricDimensionOperationType)(nil)).Elem()
+}
+
+func (o ScaleRuleMetricDimensionOperationTypePtrOutput) ToScaleRuleMetricDimensionOperationTypePtrOutput() ScaleRuleMetricDimensionOperationTypePtrOutput {
+	return o
+}
+
+func (o ScaleRuleMetricDimensionOperationTypePtrOutput) ToScaleRuleMetricDimensionOperationTypePtrOutputWithContext(ctx context.Context) ScaleRuleMetricDimensionOperationTypePtrOutput {
+	return o
+}
+
+func (o ScaleRuleMetricDimensionOperationTypePtrOutput) Elem() ScaleRuleMetricDimensionOperationTypeOutput {
+	return o.ApplyT(func(v *ScaleRuleMetricDimensionOperationType) ScaleRuleMetricDimensionOperationType {
+		if v != nil {
+			return *v
+		}
+		var ret ScaleRuleMetricDimensionOperationType
+		return ret
+	}).(ScaleRuleMetricDimensionOperationTypeOutput)
+}
+
+func (o ScaleRuleMetricDimensionOperationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ScaleRuleMetricDimensionOperationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ScaleRuleMetricDimensionOperationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ScaleRuleMetricDimensionOperationTypeInput is an input type that accepts values of the ScaleRuleMetricDimensionOperationType enum
+// A concrete instance of `ScaleRuleMetricDimensionOperationTypeInput` can be one of the following:
+//
+//	ScaleRuleMetricDimensionOperationTypeEquals
+//	ScaleRuleMetricDimensionOperationTypeNotEquals
+type ScaleRuleMetricDimensionOperationTypeInput interface {
+	pulumi.Input
+
+	ToScaleRuleMetricDimensionOperationTypeOutput() ScaleRuleMetricDimensionOperationTypeOutput
+	ToScaleRuleMetricDimensionOperationTypeOutputWithContext(context.Context) ScaleRuleMetricDimensionOperationTypeOutput
+}
+
+var scaleRuleMetricDimensionOperationTypePtrType = reflect.TypeOf((**ScaleRuleMetricDimensionOperationType)(nil)).Elem()
+
+type ScaleRuleMetricDimensionOperationTypePtrInput interface {
+	pulumi.Input
+
+	ToScaleRuleMetricDimensionOperationTypePtrOutput() ScaleRuleMetricDimensionOperationTypePtrOutput
+	ToScaleRuleMetricDimensionOperationTypePtrOutputWithContext(context.Context) ScaleRuleMetricDimensionOperationTypePtrOutput
+}
+
+type scaleRuleMetricDimensionOperationTypePtr string
+
+func ScaleRuleMetricDimensionOperationTypePtr(v string) ScaleRuleMetricDimensionOperationTypePtrInput {
+	return (*scaleRuleMetricDimensionOperationTypePtr)(&v)
+}
+
+func (*scaleRuleMetricDimensionOperationTypePtr) ElementType() reflect.Type {
+	return scaleRuleMetricDimensionOperationTypePtrType
+}
+
+func (in *scaleRuleMetricDimensionOperationTypePtr) ToScaleRuleMetricDimensionOperationTypePtrOutput() ScaleRuleMetricDimensionOperationTypePtrOutput {
+	return pulumi.ToOutput(in).(ScaleRuleMetricDimensionOperationTypePtrOutput)
+}
+
+func (in *scaleRuleMetricDimensionOperationTypePtr) ToScaleRuleMetricDimensionOperationTypePtrOutputWithContext(ctx context.Context) ScaleRuleMetricDimensionOperationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ScaleRuleMetricDimensionOperationTypePtrOutput)
+}
+
+func (in *scaleRuleMetricDimensionOperationTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ScaleRuleMetricDimensionOperationType] {
+	return pulumix.Output[*ScaleRuleMetricDimensionOperationType]{
+		OutputState: in.ToScaleRuleMetricDimensionOperationTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
 
 // the type of action that should occur when the scale rule fires.
 type ScaleType string
@@ -1188,10 +1372,13 @@ func (o ScaleTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// ScaleTypeInput is an input type that accepts ScaleTypeArgs and ScaleTypeOutput values.
-// You can construct a concrete instance of `ScaleTypeInput` via:
+// ScaleTypeInput is an input type that accepts values of the ScaleType enum
+// A concrete instance of `ScaleTypeInput` can be one of the following:
 //
-//	ScaleTypeArgs{...}
+//	ScaleTypeChangeCount
+//	ScaleTypePercentChangeCount
+//	ScaleTypeExactCount
+//	ScaleTypeServiceAllowedNextValue
 type ScaleTypeInput interface {
 	pulumi.Input
 
@@ -1363,10 +1550,15 @@ func (o TimeAggregationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// TimeAggregationTypeInput is an input type that accepts TimeAggregationTypeArgs and TimeAggregationTypeOutput values.
-// You can construct a concrete instance of `TimeAggregationTypeInput` via:
+// TimeAggregationTypeInput is an input type that accepts values of the TimeAggregationType enum
+// A concrete instance of `TimeAggregationTypeInput` can be one of the following:
 //
-//	TimeAggregationTypeArgs{...}
+//	TimeAggregationTypeAverage
+//	TimeAggregationTypeMinimum
+//	TimeAggregationTypeMaximum
+//	TimeAggregationTypeTotal
+//	TimeAggregationTypeCount
+//	TimeAggregationTypeLast
 type TimeAggregationTypeInput interface {
 	pulumi.Input
 
@@ -1420,6 +1612,8 @@ func init() {
 	pulumi.RegisterOutputType(RecurrenceFrequencyPtrOutput{})
 	pulumi.RegisterOutputType(ScaleDirectionOutput{})
 	pulumi.RegisterOutputType(ScaleDirectionPtrOutput{})
+	pulumi.RegisterOutputType(ScaleRuleMetricDimensionOperationTypeOutput{})
+	pulumi.RegisterOutputType(ScaleRuleMetricDimensionOperationTypePtrOutput{})
 	pulumi.RegisterOutputType(ScaleTypeOutput{})
 	pulumi.RegisterOutputType(ScaleTypePtrOutput{})
 	pulumi.RegisterOutputType(TimeAggregationTypeOutput{})

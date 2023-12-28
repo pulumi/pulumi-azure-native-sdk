@@ -138,10 +138,11 @@ func (o FavoriteTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// FavoriteTypeInput is an input type that accepts FavoriteTypeArgs and FavoriteTypeOutput values.
-// You can construct a concrete instance of `FavoriteTypeInput` via:
+// FavoriteTypeInput is an input type that accepts values of the FavoriteType enum
+// A concrete instance of `FavoriteTypeInput` can be one of the following:
 //
-//	FavoriteTypeArgs{...}
+//	FavoriteTypeShared
+//	FavoriteTypeUser
 type FavoriteTypeInput interface {
 	pulumi.Input
 
@@ -190,6 +191,170 @@ const (
 	ItemScopeUser   = ItemScope("user")
 )
 
+func (ItemScope) ElementType() reflect.Type {
+	return reflect.TypeOf((*ItemScope)(nil)).Elem()
+}
+
+func (e ItemScope) ToItemScopeOutput() ItemScopeOutput {
+	return pulumi.ToOutput(e).(ItemScopeOutput)
+}
+
+func (e ItemScope) ToItemScopeOutputWithContext(ctx context.Context) ItemScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ItemScopeOutput)
+}
+
+func (e ItemScope) ToItemScopePtrOutput() ItemScopePtrOutput {
+	return e.ToItemScopePtrOutputWithContext(context.Background())
+}
+
+func (e ItemScope) ToItemScopePtrOutputWithContext(ctx context.Context) ItemScopePtrOutput {
+	return ItemScope(e).ToItemScopeOutputWithContext(ctx).ToItemScopePtrOutputWithContext(ctx)
+}
+
+func (e ItemScope) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ItemScope) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ItemScope) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ItemScope) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ItemScopeOutput struct{ *pulumi.OutputState }
+
+func (ItemScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ItemScope)(nil)).Elem()
+}
+
+func (o ItemScopeOutput) ToItemScopeOutput() ItemScopeOutput {
+	return o
+}
+
+func (o ItemScopeOutput) ToItemScopeOutputWithContext(ctx context.Context) ItemScopeOutput {
+	return o
+}
+
+func (o ItemScopeOutput) ToItemScopePtrOutput() ItemScopePtrOutput {
+	return o.ToItemScopePtrOutputWithContext(context.Background())
+}
+
+func (o ItemScopeOutput) ToItemScopePtrOutputWithContext(ctx context.Context) ItemScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ItemScope) *ItemScope {
+		return &v
+	}).(ItemScopePtrOutput)
+}
+
+func (o ItemScopeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ItemScopeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ItemScope) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ItemScopeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ItemScopeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ItemScope) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ItemScopePtrOutput struct{ *pulumi.OutputState }
+
+func (ItemScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ItemScope)(nil)).Elem()
+}
+
+func (o ItemScopePtrOutput) ToItemScopePtrOutput() ItemScopePtrOutput {
+	return o
+}
+
+func (o ItemScopePtrOutput) ToItemScopePtrOutputWithContext(ctx context.Context) ItemScopePtrOutput {
+	return o
+}
+
+func (o ItemScopePtrOutput) Elem() ItemScopeOutput {
+	return o.ApplyT(func(v *ItemScope) ItemScope {
+		if v != nil {
+			return *v
+		}
+		var ret ItemScope
+		return ret
+	}).(ItemScopeOutput)
+}
+
+func (o ItemScopePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ItemScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ItemScope) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ItemScopeInput is an input type that accepts values of the ItemScope enum
+// A concrete instance of `ItemScopeInput` can be one of the following:
+//
+//	ItemScopeShared
+//	ItemScopeUser
+type ItemScopeInput interface {
+	pulumi.Input
+
+	ToItemScopeOutput() ItemScopeOutput
+	ToItemScopeOutputWithContext(context.Context) ItemScopeOutput
+}
+
+var itemScopePtrType = reflect.TypeOf((**ItemScope)(nil)).Elem()
+
+type ItemScopePtrInput interface {
+	pulumi.Input
+
+	ToItemScopePtrOutput() ItemScopePtrOutput
+	ToItemScopePtrOutputWithContext(context.Context) ItemScopePtrOutput
+}
+
+type itemScopePtr string
+
+func ItemScopePtr(v string) ItemScopePtrInput {
+	return (*itemScopePtr)(&v)
+}
+
+func (*itemScopePtr) ElementType() reflect.Type {
+	return itemScopePtrType
+}
+
+func (in *itemScopePtr) ToItemScopePtrOutput() ItemScopePtrOutput {
+	return pulumi.ToOutput(in).(ItemScopePtrOutput)
+}
+
+func (in *itemScopePtr) ToItemScopePtrOutputWithContext(ctx context.Context) ItemScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ItemScopePtrOutput)
+}
+
+func (in *itemScopePtr) ToOutput(ctx context.Context) pulumix.Output[*ItemScope] {
+	return pulumix.Output[*ItemScope]{
+		OutputState: in.ToItemScopePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Enum indicating the type of the Analytics item.
 type ItemType string
 
@@ -200,6 +365,172 @@ const (
 	ItemTypeFunction = ItemType("function")
 )
 
+func (ItemType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ItemType)(nil)).Elem()
+}
+
+func (e ItemType) ToItemTypeOutput() ItemTypeOutput {
+	return pulumi.ToOutput(e).(ItemTypeOutput)
+}
+
+func (e ItemType) ToItemTypeOutputWithContext(ctx context.Context) ItemTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ItemTypeOutput)
+}
+
+func (e ItemType) ToItemTypePtrOutput() ItemTypePtrOutput {
+	return e.ToItemTypePtrOutputWithContext(context.Background())
+}
+
+func (e ItemType) ToItemTypePtrOutputWithContext(ctx context.Context) ItemTypePtrOutput {
+	return ItemType(e).ToItemTypeOutputWithContext(ctx).ToItemTypePtrOutputWithContext(ctx)
+}
+
+func (e ItemType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ItemType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ItemType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ItemType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ItemTypeOutput struct{ *pulumi.OutputState }
+
+func (ItemTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ItemType)(nil)).Elem()
+}
+
+func (o ItemTypeOutput) ToItemTypeOutput() ItemTypeOutput {
+	return o
+}
+
+func (o ItemTypeOutput) ToItemTypeOutputWithContext(ctx context.Context) ItemTypeOutput {
+	return o
+}
+
+func (o ItemTypeOutput) ToItemTypePtrOutput() ItemTypePtrOutput {
+	return o.ToItemTypePtrOutputWithContext(context.Background())
+}
+
+func (o ItemTypeOutput) ToItemTypePtrOutputWithContext(ctx context.Context) ItemTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ItemType) *ItemType {
+		return &v
+	}).(ItemTypePtrOutput)
+}
+
+func (o ItemTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ItemTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ItemType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ItemTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ItemTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ItemType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ItemTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ItemTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ItemType)(nil)).Elem()
+}
+
+func (o ItemTypePtrOutput) ToItemTypePtrOutput() ItemTypePtrOutput {
+	return o
+}
+
+func (o ItemTypePtrOutput) ToItemTypePtrOutputWithContext(ctx context.Context) ItemTypePtrOutput {
+	return o
+}
+
+func (o ItemTypePtrOutput) Elem() ItemTypeOutput {
+	return o.ApplyT(func(v *ItemType) ItemType {
+		if v != nil {
+			return *v
+		}
+		var ret ItemType
+		return ret
+	}).(ItemTypeOutput)
+}
+
+func (o ItemTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ItemTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ItemType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ItemTypeInput is an input type that accepts values of the ItemType enum
+// A concrete instance of `ItemTypeInput` can be one of the following:
+//
+//	ItemTypeNone
+//	ItemTypeQuery
+//	ItemTypeRecent
+//	ItemTypeFunction
+type ItemTypeInput interface {
+	pulumi.Input
+
+	ToItemTypeOutput() ItemTypeOutput
+	ToItemTypeOutputWithContext(context.Context) ItemTypeOutput
+}
+
+var itemTypePtrType = reflect.TypeOf((**ItemType)(nil)).Elem()
+
+type ItemTypePtrInput interface {
+	pulumi.Input
+
+	ToItemTypePtrOutput() ItemTypePtrOutput
+	ToItemTypePtrOutputWithContext(context.Context) ItemTypePtrOutput
+}
+
+type itemTypePtr string
+
+func ItemTypePtr(v string) ItemTypePtrInput {
+	return (*itemTypePtr)(&v)
+}
+
+func (*itemTypePtr) ElementType() reflect.Type {
+	return itemTypePtrType
+}
+
+func (in *itemTypePtr) ToItemTypePtrOutput() ItemTypePtrOutput {
+	return pulumi.ToOutput(in).(ItemTypePtrOutput)
+}
+
+func (in *itemTypePtr) ToItemTypePtrOutputWithContext(ctx context.Context) ItemTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ItemTypePtrOutput)
+}
+
+func (in *itemTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ItemType] {
+	return pulumix.Output[*ItemType]{
+		OutputState: in.ToItemTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Enum indicating if this workbook definition is owned by a specific user or is shared between all users with access to the Application Insights component.
 type SharedTypeKind string
 
@@ -208,7 +539,177 @@ const (
 	SharedTypeKindUser   = SharedTypeKind("user")
 )
 
+func (SharedTypeKind) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedTypeKind)(nil)).Elem()
+}
+
+func (e SharedTypeKind) ToSharedTypeKindOutput() SharedTypeKindOutput {
+	return pulumi.ToOutput(e).(SharedTypeKindOutput)
+}
+
+func (e SharedTypeKind) ToSharedTypeKindOutputWithContext(ctx context.Context) SharedTypeKindOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SharedTypeKindOutput)
+}
+
+func (e SharedTypeKind) ToSharedTypeKindPtrOutput() SharedTypeKindPtrOutput {
+	return e.ToSharedTypeKindPtrOutputWithContext(context.Background())
+}
+
+func (e SharedTypeKind) ToSharedTypeKindPtrOutputWithContext(ctx context.Context) SharedTypeKindPtrOutput {
+	return SharedTypeKind(e).ToSharedTypeKindOutputWithContext(ctx).ToSharedTypeKindPtrOutputWithContext(ctx)
+}
+
+func (e SharedTypeKind) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SharedTypeKind) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SharedTypeKind) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SharedTypeKind) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SharedTypeKindOutput struct{ *pulumi.OutputState }
+
+func (SharedTypeKindOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedTypeKind)(nil)).Elem()
+}
+
+func (o SharedTypeKindOutput) ToSharedTypeKindOutput() SharedTypeKindOutput {
+	return o
+}
+
+func (o SharedTypeKindOutput) ToSharedTypeKindOutputWithContext(ctx context.Context) SharedTypeKindOutput {
+	return o
+}
+
+func (o SharedTypeKindOutput) ToSharedTypeKindPtrOutput() SharedTypeKindPtrOutput {
+	return o.ToSharedTypeKindPtrOutputWithContext(context.Background())
+}
+
+func (o SharedTypeKindOutput) ToSharedTypeKindPtrOutputWithContext(ctx context.Context) SharedTypeKindPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SharedTypeKind) *SharedTypeKind {
+		return &v
+	}).(SharedTypeKindPtrOutput)
+}
+
+func (o SharedTypeKindOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SharedTypeKindOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SharedTypeKind) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SharedTypeKindOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SharedTypeKindOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SharedTypeKind) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SharedTypeKindPtrOutput struct{ *pulumi.OutputState }
+
+func (SharedTypeKindPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SharedTypeKind)(nil)).Elem()
+}
+
+func (o SharedTypeKindPtrOutput) ToSharedTypeKindPtrOutput() SharedTypeKindPtrOutput {
+	return o
+}
+
+func (o SharedTypeKindPtrOutput) ToSharedTypeKindPtrOutputWithContext(ctx context.Context) SharedTypeKindPtrOutput {
+	return o
+}
+
+func (o SharedTypeKindPtrOutput) Elem() SharedTypeKindOutput {
+	return o.ApplyT(func(v *SharedTypeKind) SharedTypeKind {
+		if v != nil {
+			return *v
+		}
+		var ret SharedTypeKind
+		return ret
+	}).(SharedTypeKindOutput)
+}
+
+func (o SharedTypeKindPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SharedTypeKindPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SharedTypeKind) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SharedTypeKindInput is an input type that accepts values of the SharedTypeKind enum
+// A concrete instance of `SharedTypeKindInput` can be one of the following:
+//
+//	SharedTypeKindShared
+//	SharedTypeKindUser
+type SharedTypeKindInput interface {
+	pulumi.Input
+
+	ToSharedTypeKindOutput() SharedTypeKindOutput
+	ToSharedTypeKindOutputWithContext(context.Context) SharedTypeKindOutput
+}
+
+var sharedTypeKindPtrType = reflect.TypeOf((**SharedTypeKind)(nil)).Elem()
+
+type SharedTypeKindPtrInput interface {
+	pulumi.Input
+
+	ToSharedTypeKindPtrOutput() SharedTypeKindPtrOutput
+	ToSharedTypeKindPtrOutputWithContext(context.Context) SharedTypeKindPtrOutput
+}
+
+type sharedTypeKindPtr string
+
+func SharedTypeKindPtr(v string) SharedTypeKindPtrInput {
+	return (*sharedTypeKindPtr)(&v)
+}
+
+func (*sharedTypeKindPtr) ElementType() reflect.Type {
+	return sharedTypeKindPtrType
+}
+
+func (in *sharedTypeKindPtr) ToSharedTypeKindPtrOutput() SharedTypeKindPtrOutput {
+	return pulumi.ToOutput(in).(SharedTypeKindPtrOutput)
+}
+
+func (in *sharedTypeKindPtr) ToSharedTypeKindPtrOutputWithContext(ctx context.Context) SharedTypeKindPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SharedTypeKindPtrOutput)
+}
+
+func (in *sharedTypeKindPtr) ToOutput(ctx context.Context) pulumix.Output[*SharedTypeKind] {
+	return pulumix.Output[*SharedTypeKind]{
+		OutputState: in.ToSharedTypeKindPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
 	pulumi.RegisterOutputType(FavoriteTypeOutput{})
 	pulumi.RegisterOutputType(FavoriteTypePtrOutput{})
+	pulumi.RegisterOutputType(ItemScopeOutput{})
+	pulumi.RegisterOutputType(ItemScopePtrOutput{})
+	pulumi.RegisterOutputType(ItemTypeOutput{})
+	pulumi.RegisterOutputType(ItemTypePtrOutput{})
+	pulumi.RegisterOutputType(SharedTypeKindOutput{})
+	pulumi.RegisterOutputType(SharedTypeKindPtrOutput{})
 }

@@ -311,6 +311,160 @@ type AudioEncoderAac struct {
 	Type string `pulumi:"type"`
 }
 
+// AudioEncoderAacInput is an input type that accepts AudioEncoderAacArgs and AudioEncoderAacOutput values.
+// You can construct a concrete instance of `AudioEncoderAacInput` via:
+//
+//	AudioEncoderAacArgs{...}
+type AudioEncoderAacInput interface {
+	pulumi.Input
+
+	ToAudioEncoderAacOutput() AudioEncoderAacOutput
+	ToAudioEncoderAacOutputWithContext(context.Context) AudioEncoderAacOutput
+}
+
+// A custom preset for encoding audio with the AAC codec.
+type AudioEncoderAacArgs struct {
+	// Bitrate, in kilobits per second or Kbps, at which audio should be encoded (2-channel stereo audio at a sampling rate of 48 kHz). Allowed values are 96, 112, 128, 160, 192, 224, and 256. If omitted, the bitrate of the input audio is used.
+	BitrateKbps pulumi.StringPtrInput `pulumi:"bitrateKbps"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.VideoAnalyzer.AudioEncoderAac'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (AudioEncoderAacArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AudioEncoderAac)(nil)).Elem()
+}
+
+func (i AudioEncoderAacArgs) ToAudioEncoderAacOutput() AudioEncoderAacOutput {
+	return i.ToAudioEncoderAacOutputWithContext(context.Background())
+}
+
+func (i AudioEncoderAacArgs) ToAudioEncoderAacOutputWithContext(ctx context.Context) AudioEncoderAacOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AudioEncoderAacOutput)
+}
+
+func (i AudioEncoderAacArgs) ToAudioEncoderAacPtrOutput() AudioEncoderAacPtrOutput {
+	return i.ToAudioEncoderAacPtrOutputWithContext(context.Background())
+}
+
+func (i AudioEncoderAacArgs) ToAudioEncoderAacPtrOutputWithContext(ctx context.Context) AudioEncoderAacPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AudioEncoderAacOutput).ToAudioEncoderAacPtrOutputWithContext(ctx)
+}
+
+// AudioEncoderAacPtrInput is an input type that accepts AudioEncoderAacArgs, AudioEncoderAacPtr and AudioEncoderAacPtrOutput values.
+// You can construct a concrete instance of `AudioEncoderAacPtrInput` via:
+//
+//	        AudioEncoderAacArgs{...}
+//
+//	or:
+//
+//	        nil
+type AudioEncoderAacPtrInput interface {
+	pulumi.Input
+
+	ToAudioEncoderAacPtrOutput() AudioEncoderAacPtrOutput
+	ToAudioEncoderAacPtrOutputWithContext(context.Context) AudioEncoderAacPtrOutput
+}
+
+type audioEncoderAacPtrType AudioEncoderAacArgs
+
+func AudioEncoderAacPtr(v *AudioEncoderAacArgs) AudioEncoderAacPtrInput {
+	return (*audioEncoderAacPtrType)(v)
+}
+
+func (*audioEncoderAacPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AudioEncoderAac)(nil)).Elem()
+}
+
+func (i *audioEncoderAacPtrType) ToAudioEncoderAacPtrOutput() AudioEncoderAacPtrOutput {
+	return i.ToAudioEncoderAacPtrOutputWithContext(context.Background())
+}
+
+func (i *audioEncoderAacPtrType) ToAudioEncoderAacPtrOutputWithContext(ctx context.Context) AudioEncoderAacPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AudioEncoderAacPtrOutput)
+}
+
+// A custom preset for encoding audio with the AAC codec.
+type AudioEncoderAacOutput struct{ *pulumi.OutputState }
+
+func (AudioEncoderAacOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AudioEncoderAac)(nil)).Elem()
+}
+
+func (o AudioEncoderAacOutput) ToAudioEncoderAacOutput() AudioEncoderAacOutput {
+	return o
+}
+
+func (o AudioEncoderAacOutput) ToAudioEncoderAacOutputWithContext(ctx context.Context) AudioEncoderAacOutput {
+	return o
+}
+
+func (o AudioEncoderAacOutput) ToAudioEncoderAacPtrOutput() AudioEncoderAacPtrOutput {
+	return o.ToAudioEncoderAacPtrOutputWithContext(context.Background())
+}
+
+func (o AudioEncoderAacOutput) ToAudioEncoderAacPtrOutputWithContext(ctx context.Context) AudioEncoderAacPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AudioEncoderAac) *AudioEncoderAac {
+		return &v
+	}).(AudioEncoderAacPtrOutput)
+}
+
+// Bitrate, in kilobits per second or Kbps, at which audio should be encoded (2-channel stereo audio at a sampling rate of 48 kHz). Allowed values are 96, 112, 128, 160, 192, 224, and 256. If omitted, the bitrate of the input audio is used.
+func (o AudioEncoderAacOutput) BitrateKbps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AudioEncoderAac) *string { return v.BitrateKbps }).(pulumi.StringPtrOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.AudioEncoderAac'.
+func (o AudioEncoderAacOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AudioEncoderAac) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AudioEncoderAacPtrOutput struct{ *pulumi.OutputState }
+
+func (AudioEncoderAacPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AudioEncoderAac)(nil)).Elem()
+}
+
+func (o AudioEncoderAacPtrOutput) ToAudioEncoderAacPtrOutput() AudioEncoderAacPtrOutput {
+	return o
+}
+
+func (o AudioEncoderAacPtrOutput) ToAudioEncoderAacPtrOutputWithContext(ctx context.Context) AudioEncoderAacPtrOutput {
+	return o
+}
+
+func (o AudioEncoderAacPtrOutput) Elem() AudioEncoderAacOutput {
+	return o.ApplyT(func(v *AudioEncoderAac) AudioEncoderAac {
+		if v != nil {
+			return *v
+		}
+		var ret AudioEncoderAac
+		return ret
+	}).(AudioEncoderAacOutput)
+}
+
+// Bitrate, in kilobits per second or Kbps, at which audio should be encoded (2-channel stereo audio at a sampling rate of 48 kHz). Allowed values are 96, 112, 128, 160, 192, 224, and 256. If omitted, the bitrate of the input audio is used.
+func (o AudioEncoderAacPtrOutput) BitrateKbps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AudioEncoderAac) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BitrateKbps
+	}).(pulumi.StringPtrOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.AudioEncoderAac'.
+func (o AudioEncoderAacPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AudioEncoderAac) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // A custom preset for encoding audio with the AAC codec.
 type AudioEncoderAacResponse struct {
 	// Bitrate, in kilobits per second or Kbps, at which audio should be encoded (2-channel stereo audio at a sampling rate of 48 kHz). Allowed values are 96, 112, 128, 160, 192, 224, and 256. If omitted, the bitrate of the input audio is used.
@@ -318,6 +472,77 @@ type AudioEncoderAacResponse struct {
 	// The discriminator for derived types.
 	// Expected value is '#Microsoft.VideoAnalyzer.AudioEncoderAac'.
 	Type string `pulumi:"type"`
+}
+
+// A custom preset for encoding audio with the AAC codec.
+type AudioEncoderAacResponseOutput struct{ *pulumi.OutputState }
+
+func (AudioEncoderAacResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AudioEncoderAacResponse)(nil)).Elem()
+}
+
+func (o AudioEncoderAacResponseOutput) ToAudioEncoderAacResponseOutput() AudioEncoderAacResponseOutput {
+	return o
+}
+
+func (o AudioEncoderAacResponseOutput) ToAudioEncoderAacResponseOutputWithContext(ctx context.Context) AudioEncoderAacResponseOutput {
+	return o
+}
+
+// Bitrate, in kilobits per second or Kbps, at which audio should be encoded (2-channel stereo audio at a sampling rate of 48 kHz). Allowed values are 96, 112, 128, 160, 192, 224, and 256. If omitted, the bitrate of the input audio is used.
+func (o AudioEncoderAacResponseOutput) BitrateKbps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AudioEncoderAacResponse) *string { return v.BitrateKbps }).(pulumi.StringPtrOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.AudioEncoderAac'.
+func (o AudioEncoderAacResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AudioEncoderAacResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type AudioEncoderAacResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AudioEncoderAacResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AudioEncoderAacResponse)(nil)).Elem()
+}
+
+func (o AudioEncoderAacResponsePtrOutput) ToAudioEncoderAacResponsePtrOutput() AudioEncoderAacResponsePtrOutput {
+	return o
+}
+
+func (o AudioEncoderAacResponsePtrOutput) ToAudioEncoderAacResponsePtrOutputWithContext(ctx context.Context) AudioEncoderAacResponsePtrOutput {
+	return o
+}
+
+func (o AudioEncoderAacResponsePtrOutput) Elem() AudioEncoderAacResponseOutput {
+	return o.ApplyT(func(v *AudioEncoderAacResponse) AudioEncoderAacResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AudioEncoderAacResponse
+		return ret
+	}).(AudioEncoderAacResponseOutput)
+}
+
+// Bitrate, in kilobits per second or Kbps, at which audio should be encoded (2-channel stereo audio at a sampling rate of 48 kHz). Allowed values are 96, 112, 128, 160, 192, 224, and 256. If omitted, the bitrate of the input audio is used.
+func (o AudioEncoderAacResponsePtrOutput) BitrateKbps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AudioEncoderAacResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BitrateKbps
+	}).(pulumi.StringPtrOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.AudioEncoderAac'.
+func (o AudioEncoderAacResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AudioEncoderAacResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // Required validation properties for tokens generated with Elliptical Curve algorithm.
@@ -335,6 +560,85 @@ type EccTokenKey struct {
 	Y string `pulumi:"y"`
 }
 
+// EccTokenKeyInput is an input type that accepts EccTokenKeyArgs and EccTokenKeyOutput values.
+// You can construct a concrete instance of `EccTokenKeyInput` via:
+//
+//	EccTokenKeyArgs{...}
+type EccTokenKeyInput interface {
+	pulumi.Input
+
+	ToEccTokenKeyOutput() EccTokenKeyOutput
+	ToEccTokenKeyOutputWithContext(context.Context) EccTokenKeyOutput
+}
+
+// Required validation properties for tokens generated with Elliptical Curve algorithm.
+type EccTokenKeyArgs struct {
+	// Elliptical curve algorithm to be used: ES256, ES384 or ES512.
+	Alg pulumi.StringInput `pulumi:"alg"`
+	// JWT token key id. Validation keys are looked up based on the key id present on the JWT token header.
+	Kid pulumi.StringInput `pulumi:"kid"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.VideoAnalyzer.EccTokenKey'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// X coordinate.
+	X pulumi.StringInput `pulumi:"x"`
+	// Y coordinate.
+	Y pulumi.StringInput `pulumi:"y"`
+}
+
+func (EccTokenKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EccTokenKey)(nil)).Elem()
+}
+
+func (i EccTokenKeyArgs) ToEccTokenKeyOutput() EccTokenKeyOutput {
+	return i.ToEccTokenKeyOutputWithContext(context.Background())
+}
+
+func (i EccTokenKeyArgs) ToEccTokenKeyOutputWithContext(ctx context.Context) EccTokenKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EccTokenKeyOutput)
+}
+
+// Required validation properties for tokens generated with Elliptical Curve algorithm.
+type EccTokenKeyOutput struct{ *pulumi.OutputState }
+
+func (EccTokenKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EccTokenKey)(nil)).Elem()
+}
+
+func (o EccTokenKeyOutput) ToEccTokenKeyOutput() EccTokenKeyOutput {
+	return o
+}
+
+func (o EccTokenKeyOutput) ToEccTokenKeyOutputWithContext(ctx context.Context) EccTokenKeyOutput {
+	return o
+}
+
+// Elliptical curve algorithm to be used: ES256, ES384 or ES512.
+func (o EccTokenKeyOutput) Alg() pulumi.StringOutput {
+	return o.ApplyT(func(v EccTokenKey) string { return v.Alg }).(pulumi.StringOutput)
+}
+
+// JWT token key id. Validation keys are looked up based on the key id present on the JWT token header.
+func (o EccTokenKeyOutput) Kid() pulumi.StringOutput {
+	return o.ApplyT(func(v EccTokenKey) string { return v.Kid }).(pulumi.StringOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.EccTokenKey'.
+func (o EccTokenKeyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v EccTokenKey) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// X coordinate.
+func (o EccTokenKeyOutput) X() pulumi.StringOutput {
+	return o.ApplyT(func(v EccTokenKey) string { return v.X }).(pulumi.StringOutput)
+}
+
+// Y coordinate.
+func (o EccTokenKeyOutput) Y() pulumi.StringOutput {
+	return o.ApplyT(func(v EccTokenKey) string { return v.Y }).(pulumi.StringOutput)
+}
+
 // Required validation properties for tokens generated with Elliptical Curve algorithm.
 type EccTokenKeyResponse struct {
 	// Elliptical curve algorithm to be used: ES256, ES384 or ES512.
@@ -350,6 +654,47 @@ type EccTokenKeyResponse struct {
 	Y string `pulumi:"y"`
 }
 
+// Required validation properties for tokens generated with Elliptical Curve algorithm.
+type EccTokenKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (EccTokenKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EccTokenKeyResponse)(nil)).Elem()
+}
+
+func (o EccTokenKeyResponseOutput) ToEccTokenKeyResponseOutput() EccTokenKeyResponseOutput {
+	return o
+}
+
+func (o EccTokenKeyResponseOutput) ToEccTokenKeyResponseOutputWithContext(ctx context.Context) EccTokenKeyResponseOutput {
+	return o
+}
+
+// Elliptical curve algorithm to be used: ES256, ES384 or ES512.
+func (o EccTokenKeyResponseOutput) Alg() pulumi.StringOutput {
+	return o.ApplyT(func(v EccTokenKeyResponse) string { return v.Alg }).(pulumi.StringOutput)
+}
+
+// JWT token key id. Validation keys are looked up based on the key id present on the JWT token header.
+func (o EccTokenKeyResponseOutput) Kid() pulumi.StringOutput {
+	return o.ApplyT(func(v EccTokenKeyResponse) string { return v.Kid }).(pulumi.StringOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.EccTokenKey'.
+func (o EccTokenKeyResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v EccTokenKeyResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// X coordinate.
+func (o EccTokenKeyResponseOutput) X() pulumi.StringOutput {
+	return o.ApplyT(func(v EccTokenKeyResponse) string { return v.X }).(pulumi.StringOutput)
+}
+
+// Y coordinate.
+func (o EccTokenKeyResponseOutput) Y() pulumi.StringOutput {
+	return o.ApplyT(func(v EccTokenKeyResponse) string { return v.Y }).(pulumi.StringOutput)
+}
+
 // Describes a custom preset for encoding the input content using the encoder processor.
 type EncoderCustomPreset struct {
 	// Describes a custom preset for encoding audio.
@@ -361,6 +706,71 @@ type EncoderCustomPreset struct {
 	VideoEncoder *VideoEncoderH264 `pulumi:"videoEncoder"`
 }
 
+// EncoderCustomPresetInput is an input type that accepts EncoderCustomPresetArgs and EncoderCustomPresetOutput values.
+// You can construct a concrete instance of `EncoderCustomPresetInput` via:
+//
+//	EncoderCustomPresetArgs{...}
+type EncoderCustomPresetInput interface {
+	pulumi.Input
+
+	ToEncoderCustomPresetOutput() EncoderCustomPresetOutput
+	ToEncoderCustomPresetOutputWithContext(context.Context) EncoderCustomPresetOutput
+}
+
+// Describes a custom preset for encoding the input content using the encoder processor.
+type EncoderCustomPresetArgs struct {
+	// Describes a custom preset for encoding audio.
+	AudioEncoder AudioEncoderAacPtrInput `pulumi:"audioEncoder"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.VideoAnalyzer.EncoderCustomPreset'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Describes a custom preset for encoding video.
+	VideoEncoder VideoEncoderH264PtrInput `pulumi:"videoEncoder"`
+}
+
+func (EncoderCustomPresetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncoderCustomPreset)(nil)).Elem()
+}
+
+func (i EncoderCustomPresetArgs) ToEncoderCustomPresetOutput() EncoderCustomPresetOutput {
+	return i.ToEncoderCustomPresetOutputWithContext(context.Background())
+}
+
+func (i EncoderCustomPresetArgs) ToEncoderCustomPresetOutputWithContext(ctx context.Context) EncoderCustomPresetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncoderCustomPresetOutput)
+}
+
+// Describes a custom preset for encoding the input content using the encoder processor.
+type EncoderCustomPresetOutput struct{ *pulumi.OutputState }
+
+func (EncoderCustomPresetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncoderCustomPreset)(nil)).Elem()
+}
+
+func (o EncoderCustomPresetOutput) ToEncoderCustomPresetOutput() EncoderCustomPresetOutput {
+	return o
+}
+
+func (o EncoderCustomPresetOutput) ToEncoderCustomPresetOutputWithContext(ctx context.Context) EncoderCustomPresetOutput {
+	return o
+}
+
+// Describes a custom preset for encoding audio.
+func (o EncoderCustomPresetOutput) AudioEncoder() AudioEncoderAacPtrOutput {
+	return o.ApplyT(func(v EncoderCustomPreset) *AudioEncoderAac { return v.AudioEncoder }).(AudioEncoderAacPtrOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.EncoderCustomPreset'.
+func (o EncoderCustomPresetOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v EncoderCustomPreset) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Describes a custom preset for encoding video.
+func (o EncoderCustomPresetOutput) VideoEncoder() VideoEncoderH264PtrOutput {
+	return o.ApplyT(func(v EncoderCustomPreset) *VideoEncoderH264 { return v.VideoEncoder }).(VideoEncoderH264PtrOutput)
+}
+
 // Describes a custom preset for encoding the input content using the encoder processor.
 type EncoderCustomPresetResponse struct {
 	// Describes a custom preset for encoding audio.
@@ -370,6 +780,37 @@ type EncoderCustomPresetResponse struct {
 	Type string `pulumi:"type"`
 	// Describes a custom preset for encoding video.
 	VideoEncoder *VideoEncoderH264Response `pulumi:"videoEncoder"`
+}
+
+// Describes a custom preset for encoding the input content using the encoder processor.
+type EncoderCustomPresetResponseOutput struct{ *pulumi.OutputState }
+
+func (EncoderCustomPresetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncoderCustomPresetResponse)(nil)).Elem()
+}
+
+func (o EncoderCustomPresetResponseOutput) ToEncoderCustomPresetResponseOutput() EncoderCustomPresetResponseOutput {
+	return o
+}
+
+func (o EncoderCustomPresetResponseOutput) ToEncoderCustomPresetResponseOutputWithContext(ctx context.Context) EncoderCustomPresetResponseOutput {
+	return o
+}
+
+// Describes a custom preset for encoding audio.
+func (o EncoderCustomPresetResponseOutput) AudioEncoder() AudioEncoderAacResponsePtrOutput {
+	return o.ApplyT(func(v EncoderCustomPresetResponse) *AudioEncoderAacResponse { return v.AudioEncoder }).(AudioEncoderAacResponsePtrOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.EncoderCustomPreset'.
+func (o EncoderCustomPresetResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v EncoderCustomPresetResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Describes a custom preset for encoding video.
+func (o EncoderCustomPresetResponseOutput) VideoEncoder() VideoEncoderH264ResponsePtrOutput {
+	return o.ApplyT(func(v EncoderCustomPresetResponse) *VideoEncoderH264Response { return v.VideoEncoder }).(VideoEncoderH264ResponsePtrOutput)
 }
 
 // Encoder processor allows for encoding of the input content. For example, it can used to change the resolution from 4K to 1280x720.
@@ -580,6 +1021,64 @@ type EncoderSystemPreset struct {
 	Type string `pulumi:"type"`
 }
 
+// EncoderSystemPresetInput is an input type that accepts EncoderSystemPresetArgs and EncoderSystemPresetOutput values.
+// You can construct a concrete instance of `EncoderSystemPresetInput` via:
+//
+//	EncoderSystemPresetArgs{...}
+type EncoderSystemPresetInput interface {
+	pulumi.Input
+
+	ToEncoderSystemPresetOutput() EncoderSystemPresetOutput
+	ToEncoderSystemPresetOutputWithContext(context.Context) EncoderSystemPresetOutput
+}
+
+// Describes a built-in preset for encoding the input content using the encoder processor.
+type EncoderSystemPresetArgs struct {
+	// Name of the built-in encoding preset.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.VideoAnalyzer.EncoderSystemPreset'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (EncoderSystemPresetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncoderSystemPreset)(nil)).Elem()
+}
+
+func (i EncoderSystemPresetArgs) ToEncoderSystemPresetOutput() EncoderSystemPresetOutput {
+	return i.ToEncoderSystemPresetOutputWithContext(context.Background())
+}
+
+func (i EncoderSystemPresetArgs) ToEncoderSystemPresetOutputWithContext(ctx context.Context) EncoderSystemPresetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncoderSystemPresetOutput)
+}
+
+// Describes a built-in preset for encoding the input content using the encoder processor.
+type EncoderSystemPresetOutput struct{ *pulumi.OutputState }
+
+func (EncoderSystemPresetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncoderSystemPreset)(nil)).Elem()
+}
+
+func (o EncoderSystemPresetOutput) ToEncoderSystemPresetOutput() EncoderSystemPresetOutput {
+	return o
+}
+
+func (o EncoderSystemPresetOutput) ToEncoderSystemPresetOutputWithContext(ctx context.Context) EncoderSystemPresetOutput {
+	return o
+}
+
+// Name of the built-in encoding preset.
+func (o EncoderSystemPresetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v EncoderSystemPreset) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.EncoderSystemPreset'.
+func (o EncoderSystemPresetOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v EncoderSystemPreset) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Describes a built-in preset for encoding the input content using the encoder processor.
 type EncoderSystemPresetResponse struct {
 	// Name of the built-in encoding preset.
@@ -587,6 +1086,32 @@ type EncoderSystemPresetResponse struct {
 	// The discriminator for derived types.
 	// Expected value is '#Microsoft.VideoAnalyzer.EncoderSystemPreset'.
 	Type string `pulumi:"type"`
+}
+
+// Describes a built-in preset for encoding the input content using the encoder processor.
+type EncoderSystemPresetResponseOutput struct{ *pulumi.OutputState }
+
+func (EncoderSystemPresetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncoderSystemPresetResponse)(nil)).Elem()
+}
+
+func (o EncoderSystemPresetResponseOutput) ToEncoderSystemPresetResponseOutput() EncoderSystemPresetResponseOutput {
+	return o
+}
+
+func (o EncoderSystemPresetResponseOutput) ToEncoderSystemPresetResponseOutputWithContext(ctx context.Context) EncoderSystemPresetResponseOutput {
+	return o
+}
+
+// Name of the built-in encoding preset.
+func (o EncoderSystemPresetResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v EncoderSystemPresetResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.EncoderSystemPreset'.
+func (o EncoderSystemPresetResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v EncoderSystemPresetResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // The endpoint details.
@@ -2362,6 +2887,160 @@ type PemCertificateList struct {
 	Type string `pulumi:"type"`
 }
 
+// PemCertificateListInput is an input type that accepts PemCertificateListArgs and PemCertificateListOutput values.
+// You can construct a concrete instance of `PemCertificateListInput` via:
+//
+//	PemCertificateListArgs{...}
+type PemCertificateListInput interface {
+	pulumi.Input
+
+	ToPemCertificateListOutput() PemCertificateListOutput
+	ToPemCertificateListOutputWithContext(context.Context) PemCertificateListOutput
+}
+
+// A list of PEM formatted certificates.
+type PemCertificateListArgs struct {
+	// PEM formatted public certificates. One certificate per entry.
+	Certificates pulumi.StringArrayInput `pulumi:"certificates"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.VideoAnalyzer.PemCertificateList'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (PemCertificateListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PemCertificateList)(nil)).Elem()
+}
+
+func (i PemCertificateListArgs) ToPemCertificateListOutput() PemCertificateListOutput {
+	return i.ToPemCertificateListOutputWithContext(context.Background())
+}
+
+func (i PemCertificateListArgs) ToPemCertificateListOutputWithContext(ctx context.Context) PemCertificateListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PemCertificateListOutput)
+}
+
+func (i PemCertificateListArgs) ToPemCertificateListPtrOutput() PemCertificateListPtrOutput {
+	return i.ToPemCertificateListPtrOutputWithContext(context.Background())
+}
+
+func (i PemCertificateListArgs) ToPemCertificateListPtrOutputWithContext(ctx context.Context) PemCertificateListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PemCertificateListOutput).ToPemCertificateListPtrOutputWithContext(ctx)
+}
+
+// PemCertificateListPtrInput is an input type that accepts PemCertificateListArgs, PemCertificateListPtr and PemCertificateListPtrOutput values.
+// You can construct a concrete instance of `PemCertificateListPtrInput` via:
+//
+//	        PemCertificateListArgs{...}
+//
+//	or:
+//
+//	        nil
+type PemCertificateListPtrInput interface {
+	pulumi.Input
+
+	ToPemCertificateListPtrOutput() PemCertificateListPtrOutput
+	ToPemCertificateListPtrOutputWithContext(context.Context) PemCertificateListPtrOutput
+}
+
+type pemCertificateListPtrType PemCertificateListArgs
+
+func PemCertificateListPtr(v *PemCertificateListArgs) PemCertificateListPtrInput {
+	return (*pemCertificateListPtrType)(v)
+}
+
+func (*pemCertificateListPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PemCertificateList)(nil)).Elem()
+}
+
+func (i *pemCertificateListPtrType) ToPemCertificateListPtrOutput() PemCertificateListPtrOutput {
+	return i.ToPemCertificateListPtrOutputWithContext(context.Background())
+}
+
+func (i *pemCertificateListPtrType) ToPemCertificateListPtrOutputWithContext(ctx context.Context) PemCertificateListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PemCertificateListPtrOutput)
+}
+
+// A list of PEM formatted certificates.
+type PemCertificateListOutput struct{ *pulumi.OutputState }
+
+func (PemCertificateListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PemCertificateList)(nil)).Elem()
+}
+
+func (o PemCertificateListOutput) ToPemCertificateListOutput() PemCertificateListOutput {
+	return o
+}
+
+func (o PemCertificateListOutput) ToPemCertificateListOutputWithContext(ctx context.Context) PemCertificateListOutput {
+	return o
+}
+
+func (o PemCertificateListOutput) ToPemCertificateListPtrOutput() PemCertificateListPtrOutput {
+	return o.ToPemCertificateListPtrOutputWithContext(context.Background())
+}
+
+func (o PemCertificateListOutput) ToPemCertificateListPtrOutputWithContext(ctx context.Context) PemCertificateListPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PemCertificateList) *PemCertificateList {
+		return &v
+	}).(PemCertificateListPtrOutput)
+}
+
+// PEM formatted public certificates. One certificate per entry.
+func (o PemCertificateListOutput) Certificates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PemCertificateList) []string { return v.Certificates }).(pulumi.StringArrayOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.PemCertificateList'.
+func (o PemCertificateListOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PemCertificateList) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PemCertificateListPtrOutput struct{ *pulumi.OutputState }
+
+func (PemCertificateListPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PemCertificateList)(nil)).Elem()
+}
+
+func (o PemCertificateListPtrOutput) ToPemCertificateListPtrOutput() PemCertificateListPtrOutput {
+	return o
+}
+
+func (o PemCertificateListPtrOutput) ToPemCertificateListPtrOutputWithContext(ctx context.Context) PemCertificateListPtrOutput {
+	return o
+}
+
+func (o PemCertificateListPtrOutput) Elem() PemCertificateListOutput {
+	return o.ApplyT(func(v *PemCertificateList) PemCertificateList {
+		if v != nil {
+			return *v
+		}
+		var ret PemCertificateList
+		return ret
+	}).(PemCertificateListOutput)
+}
+
+// PEM formatted public certificates. One certificate per entry.
+func (o PemCertificateListPtrOutput) Certificates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PemCertificateList) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Certificates
+	}).(pulumi.StringArrayOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.PemCertificateList'.
+func (o PemCertificateListPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PemCertificateList) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // A list of PEM formatted certificates.
 type PemCertificateListResponse struct {
 	// PEM formatted public certificates. One certificate per entry.
@@ -2369,6 +3048,77 @@ type PemCertificateListResponse struct {
 	// The discriminator for derived types.
 	// Expected value is '#Microsoft.VideoAnalyzer.PemCertificateList'.
 	Type string `pulumi:"type"`
+}
+
+// A list of PEM formatted certificates.
+type PemCertificateListResponseOutput struct{ *pulumi.OutputState }
+
+func (PemCertificateListResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PemCertificateListResponse)(nil)).Elem()
+}
+
+func (o PemCertificateListResponseOutput) ToPemCertificateListResponseOutput() PemCertificateListResponseOutput {
+	return o
+}
+
+func (o PemCertificateListResponseOutput) ToPemCertificateListResponseOutputWithContext(ctx context.Context) PemCertificateListResponseOutput {
+	return o
+}
+
+// PEM formatted public certificates. One certificate per entry.
+func (o PemCertificateListResponseOutput) Certificates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PemCertificateListResponse) []string { return v.Certificates }).(pulumi.StringArrayOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.PemCertificateList'.
+func (o PemCertificateListResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PemCertificateListResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PemCertificateListResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PemCertificateListResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PemCertificateListResponse)(nil)).Elem()
+}
+
+func (o PemCertificateListResponsePtrOutput) ToPemCertificateListResponsePtrOutput() PemCertificateListResponsePtrOutput {
+	return o
+}
+
+func (o PemCertificateListResponsePtrOutput) ToPemCertificateListResponsePtrOutputWithContext(ctx context.Context) PemCertificateListResponsePtrOutput {
+	return o
+}
+
+func (o PemCertificateListResponsePtrOutput) Elem() PemCertificateListResponseOutput {
+	return o.ApplyT(func(v *PemCertificateListResponse) PemCertificateListResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PemCertificateListResponse
+		return ret
+	}).(PemCertificateListResponseOutput)
+}
+
+// PEM formatted public certificates. One certificate per entry.
+func (o PemCertificateListResponsePtrOutput) Certificates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PemCertificateListResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Certificates
+	}).(pulumi.StringArrayOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.PemCertificateList'.
+func (o PemCertificateListResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PemCertificateListResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // Details about the error for a failed pipeline job.
@@ -2882,6 +3632,85 @@ type RsaTokenKey struct {
 	Type string `pulumi:"type"`
 }
 
+// RsaTokenKeyInput is an input type that accepts RsaTokenKeyArgs and RsaTokenKeyOutput values.
+// You can construct a concrete instance of `RsaTokenKeyInput` via:
+//
+//	RsaTokenKeyArgs{...}
+type RsaTokenKeyInput interface {
+	pulumi.Input
+
+	ToRsaTokenKeyOutput() RsaTokenKeyOutput
+	ToRsaTokenKeyOutputWithContext(context.Context) RsaTokenKeyOutput
+}
+
+// Required validation properties for tokens generated with RSA algorithm.
+type RsaTokenKeyArgs struct {
+	// RSA algorithm to be used: RS256, RS384 or RS512.
+	Alg pulumi.StringInput `pulumi:"alg"`
+	// RSA public key exponent.
+	E pulumi.StringInput `pulumi:"e"`
+	// JWT token key id. Validation keys are looked up based on the key id present on the JWT token header.
+	Kid pulumi.StringInput `pulumi:"kid"`
+	// RSA public key modulus.
+	N pulumi.StringInput `pulumi:"n"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.VideoAnalyzer.RsaTokenKey'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (RsaTokenKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RsaTokenKey)(nil)).Elem()
+}
+
+func (i RsaTokenKeyArgs) ToRsaTokenKeyOutput() RsaTokenKeyOutput {
+	return i.ToRsaTokenKeyOutputWithContext(context.Background())
+}
+
+func (i RsaTokenKeyArgs) ToRsaTokenKeyOutputWithContext(ctx context.Context) RsaTokenKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RsaTokenKeyOutput)
+}
+
+// Required validation properties for tokens generated with RSA algorithm.
+type RsaTokenKeyOutput struct{ *pulumi.OutputState }
+
+func (RsaTokenKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RsaTokenKey)(nil)).Elem()
+}
+
+func (o RsaTokenKeyOutput) ToRsaTokenKeyOutput() RsaTokenKeyOutput {
+	return o
+}
+
+func (o RsaTokenKeyOutput) ToRsaTokenKeyOutputWithContext(ctx context.Context) RsaTokenKeyOutput {
+	return o
+}
+
+// RSA algorithm to be used: RS256, RS384 or RS512.
+func (o RsaTokenKeyOutput) Alg() pulumi.StringOutput {
+	return o.ApplyT(func(v RsaTokenKey) string { return v.Alg }).(pulumi.StringOutput)
+}
+
+// RSA public key exponent.
+func (o RsaTokenKeyOutput) E() pulumi.StringOutput {
+	return o.ApplyT(func(v RsaTokenKey) string { return v.E }).(pulumi.StringOutput)
+}
+
+// JWT token key id. Validation keys are looked up based on the key id present on the JWT token header.
+func (o RsaTokenKeyOutput) Kid() pulumi.StringOutput {
+	return o.ApplyT(func(v RsaTokenKey) string { return v.Kid }).(pulumi.StringOutput)
+}
+
+// RSA public key modulus.
+func (o RsaTokenKeyOutput) N() pulumi.StringOutput {
+	return o.ApplyT(func(v RsaTokenKey) string { return v.N }).(pulumi.StringOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.RsaTokenKey'.
+func (o RsaTokenKeyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RsaTokenKey) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Required validation properties for tokens generated with RSA algorithm.
 type RsaTokenKeyResponse struct {
 	// RSA algorithm to be used: RS256, RS384 or RS512.
@@ -2897,6 +3726,47 @@ type RsaTokenKeyResponse struct {
 	Type string `pulumi:"type"`
 }
 
+// Required validation properties for tokens generated with RSA algorithm.
+type RsaTokenKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (RsaTokenKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RsaTokenKeyResponse)(nil)).Elem()
+}
+
+func (o RsaTokenKeyResponseOutput) ToRsaTokenKeyResponseOutput() RsaTokenKeyResponseOutput {
+	return o
+}
+
+func (o RsaTokenKeyResponseOutput) ToRsaTokenKeyResponseOutputWithContext(ctx context.Context) RsaTokenKeyResponseOutput {
+	return o
+}
+
+// RSA algorithm to be used: RS256, RS384 or RS512.
+func (o RsaTokenKeyResponseOutput) Alg() pulumi.StringOutput {
+	return o.ApplyT(func(v RsaTokenKeyResponse) string { return v.Alg }).(pulumi.StringOutput)
+}
+
+// RSA public key exponent.
+func (o RsaTokenKeyResponseOutput) E() pulumi.StringOutput {
+	return o.ApplyT(func(v RsaTokenKeyResponse) string { return v.E }).(pulumi.StringOutput)
+}
+
+// JWT token key id. Validation keys are looked up based on the key id present on the JWT token header.
+func (o RsaTokenKeyResponseOutput) Kid() pulumi.StringOutput {
+	return o.ApplyT(func(v RsaTokenKeyResponse) string { return v.Kid }).(pulumi.StringOutput)
+}
+
+// RSA public key modulus.
+func (o RsaTokenKeyResponseOutput) N() pulumi.StringOutput {
+	return o.ApplyT(func(v RsaTokenKeyResponse) string { return v.N }).(pulumi.StringOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.RsaTokenKey'.
+func (o RsaTokenKeyResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RsaTokenKeyResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // RTSP source allows for media from an RTSP camera or generic RTSP server to be ingested into a pipeline.
 type RtspSource struct {
 	// RTSP endpoint information for Video Analyzer to connect to. This contains the required information for Video Analyzer to connect to RTSP cameras and/or generic RTSP servers.
@@ -2908,6 +3778,78 @@ type RtspSource struct {
 	// The discriminator for derived types.
 	// Expected value is '#Microsoft.VideoAnalyzer.RtspSource'.
 	Type string `pulumi:"type"`
+}
+
+// RtspSourceInput is an input type that accepts RtspSourceArgs and RtspSourceOutput values.
+// You can construct a concrete instance of `RtspSourceInput` via:
+//
+//	RtspSourceArgs{...}
+type RtspSourceInput interface {
+	pulumi.Input
+
+	ToRtspSourceOutput() RtspSourceOutput
+	ToRtspSourceOutputWithContext(context.Context) RtspSourceOutput
+}
+
+// RTSP source allows for media from an RTSP camera or generic RTSP server to be ingested into a pipeline.
+type RtspSourceArgs struct {
+	// RTSP endpoint information for Video Analyzer to connect to. This contains the required information for Video Analyzer to connect to RTSP cameras and/or generic RTSP servers.
+	Endpoint pulumi.Input `pulumi:"endpoint"`
+	// Node name. Must be unique within the topology.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Network transport utilized by the RTSP and RTP exchange: TCP or HTTP. When using TCP, the RTP packets are interleaved on the TCP RTSP connection. When using HTTP, the RTSP messages are exchanged through long lived HTTP connections, and the RTP packages are interleaved in the HTTP connections alongside the RTSP messages.
+	Transport pulumi.StringPtrInput `pulumi:"transport"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.VideoAnalyzer.RtspSource'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (RtspSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RtspSource)(nil)).Elem()
+}
+
+func (i RtspSourceArgs) ToRtspSourceOutput() RtspSourceOutput {
+	return i.ToRtspSourceOutputWithContext(context.Background())
+}
+
+func (i RtspSourceArgs) ToRtspSourceOutputWithContext(ctx context.Context) RtspSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RtspSourceOutput)
+}
+
+// RTSP source allows for media from an RTSP camera or generic RTSP server to be ingested into a pipeline.
+type RtspSourceOutput struct{ *pulumi.OutputState }
+
+func (RtspSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RtspSource)(nil)).Elem()
+}
+
+func (o RtspSourceOutput) ToRtspSourceOutput() RtspSourceOutput {
+	return o
+}
+
+func (o RtspSourceOutput) ToRtspSourceOutputWithContext(ctx context.Context) RtspSourceOutput {
+	return o
+}
+
+// RTSP endpoint information for Video Analyzer to connect to. This contains the required information for Video Analyzer to connect to RTSP cameras and/or generic RTSP servers.
+func (o RtspSourceOutput) Endpoint() pulumi.AnyOutput {
+	return o.ApplyT(func(v RtspSource) interface{} { return v.Endpoint }).(pulumi.AnyOutput)
+}
+
+// Node name. Must be unique within the topology.
+func (o RtspSourceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RtspSource) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Network transport utilized by the RTSP and RTP exchange: TCP or HTTP. When using TCP, the RTP packets are interleaved on the TCP RTSP connection. When using HTTP, the RTSP messages are exchanged through long lived HTTP connections, and the RTP packages are interleaved in the HTTP connections alongside the RTSP messages.
+func (o RtspSourceOutput) Transport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RtspSource) *string { return v.Transport }).(pulumi.StringPtrOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.RtspSource'.
+func (o RtspSourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RtspSource) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // RTSP source allows for media from an RTSP camera or generic RTSP server to be ingested into a pipeline.
@@ -2923,6 +3865,42 @@ type RtspSourceResponse struct {
 	Type string `pulumi:"type"`
 }
 
+// RTSP source allows for media from an RTSP camera or generic RTSP server to be ingested into a pipeline.
+type RtspSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (RtspSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RtspSourceResponse)(nil)).Elem()
+}
+
+func (o RtspSourceResponseOutput) ToRtspSourceResponseOutput() RtspSourceResponseOutput {
+	return o
+}
+
+func (o RtspSourceResponseOutput) ToRtspSourceResponseOutputWithContext(ctx context.Context) RtspSourceResponseOutput {
+	return o
+}
+
+// RTSP endpoint information for Video Analyzer to connect to. This contains the required information for Video Analyzer to connect to RTSP cameras and/or generic RTSP servers.
+func (o RtspSourceResponseOutput) Endpoint() pulumi.AnyOutput {
+	return o.ApplyT(func(v RtspSourceResponse) interface{} { return v.Endpoint }).(pulumi.AnyOutput)
+}
+
+// Node name. Must be unique within the topology.
+func (o RtspSourceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RtspSourceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Network transport utilized by the RTSP and RTP exchange: TCP or HTTP. When using TCP, the RTP packets are interleaved on the TCP RTSP connection. When using HTTP, the RTSP messages are exchanged through long lived HTTP connections, and the RTP packages are interleaved in the HTTP connections alongside the RTSP messages.
+func (o RtspSourceResponseOutput) Transport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RtspSourceResponse) *string { return v.Transport }).(pulumi.StringPtrOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.RtspSource'.
+func (o RtspSourceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RtspSourceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // A remote tunnel securely established using IoT Hub device information.
 type SecureIotDeviceRemoteTunnel struct {
 	// The IoT device id to use when establishing the remote tunnel. This string is case-sensitive.
@@ -2934,6 +3912,177 @@ type SecureIotDeviceRemoteTunnel struct {
 	Type string `pulumi:"type"`
 }
 
+// SecureIotDeviceRemoteTunnelInput is an input type that accepts SecureIotDeviceRemoteTunnelArgs and SecureIotDeviceRemoteTunnelOutput values.
+// You can construct a concrete instance of `SecureIotDeviceRemoteTunnelInput` via:
+//
+//	SecureIotDeviceRemoteTunnelArgs{...}
+type SecureIotDeviceRemoteTunnelInput interface {
+	pulumi.Input
+
+	ToSecureIotDeviceRemoteTunnelOutput() SecureIotDeviceRemoteTunnelOutput
+	ToSecureIotDeviceRemoteTunnelOutputWithContext(context.Context) SecureIotDeviceRemoteTunnelOutput
+}
+
+// A remote tunnel securely established using IoT Hub device information.
+type SecureIotDeviceRemoteTunnelArgs struct {
+	// The IoT device id to use when establishing the remote tunnel. This string is case-sensitive.
+	DeviceId pulumi.StringInput `pulumi:"deviceId"`
+	// Name of the IoT Hub.
+	IotHubName pulumi.StringInput `pulumi:"iotHubName"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.VideoAnalyzer.SecureIotDeviceRemoteTunnel'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SecureIotDeviceRemoteTunnelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecureIotDeviceRemoteTunnel)(nil)).Elem()
+}
+
+func (i SecureIotDeviceRemoteTunnelArgs) ToSecureIotDeviceRemoteTunnelOutput() SecureIotDeviceRemoteTunnelOutput {
+	return i.ToSecureIotDeviceRemoteTunnelOutputWithContext(context.Background())
+}
+
+func (i SecureIotDeviceRemoteTunnelArgs) ToSecureIotDeviceRemoteTunnelOutputWithContext(ctx context.Context) SecureIotDeviceRemoteTunnelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecureIotDeviceRemoteTunnelOutput)
+}
+
+func (i SecureIotDeviceRemoteTunnelArgs) ToSecureIotDeviceRemoteTunnelPtrOutput() SecureIotDeviceRemoteTunnelPtrOutput {
+	return i.ToSecureIotDeviceRemoteTunnelPtrOutputWithContext(context.Background())
+}
+
+func (i SecureIotDeviceRemoteTunnelArgs) ToSecureIotDeviceRemoteTunnelPtrOutputWithContext(ctx context.Context) SecureIotDeviceRemoteTunnelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecureIotDeviceRemoteTunnelOutput).ToSecureIotDeviceRemoteTunnelPtrOutputWithContext(ctx)
+}
+
+// SecureIotDeviceRemoteTunnelPtrInput is an input type that accepts SecureIotDeviceRemoteTunnelArgs, SecureIotDeviceRemoteTunnelPtr and SecureIotDeviceRemoteTunnelPtrOutput values.
+// You can construct a concrete instance of `SecureIotDeviceRemoteTunnelPtrInput` via:
+//
+//	        SecureIotDeviceRemoteTunnelArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecureIotDeviceRemoteTunnelPtrInput interface {
+	pulumi.Input
+
+	ToSecureIotDeviceRemoteTunnelPtrOutput() SecureIotDeviceRemoteTunnelPtrOutput
+	ToSecureIotDeviceRemoteTunnelPtrOutputWithContext(context.Context) SecureIotDeviceRemoteTunnelPtrOutput
+}
+
+type secureIotDeviceRemoteTunnelPtrType SecureIotDeviceRemoteTunnelArgs
+
+func SecureIotDeviceRemoteTunnelPtr(v *SecureIotDeviceRemoteTunnelArgs) SecureIotDeviceRemoteTunnelPtrInput {
+	return (*secureIotDeviceRemoteTunnelPtrType)(v)
+}
+
+func (*secureIotDeviceRemoteTunnelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecureIotDeviceRemoteTunnel)(nil)).Elem()
+}
+
+func (i *secureIotDeviceRemoteTunnelPtrType) ToSecureIotDeviceRemoteTunnelPtrOutput() SecureIotDeviceRemoteTunnelPtrOutput {
+	return i.ToSecureIotDeviceRemoteTunnelPtrOutputWithContext(context.Background())
+}
+
+func (i *secureIotDeviceRemoteTunnelPtrType) ToSecureIotDeviceRemoteTunnelPtrOutputWithContext(ctx context.Context) SecureIotDeviceRemoteTunnelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecureIotDeviceRemoteTunnelPtrOutput)
+}
+
+// A remote tunnel securely established using IoT Hub device information.
+type SecureIotDeviceRemoteTunnelOutput struct{ *pulumi.OutputState }
+
+func (SecureIotDeviceRemoteTunnelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecureIotDeviceRemoteTunnel)(nil)).Elem()
+}
+
+func (o SecureIotDeviceRemoteTunnelOutput) ToSecureIotDeviceRemoteTunnelOutput() SecureIotDeviceRemoteTunnelOutput {
+	return o
+}
+
+func (o SecureIotDeviceRemoteTunnelOutput) ToSecureIotDeviceRemoteTunnelOutputWithContext(ctx context.Context) SecureIotDeviceRemoteTunnelOutput {
+	return o
+}
+
+func (o SecureIotDeviceRemoteTunnelOutput) ToSecureIotDeviceRemoteTunnelPtrOutput() SecureIotDeviceRemoteTunnelPtrOutput {
+	return o.ToSecureIotDeviceRemoteTunnelPtrOutputWithContext(context.Background())
+}
+
+func (o SecureIotDeviceRemoteTunnelOutput) ToSecureIotDeviceRemoteTunnelPtrOutputWithContext(ctx context.Context) SecureIotDeviceRemoteTunnelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecureIotDeviceRemoteTunnel) *SecureIotDeviceRemoteTunnel {
+		return &v
+	}).(SecureIotDeviceRemoteTunnelPtrOutput)
+}
+
+// The IoT device id to use when establishing the remote tunnel. This string is case-sensitive.
+func (o SecureIotDeviceRemoteTunnelOutput) DeviceId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecureIotDeviceRemoteTunnel) string { return v.DeviceId }).(pulumi.StringOutput)
+}
+
+// Name of the IoT Hub.
+func (o SecureIotDeviceRemoteTunnelOutput) IotHubName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecureIotDeviceRemoteTunnel) string { return v.IotHubName }).(pulumi.StringOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.SecureIotDeviceRemoteTunnel'.
+func (o SecureIotDeviceRemoteTunnelOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SecureIotDeviceRemoteTunnel) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SecureIotDeviceRemoteTunnelPtrOutput struct{ *pulumi.OutputState }
+
+func (SecureIotDeviceRemoteTunnelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecureIotDeviceRemoteTunnel)(nil)).Elem()
+}
+
+func (o SecureIotDeviceRemoteTunnelPtrOutput) ToSecureIotDeviceRemoteTunnelPtrOutput() SecureIotDeviceRemoteTunnelPtrOutput {
+	return o
+}
+
+func (o SecureIotDeviceRemoteTunnelPtrOutput) ToSecureIotDeviceRemoteTunnelPtrOutputWithContext(ctx context.Context) SecureIotDeviceRemoteTunnelPtrOutput {
+	return o
+}
+
+func (o SecureIotDeviceRemoteTunnelPtrOutput) Elem() SecureIotDeviceRemoteTunnelOutput {
+	return o.ApplyT(func(v *SecureIotDeviceRemoteTunnel) SecureIotDeviceRemoteTunnel {
+		if v != nil {
+			return *v
+		}
+		var ret SecureIotDeviceRemoteTunnel
+		return ret
+	}).(SecureIotDeviceRemoteTunnelOutput)
+}
+
+// The IoT device id to use when establishing the remote tunnel. This string is case-sensitive.
+func (o SecureIotDeviceRemoteTunnelPtrOutput) DeviceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecureIotDeviceRemoteTunnel) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DeviceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the IoT Hub.
+func (o SecureIotDeviceRemoteTunnelPtrOutput) IotHubName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecureIotDeviceRemoteTunnel) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IotHubName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.SecureIotDeviceRemoteTunnel'.
+func (o SecureIotDeviceRemoteTunnelPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecureIotDeviceRemoteTunnel) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // A remote tunnel securely established using IoT Hub device information.
 type SecureIotDeviceRemoteTunnelResponse struct {
 	// The IoT device id to use when establishing the remote tunnel. This string is case-sensitive.
@@ -2943,6 +4092,92 @@ type SecureIotDeviceRemoteTunnelResponse struct {
 	// The discriminator for derived types.
 	// Expected value is '#Microsoft.VideoAnalyzer.SecureIotDeviceRemoteTunnel'.
 	Type string `pulumi:"type"`
+}
+
+// A remote tunnel securely established using IoT Hub device information.
+type SecureIotDeviceRemoteTunnelResponseOutput struct{ *pulumi.OutputState }
+
+func (SecureIotDeviceRemoteTunnelResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecureIotDeviceRemoteTunnelResponse)(nil)).Elem()
+}
+
+func (o SecureIotDeviceRemoteTunnelResponseOutput) ToSecureIotDeviceRemoteTunnelResponseOutput() SecureIotDeviceRemoteTunnelResponseOutput {
+	return o
+}
+
+func (o SecureIotDeviceRemoteTunnelResponseOutput) ToSecureIotDeviceRemoteTunnelResponseOutputWithContext(ctx context.Context) SecureIotDeviceRemoteTunnelResponseOutput {
+	return o
+}
+
+// The IoT device id to use when establishing the remote tunnel. This string is case-sensitive.
+func (o SecureIotDeviceRemoteTunnelResponseOutput) DeviceId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecureIotDeviceRemoteTunnelResponse) string { return v.DeviceId }).(pulumi.StringOutput)
+}
+
+// Name of the IoT Hub.
+func (o SecureIotDeviceRemoteTunnelResponseOutput) IotHubName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecureIotDeviceRemoteTunnelResponse) string { return v.IotHubName }).(pulumi.StringOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.SecureIotDeviceRemoteTunnel'.
+func (o SecureIotDeviceRemoteTunnelResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SecureIotDeviceRemoteTunnelResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SecureIotDeviceRemoteTunnelResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SecureIotDeviceRemoteTunnelResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecureIotDeviceRemoteTunnelResponse)(nil)).Elem()
+}
+
+func (o SecureIotDeviceRemoteTunnelResponsePtrOutput) ToSecureIotDeviceRemoteTunnelResponsePtrOutput() SecureIotDeviceRemoteTunnelResponsePtrOutput {
+	return o
+}
+
+func (o SecureIotDeviceRemoteTunnelResponsePtrOutput) ToSecureIotDeviceRemoteTunnelResponsePtrOutputWithContext(ctx context.Context) SecureIotDeviceRemoteTunnelResponsePtrOutput {
+	return o
+}
+
+func (o SecureIotDeviceRemoteTunnelResponsePtrOutput) Elem() SecureIotDeviceRemoteTunnelResponseOutput {
+	return o.ApplyT(func(v *SecureIotDeviceRemoteTunnelResponse) SecureIotDeviceRemoteTunnelResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SecureIotDeviceRemoteTunnelResponse
+		return ret
+	}).(SecureIotDeviceRemoteTunnelResponseOutput)
+}
+
+// The IoT device id to use when establishing the remote tunnel. This string is case-sensitive.
+func (o SecureIotDeviceRemoteTunnelResponsePtrOutput) DeviceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecureIotDeviceRemoteTunnelResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DeviceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the IoT Hub.
+func (o SecureIotDeviceRemoteTunnelResponsePtrOutput) IotHubName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecureIotDeviceRemoteTunnelResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IotHubName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.SecureIotDeviceRemoteTunnel'.
+func (o SecureIotDeviceRemoteTunnelResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecureIotDeviceRemoteTunnelResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // The SKU details.
@@ -3280,6 +4515,92 @@ type TlsEndpoint struct {
 	ValidationOptions *TlsValidationOptions `pulumi:"validationOptions"`
 }
 
+// TlsEndpointInput is an input type that accepts TlsEndpointArgs and TlsEndpointOutput values.
+// You can construct a concrete instance of `TlsEndpointInput` via:
+//
+//	TlsEndpointArgs{...}
+type TlsEndpointInput interface {
+	pulumi.Input
+
+	ToTlsEndpointOutput() TlsEndpointOutput
+	ToTlsEndpointOutputWithContext(context.Context) TlsEndpointOutput
+}
+
+// TLS endpoint describes an endpoint that the pipeline can connect to over TLS transport (data is encrypted in transit).
+type TlsEndpointArgs struct {
+	// Credentials to be presented to the endpoint.
+	Credentials UsernamePasswordCredentialsInput `pulumi:"credentials"`
+	// List of trusted certificate authorities when authenticating a TLS connection. A null list designates that Azure Video Analyzer's list of trusted authorities should be used.
+	TrustedCertificates PemCertificateListPtrInput `pulumi:"trustedCertificates"`
+	// Describes the tunnel through which Video Analyzer can connect to the endpoint URL. This is an optional property, typically used when the endpoint is behind a firewall.
+	Tunnel SecureIotDeviceRemoteTunnelPtrInput `pulumi:"tunnel"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.VideoAnalyzer.TlsEndpoint'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The endpoint URL for Video Analyzer to connect to.
+	Url pulumi.StringInput `pulumi:"url"`
+	// Validation options to use when authenticating a TLS connection. By default, strict validation is used.
+	ValidationOptions TlsValidationOptionsPtrInput `pulumi:"validationOptions"`
+}
+
+func (TlsEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsEndpoint)(nil)).Elem()
+}
+
+func (i TlsEndpointArgs) ToTlsEndpointOutput() TlsEndpointOutput {
+	return i.ToTlsEndpointOutputWithContext(context.Background())
+}
+
+func (i TlsEndpointArgs) ToTlsEndpointOutputWithContext(ctx context.Context) TlsEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TlsEndpointOutput)
+}
+
+// TLS endpoint describes an endpoint that the pipeline can connect to over TLS transport (data is encrypted in transit).
+type TlsEndpointOutput struct{ *pulumi.OutputState }
+
+func (TlsEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsEndpoint)(nil)).Elem()
+}
+
+func (o TlsEndpointOutput) ToTlsEndpointOutput() TlsEndpointOutput {
+	return o
+}
+
+func (o TlsEndpointOutput) ToTlsEndpointOutputWithContext(ctx context.Context) TlsEndpointOutput {
+	return o
+}
+
+// Credentials to be presented to the endpoint.
+func (o TlsEndpointOutput) Credentials() UsernamePasswordCredentialsOutput {
+	return o.ApplyT(func(v TlsEndpoint) UsernamePasswordCredentials { return v.Credentials }).(UsernamePasswordCredentialsOutput)
+}
+
+// List of trusted certificate authorities when authenticating a TLS connection. A null list designates that Azure Video Analyzer's list of trusted authorities should be used.
+func (o TlsEndpointOutput) TrustedCertificates() PemCertificateListPtrOutput {
+	return o.ApplyT(func(v TlsEndpoint) *PemCertificateList { return v.TrustedCertificates }).(PemCertificateListPtrOutput)
+}
+
+// Describes the tunnel through which Video Analyzer can connect to the endpoint URL. This is an optional property, typically used when the endpoint is behind a firewall.
+func (o TlsEndpointOutput) Tunnel() SecureIotDeviceRemoteTunnelPtrOutput {
+	return o.ApplyT(func(v TlsEndpoint) *SecureIotDeviceRemoteTunnel { return v.Tunnel }).(SecureIotDeviceRemoteTunnelPtrOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.TlsEndpoint'.
+func (o TlsEndpointOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TlsEndpoint) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The endpoint URL for Video Analyzer to connect to.
+func (o TlsEndpointOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v TlsEndpoint) string { return v.Url }).(pulumi.StringOutput)
+}
+
+// Validation options to use when authenticating a TLS connection. By default, strict validation is used.
+func (o TlsEndpointOutput) ValidationOptions() TlsValidationOptionsPtrOutput {
+	return o.ApplyT(func(v TlsEndpoint) *TlsValidationOptions { return v.ValidationOptions }).(TlsValidationOptionsPtrOutput)
+}
+
 // TLS endpoint describes an endpoint that the pipeline can connect to over TLS transport (data is encrypted in transit).
 type TlsEndpointResponse struct {
 	// Credentials to be presented to the endpoint.
@@ -3297,6 +4618,52 @@ type TlsEndpointResponse struct {
 	ValidationOptions *TlsValidationOptionsResponse `pulumi:"validationOptions"`
 }
 
+// TLS endpoint describes an endpoint that the pipeline can connect to over TLS transport (data is encrypted in transit).
+type TlsEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (TlsEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsEndpointResponse)(nil)).Elem()
+}
+
+func (o TlsEndpointResponseOutput) ToTlsEndpointResponseOutput() TlsEndpointResponseOutput {
+	return o
+}
+
+func (o TlsEndpointResponseOutput) ToTlsEndpointResponseOutputWithContext(ctx context.Context) TlsEndpointResponseOutput {
+	return o
+}
+
+// Credentials to be presented to the endpoint.
+func (o TlsEndpointResponseOutput) Credentials() UsernamePasswordCredentialsResponseOutput {
+	return o.ApplyT(func(v TlsEndpointResponse) UsernamePasswordCredentialsResponse { return v.Credentials }).(UsernamePasswordCredentialsResponseOutput)
+}
+
+// List of trusted certificate authorities when authenticating a TLS connection. A null list designates that Azure Video Analyzer's list of trusted authorities should be used.
+func (o TlsEndpointResponseOutput) TrustedCertificates() PemCertificateListResponsePtrOutput {
+	return o.ApplyT(func(v TlsEndpointResponse) *PemCertificateListResponse { return v.TrustedCertificates }).(PemCertificateListResponsePtrOutput)
+}
+
+// Describes the tunnel through which Video Analyzer can connect to the endpoint URL. This is an optional property, typically used when the endpoint is behind a firewall.
+func (o TlsEndpointResponseOutput) Tunnel() SecureIotDeviceRemoteTunnelResponsePtrOutput {
+	return o.ApplyT(func(v TlsEndpointResponse) *SecureIotDeviceRemoteTunnelResponse { return v.Tunnel }).(SecureIotDeviceRemoteTunnelResponsePtrOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.TlsEndpoint'.
+func (o TlsEndpointResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TlsEndpointResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The endpoint URL for Video Analyzer to connect to.
+func (o TlsEndpointResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v TlsEndpointResponse) string { return v.Url }).(pulumi.StringOutput)
+}
+
+// Validation options to use when authenticating a TLS connection. By default, strict validation is used.
+func (o TlsEndpointResponseOutput) ValidationOptions() TlsValidationOptionsResponsePtrOutput {
+	return o.ApplyT(func(v TlsEndpointResponse) *TlsValidationOptionsResponse { return v.ValidationOptions }).(TlsValidationOptionsResponsePtrOutput)
+}
+
 // Options for controlling the validation of TLS endpoints.
 type TlsValidationOptions struct {
 	// When set to 'true' causes the certificate subject name validation to be skipped. Default is 'false'.
@@ -3305,12 +4672,232 @@ type TlsValidationOptions struct {
 	IgnoreSignature *string `pulumi:"ignoreSignature"`
 }
 
+// TlsValidationOptionsInput is an input type that accepts TlsValidationOptionsArgs and TlsValidationOptionsOutput values.
+// You can construct a concrete instance of `TlsValidationOptionsInput` via:
+//
+//	TlsValidationOptionsArgs{...}
+type TlsValidationOptionsInput interface {
+	pulumi.Input
+
+	ToTlsValidationOptionsOutput() TlsValidationOptionsOutput
+	ToTlsValidationOptionsOutputWithContext(context.Context) TlsValidationOptionsOutput
+}
+
+// Options for controlling the validation of TLS endpoints.
+type TlsValidationOptionsArgs struct {
+	// When set to 'true' causes the certificate subject name validation to be skipped. Default is 'false'.
+	IgnoreHostname pulumi.StringPtrInput `pulumi:"ignoreHostname"`
+	// When set to 'true' causes the certificate chain trust validation to be skipped. Default is 'false'.
+	IgnoreSignature pulumi.StringPtrInput `pulumi:"ignoreSignature"`
+}
+
+func (TlsValidationOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsValidationOptions)(nil)).Elem()
+}
+
+func (i TlsValidationOptionsArgs) ToTlsValidationOptionsOutput() TlsValidationOptionsOutput {
+	return i.ToTlsValidationOptionsOutputWithContext(context.Background())
+}
+
+func (i TlsValidationOptionsArgs) ToTlsValidationOptionsOutputWithContext(ctx context.Context) TlsValidationOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TlsValidationOptionsOutput)
+}
+
+func (i TlsValidationOptionsArgs) ToTlsValidationOptionsPtrOutput() TlsValidationOptionsPtrOutput {
+	return i.ToTlsValidationOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i TlsValidationOptionsArgs) ToTlsValidationOptionsPtrOutputWithContext(ctx context.Context) TlsValidationOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TlsValidationOptionsOutput).ToTlsValidationOptionsPtrOutputWithContext(ctx)
+}
+
+// TlsValidationOptionsPtrInput is an input type that accepts TlsValidationOptionsArgs, TlsValidationOptionsPtr and TlsValidationOptionsPtrOutput values.
+// You can construct a concrete instance of `TlsValidationOptionsPtrInput` via:
+//
+//	        TlsValidationOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TlsValidationOptionsPtrInput interface {
+	pulumi.Input
+
+	ToTlsValidationOptionsPtrOutput() TlsValidationOptionsPtrOutput
+	ToTlsValidationOptionsPtrOutputWithContext(context.Context) TlsValidationOptionsPtrOutput
+}
+
+type tlsValidationOptionsPtrType TlsValidationOptionsArgs
+
+func TlsValidationOptionsPtr(v *TlsValidationOptionsArgs) TlsValidationOptionsPtrInput {
+	return (*tlsValidationOptionsPtrType)(v)
+}
+
+func (*tlsValidationOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TlsValidationOptions)(nil)).Elem()
+}
+
+func (i *tlsValidationOptionsPtrType) ToTlsValidationOptionsPtrOutput() TlsValidationOptionsPtrOutput {
+	return i.ToTlsValidationOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *tlsValidationOptionsPtrType) ToTlsValidationOptionsPtrOutputWithContext(ctx context.Context) TlsValidationOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TlsValidationOptionsPtrOutput)
+}
+
+// Options for controlling the validation of TLS endpoints.
+type TlsValidationOptionsOutput struct{ *pulumi.OutputState }
+
+func (TlsValidationOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsValidationOptions)(nil)).Elem()
+}
+
+func (o TlsValidationOptionsOutput) ToTlsValidationOptionsOutput() TlsValidationOptionsOutput {
+	return o
+}
+
+func (o TlsValidationOptionsOutput) ToTlsValidationOptionsOutputWithContext(ctx context.Context) TlsValidationOptionsOutput {
+	return o
+}
+
+func (o TlsValidationOptionsOutput) ToTlsValidationOptionsPtrOutput() TlsValidationOptionsPtrOutput {
+	return o.ToTlsValidationOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o TlsValidationOptionsOutput) ToTlsValidationOptionsPtrOutputWithContext(ctx context.Context) TlsValidationOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TlsValidationOptions) *TlsValidationOptions {
+		return &v
+	}).(TlsValidationOptionsPtrOutput)
+}
+
+// When set to 'true' causes the certificate subject name validation to be skipped. Default is 'false'.
+func (o TlsValidationOptionsOutput) IgnoreHostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TlsValidationOptions) *string { return v.IgnoreHostname }).(pulumi.StringPtrOutput)
+}
+
+// When set to 'true' causes the certificate chain trust validation to be skipped. Default is 'false'.
+func (o TlsValidationOptionsOutput) IgnoreSignature() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TlsValidationOptions) *string { return v.IgnoreSignature }).(pulumi.StringPtrOutput)
+}
+
+type TlsValidationOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (TlsValidationOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TlsValidationOptions)(nil)).Elem()
+}
+
+func (o TlsValidationOptionsPtrOutput) ToTlsValidationOptionsPtrOutput() TlsValidationOptionsPtrOutput {
+	return o
+}
+
+func (o TlsValidationOptionsPtrOutput) ToTlsValidationOptionsPtrOutputWithContext(ctx context.Context) TlsValidationOptionsPtrOutput {
+	return o
+}
+
+func (o TlsValidationOptionsPtrOutput) Elem() TlsValidationOptionsOutput {
+	return o.ApplyT(func(v *TlsValidationOptions) TlsValidationOptions {
+		if v != nil {
+			return *v
+		}
+		var ret TlsValidationOptions
+		return ret
+	}).(TlsValidationOptionsOutput)
+}
+
+// When set to 'true' causes the certificate subject name validation to be skipped. Default is 'false'.
+func (o TlsValidationOptionsPtrOutput) IgnoreHostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TlsValidationOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreHostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// When set to 'true' causes the certificate chain trust validation to be skipped. Default is 'false'.
+func (o TlsValidationOptionsPtrOutput) IgnoreSignature() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TlsValidationOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreSignature
+	}).(pulumi.StringPtrOutput)
+}
+
 // Options for controlling the validation of TLS endpoints.
 type TlsValidationOptionsResponse struct {
 	// When set to 'true' causes the certificate subject name validation to be skipped. Default is 'false'.
 	IgnoreHostname *string `pulumi:"ignoreHostname"`
 	// When set to 'true' causes the certificate chain trust validation to be skipped. Default is 'false'.
 	IgnoreSignature *string `pulumi:"ignoreSignature"`
+}
+
+// Options for controlling the validation of TLS endpoints.
+type TlsValidationOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (TlsValidationOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsValidationOptionsResponse)(nil)).Elem()
+}
+
+func (o TlsValidationOptionsResponseOutput) ToTlsValidationOptionsResponseOutput() TlsValidationOptionsResponseOutput {
+	return o
+}
+
+func (o TlsValidationOptionsResponseOutput) ToTlsValidationOptionsResponseOutputWithContext(ctx context.Context) TlsValidationOptionsResponseOutput {
+	return o
+}
+
+// When set to 'true' causes the certificate subject name validation to be skipped. Default is 'false'.
+func (o TlsValidationOptionsResponseOutput) IgnoreHostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TlsValidationOptionsResponse) *string { return v.IgnoreHostname }).(pulumi.StringPtrOutput)
+}
+
+// When set to 'true' causes the certificate chain trust validation to be skipped. Default is 'false'.
+func (o TlsValidationOptionsResponseOutput) IgnoreSignature() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TlsValidationOptionsResponse) *string { return v.IgnoreSignature }).(pulumi.StringPtrOutput)
+}
+
+type TlsValidationOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TlsValidationOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TlsValidationOptionsResponse)(nil)).Elem()
+}
+
+func (o TlsValidationOptionsResponsePtrOutput) ToTlsValidationOptionsResponsePtrOutput() TlsValidationOptionsResponsePtrOutput {
+	return o
+}
+
+func (o TlsValidationOptionsResponsePtrOutput) ToTlsValidationOptionsResponsePtrOutputWithContext(ctx context.Context) TlsValidationOptionsResponsePtrOutput {
+	return o
+}
+
+func (o TlsValidationOptionsResponsePtrOutput) Elem() TlsValidationOptionsResponseOutput {
+	return o.ApplyT(func(v *TlsValidationOptionsResponse) TlsValidationOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TlsValidationOptionsResponse
+		return ret
+	}).(TlsValidationOptionsResponseOutput)
+}
+
+// When set to 'true' causes the certificate subject name validation to be skipped. Default is 'false'.
+func (o TlsValidationOptionsResponsePtrOutput) IgnoreHostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TlsValidationOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreHostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// When set to 'true' causes the certificate chain trust validation to be skipped. Default is 'false'.
+func (o TlsValidationOptionsResponsePtrOutput) IgnoreSignature() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TlsValidationOptionsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreSignature
+	}).(pulumi.StringPtrOutput)
 }
 
 // Properties for expected token claims.
@@ -3488,6 +5075,78 @@ type UnsecuredEndpoint struct {
 	Url string `pulumi:"url"`
 }
 
+// UnsecuredEndpointInput is an input type that accepts UnsecuredEndpointArgs and UnsecuredEndpointOutput values.
+// You can construct a concrete instance of `UnsecuredEndpointInput` via:
+//
+//	UnsecuredEndpointArgs{...}
+type UnsecuredEndpointInput interface {
+	pulumi.Input
+
+	ToUnsecuredEndpointOutput() UnsecuredEndpointOutput
+	ToUnsecuredEndpointOutputWithContext(context.Context) UnsecuredEndpointOutput
+}
+
+// Unsecured endpoint describes an endpoint that the pipeline can connect to over clear transport (no encryption in transit).
+type UnsecuredEndpointArgs struct {
+	// Credentials to be presented to the endpoint.
+	Credentials UsernamePasswordCredentialsInput `pulumi:"credentials"`
+	// Describes the tunnel through which Video Analyzer can connect to the endpoint URL. This is an optional property, typically used when the endpoint is behind a firewall.
+	Tunnel SecureIotDeviceRemoteTunnelPtrInput `pulumi:"tunnel"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.VideoAnalyzer.UnsecuredEndpoint'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The endpoint URL for Video Analyzer to connect to.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (UnsecuredEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnsecuredEndpoint)(nil)).Elem()
+}
+
+func (i UnsecuredEndpointArgs) ToUnsecuredEndpointOutput() UnsecuredEndpointOutput {
+	return i.ToUnsecuredEndpointOutputWithContext(context.Background())
+}
+
+func (i UnsecuredEndpointArgs) ToUnsecuredEndpointOutputWithContext(ctx context.Context) UnsecuredEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UnsecuredEndpointOutput)
+}
+
+// Unsecured endpoint describes an endpoint that the pipeline can connect to over clear transport (no encryption in transit).
+type UnsecuredEndpointOutput struct{ *pulumi.OutputState }
+
+func (UnsecuredEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnsecuredEndpoint)(nil)).Elem()
+}
+
+func (o UnsecuredEndpointOutput) ToUnsecuredEndpointOutput() UnsecuredEndpointOutput {
+	return o
+}
+
+func (o UnsecuredEndpointOutput) ToUnsecuredEndpointOutputWithContext(ctx context.Context) UnsecuredEndpointOutput {
+	return o
+}
+
+// Credentials to be presented to the endpoint.
+func (o UnsecuredEndpointOutput) Credentials() UsernamePasswordCredentialsOutput {
+	return o.ApplyT(func(v UnsecuredEndpoint) UsernamePasswordCredentials { return v.Credentials }).(UsernamePasswordCredentialsOutput)
+}
+
+// Describes the tunnel through which Video Analyzer can connect to the endpoint URL. This is an optional property, typically used when the endpoint is behind a firewall.
+func (o UnsecuredEndpointOutput) Tunnel() SecureIotDeviceRemoteTunnelPtrOutput {
+	return o.ApplyT(func(v UnsecuredEndpoint) *SecureIotDeviceRemoteTunnel { return v.Tunnel }).(SecureIotDeviceRemoteTunnelPtrOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.UnsecuredEndpoint'.
+func (o UnsecuredEndpointOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v UnsecuredEndpoint) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The endpoint URL for Video Analyzer to connect to.
+func (o UnsecuredEndpointOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v UnsecuredEndpoint) string { return v.Url }).(pulumi.StringOutput)
+}
+
 // Unsecured endpoint describes an endpoint that the pipeline can connect to over clear transport (no encryption in transit).
 type UnsecuredEndpointResponse struct {
 	// Credentials to be presented to the endpoint.
@@ -3499,6 +5158,42 @@ type UnsecuredEndpointResponse struct {
 	Type string `pulumi:"type"`
 	// The endpoint URL for Video Analyzer to connect to.
 	Url string `pulumi:"url"`
+}
+
+// Unsecured endpoint describes an endpoint that the pipeline can connect to over clear transport (no encryption in transit).
+type UnsecuredEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (UnsecuredEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnsecuredEndpointResponse)(nil)).Elem()
+}
+
+func (o UnsecuredEndpointResponseOutput) ToUnsecuredEndpointResponseOutput() UnsecuredEndpointResponseOutput {
+	return o
+}
+
+func (o UnsecuredEndpointResponseOutput) ToUnsecuredEndpointResponseOutputWithContext(ctx context.Context) UnsecuredEndpointResponseOutput {
+	return o
+}
+
+// Credentials to be presented to the endpoint.
+func (o UnsecuredEndpointResponseOutput) Credentials() UsernamePasswordCredentialsResponseOutput {
+	return o.ApplyT(func(v UnsecuredEndpointResponse) UsernamePasswordCredentialsResponse { return v.Credentials }).(UsernamePasswordCredentialsResponseOutput)
+}
+
+// Describes the tunnel through which Video Analyzer can connect to the endpoint URL. This is an optional property, typically used when the endpoint is behind a firewall.
+func (o UnsecuredEndpointResponseOutput) Tunnel() SecureIotDeviceRemoteTunnelResponsePtrOutput {
+	return o.ApplyT(func(v UnsecuredEndpointResponse) *SecureIotDeviceRemoteTunnelResponse { return v.Tunnel }).(SecureIotDeviceRemoteTunnelResponsePtrOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.UnsecuredEndpoint'.
+func (o UnsecuredEndpointResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v UnsecuredEndpointResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The endpoint URL for Video Analyzer to connect to.
+func (o UnsecuredEndpointResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v UnsecuredEndpointResponse) string { return v.Url }).(pulumi.StringOutput)
 }
 
 // The details of the user assigned managed identity used by the Video Analyzer resource.
@@ -3565,6 +5260,71 @@ type UsernamePasswordCredentials struct {
 	Username string `pulumi:"username"`
 }
 
+// UsernamePasswordCredentialsInput is an input type that accepts UsernamePasswordCredentialsArgs and UsernamePasswordCredentialsOutput values.
+// You can construct a concrete instance of `UsernamePasswordCredentialsInput` via:
+//
+//	UsernamePasswordCredentialsArgs{...}
+type UsernamePasswordCredentialsInput interface {
+	pulumi.Input
+
+	ToUsernamePasswordCredentialsOutput() UsernamePasswordCredentialsOutput
+	ToUsernamePasswordCredentialsOutputWithContext(context.Context) UsernamePasswordCredentialsOutput
+}
+
+// Username and password credentials.
+type UsernamePasswordCredentialsArgs struct {
+	// Password to be presented as part of the credentials. It is recommended that this value is parameterized as a secret string in order to prevent this value to be returned as part of the resource on API requests.
+	Password pulumi.StringInput `pulumi:"password"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.VideoAnalyzer.UsernamePasswordCredentials'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Username to be presented as part of the credentials.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (UsernamePasswordCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsernamePasswordCredentials)(nil)).Elem()
+}
+
+func (i UsernamePasswordCredentialsArgs) ToUsernamePasswordCredentialsOutput() UsernamePasswordCredentialsOutput {
+	return i.ToUsernamePasswordCredentialsOutputWithContext(context.Background())
+}
+
+func (i UsernamePasswordCredentialsArgs) ToUsernamePasswordCredentialsOutputWithContext(ctx context.Context) UsernamePasswordCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsernamePasswordCredentialsOutput)
+}
+
+// Username and password credentials.
+type UsernamePasswordCredentialsOutput struct{ *pulumi.OutputState }
+
+func (UsernamePasswordCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsernamePasswordCredentials)(nil)).Elem()
+}
+
+func (o UsernamePasswordCredentialsOutput) ToUsernamePasswordCredentialsOutput() UsernamePasswordCredentialsOutput {
+	return o
+}
+
+func (o UsernamePasswordCredentialsOutput) ToUsernamePasswordCredentialsOutputWithContext(ctx context.Context) UsernamePasswordCredentialsOutput {
+	return o
+}
+
+// Password to be presented as part of the credentials. It is recommended that this value is parameterized as a secret string in order to prevent this value to be returned as part of the resource on API requests.
+func (o UsernamePasswordCredentialsOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v UsernamePasswordCredentials) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.UsernamePasswordCredentials'.
+func (o UsernamePasswordCredentialsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v UsernamePasswordCredentials) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Username to be presented as part of the credentials.
+func (o UsernamePasswordCredentialsOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v UsernamePasswordCredentials) string { return v.Username }).(pulumi.StringOutput)
+}
+
 // Username and password credentials.
 type UsernamePasswordCredentialsResponse struct {
 	// Password to be presented as part of the credentials. It is recommended that this value is parameterized as a secret string in order to prevent this value to be returned as part of the resource on API requests.
@@ -3574,6 +5334,37 @@ type UsernamePasswordCredentialsResponse struct {
 	Type string `pulumi:"type"`
 	// Username to be presented as part of the credentials.
 	Username string `pulumi:"username"`
+}
+
+// Username and password credentials.
+type UsernamePasswordCredentialsResponseOutput struct{ *pulumi.OutputState }
+
+func (UsernamePasswordCredentialsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsernamePasswordCredentialsResponse)(nil)).Elem()
+}
+
+func (o UsernamePasswordCredentialsResponseOutput) ToUsernamePasswordCredentialsResponseOutput() UsernamePasswordCredentialsResponseOutput {
+	return o
+}
+
+func (o UsernamePasswordCredentialsResponseOutput) ToUsernamePasswordCredentialsResponseOutputWithContext(ctx context.Context) UsernamePasswordCredentialsResponseOutput {
+	return o
+}
+
+// Password to be presented as part of the credentials. It is recommended that this value is parameterized as a secret string in order to prevent this value to be returned as part of the resource on API requests.
+func (o UsernamePasswordCredentialsResponseOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v UsernamePasswordCredentialsResponse) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.UsernamePasswordCredentials'.
+func (o UsernamePasswordCredentialsResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v UsernamePasswordCredentialsResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Username to be presented as part of the credentials.
+func (o UsernamePasswordCredentialsResponseOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v UsernamePasswordCredentialsResponse) string { return v.Username }).(pulumi.StringOutput)
 }
 
 // The managed identity for the Video Analyzer resource.
@@ -4396,6 +6187,194 @@ type VideoEncoderH264 struct {
 	Type string `pulumi:"type"`
 }
 
+// VideoEncoderH264Input is an input type that accepts VideoEncoderH264Args and VideoEncoderH264Output values.
+// You can construct a concrete instance of `VideoEncoderH264Input` via:
+//
+//	VideoEncoderH264Args{...}
+type VideoEncoderH264Input interface {
+	pulumi.Input
+
+	ToVideoEncoderH264Output() VideoEncoderH264Output
+	ToVideoEncoderH264OutputWithContext(context.Context) VideoEncoderH264Output
+}
+
+// A custom preset for encoding video with the H.264 (AVC) codec.
+type VideoEncoderH264Args struct {
+	// The maximum bitrate, in kilobits per second or Kbps, at which video should be encoded. If omitted, encoder sets it automatically to try and match the quality of the input video.
+	BitrateKbps pulumi.StringPtrInput `pulumi:"bitrateKbps"`
+	// The frame rate (in frames per second) of the encoded video. The value must be greater than zero, and less than or equal to 300. If omitted, the encoder uses the average frame rate of the input video.
+	FrameRate pulumi.StringPtrInput `pulumi:"frameRate"`
+	// Describes the resolution of the encoded video. If omitted, the encoder uses the resolution of the input video.
+	Scale VideoScalePtrInput `pulumi:"scale"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.VideoAnalyzer.VideoEncoderH264'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (VideoEncoderH264Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*VideoEncoderH264)(nil)).Elem()
+}
+
+func (i VideoEncoderH264Args) ToVideoEncoderH264Output() VideoEncoderH264Output {
+	return i.ToVideoEncoderH264OutputWithContext(context.Background())
+}
+
+func (i VideoEncoderH264Args) ToVideoEncoderH264OutputWithContext(ctx context.Context) VideoEncoderH264Output {
+	return pulumi.ToOutputWithContext(ctx, i).(VideoEncoderH264Output)
+}
+
+func (i VideoEncoderH264Args) ToVideoEncoderH264PtrOutput() VideoEncoderH264PtrOutput {
+	return i.ToVideoEncoderH264PtrOutputWithContext(context.Background())
+}
+
+func (i VideoEncoderH264Args) ToVideoEncoderH264PtrOutputWithContext(ctx context.Context) VideoEncoderH264PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VideoEncoderH264Output).ToVideoEncoderH264PtrOutputWithContext(ctx)
+}
+
+// VideoEncoderH264PtrInput is an input type that accepts VideoEncoderH264Args, VideoEncoderH264Ptr and VideoEncoderH264PtrOutput values.
+// You can construct a concrete instance of `VideoEncoderH264PtrInput` via:
+//
+//	        VideoEncoderH264Args{...}
+//
+//	or:
+//
+//	        nil
+type VideoEncoderH264PtrInput interface {
+	pulumi.Input
+
+	ToVideoEncoderH264PtrOutput() VideoEncoderH264PtrOutput
+	ToVideoEncoderH264PtrOutputWithContext(context.Context) VideoEncoderH264PtrOutput
+}
+
+type videoEncoderH264PtrType VideoEncoderH264Args
+
+func VideoEncoderH264Ptr(v *VideoEncoderH264Args) VideoEncoderH264PtrInput {
+	return (*videoEncoderH264PtrType)(v)
+}
+
+func (*videoEncoderH264PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VideoEncoderH264)(nil)).Elem()
+}
+
+func (i *videoEncoderH264PtrType) ToVideoEncoderH264PtrOutput() VideoEncoderH264PtrOutput {
+	return i.ToVideoEncoderH264PtrOutputWithContext(context.Background())
+}
+
+func (i *videoEncoderH264PtrType) ToVideoEncoderH264PtrOutputWithContext(ctx context.Context) VideoEncoderH264PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VideoEncoderH264PtrOutput)
+}
+
+// A custom preset for encoding video with the H.264 (AVC) codec.
+type VideoEncoderH264Output struct{ *pulumi.OutputState }
+
+func (VideoEncoderH264Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*VideoEncoderH264)(nil)).Elem()
+}
+
+func (o VideoEncoderH264Output) ToVideoEncoderH264Output() VideoEncoderH264Output {
+	return o
+}
+
+func (o VideoEncoderH264Output) ToVideoEncoderH264OutputWithContext(ctx context.Context) VideoEncoderH264Output {
+	return o
+}
+
+func (o VideoEncoderH264Output) ToVideoEncoderH264PtrOutput() VideoEncoderH264PtrOutput {
+	return o.ToVideoEncoderH264PtrOutputWithContext(context.Background())
+}
+
+func (o VideoEncoderH264Output) ToVideoEncoderH264PtrOutputWithContext(ctx context.Context) VideoEncoderH264PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VideoEncoderH264) *VideoEncoderH264 {
+		return &v
+	}).(VideoEncoderH264PtrOutput)
+}
+
+// The maximum bitrate, in kilobits per second or Kbps, at which video should be encoded. If omitted, encoder sets it automatically to try and match the quality of the input video.
+func (o VideoEncoderH264Output) BitrateKbps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VideoEncoderH264) *string { return v.BitrateKbps }).(pulumi.StringPtrOutput)
+}
+
+// The frame rate (in frames per second) of the encoded video. The value must be greater than zero, and less than or equal to 300. If omitted, the encoder uses the average frame rate of the input video.
+func (o VideoEncoderH264Output) FrameRate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VideoEncoderH264) *string { return v.FrameRate }).(pulumi.StringPtrOutput)
+}
+
+// Describes the resolution of the encoded video. If omitted, the encoder uses the resolution of the input video.
+func (o VideoEncoderH264Output) Scale() VideoScalePtrOutput {
+	return o.ApplyT(func(v VideoEncoderH264) *VideoScale { return v.Scale }).(VideoScalePtrOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.VideoEncoderH264'.
+func (o VideoEncoderH264Output) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v VideoEncoderH264) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type VideoEncoderH264PtrOutput struct{ *pulumi.OutputState }
+
+func (VideoEncoderH264PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VideoEncoderH264)(nil)).Elem()
+}
+
+func (o VideoEncoderH264PtrOutput) ToVideoEncoderH264PtrOutput() VideoEncoderH264PtrOutput {
+	return o
+}
+
+func (o VideoEncoderH264PtrOutput) ToVideoEncoderH264PtrOutputWithContext(ctx context.Context) VideoEncoderH264PtrOutput {
+	return o
+}
+
+func (o VideoEncoderH264PtrOutput) Elem() VideoEncoderH264Output {
+	return o.ApplyT(func(v *VideoEncoderH264) VideoEncoderH264 {
+		if v != nil {
+			return *v
+		}
+		var ret VideoEncoderH264
+		return ret
+	}).(VideoEncoderH264Output)
+}
+
+// The maximum bitrate, in kilobits per second or Kbps, at which video should be encoded. If omitted, encoder sets it automatically to try and match the quality of the input video.
+func (o VideoEncoderH264PtrOutput) BitrateKbps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VideoEncoderH264) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BitrateKbps
+	}).(pulumi.StringPtrOutput)
+}
+
+// The frame rate (in frames per second) of the encoded video. The value must be greater than zero, and less than or equal to 300. If omitted, the encoder uses the average frame rate of the input video.
+func (o VideoEncoderH264PtrOutput) FrameRate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VideoEncoderH264) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FrameRate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the resolution of the encoded video. If omitted, the encoder uses the resolution of the input video.
+func (o VideoEncoderH264PtrOutput) Scale() VideoScalePtrOutput {
+	return o.ApplyT(func(v *VideoEncoderH264) *VideoScale {
+		if v == nil {
+			return nil
+		}
+		return v.Scale
+	}).(VideoScalePtrOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.VideoEncoderH264'.
+func (o VideoEncoderH264PtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VideoEncoderH264) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // A custom preset for encoding video with the H.264 (AVC) codec.
 type VideoEncoderH264Response struct {
 	// The maximum bitrate, in kilobits per second or Kbps, at which video should be encoded. If omitted, encoder sets it automatically to try and match the quality of the input video.
@@ -4407,6 +6386,107 @@ type VideoEncoderH264Response struct {
 	// The discriminator for derived types.
 	// Expected value is '#Microsoft.VideoAnalyzer.VideoEncoderH264'.
 	Type string `pulumi:"type"`
+}
+
+// A custom preset for encoding video with the H.264 (AVC) codec.
+type VideoEncoderH264ResponseOutput struct{ *pulumi.OutputState }
+
+func (VideoEncoderH264ResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VideoEncoderH264Response)(nil)).Elem()
+}
+
+func (o VideoEncoderH264ResponseOutput) ToVideoEncoderH264ResponseOutput() VideoEncoderH264ResponseOutput {
+	return o
+}
+
+func (o VideoEncoderH264ResponseOutput) ToVideoEncoderH264ResponseOutputWithContext(ctx context.Context) VideoEncoderH264ResponseOutput {
+	return o
+}
+
+// The maximum bitrate, in kilobits per second or Kbps, at which video should be encoded. If omitted, encoder sets it automatically to try and match the quality of the input video.
+func (o VideoEncoderH264ResponseOutput) BitrateKbps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VideoEncoderH264Response) *string { return v.BitrateKbps }).(pulumi.StringPtrOutput)
+}
+
+// The frame rate (in frames per second) of the encoded video. The value must be greater than zero, and less than or equal to 300. If omitted, the encoder uses the average frame rate of the input video.
+func (o VideoEncoderH264ResponseOutput) FrameRate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VideoEncoderH264Response) *string { return v.FrameRate }).(pulumi.StringPtrOutput)
+}
+
+// Describes the resolution of the encoded video. If omitted, the encoder uses the resolution of the input video.
+func (o VideoEncoderH264ResponseOutput) Scale() VideoScaleResponsePtrOutput {
+	return o.ApplyT(func(v VideoEncoderH264Response) *VideoScaleResponse { return v.Scale }).(VideoScaleResponsePtrOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.VideoEncoderH264'.
+func (o VideoEncoderH264ResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v VideoEncoderH264Response) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type VideoEncoderH264ResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VideoEncoderH264ResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VideoEncoderH264Response)(nil)).Elem()
+}
+
+func (o VideoEncoderH264ResponsePtrOutput) ToVideoEncoderH264ResponsePtrOutput() VideoEncoderH264ResponsePtrOutput {
+	return o
+}
+
+func (o VideoEncoderH264ResponsePtrOutput) ToVideoEncoderH264ResponsePtrOutputWithContext(ctx context.Context) VideoEncoderH264ResponsePtrOutput {
+	return o
+}
+
+func (o VideoEncoderH264ResponsePtrOutput) Elem() VideoEncoderH264ResponseOutput {
+	return o.ApplyT(func(v *VideoEncoderH264Response) VideoEncoderH264Response {
+		if v != nil {
+			return *v
+		}
+		var ret VideoEncoderH264Response
+		return ret
+	}).(VideoEncoderH264ResponseOutput)
+}
+
+// The maximum bitrate, in kilobits per second or Kbps, at which video should be encoded. If omitted, encoder sets it automatically to try and match the quality of the input video.
+func (o VideoEncoderH264ResponsePtrOutput) BitrateKbps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VideoEncoderH264Response) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BitrateKbps
+	}).(pulumi.StringPtrOutput)
+}
+
+// The frame rate (in frames per second) of the encoded video. The value must be greater than zero, and less than or equal to 300. If omitted, the encoder uses the average frame rate of the input video.
+func (o VideoEncoderH264ResponsePtrOutput) FrameRate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VideoEncoderH264Response) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FrameRate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the resolution of the encoded video. If omitted, the encoder uses the resolution of the input video.
+func (o VideoEncoderH264ResponsePtrOutput) Scale() VideoScaleResponsePtrOutput {
+	return o.ApplyT(func(v *VideoEncoderH264Response) *VideoScaleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Scale
+	}).(VideoScaleResponsePtrOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.VideoEncoderH264'.
+func (o VideoEncoderH264ResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VideoEncoderH264Response) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // Video flags contain information about the available video actions and its dynamic properties based on the current video state.
@@ -4989,6 +7069,174 @@ type VideoScale struct {
 	Width *string `pulumi:"width"`
 }
 
+// VideoScaleInput is an input type that accepts VideoScaleArgs and VideoScaleOutput values.
+// You can construct a concrete instance of `VideoScaleInput` via:
+//
+//	VideoScaleArgs{...}
+type VideoScaleInput interface {
+	pulumi.Input
+
+	ToVideoScaleOutput() VideoScaleOutput
+	ToVideoScaleOutputWithContext(context.Context) VideoScaleOutput
+}
+
+// The video scaling information.
+type VideoScaleArgs struct {
+	// The desired output video height.
+	Height pulumi.StringPtrInput `pulumi:"height"`
+	// Describes the video scaling mode to be applied. Default mode is 'Pad'. If the mode is 'Pad' or 'Stretch' then both width and height must be specified. Else if the mode is 'PreserveAspectRatio' then only one of width or height need be provided.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The desired output video width.
+	Width pulumi.StringPtrInput `pulumi:"width"`
+}
+
+func (VideoScaleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VideoScale)(nil)).Elem()
+}
+
+func (i VideoScaleArgs) ToVideoScaleOutput() VideoScaleOutput {
+	return i.ToVideoScaleOutputWithContext(context.Background())
+}
+
+func (i VideoScaleArgs) ToVideoScaleOutputWithContext(ctx context.Context) VideoScaleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VideoScaleOutput)
+}
+
+func (i VideoScaleArgs) ToVideoScalePtrOutput() VideoScalePtrOutput {
+	return i.ToVideoScalePtrOutputWithContext(context.Background())
+}
+
+func (i VideoScaleArgs) ToVideoScalePtrOutputWithContext(ctx context.Context) VideoScalePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VideoScaleOutput).ToVideoScalePtrOutputWithContext(ctx)
+}
+
+// VideoScalePtrInput is an input type that accepts VideoScaleArgs, VideoScalePtr and VideoScalePtrOutput values.
+// You can construct a concrete instance of `VideoScalePtrInput` via:
+//
+//	        VideoScaleArgs{...}
+//
+//	or:
+//
+//	        nil
+type VideoScalePtrInput interface {
+	pulumi.Input
+
+	ToVideoScalePtrOutput() VideoScalePtrOutput
+	ToVideoScalePtrOutputWithContext(context.Context) VideoScalePtrOutput
+}
+
+type videoScalePtrType VideoScaleArgs
+
+func VideoScalePtr(v *VideoScaleArgs) VideoScalePtrInput {
+	return (*videoScalePtrType)(v)
+}
+
+func (*videoScalePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VideoScale)(nil)).Elem()
+}
+
+func (i *videoScalePtrType) ToVideoScalePtrOutput() VideoScalePtrOutput {
+	return i.ToVideoScalePtrOutputWithContext(context.Background())
+}
+
+func (i *videoScalePtrType) ToVideoScalePtrOutputWithContext(ctx context.Context) VideoScalePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VideoScalePtrOutput)
+}
+
+// The video scaling information.
+type VideoScaleOutput struct{ *pulumi.OutputState }
+
+func (VideoScaleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VideoScale)(nil)).Elem()
+}
+
+func (o VideoScaleOutput) ToVideoScaleOutput() VideoScaleOutput {
+	return o
+}
+
+func (o VideoScaleOutput) ToVideoScaleOutputWithContext(ctx context.Context) VideoScaleOutput {
+	return o
+}
+
+func (o VideoScaleOutput) ToVideoScalePtrOutput() VideoScalePtrOutput {
+	return o.ToVideoScalePtrOutputWithContext(context.Background())
+}
+
+func (o VideoScaleOutput) ToVideoScalePtrOutputWithContext(ctx context.Context) VideoScalePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VideoScale) *VideoScale {
+		return &v
+	}).(VideoScalePtrOutput)
+}
+
+// The desired output video height.
+func (o VideoScaleOutput) Height() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VideoScale) *string { return v.Height }).(pulumi.StringPtrOutput)
+}
+
+// Describes the video scaling mode to be applied. Default mode is 'Pad'. If the mode is 'Pad' or 'Stretch' then both width and height must be specified. Else if the mode is 'PreserveAspectRatio' then only one of width or height need be provided.
+func (o VideoScaleOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VideoScale) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The desired output video width.
+func (o VideoScaleOutput) Width() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VideoScale) *string { return v.Width }).(pulumi.StringPtrOutput)
+}
+
+type VideoScalePtrOutput struct{ *pulumi.OutputState }
+
+func (VideoScalePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VideoScale)(nil)).Elem()
+}
+
+func (o VideoScalePtrOutput) ToVideoScalePtrOutput() VideoScalePtrOutput {
+	return o
+}
+
+func (o VideoScalePtrOutput) ToVideoScalePtrOutputWithContext(ctx context.Context) VideoScalePtrOutput {
+	return o
+}
+
+func (o VideoScalePtrOutput) Elem() VideoScaleOutput {
+	return o.ApplyT(func(v *VideoScale) VideoScale {
+		if v != nil {
+			return *v
+		}
+		var ret VideoScale
+		return ret
+	}).(VideoScaleOutput)
+}
+
+// The desired output video height.
+func (o VideoScalePtrOutput) Height() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VideoScale) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Height
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the video scaling mode to be applied. Default mode is 'Pad'. If the mode is 'Pad' or 'Stretch' then both width and height must be specified. Else if the mode is 'PreserveAspectRatio' then only one of width or height need be provided.
+func (o VideoScalePtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VideoScale) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The desired output video width.
+func (o VideoScalePtrOutput) Width() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VideoScale) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Width
+	}).(pulumi.StringPtrOutput)
+}
+
 // The video scaling information.
 type VideoScaleResponse struct {
 	// The desired output video height.
@@ -4997,6 +7245,90 @@ type VideoScaleResponse struct {
 	Mode *string `pulumi:"mode"`
 	// The desired output video width.
 	Width *string `pulumi:"width"`
+}
+
+// The video scaling information.
+type VideoScaleResponseOutput struct{ *pulumi.OutputState }
+
+func (VideoScaleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VideoScaleResponse)(nil)).Elem()
+}
+
+func (o VideoScaleResponseOutput) ToVideoScaleResponseOutput() VideoScaleResponseOutput {
+	return o
+}
+
+func (o VideoScaleResponseOutput) ToVideoScaleResponseOutputWithContext(ctx context.Context) VideoScaleResponseOutput {
+	return o
+}
+
+// The desired output video height.
+func (o VideoScaleResponseOutput) Height() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VideoScaleResponse) *string { return v.Height }).(pulumi.StringPtrOutput)
+}
+
+// Describes the video scaling mode to be applied. Default mode is 'Pad'. If the mode is 'Pad' or 'Stretch' then both width and height must be specified. Else if the mode is 'PreserveAspectRatio' then only one of width or height need be provided.
+func (o VideoScaleResponseOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VideoScaleResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The desired output video width.
+func (o VideoScaleResponseOutput) Width() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VideoScaleResponse) *string { return v.Width }).(pulumi.StringPtrOutput)
+}
+
+type VideoScaleResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VideoScaleResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VideoScaleResponse)(nil)).Elem()
+}
+
+func (o VideoScaleResponsePtrOutput) ToVideoScaleResponsePtrOutput() VideoScaleResponsePtrOutput {
+	return o
+}
+
+func (o VideoScaleResponsePtrOutput) ToVideoScaleResponsePtrOutputWithContext(ctx context.Context) VideoScaleResponsePtrOutput {
+	return o
+}
+
+func (o VideoScaleResponsePtrOutput) Elem() VideoScaleResponseOutput {
+	return o.ApplyT(func(v *VideoScaleResponse) VideoScaleResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VideoScaleResponse
+		return ret
+	}).(VideoScaleResponseOutput)
+}
+
+// The desired output video height.
+func (o VideoScaleResponsePtrOutput) Height() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VideoScaleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Height
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the video scaling mode to be applied. Default mode is 'Pad'. If the mode is 'Pad' or 'Stretch' then both width and height must be specified. Else if the mode is 'PreserveAspectRatio' then only one of width or height need be provided.
+func (o VideoScaleResponsePtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VideoScaleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The desired output video width.
+func (o VideoScaleResponsePtrOutput) Width() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VideoScaleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Width
+	}).(pulumi.StringPtrOutput)
 }
 
 // A sequence of absolute datetime ranges as a string. The datetime values should follow IS08601, and the sum of the ranges should add up to 24 hours or less. Currently, there can be only one range specified in the sequence.
@@ -5008,6 +7340,64 @@ type VideoSequenceAbsoluteTimeMarkers struct {
 	Type string `pulumi:"type"`
 }
 
+// VideoSequenceAbsoluteTimeMarkersInput is an input type that accepts VideoSequenceAbsoluteTimeMarkersArgs and VideoSequenceAbsoluteTimeMarkersOutput values.
+// You can construct a concrete instance of `VideoSequenceAbsoluteTimeMarkersInput` via:
+//
+//	VideoSequenceAbsoluteTimeMarkersArgs{...}
+type VideoSequenceAbsoluteTimeMarkersInput interface {
+	pulumi.Input
+
+	ToVideoSequenceAbsoluteTimeMarkersOutput() VideoSequenceAbsoluteTimeMarkersOutput
+	ToVideoSequenceAbsoluteTimeMarkersOutputWithContext(context.Context) VideoSequenceAbsoluteTimeMarkersOutput
+}
+
+// A sequence of absolute datetime ranges as a string. The datetime values should follow IS08601, and the sum of the ranges should add up to 24 hours or less. Currently, there can be only one range specified in the sequence.
+type VideoSequenceAbsoluteTimeMarkersArgs struct {
+	// The sequence of datetime ranges. Example: '[["2021-10-05T03:30:00Z", "2021-10-05T03:40:00Z"]]'.
+	Ranges pulumi.StringInput `pulumi:"ranges"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.VideoAnalyzer.VideoSequenceAbsoluteTimeMarkers'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (VideoSequenceAbsoluteTimeMarkersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VideoSequenceAbsoluteTimeMarkers)(nil)).Elem()
+}
+
+func (i VideoSequenceAbsoluteTimeMarkersArgs) ToVideoSequenceAbsoluteTimeMarkersOutput() VideoSequenceAbsoluteTimeMarkersOutput {
+	return i.ToVideoSequenceAbsoluteTimeMarkersOutputWithContext(context.Background())
+}
+
+func (i VideoSequenceAbsoluteTimeMarkersArgs) ToVideoSequenceAbsoluteTimeMarkersOutputWithContext(ctx context.Context) VideoSequenceAbsoluteTimeMarkersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VideoSequenceAbsoluteTimeMarkersOutput)
+}
+
+// A sequence of absolute datetime ranges as a string. The datetime values should follow IS08601, and the sum of the ranges should add up to 24 hours or less. Currently, there can be only one range specified in the sequence.
+type VideoSequenceAbsoluteTimeMarkersOutput struct{ *pulumi.OutputState }
+
+func (VideoSequenceAbsoluteTimeMarkersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VideoSequenceAbsoluteTimeMarkers)(nil)).Elem()
+}
+
+func (o VideoSequenceAbsoluteTimeMarkersOutput) ToVideoSequenceAbsoluteTimeMarkersOutput() VideoSequenceAbsoluteTimeMarkersOutput {
+	return o
+}
+
+func (o VideoSequenceAbsoluteTimeMarkersOutput) ToVideoSequenceAbsoluteTimeMarkersOutputWithContext(ctx context.Context) VideoSequenceAbsoluteTimeMarkersOutput {
+	return o
+}
+
+// The sequence of datetime ranges. Example: '[["2021-10-05T03:30:00Z", "2021-10-05T03:40:00Z"]]'.
+func (o VideoSequenceAbsoluteTimeMarkersOutput) Ranges() pulumi.StringOutput {
+	return o.ApplyT(func(v VideoSequenceAbsoluteTimeMarkers) string { return v.Ranges }).(pulumi.StringOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.VideoSequenceAbsoluteTimeMarkers'.
+func (o VideoSequenceAbsoluteTimeMarkersOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v VideoSequenceAbsoluteTimeMarkers) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // A sequence of absolute datetime ranges as a string. The datetime values should follow IS08601, and the sum of the ranges should add up to 24 hours or less. Currently, there can be only one range specified in the sequence.
 type VideoSequenceAbsoluteTimeMarkersResponse struct {
 	// The sequence of datetime ranges. Example: '[["2021-10-05T03:30:00Z", "2021-10-05T03:40:00Z"]]'.
@@ -5015,6 +7405,32 @@ type VideoSequenceAbsoluteTimeMarkersResponse struct {
 	// The discriminator for derived types.
 	// Expected value is '#Microsoft.VideoAnalyzer.VideoSequenceAbsoluteTimeMarkers'.
 	Type string `pulumi:"type"`
+}
+
+// A sequence of absolute datetime ranges as a string. The datetime values should follow IS08601, and the sum of the ranges should add up to 24 hours or less. Currently, there can be only one range specified in the sequence.
+type VideoSequenceAbsoluteTimeMarkersResponseOutput struct{ *pulumi.OutputState }
+
+func (VideoSequenceAbsoluteTimeMarkersResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VideoSequenceAbsoluteTimeMarkersResponse)(nil)).Elem()
+}
+
+func (o VideoSequenceAbsoluteTimeMarkersResponseOutput) ToVideoSequenceAbsoluteTimeMarkersResponseOutput() VideoSequenceAbsoluteTimeMarkersResponseOutput {
+	return o
+}
+
+func (o VideoSequenceAbsoluteTimeMarkersResponseOutput) ToVideoSequenceAbsoluteTimeMarkersResponseOutputWithContext(ctx context.Context) VideoSequenceAbsoluteTimeMarkersResponseOutput {
+	return o
+}
+
+// The sequence of datetime ranges. Example: '[["2021-10-05T03:30:00Z", "2021-10-05T03:40:00Z"]]'.
+func (o VideoSequenceAbsoluteTimeMarkersResponseOutput) Ranges() pulumi.StringOutput {
+	return o.ApplyT(func(v VideoSequenceAbsoluteTimeMarkersResponse) string { return v.Ranges }).(pulumi.StringOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.VideoSequenceAbsoluteTimeMarkers'.
+func (o VideoSequenceAbsoluteTimeMarkersResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v VideoSequenceAbsoluteTimeMarkersResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Video sink in a live topology allows for video and audio to be captured, optionally archived, and published via a video resource. If archiving is enabled, this results in a video of type 'archive'. If used in a batch topology, this allows for video and audio to be stored as a file, and published via a video resource of type 'file'
@@ -5261,6 +7677,78 @@ type VideoSource struct {
 	VideoName string `pulumi:"videoName"`
 }
 
+// VideoSourceInput is an input type that accepts VideoSourceArgs and VideoSourceOutput values.
+// You can construct a concrete instance of `VideoSourceInput` via:
+//
+//	VideoSourceArgs{...}
+type VideoSourceInput interface {
+	pulumi.Input
+
+	ToVideoSourceOutput() VideoSourceOutput
+	ToVideoSourceOutputWithContext(context.Context) VideoSourceOutput
+}
+
+// Video source allows for content from a Video Analyzer video resource to be ingested into a pipeline. Currently supported only with batch pipelines.
+type VideoSourceArgs struct {
+	// Node name. Must be unique within the topology.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Describes a sequence of datetime ranges. The video source only picks up recorded media within these ranges.
+	TimeSequences VideoSequenceAbsoluteTimeMarkersInput `pulumi:"timeSequences"`
+	// The discriminator for derived types.
+	// Expected value is '#Microsoft.VideoAnalyzer.VideoSource'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Name of the Video Analyzer video resource to be used as the source.
+	VideoName pulumi.StringInput `pulumi:"videoName"`
+}
+
+func (VideoSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VideoSource)(nil)).Elem()
+}
+
+func (i VideoSourceArgs) ToVideoSourceOutput() VideoSourceOutput {
+	return i.ToVideoSourceOutputWithContext(context.Background())
+}
+
+func (i VideoSourceArgs) ToVideoSourceOutputWithContext(ctx context.Context) VideoSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VideoSourceOutput)
+}
+
+// Video source allows for content from a Video Analyzer video resource to be ingested into a pipeline. Currently supported only with batch pipelines.
+type VideoSourceOutput struct{ *pulumi.OutputState }
+
+func (VideoSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VideoSource)(nil)).Elem()
+}
+
+func (o VideoSourceOutput) ToVideoSourceOutput() VideoSourceOutput {
+	return o
+}
+
+func (o VideoSourceOutput) ToVideoSourceOutputWithContext(ctx context.Context) VideoSourceOutput {
+	return o
+}
+
+// Node name. Must be unique within the topology.
+func (o VideoSourceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v VideoSource) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Describes a sequence of datetime ranges. The video source only picks up recorded media within these ranges.
+func (o VideoSourceOutput) TimeSequences() VideoSequenceAbsoluteTimeMarkersOutput {
+	return o.ApplyT(func(v VideoSource) VideoSequenceAbsoluteTimeMarkers { return v.TimeSequences }).(VideoSequenceAbsoluteTimeMarkersOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.VideoSource'.
+func (o VideoSourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v VideoSource) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Name of the Video Analyzer video resource to be used as the source.
+func (o VideoSourceOutput) VideoName() pulumi.StringOutput {
+	return o.ApplyT(func(v VideoSource) string { return v.VideoName }).(pulumi.StringOutput)
+}
+
 // Video source allows for content from a Video Analyzer video resource to be ingested into a pipeline. Currently supported only with batch pipelines.
 type VideoSourceResponse struct {
 	// Node name. Must be unique within the topology.
@@ -5274,15 +7762,61 @@ type VideoSourceResponse struct {
 	VideoName string `pulumi:"videoName"`
 }
 
+// Video source allows for content from a Video Analyzer video resource to be ingested into a pipeline. Currently supported only with batch pipelines.
+type VideoSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (VideoSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VideoSourceResponse)(nil)).Elem()
+}
+
+func (o VideoSourceResponseOutput) ToVideoSourceResponseOutput() VideoSourceResponseOutput {
+	return o
+}
+
+func (o VideoSourceResponseOutput) ToVideoSourceResponseOutputWithContext(ctx context.Context) VideoSourceResponseOutput {
+	return o
+}
+
+// Node name. Must be unique within the topology.
+func (o VideoSourceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v VideoSourceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Describes a sequence of datetime ranges. The video source only picks up recorded media within these ranges.
+func (o VideoSourceResponseOutput) TimeSequences() VideoSequenceAbsoluteTimeMarkersResponseOutput {
+	return o.ApplyT(func(v VideoSourceResponse) VideoSequenceAbsoluteTimeMarkersResponse { return v.TimeSequences }).(VideoSequenceAbsoluteTimeMarkersResponseOutput)
+}
+
+// The discriminator for derived types.
+// Expected value is '#Microsoft.VideoAnalyzer.VideoSource'.
+func (o VideoSourceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v VideoSourceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Name of the Video Analyzer video resource to be used as the source.
+func (o VideoSourceResponseOutput) VideoName() pulumi.StringOutput {
+	return o.ApplyT(func(v VideoSourceResponse) string { return v.VideoName }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccountEncryptionOutput{})
 	pulumi.RegisterOutputType(AccountEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(AccountEncryptionResponseOutput{})
 	pulumi.RegisterOutputType(AccountEncryptionResponsePtrOutput{})
+	pulumi.RegisterOutputType(AudioEncoderAacOutput{})
+	pulumi.RegisterOutputType(AudioEncoderAacPtrOutput{})
+	pulumi.RegisterOutputType(AudioEncoderAacResponseOutput{})
+	pulumi.RegisterOutputType(AudioEncoderAacResponsePtrOutput{})
+	pulumi.RegisterOutputType(EccTokenKeyOutput{})
+	pulumi.RegisterOutputType(EccTokenKeyResponseOutput{})
+	pulumi.RegisterOutputType(EncoderCustomPresetOutput{})
+	pulumi.RegisterOutputType(EncoderCustomPresetResponseOutput{})
 	pulumi.RegisterOutputType(EncoderProcessorOutput{})
 	pulumi.RegisterOutputType(EncoderProcessorArrayOutput{})
 	pulumi.RegisterOutputType(EncoderProcessorResponseOutput{})
 	pulumi.RegisterOutputType(EncoderProcessorResponseArrayOutput{})
+	pulumi.RegisterOutputType(EncoderSystemPresetOutput{})
+	pulumi.RegisterOutputType(EncoderSystemPresetResponseOutput{})
 	pulumi.RegisterOutputType(EndpointResponseOutput{})
 	pulumi.RegisterOutputType(EndpointResponseArrayOutput{})
 	pulumi.RegisterOutputType(GroupLevelAccessControlOutput{})
@@ -5317,6 +7851,10 @@ func init() {
 	pulumi.RegisterOutputType(ParameterDefinitionArrayOutput{})
 	pulumi.RegisterOutputType(ParameterDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(ParameterDefinitionResponseArrayOutput{})
+	pulumi.RegisterOutputType(PemCertificateListOutput{})
+	pulumi.RegisterOutputType(PemCertificateListPtrOutput{})
+	pulumi.RegisterOutputType(PemCertificateListResponseOutput{})
+	pulumi.RegisterOutputType(PemCertificateListResponsePtrOutput{})
 	pulumi.RegisterOutputType(PipelineJobErrorResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
@@ -5328,6 +7866,14 @@ func init() {
 	pulumi.RegisterOutputType(ResourceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(RsaTokenKeyOutput{})
+	pulumi.RegisterOutputType(RsaTokenKeyResponseOutput{})
+	pulumi.RegisterOutputType(RtspSourceOutput{})
+	pulumi.RegisterOutputType(RtspSourceResponseOutput{})
+	pulumi.RegisterOutputType(SecureIotDeviceRemoteTunnelOutput{})
+	pulumi.RegisterOutputType(SecureIotDeviceRemoteTunnelPtrOutput{})
+	pulumi.RegisterOutputType(SecureIotDeviceRemoteTunnelResponseOutput{})
+	pulumi.RegisterOutputType(SecureIotDeviceRemoteTunnelResponsePtrOutput{})
 	pulumi.RegisterOutputType(SkuOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
 	pulumi.RegisterOutputType(StorageAccountOutput{})
@@ -5335,12 +7881,22 @@ func init() {
 	pulumi.RegisterOutputType(StorageAccountResponseOutput{})
 	pulumi.RegisterOutputType(StorageAccountResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(TlsEndpointOutput{})
+	pulumi.RegisterOutputType(TlsEndpointResponseOutput{})
+	pulumi.RegisterOutputType(TlsValidationOptionsOutput{})
+	pulumi.RegisterOutputType(TlsValidationOptionsPtrOutput{})
+	pulumi.RegisterOutputType(TlsValidationOptionsResponseOutput{})
+	pulumi.RegisterOutputType(TlsValidationOptionsResponsePtrOutput{})
 	pulumi.RegisterOutputType(TokenClaimOutput{})
 	pulumi.RegisterOutputType(TokenClaimArrayOutput{})
 	pulumi.RegisterOutputType(TokenClaimResponseOutput{})
 	pulumi.RegisterOutputType(TokenClaimResponseArrayOutput{})
+	pulumi.RegisterOutputType(UnsecuredEndpointOutput{})
+	pulumi.RegisterOutputType(UnsecuredEndpointResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedManagedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedManagedIdentityResponseMapOutput{})
+	pulumi.RegisterOutputType(UsernamePasswordCredentialsOutput{})
+	pulumi.RegisterOutputType(UsernamePasswordCredentialsResponseOutput{})
 	pulumi.RegisterOutputType(VideoAnalyzerIdentityOutput{})
 	pulumi.RegisterOutputType(VideoAnalyzerIdentityPtrOutput{})
 	pulumi.RegisterOutputType(VideoAnalyzerIdentityResponseOutput{})
@@ -5354,6 +7910,10 @@ func init() {
 	pulumi.RegisterOutputType(VideoCreationPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(VideoCreationPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(VideoCreationPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(VideoEncoderH264Output{})
+	pulumi.RegisterOutputType(VideoEncoderH264PtrOutput{})
+	pulumi.RegisterOutputType(VideoEncoderH264ResponseOutput{})
+	pulumi.RegisterOutputType(VideoEncoderH264ResponsePtrOutput{})
 	pulumi.RegisterOutputType(VideoFlagsResponseOutput{})
 	pulumi.RegisterOutputType(VideoMediaInfoOutput{})
 	pulumi.RegisterOutputType(VideoMediaInfoPtrOutput{})
@@ -5365,8 +7925,16 @@ func init() {
 	pulumi.RegisterOutputType(VideoPublishingOptionsPtrOutput{})
 	pulumi.RegisterOutputType(VideoPublishingOptionsResponseOutput{})
 	pulumi.RegisterOutputType(VideoPublishingOptionsResponsePtrOutput{})
+	pulumi.RegisterOutputType(VideoScaleOutput{})
+	pulumi.RegisterOutputType(VideoScalePtrOutput{})
+	pulumi.RegisterOutputType(VideoScaleResponseOutput{})
+	pulumi.RegisterOutputType(VideoScaleResponsePtrOutput{})
+	pulumi.RegisterOutputType(VideoSequenceAbsoluteTimeMarkersOutput{})
+	pulumi.RegisterOutputType(VideoSequenceAbsoluteTimeMarkersResponseOutput{})
 	pulumi.RegisterOutputType(VideoSinkOutput{})
 	pulumi.RegisterOutputType(VideoSinkArrayOutput{})
 	pulumi.RegisterOutputType(VideoSinkResponseOutput{})
 	pulumi.RegisterOutputType(VideoSinkResponseArrayOutput{})
+	pulumi.RegisterOutputType(VideoSourceOutput{})
+	pulumi.RegisterOutputType(VideoSourceResponseOutput{})
 }

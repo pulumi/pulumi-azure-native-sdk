@@ -639,6 +639,174 @@ type BackupPolicyMigrationState struct {
 	TargetType *string `pulumi:"targetType"`
 }
 
+// BackupPolicyMigrationStateInput is an input type that accepts BackupPolicyMigrationStateArgs and BackupPolicyMigrationStateOutput values.
+// You can construct a concrete instance of `BackupPolicyMigrationStateInput` via:
+//
+//	BackupPolicyMigrationStateArgs{...}
+type BackupPolicyMigrationStateInput interface {
+	pulumi.Input
+
+	ToBackupPolicyMigrationStateOutput() BackupPolicyMigrationStateOutput
+	ToBackupPolicyMigrationStateOutputWithContext(context.Context) BackupPolicyMigrationStateOutput
+}
+
+// The object representing the state of the migration between the backup policies.
+type BackupPolicyMigrationStateArgs struct {
+	// Time at which the backup policy migration started (ISO-8601 format).
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// Describes the status of migration between backup policy types.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Describes the target backup policy type of the backup policy migration.
+	TargetType pulumi.StringPtrInput `pulumi:"targetType"`
+}
+
+func (BackupPolicyMigrationStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPolicyMigrationState)(nil)).Elem()
+}
+
+func (i BackupPolicyMigrationStateArgs) ToBackupPolicyMigrationStateOutput() BackupPolicyMigrationStateOutput {
+	return i.ToBackupPolicyMigrationStateOutputWithContext(context.Background())
+}
+
+func (i BackupPolicyMigrationStateArgs) ToBackupPolicyMigrationStateOutputWithContext(ctx context.Context) BackupPolicyMigrationStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyMigrationStateOutput)
+}
+
+func (i BackupPolicyMigrationStateArgs) ToBackupPolicyMigrationStatePtrOutput() BackupPolicyMigrationStatePtrOutput {
+	return i.ToBackupPolicyMigrationStatePtrOutputWithContext(context.Background())
+}
+
+func (i BackupPolicyMigrationStateArgs) ToBackupPolicyMigrationStatePtrOutputWithContext(ctx context.Context) BackupPolicyMigrationStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyMigrationStateOutput).ToBackupPolicyMigrationStatePtrOutputWithContext(ctx)
+}
+
+// BackupPolicyMigrationStatePtrInput is an input type that accepts BackupPolicyMigrationStateArgs, BackupPolicyMigrationStatePtr and BackupPolicyMigrationStatePtrOutput values.
+// You can construct a concrete instance of `BackupPolicyMigrationStatePtrInput` via:
+//
+//	        BackupPolicyMigrationStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupPolicyMigrationStatePtrInput interface {
+	pulumi.Input
+
+	ToBackupPolicyMigrationStatePtrOutput() BackupPolicyMigrationStatePtrOutput
+	ToBackupPolicyMigrationStatePtrOutputWithContext(context.Context) BackupPolicyMigrationStatePtrOutput
+}
+
+type backupPolicyMigrationStatePtrType BackupPolicyMigrationStateArgs
+
+func BackupPolicyMigrationStatePtr(v *BackupPolicyMigrationStateArgs) BackupPolicyMigrationStatePtrInput {
+	return (*backupPolicyMigrationStatePtrType)(v)
+}
+
+func (*backupPolicyMigrationStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPolicyMigrationState)(nil)).Elem()
+}
+
+func (i *backupPolicyMigrationStatePtrType) ToBackupPolicyMigrationStatePtrOutput() BackupPolicyMigrationStatePtrOutput {
+	return i.ToBackupPolicyMigrationStatePtrOutputWithContext(context.Background())
+}
+
+func (i *backupPolicyMigrationStatePtrType) ToBackupPolicyMigrationStatePtrOutputWithContext(ctx context.Context) BackupPolicyMigrationStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPolicyMigrationStatePtrOutput)
+}
+
+// The object representing the state of the migration between the backup policies.
+type BackupPolicyMigrationStateOutput struct{ *pulumi.OutputState }
+
+func (BackupPolicyMigrationStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPolicyMigrationState)(nil)).Elem()
+}
+
+func (o BackupPolicyMigrationStateOutput) ToBackupPolicyMigrationStateOutput() BackupPolicyMigrationStateOutput {
+	return o
+}
+
+func (o BackupPolicyMigrationStateOutput) ToBackupPolicyMigrationStateOutputWithContext(ctx context.Context) BackupPolicyMigrationStateOutput {
+	return o
+}
+
+func (o BackupPolicyMigrationStateOutput) ToBackupPolicyMigrationStatePtrOutput() BackupPolicyMigrationStatePtrOutput {
+	return o.ToBackupPolicyMigrationStatePtrOutputWithContext(context.Background())
+}
+
+func (o BackupPolicyMigrationStateOutput) ToBackupPolicyMigrationStatePtrOutputWithContext(ctx context.Context) BackupPolicyMigrationStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPolicyMigrationState) *BackupPolicyMigrationState {
+		return &v
+	}).(BackupPolicyMigrationStatePtrOutput)
+}
+
+// Time at which the backup policy migration started (ISO-8601 format).
+func (o BackupPolicyMigrationStateOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyMigrationState) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// Describes the status of migration between backup policy types.
+func (o BackupPolicyMigrationStateOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyMigrationState) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Describes the target backup policy type of the backup policy migration.
+func (o BackupPolicyMigrationStateOutput) TargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyMigrationState) *string { return v.TargetType }).(pulumi.StringPtrOutput)
+}
+
+type BackupPolicyMigrationStatePtrOutput struct{ *pulumi.OutputState }
+
+func (BackupPolicyMigrationStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPolicyMigrationState)(nil)).Elem()
+}
+
+func (o BackupPolicyMigrationStatePtrOutput) ToBackupPolicyMigrationStatePtrOutput() BackupPolicyMigrationStatePtrOutput {
+	return o
+}
+
+func (o BackupPolicyMigrationStatePtrOutput) ToBackupPolicyMigrationStatePtrOutputWithContext(ctx context.Context) BackupPolicyMigrationStatePtrOutput {
+	return o
+}
+
+func (o BackupPolicyMigrationStatePtrOutput) Elem() BackupPolicyMigrationStateOutput {
+	return o.ApplyT(func(v *BackupPolicyMigrationState) BackupPolicyMigrationState {
+		if v != nil {
+			return *v
+		}
+		var ret BackupPolicyMigrationState
+		return ret
+	}).(BackupPolicyMigrationStateOutput)
+}
+
+// Time at which the backup policy migration started (ISO-8601 format).
+func (o BackupPolicyMigrationStatePtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupPolicyMigrationState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the status of migration between backup policy types.
+func (o BackupPolicyMigrationStatePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupPolicyMigrationState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the target backup policy type of the backup policy migration.
+func (o BackupPolicyMigrationStatePtrOutput) TargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupPolicyMigrationState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetType
+	}).(pulumi.StringPtrOutput)
+}
+
 // The object representing the state of the migration between the backup policies.
 type BackupPolicyMigrationStateResponse struct {
 	// Time at which the backup policy migration started (ISO-8601 format).
@@ -647,6 +815,90 @@ type BackupPolicyMigrationStateResponse struct {
 	Status *string `pulumi:"status"`
 	// Describes the target backup policy type of the backup policy migration.
 	TargetType *string `pulumi:"targetType"`
+}
+
+// The object representing the state of the migration between the backup policies.
+type BackupPolicyMigrationStateResponseOutput struct{ *pulumi.OutputState }
+
+func (BackupPolicyMigrationStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPolicyMigrationStateResponse)(nil)).Elem()
+}
+
+func (o BackupPolicyMigrationStateResponseOutput) ToBackupPolicyMigrationStateResponseOutput() BackupPolicyMigrationStateResponseOutput {
+	return o
+}
+
+func (o BackupPolicyMigrationStateResponseOutput) ToBackupPolicyMigrationStateResponseOutputWithContext(ctx context.Context) BackupPolicyMigrationStateResponseOutput {
+	return o
+}
+
+// Time at which the backup policy migration started (ISO-8601 format).
+func (o BackupPolicyMigrationStateResponseOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyMigrationStateResponse) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// Describes the status of migration between backup policy types.
+func (o BackupPolicyMigrationStateResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyMigrationStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Describes the target backup policy type of the backup policy migration.
+func (o BackupPolicyMigrationStateResponseOutput) TargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPolicyMigrationStateResponse) *string { return v.TargetType }).(pulumi.StringPtrOutput)
+}
+
+type BackupPolicyMigrationStateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BackupPolicyMigrationStateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPolicyMigrationStateResponse)(nil)).Elem()
+}
+
+func (o BackupPolicyMigrationStateResponsePtrOutput) ToBackupPolicyMigrationStateResponsePtrOutput() BackupPolicyMigrationStateResponsePtrOutput {
+	return o
+}
+
+func (o BackupPolicyMigrationStateResponsePtrOutput) ToBackupPolicyMigrationStateResponsePtrOutputWithContext(ctx context.Context) BackupPolicyMigrationStateResponsePtrOutput {
+	return o
+}
+
+func (o BackupPolicyMigrationStateResponsePtrOutput) Elem() BackupPolicyMigrationStateResponseOutput {
+	return o.ApplyT(func(v *BackupPolicyMigrationStateResponse) BackupPolicyMigrationStateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret BackupPolicyMigrationStateResponse
+		return ret
+	}).(BackupPolicyMigrationStateResponseOutput)
+}
+
+// Time at which the backup policy migration started (ISO-8601 format).
+func (o BackupPolicyMigrationStateResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupPolicyMigrationStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the status of migration between backup policy types.
+func (o BackupPolicyMigrationStateResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupPolicyMigrationStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the target backup policy type of the backup policy migration.
+func (o BackupPolicyMigrationStateResponsePtrOutput) TargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupPolicyMigrationStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetType
+	}).(pulumi.StringPtrOutput)
 }
 
 // Cosmos DB capability object
@@ -4122,6 +4374,177 @@ type ContinuousModeBackupPolicy struct {
 	Type string `pulumi:"type"`
 }
 
+// ContinuousModeBackupPolicyInput is an input type that accepts ContinuousModeBackupPolicyArgs and ContinuousModeBackupPolicyOutput values.
+// You can construct a concrete instance of `ContinuousModeBackupPolicyInput` via:
+//
+//	ContinuousModeBackupPolicyArgs{...}
+type ContinuousModeBackupPolicyInput interface {
+	pulumi.Input
+
+	ToContinuousModeBackupPolicyOutput() ContinuousModeBackupPolicyOutput
+	ToContinuousModeBackupPolicyOutputWithContext(context.Context) ContinuousModeBackupPolicyOutput
+}
+
+// The object representing continuous mode backup policy.
+type ContinuousModeBackupPolicyArgs struct {
+	// Configuration values for continuous mode backup
+	ContinuousModeProperties ContinuousModePropertiesPtrInput `pulumi:"continuousModeProperties"`
+	// The object representing the state of the migration between the backup policies.
+	MigrationState BackupPolicyMigrationStatePtrInput `pulumi:"migrationState"`
+	// Describes the mode of backups.
+	// Expected value is 'Continuous'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ContinuousModeBackupPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContinuousModeBackupPolicy)(nil)).Elem()
+}
+
+func (i ContinuousModeBackupPolicyArgs) ToContinuousModeBackupPolicyOutput() ContinuousModeBackupPolicyOutput {
+	return i.ToContinuousModeBackupPolicyOutputWithContext(context.Background())
+}
+
+func (i ContinuousModeBackupPolicyArgs) ToContinuousModeBackupPolicyOutputWithContext(ctx context.Context) ContinuousModeBackupPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContinuousModeBackupPolicyOutput)
+}
+
+func (i ContinuousModeBackupPolicyArgs) ToContinuousModeBackupPolicyPtrOutput() ContinuousModeBackupPolicyPtrOutput {
+	return i.ToContinuousModeBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ContinuousModeBackupPolicyArgs) ToContinuousModeBackupPolicyPtrOutputWithContext(ctx context.Context) ContinuousModeBackupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContinuousModeBackupPolicyOutput).ToContinuousModeBackupPolicyPtrOutputWithContext(ctx)
+}
+
+// ContinuousModeBackupPolicyPtrInput is an input type that accepts ContinuousModeBackupPolicyArgs, ContinuousModeBackupPolicyPtr and ContinuousModeBackupPolicyPtrOutput values.
+// You can construct a concrete instance of `ContinuousModeBackupPolicyPtrInput` via:
+//
+//	        ContinuousModeBackupPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ContinuousModeBackupPolicyPtrInput interface {
+	pulumi.Input
+
+	ToContinuousModeBackupPolicyPtrOutput() ContinuousModeBackupPolicyPtrOutput
+	ToContinuousModeBackupPolicyPtrOutputWithContext(context.Context) ContinuousModeBackupPolicyPtrOutput
+}
+
+type continuousModeBackupPolicyPtrType ContinuousModeBackupPolicyArgs
+
+func ContinuousModeBackupPolicyPtr(v *ContinuousModeBackupPolicyArgs) ContinuousModeBackupPolicyPtrInput {
+	return (*continuousModeBackupPolicyPtrType)(v)
+}
+
+func (*continuousModeBackupPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContinuousModeBackupPolicy)(nil)).Elem()
+}
+
+func (i *continuousModeBackupPolicyPtrType) ToContinuousModeBackupPolicyPtrOutput() ContinuousModeBackupPolicyPtrOutput {
+	return i.ToContinuousModeBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *continuousModeBackupPolicyPtrType) ToContinuousModeBackupPolicyPtrOutputWithContext(ctx context.Context) ContinuousModeBackupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContinuousModeBackupPolicyPtrOutput)
+}
+
+// The object representing continuous mode backup policy.
+type ContinuousModeBackupPolicyOutput struct{ *pulumi.OutputState }
+
+func (ContinuousModeBackupPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContinuousModeBackupPolicy)(nil)).Elem()
+}
+
+func (o ContinuousModeBackupPolicyOutput) ToContinuousModeBackupPolicyOutput() ContinuousModeBackupPolicyOutput {
+	return o
+}
+
+func (o ContinuousModeBackupPolicyOutput) ToContinuousModeBackupPolicyOutputWithContext(ctx context.Context) ContinuousModeBackupPolicyOutput {
+	return o
+}
+
+func (o ContinuousModeBackupPolicyOutput) ToContinuousModeBackupPolicyPtrOutput() ContinuousModeBackupPolicyPtrOutput {
+	return o.ToContinuousModeBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ContinuousModeBackupPolicyOutput) ToContinuousModeBackupPolicyPtrOutputWithContext(ctx context.Context) ContinuousModeBackupPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContinuousModeBackupPolicy) *ContinuousModeBackupPolicy {
+		return &v
+	}).(ContinuousModeBackupPolicyPtrOutput)
+}
+
+// Configuration values for continuous mode backup
+func (o ContinuousModeBackupPolicyOutput) ContinuousModeProperties() ContinuousModePropertiesPtrOutput {
+	return o.ApplyT(func(v ContinuousModeBackupPolicy) *ContinuousModeProperties { return v.ContinuousModeProperties }).(ContinuousModePropertiesPtrOutput)
+}
+
+// The object representing the state of the migration between the backup policies.
+func (o ContinuousModeBackupPolicyOutput) MigrationState() BackupPolicyMigrationStatePtrOutput {
+	return o.ApplyT(func(v ContinuousModeBackupPolicy) *BackupPolicyMigrationState { return v.MigrationState }).(BackupPolicyMigrationStatePtrOutput)
+}
+
+// Describes the mode of backups.
+// Expected value is 'Continuous'.
+func (o ContinuousModeBackupPolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ContinuousModeBackupPolicy) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ContinuousModeBackupPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ContinuousModeBackupPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContinuousModeBackupPolicy)(nil)).Elem()
+}
+
+func (o ContinuousModeBackupPolicyPtrOutput) ToContinuousModeBackupPolicyPtrOutput() ContinuousModeBackupPolicyPtrOutput {
+	return o
+}
+
+func (o ContinuousModeBackupPolicyPtrOutput) ToContinuousModeBackupPolicyPtrOutputWithContext(ctx context.Context) ContinuousModeBackupPolicyPtrOutput {
+	return o
+}
+
+func (o ContinuousModeBackupPolicyPtrOutput) Elem() ContinuousModeBackupPolicyOutput {
+	return o.ApplyT(func(v *ContinuousModeBackupPolicy) ContinuousModeBackupPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ContinuousModeBackupPolicy
+		return ret
+	}).(ContinuousModeBackupPolicyOutput)
+}
+
+// Configuration values for continuous mode backup
+func (o ContinuousModeBackupPolicyPtrOutput) ContinuousModeProperties() ContinuousModePropertiesPtrOutput {
+	return o.ApplyT(func(v *ContinuousModeBackupPolicy) *ContinuousModeProperties {
+		if v == nil {
+			return nil
+		}
+		return v.ContinuousModeProperties
+	}).(ContinuousModePropertiesPtrOutput)
+}
+
+// The object representing the state of the migration between the backup policies.
+func (o ContinuousModeBackupPolicyPtrOutput) MigrationState() BackupPolicyMigrationStatePtrOutput {
+	return o.ApplyT(func(v *ContinuousModeBackupPolicy) *BackupPolicyMigrationState {
+		if v == nil {
+			return nil
+		}
+		return v.MigrationState
+	}).(BackupPolicyMigrationStatePtrOutput)
+}
+
+// Describes the mode of backups.
+// Expected value is 'Continuous'.
+func (o ContinuousModeBackupPolicyPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContinuousModeBackupPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // The object representing continuous mode backup policy.
 type ContinuousModeBackupPolicyResponse struct {
 	// Configuration values for continuous mode backup
@@ -4133,16 +4556,294 @@ type ContinuousModeBackupPolicyResponse struct {
 	Type string `pulumi:"type"`
 }
 
+// The object representing continuous mode backup policy.
+type ContinuousModeBackupPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (ContinuousModeBackupPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContinuousModeBackupPolicyResponse)(nil)).Elem()
+}
+
+func (o ContinuousModeBackupPolicyResponseOutput) ToContinuousModeBackupPolicyResponseOutput() ContinuousModeBackupPolicyResponseOutput {
+	return o
+}
+
+func (o ContinuousModeBackupPolicyResponseOutput) ToContinuousModeBackupPolicyResponseOutputWithContext(ctx context.Context) ContinuousModeBackupPolicyResponseOutput {
+	return o
+}
+
+// Configuration values for continuous mode backup
+func (o ContinuousModeBackupPolicyResponseOutput) ContinuousModeProperties() ContinuousModePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v ContinuousModeBackupPolicyResponse) *ContinuousModePropertiesResponse {
+		return v.ContinuousModeProperties
+	}).(ContinuousModePropertiesResponsePtrOutput)
+}
+
+// The object representing the state of the migration between the backup policies.
+func (o ContinuousModeBackupPolicyResponseOutput) MigrationState() BackupPolicyMigrationStateResponsePtrOutput {
+	return o.ApplyT(func(v ContinuousModeBackupPolicyResponse) *BackupPolicyMigrationStateResponse {
+		return v.MigrationState
+	}).(BackupPolicyMigrationStateResponsePtrOutput)
+}
+
+// Describes the mode of backups.
+// Expected value is 'Continuous'.
+func (o ContinuousModeBackupPolicyResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ContinuousModeBackupPolicyResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ContinuousModeBackupPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ContinuousModeBackupPolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContinuousModeBackupPolicyResponse)(nil)).Elem()
+}
+
+func (o ContinuousModeBackupPolicyResponsePtrOutput) ToContinuousModeBackupPolicyResponsePtrOutput() ContinuousModeBackupPolicyResponsePtrOutput {
+	return o
+}
+
+func (o ContinuousModeBackupPolicyResponsePtrOutput) ToContinuousModeBackupPolicyResponsePtrOutputWithContext(ctx context.Context) ContinuousModeBackupPolicyResponsePtrOutput {
+	return o
+}
+
+func (o ContinuousModeBackupPolicyResponsePtrOutput) Elem() ContinuousModeBackupPolicyResponseOutput {
+	return o.ApplyT(func(v *ContinuousModeBackupPolicyResponse) ContinuousModeBackupPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ContinuousModeBackupPolicyResponse
+		return ret
+	}).(ContinuousModeBackupPolicyResponseOutput)
+}
+
+// Configuration values for continuous mode backup
+func (o ContinuousModeBackupPolicyResponsePtrOutput) ContinuousModeProperties() ContinuousModePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *ContinuousModeBackupPolicyResponse) *ContinuousModePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ContinuousModeProperties
+	}).(ContinuousModePropertiesResponsePtrOutput)
+}
+
+// The object representing the state of the migration between the backup policies.
+func (o ContinuousModeBackupPolicyResponsePtrOutput) MigrationState() BackupPolicyMigrationStateResponsePtrOutput {
+	return o.ApplyT(func(v *ContinuousModeBackupPolicyResponse) *BackupPolicyMigrationStateResponse {
+		if v == nil {
+			return nil
+		}
+		return v.MigrationState
+	}).(BackupPolicyMigrationStateResponsePtrOutput)
+}
+
+// Describes the mode of backups.
+// Expected value is 'Continuous'.
+func (o ContinuousModeBackupPolicyResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContinuousModeBackupPolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // Configuration values for periodic mode backup
 type ContinuousModeProperties struct {
 	// Enum to indicate type of Continuos backup mode
 	Tier *string `pulumi:"tier"`
 }
 
+// ContinuousModePropertiesInput is an input type that accepts ContinuousModePropertiesArgs and ContinuousModePropertiesOutput values.
+// You can construct a concrete instance of `ContinuousModePropertiesInput` via:
+//
+//	ContinuousModePropertiesArgs{...}
+type ContinuousModePropertiesInput interface {
+	pulumi.Input
+
+	ToContinuousModePropertiesOutput() ContinuousModePropertiesOutput
+	ToContinuousModePropertiesOutputWithContext(context.Context) ContinuousModePropertiesOutput
+}
+
+// Configuration values for periodic mode backup
+type ContinuousModePropertiesArgs struct {
+	// Enum to indicate type of Continuos backup mode
+	Tier pulumi.StringPtrInput `pulumi:"tier"`
+}
+
+func (ContinuousModePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContinuousModeProperties)(nil)).Elem()
+}
+
+func (i ContinuousModePropertiesArgs) ToContinuousModePropertiesOutput() ContinuousModePropertiesOutput {
+	return i.ToContinuousModePropertiesOutputWithContext(context.Background())
+}
+
+func (i ContinuousModePropertiesArgs) ToContinuousModePropertiesOutputWithContext(ctx context.Context) ContinuousModePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContinuousModePropertiesOutput)
+}
+
+func (i ContinuousModePropertiesArgs) ToContinuousModePropertiesPtrOutput() ContinuousModePropertiesPtrOutput {
+	return i.ToContinuousModePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ContinuousModePropertiesArgs) ToContinuousModePropertiesPtrOutputWithContext(ctx context.Context) ContinuousModePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContinuousModePropertiesOutput).ToContinuousModePropertiesPtrOutputWithContext(ctx)
+}
+
+// ContinuousModePropertiesPtrInput is an input type that accepts ContinuousModePropertiesArgs, ContinuousModePropertiesPtr and ContinuousModePropertiesPtrOutput values.
+// You can construct a concrete instance of `ContinuousModePropertiesPtrInput` via:
+//
+//	        ContinuousModePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ContinuousModePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToContinuousModePropertiesPtrOutput() ContinuousModePropertiesPtrOutput
+	ToContinuousModePropertiesPtrOutputWithContext(context.Context) ContinuousModePropertiesPtrOutput
+}
+
+type continuousModePropertiesPtrType ContinuousModePropertiesArgs
+
+func ContinuousModePropertiesPtr(v *ContinuousModePropertiesArgs) ContinuousModePropertiesPtrInput {
+	return (*continuousModePropertiesPtrType)(v)
+}
+
+func (*continuousModePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContinuousModeProperties)(nil)).Elem()
+}
+
+func (i *continuousModePropertiesPtrType) ToContinuousModePropertiesPtrOutput() ContinuousModePropertiesPtrOutput {
+	return i.ToContinuousModePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *continuousModePropertiesPtrType) ToContinuousModePropertiesPtrOutputWithContext(ctx context.Context) ContinuousModePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContinuousModePropertiesPtrOutput)
+}
+
+// Configuration values for periodic mode backup
+type ContinuousModePropertiesOutput struct{ *pulumi.OutputState }
+
+func (ContinuousModePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContinuousModeProperties)(nil)).Elem()
+}
+
+func (o ContinuousModePropertiesOutput) ToContinuousModePropertiesOutput() ContinuousModePropertiesOutput {
+	return o
+}
+
+func (o ContinuousModePropertiesOutput) ToContinuousModePropertiesOutputWithContext(ctx context.Context) ContinuousModePropertiesOutput {
+	return o
+}
+
+func (o ContinuousModePropertiesOutput) ToContinuousModePropertiesPtrOutput() ContinuousModePropertiesPtrOutput {
+	return o.ToContinuousModePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ContinuousModePropertiesOutput) ToContinuousModePropertiesPtrOutputWithContext(ctx context.Context) ContinuousModePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContinuousModeProperties) *ContinuousModeProperties {
+		return &v
+	}).(ContinuousModePropertiesPtrOutput)
+}
+
+// Enum to indicate type of Continuos backup mode
+func (o ContinuousModePropertiesOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContinuousModeProperties) *string { return v.Tier }).(pulumi.StringPtrOutput)
+}
+
+type ContinuousModePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ContinuousModePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContinuousModeProperties)(nil)).Elem()
+}
+
+func (o ContinuousModePropertiesPtrOutput) ToContinuousModePropertiesPtrOutput() ContinuousModePropertiesPtrOutput {
+	return o
+}
+
+func (o ContinuousModePropertiesPtrOutput) ToContinuousModePropertiesPtrOutputWithContext(ctx context.Context) ContinuousModePropertiesPtrOutput {
+	return o
+}
+
+func (o ContinuousModePropertiesPtrOutput) Elem() ContinuousModePropertiesOutput {
+	return o.ApplyT(func(v *ContinuousModeProperties) ContinuousModeProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ContinuousModeProperties
+		return ret
+	}).(ContinuousModePropertiesOutput)
+}
+
+// Enum to indicate type of Continuos backup mode
+func (o ContinuousModePropertiesPtrOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContinuousModeProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tier
+	}).(pulumi.StringPtrOutput)
+}
+
 // Configuration values for periodic mode backup
 type ContinuousModePropertiesResponse struct {
 	// Enum to indicate type of Continuos backup mode
 	Tier *string `pulumi:"tier"`
+}
+
+// Configuration values for periodic mode backup
+type ContinuousModePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ContinuousModePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContinuousModePropertiesResponse)(nil)).Elem()
+}
+
+func (o ContinuousModePropertiesResponseOutput) ToContinuousModePropertiesResponseOutput() ContinuousModePropertiesResponseOutput {
+	return o
+}
+
+func (o ContinuousModePropertiesResponseOutput) ToContinuousModePropertiesResponseOutputWithContext(ctx context.Context) ContinuousModePropertiesResponseOutput {
+	return o
+}
+
+// Enum to indicate type of Continuos backup mode
+func (o ContinuousModePropertiesResponseOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContinuousModePropertiesResponse) *string { return v.Tier }).(pulumi.StringPtrOutput)
+}
+
+type ContinuousModePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ContinuousModePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContinuousModePropertiesResponse)(nil)).Elem()
+}
+
+func (o ContinuousModePropertiesResponsePtrOutput) ToContinuousModePropertiesResponsePtrOutput() ContinuousModePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ContinuousModePropertiesResponsePtrOutput) ToContinuousModePropertiesResponsePtrOutputWithContext(ctx context.Context) ContinuousModePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ContinuousModePropertiesResponsePtrOutput) Elem() ContinuousModePropertiesResponseOutput {
+	return o.ApplyT(func(v *ContinuousModePropertiesResponse) ContinuousModePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ContinuousModePropertiesResponse
+		return ret
+	}).(ContinuousModePropertiesResponseOutput)
+}
+
+// Enum to indicate type of Continuos backup mode
+func (o ContinuousModePropertiesResponsePtrOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContinuousModePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tier
+	}).(pulumi.StringPtrOutput)
 }
 
 // The CORS policy for the Cosmos DB database account.
@@ -9708,6 +10409,177 @@ type PeriodicModeBackupPolicy struct {
 	Type string `pulumi:"type"`
 }
 
+// PeriodicModeBackupPolicyInput is an input type that accepts PeriodicModeBackupPolicyArgs and PeriodicModeBackupPolicyOutput values.
+// You can construct a concrete instance of `PeriodicModeBackupPolicyInput` via:
+//
+//	PeriodicModeBackupPolicyArgs{...}
+type PeriodicModeBackupPolicyInput interface {
+	pulumi.Input
+
+	ToPeriodicModeBackupPolicyOutput() PeriodicModeBackupPolicyOutput
+	ToPeriodicModeBackupPolicyOutputWithContext(context.Context) PeriodicModeBackupPolicyOutput
+}
+
+// The object representing periodic mode backup policy.
+type PeriodicModeBackupPolicyArgs struct {
+	// The object representing the state of the migration between the backup policies.
+	MigrationState BackupPolicyMigrationStatePtrInput `pulumi:"migrationState"`
+	// Configuration values for periodic mode backup
+	PeriodicModeProperties PeriodicModePropertiesPtrInput `pulumi:"periodicModeProperties"`
+	// Describes the mode of backups.
+	// Expected value is 'Periodic'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (PeriodicModeBackupPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PeriodicModeBackupPolicy)(nil)).Elem()
+}
+
+func (i PeriodicModeBackupPolicyArgs) ToPeriodicModeBackupPolicyOutput() PeriodicModeBackupPolicyOutput {
+	return i.ToPeriodicModeBackupPolicyOutputWithContext(context.Background())
+}
+
+func (i PeriodicModeBackupPolicyArgs) ToPeriodicModeBackupPolicyOutputWithContext(ctx context.Context) PeriodicModeBackupPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PeriodicModeBackupPolicyOutput)
+}
+
+func (i PeriodicModeBackupPolicyArgs) ToPeriodicModeBackupPolicyPtrOutput() PeriodicModeBackupPolicyPtrOutput {
+	return i.ToPeriodicModeBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i PeriodicModeBackupPolicyArgs) ToPeriodicModeBackupPolicyPtrOutputWithContext(ctx context.Context) PeriodicModeBackupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PeriodicModeBackupPolicyOutput).ToPeriodicModeBackupPolicyPtrOutputWithContext(ctx)
+}
+
+// PeriodicModeBackupPolicyPtrInput is an input type that accepts PeriodicModeBackupPolicyArgs, PeriodicModeBackupPolicyPtr and PeriodicModeBackupPolicyPtrOutput values.
+// You can construct a concrete instance of `PeriodicModeBackupPolicyPtrInput` via:
+//
+//	        PeriodicModeBackupPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type PeriodicModeBackupPolicyPtrInput interface {
+	pulumi.Input
+
+	ToPeriodicModeBackupPolicyPtrOutput() PeriodicModeBackupPolicyPtrOutput
+	ToPeriodicModeBackupPolicyPtrOutputWithContext(context.Context) PeriodicModeBackupPolicyPtrOutput
+}
+
+type periodicModeBackupPolicyPtrType PeriodicModeBackupPolicyArgs
+
+func PeriodicModeBackupPolicyPtr(v *PeriodicModeBackupPolicyArgs) PeriodicModeBackupPolicyPtrInput {
+	return (*periodicModeBackupPolicyPtrType)(v)
+}
+
+func (*periodicModeBackupPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PeriodicModeBackupPolicy)(nil)).Elem()
+}
+
+func (i *periodicModeBackupPolicyPtrType) ToPeriodicModeBackupPolicyPtrOutput() PeriodicModeBackupPolicyPtrOutput {
+	return i.ToPeriodicModeBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *periodicModeBackupPolicyPtrType) ToPeriodicModeBackupPolicyPtrOutputWithContext(ctx context.Context) PeriodicModeBackupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PeriodicModeBackupPolicyPtrOutput)
+}
+
+// The object representing periodic mode backup policy.
+type PeriodicModeBackupPolicyOutput struct{ *pulumi.OutputState }
+
+func (PeriodicModeBackupPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PeriodicModeBackupPolicy)(nil)).Elem()
+}
+
+func (o PeriodicModeBackupPolicyOutput) ToPeriodicModeBackupPolicyOutput() PeriodicModeBackupPolicyOutput {
+	return o
+}
+
+func (o PeriodicModeBackupPolicyOutput) ToPeriodicModeBackupPolicyOutputWithContext(ctx context.Context) PeriodicModeBackupPolicyOutput {
+	return o
+}
+
+func (o PeriodicModeBackupPolicyOutput) ToPeriodicModeBackupPolicyPtrOutput() PeriodicModeBackupPolicyPtrOutput {
+	return o.ToPeriodicModeBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o PeriodicModeBackupPolicyOutput) ToPeriodicModeBackupPolicyPtrOutputWithContext(ctx context.Context) PeriodicModeBackupPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PeriodicModeBackupPolicy) *PeriodicModeBackupPolicy {
+		return &v
+	}).(PeriodicModeBackupPolicyPtrOutput)
+}
+
+// The object representing the state of the migration between the backup policies.
+func (o PeriodicModeBackupPolicyOutput) MigrationState() BackupPolicyMigrationStatePtrOutput {
+	return o.ApplyT(func(v PeriodicModeBackupPolicy) *BackupPolicyMigrationState { return v.MigrationState }).(BackupPolicyMigrationStatePtrOutput)
+}
+
+// Configuration values for periodic mode backup
+func (o PeriodicModeBackupPolicyOutput) PeriodicModeProperties() PeriodicModePropertiesPtrOutput {
+	return o.ApplyT(func(v PeriodicModeBackupPolicy) *PeriodicModeProperties { return v.PeriodicModeProperties }).(PeriodicModePropertiesPtrOutput)
+}
+
+// Describes the mode of backups.
+// Expected value is 'Periodic'.
+func (o PeriodicModeBackupPolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PeriodicModeBackupPolicy) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PeriodicModeBackupPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (PeriodicModeBackupPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PeriodicModeBackupPolicy)(nil)).Elem()
+}
+
+func (o PeriodicModeBackupPolicyPtrOutput) ToPeriodicModeBackupPolicyPtrOutput() PeriodicModeBackupPolicyPtrOutput {
+	return o
+}
+
+func (o PeriodicModeBackupPolicyPtrOutput) ToPeriodicModeBackupPolicyPtrOutputWithContext(ctx context.Context) PeriodicModeBackupPolicyPtrOutput {
+	return o
+}
+
+func (o PeriodicModeBackupPolicyPtrOutput) Elem() PeriodicModeBackupPolicyOutput {
+	return o.ApplyT(func(v *PeriodicModeBackupPolicy) PeriodicModeBackupPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret PeriodicModeBackupPolicy
+		return ret
+	}).(PeriodicModeBackupPolicyOutput)
+}
+
+// The object representing the state of the migration between the backup policies.
+func (o PeriodicModeBackupPolicyPtrOutput) MigrationState() BackupPolicyMigrationStatePtrOutput {
+	return o.ApplyT(func(v *PeriodicModeBackupPolicy) *BackupPolicyMigrationState {
+		if v == nil {
+			return nil
+		}
+		return v.MigrationState
+	}).(BackupPolicyMigrationStatePtrOutput)
+}
+
+// Configuration values for periodic mode backup
+func (o PeriodicModeBackupPolicyPtrOutput) PeriodicModeProperties() PeriodicModePropertiesPtrOutput {
+	return o.ApplyT(func(v *PeriodicModeBackupPolicy) *PeriodicModeProperties {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodicModeProperties
+	}).(PeriodicModePropertiesPtrOutput)
+}
+
+// Describes the mode of backups.
+// Expected value is 'Periodic'.
+func (o PeriodicModeBackupPolicyPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PeriodicModeBackupPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // The object representing periodic mode backup policy.
 type PeriodicModeBackupPolicyResponse struct {
 	// The object representing the state of the migration between the backup policies.
@@ -9717,6 +10589,94 @@ type PeriodicModeBackupPolicyResponse struct {
 	// Describes the mode of backups.
 	// Expected value is 'Periodic'.
 	Type string `pulumi:"type"`
+}
+
+// The object representing periodic mode backup policy.
+type PeriodicModeBackupPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (PeriodicModeBackupPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PeriodicModeBackupPolicyResponse)(nil)).Elem()
+}
+
+func (o PeriodicModeBackupPolicyResponseOutput) ToPeriodicModeBackupPolicyResponseOutput() PeriodicModeBackupPolicyResponseOutput {
+	return o
+}
+
+func (o PeriodicModeBackupPolicyResponseOutput) ToPeriodicModeBackupPolicyResponseOutputWithContext(ctx context.Context) PeriodicModeBackupPolicyResponseOutput {
+	return o
+}
+
+// The object representing the state of the migration between the backup policies.
+func (o PeriodicModeBackupPolicyResponseOutput) MigrationState() BackupPolicyMigrationStateResponsePtrOutput {
+	return o.ApplyT(func(v PeriodicModeBackupPolicyResponse) *BackupPolicyMigrationStateResponse { return v.MigrationState }).(BackupPolicyMigrationStateResponsePtrOutput)
+}
+
+// Configuration values for periodic mode backup
+func (o PeriodicModeBackupPolicyResponseOutput) PeriodicModeProperties() PeriodicModePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v PeriodicModeBackupPolicyResponse) *PeriodicModePropertiesResponse {
+		return v.PeriodicModeProperties
+	}).(PeriodicModePropertiesResponsePtrOutput)
+}
+
+// Describes the mode of backups.
+// Expected value is 'Periodic'.
+func (o PeriodicModeBackupPolicyResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PeriodicModeBackupPolicyResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PeriodicModeBackupPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PeriodicModeBackupPolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PeriodicModeBackupPolicyResponse)(nil)).Elem()
+}
+
+func (o PeriodicModeBackupPolicyResponsePtrOutput) ToPeriodicModeBackupPolicyResponsePtrOutput() PeriodicModeBackupPolicyResponsePtrOutput {
+	return o
+}
+
+func (o PeriodicModeBackupPolicyResponsePtrOutput) ToPeriodicModeBackupPolicyResponsePtrOutputWithContext(ctx context.Context) PeriodicModeBackupPolicyResponsePtrOutput {
+	return o
+}
+
+func (o PeriodicModeBackupPolicyResponsePtrOutput) Elem() PeriodicModeBackupPolicyResponseOutput {
+	return o.ApplyT(func(v *PeriodicModeBackupPolicyResponse) PeriodicModeBackupPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PeriodicModeBackupPolicyResponse
+		return ret
+	}).(PeriodicModeBackupPolicyResponseOutput)
+}
+
+// The object representing the state of the migration between the backup policies.
+func (o PeriodicModeBackupPolicyResponsePtrOutput) MigrationState() BackupPolicyMigrationStateResponsePtrOutput {
+	return o.ApplyT(func(v *PeriodicModeBackupPolicyResponse) *BackupPolicyMigrationStateResponse {
+		if v == nil {
+			return nil
+		}
+		return v.MigrationState
+	}).(BackupPolicyMigrationStateResponsePtrOutput)
+}
+
+// Configuration values for periodic mode backup
+func (o PeriodicModeBackupPolicyResponsePtrOutput) PeriodicModeProperties() PeriodicModePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *PeriodicModeBackupPolicyResponse) *PeriodicModePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PeriodicModeProperties
+	}).(PeriodicModePropertiesResponsePtrOutput)
+}
+
+// Describes the mode of backups.
+// Expected value is 'Periodic'.
+func (o PeriodicModeBackupPolicyResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PeriodicModeBackupPolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // Configuration values for periodic mode backup
@@ -9729,6 +10689,174 @@ type PeriodicModeProperties struct {
 	BackupStorageRedundancy *string `pulumi:"backupStorageRedundancy"`
 }
 
+// PeriodicModePropertiesInput is an input type that accepts PeriodicModePropertiesArgs and PeriodicModePropertiesOutput values.
+// You can construct a concrete instance of `PeriodicModePropertiesInput` via:
+//
+//	PeriodicModePropertiesArgs{...}
+type PeriodicModePropertiesInput interface {
+	pulumi.Input
+
+	ToPeriodicModePropertiesOutput() PeriodicModePropertiesOutput
+	ToPeriodicModePropertiesOutputWithContext(context.Context) PeriodicModePropertiesOutput
+}
+
+// Configuration values for periodic mode backup
+type PeriodicModePropertiesArgs struct {
+	// An integer representing the interval in minutes between two backups
+	BackupIntervalInMinutes pulumi.IntPtrInput `pulumi:"backupIntervalInMinutes"`
+	// An integer representing the time (in hours) that each backup is retained
+	BackupRetentionIntervalInHours pulumi.IntPtrInput `pulumi:"backupRetentionIntervalInHours"`
+	// Enum to indicate type of backup residency
+	BackupStorageRedundancy pulumi.StringPtrInput `pulumi:"backupStorageRedundancy"`
+}
+
+func (PeriodicModePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PeriodicModeProperties)(nil)).Elem()
+}
+
+func (i PeriodicModePropertiesArgs) ToPeriodicModePropertiesOutput() PeriodicModePropertiesOutput {
+	return i.ToPeriodicModePropertiesOutputWithContext(context.Background())
+}
+
+func (i PeriodicModePropertiesArgs) ToPeriodicModePropertiesOutputWithContext(ctx context.Context) PeriodicModePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PeriodicModePropertiesOutput)
+}
+
+func (i PeriodicModePropertiesArgs) ToPeriodicModePropertiesPtrOutput() PeriodicModePropertiesPtrOutput {
+	return i.ToPeriodicModePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i PeriodicModePropertiesArgs) ToPeriodicModePropertiesPtrOutputWithContext(ctx context.Context) PeriodicModePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PeriodicModePropertiesOutput).ToPeriodicModePropertiesPtrOutputWithContext(ctx)
+}
+
+// PeriodicModePropertiesPtrInput is an input type that accepts PeriodicModePropertiesArgs, PeriodicModePropertiesPtr and PeriodicModePropertiesPtrOutput values.
+// You can construct a concrete instance of `PeriodicModePropertiesPtrInput` via:
+//
+//	        PeriodicModePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type PeriodicModePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToPeriodicModePropertiesPtrOutput() PeriodicModePropertiesPtrOutput
+	ToPeriodicModePropertiesPtrOutputWithContext(context.Context) PeriodicModePropertiesPtrOutput
+}
+
+type periodicModePropertiesPtrType PeriodicModePropertiesArgs
+
+func PeriodicModePropertiesPtr(v *PeriodicModePropertiesArgs) PeriodicModePropertiesPtrInput {
+	return (*periodicModePropertiesPtrType)(v)
+}
+
+func (*periodicModePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PeriodicModeProperties)(nil)).Elem()
+}
+
+func (i *periodicModePropertiesPtrType) ToPeriodicModePropertiesPtrOutput() PeriodicModePropertiesPtrOutput {
+	return i.ToPeriodicModePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *periodicModePropertiesPtrType) ToPeriodicModePropertiesPtrOutputWithContext(ctx context.Context) PeriodicModePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PeriodicModePropertiesPtrOutput)
+}
+
+// Configuration values for periodic mode backup
+type PeriodicModePropertiesOutput struct{ *pulumi.OutputState }
+
+func (PeriodicModePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PeriodicModeProperties)(nil)).Elem()
+}
+
+func (o PeriodicModePropertiesOutput) ToPeriodicModePropertiesOutput() PeriodicModePropertiesOutput {
+	return o
+}
+
+func (o PeriodicModePropertiesOutput) ToPeriodicModePropertiesOutputWithContext(ctx context.Context) PeriodicModePropertiesOutput {
+	return o
+}
+
+func (o PeriodicModePropertiesOutput) ToPeriodicModePropertiesPtrOutput() PeriodicModePropertiesPtrOutput {
+	return o.ToPeriodicModePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o PeriodicModePropertiesOutput) ToPeriodicModePropertiesPtrOutputWithContext(ctx context.Context) PeriodicModePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PeriodicModeProperties) *PeriodicModeProperties {
+		return &v
+	}).(PeriodicModePropertiesPtrOutput)
+}
+
+// An integer representing the interval in minutes between two backups
+func (o PeriodicModePropertiesOutput) BackupIntervalInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PeriodicModeProperties) *int { return v.BackupIntervalInMinutes }).(pulumi.IntPtrOutput)
+}
+
+// An integer representing the time (in hours) that each backup is retained
+func (o PeriodicModePropertiesOutput) BackupRetentionIntervalInHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PeriodicModeProperties) *int { return v.BackupRetentionIntervalInHours }).(pulumi.IntPtrOutput)
+}
+
+// Enum to indicate type of backup residency
+func (o PeriodicModePropertiesOutput) BackupStorageRedundancy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PeriodicModeProperties) *string { return v.BackupStorageRedundancy }).(pulumi.StringPtrOutput)
+}
+
+type PeriodicModePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (PeriodicModePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PeriodicModeProperties)(nil)).Elem()
+}
+
+func (o PeriodicModePropertiesPtrOutput) ToPeriodicModePropertiesPtrOutput() PeriodicModePropertiesPtrOutput {
+	return o
+}
+
+func (o PeriodicModePropertiesPtrOutput) ToPeriodicModePropertiesPtrOutputWithContext(ctx context.Context) PeriodicModePropertiesPtrOutput {
+	return o
+}
+
+func (o PeriodicModePropertiesPtrOutput) Elem() PeriodicModePropertiesOutput {
+	return o.ApplyT(func(v *PeriodicModeProperties) PeriodicModeProperties {
+		if v != nil {
+			return *v
+		}
+		var ret PeriodicModeProperties
+		return ret
+	}).(PeriodicModePropertiesOutput)
+}
+
+// An integer representing the interval in minutes between two backups
+func (o PeriodicModePropertiesPtrOutput) BackupIntervalInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PeriodicModeProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BackupIntervalInMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// An integer representing the time (in hours) that each backup is retained
+func (o PeriodicModePropertiesPtrOutput) BackupRetentionIntervalInHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PeriodicModeProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BackupRetentionIntervalInHours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enum to indicate type of backup residency
+func (o PeriodicModePropertiesPtrOutput) BackupStorageRedundancy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PeriodicModeProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BackupStorageRedundancy
+	}).(pulumi.StringPtrOutput)
+}
+
 // Configuration values for periodic mode backup
 type PeriodicModePropertiesResponse struct {
 	// An integer representing the interval in minutes between two backups
@@ -9737,6 +10865,90 @@ type PeriodicModePropertiesResponse struct {
 	BackupRetentionIntervalInHours *int `pulumi:"backupRetentionIntervalInHours"`
 	// Enum to indicate type of backup residency
 	BackupStorageRedundancy *string `pulumi:"backupStorageRedundancy"`
+}
+
+// Configuration values for periodic mode backup
+type PeriodicModePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (PeriodicModePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PeriodicModePropertiesResponse)(nil)).Elem()
+}
+
+func (o PeriodicModePropertiesResponseOutput) ToPeriodicModePropertiesResponseOutput() PeriodicModePropertiesResponseOutput {
+	return o
+}
+
+func (o PeriodicModePropertiesResponseOutput) ToPeriodicModePropertiesResponseOutputWithContext(ctx context.Context) PeriodicModePropertiesResponseOutput {
+	return o
+}
+
+// An integer representing the interval in minutes between two backups
+func (o PeriodicModePropertiesResponseOutput) BackupIntervalInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PeriodicModePropertiesResponse) *int { return v.BackupIntervalInMinutes }).(pulumi.IntPtrOutput)
+}
+
+// An integer representing the time (in hours) that each backup is retained
+func (o PeriodicModePropertiesResponseOutput) BackupRetentionIntervalInHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PeriodicModePropertiesResponse) *int { return v.BackupRetentionIntervalInHours }).(pulumi.IntPtrOutput)
+}
+
+// Enum to indicate type of backup residency
+func (o PeriodicModePropertiesResponseOutput) BackupStorageRedundancy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PeriodicModePropertiesResponse) *string { return v.BackupStorageRedundancy }).(pulumi.StringPtrOutput)
+}
+
+type PeriodicModePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PeriodicModePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PeriodicModePropertiesResponse)(nil)).Elem()
+}
+
+func (o PeriodicModePropertiesResponsePtrOutput) ToPeriodicModePropertiesResponsePtrOutput() PeriodicModePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o PeriodicModePropertiesResponsePtrOutput) ToPeriodicModePropertiesResponsePtrOutputWithContext(ctx context.Context) PeriodicModePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o PeriodicModePropertiesResponsePtrOutput) Elem() PeriodicModePropertiesResponseOutput {
+	return o.ApplyT(func(v *PeriodicModePropertiesResponse) PeriodicModePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PeriodicModePropertiesResponse
+		return ret
+	}).(PeriodicModePropertiesResponseOutput)
+}
+
+// An integer representing the interval in minutes between two backups
+func (o PeriodicModePropertiesResponsePtrOutput) BackupIntervalInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PeriodicModePropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BackupIntervalInMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// An integer representing the time (in hours) that each backup is retained
+func (o PeriodicModePropertiesResponsePtrOutput) BackupRetentionIntervalInHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PeriodicModePropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BackupRetentionIntervalInHours
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enum to indicate type of backup residency
+func (o PeriodicModePropertiesResponsePtrOutput) BackupStorageRedundancy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PeriodicModePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BackupStorageRedundancy
+	}).(pulumi.StringPtrOutput)
 }
 
 // A private endpoint connection
@@ -13234,6 +14446,10 @@ func init() {
 	pulumi.RegisterOutputType(AutoscaleSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AutoscaleSettingsResponseOutput{})
 	pulumi.RegisterOutputType(AutoscaleSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(BackupPolicyMigrationStateOutput{})
+	pulumi.RegisterOutputType(BackupPolicyMigrationStatePtrOutput{})
+	pulumi.RegisterOutputType(BackupPolicyMigrationStateResponseOutput{})
+	pulumi.RegisterOutputType(BackupPolicyMigrationStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(CapabilityOutput{})
 	pulumi.RegisterOutputType(CapabilityArrayOutput{})
 	pulumi.RegisterOutputType(CapabilityResponseOutput{})
@@ -13299,6 +14515,14 @@ func init() {
 	pulumi.RegisterOutputType(ContainerPartitionKeyPtrOutput{})
 	pulumi.RegisterOutputType(ContainerPartitionKeyResponseOutput{})
 	pulumi.RegisterOutputType(ContainerPartitionKeyResponsePtrOutput{})
+	pulumi.RegisterOutputType(ContinuousModeBackupPolicyOutput{})
+	pulumi.RegisterOutputType(ContinuousModeBackupPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ContinuousModeBackupPolicyResponseOutput{})
+	pulumi.RegisterOutputType(ContinuousModeBackupPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(ContinuousModePropertiesOutput{})
+	pulumi.RegisterOutputType(ContinuousModePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ContinuousModePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ContinuousModePropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(CorsPolicyOutput{})
 	pulumi.RegisterOutputType(CorsPolicyArrayOutput{})
 	pulumi.RegisterOutputType(CorsPolicyResponseOutput{})
@@ -13399,6 +14623,14 @@ func init() {
 	pulumi.RegisterOutputType(NodeGroupSpecArrayOutput{})
 	pulumi.RegisterOutputType(NodeGroupSpecResponseOutput{})
 	pulumi.RegisterOutputType(NodeGroupSpecResponseArrayOutput{})
+	pulumi.RegisterOutputType(PeriodicModeBackupPolicyOutput{})
+	pulumi.RegisterOutputType(PeriodicModeBackupPolicyPtrOutput{})
+	pulumi.RegisterOutputType(PeriodicModeBackupPolicyResponseOutput{})
+	pulumi.RegisterOutputType(PeriodicModeBackupPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(PeriodicModePropertiesOutput{})
+	pulumi.RegisterOutputType(PeriodicModePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(PeriodicModePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(PeriodicModePropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointPropertyResponseOutput{})

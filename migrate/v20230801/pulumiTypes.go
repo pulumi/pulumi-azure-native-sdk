@@ -93,6 +93,228 @@ type AvailabilitySetResourceSettings struct {
 	UpdateDomain *int `pulumi:"updateDomain"`
 }
 
+// AvailabilitySetResourceSettingsInput is an input type that accepts AvailabilitySetResourceSettingsArgs and AvailabilitySetResourceSettingsOutput values.
+// You can construct a concrete instance of `AvailabilitySetResourceSettingsInput` via:
+//
+//	AvailabilitySetResourceSettingsArgs{...}
+type AvailabilitySetResourceSettingsInput interface {
+	pulumi.Input
+
+	ToAvailabilitySetResourceSettingsOutput() AvailabilitySetResourceSettingsOutput
+	ToAvailabilitySetResourceSettingsOutputWithContext(context.Context) AvailabilitySetResourceSettingsOutput
+}
+
+// Gets or sets the availability set resource settings.
+type AvailabilitySetResourceSettingsArgs struct {
+	// Gets or sets the target fault domain.
+	FaultDomain pulumi.IntPtrInput `pulumi:"faultDomain"`
+	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+	// Expected value is 'Microsoft.Compute/availabilitySets'.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// Gets or sets the Resource tags.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Gets or sets the target resource group name.
+	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
+	// Gets or sets the target Resource name.
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
+	// Gets or sets the target update domain.
+	UpdateDomain pulumi.IntPtrInput `pulumi:"updateDomain"`
+}
+
+func (AvailabilitySetResourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailabilitySetResourceSettings)(nil)).Elem()
+}
+
+func (i AvailabilitySetResourceSettingsArgs) ToAvailabilitySetResourceSettingsOutput() AvailabilitySetResourceSettingsOutput {
+	return i.ToAvailabilitySetResourceSettingsOutputWithContext(context.Background())
+}
+
+func (i AvailabilitySetResourceSettingsArgs) ToAvailabilitySetResourceSettingsOutputWithContext(ctx context.Context) AvailabilitySetResourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvailabilitySetResourceSettingsOutput)
+}
+
+func (i AvailabilitySetResourceSettingsArgs) ToAvailabilitySetResourceSettingsPtrOutput() AvailabilitySetResourceSettingsPtrOutput {
+	return i.ToAvailabilitySetResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AvailabilitySetResourceSettingsArgs) ToAvailabilitySetResourceSettingsPtrOutputWithContext(ctx context.Context) AvailabilitySetResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvailabilitySetResourceSettingsOutput).ToAvailabilitySetResourceSettingsPtrOutputWithContext(ctx)
+}
+
+// AvailabilitySetResourceSettingsPtrInput is an input type that accepts AvailabilitySetResourceSettingsArgs, AvailabilitySetResourceSettingsPtr and AvailabilitySetResourceSettingsPtrOutput values.
+// You can construct a concrete instance of `AvailabilitySetResourceSettingsPtrInput` via:
+//
+//	        AvailabilitySetResourceSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AvailabilitySetResourceSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAvailabilitySetResourceSettingsPtrOutput() AvailabilitySetResourceSettingsPtrOutput
+	ToAvailabilitySetResourceSettingsPtrOutputWithContext(context.Context) AvailabilitySetResourceSettingsPtrOutput
+}
+
+type availabilitySetResourceSettingsPtrType AvailabilitySetResourceSettingsArgs
+
+func AvailabilitySetResourceSettingsPtr(v *AvailabilitySetResourceSettingsArgs) AvailabilitySetResourceSettingsPtrInput {
+	return (*availabilitySetResourceSettingsPtrType)(v)
+}
+
+func (*availabilitySetResourceSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvailabilitySetResourceSettings)(nil)).Elem()
+}
+
+func (i *availabilitySetResourceSettingsPtrType) ToAvailabilitySetResourceSettingsPtrOutput() AvailabilitySetResourceSettingsPtrOutput {
+	return i.ToAvailabilitySetResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *availabilitySetResourceSettingsPtrType) ToAvailabilitySetResourceSettingsPtrOutputWithContext(ctx context.Context) AvailabilitySetResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AvailabilitySetResourceSettingsPtrOutput)
+}
+
+// Gets or sets the availability set resource settings.
+type AvailabilitySetResourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (AvailabilitySetResourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailabilitySetResourceSettings)(nil)).Elem()
+}
+
+func (o AvailabilitySetResourceSettingsOutput) ToAvailabilitySetResourceSettingsOutput() AvailabilitySetResourceSettingsOutput {
+	return o
+}
+
+func (o AvailabilitySetResourceSettingsOutput) ToAvailabilitySetResourceSettingsOutputWithContext(ctx context.Context) AvailabilitySetResourceSettingsOutput {
+	return o
+}
+
+func (o AvailabilitySetResourceSettingsOutput) ToAvailabilitySetResourceSettingsPtrOutput() AvailabilitySetResourceSettingsPtrOutput {
+	return o.ToAvailabilitySetResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AvailabilitySetResourceSettingsOutput) ToAvailabilitySetResourceSettingsPtrOutputWithContext(ctx context.Context) AvailabilitySetResourceSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AvailabilitySetResourceSettings) *AvailabilitySetResourceSettings {
+		return &v
+	}).(AvailabilitySetResourceSettingsPtrOutput)
+}
+
+// Gets or sets the target fault domain.
+func (o AvailabilitySetResourceSettingsOutput) FaultDomain() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AvailabilitySetResourceSettings) *int { return v.FaultDomain }).(pulumi.IntPtrOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Compute/availabilitySets'.
+func (o AvailabilitySetResourceSettingsOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailabilitySetResourceSettings) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o AvailabilitySetResourceSettingsOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AvailabilitySetResourceSettings) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o AvailabilitySetResourceSettingsOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilitySetResourceSettings) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o AvailabilitySetResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilitySetResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target update domain.
+func (o AvailabilitySetResourceSettingsOutput) UpdateDomain() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AvailabilitySetResourceSettings) *int { return v.UpdateDomain }).(pulumi.IntPtrOutput)
+}
+
+type AvailabilitySetResourceSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AvailabilitySetResourceSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvailabilitySetResourceSettings)(nil)).Elem()
+}
+
+func (o AvailabilitySetResourceSettingsPtrOutput) ToAvailabilitySetResourceSettingsPtrOutput() AvailabilitySetResourceSettingsPtrOutput {
+	return o
+}
+
+func (o AvailabilitySetResourceSettingsPtrOutput) ToAvailabilitySetResourceSettingsPtrOutputWithContext(ctx context.Context) AvailabilitySetResourceSettingsPtrOutput {
+	return o
+}
+
+func (o AvailabilitySetResourceSettingsPtrOutput) Elem() AvailabilitySetResourceSettingsOutput {
+	return o.ApplyT(func(v *AvailabilitySetResourceSettings) AvailabilitySetResourceSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AvailabilitySetResourceSettings
+		return ret
+	}).(AvailabilitySetResourceSettingsOutput)
+}
+
+// Gets or sets the target fault domain.
+func (o AvailabilitySetResourceSettingsPtrOutput) FaultDomain() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AvailabilitySetResourceSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FaultDomain
+	}).(pulumi.IntPtrOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Compute/availabilitySets'.
+func (o AvailabilitySetResourceSettingsPtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilitySetResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o AvailabilitySetResourceSettingsPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AvailabilitySetResourceSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o AvailabilitySetResourceSettingsPtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilitySetResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o AvailabilitySetResourceSettingsPtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilitySetResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target update domain.
+func (o AvailabilitySetResourceSettingsPtrOutput) UpdateDomain() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AvailabilitySetResourceSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateDomain
+	}).(pulumi.IntPtrOutput)
+}
+
 // Gets or sets the availability set resource settings.
 type AvailabilitySetResourceSettingsResponse struct {
 	// Gets or sets the target fault domain.
@@ -110,6 +332,137 @@ type AvailabilitySetResourceSettingsResponse struct {
 	UpdateDomain *int `pulumi:"updateDomain"`
 }
 
+// Gets or sets the availability set resource settings.
+type AvailabilitySetResourceSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (AvailabilitySetResourceSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AvailabilitySetResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o AvailabilitySetResourceSettingsResponseOutput) ToAvailabilitySetResourceSettingsResponseOutput() AvailabilitySetResourceSettingsResponseOutput {
+	return o
+}
+
+func (o AvailabilitySetResourceSettingsResponseOutput) ToAvailabilitySetResourceSettingsResponseOutputWithContext(ctx context.Context) AvailabilitySetResourceSettingsResponseOutput {
+	return o
+}
+
+// Gets or sets the target fault domain.
+func (o AvailabilitySetResourceSettingsResponseOutput) FaultDomain() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AvailabilitySetResourceSettingsResponse) *int { return v.FaultDomain }).(pulumi.IntPtrOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Compute/availabilitySets'.
+func (o AvailabilitySetResourceSettingsResponseOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v AvailabilitySetResourceSettingsResponse) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o AvailabilitySetResourceSettingsResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AvailabilitySetResourceSettingsResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o AvailabilitySetResourceSettingsResponseOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilitySetResourceSettingsResponse) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o AvailabilitySetResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AvailabilitySetResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target update domain.
+func (o AvailabilitySetResourceSettingsResponseOutput) UpdateDomain() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AvailabilitySetResourceSettingsResponse) *int { return v.UpdateDomain }).(pulumi.IntPtrOutput)
+}
+
+type AvailabilitySetResourceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AvailabilitySetResourceSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AvailabilitySetResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o AvailabilitySetResourceSettingsResponsePtrOutput) ToAvailabilitySetResourceSettingsResponsePtrOutput() AvailabilitySetResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AvailabilitySetResourceSettingsResponsePtrOutput) ToAvailabilitySetResourceSettingsResponsePtrOutputWithContext(ctx context.Context) AvailabilitySetResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AvailabilitySetResourceSettingsResponsePtrOutput) Elem() AvailabilitySetResourceSettingsResponseOutput {
+	return o.ApplyT(func(v *AvailabilitySetResourceSettingsResponse) AvailabilitySetResourceSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AvailabilitySetResourceSettingsResponse
+		return ret
+	}).(AvailabilitySetResourceSettingsResponseOutput)
+}
+
+// Gets or sets the target fault domain.
+func (o AvailabilitySetResourceSettingsResponsePtrOutput) FaultDomain() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AvailabilitySetResourceSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FaultDomain
+	}).(pulumi.IntPtrOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Compute/availabilitySets'.
+func (o AvailabilitySetResourceSettingsResponsePtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilitySetResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o AvailabilitySetResourceSettingsResponsePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AvailabilitySetResourceSettingsResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o AvailabilitySetResourceSettingsResponsePtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilitySetResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o AvailabilitySetResourceSettingsResponsePtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AvailabilitySetResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target update domain.
+func (o AvailabilitySetResourceSettingsResponsePtrOutput) UpdateDomain() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AvailabilitySetResourceSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateDomain
+	}).(pulumi.IntPtrOutput)
+}
+
 // Defines the disk encryption set resource settings.
 type DiskEncryptionSetResourceSettings struct {
 	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
@@ -121,6 +474,177 @@ type DiskEncryptionSetResourceSettings struct {
 	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
+// DiskEncryptionSetResourceSettingsInput is an input type that accepts DiskEncryptionSetResourceSettingsArgs and DiskEncryptionSetResourceSettingsOutput values.
+// You can construct a concrete instance of `DiskEncryptionSetResourceSettingsInput` via:
+//
+//	DiskEncryptionSetResourceSettingsArgs{...}
+type DiskEncryptionSetResourceSettingsInput interface {
+	pulumi.Input
+
+	ToDiskEncryptionSetResourceSettingsOutput() DiskEncryptionSetResourceSettingsOutput
+	ToDiskEncryptionSetResourceSettingsOutputWithContext(context.Context) DiskEncryptionSetResourceSettingsOutput
+}
+
+// Defines the disk encryption set resource settings.
+type DiskEncryptionSetResourceSettingsArgs struct {
+	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+	// Expected value is 'Microsoft.Compute/diskEncryptionSets'.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// Gets or sets the target resource group name.
+	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
+	// Gets or sets the target Resource name.
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
+}
+
+func (DiskEncryptionSetResourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskEncryptionSetResourceSettings)(nil)).Elem()
+}
+
+func (i DiskEncryptionSetResourceSettingsArgs) ToDiskEncryptionSetResourceSettingsOutput() DiskEncryptionSetResourceSettingsOutput {
+	return i.ToDiskEncryptionSetResourceSettingsOutputWithContext(context.Background())
+}
+
+func (i DiskEncryptionSetResourceSettingsArgs) ToDiskEncryptionSetResourceSettingsOutputWithContext(ctx context.Context) DiskEncryptionSetResourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskEncryptionSetResourceSettingsOutput)
+}
+
+func (i DiskEncryptionSetResourceSettingsArgs) ToDiskEncryptionSetResourceSettingsPtrOutput() DiskEncryptionSetResourceSettingsPtrOutput {
+	return i.ToDiskEncryptionSetResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i DiskEncryptionSetResourceSettingsArgs) ToDiskEncryptionSetResourceSettingsPtrOutputWithContext(ctx context.Context) DiskEncryptionSetResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskEncryptionSetResourceSettingsOutput).ToDiskEncryptionSetResourceSettingsPtrOutputWithContext(ctx)
+}
+
+// DiskEncryptionSetResourceSettingsPtrInput is an input type that accepts DiskEncryptionSetResourceSettingsArgs, DiskEncryptionSetResourceSettingsPtr and DiskEncryptionSetResourceSettingsPtrOutput values.
+// You can construct a concrete instance of `DiskEncryptionSetResourceSettingsPtrInput` via:
+//
+//	        DiskEncryptionSetResourceSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiskEncryptionSetResourceSettingsPtrInput interface {
+	pulumi.Input
+
+	ToDiskEncryptionSetResourceSettingsPtrOutput() DiskEncryptionSetResourceSettingsPtrOutput
+	ToDiskEncryptionSetResourceSettingsPtrOutputWithContext(context.Context) DiskEncryptionSetResourceSettingsPtrOutput
+}
+
+type diskEncryptionSetResourceSettingsPtrType DiskEncryptionSetResourceSettingsArgs
+
+func DiskEncryptionSetResourceSettingsPtr(v *DiskEncryptionSetResourceSettingsArgs) DiskEncryptionSetResourceSettingsPtrInput {
+	return (*diskEncryptionSetResourceSettingsPtrType)(v)
+}
+
+func (*diskEncryptionSetResourceSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskEncryptionSetResourceSettings)(nil)).Elem()
+}
+
+func (i *diskEncryptionSetResourceSettingsPtrType) ToDiskEncryptionSetResourceSettingsPtrOutput() DiskEncryptionSetResourceSettingsPtrOutput {
+	return i.ToDiskEncryptionSetResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *diskEncryptionSetResourceSettingsPtrType) ToDiskEncryptionSetResourceSettingsPtrOutputWithContext(ctx context.Context) DiskEncryptionSetResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskEncryptionSetResourceSettingsPtrOutput)
+}
+
+// Defines the disk encryption set resource settings.
+type DiskEncryptionSetResourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (DiskEncryptionSetResourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskEncryptionSetResourceSettings)(nil)).Elem()
+}
+
+func (o DiskEncryptionSetResourceSettingsOutput) ToDiskEncryptionSetResourceSettingsOutput() DiskEncryptionSetResourceSettingsOutput {
+	return o
+}
+
+func (o DiskEncryptionSetResourceSettingsOutput) ToDiskEncryptionSetResourceSettingsOutputWithContext(ctx context.Context) DiskEncryptionSetResourceSettingsOutput {
+	return o
+}
+
+func (o DiskEncryptionSetResourceSettingsOutput) ToDiskEncryptionSetResourceSettingsPtrOutput() DiskEncryptionSetResourceSettingsPtrOutput {
+	return o.ToDiskEncryptionSetResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o DiskEncryptionSetResourceSettingsOutput) ToDiskEncryptionSetResourceSettingsPtrOutputWithContext(ctx context.Context) DiskEncryptionSetResourceSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskEncryptionSetResourceSettings) *DiskEncryptionSetResourceSettings {
+		return &v
+	}).(DiskEncryptionSetResourceSettingsPtrOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Compute/diskEncryptionSets'.
+func (o DiskEncryptionSetResourceSettingsOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskEncryptionSetResourceSettings) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o DiskEncryptionSetResourceSettingsOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskEncryptionSetResourceSettings) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o DiskEncryptionSetResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskEncryptionSetResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+type DiskEncryptionSetResourceSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (DiskEncryptionSetResourceSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskEncryptionSetResourceSettings)(nil)).Elem()
+}
+
+func (o DiskEncryptionSetResourceSettingsPtrOutput) ToDiskEncryptionSetResourceSettingsPtrOutput() DiskEncryptionSetResourceSettingsPtrOutput {
+	return o
+}
+
+func (o DiskEncryptionSetResourceSettingsPtrOutput) ToDiskEncryptionSetResourceSettingsPtrOutputWithContext(ctx context.Context) DiskEncryptionSetResourceSettingsPtrOutput {
+	return o
+}
+
+func (o DiskEncryptionSetResourceSettingsPtrOutput) Elem() DiskEncryptionSetResourceSettingsOutput {
+	return o.ApplyT(func(v *DiskEncryptionSetResourceSettings) DiskEncryptionSetResourceSettings {
+		if v != nil {
+			return *v
+		}
+		var ret DiskEncryptionSetResourceSettings
+		return ret
+	}).(DiskEncryptionSetResourceSettingsOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Compute/diskEncryptionSets'.
+func (o DiskEncryptionSetResourceSettingsPtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskEncryptionSetResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o DiskEncryptionSetResourceSettingsPtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskEncryptionSetResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o DiskEncryptionSetResourceSettingsPtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskEncryptionSetResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines the disk encryption set resource settings.
 type DiskEncryptionSetResourceSettingsResponse struct {
 	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
@@ -130,6 +654,92 @@ type DiskEncryptionSetResourceSettingsResponse struct {
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
 	TargetResourceName *string `pulumi:"targetResourceName"`
+}
+
+// Defines the disk encryption set resource settings.
+type DiskEncryptionSetResourceSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskEncryptionSetResourceSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskEncryptionSetResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o DiskEncryptionSetResourceSettingsResponseOutput) ToDiskEncryptionSetResourceSettingsResponseOutput() DiskEncryptionSetResourceSettingsResponseOutput {
+	return o
+}
+
+func (o DiskEncryptionSetResourceSettingsResponseOutput) ToDiskEncryptionSetResourceSettingsResponseOutputWithContext(ctx context.Context) DiskEncryptionSetResourceSettingsResponseOutput {
+	return o
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Compute/diskEncryptionSets'.
+func (o DiskEncryptionSetResourceSettingsResponseOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskEncryptionSetResourceSettingsResponse) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o DiskEncryptionSetResourceSettingsResponseOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskEncryptionSetResourceSettingsResponse) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o DiskEncryptionSetResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskEncryptionSetResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+type DiskEncryptionSetResourceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DiskEncryptionSetResourceSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskEncryptionSetResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o DiskEncryptionSetResourceSettingsResponsePtrOutput) ToDiskEncryptionSetResourceSettingsResponsePtrOutput() DiskEncryptionSetResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o DiskEncryptionSetResourceSettingsResponsePtrOutput) ToDiskEncryptionSetResourceSettingsResponsePtrOutputWithContext(ctx context.Context) DiskEncryptionSetResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o DiskEncryptionSetResourceSettingsResponsePtrOutput) Elem() DiskEncryptionSetResourceSettingsResponseOutput {
+	return o.ApplyT(func(v *DiskEncryptionSetResourceSettingsResponse) DiskEncryptionSetResourceSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DiskEncryptionSetResourceSettingsResponse
+		return ret
+	}).(DiskEncryptionSetResourceSettingsResponseOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Compute/diskEncryptionSets'.
+func (o DiskEncryptionSetResourceSettingsResponsePtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskEncryptionSetResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o DiskEncryptionSetResourceSettingsResponsePtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskEncryptionSetResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o DiskEncryptionSetResourceSettingsResponsePtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskEncryptionSetResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
 }
 
 // Defines the MSI properties of the Move Collection.
@@ -492,6 +1102,177 @@ type KeyVaultResourceSettings struct {
 	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
+// KeyVaultResourceSettingsInput is an input type that accepts KeyVaultResourceSettingsArgs and KeyVaultResourceSettingsOutput values.
+// You can construct a concrete instance of `KeyVaultResourceSettingsInput` via:
+//
+//	KeyVaultResourceSettingsArgs{...}
+type KeyVaultResourceSettingsInput interface {
+	pulumi.Input
+
+	ToKeyVaultResourceSettingsOutput() KeyVaultResourceSettingsOutput
+	ToKeyVaultResourceSettingsOutputWithContext(context.Context) KeyVaultResourceSettingsOutput
+}
+
+// Defines the key vault resource settings.
+type KeyVaultResourceSettingsArgs struct {
+	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+	// Expected value is 'Microsoft.KeyVault/vaults'.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// Gets or sets the target resource group name.
+	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
+	// Gets or sets the target Resource name.
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
+}
+
+func (KeyVaultResourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultResourceSettings)(nil)).Elem()
+}
+
+func (i KeyVaultResourceSettingsArgs) ToKeyVaultResourceSettingsOutput() KeyVaultResourceSettingsOutput {
+	return i.ToKeyVaultResourceSettingsOutputWithContext(context.Background())
+}
+
+func (i KeyVaultResourceSettingsArgs) ToKeyVaultResourceSettingsOutputWithContext(ctx context.Context) KeyVaultResourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultResourceSettingsOutput)
+}
+
+func (i KeyVaultResourceSettingsArgs) ToKeyVaultResourceSettingsPtrOutput() KeyVaultResourceSettingsPtrOutput {
+	return i.ToKeyVaultResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i KeyVaultResourceSettingsArgs) ToKeyVaultResourceSettingsPtrOutputWithContext(ctx context.Context) KeyVaultResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultResourceSettingsOutput).ToKeyVaultResourceSettingsPtrOutputWithContext(ctx)
+}
+
+// KeyVaultResourceSettingsPtrInput is an input type that accepts KeyVaultResourceSettingsArgs, KeyVaultResourceSettingsPtr and KeyVaultResourceSettingsPtrOutput values.
+// You can construct a concrete instance of `KeyVaultResourceSettingsPtrInput` via:
+//
+//	        KeyVaultResourceSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type KeyVaultResourceSettingsPtrInput interface {
+	pulumi.Input
+
+	ToKeyVaultResourceSettingsPtrOutput() KeyVaultResourceSettingsPtrOutput
+	ToKeyVaultResourceSettingsPtrOutputWithContext(context.Context) KeyVaultResourceSettingsPtrOutput
+}
+
+type keyVaultResourceSettingsPtrType KeyVaultResourceSettingsArgs
+
+func KeyVaultResourceSettingsPtr(v *KeyVaultResourceSettingsArgs) KeyVaultResourceSettingsPtrInput {
+	return (*keyVaultResourceSettingsPtrType)(v)
+}
+
+func (*keyVaultResourceSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVaultResourceSettings)(nil)).Elem()
+}
+
+func (i *keyVaultResourceSettingsPtrType) ToKeyVaultResourceSettingsPtrOutput() KeyVaultResourceSettingsPtrOutput {
+	return i.ToKeyVaultResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *keyVaultResourceSettingsPtrType) ToKeyVaultResourceSettingsPtrOutputWithContext(ctx context.Context) KeyVaultResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyVaultResourceSettingsPtrOutput)
+}
+
+// Defines the key vault resource settings.
+type KeyVaultResourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultResourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultResourceSettings)(nil)).Elem()
+}
+
+func (o KeyVaultResourceSettingsOutput) ToKeyVaultResourceSettingsOutput() KeyVaultResourceSettingsOutput {
+	return o
+}
+
+func (o KeyVaultResourceSettingsOutput) ToKeyVaultResourceSettingsOutputWithContext(ctx context.Context) KeyVaultResourceSettingsOutput {
+	return o
+}
+
+func (o KeyVaultResourceSettingsOutput) ToKeyVaultResourceSettingsPtrOutput() KeyVaultResourceSettingsPtrOutput {
+	return o.ToKeyVaultResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o KeyVaultResourceSettingsOutput) ToKeyVaultResourceSettingsPtrOutputWithContext(ctx context.Context) KeyVaultResourceSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyVaultResourceSettings) *KeyVaultResourceSettings {
+		return &v
+	}).(KeyVaultResourceSettingsPtrOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.KeyVault/vaults'.
+func (o KeyVaultResourceSettingsOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultResourceSettings) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o KeyVaultResourceSettingsOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyVaultResourceSettings) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o KeyVaultResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyVaultResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+type KeyVaultResourceSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultResourceSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVaultResourceSettings)(nil)).Elem()
+}
+
+func (o KeyVaultResourceSettingsPtrOutput) ToKeyVaultResourceSettingsPtrOutput() KeyVaultResourceSettingsPtrOutput {
+	return o
+}
+
+func (o KeyVaultResourceSettingsPtrOutput) ToKeyVaultResourceSettingsPtrOutputWithContext(ctx context.Context) KeyVaultResourceSettingsPtrOutput {
+	return o
+}
+
+func (o KeyVaultResourceSettingsPtrOutput) Elem() KeyVaultResourceSettingsOutput {
+	return o.ApplyT(func(v *KeyVaultResourceSettings) KeyVaultResourceSettings {
+		if v != nil {
+			return *v
+		}
+		var ret KeyVaultResourceSettings
+		return ret
+	}).(KeyVaultResourceSettingsOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.KeyVault/vaults'.
+func (o KeyVaultResourceSettingsPtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o KeyVaultResourceSettingsPtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o KeyVaultResourceSettingsPtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines the key vault resource settings.
 type KeyVaultResourceSettingsResponse struct {
 	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
@@ -503,16 +1284,236 @@ type KeyVaultResourceSettingsResponse struct {
 	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
+// Defines the key vault resource settings.
+type KeyVaultResourceSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultResourceSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o KeyVaultResourceSettingsResponseOutput) ToKeyVaultResourceSettingsResponseOutput() KeyVaultResourceSettingsResponseOutput {
+	return o
+}
+
+func (o KeyVaultResourceSettingsResponseOutput) ToKeyVaultResourceSettingsResponseOutputWithContext(ctx context.Context) KeyVaultResourceSettingsResponseOutput {
+	return o
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.KeyVault/vaults'.
+func (o KeyVaultResourceSettingsResponseOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultResourceSettingsResponse) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o KeyVaultResourceSettingsResponseOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyVaultResourceSettingsResponse) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o KeyVaultResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyVaultResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+type KeyVaultResourceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultResourceSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVaultResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o KeyVaultResourceSettingsResponsePtrOutput) ToKeyVaultResourceSettingsResponsePtrOutput() KeyVaultResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o KeyVaultResourceSettingsResponsePtrOutput) ToKeyVaultResourceSettingsResponsePtrOutputWithContext(ctx context.Context) KeyVaultResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o KeyVaultResourceSettingsResponsePtrOutput) Elem() KeyVaultResourceSettingsResponseOutput {
+	return o.ApplyT(func(v *KeyVaultResourceSettingsResponse) KeyVaultResourceSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KeyVaultResourceSettingsResponse
+		return ret
+	}).(KeyVaultResourceSettingsResponseOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.KeyVault/vaults'.
+func (o KeyVaultResourceSettingsResponsePtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o KeyVaultResourceSettingsResponsePtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o KeyVaultResourceSettingsResponsePtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines load balancer backend address pool properties.
 type LBBackendAddressPoolResourceSettings struct {
 	// Gets or sets the backend address pool name.
 	Name *string `pulumi:"name"`
 }
 
+// LBBackendAddressPoolResourceSettingsInput is an input type that accepts LBBackendAddressPoolResourceSettingsArgs and LBBackendAddressPoolResourceSettingsOutput values.
+// You can construct a concrete instance of `LBBackendAddressPoolResourceSettingsInput` via:
+//
+//	LBBackendAddressPoolResourceSettingsArgs{...}
+type LBBackendAddressPoolResourceSettingsInput interface {
+	pulumi.Input
+
+	ToLBBackendAddressPoolResourceSettingsOutput() LBBackendAddressPoolResourceSettingsOutput
+	ToLBBackendAddressPoolResourceSettingsOutputWithContext(context.Context) LBBackendAddressPoolResourceSettingsOutput
+}
+
+// Defines load balancer backend address pool properties.
+type LBBackendAddressPoolResourceSettingsArgs struct {
+	// Gets or sets the backend address pool name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (LBBackendAddressPoolResourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LBBackendAddressPoolResourceSettings)(nil)).Elem()
+}
+
+func (i LBBackendAddressPoolResourceSettingsArgs) ToLBBackendAddressPoolResourceSettingsOutput() LBBackendAddressPoolResourceSettingsOutput {
+	return i.ToLBBackendAddressPoolResourceSettingsOutputWithContext(context.Background())
+}
+
+func (i LBBackendAddressPoolResourceSettingsArgs) ToLBBackendAddressPoolResourceSettingsOutputWithContext(ctx context.Context) LBBackendAddressPoolResourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LBBackendAddressPoolResourceSettingsOutput)
+}
+
+// LBBackendAddressPoolResourceSettingsArrayInput is an input type that accepts LBBackendAddressPoolResourceSettingsArray and LBBackendAddressPoolResourceSettingsArrayOutput values.
+// You can construct a concrete instance of `LBBackendAddressPoolResourceSettingsArrayInput` via:
+//
+//	LBBackendAddressPoolResourceSettingsArray{ LBBackendAddressPoolResourceSettingsArgs{...} }
+type LBBackendAddressPoolResourceSettingsArrayInput interface {
+	pulumi.Input
+
+	ToLBBackendAddressPoolResourceSettingsArrayOutput() LBBackendAddressPoolResourceSettingsArrayOutput
+	ToLBBackendAddressPoolResourceSettingsArrayOutputWithContext(context.Context) LBBackendAddressPoolResourceSettingsArrayOutput
+}
+
+type LBBackendAddressPoolResourceSettingsArray []LBBackendAddressPoolResourceSettingsInput
+
+func (LBBackendAddressPoolResourceSettingsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LBBackendAddressPoolResourceSettings)(nil)).Elem()
+}
+
+func (i LBBackendAddressPoolResourceSettingsArray) ToLBBackendAddressPoolResourceSettingsArrayOutput() LBBackendAddressPoolResourceSettingsArrayOutput {
+	return i.ToLBBackendAddressPoolResourceSettingsArrayOutputWithContext(context.Background())
+}
+
+func (i LBBackendAddressPoolResourceSettingsArray) ToLBBackendAddressPoolResourceSettingsArrayOutputWithContext(ctx context.Context) LBBackendAddressPoolResourceSettingsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LBBackendAddressPoolResourceSettingsArrayOutput)
+}
+
+// Defines load balancer backend address pool properties.
+type LBBackendAddressPoolResourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (LBBackendAddressPoolResourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LBBackendAddressPoolResourceSettings)(nil)).Elem()
+}
+
+func (o LBBackendAddressPoolResourceSettingsOutput) ToLBBackendAddressPoolResourceSettingsOutput() LBBackendAddressPoolResourceSettingsOutput {
+	return o
+}
+
+func (o LBBackendAddressPoolResourceSettingsOutput) ToLBBackendAddressPoolResourceSettingsOutputWithContext(ctx context.Context) LBBackendAddressPoolResourceSettingsOutput {
+	return o
+}
+
+// Gets or sets the backend address pool name.
+func (o LBBackendAddressPoolResourceSettingsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LBBackendAddressPoolResourceSettings) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type LBBackendAddressPoolResourceSettingsArrayOutput struct{ *pulumi.OutputState }
+
+func (LBBackendAddressPoolResourceSettingsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LBBackendAddressPoolResourceSettings)(nil)).Elem()
+}
+
+func (o LBBackendAddressPoolResourceSettingsArrayOutput) ToLBBackendAddressPoolResourceSettingsArrayOutput() LBBackendAddressPoolResourceSettingsArrayOutput {
+	return o
+}
+
+func (o LBBackendAddressPoolResourceSettingsArrayOutput) ToLBBackendAddressPoolResourceSettingsArrayOutputWithContext(ctx context.Context) LBBackendAddressPoolResourceSettingsArrayOutput {
+	return o
+}
+
+func (o LBBackendAddressPoolResourceSettingsArrayOutput) Index(i pulumi.IntInput) LBBackendAddressPoolResourceSettingsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LBBackendAddressPoolResourceSettings {
+		return vs[0].([]LBBackendAddressPoolResourceSettings)[vs[1].(int)]
+	}).(LBBackendAddressPoolResourceSettingsOutput)
+}
+
 // Defines load balancer backend address pool properties.
 type LBBackendAddressPoolResourceSettingsResponse struct {
 	// Gets or sets the backend address pool name.
 	Name *string `pulumi:"name"`
+}
+
+// Defines load balancer backend address pool properties.
+type LBBackendAddressPoolResourceSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (LBBackendAddressPoolResourceSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LBBackendAddressPoolResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o LBBackendAddressPoolResourceSettingsResponseOutput) ToLBBackendAddressPoolResourceSettingsResponseOutput() LBBackendAddressPoolResourceSettingsResponseOutput {
+	return o
+}
+
+func (o LBBackendAddressPoolResourceSettingsResponseOutput) ToLBBackendAddressPoolResourceSettingsResponseOutputWithContext(ctx context.Context) LBBackendAddressPoolResourceSettingsResponseOutput {
+	return o
+}
+
+// Gets or sets the backend address pool name.
+func (o LBBackendAddressPoolResourceSettingsResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LBBackendAddressPoolResourceSettingsResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type LBBackendAddressPoolResourceSettingsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LBBackendAddressPoolResourceSettingsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LBBackendAddressPoolResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o LBBackendAddressPoolResourceSettingsResponseArrayOutput) ToLBBackendAddressPoolResourceSettingsResponseArrayOutput() LBBackendAddressPoolResourceSettingsResponseArrayOutput {
+	return o
+}
+
+func (o LBBackendAddressPoolResourceSettingsResponseArrayOutput) ToLBBackendAddressPoolResourceSettingsResponseArrayOutputWithContext(ctx context.Context) LBBackendAddressPoolResourceSettingsResponseArrayOutput {
+	return o
+}
+
+func (o LBBackendAddressPoolResourceSettingsResponseArrayOutput) Index(i pulumi.IntInput) LBBackendAddressPoolResourceSettingsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LBBackendAddressPoolResourceSettingsResponse {
+		return vs[0].([]LBBackendAddressPoolResourceSettingsResponse)[vs[1].(int)]
+	}).(LBBackendAddressPoolResourceSettingsResponseOutput)
 }
 
 // Defines load balancer frontend IP configuration properties.
@@ -530,6 +1531,130 @@ type LBFrontendIPConfigurationResourceSettings struct {
 	Zones *string `pulumi:"zones"`
 }
 
+// LBFrontendIPConfigurationResourceSettingsInput is an input type that accepts LBFrontendIPConfigurationResourceSettingsArgs and LBFrontendIPConfigurationResourceSettingsOutput values.
+// You can construct a concrete instance of `LBFrontendIPConfigurationResourceSettingsInput` via:
+//
+//	LBFrontendIPConfigurationResourceSettingsArgs{...}
+type LBFrontendIPConfigurationResourceSettingsInput interface {
+	pulumi.Input
+
+	ToLBFrontendIPConfigurationResourceSettingsOutput() LBFrontendIPConfigurationResourceSettingsOutput
+	ToLBFrontendIPConfigurationResourceSettingsOutputWithContext(context.Context) LBFrontendIPConfigurationResourceSettingsOutput
+}
+
+// Defines load balancer frontend IP configuration properties.
+type LBFrontendIPConfigurationResourceSettingsArgs struct {
+	// Gets or sets the frontend IP configuration name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Gets or sets the IP address of the Load Balancer.This is only specified if a specific
+	// private IP address shall be allocated from the subnet specified in subnetRef.
+	PrivateIpAddress pulumi.StringPtrInput `pulumi:"privateIpAddress"`
+	// Gets or sets PrivateIP allocation method (Static/Dynamic).
+	PrivateIpAllocationMethod pulumi.StringPtrInput `pulumi:"privateIpAllocationMethod"`
+	// Defines reference to subnet.
+	Subnet SubnetReferencePtrInput `pulumi:"subnet"`
+	// Gets or sets the csv list of zones.
+	Zones pulumi.StringPtrInput `pulumi:"zones"`
+}
+
+func (LBFrontendIPConfigurationResourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LBFrontendIPConfigurationResourceSettings)(nil)).Elem()
+}
+
+func (i LBFrontendIPConfigurationResourceSettingsArgs) ToLBFrontendIPConfigurationResourceSettingsOutput() LBFrontendIPConfigurationResourceSettingsOutput {
+	return i.ToLBFrontendIPConfigurationResourceSettingsOutputWithContext(context.Background())
+}
+
+func (i LBFrontendIPConfigurationResourceSettingsArgs) ToLBFrontendIPConfigurationResourceSettingsOutputWithContext(ctx context.Context) LBFrontendIPConfigurationResourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LBFrontendIPConfigurationResourceSettingsOutput)
+}
+
+// LBFrontendIPConfigurationResourceSettingsArrayInput is an input type that accepts LBFrontendIPConfigurationResourceSettingsArray and LBFrontendIPConfigurationResourceSettingsArrayOutput values.
+// You can construct a concrete instance of `LBFrontendIPConfigurationResourceSettingsArrayInput` via:
+//
+//	LBFrontendIPConfigurationResourceSettingsArray{ LBFrontendIPConfigurationResourceSettingsArgs{...} }
+type LBFrontendIPConfigurationResourceSettingsArrayInput interface {
+	pulumi.Input
+
+	ToLBFrontendIPConfigurationResourceSettingsArrayOutput() LBFrontendIPConfigurationResourceSettingsArrayOutput
+	ToLBFrontendIPConfigurationResourceSettingsArrayOutputWithContext(context.Context) LBFrontendIPConfigurationResourceSettingsArrayOutput
+}
+
+type LBFrontendIPConfigurationResourceSettingsArray []LBFrontendIPConfigurationResourceSettingsInput
+
+func (LBFrontendIPConfigurationResourceSettingsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LBFrontendIPConfigurationResourceSettings)(nil)).Elem()
+}
+
+func (i LBFrontendIPConfigurationResourceSettingsArray) ToLBFrontendIPConfigurationResourceSettingsArrayOutput() LBFrontendIPConfigurationResourceSettingsArrayOutput {
+	return i.ToLBFrontendIPConfigurationResourceSettingsArrayOutputWithContext(context.Background())
+}
+
+func (i LBFrontendIPConfigurationResourceSettingsArray) ToLBFrontendIPConfigurationResourceSettingsArrayOutputWithContext(ctx context.Context) LBFrontendIPConfigurationResourceSettingsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LBFrontendIPConfigurationResourceSettingsArrayOutput)
+}
+
+// Defines load balancer frontend IP configuration properties.
+type LBFrontendIPConfigurationResourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (LBFrontendIPConfigurationResourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LBFrontendIPConfigurationResourceSettings)(nil)).Elem()
+}
+
+func (o LBFrontendIPConfigurationResourceSettingsOutput) ToLBFrontendIPConfigurationResourceSettingsOutput() LBFrontendIPConfigurationResourceSettingsOutput {
+	return o
+}
+
+func (o LBFrontendIPConfigurationResourceSettingsOutput) ToLBFrontendIPConfigurationResourceSettingsOutputWithContext(ctx context.Context) LBFrontendIPConfigurationResourceSettingsOutput {
+	return o
+}
+
+// Gets or sets the frontend IP configuration name.
+func (o LBFrontendIPConfigurationResourceSettingsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LBFrontendIPConfigurationResourceSettings) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the IP address of the Load Balancer.This is only specified if a specific
+// private IP address shall be allocated from the subnet specified in subnetRef.
+func (o LBFrontendIPConfigurationResourceSettingsOutput) PrivateIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LBFrontendIPConfigurationResourceSettings) *string { return v.PrivateIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets PrivateIP allocation method (Static/Dynamic).
+func (o LBFrontendIPConfigurationResourceSettingsOutput) PrivateIpAllocationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LBFrontendIPConfigurationResourceSettings) *string { return v.PrivateIpAllocationMethod }).(pulumi.StringPtrOutput)
+}
+
+// Defines reference to subnet.
+func (o LBFrontendIPConfigurationResourceSettingsOutput) Subnet() SubnetReferencePtrOutput {
+	return o.ApplyT(func(v LBFrontendIPConfigurationResourceSettings) *SubnetReference { return v.Subnet }).(SubnetReferencePtrOutput)
+}
+
+// Gets or sets the csv list of zones.
+func (o LBFrontendIPConfigurationResourceSettingsOutput) Zones() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LBFrontendIPConfigurationResourceSettings) *string { return v.Zones }).(pulumi.StringPtrOutput)
+}
+
+type LBFrontendIPConfigurationResourceSettingsArrayOutput struct{ *pulumi.OutputState }
+
+func (LBFrontendIPConfigurationResourceSettingsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LBFrontendIPConfigurationResourceSettings)(nil)).Elem()
+}
+
+func (o LBFrontendIPConfigurationResourceSettingsArrayOutput) ToLBFrontendIPConfigurationResourceSettingsArrayOutput() LBFrontendIPConfigurationResourceSettingsArrayOutput {
+	return o
+}
+
+func (o LBFrontendIPConfigurationResourceSettingsArrayOutput) ToLBFrontendIPConfigurationResourceSettingsArrayOutputWithContext(ctx context.Context) LBFrontendIPConfigurationResourceSettingsArrayOutput {
+	return o
+}
+
+func (o LBFrontendIPConfigurationResourceSettingsArrayOutput) Index(i pulumi.IntInput) LBFrontendIPConfigurationResourceSettingsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LBFrontendIPConfigurationResourceSettings {
+		return vs[0].([]LBFrontendIPConfigurationResourceSettings)[vs[1].(int)]
+	}).(LBFrontendIPConfigurationResourceSettingsOutput)
+}
+
 // Defines load balancer frontend IP configuration properties.
 type LBFrontendIPConfigurationResourceSettingsResponse struct {
 	// Gets or sets the frontend IP configuration name.
@@ -545,12 +1670,174 @@ type LBFrontendIPConfigurationResourceSettingsResponse struct {
 	Zones *string `pulumi:"zones"`
 }
 
+// Defines load balancer frontend IP configuration properties.
+type LBFrontendIPConfigurationResourceSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (LBFrontendIPConfigurationResourceSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LBFrontendIPConfigurationResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o LBFrontendIPConfigurationResourceSettingsResponseOutput) ToLBFrontendIPConfigurationResourceSettingsResponseOutput() LBFrontendIPConfigurationResourceSettingsResponseOutput {
+	return o
+}
+
+func (o LBFrontendIPConfigurationResourceSettingsResponseOutput) ToLBFrontendIPConfigurationResourceSettingsResponseOutputWithContext(ctx context.Context) LBFrontendIPConfigurationResourceSettingsResponseOutput {
+	return o
+}
+
+// Gets or sets the frontend IP configuration name.
+func (o LBFrontendIPConfigurationResourceSettingsResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LBFrontendIPConfigurationResourceSettingsResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the IP address of the Load Balancer.This is only specified if a specific
+// private IP address shall be allocated from the subnet specified in subnetRef.
+func (o LBFrontendIPConfigurationResourceSettingsResponseOutput) PrivateIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LBFrontendIPConfigurationResourceSettingsResponse) *string { return v.PrivateIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets PrivateIP allocation method (Static/Dynamic).
+func (o LBFrontendIPConfigurationResourceSettingsResponseOutput) PrivateIpAllocationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LBFrontendIPConfigurationResourceSettingsResponse) *string { return v.PrivateIpAllocationMethod }).(pulumi.StringPtrOutput)
+}
+
+// Defines reference to subnet.
+func (o LBFrontendIPConfigurationResourceSettingsResponseOutput) Subnet() SubnetReferenceResponsePtrOutput {
+	return o.ApplyT(func(v LBFrontendIPConfigurationResourceSettingsResponse) *SubnetReferenceResponse { return v.Subnet }).(SubnetReferenceResponsePtrOutput)
+}
+
+// Gets or sets the csv list of zones.
+func (o LBFrontendIPConfigurationResourceSettingsResponseOutput) Zones() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LBFrontendIPConfigurationResourceSettingsResponse) *string { return v.Zones }).(pulumi.StringPtrOutput)
+}
+
+type LBFrontendIPConfigurationResourceSettingsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LBFrontendIPConfigurationResourceSettingsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LBFrontendIPConfigurationResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o LBFrontendIPConfigurationResourceSettingsResponseArrayOutput) ToLBFrontendIPConfigurationResourceSettingsResponseArrayOutput() LBFrontendIPConfigurationResourceSettingsResponseArrayOutput {
+	return o
+}
+
+func (o LBFrontendIPConfigurationResourceSettingsResponseArrayOutput) ToLBFrontendIPConfigurationResourceSettingsResponseArrayOutputWithContext(ctx context.Context) LBFrontendIPConfigurationResourceSettingsResponseArrayOutput {
+	return o
+}
+
+func (o LBFrontendIPConfigurationResourceSettingsResponseArrayOutput) Index(i pulumi.IntInput) LBFrontendIPConfigurationResourceSettingsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LBFrontendIPConfigurationResourceSettingsResponse {
+		return vs[0].([]LBFrontendIPConfigurationResourceSettingsResponse)[vs[1].(int)]
+	}).(LBFrontendIPConfigurationResourceSettingsResponseOutput)
+}
+
 // Defines reference to load balancer backend address pools.
 type LoadBalancerBackendAddressPoolReference struct {
 	// Gets the name of the proxy resource on the target side.
 	Name *string `pulumi:"name"`
 	// Gets the ARM resource ID of the tracked resource being referenced.
 	SourceArmResourceId string `pulumi:"sourceArmResourceId"`
+}
+
+// LoadBalancerBackendAddressPoolReferenceInput is an input type that accepts LoadBalancerBackendAddressPoolReferenceArgs and LoadBalancerBackendAddressPoolReferenceOutput values.
+// You can construct a concrete instance of `LoadBalancerBackendAddressPoolReferenceInput` via:
+//
+//	LoadBalancerBackendAddressPoolReferenceArgs{...}
+type LoadBalancerBackendAddressPoolReferenceInput interface {
+	pulumi.Input
+
+	ToLoadBalancerBackendAddressPoolReferenceOutput() LoadBalancerBackendAddressPoolReferenceOutput
+	ToLoadBalancerBackendAddressPoolReferenceOutputWithContext(context.Context) LoadBalancerBackendAddressPoolReferenceOutput
+}
+
+// Defines reference to load balancer backend address pools.
+type LoadBalancerBackendAddressPoolReferenceArgs struct {
+	// Gets the name of the proxy resource on the target side.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Gets the ARM resource ID of the tracked resource being referenced.
+	SourceArmResourceId pulumi.StringInput `pulumi:"sourceArmResourceId"`
+}
+
+func (LoadBalancerBackendAddressPoolReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerBackendAddressPoolReference)(nil)).Elem()
+}
+
+func (i LoadBalancerBackendAddressPoolReferenceArgs) ToLoadBalancerBackendAddressPoolReferenceOutput() LoadBalancerBackendAddressPoolReferenceOutput {
+	return i.ToLoadBalancerBackendAddressPoolReferenceOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerBackendAddressPoolReferenceArgs) ToLoadBalancerBackendAddressPoolReferenceOutputWithContext(ctx context.Context) LoadBalancerBackendAddressPoolReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerBackendAddressPoolReferenceOutput)
+}
+
+// LoadBalancerBackendAddressPoolReferenceArrayInput is an input type that accepts LoadBalancerBackendAddressPoolReferenceArray and LoadBalancerBackendAddressPoolReferenceArrayOutput values.
+// You can construct a concrete instance of `LoadBalancerBackendAddressPoolReferenceArrayInput` via:
+//
+//	LoadBalancerBackendAddressPoolReferenceArray{ LoadBalancerBackendAddressPoolReferenceArgs{...} }
+type LoadBalancerBackendAddressPoolReferenceArrayInput interface {
+	pulumi.Input
+
+	ToLoadBalancerBackendAddressPoolReferenceArrayOutput() LoadBalancerBackendAddressPoolReferenceArrayOutput
+	ToLoadBalancerBackendAddressPoolReferenceArrayOutputWithContext(context.Context) LoadBalancerBackendAddressPoolReferenceArrayOutput
+}
+
+type LoadBalancerBackendAddressPoolReferenceArray []LoadBalancerBackendAddressPoolReferenceInput
+
+func (LoadBalancerBackendAddressPoolReferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerBackendAddressPoolReference)(nil)).Elem()
+}
+
+func (i LoadBalancerBackendAddressPoolReferenceArray) ToLoadBalancerBackendAddressPoolReferenceArrayOutput() LoadBalancerBackendAddressPoolReferenceArrayOutput {
+	return i.ToLoadBalancerBackendAddressPoolReferenceArrayOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerBackendAddressPoolReferenceArray) ToLoadBalancerBackendAddressPoolReferenceArrayOutputWithContext(ctx context.Context) LoadBalancerBackendAddressPoolReferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerBackendAddressPoolReferenceArrayOutput)
+}
+
+// Defines reference to load balancer backend address pools.
+type LoadBalancerBackendAddressPoolReferenceOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerBackendAddressPoolReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerBackendAddressPoolReference)(nil)).Elem()
+}
+
+func (o LoadBalancerBackendAddressPoolReferenceOutput) ToLoadBalancerBackendAddressPoolReferenceOutput() LoadBalancerBackendAddressPoolReferenceOutput {
+	return o
+}
+
+func (o LoadBalancerBackendAddressPoolReferenceOutput) ToLoadBalancerBackendAddressPoolReferenceOutputWithContext(ctx context.Context) LoadBalancerBackendAddressPoolReferenceOutput {
+	return o
+}
+
+// Gets the name of the proxy resource on the target side.
+func (o LoadBalancerBackendAddressPoolReferenceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerBackendAddressPoolReference) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets the ARM resource ID of the tracked resource being referenced.
+func (o LoadBalancerBackendAddressPoolReferenceOutput) SourceArmResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerBackendAddressPoolReference) string { return v.SourceArmResourceId }).(pulumi.StringOutput)
+}
+
+type LoadBalancerBackendAddressPoolReferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerBackendAddressPoolReferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerBackendAddressPoolReference)(nil)).Elem()
+}
+
+func (o LoadBalancerBackendAddressPoolReferenceArrayOutput) ToLoadBalancerBackendAddressPoolReferenceArrayOutput() LoadBalancerBackendAddressPoolReferenceArrayOutput {
+	return o
+}
+
+func (o LoadBalancerBackendAddressPoolReferenceArrayOutput) ToLoadBalancerBackendAddressPoolReferenceArrayOutputWithContext(ctx context.Context) LoadBalancerBackendAddressPoolReferenceArrayOutput {
+	return o
+}
+
+func (o LoadBalancerBackendAddressPoolReferenceArrayOutput) Index(i pulumi.IntInput) LoadBalancerBackendAddressPoolReferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerBackendAddressPoolReference {
+		return vs[0].([]LoadBalancerBackendAddressPoolReference)[vs[1].(int)]
+	}).(LoadBalancerBackendAddressPoolReferenceOutput)
 }
 
 // Defines reference to load balancer backend address pools.
@@ -561,6 +1848,51 @@ type LoadBalancerBackendAddressPoolReferenceResponse struct {
 	SourceArmResourceId string `pulumi:"sourceArmResourceId"`
 }
 
+// Defines reference to load balancer backend address pools.
+type LoadBalancerBackendAddressPoolReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerBackendAddressPoolReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerBackendAddressPoolReferenceResponse)(nil)).Elem()
+}
+
+func (o LoadBalancerBackendAddressPoolReferenceResponseOutput) ToLoadBalancerBackendAddressPoolReferenceResponseOutput() LoadBalancerBackendAddressPoolReferenceResponseOutput {
+	return o
+}
+
+func (o LoadBalancerBackendAddressPoolReferenceResponseOutput) ToLoadBalancerBackendAddressPoolReferenceResponseOutputWithContext(ctx context.Context) LoadBalancerBackendAddressPoolReferenceResponseOutput {
+	return o
+}
+
+// Gets the name of the proxy resource on the target side.
+func (o LoadBalancerBackendAddressPoolReferenceResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerBackendAddressPoolReferenceResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets the ARM resource ID of the tracked resource being referenced.
+func (o LoadBalancerBackendAddressPoolReferenceResponseOutput) SourceArmResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerBackendAddressPoolReferenceResponse) string { return v.SourceArmResourceId }).(pulumi.StringOutput)
+}
+
+type LoadBalancerBackendAddressPoolReferenceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerBackendAddressPoolReferenceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerBackendAddressPoolReferenceResponse)(nil)).Elem()
+}
+
+func (o LoadBalancerBackendAddressPoolReferenceResponseArrayOutput) ToLoadBalancerBackendAddressPoolReferenceResponseArrayOutput() LoadBalancerBackendAddressPoolReferenceResponseArrayOutput {
+	return o
+}
+
+func (o LoadBalancerBackendAddressPoolReferenceResponseArrayOutput) ToLoadBalancerBackendAddressPoolReferenceResponseArrayOutputWithContext(ctx context.Context) LoadBalancerBackendAddressPoolReferenceResponseArrayOutput {
+	return o
+}
+
+func (o LoadBalancerBackendAddressPoolReferenceResponseArrayOutput) Index(i pulumi.IntInput) LoadBalancerBackendAddressPoolReferenceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerBackendAddressPoolReferenceResponse {
+		return vs[0].([]LoadBalancerBackendAddressPoolReferenceResponse)[vs[1].(int)]
+	}).(LoadBalancerBackendAddressPoolReferenceResponseOutput)
+}
+
 // Defines reference to load balancer NAT rules.
 type LoadBalancerNatRuleReference struct {
 	// Gets the name of the proxy resource on the target side.
@@ -569,12 +1901,158 @@ type LoadBalancerNatRuleReference struct {
 	SourceArmResourceId string `pulumi:"sourceArmResourceId"`
 }
 
+// LoadBalancerNatRuleReferenceInput is an input type that accepts LoadBalancerNatRuleReferenceArgs and LoadBalancerNatRuleReferenceOutput values.
+// You can construct a concrete instance of `LoadBalancerNatRuleReferenceInput` via:
+//
+//	LoadBalancerNatRuleReferenceArgs{...}
+type LoadBalancerNatRuleReferenceInput interface {
+	pulumi.Input
+
+	ToLoadBalancerNatRuleReferenceOutput() LoadBalancerNatRuleReferenceOutput
+	ToLoadBalancerNatRuleReferenceOutputWithContext(context.Context) LoadBalancerNatRuleReferenceOutput
+}
+
+// Defines reference to load balancer NAT rules.
+type LoadBalancerNatRuleReferenceArgs struct {
+	// Gets the name of the proxy resource on the target side.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Gets the ARM resource ID of the tracked resource being referenced.
+	SourceArmResourceId pulumi.StringInput `pulumi:"sourceArmResourceId"`
+}
+
+func (LoadBalancerNatRuleReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerNatRuleReference)(nil)).Elem()
+}
+
+func (i LoadBalancerNatRuleReferenceArgs) ToLoadBalancerNatRuleReferenceOutput() LoadBalancerNatRuleReferenceOutput {
+	return i.ToLoadBalancerNatRuleReferenceOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerNatRuleReferenceArgs) ToLoadBalancerNatRuleReferenceOutputWithContext(ctx context.Context) LoadBalancerNatRuleReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerNatRuleReferenceOutput)
+}
+
+// LoadBalancerNatRuleReferenceArrayInput is an input type that accepts LoadBalancerNatRuleReferenceArray and LoadBalancerNatRuleReferenceArrayOutput values.
+// You can construct a concrete instance of `LoadBalancerNatRuleReferenceArrayInput` via:
+//
+//	LoadBalancerNatRuleReferenceArray{ LoadBalancerNatRuleReferenceArgs{...} }
+type LoadBalancerNatRuleReferenceArrayInput interface {
+	pulumi.Input
+
+	ToLoadBalancerNatRuleReferenceArrayOutput() LoadBalancerNatRuleReferenceArrayOutput
+	ToLoadBalancerNatRuleReferenceArrayOutputWithContext(context.Context) LoadBalancerNatRuleReferenceArrayOutput
+}
+
+type LoadBalancerNatRuleReferenceArray []LoadBalancerNatRuleReferenceInput
+
+func (LoadBalancerNatRuleReferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerNatRuleReference)(nil)).Elem()
+}
+
+func (i LoadBalancerNatRuleReferenceArray) ToLoadBalancerNatRuleReferenceArrayOutput() LoadBalancerNatRuleReferenceArrayOutput {
+	return i.ToLoadBalancerNatRuleReferenceArrayOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerNatRuleReferenceArray) ToLoadBalancerNatRuleReferenceArrayOutputWithContext(ctx context.Context) LoadBalancerNatRuleReferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerNatRuleReferenceArrayOutput)
+}
+
+// Defines reference to load balancer NAT rules.
+type LoadBalancerNatRuleReferenceOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerNatRuleReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerNatRuleReference)(nil)).Elem()
+}
+
+func (o LoadBalancerNatRuleReferenceOutput) ToLoadBalancerNatRuleReferenceOutput() LoadBalancerNatRuleReferenceOutput {
+	return o
+}
+
+func (o LoadBalancerNatRuleReferenceOutput) ToLoadBalancerNatRuleReferenceOutputWithContext(ctx context.Context) LoadBalancerNatRuleReferenceOutput {
+	return o
+}
+
+// Gets the name of the proxy resource on the target side.
+func (o LoadBalancerNatRuleReferenceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerNatRuleReference) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets the ARM resource ID of the tracked resource being referenced.
+func (o LoadBalancerNatRuleReferenceOutput) SourceArmResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerNatRuleReference) string { return v.SourceArmResourceId }).(pulumi.StringOutput)
+}
+
+type LoadBalancerNatRuleReferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerNatRuleReferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerNatRuleReference)(nil)).Elem()
+}
+
+func (o LoadBalancerNatRuleReferenceArrayOutput) ToLoadBalancerNatRuleReferenceArrayOutput() LoadBalancerNatRuleReferenceArrayOutput {
+	return o
+}
+
+func (o LoadBalancerNatRuleReferenceArrayOutput) ToLoadBalancerNatRuleReferenceArrayOutputWithContext(ctx context.Context) LoadBalancerNatRuleReferenceArrayOutput {
+	return o
+}
+
+func (o LoadBalancerNatRuleReferenceArrayOutput) Index(i pulumi.IntInput) LoadBalancerNatRuleReferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerNatRuleReference {
+		return vs[0].([]LoadBalancerNatRuleReference)[vs[1].(int)]
+	}).(LoadBalancerNatRuleReferenceOutput)
+}
+
 // Defines reference to load balancer NAT rules.
 type LoadBalancerNatRuleReferenceResponse struct {
 	// Gets the name of the proxy resource on the target side.
 	Name *string `pulumi:"name"`
 	// Gets the ARM resource ID of the tracked resource being referenced.
 	SourceArmResourceId string `pulumi:"sourceArmResourceId"`
+}
+
+// Defines reference to load balancer NAT rules.
+type LoadBalancerNatRuleReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerNatRuleReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerNatRuleReferenceResponse)(nil)).Elem()
+}
+
+func (o LoadBalancerNatRuleReferenceResponseOutput) ToLoadBalancerNatRuleReferenceResponseOutput() LoadBalancerNatRuleReferenceResponseOutput {
+	return o
+}
+
+func (o LoadBalancerNatRuleReferenceResponseOutput) ToLoadBalancerNatRuleReferenceResponseOutputWithContext(ctx context.Context) LoadBalancerNatRuleReferenceResponseOutput {
+	return o
+}
+
+// Gets the name of the proxy resource on the target side.
+func (o LoadBalancerNatRuleReferenceResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerNatRuleReferenceResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets the ARM resource ID of the tracked resource being referenced.
+func (o LoadBalancerNatRuleReferenceResponseOutput) SourceArmResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerNatRuleReferenceResponse) string { return v.SourceArmResourceId }).(pulumi.StringOutput)
+}
+
+type LoadBalancerNatRuleReferenceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerNatRuleReferenceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerNatRuleReferenceResponse)(nil)).Elem()
+}
+
+func (o LoadBalancerNatRuleReferenceResponseArrayOutput) ToLoadBalancerNatRuleReferenceResponseArrayOutput() LoadBalancerNatRuleReferenceResponseArrayOutput {
+	return o
+}
+
+func (o LoadBalancerNatRuleReferenceResponseArrayOutput) ToLoadBalancerNatRuleReferenceResponseArrayOutputWithContext(ctx context.Context) LoadBalancerNatRuleReferenceResponseArrayOutput {
+	return o
+}
+
+func (o LoadBalancerNatRuleReferenceResponseArrayOutput) Index(i pulumi.IntInput) LoadBalancerNatRuleReferenceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerNatRuleReferenceResponse {
+		return vs[0].([]LoadBalancerNatRuleReferenceResponse)[vs[1].(int)]
+	}).(LoadBalancerNatRuleReferenceResponseOutput)
 }
 
 // Defines the load balancer resource settings.
@@ -599,6 +2077,271 @@ type LoadBalancerResourceSettings struct {
 	Zones *string `pulumi:"zones"`
 }
 
+// LoadBalancerResourceSettingsInput is an input type that accepts LoadBalancerResourceSettingsArgs and LoadBalancerResourceSettingsOutput values.
+// You can construct a concrete instance of `LoadBalancerResourceSettingsInput` via:
+//
+//	LoadBalancerResourceSettingsArgs{...}
+type LoadBalancerResourceSettingsInput interface {
+	pulumi.Input
+
+	ToLoadBalancerResourceSettingsOutput() LoadBalancerResourceSettingsOutput
+	ToLoadBalancerResourceSettingsOutputWithContext(context.Context) LoadBalancerResourceSettingsOutput
+}
+
+// Defines the load balancer resource settings.
+type LoadBalancerResourceSettingsArgs struct {
+	// Gets or sets the backend address pools of the load balancer.
+	BackendAddressPools LBBackendAddressPoolResourceSettingsArrayInput `pulumi:"backendAddressPools"`
+	// Gets or sets the frontend IP configurations of the load balancer.
+	FrontendIPConfigurations LBFrontendIPConfigurationResourceSettingsArrayInput `pulumi:"frontendIPConfigurations"`
+	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+	// Expected value is 'Microsoft.Network/loadBalancers'.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// Gets or sets load balancer sku (Basic/Standard).
+	Sku pulumi.StringPtrInput `pulumi:"sku"`
+	// Gets or sets the Resource tags.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Gets or sets the target resource group name.
+	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
+	// Gets or sets the target Resource name.
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
+	// Gets or sets the csv list of zones common for all frontend IP configurations. Note this is given
+	//  precedence only if frontend IP configurations settings are not present.
+	Zones pulumi.StringPtrInput `pulumi:"zones"`
+}
+
+func (LoadBalancerResourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerResourceSettings)(nil)).Elem()
+}
+
+func (i LoadBalancerResourceSettingsArgs) ToLoadBalancerResourceSettingsOutput() LoadBalancerResourceSettingsOutput {
+	return i.ToLoadBalancerResourceSettingsOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerResourceSettingsArgs) ToLoadBalancerResourceSettingsOutputWithContext(ctx context.Context) LoadBalancerResourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerResourceSettingsOutput)
+}
+
+func (i LoadBalancerResourceSettingsArgs) ToLoadBalancerResourceSettingsPtrOutput() LoadBalancerResourceSettingsPtrOutput {
+	return i.ToLoadBalancerResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerResourceSettingsArgs) ToLoadBalancerResourceSettingsPtrOutputWithContext(ctx context.Context) LoadBalancerResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerResourceSettingsOutput).ToLoadBalancerResourceSettingsPtrOutputWithContext(ctx)
+}
+
+// LoadBalancerResourceSettingsPtrInput is an input type that accepts LoadBalancerResourceSettingsArgs, LoadBalancerResourceSettingsPtr and LoadBalancerResourceSettingsPtrOutput values.
+// You can construct a concrete instance of `LoadBalancerResourceSettingsPtrInput` via:
+//
+//	        LoadBalancerResourceSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadBalancerResourceSettingsPtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerResourceSettingsPtrOutput() LoadBalancerResourceSettingsPtrOutput
+	ToLoadBalancerResourceSettingsPtrOutputWithContext(context.Context) LoadBalancerResourceSettingsPtrOutput
+}
+
+type loadBalancerResourceSettingsPtrType LoadBalancerResourceSettingsArgs
+
+func LoadBalancerResourceSettingsPtr(v *LoadBalancerResourceSettingsArgs) LoadBalancerResourceSettingsPtrInput {
+	return (*loadBalancerResourceSettingsPtrType)(v)
+}
+
+func (*loadBalancerResourceSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerResourceSettings)(nil)).Elem()
+}
+
+func (i *loadBalancerResourceSettingsPtrType) ToLoadBalancerResourceSettingsPtrOutput() LoadBalancerResourceSettingsPtrOutput {
+	return i.ToLoadBalancerResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *loadBalancerResourceSettingsPtrType) ToLoadBalancerResourceSettingsPtrOutputWithContext(ctx context.Context) LoadBalancerResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerResourceSettingsPtrOutput)
+}
+
+// Defines the load balancer resource settings.
+type LoadBalancerResourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerResourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerResourceSettings)(nil)).Elem()
+}
+
+func (o LoadBalancerResourceSettingsOutput) ToLoadBalancerResourceSettingsOutput() LoadBalancerResourceSettingsOutput {
+	return o
+}
+
+func (o LoadBalancerResourceSettingsOutput) ToLoadBalancerResourceSettingsOutputWithContext(ctx context.Context) LoadBalancerResourceSettingsOutput {
+	return o
+}
+
+func (o LoadBalancerResourceSettingsOutput) ToLoadBalancerResourceSettingsPtrOutput() LoadBalancerResourceSettingsPtrOutput {
+	return o.ToLoadBalancerResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancerResourceSettingsOutput) ToLoadBalancerResourceSettingsPtrOutputWithContext(ctx context.Context) LoadBalancerResourceSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerResourceSettings) *LoadBalancerResourceSettings {
+		return &v
+	}).(LoadBalancerResourceSettingsPtrOutput)
+}
+
+// Gets or sets the backend address pools of the load balancer.
+func (o LoadBalancerResourceSettingsOutput) BackendAddressPools() LBBackendAddressPoolResourceSettingsArrayOutput {
+	return o.ApplyT(func(v LoadBalancerResourceSettings) []LBBackendAddressPoolResourceSettings {
+		return v.BackendAddressPools
+	}).(LBBackendAddressPoolResourceSettingsArrayOutput)
+}
+
+// Gets or sets the frontend IP configurations of the load balancer.
+func (o LoadBalancerResourceSettingsOutput) FrontendIPConfigurations() LBFrontendIPConfigurationResourceSettingsArrayOutput {
+	return o.ApplyT(func(v LoadBalancerResourceSettings) []LBFrontendIPConfigurationResourceSettings {
+		return v.FrontendIPConfigurations
+	}).(LBFrontendIPConfigurationResourceSettingsArrayOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Network/loadBalancers'.
+func (o LoadBalancerResourceSettingsOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerResourceSettings) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets load balancer sku (Basic/Standard).
+func (o LoadBalancerResourceSettingsOutput) Sku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerResourceSettings) *string { return v.Sku }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o LoadBalancerResourceSettingsOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LoadBalancerResourceSettings) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o LoadBalancerResourceSettingsOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerResourceSettings) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o LoadBalancerResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the csv list of zones common for all frontend IP configurations. Note this is given
+//
+//	precedence only if frontend IP configurations settings are not present.
+func (o LoadBalancerResourceSettingsOutput) Zones() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerResourceSettings) *string { return v.Zones }).(pulumi.StringPtrOutput)
+}
+
+type LoadBalancerResourceSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerResourceSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerResourceSettings)(nil)).Elem()
+}
+
+func (o LoadBalancerResourceSettingsPtrOutput) ToLoadBalancerResourceSettingsPtrOutput() LoadBalancerResourceSettingsPtrOutput {
+	return o
+}
+
+func (o LoadBalancerResourceSettingsPtrOutput) ToLoadBalancerResourceSettingsPtrOutputWithContext(ctx context.Context) LoadBalancerResourceSettingsPtrOutput {
+	return o
+}
+
+func (o LoadBalancerResourceSettingsPtrOutput) Elem() LoadBalancerResourceSettingsOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceSettings) LoadBalancerResourceSettings {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerResourceSettings
+		return ret
+	}).(LoadBalancerResourceSettingsOutput)
+}
+
+// Gets or sets the backend address pools of the load balancer.
+func (o LoadBalancerResourceSettingsPtrOutput) BackendAddressPools() LBBackendAddressPoolResourceSettingsArrayOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceSettings) []LBBackendAddressPoolResourceSettings {
+		if v == nil {
+			return nil
+		}
+		return v.BackendAddressPools
+	}).(LBBackendAddressPoolResourceSettingsArrayOutput)
+}
+
+// Gets or sets the frontend IP configurations of the load balancer.
+func (o LoadBalancerResourceSettingsPtrOutput) FrontendIPConfigurations() LBFrontendIPConfigurationResourceSettingsArrayOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceSettings) []LBFrontendIPConfigurationResourceSettings {
+		if v == nil {
+			return nil
+		}
+		return v.FrontendIPConfigurations
+	}).(LBFrontendIPConfigurationResourceSettingsArrayOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Network/loadBalancers'.
+func (o LoadBalancerResourceSettingsPtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets load balancer sku (Basic/Standard).
+func (o LoadBalancerResourceSettingsPtrOutput) Sku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sku
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o LoadBalancerResourceSettingsPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o LoadBalancerResourceSettingsPtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o LoadBalancerResourceSettingsPtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the csv list of zones common for all frontend IP configurations. Note this is given
+//
+//	precedence only if frontend IP configurations settings are not present.
+func (o LoadBalancerResourceSettingsPtrOutput) Zones() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Zones
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines the load balancer resource settings.
 type LoadBalancerResourceSettingsResponse struct {
 	// Gets or sets the backend address pools of the load balancer.
@@ -619,6 +2362,175 @@ type LoadBalancerResourceSettingsResponse struct {
 	// Gets or sets the csv list of zones common for all frontend IP configurations. Note this is given
 	//  precedence only if frontend IP configurations settings are not present.
 	Zones *string `pulumi:"zones"`
+}
+
+// Defines the load balancer resource settings.
+type LoadBalancerResourceSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerResourceSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o LoadBalancerResourceSettingsResponseOutput) ToLoadBalancerResourceSettingsResponseOutput() LoadBalancerResourceSettingsResponseOutput {
+	return o
+}
+
+func (o LoadBalancerResourceSettingsResponseOutput) ToLoadBalancerResourceSettingsResponseOutputWithContext(ctx context.Context) LoadBalancerResourceSettingsResponseOutput {
+	return o
+}
+
+// Gets or sets the backend address pools of the load balancer.
+func (o LoadBalancerResourceSettingsResponseOutput) BackendAddressPools() LBBackendAddressPoolResourceSettingsResponseArrayOutput {
+	return o.ApplyT(func(v LoadBalancerResourceSettingsResponse) []LBBackendAddressPoolResourceSettingsResponse {
+		return v.BackendAddressPools
+	}).(LBBackendAddressPoolResourceSettingsResponseArrayOutput)
+}
+
+// Gets or sets the frontend IP configurations of the load balancer.
+func (o LoadBalancerResourceSettingsResponseOutput) FrontendIPConfigurations() LBFrontendIPConfigurationResourceSettingsResponseArrayOutput {
+	return o.ApplyT(func(v LoadBalancerResourceSettingsResponse) []LBFrontendIPConfigurationResourceSettingsResponse {
+		return v.FrontendIPConfigurations
+	}).(LBFrontendIPConfigurationResourceSettingsResponseArrayOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Network/loadBalancers'.
+func (o LoadBalancerResourceSettingsResponseOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerResourceSettingsResponse) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets load balancer sku (Basic/Standard).
+func (o LoadBalancerResourceSettingsResponseOutput) Sku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerResourceSettingsResponse) *string { return v.Sku }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o LoadBalancerResourceSettingsResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LoadBalancerResourceSettingsResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o LoadBalancerResourceSettingsResponseOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerResourceSettingsResponse) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o LoadBalancerResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the csv list of zones common for all frontend IP configurations. Note this is given
+//
+//	precedence only if frontend IP configurations settings are not present.
+func (o LoadBalancerResourceSettingsResponseOutput) Zones() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerResourceSettingsResponse) *string { return v.Zones }).(pulumi.StringPtrOutput)
+}
+
+type LoadBalancerResourceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerResourceSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o LoadBalancerResourceSettingsResponsePtrOutput) ToLoadBalancerResourceSettingsResponsePtrOutput() LoadBalancerResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o LoadBalancerResourceSettingsResponsePtrOutput) ToLoadBalancerResourceSettingsResponsePtrOutputWithContext(ctx context.Context) LoadBalancerResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o LoadBalancerResourceSettingsResponsePtrOutput) Elem() LoadBalancerResourceSettingsResponseOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceSettingsResponse) LoadBalancerResourceSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerResourceSettingsResponse
+		return ret
+	}).(LoadBalancerResourceSettingsResponseOutput)
+}
+
+// Gets or sets the backend address pools of the load balancer.
+func (o LoadBalancerResourceSettingsResponsePtrOutput) BackendAddressPools() LBBackendAddressPoolResourceSettingsResponseArrayOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceSettingsResponse) []LBBackendAddressPoolResourceSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.BackendAddressPools
+	}).(LBBackendAddressPoolResourceSettingsResponseArrayOutput)
+}
+
+// Gets or sets the frontend IP configurations of the load balancer.
+func (o LoadBalancerResourceSettingsResponsePtrOutput) FrontendIPConfigurations() LBFrontendIPConfigurationResourceSettingsResponseArrayOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceSettingsResponse) []LBFrontendIPConfigurationResourceSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.FrontendIPConfigurations
+	}).(LBFrontendIPConfigurationResourceSettingsResponseArrayOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Network/loadBalancers'.
+func (o LoadBalancerResourceSettingsResponsePtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets load balancer sku (Basic/Standard).
+func (o LoadBalancerResourceSettingsResponsePtrOutput) Sku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sku
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o LoadBalancerResourceSettingsResponsePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceSettingsResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o LoadBalancerResourceSettingsResponsePtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o LoadBalancerResourceSettingsResponsePtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the csv list of zones common for all frontend IP configurations. Note this is given
+//
+//	precedence only if frontend IP configurations settings are not present.
+func (o LoadBalancerResourceSettingsResponsePtrOutput) Zones() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Zones
+	}).(pulumi.StringPtrOutput)
 }
 
 // Defines the properties for manual resolution.
@@ -1817,6 +3729,230 @@ type NetworkInterfaceResourceSettings struct {
 	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
+// NetworkInterfaceResourceSettingsInput is an input type that accepts NetworkInterfaceResourceSettingsArgs and NetworkInterfaceResourceSettingsOutput values.
+// You can construct a concrete instance of `NetworkInterfaceResourceSettingsInput` via:
+//
+//	NetworkInterfaceResourceSettingsArgs{...}
+type NetworkInterfaceResourceSettingsInput interface {
+	pulumi.Input
+
+	ToNetworkInterfaceResourceSettingsOutput() NetworkInterfaceResourceSettingsOutput
+	ToNetworkInterfaceResourceSettingsOutputWithContext(context.Context) NetworkInterfaceResourceSettingsOutput
+}
+
+// Defines the network interface resource settings.
+type NetworkInterfaceResourceSettingsArgs struct {
+	// Gets or sets a value indicating whether accelerated networking is enabled.
+	EnableAcceleratedNetworking pulumi.BoolPtrInput `pulumi:"enableAcceleratedNetworking"`
+	// Gets or sets the IP configurations of the NIC.
+	IpConfigurations NicIpConfigurationResourceSettingsArrayInput `pulumi:"ipConfigurations"`
+	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+	// Expected value is 'Microsoft.Network/networkInterfaces'.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// Gets or sets the Resource tags.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Gets or sets the target resource group name.
+	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
+	// Gets or sets the target Resource name.
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
+}
+
+func (NetworkInterfaceResourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterfaceResourceSettings)(nil)).Elem()
+}
+
+func (i NetworkInterfaceResourceSettingsArgs) ToNetworkInterfaceResourceSettingsOutput() NetworkInterfaceResourceSettingsOutput {
+	return i.ToNetworkInterfaceResourceSettingsOutputWithContext(context.Background())
+}
+
+func (i NetworkInterfaceResourceSettingsArgs) ToNetworkInterfaceResourceSettingsOutputWithContext(ctx context.Context) NetworkInterfaceResourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceResourceSettingsOutput)
+}
+
+func (i NetworkInterfaceResourceSettingsArgs) ToNetworkInterfaceResourceSettingsPtrOutput() NetworkInterfaceResourceSettingsPtrOutput {
+	return i.ToNetworkInterfaceResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkInterfaceResourceSettingsArgs) ToNetworkInterfaceResourceSettingsPtrOutputWithContext(ctx context.Context) NetworkInterfaceResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceResourceSettingsOutput).ToNetworkInterfaceResourceSettingsPtrOutputWithContext(ctx)
+}
+
+// NetworkInterfaceResourceSettingsPtrInput is an input type that accepts NetworkInterfaceResourceSettingsArgs, NetworkInterfaceResourceSettingsPtr and NetworkInterfaceResourceSettingsPtrOutput values.
+// You can construct a concrete instance of `NetworkInterfaceResourceSettingsPtrInput` via:
+//
+//	        NetworkInterfaceResourceSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworkInterfaceResourceSettingsPtrInput interface {
+	pulumi.Input
+
+	ToNetworkInterfaceResourceSettingsPtrOutput() NetworkInterfaceResourceSettingsPtrOutput
+	ToNetworkInterfaceResourceSettingsPtrOutputWithContext(context.Context) NetworkInterfaceResourceSettingsPtrOutput
+}
+
+type networkInterfaceResourceSettingsPtrType NetworkInterfaceResourceSettingsArgs
+
+func NetworkInterfaceResourceSettingsPtr(v *NetworkInterfaceResourceSettingsArgs) NetworkInterfaceResourceSettingsPtrInput {
+	return (*networkInterfaceResourceSettingsPtrType)(v)
+}
+
+func (*networkInterfaceResourceSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkInterfaceResourceSettings)(nil)).Elem()
+}
+
+func (i *networkInterfaceResourceSettingsPtrType) ToNetworkInterfaceResourceSettingsPtrOutput() NetworkInterfaceResourceSettingsPtrOutput {
+	return i.ToNetworkInterfaceResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *networkInterfaceResourceSettingsPtrType) ToNetworkInterfaceResourceSettingsPtrOutputWithContext(ctx context.Context) NetworkInterfaceResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkInterfaceResourceSettingsPtrOutput)
+}
+
+// Defines the network interface resource settings.
+type NetworkInterfaceResourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (NetworkInterfaceResourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterfaceResourceSettings)(nil)).Elem()
+}
+
+func (o NetworkInterfaceResourceSettingsOutput) ToNetworkInterfaceResourceSettingsOutput() NetworkInterfaceResourceSettingsOutput {
+	return o
+}
+
+func (o NetworkInterfaceResourceSettingsOutput) ToNetworkInterfaceResourceSettingsOutputWithContext(ctx context.Context) NetworkInterfaceResourceSettingsOutput {
+	return o
+}
+
+func (o NetworkInterfaceResourceSettingsOutput) ToNetworkInterfaceResourceSettingsPtrOutput() NetworkInterfaceResourceSettingsPtrOutput {
+	return o.ToNetworkInterfaceResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkInterfaceResourceSettingsOutput) ToNetworkInterfaceResourceSettingsPtrOutputWithContext(ctx context.Context) NetworkInterfaceResourceSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkInterfaceResourceSettings) *NetworkInterfaceResourceSettings {
+		return &v
+	}).(NetworkInterfaceResourceSettingsPtrOutput)
+}
+
+// Gets or sets a value indicating whether accelerated networking is enabled.
+func (o NetworkInterfaceResourceSettingsOutput) EnableAcceleratedNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkInterfaceResourceSettings) *bool { return v.EnableAcceleratedNetworking }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets the IP configurations of the NIC.
+func (o NetworkInterfaceResourceSettingsOutput) IpConfigurations() NicIpConfigurationResourceSettingsArrayOutput {
+	return o.ApplyT(func(v NetworkInterfaceResourceSettings) []NicIpConfigurationResourceSettings {
+		return v.IpConfigurations
+	}).(NicIpConfigurationResourceSettingsArrayOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Network/networkInterfaces'.
+func (o NetworkInterfaceResourceSettingsOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkInterfaceResourceSettings) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o NetworkInterfaceResourceSettingsOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NetworkInterfaceResourceSettings) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o NetworkInterfaceResourceSettingsOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkInterfaceResourceSettings) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o NetworkInterfaceResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkInterfaceResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+type NetworkInterfaceResourceSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkInterfaceResourceSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkInterfaceResourceSettings)(nil)).Elem()
+}
+
+func (o NetworkInterfaceResourceSettingsPtrOutput) ToNetworkInterfaceResourceSettingsPtrOutput() NetworkInterfaceResourceSettingsPtrOutput {
+	return o
+}
+
+func (o NetworkInterfaceResourceSettingsPtrOutput) ToNetworkInterfaceResourceSettingsPtrOutputWithContext(ctx context.Context) NetworkInterfaceResourceSettingsPtrOutput {
+	return o
+}
+
+func (o NetworkInterfaceResourceSettingsPtrOutput) Elem() NetworkInterfaceResourceSettingsOutput {
+	return o.ApplyT(func(v *NetworkInterfaceResourceSettings) NetworkInterfaceResourceSettings {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkInterfaceResourceSettings
+		return ret
+	}).(NetworkInterfaceResourceSettingsOutput)
+}
+
+// Gets or sets a value indicating whether accelerated networking is enabled.
+func (o NetworkInterfaceResourceSettingsPtrOutput) EnableAcceleratedNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkInterfaceResourceSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAcceleratedNetworking
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets the IP configurations of the NIC.
+func (o NetworkInterfaceResourceSettingsPtrOutput) IpConfigurations() NicIpConfigurationResourceSettingsArrayOutput {
+	return o.ApplyT(func(v *NetworkInterfaceResourceSettings) []NicIpConfigurationResourceSettings {
+		if v == nil {
+			return nil
+		}
+		return v.IpConfigurations
+	}).(NicIpConfigurationResourceSettingsArrayOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Network/networkInterfaces'.
+func (o NetworkInterfaceResourceSettingsPtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkInterfaceResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o NetworkInterfaceResourceSettingsPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NetworkInterfaceResourceSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o NetworkInterfaceResourceSettingsPtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkInterfaceResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o NetworkInterfaceResourceSettingsPtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkInterfaceResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines the network interface resource settings.
 type NetworkInterfaceResourceSettingsResponse struct {
 	// Gets or sets a value indicating whether accelerated networking is enabled.
@@ -1834,6 +3970,139 @@ type NetworkInterfaceResourceSettingsResponse struct {
 	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
+// Defines the network interface resource settings.
+type NetworkInterfaceResourceSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkInterfaceResourceSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkInterfaceResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o NetworkInterfaceResourceSettingsResponseOutput) ToNetworkInterfaceResourceSettingsResponseOutput() NetworkInterfaceResourceSettingsResponseOutput {
+	return o
+}
+
+func (o NetworkInterfaceResourceSettingsResponseOutput) ToNetworkInterfaceResourceSettingsResponseOutputWithContext(ctx context.Context) NetworkInterfaceResourceSettingsResponseOutput {
+	return o
+}
+
+// Gets or sets a value indicating whether accelerated networking is enabled.
+func (o NetworkInterfaceResourceSettingsResponseOutput) EnableAcceleratedNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkInterfaceResourceSettingsResponse) *bool { return v.EnableAcceleratedNetworking }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets the IP configurations of the NIC.
+func (o NetworkInterfaceResourceSettingsResponseOutput) IpConfigurations() NicIpConfigurationResourceSettingsResponseArrayOutput {
+	return o.ApplyT(func(v NetworkInterfaceResourceSettingsResponse) []NicIpConfigurationResourceSettingsResponse {
+		return v.IpConfigurations
+	}).(NicIpConfigurationResourceSettingsResponseArrayOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Network/networkInterfaces'.
+func (o NetworkInterfaceResourceSettingsResponseOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkInterfaceResourceSettingsResponse) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o NetworkInterfaceResourceSettingsResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NetworkInterfaceResourceSettingsResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o NetworkInterfaceResourceSettingsResponseOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkInterfaceResourceSettingsResponse) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o NetworkInterfaceResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkInterfaceResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+type NetworkInterfaceResourceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkInterfaceResourceSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkInterfaceResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o NetworkInterfaceResourceSettingsResponsePtrOutput) ToNetworkInterfaceResourceSettingsResponsePtrOutput() NetworkInterfaceResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o NetworkInterfaceResourceSettingsResponsePtrOutput) ToNetworkInterfaceResourceSettingsResponsePtrOutputWithContext(ctx context.Context) NetworkInterfaceResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o NetworkInterfaceResourceSettingsResponsePtrOutput) Elem() NetworkInterfaceResourceSettingsResponseOutput {
+	return o.ApplyT(func(v *NetworkInterfaceResourceSettingsResponse) NetworkInterfaceResourceSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkInterfaceResourceSettingsResponse
+		return ret
+	}).(NetworkInterfaceResourceSettingsResponseOutput)
+}
+
+// Gets or sets a value indicating whether accelerated networking is enabled.
+func (o NetworkInterfaceResourceSettingsResponsePtrOutput) EnableAcceleratedNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkInterfaceResourceSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAcceleratedNetworking
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets the IP configurations of the NIC.
+func (o NetworkInterfaceResourceSettingsResponsePtrOutput) IpConfigurations() NicIpConfigurationResourceSettingsResponseArrayOutput {
+	return o.ApplyT(func(v *NetworkInterfaceResourceSettingsResponse) []NicIpConfigurationResourceSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IpConfigurations
+	}).(NicIpConfigurationResourceSettingsResponseArrayOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Network/networkInterfaces'.
+func (o NetworkInterfaceResourceSettingsResponsePtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkInterfaceResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o NetworkInterfaceResourceSettingsResponsePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NetworkInterfaceResourceSettingsResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o NetworkInterfaceResourceSettingsResponsePtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkInterfaceResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o NetworkInterfaceResourceSettingsResponsePtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkInterfaceResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines the NSG resource settings.
 type NetworkSecurityGroupResourceSettings struct {
 	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
@@ -1849,6 +4118,211 @@ type NetworkSecurityGroupResourceSettings struct {
 	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
+// NetworkSecurityGroupResourceSettingsInput is an input type that accepts NetworkSecurityGroupResourceSettingsArgs and NetworkSecurityGroupResourceSettingsOutput values.
+// You can construct a concrete instance of `NetworkSecurityGroupResourceSettingsInput` via:
+//
+//	NetworkSecurityGroupResourceSettingsArgs{...}
+type NetworkSecurityGroupResourceSettingsInput interface {
+	pulumi.Input
+
+	ToNetworkSecurityGroupResourceSettingsOutput() NetworkSecurityGroupResourceSettingsOutput
+	ToNetworkSecurityGroupResourceSettingsOutputWithContext(context.Context) NetworkSecurityGroupResourceSettingsOutput
+}
+
+// Defines the NSG resource settings.
+type NetworkSecurityGroupResourceSettingsArgs struct {
+	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+	// Expected value is 'Microsoft.Network/networkSecurityGroups'.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// Gets or sets Security rules of network security group.
+	SecurityRules NsgSecurityRuleArrayInput `pulumi:"securityRules"`
+	// Gets or sets the Resource tags.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Gets or sets the target resource group name.
+	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
+	// Gets or sets the target Resource name.
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
+}
+
+func (NetworkSecurityGroupResourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkSecurityGroupResourceSettings)(nil)).Elem()
+}
+
+func (i NetworkSecurityGroupResourceSettingsArgs) ToNetworkSecurityGroupResourceSettingsOutput() NetworkSecurityGroupResourceSettingsOutput {
+	return i.ToNetworkSecurityGroupResourceSettingsOutputWithContext(context.Background())
+}
+
+func (i NetworkSecurityGroupResourceSettingsArgs) ToNetworkSecurityGroupResourceSettingsOutputWithContext(ctx context.Context) NetworkSecurityGroupResourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkSecurityGroupResourceSettingsOutput)
+}
+
+func (i NetworkSecurityGroupResourceSettingsArgs) ToNetworkSecurityGroupResourceSettingsPtrOutput() NetworkSecurityGroupResourceSettingsPtrOutput {
+	return i.ToNetworkSecurityGroupResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkSecurityGroupResourceSettingsArgs) ToNetworkSecurityGroupResourceSettingsPtrOutputWithContext(ctx context.Context) NetworkSecurityGroupResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkSecurityGroupResourceSettingsOutput).ToNetworkSecurityGroupResourceSettingsPtrOutputWithContext(ctx)
+}
+
+// NetworkSecurityGroupResourceSettingsPtrInput is an input type that accepts NetworkSecurityGroupResourceSettingsArgs, NetworkSecurityGroupResourceSettingsPtr and NetworkSecurityGroupResourceSettingsPtrOutput values.
+// You can construct a concrete instance of `NetworkSecurityGroupResourceSettingsPtrInput` via:
+//
+//	        NetworkSecurityGroupResourceSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworkSecurityGroupResourceSettingsPtrInput interface {
+	pulumi.Input
+
+	ToNetworkSecurityGroupResourceSettingsPtrOutput() NetworkSecurityGroupResourceSettingsPtrOutput
+	ToNetworkSecurityGroupResourceSettingsPtrOutputWithContext(context.Context) NetworkSecurityGroupResourceSettingsPtrOutput
+}
+
+type networkSecurityGroupResourceSettingsPtrType NetworkSecurityGroupResourceSettingsArgs
+
+func NetworkSecurityGroupResourceSettingsPtr(v *NetworkSecurityGroupResourceSettingsArgs) NetworkSecurityGroupResourceSettingsPtrInput {
+	return (*networkSecurityGroupResourceSettingsPtrType)(v)
+}
+
+func (*networkSecurityGroupResourceSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkSecurityGroupResourceSettings)(nil)).Elem()
+}
+
+func (i *networkSecurityGroupResourceSettingsPtrType) ToNetworkSecurityGroupResourceSettingsPtrOutput() NetworkSecurityGroupResourceSettingsPtrOutput {
+	return i.ToNetworkSecurityGroupResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *networkSecurityGroupResourceSettingsPtrType) ToNetworkSecurityGroupResourceSettingsPtrOutputWithContext(ctx context.Context) NetworkSecurityGroupResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkSecurityGroupResourceSettingsPtrOutput)
+}
+
+// Defines the NSG resource settings.
+type NetworkSecurityGroupResourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (NetworkSecurityGroupResourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkSecurityGroupResourceSettings)(nil)).Elem()
+}
+
+func (o NetworkSecurityGroupResourceSettingsOutput) ToNetworkSecurityGroupResourceSettingsOutput() NetworkSecurityGroupResourceSettingsOutput {
+	return o
+}
+
+func (o NetworkSecurityGroupResourceSettingsOutput) ToNetworkSecurityGroupResourceSettingsOutputWithContext(ctx context.Context) NetworkSecurityGroupResourceSettingsOutput {
+	return o
+}
+
+func (o NetworkSecurityGroupResourceSettingsOutput) ToNetworkSecurityGroupResourceSettingsPtrOutput() NetworkSecurityGroupResourceSettingsPtrOutput {
+	return o.ToNetworkSecurityGroupResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkSecurityGroupResourceSettingsOutput) ToNetworkSecurityGroupResourceSettingsPtrOutputWithContext(ctx context.Context) NetworkSecurityGroupResourceSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkSecurityGroupResourceSettings) *NetworkSecurityGroupResourceSettings {
+		return &v
+	}).(NetworkSecurityGroupResourceSettingsPtrOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Network/networkSecurityGroups'.
+func (o NetworkSecurityGroupResourceSettingsOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkSecurityGroupResourceSettings) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets Security rules of network security group.
+func (o NetworkSecurityGroupResourceSettingsOutput) SecurityRules() NsgSecurityRuleArrayOutput {
+	return o.ApplyT(func(v NetworkSecurityGroupResourceSettings) []NsgSecurityRule { return v.SecurityRules }).(NsgSecurityRuleArrayOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o NetworkSecurityGroupResourceSettingsOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NetworkSecurityGroupResourceSettings) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o NetworkSecurityGroupResourceSettingsOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkSecurityGroupResourceSettings) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o NetworkSecurityGroupResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkSecurityGroupResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+type NetworkSecurityGroupResourceSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkSecurityGroupResourceSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkSecurityGroupResourceSettings)(nil)).Elem()
+}
+
+func (o NetworkSecurityGroupResourceSettingsPtrOutput) ToNetworkSecurityGroupResourceSettingsPtrOutput() NetworkSecurityGroupResourceSettingsPtrOutput {
+	return o
+}
+
+func (o NetworkSecurityGroupResourceSettingsPtrOutput) ToNetworkSecurityGroupResourceSettingsPtrOutputWithContext(ctx context.Context) NetworkSecurityGroupResourceSettingsPtrOutput {
+	return o
+}
+
+func (o NetworkSecurityGroupResourceSettingsPtrOutput) Elem() NetworkSecurityGroupResourceSettingsOutput {
+	return o.ApplyT(func(v *NetworkSecurityGroupResourceSettings) NetworkSecurityGroupResourceSettings {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkSecurityGroupResourceSettings
+		return ret
+	}).(NetworkSecurityGroupResourceSettingsOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Network/networkSecurityGroups'.
+func (o NetworkSecurityGroupResourceSettingsPtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkSecurityGroupResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets Security rules of network security group.
+func (o NetworkSecurityGroupResourceSettingsPtrOutput) SecurityRules() NsgSecurityRuleArrayOutput {
+	return o.ApplyT(func(v *NetworkSecurityGroupResourceSettings) []NsgSecurityRule {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityRules
+	}).(NsgSecurityRuleArrayOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o NetworkSecurityGroupResourceSettingsPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NetworkSecurityGroupResourceSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o NetworkSecurityGroupResourceSettingsPtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkSecurityGroupResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o NetworkSecurityGroupResourceSettingsPtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkSecurityGroupResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines the NSG resource settings.
 type NetworkSecurityGroupResourceSettingsResponse struct {
 	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
@@ -1862,6 +4336,122 @@ type NetworkSecurityGroupResourceSettingsResponse struct {
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
 	TargetResourceName *string `pulumi:"targetResourceName"`
+}
+
+// Defines the NSG resource settings.
+type NetworkSecurityGroupResourceSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkSecurityGroupResourceSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkSecurityGroupResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o NetworkSecurityGroupResourceSettingsResponseOutput) ToNetworkSecurityGroupResourceSettingsResponseOutput() NetworkSecurityGroupResourceSettingsResponseOutput {
+	return o
+}
+
+func (o NetworkSecurityGroupResourceSettingsResponseOutput) ToNetworkSecurityGroupResourceSettingsResponseOutputWithContext(ctx context.Context) NetworkSecurityGroupResourceSettingsResponseOutput {
+	return o
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Network/networkSecurityGroups'.
+func (o NetworkSecurityGroupResourceSettingsResponseOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkSecurityGroupResourceSettingsResponse) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets Security rules of network security group.
+func (o NetworkSecurityGroupResourceSettingsResponseOutput) SecurityRules() NsgSecurityRuleResponseArrayOutput {
+	return o.ApplyT(func(v NetworkSecurityGroupResourceSettingsResponse) []NsgSecurityRuleResponse { return v.SecurityRules }).(NsgSecurityRuleResponseArrayOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o NetworkSecurityGroupResourceSettingsResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NetworkSecurityGroupResourceSettingsResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o NetworkSecurityGroupResourceSettingsResponseOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkSecurityGroupResourceSettingsResponse) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o NetworkSecurityGroupResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkSecurityGroupResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+type NetworkSecurityGroupResourceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkSecurityGroupResourceSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkSecurityGroupResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o NetworkSecurityGroupResourceSettingsResponsePtrOutput) ToNetworkSecurityGroupResourceSettingsResponsePtrOutput() NetworkSecurityGroupResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o NetworkSecurityGroupResourceSettingsResponsePtrOutput) ToNetworkSecurityGroupResourceSettingsResponsePtrOutputWithContext(ctx context.Context) NetworkSecurityGroupResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o NetworkSecurityGroupResourceSettingsResponsePtrOutput) Elem() NetworkSecurityGroupResourceSettingsResponseOutput {
+	return o.ApplyT(func(v *NetworkSecurityGroupResourceSettingsResponse) NetworkSecurityGroupResourceSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkSecurityGroupResourceSettingsResponse
+		return ret
+	}).(NetworkSecurityGroupResourceSettingsResponseOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Network/networkSecurityGroups'.
+func (o NetworkSecurityGroupResourceSettingsResponsePtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkSecurityGroupResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets Security rules of network security group.
+func (o NetworkSecurityGroupResourceSettingsResponsePtrOutput) SecurityRules() NsgSecurityRuleResponseArrayOutput {
+	return o.ApplyT(func(v *NetworkSecurityGroupResourceSettingsResponse) []NsgSecurityRuleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityRules
+	}).(NsgSecurityRuleResponseArrayOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o NetworkSecurityGroupResourceSettingsResponsePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NetworkSecurityGroupResourceSettingsResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o NetworkSecurityGroupResourceSettingsResponsePtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkSecurityGroupResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o NetworkSecurityGroupResourceSettingsResponsePtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkSecurityGroupResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
 }
 
 // Defines NIC IP configuration properties.
@@ -1884,6 +4474,153 @@ type NicIpConfigurationResourceSettings struct {
 	Subnet *SubnetReference `pulumi:"subnet"`
 }
 
+// NicIpConfigurationResourceSettingsInput is an input type that accepts NicIpConfigurationResourceSettingsArgs and NicIpConfigurationResourceSettingsOutput values.
+// You can construct a concrete instance of `NicIpConfigurationResourceSettingsInput` via:
+//
+//	NicIpConfigurationResourceSettingsArgs{...}
+type NicIpConfigurationResourceSettingsInput interface {
+	pulumi.Input
+
+	ToNicIpConfigurationResourceSettingsOutput() NicIpConfigurationResourceSettingsOutput
+	ToNicIpConfigurationResourceSettingsOutputWithContext(context.Context) NicIpConfigurationResourceSettingsOutput
+}
+
+// Defines NIC IP configuration properties.
+type NicIpConfigurationResourceSettingsArgs struct {
+	// Gets or sets the references of the load balancer backend address pools.
+	LoadBalancerBackendAddressPools LoadBalancerBackendAddressPoolReferenceArrayInput `pulumi:"loadBalancerBackendAddressPools"`
+	// Gets or sets the references of the load balancer NAT rules.
+	LoadBalancerNatRules LoadBalancerNatRuleReferenceArrayInput `pulumi:"loadBalancerNatRules"`
+	// Gets or sets the IP configuration name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Gets or sets a value indicating whether this IP configuration is the primary.
+	Primary pulumi.BoolPtrInput `pulumi:"primary"`
+	// Gets or sets the private IP address of the network interface IP Configuration.
+	PrivateIpAddress pulumi.StringPtrInput `pulumi:"privateIpAddress"`
+	// Gets or sets the private IP address allocation method.
+	PrivateIpAllocationMethod pulumi.StringPtrInput `pulumi:"privateIpAllocationMethod"`
+	// Defines reference to a public IP.
+	PublicIp PublicIpReferencePtrInput `pulumi:"publicIp"`
+	// Defines reference to subnet.
+	Subnet SubnetReferencePtrInput `pulumi:"subnet"`
+}
+
+func (NicIpConfigurationResourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NicIpConfigurationResourceSettings)(nil)).Elem()
+}
+
+func (i NicIpConfigurationResourceSettingsArgs) ToNicIpConfigurationResourceSettingsOutput() NicIpConfigurationResourceSettingsOutput {
+	return i.ToNicIpConfigurationResourceSettingsOutputWithContext(context.Background())
+}
+
+func (i NicIpConfigurationResourceSettingsArgs) ToNicIpConfigurationResourceSettingsOutputWithContext(ctx context.Context) NicIpConfigurationResourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NicIpConfigurationResourceSettingsOutput)
+}
+
+// NicIpConfigurationResourceSettingsArrayInput is an input type that accepts NicIpConfigurationResourceSettingsArray and NicIpConfigurationResourceSettingsArrayOutput values.
+// You can construct a concrete instance of `NicIpConfigurationResourceSettingsArrayInput` via:
+//
+//	NicIpConfigurationResourceSettingsArray{ NicIpConfigurationResourceSettingsArgs{...} }
+type NicIpConfigurationResourceSettingsArrayInput interface {
+	pulumi.Input
+
+	ToNicIpConfigurationResourceSettingsArrayOutput() NicIpConfigurationResourceSettingsArrayOutput
+	ToNicIpConfigurationResourceSettingsArrayOutputWithContext(context.Context) NicIpConfigurationResourceSettingsArrayOutput
+}
+
+type NicIpConfigurationResourceSettingsArray []NicIpConfigurationResourceSettingsInput
+
+func (NicIpConfigurationResourceSettingsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NicIpConfigurationResourceSettings)(nil)).Elem()
+}
+
+func (i NicIpConfigurationResourceSettingsArray) ToNicIpConfigurationResourceSettingsArrayOutput() NicIpConfigurationResourceSettingsArrayOutput {
+	return i.ToNicIpConfigurationResourceSettingsArrayOutputWithContext(context.Background())
+}
+
+func (i NicIpConfigurationResourceSettingsArray) ToNicIpConfigurationResourceSettingsArrayOutputWithContext(ctx context.Context) NicIpConfigurationResourceSettingsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NicIpConfigurationResourceSettingsArrayOutput)
+}
+
+// Defines NIC IP configuration properties.
+type NicIpConfigurationResourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (NicIpConfigurationResourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NicIpConfigurationResourceSettings)(nil)).Elem()
+}
+
+func (o NicIpConfigurationResourceSettingsOutput) ToNicIpConfigurationResourceSettingsOutput() NicIpConfigurationResourceSettingsOutput {
+	return o
+}
+
+func (o NicIpConfigurationResourceSettingsOutput) ToNicIpConfigurationResourceSettingsOutputWithContext(ctx context.Context) NicIpConfigurationResourceSettingsOutput {
+	return o
+}
+
+// Gets or sets the references of the load balancer backend address pools.
+func (o NicIpConfigurationResourceSettingsOutput) LoadBalancerBackendAddressPools() LoadBalancerBackendAddressPoolReferenceArrayOutput {
+	return o.ApplyT(func(v NicIpConfigurationResourceSettings) []LoadBalancerBackendAddressPoolReference {
+		return v.LoadBalancerBackendAddressPools
+	}).(LoadBalancerBackendAddressPoolReferenceArrayOutput)
+}
+
+// Gets or sets the references of the load balancer NAT rules.
+func (o NicIpConfigurationResourceSettingsOutput) LoadBalancerNatRules() LoadBalancerNatRuleReferenceArrayOutput {
+	return o.ApplyT(func(v NicIpConfigurationResourceSettings) []LoadBalancerNatRuleReference {
+		return v.LoadBalancerNatRules
+	}).(LoadBalancerNatRuleReferenceArrayOutput)
+}
+
+// Gets or sets the IP configuration name.
+func (o NicIpConfigurationResourceSettingsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NicIpConfigurationResourceSettings) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets a value indicating whether this IP configuration is the primary.
+func (o NicIpConfigurationResourceSettingsOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NicIpConfigurationResourceSettings) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets the private IP address of the network interface IP Configuration.
+func (o NicIpConfigurationResourceSettingsOutput) PrivateIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NicIpConfigurationResourceSettings) *string { return v.PrivateIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the private IP address allocation method.
+func (o NicIpConfigurationResourceSettingsOutput) PrivateIpAllocationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NicIpConfigurationResourceSettings) *string { return v.PrivateIpAllocationMethod }).(pulumi.StringPtrOutput)
+}
+
+// Defines reference to a public IP.
+func (o NicIpConfigurationResourceSettingsOutput) PublicIp() PublicIpReferencePtrOutput {
+	return o.ApplyT(func(v NicIpConfigurationResourceSettings) *PublicIpReference { return v.PublicIp }).(PublicIpReferencePtrOutput)
+}
+
+// Defines reference to subnet.
+func (o NicIpConfigurationResourceSettingsOutput) Subnet() SubnetReferencePtrOutput {
+	return o.ApplyT(func(v NicIpConfigurationResourceSettings) *SubnetReference { return v.Subnet }).(SubnetReferencePtrOutput)
+}
+
+type NicIpConfigurationResourceSettingsArrayOutput struct{ *pulumi.OutputState }
+
+func (NicIpConfigurationResourceSettingsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NicIpConfigurationResourceSettings)(nil)).Elem()
+}
+
+func (o NicIpConfigurationResourceSettingsArrayOutput) ToNicIpConfigurationResourceSettingsArrayOutput() NicIpConfigurationResourceSettingsArrayOutput {
+	return o
+}
+
+func (o NicIpConfigurationResourceSettingsArrayOutput) ToNicIpConfigurationResourceSettingsArrayOutputWithContext(ctx context.Context) NicIpConfigurationResourceSettingsArrayOutput {
+	return o
+}
+
+func (o NicIpConfigurationResourceSettingsArrayOutput) Index(i pulumi.IntInput) NicIpConfigurationResourceSettingsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NicIpConfigurationResourceSettings {
+		return vs[0].([]NicIpConfigurationResourceSettings)[vs[1].(int)]
+	}).(NicIpConfigurationResourceSettingsOutput)
+}
+
 // Defines NIC IP configuration properties.
 type NicIpConfigurationResourceSettingsResponse struct {
 	// Gets or sets the references of the load balancer backend address pools.
@@ -1904,16 +4641,283 @@ type NicIpConfigurationResourceSettingsResponse struct {
 	Subnet *SubnetReferenceResponse `pulumi:"subnet"`
 }
 
+// Defines NIC IP configuration properties.
+type NicIpConfigurationResourceSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (NicIpConfigurationResourceSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NicIpConfigurationResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o NicIpConfigurationResourceSettingsResponseOutput) ToNicIpConfigurationResourceSettingsResponseOutput() NicIpConfigurationResourceSettingsResponseOutput {
+	return o
+}
+
+func (o NicIpConfigurationResourceSettingsResponseOutput) ToNicIpConfigurationResourceSettingsResponseOutputWithContext(ctx context.Context) NicIpConfigurationResourceSettingsResponseOutput {
+	return o
+}
+
+// Gets or sets the references of the load balancer backend address pools.
+func (o NicIpConfigurationResourceSettingsResponseOutput) LoadBalancerBackendAddressPools() LoadBalancerBackendAddressPoolReferenceResponseArrayOutput {
+	return o.ApplyT(func(v NicIpConfigurationResourceSettingsResponse) []LoadBalancerBackendAddressPoolReferenceResponse {
+		return v.LoadBalancerBackendAddressPools
+	}).(LoadBalancerBackendAddressPoolReferenceResponseArrayOutput)
+}
+
+// Gets or sets the references of the load balancer NAT rules.
+func (o NicIpConfigurationResourceSettingsResponseOutput) LoadBalancerNatRules() LoadBalancerNatRuleReferenceResponseArrayOutput {
+	return o.ApplyT(func(v NicIpConfigurationResourceSettingsResponse) []LoadBalancerNatRuleReferenceResponse {
+		return v.LoadBalancerNatRules
+	}).(LoadBalancerNatRuleReferenceResponseArrayOutput)
+}
+
+// Gets or sets the IP configuration name.
+func (o NicIpConfigurationResourceSettingsResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NicIpConfigurationResourceSettingsResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets a value indicating whether this IP configuration is the primary.
+func (o NicIpConfigurationResourceSettingsResponseOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NicIpConfigurationResourceSettingsResponse) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets the private IP address of the network interface IP Configuration.
+func (o NicIpConfigurationResourceSettingsResponseOutput) PrivateIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NicIpConfigurationResourceSettingsResponse) *string { return v.PrivateIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the private IP address allocation method.
+func (o NicIpConfigurationResourceSettingsResponseOutput) PrivateIpAllocationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NicIpConfigurationResourceSettingsResponse) *string { return v.PrivateIpAllocationMethod }).(pulumi.StringPtrOutput)
+}
+
+// Defines reference to a public IP.
+func (o NicIpConfigurationResourceSettingsResponseOutput) PublicIp() PublicIpReferenceResponsePtrOutput {
+	return o.ApplyT(func(v NicIpConfigurationResourceSettingsResponse) *PublicIpReferenceResponse { return v.PublicIp }).(PublicIpReferenceResponsePtrOutput)
+}
+
+// Defines reference to subnet.
+func (o NicIpConfigurationResourceSettingsResponseOutput) Subnet() SubnetReferenceResponsePtrOutput {
+	return o.ApplyT(func(v NicIpConfigurationResourceSettingsResponse) *SubnetReferenceResponse { return v.Subnet }).(SubnetReferenceResponsePtrOutput)
+}
+
+type NicIpConfigurationResourceSettingsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NicIpConfigurationResourceSettingsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NicIpConfigurationResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o NicIpConfigurationResourceSettingsResponseArrayOutput) ToNicIpConfigurationResourceSettingsResponseArrayOutput() NicIpConfigurationResourceSettingsResponseArrayOutput {
+	return o
+}
+
+func (o NicIpConfigurationResourceSettingsResponseArrayOutput) ToNicIpConfigurationResourceSettingsResponseArrayOutputWithContext(ctx context.Context) NicIpConfigurationResourceSettingsResponseArrayOutput {
+	return o
+}
+
+func (o NicIpConfigurationResourceSettingsResponseArrayOutput) Index(i pulumi.IntInput) NicIpConfigurationResourceSettingsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NicIpConfigurationResourceSettingsResponse {
+		return vs[0].([]NicIpConfigurationResourceSettingsResponse)[vs[1].(int)]
+	}).(NicIpConfigurationResourceSettingsResponseOutput)
+}
+
 // Defines reference to NSG.
 type NsgReference struct {
 	// Gets the ARM resource ID of the tracked resource being referenced.
 	SourceArmResourceId string `pulumi:"sourceArmResourceId"`
 }
 
+// NsgReferenceInput is an input type that accepts NsgReferenceArgs and NsgReferenceOutput values.
+// You can construct a concrete instance of `NsgReferenceInput` via:
+//
+//	NsgReferenceArgs{...}
+type NsgReferenceInput interface {
+	pulumi.Input
+
+	ToNsgReferenceOutput() NsgReferenceOutput
+	ToNsgReferenceOutputWithContext(context.Context) NsgReferenceOutput
+}
+
+// Defines reference to NSG.
+type NsgReferenceArgs struct {
+	// Gets the ARM resource ID of the tracked resource being referenced.
+	SourceArmResourceId pulumi.StringInput `pulumi:"sourceArmResourceId"`
+}
+
+func (NsgReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NsgReference)(nil)).Elem()
+}
+
+func (i NsgReferenceArgs) ToNsgReferenceOutput() NsgReferenceOutput {
+	return i.ToNsgReferenceOutputWithContext(context.Background())
+}
+
+func (i NsgReferenceArgs) ToNsgReferenceOutputWithContext(ctx context.Context) NsgReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NsgReferenceOutput)
+}
+
+func (i NsgReferenceArgs) ToNsgReferencePtrOutput() NsgReferencePtrOutput {
+	return i.ToNsgReferencePtrOutputWithContext(context.Background())
+}
+
+func (i NsgReferenceArgs) ToNsgReferencePtrOutputWithContext(ctx context.Context) NsgReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NsgReferenceOutput).ToNsgReferencePtrOutputWithContext(ctx)
+}
+
+// NsgReferencePtrInput is an input type that accepts NsgReferenceArgs, NsgReferencePtr and NsgReferencePtrOutput values.
+// You can construct a concrete instance of `NsgReferencePtrInput` via:
+//
+//	        NsgReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type NsgReferencePtrInput interface {
+	pulumi.Input
+
+	ToNsgReferencePtrOutput() NsgReferencePtrOutput
+	ToNsgReferencePtrOutputWithContext(context.Context) NsgReferencePtrOutput
+}
+
+type nsgReferencePtrType NsgReferenceArgs
+
+func NsgReferencePtr(v *NsgReferenceArgs) NsgReferencePtrInput {
+	return (*nsgReferencePtrType)(v)
+}
+
+func (*nsgReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NsgReference)(nil)).Elem()
+}
+
+func (i *nsgReferencePtrType) ToNsgReferencePtrOutput() NsgReferencePtrOutput {
+	return i.ToNsgReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *nsgReferencePtrType) ToNsgReferencePtrOutputWithContext(ctx context.Context) NsgReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NsgReferencePtrOutput)
+}
+
+// Defines reference to NSG.
+type NsgReferenceOutput struct{ *pulumi.OutputState }
+
+func (NsgReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NsgReference)(nil)).Elem()
+}
+
+func (o NsgReferenceOutput) ToNsgReferenceOutput() NsgReferenceOutput {
+	return o
+}
+
+func (o NsgReferenceOutput) ToNsgReferenceOutputWithContext(ctx context.Context) NsgReferenceOutput {
+	return o
+}
+
+func (o NsgReferenceOutput) ToNsgReferencePtrOutput() NsgReferencePtrOutput {
+	return o.ToNsgReferencePtrOutputWithContext(context.Background())
+}
+
+func (o NsgReferenceOutput) ToNsgReferencePtrOutputWithContext(ctx context.Context) NsgReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NsgReference) *NsgReference {
+		return &v
+	}).(NsgReferencePtrOutput)
+}
+
+// Gets the ARM resource ID of the tracked resource being referenced.
+func (o NsgReferenceOutput) SourceArmResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v NsgReference) string { return v.SourceArmResourceId }).(pulumi.StringOutput)
+}
+
+type NsgReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (NsgReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NsgReference)(nil)).Elem()
+}
+
+func (o NsgReferencePtrOutput) ToNsgReferencePtrOutput() NsgReferencePtrOutput {
+	return o
+}
+
+func (o NsgReferencePtrOutput) ToNsgReferencePtrOutputWithContext(ctx context.Context) NsgReferencePtrOutput {
+	return o
+}
+
+func (o NsgReferencePtrOutput) Elem() NsgReferenceOutput {
+	return o.ApplyT(func(v *NsgReference) NsgReference {
+		if v != nil {
+			return *v
+		}
+		var ret NsgReference
+		return ret
+	}).(NsgReferenceOutput)
+}
+
+// Gets the ARM resource ID of the tracked resource being referenced.
+func (o NsgReferencePtrOutput) SourceArmResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NsgReference) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceArmResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines reference to NSG.
 type NsgReferenceResponse struct {
 	// Gets the ARM resource ID of the tracked resource being referenced.
 	SourceArmResourceId string `pulumi:"sourceArmResourceId"`
+}
+
+// Defines reference to NSG.
+type NsgReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (NsgReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NsgReferenceResponse)(nil)).Elem()
+}
+
+func (o NsgReferenceResponseOutput) ToNsgReferenceResponseOutput() NsgReferenceResponseOutput {
+	return o
+}
+
+func (o NsgReferenceResponseOutput) ToNsgReferenceResponseOutputWithContext(ctx context.Context) NsgReferenceResponseOutput {
+	return o
+}
+
+// Gets the ARM resource ID of the tracked resource being referenced.
+func (o NsgReferenceResponseOutput) SourceArmResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v NsgReferenceResponse) string { return v.SourceArmResourceId }).(pulumi.StringOutput)
+}
+
+type NsgReferenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NsgReferenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NsgReferenceResponse)(nil)).Elem()
+}
+
+func (o NsgReferenceResponsePtrOutput) ToNsgReferenceResponsePtrOutput() NsgReferenceResponsePtrOutput {
+	return o
+}
+
+func (o NsgReferenceResponsePtrOutput) ToNsgReferenceResponsePtrOutputWithContext(ctx context.Context) NsgReferenceResponsePtrOutput {
+	return o
+}
+
+func (o NsgReferenceResponsePtrOutput) Elem() NsgReferenceResponseOutput {
+	return o.ApplyT(func(v *NsgReferenceResponse) NsgReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret NsgReferenceResponse
+		return ret
+	}).(NsgReferenceResponseOutput)
+}
+
+// Gets the ARM resource ID of the tracked resource being referenced.
+func (o NsgReferenceResponsePtrOutput) SourceArmResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NsgReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceArmResourceId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Security Rule data model for Network Security Groups.
@@ -1951,6 +4955,187 @@ type NsgSecurityRule struct {
 	SourcePortRange *string `pulumi:"sourcePortRange"`
 }
 
+// NsgSecurityRuleInput is an input type that accepts NsgSecurityRuleArgs and NsgSecurityRuleOutput values.
+// You can construct a concrete instance of `NsgSecurityRuleInput` via:
+//
+//	NsgSecurityRuleArgs{...}
+type NsgSecurityRuleInput interface {
+	pulumi.Input
+
+	ToNsgSecurityRuleOutput() NsgSecurityRuleOutput
+	ToNsgSecurityRuleOutputWithContext(context.Context) NsgSecurityRuleOutput
+}
+
+// Security Rule data model for Network Security Groups.
+type NsgSecurityRuleArgs struct {
+	// Gets or sets whether network traffic is allowed or denied.
+	// Possible values are “Allow” and “Deny”.
+	Access pulumi.StringPtrInput `pulumi:"access"`
+	// Gets or sets a description for this rule. Restricted to 140 chars.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Gets or sets destination address prefix. CIDR or source IP range.
+	//  A “*” can also be used to match all source IPs. Default tags such
+	// as ‘VirtualNetwork’, ‘AzureLoadBalancer’ and ‘Internet’ can also be used.
+	DestinationAddressPrefix pulumi.StringPtrInput `pulumi:"destinationAddressPrefix"`
+	// Gets or sets Destination Port or Range. Integer or range between
+	// 0 and 65535. A “*” can also be used to match all ports.
+	DestinationPortRange pulumi.StringPtrInput `pulumi:"destinationPortRange"`
+	// Gets or sets the direction of the rule.InBound or Outbound. The
+	// direction specifies if rule will be evaluated on incoming or outgoing traffic.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Gets or sets the Security rule name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Gets or sets the priority of the rule. The value can be between
+	// 100 and 4096. The priority number must be unique for each rule in the collection.
+	// The lower the priority number, the higher the priority of the rule.
+	Priority pulumi.IntPtrInput `pulumi:"priority"`
+	// Gets or sets Network protocol this rule applies to. Can be Tcp, Udp or All(*).
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// Gets or sets source address prefix. CIDR or source IP range. A
+	// “*” can also be used to match all source IPs.  Default tags such as ‘VirtualNetwork’,
+	// ‘AzureLoadBalancer’ and ‘Internet’ can also be used. If this is an ingress
+	// rule, specifies where network traffic originates from.
+	SourceAddressPrefix pulumi.StringPtrInput `pulumi:"sourceAddressPrefix"`
+	// Gets or sets Source Port or Range. Integer or range between 0 and
+	// 65535. A “*” can also be used to match all ports.
+	SourcePortRange pulumi.StringPtrInput `pulumi:"sourcePortRange"`
+}
+
+func (NsgSecurityRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NsgSecurityRule)(nil)).Elem()
+}
+
+func (i NsgSecurityRuleArgs) ToNsgSecurityRuleOutput() NsgSecurityRuleOutput {
+	return i.ToNsgSecurityRuleOutputWithContext(context.Background())
+}
+
+func (i NsgSecurityRuleArgs) ToNsgSecurityRuleOutputWithContext(ctx context.Context) NsgSecurityRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NsgSecurityRuleOutput)
+}
+
+// NsgSecurityRuleArrayInput is an input type that accepts NsgSecurityRuleArray and NsgSecurityRuleArrayOutput values.
+// You can construct a concrete instance of `NsgSecurityRuleArrayInput` via:
+//
+//	NsgSecurityRuleArray{ NsgSecurityRuleArgs{...} }
+type NsgSecurityRuleArrayInput interface {
+	pulumi.Input
+
+	ToNsgSecurityRuleArrayOutput() NsgSecurityRuleArrayOutput
+	ToNsgSecurityRuleArrayOutputWithContext(context.Context) NsgSecurityRuleArrayOutput
+}
+
+type NsgSecurityRuleArray []NsgSecurityRuleInput
+
+func (NsgSecurityRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NsgSecurityRule)(nil)).Elem()
+}
+
+func (i NsgSecurityRuleArray) ToNsgSecurityRuleArrayOutput() NsgSecurityRuleArrayOutput {
+	return i.ToNsgSecurityRuleArrayOutputWithContext(context.Background())
+}
+
+func (i NsgSecurityRuleArray) ToNsgSecurityRuleArrayOutputWithContext(ctx context.Context) NsgSecurityRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NsgSecurityRuleArrayOutput)
+}
+
+// Security Rule data model for Network Security Groups.
+type NsgSecurityRuleOutput struct{ *pulumi.OutputState }
+
+func (NsgSecurityRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NsgSecurityRule)(nil)).Elem()
+}
+
+func (o NsgSecurityRuleOutput) ToNsgSecurityRuleOutput() NsgSecurityRuleOutput {
+	return o
+}
+
+func (o NsgSecurityRuleOutput) ToNsgSecurityRuleOutputWithContext(ctx context.Context) NsgSecurityRuleOutput {
+	return o
+}
+
+// Gets or sets whether network traffic is allowed or denied.
+// Possible values are “Allow” and “Deny”.
+func (o NsgSecurityRuleOutput) Access() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NsgSecurityRule) *string { return v.Access }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets a description for this rule. Restricted to 140 chars.
+func (o NsgSecurityRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NsgSecurityRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets destination address prefix. CIDR or source IP range.
+//
+//	A “*” can also be used to match all source IPs. Default tags such
+//
+// as ‘VirtualNetwork’, ‘AzureLoadBalancer’ and ‘Internet’ can also be used.
+func (o NsgSecurityRuleOutput) DestinationAddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NsgSecurityRule) *string { return v.DestinationAddressPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets Destination Port or Range. Integer or range between
+// 0 and 65535. A “*” can also be used to match all ports.
+func (o NsgSecurityRuleOutput) DestinationPortRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NsgSecurityRule) *string { return v.DestinationPortRange }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the direction of the rule.InBound or Outbound. The
+// direction specifies if rule will be evaluated on incoming or outgoing traffic.
+func (o NsgSecurityRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NsgSecurityRule) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Security rule name.
+func (o NsgSecurityRuleOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NsgSecurityRule) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the priority of the rule. The value can be between
+// 100 and 4096. The priority number must be unique for each rule in the collection.
+// The lower the priority number, the higher the priority of the rule.
+func (o NsgSecurityRuleOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NsgSecurityRule) *int { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets Network protocol this rule applies to. Can be Tcp, Udp or All(*).
+func (o NsgSecurityRuleOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NsgSecurityRule) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets source address prefix. CIDR or source IP range. A
+// “*” can also be used to match all source IPs.  Default tags such as ‘VirtualNetwork’,
+// ‘AzureLoadBalancer’ and ‘Internet’ can also be used. If this is an ingress
+// rule, specifies where network traffic originates from.
+func (o NsgSecurityRuleOutput) SourceAddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NsgSecurityRule) *string { return v.SourceAddressPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets Source Port or Range. Integer or range between 0 and
+// 65535. A “*” can also be used to match all ports.
+func (o NsgSecurityRuleOutput) SourcePortRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NsgSecurityRule) *string { return v.SourcePortRange }).(pulumi.StringPtrOutput)
+}
+
+type NsgSecurityRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (NsgSecurityRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NsgSecurityRule)(nil)).Elem()
+}
+
+func (o NsgSecurityRuleArrayOutput) ToNsgSecurityRuleArrayOutput() NsgSecurityRuleArrayOutput {
+	return o
+}
+
+func (o NsgSecurityRuleArrayOutput) ToNsgSecurityRuleArrayOutputWithContext(ctx context.Context) NsgSecurityRuleArrayOutput {
+	return o
+}
+
+func (o NsgSecurityRuleArrayOutput) Index(i pulumi.IntInput) NsgSecurityRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NsgSecurityRule {
+		return vs[0].([]NsgSecurityRule)[vs[1].(int)]
+	}).(NsgSecurityRuleOutput)
+}
+
 // Security Rule data model for Network Security Groups.
 type NsgSecurityRuleResponse struct {
 	// Gets or sets whether network traffic is allowed or denied.
@@ -1986,6 +5171,104 @@ type NsgSecurityRuleResponse struct {
 	SourcePortRange *string `pulumi:"sourcePortRange"`
 }
 
+// Security Rule data model for Network Security Groups.
+type NsgSecurityRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (NsgSecurityRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NsgSecurityRuleResponse)(nil)).Elem()
+}
+
+func (o NsgSecurityRuleResponseOutput) ToNsgSecurityRuleResponseOutput() NsgSecurityRuleResponseOutput {
+	return o
+}
+
+func (o NsgSecurityRuleResponseOutput) ToNsgSecurityRuleResponseOutputWithContext(ctx context.Context) NsgSecurityRuleResponseOutput {
+	return o
+}
+
+// Gets or sets whether network traffic is allowed or denied.
+// Possible values are “Allow” and “Deny”.
+func (o NsgSecurityRuleResponseOutput) Access() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NsgSecurityRuleResponse) *string { return v.Access }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets a description for this rule. Restricted to 140 chars.
+func (o NsgSecurityRuleResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NsgSecurityRuleResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets destination address prefix. CIDR or source IP range.
+//
+//	A “*” can also be used to match all source IPs. Default tags such
+//
+// as ‘VirtualNetwork’, ‘AzureLoadBalancer’ and ‘Internet’ can also be used.
+func (o NsgSecurityRuleResponseOutput) DestinationAddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NsgSecurityRuleResponse) *string { return v.DestinationAddressPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets Destination Port or Range. Integer or range between
+// 0 and 65535. A “*” can also be used to match all ports.
+func (o NsgSecurityRuleResponseOutput) DestinationPortRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NsgSecurityRuleResponse) *string { return v.DestinationPortRange }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the direction of the rule.InBound or Outbound. The
+// direction specifies if rule will be evaluated on incoming or outgoing traffic.
+func (o NsgSecurityRuleResponseOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NsgSecurityRuleResponse) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Security rule name.
+func (o NsgSecurityRuleResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NsgSecurityRuleResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the priority of the rule. The value can be between
+// 100 and 4096. The priority number must be unique for each rule in the collection.
+// The lower the priority number, the higher the priority of the rule.
+func (o NsgSecurityRuleResponseOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NsgSecurityRuleResponse) *int { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets Network protocol this rule applies to. Can be Tcp, Udp or All(*).
+func (o NsgSecurityRuleResponseOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NsgSecurityRuleResponse) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets source address prefix. CIDR or source IP range. A
+// “*” can also be used to match all source IPs.  Default tags such as ‘VirtualNetwork’,
+// ‘AzureLoadBalancer’ and ‘Internet’ can also be used. If this is an ingress
+// rule, specifies where network traffic originates from.
+func (o NsgSecurityRuleResponseOutput) SourceAddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NsgSecurityRuleResponse) *string { return v.SourceAddressPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets Source Port or Range. Integer or range between 0 and
+// 65535. A “*” can also be used to match all ports.
+func (o NsgSecurityRuleResponseOutput) SourcePortRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NsgSecurityRuleResponse) *string { return v.SourcePortRange }).(pulumi.StringPtrOutput)
+}
+
+type NsgSecurityRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NsgSecurityRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NsgSecurityRuleResponse)(nil)).Elem()
+}
+
+func (o NsgSecurityRuleResponseArrayOutput) ToNsgSecurityRuleResponseArrayOutput() NsgSecurityRuleResponseArrayOutput {
+	return o
+}
+
+func (o NsgSecurityRuleResponseArrayOutput) ToNsgSecurityRuleResponseArrayOutputWithContext(ctx context.Context) NsgSecurityRuleResponseArrayOutput {
+	return o
+}
+
+func (o NsgSecurityRuleResponseArrayOutput) Index(i pulumi.IntInput) NsgSecurityRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NsgSecurityRuleResponse {
+		return vs[0].([]NsgSecurityRuleResponse)[vs[1].(int)]
+	}).(NsgSecurityRuleResponseOutput)
+}
+
 // Defines the public IP address resource settings.
 type PublicIPAddressResourceSettings struct {
 	// Gets or sets the domain name label.
@@ -2007,6 +5290,279 @@ type PublicIPAddressResourceSettings struct {
 	TargetResourceName *string `pulumi:"targetResourceName"`
 	// Gets or sets public IP zones.
 	Zones *string `pulumi:"zones"`
+}
+
+// PublicIPAddressResourceSettingsInput is an input type that accepts PublicIPAddressResourceSettingsArgs and PublicIPAddressResourceSettingsOutput values.
+// You can construct a concrete instance of `PublicIPAddressResourceSettingsInput` via:
+//
+//	PublicIPAddressResourceSettingsArgs{...}
+type PublicIPAddressResourceSettingsInput interface {
+	pulumi.Input
+
+	ToPublicIPAddressResourceSettingsOutput() PublicIPAddressResourceSettingsOutput
+	ToPublicIPAddressResourceSettingsOutputWithContext(context.Context) PublicIPAddressResourceSettingsOutput
+}
+
+// Defines the public IP address resource settings.
+type PublicIPAddressResourceSettingsArgs struct {
+	// Gets or sets the domain name label.
+	DomainNameLabel pulumi.StringPtrInput `pulumi:"domainNameLabel"`
+	// Gets or sets the fully qualified domain name.
+	Fqdn pulumi.StringPtrInput `pulumi:"fqdn"`
+	// Gets or sets public IP allocation method.
+	PublicIpAllocationMethod pulumi.StringPtrInput `pulumi:"publicIpAllocationMethod"`
+	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+	// Expected value is 'Microsoft.Network/publicIPAddresses'.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// Gets or sets public IP sku.
+	Sku pulumi.StringPtrInput `pulumi:"sku"`
+	// Gets or sets the Resource tags.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Gets or sets the target resource group name.
+	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
+	// Gets or sets the target Resource name.
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
+	// Gets or sets public IP zones.
+	Zones pulumi.StringPtrInput `pulumi:"zones"`
+}
+
+func (PublicIPAddressResourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIPAddressResourceSettings)(nil)).Elem()
+}
+
+func (i PublicIPAddressResourceSettingsArgs) ToPublicIPAddressResourceSettingsOutput() PublicIPAddressResourceSettingsOutput {
+	return i.ToPublicIPAddressResourceSettingsOutputWithContext(context.Background())
+}
+
+func (i PublicIPAddressResourceSettingsArgs) ToPublicIPAddressResourceSettingsOutputWithContext(ctx context.Context) PublicIPAddressResourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicIPAddressResourceSettingsOutput)
+}
+
+func (i PublicIPAddressResourceSettingsArgs) ToPublicIPAddressResourceSettingsPtrOutput() PublicIPAddressResourceSettingsPtrOutput {
+	return i.ToPublicIPAddressResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i PublicIPAddressResourceSettingsArgs) ToPublicIPAddressResourceSettingsPtrOutputWithContext(ctx context.Context) PublicIPAddressResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicIPAddressResourceSettingsOutput).ToPublicIPAddressResourceSettingsPtrOutputWithContext(ctx)
+}
+
+// PublicIPAddressResourceSettingsPtrInput is an input type that accepts PublicIPAddressResourceSettingsArgs, PublicIPAddressResourceSettingsPtr and PublicIPAddressResourceSettingsPtrOutput values.
+// You can construct a concrete instance of `PublicIPAddressResourceSettingsPtrInput` via:
+//
+//	        PublicIPAddressResourceSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PublicIPAddressResourceSettingsPtrInput interface {
+	pulumi.Input
+
+	ToPublicIPAddressResourceSettingsPtrOutput() PublicIPAddressResourceSettingsPtrOutput
+	ToPublicIPAddressResourceSettingsPtrOutputWithContext(context.Context) PublicIPAddressResourceSettingsPtrOutput
+}
+
+type publicIPAddressResourceSettingsPtrType PublicIPAddressResourceSettingsArgs
+
+func PublicIPAddressResourceSettingsPtr(v *PublicIPAddressResourceSettingsArgs) PublicIPAddressResourceSettingsPtrInput {
+	return (*publicIPAddressResourceSettingsPtrType)(v)
+}
+
+func (*publicIPAddressResourceSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicIPAddressResourceSettings)(nil)).Elem()
+}
+
+func (i *publicIPAddressResourceSettingsPtrType) ToPublicIPAddressResourceSettingsPtrOutput() PublicIPAddressResourceSettingsPtrOutput {
+	return i.ToPublicIPAddressResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *publicIPAddressResourceSettingsPtrType) ToPublicIPAddressResourceSettingsPtrOutputWithContext(ctx context.Context) PublicIPAddressResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicIPAddressResourceSettingsPtrOutput)
+}
+
+// Defines the public IP address resource settings.
+type PublicIPAddressResourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (PublicIPAddressResourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIPAddressResourceSettings)(nil)).Elem()
+}
+
+func (o PublicIPAddressResourceSettingsOutput) ToPublicIPAddressResourceSettingsOutput() PublicIPAddressResourceSettingsOutput {
+	return o
+}
+
+func (o PublicIPAddressResourceSettingsOutput) ToPublicIPAddressResourceSettingsOutputWithContext(ctx context.Context) PublicIPAddressResourceSettingsOutput {
+	return o
+}
+
+func (o PublicIPAddressResourceSettingsOutput) ToPublicIPAddressResourceSettingsPtrOutput() PublicIPAddressResourceSettingsPtrOutput {
+	return o.ToPublicIPAddressResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o PublicIPAddressResourceSettingsOutput) ToPublicIPAddressResourceSettingsPtrOutputWithContext(ctx context.Context) PublicIPAddressResourceSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicIPAddressResourceSettings) *PublicIPAddressResourceSettings {
+		return &v
+	}).(PublicIPAddressResourceSettingsPtrOutput)
+}
+
+// Gets or sets the domain name label.
+func (o PublicIPAddressResourceSettingsOutput) DomainNameLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResourceSettings) *string { return v.DomainNameLabel }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the fully qualified domain name.
+func (o PublicIPAddressResourceSettingsOutput) Fqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResourceSettings) *string { return v.Fqdn }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets public IP allocation method.
+func (o PublicIPAddressResourceSettingsOutput) PublicIpAllocationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResourceSettings) *string { return v.PublicIpAllocationMethod }).(pulumi.StringPtrOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Network/publicIPAddresses'.
+func (o PublicIPAddressResourceSettingsOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicIPAddressResourceSettings) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets public IP sku.
+func (o PublicIPAddressResourceSettingsOutput) Sku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResourceSettings) *string { return v.Sku }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o PublicIPAddressResourceSettingsOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PublicIPAddressResourceSettings) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o PublicIPAddressResourceSettingsOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResourceSettings) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o PublicIPAddressResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets public IP zones.
+func (o PublicIPAddressResourceSettingsOutput) Zones() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResourceSettings) *string { return v.Zones }).(pulumi.StringPtrOutput)
+}
+
+type PublicIPAddressResourceSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (PublicIPAddressResourceSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicIPAddressResourceSettings)(nil)).Elem()
+}
+
+func (o PublicIPAddressResourceSettingsPtrOutput) ToPublicIPAddressResourceSettingsPtrOutput() PublicIPAddressResourceSettingsPtrOutput {
+	return o
+}
+
+func (o PublicIPAddressResourceSettingsPtrOutput) ToPublicIPAddressResourceSettingsPtrOutputWithContext(ctx context.Context) PublicIPAddressResourceSettingsPtrOutput {
+	return o
+}
+
+func (o PublicIPAddressResourceSettingsPtrOutput) Elem() PublicIPAddressResourceSettingsOutput {
+	return o.ApplyT(func(v *PublicIPAddressResourceSettings) PublicIPAddressResourceSettings {
+		if v != nil {
+			return *v
+		}
+		var ret PublicIPAddressResourceSettings
+		return ret
+	}).(PublicIPAddressResourceSettingsOutput)
+}
+
+// Gets or sets the domain name label.
+func (o PublicIPAddressResourceSettingsPtrOutput) DomainNameLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DomainNameLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the fully qualified domain name.
+func (o PublicIPAddressResourceSettingsPtrOutput) Fqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Fqdn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets public IP allocation method.
+func (o PublicIPAddressResourceSettingsPtrOutput) PublicIpAllocationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicIpAllocationMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Network/publicIPAddresses'.
+func (o PublicIPAddressResourceSettingsPtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets public IP sku.
+func (o PublicIPAddressResourceSettingsPtrOutput) Sku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sku
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o PublicIPAddressResourceSettingsPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PublicIPAddressResourceSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o PublicIPAddressResourceSettingsPtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o PublicIPAddressResourceSettingsPtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets public IP zones.
+func (o PublicIPAddressResourceSettingsPtrOutput) Zones() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Zones
+	}).(pulumi.StringPtrOutput)
 }
 
 // Defines the public IP address resource settings.
@@ -2032,16 +5588,380 @@ type PublicIPAddressResourceSettingsResponse struct {
 	Zones *string `pulumi:"zones"`
 }
 
+// Defines the public IP address resource settings.
+type PublicIPAddressResourceSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (PublicIPAddressResourceSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIPAddressResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o PublicIPAddressResourceSettingsResponseOutput) ToPublicIPAddressResourceSettingsResponseOutput() PublicIPAddressResourceSettingsResponseOutput {
+	return o
+}
+
+func (o PublicIPAddressResourceSettingsResponseOutput) ToPublicIPAddressResourceSettingsResponseOutputWithContext(ctx context.Context) PublicIPAddressResourceSettingsResponseOutput {
+	return o
+}
+
+// Gets or sets the domain name label.
+func (o PublicIPAddressResourceSettingsResponseOutput) DomainNameLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResourceSettingsResponse) *string { return v.DomainNameLabel }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the fully qualified domain name.
+func (o PublicIPAddressResourceSettingsResponseOutput) Fqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResourceSettingsResponse) *string { return v.Fqdn }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets public IP allocation method.
+func (o PublicIPAddressResourceSettingsResponseOutput) PublicIpAllocationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResourceSettingsResponse) *string { return v.PublicIpAllocationMethod }).(pulumi.StringPtrOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Network/publicIPAddresses'.
+func (o PublicIPAddressResourceSettingsResponseOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicIPAddressResourceSettingsResponse) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets public IP sku.
+func (o PublicIPAddressResourceSettingsResponseOutput) Sku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResourceSettingsResponse) *string { return v.Sku }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o PublicIPAddressResourceSettingsResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PublicIPAddressResourceSettingsResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o PublicIPAddressResourceSettingsResponseOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResourceSettingsResponse) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o PublicIPAddressResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets public IP zones.
+func (o PublicIPAddressResourceSettingsResponseOutput) Zones() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResourceSettingsResponse) *string { return v.Zones }).(pulumi.StringPtrOutput)
+}
+
+type PublicIPAddressResourceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PublicIPAddressResourceSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicIPAddressResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o PublicIPAddressResourceSettingsResponsePtrOutput) ToPublicIPAddressResourceSettingsResponsePtrOutput() PublicIPAddressResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o PublicIPAddressResourceSettingsResponsePtrOutput) ToPublicIPAddressResourceSettingsResponsePtrOutputWithContext(ctx context.Context) PublicIPAddressResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o PublicIPAddressResourceSettingsResponsePtrOutput) Elem() PublicIPAddressResourceSettingsResponseOutput {
+	return o.ApplyT(func(v *PublicIPAddressResourceSettingsResponse) PublicIPAddressResourceSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PublicIPAddressResourceSettingsResponse
+		return ret
+	}).(PublicIPAddressResourceSettingsResponseOutput)
+}
+
+// Gets or sets the domain name label.
+func (o PublicIPAddressResourceSettingsResponsePtrOutput) DomainNameLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DomainNameLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the fully qualified domain name.
+func (o PublicIPAddressResourceSettingsResponsePtrOutput) Fqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Fqdn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets public IP allocation method.
+func (o PublicIPAddressResourceSettingsResponsePtrOutput) PublicIpAllocationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicIpAllocationMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Network/publicIPAddresses'.
+func (o PublicIPAddressResourceSettingsResponsePtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets public IP sku.
+func (o PublicIPAddressResourceSettingsResponsePtrOutput) Sku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sku
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o PublicIPAddressResourceSettingsResponsePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PublicIPAddressResourceSettingsResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o PublicIPAddressResourceSettingsResponsePtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o PublicIPAddressResourceSettingsResponsePtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets public IP zones.
+func (o PublicIPAddressResourceSettingsResponsePtrOutput) Zones() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Zones
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines reference to a public IP.
 type PublicIpReference struct {
 	// Gets the ARM resource ID of the tracked resource being referenced.
 	SourceArmResourceId string `pulumi:"sourceArmResourceId"`
 }
 
+// PublicIpReferenceInput is an input type that accepts PublicIpReferenceArgs and PublicIpReferenceOutput values.
+// You can construct a concrete instance of `PublicIpReferenceInput` via:
+//
+//	PublicIpReferenceArgs{...}
+type PublicIpReferenceInput interface {
+	pulumi.Input
+
+	ToPublicIpReferenceOutput() PublicIpReferenceOutput
+	ToPublicIpReferenceOutputWithContext(context.Context) PublicIpReferenceOutput
+}
+
+// Defines reference to a public IP.
+type PublicIpReferenceArgs struct {
+	// Gets the ARM resource ID of the tracked resource being referenced.
+	SourceArmResourceId pulumi.StringInput `pulumi:"sourceArmResourceId"`
+}
+
+func (PublicIpReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIpReference)(nil)).Elem()
+}
+
+func (i PublicIpReferenceArgs) ToPublicIpReferenceOutput() PublicIpReferenceOutput {
+	return i.ToPublicIpReferenceOutputWithContext(context.Background())
+}
+
+func (i PublicIpReferenceArgs) ToPublicIpReferenceOutputWithContext(ctx context.Context) PublicIpReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicIpReferenceOutput)
+}
+
+func (i PublicIpReferenceArgs) ToPublicIpReferencePtrOutput() PublicIpReferencePtrOutput {
+	return i.ToPublicIpReferencePtrOutputWithContext(context.Background())
+}
+
+func (i PublicIpReferenceArgs) ToPublicIpReferencePtrOutputWithContext(ctx context.Context) PublicIpReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicIpReferenceOutput).ToPublicIpReferencePtrOutputWithContext(ctx)
+}
+
+// PublicIpReferencePtrInput is an input type that accepts PublicIpReferenceArgs, PublicIpReferencePtr and PublicIpReferencePtrOutput values.
+// You can construct a concrete instance of `PublicIpReferencePtrInput` via:
+//
+//	        PublicIpReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type PublicIpReferencePtrInput interface {
+	pulumi.Input
+
+	ToPublicIpReferencePtrOutput() PublicIpReferencePtrOutput
+	ToPublicIpReferencePtrOutputWithContext(context.Context) PublicIpReferencePtrOutput
+}
+
+type publicIpReferencePtrType PublicIpReferenceArgs
+
+func PublicIpReferencePtr(v *PublicIpReferenceArgs) PublicIpReferencePtrInput {
+	return (*publicIpReferencePtrType)(v)
+}
+
+func (*publicIpReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicIpReference)(nil)).Elem()
+}
+
+func (i *publicIpReferencePtrType) ToPublicIpReferencePtrOutput() PublicIpReferencePtrOutput {
+	return i.ToPublicIpReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *publicIpReferencePtrType) ToPublicIpReferencePtrOutputWithContext(ctx context.Context) PublicIpReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublicIpReferencePtrOutput)
+}
+
+// Defines reference to a public IP.
+type PublicIpReferenceOutput struct{ *pulumi.OutputState }
+
+func (PublicIpReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIpReference)(nil)).Elem()
+}
+
+func (o PublicIpReferenceOutput) ToPublicIpReferenceOutput() PublicIpReferenceOutput {
+	return o
+}
+
+func (o PublicIpReferenceOutput) ToPublicIpReferenceOutputWithContext(ctx context.Context) PublicIpReferenceOutput {
+	return o
+}
+
+func (o PublicIpReferenceOutput) ToPublicIpReferencePtrOutput() PublicIpReferencePtrOutput {
+	return o.ToPublicIpReferencePtrOutputWithContext(context.Background())
+}
+
+func (o PublicIpReferenceOutput) ToPublicIpReferencePtrOutputWithContext(ctx context.Context) PublicIpReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicIpReference) *PublicIpReference {
+		return &v
+	}).(PublicIpReferencePtrOutput)
+}
+
+// Gets the ARM resource ID of the tracked resource being referenced.
+func (o PublicIpReferenceOutput) SourceArmResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicIpReference) string { return v.SourceArmResourceId }).(pulumi.StringOutput)
+}
+
+type PublicIpReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (PublicIpReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicIpReference)(nil)).Elem()
+}
+
+func (o PublicIpReferencePtrOutput) ToPublicIpReferencePtrOutput() PublicIpReferencePtrOutput {
+	return o
+}
+
+func (o PublicIpReferencePtrOutput) ToPublicIpReferencePtrOutputWithContext(ctx context.Context) PublicIpReferencePtrOutput {
+	return o
+}
+
+func (o PublicIpReferencePtrOutput) Elem() PublicIpReferenceOutput {
+	return o.ApplyT(func(v *PublicIpReference) PublicIpReference {
+		if v != nil {
+			return *v
+		}
+		var ret PublicIpReference
+		return ret
+	}).(PublicIpReferenceOutput)
+}
+
+// Gets the ARM resource ID of the tracked resource being referenced.
+func (o PublicIpReferencePtrOutput) SourceArmResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIpReference) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceArmResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines reference to a public IP.
 type PublicIpReferenceResponse struct {
 	// Gets the ARM resource ID of the tracked resource being referenced.
 	SourceArmResourceId string `pulumi:"sourceArmResourceId"`
+}
+
+// Defines reference to a public IP.
+type PublicIpReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (PublicIpReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIpReferenceResponse)(nil)).Elem()
+}
+
+func (o PublicIpReferenceResponseOutput) ToPublicIpReferenceResponseOutput() PublicIpReferenceResponseOutput {
+	return o
+}
+
+func (o PublicIpReferenceResponseOutput) ToPublicIpReferenceResponseOutputWithContext(ctx context.Context) PublicIpReferenceResponseOutput {
+	return o
+}
+
+// Gets the ARM resource ID of the tracked resource being referenced.
+func (o PublicIpReferenceResponseOutput) SourceArmResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicIpReferenceResponse) string { return v.SourceArmResourceId }).(pulumi.StringOutput)
+}
+
+type PublicIpReferenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PublicIpReferenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicIpReferenceResponse)(nil)).Elem()
+}
+
+func (o PublicIpReferenceResponsePtrOutput) ToPublicIpReferenceResponsePtrOutput() PublicIpReferenceResponsePtrOutput {
+	return o
+}
+
+func (o PublicIpReferenceResponsePtrOutput) ToPublicIpReferenceResponsePtrOutputWithContext(ctx context.Context) PublicIpReferenceResponsePtrOutput {
+	return o
+}
+
+func (o PublicIpReferenceResponsePtrOutput) Elem() PublicIpReferenceResponseOutput {
+	return o.ApplyT(func(v *PublicIpReferenceResponse) PublicIpReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PublicIpReferenceResponse
+		return ret
+	}).(PublicIpReferenceResponseOutput)
+}
+
+// Gets the ARM resource ID of the tracked resource being referenced.
+func (o PublicIpReferenceResponsePtrOutput) SourceArmResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIpReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceArmResourceId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Defines the resource group resource settings.
@@ -2055,6 +5975,177 @@ type ResourceGroupResourceSettings struct {
 	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
+// ResourceGroupResourceSettingsInput is an input type that accepts ResourceGroupResourceSettingsArgs and ResourceGroupResourceSettingsOutput values.
+// You can construct a concrete instance of `ResourceGroupResourceSettingsInput` via:
+//
+//	ResourceGroupResourceSettingsArgs{...}
+type ResourceGroupResourceSettingsInput interface {
+	pulumi.Input
+
+	ToResourceGroupResourceSettingsOutput() ResourceGroupResourceSettingsOutput
+	ToResourceGroupResourceSettingsOutputWithContext(context.Context) ResourceGroupResourceSettingsOutput
+}
+
+// Defines the resource group resource settings.
+type ResourceGroupResourceSettingsArgs struct {
+	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+	// Expected value is 'resourceGroups'.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// Gets or sets the target resource group name.
+	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
+	// Gets or sets the target Resource name.
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
+}
+
+func (ResourceGroupResourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGroupResourceSettings)(nil)).Elem()
+}
+
+func (i ResourceGroupResourceSettingsArgs) ToResourceGroupResourceSettingsOutput() ResourceGroupResourceSettingsOutput {
+	return i.ToResourceGroupResourceSettingsOutputWithContext(context.Background())
+}
+
+func (i ResourceGroupResourceSettingsArgs) ToResourceGroupResourceSettingsOutputWithContext(ctx context.Context) ResourceGroupResourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupResourceSettingsOutput)
+}
+
+func (i ResourceGroupResourceSettingsArgs) ToResourceGroupResourceSettingsPtrOutput() ResourceGroupResourceSettingsPtrOutput {
+	return i.ToResourceGroupResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceGroupResourceSettingsArgs) ToResourceGroupResourceSettingsPtrOutputWithContext(ctx context.Context) ResourceGroupResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupResourceSettingsOutput).ToResourceGroupResourceSettingsPtrOutputWithContext(ctx)
+}
+
+// ResourceGroupResourceSettingsPtrInput is an input type that accepts ResourceGroupResourceSettingsArgs, ResourceGroupResourceSettingsPtr and ResourceGroupResourceSettingsPtrOutput values.
+// You can construct a concrete instance of `ResourceGroupResourceSettingsPtrInput` via:
+//
+//	        ResourceGroupResourceSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceGroupResourceSettingsPtrInput interface {
+	pulumi.Input
+
+	ToResourceGroupResourceSettingsPtrOutput() ResourceGroupResourceSettingsPtrOutput
+	ToResourceGroupResourceSettingsPtrOutputWithContext(context.Context) ResourceGroupResourceSettingsPtrOutput
+}
+
+type resourceGroupResourceSettingsPtrType ResourceGroupResourceSettingsArgs
+
+func ResourceGroupResourceSettingsPtr(v *ResourceGroupResourceSettingsArgs) ResourceGroupResourceSettingsPtrInput {
+	return (*resourceGroupResourceSettingsPtrType)(v)
+}
+
+func (*resourceGroupResourceSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceGroupResourceSettings)(nil)).Elem()
+}
+
+func (i *resourceGroupResourceSettingsPtrType) ToResourceGroupResourceSettingsPtrOutput() ResourceGroupResourceSettingsPtrOutput {
+	return i.ToResourceGroupResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceGroupResourceSettingsPtrType) ToResourceGroupResourceSettingsPtrOutputWithContext(ctx context.Context) ResourceGroupResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGroupResourceSettingsPtrOutput)
+}
+
+// Defines the resource group resource settings.
+type ResourceGroupResourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (ResourceGroupResourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGroupResourceSettings)(nil)).Elem()
+}
+
+func (o ResourceGroupResourceSettingsOutput) ToResourceGroupResourceSettingsOutput() ResourceGroupResourceSettingsOutput {
+	return o
+}
+
+func (o ResourceGroupResourceSettingsOutput) ToResourceGroupResourceSettingsOutputWithContext(ctx context.Context) ResourceGroupResourceSettingsOutput {
+	return o
+}
+
+func (o ResourceGroupResourceSettingsOutput) ToResourceGroupResourceSettingsPtrOutput() ResourceGroupResourceSettingsPtrOutput {
+	return o.ToResourceGroupResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceGroupResourceSettingsOutput) ToResourceGroupResourceSettingsPtrOutputWithContext(ctx context.Context) ResourceGroupResourceSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceGroupResourceSettings) *ResourceGroupResourceSettings {
+		return &v
+	}).(ResourceGroupResourceSettingsPtrOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'resourceGroups'.
+func (o ResourceGroupResourceSettingsOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGroupResourceSettings) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o ResourceGroupResourceSettingsOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGroupResourceSettings) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o ResourceGroupResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGroupResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+type ResourceGroupResourceSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceGroupResourceSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceGroupResourceSettings)(nil)).Elem()
+}
+
+func (o ResourceGroupResourceSettingsPtrOutput) ToResourceGroupResourceSettingsPtrOutput() ResourceGroupResourceSettingsPtrOutput {
+	return o
+}
+
+func (o ResourceGroupResourceSettingsPtrOutput) ToResourceGroupResourceSettingsPtrOutputWithContext(ctx context.Context) ResourceGroupResourceSettingsPtrOutput {
+	return o
+}
+
+func (o ResourceGroupResourceSettingsPtrOutput) Elem() ResourceGroupResourceSettingsOutput {
+	return o.ApplyT(func(v *ResourceGroupResourceSettings) ResourceGroupResourceSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceGroupResourceSettings
+		return ret
+	}).(ResourceGroupResourceSettingsOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'resourceGroups'.
+func (o ResourceGroupResourceSettingsPtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGroupResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o ResourceGroupResourceSettingsPtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGroupResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o ResourceGroupResourceSettingsPtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGroupResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines the resource group resource settings.
 type ResourceGroupResourceSettingsResponse struct {
 	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
@@ -2064,6 +6155,92 @@ type ResourceGroupResourceSettingsResponse struct {
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
 	TargetResourceName *string `pulumi:"targetResourceName"`
+}
+
+// Defines the resource group resource settings.
+type ResourceGroupResourceSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceGroupResourceSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGroupResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o ResourceGroupResourceSettingsResponseOutput) ToResourceGroupResourceSettingsResponseOutput() ResourceGroupResourceSettingsResponseOutput {
+	return o
+}
+
+func (o ResourceGroupResourceSettingsResponseOutput) ToResourceGroupResourceSettingsResponseOutputWithContext(ctx context.Context) ResourceGroupResourceSettingsResponseOutput {
+	return o
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'resourceGroups'.
+func (o ResourceGroupResourceSettingsResponseOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGroupResourceSettingsResponse) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o ResourceGroupResourceSettingsResponseOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGroupResourceSettingsResponse) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o ResourceGroupResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGroupResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+type ResourceGroupResourceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceGroupResourceSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceGroupResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o ResourceGroupResourceSettingsResponsePtrOutput) ToResourceGroupResourceSettingsResponsePtrOutput() ResourceGroupResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ResourceGroupResourceSettingsResponsePtrOutput) ToResourceGroupResourceSettingsResponsePtrOutputWithContext(ctx context.Context) ResourceGroupResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ResourceGroupResourceSettingsResponsePtrOutput) Elem() ResourceGroupResourceSettingsResponseOutput {
+	return o.ApplyT(func(v *ResourceGroupResourceSettingsResponse) ResourceGroupResourceSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceGroupResourceSettingsResponse
+		return ret
+	}).(ResourceGroupResourceSettingsResponseOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'resourceGroups'.
+func (o ResourceGroupResourceSettingsResponsePtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGroupResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o ResourceGroupResourceSettingsResponsePtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGroupResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o ResourceGroupResourceSettingsResponsePtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGroupResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
 }
 
 // Defines the Sql Database resource settings.
@@ -2081,6 +6258,211 @@ type SqlDatabaseResourceSettings struct {
 	ZoneRedundant *string `pulumi:"zoneRedundant"`
 }
 
+// SqlDatabaseResourceSettingsInput is an input type that accepts SqlDatabaseResourceSettingsArgs and SqlDatabaseResourceSettingsOutput values.
+// You can construct a concrete instance of `SqlDatabaseResourceSettingsInput` via:
+//
+//	SqlDatabaseResourceSettingsArgs{...}
+type SqlDatabaseResourceSettingsInput interface {
+	pulumi.Input
+
+	ToSqlDatabaseResourceSettingsOutput() SqlDatabaseResourceSettingsOutput
+	ToSqlDatabaseResourceSettingsOutputWithContext(context.Context) SqlDatabaseResourceSettingsOutput
+}
+
+// Defines the Sql Database resource settings.
+type SqlDatabaseResourceSettingsArgs struct {
+	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+	// Expected value is 'Microsoft.Sql/servers/databases'.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// Gets or sets the Resource tags.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Gets or sets the target resource group name.
+	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
+	// Gets or sets the target Resource name.
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
+	// Defines the zone redundant resource setting.
+	ZoneRedundant pulumi.StringPtrInput `pulumi:"zoneRedundant"`
+}
+
+func (SqlDatabaseResourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlDatabaseResourceSettings)(nil)).Elem()
+}
+
+func (i SqlDatabaseResourceSettingsArgs) ToSqlDatabaseResourceSettingsOutput() SqlDatabaseResourceSettingsOutput {
+	return i.ToSqlDatabaseResourceSettingsOutputWithContext(context.Background())
+}
+
+func (i SqlDatabaseResourceSettingsArgs) ToSqlDatabaseResourceSettingsOutputWithContext(ctx context.Context) SqlDatabaseResourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlDatabaseResourceSettingsOutput)
+}
+
+func (i SqlDatabaseResourceSettingsArgs) ToSqlDatabaseResourceSettingsPtrOutput() SqlDatabaseResourceSettingsPtrOutput {
+	return i.ToSqlDatabaseResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SqlDatabaseResourceSettingsArgs) ToSqlDatabaseResourceSettingsPtrOutputWithContext(ctx context.Context) SqlDatabaseResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlDatabaseResourceSettingsOutput).ToSqlDatabaseResourceSettingsPtrOutputWithContext(ctx)
+}
+
+// SqlDatabaseResourceSettingsPtrInput is an input type that accepts SqlDatabaseResourceSettingsArgs, SqlDatabaseResourceSettingsPtr and SqlDatabaseResourceSettingsPtrOutput values.
+// You can construct a concrete instance of `SqlDatabaseResourceSettingsPtrInput` via:
+//
+//	        SqlDatabaseResourceSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlDatabaseResourceSettingsPtrInput interface {
+	pulumi.Input
+
+	ToSqlDatabaseResourceSettingsPtrOutput() SqlDatabaseResourceSettingsPtrOutput
+	ToSqlDatabaseResourceSettingsPtrOutputWithContext(context.Context) SqlDatabaseResourceSettingsPtrOutput
+}
+
+type sqlDatabaseResourceSettingsPtrType SqlDatabaseResourceSettingsArgs
+
+func SqlDatabaseResourceSettingsPtr(v *SqlDatabaseResourceSettingsArgs) SqlDatabaseResourceSettingsPtrInput {
+	return (*sqlDatabaseResourceSettingsPtrType)(v)
+}
+
+func (*sqlDatabaseResourceSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlDatabaseResourceSettings)(nil)).Elem()
+}
+
+func (i *sqlDatabaseResourceSettingsPtrType) ToSqlDatabaseResourceSettingsPtrOutput() SqlDatabaseResourceSettingsPtrOutput {
+	return i.ToSqlDatabaseResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlDatabaseResourceSettingsPtrType) ToSqlDatabaseResourceSettingsPtrOutputWithContext(ctx context.Context) SqlDatabaseResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlDatabaseResourceSettingsPtrOutput)
+}
+
+// Defines the Sql Database resource settings.
+type SqlDatabaseResourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (SqlDatabaseResourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlDatabaseResourceSettings)(nil)).Elem()
+}
+
+func (o SqlDatabaseResourceSettingsOutput) ToSqlDatabaseResourceSettingsOutput() SqlDatabaseResourceSettingsOutput {
+	return o
+}
+
+func (o SqlDatabaseResourceSettingsOutput) ToSqlDatabaseResourceSettingsOutputWithContext(ctx context.Context) SqlDatabaseResourceSettingsOutput {
+	return o
+}
+
+func (o SqlDatabaseResourceSettingsOutput) ToSqlDatabaseResourceSettingsPtrOutput() SqlDatabaseResourceSettingsPtrOutput {
+	return o.ToSqlDatabaseResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SqlDatabaseResourceSettingsOutput) ToSqlDatabaseResourceSettingsPtrOutputWithContext(ctx context.Context) SqlDatabaseResourceSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlDatabaseResourceSettings) *SqlDatabaseResourceSettings {
+		return &v
+	}).(SqlDatabaseResourceSettingsPtrOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Sql/servers/databases'.
+func (o SqlDatabaseResourceSettingsOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlDatabaseResourceSettings) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o SqlDatabaseResourceSettingsOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SqlDatabaseResourceSettings) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o SqlDatabaseResourceSettingsOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlDatabaseResourceSettings) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o SqlDatabaseResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlDatabaseResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+// Defines the zone redundant resource setting.
+func (o SqlDatabaseResourceSettingsOutput) ZoneRedundant() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlDatabaseResourceSettings) *string { return v.ZoneRedundant }).(pulumi.StringPtrOutput)
+}
+
+type SqlDatabaseResourceSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlDatabaseResourceSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlDatabaseResourceSettings)(nil)).Elem()
+}
+
+func (o SqlDatabaseResourceSettingsPtrOutput) ToSqlDatabaseResourceSettingsPtrOutput() SqlDatabaseResourceSettingsPtrOutput {
+	return o
+}
+
+func (o SqlDatabaseResourceSettingsPtrOutput) ToSqlDatabaseResourceSettingsPtrOutputWithContext(ctx context.Context) SqlDatabaseResourceSettingsPtrOutput {
+	return o
+}
+
+func (o SqlDatabaseResourceSettingsPtrOutput) Elem() SqlDatabaseResourceSettingsOutput {
+	return o.ApplyT(func(v *SqlDatabaseResourceSettings) SqlDatabaseResourceSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SqlDatabaseResourceSettings
+		return ret
+	}).(SqlDatabaseResourceSettingsOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Sql/servers/databases'.
+func (o SqlDatabaseResourceSettingsPtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDatabaseResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o SqlDatabaseResourceSettingsPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SqlDatabaseResourceSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o SqlDatabaseResourceSettingsPtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDatabaseResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o SqlDatabaseResourceSettingsPtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDatabaseResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the zone redundant resource setting.
+func (o SqlDatabaseResourceSettingsPtrOutput) ZoneRedundant() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDatabaseResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ZoneRedundant
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines the Sql Database resource settings.
 type SqlDatabaseResourceSettingsResponse struct {
 	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
@@ -2094,6 +6476,122 @@ type SqlDatabaseResourceSettingsResponse struct {
 	TargetResourceName *string `pulumi:"targetResourceName"`
 	// Defines the zone redundant resource setting.
 	ZoneRedundant *string `pulumi:"zoneRedundant"`
+}
+
+// Defines the Sql Database resource settings.
+type SqlDatabaseResourceSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlDatabaseResourceSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlDatabaseResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o SqlDatabaseResourceSettingsResponseOutput) ToSqlDatabaseResourceSettingsResponseOutput() SqlDatabaseResourceSettingsResponseOutput {
+	return o
+}
+
+func (o SqlDatabaseResourceSettingsResponseOutput) ToSqlDatabaseResourceSettingsResponseOutputWithContext(ctx context.Context) SqlDatabaseResourceSettingsResponseOutput {
+	return o
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Sql/servers/databases'.
+func (o SqlDatabaseResourceSettingsResponseOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlDatabaseResourceSettingsResponse) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o SqlDatabaseResourceSettingsResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SqlDatabaseResourceSettingsResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o SqlDatabaseResourceSettingsResponseOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlDatabaseResourceSettingsResponse) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o SqlDatabaseResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlDatabaseResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+// Defines the zone redundant resource setting.
+func (o SqlDatabaseResourceSettingsResponseOutput) ZoneRedundant() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlDatabaseResourceSettingsResponse) *string { return v.ZoneRedundant }).(pulumi.StringPtrOutput)
+}
+
+type SqlDatabaseResourceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SqlDatabaseResourceSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlDatabaseResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o SqlDatabaseResourceSettingsResponsePtrOutput) ToSqlDatabaseResourceSettingsResponsePtrOutput() SqlDatabaseResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o SqlDatabaseResourceSettingsResponsePtrOutput) ToSqlDatabaseResourceSettingsResponsePtrOutputWithContext(ctx context.Context) SqlDatabaseResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o SqlDatabaseResourceSettingsResponsePtrOutput) Elem() SqlDatabaseResourceSettingsResponseOutput {
+	return o.ApplyT(func(v *SqlDatabaseResourceSettingsResponse) SqlDatabaseResourceSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SqlDatabaseResourceSettingsResponse
+		return ret
+	}).(SqlDatabaseResourceSettingsResponseOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Sql/servers/databases'.
+func (o SqlDatabaseResourceSettingsResponsePtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDatabaseResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o SqlDatabaseResourceSettingsResponsePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SqlDatabaseResourceSettingsResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o SqlDatabaseResourceSettingsResponsePtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDatabaseResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o SqlDatabaseResourceSettingsResponsePtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDatabaseResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the zone redundant resource setting.
+func (o SqlDatabaseResourceSettingsResponsePtrOutput) ZoneRedundant() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDatabaseResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ZoneRedundant
+	}).(pulumi.StringPtrOutput)
 }
 
 // Defines the Sql ElasticPool resource settings.
@@ -2111,6 +6609,211 @@ type SqlElasticPoolResourceSettings struct {
 	ZoneRedundant *string `pulumi:"zoneRedundant"`
 }
 
+// SqlElasticPoolResourceSettingsInput is an input type that accepts SqlElasticPoolResourceSettingsArgs and SqlElasticPoolResourceSettingsOutput values.
+// You can construct a concrete instance of `SqlElasticPoolResourceSettingsInput` via:
+//
+//	SqlElasticPoolResourceSettingsArgs{...}
+type SqlElasticPoolResourceSettingsInput interface {
+	pulumi.Input
+
+	ToSqlElasticPoolResourceSettingsOutput() SqlElasticPoolResourceSettingsOutput
+	ToSqlElasticPoolResourceSettingsOutputWithContext(context.Context) SqlElasticPoolResourceSettingsOutput
+}
+
+// Defines the Sql ElasticPool resource settings.
+type SqlElasticPoolResourceSettingsArgs struct {
+	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+	// Expected value is 'Microsoft.Sql/servers/elasticPools'.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// Gets or sets the Resource tags.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Gets or sets the target resource group name.
+	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
+	// Gets or sets the target Resource name.
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
+	// Defines the zone redundant resource setting.
+	ZoneRedundant pulumi.StringPtrInput `pulumi:"zoneRedundant"`
+}
+
+func (SqlElasticPoolResourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlElasticPoolResourceSettings)(nil)).Elem()
+}
+
+func (i SqlElasticPoolResourceSettingsArgs) ToSqlElasticPoolResourceSettingsOutput() SqlElasticPoolResourceSettingsOutput {
+	return i.ToSqlElasticPoolResourceSettingsOutputWithContext(context.Background())
+}
+
+func (i SqlElasticPoolResourceSettingsArgs) ToSqlElasticPoolResourceSettingsOutputWithContext(ctx context.Context) SqlElasticPoolResourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlElasticPoolResourceSettingsOutput)
+}
+
+func (i SqlElasticPoolResourceSettingsArgs) ToSqlElasticPoolResourceSettingsPtrOutput() SqlElasticPoolResourceSettingsPtrOutput {
+	return i.ToSqlElasticPoolResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SqlElasticPoolResourceSettingsArgs) ToSqlElasticPoolResourceSettingsPtrOutputWithContext(ctx context.Context) SqlElasticPoolResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlElasticPoolResourceSettingsOutput).ToSqlElasticPoolResourceSettingsPtrOutputWithContext(ctx)
+}
+
+// SqlElasticPoolResourceSettingsPtrInput is an input type that accepts SqlElasticPoolResourceSettingsArgs, SqlElasticPoolResourceSettingsPtr and SqlElasticPoolResourceSettingsPtrOutput values.
+// You can construct a concrete instance of `SqlElasticPoolResourceSettingsPtrInput` via:
+//
+//	        SqlElasticPoolResourceSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlElasticPoolResourceSettingsPtrInput interface {
+	pulumi.Input
+
+	ToSqlElasticPoolResourceSettingsPtrOutput() SqlElasticPoolResourceSettingsPtrOutput
+	ToSqlElasticPoolResourceSettingsPtrOutputWithContext(context.Context) SqlElasticPoolResourceSettingsPtrOutput
+}
+
+type sqlElasticPoolResourceSettingsPtrType SqlElasticPoolResourceSettingsArgs
+
+func SqlElasticPoolResourceSettingsPtr(v *SqlElasticPoolResourceSettingsArgs) SqlElasticPoolResourceSettingsPtrInput {
+	return (*sqlElasticPoolResourceSettingsPtrType)(v)
+}
+
+func (*sqlElasticPoolResourceSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlElasticPoolResourceSettings)(nil)).Elem()
+}
+
+func (i *sqlElasticPoolResourceSettingsPtrType) ToSqlElasticPoolResourceSettingsPtrOutput() SqlElasticPoolResourceSettingsPtrOutput {
+	return i.ToSqlElasticPoolResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlElasticPoolResourceSettingsPtrType) ToSqlElasticPoolResourceSettingsPtrOutputWithContext(ctx context.Context) SqlElasticPoolResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlElasticPoolResourceSettingsPtrOutput)
+}
+
+// Defines the Sql ElasticPool resource settings.
+type SqlElasticPoolResourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (SqlElasticPoolResourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlElasticPoolResourceSettings)(nil)).Elem()
+}
+
+func (o SqlElasticPoolResourceSettingsOutput) ToSqlElasticPoolResourceSettingsOutput() SqlElasticPoolResourceSettingsOutput {
+	return o
+}
+
+func (o SqlElasticPoolResourceSettingsOutput) ToSqlElasticPoolResourceSettingsOutputWithContext(ctx context.Context) SqlElasticPoolResourceSettingsOutput {
+	return o
+}
+
+func (o SqlElasticPoolResourceSettingsOutput) ToSqlElasticPoolResourceSettingsPtrOutput() SqlElasticPoolResourceSettingsPtrOutput {
+	return o.ToSqlElasticPoolResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SqlElasticPoolResourceSettingsOutput) ToSqlElasticPoolResourceSettingsPtrOutputWithContext(ctx context.Context) SqlElasticPoolResourceSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlElasticPoolResourceSettings) *SqlElasticPoolResourceSettings {
+		return &v
+	}).(SqlElasticPoolResourceSettingsPtrOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Sql/servers/elasticPools'.
+func (o SqlElasticPoolResourceSettingsOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlElasticPoolResourceSettings) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o SqlElasticPoolResourceSettingsOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SqlElasticPoolResourceSettings) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o SqlElasticPoolResourceSettingsOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlElasticPoolResourceSettings) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o SqlElasticPoolResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlElasticPoolResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+// Defines the zone redundant resource setting.
+func (o SqlElasticPoolResourceSettingsOutput) ZoneRedundant() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlElasticPoolResourceSettings) *string { return v.ZoneRedundant }).(pulumi.StringPtrOutput)
+}
+
+type SqlElasticPoolResourceSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlElasticPoolResourceSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlElasticPoolResourceSettings)(nil)).Elem()
+}
+
+func (o SqlElasticPoolResourceSettingsPtrOutput) ToSqlElasticPoolResourceSettingsPtrOutput() SqlElasticPoolResourceSettingsPtrOutput {
+	return o
+}
+
+func (o SqlElasticPoolResourceSettingsPtrOutput) ToSqlElasticPoolResourceSettingsPtrOutputWithContext(ctx context.Context) SqlElasticPoolResourceSettingsPtrOutput {
+	return o
+}
+
+func (o SqlElasticPoolResourceSettingsPtrOutput) Elem() SqlElasticPoolResourceSettingsOutput {
+	return o.ApplyT(func(v *SqlElasticPoolResourceSettings) SqlElasticPoolResourceSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SqlElasticPoolResourceSettings
+		return ret
+	}).(SqlElasticPoolResourceSettingsOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Sql/servers/elasticPools'.
+func (o SqlElasticPoolResourceSettingsPtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlElasticPoolResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o SqlElasticPoolResourceSettingsPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SqlElasticPoolResourceSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o SqlElasticPoolResourceSettingsPtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlElasticPoolResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o SqlElasticPoolResourceSettingsPtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlElasticPoolResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the zone redundant resource setting.
+func (o SqlElasticPoolResourceSettingsPtrOutput) ZoneRedundant() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlElasticPoolResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ZoneRedundant
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines the Sql ElasticPool resource settings.
 type SqlElasticPoolResourceSettingsResponse struct {
 	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
@@ -2126,6 +6829,122 @@ type SqlElasticPoolResourceSettingsResponse struct {
 	ZoneRedundant *string `pulumi:"zoneRedundant"`
 }
 
+// Defines the Sql ElasticPool resource settings.
+type SqlElasticPoolResourceSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlElasticPoolResourceSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlElasticPoolResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o SqlElasticPoolResourceSettingsResponseOutput) ToSqlElasticPoolResourceSettingsResponseOutput() SqlElasticPoolResourceSettingsResponseOutput {
+	return o
+}
+
+func (o SqlElasticPoolResourceSettingsResponseOutput) ToSqlElasticPoolResourceSettingsResponseOutputWithContext(ctx context.Context) SqlElasticPoolResourceSettingsResponseOutput {
+	return o
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Sql/servers/elasticPools'.
+func (o SqlElasticPoolResourceSettingsResponseOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlElasticPoolResourceSettingsResponse) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o SqlElasticPoolResourceSettingsResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SqlElasticPoolResourceSettingsResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o SqlElasticPoolResourceSettingsResponseOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlElasticPoolResourceSettingsResponse) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o SqlElasticPoolResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlElasticPoolResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+// Defines the zone redundant resource setting.
+func (o SqlElasticPoolResourceSettingsResponseOutput) ZoneRedundant() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlElasticPoolResourceSettingsResponse) *string { return v.ZoneRedundant }).(pulumi.StringPtrOutput)
+}
+
+type SqlElasticPoolResourceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SqlElasticPoolResourceSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlElasticPoolResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o SqlElasticPoolResourceSettingsResponsePtrOutput) ToSqlElasticPoolResourceSettingsResponsePtrOutput() SqlElasticPoolResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o SqlElasticPoolResourceSettingsResponsePtrOutput) ToSqlElasticPoolResourceSettingsResponsePtrOutputWithContext(ctx context.Context) SqlElasticPoolResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o SqlElasticPoolResourceSettingsResponsePtrOutput) Elem() SqlElasticPoolResourceSettingsResponseOutput {
+	return o.ApplyT(func(v *SqlElasticPoolResourceSettingsResponse) SqlElasticPoolResourceSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SqlElasticPoolResourceSettingsResponse
+		return ret
+	}).(SqlElasticPoolResourceSettingsResponseOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Sql/servers/elasticPools'.
+func (o SqlElasticPoolResourceSettingsResponsePtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlElasticPoolResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o SqlElasticPoolResourceSettingsResponsePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SqlElasticPoolResourceSettingsResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o SqlElasticPoolResourceSettingsResponsePtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlElasticPoolResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o SqlElasticPoolResourceSettingsResponsePtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlElasticPoolResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the zone redundant resource setting.
+func (o SqlElasticPoolResourceSettingsResponsePtrOutput) ZoneRedundant() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlElasticPoolResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ZoneRedundant
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines the SQL Server resource settings.
 type SqlServerResourceSettings struct {
 	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
@@ -2135,6 +6954,177 @@ type SqlServerResourceSettings struct {
 	TargetResourceGroupName *string `pulumi:"targetResourceGroupName"`
 	// Gets or sets the target Resource name.
 	TargetResourceName *string `pulumi:"targetResourceName"`
+}
+
+// SqlServerResourceSettingsInput is an input type that accepts SqlServerResourceSettingsArgs and SqlServerResourceSettingsOutput values.
+// You can construct a concrete instance of `SqlServerResourceSettingsInput` via:
+//
+//	SqlServerResourceSettingsArgs{...}
+type SqlServerResourceSettingsInput interface {
+	pulumi.Input
+
+	ToSqlServerResourceSettingsOutput() SqlServerResourceSettingsOutput
+	ToSqlServerResourceSettingsOutputWithContext(context.Context) SqlServerResourceSettingsOutput
+}
+
+// Defines the SQL Server resource settings.
+type SqlServerResourceSettingsArgs struct {
+	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+	// Expected value is 'Microsoft.Sql/servers'.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// Gets or sets the target resource group name.
+	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
+	// Gets or sets the target Resource name.
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
+}
+
+func (SqlServerResourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerResourceSettings)(nil)).Elem()
+}
+
+func (i SqlServerResourceSettingsArgs) ToSqlServerResourceSettingsOutput() SqlServerResourceSettingsOutput {
+	return i.ToSqlServerResourceSettingsOutputWithContext(context.Background())
+}
+
+func (i SqlServerResourceSettingsArgs) ToSqlServerResourceSettingsOutputWithContext(ctx context.Context) SqlServerResourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerResourceSettingsOutput)
+}
+
+func (i SqlServerResourceSettingsArgs) ToSqlServerResourceSettingsPtrOutput() SqlServerResourceSettingsPtrOutput {
+	return i.ToSqlServerResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SqlServerResourceSettingsArgs) ToSqlServerResourceSettingsPtrOutputWithContext(ctx context.Context) SqlServerResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerResourceSettingsOutput).ToSqlServerResourceSettingsPtrOutputWithContext(ctx)
+}
+
+// SqlServerResourceSettingsPtrInput is an input type that accepts SqlServerResourceSettingsArgs, SqlServerResourceSettingsPtr and SqlServerResourceSettingsPtrOutput values.
+// You can construct a concrete instance of `SqlServerResourceSettingsPtrInput` via:
+//
+//	        SqlServerResourceSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlServerResourceSettingsPtrInput interface {
+	pulumi.Input
+
+	ToSqlServerResourceSettingsPtrOutput() SqlServerResourceSettingsPtrOutput
+	ToSqlServerResourceSettingsPtrOutputWithContext(context.Context) SqlServerResourceSettingsPtrOutput
+}
+
+type sqlServerResourceSettingsPtrType SqlServerResourceSettingsArgs
+
+func SqlServerResourceSettingsPtr(v *SqlServerResourceSettingsArgs) SqlServerResourceSettingsPtrInput {
+	return (*sqlServerResourceSettingsPtrType)(v)
+}
+
+func (*sqlServerResourceSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerResourceSettings)(nil)).Elem()
+}
+
+func (i *sqlServerResourceSettingsPtrType) ToSqlServerResourceSettingsPtrOutput() SqlServerResourceSettingsPtrOutput {
+	return i.ToSqlServerResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlServerResourceSettingsPtrType) ToSqlServerResourceSettingsPtrOutputWithContext(ctx context.Context) SqlServerResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlServerResourceSettingsPtrOutput)
+}
+
+// Defines the SQL Server resource settings.
+type SqlServerResourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (SqlServerResourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerResourceSettings)(nil)).Elem()
+}
+
+func (o SqlServerResourceSettingsOutput) ToSqlServerResourceSettingsOutput() SqlServerResourceSettingsOutput {
+	return o
+}
+
+func (o SqlServerResourceSettingsOutput) ToSqlServerResourceSettingsOutputWithContext(ctx context.Context) SqlServerResourceSettingsOutput {
+	return o
+}
+
+func (o SqlServerResourceSettingsOutput) ToSqlServerResourceSettingsPtrOutput() SqlServerResourceSettingsPtrOutput {
+	return o.ToSqlServerResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SqlServerResourceSettingsOutput) ToSqlServerResourceSettingsPtrOutputWithContext(ctx context.Context) SqlServerResourceSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlServerResourceSettings) *SqlServerResourceSettings {
+		return &v
+	}).(SqlServerResourceSettingsPtrOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Sql/servers'.
+func (o SqlServerResourceSettingsOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerResourceSettings) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o SqlServerResourceSettingsOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerResourceSettings) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o SqlServerResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+type SqlServerResourceSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlServerResourceSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerResourceSettings)(nil)).Elem()
+}
+
+func (o SqlServerResourceSettingsPtrOutput) ToSqlServerResourceSettingsPtrOutput() SqlServerResourceSettingsPtrOutput {
+	return o
+}
+
+func (o SqlServerResourceSettingsPtrOutput) ToSqlServerResourceSettingsPtrOutputWithContext(ctx context.Context) SqlServerResourceSettingsPtrOutput {
+	return o
+}
+
+func (o SqlServerResourceSettingsPtrOutput) Elem() SqlServerResourceSettingsOutput {
+	return o.ApplyT(func(v *SqlServerResourceSettings) SqlServerResourceSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerResourceSettings
+		return ret
+	}).(SqlServerResourceSettingsOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Sql/servers'.
+func (o SqlServerResourceSettingsPtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o SqlServerResourceSettingsPtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o SqlServerResourceSettingsPtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
 }
 
 // Defines the SQL Server resource settings.
@@ -2148,6 +7138,92 @@ type SqlServerResourceSettingsResponse struct {
 	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
+// Defines the SQL Server resource settings.
+type SqlServerResourceSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlServerResourceSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlServerResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o SqlServerResourceSettingsResponseOutput) ToSqlServerResourceSettingsResponseOutput() SqlServerResourceSettingsResponseOutput {
+	return o
+}
+
+func (o SqlServerResourceSettingsResponseOutput) ToSqlServerResourceSettingsResponseOutputWithContext(ctx context.Context) SqlServerResourceSettingsResponseOutput {
+	return o
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Sql/servers'.
+func (o SqlServerResourceSettingsResponseOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerResourceSettingsResponse) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o SqlServerResourceSettingsResponseOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerResourceSettingsResponse) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o SqlServerResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+type SqlServerResourceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SqlServerResourceSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlServerResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o SqlServerResourceSettingsResponsePtrOutput) ToSqlServerResourceSettingsResponsePtrOutput() SqlServerResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o SqlServerResourceSettingsResponsePtrOutput) ToSqlServerResourceSettingsResponsePtrOutputWithContext(ctx context.Context) SqlServerResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o SqlServerResourceSettingsResponsePtrOutput) Elem() SqlServerResourceSettingsResponseOutput {
+	return o.ApplyT(func(v *SqlServerResourceSettingsResponse) SqlServerResourceSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SqlServerResourceSettingsResponse
+		return ret
+	}).(SqlServerResourceSettingsResponseOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Sql/servers'.
+func (o SqlServerResourceSettingsResponsePtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o SqlServerResourceSettingsResponsePtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o SqlServerResourceSettingsResponsePtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines reference to subnet.
 type SubnetReference struct {
 	// Gets the name of the proxy resource on the target side.
@@ -2156,12 +7232,232 @@ type SubnetReference struct {
 	SourceArmResourceId string `pulumi:"sourceArmResourceId"`
 }
 
+// SubnetReferenceInput is an input type that accepts SubnetReferenceArgs and SubnetReferenceOutput values.
+// You can construct a concrete instance of `SubnetReferenceInput` via:
+//
+//	SubnetReferenceArgs{...}
+type SubnetReferenceInput interface {
+	pulumi.Input
+
+	ToSubnetReferenceOutput() SubnetReferenceOutput
+	ToSubnetReferenceOutputWithContext(context.Context) SubnetReferenceOutput
+}
+
+// Defines reference to subnet.
+type SubnetReferenceArgs struct {
+	// Gets the name of the proxy resource on the target side.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Gets the ARM resource ID of the tracked resource being referenced.
+	SourceArmResourceId pulumi.StringInput `pulumi:"sourceArmResourceId"`
+}
+
+func (SubnetReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetReference)(nil)).Elem()
+}
+
+func (i SubnetReferenceArgs) ToSubnetReferenceOutput() SubnetReferenceOutput {
+	return i.ToSubnetReferenceOutputWithContext(context.Background())
+}
+
+func (i SubnetReferenceArgs) ToSubnetReferenceOutputWithContext(ctx context.Context) SubnetReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetReferenceOutput)
+}
+
+func (i SubnetReferenceArgs) ToSubnetReferencePtrOutput() SubnetReferencePtrOutput {
+	return i.ToSubnetReferencePtrOutputWithContext(context.Background())
+}
+
+func (i SubnetReferenceArgs) ToSubnetReferencePtrOutputWithContext(ctx context.Context) SubnetReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetReferenceOutput).ToSubnetReferencePtrOutputWithContext(ctx)
+}
+
+// SubnetReferencePtrInput is an input type that accepts SubnetReferenceArgs, SubnetReferencePtr and SubnetReferencePtrOutput values.
+// You can construct a concrete instance of `SubnetReferencePtrInput` via:
+//
+//	        SubnetReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type SubnetReferencePtrInput interface {
+	pulumi.Input
+
+	ToSubnetReferencePtrOutput() SubnetReferencePtrOutput
+	ToSubnetReferencePtrOutputWithContext(context.Context) SubnetReferencePtrOutput
+}
+
+type subnetReferencePtrType SubnetReferenceArgs
+
+func SubnetReferencePtr(v *SubnetReferenceArgs) SubnetReferencePtrInput {
+	return (*subnetReferencePtrType)(v)
+}
+
+func (*subnetReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetReference)(nil)).Elem()
+}
+
+func (i *subnetReferencePtrType) ToSubnetReferencePtrOutput() SubnetReferencePtrOutput {
+	return i.ToSubnetReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *subnetReferencePtrType) ToSubnetReferencePtrOutputWithContext(ctx context.Context) SubnetReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetReferencePtrOutput)
+}
+
+// Defines reference to subnet.
+type SubnetReferenceOutput struct{ *pulumi.OutputState }
+
+func (SubnetReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetReference)(nil)).Elem()
+}
+
+func (o SubnetReferenceOutput) ToSubnetReferenceOutput() SubnetReferenceOutput {
+	return o
+}
+
+func (o SubnetReferenceOutput) ToSubnetReferenceOutputWithContext(ctx context.Context) SubnetReferenceOutput {
+	return o
+}
+
+func (o SubnetReferenceOutput) ToSubnetReferencePtrOutput() SubnetReferencePtrOutput {
+	return o.ToSubnetReferencePtrOutputWithContext(context.Background())
+}
+
+func (o SubnetReferenceOutput) ToSubnetReferencePtrOutputWithContext(ctx context.Context) SubnetReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubnetReference) *SubnetReference {
+		return &v
+	}).(SubnetReferencePtrOutput)
+}
+
+// Gets the name of the proxy resource on the target side.
+func (o SubnetReferenceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetReference) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets the ARM resource ID of the tracked resource being referenced.
+func (o SubnetReferenceOutput) SourceArmResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetReference) string { return v.SourceArmResourceId }).(pulumi.StringOutput)
+}
+
+type SubnetReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (SubnetReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetReference)(nil)).Elem()
+}
+
+func (o SubnetReferencePtrOutput) ToSubnetReferencePtrOutput() SubnetReferencePtrOutput {
+	return o
+}
+
+func (o SubnetReferencePtrOutput) ToSubnetReferencePtrOutputWithContext(ctx context.Context) SubnetReferencePtrOutput {
+	return o
+}
+
+func (o SubnetReferencePtrOutput) Elem() SubnetReferenceOutput {
+	return o.ApplyT(func(v *SubnetReference) SubnetReference {
+		if v != nil {
+			return *v
+		}
+		var ret SubnetReference
+		return ret
+	}).(SubnetReferenceOutput)
+}
+
+// Gets the name of the proxy resource on the target side.
+func (o SubnetReferencePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets the ARM resource ID of the tracked resource being referenced.
+func (o SubnetReferencePtrOutput) SourceArmResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetReference) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceArmResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines reference to subnet.
 type SubnetReferenceResponse struct {
 	// Gets the name of the proxy resource on the target side.
 	Name *string `pulumi:"name"`
 	// Gets the ARM resource ID of the tracked resource being referenced.
 	SourceArmResourceId string `pulumi:"sourceArmResourceId"`
+}
+
+// Defines reference to subnet.
+type SubnetReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (SubnetReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetReferenceResponse)(nil)).Elem()
+}
+
+func (o SubnetReferenceResponseOutput) ToSubnetReferenceResponseOutput() SubnetReferenceResponseOutput {
+	return o
+}
+
+func (o SubnetReferenceResponseOutput) ToSubnetReferenceResponseOutputWithContext(ctx context.Context) SubnetReferenceResponseOutput {
+	return o
+}
+
+// Gets the name of the proxy resource on the target side.
+func (o SubnetReferenceResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetReferenceResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Gets the ARM resource ID of the tracked resource being referenced.
+func (o SubnetReferenceResponseOutput) SourceArmResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetReferenceResponse) string { return v.SourceArmResourceId }).(pulumi.StringOutput)
+}
+
+type SubnetReferenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SubnetReferenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetReferenceResponse)(nil)).Elem()
+}
+
+func (o SubnetReferenceResponsePtrOutput) ToSubnetReferenceResponsePtrOutput() SubnetReferenceResponsePtrOutput {
+	return o
+}
+
+func (o SubnetReferenceResponsePtrOutput) ToSubnetReferenceResponsePtrOutputWithContext(ctx context.Context) SubnetReferenceResponsePtrOutput {
+	return o
+}
+
+func (o SubnetReferenceResponsePtrOutput) Elem() SubnetReferenceResponseOutput {
+	return o.ApplyT(func(v *SubnetReferenceResponse) SubnetReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SubnetReferenceResponse
+		return ret
+	}).(SubnetReferenceResponseOutput)
+}
+
+// Gets the name of the proxy resource on the target side.
+func (o SubnetReferenceResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets the ARM resource ID of the tracked resource being referenced.
+func (o SubnetReferenceResponsePtrOutput) SourceArmResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceArmResourceId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Defines the virtual network subnets resource settings.
@@ -2174,6 +7470,114 @@ type SubnetResourceSettings struct {
 	NetworkSecurityGroup *NsgReference `pulumi:"networkSecurityGroup"`
 }
 
+// SubnetResourceSettingsInput is an input type that accepts SubnetResourceSettingsArgs and SubnetResourceSettingsOutput values.
+// You can construct a concrete instance of `SubnetResourceSettingsInput` via:
+//
+//	SubnetResourceSettingsArgs{...}
+type SubnetResourceSettingsInput interface {
+	pulumi.Input
+
+	ToSubnetResourceSettingsOutput() SubnetResourceSettingsOutput
+	ToSubnetResourceSettingsOutputWithContext(context.Context) SubnetResourceSettingsOutput
+}
+
+// Defines the virtual network subnets resource settings.
+type SubnetResourceSettingsArgs struct {
+	// Gets or sets address prefix for the subnet.
+	AddressPrefix pulumi.StringPtrInput `pulumi:"addressPrefix"`
+	// Gets or sets the Subnet name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Defines reference to NSG.
+	NetworkSecurityGroup NsgReferencePtrInput `pulumi:"networkSecurityGroup"`
+}
+
+func (SubnetResourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetResourceSettings)(nil)).Elem()
+}
+
+func (i SubnetResourceSettingsArgs) ToSubnetResourceSettingsOutput() SubnetResourceSettingsOutput {
+	return i.ToSubnetResourceSettingsOutputWithContext(context.Background())
+}
+
+func (i SubnetResourceSettingsArgs) ToSubnetResourceSettingsOutputWithContext(ctx context.Context) SubnetResourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetResourceSettingsOutput)
+}
+
+// SubnetResourceSettingsArrayInput is an input type that accepts SubnetResourceSettingsArray and SubnetResourceSettingsArrayOutput values.
+// You can construct a concrete instance of `SubnetResourceSettingsArrayInput` via:
+//
+//	SubnetResourceSettingsArray{ SubnetResourceSettingsArgs{...} }
+type SubnetResourceSettingsArrayInput interface {
+	pulumi.Input
+
+	ToSubnetResourceSettingsArrayOutput() SubnetResourceSettingsArrayOutput
+	ToSubnetResourceSettingsArrayOutputWithContext(context.Context) SubnetResourceSettingsArrayOutput
+}
+
+type SubnetResourceSettingsArray []SubnetResourceSettingsInput
+
+func (SubnetResourceSettingsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubnetResourceSettings)(nil)).Elem()
+}
+
+func (i SubnetResourceSettingsArray) ToSubnetResourceSettingsArrayOutput() SubnetResourceSettingsArrayOutput {
+	return i.ToSubnetResourceSettingsArrayOutputWithContext(context.Background())
+}
+
+func (i SubnetResourceSettingsArray) ToSubnetResourceSettingsArrayOutputWithContext(ctx context.Context) SubnetResourceSettingsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetResourceSettingsArrayOutput)
+}
+
+// Defines the virtual network subnets resource settings.
+type SubnetResourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (SubnetResourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetResourceSettings)(nil)).Elem()
+}
+
+func (o SubnetResourceSettingsOutput) ToSubnetResourceSettingsOutput() SubnetResourceSettingsOutput {
+	return o
+}
+
+func (o SubnetResourceSettingsOutput) ToSubnetResourceSettingsOutputWithContext(ctx context.Context) SubnetResourceSettingsOutput {
+	return o
+}
+
+// Gets or sets address prefix for the subnet.
+func (o SubnetResourceSettingsOutput) AddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResourceSettings) *string { return v.AddressPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Subnet name.
+func (o SubnetResourceSettingsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResourceSettings) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Defines reference to NSG.
+func (o SubnetResourceSettingsOutput) NetworkSecurityGroup() NsgReferencePtrOutput {
+	return o.ApplyT(func(v SubnetResourceSettings) *NsgReference { return v.NetworkSecurityGroup }).(NsgReferencePtrOutput)
+}
+
+type SubnetResourceSettingsArrayOutput struct{ *pulumi.OutputState }
+
+func (SubnetResourceSettingsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubnetResourceSettings)(nil)).Elem()
+}
+
+func (o SubnetResourceSettingsArrayOutput) ToSubnetResourceSettingsArrayOutput() SubnetResourceSettingsArrayOutput {
+	return o
+}
+
+func (o SubnetResourceSettingsArrayOutput) ToSubnetResourceSettingsArrayOutputWithContext(ctx context.Context) SubnetResourceSettingsArrayOutput {
+	return o
+}
+
+func (o SubnetResourceSettingsArrayOutput) Index(i pulumi.IntInput) SubnetResourceSettingsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetResourceSettings {
+		return vs[0].([]SubnetResourceSettings)[vs[1].(int)]
+	}).(SubnetResourceSettingsOutput)
+}
+
 // Defines the virtual network subnets resource settings.
 type SubnetResourceSettingsResponse struct {
 	// Gets or sets address prefix for the subnet.
@@ -2182,6 +7586,56 @@ type SubnetResourceSettingsResponse struct {
 	Name *string `pulumi:"name"`
 	// Defines reference to NSG.
 	NetworkSecurityGroup *NsgReferenceResponse `pulumi:"networkSecurityGroup"`
+}
+
+// Defines the virtual network subnets resource settings.
+type SubnetResourceSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (SubnetResourceSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o SubnetResourceSettingsResponseOutput) ToSubnetResourceSettingsResponseOutput() SubnetResourceSettingsResponseOutput {
+	return o
+}
+
+func (o SubnetResourceSettingsResponseOutput) ToSubnetResourceSettingsResponseOutputWithContext(ctx context.Context) SubnetResourceSettingsResponseOutput {
+	return o
+}
+
+// Gets or sets address prefix for the subnet.
+func (o SubnetResourceSettingsResponseOutput) AddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResourceSettingsResponse) *string { return v.AddressPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Subnet name.
+func (o SubnetResourceSettingsResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResourceSettingsResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Defines reference to NSG.
+func (o SubnetResourceSettingsResponseOutput) NetworkSecurityGroup() NsgReferenceResponsePtrOutput {
+	return o.ApplyT(func(v SubnetResourceSettingsResponse) *NsgReferenceResponse { return v.NetworkSecurityGroup }).(NsgReferenceResponsePtrOutput)
+}
+
+type SubnetResourceSettingsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SubnetResourceSettingsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubnetResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o SubnetResourceSettingsResponseArrayOutput) ToSubnetResourceSettingsResponseArrayOutput() SubnetResourceSettingsResponseArrayOutput {
+	return o
+}
+
+func (o SubnetResourceSettingsResponseArrayOutput) ToSubnetResourceSettingsResponseArrayOutputWithContext(ctx context.Context) SubnetResourceSettingsResponseArrayOutput {
+	return o
+}
+
+func (o SubnetResourceSettingsResponseArrayOutput) Index(i pulumi.IntInput) SubnetResourceSettingsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetResourceSettingsResponse {
+		return vs[0].([]SubnetResourceSettingsResponse)[vs[1].(int)]
+	}).(SubnetResourceSettingsResponseOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -2266,6 +7720,262 @@ type VirtualMachineResourceSettings struct {
 	UserManagedIdentities []string `pulumi:"userManagedIdentities"`
 }
 
+// VirtualMachineResourceSettingsInput is an input type that accepts VirtualMachineResourceSettingsArgs and VirtualMachineResourceSettingsOutput values.
+// You can construct a concrete instance of `VirtualMachineResourceSettingsInput` via:
+//
+//	VirtualMachineResourceSettingsArgs{...}
+type VirtualMachineResourceSettingsInput interface {
+	pulumi.Input
+
+	ToVirtualMachineResourceSettingsOutput() VirtualMachineResourceSettingsOutput
+	ToVirtualMachineResourceSettingsOutputWithContext(context.Context) VirtualMachineResourceSettingsOutput
+}
+
+// Gets or sets the virtual machine resource settings.
+type VirtualMachineResourceSettingsArgs struct {
+	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+	// Expected value is 'Microsoft.Compute/virtualMachines'.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// Gets or sets the Resource tags.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Gets or sets the target availability set id for virtual machines not in an availability set at source.
+	TargetAvailabilitySetId pulumi.StringPtrInput `pulumi:"targetAvailabilitySetId"`
+	// Gets or sets the target availability zone.
+	TargetAvailabilityZone pulumi.StringPtrInput `pulumi:"targetAvailabilityZone"`
+	// Gets or sets the target resource group name.
+	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
+	// Gets or sets the target Resource name.
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
+	// Gets or sets the target virtual machine size.
+	TargetVmSize pulumi.StringPtrInput `pulumi:"targetVmSize"`
+	// Gets or sets user-managed identities
+	UserManagedIdentities pulumi.StringArrayInput `pulumi:"userManagedIdentities"`
+}
+
+func (VirtualMachineResourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineResourceSettings)(nil)).Elem()
+}
+
+func (i VirtualMachineResourceSettingsArgs) ToVirtualMachineResourceSettingsOutput() VirtualMachineResourceSettingsOutput {
+	return i.ToVirtualMachineResourceSettingsOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineResourceSettingsArgs) ToVirtualMachineResourceSettingsOutputWithContext(ctx context.Context) VirtualMachineResourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineResourceSettingsOutput)
+}
+
+func (i VirtualMachineResourceSettingsArgs) ToVirtualMachineResourceSettingsPtrOutput() VirtualMachineResourceSettingsPtrOutput {
+	return i.ToVirtualMachineResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineResourceSettingsArgs) ToVirtualMachineResourceSettingsPtrOutputWithContext(ctx context.Context) VirtualMachineResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineResourceSettingsOutput).ToVirtualMachineResourceSettingsPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineResourceSettingsPtrInput is an input type that accepts VirtualMachineResourceSettingsArgs, VirtualMachineResourceSettingsPtr and VirtualMachineResourceSettingsPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineResourceSettingsPtrInput` via:
+//
+//	        VirtualMachineResourceSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineResourceSettingsPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineResourceSettingsPtrOutput() VirtualMachineResourceSettingsPtrOutput
+	ToVirtualMachineResourceSettingsPtrOutputWithContext(context.Context) VirtualMachineResourceSettingsPtrOutput
+}
+
+type virtualMachineResourceSettingsPtrType VirtualMachineResourceSettingsArgs
+
+func VirtualMachineResourceSettingsPtr(v *VirtualMachineResourceSettingsArgs) VirtualMachineResourceSettingsPtrInput {
+	return (*virtualMachineResourceSettingsPtrType)(v)
+}
+
+func (*virtualMachineResourceSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineResourceSettings)(nil)).Elem()
+}
+
+func (i *virtualMachineResourceSettingsPtrType) ToVirtualMachineResourceSettingsPtrOutput() VirtualMachineResourceSettingsPtrOutput {
+	return i.ToVirtualMachineResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineResourceSettingsPtrType) ToVirtualMachineResourceSettingsPtrOutputWithContext(ctx context.Context) VirtualMachineResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineResourceSettingsPtrOutput)
+}
+
+// Gets or sets the virtual machine resource settings.
+type VirtualMachineResourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineResourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineResourceSettings)(nil)).Elem()
+}
+
+func (o VirtualMachineResourceSettingsOutput) ToVirtualMachineResourceSettingsOutput() VirtualMachineResourceSettingsOutput {
+	return o
+}
+
+func (o VirtualMachineResourceSettingsOutput) ToVirtualMachineResourceSettingsOutputWithContext(ctx context.Context) VirtualMachineResourceSettingsOutput {
+	return o
+}
+
+func (o VirtualMachineResourceSettingsOutput) ToVirtualMachineResourceSettingsPtrOutput() VirtualMachineResourceSettingsPtrOutput {
+	return o.ToVirtualMachineResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineResourceSettingsOutput) ToVirtualMachineResourceSettingsPtrOutputWithContext(ctx context.Context) VirtualMachineResourceSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineResourceSettings) *VirtualMachineResourceSettings {
+		return &v
+	}).(VirtualMachineResourceSettingsPtrOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Compute/virtualMachines'.
+func (o VirtualMachineResourceSettingsOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineResourceSettings) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o VirtualMachineResourceSettingsOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v VirtualMachineResourceSettings) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target availability set id for virtual machines not in an availability set at source.
+func (o VirtualMachineResourceSettingsOutput) TargetAvailabilitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResourceSettings) *string { return v.TargetAvailabilitySetId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target availability zone.
+func (o VirtualMachineResourceSettingsOutput) TargetAvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResourceSettings) *string { return v.TargetAvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o VirtualMachineResourceSettingsOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResourceSettings) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o VirtualMachineResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target virtual machine size.
+func (o VirtualMachineResourceSettingsOutput) TargetVmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResourceSettings) *string { return v.TargetVmSize }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets user-managed identities
+func (o VirtualMachineResourceSettingsOutput) UserManagedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VirtualMachineResourceSettings) []string { return v.UserManagedIdentities }).(pulumi.StringArrayOutput)
+}
+
+type VirtualMachineResourceSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineResourceSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineResourceSettings)(nil)).Elem()
+}
+
+func (o VirtualMachineResourceSettingsPtrOutput) ToVirtualMachineResourceSettingsPtrOutput() VirtualMachineResourceSettingsPtrOutput {
+	return o
+}
+
+func (o VirtualMachineResourceSettingsPtrOutput) ToVirtualMachineResourceSettingsPtrOutputWithContext(ctx context.Context) VirtualMachineResourceSettingsPtrOutput {
+	return o
+}
+
+func (o VirtualMachineResourceSettingsPtrOutput) Elem() VirtualMachineResourceSettingsOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceSettings) VirtualMachineResourceSettings {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineResourceSettings
+		return ret
+	}).(VirtualMachineResourceSettingsOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Compute/virtualMachines'.
+func (o VirtualMachineResourceSettingsPtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o VirtualMachineResourceSettingsPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target availability set id for virtual machines not in an availability set at source.
+func (o VirtualMachineResourceSettingsPtrOutput) TargetAvailabilitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetAvailabilitySetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target availability zone.
+func (o VirtualMachineResourceSettingsPtrOutput) TargetAvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetAvailabilityZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o VirtualMachineResourceSettingsPtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o VirtualMachineResourceSettingsPtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target virtual machine size.
+func (o VirtualMachineResourceSettingsPtrOutput) TargetVmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetVmSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets user-managed identities
+func (o VirtualMachineResourceSettingsPtrOutput) UserManagedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserManagedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
 // Gets or sets the virtual machine resource settings.
 type VirtualMachineResourceSettingsResponse struct {
 	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
@@ -2285,6 +7995,167 @@ type VirtualMachineResourceSettingsResponse struct {
 	TargetVmSize *string `pulumi:"targetVmSize"`
 	// Gets or sets user-managed identities
 	UserManagedIdentities []string `pulumi:"userManagedIdentities"`
+}
+
+// Gets or sets the virtual machine resource settings.
+type VirtualMachineResourceSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineResourceSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineResourceSettingsResponseOutput) ToVirtualMachineResourceSettingsResponseOutput() VirtualMachineResourceSettingsResponseOutput {
+	return o
+}
+
+func (o VirtualMachineResourceSettingsResponseOutput) ToVirtualMachineResourceSettingsResponseOutputWithContext(ctx context.Context) VirtualMachineResourceSettingsResponseOutput {
+	return o
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Compute/virtualMachines'.
+func (o VirtualMachineResourceSettingsResponseOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineResourceSettingsResponse) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o VirtualMachineResourceSettingsResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v VirtualMachineResourceSettingsResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target availability set id for virtual machines not in an availability set at source.
+func (o VirtualMachineResourceSettingsResponseOutput) TargetAvailabilitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResourceSettingsResponse) *string { return v.TargetAvailabilitySetId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target availability zone.
+func (o VirtualMachineResourceSettingsResponseOutput) TargetAvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResourceSettingsResponse) *string { return v.TargetAvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o VirtualMachineResourceSettingsResponseOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResourceSettingsResponse) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o VirtualMachineResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target virtual machine size.
+func (o VirtualMachineResourceSettingsResponseOutput) TargetVmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResourceSettingsResponse) *string { return v.TargetVmSize }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets user-managed identities
+func (o VirtualMachineResourceSettingsResponseOutput) UserManagedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VirtualMachineResourceSettingsResponse) []string { return v.UserManagedIdentities }).(pulumi.StringArrayOutput)
+}
+
+type VirtualMachineResourceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineResourceSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineResourceSettingsResponsePtrOutput) ToVirtualMachineResourceSettingsResponsePtrOutput() VirtualMachineResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o VirtualMachineResourceSettingsResponsePtrOutput) ToVirtualMachineResourceSettingsResponsePtrOutputWithContext(ctx context.Context) VirtualMachineResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o VirtualMachineResourceSettingsResponsePtrOutput) Elem() VirtualMachineResourceSettingsResponseOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceSettingsResponse) VirtualMachineResourceSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineResourceSettingsResponse
+		return ret
+	}).(VirtualMachineResourceSettingsResponseOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Compute/virtualMachines'.
+func (o VirtualMachineResourceSettingsResponsePtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o VirtualMachineResourceSettingsResponsePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceSettingsResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target availability set id for virtual machines not in an availability set at source.
+func (o VirtualMachineResourceSettingsResponsePtrOutput) TargetAvailabilitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetAvailabilitySetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target availability zone.
+func (o VirtualMachineResourceSettingsResponsePtrOutput) TargetAvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetAvailabilityZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o VirtualMachineResourceSettingsResponsePtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o VirtualMachineResourceSettingsResponsePtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target virtual machine size.
+func (o VirtualMachineResourceSettingsResponsePtrOutput) TargetVmSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetVmSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets user-managed identities
+func (o VirtualMachineResourceSettingsResponsePtrOutput) UserManagedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VirtualMachineResourceSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserManagedIdentities
+	}).(pulumi.StringArrayOutput)
 }
 
 // Defines the virtual network resource settings.
@@ -2310,6 +8181,268 @@ type VirtualNetworkResourceSettings struct {
 	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
+// VirtualNetworkResourceSettingsInput is an input type that accepts VirtualNetworkResourceSettingsArgs and VirtualNetworkResourceSettingsOutput values.
+// You can construct a concrete instance of `VirtualNetworkResourceSettingsInput` via:
+//
+//	VirtualNetworkResourceSettingsArgs{...}
+type VirtualNetworkResourceSettingsInput interface {
+	pulumi.Input
+
+	ToVirtualNetworkResourceSettingsOutput() VirtualNetworkResourceSettingsOutput
+	ToVirtualNetworkResourceSettingsOutputWithContext(context.Context) VirtualNetworkResourceSettingsOutput
+}
+
+// Defines the virtual network resource settings.
+type VirtualNetworkResourceSettingsArgs struct {
+	// Gets or sets the address prefixes for the virtual network.
+	AddressSpace pulumi.StringArrayInput `pulumi:"addressSpace"`
+	// Gets or sets DHCPOptions that contains an array of DNS servers available to VMs
+	// deployed in the virtual network.
+	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
+	// Gets or sets a value indicating whether gets or sets whether the
+	// DDOS protection should be switched on.
+	EnableDdosProtection pulumi.BoolPtrInput `pulumi:"enableDdosProtection"`
+	// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+	// Expected value is 'Microsoft.Network/virtualNetworks'.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// Gets or sets List of subnets in a VirtualNetwork.
+	Subnets SubnetResourceSettingsArrayInput `pulumi:"subnets"`
+	// Gets or sets the Resource tags.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Gets or sets the target resource group name.
+	TargetResourceGroupName pulumi.StringPtrInput `pulumi:"targetResourceGroupName"`
+	// Gets or sets the target Resource name.
+	TargetResourceName pulumi.StringPtrInput `pulumi:"targetResourceName"`
+}
+
+func (VirtualNetworkResourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkResourceSettings)(nil)).Elem()
+}
+
+func (i VirtualNetworkResourceSettingsArgs) ToVirtualNetworkResourceSettingsOutput() VirtualNetworkResourceSettingsOutput {
+	return i.ToVirtualNetworkResourceSettingsOutputWithContext(context.Background())
+}
+
+func (i VirtualNetworkResourceSettingsArgs) ToVirtualNetworkResourceSettingsOutputWithContext(ctx context.Context) VirtualNetworkResourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkResourceSettingsOutput)
+}
+
+func (i VirtualNetworkResourceSettingsArgs) ToVirtualNetworkResourceSettingsPtrOutput() VirtualNetworkResourceSettingsPtrOutput {
+	return i.ToVirtualNetworkResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualNetworkResourceSettingsArgs) ToVirtualNetworkResourceSettingsPtrOutputWithContext(ctx context.Context) VirtualNetworkResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkResourceSettingsOutput).ToVirtualNetworkResourceSettingsPtrOutputWithContext(ctx)
+}
+
+// VirtualNetworkResourceSettingsPtrInput is an input type that accepts VirtualNetworkResourceSettingsArgs, VirtualNetworkResourceSettingsPtr and VirtualNetworkResourceSettingsPtrOutput values.
+// You can construct a concrete instance of `VirtualNetworkResourceSettingsPtrInput` via:
+//
+//	        VirtualNetworkResourceSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualNetworkResourceSettingsPtrInput interface {
+	pulumi.Input
+
+	ToVirtualNetworkResourceSettingsPtrOutput() VirtualNetworkResourceSettingsPtrOutput
+	ToVirtualNetworkResourceSettingsPtrOutputWithContext(context.Context) VirtualNetworkResourceSettingsPtrOutput
+}
+
+type virtualNetworkResourceSettingsPtrType VirtualNetworkResourceSettingsArgs
+
+func VirtualNetworkResourceSettingsPtr(v *VirtualNetworkResourceSettingsArgs) VirtualNetworkResourceSettingsPtrInput {
+	return (*virtualNetworkResourceSettingsPtrType)(v)
+}
+
+func (*virtualNetworkResourceSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNetworkResourceSettings)(nil)).Elem()
+}
+
+func (i *virtualNetworkResourceSettingsPtrType) ToVirtualNetworkResourceSettingsPtrOutput() VirtualNetworkResourceSettingsPtrOutput {
+	return i.ToVirtualNetworkResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualNetworkResourceSettingsPtrType) ToVirtualNetworkResourceSettingsPtrOutputWithContext(ctx context.Context) VirtualNetworkResourceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkResourceSettingsPtrOutput)
+}
+
+// Defines the virtual network resource settings.
+type VirtualNetworkResourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkResourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkResourceSettings)(nil)).Elem()
+}
+
+func (o VirtualNetworkResourceSettingsOutput) ToVirtualNetworkResourceSettingsOutput() VirtualNetworkResourceSettingsOutput {
+	return o
+}
+
+func (o VirtualNetworkResourceSettingsOutput) ToVirtualNetworkResourceSettingsOutputWithContext(ctx context.Context) VirtualNetworkResourceSettingsOutput {
+	return o
+}
+
+func (o VirtualNetworkResourceSettingsOutput) ToVirtualNetworkResourceSettingsPtrOutput() VirtualNetworkResourceSettingsPtrOutput {
+	return o.ToVirtualNetworkResourceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualNetworkResourceSettingsOutput) ToVirtualNetworkResourceSettingsPtrOutputWithContext(ctx context.Context) VirtualNetworkResourceSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualNetworkResourceSettings) *VirtualNetworkResourceSettings {
+		return &v
+	}).(VirtualNetworkResourceSettingsPtrOutput)
+}
+
+// Gets or sets the address prefixes for the virtual network.
+func (o VirtualNetworkResourceSettingsOutput) AddressSpace() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkResourceSettings) []string { return v.AddressSpace }).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets DHCPOptions that contains an array of DNS servers available to VMs
+// deployed in the virtual network.
+func (o VirtualNetworkResourceSettingsOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkResourceSettings) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets a value indicating whether gets or sets whether the
+// DDOS protection should be switched on.
+func (o VirtualNetworkResourceSettingsOutput) EnableDdosProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkResourceSettings) *bool { return v.EnableDdosProtection }).(pulumi.BoolPtrOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Network/virtualNetworks'.
+func (o VirtualNetworkResourceSettingsOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualNetworkResourceSettings) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets List of subnets in a VirtualNetwork.
+func (o VirtualNetworkResourceSettingsOutput) Subnets() SubnetResourceSettingsArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkResourceSettings) []SubnetResourceSettings { return v.Subnets }).(SubnetResourceSettingsArrayOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o VirtualNetworkResourceSettingsOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v VirtualNetworkResourceSettings) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o VirtualNetworkResourceSettingsOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkResourceSettings) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o VirtualNetworkResourceSettingsOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkResourceSettings) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+type VirtualNetworkResourceSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkResourceSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNetworkResourceSettings)(nil)).Elem()
+}
+
+func (o VirtualNetworkResourceSettingsPtrOutput) ToVirtualNetworkResourceSettingsPtrOutput() VirtualNetworkResourceSettingsPtrOutput {
+	return o
+}
+
+func (o VirtualNetworkResourceSettingsPtrOutput) ToVirtualNetworkResourceSettingsPtrOutputWithContext(ctx context.Context) VirtualNetworkResourceSettingsPtrOutput {
+	return o
+}
+
+func (o VirtualNetworkResourceSettingsPtrOutput) Elem() VirtualNetworkResourceSettingsOutput {
+	return o.ApplyT(func(v *VirtualNetworkResourceSettings) VirtualNetworkResourceSettings {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualNetworkResourceSettings
+		return ret
+	}).(VirtualNetworkResourceSettingsOutput)
+}
+
+// Gets or sets the address prefixes for the virtual network.
+func (o VirtualNetworkResourceSettingsPtrOutput) AddressSpace() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VirtualNetworkResourceSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressSpace
+	}).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets DHCPOptions that contains an array of DNS servers available to VMs
+// deployed in the virtual network.
+func (o VirtualNetworkResourceSettingsPtrOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VirtualNetworkResourceSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsServers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets a value indicating whether gets or sets whether the
+// DDOS protection should be switched on.
+func (o VirtualNetworkResourceSettingsPtrOutput) EnableDdosProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResourceSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableDdosProtection
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Network/virtualNetworks'.
+func (o VirtualNetworkResourceSettingsPtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets List of subnets in a VirtualNetwork.
+func (o VirtualNetworkResourceSettingsPtrOutput) Subnets() SubnetResourceSettingsArrayOutput {
+	return o.ApplyT(func(v *VirtualNetworkResourceSettings) []SubnetResourceSettings {
+		if v == nil {
+			return nil
+		}
+		return v.Subnets
+	}).(SubnetResourceSettingsArrayOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o VirtualNetworkResourceSettingsPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VirtualNetworkResourceSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o VirtualNetworkResourceSettingsPtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o VirtualNetworkResourceSettingsPtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResourceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines the virtual network resource settings.
 type VirtualNetworkResourceSettingsResponse struct {
 	// Gets or sets the address prefixes for the virtual network.
@@ -2333,15 +8466,212 @@ type VirtualNetworkResourceSettingsResponse struct {
 	TargetResourceName *string `pulumi:"targetResourceName"`
 }
 
+// Defines the virtual network resource settings.
+type VirtualNetworkResourceSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkResourceSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o VirtualNetworkResourceSettingsResponseOutput) ToVirtualNetworkResourceSettingsResponseOutput() VirtualNetworkResourceSettingsResponseOutput {
+	return o
+}
+
+func (o VirtualNetworkResourceSettingsResponseOutput) ToVirtualNetworkResourceSettingsResponseOutputWithContext(ctx context.Context) VirtualNetworkResourceSettingsResponseOutput {
+	return o
+}
+
+// Gets or sets the address prefixes for the virtual network.
+func (o VirtualNetworkResourceSettingsResponseOutput) AddressSpace() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkResourceSettingsResponse) []string { return v.AddressSpace }).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets DHCPOptions that contains an array of DNS servers available to VMs
+// deployed in the virtual network.
+func (o VirtualNetworkResourceSettingsResponseOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkResourceSettingsResponse) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets a value indicating whether gets or sets whether the
+// DDOS protection should be switched on.
+func (o VirtualNetworkResourceSettingsResponseOutput) EnableDdosProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkResourceSettingsResponse) *bool { return v.EnableDdosProtection }).(pulumi.BoolPtrOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Network/virtualNetworks'.
+func (o VirtualNetworkResourceSettingsResponseOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualNetworkResourceSettingsResponse) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets List of subnets in a VirtualNetwork.
+func (o VirtualNetworkResourceSettingsResponseOutput) Subnets() SubnetResourceSettingsResponseArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkResourceSettingsResponse) []SubnetResourceSettingsResponse { return v.Subnets }).(SubnetResourceSettingsResponseArrayOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o VirtualNetworkResourceSettingsResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v VirtualNetworkResourceSettingsResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o VirtualNetworkResourceSettingsResponseOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkResourceSettingsResponse) *string { return v.TargetResourceGroupName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o VirtualNetworkResourceSettingsResponseOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkResourceSettingsResponse) *string { return v.TargetResourceName }).(pulumi.StringPtrOutput)
+}
+
+type VirtualNetworkResourceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkResourceSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNetworkResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o VirtualNetworkResourceSettingsResponsePtrOutput) ToVirtualNetworkResourceSettingsResponsePtrOutput() VirtualNetworkResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o VirtualNetworkResourceSettingsResponsePtrOutput) ToVirtualNetworkResourceSettingsResponsePtrOutputWithContext(ctx context.Context) VirtualNetworkResourceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o VirtualNetworkResourceSettingsResponsePtrOutput) Elem() VirtualNetworkResourceSettingsResponseOutput {
+	return o.ApplyT(func(v *VirtualNetworkResourceSettingsResponse) VirtualNetworkResourceSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualNetworkResourceSettingsResponse
+		return ret
+	}).(VirtualNetworkResourceSettingsResponseOutput)
+}
+
+// Gets or sets the address prefixes for the virtual network.
+func (o VirtualNetworkResourceSettingsResponsePtrOutput) AddressSpace() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VirtualNetworkResourceSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressSpace
+	}).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets DHCPOptions that contains an array of DNS servers available to VMs
+// deployed in the virtual network.
+func (o VirtualNetworkResourceSettingsResponsePtrOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VirtualNetworkResourceSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsServers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets a value indicating whether gets or sets whether the
+// DDOS protection should be switched on.
+func (o VirtualNetworkResourceSettingsResponsePtrOutput) EnableDdosProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResourceSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableDdosProtection
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
+// Expected value is 'Microsoft.Network/virtualNetworks'.
+func (o VirtualNetworkResourceSettingsResponsePtrOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets List of subnets in a VirtualNetwork.
+func (o VirtualNetworkResourceSettingsResponsePtrOutput) Subnets() SubnetResourceSettingsResponseArrayOutput {
+	return o.ApplyT(func(v *VirtualNetworkResourceSettingsResponse) []SubnetResourceSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Subnets
+	}).(SubnetResourceSettingsResponseArrayOutput)
+}
+
+// Gets or sets the Resource tags.
+func (o VirtualNetworkResourceSettingsResponsePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VirtualNetworkResourceSettingsResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Gets or sets the target resource group name.
+func (o VirtualNetworkResourceSettingsResponsePtrOutput) TargetResourceGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target Resource name.
+func (o VirtualNetworkResourceSettingsResponsePtrOutput) TargetResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResourceSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AutomaticResolutionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(AutomaticResolutionPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(AvailabilitySetResourceSettingsOutput{})
+	pulumi.RegisterOutputType(AvailabilitySetResourceSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AvailabilitySetResourceSettingsResponseOutput{})
+	pulumi.RegisterOutputType(AvailabilitySetResourceSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(DiskEncryptionSetResourceSettingsOutput{})
+	pulumi.RegisterOutputType(DiskEncryptionSetResourceSettingsPtrOutput{})
+	pulumi.RegisterOutputType(DiskEncryptionSetResourceSettingsResponseOutput{})
+	pulumi.RegisterOutputType(DiskEncryptionSetResourceSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(IdentityOutput{})
 	pulumi.RegisterOutputType(IdentityPtrOutput{})
 	pulumi.RegisterOutputType(IdentityResponseOutput{})
 	pulumi.RegisterOutputType(IdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(JobStatusResponseOutput{})
 	pulumi.RegisterOutputType(JobStatusResponsePtrOutput{})
+	pulumi.RegisterOutputType(KeyVaultResourceSettingsOutput{})
+	pulumi.RegisterOutputType(KeyVaultResourceSettingsPtrOutput{})
+	pulumi.RegisterOutputType(KeyVaultResourceSettingsResponseOutput{})
+	pulumi.RegisterOutputType(KeyVaultResourceSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(LBBackendAddressPoolResourceSettingsOutput{})
+	pulumi.RegisterOutputType(LBBackendAddressPoolResourceSettingsArrayOutput{})
+	pulumi.RegisterOutputType(LBBackendAddressPoolResourceSettingsResponseOutput{})
+	pulumi.RegisterOutputType(LBBackendAddressPoolResourceSettingsResponseArrayOutput{})
+	pulumi.RegisterOutputType(LBFrontendIPConfigurationResourceSettingsOutput{})
+	pulumi.RegisterOutputType(LBFrontendIPConfigurationResourceSettingsArrayOutput{})
+	pulumi.RegisterOutputType(LBFrontendIPConfigurationResourceSettingsResponseOutput{})
+	pulumi.RegisterOutputType(LBFrontendIPConfigurationResourceSettingsResponseArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerBackendAddressPoolReferenceOutput{})
+	pulumi.RegisterOutputType(LoadBalancerBackendAddressPoolReferenceArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerBackendAddressPoolReferenceResponseOutput{})
+	pulumi.RegisterOutputType(LoadBalancerBackendAddressPoolReferenceResponseArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerNatRuleReferenceOutput{})
+	pulumi.RegisterOutputType(LoadBalancerNatRuleReferenceArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerNatRuleReferenceResponseOutput{})
+	pulumi.RegisterOutputType(LoadBalancerNatRuleReferenceResponseArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerResourceSettingsOutput{})
+	pulumi.RegisterOutputType(LoadBalancerResourceSettingsPtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerResourceSettingsResponseOutput{})
+	pulumi.RegisterOutputType(LoadBalancerResourceSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManualResolutionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ManualResolutionPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(MoveCollectionPropertiesOutput{})
@@ -2364,5 +8694,65 @@ func init() {
 	pulumi.RegisterOutputType(MoveResourcePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(MoveResourcePropertiesResponseErrorsOutput{})
 	pulumi.RegisterOutputType(MoveResourcePropertiesResponseMoveStatusOutput{})
+	pulumi.RegisterOutputType(NetworkInterfaceResourceSettingsOutput{})
+	pulumi.RegisterOutputType(NetworkInterfaceResourceSettingsPtrOutput{})
+	pulumi.RegisterOutputType(NetworkInterfaceResourceSettingsResponseOutput{})
+	pulumi.RegisterOutputType(NetworkInterfaceResourceSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(NetworkSecurityGroupResourceSettingsOutput{})
+	pulumi.RegisterOutputType(NetworkSecurityGroupResourceSettingsPtrOutput{})
+	pulumi.RegisterOutputType(NetworkSecurityGroupResourceSettingsResponseOutput{})
+	pulumi.RegisterOutputType(NetworkSecurityGroupResourceSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(NicIpConfigurationResourceSettingsOutput{})
+	pulumi.RegisterOutputType(NicIpConfigurationResourceSettingsArrayOutput{})
+	pulumi.RegisterOutputType(NicIpConfigurationResourceSettingsResponseOutput{})
+	pulumi.RegisterOutputType(NicIpConfigurationResourceSettingsResponseArrayOutput{})
+	pulumi.RegisterOutputType(NsgReferenceOutput{})
+	pulumi.RegisterOutputType(NsgReferencePtrOutput{})
+	pulumi.RegisterOutputType(NsgReferenceResponseOutput{})
+	pulumi.RegisterOutputType(NsgReferenceResponsePtrOutput{})
+	pulumi.RegisterOutputType(NsgSecurityRuleOutput{})
+	pulumi.RegisterOutputType(NsgSecurityRuleArrayOutput{})
+	pulumi.RegisterOutputType(NsgSecurityRuleResponseOutput{})
+	pulumi.RegisterOutputType(NsgSecurityRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(PublicIPAddressResourceSettingsOutput{})
+	pulumi.RegisterOutputType(PublicIPAddressResourceSettingsPtrOutput{})
+	pulumi.RegisterOutputType(PublicIPAddressResourceSettingsResponseOutput{})
+	pulumi.RegisterOutputType(PublicIPAddressResourceSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(PublicIpReferenceOutput{})
+	pulumi.RegisterOutputType(PublicIpReferencePtrOutput{})
+	pulumi.RegisterOutputType(PublicIpReferenceResponseOutput{})
+	pulumi.RegisterOutputType(PublicIpReferenceResponsePtrOutput{})
+	pulumi.RegisterOutputType(ResourceGroupResourceSettingsOutput{})
+	pulumi.RegisterOutputType(ResourceGroupResourceSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ResourceGroupResourceSettingsResponseOutput{})
+	pulumi.RegisterOutputType(ResourceGroupResourceSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SqlDatabaseResourceSettingsOutput{})
+	pulumi.RegisterOutputType(SqlDatabaseResourceSettingsPtrOutput{})
+	pulumi.RegisterOutputType(SqlDatabaseResourceSettingsResponseOutput{})
+	pulumi.RegisterOutputType(SqlDatabaseResourceSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SqlElasticPoolResourceSettingsOutput{})
+	pulumi.RegisterOutputType(SqlElasticPoolResourceSettingsPtrOutput{})
+	pulumi.RegisterOutputType(SqlElasticPoolResourceSettingsResponseOutput{})
+	pulumi.RegisterOutputType(SqlElasticPoolResourceSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SqlServerResourceSettingsOutput{})
+	pulumi.RegisterOutputType(SqlServerResourceSettingsPtrOutput{})
+	pulumi.RegisterOutputType(SqlServerResourceSettingsResponseOutput{})
+	pulumi.RegisterOutputType(SqlServerResourceSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SubnetReferenceOutput{})
+	pulumi.RegisterOutputType(SubnetReferencePtrOutput{})
+	pulumi.RegisterOutputType(SubnetReferenceResponseOutput{})
+	pulumi.RegisterOutputType(SubnetReferenceResponsePtrOutput{})
+	pulumi.RegisterOutputType(SubnetResourceSettingsOutput{})
+	pulumi.RegisterOutputType(SubnetResourceSettingsArrayOutput{})
+	pulumi.RegisterOutputType(SubnetResourceSettingsResponseOutput{})
+	pulumi.RegisterOutputType(SubnetResourceSettingsResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(VirtualMachineResourceSettingsOutput{})
+	pulumi.RegisterOutputType(VirtualMachineResourceSettingsPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineResourceSettingsResponseOutput{})
+	pulumi.RegisterOutputType(VirtualMachineResourceSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkResourceSettingsOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkResourceSettingsPtrOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkResourceSettingsResponseOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkResourceSettingsResponsePtrOutput{})
 }

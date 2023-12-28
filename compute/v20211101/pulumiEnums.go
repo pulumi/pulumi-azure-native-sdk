@@ -140,10 +140,13 @@ func (o IntervalInMinsPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// IntervalInMinsInput is an input type that accepts IntervalInMinsArgs and IntervalInMinsOutput values.
-// You can construct a concrete instance of `IntervalInMinsInput` via:
+// IntervalInMinsInput is an input type that accepts values of the IntervalInMins enum
+// A concrete instance of `IntervalInMinsInput` can be one of the following:
 //
-//	IntervalInMinsArgs{...}
+//	IntervalInMinsThreeMins
+//	IntervalInMinsFiveMins
+//	IntervalInMinsThirtyMins
+//	IntervalInMinsSixtyMins
 type IntervalInMinsInput interface {
 	pulumi.Input
 
@@ -312,10 +315,12 @@ func (o StatusLevelTypesPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// StatusLevelTypesInput is an input type that accepts StatusLevelTypesArgs and StatusLevelTypesOutput values.
-// You can construct a concrete instance of `StatusLevelTypesInput` via:
+// StatusLevelTypesInput is an input type that accepts values of the StatusLevelTypes enum
+// A concrete instance of `StatusLevelTypesInput` can be one of the following:
 //
-//	StatusLevelTypesArgs{...}
+//	StatusLevelTypesInfo
+//	StatusLevelTypesWarning
+//	StatusLevelTypesError
 type StatusLevelTypesInput interface {
 	pulumi.Input
 

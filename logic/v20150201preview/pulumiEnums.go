@@ -145,10 +145,18 @@ func (o ParameterTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 	}).(pulumi.StringPtrOutput)
 }
 
-// ParameterTypeInput is an input type that accepts ParameterTypeArgs and ParameterTypeOutput values.
-// You can construct a concrete instance of `ParameterTypeInput` via:
+// ParameterTypeInput is an input type that accepts values of the ParameterType enum
+// A concrete instance of `ParameterTypeInput` can be one of the following:
 //
-//	ParameterTypeArgs{...}
+//	ParameterTypeNotSpecified
+//	ParameterTypeString
+//	ParameterTypeSecureString
+//	ParameterTypeInt
+//	ParameterTypeFloat
+//	ParameterTypeBool
+//	ParameterTypeArray
+//	ParameterTypeObject
+//	ParameterTypeSecureObject
 type ParameterTypeInput interface {
 	pulumi.Input
 
@@ -320,10 +328,15 @@ func (o SkuNamePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// SkuNameInput is an input type that accepts SkuNameArgs and SkuNameOutput values.
-// You can construct a concrete instance of `SkuNameInput` via:
+// SkuNameInput is an input type that accepts values of the SkuName enum
+// A concrete instance of `SkuNameInput` can be one of the following:
 //
-//	SkuNameArgs{...}
+//	SkuNameNotSpecified
+//	SkuNameFree
+//	SkuNameShared
+//	SkuNameBasic
+//	SkuNameStandard
+//	SkuNamePremium
 type SkuNameInput interface {
 	pulumi.Input
 
@@ -494,10 +507,14 @@ func (o WorkflowStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// WorkflowStateEnumInput is an input type that accepts WorkflowStateEnumArgs and WorkflowStateEnumOutput values.
-// You can construct a concrete instance of `WorkflowStateEnumInput` via:
+// WorkflowStateEnumInput is an input type that accepts values of the WorkflowStateEnum enum
+// A concrete instance of `WorkflowStateEnumInput` can be one of the following:
 //
-//	WorkflowStateEnumArgs{...}
+//	WorkflowStateEnumNotSpecified
+//	WorkflowStateEnumEnabled
+//	WorkflowStateEnumDisabled
+//	WorkflowStateEnumDeleted
+//	WorkflowStateEnumSuspended
 type WorkflowStateEnumInput interface {
 	pulumi.Input
 

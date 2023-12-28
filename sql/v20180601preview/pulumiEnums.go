@@ -139,10 +139,12 @@ func (o SecurityAlertPolicyStatePtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// SecurityAlertPolicyStateInput is an input type that accepts SecurityAlertPolicyStateArgs and SecurityAlertPolicyStateOutput values.
-// You can construct a concrete instance of `SecurityAlertPolicyStateInput` via:
+// SecurityAlertPolicyStateInput is an input type that accepts values of the SecurityAlertPolicyState enum
+// A concrete instance of `SecurityAlertPolicyStateInput` can be one of the following:
 //
-//	SecurityAlertPolicyStateArgs{...}
+//	SecurityAlertPolicyStateNew
+//	SecurityAlertPolicyStateEnabled
+//	SecurityAlertPolicyStateDisabled
 type SecurityAlertPolicyStateInput interface {
 	pulumi.Input
 

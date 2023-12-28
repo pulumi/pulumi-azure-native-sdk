@@ -146,10 +146,12 @@ func (o ResourceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// ResourceIdentityTypeInput is an input type that accepts ResourceIdentityTypeArgs and ResourceIdentityTypeOutput values.
-// You can construct a concrete instance of `ResourceIdentityTypeInput` via:
+// ResourceIdentityTypeInput is an input type that accepts values of the ResourceIdentityType enum
+// A concrete instance of `ResourceIdentityTypeInput` can be one of the following:
 //
-//	ResourceIdentityTypeArgs{...}
+//	ResourceIdentityTypeNone
+//	ResourceIdentityTypeSystemAssigned
+//	ResourceIdentityTypeUserAssigned
 type ResourceIdentityTypeInput interface {
 	pulumi.Input
 
@@ -205,7 +207,172 @@ const (
 	TargetReferenceTypeChaosTarget = TargetReferenceType("ChaosTarget")
 )
 
+func (TargetReferenceType) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetReferenceType)(nil)).Elem()
+}
+
+func (e TargetReferenceType) ToTargetReferenceTypeOutput() TargetReferenceTypeOutput {
+	return pulumi.ToOutput(e).(TargetReferenceTypeOutput)
+}
+
+func (e TargetReferenceType) ToTargetReferenceTypeOutputWithContext(ctx context.Context) TargetReferenceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TargetReferenceTypeOutput)
+}
+
+func (e TargetReferenceType) ToTargetReferenceTypePtrOutput() TargetReferenceTypePtrOutput {
+	return e.ToTargetReferenceTypePtrOutputWithContext(context.Background())
+}
+
+func (e TargetReferenceType) ToTargetReferenceTypePtrOutputWithContext(ctx context.Context) TargetReferenceTypePtrOutput {
+	return TargetReferenceType(e).ToTargetReferenceTypeOutputWithContext(ctx).ToTargetReferenceTypePtrOutputWithContext(ctx)
+}
+
+func (e TargetReferenceType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TargetReferenceType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TargetReferenceType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TargetReferenceType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TargetReferenceTypeOutput struct{ *pulumi.OutputState }
+
+func (TargetReferenceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetReferenceType)(nil)).Elem()
+}
+
+func (o TargetReferenceTypeOutput) ToTargetReferenceTypeOutput() TargetReferenceTypeOutput {
+	return o
+}
+
+func (o TargetReferenceTypeOutput) ToTargetReferenceTypeOutputWithContext(ctx context.Context) TargetReferenceTypeOutput {
+	return o
+}
+
+func (o TargetReferenceTypeOutput) ToTargetReferenceTypePtrOutput() TargetReferenceTypePtrOutput {
+	return o.ToTargetReferenceTypePtrOutputWithContext(context.Background())
+}
+
+func (o TargetReferenceTypeOutput) ToTargetReferenceTypePtrOutputWithContext(ctx context.Context) TargetReferenceTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetReferenceType) *TargetReferenceType {
+		return &v
+	}).(TargetReferenceTypePtrOutput)
+}
+
+func (o TargetReferenceTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TargetReferenceTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TargetReferenceType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TargetReferenceTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TargetReferenceTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TargetReferenceType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TargetReferenceTypePtrOutput struct{ *pulumi.OutputState }
+
+func (TargetReferenceTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetReferenceType)(nil)).Elem()
+}
+
+func (o TargetReferenceTypePtrOutput) ToTargetReferenceTypePtrOutput() TargetReferenceTypePtrOutput {
+	return o
+}
+
+func (o TargetReferenceTypePtrOutput) ToTargetReferenceTypePtrOutputWithContext(ctx context.Context) TargetReferenceTypePtrOutput {
+	return o
+}
+
+func (o TargetReferenceTypePtrOutput) Elem() TargetReferenceTypeOutput {
+	return o.ApplyT(func(v *TargetReferenceType) TargetReferenceType {
+		if v != nil {
+			return *v
+		}
+		var ret TargetReferenceType
+		return ret
+	}).(TargetReferenceTypeOutput)
+}
+
+func (o TargetReferenceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TargetReferenceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TargetReferenceType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TargetReferenceTypeInput is an input type that accepts values of the TargetReferenceType enum
+// A concrete instance of `TargetReferenceTypeInput` can be one of the following:
+//
+//	TargetReferenceTypeChaosTarget
+type TargetReferenceTypeInput interface {
+	pulumi.Input
+
+	ToTargetReferenceTypeOutput() TargetReferenceTypeOutput
+	ToTargetReferenceTypeOutputWithContext(context.Context) TargetReferenceTypeOutput
+}
+
+var targetReferenceTypePtrType = reflect.TypeOf((**TargetReferenceType)(nil)).Elem()
+
+type TargetReferenceTypePtrInput interface {
+	pulumi.Input
+
+	ToTargetReferenceTypePtrOutput() TargetReferenceTypePtrOutput
+	ToTargetReferenceTypePtrOutputWithContext(context.Context) TargetReferenceTypePtrOutput
+}
+
+type targetReferenceTypePtr string
+
+func TargetReferenceTypePtr(v string) TargetReferenceTypePtrInput {
+	return (*targetReferenceTypePtr)(&v)
+}
+
+func (*targetReferenceTypePtr) ElementType() reflect.Type {
+	return targetReferenceTypePtrType
+}
+
+func (in *targetReferenceTypePtr) ToTargetReferenceTypePtrOutput() TargetReferenceTypePtrOutput {
+	return pulumi.ToOutput(in).(TargetReferenceTypePtrOutput)
+}
+
+func (in *targetReferenceTypePtr) ToTargetReferenceTypePtrOutputWithContext(ctx context.Context) TargetReferenceTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TargetReferenceTypePtrOutput)
+}
+
+func (in *targetReferenceTypePtr) ToOutput(ctx context.Context) pulumix.Output[*TargetReferenceType] {
+	return pulumix.Output[*TargetReferenceType]{
+		OutputState: in.ToTargetReferenceTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(TargetReferenceTypeOutput{})
+	pulumi.RegisterOutputType(TargetReferenceTypePtrOutput{})
 }

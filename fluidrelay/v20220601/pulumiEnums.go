@@ -138,10 +138,11 @@ func (o CmkIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// CmkIdentityTypeInput is an input type that accepts CmkIdentityTypeArgs and CmkIdentityTypeOutput values.
-// You can construct a concrete instance of `CmkIdentityTypeInput` via:
+// CmkIdentityTypeInput is an input type that accepts values of the CmkIdentityType enum
+// A concrete instance of `CmkIdentityTypeInput` can be one of the following:
 //
-//	CmkIdentityTypeArgs{...}
+//	CmkIdentityTypeSystemAssigned
+//	CmkIdentityTypeUserAssigned
 type CmkIdentityTypeInput interface {
 	pulumi.Input
 
@@ -190,6 +191,171 @@ const (
 	ProvisioningStateFailed    = ProvisioningState("Failed")
 	ProvisioningStateCanceled  = ProvisioningState("Canceled")
 )
+
+func (ProvisioningState) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProvisioningState)(nil)).Elem()
+}
+
+func (e ProvisioningState) ToProvisioningStateOutput() ProvisioningStateOutput {
+	return pulumi.ToOutput(e).(ProvisioningStateOutput)
+}
+
+func (e ProvisioningState) ToProvisioningStateOutputWithContext(ctx context.Context) ProvisioningStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ProvisioningStateOutput)
+}
+
+func (e ProvisioningState) ToProvisioningStatePtrOutput() ProvisioningStatePtrOutput {
+	return e.ToProvisioningStatePtrOutputWithContext(context.Background())
+}
+
+func (e ProvisioningState) ToProvisioningStatePtrOutputWithContext(ctx context.Context) ProvisioningStatePtrOutput {
+	return ProvisioningState(e).ToProvisioningStateOutputWithContext(ctx).ToProvisioningStatePtrOutputWithContext(ctx)
+}
+
+func (e ProvisioningState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ProvisioningState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ProvisioningState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ProvisioningState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ProvisioningStateOutput struct{ *pulumi.OutputState }
+
+func (ProvisioningStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProvisioningState)(nil)).Elem()
+}
+
+func (o ProvisioningStateOutput) ToProvisioningStateOutput() ProvisioningStateOutput {
+	return o
+}
+
+func (o ProvisioningStateOutput) ToProvisioningStateOutputWithContext(ctx context.Context) ProvisioningStateOutput {
+	return o
+}
+
+func (o ProvisioningStateOutput) ToProvisioningStatePtrOutput() ProvisioningStatePtrOutput {
+	return o.ToProvisioningStatePtrOutputWithContext(context.Background())
+}
+
+func (o ProvisioningStateOutput) ToProvisioningStatePtrOutputWithContext(ctx context.Context) ProvisioningStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProvisioningState) *ProvisioningState {
+		return &v
+	}).(ProvisioningStatePtrOutput)
+}
+
+func (o ProvisioningStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ProvisioningStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProvisioningState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ProvisioningStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ProvisioningStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProvisioningState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ProvisioningStatePtrOutput struct{ *pulumi.OutputState }
+
+func (ProvisioningStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProvisioningState)(nil)).Elem()
+}
+
+func (o ProvisioningStatePtrOutput) ToProvisioningStatePtrOutput() ProvisioningStatePtrOutput {
+	return o
+}
+
+func (o ProvisioningStatePtrOutput) ToProvisioningStatePtrOutputWithContext(ctx context.Context) ProvisioningStatePtrOutput {
+	return o
+}
+
+func (o ProvisioningStatePtrOutput) Elem() ProvisioningStateOutput {
+	return o.ApplyT(func(v *ProvisioningState) ProvisioningState {
+		if v != nil {
+			return *v
+		}
+		var ret ProvisioningState
+		return ret
+	}).(ProvisioningStateOutput)
+}
+
+func (o ProvisioningStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ProvisioningStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ProvisioningState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ProvisioningStateInput is an input type that accepts values of the ProvisioningState enum
+// A concrete instance of `ProvisioningStateInput` can be one of the following:
+//
+//	ProvisioningStateSucceeded
+//	ProvisioningStateFailed
+//	ProvisioningStateCanceled
+type ProvisioningStateInput interface {
+	pulumi.Input
+
+	ToProvisioningStateOutput() ProvisioningStateOutput
+	ToProvisioningStateOutputWithContext(context.Context) ProvisioningStateOutput
+}
+
+var provisioningStatePtrType = reflect.TypeOf((**ProvisioningState)(nil)).Elem()
+
+type ProvisioningStatePtrInput interface {
+	pulumi.Input
+
+	ToProvisioningStatePtrOutput() ProvisioningStatePtrOutput
+	ToProvisioningStatePtrOutputWithContext(context.Context) ProvisioningStatePtrOutput
+}
+
+type provisioningStatePtr string
+
+func ProvisioningStatePtr(v string) ProvisioningStatePtrInput {
+	return (*provisioningStatePtr)(&v)
+}
+
+func (*provisioningStatePtr) ElementType() reflect.Type {
+	return provisioningStatePtrType
+}
+
+func (in *provisioningStatePtr) ToProvisioningStatePtrOutput() ProvisioningStatePtrOutput {
+	return pulumi.ToOutput(in).(ProvisioningStatePtrOutput)
+}
+
+func (in *provisioningStatePtr) ToProvisioningStatePtrOutputWithContext(ctx context.Context) ProvisioningStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ProvisioningStatePtrOutput)
+}
+
+func (in *provisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*ProvisioningState] {
+	return pulumix.Output[*ProvisioningState]{
+		OutputState: in.ToProvisioningStatePtrOutputWithContext(ctx).OutputState,
+	}
+}
 
 // The identity type.
 type ResourceIdentityType string
@@ -320,10 +486,13 @@ func (o ResourceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// ResourceIdentityTypeInput is an input type that accepts ResourceIdentityTypeArgs and ResourceIdentityTypeOutput values.
-// You can construct a concrete instance of `ResourceIdentityTypeInput` via:
+// ResourceIdentityTypeInput is an input type that accepts values of the ResourceIdentityType enum
+// A concrete instance of `ResourceIdentityTypeInput` can be one of the following:
 //
-//	ResourceIdentityTypeArgs{...}
+//	ResourceIdentityTypeSystemAssigned
+//	ResourceIdentityTypeUserAssigned
+//	ResourceIdentityType_SystemAssigned_UserAssigned
+//	ResourceIdentityTypeNone
 type ResourceIdentityTypeInput interface {
 	pulumi.Input
 
@@ -372,9 +541,177 @@ const (
 	StorageSKUBasic    = StorageSKU("basic")
 )
 
+func (StorageSKU) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageSKU)(nil)).Elem()
+}
+
+func (e StorageSKU) ToStorageSKUOutput() StorageSKUOutput {
+	return pulumi.ToOutput(e).(StorageSKUOutput)
+}
+
+func (e StorageSKU) ToStorageSKUOutputWithContext(ctx context.Context) StorageSKUOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(StorageSKUOutput)
+}
+
+func (e StorageSKU) ToStorageSKUPtrOutput() StorageSKUPtrOutput {
+	return e.ToStorageSKUPtrOutputWithContext(context.Background())
+}
+
+func (e StorageSKU) ToStorageSKUPtrOutputWithContext(ctx context.Context) StorageSKUPtrOutput {
+	return StorageSKU(e).ToStorageSKUOutputWithContext(ctx).ToStorageSKUPtrOutputWithContext(ctx)
+}
+
+func (e StorageSKU) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StorageSKU) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StorageSKU) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e StorageSKU) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type StorageSKUOutput struct{ *pulumi.OutputState }
+
+func (StorageSKUOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageSKU)(nil)).Elem()
+}
+
+func (o StorageSKUOutput) ToStorageSKUOutput() StorageSKUOutput {
+	return o
+}
+
+func (o StorageSKUOutput) ToStorageSKUOutputWithContext(ctx context.Context) StorageSKUOutput {
+	return o
+}
+
+func (o StorageSKUOutput) ToStorageSKUPtrOutput() StorageSKUPtrOutput {
+	return o.ToStorageSKUPtrOutputWithContext(context.Background())
+}
+
+func (o StorageSKUOutput) ToStorageSKUPtrOutputWithContext(ctx context.Context) StorageSKUPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageSKU) *StorageSKU {
+		return &v
+	}).(StorageSKUPtrOutput)
+}
+
+func (o StorageSKUOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o StorageSKUOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StorageSKU) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o StorageSKUOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StorageSKUOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StorageSKU) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type StorageSKUPtrOutput struct{ *pulumi.OutputState }
+
+func (StorageSKUPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageSKU)(nil)).Elem()
+}
+
+func (o StorageSKUPtrOutput) ToStorageSKUPtrOutput() StorageSKUPtrOutput {
+	return o
+}
+
+func (o StorageSKUPtrOutput) ToStorageSKUPtrOutputWithContext(ctx context.Context) StorageSKUPtrOutput {
+	return o
+}
+
+func (o StorageSKUPtrOutput) Elem() StorageSKUOutput {
+	return o.ApplyT(func(v *StorageSKU) StorageSKU {
+		if v != nil {
+			return *v
+		}
+		var ret StorageSKU
+		return ret
+	}).(StorageSKUOutput)
+}
+
+func (o StorageSKUPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StorageSKUPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StorageSKU) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// StorageSKUInput is an input type that accepts values of the StorageSKU enum
+// A concrete instance of `StorageSKUInput` can be one of the following:
+//
+//	StorageSKUStandard
+//	StorageSKUBasic
+type StorageSKUInput interface {
+	pulumi.Input
+
+	ToStorageSKUOutput() StorageSKUOutput
+	ToStorageSKUOutputWithContext(context.Context) StorageSKUOutput
+}
+
+var storageSKUPtrType = reflect.TypeOf((**StorageSKU)(nil)).Elem()
+
+type StorageSKUPtrInput interface {
+	pulumi.Input
+
+	ToStorageSKUPtrOutput() StorageSKUPtrOutput
+	ToStorageSKUPtrOutputWithContext(context.Context) StorageSKUPtrOutput
+}
+
+type storageSKUPtr string
+
+func StorageSKUPtr(v string) StorageSKUPtrInput {
+	return (*storageSKUPtr)(&v)
+}
+
+func (*storageSKUPtr) ElementType() reflect.Type {
+	return storageSKUPtrType
+}
+
+func (in *storageSKUPtr) ToStorageSKUPtrOutput() StorageSKUPtrOutput {
+	return pulumi.ToOutput(in).(StorageSKUPtrOutput)
+}
+
+func (in *storageSKUPtr) ToStorageSKUPtrOutputWithContext(ctx context.Context) StorageSKUPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(StorageSKUPtrOutput)
+}
+
+func (in *storageSKUPtr) ToOutput(ctx context.Context) pulumix.Output[*StorageSKU] {
+	return pulumix.Output[*StorageSKU]{
+		OutputState: in.ToStorageSKUPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
 	pulumi.RegisterOutputType(CmkIdentityTypeOutput{})
 	pulumi.RegisterOutputType(CmkIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(ProvisioningStateOutput{})
+	pulumi.RegisterOutputType(ProvisioningStatePtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(StorageSKUOutput{})
+	pulumi.RegisterOutputType(StorageSKUPtrOutput{})
 }

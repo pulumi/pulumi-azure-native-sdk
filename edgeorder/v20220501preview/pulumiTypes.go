@@ -3524,6 +3524,42 @@ type Pav2MeterDetailsResponse struct {
 	Multiplier float64 `pulumi:"multiplier"`
 }
 
+// Billing type PAV2 meter details.
+type Pav2MeterDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (Pav2MeterDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Pav2MeterDetailsResponse)(nil)).Elem()
+}
+
+func (o Pav2MeterDetailsResponseOutput) ToPav2MeterDetailsResponseOutput() Pav2MeterDetailsResponseOutput {
+	return o
+}
+
+func (o Pav2MeterDetailsResponseOutput) ToPav2MeterDetailsResponseOutputWithContext(ctx context.Context) Pav2MeterDetailsResponseOutput {
+	return o
+}
+
+// Represents billing type.
+// Expected value is 'Pav2'.
+func (o Pav2MeterDetailsResponseOutput) BillingType() pulumi.StringOutput {
+	return o.ApplyT(func(v Pav2MeterDetailsResponse) string { return v.BillingType }).(pulumi.StringOutput)
+}
+
+// Charging type.
+func (o Pav2MeterDetailsResponseOutput) ChargingType() pulumi.StringOutput {
+	return o.ApplyT(func(v Pav2MeterDetailsResponse) string { return v.ChargingType }).(pulumi.StringOutput)
+}
+
+// Validation status of requested data center and transport.
+func (o Pav2MeterDetailsResponseOutput) MeterGuid() pulumi.StringOutput {
+	return o.ApplyT(func(v Pav2MeterDetailsResponse) string { return v.MeterGuid }).(pulumi.StringOutput)
+}
+
+// Billing unit applicable for Pav2 billing.
+func (o Pav2MeterDetailsResponseOutput) Multiplier() pulumi.Float64Output {
+	return o.ApplyT(func(v Pav2MeterDetailsResponse) float64 { return v.Multiplier }).(pulumi.Float64Output)
+}
+
 // Preferences related to the order.
 type Preferences struct {
 	// Preferences related to the Encryption.
@@ -4298,6 +4334,52 @@ type PurchaseMeterDetailsResponse struct {
 	SkuId string `pulumi:"skuId"`
 	// Term Id.
 	TermId string `pulumi:"termId"`
+}
+
+// Billing type Purchase meter details.
+type PurchaseMeterDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (PurchaseMeterDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PurchaseMeterDetailsResponse)(nil)).Elem()
+}
+
+func (o PurchaseMeterDetailsResponseOutput) ToPurchaseMeterDetailsResponseOutput() PurchaseMeterDetailsResponseOutput {
+	return o
+}
+
+func (o PurchaseMeterDetailsResponseOutput) ToPurchaseMeterDetailsResponseOutputWithContext(ctx context.Context) PurchaseMeterDetailsResponseOutput {
+	return o
+}
+
+// Represents billing type.
+// Expected value is 'Purchase'.
+func (o PurchaseMeterDetailsResponseOutput) BillingType() pulumi.StringOutput {
+	return o.ApplyT(func(v PurchaseMeterDetailsResponse) string { return v.BillingType }).(pulumi.StringOutput)
+}
+
+// Charging type.
+func (o PurchaseMeterDetailsResponseOutput) ChargingType() pulumi.StringOutput {
+	return o.ApplyT(func(v PurchaseMeterDetailsResponse) string { return v.ChargingType }).(pulumi.StringOutput)
+}
+
+// Billing unit applicable for Pav2 billing.
+func (o PurchaseMeterDetailsResponseOutput) Multiplier() pulumi.Float64Output {
+	return o.ApplyT(func(v PurchaseMeterDetailsResponse) float64 { return v.Multiplier }).(pulumi.Float64Output)
+}
+
+// Product Id.
+func (o PurchaseMeterDetailsResponseOutput) ProductId() pulumi.StringOutput {
+	return o.ApplyT(func(v PurchaseMeterDetailsResponse) string { return v.ProductId }).(pulumi.StringOutput)
+}
+
+// Sku Id.
+func (o PurchaseMeterDetailsResponseOutput) SkuId() pulumi.StringOutput {
+	return o.ApplyT(func(v PurchaseMeterDetailsResponse) string { return v.SkuId }).(pulumi.StringOutput)
+}
+
+// Term Id.
+func (o PurchaseMeterDetailsResponseOutput) TermId() pulumi.StringOutput {
+	return o.ApplyT(func(v PurchaseMeterDetailsResponse) string { return v.TermId }).(pulumi.StringOutput)
 }
 
 // Management RP details.
@@ -5419,6 +5501,7 @@ func init() {
 	pulumi.RegisterOutputType(NotificationPreferenceResponseArrayOutput{})
 	pulumi.RegisterOutputType(OrderItemDetailsOutput{})
 	pulumi.RegisterOutputType(OrderItemDetailsResponseOutput{})
+	pulumi.RegisterOutputType(Pav2MeterDetailsResponseOutput{})
 	pulumi.RegisterOutputType(PreferencesOutput{})
 	pulumi.RegisterOutputType(PreferencesPtrOutput{})
 	pulumi.RegisterOutputType(PreferencesResponseOutput{})
@@ -5431,6 +5514,7 @@ func init() {
 	pulumi.RegisterOutputType(ProductLineResponseArrayOutput{})
 	pulumi.RegisterOutputType(ProductResponseOutput{})
 	pulumi.RegisterOutputType(ProductResponseArrayOutput{})
+	pulumi.RegisterOutputType(PurchaseMeterDetailsResponseOutput{})
 	pulumi.RegisterOutputType(ResourceProviderDetailsResponseOutput{})
 	pulumi.RegisterOutputType(ResourceProviderDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(ReverseShippingDetailsResponseOutput{})

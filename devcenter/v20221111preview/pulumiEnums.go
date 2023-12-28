@@ -19,6 +19,170 @@ const (
 	HibernateSupportEnabled  = HibernateSupport("Enabled")
 )
 
+func (HibernateSupport) ElementType() reflect.Type {
+	return reflect.TypeOf((*HibernateSupport)(nil)).Elem()
+}
+
+func (e HibernateSupport) ToHibernateSupportOutput() HibernateSupportOutput {
+	return pulumi.ToOutput(e).(HibernateSupportOutput)
+}
+
+func (e HibernateSupport) ToHibernateSupportOutputWithContext(ctx context.Context) HibernateSupportOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(HibernateSupportOutput)
+}
+
+func (e HibernateSupport) ToHibernateSupportPtrOutput() HibernateSupportPtrOutput {
+	return e.ToHibernateSupportPtrOutputWithContext(context.Background())
+}
+
+func (e HibernateSupport) ToHibernateSupportPtrOutputWithContext(ctx context.Context) HibernateSupportPtrOutput {
+	return HibernateSupport(e).ToHibernateSupportOutputWithContext(ctx).ToHibernateSupportPtrOutputWithContext(ctx)
+}
+
+func (e HibernateSupport) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HibernateSupport) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HibernateSupport) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e HibernateSupport) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type HibernateSupportOutput struct{ *pulumi.OutputState }
+
+func (HibernateSupportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HibernateSupport)(nil)).Elem()
+}
+
+func (o HibernateSupportOutput) ToHibernateSupportOutput() HibernateSupportOutput {
+	return o
+}
+
+func (o HibernateSupportOutput) ToHibernateSupportOutputWithContext(ctx context.Context) HibernateSupportOutput {
+	return o
+}
+
+func (o HibernateSupportOutput) ToHibernateSupportPtrOutput() HibernateSupportPtrOutput {
+	return o.ToHibernateSupportPtrOutputWithContext(context.Background())
+}
+
+func (o HibernateSupportOutput) ToHibernateSupportPtrOutputWithContext(ctx context.Context) HibernateSupportPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HibernateSupport) *HibernateSupport {
+		return &v
+	}).(HibernateSupportPtrOutput)
+}
+
+func (o HibernateSupportOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o HibernateSupportOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HibernateSupport) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o HibernateSupportOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HibernateSupportOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HibernateSupport) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type HibernateSupportPtrOutput struct{ *pulumi.OutputState }
+
+func (HibernateSupportPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HibernateSupport)(nil)).Elem()
+}
+
+func (o HibernateSupportPtrOutput) ToHibernateSupportPtrOutput() HibernateSupportPtrOutput {
+	return o
+}
+
+func (o HibernateSupportPtrOutput) ToHibernateSupportPtrOutputWithContext(ctx context.Context) HibernateSupportPtrOutput {
+	return o
+}
+
+func (o HibernateSupportPtrOutput) Elem() HibernateSupportOutput {
+	return o.ApplyT(func(v *HibernateSupport) HibernateSupport {
+		if v != nil {
+			return *v
+		}
+		var ret HibernateSupport
+		return ret
+	}).(HibernateSupportOutput)
+}
+
+func (o HibernateSupportPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HibernateSupportPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *HibernateSupport) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// HibernateSupportInput is an input type that accepts values of the HibernateSupport enum
+// A concrete instance of `HibernateSupportInput` can be one of the following:
+//
+//	HibernateSupportDisabled
+//	HibernateSupportEnabled
+type HibernateSupportInput interface {
+	pulumi.Input
+
+	ToHibernateSupportOutput() HibernateSupportOutput
+	ToHibernateSupportOutputWithContext(context.Context) HibernateSupportOutput
+}
+
+var hibernateSupportPtrType = reflect.TypeOf((**HibernateSupport)(nil)).Elem()
+
+type HibernateSupportPtrInput interface {
+	pulumi.Input
+
+	ToHibernateSupportPtrOutput() HibernateSupportPtrOutput
+	ToHibernateSupportPtrOutputWithContext(context.Context) HibernateSupportPtrOutput
+}
+
+type hibernateSupportPtr string
+
+func HibernateSupportPtr(v string) HibernateSupportPtrInput {
+	return (*hibernateSupportPtr)(&v)
+}
+
+func (*hibernateSupportPtr) ElementType() reflect.Type {
+	return hibernateSupportPtrType
+}
+
+func (in *hibernateSupportPtr) ToHibernateSupportPtrOutput() HibernateSupportPtrOutput {
+	return pulumi.ToOutput(in).(HibernateSupportPtrOutput)
+}
+
+func (in *hibernateSupportPtr) ToHibernateSupportPtrOutputWithContext(ctx context.Context) HibernateSupportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(HibernateSupportPtrOutput)
+}
+
+func (in *hibernateSupportPtr) ToOutput(ctx context.Context) pulumix.Output[*HibernateSupport] {
+	return pulumix.Output[*HibernateSupport]{
+		OutputState: in.ToHibernateSupportPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 type SkuTier string
 
@@ -148,10 +312,13 @@ func (o SkuTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// SkuTierInput is an input type that accepts SkuTierArgs and SkuTierOutput values.
-// You can construct a concrete instance of `SkuTierInput` via:
+// SkuTierInput is an input type that accepts values of the SkuTier enum
+// A concrete instance of `SkuTierInput` can be one of the following:
 //
-//	SkuTierArgs{...}
+//	SkuTierFree
+//	SkuTierBasic
+//	SkuTierStandard
+//	SkuTierPremium
 type SkuTierInput interface {
 	pulumi.Input
 
@@ -193,6 +360,8 @@ func (in *skuTierPtr) ToOutput(ctx context.Context) pulumix.Output[*SkuTier] {
 }
 
 func init() {
+	pulumi.RegisterOutputType(HibernateSupportOutput{})
+	pulumi.RegisterOutputType(HibernateSupportPtrOutput{})
 	pulumi.RegisterOutputType(SkuTierOutput{})
 	pulumi.RegisterOutputType(SkuTierPtrOutput{})
 }
