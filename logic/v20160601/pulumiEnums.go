@@ -140,10 +140,13 @@ func (o AgreementTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 	}).(pulumi.StringPtrOutput)
 }
 
-// AgreementTypeInput is an input type that accepts AgreementTypeArgs and AgreementTypeOutput values.
-// You can construct a concrete instance of `AgreementTypeInput` via:
+// AgreementTypeInput is an input type that accepts values of the AgreementType enum
+// A concrete instance of `AgreementTypeInput` can be one of the following:
 //
-//	AgreementTypeArgs{...}
+//	AgreementTypeNotSpecified
+//	AgreementTypeAS2
+//	AgreementTypeX12
+//	AgreementTypeEdifact
 type AgreementTypeInput interface {
 	pulumi.Input
 
@@ -324,10 +327,24 @@ func (o EdifactCharacterSetPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// EdifactCharacterSetInput is an input type that accepts EdifactCharacterSetArgs and EdifactCharacterSetOutput values.
-// You can construct a concrete instance of `EdifactCharacterSetInput` via:
+// EdifactCharacterSetInput is an input type that accepts values of the EdifactCharacterSet enum
+// A concrete instance of `EdifactCharacterSetInput` can be one of the following:
 //
-//	EdifactCharacterSetArgs{...}
+//	EdifactCharacterSetNotSpecified
+//	EdifactCharacterSetUNOB
+//	EdifactCharacterSetUNOA
+//	EdifactCharacterSetUNOC
+//	EdifactCharacterSetUNOD
+//	EdifactCharacterSetUNOE
+//	EdifactCharacterSetUNOF
+//	EdifactCharacterSetUNOG
+//	EdifactCharacterSetUNOH
+//	EdifactCharacterSetUNOI
+//	EdifactCharacterSetUNOJ
+//	EdifactCharacterSetUNOK
+//	EdifactCharacterSetUNOX
+//	EdifactCharacterSetUNOY
+//	EdifactCharacterSetKECA
 type EdifactCharacterSetInput interface {
 	pulumi.Input
 
@@ -496,10 +513,12 @@ func (o EdifactDecimalIndicatorPtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// EdifactDecimalIndicatorInput is an input type that accepts EdifactDecimalIndicatorArgs and EdifactDecimalIndicatorOutput values.
-// You can construct a concrete instance of `EdifactDecimalIndicatorInput` via:
+// EdifactDecimalIndicatorInput is an input type that accepts values of the EdifactDecimalIndicator enum
+// A concrete instance of `EdifactDecimalIndicatorInput` can be one of the following:
 //
-//	EdifactDecimalIndicatorArgs{...}
+//	EdifactDecimalIndicatorNotSpecified
+//	EdifactDecimalIndicatorComma
+//	EdifactDecimalIndicatorDecimal
 type EdifactDecimalIndicatorInput interface {
 	pulumi.Input
 
@@ -672,10 +691,16 @@ func (o EncryptionAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// EncryptionAlgorithmInput is an input type that accepts EncryptionAlgorithmArgs and EncryptionAlgorithmOutput values.
-// You can construct a concrete instance of `EncryptionAlgorithmInput` via:
+// EncryptionAlgorithmInput is an input type that accepts values of the EncryptionAlgorithm enum
+// A concrete instance of `EncryptionAlgorithmInput` can be one of the following:
 //
-//	EncryptionAlgorithmArgs{...}
+//	EncryptionAlgorithmNotSpecified
+//	EncryptionAlgorithmNone
+//	EncryptionAlgorithmDES3
+//	EncryptionAlgorithmRC2
+//	EncryptionAlgorithmAES128
+//	EncryptionAlgorithmAES192
+//	EncryptionAlgorithmAES256
 type EncryptionAlgorithmInput interface {
 	pulumi.Input
 
@@ -848,10 +873,16 @@ func (o HashingAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// HashingAlgorithmInput is an input type that accepts HashingAlgorithmArgs and HashingAlgorithmOutput values.
-// You can construct a concrete instance of `HashingAlgorithmInput` via:
+// HashingAlgorithmInput is an input type that accepts values of the HashingAlgorithm enum
+// A concrete instance of `HashingAlgorithmInput` can be one of the following:
 //
-//	HashingAlgorithmArgs{...}
+//	HashingAlgorithmNotSpecified
+//	HashingAlgorithmNone
+//	HashingAlgorithmMD5
+//	HashingAlgorithmSHA1
+//	HashingAlgorithmSHA2256
+//	HashingAlgorithmSHA2384
+//	HashingAlgorithmSHA2512
 type HashingAlgorithmInput interface {
 	pulumi.Input
 
@@ -1020,10 +1051,12 @@ func (o KeyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// KeyTypeInput is an input type that accepts KeyTypeArgs and KeyTypeOutput values.
-// You can construct a concrete instance of `KeyTypeInput` via:
+// KeyTypeInput is an input type that accepts values of the KeyType enum
+// A concrete instance of `KeyTypeInput` can be one of the following:
 //
-//	KeyTypeArgs{...}
+//	KeyTypeNotSpecified
+//	KeyTypePrimary
+//	KeyTypeSecondary
 type KeyTypeInput interface {
 	pulumi.Input
 
@@ -1191,10 +1224,11 @@ func (o MapTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// MapTypeInput is an input type that accepts MapTypeArgs and MapTypeOutput values.
-// You can construct a concrete instance of `MapTypeInput` via:
+// MapTypeInput is an input type that accepts values of the MapType enum
+// A concrete instance of `MapTypeInput` can be one of the following:
 //
-//	MapTypeArgs{...}
+//	MapTypeNotSpecified
+//	MapTypeXslt
 type MapTypeInput interface {
 	pulumi.Input
 
@@ -1363,10 +1397,12 @@ func (o MessageFilterTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// MessageFilterTypeInput is an input type that accepts MessageFilterTypeArgs and MessageFilterTypeOutput values.
-// You can construct a concrete instance of `MessageFilterTypeInput` via:
+// MessageFilterTypeInput is an input type that accepts values of the MessageFilterType enum
+// A concrete instance of `MessageFilterTypeInput` can be one of the following:
 //
-//	MessageFilterTypeArgs{...}
+//	MessageFilterTypeNotSpecified
+//	MessageFilterTypeInclude
+//	MessageFilterTypeExclude
 type MessageFilterTypeInput interface {
 	pulumi.Input
 
@@ -1541,10 +1577,18 @@ func (o ParameterTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 	}).(pulumi.StringPtrOutput)
 }
 
-// ParameterTypeInput is an input type that accepts ParameterTypeArgs and ParameterTypeOutput values.
-// You can construct a concrete instance of `ParameterTypeInput` via:
+// ParameterTypeInput is an input type that accepts values of the ParameterType enum
+// A concrete instance of `ParameterTypeInput` can be one of the following:
 //
-//	ParameterTypeArgs{...}
+//	ParameterTypeNotSpecified
+//	ParameterTypeString
+//	ParameterTypeSecureString
+//	ParameterTypeInt
+//	ParameterTypeFloat
+//	ParameterTypeBool
+//	ParameterTypeArray
+//	ParameterTypeObject
+//	ParameterTypeSecureObject
 type ParameterTypeInput interface {
 	pulumi.Input
 
@@ -1712,10 +1756,11 @@ func (o PartnerTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// PartnerTypeInput is an input type that accepts PartnerTypeArgs and PartnerTypeOutput values.
-// You can construct a concrete instance of `PartnerTypeInput` via:
+// PartnerTypeInput is an input type that accepts values of the PartnerType enum
+// A concrete instance of `PartnerTypeInput` can be one of the following:
 //
-//	PartnerTypeArgs{...}
+//	PartnerTypeNotSpecified
+//	PartnerTypeB2B
 type PartnerTypeInput interface {
 	pulumi.Input
 
@@ -1884,10 +1929,12 @@ func (o RosettaNetActionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// RosettaNetActionTypeInput is an input type that accepts RosettaNetActionTypeArgs and RosettaNetActionTypeOutput values.
-// You can construct a concrete instance of `RosettaNetActionTypeInput` via:
+// RosettaNetActionTypeInput is an input type that accepts values of the RosettaNetActionType enum
+// A concrete instance of `RosettaNetActionTypeInput` can be one of the following:
 //
-//	RosettaNetActionTypeArgs{...}
+//	RosettaNetActionTypeNotSpecified
+//	RosettaNetActionTypeSingleAction
+//	RosettaNetActionTypeDoubleAction
 type RosettaNetActionTypeInput interface {
 	pulumi.Input
 
@@ -2060,10 +2107,16 @@ func (o RosettaNetPipActivityTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// RosettaNetPipActivityTypeInput is an input type that accepts RosettaNetPipActivityTypeArgs and RosettaNetPipActivityTypeOutput values.
-// You can construct a concrete instance of `RosettaNetPipActivityTypeInput` via:
+// RosettaNetPipActivityTypeInput is an input type that accepts values of the RosettaNetPipActivityType enum
+// A concrete instance of `RosettaNetPipActivityTypeInput` can be one of the following:
 //
-//	RosettaNetPipActivityTypeArgs{...}
+//	RosettaNetPipActivityTypeNotSpecified
+//	RosettaNetPipActivityTypeInformationDistribution
+//	RosettaNetPipActivityTypeBusinessTransaction
+//	RosettaNetPipActivityTypeNotification
+//	RosettaNetPipActivityTypeQueryResponse
+//	RosettaNetPipActivityTypeRequestConfirm
+//	RosettaNetPipActivityTypeRequestResponse
 type RosettaNetPipActivityTypeInput interface {
 	pulumi.Input
 
@@ -2233,10 +2286,13 @@ func (o RosettaNetPipConfidentialityScopePtrOutput) ToStringPtrOutputWithContext
 	}).(pulumi.StringPtrOutput)
 }
 
-// RosettaNetPipConfidentialityScopeInput is an input type that accepts RosettaNetPipConfidentialityScopeArgs and RosettaNetPipConfidentialityScopeOutput values.
-// You can construct a concrete instance of `RosettaNetPipConfidentialityScopeInput` via:
+// RosettaNetPipConfidentialityScopeInput is an input type that accepts values of the RosettaNetPipConfidentialityScope enum
+// A concrete instance of `RosettaNetPipConfidentialityScopeInput` can be one of the following:
 //
-//	RosettaNetPipConfidentialityScopeArgs{...}
+//	RosettaNetPipConfidentialityScopeNotSpecified
+//	RosettaNetPipConfidentialityScopeNone
+//	RosettaNetPipConfidentialityScopePayload
+//	RosettaNetPipConfidentialityScopePayloadContainer
 type RosettaNetPipConfidentialityScopeInput interface {
 	pulumi.Input
 
@@ -2406,10 +2462,13 @@ func (o RosettaNetPipRoleTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 	}).(pulumi.StringPtrOutput)
 }
 
-// RosettaNetPipRoleTypeInput is an input type that accepts RosettaNetPipRoleTypeArgs and RosettaNetPipRoleTypeOutput values.
-// You can construct a concrete instance of `RosettaNetPipRoleTypeInput` via:
+// RosettaNetPipRoleTypeInput is an input type that accepts values of the RosettaNetPipRoleType enum
+// A concrete instance of `RosettaNetPipRoleTypeInput` can be one of the following:
 //
-//	RosettaNetPipRoleTypeArgs{...}
+//	RosettaNetPipRoleTypeNotSpecified
+//	RosettaNetPipRoleTypeFunctional
+//	RosettaNetPipRoleTypeOrganizational
+//	RosettaNetPipRoleTypeEmployee
 type RosettaNetPipRoleTypeInput interface {
 	pulumi.Input
 
@@ -2578,10 +2637,12 @@ func (o RosettaNetResponseTypePtrOutput) ToStringPtrOutputWithContext(ctx contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// RosettaNetResponseTypeInput is an input type that accepts RosettaNetResponseTypeArgs and RosettaNetResponseTypeOutput values.
-// You can construct a concrete instance of `RosettaNetResponseTypeInput` via:
+// RosettaNetResponseTypeInput is an input type that accepts values of the RosettaNetResponseType enum
+// A concrete instance of `RosettaNetResponseTypeInput` can be one of the following:
 //
-//	RosettaNetResponseTypeArgs{...}
+//	RosettaNetResponseTypeNotSpecified
+//	RosettaNetResponseTypeSync
+//	RosettaNetResponseTypeAsync
 type RosettaNetResponseTypeInput interface {
 	pulumi.Input
 
@@ -2749,10 +2810,11 @@ func (o SchemaTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 	}).(pulumi.StringPtrOutput)
 }
 
-// SchemaTypeInput is an input type that accepts SchemaTypeArgs and SchemaTypeOutput values.
-// You can construct a concrete instance of `SchemaTypeInput` via:
+// SchemaTypeInput is an input type that accepts values of the SchemaType enum
+// A concrete instance of `SchemaTypeInput` can be one of the following:
 //
-//	SchemaTypeArgs{...}
+//	SchemaTypeNotSpecified
+//	SchemaTypeXml
 type SchemaTypeInput interface {
 	pulumi.Input
 
@@ -2923,10 +2985,14 @@ func (o SegmentTerminatorSuffixPtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// SegmentTerminatorSuffixInput is an input type that accepts SegmentTerminatorSuffixArgs and SegmentTerminatorSuffixOutput values.
-// You can construct a concrete instance of `SegmentTerminatorSuffixInput` via:
+// SegmentTerminatorSuffixInput is an input type that accepts values of the SegmentTerminatorSuffix enum
+// A concrete instance of `SegmentTerminatorSuffixInput` can be one of the following:
 //
-//	SegmentTerminatorSuffixArgs{...}
+//	SegmentTerminatorSuffixNotSpecified
+//	SegmentTerminatorSuffixNone
+//	SegmentTerminatorSuffixCR
+//	SegmentTerminatorSuffixLF
+//	SegmentTerminatorSuffixCRLF
 type SegmentTerminatorSuffixInput interface {
 	pulumi.Input
 
@@ -2978,6 +3044,174 @@ const (
 	SigningAlgorithmSHA2384      = SigningAlgorithm("SHA2384")
 	SigningAlgorithmSHA2512      = SigningAlgorithm("SHA2512")
 )
+
+func (SigningAlgorithm) ElementType() reflect.Type {
+	return reflect.TypeOf((*SigningAlgorithm)(nil)).Elem()
+}
+
+func (e SigningAlgorithm) ToSigningAlgorithmOutput() SigningAlgorithmOutput {
+	return pulumi.ToOutput(e).(SigningAlgorithmOutput)
+}
+
+func (e SigningAlgorithm) ToSigningAlgorithmOutputWithContext(ctx context.Context) SigningAlgorithmOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SigningAlgorithmOutput)
+}
+
+func (e SigningAlgorithm) ToSigningAlgorithmPtrOutput() SigningAlgorithmPtrOutput {
+	return e.ToSigningAlgorithmPtrOutputWithContext(context.Background())
+}
+
+func (e SigningAlgorithm) ToSigningAlgorithmPtrOutputWithContext(ctx context.Context) SigningAlgorithmPtrOutput {
+	return SigningAlgorithm(e).ToSigningAlgorithmOutputWithContext(ctx).ToSigningAlgorithmPtrOutputWithContext(ctx)
+}
+
+func (e SigningAlgorithm) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SigningAlgorithm) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SigningAlgorithm) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SigningAlgorithm) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SigningAlgorithmOutput struct{ *pulumi.OutputState }
+
+func (SigningAlgorithmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SigningAlgorithm)(nil)).Elem()
+}
+
+func (o SigningAlgorithmOutput) ToSigningAlgorithmOutput() SigningAlgorithmOutput {
+	return o
+}
+
+func (o SigningAlgorithmOutput) ToSigningAlgorithmOutputWithContext(ctx context.Context) SigningAlgorithmOutput {
+	return o
+}
+
+func (o SigningAlgorithmOutput) ToSigningAlgorithmPtrOutput() SigningAlgorithmPtrOutput {
+	return o.ToSigningAlgorithmPtrOutputWithContext(context.Background())
+}
+
+func (o SigningAlgorithmOutput) ToSigningAlgorithmPtrOutputWithContext(ctx context.Context) SigningAlgorithmPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SigningAlgorithm) *SigningAlgorithm {
+		return &v
+	}).(SigningAlgorithmPtrOutput)
+}
+
+func (o SigningAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SigningAlgorithmOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SigningAlgorithm) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SigningAlgorithmOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SigningAlgorithmOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SigningAlgorithm) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SigningAlgorithmPtrOutput struct{ *pulumi.OutputState }
+
+func (SigningAlgorithmPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SigningAlgorithm)(nil)).Elem()
+}
+
+func (o SigningAlgorithmPtrOutput) ToSigningAlgorithmPtrOutput() SigningAlgorithmPtrOutput {
+	return o
+}
+
+func (o SigningAlgorithmPtrOutput) ToSigningAlgorithmPtrOutputWithContext(ctx context.Context) SigningAlgorithmPtrOutput {
+	return o
+}
+
+func (o SigningAlgorithmPtrOutput) Elem() SigningAlgorithmOutput {
+	return o.ApplyT(func(v *SigningAlgorithm) SigningAlgorithm {
+		if v != nil {
+			return *v
+		}
+		var ret SigningAlgorithm
+		return ret
+	}).(SigningAlgorithmOutput)
+}
+
+func (o SigningAlgorithmPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SigningAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SigningAlgorithm) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SigningAlgorithmInput is an input type that accepts values of the SigningAlgorithm enum
+// A concrete instance of `SigningAlgorithmInput` can be one of the following:
+//
+//	SigningAlgorithmNotSpecified
+//	SigningAlgorithmDefault
+//	SigningAlgorithmSHA1
+//	SigningAlgorithmSHA2256
+//	SigningAlgorithmSHA2384
+//	SigningAlgorithmSHA2512
+type SigningAlgorithmInput interface {
+	pulumi.Input
+
+	ToSigningAlgorithmOutput() SigningAlgorithmOutput
+	ToSigningAlgorithmOutputWithContext(context.Context) SigningAlgorithmOutput
+}
+
+var signingAlgorithmPtrType = reflect.TypeOf((**SigningAlgorithm)(nil)).Elem()
+
+type SigningAlgorithmPtrInput interface {
+	pulumi.Input
+
+	ToSigningAlgorithmPtrOutput() SigningAlgorithmPtrOutput
+	ToSigningAlgorithmPtrOutputWithContext(context.Context) SigningAlgorithmPtrOutput
+}
+
+type signingAlgorithmPtr string
+
+func SigningAlgorithmPtr(v string) SigningAlgorithmPtrInput {
+	return (*signingAlgorithmPtr)(&v)
+}
+
+func (*signingAlgorithmPtr) ElementType() reflect.Type {
+	return signingAlgorithmPtrType
+}
+
+func (in *signingAlgorithmPtr) ToSigningAlgorithmPtrOutput() SigningAlgorithmPtrOutput {
+	return pulumi.ToOutput(in).(SigningAlgorithmPtrOutput)
+}
+
+func (in *signingAlgorithmPtr) ToSigningAlgorithmPtrOutputWithContext(ctx context.Context) SigningAlgorithmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SigningAlgorithmPtrOutput)
+}
+
+func (in *signingAlgorithmPtr) ToOutput(ctx context.Context) pulumix.Output[*SigningAlgorithm] {
+	return pulumix.Output[*SigningAlgorithm]{
+		OutputState: in.ToSigningAlgorithmPtrOutputWithContext(ctx).OutputState,
+	}
+}
 
 // The name.
 type SkuName string
@@ -3110,10 +3344,15 @@ func (o SkuNamePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// SkuNameInput is an input type that accepts SkuNameArgs and SkuNameOutput values.
-// You can construct a concrete instance of `SkuNameInput` via:
+// SkuNameInput is an input type that accepts values of the SkuName enum
+// A concrete instance of `SkuNameInput` can be one of the following:
 //
-//	SkuNameArgs{...}
+//	SkuNameNotSpecified
+//	SkuNameFree
+//	SkuNameShared
+//	SkuNameBasic
+//	SkuNameStandard
+//	SkuNamePremium
 type SkuNameInput interface {
 	pulumi.Input
 
@@ -3283,10 +3522,13 @@ func (o TrailingSeparatorPolicyPtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// TrailingSeparatorPolicyInput is an input type that accepts TrailingSeparatorPolicyArgs and TrailingSeparatorPolicyOutput values.
-// You can construct a concrete instance of `TrailingSeparatorPolicyInput` via:
+// TrailingSeparatorPolicyInput is an input type that accepts values of the TrailingSeparatorPolicy enum
+// A concrete instance of `TrailingSeparatorPolicyInput` can be one of the following:
 //
-//	TrailingSeparatorPolicyArgs{...}
+//	TrailingSeparatorPolicyNotSpecified
+//	TrailingSeparatorPolicyNotAllowed
+//	TrailingSeparatorPolicyOptional
+//	TrailingSeparatorPolicyMandatory
 type TrailingSeparatorPolicyInput interface {
 	pulumi.Input
 
@@ -3456,10 +3698,13 @@ func (o UsageIndicatorPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 	}).(pulumi.StringPtrOutput)
 }
 
-// UsageIndicatorInput is an input type that accepts UsageIndicatorArgs and UsageIndicatorOutput values.
-// You can construct a concrete instance of `UsageIndicatorInput` via:
+// UsageIndicatorInput is an input type that accepts values of the UsageIndicator enum
+// A concrete instance of `UsageIndicatorInput` can be one of the following:
 //
-//	UsageIndicatorArgs{...}
+//	UsageIndicatorNotSpecified
+//	UsageIndicatorTest
+//	UsageIndicatorInformation
+//	UsageIndicatorProduction
 type UsageIndicatorInput interface {
 	pulumi.Input
 
@@ -3631,10 +3876,15 @@ func (o WorkflowStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// WorkflowStateEnumInput is an input type that accepts WorkflowStateEnumArgs and WorkflowStateEnumOutput values.
-// You can construct a concrete instance of `WorkflowStateEnumInput` via:
+// WorkflowStateEnumInput is an input type that accepts values of the WorkflowStateEnum enum
+// A concrete instance of `WorkflowStateEnumInput` can be one of the following:
 //
-//	WorkflowStateEnumArgs{...}
+//	WorkflowStateEnumNotSpecified
+//	WorkflowStateEnumCompleted
+//	WorkflowStateEnumEnabled
+//	WorkflowStateEnumDisabled
+//	WorkflowStateEnumDeleted
+//	WorkflowStateEnumSuspended
 type WorkflowStateEnumInput interface {
 	pulumi.Input
 
@@ -3804,10 +4054,13 @@ func (o X12CharacterSetPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// X12CharacterSetInput is an input type that accepts X12CharacterSetArgs and X12CharacterSetOutput values.
-// You can construct a concrete instance of `X12CharacterSetInput` via:
+// X12CharacterSetInput is an input type that accepts values of the X12CharacterSet enum
+// A concrete instance of `X12CharacterSetInput` can be one of the following:
 //
-//	X12CharacterSetArgs{...}
+//	X12CharacterSetNotSpecified
+//	X12CharacterSetBasic
+//	X12CharacterSetExtended
+//	X12CharacterSetUTF8
 type X12CharacterSetInput interface {
 	pulumi.Input
 
@@ -3976,10 +4229,12 @@ func (o X12DateFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 	}).(pulumi.StringPtrOutput)
 }
 
-// X12DateFormatInput is an input type that accepts X12DateFormatArgs and X12DateFormatOutput values.
-// You can construct a concrete instance of `X12DateFormatInput` via:
+// X12DateFormatInput is an input type that accepts values of the X12DateFormat enum
+// A concrete instance of `X12DateFormatInput` can be one of the following:
 //
-//	X12DateFormatArgs{...}
+//	X12DateFormatNotSpecified
+//	X12DateFormatCCYYMMDD
+//	X12DateFormatYYMMDD
 type X12DateFormatInput interface {
 	pulumi.Input
 
@@ -4150,10 +4405,14 @@ func (o X12TimeFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 	}).(pulumi.StringPtrOutput)
 }
 
-// X12TimeFormatInput is an input type that accepts X12TimeFormatArgs and X12TimeFormatOutput values.
-// You can construct a concrete instance of `X12TimeFormatInput` via:
+// X12TimeFormatInput is an input type that accepts values of the X12TimeFormat enum
+// A concrete instance of `X12TimeFormatInput` can be one of the following:
 //
-//	X12TimeFormatArgs{...}
+//	X12TimeFormatNotSpecified
+//	X12TimeFormatHHMM
+//	X12TimeFormatHHMMSS
+//	X12TimeFormatHHMMSSdd
+//	X12TimeFormatHHMMSSd
 type X12TimeFormatInput interface {
 	pulumi.Input
 
@@ -4229,6 +4488,8 @@ func init() {
 	pulumi.RegisterOutputType(SchemaTypePtrOutput{})
 	pulumi.RegisterOutputType(SegmentTerminatorSuffixOutput{})
 	pulumi.RegisterOutputType(SegmentTerminatorSuffixPtrOutput{})
+	pulumi.RegisterOutputType(SigningAlgorithmOutput{})
+	pulumi.RegisterOutputType(SigningAlgorithmPtrOutput{})
 	pulumi.RegisterOutputType(SkuNameOutput{})
 	pulumi.RegisterOutputType(SkuNamePtrOutput{})
 	pulumi.RegisterOutputType(TrailingSeparatorPolicyOutput{})

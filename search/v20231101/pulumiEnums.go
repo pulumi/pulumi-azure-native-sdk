@@ -140,10 +140,11 @@ func (o AadAuthFailureModePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// AadAuthFailureModeInput is an input type that accepts AadAuthFailureModeArgs and AadAuthFailureModeOutput values.
-// You can construct a concrete instance of `AadAuthFailureModeInput` via:
+// AadAuthFailureModeInput is an input type that accepts values of the AadAuthFailureMode enum
+// A concrete instance of `AadAuthFailureModeInput` can be one of the following:
 //
-//	AadAuthFailureModeArgs{...}
+//	AadAuthFailureModeHttp403
+//	AadAuthFailureModeHttp401WithBearerChallenge
 type AadAuthFailureModeInput interface {
 	pulumi.Input
 
@@ -313,10 +314,11 @@ func (o HostingModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// HostingModeInput is an input type that accepts HostingModeArgs and HostingModeOutput values.
-// You can construct a concrete instance of `HostingModeInput` via:
+// HostingModeInput is an input type that accepts values of the HostingMode enum
+// A concrete instance of `HostingModeInput` can be one of the following:
 //
-//	HostingModeArgs{...}
+//	HostingModeDefault
+//	HostingModeHighDensity
 type HostingModeInput interface {
 	pulumi.Input
 
@@ -484,10 +486,11 @@ func (o IdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// IdentityTypeInput is an input type that accepts IdentityTypeArgs and IdentityTypeOutput values.
-// You can construct a concrete instance of `IdentityTypeInput` via:
+// IdentityTypeInput is an input type that accepts values of the IdentityType enum
+// A concrete instance of `IdentityTypeInput` can be one of the following:
 //
-//	IdentityTypeArgs{...}
+//	IdentityTypeNone
+//	IdentityTypeSystemAssigned
 type IdentityTypeInput interface {
 	pulumi.Input
 
@@ -545,6 +548,174 @@ const (
 	// Provisioning request for the private link service connection resource has been canceled
 	PrivateLinkServiceConnectionProvisioningStateCanceled = PrivateLinkServiceConnectionProvisioningState("Canceled")
 )
+
+func (PrivateLinkServiceConnectionProvisioningState) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkServiceConnectionProvisioningState)(nil)).Elem()
+}
+
+func (e PrivateLinkServiceConnectionProvisioningState) ToPrivateLinkServiceConnectionProvisioningStateOutput() PrivateLinkServiceConnectionProvisioningStateOutput {
+	return pulumi.ToOutput(e).(PrivateLinkServiceConnectionProvisioningStateOutput)
+}
+
+func (e PrivateLinkServiceConnectionProvisioningState) ToPrivateLinkServiceConnectionProvisioningStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionProvisioningStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PrivateLinkServiceConnectionProvisioningStateOutput)
+}
+
+func (e PrivateLinkServiceConnectionProvisioningState) ToPrivateLinkServiceConnectionProvisioningStatePtrOutput() PrivateLinkServiceConnectionProvisioningStatePtrOutput {
+	return e.ToPrivateLinkServiceConnectionProvisioningStatePtrOutputWithContext(context.Background())
+}
+
+func (e PrivateLinkServiceConnectionProvisioningState) ToPrivateLinkServiceConnectionProvisioningStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionProvisioningStatePtrOutput {
+	return PrivateLinkServiceConnectionProvisioningState(e).ToPrivateLinkServiceConnectionProvisioningStateOutputWithContext(ctx).ToPrivateLinkServiceConnectionProvisioningStatePtrOutputWithContext(ctx)
+}
+
+func (e PrivateLinkServiceConnectionProvisioningState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PrivateLinkServiceConnectionProvisioningState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PrivateLinkServiceConnectionProvisioningState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PrivateLinkServiceConnectionProvisioningState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PrivateLinkServiceConnectionProvisioningStateOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceConnectionProvisioningStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkServiceConnectionProvisioningState)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceConnectionProvisioningStateOutput) ToPrivateLinkServiceConnectionProvisioningStateOutput() PrivateLinkServiceConnectionProvisioningStateOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionProvisioningStateOutput) ToPrivateLinkServiceConnectionProvisioningStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionProvisioningStateOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionProvisioningStateOutput) ToPrivateLinkServiceConnectionProvisioningStatePtrOutput() PrivateLinkServiceConnectionProvisioningStatePtrOutput {
+	return o.ToPrivateLinkServiceConnectionProvisioningStatePtrOutputWithContext(context.Background())
+}
+
+func (o PrivateLinkServiceConnectionProvisioningStateOutput) ToPrivateLinkServiceConnectionProvisioningStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionProvisioningStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateLinkServiceConnectionProvisioningState) *PrivateLinkServiceConnectionProvisioningState {
+		return &v
+	}).(PrivateLinkServiceConnectionProvisioningStatePtrOutput)
+}
+
+func (o PrivateLinkServiceConnectionProvisioningStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PrivateLinkServiceConnectionProvisioningStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PrivateLinkServiceConnectionProvisioningState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PrivateLinkServiceConnectionProvisioningStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateLinkServiceConnectionProvisioningStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PrivateLinkServiceConnectionProvisioningState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PrivateLinkServiceConnectionProvisioningStatePtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceConnectionProvisioningStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateLinkServiceConnectionProvisioningState)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceConnectionProvisioningStatePtrOutput) ToPrivateLinkServiceConnectionProvisioningStatePtrOutput() PrivateLinkServiceConnectionProvisioningStatePtrOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionProvisioningStatePtrOutput) ToPrivateLinkServiceConnectionProvisioningStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionProvisioningStatePtrOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionProvisioningStatePtrOutput) Elem() PrivateLinkServiceConnectionProvisioningStateOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionProvisioningState) PrivateLinkServiceConnectionProvisioningState {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateLinkServiceConnectionProvisioningState
+		return ret
+	}).(PrivateLinkServiceConnectionProvisioningStateOutput)
+}
+
+func (o PrivateLinkServiceConnectionProvisioningStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateLinkServiceConnectionProvisioningStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PrivateLinkServiceConnectionProvisioningState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PrivateLinkServiceConnectionProvisioningStateInput is an input type that accepts values of the PrivateLinkServiceConnectionProvisioningState enum
+// A concrete instance of `PrivateLinkServiceConnectionProvisioningStateInput` can be one of the following:
+//
+//	PrivateLinkServiceConnectionProvisioningStateUpdating
+//	PrivateLinkServiceConnectionProvisioningStateDeleting
+//	PrivateLinkServiceConnectionProvisioningStateFailed
+//	PrivateLinkServiceConnectionProvisioningStateSucceeded
+//	PrivateLinkServiceConnectionProvisioningStateIncomplete
+//	PrivateLinkServiceConnectionProvisioningStateCanceled
+type PrivateLinkServiceConnectionProvisioningStateInput interface {
+	pulumi.Input
+
+	ToPrivateLinkServiceConnectionProvisioningStateOutput() PrivateLinkServiceConnectionProvisioningStateOutput
+	ToPrivateLinkServiceConnectionProvisioningStateOutputWithContext(context.Context) PrivateLinkServiceConnectionProvisioningStateOutput
+}
+
+var privateLinkServiceConnectionProvisioningStatePtrType = reflect.TypeOf((**PrivateLinkServiceConnectionProvisioningState)(nil)).Elem()
+
+type PrivateLinkServiceConnectionProvisioningStatePtrInput interface {
+	pulumi.Input
+
+	ToPrivateLinkServiceConnectionProvisioningStatePtrOutput() PrivateLinkServiceConnectionProvisioningStatePtrOutput
+	ToPrivateLinkServiceConnectionProvisioningStatePtrOutputWithContext(context.Context) PrivateLinkServiceConnectionProvisioningStatePtrOutput
+}
+
+type privateLinkServiceConnectionProvisioningStatePtr string
+
+func PrivateLinkServiceConnectionProvisioningStatePtr(v string) PrivateLinkServiceConnectionProvisioningStatePtrInput {
+	return (*privateLinkServiceConnectionProvisioningStatePtr)(&v)
+}
+
+func (*privateLinkServiceConnectionProvisioningStatePtr) ElementType() reflect.Type {
+	return privateLinkServiceConnectionProvisioningStatePtrType
+}
+
+func (in *privateLinkServiceConnectionProvisioningStatePtr) ToPrivateLinkServiceConnectionProvisioningStatePtrOutput() PrivateLinkServiceConnectionProvisioningStatePtrOutput {
+	return pulumi.ToOutput(in).(PrivateLinkServiceConnectionProvisioningStatePtrOutput)
+}
+
+func (in *privateLinkServiceConnectionProvisioningStatePtr) ToPrivateLinkServiceConnectionProvisioningStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionProvisioningStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkServiceConnectionProvisioningStatePtrOutput)
+}
+
+func (in *privateLinkServiceConnectionProvisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkServiceConnectionProvisioningState] {
+	return pulumix.Output[*PrivateLinkServiceConnectionProvisioningState]{
+		OutputState: in.ToPrivateLinkServiceConnectionProvisioningStatePtrOutputWithContext(ctx).OutputState,
+	}
+}
 
 // Status of the the private link service connection. Valid values are Pending, Approved, Rejected, or Disconnected.
 type PrivateLinkServiceConnectionStatus string
@@ -679,10 +850,13 @@ func (o PrivateLinkServiceConnectionStatusPtrOutput) ToStringPtrOutputWithContex
 	}).(pulumi.StringPtrOutput)
 }
 
-// PrivateLinkServiceConnectionStatusInput is an input type that accepts PrivateLinkServiceConnectionStatusArgs and PrivateLinkServiceConnectionStatusOutput values.
-// You can construct a concrete instance of `PrivateLinkServiceConnectionStatusInput` via:
+// PrivateLinkServiceConnectionStatusInput is an input type that accepts values of the PrivateLinkServiceConnectionStatus enum
+// A concrete instance of `PrivateLinkServiceConnectionStatusInput` can be one of the following:
 //
-//	PrivateLinkServiceConnectionStatusArgs{...}
+//	PrivateLinkServiceConnectionStatusPending
+//	PrivateLinkServiceConnectionStatusApproved
+//	PrivateLinkServiceConnectionStatusRejected
+//	PrivateLinkServiceConnectionStatusDisconnected
 type PrivateLinkServiceConnectionStatusInput interface {
 	pulumi.Input
 
@@ -850,10 +1024,11 @@ func (o PublicNetworkAccessPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 	}).(pulumi.StringPtrOutput)
 }
 
-// PublicNetworkAccessInput is an input type that accepts PublicNetworkAccessArgs and PublicNetworkAccessOutput values.
-// You can construct a concrete instance of `PublicNetworkAccessInput` via:
+// PublicNetworkAccessInput is an input type that accepts values of the PublicNetworkAccess enum
+// A concrete instance of `PublicNetworkAccessInput` can be one of the following:
 //
-//	PublicNetworkAccessArgs{...}
+//	PublicNetworkAccessEnabled
+//	PublicNetworkAccessDisabled
 type PublicNetworkAccessInput interface {
 	pulumi.Input
 
@@ -1025,10 +1200,12 @@ func (o SearchEncryptionWithCmkPtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// SearchEncryptionWithCmkInput is an input type that accepts SearchEncryptionWithCmkArgs and SearchEncryptionWithCmkOutput values.
-// You can construct a concrete instance of `SearchEncryptionWithCmkInput` via:
+// SearchEncryptionWithCmkInput is an input type that accepts values of the SearchEncryptionWithCmk enum
+// A concrete instance of `SearchEncryptionWithCmkInput` can be one of the following:
 //
-//	SearchEncryptionWithCmkArgs{...}
+//	SearchEncryptionWithCmkDisabled
+//	SearchEncryptionWithCmkEnabled
+//	SearchEncryptionWithCmkUnspecified
 type SearchEncryptionWithCmkInput interface {
 	pulumi.Input
 
@@ -1080,6 +1257,171 @@ const (
 	// Enables semantic ranking on a search service as a billable feature, with higher throughput and volume of semantic ranking requests.
 	SearchSemanticSearchStandard = SearchSemanticSearch("standard")
 )
+
+func (SearchSemanticSearch) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchSemanticSearch)(nil)).Elem()
+}
+
+func (e SearchSemanticSearch) ToSearchSemanticSearchOutput() SearchSemanticSearchOutput {
+	return pulumi.ToOutput(e).(SearchSemanticSearchOutput)
+}
+
+func (e SearchSemanticSearch) ToSearchSemanticSearchOutputWithContext(ctx context.Context) SearchSemanticSearchOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SearchSemanticSearchOutput)
+}
+
+func (e SearchSemanticSearch) ToSearchSemanticSearchPtrOutput() SearchSemanticSearchPtrOutput {
+	return e.ToSearchSemanticSearchPtrOutputWithContext(context.Background())
+}
+
+func (e SearchSemanticSearch) ToSearchSemanticSearchPtrOutputWithContext(ctx context.Context) SearchSemanticSearchPtrOutput {
+	return SearchSemanticSearch(e).ToSearchSemanticSearchOutputWithContext(ctx).ToSearchSemanticSearchPtrOutputWithContext(ctx)
+}
+
+func (e SearchSemanticSearch) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SearchSemanticSearch) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SearchSemanticSearch) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SearchSemanticSearch) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SearchSemanticSearchOutput struct{ *pulumi.OutputState }
+
+func (SearchSemanticSearchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchSemanticSearch)(nil)).Elem()
+}
+
+func (o SearchSemanticSearchOutput) ToSearchSemanticSearchOutput() SearchSemanticSearchOutput {
+	return o
+}
+
+func (o SearchSemanticSearchOutput) ToSearchSemanticSearchOutputWithContext(ctx context.Context) SearchSemanticSearchOutput {
+	return o
+}
+
+func (o SearchSemanticSearchOutput) ToSearchSemanticSearchPtrOutput() SearchSemanticSearchPtrOutput {
+	return o.ToSearchSemanticSearchPtrOutputWithContext(context.Background())
+}
+
+func (o SearchSemanticSearchOutput) ToSearchSemanticSearchPtrOutputWithContext(ctx context.Context) SearchSemanticSearchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SearchSemanticSearch) *SearchSemanticSearch {
+		return &v
+	}).(SearchSemanticSearchPtrOutput)
+}
+
+func (o SearchSemanticSearchOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SearchSemanticSearchOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SearchSemanticSearch) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SearchSemanticSearchOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SearchSemanticSearchOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SearchSemanticSearch) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SearchSemanticSearchPtrOutput struct{ *pulumi.OutputState }
+
+func (SearchSemanticSearchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SearchSemanticSearch)(nil)).Elem()
+}
+
+func (o SearchSemanticSearchPtrOutput) ToSearchSemanticSearchPtrOutput() SearchSemanticSearchPtrOutput {
+	return o
+}
+
+func (o SearchSemanticSearchPtrOutput) ToSearchSemanticSearchPtrOutputWithContext(ctx context.Context) SearchSemanticSearchPtrOutput {
+	return o
+}
+
+func (o SearchSemanticSearchPtrOutput) Elem() SearchSemanticSearchOutput {
+	return o.ApplyT(func(v *SearchSemanticSearch) SearchSemanticSearch {
+		if v != nil {
+			return *v
+		}
+		var ret SearchSemanticSearch
+		return ret
+	}).(SearchSemanticSearchOutput)
+}
+
+func (o SearchSemanticSearchPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SearchSemanticSearchPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SearchSemanticSearch) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SearchSemanticSearchInput is an input type that accepts values of the SearchSemanticSearch enum
+// A concrete instance of `SearchSemanticSearchInput` can be one of the following:
+//
+//	SearchSemanticSearchDisabled
+//	SearchSemanticSearchFree
+//	SearchSemanticSearchStandard
+type SearchSemanticSearchInput interface {
+	pulumi.Input
+
+	ToSearchSemanticSearchOutput() SearchSemanticSearchOutput
+	ToSearchSemanticSearchOutputWithContext(context.Context) SearchSemanticSearchOutput
+}
+
+var searchSemanticSearchPtrType = reflect.TypeOf((**SearchSemanticSearch)(nil)).Elem()
+
+type SearchSemanticSearchPtrInput interface {
+	pulumi.Input
+
+	ToSearchSemanticSearchPtrOutput() SearchSemanticSearchPtrOutput
+	ToSearchSemanticSearchPtrOutputWithContext(context.Context) SearchSemanticSearchPtrOutput
+}
+
+type searchSemanticSearchPtr string
+
+func SearchSemanticSearchPtr(v string) SearchSemanticSearchPtrInput {
+	return (*searchSemanticSearchPtr)(&v)
+}
+
+func (*searchSemanticSearchPtr) ElementType() reflect.Type {
+	return searchSemanticSearchPtrType
+}
+
+func (in *searchSemanticSearchPtr) ToSearchSemanticSearchPtrOutput() SearchSemanticSearchPtrOutput {
+	return pulumi.ToOutput(in).(SearchSemanticSearchPtrOutput)
+}
+
+func (in *searchSemanticSearchPtr) ToSearchSemanticSearchPtrOutputWithContext(ctx context.Context) SearchSemanticSearchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SearchSemanticSearchPtrOutput)
+}
+
+func (in *searchSemanticSearchPtr) ToOutput(ctx context.Context) pulumix.Output[*SearchSemanticSearch] {
+	return pulumix.Output[*SearchSemanticSearch]{
+		OutputState: in.ToSearchSemanticSearchPtrOutputWithContext(ctx).OutputState,
+	}
+}
 
 // The provisioning state of the shared private link resource. Valid values are Updating, Deleting, Failed, Succeeded or Incomplete.
 type SharedPrivateLinkResourceProvisioningState string
@@ -1211,10 +1553,14 @@ func (o SharedPrivateLinkResourceProvisioningStatePtrOutput) ToStringPtrOutputWi
 	}).(pulumi.StringPtrOutput)
 }
 
-// SharedPrivateLinkResourceProvisioningStateInput is an input type that accepts SharedPrivateLinkResourceProvisioningStateArgs and SharedPrivateLinkResourceProvisioningStateOutput values.
-// You can construct a concrete instance of `SharedPrivateLinkResourceProvisioningStateInput` via:
+// SharedPrivateLinkResourceProvisioningStateInput is an input type that accepts values of the SharedPrivateLinkResourceProvisioningState enum
+// A concrete instance of `SharedPrivateLinkResourceProvisioningStateInput` can be one of the following:
 //
-//	SharedPrivateLinkResourceProvisioningStateArgs{...}
+//	SharedPrivateLinkResourceProvisioningStateUpdating
+//	SharedPrivateLinkResourceProvisioningStateDeleting
+//	SharedPrivateLinkResourceProvisioningStateFailed
+//	SharedPrivateLinkResourceProvisioningStateSucceeded
+//	SharedPrivateLinkResourceProvisioningStateIncomplete
 type SharedPrivateLinkResourceProvisioningStateInput interface {
 	pulumi.Input
 
@@ -1384,10 +1730,13 @@ func (o SharedPrivateLinkResourceStatusPtrOutput) ToStringPtrOutputWithContext(c
 	}).(pulumi.StringPtrOutput)
 }
 
-// SharedPrivateLinkResourceStatusInput is an input type that accepts SharedPrivateLinkResourceStatusArgs and SharedPrivateLinkResourceStatusOutput values.
-// You can construct a concrete instance of `SharedPrivateLinkResourceStatusInput` via:
+// SharedPrivateLinkResourceStatusInput is an input type that accepts values of the SharedPrivateLinkResourceStatus enum
+// A concrete instance of `SharedPrivateLinkResourceStatusInput` can be one of the following:
 //
-//	SharedPrivateLinkResourceStatusArgs{...}
+//	SharedPrivateLinkResourceStatusPending
+//	SharedPrivateLinkResourceStatusApproved
+//	SharedPrivateLinkResourceStatusRejected
+//	SharedPrivateLinkResourceStatusDisconnected
 type SharedPrivateLinkResourceStatusInput interface {
 	pulumi.Input
 
@@ -1567,10 +1916,16 @@ func (o SkuNamePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// SkuNameInput is an input type that accepts SkuNameArgs and SkuNameOutput values.
-// You can construct a concrete instance of `SkuNameInput` via:
+// SkuNameInput is an input type that accepts values of the SkuName enum
+// A concrete instance of `SkuNameInput` can be one of the following:
 //
-//	SkuNameArgs{...}
+//	SkuNameFree
+//	SkuNameBasic
+//	SkuNameStandard
+//	SkuNameStandard2
+//	SkuNameStandard3
+//	SkuNameStorageOptimizedL1
+//	SkuNameStorageOptimizedL2
 type SkuNameInput interface {
 	pulumi.Input
 
@@ -1618,12 +1973,16 @@ func init() {
 	pulumi.RegisterOutputType(HostingModePtrOutput{})
 	pulumi.RegisterOutputType(IdentityTypeOutput{})
 	pulumi.RegisterOutputType(IdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceConnectionProvisioningStateOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceConnectionProvisioningStatePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatusOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatusPtrOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessPtrOutput{})
 	pulumi.RegisterOutputType(SearchEncryptionWithCmkOutput{})
 	pulumi.RegisterOutputType(SearchEncryptionWithCmkPtrOutput{})
+	pulumi.RegisterOutputType(SearchSemanticSearchOutput{})
+	pulumi.RegisterOutputType(SearchSemanticSearchPtrOutput{})
 	pulumi.RegisterOutputType(SharedPrivateLinkResourceProvisioningStateOutput{})
 	pulumi.RegisterOutputType(SharedPrivateLinkResourceProvisioningStatePtrOutput{})
 	pulumi.RegisterOutputType(SharedPrivateLinkResourceStatusOutput{})

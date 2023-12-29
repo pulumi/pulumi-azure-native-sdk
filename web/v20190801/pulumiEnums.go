@@ -138,10 +138,11 @@ func (o AccessControlEntryActionPtrOutput) ToStringPtrOutputWithContext(ctx cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// AccessControlEntryActionInput is an input type that accepts AccessControlEntryActionArgs and AccessControlEntryActionOutput values.
-// You can construct a concrete instance of `AccessControlEntryActionInput` via:
+// AccessControlEntryActionInput is an input type that accepts values of the AccessControlEntryAction enum
+// A concrete instance of `AccessControlEntryActionInput` can be one of the following:
 //
-//	AccessControlEntryActionArgs{...}
+//	AccessControlEntryActionPermit
+//	AccessControlEntryActionDeny
 type AccessControlEntryActionInput interface {
 	pulumi.Input
 
@@ -310,10 +311,12 @@ func (o ComputeModeOptionsPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// ComputeModeOptionsInput is an input type that accepts ComputeModeOptionsArgs and ComputeModeOptionsOutput values.
-// You can construct a concrete instance of `ComputeModeOptionsInput` via:
+// ComputeModeOptionsInput is an input type that accepts values of the ComputeModeOptions enum
+// A concrete instance of `ComputeModeOptionsInput` can be one of the following:
 //
-//	ComputeModeOptionsArgs{...}
+//	ComputeModeOptionsShared
+//	ComputeModeOptionsDedicated
+//	ComputeModeOptionsDynamic
 type ComputeModeOptionsInput interface {
 	pulumi.Input
 
@@ -482,10 +485,12 @@ func (o InternalLoadBalancingModePtrOutput) ToStringPtrOutputWithContext(ctx con
 	}).(pulumi.StringPtrOutput)
 }
 
-// InternalLoadBalancingModeInput is an input type that accepts InternalLoadBalancingModeArgs and InternalLoadBalancingModeOutput values.
-// You can construct a concrete instance of `InternalLoadBalancingModeInput` via:
+// InternalLoadBalancingModeInput is an input type that accepts values of the InternalLoadBalancingMode enum
+// A concrete instance of `InternalLoadBalancingModeInput` can be one of the following:
 //
-//	InternalLoadBalancingModeArgs{...}
+//	InternalLoadBalancingModeNone
+//	InternalLoadBalancingModeWeb
+//	InternalLoadBalancingModePublishing
 type InternalLoadBalancingModeInput interface {
 	pulumi.Input
 

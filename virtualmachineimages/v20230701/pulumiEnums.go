@@ -19,6 +19,170 @@ const (
 	OnBuildErrorAbort   = OnBuildError("abort")
 )
 
+func (OnBuildError) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnBuildError)(nil)).Elem()
+}
+
+func (e OnBuildError) ToOnBuildErrorOutput() OnBuildErrorOutput {
+	return pulumi.ToOutput(e).(OnBuildErrorOutput)
+}
+
+func (e OnBuildError) ToOnBuildErrorOutputWithContext(ctx context.Context) OnBuildErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OnBuildErrorOutput)
+}
+
+func (e OnBuildError) ToOnBuildErrorPtrOutput() OnBuildErrorPtrOutput {
+	return e.ToOnBuildErrorPtrOutputWithContext(context.Background())
+}
+
+func (e OnBuildError) ToOnBuildErrorPtrOutputWithContext(ctx context.Context) OnBuildErrorPtrOutput {
+	return OnBuildError(e).ToOnBuildErrorOutputWithContext(ctx).ToOnBuildErrorPtrOutputWithContext(ctx)
+}
+
+func (e OnBuildError) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OnBuildError) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OnBuildError) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e OnBuildError) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type OnBuildErrorOutput struct{ *pulumi.OutputState }
+
+func (OnBuildErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnBuildError)(nil)).Elem()
+}
+
+func (o OnBuildErrorOutput) ToOnBuildErrorOutput() OnBuildErrorOutput {
+	return o
+}
+
+func (o OnBuildErrorOutput) ToOnBuildErrorOutputWithContext(ctx context.Context) OnBuildErrorOutput {
+	return o
+}
+
+func (o OnBuildErrorOutput) ToOnBuildErrorPtrOutput() OnBuildErrorPtrOutput {
+	return o.ToOnBuildErrorPtrOutputWithContext(context.Background())
+}
+
+func (o OnBuildErrorOutput) ToOnBuildErrorPtrOutputWithContext(ctx context.Context) OnBuildErrorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OnBuildError) *OnBuildError {
+		return &v
+	}).(OnBuildErrorPtrOutput)
+}
+
+func (o OnBuildErrorOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OnBuildErrorOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OnBuildError) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OnBuildErrorOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OnBuildErrorOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OnBuildError) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OnBuildErrorPtrOutput struct{ *pulumi.OutputState }
+
+func (OnBuildErrorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OnBuildError)(nil)).Elem()
+}
+
+func (o OnBuildErrorPtrOutput) ToOnBuildErrorPtrOutput() OnBuildErrorPtrOutput {
+	return o
+}
+
+func (o OnBuildErrorPtrOutput) ToOnBuildErrorPtrOutputWithContext(ctx context.Context) OnBuildErrorPtrOutput {
+	return o
+}
+
+func (o OnBuildErrorPtrOutput) Elem() OnBuildErrorOutput {
+	return o.ApplyT(func(v *OnBuildError) OnBuildError {
+		if v != nil {
+			return *v
+		}
+		var ret OnBuildError
+		return ret
+	}).(OnBuildErrorOutput)
+}
+
+func (o OnBuildErrorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OnBuildErrorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OnBuildError) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// OnBuildErrorInput is an input type that accepts values of the OnBuildError enum
+// A concrete instance of `OnBuildErrorInput` can be one of the following:
+//
+//	OnBuildErrorCleanup
+//	OnBuildErrorAbort
+type OnBuildErrorInput interface {
+	pulumi.Input
+
+	ToOnBuildErrorOutput() OnBuildErrorOutput
+	ToOnBuildErrorOutputWithContext(context.Context) OnBuildErrorOutput
+}
+
+var onBuildErrorPtrType = reflect.TypeOf((**OnBuildError)(nil)).Elem()
+
+type OnBuildErrorPtrInput interface {
+	pulumi.Input
+
+	ToOnBuildErrorPtrOutput() OnBuildErrorPtrOutput
+	ToOnBuildErrorPtrOutputWithContext(context.Context) OnBuildErrorPtrOutput
+}
+
+type onBuildErrorPtr string
+
+func OnBuildErrorPtr(v string) OnBuildErrorPtrInput {
+	return (*onBuildErrorPtr)(&v)
+}
+
+func (*onBuildErrorPtr) ElementType() reflect.Type {
+	return onBuildErrorPtrType
+}
+
+func (in *onBuildErrorPtr) ToOnBuildErrorPtrOutput() OnBuildErrorPtrOutput {
+	return pulumi.ToOutput(in).(OnBuildErrorPtrOutput)
+}
+
+func (in *onBuildErrorPtr) ToOnBuildErrorPtrOutputWithContext(ctx context.Context) OnBuildErrorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OnBuildErrorPtrOutput)
+}
+
+func (in *onBuildErrorPtr) ToOutput(ctx context.Context) pulumix.Output[*OnBuildError] {
+	return pulumix.Output[*OnBuildError]{
+		OutputState: in.ToOnBuildErrorPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The type of identity used for the image template. The type 'None' will remove any identities from the image template.
 type ResourceIdentityType string
 
@@ -146,10 +310,11 @@ func (o ResourceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// ResourceIdentityTypeInput is an input type that accepts ResourceIdentityTypeArgs and ResourceIdentityTypeOutput values.
-// You can construct a concrete instance of `ResourceIdentityTypeInput` via:
+// ResourceIdentityTypeInput is an input type that accepts values of the ResourceIdentityType enum
+// A concrete instance of `ResourceIdentityTypeInput` can be one of the following:
 //
-//	ResourceIdentityTypeArgs{...}
+//	ResourceIdentityTypeUserAssigned
+//	ResourceIdentityTypeNone
 type ResourceIdentityTypeInput interface {
 	pulumi.Input
 
@@ -198,6 +363,171 @@ const (
 	SharedImageStorageAccountType_Standard_ZRS = SharedImageStorageAccountType("Standard_ZRS")
 	SharedImageStorageAccountType_Premium_LRS  = SharedImageStorageAccountType("Premium_LRS")
 )
+
+func (SharedImageStorageAccountType) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedImageStorageAccountType)(nil)).Elem()
+}
+
+func (e SharedImageStorageAccountType) ToSharedImageStorageAccountTypeOutput() SharedImageStorageAccountTypeOutput {
+	return pulumi.ToOutput(e).(SharedImageStorageAccountTypeOutput)
+}
+
+func (e SharedImageStorageAccountType) ToSharedImageStorageAccountTypeOutputWithContext(ctx context.Context) SharedImageStorageAccountTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SharedImageStorageAccountTypeOutput)
+}
+
+func (e SharedImageStorageAccountType) ToSharedImageStorageAccountTypePtrOutput() SharedImageStorageAccountTypePtrOutput {
+	return e.ToSharedImageStorageAccountTypePtrOutputWithContext(context.Background())
+}
+
+func (e SharedImageStorageAccountType) ToSharedImageStorageAccountTypePtrOutputWithContext(ctx context.Context) SharedImageStorageAccountTypePtrOutput {
+	return SharedImageStorageAccountType(e).ToSharedImageStorageAccountTypeOutputWithContext(ctx).ToSharedImageStorageAccountTypePtrOutputWithContext(ctx)
+}
+
+func (e SharedImageStorageAccountType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SharedImageStorageAccountType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SharedImageStorageAccountType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SharedImageStorageAccountType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SharedImageStorageAccountTypeOutput struct{ *pulumi.OutputState }
+
+func (SharedImageStorageAccountTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedImageStorageAccountType)(nil)).Elem()
+}
+
+func (o SharedImageStorageAccountTypeOutput) ToSharedImageStorageAccountTypeOutput() SharedImageStorageAccountTypeOutput {
+	return o
+}
+
+func (o SharedImageStorageAccountTypeOutput) ToSharedImageStorageAccountTypeOutputWithContext(ctx context.Context) SharedImageStorageAccountTypeOutput {
+	return o
+}
+
+func (o SharedImageStorageAccountTypeOutput) ToSharedImageStorageAccountTypePtrOutput() SharedImageStorageAccountTypePtrOutput {
+	return o.ToSharedImageStorageAccountTypePtrOutputWithContext(context.Background())
+}
+
+func (o SharedImageStorageAccountTypeOutput) ToSharedImageStorageAccountTypePtrOutputWithContext(ctx context.Context) SharedImageStorageAccountTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SharedImageStorageAccountType) *SharedImageStorageAccountType {
+		return &v
+	}).(SharedImageStorageAccountTypePtrOutput)
+}
+
+func (o SharedImageStorageAccountTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SharedImageStorageAccountTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SharedImageStorageAccountType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SharedImageStorageAccountTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SharedImageStorageAccountTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SharedImageStorageAccountType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SharedImageStorageAccountTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SharedImageStorageAccountTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SharedImageStorageAccountType)(nil)).Elem()
+}
+
+func (o SharedImageStorageAccountTypePtrOutput) ToSharedImageStorageAccountTypePtrOutput() SharedImageStorageAccountTypePtrOutput {
+	return o
+}
+
+func (o SharedImageStorageAccountTypePtrOutput) ToSharedImageStorageAccountTypePtrOutputWithContext(ctx context.Context) SharedImageStorageAccountTypePtrOutput {
+	return o
+}
+
+func (o SharedImageStorageAccountTypePtrOutput) Elem() SharedImageStorageAccountTypeOutput {
+	return o.ApplyT(func(v *SharedImageStorageAccountType) SharedImageStorageAccountType {
+		if v != nil {
+			return *v
+		}
+		var ret SharedImageStorageAccountType
+		return ret
+	}).(SharedImageStorageAccountTypeOutput)
+}
+
+func (o SharedImageStorageAccountTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SharedImageStorageAccountTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SharedImageStorageAccountType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SharedImageStorageAccountTypeInput is an input type that accepts values of the SharedImageStorageAccountType enum
+// A concrete instance of `SharedImageStorageAccountTypeInput` can be one of the following:
+//
+//	SharedImageStorageAccountType_Standard_LRS
+//	SharedImageStorageAccountType_Standard_ZRS
+//	SharedImageStorageAccountType_Premium_LRS
+type SharedImageStorageAccountTypeInput interface {
+	pulumi.Input
+
+	ToSharedImageStorageAccountTypeOutput() SharedImageStorageAccountTypeOutput
+	ToSharedImageStorageAccountTypeOutputWithContext(context.Context) SharedImageStorageAccountTypeOutput
+}
+
+var sharedImageStorageAccountTypePtrType = reflect.TypeOf((**SharedImageStorageAccountType)(nil)).Elem()
+
+type SharedImageStorageAccountTypePtrInput interface {
+	pulumi.Input
+
+	ToSharedImageStorageAccountTypePtrOutput() SharedImageStorageAccountTypePtrOutput
+	ToSharedImageStorageAccountTypePtrOutputWithContext(context.Context) SharedImageStorageAccountTypePtrOutput
+}
+
+type sharedImageStorageAccountTypePtr string
+
+func SharedImageStorageAccountTypePtr(v string) SharedImageStorageAccountTypePtrInput {
+	return (*sharedImageStorageAccountTypePtr)(&v)
+}
+
+func (*sharedImageStorageAccountTypePtr) ElementType() reflect.Type {
+	return sharedImageStorageAccountTypePtrType
+}
+
+func (in *sharedImageStorageAccountTypePtr) ToSharedImageStorageAccountTypePtrOutput() SharedImageStorageAccountTypePtrOutput {
+	return pulumi.ToOutput(in).(SharedImageStorageAccountTypePtrOutput)
+}
+
+func (in *sharedImageStorageAccountTypePtr) ToSharedImageStorageAccountTypePtrOutputWithContext(ctx context.Context) SharedImageStorageAccountTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SharedImageStorageAccountTypePtrOutput)
+}
+
+func (in *sharedImageStorageAccountTypePtr) ToOutput(ctx context.Context) pulumix.Output[*SharedImageStorageAccountType] {
+	return pulumix.Output[*SharedImageStorageAccountType]{
+		OutputState: in.ToSharedImageStorageAccountTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
 
 // Enabling this field will improve VM boot time by optimizing the final customized image output.
 type VMBootOptimizationState string
@@ -326,10 +656,11 @@ func (o VMBootOptimizationStatePtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// VMBootOptimizationStateInput is an input type that accepts VMBootOptimizationStateArgs and VMBootOptimizationStateOutput values.
-// You can construct a concrete instance of `VMBootOptimizationStateInput` via:
+// VMBootOptimizationStateInput is an input type that accepts values of the VMBootOptimizationState enum
+// A concrete instance of `VMBootOptimizationStateInput` can be one of the following:
 //
-//	VMBootOptimizationStateArgs{...}
+//	VMBootOptimizationStateEnabled
+//	VMBootOptimizationStateDisabled
 type VMBootOptimizationStateInput interface {
 	pulumi.Input
 
@@ -371,8 +702,12 @@ func (in *vmbootOptimizationStatePtr) ToOutput(ctx context.Context) pulumix.Outp
 }
 
 func init() {
+	pulumi.RegisterOutputType(OnBuildErrorOutput{})
+	pulumi.RegisterOutputType(OnBuildErrorPtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(SharedImageStorageAccountTypeOutput{})
+	pulumi.RegisterOutputType(SharedImageStorageAccountTypePtrOutput{})
 	pulumi.RegisterOutputType(VMBootOptimizationStateOutput{})
 	pulumi.RegisterOutputType(VMBootOptimizationStatePtrOutput{})
 }

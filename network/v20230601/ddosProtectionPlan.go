@@ -155,6 +155,9 @@ func NewDdosProtectionPlan(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:network/v20230501:DdosProtectionPlan"),
 		},
+		{
+			Type: pulumi.String("azure-native:network/v20230901:DdosProtectionPlan"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

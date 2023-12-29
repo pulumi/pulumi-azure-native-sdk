@@ -794,6 +794,204 @@ func (val *Regression) Defaults() *Regression {
 	return &tmp
 }
 
+// RegressionInput is an input type that accepts RegressionArgs and RegressionOutput values.
+// You can construct a concrete instance of `RegressionInput` via:
+//
+//	RegressionArgs{...}
+type RegressionInput interface {
+	pulumi.Input
+
+	ToRegressionOutput() RegressionOutput
+	ToRegressionOutputWithContext(context.Context) RegressionOutput
+}
+
+// Regression task in AutoML Table vertical.
+type RegressionArgs struct {
+	// Columns to use for CVSplit data.
+	CvSplitColumnNames pulumi.StringArrayInput `pulumi:"cvSplitColumnNames"`
+	// Featurization inputs needed for AutoML job.
+	FeaturizationSettings TableVerticalFeaturizationSettingsPtrInput `pulumi:"featurizationSettings"`
+	// Model/training parameters that will remain constant throughout training.
+	FixedParameters TableFixedParametersPtrInput `pulumi:"fixedParameters"`
+	// Execution constraints for AutoMLJob.
+	LimitSettings TableVerticalLimitSettingsPtrInput `pulumi:"limitSettings"`
+	// Log verbosity for the job.
+	LogVerbosity pulumi.StringPtrInput `pulumi:"logVerbosity"`
+	// Number of cross validation folds to be applied on training dataset
+	// when validation dataset is not provided.
+	NCrossValidations pulumi.Input `pulumi:"nCrossValidations"`
+	// Primary metric for regression task.
+	PrimaryMetric pulumi.StringPtrInput `pulumi:"primaryMetric"`
+	// Search space for sampling different combinations of models and their hyperparameters.
+	SearchSpace TableParameterSubspaceArrayInput `pulumi:"searchSpace"`
+	// Settings for model sweeping and hyperparameter tuning.
+	SweepSettings TableSweepSettingsPtrInput `pulumi:"sweepSettings"`
+	// Target column name: This is prediction values column.
+	// Also known as label column name in context of classification tasks.
+	TargetColumnName pulumi.StringPtrInput `pulumi:"targetColumnName"`
+	// AutoMLJob Task type.
+	// Expected value is 'Regression'.
+	TaskType pulumi.StringInput `pulumi:"taskType"`
+	// Test data input.
+	TestData MLTableJobInputPtrInput `pulumi:"testData"`
+	// The fraction of test dataset that needs to be set aside for validation purpose.
+	// Values between (0.0 , 1.0)
+	// Applied when validation dataset is not provided.
+	TestDataSize pulumi.Float64PtrInput `pulumi:"testDataSize"`
+	// [Required] Training data input.
+	TrainingData MLTableJobInputInput `pulumi:"trainingData"`
+	// Inputs for training phase for an AutoML Job.
+	TrainingSettings RegressionTrainingSettingsPtrInput `pulumi:"trainingSettings"`
+	// Validation data inputs.
+	ValidationData MLTableJobInputPtrInput `pulumi:"validationData"`
+	// The fraction of training dataset that needs to be set aside for validation purpose.
+	// Values between (0.0 , 1.0)
+	// Applied when validation dataset is not provided.
+	ValidationDataSize pulumi.Float64PtrInput `pulumi:"validationDataSize"`
+	// The name of the sample weight column. Automated ML supports a weighted column as an input, causing rows in the data to be weighted up or down.
+	WeightColumnName pulumi.StringPtrInput `pulumi:"weightColumnName"`
+}
+
+// Defaults sets the appropriate defaults for RegressionArgs
+func (val *RegressionArgs) Defaults() *RegressionArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	if tmp.LogVerbosity == nil {
+		tmp.LogVerbosity = pulumi.StringPtr("Info")
+	}
+	if tmp.PrimaryMetric == nil {
+		tmp.PrimaryMetric = pulumi.StringPtr("NormalizedRootMeanSquaredError")
+	}
+
+	return &tmp
+}
+func (RegressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Regression)(nil)).Elem()
+}
+
+func (i RegressionArgs) ToRegressionOutput() RegressionOutput {
+	return i.ToRegressionOutputWithContext(context.Background())
+}
+
+func (i RegressionArgs) ToRegressionOutputWithContext(ctx context.Context) RegressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegressionOutput)
+}
+
+// Regression task in AutoML Table vertical.
+type RegressionOutput struct{ *pulumi.OutputState }
+
+func (RegressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Regression)(nil)).Elem()
+}
+
+func (o RegressionOutput) ToRegressionOutput() RegressionOutput {
+	return o
+}
+
+func (o RegressionOutput) ToRegressionOutputWithContext(ctx context.Context) RegressionOutput {
+	return o
+}
+
+// Columns to use for CVSplit data.
+func (o RegressionOutput) CvSplitColumnNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Regression) []string { return v.CvSplitColumnNames }).(pulumi.StringArrayOutput)
+}
+
+// Featurization inputs needed for AutoML job.
+func (o RegressionOutput) FeaturizationSettings() TableVerticalFeaturizationSettingsPtrOutput {
+	return o.ApplyT(func(v Regression) *TableVerticalFeaturizationSettings { return v.FeaturizationSettings }).(TableVerticalFeaturizationSettingsPtrOutput)
+}
+
+// Model/training parameters that will remain constant throughout training.
+func (o RegressionOutput) FixedParameters() TableFixedParametersPtrOutput {
+	return o.ApplyT(func(v Regression) *TableFixedParameters { return v.FixedParameters }).(TableFixedParametersPtrOutput)
+}
+
+// Execution constraints for AutoMLJob.
+func (o RegressionOutput) LimitSettings() TableVerticalLimitSettingsPtrOutput {
+	return o.ApplyT(func(v Regression) *TableVerticalLimitSettings { return v.LimitSettings }).(TableVerticalLimitSettingsPtrOutput)
+}
+
+// Log verbosity for the job.
+func (o RegressionOutput) LogVerbosity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Regression) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
+}
+
+// Number of cross validation folds to be applied on training dataset
+// when validation dataset is not provided.
+func (o RegressionOutput) NCrossValidations() pulumi.AnyOutput {
+	return o.ApplyT(func(v Regression) interface{} { return v.NCrossValidations }).(pulumi.AnyOutput)
+}
+
+// Primary metric for regression task.
+func (o RegressionOutput) PrimaryMetric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Regression) *string { return v.PrimaryMetric }).(pulumi.StringPtrOutput)
+}
+
+// Search space for sampling different combinations of models and their hyperparameters.
+func (o RegressionOutput) SearchSpace() TableParameterSubspaceArrayOutput {
+	return o.ApplyT(func(v Regression) []TableParameterSubspace { return v.SearchSpace }).(TableParameterSubspaceArrayOutput)
+}
+
+// Settings for model sweeping and hyperparameter tuning.
+func (o RegressionOutput) SweepSettings() TableSweepSettingsPtrOutput {
+	return o.ApplyT(func(v Regression) *TableSweepSettings { return v.SweepSettings }).(TableSweepSettingsPtrOutput)
+}
+
+// Target column name: This is prediction values column.
+// Also known as label column name in context of classification tasks.
+func (o RegressionOutput) TargetColumnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Regression) *string { return v.TargetColumnName }).(pulumi.StringPtrOutput)
+}
+
+// AutoMLJob Task type.
+// Expected value is 'Regression'.
+func (o RegressionOutput) TaskType() pulumi.StringOutput {
+	return o.ApplyT(func(v Regression) string { return v.TaskType }).(pulumi.StringOutput)
+}
+
+// Test data input.
+func (o RegressionOutput) TestData() MLTableJobInputPtrOutput {
+	return o.ApplyT(func(v Regression) *MLTableJobInput { return v.TestData }).(MLTableJobInputPtrOutput)
+}
+
+// The fraction of test dataset that needs to be set aside for validation purpose.
+// Values between (0.0 , 1.0)
+// Applied when validation dataset is not provided.
+func (o RegressionOutput) TestDataSize() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v Regression) *float64 { return v.TestDataSize }).(pulumi.Float64PtrOutput)
+}
+
+// [Required] Training data input.
+func (o RegressionOutput) TrainingData() MLTableJobInputOutput {
+	return o.ApplyT(func(v Regression) MLTableJobInput { return v.TrainingData }).(MLTableJobInputOutput)
+}
+
+// Inputs for training phase for an AutoML Job.
+func (o RegressionOutput) TrainingSettings() RegressionTrainingSettingsPtrOutput {
+	return o.ApplyT(func(v Regression) *RegressionTrainingSettings { return v.TrainingSettings }).(RegressionTrainingSettingsPtrOutput)
+}
+
+// Validation data inputs.
+func (o RegressionOutput) ValidationData() MLTableJobInputPtrOutput {
+	return o.ApplyT(func(v Regression) *MLTableJobInput { return v.ValidationData }).(MLTableJobInputPtrOutput)
+}
+
+// The fraction of training dataset that needs to be set aside for validation purpose.
+// Values between (0.0 , 1.0)
+// Applied when validation dataset is not provided.
+func (o RegressionOutput) ValidationDataSize() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v Regression) *float64 { return v.ValidationDataSize }).(pulumi.Float64PtrOutput)
+}
+
+// The name of the sample weight column. Automated ML supports a weighted column as an input, causing rows in the data to be weighted up or down.
+func (o RegressionOutput) WeightColumnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Regression) *string { return v.WeightColumnName }).(pulumi.StringPtrOutput)
+}
+
 type RegressionModelPerformanceMetricThreshold struct {
 	// [Required] The regression model performance metric to calculate.
 	Metric string `pulumi:"metric"`
@@ -803,6 +1001,67 @@ type RegressionModelPerformanceMetricThreshold struct {
 	Threshold *MonitoringThreshold `pulumi:"threshold"`
 }
 
+// RegressionModelPerformanceMetricThresholdInput is an input type that accepts RegressionModelPerformanceMetricThresholdArgs and RegressionModelPerformanceMetricThresholdOutput values.
+// You can construct a concrete instance of `RegressionModelPerformanceMetricThresholdInput` via:
+//
+//	RegressionModelPerformanceMetricThresholdArgs{...}
+type RegressionModelPerformanceMetricThresholdInput interface {
+	pulumi.Input
+
+	ToRegressionModelPerformanceMetricThresholdOutput() RegressionModelPerformanceMetricThresholdOutput
+	ToRegressionModelPerformanceMetricThresholdOutputWithContext(context.Context) RegressionModelPerformanceMetricThresholdOutput
+}
+
+type RegressionModelPerformanceMetricThresholdArgs struct {
+	// [Required] The regression model performance metric to calculate.
+	Metric pulumi.StringInput `pulumi:"metric"`
+	// Expected value is 'Regression'.
+	ModelType pulumi.StringInput `pulumi:"modelType"`
+	// The threshold value. If null, a default value will be set depending on the selected metric.
+	Threshold MonitoringThresholdPtrInput `pulumi:"threshold"`
+}
+
+func (RegressionModelPerformanceMetricThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegressionModelPerformanceMetricThreshold)(nil)).Elem()
+}
+
+func (i RegressionModelPerformanceMetricThresholdArgs) ToRegressionModelPerformanceMetricThresholdOutput() RegressionModelPerformanceMetricThresholdOutput {
+	return i.ToRegressionModelPerformanceMetricThresholdOutputWithContext(context.Background())
+}
+
+func (i RegressionModelPerformanceMetricThresholdArgs) ToRegressionModelPerformanceMetricThresholdOutputWithContext(ctx context.Context) RegressionModelPerformanceMetricThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegressionModelPerformanceMetricThresholdOutput)
+}
+
+type RegressionModelPerformanceMetricThresholdOutput struct{ *pulumi.OutputState }
+
+func (RegressionModelPerformanceMetricThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegressionModelPerformanceMetricThreshold)(nil)).Elem()
+}
+
+func (o RegressionModelPerformanceMetricThresholdOutput) ToRegressionModelPerformanceMetricThresholdOutput() RegressionModelPerformanceMetricThresholdOutput {
+	return o
+}
+
+func (o RegressionModelPerformanceMetricThresholdOutput) ToRegressionModelPerformanceMetricThresholdOutputWithContext(ctx context.Context) RegressionModelPerformanceMetricThresholdOutput {
+	return o
+}
+
+// [Required] The regression model performance metric to calculate.
+func (o RegressionModelPerformanceMetricThresholdOutput) Metric() pulumi.StringOutput {
+	return o.ApplyT(func(v RegressionModelPerformanceMetricThreshold) string { return v.Metric }).(pulumi.StringOutput)
+}
+
+// Expected value is 'Regression'.
+func (o RegressionModelPerformanceMetricThresholdOutput) ModelType() pulumi.StringOutput {
+	return o.ApplyT(func(v RegressionModelPerformanceMetricThreshold) string { return v.ModelType }).(pulumi.StringOutput)
+}
+
+// The threshold value. If null, a default value will be set depending on the selected metric.
+func (o RegressionModelPerformanceMetricThresholdOutput) Threshold() MonitoringThresholdPtrOutput {
+	return o.ApplyT(func(v RegressionModelPerformanceMetricThreshold) *MonitoringThreshold { return v.Threshold }).(MonitoringThresholdPtrOutput)
+}
+
 type RegressionModelPerformanceMetricThresholdResponse struct {
 	// [Required] The regression model performance metric to calculate.
 	Metric string `pulumi:"metric"`
@@ -810,6 +1069,37 @@ type RegressionModelPerformanceMetricThresholdResponse struct {
 	ModelType string `pulumi:"modelType"`
 	// The threshold value. If null, a default value will be set depending on the selected metric.
 	Threshold *MonitoringThresholdResponse `pulumi:"threshold"`
+}
+
+type RegressionModelPerformanceMetricThresholdResponseOutput struct{ *pulumi.OutputState }
+
+func (RegressionModelPerformanceMetricThresholdResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegressionModelPerformanceMetricThresholdResponse)(nil)).Elem()
+}
+
+func (o RegressionModelPerformanceMetricThresholdResponseOutput) ToRegressionModelPerformanceMetricThresholdResponseOutput() RegressionModelPerformanceMetricThresholdResponseOutput {
+	return o
+}
+
+func (o RegressionModelPerformanceMetricThresholdResponseOutput) ToRegressionModelPerformanceMetricThresholdResponseOutputWithContext(ctx context.Context) RegressionModelPerformanceMetricThresholdResponseOutput {
+	return o
+}
+
+// [Required] The regression model performance metric to calculate.
+func (o RegressionModelPerformanceMetricThresholdResponseOutput) Metric() pulumi.StringOutput {
+	return o.ApplyT(func(v RegressionModelPerformanceMetricThresholdResponse) string { return v.Metric }).(pulumi.StringOutput)
+}
+
+// Expected value is 'Regression'.
+func (o RegressionModelPerformanceMetricThresholdResponseOutput) ModelType() pulumi.StringOutput {
+	return o.ApplyT(func(v RegressionModelPerformanceMetricThresholdResponse) string { return v.ModelType }).(pulumi.StringOutput)
+}
+
+// The threshold value. If null, a default value will be set depending on the selected metric.
+func (o RegressionModelPerformanceMetricThresholdResponseOutput) Threshold() MonitoringThresholdResponsePtrOutput {
+	return o.ApplyT(func(v RegressionModelPerformanceMetricThresholdResponse) *MonitoringThresholdResponse {
+		return v.Threshold
+	}).(MonitoringThresholdResponsePtrOutput)
 }
 
 // Regression task in AutoML Table vertical.
@@ -890,6 +1180,118 @@ func (val *RegressionResponse) Defaults() *RegressionResponse {
 	return &tmp
 }
 
+// Regression task in AutoML Table vertical.
+type RegressionResponseOutput struct{ *pulumi.OutputState }
+
+func (RegressionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegressionResponse)(nil)).Elem()
+}
+
+func (o RegressionResponseOutput) ToRegressionResponseOutput() RegressionResponseOutput {
+	return o
+}
+
+func (o RegressionResponseOutput) ToRegressionResponseOutputWithContext(ctx context.Context) RegressionResponseOutput {
+	return o
+}
+
+// Columns to use for CVSplit data.
+func (o RegressionResponseOutput) CvSplitColumnNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RegressionResponse) []string { return v.CvSplitColumnNames }).(pulumi.StringArrayOutput)
+}
+
+// Featurization inputs needed for AutoML job.
+func (o RegressionResponseOutput) FeaturizationSettings() TableVerticalFeaturizationSettingsResponsePtrOutput {
+	return o.ApplyT(func(v RegressionResponse) *TableVerticalFeaturizationSettingsResponse { return v.FeaturizationSettings }).(TableVerticalFeaturizationSettingsResponsePtrOutput)
+}
+
+// Model/training parameters that will remain constant throughout training.
+func (o RegressionResponseOutput) FixedParameters() TableFixedParametersResponsePtrOutput {
+	return o.ApplyT(func(v RegressionResponse) *TableFixedParametersResponse { return v.FixedParameters }).(TableFixedParametersResponsePtrOutput)
+}
+
+// Execution constraints for AutoMLJob.
+func (o RegressionResponseOutput) LimitSettings() TableVerticalLimitSettingsResponsePtrOutput {
+	return o.ApplyT(func(v RegressionResponse) *TableVerticalLimitSettingsResponse { return v.LimitSettings }).(TableVerticalLimitSettingsResponsePtrOutput)
+}
+
+// Log verbosity for the job.
+func (o RegressionResponseOutput) LogVerbosity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegressionResponse) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
+}
+
+// Number of cross validation folds to be applied on training dataset
+// when validation dataset is not provided.
+func (o RegressionResponseOutput) NCrossValidations() pulumi.AnyOutput {
+	return o.ApplyT(func(v RegressionResponse) interface{} { return v.NCrossValidations }).(pulumi.AnyOutput)
+}
+
+// Primary metric for regression task.
+func (o RegressionResponseOutput) PrimaryMetric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegressionResponse) *string { return v.PrimaryMetric }).(pulumi.StringPtrOutput)
+}
+
+// Search space for sampling different combinations of models and their hyperparameters.
+func (o RegressionResponseOutput) SearchSpace() TableParameterSubspaceResponseArrayOutput {
+	return o.ApplyT(func(v RegressionResponse) []TableParameterSubspaceResponse { return v.SearchSpace }).(TableParameterSubspaceResponseArrayOutput)
+}
+
+// Settings for model sweeping and hyperparameter tuning.
+func (o RegressionResponseOutput) SweepSettings() TableSweepSettingsResponsePtrOutput {
+	return o.ApplyT(func(v RegressionResponse) *TableSweepSettingsResponse { return v.SweepSettings }).(TableSweepSettingsResponsePtrOutput)
+}
+
+// Target column name: This is prediction values column.
+// Also known as label column name in context of classification tasks.
+func (o RegressionResponseOutput) TargetColumnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegressionResponse) *string { return v.TargetColumnName }).(pulumi.StringPtrOutput)
+}
+
+// AutoMLJob Task type.
+// Expected value is 'Regression'.
+func (o RegressionResponseOutput) TaskType() pulumi.StringOutput {
+	return o.ApplyT(func(v RegressionResponse) string { return v.TaskType }).(pulumi.StringOutput)
+}
+
+// Test data input.
+func (o RegressionResponseOutput) TestData() MLTableJobInputResponsePtrOutput {
+	return o.ApplyT(func(v RegressionResponse) *MLTableJobInputResponse { return v.TestData }).(MLTableJobInputResponsePtrOutput)
+}
+
+// The fraction of test dataset that needs to be set aside for validation purpose.
+// Values between (0.0 , 1.0)
+// Applied when validation dataset is not provided.
+func (o RegressionResponseOutput) TestDataSize() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RegressionResponse) *float64 { return v.TestDataSize }).(pulumi.Float64PtrOutput)
+}
+
+// [Required] Training data input.
+func (o RegressionResponseOutput) TrainingData() MLTableJobInputResponseOutput {
+	return o.ApplyT(func(v RegressionResponse) MLTableJobInputResponse { return v.TrainingData }).(MLTableJobInputResponseOutput)
+}
+
+// Inputs for training phase for an AutoML Job.
+func (o RegressionResponseOutput) TrainingSettings() RegressionTrainingSettingsResponsePtrOutput {
+	return o.ApplyT(func(v RegressionResponse) *RegressionTrainingSettingsResponse { return v.TrainingSettings }).(RegressionTrainingSettingsResponsePtrOutput)
+}
+
+// Validation data inputs.
+func (o RegressionResponseOutput) ValidationData() MLTableJobInputResponsePtrOutput {
+	return o.ApplyT(func(v RegressionResponse) *MLTableJobInputResponse { return v.ValidationData }).(MLTableJobInputResponsePtrOutput)
+}
+
+// The fraction of training dataset that needs to be set aside for validation purpose.
+// Values between (0.0 , 1.0)
+// Applied when validation dataset is not provided.
+func (o RegressionResponseOutput) ValidationDataSize() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RegressionResponse) *float64 { return v.ValidationDataSize }).(pulumi.Float64PtrOutput)
+}
+
+// The name of the sample weight column. Automated ML supports a weighted column as an input, causing rows in the data to be weighted up or down.
+func (o RegressionResponseOutput) WeightColumnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegressionResponse) *string { return v.WeightColumnName }).(pulumi.StringPtrOutput)
+}
+
 // Regression Training related configuration.
 type RegressionTrainingSettings struct {
 	// Allowed models for regression task.
@@ -956,6 +1358,332 @@ func (val *RegressionTrainingSettings) Defaults() *RegressionTrainingSettings {
 	return &tmp
 }
 
+// RegressionTrainingSettingsInput is an input type that accepts RegressionTrainingSettingsArgs and RegressionTrainingSettingsOutput values.
+// You can construct a concrete instance of `RegressionTrainingSettingsInput` via:
+//
+//	RegressionTrainingSettingsArgs{...}
+type RegressionTrainingSettingsInput interface {
+	pulumi.Input
+
+	ToRegressionTrainingSettingsOutput() RegressionTrainingSettingsOutput
+	ToRegressionTrainingSettingsOutputWithContext(context.Context) RegressionTrainingSettingsOutput
+}
+
+// Regression Training related configuration.
+type RegressionTrainingSettingsArgs struct {
+	// Allowed models for regression task.
+	AllowedTrainingAlgorithms pulumi.StringArrayInput `pulumi:"allowedTrainingAlgorithms"`
+	// Blocked models for regression task.
+	BlockedTrainingAlgorithms pulumi.StringArrayInput `pulumi:"blockedTrainingAlgorithms"`
+	// Enable recommendation of DNN models.
+	EnableDnnTraining pulumi.BoolPtrInput `pulumi:"enableDnnTraining"`
+	// Flag to turn on explainability on best model.
+	EnableModelExplainability pulumi.BoolPtrInput `pulumi:"enableModelExplainability"`
+	// Flag for enabling onnx compatible models.
+	EnableOnnxCompatibleModels pulumi.BoolPtrInput `pulumi:"enableOnnxCompatibleModels"`
+	// Enable stack ensemble run.
+	EnableStackEnsemble pulumi.BoolPtrInput `pulumi:"enableStackEnsemble"`
+	// Enable voting ensemble run.
+	EnableVoteEnsemble pulumi.BoolPtrInput `pulumi:"enableVoteEnsemble"`
+	// During VotingEnsemble and StackEnsemble model generation, multiple fitted models from the previous child runs are downloaded.
+	// Configure this parameter with a higher value than 300 secs, if more time is needed.
+	EnsembleModelDownloadTimeout pulumi.StringPtrInput `pulumi:"ensembleModelDownloadTimeout"`
+	// Stack ensemble settings for stack ensemble run.
+	StackEnsembleSettings StackEnsembleSettingsPtrInput `pulumi:"stackEnsembleSettings"`
+	// TrainingMode mode - Setting to 'auto' is same as setting it to 'non-distributed' for now, however in the future may result in mixed mode or heuristics based mode selection. Default is 'auto'.
+	// If 'Distributed' then only distributed featurization is used and distributed algorithms are chosen.
+	// If 'NonDistributed' then only non distributed algorithms are chosen.
+	TrainingMode pulumi.StringPtrInput `pulumi:"trainingMode"`
+}
+
+// Defaults sets the appropriate defaults for RegressionTrainingSettingsArgs
+func (val *RegressionTrainingSettingsArgs) Defaults() *RegressionTrainingSettingsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EnableDnnTraining == nil {
+		tmp.EnableDnnTraining = pulumi.BoolPtr(false)
+	}
+	if tmp.EnableModelExplainability == nil {
+		tmp.EnableModelExplainability = pulumi.BoolPtr(true)
+	}
+	if tmp.EnableOnnxCompatibleModels == nil {
+		tmp.EnableOnnxCompatibleModels = pulumi.BoolPtr(false)
+	}
+	if tmp.EnableStackEnsemble == nil {
+		tmp.EnableStackEnsemble = pulumi.BoolPtr(true)
+	}
+	if tmp.EnableVoteEnsemble == nil {
+		tmp.EnableVoteEnsemble = pulumi.BoolPtr(true)
+	}
+	if tmp.EnsembleModelDownloadTimeout == nil {
+		tmp.EnsembleModelDownloadTimeout = pulumi.StringPtr("PT5M")
+	}
+
+	if tmp.TrainingMode == nil {
+		tmp.TrainingMode = pulumi.StringPtr("Auto")
+	}
+	return &tmp
+}
+func (RegressionTrainingSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegressionTrainingSettings)(nil)).Elem()
+}
+
+func (i RegressionTrainingSettingsArgs) ToRegressionTrainingSettingsOutput() RegressionTrainingSettingsOutput {
+	return i.ToRegressionTrainingSettingsOutputWithContext(context.Background())
+}
+
+func (i RegressionTrainingSettingsArgs) ToRegressionTrainingSettingsOutputWithContext(ctx context.Context) RegressionTrainingSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegressionTrainingSettingsOutput)
+}
+
+func (i RegressionTrainingSettingsArgs) ToRegressionTrainingSettingsPtrOutput() RegressionTrainingSettingsPtrOutput {
+	return i.ToRegressionTrainingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i RegressionTrainingSettingsArgs) ToRegressionTrainingSettingsPtrOutputWithContext(ctx context.Context) RegressionTrainingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegressionTrainingSettingsOutput).ToRegressionTrainingSettingsPtrOutputWithContext(ctx)
+}
+
+// RegressionTrainingSettingsPtrInput is an input type that accepts RegressionTrainingSettingsArgs, RegressionTrainingSettingsPtr and RegressionTrainingSettingsPtrOutput values.
+// You can construct a concrete instance of `RegressionTrainingSettingsPtrInput` via:
+//
+//	        RegressionTrainingSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegressionTrainingSettingsPtrInput interface {
+	pulumi.Input
+
+	ToRegressionTrainingSettingsPtrOutput() RegressionTrainingSettingsPtrOutput
+	ToRegressionTrainingSettingsPtrOutputWithContext(context.Context) RegressionTrainingSettingsPtrOutput
+}
+
+type regressionTrainingSettingsPtrType RegressionTrainingSettingsArgs
+
+func RegressionTrainingSettingsPtr(v *RegressionTrainingSettingsArgs) RegressionTrainingSettingsPtrInput {
+	return (*regressionTrainingSettingsPtrType)(v)
+}
+
+func (*regressionTrainingSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegressionTrainingSettings)(nil)).Elem()
+}
+
+func (i *regressionTrainingSettingsPtrType) ToRegressionTrainingSettingsPtrOutput() RegressionTrainingSettingsPtrOutput {
+	return i.ToRegressionTrainingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *regressionTrainingSettingsPtrType) ToRegressionTrainingSettingsPtrOutputWithContext(ctx context.Context) RegressionTrainingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegressionTrainingSettingsPtrOutput)
+}
+
+// Regression Training related configuration.
+type RegressionTrainingSettingsOutput struct{ *pulumi.OutputState }
+
+func (RegressionTrainingSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegressionTrainingSettings)(nil)).Elem()
+}
+
+func (o RegressionTrainingSettingsOutput) ToRegressionTrainingSettingsOutput() RegressionTrainingSettingsOutput {
+	return o
+}
+
+func (o RegressionTrainingSettingsOutput) ToRegressionTrainingSettingsOutputWithContext(ctx context.Context) RegressionTrainingSettingsOutput {
+	return o
+}
+
+func (o RegressionTrainingSettingsOutput) ToRegressionTrainingSettingsPtrOutput() RegressionTrainingSettingsPtrOutput {
+	return o.ToRegressionTrainingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o RegressionTrainingSettingsOutput) ToRegressionTrainingSettingsPtrOutputWithContext(ctx context.Context) RegressionTrainingSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegressionTrainingSettings) *RegressionTrainingSettings {
+		return &v
+	}).(RegressionTrainingSettingsPtrOutput)
+}
+
+// Allowed models for regression task.
+func (o RegressionTrainingSettingsOutput) AllowedTrainingAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RegressionTrainingSettings) []string { return v.AllowedTrainingAlgorithms }).(pulumi.StringArrayOutput)
+}
+
+// Blocked models for regression task.
+func (o RegressionTrainingSettingsOutput) BlockedTrainingAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RegressionTrainingSettings) []string { return v.BlockedTrainingAlgorithms }).(pulumi.StringArrayOutput)
+}
+
+// Enable recommendation of DNN models.
+func (o RegressionTrainingSettingsOutput) EnableDnnTraining() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegressionTrainingSettings) *bool { return v.EnableDnnTraining }).(pulumi.BoolPtrOutput)
+}
+
+// Flag to turn on explainability on best model.
+func (o RegressionTrainingSettingsOutput) EnableModelExplainability() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegressionTrainingSettings) *bool { return v.EnableModelExplainability }).(pulumi.BoolPtrOutput)
+}
+
+// Flag for enabling onnx compatible models.
+func (o RegressionTrainingSettingsOutput) EnableOnnxCompatibleModels() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegressionTrainingSettings) *bool { return v.EnableOnnxCompatibleModels }).(pulumi.BoolPtrOutput)
+}
+
+// Enable stack ensemble run.
+func (o RegressionTrainingSettingsOutput) EnableStackEnsemble() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegressionTrainingSettings) *bool { return v.EnableStackEnsemble }).(pulumi.BoolPtrOutput)
+}
+
+// Enable voting ensemble run.
+func (o RegressionTrainingSettingsOutput) EnableVoteEnsemble() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegressionTrainingSettings) *bool { return v.EnableVoteEnsemble }).(pulumi.BoolPtrOutput)
+}
+
+// During VotingEnsemble and StackEnsemble model generation, multiple fitted models from the previous child runs are downloaded.
+// Configure this parameter with a higher value than 300 secs, if more time is needed.
+func (o RegressionTrainingSettingsOutput) EnsembleModelDownloadTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegressionTrainingSettings) *string { return v.EnsembleModelDownloadTimeout }).(pulumi.StringPtrOutput)
+}
+
+// Stack ensemble settings for stack ensemble run.
+func (o RegressionTrainingSettingsOutput) StackEnsembleSettings() StackEnsembleSettingsPtrOutput {
+	return o.ApplyT(func(v RegressionTrainingSettings) *StackEnsembleSettings { return v.StackEnsembleSettings }).(StackEnsembleSettingsPtrOutput)
+}
+
+// TrainingMode mode - Setting to 'auto' is same as setting it to 'non-distributed' for now, however in the future may result in mixed mode or heuristics based mode selection. Default is 'auto'.
+// If 'Distributed' then only distributed featurization is used and distributed algorithms are chosen.
+// If 'NonDistributed' then only non distributed algorithms are chosen.
+func (o RegressionTrainingSettingsOutput) TrainingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegressionTrainingSettings) *string { return v.TrainingMode }).(pulumi.StringPtrOutput)
+}
+
+type RegressionTrainingSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (RegressionTrainingSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegressionTrainingSettings)(nil)).Elem()
+}
+
+func (o RegressionTrainingSettingsPtrOutput) ToRegressionTrainingSettingsPtrOutput() RegressionTrainingSettingsPtrOutput {
+	return o
+}
+
+func (o RegressionTrainingSettingsPtrOutput) ToRegressionTrainingSettingsPtrOutputWithContext(ctx context.Context) RegressionTrainingSettingsPtrOutput {
+	return o
+}
+
+func (o RegressionTrainingSettingsPtrOutput) Elem() RegressionTrainingSettingsOutput {
+	return o.ApplyT(func(v *RegressionTrainingSettings) RegressionTrainingSettings {
+		if v != nil {
+			return *v
+		}
+		var ret RegressionTrainingSettings
+		return ret
+	}).(RegressionTrainingSettingsOutput)
+}
+
+// Allowed models for regression task.
+func (o RegressionTrainingSettingsPtrOutput) AllowedTrainingAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RegressionTrainingSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedTrainingAlgorithms
+	}).(pulumi.StringArrayOutput)
+}
+
+// Blocked models for regression task.
+func (o RegressionTrainingSettingsPtrOutput) BlockedTrainingAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RegressionTrainingSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BlockedTrainingAlgorithms
+	}).(pulumi.StringArrayOutput)
+}
+
+// Enable recommendation of DNN models.
+func (o RegressionTrainingSettingsPtrOutput) EnableDnnTraining() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegressionTrainingSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableDnnTraining
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Flag to turn on explainability on best model.
+func (o RegressionTrainingSettingsPtrOutput) EnableModelExplainability() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegressionTrainingSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableModelExplainability
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Flag for enabling onnx compatible models.
+func (o RegressionTrainingSettingsPtrOutput) EnableOnnxCompatibleModels() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegressionTrainingSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableOnnxCompatibleModels
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable stack ensemble run.
+func (o RegressionTrainingSettingsPtrOutput) EnableStackEnsemble() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegressionTrainingSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableStackEnsemble
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable voting ensemble run.
+func (o RegressionTrainingSettingsPtrOutput) EnableVoteEnsemble() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegressionTrainingSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableVoteEnsemble
+	}).(pulumi.BoolPtrOutput)
+}
+
+// During VotingEnsemble and StackEnsemble model generation, multiple fitted models from the previous child runs are downloaded.
+// Configure this parameter with a higher value than 300 secs, if more time is needed.
+func (o RegressionTrainingSettingsPtrOutput) EnsembleModelDownloadTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegressionTrainingSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnsembleModelDownloadTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Stack ensemble settings for stack ensemble run.
+func (o RegressionTrainingSettingsPtrOutput) StackEnsembleSettings() StackEnsembleSettingsPtrOutput {
+	return o.ApplyT(func(v *RegressionTrainingSettings) *StackEnsembleSettings {
+		if v == nil {
+			return nil
+		}
+		return v.StackEnsembleSettings
+	}).(StackEnsembleSettingsPtrOutput)
+}
+
+// TrainingMode mode - Setting to 'auto' is same as setting it to 'non-distributed' for now, however in the future may result in mixed mode or heuristics based mode selection. Default is 'auto'.
+// If 'Distributed' then only distributed featurization is used and distributed algorithms are chosen.
+// If 'NonDistributed' then only non distributed algorithms are chosen.
+func (o RegressionTrainingSettingsPtrOutput) TrainingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegressionTrainingSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrainingMode
+	}).(pulumi.StringPtrOutput)
+}
+
 // Regression Training related configuration.
 type RegressionTrainingSettingsResponse struct {
 	// Allowed models for regression task.
@@ -1020,6 +1748,203 @@ func (val *RegressionTrainingSettingsResponse) Defaults() *RegressionTrainingSet
 		tmp.TrainingMode = &trainingMode_
 	}
 	return &tmp
+}
+
+// Regression Training related configuration.
+type RegressionTrainingSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (RegressionTrainingSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegressionTrainingSettingsResponse)(nil)).Elem()
+}
+
+func (o RegressionTrainingSettingsResponseOutput) ToRegressionTrainingSettingsResponseOutput() RegressionTrainingSettingsResponseOutput {
+	return o
+}
+
+func (o RegressionTrainingSettingsResponseOutput) ToRegressionTrainingSettingsResponseOutputWithContext(ctx context.Context) RegressionTrainingSettingsResponseOutput {
+	return o
+}
+
+// Allowed models for regression task.
+func (o RegressionTrainingSettingsResponseOutput) AllowedTrainingAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RegressionTrainingSettingsResponse) []string { return v.AllowedTrainingAlgorithms }).(pulumi.StringArrayOutput)
+}
+
+// Blocked models for regression task.
+func (o RegressionTrainingSettingsResponseOutput) BlockedTrainingAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RegressionTrainingSettingsResponse) []string { return v.BlockedTrainingAlgorithms }).(pulumi.StringArrayOutput)
+}
+
+// Enable recommendation of DNN models.
+func (o RegressionTrainingSettingsResponseOutput) EnableDnnTraining() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegressionTrainingSettingsResponse) *bool { return v.EnableDnnTraining }).(pulumi.BoolPtrOutput)
+}
+
+// Flag to turn on explainability on best model.
+func (o RegressionTrainingSettingsResponseOutput) EnableModelExplainability() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegressionTrainingSettingsResponse) *bool { return v.EnableModelExplainability }).(pulumi.BoolPtrOutput)
+}
+
+// Flag for enabling onnx compatible models.
+func (o RegressionTrainingSettingsResponseOutput) EnableOnnxCompatibleModels() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegressionTrainingSettingsResponse) *bool { return v.EnableOnnxCompatibleModels }).(pulumi.BoolPtrOutput)
+}
+
+// Enable stack ensemble run.
+func (o RegressionTrainingSettingsResponseOutput) EnableStackEnsemble() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegressionTrainingSettingsResponse) *bool { return v.EnableStackEnsemble }).(pulumi.BoolPtrOutput)
+}
+
+// Enable voting ensemble run.
+func (o RegressionTrainingSettingsResponseOutput) EnableVoteEnsemble() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegressionTrainingSettingsResponse) *bool { return v.EnableVoteEnsemble }).(pulumi.BoolPtrOutput)
+}
+
+// During VotingEnsemble and StackEnsemble model generation, multiple fitted models from the previous child runs are downloaded.
+// Configure this parameter with a higher value than 300 secs, if more time is needed.
+func (o RegressionTrainingSettingsResponseOutput) EnsembleModelDownloadTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegressionTrainingSettingsResponse) *string { return v.EnsembleModelDownloadTimeout }).(pulumi.StringPtrOutput)
+}
+
+// Stack ensemble settings for stack ensemble run.
+func (o RegressionTrainingSettingsResponseOutput) StackEnsembleSettings() StackEnsembleSettingsResponsePtrOutput {
+	return o.ApplyT(func(v RegressionTrainingSettingsResponse) *StackEnsembleSettingsResponse {
+		return v.StackEnsembleSettings
+	}).(StackEnsembleSettingsResponsePtrOutput)
+}
+
+// TrainingMode mode - Setting to 'auto' is same as setting it to 'non-distributed' for now, however in the future may result in mixed mode or heuristics based mode selection. Default is 'auto'.
+// If 'Distributed' then only distributed featurization is used and distributed algorithms are chosen.
+// If 'NonDistributed' then only non distributed algorithms are chosen.
+func (o RegressionTrainingSettingsResponseOutput) TrainingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegressionTrainingSettingsResponse) *string { return v.TrainingMode }).(pulumi.StringPtrOutput)
+}
+
+type RegressionTrainingSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RegressionTrainingSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegressionTrainingSettingsResponse)(nil)).Elem()
+}
+
+func (o RegressionTrainingSettingsResponsePtrOutput) ToRegressionTrainingSettingsResponsePtrOutput() RegressionTrainingSettingsResponsePtrOutput {
+	return o
+}
+
+func (o RegressionTrainingSettingsResponsePtrOutput) ToRegressionTrainingSettingsResponsePtrOutputWithContext(ctx context.Context) RegressionTrainingSettingsResponsePtrOutput {
+	return o
+}
+
+func (o RegressionTrainingSettingsResponsePtrOutput) Elem() RegressionTrainingSettingsResponseOutput {
+	return o.ApplyT(func(v *RegressionTrainingSettingsResponse) RegressionTrainingSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RegressionTrainingSettingsResponse
+		return ret
+	}).(RegressionTrainingSettingsResponseOutput)
+}
+
+// Allowed models for regression task.
+func (o RegressionTrainingSettingsResponsePtrOutput) AllowedTrainingAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RegressionTrainingSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedTrainingAlgorithms
+	}).(pulumi.StringArrayOutput)
+}
+
+// Blocked models for regression task.
+func (o RegressionTrainingSettingsResponsePtrOutput) BlockedTrainingAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RegressionTrainingSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BlockedTrainingAlgorithms
+	}).(pulumi.StringArrayOutput)
+}
+
+// Enable recommendation of DNN models.
+func (o RegressionTrainingSettingsResponsePtrOutput) EnableDnnTraining() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegressionTrainingSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableDnnTraining
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Flag to turn on explainability on best model.
+func (o RegressionTrainingSettingsResponsePtrOutput) EnableModelExplainability() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegressionTrainingSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableModelExplainability
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Flag for enabling onnx compatible models.
+func (o RegressionTrainingSettingsResponsePtrOutput) EnableOnnxCompatibleModels() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegressionTrainingSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableOnnxCompatibleModels
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable stack ensemble run.
+func (o RegressionTrainingSettingsResponsePtrOutput) EnableStackEnsemble() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegressionTrainingSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableStackEnsemble
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable voting ensemble run.
+func (o RegressionTrainingSettingsResponsePtrOutput) EnableVoteEnsemble() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegressionTrainingSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableVoteEnsemble
+	}).(pulumi.BoolPtrOutput)
+}
+
+// During VotingEnsemble and StackEnsemble model generation, multiple fitted models from the previous child runs are downloaded.
+// Configure this parameter with a higher value than 300 secs, if more time is needed.
+func (o RegressionTrainingSettingsResponsePtrOutput) EnsembleModelDownloadTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegressionTrainingSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnsembleModelDownloadTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Stack ensemble settings for stack ensemble run.
+func (o RegressionTrainingSettingsResponsePtrOutput) StackEnsembleSettings() StackEnsembleSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *RegressionTrainingSettingsResponse) *StackEnsembleSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.StackEnsembleSettings
+	}).(StackEnsembleSettingsResponsePtrOutput)
+}
+
+// TrainingMode mode - Setting to 'auto' is same as setting it to 'non-distributed' for now, however in the future may result in mixed mode or heuristics based mode selection. Default is 'auto'.
+// If 'Distributed' then only distributed featurization is used and distributed algorithms are chosen.
+// If 'NonDistributed' then only non distributed algorithms are chosen.
+func (o RegressionTrainingSettingsResponsePtrOutput) TrainingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegressionTrainingSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrainingMode
+	}).(pulumi.StringPtrOutput)
 }
 
 // Scoring requests configuration.
@@ -1318,9 +2243,194 @@ type RequestLogging struct {
 	CaptureHeaders []string `pulumi:"captureHeaders"`
 }
 
+// RequestLoggingInput is an input type that accepts RequestLoggingArgs and RequestLoggingOutput values.
+// You can construct a concrete instance of `RequestLoggingInput` via:
+//
+//	RequestLoggingArgs{...}
+type RequestLoggingInput interface {
+	pulumi.Input
+
+	ToRequestLoggingOutput() RequestLoggingOutput
+	ToRequestLoggingOutputWithContext(context.Context) RequestLoggingOutput
+}
+
+type RequestLoggingArgs struct {
+	// For payload logging, we only collect payload by default. If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload.
+	CaptureHeaders pulumi.StringArrayInput `pulumi:"captureHeaders"`
+}
+
+func (RequestLoggingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RequestLogging)(nil)).Elem()
+}
+
+func (i RequestLoggingArgs) ToRequestLoggingOutput() RequestLoggingOutput {
+	return i.ToRequestLoggingOutputWithContext(context.Background())
+}
+
+func (i RequestLoggingArgs) ToRequestLoggingOutputWithContext(ctx context.Context) RequestLoggingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RequestLoggingOutput)
+}
+
+func (i RequestLoggingArgs) ToRequestLoggingPtrOutput() RequestLoggingPtrOutput {
+	return i.ToRequestLoggingPtrOutputWithContext(context.Background())
+}
+
+func (i RequestLoggingArgs) ToRequestLoggingPtrOutputWithContext(ctx context.Context) RequestLoggingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RequestLoggingOutput).ToRequestLoggingPtrOutputWithContext(ctx)
+}
+
+// RequestLoggingPtrInput is an input type that accepts RequestLoggingArgs, RequestLoggingPtr and RequestLoggingPtrOutput values.
+// You can construct a concrete instance of `RequestLoggingPtrInput` via:
+//
+//	        RequestLoggingArgs{...}
+//
+//	or:
+//
+//	        nil
+type RequestLoggingPtrInput interface {
+	pulumi.Input
+
+	ToRequestLoggingPtrOutput() RequestLoggingPtrOutput
+	ToRequestLoggingPtrOutputWithContext(context.Context) RequestLoggingPtrOutput
+}
+
+type requestLoggingPtrType RequestLoggingArgs
+
+func RequestLoggingPtr(v *RequestLoggingArgs) RequestLoggingPtrInput {
+	return (*requestLoggingPtrType)(v)
+}
+
+func (*requestLoggingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RequestLogging)(nil)).Elem()
+}
+
+func (i *requestLoggingPtrType) ToRequestLoggingPtrOutput() RequestLoggingPtrOutput {
+	return i.ToRequestLoggingPtrOutputWithContext(context.Background())
+}
+
+func (i *requestLoggingPtrType) ToRequestLoggingPtrOutputWithContext(ctx context.Context) RequestLoggingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RequestLoggingPtrOutput)
+}
+
+type RequestLoggingOutput struct{ *pulumi.OutputState }
+
+func (RequestLoggingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RequestLogging)(nil)).Elem()
+}
+
+func (o RequestLoggingOutput) ToRequestLoggingOutput() RequestLoggingOutput {
+	return o
+}
+
+func (o RequestLoggingOutput) ToRequestLoggingOutputWithContext(ctx context.Context) RequestLoggingOutput {
+	return o
+}
+
+func (o RequestLoggingOutput) ToRequestLoggingPtrOutput() RequestLoggingPtrOutput {
+	return o.ToRequestLoggingPtrOutputWithContext(context.Background())
+}
+
+func (o RequestLoggingOutput) ToRequestLoggingPtrOutputWithContext(ctx context.Context) RequestLoggingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RequestLogging) *RequestLogging {
+		return &v
+	}).(RequestLoggingPtrOutput)
+}
+
+// For payload logging, we only collect payload by default. If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload.
+func (o RequestLoggingOutput) CaptureHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RequestLogging) []string { return v.CaptureHeaders }).(pulumi.StringArrayOutput)
+}
+
+type RequestLoggingPtrOutput struct{ *pulumi.OutputState }
+
+func (RequestLoggingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RequestLogging)(nil)).Elem()
+}
+
+func (o RequestLoggingPtrOutput) ToRequestLoggingPtrOutput() RequestLoggingPtrOutput {
+	return o
+}
+
+func (o RequestLoggingPtrOutput) ToRequestLoggingPtrOutputWithContext(ctx context.Context) RequestLoggingPtrOutput {
+	return o
+}
+
+func (o RequestLoggingPtrOutput) Elem() RequestLoggingOutput {
+	return o.ApplyT(func(v *RequestLogging) RequestLogging {
+		if v != nil {
+			return *v
+		}
+		var ret RequestLogging
+		return ret
+	}).(RequestLoggingOutput)
+}
+
+// For payload logging, we only collect payload by default. If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload.
+func (o RequestLoggingPtrOutput) CaptureHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RequestLogging) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CaptureHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
 type RequestLoggingResponse struct {
 	// For payload logging, we only collect payload by default. If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload.
 	CaptureHeaders []string `pulumi:"captureHeaders"`
+}
+
+type RequestLoggingResponseOutput struct{ *pulumi.OutputState }
+
+func (RequestLoggingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RequestLoggingResponse)(nil)).Elem()
+}
+
+func (o RequestLoggingResponseOutput) ToRequestLoggingResponseOutput() RequestLoggingResponseOutput {
+	return o
+}
+
+func (o RequestLoggingResponseOutput) ToRequestLoggingResponseOutputWithContext(ctx context.Context) RequestLoggingResponseOutput {
+	return o
+}
+
+// For payload logging, we only collect payload by default. If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload.
+func (o RequestLoggingResponseOutput) CaptureHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RequestLoggingResponse) []string { return v.CaptureHeaders }).(pulumi.StringArrayOutput)
+}
+
+type RequestLoggingResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RequestLoggingResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RequestLoggingResponse)(nil)).Elem()
+}
+
+func (o RequestLoggingResponsePtrOutput) ToRequestLoggingResponsePtrOutput() RequestLoggingResponsePtrOutput {
+	return o
+}
+
+func (o RequestLoggingResponsePtrOutput) ToRequestLoggingResponsePtrOutputWithContext(ctx context.Context) RequestLoggingResponsePtrOutput {
+	return o
+}
+
+func (o RequestLoggingResponsePtrOutput) Elem() RequestLoggingResponseOutput {
+	return o.ApplyT(func(v *RequestLoggingResponse) RequestLoggingResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RequestLoggingResponse
+		return ret
+	}).(RequestLoggingResponseOutput)
+}
+
+// For payload logging, we only collect payload by default. If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload.
+func (o RequestLoggingResponsePtrOutput) CaptureHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RequestLoggingResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CaptureHeaders
+	}).(pulumi.StringArrayOutput)
 }
 
 // Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet.
@@ -1329,10 +2439,198 @@ type ResourceId struct {
 	Id string `pulumi:"id"`
 }
 
+// ResourceIdInput is an input type that accepts ResourceIdArgs and ResourceIdOutput values.
+// You can construct a concrete instance of `ResourceIdInput` via:
+//
+//	ResourceIdArgs{...}
+type ResourceIdInput interface {
+	pulumi.Input
+
+	ToResourceIdOutput() ResourceIdOutput
+	ToResourceIdOutputWithContext(context.Context) ResourceIdOutput
+}
+
+// Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet.
+type ResourceIdArgs struct {
+	// The ID of the resource
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (ResourceIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceId)(nil)).Elem()
+}
+
+func (i ResourceIdArgs) ToResourceIdOutput() ResourceIdOutput {
+	return i.ToResourceIdOutputWithContext(context.Background())
+}
+
+func (i ResourceIdArgs) ToResourceIdOutputWithContext(ctx context.Context) ResourceIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceIdOutput)
+}
+
+func (i ResourceIdArgs) ToResourceIdPtrOutput() ResourceIdPtrOutput {
+	return i.ToResourceIdPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceIdArgs) ToResourceIdPtrOutputWithContext(ctx context.Context) ResourceIdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceIdOutput).ToResourceIdPtrOutputWithContext(ctx)
+}
+
+// ResourceIdPtrInput is an input type that accepts ResourceIdArgs, ResourceIdPtr and ResourceIdPtrOutput values.
+// You can construct a concrete instance of `ResourceIdPtrInput` via:
+//
+//	        ResourceIdArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceIdPtrInput interface {
+	pulumi.Input
+
+	ToResourceIdPtrOutput() ResourceIdPtrOutput
+	ToResourceIdPtrOutputWithContext(context.Context) ResourceIdPtrOutput
+}
+
+type resourceIdPtrType ResourceIdArgs
+
+func ResourceIdPtr(v *ResourceIdArgs) ResourceIdPtrInput {
+	return (*resourceIdPtrType)(v)
+}
+
+func (*resourceIdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceId)(nil)).Elem()
+}
+
+func (i *resourceIdPtrType) ToResourceIdPtrOutput() ResourceIdPtrOutput {
+	return i.ToResourceIdPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceIdPtrType) ToResourceIdPtrOutputWithContext(ctx context.Context) ResourceIdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceIdPtrOutput)
+}
+
+// Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet.
+type ResourceIdOutput struct{ *pulumi.OutputState }
+
+func (ResourceIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceId)(nil)).Elem()
+}
+
+func (o ResourceIdOutput) ToResourceIdOutput() ResourceIdOutput {
+	return o
+}
+
+func (o ResourceIdOutput) ToResourceIdOutputWithContext(ctx context.Context) ResourceIdOutput {
+	return o
+}
+
+func (o ResourceIdOutput) ToResourceIdPtrOutput() ResourceIdPtrOutput {
+	return o.ToResourceIdPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceIdOutput) ToResourceIdPtrOutputWithContext(ctx context.Context) ResourceIdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceId) *ResourceId {
+		return &v
+	}).(ResourceIdPtrOutput)
+}
+
+// The ID of the resource
+func (o ResourceIdOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceId) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type ResourceIdPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceIdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceId)(nil)).Elem()
+}
+
+func (o ResourceIdPtrOutput) ToResourceIdPtrOutput() ResourceIdPtrOutput {
+	return o
+}
+
+func (o ResourceIdPtrOutput) ToResourceIdPtrOutputWithContext(ctx context.Context) ResourceIdPtrOutput {
+	return o
+}
+
+func (o ResourceIdPtrOutput) Elem() ResourceIdOutput {
+	return o.ApplyT(func(v *ResourceId) ResourceId {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceId
+		return ret
+	}).(ResourceIdOutput)
+}
+
+// The ID of the resource
+func (o ResourceIdPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceId) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
 // Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet.
 type ResourceIdResponse struct {
 	// The ID of the resource
 	Id string `pulumi:"id"`
+}
+
+// Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet.
+type ResourceIdResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourceIdResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceIdResponse)(nil)).Elem()
+}
+
+func (o ResourceIdResponseOutput) ToResourceIdResponseOutput() ResourceIdResponseOutput {
+	return o
+}
+
+func (o ResourceIdResponseOutput) ToResourceIdResponseOutputWithContext(ctx context.Context) ResourceIdResponseOutput {
+	return o
+}
+
+// The ID of the resource
+func (o ResourceIdResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceIdResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type ResourceIdResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceIdResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceIdResponse)(nil)).Elem()
+}
+
+func (o ResourceIdResponsePtrOutput) ToResourceIdResponsePtrOutput() ResourceIdResponsePtrOutput {
+	return o
+}
+
+func (o ResourceIdResponsePtrOutput) ToResourceIdResponsePtrOutputWithContext(ctx context.Context) ResourceIdResponsePtrOutput {
+	return o
+}
+
+func (o ResourceIdResponsePtrOutput) Elem() ResourceIdResponseOutput {
+	return o.ApplyT(func(v *ResourceIdResponse) ResourceIdResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceIdResponse
+		return ret
+	}).(ResourceIdResponseOutput)
+}
+
+// The ID of the resource
+func (o ResourceIdResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceIdResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
 }
 
 // Rolling input data definition.
@@ -1356,6 +2654,106 @@ type RollingInputData struct {
 	WindowSize string `pulumi:"windowSize"`
 }
 
+// RollingInputDataInput is an input type that accepts RollingInputDataArgs and RollingInputDataOutput values.
+// You can construct a concrete instance of `RollingInputDataInput` via:
+//
+//	RollingInputDataArgs{...}
+type RollingInputDataInput interface {
+	pulumi.Input
+
+	ToRollingInputDataOutput() RollingInputDataOutput
+	ToRollingInputDataOutputWithContext(context.Context) RollingInputDataOutput
+}
+
+// Rolling input data definition.
+type RollingInputDataArgs struct {
+	// Mapping of column names to special uses.
+	Columns pulumi.StringMapInput `pulumi:"columns"`
+	// The context metadata of the data source.
+	DataContext pulumi.StringPtrInput `pulumi:"dataContext"`
+	// Monitoring input data type enum.
+	// Expected value is 'Rolling'.
+	InputDataType pulumi.StringInput `pulumi:"inputDataType"`
+	// [Required] Specifies the type of job.
+	JobInputType pulumi.StringInput `pulumi:"jobInputType"`
+	// The ARM resource ID of the component resource used to preprocess the data.
+	PreprocessingComponentId pulumi.StringPtrInput `pulumi:"preprocessingComponentId"`
+	// [Required] Input Asset URI.
+	Uri pulumi.StringInput `pulumi:"uri"`
+	// [Required] The time offset between the end of the data window and the monitor's current run time.
+	WindowOffset pulumi.StringInput `pulumi:"windowOffset"`
+	// [Required] The size of the trailing data window.
+	WindowSize pulumi.StringInput `pulumi:"windowSize"`
+}
+
+func (RollingInputDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RollingInputData)(nil)).Elem()
+}
+
+func (i RollingInputDataArgs) ToRollingInputDataOutput() RollingInputDataOutput {
+	return i.ToRollingInputDataOutputWithContext(context.Background())
+}
+
+func (i RollingInputDataArgs) ToRollingInputDataOutputWithContext(ctx context.Context) RollingInputDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RollingInputDataOutput)
+}
+
+// Rolling input data definition.
+type RollingInputDataOutput struct{ *pulumi.OutputState }
+
+func (RollingInputDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RollingInputData)(nil)).Elem()
+}
+
+func (o RollingInputDataOutput) ToRollingInputDataOutput() RollingInputDataOutput {
+	return o
+}
+
+func (o RollingInputDataOutput) ToRollingInputDataOutputWithContext(ctx context.Context) RollingInputDataOutput {
+	return o
+}
+
+// Mapping of column names to special uses.
+func (o RollingInputDataOutput) Columns() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RollingInputData) map[string]string { return v.Columns }).(pulumi.StringMapOutput)
+}
+
+// The context metadata of the data source.
+func (o RollingInputDataOutput) DataContext() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RollingInputData) *string { return v.DataContext }).(pulumi.StringPtrOutput)
+}
+
+// Monitoring input data type enum.
+// Expected value is 'Rolling'.
+func (o RollingInputDataOutput) InputDataType() pulumi.StringOutput {
+	return o.ApplyT(func(v RollingInputData) string { return v.InputDataType }).(pulumi.StringOutput)
+}
+
+// [Required] Specifies the type of job.
+func (o RollingInputDataOutput) JobInputType() pulumi.StringOutput {
+	return o.ApplyT(func(v RollingInputData) string { return v.JobInputType }).(pulumi.StringOutput)
+}
+
+// The ARM resource ID of the component resource used to preprocess the data.
+func (o RollingInputDataOutput) PreprocessingComponentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RollingInputData) *string { return v.PreprocessingComponentId }).(pulumi.StringPtrOutput)
+}
+
+// [Required] Input Asset URI.
+func (o RollingInputDataOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v RollingInputData) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// [Required] The time offset between the end of the data window and the monitor's current run time.
+func (o RollingInputDataOutput) WindowOffset() pulumi.StringOutput {
+	return o.ApplyT(func(v RollingInputData) string { return v.WindowOffset }).(pulumi.StringOutput)
+}
+
+// [Required] The size of the trailing data window.
+func (o RollingInputDataOutput) WindowSize() pulumi.StringOutput {
+	return o.ApplyT(func(v RollingInputData) string { return v.WindowSize }).(pulumi.StringOutput)
+}
+
 // Rolling input data definition.
 type RollingInputDataResponse struct {
 	// Mapping of column names to special uses.
@@ -1375,6 +2773,62 @@ type RollingInputDataResponse struct {
 	WindowOffset string `pulumi:"windowOffset"`
 	// [Required] The size of the trailing data window.
 	WindowSize string `pulumi:"windowSize"`
+}
+
+// Rolling input data definition.
+type RollingInputDataResponseOutput struct{ *pulumi.OutputState }
+
+func (RollingInputDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RollingInputDataResponse)(nil)).Elem()
+}
+
+func (o RollingInputDataResponseOutput) ToRollingInputDataResponseOutput() RollingInputDataResponseOutput {
+	return o
+}
+
+func (o RollingInputDataResponseOutput) ToRollingInputDataResponseOutputWithContext(ctx context.Context) RollingInputDataResponseOutput {
+	return o
+}
+
+// Mapping of column names to special uses.
+func (o RollingInputDataResponseOutput) Columns() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RollingInputDataResponse) map[string]string { return v.Columns }).(pulumi.StringMapOutput)
+}
+
+// The context metadata of the data source.
+func (o RollingInputDataResponseOutput) DataContext() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RollingInputDataResponse) *string { return v.DataContext }).(pulumi.StringPtrOutput)
+}
+
+// Monitoring input data type enum.
+// Expected value is 'Rolling'.
+func (o RollingInputDataResponseOutput) InputDataType() pulumi.StringOutput {
+	return o.ApplyT(func(v RollingInputDataResponse) string { return v.InputDataType }).(pulumi.StringOutput)
+}
+
+// [Required] Specifies the type of job.
+func (o RollingInputDataResponseOutput) JobInputType() pulumi.StringOutput {
+	return o.ApplyT(func(v RollingInputDataResponse) string { return v.JobInputType }).(pulumi.StringOutput)
+}
+
+// The ARM resource ID of the component resource used to preprocess the data.
+func (o RollingInputDataResponseOutput) PreprocessingComponentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RollingInputDataResponse) *string { return v.PreprocessingComponentId }).(pulumi.StringPtrOutput)
+}
+
+// [Required] Input Asset URI.
+func (o RollingInputDataResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v RollingInputDataResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// [Required] The time offset between the end of the data window and the monitor's current run time.
+func (o RollingInputDataResponseOutput) WindowOffset() pulumi.StringOutput {
+	return o.ApplyT(func(v RollingInputDataResponse) string { return v.WindowOffset }).(pulumi.StringOutput)
+}
+
+// [Required] The size of the trailing data window.
+func (o RollingInputDataResponseOutput) WindowSize() pulumi.StringOutput {
+	return o.ApplyT(func(v RollingInputDataResponse) string { return v.WindowSize }).(pulumi.StringOutput)
 }
 
 type Route struct {
@@ -1622,6 +3076,91 @@ type SASAuthTypeWorkspaceConnectionProperties struct {
 	Target        *string     `pulumi:"target"`
 }
 
+// SASAuthTypeWorkspaceConnectionPropertiesInput is an input type that accepts SASAuthTypeWorkspaceConnectionPropertiesArgs and SASAuthTypeWorkspaceConnectionPropertiesOutput values.
+// You can construct a concrete instance of `SASAuthTypeWorkspaceConnectionPropertiesInput` via:
+//
+//	SASAuthTypeWorkspaceConnectionPropertiesArgs{...}
+type SASAuthTypeWorkspaceConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToSASAuthTypeWorkspaceConnectionPropertiesOutput() SASAuthTypeWorkspaceConnectionPropertiesOutput
+	ToSASAuthTypeWorkspaceConnectionPropertiesOutputWithContext(context.Context) SASAuthTypeWorkspaceConnectionPropertiesOutput
+}
+
+type SASAuthTypeWorkspaceConnectionPropertiesArgs struct {
+	// Authentication type of the connection target
+	// Expected value is 'SAS'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Category of the connection
+	Category    pulumi.StringPtrInput                            `pulumi:"category"`
+	Credentials WorkspaceConnectionSharedAccessSignaturePtrInput `pulumi:"credentials"`
+	ExpiryTime  pulumi.StringPtrInput                            `pulumi:"expiryTime"`
+	// whether this connection will be shared to all the project workspace under the hub
+	IsSharedToAll pulumi.BoolPtrInput   `pulumi:"isSharedToAll"`
+	Metadata      pulumi.Input          `pulumi:"metadata"`
+	Target        pulumi.StringPtrInput `pulumi:"target"`
+}
+
+func (SASAuthTypeWorkspaceConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SASAuthTypeWorkspaceConnectionProperties)(nil)).Elem()
+}
+
+func (i SASAuthTypeWorkspaceConnectionPropertiesArgs) ToSASAuthTypeWorkspaceConnectionPropertiesOutput() SASAuthTypeWorkspaceConnectionPropertiesOutput {
+	return i.ToSASAuthTypeWorkspaceConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i SASAuthTypeWorkspaceConnectionPropertiesArgs) ToSASAuthTypeWorkspaceConnectionPropertiesOutputWithContext(ctx context.Context) SASAuthTypeWorkspaceConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SASAuthTypeWorkspaceConnectionPropertiesOutput)
+}
+
+type SASAuthTypeWorkspaceConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (SASAuthTypeWorkspaceConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SASAuthTypeWorkspaceConnectionProperties)(nil)).Elem()
+}
+
+func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) ToSASAuthTypeWorkspaceConnectionPropertiesOutput() SASAuthTypeWorkspaceConnectionPropertiesOutput {
+	return o
+}
+
+func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) ToSASAuthTypeWorkspaceConnectionPropertiesOutputWithContext(ctx context.Context) SASAuthTypeWorkspaceConnectionPropertiesOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'SAS'.
+func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) Credentials() WorkspaceConnectionSharedAccessSignaturePtrOutput {
+	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) *WorkspaceConnectionSharedAccessSignature {
+		return v.Credentials
+	}).(WorkspaceConnectionSharedAccessSignaturePtrOutput)
+}
+
+func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+// whether this connection will be shared to all the project workspace under the hub
+func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) Metadata() pulumi.AnyOutput {
+	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) interface{} { return v.Metadata }).(pulumi.AnyOutput)
+}
+
+func (o SASAuthTypeWorkspaceConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
 type SASAuthTypeWorkspaceConnectionPropertiesResponse struct {
 	// Authentication type of the connection target
 	// Expected value is 'SAS'.
@@ -1638,6 +3177,59 @@ type SASAuthTypeWorkspaceConnectionPropertiesResponse struct {
 	Target        *string     `pulumi:"target"`
 }
 
+type SASAuthTypeWorkspaceConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SASAuthTypeWorkspaceConnectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) ToSASAuthTypeWorkspaceConnectionPropertiesResponseOutput() SASAuthTypeWorkspaceConnectionPropertiesResponseOutput {
+	return o
+}
+
+func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) ToSASAuthTypeWorkspaceConnectionPropertiesResponseOutputWithContext(ctx context.Context) SASAuthTypeWorkspaceConnectionPropertiesResponseOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'SAS'.
+func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// The arm id of the workspace which created this connection
+func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) CreatedByWorkspaceArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) string { return v.CreatedByWorkspaceArmId }).(pulumi.StringOutput)
+}
+
+func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) Credentials() WorkspaceConnectionSharedAccessSignatureResponsePtrOutput {
+	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) *WorkspaceConnectionSharedAccessSignatureResponse {
+		return v.Credentials
+	}).(WorkspaceConnectionSharedAccessSignatureResponsePtrOutput)
+}
+
+func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+// whether this connection will be shared to all the project workspace under the hub
+func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) Metadata() pulumi.AnyOutput {
+	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) interface{} { return v.Metadata }).(pulumi.AnyOutput)
+}
+
+func (o SASAuthTypeWorkspaceConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SASAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
 // SAS datastore credentials configuration.
 type SasDatastoreCredentials struct {
 	// Enum to determine the datastore credentials type.
@@ -1647,11 +3239,90 @@ type SasDatastoreCredentials struct {
 	Secrets SasDatastoreSecrets `pulumi:"secrets"`
 }
 
+// SasDatastoreCredentialsInput is an input type that accepts SasDatastoreCredentialsArgs and SasDatastoreCredentialsOutput values.
+// You can construct a concrete instance of `SasDatastoreCredentialsInput` via:
+//
+//	SasDatastoreCredentialsArgs{...}
+type SasDatastoreCredentialsInput interface {
+	pulumi.Input
+
+	ToSasDatastoreCredentialsOutput() SasDatastoreCredentialsOutput
+	ToSasDatastoreCredentialsOutputWithContext(context.Context) SasDatastoreCredentialsOutput
+}
+
+// SAS datastore credentials configuration.
+type SasDatastoreCredentialsArgs struct {
+	// Enum to determine the datastore credentials type.
+	// Expected value is 'Sas'.
+	CredentialsType pulumi.StringInput `pulumi:"credentialsType"`
+	// [Required] Storage container secrets.
+	Secrets SasDatastoreSecretsInput `pulumi:"secrets"`
+}
+
+func (SasDatastoreCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SasDatastoreCredentials)(nil)).Elem()
+}
+
+func (i SasDatastoreCredentialsArgs) ToSasDatastoreCredentialsOutput() SasDatastoreCredentialsOutput {
+	return i.ToSasDatastoreCredentialsOutputWithContext(context.Background())
+}
+
+func (i SasDatastoreCredentialsArgs) ToSasDatastoreCredentialsOutputWithContext(ctx context.Context) SasDatastoreCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SasDatastoreCredentialsOutput)
+}
+
+// SAS datastore credentials configuration.
+type SasDatastoreCredentialsOutput struct{ *pulumi.OutputState }
+
+func (SasDatastoreCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SasDatastoreCredentials)(nil)).Elem()
+}
+
+func (o SasDatastoreCredentialsOutput) ToSasDatastoreCredentialsOutput() SasDatastoreCredentialsOutput {
+	return o
+}
+
+func (o SasDatastoreCredentialsOutput) ToSasDatastoreCredentialsOutputWithContext(ctx context.Context) SasDatastoreCredentialsOutput {
+	return o
+}
+
+// Enum to determine the datastore credentials type.
+// Expected value is 'Sas'.
+func (o SasDatastoreCredentialsOutput) CredentialsType() pulumi.StringOutput {
+	return o.ApplyT(func(v SasDatastoreCredentials) string { return v.CredentialsType }).(pulumi.StringOutput)
+}
+
+// [Required] Storage container secrets.
+func (o SasDatastoreCredentialsOutput) Secrets() SasDatastoreSecretsOutput {
+	return o.ApplyT(func(v SasDatastoreCredentials) SasDatastoreSecrets { return v.Secrets }).(SasDatastoreSecretsOutput)
+}
+
 // SAS datastore credentials configuration.
 type SasDatastoreCredentialsResponse struct {
 	// Enum to determine the datastore credentials type.
 	// Expected value is 'Sas'.
 	CredentialsType string `pulumi:"credentialsType"`
+}
+
+// SAS datastore credentials configuration.
+type SasDatastoreCredentialsResponseOutput struct{ *pulumi.OutputState }
+
+func (SasDatastoreCredentialsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SasDatastoreCredentialsResponse)(nil)).Elem()
+}
+
+func (o SasDatastoreCredentialsResponseOutput) ToSasDatastoreCredentialsResponseOutput() SasDatastoreCredentialsResponseOutput {
+	return o
+}
+
+func (o SasDatastoreCredentialsResponseOutput) ToSasDatastoreCredentialsResponseOutputWithContext(ctx context.Context) SasDatastoreCredentialsResponseOutput {
+	return o
+}
+
+// Enum to determine the datastore credentials type.
+// Expected value is 'Sas'.
+func (o SasDatastoreCredentialsResponseOutput) CredentialsType() pulumi.StringOutput {
+	return o.ApplyT(func(v SasDatastoreCredentialsResponse) string { return v.CredentialsType }).(pulumi.StringOutput)
 }
 
 // Datastore SAS secrets.
@@ -1661,6 +3332,64 @@ type SasDatastoreSecrets struct {
 	// Enum to determine the datastore secrets type.
 	// Expected value is 'Sas'.
 	SecretsType string `pulumi:"secretsType"`
+}
+
+// SasDatastoreSecretsInput is an input type that accepts SasDatastoreSecretsArgs and SasDatastoreSecretsOutput values.
+// You can construct a concrete instance of `SasDatastoreSecretsInput` via:
+//
+//	SasDatastoreSecretsArgs{...}
+type SasDatastoreSecretsInput interface {
+	pulumi.Input
+
+	ToSasDatastoreSecretsOutput() SasDatastoreSecretsOutput
+	ToSasDatastoreSecretsOutputWithContext(context.Context) SasDatastoreSecretsOutput
+}
+
+// Datastore SAS secrets.
+type SasDatastoreSecretsArgs struct {
+	// Storage container SAS token.
+	SasToken pulumi.StringPtrInput `pulumi:"sasToken"`
+	// Enum to determine the datastore secrets type.
+	// Expected value is 'Sas'.
+	SecretsType pulumi.StringInput `pulumi:"secretsType"`
+}
+
+func (SasDatastoreSecretsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SasDatastoreSecrets)(nil)).Elem()
+}
+
+func (i SasDatastoreSecretsArgs) ToSasDatastoreSecretsOutput() SasDatastoreSecretsOutput {
+	return i.ToSasDatastoreSecretsOutputWithContext(context.Background())
+}
+
+func (i SasDatastoreSecretsArgs) ToSasDatastoreSecretsOutputWithContext(ctx context.Context) SasDatastoreSecretsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SasDatastoreSecretsOutput)
+}
+
+// Datastore SAS secrets.
+type SasDatastoreSecretsOutput struct{ *pulumi.OutputState }
+
+func (SasDatastoreSecretsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SasDatastoreSecrets)(nil)).Elem()
+}
+
+func (o SasDatastoreSecretsOutput) ToSasDatastoreSecretsOutput() SasDatastoreSecretsOutput {
+	return o
+}
+
+func (o SasDatastoreSecretsOutput) ToSasDatastoreSecretsOutputWithContext(ctx context.Context) SasDatastoreSecretsOutput {
+	return o
+}
+
+// Storage container SAS token.
+func (o SasDatastoreSecretsOutput) SasToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SasDatastoreSecrets) *string { return v.SasToken }).(pulumi.StringPtrOutput)
+}
+
+// Enum to determine the datastore secrets type.
+// Expected value is 'Sas'.
+func (o SasDatastoreSecretsOutput) SecretsType() pulumi.StringOutput {
+	return o.ApplyT(func(v SasDatastoreSecrets) string { return v.SecretsType }).(pulumi.StringOutput)
 }
 
 // scale settings for AML Compute
@@ -1686,6 +3415,185 @@ func (val *ScaleSettings) Defaults() *ScaleSettings {
 	return &tmp
 }
 
+// ScaleSettingsInput is an input type that accepts ScaleSettingsArgs and ScaleSettingsOutput values.
+// You can construct a concrete instance of `ScaleSettingsInput` via:
+//
+//	ScaleSettingsArgs{...}
+type ScaleSettingsInput interface {
+	pulumi.Input
+
+	ToScaleSettingsOutput() ScaleSettingsOutput
+	ToScaleSettingsOutputWithContext(context.Context) ScaleSettingsOutput
+}
+
+// scale settings for AML Compute
+type ScaleSettingsArgs struct {
+	// Max number of nodes to use
+	MaxNodeCount pulumi.IntInput `pulumi:"maxNodeCount"`
+	// Min number of nodes to use
+	MinNodeCount pulumi.IntPtrInput `pulumi:"minNodeCount"`
+	// Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
+	NodeIdleTimeBeforeScaleDown pulumi.StringPtrInput `pulumi:"nodeIdleTimeBeforeScaleDown"`
+}
+
+// Defaults sets the appropriate defaults for ScaleSettingsArgs
+func (val *ScaleSettingsArgs) Defaults() *ScaleSettingsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.MinNodeCount == nil {
+		tmp.MinNodeCount = pulumi.IntPtr(0)
+	}
+	return &tmp
+}
+func (ScaleSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScaleSettings)(nil)).Elem()
+}
+
+func (i ScaleSettingsArgs) ToScaleSettingsOutput() ScaleSettingsOutput {
+	return i.ToScaleSettingsOutputWithContext(context.Background())
+}
+
+func (i ScaleSettingsArgs) ToScaleSettingsOutputWithContext(ctx context.Context) ScaleSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSettingsOutput)
+}
+
+func (i ScaleSettingsArgs) ToScaleSettingsPtrOutput() ScaleSettingsPtrOutput {
+	return i.ToScaleSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ScaleSettingsArgs) ToScaleSettingsPtrOutputWithContext(ctx context.Context) ScaleSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSettingsOutput).ToScaleSettingsPtrOutputWithContext(ctx)
+}
+
+// ScaleSettingsPtrInput is an input type that accepts ScaleSettingsArgs, ScaleSettingsPtr and ScaleSettingsPtrOutput values.
+// You can construct a concrete instance of `ScaleSettingsPtrInput` via:
+//
+//	        ScaleSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScaleSettingsPtrInput interface {
+	pulumi.Input
+
+	ToScaleSettingsPtrOutput() ScaleSettingsPtrOutput
+	ToScaleSettingsPtrOutputWithContext(context.Context) ScaleSettingsPtrOutput
+}
+
+type scaleSettingsPtrType ScaleSettingsArgs
+
+func ScaleSettingsPtr(v *ScaleSettingsArgs) ScaleSettingsPtrInput {
+	return (*scaleSettingsPtrType)(v)
+}
+
+func (*scaleSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScaleSettings)(nil)).Elem()
+}
+
+func (i *scaleSettingsPtrType) ToScaleSettingsPtrOutput() ScaleSettingsPtrOutput {
+	return i.ToScaleSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *scaleSettingsPtrType) ToScaleSettingsPtrOutputWithContext(ctx context.Context) ScaleSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScaleSettingsPtrOutput)
+}
+
+// scale settings for AML Compute
+type ScaleSettingsOutput struct{ *pulumi.OutputState }
+
+func (ScaleSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScaleSettings)(nil)).Elem()
+}
+
+func (o ScaleSettingsOutput) ToScaleSettingsOutput() ScaleSettingsOutput {
+	return o
+}
+
+func (o ScaleSettingsOutput) ToScaleSettingsOutputWithContext(ctx context.Context) ScaleSettingsOutput {
+	return o
+}
+
+func (o ScaleSettingsOutput) ToScaleSettingsPtrOutput() ScaleSettingsPtrOutput {
+	return o.ToScaleSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ScaleSettingsOutput) ToScaleSettingsPtrOutputWithContext(ctx context.Context) ScaleSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScaleSettings) *ScaleSettings {
+		return &v
+	}).(ScaleSettingsPtrOutput)
+}
+
+// Max number of nodes to use
+func (o ScaleSettingsOutput) MaxNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v ScaleSettings) int { return v.MaxNodeCount }).(pulumi.IntOutput)
+}
+
+// Min number of nodes to use
+func (o ScaleSettingsOutput) MinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScaleSettings) *int { return v.MinNodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
+func (o ScaleSettingsOutput) NodeIdleTimeBeforeScaleDown() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScaleSettings) *string { return v.NodeIdleTimeBeforeScaleDown }).(pulumi.StringPtrOutput)
+}
+
+type ScaleSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ScaleSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScaleSettings)(nil)).Elem()
+}
+
+func (o ScaleSettingsPtrOutput) ToScaleSettingsPtrOutput() ScaleSettingsPtrOutput {
+	return o
+}
+
+func (o ScaleSettingsPtrOutput) ToScaleSettingsPtrOutputWithContext(ctx context.Context) ScaleSettingsPtrOutput {
+	return o
+}
+
+func (o ScaleSettingsPtrOutput) Elem() ScaleSettingsOutput {
+	return o.ApplyT(func(v *ScaleSettings) ScaleSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ScaleSettings
+		return ret
+	}).(ScaleSettingsOutput)
+}
+
+// Max number of nodes to use
+func (o ScaleSettingsPtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScaleSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Min number of nodes to use
+func (o ScaleSettingsPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScaleSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
+func (o ScaleSettingsPtrOutput) NodeIdleTimeBeforeScaleDown() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScaleSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeIdleTimeBeforeScaleDown
+	}).(pulumi.StringPtrOutput)
+}
+
 // scale settings for AML Compute
 type ScaleSettingsResponse struct {
 	// Max number of nodes to use
@@ -1707,6 +3615,90 @@ func (val *ScaleSettingsResponse) Defaults() *ScaleSettingsResponse {
 		tmp.MinNodeCount = &minNodeCount_
 	}
 	return &tmp
+}
+
+// scale settings for AML Compute
+type ScaleSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (ScaleSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScaleSettingsResponse)(nil)).Elem()
+}
+
+func (o ScaleSettingsResponseOutput) ToScaleSettingsResponseOutput() ScaleSettingsResponseOutput {
+	return o
+}
+
+func (o ScaleSettingsResponseOutput) ToScaleSettingsResponseOutputWithContext(ctx context.Context) ScaleSettingsResponseOutput {
+	return o
+}
+
+// Max number of nodes to use
+func (o ScaleSettingsResponseOutput) MaxNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v ScaleSettingsResponse) int { return v.MaxNodeCount }).(pulumi.IntOutput)
+}
+
+// Min number of nodes to use
+func (o ScaleSettingsResponseOutput) MinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScaleSettingsResponse) *int { return v.MinNodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
+func (o ScaleSettingsResponseOutput) NodeIdleTimeBeforeScaleDown() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScaleSettingsResponse) *string { return v.NodeIdleTimeBeforeScaleDown }).(pulumi.StringPtrOutput)
+}
+
+type ScaleSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ScaleSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScaleSettingsResponse)(nil)).Elem()
+}
+
+func (o ScaleSettingsResponsePtrOutput) ToScaleSettingsResponsePtrOutput() ScaleSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ScaleSettingsResponsePtrOutput) ToScaleSettingsResponsePtrOutputWithContext(ctx context.Context) ScaleSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ScaleSettingsResponsePtrOutput) Elem() ScaleSettingsResponseOutput {
+	return o.ApplyT(func(v *ScaleSettingsResponse) ScaleSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ScaleSettingsResponse
+		return ret
+	}).(ScaleSettingsResponseOutput)
+}
+
+// Max number of nodes to use
+func (o ScaleSettingsResponsePtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScaleSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Min number of nodes to use
+func (o ScaleSettingsResponsePtrOutput) MinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScaleSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
+func (o ScaleSettingsResponsePtrOutput) NodeIdleTimeBeforeScaleDown() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScaleSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeIdleTimeBeforeScaleDown
+	}).(pulumi.StringPtrOutput)
 }
 
 // Base definition of a schedule
@@ -1851,6 +3843,172 @@ type ScheduleBase struct {
 	Status *string `pulumi:"status"`
 }
 
+// ScheduleBaseInput is an input type that accepts ScheduleBaseArgs and ScheduleBaseOutput values.
+// You can construct a concrete instance of `ScheduleBaseInput` via:
+//
+//	ScheduleBaseArgs{...}
+type ScheduleBaseInput interface {
+	pulumi.Input
+
+	ToScheduleBaseOutput() ScheduleBaseOutput
+	ToScheduleBaseOutputWithContext(context.Context) ScheduleBaseOutput
+}
+
+type ScheduleBaseArgs struct {
+	// A system assigned id for the schedule.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The current deployment state of schedule.
+	ProvisioningStatus pulumi.StringPtrInput `pulumi:"provisioningStatus"`
+	// Is the schedule enabled or disabled?
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (ScheduleBaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleBase)(nil)).Elem()
+}
+
+func (i ScheduleBaseArgs) ToScheduleBaseOutput() ScheduleBaseOutput {
+	return i.ToScheduleBaseOutputWithContext(context.Background())
+}
+
+func (i ScheduleBaseArgs) ToScheduleBaseOutputWithContext(ctx context.Context) ScheduleBaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleBaseOutput)
+}
+
+func (i ScheduleBaseArgs) ToScheduleBasePtrOutput() ScheduleBasePtrOutput {
+	return i.ToScheduleBasePtrOutputWithContext(context.Background())
+}
+
+func (i ScheduleBaseArgs) ToScheduleBasePtrOutputWithContext(ctx context.Context) ScheduleBasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleBaseOutput).ToScheduleBasePtrOutputWithContext(ctx)
+}
+
+// ScheduleBasePtrInput is an input type that accepts ScheduleBaseArgs, ScheduleBasePtr and ScheduleBasePtrOutput values.
+// You can construct a concrete instance of `ScheduleBasePtrInput` via:
+//
+//	        ScheduleBaseArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScheduleBasePtrInput interface {
+	pulumi.Input
+
+	ToScheduleBasePtrOutput() ScheduleBasePtrOutput
+	ToScheduleBasePtrOutputWithContext(context.Context) ScheduleBasePtrOutput
+}
+
+type scheduleBasePtrType ScheduleBaseArgs
+
+func ScheduleBasePtr(v *ScheduleBaseArgs) ScheduleBasePtrInput {
+	return (*scheduleBasePtrType)(v)
+}
+
+func (*scheduleBasePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleBase)(nil)).Elem()
+}
+
+func (i *scheduleBasePtrType) ToScheduleBasePtrOutput() ScheduleBasePtrOutput {
+	return i.ToScheduleBasePtrOutputWithContext(context.Background())
+}
+
+func (i *scheduleBasePtrType) ToScheduleBasePtrOutputWithContext(ctx context.Context) ScheduleBasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduleBasePtrOutput)
+}
+
+type ScheduleBaseOutput struct{ *pulumi.OutputState }
+
+func (ScheduleBaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleBase)(nil)).Elem()
+}
+
+func (o ScheduleBaseOutput) ToScheduleBaseOutput() ScheduleBaseOutput {
+	return o
+}
+
+func (o ScheduleBaseOutput) ToScheduleBaseOutputWithContext(ctx context.Context) ScheduleBaseOutput {
+	return o
+}
+
+func (o ScheduleBaseOutput) ToScheduleBasePtrOutput() ScheduleBasePtrOutput {
+	return o.ToScheduleBasePtrOutputWithContext(context.Background())
+}
+
+func (o ScheduleBaseOutput) ToScheduleBasePtrOutputWithContext(ctx context.Context) ScheduleBasePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduleBase) *ScheduleBase {
+		return &v
+	}).(ScheduleBasePtrOutput)
+}
+
+// A system assigned id for the schedule.
+func (o ScheduleBaseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleBase) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The current deployment state of schedule.
+func (o ScheduleBaseOutput) ProvisioningStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleBase) *string { return v.ProvisioningStatus }).(pulumi.StringPtrOutput)
+}
+
+// Is the schedule enabled or disabled?
+func (o ScheduleBaseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleBase) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type ScheduleBasePtrOutput struct{ *pulumi.OutputState }
+
+func (ScheduleBasePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleBase)(nil)).Elem()
+}
+
+func (o ScheduleBasePtrOutput) ToScheduleBasePtrOutput() ScheduleBasePtrOutput {
+	return o
+}
+
+func (o ScheduleBasePtrOutput) ToScheduleBasePtrOutputWithContext(ctx context.Context) ScheduleBasePtrOutput {
+	return o
+}
+
+func (o ScheduleBasePtrOutput) Elem() ScheduleBaseOutput {
+	return o.ApplyT(func(v *ScheduleBase) ScheduleBase {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduleBase
+		return ret
+	}).(ScheduleBaseOutput)
+}
+
+// A system assigned id for the schedule.
+func (o ScheduleBasePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleBase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The current deployment state of schedule.
+func (o ScheduleBasePtrOutput) ProvisioningStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleBase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Is the schedule enabled or disabled?
+func (o ScheduleBasePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleBase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
 type ScheduleBaseResponse struct {
 	// A system assigned id for the schedule.
 	Id *string `pulumi:"id"`
@@ -1858,6 +4016,89 @@ type ScheduleBaseResponse struct {
 	ProvisioningStatus *string `pulumi:"provisioningStatus"`
 	// Is the schedule enabled or disabled?
 	Status *string `pulumi:"status"`
+}
+
+type ScheduleBaseResponseOutput struct{ *pulumi.OutputState }
+
+func (ScheduleBaseResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduleBaseResponse)(nil)).Elem()
+}
+
+func (o ScheduleBaseResponseOutput) ToScheduleBaseResponseOutput() ScheduleBaseResponseOutput {
+	return o
+}
+
+func (o ScheduleBaseResponseOutput) ToScheduleBaseResponseOutputWithContext(ctx context.Context) ScheduleBaseResponseOutput {
+	return o
+}
+
+// A system assigned id for the schedule.
+func (o ScheduleBaseResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleBaseResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The current deployment state of schedule.
+func (o ScheduleBaseResponseOutput) ProvisioningStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleBaseResponse) *string { return v.ProvisioningStatus }).(pulumi.StringPtrOutput)
+}
+
+// Is the schedule enabled or disabled?
+func (o ScheduleBaseResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduleBaseResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type ScheduleBaseResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ScheduleBaseResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduleBaseResponse)(nil)).Elem()
+}
+
+func (o ScheduleBaseResponsePtrOutput) ToScheduleBaseResponsePtrOutput() ScheduleBaseResponsePtrOutput {
+	return o
+}
+
+func (o ScheduleBaseResponsePtrOutput) ToScheduleBaseResponsePtrOutputWithContext(ctx context.Context) ScheduleBaseResponsePtrOutput {
+	return o
+}
+
+func (o ScheduleBaseResponsePtrOutput) Elem() ScheduleBaseResponseOutput {
+	return o.ApplyT(func(v *ScheduleBaseResponse) ScheduleBaseResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduleBaseResponse
+		return ret
+	}).(ScheduleBaseResponseOutput)
+}
+
+// A system assigned id for the schedule.
+func (o ScheduleBaseResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleBaseResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The current deployment state of schedule.
+func (o ScheduleBaseResponsePtrOutput) ProvisioningStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleBaseResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Is the schedule enabled or disabled?
+func (o ScheduleBaseResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduleBaseResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
 }
 
 // Base definition of a schedule
@@ -1960,6 +4201,191 @@ type ScriptReference struct {
 	Timeout *string `pulumi:"timeout"`
 }
 
+// ScriptReferenceInput is an input type that accepts ScriptReferenceArgs and ScriptReferenceOutput values.
+// You can construct a concrete instance of `ScriptReferenceInput` via:
+//
+//	ScriptReferenceArgs{...}
+type ScriptReferenceInput interface {
+	pulumi.Input
+
+	ToScriptReferenceOutput() ScriptReferenceOutput
+	ToScriptReferenceOutputWithContext(context.Context) ScriptReferenceOutput
+}
+
+// Script reference
+type ScriptReferenceArgs struct {
+	// Optional command line arguments passed to the script to run.
+	ScriptArguments pulumi.StringPtrInput `pulumi:"scriptArguments"`
+	// The location of scripts in the mounted volume.
+	ScriptData pulumi.StringPtrInput `pulumi:"scriptData"`
+	// The storage source of the script: inline, workspace.
+	ScriptSource pulumi.StringPtrInput `pulumi:"scriptSource"`
+	// Optional time period passed to timeout command.
+	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
+}
+
+func (ScriptReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScriptReference)(nil)).Elem()
+}
+
+func (i ScriptReferenceArgs) ToScriptReferenceOutput() ScriptReferenceOutput {
+	return i.ToScriptReferenceOutputWithContext(context.Background())
+}
+
+func (i ScriptReferenceArgs) ToScriptReferenceOutputWithContext(ctx context.Context) ScriptReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScriptReferenceOutput)
+}
+
+func (i ScriptReferenceArgs) ToScriptReferencePtrOutput() ScriptReferencePtrOutput {
+	return i.ToScriptReferencePtrOutputWithContext(context.Background())
+}
+
+func (i ScriptReferenceArgs) ToScriptReferencePtrOutputWithContext(ctx context.Context) ScriptReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScriptReferenceOutput).ToScriptReferencePtrOutputWithContext(ctx)
+}
+
+// ScriptReferencePtrInput is an input type that accepts ScriptReferenceArgs, ScriptReferencePtr and ScriptReferencePtrOutput values.
+// You can construct a concrete instance of `ScriptReferencePtrInput` via:
+//
+//	        ScriptReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScriptReferencePtrInput interface {
+	pulumi.Input
+
+	ToScriptReferencePtrOutput() ScriptReferencePtrOutput
+	ToScriptReferencePtrOutputWithContext(context.Context) ScriptReferencePtrOutput
+}
+
+type scriptReferencePtrType ScriptReferenceArgs
+
+func ScriptReferencePtr(v *ScriptReferenceArgs) ScriptReferencePtrInput {
+	return (*scriptReferencePtrType)(v)
+}
+
+func (*scriptReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScriptReference)(nil)).Elem()
+}
+
+func (i *scriptReferencePtrType) ToScriptReferencePtrOutput() ScriptReferencePtrOutput {
+	return i.ToScriptReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *scriptReferencePtrType) ToScriptReferencePtrOutputWithContext(ctx context.Context) ScriptReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScriptReferencePtrOutput)
+}
+
+// Script reference
+type ScriptReferenceOutput struct{ *pulumi.OutputState }
+
+func (ScriptReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScriptReference)(nil)).Elem()
+}
+
+func (o ScriptReferenceOutput) ToScriptReferenceOutput() ScriptReferenceOutput {
+	return o
+}
+
+func (o ScriptReferenceOutput) ToScriptReferenceOutputWithContext(ctx context.Context) ScriptReferenceOutput {
+	return o
+}
+
+func (o ScriptReferenceOutput) ToScriptReferencePtrOutput() ScriptReferencePtrOutput {
+	return o.ToScriptReferencePtrOutputWithContext(context.Background())
+}
+
+func (o ScriptReferenceOutput) ToScriptReferencePtrOutputWithContext(ctx context.Context) ScriptReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScriptReference) *ScriptReference {
+		return &v
+	}).(ScriptReferencePtrOutput)
+}
+
+// Optional command line arguments passed to the script to run.
+func (o ScriptReferenceOutput) ScriptArguments() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScriptReference) *string { return v.ScriptArguments }).(pulumi.StringPtrOutput)
+}
+
+// The location of scripts in the mounted volume.
+func (o ScriptReferenceOutput) ScriptData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScriptReference) *string { return v.ScriptData }).(pulumi.StringPtrOutput)
+}
+
+// The storage source of the script: inline, workspace.
+func (o ScriptReferenceOutput) ScriptSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScriptReference) *string { return v.ScriptSource }).(pulumi.StringPtrOutput)
+}
+
+// Optional time period passed to timeout command.
+func (o ScriptReferenceOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScriptReference) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+type ScriptReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (ScriptReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScriptReference)(nil)).Elem()
+}
+
+func (o ScriptReferencePtrOutput) ToScriptReferencePtrOutput() ScriptReferencePtrOutput {
+	return o
+}
+
+func (o ScriptReferencePtrOutput) ToScriptReferencePtrOutputWithContext(ctx context.Context) ScriptReferencePtrOutput {
+	return o
+}
+
+func (o ScriptReferencePtrOutput) Elem() ScriptReferenceOutput {
+	return o.ApplyT(func(v *ScriptReference) ScriptReference {
+		if v != nil {
+			return *v
+		}
+		var ret ScriptReference
+		return ret
+	}).(ScriptReferenceOutput)
+}
+
+// Optional command line arguments passed to the script to run.
+func (o ScriptReferencePtrOutput) ScriptArguments() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScriptReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScriptArguments
+	}).(pulumi.StringPtrOutput)
+}
+
+// The location of scripts in the mounted volume.
+func (o ScriptReferencePtrOutput) ScriptData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScriptReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScriptData
+	}).(pulumi.StringPtrOutput)
+}
+
+// The storage source of the script: inline, workspace.
+func (o ScriptReferencePtrOutput) ScriptSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScriptReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScriptSource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional time period passed to timeout command.
+func (o ScriptReferencePtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScriptReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
 // Script reference
 type ScriptReferenceResponse struct {
 	// Optional command line arguments passed to the script to run.
@@ -1972,6 +4398,105 @@ type ScriptReferenceResponse struct {
 	Timeout *string `pulumi:"timeout"`
 }
 
+// Script reference
+type ScriptReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (ScriptReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScriptReferenceResponse)(nil)).Elem()
+}
+
+func (o ScriptReferenceResponseOutput) ToScriptReferenceResponseOutput() ScriptReferenceResponseOutput {
+	return o
+}
+
+func (o ScriptReferenceResponseOutput) ToScriptReferenceResponseOutputWithContext(ctx context.Context) ScriptReferenceResponseOutput {
+	return o
+}
+
+// Optional command line arguments passed to the script to run.
+func (o ScriptReferenceResponseOutput) ScriptArguments() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScriptReferenceResponse) *string { return v.ScriptArguments }).(pulumi.StringPtrOutput)
+}
+
+// The location of scripts in the mounted volume.
+func (o ScriptReferenceResponseOutput) ScriptData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScriptReferenceResponse) *string { return v.ScriptData }).(pulumi.StringPtrOutput)
+}
+
+// The storage source of the script: inline, workspace.
+func (o ScriptReferenceResponseOutput) ScriptSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScriptReferenceResponse) *string { return v.ScriptSource }).(pulumi.StringPtrOutput)
+}
+
+// Optional time period passed to timeout command.
+func (o ScriptReferenceResponseOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScriptReferenceResponse) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+type ScriptReferenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ScriptReferenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScriptReferenceResponse)(nil)).Elem()
+}
+
+func (o ScriptReferenceResponsePtrOutput) ToScriptReferenceResponsePtrOutput() ScriptReferenceResponsePtrOutput {
+	return o
+}
+
+func (o ScriptReferenceResponsePtrOutput) ToScriptReferenceResponsePtrOutputWithContext(ctx context.Context) ScriptReferenceResponsePtrOutput {
+	return o
+}
+
+func (o ScriptReferenceResponsePtrOutput) Elem() ScriptReferenceResponseOutput {
+	return o.ApplyT(func(v *ScriptReferenceResponse) ScriptReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ScriptReferenceResponse
+		return ret
+	}).(ScriptReferenceResponseOutput)
+}
+
+// Optional command line arguments passed to the script to run.
+func (o ScriptReferenceResponsePtrOutput) ScriptArguments() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScriptReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScriptArguments
+	}).(pulumi.StringPtrOutput)
+}
+
+// The location of scripts in the mounted volume.
+func (o ScriptReferenceResponsePtrOutput) ScriptData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScriptReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScriptData
+	}).(pulumi.StringPtrOutput)
+}
+
+// The storage source of the script: inline, workspace.
+func (o ScriptReferenceResponsePtrOutput) ScriptSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScriptReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScriptSource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional time period passed to timeout command.
+func (o ScriptReferenceResponsePtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScriptReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
 // Customized setup scripts
 type ScriptsToExecute struct {
 	// Script that's run only once during provision of the compute.
@@ -1980,12 +4505,232 @@ type ScriptsToExecute struct {
 	StartupScript *ScriptReference `pulumi:"startupScript"`
 }
 
+// ScriptsToExecuteInput is an input type that accepts ScriptsToExecuteArgs and ScriptsToExecuteOutput values.
+// You can construct a concrete instance of `ScriptsToExecuteInput` via:
+//
+//	ScriptsToExecuteArgs{...}
+type ScriptsToExecuteInput interface {
+	pulumi.Input
+
+	ToScriptsToExecuteOutput() ScriptsToExecuteOutput
+	ToScriptsToExecuteOutputWithContext(context.Context) ScriptsToExecuteOutput
+}
+
+// Customized setup scripts
+type ScriptsToExecuteArgs struct {
+	// Script that's run only once during provision of the compute.
+	CreationScript ScriptReferencePtrInput `pulumi:"creationScript"`
+	// Script that's run every time the machine starts.
+	StartupScript ScriptReferencePtrInput `pulumi:"startupScript"`
+}
+
+func (ScriptsToExecuteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScriptsToExecute)(nil)).Elem()
+}
+
+func (i ScriptsToExecuteArgs) ToScriptsToExecuteOutput() ScriptsToExecuteOutput {
+	return i.ToScriptsToExecuteOutputWithContext(context.Background())
+}
+
+func (i ScriptsToExecuteArgs) ToScriptsToExecuteOutputWithContext(ctx context.Context) ScriptsToExecuteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScriptsToExecuteOutput)
+}
+
+func (i ScriptsToExecuteArgs) ToScriptsToExecutePtrOutput() ScriptsToExecutePtrOutput {
+	return i.ToScriptsToExecutePtrOutputWithContext(context.Background())
+}
+
+func (i ScriptsToExecuteArgs) ToScriptsToExecutePtrOutputWithContext(ctx context.Context) ScriptsToExecutePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScriptsToExecuteOutput).ToScriptsToExecutePtrOutputWithContext(ctx)
+}
+
+// ScriptsToExecutePtrInput is an input type that accepts ScriptsToExecuteArgs, ScriptsToExecutePtr and ScriptsToExecutePtrOutput values.
+// You can construct a concrete instance of `ScriptsToExecutePtrInput` via:
+//
+//	        ScriptsToExecuteArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScriptsToExecutePtrInput interface {
+	pulumi.Input
+
+	ToScriptsToExecutePtrOutput() ScriptsToExecutePtrOutput
+	ToScriptsToExecutePtrOutputWithContext(context.Context) ScriptsToExecutePtrOutput
+}
+
+type scriptsToExecutePtrType ScriptsToExecuteArgs
+
+func ScriptsToExecutePtr(v *ScriptsToExecuteArgs) ScriptsToExecutePtrInput {
+	return (*scriptsToExecutePtrType)(v)
+}
+
+func (*scriptsToExecutePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScriptsToExecute)(nil)).Elem()
+}
+
+func (i *scriptsToExecutePtrType) ToScriptsToExecutePtrOutput() ScriptsToExecutePtrOutput {
+	return i.ToScriptsToExecutePtrOutputWithContext(context.Background())
+}
+
+func (i *scriptsToExecutePtrType) ToScriptsToExecutePtrOutputWithContext(ctx context.Context) ScriptsToExecutePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScriptsToExecutePtrOutput)
+}
+
+// Customized setup scripts
+type ScriptsToExecuteOutput struct{ *pulumi.OutputState }
+
+func (ScriptsToExecuteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScriptsToExecute)(nil)).Elem()
+}
+
+func (o ScriptsToExecuteOutput) ToScriptsToExecuteOutput() ScriptsToExecuteOutput {
+	return o
+}
+
+func (o ScriptsToExecuteOutput) ToScriptsToExecuteOutputWithContext(ctx context.Context) ScriptsToExecuteOutput {
+	return o
+}
+
+func (o ScriptsToExecuteOutput) ToScriptsToExecutePtrOutput() ScriptsToExecutePtrOutput {
+	return o.ToScriptsToExecutePtrOutputWithContext(context.Background())
+}
+
+func (o ScriptsToExecuteOutput) ToScriptsToExecutePtrOutputWithContext(ctx context.Context) ScriptsToExecutePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScriptsToExecute) *ScriptsToExecute {
+		return &v
+	}).(ScriptsToExecutePtrOutput)
+}
+
+// Script that's run only once during provision of the compute.
+func (o ScriptsToExecuteOutput) CreationScript() ScriptReferencePtrOutput {
+	return o.ApplyT(func(v ScriptsToExecute) *ScriptReference { return v.CreationScript }).(ScriptReferencePtrOutput)
+}
+
+// Script that's run every time the machine starts.
+func (o ScriptsToExecuteOutput) StartupScript() ScriptReferencePtrOutput {
+	return o.ApplyT(func(v ScriptsToExecute) *ScriptReference { return v.StartupScript }).(ScriptReferencePtrOutput)
+}
+
+type ScriptsToExecutePtrOutput struct{ *pulumi.OutputState }
+
+func (ScriptsToExecutePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScriptsToExecute)(nil)).Elem()
+}
+
+func (o ScriptsToExecutePtrOutput) ToScriptsToExecutePtrOutput() ScriptsToExecutePtrOutput {
+	return o
+}
+
+func (o ScriptsToExecutePtrOutput) ToScriptsToExecutePtrOutputWithContext(ctx context.Context) ScriptsToExecutePtrOutput {
+	return o
+}
+
+func (o ScriptsToExecutePtrOutput) Elem() ScriptsToExecuteOutput {
+	return o.ApplyT(func(v *ScriptsToExecute) ScriptsToExecute {
+		if v != nil {
+			return *v
+		}
+		var ret ScriptsToExecute
+		return ret
+	}).(ScriptsToExecuteOutput)
+}
+
+// Script that's run only once during provision of the compute.
+func (o ScriptsToExecutePtrOutput) CreationScript() ScriptReferencePtrOutput {
+	return o.ApplyT(func(v *ScriptsToExecute) *ScriptReference {
+		if v == nil {
+			return nil
+		}
+		return v.CreationScript
+	}).(ScriptReferencePtrOutput)
+}
+
+// Script that's run every time the machine starts.
+func (o ScriptsToExecutePtrOutput) StartupScript() ScriptReferencePtrOutput {
+	return o.ApplyT(func(v *ScriptsToExecute) *ScriptReference {
+		if v == nil {
+			return nil
+		}
+		return v.StartupScript
+	}).(ScriptReferencePtrOutput)
+}
+
 // Customized setup scripts
 type ScriptsToExecuteResponse struct {
 	// Script that's run only once during provision of the compute.
 	CreationScript *ScriptReferenceResponse `pulumi:"creationScript"`
 	// Script that's run every time the machine starts.
 	StartupScript *ScriptReferenceResponse `pulumi:"startupScript"`
+}
+
+// Customized setup scripts
+type ScriptsToExecuteResponseOutput struct{ *pulumi.OutputState }
+
+func (ScriptsToExecuteResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScriptsToExecuteResponse)(nil)).Elem()
+}
+
+func (o ScriptsToExecuteResponseOutput) ToScriptsToExecuteResponseOutput() ScriptsToExecuteResponseOutput {
+	return o
+}
+
+func (o ScriptsToExecuteResponseOutput) ToScriptsToExecuteResponseOutputWithContext(ctx context.Context) ScriptsToExecuteResponseOutput {
+	return o
+}
+
+// Script that's run only once during provision of the compute.
+func (o ScriptsToExecuteResponseOutput) CreationScript() ScriptReferenceResponsePtrOutput {
+	return o.ApplyT(func(v ScriptsToExecuteResponse) *ScriptReferenceResponse { return v.CreationScript }).(ScriptReferenceResponsePtrOutput)
+}
+
+// Script that's run every time the machine starts.
+func (o ScriptsToExecuteResponseOutput) StartupScript() ScriptReferenceResponsePtrOutput {
+	return o.ApplyT(func(v ScriptsToExecuteResponse) *ScriptReferenceResponse { return v.StartupScript }).(ScriptReferenceResponsePtrOutput)
+}
+
+type ScriptsToExecuteResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ScriptsToExecuteResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScriptsToExecuteResponse)(nil)).Elem()
+}
+
+func (o ScriptsToExecuteResponsePtrOutput) ToScriptsToExecuteResponsePtrOutput() ScriptsToExecuteResponsePtrOutput {
+	return o
+}
+
+func (o ScriptsToExecuteResponsePtrOutput) ToScriptsToExecuteResponsePtrOutputWithContext(ctx context.Context) ScriptsToExecuteResponsePtrOutput {
+	return o
+}
+
+func (o ScriptsToExecuteResponsePtrOutput) Elem() ScriptsToExecuteResponseOutput {
+	return o.ApplyT(func(v *ScriptsToExecuteResponse) ScriptsToExecuteResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ScriptsToExecuteResponse
+		return ret
+	}).(ScriptsToExecuteResponseOutput)
+}
+
+// Script that's run only once during provision of the compute.
+func (o ScriptsToExecuteResponsePtrOutput) CreationScript() ScriptReferenceResponsePtrOutput {
+	return o.ApplyT(func(v *ScriptsToExecuteResponse) *ScriptReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CreationScript
+	}).(ScriptReferenceResponsePtrOutput)
+}
+
+// Script that's run every time the machine starts.
+func (o ScriptsToExecuteResponsePtrOutput) StartupScript() ScriptReferenceResponsePtrOutput {
+	return o.ApplyT(func(v *ScriptsToExecuteResponse) *ScriptReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.StartupScript
+	}).(ScriptReferenceResponsePtrOutput)
 }
 
 // Secret Configuration definition.
@@ -3210,6 +5955,91 @@ type ServicePrincipalAuthTypeWorkspaceConnectionProperties struct {
 	Target        *string     `pulumi:"target"`
 }
 
+// ServicePrincipalAuthTypeWorkspaceConnectionPropertiesInput is an input type that accepts ServicePrincipalAuthTypeWorkspaceConnectionPropertiesArgs and ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput values.
+// You can construct a concrete instance of `ServicePrincipalAuthTypeWorkspaceConnectionPropertiesInput` via:
+//
+//	ServicePrincipalAuthTypeWorkspaceConnectionPropertiesArgs{...}
+type ServicePrincipalAuthTypeWorkspaceConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput() ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput
+	ToServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutputWithContext(context.Context) ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput
+}
+
+type ServicePrincipalAuthTypeWorkspaceConnectionPropertiesArgs struct {
+	// Authentication type of the connection target
+	// Expected value is 'ServicePrincipal'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Category of the connection
+	Category    pulumi.StringPtrInput                       `pulumi:"category"`
+	Credentials WorkspaceConnectionServicePrincipalPtrInput `pulumi:"credentials"`
+	ExpiryTime  pulumi.StringPtrInput                       `pulumi:"expiryTime"`
+	// whether this connection will be shared to all the project workspace under the hub
+	IsSharedToAll pulumi.BoolPtrInput   `pulumi:"isSharedToAll"`
+	Metadata      pulumi.Input          `pulumi:"metadata"`
+	Target        pulumi.StringPtrInput `pulumi:"target"`
+}
+
+func (ServicePrincipalAuthTypeWorkspaceConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalAuthTypeWorkspaceConnectionProperties)(nil)).Elem()
+}
+
+func (i ServicePrincipalAuthTypeWorkspaceConnectionPropertiesArgs) ToServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput() ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput {
+	return i.ToServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalAuthTypeWorkspaceConnectionPropertiesArgs) ToServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutputWithContext(ctx context.Context) ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput)
+}
+
+type ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalAuthTypeWorkspaceConnectionProperties)(nil)).Elem()
+}
+
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) ToServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput() ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput {
+	return o
+}
+
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) ToServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutputWithContext(ctx context.Context) ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'ServicePrincipal'.
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) Credentials() WorkspaceConnectionServicePrincipalPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) *WorkspaceConnectionServicePrincipal {
+		return v.Credentials
+	}).(WorkspaceConnectionServicePrincipalPtrOutput)
+}
+
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+// whether this connection will be shared to all the project workspace under the hub
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) Metadata() pulumi.AnyOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) interface{} { return v.Metadata }).(pulumi.AnyOutput)
+}
+
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
 type ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse struct {
 	// Authentication type of the connection target
 	// Expected value is 'ServicePrincipal'.
@@ -3224,6 +6054,61 @@ type ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse struct {
 	IsSharedToAll *bool       `pulumi:"isSharedToAll"`
 	Metadata      interface{} `pulumi:"metadata"`
 	Target        *string     `pulumi:"target"`
+}
+
+type ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) ToServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput() ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput {
+	return o
+}
+
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) ToServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutputWithContext(ctx context.Context) ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'ServicePrincipal'.
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// The arm id of the workspace which created this connection
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) CreatedByWorkspaceArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) string {
+		return v.CreatedByWorkspaceArmId
+	}).(pulumi.StringOutput)
+}
+
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) Credentials() WorkspaceConnectionServicePrincipalResponsePtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) *WorkspaceConnectionServicePrincipalResponse {
+		return v.Credentials
+	}).(WorkspaceConnectionServicePrincipalResponsePtrOutput)
+}
+
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+// whether this connection will be shared to all the project workspace under the hub
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) Metadata() pulumi.AnyOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) interface{} { return v.Metadata }).(pulumi.AnyOutput)
+}
+
+func (o ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
 // Service Principal datastore credentials configuration.
@@ -3243,6 +6128,92 @@ type ServicePrincipalDatastoreCredentials struct {
 	TenantId string `pulumi:"tenantId"`
 }
 
+// ServicePrincipalDatastoreCredentialsInput is an input type that accepts ServicePrincipalDatastoreCredentialsArgs and ServicePrincipalDatastoreCredentialsOutput values.
+// You can construct a concrete instance of `ServicePrincipalDatastoreCredentialsInput` via:
+//
+//	ServicePrincipalDatastoreCredentialsArgs{...}
+type ServicePrincipalDatastoreCredentialsInput interface {
+	pulumi.Input
+
+	ToServicePrincipalDatastoreCredentialsOutput() ServicePrincipalDatastoreCredentialsOutput
+	ToServicePrincipalDatastoreCredentialsOutputWithContext(context.Context) ServicePrincipalDatastoreCredentialsOutput
+}
+
+// Service Principal datastore credentials configuration.
+type ServicePrincipalDatastoreCredentialsArgs struct {
+	// Authority URL used for authentication.
+	AuthorityUrl pulumi.StringPtrInput `pulumi:"authorityUrl"`
+	// [Required] Service principal client ID.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// Enum to determine the datastore credentials type.
+	// Expected value is 'ServicePrincipal'.
+	CredentialsType pulumi.StringInput `pulumi:"credentialsType"`
+	// Resource the service principal has access to.
+	ResourceUrl pulumi.StringPtrInput `pulumi:"resourceUrl"`
+	// [Required] Service principal secrets.
+	Secrets ServicePrincipalDatastoreSecretsInput `pulumi:"secrets"`
+	// [Required] ID of the tenant to which the service principal belongs.
+	TenantId pulumi.StringInput `pulumi:"tenantId"`
+}
+
+func (ServicePrincipalDatastoreCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalDatastoreCredentials)(nil)).Elem()
+}
+
+func (i ServicePrincipalDatastoreCredentialsArgs) ToServicePrincipalDatastoreCredentialsOutput() ServicePrincipalDatastoreCredentialsOutput {
+	return i.ToServicePrincipalDatastoreCredentialsOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalDatastoreCredentialsArgs) ToServicePrincipalDatastoreCredentialsOutputWithContext(ctx context.Context) ServicePrincipalDatastoreCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalDatastoreCredentialsOutput)
+}
+
+// Service Principal datastore credentials configuration.
+type ServicePrincipalDatastoreCredentialsOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalDatastoreCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalDatastoreCredentials)(nil)).Elem()
+}
+
+func (o ServicePrincipalDatastoreCredentialsOutput) ToServicePrincipalDatastoreCredentialsOutput() ServicePrincipalDatastoreCredentialsOutput {
+	return o
+}
+
+func (o ServicePrincipalDatastoreCredentialsOutput) ToServicePrincipalDatastoreCredentialsOutputWithContext(ctx context.Context) ServicePrincipalDatastoreCredentialsOutput {
+	return o
+}
+
+// Authority URL used for authentication.
+func (o ServicePrincipalDatastoreCredentialsOutput) AuthorityUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalDatastoreCredentials) *string { return v.AuthorityUrl }).(pulumi.StringPtrOutput)
+}
+
+// [Required] Service principal client ID.
+func (o ServicePrincipalDatastoreCredentialsOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalDatastoreCredentials) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Enum to determine the datastore credentials type.
+// Expected value is 'ServicePrincipal'.
+func (o ServicePrincipalDatastoreCredentialsOutput) CredentialsType() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalDatastoreCredentials) string { return v.CredentialsType }).(pulumi.StringOutput)
+}
+
+// Resource the service principal has access to.
+func (o ServicePrincipalDatastoreCredentialsOutput) ResourceUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalDatastoreCredentials) *string { return v.ResourceUrl }).(pulumi.StringPtrOutput)
+}
+
+// [Required] Service principal secrets.
+func (o ServicePrincipalDatastoreCredentialsOutput) Secrets() ServicePrincipalDatastoreSecretsOutput {
+	return o.ApplyT(func(v ServicePrincipalDatastoreCredentials) ServicePrincipalDatastoreSecrets { return v.Secrets }).(ServicePrincipalDatastoreSecretsOutput)
+}
+
+// [Required] ID of the tenant to which the service principal belongs.
+func (o ServicePrincipalDatastoreCredentialsOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalDatastoreCredentials) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
 // Service Principal datastore credentials configuration.
 type ServicePrincipalDatastoreCredentialsResponse struct {
 	// Authority URL used for authentication.
@@ -3258,6 +6229,47 @@ type ServicePrincipalDatastoreCredentialsResponse struct {
 	TenantId string `pulumi:"tenantId"`
 }
 
+// Service Principal datastore credentials configuration.
+type ServicePrincipalDatastoreCredentialsResponseOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalDatastoreCredentialsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalDatastoreCredentialsResponse)(nil)).Elem()
+}
+
+func (o ServicePrincipalDatastoreCredentialsResponseOutput) ToServicePrincipalDatastoreCredentialsResponseOutput() ServicePrincipalDatastoreCredentialsResponseOutput {
+	return o
+}
+
+func (o ServicePrincipalDatastoreCredentialsResponseOutput) ToServicePrincipalDatastoreCredentialsResponseOutputWithContext(ctx context.Context) ServicePrincipalDatastoreCredentialsResponseOutput {
+	return o
+}
+
+// Authority URL used for authentication.
+func (o ServicePrincipalDatastoreCredentialsResponseOutput) AuthorityUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalDatastoreCredentialsResponse) *string { return v.AuthorityUrl }).(pulumi.StringPtrOutput)
+}
+
+// [Required] Service principal client ID.
+func (o ServicePrincipalDatastoreCredentialsResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalDatastoreCredentialsResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Enum to determine the datastore credentials type.
+// Expected value is 'ServicePrincipal'.
+func (o ServicePrincipalDatastoreCredentialsResponseOutput) CredentialsType() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalDatastoreCredentialsResponse) string { return v.CredentialsType }).(pulumi.StringOutput)
+}
+
+// Resource the service principal has access to.
+func (o ServicePrincipalDatastoreCredentialsResponseOutput) ResourceUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalDatastoreCredentialsResponse) *string { return v.ResourceUrl }).(pulumi.StringPtrOutput)
+}
+
+// [Required] ID of the tenant to which the service principal belongs.
+func (o ServicePrincipalDatastoreCredentialsResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalDatastoreCredentialsResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
 // Datastore Service Principal secrets.
 type ServicePrincipalDatastoreSecrets struct {
 	// Service principal secret.
@@ -3265,6 +6277,64 @@ type ServicePrincipalDatastoreSecrets struct {
 	// Enum to determine the datastore secrets type.
 	// Expected value is 'ServicePrincipal'.
 	SecretsType string `pulumi:"secretsType"`
+}
+
+// ServicePrincipalDatastoreSecretsInput is an input type that accepts ServicePrincipalDatastoreSecretsArgs and ServicePrincipalDatastoreSecretsOutput values.
+// You can construct a concrete instance of `ServicePrincipalDatastoreSecretsInput` via:
+//
+//	ServicePrincipalDatastoreSecretsArgs{...}
+type ServicePrincipalDatastoreSecretsInput interface {
+	pulumi.Input
+
+	ToServicePrincipalDatastoreSecretsOutput() ServicePrincipalDatastoreSecretsOutput
+	ToServicePrincipalDatastoreSecretsOutputWithContext(context.Context) ServicePrincipalDatastoreSecretsOutput
+}
+
+// Datastore Service Principal secrets.
+type ServicePrincipalDatastoreSecretsArgs struct {
+	// Service principal secret.
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// Enum to determine the datastore secrets type.
+	// Expected value is 'ServicePrincipal'.
+	SecretsType pulumi.StringInput `pulumi:"secretsType"`
+}
+
+func (ServicePrincipalDatastoreSecretsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalDatastoreSecrets)(nil)).Elem()
+}
+
+func (i ServicePrincipalDatastoreSecretsArgs) ToServicePrincipalDatastoreSecretsOutput() ServicePrincipalDatastoreSecretsOutput {
+	return i.ToServicePrincipalDatastoreSecretsOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalDatastoreSecretsArgs) ToServicePrincipalDatastoreSecretsOutputWithContext(ctx context.Context) ServicePrincipalDatastoreSecretsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalDatastoreSecretsOutput)
+}
+
+// Datastore Service Principal secrets.
+type ServicePrincipalDatastoreSecretsOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalDatastoreSecretsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalDatastoreSecrets)(nil)).Elem()
+}
+
+func (o ServicePrincipalDatastoreSecretsOutput) ToServicePrincipalDatastoreSecretsOutput() ServicePrincipalDatastoreSecretsOutput {
+	return o
+}
+
+func (o ServicePrincipalDatastoreSecretsOutput) ToServicePrincipalDatastoreSecretsOutputWithContext(ctx context.Context) ServicePrincipalDatastoreSecretsOutput {
+	return o
+}
+
+// Service principal secret.
+func (o ServicePrincipalDatastoreSecretsOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalDatastoreSecrets) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// Enum to determine the datastore secrets type.
+// Expected value is 'ServicePrincipal'.
+func (o ServicePrincipalDatastoreSecretsOutput) SecretsType() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePrincipalDatastoreSecrets) string { return v.SecretsType }).(pulumi.StringOutput)
 }
 
 // Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
@@ -3276,6 +6346,182 @@ type ServiceTagDestination struct {
 	ServiceTag *string `pulumi:"serviceTag"`
 }
 
+// ServiceTagDestinationInput is an input type that accepts ServiceTagDestinationArgs and ServiceTagDestinationOutput values.
+// You can construct a concrete instance of `ServiceTagDestinationInput` via:
+//
+//	ServiceTagDestinationArgs{...}
+type ServiceTagDestinationInput interface {
+	pulumi.Input
+
+	ToServiceTagDestinationOutput() ServiceTagDestinationOutput
+	ToServiceTagDestinationOutputWithContext(context.Context) ServiceTagDestinationOutput
+}
+
+// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
+type ServiceTagDestinationArgs struct {
+	// The action enum for networking rule.
+	Action     pulumi.StringPtrInput `pulumi:"action"`
+	PortRanges pulumi.StringPtrInput `pulumi:"portRanges"`
+	Protocol   pulumi.StringPtrInput `pulumi:"protocol"`
+	ServiceTag pulumi.StringPtrInput `pulumi:"serviceTag"`
+}
+
+func (ServiceTagDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTagDestination)(nil)).Elem()
+}
+
+func (i ServiceTagDestinationArgs) ToServiceTagDestinationOutput() ServiceTagDestinationOutput {
+	return i.ToServiceTagDestinationOutputWithContext(context.Background())
+}
+
+func (i ServiceTagDestinationArgs) ToServiceTagDestinationOutputWithContext(ctx context.Context) ServiceTagDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTagDestinationOutput)
+}
+
+func (i ServiceTagDestinationArgs) ToServiceTagDestinationPtrOutput() ServiceTagDestinationPtrOutput {
+	return i.ToServiceTagDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTagDestinationArgs) ToServiceTagDestinationPtrOutputWithContext(ctx context.Context) ServiceTagDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTagDestinationOutput).ToServiceTagDestinationPtrOutputWithContext(ctx)
+}
+
+// ServiceTagDestinationPtrInput is an input type that accepts ServiceTagDestinationArgs, ServiceTagDestinationPtr and ServiceTagDestinationPtrOutput values.
+// You can construct a concrete instance of `ServiceTagDestinationPtrInput` via:
+//
+//	        ServiceTagDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTagDestinationPtrInput interface {
+	pulumi.Input
+
+	ToServiceTagDestinationPtrOutput() ServiceTagDestinationPtrOutput
+	ToServiceTagDestinationPtrOutputWithContext(context.Context) ServiceTagDestinationPtrOutput
+}
+
+type serviceTagDestinationPtrType ServiceTagDestinationArgs
+
+func ServiceTagDestinationPtr(v *ServiceTagDestinationArgs) ServiceTagDestinationPtrInput {
+	return (*serviceTagDestinationPtrType)(v)
+}
+
+func (*serviceTagDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTagDestination)(nil)).Elem()
+}
+
+func (i *serviceTagDestinationPtrType) ToServiceTagDestinationPtrOutput() ServiceTagDestinationPtrOutput {
+	return i.ToServiceTagDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTagDestinationPtrType) ToServiceTagDestinationPtrOutputWithContext(ctx context.Context) ServiceTagDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTagDestinationPtrOutput)
+}
+
+// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
+type ServiceTagDestinationOutput struct{ *pulumi.OutputState }
+
+func (ServiceTagDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTagDestination)(nil)).Elem()
+}
+
+func (o ServiceTagDestinationOutput) ToServiceTagDestinationOutput() ServiceTagDestinationOutput {
+	return o
+}
+
+func (o ServiceTagDestinationOutput) ToServiceTagDestinationOutputWithContext(ctx context.Context) ServiceTagDestinationOutput {
+	return o
+}
+
+func (o ServiceTagDestinationOutput) ToServiceTagDestinationPtrOutput() ServiceTagDestinationPtrOutput {
+	return o.ToServiceTagDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTagDestinationOutput) ToServiceTagDestinationPtrOutputWithContext(ctx context.Context) ServiceTagDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTagDestination) *ServiceTagDestination {
+		return &v
+	}).(ServiceTagDestinationPtrOutput)
+}
+
+// The action enum for networking rule.
+func (o ServiceTagDestinationOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTagDestination) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceTagDestinationOutput) PortRanges() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTagDestination) *string { return v.PortRanges }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceTagDestinationOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTagDestination) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceTagDestinationOutput) ServiceTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTagDestination) *string { return v.ServiceTag }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTagDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTagDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTagDestination)(nil)).Elem()
+}
+
+func (o ServiceTagDestinationPtrOutput) ToServiceTagDestinationPtrOutput() ServiceTagDestinationPtrOutput {
+	return o
+}
+
+func (o ServiceTagDestinationPtrOutput) ToServiceTagDestinationPtrOutputWithContext(ctx context.Context) ServiceTagDestinationPtrOutput {
+	return o
+}
+
+func (o ServiceTagDestinationPtrOutput) Elem() ServiceTagDestinationOutput {
+	return o.ApplyT(func(v *ServiceTagDestination) ServiceTagDestination {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTagDestination
+		return ret
+	}).(ServiceTagDestinationOutput)
+}
+
+// The action enum for networking rule.
+func (o ServiceTagDestinationPtrOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTagDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Action
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceTagDestinationPtrOutput) PortRanges() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTagDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PortRanges
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceTagDestinationPtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTagDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceTagDestinationPtrOutput) ServiceTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTagDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceTag
+	}).(pulumi.StringPtrOutput)
+}
+
 // Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
 type ServiceTagDestinationResponse struct {
 	// The action enum for networking rule.
@@ -3285,6 +6531,114 @@ type ServiceTagDestinationResponse struct {
 	PortRanges      *string  `pulumi:"portRanges"`
 	Protocol        *string  `pulumi:"protocol"`
 	ServiceTag      *string  `pulumi:"serviceTag"`
+}
+
+// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
+type ServiceTagDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceTagDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTagDestinationResponse)(nil)).Elem()
+}
+
+func (o ServiceTagDestinationResponseOutput) ToServiceTagDestinationResponseOutput() ServiceTagDestinationResponseOutput {
+	return o
+}
+
+func (o ServiceTagDestinationResponseOutput) ToServiceTagDestinationResponseOutputWithContext(ctx context.Context) ServiceTagDestinationResponseOutput {
+	return o
+}
+
+// The action enum for networking rule.
+func (o ServiceTagDestinationResponseOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTagDestinationResponse) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Optional, if provided, the ServiceTag property will be ignored.
+func (o ServiceTagDestinationResponseOutput) AddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceTagDestinationResponse) []string { return v.AddressPrefixes }).(pulumi.StringArrayOutput)
+}
+
+func (o ServiceTagDestinationResponseOutput) PortRanges() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTagDestinationResponse) *string { return v.PortRanges }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceTagDestinationResponseOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTagDestinationResponse) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceTagDestinationResponseOutput) ServiceTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTagDestinationResponse) *string { return v.ServiceTag }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTagDestinationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTagDestinationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTagDestinationResponse)(nil)).Elem()
+}
+
+func (o ServiceTagDestinationResponsePtrOutput) ToServiceTagDestinationResponsePtrOutput() ServiceTagDestinationResponsePtrOutput {
+	return o
+}
+
+func (o ServiceTagDestinationResponsePtrOutput) ToServiceTagDestinationResponsePtrOutputWithContext(ctx context.Context) ServiceTagDestinationResponsePtrOutput {
+	return o
+}
+
+func (o ServiceTagDestinationResponsePtrOutput) Elem() ServiceTagDestinationResponseOutput {
+	return o.ApplyT(func(v *ServiceTagDestinationResponse) ServiceTagDestinationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTagDestinationResponse
+		return ret
+	}).(ServiceTagDestinationResponseOutput)
+}
+
+// The action enum for networking rule.
+func (o ServiceTagDestinationResponsePtrOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTagDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Action
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional, if provided, the ServiceTag property will be ignored.
+func (o ServiceTagDestinationResponsePtrOutput) AddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceTagDestinationResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressPrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o ServiceTagDestinationResponsePtrOutput) PortRanges() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTagDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PortRanges
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceTagDestinationResponsePtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTagDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceTagDestinationResponsePtrOutput) ServiceTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTagDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceTag
+	}).(pulumi.StringPtrOutput)
 }
 
 // Service Tag Outbound Rule for the managed network of a machine learning workspace.
@@ -3300,6 +6654,78 @@ type ServiceTagOutboundRule struct {
 	Type string `pulumi:"type"`
 }
 
+// ServiceTagOutboundRuleInput is an input type that accepts ServiceTagOutboundRuleArgs and ServiceTagOutboundRuleOutput values.
+// You can construct a concrete instance of `ServiceTagOutboundRuleInput` via:
+//
+//	ServiceTagOutboundRuleArgs{...}
+type ServiceTagOutboundRuleInput interface {
+	pulumi.Input
+
+	ToServiceTagOutboundRuleOutput() ServiceTagOutboundRuleOutput
+	ToServiceTagOutboundRuleOutputWithContext(context.Context) ServiceTagOutboundRuleOutput
+}
+
+// Service Tag Outbound Rule for the managed network of a machine learning workspace.
+type ServiceTagOutboundRuleArgs struct {
+	// Category of a managed network outbound rule of a machine learning workspace.
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
+	Destination ServiceTagDestinationPtrInput `pulumi:"destination"`
+	// Type of a managed network outbound rule of a machine learning workspace.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Type of a managed network Outbound Rule of a machine learning workspace.
+	// Expected value is 'ServiceTag'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ServiceTagOutboundRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTagOutboundRule)(nil)).Elem()
+}
+
+func (i ServiceTagOutboundRuleArgs) ToServiceTagOutboundRuleOutput() ServiceTagOutboundRuleOutput {
+	return i.ToServiceTagOutboundRuleOutputWithContext(context.Background())
+}
+
+func (i ServiceTagOutboundRuleArgs) ToServiceTagOutboundRuleOutputWithContext(ctx context.Context) ServiceTagOutboundRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTagOutboundRuleOutput)
+}
+
+// Service Tag Outbound Rule for the managed network of a machine learning workspace.
+type ServiceTagOutboundRuleOutput struct{ *pulumi.OutputState }
+
+func (ServiceTagOutboundRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTagOutboundRule)(nil)).Elem()
+}
+
+func (o ServiceTagOutboundRuleOutput) ToServiceTagOutboundRuleOutput() ServiceTagOutboundRuleOutput {
+	return o
+}
+
+func (o ServiceTagOutboundRuleOutput) ToServiceTagOutboundRuleOutputWithContext(ctx context.Context) ServiceTagOutboundRuleOutput {
+	return o
+}
+
+// Category of a managed network outbound rule of a machine learning workspace.
+func (o ServiceTagOutboundRuleOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTagOutboundRule) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
+func (o ServiceTagOutboundRuleOutput) Destination() ServiceTagDestinationPtrOutput {
+	return o.ApplyT(func(v ServiceTagOutboundRule) *ServiceTagDestination { return v.Destination }).(ServiceTagDestinationPtrOutput)
+}
+
+// Type of a managed network outbound rule of a machine learning workspace.
+func (o ServiceTagOutboundRuleOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTagOutboundRule) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Type of a managed network Outbound Rule of a machine learning workspace.
+// Expected value is 'ServiceTag'.
+func (o ServiceTagOutboundRuleOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTagOutboundRule) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Service Tag Outbound Rule for the managed network of a machine learning workspace.
 type ServiceTagOutboundRuleResponse struct {
 	// Category of a managed network outbound rule of a machine learning workspace.
@@ -3313,16 +6739,240 @@ type ServiceTagOutboundRuleResponse struct {
 	Type string `pulumi:"type"`
 }
 
+// Service Tag Outbound Rule for the managed network of a machine learning workspace.
+type ServiceTagOutboundRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceTagOutboundRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTagOutboundRuleResponse)(nil)).Elem()
+}
+
+func (o ServiceTagOutboundRuleResponseOutput) ToServiceTagOutboundRuleResponseOutput() ServiceTagOutboundRuleResponseOutput {
+	return o
+}
+
+func (o ServiceTagOutboundRuleResponseOutput) ToServiceTagOutboundRuleResponseOutputWithContext(ctx context.Context) ServiceTagOutboundRuleResponseOutput {
+	return o
+}
+
+// Category of a managed network outbound rule of a machine learning workspace.
+func (o ServiceTagOutboundRuleResponseOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTagOutboundRuleResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// Service Tag destination for a Service Tag Outbound Rule for the managed network of a machine learning workspace.
+func (o ServiceTagOutboundRuleResponseOutput) Destination() ServiceTagDestinationResponsePtrOutput {
+	return o.ApplyT(func(v ServiceTagOutboundRuleResponse) *ServiceTagDestinationResponse { return v.Destination }).(ServiceTagDestinationResponsePtrOutput)
+}
+
+// Type of a managed network outbound rule of a machine learning workspace.
+func (o ServiceTagOutboundRuleResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTagOutboundRuleResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Type of a managed network Outbound Rule of a machine learning workspace.
+// Expected value is 'ServiceTag'.
+func (o ServiceTagOutboundRuleResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTagOutboundRuleResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Details of customized scripts to execute for setting up the cluster.
 type SetupScripts struct {
 	// Customized setup scripts
 	Scripts *ScriptsToExecute `pulumi:"scripts"`
 }
 
+// SetupScriptsInput is an input type that accepts SetupScriptsArgs and SetupScriptsOutput values.
+// You can construct a concrete instance of `SetupScriptsInput` via:
+//
+//	SetupScriptsArgs{...}
+type SetupScriptsInput interface {
+	pulumi.Input
+
+	ToSetupScriptsOutput() SetupScriptsOutput
+	ToSetupScriptsOutputWithContext(context.Context) SetupScriptsOutput
+}
+
+// Details of customized scripts to execute for setting up the cluster.
+type SetupScriptsArgs struct {
+	// Customized setup scripts
+	Scripts ScriptsToExecutePtrInput `pulumi:"scripts"`
+}
+
+func (SetupScriptsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SetupScripts)(nil)).Elem()
+}
+
+func (i SetupScriptsArgs) ToSetupScriptsOutput() SetupScriptsOutput {
+	return i.ToSetupScriptsOutputWithContext(context.Background())
+}
+
+func (i SetupScriptsArgs) ToSetupScriptsOutputWithContext(ctx context.Context) SetupScriptsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SetupScriptsOutput)
+}
+
+func (i SetupScriptsArgs) ToSetupScriptsPtrOutput() SetupScriptsPtrOutput {
+	return i.ToSetupScriptsPtrOutputWithContext(context.Background())
+}
+
+func (i SetupScriptsArgs) ToSetupScriptsPtrOutputWithContext(ctx context.Context) SetupScriptsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SetupScriptsOutput).ToSetupScriptsPtrOutputWithContext(ctx)
+}
+
+// SetupScriptsPtrInput is an input type that accepts SetupScriptsArgs, SetupScriptsPtr and SetupScriptsPtrOutput values.
+// You can construct a concrete instance of `SetupScriptsPtrInput` via:
+//
+//	        SetupScriptsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SetupScriptsPtrInput interface {
+	pulumi.Input
+
+	ToSetupScriptsPtrOutput() SetupScriptsPtrOutput
+	ToSetupScriptsPtrOutputWithContext(context.Context) SetupScriptsPtrOutput
+}
+
+type setupScriptsPtrType SetupScriptsArgs
+
+func SetupScriptsPtr(v *SetupScriptsArgs) SetupScriptsPtrInput {
+	return (*setupScriptsPtrType)(v)
+}
+
+func (*setupScriptsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SetupScripts)(nil)).Elem()
+}
+
+func (i *setupScriptsPtrType) ToSetupScriptsPtrOutput() SetupScriptsPtrOutput {
+	return i.ToSetupScriptsPtrOutputWithContext(context.Background())
+}
+
+func (i *setupScriptsPtrType) ToSetupScriptsPtrOutputWithContext(ctx context.Context) SetupScriptsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SetupScriptsPtrOutput)
+}
+
+// Details of customized scripts to execute for setting up the cluster.
+type SetupScriptsOutput struct{ *pulumi.OutputState }
+
+func (SetupScriptsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SetupScripts)(nil)).Elem()
+}
+
+func (o SetupScriptsOutput) ToSetupScriptsOutput() SetupScriptsOutput {
+	return o
+}
+
+func (o SetupScriptsOutput) ToSetupScriptsOutputWithContext(ctx context.Context) SetupScriptsOutput {
+	return o
+}
+
+func (o SetupScriptsOutput) ToSetupScriptsPtrOutput() SetupScriptsPtrOutput {
+	return o.ToSetupScriptsPtrOutputWithContext(context.Background())
+}
+
+func (o SetupScriptsOutput) ToSetupScriptsPtrOutputWithContext(ctx context.Context) SetupScriptsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SetupScripts) *SetupScripts {
+		return &v
+	}).(SetupScriptsPtrOutput)
+}
+
+// Customized setup scripts
+func (o SetupScriptsOutput) Scripts() ScriptsToExecutePtrOutput {
+	return o.ApplyT(func(v SetupScripts) *ScriptsToExecute { return v.Scripts }).(ScriptsToExecutePtrOutput)
+}
+
+type SetupScriptsPtrOutput struct{ *pulumi.OutputState }
+
+func (SetupScriptsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SetupScripts)(nil)).Elem()
+}
+
+func (o SetupScriptsPtrOutput) ToSetupScriptsPtrOutput() SetupScriptsPtrOutput {
+	return o
+}
+
+func (o SetupScriptsPtrOutput) ToSetupScriptsPtrOutputWithContext(ctx context.Context) SetupScriptsPtrOutput {
+	return o
+}
+
+func (o SetupScriptsPtrOutput) Elem() SetupScriptsOutput {
+	return o.ApplyT(func(v *SetupScripts) SetupScripts {
+		if v != nil {
+			return *v
+		}
+		var ret SetupScripts
+		return ret
+	}).(SetupScriptsOutput)
+}
+
+// Customized setup scripts
+func (o SetupScriptsPtrOutput) Scripts() ScriptsToExecutePtrOutput {
+	return o.ApplyT(func(v *SetupScripts) *ScriptsToExecute {
+		if v == nil {
+			return nil
+		}
+		return v.Scripts
+	}).(ScriptsToExecutePtrOutput)
+}
+
 // Details of customized scripts to execute for setting up the cluster.
 type SetupScriptsResponse struct {
 	// Customized setup scripts
 	Scripts *ScriptsToExecuteResponse `pulumi:"scripts"`
+}
+
+// Details of customized scripts to execute for setting up the cluster.
+type SetupScriptsResponseOutput struct{ *pulumi.OutputState }
+
+func (SetupScriptsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SetupScriptsResponse)(nil)).Elem()
+}
+
+func (o SetupScriptsResponseOutput) ToSetupScriptsResponseOutput() SetupScriptsResponseOutput {
+	return o
+}
+
+func (o SetupScriptsResponseOutput) ToSetupScriptsResponseOutputWithContext(ctx context.Context) SetupScriptsResponseOutput {
+	return o
+}
+
+// Customized setup scripts
+func (o SetupScriptsResponseOutput) Scripts() ScriptsToExecuteResponsePtrOutput {
+	return o.ApplyT(func(v SetupScriptsResponse) *ScriptsToExecuteResponse { return v.Scripts }).(ScriptsToExecuteResponsePtrOutput)
+}
+
+type SetupScriptsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SetupScriptsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SetupScriptsResponse)(nil)).Elem()
+}
+
+func (o SetupScriptsResponsePtrOutput) ToSetupScriptsResponsePtrOutput() SetupScriptsResponsePtrOutput {
+	return o
+}
+
+func (o SetupScriptsResponsePtrOutput) ToSetupScriptsResponsePtrOutputWithContext(ctx context.Context) SetupScriptsResponsePtrOutput {
+	return o
+}
+
+func (o SetupScriptsResponsePtrOutput) Elem() SetupScriptsResponseOutput {
+	return o.ApplyT(func(v *SetupScriptsResponse) SetupScriptsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SetupScriptsResponse
+		return ret
+	}).(SetupScriptsResponseOutput)
+}
+
+// Customized setup scripts
+func (o SetupScriptsResponsePtrOutput) Scripts() ScriptsToExecuteResponsePtrOutput {
+	return o.ApplyT(func(v *SetupScriptsResponse) *ScriptsToExecuteResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Scripts
+	}).(ScriptsToExecuteResponsePtrOutput)
 }
 
 type SharedPrivateLinkResource struct {
@@ -3996,6 +7646,258 @@ func (val *SparkJob) Defaults() *SparkJob {
 	return &tmp
 }
 
+// SparkJobInput is an input type that accepts SparkJobArgs and SparkJobOutput values.
+// You can construct a concrete instance of `SparkJobInput` via:
+//
+//	SparkJobArgs{...}
+type SparkJobInput interface {
+	pulumi.Input
+
+	ToSparkJobOutput() SparkJobOutput
+	ToSparkJobOutputWithContext(context.Context) SparkJobOutput
+}
+
+// Spark job definition.
+type SparkJobArgs struct {
+	// Archive files used in the job.
+	Archives pulumi.StringArrayInput `pulumi:"archives"`
+	// Arguments for the job.
+	Args pulumi.StringPtrInput `pulumi:"args"`
+	// [Required] ARM resource ID of the code asset.
+	CodeId pulumi.StringInput `pulumi:"codeId"`
+	// ARM resource ID of the component resource.
+	ComponentId pulumi.StringPtrInput `pulumi:"componentId"`
+	// ARM resource ID of the compute resource.
+	ComputeId pulumi.StringPtrInput `pulumi:"computeId"`
+	// Spark configured properties.
+	Conf pulumi.StringMapInput `pulumi:"conf"`
+	// The asset description text.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Display name of job.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// [Required] The entry to execute on startup of the job.
+	Entry pulumi.Input `pulumi:"entry"`
+	// The ARM resource ID of the Environment specification for the job.
+	EnvironmentId pulumi.StringPtrInput `pulumi:"environmentId"`
+	// Environment variables included in the job.
+	EnvironmentVariables pulumi.StringMapInput `pulumi:"environmentVariables"`
+	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
+	ExperimentName pulumi.StringPtrInput `pulumi:"experimentName"`
+	// Files used in the job.
+	Files pulumi.StringArrayInput `pulumi:"files"`
+	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
+	// Defaults to AmlToken if null.
+	Identity pulumi.Input `pulumi:"identity"`
+	// Mapping of input data bindings used in the job.
+	Inputs pulumi.MapInput `pulumi:"inputs"`
+	// Is the asset archived?
+	IsArchived pulumi.BoolPtrInput `pulumi:"isArchived"`
+	// Jar files used in the job.
+	Jars pulumi.StringArrayInput `pulumi:"jars"`
+	// Enum to determine the type of job.
+	// Expected value is 'Spark'.
+	JobType pulumi.StringInput `pulumi:"jobType"`
+	// Notification setting for the job
+	NotificationSetting NotificationSettingPtrInput `pulumi:"notificationSetting"`
+	// Mapping of output data bindings used in the job.
+	Outputs pulumi.MapInput `pulumi:"outputs"`
+	// The asset property dictionary.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// Python files used in the job.
+	PyFiles pulumi.StringArrayInput `pulumi:"pyFiles"`
+	// Queue settings for the job
+	QueueSettings QueueSettingsPtrInput `pulumi:"queueSettings"`
+	// Compute Resource configuration for the job.
+	Resources SparkResourceConfigurationPtrInput `pulumi:"resources"`
+	// Configuration for secrets to be made available during runtime.
+	SecretsConfiguration SecretConfigurationMapInput `pulumi:"secretsConfiguration"`
+	// List of JobEndpoints.
+	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
+	Services JobServiceMapInput `pulumi:"services"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+// Defaults sets the appropriate defaults for SparkJobArgs
+func (val *SparkJobArgs) Defaults() *SparkJobArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ExperimentName == nil {
+		tmp.ExperimentName = pulumi.StringPtr("Default")
+	}
+	if tmp.IsArchived == nil {
+		tmp.IsArchived = pulumi.BoolPtr(false)
+	}
+
+	return &tmp
+}
+func (SparkJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkJob)(nil)).Elem()
+}
+
+func (i SparkJobArgs) ToSparkJobOutput() SparkJobOutput {
+	return i.ToSparkJobOutputWithContext(context.Background())
+}
+
+func (i SparkJobArgs) ToSparkJobOutputWithContext(ctx context.Context) SparkJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkJobOutput)
+}
+
+// Spark job definition.
+type SparkJobOutput struct{ *pulumi.OutputState }
+
+func (SparkJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkJob)(nil)).Elem()
+}
+
+func (o SparkJobOutput) ToSparkJobOutput() SparkJobOutput {
+	return o
+}
+
+func (o SparkJobOutput) ToSparkJobOutputWithContext(ctx context.Context) SparkJobOutput {
+	return o
+}
+
+// Archive files used in the job.
+func (o SparkJobOutput) Archives() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkJob) []string { return v.Archives }).(pulumi.StringArrayOutput)
+}
+
+// Arguments for the job.
+func (o SparkJobOutput) Args() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkJob) *string { return v.Args }).(pulumi.StringPtrOutput)
+}
+
+// [Required] ARM resource ID of the code asset.
+func (o SparkJobOutput) CodeId() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkJob) string { return v.CodeId }).(pulumi.StringOutput)
+}
+
+// ARM resource ID of the component resource.
+func (o SparkJobOutput) ComponentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkJob) *string { return v.ComponentId }).(pulumi.StringPtrOutput)
+}
+
+// ARM resource ID of the compute resource.
+func (o SparkJobOutput) ComputeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkJob) *string { return v.ComputeId }).(pulumi.StringPtrOutput)
+}
+
+// Spark configured properties.
+func (o SparkJobOutput) Conf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SparkJob) map[string]string { return v.Conf }).(pulumi.StringMapOutput)
+}
+
+// The asset description text.
+func (o SparkJobOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkJob) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Display name of job.
+func (o SparkJobOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkJob) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// [Required] The entry to execute on startup of the job.
+func (o SparkJobOutput) Entry() pulumi.AnyOutput {
+	return o.ApplyT(func(v SparkJob) interface{} { return v.Entry }).(pulumi.AnyOutput)
+}
+
+// The ARM resource ID of the Environment specification for the job.
+func (o SparkJobOutput) EnvironmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkJob) *string { return v.EnvironmentId }).(pulumi.StringPtrOutput)
+}
+
+// Environment variables included in the job.
+func (o SparkJobOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SparkJob) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
+}
+
+// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
+func (o SparkJobOutput) ExperimentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkJob) *string { return v.ExperimentName }).(pulumi.StringPtrOutput)
+}
+
+// Files used in the job.
+func (o SparkJobOutput) Files() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkJob) []string { return v.Files }).(pulumi.StringArrayOutput)
+}
+
+// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
+// Defaults to AmlToken if null.
+func (o SparkJobOutput) Identity() pulumi.AnyOutput {
+	return o.ApplyT(func(v SparkJob) interface{} { return v.Identity }).(pulumi.AnyOutput)
+}
+
+// Mapping of input data bindings used in the job.
+func (o SparkJobOutput) Inputs() pulumi.MapOutput {
+	return o.ApplyT(func(v SparkJob) map[string]interface{} { return v.Inputs }).(pulumi.MapOutput)
+}
+
+// Is the asset archived?
+func (o SparkJobOutput) IsArchived() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SparkJob) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
+}
+
+// Jar files used in the job.
+func (o SparkJobOutput) Jars() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkJob) []string { return v.Jars }).(pulumi.StringArrayOutput)
+}
+
+// Enum to determine the type of job.
+// Expected value is 'Spark'.
+func (o SparkJobOutput) JobType() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkJob) string { return v.JobType }).(pulumi.StringOutput)
+}
+
+// Notification setting for the job
+func (o SparkJobOutput) NotificationSetting() NotificationSettingPtrOutput {
+	return o.ApplyT(func(v SparkJob) *NotificationSetting { return v.NotificationSetting }).(NotificationSettingPtrOutput)
+}
+
+// Mapping of output data bindings used in the job.
+func (o SparkJobOutput) Outputs() pulumi.MapOutput {
+	return o.ApplyT(func(v SparkJob) map[string]interface{} { return v.Outputs }).(pulumi.MapOutput)
+}
+
+// The asset property dictionary.
+func (o SparkJobOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SparkJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Python files used in the job.
+func (o SparkJobOutput) PyFiles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkJob) []string { return v.PyFiles }).(pulumi.StringArrayOutput)
+}
+
+// Queue settings for the job
+func (o SparkJobOutput) QueueSettings() QueueSettingsPtrOutput {
+	return o.ApplyT(func(v SparkJob) *QueueSettings { return v.QueueSettings }).(QueueSettingsPtrOutput)
+}
+
+// Compute Resource configuration for the job.
+func (o SparkJobOutput) Resources() SparkResourceConfigurationPtrOutput {
+	return o.ApplyT(func(v SparkJob) *SparkResourceConfiguration { return v.Resources }).(SparkResourceConfigurationPtrOutput)
+}
+
+// Configuration for secrets to be made available during runtime.
+func (o SparkJobOutput) SecretsConfiguration() SecretConfigurationMapOutput {
+	return o.ApplyT(func(v SparkJob) map[string]SecretConfiguration { return v.SecretsConfiguration }).(SecretConfigurationMapOutput)
+}
+
+// List of JobEndpoints.
+// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
+func (o SparkJobOutput) Services() JobServiceMapOutput {
+	return o.ApplyT(func(v SparkJob) map[string]JobService { return v.Services }).(JobServiceMapOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o SparkJobOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SparkJob) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
 type SparkJobPythonEntry struct {
 	// [Required] Relative python file path for job entry point.
 	File string `pulumi:"file"`
@@ -4003,11 +7905,89 @@ type SparkJobPythonEntry struct {
 	SparkJobEntryType string `pulumi:"sparkJobEntryType"`
 }
 
+// SparkJobPythonEntryInput is an input type that accepts SparkJobPythonEntryArgs and SparkJobPythonEntryOutput values.
+// You can construct a concrete instance of `SparkJobPythonEntryInput` via:
+//
+//	SparkJobPythonEntryArgs{...}
+type SparkJobPythonEntryInput interface {
+	pulumi.Input
+
+	ToSparkJobPythonEntryOutput() SparkJobPythonEntryOutput
+	ToSparkJobPythonEntryOutputWithContext(context.Context) SparkJobPythonEntryOutput
+}
+
+type SparkJobPythonEntryArgs struct {
+	// [Required] Relative python file path for job entry point.
+	File pulumi.StringInput `pulumi:"file"`
+	// Expected value is 'SparkJobPythonEntry'.
+	SparkJobEntryType pulumi.StringInput `pulumi:"sparkJobEntryType"`
+}
+
+func (SparkJobPythonEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkJobPythonEntry)(nil)).Elem()
+}
+
+func (i SparkJobPythonEntryArgs) ToSparkJobPythonEntryOutput() SparkJobPythonEntryOutput {
+	return i.ToSparkJobPythonEntryOutputWithContext(context.Background())
+}
+
+func (i SparkJobPythonEntryArgs) ToSparkJobPythonEntryOutputWithContext(ctx context.Context) SparkJobPythonEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkJobPythonEntryOutput)
+}
+
+type SparkJobPythonEntryOutput struct{ *pulumi.OutputState }
+
+func (SparkJobPythonEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkJobPythonEntry)(nil)).Elem()
+}
+
+func (o SparkJobPythonEntryOutput) ToSparkJobPythonEntryOutput() SparkJobPythonEntryOutput {
+	return o
+}
+
+func (o SparkJobPythonEntryOutput) ToSparkJobPythonEntryOutputWithContext(ctx context.Context) SparkJobPythonEntryOutput {
+	return o
+}
+
+// [Required] Relative python file path for job entry point.
+func (o SparkJobPythonEntryOutput) File() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkJobPythonEntry) string { return v.File }).(pulumi.StringOutput)
+}
+
+// Expected value is 'SparkJobPythonEntry'.
+func (o SparkJobPythonEntryOutput) SparkJobEntryType() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkJobPythonEntry) string { return v.SparkJobEntryType }).(pulumi.StringOutput)
+}
+
 type SparkJobPythonEntryResponse struct {
 	// [Required] Relative python file path for job entry point.
 	File string `pulumi:"file"`
 	// Expected value is 'SparkJobPythonEntry'.
 	SparkJobEntryType string `pulumi:"sparkJobEntryType"`
+}
+
+type SparkJobPythonEntryResponseOutput struct{ *pulumi.OutputState }
+
+func (SparkJobPythonEntryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkJobPythonEntryResponse)(nil)).Elem()
+}
+
+func (o SparkJobPythonEntryResponseOutput) ToSparkJobPythonEntryResponseOutput() SparkJobPythonEntryResponseOutput {
+	return o
+}
+
+func (o SparkJobPythonEntryResponseOutput) ToSparkJobPythonEntryResponseOutputWithContext(ctx context.Context) SparkJobPythonEntryResponseOutput {
+	return o
+}
+
+// [Required] Relative python file path for job entry point.
+func (o SparkJobPythonEntryResponseOutput) File() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkJobPythonEntryResponse) string { return v.File }).(pulumi.StringOutput)
+}
+
+// Expected value is 'SparkJobPythonEntry'.
+func (o SparkJobPythonEntryResponseOutput) SparkJobEntryType() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkJobPythonEntryResponse) string { return v.SparkJobEntryType }).(pulumi.StringOutput)
 }
 
 // Spark job definition.
@@ -4094,6 +8074,164 @@ func (val *SparkJobResponse) Defaults() *SparkJobResponse {
 	return &tmp
 }
 
+// Spark job definition.
+type SparkJobResponseOutput struct{ *pulumi.OutputState }
+
+func (SparkJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkJobResponse)(nil)).Elem()
+}
+
+func (o SparkJobResponseOutput) ToSparkJobResponseOutput() SparkJobResponseOutput {
+	return o
+}
+
+func (o SparkJobResponseOutput) ToSparkJobResponseOutputWithContext(ctx context.Context) SparkJobResponseOutput {
+	return o
+}
+
+// Archive files used in the job.
+func (o SparkJobResponseOutput) Archives() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkJobResponse) []string { return v.Archives }).(pulumi.StringArrayOutput)
+}
+
+// Arguments for the job.
+func (o SparkJobResponseOutput) Args() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkJobResponse) *string { return v.Args }).(pulumi.StringPtrOutput)
+}
+
+// [Required] ARM resource ID of the code asset.
+func (o SparkJobResponseOutput) CodeId() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkJobResponse) string { return v.CodeId }).(pulumi.StringOutput)
+}
+
+// ARM resource ID of the component resource.
+func (o SparkJobResponseOutput) ComponentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkJobResponse) *string { return v.ComponentId }).(pulumi.StringPtrOutput)
+}
+
+// ARM resource ID of the compute resource.
+func (o SparkJobResponseOutput) ComputeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkJobResponse) *string { return v.ComputeId }).(pulumi.StringPtrOutput)
+}
+
+// Spark configured properties.
+func (o SparkJobResponseOutput) Conf() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SparkJobResponse) map[string]string { return v.Conf }).(pulumi.StringMapOutput)
+}
+
+// The asset description text.
+func (o SparkJobResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkJobResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Display name of job.
+func (o SparkJobResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkJobResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// [Required] The entry to execute on startup of the job.
+func (o SparkJobResponseOutput) Entry() pulumi.AnyOutput {
+	return o.ApplyT(func(v SparkJobResponse) interface{} { return v.Entry }).(pulumi.AnyOutput)
+}
+
+// The ARM resource ID of the Environment specification for the job.
+func (o SparkJobResponseOutput) EnvironmentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkJobResponse) *string { return v.EnvironmentId }).(pulumi.StringPtrOutput)
+}
+
+// Environment variables included in the job.
+func (o SparkJobResponseOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SparkJobResponse) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
+}
+
+// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
+func (o SparkJobResponseOutput) ExperimentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkJobResponse) *string { return v.ExperimentName }).(pulumi.StringPtrOutput)
+}
+
+// Files used in the job.
+func (o SparkJobResponseOutput) Files() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkJobResponse) []string { return v.Files }).(pulumi.StringArrayOutput)
+}
+
+// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
+// Defaults to AmlToken if null.
+func (o SparkJobResponseOutput) Identity() pulumi.AnyOutput {
+	return o.ApplyT(func(v SparkJobResponse) interface{} { return v.Identity }).(pulumi.AnyOutput)
+}
+
+// Mapping of input data bindings used in the job.
+func (o SparkJobResponseOutput) Inputs() pulumi.MapOutput {
+	return o.ApplyT(func(v SparkJobResponse) map[string]interface{} { return v.Inputs }).(pulumi.MapOutput)
+}
+
+// Is the asset archived?
+func (o SparkJobResponseOutput) IsArchived() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SparkJobResponse) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
+}
+
+// Jar files used in the job.
+func (o SparkJobResponseOutput) Jars() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkJobResponse) []string { return v.Jars }).(pulumi.StringArrayOutput)
+}
+
+// Enum to determine the type of job.
+// Expected value is 'Spark'.
+func (o SparkJobResponseOutput) JobType() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkJobResponse) string { return v.JobType }).(pulumi.StringOutput)
+}
+
+// Notification setting for the job
+func (o SparkJobResponseOutput) NotificationSetting() NotificationSettingResponsePtrOutput {
+	return o.ApplyT(func(v SparkJobResponse) *NotificationSettingResponse { return v.NotificationSetting }).(NotificationSettingResponsePtrOutput)
+}
+
+// Mapping of output data bindings used in the job.
+func (o SparkJobResponseOutput) Outputs() pulumi.MapOutput {
+	return o.ApplyT(func(v SparkJobResponse) map[string]interface{} { return v.Outputs }).(pulumi.MapOutput)
+}
+
+// The asset property dictionary.
+func (o SparkJobResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SparkJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Python files used in the job.
+func (o SparkJobResponseOutput) PyFiles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkJobResponse) []string { return v.PyFiles }).(pulumi.StringArrayOutput)
+}
+
+// Queue settings for the job
+func (o SparkJobResponseOutput) QueueSettings() QueueSettingsResponsePtrOutput {
+	return o.ApplyT(func(v SparkJobResponse) *QueueSettingsResponse { return v.QueueSettings }).(QueueSettingsResponsePtrOutput)
+}
+
+// Compute Resource configuration for the job.
+func (o SparkJobResponseOutput) Resources() SparkResourceConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v SparkJobResponse) *SparkResourceConfigurationResponse { return v.Resources }).(SparkResourceConfigurationResponsePtrOutput)
+}
+
+// Configuration for secrets to be made available during runtime.
+func (o SparkJobResponseOutput) SecretsConfiguration() SecretConfigurationResponseMapOutput {
+	return o.ApplyT(func(v SparkJobResponse) map[string]SecretConfigurationResponse { return v.SecretsConfiguration }).(SecretConfigurationResponseMapOutput)
+}
+
+// List of JobEndpoints.
+// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
+func (o SparkJobResponseOutput) Services() JobServiceResponseMapOutput {
+	return o.ApplyT(func(v SparkJobResponse) map[string]JobServiceResponse { return v.Services }).(JobServiceResponseMapOutput)
+}
+
+// Status of the job.
+func (o SparkJobResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkJobResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o SparkJobResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SparkJobResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
 type SparkJobScalaEntry struct {
 	// [Required] Scala class name used as entry point.
 	ClassName string `pulumi:"className"`
@@ -4101,11 +8239,89 @@ type SparkJobScalaEntry struct {
 	SparkJobEntryType string `pulumi:"sparkJobEntryType"`
 }
 
+// SparkJobScalaEntryInput is an input type that accepts SparkJobScalaEntryArgs and SparkJobScalaEntryOutput values.
+// You can construct a concrete instance of `SparkJobScalaEntryInput` via:
+//
+//	SparkJobScalaEntryArgs{...}
+type SparkJobScalaEntryInput interface {
+	pulumi.Input
+
+	ToSparkJobScalaEntryOutput() SparkJobScalaEntryOutput
+	ToSparkJobScalaEntryOutputWithContext(context.Context) SparkJobScalaEntryOutput
+}
+
+type SparkJobScalaEntryArgs struct {
+	// [Required] Scala class name used as entry point.
+	ClassName pulumi.StringInput `pulumi:"className"`
+	// Expected value is 'SparkJobScalaEntry'.
+	SparkJobEntryType pulumi.StringInput `pulumi:"sparkJobEntryType"`
+}
+
+func (SparkJobScalaEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkJobScalaEntry)(nil)).Elem()
+}
+
+func (i SparkJobScalaEntryArgs) ToSparkJobScalaEntryOutput() SparkJobScalaEntryOutput {
+	return i.ToSparkJobScalaEntryOutputWithContext(context.Background())
+}
+
+func (i SparkJobScalaEntryArgs) ToSparkJobScalaEntryOutputWithContext(ctx context.Context) SparkJobScalaEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkJobScalaEntryOutput)
+}
+
+type SparkJobScalaEntryOutput struct{ *pulumi.OutputState }
+
+func (SparkJobScalaEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkJobScalaEntry)(nil)).Elem()
+}
+
+func (o SparkJobScalaEntryOutput) ToSparkJobScalaEntryOutput() SparkJobScalaEntryOutput {
+	return o
+}
+
+func (o SparkJobScalaEntryOutput) ToSparkJobScalaEntryOutputWithContext(ctx context.Context) SparkJobScalaEntryOutput {
+	return o
+}
+
+// [Required] Scala class name used as entry point.
+func (o SparkJobScalaEntryOutput) ClassName() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkJobScalaEntry) string { return v.ClassName }).(pulumi.StringOutput)
+}
+
+// Expected value is 'SparkJobScalaEntry'.
+func (o SparkJobScalaEntryOutput) SparkJobEntryType() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkJobScalaEntry) string { return v.SparkJobEntryType }).(pulumi.StringOutput)
+}
+
 type SparkJobScalaEntryResponse struct {
 	// [Required] Scala class name used as entry point.
 	ClassName string `pulumi:"className"`
 	// Expected value is 'SparkJobScalaEntry'.
 	SparkJobEntryType string `pulumi:"sparkJobEntryType"`
+}
+
+type SparkJobScalaEntryResponseOutput struct{ *pulumi.OutputState }
+
+func (SparkJobScalaEntryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkJobScalaEntryResponse)(nil)).Elem()
+}
+
+func (o SparkJobScalaEntryResponseOutput) ToSparkJobScalaEntryResponseOutput() SparkJobScalaEntryResponseOutput {
+	return o
+}
+
+func (o SparkJobScalaEntryResponseOutput) ToSparkJobScalaEntryResponseOutputWithContext(ctx context.Context) SparkJobScalaEntryResponseOutput {
+	return o
+}
+
+// [Required] Scala class name used as entry point.
+func (o SparkJobScalaEntryResponseOutput) ClassName() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkJobScalaEntryResponse) string { return v.ClassName }).(pulumi.StringOutput)
+}
+
+// Expected value is 'SparkJobScalaEntry'.
+func (o SparkJobScalaEntryResponseOutput) SparkJobEntryType() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkJobScalaEntryResponse) string { return v.SparkJobEntryType }).(pulumi.StringOutput)
 }
 
 type SparkResourceConfiguration struct {
@@ -4128,6 +8344,166 @@ func (val *SparkResourceConfiguration) Defaults() *SparkResourceConfiguration {
 	return &tmp
 }
 
+// SparkResourceConfigurationInput is an input type that accepts SparkResourceConfigurationArgs and SparkResourceConfigurationOutput values.
+// You can construct a concrete instance of `SparkResourceConfigurationInput` via:
+//
+//	SparkResourceConfigurationArgs{...}
+type SparkResourceConfigurationInput interface {
+	pulumi.Input
+
+	ToSparkResourceConfigurationOutput() SparkResourceConfigurationOutput
+	ToSparkResourceConfigurationOutputWithContext(context.Context) SparkResourceConfigurationOutput
+}
+
+type SparkResourceConfigurationArgs struct {
+	// Optional type of VM used as supported by the compute target.
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// Version of spark runtime used for the job.
+	RuntimeVersion pulumi.StringPtrInput `pulumi:"runtimeVersion"`
+}
+
+// Defaults sets the appropriate defaults for SparkResourceConfigurationArgs
+func (val *SparkResourceConfigurationArgs) Defaults() *SparkResourceConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.RuntimeVersion == nil {
+		tmp.RuntimeVersion = pulumi.StringPtr("3.1")
+	}
+	return &tmp
+}
+func (SparkResourceConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkResourceConfiguration)(nil)).Elem()
+}
+
+func (i SparkResourceConfigurationArgs) ToSparkResourceConfigurationOutput() SparkResourceConfigurationOutput {
+	return i.ToSparkResourceConfigurationOutputWithContext(context.Background())
+}
+
+func (i SparkResourceConfigurationArgs) ToSparkResourceConfigurationOutputWithContext(ctx context.Context) SparkResourceConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkResourceConfigurationOutput)
+}
+
+func (i SparkResourceConfigurationArgs) ToSparkResourceConfigurationPtrOutput() SparkResourceConfigurationPtrOutput {
+	return i.ToSparkResourceConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i SparkResourceConfigurationArgs) ToSparkResourceConfigurationPtrOutputWithContext(ctx context.Context) SparkResourceConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkResourceConfigurationOutput).ToSparkResourceConfigurationPtrOutputWithContext(ctx)
+}
+
+// SparkResourceConfigurationPtrInput is an input type that accepts SparkResourceConfigurationArgs, SparkResourceConfigurationPtr and SparkResourceConfigurationPtrOutput values.
+// You can construct a concrete instance of `SparkResourceConfigurationPtrInput` via:
+//
+//	        SparkResourceConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type SparkResourceConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToSparkResourceConfigurationPtrOutput() SparkResourceConfigurationPtrOutput
+	ToSparkResourceConfigurationPtrOutputWithContext(context.Context) SparkResourceConfigurationPtrOutput
+}
+
+type sparkResourceConfigurationPtrType SparkResourceConfigurationArgs
+
+func SparkResourceConfigurationPtr(v *SparkResourceConfigurationArgs) SparkResourceConfigurationPtrInput {
+	return (*sparkResourceConfigurationPtrType)(v)
+}
+
+func (*sparkResourceConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkResourceConfiguration)(nil)).Elem()
+}
+
+func (i *sparkResourceConfigurationPtrType) ToSparkResourceConfigurationPtrOutput() SparkResourceConfigurationPtrOutput {
+	return i.ToSparkResourceConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *sparkResourceConfigurationPtrType) ToSparkResourceConfigurationPtrOutputWithContext(ctx context.Context) SparkResourceConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkResourceConfigurationPtrOutput)
+}
+
+type SparkResourceConfigurationOutput struct{ *pulumi.OutputState }
+
+func (SparkResourceConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkResourceConfiguration)(nil)).Elem()
+}
+
+func (o SparkResourceConfigurationOutput) ToSparkResourceConfigurationOutput() SparkResourceConfigurationOutput {
+	return o
+}
+
+func (o SparkResourceConfigurationOutput) ToSparkResourceConfigurationOutputWithContext(ctx context.Context) SparkResourceConfigurationOutput {
+	return o
+}
+
+func (o SparkResourceConfigurationOutput) ToSparkResourceConfigurationPtrOutput() SparkResourceConfigurationPtrOutput {
+	return o.ToSparkResourceConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o SparkResourceConfigurationOutput) ToSparkResourceConfigurationPtrOutputWithContext(ctx context.Context) SparkResourceConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SparkResourceConfiguration) *SparkResourceConfiguration {
+		return &v
+	}).(SparkResourceConfigurationPtrOutput)
+}
+
+// Optional type of VM used as supported by the compute target.
+func (o SparkResourceConfigurationOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkResourceConfiguration) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// Version of spark runtime used for the job.
+func (o SparkResourceConfigurationOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkResourceConfiguration) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
+}
+
+type SparkResourceConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (SparkResourceConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkResourceConfiguration)(nil)).Elem()
+}
+
+func (o SparkResourceConfigurationPtrOutput) ToSparkResourceConfigurationPtrOutput() SparkResourceConfigurationPtrOutput {
+	return o
+}
+
+func (o SparkResourceConfigurationPtrOutput) ToSparkResourceConfigurationPtrOutputWithContext(ctx context.Context) SparkResourceConfigurationPtrOutput {
+	return o
+}
+
+func (o SparkResourceConfigurationPtrOutput) Elem() SparkResourceConfigurationOutput {
+	return o.ApplyT(func(v *SparkResourceConfiguration) SparkResourceConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret SparkResourceConfiguration
+		return ret
+	}).(SparkResourceConfigurationOutput)
+}
+
+// Optional type of VM used as supported by the compute target.
+func (o SparkResourceConfigurationPtrOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SparkResourceConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of spark runtime used for the job.
+func (o SparkResourceConfigurationPtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SparkResourceConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 type SparkResourceConfigurationResponse struct {
 	// Optional type of VM used as supported by the compute target.
 	InstanceType *string `pulumi:"instanceType"`
@@ -4148,6 +8524,74 @@ func (val *SparkResourceConfigurationResponse) Defaults() *SparkResourceConfigur
 	return &tmp
 }
 
+type SparkResourceConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (SparkResourceConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkResourceConfigurationResponse)(nil)).Elem()
+}
+
+func (o SparkResourceConfigurationResponseOutput) ToSparkResourceConfigurationResponseOutput() SparkResourceConfigurationResponseOutput {
+	return o
+}
+
+func (o SparkResourceConfigurationResponseOutput) ToSparkResourceConfigurationResponseOutputWithContext(ctx context.Context) SparkResourceConfigurationResponseOutput {
+	return o
+}
+
+// Optional type of VM used as supported by the compute target.
+func (o SparkResourceConfigurationResponseOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkResourceConfigurationResponse) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// Version of spark runtime used for the job.
+func (o SparkResourceConfigurationResponseOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkResourceConfigurationResponse) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
+}
+
+type SparkResourceConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SparkResourceConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkResourceConfigurationResponse)(nil)).Elem()
+}
+
+func (o SparkResourceConfigurationResponsePtrOutput) ToSparkResourceConfigurationResponsePtrOutput() SparkResourceConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o SparkResourceConfigurationResponsePtrOutput) ToSparkResourceConfigurationResponsePtrOutputWithContext(ctx context.Context) SparkResourceConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o SparkResourceConfigurationResponsePtrOutput) Elem() SparkResourceConfigurationResponseOutput {
+	return o.ApplyT(func(v *SparkResourceConfigurationResponse) SparkResourceConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SparkResourceConfigurationResponse
+		return ret
+	}).(SparkResourceConfigurationResponseOutput)
+}
+
+// Optional type of VM used as supported by the compute target.
+func (o SparkResourceConfigurationResponsePtrOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SparkResourceConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of spark runtime used for the job.
+func (o SparkResourceConfigurationResponsePtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SparkResourceConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 // The ssl configuration for scoring
 type SslConfiguration struct {
 	// Cert data
@@ -4164,6 +8608,225 @@ type SslConfiguration struct {
 	Status *string `pulumi:"status"`
 }
 
+// SslConfigurationInput is an input type that accepts SslConfigurationArgs and SslConfigurationOutput values.
+// You can construct a concrete instance of `SslConfigurationInput` via:
+//
+//	SslConfigurationArgs{...}
+type SslConfigurationInput interface {
+	pulumi.Input
+
+	ToSslConfigurationOutput() SslConfigurationOutput
+	ToSslConfigurationOutputWithContext(context.Context) SslConfigurationOutput
+}
+
+// The ssl configuration for scoring
+type SslConfigurationArgs struct {
+	// Cert data
+	Cert pulumi.StringPtrInput `pulumi:"cert"`
+	// CNAME of the cert
+	Cname pulumi.StringPtrInput `pulumi:"cname"`
+	// Key data
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Leaf domain label of public endpoint
+	LeafDomainLabel pulumi.StringPtrInput `pulumi:"leafDomainLabel"`
+	// Indicates whether to overwrite existing domain label.
+	OverwriteExistingDomain pulumi.BoolPtrInput `pulumi:"overwriteExistingDomain"`
+	// Enable or disable ssl for scoring
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (SslConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslConfiguration)(nil)).Elem()
+}
+
+func (i SslConfigurationArgs) ToSslConfigurationOutput() SslConfigurationOutput {
+	return i.ToSslConfigurationOutputWithContext(context.Background())
+}
+
+func (i SslConfigurationArgs) ToSslConfigurationOutputWithContext(ctx context.Context) SslConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslConfigurationOutput)
+}
+
+func (i SslConfigurationArgs) ToSslConfigurationPtrOutput() SslConfigurationPtrOutput {
+	return i.ToSslConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i SslConfigurationArgs) ToSslConfigurationPtrOutputWithContext(ctx context.Context) SslConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslConfigurationOutput).ToSslConfigurationPtrOutputWithContext(ctx)
+}
+
+// SslConfigurationPtrInput is an input type that accepts SslConfigurationArgs, SslConfigurationPtr and SslConfigurationPtrOutput values.
+// You can construct a concrete instance of `SslConfigurationPtrInput` via:
+//
+//	        SslConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type SslConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToSslConfigurationPtrOutput() SslConfigurationPtrOutput
+	ToSslConfigurationPtrOutputWithContext(context.Context) SslConfigurationPtrOutput
+}
+
+type sslConfigurationPtrType SslConfigurationArgs
+
+func SslConfigurationPtr(v *SslConfigurationArgs) SslConfigurationPtrInput {
+	return (*sslConfigurationPtrType)(v)
+}
+
+func (*sslConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SslConfiguration)(nil)).Elem()
+}
+
+func (i *sslConfigurationPtrType) ToSslConfigurationPtrOutput() SslConfigurationPtrOutput {
+	return i.ToSslConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *sslConfigurationPtrType) ToSslConfigurationPtrOutputWithContext(ctx context.Context) SslConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslConfigurationPtrOutput)
+}
+
+// The ssl configuration for scoring
+type SslConfigurationOutput struct{ *pulumi.OutputState }
+
+func (SslConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslConfiguration)(nil)).Elem()
+}
+
+func (o SslConfigurationOutput) ToSslConfigurationOutput() SslConfigurationOutput {
+	return o
+}
+
+func (o SslConfigurationOutput) ToSslConfigurationOutputWithContext(ctx context.Context) SslConfigurationOutput {
+	return o
+}
+
+func (o SslConfigurationOutput) ToSslConfigurationPtrOutput() SslConfigurationPtrOutput {
+	return o.ToSslConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o SslConfigurationOutput) ToSslConfigurationPtrOutputWithContext(ctx context.Context) SslConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SslConfiguration) *SslConfiguration {
+		return &v
+	}).(SslConfigurationPtrOutput)
+}
+
+// Cert data
+func (o SslConfigurationOutput) Cert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SslConfiguration) *string { return v.Cert }).(pulumi.StringPtrOutput)
+}
+
+// CNAME of the cert
+func (o SslConfigurationOutput) Cname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SslConfiguration) *string { return v.Cname }).(pulumi.StringPtrOutput)
+}
+
+// Key data
+func (o SslConfigurationOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SslConfiguration) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Leaf domain label of public endpoint
+func (o SslConfigurationOutput) LeafDomainLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SslConfiguration) *string { return v.LeafDomainLabel }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to overwrite existing domain label.
+func (o SslConfigurationOutput) OverwriteExistingDomain() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SslConfiguration) *bool { return v.OverwriteExistingDomain }).(pulumi.BoolPtrOutput)
+}
+
+// Enable or disable ssl for scoring
+func (o SslConfigurationOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SslConfiguration) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type SslConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (SslConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SslConfiguration)(nil)).Elem()
+}
+
+func (o SslConfigurationPtrOutput) ToSslConfigurationPtrOutput() SslConfigurationPtrOutput {
+	return o
+}
+
+func (o SslConfigurationPtrOutput) ToSslConfigurationPtrOutputWithContext(ctx context.Context) SslConfigurationPtrOutput {
+	return o
+}
+
+func (o SslConfigurationPtrOutput) Elem() SslConfigurationOutput {
+	return o.ApplyT(func(v *SslConfiguration) SslConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret SslConfiguration
+		return ret
+	}).(SslConfigurationOutput)
+}
+
+// Cert data
+func (o SslConfigurationPtrOutput) Cert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cert
+	}).(pulumi.StringPtrOutput)
+}
+
+// CNAME of the cert
+func (o SslConfigurationPtrOutput) Cname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Key data
+func (o SslConfigurationPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Leaf domain label of public endpoint
+func (o SslConfigurationPtrOutput) LeafDomainLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LeafDomainLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to overwrite existing domain label.
+func (o SslConfigurationPtrOutput) OverwriteExistingDomain() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SslConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OverwriteExistingDomain
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable or disable ssl for scoring
+func (o SslConfigurationPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
 // The ssl configuration for scoring
 type SslConfigurationResponse struct {
 	// Cert data
@@ -4178,6 +8841,135 @@ type SslConfigurationResponse struct {
 	OverwriteExistingDomain *bool `pulumi:"overwriteExistingDomain"`
 	// Enable or disable ssl for scoring
 	Status *string `pulumi:"status"`
+}
+
+// The ssl configuration for scoring
+type SslConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (SslConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SslConfigurationResponse)(nil)).Elem()
+}
+
+func (o SslConfigurationResponseOutput) ToSslConfigurationResponseOutput() SslConfigurationResponseOutput {
+	return o
+}
+
+func (o SslConfigurationResponseOutput) ToSslConfigurationResponseOutputWithContext(ctx context.Context) SslConfigurationResponseOutput {
+	return o
+}
+
+// Cert data
+func (o SslConfigurationResponseOutput) Cert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SslConfigurationResponse) *string { return v.Cert }).(pulumi.StringPtrOutput)
+}
+
+// CNAME of the cert
+func (o SslConfigurationResponseOutput) Cname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SslConfigurationResponse) *string { return v.Cname }).(pulumi.StringPtrOutput)
+}
+
+// Key data
+func (o SslConfigurationResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SslConfigurationResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Leaf domain label of public endpoint
+func (o SslConfigurationResponseOutput) LeafDomainLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SslConfigurationResponse) *string { return v.LeafDomainLabel }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to overwrite existing domain label.
+func (o SslConfigurationResponseOutput) OverwriteExistingDomain() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SslConfigurationResponse) *bool { return v.OverwriteExistingDomain }).(pulumi.BoolPtrOutput)
+}
+
+// Enable or disable ssl for scoring
+func (o SslConfigurationResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SslConfigurationResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type SslConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SslConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SslConfigurationResponse)(nil)).Elem()
+}
+
+func (o SslConfigurationResponsePtrOutput) ToSslConfigurationResponsePtrOutput() SslConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o SslConfigurationResponsePtrOutput) ToSslConfigurationResponsePtrOutputWithContext(ctx context.Context) SslConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o SslConfigurationResponsePtrOutput) Elem() SslConfigurationResponseOutput {
+	return o.ApplyT(func(v *SslConfigurationResponse) SslConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SslConfigurationResponse
+		return ret
+	}).(SslConfigurationResponseOutput)
+}
+
+// Cert data
+func (o SslConfigurationResponsePtrOutput) Cert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cert
+	}).(pulumi.StringPtrOutput)
+}
+
+// CNAME of the cert
+func (o SslConfigurationResponsePtrOutput) Cname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Key data
+func (o SslConfigurationResponsePtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Leaf domain label of public endpoint
+func (o SslConfigurationResponsePtrOutput) LeafDomainLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LeafDomainLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether to overwrite existing domain label.
+func (o SslConfigurationResponsePtrOutput) OverwriteExistingDomain() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SslConfigurationResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OverwriteExistingDomain
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable or disable ssl for scoring
+func (o SslConfigurationResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SslConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
 }
 
 // Advances setting to customize StackEnsemble run.
@@ -4207,6 +8999,188 @@ func (val *StackEnsembleSettings) Defaults() *StackEnsembleSettings {
 	return &tmp
 }
 
+// StackEnsembleSettingsInput is an input type that accepts StackEnsembleSettingsArgs and StackEnsembleSettingsOutput values.
+// You can construct a concrete instance of `StackEnsembleSettingsInput` via:
+//
+//	StackEnsembleSettingsArgs{...}
+type StackEnsembleSettingsInput interface {
+	pulumi.Input
+
+	ToStackEnsembleSettingsOutput() StackEnsembleSettingsOutput
+	ToStackEnsembleSettingsOutputWithContext(context.Context) StackEnsembleSettingsOutput
+}
+
+// Advances setting to customize StackEnsemble run.
+type StackEnsembleSettingsArgs struct {
+	// Optional parameters to pass to the initializer of the meta-learner.
+	StackMetaLearnerKWargs pulumi.Input `pulumi:"stackMetaLearnerKWargs"`
+	// Specifies the proportion of the training set (when choosing train and validation type of training) to be reserved for training the meta-learner. Default value is 0.2.
+	StackMetaLearnerTrainPercentage pulumi.Float64PtrInput `pulumi:"stackMetaLearnerTrainPercentage"`
+	// The meta-learner is a model trained on the output of the individual heterogeneous models.
+	StackMetaLearnerType pulumi.StringPtrInput `pulumi:"stackMetaLearnerType"`
+}
+
+// Defaults sets the appropriate defaults for StackEnsembleSettingsArgs
+func (val *StackEnsembleSettingsArgs) Defaults() *StackEnsembleSettingsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.StackMetaLearnerTrainPercentage == nil {
+		tmp.StackMetaLearnerTrainPercentage = pulumi.Float64Ptr(0.2)
+	}
+	if tmp.StackMetaLearnerType == nil {
+		tmp.StackMetaLearnerType = pulumi.StringPtr("None")
+	}
+	return &tmp
+}
+func (StackEnsembleSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackEnsembleSettings)(nil)).Elem()
+}
+
+func (i StackEnsembleSettingsArgs) ToStackEnsembleSettingsOutput() StackEnsembleSettingsOutput {
+	return i.ToStackEnsembleSettingsOutputWithContext(context.Background())
+}
+
+func (i StackEnsembleSettingsArgs) ToStackEnsembleSettingsOutputWithContext(ctx context.Context) StackEnsembleSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackEnsembleSettingsOutput)
+}
+
+func (i StackEnsembleSettingsArgs) ToStackEnsembleSettingsPtrOutput() StackEnsembleSettingsPtrOutput {
+	return i.ToStackEnsembleSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i StackEnsembleSettingsArgs) ToStackEnsembleSettingsPtrOutputWithContext(ctx context.Context) StackEnsembleSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackEnsembleSettingsOutput).ToStackEnsembleSettingsPtrOutputWithContext(ctx)
+}
+
+// StackEnsembleSettingsPtrInput is an input type that accepts StackEnsembleSettingsArgs, StackEnsembleSettingsPtr and StackEnsembleSettingsPtrOutput values.
+// You can construct a concrete instance of `StackEnsembleSettingsPtrInput` via:
+//
+//	        StackEnsembleSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type StackEnsembleSettingsPtrInput interface {
+	pulumi.Input
+
+	ToStackEnsembleSettingsPtrOutput() StackEnsembleSettingsPtrOutput
+	ToStackEnsembleSettingsPtrOutputWithContext(context.Context) StackEnsembleSettingsPtrOutput
+}
+
+type stackEnsembleSettingsPtrType StackEnsembleSettingsArgs
+
+func StackEnsembleSettingsPtr(v *StackEnsembleSettingsArgs) StackEnsembleSettingsPtrInput {
+	return (*stackEnsembleSettingsPtrType)(v)
+}
+
+func (*stackEnsembleSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StackEnsembleSettings)(nil)).Elem()
+}
+
+func (i *stackEnsembleSettingsPtrType) ToStackEnsembleSettingsPtrOutput() StackEnsembleSettingsPtrOutput {
+	return i.ToStackEnsembleSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *stackEnsembleSettingsPtrType) ToStackEnsembleSettingsPtrOutputWithContext(ctx context.Context) StackEnsembleSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackEnsembleSettingsPtrOutput)
+}
+
+// Advances setting to customize StackEnsemble run.
+type StackEnsembleSettingsOutput struct{ *pulumi.OutputState }
+
+func (StackEnsembleSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackEnsembleSettings)(nil)).Elem()
+}
+
+func (o StackEnsembleSettingsOutput) ToStackEnsembleSettingsOutput() StackEnsembleSettingsOutput {
+	return o
+}
+
+func (o StackEnsembleSettingsOutput) ToStackEnsembleSettingsOutputWithContext(ctx context.Context) StackEnsembleSettingsOutput {
+	return o
+}
+
+func (o StackEnsembleSettingsOutput) ToStackEnsembleSettingsPtrOutput() StackEnsembleSettingsPtrOutput {
+	return o.ToStackEnsembleSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o StackEnsembleSettingsOutput) ToStackEnsembleSettingsPtrOutputWithContext(ctx context.Context) StackEnsembleSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StackEnsembleSettings) *StackEnsembleSettings {
+		return &v
+	}).(StackEnsembleSettingsPtrOutput)
+}
+
+// Optional parameters to pass to the initializer of the meta-learner.
+func (o StackEnsembleSettingsOutput) StackMetaLearnerKWargs() pulumi.AnyOutput {
+	return o.ApplyT(func(v StackEnsembleSettings) interface{} { return v.StackMetaLearnerKWargs }).(pulumi.AnyOutput)
+}
+
+// Specifies the proportion of the training set (when choosing train and validation type of training) to be reserved for training the meta-learner. Default value is 0.2.
+func (o StackEnsembleSettingsOutput) StackMetaLearnerTrainPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v StackEnsembleSettings) *float64 { return v.StackMetaLearnerTrainPercentage }).(pulumi.Float64PtrOutput)
+}
+
+// The meta-learner is a model trained on the output of the individual heterogeneous models.
+func (o StackEnsembleSettingsOutput) StackMetaLearnerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StackEnsembleSettings) *string { return v.StackMetaLearnerType }).(pulumi.StringPtrOutput)
+}
+
+type StackEnsembleSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (StackEnsembleSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StackEnsembleSettings)(nil)).Elem()
+}
+
+func (o StackEnsembleSettingsPtrOutput) ToStackEnsembleSettingsPtrOutput() StackEnsembleSettingsPtrOutput {
+	return o
+}
+
+func (o StackEnsembleSettingsPtrOutput) ToStackEnsembleSettingsPtrOutputWithContext(ctx context.Context) StackEnsembleSettingsPtrOutput {
+	return o
+}
+
+func (o StackEnsembleSettingsPtrOutput) Elem() StackEnsembleSettingsOutput {
+	return o.ApplyT(func(v *StackEnsembleSettings) StackEnsembleSettings {
+		if v != nil {
+			return *v
+		}
+		var ret StackEnsembleSettings
+		return ret
+	}).(StackEnsembleSettingsOutput)
+}
+
+// Optional parameters to pass to the initializer of the meta-learner.
+func (o StackEnsembleSettingsPtrOutput) StackMetaLearnerKWargs() pulumi.AnyOutput {
+	return o.ApplyT(func(v *StackEnsembleSettings) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.StackMetaLearnerKWargs
+	}).(pulumi.AnyOutput)
+}
+
+// Specifies the proportion of the training set (when choosing train and validation type of training) to be reserved for training the meta-learner. Default value is 0.2.
+func (o StackEnsembleSettingsPtrOutput) StackMetaLearnerTrainPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *StackEnsembleSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.StackMetaLearnerTrainPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The meta-learner is a model trained on the output of the individual heterogeneous models.
+func (o StackEnsembleSettingsPtrOutput) StackMetaLearnerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StackEnsembleSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StackMetaLearnerType
+	}).(pulumi.StringPtrOutput)
+}
+
 // Advances setting to customize StackEnsemble run.
 type StackEnsembleSettingsResponse struct {
 	// Optional parameters to pass to the initializer of the meta-learner.
@@ -4234,6 +9208,90 @@ func (val *StackEnsembleSettingsResponse) Defaults() *StackEnsembleSettingsRespo
 	return &tmp
 }
 
+// Advances setting to customize StackEnsemble run.
+type StackEnsembleSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (StackEnsembleSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackEnsembleSettingsResponse)(nil)).Elem()
+}
+
+func (o StackEnsembleSettingsResponseOutput) ToStackEnsembleSettingsResponseOutput() StackEnsembleSettingsResponseOutput {
+	return o
+}
+
+func (o StackEnsembleSettingsResponseOutput) ToStackEnsembleSettingsResponseOutputWithContext(ctx context.Context) StackEnsembleSettingsResponseOutput {
+	return o
+}
+
+// Optional parameters to pass to the initializer of the meta-learner.
+func (o StackEnsembleSettingsResponseOutput) StackMetaLearnerKWargs() pulumi.AnyOutput {
+	return o.ApplyT(func(v StackEnsembleSettingsResponse) interface{} { return v.StackMetaLearnerKWargs }).(pulumi.AnyOutput)
+}
+
+// Specifies the proportion of the training set (when choosing train and validation type of training) to be reserved for training the meta-learner. Default value is 0.2.
+func (o StackEnsembleSettingsResponseOutput) StackMetaLearnerTrainPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v StackEnsembleSettingsResponse) *float64 { return v.StackMetaLearnerTrainPercentage }).(pulumi.Float64PtrOutput)
+}
+
+// The meta-learner is a model trained on the output of the individual heterogeneous models.
+func (o StackEnsembleSettingsResponseOutput) StackMetaLearnerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StackEnsembleSettingsResponse) *string { return v.StackMetaLearnerType }).(pulumi.StringPtrOutput)
+}
+
+type StackEnsembleSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StackEnsembleSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StackEnsembleSettingsResponse)(nil)).Elem()
+}
+
+func (o StackEnsembleSettingsResponsePtrOutput) ToStackEnsembleSettingsResponsePtrOutput() StackEnsembleSettingsResponsePtrOutput {
+	return o
+}
+
+func (o StackEnsembleSettingsResponsePtrOutput) ToStackEnsembleSettingsResponsePtrOutputWithContext(ctx context.Context) StackEnsembleSettingsResponsePtrOutput {
+	return o
+}
+
+func (o StackEnsembleSettingsResponsePtrOutput) Elem() StackEnsembleSettingsResponseOutput {
+	return o.ApplyT(func(v *StackEnsembleSettingsResponse) StackEnsembleSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StackEnsembleSettingsResponse
+		return ret
+	}).(StackEnsembleSettingsResponseOutput)
+}
+
+// Optional parameters to pass to the initializer of the meta-learner.
+func (o StackEnsembleSettingsResponsePtrOutput) StackMetaLearnerKWargs() pulumi.AnyOutput {
+	return o.ApplyT(func(v *StackEnsembleSettingsResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.StackMetaLearnerKWargs
+	}).(pulumi.AnyOutput)
+}
+
+// Specifies the proportion of the training set (when choosing train and validation type of training) to be reserved for training the meta-learner. Default value is 0.2.
+func (o StackEnsembleSettingsResponsePtrOutput) StackMetaLearnerTrainPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *StackEnsembleSettingsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.StackMetaLearnerTrainPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The meta-learner is a model trained on the output of the individual heterogeneous models.
+func (o StackEnsembleSettingsResponsePtrOutput) StackMetaLearnerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StackEnsembleSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StackMetaLearnerType
+	}).(pulumi.StringPtrOutput)
+}
+
 // Static input data definition.
 type StaticInputData struct {
 	// Mapping of column names to special uses.
@@ -4255,6 +9313,106 @@ type StaticInputData struct {
 	WindowStart string `pulumi:"windowStart"`
 }
 
+// StaticInputDataInput is an input type that accepts StaticInputDataArgs and StaticInputDataOutput values.
+// You can construct a concrete instance of `StaticInputDataInput` via:
+//
+//	StaticInputDataArgs{...}
+type StaticInputDataInput interface {
+	pulumi.Input
+
+	ToStaticInputDataOutput() StaticInputDataOutput
+	ToStaticInputDataOutputWithContext(context.Context) StaticInputDataOutput
+}
+
+// Static input data definition.
+type StaticInputDataArgs struct {
+	// Mapping of column names to special uses.
+	Columns pulumi.StringMapInput `pulumi:"columns"`
+	// The context metadata of the data source.
+	DataContext pulumi.StringPtrInput `pulumi:"dataContext"`
+	// Monitoring input data type enum.
+	// Expected value is 'Static'.
+	InputDataType pulumi.StringInput `pulumi:"inputDataType"`
+	// [Required] Specifies the type of job.
+	JobInputType pulumi.StringInput `pulumi:"jobInputType"`
+	// The ARM resource ID of the component resource used to preprocess the data.
+	PreprocessingComponentId pulumi.StringPtrInput `pulumi:"preprocessingComponentId"`
+	// [Required] Input Asset URI.
+	Uri pulumi.StringInput `pulumi:"uri"`
+	// [Required] The end date of the data window.
+	WindowEnd pulumi.StringInput `pulumi:"windowEnd"`
+	// [Required] The start date of the data window.
+	WindowStart pulumi.StringInput `pulumi:"windowStart"`
+}
+
+func (StaticInputDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticInputData)(nil)).Elem()
+}
+
+func (i StaticInputDataArgs) ToStaticInputDataOutput() StaticInputDataOutput {
+	return i.ToStaticInputDataOutputWithContext(context.Background())
+}
+
+func (i StaticInputDataArgs) ToStaticInputDataOutputWithContext(ctx context.Context) StaticInputDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StaticInputDataOutput)
+}
+
+// Static input data definition.
+type StaticInputDataOutput struct{ *pulumi.OutputState }
+
+func (StaticInputDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticInputData)(nil)).Elem()
+}
+
+func (o StaticInputDataOutput) ToStaticInputDataOutput() StaticInputDataOutput {
+	return o
+}
+
+func (o StaticInputDataOutput) ToStaticInputDataOutputWithContext(ctx context.Context) StaticInputDataOutput {
+	return o
+}
+
+// Mapping of column names to special uses.
+func (o StaticInputDataOutput) Columns() pulumi.StringMapOutput {
+	return o.ApplyT(func(v StaticInputData) map[string]string { return v.Columns }).(pulumi.StringMapOutput)
+}
+
+// The context metadata of the data source.
+func (o StaticInputDataOutput) DataContext() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticInputData) *string { return v.DataContext }).(pulumi.StringPtrOutput)
+}
+
+// Monitoring input data type enum.
+// Expected value is 'Static'.
+func (o StaticInputDataOutput) InputDataType() pulumi.StringOutput {
+	return o.ApplyT(func(v StaticInputData) string { return v.InputDataType }).(pulumi.StringOutput)
+}
+
+// [Required] Specifies the type of job.
+func (o StaticInputDataOutput) JobInputType() pulumi.StringOutput {
+	return o.ApplyT(func(v StaticInputData) string { return v.JobInputType }).(pulumi.StringOutput)
+}
+
+// The ARM resource ID of the component resource used to preprocess the data.
+func (o StaticInputDataOutput) PreprocessingComponentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticInputData) *string { return v.PreprocessingComponentId }).(pulumi.StringPtrOutput)
+}
+
+// [Required] Input Asset URI.
+func (o StaticInputDataOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v StaticInputData) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// [Required] The end date of the data window.
+func (o StaticInputDataOutput) WindowEnd() pulumi.StringOutput {
+	return o.ApplyT(func(v StaticInputData) string { return v.WindowEnd }).(pulumi.StringOutput)
+}
+
+// [Required] The start date of the data window.
+func (o StaticInputDataOutput) WindowStart() pulumi.StringOutput {
+	return o.ApplyT(func(v StaticInputData) string { return v.WindowStart }).(pulumi.StringOutput)
+}
+
 // Static input data definition.
 type StaticInputDataResponse struct {
 	// Mapping of column names to special uses.
@@ -4274,6 +9432,62 @@ type StaticInputDataResponse struct {
 	WindowEnd string `pulumi:"windowEnd"`
 	// [Required] The start date of the data window.
 	WindowStart string `pulumi:"windowStart"`
+}
+
+// Static input data definition.
+type StaticInputDataResponseOutput struct{ *pulumi.OutputState }
+
+func (StaticInputDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticInputDataResponse)(nil)).Elem()
+}
+
+func (o StaticInputDataResponseOutput) ToStaticInputDataResponseOutput() StaticInputDataResponseOutput {
+	return o
+}
+
+func (o StaticInputDataResponseOutput) ToStaticInputDataResponseOutputWithContext(ctx context.Context) StaticInputDataResponseOutput {
+	return o
+}
+
+// Mapping of column names to special uses.
+func (o StaticInputDataResponseOutput) Columns() pulumi.StringMapOutput {
+	return o.ApplyT(func(v StaticInputDataResponse) map[string]string { return v.Columns }).(pulumi.StringMapOutput)
+}
+
+// The context metadata of the data source.
+func (o StaticInputDataResponseOutput) DataContext() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticInputDataResponse) *string { return v.DataContext }).(pulumi.StringPtrOutput)
+}
+
+// Monitoring input data type enum.
+// Expected value is 'Static'.
+func (o StaticInputDataResponseOutput) InputDataType() pulumi.StringOutput {
+	return o.ApplyT(func(v StaticInputDataResponse) string { return v.InputDataType }).(pulumi.StringOutput)
+}
+
+// [Required] Specifies the type of job.
+func (o StaticInputDataResponseOutput) JobInputType() pulumi.StringOutput {
+	return o.ApplyT(func(v StaticInputDataResponse) string { return v.JobInputType }).(pulumi.StringOutput)
+}
+
+// The ARM resource ID of the component resource used to preprocess the data.
+func (o StaticInputDataResponseOutput) PreprocessingComponentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticInputDataResponse) *string { return v.PreprocessingComponentId }).(pulumi.StringPtrOutput)
+}
+
+// [Required] Input Asset URI.
+func (o StaticInputDataResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v StaticInputDataResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// [Required] The end date of the data window.
+func (o StaticInputDataResponseOutput) WindowEnd() pulumi.StringOutput {
+	return o.ApplyT(func(v StaticInputDataResponse) string { return v.WindowEnd }).(pulumi.StringOutput)
+}
+
+// [Required] The start date of the data window.
+func (o StaticInputDataResponseOutput) WindowStart() pulumi.StringOutput {
+	return o.ApplyT(func(v StaticInputDataResponse) string { return v.WindowStart }).(pulumi.StringOutput)
 }
 
 // Active message associated with project
@@ -4587,6 +9801,237 @@ func (val *SweepJob) Defaults() *SweepJob {
 	return &tmp
 }
 
+// SweepJobInput is an input type that accepts SweepJobArgs and SweepJobOutput values.
+// You can construct a concrete instance of `SweepJobInput` via:
+//
+//	SweepJobArgs{...}
+type SweepJobInput interface {
+	pulumi.Input
+
+	ToSweepJobOutput() SweepJobOutput
+	ToSweepJobOutputWithContext(context.Context) SweepJobOutput
+}
+
+// Sweep job definition.
+type SweepJobArgs struct {
+	// Component Configuration for sweep over component
+	ComponentConfiguration ComponentConfigurationPtrInput `pulumi:"componentConfiguration"`
+	// ARM resource ID of the component resource.
+	ComponentId pulumi.StringPtrInput `pulumi:"componentId"`
+	// ARM resource ID of the compute resource.
+	ComputeId pulumi.StringPtrInput `pulumi:"computeId"`
+	// The asset description text.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Display name of job.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Early termination policies enable canceling poor-performing runs before they complete
+	EarlyTermination pulumi.Input `pulumi:"earlyTermination"`
+	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
+	ExperimentName pulumi.StringPtrInput `pulumi:"experimentName"`
+	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
+	// Defaults to AmlToken if null.
+	Identity pulumi.Input `pulumi:"identity"`
+	// Mapping of input data bindings used in the job.
+	Inputs pulumi.MapInput `pulumi:"inputs"`
+	// Is the asset archived?
+	IsArchived pulumi.BoolPtrInput `pulumi:"isArchived"`
+	// Enum to determine the type of job.
+	// Expected value is 'Sweep'.
+	JobType pulumi.StringInput `pulumi:"jobType"`
+	// Sweep Job limit.
+	Limits SweepJobLimitsPtrInput `pulumi:"limits"`
+	// Notification setting for the job
+	NotificationSetting NotificationSettingPtrInput `pulumi:"notificationSetting"`
+	// [Required] Optimization objective.
+	Objective ObjectiveInput `pulumi:"objective"`
+	// Mapping of output data bindings used in the job.
+	Outputs pulumi.MapInput `pulumi:"outputs"`
+	// The asset property dictionary.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// Queue settings for the job
+	QueueSettings QueueSettingsPtrInput `pulumi:"queueSettings"`
+	// Compute Resource configuration for the job.
+	Resources JobResourceConfigurationPtrInput `pulumi:"resources"`
+	// [Required] The hyperparameter sampling algorithm
+	SamplingAlgorithm pulumi.Input `pulumi:"samplingAlgorithm"`
+	// [Required] A dictionary containing each parameter and its distribution. The dictionary key is the name of the parameter
+	SearchSpace pulumi.Input `pulumi:"searchSpace"`
+	// Configuration for secrets to be made available during runtime.
+	SecretsConfiguration SecretConfigurationMapInput `pulumi:"secretsConfiguration"`
+	// List of JobEndpoints.
+	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
+	Services JobServiceMapInput `pulumi:"services"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// [Required] Trial component definition.
+	Trial TrialComponentInput `pulumi:"trial"`
+}
+
+// Defaults sets the appropriate defaults for SweepJobArgs
+func (val *SweepJobArgs) Defaults() *SweepJobArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ExperimentName == nil {
+		tmp.ExperimentName = pulumi.StringPtr("Default")
+	}
+	if tmp.IsArchived == nil {
+		tmp.IsArchived = pulumi.BoolPtr(false)
+	}
+
+	return &tmp
+}
+func (SweepJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SweepJob)(nil)).Elem()
+}
+
+func (i SweepJobArgs) ToSweepJobOutput() SweepJobOutput {
+	return i.ToSweepJobOutputWithContext(context.Background())
+}
+
+func (i SweepJobArgs) ToSweepJobOutputWithContext(ctx context.Context) SweepJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SweepJobOutput)
+}
+
+// Sweep job definition.
+type SweepJobOutput struct{ *pulumi.OutputState }
+
+func (SweepJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SweepJob)(nil)).Elem()
+}
+
+func (o SweepJobOutput) ToSweepJobOutput() SweepJobOutput {
+	return o
+}
+
+func (o SweepJobOutput) ToSweepJobOutputWithContext(ctx context.Context) SweepJobOutput {
+	return o
+}
+
+// Component Configuration for sweep over component
+func (o SweepJobOutput) ComponentConfiguration() ComponentConfigurationPtrOutput {
+	return o.ApplyT(func(v SweepJob) *ComponentConfiguration { return v.ComponentConfiguration }).(ComponentConfigurationPtrOutput)
+}
+
+// ARM resource ID of the component resource.
+func (o SweepJobOutput) ComponentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SweepJob) *string { return v.ComponentId }).(pulumi.StringPtrOutput)
+}
+
+// ARM resource ID of the compute resource.
+func (o SweepJobOutput) ComputeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SweepJob) *string { return v.ComputeId }).(pulumi.StringPtrOutput)
+}
+
+// The asset description text.
+func (o SweepJobOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SweepJob) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Display name of job.
+func (o SweepJobOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SweepJob) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Early termination policies enable canceling poor-performing runs before they complete
+func (o SweepJobOutput) EarlyTermination() pulumi.AnyOutput {
+	return o.ApplyT(func(v SweepJob) interface{} { return v.EarlyTermination }).(pulumi.AnyOutput)
+}
+
+// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
+func (o SweepJobOutput) ExperimentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SweepJob) *string { return v.ExperimentName }).(pulumi.StringPtrOutput)
+}
+
+// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
+// Defaults to AmlToken if null.
+func (o SweepJobOutput) Identity() pulumi.AnyOutput {
+	return o.ApplyT(func(v SweepJob) interface{} { return v.Identity }).(pulumi.AnyOutput)
+}
+
+// Mapping of input data bindings used in the job.
+func (o SweepJobOutput) Inputs() pulumi.MapOutput {
+	return o.ApplyT(func(v SweepJob) map[string]interface{} { return v.Inputs }).(pulumi.MapOutput)
+}
+
+// Is the asset archived?
+func (o SweepJobOutput) IsArchived() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SweepJob) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
+}
+
+// Enum to determine the type of job.
+// Expected value is 'Sweep'.
+func (o SweepJobOutput) JobType() pulumi.StringOutput {
+	return o.ApplyT(func(v SweepJob) string { return v.JobType }).(pulumi.StringOutput)
+}
+
+// Sweep Job limit.
+func (o SweepJobOutput) Limits() SweepJobLimitsPtrOutput {
+	return o.ApplyT(func(v SweepJob) *SweepJobLimits { return v.Limits }).(SweepJobLimitsPtrOutput)
+}
+
+// Notification setting for the job
+func (o SweepJobOutput) NotificationSetting() NotificationSettingPtrOutput {
+	return o.ApplyT(func(v SweepJob) *NotificationSetting { return v.NotificationSetting }).(NotificationSettingPtrOutput)
+}
+
+// [Required] Optimization objective.
+func (o SweepJobOutput) Objective() ObjectiveOutput {
+	return o.ApplyT(func(v SweepJob) Objective { return v.Objective }).(ObjectiveOutput)
+}
+
+// Mapping of output data bindings used in the job.
+func (o SweepJobOutput) Outputs() pulumi.MapOutput {
+	return o.ApplyT(func(v SweepJob) map[string]interface{} { return v.Outputs }).(pulumi.MapOutput)
+}
+
+// The asset property dictionary.
+func (o SweepJobOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SweepJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Queue settings for the job
+func (o SweepJobOutput) QueueSettings() QueueSettingsPtrOutput {
+	return o.ApplyT(func(v SweepJob) *QueueSettings { return v.QueueSettings }).(QueueSettingsPtrOutput)
+}
+
+// Compute Resource configuration for the job.
+func (o SweepJobOutput) Resources() JobResourceConfigurationPtrOutput {
+	return o.ApplyT(func(v SweepJob) *JobResourceConfiguration { return v.Resources }).(JobResourceConfigurationPtrOutput)
+}
+
+// [Required] The hyperparameter sampling algorithm
+func (o SweepJobOutput) SamplingAlgorithm() pulumi.AnyOutput {
+	return o.ApplyT(func(v SweepJob) interface{} { return v.SamplingAlgorithm }).(pulumi.AnyOutput)
+}
+
+// [Required] A dictionary containing each parameter and its distribution. The dictionary key is the name of the parameter
+func (o SweepJobOutput) SearchSpace() pulumi.AnyOutput {
+	return o.ApplyT(func(v SweepJob) interface{} { return v.SearchSpace }).(pulumi.AnyOutput)
+}
+
+// Configuration for secrets to be made available during runtime.
+func (o SweepJobOutput) SecretsConfiguration() SecretConfigurationMapOutput {
+	return o.ApplyT(func(v SweepJob) map[string]SecretConfiguration { return v.SecretsConfiguration }).(SecretConfigurationMapOutput)
+}
+
+// List of JobEndpoints.
+// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
+func (o SweepJobOutput) Services() JobServiceMapOutput {
+	return o.ApplyT(func(v SweepJob) map[string]JobService { return v.Services }).(JobServiceMapOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o SweepJobOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SweepJob) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// [Required] Trial component definition.
+func (o SweepJobOutput) Trial() TrialComponentOutput {
+	return o.ApplyT(func(v SweepJob) TrialComponent { return v.Trial }).(TrialComponentOutput)
+}
+
 // Sweep Job limit class.
 type SweepJobLimits struct {
 	// Expected value is 'Sweep'.
@@ -4601,6 +10046,208 @@ type SweepJobLimits struct {
 	TrialTimeout *string `pulumi:"trialTimeout"`
 }
 
+// SweepJobLimitsInput is an input type that accepts SweepJobLimitsArgs and SweepJobLimitsOutput values.
+// You can construct a concrete instance of `SweepJobLimitsInput` via:
+//
+//	SweepJobLimitsArgs{...}
+type SweepJobLimitsInput interface {
+	pulumi.Input
+
+	ToSweepJobLimitsOutput() SweepJobLimitsOutput
+	ToSweepJobLimitsOutputWithContext(context.Context) SweepJobLimitsOutput
+}
+
+// Sweep Job limit class.
+type SweepJobLimitsArgs struct {
+	// Expected value is 'Sweep'.
+	JobLimitsType pulumi.StringInput `pulumi:"jobLimitsType"`
+	// Sweep Job max concurrent trials.
+	MaxConcurrentTrials pulumi.IntPtrInput `pulumi:"maxConcurrentTrials"`
+	// Sweep Job max total trials.
+	MaxTotalTrials pulumi.IntPtrInput `pulumi:"maxTotalTrials"`
+	// The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
+	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
+	// Sweep Job Trial timeout value.
+	TrialTimeout pulumi.StringPtrInput `pulumi:"trialTimeout"`
+}
+
+func (SweepJobLimitsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SweepJobLimits)(nil)).Elem()
+}
+
+func (i SweepJobLimitsArgs) ToSweepJobLimitsOutput() SweepJobLimitsOutput {
+	return i.ToSweepJobLimitsOutputWithContext(context.Background())
+}
+
+func (i SweepJobLimitsArgs) ToSweepJobLimitsOutputWithContext(ctx context.Context) SweepJobLimitsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SweepJobLimitsOutput)
+}
+
+func (i SweepJobLimitsArgs) ToSweepJobLimitsPtrOutput() SweepJobLimitsPtrOutput {
+	return i.ToSweepJobLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i SweepJobLimitsArgs) ToSweepJobLimitsPtrOutputWithContext(ctx context.Context) SweepJobLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SweepJobLimitsOutput).ToSweepJobLimitsPtrOutputWithContext(ctx)
+}
+
+// SweepJobLimitsPtrInput is an input type that accepts SweepJobLimitsArgs, SweepJobLimitsPtr and SweepJobLimitsPtrOutput values.
+// You can construct a concrete instance of `SweepJobLimitsPtrInput` via:
+//
+//	        SweepJobLimitsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SweepJobLimitsPtrInput interface {
+	pulumi.Input
+
+	ToSweepJobLimitsPtrOutput() SweepJobLimitsPtrOutput
+	ToSweepJobLimitsPtrOutputWithContext(context.Context) SweepJobLimitsPtrOutput
+}
+
+type sweepJobLimitsPtrType SweepJobLimitsArgs
+
+func SweepJobLimitsPtr(v *SweepJobLimitsArgs) SweepJobLimitsPtrInput {
+	return (*sweepJobLimitsPtrType)(v)
+}
+
+func (*sweepJobLimitsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SweepJobLimits)(nil)).Elem()
+}
+
+func (i *sweepJobLimitsPtrType) ToSweepJobLimitsPtrOutput() SweepJobLimitsPtrOutput {
+	return i.ToSweepJobLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i *sweepJobLimitsPtrType) ToSweepJobLimitsPtrOutputWithContext(ctx context.Context) SweepJobLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SweepJobLimitsPtrOutput)
+}
+
+// Sweep Job limit class.
+type SweepJobLimitsOutput struct{ *pulumi.OutputState }
+
+func (SweepJobLimitsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SweepJobLimits)(nil)).Elem()
+}
+
+func (o SweepJobLimitsOutput) ToSweepJobLimitsOutput() SweepJobLimitsOutput {
+	return o
+}
+
+func (o SweepJobLimitsOutput) ToSweepJobLimitsOutputWithContext(ctx context.Context) SweepJobLimitsOutput {
+	return o
+}
+
+func (o SweepJobLimitsOutput) ToSweepJobLimitsPtrOutput() SweepJobLimitsPtrOutput {
+	return o.ToSweepJobLimitsPtrOutputWithContext(context.Background())
+}
+
+func (o SweepJobLimitsOutput) ToSweepJobLimitsPtrOutputWithContext(ctx context.Context) SweepJobLimitsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SweepJobLimits) *SweepJobLimits {
+		return &v
+	}).(SweepJobLimitsPtrOutput)
+}
+
+// Expected value is 'Sweep'.
+func (o SweepJobLimitsOutput) JobLimitsType() pulumi.StringOutput {
+	return o.ApplyT(func(v SweepJobLimits) string { return v.JobLimitsType }).(pulumi.StringOutput)
+}
+
+// Sweep Job max concurrent trials.
+func (o SweepJobLimitsOutput) MaxConcurrentTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SweepJobLimits) *int { return v.MaxConcurrentTrials }).(pulumi.IntPtrOutput)
+}
+
+// Sweep Job max total trials.
+func (o SweepJobLimitsOutput) MaxTotalTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SweepJobLimits) *int { return v.MaxTotalTrials }).(pulumi.IntPtrOutput)
+}
+
+// The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
+func (o SweepJobLimitsOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SweepJobLimits) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+// Sweep Job Trial timeout value.
+func (o SweepJobLimitsOutput) TrialTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SweepJobLimits) *string { return v.TrialTimeout }).(pulumi.StringPtrOutput)
+}
+
+type SweepJobLimitsPtrOutput struct{ *pulumi.OutputState }
+
+func (SweepJobLimitsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SweepJobLimits)(nil)).Elem()
+}
+
+func (o SweepJobLimitsPtrOutput) ToSweepJobLimitsPtrOutput() SweepJobLimitsPtrOutput {
+	return o
+}
+
+func (o SweepJobLimitsPtrOutput) ToSweepJobLimitsPtrOutputWithContext(ctx context.Context) SweepJobLimitsPtrOutput {
+	return o
+}
+
+func (o SweepJobLimitsPtrOutput) Elem() SweepJobLimitsOutput {
+	return o.ApplyT(func(v *SweepJobLimits) SweepJobLimits {
+		if v != nil {
+			return *v
+		}
+		var ret SweepJobLimits
+		return ret
+	}).(SweepJobLimitsOutput)
+}
+
+// Expected value is 'Sweep'.
+func (o SweepJobLimitsPtrOutput) JobLimitsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SweepJobLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.JobLimitsType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sweep Job max concurrent trials.
+func (o SweepJobLimitsPtrOutput) MaxConcurrentTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SweepJobLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentTrials
+	}).(pulumi.IntPtrOutput)
+}
+
+// Sweep Job max total trials.
+func (o SweepJobLimitsPtrOutput) MaxTotalTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SweepJobLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTotalTrials
+	}).(pulumi.IntPtrOutput)
+}
+
+// The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
+func (o SweepJobLimitsPtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SweepJobLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sweep Job Trial timeout value.
+func (o SweepJobLimitsPtrOutput) TrialTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SweepJobLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrialTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
 // Sweep Job limit class.
 type SweepJobLimitsResponse struct {
 	// Expected value is 'Sweep'.
@@ -4613,6 +10260,120 @@ type SweepJobLimitsResponse struct {
 	Timeout *string `pulumi:"timeout"`
 	// Sweep Job Trial timeout value.
 	TrialTimeout *string `pulumi:"trialTimeout"`
+}
+
+// Sweep Job limit class.
+type SweepJobLimitsResponseOutput struct{ *pulumi.OutputState }
+
+func (SweepJobLimitsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SweepJobLimitsResponse)(nil)).Elem()
+}
+
+func (o SweepJobLimitsResponseOutput) ToSweepJobLimitsResponseOutput() SweepJobLimitsResponseOutput {
+	return o
+}
+
+func (o SweepJobLimitsResponseOutput) ToSweepJobLimitsResponseOutputWithContext(ctx context.Context) SweepJobLimitsResponseOutput {
+	return o
+}
+
+// Expected value is 'Sweep'.
+func (o SweepJobLimitsResponseOutput) JobLimitsType() pulumi.StringOutput {
+	return o.ApplyT(func(v SweepJobLimitsResponse) string { return v.JobLimitsType }).(pulumi.StringOutput)
+}
+
+// Sweep Job max concurrent trials.
+func (o SweepJobLimitsResponseOutput) MaxConcurrentTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SweepJobLimitsResponse) *int { return v.MaxConcurrentTrials }).(pulumi.IntPtrOutput)
+}
+
+// Sweep Job max total trials.
+func (o SweepJobLimitsResponseOutput) MaxTotalTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SweepJobLimitsResponse) *int { return v.MaxTotalTrials }).(pulumi.IntPtrOutput)
+}
+
+// The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
+func (o SweepJobLimitsResponseOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SweepJobLimitsResponse) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+// Sweep Job Trial timeout value.
+func (o SweepJobLimitsResponseOutput) TrialTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SweepJobLimitsResponse) *string { return v.TrialTimeout }).(pulumi.StringPtrOutput)
+}
+
+type SweepJobLimitsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SweepJobLimitsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SweepJobLimitsResponse)(nil)).Elem()
+}
+
+func (o SweepJobLimitsResponsePtrOutput) ToSweepJobLimitsResponsePtrOutput() SweepJobLimitsResponsePtrOutput {
+	return o
+}
+
+func (o SweepJobLimitsResponsePtrOutput) ToSweepJobLimitsResponsePtrOutputWithContext(ctx context.Context) SweepJobLimitsResponsePtrOutput {
+	return o
+}
+
+func (o SweepJobLimitsResponsePtrOutput) Elem() SweepJobLimitsResponseOutput {
+	return o.ApplyT(func(v *SweepJobLimitsResponse) SweepJobLimitsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SweepJobLimitsResponse
+		return ret
+	}).(SweepJobLimitsResponseOutput)
+}
+
+// Expected value is 'Sweep'.
+func (o SweepJobLimitsResponsePtrOutput) JobLimitsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SweepJobLimitsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.JobLimitsType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sweep Job max concurrent trials.
+func (o SweepJobLimitsResponsePtrOutput) MaxConcurrentTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SweepJobLimitsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentTrials
+	}).(pulumi.IntPtrOutput)
+}
+
+// Sweep Job max total trials.
+func (o SweepJobLimitsResponsePtrOutput) MaxTotalTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SweepJobLimitsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTotalTrials
+	}).(pulumi.IntPtrOutput)
+}
+
+// The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
+func (o SweepJobLimitsResponsePtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SweepJobLimitsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sweep Job Trial timeout value.
+func (o SweepJobLimitsResponsePtrOutput) TrialTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SweepJobLimitsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrialTimeout
+	}).(pulumi.StringPtrOutput)
 }
 
 // Sweep job definition.
@@ -4695,6 +10456,149 @@ func (val *SweepJobResponse) Defaults() *SweepJobResponse {
 	return &tmp
 }
 
+// Sweep job definition.
+type SweepJobResponseOutput struct{ *pulumi.OutputState }
+
+func (SweepJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SweepJobResponse)(nil)).Elem()
+}
+
+func (o SweepJobResponseOutput) ToSweepJobResponseOutput() SweepJobResponseOutput {
+	return o
+}
+
+func (o SweepJobResponseOutput) ToSweepJobResponseOutputWithContext(ctx context.Context) SweepJobResponseOutput {
+	return o
+}
+
+// Component Configuration for sweep over component
+func (o SweepJobResponseOutput) ComponentConfiguration() ComponentConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v SweepJobResponse) *ComponentConfigurationResponse { return v.ComponentConfiguration }).(ComponentConfigurationResponsePtrOutput)
+}
+
+// ARM resource ID of the component resource.
+func (o SweepJobResponseOutput) ComponentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SweepJobResponse) *string { return v.ComponentId }).(pulumi.StringPtrOutput)
+}
+
+// ARM resource ID of the compute resource.
+func (o SweepJobResponseOutput) ComputeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SweepJobResponse) *string { return v.ComputeId }).(pulumi.StringPtrOutput)
+}
+
+// The asset description text.
+func (o SweepJobResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SweepJobResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Display name of job.
+func (o SweepJobResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SweepJobResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Early termination policies enable canceling poor-performing runs before they complete
+func (o SweepJobResponseOutput) EarlyTermination() pulumi.AnyOutput {
+	return o.ApplyT(func(v SweepJobResponse) interface{} { return v.EarlyTermination }).(pulumi.AnyOutput)
+}
+
+// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
+func (o SweepJobResponseOutput) ExperimentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SweepJobResponse) *string { return v.ExperimentName }).(pulumi.StringPtrOutput)
+}
+
+// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
+// Defaults to AmlToken if null.
+func (o SweepJobResponseOutput) Identity() pulumi.AnyOutput {
+	return o.ApplyT(func(v SweepJobResponse) interface{} { return v.Identity }).(pulumi.AnyOutput)
+}
+
+// Mapping of input data bindings used in the job.
+func (o SweepJobResponseOutput) Inputs() pulumi.MapOutput {
+	return o.ApplyT(func(v SweepJobResponse) map[string]interface{} { return v.Inputs }).(pulumi.MapOutput)
+}
+
+// Is the asset archived?
+func (o SweepJobResponseOutput) IsArchived() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SweepJobResponse) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
+}
+
+// Enum to determine the type of job.
+// Expected value is 'Sweep'.
+func (o SweepJobResponseOutput) JobType() pulumi.StringOutput {
+	return o.ApplyT(func(v SweepJobResponse) string { return v.JobType }).(pulumi.StringOutput)
+}
+
+// Sweep Job limit.
+func (o SweepJobResponseOutput) Limits() SweepJobLimitsResponsePtrOutput {
+	return o.ApplyT(func(v SweepJobResponse) *SweepJobLimitsResponse { return v.Limits }).(SweepJobLimitsResponsePtrOutput)
+}
+
+// Notification setting for the job
+func (o SweepJobResponseOutput) NotificationSetting() NotificationSettingResponsePtrOutput {
+	return o.ApplyT(func(v SweepJobResponse) *NotificationSettingResponse { return v.NotificationSetting }).(NotificationSettingResponsePtrOutput)
+}
+
+// [Required] Optimization objective.
+func (o SweepJobResponseOutput) Objective() ObjectiveResponseOutput {
+	return o.ApplyT(func(v SweepJobResponse) ObjectiveResponse { return v.Objective }).(ObjectiveResponseOutput)
+}
+
+// Mapping of output data bindings used in the job.
+func (o SweepJobResponseOutput) Outputs() pulumi.MapOutput {
+	return o.ApplyT(func(v SweepJobResponse) map[string]interface{} { return v.Outputs }).(pulumi.MapOutput)
+}
+
+// The asset property dictionary.
+func (o SweepJobResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SweepJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Queue settings for the job
+func (o SweepJobResponseOutput) QueueSettings() QueueSettingsResponsePtrOutput {
+	return o.ApplyT(func(v SweepJobResponse) *QueueSettingsResponse { return v.QueueSettings }).(QueueSettingsResponsePtrOutput)
+}
+
+// Compute Resource configuration for the job.
+func (o SweepJobResponseOutput) Resources() JobResourceConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v SweepJobResponse) *JobResourceConfigurationResponse { return v.Resources }).(JobResourceConfigurationResponsePtrOutput)
+}
+
+// [Required] The hyperparameter sampling algorithm
+func (o SweepJobResponseOutput) SamplingAlgorithm() pulumi.AnyOutput {
+	return o.ApplyT(func(v SweepJobResponse) interface{} { return v.SamplingAlgorithm }).(pulumi.AnyOutput)
+}
+
+// [Required] A dictionary containing each parameter and its distribution. The dictionary key is the name of the parameter
+func (o SweepJobResponseOutput) SearchSpace() pulumi.AnyOutput {
+	return o.ApplyT(func(v SweepJobResponse) interface{} { return v.SearchSpace }).(pulumi.AnyOutput)
+}
+
+// Configuration for secrets to be made available during runtime.
+func (o SweepJobResponseOutput) SecretsConfiguration() SecretConfigurationResponseMapOutput {
+	return o.ApplyT(func(v SweepJobResponse) map[string]SecretConfigurationResponse { return v.SecretsConfiguration }).(SecretConfigurationResponseMapOutput)
+}
+
+// List of JobEndpoints.
+// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
+func (o SweepJobResponseOutput) Services() JobServiceResponseMapOutput {
+	return o.ApplyT(func(v SweepJobResponse) map[string]JobServiceResponse { return v.Services }).(JobServiceResponseMapOutput)
+}
+
+// Status of the job.
+func (o SweepJobResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v SweepJobResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o SweepJobResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SweepJobResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// [Required] Trial component definition.
+func (o SweepJobResponseOutput) Trial() TrialComponentResponseOutput {
+	return o.ApplyT(func(v SweepJobResponse) TrialComponentResponse { return v.Trial }).(TrialComponentResponseOutput)
+}
+
 // A SynapseSpark compute.
 type SynapseSpark struct {
 	// Location for the underlying compute
@@ -4709,6 +10613,225 @@ type SynapseSpark struct {
 	Properties       *SynapseSparkProperties `pulumi:"properties"`
 	// ARM resource id of the underlying compute
 	ResourceId *string `pulumi:"resourceId"`
+}
+
+// SynapseSparkInput is an input type that accepts SynapseSparkArgs and SynapseSparkOutput values.
+// You can construct a concrete instance of `SynapseSparkInput` via:
+//
+//	SynapseSparkArgs{...}
+type SynapseSparkInput interface {
+	pulumi.Input
+
+	ToSynapseSparkOutput() SynapseSparkOutput
+	ToSynapseSparkOutputWithContext(context.Context) SynapseSparkOutput
+}
+
+// A SynapseSpark compute.
+type SynapseSparkArgs struct {
+	// Location for the underlying compute
+	ComputeLocation pulumi.StringPtrInput `pulumi:"computeLocation"`
+	// The type of compute
+	// Expected value is 'SynapseSpark'.
+	ComputeType pulumi.StringInput `pulumi:"computeType"`
+	// The description of the Machine Learning compute.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+	DisableLocalAuth pulumi.BoolPtrInput            `pulumi:"disableLocalAuth"`
+	Properties       SynapseSparkPropertiesPtrInput `pulumi:"properties"`
+	// ARM resource id of the underlying compute
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+}
+
+func (SynapseSparkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SynapseSpark)(nil)).Elem()
+}
+
+func (i SynapseSparkArgs) ToSynapseSparkOutput() SynapseSparkOutput {
+	return i.ToSynapseSparkOutputWithContext(context.Background())
+}
+
+func (i SynapseSparkArgs) ToSynapseSparkOutputWithContext(ctx context.Context) SynapseSparkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SynapseSparkOutput)
+}
+
+func (i SynapseSparkArgs) ToSynapseSparkPtrOutput() SynapseSparkPtrOutput {
+	return i.ToSynapseSparkPtrOutputWithContext(context.Background())
+}
+
+func (i SynapseSparkArgs) ToSynapseSparkPtrOutputWithContext(ctx context.Context) SynapseSparkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SynapseSparkOutput).ToSynapseSparkPtrOutputWithContext(ctx)
+}
+
+// SynapseSparkPtrInput is an input type that accepts SynapseSparkArgs, SynapseSparkPtr and SynapseSparkPtrOutput values.
+// You can construct a concrete instance of `SynapseSparkPtrInput` via:
+//
+//	        SynapseSparkArgs{...}
+//
+//	or:
+//
+//	        nil
+type SynapseSparkPtrInput interface {
+	pulumi.Input
+
+	ToSynapseSparkPtrOutput() SynapseSparkPtrOutput
+	ToSynapseSparkPtrOutputWithContext(context.Context) SynapseSparkPtrOutput
+}
+
+type synapseSparkPtrType SynapseSparkArgs
+
+func SynapseSparkPtr(v *SynapseSparkArgs) SynapseSparkPtrInput {
+	return (*synapseSparkPtrType)(v)
+}
+
+func (*synapseSparkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SynapseSpark)(nil)).Elem()
+}
+
+func (i *synapseSparkPtrType) ToSynapseSparkPtrOutput() SynapseSparkPtrOutput {
+	return i.ToSynapseSparkPtrOutputWithContext(context.Background())
+}
+
+func (i *synapseSparkPtrType) ToSynapseSparkPtrOutputWithContext(ctx context.Context) SynapseSparkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SynapseSparkPtrOutput)
+}
+
+// A SynapseSpark compute.
+type SynapseSparkOutput struct{ *pulumi.OutputState }
+
+func (SynapseSparkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SynapseSpark)(nil)).Elem()
+}
+
+func (o SynapseSparkOutput) ToSynapseSparkOutput() SynapseSparkOutput {
+	return o
+}
+
+func (o SynapseSparkOutput) ToSynapseSparkOutputWithContext(ctx context.Context) SynapseSparkOutput {
+	return o
+}
+
+func (o SynapseSparkOutput) ToSynapseSparkPtrOutput() SynapseSparkPtrOutput {
+	return o.ToSynapseSparkPtrOutputWithContext(context.Background())
+}
+
+func (o SynapseSparkOutput) ToSynapseSparkPtrOutputWithContext(ctx context.Context) SynapseSparkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SynapseSpark) *SynapseSpark {
+		return &v
+	}).(SynapseSparkPtrOutput)
+}
+
+// Location for the underlying compute
+func (o SynapseSparkOutput) ComputeLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSpark) *string { return v.ComputeLocation }).(pulumi.StringPtrOutput)
+}
+
+// The type of compute
+// Expected value is 'SynapseSpark'.
+func (o SynapseSparkOutput) ComputeType() pulumi.StringOutput {
+	return o.ApplyT(func(v SynapseSpark) string { return v.ComputeType }).(pulumi.StringOutput)
+}
+
+// The description of the Machine Learning compute.
+func (o SynapseSparkOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSpark) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+func (o SynapseSparkOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SynapseSpark) *bool { return v.DisableLocalAuth }).(pulumi.BoolPtrOutput)
+}
+
+func (o SynapseSparkOutput) Properties() SynapseSparkPropertiesPtrOutput {
+	return o.ApplyT(func(v SynapseSpark) *SynapseSparkProperties { return v.Properties }).(SynapseSparkPropertiesPtrOutput)
+}
+
+// ARM resource id of the underlying compute
+func (o SynapseSparkOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSpark) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type SynapseSparkPtrOutput struct{ *pulumi.OutputState }
+
+func (SynapseSparkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SynapseSpark)(nil)).Elem()
+}
+
+func (o SynapseSparkPtrOutput) ToSynapseSparkPtrOutput() SynapseSparkPtrOutput {
+	return o
+}
+
+func (o SynapseSparkPtrOutput) ToSynapseSparkPtrOutputWithContext(ctx context.Context) SynapseSparkPtrOutput {
+	return o
+}
+
+func (o SynapseSparkPtrOutput) Elem() SynapseSparkOutput {
+	return o.ApplyT(func(v *SynapseSpark) SynapseSpark {
+		if v != nil {
+			return *v
+		}
+		var ret SynapseSpark
+		return ret
+	}).(SynapseSparkOutput)
+}
+
+// Location for the underlying compute
+func (o SynapseSparkPtrOutput) ComputeLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSpark) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComputeLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of compute
+// Expected value is 'SynapseSpark'.
+func (o SynapseSparkPtrOutput) ComputeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSpark) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ComputeType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The description of the Machine Learning compute.
+func (o SynapseSparkPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSpark) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+func (o SynapseSparkPtrOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SynapseSpark) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableLocalAuth
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SynapseSparkPtrOutput) Properties() SynapseSparkPropertiesPtrOutput {
+	return o.ApplyT(func(v *SynapseSpark) *SynapseSparkProperties {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(SynapseSparkPropertiesPtrOutput)
+}
+
+// ARM resource id of the underlying compute
+func (o SynapseSparkPtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSpark) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
 }
 
 type SynapseSparkProperties struct {
@@ -4732,6 +10855,291 @@ type SynapseSparkProperties struct {
 	SubscriptionId *string `pulumi:"subscriptionId"`
 	// Name of Azure Machine Learning workspace.
 	WorkspaceName *string `pulumi:"workspaceName"`
+}
+
+// SynapseSparkPropertiesInput is an input type that accepts SynapseSparkPropertiesArgs and SynapseSparkPropertiesOutput values.
+// You can construct a concrete instance of `SynapseSparkPropertiesInput` via:
+//
+//	SynapseSparkPropertiesArgs{...}
+type SynapseSparkPropertiesInput interface {
+	pulumi.Input
+
+	ToSynapseSparkPropertiesOutput() SynapseSparkPropertiesOutput
+	ToSynapseSparkPropertiesOutputWithContext(context.Context) SynapseSparkPropertiesOutput
+}
+
+type SynapseSparkPropertiesArgs struct {
+	// Auto pause properties.
+	AutoPauseProperties AutoPausePropertiesPtrInput `pulumi:"autoPauseProperties"`
+	// Auto scale properties.
+	AutoScaleProperties AutoScalePropertiesPtrInput `pulumi:"autoScaleProperties"`
+	// The number of compute nodes currently assigned to the compute.
+	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
+	// Node size.
+	NodeSize pulumi.StringPtrInput `pulumi:"nodeSize"`
+	// Node size family.
+	NodeSizeFamily pulumi.StringPtrInput `pulumi:"nodeSizeFamily"`
+	// Pool name.
+	PoolName pulumi.StringPtrInput `pulumi:"poolName"`
+	// Name of the resource group in which workspace is located.
+	ResourceGroup pulumi.StringPtrInput `pulumi:"resourceGroup"`
+	// Spark version.
+	SparkVersion pulumi.StringPtrInput `pulumi:"sparkVersion"`
+	// Azure subscription identifier.
+	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
+	// Name of Azure Machine Learning workspace.
+	WorkspaceName pulumi.StringPtrInput `pulumi:"workspaceName"`
+}
+
+func (SynapseSparkPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SynapseSparkProperties)(nil)).Elem()
+}
+
+func (i SynapseSparkPropertiesArgs) ToSynapseSparkPropertiesOutput() SynapseSparkPropertiesOutput {
+	return i.ToSynapseSparkPropertiesOutputWithContext(context.Background())
+}
+
+func (i SynapseSparkPropertiesArgs) ToSynapseSparkPropertiesOutputWithContext(ctx context.Context) SynapseSparkPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SynapseSparkPropertiesOutput)
+}
+
+func (i SynapseSparkPropertiesArgs) ToSynapseSparkPropertiesPtrOutput() SynapseSparkPropertiesPtrOutput {
+	return i.ToSynapseSparkPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SynapseSparkPropertiesArgs) ToSynapseSparkPropertiesPtrOutputWithContext(ctx context.Context) SynapseSparkPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SynapseSparkPropertiesOutput).ToSynapseSparkPropertiesPtrOutputWithContext(ctx)
+}
+
+// SynapseSparkPropertiesPtrInput is an input type that accepts SynapseSparkPropertiesArgs, SynapseSparkPropertiesPtr and SynapseSparkPropertiesPtrOutput values.
+// You can construct a concrete instance of `SynapseSparkPropertiesPtrInput` via:
+//
+//	        SynapseSparkPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SynapseSparkPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSynapseSparkPropertiesPtrOutput() SynapseSparkPropertiesPtrOutput
+	ToSynapseSparkPropertiesPtrOutputWithContext(context.Context) SynapseSparkPropertiesPtrOutput
+}
+
+type synapseSparkPropertiesPtrType SynapseSparkPropertiesArgs
+
+func SynapseSparkPropertiesPtr(v *SynapseSparkPropertiesArgs) SynapseSparkPropertiesPtrInput {
+	return (*synapseSparkPropertiesPtrType)(v)
+}
+
+func (*synapseSparkPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SynapseSparkProperties)(nil)).Elem()
+}
+
+func (i *synapseSparkPropertiesPtrType) ToSynapseSparkPropertiesPtrOutput() SynapseSparkPropertiesPtrOutput {
+	return i.ToSynapseSparkPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *synapseSparkPropertiesPtrType) ToSynapseSparkPropertiesPtrOutputWithContext(ctx context.Context) SynapseSparkPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SynapseSparkPropertiesPtrOutput)
+}
+
+type SynapseSparkPropertiesOutput struct{ *pulumi.OutputState }
+
+func (SynapseSparkPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SynapseSparkProperties)(nil)).Elem()
+}
+
+func (o SynapseSparkPropertiesOutput) ToSynapseSparkPropertiesOutput() SynapseSparkPropertiesOutput {
+	return o
+}
+
+func (o SynapseSparkPropertiesOutput) ToSynapseSparkPropertiesOutputWithContext(ctx context.Context) SynapseSparkPropertiesOutput {
+	return o
+}
+
+func (o SynapseSparkPropertiesOutput) ToSynapseSparkPropertiesPtrOutput() SynapseSparkPropertiesPtrOutput {
+	return o.ToSynapseSparkPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o SynapseSparkPropertiesOutput) ToSynapseSparkPropertiesPtrOutputWithContext(ctx context.Context) SynapseSparkPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SynapseSparkProperties) *SynapseSparkProperties {
+		return &v
+	}).(SynapseSparkPropertiesPtrOutput)
+}
+
+// Auto pause properties.
+func (o SynapseSparkPropertiesOutput) AutoPauseProperties() AutoPausePropertiesPtrOutput {
+	return o.ApplyT(func(v SynapseSparkProperties) *AutoPauseProperties { return v.AutoPauseProperties }).(AutoPausePropertiesPtrOutput)
+}
+
+// Auto scale properties.
+func (o SynapseSparkPropertiesOutput) AutoScaleProperties() AutoScalePropertiesPtrOutput {
+	return o.ApplyT(func(v SynapseSparkProperties) *AutoScaleProperties { return v.AutoScaleProperties }).(AutoScalePropertiesPtrOutput)
+}
+
+// The number of compute nodes currently assigned to the compute.
+func (o SynapseSparkPropertiesOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SynapseSparkProperties) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Node size.
+func (o SynapseSparkPropertiesOutput) NodeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkProperties) *string { return v.NodeSize }).(pulumi.StringPtrOutput)
+}
+
+// Node size family.
+func (o SynapseSparkPropertiesOutput) NodeSizeFamily() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkProperties) *string { return v.NodeSizeFamily }).(pulumi.StringPtrOutput)
+}
+
+// Pool name.
+func (o SynapseSparkPropertiesOutput) PoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkProperties) *string { return v.PoolName }).(pulumi.StringPtrOutput)
+}
+
+// Name of the resource group in which workspace is located.
+func (o SynapseSparkPropertiesOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkProperties) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+// Spark version.
+func (o SynapseSparkPropertiesOutput) SparkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkProperties) *string { return v.SparkVersion }).(pulumi.StringPtrOutput)
+}
+
+// Azure subscription identifier.
+func (o SynapseSparkPropertiesOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkProperties) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+// Name of Azure Machine Learning workspace.
+func (o SynapseSparkPropertiesOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkProperties) *string { return v.WorkspaceName }).(pulumi.StringPtrOutput)
+}
+
+type SynapseSparkPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SynapseSparkPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SynapseSparkProperties)(nil)).Elem()
+}
+
+func (o SynapseSparkPropertiesPtrOutput) ToSynapseSparkPropertiesPtrOutput() SynapseSparkPropertiesPtrOutput {
+	return o
+}
+
+func (o SynapseSparkPropertiesPtrOutput) ToSynapseSparkPropertiesPtrOutputWithContext(ctx context.Context) SynapseSparkPropertiesPtrOutput {
+	return o
+}
+
+func (o SynapseSparkPropertiesPtrOutput) Elem() SynapseSparkPropertiesOutput {
+	return o.ApplyT(func(v *SynapseSparkProperties) SynapseSparkProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SynapseSparkProperties
+		return ret
+	}).(SynapseSparkPropertiesOutput)
+}
+
+// Auto pause properties.
+func (o SynapseSparkPropertiesPtrOutput) AutoPauseProperties() AutoPausePropertiesPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkProperties) *AutoPauseProperties {
+		if v == nil {
+			return nil
+		}
+		return v.AutoPauseProperties
+	}).(AutoPausePropertiesPtrOutput)
+}
+
+// Auto scale properties.
+func (o SynapseSparkPropertiesPtrOutput) AutoScaleProperties() AutoScalePropertiesPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkProperties) *AutoScaleProperties {
+		if v == nil {
+			return nil
+		}
+		return v.AutoScaleProperties
+	}).(AutoScalePropertiesPtrOutput)
+}
+
+// The number of compute nodes currently assigned to the compute.
+func (o SynapseSparkPropertiesPtrOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Node size.
+func (o SynapseSparkPropertiesPtrOutput) NodeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Node size family.
+func (o SynapseSparkPropertiesPtrOutput) NodeSizeFamily() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSizeFamily
+	}).(pulumi.StringPtrOutput)
+}
+
+// Pool name.
+func (o SynapseSparkPropertiesPtrOutput) PoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PoolName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the resource group in which workspace is located.
+func (o SynapseSparkPropertiesPtrOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// Spark version.
+func (o SynapseSparkPropertiesPtrOutput) SparkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SparkVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure subscription identifier.
+func (o SynapseSparkPropertiesPtrOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubscriptionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of Azure Machine Learning workspace.
+func (o SynapseSparkPropertiesPtrOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceName
+	}).(pulumi.StringPtrOutput)
 }
 
 // A SynapseSpark compute.
@@ -4760,6 +11168,76 @@ type SynapseSparkResponse struct {
 	ResourceId *string `pulumi:"resourceId"`
 }
 
+// A SynapseSpark compute.
+type SynapseSparkResponseOutput struct{ *pulumi.OutputState }
+
+func (SynapseSparkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SynapseSparkResponse)(nil)).Elem()
+}
+
+func (o SynapseSparkResponseOutput) ToSynapseSparkResponseOutput() SynapseSparkResponseOutput {
+	return o
+}
+
+func (o SynapseSparkResponseOutput) ToSynapseSparkResponseOutputWithContext(ctx context.Context) SynapseSparkResponseOutput {
+	return o
+}
+
+// Location for the underlying compute
+func (o SynapseSparkResponseOutput) ComputeLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) *string { return v.ComputeLocation }).(pulumi.StringPtrOutput)
+}
+
+// The type of compute
+// Expected value is 'SynapseSpark'.
+func (o SynapseSparkResponseOutput) ComputeType() pulumi.StringOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) string { return v.ComputeType }).(pulumi.StringOutput)
+}
+
+// The time at which the compute was created.
+func (o SynapseSparkResponseOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// The description of the Machine Learning compute.
+func (o SynapseSparkResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+func (o SynapseSparkResponseOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) *bool { return v.DisableLocalAuth }).(pulumi.BoolPtrOutput)
+}
+
+// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
+func (o SynapseSparkResponseOutput) IsAttachedCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) bool { return v.IsAttachedCompute }).(pulumi.BoolOutput)
+}
+
+// The time at which the compute was last modified.
+func (o SynapseSparkResponseOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) string { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+func (o SynapseSparkResponseOutput) Properties() SynapseSparkResponsePropertiesPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) *SynapseSparkResponseProperties { return v.Properties }).(SynapseSparkResponsePropertiesPtrOutput)
+}
+
+// Errors during provisioning
+func (o SynapseSparkResponseOutput) ProvisioningErrors() ErrorResponseResponseArrayOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) []ErrorResponseResponse { return v.ProvisioningErrors }).(ErrorResponseResponseArrayOutput)
+}
+
+// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
+func (o SynapseSparkResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// ARM resource id of the underlying compute
+func (o SynapseSparkResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
 type SynapseSparkResponseProperties struct {
 	// Auto pause properties.
 	AutoPauseProperties *AutoPausePropertiesResponse `pulumi:"autoPauseProperties"`
@@ -4781,6 +11259,194 @@ type SynapseSparkResponseProperties struct {
 	SubscriptionId *string `pulumi:"subscriptionId"`
 	// Name of Azure Machine Learning workspace.
 	WorkspaceName *string `pulumi:"workspaceName"`
+}
+
+type SynapseSparkResponsePropertiesOutput struct{ *pulumi.OutputState }
+
+func (SynapseSparkResponsePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SynapseSparkResponseProperties)(nil)).Elem()
+}
+
+func (o SynapseSparkResponsePropertiesOutput) ToSynapseSparkResponsePropertiesOutput() SynapseSparkResponsePropertiesOutput {
+	return o
+}
+
+func (o SynapseSparkResponsePropertiesOutput) ToSynapseSparkResponsePropertiesOutputWithContext(ctx context.Context) SynapseSparkResponsePropertiesOutput {
+	return o
+}
+
+// Auto pause properties.
+func (o SynapseSparkResponsePropertiesOutput) AutoPauseProperties() AutoPausePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *AutoPausePropertiesResponse { return v.AutoPauseProperties }).(AutoPausePropertiesResponsePtrOutput)
+}
+
+// Auto scale properties.
+func (o SynapseSparkResponsePropertiesOutput) AutoScaleProperties() AutoScalePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *AutoScalePropertiesResponse { return v.AutoScaleProperties }).(AutoScalePropertiesResponsePtrOutput)
+}
+
+// The number of compute nodes currently assigned to the compute.
+func (o SynapseSparkResponsePropertiesOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Node size.
+func (o SynapseSparkResponsePropertiesOutput) NodeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.NodeSize }).(pulumi.StringPtrOutput)
+}
+
+// Node size family.
+func (o SynapseSparkResponsePropertiesOutput) NodeSizeFamily() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.NodeSizeFamily }).(pulumi.StringPtrOutput)
+}
+
+// Pool name.
+func (o SynapseSparkResponsePropertiesOutput) PoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.PoolName }).(pulumi.StringPtrOutput)
+}
+
+// Name of the resource group in which workspace is located.
+func (o SynapseSparkResponsePropertiesOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+// Spark version.
+func (o SynapseSparkResponsePropertiesOutput) SparkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.SparkVersion }).(pulumi.StringPtrOutput)
+}
+
+// Azure subscription identifier.
+func (o SynapseSparkResponsePropertiesOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+// Name of Azure Machine Learning workspace.
+func (o SynapseSparkResponsePropertiesOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynapseSparkResponseProperties) *string { return v.WorkspaceName }).(pulumi.StringPtrOutput)
+}
+
+type SynapseSparkResponsePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SynapseSparkResponsePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SynapseSparkResponseProperties)(nil)).Elem()
+}
+
+func (o SynapseSparkResponsePropertiesPtrOutput) ToSynapseSparkResponsePropertiesPtrOutput() SynapseSparkResponsePropertiesPtrOutput {
+	return o
+}
+
+func (o SynapseSparkResponsePropertiesPtrOutput) ToSynapseSparkResponsePropertiesPtrOutputWithContext(ctx context.Context) SynapseSparkResponsePropertiesPtrOutput {
+	return o
+}
+
+func (o SynapseSparkResponsePropertiesPtrOutput) Elem() SynapseSparkResponsePropertiesOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) SynapseSparkResponseProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SynapseSparkResponseProperties
+		return ret
+	}).(SynapseSparkResponsePropertiesOutput)
+}
+
+// Auto pause properties.
+func (o SynapseSparkResponsePropertiesPtrOutput) AutoPauseProperties() AutoPausePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *AutoPausePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AutoPauseProperties
+	}).(AutoPausePropertiesResponsePtrOutput)
+}
+
+// Auto scale properties.
+func (o SynapseSparkResponsePropertiesPtrOutput) AutoScaleProperties() AutoScalePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *AutoScalePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AutoScaleProperties
+	}).(AutoScalePropertiesResponsePtrOutput)
+}
+
+// The number of compute nodes currently assigned to the compute.
+func (o SynapseSparkResponsePropertiesPtrOutput) NodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Node size.
+func (o SynapseSparkResponsePropertiesPtrOutput) NodeSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Node size family.
+func (o SynapseSparkResponsePropertiesPtrOutput) NodeSizeFamily() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSizeFamily
+	}).(pulumi.StringPtrOutput)
+}
+
+// Pool name.
+func (o SynapseSparkResponsePropertiesPtrOutput) PoolName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PoolName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the resource group in which workspace is located.
+func (o SynapseSparkResponsePropertiesPtrOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// Spark version.
+func (o SynapseSparkResponsePropertiesPtrOutput) SparkVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SparkVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure subscription identifier.
+func (o SynapseSparkResponsePropertiesPtrOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubscriptionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of Azure Machine Learning workspace.
+func (o SynapseSparkResponsePropertiesPtrOutput) WorkspaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SynapseSparkResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkspaceName
+	}).(pulumi.StringPtrOutput)
 }
 
 type SystemCreatedAcrAccount struct {
@@ -5516,6 +12182,56 @@ type SystemServiceResponse struct {
 	Version string `pulumi:"version"`
 }
 
+// A system service running on a compute.
+type SystemServiceResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemServiceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemServiceResponse)(nil)).Elem()
+}
+
+func (o SystemServiceResponseOutput) ToSystemServiceResponseOutput() SystemServiceResponseOutput {
+	return o
+}
+
+func (o SystemServiceResponseOutput) ToSystemServiceResponseOutputWithContext(ctx context.Context) SystemServiceResponseOutput {
+	return o
+}
+
+// Public IP address
+func (o SystemServiceResponseOutput) PublicIpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemServiceResponse) string { return v.PublicIpAddress }).(pulumi.StringOutput)
+}
+
+// The type of this system service.
+func (o SystemServiceResponseOutput) SystemServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemServiceResponse) string { return v.SystemServiceType }).(pulumi.StringOutput)
+}
+
+// The version for this type.
+func (o SystemServiceResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v SystemServiceResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type SystemServiceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SystemServiceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SystemServiceResponse)(nil)).Elem()
+}
+
+func (o SystemServiceResponseArrayOutput) ToSystemServiceResponseArrayOutput() SystemServiceResponseArrayOutput {
+	return o
+}
+
+func (o SystemServiceResponseArrayOutput) ToSystemServiceResponseArrayOutputWithContext(ctx context.Context) SystemServiceResponseArrayOutput {
+	return o
+}
+
+func (o SystemServiceResponseArrayOutput) Index(i pulumi.IntInput) SystemServiceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SystemServiceResponse {
+		return vs[0].([]SystemServiceResponse)[vs[1].(int)]
+	}).(SystemServiceResponseOutput)
+}
+
 // Fixed training parameters that won't be swept over during AutoML Table training.
 type TableFixedParameters struct {
 	// Specify the boosting type, e.g gbdt for XGBoost.
@@ -5575,6 +12291,477 @@ func (val *TableFixedParameters) Defaults() *TableFixedParameters {
 		tmp.WithStd = &withStd_
 	}
 	return &tmp
+}
+
+// TableFixedParametersInput is an input type that accepts TableFixedParametersArgs and TableFixedParametersOutput values.
+// You can construct a concrete instance of `TableFixedParametersInput` via:
+//
+//	TableFixedParametersArgs{...}
+type TableFixedParametersInput interface {
+	pulumi.Input
+
+	ToTableFixedParametersOutput() TableFixedParametersOutput
+	ToTableFixedParametersOutputWithContext(context.Context) TableFixedParametersOutput
+}
+
+// Fixed training parameters that won't be swept over during AutoML Table training.
+type TableFixedParametersArgs struct {
+	// Specify the boosting type, e.g gbdt for XGBoost.
+	Booster pulumi.StringPtrInput `pulumi:"booster"`
+	// Specify the boosting type, e.g gbdt for LightGBM.
+	BoostingType pulumi.StringPtrInput `pulumi:"boostingType"`
+	// Specify the grow policy, which controls the way new nodes are added to the tree.
+	GrowPolicy pulumi.StringPtrInput `pulumi:"growPolicy"`
+	// The learning rate for the training procedure.
+	LearningRate pulumi.Float64PtrInput `pulumi:"learningRate"`
+	// Specify the Maximum number of discrete bins to bucket continuous features .
+	MaxBin pulumi.IntPtrInput `pulumi:"maxBin"`
+	// Specify the max depth to limit the tree depth explicitly.
+	MaxDepth pulumi.IntPtrInput `pulumi:"maxDepth"`
+	// Specify the max leaves to limit the tree leaves explicitly.
+	MaxLeaves pulumi.IntPtrInput `pulumi:"maxLeaves"`
+	// The minimum number of data per leaf.
+	MinDataInLeaf pulumi.IntPtrInput `pulumi:"minDataInLeaf"`
+	// Minimum loss reduction required to make a further partition on a leaf node of the tree.
+	MinSplitGain pulumi.Float64PtrInput `pulumi:"minSplitGain"`
+	// The name of the model to train.
+	ModelName pulumi.StringPtrInput `pulumi:"modelName"`
+	// Specify the number of trees (or rounds) in an model.
+	NEstimators pulumi.IntPtrInput `pulumi:"nEstimators"`
+	// Specify the number of leaves.
+	NumLeaves pulumi.IntPtrInput `pulumi:"numLeaves"`
+	// The name of the preprocessor to use.
+	PreprocessorName pulumi.StringPtrInput `pulumi:"preprocessorName"`
+	// L1 regularization term on weights.
+	RegAlpha pulumi.Float64PtrInput `pulumi:"regAlpha"`
+	// L2 regularization term on weights.
+	RegLambda pulumi.Float64PtrInput `pulumi:"regLambda"`
+	// Subsample ratio of the training instance.
+	Subsample pulumi.Float64PtrInput `pulumi:"subsample"`
+	// Frequency of subsample.
+	SubsampleFreq pulumi.Float64PtrInput `pulumi:"subsampleFreq"`
+	// Specify the tree method.
+	TreeMethod pulumi.StringPtrInput `pulumi:"treeMethod"`
+	// If true, center before scaling the data with StandardScalar.
+	WithMean pulumi.BoolPtrInput `pulumi:"withMean"`
+	// If true, scaling the data with Unit Variance with StandardScalar.
+	WithStd pulumi.BoolPtrInput `pulumi:"withStd"`
+}
+
+// Defaults sets the appropriate defaults for TableFixedParametersArgs
+func (val *TableFixedParametersArgs) Defaults() *TableFixedParametersArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.WithMean == nil {
+		tmp.WithMean = pulumi.BoolPtr(false)
+	}
+	if tmp.WithStd == nil {
+		tmp.WithStd = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (TableFixedParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableFixedParameters)(nil)).Elem()
+}
+
+func (i TableFixedParametersArgs) ToTableFixedParametersOutput() TableFixedParametersOutput {
+	return i.ToTableFixedParametersOutputWithContext(context.Background())
+}
+
+func (i TableFixedParametersArgs) ToTableFixedParametersOutputWithContext(ctx context.Context) TableFixedParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableFixedParametersOutput)
+}
+
+func (i TableFixedParametersArgs) ToTableFixedParametersPtrOutput() TableFixedParametersPtrOutput {
+	return i.ToTableFixedParametersPtrOutputWithContext(context.Background())
+}
+
+func (i TableFixedParametersArgs) ToTableFixedParametersPtrOutputWithContext(ctx context.Context) TableFixedParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableFixedParametersOutput).ToTableFixedParametersPtrOutputWithContext(ctx)
+}
+
+// TableFixedParametersPtrInput is an input type that accepts TableFixedParametersArgs, TableFixedParametersPtr and TableFixedParametersPtrOutput values.
+// You can construct a concrete instance of `TableFixedParametersPtrInput` via:
+//
+//	        TableFixedParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type TableFixedParametersPtrInput interface {
+	pulumi.Input
+
+	ToTableFixedParametersPtrOutput() TableFixedParametersPtrOutput
+	ToTableFixedParametersPtrOutputWithContext(context.Context) TableFixedParametersPtrOutput
+}
+
+type tableFixedParametersPtrType TableFixedParametersArgs
+
+func TableFixedParametersPtr(v *TableFixedParametersArgs) TableFixedParametersPtrInput {
+	return (*tableFixedParametersPtrType)(v)
+}
+
+func (*tableFixedParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableFixedParameters)(nil)).Elem()
+}
+
+func (i *tableFixedParametersPtrType) ToTableFixedParametersPtrOutput() TableFixedParametersPtrOutput {
+	return i.ToTableFixedParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *tableFixedParametersPtrType) ToTableFixedParametersPtrOutputWithContext(ctx context.Context) TableFixedParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableFixedParametersPtrOutput)
+}
+
+// Fixed training parameters that won't be swept over during AutoML Table training.
+type TableFixedParametersOutput struct{ *pulumi.OutputState }
+
+func (TableFixedParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableFixedParameters)(nil)).Elem()
+}
+
+func (o TableFixedParametersOutput) ToTableFixedParametersOutput() TableFixedParametersOutput {
+	return o
+}
+
+func (o TableFixedParametersOutput) ToTableFixedParametersOutputWithContext(ctx context.Context) TableFixedParametersOutput {
+	return o
+}
+
+func (o TableFixedParametersOutput) ToTableFixedParametersPtrOutput() TableFixedParametersPtrOutput {
+	return o.ToTableFixedParametersPtrOutputWithContext(context.Background())
+}
+
+func (o TableFixedParametersOutput) ToTableFixedParametersPtrOutputWithContext(ctx context.Context) TableFixedParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableFixedParameters) *TableFixedParameters {
+		return &v
+	}).(TableFixedParametersPtrOutput)
+}
+
+// Specify the boosting type, e.g gbdt for XGBoost.
+func (o TableFixedParametersOutput) Booster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableFixedParameters) *string { return v.Booster }).(pulumi.StringPtrOutput)
+}
+
+// Specify the boosting type, e.g gbdt for LightGBM.
+func (o TableFixedParametersOutput) BoostingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableFixedParameters) *string { return v.BoostingType }).(pulumi.StringPtrOutput)
+}
+
+// Specify the grow policy, which controls the way new nodes are added to the tree.
+func (o TableFixedParametersOutput) GrowPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableFixedParameters) *string { return v.GrowPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The learning rate for the training procedure.
+func (o TableFixedParametersOutput) LearningRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TableFixedParameters) *float64 { return v.LearningRate }).(pulumi.Float64PtrOutput)
+}
+
+// Specify the Maximum number of discrete bins to bucket continuous features .
+func (o TableFixedParametersOutput) MaxBin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableFixedParameters) *int { return v.MaxBin }).(pulumi.IntPtrOutput)
+}
+
+// Specify the max depth to limit the tree depth explicitly.
+func (o TableFixedParametersOutput) MaxDepth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableFixedParameters) *int { return v.MaxDepth }).(pulumi.IntPtrOutput)
+}
+
+// Specify the max leaves to limit the tree leaves explicitly.
+func (o TableFixedParametersOutput) MaxLeaves() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableFixedParameters) *int { return v.MaxLeaves }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of data per leaf.
+func (o TableFixedParametersOutput) MinDataInLeaf() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableFixedParameters) *int { return v.MinDataInLeaf }).(pulumi.IntPtrOutput)
+}
+
+// Minimum loss reduction required to make a further partition on a leaf node of the tree.
+func (o TableFixedParametersOutput) MinSplitGain() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TableFixedParameters) *float64 { return v.MinSplitGain }).(pulumi.Float64PtrOutput)
+}
+
+// The name of the model to train.
+func (o TableFixedParametersOutput) ModelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableFixedParameters) *string { return v.ModelName }).(pulumi.StringPtrOutput)
+}
+
+// Specify the number of trees (or rounds) in an model.
+func (o TableFixedParametersOutput) NEstimators() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableFixedParameters) *int { return v.NEstimators }).(pulumi.IntPtrOutput)
+}
+
+// Specify the number of leaves.
+func (o TableFixedParametersOutput) NumLeaves() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableFixedParameters) *int { return v.NumLeaves }).(pulumi.IntPtrOutput)
+}
+
+// The name of the preprocessor to use.
+func (o TableFixedParametersOutput) PreprocessorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableFixedParameters) *string { return v.PreprocessorName }).(pulumi.StringPtrOutput)
+}
+
+// L1 regularization term on weights.
+func (o TableFixedParametersOutput) RegAlpha() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TableFixedParameters) *float64 { return v.RegAlpha }).(pulumi.Float64PtrOutput)
+}
+
+// L2 regularization term on weights.
+func (o TableFixedParametersOutput) RegLambda() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TableFixedParameters) *float64 { return v.RegLambda }).(pulumi.Float64PtrOutput)
+}
+
+// Subsample ratio of the training instance.
+func (o TableFixedParametersOutput) Subsample() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TableFixedParameters) *float64 { return v.Subsample }).(pulumi.Float64PtrOutput)
+}
+
+// Frequency of subsample.
+func (o TableFixedParametersOutput) SubsampleFreq() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TableFixedParameters) *float64 { return v.SubsampleFreq }).(pulumi.Float64PtrOutput)
+}
+
+// Specify the tree method.
+func (o TableFixedParametersOutput) TreeMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableFixedParameters) *string { return v.TreeMethod }).(pulumi.StringPtrOutput)
+}
+
+// If true, center before scaling the data with StandardScalar.
+func (o TableFixedParametersOutput) WithMean() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TableFixedParameters) *bool { return v.WithMean }).(pulumi.BoolPtrOutput)
+}
+
+// If true, scaling the data with Unit Variance with StandardScalar.
+func (o TableFixedParametersOutput) WithStd() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TableFixedParameters) *bool { return v.WithStd }).(pulumi.BoolPtrOutput)
+}
+
+type TableFixedParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (TableFixedParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableFixedParameters)(nil)).Elem()
+}
+
+func (o TableFixedParametersPtrOutput) ToTableFixedParametersPtrOutput() TableFixedParametersPtrOutput {
+	return o
+}
+
+func (o TableFixedParametersPtrOutput) ToTableFixedParametersPtrOutputWithContext(ctx context.Context) TableFixedParametersPtrOutput {
+	return o
+}
+
+func (o TableFixedParametersPtrOutput) Elem() TableFixedParametersOutput {
+	return o.ApplyT(func(v *TableFixedParameters) TableFixedParameters {
+		if v != nil {
+			return *v
+		}
+		var ret TableFixedParameters
+		return ret
+	}).(TableFixedParametersOutput)
+}
+
+// Specify the boosting type, e.g gbdt for XGBoost.
+func (o TableFixedParametersPtrOutput) Booster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableFixedParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Booster
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify the boosting type, e.g gbdt for LightGBM.
+func (o TableFixedParametersPtrOutput) BoostingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableFixedParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BoostingType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify the grow policy, which controls the way new nodes are added to the tree.
+func (o TableFixedParametersPtrOutput) GrowPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableFixedParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GrowPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The learning rate for the training procedure.
+func (o TableFixedParametersPtrOutput) LearningRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TableFixedParameters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LearningRate
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Specify the Maximum number of discrete bins to bucket continuous features .
+func (o TableFixedParametersPtrOutput) MaxBin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableFixedParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBin
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specify the max depth to limit the tree depth explicitly.
+func (o TableFixedParametersPtrOutput) MaxDepth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableFixedParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDepth
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specify the max leaves to limit the tree leaves explicitly.
+func (o TableFixedParametersPtrOutput) MaxLeaves() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableFixedParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxLeaves
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of data per leaf.
+func (o TableFixedParametersPtrOutput) MinDataInLeaf() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableFixedParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinDataInLeaf
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum loss reduction required to make a further partition on a leaf node of the tree.
+func (o TableFixedParametersPtrOutput) MinSplitGain() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TableFixedParameters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinSplitGain
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The name of the model to train.
+func (o TableFixedParametersPtrOutput) ModelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableFixedParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ModelName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify the number of trees (or rounds) in an model.
+func (o TableFixedParametersPtrOutput) NEstimators() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableFixedParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NEstimators
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specify the number of leaves.
+func (o TableFixedParametersPtrOutput) NumLeaves() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableFixedParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumLeaves
+	}).(pulumi.IntPtrOutput)
+}
+
+// The name of the preprocessor to use.
+func (o TableFixedParametersPtrOutput) PreprocessorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableFixedParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PreprocessorName
+	}).(pulumi.StringPtrOutput)
+}
+
+// L1 regularization term on weights.
+func (o TableFixedParametersPtrOutput) RegAlpha() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TableFixedParameters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.RegAlpha
+	}).(pulumi.Float64PtrOutput)
+}
+
+// L2 regularization term on weights.
+func (o TableFixedParametersPtrOutput) RegLambda() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TableFixedParameters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.RegLambda
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Subsample ratio of the training instance.
+func (o TableFixedParametersPtrOutput) Subsample() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TableFixedParameters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Subsample
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Frequency of subsample.
+func (o TableFixedParametersPtrOutput) SubsampleFreq() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TableFixedParameters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SubsampleFreq
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Specify the tree method.
+func (o TableFixedParametersPtrOutput) TreeMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableFixedParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TreeMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, center before scaling the data with StandardScalar.
+func (o TableFixedParametersPtrOutput) WithMean() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TableFixedParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WithMean
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, scaling the data with Unit Variance with StandardScalar.
+func (o TableFixedParametersPtrOutput) WithStd() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TableFixedParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WithStd
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Fixed training parameters that won't be swept over during AutoML Table training.
@@ -5638,6 +12825,345 @@ func (val *TableFixedParametersResponse) Defaults() *TableFixedParametersRespons
 	return &tmp
 }
 
+// Fixed training parameters that won't be swept over during AutoML Table training.
+type TableFixedParametersResponseOutput struct{ *pulumi.OutputState }
+
+func (TableFixedParametersResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableFixedParametersResponse)(nil)).Elem()
+}
+
+func (o TableFixedParametersResponseOutput) ToTableFixedParametersResponseOutput() TableFixedParametersResponseOutput {
+	return o
+}
+
+func (o TableFixedParametersResponseOutput) ToTableFixedParametersResponseOutputWithContext(ctx context.Context) TableFixedParametersResponseOutput {
+	return o
+}
+
+// Specify the boosting type, e.g gbdt for XGBoost.
+func (o TableFixedParametersResponseOutput) Booster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableFixedParametersResponse) *string { return v.Booster }).(pulumi.StringPtrOutput)
+}
+
+// Specify the boosting type, e.g gbdt for LightGBM.
+func (o TableFixedParametersResponseOutput) BoostingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableFixedParametersResponse) *string { return v.BoostingType }).(pulumi.StringPtrOutput)
+}
+
+// Specify the grow policy, which controls the way new nodes are added to the tree.
+func (o TableFixedParametersResponseOutput) GrowPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableFixedParametersResponse) *string { return v.GrowPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The learning rate for the training procedure.
+func (o TableFixedParametersResponseOutput) LearningRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TableFixedParametersResponse) *float64 { return v.LearningRate }).(pulumi.Float64PtrOutput)
+}
+
+// Specify the Maximum number of discrete bins to bucket continuous features .
+func (o TableFixedParametersResponseOutput) MaxBin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableFixedParametersResponse) *int { return v.MaxBin }).(pulumi.IntPtrOutput)
+}
+
+// Specify the max depth to limit the tree depth explicitly.
+func (o TableFixedParametersResponseOutput) MaxDepth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableFixedParametersResponse) *int { return v.MaxDepth }).(pulumi.IntPtrOutput)
+}
+
+// Specify the max leaves to limit the tree leaves explicitly.
+func (o TableFixedParametersResponseOutput) MaxLeaves() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableFixedParametersResponse) *int { return v.MaxLeaves }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of data per leaf.
+func (o TableFixedParametersResponseOutput) MinDataInLeaf() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableFixedParametersResponse) *int { return v.MinDataInLeaf }).(pulumi.IntPtrOutput)
+}
+
+// Minimum loss reduction required to make a further partition on a leaf node of the tree.
+func (o TableFixedParametersResponseOutput) MinSplitGain() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TableFixedParametersResponse) *float64 { return v.MinSplitGain }).(pulumi.Float64PtrOutput)
+}
+
+// The name of the model to train.
+func (o TableFixedParametersResponseOutput) ModelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableFixedParametersResponse) *string { return v.ModelName }).(pulumi.StringPtrOutput)
+}
+
+// Specify the number of trees (or rounds) in an model.
+func (o TableFixedParametersResponseOutput) NEstimators() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableFixedParametersResponse) *int { return v.NEstimators }).(pulumi.IntPtrOutput)
+}
+
+// Specify the number of leaves.
+func (o TableFixedParametersResponseOutput) NumLeaves() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableFixedParametersResponse) *int { return v.NumLeaves }).(pulumi.IntPtrOutput)
+}
+
+// The name of the preprocessor to use.
+func (o TableFixedParametersResponseOutput) PreprocessorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableFixedParametersResponse) *string { return v.PreprocessorName }).(pulumi.StringPtrOutput)
+}
+
+// L1 regularization term on weights.
+func (o TableFixedParametersResponseOutput) RegAlpha() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TableFixedParametersResponse) *float64 { return v.RegAlpha }).(pulumi.Float64PtrOutput)
+}
+
+// L2 regularization term on weights.
+func (o TableFixedParametersResponseOutput) RegLambda() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TableFixedParametersResponse) *float64 { return v.RegLambda }).(pulumi.Float64PtrOutput)
+}
+
+// Subsample ratio of the training instance.
+func (o TableFixedParametersResponseOutput) Subsample() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TableFixedParametersResponse) *float64 { return v.Subsample }).(pulumi.Float64PtrOutput)
+}
+
+// Frequency of subsample.
+func (o TableFixedParametersResponseOutput) SubsampleFreq() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TableFixedParametersResponse) *float64 { return v.SubsampleFreq }).(pulumi.Float64PtrOutput)
+}
+
+// Specify the tree method.
+func (o TableFixedParametersResponseOutput) TreeMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableFixedParametersResponse) *string { return v.TreeMethod }).(pulumi.StringPtrOutput)
+}
+
+// If true, center before scaling the data with StandardScalar.
+func (o TableFixedParametersResponseOutput) WithMean() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TableFixedParametersResponse) *bool { return v.WithMean }).(pulumi.BoolPtrOutput)
+}
+
+// If true, scaling the data with Unit Variance with StandardScalar.
+func (o TableFixedParametersResponseOutput) WithStd() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TableFixedParametersResponse) *bool { return v.WithStd }).(pulumi.BoolPtrOutput)
+}
+
+type TableFixedParametersResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TableFixedParametersResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableFixedParametersResponse)(nil)).Elem()
+}
+
+func (o TableFixedParametersResponsePtrOutput) ToTableFixedParametersResponsePtrOutput() TableFixedParametersResponsePtrOutput {
+	return o
+}
+
+func (o TableFixedParametersResponsePtrOutput) ToTableFixedParametersResponsePtrOutputWithContext(ctx context.Context) TableFixedParametersResponsePtrOutput {
+	return o
+}
+
+func (o TableFixedParametersResponsePtrOutput) Elem() TableFixedParametersResponseOutput {
+	return o.ApplyT(func(v *TableFixedParametersResponse) TableFixedParametersResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TableFixedParametersResponse
+		return ret
+	}).(TableFixedParametersResponseOutput)
+}
+
+// Specify the boosting type, e.g gbdt for XGBoost.
+func (o TableFixedParametersResponsePtrOutput) Booster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableFixedParametersResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Booster
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify the boosting type, e.g gbdt for LightGBM.
+func (o TableFixedParametersResponsePtrOutput) BoostingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableFixedParametersResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BoostingType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify the grow policy, which controls the way new nodes are added to the tree.
+func (o TableFixedParametersResponsePtrOutput) GrowPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableFixedParametersResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GrowPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The learning rate for the training procedure.
+func (o TableFixedParametersResponsePtrOutput) LearningRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TableFixedParametersResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LearningRate
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Specify the Maximum number of discrete bins to bucket continuous features .
+func (o TableFixedParametersResponsePtrOutput) MaxBin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableFixedParametersResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBin
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specify the max depth to limit the tree depth explicitly.
+func (o TableFixedParametersResponsePtrOutput) MaxDepth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableFixedParametersResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDepth
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specify the max leaves to limit the tree leaves explicitly.
+func (o TableFixedParametersResponsePtrOutput) MaxLeaves() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableFixedParametersResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxLeaves
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of data per leaf.
+func (o TableFixedParametersResponsePtrOutput) MinDataInLeaf() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableFixedParametersResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinDataInLeaf
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum loss reduction required to make a further partition on a leaf node of the tree.
+func (o TableFixedParametersResponsePtrOutput) MinSplitGain() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TableFixedParametersResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinSplitGain
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The name of the model to train.
+func (o TableFixedParametersResponsePtrOutput) ModelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableFixedParametersResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ModelName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify the number of trees (or rounds) in an model.
+func (o TableFixedParametersResponsePtrOutput) NEstimators() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableFixedParametersResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NEstimators
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specify the number of leaves.
+func (o TableFixedParametersResponsePtrOutput) NumLeaves() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableFixedParametersResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumLeaves
+	}).(pulumi.IntPtrOutput)
+}
+
+// The name of the preprocessor to use.
+func (o TableFixedParametersResponsePtrOutput) PreprocessorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableFixedParametersResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PreprocessorName
+	}).(pulumi.StringPtrOutput)
+}
+
+// L1 regularization term on weights.
+func (o TableFixedParametersResponsePtrOutput) RegAlpha() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TableFixedParametersResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.RegAlpha
+	}).(pulumi.Float64PtrOutput)
+}
+
+// L2 regularization term on weights.
+func (o TableFixedParametersResponsePtrOutput) RegLambda() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TableFixedParametersResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.RegLambda
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Subsample ratio of the training instance.
+func (o TableFixedParametersResponsePtrOutput) Subsample() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TableFixedParametersResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Subsample
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Frequency of subsample.
+func (o TableFixedParametersResponsePtrOutput) SubsampleFreq() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TableFixedParametersResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SubsampleFreq
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Specify the tree method.
+func (o TableFixedParametersResponsePtrOutput) TreeMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableFixedParametersResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TreeMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, center before scaling the data with StandardScalar.
+func (o TableFixedParametersResponsePtrOutput) WithMean() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TableFixedParametersResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WithMean
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, scaling the data with Unit Variance with StandardScalar.
+func (o TableFixedParametersResponsePtrOutput) WithStd() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TableFixedParametersResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WithStd
+	}).(pulumi.BoolPtrOutput)
+}
+
 type TableParameterSubspace struct {
 	// Specify the boosting type, e.g gbdt for XGBoost.
 	Booster *string `pulumi:"booster"`
@@ -5679,6 +13205,231 @@ type TableParameterSubspace struct {
 	WithMean *string `pulumi:"withMean"`
 	// If true, scaling the data with Unit Variance with StandardScalar.
 	WithStd *string `pulumi:"withStd"`
+}
+
+// TableParameterSubspaceInput is an input type that accepts TableParameterSubspaceArgs and TableParameterSubspaceOutput values.
+// You can construct a concrete instance of `TableParameterSubspaceInput` via:
+//
+//	TableParameterSubspaceArgs{...}
+type TableParameterSubspaceInput interface {
+	pulumi.Input
+
+	ToTableParameterSubspaceOutput() TableParameterSubspaceOutput
+	ToTableParameterSubspaceOutputWithContext(context.Context) TableParameterSubspaceOutput
+}
+
+type TableParameterSubspaceArgs struct {
+	// Specify the boosting type, e.g gbdt for XGBoost.
+	Booster pulumi.StringPtrInput `pulumi:"booster"`
+	// Specify the boosting type, e.g gbdt for LightGBM.
+	BoostingType pulumi.StringPtrInput `pulumi:"boostingType"`
+	// Specify the grow policy, which controls the way new nodes are added to the tree.
+	GrowPolicy pulumi.StringPtrInput `pulumi:"growPolicy"`
+	// The learning rate for the training procedure.
+	LearningRate pulumi.StringPtrInput `pulumi:"learningRate"`
+	// Specify the Maximum number of discrete bins to bucket continuous features .
+	MaxBin pulumi.StringPtrInput `pulumi:"maxBin"`
+	// Specify the max depth to limit the tree depth explicitly.
+	MaxDepth pulumi.StringPtrInput `pulumi:"maxDepth"`
+	// Specify the max leaves to limit the tree leaves explicitly.
+	MaxLeaves pulumi.StringPtrInput `pulumi:"maxLeaves"`
+	// The minimum number of data per leaf.
+	MinDataInLeaf pulumi.StringPtrInput `pulumi:"minDataInLeaf"`
+	// Minimum loss reduction required to make a further partition on a leaf node of the tree.
+	MinSplitGain pulumi.StringPtrInput `pulumi:"minSplitGain"`
+	// The name of the model to train.
+	ModelName pulumi.StringPtrInput `pulumi:"modelName"`
+	// Specify the number of trees (or rounds) in an model.
+	NEstimators pulumi.StringPtrInput `pulumi:"nEstimators"`
+	// Specify the number of leaves.
+	NumLeaves pulumi.StringPtrInput `pulumi:"numLeaves"`
+	// The name of the preprocessor to use.
+	PreprocessorName pulumi.StringPtrInput `pulumi:"preprocessorName"`
+	// L1 regularization term on weights.
+	RegAlpha pulumi.StringPtrInput `pulumi:"regAlpha"`
+	// L2 regularization term on weights.
+	RegLambda pulumi.StringPtrInput `pulumi:"regLambda"`
+	// Subsample ratio of the training instance.
+	Subsample pulumi.StringPtrInput `pulumi:"subsample"`
+	// Frequency of subsample
+	SubsampleFreq pulumi.StringPtrInput `pulumi:"subsampleFreq"`
+	// Specify the tree method.
+	TreeMethod pulumi.StringPtrInput `pulumi:"treeMethod"`
+	// If true, center before scaling the data with StandardScalar.
+	WithMean pulumi.StringPtrInput `pulumi:"withMean"`
+	// If true, scaling the data with Unit Variance with StandardScalar.
+	WithStd pulumi.StringPtrInput `pulumi:"withStd"`
+}
+
+func (TableParameterSubspaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableParameterSubspace)(nil)).Elem()
+}
+
+func (i TableParameterSubspaceArgs) ToTableParameterSubspaceOutput() TableParameterSubspaceOutput {
+	return i.ToTableParameterSubspaceOutputWithContext(context.Background())
+}
+
+func (i TableParameterSubspaceArgs) ToTableParameterSubspaceOutputWithContext(ctx context.Context) TableParameterSubspaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableParameterSubspaceOutput)
+}
+
+// TableParameterSubspaceArrayInput is an input type that accepts TableParameterSubspaceArray and TableParameterSubspaceArrayOutput values.
+// You can construct a concrete instance of `TableParameterSubspaceArrayInput` via:
+//
+//	TableParameterSubspaceArray{ TableParameterSubspaceArgs{...} }
+type TableParameterSubspaceArrayInput interface {
+	pulumi.Input
+
+	ToTableParameterSubspaceArrayOutput() TableParameterSubspaceArrayOutput
+	ToTableParameterSubspaceArrayOutputWithContext(context.Context) TableParameterSubspaceArrayOutput
+}
+
+type TableParameterSubspaceArray []TableParameterSubspaceInput
+
+func (TableParameterSubspaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableParameterSubspace)(nil)).Elem()
+}
+
+func (i TableParameterSubspaceArray) ToTableParameterSubspaceArrayOutput() TableParameterSubspaceArrayOutput {
+	return i.ToTableParameterSubspaceArrayOutputWithContext(context.Background())
+}
+
+func (i TableParameterSubspaceArray) ToTableParameterSubspaceArrayOutputWithContext(ctx context.Context) TableParameterSubspaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableParameterSubspaceArrayOutput)
+}
+
+type TableParameterSubspaceOutput struct{ *pulumi.OutputState }
+
+func (TableParameterSubspaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableParameterSubspace)(nil)).Elem()
+}
+
+func (o TableParameterSubspaceOutput) ToTableParameterSubspaceOutput() TableParameterSubspaceOutput {
+	return o
+}
+
+func (o TableParameterSubspaceOutput) ToTableParameterSubspaceOutputWithContext(ctx context.Context) TableParameterSubspaceOutput {
+	return o
+}
+
+// Specify the boosting type, e.g gbdt for XGBoost.
+func (o TableParameterSubspaceOutput) Booster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspace) *string { return v.Booster }).(pulumi.StringPtrOutput)
+}
+
+// Specify the boosting type, e.g gbdt for LightGBM.
+func (o TableParameterSubspaceOutput) BoostingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspace) *string { return v.BoostingType }).(pulumi.StringPtrOutput)
+}
+
+// Specify the grow policy, which controls the way new nodes are added to the tree.
+func (o TableParameterSubspaceOutput) GrowPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspace) *string { return v.GrowPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The learning rate for the training procedure.
+func (o TableParameterSubspaceOutput) LearningRate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspace) *string { return v.LearningRate }).(pulumi.StringPtrOutput)
+}
+
+// Specify the Maximum number of discrete bins to bucket continuous features .
+func (o TableParameterSubspaceOutput) MaxBin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspace) *string { return v.MaxBin }).(pulumi.StringPtrOutput)
+}
+
+// Specify the max depth to limit the tree depth explicitly.
+func (o TableParameterSubspaceOutput) MaxDepth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspace) *string { return v.MaxDepth }).(pulumi.StringPtrOutput)
+}
+
+// Specify the max leaves to limit the tree leaves explicitly.
+func (o TableParameterSubspaceOutput) MaxLeaves() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspace) *string { return v.MaxLeaves }).(pulumi.StringPtrOutput)
+}
+
+// The minimum number of data per leaf.
+func (o TableParameterSubspaceOutput) MinDataInLeaf() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspace) *string { return v.MinDataInLeaf }).(pulumi.StringPtrOutput)
+}
+
+// Minimum loss reduction required to make a further partition on a leaf node of the tree.
+func (o TableParameterSubspaceOutput) MinSplitGain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspace) *string { return v.MinSplitGain }).(pulumi.StringPtrOutput)
+}
+
+// The name of the model to train.
+func (o TableParameterSubspaceOutput) ModelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspace) *string { return v.ModelName }).(pulumi.StringPtrOutput)
+}
+
+// Specify the number of trees (or rounds) in an model.
+func (o TableParameterSubspaceOutput) NEstimators() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspace) *string { return v.NEstimators }).(pulumi.StringPtrOutput)
+}
+
+// Specify the number of leaves.
+func (o TableParameterSubspaceOutput) NumLeaves() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspace) *string { return v.NumLeaves }).(pulumi.StringPtrOutput)
+}
+
+// The name of the preprocessor to use.
+func (o TableParameterSubspaceOutput) PreprocessorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspace) *string { return v.PreprocessorName }).(pulumi.StringPtrOutput)
+}
+
+// L1 regularization term on weights.
+func (o TableParameterSubspaceOutput) RegAlpha() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspace) *string { return v.RegAlpha }).(pulumi.StringPtrOutput)
+}
+
+// L2 regularization term on weights.
+func (o TableParameterSubspaceOutput) RegLambda() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspace) *string { return v.RegLambda }).(pulumi.StringPtrOutput)
+}
+
+// Subsample ratio of the training instance.
+func (o TableParameterSubspaceOutput) Subsample() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspace) *string { return v.Subsample }).(pulumi.StringPtrOutput)
+}
+
+// Frequency of subsample
+func (o TableParameterSubspaceOutput) SubsampleFreq() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspace) *string { return v.SubsampleFreq }).(pulumi.StringPtrOutput)
+}
+
+// Specify the tree method.
+func (o TableParameterSubspaceOutput) TreeMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspace) *string { return v.TreeMethod }).(pulumi.StringPtrOutput)
+}
+
+// If true, center before scaling the data with StandardScalar.
+func (o TableParameterSubspaceOutput) WithMean() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspace) *string { return v.WithMean }).(pulumi.StringPtrOutput)
+}
+
+// If true, scaling the data with Unit Variance with StandardScalar.
+func (o TableParameterSubspaceOutput) WithStd() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspace) *string { return v.WithStd }).(pulumi.StringPtrOutput)
+}
+
+type TableParameterSubspaceArrayOutput struct{ *pulumi.OutputState }
+
+func (TableParameterSubspaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableParameterSubspace)(nil)).Elem()
+}
+
+func (o TableParameterSubspaceArrayOutput) ToTableParameterSubspaceArrayOutput() TableParameterSubspaceArrayOutput {
+	return o
+}
+
+func (o TableParameterSubspaceArrayOutput) ToTableParameterSubspaceArrayOutputWithContext(ctx context.Context) TableParameterSubspaceArrayOutput {
+	return o
+}
+
+func (o TableParameterSubspaceArrayOutput) Index(i pulumi.IntInput) TableParameterSubspaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableParameterSubspace {
+		return vs[0].([]TableParameterSubspace)[vs[1].(int)]
+	}).(TableParameterSubspaceOutput)
 }
 
 type TableParameterSubspaceResponse struct {
@@ -5724,6 +13475,140 @@ type TableParameterSubspaceResponse struct {
 	WithStd *string `pulumi:"withStd"`
 }
 
+type TableParameterSubspaceResponseOutput struct{ *pulumi.OutputState }
+
+func (TableParameterSubspaceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableParameterSubspaceResponse)(nil)).Elem()
+}
+
+func (o TableParameterSubspaceResponseOutput) ToTableParameterSubspaceResponseOutput() TableParameterSubspaceResponseOutput {
+	return o
+}
+
+func (o TableParameterSubspaceResponseOutput) ToTableParameterSubspaceResponseOutputWithContext(ctx context.Context) TableParameterSubspaceResponseOutput {
+	return o
+}
+
+// Specify the boosting type, e.g gbdt for XGBoost.
+func (o TableParameterSubspaceResponseOutput) Booster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspaceResponse) *string { return v.Booster }).(pulumi.StringPtrOutput)
+}
+
+// Specify the boosting type, e.g gbdt for LightGBM.
+func (o TableParameterSubspaceResponseOutput) BoostingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspaceResponse) *string { return v.BoostingType }).(pulumi.StringPtrOutput)
+}
+
+// Specify the grow policy, which controls the way new nodes are added to the tree.
+func (o TableParameterSubspaceResponseOutput) GrowPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspaceResponse) *string { return v.GrowPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The learning rate for the training procedure.
+func (o TableParameterSubspaceResponseOutput) LearningRate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspaceResponse) *string { return v.LearningRate }).(pulumi.StringPtrOutput)
+}
+
+// Specify the Maximum number of discrete bins to bucket continuous features .
+func (o TableParameterSubspaceResponseOutput) MaxBin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspaceResponse) *string { return v.MaxBin }).(pulumi.StringPtrOutput)
+}
+
+// Specify the max depth to limit the tree depth explicitly.
+func (o TableParameterSubspaceResponseOutput) MaxDepth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspaceResponse) *string { return v.MaxDepth }).(pulumi.StringPtrOutput)
+}
+
+// Specify the max leaves to limit the tree leaves explicitly.
+func (o TableParameterSubspaceResponseOutput) MaxLeaves() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspaceResponse) *string { return v.MaxLeaves }).(pulumi.StringPtrOutput)
+}
+
+// The minimum number of data per leaf.
+func (o TableParameterSubspaceResponseOutput) MinDataInLeaf() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspaceResponse) *string { return v.MinDataInLeaf }).(pulumi.StringPtrOutput)
+}
+
+// Minimum loss reduction required to make a further partition on a leaf node of the tree.
+func (o TableParameterSubspaceResponseOutput) MinSplitGain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspaceResponse) *string { return v.MinSplitGain }).(pulumi.StringPtrOutput)
+}
+
+// The name of the model to train.
+func (o TableParameterSubspaceResponseOutput) ModelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspaceResponse) *string { return v.ModelName }).(pulumi.StringPtrOutput)
+}
+
+// Specify the number of trees (or rounds) in an model.
+func (o TableParameterSubspaceResponseOutput) NEstimators() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspaceResponse) *string { return v.NEstimators }).(pulumi.StringPtrOutput)
+}
+
+// Specify the number of leaves.
+func (o TableParameterSubspaceResponseOutput) NumLeaves() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspaceResponse) *string { return v.NumLeaves }).(pulumi.StringPtrOutput)
+}
+
+// The name of the preprocessor to use.
+func (o TableParameterSubspaceResponseOutput) PreprocessorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspaceResponse) *string { return v.PreprocessorName }).(pulumi.StringPtrOutput)
+}
+
+// L1 regularization term on weights.
+func (o TableParameterSubspaceResponseOutput) RegAlpha() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspaceResponse) *string { return v.RegAlpha }).(pulumi.StringPtrOutput)
+}
+
+// L2 regularization term on weights.
+func (o TableParameterSubspaceResponseOutput) RegLambda() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspaceResponse) *string { return v.RegLambda }).(pulumi.StringPtrOutput)
+}
+
+// Subsample ratio of the training instance.
+func (o TableParameterSubspaceResponseOutput) Subsample() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspaceResponse) *string { return v.Subsample }).(pulumi.StringPtrOutput)
+}
+
+// Frequency of subsample
+func (o TableParameterSubspaceResponseOutput) SubsampleFreq() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspaceResponse) *string { return v.SubsampleFreq }).(pulumi.StringPtrOutput)
+}
+
+// Specify the tree method.
+func (o TableParameterSubspaceResponseOutput) TreeMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspaceResponse) *string { return v.TreeMethod }).(pulumi.StringPtrOutput)
+}
+
+// If true, center before scaling the data with StandardScalar.
+func (o TableParameterSubspaceResponseOutput) WithMean() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspaceResponse) *string { return v.WithMean }).(pulumi.StringPtrOutput)
+}
+
+// If true, scaling the data with Unit Variance with StandardScalar.
+func (o TableParameterSubspaceResponseOutput) WithStd() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableParameterSubspaceResponse) *string { return v.WithStd }).(pulumi.StringPtrOutput)
+}
+
+type TableParameterSubspaceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TableParameterSubspaceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableParameterSubspaceResponse)(nil)).Elem()
+}
+
+func (o TableParameterSubspaceResponseArrayOutput) ToTableParameterSubspaceResponseArrayOutput() TableParameterSubspaceResponseArrayOutput {
+	return o
+}
+
+func (o TableParameterSubspaceResponseArrayOutput) ToTableParameterSubspaceResponseArrayOutputWithContext(ctx context.Context) TableParameterSubspaceResponseArrayOutput {
+	return o
+}
+
+func (o TableParameterSubspaceResponseArrayOutput) Index(i pulumi.IntInput) TableParameterSubspaceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableParameterSubspaceResponse {
+		return vs[0].([]TableParameterSubspaceResponse)[vs[1].(int)]
+	}).(TableParameterSubspaceResponseOutput)
+}
+
 type TableSweepSettings struct {
 	// Type of early termination policy for the sweeping job.
 	EarlyTermination interface{} `pulumi:"earlyTermination"`
@@ -5731,11 +13616,228 @@ type TableSweepSettings struct {
 	SamplingAlgorithm string `pulumi:"samplingAlgorithm"`
 }
 
+// TableSweepSettingsInput is an input type that accepts TableSweepSettingsArgs and TableSweepSettingsOutput values.
+// You can construct a concrete instance of `TableSweepSettingsInput` via:
+//
+//	TableSweepSettingsArgs{...}
+type TableSweepSettingsInput interface {
+	pulumi.Input
+
+	ToTableSweepSettingsOutput() TableSweepSettingsOutput
+	ToTableSweepSettingsOutputWithContext(context.Context) TableSweepSettingsOutput
+}
+
+type TableSweepSettingsArgs struct {
+	// Type of early termination policy for the sweeping job.
+	EarlyTermination pulumi.Input `pulumi:"earlyTermination"`
+	// [Required] Type of sampling algorithm.
+	SamplingAlgorithm pulumi.StringInput `pulumi:"samplingAlgorithm"`
+}
+
+func (TableSweepSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableSweepSettings)(nil)).Elem()
+}
+
+func (i TableSweepSettingsArgs) ToTableSweepSettingsOutput() TableSweepSettingsOutput {
+	return i.ToTableSweepSettingsOutputWithContext(context.Background())
+}
+
+func (i TableSweepSettingsArgs) ToTableSweepSettingsOutputWithContext(ctx context.Context) TableSweepSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableSweepSettingsOutput)
+}
+
+func (i TableSweepSettingsArgs) ToTableSweepSettingsPtrOutput() TableSweepSettingsPtrOutput {
+	return i.ToTableSweepSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i TableSweepSettingsArgs) ToTableSweepSettingsPtrOutputWithContext(ctx context.Context) TableSweepSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableSweepSettingsOutput).ToTableSweepSettingsPtrOutputWithContext(ctx)
+}
+
+// TableSweepSettingsPtrInput is an input type that accepts TableSweepSettingsArgs, TableSweepSettingsPtr and TableSweepSettingsPtrOutput values.
+// You can construct a concrete instance of `TableSweepSettingsPtrInput` via:
+//
+//	        TableSweepSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TableSweepSettingsPtrInput interface {
+	pulumi.Input
+
+	ToTableSweepSettingsPtrOutput() TableSweepSettingsPtrOutput
+	ToTableSweepSettingsPtrOutputWithContext(context.Context) TableSweepSettingsPtrOutput
+}
+
+type tableSweepSettingsPtrType TableSweepSettingsArgs
+
+func TableSweepSettingsPtr(v *TableSweepSettingsArgs) TableSweepSettingsPtrInput {
+	return (*tableSweepSettingsPtrType)(v)
+}
+
+func (*tableSweepSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableSweepSettings)(nil)).Elem()
+}
+
+func (i *tableSweepSettingsPtrType) ToTableSweepSettingsPtrOutput() TableSweepSettingsPtrOutput {
+	return i.ToTableSweepSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *tableSweepSettingsPtrType) ToTableSweepSettingsPtrOutputWithContext(ctx context.Context) TableSweepSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableSweepSettingsPtrOutput)
+}
+
+type TableSweepSettingsOutput struct{ *pulumi.OutputState }
+
+func (TableSweepSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableSweepSettings)(nil)).Elem()
+}
+
+func (o TableSweepSettingsOutput) ToTableSweepSettingsOutput() TableSweepSettingsOutput {
+	return o
+}
+
+func (o TableSweepSettingsOutput) ToTableSweepSettingsOutputWithContext(ctx context.Context) TableSweepSettingsOutput {
+	return o
+}
+
+func (o TableSweepSettingsOutput) ToTableSweepSettingsPtrOutput() TableSweepSettingsPtrOutput {
+	return o.ToTableSweepSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o TableSweepSettingsOutput) ToTableSweepSettingsPtrOutputWithContext(ctx context.Context) TableSweepSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableSweepSettings) *TableSweepSettings {
+		return &v
+	}).(TableSweepSettingsPtrOutput)
+}
+
+// Type of early termination policy for the sweeping job.
+func (o TableSweepSettingsOutput) EarlyTermination() pulumi.AnyOutput {
+	return o.ApplyT(func(v TableSweepSettings) interface{} { return v.EarlyTermination }).(pulumi.AnyOutput)
+}
+
+// [Required] Type of sampling algorithm.
+func (o TableSweepSettingsOutput) SamplingAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v TableSweepSettings) string { return v.SamplingAlgorithm }).(pulumi.StringOutput)
+}
+
+type TableSweepSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (TableSweepSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableSweepSettings)(nil)).Elem()
+}
+
+func (o TableSweepSettingsPtrOutput) ToTableSweepSettingsPtrOutput() TableSweepSettingsPtrOutput {
+	return o
+}
+
+func (o TableSweepSettingsPtrOutput) ToTableSweepSettingsPtrOutputWithContext(ctx context.Context) TableSweepSettingsPtrOutput {
+	return o
+}
+
+func (o TableSweepSettingsPtrOutput) Elem() TableSweepSettingsOutput {
+	return o.ApplyT(func(v *TableSweepSettings) TableSweepSettings {
+		if v != nil {
+			return *v
+		}
+		var ret TableSweepSettings
+		return ret
+	}).(TableSweepSettingsOutput)
+}
+
+// Type of early termination policy for the sweeping job.
+func (o TableSweepSettingsPtrOutput) EarlyTermination() pulumi.AnyOutput {
+	return o.ApplyT(func(v *TableSweepSettings) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.EarlyTermination
+	}).(pulumi.AnyOutput)
+}
+
+// [Required] Type of sampling algorithm.
+func (o TableSweepSettingsPtrOutput) SamplingAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableSweepSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SamplingAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
 type TableSweepSettingsResponse struct {
 	// Type of early termination policy for the sweeping job.
 	EarlyTermination interface{} `pulumi:"earlyTermination"`
 	// [Required] Type of sampling algorithm.
 	SamplingAlgorithm string `pulumi:"samplingAlgorithm"`
+}
+
+type TableSweepSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (TableSweepSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableSweepSettingsResponse)(nil)).Elem()
+}
+
+func (o TableSweepSettingsResponseOutput) ToTableSweepSettingsResponseOutput() TableSweepSettingsResponseOutput {
+	return o
+}
+
+func (o TableSweepSettingsResponseOutput) ToTableSweepSettingsResponseOutputWithContext(ctx context.Context) TableSweepSettingsResponseOutput {
+	return o
+}
+
+// Type of early termination policy for the sweeping job.
+func (o TableSweepSettingsResponseOutput) EarlyTermination() pulumi.AnyOutput {
+	return o.ApplyT(func(v TableSweepSettingsResponse) interface{} { return v.EarlyTermination }).(pulumi.AnyOutput)
+}
+
+// [Required] Type of sampling algorithm.
+func (o TableSweepSettingsResponseOutput) SamplingAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v TableSweepSettingsResponse) string { return v.SamplingAlgorithm }).(pulumi.StringOutput)
+}
+
+type TableSweepSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TableSweepSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableSweepSettingsResponse)(nil)).Elem()
+}
+
+func (o TableSweepSettingsResponsePtrOutput) ToTableSweepSettingsResponsePtrOutput() TableSweepSettingsResponsePtrOutput {
+	return o
+}
+
+func (o TableSweepSettingsResponsePtrOutput) ToTableSweepSettingsResponsePtrOutputWithContext(ctx context.Context) TableSweepSettingsResponsePtrOutput {
+	return o
+}
+
+func (o TableSweepSettingsResponsePtrOutput) Elem() TableSweepSettingsResponseOutput {
+	return o.ApplyT(func(v *TableSweepSettingsResponse) TableSweepSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TableSweepSettingsResponse
+		return ret
+	}).(TableSweepSettingsResponseOutput)
+}
+
+// Type of early termination policy for the sweeping job.
+func (o TableSweepSettingsResponsePtrOutput) EarlyTermination() pulumi.AnyOutput {
+	return o.ApplyT(func(v *TableSweepSettingsResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.EarlyTermination
+	}).(pulumi.AnyOutput)
+}
+
+// [Required] Type of sampling algorithm.
+func (o TableSweepSettingsResponsePtrOutput) SamplingAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableSweepSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SamplingAlgorithm
+	}).(pulumi.StringPtrOutput)
 }
 
 // Featurization Configuration.
@@ -5773,6 +13875,245 @@ func (val *TableVerticalFeaturizationSettings) Defaults() *TableVerticalFeaturiz
 	return &tmp
 }
 
+// TableVerticalFeaturizationSettingsInput is an input type that accepts TableVerticalFeaturizationSettingsArgs and TableVerticalFeaturizationSettingsOutput values.
+// You can construct a concrete instance of `TableVerticalFeaturizationSettingsInput` via:
+//
+//	TableVerticalFeaturizationSettingsArgs{...}
+type TableVerticalFeaturizationSettingsInput interface {
+	pulumi.Input
+
+	ToTableVerticalFeaturizationSettingsOutput() TableVerticalFeaturizationSettingsOutput
+	ToTableVerticalFeaturizationSettingsOutputWithContext(context.Context) TableVerticalFeaturizationSettingsOutput
+}
+
+// Featurization Configuration.
+type TableVerticalFeaturizationSettingsArgs struct {
+	// These transformers shall not be used in featurization.
+	BlockedTransformers pulumi.StringArrayInput `pulumi:"blockedTransformers"`
+	// Dictionary of column name and its type (int, float, string, datetime etc).
+	ColumnNameAndTypes pulumi.StringMapInput `pulumi:"columnNameAndTypes"`
+	// Dataset language, useful for the text data.
+	DatasetLanguage pulumi.StringPtrInput `pulumi:"datasetLanguage"`
+	// Determines whether to use Dnn based featurizers for data featurization.
+	EnableDnnFeaturization pulumi.BoolPtrInput `pulumi:"enableDnnFeaturization"`
+	// Featurization mode - User can keep the default 'Auto' mode and AutoML will take care of necessary transformation of the data in featurization phase.
+	// If 'Off' is selected then no featurization is done.
+	// If 'Custom' is selected then user can specify additional inputs to customize how featurization is done.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// User can specify additional transformers to be used along with the columns to which it would be applied and parameters for the transformer constructor.
+	TransformerParams ColumnTransformerArrayMapInput `pulumi:"transformerParams"`
+}
+
+// Defaults sets the appropriate defaults for TableVerticalFeaturizationSettingsArgs
+func (val *TableVerticalFeaturizationSettingsArgs) Defaults() *TableVerticalFeaturizationSettingsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EnableDnnFeaturization == nil {
+		tmp.EnableDnnFeaturization = pulumi.BoolPtr(false)
+	}
+	if tmp.Mode == nil {
+		tmp.Mode = pulumi.StringPtr("Auto")
+	}
+	return &tmp
+}
+func (TableVerticalFeaturizationSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableVerticalFeaturizationSettings)(nil)).Elem()
+}
+
+func (i TableVerticalFeaturizationSettingsArgs) ToTableVerticalFeaturizationSettingsOutput() TableVerticalFeaturizationSettingsOutput {
+	return i.ToTableVerticalFeaturizationSettingsOutputWithContext(context.Background())
+}
+
+func (i TableVerticalFeaturizationSettingsArgs) ToTableVerticalFeaturizationSettingsOutputWithContext(ctx context.Context) TableVerticalFeaturizationSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableVerticalFeaturizationSettingsOutput)
+}
+
+func (i TableVerticalFeaturizationSettingsArgs) ToTableVerticalFeaturizationSettingsPtrOutput() TableVerticalFeaturizationSettingsPtrOutput {
+	return i.ToTableVerticalFeaturizationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i TableVerticalFeaturizationSettingsArgs) ToTableVerticalFeaturizationSettingsPtrOutputWithContext(ctx context.Context) TableVerticalFeaturizationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableVerticalFeaturizationSettingsOutput).ToTableVerticalFeaturizationSettingsPtrOutputWithContext(ctx)
+}
+
+// TableVerticalFeaturizationSettingsPtrInput is an input type that accepts TableVerticalFeaturizationSettingsArgs, TableVerticalFeaturizationSettingsPtr and TableVerticalFeaturizationSettingsPtrOutput values.
+// You can construct a concrete instance of `TableVerticalFeaturizationSettingsPtrInput` via:
+//
+//	        TableVerticalFeaturizationSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TableVerticalFeaturizationSettingsPtrInput interface {
+	pulumi.Input
+
+	ToTableVerticalFeaturizationSettingsPtrOutput() TableVerticalFeaturizationSettingsPtrOutput
+	ToTableVerticalFeaturizationSettingsPtrOutputWithContext(context.Context) TableVerticalFeaturizationSettingsPtrOutput
+}
+
+type tableVerticalFeaturizationSettingsPtrType TableVerticalFeaturizationSettingsArgs
+
+func TableVerticalFeaturizationSettingsPtr(v *TableVerticalFeaturizationSettingsArgs) TableVerticalFeaturizationSettingsPtrInput {
+	return (*tableVerticalFeaturizationSettingsPtrType)(v)
+}
+
+func (*tableVerticalFeaturizationSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableVerticalFeaturizationSettings)(nil)).Elem()
+}
+
+func (i *tableVerticalFeaturizationSettingsPtrType) ToTableVerticalFeaturizationSettingsPtrOutput() TableVerticalFeaturizationSettingsPtrOutput {
+	return i.ToTableVerticalFeaturizationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *tableVerticalFeaturizationSettingsPtrType) ToTableVerticalFeaturizationSettingsPtrOutputWithContext(ctx context.Context) TableVerticalFeaturizationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableVerticalFeaturizationSettingsPtrOutput)
+}
+
+// Featurization Configuration.
+type TableVerticalFeaturizationSettingsOutput struct{ *pulumi.OutputState }
+
+func (TableVerticalFeaturizationSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableVerticalFeaturizationSettings)(nil)).Elem()
+}
+
+func (o TableVerticalFeaturizationSettingsOutput) ToTableVerticalFeaturizationSettingsOutput() TableVerticalFeaturizationSettingsOutput {
+	return o
+}
+
+func (o TableVerticalFeaturizationSettingsOutput) ToTableVerticalFeaturizationSettingsOutputWithContext(ctx context.Context) TableVerticalFeaturizationSettingsOutput {
+	return o
+}
+
+func (o TableVerticalFeaturizationSettingsOutput) ToTableVerticalFeaturizationSettingsPtrOutput() TableVerticalFeaturizationSettingsPtrOutput {
+	return o.ToTableVerticalFeaturizationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o TableVerticalFeaturizationSettingsOutput) ToTableVerticalFeaturizationSettingsPtrOutputWithContext(ctx context.Context) TableVerticalFeaturizationSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableVerticalFeaturizationSettings) *TableVerticalFeaturizationSettings {
+		return &v
+	}).(TableVerticalFeaturizationSettingsPtrOutput)
+}
+
+// These transformers shall not be used in featurization.
+func (o TableVerticalFeaturizationSettingsOutput) BlockedTransformers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TableVerticalFeaturizationSettings) []string { return v.BlockedTransformers }).(pulumi.StringArrayOutput)
+}
+
+// Dictionary of column name and its type (int, float, string, datetime etc).
+func (o TableVerticalFeaturizationSettingsOutput) ColumnNameAndTypes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TableVerticalFeaturizationSettings) map[string]string { return v.ColumnNameAndTypes }).(pulumi.StringMapOutput)
+}
+
+// Dataset language, useful for the text data.
+func (o TableVerticalFeaturizationSettingsOutput) DatasetLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableVerticalFeaturizationSettings) *string { return v.DatasetLanguage }).(pulumi.StringPtrOutput)
+}
+
+// Determines whether to use Dnn based featurizers for data featurization.
+func (o TableVerticalFeaturizationSettingsOutput) EnableDnnFeaturization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TableVerticalFeaturizationSettings) *bool { return v.EnableDnnFeaturization }).(pulumi.BoolPtrOutput)
+}
+
+// Featurization mode - User can keep the default 'Auto' mode and AutoML will take care of necessary transformation of the data in featurization phase.
+// If 'Off' is selected then no featurization is done.
+// If 'Custom' is selected then user can specify additional inputs to customize how featurization is done.
+func (o TableVerticalFeaturizationSettingsOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableVerticalFeaturizationSettings) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// User can specify additional transformers to be used along with the columns to which it would be applied and parameters for the transformer constructor.
+func (o TableVerticalFeaturizationSettingsOutput) TransformerParams() ColumnTransformerArrayMapOutput {
+	return o.ApplyT(func(v TableVerticalFeaturizationSettings) map[string][]ColumnTransformer { return v.TransformerParams }).(ColumnTransformerArrayMapOutput)
+}
+
+type TableVerticalFeaturizationSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (TableVerticalFeaturizationSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableVerticalFeaturizationSettings)(nil)).Elem()
+}
+
+func (o TableVerticalFeaturizationSettingsPtrOutput) ToTableVerticalFeaturizationSettingsPtrOutput() TableVerticalFeaturizationSettingsPtrOutput {
+	return o
+}
+
+func (o TableVerticalFeaturizationSettingsPtrOutput) ToTableVerticalFeaturizationSettingsPtrOutputWithContext(ctx context.Context) TableVerticalFeaturizationSettingsPtrOutput {
+	return o
+}
+
+func (o TableVerticalFeaturizationSettingsPtrOutput) Elem() TableVerticalFeaturizationSettingsOutput {
+	return o.ApplyT(func(v *TableVerticalFeaturizationSettings) TableVerticalFeaturizationSettings {
+		if v != nil {
+			return *v
+		}
+		var ret TableVerticalFeaturizationSettings
+		return ret
+	}).(TableVerticalFeaturizationSettingsOutput)
+}
+
+// These transformers shall not be used in featurization.
+func (o TableVerticalFeaturizationSettingsPtrOutput) BlockedTransformers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TableVerticalFeaturizationSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BlockedTransformers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Dictionary of column name and its type (int, float, string, datetime etc).
+func (o TableVerticalFeaturizationSettingsPtrOutput) ColumnNameAndTypes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TableVerticalFeaturizationSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ColumnNameAndTypes
+	}).(pulumi.StringMapOutput)
+}
+
+// Dataset language, useful for the text data.
+func (o TableVerticalFeaturizationSettingsPtrOutput) DatasetLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableVerticalFeaturizationSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatasetLanguage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Determines whether to use Dnn based featurizers for data featurization.
+func (o TableVerticalFeaturizationSettingsPtrOutput) EnableDnnFeaturization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TableVerticalFeaturizationSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableDnnFeaturization
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Featurization mode - User can keep the default 'Auto' mode and AutoML will take care of necessary transformation of the data in featurization phase.
+// If 'Off' is selected then no featurization is done.
+// If 'Custom' is selected then user can specify additional inputs to customize how featurization is done.
+func (o TableVerticalFeaturizationSettingsPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableVerticalFeaturizationSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// User can specify additional transformers to be used along with the columns to which it would be applied and parameters for the transformer constructor.
+func (o TableVerticalFeaturizationSettingsPtrOutput) TransformerParams() ColumnTransformerArrayMapOutput {
+	return o.ApplyT(func(v *TableVerticalFeaturizationSettings) map[string][]ColumnTransformer {
+		if v == nil {
+			return nil
+		}
+		return v.TransformerParams
+	}).(ColumnTransformerArrayMapOutput)
+}
+
 // Featurization Configuration.
 type TableVerticalFeaturizationSettingsResponse struct {
 	// These transformers shall not be used in featurization.
@@ -5806,6 +14147,141 @@ func (val *TableVerticalFeaturizationSettingsResponse) Defaults() *TableVertical
 		tmp.Mode = &mode_
 	}
 	return &tmp
+}
+
+// Featurization Configuration.
+type TableVerticalFeaturizationSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (TableVerticalFeaturizationSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableVerticalFeaturizationSettingsResponse)(nil)).Elem()
+}
+
+func (o TableVerticalFeaturizationSettingsResponseOutput) ToTableVerticalFeaturizationSettingsResponseOutput() TableVerticalFeaturizationSettingsResponseOutput {
+	return o
+}
+
+func (o TableVerticalFeaturizationSettingsResponseOutput) ToTableVerticalFeaturizationSettingsResponseOutputWithContext(ctx context.Context) TableVerticalFeaturizationSettingsResponseOutput {
+	return o
+}
+
+// These transformers shall not be used in featurization.
+func (o TableVerticalFeaturizationSettingsResponseOutput) BlockedTransformers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TableVerticalFeaturizationSettingsResponse) []string { return v.BlockedTransformers }).(pulumi.StringArrayOutput)
+}
+
+// Dictionary of column name and its type (int, float, string, datetime etc).
+func (o TableVerticalFeaturizationSettingsResponseOutput) ColumnNameAndTypes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TableVerticalFeaturizationSettingsResponse) map[string]string { return v.ColumnNameAndTypes }).(pulumi.StringMapOutput)
+}
+
+// Dataset language, useful for the text data.
+func (o TableVerticalFeaturizationSettingsResponseOutput) DatasetLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableVerticalFeaturizationSettingsResponse) *string { return v.DatasetLanguage }).(pulumi.StringPtrOutput)
+}
+
+// Determines whether to use Dnn based featurizers for data featurization.
+func (o TableVerticalFeaturizationSettingsResponseOutput) EnableDnnFeaturization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TableVerticalFeaturizationSettingsResponse) *bool { return v.EnableDnnFeaturization }).(pulumi.BoolPtrOutput)
+}
+
+// Featurization mode - User can keep the default 'Auto' mode and AutoML will take care of necessary transformation of the data in featurization phase.
+// If 'Off' is selected then no featurization is done.
+// If 'Custom' is selected then user can specify additional inputs to customize how featurization is done.
+func (o TableVerticalFeaturizationSettingsResponseOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableVerticalFeaturizationSettingsResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// User can specify additional transformers to be used along with the columns to which it would be applied and parameters for the transformer constructor.
+func (o TableVerticalFeaturizationSettingsResponseOutput) TransformerParams() ColumnTransformerResponseArrayMapOutput {
+	return o.ApplyT(func(v TableVerticalFeaturizationSettingsResponse) map[string][]ColumnTransformerResponse {
+		return v.TransformerParams
+	}).(ColumnTransformerResponseArrayMapOutput)
+}
+
+type TableVerticalFeaturizationSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TableVerticalFeaturizationSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableVerticalFeaturizationSettingsResponse)(nil)).Elem()
+}
+
+func (o TableVerticalFeaturizationSettingsResponsePtrOutput) ToTableVerticalFeaturizationSettingsResponsePtrOutput() TableVerticalFeaturizationSettingsResponsePtrOutput {
+	return o
+}
+
+func (o TableVerticalFeaturizationSettingsResponsePtrOutput) ToTableVerticalFeaturizationSettingsResponsePtrOutputWithContext(ctx context.Context) TableVerticalFeaturizationSettingsResponsePtrOutput {
+	return o
+}
+
+func (o TableVerticalFeaturizationSettingsResponsePtrOutput) Elem() TableVerticalFeaturizationSettingsResponseOutput {
+	return o.ApplyT(func(v *TableVerticalFeaturizationSettingsResponse) TableVerticalFeaturizationSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TableVerticalFeaturizationSettingsResponse
+		return ret
+	}).(TableVerticalFeaturizationSettingsResponseOutput)
+}
+
+// These transformers shall not be used in featurization.
+func (o TableVerticalFeaturizationSettingsResponsePtrOutput) BlockedTransformers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TableVerticalFeaturizationSettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BlockedTransformers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Dictionary of column name and its type (int, float, string, datetime etc).
+func (o TableVerticalFeaturizationSettingsResponsePtrOutput) ColumnNameAndTypes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TableVerticalFeaturizationSettingsResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ColumnNameAndTypes
+	}).(pulumi.StringMapOutput)
+}
+
+// Dataset language, useful for the text data.
+func (o TableVerticalFeaturizationSettingsResponsePtrOutput) DatasetLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableVerticalFeaturizationSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatasetLanguage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Determines whether to use Dnn based featurizers for data featurization.
+func (o TableVerticalFeaturizationSettingsResponsePtrOutput) EnableDnnFeaturization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TableVerticalFeaturizationSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableDnnFeaturization
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Featurization mode - User can keep the default 'Auto' mode and AutoML will take care of necessary transformation of the data in featurization phase.
+// If 'Off' is selected then no featurization is done.
+// If 'Custom' is selected then user can specify additional inputs to customize how featurization is done.
+func (o TableVerticalFeaturizationSettingsResponsePtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableVerticalFeaturizationSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// User can specify additional transformers to be used along with the columns to which it would be applied and parameters for the transformer constructor.
+func (o TableVerticalFeaturizationSettingsResponsePtrOutput) TransformerParams() ColumnTransformerResponseArrayMapOutput {
+	return o.ApplyT(func(v *TableVerticalFeaturizationSettingsResponse) map[string][]ColumnTransformerResponse {
+		if v == nil {
+			return nil
+		}
+		return v.TransformerParams
+	}).(ColumnTransformerResponseArrayMapOutput)
 }
 
 // Job execution constraints.
@@ -5877,6 +14353,328 @@ func (val *TableVerticalLimitSettings) Defaults() *TableVerticalLimitSettings {
 	return &tmp
 }
 
+// TableVerticalLimitSettingsInput is an input type that accepts TableVerticalLimitSettingsArgs and TableVerticalLimitSettingsOutput values.
+// You can construct a concrete instance of `TableVerticalLimitSettingsInput` via:
+//
+//	TableVerticalLimitSettingsArgs{...}
+type TableVerticalLimitSettingsInput interface {
+	pulumi.Input
+
+	ToTableVerticalLimitSettingsOutput() TableVerticalLimitSettingsOutput
+	ToTableVerticalLimitSettingsOutputWithContext(context.Context) TableVerticalLimitSettingsOutput
+}
+
+// Job execution constraints.
+type TableVerticalLimitSettingsArgs struct {
+	// Enable early termination, determines whether or not if AutoMLJob will terminate early if there is no score improvement in last 20 iterations.
+	EnableEarlyTermination pulumi.BoolPtrInput `pulumi:"enableEarlyTermination"`
+	// Exit score for the AutoML job.
+	ExitScore pulumi.Float64PtrInput `pulumi:"exitScore"`
+	// Maximum Concurrent iterations.
+	MaxConcurrentTrials pulumi.IntPtrInput `pulumi:"maxConcurrentTrials"`
+	// Max cores per iteration.
+	MaxCoresPerTrial pulumi.IntPtrInput `pulumi:"maxCoresPerTrial"`
+	// Maximum nodes to use for the experiment.
+	MaxNodes pulumi.IntPtrInput `pulumi:"maxNodes"`
+	// Number of iterations.
+	MaxTrials pulumi.IntPtrInput `pulumi:"maxTrials"`
+	// Number of concurrent sweeping runs that user wants to trigger.
+	SweepConcurrentTrials pulumi.IntPtrInput `pulumi:"sweepConcurrentTrials"`
+	// Number of sweeping runs that user wants to trigger.
+	SweepTrials pulumi.IntPtrInput `pulumi:"sweepTrials"`
+	// AutoML job timeout.
+	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
+	// Iteration timeout.
+	TrialTimeout pulumi.StringPtrInput `pulumi:"trialTimeout"`
+}
+
+// Defaults sets the appropriate defaults for TableVerticalLimitSettingsArgs
+func (val *TableVerticalLimitSettingsArgs) Defaults() *TableVerticalLimitSettingsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EnableEarlyTermination == nil {
+		tmp.EnableEarlyTermination = pulumi.BoolPtr(true)
+	}
+	if tmp.MaxConcurrentTrials == nil {
+		tmp.MaxConcurrentTrials = pulumi.IntPtr(1)
+	}
+	if tmp.MaxCoresPerTrial == nil {
+		tmp.MaxCoresPerTrial = pulumi.IntPtr(-1)
+	}
+	if tmp.MaxNodes == nil {
+		tmp.MaxNodes = pulumi.IntPtr(1)
+	}
+	if tmp.MaxTrials == nil {
+		tmp.MaxTrials = pulumi.IntPtr(1000)
+	}
+	if tmp.SweepConcurrentTrials == nil {
+		tmp.SweepConcurrentTrials = pulumi.IntPtr(0)
+	}
+	if tmp.SweepTrials == nil {
+		tmp.SweepTrials = pulumi.IntPtr(0)
+	}
+	if tmp.Timeout == nil {
+		tmp.Timeout = pulumi.StringPtr("PT6H")
+	}
+	if tmp.TrialTimeout == nil {
+		tmp.TrialTimeout = pulumi.StringPtr("PT30M")
+	}
+	return &tmp
+}
+func (TableVerticalLimitSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableVerticalLimitSettings)(nil)).Elem()
+}
+
+func (i TableVerticalLimitSettingsArgs) ToTableVerticalLimitSettingsOutput() TableVerticalLimitSettingsOutput {
+	return i.ToTableVerticalLimitSettingsOutputWithContext(context.Background())
+}
+
+func (i TableVerticalLimitSettingsArgs) ToTableVerticalLimitSettingsOutputWithContext(ctx context.Context) TableVerticalLimitSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableVerticalLimitSettingsOutput)
+}
+
+func (i TableVerticalLimitSettingsArgs) ToTableVerticalLimitSettingsPtrOutput() TableVerticalLimitSettingsPtrOutput {
+	return i.ToTableVerticalLimitSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i TableVerticalLimitSettingsArgs) ToTableVerticalLimitSettingsPtrOutputWithContext(ctx context.Context) TableVerticalLimitSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableVerticalLimitSettingsOutput).ToTableVerticalLimitSettingsPtrOutputWithContext(ctx)
+}
+
+// TableVerticalLimitSettingsPtrInput is an input type that accepts TableVerticalLimitSettingsArgs, TableVerticalLimitSettingsPtr and TableVerticalLimitSettingsPtrOutput values.
+// You can construct a concrete instance of `TableVerticalLimitSettingsPtrInput` via:
+//
+//	        TableVerticalLimitSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TableVerticalLimitSettingsPtrInput interface {
+	pulumi.Input
+
+	ToTableVerticalLimitSettingsPtrOutput() TableVerticalLimitSettingsPtrOutput
+	ToTableVerticalLimitSettingsPtrOutputWithContext(context.Context) TableVerticalLimitSettingsPtrOutput
+}
+
+type tableVerticalLimitSettingsPtrType TableVerticalLimitSettingsArgs
+
+func TableVerticalLimitSettingsPtr(v *TableVerticalLimitSettingsArgs) TableVerticalLimitSettingsPtrInput {
+	return (*tableVerticalLimitSettingsPtrType)(v)
+}
+
+func (*tableVerticalLimitSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableVerticalLimitSettings)(nil)).Elem()
+}
+
+func (i *tableVerticalLimitSettingsPtrType) ToTableVerticalLimitSettingsPtrOutput() TableVerticalLimitSettingsPtrOutput {
+	return i.ToTableVerticalLimitSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *tableVerticalLimitSettingsPtrType) ToTableVerticalLimitSettingsPtrOutputWithContext(ctx context.Context) TableVerticalLimitSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableVerticalLimitSettingsPtrOutput)
+}
+
+// Job execution constraints.
+type TableVerticalLimitSettingsOutput struct{ *pulumi.OutputState }
+
+func (TableVerticalLimitSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableVerticalLimitSettings)(nil)).Elem()
+}
+
+func (o TableVerticalLimitSettingsOutput) ToTableVerticalLimitSettingsOutput() TableVerticalLimitSettingsOutput {
+	return o
+}
+
+func (o TableVerticalLimitSettingsOutput) ToTableVerticalLimitSettingsOutputWithContext(ctx context.Context) TableVerticalLimitSettingsOutput {
+	return o
+}
+
+func (o TableVerticalLimitSettingsOutput) ToTableVerticalLimitSettingsPtrOutput() TableVerticalLimitSettingsPtrOutput {
+	return o.ToTableVerticalLimitSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o TableVerticalLimitSettingsOutput) ToTableVerticalLimitSettingsPtrOutputWithContext(ctx context.Context) TableVerticalLimitSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableVerticalLimitSettings) *TableVerticalLimitSettings {
+		return &v
+	}).(TableVerticalLimitSettingsPtrOutput)
+}
+
+// Enable early termination, determines whether or not if AutoMLJob will terminate early if there is no score improvement in last 20 iterations.
+func (o TableVerticalLimitSettingsOutput) EnableEarlyTermination() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TableVerticalLimitSettings) *bool { return v.EnableEarlyTermination }).(pulumi.BoolPtrOutput)
+}
+
+// Exit score for the AutoML job.
+func (o TableVerticalLimitSettingsOutput) ExitScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TableVerticalLimitSettings) *float64 { return v.ExitScore }).(pulumi.Float64PtrOutput)
+}
+
+// Maximum Concurrent iterations.
+func (o TableVerticalLimitSettingsOutput) MaxConcurrentTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableVerticalLimitSettings) *int { return v.MaxConcurrentTrials }).(pulumi.IntPtrOutput)
+}
+
+// Max cores per iteration.
+func (o TableVerticalLimitSettingsOutput) MaxCoresPerTrial() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableVerticalLimitSettings) *int { return v.MaxCoresPerTrial }).(pulumi.IntPtrOutput)
+}
+
+// Maximum nodes to use for the experiment.
+func (o TableVerticalLimitSettingsOutput) MaxNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableVerticalLimitSettings) *int { return v.MaxNodes }).(pulumi.IntPtrOutput)
+}
+
+// Number of iterations.
+func (o TableVerticalLimitSettingsOutput) MaxTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableVerticalLimitSettings) *int { return v.MaxTrials }).(pulumi.IntPtrOutput)
+}
+
+// Number of concurrent sweeping runs that user wants to trigger.
+func (o TableVerticalLimitSettingsOutput) SweepConcurrentTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableVerticalLimitSettings) *int { return v.SweepConcurrentTrials }).(pulumi.IntPtrOutput)
+}
+
+// Number of sweeping runs that user wants to trigger.
+func (o TableVerticalLimitSettingsOutput) SweepTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableVerticalLimitSettings) *int { return v.SweepTrials }).(pulumi.IntPtrOutput)
+}
+
+// AutoML job timeout.
+func (o TableVerticalLimitSettingsOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableVerticalLimitSettings) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+// Iteration timeout.
+func (o TableVerticalLimitSettingsOutput) TrialTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableVerticalLimitSettings) *string { return v.TrialTimeout }).(pulumi.StringPtrOutput)
+}
+
+type TableVerticalLimitSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (TableVerticalLimitSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableVerticalLimitSettings)(nil)).Elem()
+}
+
+func (o TableVerticalLimitSettingsPtrOutput) ToTableVerticalLimitSettingsPtrOutput() TableVerticalLimitSettingsPtrOutput {
+	return o
+}
+
+func (o TableVerticalLimitSettingsPtrOutput) ToTableVerticalLimitSettingsPtrOutputWithContext(ctx context.Context) TableVerticalLimitSettingsPtrOutput {
+	return o
+}
+
+func (o TableVerticalLimitSettingsPtrOutput) Elem() TableVerticalLimitSettingsOutput {
+	return o.ApplyT(func(v *TableVerticalLimitSettings) TableVerticalLimitSettings {
+		if v != nil {
+			return *v
+		}
+		var ret TableVerticalLimitSettings
+		return ret
+	}).(TableVerticalLimitSettingsOutput)
+}
+
+// Enable early termination, determines whether or not if AutoMLJob will terminate early if there is no score improvement in last 20 iterations.
+func (o TableVerticalLimitSettingsPtrOutput) EnableEarlyTermination() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TableVerticalLimitSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableEarlyTermination
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Exit score for the AutoML job.
+func (o TableVerticalLimitSettingsPtrOutput) ExitScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TableVerticalLimitSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ExitScore
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Maximum Concurrent iterations.
+func (o TableVerticalLimitSettingsPtrOutput) MaxConcurrentTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableVerticalLimitSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentTrials
+	}).(pulumi.IntPtrOutput)
+}
+
+// Max cores per iteration.
+func (o TableVerticalLimitSettingsPtrOutput) MaxCoresPerTrial() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableVerticalLimitSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxCoresPerTrial
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum nodes to use for the experiment.
+func (o TableVerticalLimitSettingsPtrOutput) MaxNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableVerticalLimitSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxNodes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of iterations.
+func (o TableVerticalLimitSettingsPtrOutput) MaxTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableVerticalLimitSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTrials
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of concurrent sweeping runs that user wants to trigger.
+func (o TableVerticalLimitSettingsPtrOutput) SweepConcurrentTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableVerticalLimitSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SweepConcurrentTrials
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of sweeping runs that user wants to trigger.
+func (o TableVerticalLimitSettingsPtrOutput) SweepTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableVerticalLimitSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SweepTrials
+	}).(pulumi.IntPtrOutput)
+}
+
+// AutoML job timeout.
+func (o TableVerticalLimitSettingsPtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableVerticalLimitSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Iteration timeout.
+func (o TableVerticalLimitSettingsPtrOutput) TrialTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableVerticalLimitSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrialTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
 // Job execution constraints.
 type TableVerticalLimitSettingsResponse struct {
 	// Enable early termination, determines whether or not if AutoMLJob will terminate early if there is no score improvement in last 20 iterations.
@@ -5946,6 +14744,195 @@ func (val *TableVerticalLimitSettingsResponse) Defaults() *TableVerticalLimitSet
 	return &tmp
 }
 
+// Job execution constraints.
+type TableVerticalLimitSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (TableVerticalLimitSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableVerticalLimitSettingsResponse)(nil)).Elem()
+}
+
+func (o TableVerticalLimitSettingsResponseOutput) ToTableVerticalLimitSettingsResponseOutput() TableVerticalLimitSettingsResponseOutput {
+	return o
+}
+
+func (o TableVerticalLimitSettingsResponseOutput) ToTableVerticalLimitSettingsResponseOutputWithContext(ctx context.Context) TableVerticalLimitSettingsResponseOutput {
+	return o
+}
+
+// Enable early termination, determines whether or not if AutoMLJob will terminate early if there is no score improvement in last 20 iterations.
+func (o TableVerticalLimitSettingsResponseOutput) EnableEarlyTermination() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TableVerticalLimitSettingsResponse) *bool { return v.EnableEarlyTermination }).(pulumi.BoolPtrOutput)
+}
+
+// Exit score for the AutoML job.
+func (o TableVerticalLimitSettingsResponseOutput) ExitScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TableVerticalLimitSettingsResponse) *float64 { return v.ExitScore }).(pulumi.Float64PtrOutput)
+}
+
+// Maximum Concurrent iterations.
+func (o TableVerticalLimitSettingsResponseOutput) MaxConcurrentTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableVerticalLimitSettingsResponse) *int { return v.MaxConcurrentTrials }).(pulumi.IntPtrOutput)
+}
+
+// Max cores per iteration.
+func (o TableVerticalLimitSettingsResponseOutput) MaxCoresPerTrial() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableVerticalLimitSettingsResponse) *int { return v.MaxCoresPerTrial }).(pulumi.IntPtrOutput)
+}
+
+// Maximum nodes to use for the experiment.
+func (o TableVerticalLimitSettingsResponseOutput) MaxNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableVerticalLimitSettingsResponse) *int { return v.MaxNodes }).(pulumi.IntPtrOutput)
+}
+
+// Number of iterations.
+func (o TableVerticalLimitSettingsResponseOutput) MaxTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableVerticalLimitSettingsResponse) *int { return v.MaxTrials }).(pulumi.IntPtrOutput)
+}
+
+// Number of concurrent sweeping runs that user wants to trigger.
+func (o TableVerticalLimitSettingsResponseOutput) SweepConcurrentTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableVerticalLimitSettingsResponse) *int { return v.SweepConcurrentTrials }).(pulumi.IntPtrOutput)
+}
+
+// Number of sweeping runs that user wants to trigger.
+func (o TableVerticalLimitSettingsResponseOutput) SweepTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableVerticalLimitSettingsResponse) *int { return v.SweepTrials }).(pulumi.IntPtrOutput)
+}
+
+// AutoML job timeout.
+func (o TableVerticalLimitSettingsResponseOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableVerticalLimitSettingsResponse) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+// Iteration timeout.
+func (o TableVerticalLimitSettingsResponseOutput) TrialTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableVerticalLimitSettingsResponse) *string { return v.TrialTimeout }).(pulumi.StringPtrOutput)
+}
+
+type TableVerticalLimitSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TableVerticalLimitSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableVerticalLimitSettingsResponse)(nil)).Elem()
+}
+
+func (o TableVerticalLimitSettingsResponsePtrOutput) ToTableVerticalLimitSettingsResponsePtrOutput() TableVerticalLimitSettingsResponsePtrOutput {
+	return o
+}
+
+func (o TableVerticalLimitSettingsResponsePtrOutput) ToTableVerticalLimitSettingsResponsePtrOutputWithContext(ctx context.Context) TableVerticalLimitSettingsResponsePtrOutput {
+	return o
+}
+
+func (o TableVerticalLimitSettingsResponsePtrOutput) Elem() TableVerticalLimitSettingsResponseOutput {
+	return o.ApplyT(func(v *TableVerticalLimitSettingsResponse) TableVerticalLimitSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TableVerticalLimitSettingsResponse
+		return ret
+	}).(TableVerticalLimitSettingsResponseOutput)
+}
+
+// Enable early termination, determines whether or not if AutoMLJob will terminate early if there is no score improvement in last 20 iterations.
+func (o TableVerticalLimitSettingsResponsePtrOutput) EnableEarlyTermination() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TableVerticalLimitSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableEarlyTermination
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Exit score for the AutoML job.
+func (o TableVerticalLimitSettingsResponsePtrOutput) ExitScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TableVerticalLimitSettingsResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ExitScore
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Maximum Concurrent iterations.
+func (o TableVerticalLimitSettingsResponsePtrOutput) MaxConcurrentTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableVerticalLimitSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentTrials
+	}).(pulumi.IntPtrOutput)
+}
+
+// Max cores per iteration.
+func (o TableVerticalLimitSettingsResponsePtrOutput) MaxCoresPerTrial() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableVerticalLimitSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxCoresPerTrial
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum nodes to use for the experiment.
+func (o TableVerticalLimitSettingsResponsePtrOutput) MaxNodes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableVerticalLimitSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxNodes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of iterations.
+func (o TableVerticalLimitSettingsResponsePtrOutput) MaxTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableVerticalLimitSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTrials
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of concurrent sweeping runs that user wants to trigger.
+func (o TableVerticalLimitSettingsResponsePtrOutput) SweepConcurrentTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableVerticalLimitSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SweepConcurrentTrials
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of sweeping runs that user wants to trigger.
+func (o TableVerticalLimitSettingsResponsePtrOutput) SweepTrials() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableVerticalLimitSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SweepTrials
+	}).(pulumi.IntPtrOutput)
+}
+
+// AutoML job timeout.
+func (o TableVerticalLimitSettingsResponsePtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableVerticalLimitSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Iteration timeout.
+func (o TableVerticalLimitSettingsResponsePtrOutput) TrialTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableVerticalLimitSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrialTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
 type TargetUtilizationScaleSettings struct {
 	// The maximum number of instances that the deployment can scale to. The quota will be reserved for max_instances.
 	MaxInstances *int `pulumi:"maxInstances"`
@@ -5982,6 +14969,226 @@ func (val *TargetUtilizationScaleSettings) Defaults() *TargetUtilizationScaleSet
 		tmp.TargetUtilizationPercentage = &targetUtilizationPercentage_
 	}
 	return &tmp
+}
+
+// TargetUtilizationScaleSettingsInput is an input type that accepts TargetUtilizationScaleSettingsArgs and TargetUtilizationScaleSettingsOutput values.
+// You can construct a concrete instance of `TargetUtilizationScaleSettingsInput` via:
+//
+//	TargetUtilizationScaleSettingsArgs{...}
+type TargetUtilizationScaleSettingsInput interface {
+	pulumi.Input
+
+	ToTargetUtilizationScaleSettingsOutput() TargetUtilizationScaleSettingsOutput
+	ToTargetUtilizationScaleSettingsOutputWithContext(context.Context) TargetUtilizationScaleSettingsOutput
+}
+
+type TargetUtilizationScaleSettingsArgs struct {
+	// The maximum number of instances that the deployment can scale to. The quota will be reserved for max_instances.
+	MaxInstances pulumi.IntPtrInput `pulumi:"maxInstances"`
+	// The minimum number of instances to always be present.
+	MinInstances pulumi.IntPtrInput `pulumi:"minInstances"`
+	// The polling interval in ISO 8691 format. Only supports duration with precision as low as Seconds.
+	PollingInterval pulumi.StringPtrInput `pulumi:"pollingInterval"`
+	// Expected value is 'TargetUtilization'.
+	ScaleType pulumi.StringInput `pulumi:"scaleType"`
+	// Target CPU usage for the autoscaler.
+	TargetUtilizationPercentage pulumi.IntPtrInput `pulumi:"targetUtilizationPercentage"`
+}
+
+// Defaults sets the appropriate defaults for TargetUtilizationScaleSettingsArgs
+func (val *TargetUtilizationScaleSettingsArgs) Defaults() *TargetUtilizationScaleSettingsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.MaxInstances == nil {
+		tmp.MaxInstances = pulumi.IntPtr(1)
+	}
+	if tmp.MinInstances == nil {
+		tmp.MinInstances = pulumi.IntPtr(1)
+	}
+	if tmp.PollingInterval == nil {
+		tmp.PollingInterval = pulumi.StringPtr("PT1S")
+	}
+	if tmp.TargetUtilizationPercentage == nil {
+		tmp.TargetUtilizationPercentage = pulumi.IntPtr(70)
+	}
+	return &tmp
+}
+func (TargetUtilizationScaleSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetUtilizationScaleSettings)(nil)).Elem()
+}
+
+func (i TargetUtilizationScaleSettingsArgs) ToTargetUtilizationScaleSettingsOutput() TargetUtilizationScaleSettingsOutput {
+	return i.ToTargetUtilizationScaleSettingsOutputWithContext(context.Background())
+}
+
+func (i TargetUtilizationScaleSettingsArgs) ToTargetUtilizationScaleSettingsOutputWithContext(ctx context.Context) TargetUtilizationScaleSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetUtilizationScaleSettingsOutput)
+}
+
+func (i TargetUtilizationScaleSettingsArgs) ToTargetUtilizationScaleSettingsPtrOutput() TargetUtilizationScaleSettingsPtrOutput {
+	return i.ToTargetUtilizationScaleSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i TargetUtilizationScaleSettingsArgs) ToTargetUtilizationScaleSettingsPtrOutputWithContext(ctx context.Context) TargetUtilizationScaleSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetUtilizationScaleSettingsOutput).ToTargetUtilizationScaleSettingsPtrOutputWithContext(ctx)
+}
+
+// TargetUtilizationScaleSettingsPtrInput is an input type that accepts TargetUtilizationScaleSettingsArgs, TargetUtilizationScaleSettingsPtr and TargetUtilizationScaleSettingsPtrOutput values.
+// You can construct a concrete instance of `TargetUtilizationScaleSettingsPtrInput` via:
+//
+//	        TargetUtilizationScaleSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TargetUtilizationScaleSettingsPtrInput interface {
+	pulumi.Input
+
+	ToTargetUtilizationScaleSettingsPtrOutput() TargetUtilizationScaleSettingsPtrOutput
+	ToTargetUtilizationScaleSettingsPtrOutputWithContext(context.Context) TargetUtilizationScaleSettingsPtrOutput
+}
+
+type targetUtilizationScaleSettingsPtrType TargetUtilizationScaleSettingsArgs
+
+func TargetUtilizationScaleSettingsPtr(v *TargetUtilizationScaleSettingsArgs) TargetUtilizationScaleSettingsPtrInput {
+	return (*targetUtilizationScaleSettingsPtrType)(v)
+}
+
+func (*targetUtilizationScaleSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetUtilizationScaleSettings)(nil)).Elem()
+}
+
+func (i *targetUtilizationScaleSettingsPtrType) ToTargetUtilizationScaleSettingsPtrOutput() TargetUtilizationScaleSettingsPtrOutput {
+	return i.ToTargetUtilizationScaleSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *targetUtilizationScaleSettingsPtrType) ToTargetUtilizationScaleSettingsPtrOutputWithContext(ctx context.Context) TargetUtilizationScaleSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetUtilizationScaleSettingsPtrOutput)
+}
+
+type TargetUtilizationScaleSettingsOutput struct{ *pulumi.OutputState }
+
+func (TargetUtilizationScaleSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetUtilizationScaleSettings)(nil)).Elem()
+}
+
+func (o TargetUtilizationScaleSettingsOutput) ToTargetUtilizationScaleSettingsOutput() TargetUtilizationScaleSettingsOutput {
+	return o
+}
+
+func (o TargetUtilizationScaleSettingsOutput) ToTargetUtilizationScaleSettingsOutputWithContext(ctx context.Context) TargetUtilizationScaleSettingsOutput {
+	return o
+}
+
+func (o TargetUtilizationScaleSettingsOutput) ToTargetUtilizationScaleSettingsPtrOutput() TargetUtilizationScaleSettingsPtrOutput {
+	return o.ToTargetUtilizationScaleSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o TargetUtilizationScaleSettingsOutput) ToTargetUtilizationScaleSettingsPtrOutputWithContext(ctx context.Context) TargetUtilizationScaleSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetUtilizationScaleSettings) *TargetUtilizationScaleSettings {
+		return &v
+	}).(TargetUtilizationScaleSettingsPtrOutput)
+}
+
+// The maximum number of instances that the deployment can scale to. The quota will be reserved for max_instances.
+func (o TargetUtilizationScaleSettingsOutput) MaxInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TargetUtilizationScaleSettings) *int { return v.MaxInstances }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of instances to always be present.
+func (o TargetUtilizationScaleSettingsOutput) MinInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TargetUtilizationScaleSettings) *int { return v.MinInstances }).(pulumi.IntPtrOutput)
+}
+
+// The polling interval in ISO 8691 format. Only supports duration with precision as low as Seconds.
+func (o TargetUtilizationScaleSettingsOutput) PollingInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetUtilizationScaleSettings) *string { return v.PollingInterval }).(pulumi.StringPtrOutput)
+}
+
+// Expected value is 'TargetUtilization'.
+func (o TargetUtilizationScaleSettingsOutput) ScaleType() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetUtilizationScaleSettings) string { return v.ScaleType }).(pulumi.StringOutput)
+}
+
+// Target CPU usage for the autoscaler.
+func (o TargetUtilizationScaleSettingsOutput) TargetUtilizationPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TargetUtilizationScaleSettings) *int { return v.TargetUtilizationPercentage }).(pulumi.IntPtrOutput)
+}
+
+type TargetUtilizationScaleSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (TargetUtilizationScaleSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetUtilizationScaleSettings)(nil)).Elem()
+}
+
+func (o TargetUtilizationScaleSettingsPtrOutput) ToTargetUtilizationScaleSettingsPtrOutput() TargetUtilizationScaleSettingsPtrOutput {
+	return o
+}
+
+func (o TargetUtilizationScaleSettingsPtrOutput) ToTargetUtilizationScaleSettingsPtrOutputWithContext(ctx context.Context) TargetUtilizationScaleSettingsPtrOutput {
+	return o
+}
+
+func (o TargetUtilizationScaleSettingsPtrOutput) Elem() TargetUtilizationScaleSettingsOutput {
+	return o.ApplyT(func(v *TargetUtilizationScaleSettings) TargetUtilizationScaleSettings {
+		if v != nil {
+			return *v
+		}
+		var ret TargetUtilizationScaleSettings
+		return ret
+	}).(TargetUtilizationScaleSettingsOutput)
+}
+
+// The maximum number of instances that the deployment can scale to. The quota will be reserved for max_instances.
+func (o TargetUtilizationScaleSettingsPtrOutput) MaxInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TargetUtilizationScaleSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of instances to always be present.
+func (o TargetUtilizationScaleSettingsPtrOutput) MinInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TargetUtilizationScaleSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// The polling interval in ISO 8691 format. Only supports duration with precision as low as Seconds.
+func (o TargetUtilizationScaleSettingsPtrOutput) PollingInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetUtilizationScaleSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PollingInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Expected value is 'TargetUtilization'.
+func (o TargetUtilizationScaleSettingsPtrOutput) ScaleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetUtilizationScaleSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Target CPU usage for the autoscaler.
+func (o TargetUtilizationScaleSettingsPtrOutput) TargetUtilizationPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TargetUtilizationScaleSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TargetUtilizationPercentage
+	}).(pulumi.IntPtrOutput)
 }
 
 type TargetUtilizationScaleSettingsResponse struct {
@@ -6022,6 +15229,119 @@ func (val *TargetUtilizationScaleSettingsResponse) Defaults() *TargetUtilization
 	return &tmp
 }
 
+type TargetUtilizationScaleSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (TargetUtilizationScaleSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetUtilizationScaleSettingsResponse)(nil)).Elem()
+}
+
+func (o TargetUtilizationScaleSettingsResponseOutput) ToTargetUtilizationScaleSettingsResponseOutput() TargetUtilizationScaleSettingsResponseOutput {
+	return o
+}
+
+func (o TargetUtilizationScaleSettingsResponseOutput) ToTargetUtilizationScaleSettingsResponseOutputWithContext(ctx context.Context) TargetUtilizationScaleSettingsResponseOutput {
+	return o
+}
+
+// The maximum number of instances that the deployment can scale to. The quota will be reserved for max_instances.
+func (o TargetUtilizationScaleSettingsResponseOutput) MaxInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TargetUtilizationScaleSettingsResponse) *int { return v.MaxInstances }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of instances to always be present.
+func (o TargetUtilizationScaleSettingsResponseOutput) MinInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TargetUtilizationScaleSettingsResponse) *int { return v.MinInstances }).(pulumi.IntPtrOutput)
+}
+
+// The polling interval in ISO 8691 format. Only supports duration with precision as low as Seconds.
+func (o TargetUtilizationScaleSettingsResponseOutput) PollingInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetUtilizationScaleSettingsResponse) *string { return v.PollingInterval }).(pulumi.StringPtrOutput)
+}
+
+// Expected value is 'TargetUtilization'.
+func (o TargetUtilizationScaleSettingsResponseOutput) ScaleType() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetUtilizationScaleSettingsResponse) string { return v.ScaleType }).(pulumi.StringOutput)
+}
+
+// Target CPU usage for the autoscaler.
+func (o TargetUtilizationScaleSettingsResponseOutput) TargetUtilizationPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TargetUtilizationScaleSettingsResponse) *int { return v.TargetUtilizationPercentage }).(pulumi.IntPtrOutput)
+}
+
+type TargetUtilizationScaleSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TargetUtilizationScaleSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetUtilizationScaleSettingsResponse)(nil)).Elem()
+}
+
+func (o TargetUtilizationScaleSettingsResponsePtrOutput) ToTargetUtilizationScaleSettingsResponsePtrOutput() TargetUtilizationScaleSettingsResponsePtrOutput {
+	return o
+}
+
+func (o TargetUtilizationScaleSettingsResponsePtrOutput) ToTargetUtilizationScaleSettingsResponsePtrOutputWithContext(ctx context.Context) TargetUtilizationScaleSettingsResponsePtrOutput {
+	return o
+}
+
+func (o TargetUtilizationScaleSettingsResponsePtrOutput) Elem() TargetUtilizationScaleSettingsResponseOutput {
+	return o.ApplyT(func(v *TargetUtilizationScaleSettingsResponse) TargetUtilizationScaleSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TargetUtilizationScaleSettingsResponse
+		return ret
+	}).(TargetUtilizationScaleSettingsResponseOutput)
+}
+
+// The maximum number of instances that the deployment can scale to. The quota will be reserved for max_instances.
+func (o TargetUtilizationScaleSettingsResponsePtrOutput) MaxInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TargetUtilizationScaleSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of instances to always be present.
+func (o TargetUtilizationScaleSettingsResponsePtrOutput) MinInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TargetUtilizationScaleSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+// The polling interval in ISO 8691 format. Only supports duration with precision as low as Seconds.
+func (o TargetUtilizationScaleSettingsResponsePtrOutput) PollingInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetUtilizationScaleSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PollingInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Expected value is 'TargetUtilization'.
+func (o TargetUtilizationScaleSettingsResponsePtrOutput) ScaleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetUtilizationScaleSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Target CPU usage for the autoscaler.
+func (o TargetUtilizationScaleSettingsResponsePtrOutput) TargetUtilizationPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TargetUtilizationScaleSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TargetUtilizationPercentage
+	}).(pulumi.IntPtrOutput)
+}
+
 // TensorFlow distribution configuration.
 type TensorFlow struct {
 	// Enum to determine the job distribution type.
@@ -6046,6 +15366,188 @@ func (val *TensorFlow) Defaults() *TensorFlow {
 	return &tmp
 }
 
+// TensorFlowInput is an input type that accepts TensorFlowArgs and TensorFlowOutput values.
+// You can construct a concrete instance of `TensorFlowInput` via:
+//
+//	TensorFlowArgs{...}
+type TensorFlowInput interface {
+	pulumi.Input
+
+	ToTensorFlowOutput() TensorFlowOutput
+	ToTensorFlowOutputWithContext(context.Context) TensorFlowOutput
+}
+
+// TensorFlow distribution configuration.
+type TensorFlowArgs struct {
+	// Enum to determine the job distribution type.
+	// Expected value is 'TensorFlow'.
+	DistributionType pulumi.StringInput `pulumi:"distributionType"`
+	// Number of parameter server tasks.
+	ParameterServerCount pulumi.IntPtrInput `pulumi:"parameterServerCount"`
+	// Number of workers. If not specified, will default to the instance count.
+	WorkerCount pulumi.IntPtrInput `pulumi:"workerCount"`
+}
+
+// Defaults sets the appropriate defaults for TensorFlowArgs
+func (val *TensorFlowArgs) Defaults() *TensorFlowArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ParameterServerCount == nil {
+		tmp.ParameterServerCount = pulumi.IntPtr(0)
+	}
+	return &tmp
+}
+func (TensorFlowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TensorFlow)(nil)).Elem()
+}
+
+func (i TensorFlowArgs) ToTensorFlowOutput() TensorFlowOutput {
+	return i.ToTensorFlowOutputWithContext(context.Background())
+}
+
+func (i TensorFlowArgs) ToTensorFlowOutputWithContext(ctx context.Context) TensorFlowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TensorFlowOutput)
+}
+
+func (i TensorFlowArgs) ToTensorFlowPtrOutput() TensorFlowPtrOutput {
+	return i.ToTensorFlowPtrOutputWithContext(context.Background())
+}
+
+func (i TensorFlowArgs) ToTensorFlowPtrOutputWithContext(ctx context.Context) TensorFlowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TensorFlowOutput).ToTensorFlowPtrOutputWithContext(ctx)
+}
+
+// TensorFlowPtrInput is an input type that accepts TensorFlowArgs, TensorFlowPtr and TensorFlowPtrOutput values.
+// You can construct a concrete instance of `TensorFlowPtrInput` via:
+//
+//	        TensorFlowArgs{...}
+//
+//	or:
+//
+//	        nil
+type TensorFlowPtrInput interface {
+	pulumi.Input
+
+	ToTensorFlowPtrOutput() TensorFlowPtrOutput
+	ToTensorFlowPtrOutputWithContext(context.Context) TensorFlowPtrOutput
+}
+
+type tensorFlowPtrType TensorFlowArgs
+
+func TensorFlowPtr(v *TensorFlowArgs) TensorFlowPtrInput {
+	return (*tensorFlowPtrType)(v)
+}
+
+func (*tensorFlowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TensorFlow)(nil)).Elem()
+}
+
+func (i *tensorFlowPtrType) ToTensorFlowPtrOutput() TensorFlowPtrOutput {
+	return i.ToTensorFlowPtrOutputWithContext(context.Background())
+}
+
+func (i *tensorFlowPtrType) ToTensorFlowPtrOutputWithContext(ctx context.Context) TensorFlowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TensorFlowPtrOutput)
+}
+
+// TensorFlow distribution configuration.
+type TensorFlowOutput struct{ *pulumi.OutputState }
+
+func (TensorFlowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TensorFlow)(nil)).Elem()
+}
+
+func (o TensorFlowOutput) ToTensorFlowOutput() TensorFlowOutput {
+	return o
+}
+
+func (o TensorFlowOutput) ToTensorFlowOutputWithContext(ctx context.Context) TensorFlowOutput {
+	return o
+}
+
+func (o TensorFlowOutput) ToTensorFlowPtrOutput() TensorFlowPtrOutput {
+	return o.ToTensorFlowPtrOutputWithContext(context.Background())
+}
+
+func (o TensorFlowOutput) ToTensorFlowPtrOutputWithContext(ctx context.Context) TensorFlowPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TensorFlow) *TensorFlow {
+		return &v
+	}).(TensorFlowPtrOutput)
+}
+
+// Enum to determine the job distribution type.
+// Expected value is 'TensorFlow'.
+func (o TensorFlowOutput) DistributionType() pulumi.StringOutput {
+	return o.ApplyT(func(v TensorFlow) string { return v.DistributionType }).(pulumi.StringOutput)
+}
+
+// Number of parameter server tasks.
+func (o TensorFlowOutput) ParameterServerCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TensorFlow) *int { return v.ParameterServerCount }).(pulumi.IntPtrOutput)
+}
+
+// Number of workers. If not specified, will default to the instance count.
+func (o TensorFlowOutput) WorkerCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TensorFlow) *int { return v.WorkerCount }).(pulumi.IntPtrOutput)
+}
+
+type TensorFlowPtrOutput struct{ *pulumi.OutputState }
+
+func (TensorFlowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TensorFlow)(nil)).Elem()
+}
+
+func (o TensorFlowPtrOutput) ToTensorFlowPtrOutput() TensorFlowPtrOutput {
+	return o
+}
+
+func (o TensorFlowPtrOutput) ToTensorFlowPtrOutputWithContext(ctx context.Context) TensorFlowPtrOutput {
+	return o
+}
+
+func (o TensorFlowPtrOutput) Elem() TensorFlowOutput {
+	return o.ApplyT(func(v *TensorFlow) TensorFlow {
+		if v != nil {
+			return *v
+		}
+		var ret TensorFlow
+		return ret
+	}).(TensorFlowOutput)
+}
+
+// Enum to determine the job distribution type.
+// Expected value is 'TensorFlow'.
+func (o TensorFlowPtrOutput) DistributionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TensorFlow) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DistributionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of parameter server tasks.
+func (o TensorFlowPtrOutput) ParameterServerCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TensorFlow) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ParameterServerCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of workers. If not specified, will default to the instance count.
+func (o TensorFlowPtrOutput) WorkerCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TensorFlow) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WorkerCount
+	}).(pulumi.IntPtrOutput)
+}
+
 // TensorFlow distribution configuration.
 type TensorFlowResponse struct {
 	// Enum to determine the job distribution type.
@@ -6068,6 +15570,92 @@ func (val *TensorFlowResponse) Defaults() *TensorFlowResponse {
 		tmp.ParameterServerCount = &parameterServerCount_
 	}
 	return &tmp
+}
+
+// TensorFlow distribution configuration.
+type TensorFlowResponseOutput struct{ *pulumi.OutputState }
+
+func (TensorFlowResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TensorFlowResponse)(nil)).Elem()
+}
+
+func (o TensorFlowResponseOutput) ToTensorFlowResponseOutput() TensorFlowResponseOutput {
+	return o
+}
+
+func (o TensorFlowResponseOutput) ToTensorFlowResponseOutputWithContext(ctx context.Context) TensorFlowResponseOutput {
+	return o
+}
+
+// Enum to determine the job distribution type.
+// Expected value is 'TensorFlow'.
+func (o TensorFlowResponseOutput) DistributionType() pulumi.StringOutput {
+	return o.ApplyT(func(v TensorFlowResponse) string { return v.DistributionType }).(pulumi.StringOutput)
+}
+
+// Number of parameter server tasks.
+func (o TensorFlowResponseOutput) ParameterServerCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TensorFlowResponse) *int { return v.ParameterServerCount }).(pulumi.IntPtrOutput)
+}
+
+// Number of workers. If not specified, will default to the instance count.
+func (o TensorFlowResponseOutput) WorkerCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TensorFlowResponse) *int { return v.WorkerCount }).(pulumi.IntPtrOutput)
+}
+
+type TensorFlowResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TensorFlowResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TensorFlowResponse)(nil)).Elem()
+}
+
+func (o TensorFlowResponsePtrOutput) ToTensorFlowResponsePtrOutput() TensorFlowResponsePtrOutput {
+	return o
+}
+
+func (o TensorFlowResponsePtrOutput) ToTensorFlowResponsePtrOutputWithContext(ctx context.Context) TensorFlowResponsePtrOutput {
+	return o
+}
+
+func (o TensorFlowResponsePtrOutput) Elem() TensorFlowResponseOutput {
+	return o.ApplyT(func(v *TensorFlowResponse) TensorFlowResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TensorFlowResponse
+		return ret
+	}).(TensorFlowResponseOutput)
+}
+
+// Enum to determine the job distribution type.
+// Expected value is 'TensorFlow'.
+func (o TensorFlowResponsePtrOutput) DistributionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TensorFlowResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DistributionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of parameter server tasks.
+func (o TensorFlowResponsePtrOutput) ParameterServerCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TensorFlowResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ParameterServerCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of workers. If not specified, will default to the instance count.
+func (o TensorFlowResponsePtrOutput) WorkerCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TensorFlowResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WorkerCount
+	}).(pulumi.IntPtrOutput)
 }
 
 // Text Classification task in AutoML NLP vertical.
@@ -6124,6 +15712,147 @@ func (val *TextClassification) Defaults() *TextClassification {
 	return &tmp
 }
 
+// TextClassificationInput is an input type that accepts TextClassificationArgs and TextClassificationOutput values.
+// You can construct a concrete instance of `TextClassificationInput` via:
+//
+//	TextClassificationArgs{...}
+type TextClassificationInput interface {
+	pulumi.Input
+
+	ToTextClassificationOutput() TextClassificationOutput
+	ToTextClassificationOutputWithContext(context.Context) TextClassificationOutput
+}
+
+// Text Classification task in AutoML NLP vertical.
+// NLP - Natural Language Processing.
+type TextClassificationArgs struct {
+	// Featurization inputs needed for AutoML job.
+	FeaturizationSettings NlpVerticalFeaturizationSettingsPtrInput `pulumi:"featurizationSettings"`
+	// Model/training parameters that will remain constant throughout training.
+	FixedParameters NlpFixedParametersPtrInput `pulumi:"fixedParameters"`
+	// Execution constraints for AutoMLJob.
+	LimitSettings NlpVerticalLimitSettingsPtrInput `pulumi:"limitSettings"`
+	// Log verbosity for the job.
+	LogVerbosity pulumi.StringPtrInput `pulumi:"logVerbosity"`
+	// Primary metric for Text-Classification task.
+	PrimaryMetric pulumi.StringPtrInput `pulumi:"primaryMetric"`
+	// Search space for sampling different combinations of models and their hyperparameters.
+	SearchSpace NlpParameterSubspaceArrayInput `pulumi:"searchSpace"`
+	// Settings for model sweeping and hyperparameter tuning.
+	SweepSettings NlpSweepSettingsPtrInput `pulumi:"sweepSettings"`
+	// Target column name: This is prediction values column.
+	// Also known as label column name in context of classification tasks.
+	TargetColumnName pulumi.StringPtrInput `pulumi:"targetColumnName"`
+	// AutoMLJob Task type.
+	// Expected value is 'TextClassification'.
+	TaskType pulumi.StringInput `pulumi:"taskType"`
+	// [Required] Training data input.
+	TrainingData MLTableJobInputInput `pulumi:"trainingData"`
+	// Validation data inputs.
+	ValidationData MLTableJobInputPtrInput `pulumi:"validationData"`
+}
+
+// Defaults sets the appropriate defaults for TextClassificationArgs
+func (val *TextClassificationArgs) Defaults() *TextClassificationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	if tmp.LogVerbosity == nil {
+		tmp.LogVerbosity = pulumi.StringPtr("Info")
+	}
+	if tmp.PrimaryMetric == nil {
+		tmp.PrimaryMetric = pulumi.StringPtr("Accuracy")
+	}
+
+	return &tmp
+}
+func (TextClassificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextClassification)(nil)).Elem()
+}
+
+func (i TextClassificationArgs) ToTextClassificationOutput() TextClassificationOutput {
+	return i.ToTextClassificationOutputWithContext(context.Background())
+}
+
+func (i TextClassificationArgs) ToTextClassificationOutputWithContext(ctx context.Context) TextClassificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TextClassificationOutput)
+}
+
+// Text Classification task in AutoML NLP vertical.
+// NLP - Natural Language Processing.
+type TextClassificationOutput struct{ *pulumi.OutputState }
+
+func (TextClassificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextClassification)(nil)).Elem()
+}
+
+func (o TextClassificationOutput) ToTextClassificationOutput() TextClassificationOutput {
+	return o
+}
+
+func (o TextClassificationOutput) ToTextClassificationOutputWithContext(ctx context.Context) TextClassificationOutput {
+	return o
+}
+
+// Featurization inputs needed for AutoML job.
+func (o TextClassificationOutput) FeaturizationSettings() NlpVerticalFeaturizationSettingsPtrOutput {
+	return o.ApplyT(func(v TextClassification) *NlpVerticalFeaturizationSettings { return v.FeaturizationSettings }).(NlpVerticalFeaturizationSettingsPtrOutput)
+}
+
+// Model/training parameters that will remain constant throughout training.
+func (o TextClassificationOutput) FixedParameters() NlpFixedParametersPtrOutput {
+	return o.ApplyT(func(v TextClassification) *NlpFixedParameters { return v.FixedParameters }).(NlpFixedParametersPtrOutput)
+}
+
+// Execution constraints for AutoMLJob.
+func (o TextClassificationOutput) LimitSettings() NlpVerticalLimitSettingsPtrOutput {
+	return o.ApplyT(func(v TextClassification) *NlpVerticalLimitSettings { return v.LimitSettings }).(NlpVerticalLimitSettingsPtrOutput)
+}
+
+// Log verbosity for the job.
+func (o TextClassificationOutput) LogVerbosity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TextClassification) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
+}
+
+// Primary metric for Text-Classification task.
+func (o TextClassificationOutput) PrimaryMetric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TextClassification) *string { return v.PrimaryMetric }).(pulumi.StringPtrOutput)
+}
+
+// Search space for sampling different combinations of models and their hyperparameters.
+func (o TextClassificationOutput) SearchSpace() NlpParameterSubspaceArrayOutput {
+	return o.ApplyT(func(v TextClassification) []NlpParameterSubspace { return v.SearchSpace }).(NlpParameterSubspaceArrayOutput)
+}
+
+// Settings for model sweeping and hyperparameter tuning.
+func (o TextClassificationOutput) SweepSettings() NlpSweepSettingsPtrOutput {
+	return o.ApplyT(func(v TextClassification) *NlpSweepSettings { return v.SweepSettings }).(NlpSweepSettingsPtrOutput)
+}
+
+// Target column name: This is prediction values column.
+// Also known as label column name in context of classification tasks.
+func (o TextClassificationOutput) TargetColumnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TextClassification) *string { return v.TargetColumnName }).(pulumi.StringPtrOutput)
+}
+
+// AutoMLJob Task type.
+// Expected value is 'TextClassification'.
+func (o TextClassificationOutput) TaskType() pulumi.StringOutput {
+	return o.ApplyT(func(v TextClassification) string { return v.TaskType }).(pulumi.StringOutput)
+}
+
+// [Required] Training data input.
+func (o TextClassificationOutput) TrainingData() MLTableJobInputOutput {
+	return o.ApplyT(func(v TextClassification) MLTableJobInput { return v.TrainingData }).(MLTableJobInputOutput)
+}
+
+// Validation data inputs.
+func (o TextClassificationOutput) ValidationData() MLTableJobInputPtrOutput {
+	return o.ApplyT(func(v TextClassification) *MLTableJobInput { return v.ValidationData }).(MLTableJobInputPtrOutput)
+}
+
 // Text Classification Multilabel task in AutoML NLP vertical.
 // NLP - Natural Language Processing.
 type TextClassificationMultilabel struct {
@@ -6170,6 +15899,137 @@ func (val *TextClassificationMultilabel) Defaults() *TextClassificationMultilabe
 	tmp.ValidationData = tmp.ValidationData.Defaults()
 
 	return &tmp
+}
+
+// TextClassificationMultilabelInput is an input type that accepts TextClassificationMultilabelArgs and TextClassificationMultilabelOutput values.
+// You can construct a concrete instance of `TextClassificationMultilabelInput` via:
+//
+//	TextClassificationMultilabelArgs{...}
+type TextClassificationMultilabelInput interface {
+	pulumi.Input
+
+	ToTextClassificationMultilabelOutput() TextClassificationMultilabelOutput
+	ToTextClassificationMultilabelOutputWithContext(context.Context) TextClassificationMultilabelOutput
+}
+
+// Text Classification Multilabel task in AutoML NLP vertical.
+// NLP - Natural Language Processing.
+type TextClassificationMultilabelArgs struct {
+	// Featurization inputs needed for AutoML job.
+	FeaturizationSettings NlpVerticalFeaturizationSettingsPtrInput `pulumi:"featurizationSettings"`
+	// Model/training parameters that will remain constant throughout training.
+	FixedParameters NlpFixedParametersPtrInput `pulumi:"fixedParameters"`
+	// Execution constraints for AutoMLJob.
+	LimitSettings NlpVerticalLimitSettingsPtrInput `pulumi:"limitSettings"`
+	// Log verbosity for the job.
+	LogVerbosity pulumi.StringPtrInput `pulumi:"logVerbosity"`
+	// Search space for sampling different combinations of models and their hyperparameters.
+	SearchSpace NlpParameterSubspaceArrayInput `pulumi:"searchSpace"`
+	// Settings for model sweeping and hyperparameter tuning.
+	SweepSettings NlpSweepSettingsPtrInput `pulumi:"sweepSettings"`
+	// Target column name: This is prediction values column.
+	// Also known as label column name in context of classification tasks.
+	TargetColumnName pulumi.StringPtrInput `pulumi:"targetColumnName"`
+	// AutoMLJob Task type.
+	// Expected value is 'TextClassificationMultilabel'.
+	TaskType pulumi.StringInput `pulumi:"taskType"`
+	// [Required] Training data input.
+	TrainingData MLTableJobInputInput `pulumi:"trainingData"`
+	// Validation data inputs.
+	ValidationData MLTableJobInputPtrInput `pulumi:"validationData"`
+}
+
+// Defaults sets the appropriate defaults for TextClassificationMultilabelArgs
+func (val *TextClassificationMultilabelArgs) Defaults() *TextClassificationMultilabelArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	if tmp.LogVerbosity == nil {
+		tmp.LogVerbosity = pulumi.StringPtr("Info")
+	}
+
+	return &tmp
+}
+func (TextClassificationMultilabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextClassificationMultilabel)(nil)).Elem()
+}
+
+func (i TextClassificationMultilabelArgs) ToTextClassificationMultilabelOutput() TextClassificationMultilabelOutput {
+	return i.ToTextClassificationMultilabelOutputWithContext(context.Background())
+}
+
+func (i TextClassificationMultilabelArgs) ToTextClassificationMultilabelOutputWithContext(ctx context.Context) TextClassificationMultilabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TextClassificationMultilabelOutput)
+}
+
+// Text Classification Multilabel task in AutoML NLP vertical.
+// NLP - Natural Language Processing.
+type TextClassificationMultilabelOutput struct{ *pulumi.OutputState }
+
+func (TextClassificationMultilabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextClassificationMultilabel)(nil)).Elem()
+}
+
+func (o TextClassificationMultilabelOutput) ToTextClassificationMultilabelOutput() TextClassificationMultilabelOutput {
+	return o
+}
+
+func (o TextClassificationMultilabelOutput) ToTextClassificationMultilabelOutputWithContext(ctx context.Context) TextClassificationMultilabelOutput {
+	return o
+}
+
+// Featurization inputs needed for AutoML job.
+func (o TextClassificationMultilabelOutput) FeaturizationSettings() NlpVerticalFeaturizationSettingsPtrOutput {
+	return o.ApplyT(func(v TextClassificationMultilabel) *NlpVerticalFeaturizationSettings { return v.FeaturizationSettings }).(NlpVerticalFeaturizationSettingsPtrOutput)
+}
+
+// Model/training parameters that will remain constant throughout training.
+func (o TextClassificationMultilabelOutput) FixedParameters() NlpFixedParametersPtrOutput {
+	return o.ApplyT(func(v TextClassificationMultilabel) *NlpFixedParameters { return v.FixedParameters }).(NlpFixedParametersPtrOutput)
+}
+
+// Execution constraints for AutoMLJob.
+func (o TextClassificationMultilabelOutput) LimitSettings() NlpVerticalLimitSettingsPtrOutput {
+	return o.ApplyT(func(v TextClassificationMultilabel) *NlpVerticalLimitSettings { return v.LimitSettings }).(NlpVerticalLimitSettingsPtrOutput)
+}
+
+// Log verbosity for the job.
+func (o TextClassificationMultilabelOutput) LogVerbosity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TextClassificationMultilabel) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
+}
+
+// Search space for sampling different combinations of models and their hyperparameters.
+func (o TextClassificationMultilabelOutput) SearchSpace() NlpParameterSubspaceArrayOutput {
+	return o.ApplyT(func(v TextClassificationMultilabel) []NlpParameterSubspace { return v.SearchSpace }).(NlpParameterSubspaceArrayOutput)
+}
+
+// Settings for model sweeping and hyperparameter tuning.
+func (o TextClassificationMultilabelOutput) SweepSettings() NlpSweepSettingsPtrOutput {
+	return o.ApplyT(func(v TextClassificationMultilabel) *NlpSweepSettings { return v.SweepSettings }).(NlpSweepSettingsPtrOutput)
+}
+
+// Target column name: This is prediction values column.
+// Also known as label column name in context of classification tasks.
+func (o TextClassificationMultilabelOutput) TargetColumnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TextClassificationMultilabel) *string { return v.TargetColumnName }).(pulumi.StringPtrOutput)
+}
+
+// AutoMLJob Task type.
+// Expected value is 'TextClassificationMultilabel'.
+func (o TextClassificationMultilabelOutput) TaskType() pulumi.StringOutput {
+	return o.ApplyT(func(v TextClassificationMultilabel) string { return v.TaskType }).(pulumi.StringOutput)
+}
+
+// [Required] Training data input.
+func (o TextClassificationMultilabelOutput) TrainingData() MLTableJobInputOutput {
+	return o.ApplyT(func(v TextClassificationMultilabel) MLTableJobInput { return v.TrainingData }).(MLTableJobInputOutput)
+}
+
+// Validation data inputs.
+func (o TextClassificationMultilabelOutput) ValidationData() MLTableJobInputPtrOutput {
+	return o.ApplyT(func(v TextClassificationMultilabel) *MLTableJobInput { return v.ValidationData }).(MLTableJobInputPtrOutput)
 }
 
 // Text Classification Multilabel task in AutoML NLP vertical.
@@ -6221,6 +16081,82 @@ func (val *TextClassificationMultilabelResponse) Defaults() *TextClassificationM
 	tmp.ValidationData = tmp.ValidationData.Defaults()
 
 	return &tmp
+}
+
+// Text Classification Multilabel task in AutoML NLP vertical.
+// NLP - Natural Language Processing.
+type TextClassificationMultilabelResponseOutput struct{ *pulumi.OutputState }
+
+func (TextClassificationMultilabelResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextClassificationMultilabelResponse)(nil)).Elem()
+}
+
+func (o TextClassificationMultilabelResponseOutput) ToTextClassificationMultilabelResponseOutput() TextClassificationMultilabelResponseOutput {
+	return o
+}
+
+func (o TextClassificationMultilabelResponseOutput) ToTextClassificationMultilabelResponseOutputWithContext(ctx context.Context) TextClassificationMultilabelResponseOutput {
+	return o
+}
+
+// Featurization inputs needed for AutoML job.
+func (o TextClassificationMultilabelResponseOutput) FeaturizationSettings() NlpVerticalFeaturizationSettingsResponsePtrOutput {
+	return o.ApplyT(func(v TextClassificationMultilabelResponse) *NlpVerticalFeaturizationSettingsResponse {
+		return v.FeaturizationSettings
+	}).(NlpVerticalFeaturizationSettingsResponsePtrOutput)
+}
+
+// Model/training parameters that will remain constant throughout training.
+func (o TextClassificationMultilabelResponseOutput) FixedParameters() NlpFixedParametersResponsePtrOutput {
+	return o.ApplyT(func(v TextClassificationMultilabelResponse) *NlpFixedParametersResponse { return v.FixedParameters }).(NlpFixedParametersResponsePtrOutput)
+}
+
+// Execution constraints for AutoMLJob.
+func (o TextClassificationMultilabelResponseOutput) LimitSettings() NlpVerticalLimitSettingsResponsePtrOutput {
+	return o.ApplyT(func(v TextClassificationMultilabelResponse) *NlpVerticalLimitSettingsResponse { return v.LimitSettings }).(NlpVerticalLimitSettingsResponsePtrOutput)
+}
+
+// Log verbosity for the job.
+func (o TextClassificationMultilabelResponseOutput) LogVerbosity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TextClassificationMultilabelResponse) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
+}
+
+// Primary metric for Text-Classification-Multilabel task.
+// Currently only Accuracy is supported as primary metric, hence user need not set it explicitly.
+func (o TextClassificationMultilabelResponseOutput) PrimaryMetric() pulumi.StringOutput {
+	return o.ApplyT(func(v TextClassificationMultilabelResponse) string { return v.PrimaryMetric }).(pulumi.StringOutput)
+}
+
+// Search space for sampling different combinations of models and their hyperparameters.
+func (o TextClassificationMultilabelResponseOutput) SearchSpace() NlpParameterSubspaceResponseArrayOutput {
+	return o.ApplyT(func(v TextClassificationMultilabelResponse) []NlpParameterSubspaceResponse { return v.SearchSpace }).(NlpParameterSubspaceResponseArrayOutput)
+}
+
+// Settings for model sweeping and hyperparameter tuning.
+func (o TextClassificationMultilabelResponseOutput) SweepSettings() NlpSweepSettingsResponsePtrOutput {
+	return o.ApplyT(func(v TextClassificationMultilabelResponse) *NlpSweepSettingsResponse { return v.SweepSettings }).(NlpSweepSettingsResponsePtrOutput)
+}
+
+// Target column name: This is prediction values column.
+// Also known as label column name in context of classification tasks.
+func (o TextClassificationMultilabelResponseOutput) TargetColumnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TextClassificationMultilabelResponse) *string { return v.TargetColumnName }).(pulumi.StringPtrOutput)
+}
+
+// AutoMLJob Task type.
+// Expected value is 'TextClassificationMultilabel'.
+func (o TextClassificationMultilabelResponseOutput) TaskType() pulumi.StringOutput {
+	return o.ApplyT(func(v TextClassificationMultilabelResponse) string { return v.TaskType }).(pulumi.StringOutput)
+}
+
+// [Required] Training data input.
+func (o TextClassificationMultilabelResponseOutput) TrainingData() MLTableJobInputResponseOutput {
+	return o.ApplyT(func(v TextClassificationMultilabelResponse) MLTableJobInputResponse { return v.TrainingData }).(MLTableJobInputResponseOutput)
+}
+
+// Validation data inputs.
+func (o TextClassificationMultilabelResponseOutput) ValidationData() MLTableJobInputResponsePtrOutput {
+	return o.ApplyT(func(v TextClassificationMultilabelResponse) *MLTableJobInputResponse { return v.ValidationData }).(MLTableJobInputResponsePtrOutput)
 }
 
 // Text Classification task in AutoML NLP vertical.
@@ -6277,6 +16213,81 @@ func (val *TextClassificationResponse) Defaults() *TextClassificationResponse {
 	return &tmp
 }
 
+// Text Classification task in AutoML NLP vertical.
+// NLP - Natural Language Processing.
+type TextClassificationResponseOutput struct{ *pulumi.OutputState }
+
+func (TextClassificationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextClassificationResponse)(nil)).Elem()
+}
+
+func (o TextClassificationResponseOutput) ToTextClassificationResponseOutput() TextClassificationResponseOutput {
+	return o
+}
+
+func (o TextClassificationResponseOutput) ToTextClassificationResponseOutputWithContext(ctx context.Context) TextClassificationResponseOutput {
+	return o
+}
+
+// Featurization inputs needed for AutoML job.
+func (o TextClassificationResponseOutput) FeaturizationSettings() NlpVerticalFeaturizationSettingsResponsePtrOutput {
+	return o.ApplyT(func(v TextClassificationResponse) *NlpVerticalFeaturizationSettingsResponse {
+		return v.FeaturizationSettings
+	}).(NlpVerticalFeaturizationSettingsResponsePtrOutput)
+}
+
+// Model/training parameters that will remain constant throughout training.
+func (o TextClassificationResponseOutput) FixedParameters() NlpFixedParametersResponsePtrOutput {
+	return o.ApplyT(func(v TextClassificationResponse) *NlpFixedParametersResponse { return v.FixedParameters }).(NlpFixedParametersResponsePtrOutput)
+}
+
+// Execution constraints for AutoMLJob.
+func (o TextClassificationResponseOutput) LimitSettings() NlpVerticalLimitSettingsResponsePtrOutput {
+	return o.ApplyT(func(v TextClassificationResponse) *NlpVerticalLimitSettingsResponse { return v.LimitSettings }).(NlpVerticalLimitSettingsResponsePtrOutput)
+}
+
+// Log verbosity for the job.
+func (o TextClassificationResponseOutput) LogVerbosity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TextClassificationResponse) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
+}
+
+// Primary metric for Text-Classification task.
+func (o TextClassificationResponseOutput) PrimaryMetric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TextClassificationResponse) *string { return v.PrimaryMetric }).(pulumi.StringPtrOutput)
+}
+
+// Search space for sampling different combinations of models and their hyperparameters.
+func (o TextClassificationResponseOutput) SearchSpace() NlpParameterSubspaceResponseArrayOutput {
+	return o.ApplyT(func(v TextClassificationResponse) []NlpParameterSubspaceResponse { return v.SearchSpace }).(NlpParameterSubspaceResponseArrayOutput)
+}
+
+// Settings for model sweeping and hyperparameter tuning.
+func (o TextClassificationResponseOutput) SweepSettings() NlpSweepSettingsResponsePtrOutput {
+	return o.ApplyT(func(v TextClassificationResponse) *NlpSweepSettingsResponse { return v.SweepSettings }).(NlpSweepSettingsResponsePtrOutput)
+}
+
+// Target column name: This is prediction values column.
+// Also known as label column name in context of classification tasks.
+func (o TextClassificationResponseOutput) TargetColumnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TextClassificationResponse) *string { return v.TargetColumnName }).(pulumi.StringPtrOutput)
+}
+
+// AutoMLJob Task type.
+// Expected value is 'TextClassification'.
+func (o TextClassificationResponseOutput) TaskType() pulumi.StringOutput {
+	return o.ApplyT(func(v TextClassificationResponse) string { return v.TaskType }).(pulumi.StringOutput)
+}
+
+// [Required] Training data input.
+func (o TextClassificationResponseOutput) TrainingData() MLTableJobInputResponseOutput {
+	return o.ApplyT(func(v TextClassificationResponse) MLTableJobInputResponse { return v.TrainingData }).(MLTableJobInputResponseOutput)
+}
+
+// Validation data inputs.
+func (o TextClassificationResponseOutput) ValidationData() MLTableJobInputResponsePtrOutput {
+	return o.ApplyT(func(v TextClassificationResponse) *MLTableJobInputResponse { return v.ValidationData }).(MLTableJobInputResponsePtrOutput)
+}
+
 // Text-NER task in AutoML NLP vertical.
 // NER - Named Entity Recognition.
 // NLP - Natural Language Processing.
@@ -6324,6 +16335,139 @@ func (val *TextNer) Defaults() *TextNer {
 	tmp.ValidationData = tmp.ValidationData.Defaults()
 
 	return &tmp
+}
+
+// TextNerInput is an input type that accepts TextNerArgs and TextNerOutput values.
+// You can construct a concrete instance of `TextNerInput` via:
+//
+//	TextNerArgs{...}
+type TextNerInput interface {
+	pulumi.Input
+
+	ToTextNerOutput() TextNerOutput
+	ToTextNerOutputWithContext(context.Context) TextNerOutput
+}
+
+// Text-NER task in AutoML NLP vertical.
+// NER - Named Entity Recognition.
+// NLP - Natural Language Processing.
+type TextNerArgs struct {
+	// Featurization inputs needed for AutoML job.
+	FeaturizationSettings NlpVerticalFeaturizationSettingsPtrInput `pulumi:"featurizationSettings"`
+	// Model/training parameters that will remain constant throughout training.
+	FixedParameters NlpFixedParametersPtrInput `pulumi:"fixedParameters"`
+	// Execution constraints for AutoMLJob.
+	LimitSettings NlpVerticalLimitSettingsPtrInput `pulumi:"limitSettings"`
+	// Log verbosity for the job.
+	LogVerbosity pulumi.StringPtrInput `pulumi:"logVerbosity"`
+	// Search space for sampling different combinations of models and their hyperparameters.
+	SearchSpace NlpParameterSubspaceArrayInput `pulumi:"searchSpace"`
+	// Settings for model sweeping and hyperparameter tuning.
+	SweepSettings NlpSweepSettingsPtrInput `pulumi:"sweepSettings"`
+	// Target column name: This is prediction values column.
+	// Also known as label column name in context of classification tasks.
+	TargetColumnName pulumi.StringPtrInput `pulumi:"targetColumnName"`
+	// AutoMLJob Task type.
+	// Expected value is 'TextNER'.
+	TaskType pulumi.StringInput `pulumi:"taskType"`
+	// [Required] Training data input.
+	TrainingData MLTableJobInputInput `pulumi:"trainingData"`
+	// Validation data inputs.
+	ValidationData MLTableJobInputPtrInput `pulumi:"validationData"`
+}
+
+// Defaults sets the appropriate defaults for TextNerArgs
+func (val *TextNerArgs) Defaults() *TextNerArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	if tmp.LogVerbosity == nil {
+		tmp.LogVerbosity = pulumi.StringPtr("Info")
+	}
+
+	return &tmp
+}
+func (TextNerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextNer)(nil)).Elem()
+}
+
+func (i TextNerArgs) ToTextNerOutput() TextNerOutput {
+	return i.ToTextNerOutputWithContext(context.Background())
+}
+
+func (i TextNerArgs) ToTextNerOutputWithContext(ctx context.Context) TextNerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TextNerOutput)
+}
+
+// Text-NER task in AutoML NLP vertical.
+// NER - Named Entity Recognition.
+// NLP - Natural Language Processing.
+type TextNerOutput struct{ *pulumi.OutputState }
+
+func (TextNerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextNer)(nil)).Elem()
+}
+
+func (o TextNerOutput) ToTextNerOutput() TextNerOutput {
+	return o
+}
+
+func (o TextNerOutput) ToTextNerOutputWithContext(ctx context.Context) TextNerOutput {
+	return o
+}
+
+// Featurization inputs needed for AutoML job.
+func (o TextNerOutput) FeaturizationSettings() NlpVerticalFeaturizationSettingsPtrOutput {
+	return o.ApplyT(func(v TextNer) *NlpVerticalFeaturizationSettings { return v.FeaturizationSettings }).(NlpVerticalFeaturizationSettingsPtrOutput)
+}
+
+// Model/training parameters that will remain constant throughout training.
+func (o TextNerOutput) FixedParameters() NlpFixedParametersPtrOutput {
+	return o.ApplyT(func(v TextNer) *NlpFixedParameters { return v.FixedParameters }).(NlpFixedParametersPtrOutput)
+}
+
+// Execution constraints for AutoMLJob.
+func (o TextNerOutput) LimitSettings() NlpVerticalLimitSettingsPtrOutput {
+	return o.ApplyT(func(v TextNer) *NlpVerticalLimitSettings { return v.LimitSettings }).(NlpVerticalLimitSettingsPtrOutput)
+}
+
+// Log verbosity for the job.
+func (o TextNerOutput) LogVerbosity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TextNer) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
+}
+
+// Search space for sampling different combinations of models and their hyperparameters.
+func (o TextNerOutput) SearchSpace() NlpParameterSubspaceArrayOutput {
+	return o.ApplyT(func(v TextNer) []NlpParameterSubspace { return v.SearchSpace }).(NlpParameterSubspaceArrayOutput)
+}
+
+// Settings for model sweeping and hyperparameter tuning.
+func (o TextNerOutput) SweepSettings() NlpSweepSettingsPtrOutput {
+	return o.ApplyT(func(v TextNer) *NlpSweepSettings { return v.SweepSettings }).(NlpSweepSettingsPtrOutput)
+}
+
+// Target column name: This is prediction values column.
+// Also known as label column name in context of classification tasks.
+func (o TextNerOutput) TargetColumnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TextNer) *string { return v.TargetColumnName }).(pulumi.StringPtrOutput)
+}
+
+// AutoMLJob Task type.
+// Expected value is 'TextNER'.
+func (o TextNerOutput) TaskType() pulumi.StringOutput {
+	return o.ApplyT(func(v TextNer) string { return v.TaskType }).(pulumi.StringOutput)
+}
+
+// [Required] Training data input.
+func (o TextNerOutput) TrainingData() MLTableJobInputOutput {
+	return o.ApplyT(func(v TextNer) MLTableJobInput { return v.TrainingData }).(MLTableJobInputOutput)
+}
+
+// Validation data inputs.
+func (o TextNerOutput) ValidationData() MLTableJobInputPtrOutput {
+	return o.ApplyT(func(v TextNer) *MLTableJobInput { return v.ValidationData }).(MLTableJobInputPtrOutput)
 }
 
 // Text-NER task in AutoML NLP vertical.
@@ -6378,14 +16522,274 @@ func (val *TextNerResponse) Defaults() *TextNerResponse {
 	return &tmp
 }
 
+// Text-NER task in AutoML NLP vertical.
+// NER - Named Entity Recognition.
+// NLP - Natural Language Processing.
+type TextNerResponseOutput struct{ *pulumi.OutputState }
+
+func (TextNerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextNerResponse)(nil)).Elem()
+}
+
+func (o TextNerResponseOutput) ToTextNerResponseOutput() TextNerResponseOutput {
+	return o
+}
+
+func (o TextNerResponseOutput) ToTextNerResponseOutputWithContext(ctx context.Context) TextNerResponseOutput {
+	return o
+}
+
+// Featurization inputs needed for AutoML job.
+func (o TextNerResponseOutput) FeaturizationSettings() NlpVerticalFeaturizationSettingsResponsePtrOutput {
+	return o.ApplyT(func(v TextNerResponse) *NlpVerticalFeaturizationSettingsResponse { return v.FeaturizationSettings }).(NlpVerticalFeaturizationSettingsResponsePtrOutput)
+}
+
+// Model/training parameters that will remain constant throughout training.
+func (o TextNerResponseOutput) FixedParameters() NlpFixedParametersResponsePtrOutput {
+	return o.ApplyT(func(v TextNerResponse) *NlpFixedParametersResponse { return v.FixedParameters }).(NlpFixedParametersResponsePtrOutput)
+}
+
+// Execution constraints for AutoMLJob.
+func (o TextNerResponseOutput) LimitSettings() NlpVerticalLimitSettingsResponsePtrOutput {
+	return o.ApplyT(func(v TextNerResponse) *NlpVerticalLimitSettingsResponse { return v.LimitSettings }).(NlpVerticalLimitSettingsResponsePtrOutput)
+}
+
+// Log verbosity for the job.
+func (o TextNerResponseOutput) LogVerbosity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TextNerResponse) *string { return v.LogVerbosity }).(pulumi.StringPtrOutput)
+}
+
+// Primary metric for Text-NER task.
+// Only 'Accuracy' is supported for Text-NER, so user need not set this explicitly.
+func (o TextNerResponseOutput) PrimaryMetric() pulumi.StringOutput {
+	return o.ApplyT(func(v TextNerResponse) string { return v.PrimaryMetric }).(pulumi.StringOutput)
+}
+
+// Search space for sampling different combinations of models and their hyperparameters.
+func (o TextNerResponseOutput) SearchSpace() NlpParameterSubspaceResponseArrayOutput {
+	return o.ApplyT(func(v TextNerResponse) []NlpParameterSubspaceResponse { return v.SearchSpace }).(NlpParameterSubspaceResponseArrayOutput)
+}
+
+// Settings for model sweeping and hyperparameter tuning.
+func (o TextNerResponseOutput) SweepSettings() NlpSweepSettingsResponsePtrOutput {
+	return o.ApplyT(func(v TextNerResponse) *NlpSweepSettingsResponse { return v.SweepSettings }).(NlpSweepSettingsResponsePtrOutput)
+}
+
+// Target column name: This is prediction values column.
+// Also known as label column name in context of classification tasks.
+func (o TextNerResponseOutput) TargetColumnName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TextNerResponse) *string { return v.TargetColumnName }).(pulumi.StringPtrOutput)
+}
+
+// AutoMLJob Task type.
+// Expected value is 'TextNER'.
+func (o TextNerResponseOutput) TaskType() pulumi.StringOutput {
+	return o.ApplyT(func(v TextNerResponse) string { return v.TaskType }).(pulumi.StringOutput)
+}
+
+// [Required] Training data input.
+func (o TextNerResponseOutput) TrainingData() MLTableJobInputResponseOutput {
+	return o.ApplyT(func(v TextNerResponse) MLTableJobInputResponse { return v.TrainingData }).(MLTableJobInputResponseOutput)
+}
+
+// Validation data inputs.
+func (o TextNerResponseOutput) ValidationData() MLTableJobInputResponsePtrOutput {
+	return o.ApplyT(func(v TextNerResponse) *MLTableJobInputResponse { return v.ValidationData }).(MLTableJobInputResponsePtrOutput)
+}
+
 type TmpfsOptions struct {
 	// Mention the Tmpfs size
 	Size *int `pulumi:"size"`
 }
 
+// TmpfsOptionsInput is an input type that accepts TmpfsOptionsArgs and TmpfsOptionsOutput values.
+// You can construct a concrete instance of `TmpfsOptionsInput` via:
+//
+//	TmpfsOptionsArgs{...}
+type TmpfsOptionsInput interface {
+	pulumi.Input
+
+	ToTmpfsOptionsOutput() TmpfsOptionsOutput
+	ToTmpfsOptionsOutputWithContext(context.Context) TmpfsOptionsOutput
+}
+
+type TmpfsOptionsArgs struct {
+	// Mention the Tmpfs size
+	Size pulumi.IntPtrInput `pulumi:"size"`
+}
+
+func (TmpfsOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TmpfsOptions)(nil)).Elem()
+}
+
+func (i TmpfsOptionsArgs) ToTmpfsOptionsOutput() TmpfsOptionsOutput {
+	return i.ToTmpfsOptionsOutputWithContext(context.Background())
+}
+
+func (i TmpfsOptionsArgs) ToTmpfsOptionsOutputWithContext(ctx context.Context) TmpfsOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TmpfsOptionsOutput)
+}
+
+func (i TmpfsOptionsArgs) ToTmpfsOptionsPtrOutput() TmpfsOptionsPtrOutput {
+	return i.ToTmpfsOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i TmpfsOptionsArgs) ToTmpfsOptionsPtrOutputWithContext(ctx context.Context) TmpfsOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TmpfsOptionsOutput).ToTmpfsOptionsPtrOutputWithContext(ctx)
+}
+
+// TmpfsOptionsPtrInput is an input type that accepts TmpfsOptionsArgs, TmpfsOptionsPtr and TmpfsOptionsPtrOutput values.
+// You can construct a concrete instance of `TmpfsOptionsPtrInput` via:
+//
+//	        TmpfsOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TmpfsOptionsPtrInput interface {
+	pulumi.Input
+
+	ToTmpfsOptionsPtrOutput() TmpfsOptionsPtrOutput
+	ToTmpfsOptionsPtrOutputWithContext(context.Context) TmpfsOptionsPtrOutput
+}
+
+type tmpfsOptionsPtrType TmpfsOptionsArgs
+
+func TmpfsOptionsPtr(v *TmpfsOptionsArgs) TmpfsOptionsPtrInput {
+	return (*tmpfsOptionsPtrType)(v)
+}
+
+func (*tmpfsOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TmpfsOptions)(nil)).Elem()
+}
+
+func (i *tmpfsOptionsPtrType) ToTmpfsOptionsPtrOutput() TmpfsOptionsPtrOutput {
+	return i.ToTmpfsOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *tmpfsOptionsPtrType) ToTmpfsOptionsPtrOutputWithContext(ctx context.Context) TmpfsOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TmpfsOptionsPtrOutput)
+}
+
+type TmpfsOptionsOutput struct{ *pulumi.OutputState }
+
+func (TmpfsOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TmpfsOptions)(nil)).Elem()
+}
+
+func (o TmpfsOptionsOutput) ToTmpfsOptionsOutput() TmpfsOptionsOutput {
+	return o
+}
+
+func (o TmpfsOptionsOutput) ToTmpfsOptionsOutputWithContext(ctx context.Context) TmpfsOptionsOutput {
+	return o
+}
+
+func (o TmpfsOptionsOutput) ToTmpfsOptionsPtrOutput() TmpfsOptionsPtrOutput {
+	return o.ToTmpfsOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o TmpfsOptionsOutput) ToTmpfsOptionsPtrOutputWithContext(ctx context.Context) TmpfsOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TmpfsOptions) *TmpfsOptions {
+		return &v
+	}).(TmpfsOptionsPtrOutput)
+}
+
+// Mention the Tmpfs size
+func (o TmpfsOptionsOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TmpfsOptions) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type TmpfsOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (TmpfsOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TmpfsOptions)(nil)).Elem()
+}
+
+func (o TmpfsOptionsPtrOutput) ToTmpfsOptionsPtrOutput() TmpfsOptionsPtrOutput {
+	return o
+}
+
+func (o TmpfsOptionsPtrOutput) ToTmpfsOptionsPtrOutputWithContext(ctx context.Context) TmpfsOptionsPtrOutput {
+	return o
+}
+
+func (o TmpfsOptionsPtrOutput) Elem() TmpfsOptionsOutput {
+	return o.ApplyT(func(v *TmpfsOptions) TmpfsOptions {
+		if v != nil {
+			return *v
+		}
+		var ret TmpfsOptions
+		return ret
+	}).(TmpfsOptionsOutput)
+}
+
+// Mention the Tmpfs size
+func (o TmpfsOptionsPtrOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TmpfsOptions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.IntPtrOutput)
+}
+
 type TmpfsOptionsResponse struct {
 	// Mention the Tmpfs size
 	Size *int `pulumi:"size"`
+}
+
+type TmpfsOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (TmpfsOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TmpfsOptionsResponse)(nil)).Elem()
+}
+
+func (o TmpfsOptionsResponseOutput) ToTmpfsOptionsResponseOutput() TmpfsOptionsResponseOutput {
+	return o
+}
+
+func (o TmpfsOptionsResponseOutput) ToTmpfsOptionsResponseOutputWithContext(ctx context.Context) TmpfsOptionsResponseOutput {
+	return o
+}
+
+// Mention the Tmpfs size
+func (o TmpfsOptionsResponseOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TmpfsOptionsResponse) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type TmpfsOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TmpfsOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TmpfsOptionsResponse)(nil)).Elem()
+}
+
+func (o TmpfsOptionsResponsePtrOutput) ToTmpfsOptionsResponsePtrOutput() TmpfsOptionsResponsePtrOutput {
+	return o
+}
+
+func (o TmpfsOptionsResponsePtrOutput) ToTmpfsOptionsResponsePtrOutputWithContext(ctx context.Context) TmpfsOptionsResponsePtrOutput {
+	return o
+}
+
+func (o TmpfsOptionsResponsePtrOutput) Elem() TmpfsOptionsResponseOutput {
+	return o.ApplyT(func(v *TmpfsOptionsResponse) TmpfsOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TmpfsOptionsResponse
+		return ret
+	}).(TmpfsOptionsResponseOutput)
+}
+
+// Mention the Tmpfs size
+func (o TmpfsOptionsResponsePtrOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TmpfsOptionsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.IntPtrOutput)
 }
 
 type TopNFeaturesByAttribution struct {
@@ -6408,6 +16812,166 @@ func (val *TopNFeaturesByAttribution) Defaults() *TopNFeaturesByAttribution {
 	return &tmp
 }
 
+// TopNFeaturesByAttributionInput is an input type that accepts TopNFeaturesByAttributionArgs and TopNFeaturesByAttributionOutput values.
+// You can construct a concrete instance of `TopNFeaturesByAttributionInput` via:
+//
+//	TopNFeaturesByAttributionArgs{...}
+type TopNFeaturesByAttributionInput interface {
+	pulumi.Input
+
+	ToTopNFeaturesByAttributionOutput() TopNFeaturesByAttributionOutput
+	ToTopNFeaturesByAttributionOutputWithContext(context.Context) TopNFeaturesByAttributionOutput
+}
+
+type TopNFeaturesByAttributionArgs struct {
+	// Expected value is 'TopNByAttribution'.
+	FilterType pulumi.StringInput `pulumi:"filterType"`
+	// The number of top features to include.
+	Top pulumi.IntPtrInput `pulumi:"top"`
+}
+
+// Defaults sets the appropriate defaults for TopNFeaturesByAttributionArgs
+func (val *TopNFeaturesByAttributionArgs) Defaults() *TopNFeaturesByAttributionArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Top == nil {
+		tmp.Top = pulumi.IntPtr(10)
+	}
+	return &tmp
+}
+func (TopNFeaturesByAttributionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopNFeaturesByAttribution)(nil)).Elem()
+}
+
+func (i TopNFeaturesByAttributionArgs) ToTopNFeaturesByAttributionOutput() TopNFeaturesByAttributionOutput {
+	return i.ToTopNFeaturesByAttributionOutputWithContext(context.Background())
+}
+
+func (i TopNFeaturesByAttributionArgs) ToTopNFeaturesByAttributionOutputWithContext(ctx context.Context) TopNFeaturesByAttributionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopNFeaturesByAttributionOutput)
+}
+
+func (i TopNFeaturesByAttributionArgs) ToTopNFeaturesByAttributionPtrOutput() TopNFeaturesByAttributionPtrOutput {
+	return i.ToTopNFeaturesByAttributionPtrOutputWithContext(context.Background())
+}
+
+func (i TopNFeaturesByAttributionArgs) ToTopNFeaturesByAttributionPtrOutputWithContext(ctx context.Context) TopNFeaturesByAttributionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopNFeaturesByAttributionOutput).ToTopNFeaturesByAttributionPtrOutputWithContext(ctx)
+}
+
+// TopNFeaturesByAttributionPtrInput is an input type that accepts TopNFeaturesByAttributionArgs, TopNFeaturesByAttributionPtr and TopNFeaturesByAttributionPtrOutput values.
+// You can construct a concrete instance of `TopNFeaturesByAttributionPtrInput` via:
+//
+//	        TopNFeaturesByAttributionArgs{...}
+//
+//	or:
+//
+//	        nil
+type TopNFeaturesByAttributionPtrInput interface {
+	pulumi.Input
+
+	ToTopNFeaturesByAttributionPtrOutput() TopNFeaturesByAttributionPtrOutput
+	ToTopNFeaturesByAttributionPtrOutputWithContext(context.Context) TopNFeaturesByAttributionPtrOutput
+}
+
+type topNFeaturesByAttributionPtrType TopNFeaturesByAttributionArgs
+
+func TopNFeaturesByAttributionPtr(v *TopNFeaturesByAttributionArgs) TopNFeaturesByAttributionPtrInput {
+	return (*topNFeaturesByAttributionPtrType)(v)
+}
+
+func (*topNFeaturesByAttributionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopNFeaturesByAttribution)(nil)).Elem()
+}
+
+func (i *topNFeaturesByAttributionPtrType) ToTopNFeaturesByAttributionPtrOutput() TopNFeaturesByAttributionPtrOutput {
+	return i.ToTopNFeaturesByAttributionPtrOutputWithContext(context.Background())
+}
+
+func (i *topNFeaturesByAttributionPtrType) ToTopNFeaturesByAttributionPtrOutputWithContext(ctx context.Context) TopNFeaturesByAttributionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopNFeaturesByAttributionPtrOutput)
+}
+
+type TopNFeaturesByAttributionOutput struct{ *pulumi.OutputState }
+
+func (TopNFeaturesByAttributionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopNFeaturesByAttribution)(nil)).Elem()
+}
+
+func (o TopNFeaturesByAttributionOutput) ToTopNFeaturesByAttributionOutput() TopNFeaturesByAttributionOutput {
+	return o
+}
+
+func (o TopNFeaturesByAttributionOutput) ToTopNFeaturesByAttributionOutputWithContext(ctx context.Context) TopNFeaturesByAttributionOutput {
+	return o
+}
+
+func (o TopNFeaturesByAttributionOutput) ToTopNFeaturesByAttributionPtrOutput() TopNFeaturesByAttributionPtrOutput {
+	return o.ToTopNFeaturesByAttributionPtrOutputWithContext(context.Background())
+}
+
+func (o TopNFeaturesByAttributionOutput) ToTopNFeaturesByAttributionPtrOutputWithContext(ctx context.Context) TopNFeaturesByAttributionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopNFeaturesByAttribution) *TopNFeaturesByAttribution {
+		return &v
+	}).(TopNFeaturesByAttributionPtrOutput)
+}
+
+// Expected value is 'TopNByAttribution'.
+func (o TopNFeaturesByAttributionOutput) FilterType() pulumi.StringOutput {
+	return o.ApplyT(func(v TopNFeaturesByAttribution) string { return v.FilterType }).(pulumi.StringOutput)
+}
+
+// The number of top features to include.
+func (o TopNFeaturesByAttributionOutput) Top() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TopNFeaturesByAttribution) *int { return v.Top }).(pulumi.IntPtrOutput)
+}
+
+type TopNFeaturesByAttributionPtrOutput struct{ *pulumi.OutputState }
+
+func (TopNFeaturesByAttributionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopNFeaturesByAttribution)(nil)).Elem()
+}
+
+func (o TopNFeaturesByAttributionPtrOutput) ToTopNFeaturesByAttributionPtrOutput() TopNFeaturesByAttributionPtrOutput {
+	return o
+}
+
+func (o TopNFeaturesByAttributionPtrOutput) ToTopNFeaturesByAttributionPtrOutputWithContext(ctx context.Context) TopNFeaturesByAttributionPtrOutput {
+	return o
+}
+
+func (o TopNFeaturesByAttributionPtrOutput) Elem() TopNFeaturesByAttributionOutput {
+	return o.ApplyT(func(v *TopNFeaturesByAttribution) TopNFeaturesByAttribution {
+		if v != nil {
+			return *v
+		}
+		var ret TopNFeaturesByAttribution
+		return ret
+	}).(TopNFeaturesByAttributionOutput)
+}
+
+// Expected value is 'TopNByAttribution'.
+func (o TopNFeaturesByAttributionPtrOutput) FilterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopNFeaturesByAttribution) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FilterType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of top features to include.
+func (o TopNFeaturesByAttributionPtrOutput) Top() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TopNFeaturesByAttribution) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Top
+	}).(pulumi.IntPtrOutput)
+}
+
 type TopNFeaturesByAttributionResponse struct {
 	// Expected value is 'TopNByAttribution'.
 	FilterType string `pulumi:"filterType"`
@@ -6426,6 +16990,74 @@ func (val *TopNFeaturesByAttributionResponse) Defaults() *TopNFeaturesByAttribut
 		tmp.Top = &top_
 	}
 	return &tmp
+}
+
+type TopNFeaturesByAttributionResponseOutput struct{ *pulumi.OutputState }
+
+func (TopNFeaturesByAttributionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopNFeaturesByAttributionResponse)(nil)).Elem()
+}
+
+func (o TopNFeaturesByAttributionResponseOutput) ToTopNFeaturesByAttributionResponseOutput() TopNFeaturesByAttributionResponseOutput {
+	return o
+}
+
+func (o TopNFeaturesByAttributionResponseOutput) ToTopNFeaturesByAttributionResponseOutputWithContext(ctx context.Context) TopNFeaturesByAttributionResponseOutput {
+	return o
+}
+
+// Expected value is 'TopNByAttribution'.
+func (o TopNFeaturesByAttributionResponseOutput) FilterType() pulumi.StringOutput {
+	return o.ApplyT(func(v TopNFeaturesByAttributionResponse) string { return v.FilterType }).(pulumi.StringOutput)
+}
+
+// The number of top features to include.
+func (o TopNFeaturesByAttributionResponseOutput) Top() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TopNFeaturesByAttributionResponse) *int { return v.Top }).(pulumi.IntPtrOutput)
+}
+
+type TopNFeaturesByAttributionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TopNFeaturesByAttributionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopNFeaturesByAttributionResponse)(nil)).Elem()
+}
+
+func (o TopNFeaturesByAttributionResponsePtrOutput) ToTopNFeaturesByAttributionResponsePtrOutput() TopNFeaturesByAttributionResponsePtrOutput {
+	return o
+}
+
+func (o TopNFeaturesByAttributionResponsePtrOutput) ToTopNFeaturesByAttributionResponsePtrOutputWithContext(ctx context.Context) TopNFeaturesByAttributionResponsePtrOutput {
+	return o
+}
+
+func (o TopNFeaturesByAttributionResponsePtrOutput) Elem() TopNFeaturesByAttributionResponseOutput {
+	return o.ApplyT(func(v *TopNFeaturesByAttributionResponse) TopNFeaturesByAttributionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TopNFeaturesByAttributionResponse
+		return ret
+	}).(TopNFeaturesByAttributionResponseOutput)
+}
+
+// Expected value is 'TopNByAttribution'.
+func (o TopNFeaturesByAttributionResponsePtrOutput) FilterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopNFeaturesByAttributionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FilterType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of top features to include.
+func (o TopNFeaturesByAttributionResponsePtrOutput) Top() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TopNFeaturesByAttributionResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Top
+	}).(pulumi.IntPtrOutput)
 }
 
 // Trial component definition.
@@ -6455,6 +17087,99 @@ func (val *TrialComponent) Defaults() *TrialComponent {
 	return &tmp
 }
 
+// TrialComponentInput is an input type that accepts TrialComponentArgs and TrialComponentOutput values.
+// You can construct a concrete instance of `TrialComponentInput` via:
+//
+//	TrialComponentArgs{...}
+type TrialComponentInput interface {
+	pulumi.Input
+
+	ToTrialComponentOutput() TrialComponentOutput
+	ToTrialComponentOutputWithContext(context.Context) TrialComponentOutput
+}
+
+// Trial component definition.
+type TrialComponentArgs struct {
+	// ARM resource ID of the code asset.
+	CodeId pulumi.StringPtrInput `pulumi:"codeId"`
+	// [Required] The command to execute on startup of the job. eg. "python train.py"
+	Command pulumi.StringInput `pulumi:"command"`
+	// Distribution configuration of the job. If set, this should be one of Mpi, Tensorflow, PyTorch, or null.
+	Distribution pulumi.Input `pulumi:"distribution"`
+	// [Required] The ARM resource ID of the Environment specification for the job.
+	EnvironmentId pulumi.StringInput `pulumi:"environmentId"`
+	// Environment variables included in the job.
+	EnvironmentVariables pulumi.StringMapInput `pulumi:"environmentVariables"`
+	// Compute Resource configuration for the job.
+	Resources JobResourceConfigurationPtrInput `pulumi:"resources"`
+}
+
+// Defaults sets the appropriate defaults for TrialComponentArgs
+func (val *TrialComponentArgs) Defaults() *TrialComponentArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (TrialComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrialComponent)(nil)).Elem()
+}
+
+func (i TrialComponentArgs) ToTrialComponentOutput() TrialComponentOutput {
+	return i.ToTrialComponentOutputWithContext(context.Background())
+}
+
+func (i TrialComponentArgs) ToTrialComponentOutputWithContext(ctx context.Context) TrialComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrialComponentOutput)
+}
+
+// Trial component definition.
+type TrialComponentOutput struct{ *pulumi.OutputState }
+
+func (TrialComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrialComponent)(nil)).Elem()
+}
+
+func (o TrialComponentOutput) ToTrialComponentOutput() TrialComponentOutput {
+	return o
+}
+
+func (o TrialComponentOutput) ToTrialComponentOutputWithContext(ctx context.Context) TrialComponentOutput {
+	return o
+}
+
+// ARM resource ID of the code asset.
+func (o TrialComponentOutput) CodeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrialComponent) *string { return v.CodeId }).(pulumi.StringPtrOutput)
+}
+
+// [Required] The command to execute on startup of the job. eg. "python train.py"
+func (o TrialComponentOutput) Command() pulumi.StringOutput {
+	return o.ApplyT(func(v TrialComponent) string { return v.Command }).(pulumi.StringOutput)
+}
+
+// Distribution configuration of the job. If set, this should be one of Mpi, Tensorflow, PyTorch, or null.
+func (o TrialComponentOutput) Distribution() pulumi.AnyOutput {
+	return o.ApplyT(func(v TrialComponent) interface{} { return v.Distribution }).(pulumi.AnyOutput)
+}
+
+// [Required] The ARM resource ID of the Environment specification for the job.
+func (o TrialComponentOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v TrialComponent) string { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
+// Environment variables included in the job.
+func (o TrialComponentOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TrialComponent) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
+}
+
+// Compute Resource configuration for the job.
+func (o TrialComponentOutput) Resources() JobResourceConfigurationPtrOutput {
+	return o.ApplyT(func(v TrialComponent) *JobResourceConfiguration { return v.Resources }).(JobResourceConfigurationPtrOutput)
+}
+
 // Trial component definition.
 type TrialComponentResponse struct {
 	// ARM resource ID of the code asset.
@@ -6482,6 +17207,51 @@ func (val *TrialComponentResponse) Defaults() *TrialComponentResponse {
 	return &tmp
 }
 
+// Trial component definition.
+type TrialComponentResponseOutput struct{ *pulumi.OutputState }
+
+func (TrialComponentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrialComponentResponse)(nil)).Elem()
+}
+
+func (o TrialComponentResponseOutput) ToTrialComponentResponseOutput() TrialComponentResponseOutput {
+	return o
+}
+
+func (o TrialComponentResponseOutput) ToTrialComponentResponseOutputWithContext(ctx context.Context) TrialComponentResponseOutput {
+	return o
+}
+
+// ARM resource ID of the code asset.
+func (o TrialComponentResponseOutput) CodeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrialComponentResponse) *string { return v.CodeId }).(pulumi.StringPtrOutput)
+}
+
+// [Required] The command to execute on startup of the job. eg. "python train.py"
+func (o TrialComponentResponseOutput) Command() pulumi.StringOutput {
+	return o.ApplyT(func(v TrialComponentResponse) string { return v.Command }).(pulumi.StringOutput)
+}
+
+// Distribution configuration of the job. If set, this should be one of Mpi, Tensorflow, PyTorch, or null.
+func (o TrialComponentResponseOutput) Distribution() pulumi.AnyOutput {
+	return o.ApplyT(func(v TrialComponentResponse) interface{} { return v.Distribution }).(pulumi.AnyOutput)
+}
+
+// [Required] The ARM resource ID of the Environment specification for the job.
+func (o TrialComponentResponseOutput) EnvironmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v TrialComponentResponse) string { return v.EnvironmentId }).(pulumi.StringOutput)
+}
+
+// Environment variables included in the job.
+func (o TrialComponentResponseOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TrialComponentResponse) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
+}
+
+// Compute Resource configuration for the job.
+func (o TrialComponentResponseOutput) Resources() JobResourceConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v TrialComponentResponse) *JobResourceConfigurationResponse { return v.Resources }).(JobResourceConfigurationResponsePtrOutput)
+}
+
 type TritonModelJobInput struct {
 	// Description for the input.
 	Description *string `pulumi:"description"`
@@ -6507,6 +17277,87 @@ func (val *TritonModelJobInput) Defaults() *TritonModelJobInput {
 	return &tmp
 }
 
+// TritonModelJobInputInput is an input type that accepts TritonModelJobInputArgs and TritonModelJobInputOutput values.
+// You can construct a concrete instance of `TritonModelJobInputInput` via:
+//
+//	TritonModelJobInputArgs{...}
+type TritonModelJobInputInput interface {
+	pulumi.Input
+
+	ToTritonModelJobInputOutput() TritonModelJobInputOutput
+	ToTritonModelJobInputOutputWithContext(context.Context) TritonModelJobInputOutput
+}
+
+type TritonModelJobInputArgs struct {
+	// Description for the input.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Enum to determine the Job Input Type.
+	// Expected value is 'triton_model'.
+	JobInputType pulumi.StringInput `pulumi:"jobInputType"`
+	// Input Asset Delivery Mode.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// [Required] Input Asset URI.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+// Defaults sets the appropriate defaults for TritonModelJobInputArgs
+func (val *TritonModelJobInputArgs) Defaults() *TritonModelJobInputArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Mode == nil {
+		tmp.Mode = pulumi.StringPtr("ReadOnlyMount")
+	}
+	return &tmp
+}
+func (TritonModelJobInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TritonModelJobInput)(nil)).Elem()
+}
+
+func (i TritonModelJobInputArgs) ToTritonModelJobInputOutput() TritonModelJobInputOutput {
+	return i.ToTritonModelJobInputOutputWithContext(context.Background())
+}
+
+func (i TritonModelJobInputArgs) ToTritonModelJobInputOutputWithContext(ctx context.Context) TritonModelJobInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TritonModelJobInputOutput)
+}
+
+type TritonModelJobInputOutput struct{ *pulumi.OutputState }
+
+func (TritonModelJobInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TritonModelJobInput)(nil)).Elem()
+}
+
+func (o TritonModelJobInputOutput) ToTritonModelJobInputOutput() TritonModelJobInputOutput {
+	return o
+}
+
+func (o TritonModelJobInputOutput) ToTritonModelJobInputOutputWithContext(ctx context.Context) TritonModelJobInputOutput {
+	return o
+}
+
+// Description for the input.
+func (o TritonModelJobInputOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TritonModelJobInput) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Enum to determine the Job Input Type.
+// Expected value is 'triton_model'.
+func (o TritonModelJobInputOutput) JobInputType() pulumi.StringOutput {
+	return o.ApplyT(func(v TritonModelJobInput) string { return v.JobInputType }).(pulumi.StringOutput)
+}
+
+// Input Asset Delivery Mode.
+func (o TritonModelJobInputOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TritonModelJobInput) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// [Required] Input Asset URI.
+func (o TritonModelJobInputOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v TritonModelJobInput) string { return v.Uri }).(pulumi.StringOutput)
+}
+
 type TritonModelJobInputResponse struct {
 	// Description for the input.
 	Description *string `pulumi:"description"`
@@ -6530,6 +17381,41 @@ func (val *TritonModelJobInputResponse) Defaults() *TritonModelJobInputResponse 
 		tmp.Mode = &mode_
 	}
 	return &tmp
+}
+
+type TritonModelJobInputResponseOutput struct{ *pulumi.OutputState }
+
+func (TritonModelJobInputResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TritonModelJobInputResponse)(nil)).Elem()
+}
+
+func (o TritonModelJobInputResponseOutput) ToTritonModelJobInputResponseOutput() TritonModelJobInputResponseOutput {
+	return o
+}
+
+func (o TritonModelJobInputResponseOutput) ToTritonModelJobInputResponseOutputWithContext(ctx context.Context) TritonModelJobInputResponseOutput {
+	return o
+}
+
+// Description for the input.
+func (o TritonModelJobInputResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TritonModelJobInputResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Enum to determine the Job Input Type.
+// Expected value is 'triton_model'.
+func (o TritonModelJobInputResponseOutput) JobInputType() pulumi.StringOutput {
+	return o.ApplyT(func(v TritonModelJobInputResponse) string { return v.JobInputType }).(pulumi.StringOutput)
+}
+
+// Input Asset Delivery Mode.
+func (o TritonModelJobInputResponseOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TritonModelJobInputResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// [Required] Input Asset URI.
+func (o TritonModelJobInputResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v TritonModelJobInputResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
 
 type TritonModelJobOutput struct {
@@ -6565,6 +17451,109 @@ func (val *TritonModelJobOutput) Defaults() *TritonModelJobOutput {
 	return &tmp
 }
 
+// TritonModelJobOutputInput is an input type that accepts TritonModelJobOutputArgs and TritonModelJobOutputOutput values.
+// You can construct a concrete instance of `TritonModelJobOutputInput` via:
+//
+//	TritonModelJobOutputArgs{...}
+type TritonModelJobOutputInput interface {
+	pulumi.Input
+
+	ToTritonModelJobOutputOutput() TritonModelJobOutputOutput
+	ToTritonModelJobOutputOutputWithContext(context.Context) TritonModelJobOutputOutput
+}
+
+type TritonModelJobOutputArgs struct {
+	// Output Asset Name.
+	AssetName pulumi.StringPtrInput `pulumi:"assetName"`
+	// Output Asset Version.
+	AssetVersion pulumi.StringPtrInput `pulumi:"assetVersion"`
+	// Auto delete setting of output data asset.
+	AutoDeleteSetting AutoDeleteSettingPtrInput `pulumi:"autoDeleteSetting"`
+	// Description for the output.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Enum to determine the Job Output Type.
+	// Expected value is 'triton_model'.
+	JobOutputType pulumi.StringInput `pulumi:"jobOutputType"`
+	// Output Asset Delivery Mode.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Output Asset URI.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+// Defaults sets the appropriate defaults for TritonModelJobOutputArgs
+func (val *TritonModelJobOutputArgs) Defaults() *TritonModelJobOutputArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	if tmp.Mode == nil {
+		tmp.Mode = pulumi.StringPtr("ReadWriteMount")
+	}
+	return &tmp
+}
+func (TritonModelJobOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TritonModelJobOutput)(nil)).Elem()
+}
+
+func (i TritonModelJobOutputArgs) ToTritonModelJobOutputOutput() TritonModelJobOutputOutput {
+	return i.ToTritonModelJobOutputOutputWithContext(context.Background())
+}
+
+func (i TritonModelJobOutputArgs) ToTritonModelJobOutputOutputWithContext(ctx context.Context) TritonModelJobOutputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TritonModelJobOutputOutput)
+}
+
+type TritonModelJobOutputOutput struct{ *pulumi.OutputState }
+
+func (TritonModelJobOutputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TritonModelJobOutput)(nil)).Elem()
+}
+
+func (o TritonModelJobOutputOutput) ToTritonModelJobOutputOutput() TritonModelJobOutputOutput {
+	return o
+}
+
+func (o TritonModelJobOutputOutput) ToTritonModelJobOutputOutputWithContext(ctx context.Context) TritonModelJobOutputOutput {
+	return o
+}
+
+// Output Asset Name.
+func (o TritonModelJobOutputOutput) AssetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TritonModelJobOutput) *string { return v.AssetName }).(pulumi.StringPtrOutput)
+}
+
+// Output Asset Version.
+func (o TritonModelJobOutputOutput) AssetVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TritonModelJobOutput) *string { return v.AssetVersion }).(pulumi.StringPtrOutput)
+}
+
+// Auto delete setting of output data asset.
+func (o TritonModelJobOutputOutput) AutoDeleteSetting() AutoDeleteSettingPtrOutput {
+	return o.ApplyT(func(v TritonModelJobOutput) *AutoDeleteSetting { return v.AutoDeleteSetting }).(AutoDeleteSettingPtrOutput)
+}
+
+// Description for the output.
+func (o TritonModelJobOutputOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TritonModelJobOutput) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Enum to determine the Job Output Type.
+// Expected value is 'triton_model'.
+func (o TritonModelJobOutputOutput) JobOutputType() pulumi.StringOutput {
+	return o.ApplyT(func(v TritonModelJobOutput) string { return v.JobOutputType }).(pulumi.StringOutput)
+}
+
+// Output Asset Delivery Mode.
+func (o TritonModelJobOutputOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TritonModelJobOutput) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Output Asset URI.
+func (o TritonModelJobOutputOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TritonModelJobOutput) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
 type TritonModelJobOutputResponse struct {
 	// Output Asset Name.
 	AssetName *string `pulumi:"assetName"`
@@ -6596,6 +17585,56 @@ func (val *TritonModelJobOutputResponse) Defaults() *TritonModelJobOutputRespons
 		tmp.Mode = &mode_
 	}
 	return &tmp
+}
+
+type TritonModelJobOutputResponseOutput struct{ *pulumi.OutputState }
+
+func (TritonModelJobOutputResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TritonModelJobOutputResponse)(nil)).Elem()
+}
+
+func (o TritonModelJobOutputResponseOutput) ToTritonModelJobOutputResponseOutput() TritonModelJobOutputResponseOutput {
+	return o
+}
+
+func (o TritonModelJobOutputResponseOutput) ToTritonModelJobOutputResponseOutputWithContext(ctx context.Context) TritonModelJobOutputResponseOutput {
+	return o
+}
+
+// Output Asset Name.
+func (o TritonModelJobOutputResponseOutput) AssetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TritonModelJobOutputResponse) *string { return v.AssetName }).(pulumi.StringPtrOutput)
+}
+
+// Output Asset Version.
+func (o TritonModelJobOutputResponseOutput) AssetVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TritonModelJobOutputResponse) *string { return v.AssetVersion }).(pulumi.StringPtrOutput)
+}
+
+// Auto delete setting of output data asset.
+func (o TritonModelJobOutputResponseOutput) AutoDeleteSetting() AutoDeleteSettingResponsePtrOutput {
+	return o.ApplyT(func(v TritonModelJobOutputResponse) *AutoDeleteSettingResponse { return v.AutoDeleteSetting }).(AutoDeleteSettingResponsePtrOutput)
+}
+
+// Description for the output.
+func (o TritonModelJobOutputResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TritonModelJobOutputResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Enum to determine the Job Output Type.
+// Expected value is 'triton_model'.
+func (o TritonModelJobOutputResponseOutput) JobOutputType() pulumi.StringOutput {
+	return o.ApplyT(func(v TritonModelJobOutputResponse) string { return v.JobOutputType }).(pulumi.StringOutput)
+}
+
+// Output Asset Delivery Mode.
+func (o TritonModelJobOutputResponseOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TritonModelJobOutputResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Output Asset URI.
+func (o TritonModelJobOutputResponseOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TritonModelJobOutputResponse) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
 
 // Defines an early termination policy that cancels a given percentage of runs at each evaluation interval.
@@ -6631,6 +17670,208 @@ func (val *TruncationSelectionPolicy) Defaults() *TruncationSelectionPolicy {
 	return &tmp
 }
 
+// TruncationSelectionPolicyInput is an input type that accepts TruncationSelectionPolicyArgs and TruncationSelectionPolicyOutput values.
+// You can construct a concrete instance of `TruncationSelectionPolicyInput` via:
+//
+//	TruncationSelectionPolicyArgs{...}
+type TruncationSelectionPolicyInput interface {
+	pulumi.Input
+
+	ToTruncationSelectionPolicyOutput() TruncationSelectionPolicyOutput
+	ToTruncationSelectionPolicyOutputWithContext(context.Context) TruncationSelectionPolicyOutput
+}
+
+// Defines an early termination policy that cancels a given percentage of runs at each evaluation interval.
+type TruncationSelectionPolicyArgs struct {
+	// Number of intervals by which to delay the first evaluation.
+	DelayEvaluation pulumi.IntPtrInput `pulumi:"delayEvaluation"`
+	// Interval (number of runs) between policy evaluations.
+	EvaluationInterval pulumi.IntPtrInput `pulumi:"evaluationInterval"`
+	// Expected value is 'TruncationSelection'.
+	PolicyType pulumi.StringInput `pulumi:"policyType"`
+	// The percentage of runs to cancel at each evaluation interval.
+	TruncationPercentage pulumi.IntPtrInput `pulumi:"truncationPercentage"`
+}
+
+// Defaults sets the appropriate defaults for TruncationSelectionPolicyArgs
+func (val *TruncationSelectionPolicyArgs) Defaults() *TruncationSelectionPolicyArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.DelayEvaluation == nil {
+		tmp.DelayEvaluation = pulumi.IntPtr(0)
+	}
+	if tmp.EvaluationInterval == nil {
+		tmp.EvaluationInterval = pulumi.IntPtr(0)
+	}
+	if tmp.TruncationPercentage == nil {
+		tmp.TruncationPercentage = pulumi.IntPtr(0)
+	}
+	return &tmp
+}
+func (TruncationSelectionPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TruncationSelectionPolicy)(nil)).Elem()
+}
+
+func (i TruncationSelectionPolicyArgs) ToTruncationSelectionPolicyOutput() TruncationSelectionPolicyOutput {
+	return i.ToTruncationSelectionPolicyOutputWithContext(context.Background())
+}
+
+func (i TruncationSelectionPolicyArgs) ToTruncationSelectionPolicyOutputWithContext(ctx context.Context) TruncationSelectionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TruncationSelectionPolicyOutput)
+}
+
+func (i TruncationSelectionPolicyArgs) ToTruncationSelectionPolicyPtrOutput() TruncationSelectionPolicyPtrOutput {
+	return i.ToTruncationSelectionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i TruncationSelectionPolicyArgs) ToTruncationSelectionPolicyPtrOutputWithContext(ctx context.Context) TruncationSelectionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TruncationSelectionPolicyOutput).ToTruncationSelectionPolicyPtrOutputWithContext(ctx)
+}
+
+// TruncationSelectionPolicyPtrInput is an input type that accepts TruncationSelectionPolicyArgs, TruncationSelectionPolicyPtr and TruncationSelectionPolicyPtrOutput values.
+// You can construct a concrete instance of `TruncationSelectionPolicyPtrInput` via:
+//
+//	        TruncationSelectionPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type TruncationSelectionPolicyPtrInput interface {
+	pulumi.Input
+
+	ToTruncationSelectionPolicyPtrOutput() TruncationSelectionPolicyPtrOutput
+	ToTruncationSelectionPolicyPtrOutputWithContext(context.Context) TruncationSelectionPolicyPtrOutput
+}
+
+type truncationSelectionPolicyPtrType TruncationSelectionPolicyArgs
+
+func TruncationSelectionPolicyPtr(v *TruncationSelectionPolicyArgs) TruncationSelectionPolicyPtrInput {
+	return (*truncationSelectionPolicyPtrType)(v)
+}
+
+func (*truncationSelectionPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TruncationSelectionPolicy)(nil)).Elem()
+}
+
+func (i *truncationSelectionPolicyPtrType) ToTruncationSelectionPolicyPtrOutput() TruncationSelectionPolicyPtrOutput {
+	return i.ToTruncationSelectionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *truncationSelectionPolicyPtrType) ToTruncationSelectionPolicyPtrOutputWithContext(ctx context.Context) TruncationSelectionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TruncationSelectionPolicyPtrOutput)
+}
+
+// Defines an early termination policy that cancels a given percentage of runs at each evaluation interval.
+type TruncationSelectionPolicyOutput struct{ *pulumi.OutputState }
+
+func (TruncationSelectionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TruncationSelectionPolicy)(nil)).Elem()
+}
+
+func (o TruncationSelectionPolicyOutput) ToTruncationSelectionPolicyOutput() TruncationSelectionPolicyOutput {
+	return o
+}
+
+func (o TruncationSelectionPolicyOutput) ToTruncationSelectionPolicyOutputWithContext(ctx context.Context) TruncationSelectionPolicyOutput {
+	return o
+}
+
+func (o TruncationSelectionPolicyOutput) ToTruncationSelectionPolicyPtrOutput() TruncationSelectionPolicyPtrOutput {
+	return o.ToTruncationSelectionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o TruncationSelectionPolicyOutput) ToTruncationSelectionPolicyPtrOutputWithContext(ctx context.Context) TruncationSelectionPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TruncationSelectionPolicy) *TruncationSelectionPolicy {
+		return &v
+	}).(TruncationSelectionPolicyPtrOutput)
+}
+
+// Number of intervals by which to delay the first evaluation.
+func (o TruncationSelectionPolicyOutput) DelayEvaluation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TruncationSelectionPolicy) *int { return v.DelayEvaluation }).(pulumi.IntPtrOutput)
+}
+
+// Interval (number of runs) between policy evaluations.
+func (o TruncationSelectionPolicyOutput) EvaluationInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TruncationSelectionPolicy) *int { return v.EvaluationInterval }).(pulumi.IntPtrOutput)
+}
+
+// Expected value is 'TruncationSelection'.
+func (o TruncationSelectionPolicyOutput) PolicyType() pulumi.StringOutput {
+	return o.ApplyT(func(v TruncationSelectionPolicy) string { return v.PolicyType }).(pulumi.StringOutput)
+}
+
+// The percentage of runs to cancel at each evaluation interval.
+func (o TruncationSelectionPolicyOutput) TruncationPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TruncationSelectionPolicy) *int { return v.TruncationPercentage }).(pulumi.IntPtrOutput)
+}
+
+type TruncationSelectionPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (TruncationSelectionPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TruncationSelectionPolicy)(nil)).Elem()
+}
+
+func (o TruncationSelectionPolicyPtrOutput) ToTruncationSelectionPolicyPtrOutput() TruncationSelectionPolicyPtrOutput {
+	return o
+}
+
+func (o TruncationSelectionPolicyPtrOutput) ToTruncationSelectionPolicyPtrOutputWithContext(ctx context.Context) TruncationSelectionPolicyPtrOutput {
+	return o
+}
+
+func (o TruncationSelectionPolicyPtrOutput) Elem() TruncationSelectionPolicyOutput {
+	return o.ApplyT(func(v *TruncationSelectionPolicy) TruncationSelectionPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret TruncationSelectionPolicy
+		return ret
+	}).(TruncationSelectionPolicyOutput)
+}
+
+// Number of intervals by which to delay the first evaluation.
+func (o TruncationSelectionPolicyPtrOutput) DelayEvaluation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TruncationSelectionPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DelayEvaluation
+	}).(pulumi.IntPtrOutput)
+}
+
+// Interval (number of runs) between policy evaluations.
+func (o TruncationSelectionPolicyPtrOutput) EvaluationInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TruncationSelectionPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Expected value is 'TruncationSelection'.
+func (o TruncationSelectionPolicyPtrOutput) PolicyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TruncationSelectionPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PolicyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The percentage of runs to cancel at each evaluation interval.
+func (o TruncationSelectionPolicyPtrOutput) TruncationPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TruncationSelectionPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TruncationPercentage
+	}).(pulumi.IntPtrOutput)
+}
+
 // Defines an early termination policy that cancels a given percentage of runs at each evaluation interval.
 type TruncationSelectionPolicyResponse struct {
 	// Number of intervals by which to delay the first evaluation.
@@ -6662,6 +17903,105 @@ func (val *TruncationSelectionPolicyResponse) Defaults() *TruncationSelectionPol
 		tmp.TruncationPercentage = &truncationPercentage_
 	}
 	return &tmp
+}
+
+// Defines an early termination policy that cancels a given percentage of runs at each evaluation interval.
+type TruncationSelectionPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (TruncationSelectionPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TruncationSelectionPolicyResponse)(nil)).Elem()
+}
+
+func (o TruncationSelectionPolicyResponseOutput) ToTruncationSelectionPolicyResponseOutput() TruncationSelectionPolicyResponseOutput {
+	return o
+}
+
+func (o TruncationSelectionPolicyResponseOutput) ToTruncationSelectionPolicyResponseOutputWithContext(ctx context.Context) TruncationSelectionPolicyResponseOutput {
+	return o
+}
+
+// Number of intervals by which to delay the first evaluation.
+func (o TruncationSelectionPolicyResponseOutput) DelayEvaluation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TruncationSelectionPolicyResponse) *int { return v.DelayEvaluation }).(pulumi.IntPtrOutput)
+}
+
+// Interval (number of runs) between policy evaluations.
+func (o TruncationSelectionPolicyResponseOutput) EvaluationInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TruncationSelectionPolicyResponse) *int { return v.EvaluationInterval }).(pulumi.IntPtrOutput)
+}
+
+// Expected value is 'TruncationSelection'.
+func (o TruncationSelectionPolicyResponseOutput) PolicyType() pulumi.StringOutput {
+	return o.ApplyT(func(v TruncationSelectionPolicyResponse) string { return v.PolicyType }).(pulumi.StringOutput)
+}
+
+// The percentage of runs to cancel at each evaluation interval.
+func (o TruncationSelectionPolicyResponseOutput) TruncationPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TruncationSelectionPolicyResponse) *int { return v.TruncationPercentage }).(pulumi.IntPtrOutput)
+}
+
+type TruncationSelectionPolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (TruncationSelectionPolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TruncationSelectionPolicyResponse)(nil)).Elem()
+}
+
+func (o TruncationSelectionPolicyResponsePtrOutput) ToTruncationSelectionPolicyResponsePtrOutput() TruncationSelectionPolicyResponsePtrOutput {
+	return o
+}
+
+func (o TruncationSelectionPolicyResponsePtrOutput) ToTruncationSelectionPolicyResponsePtrOutputWithContext(ctx context.Context) TruncationSelectionPolicyResponsePtrOutput {
+	return o
+}
+
+func (o TruncationSelectionPolicyResponsePtrOutput) Elem() TruncationSelectionPolicyResponseOutput {
+	return o.ApplyT(func(v *TruncationSelectionPolicyResponse) TruncationSelectionPolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret TruncationSelectionPolicyResponse
+		return ret
+	}).(TruncationSelectionPolicyResponseOutput)
+}
+
+// Number of intervals by which to delay the first evaluation.
+func (o TruncationSelectionPolicyResponsePtrOutput) DelayEvaluation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TruncationSelectionPolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DelayEvaluation
+	}).(pulumi.IntPtrOutput)
+}
+
+// Interval (number of runs) between policy evaluations.
+func (o TruncationSelectionPolicyResponsePtrOutput) EvaluationInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TruncationSelectionPolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluationInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Expected value is 'TruncationSelection'.
+func (o TruncationSelectionPolicyResponsePtrOutput) PolicyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TruncationSelectionPolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PolicyType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The percentage of runs to cancel at each evaluation interval.
+func (o TruncationSelectionPolicyResponsePtrOutput) TruncationPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TruncationSelectionPolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TruncationPercentage
+	}).(pulumi.IntPtrOutput)
 }
 
 // uri-file data version entity
@@ -6710,6 +18050,135 @@ func (val *UriFileDataVersion) Defaults() *UriFileDataVersion {
 	return &tmp
 }
 
+// UriFileDataVersionInput is an input type that accepts UriFileDataVersionArgs and UriFileDataVersionOutput values.
+// You can construct a concrete instance of `UriFileDataVersionInput` via:
+//
+//	UriFileDataVersionArgs{...}
+type UriFileDataVersionInput interface {
+	pulumi.Input
+
+	ToUriFileDataVersionOutput() UriFileDataVersionOutput
+	ToUriFileDataVersionOutputWithContext(context.Context) UriFileDataVersionOutput
+}
+
+// uri-file data version entity
+type UriFileDataVersionArgs struct {
+	// Specifies the lifecycle setting of managed data asset.
+	AutoDeleteSetting AutoDeleteSettingPtrInput `pulumi:"autoDeleteSetting"`
+	// Enum to determine the type of data.
+	// Expected value is 'uri_file'.
+	DataType pulumi.StringInput `pulumi:"dataType"`
+	// [Required] Uri of the data. Example: https://go.microsoft.com/fwlink/?linkid=2202330
+	DataUri pulumi.StringInput `pulumi:"dataUri"`
+	// The asset description text.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Intellectual Property details. Used if data is an Intellectual Property.
+	IntellectualProperty IntellectualPropertyPtrInput `pulumi:"intellectualProperty"`
+	// If the name version are system generated (anonymous registration). For types where Stage is defined, when Stage is provided it will be used to populate IsAnonymous
+	IsAnonymous pulumi.BoolPtrInput `pulumi:"isAnonymous"`
+	// Is the asset archived? For types where Stage is defined, when Stage is provided it will be used to populate IsArchived
+	IsArchived pulumi.BoolPtrInput `pulumi:"isArchived"`
+	// The asset property dictionary.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// Stage in the data lifecycle assigned to this data asset
+	Stage pulumi.StringPtrInput `pulumi:"stage"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+// Defaults sets the appropriate defaults for UriFileDataVersionArgs
+func (val *UriFileDataVersionArgs) Defaults() *UriFileDataVersionArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	if tmp.IsAnonymous == nil {
+		tmp.IsAnonymous = pulumi.BoolPtr(false)
+	}
+	if tmp.IsArchived == nil {
+		tmp.IsArchived = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (UriFileDataVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriFileDataVersion)(nil)).Elem()
+}
+
+func (i UriFileDataVersionArgs) ToUriFileDataVersionOutput() UriFileDataVersionOutput {
+	return i.ToUriFileDataVersionOutputWithContext(context.Background())
+}
+
+func (i UriFileDataVersionArgs) ToUriFileDataVersionOutputWithContext(ctx context.Context) UriFileDataVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UriFileDataVersionOutput)
+}
+
+// uri-file data version entity
+type UriFileDataVersionOutput struct{ *pulumi.OutputState }
+
+func (UriFileDataVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriFileDataVersion)(nil)).Elem()
+}
+
+func (o UriFileDataVersionOutput) ToUriFileDataVersionOutput() UriFileDataVersionOutput {
+	return o
+}
+
+func (o UriFileDataVersionOutput) ToUriFileDataVersionOutputWithContext(ctx context.Context) UriFileDataVersionOutput {
+	return o
+}
+
+// Specifies the lifecycle setting of managed data asset.
+func (o UriFileDataVersionOutput) AutoDeleteSetting() AutoDeleteSettingPtrOutput {
+	return o.ApplyT(func(v UriFileDataVersion) *AutoDeleteSetting { return v.AutoDeleteSetting }).(AutoDeleteSettingPtrOutput)
+}
+
+// Enum to determine the type of data.
+// Expected value is 'uri_file'.
+func (o UriFileDataVersionOutput) DataType() pulumi.StringOutput {
+	return o.ApplyT(func(v UriFileDataVersion) string { return v.DataType }).(pulumi.StringOutput)
+}
+
+// [Required] Uri of the data. Example: https://go.microsoft.com/fwlink/?linkid=2202330
+func (o UriFileDataVersionOutput) DataUri() pulumi.StringOutput {
+	return o.ApplyT(func(v UriFileDataVersion) string { return v.DataUri }).(pulumi.StringOutput)
+}
+
+// The asset description text.
+func (o UriFileDataVersionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFileDataVersion) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Intellectual Property details. Used if data is an Intellectual Property.
+func (o UriFileDataVersionOutput) IntellectualProperty() IntellectualPropertyPtrOutput {
+	return o.ApplyT(func(v UriFileDataVersion) *IntellectualProperty { return v.IntellectualProperty }).(IntellectualPropertyPtrOutput)
+}
+
+// If the name version are system generated (anonymous registration). For types where Stage is defined, when Stage is provided it will be used to populate IsAnonymous
+func (o UriFileDataVersionOutput) IsAnonymous() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UriFileDataVersion) *bool { return v.IsAnonymous }).(pulumi.BoolPtrOutput)
+}
+
+// Is the asset archived? For types where Stage is defined, when Stage is provided it will be used to populate IsArchived
+func (o UriFileDataVersionOutput) IsArchived() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UriFileDataVersion) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
+}
+
+// The asset property dictionary.
+func (o UriFileDataVersionOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v UriFileDataVersion) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Stage in the data lifecycle assigned to this data asset
+func (o UriFileDataVersionOutput) Stage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFileDataVersion) *string { return v.Stage }).(pulumi.StringPtrOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o UriFileDataVersionOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v UriFileDataVersion) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
 // uri-file data version entity
 type UriFileDataVersionResponse struct {
 	// Specifies the lifecycle setting of managed data asset.
@@ -6756,6 +18225,72 @@ func (val *UriFileDataVersionResponse) Defaults() *UriFileDataVersionResponse {
 	return &tmp
 }
 
+// uri-file data version entity
+type UriFileDataVersionResponseOutput struct{ *pulumi.OutputState }
+
+func (UriFileDataVersionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriFileDataVersionResponse)(nil)).Elem()
+}
+
+func (o UriFileDataVersionResponseOutput) ToUriFileDataVersionResponseOutput() UriFileDataVersionResponseOutput {
+	return o
+}
+
+func (o UriFileDataVersionResponseOutput) ToUriFileDataVersionResponseOutputWithContext(ctx context.Context) UriFileDataVersionResponseOutput {
+	return o
+}
+
+// Specifies the lifecycle setting of managed data asset.
+func (o UriFileDataVersionResponseOutput) AutoDeleteSetting() AutoDeleteSettingResponsePtrOutput {
+	return o.ApplyT(func(v UriFileDataVersionResponse) *AutoDeleteSettingResponse { return v.AutoDeleteSetting }).(AutoDeleteSettingResponsePtrOutput)
+}
+
+// Enum to determine the type of data.
+// Expected value is 'uri_file'.
+func (o UriFileDataVersionResponseOutput) DataType() pulumi.StringOutput {
+	return o.ApplyT(func(v UriFileDataVersionResponse) string { return v.DataType }).(pulumi.StringOutput)
+}
+
+// [Required] Uri of the data. Example: https://go.microsoft.com/fwlink/?linkid=2202330
+func (o UriFileDataVersionResponseOutput) DataUri() pulumi.StringOutput {
+	return o.ApplyT(func(v UriFileDataVersionResponse) string { return v.DataUri }).(pulumi.StringOutput)
+}
+
+// The asset description text.
+func (o UriFileDataVersionResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFileDataVersionResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Intellectual Property details. Used if data is an Intellectual Property.
+func (o UriFileDataVersionResponseOutput) IntellectualProperty() IntellectualPropertyResponsePtrOutput {
+	return o.ApplyT(func(v UriFileDataVersionResponse) *IntellectualPropertyResponse { return v.IntellectualProperty }).(IntellectualPropertyResponsePtrOutput)
+}
+
+// If the name version are system generated (anonymous registration). For types where Stage is defined, when Stage is provided it will be used to populate IsAnonymous
+func (o UriFileDataVersionResponseOutput) IsAnonymous() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UriFileDataVersionResponse) *bool { return v.IsAnonymous }).(pulumi.BoolPtrOutput)
+}
+
+// Is the asset archived? For types where Stage is defined, when Stage is provided it will be used to populate IsArchived
+func (o UriFileDataVersionResponseOutput) IsArchived() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UriFileDataVersionResponse) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
+}
+
+// The asset property dictionary.
+func (o UriFileDataVersionResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v UriFileDataVersionResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Stage in the data lifecycle assigned to this data asset
+func (o UriFileDataVersionResponseOutput) Stage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFileDataVersionResponse) *string { return v.Stage }).(pulumi.StringPtrOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o UriFileDataVersionResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v UriFileDataVersionResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
 type UriFileJobInput struct {
 	// Description for the input.
 	Description *string `pulumi:"description"`
@@ -6781,6 +18316,87 @@ func (val *UriFileJobInput) Defaults() *UriFileJobInput {
 	return &tmp
 }
 
+// UriFileJobInputInput is an input type that accepts UriFileJobInputArgs and UriFileJobInputOutput values.
+// You can construct a concrete instance of `UriFileJobInputInput` via:
+//
+//	UriFileJobInputArgs{...}
+type UriFileJobInputInput interface {
+	pulumi.Input
+
+	ToUriFileJobInputOutput() UriFileJobInputOutput
+	ToUriFileJobInputOutputWithContext(context.Context) UriFileJobInputOutput
+}
+
+type UriFileJobInputArgs struct {
+	// Description for the input.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Enum to determine the Job Input Type.
+	// Expected value is 'uri_file'.
+	JobInputType pulumi.StringInput `pulumi:"jobInputType"`
+	// Input Asset Delivery Mode.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// [Required] Input Asset URI.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+// Defaults sets the appropriate defaults for UriFileJobInputArgs
+func (val *UriFileJobInputArgs) Defaults() *UriFileJobInputArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Mode == nil {
+		tmp.Mode = pulumi.StringPtr("ReadOnlyMount")
+	}
+	return &tmp
+}
+func (UriFileJobInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriFileJobInput)(nil)).Elem()
+}
+
+func (i UriFileJobInputArgs) ToUriFileJobInputOutput() UriFileJobInputOutput {
+	return i.ToUriFileJobInputOutputWithContext(context.Background())
+}
+
+func (i UriFileJobInputArgs) ToUriFileJobInputOutputWithContext(ctx context.Context) UriFileJobInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UriFileJobInputOutput)
+}
+
+type UriFileJobInputOutput struct{ *pulumi.OutputState }
+
+func (UriFileJobInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriFileJobInput)(nil)).Elem()
+}
+
+func (o UriFileJobInputOutput) ToUriFileJobInputOutput() UriFileJobInputOutput {
+	return o
+}
+
+func (o UriFileJobInputOutput) ToUriFileJobInputOutputWithContext(ctx context.Context) UriFileJobInputOutput {
+	return o
+}
+
+// Description for the input.
+func (o UriFileJobInputOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFileJobInput) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Enum to determine the Job Input Type.
+// Expected value is 'uri_file'.
+func (o UriFileJobInputOutput) JobInputType() pulumi.StringOutput {
+	return o.ApplyT(func(v UriFileJobInput) string { return v.JobInputType }).(pulumi.StringOutput)
+}
+
+// Input Asset Delivery Mode.
+func (o UriFileJobInputOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFileJobInput) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// [Required] Input Asset URI.
+func (o UriFileJobInputOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v UriFileJobInput) string { return v.Uri }).(pulumi.StringOutput)
+}
+
 type UriFileJobInputResponse struct {
 	// Description for the input.
 	Description *string `pulumi:"description"`
@@ -6804,6 +18420,41 @@ func (val *UriFileJobInputResponse) Defaults() *UriFileJobInputResponse {
 		tmp.Mode = &mode_
 	}
 	return &tmp
+}
+
+type UriFileJobInputResponseOutput struct{ *pulumi.OutputState }
+
+func (UriFileJobInputResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriFileJobInputResponse)(nil)).Elem()
+}
+
+func (o UriFileJobInputResponseOutput) ToUriFileJobInputResponseOutput() UriFileJobInputResponseOutput {
+	return o
+}
+
+func (o UriFileJobInputResponseOutput) ToUriFileJobInputResponseOutputWithContext(ctx context.Context) UriFileJobInputResponseOutput {
+	return o
+}
+
+// Description for the input.
+func (o UriFileJobInputResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFileJobInputResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Enum to determine the Job Input Type.
+// Expected value is 'uri_file'.
+func (o UriFileJobInputResponseOutput) JobInputType() pulumi.StringOutput {
+	return o.ApplyT(func(v UriFileJobInputResponse) string { return v.JobInputType }).(pulumi.StringOutput)
+}
+
+// Input Asset Delivery Mode.
+func (o UriFileJobInputResponseOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFileJobInputResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// [Required] Input Asset URI.
+func (o UriFileJobInputResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v UriFileJobInputResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
 
 type UriFileJobOutput struct {
@@ -6839,6 +18490,109 @@ func (val *UriFileJobOutput) Defaults() *UriFileJobOutput {
 	return &tmp
 }
 
+// UriFileJobOutputInput is an input type that accepts UriFileJobOutputArgs and UriFileJobOutputOutput values.
+// You can construct a concrete instance of `UriFileJobOutputInput` via:
+//
+//	UriFileJobOutputArgs{...}
+type UriFileJobOutputInput interface {
+	pulumi.Input
+
+	ToUriFileJobOutputOutput() UriFileJobOutputOutput
+	ToUriFileJobOutputOutputWithContext(context.Context) UriFileJobOutputOutput
+}
+
+type UriFileJobOutputArgs struct {
+	// Output Asset Name.
+	AssetName pulumi.StringPtrInput `pulumi:"assetName"`
+	// Output Asset Version.
+	AssetVersion pulumi.StringPtrInput `pulumi:"assetVersion"`
+	// Auto delete setting of output data asset.
+	AutoDeleteSetting AutoDeleteSettingPtrInput `pulumi:"autoDeleteSetting"`
+	// Description for the output.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Enum to determine the Job Output Type.
+	// Expected value is 'uri_file'.
+	JobOutputType pulumi.StringInput `pulumi:"jobOutputType"`
+	// Output Asset Delivery Mode.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Output Asset URI.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+// Defaults sets the appropriate defaults for UriFileJobOutputArgs
+func (val *UriFileJobOutputArgs) Defaults() *UriFileJobOutputArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	if tmp.Mode == nil {
+		tmp.Mode = pulumi.StringPtr("ReadWriteMount")
+	}
+	return &tmp
+}
+func (UriFileJobOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriFileJobOutput)(nil)).Elem()
+}
+
+func (i UriFileJobOutputArgs) ToUriFileJobOutputOutput() UriFileJobOutputOutput {
+	return i.ToUriFileJobOutputOutputWithContext(context.Background())
+}
+
+func (i UriFileJobOutputArgs) ToUriFileJobOutputOutputWithContext(ctx context.Context) UriFileJobOutputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UriFileJobOutputOutput)
+}
+
+type UriFileJobOutputOutput struct{ *pulumi.OutputState }
+
+func (UriFileJobOutputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriFileJobOutput)(nil)).Elem()
+}
+
+func (o UriFileJobOutputOutput) ToUriFileJobOutputOutput() UriFileJobOutputOutput {
+	return o
+}
+
+func (o UriFileJobOutputOutput) ToUriFileJobOutputOutputWithContext(ctx context.Context) UriFileJobOutputOutput {
+	return o
+}
+
+// Output Asset Name.
+func (o UriFileJobOutputOutput) AssetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFileJobOutput) *string { return v.AssetName }).(pulumi.StringPtrOutput)
+}
+
+// Output Asset Version.
+func (o UriFileJobOutputOutput) AssetVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFileJobOutput) *string { return v.AssetVersion }).(pulumi.StringPtrOutput)
+}
+
+// Auto delete setting of output data asset.
+func (o UriFileJobOutputOutput) AutoDeleteSetting() AutoDeleteSettingPtrOutput {
+	return o.ApplyT(func(v UriFileJobOutput) *AutoDeleteSetting { return v.AutoDeleteSetting }).(AutoDeleteSettingPtrOutput)
+}
+
+// Description for the output.
+func (o UriFileJobOutputOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFileJobOutput) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Enum to determine the Job Output Type.
+// Expected value is 'uri_file'.
+func (o UriFileJobOutputOutput) JobOutputType() pulumi.StringOutput {
+	return o.ApplyT(func(v UriFileJobOutput) string { return v.JobOutputType }).(pulumi.StringOutput)
+}
+
+// Output Asset Delivery Mode.
+func (o UriFileJobOutputOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFileJobOutput) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Output Asset URI.
+func (o UriFileJobOutputOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFileJobOutput) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
 type UriFileJobOutputResponse struct {
 	// Output Asset Name.
 	AssetName *string `pulumi:"assetName"`
@@ -6870,6 +18624,56 @@ func (val *UriFileJobOutputResponse) Defaults() *UriFileJobOutputResponse {
 		tmp.Mode = &mode_
 	}
 	return &tmp
+}
+
+type UriFileJobOutputResponseOutput struct{ *pulumi.OutputState }
+
+func (UriFileJobOutputResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriFileJobOutputResponse)(nil)).Elem()
+}
+
+func (o UriFileJobOutputResponseOutput) ToUriFileJobOutputResponseOutput() UriFileJobOutputResponseOutput {
+	return o
+}
+
+func (o UriFileJobOutputResponseOutput) ToUriFileJobOutputResponseOutputWithContext(ctx context.Context) UriFileJobOutputResponseOutput {
+	return o
+}
+
+// Output Asset Name.
+func (o UriFileJobOutputResponseOutput) AssetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFileJobOutputResponse) *string { return v.AssetName }).(pulumi.StringPtrOutput)
+}
+
+// Output Asset Version.
+func (o UriFileJobOutputResponseOutput) AssetVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFileJobOutputResponse) *string { return v.AssetVersion }).(pulumi.StringPtrOutput)
+}
+
+// Auto delete setting of output data asset.
+func (o UriFileJobOutputResponseOutput) AutoDeleteSetting() AutoDeleteSettingResponsePtrOutput {
+	return o.ApplyT(func(v UriFileJobOutputResponse) *AutoDeleteSettingResponse { return v.AutoDeleteSetting }).(AutoDeleteSettingResponsePtrOutput)
+}
+
+// Description for the output.
+func (o UriFileJobOutputResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFileJobOutputResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Enum to determine the Job Output Type.
+// Expected value is 'uri_file'.
+func (o UriFileJobOutputResponseOutput) JobOutputType() pulumi.StringOutput {
+	return o.ApplyT(func(v UriFileJobOutputResponse) string { return v.JobOutputType }).(pulumi.StringOutput)
+}
+
+// Output Asset Delivery Mode.
+func (o UriFileJobOutputResponseOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFileJobOutputResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Output Asset URI.
+func (o UriFileJobOutputResponseOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFileJobOutputResponse) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
 
 // uri-folder data version entity
@@ -6918,6 +18722,135 @@ func (val *UriFolderDataVersion) Defaults() *UriFolderDataVersion {
 	return &tmp
 }
 
+// UriFolderDataVersionInput is an input type that accepts UriFolderDataVersionArgs and UriFolderDataVersionOutput values.
+// You can construct a concrete instance of `UriFolderDataVersionInput` via:
+//
+//	UriFolderDataVersionArgs{...}
+type UriFolderDataVersionInput interface {
+	pulumi.Input
+
+	ToUriFolderDataVersionOutput() UriFolderDataVersionOutput
+	ToUriFolderDataVersionOutputWithContext(context.Context) UriFolderDataVersionOutput
+}
+
+// uri-folder data version entity
+type UriFolderDataVersionArgs struct {
+	// Specifies the lifecycle setting of managed data asset.
+	AutoDeleteSetting AutoDeleteSettingPtrInput `pulumi:"autoDeleteSetting"`
+	// Enum to determine the type of data.
+	// Expected value is 'uri_folder'.
+	DataType pulumi.StringInput `pulumi:"dataType"`
+	// [Required] Uri of the data. Example: https://go.microsoft.com/fwlink/?linkid=2202330
+	DataUri pulumi.StringInput `pulumi:"dataUri"`
+	// The asset description text.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Intellectual Property details. Used if data is an Intellectual Property.
+	IntellectualProperty IntellectualPropertyPtrInput `pulumi:"intellectualProperty"`
+	// If the name version are system generated (anonymous registration). For types where Stage is defined, when Stage is provided it will be used to populate IsAnonymous
+	IsAnonymous pulumi.BoolPtrInput `pulumi:"isAnonymous"`
+	// Is the asset archived? For types where Stage is defined, when Stage is provided it will be used to populate IsArchived
+	IsArchived pulumi.BoolPtrInput `pulumi:"isArchived"`
+	// The asset property dictionary.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// Stage in the data lifecycle assigned to this data asset
+	Stage pulumi.StringPtrInput `pulumi:"stage"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+// Defaults sets the appropriate defaults for UriFolderDataVersionArgs
+func (val *UriFolderDataVersionArgs) Defaults() *UriFolderDataVersionArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	if tmp.IsAnonymous == nil {
+		tmp.IsAnonymous = pulumi.BoolPtr(false)
+	}
+	if tmp.IsArchived == nil {
+		tmp.IsArchived = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (UriFolderDataVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriFolderDataVersion)(nil)).Elem()
+}
+
+func (i UriFolderDataVersionArgs) ToUriFolderDataVersionOutput() UriFolderDataVersionOutput {
+	return i.ToUriFolderDataVersionOutputWithContext(context.Background())
+}
+
+func (i UriFolderDataVersionArgs) ToUriFolderDataVersionOutputWithContext(ctx context.Context) UriFolderDataVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UriFolderDataVersionOutput)
+}
+
+// uri-folder data version entity
+type UriFolderDataVersionOutput struct{ *pulumi.OutputState }
+
+func (UriFolderDataVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriFolderDataVersion)(nil)).Elem()
+}
+
+func (o UriFolderDataVersionOutput) ToUriFolderDataVersionOutput() UriFolderDataVersionOutput {
+	return o
+}
+
+func (o UriFolderDataVersionOutput) ToUriFolderDataVersionOutputWithContext(ctx context.Context) UriFolderDataVersionOutput {
+	return o
+}
+
+// Specifies the lifecycle setting of managed data asset.
+func (o UriFolderDataVersionOutput) AutoDeleteSetting() AutoDeleteSettingPtrOutput {
+	return o.ApplyT(func(v UriFolderDataVersion) *AutoDeleteSetting { return v.AutoDeleteSetting }).(AutoDeleteSettingPtrOutput)
+}
+
+// Enum to determine the type of data.
+// Expected value is 'uri_folder'.
+func (o UriFolderDataVersionOutput) DataType() pulumi.StringOutput {
+	return o.ApplyT(func(v UriFolderDataVersion) string { return v.DataType }).(pulumi.StringOutput)
+}
+
+// [Required] Uri of the data. Example: https://go.microsoft.com/fwlink/?linkid=2202330
+func (o UriFolderDataVersionOutput) DataUri() pulumi.StringOutput {
+	return o.ApplyT(func(v UriFolderDataVersion) string { return v.DataUri }).(pulumi.StringOutput)
+}
+
+// The asset description text.
+func (o UriFolderDataVersionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFolderDataVersion) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Intellectual Property details. Used if data is an Intellectual Property.
+func (o UriFolderDataVersionOutput) IntellectualProperty() IntellectualPropertyPtrOutput {
+	return o.ApplyT(func(v UriFolderDataVersion) *IntellectualProperty { return v.IntellectualProperty }).(IntellectualPropertyPtrOutput)
+}
+
+// If the name version are system generated (anonymous registration). For types where Stage is defined, when Stage is provided it will be used to populate IsAnonymous
+func (o UriFolderDataVersionOutput) IsAnonymous() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UriFolderDataVersion) *bool { return v.IsAnonymous }).(pulumi.BoolPtrOutput)
+}
+
+// Is the asset archived? For types where Stage is defined, when Stage is provided it will be used to populate IsArchived
+func (o UriFolderDataVersionOutput) IsArchived() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UriFolderDataVersion) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
+}
+
+// The asset property dictionary.
+func (o UriFolderDataVersionOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v UriFolderDataVersion) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Stage in the data lifecycle assigned to this data asset
+func (o UriFolderDataVersionOutput) Stage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFolderDataVersion) *string { return v.Stage }).(pulumi.StringPtrOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o UriFolderDataVersionOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v UriFolderDataVersion) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
 // uri-folder data version entity
 type UriFolderDataVersionResponse struct {
 	// Specifies the lifecycle setting of managed data asset.
@@ -6964,6 +18897,72 @@ func (val *UriFolderDataVersionResponse) Defaults() *UriFolderDataVersionRespons
 	return &tmp
 }
 
+// uri-folder data version entity
+type UriFolderDataVersionResponseOutput struct{ *pulumi.OutputState }
+
+func (UriFolderDataVersionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriFolderDataVersionResponse)(nil)).Elem()
+}
+
+func (o UriFolderDataVersionResponseOutput) ToUriFolderDataVersionResponseOutput() UriFolderDataVersionResponseOutput {
+	return o
+}
+
+func (o UriFolderDataVersionResponseOutput) ToUriFolderDataVersionResponseOutputWithContext(ctx context.Context) UriFolderDataVersionResponseOutput {
+	return o
+}
+
+// Specifies the lifecycle setting of managed data asset.
+func (o UriFolderDataVersionResponseOutput) AutoDeleteSetting() AutoDeleteSettingResponsePtrOutput {
+	return o.ApplyT(func(v UriFolderDataVersionResponse) *AutoDeleteSettingResponse { return v.AutoDeleteSetting }).(AutoDeleteSettingResponsePtrOutput)
+}
+
+// Enum to determine the type of data.
+// Expected value is 'uri_folder'.
+func (o UriFolderDataVersionResponseOutput) DataType() pulumi.StringOutput {
+	return o.ApplyT(func(v UriFolderDataVersionResponse) string { return v.DataType }).(pulumi.StringOutput)
+}
+
+// [Required] Uri of the data. Example: https://go.microsoft.com/fwlink/?linkid=2202330
+func (o UriFolderDataVersionResponseOutput) DataUri() pulumi.StringOutput {
+	return o.ApplyT(func(v UriFolderDataVersionResponse) string { return v.DataUri }).(pulumi.StringOutput)
+}
+
+// The asset description text.
+func (o UriFolderDataVersionResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFolderDataVersionResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Intellectual Property details. Used if data is an Intellectual Property.
+func (o UriFolderDataVersionResponseOutput) IntellectualProperty() IntellectualPropertyResponsePtrOutput {
+	return o.ApplyT(func(v UriFolderDataVersionResponse) *IntellectualPropertyResponse { return v.IntellectualProperty }).(IntellectualPropertyResponsePtrOutput)
+}
+
+// If the name version are system generated (anonymous registration). For types where Stage is defined, when Stage is provided it will be used to populate IsAnonymous
+func (o UriFolderDataVersionResponseOutput) IsAnonymous() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UriFolderDataVersionResponse) *bool { return v.IsAnonymous }).(pulumi.BoolPtrOutput)
+}
+
+// Is the asset archived? For types where Stage is defined, when Stage is provided it will be used to populate IsArchived
+func (o UriFolderDataVersionResponseOutput) IsArchived() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UriFolderDataVersionResponse) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
+}
+
+// The asset property dictionary.
+func (o UriFolderDataVersionResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v UriFolderDataVersionResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Stage in the data lifecycle assigned to this data asset
+func (o UriFolderDataVersionResponseOutput) Stage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFolderDataVersionResponse) *string { return v.Stage }).(pulumi.StringPtrOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o UriFolderDataVersionResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v UriFolderDataVersionResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
 type UriFolderJobInput struct {
 	// Description for the input.
 	Description *string `pulumi:"description"`
@@ -6989,6 +18988,87 @@ func (val *UriFolderJobInput) Defaults() *UriFolderJobInput {
 	return &tmp
 }
 
+// UriFolderJobInputInput is an input type that accepts UriFolderJobInputArgs and UriFolderJobInputOutput values.
+// You can construct a concrete instance of `UriFolderJobInputInput` via:
+//
+//	UriFolderJobInputArgs{...}
+type UriFolderJobInputInput interface {
+	pulumi.Input
+
+	ToUriFolderJobInputOutput() UriFolderJobInputOutput
+	ToUriFolderJobInputOutputWithContext(context.Context) UriFolderJobInputOutput
+}
+
+type UriFolderJobInputArgs struct {
+	// Description for the input.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Enum to determine the Job Input Type.
+	// Expected value is 'uri_folder'.
+	JobInputType pulumi.StringInput `pulumi:"jobInputType"`
+	// Input Asset Delivery Mode.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// [Required] Input Asset URI.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+// Defaults sets the appropriate defaults for UriFolderJobInputArgs
+func (val *UriFolderJobInputArgs) Defaults() *UriFolderJobInputArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Mode == nil {
+		tmp.Mode = pulumi.StringPtr("ReadOnlyMount")
+	}
+	return &tmp
+}
+func (UriFolderJobInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriFolderJobInput)(nil)).Elem()
+}
+
+func (i UriFolderJobInputArgs) ToUriFolderJobInputOutput() UriFolderJobInputOutput {
+	return i.ToUriFolderJobInputOutputWithContext(context.Background())
+}
+
+func (i UriFolderJobInputArgs) ToUriFolderJobInputOutputWithContext(ctx context.Context) UriFolderJobInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UriFolderJobInputOutput)
+}
+
+type UriFolderJobInputOutput struct{ *pulumi.OutputState }
+
+func (UriFolderJobInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriFolderJobInput)(nil)).Elem()
+}
+
+func (o UriFolderJobInputOutput) ToUriFolderJobInputOutput() UriFolderJobInputOutput {
+	return o
+}
+
+func (o UriFolderJobInputOutput) ToUriFolderJobInputOutputWithContext(ctx context.Context) UriFolderJobInputOutput {
+	return o
+}
+
+// Description for the input.
+func (o UriFolderJobInputOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFolderJobInput) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Enum to determine the Job Input Type.
+// Expected value is 'uri_folder'.
+func (o UriFolderJobInputOutput) JobInputType() pulumi.StringOutput {
+	return o.ApplyT(func(v UriFolderJobInput) string { return v.JobInputType }).(pulumi.StringOutput)
+}
+
+// Input Asset Delivery Mode.
+func (o UriFolderJobInputOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFolderJobInput) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// [Required] Input Asset URI.
+func (o UriFolderJobInputOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v UriFolderJobInput) string { return v.Uri }).(pulumi.StringOutput)
+}
+
 type UriFolderJobInputResponse struct {
 	// Description for the input.
 	Description *string `pulumi:"description"`
@@ -7012,6 +19092,41 @@ func (val *UriFolderJobInputResponse) Defaults() *UriFolderJobInputResponse {
 		tmp.Mode = &mode_
 	}
 	return &tmp
+}
+
+type UriFolderJobInputResponseOutput struct{ *pulumi.OutputState }
+
+func (UriFolderJobInputResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriFolderJobInputResponse)(nil)).Elem()
+}
+
+func (o UriFolderJobInputResponseOutput) ToUriFolderJobInputResponseOutput() UriFolderJobInputResponseOutput {
+	return o
+}
+
+func (o UriFolderJobInputResponseOutput) ToUriFolderJobInputResponseOutputWithContext(ctx context.Context) UriFolderJobInputResponseOutput {
+	return o
+}
+
+// Description for the input.
+func (o UriFolderJobInputResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFolderJobInputResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Enum to determine the Job Input Type.
+// Expected value is 'uri_folder'.
+func (o UriFolderJobInputResponseOutput) JobInputType() pulumi.StringOutput {
+	return o.ApplyT(func(v UriFolderJobInputResponse) string { return v.JobInputType }).(pulumi.StringOutput)
+}
+
+// Input Asset Delivery Mode.
+func (o UriFolderJobInputResponseOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFolderJobInputResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// [Required] Input Asset URI.
+func (o UriFolderJobInputResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v UriFolderJobInputResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
 
 type UriFolderJobOutput struct {
@@ -7047,6 +19162,109 @@ func (val *UriFolderJobOutput) Defaults() *UriFolderJobOutput {
 	return &tmp
 }
 
+// UriFolderJobOutputInput is an input type that accepts UriFolderJobOutputArgs and UriFolderJobOutputOutput values.
+// You can construct a concrete instance of `UriFolderJobOutputInput` via:
+//
+//	UriFolderJobOutputArgs{...}
+type UriFolderJobOutputInput interface {
+	pulumi.Input
+
+	ToUriFolderJobOutputOutput() UriFolderJobOutputOutput
+	ToUriFolderJobOutputOutputWithContext(context.Context) UriFolderJobOutputOutput
+}
+
+type UriFolderJobOutputArgs struct {
+	// Output Asset Name.
+	AssetName pulumi.StringPtrInput `pulumi:"assetName"`
+	// Output Asset Version.
+	AssetVersion pulumi.StringPtrInput `pulumi:"assetVersion"`
+	// Auto delete setting of output data asset.
+	AutoDeleteSetting AutoDeleteSettingPtrInput `pulumi:"autoDeleteSetting"`
+	// Description for the output.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Enum to determine the Job Output Type.
+	// Expected value is 'uri_folder'.
+	JobOutputType pulumi.StringInput `pulumi:"jobOutputType"`
+	// Output Asset Delivery Mode.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Output Asset URI.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+// Defaults sets the appropriate defaults for UriFolderJobOutputArgs
+func (val *UriFolderJobOutputArgs) Defaults() *UriFolderJobOutputArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	if tmp.Mode == nil {
+		tmp.Mode = pulumi.StringPtr("ReadWriteMount")
+	}
+	return &tmp
+}
+func (UriFolderJobOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriFolderJobOutput)(nil)).Elem()
+}
+
+func (i UriFolderJobOutputArgs) ToUriFolderJobOutputOutput() UriFolderJobOutputOutput {
+	return i.ToUriFolderJobOutputOutputWithContext(context.Background())
+}
+
+func (i UriFolderJobOutputArgs) ToUriFolderJobOutputOutputWithContext(ctx context.Context) UriFolderJobOutputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UriFolderJobOutputOutput)
+}
+
+type UriFolderJobOutputOutput struct{ *pulumi.OutputState }
+
+func (UriFolderJobOutputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriFolderJobOutput)(nil)).Elem()
+}
+
+func (o UriFolderJobOutputOutput) ToUriFolderJobOutputOutput() UriFolderJobOutputOutput {
+	return o
+}
+
+func (o UriFolderJobOutputOutput) ToUriFolderJobOutputOutputWithContext(ctx context.Context) UriFolderJobOutputOutput {
+	return o
+}
+
+// Output Asset Name.
+func (o UriFolderJobOutputOutput) AssetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFolderJobOutput) *string { return v.AssetName }).(pulumi.StringPtrOutput)
+}
+
+// Output Asset Version.
+func (o UriFolderJobOutputOutput) AssetVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFolderJobOutput) *string { return v.AssetVersion }).(pulumi.StringPtrOutput)
+}
+
+// Auto delete setting of output data asset.
+func (o UriFolderJobOutputOutput) AutoDeleteSetting() AutoDeleteSettingPtrOutput {
+	return o.ApplyT(func(v UriFolderJobOutput) *AutoDeleteSetting { return v.AutoDeleteSetting }).(AutoDeleteSettingPtrOutput)
+}
+
+// Description for the output.
+func (o UriFolderJobOutputOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFolderJobOutput) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Enum to determine the Job Output Type.
+// Expected value is 'uri_folder'.
+func (o UriFolderJobOutputOutput) JobOutputType() pulumi.StringOutput {
+	return o.ApplyT(func(v UriFolderJobOutput) string { return v.JobOutputType }).(pulumi.StringOutput)
+}
+
+// Output Asset Delivery Mode.
+func (o UriFolderJobOutputOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFolderJobOutput) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Output Asset URI.
+func (o UriFolderJobOutputOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFolderJobOutput) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
 type UriFolderJobOutputResponse struct {
 	// Output Asset Name.
 	AssetName *string `pulumi:"assetName"`
@@ -7080,6 +19298,56 @@ func (val *UriFolderJobOutputResponse) Defaults() *UriFolderJobOutputResponse {
 	return &tmp
 }
 
+type UriFolderJobOutputResponseOutput struct{ *pulumi.OutputState }
+
+func (UriFolderJobOutputResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriFolderJobOutputResponse)(nil)).Elem()
+}
+
+func (o UriFolderJobOutputResponseOutput) ToUriFolderJobOutputResponseOutput() UriFolderJobOutputResponseOutput {
+	return o
+}
+
+func (o UriFolderJobOutputResponseOutput) ToUriFolderJobOutputResponseOutputWithContext(ctx context.Context) UriFolderJobOutputResponseOutput {
+	return o
+}
+
+// Output Asset Name.
+func (o UriFolderJobOutputResponseOutput) AssetName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFolderJobOutputResponse) *string { return v.AssetName }).(pulumi.StringPtrOutput)
+}
+
+// Output Asset Version.
+func (o UriFolderJobOutputResponseOutput) AssetVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFolderJobOutputResponse) *string { return v.AssetVersion }).(pulumi.StringPtrOutput)
+}
+
+// Auto delete setting of output data asset.
+func (o UriFolderJobOutputResponseOutput) AutoDeleteSetting() AutoDeleteSettingResponsePtrOutput {
+	return o.ApplyT(func(v UriFolderJobOutputResponse) *AutoDeleteSettingResponse { return v.AutoDeleteSetting }).(AutoDeleteSettingResponsePtrOutput)
+}
+
+// Description for the output.
+func (o UriFolderJobOutputResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFolderJobOutputResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Enum to determine the Job Output Type.
+// Expected value is 'uri_folder'.
+func (o UriFolderJobOutputResponseOutput) JobOutputType() pulumi.StringOutput {
+	return o.ApplyT(func(v UriFolderJobOutputResponse) string { return v.JobOutputType }).(pulumi.StringOutput)
+}
+
+// Output Asset Delivery Mode.
+func (o UriFolderJobOutputResponseOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFolderJobOutputResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Output Asset URI.
+func (o UriFolderJobOutputResponseOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriFolderJobOutputResponse) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
 // Settings for user account that gets created on each on the nodes of a compute.
 type UserAccountCredentials struct {
 	// Name of the administrator user account which can be used to SSH to nodes.
@@ -7090,6 +19358,174 @@ type UserAccountCredentials struct {
 	AdminUserSshPublicKey *string `pulumi:"adminUserSshPublicKey"`
 }
 
+// UserAccountCredentialsInput is an input type that accepts UserAccountCredentialsArgs and UserAccountCredentialsOutput values.
+// You can construct a concrete instance of `UserAccountCredentialsInput` via:
+//
+//	UserAccountCredentialsArgs{...}
+type UserAccountCredentialsInput interface {
+	pulumi.Input
+
+	ToUserAccountCredentialsOutput() UserAccountCredentialsOutput
+	ToUserAccountCredentialsOutputWithContext(context.Context) UserAccountCredentialsOutput
+}
+
+// Settings for user account that gets created on each on the nodes of a compute.
+type UserAccountCredentialsArgs struct {
+	// Name of the administrator user account which can be used to SSH to nodes.
+	AdminUserName pulumi.StringInput `pulumi:"adminUserName"`
+	// Password of the administrator user account.
+	AdminUserPassword pulumi.StringPtrInput `pulumi:"adminUserPassword"`
+	// SSH public key of the administrator user account.
+	AdminUserSshPublicKey pulumi.StringPtrInput `pulumi:"adminUserSshPublicKey"`
+}
+
+func (UserAccountCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAccountCredentials)(nil)).Elem()
+}
+
+func (i UserAccountCredentialsArgs) ToUserAccountCredentialsOutput() UserAccountCredentialsOutput {
+	return i.ToUserAccountCredentialsOutputWithContext(context.Background())
+}
+
+func (i UserAccountCredentialsArgs) ToUserAccountCredentialsOutputWithContext(ctx context.Context) UserAccountCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAccountCredentialsOutput)
+}
+
+func (i UserAccountCredentialsArgs) ToUserAccountCredentialsPtrOutput() UserAccountCredentialsPtrOutput {
+	return i.ToUserAccountCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i UserAccountCredentialsArgs) ToUserAccountCredentialsPtrOutputWithContext(ctx context.Context) UserAccountCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAccountCredentialsOutput).ToUserAccountCredentialsPtrOutputWithContext(ctx)
+}
+
+// UserAccountCredentialsPtrInput is an input type that accepts UserAccountCredentialsArgs, UserAccountCredentialsPtr and UserAccountCredentialsPtrOutput values.
+// You can construct a concrete instance of `UserAccountCredentialsPtrInput` via:
+//
+//	        UserAccountCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type UserAccountCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToUserAccountCredentialsPtrOutput() UserAccountCredentialsPtrOutput
+	ToUserAccountCredentialsPtrOutputWithContext(context.Context) UserAccountCredentialsPtrOutput
+}
+
+type userAccountCredentialsPtrType UserAccountCredentialsArgs
+
+func UserAccountCredentialsPtr(v *UserAccountCredentialsArgs) UserAccountCredentialsPtrInput {
+	return (*userAccountCredentialsPtrType)(v)
+}
+
+func (*userAccountCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserAccountCredentials)(nil)).Elem()
+}
+
+func (i *userAccountCredentialsPtrType) ToUserAccountCredentialsPtrOutput() UserAccountCredentialsPtrOutput {
+	return i.ToUserAccountCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *userAccountCredentialsPtrType) ToUserAccountCredentialsPtrOutputWithContext(ctx context.Context) UserAccountCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserAccountCredentialsPtrOutput)
+}
+
+// Settings for user account that gets created on each on the nodes of a compute.
+type UserAccountCredentialsOutput struct{ *pulumi.OutputState }
+
+func (UserAccountCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAccountCredentials)(nil)).Elem()
+}
+
+func (o UserAccountCredentialsOutput) ToUserAccountCredentialsOutput() UserAccountCredentialsOutput {
+	return o
+}
+
+func (o UserAccountCredentialsOutput) ToUserAccountCredentialsOutputWithContext(ctx context.Context) UserAccountCredentialsOutput {
+	return o
+}
+
+func (o UserAccountCredentialsOutput) ToUserAccountCredentialsPtrOutput() UserAccountCredentialsPtrOutput {
+	return o.ToUserAccountCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o UserAccountCredentialsOutput) ToUserAccountCredentialsPtrOutputWithContext(ctx context.Context) UserAccountCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserAccountCredentials) *UserAccountCredentials {
+		return &v
+	}).(UserAccountCredentialsPtrOutput)
+}
+
+// Name of the administrator user account which can be used to SSH to nodes.
+func (o UserAccountCredentialsOutput) AdminUserName() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAccountCredentials) string { return v.AdminUserName }).(pulumi.StringOutput)
+}
+
+// Password of the administrator user account.
+func (o UserAccountCredentialsOutput) AdminUserPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAccountCredentials) *string { return v.AdminUserPassword }).(pulumi.StringPtrOutput)
+}
+
+// SSH public key of the administrator user account.
+func (o UserAccountCredentialsOutput) AdminUserSshPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAccountCredentials) *string { return v.AdminUserSshPublicKey }).(pulumi.StringPtrOutput)
+}
+
+type UserAccountCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (UserAccountCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserAccountCredentials)(nil)).Elem()
+}
+
+func (o UserAccountCredentialsPtrOutput) ToUserAccountCredentialsPtrOutput() UserAccountCredentialsPtrOutput {
+	return o
+}
+
+func (o UserAccountCredentialsPtrOutput) ToUserAccountCredentialsPtrOutputWithContext(ctx context.Context) UserAccountCredentialsPtrOutput {
+	return o
+}
+
+func (o UserAccountCredentialsPtrOutput) Elem() UserAccountCredentialsOutput {
+	return o.ApplyT(func(v *UserAccountCredentials) UserAccountCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret UserAccountCredentials
+		return ret
+	}).(UserAccountCredentialsOutput)
+}
+
+// Name of the administrator user account which can be used to SSH to nodes.
+func (o UserAccountCredentialsPtrOutput) AdminUserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAccountCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AdminUserName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Password of the administrator user account.
+func (o UserAccountCredentialsPtrOutput) AdminUserPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAccountCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminUserPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// SSH public key of the administrator user account.
+func (o UserAccountCredentialsPtrOutput) AdminUserSshPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAccountCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminUserSshPublicKey
+	}).(pulumi.StringPtrOutput)
+}
+
 // Settings for user account that gets created on each on the nodes of a compute.
 type UserAccountCredentialsResponse struct {
 	// Name of the administrator user account which can be used to SSH to nodes.
@@ -7098,6 +19534,90 @@ type UserAccountCredentialsResponse struct {
 	AdminUserPassword *string `pulumi:"adminUserPassword"`
 	// SSH public key of the administrator user account.
 	AdminUserSshPublicKey *string `pulumi:"adminUserSshPublicKey"`
+}
+
+// Settings for user account that gets created on each on the nodes of a compute.
+type UserAccountCredentialsResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAccountCredentialsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAccountCredentialsResponse)(nil)).Elem()
+}
+
+func (o UserAccountCredentialsResponseOutput) ToUserAccountCredentialsResponseOutput() UserAccountCredentialsResponseOutput {
+	return o
+}
+
+func (o UserAccountCredentialsResponseOutput) ToUserAccountCredentialsResponseOutputWithContext(ctx context.Context) UserAccountCredentialsResponseOutput {
+	return o
+}
+
+// Name of the administrator user account which can be used to SSH to nodes.
+func (o UserAccountCredentialsResponseOutput) AdminUserName() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAccountCredentialsResponse) string { return v.AdminUserName }).(pulumi.StringOutput)
+}
+
+// Password of the administrator user account.
+func (o UserAccountCredentialsResponseOutput) AdminUserPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAccountCredentialsResponse) *string { return v.AdminUserPassword }).(pulumi.StringPtrOutput)
+}
+
+// SSH public key of the administrator user account.
+func (o UserAccountCredentialsResponseOutput) AdminUserSshPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAccountCredentialsResponse) *string { return v.AdminUserSshPublicKey }).(pulumi.StringPtrOutput)
+}
+
+type UserAccountCredentialsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UserAccountCredentialsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserAccountCredentialsResponse)(nil)).Elem()
+}
+
+func (o UserAccountCredentialsResponsePtrOutput) ToUserAccountCredentialsResponsePtrOutput() UserAccountCredentialsResponsePtrOutput {
+	return o
+}
+
+func (o UserAccountCredentialsResponsePtrOutput) ToUserAccountCredentialsResponsePtrOutputWithContext(ctx context.Context) UserAccountCredentialsResponsePtrOutput {
+	return o
+}
+
+func (o UserAccountCredentialsResponsePtrOutput) Elem() UserAccountCredentialsResponseOutput {
+	return o.ApplyT(func(v *UserAccountCredentialsResponse) UserAccountCredentialsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UserAccountCredentialsResponse
+		return ret
+	}).(UserAccountCredentialsResponseOutput)
+}
+
+// Name of the administrator user account which can be used to SSH to nodes.
+func (o UserAccountCredentialsResponsePtrOutput) AdminUserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAccountCredentialsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AdminUserName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Password of the administrator user account.
+func (o UserAccountCredentialsResponsePtrOutput) AdminUserPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAccountCredentialsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminUserPassword
+	}).(pulumi.StringPtrOutput)
+}
+
+// SSH public key of the administrator user account.
+func (o UserAccountCredentialsResponsePtrOutput) AdminUserSshPublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserAccountCredentialsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdminUserSshPublicKey
+	}).(pulumi.StringPtrOutput)
 }
 
 // User assigned identity properties
@@ -7550,11 +20070,204 @@ type UserIdentity struct {
 	IdentityType string `pulumi:"identityType"`
 }
 
+// UserIdentityInput is an input type that accepts UserIdentityArgs and UserIdentityOutput values.
+// You can construct a concrete instance of `UserIdentityInput` via:
+//
+//	UserIdentityArgs{...}
+type UserIdentityInput interface {
+	pulumi.Input
+
+	ToUserIdentityOutput() UserIdentityOutput
+	ToUserIdentityOutputWithContext(context.Context) UserIdentityOutput
+}
+
+// User identity configuration.
+type UserIdentityArgs struct {
+	// Enum to determine identity framework.
+	// Expected value is 'UserIdentity'.
+	IdentityType pulumi.StringInput `pulumi:"identityType"`
+}
+
+func (UserIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserIdentity)(nil)).Elem()
+}
+
+func (i UserIdentityArgs) ToUserIdentityOutput() UserIdentityOutput {
+	return i.ToUserIdentityOutputWithContext(context.Background())
+}
+
+func (i UserIdentityArgs) ToUserIdentityOutputWithContext(ctx context.Context) UserIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserIdentityOutput)
+}
+
+func (i UserIdentityArgs) ToUserIdentityPtrOutput() UserIdentityPtrOutput {
+	return i.ToUserIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i UserIdentityArgs) ToUserIdentityPtrOutputWithContext(ctx context.Context) UserIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserIdentityOutput).ToUserIdentityPtrOutputWithContext(ctx)
+}
+
+// UserIdentityPtrInput is an input type that accepts UserIdentityArgs, UserIdentityPtr and UserIdentityPtrOutput values.
+// You can construct a concrete instance of `UserIdentityPtrInput` via:
+//
+//	        UserIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type UserIdentityPtrInput interface {
+	pulumi.Input
+
+	ToUserIdentityPtrOutput() UserIdentityPtrOutput
+	ToUserIdentityPtrOutputWithContext(context.Context) UserIdentityPtrOutput
+}
+
+type userIdentityPtrType UserIdentityArgs
+
+func UserIdentityPtr(v *UserIdentityArgs) UserIdentityPtrInput {
+	return (*userIdentityPtrType)(v)
+}
+
+func (*userIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserIdentity)(nil)).Elem()
+}
+
+func (i *userIdentityPtrType) ToUserIdentityPtrOutput() UserIdentityPtrOutput {
+	return i.ToUserIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *userIdentityPtrType) ToUserIdentityPtrOutputWithContext(ctx context.Context) UserIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserIdentityPtrOutput)
+}
+
+// User identity configuration.
+type UserIdentityOutput struct{ *pulumi.OutputState }
+
+func (UserIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserIdentity)(nil)).Elem()
+}
+
+func (o UserIdentityOutput) ToUserIdentityOutput() UserIdentityOutput {
+	return o
+}
+
+func (o UserIdentityOutput) ToUserIdentityOutputWithContext(ctx context.Context) UserIdentityOutput {
+	return o
+}
+
+func (o UserIdentityOutput) ToUserIdentityPtrOutput() UserIdentityPtrOutput {
+	return o.ToUserIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o UserIdentityOutput) ToUserIdentityPtrOutputWithContext(ctx context.Context) UserIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserIdentity) *UserIdentity {
+		return &v
+	}).(UserIdentityPtrOutput)
+}
+
+// Enum to determine identity framework.
+// Expected value is 'UserIdentity'.
+func (o UserIdentityOutput) IdentityType() pulumi.StringOutput {
+	return o.ApplyT(func(v UserIdentity) string { return v.IdentityType }).(pulumi.StringOutput)
+}
+
+type UserIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (UserIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserIdentity)(nil)).Elem()
+}
+
+func (o UserIdentityPtrOutput) ToUserIdentityPtrOutput() UserIdentityPtrOutput {
+	return o
+}
+
+func (o UserIdentityPtrOutput) ToUserIdentityPtrOutputWithContext(ctx context.Context) UserIdentityPtrOutput {
+	return o
+}
+
+func (o UserIdentityPtrOutput) Elem() UserIdentityOutput {
+	return o.ApplyT(func(v *UserIdentity) UserIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret UserIdentity
+		return ret
+	}).(UserIdentityOutput)
+}
+
+// Enum to determine identity framework.
+// Expected value is 'UserIdentity'.
+func (o UserIdentityPtrOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdentityType
+	}).(pulumi.StringPtrOutput)
+}
+
 // User identity configuration.
 type UserIdentityResponse struct {
 	// Enum to determine identity framework.
 	// Expected value is 'UserIdentity'.
 	IdentityType string `pulumi:"identityType"`
+}
+
+// User identity configuration.
+type UserIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (UserIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserIdentityResponse)(nil)).Elem()
+}
+
+func (o UserIdentityResponseOutput) ToUserIdentityResponseOutput() UserIdentityResponseOutput {
+	return o
+}
+
+func (o UserIdentityResponseOutput) ToUserIdentityResponseOutputWithContext(ctx context.Context) UserIdentityResponseOutput {
+	return o
+}
+
+// Enum to determine identity framework.
+// Expected value is 'UserIdentity'.
+func (o UserIdentityResponseOutput) IdentityType() pulumi.StringOutput {
+	return o.ApplyT(func(v UserIdentityResponse) string { return v.IdentityType }).(pulumi.StringOutput)
+}
+
+type UserIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UserIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserIdentityResponse)(nil)).Elem()
+}
+
+func (o UserIdentityResponsePtrOutput) ToUserIdentityResponsePtrOutput() UserIdentityResponsePtrOutput {
+	return o
+}
+
+func (o UserIdentityResponsePtrOutput) ToUserIdentityResponsePtrOutputWithContext(ctx context.Context) UserIdentityResponsePtrOutput {
+	return o
+}
+
+func (o UserIdentityResponsePtrOutput) Elem() UserIdentityResponseOutput {
+	return o.ApplyT(func(v *UserIdentityResponse) UserIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UserIdentityResponse
+		return ret
+	}).(UserIdentityResponseOutput)
+}
+
+// Enum to determine identity framework.
+// Expected value is 'UserIdentity'.
+func (o UserIdentityResponsePtrOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdentityType
+	}).(pulumi.StringPtrOutput)
 }
 
 type UsernamePasswordAuthTypeWorkspaceConnectionProperties struct {
@@ -7569,6 +20282,91 @@ type UsernamePasswordAuthTypeWorkspaceConnectionProperties struct {
 	IsSharedToAll *bool       `pulumi:"isSharedToAll"`
 	Metadata      interface{} `pulumi:"metadata"`
 	Target        *string     `pulumi:"target"`
+}
+
+// UsernamePasswordAuthTypeWorkspaceConnectionPropertiesInput is an input type that accepts UsernamePasswordAuthTypeWorkspaceConnectionPropertiesArgs and UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput values.
+// You can construct a concrete instance of `UsernamePasswordAuthTypeWorkspaceConnectionPropertiesInput` via:
+//
+//	UsernamePasswordAuthTypeWorkspaceConnectionPropertiesArgs{...}
+type UsernamePasswordAuthTypeWorkspaceConnectionPropertiesInput interface {
+	pulumi.Input
+
+	ToUsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput() UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput
+	ToUsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutputWithContext(context.Context) UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput
+}
+
+type UsernamePasswordAuthTypeWorkspaceConnectionPropertiesArgs struct {
+	// Authentication type of the connection target
+	// Expected value is 'UsernamePassword'.
+	AuthType pulumi.StringInput `pulumi:"authType"`
+	// Category of the connection
+	Category    pulumi.StringPtrInput                       `pulumi:"category"`
+	Credentials WorkspaceConnectionUsernamePasswordPtrInput `pulumi:"credentials"`
+	ExpiryTime  pulumi.StringPtrInput                       `pulumi:"expiryTime"`
+	// whether this connection will be shared to all the project workspace under the hub
+	IsSharedToAll pulumi.BoolPtrInput   `pulumi:"isSharedToAll"`
+	Metadata      pulumi.Input          `pulumi:"metadata"`
+	Target        pulumi.StringPtrInput `pulumi:"target"`
+}
+
+func (UsernamePasswordAuthTypeWorkspaceConnectionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsernamePasswordAuthTypeWorkspaceConnectionProperties)(nil)).Elem()
+}
+
+func (i UsernamePasswordAuthTypeWorkspaceConnectionPropertiesArgs) ToUsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput() UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput {
+	return i.ToUsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutputWithContext(context.Background())
+}
+
+func (i UsernamePasswordAuthTypeWorkspaceConnectionPropertiesArgs) ToUsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutputWithContext(ctx context.Context) UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput)
+}
+
+type UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsernamePasswordAuthTypeWorkspaceConnectionProperties)(nil)).Elem()
+}
+
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) ToUsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput() UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput {
+	return o
+}
+
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) ToUsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutputWithContext(ctx context.Context) UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'UsernamePassword'.
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) Credentials() WorkspaceConnectionUsernamePasswordPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) *WorkspaceConnectionUsernamePassword {
+		return v.Credentials
+	}).(WorkspaceConnectionUsernamePasswordPtrOutput)
+}
+
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+// whether this connection will be shared to all the project workspace under the hub
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) Metadata() pulumi.AnyOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) interface{} { return v.Metadata }).(pulumi.AnyOutput)
+}
+
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionProperties) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
 
 type UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse struct {
@@ -7587,6 +20385,61 @@ type UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse struct {
 	Target        *string     `pulumi:"target"`
 }
 
+type UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse)(nil)).Elem()
+}
+
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) ToUsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput() UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput {
+	return o
+}
+
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) ToUsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutputWithContext(ctx context.Context) UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput {
+	return o
+}
+
+// Authentication type of the connection target
+// Expected value is 'UsernamePassword'.
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) AuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) string { return v.AuthType }).(pulumi.StringOutput)
+}
+
+// Category of the connection
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// The arm id of the workspace which created this connection
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) CreatedByWorkspaceArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) string {
+		return v.CreatedByWorkspaceArmId
+	}).(pulumi.StringOutput)
+}
+
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) Credentials() WorkspaceConnectionUsernamePasswordResponsePtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *WorkspaceConnectionUsernamePasswordResponse {
+		return v.Credentials
+	}).(WorkspaceConnectionUsernamePasswordResponsePtrOutput)
+}
+
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) ExpiryTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.ExpiryTime }).(pulumi.StringPtrOutput)
+}
+
+// whether this connection will be shared to all the project workspace under the hub
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) IsSharedToAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *bool { return v.IsSharedToAll }).(pulumi.BoolPtrOutput)
+}
+
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) Metadata() pulumi.AnyOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) interface{} { return v.Metadata }).(pulumi.AnyOutput)
+}
+
+func (o UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
 // A Machine Learning compute based on Azure Virtual Machines.
 type VirtualMachine struct {
 	// Location for the underlying compute
@@ -7603,16 +20456,423 @@ type VirtualMachine struct {
 	ResourceId *string `pulumi:"resourceId"`
 }
 
+// VirtualMachineInput is an input type that accepts VirtualMachineArgs and VirtualMachineOutput values.
+// You can construct a concrete instance of `VirtualMachineInput` via:
+//
+//	VirtualMachineArgs{...}
+type VirtualMachineInput interface {
+	pulumi.Input
+
+	ToVirtualMachineOutput() VirtualMachineOutput
+	ToVirtualMachineOutputWithContext(context.Context) VirtualMachineOutput
+}
+
+// A Machine Learning compute based on Azure Virtual Machines.
+type VirtualMachineArgs struct {
+	// Location for the underlying compute
+	ComputeLocation pulumi.StringPtrInput `pulumi:"computeLocation"`
+	// The type of compute
+	// Expected value is 'VirtualMachine'.
+	ComputeType pulumi.StringInput `pulumi:"computeType"`
+	// The description of the Machine Learning compute.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+	DisableLocalAuth pulumi.BoolPtrInput                    `pulumi:"disableLocalAuth"`
+	Properties       VirtualMachineSchemaPropertiesPtrInput `pulumi:"properties"`
+	// ARM resource id of the underlying compute
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+}
+
+func (VirtualMachineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachine)(nil)).Elem()
+}
+
+func (i VirtualMachineArgs) ToVirtualMachineOutput() VirtualMachineOutput {
+	return i.ToVirtualMachineOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineArgs) ToVirtualMachineOutputWithContext(ctx context.Context) VirtualMachineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOutput)
+}
+
+func (i VirtualMachineArgs) ToVirtualMachinePtrOutput() VirtualMachinePtrOutput {
+	return i.ToVirtualMachinePtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineArgs) ToVirtualMachinePtrOutputWithContext(ctx context.Context) VirtualMachinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineOutput).ToVirtualMachinePtrOutputWithContext(ctx)
+}
+
+// VirtualMachinePtrInput is an input type that accepts VirtualMachineArgs, VirtualMachinePtr and VirtualMachinePtrOutput values.
+// You can construct a concrete instance of `VirtualMachinePtrInput` via:
+//
+//	        VirtualMachineArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachinePtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachinePtrOutput() VirtualMachinePtrOutput
+	ToVirtualMachinePtrOutputWithContext(context.Context) VirtualMachinePtrOutput
+}
+
+type virtualMachinePtrType VirtualMachineArgs
+
+func VirtualMachinePtr(v *VirtualMachineArgs) VirtualMachinePtrInput {
+	return (*virtualMachinePtrType)(v)
+}
+
+func (*virtualMachinePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachine)(nil)).Elem()
+}
+
+func (i *virtualMachinePtrType) ToVirtualMachinePtrOutput() VirtualMachinePtrOutput {
+	return i.ToVirtualMachinePtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachinePtrType) ToVirtualMachinePtrOutputWithContext(ctx context.Context) VirtualMachinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePtrOutput)
+}
+
+// A Machine Learning compute based on Azure Virtual Machines.
+type VirtualMachineOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachine)(nil)).Elem()
+}
+
+func (o VirtualMachineOutput) ToVirtualMachineOutput() VirtualMachineOutput {
+	return o
+}
+
+func (o VirtualMachineOutput) ToVirtualMachineOutputWithContext(ctx context.Context) VirtualMachineOutput {
+	return o
+}
+
+func (o VirtualMachineOutput) ToVirtualMachinePtrOutput() VirtualMachinePtrOutput {
+	return o.ToVirtualMachinePtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineOutput) ToVirtualMachinePtrOutputWithContext(ctx context.Context) VirtualMachinePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachine) *VirtualMachine {
+		return &v
+	}).(VirtualMachinePtrOutput)
+}
+
+// Location for the underlying compute
+func (o VirtualMachineOutput) ComputeLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachine) *string { return v.ComputeLocation }).(pulumi.StringPtrOutput)
+}
+
+// The type of compute
+// Expected value is 'VirtualMachine'.
+func (o VirtualMachineOutput) ComputeType() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachine) string { return v.ComputeType }).(pulumi.StringOutput)
+}
+
+// The description of the Machine Learning compute.
+func (o VirtualMachineOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachine) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+func (o VirtualMachineOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachine) *bool { return v.DisableLocalAuth }).(pulumi.BoolPtrOutput)
+}
+
+func (o VirtualMachineOutput) Properties() VirtualMachineSchemaPropertiesPtrOutput {
+	return o.ApplyT(func(v VirtualMachine) *VirtualMachineSchemaProperties { return v.Properties }).(VirtualMachineSchemaPropertiesPtrOutput)
+}
+
+// ARM resource id of the underlying compute
+func (o VirtualMachineOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachine) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachinePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachinePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachine)(nil)).Elem()
+}
+
+func (o VirtualMachinePtrOutput) ToVirtualMachinePtrOutput() VirtualMachinePtrOutput {
+	return o
+}
+
+func (o VirtualMachinePtrOutput) ToVirtualMachinePtrOutputWithContext(ctx context.Context) VirtualMachinePtrOutput {
+	return o
+}
+
+func (o VirtualMachinePtrOutput) Elem() VirtualMachineOutput {
+	return o.ApplyT(func(v *VirtualMachine) VirtualMachine {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachine
+		return ret
+	}).(VirtualMachineOutput)
+}
+
+// Location for the underlying compute
+func (o VirtualMachinePtrOutput) ComputeLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComputeLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of compute
+// Expected value is 'VirtualMachine'.
+func (o VirtualMachinePtrOutput) ComputeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ComputeType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The description of the Machine Learning compute.
+func (o VirtualMachinePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+func (o VirtualMachinePtrOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableLocalAuth
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o VirtualMachinePtrOutput) Properties() VirtualMachineSchemaPropertiesPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) *VirtualMachineSchemaProperties {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(VirtualMachineSchemaPropertiesPtrOutput)
+}
+
+// ARM resource id of the underlying compute
+func (o VirtualMachinePtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Virtual Machine image for Windows AML Compute
 type VirtualMachineImage struct {
 	// Virtual Machine image path
 	Id string `pulumi:"id"`
 }
 
+// VirtualMachineImageInput is an input type that accepts VirtualMachineImageArgs and VirtualMachineImageOutput values.
+// You can construct a concrete instance of `VirtualMachineImageInput` via:
+//
+//	VirtualMachineImageArgs{...}
+type VirtualMachineImageInput interface {
+	pulumi.Input
+
+	ToVirtualMachineImageOutput() VirtualMachineImageOutput
+	ToVirtualMachineImageOutputWithContext(context.Context) VirtualMachineImageOutput
+}
+
+// Virtual Machine image for Windows AML Compute
+type VirtualMachineImageArgs struct {
+	// Virtual Machine image path
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (VirtualMachineImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineImage)(nil)).Elem()
+}
+
+func (i VirtualMachineImageArgs) ToVirtualMachineImageOutput() VirtualMachineImageOutput {
+	return i.ToVirtualMachineImageOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineImageArgs) ToVirtualMachineImageOutputWithContext(ctx context.Context) VirtualMachineImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineImageOutput)
+}
+
+func (i VirtualMachineImageArgs) ToVirtualMachineImagePtrOutput() VirtualMachineImagePtrOutput {
+	return i.ToVirtualMachineImagePtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineImageArgs) ToVirtualMachineImagePtrOutputWithContext(ctx context.Context) VirtualMachineImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineImageOutput).ToVirtualMachineImagePtrOutputWithContext(ctx)
+}
+
+// VirtualMachineImagePtrInput is an input type that accepts VirtualMachineImageArgs, VirtualMachineImagePtr and VirtualMachineImagePtrOutput values.
+// You can construct a concrete instance of `VirtualMachineImagePtrInput` via:
+//
+//	        VirtualMachineImageArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineImagePtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineImagePtrOutput() VirtualMachineImagePtrOutput
+	ToVirtualMachineImagePtrOutputWithContext(context.Context) VirtualMachineImagePtrOutput
+}
+
+type virtualMachineImagePtrType VirtualMachineImageArgs
+
+func VirtualMachineImagePtr(v *VirtualMachineImageArgs) VirtualMachineImagePtrInput {
+	return (*virtualMachineImagePtrType)(v)
+}
+
+func (*virtualMachineImagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineImage)(nil)).Elem()
+}
+
+func (i *virtualMachineImagePtrType) ToVirtualMachineImagePtrOutput() VirtualMachineImagePtrOutput {
+	return i.ToVirtualMachineImagePtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineImagePtrType) ToVirtualMachineImagePtrOutputWithContext(ctx context.Context) VirtualMachineImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineImagePtrOutput)
+}
+
+// Virtual Machine image for Windows AML Compute
+type VirtualMachineImageOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineImage)(nil)).Elem()
+}
+
+func (o VirtualMachineImageOutput) ToVirtualMachineImageOutput() VirtualMachineImageOutput {
+	return o
+}
+
+func (o VirtualMachineImageOutput) ToVirtualMachineImageOutputWithContext(ctx context.Context) VirtualMachineImageOutput {
+	return o
+}
+
+func (o VirtualMachineImageOutput) ToVirtualMachineImagePtrOutput() VirtualMachineImagePtrOutput {
+	return o.ToVirtualMachineImagePtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineImageOutput) ToVirtualMachineImagePtrOutputWithContext(ctx context.Context) VirtualMachineImagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineImage) *VirtualMachineImage {
+		return &v
+	}).(VirtualMachineImagePtrOutput)
+}
+
+// Virtual Machine image path
+func (o VirtualMachineImageOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineImage) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type VirtualMachineImagePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineImagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineImage)(nil)).Elem()
+}
+
+func (o VirtualMachineImagePtrOutput) ToVirtualMachineImagePtrOutput() VirtualMachineImagePtrOutput {
+	return o
+}
+
+func (o VirtualMachineImagePtrOutput) ToVirtualMachineImagePtrOutputWithContext(ctx context.Context) VirtualMachineImagePtrOutput {
+	return o
+}
+
+func (o VirtualMachineImagePtrOutput) Elem() VirtualMachineImageOutput {
+	return o.ApplyT(func(v *VirtualMachineImage) VirtualMachineImage {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineImage
+		return ret
+	}).(VirtualMachineImageOutput)
+}
+
+// Virtual Machine image path
+func (o VirtualMachineImagePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineImage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
 // Virtual Machine image for Windows AML Compute
 type VirtualMachineImageResponse struct {
 	// Virtual Machine image path
 	Id string `pulumi:"id"`
+}
+
+// Virtual Machine image for Windows AML Compute
+type VirtualMachineImageResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineImageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineImageResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineImageResponseOutput) ToVirtualMachineImageResponseOutput() VirtualMachineImageResponseOutput {
+	return o
+}
+
+func (o VirtualMachineImageResponseOutput) ToVirtualMachineImageResponseOutputWithContext(ctx context.Context) VirtualMachineImageResponseOutput {
+	return o
+}
+
+// Virtual Machine image path
+func (o VirtualMachineImageResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineImageResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type VirtualMachineImageResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineImageResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineImageResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineImageResponsePtrOutput) ToVirtualMachineImageResponsePtrOutput() VirtualMachineImageResponsePtrOutput {
+	return o
+}
+
+func (o VirtualMachineImageResponsePtrOutput) ToVirtualMachineImageResponsePtrOutputWithContext(ctx context.Context) VirtualMachineImageResponsePtrOutput {
+	return o
+}
+
+func (o VirtualMachineImageResponsePtrOutput) Elem() VirtualMachineImageResponseOutput {
+	return o.ApplyT(func(v *VirtualMachineImageResponse) VirtualMachineImageResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineImageResponse
+		return ret
+	}).(VirtualMachineImageResponseOutput)
+}
+
+// Virtual Machine image path
+func (o VirtualMachineImageResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineImageResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
 }
 
 // A Machine Learning compute based on Azure Virtual Machines.
@@ -7641,6 +20901,76 @@ type VirtualMachineResponse struct {
 	ResourceId *string `pulumi:"resourceId"`
 }
 
+// A Machine Learning compute based on Azure Virtual Machines.
+type VirtualMachineResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineResponseOutput) ToVirtualMachineResponseOutput() VirtualMachineResponseOutput {
+	return o
+}
+
+func (o VirtualMachineResponseOutput) ToVirtualMachineResponseOutputWithContext(ctx context.Context) VirtualMachineResponseOutput {
+	return o
+}
+
+// Location for the underlying compute
+func (o VirtualMachineResponseOutput) ComputeLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResponse) *string { return v.ComputeLocation }).(pulumi.StringPtrOutput)
+}
+
+// The type of compute
+// Expected value is 'VirtualMachine'.
+func (o VirtualMachineResponseOutput) ComputeType() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineResponse) string { return v.ComputeType }).(pulumi.StringOutput)
+}
+
+// The time at which the compute was created.
+func (o VirtualMachineResponseOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineResponse) string { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// The description of the Machine Learning compute.
+func (o VirtualMachineResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
+func (o VirtualMachineResponseOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResponse) *bool { return v.DisableLocalAuth }).(pulumi.BoolPtrOutput)
+}
+
+// Indicating whether the compute was provisioned by user and brought from outside if true, or machine learning service provisioned it if false.
+func (o VirtualMachineResponseOutput) IsAttachedCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v VirtualMachineResponse) bool { return v.IsAttachedCompute }).(pulumi.BoolOutput)
+}
+
+// The time at which the compute was last modified.
+func (o VirtualMachineResponseOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineResponse) string { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+func (o VirtualMachineResponseOutput) Properties() VirtualMachineSchemaResponsePropertiesPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResponse) *VirtualMachineSchemaResponseProperties { return v.Properties }).(VirtualMachineSchemaResponsePropertiesPtrOutput)
+}
+
+// Errors during provisioning
+func (o VirtualMachineResponseOutput) ProvisioningErrors() ErrorResponseResponseArrayOutput {
+	return o.ApplyT(func(v VirtualMachineResponse) []ErrorResponseResponse { return v.ProvisioningErrors }).(ErrorResponseResponseArrayOutput)
+}
+
+// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
+func (o VirtualMachineResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// ARM resource id of the underlying compute
+func (o VirtualMachineResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
 type VirtualMachineSchemaProperties struct {
 	// Public IP address of the virtual machine.
 	Address *string `pulumi:"address"`
@@ -7656,6 +20986,223 @@ type VirtualMachineSchemaProperties struct {
 	VirtualMachineSize *string `pulumi:"virtualMachineSize"`
 }
 
+// VirtualMachineSchemaPropertiesInput is an input type that accepts VirtualMachineSchemaPropertiesArgs and VirtualMachineSchemaPropertiesOutput values.
+// You can construct a concrete instance of `VirtualMachineSchemaPropertiesInput` via:
+//
+//	VirtualMachineSchemaPropertiesArgs{...}
+type VirtualMachineSchemaPropertiesInput interface {
+	pulumi.Input
+
+	ToVirtualMachineSchemaPropertiesOutput() VirtualMachineSchemaPropertiesOutput
+	ToVirtualMachineSchemaPropertiesOutputWithContext(context.Context) VirtualMachineSchemaPropertiesOutput
+}
+
+type VirtualMachineSchemaPropertiesArgs struct {
+	// Public IP address of the virtual machine.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// Admin credentials for virtual machine
+	AdministratorAccount VirtualMachineSshCredentialsPtrInput `pulumi:"administratorAccount"`
+	// Indicates whether this compute will be used for running notebooks.
+	IsNotebookInstanceCompute pulumi.BoolPtrInput `pulumi:"isNotebookInstanceCompute"`
+	// Notebook server port open for ssh connections.
+	NotebookServerPort pulumi.IntPtrInput `pulumi:"notebookServerPort"`
+	// Port open for ssh connections.
+	SshPort pulumi.IntPtrInput `pulumi:"sshPort"`
+	// Virtual Machine size
+	VirtualMachineSize pulumi.StringPtrInput `pulumi:"virtualMachineSize"`
+}
+
+func (VirtualMachineSchemaPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineSchemaProperties)(nil)).Elem()
+}
+
+func (i VirtualMachineSchemaPropertiesArgs) ToVirtualMachineSchemaPropertiesOutput() VirtualMachineSchemaPropertiesOutput {
+	return i.ToVirtualMachineSchemaPropertiesOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineSchemaPropertiesArgs) ToVirtualMachineSchemaPropertiesOutputWithContext(ctx context.Context) VirtualMachineSchemaPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineSchemaPropertiesOutput)
+}
+
+func (i VirtualMachineSchemaPropertiesArgs) ToVirtualMachineSchemaPropertiesPtrOutput() VirtualMachineSchemaPropertiesPtrOutput {
+	return i.ToVirtualMachineSchemaPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineSchemaPropertiesArgs) ToVirtualMachineSchemaPropertiesPtrOutputWithContext(ctx context.Context) VirtualMachineSchemaPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineSchemaPropertiesOutput).ToVirtualMachineSchemaPropertiesPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineSchemaPropertiesPtrInput is an input type that accepts VirtualMachineSchemaPropertiesArgs, VirtualMachineSchemaPropertiesPtr and VirtualMachineSchemaPropertiesPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineSchemaPropertiesPtrInput` via:
+//
+//	        VirtualMachineSchemaPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineSchemaPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineSchemaPropertiesPtrOutput() VirtualMachineSchemaPropertiesPtrOutput
+	ToVirtualMachineSchemaPropertiesPtrOutputWithContext(context.Context) VirtualMachineSchemaPropertiesPtrOutput
+}
+
+type virtualMachineSchemaPropertiesPtrType VirtualMachineSchemaPropertiesArgs
+
+func VirtualMachineSchemaPropertiesPtr(v *VirtualMachineSchemaPropertiesArgs) VirtualMachineSchemaPropertiesPtrInput {
+	return (*virtualMachineSchemaPropertiesPtrType)(v)
+}
+
+func (*virtualMachineSchemaPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineSchemaProperties)(nil)).Elem()
+}
+
+func (i *virtualMachineSchemaPropertiesPtrType) ToVirtualMachineSchemaPropertiesPtrOutput() VirtualMachineSchemaPropertiesPtrOutput {
+	return i.ToVirtualMachineSchemaPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineSchemaPropertiesPtrType) ToVirtualMachineSchemaPropertiesPtrOutputWithContext(ctx context.Context) VirtualMachineSchemaPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineSchemaPropertiesPtrOutput)
+}
+
+type VirtualMachineSchemaPropertiesOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineSchemaPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineSchemaProperties)(nil)).Elem()
+}
+
+func (o VirtualMachineSchemaPropertiesOutput) ToVirtualMachineSchemaPropertiesOutput() VirtualMachineSchemaPropertiesOutput {
+	return o
+}
+
+func (o VirtualMachineSchemaPropertiesOutput) ToVirtualMachineSchemaPropertiesOutputWithContext(ctx context.Context) VirtualMachineSchemaPropertiesOutput {
+	return o
+}
+
+func (o VirtualMachineSchemaPropertiesOutput) ToVirtualMachineSchemaPropertiesPtrOutput() VirtualMachineSchemaPropertiesPtrOutput {
+	return o.ToVirtualMachineSchemaPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineSchemaPropertiesOutput) ToVirtualMachineSchemaPropertiesPtrOutputWithContext(ctx context.Context) VirtualMachineSchemaPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineSchemaProperties) *VirtualMachineSchemaProperties {
+		return &v
+	}).(VirtualMachineSchemaPropertiesPtrOutput)
+}
+
+// Public IP address of the virtual machine.
+func (o VirtualMachineSchemaPropertiesOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaProperties) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// Admin credentials for virtual machine
+func (o VirtualMachineSchemaPropertiesOutput) AdministratorAccount() VirtualMachineSshCredentialsPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaProperties) *VirtualMachineSshCredentials { return v.AdministratorAccount }).(VirtualMachineSshCredentialsPtrOutput)
+}
+
+// Indicates whether this compute will be used for running notebooks.
+func (o VirtualMachineSchemaPropertiesOutput) IsNotebookInstanceCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaProperties) *bool { return v.IsNotebookInstanceCompute }).(pulumi.BoolPtrOutput)
+}
+
+// Notebook server port open for ssh connections.
+func (o VirtualMachineSchemaPropertiesOutput) NotebookServerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaProperties) *int { return v.NotebookServerPort }).(pulumi.IntPtrOutput)
+}
+
+// Port open for ssh connections.
+func (o VirtualMachineSchemaPropertiesOutput) SshPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaProperties) *int { return v.SshPort }).(pulumi.IntPtrOutput)
+}
+
+// Virtual Machine size
+func (o VirtualMachineSchemaPropertiesOutput) VirtualMachineSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaProperties) *string { return v.VirtualMachineSize }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineSchemaPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineSchemaPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineSchemaProperties)(nil)).Elem()
+}
+
+func (o VirtualMachineSchemaPropertiesPtrOutput) ToVirtualMachineSchemaPropertiesPtrOutput() VirtualMachineSchemaPropertiesPtrOutput {
+	return o
+}
+
+func (o VirtualMachineSchemaPropertiesPtrOutput) ToVirtualMachineSchemaPropertiesPtrOutputWithContext(ctx context.Context) VirtualMachineSchemaPropertiesPtrOutput {
+	return o
+}
+
+func (o VirtualMachineSchemaPropertiesPtrOutput) Elem() VirtualMachineSchemaPropertiesOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaProperties) VirtualMachineSchemaProperties {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineSchemaProperties
+		return ret
+	}).(VirtualMachineSchemaPropertiesOutput)
+}
+
+// Public IP address of the virtual machine.
+func (o VirtualMachineSchemaPropertiesPtrOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Address
+	}).(pulumi.StringPtrOutput)
+}
+
+// Admin credentials for virtual machine
+func (o VirtualMachineSchemaPropertiesPtrOutput) AdministratorAccount() VirtualMachineSshCredentialsPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaProperties) *VirtualMachineSshCredentials {
+		if v == nil {
+			return nil
+		}
+		return v.AdministratorAccount
+	}).(VirtualMachineSshCredentialsPtrOutput)
+}
+
+// Indicates whether this compute will be used for running notebooks.
+func (o VirtualMachineSchemaPropertiesPtrOutput) IsNotebookInstanceCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsNotebookInstanceCompute
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Notebook server port open for ssh connections.
+func (o VirtualMachineSchemaPropertiesPtrOutput) NotebookServerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NotebookServerPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// Port open for ssh connections.
+func (o VirtualMachineSchemaPropertiesPtrOutput) SshPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SshPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// Virtual Machine size
+func (o VirtualMachineSchemaPropertiesPtrOutput) VirtualMachineSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualMachineSize
+	}).(pulumi.StringPtrOutput)
+}
+
 type VirtualMachineSchemaResponseProperties struct {
 	// Public IP address of the virtual machine.
 	Address *string `pulumi:"address"`
@@ -7669,6 +21216,136 @@ type VirtualMachineSchemaResponseProperties struct {
 	SshPort *int `pulumi:"sshPort"`
 	// Virtual Machine size
 	VirtualMachineSize *string `pulumi:"virtualMachineSize"`
+}
+
+type VirtualMachineSchemaResponsePropertiesOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineSchemaResponsePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineSchemaResponseProperties)(nil)).Elem()
+}
+
+func (o VirtualMachineSchemaResponsePropertiesOutput) ToVirtualMachineSchemaResponsePropertiesOutput() VirtualMachineSchemaResponsePropertiesOutput {
+	return o
+}
+
+func (o VirtualMachineSchemaResponsePropertiesOutput) ToVirtualMachineSchemaResponsePropertiesOutputWithContext(ctx context.Context) VirtualMachineSchemaResponsePropertiesOutput {
+	return o
+}
+
+// Public IP address of the virtual machine.
+func (o VirtualMachineSchemaResponsePropertiesOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaResponseProperties) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// Admin credentials for virtual machine
+func (o VirtualMachineSchemaResponsePropertiesOutput) AdministratorAccount() VirtualMachineSshCredentialsResponsePtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaResponseProperties) *VirtualMachineSshCredentialsResponse {
+		return v.AdministratorAccount
+	}).(VirtualMachineSshCredentialsResponsePtrOutput)
+}
+
+// Indicates whether this compute will be used for running notebooks.
+func (o VirtualMachineSchemaResponsePropertiesOutput) IsNotebookInstanceCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaResponseProperties) *bool { return v.IsNotebookInstanceCompute }).(pulumi.BoolPtrOutput)
+}
+
+// Notebook server port open for ssh connections.
+func (o VirtualMachineSchemaResponsePropertiesOutput) NotebookServerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaResponseProperties) *int { return v.NotebookServerPort }).(pulumi.IntPtrOutput)
+}
+
+// Port open for ssh connections.
+func (o VirtualMachineSchemaResponsePropertiesOutput) SshPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaResponseProperties) *int { return v.SshPort }).(pulumi.IntPtrOutput)
+}
+
+// Virtual Machine size
+func (o VirtualMachineSchemaResponsePropertiesOutput) VirtualMachineSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSchemaResponseProperties) *string { return v.VirtualMachineSize }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineSchemaResponsePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineSchemaResponsePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineSchemaResponseProperties)(nil)).Elem()
+}
+
+func (o VirtualMachineSchemaResponsePropertiesPtrOutput) ToVirtualMachineSchemaResponsePropertiesPtrOutput() VirtualMachineSchemaResponsePropertiesPtrOutput {
+	return o
+}
+
+func (o VirtualMachineSchemaResponsePropertiesPtrOutput) ToVirtualMachineSchemaResponsePropertiesPtrOutputWithContext(ctx context.Context) VirtualMachineSchemaResponsePropertiesPtrOutput {
+	return o
+}
+
+func (o VirtualMachineSchemaResponsePropertiesPtrOutput) Elem() VirtualMachineSchemaResponsePropertiesOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaResponseProperties) VirtualMachineSchemaResponseProperties {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineSchemaResponseProperties
+		return ret
+	}).(VirtualMachineSchemaResponsePropertiesOutput)
+}
+
+// Public IP address of the virtual machine.
+func (o VirtualMachineSchemaResponsePropertiesPtrOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Address
+	}).(pulumi.StringPtrOutput)
+}
+
+// Admin credentials for virtual machine
+func (o VirtualMachineSchemaResponsePropertiesPtrOutput) AdministratorAccount() VirtualMachineSshCredentialsResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaResponseProperties) *VirtualMachineSshCredentialsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AdministratorAccount
+	}).(VirtualMachineSshCredentialsResponsePtrOutput)
+}
+
+// Indicates whether this compute will be used for running notebooks.
+func (o VirtualMachineSchemaResponsePropertiesPtrOutput) IsNotebookInstanceCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaResponseProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsNotebookInstanceCompute
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Notebook server port open for ssh connections.
+func (o VirtualMachineSchemaResponsePropertiesPtrOutput) NotebookServerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaResponseProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NotebookServerPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// Port open for ssh connections.
+func (o VirtualMachineSchemaResponsePropertiesPtrOutput) SshPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaResponseProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SshPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// Virtual Machine size
+func (o VirtualMachineSchemaResponsePropertiesPtrOutput) VirtualMachineSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSchemaResponseProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualMachineSize
+	}).(pulumi.StringPtrOutput)
 }
 
 // Describes the properties of a VM size.
@@ -7799,6 +21476,191 @@ type VirtualMachineSshCredentials struct {
 	Username *string `pulumi:"username"`
 }
 
+// VirtualMachineSshCredentialsInput is an input type that accepts VirtualMachineSshCredentialsArgs and VirtualMachineSshCredentialsOutput values.
+// You can construct a concrete instance of `VirtualMachineSshCredentialsInput` via:
+//
+//	VirtualMachineSshCredentialsArgs{...}
+type VirtualMachineSshCredentialsInput interface {
+	pulumi.Input
+
+	ToVirtualMachineSshCredentialsOutput() VirtualMachineSshCredentialsOutput
+	ToVirtualMachineSshCredentialsOutputWithContext(context.Context) VirtualMachineSshCredentialsOutput
+}
+
+// Admin credentials for virtual machine
+type VirtualMachineSshCredentialsArgs struct {
+	// Password of admin account
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Private key data
+	PrivateKeyData pulumi.StringPtrInput `pulumi:"privateKeyData"`
+	// Public key data
+	PublicKeyData pulumi.StringPtrInput `pulumi:"publicKeyData"`
+	// Username of admin account
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (VirtualMachineSshCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineSshCredentials)(nil)).Elem()
+}
+
+func (i VirtualMachineSshCredentialsArgs) ToVirtualMachineSshCredentialsOutput() VirtualMachineSshCredentialsOutput {
+	return i.ToVirtualMachineSshCredentialsOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineSshCredentialsArgs) ToVirtualMachineSshCredentialsOutputWithContext(ctx context.Context) VirtualMachineSshCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineSshCredentialsOutput)
+}
+
+func (i VirtualMachineSshCredentialsArgs) ToVirtualMachineSshCredentialsPtrOutput() VirtualMachineSshCredentialsPtrOutput {
+	return i.ToVirtualMachineSshCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineSshCredentialsArgs) ToVirtualMachineSshCredentialsPtrOutputWithContext(ctx context.Context) VirtualMachineSshCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineSshCredentialsOutput).ToVirtualMachineSshCredentialsPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineSshCredentialsPtrInput is an input type that accepts VirtualMachineSshCredentialsArgs, VirtualMachineSshCredentialsPtr and VirtualMachineSshCredentialsPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineSshCredentialsPtrInput` via:
+//
+//	        VirtualMachineSshCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineSshCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineSshCredentialsPtrOutput() VirtualMachineSshCredentialsPtrOutput
+	ToVirtualMachineSshCredentialsPtrOutputWithContext(context.Context) VirtualMachineSshCredentialsPtrOutput
+}
+
+type virtualMachineSshCredentialsPtrType VirtualMachineSshCredentialsArgs
+
+func VirtualMachineSshCredentialsPtr(v *VirtualMachineSshCredentialsArgs) VirtualMachineSshCredentialsPtrInput {
+	return (*virtualMachineSshCredentialsPtrType)(v)
+}
+
+func (*virtualMachineSshCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineSshCredentials)(nil)).Elem()
+}
+
+func (i *virtualMachineSshCredentialsPtrType) ToVirtualMachineSshCredentialsPtrOutput() VirtualMachineSshCredentialsPtrOutput {
+	return i.ToVirtualMachineSshCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineSshCredentialsPtrType) ToVirtualMachineSshCredentialsPtrOutputWithContext(ctx context.Context) VirtualMachineSshCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineSshCredentialsPtrOutput)
+}
+
+// Admin credentials for virtual machine
+type VirtualMachineSshCredentialsOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineSshCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineSshCredentials)(nil)).Elem()
+}
+
+func (o VirtualMachineSshCredentialsOutput) ToVirtualMachineSshCredentialsOutput() VirtualMachineSshCredentialsOutput {
+	return o
+}
+
+func (o VirtualMachineSshCredentialsOutput) ToVirtualMachineSshCredentialsOutputWithContext(ctx context.Context) VirtualMachineSshCredentialsOutput {
+	return o
+}
+
+func (o VirtualMachineSshCredentialsOutput) ToVirtualMachineSshCredentialsPtrOutput() VirtualMachineSshCredentialsPtrOutput {
+	return o.ToVirtualMachineSshCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineSshCredentialsOutput) ToVirtualMachineSshCredentialsPtrOutputWithContext(ctx context.Context) VirtualMachineSshCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineSshCredentials) *VirtualMachineSshCredentials {
+		return &v
+	}).(VirtualMachineSshCredentialsPtrOutput)
+}
+
+// Password of admin account
+func (o VirtualMachineSshCredentialsOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSshCredentials) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Private key data
+func (o VirtualMachineSshCredentialsOutput) PrivateKeyData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSshCredentials) *string { return v.PrivateKeyData }).(pulumi.StringPtrOutput)
+}
+
+// Public key data
+func (o VirtualMachineSshCredentialsOutput) PublicKeyData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSshCredentials) *string { return v.PublicKeyData }).(pulumi.StringPtrOutput)
+}
+
+// Username of admin account
+func (o VirtualMachineSshCredentialsOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSshCredentials) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineSshCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineSshCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineSshCredentials)(nil)).Elem()
+}
+
+func (o VirtualMachineSshCredentialsPtrOutput) ToVirtualMachineSshCredentialsPtrOutput() VirtualMachineSshCredentialsPtrOutput {
+	return o
+}
+
+func (o VirtualMachineSshCredentialsPtrOutput) ToVirtualMachineSshCredentialsPtrOutputWithContext(ctx context.Context) VirtualMachineSshCredentialsPtrOutput {
+	return o
+}
+
+func (o VirtualMachineSshCredentialsPtrOutput) Elem() VirtualMachineSshCredentialsOutput {
+	return o.ApplyT(func(v *VirtualMachineSshCredentials) VirtualMachineSshCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineSshCredentials
+		return ret
+	}).(VirtualMachineSshCredentialsOutput)
+}
+
+// Password of admin account
+func (o VirtualMachineSshCredentialsPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSshCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Private key data
+func (o VirtualMachineSshCredentialsPtrOutput) PrivateKeyData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSshCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyData
+	}).(pulumi.StringPtrOutput)
+}
+
+// Public key data
+func (o VirtualMachineSshCredentialsPtrOutput) PublicKeyData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSshCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicKeyData
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username of admin account
+func (o VirtualMachineSshCredentialsPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSshCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 // Admin credentials for virtual machine
 type VirtualMachineSshCredentialsResponse struct {
 	// Password of admin account
@@ -7809,6 +21671,105 @@ type VirtualMachineSshCredentialsResponse struct {
 	PublicKeyData *string `pulumi:"publicKeyData"`
 	// Username of admin account
 	Username *string `pulumi:"username"`
+}
+
+// Admin credentials for virtual machine
+type VirtualMachineSshCredentialsResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineSshCredentialsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineSshCredentialsResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineSshCredentialsResponseOutput) ToVirtualMachineSshCredentialsResponseOutput() VirtualMachineSshCredentialsResponseOutput {
+	return o
+}
+
+func (o VirtualMachineSshCredentialsResponseOutput) ToVirtualMachineSshCredentialsResponseOutputWithContext(ctx context.Context) VirtualMachineSshCredentialsResponseOutput {
+	return o
+}
+
+// Password of admin account
+func (o VirtualMachineSshCredentialsResponseOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSshCredentialsResponse) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Private key data
+func (o VirtualMachineSshCredentialsResponseOutput) PrivateKeyData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSshCredentialsResponse) *string { return v.PrivateKeyData }).(pulumi.StringPtrOutput)
+}
+
+// Public key data
+func (o VirtualMachineSshCredentialsResponseOutput) PublicKeyData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSshCredentialsResponse) *string { return v.PublicKeyData }).(pulumi.StringPtrOutput)
+}
+
+// Username of admin account
+func (o VirtualMachineSshCredentialsResponseOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineSshCredentialsResponse) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineSshCredentialsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineSshCredentialsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineSshCredentialsResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineSshCredentialsResponsePtrOutput) ToVirtualMachineSshCredentialsResponsePtrOutput() VirtualMachineSshCredentialsResponsePtrOutput {
+	return o
+}
+
+func (o VirtualMachineSshCredentialsResponsePtrOutput) ToVirtualMachineSshCredentialsResponsePtrOutputWithContext(ctx context.Context) VirtualMachineSshCredentialsResponsePtrOutput {
+	return o
+}
+
+func (o VirtualMachineSshCredentialsResponsePtrOutput) Elem() VirtualMachineSshCredentialsResponseOutput {
+	return o.ApplyT(func(v *VirtualMachineSshCredentialsResponse) VirtualMachineSshCredentialsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineSshCredentialsResponse
+		return ret
+	}).(VirtualMachineSshCredentialsResponseOutput)
+}
+
+// Password of admin account
+func (o VirtualMachineSshCredentialsResponsePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSshCredentialsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Private key data
+func (o VirtualMachineSshCredentialsResponsePtrOutput) PrivateKeyData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSshCredentialsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKeyData
+	}).(pulumi.StringPtrOutput)
+}
+
+// Public key data
+func (o VirtualMachineSshCredentialsResponsePtrOutput) PublicKeyData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSshCredentialsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicKeyData
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username of admin account
+func (o VirtualMachineSshCredentialsResponsePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineSshCredentialsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
 }
 
 type VolumeDefinition struct {
@@ -7843,6 +21804,158 @@ func (val *VolumeDefinition) Defaults() *VolumeDefinition {
 	return &tmp
 }
 
+// VolumeDefinitionInput is an input type that accepts VolumeDefinitionArgs and VolumeDefinitionOutput values.
+// You can construct a concrete instance of `VolumeDefinitionInput` via:
+//
+//	VolumeDefinitionArgs{...}
+type VolumeDefinitionInput interface {
+	pulumi.Input
+
+	ToVolumeDefinitionOutput() VolumeDefinitionOutput
+	ToVolumeDefinitionOutputWithContext(context.Context) VolumeDefinitionOutput
+}
+
+type VolumeDefinitionArgs struct {
+	// Bind Options of the mount
+	Bind BindOptionsPtrInput `pulumi:"bind"`
+	// Consistency of the volume
+	Consistency pulumi.StringPtrInput `pulumi:"consistency"`
+	// Indicate whether to mount volume as readOnly. Default value for this is false.
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	// Source of the mount. For bind mounts this is the host path.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+	// Target of the mount. For bind mounts this is the path in the container.
+	Target pulumi.StringPtrInput `pulumi:"target"`
+	// tmpfs option of the mount
+	Tmpfs TmpfsOptionsPtrInput `pulumi:"tmpfs"`
+	// Type of Volume Definition. Possible Values: bind,volume,tmpfs,npipe
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Volume Options of the mount
+	Volume VolumeOptionsPtrInput `pulumi:"volume"`
+}
+
+// Defaults sets the appropriate defaults for VolumeDefinitionArgs
+func (val *VolumeDefinitionArgs) Defaults() *VolumeDefinitionArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Type == nil {
+		tmp.Type = pulumi.StringPtr("bind")
+	}
+	return &tmp
+}
+func (VolumeDefinitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeDefinition)(nil)).Elem()
+}
+
+func (i VolumeDefinitionArgs) ToVolumeDefinitionOutput() VolumeDefinitionOutput {
+	return i.ToVolumeDefinitionOutputWithContext(context.Background())
+}
+
+func (i VolumeDefinitionArgs) ToVolumeDefinitionOutputWithContext(ctx context.Context) VolumeDefinitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeDefinitionOutput)
+}
+
+// VolumeDefinitionArrayInput is an input type that accepts VolumeDefinitionArray and VolumeDefinitionArrayOutput values.
+// You can construct a concrete instance of `VolumeDefinitionArrayInput` via:
+//
+//	VolumeDefinitionArray{ VolumeDefinitionArgs{...} }
+type VolumeDefinitionArrayInput interface {
+	pulumi.Input
+
+	ToVolumeDefinitionArrayOutput() VolumeDefinitionArrayOutput
+	ToVolumeDefinitionArrayOutputWithContext(context.Context) VolumeDefinitionArrayOutput
+}
+
+type VolumeDefinitionArray []VolumeDefinitionInput
+
+func (VolumeDefinitionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeDefinition)(nil)).Elem()
+}
+
+func (i VolumeDefinitionArray) ToVolumeDefinitionArrayOutput() VolumeDefinitionArrayOutput {
+	return i.ToVolumeDefinitionArrayOutputWithContext(context.Background())
+}
+
+func (i VolumeDefinitionArray) ToVolumeDefinitionArrayOutputWithContext(ctx context.Context) VolumeDefinitionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeDefinitionArrayOutput)
+}
+
+type VolumeDefinitionOutput struct{ *pulumi.OutputState }
+
+func (VolumeDefinitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeDefinition)(nil)).Elem()
+}
+
+func (o VolumeDefinitionOutput) ToVolumeDefinitionOutput() VolumeDefinitionOutput {
+	return o
+}
+
+func (o VolumeDefinitionOutput) ToVolumeDefinitionOutputWithContext(ctx context.Context) VolumeDefinitionOutput {
+	return o
+}
+
+// Bind Options of the mount
+func (o VolumeDefinitionOutput) Bind() BindOptionsPtrOutput {
+	return o.ApplyT(func(v VolumeDefinition) *BindOptions { return v.Bind }).(BindOptionsPtrOutput)
+}
+
+// Consistency of the volume
+func (o VolumeDefinitionOutput) Consistency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeDefinition) *string { return v.Consistency }).(pulumi.StringPtrOutput)
+}
+
+// Indicate whether to mount volume as readOnly. Default value for this is false.
+func (o VolumeDefinitionOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VolumeDefinition) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Source of the mount. For bind mounts this is the host path.
+func (o VolumeDefinitionOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeDefinition) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+// Target of the mount. For bind mounts this is the path in the container.
+func (o VolumeDefinitionOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeDefinition) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// tmpfs option of the mount
+func (o VolumeDefinitionOutput) Tmpfs() TmpfsOptionsPtrOutput {
+	return o.ApplyT(func(v VolumeDefinition) *TmpfsOptions { return v.Tmpfs }).(TmpfsOptionsPtrOutput)
+}
+
+// Type of Volume Definition. Possible Values: bind,volume,tmpfs,npipe
+func (o VolumeDefinitionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeDefinition) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Volume Options of the mount
+func (o VolumeDefinitionOutput) Volume() VolumeOptionsPtrOutput {
+	return o.ApplyT(func(v VolumeDefinition) *VolumeOptions { return v.Volume }).(VolumeOptionsPtrOutput)
+}
+
+type VolumeDefinitionArrayOutput struct{ *pulumi.OutputState }
+
+func (VolumeDefinitionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeDefinition)(nil)).Elem()
+}
+
+func (o VolumeDefinitionArrayOutput) ToVolumeDefinitionArrayOutput() VolumeDefinitionArrayOutput {
+	return o
+}
+
+func (o VolumeDefinitionArrayOutput) ToVolumeDefinitionArrayOutputWithContext(ctx context.Context) VolumeDefinitionArrayOutput {
+	return o
+}
+
+func (o VolumeDefinitionArrayOutput) Index(i pulumi.IntInput) VolumeDefinitionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeDefinition {
+		return vs[0].([]VolumeDefinition)[vs[1].(int)]
+	}).(VolumeDefinitionOutput)
+}
+
 type VolumeDefinitionResponse struct {
 	// Bind Options of the mount
 	Bind *BindOptionsResponse `pulumi:"bind"`
@@ -7875,9 +21988,215 @@ func (val *VolumeDefinitionResponse) Defaults() *VolumeDefinitionResponse {
 	return &tmp
 }
 
+type VolumeDefinitionResponseOutput struct{ *pulumi.OutputState }
+
+func (VolumeDefinitionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeDefinitionResponse)(nil)).Elem()
+}
+
+func (o VolumeDefinitionResponseOutput) ToVolumeDefinitionResponseOutput() VolumeDefinitionResponseOutput {
+	return o
+}
+
+func (o VolumeDefinitionResponseOutput) ToVolumeDefinitionResponseOutputWithContext(ctx context.Context) VolumeDefinitionResponseOutput {
+	return o
+}
+
+// Bind Options of the mount
+func (o VolumeDefinitionResponseOutput) Bind() BindOptionsResponsePtrOutput {
+	return o.ApplyT(func(v VolumeDefinitionResponse) *BindOptionsResponse { return v.Bind }).(BindOptionsResponsePtrOutput)
+}
+
+// Consistency of the volume
+func (o VolumeDefinitionResponseOutput) Consistency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeDefinitionResponse) *string { return v.Consistency }).(pulumi.StringPtrOutput)
+}
+
+// Indicate whether to mount volume as readOnly. Default value for this is false.
+func (o VolumeDefinitionResponseOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VolumeDefinitionResponse) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Source of the mount. For bind mounts this is the host path.
+func (o VolumeDefinitionResponseOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeDefinitionResponse) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+// Target of the mount. For bind mounts this is the path in the container.
+func (o VolumeDefinitionResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeDefinitionResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// tmpfs option of the mount
+func (o VolumeDefinitionResponseOutput) Tmpfs() TmpfsOptionsResponsePtrOutput {
+	return o.ApplyT(func(v VolumeDefinitionResponse) *TmpfsOptionsResponse { return v.Tmpfs }).(TmpfsOptionsResponsePtrOutput)
+}
+
+// Type of Volume Definition. Possible Values: bind,volume,tmpfs,npipe
+func (o VolumeDefinitionResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeDefinitionResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Volume Options of the mount
+func (o VolumeDefinitionResponseOutput) Volume() VolumeOptionsResponsePtrOutput {
+	return o.ApplyT(func(v VolumeDefinitionResponse) *VolumeOptionsResponse { return v.Volume }).(VolumeOptionsResponsePtrOutput)
+}
+
+type VolumeDefinitionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VolumeDefinitionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VolumeDefinitionResponse)(nil)).Elem()
+}
+
+func (o VolumeDefinitionResponseArrayOutput) ToVolumeDefinitionResponseArrayOutput() VolumeDefinitionResponseArrayOutput {
+	return o
+}
+
+func (o VolumeDefinitionResponseArrayOutput) ToVolumeDefinitionResponseArrayOutputWithContext(ctx context.Context) VolumeDefinitionResponseArrayOutput {
+	return o
+}
+
+func (o VolumeDefinitionResponseArrayOutput) Index(i pulumi.IntInput) VolumeDefinitionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeDefinitionResponse {
+		return vs[0].([]VolumeDefinitionResponse)[vs[1].(int)]
+	}).(VolumeDefinitionResponseOutput)
+}
+
 type VolumeOptions struct {
 	// Indicate whether volume is nocopy
 	Nocopy *bool `pulumi:"nocopy"`
+}
+
+// VolumeOptionsInput is an input type that accepts VolumeOptionsArgs and VolumeOptionsOutput values.
+// You can construct a concrete instance of `VolumeOptionsInput` via:
+//
+//	VolumeOptionsArgs{...}
+type VolumeOptionsInput interface {
+	pulumi.Input
+
+	ToVolumeOptionsOutput() VolumeOptionsOutput
+	ToVolumeOptionsOutputWithContext(context.Context) VolumeOptionsOutput
+}
+
+type VolumeOptionsArgs struct {
+	// Indicate whether volume is nocopy
+	Nocopy pulumi.BoolPtrInput `pulumi:"nocopy"`
+}
+
+func (VolumeOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeOptions)(nil)).Elem()
+}
+
+func (i VolumeOptionsArgs) ToVolumeOptionsOutput() VolumeOptionsOutput {
+	return i.ToVolumeOptionsOutputWithContext(context.Background())
+}
+
+func (i VolumeOptionsArgs) ToVolumeOptionsOutputWithContext(ctx context.Context) VolumeOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeOptionsOutput)
+}
+
+func (i VolumeOptionsArgs) ToVolumeOptionsPtrOutput() VolumeOptionsPtrOutput {
+	return i.ToVolumeOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i VolumeOptionsArgs) ToVolumeOptionsPtrOutputWithContext(ctx context.Context) VolumeOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeOptionsOutput).ToVolumeOptionsPtrOutputWithContext(ctx)
+}
+
+// VolumeOptionsPtrInput is an input type that accepts VolumeOptionsArgs, VolumeOptionsPtr and VolumeOptionsPtrOutput values.
+// You can construct a concrete instance of `VolumeOptionsPtrInput` via:
+//
+//	        VolumeOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VolumeOptionsPtrInput interface {
+	pulumi.Input
+
+	ToVolumeOptionsPtrOutput() VolumeOptionsPtrOutput
+	ToVolumeOptionsPtrOutputWithContext(context.Context) VolumeOptionsPtrOutput
+}
+
+type volumeOptionsPtrType VolumeOptionsArgs
+
+func VolumeOptionsPtr(v *VolumeOptionsArgs) VolumeOptionsPtrInput {
+	return (*volumeOptionsPtrType)(v)
+}
+
+func (*volumeOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeOptions)(nil)).Elem()
+}
+
+func (i *volumeOptionsPtrType) ToVolumeOptionsPtrOutput() VolumeOptionsPtrOutput {
+	return i.ToVolumeOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *volumeOptionsPtrType) ToVolumeOptionsPtrOutputWithContext(ctx context.Context) VolumeOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeOptionsPtrOutput)
+}
+
+type VolumeOptionsOutput struct{ *pulumi.OutputState }
+
+func (VolumeOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeOptions)(nil)).Elem()
+}
+
+func (o VolumeOptionsOutput) ToVolumeOptionsOutput() VolumeOptionsOutput {
+	return o
+}
+
+func (o VolumeOptionsOutput) ToVolumeOptionsOutputWithContext(ctx context.Context) VolumeOptionsOutput {
+	return o
+}
+
+func (o VolumeOptionsOutput) ToVolumeOptionsPtrOutput() VolumeOptionsPtrOutput {
+	return o.ToVolumeOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeOptionsOutput) ToVolumeOptionsPtrOutputWithContext(ctx context.Context) VolumeOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeOptions) *VolumeOptions {
+		return &v
+	}).(VolumeOptionsPtrOutput)
+}
+
+// Indicate whether volume is nocopy
+func (o VolumeOptionsOutput) Nocopy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VolumeOptions) *bool { return v.Nocopy }).(pulumi.BoolPtrOutput)
+}
+
+type VolumeOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (VolumeOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeOptions)(nil)).Elem()
+}
+
+func (o VolumeOptionsPtrOutput) ToVolumeOptionsPtrOutput() VolumeOptionsPtrOutput {
+	return o
+}
+
+func (o VolumeOptionsPtrOutput) ToVolumeOptionsPtrOutputWithContext(ctx context.Context) VolumeOptionsPtrOutput {
+	return o
+}
+
+func (o VolumeOptionsPtrOutput) Elem() VolumeOptionsOutput {
+	return o.ApplyT(func(v *VolumeOptions) VolumeOptions {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeOptions
+		return ret
+	}).(VolumeOptionsOutput)
+}
+
+// Indicate whether volume is nocopy
+func (o VolumeOptionsPtrOutput) Nocopy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VolumeOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Nocopy
+	}).(pulumi.BoolPtrOutput)
 }
 
 type VolumeOptionsResponse struct {
@@ -7885,9 +22204,205 @@ type VolumeOptionsResponse struct {
 	Nocopy *bool `pulumi:"nocopy"`
 }
 
+type VolumeOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (VolumeOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeOptionsResponse)(nil)).Elem()
+}
+
+func (o VolumeOptionsResponseOutput) ToVolumeOptionsResponseOutput() VolumeOptionsResponseOutput {
+	return o
+}
+
+func (o VolumeOptionsResponseOutput) ToVolumeOptionsResponseOutputWithContext(ctx context.Context) VolumeOptionsResponseOutput {
+	return o
+}
+
+// Indicate whether volume is nocopy
+func (o VolumeOptionsResponseOutput) Nocopy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VolumeOptionsResponse) *bool { return v.Nocopy }).(pulumi.BoolPtrOutput)
+}
+
+type VolumeOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VolumeOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeOptionsResponse)(nil)).Elem()
+}
+
+func (o VolumeOptionsResponsePtrOutput) ToVolumeOptionsResponsePtrOutput() VolumeOptionsResponsePtrOutput {
+	return o
+}
+
+func (o VolumeOptionsResponsePtrOutput) ToVolumeOptionsResponsePtrOutputWithContext(ctx context.Context) VolumeOptionsResponsePtrOutput {
+	return o
+}
+
+func (o VolumeOptionsResponsePtrOutput) Elem() VolumeOptionsResponseOutput {
+	return o.ApplyT(func(v *VolumeOptionsResponse) VolumeOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeOptionsResponse
+		return ret
+	}).(VolumeOptionsResponseOutput)
+}
+
+// Indicate whether volume is nocopy
+func (o VolumeOptionsResponsePtrOutput) Nocopy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VolumeOptionsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Nocopy
+	}).(pulumi.BoolPtrOutput)
+}
+
 type WorkspaceConnectionAccessKey struct {
 	AccessKeyId     *string `pulumi:"accessKeyId"`
 	SecretAccessKey *string `pulumi:"secretAccessKey"`
+}
+
+// WorkspaceConnectionAccessKeyInput is an input type that accepts WorkspaceConnectionAccessKeyArgs and WorkspaceConnectionAccessKeyOutput values.
+// You can construct a concrete instance of `WorkspaceConnectionAccessKeyInput` via:
+//
+//	WorkspaceConnectionAccessKeyArgs{...}
+type WorkspaceConnectionAccessKeyInput interface {
+	pulumi.Input
+
+	ToWorkspaceConnectionAccessKeyOutput() WorkspaceConnectionAccessKeyOutput
+	ToWorkspaceConnectionAccessKeyOutputWithContext(context.Context) WorkspaceConnectionAccessKeyOutput
+}
+
+type WorkspaceConnectionAccessKeyArgs struct {
+	AccessKeyId     pulumi.StringPtrInput `pulumi:"accessKeyId"`
+	SecretAccessKey pulumi.StringPtrInput `pulumi:"secretAccessKey"`
+}
+
+func (WorkspaceConnectionAccessKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionAccessKey)(nil)).Elem()
+}
+
+func (i WorkspaceConnectionAccessKeyArgs) ToWorkspaceConnectionAccessKeyOutput() WorkspaceConnectionAccessKeyOutput {
+	return i.ToWorkspaceConnectionAccessKeyOutputWithContext(context.Background())
+}
+
+func (i WorkspaceConnectionAccessKeyArgs) ToWorkspaceConnectionAccessKeyOutputWithContext(ctx context.Context) WorkspaceConnectionAccessKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionAccessKeyOutput)
+}
+
+func (i WorkspaceConnectionAccessKeyArgs) ToWorkspaceConnectionAccessKeyPtrOutput() WorkspaceConnectionAccessKeyPtrOutput {
+	return i.ToWorkspaceConnectionAccessKeyPtrOutputWithContext(context.Background())
+}
+
+func (i WorkspaceConnectionAccessKeyArgs) ToWorkspaceConnectionAccessKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccessKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionAccessKeyOutput).ToWorkspaceConnectionAccessKeyPtrOutputWithContext(ctx)
+}
+
+// WorkspaceConnectionAccessKeyPtrInput is an input type that accepts WorkspaceConnectionAccessKeyArgs, WorkspaceConnectionAccessKeyPtr and WorkspaceConnectionAccessKeyPtrOutput values.
+// You can construct a concrete instance of `WorkspaceConnectionAccessKeyPtrInput` via:
+//
+//	        WorkspaceConnectionAccessKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkspaceConnectionAccessKeyPtrInput interface {
+	pulumi.Input
+
+	ToWorkspaceConnectionAccessKeyPtrOutput() WorkspaceConnectionAccessKeyPtrOutput
+	ToWorkspaceConnectionAccessKeyPtrOutputWithContext(context.Context) WorkspaceConnectionAccessKeyPtrOutput
+}
+
+type workspaceConnectionAccessKeyPtrType WorkspaceConnectionAccessKeyArgs
+
+func WorkspaceConnectionAccessKeyPtr(v *WorkspaceConnectionAccessKeyArgs) WorkspaceConnectionAccessKeyPtrInput {
+	return (*workspaceConnectionAccessKeyPtrType)(v)
+}
+
+func (*workspaceConnectionAccessKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionAccessKey)(nil)).Elem()
+}
+
+func (i *workspaceConnectionAccessKeyPtrType) ToWorkspaceConnectionAccessKeyPtrOutput() WorkspaceConnectionAccessKeyPtrOutput {
+	return i.ToWorkspaceConnectionAccessKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *workspaceConnectionAccessKeyPtrType) ToWorkspaceConnectionAccessKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccessKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionAccessKeyPtrOutput)
+}
+
+type WorkspaceConnectionAccessKeyOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionAccessKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionAccessKey)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionAccessKeyOutput) ToWorkspaceConnectionAccessKeyOutput() WorkspaceConnectionAccessKeyOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccessKeyOutput) ToWorkspaceConnectionAccessKeyOutputWithContext(ctx context.Context) WorkspaceConnectionAccessKeyOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccessKeyOutput) ToWorkspaceConnectionAccessKeyPtrOutput() WorkspaceConnectionAccessKeyPtrOutput {
+	return o.ToWorkspaceConnectionAccessKeyPtrOutputWithContext(context.Background())
+}
+
+func (o WorkspaceConnectionAccessKeyOutput) ToWorkspaceConnectionAccessKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccessKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspaceConnectionAccessKey) *WorkspaceConnectionAccessKey {
+		return &v
+	}).(WorkspaceConnectionAccessKeyPtrOutput)
+}
+
+func (o WorkspaceConnectionAccessKeyOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionAccessKey) *string { return v.AccessKeyId }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkspaceConnectionAccessKeyOutput) SecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionAccessKey) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceConnectionAccessKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionAccessKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionAccessKey)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionAccessKeyPtrOutput) ToWorkspaceConnectionAccessKeyPtrOutput() WorkspaceConnectionAccessKeyPtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccessKeyPtrOutput) ToWorkspaceConnectionAccessKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccessKeyPtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccessKeyPtrOutput) Elem() WorkspaceConnectionAccessKeyOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionAccessKey) WorkspaceConnectionAccessKey {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspaceConnectionAccessKey
+		return ret
+	}).(WorkspaceConnectionAccessKeyOutput)
+}
+
+func (o WorkspaceConnectionAccessKeyPtrOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionAccessKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkspaceConnectionAccessKeyPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionAccessKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretAccessKey
+	}).(pulumi.StringPtrOutput)
 }
 
 type WorkspaceConnectionAccessKeyResponse struct {
@@ -7895,9 +22410,204 @@ type WorkspaceConnectionAccessKeyResponse struct {
 	SecretAccessKey *string `pulumi:"secretAccessKey"`
 }
 
+type WorkspaceConnectionAccessKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionAccessKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionAccessKeyResponse)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionAccessKeyResponseOutput) ToWorkspaceConnectionAccessKeyResponseOutput() WorkspaceConnectionAccessKeyResponseOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccessKeyResponseOutput) ToWorkspaceConnectionAccessKeyResponseOutputWithContext(ctx context.Context) WorkspaceConnectionAccessKeyResponseOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccessKeyResponseOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionAccessKeyResponse) *string { return v.AccessKeyId }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkspaceConnectionAccessKeyResponseOutput) SecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionAccessKeyResponse) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceConnectionAccessKeyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionAccessKeyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionAccessKeyResponse)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionAccessKeyResponsePtrOutput) ToWorkspaceConnectionAccessKeyResponsePtrOutput() WorkspaceConnectionAccessKeyResponsePtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccessKeyResponsePtrOutput) ToWorkspaceConnectionAccessKeyResponsePtrOutputWithContext(ctx context.Context) WorkspaceConnectionAccessKeyResponsePtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionAccessKeyResponsePtrOutput) Elem() WorkspaceConnectionAccessKeyResponseOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionAccessKeyResponse) WorkspaceConnectionAccessKeyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspaceConnectionAccessKeyResponse
+		return ret
+	}).(WorkspaceConnectionAccessKeyResponseOutput)
+}
+
+func (o WorkspaceConnectionAccessKeyResponsePtrOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionAccessKeyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkspaceConnectionAccessKeyResponsePtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionAccessKeyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretAccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
 // Api key object for workspace connection credential.
 type WorkspaceConnectionApiKey struct {
 	Key *string `pulumi:"key"`
+}
+
+// WorkspaceConnectionApiKeyInput is an input type that accepts WorkspaceConnectionApiKeyArgs and WorkspaceConnectionApiKeyOutput values.
+// You can construct a concrete instance of `WorkspaceConnectionApiKeyInput` via:
+//
+//	WorkspaceConnectionApiKeyArgs{...}
+type WorkspaceConnectionApiKeyInput interface {
+	pulumi.Input
+
+	ToWorkspaceConnectionApiKeyOutput() WorkspaceConnectionApiKeyOutput
+	ToWorkspaceConnectionApiKeyOutputWithContext(context.Context) WorkspaceConnectionApiKeyOutput
+}
+
+// Api key object for workspace connection credential.
+type WorkspaceConnectionApiKeyArgs struct {
+	Key pulumi.StringPtrInput `pulumi:"key"`
+}
+
+func (WorkspaceConnectionApiKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionApiKey)(nil)).Elem()
+}
+
+func (i WorkspaceConnectionApiKeyArgs) ToWorkspaceConnectionApiKeyOutput() WorkspaceConnectionApiKeyOutput {
+	return i.ToWorkspaceConnectionApiKeyOutputWithContext(context.Background())
+}
+
+func (i WorkspaceConnectionApiKeyArgs) ToWorkspaceConnectionApiKeyOutputWithContext(ctx context.Context) WorkspaceConnectionApiKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionApiKeyOutput)
+}
+
+func (i WorkspaceConnectionApiKeyArgs) ToWorkspaceConnectionApiKeyPtrOutput() WorkspaceConnectionApiKeyPtrOutput {
+	return i.ToWorkspaceConnectionApiKeyPtrOutputWithContext(context.Background())
+}
+
+func (i WorkspaceConnectionApiKeyArgs) ToWorkspaceConnectionApiKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionApiKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionApiKeyOutput).ToWorkspaceConnectionApiKeyPtrOutputWithContext(ctx)
+}
+
+// WorkspaceConnectionApiKeyPtrInput is an input type that accepts WorkspaceConnectionApiKeyArgs, WorkspaceConnectionApiKeyPtr and WorkspaceConnectionApiKeyPtrOutput values.
+// You can construct a concrete instance of `WorkspaceConnectionApiKeyPtrInput` via:
+//
+//	        WorkspaceConnectionApiKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkspaceConnectionApiKeyPtrInput interface {
+	pulumi.Input
+
+	ToWorkspaceConnectionApiKeyPtrOutput() WorkspaceConnectionApiKeyPtrOutput
+	ToWorkspaceConnectionApiKeyPtrOutputWithContext(context.Context) WorkspaceConnectionApiKeyPtrOutput
+}
+
+type workspaceConnectionApiKeyPtrType WorkspaceConnectionApiKeyArgs
+
+func WorkspaceConnectionApiKeyPtr(v *WorkspaceConnectionApiKeyArgs) WorkspaceConnectionApiKeyPtrInput {
+	return (*workspaceConnectionApiKeyPtrType)(v)
+}
+
+func (*workspaceConnectionApiKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionApiKey)(nil)).Elem()
+}
+
+func (i *workspaceConnectionApiKeyPtrType) ToWorkspaceConnectionApiKeyPtrOutput() WorkspaceConnectionApiKeyPtrOutput {
+	return i.ToWorkspaceConnectionApiKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *workspaceConnectionApiKeyPtrType) ToWorkspaceConnectionApiKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionApiKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionApiKeyPtrOutput)
+}
+
+// Api key object for workspace connection credential.
+type WorkspaceConnectionApiKeyOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionApiKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionApiKey)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionApiKeyOutput) ToWorkspaceConnectionApiKeyOutput() WorkspaceConnectionApiKeyOutput {
+	return o
+}
+
+func (o WorkspaceConnectionApiKeyOutput) ToWorkspaceConnectionApiKeyOutputWithContext(ctx context.Context) WorkspaceConnectionApiKeyOutput {
+	return o
+}
+
+func (o WorkspaceConnectionApiKeyOutput) ToWorkspaceConnectionApiKeyPtrOutput() WorkspaceConnectionApiKeyPtrOutput {
+	return o.ToWorkspaceConnectionApiKeyPtrOutputWithContext(context.Background())
+}
+
+func (o WorkspaceConnectionApiKeyOutput) ToWorkspaceConnectionApiKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionApiKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspaceConnectionApiKey) *WorkspaceConnectionApiKey {
+		return &v
+	}).(WorkspaceConnectionApiKeyPtrOutput)
+}
+
+func (o WorkspaceConnectionApiKeyOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionApiKey) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceConnectionApiKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionApiKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionApiKey)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionApiKeyPtrOutput) ToWorkspaceConnectionApiKeyPtrOutput() WorkspaceConnectionApiKeyPtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionApiKeyPtrOutput) ToWorkspaceConnectionApiKeyPtrOutputWithContext(ctx context.Context) WorkspaceConnectionApiKeyPtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionApiKeyPtrOutput) Elem() WorkspaceConnectionApiKeyOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionApiKey) WorkspaceConnectionApiKey {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspaceConnectionApiKey
+		return ret
+	}).(WorkspaceConnectionApiKeyOutput)
+}
+
+func (o WorkspaceConnectionApiKeyPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionApiKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
 }
 
 // Api key object for workspace connection credential.
@@ -7905,9 +22615,204 @@ type WorkspaceConnectionApiKeyResponse struct {
 	Key *string `pulumi:"key"`
 }
 
+// Api key object for workspace connection credential.
+type WorkspaceConnectionApiKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionApiKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionApiKeyResponse)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionApiKeyResponseOutput) ToWorkspaceConnectionApiKeyResponseOutput() WorkspaceConnectionApiKeyResponseOutput {
+	return o
+}
+
+func (o WorkspaceConnectionApiKeyResponseOutput) ToWorkspaceConnectionApiKeyResponseOutputWithContext(ctx context.Context) WorkspaceConnectionApiKeyResponseOutput {
+	return o
+}
+
+func (o WorkspaceConnectionApiKeyResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionApiKeyResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceConnectionApiKeyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionApiKeyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionApiKeyResponse)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionApiKeyResponsePtrOutput) ToWorkspaceConnectionApiKeyResponsePtrOutput() WorkspaceConnectionApiKeyResponsePtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionApiKeyResponsePtrOutput) ToWorkspaceConnectionApiKeyResponsePtrOutputWithContext(ctx context.Context) WorkspaceConnectionApiKeyResponsePtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionApiKeyResponsePtrOutput) Elem() WorkspaceConnectionApiKeyResponseOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionApiKeyResponse) WorkspaceConnectionApiKeyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspaceConnectionApiKeyResponse
+		return ret
+	}).(WorkspaceConnectionApiKeyResponseOutput)
+}
+
+func (o WorkspaceConnectionApiKeyResponsePtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionApiKeyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkspaceConnectionManagedIdentity struct {
 	ClientId   *string `pulumi:"clientId"`
 	ResourceId *string `pulumi:"resourceId"`
+}
+
+// WorkspaceConnectionManagedIdentityInput is an input type that accepts WorkspaceConnectionManagedIdentityArgs and WorkspaceConnectionManagedIdentityOutput values.
+// You can construct a concrete instance of `WorkspaceConnectionManagedIdentityInput` via:
+//
+//	WorkspaceConnectionManagedIdentityArgs{...}
+type WorkspaceConnectionManagedIdentityInput interface {
+	pulumi.Input
+
+	ToWorkspaceConnectionManagedIdentityOutput() WorkspaceConnectionManagedIdentityOutput
+	ToWorkspaceConnectionManagedIdentityOutputWithContext(context.Context) WorkspaceConnectionManagedIdentityOutput
+}
+
+type WorkspaceConnectionManagedIdentityArgs struct {
+	ClientId   pulumi.StringPtrInput `pulumi:"clientId"`
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+}
+
+func (WorkspaceConnectionManagedIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionManagedIdentity)(nil)).Elem()
+}
+
+func (i WorkspaceConnectionManagedIdentityArgs) ToWorkspaceConnectionManagedIdentityOutput() WorkspaceConnectionManagedIdentityOutput {
+	return i.ToWorkspaceConnectionManagedIdentityOutputWithContext(context.Background())
+}
+
+func (i WorkspaceConnectionManagedIdentityArgs) ToWorkspaceConnectionManagedIdentityOutputWithContext(ctx context.Context) WorkspaceConnectionManagedIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionManagedIdentityOutput)
+}
+
+func (i WorkspaceConnectionManagedIdentityArgs) ToWorkspaceConnectionManagedIdentityPtrOutput() WorkspaceConnectionManagedIdentityPtrOutput {
+	return i.ToWorkspaceConnectionManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i WorkspaceConnectionManagedIdentityArgs) ToWorkspaceConnectionManagedIdentityPtrOutputWithContext(ctx context.Context) WorkspaceConnectionManagedIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionManagedIdentityOutput).ToWorkspaceConnectionManagedIdentityPtrOutputWithContext(ctx)
+}
+
+// WorkspaceConnectionManagedIdentityPtrInput is an input type that accepts WorkspaceConnectionManagedIdentityArgs, WorkspaceConnectionManagedIdentityPtr and WorkspaceConnectionManagedIdentityPtrOutput values.
+// You can construct a concrete instance of `WorkspaceConnectionManagedIdentityPtrInput` via:
+//
+//	        WorkspaceConnectionManagedIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkspaceConnectionManagedIdentityPtrInput interface {
+	pulumi.Input
+
+	ToWorkspaceConnectionManagedIdentityPtrOutput() WorkspaceConnectionManagedIdentityPtrOutput
+	ToWorkspaceConnectionManagedIdentityPtrOutputWithContext(context.Context) WorkspaceConnectionManagedIdentityPtrOutput
+}
+
+type workspaceConnectionManagedIdentityPtrType WorkspaceConnectionManagedIdentityArgs
+
+func WorkspaceConnectionManagedIdentityPtr(v *WorkspaceConnectionManagedIdentityArgs) WorkspaceConnectionManagedIdentityPtrInput {
+	return (*workspaceConnectionManagedIdentityPtrType)(v)
+}
+
+func (*workspaceConnectionManagedIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionManagedIdentity)(nil)).Elem()
+}
+
+func (i *workspaceConnectionManagedIdentityPtrType) ToWorkspaceConnectionManagedIdentityPtrOutput() WorkspaceConnectionManagedIdentityPtrOutput {
+	return i.ToWorkspaceConnectionManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *workspaceConnectionManagedIdentityPtrType) ToWorkspaceConnectionManagedIdentityPtrOutputWithContext(ctx context.Context) WorkspaceConnectionManagedIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionManagedIdentityPtrOutput)
+}
+
+type WorkspaceConnectionManagedIdentityOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionManagedIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionManagedIdentity)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionManagedIdentityOutput) ToWorkspaceConnectionManagedIdentityOutput() WorkspaceConnectionManagedIdentityOutput {
+	return o
+}
+
+func (o WorkspaceConnectionManagedIdentityOutput) ToWorkspaceConnectionManagedIdentityOutputWithContext(ctx context.Context) WorkspaceConnectionManagedIdentityOutput {
+	return o
+}
+
+func (o WorkspaceConnectionManagedIdentityOutput) ToWorkspaceConnectionManagedIdentityPtrOutput() WorkspaceConnectionManagedIdentityPtrOutput {
+	return o.ToWorkspaceConnectionManagedIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o WorkspaceConnectionManagedIdentityOutput) ToWorkspaceConnectionManagedIdentityPtrOutputWithContext(ctx context.Context) WorkspaceConnectionManagedIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspaceConnectionManagedIdentity) *WorkspaceConnectionManagedIdentity {
+		return &v
+	}).(WorkspaceConnectionManagedIdentityPtrOutput)
+}
+
+func (o WorkspaceConnectionManagedIdentityOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionManagedIdentity) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkspaceConnectionManagedIdentityOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionManagedIdentity) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceConnectionManagedIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionManagedIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionManagedIdentity)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionManagedIdentityPtrOutput) ToWorkspaceConnectionManagedIdentityPtrOutput() WorkspaceConnectionManagedIdentityPtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionManagedIdentityPtrOutput) ToWorkspaceConnectionManagedIdentityPtrOutputWithContext(ctx context.Context) WorkspaceConnectionManagedIdentityPtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionManagedIdentityPtrOutput) Elem() WorkspaceConnectionManagedIdentityOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionManagedIdentity) WorkspaceConnectionManagedIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspaceConnectionManagedIdentity
+		return ret
+	}).(WorkspaceConnectionManagedIdentityOutput)
+}
+
+func (o WorkspaceConnectionManagedIdentityPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkspaceConnectionManagedIdentityPtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
 }
 
 type WorkspaceConnectionManagedIdentityResponse struct {
@@ -7915,12 +22820,256 @@ type WorkspaceConnectionManagedIdentityResponse struct {
 	ResourceId *string `pulumi:"resourceId"`
 }
 
+type WorkspaceConnectionManagedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionManagedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionManagedIdentityResponse)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionManagedIdentityResponseOutput) ToWorkspaceConnectionManagedIdentityResponseOutput() WorkspaceConnectionManagedIdentityResponseOutput {
+	return o
+}
+
+func (o WorkspaceConnectionManagedIdentityResponseOutput) ToWorkspaceConnectionManagedIdentityResponseOutputWithContext(ctx context.Context) WorkspaceConnectionManagedIdentityResponseOutput {
+	return o
+}
+
+func (o WorkspaceConnectionManagedIdentityResponseOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionManagedIdentityResponse) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkspaceConnectionManagedIdentityResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionManagedIdentityResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceConnectionManagedIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionManagedIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionManagedIdentityResponse)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionManagedIdentityResponsePtrOutput) ToWorkspaceConnectionManagedIdentityResponsePtrOutput() WorkspaceConnectionManagedIdentityResponsePtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionManagedIdentityResponsePtrOutput) ToWorkspaceConnectionManagedIdentityResponsePtrOutputWithContext(ctx context.Context) WorkspaceConnectionManagedIdentityResponsePtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionManagedIdentityResponsePtrOutput) Elem() WorkspaceConnectionManagedIdentityResponseOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionManagedIdentityResponse) WorkspaceConnectionManagedIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspaceConnectionManagedIdentityResponse
+		return ret
+	}).(WorkspaceConnectionManagedIdentityResponseOutput)
+}
+
+func (o WorkspaceConnectionManagedIdentityResponsePtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionManagedIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkspaceConnectionManagedIdentityResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionManagedIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkspaceConnectionPersonalAccessToken struct {
 	Pat *string `pulumi:"pat"`
 }
 
+// WorkspaceConnectionPersonalAccessTokenInput is an input type that accepts WorkspaceConnectionPersonalAccessTokenArgs and WorkspaceConnectionPersonalAccessTokenOutput values.
+// You can construct a concrete instance of `WorkspaceConnectionPersonalAccessTokenInput` via:
+//
+//	WorkspaceConnectionPersonalAccessTokenArgs{...}
+type WorkspaceConnectionPersonalAccessTokenInput interface {
+	pulumi.Input
+
+	ToWorkspaceConnectionPersonalAccessTokenOutput() WorkspaceConnectionPersonalAccessTokenOutput
+	ToWorkspaceConnectionPersonalAccessTokenOutputWithContext(context.Context) WorkspaceConnectionPersonalAccessTokenOutput
+}
+
+type WorkspaceConnectionPersonalAccessTokenArgs struct {
+	Pat pulumi.StringPtrInput `pulumi:"pat"`
+}
+
+func (WorkspaceConnectionPersonalAccessTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionPersonalAccessToken)(nil)).Elem()
+}
+
+func (i WorkspaceConnectionPersonalAccessTokenArgs) ToWorkspaceConnectionPersonalAccessTokenOutput() WorkspaceConnectionPersonalAccessTokenOutput {
+	return i.ToWorkspaceConnectionPersonalAccessTokenOutputWithContext(context.Background())
+}
+
+func (i WorkspaceConnectionPersonalAccessTokenArgs) ToWorkspaceConnectionPersonalAccessTokenOutputWithContext(ctx context.Context) WorkspaceConnectionPersonalAccessTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionPersonalAccessTokenOutput)
+}
+
+func (i WorkspaceConnectionPersonalAccessTokenArgs) ToWorkspaceConnectionPersonalAccessTokenPtrOutput() WorkspaceConnectionPersonalAccessTokenPtrOutput {
+	return i.ToWorkspaceConnectionPersonalAccessTokenPtrOutputWithContext(context.Background())
+}
+
+func (i WorkspaceConnectionPersonalAccessTokenArgs) ToWorkspaceConnectionPersonalAccessTokenPtrOutputWithContext(ctx context.Context) WorkspaceConnectionPersonalAccessTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionPersonalAccessTokenOutput).ToWorkspaceConnectionPersonalAccessTokenPtrOutputWithContext(ctx)
+}
+
+// WorkspaceConnectionPersonalAccessTokenPtrInput is an input type that accepts WorkspaceConnectionPersonalAccessTokenArgs, WorkspaceConnectionPersonalAccessTokenPtr and WorkspaceConnectionPersonalAccessTokenPtrOutput values.
+// You can construct a concrete instance of `WorkspaceConnectionPersonalAccessTokenPtrInput` via:
+//
+//	        WorkspaceConnectionPersonalAccessTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkspaceConnectionPersonalAccessTokenPtrInput interface {
+	pulumi.Input
+
+	ToWorkspaceConnectionPersonalAccessTokenPtrOutput() WorkspaceConnectionPersonalAccessTokenPtrOutput
+	ToWorkspaceConnectionPersonalAccessTokenPtrOutputWithContext(context.Context) WorkspaceConnectionPersonalAccessTokenPtrOutput
+}
+
+type workspaceConnectionPersonalAccessTokenPtrType WorkspaceConnectionPersonalAccessTokenArgs
+
+func WorkspaceConnectionPersonalAccessTokenPtr(v *WorkspaceConnectionPersonalAccessTokenArgs) WorkspaceConnectionPersonalAccessTokenPtrInput {
+	return (*workspaceConnectionPersonalAccessTokenPtrType)(v)
+}
+
+func (*workspaceConnectionPersonalAccessTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionPersonalAccessToken)(nil)).Elem()
+}
+
+func (i *workspaceConnectionPersonalAccessTokenPtrType) ToWorkspaceConnectionPersonalAccessTokenPtrOutput() WorkspaceConnectionPersonalAccessTokenPtrOutput {
+	return i.ToWorkspaceConnectionPersonalAccessTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *workspaceConnectionPersonalAccessTokenPtrType) ToWorkspaceConnectionPersonalAccessTokenPtrOutputWithContext(ctx context.Context) WorkspaceConnectionPersonalAccessTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionPersonalAccessTokenPtrOutput)
+}
+
+type WorkspaceConnectionPersonalAccessTokenOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionPersonalAccessTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionPersonalAccessToken)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionPersonalAccessTokenOutput) ToWorkspaceConnectionPersonalAccessTokenOutput() WorkspaceConnectionPersonalAccessTokenOutput {
+	return o
+}
+
+func (o WorkspaceConnectionPersonalAccessTokenOutput) ToWorkspaceConnectionPersonalAccessTokenOutputWithContext(ctx context.Context) WorkspaceConnectionPersonalAccessTokenOutput {
+	return o
+}
+
+func (o WorkspaceConnectionPersonalAccessTokenOutput) ToWorkspaceConnectionPersonalAccessTokenPtrOutput() WorkspaceConnectionPersonalAccessTokenPtrOutput {
+	return o.ToWorkspaceConnectionPersonalAccessTokenPtrOutputWithContext(context.Background())
+}
+
+func (o WorkspaceConnectionPersonalAccessTokenOutput) ToWorkspaceConnectionPersonalAccessTokenPtrOutputWithContext(ctx context.Context) WorkspaceConnectionPersonalAccessTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspaceConnectionPersonalAccessToken) *WorkspaceConnectionPersonalAccessToken {
+		return &v
+	}).(WorkspaceConnectionPersonalAccessTokenPtrOutput)
+}
+
+func (o WorkspaceConnectionPersonalAccessTokenOutput) Pat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionPersonalAccessToken) *string { return v.Pat }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceConnectionPersonalAccessTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionPersonalAccessTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionPersonalAccessToken)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionPersonalAccessTokenPtrOutput) ToWorkspaceConnectionPersonalAccessTokenPtrOutput() WorkspaceConnectionPersonalAccessTokenPtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionPersonalAccessTokenPtrOutput) ToWorkspaceConnectionPersonalAccessTokenPtrOutputWithContext(ctx context.Context) WorkspaceConnectionPersonalAccessTokenPtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionPersonalAccessTokenPtrOutput) Elem() WorkspaceConnectionPersonalAccessTokenOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionPersonalAccessToken) WorkspaceConnectionPersonalAccessToken {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspaceConnectionPersonalAccessToken
+		return ret
+	}).(WorkspaceConnectionPersonalAccessTokenOutput)
+}
+
+func (o WorkspaceConnectionPersonalAccessTokenPtrOutput) Pat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionPersonalAccessToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pat
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkspaceConnectionPersonalAccessTokenResponse struct {
 	Pat *string `pulumi:"pat"`
+}
+
+type WorkspaceConnectionPersonalAccessTokenResponseOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionPersonalAccessTokenResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionPersonalAccessTokenResponse)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionPersonalAccessTokenResponseOutput) ToWorkspaceConnectionPersonalAccessTokenResponseOutput() WorkspaceConnectionPersonalAccessTokenResponseOutput {
+	return o
+}
+
+func (o WorkspaceConnectionPersonalAccessTokenResponseOutput) ToWorkspaceConnectionPersonalAccessTokenResponseOutputWithContext(ctx context.Context) WorkspaceConnectionPersonalAccessTokenResponseOutput {
+	return o
+}
+
+func (o WorkspaceConnectionPersonalAccessTokenResponseOutput) Pat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionPersonalAccessTokenResponse) *string { return v.Pat }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceConnectionPersonalAccessTokenResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionPersonalAccessTokenResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionPersonalAccessTokenResponse)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionPersonalAccessTokenResponsePtrOutput) ToWorkspaceConnectionPersonalAccessTokenResponsePtrOutput() WorkspaceConnectionPersonalAccessTokenResponsePtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionPersonalAccessTokenResponsePtrOutput) ToWorkspaceConnectionPersonalAccessTokenResponsePtrOutputWithContext(ctx context.Context) WorkspaceConnectionPersonalAccessTokenResponsePtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionPersonalAccessTokenResponsePtrOutput) Elem() WorkspaceConnectionPersonalAccessTokenResponseOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionPersonalAccessTokenResponse) WorkspaceConnectionPersonalAccessTokenResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspaceConnectionPersonalAccessTokenResponse
+		return ret
+	}).(WorkspaceConnectionPersonalAccessTokenResponseOutput)
+}
+
+func (o WorkspaceConnectionPersonalAccessTokenResponsePtrOutput) Pat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionPersonalAccessTokenResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Pat
+	}).(pulumi.StringPtrOutput)
 }
 
 type WorkspaceConnectionServicePrincipal struct {
@@ -7929,18 +23078,432 @@ type WorkspaceConnectionServicePrincipal struct {
 	TenantId     *string `pulumi:"tenantId"`
 }
 
+// WorkspaceConnectionServicePrincipalInput is an input type that accepts WorkspaceConnectionServicePrincipalArgs and WorkspaceConnectionServicePrincipalOutput values.
+// You can construct a concrete instance of `WorkspaceConnectionServicePrincipalInput` via:
+//
+//	WorkspaceConnectionServicePrincipalArgs{...}
+type WorkspaceConnectionServicePrincipalInput interface {
+	pulumi.Input
+
+	ToWorkspaceConnectionServicePrincipalOutput() WorkspaceConnectionServicePrincipalOutput
+	ToWorkspaceConnectionServicePrincipalOutputWithContext(context.Context) WorkspaceConnectionServicePrincipalOutput
+}
+
+type WorkspaceConnectionServicePrincipalArgs struct {
+	ClientId     pulumi.StringPtrInput `pulumi:"clientId"`
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	TenantId     pulumi.StringPtrInput `pulumi:"tenantId"`
+}
+
+func (WorkspaceConnectionServicePrincipalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionServicePrincipal)(nil)).Elem()
+}
+
+func (i WorkspaceConnectionServicePrincipalArgs) ToWorkspaceConnectionServicePrincipalOutput() WorkspaceConnectionServicePrincipalOutput {
+	return i.ToWorkspaceConnectionServicePrincipalOutputWithContext(context.Background())
+}
+
+func (i WorkspaceConnectionServicePrincipalArgs) ToWorkspaceConnectionServicePrincipalOutputWithContext(ctx context.Context) WorkspaceConnectionServicePrincipalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionServicePrincipalOutput)
+}
+
+func (i WorkspaceConnectionServicePrincipalArgs) ToWorkspaceConnectionServicePrincipalPtrOutput() WorkspaceConnectionServicePrincipalPtrOutput {
+	return i.ToWorkspaceConnectionServicePrincipalPtrOutputWithContext(context.Background())
+}
+
+func (i WorkspaceConnectionServicePrincipalArgs) ToWorkspaceConnectionServicePrincipalPtrOutputWithContext(ctx context.Context) WorkspaceConnectionServicePrincipalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionServicePrincipalOutput).ToWorkspaceConnectionServicePrincipalPtrOutputWithContext(ctx)
+}
+
+// WorkspaceConnectionServicePrincipalPtrInput is an input type that accepts WorkspaceConnectionServicePrincipalArgs, WorkspaceConnectionServicePrincipalPtr and WorkspaceConnectionServicePrincipalPtrOutput values.
+// You can construct a concrete instance of `WorkspaceConnectionServicePrincipalPtrInput` via:
+//
+//	        WorkspaceConnectionServicePrincipalArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkspaceConnectionServicePrincipalPtrInput interface {
+	pulumi.Input
+
+	ToWorkspaceConnectionServicePrincipalPtrOutput() WorkspaceConnectionServicePrincipalPtrOutput
+	ToWorkspaceConnectionServicePrincipalPtrOutputWithContext(context.Context) WorkspaceConnectionServicePrincipalPtrOutput
+}
+
+type workspaceConnectionServicePrincipalPtrType WorkspaceConnectionServicePrincipalArgs
+
+func WorkspaceConnectionServicePrincipalPtr(v *WorkspaceConnectionServicePrincipalArgs) WorkspaceConnectionServicePrincipalPtrInput {
+	return (*workspaceConnectionServicePrincipalPtrType)(v)
+}
+
+func (*workspaceConnectionServicePrincipalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionServicePrincipal)(nil)).Elem()
+}
+
+func (i *workspaceConnectionServicePrincipalPtrType) ToWorkspaceConnectionServicePrincipalPtrOutput() WorkspaceConnectionServicePrincipalPtrOutput {
+	return i.ToWorkspaceConnectionServicePrincipalPtrOutputWithContext(context.Background())
+}
+
+func (i *workspaceConnectionServicePrincipalPtrType) ToWorkspaceConnectionServicePrincipalPtrOutputWithContext(ctx context.Context) WorkspaceConnectionServicePrincipalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionServicePrincipalPtrOutput)
+}
+
+type WorkspaceConnectionServicePrincipalOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionServicePrincipalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionServicePrincipal)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionServicePrincipalOutput) ToWorkspaceConnectionServicePrincipalOutput() WorkspaceConnectionServicePrincipalOutput {
+	return o
+}
+
+func (o WorkspaceConnectionServicePrincipalOutput) ToWorkspaceConnectionServicePrincipalOutputWithContext(ctx context.Context) WorkspaceConnectionServicePrincipalOutput {
+	return o
+}
+
+func (o WorkspaceConnectionServicePrincipalOutput) ToWorkspaceConnectionServicePrincipalPtrOutput() WorkspaceConnectionServicePrincipalPtrOutput {
+	return o.ToWorkspaceConnectionServicePrincipalPtrOutputWithContext(context.Background())
+}
+
+func (o WorkspaceConnectionServicePrincipalOutput) ToWorkspaceConnectionServicePrincipalPtrOutputWithContext(ctx context.Context) WorkspaceConnectionServicePrincipalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspaceConnectionServicePrincipal) *WorkspaceConnectionServicePrincipal {
+		return &v
+	}).(WorkspaceConnectionServicePrincipalPtrOutput)
+}
+
+func (o WorkspaceConnectionServicePrincipalOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionServicePrincipal) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkspaceConnectionServicePrincipalOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionServicePrincipal) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkspaceConnectionServicePrincipalOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionServicePrincipal) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceConnectionServicePrincipalPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionServicePrincipalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionServicePrincipal)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionServicePrincipalPtrOutput) ToWorkspaceConnectionServicePrincipalPtrOutput() WorkspaceConnectionServicePrincipalPtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionServicePrincipalPtrOutput) ToWorkspaceConnectionServicePrincipalPtrOutputWithContext(ctx context.Context) WorkspaceConnectionServicePrincipalPtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionServicePrincipalPtrOutput) Elem() WorkspaceConnectionServicePrincipalOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionServicePrincipal) WorkspaceConnectionServicePrincipal {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspaceConnectionServicePrincipal
+		return ret
+	}).(WorkspaceConnectionServicePrincipalOutput)
+}
+
+func (o WorkspaceConnectionServicePrincipalPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionServicePrincipal) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkspaceConnectionServicePrincipalPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionServicePrincipal) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkspaceConnectionServicePrincipalPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionServicePrincipal) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkspaceConnectionServicePrincipalResponse struct {
 	ClientId     *string `pulumi:"clientId"`
 	ClientSecret *string `pulumi:"clientSecret"`
 	TenantId     *string `pulumi:"tenantId"`
 }
 
+type WorkspaceConnectionServicePrincipalResponseOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionServicePrincipalResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionServicePrincipalResponse)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionServicePrincipalResponseOutput) ToWorkspaceConnectionServicePrincipalResponseOutput() WorkspaceConnectionServicePrincipalResponseOutput {
+	return o
+}
+
+func (o WorkspaceConnectionServicePrincipalResponseOutput) ToWorkspaceConnectionServicePrincipalResponseOutputWithContext(ctx context.Context) WorkspaceConnectionServicePrincipalResponseOutput {
+	return o
+}
+
+func (o WorkspaceConnectionServicePrincipalResponseOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionServicePrincipalResponse) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkspaceConnectionServicePrincipalResponseOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionServicePrincipalResponse) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkspaceConnectionServicePrincipalResponseOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionServicePrincipalResponse) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceConnectionServicePrincipalResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionServicePrincipalResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionServicePrincipalResponse)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionServicePrincipalResponsePtrOutput) ToWorkspaceConnectionServicePrincipalResponsePtrOutput() WorkspaceConnectionServicePrincipalResponsePtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionServicePrincipalResponsePtrOutput) ToWorkspaceConnectionServicePrincipalResponsePtrOutputWithContext(ctx context.Context) WorkspaceConnectionServicePrincipalResponsePtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionServicePrincipalResponsePtrOutput) Elem() WorkspaceConnectionServicePrincipalResponseOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionServicePrincipalResponse) WorkspaceConnectionServicePrincipalResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspaceConnectionServicePrincipalResponse
+		return ret
+	}).(WorkspaceConnectionServicePrincipalResponseOutput)
+}
+
+func (o WorkspaceConnectionServicePrincipalResponsePtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionServicePrincipalResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkspaceConnectionServicePrincipalResponsePtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionServicePrincipalResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkspaceConnectionServicePrincipalResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionServicePrincipalResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkspaceConnectionSharedAccessSignature struct {
 	Sas *string `pulumi:"sas"`
 }
 
+// WorkspaceConnectionSharedAccessSignatureInput is an input type that accepts WorkspaceConnectionSharedAccessSignatureArgs and WorkspaceConnectionSharedAccessSignatureOutput values.
+// You can construct a concrete instance of `WorkspaceConnectionSharedAccessSignatureInput` via:
+//
+//	WorkspaceConnectionSharedAccessSignatureArgs{...}
+type WorkspaceConnectionSharedAccessSignatureInput interface {
+	pulumi.Input
+
+	ToWorkspaceConnectionSharedAccessSignatureOutput() WorkspaceConnectionSharedAccessSignatureOutput
+	ToWorkspaceConnectionSharedAccessSignatureOutputWithContext(context.Context) WorkspaceConnectionSharedAccessSignatureOutput
+}
+
+type WorkspaceConnectionSharedAccessSignatureArgs struct {
+	Sas pulumi.StringPtrInput `pulumi:"sas"`
+}
+
+func (WorkspaceConnectionSharedAccessSignatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionSharedAccessSignature)(nil)).Elem()
+}
+
+func (i WorkspaceConnectionSharedAccessSignatureArgs) ToWorkspaceConnectionSharedAccessSignatureOutput() WorkspaceConnectionSharedAccessSignatureOutput {
+	return i.ToWorkspaceConnectionSharedAccessSignatureOutputWithContext(context.Background())
+}
+
+func (i WorkspaceConnectionSharedAccessSignatureArgs) ToWorkspaceConnectionSharedAccessSignatureOutputWithContext(ctx context.Context) WorkspaceConnectionSharedAccessSignatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionSharedAccessSignatureOutput)
+}
+
+func (i WorkspaceConnectionSharedAccessSignatureArgs) ToWorkspaceConnectionSharedAccessSignaturePtrOutput() WorkspaceConnectionSharedAccessSignaturePtrOutput {
+	return i.ToWorkspaceConnectionSharedAccessSignaturePtrOutputWithContext(context.Background())
+}
+
+func (i WorkspaceConnectionSharedAccessSignatureArgs) ToWorkspaceConnectionSharedAccessSignaturePtrOutputWithContext(ctx context.Context) WorkspaceConnectionSharedAccessSignaturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionSharedAccessSignatureOutput).ToWorkspaceConnectionSharedAccessSignaturePtrOutputWithContext(ctx)
+}
+
+// WorkspaceConnectionSharedAccessSignaturePtrInput is an input type that accepts WorkspaceConnectionSharedAccessSignatureArgs, WorkspaceConnectionSharedAccessSignaturePtr and WorkspaceConnectionSharedAccessSignaturePtrOutput values.
+// You can construct a concrete instance of `WorkspaceConnectionSharedAccessSignaturePtrInput` via:
+//
+//	        WorkspaceConnectionSharedAccessSignatureArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkspaceConnectionSharedAccessSignaturePtrInput interface {
+	pulumi.Input
+
+	ToWorkspaceConnectionSharedAccessSignaturePtrOutput() WorkspaceConnectionSharedAccessSignaturePtrOutput
+	ToWorkspaceConnectionSharedAccessSignaturePtrOutputWithContext(context.Context) WorkspaceConnectionSharedAccessSignaturePtrOutput
+}
+
+type workspaceConnectionSharedAccessSignaturePtrType WorkspaceConnectionSharedAccessSignatureArgs
+
+func WorkspaceConnectionSharedAccessSignaturePtr(v *WorkspaceConnectionSharedAccessSignatureArgs) WorkspaceConnectionSharedAccessSignaturePtrInput {
+	return (*workspaceConnectionSharedAccessSignaturePtrType)(v)
+}
+
+func (*workspaceConnectionSharedAccessSignaturePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionSharedAccessSignature)(nil)).Elem()
+}
+
+func (i *workspaceConnectionSharedAccessSignaturePtrType) ToWorkspaceConnectionSharedAccessSignaturePtrOutput() WorkspaceConnectionSharedAccessSignaturePtrOutput {
+	return i.ToWorkspaceConnectionSharedAccessSignaturePtrOutputWithContext(context.Background())
+}
+
+func (i *workspaceConnectionSharedAccessSignaturePtrType) ToWorkspaceConnectionSharedAccessSignaturePtrOutputWithContext(ctx context.Context) WorkspaceConnectionSharedAccessSignaturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionSharedAccessSignaturePtrOutput)
+}
+
+type WorkspaceConnectionSharedAccessSignatureOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionSharedAccessSignatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionSharedAccessSignature)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionSharedAccessSignatureOutput) ToWorkspaceConnectionSharedAccessSignatureOutput() WorkspaceConnectionSharedAccessSignatureOutput {
+	return o
+}
+
+func (o WorkspaceConnectionSharedAccessSignatureOutput) ToWorkspaceConnectionSharedAccessSignatureOutputWithContext(ctx context.Context) WorkspaceConnectionSharedAccessSignatureOutput {
+	return o
+}
+
+func (o WorkspaceConnectionSharedAccessSignatureOutput) ToWorkspaceConnectionSharedAccessSignaturePtrOutput() WorkspaceConnectionSharedAccessSignaturePtrOutput {
+	return o.ToWorkspaceConnectionSharedAccessSignaturePtrOutputWithContext(context.Background())
+}
+
+func (o WorkspaceConnectionSharedAccessSignatureOutput) ToWorkspaceConnectionSharedAccessSignaturePtrOutputWithContext(ctx context.Context) WorkspaceConnectionSharedAccessSignaturePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspaceConnectionSharedAccessSignature) *WorkspaceConnectionSharedAccessSignature {
+		return &v
+	}).(WorkspaceConnectionSharedAccessSignaturePtrOutput)
+}
+
+func (o WorkspaceConnectionSharedAccessSignatureOutput) Sas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionSharedAccessSignature) *string { return v.Sas }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceConnectionSharedAccessSignaturePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionSharedAccessSignaturePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionSharedAccessSignature)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionSharedAccessSignaturePtrOutput) ToWorkspaceConnectionSharedAccessSignaturePtrOutput() WorkspaceConnectionSharedAccessSignaturePtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionSharedAccessSignaturePtrOutput) ToWorkspaceConnectionSharedAccessSignaturePtrOutputWithContext(ctx context.Context) WorkspaceConnectionSharedAccessSignaturePtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionSharedAccessSignaturePtrOutput) Elem() WorkspaceConnectionSharedAccessSignatureOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionSharedAccessSignature) WorkspaceConnectionSharedAccessSignature {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspaceConnectionSharedAccessSignature
+		return ret
+	}).(WorkspaceConnectionSharedAccessSignatureOutput)
+}
+
+func (o WorkspaceConnectionSharedAccessSignaturePtrOutput) Sas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionSharedAccessSignature) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sas
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkspaceConnectionSharedAccessSignatureResponse struct {
 	Sas *string `pulumi:"sas"`
+}
+
+type WorkspaceConnectionSharedAccessSignatureResponseOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionSharedAccessSignatureResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionSharedAccessSignatureResponse)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionSharedAccessSignatureResponseOutput) ToWorkspaceConnectionSharedAccessSignatureResponseOutput() WorkspaceConnectionSharedAccessSignatureResponseOutput {
+	return o
+}
+
+func (o WorkspaceConnectionSharedAccessSignatureResponseOutput) ToWorkspaceConnectionSharedAccessSignatureResponseOutputWithContext(ctx context.Context) WorkspaceConnectionSharedAccessSignatureResponseOutput {
+	return o
+}
+
+func (o WorkspaceConnectionSharedAccessSignatureResponseOutput) Sas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionSharedAccessSignatureResponse) *string { return v.Sas }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceConnectionSharedAccessSignatureResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionSharedAccessSignatureResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionSharedAccessSignatureResponse)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionSharedAccessSignatureResponsePtrOutput) ToWorkspaceConnectionSharedAccessSignatureResponsePtrOutput() WorkspaceConnectionSharedAccessSignatureResponsePtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionSharedAccessSignatureResponsePtrOutput) ToWorkspaceConnectionSharedAccessSignatureResponsePtrOutputWithContext(ctx context.Context) WorkspaceConnectionSharedAccessSignatureResponsePtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionSharedAccessSignatureResponsePtrOutput) Elem() WorkspaceConnectionSharedAccessSignatureResponseOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionSharedAccessSignatureResponse) WorkspaceConnectionSharedAccessSignatureResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspaceConnectionSharedAccessSignatureResponse
+		return ret
+	}).(WorkspaceConnectionSharedAccessSignatureResponseOutput)
+}
+
+func (o WorkspaceConnectionSharedAccessSignatureResponsePtrOutput) Sas() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionSharedAccessSignatureResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sas
+	}).(pulumi.StringPtrOutput)
 }
 
 type WorkspaceConnectionUsernamePassword struct {
@@ -7948,9 +23511,216 @@ type WorkspaceConnectionUsernamePassword struct {
 	Username *string `pulumi:"username"`
 }
 
+// WorkspaceConnectionUsernamePasswordInput is an input type that accepts WorkspaceConnectionUsernamePasswordArgs and WorkspaceConnectionUsernamePasswordOutput values.
+// You can construct a concrete instance of `WorkspaceConnectionUsernamePasswordInput` via:
+//
+//	WorkspaceConnectionUsernamePasswordArgs{...}
+type WorkspaceConnectionUsernamePasswordInput interface {
+	pulumi.Input
+
+	ToWorkspaceConnectionUsernamePasswordOutput() WorkspaceConnectionUsernamePasswordOutput
+	ToWorkspaceConnectionUsernamePasswordOutputWithContext(context.Context) WorkspaceConnectionUsernamePasswordOutput
+}
+
+type WorkspaceConnectionUsernamePasswordArgs struct {
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (WorkspaceConnectionUsernamePasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionUsernamePassword)(nil)).Elem()
+}
+
+func (i WorkspaceConnectionUsernamePasswordArgs) ToWorkspaceConnectionUsernamePasswordOutput() WorkspaceConnectionUsernamePasswordOutput {
+	return i.ToWorkspaceConnectionUsernamePasswordOutputWithContext(context.Background())
+}
+
+func (i WorkspaceConnectionUsernamePasswordArgs) ToWorkspaceConnectionUsernamePasswordOutputWithContext(ctx context.Context) WorkspaceConnectionUsernamePasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionUsernamePasswordOutput)
+}
+
+func (i WorkspaceConnectionUsernamePasswordArgs) ToWorkspaceConnectionUsernamePasswordPtrOutput() WorkspaceConnectionUsernamePasswordPtrOutput {
+	return i.ToWorkspaceConnectionUsernamePasswordPtrOutputWithContext(context.Background())
+}
+
+func (i WorkspaceConnectionUsernamePasswordArgs) ToWorkspaceConnectionUsernamePasswordPtrOutputWithContext(ctx context.Context) WorkspaceConnectionUsernamePasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionUsernamePasswordOutput).ToWorkspaceConnectionUsernamePasswordPtrOutputWithContext(ctx)
+}
+
+// WorkspaceConnectionUsernamePasswordPtrInput is an input type that accepts WorkspaceConnectionUsernamePasswordArgs, WorkspaceConnectionUsernamePasswordPtr and WorkspaceConnectionUsernamePasswordPtrOutput values.
+// You can construct a concrete instance of `WorkspaceConnectionUsernamePasswordPtrInput` via:
+//
+//	        WorkspaceConnectionUsernamePasswordArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkspaceConnectionUsernamePasswordPtrInput interface {
+	pulumi.Input
+
+	ToWorkspaceConnectionUsernamePasswordPtrOutput() WorkspaceConnectionUsernamePasswordPtrOutput
+	ToWorkspaceConnectionUsernamePasswordPtrOutputWithContext(context.Context) WorkspaceConnectionUsernamePasswordPtrOutput
+}
+
+type workspaceConnectionUsernamePasswordPtrType WorkspaceConnectionUsernamePasswordArgs
+
+func WorkspaceConnectionUsernamePasswordPtr(v *WorkspaceConnectionUsernamePasswordArgs) WorkspaceConnectionUsernamePasswordPtrInput {
+	return (*workspaceConnectionUsernamePasswordPtrType)(v)
+}
+
+func (*workspaceConnectionUsernamePasswordPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionUsernamePassword)(nil)).Elem()
+}
+
+func (i *workspaceConnectionUsernamePasswordPtrType) ToWorkspaceConnectionUsernamePasswordPtrOutput() WorkspaceConnectionUsernamePasswordPtrOutput {
+	return i.ToWorkspaceConnectionUsernamePasswordPtrOutputWithContext(context.Background())
+}
+
+func (i *workspaceConnectionUsernamePasswordPtrType) ToWorkspaceConnectionUsernamePasswordPtrOutputWithContext(ctx context.Context) WorkspaceConnectionUsernamePasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceConnectionUsernamePasswordPtrOutput)
+}
+
+type WorkspaceConnectionUsernamePasswordOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionUsernamePasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionUsernamePassword)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionUsernamePasswordOutput) ToWorkspaceConnectionUsernamePasswordOutput() WorkspaceConnectionUsernamePasswordOutput {
+	return o
+}
+
+func (o WorkspaceConnectionUsernamePasswordOutput) ToWorkspaceConnectionUsernamePasswordOutputWithContext(ctx context.Context) WorkspaceConnectionUsernamePasswordOutput {
+	return o
+}
+
+func (o WorkspaceConnectionUsernamePasswordOutput) ToWorkspaceConnectionUsernamePasswordPtrOutput() WorkspaceConnectionUsernamePasswordPtrOutput {
+	return o.ToWorkspaceConnectionUsernamePasswordPtrOutputWithContext(context.Background())
+}
+
+func (o WorkspaceConnectionUsernamePasswordOutput) ToWorkspaceConnectionUsernamePasswordPtrOutputWithContext(ctx context.Context) WorkspaceConnectionUsernamePasswordPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspaceConnectionUsernamePassword) *WorkspaceConnectionUsernamePassword {
+		return &v
+	}).(WorkspaceConnectionUsernamePasswordPtrOutput)
+}
+
+func (o WorkspaceConnectionUsernamePasswordOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionUsernamePassword) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkspaceConnectionUsernamePasswordOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionUsernamePassword) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceConnectionUsernamePasswordPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionUsernamePasswordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionUsernamePassword)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionUsernamePasswordPtrOutput) ToWorkspaceConnectionUsernamePasswordPtrOutput() WorkspaceConnectionUsernamePasswordPtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionUsernamePasswordPtrOutput) ToWorkspaceConnectionUsernamePasswordPtrOutputWithContext(ctx context.Context) WorkspaceConnectionUsernamePasswordPtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionUsernamePasswordPtrOutput) Elem() WorkspaceConnectionUsernamePasswordOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionUsernamePassword) WorkspaceConnectionUsernamePassword {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspaceConnectionUsernamePassword
+		return ret
+	}).(WorkspaceConnectionUsernamePasswordOutput)
+}
+
+func (o WorkspaceConnectionUsernamePasswordPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionUsernamePassword) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkspaceConnectionUsernamePasswordPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionUsernamePassword) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkspaceConnectionUsernamePasswordResponse struct {
 	Password *string `pulumi:"password"`
 	Username *string `pulumi:"username"`
+}
+
+type WorkspaceConnectionUsernamePasswordResponseOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionUsernamePasswordResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceConnectionUsernamePasswordResponse)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionUsernamePasswordResponseOutput) ToWorkspaceConnectionUsernamePasswordResponseOutput() WorkspaceConnectionUsernamePasswordResponseOutput {
+	return o
+}
+
+func (o WorkspaceConnectionUsernamePasswordResponseOutput) ToWorkspaceConnectionUsernamePasswordResponseOutputWithContext(ctx context.Context) WorkspaceConnectionUsernamePasswordResponseOutput {
+	return o
+}
+
+func (o WorkspaceConnectionUsernamePasswordResponseOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionUsernamePasswordResponse) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkspaceConnectionUsernamePasswordResponseOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceConnectionUsernamePasswordResponse) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceConnectionUsernamePasswordResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceConnectionUsernamePasswordResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceConnectionUsernamePasswordResponse)(nil)).Elem()
+}
+
+func (o WorkspaceConnectionUsernamePasswordResponsePtrOutput) ToWorkspaceConnectionUsernamePasswordResponsePtrOutput() WorkspaceConnectionUsernamePasswordResponsePtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionUsernamePasswordResponsePtrOutput) ToWorkspaceConnectionUsernamePasswordResponsePtrOutputWithContext(ctx context.Context) WorkspaceConnectionUsernamePasswordResponsePtrOutput {
+	return o
+}
+
+func (o WorkspaceConnectionUsernamePasswordResponsePtrOutput) Elem() WorkspaceConnectionUsernamePasswordResponseOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionUsernamePasswordResponse) WorkspaceConnectionUsernamePasswordResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspaceConnectionUsernamePasswordResponse
+		return ret
+	}).(WorkspaceConnectionUsernamePasswordResponseOutput)
+}
+
+func (o WorkspaceConnectionUsernamePasswordResponsePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionUsernamePasswordResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkspaceConnectionUsernamePasswordResponsePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceConnectionUsernamePasswordResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
 }
 
 // WorkspaceHub's configuration object.
@@ -8266,16 +24036,55 @@ func init() {
 	pulumi.RegisterOutputType(RegistryRegionArmDetailsResponseOutput{})
 	pulumi.RegisterOutputType(RegistryRegionArmDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(RegistryResponseOutput{})
+	pulumi.RegisterOutputType(RegressionOutput{})
+	pulumi.RegisterOutputType(RegressionModelPerformanceMetricThresholdOutput{})
+	pulumi.RegisterOutputType(RegressionModelPerformanceMetricThresholdResponseOutput{})
+	pulumi.RegisterOutputType(RegressionResponseOutput{})
+	pulumi.RegisterOutputType(RegressionTrainingSettingsOutput{})
+	pulumi.RegisterOutputType(RegressionTrainingSettingsPtrOutput{})
+	pulumi.RegisterOutputType(RegressionTrainingSettingsResponseOutput{})
+	pulumi.RegisterOutputType(RegressionTrainingSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(RequestConfigurationOutput{})
 	pulumi.RegisterOutputType(RequestConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(RequestConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(RequestConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(RequestLoggingOutput{})
+	pulumi.RegisterOutputType(RequestLoggingPtrOutput{})
+	pulumi.RegisterOutputType(RequestLoggingResponseOutput{})
+	pulumi.RegisterOutputType(RequestLoggingResponsePtrOutput{})
+	pulumi.RegisterOutputType(ResourceIdOutput{})
+	pulumi.RegisterOutputType(ResourceIdPtrOutput{})
+	pulumi.RegisterOutputType(ResourceIdResponseOutput{})
+	pulumi.RegisterOutputType(ResourceIdResponsePtrOutput{})
+	pulumi.RegisterOutputType(RollingInputDataOutput{})
+	pulumi.RegisterOutputType(RollingInputDataResponseOutput{})
 	pulumi.RegisterOutputType(RouteOutput{})
 	pulumi.RegisterOutputType(RoutePtrOutput{})
 	pulumi.RegisterOutputType(RouteResponseOutput{})
 	pulumi.RegisterOutputType(RouteResponsePtrOutput{})
+	pulumi.RegisterOutputType(SASAuthTypeWorkspaceConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(SASAuthTypeWorkspaceConnectionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SasDatastoreCredentialsOutput{})
+	pulumi.RegisterOutputType(SasDatastoreCredentialsResponseOutput{})
+	pulumi.RegisterOutputType(SasDatastoreSecretsOutput{})
+	pulumi.RegisterOutputType(ScaleSettingsOutput{})
+	pulumi.RegisterOutputType(ScaleSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ScaleSettingsResponseOutput{})
+	pulumi.RegisterOutputType(ScaleSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ScheduleTypeOutput{})
+	pulumi.RegisterOutputType(ScheduleBaseOutput{})
+	pulumi.RegisterOutputType(ScheduleBasePtrOutput{})
+	pulumi.RegisterOutputType(ScheduleBaseResponseOutput{})
+	pulumi.RegisterOutputType(ScheduleBaseResponsePtrOutput{})
 	pulumi.RegisterOutputType(ScheduleResponseOutput{})
+	pulumi.RegisterOutputType(ScriptReferenceOutput{})
+	pulumi.RegisterOutputType(ScriptReferencePtrOutput{})
+	pulumi.RegisterOutputType(ScriptReferenceResponseOutput{})
+	pulumi.RegisterOutputType(ScriptReferenceResponsePtrOutput{})
+	pulumi.RegisterOutputType(ScriptsToExecuteOutput{})
+	pulumi.RegisterOutputType(ScriptsToExecutePtrOutput{})
+	pulumi.RegisterOutputType(ScriptsToExecuteResponseOutput{})
+	pulumi.RegisterOutputType(ScriptsToExecuteResponsePtrOutput{})
 	pulumi.RegisterOutputType(SecretConfigurationOutput{})
 	pulumi.RegisterOutputType(SecretConfigurationMapOutput{})
 	pulumi.RegisterOutputType(SecretConfigurationResponseOutput{})
@@ -8299,6 +24108,21 @@ func init() {
 	pulumi.RegisterOutputType(ServiceManagedResourcesSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ServiceManagedResourcesSettingsResponseOutput{})
 	pulumi.RegisterOutputType(ServiceManagedResourcesSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalAuthTypeWorkspaceConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalDatastoreCredentialsOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalDatastoreCredentialsResponseOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalDatastoreSecretsOutput{})
+	pulumi.RegisterOutputType(ServiceTagDestinationOutput{})
+	pulumi.RegisterOutputType(ServiceTagDestinationPtrOutput{})
+	pulumi.RegisterOutputType(ServiceTagDestinationResponseOutput{})
+	pulumi.RegisterOutputType(ServiceTagDestinationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ServiceTagOutboundRuleOutput{})
+	pulumi.RegisterOutputType(ServiceTagOutboundRuleResponseOutput{})
+	pulumi.RegisterOutputType(SetupScriptsOutput{})
+	pulumi.RegisterOutputType(SetupScriptsPtrOutput{})
+	pulumi.RegisterOutputType(SetupScriptsResponseOutput{})
+	pulumi.RegisterOutputType(SetupScriptsResponsePtrOutput{})
 	pulumi.RegisterOutputType(SharedPrivateLinkResourceOutput{})
 	pulumi.RegisterOutputType(SharedPrivateLinkResourceArrayOutput{})
 	pulumi.RegisterOutputType(SharedPrivateLinkResourceResponseOutput{})
@@ -8307,12 +24131,45 @@ func init() {
 	pulumi.RegisterOutputType(SkuPtrOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
 	pulumi.RegisterOutputType(SkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(SparkJobOutput{})
+	pulumi.RegisterOutputType(SparkJobPythonEntryOutput{})
+	pulumi.RegisterOutputType(SparkJobPythonEntryResponseOutput{})
+	pulumi.RegisterOutputType(SparkJobResponseOutput{})
+	pulumi.RegisterOutputType(SparkJobScalaEntryOutput{})
+	pulumi.RegisterOutputType(SparkJobScalaEntryResponseOutput{})
+	pulumi.RegisterOutputType(SparkResourceConfigurationOutput{})
+	pulumi.RegisterOutputType(SparkResourceConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(SparkResourceConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(SparkResourceConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(SslConfigurationOutput{})
+	pulumi.RegisterOutputType(SslConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(SslConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(SslConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(StackEnsembleSettingsOutput{})
+	pulumi.RegisterOutputType(StackEnsembleSettingsPtrOutput{})
+	pulumi.RegisterOutputType(StackEnsembleSettingsResponseOutput{})
+	pulumi.RegisterOutputType(StackEnsembleSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(StaticInputDataOutput{})
+	pulumi.RegisterOutputType(StaticInputDataResponseOutput{})
 	pulumi.RegisterOutputType(StatusMessageResponseOutput{})
 	pulumi.RegisterOutputType(StatusMessageResponseArrayOutput{})
 	pulumi.RegisterOutputType(StorageAccountDetailsOutput{})
 	pulumi.RegisterOutputType(StorageAccountDetailsArrayOutput{})
 	pulumi.RegisterOutputType(StorageAccountDetailsResponseOutput{})
 	pulumi.RegisterOutputType(StorageAccountDetailsResponseArrayOutput{})
+	pulumi.RegisterOutputType(SweepJobOutput{})
+	pulumi.RegisterOutputType(SweepJobLimitsOutput{})
+	pulumi.RegisterOutputType(SweepJobLimitsPtrOutput{})
+	pulumi.RegisterOutputType(SweepJobLimitsResponseOutput{})
+	pulumi.RegisterOutputType(SweepJobLimitsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SweepJobResponseOutput{})
+	pulumi.RegisterOutputType(SynapseSparkOutput{})
+	pulumi.RegisterOutputType(SynapseSparkPtrOutput{})
+	pulumi.RegisterOutputType(SynapseSparkPropertiesOutput{})
+	pulumi.RegisterOutputType(SynapseSparkPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SynapseSparkResponseOutput{})
+	pulumi.RegisterOutputType(SynapseSparkResponsePropertiesOutput{})
+	pulumi.RegisterOutputType(SynapseSparkResponsePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SystemCreatedAcrAccountOutput{})
 	pulumi.RegisterOutputType(SystemCreatedAcrAccountPtrOutput{})
 	pulumi.RegisterOutputType(SystemCreatedAcrAccountResponseOutput{})
@@ -8322,6 +24179,76 @@ func init() {
 	pulumi.RegisterOutputType(SystemCreatedStorageAccountResponseOutput{})
 	pulumi.RegisterOutputType(SystemCreatedStorageAccountResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(SystemServiceResponseOutput{})
+	pulumi.RegisterOutputType(SystemServiceResponseArrayOutput{})
+	pulumi.RegisterOutputType(TableFixedParametersOutput{})
+	pulumi.RegisterOutputType(TableFixedParametersPtrOutput{})
+	pulumi.RegisterOutputType(TableFixedParametersResponseOutput{})
+	pulumi.RegisterOutputType(TableFixedParametersResponsePtrOutput{})
+	pulumi.RegisterOutputType(TableParameterSubspaceOutput{})
+	pulumi.RegisterOutputType(TableParameterSubspaceArrayOutput{})
+	pulumi.RegisterOutputType(TableParameterSubspaceResponseOutput{})
+	pulumi.RegisterOutputType(TableParameterSubspaceResponseArrayOutput{})
+	pulumi.RegisterOutputType(TableSweepSettingsOutput{})
+	pulumi.RegisterOutputType(TableSweepSettingsPtrOutput{})
+	pulumi.RegisterOutputType(TableSweepSettingsResponseOutput{})
+	pulumi.RegisterOutputType(TableSweepSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(TableVerticalFeaturizationSettingsOutput{})
+	pulumi.RegisterOutputType(TableVerticalFeaturizationSettingsPtrOutput{})
+	pulumi.RegisterOutputType(TableVerticalFeaturizationSettingsResponseOutput{})
+	pulumi.RegisterOutputType(TableVerticalFeaturizationSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(TableVerticalLimitSettingsOutput{})
+	pulumi.RegisterOutputType(TableVerticalLimitSettingsPtrOutput{})
+	pulumi.RegisterOutputType(TableVerticalLimitSettingsResponseOutput{})
+	pulumi.RegisterOutputType(TableVerticalLimitSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(TargetUtilizationScaleSettingsOutput{})
+	pulumi.RegisterOutputType(TargetUtilizationScaleSettingsPtrOutput{})
+	pulumi.RegisterOutputType(TargetUtilizationScaleSettingsResponseOutput{})
+	pulumi.RegisterOutputType(TargetUtilizationScaleSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(TensorFlowOutput{})
+	pulumi.RegisterOutputType(TensorFlowPtrOutput{})
+	pulumi.RegisterOutputType(TensorFlowResponseOutput{})
+	pulumi.RegisterOutputType(TensorFlowResponsePtrOutput{})
+	pulumi.RegisterOutputType(TextClassificationOutput{})
+	pulumi.RegisterOutputType(TextClassificationMultilabelOutput{})
+	pulumi.RegisterOutputType(TextClassificationMultilabelResponseOutput{})
+	pulumi.RegisterOutputType(TextClassificationResponseOutput{})
+	pulumi.RegisterOutputType(TextNerOutput{})
+	pulumi.RegisterOutputType(TextNerResponseOutput{})
+	pulumi.RegisterOutputType(TmpfsOptionsOutput{})
+	pulumi.RegisterOutputType(TmpfsOptionsPtrOutput{})
+	pulumi.RegisterOutputType(TmpfsOptionsResponseOutput{})
+	pulumi.RegisterOutputType(TmpfsOptionsResponsePtrOutput{})
+	pulumi.RegisterOutputType(TopNFeaturesByAttributionOutput{})
+	pulumi.RegisterOutputType(TopNFeaturesByAttributionPtrOutput{})
+	pulumi.RegisterOutputType(TopNFeaturesByAttributionResponseOutput{})
+	pulumi.RegisterOutputType(TopNFeaturesByAttributionResponsePtrOutput{})
+	pulumi.RegisterOutputType(TrialComponentOutput{})
+	pulumi.RegisterOutputType(TrialComponentResponseOutput{})
+	pulumi.RegisterOutputType(TritonModelJobInputOutput{})
+	pulumi.RegisterOutputType(TritonModelJobInputResponseOutput{})
+	pulumi.RegisterOutputType(TritonModelJobOutputOutput{})
+	pulumi.RegisterOutputType(TritonModelJobOutputResponseOutput{})
+	pulumi.RegisterOutputType(TruncationSelectionPolicyOutput{})
+	pulumi.RegisterOutputType(TruncationSelectionPolicyPtrOutput{})
+	pulumi.RegisterOutputType(TruncationSelectionPolicyResponseOutput{})
+	pulumi.RegisterOutputType(TruncationSelectionPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(UriFileDataVersionOutput{})
+	pulumi.RegisterOutputType(UriFileDataVersionResponseOutput{})
+	pulumi.RegisterOutputType(UriFileJobInputOutput{})
+	pulumi.RegisterOutputType(UriFileJobInputResponseOutput{})
+	pulumi.RegisterOutputType(UriFileJobOutputOutput{})
+	pulumi.RegisterOutputType(UriFileJobOutputResponseOutput{})
+	pulumi.RegisterOutputType(UriFolderDataVersionOutput{})
+	pulumi.RegisterOutputType(UriFolderDataVersionResponseOutput{})
+	pulumi.RegisterOutputType(UriFolderJobInputOutput{})
+	pulumi.RegisterOutputType(UriFolderJobInputResponseOutput{})
+	pulumi.RegisterOutputType(UriFolderJobOutputOutput{})
+	pulumi.RegisterOutputType(UriFolderJobOutputResponseOutput{})
+	pulumi.RegisterOutputType(UserAccountCredentialsOutput{})
+	pulumi.RegisterOutputType(UserAccountCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(UserAccountCredentialsResponseOutput{})
+	pulumi.RegisterOutputType(UserAccountCredentialsResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(UserCreatedAcrAccountOutput{})
@@ -8332,8 +24259,65 @@ func init() {
 	pulumi.RegisterOutputType(UserCreatedStorageAccountPtrOutput{})
 	pulumi.RegisterOutputType(UserCreatedStorageAccountResponseOutput{})
 	pulumi.RegisterOutputType(UserCreatedStorageAccountResponsePtrOutput{})
+	pulumi.RegisterOutputType(UserIdentityOutput{})
+	pulumi.RegisterOutputType(UserIdentityPtrOutput{})
+	pulumi.RegisterOutputType(UserIdentityResponseOutput{})
+	pulumi.RegisterOutputType(UserIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(UsernamePasswordAuthTypeWorkspaceConnectionPropertiesOutput{})
+	pulumi.RegisterOutputType(UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(VirtualMachineOutput{})
+	pulumi.RegisterOutputType(VirtualMachinePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineImageOutput{})
+	pulumi.RegisterOutputType(VirtualMachineImagePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineImageResponseOutput{})
+	pulumi.RegisterOutputType(VirtualMachineImageResponsePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineResponseOutput{})
+	pulumi.RegisterOutputType(VirtualMachineSchemaPropertiesOutput{})
+	pulumi.RegisterOutputType(VirtualMachineSchemaPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineSchemaResponsePropertiesOutput{})
+	pulumi.RegisterOutputType(VirtualMachineSchemaResponsePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineSizeResponseOutput{})
 	pulumi.RegisterOutputType(VirtualMachineSizeResponseArrayOutput{})
+	pulumi.RegisterOutputType(VirtualMachineSshCredentialsOutput{})
+	pulumi.RegisterOutputType(VirtualMachineSshCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineSshCredentialsResponseOutput{})
+	pulumi.RegisterOutputType(VirtualMachineSshCredentialsResponsePtrOutput{})
+	pulumi.RegisterOutputType(VolumeDefinitionOutput{})
+	pulumi.RegisterOutputType(VolumeDefinitionArrayOutput{})
+	pulumi.RegisterOutputType(VolumeDefinitionResponseOutput{})
+	pulumi.RegisterOutputType(VolumeDefinitionResponseArrayOutput{})
+	pulumi.RegisterOutputType(VolumeOptionsOutput{})
+	pulumi.RegisterOutputType(VolumeOptionsPtrOutput{})
+	pulumi.RegisterOutputType(VolumeOptionsResponseOutput{})
+	pulumi.RegisterOutputType(VolumeOptionsResponsePtrOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionAccessKeyOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionAccessKeyPtrOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionAccessKeyResponseOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionAccessKeyResponsePtrOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionApiKeyOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionApiKeyPtrOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionApiKeyResponseOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionApiKeyResponsePtrOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionManagedIdentityOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionManagedIdentityPtrOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionManagedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionManagedIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionPersonalAccessTokenOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionPersonalAccessTokenPtrOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionPersonalAccessTokenResponseOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionPersonalAccessTokenResponsePtrOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionServicePrincipalOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionServicePrincipalPtrOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionServicePrincipalResponseOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionServicePrincipalResponsePtrOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionSharedAccessSignatureOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionSharedAccessSignaturePtrOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionSharedAccessSignatureResponseOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionSharedAccessSignatureResponsePtrOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionUsernamePasswordOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionUsernamePasswordPtrOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionUsernamePasswordResponseOutput{})
+	pulumi.RegisterOutputType(WorkspaceConnectionUsernamePasswordResponsePtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceHubConfigOutput{})
 	pulumi.RegisterOutputType(WorkspaceHubConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceHubConfigResponseOutput{})

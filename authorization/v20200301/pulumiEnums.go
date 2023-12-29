@@ -21,6 +21,170 @@ const (
 	EnforcementModeDoNotEnforce = EnforcementMode("DoNotEnforce")
 )
 
+func (EnforcementMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnforcementMode)(nil)).Elem()
+}
+
+func (e EnforcementMode) ToEnforcementModeOutput() EnforcementModeOutput {
+	return pulumi.ToOutput(e).(EnforcementModeOutput)
+}
+
+func (e EnforcementMode) ToEnforcementModeOutputWithContext(ctx context.Context) EnforcementModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EnforcementModeOutput)
+}
+
+func (e EnforcementMode) ToEnforcementModePtrOutput() EnforcementModePtrOutput {
+	return e.ToEnforcementModePtrOutputWithContext(context.Background())
+}
+
+func (e EnforcementMode) ToEnforcementModePtrOutputWithContext(ctx context.Context) EnforcementModePtrOutput {
+	return EnforcementMode(e).ToEnforcementModeOutputWithContext(ctx).ToEnforcementModePtrOutputWithContext(ctx)
+}
+
+func (e EnforcementMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EnforcementMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EnforcementMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e EnforcementMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type EnforcementModeOutput struct{ *pulumi.OutputState }
+
+func (EnforcementModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnforcementMode)(nil)).Elem()
+}
+
+func (o EnforcementModeOutput) ToEnforcementModeOutput() EnforcementModeOutput {
+	return o
+}
+
+func (o EnforcementModeOutput) ToEnforcementModeOutputWithContext(ctx context.Context) EnforcementModeOutput {
+	return o
+}
+
+func (o EnforcementModeOutput) ToEnforcementModePtrOutput() EnforcementModePtrOutput {
+	return o.ToEnforcementModePtrOutputWithContext(context.Background())
+}
+
+func (o EnforcementModeOutput) ToEnforcementModePtrOutputWithContext(ctx context.Context) EnforcementModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnforcementMode) *EnforcementMode {
+		return &v
+	}).(EnforcementModePtrOutput)
+}
+
+func (o EnforcementModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EnforcementModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnforcementMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EnforcementModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EnforcementModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnforcementMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EnforcementModePtrOutput struct{ *pulumi.OutputState }
+
+func (EnforcementModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnforcementMode)(nil)).Elem()
+}
+
+func (o EnforcementModePtrOutput) ToEnforcementModePtrOutput() EnforcementModePtrOutput {
+	return o
+}
+
+func (o EnforcementModePtrOutput) ToEnforcementModePtrOutputWithContext(ctx context.Context) EnforcementModePtrOutput {
+	return o
+}
+
+func (o EnforcementModePtrOutput) Elem() EnforcementModeOutput {
+	return o.ApplyT(func(v *EnforcementMode) EnforcementMode {
+		if v != nil {
+			return *v
+		}
+		var ret EnforcementMode
+		return ret
+	}).(EnforcementModeOutput)
+}
+
+func (o EnforcementModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EnforcementModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EnforcementMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// EnforcementModeInput is an input type that accepts values of the EnforcementMode enum
+// A concrete instance of `EnforcementModeInput` can be one of the following:
+//
+//	EnforcementModeDefault
+//	EnforcementModeDoNotEnforce
+type EnforcementModeInput interface {
+	pulumi.Input
+
+	ToEnforcementModeOutput() EnforcementModeOutput
+	ToEnforcementModeOutputWithContext(context.Context) EnforcementModeOutput
+}
+
+var enforcementModePtrType = reflect.TypeOf((**EnforcementMode)(nil)).Elem()
+
+type EnforcementModePtrInput interface {
+	pulumi.Input
+
+	ToEnforcementModePtrOutput() EnforcementModePtrOutput
+	ToEnforcementModePtrOutputWithContext(context.Context) EnforcementModePtrOutput
+}
+
+type enforcementModePtr string
+
+func EnforcementModePtr(v string) EnforcementModePtrInput {
+	return (*enforcementModePtr)(&v)
+}
+
+func (*enforcementModePtr) ElementType() reflect.Type {
+	return enforcementModePtrType
+}
+
+func (in *enforcementModePtr) ToEnforcementModePtrOutput() EnforcementModePtrOutput {
+	return pulumi.ToOutput(in).(EnforcementModePtrOutput)
+}
+
+func (in *enforcementModePtr) ToEnforcementModePtrOutputWithContext(ctx context.Context) EnforcementModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EnforcementModePtrOutput)
+}
+
+func (in *enforcementModePtr) ToOutput(ctx context.Context) pulumix.Output[*EnforcementMode] {
+	return pulumix.Output[*EnforcementMode]{
+		OutputState: in.ToEnforcementModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The identity type. This is the only required field when adding a system assigned identity to a resource.
 type ResourceIdentityType string
 
@@ -150,10 +314,11 @@ func (o ResourceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// ResourceIdentityTypeInput is an input type that accepts ResourceIdentityTypeArgs and ResourceIdentityTypeOutput values.
-// You can construct a concrete instance of `ResourceIdentityTypeInput` via:
+// ResourceIdentityTypeInput is an input type that accepts values of the ResourceIdentityType enum
+// A concrete instance of `ResourceIdentityTypeInput` can be one of the following:
 //
-//	ResourceIdentityTypeArgs{...}
+//	ResourceIdentityTypeSystemAssigned
+//	ResourceIdentityTypeNone
 type ResourceIdentityTypeInput interface {
 	pulumi.Input
 
@@ -195,6 +360,8 @@ func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[
 }
 
 func init() {
+	pulumi.RegisterOutputType(EnforcementModeOutput{})
+	pulumi.RegisterOutputType(EnforcementModePtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypePtrOutput{})
 }

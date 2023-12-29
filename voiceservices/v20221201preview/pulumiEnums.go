@@ -138,10 +138,11 @@ func (o TestLinePurposePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// TestLinePurposeInput is an input type that accepts TestLinePurposeArgs and TestLinePurposeOutput values.
-// You can construct a concrete instance of `TestLinePurposeInput` via:
+// TestLinePurposeInput is an input type that accepts values of the TestLinePurpose enum
+// A concrete instance of `TestLinePurposeInput` can be one of the following:
 //
-//	TestLinePurposeArgs{...}
+//	TestLinePurposeManual
+//	TestLinePurposeAutomated
 type TestLinePurposeInput interface {
 	pulumi.Input
 

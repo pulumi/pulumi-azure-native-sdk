@@ -24,6 +24,71 @@ type AutomationActionEventHub struct {
 	EventHubResourceId *string `pulumi:"eventHubResourceId"`
 }
 
+// AutomationActionEventHubInput is an input type that accepts AutomationActionEventHubArgs and AutomationActionEventHubOutput values.
+// You can construct a concrete instance of `AutomationActionEventHubInput` via:
+//
+//	AutomationActionEventHubArgs{...}
+type AutomationActionEventHubInput interface {
+	pulumi.Input
+
+	ToAutomationActionEventHubOutput() AutomationActionEventHubOutput
+	ToAutomationActionEventHubOutputWithContext(context.Context) AutomationActionEventHubOutput
+}
+
+// The target Event Hub to which event data will be exported. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
+type AutomationActionEventHubArgs struct {
+	// The type of the action that will be triggered by the Automation
+	// Expected value is 'EventHub'.
+	ActionType pulumi.StringInput `pulumi:"actionType"`
+	// The target Event Hub connection string (it will not be included in any response).
+	ConnectionString pulumi.StringPtrInput `pulumi:"connectionString"`
+	// The target Event Hub Azure Resource ID.
+	EventHubResourceId pulumi.StringPtrInput `pulumi:"eventHubResourceId"`
+}
+
+func (AutomationActionEventHubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationActionEventHub)(nil)).Elem()
+}
+
+func (i AutomationActionEventHubArgs) ToAutomationActionEventHubOutput() AutomationActionEventHubOutput {
+	return i.ToAutomationActionEventHubOutputWithContext(context.Background())
+}
+
+func (i AutomationActionEventHubArgs) ToAutomationActionEventHubOutputWithContext(ctx context.Context) AutomationActionEventHubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationActionEventHubOutput)
+}
+
+// The target Event Hub to which event data will be exported. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
+type AutomationActionEventHubOutput struct{ *pulumi.OutputState }
+
+func (AutomationActionEventHubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationActionEventHub)(nil)).Elem()
+}
+
+func (o AutomationActionEventHubOutput) ToAutomationActionEventHubOutput() AutomationActionEventHubOutput {
+	return o
+}
+
+func (o AutomationActionEventHubOutput) ToAutomationActionEventHubOutputWithContext(ctx context.Context) AutomationActionEventHubOutput {
+	return o
+}
+
+// The type of the action that will be triggered by the Automation
+// Expected value is 'EventHub'.
+func (o AutomationActionEventHubOutput) ActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomationActionEventHub) string { return v.ActionType }).(pulumi.StringOutput)
+}
+
+// The target Event Hub connection string (it will not be included in any response).
+func (o AutomationActionEventHubOutput) ConnectionString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationActionEventHub) *string { return v.ConnectionString }).(pulumi.StringPtrOutput)
+}
+
+// The target Event Hub Azure Resource ID.
+func (o AutomationActionEventHubOutput) EventHubResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationActionEventHub) *string { return v.EventHubResourceId }).(pulumi.StringPtrOutput)
+}
+
 // The target Event Hub to which event data will be exported. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
 type AutomationActionEventHubResponse struct {
 	// The type of the action that will be triggered by the Automation
@@ -37,6 +102,42 @@ type AutomationActionEventHubResponse struct {
 	SasPolicyName string `pulumi:"sasPolicyName"`
 }
 
+// The target Event Hub to which event data will be exported. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
+type AutomationActionEventHubResponseOutput struct{ *pulumi.OutputState }
+
+func (AutomationActionEventHubResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationActionEventHubResponse)(nil)).Elem()
+}
+
+func (o AutomationActionEventHubResponseOutput) ToAutomationActionEventHubResponseOutput() AutomationActionEventHubResponseOutput {
+	return o
+}
+
+func (o AutomationActionEventHubResponseOutput) ToAutomationActionEventHubResponseOutputWithContext(ctx context.Context) AutomationActionEventHubResponseOutput {
+	return o
+}
+
+// The type of the action that will be triggered by the Automation
+// Expected value is 'EventHub'.
+func (o AutomationActionEventHubResponseOutput) ActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomationActionEventHubResponse) string { return v.ActionType }).(pulumi.StringOutput)
+}
+
+// The target Event Hub connection string (it will not be included in any response).
+func (o AutomationActionEventHubResponseOutput) ConnectionString() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationActionEventHubResponse) *string { return v.ConnectionString }).(pulumi.StringPtrOutput)
+}
+
+// The target Event Hub Azure Resource ID.
+func (o AutomationActionEventHubResponseOutput) EventHubResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationActionEventHubResponse) *string { return v.EventHubResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The target Event Hub SAS policy name.
+func (o AutomationActionEventHubResponseOutput) SasPolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomationActionEventHubResponse) string { return v.SasPolicyName }).(pulumi.StringOutput)
+}
+
 // The logic app action that should be triggered. To learn more about Microsoft Defender for Cloud's Workflow Automation capabilities, visit https://aka.ms/ASCWorkflowAutomationLearnMore
 type AutomationActionLogicApp struct {
 	// The type of the action that will be triggered by the Automation
@@ -46,6 +147,71 @@ type AutomationActionLogicApp struct {
 	LogicAppResourceId *string `pulumi:"logicAppResourceId"`
 	// The Logic App trigger URI endpoint (it will not be included in any response).
 	Uri *string `pulumi:"uri"`
+}
+
+// AutomationActionLogicAppInput is an input type that accepts AutomationActionLogicAppArgs and AutomationActionLogicAppOutput values.
+// You can construct a concrete instance of `AutomationActionLogicAppInput` via:
+//
+//	AutomationActionLogicAppArgs{...}
+type AutomationActionLogicAppInput interface {
+	pulumi.Input
+
+	ToAutomationActionLogicAppOutput() AutomationActionLogicAppOutput
+	ToAutomationActionLogicAppOutputWithContext(context.Context) AutomationActionLogicAppOutput
+}
+
+// The logic app action that should be triggered. To learn more about Microsoft Defender for Cloud's Workflow Automation capabilities, visit https://aka.ms/ASCWorkflowAutomationLearnMore
+type AutomationActionLogicAppArgs struct {
+	// The type of the action that will be triggered by the Automation
+	// Expected value is 'LogicApp'.
+	ActionType pulumi.StringInput `pulumi:"actionType"`
+	// The triggered Logic App Azure Resource ID. This can also reside on other subscriptions, given that you have permissions to trigger the Logic App
+	LogicAppResourceId pulumi.StringPtrInput `pulumi:"logicAppResourceId"`
+	// The Logic App trigger URI endpoint (it will not be included in any response).
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (AutomationActionLogicAppArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationActionLogicApp)(nil)).Elem()
+}
+
+func (i AutomationActionLogicAppArgs) ToAutomationActionLogicAppOutput() AutomationActionLogicAppOutput {
+	return i.ToAutomationActionLogicAppOutputWithContext(context.Background())
+}
+
+func (i AutomationActionLogicAppArgs) ToAutomationActionLogicAppOutputWithContext(ctx context.Context) AutomationActionLogicAppOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationActionLogicAppOutput)
+}
+
+// The logic app action that should be triggered. To learn more about Microsoft Defender for Cloud's Workflow Automation capabilities, visit https://aka.ms/ASCWorkflowAutomationLearnMore
+type AutomationActionLogicAppOutput struct{ *pulumi.OutputState }
+
+func (AutomationActionLogicAppOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationActionLogicApp)(nil)).Elem()
+}
+
+func (o AutomationActionLogicAppOutput) ToAutomationActionLogicAppOutput() AutomationActionLogicAppOutput {
+	return o
+}
+
+func (o AutomationActionLogicAppOutput) ToAutomationActionLogicAppOutputWithContext(ctx context.Context) AutomationActionLogicAppOutput {
+	return o
+}
+
+// The type of the action that will be triggered by the Automation
+// Expected value is 'LogicApp'.
+func (o AutomationActionLogicAppOutput) ActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomationActionLogicApp) string { return v.ActionType }).(pulumi.StringOutput)
+}
+
+// The triggered Logic App Azure Resource ID. This can also reside on other subscriptions, given that you have permissions to trigger the Logic App
+func (o AutomationActionLogicAppOutput) LogicAppResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationActionLogicApp) *string { return v.LogicAppResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The Logic App trigger URI endpoint (it will not be included in any response).
+func (o AutomationActionLogicAppOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationActionLogicApp) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
 
 // The logic app action that should be triggered. To learn more about Microsoft Defender for Cloud's Workflow Automation capabilities, visit https://aka.ms/ASCWorkflowAutomationLearnMore
@@ -59,6 +225,37 @@ type AutomationActionLogicAppResponse struct {
 	Uri *string `pulumi:"uri"`
 }
 
+// The logic app action that should be triggered. To learn more about Microsoft Defender for Cloud's Workflow Automation capabilities, visit https://aka.ms/ASCWorkflowAutomationLearnMore
+type AutomationActionLogicAppResponseOutput struct{ *pulumi.OutputState }
+
+func (AutomationActionLogicAppResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationActionLogicAppResponse)(nil)).Elem()
+}
+
+func (o AutomationActionLogicAppResponseOutput) ToAutomationActionLogicAppResponseOutput() AutomationActionLogicAppResponseOutput {
+	return o
+}
+
+func (o AutomationActionLogicAppResponseOutput) ToAutomationActionLogicAppResponseOutputWithContext(ctx context.Context) AutomationActionLogicAppResponseOutput {
+	return o
+}
+
+// The type of the action that will be triggered by the Automation
+// Expected value is 'LogicApp'.
+func (o AutomationActionLogicAppResponseOutput) ActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomationActionLogicAppResponse) string { return v.ActionType }).(pulumi.StringOutput)
+}
+
+// The triggered Logic App Azure Resource ID. This can also reside on other subscriptions, given that you have permissions to trigger the Logic App
+func (o AutomationActionLogicAppResponseOutput) LogicAppResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationActionLogicAppResponse) *string { return v.LogicAppResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The Logic App trigger URI endpoint (it will not be included in any response).
+func (o AutomationActionLogicAppResponseOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationActionLogicAppResponse) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
 // The Log Analytics Workspace to which event data will be exported. Security alerts data will reside in the 'SecurityAlert' table and the assessments data will reside in the 'SecurityRecommendation' table (under the 'Security'/'SecurityCenterFree' solutions). Note that in order to view the data in the workspace, the Security Center Log Analytics free/standard solution needs to be enabled on that workspace. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
 type AutomationActionWorkspace struct {
 	// The type of the action that will be triggered by the Automation
@@ -68,6 +265,64 @@ type AutomationActionWorkspace struct {
 	WorkspaceResourceId *string `pulumi:"workspaceResourceId"`
 }
 
+// AutomationActionWorkspaceInput is an input type that accepts AutomationActionWorkspaceArgs and AutomationActionWorkspaceOutput values.
+// You can construct a concrete instance of `AutomationActionWorkspaceInput` via:
+//
+//	AutomationActionWorkspaceArgs{...}
+type AutomationActionWorkspaceInput interface {
+	pulumi.Input
+
+	ToAutomationActionWorkspaceOutput() AutomationActionWorkspaceOutput
+	ToAutomationActionWorkspaceOutputWithContext(context.Context) AutomationActionWorkspaceOutput
+}
+
+// The Log Analytics Workspace to which event data will be exported. Security alerts data will reside in the 'SecurityAlert' table and the assessments data will reside in the 'SecurityRecommendation' table (under the 'Security'/'SecurityCenterFree' solutions). Note that in order to view the data in the workspace, the Security Center Log Analytics free/standard solution needs to be enabled on that workspace. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
+type AutomationActionWorkspaceArgs struct {
+	// The type of the action that will be triggered by the Automation
+	// Expected value is 'Workspace'.
+	ActionType pulumi.StringInput `pulumi:"actionType"`
+	// The fully qualified Log Analytics Workspace Azure Resource ID.
+	WorkspaceResourceId pulumi.StringPtrInput `pulumi:"workspaceResourceId"`
+}
+
+func (AutomationActionWorkspaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationActionWorkspace)(nil)).Elem()
+}
+
+func (i AutomationActionWorkspaceArgs) ToAutomationActionWorkspaceOutput() AutomationActionWorkspaceOutput {
+	return i.ToAutomationActionWorkspaceOutputWithContext(context.Background())
+}
+
+func (i AutomationActionWorkspaceArgs) ToAutomationActionWorkspaceOutputWithContext(ctx context.Context) AutomationActionWorkspaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationActionWorkspaceOutput)
+}
+
+// The Log Analytics Workspace to which event data will be exported. Security alerts data will reside in the 'SecurityAlert' table and the assessments data will reside in the 'SecurityRecommendation' table (under the 'Security'/'SecurityCenterFree' solutions). Note that in order to view the data in the workspace, the Security Center Log Analytics free/standard solution needs to be enabled on that workspace. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
+type AutomationActionWorkspaceOutput struct{ *pulumi.OutputState }
+
+func (AutomationActionWorkspaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationActionWorkspace)(nil)).Elem()
+}
+
+func (o AutomationActionWorkspaceOutput) ToAutomationActionWorkspaceOutput() AutomationActionWorkspaceOutput {
+	return o
+}
+
+func (o AutomationActionWorkspaceOutput) ToAutomationActionWorkspaceOutputWithContext(ctx context.Context) AutomationActionWorkspaceOutput {
+	return o
+}
+
+// The type of the action that will be triggered by the Automation
+// Expected value is 'Workspace'.
+func (o AutomationActionWorkspaceOutput) ActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomationActionWorkspace) string { return v.ActionType }).(pulumi.StringOutput)
+}
+
+// The fully qualified Log Analytics Workspace Azure Resource ID.
+func (o AutomationActionWorkspaceOutput) WorkspaceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationActionWorkspace) *string { return v.WorkspaceResourceId }).(pulumi.StringPtrOutput)
+}
+
 // The Log Analytics Workspace to which event data will be exported. Security alerts data will reside in the 'SecurityAlert' table and the assessments data will reside in the 'SecurityRecommendation' table (under the 'Security'/'SecurityCenterFree' solutions). Note that in order to view the data in the workspace, the Security Center Log Analytics free/standard solution needs to be enabled on that workspace. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
 type AutomationActionWorkspaceResponse struct {
 	// The type of the action that will be triggered by the Automation
@@ -75,6 +330,32 @@ type AutomationActionWorkspaceResponse struct {
 	ActionType string `pulumi:"actionType"`
 	// The fully qualified Log Analytics Workspace Azure Resource ID.
 	WorkspaceResourceId *string `pulumi:"workspaceResourceId"`
+}
+
+// The Log Analytics Workspace to which event data will be exported. Security alerts data will reside in the 'SecurityAlert' table and the assessments data will reside in the 'SecurityRecommendation' table (under the 'Security'/'SecurityCenterFree' solutions). Note that in order to view the data in the workspace, the Security Center Log Analytics free/standard solution needs to be enabled on that workspace. To learn more about Microsoft Defender for Cloud continuous export capabilities, visit https://aka.ms/ASCExportLearnMore
+type AutomationActionWorkspaceResponseOutput struct{ *pulumi.OutputState }
+
+func (AutomationActionWorkspaceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationActionWorkspaceResponse)(nil)).Elem()
+}
+
+func (o AutomationActionWorkspaceResponseOutput) ToAutomationActionWorkspaceResponseOutput() AutomationActionWorkspaceResponseOutput {
+	return o
+}
+
+func (o AutomationActionWorkspaceResponseOutput) ToAutomationActionWorkspaceResponseOutputWithContext(ctx context.Context) AutomationActionWorkspaceResponseOutput {
+	return o
+}
+
+// The type of the action that will be triggered by the Automation
+// Expected value is 'Workspace'.
+func (o AutomationActionWorkspaceResponseOutput) ActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomationActionWorkspaceResponse) string { return v.ActionType }).(pulumi.StringOutput)
+}
+
+// The fully qualified Log Analytics Workspace Azure Resource ID.
+func (o AutomationActionWorkspaceResponseOutput) WorkspaceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationActionWorkspaceResponse) *string { return v.WorkspaceResourceId }).(pulumi.StringPtrOutput)
 }
 
 // A rule set which evaluates all its rules upon an event interception. Only when all the included rules in the rule set will be evaluated as 'true', will the event trigger the defined actions.
@@ -1078,6 +1359,12 @@ func (o SuppressionAlertsScopeResponsePtrOutput) AllOf() ScopeElementResponseArr
 }
 
 func init() {
+	pulumi.RegisterOutputType(AutomationActionEventHubOutput{})
+	pulumi.RegisterOutputType(AutomationActionEventHubResponseOutput{})
+	pulumi.RegisterOutputType(AutomationActionLogicAppOutput{})
+	pulumi.RegisterOutputType(AutomationActionLogicAppResponseOutput{})
+	pulumi.RegisterOutputType(AutomationActionWorkspaceOutput{})
+	pulumi.RegisterOutputType(AutomationActionWorkspaceResponseOutput{})
 	pulumi.RegisterOutputType(AutomationRuleSetOutput{})
 	pulumi.RegisterOutputType(AutomationRuleSetArrayOutput{})
 	pulumi.RegisterOutputType(AutomationRuleSetResponseOutput{})

@@ -24,6 +24,71 @@ type BoolEqualsAdvancedFilter struct {
 	Value *bool `pulumi:"value"`
 }
 
+// BoolEqualsAdvancedFilterInput is an input type that accepts BoolEqualsAdvancedFilterArgs and BoolEqualsAdvancedFilterOutput values.
+// You can construct a concrete instance of `BoolEqualsAdvancedFilterInput` via:
+//
+//	BoolEqualsAdvancedFilterArgs{...}
+type BoolEqualsAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToBoolEqualsAdvancedFilterOutput() BoolEqualsAdvancedFilterOutput
+	ToBoolEqualsAdvancedFilterOutputWithContext(context.Context) BoolEqualsAdvancedFilterOutput
+}
+
+// BoolEquals Advanced Filter.
+type BoolEqualsAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'BoolEquals'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The boolean filter value.
+	Value pulumi.BoolPtrInput `pulumi:"value"`
+}
+
+func (BoolEqualsAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BoolEqualsAdvancedFilter)(nil)).Elem()
+}
+
+func (i BoolEqualsAdvancedFilterArgs) ToBoolEqualsAdvancedFilterOutput() BoolEqualsAdvancedFilterOutput {
+	return i.ToBoolEqualsAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i BoolEqualsAdvancedFilterArgs) ToBoolEqualsAdvancedFilterOutputWithContext(ctx context.Context) BoolEqualsAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BoolEqualsAdvancedFilterOutput)
+}
+
+// BoolEquals Advanced Filter.
+type BoolEqualsAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (BoolEqualsAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BoolEqualsAdvancedFilter)(nil)).Elem()
+}
+
+func (o BoolEqualsAdvancedFilterOutput) ToBoolEqualsAdvancedFilterOutput() BoolEqualsAdvancedFilterOutput {
+	return o
+}
+
+func (o BoolEqualsAdvancedFilterOutput) ToBoolEqualsAdvancedFilterOutputWithContext(ctx context.Context) BoolEqualsAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o BoolEqualsAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BoolEqualsAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'BoolEquals'.
+func (o BoolEqualsAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v BoolEqualsAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The boolean filter value.
+func (o BoolEqualsAdvancedFilterOutput) Value() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BoolEqualsAdvancedFilter) *bool { return v.Value }).(pulumi.BoolPtrOutput)
+}
+
 // BoolEquals Advanced Filter.
 type BoolEqualsAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -33,6 +98,37 @@ type BoolEqualsAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The boolean filter value.
 	Value *bool `pulumi:"value"`
+}
+
+// BoolEquals Advanced Filter.
+type BoolEqualsAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (BoolEqualsAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BoolEqualsAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o BoolEqualsAdvancedFilterResponseOutput) ToBoolEqualsAdvancedFilterResponseOutput() BoolEqualsAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o BoolEqualsAdvancedFilterResponseOutput) ToBoolEqualsAdvancedFilterResponseOutputWithContext(ctx context.Context) BoolEqualsAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o BoolEqualsAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BoolEqualsAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'BoolEquals'.
+func (o BoolEqualsAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v BoolEqualsAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The boolean filter value.
+func (o BoolEqualsAdvancedFilterResponseOutput) Value() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BoolEqualsAdvancedFilterResponse) *bool { return v.Value }).(pulumi.BoolPtrOutput)
 }
 
 // Properties of the destination of an event channel.
@@ -810,6 +906,64 @@ type IsNotNullAdvancedFilter struct {
 	OperatorType string `pulumi:"operatorType"`
 }
 
+// IsNotNullAdvancedFilterInput is an input type that accepts IsNotNullAdvancedFilterArgs and IsNotNullAdvancedFilterOutput values.
+// You can construct a concrete instance of `IsNotNullAdvancedFilterInput` via:
+//
+//	IsNotNullAdvancedFilterArgs{...}
+type IsNotNullAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToIsNotNullAdvancedFilterOutput() IsNotNullAdvancedFilterOutput
+	ToIsNotNullAdvancedFilterOutputWithContext(context.Context) IsNotNullAdvancedFilterOutput
+}
+
+// IsNotNull Advanced Filter.
+type IsNotNullAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'IsNotNull'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+}
+
+func (IsNotNullAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IsNotNullAdvancedFilter)(nil)).Elem()
+}
+
+func (i IsNotNullAdvancedFilterArgs) ToIsNotNullAdvancedFilterOutput() IsNotNullAdvancedFilterOutput {
+	return i.ToIsNotNullAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i IsNotNullAdvancedFilterArgs) ToIsNotNullAdvancedFilterOutputWithContext(ctx context.Context) IsNotNullAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IsNotNullAdvancedFilterOutput)
+}
+
+// IsNotNull Advanced Filter.
+type IsNotNullAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (IsNotNullAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IsNotNullAdvancedFilter)(nil)).Elem()
+}
+
+func (o IsNotNullAdvancedFilterOutput) ToIsNotNullAdvancedFilterOutput() IsNotNullAdvancedFilterOutput {
+	return o
+}
+
+func (o IsNotNullAdvancedFilterOutput) ToIsNotNullAdvancedFilterOutputWithContext(ctx context.Context) IsNotNullAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o IsNotNullAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IsNotNullAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'IsNotNull'.
+func (o IsNotNullAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v IsNotNullAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
 // IsNotNull Advanced Filter.
 type IsNotNullAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -817,6 +971,32 @@ type IsNotNullAdvancedFilterResponse struct {
 	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
 	// Expected value is 'IsNotNull'.
 	OperatorType string `pulumi:"operatorType"`
+}
+
+// IsNotNull Advanced Filter.
+type IsNotNullAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (IsNotNullAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IsNotNullAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o IsNotNullAdvancedFilterResponseOutput) ToIsNotNullAdvancedFilterResponseOutput() IsNotNullAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o IsNotNullAdvancedFilterResponseOutput) ToIsNotNullAdvancedFilterResponseOutputWithContext(ctx context.Context) IsNotNullAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o IsNotNullAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IsNotNullAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'IsNotNull'.
+func (o IsNotNullAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v IsNotNullAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
 }
 
 // IsNullOrUndefined Advanced Filter.
@@ -828,6 +1008,64 @@ type IsNullOrUndefinedAdvancedFilter struct {
 	OperatorType string `pulumi:"operatorType"`
 }
 
+// IsNullOrUndefinedAdvancedFilterInput is an input type that accepts IsNullOrUndefinedAdvancedFilterArgs and IsNullOrUndefinedAdvancedFilterOutput values.
+// You can construct a concrete instance of `IsNullOrUndefinedAdvancedFilterInput` via:
+//
+//	IsNullOrUndefinedAdvancedFilterArgs{...}
+type IsNullOrUndefinedAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToIsNullOrUndefinedAdvancedFilterOutput() IsNullOrUndefinedAdvancedFilterOutput
+	ToIsNullOrUndefinedAdvancedFilterOutputWithContext(context.Context) IsNullOrUndefinedAdvancedFilterOutput
+}
+
+// IsNullOrUndefined Advanced Filter.
+type IsNullOrUndefinedAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'IsNullOrUndefined'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+}
+
+func (IsNullOrUndefinedAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IsNullOrUndefinedAdvancedFilter)(nil)).Elem()
+}
+
+func (i IsNullOrUndefinedAdvancedFilterArgs) ToIsNullOrUndefinedAdvancedFilterOutput() IsNullOrUndefinedAdvancedFilterOutput {
+	return i.ToIsNullOrUndefinedAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i IsNullOrUndefinedAdvancedFilterArgs) ToIsNullOrUndefinedAdvancedFilterOutputWithContext(ctx context.Context) IsNullOrUndefinedAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IsNullOrUndefinedAdvancedFilterOutput)
+}
+
+// IsNullOrUndefined Advanced Filter.
+type IsNullOrUndefinedAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (IsNullOrUndefinedAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IsNullOrUndefinedAdvancedFilter)(nil)).Elem()
+}
+
+func (o IsNullOrUndefinedAdvancedFilterOutput) ToIsNullOrUndefinedAdvancedFilterOutput() IsNullOrUndefinedAdvancedFilterOutput {
+	return o
+}
+
+func (o IsNullOrUndefinedAdvancedFilterOutput) ToIsNullOrUndefinedAdvancedFilterOutputWithContext(ctx context.Context) IsNullOrUndefinedAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o IsNullOrUndefinedAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IsNullOrUndefinedAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'IsNullOrUndefined'.
+func (o IsNullOrUndefinedAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v IsNullOrUndefinedAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
 // IsNullOrUndefined Advanced Filter.
 type IsNullOrUndefinedAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -835,6 +1073,32 @@ type IsNullOrUndefinedAdvancedFilterResponse struct {
 	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
 	// Expected value is 'IsNullOrUndefined'.
 	OperatorType string `pulumi:"operatorType"`
+}
+
+// IsNullOrUndefined Advanced Filter.
+type IsNullOrUndefinedAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (IsNullOrUndefinedAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IsNullOrUndefinedAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o IsNullOrUndefinedAdvancedFilterResponseOutput) ToIsNullOrUndefinedAdvancedFilterResponseOutput() IsNullOrUndefinedAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o IsNullOrUndefinedAdvancedFilterResponseOutput) ToIsNullOrUndefinedAdvancedFilterResponseOutputWithContext(ctx context.Context) IsNullOrUndefinedAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o IsNullOrUndefinedAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IsNullOrUndefinedAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'IsNullOrUndefined'.
+func (o IsNullOrUndefinedAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v IsNullOrUndefinedAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
 }
 
 // NumberGreaterThan Advanced Filter.
@@ -848,6 +1112,71 @@ type NumberGreaterThanAdvancedFilter struct {
 	Value *float64 `pulumi:"value"`
 }
 
+// NumberGreaterThanAdvancedFilterInput is an input type that accepts NumberGreaterThanAdvancedFilterArgs and NumberGreaterThanAdvancedFilterOutput values.
+// You can construct a concrete instance of `NumberGreaterThanAdvancedFilterInput` via:
+//
+//	NumberGreaterThanAdvancedFilterArgs{...}
+type NumberGreaterThanAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToNumberGreaterThanAdvancedFilterOutput() NumberGreaterThanAdvancedFilterOutput
+	ToNumberGreaterThanAdvancedFilterOutputWithContext(context.Context) NumberGreaterThanAdvancedFilterOutput
+}
+
+// NumberGreaterThan Advanced Filter.
+type NumberGreaterThanAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberGreaterThan'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The filter value.
+	Value pulumi.Float64PtrInput `pulumi:"value"`
+}
+
+func (NumberGreaterThanAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberGreaterThanAdvancedFilter)(nil)).Elem()
+}
+
+func (i NumberGreaterThanAdvancedFilterArgs) ToNumberGreaterThanAdvancedFilterOutput() NumberGreaterThanAdvancedFilterOutput {
+	return i.ToNumberGreaterThanAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i NumberGreaterThanAdvancedFilterArgs) ToNumberGreaterThanAdvancedFilterOutputWithContext(ctx context.Context) NumberGreaterThanAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NumberGreaterThanAdvancedFilterOutput)
+}
+
+// NumberGreaterThan Advanced Filter.
+type NumberGreaterThanAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (NumberGreaterThanAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberGreaterThanAdvancedFilter)(nil)).Elem()
+}
+
+func (o NumberGreaterThanAdvancedFilterOutput) ToNumberGreaterThanAdvancedFilterOutput() NumberGreaterThanAdvancedFilterOutput {
+	return o
+}
+
+func (o NumberGreaterThanAdvancedFilterOutput) ToNumberGreaterThanAdvancedFilterOutputWithContext(ctx context.Context) NumberGreaterThanAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberGreaterThanAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberGreaterThanAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberGreaterThan'.
+func (o NumberGreaterThanAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberGreaterThanAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The filter value.
+func (o NumberGreaterThanAdvancedFilterOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NumberGreaterThanAdvancedFilter) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
+}
+
 // NumberGreaterThan Advanced Filter.
 type NumberGreaterThanAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -857,6 +1186,37 @@ type NumberGreaterThanAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The filter value.
 	Value *float64 `pulumi:"value"`
+}
+
+// NumberGreaterThan Advanced Filter.
+type NumberGreaterThanAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (NumberGreaterThanAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberGreaterThanAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o NumberGreaterThanAdvancedFilterResponseOutput) ToNumberGreaterThanAdvancedFilterResponseOutput() NumberGreaterThanAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o NumberGreaterThanAdvancedFilterResponseOutput) ToNumberGreaterThanAdvancedFilterResponseOutputWithContext(ctx context.Context) NumberGreaterThanAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberGreaterThanAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberGreaterThanAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberGreaterThan'.
+func (o NumberGreaterThanAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberGreaterThanAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The filter value.
+func (o NumberGreaterThanAdvancedFilterResponseOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NumberGreaterThanAdvancedFilterResponse) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
 }
 
 // NumberGreaterThanOrEquals Advanced Filter.
@@ -870,6 +1230,71 @@ type NumberGreaterThanOrEqualsAdvancedFilter struct {
 	Value *float64 `pulumi:"value"`
 }
 
+// NumberGreaterThanOrEqualsAdvancedFilterInput is an input type that accepts NumberGreaterThanOrEqualsAdvancedFilterArgs and NumberGreaterThanOrEqualsAdvancedFilterOutput values.
+// You can construct a concrete instance of `NumberGreaterThanOrEqualsAdvancedFilterInput` via:
+//
+//	NumberGreaterThanOrEqualsAdvancedFilterArgs{...}
+type NumberGreaterThanOrEqualsAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToNumberGreaterThanOrEqualsAdvancedFilterOutput() NumberGreaterThanOrEqualsAdvancedFilterOutput
+	ToNumberGreaterThanOrEqualsAdvancedFilterOutputWithContext(context.Context) NumberGreaterThanOrEqualsAdvancedFilterOutput
+}
+
+// NumberGreaterThanOrEquals Advanced Filter.
+type NumberGreaterThanOrEqualsAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberGreaterThanOrEquals'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The filter value.
+	Value pulumi.Float64PtrInput `pulumi:"value"`
+}
+
+func (NumberGreaterThanOrEqualsAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberGreaterThanOrEqualsAdvancedFilter)(nil)).Elem()
+}
+
+func (i NumberGreaterThanOrEqualsAdvancedFilterArgs) ToNumberGreaterThanOrEqualsAdvancedFilterOutput() NumberGreaterThanOrEqualsAdvancedFilterOutput {
+	return i.ToNumberGreaterThanOrEqualsAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i NumberGreaterThanOrEqualsAdvancedFilterArgs) ToNumberGreaterThanOrEqualsAdvancedFilterOutputWithContext(ctx context.Context) NumberGreaterThanOrEqualsAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NumberGreaterThanOrEqualsAdvancedFilterOutput)
+}
+
+// NumberGreaterThanOrEquals Advanced Filter.
+type NumberGreaterThanOrEqualsAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (NumberGreaterThanOrEqualsAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberGreaterThanOrEqualsAdvancedFilter)(nil)).Elem()
+}
+
+func (o NumberGreaterThanOrEqualsAdvancedFilterOutput) ToNumberGreaterThanOrEqualsAdvancedFilterOutput() NumberGreaterThanOrEqualsAdvancedFilterOutput {
+	return o
+}
+
+func (o NumberGreaterThanOrEqualsAdvancedFilterOutput) ToNumberGreaterThanOrEqualsAdvancedFilterOutputWithContext(ctx context.Context) NumberGreaterThanOrEqualsAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberGreaterThanOrEqualsAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberGreaterThanOrEqualsAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberGreaterThanOrEquals'.
+func (o NumberGreaterThanOrEqualsAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberGreaterThanOrEqualsAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The filter value.
+func (o NumberGreaterThanOrEqualsAdvancedFilterOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NumberGreaterThanOrEqualsAdvancedFilter) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
+}
+
 // NumberGreaterThanOrEquals Advanced Filter.
 type NumberGreaterThanOrEqualsAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -879,6 +1304,37 @@ type NumberGreaterThanOrEqualsAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The filter value.
 	Value *float64 `pulumi:"value"`
+}
+
+// NumberGreaterThanOrEquals Advanced Filter.
+type NumberGreaterThanOrEqualsAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (NumberGreaterThanOrEqualsAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberGreaterThanOrEqualsAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o NumberGreaterThanOrEqualsAdvancedFilterResponseOutput) ToNumberGreaterThanOrEqualsAdvancedFilterResponseOutput() NumberGreaterThanOrEqualsAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o NumberGreaterThanOrEqualsAdvancedFilterResponseOutput) ToNumberGreaterThanOrEqualsAdvancedFilterResponseOutputWithContext(ctx context.Context) NumberGreaterThanOrEqualsAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberGreaterThanOrEqualsAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberGreaterThanOrEqualsAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberGreaterThanOrEquals'.
+func (o NumberGreaterThanOrEqualsAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberGreaterThanOrEqualsAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The filter value.
+func (o NumberGreaterThanOrEqualsAdvancedFilterResponseOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NumberGreaterThanOrEqualsAdvancedFilterResponse) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
 }
 
 // NumberIn Advanced Filter.
@@ -892,6 +1348,71 @@ type NumberInAdvancedFilter struct {
 	Values []float64 `pulumi:"values"`
 }
 
+// NumberInAdvancedFilterInput is an input type that accepts NumberInAdvancedFilterArgs and NumberInAdvancedFilterOutput values.
+// You can construct a concrete instance of `NumberInAdvancedFilterInput` via:
+//
+//	NumberInAdvancedFilterArgs{...}
+type NumberInAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToNumberInAdvancedFilterOutput() NumberInAdvancedFilterOutput
+	ToNumberInAdvancedFilterOutputWithContext(context.Context) NumberInAdvancedFilterOutput
+}
+
+// NumberIn Advanced Filter.
+type NumberInAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberIn'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.Float64ArrayInput `pulumi:"values"`
+}
+
+func (NumberInAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberInAdvancedFilter)(nil)).Elem()
+}
+
+func (i NumberInAdvancedFilterArgs) ToNumberInAdvancedFilterOutput() NumberInAdvancedFilterOutput {
+	return i.ToNumberInAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i NumberInAdvancedFilterArgs) ToNumberInAdvancedFilterOutputWithContext(ctx context.Context) NumberInAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NumberInAdvancedFilterOutput)
+}
+
+// NumberIn Advanced Filter.
+type NumberInAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (NumberInAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberInAdvancedFilter)(nil)).Elem()
+}
+
+func (o NumberInAdvancedFilterOutput) ToNumberInAdvancedFilterOutput() NumberInAdvancedFilterOutput {
+	return o
+}
+
+func (o NumberInAdvancedFilterOutput) ToNumberInAdvancedFilterOutputWithContext(ctx context.Context) NumberInAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberInAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberInAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberIn'.
+func (o NumberInAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberInAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o NumberInAdvancedFilterOutput) Values() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v NumberInAdvancedFilter) []float64 { return v.Values }).(pulumi.Float64ArrayOutput)
+}
+
 // NumberIn Advanced Filter.
 type NumberInAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -901,6 +1422,37 @@ type NumberInAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values []float64 `pulumi:"values"`
+}
+
+// NumberIn Advanced Filter.
+type NumberInAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (NumberInAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberInAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o NumberInAdvancedFilterResponseOutput) ToNumberInAdvancedFilterResponseOutput() NumberInAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o NumberInAdvancedFilterResponseOutput) ToNumberInAdvancedFilterResponseOutputWithContext(ctx context.Context) NumberInAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberInAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberInAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberIn'.
+func (o NumberInAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberInAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o NumberInAdvancedFilterResponseOutput) Values() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v NumberInAdvancedFilterResponse) []float64 { return v.Values }).(pulumi.Float64ArrayOutput)
 }
 
 // NumberInRange Advanced Filter.
@@ -914,6 +1466,71 @@ type NumberInRangeAdvancedFilter struct {
 	Values [][]float64 `pulumi:"values"`
 }
 
+// NumberInRangeAdvancedFilterInput is an input type that accepts NumberInRangeAdvancedFilterArgs and NumberInRangeAdvancedFilterOutput values.
+// You can construct a concrete instance of `NumberInRangeAdvancedFilterInput` via:
+//
+//	NumberInRangeAdvancedFilterArgs{...}
+type NumberInRangeAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToNumberInRangeAdvancedFilterOutput() NumberInRangeAdvancedFilterOutput
+	ToNumberInRangeAdvancedFilterOutputWithContext(context.Context) NumberInRangeAdvancedFilterOutput
+}
+
+// NumberInRange Advanced Filter.
+type NumberInRangeAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberInRange'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.Float64ArrayArrayInput `pulumi:"values"`
+}
+
+func (NumberInRangeAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberInRangeAdvancedFilter)(nil)).Elem()
+}
+
+func (i NumberInRangeAdvancedFilterArgs) ToNumberInRangeAdvancedFilterOutput() NumberInRangeAdvancedFilterOutput {
+	return i.ToNumberInRangeAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i NumberInRangeAdvancedFilterArgs) ToNumberInRangeAdvancedFilterOutputWithContext(ctx context.Context) NumberInRangeAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NumberInRangeAdvancedFilterOutput)
+}
+
+// NumberInRange Advanced Filter.
+type NumberInRangeAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (NumberInRangeAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberInRangeAdvancedFilter)(nil)).Elem()
+}
+
+func (o NumberInRangeAdvancedFilterOutput) ToNumberInRangeAdvancedFilterOutput() NumberInRangeAdvancedFilterOutput {
+	return o
+}
+
+func (o NumberInRangeAdvancedFilterOutput) ToNumberInRangeAdvancedFilterOutputWithContext(ctx context.Context) NumberInRangeAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberInRangeAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberInRangeAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberInRange'.
+func (o NumberInRangeAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberInRangeAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o NumberInRangeAdvancedFilterOutput) Values() pulumi.Float64ArrayArrayOutput {
+	return o.ApplyT(func(v NumberInRangeAdvancedFilter) [][]float64 { return v.Values }).(pulumi.Float64ArrayArrayOutput)
+}
+
 // NumberInRange Advanced Filter.
 type NumberInRangeAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -923,6 +1540,37 @@ type NumberInRangeAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values [][]float64 `pulumi:"values"`
+}
+
+// NumberInRange Advanced Filter.
+type NumberInRangeAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (NumberInRangeAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberInRangeAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o NumberInRangeAdvancedFilterResponseOutput) ToNumberInRangeAdvancedFilterResponseOutput() NumberInRangeAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o NumberInRangeAdvancedFilterResponseOutput) ToNumberInRangeAdvancedFilterResponseOutputWithContext(ctx context.Context) NumberInRangeAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberInRangeAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberInRangeAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberInRange'.
+func (o NumberInRangeAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberInRangeAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o NumberInRangeAdvancedFilterResponseOutput) Values() pulumi.Float64ArrayArrayOutput {
+	return o.ApplyT(func(v NumberInRangeAdvancedFilterResponse) [][]float64 { return v.Values }).(pulumi.Float64ArrayArrayOutput)
 }
 
 // NumberLessThan Advanced Filter.
@@ -936,6 +1584,71 @@ type NumberLessThanAdvancedFilter struct {
 	Value *float64 `pulumi:"value"`
 }
 
+// NumberLessThanAdvancedFilterInput is an input type that accepts NumberLessThanAdvancedFilterArgs and NumberLessThanAdvancedFilterOutput values.
+// You can construct a concrete instance of `NumberLessThanAdvancedFilterInput` via:
+//
+//	NumberLessThanAdvancedFilterArgs{...}
+type NumberLessThanAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToNumberLessThanAdvancedFilterOutput() NumberLessThanAdvancedFilterOutput
+	ToNumberLessThanAdvancedFilterOutputWithContext(context.Context) NumberLessThanAdvancedFilterOutput
+}
+
+// NumberLessThan Advanced Filter.
+type NumberLessThanAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberLessThan'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The filter value.
+	Value pulumi.Float64PtrInput `pulumi:"value"`
+}
+
+func (NumberLessThanAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberLessThanAdvancedFilter)(nil)).Elem()
+}
+
+func (i NumberLessThanAdvancedFilterArgs) ToNumberLessThanAdvancedFilterOutput() NumberLessThanAdvancedFilterOutput {
+	return i.ToNumberLessThanAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i NumberLessThanAdvancedFilterArgs) ToNumberLessThanAdvancedFilterOutputWithContext(ctx context.Context) NumberLessThanAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NumberLessThanAdvancedFilterOutput)
+}
+
+// NumberLessThan Advanced Filter.
+type NumberLessThanAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (NumberLessThanAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberLessThanAdvancedFilter)(nil)).Elem()
+}
+
+func (o NumberLessThanAdvancedFilterOutput) ToNumberLessThanAdvancedFilterOutput() NumberLessThanAdvancedFilterOutput {
+	return o
+}
+
+func (o NumberLessThanAdvancedFilterOutput) ToNumberLessThanAdvancedFilterOutputWithContext(ctx context.Context) NumberLessThanAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberLessThanAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberLessThanAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberLessThan'.
+func (o NumberLessThanAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberLessThanAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The filter value.
+func (o NumberLessThanAdvancedFilterOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NumberLessThanAdvancedFilter) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
+}
+
 // NumberLessThan Advanced Filter.
 type NumberLessThanAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -945,6 +1658,37 @@ type NumberLessThanAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The filter value.
 	Value *float64 `pulumi:"value"`
+}
+
+// NumberLessThan Advanced Filter.
+type NumberLessThanAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (NumberLessThanAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberLessThanAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o NumberLessThanAdvancedFilterResponseOutput) ToNumberLessThanAdvancedFilterResponseOutput() NumberLessThanAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o NumberLessThanAdvancedFilterResponseOutput) ToNumberLessThanAdvancedFilterResponseOutputWithContext(ctx context.Context) NumberLessThanAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberLessThanAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberLessThanAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberLessThan'.
+func (o NumberLessThanAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberLessThanAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The filter value.
+func (o NumberLessThanAdvancedFilterResponseOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NumberLessThanAdvancedFilterResponse) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
 }
 
 // NumberLessThanOrEquals Advanced Filter.
@@ -958,6 +1702,71 @@ type NumberLessThanOrEqualsAdvancedFilter struct {
 	Value *float64 `pulumi:"value"`
 }
 
+// NumberLessThanOrEqualsAdvancedFilterInput is an input type that accepts NumberLessThanOrEqualsAdvancedFilterArgs and NumberLessThanOrEqualsAdvancedFilterOutput values.
+// You can construct a concrete instance of `NumberLessThanOrEqualsAdvancedFilterInput` via:
+//
+//	NumberLessThanOrEqualsAdvancedFilterArgs{...}
+type NumberLessThanOrEqualsAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToNumberLessThanOrEqualsAdvancedFilterOutput() NumberLessThanOrEqualsAdvancedFilterOutput
+	ToNumberLessThanOrEqualsAdvancedFilterOutputWithContext(context.Context) NumberLessThanOrEqualsAdvancedFilterOutput
+}
+
+// NumberLessThanOrEquals Advanced Filter.
+type NumberLessThanOrEqualsAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberLessThanOrEquals'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The filter value.
+	Value pulumi.Float64PtrInput `pulumi:"value"`
+}
+
+func (NumberLessThanOrEqualsAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberLessThanOrEqualsAdvancedFilter)(nil)).Elem()
+}
+
+func (i NumberLessThanOrEqualsAdvancedFilterArgs) ToNumberLessThanOrEqualsAdvancedFilterOutput() NumberLessThanOrEqualsAdvancedFilterOutput {
+	return i.ToNumberLessThanOrEqualsAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i NumberLessThanOrEqualsAdvancedFilterArgs) ToNumberLessThanOrEqualsAdvancedFilterOutputWithContext(ctx context.Context) NumberLessThanOrEqualsAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NumberLessThanOrEqualsAdvancedFilterOutput)
+}
+
+// NumberLessThanOrEquals Advanced Filter.
+type NumberLessThanOrEqualsAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (NumberLessThanOrEqualsAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberLessThanOrEqualsAdvancedFilter)(nil)).Elem()
+}
+
+func (o NumberLessThanOrEqualsAdvancedFilterOutput) ToNumberLessThanOrEqualsAdvancedFilterOutput() NumberLessThanOrEqualsAdvancedFilterOutput {
+	return o
+}
+
+func (o NumberLessThanOrEqualsAdvancedFilterOutput) ToNumberLessThanOrEqualsAdvancedFilterOutputWithContext(ctx context.Context) NumberLessThanOrEqualsAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberLessThanOrEqualsAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberLessThanOrEqualsAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberLessThanOrEquals'.
+func (o NumberLessThanOrEqualsAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberLessThanOrEqualsAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The filter value.
+func (o NumberLessThanOrEqualsAdvancedFilterOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NumberLessThanOrEqualsAdvancedFilter) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
+}
+
 // NumberLessThanOrEquals Advanced Filter.
 type NumberLessThanOrEqualsAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -967,6 +1776,37 @@ type NumberLessThanOrEqualsAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The filter value.
 	Value *float64 `pulumi:"value"`
+}
+
+// NumberLessThanOrEquals Advanced Filter.
+type NumberLessThanOrEqualsAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (NumberLessThanOrEqualsAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberLessThanOrEqualsAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o NumberLessThanOrEqualsAdvancedFilterResponseOutput) ToNumberLessThanOrEqualsAdvancedFilterResponseOutput() NumberLessThanOrEqualsAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o NumberLessThanOrEqualsAdvancedFilterResponseOutput) ToNumberLessThanOrEqualsAdvancedFilterResponseOutputWithContext(ctx context.Context) NumberLessThanOrEqualsAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberLessThanOrEqualsAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberLessThanOrEqualsAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberLessThanOrEquals'.
+func (o NumberLessThanOrEqualsAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberLessThanOrEqualsAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The filter value.
+func (o NumberLessThanOrEqualsAdvancedFilterResponseOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NumberLessThanOrEqualsAdvancedFilterResponse) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
 }
 
 // NumberNotIn Advanced Filter.
@@ -980,6 +1820,71 @@ type NumberNotInAdvancedFilter struct {
 	Values []float64 `pulumi:"values"`
 }
 
+// NumberNotInAdvancedFilterInput is an input type that accepts NumberNotInAdvancedFilterArgs and NumberNotInAdvancedFilterOutput values.
+// You can construct a concrete instance of `NumberNotInAdvancedFilterInput` via:
+//
+//	NumberNotInAdvancedFilterArgs{...}
+type NumberNotInAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToNumberNotInAdvancedFilterOutput() NumberNotInAdvancedFilterOutput
+	ToNumberNotInAdvancedFilterOutputWithContext(context.Context) NumberNotInAdvancedFilterOutput
+}
+
+// NumberNotIn Advanced Filter.
+type NumberNotInAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberNotIn'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.Float64ArrayInput `pulumi:"values"`
+}
+
+func (NumberNotInAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberNotInAdvancedFilter)(nil)).Elem()
+}
+
+func (i NumberNotInAdvancedFilterArgs) ToNumberNotInAdvancedFilterOutput() NumberNotInAdvancedFilterOutput {
+	return i.ToNumberNotInAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i NumberNotInAdvancedFilterArgs) ToNumberNotInAdvancedFilterOutputWithContext(ctx context.Context) NumberNotInAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NumberNotInAdvancedFilterOutput)
+}
+
+// NumberNotIn Advanced Filter.
+type NumberNotInAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (NumberNotInAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberNotInAdvancedFilter)(nil)).Elem()
+}
+
+func (o NumberNotInAdvancedFilterOutput) ToNumberNotInAdvancedFilterOutput() NumberNotInAdvancedFilterOutput {
+	return o
+}
+
+func (o NumberNotInAdvancedFilterOutput) ToNumberNotInAdvancedFilterOutputWithContext(ctx context.Context) NumberNotInAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberNotInAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberNotInAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberNotIn'.
+func (o NumberNotInAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberNotInAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o NumberNotInAdvancedFilterOutput) Values() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v NumberNotInAdvancedFilter) []float64 { return v.Values }).(pulumi.Float64ArrayOutput)
+}
+
 // NumberNotIn Advanced Filter.
 type NumberNotInAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -989,6 +1894,37 @@ type NumberNotInAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values []float64 `pulumi:"values"`
+}
+
+// NumberNotIn Advanced Filter.
+type NumberNotInAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (NumberNotInAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberNotInAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o NumberNotInAdvancedFilterResponseOutput) ToNumberNotInAdvancedFilterResponseOutput() NumberNotInAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o NumberNotInAdvancedFilterResponseOutput) ToNumberNotInAdvancedFilterResponseOutputWithContext(ctx context.Context) NumberNotInAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberNotInAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberNotInAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberNotIn'.
+func (o NumberNotInAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberNotInAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o NumberNotInAdvancedFilterResponseOutput) Values() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v NumberNotInAdvancedFilterResponse) []float64 { return v.Values }).(pulumi.Float64ArrayOutput)
 }
 
 // NumberNotInRange Advanced Filter.
@@ -1002,6 +1938,71 @@ type NumberNotInRangeAdvancedFilter struct {
 	Values [][]float64 `pulumi:"values"`
 }
 
+// NumberNotInRangeAdvancedFilterInput is an input type that accepts NumberNotInRangeAdvancedFilterArgs and NumberNotInRangeAdvancedFilterOutput values.
+// You can construct a concrete instance of `NumberNotInRangeAdvancedFilterInput` via:
+//
+//	NumberNotInRangeAdvancedFilterArgs{...}
+type NumberNotInRangeAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToNumberNotInRangeAdvancedFilterOutput() NumberNotInRangeAdvancedFilterOutput
+	ToNumberNotInRangeAdvancedFilterOutputWithContext(context.Context) NumberNotInRangeAdvancedFilterOutput
+}
+
+// NumberNotInRange Advanced Filter.
+type NumberNotInRangeAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberNotInRange'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.Float64ArrayArrayInput `pulumi:"values"`
+}
+
+func (NumberNotInRangeAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberNotInRangeAdvancedFilter)(nil)).Elem()
+}
+
+func (i NumberNotInRangeAdvancedFilterArgs) ToNumberNotInRangeAdvancedFilterOutput() NumberNotInRangeAdvancedFilterOutput {
+	return i.ToNumberNotInRangeAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i NumberNotInRangeAdvancedFilterArgs) ToNumberNotInRangeAdvancedFilterOutputWithContext(ctx context.Context) NumberNotInRangeAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NumberNotInRangeAdvancedFilterOutput)
+}
+
+// NumberNotInRange Advanced Filter.
+type NumberNotInRangeAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (NumberNotInRangeAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberNotInRangeAdvancedFilter)(nil)).Elem()
+}
+
+func (o NumberNotInRangeAdvancedFilterOutput) ToNumberNotInRangeAdvancedFilterOutput() NumberNotInRangeAdvancedFilterOutput {
+	return o
+}
+
+func (o NumberNotInRangeAdvancedFilterOutput) ToNumberNotInRangeAdvancedFilterOutputWithContext(ctx context.Context) NumberNotInRangeAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberNotInRangeAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberNotInRangeAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberNotInRange'.
+func (o NumberNotInRangeAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberNotInRangeAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o NumberNotInRangeAdvancedFilterOutput) Values() pulumi.Float64ArrayArrayOutput {
+	return o.ApplyT(func(v NumberNotInRangeAdvancedFilter) [][]float64 { return v.Values }).(pulumi.Float64ArrayArrayOutput)
+}
+
 // NumberNotInRange Advanced Filter.
 type NumberNotInRangeAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -1011,6 +2012,37 @@ type NumberNotInRangeAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values [][]float64 `pulumi:"values"`
+}
+
+// NumberNotInRange Advanced Filter.
+type NumberNotInRangeAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (NumberNotInRangeAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberNotInRangeAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o NumberNotInRangeAdvancedFilterResponseOutput) ToNumberNotInRangeAdvancedFilterResponseOutput() NumberNotInRangeAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o NumberNotInRangeAdvancedFilterResponseOutput) ToNumberNotInRangeAdvancedFilterResponseOutputWithContext(ctx context.Context) NumberNotInRangeAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberNotInRangeAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberNotInRangeAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberNotInRange'.
+func (o NumberNotInRangeAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberNotInRangeAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o NumberNotInRangeAdvancedFilterResponseOutput) Values() pulumi.Float64ArrayArrayOutput {
+	return o.ApplyT(func(v NumberNotInRangeAdvancedFilterResponse) [][]float64 { return v.Values }).(pulumi.Float64ArrayArrayOutput)
 }
 
 // StringBeginsWith Advanced Filter.
@@ -1024,6 +2056,71 @@ type StringBeginsWithAdvancedFilter struct {
 	Values []string `pulumi:"values"`
 }
 
+// StringBeginsWithAdvancedFilterInput is an input type that accepts StringBeginsWithAdvancedFilterArgs and StringBeginsWithAdvancedFilterOutput values.
+// You can construct a concrete instance of `StringBeginsWithAdvancedFilterInput` via:
+//
+//	StringBeginsWithAdvancedFilterArgs{...}
+type StringBeginsWithAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToStringBeginsWithAdvancedFilterOutput() StringBeginsWithAdvancedFilterOutput
+	ToStringBeginsWithAdvancedFilterOutputWithContext(context.Context) StringBeginsWithAdvancedFilterOutput
+}
+
+// StringBeginsWith Advanced Filter.
+type StringBeginsWithAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringBeginsWith'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (StringBeginsWithAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringBeginsWithAdvancedFilter)(nil)).Elem()
+}
+
+func (i StringBeginsWithAdvancedFilterArgs) ToStringBeginsWithAdvancedFilterOutput() StringBeginsWithAdvancedFilterOutput {
+	return i.ToStringBeginsWithAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i StringBeginsWithAdvancedFilterArgs) ToStringBeginsWithAdvancedFilterOutputWithContext(ctx context.Context) StringBeginsWithAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StringBeginsWithAdvancedFilterOutput)
+}
+
+// StringBeginsWith Advanced Filter.
+type StringBeginsWithAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (StringBeginsWithAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringBeginsWithAdvancedFilter)(nil)).Elem()
+}
+
+func (o StringBeginsWithAdvancedFilterOutput) ToStringBeginsWithAdvancedFilterOutput() StringBeginsWithAdvancedFilterOutput {
+	return o
+}
+
+func (o StringBeginsWithAdvancedFilterOutput) ToStringBeginsWithAdvancedFilterOutputWithContext(ctx context.Context) StringBeginsWithAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringBeginsWithAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringBeginsWithAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringBeginsWith'.
+func (o StringBeginsWithAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringBeginsWithAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringBeginsWithAdvancedFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringBeginsWithAdvancedFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
 // StringBeginsWith Advanced Filter.
 type StringBeginsWithAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -1033,6 +2130,37 @@ type StringBeginsWithAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values []string `pulumi:"values"`
+}
+
+// StringBeginsWith Advanced Filter.
+type StringBeginsWithAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (StringBeginsWithAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringBeginsWithAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o StringBeginsWithAdvancedFilterResponseOutput) ToStringBeginsWithAdvancedFilterResponseOutput() StringBeginsWithAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o StringBeginsWithAdvancedFilterResponseOutput) ToStringBeginsWithAdvancedFilterResponseOutputWithContext(ctx context.Context) StringBeginsWithAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringBeginsWithAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringBeginsWithAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringBeginsWith'.
+func (o StringBeginsWithAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringBeginsWithAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringBeginsWithAdvancedFilterResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringBeginsWithAdvancedFilterResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 // StringContains Advanced Filter.
@@ -1046,6 +2174,71 @@ type StringContainsAdvancedFilter struct {
 	Values []string `pulumi:"values"`
 }
 
+// StringContainsAdvancedFilterInput is an input type that accepts StringContainsAdvancedFilterArgs and StringContainsAdvancedFilterOutput values.
+// You can construct a concrete instance of `StringContainsAdvancedFilterInput` via:
+//
+//	StringContainsAdvancedFilterArgs{...}
+type StringContainsAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToStringContainsAdvancedFilterOutput() StringContainsAdvancedFilterOutput
+	ToStringContainsAdvancedFilterOutputWithContext(context.Context) StringContainsAdvancedFilterOutput
+}
+
+// StringContains Advanced Filter.
+type StringContainsAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringContains'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (StringContainsAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringContainsAdvancedFilter)(nil)).Elem()
+}
+
+func (i StringContainsAdvancedFilterArgs) ToStringContainsAdvancedFilterOutput() StringContainsAdvancedFilterOutput {
+	return i.ToStringContainsAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i StringContainsAdvancedFilterArgs) ToStringContainsAdvancedFilterOutputWithContext(ctx context.Context) StringContainsAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StringContainsAdvancedFilterOutput)
+}
+
+// StringContains Advanced Filter.
+type StringContainsAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (StringContainsAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringContainsAdvancedFilter)(nil)).Elem()
+}
+
+func (o StringContainsAdvancedFilterOutput) ToStringContainsAdvancedFilterOutput() StringContainsAdvancedFilterOutput {
+	return o
+}
+
+func (o StringContainsAdvancedFilterOutput) ToStringContainsAdvancedFilterOutputWithContext(ctx context.Context) StringContainsAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringContainsAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringContainsAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringContains'.
+func (o StringContainsAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringContainsAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringContainsAdvancedFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringContainsAdvancedFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
 // StringContains Advanced Filter.
 type StringContainsAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -1055,6 +2248,37 @@ type StringContainsAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values []string `pulumi:"values"`
+}
+
+// StringContains Advanced Filter.
+type StringContainsAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (StringContainsAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringContainsAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o StringContainsAdvancedFilterResponseOutput) ToStringContainsAdvancedFilterResponseOutput() StringContainsAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o StringContainsAdvancedFilterResponseOutput) ToStringContainsAdvancedFilterResponseOutputWithContext(ctx context.Context) StringContainsAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringContainsAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringContainsAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringContains'.
+func (o StringContainsAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringContainsAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringContainsAdvancedFilterResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringContainsAdvancedFilterResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 // StringEndsWith Advanced Filter.
@@ -1068,6 +2292,71 @@ type StringEndsWithAdvancedFilter struct {
 	Values []string `pulumi:"values"`
 }
 
+// StringEndsWithAdvancedFilterInput is an input type that accepts StringEndsWithAdvancedFilterArgs and StringEndsWithAdvancedFilterOutput values.
+// You can construct a concrete instance of `StringEndsWithAdvancedFilterInput` via:
+//
+//	StringEndsWithAdvancedFilterArgs{...}
+type StringEndsWithAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToStringEndsWithAdvancedFilterOutput() StringEndsWithAdvancedFilterOutput
+	ToStringEndsWithAdvancedFilterOutputWithContext(context.Context) StringEndsWithAdvancedFilterOutput
+}
+
+// StringEndsWith Advanced Filter.
+type StringEndsWithAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringEndsWith'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (StringEndsWithAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringEndsWithAdvancedFilter)(nil)).Elem()
+}
+
+func (i StringEndsWithAdvancedFilterArgs) ToStringEndsWithAdvancedFilterOutput() StringEndsWithAdvancedFilterOutput {
+	return i.ToStringEndsWithAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i StringEndsWithAdvancedFilterArgs) ToStringEndsWithAdvancedFilterOutputWithContext(ctx context.Context) StringEndsWithAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StringEndsWithAdvancedFilterOutput)
+}
+
+// StringEndsWith Advanced Filter.
+type StringEndsWithAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (StringEndsWithAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringEndsWithAdvancedFilter)(nil)).Elem()
+}
+
+func (o StringEndsWithAdvancedFilterOutput) ToStringEndsWithAdvancedFilterOutput() StringEndsWithAdvancedFilterOutput {
+	return o
+}
+
+func (o StringEndsWithAdvancedFilterOutput) ToStringEndsWithAdvancedFilterOutputWithContext(ctx context.Context) StringEndsWithAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringEndsWithAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringEndsWithAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringEndsWith'.
+func (o StringEndsWithAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringEndsWithAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringEndsWithAdvancedFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringEndsWithAdvancedFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
 // StringEndsWith Advanced Filter.
 type StringEndsWithAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -1077,6 +2366,37 @@ type StringEndsWithAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values []string `pulumi:"values"`
+}
+
+// StringEndsWith Advanced Filter.
+type StringEndsWithAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (StringEndsWithAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringEndsWithAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o StringEndsWithAdvancedFilterResponseOutput) ToStringEndsWithAdvancedFilterResponseOutput() StringEndsWithAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o StringEndsWithAdvancedFilterResponseOutput) ToStringEndsWithAdvancedFilterResponseOutputWithContext(ctx context.Context) StringEndsWithAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringEndsWithAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringEndsWithAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringEndsWith'.
+func (o StringEndsWithAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringEndsWithAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringEndsWithAdvancedFilterResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringEndsWithAdvancedFilterResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 // StringIn Advanced Filter.
@@ -1090,6 +2410,71 @@ type StringInAdvancedFilter struct {
 	Values []string `pulumi:"values"`
 }
 
+// StringInAdvancedFilterInput is an input type that accepts StringInAdvancedFilterArgs and StringInAdvancedFilterOutput values.
+// You can construct a concrete instance of `StringInAdvancedFilterInput` via:
+//
+//	StringInAdvancedFilterArgs{...}
+type StringInAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToStringInAdvancedFilterOutput() StringInAdvancedFilterOutput
+	ToStringInAdvancedFilterOutputWithContext(context.Context) StringInAdvancedFilterOutput
+}
+
+// StringIn Advanced Filter.
+type StringInAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringIn'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (StringInAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringInAdvancedFilter)(nil)).Elem()
+}
+
+func (i StringInAdvancedFilterArgs) ToStringInAdvancedFilterOutput() StringInAdvancedFilterOutput {
+	return i.ToStringInAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i StringInAdvancedFilterArgs) ToStringInAdvancedFilterOutputWithContext(ctx context.Context) StringInAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StringInAdvancedFilterOutput)
+}
+
+// StringIn Advanced Filter.
+type StringInAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (StringInAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringInAdvancedFilter)(nil)).Elem()
+}
+
+func (o StringInAdvancedFilterOutput) ToStringInAdvancedFilterOutput() StringInAdvancedFilterOutput {
+	return o
+}
+
+func (o StringInAdvancedFilterOutput) ToStringInAdvancedFilterOutputWithContext(ctx context.Context) StringInAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringInAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringInAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringIn'.
+func (o StringInAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringInAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringInAdvancedFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringInAdvancedFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
 // StringIn Advanced Filter.
 type StringInAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -1099,6 +2484,37 @@ type StringInAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values []string `pulumi:"values"`
+}
+
+// StringIn Advanced Filter.
+type StringInAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (StringInAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringInAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o StringInAdvancedFilterResponseOutput) ToStringInAdvancedFilterResponseOutput() StringInAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o StringInAdvancedFilterResponseOutput) ToStringInAdvancedFilterResponseOutputWithContext(ctx context.Context) StringInAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringInAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringInAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringIn'.
+func (o StringInAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringInAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringInAdvancedFilterResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringInAdvancedFilterResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 // StringNotBeginsWith Advanced Filter.
@@ -1112,6 +2528,71 @@ type StringNotBeginsWithAdvancedFilter struct {
 	Values []string `pulumi:"values"`
 }
 
+// StringNotBeginsWithAdvancedFilterInput is an input type that accepts StringNotBeginsWithAdvancedFilterArgs and StringNotBeginsWithAdvancedFilterOutput values.
+// You can construct a concrete instance of `StringNotBeginsWithAdvancedFilterInput` via:
+//
+//	StringNotBeginsWithAdvancedFilterArgs{...}
+type StringNotBeginsWithAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToStringNotBeginsWithAdvancedFilterOutput() StringNotBeginsWithAdvancedFilterOutput
+	ToStringNotBeginsWithAdvancedFilterOutputWithContext(context.Context) StringNotBeginsWithAdvancedFilterOutput
+}
+
+// StringNotBeginsWith Advanced Filter.
+type StringNotBeginsWithAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringNotBeginsWith'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (StringNotBeginsWithAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotBeginsWithAdvancedFilter)(nil)).Elem()
+}
+
+func (i StringNotBeginsWithAdvancedFilterArgs) ToStringNotBeginsWithAdvancedFilterOutput() StringNotBeginsWithAdvancedFilterOutput {
+	return i.ToStringNotBeginsWithAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i StringNotBeginsWithAdvancedFilterArgs) ToStringNotBeginsWithAdvancedFilterOutputWithContext(ctx context.Context) StringNotBeginsWithAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StringNotBeginsWithAdvancedFilterOutput)
+}
+
+// StringNotBeginsWith Advanced Filter.
+type StringNotBeginsWithAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (StringNotBeginsWithAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotBeginsWithAdvancedFilter)(nil)).Elem()
+}
+
+func (o StringNotBeginsWithAdvancedFilterOutput) ToStringNotBeginsWithAdvancedFilterOutput() StringNotBeginsWithAdvancedFilterOutput {
+	return o
+}
+
+func (o StringNotBeginsWithAdvancedFilterOutput) ToStringNotBeginsWithAdvancedFilterOutputWithContext(ctx context.Context) StringNotBeginsWithAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringNotBeginsWithAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringNotBeginsWithAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringNotBeginsWith'.
+func (o StringNotBeginsWithAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringNotBeginsWithAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringNotBeginsWithAdvancedFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringNotBeginsWithAdvancedFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
 // StringNotBeginsWith Advanced Filter.
 type StringNotBeginsWithAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -1121,6 +2602,37 @@ type StringNotBeginsWithAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values []string `pulumi:"values"`
+}
+
+// StringNotBeginsWith Advanced Filter.
+type StringNotBeginsWithAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (StringNotBeginsWithAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotBeginsWithAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o StringNotBeginsWithAdvancedFilterResponseOutput) ToStringNotBeginsWithAdvancedFilterResponseOutput() StringNotBeginsWithAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o StringNotBeginsWithAdvancedFilterResponseOutput) ToStringNotBeginsWithAdvancedFilterResponseOutputWithContext(ctx context.Context) StringNotBeginsWithAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringNotBeginsWithAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringNotBeginsWithAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringNotBeginsWith'.
+func (o StringNotBeginsWithAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringNotBeginsWithAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringNotBeginsWithAdvancedFilterResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringNotBeginsWithAdvancedFilterResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 // StringNotContains Advanced Filter.
@@ -1134,6 +2646,71 @@ type StringNotContainsAdvancedFilter struct {
 	Values []string `pulumi:"values"`
 }
 
+// StringNotContainsAdvancedFilterInput is an input type that accepts StringNotContainsAdvancedFilterArgs and StringNotContainsAdvancedFilterOutput values.
+// You can construct a concrete instance of `StringNotContainsAdvancedFilterInput` via:
+//
+//	StringNotContainsAdvancedFilterArgs{...}
+type StringNotContainsAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToStringNotContainsAdvancedFilterOutput() StringNotContainsAdvancedFilterOutput
+	ToStringNotContainsAdvancedFilterOutputWithContext(context.Context) StringNotContainsAdvancedFilterOutput
+}
+
+// StringNotContains Advanced Filter.
+type StringNotContainsAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringNotContains'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (StringNotContainsAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotContainsAdvancedFilter)(nil)).Elem()
+}
+
+func (i StringNotContainsAdvancedFilterArgs) ToStringNotContainsAdvancedFilterOutput() StringNotContainsAdvancedFilterOutput {
+	return i.ToStringNotContainsAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i StringNotContainsAdvancedFilterArgs) ToStringNotContainsAdvancedFilterOutputWithContext(ctx context.Context) StringNotContainsAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StringNotContainsAdvancedFilterOutput)
+}
+
+// StringNotContains Advanced Filter.
+type StringNotContainsAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (StringNotContainsAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotContainsAdvancedFilter)(nil)).Elem()
+}
+
+func (o StringNotContainsAdvancedFilterOutput) ToStringNotContainsAdvancedFilterOutput() StringNotContainsAdvancedFilterOutput {
+	return o
+}
+
+func (o StringNotContainsAdvancedFilterOutput) ToStringNotContainsAdvancedFilterOutputWithContext(ctx context.Context) StringNotContainsAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringNotContainsAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringNotContainsAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringNotContains'.
+func (o StringNotContainsAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringNotContainsAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringNotContainsAdvancedFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringNotContainsAdvancedFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
 // StringNotContains Advanced Filter.
 type StringNotContainsAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -1143,6 +2720,37 @@ type StringNotContainsAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values []string `pulumi:"values"`
+}
+
+// StringNotContains Advanced Filter.
+type StringNotContainsAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (StringNotContainsAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotContainsAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o StringNotContainsAdvancedFilterResponseOutput) ToStringNotContainsAdvancedFilterResponseOutput() StringNotContainsAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o StringNotContainsAdvancedFilterResponseOutput) ToStringNotContainsAdvancedFilterResponseOutputWithContext(ctx context.Context) StringNotContainsAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringNotContainsAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringNotContainsAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringNotContains'.
+func (o StringNotContainsAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringNotContainsAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringNotContainsAdvancedFilterResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringNotContainsAdvancedFilterResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 // StringNotEndsWith Advanced Filter.
@@ -1156,6 +2764,71 @@ type StringNotEndsWithAdvancedFilter struct {
 	Values []string `pulumi:"values"`
 }
 
+// StringNotEndsWithAdvancedFilterInput is an input type that accepts StringNotEndsWithAdvancedFilterArgs and StringNotEndsWithAdvancedFilterOutput values.
+// You can construct a concrete instance of `StringNotEndsWithAdvancedFilterInput` via:
+//
+//	StringNotEndsWithAdvancedFilterArgs{...}
+type StringNotEndsWithAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToStringNotEndsWithAdvancedFilterOutput() StringNotEndsWithAdvancedFilterOutput
+	ToStringNotEndsWithAdvancedFilterOutputWithContext(context.Context) StringNotEndsWithAdvancedFilterOutput
+}
+
+// StringNotEndsWith Advanced Filter.
+type StringNotEndsWithAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringNotEndsWith'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (StringNotEndsWithAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotEndsWithAdvancedFilter)(nil)).Elem()
+}
+
+func (i StringNotEndsWithAdvancedFilterArgs) ToStringNotEndsWithAdvancedFilterOutput() StringNotEndsWithAdvancedFilterOutput {
+	return i.ToStringNotEndsWithAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i StringNotEndsWithAdvancedFilterArgs) ToStringNotEndsWithAdvancedFilterOutputWithContext(ctx context.Context) StringNotEndsWithAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StringNotEndsWithAdvancedFilterOutput)
+}
+
+// StringNotEndsWith Advanced Filter.
+type StringNotEndsWithAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (StringNotEndsWithAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotEndsWithAdvancedFilter)(nil)).Elem()
+}
+
+func (o StringNotEndsWithAdvancedFilterOutput) ToStringNotEndsWithAdvancedFilterOutput() StringNotEndsWithAdvancedFilterOutput {
+	return o
+}
+
+func (o StringNotEndsWithAdvancedFilterOutput) ToStringNotEndsWithAdvancedFilterOutputWithContext(ctx context.Context) StringNotEndsWithAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringNotEndsWithAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringNotEndsWithAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringNotEndsWith'.
+func (o StringNotEndsWithAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringNotEndsWithAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringNotEndsWithAdvancedFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringNotEndsWithAdvancedFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
 // StringNotEndsWith Advanced Filter.
 type StringNotEndsWithAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -1165,6 +2838,37 @@ type StringNotEndsWithAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values []string `pulumi:"values"`
+}
+
+// StringNotEndsWith Advanced Filter.
+type StringNotEndsWithAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (StringNotEndsWithAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotEndsWithAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o StringNotEndsWithAdvancedFilterResponseOutput) ToStringNotEndsWithAdvancedFilterResponseOutput() StringNotEndsWithAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o StringNotEndsWithAdvancedFilterResponseOutput) ToStringNotEndsWithAdvancedFilterResponseOutputWithContext(ctx context.Context) StringNotEndsWithAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringNotEndsWithAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringNotEndsWithAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringNotEndsWith'.
+func (o StringNotEndsWithAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringNotEndsWithAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringNotEndsWithAdvancedFilterResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringNotEndsWithAdvancedFilterResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 // StringNotIn Advanced Filter.
@@ -1178,6 +2882,71 @@ type StringNotInAdvancedFilter struct {
 	Values []string `pulumi:"values"`
 }
 
+// StringNotInAdvancedFilterInput is an input type that accepts StringNotInAdvancedFilterArgs and StringNotInAdvancedFilterOutput values.
+// You can construct a concrete instance of `StringNotInAdvancedFilterInput` via:
+//
+//	StringNotInAdvancedFilterArgs{...}
+type StringNotInAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToStringNotInAdvancedFilterOutput() StringNotInAdvancedFilterOutput
+	ToStringNotInAdvancedFilterOutputWithContext(context.Context) StringNotInAdvancedFilterOutput
+}
+
+// StringNotIn Advanced Filter.
+type StringNotInAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringNotIn'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (StringNotInAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotInAdvancedFilter)(nil)).Elem()
+}
+
+func (i StringNotInAdvancedFilterArgs) ToStringNotInAdvancedFilterOutput() StringNotInAdvancedFilterOutput {
+	return i.ToStringNotInAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i StringNotInAdvancedFilterArgs) ToStringNotInAdvancedFilterOutputWithContext(ctx context.Context) StringNotInAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StringNotInAdvancedFilterOutput)
+}
+
+// StringNotIn Advanced Filter.
+type StringNotInAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (StringNotInAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotInAdvancedFilter)(nil)).Elem()
+}
+
+func (o StringNotInAdvancedFilterOutput) ToStringNotInAdvancedFilterOutput() StringNotInAdvancedFilterOutput {
+	return o
+}
+
+func (o StringNotInAdvancedFilterOutput) ToStringNotInAdvancedFilterOutputWithContext(ctx context.Context) StringNotInAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringNotInAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringNotInAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringNotIn'.
+func (o StringNotInAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringNotInAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringNotInAdvancedFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringNotInAdvancedFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
 // StringNotIn Advanced Filter.
 type StringNotInAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -1187,6 +2956,37 @@ type StringNotInAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values []string `pulumi:"values"`
+}
+
+// StringNotIn Advanced Filter.
+type StringNotInAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (StringNotInAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotInAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o StringNotInAdvancedFilterResponseOutput) ToStringNotInAdvancedFilterResponseOutput() StringNotInAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o StringNotInAdvancedFilterResponseOutput) ToStringNotInAdvancedFilterResponseOutputWithContext(ctx context.Context) StringNotInAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringNotInAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringNotInAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringNotIn'.
+func (o StringNotInAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringNotInAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringNotInAdvancedFilterResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringNotInAdvancedFilterResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -1251,6 +3051,8 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(BoolEqualsAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(BoolEqualsAdvancedFilterResponseOutput{})
 	pulumi.RegisterOutputType(EventChannelDestinationOutput{})
 	pulumi.RegisterOutputType(EventChannelDestinationPtrOutput{})
 	pulumi.RegisterOutputType(EventChannelDestinationResponseOutput{})
@@ -1263,5 +3065,41 @@ func init() {
 	pulumi.RegisterOutputType(EventChannelSourcePtrOutput{})
 	pulumi.RegisterOutputType(EventChannelSourceResponseOutput{})
 	pulumi.RegisterOutputType(EventChannelSourceResponsePtrOutput{})
+	pulumi.RegisterOutputType(IsNotNullAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(IsNotNullAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(IsNullOrUndefinedAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(IsNullOrUndefinedAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(NumberGreaterThanAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(NumberGreaterThanAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(NumberGreaterThanOrEqualsAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(NumberGreaterThanOrEqualsAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(NumberInAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(NumberInAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(NumberInRangeAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(NumberInRangeAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(NumberLessThanAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(NumberLessThanAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(NumberLessThanOrEqualsAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(NumberLessThanOrEqualsAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(NumberNotInAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(NumberNotInAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(NumberNotInRangeAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(NumberNotInRangeAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(StringBeginsWithAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(StringBeginsWithAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(StringContainsAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(StringContainsAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(StringEndsWithAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(StringEndsWithAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(StringInAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(StringInAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(StringNotBeginsWithAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(StringNotBeginsWithAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(StringNotContainsAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(StringNotContainsAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(StringNotEndsWithAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(StringNotEndsWithAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(StringNotInAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(StringNotInAdvancedFilterResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 }

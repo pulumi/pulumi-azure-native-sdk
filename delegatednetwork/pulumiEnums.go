@@ -18,6 +18,169 @@ const (
 	OrchestratorKindKubernetes = OrchestratorKind("Kubernetes")
 )
 
+func (OrchestratorKind) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrchestratorKind)(nil)).Elem()
+}
+
+func (e OrchestratorKind) ToOrchestratorKindOutput() OrchestratorKindOutput {
+	return pulumi.ToOutput(e).(OrchestratorKindOutput)
+}
+
+func (e OrchestratorKind) ToOrchestratorKindOutputWithContext(ctx context.Context) OrchestratorKindOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OrchestratorKindOutput)
+}
+
+func (e OrchestratorKind) ToOrchestratorKindPtrOutput() OrchestratorKindPtrOutput {
+	return e.ToOrchestratorKindPtrOutputWithContext(context.Background())
+}
+
+func (e OrchestratorKind) ToOrchestratorKindPtrOutputWithContext(ctx context.Context) OrchestratorKindPtrOutput {
+	return OrchestratorKind(e).ToOrchestratorKindOutputWithContext(ctx).ToOrchestratorKindPtrOutputWithContext(ctx)
+}
+
+func (e OrchestratorKind) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OrchestratorKind) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OrchestratorKind) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e OrchestratorKind) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type OrchestratorKindOutput struct{ *pulumi.OutputState }
+
+func (OrchestratorKindOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrchestratorKind)(nil)).Elem()
+}
+
+func (o OrchestratorKindOutput) ToOrchestratorKindOutput() OrchestratorKindOutput {
+	return o
+}
+
+func (o OrchestratorKindOutput) ToOrchestratorKindOutputWithContext(ctx context.Context) OrchestratorKindOutput {
+	return o
+}
+
+func (o OrchestratorKindOutput) ToOrchestratorKindPtrOutput() OrchestratorKindPtrOutput {
+	return o.ToOrchestratorKindPtrOutputWithContext(context.Background())
+}
+
+func (o OrchestratorKindOutput) ToOrchestratorKindPtrOutputWithContext(ctx context.Context) OrchestratorKindPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrchestratorKind) *OrchestratorKind {
+		return &v
+	}).(OrchestratorKindPtrOutput)
+}
+
+func (o OrchestratorKindOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OrchestratorKindOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrchestratorKind) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OrchestratorKindOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrchestratorKindOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrchestratorKind) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OrchestratorKindPtrOutput struct{ *pulumi.OutputState }
+
+func (OrchestratorKindPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrchestratorKind)(nil)).Elem()
+}
+
+func (o OrchestratorKindPtrOutput) ToOrchestratorKindPtrOutput() OrchestratorKindPtrOutput {
+	return o
+}
+
+func (o OrchestratorKindPtrOutput) ToOrchestratorKindPtrOutputWithContext(ctx context.Context) OrchestratorKindPtrOutput {
+	return o
+}
+
+func (o OrchestratorKindPtrOutput) Elem() OrchestratorKindOutput {
+	return o.ApplyT(func(v *OrchestratorKind) OrchestratorKind {
+		if v != nil {
+			return *v
+		}
+		var ret OrchestratorKind
+		return ret
+	}).(OrchestratorKindOutput)
+}
+
+func (o OrchestratorKindPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrchestratorKindPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OrchestratorKind) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// OrchestratorKindInput is an input type that accepts values of the OrchestratorKind enum
+// A concrete instance of `OrchestratorKindInput` can be one of the following:
+//
+//	OrchestratorKindKubernetes
+type OrchestratorKindInput interface {
+	pulumi.Input
+
+	ToOrchestratorKindOutput() OrchestratorKindOutput
+	ToOrchestratorKindOutputWithContext(context.Context) OrchestratorKindOutput
+}
+
+var orchestratorKindPtrType = reflect.TypeOf((**OrchestratorKind)(nil)).Elem()
+
+type OrchestratorKindPtrInput interface {
+	pulumi.Input
+
+	ToOrchestratorKindPtrOutput() OrchestratorKindPtrOutput
+	ToOrchestratorKindPtrOutputWithContext(context.Context) OrchestratorKindPtrOutput
+}
+
+type orchestratorKindPtr string
+
+func OrchestratorKindPtr(v string) OrchestratorKindPtrInput {
+	return (*orchestratorKindPtr)(&v)
+}
+
+func (*orchestratorKindPtr) ElementType() reflect.Type {
+	return orchestratorKindPtrType
+}
+
+func (in *orchestratorKindPtr) ToOrchestratorKindPtrOutput() OrchestratorKindPtrOutput {
+	return pulumi.ToOutput(in).(OrchestratorKindPtrOutput)
+}
+
+func (in *orchestratorKindPtr) ToOrchestratorKindPtrOutputWithContext(ctx context.Context) OrchestratorKindPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OrchestratorKindPtrOutput)
+}
+
+func (in *orchestratorKindPtr) ToOutput(ctx context.Context) pulumix.Output[*OrchestratorKind] {
+	return pulumix.Output[*OrchestratorKind]{
+		OutputState: in.ToOrchestratorKindPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // The type of identity used for orchestrator cluster. Type 'SystemAssigned' will use an implicitly created identity orchestrator clusters
 type ResourceIdentityType string
 
@@ -145,10 +308,11 @@ func (o ResourceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// ResourceIdentityTypeInput is an input type that accepts ResourceIdentityTypeArgs and ResourceIdentityTypeOutput values.
-// You can construct a concrete instance of `ResourceIdentityTypeInput` via:
+// ResourceIdentityTypeInput is an input type that accepts values of the ResourceIdentityType enum
+// A concrete instance of `ResourceIdentityTypeInput` can be one of the following:
 //
-//	ResourceIdentityTypeArgs{...}
+//	ResourceIdentityTypeSystemAssigned
+//	ResourceIdentityTypeNone
 type ResourceIdentityTypeInput interface {
 	pulumi.Input
 
@@ -190,6 +354,8 @@ func (in *resourceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[
 }
 
 func init() {
+	pulumi.RegisterOutputType(OrchestratorKindOutput{})
+	pulumi.RegisterOutputType(OrchestratorKindPtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypePtrOutput{})
 }

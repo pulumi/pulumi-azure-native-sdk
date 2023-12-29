@@ -30,6 +30,228 @@ type ActionGroup struct {
 	Type string `pulumi:"type"`
 }
 
+// ActionGroupInput is an input type that accepts ActionGroupArgs and ActionGroupOutput values.
+// You can construct a concrete instance of `ActionGroupInput` via:
+//
+//	ActionGroupArgs{...}
+type ActionGroupInput interface {
+	pulumi.Input
+
+	ToActionGroupOutput() ActionGroupOutput
+	ToActionGroupOutputWithContext(context.Context) ActionGroupOutput
+}
+
+// Action rule with action group configuration
+type ActionGroupArgs struct {
+	// Action group to trigger if action rule matches
+	ActionGroupId pulumi.StringInput `pulumi:"actionGroupId"`
+	// conditions on which alerts will be filtered
+	Conditions ConditionsPtrInput `pulumi:"conditions"`
+	// Description of action rule
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// scope on which action rule will apply
+	Scope ScopePtrInput `pulumi:"scope"`
+	// Indicates if the given action rule is enabled or disabled
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Indicates type of action rule
+	// Expected value is 'ActionGroup'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ActionGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionGroup)(nil)).Elem()
+}
+
+func (i ActionGroupArgs) ToActionGroupOutput() ActionGroupOutput {
+	return i.ToActionGroupOutputWithContext(context.Background())
+}
+
+func (i ActionGroupArgs) ToActionGroupOutputWithContext(ctx context.Context) ActionGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionGroupOutput)
+}
+
+func (i ActionGroupArgs) ToActionGroupPtrOutput() ActionGroupPtrOutput {
+	return i.ToActionGroupPtrOutputWithContext(context.Background())
+}
+
+func (i ActionGroupArgs) ToActionGroupPtrOutputWithContext(ctx context.Context) ActionGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionGroupOutput).ToActionGroupPtrOutputWithContext(ctx)
+}
+
+// ActionGroupPtrInput is an input type that accepts ActionGroupArgs, ActionGroupPtr and ActionGroupPtrOutput values.
+// You can construct a concrete instance of `ActionGroupPtrInput` via:
+//
+//	        ActionGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionGroupPtrInput interface {
+	pulumi.Input
+
+	ToActionGroupPtrOutput() ActionGroupPtrOutput
+	ToActionGroupPtrOutputWithContext(context.Context) ActionGroupPtrOutput
+}
+
+type actionGroupPtrType ActionGroupArgs
+
+func ActionGroupPtr(v *ActionGroupArgs) ActionGroupPtrInput {
+	return (*actionGroupPtrType)(v)
+}
+
+func (*actionGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionGroup)(nil)).Elem()
+}
+
+func (i *actionGroupPtrType) ToActionGroupPtrOutput() ActionGroupPtrOutput {
+	return i.ToActionGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *actionGroupPtrType) ToActionGroupPtrOutputWithContext(ctx context.Context) ActionGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionGroupPtrOutput)
+}
+
+// Action rule with action group configuration
+type ActionGroupOutput struct{ *pulumi.OutputState }
+
+func (ActionGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionGroup)(nil)).Elem()
+}
+
+func (o ActionGroupOutput) ToActionGroupOutput() ActionGroupOutput {
+	return o
+}
+
+func (o ActionGroupOutput) ToActionGroupOutputWithContext(ctx context.Context) ActionGroupOutput {
+	return o
+}
+
+func (o ActionGroupOutput) ToActionGroupPtrOutput() ActionGroupPtrOutput {
+	return o.ToActionGroupPtrOutputWithContext(context.Background())
+}
+
+func (o ActionGroupOutput) ToActionGroupPtrOutputWithContext(ctx context.Context) ActionGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionGroup) *ActionGroup {
+		return &v
+	}).(ActionGroupPtrOutput)
+}
+
+// Action group to trigger if action rule matches
+func (o ActionGroupOutput) ActionGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionGroup) string { return v.ActionGroupId }).(pulumi.StringOutput)
+}
+
+// conditions on which alerts will be filtered
+func (o ActionGroupOutput) Conditions() ConditionsPtrOutput {
+	return o.ApplyT(func(v ActionGroup) *Conditions { return v.Conditions }).(ConditionsPtrOutput)
+}
+
+// Description of action rule
+func (o ActionGroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionGroup) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// scope on which action rule will apply
+func (o ActionGroupOutput) Scope() ScopePtrOutput {
+	return o.ApplyT(func(v ActionGroup) *Scope { return v.Scope }).(ScopePtrOutput)
+}
+
+// Indicates if the given action rule is enabled or disabled
+func (o ActionGroupOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionGroup) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Indicates type of action rule
+// Expected value is 'ActionGroup'.
+func (o ActionGroupOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionGroup) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ActionGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (ActionGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionGroup)(nil)).Elem()
+}
+
+func (o ActionGroupPtrOutput) ToActionGroupPtrOutput() ActionGroupPtrOutput {
+	return o
+}
+
+func (o ActionGroupPtrOutput) ToActionGroupPtrOutputWithContext(ctx context.Context) ActionGroupPtrOutput {
+	return o
+}
+
+func (o ActionGroupPtrOutput) Elem() ActionGroupOutput {
+	return o.ApplyT(func(v *ActionGroup) ActionGroup {
+		if v != nil {
+			return *v
+		}
+		var ret ActionGroup
+		return ret
+	}).(ActionGroupOutput)
+}
+
+// Action group to trigger if action rule matches
+func (o ActionGroupPtrOutput) ActionGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ActionGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// conditions on which alerts will be filtered
+func (o ActionGroupPtrOutput) Conditions() ConditionsPtrOutput {
+	return o.ApplyT(func(v *ActionGroup) *Conditions {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(ConditionsPtrOutput)
+}
+
+// Description of action rule
+func (o ActionGroupPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// scope on which action rule will apply
+func (o ActionGroupPtrOutput) Scope() ScopePtrOutput {
+	return o.ApplyT(func(v *ActionGroup) *Scope {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(ScopePtrOutput)
+}
+
+// Indicates if the given action rule is enabled or disabled
+func (o ActionGroupPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates type of action rule
+// Expected value is 'ActionGroup'.
+func (o ActionGroupPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // Action rule with action group configuration
 type ActionGroupResponse struct {
 	// Action group to trigger if action rule matches
@@ -53,6 +275,72 @@ type ActionGroupResponse struct {
 	// Indicates type of action rule
 	// Expected value is 'ActionGroup'.
 	Type string `pulumi:"type"`
+}
+
+// Action rule with action group configuration
+type ActionGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (ActionGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionGroupResponse)(nil)).Elem()
+}
+
+func (o ActionGroupResponseOutput) ToActionGroupResponseOutput() ActionGroupResponseOutput {
+	return o
+}
+
+func (o ActionGroupResponseOutput) ToActionGroupResponseOutputWithContext(ctx context.Context) ActionGroupResponseOutput {
+	return o
+}
+
+// Action group to trigger if action rule matches
+func (o ActionGroupResponseOutput) ActionGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionGroupResponse) string { return v.ActionGroupId }).(pulumi.StringOutput)
+}
+
+// conditions on which alerts will be filtered
+func (o ActionGroupResponseOutput) Conditions() ConditionsResponsePtrOutput {
+	return o.ApplyT(func(v ActionGroupResponse) *ConditionsResponse { return v.Conditions }).(ConditionsResponsePtrOutput)
+}
+
+// Creation time of action rule. Date-Time in ISO-8601 format.
+func (o ActionGroupResponseOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionGroupResponse) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Created by user name.
+func (o ActionGroupResponseOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionGroupResponse) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Description of action rule
+func (o ActionGroupResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionGroupResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Last updated time of action rule. Date-Time in ISO-8601 format.
+func (o ActionGroupResponseOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionGroupResponse) string { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// Last modified by user name.
+func (o ActionGroupResponseOutput) LastModifiedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionGroupResponse) string { return v.LastModifiedBy }).(pulumi.StringOutput)
+}
+
+// scope on which action rule will apply
+func (o ActionGroupResponseOutput) Scope() ScopeResponsePtrOutput {
+	return o.ApplyT(func(v ActionGroupResponse) *ScopeResponse { return v.Scope }).(ScopeResponsePtrOutput)
+}
+
+// Indicates if the given action rule is enabled or disabled
+func (o ActionGroupResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionGroupResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Indicates type of action rule
+// Expected value is 'ActionGroup'.
+func (o ActionGroupResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionGroupResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // The Action Groups information, used by the alert rule.
@@ -177,6 +465,64 @@ type AddActionGroups struct {
 	ActionType string `pulumi:"actionType"`
 }
 
+// AddActionGroupsInput is an input type that accepts AddActionGroupsArgs and AddActionGroupsOutput values.
+// You can construct a concrete instance of `AddActionGroupsInput` via:
+//
+//	AddActionGroupsArgs{...}
+type AddActionGroupsInput interface {
+	pulumi.Input
+
+	ToAddActionGroupsOutput() AddActionGroupsOutput
+	ToAddActionGroupsOutputWithContext(context.Context) AddActionGroupsOutput
+}
+
+// Add action groups to alert processing rule.
+type AddActionGroupsArgs struct {
+	// List of action group Ids to add to alert processing rule.
+	ActionGroupIds pulumi.StringArrayInput `pulumi:"actionGroupIds"`
+	// Action that should be applied.
+	// Expected value is 'AddActionGroups'.
+	ActionType pulumi.StringInput `pulumi:"actionType"`
+}
+
+func (AddActionGroupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddActionGroups)(nil)).Elem()
+}
+
+func (i AddActionGroupsArgs) ToAddActionGroupsOutput() AddActionGroupsOutput {
+	return i.ToAddActionGroupsOutputWithContext(context.Background())
+}
+
+func (i AddActionGroupsArgs) ToAddActionGroupsOutputWithContext(ctx context.Context) AddActionGroupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddActionGroupsOutput)
+}
+
+// Add action groups to alert processing rule.
+type AddActionGroupsOutput struct{ *pulumi.OutputState }
+
+func (AddActionGroupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddActionGroups)(nil)).Elem()
+}
+
+func (o AddActionGroupsOutput) ToAddActionGroupsOutput() AddActionGroupsOutput {
+	return o
+}
+
+func (o AddActionGroupsOutput) ToAddActionGroupsOutputWithContext(ctx context.Context) AddActionGroupsOutput {
+	return o
+}
+
+// List of action group Ids to add to alert processing rule.
+func (o AddActionGroupsOutput) ActionGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AddActionGroups) []string { return v.ActionGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Action that should be applied.
+// Expected value is 'AddActionGroups'.
+func (o AddActionGroupsOutput) ActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v AddActionGroups) string { return v.ActionType }).(pulumi.StringOutput)
+}
+
 // Add action groups to alert processing rule.
 type AddActionGroupsResponse struct {
 	// List of action group Ids to add to alert processing rule.
@@ -184,6 +530,32 @@ type AddActionGroupsResponse struct {
 	// Action that should be applied.
 	// Expected value is 'AddActionGroups'.
 	ActionType string `pulumi:"actionType"`
+}
+
+// Add action groups to alert processing rule.
+type AddActionGroupsResponseOutput struct{ *pulumi.OutputState }
+
+func (AddActionGroupsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddActionGroupsResponse)(nil)).Elem()
+}
+
+func (o AddActionGroupsResponseOutput) ToAddActionGroupsResponseOutput() AddActionGroupsResponseOutput {
+	return o
+}
+
+func (o AddActionGroupsResponseOutput) ToAddActionGroupsResponseOutputWithContext(ctx context.Context) AddActionGroupsResponseOutput {
+	return o
+}
+
+// List of action group Ids to add to alert processing rule.
+func (o AddActionGroupsResponseOutput) ActionGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AddActionGroupsResponse) []string { return v.ActionGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Action that should be applied.
+// Expected value is 'AddActionGroups'.
+func (o AddActionGroupsResponseOutput) ActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v AddActionGroupsResponse) string { return v.ActionType }).(pulumi.StringOutput)
 }
 
 // Alert processing rule properties defining scopes, conditions and scheduling logic for alert processing rule.
@@ -562,6 +934,47 @@ func (i ConditionArgs) ToConditionOutputWithContext(ctx context.Context) Conditi
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionOutput)
 }
 
+func (i ConditionArgs) ToConditionPtrOutput() ConditionPtrOutput {
+	return i.ToConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ConditionArgs) ToConditionPtrOutputWithContext(ctx context.Context) ConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionOutput).ToConditionPtrOutputWithContext(ctx)
+}
+
+// ConditionPtrInput is an input type that accepts ConditionArgs, ConditionPtr and ConditionPtrOutput values.
+// You can construct a concrete instance of `ConditionPtrInput` via:
+//
+//	        ConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConditionPtrInput interface {
+	pulumi.Input
+
+	ToConditionPtrOutput() ConditionPtrOutput
+	ToConditionPtrOutputWithContext(context.Context) ConditionPtrOutput
+}
+
+type conditionPtrType ConditionArgs
+
+func ConditionPtr(v *ConditionArgs) ConditionPtrInput {
+	return (*conditionPtrType)(v)
+}
+
+func (*conditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Condition)(nil)).Elem()
+}
+
+func (i *conditionPtrType) ToConditionPtrOutput() ConditionPtrOutput {
+	return i.ToConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *conditionPtrType) ToConditionPtrOutputWithContext(ctx context.Context) ConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionPtrOutput)
+}
+
 // ConditionArrayInput is an input type that accepts ConditionArray and ConditionArrayOutput values.
 // You can construct a concrete instance of `ConditionArrayInput` via:
 //
@@ -602,6 +1015,16 @@ func (o ConditionOutput) ToConditionOutputWithContext(ctx context.Context) Condi
 	return o
 }
 
+func (o ConditionOutput) ToConditionPtrOutput() ConditionPtrOutput {
+	return o.ToConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ConditionOutput) ToConditionPtrOutputWithContext(ctx context.Context) ConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Condition) *Condition {
+		return &v
+	}).(ConditionPtrOutput)
+}
+
 // Field for a given condition.
 func (o ConditionOutput) Field() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Condition) *string { return v.Field }).(pulumi.StringPtrOutput)
@@ -615,6 +1038,60 @@ func (o ConditionOutput) Operator() pulumi.StringPtrOutput {
 // List of values to match for a given condition.
 func (o ConditionOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Condition) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type ConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Condition)(nil)).Elem()
+}
+
+func (o ConditionPtrOutput) ToConditionPtrOutput() ConditionPtrOutput {
+	return o
+}
+
+func (o ConditionPtrOutput) ToConditionPtrOutputWithContext(ctx context.Context) ConditionPtrOutput {
+	return o
+}
+
+func (o ConditionPtrOutput) Elem() ConditionOutput {
+	return o.ApplyT(func(v *Condition) Condition {
+		if v != nil {
+			return *v
+		}
+		var ret Condition
+		return ret
+	}).(ConditionOutput)
+}
+
+// Field for a given condition.
+func (o ConditionPtrOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Condition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Field
+	}).(pulumi.StringPtrOutput)
+}
+
+// Operator for a given condition.
+func (o ConditionPtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Condition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of values to match for a given condition.
+func (o ConditionPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Condition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
 }
 
 type ConditionArrayOutput struct{ *pulumi.OutputState }
@@ -677,6 +1154,60 @@ func (o ConditionResponseOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
+type ConditionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConditionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionResponse)(nil)).Elem()
+}
+
+func (o ConditionResponsePtrOutput) ToConditionResponsePtrOutput() ConditionResponsePtrOutput {
+	return o
+}
+
+func (o ConditionResponsePtrOutput) ToConditionResponsePtrOutputWithContext(ctx context.Context) ConditionResponsePtrOutput {
+	return o
+}
+
+func (o ConditionResponsePtrOutput) Elem() ConditionResponseOutput {
+	return o.ApplyT(func(v *ConditionResponse) ConditionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConditionResponse
+		return ret
+	}).(ConditionResponseOutput)
+}
+
+// Field for a given condition.
+func (o ConditionResponsePtrOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConditionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Field
+	}).(pulumi.StringPtrOutput)
+}
+
+// Operator for a given condition.
+func (o ConditionResponsePtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConditionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of values to match for a given condition.
+func (o ConditionResponsePtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
 type ConditionResponseArrayOutput struct{ *pulumi.OutputState }
 
 func (ConditionResponseArrayOutput) ElementType() reflect.Type {
@@ -717,6 +1248,259 @@ type Conditions struct {
 	TargetResourceType *Condition `pulumi:"targetResourceType"`
 }
 
+// ConditionsInput is an input type that accepts ConditionsArgs and ConditionsOutput values.
+// You can construct a concrete instance of `ConditionsInput` via:
+//
+//	ConditionsArgs{...}
+type ConditionsInput interface {
+	pulumi.Input
+
+	ToConditionsOutput() ConditionsOutput
+	ToConditionsOutputWithContext(context.Context) ConditionsOutput
+}
+
+// Conditions in alert instance to be matched for a given action rule. Default value is all. Multiple values could be provided with comma separation.
+type ConditionsArgs struct {
+	// filter alerts by alert context (payload)
+	AlertContext ConditionPtrInput `pulumi:"alertContext"`
+	// filter alerts by alert rule id
+	AlertRuleId ConditionPtrInput `pulumi:"alertRuleId"`
+	// filter alerts by alert rule name
+	AlertRuleName ConditionPtrInput `pulumi:"alertRuleName"`
+	// filter alerts by alert rule description
+	Description ConditionPtrInput `pulumi:"description"`
+	// filter alerts by monitor condition
+	MonitorCondition ConditionPtrInput `pulumi:"monitorCondition"`
+	// filter alerts by monitor service
+	MonitorService ConditionPtrInput `pulumi:"monitorService"`
+	// filter alerts by severity
+	Severity ConditionPtrInput `pulumi:"severity"`
+	// filter alerts by target resource type
+	TargetResourceType ConditionPtrInput `pulumi:"targetResourceType"`
+}
+
+func (ConditionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Conditions)(nil)).Elem()
+}
+
+func (i ConditionsArgs) ToConditionsOutput() ConditionsOutput {
+	return i.ToConditionsOutputWithContext(context.Background())
+}
+
+func (i ConditionsArgs) ToConditionsOutputWithContext(ctx context.Context) ConditionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionsOutput)
+}
+
+func (i ConditionsArgs) ToConditionsPtrOutput() ConditionsPtrOutput {
+	return i.ToConditionsPtrOutputWithContext(context.Background())
+}
+
+func (i ConditionsArgs) ToConditionsPtrOutputWithContext(ctx context.Context) ConditionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionsOutput).ToConditionsPtrOutputWithContext(ctx)
+}
+
+// ConditionsPtrInput is an input type that accepts ConditionsArgs, ConditionsPtr and ConditionsPtrOutput values.
+// You can construct a concrete instance of `ConditionsPtrInput` via:
+//
+//	        ConditionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConditionsPtrInput interface {
+	pulumi.Input
+
+	ToConditionsPtrOutput() ConditionsPtrOutput
+	ToConditionsPtrOutputWithContext(context.Context) ConditionsPtrOutput
+}
+
+type conditionsPtrType ConditionsArgs
+
+func ConditionsPtr(v *ConditionsArgs) ConditionsPtrInput {
+	return (*conditionsPtrType)(v)
+}
+
+func (*conditionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Conditions)(nil)).Elem()
+}
+
+func (i *conditionsPtrType) ToConditionsPtrOutput() ConditionsPtrOutput {
+	return i.ToConditionsPtrOutputWithContext(context.Background())
+}
+
+func (i *conditionsPtrType) ToConditionsPtrOutputWithContext(ctx context.Context) ConditionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionsPtrOutput)
+}
+
+// Conditions in alert instance to be matched for a given action rule. Default value is all. Multiple values could be provided with comma separation.
+type ConditionsOutput struct{ *pulumi.OutputState }
+
+func (ConditionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Conditions)(nil)).Elem()
+}
+
+func (o ConditionsOutput) ToConditionsOutput() ConditionsOutput {
+	return o
+}
+
+func (o ConditionsOutput) ToConditionsOutputWithContext(ctx context.Context) ConditionsOutput {
+	return o
+}
+
+func (o ConditionsOutput) ToConditionsPtrOutput() ConditionsPtrOutput {
+	return o.ToConditionsPtrOutputWithContext(context.Background())
+}
+
+func (o ConditionsOutput) ToConditionsPtrOutputWithContext(ctx context.Context) ConditionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Conditions) *Conditions {
+		return &v
+	}).(ConditionsPtrOutput)
+}
+
+// filter alerts by alert context (payload)
+func (o ConditionsOutput) AlertContext() ConditionPtrOutput {
+	return o.ApplyT(func(v Conditions) *Condition { return v.AlertContext }).(ConditionPtrOutput)
+}
+
+// filter alerts by alert rule id
+func (o ConditionsOutput) AlertRuleId() ConditionPtrOutput {
+	return o.ApplyT(func(v Conditions) *Condition { return v.AlertRuleId }).(ConditionPtrOutput)
+}
+
+// filter alerts by alert rule name
+func (o ConditionsOutput) AlertRuleName() ConditionPtrOutput {
+	return o.ApplyT(func(v Conditions) *Condition { return v.AlertRuleName }).(ConditionPtrOutput)
+}
+
+// filter alerts by alert rule description
+func (o ConditionsOutput) Description() ConditionPtrOutput {
+	return o.ApplyT(func(v Conditions) *Condition { return v.Description }).(ConditionPtrOutput)
+}
+
+// filter alerts by monitor condition
+func (o ConditionsOutput) MonitorCondition() ConditionPtrOutput {
+	return o.ApplyT(func(v Conditions) *Condition { return v.MonitorCondition }).(ConditionPtrOutput)
+}
+
+// filter alerts by monitor service
+func (o ConditionsOutput) MonitorService() ConditionPtrOutput {
+	return o.ApplyT(func(v Conditions) *Condition { return v.MonitorService }).(ConditionPtrOutput)
+}
+
+// filter alerts by severity
+func (o ConditionsOutput) Severity() ConditionPtrOutput {
+	return o.ApplyT(func(v Conditions) *Condition { return v.Severity }).(ConditionPtrOutput)
+}
+
+// filter alerts by target resource type
+func (o ConditionsOutput) TargetResourceType() ConditionPtrOutput {
+	return o.ApplyT(func(v Conditions) *Condition { return v.TargetResourceType }).(ConditionPtrOutput)
+}
+
+type ConditionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConditionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Conditions)(nil)).Elem()
+}
+
+func (o ConditionsPtrOutput) ToConditionsPtrOutput() ConditionsPtrOutput {
+	return o
+}
+
+func (o ConditionsPtrOutput) ToConditionsPtrOutputWithContext(ctx context.Context) ConditionsPtrOutput {
+	return o
+}
+
+func (o ConditionsPtrOutput) Elem() ConditionsOutput {
+	return o.ApplyT(func(v *Conditions) Conditions {
+		if v != nil {
+			return *v
+		}
+		var ret Conditions
+		return ret
+	}).(ConditionsOutput)
+}
+
+// filter alerts by alert context (payload)
+func (o ConditionsPtrOutput) AlertContext() ConditionPtrOutput {
+	return o.ApplyT(func(v *Conditions) *Condition {
+		if v == nil {
+			return nil
+		}
+		return v.AlertContext
+	}).(ConditionPtrOutput)
+}
+
+// filter alerts by alert rule id
+func (o ConditionsPtrOutput) AlertRuleId() ConditionPtrOutput {
+	return o.ApplyT(func(v *Conditions) *Condition {
+		if v == nil {
+			return nil
+		}
+		return v.AlertRuleId
+	}).(ConditionPtrOutput)
+}
+
+// filter alerts by alert rule name
+func (o ConditionsPtrOutput) AlertRuleName() ConditionPtrOutput {
+	return o.ApplyT(func(v *Conditions) *Condition {
+		if v == nil {
+			return nil
+		}
+		return v.AlertRuleName
+	}).(ConditionPtrOutput)
+}
+
+// filter alerts by alert rule description
+func (o ConditionsPtrOutput) Description() ConditionPtrOutput {
+	return o.ApplyT(func(v *Conditions) *Condition {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(ConditionPtrOutput)
+}
+
+// filter alerts by monitor condition
+func (o ConditionsPtrOutput) MonitorCondition() ConditionPtrOutput {
+	return o.ApplyT(func(v *Conditions) *Condition {
+		if v == nil {
+			return nil
+		}
+		return v.MonitorCondition
+	}).(ConditionPtrOutput)
+}
+
+// filter alerts by monitor service
+func (o ConditionsPtrOutput) MonitorService() ConditionPtrOutput {
+	return o.ApplyT(func(v *Conditions) *Condition {
+		if v == nil {
+			return nil
+		}
+		return v.MonitorService
+	}).(ConditionPtrOutput)
+}
+
+// filter alerts by severity
+func (o ConditionsPtrOutput) Severity() ConditionPtrOutput {
+	return o.ApplyT(func(v *Conditions) *Condition {
+		if v == nil {
+			return nil
+		}
+		return v.Severity
+	}).(ConditionPtrOutput)
+}
+
+// filter alerts by target resource type
+func (o ConditionsPtrOutput) TargetResourceType() ConditionPtrOutput {
+	return o.ApplyT(func(v *Conditions) *Condition {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceType
+	}).(ConditionPtrOutput)
+}
+
 // Conditions in alert instance to be matched for a given action rule. Default value is all. Multiple values could be provided with comma separation.
 type ConditionsResponse struct {
 	// filter alerts by alert context (payload)
@@ -737,6 +1521,165 @@ type ConditionsResponse struct {
 	TargetResourceType *ConditionResponse `pulumi:"targetResourceType"`
 }
 
+// Conditions in alert instance to be matched for a given action rule. Default value is all. Multiple values could be provided with comma separation.
+type ConditionsResponseOutput struct{ *pulumi.OutputState }
+
+func (ConditionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionsResponse)(nil)).Elem()
+}
+
+func (o ConditionsResponseOutput) ToConditionsResponseOutput() ConditionsResponseOutput {
+	return o
+}
+
+func (o ConditionsResponseOutput) ToConditionsResponseOutputWithContext(ctx context.Context) ConditionsResponseOutput {
+	return o
+}
+
+// filter alerts by alert context (payload)
+func (o ConditionsResponseOutput) AlertContext() ConditionResponsePtrOutput {
+	return o.ApplyT(func(v ConditionsResponse) *ConditionResponse { return v.AlertContext }).(ConditionResponsePtrOutput)
+}
+
+// filter alerts by alert rule id
+func (o ConditionsResponseOutput) AlertRuleId() ConditionResponsePtrOutput {
+	return o.ApplyT(func(v ConditionsResponse) *ConditionResponse { return v.AlertRuleId }).(ConditionResponsePtrOutput)
+}
+
+// filter alerts by alert rule name
+func (o ConditionsResponseOutput) AlertRuleName() ConditionResponsePtrOutput {
+	return o.ApplyT(func(v ConditionsResponse) *ConditionResponse { return v.AlertRuleName }).(ConditionResponsePtrOutput)
+}
+
+// filter alerts by alert rule description
+func (o ConditionsResponseOutput) Description() ConditionResponsePtrOutput {
+	return o.ApplyT(func(v ConditionsResponse) *ConditionResponse { return v.Description }).(ConditionResponsePtrOutput)
+}
+
+// filter alerts by monitor condition
+func (o ConditionsResponseOutput) MonitorCondition() ConditionResponsePtrOutput {
+	return o.ApplyT(func(v ConditionsResponse) *ConditionResponse { return v.MonitorCondition }).(ConditionResponsePtrOutput)
+}
+
+// filter alerts by monitor service
+func (o ConditionsResponseOutput) MonitorService() ConditionResponsePtrOutput {
+	return o.ApplyT(func(v ConditionsResponse) *ConditionResponse { return v.MonitorService }).(ConditionResponsePtrOutput)
+}
+
+// filter alerts by severity
+func (o ConditionsResponseOutput) Severity() ConditionResponsePtrOutput {
+	return o.ApplyT(func(v ConditionsResponse) *ConditionResponse { return v.Severity }).(ConditionResponsePtrOutput)
+}
+
+// filter alerts by target resource type
+func (o ConditionsResponseOutput) TargetResourceType() ConditionResponsePtrOutput {
+	return o.ApplyT(func(v ConditionsResponse) *ConditionResponse { return v.TargetResourceType }).(ConditionResponsePtrOutput)
+}
+
+type ConditionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConditionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionsResponse)(nil)).Elem()
+}
+
+func (o ConditionsResponsePtrOutput) ToConditionsResponsePtrOutput() ConditionsResponsePtrOutput {
+	return o
+}
+
+func (o ConditionsResponsePtrOutput) ToConditionsResponsePtrOutputWithContext(ctx context.Context) ConditionsResponsePtrOutput {
+	return o
+}
+
+func (o ConditionsResponsePtrOutput) Elem() ConditionsResponseOutput {
+	return o.ApplyT(func(v *ConditionsResponse) ConditionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConditionsResponse
+		return ret
+	}).(ConditionsResponseOutput)
+}
+
+// filter alerts by alert context (payload)
+func (o ConditionsResponsePtrOutput) AlertContext() ConditionResponsePtrOutput {
+	return o.ApplyT(func(v *ConditionsResponse) *ConditionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AlertContext
+	}).(ConditionResponsePtrOutput)
+}
+
+// filter alerts by alert rule id
+func (o ConditionsResponsePtrOutput) AlertRuleId() ConditionResponsePtrOutput {
+	return o.ApplyT(func(v *ConditionsResponse) *ConditionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AlertRuleId
+	}).(ConditionResponsePtrOutput)
+}
+
+// filter alerts by alert rule name
+func (o ConditionsResponsePtrOutput) AlertRuleName() ConditionResponsePtrOutput {
+	return o.ApplyT(func(v *ConditionsResponse) *ConditionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AlertRuleName
+	}).(ConditionResponsePtrOutput)
+}
+
+// filter alerts by alert rule description
+func (o ConditionsResponsePtrOutput) Description() ConditionResponsePtrOutput {
+	return o.ApplyT(func(v *ConditionsResponse) *ConditionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(ConditionResponsePtrOutput)
+}
+
+// filter alerts by monitor condition
+func (o ConditionsResponsePtrOutput) MonitorCondition() ConditionResponsePtrOutput {
+	return o.ApplyT(func(v *ConditionsResponse) *ConditionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.MonitorCondition
+	}).(ConditionResponsePtrOutput)
+}
+
+// filter alerts by monitor service
+func (o ConditionsResponsePtrOutput) MonitorService() ConditionResponsePtrOutput {
+	return o.ApplyT(func(v *ConditionsResponse) *ConditionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.MonitorService
+	}).(ConditionResponsePtrOutput)
+}
+
+// filter alerts by severity
+func (o ConditionsResponsePtrOutput) Severity() ConditionResponsePtrOutput {
+	return o.ApplyT(func(v *ConditionsResponse) *ConditionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Severity
+	}).(ConditionResponsePtrOutput)
+}
+
+// filter alerts by target resource type
+func (o ConditionsResponsePtrOutput) TargetResourceType() ConditionResponsePtrOutput {
+	return o.ApplyT(func(v *ConditionsResponse) *ConditionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.TargetResourceType
+	}).(ConditionResponsePtrOutput)
+}
+
 // Daily recurrence object.
 type DailyRecurrence struct {
 	// End time for recurrence.
@@ -748,6 +1691,71 @@ type DailyRecurrence struct {
 	StartTime string `pulumi:"startTime"`
 }
 
+// DailyRecurrenceInput is an input type that accepts DailyRecurrenceArgs and DailyRecurrenceOutput values.
+// You can construct a concrete instance of `DailyRecurrenceInput` via:
+//
+//	DailyRecurrenceArgs{...}
+type DailyRecurrenceInput interface {
+	pulumi.Input
+
+	ToDailyRecurrenceOutput() DailyRecurrenceOutput
+	ToDailyRecurrenceOutputWithContext(context.Context) DailyRecurrenceOutput
+}
+
+// Daily recurrence object.
+type DailyRecurrenceArgs struct {
+	// End time for recurrence.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// Specifies when the recurrence should be applied.
+	// Expected value is 'Daily'.
+	RecurrenceType pulumi.StringInput `pulumi:"recurrenceType"`
+	// Start time for recurrence.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (DailyRecurrenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DailyRecurrence)(nil)).Elem()
+}
+
+func (i DailyRecurrenceArgs) ToDailyRecurrenceOutput() DailyRecurrenceOutput {
+	return i.ToDailyRecurrenceOutputWithContext(context.Background())
+}
+
+func (i DailyRecurrenceArgs) ToDailyRecurrenceOutputWithContext(ctx context.Context) DailyRecurrenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DailyRecurrenceOutput)
+}
+
+// Daily recurrence object.
+type DailyRecurrenceOutput struct{ *pulumi.OutputState }
+
+func (DailyRecurrenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DailyRecurrence)(nil)).Elem()
+}
+
+func (o DailyRecurrenceOutput) ToDailyRecurrenceOutput() DailyRecurrenceOutput {
+	return o
+}
+
+func (o DailyRecurrenceOutput) ToDailyRecurrenceOutputWithContext(ctx context.Context) DailyRecurrenceOutput {
+	return o
+}
+
+// End time for recurrence.
+func (o DailyRecurrenceOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DailyRecurrence) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Specifies when the recurrence should be applied.
+// Expected value is 'Daily'.
+func (o DailyRecurrenceOutput) RecurrenceType() pulumi.StringOutput {
+	return o.ApplyT(func(v DailyRecurrence) string { return v.RecurrenceType }).(pulumi.StringOutput)
+}
+
+// Start time for recurrence.
+func (o DailyRecurrenceOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DailyRecurrence) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
 // Daily recurrence object.
 type DailyRecurrenceResponse struct {
 	// End time for recurrence.
@@ -757,6 +1765,37 @@ type DailyRecurrenceResponse struct {
 	RecurrenceType string `pulumi:"recurrenceType"`
 	// Start time for recurrence.
 	StartTime string `pulumi:"startTime"`
+}
+
+// Daily recurrence object.
+type DailyRecurrenceResponseOutput struct{ *pulumi.OutputState }
+
+func (DailyRecurrenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DailyRecurrenceResponse)(nil)).Elem()
+}
+
+func (o DailyRecurrenceResponseOutput) ToDailyRecurrenceResponseOutput() DailyRecurrenceResponseOutput {
+	return o
+}
+
+func (o DailyRecurrenceResponseOutput) ToDailyRecurrenceResponseOutputWithContext(ctx context.Context) DailyRecurrenceResponseOutput {
+	return o
+}
+
+// End time for recurrence.
+func (o DailyRecurrenceResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DailyRecurrenceResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Specifies when the recurrence should be applied.
+// Expected value is 'Daily'.
+func (o DailyRecurrenceResponseOutput) RecurrenceType() pulumi.StringOutput {
+	return o.ApplyT(func(v DailyRecurrenceResponse) string { return v.RecurrenceType }).(pulumi.StringOutput)
+}
+
+// Start time for recurrence.
+func (o DailyRecurrenceResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DailyRecurrenceResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
 // The detector information. By default this is not populated, unless it's specified in expandDetector
@@ -987,6 +2026,211 @@ type Diagnostics struct {
 	Type string `pulumi:"type"`
 }
 
+// DiagnosticsInput is an input type that accepts DiagnosticsArgs and DiagnosticsOutput values.
+// You can construct a concrete instance of `DiagnosticsInput` via:
+//
+//	DiagnosticsArgs{...}
+type DiagnosticsInput interface {
+	pulumi.Input
+
+	ToDiagnosticsOutput() DiagnosticsOutput
+	ToDiagnosticsOutputWithContext(context.Context) DiagnosticsOutput
+}
+
+// Action rule with diagnostics configuration
+type DiagnosticsArgs struct {
+	// conditions on which alerts will be filtered
+	Conditions ConditionsPtrInput `pulumi:"conditions"`
+	// Description of action rule
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// scope on which action rule will apply
+	Scope ScopePtrInput `pulumi:"scope"`
+	// Indicates if the given action rule is enabled or disabled
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Indicates type of action rule
+	// Expected value is 'Diagnostics'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (DiagnosticsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Diagnostics)(nil)).Elem()
+}
+
+func (i DiagnosticsArgs) ToDiagnosticsOutput() DiagnosticsOutput {
+	return i.ToDiagnosticsOutputWithContext(context.Background())
+}
+
+func (i DiagnosticsArgs) ToDiagnosticsOutputWithContext(ctx context.Context) DiagnosticsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticsOutput)
+}
+
+func (i DiagnosticsArgs) ToDiagnosticsPtrOutput() DiagnosticsPtrOutput {
+	return i.ToDiagnosticsPtrOutputWithContext(context.Background())
+}
+
+func (i DiagnosticsArgs) ToDiagnosticsPtrOutputWithContext(ctx context.Context) DiagnosticsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticsOutput).ToDiagnosticsPtrOutputWithContext(ctx)
+}
+
+// DiagnosticsPtrInput is an input type that accepts DiagnosticsArgs, DiagnosticsPtr and DiagnosticsPtrOutput values.
+// You can construct a concrete instance of `DiagnosticsPtrInput` via:
+//
+//	        DiagnosticsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiagnosticsPtrInput interface {
+	pulumi.Input
+
+	ToDiagnosticsPtrOutput() DiagnosticsPtrOutput
+	ToDiagnosticsPtrOutputWithContext(context.Context) DiagnosticsPtrOutput
+}
+
+type diagnosticsPtrType DiagnosticsArgs
+
+func DiagnosticsPtr(v *DiagnosticsArgs) DiagnosticsPtrInput {
+	return (*diagnosticsPtrType)(v)
+}
+
+func (*diagnosticsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Diagnostics)(nil)).Elem()
+}
+
+func (i *diagnosticsPtrType) ToDiagnosticsPtrOutput() DiagnosticsPtrOutput {
+	return i.ToDiagnosticsPtrOutputWithContext(context.Background())
+}
+
+func (i *diagnosticsPtrType) ToDiagnosticsPtrOutputWithContext(ctx context.Context) DiagnosticsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticsPtrOutput)
+}
+
+// Action rule with diagnostics configuration
+type DiagnosticsOutput struct{ *pulumi.OutputState }
+
+func (DiagnosticsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Diagnostics)(nil)).Elem()
+}
+
+func (o DiagnosticsOutput) ToDiagnosticsOutput() DiagnosticsOutput {
+	return o
+}
+
+func (o DiagnosticsOutput) ToDiagnosticsOutputWithContext(ctx context.Context) DiagnosticsOutput {
+	return o
+}
+
+func (o DiagnosticsOutput) ToDiagnosticsPtrOutput() DiagnosticsPtrOutput {
+	return o.ToDiagnosticsPtrOutputWithContext(context.Background())
+}
+
+func (o DiagnosticsOutput) ToDiagnosticsPtrOutputWithContext(ctx context.Context) DiagnosticsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Diagnostics) *Diagnostics {
+		return &v
+	}).(DiagnosticsPtrOutput)
+}
+
+// conditions on which alerts will be filtered
+func (o DiagnosticsOutput) Conditions() ConditionsPtrOutput {
+	return o.ApplyT(func(v Diagnostics) *Conditions { return v.Conditions }).(ConditionsPtrOutput)
+}
+
+// Description of action rule
+func (o DiagnosticsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Diagnostics) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// scope on which action rule will apply
+func (o DiagnosticsOutput) Scope() ScopePtrOutput {
+	return o.ApplyT(func(v Diagnostics) *Scope { return v.Scope }).(ScopePtrOutput)
+}
+
+// Indicates if the given action rule is enabled or disabled
+func (o DiagnosticsOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Diagnostics) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Indicates type of action rule
+// Expected value is 'Diagnostics'.
+func (o DiagnosticsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v Diagnostics) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DiagnosticsPtrOutput struct{ *pulumi.OutputState }
+
+func (DiagnosticsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Diagnostics)(nil)).Elem()
+}
+
+func (o DiagnosticsPtrOutput) ToDiagnosticsPtrOutput() DiagnosticsPtrOutput {
+	return o
+}
+
+func (o DiagnosticsPtrOutput) ToDiagnosticsPtrOutputWithContext(ctx context.Context) DiagnosticsPtrOutput {
+	return o
+}
+
+func (o DiagnosticsPtrOutput) Elem() DiagnosticsOutput {
+	return o.ApplyT(func(v *Diagnostics) Diagnostics {
+		if v != nil {
+			return *v
+		}
+		var ret Diagnostics
+		return ret
+	}).(DiagnosticsOutput)
+}
+
+// conditions on which alerts will be filtered
+func (o DiagnosticsPtrOutput) Conditions() ConditionsPtrOutput {
+	return o.ApplyT(func(v *Diagnostics) *Conditions {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(ConditionsPtrOutput)
+}
+
+// Description of action rule
+func (o DiagnosticsPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Diagnostics) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// scope on which action rule will apply
+func (o DiagnosticsPtrOutput) Scope() ScopePtrOutput {
+	return o.ApplyT(func(v *Diagnostics) *Scope {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(ScopePtrOutput)
+}
+
+// Indicates if the given action rule is enabled or disabled
+func (o DiagnosticsPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Diagnostics) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates type of action rule
+// Expected value is 'Diagnostics'.
+func (o DiagnosticsPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Diagnostics) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // Action rule with diagnostics configuration
 type DiagnosticsResponse struct {
 	// conditions on which alerts will be filtered
@@ -1010,6 +2254,67 @@ type DiagnosticsResponse struct {
 	Type string `pulumi:"type"`
 }
 
+// Action rule with diagnostics configuration
+type DiagnosticsResponseOutput struct{ *pulumi.OutputState }
+
+func (DiagnosticsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiagnosticsResponse)(nil)).Elem()
+}
+
+func (o DiagnosticsResponseOutput) ToDiagnosticsResponseOutput() DiagnosticsResponseOutput {
+	return o
+}
+
+func (o DiagnosticsResponseOutput) ToDiagnosticsResponseOutputWithContext(ctx context.Context) DiagnosticsResponseOutput {
+	return o
+}
+
+// conditions on which alerts will be filtered
+func (o DiagnosticsResponseOutput) Conditions() ConditionsResponsePtrOutput {
+	return o.ApplyT(func(v DiagnosticsResponse) *ConditionsResponse { return v.Conditions }).(ConditionsResponsePtrOutput)
+}
+
+// Creation time of action rule. Date-Time in ISO-8601 format.
+func (o DiagnosticsResponseOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v DiagnosticsResponse) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Created by user name.
+func (o DiagnosticsResponseOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v DiagnosticsResponse) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Description of action rule
+func (o DiagnosticsResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiagnosticsResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Last updated time of action rule. Date-Time in ISO-8601 format.
+func (o DiagnosticsResponseOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v DiagnosticsResponse) string { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// Last modified by user name.
+func (o DiagnosticsResponseOutput) LastModifiedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v DiagnosticsResponse) string { return v.LastModifiedBy }).(pulumi.StringOutput)
+}
+
+// scope on which action rule will apply
+func (o DiagnosticsResponseOutput) Scope() ScopeResponsePtrOutput {
+	return o.ApplyT(func(v DiagnosticsResponse) *ScopeResponse { return v.Scope }).(ScopeResponsePtrOutput)
+}
+
+// Indicates if the given action rule is enabled or disabled
+func (o DiagnosticsResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiagnosticsResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Indicates type of action rule
+// Expected value is 'Diagnostics'.
+func (o DiagnosticsResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DiagnosticsResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Monthly recurrence object.
 type MonthlyRecurrence struct {
 	// Specifies the values for monthly recurrence pattern.
@@ -1023,6 +2328,78 @@ type MonthlyRecurrence struct {
 	StartTime *string `pulumi:"startTime"`
 }
 
+// MonthlyRecurrenceInput is an input type that accepts MonthlyRecurrenceArgs and MonthlyRecurrenceOutput values.
+// You can construct a concrete instance of `MonthlyRecurrenceInput` via:
+//
+//	MonthlyRecurrenceArgs{...}
+type MonthlyRecurrenceInput interface {
+	pulumi.Input
+
+	ToMonthlyRecurrenceOutput() MonthlyRecurrenceOutput
+	ToMonthlyRecurrenceOutputWithContext(context.Context) MonthlyRecurrenceOutput
+}
+
+// Monthly recurrence object.
+type MonthlyRecurrenceArgs struct {
+	// Specifies the values for monthly recurrence pattern.
+	DaysOfMonth pulumi.IntArrayInput `pulumi:"daysOfMonth"`
+	// End time for recurrence.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Specifies when the recurrence should be applied.
+	// Expected value is 'Monthly'.
+	RecurrenceType pulumi.StringInput `pulumi:"recurrenceType"`
+	// Start time for recurrence.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (MonthlyRecurrenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonthlyRecurrence)(nil)).Elem()
+}
+
+func (i MonthlyRecurrenceArgs) ToMonthlyRecurrenceOutput() MonthlyRecurrenceOutput {
+	return i.ToMonthlyRecurrenceOutputWithContext(context.Background())
+}
+
+func (i MonthlyRecurrenceArgs) ToMonthlyRecurrenceOutputWithContext(ctx context.Context) MonthlyRecurrenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonthlyRecurrenceOutput)
+}
+
+// Monthly recurrence object.
+type MonthlyRecurrenceOutput struct{ *pulumi.OutputState }
+
+func (MonthlyRecurrenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonthlyRecurrence)(nil)).Elem()
+}
+
+func (o MonthlyRecurrenceOutput) ToMonthlyRecurrenceOutput() MonthlyRecurrenceOutput {
+	return o
+}
+
+func (o MonthlyRecurrenceOutput) ToMonthlyRecurrenceOutputWithContext(ctx context.Context) MonthlyRecurrenceOutput {
+	return o
+}
+
+// Specifies the values for monthly recurrence pattern.
+func (o MonthlyRecurrenceOutput) DaysOfMonth() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v MonthlyRecurrence) []int { return v.DaysOfMonth }).(pulumi.IntArrayOutput)
+}
+
+// End time for recurrence.
+func (o MonthlyRecurrenceOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonthlyRecurrence) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Specifies when the recurrence should be applied.
+// Expected value is 'Monthly'.
+func (o MonthlyRecurrenceOutput) RecurrenceType() pulumi.StringOutput {
+	return o.ApplyT(func(v MonthlyRecurrence) string { return v.RecurrenceType }).(pulumi.StringOutput)
+}
+
+// Start time for recurrence.
+func (o MonthlyRecurrenceOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonthlyRecurrence) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
 // Monthly recurrence object.
 type MonthlyRecurrenceResponse struct {
 	// Specifies the values for monthly recurrence pattern.
@@ -1034,6 +2411,42 @@ type MonthlyRecurrenceResponse struct {
 	RecurrenceType string `pulumi:"recurrenceType"`
 	// Start time for recurrence.
 	StartTime *string `pulumi:"startTime"`
+}
+
+// Monthly recurrence object.
+type MonthlyRecurrenceResponseOutput struct{ *pulumi.OutputState }
+
+func (MonthlyRecurrenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonthlyRecurrenceResponse)(nil)).Elem()
+}
+
+func (o MonthlyRecurrenceResponseOutput) ToMonthlyRecurrenceResponseOutput() MonthlyRecurrenceResponseOutput {
+	return o
+}
+
+func (o MonthlyRecurrenceResponseOutput) ToMonthlyRecurrenceResponseOutputWithContext(ctx context.Context) MonthlyRecurrenceResponseOutput {
+	return o
+}
+
+// Specifies the values for monthly recurrence pattern.
+func (o MonthlyRecurrenceResponseOutput) DaysOfMonth() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v MonthlyRecurrenceResponse) []int { return v.DaysOfMonth }).(pulumi.IntArrayOutput)
+}
+
+// End time for recurrence.
+func (o MonthlyRecurrenceResponseOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonthlyRecurrenceResponse) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Specifies when the recurrence should be applied.
+// Expected value is 'Monthly'.
+func (o MonthlyRecurrenceResponseOutput) RecurrenceType() pulumi.StringOutput {
+	return o.ApplyT(func(v MonthlyRecurrenceResponse) string { return v.RecurrenceType }).(pulumi.StringOutput)
+}
+
+// Start time for recurrence.
+func (o MonthlyRecurrenceResponseOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonthlyRecurrenceResponse) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
 // An Azure Prometheus alerting or recording rule.
@@ -1733,11 +3146,83 @@ type RemoveAllActionGroups struct {
 	ActionType string `pulumi:"actionType"`
 }
 
+// RemoveAllActionGroupsInput is an input type that accepts RemoveAllActionGroupsArgs and RemoveAllActionGroupsOutput values.
+// You can construct a concrete instance of `RemoveAllActionGroupsInput` via:
+//
+//	RemoveAllActionGroupsArgs{...}
+type RemoveAllActionGroupsInput interface {
+	pulumi.Input
+
+	ToRemoveAllActionGroupsOutput() RemoveAllActionGroupsOutput
+	ToRemoveAllActionGroupsOutputWithContext(context.Context) RemoveAllActionGroupsOutput
+}
+
+// Indicates if all action groups should be removed.
+type RemoveAllActionGroupsArgs struct {
+	// Action that should be applied.
+	// Expected value is 'RemoveAllActionGroups'.
+	ActionType pulumi.StringInput `pulumi:"actionType"`
+}
+
+func (RemoveAllActionGroupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoveAllActionGroups)(nil)).Elem()
+}
+
+func (i RemoveAllActionGroupsArgs) ToRemoveAllActionGroupsOutput() RemoveAllActionGroupsOutput {
+	return i.ToRemoveAllActionGroupsOutputWithContext(context.Background())
+}
+
+func (i RemoveAllActionGroupsArgs) ToRemoveAllActionGroupsOutputWithContext(ctx context.Context) RemoveAllActionGroupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoveAllActionGroupsOutput)
+}
+
+// Indicates if all action groups should be removed.
+type RemoveAllActionGroupsOutput struct{ *pulumi.OutputState }
+
+func (RemoveAllActionGroupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoveAllActionGroups)(nil)).Elem()
+}
+
+func (o RemoveAllActionGroupsOutput) ToRemoveAllActionGroupsOutput() RemoveAllActionGroupsOutput {
+	return o
+}
+
+func (o RemoveAllActionGroupsOutput) ToRemoveAllActionGroupsOutputWithContext(ctx context.Context) RemoveAllActionGroupsOutput {
+	return o
+}
+
+// Action that should be applied.
+// Expected value is 'RemoveAllActionGroups'.
+func (o RemoveAllActionGroupsOutput) ActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoveAllActionGroups) string { return v.ActionType }).(pulumi.StringOutput)
+}
+
 // Indicates if all action groups should be removed.
 type RemoveAllActionGroupsResponse struct {
 	// Action that should be applied.
 	// Expected value is 'RemoveAllActionGroups'.
 	ActionType string `pulumi:"actionType"`
+}
+
+// Indicates if all action groups should be removed.
+type RemoveAllActionGroupsResponseOutput struct{ *pulumi.OutputState }
+
+func (RemoveAllActionGroupsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoveAllActionGroupsResponse)(nil)).Elem()
+}
+
+func (o RemoveAllActionGroupsResponseOutput) ToRemoveAllActionGroupsResponseOutput() RemoveAllActionGroupsResponseOutput {
+	return o
+}
+
+func (o RemoveAllActionGroupsResponseOutput) ToRemoveAllActionGroupsResponseOutputWithContext(ctx context.Context) RemoveAllActionGroupsResponseOutput {
+	return o
+}
+
+// Action that should be applied.
+// Expected value is 'RemoveAllActionGroups'.
+func (o RemoveAllActionGroupsResponseOutput) ActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoveAllActionGroupsResponse) string { return v.ActionType }).(pulumi.StringOutput)
 }
 
 // Scheduling configuration for a given alert processing rule.
@@ -2056,12 +3541,232 @@ type Scope struct {
 	Values []string `pulumi:"values"`
 }
 
+// ScopeInput is an input type that accepts ScopeArgs and ScopeOutput values.
+// You can construct a concrete instance of `ScopeInput` via:
+//
+//	ScopeArgs{...}
+type ScopeInput interface {
+	pulumi.Input
+
+	ToScopeOutput() ScopeOutput
+	ToScopeOutputWithContext(context.Context) ScopeOutput
+}
+
+// Target scope for a given action rule. By default scope will be the subscription. User can also provide list of resource groups or list of resources from the scope subscription as well.
+type ScopeArgs struct {
+	// type of target scope
+	ScopeType pulumi.StringPtrInput `pulumi:"scopeType"`
+	// list of ARM IDs of the given scope type which will be the target of the given action rule.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (ScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Scope)(nil)).Elem()
+}
+
+func (i ScopeArgs) ToScopeOutput() ScopeOutput {
+	return i.ToScopeOutputWithContext(context.Background())
+}
+
+func (i ScopeArgs) ToScopeOutputWithContext(ctx context.Context) ScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopeOutput)
+}
+
+func (i ScopeArgs) ToScopePtrOutput() ScopePtrOutput {
+	return i.ToScopePtrOutputWithContext(context.Background())
+}
+
+func (i ScopeArgs) ToScopePtrOutputWithContext(ctx context.Context) ScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopeOutput).ToScopePtrOutputWithContext(ctx)
+}
+
+// ScopePtrInput is an input type that accepts ScopeArgs, ScopePtr and ScopePtrOutput values.
+// You can construct a concrete instance of `ScopePtrInput` via:
+//
+//	        ScopeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScopePtrInput interface {
+	pulumi.Input
+
+	ToScopePtrOutput() ScopePtrOutput
+	ToScopePtrOutputWithContext(context.Context) ScopePtrOutput
+}
+
+type scopePtrType ScopeArgs
+
+func ScopePtr(v *ScopeArgs) ScopePtrInput {
+	return (*scopePtrType)(v)
+}
+
+func (*scopePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Scope)(nil)).Elem()
+}
+
+func (i *scopePtrType) ToScopePtrOutput() ScopePtrOutput {
+	return i.ToScopePtrOutputWithContext(context.Background())
+}
+
+func (i *scopePtrType) ToScopePtrOutputWithContext(ctx context.Context) ScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopePtrOutput)
+}
+
+// Target scope for a given action rule. By default scope will be the subscription. User can also provide list of resource groups or list of resources from the scope subscription as well.
+type ScopeOutput struct{ *pulumi.OutputState }
+
+func (ScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Scope)(nil)).Elem()
+}
+
+func (o ScopeOutput) ToScopeOutput() ScopeOutput {
+	return o
+}
+
+func (o ScopeOutput) ToScopeOutputWithContext(ctx context.Context) ScopeOutput {
+	return o
+}
+
+func (o ScopeOutput) ToScopePtrOutput() ScopePtrOutput {
+	return o.ToScopePtrOutputWithContext(context.Background())
+}
+
+func (o ScopeOutput) ToScopePtrOutputWithContext(ctx context.Context) ScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Scope) *Scope {
+		return &v
+	}).(ScopePtrOutput)
+}
+
+// type of target scope
+func (o ScopeOutput) ScopeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Scope) *string { return v.ScopeType }).(pulumi.StringPtrOutput)
+}
+
+// list of ARM IDs of the given scope type which will be the target of the given action rule.
+func (o ScopeOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Scope) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type ScopePtrOutput struct{ *pulumi.OutputState }
+
+func (ScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Scope)(nil)).Elem()
+}
+
+func (o ScopePtrOutput) ToScopePtrOutput() ScopePtrOutput {
+	return o
+}
+
+func (o ScopePtrOutput) ToScopePtrOutputWithContext(ctx context.Context) ScopePtrOutput {
+	return o
+}
+
+func (o ScopePtrOutput) Elem() ScopeOutput {
+	return o.ApplyT(func(v *Scope) Scope {
+		if v != nil {
+			return *v
+		}
+		var ret Scope
+		return ret
+	}).(ScopeOutput)
+}
+
+// type of target scope
+func (o ScopePtrOutput) ScopeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Scope) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScopeType
+	}).(pulumi.StringPtrOutput)
+}
+
+// list of ARM IDs of the given scope type which will be the target of the given action rule.
+func (o ScopePtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Scope) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
 // Target scope for a given action rule. By default scope will be the subscription. User can also provide list of resource groups or list of resources from the scope subscription as well.
 type ScopeResponse struct {
 	// type of target scope
 	ScopeType *string `pulumi:"scopeType"`
 	// list of ARM IDs of the given scope type which will be the target of the given action rule.
 	Values []string `pulumi:"values"`
+}
+
+// Target scope for a given action rule. By default scope will be the subscription. User can also provide list of resource groups or list of resources from the scope subscription as well.
+type ScopeResponseOutput struct{ *pulumi.OutputState }
+
+func (ScopeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScopeResponse)(nil)).Elem()
+}
+
+func (o ScopeResponseOutput) ToScopeResponseOutput() ScopeResponseOutput {
+	return o
+}
+
+func (o ScopeResponseOutput) ToScopeResponseOutputWithContext(ctx context.Context) ScopeResponseOutput {
+	return o
+}
+
+// type of target scope
+func (o ScopeResponseOutput) ScopeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScopeResponse) *string { return v.ScopeType }).(pulumi.StringPtrOutput)
+}
+
+// list of ARM IDs of the given scope type which will be the target of the given action rule.
+func (o ScopeResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ScopeResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type ScopeResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ScopeResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScopeResponse)(nil)).Elem()
+}
+
+func (o ScopeResponsePtrOutput) ToScopeResponsePtrOutput() ScopeResponsePtrOutput {
+	return o
+}
+
+func (o ScopeResponsePtrOutput) ToScopeResponsePtrOutputWithContext(ctx context.Context) ScopeResponsePtrOutput {
+	return o
+}
+
+func (o ScopeResponsePtrOutput) Elem() ScopeResponseOutput {
+	return o.ApplyT(func(v *ScopeResponse) ScopeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ScopeResponse
+		return ret
+	}).(ScopeResponseOutput)
+}
+
+// type of target scope
+func (o ScopeResponsePtrOutput) ScopeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScopeResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScopeType
+	}).(pulumi.StringPtrOutput)
+}
+
+// list of ARM IDs of the given scope type which will be the target of the given action rule.
+func (o ScopeResponsePtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ScopeResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
 }
 
 // Action rule with suppression configuration
@@ -2081,6 +3786,228 @@ type Suppression struct {
 	Type string `pulumi:"type"`
 }
 
+// SuppressionInput is an input type that accepts SuppressionArgs and SuppressionOutput values.
+// You can construct a concrete instance of `SuppressionInput` via:
+//
+//	SuppressionArgs{...}
+type SuppressionInput interface {
+	pulumi.Input
+
+	ToSuppressionOutput() SuppressionOutput
+	ToSuppressionOutputWithContext(context.Context) SuppressionOutput
+}
+
+// Action rule with suppression configuration
+type SuppressionArgs struct {
+	// conditions on which alerts will be filtered
+	Conditions ConditionsPtrInput `pulumi:"conditions"`
+	// Description of action rule
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// scope on which action rule will apply
+	Scope ScopePtrInput `pulumi:"scope"`
+	// Indicates if the given action rule is enabled or disabled
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// suppression configuration for the action rule
+	SuppressionConfig SuppressionConfigInput `pulumi:"suppressionConfig"`
+	// Indicates type of action rule
+	// Expected value is 'Suppression'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SuppressionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Suppression)(nil)).Elem()
+}
+
+func (i SuppressionArgs) ToSuppressionOutput() SuppressionOutput {
+	return i.ToSuppressionOutputWithContext(context.Background())
+}
+
+func (i SuppressionArgs) ToSuppressionOutputWithContext(ctx context.Context) SuppressionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SuppressionOutput)
+}
+
+func (i SuppressionArgs) ToSuppressionPtrOutput() SuppressionPtrOutput {
+	return i.ToSuppressionPtrOutputWithContext(context.Background())
+}
+
+func (i SuppressionArgs) ToSuppressionPtrOutputWithContext(ctx context.Context) SuppressionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SuppressionOutput).ToSuppressionPtrOutputWithContext(ctx)
+}
+
+// SuppressionPtrInput is an input type that accepts SuppressionArgs, SuppressionPtr and SuppressionPtrOutput values.
+// You can construct a concrete instance of `SuppressionPtrInput` via:
+//
+//	        SuppressionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SuppressionPtrInput interface {
+	pulumi.Input
+
+	ToSuppressionPtrOutput() SuppressionPtrOutput
+	ToSuppressionPtrOutputWithContext(context.Context) SuppressionPtrOutput
+}
+
+type suppressionPtrType SuppressionArgs
+
+func SuppressionPtr(v *SuppressionArgs) SuppressionPtrInput {
+	return (*suppressionPtrType)(v)
+}
+
+func (*suppressionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Suppression)(nil)).Elem()
+}
+
+func (i *suppressionPtrType) ToSuppressionPtrOutput() SuppressionPtrOutput {
+	return i.ToSuppressionPtrOutputWithContext(context.Background())
+}
+
+func (i *suppressionPtrType) ToSuppressionPtrOutputWithContext(ctx context.Context) SuppressionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SuppressionPtrOutput)
+}
+
+// Action rule with suppression configuration
+type SuppressionOutput struct{ *pulumi.OutputState }
+
+func (SuppressionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Suppression)(nil)).Elem()
+}
+
+func (o SuppressionOutput) ToSuppressionOutput() SuppressionOutput {
+	return o
+}
+
+func (o SuppressionOutput) ToSuppressionOutputWithContext(ctx context.Context) SuppressionOutput {
+	return o
+}
+
+func (o SuppressionOutput) ToSuppressionPtrOutput() SuppressionPtrOutput {
+	return o.ToSuppressionPtrOutputWithContext(context.Background())
+}
+
+func (o SuppressionOutput) ToSuppressionPtrOutputWithContext(ctx context.Context) SuppressionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Suppression) *Suppression {
+		return &v
+	}).(SuppressionPtrOutput)
+}
+
+// conditions on which alerts will be filtered
+func (o SuppressionOutput) Conditions() ConditionsPtrOutput {
+	return o.ApplyT(func(v Suppression) *Conditions { return v.Conditions }).(ConditionsPtrOutput)
+}
+
+// Description of action rule
+func (o SuppressionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Suppression) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// scope on which action rule will apply
+func (o SuppressionOutput) Scope() ScopePtrOutput {
+	return o.ApplyT(func(v Suppression) *Scope { return v.Scope }).(ScopePtrOutput)
+}
+
+// Indicates if the given action rule is enabled or disabled
+func (o SuppressionOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Suppression) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// suppression configuration for the action rule
+func (o SuppressionOutput) SuppressionConfig() SuppressionConfigOutput {
+	return o.ApplyT(func(v Suppression) SuppressionConfig { return v.SuppressionConfig }).(SuppressionConfigOutput)
+}
+
+// Indicates type of action rule
+// Expected value is 'Suppression'.
+func (o SuppressionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v Suppression) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SuppressionPtrOutput struct{ *pulumi.OutputState }
+
+func (SuppressionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Suppression)(nil)).Elem()
+}
+
+func (o SuppressionPtrOutput) ToSuppressionPtrOutput() SuppressionPtrOutput {
+	return o
+}
+
+func (o SuppressionPtrOutput) ToSuppressionPtrOutputWithContext(ctx context.Context) SuppressionPtrOutput {
+	return o
+}
+
+func (o SuppressionPtrOutput) Elem() SuppressionOutput {
+	return o.ApplyT(func(v *Suppression) Suppression {
+		if v != nil {
+			return *v
+		}
+		var ret Suppression
+		return ret
+	}).(SuppressionOutput)
+}
+
+// conditions on which alerts will be filtered
+func (o SuppressionPtrOutput) Conditions() ConditionsPtrOutput {
+	return o.ApplyT(func(v *Suppression) *Conditions {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(ConditionsPtrOutput)
+}
+
+// Description of action rule
+func (o SuppressionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Suppression) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// scope on which action rule will apply
+func (o SuppressionPtrOutput) Scope() ScopePtrOutput {
+	return o.ApplyT(func(v *Suppression) *Scope {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(ScopePtrOutput)
+}
+
+// Indicates if the given action rule is enabled or disabled
+func (o SuppressionPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Suppression) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// suppression configuration for the action rule
+func (o SuppressionPtrOutput) SuppressionConfig() SuppressionConfigPtrOutput {
+	return o.ApplyT(func(v *Suppression) *SuppressionConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.SuppressionConfig
+	}).(SuppressionConfigPtrOutput)
+}
+
+// Indicates type of action rule
+// Expected value is 'Suppression'.
+func (o SuppressionPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Suppression) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // Suppression logic for a given action rule
 type SuppressionConfig struct {
 	// Specifies when the suppression should be applied
@@ -2089,12 +4016,188 @@ type SuppressionConfig struct {
 	Schedule *SuppressionSchedule `pulumi:"schedule"`
 }
 
+// SuppressionConfigInput is an input type that accepts SuppressionConfigArgs and SuppressionConfigOutput values.
+// You can construct a concrete instance of `SuppressionConfigInput` via:
+//
+//	SuppressionConfigArgs{...}
+type SuppressionConfigInput interface {
+	pulumi.Input
+
+	ToSuppressionConfigOutput() SuppressionConfigOutput
+	ToSuppressionConfigOutputWithContext(context.Context) SuppressionConfigOutput
+}
+
+// Suppression logic for a given action rule
+type SuppressionConfigArgs struct {
+	// Specifies when the suppression should be applied
+	RecurrenceType pulumi.StringInput `pulumi:"recurrenceType"`
+	// suppression schedule configuration
+	Schedule SuppressionSchedulePtrInput `pulumi:"schedule"`
+}
+
+func (SuppressionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SuppressionConfig)(nil)).Elem()
+}
+
+func (i SuppressionConfigArgs) ToSuppressionConfigOutput() SuppressionConfigOutput {
+	return i.ToSuppressionConfigOutputWithContext(context.Background())
+}
+
+func (i SuppressionConfigArgs) ToSuppressionConfigOutputWithContext(ctx context.Context) SuppressionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SuppressionConfigOutput)
+}
+
+func (i SuppressionConfigArgs) ToSuppressionConfigPtrOutput() SuppressionConfigPtrOutput {
+	return i.ToSuppressionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SuppressionConfigArgs) ToSuppressionConfigPtrOutputWithContext(ctx context.Context) SuppressionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SuppressionConfigOutput).ToSuppressionConfigPtrOutputWithContext(ctx)
+}
+
+// SuppressionConfigPtrInput is an input type that accepts SuppressionConfigArgs, SuppressionConfigPtr and SuppressionConfigPtrOutput values.
+// You can construct a concrete instance of `SuppressionConfigPtrInput` via:
+//
+//	        SuppressionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SuppressionConfigPtrInput interface {
+	pulumi.Input
+
+	ToSuppressionConfigPtrOutput() SuppressionConfigPtrOutput
+	ToSuppressionConfigPtrOutputWithContext(context.Context) SuppressionConfigPtrOutput
+}
+
+type suppressionConfigPtrType SuppressionConfigArgs
+
+func SuppressionConfigPtr(v *SuppressionConfigArgs) SuppressionConfigPtrInput {
+	return (*suppressionConfigPtrType)(v)
+}
+
+func (*suppressionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SuppressionConfig)(nil)).Elem()
+}
+
+func (i *suppressionConfigPtrType) ToSuppressionConfigPtrOutput() SuppressionConfigPtrOutput {
+	return i.ToSuppressionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *suppressionConfigPtrType) ToSuppressionConfigPtrOutputWithContext(ctx context.Context) SuppressionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SuppressionConfigPtrOutput)
+}
+
+// Suppression logic for a given action rule
+type SuppressionConfigOutput struct{ *pulumi.OutputState }
+
+func (SuppressionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SuppressionConfig)(nil)).Elem()
+}
+
+func (o SuppressionConfigOutput) ToSuppressionConfigOutput() SuppressionConfigOutput {
+	return o
+}
+
+func (o SuppressionConfigOutput) ToSuppressionConfigOutputWithContext(ctx context.Context) SuppressionConfigOutput {
+	return o
+}
+
+func (o SuppressionConfigOutput) ToSuppressionConfigPtrOutput() SuppressionConfigPtrOutput {
+	return o.ToSuppressionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SuppressionConfigOutput) ToSuppressionConfigPtrOutputWithContext(ctx context.Context) SuppressionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SuppressionConfig) *SuppressionConfig {
+		return &v
+	}).(SuppressionConfigPtrOutput)
+}
+
+// Specifies when the suppression should be applied
+func (o SuppressionConfigOutput) RecurrenceType() pulumi.StringOutput {
+	return o.ApplyT(func(v SuppressionConfig) string { return v.RecurrenceType }).(pulumi.StringOutput)
+}
+
+// suppression schedule configuration
+func (o SuppressionConfigOutput) Schedule() SuppressionSchedulePtrOutput {
+	return o.ApplyT(func(v SuppressionConfig) *SuppressionSchedule { return v.Schedule }).(SuppressionSchedulePtrOutput)
+}
+
+type SuppressionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SuppressionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SuppressionConfig)(nil)).Elem()
+}
+
+func (o SuppressionConfigPtrOutput) ToSuppressionConfigPtrOutput() SuppressionConfigPtrOutput {
+	return o
+}
+
+func (o SuppressionConfigPtrOutput) ToSuppressionConfigPtrOutputWithContext(ctx context.Context) SuppressionConfigPtrOutput {
+	return o
+}
+
+func (o SuppressionConfigPtrOutput) Elem() SuppressionConfigOutput {
+	return o.ApplyT(func(v *SuppressionConfig) SuppressionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SuppressionConfig
+		return ret
+	}).(SuppressionConfigOutput)
+}
+
+// Specifies when the suppression should be applied
+func (o SuppressionConfigPtrOutput) RecurrenceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SuppressionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RecurrenceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// suppression schedule configuration
+func (o SuppressionConfigPtrOutput) Schedule() SuppressionSchedulePtrOutput {
+	return o.ApplyT(func(v *SuppressionConfig) *SuppressionSchedule {
+		if v == nil {
+			return nil
+		}
+		return v.Schedule
+	}).(SuppressionSchedulePtrOutput)
+}
+
 // Suppression logic for a given action rule
 type SuppressionConfigResponse struct {
 	// Specifies when the suppression should be applied
 	RecurrenceType string `pulumi:"recurrenceType"`
 	// suppression schedule configuration
 	Schedule *SuppressionScheduleResponse `pulumi:"schedule"`
+}
+
+// Suppression logic for a given action rule
+type SuppressionConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SuppressionConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SuppressionConfigResponse)(nil)).Elem()
+}
+
+func (o SuppressionConfigResponseOutput) ToSuppressionConfigResponseOutput() SuppressionConfigResponseOutput {
+	return o
+}
+
+func (o SuppressionConfigResponseOutput) ToSuppressionConfigResponseOutputWithContext(ctx context.Context) SuppressionConfigResponseOutput {
+	return o
+}
+
+// Specifies when the suppression should be applied
+func (o SuppressionConfigResponseOutput) RecurrenceType() pulumi.StringOutput {
+	return o.ApplyT(func(v SuppressionConfigResponse) string { return v.RecurrenceType }).(pulumi.StringOutput)
+}
+
+// suppression schedule configuration
+func (o SuppressionConfigResponseOutput) Schedule() SuppressionScheduleResponsePtrOutput {
+	return o.ApplyT(func(v SuppressionConfigResponse) *SuppressionScheduleResponse { return v.Schedule }).(SuppressionScheduleResponsePtrOutput)
 }
 
 // Action rule with suppression configuration
@@ -2122,6 +4225,72 @@ type SuppressionResponse struct {
 	Type string `pulumi:"type"`
 }
 
+// Action rule with suppression configuration
+type SuppressionResponseOutput struct{ *pulumi.OutputState }
+
+func (SuppressionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SuppressionResponse)(nil)).Elem()
+}
+
+func (o SuppressionResponseOutput) ToSuppressionResponseOutput() SuppressionResponseOutput {
+	return o
+}
+
+func (o SuppressionResponseOutput) ToSuppressionResponseOutputWithContext(ctx context.Context) SuppressionResponseOutput {
+	return o
+}
+
+// conditions on which alerts will be filtered
+func (o SuppressionResponseOutput) Conditions() ConditionsResponsePtrOutput {
+	return o.ApplyT(func(v SuppressionResponse) *ConditionsResponse { return v.Conditions }).(ConditionsResponsePtrOutput)
+}
+
+// Creation time of action rule. Date-Time in ISO-8601 format.
+func (o SuppressionResponseOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v SuppressionResponse) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Created by user name.
+func (o SuppressionResponseOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v SuppressionResponse) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Description of action rule
+func (o SuppressionResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SuppressionResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Last updated time of action rule. Date-Time in ISO-8601 format.
+func (o SuppressionResponseOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v SuppressionResponse) string { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// Last modified by user name.
+func (o SuppressionResponseOutput) LastModifiedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v SuppressionResponse) string { return v.LastModifiedBy }).(pulumi.StringOutput)
+}
+
+// scope on which action rule will apply
+func (o SuppressionResponseOutput) Scope() ScopeResponsePtrOutput {
+	return o.ApplyT(func(v SuppressionResponse) *ScopeResponse { return v.Scope }).(ScopeResponsePtrOutput)
+}
+
+// Indicates if the given action rule is enabled or disabled
+func (o SuppressionResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SuppressionResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// suppression configuration for the action rule
+func (o SuppressionResponseOutput) SuppressionConfig() SuppressionConfigResponseOutput {
+	return o.ApplyT(func(v SuppressionResponse) SuppressionConfigResponse { return v.SuppressionConfig }).(SuppressionConfigResponseOutput)
+}
+
+// Indicates type of action rule
+// Expected value is 'Suppression'.
+func (o SuppressionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SuppressionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Schedule for a given suppression configuration.
 type SuppressionSchedule struct {
 	// End date for suppression
@@ -2136,6 +4305,208 @@ type SuppressionSchedule struct {
 	StartTime *string `pulumi:"startTime"`
 }
 
+// SuppressionScheduleInput is an input type that accepts SuppressionScheduleArgs and SuppressionScheduleOutput values.
+// You can construct a concrete instance of `SuppressionScheduleInput` via:
+//
+//	SuppressionScheduleArgs{...}
+type SuppressionScheduleInput interface {
+	pulumi.Input
+
+	ToSuppressionScheduleOutput() SuppressionScheduleOutput
+	ToSuppressionScheduleOutputWithContext(context.Context) SuppressionScheduleOutput
+}
+
+// Schedule for a given suppression configuration.
+type SuppressionScheduleArgs struct {
+	// End date for suppression
+	EndDate pulumi.StringPtrInput `pulumi:"endDate"`
+	// End date for suppression
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Specifies the values for recurrence pattern
+	RecurrenceValues pulumi.IntArrayInput `pulumi:"recurrenceValues"`
+	// Start date for suppression
+	StartDate pulumi.StringPtrInput `pulumi:"startDate"`
+	// Start time for suppression
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (SuppressionScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SuppressionSchedule)(nil)).Elem()
+}
+
+func (i SuppressionScheduleArgs) ToSuppressionScheduleOutput() SuppressionScheduleOutput {
+	return i.ToSuppressionScheduleOutputWithContext(context.Background())
+}
+
+func (i SuppressionScheduleArgs) ToSuppressionScheduleOutputWithContext(ctx context.Context) SuppressionScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SuppressionScheduleOutput)
+}
+
+func (i SuppressionScheduleArgs) ToSuppressionSchedulePtrOutput() SuppressionSchedulePtrOutput {
+	return i.ToSuppressionSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i SuppressionScheduleArgs) ToSuppressionSchedulePtrOutputWithContext(ctx context.Context) SuppressionSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SuppressionScheduleOutput).ToSuppressionSchedulePtrOutputWithContext(ctx)
+}
+
+// SuppressionSchedulePtrInput is an input type that accepts SuppressionScheduleArgs, SuppressionSchedulePtr and SuppressionSchedulePtrOutput values.
+// You can construct a concrete instance of `SuppressionSchedulePtrInput` via:
+//
+//	        SuppressionScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type SuppressionSchedulePtrInput interface {
+	pulumi.Input
+
+	ToSuppressionSchedulePtrOutput() SuppressionSchedulePtrOutput
+	ToSuppressionSchedulePtrOutputWithContext(context.Context) SuppressionSchedulePtrOutput
+}
+
+type suppressionSchedulePtrType SuppressionScheduleArgs
+
+func SuppressionSchedulePtr(v *SuppressionScheduleArgs) SuppressionSchedulePtrInput {
+	return (*suppressionSchedulePtrType)(v)
+}
+
+func (*suppressionSchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SuppressionSchedule)(nil)).Elem()
+}
+
+func (i *suppressionSchedulePtrType) ToSuppressionSchedulePtrOutput() SuppressionSchedulePtrOutput {
+	return i.ToSuppressionSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *suppressionSchedulePtrType) ToSuppressionSchedulePtrOutputWithContext(ctx context.Context) SuppressionSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SuppressionSchedulePtrOutput)
+}
+
+// Schedule for a given suppression configuration.
+type SuppressionScheduleOutput struct{ *pulumi.OutputState }
+
+func (SuppressionScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SuppressionSchedule)(nil)).Elem()
+}
+
+func (o SuppressionScheduleOutput) ToSuppressionScheduleOutput() SuppressionScheduleOutput {
+	return o
+}
+
+func (o SuppressionScheduleOutput) ToSuppressionScheduleOutputWithContext(ctx context.Context) SuppressionScheduleOutput {
+	return o
+}
+
+func (o SuppressionScheduleOutput) ToSuppressionSchedulePtrOutput() SuppressionSchedulePtrOutput {
+	return o.ToSuppressionSchedulePtrOutputWithContext(context.Background())
+}
+
+func (o SuppressionScheduleOutput) ToSuppressionSchedulePtrOutputWithContext(ctx context.Context) SuppressionSchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SuppressionSchedule) *SuppressionSchedule {
+		return &v
+	}).(SuppressionSchedulePtrOutput)
+}
+
+// End date for suppression
+func (o SuppressionScheduleOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SuppressionSchedule) *string { return v.EndDate }).(pulumi.StringPtrOutput)
+}
+
+// End date for suppression
+func (o SuppressionScheduleOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SuppressionSchedule) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the values for recurrence pattern
+func (o SuppressionScheduleOutput) RecurrenceValues() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v SuppressionSchedule) []int { return v.RecurrenceValues }).(pulumi.IntArrayOutput)
+}
+
+// Start date for suppression
+func (o SuppressionScheduleOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SuppressionSchedule) *string { return v.StartDate }).(pulumi.StringPtrOutput)
+}
+
+// Start time for suppression
+func (o SuppressionScheduleOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SuppressionSchedule) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type SuppressionSchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (SuppressionSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SuppressionSchedule)(nil)).Elem()
+}
+
+func (o SuppressionSchedulePtrOutput) ToSuppressionSchedulePtrOutput() SuppressionSchedulePtrOutput {
+	return o
+}
+
+func (o SuppressionSchedulePtrOutput) ToSuppressionSchedulePtrOutputWithContext(ctx context.Context) SuppressionSchedulePtrOutput {
+	return o
+}
+
+func (o SuppressionSchedulePtrOutput) Elem() SuppressionScheduleOutput {
+	return o.ApplyT(func(v *SuppressionSchedule) SuppressionSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret SuppressionSchedule
+		return ret
+	}).(SuppressionScheduleOutput)
+}
+
+// End date for suppression
+func (o SuppressionSchedulePtrOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SuppressionSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// End date for suppression
+func (o SuppressionSchedulePtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SuppressionSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the values for recurrence pattern
+func (o SuppressionSchedulePtrOutput) RecurrenceValues() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *SuppressionSchedule) []int {
+		if v == nil {
+			return nil
+		}
+		return v.RecurrenceValues
+	}).(pulumi.IntArrayOutput)
+}
+
+// Start date for suppression
+func (o SuppressionSchedulePtrOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SuppressionSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start time for suppression
+func (o SuppressionSchedulePtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SuppressionSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
 // Schedule for a given suppression configuration.
 type SuppressionScheduleResponse struct {
 	// End date for suppression
@@ -2148,6 +4519,120 @@ type SuppressionScheduleResponse struct {
 	StartDate *string `pulumi:"startDate"`
 	// Start time for suppression
 	StartTime *string `pulumi:"startTime"`
+}
+
+// Schedule for a given suppression configuration.
+type SuppressionScheduleResponseOutput struct{ *pulumi.OutputState }
+
+func (SuppressionScheduleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SuppressionScheduleResponse)(nil)).Elem()
+}
+
+func (o SuppressionScheduleResponseOutput) ToSuppressionScheduleResponseOutput() SuppressionScheduleResponseOutput {
+	return o
+}
+
+func (o SuppressionScheduleResponseOutput) ToSuppressionScheduleResponseOutputWithContext(ctx context.Context) SuppressionScheduleResponseOutput {
+	return o
+}
+
+// End date for suppression
+func (o SuppressionScheduleResponseOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SuppressionScheduleResponse) *string { return v.EndDate }).(pulumi.StringPtrOutput)
+}
+
+// End date for suppression
+func (o SuppressionScheduleResponseOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SuppressionScheduleResponse) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the values for recurrence pattern
+func (o SuppressionScheduleResponseOutput) RecurrenceValues() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v SuppressionScheduleResponse) []int { return v.RecurrenceValues }).(pulumi.IntArrayOutput)
+}
+
+// Start date for suppression
+func (o SuppressionScheduleResponseOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SuppressionScheduleResponse) *string { return v.StartDate }).(pulumi.StringPtrOutput)
+}
+
+// Start time for suppression
+func (o SuppressionScheduleResponseOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SuppressionScheduleResponse) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type SuppressionScheduleResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SuppressionScheduleResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SuppressionScheduleResponse)(nil)).Elem()
+}
+
+func (o SuppressionScheduleResponsePtrOutput) ToSuppressionScheduleResponsePtrOutput() SuppressionScheduleResponsePtrOutput {
+	return o
+}
+
+func (o SuppressionScheduleResponsePtrOutput) ToSuppressionScheduleResponsePtrOutputWithContext(ctx context.Context) SuppressionScheduleResponsePtrOutput {
+	return o
+}
+
+func (o SuppressionScheduleResponsePtrOutput) Elem() SuppressionScheduleResponseOutput {
+	return o.ApplyT(func(v *SuppressionScheduleResponse) SuppressionScheduleResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SuppressionScheduleResponse
+		return ret
+	}).(SuppressionScheduleResponseOutput)
+}
+
+// End date for suppression
+func (o SuppressionScheduleResponsePtrOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SuppressionScheduleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// End date for suppression
+func (o SuppressionScheduleResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SuppressionScheduleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the values for recurrence pattern
+func (o SuppressionScheduleResponsePtrOutput) RecurrenceValues() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *SuppressionScheduleResponse) []int {
+		if v == nil {
+			return nil
+		}
+		return v.RecurrenceValues
+	}).(pulumi.IntArrayOutput)
+}
+
+// Start date for suppression
+func (o SuppressionScheduleResponsePtrOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SuppressionScheduleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start time for suppression
+func (o SuppressionScheduleResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SuppressionScheduleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -2424,6 +4909,78 @@ type WeeklyRecurrence struct {
 	StartTime *string `pulumi:"startTime"`
 }
 
+// WeeklyRecurrenceInput is an input type that accepts WeeklyRecurrenceArgs and WeeklyRecurrenceOutput values.
+// You can construct a concrete instance of `WeeklyRecurrenceInput` via:
+//
+//	WeeklyRecurrenceArgs{...}
+type WeeklyRecurrenceInput interface {
+	pulumi.Input
+
+	ToWeeklyRecurrenceOutput() WeeklyRecurrenceOutput
+	ToWeeklyRecurrenceOutputWithContext(context.Context) WeeklyRecurrenceOutput
+}
+
+// Weekly recurrence object.
+type WeeklyRecurrenceArgs struct {
+	// Specifies the values for weekly recurrence pattern.
+	DaysOfWeek pulumi.StringArrayInput `pulumi:"daysOfWeek"`
+	// End time for recurrence.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Specifies when the recurrence should be applied.
+	// Expected value is 'Weekly'.
+	RecurrenceType pulumi.StringInput `pulumi:"recurrenceType"`
+	// Start time for recurrence.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (WeeklyRecurrenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeeklyRecurrence)(nil)).Elem()
+}
+
+func (i WeeklyRecurrenceArgs) ToWeeklyRecurrenceOutput() WeeklyRecurrenceOutput {
+	return i.ToWeeklyRecurrenceOutputWithContext(context.Background())
+}
+
+func (i WeeklyRecurrenceArgs) ToWeeklyRecurrenceOutputWithContext(ctx context.Context) WeeklyRecurrenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WeeklyRecurrenceOutput)
+}
+
+// Weekly recurrence object.
+type WeeklyRecurrenceOutput struct{ *pulumi.OutputState }
+
+func (WeeklyRecurrenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeeklyRecurrence)(nil)).Elem()
+}
+
+func (o WeeklyRecurrenceOutput) ToWeeklyRecurrenceOutput() WeeklyRecurrenceOutput {
+	return o
+}
+
+func (o WeeklyRecurrenceOutput) ToWeeklyRecurrenceOutputWithContext(ctx context.Context) WeeklyRecurrenceOutput {
+	return o
+}
+
+// Specifies the values for weekly recurrence pattern.
+func (o WeeklyRecurrenceOutput) DaysOfWeek() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WeeklyRecurrence) []string { return v.DaysOfWeek }).(pulumi.StringArrayOutput)
+}
+
+// End time for recurrence.
+func (o WeeklyRecurrenceOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WeeklyRecurrence) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Specifies when the recurrence should be applied.
+// Expected value is 'Weekly'.
+func (o WeeklyRecurrenceOutput) RecurrenceType() pulumi.StringOutput {
+	return o.ApplyT(func(v WeeklyRecurrence) string { return v.RecurrenceType }).(pulumi.StringOutput)
+}
+
+// Start time for recurrence.
+func (o WeeklyRecurrenceOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WeeklyRecurrence) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
 // Weekly recurrence object.
 type WeeklyRecurrenceResponse struct {
 	// Specifies the values for weekly recurrence pattern.
@@ -2437,20 +4994,74 @@ type WeeklyRecurrenceResponse struct {
 	StartTime *string `pulumi:"startTime"`
 }
 
+// Weekly recurrence object.
+type WeeklyRecurrenceResponseOutput struct{ *pulumi.OutputState }
+
+func (WeeklyRecurrenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeeklyRecurrenceResponse)(nil)).Elem()
+}
+
+func (o WeeklyRecurrenceResponseOutput) ToWeeklyRecurrenceResponseOutput() WeeklyRecurrenceResponseOutput {
+	return o
+}
+
+func (o WeeklyRecurrenceResponseOutput) ToWeeklyRecurrenceResponseOutputWithContext(ctx context.Context) WeeklyRecurrenceResponseOutput {
+	return o
+}
+
+// Specifies the values for weekly recurrence pattern.
+func (o WeeklyRecurrenceResponseOutput) DaysOfWeek() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WeeklyRecurrenceResponse) []string { return v.DaysOfWeek }).(pulumi.StringArrayOutput)
+}
+
+// End time for recurrence.
+func (o WeeklyRecurrenceResponseOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WeeklyRecurrenceResponse) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Specifies when the recurrence should be applied.
+// Expected value is 'Weekly'.
+func (o WeeklyRecurrenceResponseOutput) RecurrenceType() pulumi.StringOutput {
+	return o.ApplyT(func(v WeeklyRecurrenceResponse) string { return v.RecurrenceType }).(pulumi.StringOutput)
+}
+
+// Start time for recurrence.
+func (o WeeklyRecurrenceResponseOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WeeklyRecurrenceResponse) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(ActionGroupOutput{})
+	pulumi.RegisterOutputType(ActionGroupPtrOutput{})
+	pulumi.RegisterOutputType(ActionGroupResponseOutput{})
 	pulumi.RegisterOutputType(ActionGroupsInformationOutput{})
 	pulumi.RegisterOutputType(ActionGroupsInformationResponseOutput{})
+	pulumi.RegisterOutputType(AddActionGroupsOutput{})
+	pulumi.RegisterOutputType(AddActionGroupsResponseOutput{})
 	pulumi.RegisterOutputType(AlertProcessingRulePropertiesOutput{})
 	pulumi.RegisterOutputType(AlertProcessingRulePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(AlertProcessingRulePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ConditionOutput{})
+	pulumi.RegisterOutputType(ConditionPtrOutput{})
 	pulumi.RegisterOutputType(ConditionArrayOutput{})
 	pulumi.RegisterOutputType(ConditionResponseOutput{})
+	pulumi.RegisterOutputType(ConditionResponsePtrOutput{})
 	pulumi.RegisterOutputType(ConditionResponseArrayOutput{})
+	pulumi.RegisterOutputType(ConditionsOutput{})
+	pulumi.RegisterOutputType(ConditionsPtrOutput{})
+	pulumi.RegisterOutputType(ConditionsResponseOutput{})
+	pulumi.RegisterOutputType(ConditionsResponsePtrOutput{})
+	pulumi.RegisterOutputType(DailyRecurrenceOutput{})
+	pulumi.RegisterOutputType(DailyRecurrenceResponseOutput{})
 	pulumi.RegisterOutputType(DetectorOutput{})
 	pulumi.RegisterOutputType(DetectorParameterDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(DetectorParameterDefinitionResponseArrayOutput{})
 	pulumi.RegisterOutputType(DetectorResponseOutput{})
+	pulumi.RegisterOutputType(DiagnosticsOutput{})
+	pulumi.RegisterOutputType(DiagnosticsPtrOutput{})
+	pulumi.RegisterOutputType(DiagnosticsResponseOutput{})
+	pulumi.RegisterOutputType(MonthlyRecurrenceOutput{})
+	pulumi.RegisterOutputType(MonthlyRecurrenceResponseOutput{})
 	pulumi.RegisterOutputType(PrometheusRuleOutput{})
 	pulumi.RegisterOutputType(PrometheusRuleArrayOutput{})
 	pulumi.RegisterOutputType(PrometheusRuleGroupActionOutput{})
@@ -2463,13 +5074,31 @@ func init() {
 	pulumi.RegisterOutputType(PrometheusRuleResolveConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrometheusRuleResponseOutput{})
 	pulumi.RegisterOutputType(PrometheusRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(RemoveAllActionGroupsOutput{})
+	pulumi.RegisterOutputType(RemoveAllActionGroupsResponseOutput{})
 	pulumi.RegisterOutputType(ScheduleOutput{})
 	pulumi.RegisterOutputType(SchedulePtrOutput{})
 	pulumi.RegisterOutputType(ScheduleResponseOutput{})
 	pulumi.RegisterOutputType(ScheduleResponsePtrOutput{})
+	pulumi.RegisterOutputType(ScopeOutput{})
+	pulumi.RegisterOutputType(ScopePtrOutput{})
+	pulumi.RegisterOutputType(ScopeResponseOutput{})
+	pulumi.RegisterOutputType(ScopeResponsePtrOutput{})
+	pulumi.RegisterOutputType(SuppressionOutput{})
+	pulumi.RegisterOutputType(SuppressionPtrOutput{})
+	pulumi.RegisterOutputType(SuppressionConfigOutput{})
+	pulumi.RegisterOutputType(SuppressionConfigPtrOutput{})
+	pulumi.RegisterOutputType(SuppressionConfigResponseOutput{})
+	pulumi.RegisterOutputType(SuppressionResponseOutput{})
+	pulumi.RegisterOutputType(SuppressionScheduleOutput{})
+	pulumi.RegisterOutputType(SuppressionSchedulePtrOutput{})
+	pulumi.RegisterOutputType(SuppressionScheduleResponseOutput{})
+	pulumi.RegisterOutputType(SuppressionScheduleResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(ThrottlingInformationOutput{})
 	pulumi.RegisterOutputType(ThrottlingInformationPtrOutput{})
 	pulumi.RegisterOutputType(ThrottlingInformationResponseOutput{})
 	pulumi.RegisterOutputType(ThrottlingInformationResponsePtrOutput{})
+	pulumi.RegisterOutputType(WeeklyRecurrenceOutput{})
+	pulumi.RegisterOutputType(WeeklyRecurrenceResponseOutput{})
 }

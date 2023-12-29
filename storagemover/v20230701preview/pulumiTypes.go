@@ -55,6 +55,177 @@ type AzureKeyVaultSmbCredentials struct {
 	UsernameUri *string `pulumi:"usernameUri"`
 }
 
+// AzureKeyVaultSmbCredentialsInput is an input type that accepts AzureKeyVaultSmbCredentialsArgs and AzureKeyVaultSmbCredentialsOutput values.
+// You can construct a concrete instance of `AzureKeyVaultSmbCredentialsInput` via:
+//
+//	AzureKeyVaultSmbCredentialsArgs{...}
+type AzureKeyVaultSmbCredentialsInput interface {
+	pulumi.Input
+
+	ToAzureKeyVaultSmbCredentialsOutput() AzureKeyVaultSmbCredentialsOutput
+	ToAzureKeyVaultSmbCredentialsOutputWithContext(context.Context) AzureKeyVaultSmbCredentialsOutput
+}
+
+// The Azure Key Vault secret URIs which store the credentials.
+type AzureKeyVaultSmbCredentialsArgs struct {
+	// The Azure Key Vault secret URI which stores the password. Use empty string to clean-up existing value.
+	PasswordUri pulumi.StringPtrInput `pulumi:"passwordUri"`
+	// The Credentials type.
+	// Expected value is 'AzureKeyVaultSmb'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The Azure Key Vault secret URI which stores the username. Use empty string to clean-up existing value.
+	UsernameUri pulumi.StringPtrInput `pulumi:"usernameUri"`
+}
+
+func (AzureKeyVaultSmbCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureKeyVaultSmbCredentials)(nil)).Elem()
+}
+
+func (i AzureKeyVaultSmbCredentialsArgs) ToAzureKeyVaultSmbCredentialsOutput() AzureKeyVaultSmbCredentialsOutput {
+	return i.ToAzureKeyVaultSmbCredentialsOutputWithContext(context.Background())
+}
+
+func (i AzureKeyVaultSmbCredentialsArgs) ToAzureKeyVaultSmbCredentialsOutputWithContext(ctx context.Context) AzureKeyVaultSmbCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureKeyVaultSmbCredentialsOutput)
+}
+
+func (i AzureKeyVaultSmbCredentialsArgs) ToAzureKeyVaultSmbCredentialsPtrOutput() AzureKeyVaultSmbCredentialsPtrOutput {
+	return i.ToAzureKeyVaultSmbCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i AzureKeyVaultSmbCredentialsArgs) ToAzureKeyVaultSmbCredentialsPtrOutputWithContext(ctx context.Context) AzureKeyVaultSmbCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureKeyVaultSmbCredentialsOutput).ToAzureKeyVaultSmbCredentialsPtrOutputWithContext(ctx)
+}
+
+// AzureKeyVaultSmbCredentialsPtrInput is an input type that accepts AzureKeyVaultSmbCredentialsArgs, AzureKeyVaultSmbCredentialsPtr and AzureKeyVaultSmbCredentialsPtrOutput values.
+// You can construct a concrete instance of `AzureKeyVaultSmbCredentialsPtrInput` via:
+//
+//	        AzureKeyVaultSmbCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureKeyVaultSmbCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToAzureKeyVaultSmbCredentialsPtrOutput() AzureKeyVaultSmbCredentialsPtrOutput
+	ToAzureKeyVaultSmbCredentialsPtrOutputWithContext(context.Context) AzureKeyVaultSmbCredentialsPtrOutput
+}
+
+type azureKeyVaultSmbCredentialsPtrType AzureKeyVaultSmbCredentialsArgs
+
+func AzureKeyVaultSmbCredentialsPtr(v *AzureKeyVaultSmbCredentialsArgs) AzureKeyVaultSmbCredentialsPtrInput {
+	return (*azureKeyVaultSmbCredentialsPtrType)(v)
+}
+
+func (*azureKeyVaultSmbCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureKeyVaultSmbCredentials)(nil)).Elem()
+}
+
+func (i *azureKeyVaultSmbCredentialsPtrType) ToAzureKeyVaultSmbCredentialsPtrOutput() AzureKeyVaultSmbCredentialsPtrOutput {
+	return i.ToAzureKeyVaultSmbCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *azureKeyVaultSmbCredentialsPtrType) ToAzureKeyVaultSmbCredentialsPtrOutputWithContext(ctx context.Context) AzureKeyVaultSmbCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureKeyVaultSmbCredentialsPtrOutput)
+}
+
+// The Azure Key Vault secret URIs which store the credentials.
+type AzureKeyVaultSmbCredentialsOutput struct{ *pulumi.OutputState }
+
+func (AzureKeyVaultSmbCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureKeyVaultSmbCredentials)(nil)).Elem()
+}
+
+func (o AzureKeyVaultSmbCredentialsOutput) ToAzureKeyVaultSmbCredentialsOutput() AzureKeyVaultSmbCredentialsOutput {
+	return o
+}
+
+func (o AzureKeyVaultSmbCredentialsOutput) ToAzureKeyVaultSmbCredentialsOutputWithContext(ctx context.Context) AzureKeyVaultSmbCredentialsOutput {
+	return o
+}
+
+func (o AzureKeyVaultSmbCredentialsOutput) ToAzureKeyVaultSmbCredentialsPtrOutput() AzureKeyVaultSmbCredentialsPtrOutput {
+	return o.ToAzureKeyVaultSmbCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o AzureKeyVaultSmbCredentialsOutput) ToAzureKeyVaultSmbCredentialsPtrOutputWithContext(ctx context.Context) AzureKeyVaultSmbCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureKeyVaultSmbCredentials) *AzureKeyVaultSmbCredentials {
+		return &v
+	}).(AzureKeyVaultSmbCredentialsPtrOutput)
+}
+
+// The Azure Key Vault secret URI which stores the password. Use empty string to clean-up existing value.
+func (o AzureKeyVaultSmbCredentialsOutput) PasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureKeyVaultSmbCredentials) *string { return v.PasswordUri }).(pulumi.StringPtrOutput)
+}
+
+// The Credentials type.
+// Expected value is 'AzureKeyVaultSmb'.
+func (o AzureKeyVaultSmbCredentialsOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureKeyVaultSmbCredentials) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The Azure Key Vault secret URI which stores the username. Use empty string to clean-up existing value.
+func (o AzureKeyVaultSmbCredentialsOutput) UsernameUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureKeyVaultSmbCredentials) *string { return v.UsernameUri }).(pulumi.StringPtrOutput)
+}
+
+type AzureKeyVaultSmbCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureKeyVaultSmbCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureKeyVaultSmbCredentials)(nil)).Elem()
+}
+
+func (o AzureKeyVaultSmbCredentialsPtrOutput) ToAzureKeyVaultSmbCredentialsPtrOutput() AzureKeyVaultSmbCredentialsPtrOutput {
+	return o
+}
+
+func (o AzureKeyVaultSmbCredentialsPtrOutput) ToAzureKeyVaultSmbCredentialsPtrOutputWithContext(ctx context.Context) AzureKeyVaultSmbCredentialsPtrOutput {
+	return o
+}
+
+func (o AzureKeyVaultSmbCredentialsPtrOutput) Elem() AzureKeyVaultSmbCredentialsOutput {
+	return o.ApplyT(func(v *AzureKeyVaultSmbCredentials) AzureKeyVaultSmbCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret AzureKeyVaultSmbCredentials
+		return ret
+	}).(AzureKeyVaultSmbCredentialsOutput)
+}
+
+// The Azure Key Vault secret URI which stores the password. Use empty string to clean-up existing value.
+func (o AzureKeyVaultSmbCredentialsPtrOutput) PasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureKeyVaultSmbCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Credentials type.
+// Expected value is 'AzureKeyVaultSmb'.
+func (o AzureKeyVaultSmbCredentialsPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureKeyVaultSmbCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure Key Vault secret URI which stores the username. Use empty string to clean-up existing value.
+func (o AzureKeyVaultSmbCredentialsPtrOutput) UsernameUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureKeyVaultSmbCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UsernameUri
+	}).(pulumi.StringPtrOutput)
+}
+
 // The Azure Key Vault secret URIs which store the credentials.
 type AzureKeyVaultSmbCredentialsResponse struct {
 	// The Azure Key Vault secret URI which stores the password. Use empty string to clean-up existing value.
@@ -64,6 +235,92 @@ type AzureKeyVaultSmbCredentialsResponse struct {
 	Type string `pulumi:"type"`
 	// The Azure Key Vault secret URI which stores the username. Use empty string to clean-up existing value.
 	UsernameUri *string `pulumi:"usernameUri"`
+}
+
+// The Azure Key Vault secret URIs which store the credentials.
+type AzureKeyVaultSmbCredentialsResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureKeyVaultSmbCredentialsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureKeyVaultSmbCredentialsResponse)(nil)).Elem()
+}
+
+func (o AzureKeyVaultSmbCredentialsResponseOutput) ToAzureKeyVaultSmbCredentialsResponseOutput() AzureKeyVaultSmbCredentialsResponseOutput {
+	return o
+}
+
+func (o AzureKeyVaultSmbCredentialsResponseOutput) ToAzureKeyVaultSmbCredentialsResponseOutputWithContext(ctx context.Context) AzureKeyVaultSmbCredentialsResponseOutput {
+	return o
+}
+
+// The Azure Key Vault secret URI which stores the password. Use empty string to clean-up existing value.
+func (o AzureKeyVaultSmbCredentialsResponseOutput) PasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureKeyVaultSmbCredentialsResponse) *string { return v.PasswordUri }).(pulumi.StringPtrOutput)
+}
+
+// The Credentials type.
+// Expected value is 'AzureKeyVaultSmb'.
+func (o AzureKeyVaultSmbCredentialsResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureKeyVaultSmbCredentialsResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The Azure Key Vault secret URI which stores the username. Use empty string to clean-up existing value.
+func (o AzureKeyVaultSmbCredentialsResponseOutput) UsernameUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureKeyVaultSmbCredentialsResponse) *string { return v.UsernameUri }).(pulumi.StringPtrOutput)
+}
+
+type AzureKeyVaultSmbCredentialsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureKeyVaultSmbCredentialsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureKeyVaultSmbCredentialsResponse)(nil)).Elem()
+}
+
+func (o AzureKeyVaultSmbCredentialsResponsePtrOutput) ToAzureKeyVaultSmbCredentialsResponsePtrOutput() AzureKeyVaultSmbCredentialsResponsePtrOutput {
+	return o
+}
+
+func (o AzureKeyVaultSmbCredentialsResponsePtrOutput) ToAzureKeyVaultSmbCredentialsResponsePtrOutputWithContext(ctx context.Context) AzureKeyVaultSmbCredentialsResponsePtrOutput {
+	return o
+}
+
+func (o AzureKeyVaultSmbCredentialsResponsePtrOutput) Elem() AzureKeyVaultSmbCredentialsResponseOutput {
+	return o.ApplyT(func(v *AzureKeyVaultSmbCredentialsResponse) AzureKeyVaultSmbCredentialsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureKeyVaultSmbCredentialsResponse
+		return ret
+	}).(AzureKeyVaultSmbCredentialsResponseOutput)
+}
+
+// The Azure Key Vault secret URI which stores the password. Use empty string to clean-up existing value.
+func (o AzureKeyVaultSmbCredentialsResponsePtrOutput) PasswordUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureKeyVaultSmbCredentialsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Credentials type.
+// Expected value is 'AzureKeyVaultSmb'.
+func (o AzureKeyVaultSmbCredentialsResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureKeyVaultSmbCredentialsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure Key Vault secret URI which stores the username. Use empty string to clean-up existing value.
+func (o AzureKeyVaultSmbCredentialsResponsePtrOutput) UsernameUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureKeyVaultSmbCredentialsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UsernameUri
+	}).(pulumi.StringPtrOutput)
 }
 
 // The properties of Azure Storage blob container endpoint.
@@ -77,6 +334,78 @@ type AzureStorageBlobContainerEndpointProperties struct {
 	EndpointType string `pulumi:"endpointType"`
 	// The Azure Resource ID of the storage account that is the target destination.
 	StorageAccountResourceId string `pulumi:"storageAccountResourceId"`
+}
+
+// AzureStorageBlobContainerEndpointPropertiesInput is an input type that accepts AzureStorageBlobContainerEndpointPropertiesArgs and AzureStorageBlobContainerEndpointPropertiesOutput values.
+// You can construct a concrete instance of `AzureStorageBlobContainerEndpointPropertiesInput` via:
+//
+//	AzureStorageBlobContainerEndpointPropertiesArgs{...}
+type AzureStorageBlobContainerEndpointPropertiesInput interface {
+	pulumi.Input
+
+	ToAzureStorageBlobContainerEndpointPropertiesOutput() AzureStorageBlobContainerEndpointPropertiesOutput
+	ToAzureStorageBlobContainerEndpointPropertiesOutputWithContext(context.Context) AzureStorageBlobContainerEndpointPropertiesOutput
+}
+
+// The properties of Azure Storage blob container endpoint.
+type AzureStorageBlobContainerEndpointPropertiesArgs struct {
+	// The name of the Storage blob container that is the target destination.
+	BlobContainerName pulumi.StringInput `pulumi:"blobContainerName"`
+	// A description for the Endpoint.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The Endpoint resource type.
+	// Expected value is 'AzureStorageBlobContainer'.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// The Azure Resource ID of the storage account that is the target destination.
+	StorageAccountResourceId pulumi.StringInput `pulumi:"storageAccountResourceId"`
+}
+
+func (AzureStorageBlobContainerEndpointPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureStorageBlobContainerEndpointProperties)(nil)).Elem()
+}
+
+func (i AzureStorageBlobContainerEndpointPropertiesArgs) ToAzureStorageBlobContainerEndpointPropertiesOutput() AzureStorageBlobContainerEndpointPropertiesOutput {
+	return i.ToAzureStorageBlobContainerEndpointPropertiesOutputWithContext(context.Background())
+}
+
+func (i AzureStorageBlobContainerEndpointPropertiesArgs) ToAzureStorageBlobContainerEndpointPropertiesOutputWithContext(ctx context.Context) AzureStorageBlobContainerEndpointPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureStorageBlobContainerEndpointPropertiesOutput)
+}
+
+// The properties of Azure Storage blob container endpoint.
+type AzureStorageBlobContainerEndpointPropertiesOutput struct{ *pulumi.OutputState }
+
+func (AzureStorageBlobContainerEndpointPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureStorageBlobContainerEndpointProperties)(nil)).Elem()
+}
+
+func (o AzureStorageBlobContainerEndpointPropertiesOutput) ToAzureStorageBlobContainerEndpointPropertiesOutput() AzureStorageBlobContainerEndpointPropertiesOutput {
+	return o
+}
+
+func (o AzureStorageBlobContainerEndpointPropertiesOutput) ToAzureStorageBlobContainerEndpointPropertiesOutputWithContext(ctx context.Context) AzureStorageBlobContainerEndpointPropertiesOutput {
+	return o
+}
+
+// The name of the Storage blob container that is the target destination.
+func (o AzureStorageBlobContainerEndpointPropertiesOutput) BlobContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureStorageBlobContainerEndpointProperties) string { return v.BlobContainerName }).(pulumi.StringOutput)
+}
+
+// A description for the Endpoint.
+func (o AzureStorageBlobContainerEndpointPropertiesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureStorageBlobContainerEndpointProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Endpoint resource type.
+// Expected value is 'AzureStorageBlobContainer'.
+func (o AzureStorageBlobContainerEndpointPropertiesOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureStorageBlobContainerEndpointProperties) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The Azure Resource ID of the storage account that is the target destination.
+func (o AzureStorageBlobContainerEndpointPropertiesOutput) StorageAccountResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureStorageBlobContainerEndpointProperties) string { return v.StorageAccountResourceId }).(pulumi.StringOutput)
 }
 
 // The properties of Azure Storage blob container endpoint.
@@ -94,6 +423,47 @@ type AzureStorageBlobContainerEndpointPropertiesResponse struct {
 	StorageAccountResourceId string `pulumi:"storageAccountResourceId"`
 }
 
+// The properties of Azure Storage blob container endpoint.
+type AzureStorageBlobContainerEndpointPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureStorageBlobContainerEndpointPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureStorageBlobContainerEndpointPropertiesResponse)(nil)).Elem()
+}
+
+func (o AzureStorageBlobContainerEndpointPropertiesResponseOutput) ToAzureStorageBlobContainerEndpointPropertiesResponseOutput() AzureStorageBlobContainerEndpointPropertiesResponseOutput {
+	return o
+}
+
+func (o AzureStorageBlobContainerEndpointPropertiesResponseOutput) ToAzureStorageBlobContainerEndpointPropertiesResponseOutputWithContext(ctx context.Context) AzureStorageBlobContainerEndpointPropertiesResponseOutput {
+	return o
+}
+
+// The name of the Storage blob container that is the target destination.
+func (o AzureStorageBlobContainerEndpointPropertiesResponseOutput) BlobContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureStorageBlobContainerEndpointPropertiesResponse) string { return v.BlobContainerName }).(pulumi.StringOutput)
+}
+
+// A description for the Endpoint.
+func (o AzureStorageBlobContainerEndpointPropertiesResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureStorageBlobContainerEndpointPropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Endpoint resource type.
+// Expected value is 'AzureStorageBlobContainer'.
+func (o AzureStorageBlobContainerEndpointPropertiesResponseOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureStorageBlobContainerEndpointPropertiesResponse) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The provisioning state of this resource.
+func (o AzureStorageBlobContainerEndpointPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureStorageBlobContainerEndpointPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The Azure Resource ID of the storage account that is the target destination.
+func (o AzureStorageBlobContainerEndpointPropertiesResponseOutput) StorageAccountResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureStorageBlobContainerEndpointPropertiesResponse) string { return v.StorageAccountResourceId }).(pulumi.StringOutput)
+}
+
 // The properties of Azure Storage SMB file share endpoint.
 type AzureStorageSmbFileShareEndpointProperties struct {
 	// A description for the Endpoint.
@@ -105,6 +475,78 @@ type AzureStorageSmbFileShareEndpointProperties struct {
 	FileShareName string `pulumi:"fileShareName"`
 	// The Azure Resource ID of the storage account.
 	StorageAccountResourceId string `pulumi:"storageAccountResourceId"`
+}
+
+// AzureStorageSmbFileShareEndpointPropertiesInput is an input type that accepts AzureStorageSmbFileShareEndpointPropertiesArgs and AzureStorageSmbFileShareEndpointPropertiesOutput values.
+// You can construct a concrete instance of `AzureStorageSmbFileShareEndpointPropertiesInput` via:
+//
+//	AzureStorageSmbFileShareEndpointPropertiesArgs{...}
+type AzureStorageSmbFileShareEndpointPropertiesInput interface {
+	pulumi.Input
+
+	ToAzureStorageSmbFileShareEndpointPropertiesOutput() AzureStorageSmbFileShareEndpointPropertiesOutput
+	ToAzureStorageSmbFileShareEndpointPropertiesOutputWithContext(context.Context) AzureStorageSmbFileShareEndpointPropertiesOutput
+}
+
+// The properties of Azure Storage SMB file share endpoint.
+type AzureStorageSmbFileShareEndpointPropertiesArgs struct {
+	// A description for the Endpoint.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The Endpoint resource type.
+	// Expected value is 'AzureStorageSmbFileShare'.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// The name of the Azure Storage file share.
+	FileShareName pulumi.StringInput `pulumi:"fileShareName"`
+	// The Azure Resource ID of the storage account.
+	StorageAccountResourceId pulumi.StringInput `pulumi:"storageAccountResourceId"`
+}
+
+func (AzureStorageSmbFileShareEndpointPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureStorageSmbFileShareEndpointProperties)(nil)).Elem()
+}
+
+func (i AzureStorageSmbFileShareEndpointPropertiesArgs) ToAzureStorageSmbFileShareEndpointPropertiesOutput() AzureStorageSmbFileShareEndpointPropertiesOutput {
+	return i.ToAzureStorageSmbFileShareEndpointPropertiesOutputWithContext(context.Background())
+}
+
+func (i AzureStorageSmbFileShareEndpointPropertiesArgs) ToAzureStorageSmbFileShareEndpointPropertiesOutputWithContext(ctx context.Context) AzureStorageSmbFileShareEndpointPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureStorageSmbFileShareEndpointPropertiesOutput)
+}
+
+// The properties of Azure Storage SMB file share endpoint.
+type AzureStorageSmbFileShareEndpointPropertiesOutput struct{ *pulumi.OutputState }
+
+func (AzureStorageSmbFileShareEndpointPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureStorageSmbFileShareEndpointProperties)(nil)).Elem()
+}
+
+func (o AzureStorageSmbFileShareEndpointPropertiesOutput) ToAzureStorageSmbFileShareEndpointPropertiesOutput() AzureStorageSmbFileShareEndpointPropertiesOutput {
+	return o
+}
+
+func (o AzureStorageSmbFileShareEndpointPropertiesOutput) ToAzureStorageSmbFileShareEndpointPropertiesOutputWithContext(ctx context.Context) AzureStorageSmbFileShareEndpointPropertiesOutput {
+	return o
+}
+
+// A description for the Endpoint.
+func (o AzureStorageSmbFileShareEndpointPropertiesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureStorageSmbFileShareEndpointProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Endpoint resource type.
+// Expected value is 'AzureStorageSmbFileShare'.
+func (o AzureStorageSmbFileShareEndpointPropertiesOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureStorageSmbFileShareEndpointProperties) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The name of the Azure Storage file share.
+func (o AzureStorageSmbFileShareEndpointPropertiesOutput) FileShareName() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureStorageSmbFileShareEndpointProperties) string { return v.FileShareName }).(pulumi.StringOutput)
+}
+
+// The Azure Resource ID of the storage account.
+func (o AzureStorageSmbFileShareEndpointPropertiesOutput) StorageAccountResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureStorageSmbFileShareEndpointProperties) string { return v.StorageAccountResourceId }).(pulumi.StringOutput)
 }
 
 // The properties of Azure Storage SMB file share endpoint.
@@ -122,6 +564,47 @@ type AzureStorageSmbFileShareEndpointPropertiesResponse struct {
 	StorageAccountResourceId string `pulumi:"storageAccountResourceId"`
 }
 
+// The properties of Azure Storage SMB file share endpoint.
+type AzureStorageSmbFileShareEndpointPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureStorageSmbFileShareEndpointPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureStorageSmbFileShareEndpointPropertiesResponse)(nil)).Elem()
+}
+
+func (o AzureStorageSmbFileShareEndpointPropertiesResponseOutput) ToAzureStorageSmbFileShareEndpointPropertiesResponseOutput() AzureStorageSmbFileShareEndpointPropertiesResponseOutput {
+	return o
+}
+
+func (o AzureStorageSmbFileShareEndpointPropertiesResponseOutput) ToAzureStorageSmbFileShareEndpointPropertiesResponseOutputWithContext(ctx context.Context) AzureStorageSmbFileShareEndpointPropertiesResponseOutput {
+	return o
+}
+
+// A description for the Endpoint.
+func (o AzureStorageSmbFileShareEndpointPropertiesResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureStorageSmbFileShareEndpointPropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Endpoint resource type.
+// Expected value is 'AzureStorageSmbFileShare'.
+func (o AzureStorageSmbFileShareEndpointPropertiesResponseOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureStorageSmbFileShareEndpointPropertiesResponse) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The name of the Azure Storage file share.
+func (o AzureStorageSmbFileShareEndpointPropertiesResponseOutput) FileShareName() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureStorageSmbFileShareEndpointPropertiesResponse) string { return v.FileShareName }).(pulumi.StringOutput)
+}
+
+// The provisioning state of this resource.
+func (o AzureStorageSmbFileShareEndpointPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureStorageSmbFileShareEndpointPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The Azure Resource ID of the storage account.
+func (o AzureStorageSmbFileShareEndpointPropertiesResponseOutput) StorageAccountResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureStorageSmbFileShareEndpointPropertiesResponse) string { return v.StorageAccountResourceId }).(pulumi.StringOutput)
+}
+
 // The properties of NFS share endpoint.
 type NfsMountEndpointProperties struct {
 	// A description for the Endpoint.
@@ -135,6 +618,85 @@ type NfsMountEndpointProperties struct {
 	Host string `pulumi:"host"`
 	// The NFS protocol version.
 	NfsVersion *string `pulumi:"nfsVersion"`
+}
+
+// NfsMountEndpointPropertiesInput is an input type that accepts NfsMountEndpointPropertiesArgs and NfsMountEndpointPropertiesOutput values.
+// You can construct a concrete instance of `NfsMountEndpointPropertiesInput` via:
+//
+//	NfsMountEndpointPropertiesArgs{...}
+type NfsMountEndpointPropertiesInput interface {
+	pulumi.Input
+
+	ToNfsMountEndpointPropertiesOutput() NfsMountEndpointPropertiesOutput
+	ToNfsMountEndpointPropertiesOutputWithContext(context.Context) NfsMountEndpointPropertiesOutput
+}
+
+// The properties of NFS share endpoint.
+type NfsMountEndpointPropertiesArgs struct {
+	// A description for the Endpoint.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The Endpoint resource type.
+	// Expected value is 'NfsMount'.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// The directory being exported from the server.
+	Export pulumi.StringInput `pulumi:"export"`
+	// The host name or IP address of the server exporting the file system.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The NFS protocol version.
+	NfsVersion pulumi.StringPtrInput `pulumi:"nfsVersion"`
+}
+
+func (NfsMountEndpointPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsMountEndpointProperties)(nil)).Elem()
+}
+
+func (i NfsMountEndpointPropertiesArgs) ToNfsMountEndpointPropertiesOutput() NfsMountEndpointPropertiesOutput {
+	return i.ToNfsMountEndpointPropertiesOutputWithContext(context.Background())
+}
+
+func (i NfsMountEndpointPropertiesArgs) ToNfsMountEndpointPropertiesOutputWithContext(ctx context.Context) NfsMountEndpointPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NfsMountEndpointPropertiesOutput)
+}
+
+// The properties of NFS share endpoint.
+type NfsMountEndpointPropertiesOutput struct{ *pulumi.OutputState }
+
+func (NfsMountEndpointPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsMountEndpointProperties)(nil)).Elem()
+}
+
+func (o NfsMountEndpointPropertiesOutput) ToNfsMountEndpointPropertiesOutput() NfsMountEndpointPropertiesOutput {
+	return o
+}
+
+func (o NfsMountEndpointPropertiesOutput) ToNfsMountEndpointPropertiesOutputWithContext(ctx context.Context) NfsMountEndpointPropertiesOutput {
+	return o
+}
+
+// A description for the Endpoint.
+func (o NfsMountEndpointPropertiesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NfsMountEndpointProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Endpoint resource type.
+// Expected value is 'NfsMount'.
+func (o NfsMountEndpointPropertiesOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v NfsMountEndpointProperties) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The directory being exported from the server.
+func (o NfsMountEndpointPropertiesOutput) Export() pulumi.StringOutput {
+	return o.ApplyT(func(v NfsMountEndpointProperties) string { return v.Export }).(pulumi.StringOutput)
+}
+
+// The host name or IP address of the server exporting the file system.
+func (o NfsMountEndpointPropertiesOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v NfsMountEndpointProperties) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The NFS protocol version.
+func (o NfsMountEndpointPropertiesOutput) NfsVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NfsMountEndpointProperties) *string { return v.NfsVersion }).(pulumi.StringPtrOutput)
 }
 
 // The properties of NFS share endpoint.
@@ -154,6 +716,52 @@ type NfsMountEndpointPropertiesResponse struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 }
 
+// The properties of NFS share endpoint.
+type NfsMountEndpointPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (NfsMountEndpointPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsMountEndpointPropertiesResponse)(nil)).Elem()
+}
+
+func (o NfsMountEndpointPropertiesResponseOutput) ToNfsMountEndpointPropertiesResponseOutput() NfsMountEndpointPropertiesResponseOutput {
+	return o
+}
+
+func (o NfsMountEndpointPropertiesResponseOutput) ToNfsMountEndpointPropertiesResponseOutputWithContext(ctx context.Context) NfsMountEndpointPropertiesResponseOutput {
+	return o
+}
+
+// A description for the Endpoint.
+func (o NfsMountEndpointPropertiesResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NfsMountEndpointPropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Endpoint resource type.
+// Expected value is 'NfsMount'.
+func (o NfsMountEndpointPropertiesResponseOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v NfsMountEndpointPropertiesResponse) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The directory being exported from the server.
+func (o NfsMountEndpointPropertiesResponseOutput) Export() pulumi.StringOutput {
+	return o.ApplyT(func(v NfsMountEndpointPropertiesResponse) string { return v.Export }).(pulumi.StringOutput)
+}
+
+// The host name or IP address of the server exporting the file system.
+func (o NfsMountEndpointPropertiesResponseOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v NfsMountEndpointPropertiesResponse) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The NFS protocol version.
+func (o NfsMountEndpointPropertiesResponseOutput) NfsVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NfsMountEndpointPropertiesResponse) *string { return v.NfsVersion }).(pulumi.StringPtrOutput)
+}
+
+// The provisioning state of this resource.
+func (o NfsMountEndpointPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v NfsMountEndpointPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
 // The properties of SMB share endpoint.
 type SmbMountEndpointProperties struct {
 	// The Azure Key Vault secret URIs which store the required credentials to access the SMB share.
@@ -167,6 +775,85 @@ type SmbMountEndpointProperties struct {
 	Host string `pulumi:"host"`
 	// The name of the SMB share being exported from the server.
 	ShareName string `pulumi:"shareName"`
+}
+
+// SmbMountEndpointPropertiesInput is an input type that accepts SmbMountEndpointPropertiesArgs and SmbMountEndpointPropertiesOutput values.
+// You can construct a concrete instance of `SmbMountEndpointPropertiesInput` via:
+//
+//	SmbMountEndpointPropertiesArgs{...}
+type SmbMountEndpointPropertiesInput interface {
+	pulumi.Input
+
+	ToSmbMountEndpointPropertiesOutput() SmbMountEndpointPropertiesOutput
+	ToSmbMountEndpointPropertiesOutputWithContext(context.Context) SmbMountEndpointPropertiesOutput
+}
+
+// The properties of SMB share endpoint.
+type SmbMountEndpointPropertiesArgs struct {
+	// The Azure Key Vault secret URIs which store the required credentials to access the SMB share.
+	Credentials AzureKeyVaultSmbCredentialsPtrInput `pulumi:"credentials"`
+	// A description for the Endpoint.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The Endpoint resource type.
+	// Expected value is 'SmbMount'.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// The host name or IP address of the server exporting the file system.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The name of the SMB share being exported from the server.
+	ShareName pulumi.StringInput `pulumi:"shareName"`
+}
+
+func (SmbMountEndpointPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmbMountEndpointProperties)(nil)).Elem()
+}
+
+func (i SmbMountEndpointPropertiesArgs) ToSmbMountEndpointPropertiesOutput() SmbMountEndpointPropertiesOutput {
+	return i.ToSmbMountEndpointPropertiesOutputWithContext(context.Background())
+}
+
+func (i SmbMountEndpointPropertiesArgs) ToSmbMountEndpointPropertiesOutputWithContext(ctx context.Context) SmbMountEndpointPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmbMountEndpointPropertiesOutput)
+}
+
+// The properties of SMB share endpoint.
+type SmbMountEndpointPropertiesOutput struct{ *pulumi.OutputState }
+
+func (SmbMountEndpointPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmbMountEndpointProperties)(nil)).Elem()
+}
+
+func (o SmbMountEndpointPropertiesOutput) ToSmbMountEndpointPropertiesOutput() SmbMountEndpointPropertiesOutput {
+	return o
+}
+
+func (o SmbMountEndpointPropertiesOutput) ToSmbMountEndpointPropertiesOutputWithContext(ctx context.Context) SmbMountEndpointPropertiesOutput {
+	return o
+}
+
+// The Azure Key Vault secret URIs which store the required credentials to access the SMB share.
+func (o SmbMountEndpointPropertiesOutput) Credentials() AzureKeyVaultSmbCredentialsPtrOutput {
+	return o.ApplyT(func(v SmbMountEndpointProperties) *AzureKeyVaultSmbCredentials { return v.Credentials }).(AzureKeyVaultSmbCredentialsPtrOutput)
+}
+
+// A description for the Endpoint.
+func (o SmbMountEndpointPropertiesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SmbMountEndpointProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Endpoint resource type.
+// Expected value is 'SmbMount'.
+func (o SmbMountEndpointPropertiesOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v SmbMountEndpointProperties) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The host name or IP address of the server exporting the file system.
+func (o SmbMountEndpointPropertiesOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v SmbMountEndpointProperties) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The name of the SMB share being exported from the server.
+func (o SmbMountEndpointPropertiesOutput) ShareName() pulumi.StringOutput {
+	return o.ApplyT(func(v SmbMountEndpointProperties) string { return v.ShareName }).(pulumi.StringOutput)
 }
 
 // The properties of SMB share endpoint.
@@ -184,6 +871,52 @@ type SmbMountEndpointPropertiesResponse struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The name of the SMB share being exported from the server.
 	ShareName string `pulumi:"shareName"`
+}
+
+// The properties of SMB share endpoint.
+type SmbMountEndpointPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SmbMountEndpointPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmbMountEndpointPropertiesResponse)(nil)).Elem()
+}
+
+func (o SmbMountEndpointPropertiesResponseOutput) ToSmbMountEndpointPropertiesResponseOutput() SmbMountEndpointPropertiesResponseOutput {
+	return o
+}
+
+func (o SmbMountEndpointPropertiesResponseOutput) ToSmbMountEndpointPropertiesResponseOutputWithContext(ctx context.Context) SmbMountEndpointPropertiesResponseOutput {
+	return o
+}
+
+// The Azure Key Vault secret URIs which store the required credentials to access the SMB share.
+func (o SmbMountEndpointPropertiesResponseOutput) Credentials() AzureKeyVaultSmbCredentialsResponsePtrOutput {
+	return o.ApplyT(func(v SmbMountEndpointPropertiesResponse) *AzureKeyVaultSmbCredentialsResponse { return v.Credentials }).(AzureKeyVaultSmbCredentialsResponsePtrOutput)
+}
+
+// A description for the Endpoint.
+func (o SmbMountEndpointPropertiesResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SmbMountEndpointPropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Endpoint resource type.
+// Expected value is 'SmbMount'.
+func (o SmbMountEndpointPropertiesResponseOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v SmbMountEndpointPropertiesResponse) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The host name or IP address of the server exporting the file system.
+func (o SmbMountEndpointPropertiesResponseOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v SmbMountEndpointPropertiesResponse) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The provisioning state of this resource.
+func (o SmbMountEndpointPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SmbMountEndpointPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The name of the SMB share being exported from the server.
+func (o SmbMountEndpointPropertiesResponseOutput) ShareName() pulumi.StringOutput {
+	return o.ApplyT(func(v SmbMountEndpointPropertiesResponse) string { return v.ShareName }).(pulumi.StringOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -249,5 +982,17 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 
 func init() {
 	pulumi.RegisterOutputType(AgentPropertiesResponseErrorDetailsOutput{})
+	pulumi.RegisterOutputType(AzureKeyVaultSmbCredentialsOutput{})
+	pulumi.RegisterOutputType(AzureKeyVaultSmbCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(AzureKeyVaultSmbCredentialsResponseOutput{})
+	pulumi.RegisterOutputType(AzureKeyVaultSmbCredentialsResponsePtrOutput{})
+	pulumi.RegisterOutputType(AzureStorageBlobContainerEndpointPropertiesOutput{})
+	pulumi.RegisterOutputType(AzureStorageBlobContainerEndpointPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(AzureStorageSmbFileShareEndpointPropertiesOutput{})
+	pulumi.RegisterOutputType(AzureStorageSmbFileShareEndpointPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(NfsMountEndpointPropertiesOutput{})
+	pulumi.RegisterOutputType(NfsMountEndpointPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SmbMountEndpointPropertiesOutput{})
+	pulumi.RegisterOutputType(SmbMountEndpointPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 }

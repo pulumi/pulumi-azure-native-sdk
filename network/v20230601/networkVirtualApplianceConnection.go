@@ -45,6 +45,12 @@ func NewNetworkVirtualApplianceConnection(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:network/v20230901:NetworkVirtualApplianceConnection"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
 	var resource NetworkVirtualApplianceConnection
 	err := ctx.RegisterResource("azure-native:network/v20230601:NetworkVirtualApplianceConnection", name, args, &resource, opts...)

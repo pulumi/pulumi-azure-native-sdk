@@ -138,10 +138,12 @@ func (o AccessRightsPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// AccessRightsInput is an input type that accepts AccessRightsArgs and AccessRightsOutput values.
-// You can construct a concrete instance of `AccessRightsInput` via:
+// AccessRightsInput is an input type that accepts values of the AccessRights enum
+// A concrete instance of `AccessRightsInput` can be one of the following:
 //
-//	AccessRightsArgs{...}
+//	AccessRightsManage
+//	AccessRightsSend
+//	AccessRightsListen
 type AccessRightsInput interface {
 	pulumi.Input
 
@@ -235,6 +237,170 @@ const (
 	DefaultActionDeny  = DefaultAction("Deny")
 )
 
+func (DefaultAction) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultAction)(nil)).Elem()
+}
+
+func (e DefaultAction) ToDefaultActionOutput() DefaultActionOutput {
+	return pulumi.ToOutput(e).(DefaultActionOutput)
+}
+
+func (e DefaultAction) ToDefaultActionOutputWithContext(ctx context.Context) DefaultActionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DefaultActionOutput)
+}
+
+func (e DefaultAction) ToDefaultActionPtrOutput() DefaultActionPtrOutput {
+	return e.ToDefaultActionPtrOutputWithContext(context.Background())
+}
+
+func (e DefaultAction) ToDefaultActionPtrOutputWithContext(ctx context.Context) DefaultActionPtrOutput {
+	return DefaultAction(e).ToDefaultActionOutputWithContext(ctx).ToDefaultActionPtrOutputWithContext(ctx)
+}
+
+func (e DefaultAction) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DefaultAction) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DefaultAction) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DefaultAction) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DefaultActionOutput struct{ *pulumi.OutputState }
+
+func (DefaultActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultAction)(nil)).Elem()
+}
+
+func (o DefaultActionOutput) ToDefaultActionOutput() DefaultActionOutput {
+	return o
+}
+
+func (o DefaultActionOutput) ToDefaultActionOutputWithContext(ctx context.Context) DefaultActionOutput {
+	return o
+}
+
+func (o DefaultActionOutput) ToDefaultActionPtrOutput() DefaultActionPtrOutput {
+	return o.ToDefaultActionPtrOutputWithContext(context.Background())
+}
+
+func (o DefaultActionOutput) ToDefaultActionPtrOutputWithContext(ctx context.Context) DefaultActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DefaultAction) *DefaultAction {
+		return &v
+	}).(DefaultActionPtrOutput)
+}
+
+func (o DefaultActionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DefaultActionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DefaultAction) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DefaultActionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DefaultActionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DefaultAction) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DefaultActionPtrOutput struct{ *pulumi.OutputState }
+
+func (DefaultActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultAction)(nil)).Elem()
+}
+
+func (o DefaultActionPtrOutput) ToDefaultActionPtrOutput() DefaultActionPtrOutput {
+	return o
+}
+
+func (o DefaultActionPtrOutput) ToDefaultActionPtrOutputWithContext(ctx context.Context) DefaultActionPtrOutput {
+	return o
+}
+
+func (o DefaultActionPtrOutput) Elem() DefaultActionOutput {
+	return o.ApplyT(func(v *DefaultAction) DefaultAction {
+		if v != nil {
+			return *v
+		}
+		var ret DefaultAction
+		return ret
+	}).(DefaultActionOutput)
+}
+
+func (o DefaultActionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DefaultActionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DefaultAction) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DefaultActionInput is an input type that accepts values of the DefaultAction enum
+// A concrete instance of `DefaultActionInput` can be one of the following:
+//
+//	DefaultActionAllow
+//	DefaultActionDeny
+type DefaultActionInput interface {
+	pulumi.Input
+
+	ToDefaultActionOutput() DefaultActionOutput
+	ToDefaultActionOutputWithContext(context.Context) DefaultActionOutput
+}
+
+var defaultActionPtrType = reflect.TypeOf((**DefaultAction)(nil)).Elem()
+
+type DefaultActionPtrInput interface {
+	pulumi.Input
+
+	ToDefaultActionPtrOutput() DefaultActionPtrOutput
+	ToDefaultActionPtrOutputWithContext(context.Context) DefaultActionPtrOutput
+}
+
+type defaultActionPtr string
+
+func DefaultActionPtr(v string) DefaultActionPtrInput {
+	return (*defaultActionPtr)(&v)
+}
+
+func (*defaultActionPtr) ElementType() reflect.Type {
+	return defaultActionPtrType
+}
+
+func (in *defaultActionPtr) ToDefaultActionPtrOutput() DefaultActionPtrOutput {
+	return pulumi.ToOutput(in).(DefaultActionPtrOutput)
+}
+
+func (in *defaultActionPtr) ToDefaultActionPtrOutputWithContext(ctx context.Context) DefaultActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DefaultActionPtrOutput)
+}
+
+func (in *defaultActionPtr) ToOutput(ctx context.Context) pulumix.Output[*DefaultAction] {
+	return pulumix.Output[*DefaultAction]{
+		OutputState: in.ToDefaultActionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Provisioning state of the Private Endpoint Connection.
 type EndPointProvisioningState string
 
@@ -246,6 +412,174 @@ const (
 	EndPointProvisioningStateCanceled  = EndPointProvisioningState("Canceled")
 	EndPointProvisioningStateFailed    = EndPointProvisioningState("Failed")
 )
+
+func (EndPointProvisioningState) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndPointProvisioningState)(nil)).Elem()
+}
+
+func (e EndPointProvisioningState) ToEndPointProvisioningStateOutput() EndPointProvisioningStateOutput {
+	return pulumi.ToOutput(e).(EndPointProvisioningStateOutput)
+}
+
+func (e EndPointProvisioningState) ToEndPointProvisioningStateOutputWithContext(ctx context.Context) EndPointProvisioningStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EndPointProvisioningStateOutput)
+}
+
+func (e EndPointProvisioningState) ToEndPointProvisioningStatePtrOutput() EndPointProvisioningStatePtrOutput {
+	return e.ToEndPointProvisioningStatePtrOutputWithContext(context.Background())
+}
+
+func (e EndPointProvisioningState) ToEndPointProvisioningStatePtrOutputWithContext(ctx context.Context) EndPointProvisioningStatePtrOutput {
+	return EndPointProvisioningState(e).ToEndPointProvisioningStateOutputWithContext(ctx).ToEndPointProvisioningStatePtrOutputWithContext(ctx)
+}
+
+func (e EndPointProvisioningState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EndPointProvisioningState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EndPointProvisioningState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e EndPointProvisioningState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type EndPointProvisioningStateOutput struct{ *pulumi.OutputState }
+
+func (EndPointProvisioningStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndPointProvisioningState)(nil)).Elem()
+}
+
+func (o EndPointProvisioningStateOutput) ToEndPointProvisioningStateOutput() EndPointProvisioningStateOutput {
+	return o
+}
+
+func (o EndPointProvisioningStateOutput) ToEndPointProvisioningStateOutputWithContext(ctx context.Context) EndPointProvisioningStateOutput {
+	return o
+}
+
+func (o EndPointProvisioningStateOutput) ToEndPointProvisioningStatePtrOutput() EndPointProvisioningStatePtrOutput {
+	return o.ToEndPointProvisioningStatePtrOutputWithContext(context.Background())
+}
+
+func (o EndPointProvisioningStateOutput) ToEndPointProvisioningStatePtrOutputWithContext(ctx context.Context) EndPointProvisioningStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndPointProvisioningState) *EndPointProvisioningState {
+		return &v
+	}).(EndPointProvisioningStatePtrOutput)
+}
+
+func (o EndPointProvisioningStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EndPointProvisioningStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EndPointProvisioningState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EndPointProvisioningStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EndPointProvisioningStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EndPointProvisioningState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EndPointProvisioningStatePtrOutput struct{ *pulumi.OutputState }
+
+func (EndPointProvisioningStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndPointProvisioningState)(nil)).Elem()
+}
+
+func (o EndPointProvisioningStatePtrOutput) ToEndPointProvisioningStatePtrOutput() EndPointProvisioningStatePtrOutput {
+	return o
+}
+
+func (o EndPointProvisioningStatePtrOutput) ToEndPointProvisioningStatePtrOutputWithContext(ctx context.Context) EndPointProvisioningStatePtrOutput {
+	return o
+}
+
+func (o EndPointProvisioningStatePtrOutput) Elem() EndPointProvisioningStateOutput {
+	return o.ApplyT(func(v *EndPointProvisioningState) EndPointProvisioningState {
+		if v != nil {
+			return *v
+		}
+		var ret EndPointProvisioningState
+		return ret
+	}).(EndPointProvisioningStateOutput)
+}
+
+func (o EndPointProvisioningStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EndPointProvisioningStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EndPointProvisioningState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// EndPointProvisioningStateInput is an input type that accepts values of the EndPointProvisioningState enum
+// A concrete instance of `EndPointProvisioningStateInput` can be one of the following:
+//
+//	EndPointProvisioningStateCreating
+//	EndPointProvisioningStateUpdating
+//	EndPointProvisioningStateDeleting
+//	EndPointProvisioningStateSucceeded
+//	EndPointProvisioningStateCanceled
+//	EndPointProvisioningStateFailed
+type EndPointProvisioningStateInput interface {
+	pulumi.Input
+
+	ToEndPointProvisioningStateOutput() EndPointProvisioningStateOutput
+	ToEndPointProvisioningStateOutputWithContext(context.Context) EndPointProvisioningStateOutput
+}
+
+var endPointProvisioningStatePtrType = reflect.TypeOf((**EndPointProvisioningState)(nil)).Elem()
+
+type EndPointProvisioningStatePtrInput interface {
+	pulumi.Input
+
+	ToEndPointProvisioningStatePtrOutput() EndPointProvisioningStatePtrOutput
+	ToEndPointProvisioningStatePtrOutputWithContext(context.Context) EndPointProvisioningStatePtrOutput
+}
+
+type endPointProvisioningStatePtr string
+
+func EndPointProvisioningStatePtr(v string) EndPointProvisioningStatePtrInput {
+	return (*endPointProvisioningStatePtr)(&v)
+}
+
+func (*endPointProvisioningStatePtr) ElementType() reflect.Type {
+	return endPointProvisioningStatePtrType
+}
+
+func (in *endPointProvisioningStatePtr) ToEndPointProvisioningStatePtrOutput() EndPointProvisioningStatePtrOutput {
+	return pulumi.ToOutput(in).(EndPointProvisioningStatePtrOutput)
+}
+
+func (in *endPointProvisioningStatePtr) ToEndPointProvisioningStatePtrOutputWithContext(ctx context.Context) EndPointProvisioningStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EndPointProvisioningStatePtrOutput)
+}
+
+func (in *endPointProvisioningStatePtr) ToOutput(ctx context.Context) pulumix.Output[*EndPointProvisioningState] {
+	return pulumix.Output[*EndPointProvisioningState]{
+		OutputState: in.ToEndPointProvisioningStatePtrOutputWithContext(ctx).OutputState,
+	}
+}
 
 // Enumerates the possible values for the status of a messaging entity.
 type EntityStatus string
@@ -381,10 +715,18 @@ func (o EntityStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// EntityStatusInput is an input type that accepts EntityStatusArgs and EntityStatusOutput values.
-// You can construct a concrete instance of `EntityStatusInput` via:
+// EntityStatusInput is an input type that accepts values of the EntityStatus enum
+// A concrete instance of `EntityStatusInput` can be one of the following:
 //
-//	EntityStatusArgs{...}
+//	EntityStatusActive
+//	EntityStatusDisabled
+//	EntityStatusRestoring
+//	EntityStatusSendDisabled
+//	EntityStatusReceiveDisabled
+//	EntityStatusCreating
+//	EntityStatusDeleting
+//	EntityStatusRenaming
+//	EntityStatusUnknown
 type EntityStatusInput interface {
 	pulumi.Input
 
@@ -552,10 +894,11 @@ func (o FilterTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 	}).(pulumi.StringPtrOutput)
 }
 
-// FilterTypeInput is an input type that accepts FilterTypeArgs and FilterTypeOutput values.
-// You can construct a concrete instance of `FilterTypeInput` via:
+// FilterTypeInput is an input type that accepts values of the FilterType enum
+// A concrete instance of `FilterTypeInput` can be one of the following:
 //
-//	FilterTypeArgs{...}
+//	FilterTypeSqlFilter
+//	FilterTypeCorrelationFilter
 type FilterTypeInput interface {
 	pulumi.Input
 
@@ -722,10 +1065,10 @@ func (o KeySourcePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// KeySourceInput is an input type that accepts KeySourceArgs and KeySourceOutput values.
-// You can construct a concrete instance of `KeySourceInput` via:
+// KeySourceInput is an input type that accepts values of the KeySource enum
+// A concrete instance of `KeySourceInput` can be one of the following:
 //
-//	KeySourceArgs{...}
+//	KeySource_Microsoft_KeyVault
 type KeySourceInput interface {
 	pulumi.Input
 
@@ -895,10 +1238,13 @@ func (o ManagedServiceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// ManagedServiceIdentityTypeInput is an input type that accepts ManagedServiceIdentityTypeArgs and ManagedServiceIdentityTypeOutput values.
-// You can construct a concrete instance of `ManagedServiceIdentityTypeInput` via:
+// ManagedServiceIdentityTypeInput is an input type that accepts values of the ManagedServiceIdentityType enum
+// A concrete instance of `ManagedServiceIdentityTypeInput` can be one of the following:
 //
-//	ManagedServiceIdentityTypeArgs{...}
+//	ManagedServiceIdentityTypeSystemAssigned
+//	ManagedServiceIdentityTypeUserAssigned
+//	ManagedServiceIdentityType_SystemAssigned_UserAssigned
+//	ManagedServiceIdentityTypeNone
 type ManagedServiceIdentityTypeInput interface {
 	pulumi.Input
 
@@ -946,6 +1292,169 @@ const (
 	NetworkRuleIPActionAllow = NetworkRuleIPAction("Allow")
 )
 
+func (NetworkRuleIPAction) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkRuleIPAction)(nil)).Elem()
+}
+
+func (e NetworkRuleIPAction) ToNetworkRuleIPActionOutput() NetworkRuleIPActionOutput {
+	return pulumi.ToOutput(e).(NetworkRuleIPActionOutput)
+}
+
+func (e NetworkRuleIPAction) ToNetworkRuleIPActionOutputWithContext(ctx context.Context) NetworkRuleIPActionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NetworkRuleIPActionOutput)
+}
+
+func (e NetworkRuleIPAction) ToNetworkRuleIPActionPtrOutput() NetworkRuleIPActionPtrOutput {
+	return e.ToNetworkRuleIPActionPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkRuleIPAction) ToNetworkRuleIPActionPtrOutputWithContext(ctx context.Context) NetworkRuleIPActionPtrOutput {
+	return NetworkRuleIPAction(e).ToNetworkRuleIPActionOutputWithContext(ctx).ToNetworkRuleIPActionPtrOutputWithContext(ctx)
+}
+
+func (e NetworkRuleIPAction) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkRuleIPAction) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkRuleIPAction) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkRuleIPAction) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NetworkRuleIPActionOutput struct{ *pulumi.OutputState }
+
+func (NetworkRuleIPActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkRuleIPAction)(nil)).Elem()
+}
+
+func (o NetworkRuleIPActionOutput) ToNetworkRuleIPActionOutput() NetworkRuleIPActionOutput {
+	return o
+}
+
+func (o NetworkRuleIPActionOutput) ToNetworkRuleIPActionOutputWithContext(ctx context.Context) NetworkRuleIPActionOutput {
+	return o
+}
+
+func (o NetworkRuleIPActionOutput) ToNetworkRuleIPActionPtrOutput() NetworkRuleIPActionPtrOutput {
+	return o.ToNetworkRuleIPActionPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkRuleIPActionOutput) ToNetworkRuleIPActionPtrOutputWithContext(ctx context.Context) NetworkRuleIPActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkRuleIPAction) *NetworkRuleIPAction {
+		return &v
+	}).(NetworkRuleIPActionPtrOutput)
+}
+
+func (o NetworkRuleIPActionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NetworkRuleIPActionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkRuleIPAction) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NetworkRuleIPActionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkRuleIPActionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkRuleIPAction) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworkRuleIPActionPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkRuleIPActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkRuleIPAction)(nil)).Elem()
+}
+
+func (o NetworkRuleIPActionPtrOutput) ToNetworkRuleIPActionPtrOutput() NetworkRuleIPActionPtrOutput {
+	return o
+}
+
+func (o NetworkRuleIPActionPtrOutput) ToNetworkRuleIPActionPtrOutputWithContext(ctx context.Context) NetworkRuleIPActionPtrOutput {
+	return o
+}
+
+func (o NetworkRuleIPActionPtrOutput) Elem() NetworkRuleIPActionOutput {
+	return o.ApplyT(func(v *NetworkRuleIPAction) NetworkRuleIPAction {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkRuleIPAction
+		return ret
+	}).(NetworkRuleIPActionOutput)
+}
+
+func (o NetworkRuleIPActionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkRuleIPActionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NetworkRuleIPAction) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NetworkRuleIPActionInput is an input type that accepts values of the NetworkRuleIPAction enum
+// A concrete instance of `NetworkRuleIPActionInput` can be one of the following:
+//
+//	NetworkRuleIPActionAllow
+type NetworkRuleIPActionInput interface {
+	pulumi.Input
+
+	ToNetworkRuleIPActionOutput() NetworkRuleIPActionOutput
+	ToNetworkRuleIPActionOutputWithContext(context.Context) NetworkRuleIPActionOutput
+}
+
+var networkRuleIPActionPtrType = reflect.TypeOf((**NetworkRuleIPAction)(nil)).Elem()
+
+type NetworkRuleIPActionPtrInput interface {
+	pulumi.Input
+
+	ToNetworkRuleIPActionPtrOutput() NetworkRuleIPActionPtrOutput
+	ToNetworkRuleIPActionPtrOutputWithContext(context.Context) NetworkRuleIPActionPtrOutput
+}
+
+type networkRuleIPActionPtr string
+
+func NetworkRuleIPActionPtr(v string) NetworkRuleIPActionPtrInput {
+	return (*networkRuleIPActionPtr)(&v)
+}
+
+func (*networkRuleIPActionPtr) ElementType() reflect.Type {
+	return networkRuleIPActionPtrType
+}
+
+func (in *networkRuleIPActionPtr) ToNetworkRuleIPActionPtrOutput() NetworkRuleIPActionPtrOutput {
+	return pulumi.ToOutput(in).(NetworkRuleIPActionPtrOutput)
+}
+
+func (in *networkRuleIPActionPtr) ToNetworkRuleIPActionPtrOutputWithContext(ctx context.Context) NetworkRuleIPActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NetworkRuleIPActionPtrOutput)
+}
+
+func (in *networkRuleIPActionPtr) ToOutput(ctx context.Context) pulumix.Output[*NetworkRuleIPAction] {
+	return pulumix.Output[*NetworkRuleIPAction]{
+		OutputState: in.ToNetworkRuleIPActionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Status of the connection.
 type PrivateLinkConnectionStatus string
 
@@ -956,6 +1465,172 @@ const (
 	PrivateLinkConnectionStatusDisconnected = PrivateLinkConnectionStatus("Disconnected")
 )
 
+func (PrivateLinkConnectionStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkConnectionStatus)(nil)).Elem()
+}
+
+func (e PrivateLinkConnectionStatus) ToPrivateLinkConnectionStatusOutput() PrivateLinkConnectionStatusOutput {
+	return pulumi.ToOutput(e).(PrivateLinkConnectionStatusOutput)
+}
+
+func (e PrivateLinkConnectionStatus) ToPrivateLinkConnectionStatusOutputWithContext(ctx context.Context) PrivateLinkConnectionStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PrivateLinkConnectionStatusOutput)
+}
+
+func (e PrivateLinkConnectionStatus) ToPrivateLinkConnectionStatusPtrOutput() PrivateLinkConnectionStatusPtrOutput {
+	return e.ToPrivateLinkConnectionStatusPtrOutputWithContext(context.Background())
+}
+
+func (e PrivateLinkConnectionStatus) ToPrivateLinkConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateLinkConnectionStatusPtrOutput {
+	return PrivateLinkConnectionStatus(e).ToPrivateLinkConnectionStatusOutputWithContext(ctx).ToPrivateLinkConnectionStatusPtrOutputWithContext(ctx)
+}
+
+func (e PrivateLinkConnectionStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PrivateLinkConnectionStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PrivateLinkConnectionStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PrivateLinkConnectionStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PrivateLinkConnectionStatusOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkConnectionStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkConnectionStatus)(nil)).Elem()
+}
+
+func (o PrivateLinkConnectionStatusOutput) ToPrivateLinkConnectionStatusOutput() PrivateLinkConnectionStatusOutput {
+	return o
+}
+
+func (o PrivateLinkConnectionStatusOutput) ToPrivateLinkConnectionStatusOutputWithContext(ctx context.Context) PrivateLinkConnectionStatusOutput {
+	return o
+}
+
+func (o PrivateLinkConnectionStatusOutput) ToPrivateLinkConnectionStatusPtrOutput() PrivateLinkConnectionStatusPtrOutput {
+	return o.ToPrivateLinkConnectionStatusPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateLinkConnectionStatusOutput) ToPrivateLinkConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateLinkConnectionStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateLinkConnectionStatus) *PrivateLinkConnectionStatus {
+		return &v
+	}).(PrivateLinkConnectionStatusPtrOutput)
+}
+
+func (o PrivateLinkConnectionStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PrivateLinkConnectionStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PrivateLinkConnectionStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PrivateLinkConnectionStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateLinkConnectionStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PrivateLinkConnectionStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PrivateLinkConnectionStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkConnectionStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateLinkConnectionStatus)(nil)).Elem()
+}
+
+func (o PrivateLinkConnectionStatusPtrOutput) ToPrivateLinkConnectionStatusPtrOutput() PrivateLinkConnectionStatusPtrOutput {
+	return o
+}
+
+func (o PrivateLinkConnectionStatusPtrOutput) ToPrivateLinkConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateLinkConnectionStatusPtrOutput {
+	return o
+}
+
+func (o PrivateLinkConnectionStatusPtrOutput) Elem() PrivateLinkConnectionStatusOutput {
+	return o.ApplyT(func(v *PrivateLinkConnectionStatus) PrivateLinkConnectionStatus {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateLinkConnectionStatus
+		return ret
+	}).(PrivateLinkConnectionStatusOutput)
+}
+
+func (o PrivateLinkConnectionStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateLinkConnectionStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PrivateLinkConnectionStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PrivateLinkConnectionStatusInput is an input type that accepts values of the PrivateLinkConnectionStatus enum
+// A concrete instance of `PrivateLinkConnectionStatusInput` can be one of the following:
+//
+//	PrivateLinkConnectionStatusPending
+//	PrivateLinkConnectionStatusApproved
+//	PrivateLinkConnectionStatusRejected
+//	PrivateLinkConnectionStatusDisconnected
+type PrivateLinkConnectionStatusInput interface {
+	pulumi.Input
+
+	ToPrivateLinkConnectionStatusOutput() PrivateLinkConnectionStatusOutput
+	ToPrivateLinkConnectionStatusOutputWithContext(context.Context) PrivateLinkConnectionStatusOutput
+}
+
+var privateLinkConnectionStatusPtrType = reflect.TypeOf((**PrivateLinkConnectionStatus)(nil)).Elem()
+
+type PrivateLinkConnectionStatusPtrInput interface {
+	pulumi.Input
+
+	ToPrivateLinkConnectionStatusPtrOutput() PrivateLinkConnectionStatusPtrOutput
+	ToPrivateLinkConnectionStatusPtrOutputWithContext(context.Context) PrivateLinkConnectionStatusPtrOutput
+}
+
+type privateLinkConnectionStatusPtr string
+
+func PrivateLinkConnectionStatusPtr(v string) PrivateLinkConnectionStatusPtrInput {
+	return (*privateLinkConnectionStatusPtr)(&v)
+}
+
+func (*privateLinkConnectionStatusPtr) ElementType() reflect.Type {
+	return privateLinkConnectionStatusPtrType
+}
+
+func (in *privateLinkConnectionStatusPtr) ToPrivateLinkConnectionStatusPtrOutput() PrivateLinkConnectionStatusPtrOutput {
+	return pulumi.ToOutput(in).(PrivateLinkConnectionStatusPtrOutput)
+}
+
+func (in *privateLinkConnectionStatusPtr) ToPrivateLinkConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateLinkConnectionStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkConnectionStatusPtrOutput)
+}
+
+func (in *privateLinkConnectionStatusPtr) ToOutput(ctx context.Context) pulumix.Output[*PrivateLinkConnectionStatus] {
+	return pulumix.Output[*PrivateLinkConnectionStatus]{
+		OutputState: in.ToPrivateLinkConnectionStatusPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // This determines if traffic is allowed over public network. By default it is enabled.
 type PublicNetworkAccess string
 
@@ -965,6 +1640,171 @@ const (
 	PublicNetworkAccessSecuredByPerimeter = PublicNetworkAccess("SecuredByPerimeter")
 )
 
+func (PublicNetworkAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicNetworkAccess)(nil)).Elem()
+}
+
+func (e PublicNetworkAccess) ToPublicNetworkAccessOutput() PublicNetworkAccessOutput {
+	return pulumi.ToOutput(e).(PublicNetworkAccessOutput)
+}
+
+func (e PublicNetworkAccess) ToPublicNetworkAccessOutputWithContext(ctx context.Context) PublicNetworkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PublicNetworkAccessOutput)
+}
+
+func (e PublicNetworkAccess) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
+	return e.ToPublicNetworkAccessPtrOutputWithContext(context.Background())
+}
+
+func (e PublicNetworkAccess) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
+	return PublicNetworkAccess(e).ToPublicNetworkAccessOutputWithContext(ctx).ToPublicNetworkAccessPtrOutputWithContext(ctx)
+}
+
+func (e PublicNetworkAccess) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PublicNetworkAccess) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PublicNetworkAccess) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PublicNetworkAccess) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PublicNetworkAccessOutput struct{ *pulumi.OutputState }
+
+func (PublicNetworkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicNetworkAccess)(nil)).Elem()
+}
+
+func (o PublicNetworkAccessOutput) ToPublicNetworkAccessOutput() PublicNetworkAccessOutput {
+	return o
+}
+
+func (o PublicNetworkAccessOutput) ToPublicNetworkAccessOutputWithContext(ctx context.Context) PublicNetworkAccessOutput {
+	return o
+}
+
+func (o PublicNetworkAccessOutput) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
+	return o.ToPublicNetworkAccessPtrOutputWithContext(context.Background())
+}
+
+func (o PublicNetworkAccessOutput) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicNetworkAccess) *PublicNetworkAccess {
+		return &v
+	}).(PublicNetworkAccessPtrOutput)
+}
+
+func (o PublicNetworkAccessOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PublicNetworkAccessOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicNetworkAccess) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PublicNetworkAccessOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicNetworkAccessOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicNetworkAccess) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PublicNetworkAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (PublicNetworkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicNetworkAccess)(nil)).Elem()
+}
+
+func (o PublicNetworkAccessPtrOutput) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
+	return o
+}
+
+func (o PublicNetworkAccessPtrOutput) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
+	return o
+}
+
+func (o PublicNetworkAccessPtrOutput) Elem() PublicNetworkAccessOutput {
+	return o.ApplyT(func(v *PublicNetworkAccess) PublicNetworkAccess {
+		if v != nil {
+			return *v
+		}
+		var ret PublicNetworkAccess
+		return ret
+	}).(PublicNetworkAccessOutput)
+}
+
+func (o PublicNetworkAccessPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicNetworkAccessPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PublicNetworkAccess) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PublicNetworkAccessInput is an input type that accepts values of the PublicNetworkAccess enum
+// A concrete instance of `PublicNetworkAccessInput` can be one of the following:
+//
+//	PublicNetworkAccessEnabled
+//	PublicNetworkAccessDisabled
+//	PublicNetworkAccessSecuredByPerimeter
+type PublicNetworkAccessInput interface {
+	pulumi.Input
+
+	ToPublicNetworkAccessOutput() PublicNetworkAccessOutput
+	ToPublicNetworkAccessOutputWithContext(context.Context) PublicNetworkAccessOutput
+}
+
+var publicNetworkAccessPtrType = reflect.TypeOf((**PublicNetworkAccess)(nil)).Elem()
+
+type PublicNetworkAccessPtrInput interface {
+	pulumi.Input
+
+	ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput
+	ToPublicNetworkAccessPtrOutputWithContext(context.Context) PublicNetworkAccessPtrOutput
+}
+
+type publicNetworkAccessPtr string
+
+func PublicNetworkAccessPtr(v string) PublicNetworkAccessPtrInput {
+	return (*publicNetworkAccessPtr)(&v)
+}
+
+func (*publicNetworkAccessPtr) ElementType() reflect.Type {
+	return publicNetworkAccessPtrType
+}
+
+func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
+	return pulumi.ToOutput(in).(PublicNetworkAccessPtrOutput)
+}
+
+func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
+}
+
+func (in *publicNetworkAccessPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccess] {
+	return pulumix.Output[*PublicNetworkAccess]{
+		OutputState: in.ToPublicNetworkAccessPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // This determines if traffic is allowed over public network. By default it is enabled.
 type PublicNetworkAccessFlag string
 
@@ -972,6 +1812,170 @@ const (
 	PublicNetworkAccessFlagEnabled  = PublicNetworkAccessFlag("Enabled")
 	PublicNetworkAccessFlagDisabled = PublicNetworkAccessFlag("Disabled")
 )
+
+func (PublicNetworkAccessFlag) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicNetworkAccessFlag)(nil)).Elem()
+}
+
+func (e PublicNetworkAccessFlag) ToPublicNetworkAccessFlagOutput() PublicNetworkAccessFlagOutput {
+	return pulumi.ToOutput(e).(PublicNetworkAccessFlagOutput)
+}
+
+func (e PublicNetworkAccessFlag) ToPublicNetworkAccessFlagOutputWithContext(ctx context.Context) PublicNetworkAccessFlagOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PublicNetworkAccessFlagOutput)
+}
+
+func (e PublicNetworkAccessFlag) ToPublicNetworkAccessFlagPtrOutput() PublicNetworkAccessFlagPtrOutput {
+	return e.ToPublicNetworkAccessFlagPtrOutputWithContext(context.Background())
+}
+
+func (e PublicNetworkAccessFlag) ToPublicNetworkAccessFlagPtrOutputWithContext(ctx context.Context) PublicNetworkAccessFlagPtrOutput {
+	return PublicNetworkAccessFlag(e).ToPublicNetworkAccessFlagOutputWithContext(ctx).ToPublicNetworkAccessFlagPtrOutputWithContext(ctx)
+}
+
+func (e PublicNetworkAccessFlag) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PublicNetworkAccessFlag) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PublicNetworkAccessFlag) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PublicNetworkAccessFlag) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PublicNetworkAccessFlagOutput struct{ *pulumi.OutputState }
+
+func (PublicNetworkAccessFlagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicNetworkAccessFlag)(nil)).Elem()
+}
+
+func (o PublicNetworkAccessFlagOutput) ToPublicNetworkAccessFlagOutput() PublicNetworkAccessFlagOutput {
+	return o
+}
+
+func (o PublicNetworkAccessFlagOutput) ToPublicNetworkAccessFlagOutputWithContext(ctx context.Context) PublicNetworkAccessFlagOutput {
+	return o
+}
+
+func (o PublicNetworkAccessFlagOutput) ToPublicNetworkAccessFlagPtrOutput() PublicNetworkAccessFlagPtrOutput {
+	return o.ToPublicNetworkAccessFlagPtrOutputWithContext(context.Background())
+}
+
+func (o PublicNetworkAccessFlagOutput) ToPublicNetworkAccessFlagPtrOutputWithContext(ctx context.Context) PublicNetworkAccessFlagPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicNetworkAccessFlag) *PublicNetworkAccessFlag {
+		return &v
+	}).(PublicNetworkAccessFlagPtrOutput)
+}
+
+func (o PublicNetworkAccessFlagOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PublicNetworkAccessFlagOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicNetworkAccessFlag) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PublicNetworkAccessFlagOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicNetworkAccessFlagOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicNetworkAccessFlag) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PublicNetworkAccessFlagPtrOutput struct{ *pulumi.OutputState }
+
+func (PublicNetworkAccessFlagPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicNetworkAccessFlag)(nil)).Elem()
+}
+
+func (o PublicNetworkAccessFlagPtrOutput) ToPublicNetworkAccessFlagPtrOutput() PublicNetworkAccessFlagPtrOutput {
+	return o
+}
+
+func (o PublicNetworkAccessFlagPtrOutput) ToPublicNetworkAccessFlagPtrOutputWithContext(ctx context.Context) PublicNetworkAccessFlagPtrOutput {
+	return o
+}
+
+func (o PublicNetworkAccessFlagPtrOutput) Elem() PublicNetworkAccessFlagOutput {
+	return o.ApplyT(func(v *PublicNetworkAccessFlag) PublicNetworkAccessFlag {
+		if v != nil {
+			return *v
+		}
+		var ret PublicNetworkAccessFlag
+		return ret
+	}).(PublicNetworkAccessFlagOutput)
+}
+
+func (o PublicNetworkAccessFlagPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicNetworkAccessFlagPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PublicNetworkAccessFlag) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PublicNetworkAccessFlagInput is an input type that accepts values of the PublicNetworkAccessFlag enum
+// A concrete instance of `PublicNetworkAccessFlagInput` can be one of the following:
+//
+//	PublicNetworkAccessFlagEnabled
+//	PublicNetworkAccessFlagDisabled
+type PublicNetworkAccessFlagInput interface {
+	pulumi.Input
+
+	ToPublicNetworkAccessFlagOutput() PublicNetworkAccessFlagOutput
+	ToPublicNetworkAccessFlagOutputWithContext(context.Context) PublicNetworkAccessFlagOutput
+}
+
+var publicNetworkAccessFlagPtrType = reflect.TypeOf((**PublicNetworkAccessFlag)(nil)).Elem()
+
+type PublicNetworkAccessFlagPtrInput interface {
+	pulumi.Input
+
+	ToPublicNetworkAccessFlagPtrOutput() PublicNetworkAccessFlagPtrOutput
+	ToPublicNetworkAccessFlagPtrOutputWithContext(context.Context) PublicNetworkAccessFlagPtrOutput
+}
+
+type publicNetworkAccessFlagPtr string
+
+func PublicNetworkAccessFlagPtr(v string) PublicNetworkAccessFlagPtrInput {
+	return (*publicNetworkAccessFlagPtr)(&v)
+}
+
+func (*publicNetworkAccessFlagPtr) ElementType() reflect.Type {
+	return publicNetworkAccessFlagPtrType
+}
+
+func (in *publicNetworkAccessFlagPtr) ToPublicNetworkAccessFlagPtrOutput() PublicNetworkAccessFlagPtrOutput {
+	return pulumi.ToOutput(in).(PublicNetworkAccessFlagPtrOutput)
+}
+
+func (in *publicNetworkAccessFlagPtr) ToPublicNetworkAccessFlagPtrOutputWithContext(ctx context.Context) PublicNetworkAccessFlagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessFlagPtrOutput)
+}
+
+func (in *publicNetworkAccessFlagPtr) ToOutput(ctx context.Context) pulumix.Output[*PublicNetworkAccessFlag] {
+	return pulumix.Output[*PublicNetworkAccessFlag]{
+		OutputState: in.ToPublicNetworkAccessFlagPtrOutputWithContext(ctx).OutputState,
+	}
+}
 
 // Name of this SKU.
 type SkuName string
@@ -1101,10 +2105,12 @@ func (o SkuNamePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// SkuNameInput is an input type that accepts SkuNameArgs and SkuNameOutput values.
-// You can construct a concrete instance of `SkuNameInput` via:
+// SkuNameInput is an input type that accepts values of the SkuName enum
+// A concrete instance of `SkuNameInput` can be one of the following:
 //
-//	SkuNameArgs{...}
+//	SkuNameBasic
+//	SkuNameStandard
+//	SkuNamePremium
 type SkuNameInput interface {
 	pulumi.Input
 
@@ -1273,10 +2279,12 @@ func (o SkuTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// SkuTierInput is an input type that accepts SkuTierArgs and SkuTierOutput values.
-// You can construct a concrete instance of `SkuTierInput` via:
+// SkuTierInput is an input type that accepts values of the SkuTier enum
+// A concrete instance of `SkuTierInput` can be one of the following:
 //
-//	SkuTierArgs{...}
+//	SkuTierBasic
+//	SkuTierStandard
+//	SkuTierPremium
 type SkuTierInput interface {
 	pulumi.Input
 
@@ -1326,10 +2334,179 @@ const (
 	TlsVersion_1_2 = TlsVersion("1.2")
 )
 
+func (TlsVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsVersion)(nil)).Elem()
+}
+
+func (e TlsVersion) ToTlsVersionOutput() TlsVersionOutput {
+	return pulumi.ToOutput(e).(TlsVersionOutput)
+}
+
+func (e TlsVersion) ToTlsVersionOutputWithContext(ctx context.Context) TlsVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TlsVersionOutput)
+}
+
+func (e TlsVersion) ToTlsVersionPtrOutput() TlsVersionPtrOutput {
+	return e.ToTlsVersionPtrOutputWithContext(context.Background())
+}
+
+func (e TlsVersion) ToTlsVersionPtrOutputWithContext(ctx context.Context) TlsVersionPtrOutput {
+	return TlsVersion(e).ToTlsVersionOutputWithContext(ctx).ToTlsVersionPtrOutputWithContext(ctx)
+}
+
+func (e TlsVersion) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TlsVersion) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TlsVersion) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TlsVersion) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TlsVersionOutput struct{ *pulumi.OutputState }
+
+func (TlsVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsVersion)(nil)).Elem()
+}
+
+func (o TlsVersionOutput) ToTlsVersionOutput() TlsVersionOutput {
+	return o
+}
+
+func (o TlsVersionOutput) ToTlsVersionOutputWithContext(ctx context.Context) TlsVersionOutput {
+	return o
+}
+
+func (o TlsVersionOutput) ToTlsVersionPtrOutput() TlsVersionPtrOutput {
+	return o.ToTlsVersionPtrOutputWithContext(context.Background())
+}
+
+func (o TlsVersionOutput) ToTlsVersionPtrOutputWithContext(ctx context.Context) TlsVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TlsVersion) *TlsVersion {
+		return &v
+	}).(TlsVersionPtrOutput)
+}
+
+func (o TlsVersionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TlsVersionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TlsVersion) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TlsVersionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TlsVersionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TlsVersion) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TlsVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (TlsVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TlsVersion)(nil)).Elem()
+}
+
+func (o TlsVersionPtrOutput) ToTlsVersionPtrOutput() TlsVersionPtrOutput {
+	return o
+}
+
+func (o TlsVersionPtrOutput) ToTlsVersionPtrOutputWithContext(ctx context.Context) TlsVersionPtrOutput {
+	return o
+}
+
+func (o TlsVersionPtrOutput) Elem() TlsVersionOutput {
+	return o.ApplyT(func(v *TlsVersion) TlsVersion {
+		if v != nil {
+			return *v
+		}
+		var ret TlsVersion
+		return ret
+	}).(TlsVersionOutput)
+}
+
+func (o TlsVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TlsVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TlsVersion) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TlsVersionInput is an input type that accepts values of the TlsVersion enum
+// A concrete instance of `TlsVersionInput` can be one of the following:
+//
+//	TlsVersion_1_0
+//	TlsVersion_1_1
+//	TlsVersion_1_2
+type TlsVersionInput interface {
+	pulumi.Input
+
+	ToTlsVersionOutput() TlsVersionOutput
+	ToTlsVersionOutputWithContext(context.Context) TlsVersionOutput
+}
+
+var tlsVersionPtrType = reflect.TypeOf((**TlsVersion)(nil)).Elem()
+
+type TlsVersionPtrInput interface {
+	pulumi.Input
+
+	ToTlsVersionPtrOutput() TlsVersionPtrOutput
+	ToTlsVersionPtrOutputWithContext(context.Context) TlsVersionPtrOutput
+}
+
+type tlsVersionPtr string
+
+func TlsVersionPtr(v string) TlsVersionPtrInput {
+	return (*tlsVersionPtr)(&v)
+}
+
+func (*tlsVersionPtr) ElementType() reflect.Type {
+	return tlsVersionPtrType
+}
+
+func (in *tlsVersionPtr) ToTlsVersionPtrOutput() TlsVersionPtrOutput {
+	return pulumi.ToOutput(in).(TlsVersionPtrOutput)
+}
+
+func (in *tlsVersionPtr) ToTlsVersionPtrOutputWithContext(ctx context.Context) TlsVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TlsVersionPtrOutput)
+}
+
+func (in *tlsVersionPtr) ToOutput(ctx context.Context) pulumix.Output[*TlsVersion] {
+	return pulumix.Output[*TlsVersion]{
+		OutputState: in.ToTlsVersionPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccessRightsOutput{})
 	pulumi.RegisterOutputType(AccessRightsPtrOutput{})
 	pulumi.RegisterOutputType(AccessRightsArrayOutput{})
+	pulumi.RegisterOutputType(DefaultActionOutput{})
+	pulumi.RegisterOutputType(DefaultActionPtrOutput{})
+	pulumi.RegisterOutputType(EndPointProvisioningStateOutput{})
+	pulumi.RegisterOutputType(EndPointProvisioningStatePtrOutput{})
 	pulumi.RegisterOutputType(EntityStatusOutput{})
 	pulumi.RegisterOutputType(EntityStatusPtrOutput{})
 	pulumi.RegisterOutputType(FilterTypeOutput{})
@@ -1338,8 +2515,18 @@ func init() {
 	pulumi.RegisterOutputType(KeySourcePtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(NetworkRuleIPActionOutput{})
+	pulumi.RegisterOutputType(NetworkRuleIPActionPtrOutput{})
+	pulumi.RegisterOutputType(PrivateLinkConnectionStatusOutput{})
+	pulumi.RegisterOutputType(PrivateLinkConnectionStatusPtrOutput{})
+	pulumi.RegisterOutputType(PublicNetworkAccessOutput{})
+	pulumi.RegisterOutputType(PublicNetworkAccessPtrOutput{})
+	pulumi.RegisterOutputType(PublicNetworkAccessFlagOutput{})
+	pulumi.RegisterOutputType(PublicNetworkAccessFlagPtrOutput{})
 	pulumi.RegisterOutputType(SkuNameOutput{})
 	pulumi.RegisterOutputType(SkuNamePtrOutput{})
 	pulumi.RegisterOutputType(SkuTierOutput{})
 	pulumi.RegisterOutputType(SkuTierPtrOutput{})
+	pulumi.RegisterOutputType(TlsVersionOutput{})
+	pulumi.RegisterOutputType(TlsVersionPtrOutput{})
 }

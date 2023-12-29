@@ -3,6 +3,14 @@
 
 package v20210115
 
+import (
+	"context"
+	"reflect"
+
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
+)
+
 // Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
 type LoadBalancingMode string
 
@@ -13,5 +21,173 @@ const (
 	LoadBalancingMode_Web_Publishing = LoadBalancingMode("Web, Publishing")
 )
 
+func (LoadBalancingMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancingMode)(nil)).Elem()
+}
+
+func (e LoadBalancingMode) ToLoadBalancingModeOutput() LoadBalancingModeOutput {
+	return pulumi.ToOutput(e).(LoadBalancingModeOutput)
+}
+
+func (e LoadBalancingMode) ToLoadBalancingModeOutputWithContext(ctx context.Context) LoadBalancingModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LoadBalancingModeOutput)
+}
+
+func (e LoadBalancingMode) ToLoadBalancingModePtrOutput() LoadBalancingModePtrOutput {
+	return e.ToLoadBalancingModePtrOutputWithContext(context.Background())
+}
+
+func (e LoadBalancingMode) ToLoadBalancingModePtrOutputWithContext(ctx context.Context) LoadBalancingModePtrOutput {
+	return LoadBalancingMode(e).ToLoadBalancingModeOutputWithContext(ctx).ToLoadBalancingModePtrOutputWithContext(ctx)
+}
+
+func (e LoadBalancingMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LoadBalancingMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LoadBalancingMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LoadBalancingMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LoadBalancingModeOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancingModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancingMode)(nil)).Elem()
+}
+
+func (o LoadBalancingModeOutput) ToLoadBalancingModeOutput() LoadBalancingModeOutput {
+	return o
+}
+
+func (o LoadBalancingModeOutput) ToLoadBalancingModeOutputWithContext(ctx context.Context) LoadBalancingModeOutput {
+	return o
+}
+
+func (o LoadBalancingModeOutput) ToLoadBalancingModePtrOutput() LoadBalancingModePtrOutput {
+	return o.ToLoadBalancingModePtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancingModeOutput) ToLoadBalancingModePtrOutputWithContext(ctx context.Context) LoadBalancingModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancingMode) *LoadBalancingMode {
+		return &v
+	}).(LoadBalancingModePtrOutput)
+}
+
+func (o LoadBalancingModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LoadBalancingModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LoadBalancingMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LoadBalancingModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancingModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LoadBalancingMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LoadBalancingModePtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancingModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancingMode)(nil)).Elem()
+}
+
+func (o LoadBalancingModePtrOutput) ToLoadBalancingModePtrOutput() LoadBalancingModePtrOutput {
+	return o
+}
+
+func (o LoadBalancingModePtrOutput) ToLoadBalancingModePtrOutputWithContext(ctx context.Context) LoadBalancingModePtrOutput {
+	return o
+}
+
+func (o LoadBalancingModePtrOutput) Elem() LoadBalancingModeOutput {
+	return o.ApplyT(func(v *LoadBalancingMode) LoadBalancingMode {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancingMode
+		return ret
+	}).(LoadBalancingModeOutput)
+}
+
+func (o LoadBalancingModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancingModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LoadBalancingMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LoadBalancingModeInput is an input type that accepts values of the LoadBalancingMode enum
+// A concrete instance of `LoadBalancingModeInput` can be one of the following:
+//
+//	LoadBalancingModeNone
+//	LoadBalancingModeWeb
+//	LoadBalancingModePublishing
+//	LoadBalancingMode_Web_Publishing
+type LoadBalancingModeInput interface {
+	pulumi.Input
+
+	ToLoadBalancingModeOutput() LoadBalancingModeOutput
+	ToLoadBalancingModeOutputWithContext(context.Context) LoadBalancingModeOutput
+}
+
+var loadBalancingModePtrType = reflect.TypeOf((**LoadBalancingMode)(nil)).Elem()
+
+type LoadBalancingModePtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancingModePtrOutput() LoadBalancingModePtrOutput
+	ToLoadBalancingModePtrOutputWithContext(context.Context) LoadBalancingModePtrOutput
+}
+
+type loadBalancingModePtr string
+
+func LoadBalancingModePtr(v string) LoadBalancingModePtrInput {
+	return (*loadBalancingModePtr)(&v)
+}
+
+func (*loadBalancingModePtr) ElementType() reflect.Type {
+	return loadBalancingModePtrType
+}
+
+func (in *loadBalancingModePtr) ToLoadBalancingModePtrOutput() LoadBalancingModePtrOutput {
+	return pulumi.ToOutput(in).(LoadBalancingModePtrOutput)
+}
+
+func (in *loadBalancingModePtr) ToLoadBalancingModePtrOutputWithContext(ctx context.Context) LoadBalancingModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LoadBalancingModePtrOutput)
+}
+
+func (in *loadBalancingModePtr) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancingMode] {
+	return pulumix.Output[*LoadBalancingMode]{
+		OutputState: in.ToLoadBalancingModePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
+	pulumi.RegisterOutputType(LoadBalancingModeOutput{})
+	pulumi.RegisterOutputType(LoadBalancingModePtrOutput{})
 }

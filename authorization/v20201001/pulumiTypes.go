@@ -27,6 +27,120 @@ type ApprovalSettingsResponse struct {
 	IsRequestorJustificationRequired *bool `pulumi:"isRequestorJustificationRequired"`
 }
 
+// The approval settings.
+type ApprovalSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (ApprovalSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApprovalSettingsResponse)(nil)).Elem()
+}
+
+func (o ApprovalSettingsResponseOutput) ToApprovalSettingsResponseOutput() ApprovalSettingsResponseOutput {
+	return o
+}
+
+func (o ApprovalSettingsResponseOutput) ToApprovalSettingsResponseOutputWithContext(ctx context.Context) ApprovalSettingsResponseOutput {
+	return o
+}
+
+// The type of rule
+func (o ApprovalSettingsResponseOutput) ApprovalMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApprovalSettingsResponse) *string { return v.ApprovalMode }).(pulumi.StringPtrOutput)
+}
+
+// The approval stages of the request.
+func (o ApprovalSettingsResponseOutput) ApprovalStages() ApprovalStageResponseArrayOutput {
+	return o.ApplyT(func(v ApprovalSettingsResponse) []ApprovalStageResponse { return v.ApprovalStages }).(ApprovalStageResponseArrayOutput)
+}
+
+// Determines whether approval is required or not.
+func (o ApprovalSettingsResponseOutput) IsApprovalRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApprovalSettingsResponse) *bool { return v.IsApprovalRequired }).(pulumi.BoolPtrOutput)
+}
+
+// Determines whether approval is required for assignment extension.
+func (o ApprovalSettingsResponseOutput) IsApprovalRequiredForExtension() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApprovalSettingsResponse) *bool { return v.IsApprovalRequiredForExtension }).(pulumi.BoolPtrOutput)
+}
+
+// Determine whether requestor justification is required.
+func (o ApprovalSettingsResponseOutput) IsRequestorJustificationRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApprovalSettingsResponse) *bool { return v.IsRequestorJustificationRequired }).(pulumi.BoolPtrOutput)
+}
+
+type ApprovalSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ApprovalSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApprovalSettingsResponse)(nil)).Elem()
+}
+
+func (o ApprovalSettingsResponsePtrOutput) ToApprovalSettingsResponsePtrOutput() ApprovalSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ApprovalSettingsResponsePtrOutput) ToApprovalSettingsResponsePtrOutputWithContext(ctx context.Context) ApprovalSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ApprovalSettingsResponsePtrOutput) Elem() ApprovalSettingsResponseOutput {
+	return o.ApplyT(func(v *ApprovalSettingsResponse) ApprovalSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ApprovalSettingsResponse
+		return ret
+	}).(ApprovalSettingsResponseOutput)
+}
+
+// The type of rule
+func (o ApprovalSettingsResponsePtrOutput) ApprovalMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApprovalSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApprovalMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The approval stages of the request.
+func (o ApprovalSettingsResponsePtrOutput) ApprovalStages() ApprovalStageResponseArrayOutput {
+	return o.ApplyT(func(v *ApprovalSettingsResponse) []ApprovalStageResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ApprovalStages
+	}).(ApprovalStageResponseArrayOutput)
+}
+
+// Determines whether approval is required or not.
+func (o ApprovalSettingsResponsePtrOutput) IsApprovalRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApprovalSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsApprovalRequired
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Determines whether approval is required for assignment extension.
+func (o ApprovalSettingsResponsePtrOutput) IsApprovalRequiredForExtension() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApprovalSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsApprovalRequiredForExtension
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Determine whether requestor justification is required.
+func (o ApprovalSettingsResponsePtrOutput) IsRequestorJustificationRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApprovalSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsRequestorJustificationRequired
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The approval stage.
 type ApprovalStageResponse struct {
 	// The time in days when approval request would be timed out
@@ -41,6 +155,71 @@ type ApprovalStageResponse struct {
 	IsEscalationEnabled *bool `pulumi:"isEscalationEnabled"`
 	// The primary approver of the request.
 	PrimaryApprovers []UserSetResponse `pulumi:"primaryApprovers"`
+}
+
+// The approval stage.
+type ApprovalStageResponseOutput struct{ *pulumi.OutputState }
+
+func (ApprovalStageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApprovalStageResponse)(nil)).Elem()
+}
+
+func (o ApprovalStageResponseOutput) ToApprovalStageResponseOutput() ApprovalStageResponseOutput {
+	return o
+}
+
+func (o ApprovalStageResponseOutput) ToApprovalStageResponseOutputWithContext(ctx context.Context) ApprovalStageResponseOutput {
+	return o
+}
+
+// The time in days when approval request would be timed out
+func (o ApprovalStageResponseOutput) ApprovalStageTimeOutInDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApprovalStageResponse) *int { return v.ApprovalStageTimeOutInDays }).(pulumi.IntPtrOutput)
+}
+
+// The escalation approver of the request.
+func (o ApprovalStageResponseOutput) EscalationApprovers() UserSetResponseArrayOutput {
+	return o.ApplyT(func(v ApprovalStageResponse) []UserSetResponse { return v.EscalationApprovers }).(UserSetResponseArrayOutput)
+}
+
+// The time in minutes when the approval request would be escalated if the primary approver does not approve
+func (o ApprovalStageResponseOutput) EscalationTimeInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApprovalStageResponse) *int { return v.EscalationTimeInMinutes }).(pulumi.IntPtrOutput)
+}
+
+// Determines whether approver need to provide justification for his decision.
+func (o ApprovalStageResponseOutput) IsApproverJustificationRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApprovalStageResponse) *bool { return v.IsApproverJustificationRequired }).(pulumi.BoolPtrOutput)
+}
+
+// The value determine whether escalation feature is enabled.
+func (o ApprovalStageResponseOutput) IsEscalationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApprovalStageResponse) *bool { return v.IsEscalationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The primary approver of the request.
+func (o ApprovalStageResponseOutput) PrimaryApprovers() UserSetResponseArrayOutput {
+	return o.ApplyT(func(v ApprovalStageResponse) []UserSetResponse { return v.PrimaryApprovers }).(UserSetResponseArrayOutput)
+}
+
+type ApprovalStageResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ApprovalStageResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApprovalStageResponse)(nil)).Elem()
+}
+
+func (o ApprovalStageResponseArrayOutput) ToApprovalStageResponseArrayOutput() ApprovalStageResponseArrayOutput {
+	return o
+}
+
+func (o ApprovalStageResponseArrayOutput) ToApprovalStageResponseArrayOutputWithContext(ctx context.Context) ApprovalStageResponseArrayOutput {
+	return o
+}
+
+func (o ApprovalStageResponseArrayOutput) Index(i pulumi.IntInput) ApprovalStageResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApprovalStageResponse {
+		return vs[0].([]ApprovalStageResponse)[vs[1].(int)]
+	}).(ApprovalStageResponseOutput)
 }
 
 // Expanded info of resource scope, role definition and policy
@@ -491,6 +670,44 @@ type RoleManagementPolicyApprovalRuleResponse struct {
 	Target *RoleManagementPolicyRuleTargetResponse `pulumi:"target"`
 }
 
+// The role management policy approval rule.
+type RoleManagementPolicyApprovalRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (RoleManagementPolicyApprovalRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleManagementPolicyApprovalRuleResponse)(nil)).Elem()
+}
+
+func (o RoleManagementPolicyApprovalRuleResponseOutput) ToRoleManagementPolicyApprovalRuleResponseOutput() RoleManagementPolicyApprovalRuleResponseOutput {
+	return o
+}
+
+func (o RoleManagementPolicyApprovalRuleResponseOutput) ToRoleManagementPolicyApprovalRuleResponseOutputWithContext(ctx context.Context) RoleManagementPolicyApprovalRuleResponseOutput {
+	return o
+}
+
+// The id of the rule.
+func (o RoleManagementPolicyApprovalRuleResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoleManagementPolicyApprovalRuleResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The type of rule
+// Expected value is 'RoleManagementPolicyApprovalRule'.
+func (o RoleManagementPolicyApprovalRuleResponseOutput) RuleType() pulumi.StringOutput {
+	return o.ApplyT(func(v RoleManagementPolicyApprovalRuleResponse) string { return v.RuleType }).(pulumi.StringOutput)
+}
+
+// The approval setting
+func (o RoleManagementPolicyApprovalRuleResponseOutput) Setting() ApprovalSettingsResponsePtrOutput {
+	return o.ApplyT(func(v RoleManagementPolicyApprovalRuleResponse) *ApprovalSettingsResponse { return v.Setting }).(ApprovalSettingsResponsePtrOutput)
+}
+
+// The target of the current rule.
+func (o RoleManagementPolicyApprovalRuleResponseOutput) Target() RoleManagementPolicyRuleTargetResponsePtrOutput {
+	return o.ApplyT(func(v RoleManagementPolicyApprovalRuleResponse) *RoleManagementPolicyRuleTargetResponse {
+		return v.Target
+	}).(RoleManagementPolicyRuleTargetResponsePtrOutput)
+}
+
 // The role management policy authentication context rule.
 type RoleManagementPolicyAuthenticationContextRuleResponse struct {
 	// The claim value.
@@ -506,6 +723,49 @@ type RoleManagementPolicyAuthenticationContextRuleResponse struct {
 	Target *RoleManagementPolicyRuleTargetResponse `pulumi:"target"`
 }
 
+// The role management policy authentication context rule.
+type RoleManagementPolicyAuthenticationContextRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (RoleManagementPolicyAuthenticationContextRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleManagementPolicyAuthenticationContextRuleResponse)(nil)).Elem()
+}
+
+func (o RoleManagementPolicyAuthenticationContextRuleResponseOutput) ToRoleManagementPolicyAuthenticationContextRuleResponseOutput() RoleManagementPolicyAuthenticationContextRuleResponseOutput {
+	return o
+}
+
+func (o RoleManagementPolicyAuthenticationContextRuleResponseOutput) ToRoleManagementPolicyAuthenticationContextRuleResponseOutputWithContext(ctx context.Context) RoleManagementPolicyAuthenticationContextRuleResponseOutput {
+	return o
+}
+
+// The claim value.
+func (o RoleManagementPolicyAuthenticationContextRuleResponseOutput) ClaimValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoleManagementPolicyAuthenticationContextRuleResponse) *string { return v.ClaimValue }).(pulumi.StringPtrOutput)
+}
+
+// The id of the rule.
+func (o RoleManagementPolicyAuthenticationContextRuleResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoleManagementPolicyAuthenticationContextRuleResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The value indicating if rule is enabled.
+func (o RoleManagementPolicyAuthenticationContextRuleResponseOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RoleManagementPolicyAuthenticationContextRuleResponse) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The type of rule
+// Expected value is 'RoleManagementPolicyAuthenticationContextRule'.
+func (o RoleManagementPolicyAuthenticationContextRuleResponseOutput) RuleType() pulumi.StringOutput {
+	return o.ApplyT(func(v RoleManagementPolicyAuthenticationContextRuleResponse) string { return v.RuleType }).(pulumi.StringOutput)
+}
+
+// The target of the current rule.
+func (o RoleManagementPolicyAuthenticationContextRuleResponseOutput) Target() RoleManagementPolicyRuleTargetResponsePtrOutput {
+	return o.ApplyT(func(v RoleManagementPolicyAuthenticationContextRuleResponse) *RoleManagementPolicyRuleTargetResponse {
+		return v.Target
+	}).(RoleManagementPolicyRuleTargetResponsePtrOutput)
+}
+
 // The role management policy enablement rule.
 type RoleManagementPolicyEnablementRuleResponse struct {
 	// The list of enabled rules.
@@ -517,6 +777,44 @@ type RoleManagementPolicyEnablementRuleResponse struct {
 	RuleType string `pulumi:"ruleType"`
 	// The target of the current rule.
 	Target *RoleManagementPolicyRuleTargetResponse `pulumi:"target"`
+}
+
+// The role management policy enablement rule.
+type RoleManagementPolicyEnablementRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (RoleManagementPolicyEnablementRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleManagementPolicyEnablementRuleResponse)(nil)).Elem()
+}
+
+func (o RoleManagementPolicyEnablementRuleResponseOutput) ToRoleManagementPolicyEnablementRuleResponseOutput() RoleManagementPolicyEnablementRuleResponseOutput {
+	return o
+}
+
+func (o RoleManagementPolicyEnablementRuleResponseOutput) ToRoleManagementPolicyEnablementRuleResponseOutputWithContext(ctx context.Context) RoleManagementPolicyEnablementRuleResponseOutput {
+	return o
+}
+
+// The list of enabled rules.
+func (o RoleManagementPolicyEnablementRuleResponseOutput) EnabledRules() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RoleManagementPolicyEnablementRuleResponse) []string { return v.EnabledRules }).(pulumi.StringArrayOutput)
+}
+
+// The id of the rule.
+func (o RoleManagementPolicyEnablementRuleResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoleManagementPolicyEnablementRuleResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The type of rule
+// Expected value is 'RoleManagementPolicyEnablementRule'.
+func (o RoleManagementPolicyEnablementRuleResponseOutput) RuleType() pulumi.StringOutput {
+	return o.ApplyT(func(v RoleManagementPolicyEnablementRuleResponse) string { return v.RuleType }).(pulumi.StringOutput)
+}
+
+// The target of the current rule.
+func (o RoleManagementPolicyEnablementRuleResponseOutput) Target() RoleManagementPolicyRuleTargetResponsePtrOutput {
+	return o.ApplyT(func(v RoleManagementPolicyEnablementRuleResponse) *RoleManagementPolicyRuleTargetResponse {
+		return v.Target
+	}).(RoleManagementPolicyRuleTargetResponsePtrOutput)
 }
 
 // The role management policy expiration rule.
@@ -532,6 +830,49 @@ type RoleManagementPolicyExpirationRuleResponse struct {
 	RuleType string `pulumi:"ruleType"`
 	// The target of the current rule.
 	Target *RoleManagementPolicyRuleTargetResponse `pulumi:"target"`
+}
+
+// The role management policy expiration rule.
+type RoleManagementPolicyExpirationRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (RoleManagementPolicyExpirationRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleManagementPolicyExpirationRuleResponse)(nil)).Elem()
+}
+
+func (o RoleManagementPolicyExpirationRuleResponseOutput) ToRoleManagementPolicyExpirationRuleResponseOutput() RoleManagementPolicyExpirationRuleResponseOutput {
+	return o
+}
+
+func (o RoleManagementPolicyExpirationRuleResponseOutput) ToRoleManagementPolicyExpirationRuleResponseOutputWithContext(ctx context.Context) RoleManagementPolicyExpirationRuleResponseOutput {
+	return o
+}
+
+// The id of the rule.
+func (o RoleManagementPolicyExpirationRuleResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoleManagementPolicyExpirationRuleResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The value indicating whether expiration is required.
+func (o RoleManagementPolicyExpirationRuleResponseOutput) IsExpirationRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RoleManagementPolicyExpirationRuleResponse) *bool { return v.IsExpirationRequired }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum duration of expiration in timespan.
+func (o RoleManagementPolicyExpirationRuleResponseOutput) MaximumDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoleManagementPolicyExpirationRuleResponse) *string { return v.MaximumDuration }).(pulumi.StringPtrOutput)
+}
+
+// The type of rule
+// Expected value is 'RoleManagementPolicyExpirationRule'.
+func (o RoleManagementPolicyExpirationRuleResponseOutput) RuleType() pulumi.StringOutput {
+	return o.ApplyT(func(v RoleManagementPolicyExpirationRuleResponse) string { return v.RuleType }).(pulumi.StringOutput)
+}
+
+// The target of the current rule.
+func (o RoleManagementPolicyExpirationRuleResponseOutput) Target() RoleManagementPolicyRuleTargetResponsePtrOutput {
+	return o.ApplyT(func(v RoleManagementPolicyExpirationRuleResponse) *RoleManagementPolicyRuleTargetResponse {
+		return v.Target
+	}).(RoleManagementPolicyRuleTargetResponsePtrOutput)
 }
 
 // The role management policy notification rule.
@@ -555,6 +896,64 @@ type RoleManagementPolicyNotificationRuleResponse struct {
 	Target *RoleManagementPolicyRuleTargetResponse `pulumi:"target"`
 }
 
+// The role management policy notification rule.
+type RoleManagementPolicyNotificationRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (RoleManagementPolicyNotificationRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleManagementPolicyNotificationRuleResponse)(nil)).Elem()
+}
+
+func (o RoleManagementPolicyNotificationRuleResponseOutput) ToRoleManagementPolicyNotificationRuleResponseOutput() RoleManagementPolicyNotificationRuleResponseOutput {
+	return o
+}
+
+func (o RoleManagementPolicyNotificationRuleResponseOutput) ToRoleManagementPolicyNotificationRuleResponseOutputWithContext(ctx context.Context) RoleManagementPolicyNotificationRuleResponseOutput {
+	return o
+}
+
+// The id of the rule.
+func (o RoleManagementPolicyNotificationRuleResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoleManagementPolicyNotificationRuleResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Determines if the notification will be sent to the recipient type specified in the policy rule.
+func (o RoleManagementPolicyNotificationRuleResponseOutput) IsDefaultRecipientsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RoleManagementPolicyNotificationRuleResponse) *bool { return v.IsDefaultRecipientsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The notification level.
+func (o RoleManagementPolicyNotificationRuleResponseOutput) NotificationLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoleManagementPolicyNotificationRuleResponse) *string { return v.NotificationLevel }).(pulumi.StringPtrOutput)
+}
+
+// The list of notification recipients.
+func (o RoleManagementPolicyNotificationRuleResponseOutput) NotificationRecipients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RoleManagementPolicyNotificationRuleResponse) []string { return v.NotificationRecipients }).(pulumi.StringArrayOutput)
+}
+
+// The type of notification.
+func (o RoleManagementPolicyNotificationRuleResponseOutput) NotificationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoleManagementPolicyNotificationRuleResponse) *string { return v.NotificationType }).(pulumi.StringPtrOutput)
+}
+
+// The recipient type.
+func (o RoleManagementPolicyNotificationRuleResponseOutput) RecipientType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoleManagementPolicyNotificationRuleResponse) *string { return v.RecipientType }).(pulumi.StringPtrOutput)
+}
+
+// The type of rule
+// Expected value is 'RoleManagementPolicyNotificationRule'.
+func (o RoleManagementPolicyNotificationRuleResponseOutput) RuleType() pulumi.StringOutput {
+	return o.ApplyT(func(v RoleManagementPolicyNotificationRuleResponse) string { return v.RuleType }).(pulumi.StringOutput)
+}
+
+// The target of the current rule.
+func (o RoleManagementPolicyNotificationRuleResponseOutput) Target() RoleManagementPolicyRuleTargetResponsePtrOutput {
+	return o.ApplyT(func(v RoleManagementPolicyNotificationRuleResponse) *RoleManagementPolicyRuleTargetResponse {
+		return v.Target
+	}).(RoleManagementPolicyRuleTargetResponsePtrOutput)
+}
+
 // The role management policy rule target.
 type RoleManagementPolicyRuleTargetResponse struct {
 	// The caller of the setting.
@@ -571,6 +970,135 @@ type RoleManagementPolicyRuleTargetResponse struct {
 	TargetObjects []string `pulumi:"targetObjects"`
 }
 
+// The role management policy rule target.
+type RoleManagementPolicyRuleTargetResponseOutput struct{ *pulumi.OutputState }
+
+func (RoleManagementPolicyRuleTargetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleManagementPolicyRuleTargetResponse)(nil)).Elem()
+}
+
+func (o RoleManagementPolicyRuleTargetResponseOutput) ToRoleManagementPolicyRuleTargetResponseOutput() RoleManagementPolicyRuleTargetResponseOutput {
+	return o
+}
+
+func (o RoleManagementPolicyRuleTargetResponseOutput) ToRoleManagementPolicyRuleTargetResponseOutputWithContext(ctx context.Context) RoleManagementPolicyRuleTargetResponseOutput {
+	return o
+}
+
+// The caller of the setting.
+func (o RoleManagementPolicyRuleTargetResponseOutput) Caller() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoleManagementPolicyRuleTargetResponse) *string { return v.Caller }).(pulumi.StringPtrOutput)
+}
+
+// The list of enforced settings.
+func (o RoleManagementPolicyRuleTargetResponseOutput) EnforcedSettings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RoleManagementPolicyRuleTargetResponse) []string { return v.EnforcedSettings }).(pulumi.StringArrayOutput)
+}
+
+// The list of inheritable settings.
+func (o RoleManagementPolicyRuleTargetResponseOutput) InheritableSettings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RoleManagementPolicyRuleTargetResponse) []string { return v.InheritableSettings }).(pulumi.StringArrayOutput)
+}
+
+// The assignment level to which rule is applied.
+func (o RoleManagementPolicyRuleTargetResponseOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoleManagementPolicyRuleTargetResponse) *string { return v.Level }).(pulumi.StringPtrOutput)
+}
+
+// The type of operation.
+func (o RoleManagementPolicyRuleTargetResponseOutput) Operations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RoleManagementPolicyRuleTargetResponse) []string { return v.Operations }).(pulumi.StringArrayOutput)
+}
+
+// The list of target objects.
+func (o RoleManagementPolicyRuleTargetResponseOutput) TargetObjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RoleManagementPolicyRuleTargetResponse) []string { return v.TargetObjects }).(pulumi.StringArrayOutput)
+}
+
+type RoleManagementPolicyRuleTargetResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RoleManagementPolicyRuleTargetResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoleManagementPolicyRuleTargetResponse)(nil)).Elem()
+}
+
+func (o RoleManagementPolicyRuleTargetResponsePtrOutput) ToRoleManagementPolicyRuleTargetResponsePtrOutput() RoleManagementPolicyRuleTargetResponsePtrOutput {
+	return o
+}
+
+func (o RoleManagementPolicyRuleTargetResponsePtrOutput) ToRoleManagementPolicyRuleTargetResponsePtrOutputWithContext(ctx context.Context) RoleManagementPolicyRuleTargetResponsePtrOutput {
+	return o
+}
+
+func (o RoleManagementPolicyRuleTargetResponsePtrOutput) Elem() RoleManagementPolicyRuleTargetResponseOutput {
+	return o.ApplyT(func(v *RoleManagementPolicyRuleTargetResponse) RoleManagementPolicyRuleTargetResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RoleManagementPolicyRuleTargetResponse
+		return ret
+	}).(RoleManagementPolicyRuleTargetResponseOutput)
+}
+
+// The caller of the setting.
+func (o RoleManagementPolicyRuleTargetResponsePtrOutput) Caller() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoleManagementPolicyRuleTargetResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Caller
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of enforced settings.
+func (o RoleManagementPolicyRuleTargetResponsePtrOutput) EnforcedSettings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RoleManagementPolicyRuleTargetResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnforcedSettings
+	}).(pulumi.StringArrayOutput)
+}
+
+// The list of inheritable settings.
+func (o RoleManagementPolicyRuleTargetResponsePtrOutput) InheritableSettings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RoleManagementPolicyRuleTargetResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InheritableSettings
+	}).(pulumi.StringArrayOutput)
+}
+
+// The assignment level to which rule is applied.
+func (o RoleManagementPolicyRuleTargetResponsePtrOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoleManagementPolicyRuleTargetResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Level
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of operation.
+func (o RoleManagementPolicyRuleTargetResponsePtrOutput) Operations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RoleManagementPolicyRuleTargetResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Operations
+	}).(pulumi.StringArrayOutput)
+}
+
+// The list of target objects.
+func (o RoleManagementPolicyRuleTargetResponsePtrOutput) TargetObjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RoleManagementPolicyRuleTargetResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetObjects
+	}).(pulumi.StringArrayOutput)
+}
+
 // The detail of a user.
 type UserSetResponse struct {
 	// The description of the user.
@@ -583,7 +1111,66 @@ type UserSetResponse struct {
 	UserType *string `pulumi:"userType"`
 }
 
+// The detail of a user.
+type UserSetResponseOutput struct{ *pulumi.OutputState }
+
+func (UserSetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserSetResponse)(nil)).Elem()
+}
+
+func (o UserSetResponseOutput) ToUserSetResponseOutput() UserSetResponseOutput {
+	return o
+}
+
+func (o UserSetResponseOutput) ToUserSetResponseOutputWithContext(ctx context.Context) UserSetResponseOutput {
+	return o
+}
+
+// The description of the user.
+func (o UserSetResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserSetResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The object id of the user.
+func (o UserSetResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserSetResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The value indicating whether the user is a backup fallback approver
+func (o UserSetResponseOutput) IsBackup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserSetResponse) *bool { return v.IsBackup }).(pulumi.BoolPtrOutput)
+}
+
+// The type of user.
+func (o UserSetResponseOutput) UserType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserSetResponse) *string { return v.UserType }).(pulumi.StringPtrOutput)
+}
+
+type UserSetResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (UserSetResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserSetResponse)(nil)).Elem()
+}
+
+func (o UserSetResponseArrayOutput) ToUserSetResponseArrayOutput() UserSetResponseArrayOutput {
+	return o
+}
+
+func (o UserSetResponseArrayOutput) ToUserSetResponseArrayOutputWithContext(ctx context.Context) UserSetResponseArrayOutput {
+	return o
+}
+
+func (o UserSetResponseArrayOutput) Index(i pulumi.IntInput) UserSetResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserSetResponse {
+		return vs[0].([]UserSetResponse)[vs[1].(int)]
+	}).(UserSetResponseOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(ApprovalSettingsResponseOutput{})
+	pulumi.RegisterOutputType(ApprovalSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(ApprovalStageResponseOutput{})
+	pulumi.RegisterOutputType(ApprovalStageResponseArrayOutput{})
 	pulumi.RegisterOutputType(PolicyAssignmentPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(PolicyAssignmentPropertiesResponsePolicyOutput{})
 	pulumi.RegisterOutputType(PolicyAssignmentPropertiesResponsePolicyPtrOutput{})
@@ -593,4 +1180,13 @@ func init() {
 	pulumi.RegisterOutputType(PolicyAssignmentPropertiesResponseScopePtrOutput{})
 	pulumi.RegisterOutputType(PrincipalResponseOutput{})
 	pulumi.RegisterOutputType(PrincipalResponsePtrOutput{})
+	pulumi.RegisterOutputType(RoleManagementPolicyApprovalRuleResponseOutput{})
+	pulumi.RegisterOutputType(RoleManagementPolicyAuthenticationContextRuleResponseOutput{})
+	pulumi.RegisterOutputType(RoleManagementPolicyEnablementRuleResponseOutput{})
+	pulumi.RegisterOutputType(RoleManagementPolicyExpirationRuleResponseOutput{})
+	pulumi.RegisterOutputType(RoleManagementPolicyNotificationRuleResponseOutput{})
+	pulumi.RegisterOutputType(RoleManagementPolicyRuleTargetResponseOutput{})
+	pulumi.RegisterOutputType(RoleManagementPolicyRuleTargetResponsePtrOutput{})
+	pulumi.RegisterOutputType(UserSetResponseOutput{})
+	pulumi.RegisterOutputType(UserSetResponseArrayOutput{})
 }

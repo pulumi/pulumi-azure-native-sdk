@@ -163,10 +163,36 @@ func (o RunLocationPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// RunLocationInput is an input type that accepts RunLocationArgs and RunLocationOutput values.
-// You can construct a concrete instance of `RunLocationInput` via:
+// RunLocationInput is an input type that accepts values of the RunLocation enum
+// A concrete instance of `RunLocationInput` can be one of the following:
 //
-//	RunLocationArgs{...}
+//	RunLocationNone
+//	RunLocationAustraliaeast
+//	RunLocationAustraliasoutheast
+//	RunLocationBrazilsouth
+//	RunLocationCanadacentral
+//	RunLocationCanadaeast
+//	RunLocationCentralindia
+//	RunLocationCentralus
+//	RunLocationEastasia
+//	RunLocationEastus
+//	RunLocationEastus2
+//	RunLocationJapaneast
+//	RunLocationJapanwest
+//	RunLocationKoreacentral
+//	RunLocationKoreasouth
+//	RunLocationSoutheastasia
+//	RunLocationSouthcentralus
+//	RunLocationSouthindia
+//	RunLocationNorthcentralus
+//	RunLocationNortheurope
+//	RunLocationUksouth
+//	RunLocationUkwest
+//	RunLocationWestcentralus
+//	RunLocationWesteurope
+//	RunLocationWestindia
+//	RunLocationWestus
+//	RunLocationWestus2
 type RunLocationInput interface {
 	pulumi.Input
 
@@ -335,10 +361,12 @@ func (o StatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// StateInput is an input type that accepts StateArgs and StateOutput values.
-// You can construct a concrete instance of `StateInput` via:
+// StateInput is an input type that accepts values of the State enum
+// A concrete instance of `StateInput` can be one of the following:
 //
-//	StateArgs{...}
+//	StateDisabled
+//	StateEnabled
+//	StateSupported
 type StateInput interface {
 	pulumi.Input
 
@@ -508,10 +536,13 @@ func (o SupportedAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 	}).(pulumi.StringPtrOutput)
 }
 
-// SupportedAlgorithmInput is an input type that accepts SupportedAlgorithmArgs and SupportedAlgorithmOutput values.
-// You can construct a concrete instance of `SupportedAlgorithmInput` via:
+// SupportedAlgorithmInput is an input type that accepts values of the SupportedAlgorithm enum
+// A concrete instance of `SupportedAlgorithmInput` can be one of the following:
 //
-//	SupportedAlgorithmArgs{...}
+//	SupportedAlgorithmNone
+//	SupportedAlgorithm_RSA1_5
+//	SupportedAlgorithm_RSA_OAEP
+//	SupportedAlgorithmPlainText
 type SupportedAlgorithmInput interface {
 	pulumi.Input
 
@@ -679,10 +710,11 @@ func (o UserConfirmationPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 	}).(pulumi.StringPtrOutput)
 }
 
-// UserConfirmationInput is an input type that accepts UserConfirmationArgs and UserConfirmationOutput values.
-// You can construct a concrete instance of `UserConfirmationInput` via:
+// UserConfirmationInput is an input type that accepts values of the UserConfirmation enum
+// A concrete instance of `UserConfirmationInput` can be one of the following:
 //
-//	UserConfirmationArgs{...}
+//	UserConfirmationNotRequired
+//	UserConfirmationRequired
 type UserConfirmationInput interface {
 	pulumi.Input
 

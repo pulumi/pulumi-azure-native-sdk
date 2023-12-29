@@ -145,10 +145,18 @@ func (o ConnectionParameterTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 	}).(pulumi.StringPtrOutput)
 }
 
-// ConnectionParameterTypeInput is an input type that accepts ConnectionParameterTypeArgs and ConnectionParameterTypeOutput values.
-// You can construct a concrete instance of `ConnectionParameterTypeInput` via:
+// ConnectionParameterTypeInput is an input type that accepts values of the ConnectionParameterType enum
+// A concrete instance of `ConnectionParameterTypeInput` can be one of the following:
 //
-//	ConnectionParameterTypeArgs{...}
+//	ConnectionParameterTypeString
+//	ConnectionParameterTypeSecurestring
+//	ConnectionParameterTypeSecureobject
+//	ConnectionParameterTypeInt
+//	ConnectionParameterTypeBool
+//	ConnectionParameterTypeObject
+//	ConnectionParameterTypeArray
+//	ConnectionParameterTypeOauthSetting
+//	ConnectionParameterTypeConnection
 type ConnectionParameterTypeInput interface {
 	pulumi.Input
 
@@ -317,10 +325,12 @@ func (o PrincipalTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 	}).(pulumi.StringPtrOutput)
 }
 
-// PrincipalTypeInput is an input type that accepts PrincipalTypeArgs and PrincipalTypeOutput values.
-// You can construct a concrete instance of `PrincipalTypeInput` via:
+// PrincipalTypeInput is an input type that accepts values of the PrincipalType enum
+// A concrete instance of `PrincipalTypeInput` can be one of the following:
 //
-//	PrincipalTypeArgs{...}
+//	PrincipalTypeActiveDirectory
+//	PrincipalTypeConnection
+//	PrincipalTypeMicrosoftAccount
 type PrincipalTypeInput interface {
 	pulumi.Input
 

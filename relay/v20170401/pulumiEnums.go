@@ -138,10 +138,12 @@ func (o AccessRightsPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 	}).(pulumi.StringPtrOutput)
 }
 
-// AccessRightsInput is an input type that accepts AccessRightsArgs and AccessRightsOutput values.
-// You can construct a concrete instance of `AccessRightsInput` via:
+// AccessRightsInput is an input type that accepts values of the AccessRights enum
+// A concrete instance of `AccessRightsInput` can be one of the following:
 //
-//	AccessRightsArgs{...}
+//	AccessRightsManage
+//	AccessRightsSend
+//	AccessRightsListen
 type AccessRightsInput interface {
 	pulumi.Input
 

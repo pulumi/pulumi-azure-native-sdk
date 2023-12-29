@@ -244,6 +244,85 @@ type ContinuousAction struct {
 	Type string `pulumi:"type"`
 }
 
+// ContinuousActionInput is an input type that accepts ContinuousActionArgs and ContinuousActionOutput values.
+// You can construct a concrete instance of `ContinuousActionInput` via:
+//
+//	ContinuousActionArgs{...}
+type ContinuousActionInput interface {
+	pulumi.Input
+
+	ToContinuousActionOutput() ContinuousActionOutput
+	ToContinuousActionOutputWithContext(context.Context) ContinuousActionOutput
+}
+
+// Model that represents a continuous action.
+type ContinuousActionArgs struct {
+	// ISO8601 formatted string that represents a duration.
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// String that represents a Capability URN.
+	Name pulumi.StringInput `pulumi:"name"`
+	// List of key value pairs.
+	Parameters KeyValuePairArrayInput `pulumi:"parameters"`
+	// String that represents a selector.
+	SelectorId pulumi.StringInput `pulumi:"selectorId"`
+	// Enum that discriminates between action models.
+	// Expected value is 'continuous'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ContinuousActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContinuousAction)(nil)).Elem()
+}
+
+func (i ContinuousActionArgs) ToContinuousActionOutput() ContinuousActionOutput {
+	return i.ToContinuousActionOutputWithContext(context.Background())
+}
+
+func (i ContinuousActionArgs) ToContinuousActionOutputWithContext(ctx context.Context) ContinuousActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContinuousActionOutput)
+}
+
+// Model that represents a continuous action.
+type ContinuousActionOutput struct{ *pulumi.OutputState }
+
+func (ContinuousActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContinuousAction)(nil)).Elem()
+}
+
+func (o ContinuousActionOutput) ToContinuousActionOutput() ContinuousActionOutput {
+	return o
+}
+
+func (o ContinuousActionOutput) ToContinuousActionOutputWithContext(ctx context.Context) ContinuousActionOutput {
+	return o
+}
+
+// ISO8601 formatted string that represents a duration.
+func (o ContinuousActionOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v ContinuousAction) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// String that represents a Capability URN.
+func (o ContinuousActionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ContinuousAction) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// List of key value pairs.
+func (o ContinuousActionOutput) Parameters() KeyValuePairArrayOutput {
+	return o.ApplyT(func(v ContinuousAction) []KeyValuePair { return v.Parameters }).(KeyValuePairArrayOutput)
+}
+
+// String that represents a selector.
+func (o ContinuousActionOutput) SelectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v ContinuousAction) string { return v.SelectorId }).(pulumi.StringOutput)
+}
+
+// Enum that discriminates between action models.
+// Expected value is 'continuous'.
+func (o ContinuousActionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ContinuousAction) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Model that represents a continuous action.
 type ContinuousActionResponse struct {
 	// ISO8601 formatted string that represents a duration.
@@ -259,6 +338,47 @@ type ContinuousActionResponse struct {
 	Type string `pulumi:"type"`
 }
 
+// Model that represents a continuous action.
+type ContinuousActionResponseOutput struct{ *pulumi.OutputState }
+
+func (ContinuousActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContinuousActionResponse)(nil)).Elem()
+}
+
+func (o ContinuousActionResponseOutput) ToContinuousActionResponseOutput() ContinuousActionResponseOutput {
+	return o
+}
+
+func (o ContinuousActionResponseOutput) ToContinuousActionResponseOutputWithContext(ctx context.Context) ContinuousActionResponseOutput {
+	return o
+}
+
+// ISO8601 formatted string that represents a duration.
+func (o ContinuousActionResponseOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v ContinuousActionResponse) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// String that represents a Capability URN.
+func (o ContinuousActionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ContinuousActionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// List of key value pairs.
+func (o ContinuousActionResponseOutput) Parameters() KeyValuePairResponseArrayOutput {
+	return o.ApplyT(func(v ContinuousActionResponse) []KeyValuePairResponse { return v.Parameters }).(KeyValuePairResponseArrayOutput)
+}
+
+// String that represents a selector.
+func (o ContinuousActionResponseOutput) SelectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v ContinuousActionResponse) string { return v.SelectorId }).(pulumi.StringOutput)
+}
+
+// Enum that discriminates between action models.
+// Expected value is 'continuous'.
+func (o ContinuousActionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ContinuousActionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Model that represents a delay action.
 type DelayAction struct {
 	// ISO8601 formatted string that represents a duration.
@@ -270,6 +390,71 @@ type DelayAction struct {
 	Type string `pulumi:"type"`
 }
 
+// DelayActionInput is an input type that accepts DelayActionArgs and DelayActionOutput values.
+// You can construct a concrete instance of `DelayActionInput` via:
+//
+//	DelayActionArgs{...}
+type DelayActionInput interface {
+	pulumi.Input
+
+	ToDelayActionOutput() DelayActionOutput
+	ToDelayActionOutputWithContext(context.Context) DelayActionOutput
+}
+
+// Model that represents a delay action.
+type DelayActionArgs struct {
+	// ISO8601 formatted string that represents a duration.
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// String that represents a Capability URN.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Enum that discriminates between action models.
+	// Expected value is 'delay'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (DelayActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DelayAction)(nil)).Elem()
+}
+
+func (i DelayActionArgs) ToDelayActionOutput() DelayActionOutput {
+	return i.ToDelayActionOutputWithContext(context.Background())
+}
+
+func (i DelayActionArgs) ToDelayActionOutputWithContext(ctx context.Context) DelayActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DelayActionOutput)
+}
+
+// Model that represents a delay action.
+type DelayActionOutput struct{ *pulumi.OutputState }
+
+func (DelayActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DelayAction)(nil)).Elem()
+}
+
+func (o DelayActionOutput) ToDelayActionOutput() DelayActionOutput {
+	return o
+}
+
+func (o DelayActionOutput) ToDelayActionOutputWithContext(ctx context.Context) DelayActionOutput {
+	return o
+}
+
+// ISO8601 formatted string that represents a duration.
+func (o DelayActionOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v DelayAction) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// String that represents a Capability URN.
+func (o DelayActionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DelayAction) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Enum that discriminates between action models.
+// Expected value is 'delay'.
+func (o DelayActionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DelayAction) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Model that represents a delay action.
 type DelayActionResponse struct {
 	// ISO8601 formatted string that represents a duration.
@@ -279,6 +464,37 @@ type DelayActionResponse struct {
 	// Enum that discriminates between action models.
 	// Expected value is 'delay'.
 	Type string `pulumi:"type"`
+}
+
+// Model that represents a delay action.
+type DelayActionResponseOutput struct{ *pulumi.OutputState }
+
+func (DelayActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DelayActionResponse)(nil)).Elem()
+}
+
+func (o DelayActionResponseOutput) ToDelayActionResponseOutput() DelayActionResponseOutput {
+	return o
+}
+
+func (o DelayActionResponseOutput) ToDelayActionResponseOutputWithContext(ctx context.Context) DelayActionResponseOutput {
+	return o
+}
+
+// ISO8601 formatted string that represents a duration.
+func (o DelayActionResponseOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v DelayActionResponse) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// String that represents a Capability URN.
+func (o DelayActionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DelayActionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Enum that discriminates between action models.
+// Expected value is 'delay'.
+func (o DelayActionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DelayActionResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Model that represents a discrete action.
@@ -294,6 +510,78 @@ type DiscreteAction struct {
 	Type string `pulumi:"type"`
 }
 
+// DiscreteActionInput is an input type that accepts DiscreteActionArgs and DiscreteActionOutput values.
+// You can construct a concrete instance of `DiscreteActionInput` via:
+//
+//	DiscreteActionArgs{...}
+type DiscreteActionInput interface {
+	pulumi.Input
+
+	ToDiscreteActionOutput() DiscreteActionOutput
+	ToDiscreteActionOutputWithContext(context.Context) DiscreteActionOutput
+}
+
+// Model that represents a discrete action.
+type DiscreteActionArgs struct {
+	// String that represents a Capability URN.
+	Name pulumi.StringInput `pulumi:"name"`
+	// List of key value pairs.
+	Parameters KeyValuePairArrayInput `pulumi:"parameters"`
+	// String that represents a selector.
+	SelectorId pulumi.StringInput `pulumi:"selectorId"`
+	// Enum that discriminates between action models.
+	// Expected value is 'discrete'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (DiscreteActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscreteAction)(nil)).Elem()
+}
+
+func (i DiscreteActionArgs) ToDiscreteActionOutput() DiscreteActionOutput {
+	return i.ToDiscreteActionOutputWithContext(context.Background())
+}
+
+func (i DiscreteActionArgs) ToDiscreteActionOutputWithContext(ctx context.Context) DiscreteActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscreteActionOutput)
+}
+
+// Model that represents a discrete action.
+type DiscreteActionOutput struct{ *pulumi.OutputState }
+
+func (DiscreteActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscreteAction)(nil)).Elem()
+}
+
+func (o DiscreteActionOutput) ToDiscreteActionOutput() DiscreteActionOutput {
+	return o
+}
+
+func (o DiscreteActionOutput) ToDiscreteActionOutputWithContext(ctx context.Context) DiscreteActionOutput {
+	return o
+}
+
+// String that represents a Capability URN.
+func (o DiscreteActionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscreteAction) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// List of key value pairs.
+func (o DiscreteActionOutput) Parameters() KeyValuePairArrayOutput {
+	return o.ApplyT(func(v DiscreteAction) []KeyValuePair { return v.Parameters }).(KeyValuePairArrayOutput)
+}
+
+// String that represents a selector.
+func (o DiscreteActionOutput) SelectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscreteAction) string { return v.SelectorId }).(pulumi.StringOutput)
+}
+
+// Enum that discriminates between action models.
+// Expected value is 'discrete'.
+func (o DiscreteActionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscreteAction) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Model that represents a discrete action.
 type DiscreteActionResponse struct {
 	// String that represents a Capability URN.
@@ -305,6 +593,42 @@ type DiscreteActionResponse struct {
 	// Enum that discriminates between action models.
 	// Expected value is 'discrete'.
 	Type string `pulumi:"type"`
+}
+
+// Model that represents a discrete action.
+type DiscreteActionResponseOutput struct{ *pulumi.OutputState }
+
+func (DiscreteActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscreteActionResponse)(nil)).Elem()
+}
+
+func (o DiscreteActionResponseOutput) ToDiscreteActionResponseOutput() DiscreteActionResponseOutput {
+	return o
+}
+
+func (o DiscreteActionResponseOutput) ToDiscreteActionResponseOutputWithContext(ctx context.Context) DiscreteActionResponseOutput {
+	return o
+}
+
+// String that represents a Capability URN.
+func (o DiscreteActionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscreteActionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// List of key value pairs.
+func (o DiscreteActionResponseOutput) Parameters() KeyValuePairResponseArrayOutput {
+	return o.ApplyT(func(v DiscreteActionResponse) []KeyValuePairResponse { return v.Parameters }).(KeyValuePairResponseArrayOutput)
+}
+
+// String that represents a selector.
+func (o DiscreteActionResponseOutput) SelectorId() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscreteActionResponse) string { return v.SelectorId }).(pulumi.StringOutput)
+}
+
+// Enum that discriminates between action models.
+// Expected value is 'discrete'.
+func (o DiscreteActionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscreteActionResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Model that represents the Experiment properties model.
@@ -412,12 +736,158 @@ type KeyValuePair struct {
 	Value string `pulumi:"value"`
 }
 
+// KeyValuePairInput is an input type that accepts KeyValuePairArgs and KeyValuePairOutput values.
+// You can construct a concrete instance of `KeyValuePairInput` via:
+//
+//	KeyValuePairArgs{...}
+type KeyValuePairInput interface {
+	pulumi.Input
+
+	ToKeyValuePairOutput() KeyValuePairOutput
+	ToKeyValuePairOutputWithContext(context.Context) KeyValuePairOutput
+}
+
+// A map to describe the settings of an action.
+type KeyValuePairArgs struct {
+	// The name of the setting for the action.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the setting for the action.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (KeyValuePairArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyValuePair)(nil)).Elem()
+}
+
+func (i KeyValuePairArgs) ToKeyValuePairOutput() KeyValuePairOutput {
+	return i.ToKeyValuePairOutputWithContext(context.Background())
+}
+
+func (i KeyValuePairArgs) ToKeyValuePairOutputWithContext(ctx context.Context) KeyValuePairOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyValuePairOutput)
+}
+
+// KeyValuePairArrayInput is an input type that accepts KeyValuePairArray and KeyValuePairArrayOutput values.
+// You can construct a concrete instance of `KeyValuePairArrayInput` via:
+//
+//	KeyValuePairArray{ KeyValuePairArgs{...} }
+type KeyValuePairArrayInput interface {
+	pulumi.Input
+
+	ToKeyValuePairArrayOutput() KeyValuePairArrayOutput
+	ToKeyValuePairArrayOutputWithContext(context.Context) KeyValuePairArrayOutput
+}
+
+type KeyValuePairArray []KeyValuePairInput
+
+func (KeyValuePairArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeyValuePair)(nil)).Elem()
+}
+
+func (i KeyValuePairArray) ToKeyValuePairArrayOutput() KeyValuePairArrayOutput {
+	return i.ToKeyValuePairArrayOutputWithContext(context.Background())
+}
+
+func (i KeyValuePairArray) ToKeyValuePairArrayOutputWithContext(ctx context.Context) KeyValuePairArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyValuePairArrayOutput)
+}
+
+// A map to describe the settings of an action.
+type KeyValuePairOutput struct{ *pulumi.OutputState }
+
+func (KeyValuePairOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyValuePair)(nil)).Elem()
+}
+
+func (o KeyValuePairOutput) ToKeyValuePairOutput() KeyValuePairOutput {
+	return o
+}
+
+func (o KeyValuePairOutput) ToKeyValuePairOutputWithContext(ctx context.Context) KeyValuePairOutput {
+	return o
+}
+
+// The name of the setting for the action.
+func (o KeyValuePairOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyValuePair) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of the setting for the action.
+func (o KeyValuePairOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyValuePair) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type KeyValuePairArrayOutput struct{ *pulumi.OutputState }
+
+func (KeyValuePairArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeyValuePair)(nil)).Elem()
+}
+
+func (o KeyValuePairArrayOutput) ToKeyValuePairArrayOutput() KeyValuePairArrayOutput {
+	return o
+}
+
+func (o KeyValuePairArrayOutput) ToKeyValuePairArrayOutputWithContext(ctx context.Context) KeyValuePairArrayOutput {
+	return o
+}
+
+func (o KeyValuePairArrayOutput) Index(i pulumi.IntInput) KeyValuePairOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeyValuePair {
+		return vs[0].([]KeyValuePair)[vs[1].(int)]
+	}).(KeyValuePairOutput)
+}
+
 // A map to describe the settings of an action.
 type KeyValuePairResponse struct {
 	// The name of the setting for the action.
 	Key string `pulumi:"key"`
 	// The value of the setting for the action.
 	Value string `pulumi:"value"`
+}
+
+// A map to describe the settings of an action.
+type KeyValuePairResponseOutput struct{ *pulumi.OutputState }
+
+func (KeyValuePairResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyValuePairResponse)(nil)).Elem()
+}
+
+func (o KeyValuePairResponseOutput) ToKeyValuePairResponseOutput() KeyValuePairResponseOutput {
+	return o
+}
+
+func (o KeyValuePairResponseOutput) ToKeyValuePairResponseOutputWithContext(ctx context.Context) KeyValuePairResponseOutput {
+	return o
+}
+
+// The name of the setting for the action.
+func (o KeyValuePairResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyValuePairResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of the setting for the action.
+func (o KeyValuePairResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyValuePairResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type KeyValuePairResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (KeyValuePairResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeyValuePairResponse)(nil)).Elem()
+}
+
+func (o KeyValuePairResponseArrayOutput) ToKeyValuePairResponseArrayOutput() KeyValuePairResponseArrayOutput {
+	return o
+}
+
+func (o KeyValuePairResponseArrayOutput) ToKeyValuePairResponseArrayOutputWithContext(ctx context.Context) KeyValuePairResponseArrayOutput {
+	return o
+}
+
+func (o KeyValuePairResponseArrayOutput) Index(i pulumi.IntInput) KeyValuePairResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeyValuePairResponse {
+		return vs[0].([]KeyValuePairResponse)[vs[1].(int)]
+	}).(KeyValuePairResponseOutput)
 }
 
 // Model that represents a list selector.
@@ -433,6 +903,78 @@ type ListSelector struct {
 	Type string `pulumi:"type"`
 }
 
+// ListSelectorInput is an input type that accepts ListSelectorArgs and ListSelectorOutput values.
+// You can construct a concrete instance of `ListSelectorInput` via:
+//
+//	ListSelectorArgs{...}
+type ListSelectorInput interface {
+	pulumi.Input
+
+	ToListSelectorOutput() ListSelectorOutput
+	ToListSelectorOutputWithContext(context.Context) ListSelectorOutput
+}
+
+// Model that represents a list selector.
+type ListSelectorArgs struct {
+	// Model that represents available filter types that can be applied to a targets list.
+	Filter SimpleFilterPtrInput `pulumi:"filter"`
+	// String of the selector ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// List of Target references.
+	Targets TargetReferenceArrayInput `pulumi:"targets"`
+	// Enum of the selector type.
+	// Expected value is 'List'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ListSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListSelector)(nil)).Elem()
+}
+
+func (i ListSelectorArgs) ToListSelectorOutput() ListSelectorOutput {
+	return i.ToListSelectorOutputWithContext(context.Background())
+}
+
+func (i ListSelectorArgs) ToListSelectorOutputWithContext(ctx context.Context) ListSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListSelectorOutput)
+}
+
+// Model that represents a list selector.
+type ListSelectorOutput struct{ *pulumi.OutputState }
+
+func (ListSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListSelector)(nil)).Elem()
+}
+
+func (o ListSelectorOutput) ToListSelectorOutput() ListSelectorOutput {
+	return o
+}
+
+func (o ListSelectorOutput) ToListSelectorOutputWithContext(ctx context.Context) ListSelectorOutput {
+	return o
+}
+
+// Model that represents available filter types that can be applied to a targets list.
+func (o ListSelectorOutput) Filter() SimpleFilterPtrOutput {
+	return o.ApplyT(func(v ListSelector) *SimpleFilter { return v.Filter }).(SimpleFilterPtrOutput)
+}
+
+// String of the selector ID.
+func (o ListSelectorOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ListSelector) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// List of Target references.
+func (o ListSelectorOutput) Targets() TargetReferenceArrayOutput {
+	return o.ApplyT(func(v ListSelector) []TargetReference { return v.Targets }).(TargetReferenceArrayOutput)
+}
+
+// Enum of the selector type.
+// Expected value is 'List'.
+func (o ListSelectorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ListSelector) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Model that represents a list selector.
 type ListSelectorResponse struct {
 	// Model that represents available filter types that can be applied to a targets list.
@@ -444,6 +986,42 @@ type ListSelectorResponse struct {
 	// Enum of the selector type.
 	// Expected value is 'List'.
 	Type string `pulumi:"type"`
+}
+
+// Model that represents a list selector.
+type ListSelectorResponseOutput struct{ *pulumi.OutputState }
+
+func (ListSelectorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListSelectorResponse)(nil)).Elem()
+}
+
+func (o ListSelectorResponseOutput) ToListSelectorResponseOutput() ListSelectorResponseOutput {
+	return o
+}
+
+func (o ListSelectorResponseOutput) ToListSelectorResponseOutputWithContext(ctx context.Context) ListSelectorResponseOutput {
+	return o
+}
+
+// Model that represents available filter types that can be applied to a targets list.
+func (o ListSelectorResponseOutput) Filter() SimpleFilterResponsePtrOutput {
+	return o.ApplyT(func(v ListSelectorResponse) *SimpleFilterResponse { return v.Filter }).(SimpleFilterResponsePtrOutput)
+}
+
+// String of the selector ID.
+func (o ListSelectorResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ListSelectorResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// List of Target references.
+func (o ListSelectorResponseOutput) Targets() TargetReferenceResponseArrayOutput {
+	return o.ApplyT(func(v ListSelectorResponse) []TargetReferenceResponse { return v.Targets }).(TargetReferenceResponseArrayOutput)
+}
+
+// Enum of the selector type.
+// Expected value is 'List'.
+func (o ListSelectorResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ListSelectorResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Model that represents a query selector.
@@ -461,6 +1039,85 @@ type QuerySelector struct {
 	Type string `pulumi:"type"`
 }
 
+// QuerySelectorInput is an input type that accepts QuerySelectorArgs and QuerySelectorOutput values.
+// You can construct a concrete instance of `QuerySelectorInput` via:
+//
+//	QuerySelectorArgs{...}
+type QuerySelectorInput interface {
+	pulumi.Input
+
+	ToQuerySelectorOutput() QuerySelectorOutput
+	ToQuerySelectorOutputWithContext(context.Context) QuerySelectorOutput
+}
+
+// Model that represents a query selector.
+type QuerySelectorArgs struct {
+	// Model that represents available filter types that can be applied to a targets list.
+	Filter SimpleFilterPtrInput `pulumi:"filter"`
+	// String of the selector ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Azure Resource Graph (ARG) Query Language query for target resources.
+	QueryString pulumi.StringInput `pulumi:"queryString"`
+	// Subscription id list to scope resource query.
+	SubscriptionIds pulumi.StringArrayInput `pulumi:"subscriptionIds"`
+	// Enum of the selector type.
+	// Expected value is 'Query'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (QuerySelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuerySelector)(nil)).Elem()
+}
+
+func (i QuerySelectorArgs) ToQuerySelectorOutput() QuerySelectorOutput {
+	return i.ToQuerySelectorOutputWithContext(context.Background())
+}
+
+func (i QuerySelectorArgs) ToQuerySelectorOutputWithContext(ctx context.Context) QuerySelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QuerySelectorOutput)
+}
+
+// Model that represents a query selector.
+type QuerySelectorOutput struct{ *pulumi.OutputState }
+
+func (QuerySelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuerySelector)(nil)).Elem()
+}
+
+func (o QuerySelectorOutput) ToQuerySelectorOutput() QuerySelectorOutput {
+	return o
+}
+
+func (o QuerySelectorOutput) ToQuerySelectorOutputWithContext(ctx context.Context) QuerySelectorOutput {
+	return o
+}
+
+// Model that represents available filter types that can be applied to a targets list.
+func (o QuerySelectorOutput) Filter() SimpleFilterPtrOutput {
+	return o.ApplyT(func(v QuerySelector) *SimpleFilter { return v.Filter }).(SimpleFilterPtrOutput)
+}
+
+// String of the selector ID.
+func (o QuerySelectorOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v QuerySelector) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Azure Resource Graph (ARG) Query Language query for target resources.
+func (o QuerySelectorOutput) QueryString() pulumi.StringOutput {
+	return o.ApplyT(func(v QuerySelector) string { return v.QueryString }).(pulumi.StringOutput)
+}
+
+// Subscription id list to scope resource query.
+func (o QuerySelectorOutput) SubscriptionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v QuerySelector) []string { return v.SubscriptionIds }).(pulumi.StringArrayOutput)
+}
+
+// Enum of the selector type.
+// Expected value is 'Query'.
+func (o QuerySelectorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v QuerySelector) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Model that represents a query selector.
 type QuerySelectorResponse struct {
 	// Model that represents available filter types that can be applied to a targets list.
@@ -474,6 +1131,47 @@ type QuerySelectorResponse struct {
 	// Enum of the selector type.
 	// Expected value is 'Query'.
 	Type string `pulumi:"type"`
+}
+
+// Model that represents a query selector.
+type QuerySelectorResponseOutput struct{ *pulumi.OutputState }
+
+func (QuerySelectorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QuerySelectorResponse)(nil)).Elem()
+}
+
+func (o QuerySelectorResponseOutput) ToQuerySelectorResponseOutput() QuerySelectorResponseOutput {
+	return o
+}
+
+func (o QuerySelectorResponseOutput) ToQuerySelectorResponseOutputWithContext(ctx context.Context) QuerySelectorResponseOutput {
+	return o
+}
+
+// Model that represents available filter types that can be applied to a targets list.
+func (o QuerySelectorResponseOutput) Filter() SimpleFilterResponsePtrOutput {
+	return o.ApplyT(func(v QuerySelectorResponse) *SimpleFilterResponse { return v.Filter }).(SimpleFilterResponsePtrOutput)
+}
+
+// String of the selector ID.
+func (o QuerySelectorResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v QuerySelectorResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Azure Resource Graph (ARG) Query Language query for target resources.
+func (o QuerySelectorResponseOutput) QueryString() pulumi.StringOutput {
+	return o.ApplyT(func(v QuerySelectorResponse) string { return v.QueryString }).(pulumi.StringOutput)
+}
+
+// Subscription id list to scope resource query.
+func (o QuerySelectorResponseOutput) SubscriptionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v QuerySelectorResponse) []string { return v.SubscriptionIds }).(pulumi.StringArrayOutput)
+}
+
+// Enum of the selector type.
+// Expected value is 'Query'.
+func (o QuerySelectorResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v QuerySelectorResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // The identity of a resource.
@@ -757,16 +1455,358 @@ type SimpleFilter struct {
 	Type string `pulumi:"type"`
 }
 
+// SimpleFilterInput is an input type that accepts SimpleFilterArgs and SimpleFilterOutput values.
+// You can construct a concrete instance of `SimpleFilterInput` via:
+//
+//	SimpleFilterArgs{...}
+type SimpleFilterInput interface {
+	pulumi.Input
+
+	ToSimpleFilterOutput() SimpleFilterOutput
+	ToSimpleFilterOutputWithContext(context.Context) SimpleFilterOutput
+}
+
+// Model that represents a simple target filter.
+type SimpleFilterArgs struct {
+	// Model that represents the Simple filter parameters.
+	Parameters SimpleFilterParametersPtrInput `pulumi:"parameters"`
+	// Enum that discriminates between filter types. Currently only `Simple` type is supported.
+	// Expected value is 'Simple'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SimpleFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SimpleFilter)(nil)).Elem()
+}
+
+func (i SimpleFilterArgs) ToSimpleFilterOutput() SimpleFilterOutput {
+	return i.ToSimpleFilterOutputWithContext(context.Background())
+}
+
+func (i SimpleFilterArgs) ToSimpleFilterOutputWithContext(ctx context.Context) SimpleFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SimpleFilterOutput)
+}
+
+func (i SimpleFilterArgs) ToSimpleFilterPtrOutput() SimpleFilterPtrOutput {
+	return i.ToSimpleFilterPtrOutputWithContext(context.Background())
+}
+
+func (i SimpleFilterArgs) ToSimpleFilterPtrOutputWithContext(ctx context.Context) SimpleFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SimpleFilterOutput).ToSimpleFilterPtrOutputWithContext(ctx)
+}
+
+// SimpleFilterPtrInput is an input type that accepts SimpleFilterArgs, SimpleFilterPtr and SimpleFilterPtrOutput values.
+// You can construct a concrete instance of `SimpleFilterPtrInput` via:
+//
+//	        SimpleFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type SimpleFilterPtrInput interface {
+	pulumi.Input
+
+	ToSimpleFilterPtrOutput() SimpleFilterPtrOutput
+	ToSimpleFilterPtrOutputWithContext(context.Context) SimpleFilterPtrOutput
+}
+
+type simpleFilterPtrType SimpleFilterArgs
+
+func SimpleFilterPtr(v *SimpleFilterArgs) SimpleFilterPtrInput {
+	return (*simpleFilterPtrType)(v)
+}
+
+func (*simpleFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SimpleFilter)(nil)).Elem()
+}
+
+func (i *simpleFilterPtrType) ToSimpleFilterPtrOutput() SimpleFilterPtrOutput {
+	return i.ToSimpleFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *simpleFilterPtrType) ToSimpleFilterPtrOutputWithContext(ctx context.Context) SimpleFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SimpleFilterPtrOutput)
+}
+
+// Model that represents a simple target filter.
+type SimpleFilterOutput struct{ *pulumi.OutputState }
+
+func (SimpleFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SimpleFilter)(nil)).Elem()
+}
+
+func (o SimpleFilterOutput) ToSimpleFilterOutput() SimpleFilterOutput {
+	return o
+}
+
+func (o SimpleFilterOutput) ToSimpleFilterOutputWithContext(ctx context.Context) SimpleFilterOutput {
+	return o
+}
+
+func (o SimpleFilterOutput) ToSimpleFilterPtrOutput() SimpleFilterPtrOutput {
+	return o.ToSimpleFilterPtrOutputWithContext(context.Background())
+}
+
+func (o SimpleFilterOutput) ToSimpleFilterPtrOutputWithContext(ctx context.Context) SimpleFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SimpleFilter) *SimpleFilter {
+		return &v
+	}).(SimpleFilterPtrOutput)
+}
+
+// Model that represents the Simple filter parameters.
+func (o SimpleFilterOutput) Parameters() SimpleFilterParametersPtrOutput {
+	return o.ApplyT(func(v SimpleFilter) *SimpleFilterParameters { return v.Parameters }).(SimpleFilterParametersPtrOutput)
+}
+
+// Enum that discriminates between filter types. Currently only `Simple` type is supported.
+// Expected value is 'Simple'.
+func (o SimpleFilterOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SimpleFilter) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SimpleFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (SimpleFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SimpleFilter)(nil)).Elem()
+}
+
+func (o SimpleFilterPtrOutput) ToSimpleFilterPtrOutput() SimpleFilterPtrOutput {
+	return o
+}
+
+func (o SimpleFilterPtrOutput) ToSimpleFilterPtrOutputWithContext(ctx context.Context) SimpleFilterPtrOutput {
+	return o
+}
+
+func (o SimpleFilterPtrOutput) Elem() SimpleFilterOutput {
+	return o.ApplyT(func(v *SimpleFilter) SimpleFilter {
+		if v != nil {
+			return *v
+		}
+		var ret SimpleFilter
+		return ret
+	}).(SimpleFilterOutput)
+}
+
+// Model that represents the Simple filter parameters.
+func (o SimpleFilterPtrOutput) Parameters() SimpleFilterParametersPtrOutput {
+	return o.ApplyT(func(v *SimpleFilter) *SimpleFilterParameters {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(SimpleFilterParametersPtrOutput)
+}
+
+// Enum that discriminates between filter types. Currently only `Simple` type is supported.
+// Expected value is 'Simple'.
+func (o SimpleFilterPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SimpleFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // Model that represents the Simple filter parameters.
 type SimpleFilterParameters struct {
 	// List of Azure availability zones to filter targets by.
 	Zones []string `pulumi:"zones"`
 }
 
+// SimpleFilterParametersInput is an input type that accepts SimpleFilterParametersArgs and SimpleFilterParametersOutput values.
+// You can construct a concrete instance of `SimpleFilterParametersInput` via:
+//
+//	SimpleFilterParametersArgs{...}
+type SimpleFilterParametersInput interface {
+	pulumi.Input
+
+	ToSimpleFilterParametersOutput() SimpleFilterParametersOutput
+	ToSimpleFilterParametersOutputWithContext(context.Context) SimpleFilterParametersOutput
+}
+
+// Model that represents the Simple filter parameters.
+type SimpleFilterParametersArgs struct {
+	// List of Azure availability zones to filter targets by.
+	Zones pulumi.StringArrayInput `pulumi:"zones"`
+}
+
+func (SimpleFilterParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SimpleFilterParameters)(nil)).Elem()
+}
+
+func (i SimpleFilterParametersArgs) ToSimpleFilterParametersOutput() SimpleFilterParametersOutput {
+	return i.ToSimpleFilterParametersOutputWithContext(context.Background())
+}
+
+func (i SimpleFilterParametersArgs) ToSimpleFilterParametersOutputWithContext(ctx context.Context) SimpleFilterParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SimpleFilterParametersOutput)
+}
+
+func (i SimpleFilterParametersArgs) ToSimpleFilterParametersPtrOutput() SimpleFilterParametersPtrOutput {
+	return i.ToSimpleFilterParametersPtrOutputWithContext(context.Background())
+}
+
+func (i SimpleFilterParametersArgs) ToSimpleFilterParametersPtrOutputWithContext(ctx context.Context) SimpleFilterParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SimpleFilterParametersOutput).ToSimpleFilterParametersPtrOutputWithContext(ctx)
+}
+
+// SimpleFilterParametersPtrInput is an input type that accepts SimpleFilterParametersArgs, SimpleFilterParametersPtr and SimpleFilterParametersPtrOutput values.
+// You can construct a concrete instance of `SimpleFilterParametersPtrInput` via:
+//
+//	        SimpleFilterParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type SimpleFilterParametersPtrInput interface {
+	pulumi.Input
+
+	ToSimpleFilterParametersPtrOutput() SimpleFilterParametersPtrOutput
+	ToSimpleFilterParametersPtrOutputWithContext(context.Context) SimpleFilterParametersPtrOutput
+}
+
+type simpleFilterParametersPtrType SimpleFilterParametersArgs
+
+func SimpleFilterParametersPtr(v *SimpleFilterParametersArgs) SimpleFilterParametersPtrInput {
+	return (*simpleFilterParametersPtrType)(v)
+}
+
+func (*simpleFilterParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SimpleFilterParameters)(nil)).Elem()
+}
+
+func (i *simpleFilterParametersPtrType) ToSimpleFilterParametersPtrOutput() SimpleFilterParametersPtrOutput {
+	return i.ToSimpleFilterParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *simpleFilterParametersPtrType) ToSimpleFilterParametersPtrOutputWithContext(ctx context.Context) SimpleFilterParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SimpleFilterParametersPtrOutput)
+}
+
+// Model that represents the Simple filter parameters.
+type SimpleFilterParametersOutput struct{ *pulumi.OutputState }
+
+func (SimpleFilterParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SimpleFilterParameters)(nil)).Elem()
+}
+
+func (o SimpleFilterParametersOutput) ToSimpleFilterParametersOutput() SimpleFilterParametersOutput {
+	return o
+}
+
+func (o SimpleFilterParametersOutput) ToSimpleFilterParametersOutputWithContext(ctx context.Context) SimpleFilterParametersOutput {
+	return o
+}
+
+func (o SimpleFilterParametersOutput) ToSimpleFilterParametersPtrOutput() SimpleFilterParametersPtrOutput {
+	return o.ToSimpleFilterParametersPtrOutputWithContext(context.Background())
+}
+
+func (o SimpleFilterParametersOutput) ToSimpleFilterParametersPtrOutputWithContext(ctx context.Context) SimpleFilterParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SimpleFilterParameters) *SimpleFilterParameters {
+		return &v
+	}).(SimpleFilterParametersPtrOutput)
+}
+
+// List of Azure availability zones to filter targets by.
+func (o SimpleFilterParametersOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SimpleFilterParameters) []string { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
+type SimpleFilterParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (SimpleFilterParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SimpleFilterParameters)(nil)).Elem()
+}
+
+func (o SimpleFilterParametersPtrOutput) ToSimpleFilterParametersPtrOutput() SimpleFilterParametersPtrOutput {
+	return o
+}
+
+func (o SimpleFilterParametersPtrOutput) ToSimpleFilterParametersPtrOutputWithContext(ctx context.Context) SimpleFilterParametersPtrOutput {
+	return o
+}
+
+func (o SimpleFilterParametersPtrOutput) Elem() SimpleFilterParametersOutput {
+	return o.ApplyT(func(v *SimpleFilterParameters) SimpleFilterParameters {
+		if v != nil {
+			return *v
+		}
+		var ret SimpleFilterParameters
+		return ret
+	}).(SimpleFilterParametersOutput)
+}
+
+// List of Azure availability zones to filter targets by.
+func (o SimpleFilterParametersPtrOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SimpleFilterParameters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Zones
+	}).(pulumi.StringArrayOutput)
+}
+
 // Model that represents the Simple filter parameters.
 type SimpleFilterParametersResponse struct {
 	// List of Azure availability zones to filter targets by.
 	Zones []string `pulumi:"zones"`
+}
+
+// Model that represents the Simple filter parameters.
+type SimpleFilterParametersResponseOutput struct{ *pulumi.OutputState }
+
+func (SimpleFilterParametersResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SimpleFilterParametersResponse)(nil)).Elem()
+}
+
+func (o SimpleFilterParametersResponseOutput) ToSimpleFilterParametersResponseOutput() SimpleFilterParametersResponseOutput {
+	return o
+}
+
+func (o SimpleFilterParametersResponseOutput) ToSimpleFilterParametersResponseOutputWithContext(ctx context.Context) SimpleFilterParametersResponseOutput {
+	return o
+}
+
+// List of Azure availability zones to filter targets by.
+func (o SimpleFilterParametersResponseOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SimpleFilterParametersResponse) []string { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
+type SimpleFilterParametersResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SimpleFilterParametersResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SimpleFilterParametersResponse)(nil)).Elem()
+}
+
+func (o SimpleFilterParametersResponsePtrOutput) ToSimpleFilterParametersResponsePtrOutput() SimpleFilterParametersResponsePtrOutput {
+	return o
+}
+
+func (o SimpleFilterParametersResponsePtrOutput) ToSimpleFilterParametersResponsePtrOutputWithContext(ctx context.Context) SimpleFilterParametersResponsePtrOutput {
+	return o
+}
+
+func (o SimpleFilterParametersResponsePtrOutput) Elem() SimpleFilterParametersResponseOutput {
+	return o.ApplyT(func(v *SimpleFilterParametersResponse) SimpleFilterParametersResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SimpleFilterParametersResponse
+		return ret
+	}).(SimpleFilterParametersResponseOutput)
+}
+
+// List of Azure availability zones to filter targets by.
+func (o SimpleFilterParametersResponsePtrOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SimpleFilterParametersResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Zones
+	}).(pulumi.StringArrayOutput)
 }
 
 // Model that represents a simple target filter.
@@ -776,6 +1816,77 @@ type SimpleFilterResponse struct {
 	// Enum that discriminates between filter types. Currently only `Simple` type is supported.
 	// Expected value is 'Simple'.
 	Type string `pulumi:"type"`
+}
+
+// Model that represents a simple target filter.
+type SimpleFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (SimpleFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SimpleFilterResponse)(nil)).Elem()
+}
+
+func (o SimpleFilterResponseOutput) ToSimpleFilterResponseOutput() SimpleFilterResponseOutput {
+	return o
+}
+
+func (o SimpleFilterResponseOutput) ToSimpleFilterResponseOutputWithContext(ctx context.Context) SimpleFilterResponseOutput {
+	return o
+}
+
+// Model that represents the Simple filter parameters.
+func (o SimpleFilterResponseOutput) Parameters() SimpleFilterParametersResponsePtrOutput {
+	return o.ApplyT(func(v SimpleFilterResponse) *SimpleFilterParametersResponse { return v.Parameters }).(SimpleFilterParametersResponsePtrOutput)
+}
+
+// Enum that discriminates between filter types. Currently only `Simple` type is supported.
+// Expected value is 'Simple'.
+func (o SimpleFilterResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SimpleFilterResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SimpleFilterResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SimpleFilterResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SimpleFilterResponse)(nil)).Elem()
+}
+
+func (o SimpleFilterResponsePtrOutput) ToSimpleFilterResponsePtrOutput() SimpleFilterResponsePtrOutput {
+	return o
+}
+
+func (o SimpleFilterResponsePtrOutput) ToSimpleFilterResponsePtrOutputWithContext(ctx context.Context) SimpleFilterResponsePtrOutput {
+	return o
+}
+
+func (o SimpleFilterResponsePtrOutput) Elem() SimpleFilterResponseOutput {
+	return o.ApplyT(func(v *SimpleFilterResponse) SimpleFilterResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SimpleFilterResponse
+		return ret
+	}).(SimpleFilterResponseOutput)
+}
+
+// Model that represents the Simple filter parameters.
+func (o SimpleFilterResponsePtrOutput) Parameters() SimpleFilterParametersResponsePtrOutput {
+	return o.ApplyT(func(v *SimpleFilterResponse) *SimpleFilterParametersResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(SimpleFilterParametersResponsePtrOutput)
+}
+
+// Enum that discriminates between filter types. Currently only `Simple` type is supported.
+// Expected value is 'Simple'.
+func (o SimpleFilterResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SimpleFilterResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // Model that represents a step in the Experiment resource.
@@ -1009,12 +2120,158 @@ type TargetReference struct {
 	Type string `pulumi:"type"`
 }
 
+// TargetReferenceInput is an input type that accepts TargetReferenceArgs and TargetReferenceOutput values.
+// You can construct a concrete instance of `TargetReferenceInput` via:
+//
+//	TargetReferenceArgs{...}
+type TargetReferenceInput interface {
+	pulumi.Input
+
+	ToTargetReferenceOutput() TargetReferenceOutput
+	ToTargetReferenceOutputWithContext(context.Context) TargetReferenceOutput
+}
+
+// Model that represents a reference to a Target in the selector.
+type TargetReferenceArgs struct {
+	// String of the resource ID of a Target resource.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Enum of the Target reference type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (TargetReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetReference)(nil)).Elem()
+}
+
+func (i TargetReferenceArgs) ToTargetReferenceOutput() TargetReferenceOutput {
+	return i.ToTargetReferenceOutputWithContext(context.Background())
+}
+
+func (i TargetReferenceArgs) ToTargetReferenceOutputWithContext(ctx context.Context) TargetReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetReferenceOutput)
+}
+
+// TargetReferenceArrayInput is an input type that accepts TargetReferenceArray and TargetReferenceArrayOutput values.
+// You can construct a concrete instance of `TargetReferenceArrayInput` via:
+//
+//	TargetReferenceArray{ TargetReferenceArgs{...} }
+type TargetReferenceArrayInput interface {
+	pulumi.Input
+
+	ToTargetReferenceArrayOutput() TargetReferenceArrayOutput
+	ToTargetReferenceArrayOutputWithContext(context.Context) TargetReferenceArrayOutput
+}
+
+type TargetReferenceArray []TargetReferenceInput
+
+func (TargetReferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetReference)(nil)).Elem()
+}
+
+func (i TargetReferenceArray) ToTargetReferenceArrayOutput() TargetReferenceArrayOutput {
+	return i.ToTargetReferenceArrayOutputWithContext(context.Background())
+}
+
+func (i TargetReferenceArray) ToTargetReferenceArrayOutputWithContext(ctx context.Context) TargetReferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetReferenceArrayOutput)
+}
+
+// Model that represents a reference to a Target in the selector.
+type TargetReferenceOutput struct{ *pulumi.OutputState }
+
+func (TargetReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetReference)(nil)).Elem()
+}
+
+func (o TargetReferenceOutput) ToTargetReferenceOutput() TargetReferenceOutput {
+	return o
+}
+
+func (o TargetReferenceOutput) ToTargetReferenceOutputWithContext(ctx context.Context) TargetReferenceOutput {
+	return o
+}
+
+// String of the resource ID of a Target resource.
+func (o TargetReferenceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetReference) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Enum of the Target reference type.
+func (o TargetReferenceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetReference) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type TargetReferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (TargetReferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetReference)(nil)).Elem()
+}
+
+func (o TargetReferenceArrayOutput) ToTargetReferenceArrayOutput() TargetReferenceArrayOutput {
+	return o
+}
+
+func (o TargetReferenceArrayOutput) ToTargetReferenceArrayOutputWithContext(ctx context.Context) TargetReferenceArrayOutput {
+	return o
+}
+
+func (o TargetReferenceArrayOutput) Index(i pulumi.IntInput) TargetReferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetReference {
+		return vs[0].([]TargetReference)[vs[1].(int)]
+	}).(TargetReferenceOutput)
+}
+
 // Model that represents a reference to a Target in the selector.
 type TargetReferenceResponse struct {
 	// String of the resource ID of a Target resource.
 	Id string `pulumi:"id"`
 	// Enum of the Target reference type.
 	Type string `pulumi:"type"`
+}
+
+// Model that represents a reference to a Target in the selector.
+type TargetReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (TargetReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetReferenceResponse)(nil)).Elem()
+}
+
+func (o TargetReferenceResponseOutput) ToTargetReferenceResponseOutput() TargetReferenceResponseOutput {
+	return o
+}
+
+func (o TargetReferenceResponseOutput) ToTargetReferenceResponseOutputWithContext(ctx context.Context) TargetReferenceResponseOutput {
+	return o
+}
+
+// String of the resource ID of a Target resource.
+func (o TargetReferenceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetReferenceResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Enum of the Target reference type.
+func (o TargetReferenceResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetReferenceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type TargetReferenceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TargetReferenceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetReferenceResponse)(nil)).Elem()
+}
+
+func (o TargetReferenceResponseArrayOutput) ToTargetReferenceResponseArrayOutput() TargetReferenceResponseArrayOutput {
+	return o
+}
+
+func (o TargetReferenceResponseArrayOutput) ToTargetReferenceResponseArrayOutputWithContext(ctx context.Context) TargetReferenceResponseArrayOutput {
+	return o
+}
+
+func (o TargetReferenceResponseArrayOutput) Index(i pulumi.IntInput) TargetReferenceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetReferenceResponse {
+		return vs[0].([]TargetReferenceResponse)[vs[1].(int)]
+	}).(TargetReferenceResponseOutput)
 }
 
 // User assigned identity properties
@@ -1076,17 +2333,43 @@ func init() {
 	pulumi.RegisterOutputType(BranchResponseOutput{})
 	pulumi.RegisterOutputType(BranchResponseArrayOutput{})
 	pulumi.RegisterOutputType(CapabilityPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ContinuousActionOutput{})
+	pulumi.RegisterOutputType(ContinuousActionResponseOutput{})
+	pulumi.RegisterOutputType(DelayActionOutput{})
+	pulumi.RegisterOutputType(DelayActionResponseOutput{})
+	pulumi.RegisterOutputType(DiscreteActionOutput{})
+	pulumi.RegisterOutputType(DiscreteActionResponseOutput{})
 	pulumi.RegisterOutputType(ExperimentPropertiesOutput{})
 	pulumi.RegisterOutputType(ExperimentPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(KeyValuePairOutput{})
+	pulumi.RegisterOutputType(KeyValuePairArrayOutput{})
+	pulumi.RegisterOutputType(KeyValuePairResponseOutput{})
+	pulumi.RegisterOutputType(KeyValuePairResponseArrayOutput{})
+	pulumi.RegisterOutputType(ListSelectorOutput{})
+	pulumi.RegisterOutputType(ListSelectorResponseOutput{})
+	pulumi.RegisterOutputType(QuerySelectorOutput{})
+	pulumi.RegisterOutputType(QuerySelectorResponseOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(SimpleFilterOutput{})
+	pulumi.RegisterOutputType(SimpleFilterPtrOutput{})
+	pulumi.RegisterOutputType(SimpleFilterParametersOutput{})
+	pulumi.RegisterOutputType(SimpleFilterParametersPtrOutput{})
+	pulumi.RegisterOutputType(SimpleFilterParametersResponseOutput{})
+	pulumi.RegisterOutputType(SimpleFilterParametersResponsePtrOutput{})
+	pulumi.RegisterOutputType(SimpleFilterResponseOutput{})
+	pulumi.RegisterOutputType(SimpleFilterResponsePtrOutput{})
 	pulumi.RegisterOutputType(StepOutput{})
 	pulumi.RegisterOutputType(StepArrayOutput{})
 	pulumi.RegisterOutputType(StepResponseOutput{})
 	pulumi.RegisterOutputType(StepResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(TargetReferenceOutput{})
+	pulumi.RegisterOutputType(TargetReferenceArrayOutput{})
+	pulumi.RegisterOutputType(TargetReferenceResponseOutput{})
+	pulumi.RegisterOutputType(TargetReferenceResponseArrayOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 }

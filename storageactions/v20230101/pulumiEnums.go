@@ -21,6 +21,172 @@ const (
 	ManagedServiceIdentityType_SystemAssigned_UserAssigned = ManagedServiceIdentityType("SystemAssigned,UserAssigned")
 )
 
+func (ManagedServiceIdentityType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentityType)(nil)).Elem()
+}
+
+func (e ManagedServiceIdentityType) ToManagedServiceIdentityTypeOutput() ManagedServiceIdentityTypeOutput {
+	return pulumi.ToOutput(e).(ManagedServiceIdentityTypeOutput)
+}
+
+func (e ManagedServiceIdentityType) ToManagedServiceIdentityTypeOutputWithContext(ctx context.Context) ManagedServiceIdentityTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ManagedServiceIdentityTypeOutput)
+}
+
+func (e ManagedServiceIdentityType) ToManagedServiceIdentityTypePtrOutput() ManagedServiceIdentityTypePtrOutput {
+	return e.ToManagedServiceIdentityTypePtrOutputWithContext(context.Background())
+}
+
+func (e ManagedServiceIdentityType) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
+	return ManagedServiceIdentityType(e).ToManagedServiceIdentityTypeOutputWithContext(ctx).ToManagedServiceIdentityTypePtrOutputWithContext(ctx)
+}
+
+func (e ManagedServiceIdentityType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ManagedServiceIdentityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ManagedServiceIdentityType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ManagedServiceIdentityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ManagedServiceIdentityTypeOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentityType)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityTypeOutput) ToManagedServiceIdentityTypeOutput() ManagedServiceIdentityTypeOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityTypeOutput) ToManagedServiceIdentityTypeOutputWithContext(ctx context.Context) ManagedServiceIdentityTypeOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityTypeOutput) ToManagedServiceIdentityTypePtrOutput() ManagedServiceIdentityTypePtrOutput {
+	return o.ToManagedServiceIdentityTypePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedServiceIdentityTypeOutput) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedServiceIdentityType) *ManagedServiceIdentityType {
+		return &v
+	}).(ManagedServiceIdentityTypePtrOutput)
+}
+
+func (o ManagedServiceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ManagedServiceIdentityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagedServiceIdentityType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ManagedServiceIdentityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedServiceIdentityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagedServiceIdentityType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ManagedServiceIdentityTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentityType)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityTypePtrOutput) ToManagedServiceIdentityTypePtrOutput() ManagedServiceIdentityTypePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityTypePtrOutput) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityTypePtrOutput) Elem() ManagedServiceIdentityTypeOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityType) ManagedServiceIdentityType {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentityType
+		return ret
+	}).(ManagedServiceIdentityTypeOutput)
+}
+
+func (o ManagedServiceIdentityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedServiceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ManagedServiceIdentityType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ManagedServiceIdentityTypeInput is an input type that accepts values of the ManagedServiceIdentityType enum
+// A concrete instance of `ManagedServiceIdentityTypeInput` can be one of the following:
+//
+//	ManagedServiceIdentityTypeNone
+//	ManagedServiceIdentityTypeSystemAssigned
+//	ManagedServiceIdentityTypeUserAssigned
+//	ManagedServiceIdentityType_SystemAssigned_UserAssigned
+type ManagedServiceIdentityTypeInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityTypeOutput() ManagedServiceIdentityTypeOutput
+	ToManagedServiceIdentityTypeOutputWithContext(context.Context) ManagedServiceIdentityTypeOutput
+}
+
+var managedServiceIdentityTypePtrType = reflect.TypeOf((**ManagedServiceIdentityType)(nil)).Elem()
+
+type ManagedServiceIdentityTypePtrInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityTypePtrOutput() ManagedServiceIdentityTypePtrOutput
+	ToManagedServiceIdentityTypePtrOutputWithContext(context.Context) ManagedServiceIdentityTypePtrOutput
+}
+
+type managedServiceIdentityTypePtr string
+
+func ManagedServiceIdentityTypePtr(v string) ManagedServiceIdentityTypePtrInput {
+	return (*managedServiceIdentityTypePtr)(&v)
+}
+
+func (*managedServiceIdentityTypePtr) ElementType() reflect.Type {
+	return managedServiceIdentityTypePtrType
+}
+
+func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutput() ManagedServiceIdentityTypePtrOutput {
+	return pulumi.ToOutput(in).(ManagedServiceIdentityTypePtrOutput)
+}
+
+func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
+}
+
+func (in *managedServiceIdentityTypePtr) ToOutput(ctx context.Context) pulumix.Output[*ManagedServiceIdentityType] {
+	return pulumix.Output[*ManagedServiceIdentityType]{
+		OutputState: in.ToManagedServiceIdentityTypePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Action to be taken when the operation fails for a object.
 type OnFailure string
 
@@ -147,10 +313,10 @@ func (o OnFailurePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// OnFailureInput is an input type that accepts OnFailureArgs and OnFailureOutput values.
-// You can construct a concrete instance of `OnFailureInput` via:
+// OnFailureInput is an input type that accepts values of the OnFailure enum
+// A concrete instance of `OnFailureInput` can be one of the following:
 //
-//	OnFailureArgs{...}
+//	OnFailureBreak
 type OnFailureInput interface {
 	pulumi.Input
 
@@ -317,10 +483,10 @@ func (o OnSuccessPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// OnSuccessInput is an input type that accepts OnSuccessArgs and OnSuccessOutput values.
-// You can construct a concrete instance of `OnSuccessInput` via:
+// OnSuccessInput is an input type that accepts values of the OnSuccess enum
+// A concrete instance of `OnSuccessInput` can be one of the following:
 //
-//	OnSuccessArgs{...}
+//	OnSuccessContinue
 type OnSuccessInput interface {
 	pulumi.Input
 
@@ -374,9 +540,182 @@ const (
 	StorageTaskOperationNameUndeleteBlob              = StorageTaskOperationName("UndeleteBlob")
 )
 
+func (StorageTaskOperationName) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageTaskOperationName)(nil)).Elem()
+}
+
+func (e StorageTaskOperationName) ToStorageTaskOperationNameOutput() StorageTaskOperationNameOutput {
+	return pulumi.ToOutput(e).(StorageTaskOperationNameOutput)
+}
+
+func (e StorageTaskOperationName) ToStorageTaskOperationNameOutputWithContext(ctx context.Context) StorageTaskOperationNameOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(StorageTaskOperationNameOutput)
+}
+
+func (e StorageTaskOperationName) ToStorageTaskOperationNamePtrOutput() StorageTaskOperationNamePtrOutput {
+	return e.ToStorageTaskOperationNamePtrOutputWithContext(context.Background())
+}
+
+func (e StorageTaskOperationName) ToStorageTaskOperationNamePtrOutputWithContext(ctx context.Context) StorageTaskOperationNamePtrOutput {
+	return StorageTaskOperationName(e).ToStorageTaskOperationNameOutputWithContext(ctx).ToStorageTaskOperationNamePtrOutputWithContext(ctx)
+}
+
+func (e StorageTaskOperationName) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StorageTaskOperationName) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StorageTaskOperationName) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e StorageTaskOperationName) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type StorageTaskOperationNameOutput struct{ *pulumi.OutputState }
+
+func (StorageTaskOperationNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageTaskOperationName)(nil)).Elem()
+}
+
+func (o StorageTaskOperationNameOutput) ToStorageTaskOperationNameOutput() StorageTaskOperationNameOutput {
+	return o
+}
+
+func (o StorageTaskOperationNameOutput) ToStorageTaskOperationNameOutputWithContext(ctx context.Context) StorageTaskOperationNameOutput {
+	return o
+}
+
+func (o StorageTaskOperationNameOutput) ToStorageTaskOperationNamePtrOutput() StorageTaskOperationNamePtrOutput {
+	return o.ToStorageTaskOperationNamePtrOutputWithContext(context.Background())
+}
+
+func (o StorageTaskOperationNameOutput) ToStorageTaskOperationNamePtrOutputWithContext(ctx context.Context) StorageTaskOperationNamePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageTaskOperationName) *StorageTaskOperationName {
+		return &v
+	}).(StorageTaskOperationNamePtrOutput)
+}
+
+func (o StorageTaskOperationNameOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o StorageTaskOperationNameOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StorageTaskOperationName) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o StorageTaskOperationNameOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StorageTaskOperationNameOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StorageTaskOperationName) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type StorageTaskOperationNamePtrOutput struct{ *pulumi.OutputState }
+
+func (StorageTaskOperationNamePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageTaskOperationName)(nil)).Elem()
+}
+
+func (o StorageTaskOperationNamePtrOutput) ToStorageTaskOperationNamePtrOutput() StorageTaskOperationNamePtrOutput {
+	return o
+}
+
+func (o StorageTaskOperationNamePtrOutput) ToStorageTaskOperationNamePtrOutputWithContext(ctx context.Context) StorageTaskOperationNamePtrOutput {
+	return o
+}
+
+func (o StorageTaskOperationNamePtrOutput) Elem() StorageTaskOperationNameOutput {
+	return o.ApplyT(func(v *StorageTaskOperationName) StorageTaskOperationName {
+		if v != nil {
+			return *v
+		}
+		var ret StorageTaskOperationName
+		return ret
+	}).(StorageTaskOperationNameOutput)
+}
+
+func (o StorageTaskOperationNamePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StorageTaskOperationNamePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StorageTaskOperationName) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// StorageTaskOperationNameInput is an input type that accepts values of the StorageTaskOperationName enum
+// A concrete instance of `StorageTaskOperationNameInput` can be one of the following:
+//
+//	StorageTaskOperationNameSetBlobTier
+//	StorageTaskOperationNameSetBlobTags
+//	StorageTaskOperationNameSetBlobImmutabilityPolicy
+//	StorageTaskOperationNameSetBlobLegalHold
+//	StorageTaskOperationNameSetBlobExpiry
+//	StorageTaskOperationNameDeleteBlob
+//	StorageTaskOperationNameUndeleteBlob
+type StorageTaskOperationNameInput interface {
+	pulumi.Input
+
+	ToStorageTaskOperationNameOutput() StorageTaskOperationNameOutput
+	ToStorageTaskOperationNameOutputWithContext(context.Context) StorageTaskOperationNameOutput
+}
+
+var storageTaskOperationNamePtrType = reflect.TypeOf((**StorageTaskOperationName)(nil)).Elem()
+
+type StorageTaskOperationNamePtrInput interface {
+	pulumi.Input
+
+	ToStorageTaskOperationNamePtrOutput() StorageTaskOperationNamePtrOutput
+	ToStorageTaskOperationNamePtrOutputWithContext(context.Context) StorageTaskOperationNamePtrOutput
+}
+
+type storageTaskOperationNamePtr string
+
+func StorageTaskOperationNamePtr(v string) StorageTaskOperationNamePtrInput {
+	return (*storageTaskOperationNamePtr)(&v)
+}
+
+func (*storageTaskOperationNamePtr) ElementType() reflect.Type {
+	return storageTaskOperationNamePtrType
+}
+
+func (in *storageTaskOperationNamePtr) ToStorageTaskOperationNamePtrOutput() StorageTaskOperationNamePtrOutput {
+	return pulumi.ToOutput(in).(StorageTaskOperationNamePtrOutput)
+}
+
+func (in *storageTaskOperationNamePtr) ToStorageTaskOperationNamePtrOutputWithContext(ctx context.Context) StorageTaskOperationNamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(StorageTaskOperationNamePtrOutput)
+}
+
+func (in *storageTaskOperationNamePtr) ToOutput(ctx context.Context) pulumix.Output[*StorageTaskOperationName] {
+	return pulumix.Output[*StorageTaskOperationName]{
+		OutputState: in.ToStorageTaskOperationNamePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 func init() {
+	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(OnFailureOutput{})
 	pulumi.RegisterOutputType(OnFailurePtrOutput{})
 	pulumi.RegisterOutputType(OnSuccessOutput{})
 	pulumi.RegisterOutputType(OnSuccessPtrOutput{})
+	pulumi.RegisterOutputType(StorageTaskOperationNameOutput{})
+	pulumi.RegisterOutputType(StorageTaskOperationNamePtrOutput{})
 }

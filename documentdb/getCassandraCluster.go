@@ -14,7 +14,7 @@ import (
 // Get the properties of a managed Cassandra cluster.
 // Azure REST API version: 2023-04-15.
 //
-// Other available API versions: 2021-07-01-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15.
+// Other available API versions: 2021-07-01-preview, 2023-09-15, 2023-09-15-preview, 2023-11-15, 2023-11-15-preview.
 func LookupCassandraCluster(ctx *pulumi.Context, args *LookupCassandraClusterArgs, opts ...pulumi.InvokeOption) (*LookupCassandraClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCassandraClusterResult

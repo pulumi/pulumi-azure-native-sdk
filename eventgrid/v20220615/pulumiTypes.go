@@ -45,6 +45,225 @@ func (val *AzureFunctionEventSubscriptionDestination) Defaults() *AzureFunctionE
 	return &tmp
 }
 
+// AzureFunctionEventSubscriptionDestinationInput is an input type that accepts AzureFunctionEventSubscriptionDestinationArgs and AzureFunctionEventSubscriptionDestinationOutput values.
+// You can construct a concrete instance of `AzureFunctionEventSubscriptionDestinationInput` via:
+//
+//	AzureFunctionEventSubscriptionDestinationArgs{...}
+type AzureFunctionEventSubscriptionDestinationInput interface {
+	pulumi.Input
+
+	ToAzureFunctionEventSubscriptionDestinationOutput() AzureFunctionEventSubscriptionDestinationOutput
+	ToAzureFunctionEventSubscriptionDestinationOutputWithContext(context.Context) AzureFunctionEventSubscriptionDestinationOutput
+}
+
+// Information about the azure function destination for an event subscription.
+type AzureFunctionEventSubscriptionDestinationArgs struct {
+	// Delivery attribute details.
+	DeliveryAttributeMappings pulumi.ArrayInput `pulumi:"deliveryAttributeMappings"`
+	// Type of the endpoint for the event subscription destination.
+	// Expected value is 'AzureFunction'.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// Maximum number of events per batch.
+	MaxEventsPerBatch pulumi.IntPtrInput `pulumi:"maxEventsPerBatch"`
+	// Preferred batch size in Kilobytes.
+	PreferredBatchSizeInKilobytes pulumi.IntPtrInput `pulumi:"preferredBatchSizeInKilobytes"`
+	// The Azure Resource Id that represents the endpoint of the Azure Function destination of an event subscription.
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+}
+
+// Defaults sets the appropriate defaults for AzureFunctionEventSubscriptionDestinationArgs
+func (val *AzureFunctionEventSubscriptionDestinationArgs) Defaults() *AzureFunctionEventSubscriptionDestinationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.MaxEventsPerBatch == nil {
+		tmp.MaxEventsPerBatch = pulumi.IntPtr(1)
+	}
+	if tmp.PreferredBatchSizeInKilobytes == nil {
+		tmp.PreferredBatchSizeInKilobytes = pulumi.IntPtr(64)
+	}
+	return &tmp
+}
+func (AzureFunctionEventSubscriptionDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureFunctionEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (i AzureFunctionEventSubscriptionDestinationArgs) ToAzureFunctionEventSubscriptionDestinationOutput() AzureFunctionEventSubscriptionDestinationOutput {
+	return i.ToAzureFunctionEventSubscriptionDestinationOutputWithContext(context.Background())
+}
+
+func (i AzureFunctionEventSubscriptionDestinationArgs) ToAzureFunctionEventSubscriptionDestinationOutputWithContext(ctx context.Context) AzureFunctionEventSubscriptionDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureFunctionEventSubscriptionDestinationOutput)
+}
+
+func (i AzureFunctionEventSubscriptionDestinationArgs) ToAzureFunctionEventSubscriptionDestinationPtrOutput() AzureFunctionEventSubscriptionDestinationPtrOutput {
+	return i.ToAzureFunctionEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i AzureFunctionEventSubscriptionDestinationArgs) ToAzureFunctionEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) AzureFunctionEventSubscriptionDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureFunctionEventSubscriptionDestinationOutput).ToAzureFunctionEventSubscriptionDestinationPtrOutputWithContext(ctx)
+}
+
+// AzureFunctionEventSubscriptionDestinationPtrInput is an input type that accepts AzureFunctionEventSubscriptionDestinationArgs, AzureFunctionEventSubscriptionDestinationPtr and AzureFunctionEventSubscriptionDestinationPtrOutput values.
+// You can construct a concrete instance of `AzureFunctionEventSubscriptionDestinationPtrInput` via:
+//
+//	        AzureFunctionEventSubscriptionDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureFunctionEventSubscriptionDestinationPtrInput interface {
+	pulumi.Input
+
+	ToAzureFunctionEventSubscriptionDestinationPtrOutput() AzureFunctionEventSubscriptionDestinationPtrOutput
+	ToAzureFunctionEventSubscriptionDestinationPtrOutputWithContext(context.Context) AzureFunctionEventSubscriptionDestinationPtrOutput
+}
+
+type azureFunctionEventSubscriptionDestinationPtrType AzureFunctionEventSubscriptionDestinationArgs
+
+func AzureFunctionEventSubscriptionDestinationPtr(v *AzureFunctionEventSubscriptionDestinationArgs) AzureFunctionEventSubscriptionDestinationPtrInput {
+	return (*azureFunctionEventSubscriptionDestinationPtrType)(v)
+}
+
+func (*azureFunctionEventSubscriptionDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureFunctionEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (i *azureFunctionEventSubscriptionDestinationPtrType) ToAzureFunctionEventSubscriptionDestinationPtrOutput() AzureFunctionEventSubscriptionDestinationPtrOutput {
+	return i.ToAzureFunctionEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *azureFunctionEventSubscriptionDestinationPtrType) ToAzureFunctionEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) AzureFunctionEventSubscriptionDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureFunctionEventSubscriptionDestinationPtrOutput)
+}
+
+// Information about the azure function destination for an event subscription.
+type AzureFunctionEventSubscriptionDestinationOutput struct{ *pulumi.OutputState }
+
+func (AzureFunctionEventSubscriptionDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureFunctionEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (o AzureFunctionEventSubscriptionDestinationOutput) ToAzureFunctionEventSubscriptionDestinationOutput() AzureFunctionEventSubscriptionDestinationOutput {
+	return o
+}
+
+func (o AzureFunctionEventSubscriptionDestinationOutput) ToAzureFunctionEventSubscriptionDestinationOutputWithContext(ctx context.Context) AzureFunctionEventSubscriptionDestinationOutput {
+	return o
+}
+
+func (o AzureFunctionEventSubscriptionDestinationOutput) ToAzureFunctionEventSubscriptionDestinationPtrOutput() AzureFunctionEventSubscriptionDestinationPtrOutput {
+	return o.ToAzureFunctionEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o AzureFunctionEventSubscriptionDestinationOutput) ToAzureFunctionEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) AzureFunctionEventSubscriptionDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureFunctionEventSubscriptionDestination) *AzureFunctionEventSubscriptionDestination {
+		return &v
+	}).(AzureFunctionEventSubscriptionDestinationPtrOutput)
+}
+
+// Delivery attribute details.
+func (o AzureFunctionEventSubscriptionDestinationOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v AzureFunctionEventSubscriptionDestination) []interface{} { return v.DeliveryAttributeMappings }).(pulumi.ArrayOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'AzureFunction'.
+func (o AzureFunctionEventSubscriptionDestinationOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureFunctionEventSubscriptionDestination) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// Maximum number of events per batch.
+func (o AzureFunctionEventSubscriptionDestinationOutput) MaxEventsPerBatch() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AzureFunctionEventSubscriptionDestination) *int { return v.MaxEventsPerBatch }).(pulumi.IntPtrOutput)
+}
+
+// Preferred batch size in Kilobytes.
+func (o AzureFunctionEventSubscriptionDestinationOutput) PreferredBatchSizeInKilobytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AzureFunctionEventSubscriptionDestination) *int { return v.PreferredBatchSizeInKilobytes }).(pulumi.IntPtrOutput)
+}
+
+// The Azure Resource Id that represents the endpoint of the Azure Function destination of an event subscription.
+func (o AzureFunctionEventSubscriptionDestinationOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureFunctionEventSubscriptionDestination) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type AzureFunctionEventSubscriptionDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureFunctionEventSubscriptionDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureFunctionEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (o AzureFunctionEventSubscriptionDestinationPtrOutput) ToAzureFunctionEventSubscriptionDestinationPtrOutput() AzureFunctionEventSubscriptionDestinationPtrOutput {
+	return o
+}
+
+func (o AzureFunctionEventSubscriptionDestinationPtrOutput) ToAzureFunctionEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) AzureFunctionEventSubscriptionDestinationPtrOutput {
+	return o
+}
+
+func (o AzureFunctionEventSubscriptionDestinationPtrOutput) Elem() AzureFunctionEventSubscriptionDestinationOutput {
+	return o.ApplyT(func(v *AzureFunctionEventSubscriptionDestination) AzureFunctionEventSubscriptionDestination {
+		if v != nil {
+			return *v
+		}
+		var ret AzureFunctionEventSubscriptionDestination
+		return ret
+	}).(AzureFunctionEventSubscriptionDestinationOutput)
+}
+
+// Delivery attribute details.
+func (o AzureFunctionEventSubscriptionDestinationPtrOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *AzureFunctionEventSubscriptionDestination) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.DeliveryAttributeMappings
+	}).(pulumi.ArrayOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'AzureFunction'.
+func (o AzureFunctionEventSubscriptionDestinationPtrOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureFunctionEventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of events per batch.
+func (o AzureFunctionEventSubscriptionDestinationPtrOutput) MaxEventsPerBatch() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AzureFunctionEventSubscriptionDestination) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxEventsPerBatch
+	}).(pulumi.IntPtrOutput)
+}
+
+// Preferred batch size in Kilobytes.
+func (o AzureFunctionEventSubscriptionDestinationPtrOutput) PreferredBatchSizeInKilobytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AzureFunctionEventSubscriptionDestination) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PreferredBatchSizeInKilobytes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The Azure Resource Id that represents the endpoint of the Azure Function destination of an event subscription.
+func (o AzureFunctionEventSubscriptionDestinationPtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureFunctionEventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Information about the azure function destination for an event subscription.
 type AzureFunctionEventSubscriptionDestinationResponse struct {
 	// Delivery attribute details.
@@ -77,6 +296,124 @@ func (val *AzureFunctionEventSubscriptionDestinationResponse) Defaults() *AzureF
 	return &tmp
 }
 
+// Information about the azure function destination for an event subscription.
+type AzureFunctionEventSubscriptionDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureFunctionEventSubscriptionDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureFunctionEventSubscriptionDestinationResponse)(nil)).Elem()
+}
+
+func (o AzureFunctionEventSubscriptionDestinationResponseOutput) ToAzureFunctionEventSubscriptionDestinationResponseOutput() AzureFunctionEventSubscriptionDestinationResponseOutput {
+	return o
+}
+
+func (o AzureFunctionEventSubscriptionDestinationResponseOutput) ToAzureFunctionEventSubscriptionDestinationResponseOutputWithContext(ctx context.Context) AzureFunctionEventSubscriptionDestinationResponseOutput {
+	return o
+}
+
+// Delivery attribute details.
+func (o AzureFunctionEventSubscriptionDestinationResponseOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v AzureFunctionEventSubscriptionDestinationResponse) []interface{} {
+		return v.DeliveryAttributeMappings
+	}).(pulumi.ArrayOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'AzureFunction'.
+func (o AzureFunctionEventSubscriptionDestinationResponseOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureFunctionEventSubscriptionDestinationResponse) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// Maximum number of events per batch.
+func (o AzureFunctionEventSubscriptionDestinationResponseOutput) MaxEventsPerBatch() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AzureFunctionEventSubscriptionDestinationResponse) *int { return v.MaxEventsPerBatch }).(pulumi.IntPtrOutput)
+}
+
+// Preferred batch size in Kilobytes.
+func (o AzureFunctionEventSubscriptionDestinationResponseOutput) PreferredBatchSizeInKilobytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AzureFunctionEventSubscriptionDestinationResponse) *int { return v.PreferredBatchSizeInKilobytes }).(pulumi.IntPtrOutput)
+}
+
+// The Azure Resource Id that represents the endpoint of the Azure Function destination of an event subscription.
+func (o AzureFunctionEventSubscriptionDestinationResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureFunctionEventSubscriptionDestinationResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type AzureFunctionEventSubscriptionDestinationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureFunctionEventSubscriptionDestinationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureFunctionEventSubscriptionDestinationResponse)(nil)).Elem()
+}
+
+func (o AzureFunctionEventSubscriptionDestinationResponsePtrOutput) ToAzureFunctionEventSubscriptionDestinationResponsePtrOutput() AzureFunctionEventSubscriptionDestinationResponsePtrOutput {
+	return o
+}
+
+func (o AzureFunctionEventSubscriptionDestinationResponsePtrOutput) ToAzureFunctionEventSubscriptionDestinationResponsePtrOutputWithContext(ctx context.Context) AzureFunctionEventSubscriptionDestinationResponsePtrOutput {
+	return o
+}
+
+func (o AzureFunctionEventSubscriptionDestinationResponsePtrOutput) Elem() AzureFunctionEventSubscriptionDestinationResponseOutput {
+	return o.ApplyT(func(v *AzureFunctionEventSubscriptionDestinationResponse) AzureFunctionEventSubscriptionDestinationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureFunctionEventSubscriptionDestinationResponse
+		return ret
+	}).(AzureFunctionEventSubscriptionDestinationResponseOutput)
+}
+
+// Delivery attribute details.
+func (o AzureFunctionEventSubscriptionDestinationResponsePtrOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *AzureFunctionEventSubscriptionDestinationResponse) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.DeliveryAttributeMappings
+	}).(pulumi.ArrayOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'AzureFunction'.
+func (o AzureFunctionEventSubscriptionDestinationResponsePtrOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureFunctionEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of events per batch.
+func (o AzureFunctionEventSubscriptionDestinationResponsePtrOutput) MaxEventsPerBatch() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AzureFunctionEventSubscriptionDestinationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxEventsPerBatch
+	}).(pulumi.IntPtrOutput)
+}
+
+// Preferred batch size in Kilobytes.
+func (o AzureFunctionEventSubscriptionDestinationResponsePtrOutput) PreferredBatchSizeInKilobytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AzureFunctionEventSubscriptionDestinationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PreferredBatchSizeInKilobytes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The Azure Resource Id that represents the endpoint of the Azure Function destination of an event subscription.
+func (o AzureFunctionEventSubscriptionDestinationResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureFunctionEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
 // BoolEquals Advanced Filter.
 type BoolEqualsAdvancedFilter struct {
 	// The field/property in the event based on which you want to filter.
@@ -88,6 +425,71 @@ type BoolEqualsAdvancedFilter struct {
 	Value *bool `pulumi:"value"`
 }
 
+// BoolEqualsAdvancedFilterInput is an input type that accepts BoolEqualsAdvancedFilterArgs and BoolEqualsAdvancedFilterOutput values.
+// You can construct a concrete instance of `BoolEqualsAdvancedFilterInput` via:
+//
+//	BoolEqualsAdvancedFilterArgs{...}
+type BoolEqualsAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToBoolEqualsAdvancedFilterOutput() BoolEqualsAdvancedFilterOutput
+	ToBoolEqualsAdvancedFilterOutputWithContext(context.Context) BoolEqualsAdvancedFilterOutput
+}
+
+// BoolEquals Advanced Filter.
+type BoolEqualsAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'BoolEquals'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The boolean filter value.
+	Value pulumi.BoolPtrInput `pulumi:"value"`
+}
+
+func (BoolEqualsAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BoolEqualsAdvancedFilter)(nil)).Elem()
+}
+
+func (i BoolEqualsAdvancedFilterArgs) ToBoolEqualsAdvancedFilterOutput() BoolEqualsAdvancedFilterOutput {
+	return i.ToBoolEqualsAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i BoolEqualsAdvancedFilterArgs) ToBoolEqualsAdvancedFilterOutputWithContext(ctx context.Context) BoolEqualsAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BoolEqualsAdvancedFilterOutput)
+}
+
+// BoolEquals Advanced Filter.
+type BoolEqualsAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (BoolEqualsAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BoolEqualsAdvancedFilter)(nil)).Elem()
+}
+
+func (o BoolEqualsAdvancedFilterOutput) ToBoolEqualsAdvancedFilterOutput() BoolEqualsAdvancedFilterOutput {
+	return o
+}
+
+func (o BoolEqualsAdvancedFilterOutput) ToBoolEqualsAdvancedFilterOutputWithContext(ctx context.Context) BoolEqualsAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o BoolEqualsAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BoolEqualsAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'BoolEquals'.
+func (o BoolEqualsAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v BoolEqualsAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The boolean filter value.
+func (o BoolEqualsAdvancedFilterOutput) Value() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BoolEqualsAdvancedFilter) *bool { return v.Value }).(pulumi.BoolPtrOutput)
+}
+
 // BoolEquals Advanced Filter.
 type BoolEqualsAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -97,6 +499,37 @@ type BoolEqualsAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The boolean filter value.
 	Value *bool `pulumi:"value"`
+}
+
+// BoolEquals Advanced Filter.
+type BoolEqualsAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (BoolEqualsAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BoolEqualsAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o BoolEqualsAdvancedFilterResponseOutput) ToBoolEqualsAdvancedFilterResponseOutput() BoolEqualsAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o BoolEqualsAdvancedFilterResponseOutput) ToBoolEqualsAdvancedFilterResponseOutputWithContext(ctx context.Context) BoolEqualsAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o BoolEqualsAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BoolEqualsAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'BoolEquals'.
+func (o BoolEqualsAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v BoolEqualsAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The boolean filter value.
+func (o BoolEqualsAdvancedFilterResponseOutput) Value() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BoolEqualsAdvancedFilterResponse) *bool { return v.Value }).(pulumi.BoolPtrOutput)
 }
 
 // ConnectionState information.
@@ -872,6 +1305,71 @@ type DynamicDeliveryAttributeMapping struct {
 	Type string `pulumi:"type"`
 }
 
+// DynamicDeliveryAttributeMappingInput is an input type that accepts DynamicDeliveryAttributeMappingArgs and DynamicDeliveryAttributeMappingOutput values.
+// You can construct a concrete instance of `DynamicDeliveryAttributeMappingInput` via:
+//
+//	DynamicDeliveryAttributeMappingArgs{...}
+type DynamicDeliveryAttributeMappingInput interface {
+	pulumi.Input
+
+	ToDynamicDeliveryAttributeMappingOutput() DynamicDeliveryAttributeMappingOutput
+	ToDynamicDeliveryAttributeMappingOutputWithContext(context.Context) DynamicDeliveryAttributeMappingOutput
+}
+
+// Dynamic delivery attribute mapping details.
+type DynamicDeliveryAttributeMappingArgs struct {
+	// Name of the delivery attribute or header.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// JSON path in the event which contains attribute value.
+	SourceField pulumi.StringPtrInput `pulumi:"sourceField"`
+	// Type of the delivery attribute or header name.
+	// Expected value is 'Dynamic'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (DynamicDeliveryAttributeMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicDeliveryAttributeMapping)(nil)).Elem()
+}
+
+func (i DynamicDeliveryAttributeMappingArgs) ToDynamicDeliveryAttributeMappingOutput() DynamicDeliveryAttributeMappingOutput {
+	return i.ToDynamicDeliveryAttributeMappingOutputWithContext(context.Background())
+}
+
+func (i DynamicDeliveryAttributeMappingArgs) ToDynamicDeliveryAttributeMappingOutputWithContext(ctx context.Context) DynamicDeliveryAttributeMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DynamicDeliveryAttributeMappingOutput)
+}
+
+// Dynamic delivery attribute mapping details.
+type DynamicDeliveryAttributeMappingOutput struct{ *pulumi.OutputState }
+
+func (DynamicDeliveryAttributeMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicDeliveryAttributeMapping)(nil)).Elem()
+}
+
+func (o DynamicDeliveryAttributeMappingOutput) ToDynamicDeliveryAttributeMappingOutput() DynamicDeliveryAttributeMappingOutput {
+	return o
+}
+
+func (o DynamicDeliveryAttributeMappingOutput) ToDynamicDeliveryAttributeMappingOutputWithContext(ctx context.Context) DynamicDeliveryAttributeMappingOutput {
+	return o
+}
+
+// Name of the delivery attribute or header.
+func (o DynamicDeliveryAttributeMappingOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DynamicDeliveryAttributeMapping) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// JSON path in the event which contains attribute value.
+func (o DynamicDeliveryAttributeMappingOutput) SourceField() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DynamicDeliveryAttributeMapping) *string { return v.SourceField }).(pulumi.StringPtrOutput)
+}
+
+// Type of the delivery attribute or header name.
+// Expected value is 'Dynamic'.
+func (o DynamicDeliveryAttributeMappingOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicDeliveryAttributeMapping) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Dynamic delivery attribute mapping details.
 type DynamicDeliveryAttributeMappingResponse struct {
 	// Name of the delivery attribute or header.
@@ -881,6 +1379,37 @@ type DynamicDeliveryAttributeMappingResponse struct {
 	// Type of the delivery attribute or header name.
 	// Expected value is 'Dynamic'.
 	Type string `pulumi:"type"`
+}
+
+// Dynamic delivery attribute mapping details.
+type DynamicDeliveryAttributeMappingResponseOutput struct{ *pulumi.OutputState }
+
+func (DynamicDeliveryAttributeMappingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicDeliveryAttributeMappingResponse)(nil)).Elem()
+}
+
+func (o DynamicDeliveryAttributeMappingResponseOutput) ToDynamicDeliveryAttributeMappingResponseOutput() DynamicDeliveryAttributeMappingResponseOutput {
+	return o
+}
+
+func (o DynamicDeliveryAttributeMappingResponseOutput) ToDynamicDeliveryAttributeMappingResponseOutputWithContext(ctx context.Context) DynamicDeliveryAttributeMappingResponseOutput {
+	return o
+}
+
+// Name of the delivery attribute or header.
+func (o DynamicDeliveryAttributeMappingResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DynamicDeliveryAttributeMappingResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// JSON path in the event which contains attribute value.
+func (o DynamicDeliveryAttributeMappingResponseOutput) SourceField() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DynamicDeliveryAttributeMappingResponse) *string { return v.SourceField }).(pulumi.StringPtrOutput)
+}
+
+// Type of the delivery attribute or header name.
+// Expected value is 'Dynamic'.
+func (o DynamicDeliveryAttributeMappingResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DynamicDeliveryAttributeMappingResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Information about the event hub destination for an event subscription.
@@ -894,6 +1423,177 @@ type EventHubEventSubscriptionDestination struct {
 	ResourceId *string `pulumi:"resourceId"`
 }
 
+// EventHubEventSubscriptionDestinationInput is an input type that accepts EventHubEventSubscriptionDestinationArgs and EventHubEventSubscriptionDestinationOutput values.
+// You can construct a concrete instance of `EventHubEventSubscriptionDestinationInput` via:
+//
+//	EventHubEventSubscriptionDestinationArgs{...}
+type EventHubEventSubscriptionDestinationInput interface {
+	pulumi.Input
+
+	ToEventHubEventSubscriptionDestinationOutput() EventHubEventSubscriptionDestinationOutput
+	ToEventHubEventSubscriptionDestinationOutputWithContext(context.Context) EventHubEventSubscriptionDestinationOutput
+}
+
+// Information about the event hub destination for an event subscription.
+type EventHubEventSubscriptionDestinationArgs struct {
+	// Delivery attribute details.
+	DeliveryAttributeMappings pulumi.ArrayInput `pulumi:"deliveryAttributeMappings"`
+	// Type of the endpoint for the event subscription destination.
+	// Expected value is 'EventHub'.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// The Azure Resource Id that represents the endpoint of an Event Hub destination of an event subscription.
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+}
+
+func (EventHubEventSubscriptionDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventHubEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (i EventHubEventSubscriptionDestinationArgs) ToEventHubEventSubscriptionDestinationOutput() EventHubEventSubscriptionDestinationOutput {
+	return i.ToEventHubEventSubscriptionDestinationOutputWithContext(context.Background())
+}
+
+func (i EventHubEventSubscriptionDestinationArgs) ToEventHubEventSubscriptionDestinationOutputWithContext(ctx context.Context) EventHubEventSubscriptionDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubEventSubscriptionDestinationOutput)
+}
+
+func (i EventHubEventSubscriptionDestinationArgs) ToEventHubEventSubscriptionDestinationPtrOutput() EventHubEventSubscriptionDestinationPtrOutput {
+	return i.ToEventHubEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i EventHubEventSubscriptionDestinationArgs) ToEventHubEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) EventHubEventSubscriptionDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubEventSubscriptionDestinationOutput).ToEventHubEventSubscriptionDestinationPtrOutputWithContext(ctx)
+}
+
+// EventHubEventSubscriptionDestinationPtrInput is an input type that accepts EventHubEventSubscriptionDestinationArgs, EventHubEventSubscriptionDestinationPtr and EventHubEventSubscriptionDestinationPtrOutput values.
+// You can construct a concrete instance of `EventHubEventSubscriptionDestinationPtrInput` via:
+//
+//	        EventHubEventSubscriptionDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventHubEventSubscriptionDestinationPtrInput interface {
+	pulumi.Input
+
+	ToEventHubEventSubscriptionDestinationPtrOutput() EventHubEventSubscriptionDestinationPtrOutput
+	ToEventHubEventSubscriptionDestinationPtrOutputWithContext(context.Context) EventHubEventSubscriptionDestinationPtrOutput
+}
+
+type eventHubEventSubscriptionDestinationPtrType EventHubEventSubscriptionDestinationArgs
+
+func EventHubEventSubscriptionDestinationPtr(v *EventHubEventSubscriptionDestinationArgs) EventHubEventSubscriptionDestinationPtrInput {
+	return (*eventHubEventSubscriptionDestinationPtrType)(v)
+}
+
+func (*eventHubEventSubscriptionDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventHubEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (i *eventHubEventSubscriptionDestinationPtrType) ToEventHubEventSubscriptionDestinationPtrOutput() EventHubEventSubscriptionDestinationPtrOutput {
+	return i.ToEventHubEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *eventHubEventSubscriptionDestinationPtrType) ToEventHubEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) EventHubEventSubscriptionDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventHubEventSubscriptionDestinationPtrOutput)
+}
+
+// Information about the event hub destination for an event subscription.
+type EventHubEventSubscriptionDestinationOutput struct{ *pulumi.OutputState }
+
+func (EventHubEventSubscriptionDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventHubEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (o EventHubEventSubscriptionDestinationOutput) ToEventHubEventSubscriptionDestinationOutput() EventHubEventSubscriptionDestinationOutput {
+	return o
+}
+
+func (o EventHubEventSubscriptionDestinationOutput) ToEventHubEventSubscriptionDestinationOutputWithContext(ctx context.Context) EventHubEventSubscriptionDestinationOutput {
+	return o
+}
+
+func (o EventHubEventSubscriptionDestinationOutput) ToEventHubEventSubscriptionDestinationPtrOutput() EventHubEventSubscriptionDestinationPtrOutput {
+	return o.ToEventHubEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o EventHubEventSubscriptionDestinationOutput) ToEventHubEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) EventHubEventSubscriptionDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventHubEventSubscriptionDestination) *EventHubEventSubscriptionDestination {
+		return &v
+	}).(EventHubEventSubscriptionDestinationPtrOutput)
+}
+
+// Delivery attribute details.
+func (o EventHubEventSubscriptionDestinationOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v EventHubEventSubscriptionDestination) []interface{} { return v.DeliveryAttributeMappings }).(pulumi.ArrayOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'EventHub'.
+func (o EventHubEventSubscriptionDestinationOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v EventHubEventSubscriptionDestination) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The Azure Resource Id that represents the endpoint of an Event Hub destination of an event subscription.
+func (o EventHubEventSubscriptionDestinationOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventHubEventSubscriptionDestination) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type EventHubEventSubscriptionDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (EventHubEventSubscriptionDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventHubEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (o EventHubEventSubscriptionDestinationPtrOutput) ToEventHubEventSubscriptionDestinationPtrOutput() EventHubEventSubscriptionDestinationPtrOutput {
+	return o
+}
+
+func (o EventHubEventSubscriptionDestinationPtrOutput) ToEventHubEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) EventHubEventSubscriptionDestinationPtrOutput {
+	return o
+}
+
+func (o EventHubEventSubscriptionDestinationPtrOutput) Elem() EventHubEventSubscriptionDestinationOutput {
+	return o.ApplyT(func(v *EventHubEventSubscriptionDestination) EventHubEventSubscriptionDestination {
+		if v != nil {
+			return *v
+		}
+		var ret EventHubEventSubscriptionDestination
+		return ret
+	}).(EventHubEventSubscriptionDestinationOutput)
+}
+
+// Delivery attribute details.
+func (o EventHubEventSubscriptionDestinationPtrOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *EventHubEventSubscriptionDestination) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.DeliveryAttributeMappings
+	}).(pulumi.ArrayOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'EventHub'.
+func (o EventHubEventSubscriptionDestinationPtrOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventHubEventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure Resource Id that represents the endpoint of an Event Hub destination of an event subscription.
+func (o EventHubEventSubscriptionDestinationPtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventHubEventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Information about the event hub destination for an event subscription.
 type EventHubEventSubscriptionDestinationResponse struct {
 	// Delivery attribute details.
@@ -903,6 +1603,92 @@ type EventHubEventSubscriptionDestinationResponse struct {
 	EndpointType string `pulumi:"endpointType"`
 	// The Azure Resource Id that represents the endpoint of an Event Hub destination of an event subscription.
 	ResourceId *string `pulumi:"resourceId"`
+}
+
+// Information about the event hub destination for an event subscription.
+type EventHubEventSubscriptionDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (EventHubEventSubscriptionDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventHubEventSubscriptionDestinationResponse)(nil)).Elem()
+}
+
+func (o EventHubEventSubscriptionDestinationResponseOutput) ToEventHubEventSubscriptionDestinationResponseOutput() EventHubEventSubscriptionDestinationResponseOutput {
+	return o
+}
+
+func (o EventHubEventSubscriptionDestinationResponseOutput) ToEventHubEventSubscriptionDestinationResponseOutputWithContext(ctx context.Context) EventHubEventSubscriptionDestinationResponseOutput {
+	return o
+}
+
+// Delivery attribute details.
+func (o EventHubEventSubscriptionDestinationResponseOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v EventHubEventSubscriptionDestinationResponse) []interface{} { return v.DeliveryAttributeMappings }).(pulumi.ArrayOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'EventHub'.
+func (o EventHubEventSubscriptionDestinationResponseOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v EventHubEventSubscriptionDestinationResponse) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The Azure Resource Id that represents the endpoint of an Event Hub destination of an event subscription.
+func (o EventHubEventSubscriptionDestinationResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventHubEventSubscriptionDestinationResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type EventHubEventSubscriptionDestinationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EventHubEventSubscriptionDestinationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventHubEventSubscriptionDestinationResponse)(nil)).Elem()
+}
+
+func (o EventHubEventSubscriptionDestinationResponsePtrOutput) ToEventHubEventSubscriptionDestinationResponsePtrOutput() EventHubEventSubscriptionDestinationResponsePtrOutput {
+	return o
+}
+
+func (o EventHubEventSubscriptionDestinationResponsePtrOutput) ToEventHubEventSubscriptionDestinationResponsePtrOutputWithContext(ctx context.Context) EventHubEventSubscriptionDestinationResponsePtrOutput {
+	return o
+}
+
+func (o EventHubEventSubscriptionDestinationResponsePtrOutput) Elem() EventHubEventSubscriptionDestinationResponseOutput {
+	return o.ApplyT(func(v *EventHubEventSubscriptionDestinationResponse) EventHubEventSubscriptionDestinationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EventHubEventSubscriptionDestinationResponse
+		return ret
+	}).(EventHubEventSubscriptionDestinationResponseOutput)
+}
+
+// Delivery attribute details.
+func (o EventHubEventSubscriptionDestinationResponsePtrOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *EventHubEventSubscriptionDestinationResponse) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.DeliveryAttributeMappings
+	}).(pulumi.ArrayOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'EventHub'.
+func (o EventHubEventSubscriptionDestinationResponsePtrOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventHubEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure Resource Id that represents the endpoint of an Event Hub destination of an event subscription.
+func (o EventHubEventSubscriptionDestinationResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventHubEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Filter for the Event Subscription.
@@ -1847,6 +2633,177 @@ type HybridConnectionEventSubscriptionDestination struct {
 	ResourceId *string `pulumi:"resourceId"`
 }
 
+// HybridConnectionEventSubscriptionDestinationInput is an input type that accepts HybridConnectionEventSubscriptionDestinationArgs and HybridConnectionEventSubscriptionDestinationOutput values.
+// You can construct a concrete instance of `HybridConnectionEventSubscriptionDestinationInput` via:
+//
+//	HybridConnectionEventSubscriptionDestinationArgs{...}
+type HybridConnectionEventSubscriptionDestinationInput interface {
+	pulumi.Input
+
+	ToHybridConnectionEventSubscriptionDestinationOutput() HybridConnectionEventSubscriptionDestinationOutput
+	ToHybridConnectionEventSubscriptionDestinationOutputWithContext(context.Context) HybridConnectionEventSubscriptionDestinationOutput
+}
+
+// Information about the HybridConnection destination for an event subscription.
+type HybridConnectionEventSubscriptionDestinationArgs struct {
+	// Delivery attribute details.
+	DeliveryAttributeMappings pulumi.ArrayInput `pulumi:"deliveryAttributeMappings"`
+	// Type of the endpoint for the event subscription destination.
+	// Expected value is 'HybridConnection'.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// The Azure Resource ID of an hybrid connection that is the destination of an event subscription.
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+}
+
+func (HybridConnectionEventSubscriptionDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HybridConnectionEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (i HybridConnectionEventSubscriptionDestinationArgs) ToHybridConnectionEventSubscriptionDestinationOutput() HybridConnectionEventSubscriptionDestinationOutput {
+	return i.ToHybridConnectionEventSubscriptionDestinationOutputWithContext(context.Background())
+}
+
+func (i HybridConnectionEventSubscriptionDestinationArgs) ToHybridConnectionEventSubscriptionDestinationOutputWithContext(ctx context.Context) HybridConnectionEventSubscriptionDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HybridConnectionEventSubscriptionDestinationOutput)
+}
+
+func (i HybridConnectionEventSubscriptionDestinationArgs) ToHybridConnectionEventSubscriptionDestinationPtrOutput() HybridConnectionEventSubscriptionDestinationPtrOutput {
+	return i.ToHybridConnectionEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i HybridConnectionEventSubscriptionDestinationArgs) ToHybridConnectionEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) HybridConnectionEventSubscriptionDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HybridConnectionEventSubscriptionDestinationOutput).ToHybridConnectionEventSubscriptionDestinationPtrOutputWithContext(ctx)
+}
+
+// HybridConnectionEventSubscriptionDestinationPtrInput is an input type that accepts HybridConnectionEventSubscriptionDestinationArgs, HybridConnectionEventSubscriptionDestinationPtr and HybridConnectionEventSubscriptionDestinationPtrOutput values.
+// You can construct a concrete instance of `HybridConnectionEventSubscriptionDestinationPtrInput` via:
+//
+//	        HybridConnectionEventSubscriptionDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type HybridConnectionEventSubscriptionDestinationPtrInput interface {
+	pulumi.Input
+
+	ToHybridConnectionEventSubscriptionDestinationPtrOutput() HybridConnectionEventSubscriptionDestinationPtrOutput
+	ToHybridConnectionEventSubscriptionDestinationPtrOutputWithContext(context.Context) HybridConnectionEventSubscriptionDestinationPtrOutput
+}
+
+type hybridConnectionEventSubscriptionDestinationPtrType HybridConnectionEventSubscriptionDestinationArgs
+
+func HybridConnectionEventSubscriptionDestinationPtr(v *HybridConnectionEventSubscriptionDestinationArgs) HybridConnectionEventSubscriptionDestinationPtrInput {
+	return (*hybridConnectionEventSubscriptionDestinationPtrType)(v)
+}
+
+func (*hybridConnectionEventSubscriptionDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HybridConnectionEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (i *hybridConnectionEventSubscriptionDestinationPtrType) ToHybridConnectionEventSubscriptionDestinationPtrOutput() HybridConnectionEventSubscriptionDestinationPtrOutput {
+	return i.ToHybridConnectionEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *hybridConnectionEventSubscriptionDestinationPtrType) ToHybridConnectionEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) HybridConnectionEventSubscriptionDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HybridConnectionEventSubscriptionDestinationPtrOutput)
+}
+
+// Information about the HybridConnection destination for an event subscription.
+type HybridConnectionEventSubscriptionDestinationOutput struct{ *pulumi.OutputState }
+
+func (HybridConnectionEventSubscriptionDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HybridConnectionEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (o HybridConnectionEventSubscriptionDestinationOutput) ToHybridConnectionEventSubscriptionDestinationOutput() HybridConnectionEventSubscriptionDestinationOutput {
+	return o
+}
+
+func (o HybridConnectionEventSubscriptionDestinationOutput) ToHybridConnectionEventSubscriptionDestinationOutputWithContext(ctx context.Context) HybridConnectionEventSubscriptionDestinationOutput {
+	return o
+}
+
+func (o HybridConnectionEventSubscriptionDestinationOutput) ToHybridConnectionEventSubscriptionDestinationPtrOutput() HybridConnectionEventSubscriptionDestinationPtrOutput {
+	return o.ToHybridConnectionEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o HybridConnectionEventSubscriptionDestinationOutput) ToHybridConnectionEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) HybridConnectionEventSubscriptionDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HybridConnectionEventSubscriptionDestination) *HybridConnectionEventSubscriptionDestination {
+		return &v
+	}).(HybridConnectionEventSubscriptionDestinationPtrOutput)
+}
+
+// Delivery attribute details.
+func (o HybridConnectionEventSubscriptionDestinationOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v HybridConnectionEventSubscriptionDestination) []interface{} { return v.DeliveryAttributeMappings }).(pulumi.ArrayOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'HybridConnection'.
+func (o HybridConnectionEventSubscriptionDestinationOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v HybridConnectionEventSubscriptionDestination) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The Azure Resource ID of an hybrid connection that is the destination of an event subscription.
+func (o HybridConnectionEventSubscriptionDestinationOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HybridConnectionEventSubscriptionDestination) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type HybridConnectionEventSubscriptionDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (HybridConnectionEventSubscriptionDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HybridConnectionEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (o HybridConnectionEventSubscriptionDestinationPtrOutput) ToHybridConnectionEventSubscriptionDestinationPtrOutput() HybridConnectionEventSubscriptionDestinationPtrOutput {
+	return o
+}
+
+func (o HybridConnectionEventSubscriptionDestinationPtrOutput) ToHybridConnectionEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) HybridConnectionEventSubscriptionDestinationPtrOutput {
+	return o
+}
+
+func (o HybridConnectionEventSubscriptionDestinationPtrOutput) Elem() HybridConnectionEventSubscriptionDestinationOutput {
+	return o.ApplyT(func(v *HybridConnectionEventSubscriptionDestination) HybridConnectionEventSubscriptionDestination {
+		if v != nil {
+			return *v
+		}
+		var ret HybridConnectionEventSubscriptionDestination
+		return ret
+	}).(HybridConnectionEventSubscriptionDestinationOutput)
+}
+
+// Delivery attribute details.
+func (o HybridConnectionEventSubscriptionDestinationPtrOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *HybridConnectionEventSubscriptionDestination) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.DeliveryAttributeMappings
+	}).(pulumi.ArrayOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'HybridConnection'.
+func (o HybridConnectionEventSubscriptionDestinationPtrOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HybridConnectionEventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure Resource ID of an hybrid connection that is the destination of an event subscription.
+func (o HybridConnectionEventSubscriptionDestinationPtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HybridConnectionEventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Information about the HybridConnection destination for an event subscription.
 type HybridConnectionEventSubscriptionDestinationResponse struct {
 	// Delivery attribute details.
@@ -1856,6 +2813,94 @@ type HybridConnectionEventSubscriptionDestinationResponse struct {
 	EndpointType string `pulumi:"endpointType"`
 	// The Azure Resource ID of an hybrid connection that is the destination of an event subscription.
 	ResourceId *string `pulumi:"resourceId"`
+}
+
+// Information about the HybridConnection destination for an event subscription.
+type HybridConnectionEventSubscriptionDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (HybridConnectionEventSubscriptionDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HybridConnectionEventSubscriptionDestinationResponse)(nil)).Elem()
+}
+
+func (o HybridConnectionEventSubscriptionDestinationResponseOutput) ToHybridConnectionEventSubscriptionDestinationResponseOutput() HybridConnectionEventSubscriptionDestinationResponseOutput {
+	return o
+}
+
+func (o HybridConnectionEventSubscriptionDestinationResponseOutput) ToHybridConnectionEventSubscriptionDestinationResponseOutputWithContext(ctx context.Context) HybridConnectionEventSubscriptionDestinationResponseOutput {
+	return o
+}
+
+// Delivery attribute details.
+func (o HybridConnectionEventSubscriptionDestinationResponseOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v HybridConnectionEventSubscriptionDestinationResponse) []interface{} {
+		return v.DeliveryAttributeMappings
+	}).(pulumi.ArrayOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'HybridConnection'.
+func (o HybridConnectionEventSubscriptionDestinationResponseOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v HybridConnectionEventSubscriptionDestinationResponse) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The Azure Resource ID of an hybrid connection that is the destination of an event subscription.
+func (o HybridConnectionEventSubscriptionDestinationResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HybridConnectionEventSubscriptionDestinationResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type HybridConnectionEventSubscriptionDestinationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HybridConnectionEventSubscriptionDestinationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HybridConnectionEventSubscriptionDestinationResponse)(nil)).Elem()
+}
+
+func (o HybridConnectionEventSubscriptionDestinationResponsePtrOutput) ToHybridConnectionEventSubscriptionDestinationResponsePtrOutput() HybridConnectionEventSubscriptionDestinationResponsePtrOutput {
+	return o
+}
+
+func (o HybridConnectionEventSubscriptionDestinationResponsePtrOutput) ToHybridConnectionEventSubscriptionDestinationResponsePtrOutputWithContext(ctx context.Context) HybridConnectionEventSubscriptionDestinationResponsePtrOutput {
+	return o
+}
+
+func (o HybridConnectionEventSubscriptionDestinationResponsePtrOutput) Elem() HybridConnectionEventSubscriptionDestinationResponseOutput {
+	return o.ApplyT(func(v *HybridConnectionEventSubscriptionDestinationResponse) HybridConnectionEventSubscriptionDestinationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret HybridConnectionEventSubscriptionDestinationResponse
+		return ret
+	}).(HybridConnectionEventSubscriptionDestinationResponseOutput)
+}
+
+// Delivery attribute details.
+func (o HybridConnectionEventSubscriptionDestinationResponsePtrOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *HybridConnectionEventSubscriptionDestinationResponse) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.DeliveryAttributeMappings
+	}).(pulumi.ArrayOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'HybridConnection'.
+func (o HybridConnectionEventSubscriptionDestinationResponsePtrOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HybridConnectionEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure Resource ID of an hybrid connection that is the destination of an event subscription.
+func (o HybridConnectionEventSubscriptionDestinationResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HybridConnectionEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
 }
 
 // The identity information for the resource.
@@ -2542,6 +3587,64 @@ type IsNotNullAdvancedFilter struct {
 	OperatorType string `pulumi:"operatorType"`
 }
 
+// IsNotNullAdvancedFilterInput is an input type that accepts IsNotNullAdvancedFilterArgs and IsNotNullAdvancedFilterOutput values.
+// You can construct a concrete instance of `IsNotNullAdvancedFilterInput` via:
+//
+//	IsNotNullAdvancedFilterArgs{...}
+type IsNotNullAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToIsNotNullAdvancedFilterOutput() IsNotNullAdvancedFilterOutput
+	ToIsNotNullAdvancedFilterOutputWithContext(context.Context) IsNotNullAdvancedFilterOutput
+}
+
+// IsNotNull Advanced Filter.
+type IsNotNullAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'IsNotNull'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+}
+
+func (IsNotNullAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IsNotNullAdvancedFilter)(nil)).Elem()
+}
+
+func (i IsNotNullAdvancedFilterArgs) ToIsNotNullAdvancedFilterOutput() IsNotNullAdvancedFilterOutput {
+	return i.ToIsNotNullAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i IsNotNullAdvancedFilterArgs) ToIsNotNullAdvancedFilterOutputWithContext(ctx context.Context) IsNotNullAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IsNotNullAdvancedFilterOutput)
+}
+
+// IsNotNull Advanced Filter.
+type IsNotNullAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (IsNotNullAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IsNotNullAdvancedFilter)(nil)).Elem()
+}
+
+func (o IsNotNullAdvancedFilterOutput) ToIsNotNullAdvancedFilterOutput() IsNotNullAdvancedFilterOutput {
+	return o
+}
+
+func (o IsNotNullAdvancedFilterOutput) ToIsNotNullAdvancedFilterOutputWithContext(ctx context.Context) IsNotNullAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o IsNotNullAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IsNotNullAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'IsNotNull'.
+func (o IsNotNullAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v IsNotNullAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
 // IsNotNull Advanced Filter.
 type IsNotNullAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -2549,6 +3652,32 @@ type IsNotNullAdvancedFilterResponse struct {
 	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
 	// Expected value is 'IsNotNull'.
 	OperatorType string `pulumi:"operatorType"`
+}
+
+// IsNotNull Advanced Filter.
+type IsNotNullAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (IsNotNullAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IsNotNullAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o IsNotNullAdvancedFilterResponseOutput) ToIsNotNullAdvancedFilterResponseOutput() IsNotNullAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o IsNotNullAdvancedFilterResponseOutput) ToIsNotNullAdvancedFilterResponseOutputWithContext(ctx context.Context) IsNotNullAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o IsNotNullAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IsNotNullAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'IsNotNull'.
+func (o IsNotNullAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v IsNotNullAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
 }
 
 // IsNullOrUndefined Advanced Filter.
@@ -2560,6 +3689,64 @@ type IsNullOrUndefinedAdvancedFilter struct {
 	OperatorType string `pulumi:"operatorType"`
 }
 
+// IsNullOrUndefinedAdvancedFilterInput is an input type that accepts IsNullOrUndefinedAdvancedFilterArgs and IsNullOrUndefinedAdvancedFilterOutput values.
+// You can construct a concrete instance of `IsNullOrUndefinedAdvancedFilterInput` via:
+//
+//	IsNullOrUndefinedAdvancedFilterArgs{...}
+type IsNullOrUndefinedAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToIsNullOrUndefinedAdvancedFilterOutput() IsNullOrUndefinedAdvancedFilterOutput
+	ToIsNullOrUndefinedAdvancedFilterOutputWithContext(context.Context) IsNullOrUndefinedAdvancedFilterOutput
+}
+
+// IsNullOrUndefined Advanced Filter.
+type IsNullOrUndefinedAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'IsNullOrUndefined'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+}
+
+func (IsNullOrUndefinedAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IsNullOrUndefinedAdvancedFilter)(nil)).Elem()
+}
+
+func (i IsNullOrUndefinedAdvancedFilterArgs) ToIsNullOrUndefinedAdvancedFilterOutput() IsNullOrUndefinedAdvancedFilterOutput {
+	return i.ToIsNullOrUndefinedAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i IsNullOrUndefinedAdvancedFilterArgs) ToIsNullOrUndefinedAdvancedFilterOutputWithContext(ctx context.Context) IsNullOrUndefinedAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IsNullOrUndefinedAdvancedFilterOutput)
+}
+
+// IsNullOrUndefined Advanced Filter.
+type IsNullOrUndefinedAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (IsNullOrUndefinedAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IsNullOrUndefinedAdvancedFilter)(nil)).Elem()
+}
+
+func (o IsNullOrUndefinedAdvancedFilterOutput) ToIsNullOrUndefinedAdvancedFilterOutput() IsNullOrUndefinedAdvancedFilterOutput {
+	return o
+}
+
+func (o IsNullOrUndefinedAdvancedFilterOutput) ToIsNullOrUndefinedAdvancedFilterOutputWithContext(ctx context.Context) IsNullOrUndefinedAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o IsNullOrUndefinedAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IsNullOrUndefinedAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'IsNullOrUndefined'.
+func (o IsNullOrUndefinedAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v IsNullOrUndefinedAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
 // IsNullOrUndefined Advanced Filter.
 type IsNullOrUndefinedAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -2567,6 +3754,32 @@ type IsNullOrUndefinedAdvancedFilterResponse struct {
 	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
 	// Expected value is 'IsNullOrUndefined'.
 	OperatorType string `pulumi:"operatorType"`
+}
+
+// IsNullOrUndefined Advanced Filter.
+type IsNullOrUndefinedAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (IsNullOrUndefinedAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IsNullOrUndefinedAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o IsNullOrUndefinedAdvancedFilterResponseOutput) ToIsNullOrUndefinedAdvancedFilterResponseOutput() IsNullOrUndefinedAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o IsNullOrUndefinedAdvancedFilterResponseOutput) ToIsNullOrUndefinedAdvancedFilterResponseOutputWithContext(ctx context.Context) IsNullOrUndefinedAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o IsNullOrUndefinedAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IsNullOrUndefinedAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'IsNullOrUndefined'.
+func (o IsNullOrUndefinedAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v IsNullOrUndefinedAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
 }
 
 // This is used to express the source of an input schema mapping for a single target field in the Event Grid Event schema. This is currently used in the mappings for the 'id', 'topic' and 'eventtime' properties. This represents a field in the input event schema.
@@ -3454,6 +4667,71 @@ type NumberGreaterThanAdvancedFilter struct {
 	Value *float64 `pulumi:"value"`
 }
 
+// NumberGreaterThanAdvancedFilterInput is an input type that accepts NumberGreaterThanAdvancedFilterArgs and NumberGreaterThanAdvancedFilterOutput values.
+// You can construct a concrete instance of `NumberGreaterThanAdvancedFilterInput` via:
+//
+//	NumberGreaterThanAdvancedFilterArgs{...}
+type NumberGreaterThanAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToNumberGreaterThanAdvancedFilterOutput() NumberGreaterThanAdvancedFilterOutput
+	ToNumberGreaterThanAdvancedFilterOutputWithContext(context.Context) NumberGreaterThanAdvancedFilterOutput
+}
+
+// NumberGreaterThan Advanced Filter.
+type NumberGreaterThanAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberGreaterThan'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The filter value.
+	Value pulumi.Float64PtrInput `pulumi:"value"`
+}
+
+func (NumberGreaterThanAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberGreaterThanAdvancedFilter)(nil)).Elem()
+}
+
+func (i NumberGreaterThanAdvancedFilterArgs) ToNumberGreaterThanAdvancedFilterOutput() NumberGreaterThanAdvancedFilterOutput {
+	return i.ToNumberGreaterThanAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i NumberGreaterThanAdvancedFilterArgs) ToNumberGreaterThanAdvancedFilterOutputWithContext(ctx context.Context) NumberGreaterThanAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NumberGreaterThanAdvancedFilterOutput)
+}
+
+// NumberGreaterThan Advanced Filter.
+type NumberGreaterThanAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (NumberGreaterThanAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberGreaterThanAdvancedFilter)(nil)).Elem()
+}
+
+func (o NumberGreaterThanAdvancedFilterOutput) ToNumberGreaterThanAdvancedFilterOutput() NumberGreaterThanAdvancedFilterOutput {
+	return o
+}
+
+func (o NumberGreaterThanAdvancedFilterOutput) ToNumberGreaterThanAdvancedFilterOutputWithContext(ctx context.Context) NumberGreaterThanAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberGreaterThanAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberGreaterThanAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberGreaterThan'.
+func (o NumberGreaterThanAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberGreaterThanAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The filter value.
+func (o NumberGreaterThanAdvancedFilterOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NumberGreaterThanAdvancedFilter) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
+}
+
 // NumberGreaterThan Advanced Filter.
 type NumberGreaterThanAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -3463,6 +4741,37 @@ type NumberGreaterThanAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The filter value.
 	Value *float64 `pulumi:"value"`
+}
+
+// NumberGreaterThan Advanced Filter.
+type NumberGreaterThanAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (NumberGreaterThanAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberGreaterThanAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o NumberGreaterThanAdvancedFilterResponseOutput) ToNumberGreaterThanAdvancedFilterResponseOutput() NumberGreaterThanAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o NumberGreaterThanAdvancedFilterResponseOutput) ToNumberGreaterThanAdvancedFilterResponseOutputWithContext(ctx context.Context) NumberGreaterThanAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberGreaterThanAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberGreaterThanAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberGreaterThan'.
+func (o NumberGreaterThanAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberGreaterThanAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The filter value.
+func (o NumberGreaterThanAdvancedFilterResponseOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NumberGreaterThanAdvancedFilterResponse) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
 }
 
 // NumberGreaterThanOrEquals Advanced Filter.
@@ -3476,6 +4785,71 @@ type NumberGreaterThanOrEqualsAdvancedFilter struct {
 	Value *float64 `pulumi:"value"`
 }
 
+// NumberGreaterThanOrEqualsAdvancedFilterInput is an input type that accepts NumberGreaterThanOrEqualsAdvancedFilterArgs and NumberGreaterThanOrEqualsAdvancedFilterOutput values.
+// You can construct a concrete instance of `NumberGreaterThanOrEqualsAdvancedFilterInput` via:
+//
+//	NumberGreaterThanOrEqualsAdvancedFilterArgs{...}
+type NumberGreaterThanOrEqualsAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToNumberGreaterThanOrEqualsAdvancedFilterOutput() NumberGreaterThanOrEqualsAdvancedFilterOutput
+	ToNumberGreaterThanOrEqualsAdvancedFilterOutputWithContext(context.Context) NumberGreaterThanOrEqualsAdvancedFilterOutput
+}
+
+// NumberGreaterThanOrEquals Advanced Filter.
+type NumberGreaterThanOrEqualsAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberGreaterThanOrEquals'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The filter value.
+	Value pulumi.Float64PtrInput `pulumi:"value"`
+}
+
+func (NumberGreaterThanOrEqualsAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberGreaterThanOrEqualsAdvancedFilter)(nil)).Elem()
+}
+
+func (i NumberGreaterThanOrEqualsAdvancedFilterArgs) ToNumberGreaterThanOrEqualsAdvancedFilterOutput() NumberGreaterThanOrEqualsAdvancedFilterOutput {
+	return i.ToNumberGreaterThanOrEqualsAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i NumberGreaterThanOrEqualsAdvancedFilterArgs) ToNumberGreaterThanOrEqualsAdvancedFilterOutputWithContext(ctx context.Context) NumberGreaterThanOrEqualsAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NumberGreaterThanOrEqualsAdvancedFilterOutput)
+}
+
+// NumberGreaterThanOrEquals Advanced Filter.
+type NumberGreaterThanOrEqualsAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (NumberGreaterThanOrEqualsAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberGreaterThanOrEqualsAdvancedFilter)(nil)).Elem()
+}
+
+func (o NumberGreaterThanOrEqualsAdvancedFilterOutput) ToNumberGreaterThanOrEqualsAdvancedFilterOutput() NumberGreaterThanOrEqualsAdvancedFilterOutput {
+	return o
+}
+
+func (o NumberGreaterThanOrEqualsAdvancedFilterOutput) ToNumberGreaterThanOrEqualsAdvancedFilterOutputWithContext(ctx context.Context) NumberGreaterThanOrEqualsAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberGreaterThanOrEqualsAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberGreaterThanOrEqualsAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberGreaterThanOrEquals'.
+func (o NumberGreaterThanOrEqualsAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberGreaterThanOrEqualsAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The filter value.
+func (o NumberGreaterThanOrEqualsAdvancedFilterOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NumberGreaterThanOrEqualsAdvancedFilter) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
+}
+
 // NumberGreaterThanOrEquals Advanced Filter.
 type NumberGreaterThanOrEqualsAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -3485,6 +4859,37 @@ type NumberGreaterThanOrEqualsAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The filter value.
 	Value *float64 `pulumi:"value"`
+}
+
+// NumberGreaterThanOrEquals Advanced Filter.
+type NumberGreaterThanOrEqualsAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (NumberGreaterThanOrEqualsAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberGreaterThanOrEqualsAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o NumberGreaterThanOrEqualsAdvancedFilterResponseOutput) ToNumberGreaterThanOrEqualsAdvancedFilterResponseOutput() NumberGreaterThanOrEqualsAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o NumberGreaterThanOrEqualsAdvancedFilterResponseOutput) ToNumberGreaterThanOrEqualsAdvancedFilterResponseOutputWithContext(ctx context.Context) NumberGreaterThanOrEqualsAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberGreaterThanOrEqualsAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberGreaterThanOrEqualsAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberGreaterThanOrEquals'.
+func (o NumberGreaterThanOrEqualsAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberGreaterThanOrEqualsAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The filter value.
+func (o NumberGreaterThanOrEqualsAdvancedFilterResponseOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NumberGreaterThanOrEqualsAdvancedFilterResponse) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
 }
 
 // NumberIn Advanced Filter.
@@ -3498,6 +4903,71 @@ type NumberInAdvancedFilter struct {
 	Values []float64 `pulumi:"values"`
 }
 
+// NumberInAdvancedFilterInput is an input type that accepts NumberInAdvancedFilterArgs and NumberInAdvancedFilterOutput values.
+// You can construct a concrete instance of `NumberInAdvancedFilterInput` via:
+//
+//	NumberInAdvancedFilterArgs{...}
+type NumberInAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToNumberInAdvancedFilterOutput() NumberInAdvancedFilterOutput
+	ToNumberInAdvancedFilterOutputWithContext(context.Context) NumberInAdvancedFilterOutput
+}
+
+// NumberIn Advanced Filter.
+type NumberInAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberIn'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.Float64ArrayInput `pulumi:"values"`
+}
+
+func (NumberInAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberInAdvancedFilter)(nil)).Elem()
+}
+
+func (i NumberInAdvancedFilterArgs) ToNumberInAdvancedFilterOutput() NumberInAdvancedFilterOutput {
+	return i.ToNumberInAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i NumberInAdvancedFilterArgs) ToNumberInAdvancedFilterOutputWithContext(ctx context.Context) NumberInAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NumberInAdvancedFilterOutput)
+}
+
+// NumberIn Advanced Filter.
+type NumberInAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (NumberInAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberInAdvancedFilter)(nil)).Elem()
+}
+
+func (o NumberInAdvancedFilterOutput) ToNumberInAdvancedFilterOutput() NumberInAdvancedFilterOutput {
+	return o
+}
+
+func (o NumberInAdvancedFilterOutput) ToNumberInAdvancedFilterOutputWithContext(ctx context.Context) NumberInAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberInAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberInAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberIn'.
+func (o NumberInAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberInAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o NumberInAdvancedFilterOutput) Values() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v NumberInAdvancedFilter) []float64 { return v.Values }).(pulumi.Float64ArrayOutput)
+}
+
 // NumberIn Advanced Filter.
 type NumberInAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -3507,6 +4977,37 @@ type NumberInAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values []float64 `pulumi:"values"`
+}
+
+// NumberIn Advanced Filter.
+type NumberInAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (NumberInAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberInAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o NumberInAdvancedFilterResponseOutput) ToNumberInAdvancedFilterResponseOutput() NumberInAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o NumberInAdvancedFilterResponseOutput) ToNumberInAdvancedFilterResponseOutputWithContext(ctx context.Context) NumberInAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberInAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberInAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberIn'.
+func (o NumberInAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberInAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o NumberInAdvancedFilterResponseOutput) Values() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v NumberInAdvancedFilterResponse) []float64 { return v.Values }).(pulumi.Float64ArrayOutput)
 }
 
 // NumberInRange Advanced Filter.
@@ -3520,6 +5021,71 @@ type NumberInRangeAdvancedFilter struct {
 	Values [][]float64 `pulumi:"values"`
 }
 
+// NumberInRangeAdvancedFilterInput is an input type that accepts NumberInRangeAdvancedFilterArgs and NumberInRangeAdvancedFilterOutput values.
+// You can construct a concrete instance of `NumberInRangeAdvancedFilterInput` via:
+//
+//	NumberInRangeAdvancedFilterArgs{...}
+type NumberInRangeAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToNumberInRangeAdvancedFilterOutput() NumberInRangeAdvancedFilterOutput
+	ToNumberInRangeAdvancedFilterOutputWithContext(context.Context) NumberInRangeAdvancedFilterOutput
+}
+
+// NumberInRange Advanced Filter.
+type NumberInRangeAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberInRange'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.Float64ArrayArrayInput `pulumi:"values"`
+}
+
+func (NumberInRangeAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberInRangeAdvancedFilter)(nil)).Elem()
+}
+
+func (i NumberInRangeAdvancedFilterArgs) ToNumberInRangeAdvancedFilterOutput() NumberInRangeAdvancedFilterOutput {
+	return i.ToNumberInRangeAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i NumberInRangeAdvancedFilterArgs) ToNumberInRangeAdvancedFilterOutputWithContext(ctx context.Context) NumberInRangeAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NumberInRangeAdvancedFilterOutput)
+}
+
+// NumberInRange Advanced Filter.
+type NumberInRangeAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (NumberInRangeAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberInRangeAdvancedFilter)(nil)).Elem()
+}
+
+func (o NumberInRangeAdvancedFilterOutput) ToNumberInRangeAdvancedFilterOutput() NumberInRangeAdvancedFilterOutput {
+	return o
+}
+
+func (o NumberInRangeAdvancedFilterOutput) ToNumberInRangeAdvancedFilterOutputWithContext(ctx context.Context) NumberInRangeAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberInRangeAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberInRangeAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberInRange'.
+func (o NumberInRangeAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberInRangeAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o NumberInRangeAdvancedFilterOutput) Values() pulumi.Float64ArrayArrayOutput {
+	return o.ApplyT(func(v NumberInRangeAdvancedFilter) [][]float64 { return v.Values }).(pulumi.Float64ArrayArrayOutput)
+}
+
 // NumberInRange Advanced Filter.
 type NumberInRangeAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -3529,6 +5095,37 @@ type NumberInRangeAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values [][]float64 `pulumi:"values"`
+}
+
+// NumberInRange Advanced Filter.
+type NumberInRangeAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (NumberInRangeAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberInRangeAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o NumberInRangeAdvancedFilterResponseOutput) ToNumberInRangeAdvancedFilterResponseOutput() NumberInRangeAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o NumberInRangeAdvancedFilterResponseOutput) ToNumberInRangeAdvancedFilterResponseOutputWithContext(ctx context.Context) NumberInRangeAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberInRangeAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberInRangeAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberInRange'.
+func (o NumberInRangeAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberInRangeAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o NumberInRangeAdvancedFilterResponseOutput) Values() pulumi.Float64ArrayArrayOutput {
+	return o.ApplyT(func(v NumberInRangeAdvancedFilterResponse) [][]float64 { return v.Values }).(pulumi.Float64ArrayArrayOutput)
 }
 
 // NumberLessThan Advanced Filter.
@@ -3542,6 +5139,71 @@ type NumberLessThanAdvancedFilter struct {
 	Value *float64 `pulumi:"value"`
 }
 
+// NumberLessThanAdvancedFilterInput is an input type that accepts NumberLessThanAdvancedFilterArgs and NumberLessThanAdvancedFilterOutput values.
+// You can construct a concrete instance of `NumberLessThanAdvancedFilterInput` via:
+//
+//	NumberLessThanAdvancedFilterArgs{...}
+type NumberLessThanAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToNumberLessThanAdvancedFilterOutput() NumberLessThanAdvancedFilterOutput
+	ToNumberLessThanAdvancedFilterOutputWithContext(context.Context) NumberLessThanAdvancedFilterOutput
+}
+
+// NumberLessThan Advanced Filter.
+type NumberLessThanAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberLessThan'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The filter value.
+	Value pulumi.Float64PtrInput `pulumi:"value"`
+}
+
+func (NumberLessThanAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberLessThanAdvancedFilter)(nil)).Elem()
+}
+
+func (i NumberLessThanAdvancedFilterArgs) ToNumberLessThanAdvancedFilterOutput() NumberLessThanAdvancedFilterOutput {
+	return i.ToNumberLessThanAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i NumberLessThanAdvancedFilterArgs) ToNumberLessThanAdvancedFilterOutputWithContext(ctx context.Context) NumberLessThanAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NumberLessThanAdvancedFilterOutput)
+}
+
+// NumberLessThan Advanced Filter.
+type NumberLessThanAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (NumberLessThanAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberLessThanAdvancedFilter)(nil)).Elem()
+}
+
+func (o NumberLessThanAdvancedFilterOutput) ToNumberLessThanAdvancedFilterOutput() NumberLessThanAdvancedFilterOutput {
+	return o
+}
+
+func (o NumberLessThanAdvancedFilterOutput) ToNumberLessThanAdvancedFilterOutputWithContext(ctx context.Context) NumberLessThanAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberLessThanAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberLessThanAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberLessThan'.
+func (o NumberLessThanAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberLessThanAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The filter value.
+func (o NumberLessThanAdvancedFilterOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NumberLessThanAdvancedFilter) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
+}
+
 // NumberLessThan Advanced Filter.
 type NumberLessThanAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -3551,6 +5213,37 @@ type NumberLessThanAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The filter value.
 	Value *float64 `pulumi:"value"`
+}
+
+// NumberLessThan Advanced Filter.
+type NumberLessThanAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (NumberLessThanAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberLessThanAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o NumberLessThanAdvancedFilterResponseOutput) ToNumberLessThanAdvancedFilterResponseOutput() NumberLessThanAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o NumberLessThanAdvancedFilterResponseOutput) ToNumberLessThanAdvancedFilterResponseOutputWithContext(ctx context.Context) NumberLessThanAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberLessThanAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberLessThanAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberLessThan'.
+func (o NumberLessThanAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberLessThanAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The filter value.
+func (o NumberLessThanAdvancedFilterResponseOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NumberLessThanAdvancedFilterResponse) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
 }
 
 // NumberLessThanOrEquals Advanced Filter.
@@ -3564,6 +5257,71 @@ type NumberLessThanOrEqualsAdvancedFilter struct {
 	Value *float64 `pulumi:"value"`
 }
 
+// NumberLessThanOrEqualsAdvancedFilterInput is an input type that accepts NumberLessThanOrEqualsAdvancedFilterArgs and NumberLessThanOrEqualsAdvancedFilterOutput values.
+// You can construct a concrete instance of `NumberLessThanOrEqualsAdvancedFilterInput` via:
+//
+//	NumberLessThanOrEqualsAdvancedFilterArgs{...}
+type NumberLessThanOrEqualsAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToNumberLessThanOrEqualsAdvancedFilterOutput() NumberLessThanOrEqualsAdvancedFilterOutput
+	ToNumberLessThanOrEqualsAdvancedFilterOutputWithContext(context.Context) NumberLessThanOrEqualsAdvancedFilterOutput
+}
+
+// NumberLessThanOrEquals Advanced Filter.
+type NumberLessThanOrEqualsAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberLessThanOrEquals'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The filter value.
+	Value pulumi.Float64PtrInput `pulumi:"value"`
+}
+
+func (NumberLessThanOrEqualsAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberLessThanOrEqualsAdvancedFilter)(nil)).Elem()
+}
+
+func (i NumberLessThanOrEqualsAdvancedFilterArgs) ToNumberLessThanOrEqualsAdvancedFilterOutput() NumberLessThanOrEqualsAdvancedFilterOutput {
+	return i.ToNumberLessThanOrEqualsAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i NumberLessThanOrEqualsAdvancedFilterArgs) ToNumberLessThanOrEqualsAdvancedFilterOutputWithContext(ctx context.Context) NumberLessThanOrEqualsAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NumberLessThanOrEqualsAdvancedFilterOutput)
+}
+
+// NumberLessThanOrEquals Advanced Filter.
+type NumberLessThanOrEqualsAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (NumberLessThanOrEqualsAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberLessThanOrEqualsAdvancedFilter)(nil)).Elem()
+}
+
+func (o NumberLessThanOrEqualsAdvancedFilterOutput) ToNumberLessThanOrEqualsAdvancedFilterOutput() NumberLessThanOrEqualsAdvancedFilterOutput {
+	return o
+}
+
+func (o NumberLessThanOrEqualsAdvancedFilterOutput) ToNumberLessThanOrEqualsAdvancedFilterOutputWithContext(ctx context.Context) NumberLessThanOrEqualsAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberLessThanOrEqualsAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberLessThanOrEqualsAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberLessThanOrEquals'.
+func (o NumberLessThanOrEqualsAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberLessThanOrEqualsAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The filter value.
+func (o NumberLessThanOrEqualsAdvancedFilterOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NumberLessThanOrEqualsAdvancedFilter) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
+}
+
 // NumberLessThanOrEquals Advanced Filter.
 type NumberLessThanOrEqualsAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -3573,6 +5331,37 @@ type NumberLessThanOrEqualsAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The filter value.
 	Value *float64 `pulumi:"value"`
+}
+
+// NumberLessThanOrEquals Advanced Filter.
+type NumberLessThanOrEqualsAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (NumberLessThanOrEqualsAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberLessThanOrEqualsAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o NumberLessThanOrEqualsAdvancedFilterResponseOutput) ToNumberLessThanOrEqualsAdvancedFilterResponseOutput() NumberLessThanOrEqualsAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o NumberLessThanOrEqualsAdvancedFilterResponseOutput) ToNumberLessThanOrEqualsAdvancedFilterResponseOutputWithContext(ctx context.Context) NumberLessThanOrEqualsAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberLessThanOrEqualsAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberLessThanOrEqualsAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberLessThanOrEquals'.
+func (o NumberLessThanOrEqualsAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberLessThanOrEqualsAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The filter value.
+func (o NumberLessThanOrEqualsAdvancedFilterResponseOutput) Value() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v NumberLessThanOrEqualsAdvancedFilterResponse) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
 }
 
 // NumberNotIn Advanced Filter.
@@ -3586,6 +5375,71 @@ type NumberNotInAdvancedFilter struct {
 	Values []float64 `pulumi:"values"`
 }
 
+// NumberNotInAdvancedFilterInput is an input type that accepts NumberNotInAdvancedFilterArgs and NumberNotInAdvancedFilterOutput values.
+// You can construct a concrete instance of `NumberNotInAdvancedFilterInput` via:
+//
+//	NumberNotInAdvancedFilterArgs{...}
+type NumberNotInAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToNumberNotInAdvancedFilterOutput() NumberNotInAdvancedFilterOutput
+	ToNumberNotInAdvancedFilterOutputWithContext(context.Context) NumberNotInAdvancedFilterOutput
+}
+
+// NumberNotIn Advanced Filter.
+type NumberNotInAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberNotIn'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.Float64ArrayInput `pulumi:"values"`
+}
+
+func (NumberNotInAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberNotInAdvancedFilter)(nil)).Elem()
+}
+
+func (i NumberNotInAdvancedFilterArgs) ToNumberNotInAdvancedFilterOutput() NumberNotInAdvancedFilterOutput {
+	return i.ToNumberNotInAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i NumberNotInAdvancedFilterArgs) ToNumberNotInAdvancedFilterOutputWithContext(ctx context.Context) NumberNotInAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NumberNotInAdvancedFilterOutput)
+}
+
+// NumberNotIn Advanced Filter.
+type NumberNotInAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (NumberNotInAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberNotInAdvancedFilter)(nil)).Elem()
+}
+
+func (o NumberNotInAdvancedFilterOutput) ToNumberNotInAdvancedFilterOutput() NumberNotInAdvancedFilterOutput {
+	return o
+}
+
+func (o NumberNotInAdvancedFilterOutput) ToNumberNotInAdvancedFilterOutputWithContext(ctx context.Context) NumberNotInAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberNotInAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberNotInAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberNotIn'.
+func (o NumberNotInAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberNotInAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o NumberNotInAdvancedFilterOutput) Values() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v NumberNotInAdvancedFilter) []float64 { return v.Values }).(pulumi.Float64ArrayOutput)
+}
+
 // NumberNotIn Advanced Filter.
 type NumberNotInAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -3595,6 +5449,37 @@ type NumberNotInAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values []float64 `pulumi:"values"`
+}
+
+// NumberNotIn Advanced Filter.
+type NumberNotInAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (NumberNotInAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberNotInAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o NumberNotInAdvancedFilterResponseOutput) ToNumberNotInAdvancedFilterResponseOutput() NumberNotInAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o NumberNotInAdvancedFilterResponseOutput) ToNumberNotInAdvancedFilterResponseOutputWithContext(ctx context.Context) NumberNotInAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberNotInAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberNotInAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberNotIn'.
+func (o NumberNotInAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberNotInAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o NumberNotInAdvancedFilterResponseOutput) Values() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v NumberNotInAdvancedFilterResponse) []float64 { return v.Values }).(pulumi.Float64ArrayOutput)
 }
 
 // NumberNotInRange Advanced Filter.
@@ -3608,6 +5493,71 @@ type NumberNotInRangeAdvancedFilter struct {
 	Values [][]float64 `pulumi:"values"`
 }
 
+// NumberNotInRangeAdvancedFilterInput is an input type that accepts NumberNotInRangeAdvancedFilterArgs and NumberNotInRangeAdvancedFilterOutput values.
+// You can construct a concrete instance of `NumberNotInRangeAdvancedFilterInput` via:
+//
+//	NumberNotInRangeAdvancedFilterArgs{...}
+type NumberNotInRangeAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToNumberNotInRangeAdvancedFilterOutput() NumberNotInRangeAdvancedFilterOutput
+	ToNumberNotInRangeAdvancedFilterOutputWithContext(context.Context) NumberNotInRangeAdvancedFilterOutput
+}
+
+// NumberNotInRange Advanced Filter.
+type NumberNotInRangeAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'NumberNotInRange'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.Float64ArrayArrayInput `pulumi:"values"`
+}
+
+func (NumberNotInRangeAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberNotInRangeAdvancedFilter)(nil)).Elem()
+}
+
+func (i NumberNotInRangeAdvancedFilterArgs) ToNumberNotInRangeAdvancedFilterOutput() NumberNotInRangeAdvancedFilterOutput {
+	return i.ToNumberNotInRangeAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i NumberNotInRangeAdvancedFilterArgs) ToNumberNotInRangeAdvancedFilterOutputWithContext(ctx context.Context) NumberNotInRangeAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NumberNotInRangeAdvancedFilterOutput)
+}
+
+// NumberNotInRange Advanced Filter.
+type NumberNotInRangeAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (NumberNotInRangeAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberNotInRangeAdvancedFilter)(nil)).Elem()
+}
+
+func (o NumberNotInRangeAdvancedFilterOutput) ToNumberNotInRangeAdvancedFilterOutput() NumberNotInRangeAdvancedFilterOutput {
+	return o
+}
+
+func (o NumberNotInRangeAdvancedFilterOutput) ToNumberNotInRangeAdvancedFilterOutputWithContext(ctx context.Context) NumberNotInRangeAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberNotInRangeAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberNotInRangeAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberNotInRange'.
+func (o NumberNotInRangeAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberNotInRangeAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o NumberNotInRangeAdvancedFilterOutput) Values() pulumi.Float64ArrayArrayOutput {
+	return o.ApplyT(func(v NumberNotInRangeAdvancedFilter) [][]float64 { return v.Values }).(pulumi.Float64ArrayArrayOutput)
+}
+
 // NumberNotInRange Advanced Filter.
 type NumberNotInRangeAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -3617,6 +5567,37 @@ type NumberNotInRangeAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values [][]float64 `pulumi:"values"`
+}
+
+// NumberNotInRange Advanced Filter.
+type NumberNotInRangeAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (NumberNotInRangeAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NumberNotInRangeAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o NumberNotInRangeAdvancedFilterResponseOutput) ToNumberNotInRangeAdvancedFilterResponseOutput() NumberNotInRangeAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o NumberNotInRangeAdvancedFilterResponseOutput) ToNumberNotInRangeAdvancedFilterResponseOutputWithContext(ctx context.Context) NumberNotInRangeAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o NumberNotInRangeAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NumberNotInRangeAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'NumberNotInRange'.
+func (o NumberNotInRangeAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v NumberNotInRangeAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o NumberNotInRangeAdvancedFilterResponseOutput) Values() pulumi.Float64ArrayArrayOutput {
+	return o.ApplyT(func(v NumberNotInRangeAdvancedFilterResponse) [][]float64 { return v.Values }).(pulumi.Float64ArrayArrayOutput)
 }
 
 // Information about the partner.
@@ -5012,6 +6993,177 @@ type ServiceBusQueueEventSubscriptionDestination struct {
 	ResourceId *string `pulumi:"resourceId"`
 }
 
+// ServiceBusQueueEventSubscriptionDestinationInput is an input type that accepts ServiceBusQueueEventSubscriptionDestinationArgs and ServiceBusQueueEventSubscriptionDestinationOutput values.
+// You can construct a concrete instance of `ServiceBusQueueEventSubscriptionDestinationInput` via:
+//
+//	ServiceBusQueueEventSubscriptionDestinationArgs{...}
+type ServiceBusQueueEventSubscriptionDestinationInput interface {
+	pulumi.Input
+
+	ToServiceBusQueueEventSubscriptionDestinationOutput() ServiceBusQueueEventSubscriptionDestinationOutput
+	ToServiceBusQueueEventSubscriptionDestinationOutputWithContext(context.Context) ServiceBusQueueEventSubscriptionDestinationOutput
+}
+
+// Information about the service bus destination for an event subscription.
+type ServiceBusQueueEventSubscriptionDestinationArgs struct {
+	// Delivery attribute details.
+	DeliveryAttributeMappings pulumi.ArrayInput `pulumi:"deliveryAttributeMappings"`
+	// Type of the endpoint for the event subscription destination.
+	// Expected value is 'ServiceBusQueue'.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// The Azure Resource Id that represents the endpoint of the Service Bus destination of an event subscription.
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+}
+
+func (ServiceBusQueueEventSubscriptionDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceBusQueueEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (i ServiceBusQueueEventSubscriptionDestinationArgs) ToServiceBusQueueEventSubscriptionDestinationOutput() ServiceBusQueueEventSubscriptionDestinationOutput {
+	return i.ToServiceBusQueueEventSubscriptionDestinationOutputWithContext(context.Background())
+}
+
+func (i ServiceBusQueueEventSubscriptionDestinationArgs) ToServiceBusQueueEventSubscriptionDestinationOutputWithContext(ctx context.Context) ServiceBusQueueEventSubscriptionDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceBusQueueEventSubscriptionDestinationOutput)
+}
+
+func (i ServiceBusQueueEventSubscriptionDestinationArgs) ToServiceBusQueueEventSubscriptionDestinationPtrOutput() ServiceBusQueueEventSubscriptionDestinationPtrOutput {
+	return i.ToServiceBusQueueEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceBusQueueEventSubscriptionDestinationArgs) ToServiceBusQueueEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) ServiceBusQueueEventSubscriptionDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceBusQueueEventSubscriptionDestinationOutput).ToServiceBusQueueEventSubscriptionDestinationPtrOutputWithContext(ctx)
+}
+
+// ServiceBusQueueEventSubscriptionDestinationPtrInput is an input type that accepts ServiceBusQueueEventSubscriptionDestinationArgs, ServiceBusQueueEventSubscriptionDestinationPtr and ServiceBusQueueEventSubscriptionDestinationPtrOutput values.
+// You can construct a concrete instance of `ServiceBusQueueEventSubscriptionDestinationPtrInput` via:
+//
+//	        ServiceBusQueueEventSubscriptionDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceBusQueueEventSubscriptionDestinationPtrInput interface {
+	pulumi.Input
+
+	ToServiceBusQueueEventSubscriptionDestinationPtrOutput() ServiceBusQueueEventSubscriptionDestinationPtrOutput
+	ToServiceBusQueueEventSubscriptionDestinationPtrOutputWithContext(context.Context) ServiceBusQueueEventSubscriptionDestinationPtrOutput
+}
+
+type serviceBusQueueEventSubscriptionDestinationPtrType ServiceBusQueueEventSubscriptionDestinationArgs
+
+func ServiceBusQueueEventSubscriptionDestinationPtr(v *ServiceBusQueueEventSubscriptionDestinationArgs) ServiceBusQueueEventSubscriptionDestinationPtrInput {
+	return (*serviceBusQueueEventSubscriptionDestinationPtrType)(v)
+}
+
+func (*serviceBusQueueEventSubscriptionDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceBusQueueEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (i *serviceBusQueueEventSubscriptionDestinationPtrType) ToServiceBusQueueEventSubscriptionDestinationPtrOutput() ServiceBusQueueEventSubscriptionDestinationPtrOutput {
+	return i.ToServiceBusQueueEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceBusQueueEventSubscriptionDestinationPtrType) ToServiceBusQueueEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) ServiceBusQueueEventSubscriptionDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceBusQueueEventSubscriptionDestinationPtrOutput)
+}
+
+// Information about the service bus destination for an event subscription.
+type ServiceBusQueueEventSubscriptionDestinationOutput struct{ *pulumi.OutputState }
+
+func (ServiceBusQueueEventSubscriptionDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceBusQueueEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (o ServiceBusQueueEventSubscriptionDestinationOutput) ToServiceBusQueueEventSubscriptionDestinationOutput() ServiceBusQueueEventSubscriptionDestinationOutput {
+	return o
+}
+
+func (o ServiceBusQueueEventSubscriptionDestinationOutput) ToServiceBusQueueEventSubscriptionDestinationOutputWithContext(ctx context.Context) ServiceBusQueueEventSubscriptionDestinationOutput {
+	return o
+}
+
+func (o ServiceBusQueueEventSubscriptionDestinationOutput) ToServiceBusQueueEventSubscriptionDestinationPtrOutput() ServiceBusQueueEventSubscriptionDestinationPtrOutput {
+	return o.ToServiceBusQueueEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceBusQueueEventSubscriptionDestinationOutput) ToServiceBusQueueEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) ServiceBusQueueEventSubscriptionDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceBusQueueEventSubscriptionDestination) *ServiceBusQueueEventSubscriptionDestination {
+		return &v
+	}).(ServiceBusQueueEventSubscriptionDestinationPtrOutput)
+}
+
+// Delivery attribute details.
+func (o ServiceBusQueueEventSubscriptionDestinationOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v ServiceBusQueueEventSubscriptionDestination) []interface{} { return v.DeliveryAttributeMappings }).(pulumi.ArrayOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'ServiceBusQueue'.
+func (o ServiceBusQueueEventSubscriptionDestinationOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceBusQueueEventSubscriptionDestination) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The Azure Resource Id that represents the endpoint of the Service Bus destination of an event subscription.
+func (o ServiceBusQueueEventSubscriptionDestinationOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceBusQueueEventSubscriptionDestination) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type ServiceBusQueueEventSubscriptionDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceBusQueueEventSubscriptionDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceBusQueueEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (o ServiceBusQueueEventSubscriptionDestinationPtrOutput) ToServiceBusQueueEventSubscriptionDestinationPtrOutput() ServiceBusQueueEventSubscriptionDestinationPtrOutput {
+	return o
+}
+
+func (o ServiceBusQueueEventSubscriptionDestinationPtrOutput) ToServiceBusQueueEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) ServiceBusQueueEventSubscriptionDestinationPtrOutput {
+	return o
+}
+
+func (o ServiceBusQueueEventSubscriptionDestinationPtrOutput) Elem() ServiceBusQueueEventSubscriptionDestinationOutput {
+	return o.ApplyT(func(v *ServiceBusQueueEventSubscriptionDestination) ServiceBusQueueEventSubscriptionDestination {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceBusQueueEventSubscriptionDestination
+		return ret
+	}).(ServiceBusQueueEventSubscriptionDestinationOutput)
+}
+
+// Delivery attribute details.
+func (o ServiceBusQueueEventSubscriptionDestinationPtrOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *ServiceBusQueueEventSubscriptionDestination) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.DeliveryAttributeMappings
+	}).(pulumi.ArrayOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'ServiceBusQueue'.
+func (o ServiceBusQueueEventSubscriptionDestinationPtrOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceBusQueueEventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure Resource Id that represents the endpoint of the Service Bus destination of an event subscription.
+func (o ServiceBusQueueEventSubscriptionDestinationPtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceBusQueueEventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Information about the service bus destination for an event subscription.
 type ServiceBusQueueEventSubscriptionDestinationResponse struct {
 	// Delivery attribute details.
@@ -5021,6 +7173,94 @@ type ServiceBusQueueEventSubscriptionDestinationResponse struct {
 	EndpointType string `pulumi:"endpointType"`
 	// The Azure Resource Id that represents the endpoint of the Service Bus destination of an event subscription.
 	ResourceId *string `pulumi:"resourceId"`
+}
+
+// Information about the service bus destination for an event subscription.
+type ServiceBusQueueEventSubscriptionDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceBusQueueEventSubscriptionDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceBusQueueEventSubscriptionDestinationResponse)(nil)).Elem()
+}
+
+func (o ServiceBusQueueEventSubscriptionDestinationResponseOutput) ToServiceBusQueueEventSubscriptionDestinationResponseOutput() ServiceBusQueueEventSubscriptionDestinationResponseOutput {
+	return o
+}
+
+func (o ServiceBusQueueEventSubscriptionDestinationResponseOutput) ToServiceBusQueueEventSubscriptionDestinationResponseOutputWithContext(ctx context.Context) ServiceBusQueueEventSubscriptionDestinationResponseOutput {
+	return o
+}
+
+// Delivery attribute details.
+func (o ServiceBusQueueEventSubscriptionDestinationResponseOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v ServiceBusQueueEventSubscriptionDestinationResponse) []interface{} {
+		return v.DeliveryAttributeMappings
+	}).(pulumi.ArrayOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'ServiceBusQueue'.
+func (o ServiceBusQueueEventSubscriptionDestinationResponseOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceBusQueueEventSubscriptionDestinationResponse) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The Azure Resource Id that represents the endpoint of the Service Bus destination of an event subscription.
+func (o ServiceBusQueueEventSubscriptionDestinationResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceBusQueueEventSubscriptionDestinationResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type ServiceBusQueueEventSubscriptionDestinationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceBusQueueEventSubscriptionDestinationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceBusQueueEventSubscriptionDestinationResponse)(nil)).Elem()
+}
+
+func (o ServiceBusQueueEventSubscriptionDestinationResponsePtrOutput) ToServiceBusQueueEventSubscriptionDestinationResponsePtrOutput() ServiceBusQueueEventSubscriptionDestinationResponsePtrOutput {
+	return o
+}
+
+func (o ServiceBusQueueEventSubscriptionDestinationResponsePtrOutput) ToServiceBusQueueEventSubscriptionDestinationResponsePtrOutputWithContext(ctx context.Context) ServiceBusQueueEventSubscriptionDestinationResponsePtrOutput {
+	return o
+}
+
+func (o ServiceBusQueueEventSubscriptionDestinationResponsePtrOutput) Elem() ServiceBusQueueEventSubscriptionDestinationResponseOutput {
+	return o.ApplyT(func(v *ServiceBusQueueEventSubscriptionDestinationResponse) ServiceBusQueueEventSubscriptionDestinationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceBusQueueEventSubscriptionDestinationResponse
+		return ret
+	}).(ServiceBusQueueEventSubscriptionDestinationResponseOutput)
+}
+
+// Delivery attribute details.
+func (o ServiceBusQueueEventSubscriptionDestinationResponsePtrOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *ServiceBusQueueEventSubscriptionDestinationResponse) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.DeliveryAttributeMappings
+	}).(pulumi.ArrayOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'ServiceBusQueue'.
+func (o ServiceBusQueueEventSubscriptionDestinationResponsePtrOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceBusQueueEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure Resource Id that represents the endpoint of the Service Bus destination of an event subscription.
+func (o ServiceBusQueueEventSubscriptionDestinationResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceBusQueueEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Information about the service bus topic destination for an event subscription.
@@ -5034,6 +7274,177 @@ type ServiceBusTopicEventSubscriptionDestination struct {
 	ResourceId *string `pulumi:"resourceId"`
 }
 
+// ServiceBusTopicEventSubscriptionDestinationInput is an input type that accepts ServiceBusTopicEventSubscriptionDestinationArgs and ServiceBusTopicEventSubscriptionDestinationOutput values.
+// You can construct a concrete instance of `ServiceBusTopicEventSubscriptionDestinationInput` via:
+//
+//	ServiceBusTopicEventSubscriptionDestinationArgs{...}
+type ServiceBusTopicEventSubscriptionDestinationInput interface {
+	pulumi.Input
+
+	ToServiceBusTopicEventSubscriptionDestinationOutput() ServiceBusTopicEventSubscriptionDestinationOutput
+	ToServiceBusTopicEventSubscriptionDestinationOutputWithContext(context.Context) ServiceBusTopicEventSubscriptionDestinationOutput
+}
+
+// Information about the service bus topic destination for an event subscription.
+type ServiceBusTopicEventSubscriptionDestinationArgs struct {
+	// Delivery attribute details.
+	DeliveryAttributeMappings pulumi.ArrayInput `pulumi:"deliveryAttributeMappings"`
+	// Type of the endpoint for the event subscription destination.
+	// Expected value is 'ServiceBusTopic'.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// The Azure Resource Id that represents the endpoint of the Service Bus Topic destination of an event subscription.
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+}
+
+func (ServiceBusTopicEventSubscriptionDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceBusTopicEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (i ServiceBusTopicEventSubscriptionDestinationArgs) ToServiceBusTopicEventSubscriptionDestinationOutput() ServiceBusTopicEventSubscriptionDestinationOutput {
+	return i.ToServiceBusTopicEventSubscriptionDestinationOutputWithContext(context.Background())
+}
+
+func (i ServiceBusTopicEventSubscriptionDestinationArgs) ToServiceBusTopicEventSubscriptionDestinationOutputWithContext(ctx context.Context) ServiceBusTopicEventSubscriptionDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceBusTopicEventSubscriptionDestinationOutput)
+}
+
+func (i ServiceBusTopicEventSubscriptionDestinationArgs) ToServiceBusTopicEventSubscriptionDestinationPtrOutput() ServiceBusTopicEventSubscriptionDestinationPtrOutput {
+	return i.ToServiceBusTopicEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceBusTopicEventSubscriptionDestinationArgs) ToServiceBusTopicEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) ServiceBusTopicEventSubscriptionDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceBusTopicEventSubscriptionDestinationOutput).ToServiceBusTopicEventSubscriptionDestinationPtrOutputWithContext(ctx)
+}
+
+// ServiceBusTopicEventSubscriptionDestinationPtrInput is an input type that accepts ServiceBusTopicEventSubscriptionDestinationArgs, ServiceBusTopicEventSubscriptionDestinationPtr and ServiceBusTopicEventSubscriptionDestinationPtrOutput values.
+// You can construct a concrete instance of `ServiceBusTopicEventSubscriptionDestinationPtrInput` via:
+//
+//	        ServiceBusTopicEventSubscriptionDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceBusTopicEventSubscriptionDestinationPtrInput interface {
+	pulumi.Input
+
+	ToServiceBusTopicEventSubscriptionDestinationPtrOutput() ServiceBusTopicEventSubscriptionDestinationPtrOutput
+	ToServiceBusTopicEventSubscriptionDestinationPtrOutputWithContext(context.Context) ServiceBusTopicEventSubscriptionDestinationPtrOutput
+}
+
+type serviceBusTopicEventSubscriptionDestinationPtrType ServiceBusTopicEventSubscriptionDestinationArgs
+
+func ServiceBusTopicEventSubscriptionDestinationPtr(v *ServiceBusTopicEventSubscriptionDestinationArgs) ServiceBusTopicEventSubscriptionDestinationPtrInput {
+	return (*serviceBusTopicEventSubscriptionDestinationPtrType)(v)
+}
+
+func (*serviceBusTopicEventSubscriptionDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceBusTopicEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (i *serviceBusTopicEventSubscriptionDestinationPtrType) ToServiceBusTopicEventSubscriptionDestinationPtrOutput() ServiceBusTopicEventSubscriptionDestinationPtrOutput {
+	return i.ToServiceBusTopicEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceBusTopicEventSubscriptionDestinationPtrType) ToServiceBusTopicEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) ServiceBusTopicEventSubscriptionDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceBusTopicEventSubscriptionDestinationPtrOutput)
+}
+
+// Information about the service bus topic destination for an event subscription.
+type ServiceBusTopicEventSubscriptionDestinationOutput struct{ *pulumi.OutputState }
+
+func (ServiceBusTopicEventSubscriptionDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceBusTopicEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (o ServiceBusTopicEventSubscriptionDestinationOutput) ToServiceBusTopicEventSubscriptionDestinationOutput() ServiceBusTopicEventSubscriptionDestinationOutput {
+	return o
+}
+
+func (o ServiceBusTopicEventSubscriptionDestinationOutput) ToServiceBusTopicEventSubscriptionDestinationOutputWithContext(ctx context.Context) ServiceBusTopicEventSubscriptionDestinationOutput {
+	return o
+}
+
+func (o ServiceBusTopicEventSubscriptionDestinationOutput) ToServiceBusTopicEventSubscriptionDestinationPtrOutput() ServiceBusTopicEventSubscriptionDestinationPtrOutput {
+	return o.ToServiceBusTopicEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceBusTopicEventSubscriptionDestinationOutput) ToServiceBusTopicEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) ServiceBusTopicEventSubscriptionDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceBusTopicEventSubscriptionDestination) *ServiceBusTopicEventSubscriptionDestination {
+		return &v
+	}).(ServiceBusTopicEventSubscriptionDestinationPtrOutput)
+}
+
+// Delivery attribute details.
+func (o ServiceBusTopicEventSubscriptionDestinationOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v ServiceBusTopicEventSubscriptionDestination) []interface{} { return v.DeliveryAttributeMappings }).(pulumi.ArrayOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'ServiceBusTopic'.
+func (o ServiceBusTopicEventSubscriptionDestinationOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceBusTopicEventSubscriptionDestination) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The Azure Resource Id that represents the endpoint of the Service Bus Topic destination of an event subscription.
+func (o ServiceBusTopicEventSubscriptionDestinationOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceBusTopicEventSubscriptionDestination) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type ServiceBusTopicEventSubscriptionDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceBusTopicEventSubscriptionDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceBusTopicEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (o ServiceBusTopicEventSubscriptionDestinationPtrOutput) ToServiceBusTopicEventSubscriptionDestinationPtrOutput() ServiceBusTopicEventSubscriptionDestinationPtrOutput {
+	return o
+}
+
+func (o ServiceBusTopicEventSubscriptionDestinationPtrOutput) ToServiceBusTopicEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) ServiceBusTopicEventSubscriptionDestinationPtrOutput {
+	return o
+}
+
+func (o ServiceBusTopicEventSubscriptionDestinationPtrOutput) Elem() ServiceBusTopicEventSubscriptionDestinationOutput {
+	return o.ApplyT(func(v *ServiceBusTopicEventSubscriptionDestination) ServiceBusTopicEventSubscriptionDestination {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceBusTopicEventSubscriptionDestination
+		return ret
+	}).(ServiceBusTopicEventSubscriptionDestinationOutput)
+}
+
+// Delivery attribute details.
+func (o ServiceBusTopicEventSubscriptionDestinationPtrOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *ServiceBusTopicEventSubscriptionDestination) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.DeliveryAttributeMappings
+	}).(pulumi.ArrayOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'ServiceBusTopic'.
+func (o ServiceBusTopicEventSubscriptionDestinationPtrOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceBusTopicEventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure Resource Id that represents the endpoint of the Service Bus Topic destination of an event subscription.
+func (o ServiceBusTopicEventSubscriptionDestinationPtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceBusTopicEventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Information about the service bus topic destination for an event subscription.
 type ServiceBusTopicEventSubscriptionDestinationResponse struct {
 	// Delivery attribute details.
@@ -5043,6 +7454,94 @@ type ServiceBusTopicEventSubscriptionDestinationResponse struct {
 	EndpointType string `pulumi:"endpointType"`
 	// The Azure Resource Id that represents the endpoint of the Service Bus Topic destination of an event subscription.
 	ResourceId *string `pulumi:"resourceId"`
+}
+
+// Information about the service bus topic destination for an event subscription.
+type ServiceBusTopicEventSubscriptionDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceBusTopicEventSubscriptionDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceBusTopicEventSubscriptionDestinationResponse)(nil)).Elem()
+}
+
+func (o ServiceBusTopicEventSubscriptionDestinationResponseOutput) ToServiceBusTopicEventSubscriptionDestinationResponseOutput() ServiceBusTopicEventSubscriptionDestinationResponseOutput {
+	return o
+}
+
+func (o ServiceBusTopicEventSubscriptionDestinationResponseOutput) ToServiceBusTopicEventSubscriptionDestinationResponseOutputWithContext(ctx context.Context) ServiceBusTopicEventSubscriptionDestinationResponseOutput {
+	return o
+}
+
+// Delivery attribute details.
+func (o ServiceBusTopicEventSubscriptionDestinationResponseOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v ServiceBusTopicEventSubscriptionDestinationResponse) []interface{} {
+		return v.DeliveryAttributeMappings
+	}).(pulumi.ArrayOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'ServiceBusTopic'.
+func (o ServiceBusTopicEventSubscriptionDestinationResponseOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceBusTopicEventSubscriptionDestinationResponse) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The Azure Resource Id that represents the endpoint of the Service Bus Topic destination of an event subscription.
+func (o ServiceBusTopicEventSubscriptionDestinationResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceBusTopicEventSubscriptionDestinationResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type ServiceBusTopicEventSubscriptionDestinationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceBusTopicEventSubscriptionDestinationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceBusTopicEventSubscriptionDestinationResponse)(nil)).Elem()
+}
+
+func (o ServiceBusTopicEventSubscriptionDestinationResponsePtrOutput) ToServiceBusTopicEventSubscriptionDestinationResponsePtrOutput() ServiceBusTopicEventSubscriptionDestinationResponsePtrOutput {
+	return o
+}
+
+func (o ServiceBusTopicEventSubscriptionDestinationResponsePtrOutput) ToServiceBusTopicEventSubscriptionDestinationResponsePtrOutputWithContext(ctx context.Context) ServiceBusTopicEventSubscriptionDestinationResponsePtrOutput {
+	return o
+}
+
+func (o ServiceBusTopicEventSubscriptionDestinationResponsePtrOutput) Elem() ServiceBusTopicEventSubscriptionDestinationResponseOutput {
+	return o.ApplyT(func(v *ServiceBusTopicEventSubscriptionDestinationResponse) ServiceBusTopicEventSubscriptionDestinationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceBusTopicEventSubscriptionDestinationResponse
+		return ret
+	}).(ServiceBusTopicEventSubscriptionDestinationResponseOutput)
+}
+
+// Delivery attribute details.
+func (o ServiceBusTopicEventSubscriptionDestinationResponsePtrOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *ServiceBusTopicEventSubscriptionDestinationResponse) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.DeliveryAttributeMappings
+	}).(pulumi.ArrayOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'ServiceBusTopic'.
+func (o ServiceBusTopicEventSubscriptionDestinationResponsePtrOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceBusTopicEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure Resource Id that represents the endpoint of the Service Bus Topic destination of an event subscription.
+func (o ServiceBusTopicEventSubscriptionDestinationResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceBusTopicEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Static delivery attribute mapping details.
@@ -5071,6 +7570,89 @@ func (val *StaticDeliveryAttributeMapping) Defaults() *StaticDeliveryAttributeMa
 	return &tmp
 }
 
+// StaticDeliveryAttributeMappingInput is an input type that accepts StaticDeliveryAttributeMappingArgs and StaticDeliveryAttributeMappingOutput values.
+// You can construct a concrete instance of `StaticDeliveryAttributeMappingInput` via:
+//
+//	StaticDeliveryAttributeMappingArgs{...}
+type StaticDeliveryAttributeMappingInput interface {
+	pulumi.Input
+
+	ToStaticDeliveryAttributeMappingOutput() StaticDeliveryAttributeMappingOutput
+	ToStaticDeliveryAttributeMappingOutputWithContext(context.Context) StaticDeliveryAttributeMappingOutput
+}
+
+// Static delivery attribute mapping details.
+type StaticDeliveryAttributeMappingArgs struct {
+	// Boolean flag to tell if the attribute contains sensitive information .
+	IsSecret pulumi.BoolPtrInput `pulumi:"isSecret"`
+	// Name of the delivery attribute or header.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Type of the delivery attribute or header name.
+	// Expected value is 'Static'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Value of the delivery attribute.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+// Defaults sets the appropriate defaults for StaticDeliveryAttributeMappingArgs
+func (val *StaticDeliveryAttributeMappingArgs) Defaults() *StaticDeliveryAttributeMappingArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IsSecret == nil {
+		tmp.IsSecret = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (StaticDeliveryAttributeMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticDeliveryAttributeMapping)(nil)).Elem()
+}
+
+func (i StaticDeliveryAttributeMappingArgs) ToStaticDeliveryAttributeMappingOutput() StaticDeliveryAttributeMappingOutput {
+	return i.ToStaticDeliveryAttributeMappingOutputWithContext(context.Background())
+}
+
+func (i StaticDeliveryAttributeMappingArgs) ToStaticDeliveryAttributeMappingOutputWithContext(ctx context.Context) StaticDeliveryAttributeMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StaticDeliveryAttributeMappingOutput)
+}
+
+// Static delivery attribute mapping details.
+type StaticDeliveryAttributeMappingOutput struct{ *pulumi.OutputState }
+
+func (StaticDeliveryAttributeMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticDeliveryAttributeMapping)(nil)).Elem()
+}
+
+func (o StaticDeliveryAttributeMappingOutput) ToStaticDeliveryAttributeMappingOutput() StaticDeliveryAttributeMappingOutput {
+	return o
+}
+
+func (o StaticDeliveryAttributeMappingOutput) ToStaticDeliveryAttributeMappingOutputWithContext(ctx context.Context) StaticDeliveryAttributeMappingOutput {
+	return o
+}
+
+// Boolean flag to tell if the attribute contains sensitive information .
+func (o StaticDeliveryAttributeMappingOutput) GetIsSecret() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StaticDeliveryAttributeMapping) *bool { return v.IsSecret }).(pulumi.BoolPtrOutput)
+}
+
+// Name of the delivery attribute or header.
+func (o StaticDeliveryAttributeMappingOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticDeliveryAttributeMapping) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Type of the delivery attribute or header name.
+// Expected value is 'Static'.
+func (o StaticDeliveryAttributeMappingOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v StaticDeliveryAttributeMapping) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Value of the delivery attribute.
+func (o StaticDeliveryAttributeMappingOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticDeliveryAttributeMapping) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
 // Static delivery attribute mapping details.
 type StaticDeliveryAttributeMappingResponse struct {
 	// Boolean flag to tell if the attribute contains sensitive information .
@@ -5095,6 +7677,42 @@ func (val *StaticDeliveryAttributeMappingResponse) Defaults() *StaticDeliveryAtt
 		tmp.IsSecret = &isSecret_
 	}
 	return &tmp
+}
+
+// Static delivery attribute mapping details.
+type StaticDeliveryAttributeMappingResponseOutput struct{ *pulumi.OutputState }
+
+func (StaticDeliveryAttributeMappingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticDeliveryAttributeMappingResponse)(nil)).Elem()
+}
+
+func (o StaticDeliveryAttributeMappingResponseOutput) ToStaticDeliveryAttributeMappingResponseOutput() StaticDeliveryAttributeMappingResponseOutput {
+	return o
+}
+
+func (o StaticDeliveryAttributeMappingResponseOutput) ToStaticDeliveryAttributeMappingResponseOutputWithContext(ctx context.Context) StaticDeliveryAttributeMappingResponseOutput {
+	return o
+}
+
+// Boolean flag to tell if the attribute contains sensitive information .
+func (o StaticDeliveryAttributeMappingResponseOutput) GetIsSecret() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StaticDeliveryAttributeMappingResponse) *bool { return v.IsSecret }).(pulumi.BoolPtrOutput)
+}
+
+// Name of the delivery attribute or header.
+func (o StaticDeliveryAttributeMappingResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticDeliveryAttributeMappingResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Type of the delivery attribute or header name.
+// Expected value is 'Static'.
+func (o StaticDeliveryAttributeMappingResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v StaticDeliveryAttributeMappingResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Value of the delivery attribute.
+func (o StaticDeliveryAttributeMappingResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StaticDeliveryAttributeMappingResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 // Information about the storage blob based dead letter destination.
@@ -5389,6 +8007,194 @@ type StorageQueueEventSubscriptionDestination struct {
 	ResourceId *string `pulumi:"resourceId"`
 }
 
+// StorageQueueEventSubscriptionDestinationInput is an input type that accepts StorageQueueEventSubscriptionDestinationArgs and StorageQueueEventSubscriptionDestinationOutput values.
+// You can construct a concrete instance of `StorageQueueEventSubscriptionDestinationInput` via:
+//
+//	StorageQueueEventSubscriptionDestinationArgs{...}
+type StorageQueueEventSubscriptionDestinationInput interface {
+	pulumi.Input
+
+	ToStorageQueueEventSubscriptionDestinationOutput() StorageQueueEventSubscriptionDestinationOutput
+	ToStorageQueueEventSubscriptionDestinationOutputWithContext(context.Context) StorageQueueEventSubscriptionDestinationOutput
+}
+
+// Information about the storage queue destination for an event subscription.
+type StorageQueueEventSubscriptionDestinationArgs struct {
+	// Type of the endpoint for the event subscription destination.
+	// Expected value is 'StorageQueue'.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// Storage queue message time to live in seconds.
+	QueueMessageTimeToLiveInSeconds pulumi.Float64PtrInput `pulumi:"queueMessageTimeToLiveInSeconds"`
+	// The name of the Storage queue under a storage account that is the destination of an event subscription.
+	QueueName pulumi.StringPtrInput `pulumi:"queueName"`
+	// The Azure Resource ID of the storage account that contains the queue that is the destination of an event subscription.
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+}
+
+func (StorageQueueEventSubscriptionDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageQueueEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (i StorageQueueEventSubscriptionDestinationArgs) ToStorageQueueEventSubscriptionDestinationOutput() StorageQueueEventSubscriptionDestinationOutput {
+	return i.ToStorageQueueEventSubscriptionDestinationOutputWithContext(context.Background())
+}
+
+func (i StorageQueueEventSubscriptionDestinationArgs) ToStorageQueueEventSubscriptionDestinationOutputWithContext(ctx context.Context) StorageQueueEventSubscriptionDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageQueueEventSubscriptionDestinationOutput)
+}
+
+func (i StorageQueueEventSubscriptionDestinationArgs) ToStorageQueueEventSubscriptionDestinationPtrOutput() StorageQueueEventSubscriptionDestinationPtrOutput {
+	return i.ToStorageQueueEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i StorageQueueEventSubscriptionDestinationArgs) ToStorageQueueEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) StorageQueueEventSubscriptionDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageQueueEventSubscriptionDestinationOutput).ToStorageQueueEventSubscriptionDestinationPtrOutputWithContext(ctx)
+}
+
+// StorageQueueEventSubscriptionDestinationPtrInput is an input type that accepts StorageQueueEventSubscriptionDestinationArgs, StorageQueueEventSubscriptionDestinationPtr and StorageQueueEventSubscriptionDestinationPtrOutput values.
+// You can construct a concrete instance of `StorageQueueEventSubscriptionDestinationPtrInput` via:
+//
+//	        StorageQueueEventSubscriptionDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type StorageQueueEventSubscriptionDestinationPtrInput interface {
+	pulumi.Input
+
+	ToStorageQueueEventSubscriptionDestinationPtrOutput() StorageQueueEventSubscriptionDestinationPtrOutput
+	ToStorageQueueEventSubscriptionDestinationPtrOutputWithContext(context.Context) StorageQueueEventSubscriptionDestinationPtrOutput
+}
+
+type storageQueueEventSubscriptionDestinationPtrType StorageQueueEventSubscriptionDestinationArgs
+
+func StorageQueueEventSubscriptionDestinationPtr(v *StorageQueueEventSubscriptionDestinationArgs) StorageQueueEventSubscriptionDestinationPtrInput {
+	return (*storageQueueEventSubscriptionDestinationPtrType)(v)
+}
+
+func (*storageQueueEventSubscriptionDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageQueueEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (i *storageQueueEventSubscriptionDestinationPtrType) ToStorageQueueEventSubscriptionDestinationPtrOutput() StorageQueueEventSubscriptionDestinationPtrOutput {
+	return i.ToStorageQueueEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *storageQueueEventSubscriptionDestinationPtrType) ToStorageQueueEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) StorageQueueEventSubscriptionDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageQueueEventSubscriptionDestinationPtrOutput)
+}
+
+// Information about the storage queue destination for an event subscription.
+type StorageQueueEventSubscriptionDestinationOutput struct{ *pulumi.OutputState }
+
+func (StorageQueueEventSubscriptionDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageQueueEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (o StorageQueueEventSubscriptionDestinationOutput) ToStorageQueueEventSubscriptionDestinationOutput() StorageQueueEventSubscriptionDestinationOutput {
+	return o
+}
+
+func (o StorageQueueEventSubscriptionDestinationOutput) ToStorageQueueEventSubscriptionDestinationOutputWithContext(ctx context.Context) StorageQueueEventSubscriptionDestinationOutput {
+	return o
+}
+
+func (o StorageQueueEventSubscriptionDestinationOutput) ToStorageQueueEventSubscriptionDestinationPtrOutput() StorageQueueEventSubscriptionDestinationPtrOutput {
+	return o.ToStorageQueueEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o StorageQueueEventSubscriptionDestinationOutput) ToStorageQueueEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) StorageQueueEventSubscriptionDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageQueueEventSubscriptionDestination) *StorageQueueEventSubscriptionDestination {
+		return &v
+	}).(StorageQueueEventSubscriptionDestinationPtrOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'StorageQueue'.
+func (o StorageQueueEventSubscriptionDestinationOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageQueueEventSubscriptionDestination) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// Storage queue message time to live in seconds.
+func (o StorageQueueEventSubscriptionDestinationOutput) QueueMessageTimeToLiveInSeconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v StorageQueueEventSubscriptionDestination) *float64 { return v.QueueMessageTimeToLiveInSeconds }).(pulumi.Float64PtrOutput)
+}
+
+// The name of the Storage queue under a storage account that is the destination of an event subscription.
+func (o StorageQueueEventSubscriptionDestinationOutput) QueueName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageQueueEventSubscriptionDestination) *string { return v.QueueName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure Resource ID of the storage account that contains the queue that is the destination of an event subscription.
+func (o StorageQueueEventSubscriptionDestinationOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageQueueEventSubscriptionDestination) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type StorageQueueEventSubscriptionDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (StorageQueueEventSubscriptionDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageQueueEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (o StorageQueueEventSubscriptionDestinationPtrOutput) ToStorageQueueEventSubscriptionDestinationPtrOutput() StorageQueueEventSubscriptionDestinationPtrOutput {
+	return o
+}
+
+func (o StorageQueueEventSubscriptionDestinationPtrOutput) ToStorageQueueEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) StorageQueueEventSubscriptionDestinationPtrOutput {
+	return o
+}
+
+func (o StorageQueueEventSubscriptionDestinationPtrOutput) Elem() StorageQueueEventSubscriptionDestinationOutput {
+	return o.ApplyT(func(v *StorageQueueEventSubscriptionDestination) StorageQueueEventSubscriptionDestination {
+		if v != nil {
+			return *v
+		}
+		var ret StorageQueueEventSubscriptionDestination
+		return ret
+	}).(StorageQueueEventSubscriptionDestinationOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'StorageQueue'.
+func (o StorageQueueEventSubscriptionDestinationPtrOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageQueueEventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Storage queue message time to live in seconds.
+func (o StorageQueueEventSubscriptionDestinationPtrOutput) QueueMessageTimeToLiveInSeconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *StorageQueueEventSubscriptionDestination) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.QueueMessageTimeToLiveInSeconds
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The name of the Storage queue under a storage account that is the destination of an event subscription.
+func (o StorageQueueEventSubscriptionDestinationPtrOutput) QueueName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageQueueEventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueueName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure Resource ID of the storage account that contains the queue that is the destination of an event subscription.
+func (o StorageQueueEventSubscriptionDestinationPtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageQueueEventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Information about the storage queue destination for an event subscription.
 type StorageQueueEventSubscriptionDestinationResponse struct {
 	// Type of the endpoint for the event subscription destination.
@@ -5402,6 +8208,109 @@ type StorageQueueEventSubscriptionDestinationResponse struct {
 	ResourceId *string `pulumi:"resourceId"`
 }
 
+// Information about the storage queue destination for an event subscription.
+type StorageQueueEventSubscriptionDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (StorageQueueEventSubscriptionDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageQueueEventSubscriptionDestinationResponse)(nil)).Elem()
+}
+
+func (o StorageQueueEventSubscriptionDestinationResponseOutput) ToStorageQueueEventSubscriptionDestinationResponseOutput() StorageQueueEventSubscriptionDestinationResponseOutput {
+	return o
+}
+
+func (o StorageQueueEventSubscriptionDestinationResponseOutput) ToStorageQueueEventSubscriptionDestinationResponseOutputWithContext(ctx context.Context) StorageQueueEventSubscriptionDestinationResponseOutput {
+	return o
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'StorageQueue'.
+func (o StorageQueueEventSubscriptionDestinationResponseOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageQueueEventSubscriptionDestinationResponse) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// Storage queue message time to live in seconds.
+func (o StorageQueueEventSubscriptionDestinationResponseOutput) QueueMessageTimeToLiveInSeconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v StorageQueueEventSubscriptionDestinationResponse) *float64 {
+		return v.QueueMessageTimeToLiveInSeconds
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The name of the Storage queue under a storage account that is the destination of an event subscription.
+func (o StorageQueueEventSubscriptionDestinationResponseOutput) QueueName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageQueueEventSubscriptionDestinationResponse) *string { return v.QueueName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure Resource ID of the storage account that contains the queue that is the destination of an event subscription.
+func (o StorageQueueEventSubscriptionDestinationResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageQueueEventSubscriptionDestinationResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type StorageQueueEventSubscriptionDestinationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StorageQueueEventSubscriptionDestinationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageQueueEventSubscriptionDestinationResponse)(nil)).Elem()
+}
+
+func (o StorageQueueEventSubscriptionDestinationResponsePtrOutput) ToStorageQueueEventSubscriptionDestinationResponsePtrOutput() StorageQueueEventSubscriptionDestinationResponsePtrOutput {
+	return o
+}
+
+func (o StorageQueueEventSubscriptionDestinationResponsePtrOutput) ToStorageQueueEventSubscriptionDestinationResponsePtrOutputWithContext(ctx context.Context) StorageQueueEventSubscriptionDestinationResponsePtrOutput {
+	return o
+}
+
+func (o StorageQueueEventSubscriptionDestinationResponsePtrOutput) Elem() StorageQueueEventSubscriptionDestinationResponseOutput {
+	return o.ApplyT(func(v *StorageQueueEventSubscriptionDestinationResponse) StorageQueueEventSubscriptionDestinationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StorageQueueEventSubscriptionDestinationResponse
+		return ret
+	}).(StorageQueueEventSubscriptionDestinationResponseOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'StorageQueue'.
+func (o StorageQueueEventSubscriptionDestinationResponsePtrOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageQueueEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Storage queue message time to live in seconds.
+func (o StorageQueueEventSubscriptionDestinationResponsePtrOutput) QueueMessageTimeToLiveInSeconds() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *StorageQueueEventSubscriptionDestinationResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.QueueMessageTimeToLiveInSeconds
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The name of the Storage queue under a storage account that is the destination of an event subscription.
+func (o StorageQueueEventSubscriptionDestinationResponsePtrOutput) QueueName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageQueueEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueueName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure Resource ID of the storage account that contains the queue that is the destination of an event subscription.
+func (o StorageQueueEventSubscriptionDestinationResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageQueueEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
 // StringBeginsWith Advanced Filter.
 type StringBeginsWithAdvancedFilter struct {
 	// The field/property in the event based on which you want to filter.
@@ -5411,6 +8320,71 @@ type StringBeginsWithAdvancedFilter struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values []string `pulumi:"values"`
+}
+
+// StringBeginsWithAdvancedFilterInput is an input type that accepts StringBeginsWithAdvancedFilterArgs and StringBeginsWithAdvancedFilterOutput values.
+// You can construct a concrete instance of `StringBeginsWithAdvancedFilterInput` via:
+//
+//	StringBeginsWithAdvancedFilterArgs{...}
+type StringBeginsWithAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToStringBeginsWithAdvancedFilterOutput() StringBeginsWithAdvancedFilterOutput
+	ToStringBeginsWithAdvancedFilterOutputWithContext(context.Context) StringBeginsWithAdvancedFilterOutput
+}
+
+// StringBeginsWith Advanced Filter.
+type StringBeginsWithAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringBeginsWith'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (StringBeginsWithAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringBeginsWithAdvancedFilter)(nil)).Elem()
+}
+
+func (i StringBeginsWithAdvancedFilterArgs) ToStringBeginsWithAdvancedFilterOutput() StringBeginsWithAdvancedFilterOutput {
+	return i.ToStringBeginsWithAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i StringBeginsWithAdvancedFilterArgs) ToStringBeginsWithAdvancedFilterOutputWithContext(ctx context.Context) StringBeginsWithAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StringBeginsWithAdvancedFilterOutput)
+}
+
+// StringBeginsWith Advanced Filter.
+type StringBeginsWithAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (StringBeginsWithAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringBeginsWithAdvancedFilter)(nil)).Elem()
+}
+
+func (o StringBeginsWithAdvancedFilterOutput) ToStringBeginsWithAdvancedFilterOutput() StringBeginsWithAdvancedFilterOutput {
+	return o
+}
+
+func (o StringBeginsWithAdvancedFilterOutput) ToStringBeginsWithAdvancedFilterOutputWithContext(ctx context.Context) StringBeginsWithAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringBeginsWithAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringBeginsWithAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringBeginsWith'.
+func (o StringBeginsWithAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringBeginsWithAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringBeginsWithAdvancedFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringBeginsWithAdvancedFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 // StringBeginsWith Advanced Filter.
@@ -5424,6 +8398,37 @@ type StringBeginsWithAdvancedFilterResponse struct {
 	Values []string `pulumi:"values"`
 }
 
+// StringBeginsWith Advanced Filter.
+type StringBeginsWithAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (StringBeginsWithAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringBeginsWithAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o StringBeginsWithAdvancedFilterResponseOutput) ToStringBeginsWithAdvancedFilterResponseOutput() StringBeginsWithAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o StringBeginsWithAdvancedFilterResponseOutput) ToStringBeginsWithAdvancedFilterResponseOutputWithContext(ctx context.Context) StringBeginsWithAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringBeginsWithAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringBeginsWithAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringBeginsWith'.
+func (o StringBeginsWithAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringBeginsWithAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringBeginsWithAdvancedFilterResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringBeginsWithAdvancedFilterResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
 // StringContains Advanced Filter.
 type StringContainsAdvancedFilter struct {
 	// The field/property in the event based on which you want to filter.
@@ -5433,6 +8438,71 @@ type StringContainsAdvancedFilter struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values []string `pulumi:"values"`
+}
+
+// StringContainsAdvancedFilterInput is an input type that accepts StringContainsAdvancedFilterArgs and StringContainsAdvancedFilterOutput values.
+// You can construct a concrete instance of `StringContainsAdvancedFilterInput` via:
+//
+//	StringContainsAdvancedFilterArgs{...}
+type StringContainsAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToStringContainsAdvancedFilterOutput() StringContainsAdvancedFilterOutput
+	ToStringContainsAdvancedFilterOutputWithContext(context.Context) StringContainsAdvancedFilterOutput
+}
+
+// StringContains Advanced Filter.
+type StringContainsAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringContains'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (StringContainsAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringContainsAdvancedFilter)(nil)).Elem()
+}
+
+func (i StringContainsAdvancedFilterArgs) ToStringContainsAdvancedFilterOutput() StringContainsAdvancedFilterOutput {
+	return i.ToStringContainsAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i StringContainsAdvancedFilterArgs) ToStringContainsAdvancedFilterOutputWithContext(ctx context.Context) StringContainsAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StringContainsAdvancedFilterOutput)
+}
+
+// StringContains Advanced Filter.
+type StringContainsAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (StringContainsAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringContainsAdvancedFilter)(nil)).Elem()
+}
+
+func (o StringContainsAdvancedFilterOutput) ToStringContainsAdvancedFilterOutput() StringContainsAdvancedFilterOutput {
+	return o
+}
+
+func (o StringContainsAdvancedFilterOutput) ToStringContainsAdvancedFilterOutputWithContext(ctx context.Context) StringContainsAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringContainsAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringContainsAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringContains'.
+func (o StringContainsAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringContainsAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringContainsAdvancedFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringContainsAdvancedFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 // StringContains Advanced Filter.
@@ -5446,6 +8516,37 @@ type StringContainsAdvancedFilterResponse struct {
 	Values []string `pulumi:"values"`
 }
 
+// StringContains Advanced Filter.
+type StringContainsAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (StringContainsAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringContainsAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o StringContainsAdvancedFilterResponseOutput) ToStringContainsAdvancedFilterResponseOutput() StringContainsAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o StringContainsAdvancedFilterResponseOutput) ToStringContainsAdvancedFilterResponseOutputWithContext(ctx context.Context) StringContainsAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringContainsAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringContainsAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringContains'.
+func (o StringContainsAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringContainsAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringContainsAdvancedFilterResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringContainsAdvancedFilterResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
 // StringEndsWith Advanced Filter.
 type StringEndsWithAdvancedFilter struct {
 	// The field/property in the event based on which you want to filter.
@@ -5455,6 +8556,71 @@ type StringEndsWithAdvancedFilter struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values []string `pulumi:"values"`
+}
+
+// StringEndsWithAdvancedFilterInput is an input type that accepts StringEndsWithAdvancedFilterArgs and StringEndsWithAdvancedFilterOutput values.
+// You can construct a concrete instance of `StringEndsWithAdvancedFilterInput` via:
+//
+//	StringEndsWithAdvancedFilterArgs{...}
+type StringEndsWithAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToStringEndsWithAdvancedFilterOutput() StringEndsWithAdvancedFilterOutput
+	ToStringEndsWithAdvancedFilterOutputWithContext(context.Context) StringEndsWithAdvancedFilterOutput
+}
+
+// StringEndsWith Advanced Filter.
+type StringEndsWithAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringEndsWith'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (StringEndsWithAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringEndsWithAdvancedFilter)(nil)).Elem()
+}
+
+func (i StringEndsWithAdvancedFilterArgs) ToStringEndsWithAdvancedFilterOutput() StringEndsWithAdvancedFilterOutput {
+	return i.ToStringEndsWithAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i StringEndsWithAdvancedFilterArgs) ToStringEndsWithAdvancedFilterOutputWithContext(ctx context.Context) StringEndsWithAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StringEndsWithAdvancedFilterOutput)
+}
+
+// StringEndsWith Advanced Filter.
+type StringEndsWithAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (StringEndsWithAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringEndsWithAdvancedFilter)(nil)).Elem()
+}
+
+func (o StringEndsWithAdvancedFilterOutput) ToStringEndsWithAdvancedFilterOutput() StringEndsWithAdvancedFilterOutput {
+	return o
+}
+
+func (o StringEndsWithAdvancedFilterOutput) ToStringEndsWithAdvancedFilterOutputWithContext(ctx context.Context) StringEndsWithAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringEndsWithAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringEndsWithAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringEndsWith'.
+func (o StringEndsWithAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringEndsWithAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringEndsWithAdvancedFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringEndsWithAdvancedFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 // StringEndsWith Advanced Filter.
@@ -5468,6 +8634,37 @@ type StringEndsWithAdvancedFilterResponse struct {
 	Values []string `pulumi:"values"`
 }
 
+// StringEndsWith Advanced Filter.
+type StringEndsWithAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (StringEndsWithAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringEndsWithAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o StringEndsWithAdvancedFilterResponseOutput) ToStringEndsWithAdvancedFilterResponseOutput() StringEndsWithAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o StringEndsWithAdvancedFilterResponseOutput) ToStringEndsWithAdvancedFilterResponseOutputWithContext(ctx context.Context) StringEndsWithAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringEndsWithAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringEndsWithAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringEndsWith'.
+func (o StringEndsWithAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringEndsWithAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringEndsWithAdvancedFilterResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringEndsWithAdvancedFilterResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
 // StringIn Advanced Filter.
 type StringInAdvancedFilter struct {
 	// The field/property in the event based on which you want to filter.
@@ -5477,6 +8674,71 @@ type StringInAdvancedFilter struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values []string `pulumi:"values"`
+}
+
+// StringInAdvancedFilterInput is an input type that accepts StringInAdvancedFilterArgs and StringInAdvancedFilterOutput values.
+// You can construct a concrete instance of `StringInAdvancedFilterInput` via:
+//
+//	StringInAdvancedFilterArgs{...}
+type StringInAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToStringInAdvancedFilterOutput() StringInAdvancedFilterOutput
+	ToStringInAdvancedFilterOutputWithContext(context.Context) StringInAdvancedFilterOutput
+}
+
+// StringIn Advanced Filter.
+type StringInAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringIn'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (StringInAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringInAdvancedFilter)(nil)).Elem()
+}
+
+func (i StringInAdvancedFilterArgs) ToStringInAdvancedFilterOutput() StringInAdvancedFilterOutput {
+	return i.ToStringInAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i StringInAdvancedFilterArgs) ToStringInAdvancedFilterOutputWithContext(ctx context.Context) StringInAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StringInAdvancedFilterOutput)
+}
+
+// StringIn Advanced Filter.
+type StringInAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (StringInAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringInAdvancedFilter)(nil)).Elem()
+}
+
+func (o StringInAdvancedFilterOutput) ToStringInAdvancedFilterOutput() StringInAdvancedFilterOutput {
+	return o
+}
+
+func (o StringInAdvancedFilterOutput) ToStringInAdvancedFilterOutputWithContext(ctx context.Context) StringInAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringInAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringInAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringIn'.
+func (o StringInAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringInAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringInAdvancedFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringInAdvancedFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 // StringIn Advanced Filter.
@@ -5490,6 +8752,37 @@ type StringInAdvancedFilterResponse struct {
 	Values []string `pulumi:"values"`
 }
 
+// StringIn Advanced Filter.
+type StringInAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (StringInAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringInAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o StringInAdvancedFilterResponseOutput) ToStringInAdvancedFilterResponseOutput() StringInAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o StringInAdvancedFilterResponseOutput) ToStringInAdvancedFilterResponseOutputWithContext(ctx context.Context) StringInAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringInAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringInAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringIn'.
+func (o StringInAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringInAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringInAdvancedFilterResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringInAdvancedFilterResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
 // StringNotBeginsWith Advanced Filter.
 type StringNotBeginsWithAdvancedFilter struct {
 	// The field/property in the event based on which you want to filter.
@@ -5499,6 +8792,71 @@ type StringNotBeginsWithAdvancedFilter struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values []string `pulumi:"values"`
+}
+
+// StringNotBeginsWithAdvancedFilterInput is an input type that accepts StringNotBeginsWithAdvancedFilterArgs and StringNotBeginsWithAdvancedFilterOutput values.
+// You can construct a concrete instance of `StringNotBeginsWithAdvancedFilterInput` via:
+//
+//	StringNotBeginsWithAdvancedFilterArgs{...}
+type StringNotBeginsWithAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToStringNotBeginsWithAdvancedFilterOutput() StringNotBeginsWithAdvancedFilterOutput
+	ToStringNotBeginsWithAdvancedFilterOutputWithContext(context.Context) StringNotBeginsWithAdvancedFilterOutput
+}
+
+// StringNotBeginsWith Advanced Filter.
+type StringNotBeginsWithAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringNotBeginsWith'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (StringNotBeginsWithAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotBeginsWithAdvancedFilter)(nil)).Elem()
+}
+
+func (i StringNotBeginsWithAdvancedFilterArgs) ToStringNotBeginsWithAdvancedFilterOutput() StringNotBeginsWithAdvancedFilterOutput {
+	return i.ToStringNotBeginsWithAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i StringNotBeginsWithAdvancedFilterArgs) ToStringNotBeginsWithAdvancedFilterOutputWithContext(ctx context.Context) StringNotBeginsWithAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StringNotBeginsWithAdvancedFilterOutput)
+}
+
+// StringNotBeginsWith Advanced Filter.
+type StringNotBeginsWithAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (StringNotBeginsWithAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotBeginsWithAdvancedFilter)(nil)).Elem()
+}
+
+func (o StringNotBeginsWithAdvancedFilterOutput) ToStringNotBeginsWithAdvancedFilterOutput() StringNotBeginsWithAdvancedFilterOutput {
+	return o
+}
+
+func (o StringNotBeginsWithAdvancedFilterOutput) ToStringNotBeginsWithAdvancedFilterOutputWithContext(ctx context.Context) StringNotBeginsWithAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringNotBeginsWithAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringNotBeginsWithAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringNotBeginsWith'.
+func (o StringNotBeginsWithAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringNotBeginsWithAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringNotBeginsWithAdvancedFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringNotBeginsWithAdvancedFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 // StringNotBeginsWith Advanced Filter.
@@ -5512,6 +8870,37 @@ type StringNotBeginsWithAdvancedFilterResponse struct {
 	Values []string `pulumi:"values"`
 }
 
+// StringNotBeginsWith Advanced Filter.
+type StringNotBeginsWithAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (StringNotBeginsWithAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotBeginsWithAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o StringNotBeginsWithAdvancedFilterResponseOutput) ToStringNotBeginsWithAdvancedFilterResponseOutput() StringNotBeginsWithAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o StringNotBeginsWithAdvancedFilterResponseOutput) ToStringNotBeginsWithAdvancedFilterResponseOutputWithContext(ctx context.Context) StringNotBeginsWithAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringNotBeginsWithAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringNotBeginsWithAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringNotBeginsWith'.
+func (o StringNotBeginsWithAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringNotBeginsWithAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringNotBeginsWithAdvancedFilterResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringNotBeginsWithAdvancedFilterResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
 // StringNotContains Advanced Filter.
 type StringNotContainsAdvancedFilter struct {
 	// The field/property in the event based on which you want to filter.
@@ -5521,6 +8910,71 @@ type StringNotContainsAdvancedFilter struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values []string `pulumi:"values"`
+}
+
+// StringNotContainsAdvancedFilterInput is an input type that accepts StringNotContainsAdvancedFilterArgs and StringNotContainsAdvancedFilterOutput values.
+// You can construct a concrete instance of `StringNotContainsAdvancedFilterInput` via:
+//
+//	StringNotContainsAdvancedFilterArgs{...}
+type StringNotContainsAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToStringNotContainsAdvancedFilterOutput() StringNotContainsAdvancedFilterOutput
+	ToStringNotContainsAdvancedFilterOutputWithContext(context.Context) StringNotContainsAdvancedFilterOutput
+}
+
+// StringNotContains Advanced Filter.
+type StringNotContainsAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringNotContains'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (StringNotContainsAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotContainsAdvancedFilter)(nil)).Elem()
+}
+
+func (i StringNotContainsAdvancedFilterArgs) ToStringNotContainsAdvancedFilterOutput() StringNotContainsAdvancedFilterOutput {
+	return i.ToStringNotContainsAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i StringNotContainsAdvancedFilterArgs) ToStringNotContainsAdvancedFilterOutputWithContext(ctx context.Context) StringNotContainsAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StringNotContainsAdvancedFilterOutput)
+}
+
+// StringNotContains Advanced Filter.
+type StringNotContainsAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (StringNotContainsAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotContainsAdvancedFilter)(nil)).Elem()
+}
+
+func (o StringNotContainsAdvancedFilterOutput) ToStringNotContainsAdvancedFilterOutput() StringNotContainsAdvancedFilterOutput {
+	return o
+}
+
+func (o StringNotContainsAdvancedFilterOutput) ToStringNotContainsAdvancedFilterOutputWithContext(ctx context.Context) StringNotContainsAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringNotContainsAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringNotContainsAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringNotContains'.
+func (o StringNotContainsAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringNotContainsAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringNotContainsAdvancedFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringNotContainsAdvancedFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 // StringNotContains Advanced Filter.
@@ -5534,6 +8988,37 @@ type StringNotContainsAdvancedFilterResponse struct {
 	Values []string `pulumi:"values"`
 }
 
+// StringNotContains Advanced Filter.
+type StringNotContainsAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (StringNotContainsAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotContainsAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o StringNotContainsAdvancedFilterResponseOutput) ToStringNotContainsAdvancedFilterResponseOutput() StringNotContainsAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o StringNotContainsAdvancedFilterResponseOutput) ToStringNotContainsAdvancedFilterResponseOutputWithContext(ctx context.Context) StringNotContainsAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringNotContainsAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringNotContainsAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringNotContains'.
+func (o StringNotContainsAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringNotContainsAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringNotContainsAdvancedFilterResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringNotContainsAdvancedFilterResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
 // StringNotEndsWith Advanced Filter.
 type StringNotEndsWithAdvancedFilter struct {
 	// The field/property in the event based on which you want to filter.
@@ -5543,6 +9028,71 @@ type StringNotEndsWithAdvancedFilter struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values []string `pulumi:"values"`
+}
+
+// StringNotEndsWithAdvancedFilterInput is an input type that accepts StringNotEndsWithAdvancedFilterArgs and StringNotEndsWithAdvancedFilterOutput values.
+// You can construct a concrete instance of `StringNotEndsWithAdvancedFilterInput` via:
+//
+//	StringNotEndsWithAdvancedFilterArgs{...}
+type StringNotEndsWithAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToStringNotEndsWithAdvancedFilterOutput() StringNotEndsWithAdvancedFilterOutput
+	ToStringNotEndsWithAdvancedFilterOutputWithContext(context.Context) StringNotEndsWithAdvancedFilterOutput
+}
+
+// StringNotEndsWith Advanced Filter.
+type StringNotEndsWithAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringNotEndsWith'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (StringNotEndsWithAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotEndsWithAdvancedFilter)(nil)).Elem()
+}
+
+func (i StringNotEndsWithAdvancedFilterArgs) ToStringNotEndsWithAdvancedFilterOutput() StringNotEndsWithAdvancedFilterOutput {
+	return i.ToStringNotEndsWithAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i StringNotEndsWithAdvancedFilterArgs) ToStringNotEndsWithAdvancedFilterOutputWithContext(ctx context.Context) StringNotEndsWithAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StringNotEndsWithAdvancedFilterOutput)
+}
+
+// StringNotEndsWith Advanced Filter.
+type StringNotEndsWithAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (StringNotEndsWithAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotEndsWithAdvancedFilter)(nil)).Elem()
+}
+
+func (o StringNotEndsWithAdvancedFilterOutput) ToStringNotEndsWithAdvancedFilterOutput() StringNotEndsWithAdvancedFilterOutput {
+	return o
+}
+
+func (o StringNotEndsWithAdvancedFilterOutput) ToStringNotEndsWithAdvancedFilterOutputWithContext(ctx context.Context) StringNotEndsWithAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringNotEndsWithAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringNotEndsWithAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringNotEndsWith'.
+func (o StringNotEndsWithAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringNotEndsWithAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringNotEndsWithAdvancedFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringNotEndsWithAdvancedFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 // StringNotEndsWith Advanced Filter.
@@ -5556,6 +9106,37 @@ type StringNotEndsWithAdvancedFilterResponse struct {
 	Values []string `pulumi:"values"`
 }
 
+// StringNotEndsWith Advanced Filter.
+type StringNotEndsWithAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (StringNotEndsWithAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotEndsWithAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o StringNotEndsWithAdvancedFilterResponseOutput) ToStringNotEndsWithAdvancedFilterResponseOutput() StringNotEndsWithAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o StringNotEndsWithAdvancedFilterResponseOutput) ToStringNotEndsWithAdvancedFilterResponseOutputWithContext(ctx context.Context) StringNotEndsWithAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringNotEndsWithAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringNotEndsWithAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringNotEndsWith'.
+func (o StringNotEndsWithAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringNotEndsWithAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringNotEndsWithAdvancedFilterResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringNotEndsWithAdvancedFilterResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
 // StringNotIn Advanced Filter.
 type StringNotInAdvancedFilter struct {
 	// The field/property in the event based on which you want to filter.
@@ -5567,6 +9148,71 @@ type StringNotInAdvancedFilter struct {
 	Values []string `pulumi:"values"`
 }
 
+// StringNotInAdvancedFilterInput is an input type that accepts StringNotInAdvancedFilterArgs and StringNotInAdvancedFilterOutput values.
+// You can construct a concrete instance of `StringNotInAdvancedFilterInput` via:
+//
+//	StringNotInAdvancedFilterArgs{...}
+type StringNotInAdvancedFilterInput interface {
+	pulumi.Input
+
+	ToStringNotInAdvancedFilterOutput() StringNotInAdvancedFilterOutput
+	ToStringNotInAdvancedFilterOutputWithContext(context.Context) StringNotInAdvancedFilterOutput
+}
+
+// StringNotIn Advanced Filter.
+type StringNotInAdvancedFilterArgs struct {
+	// The field/property in the event based on which you want to filter.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+	// Expected value is 'StringNotIn'.
+	OperatorType pulumi.StringInput `pulumi:"operatorType"`
+	// The set of filter values.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (StringNotInAdvancedFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotInAdvancedFilter)(nil)).Elem()
+}
+
+func (i StringNotInAdvancedFilterArgs) ToStringNotInAdvancedFilterOutput() StringNotInAdvancedFilterOutput {
+	return i.ToStringNotInAdvancedFilterOutputWithContext(context.Background())
+}
+
+func (i StringNotInAdvancedFilterArgs) ToStringNotInAdvancedFilterOutputWithContext(ctx context.Context) StringNotInAdvancedFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StringNotInAdvancedFilterOutput)
+}
+
+// StringNotIn Advanced Filter.
+type StringNotInAdvancedFilterOutput struct{ *pulumi.OutputState }
+
+func (StringNotInAdvancedFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotInAdvancedFilter)(nil)).Elem()
+}
+
+func (o StringNotInAdvancedFilterOutput) ToStringNotInAdvancedFilterOutput() StringNotInAdvancedFilterOutput {
+	return o
+}
+
+func (o StringNotInAdvancedFilterOutput) ToStringNotInAdvancedFilterOutputWithContext(ctx context.Context) StringNotInAdvancedFilterOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringNotInAdvancedFilterOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringNotInAdvancedFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringNotIn'.
+func (o StringNotInAdvancedFilterOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringNotInAdvancedFilter) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringNotInAdvancedFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringNotInAdvancedFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
 // StringNotIn Advanced Filter.
 type StringNotInAdvancedFilterResponse struct {
 	// The field/property in the event based on which you want to filter.
@@ -5576,6 +9222,37 @@ type StringNotInAdvancedFilterResponse struct {
 	OperatorType string `pulumi:"operatorType"`
 	// The set of filter values.
 	Values []string `pulumi:"values"`
+}
+
+// StringNotIn Advanced Filter.
+type StringNotInAdvancedFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (StringNotInAdvancedFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StringNotInAdvancedFilterResponse)(nil)).Elem()
+}
+
+func (o StringNotInAdvancedFilterResponseOutput) ToStringNotInAdvancedFilterResponseOutput() StringNotInAdvancedFilterResponseOutput {
+	return o
+}
+
+func (o StringNotInAdvancedFilterResponseOutput) ToStringNotInAdvancedFilterResponseOutputWithContext(ctx context.Context) StringNotInAdvancedFilterResponseOutput {
+	return o
+}
+
+// The field/property in the event based on which you want to filter.
+func (o StringNotInAdvancedFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StringNotInAdvancedFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+// Expected value is 'StringNotIn'.
+func (o StringNotInAdvancedFilterResponseOutput) OperatorType() pulumi.StringOutput {
+	return o.ApplyT(func(v StringNotInAdvancedFilterResponse) string { return v.OperatorType }).(pulumi.StringOutput)
+}
+
+// The set of filter values.
+func (o StringNotInAdvancedFilterResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v StringNotInAdvancedFilterResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -5837,6 +9514,259 @@ func (val *WebHookEventSubscriptionDestination) Defaults() *WebHookEventSubscrip
 	return &tmp
 }
 
+// WebHookEventSubscriptionDestinationInput is an input type that accepts WebHookEventSubscriptionDestinationArgs and WebHookEventSubscriptionDestinationOutput values.
+// You can construct a concrete instance of `WebHookEventSubscriptionDestinationInput` via:
+//
+//	WebHookEventSubscriptionDestinationArgs{...}
+type WebHookEventSubscriptionDestinationInput interface {
+	pulumi.Input
+
+	ToWebHookEventSubscriptionDestinationOutput() WebHookEventSubscriptionDestinationOutput
+	ToWebHookEventSubscriptionDestinationOutputWithContext(context.Context) WebHookEventSubscriptionDestinationOutput
+}
+
+// Information about the webhook destination for an event subscription.
+type WebHookEventSubscriptionDestinationArgs struct {
+	// The Azure Active Directory Application ID or URI to get the access token that will be included as the bearer token in delivery requests.
+	AzureActiveDirectoryApplicationIdOrUri pulumi.StringPtrInput `pulumi:"azureActiveDirectoryApplicationIdOrUri"`
+	// The Azure Active Directory Tenant ID to get the access token that will be included as the bearer token in delivery requests.
+	AzureActiveDirectoryTenantId pulumi.StringPtrInput `pulumi:"azureActiveDirectoryTenantId"`
+	// Delivery attribute details.
+	DeliveryAttributeMappings pulumi.ArrayInput `pulumi:"deliveryAttributeMappings"`
+	// Type of the endpoint for the event subscription destination.
+	// Expected value is 'WebHook'.
+	EndpointType pulumi.StringInput `pulumi:"endpointType"`
+	// The URL that represents the endpoint of the destination of an event subscription.
+	EndpointUrl pulumi.StringPtrInput `pulumi:"endpointUrl"`
+	// Maximum number of events per batch.
+	MaxEventsPerBatch pulumi.IntPtrInput `pulumi:"maxEventsPerBatch"`
+	// Preferred batch size in Kilobytes.
+	PreferredBatchSizeInKilobytes pulumi.IntPtrInput `pulumi:"preferredBatchSizeInKilobytes"`
+}
+
+// Defaults sets the appropriate defaults for WebHookEventSubscriptionDestinationArgs
+func (val *WebHookEventSubscriptionDestinationArgs) Defaults() *WebHookEventSubscriptionDestinationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.MaxEventsPerBatch == nil {
+		tmp.MaxEventsPerBatch = pulumi.IntPtr(1)
+	}
+	if tmp.PreferredBatchSizeInKilobytes == nil {
+		tmp.PreferredBatchSizeInKilobytes = pulumi.IntPtr(64)
+	}
+	return &tmp
+}
+func (WebHookEventSubscriptionDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebHookEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (i WebHookEventSubscriptionDestinationArgs) ToWebHookEventSubscriptionDestinationOutput() WebHookEventSubscriptionDestinationOutput {
+	return i.ToWebHookEventSubscriptionDestinationOutputWithContext(context.Background())
+}
+
+func (i WebHookEventSubscriptionDestinationArgs) ToWebHookEventSubscriptionDestinationOutputWithContext(ctx context.Context) WebHookEventSubscriptionDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebHookEventSubscriptionDestinationOutput)
+}
+
+func (i WebHookEventSubscriptionDestinationArgs) ToWebHookEventSubscriptionDestinationPtrOutput() WebHookEventSubscriptionDestinationPtrOutput {
+	return i.ToWebHookEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i WebHookEventSubscriptionDestinationArgs) ToWebHookEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) WebHookEventSubscriptionDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebHookEventSubscriptionDestinationOutput).ToWebHookEventSubscriptionDestinationPtrOutputWithContext(ctx)
+}
+
+// WebHookEventSubscriptionDestinationPtrInput is an input type that accepts WebHookEventSubscriptionDestinationArgs, WebHookEventSubscriptionDestinationPtr and WebHookEventSubscriptionDestinationPtrOutput values.
+// You can construct a concrete instance of `WebHookEventSubscriptionDestinationPtrInput` via:
+//
+//	        WebHookEventSubscriptionDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type WebHookEventSubscriptionDestinationPtrInput interface {
+	pulumi.Input
+
+	ToWebHookEventSubscriptionDestinationPtrOutput() WebHookEventSubscriptionDestinationPtrOutput
+	ToWebHookEventSubscriptionDestinationPtrOutputWithContext(context.Context) WebHookEventSubscriptionDestinationPtrOutput
+}
+
+type webHookEventSubscriptionDestinationPtrType WebHookEventSubscriptionDestinationArgs
+
+func WebHookEventSubscriptionDestinationPtr(v *WebHookEventSubscriptionDestinationArgs) WebHookEventSubscriptionDestinationPtrInput {
+	return (*webHookEventSubscriptionDestinationPtrType)(v)
+}
+
+func (*webHookEventSubscriptionDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebHookEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (i *webHookEventSubscriptionDestinationPtrType) ToWebHookEventSubscriptionDestinationPtrOutput() WebHookEventSubscriptionDestinationPtrOutput {
+	return i.ToWebHookEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *webHookEventSubscriptionDestinationPtrType) ToWebHookEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) WebHookEventSubscriptionDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebHookEventSubscriptionDestinationPtrOutput)
+}
+
+// Information about the webhook destination for an event subscription.
+type WebHookEventSubscriptionDestinationOutput struct{ *pulumi.OutputState }
+
+func (WebHookEventSubscriptionDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebHookEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (o WebHookEventSubscriptionDestinationOutput) ToWebHookEventSubscriptionDestinationOutput() WebHookEventSubscriptionDestinationOutput {
+	return o
+}
+
+func (o WebHookEventSubscriptionDestinationOutput) ToWebHookEventSubscriptionDestinationOutputWithContext(ctx context.Context) WebHookEventSubscriptionDestinationOutput {
+	return o
+}
+
+func (o WebHookEventSubscriptionDestinationOutput) ToWebHookEventSubscriptionDestinationPtrOutput() WebHookEventSubscriptionDestinationPtrOutput {
+	return o.ToWebHookEventSubscriptionDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o WebHookEventSubscriptionDestinationOutput) ToWebHookEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) WebHookEventSubscriptionDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebHookEventSubscriptionDestination) *WebHookEventSubscriptionDestination {
+		return &v
+	}).(WebHookEventSubscriptionDestinationPtrOutput)
+}
+
+// The Azure Active Directory Application ID or URI to get the access token that will be included as the bearer token in delivery requests.
+func (o WebHookEventSubscriptionDestinationOutput) AzureActiveDirectoryApplicationIdOrUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebHookEventSubscriptionDestination) *string { return v.AzureActiveDirectoryApplicationIdOrUri }).(pulumi.StringPtrOutput)
+}
+
+// The Azure Active Directory Tenant ID to get the access token that will be included as the bearer token in delivery requests.
+func (o WebHookEventSubscriptionDestinationOutput) AzureActiveDirectoryTenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebHookEventSubscriptionDestination) *string { return v.AzureActiveDirectoryTenantId }).(pulumi.StringPtrOutput)
+}
+
+// Delivery attribute details.
+func (o WebHookEventSubscriptionDestinationOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v WebHookEventSubscriptionDestination) []interface{} { return v.DeliveryAttributeMappings }).(pulumi.ArrayOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'WebHook'.
+func (o WebHookEventSubscriptionDestinationOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v WebHookEventSubscriptionDestination) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The URL that represents the endpoint of the destination of an event subscription.
+func (o WebHookEventSubscriptionDestinationOutput) EndpointUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebHookEventSubscriptionDestination) *string { return v.EndpointUrl }).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of events per batch.
+func (o WebHookEventSubscriptionDestinationOutput) MaxEventsPerBatch() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WebHookEventSubscriptionDestination) *int { return v.MaxEventsPerBatch }).(pulumi.IntPtrOutput)
+}
+
+// Preferred batch size in Kilobytes.
+func (o WebHookEventSubscriptionDestinationOutput) PreferredBatchSizeInKilobytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WebHookEventSubscriptionDestination) *int { return v.PreferredBatchSizeInKilobytes }).(pulumi.IntPtrOutput)
+}
+
+type WebHookEventSubscriptionDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (WebHookEventSubscriptionDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebHookEventSubscriptionDestination)(nil)).Elem()
+}
+
+func (o WebHookEventSubscriptionDestinationPtrOutput) ToWebHookEventSubscriptionDestinationPtrOutput() WebHookEventSubscriptionDestinationPtrOutput {
+	return o
+}
+
+func (o WebHookEventSubscriptionDestinationPtrOutput) ToWebHookEventSubscriptionDestinationPtrOutputWithContext(ctx context.Context) WebHookEventSubscriptionDestinationPtrOutput {
+	return o
+}
+
+func (o WebHookEventSubscriptionDestinationPtrOutput) Elem() WebHookEventSubscriptionDestinationOutput {
+	return o.ApplyT(func(v *WebHookEventSubscriptionDestination) WebHookEventSubscriptionDestination {
+		if v != nil {
+			return *v
+		}
+		var ret WebHookEventSubscriptionDestination
+		return ret
+	}).(WebHookEventSubscriptionDestinationOutput)
+}
+
+// The Azure Active Directory Application ID or URI to get the access token that will be included as the bearer token in delivery requests.
+func (o WebHookEventSubscriptionDestinationPtrOutput) AzureActiveDirectoryApplicationIdOrUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebHookEventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureActiveDirectoryApplicationIdOrUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure Active Directory Tenant ID to get the access token that will be included as the bearer token in delivery requests.
+func (o WebHookEventSubscriptionDestinationPtrOutput) AzureActiveDirectoryTenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebHookEventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureActiveDirectoryTenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Delivery attribute details.
+func (o WebHookEventSubscriptionDestinationPtrOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *WebHookEventSubscriptionDestination) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.DeliveryAttributeMappings
+	}).(pulumi.ArrayOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'WebHook'.
+func (o WebHookEventSubscriptionDestinationPtrOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebHookEventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL that represents the endpoint of the destination of an event subscription.
+func (o WebHookEventSubscriptionDestinationPtrOutput) EndpointUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebHookEventSubscriptionDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of events per batch.
+func (o WebHookEventSubscriptionDestinationPtrOutput) MaxEventsPerBatch() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WebHookEventSubscriptionDestination) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxEventsPerBatch
+	}).(pulumi.IntPtrOutput)
+}
+
+// Preferred batch size in Kilobytes.
+func (o WebHookEventSubscriptionDestinationPtrOutput) PreferredBatchSizeInKilobytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WebHookEventSubscriptionDestination) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PreferredBatchSizeInKilobytes
+	}).(pulumi.IntPtrOutput)
+}
+
 // Information about the webhook destination for an event subscription.
 type WebHookEventSubscriptionDestinationResponse struct {
 	// The Azure Active Directory Application ID or URI to get the access token that will be included as the bearer token in delivery requests.
@@ -5874,7 +9804,177 @@ func (val *WebHookEventSubscriptionDestinationResponse) Defaults() *WebHookEvent
 	}
 	return &tmp
 }
+
+// Information about the webhook destination for an event subscription.
+type WebHookEventSubscriptionDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (WebHookEventSubscriptionDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebHookEventSubscriptionDestinationResponse)(nil)).Elem()
+}
+
+func (o WebHookEventSubscriptionDestinationResponseOutput) ToWebHookEventSubscriptionDestinationResponseOutput() WebHookEventSubscriptionDestinationResponseOutput {
+	return o
+}
+
+func (o WebHookEventSubscriptionDestinationResponseOutput) ToWebHookEventSubscriptionDestinationResponseOutputWithContext(ctx context.Context) WebHookEventSubscriptionDestinationResponseOutput {
+	return o
+}
+
+// The Azure Active Directory Application ID or URI to get the access token that will be included as the bearer token in delivery requests.
+func (o WebHookEventSubscriptionDestinationResponseOutput) AzureActiveDirectoryApplicationIdOrUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebHookEventSubscriptionDestinationResponse) *string {
+		return v.AzureActiveDirectoryApplicationIdOrUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure Active Directory Tenant ID to get the access token that will be included as the bearer token in delivery requests.
+func (o WebHookEventSubscriptionDestinationResponseOutput) AzureActiveDirectoryTenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebHookEventSubscriptionDestinationResponse) *string { return v.AzureActiveDirectoryTenantId }).(pulumi.StringPtrOutput)
+}
+
+// Delivery attribute details.
+func (o WebHookEventSubscriptionDestinationResponseOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v WebHookEventSubscriptionDestinationResponse) []interface{} { return v.DeliveryAttributeMappings }).(pulumi.ArrayOutput)
+}
+
+// The base URL that represents the endpoint of the destination of an event subscription.
+func (o WebHookEventSubscriptionDestinationResponseOutput) EndpointBaseUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v WebHookEventSubscriptionDestinationResponse) string { return v.EndpointBaseUrl }).(pulumi.StringOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'WebHook'.
+func (o WebHookEventSubscriptionDestinationResponseOutput) EndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v WebHookEventSubscriptionDestinationResponse) string { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// The URL that represents the endpoint of the destination of an event subscription.
+func (o WebHookEventSubscriptionDestinationResponseOutput) EndpointUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebHookEventSubscriptionDestinationResponse) *string { return v.EndpointUrl }).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of events per batch.
+func (o WebHookEventSubscriptionDestinationResponseOutput) MaxEventsPerBatch() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WebHookEventSubscriptionDestinationResponse) *int { return v.MaxEventsPerBatch }).(pulumi.IntPtrOutput)
+}
+
+// Preferred batch size in Kilobytes.
+func (o WebHookEventSubscriptionDestinationResponseOutput) PreferredBatchSizeInKilobytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WebHookEventSubscriptionDestinationResponse) *int { return v.PreferredBatchSizeInKilobytes }).(pulumi.IntPtrOutput)
+}
+
+type WebHookEventSubscriptionDestinationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WebHookEventSubscriptionDestinationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebHookEventSubscriptionDestinationResponse)(nil)).Elem()
+}
+
+func (o WebHookEventSubscriptionDestinationResponsePtrOutput) ToWebHookEventSubscriptionDestinationResponsePtrOutput() WebHookEventSubscriptionDestinationResponsePtrOutput {
+	return o
+}
+
+func (o WebHookEventSubscriptionDestinationResponsePtrOutput) ToWebHookEventSubscriptionDestinationResponsePtrOutputWithContext(ctx context.Context) WebHookEventSubscriptionDestinationResponsePtrOutput {
+	return o
+}
+
+func (o WebHookEventSubscriptionDestinationResponsePtrOutput) Elem() WebHookEventSubscriptionDestinationResponseOutput {
+	return o.ApplyT(func(v *WebHookEventSubscriptionDestinationResponse) WebHookEventSubscriptionDestinationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WebHookEventSubscriptionDestinationResponse
+		return ret
+	}).(WebHookEventSubscriptionDestinationResponseOutput)
+}
+
+// The Azure Active Directory Application ID or URI to get the access token that will be included as the bearer token in delivery requests.
+func (o WebHookEventSubscriptionDestinationResponsePtrOutput) AzureActiveDirectoryApplicationIdOrUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebHookEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureActiveDirectoryApplicationIdOrUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure Active Directory Tenant ID to get the access token that will be included as the bearer token in delivery requests.
+func (o WebHookEventSubscriptionDestinationResponsePtrOutput) AzureActiveDirectoryTenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebHookEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AzureActiveDirectoryTenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Delivery attribute details.
+func (o WebHookEventSubscriptionDestinationResponsePtrOutput) DeliveryAttributeMappings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *WebHookEventSubscriptionDestinationResponse) []interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.DeliveryAttributeMappings
+	}).(pulumi.ArrayOutput)
+}
+
+// The base URL that represents the endpoint of the destination of an event subscription.
+func (o WebHookEventSubscriptionDestinationResponsePtrOutput) EndpointBaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebHookEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointBaseUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the endpoint for the event subscription destination.
+// Expected value is 'WebHook'.
+func (o WebHookEventSubscriptionDestinationResponsePtrOutput) EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebHookEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndpointType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL that represents the endpoint of the destination of an event subscription.
+func (o WebHookEventSubscriptionDestinationResponsePtrOutput) EndpointUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebHookEventSubscriptionDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of events per batch.
+func (o WebHookEventSubscriptionDestinationResponsePtrOutput) MaxEventsPerBatch() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WebHookEventSubscriptionDestinationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxEventsPerBatch
+	}).(pulumi.IntPtrOutput)
+}
+
+// Preferred batch size in Kilobytes.
+func (o WebHookEventSubscriptionDestinationResponsePtrOutput) PreferredBatchSizeInKilobytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WebHookEventSubscriptionDestinationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PreferredBatchSizeInKilobytes
+	}).(pulumi.IntPtrOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(AzureFunctionEventSubscriptionDestinationOutput{})
+	pulumi.RegisterOutputType(AzureFunctionEventSubscriptionDestinationPtrOutput{})
+	pulumi.RegisterOutputType(AzureFunctionEventSubscriptionDestinationResponseOutput{})
+	pulumi.RegisterOutputType(AzureFunctionEventSubscriptionDestinationResponsePtrOutput{})
+	pulumi.RegisterOutputType(BoolEqualsAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(BoolEqualsAdvancedFilterResponseOutput{})
 	pulumi.RegisterOutputType(ConnectionStateOutput{})
 	pulumi.RegisterOutputType(ConnectionStatePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionStateResponseOutput{})
@@ -5887,6 +9987,12 @@ func init() {
 	pulumi.RegisterOutputType(DeliveryWithResourceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryWithResourceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(DeliveryWithResourceIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(DynamicDeliveryAttributeMappingOutput{})
+	pulumi.RegisterOutputType(DynamicDeliveryAttributeMappingResponseOutput{})
+	pulumi.RegisterOutputType(EventHubEventSubscriptionDestinationOutput{})
+	pulumi.RegisterOutputType(EventHubEventSubscriptionDestinationPtrOutput{})
+	pulumi.RegisterOutputType(EventHubEventSubscriptionDestinationResponseOutput{})
+	pulumi.RegisterOutputType(EventHubEventSubscriptionDestinationResponsePtrOutput{})
 	pulumi.RegisterOutputType(EventSubscriptionFilterOutput{})
 	pulumi.RegisterOutputType(EventSubscriptionFilterPtrOutput{})
 	pulumi.RegisterOutputType(EventSubscriptionFilterResponseOutput{})
@@ -5899,6 +10005,10 @@ func init() {
 	pulumi.RegisterOutputType(EventTypeInfoPtrOutput{})
 	pulumi.RegisterOutputType(EventTypeInfoResponseOutput{})
 	pulumi.RegisterOutputType(EventTypeInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(HybridConnectionEventSubscriptionDestinationOutput{})
+	pulumi.RegisterOutputType(HybridConnectionEventSubscriptionDestinationPtrOutput{})
+	pulumi.RegisterOutputType(HybridConnectionEventSubscriptionDestinationResponseOutput{})
+	pulumi.RegisterOutputType(HybridConnectionEventSubscriptionDestinationResponsePtrOutput{})
 	pulumi.RegisterOutputType(IdentityInfoOutput{})
 	pulumi.RegisterOutputType(IdentityInfoPtrOutput{})
 	pulumi.RegisterOutputType(IdentityInfoResponseOutput{})
@@ -5911,6 +10021,10 @@ func init() {
 	pulumi.RegisterOutputType(InlineEventPropertiesMapOutput{})
 	pulumi.RegisterOutputType(InlineEventPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(InlineEventPropertiesResponseMapOutput{})
+	pulumi.RegisterOutputType(IsNotNullAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(IsNotNullAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(IsNullOrUndefinedAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(IsNullOrUndefinedAdvancedFilterResponseOutput{})
 	pulumi.RegisterOutputType(JsonFieldOutput{})
 	pulumi.RegisterOutputType(JsonFieldPtrOutput{})
 	pulumi.RegisterOutputType(JsonFieldResponseOutput{})
@@ -5923,6 +10037,22 @@ func init() {
 	pulumi.RegisterOutputType(JsonInputSchemaMappingPtrOutput{})
 	pulumi.RegisterOutputType(JsonInputSchemaMappingResponseOutput{})
 	pulumi.RegisterOutputType(JsonInputSchemaMappingResponsePtrOutput{})
+	pulumi.RegisterOutputType(NumberGreaterThanAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(NumberGreaterThanAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(NumberGreaterThanOrEqualsAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(NumberGreaterThanOrEqualsAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(NumberInAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(NumberInAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(NumberInRangeAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(NumberInRangeAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(NumberLessThanAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(NumberLessThanAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(NumberLessThanOrEqualsAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(NumberLessThanOrEqualsAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(NumberNotInAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(NumberNotInAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(NumberNotInRangeAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(NumberNotInRangeAdvancedFilterResponseOutput{})
 	pulumi.RegisterOutputType(PartnerOutput{})
 	pulumi.RegisterOutputType(PartnerArrayOutput{})
 	pulumi.RegisterOutputType(PartnerAuthorizationOutput{})
@@ -5945,13 +10075,47 @@ func init() {
 	pulumi.RegisterOutputType(RetryPolicyPtrOutput{})
 	pulumi.RegisterOutputType(RetryPolicyResponseOutput{})
 	pulumi.RegisterOutputType(RetryPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(ServiceBusQueueEventSubscriptionDestinationOutput{})
+	pulumi.RegisterOutputType(ServiceBusQueueEventSubscriptionDestinationPtrOutput{})
+	pulumi.RegisterOutputType(ServiceBusQueueEventSubscriptionDestinationResponseOutput{})
+	pulumi.RegisterOutputType(ServiceBusQueueEventSubscriptionDestinationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ServiceBusTopicEventSubscriptionDestinationOutput{})
+	pulumi.RegisterOutputType(ServiceBusTopicEventSubscriptionDestinationPtrOutput{})
+	pulumi.RegisterOutputType(ServiceBusTopicEventSubscriptionDestinationResponseOutput{})
+	pulumi.RegisterOutputType(ServiceBusTopicEventSubscriptionDestinationResponsePtrOutput{})
+	pulumi.RegisterOutputType(StaticDeliveryAttributeMappingOutput{})
+	pulumi.RegisterOutputType(StaticDeliveryAttributeMappingResponseOutput{})
 	pulumi.RegisterOutputType(StorageBlobDeadLetterDestinationOutput{})
 	pulumi.RegisterOutputType(StorageBlobDeadLetterDestinationPtrOutput{})
 	pulumi.RegisterOutputType(StorageBlobDeadLetterDestinationResponseOutput{})
 	pulumi.RegisterOutputType(StorageBlobDeadLetterDestinationResponsePtrOutput{})
+	pulumi.RegisterOutputType(StorageQueueEventSubscriptionDestinationOutput{})
+	pulumi.RegisterOutputType(StorageQueueEventSubscriptionDestinationPtrOutput{})
+	pulumi.RegisterOutputType(StorageQueueEventSubscriptionDestinationResponseOutput{})
+	pulumi.RegisterOutputType(StorageQueueEventSubscriptionDestinationResponsePtrOutput{})
+	pulumi.RegisterOutputType(StringBeginsWithAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(StringBeginsWithAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(StringContainsAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(StringContainsAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(StringEndsWithAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(StringEndsWithAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(StringInAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(StringInAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(StringNotBeginsWithAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(StringNotBeginsWithAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(StringNotContainsAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(StringNotContainsAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(StringNotEndsWithAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(StringNotEndsWithAdvancedFilterResponseOutput{})
+	pulumi.RegisterOutputType(StringNotInAdvancedFilterOutput{})
+	pulumi.RegisterOutputType(StringNotInAdvancedFilterResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UserIdentityPropertiesOutput{})
 	pulumi.RegisterOutputType(UserIdentityPropertiesMapOutput{})
 	pulumi.RegisterOutputType(UserIdentityPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(UserIdentityPropertiesResponseMapOutput{})
+	pulumi.RegisterOutputType(WebHookEventSubscriptionDestinationOutput{})
+	pulumi.RegisterOutputType(WebHookEventSubscriptionDestinationPtrOutput{})
+	pulumi.RegisterOutputType(WebHookEventSubscriptionDestinationResponseOutput{})
+	pulumi.RegisterOutputType(WebHookEventSubscriptionDestinationResponsePtrOutput{})
 }

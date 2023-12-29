@@ -139,10 +139,12 @@ func (o DiskIndependenceModePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// DiskIndependenceModeInput is an input type that accepts DiskIndependenceModeArgs and DiskIndependenceModeOutput values.
-// You can construct a concrete instance of `DiskIndependenceModeInput` via:
+// DiskIndependenceModeInput is an input type that accepts values of the DiskIndependenceMode enum
+// A concrete instance of `DiskIndependenceModeInput` can be one of the following:
 //
-//	DiskIndependenceModeArgs{...}
+//	DiskIndependenceModePersistent
+//	DiskIndependenceMode_Independent_persistent
+//	DiskIndependenceMode_Independent_nonpersistent
 type DiskIndependenceModeInput interface {
 	pulumi.Input
 
@@ -314,10 +316,15 @@ func (o NICTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// NICTypeInput is an input type that accepts NICTypeArgs and NICTypeOutput values.
-// You can construct a concrete instance of `NICTypeInput` via:
+// NICTypeInput is an input type that accepts values of the NICType enum
+// A concrete instance of `NICTypeInput` can be one of the following:
 //
-//	NICTypeArgs{...}
+//	NICTypeE1000
+//	NICTypeE1000E
+//	NICTypePCNET32
+//	NICTypeVMXNET
+//	NICTypeVMXNET2
+//	NICTypeVMXNET3
 type NICTypeInput interface {
 	pulumi.Input
 

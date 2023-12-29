@@ -25,6 +25,76 @@ type AzStackHCIClusterProperties struct {
 	StorageContainers []StorageContainerProperties `pulumi:"storageContainers"`
 }
 
+// AzStackHCIClusterPropertiesInput is an input type that accepts AzStackHCIClusterPropertiesArgs and AzStackHCIClusterPropertiesOutput values.
+// You can construct a concrete instance of `AzStackHCIClusterPropertiesInput` via:
+//
+//	AzStackHCIClusterPropertiesArgs{...}
+type AzStackHCIClusterPropertiesInput interface {
+	pulumi.Input
+
+	ToAzStackHCIClusterPropertiesOutput() AzStackHCIClusterPropertiesOutput
+	ToAzStackHCIClusterPropertiesOutputWithContext(context.Context) AzStackHCIClusterPropertiesOutput
+}
+
+// AzStackHCI cluster properties.
+type AzStackHCIClusterPropertiesArgs struct {
+	// Gets or sets the AzStackHCICluster FQDN name.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// Gets or sets the AzStackHCICluster resource name.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
+	// Gets or sets the Storage account name.
+	StorageAccountName pulumi.StringInput `pulumi:"storageAccountName"`
+	// Gets or sets the list of AzStackHCICluster Storage Container.
+	StorageContainers StorageContainerPropertiesArrayInput `pulumi:"storageContainers"`
+}
+
+func (AzStackHCIClusterPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzStackHCIClusterProperties)(nil)).Elem()
+}
+
+func (i AzStackHCIClusterPropertiesArgs) ToAzStackHCIClusterPropertiesOutput() AzStackHCIClusterPropertiesOutput {
+	return i.ToAzStackHCIClusterPropertiesOutputWithContext(context.Background())
+}
+
+func (i AzStackHCIClusterPropertiesArgs) ToAzStackHCIClusterPropertiesOutputWithContext(ctx context.Context) AzStackHCIClusterPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzStackHCIClusterPropertiesOutput)
+}
+
+// AzStackHCI cluster properties.
+type AzStackHCIClusterPropertiesOutput struct{ *pulumi.OutputState }
+
+func (AzStackHCIClusterPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzStackHCIClusterProperties)(nil)).Elem()
+}
+
+func (o AzStackHCIClusterPropertiesOutput) ToAzStackHCIClusterPropertiesOutput() AzStackHCIClusterPropertiesOutput {
+	return o
+}
+
+func (o AzStackHCIClusterPropertiesOutput) ToAzStackHCIClusterPropertiesOutputWithContext(ctx context.Context) AzStackHCIClusterPropertiesOutput {
+	return o
+}
+
+// Gets or sets the AzStackHCICluster FQDN name.
+func (o AzStackHCIClusterPropertiesOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v AzStackHCIClusterProperties) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the AzStackHCICluster resource name.
+func (o AzStackHCIClusterPropertiesOutput) ResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v AzStackHCIClusterProperties) string { return v.ResourceName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the Storage account name.
+func (o AzStackHCIClusterPropertiesOutput) StorageAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v AzStackHCIClusterProperties) string { return v.StorageAccountName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the list of AzStackHCICluster Storage Container.
+func (o AzStackHCIClusterPropertiesOutput) StorageContainers() StorageContainerPropertiesArrayOutput {
+	return o.ApplyT(func(v AzStackHCIClusterProperties) []StorageContainerProperties { return v.StorageContainers }).(StorageContainerPropertiesArrayOutput)
+}
+
 // AzStackHCI cluster properties.
 type AzStackHCIClusterPropertiesResponse struct {
 	// Gets or sets the AzStackHCICluster FQDN name.
@@ -35,6 +105,43 @@ type AzStackHCIClusterPropertiesResponse struct {
 	StorageAccountName string `pulumi:"storageAccountName"`
 	// Gets or sets the list of AzStackHCICluster Storage Container.
 	StorageContainers []StorageContainerPropertiesResponse `pulumi:"storageContainers"`
+}
+
+// AzStackHCI cluster properties.
+type AzStackHCIClusterPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (AzStackHCIClusterPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzStackHCIClusterPropertiesResponse)(nil)).Elem()
+}
+
+func (o AzStackHCIClusterPropertiesResponseOutput) ToAzStackHCIClusterPropertiesResponseOutput() AzStackHCIClusterPropertiesResponseOutput {
+	return o
+}
+
+func (o AzStackHCIClusterPropertiesResponseOutput) ToAzStackHCIClusterPropertiesResponseOutputWithContext(ctx context.Context) AzStackHCIClusterPropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the AzStackHCICluster FQDN name.
+func (o AzStackHCIClusterPropertiesResponseOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v AzStackHCIClusterPropertiesResponse) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the AzStackHCICluster resource name.
+func (o AzStackHCIClusterPropertiesResponseOutput) ResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v AzStackHCIClusterPropertiesResponse) string { return v.ResourceName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the Storage account name.
+func (o AzStackHCIClusterPropertiesResponseOutput) StorageAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v AzStackHCIClusterPropertiesResponse) string { return v.StorageAccountName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the list of AzStackHCICluster Storage Container.
+func (o AzStackHCIClusterPropertiesResponseOutput) StorageContainers() StorageContainerPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v AzStackHCIClusterPropertiesResponse) []StorageContainerPropertiesResponse {
+		return v.StorageContainers
+	}).(StorageContainerPropertiesResponseArrayOutput)
 }
 
 // AzStackHCI fabric model custom properties.
@@ -48,6 +155,78 @@ type AzStackHCIFabricModelCustomProperties struct {
 	InstanceType string `pulumi:"instanceType"`
 	// Gets or sets the Migration solution ARM Id.
 	MigrationSolutionId string `pulumi:"migrationSolutionId"`
+}
+
+// AzStackHCIFabricModelCustomPropertiesInput is an input type that accepts AzStackHCIFabricModelCustomPropertiesArgs and AzStackHCIFabricModelCustomPropertiesOutput values.
+// You can construct a concrete instance of `AzStackHCIFabricModelCustomPropertiesInput` via:
+//
+//	AzStackHCIFabricModelCustomPropertiesArgs{...}
+type AzStackHCIFabricModelCustomPropertiesInput interface {
+	pulumi.Input
+
+	ToAzStackHCIFabricModelCustomPropertiesOutput() AzStackHCIFabricModelCustomPropertiesOutput
+	ToAzStackHCIFabricModelCustomPropertiesOutputWithContext(context.Context) AzStackHCIFabricModelCustomPropertiesOutput
+}
+
+// AzStackHCI fabric model custom properties.
+type AzStackHCIFabricModelCustomPropertiesArgs struct {
+	// Gets or sets the ARM Id of the AzStackHCI site.
+	AzStackHciSiteId pulumi.StringInput `pulumi:"azStackHciSiteId"`
+	// AzStackHCI cluster properties.
+	Cluster AzStackHCIClusterPropertiesInput `pulumi:"cluster"`
+	// Gets or sets the instance type.
+	// Expected value is 'AzStackHCI'.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// Gets or sets the Migration solution ARM Id.
+	MigrationSolutionId pulumi.StringInput `pulumi:"migrationSolutionId"`
+}
+
+func (AzStackHCIFabricModelCustomPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzStackHCIFabricModelCustomProperties)(nil)).Elem()
+}
+
+func (i AzStackHCIFabricModelCustomPropertiesArgs) ToAzStackHCIFabricModelCustomPropertiesOutput() AzStackHCIFabricModelCustomPropertiesOutput {
+	return i.ToAzStackHCIFabricModelCustomPropertiesOutputWithContext(context.Background())
+}
+
+func (i AzStackHCIFabricModelCustomPropertiesArgs) ToAzStackHCIFabricModelCustomPropertiesOutputWithContext(ctx context.Context) AzStackHCIFabricModelCustomPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzStackHCIFabricModelCustomPropertiesOutput)
+}
+
+// AzStackHCI fabric model custom properties.
+type AzStackHCIFabricModelCustomPropertiesOutput struct{ *pulumi.OutputState }
+
+func (AzStackHCIFabricModelCustomPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzStackHCIFabricModelCustomProperties)(nil)).Elem()
+}
+
+func (o AzStackHCIFabricModelCustomPropertiesOutput) ToAzStackHCIFabricModelCustomPropertiesOutput() AzStackHCIFabricModelCustomPropertiesOutput {
+	return o
+}
+
+func (o AzStackHCIFabricModelCustomPropertiesOutput) ToAzStackHCIFabricModelCustomPropertiesOutputWithContext(ctx context.Context) AzStackHCIFabricModelCustomPropertiesOutput {
+	return o
+}
+
+// Gets or sets the ARM Id of the AzStackHCI site.
+func (o AzStackHCIFabricModelCustomPropertiesOutput) AzStackHciSiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzStackHCIFabricModelCustomProperties) string { return v.AzStackHciSiteId }).(pulumi.StringOutput)
+}
+
+// AzStackHCI cluster properties.
+func (o AzStackHCIFabricModelCustomPropertiesOutput) Cluster() AzStackHCIClusterPropertiesOutput {
+	return o.ApplyT(func(v AzStackHCIFabricModelCustomProperties) AzStackHCIClusterProperties { return v.Cluster }).(AzStackHCIClusterPropertiesOutput)
+}
+
+// Gets or sets the instance type.
+// Expected value is 'AzStackHCI'.
+func (o AzStackHCIFabricModelCustomPropertiesOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzStackHCIFabricModelCustomProperties) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the Migration solution ARM Id.
+func (o AzStackHCIFabricModelCustomPropertiesOutput) MigrationSolutionId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzStackHCIFabricModelCustomProperties) string { return v.MigrationSolutionId }).(pulumi.StringOutput)
 }
 
 // AzStackHCI fabric model custom properties.
@@ -69,6 +248,64 @@ type AzStackHCIFabricModelCustomPropertiesResponse struct {
 	MigrationHubUri string `pulumi:"migrationHubUri"`
 	// Gets or sets the Migration solution ARM Id.
 	MigrationSolutionId string `pulumi:"migrationSolutionId"`
+}
+
+// AzStackHCI fabric model custom properties.
+type AzStackHCIFabricModelCustomPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (AzStackHCIFabricModelCustomPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzStackHCIFabricModelCustomPropertiesResponse)(nil)).Elem()
+}
+
+func (o AzStackHCIFabricModelCustomPropertiesResponseOutput) ToAzStackHCIFabricModelCustomPropertiesResponseOutput() AzStackHCIFabricModelCustomPropertiesResponseOutput {
+	return o
+}
+
+func (o AzStackHCIFabricModelCustomPropertiesResponseOutput) ToAzStackHCIFabricModelCustomPropertiesResponseOutputWithContext(ctx context.Context) AzStackHCIFabricModelCustomPropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the Appliance name.
+func (o AzStackHCIFabricModelCustomPropertiesResponseOutput) ApplianceName() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AzStackHCIFabricModelCustomPropertiesResponse) []string { return v.ApplianceName }).(pulumi.StringArrayOutput)
+}
+
+// Gets or sets the ARM Id of the AzStackHCI site.
+func (o AzStackHCIFabricModelCustomPropertiesResponseOutput) AzStackHciSiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzStackHCIFabricModelCustomPropertiesResponse) string { return v.AzStackHciSiteId }).(pulumi.StringOutput)
+}
+
+// AzStackHCI cluster properties.
+func (o AzStackHCIFabricModelCustomPropertiesResponseOutput) Cluster() AzStackHCIClusterPropertiesResponseOutput {
+	return o.ApplyT(func(v AzStackHCIFabricModelCustomPropertiesResponse) AzStackHCIClusterPropertiesResponse {
+		return v.Cluster
+	}).(AzStackHCIClusterPropertiesResponseOutput)
+}
+
+// Gets or sets the fabric container Id.
+func (o AzStackHCIFabricModelCustomPropertiesResponseOutput) FabricContainerId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzStackHCIFabricModelCustomPropertiesResponse) string { return v.FabricContainerId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the fabric resource Id.
+func (o AzStackHCIFabricModelCustomPropertiesResponseOutput) FabricResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzStackHCIFabricModelCustomPropertiesResponse) string { return v.FabricResourceId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the instance type.
+// Expected value is 'AzStackHCI'.
+func (o AzStackHCIFabricModelCustomPropertiesResponseOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v AzStackHCIFabricModelCustomPropertiesResponse) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the migration hub Uri.
+func (o AzStackHCIFabricModelCustomPropertiesResponseOutput) MigrationHubUri() pulumi.StringOutput {
+	return o.ApplyT(func(v AzStackHCIFabricModelCustomPropertiesResponse) string { return v.MigrationHubUri }).(pulumi.StringOutput)
+}
+
+// Gets or sets the Migration solution ARM Id.
+func (o AzStackHCIFabricModelCustomPropertiesResponseOutput) MigrationSolutionId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzStackHCIFabricModelCustomPropertiesResponse) string { return v.MigrationSolutionId }).(pulumi.StringOutput)
 }
 
 // Dra model properties.
@@ -652,6 +889,71 @@ type HyperVMigrateFabricModelCustomProperties struct {
 	MigrationSolutionId string `pulumi:"migrationSolutionId"`
 }
 
+// HyperVMigrateFabricModelCustomPropertiesInput is an input type that accepts HyperVMigrateFabricModelCustomPropertiesArgs and HyperVMigrateFabricModelCustomPropertiesOutput values.
+// You can construct a concrete instance of `HyperVMigrateFabricModelCustomPropertiesInput` via:
+//
+//	HyperVMigrateFabricModelCustomPropertiesArgs{...}
+type HyperVMigrateFabricModelCustomPropertiesInput interface {
+	pulumi.Input
+
+	ToHyperVMigrateFabricModelCustomPropertiesOutput() HyperVMigrateFabricModelCustomPropertiesOutput
+	ToHyperVMigrateFabricModelCustomPropertiesOutputWithContext(context.Context) HyperVMigrateFabricModelCustomPropertiesOutput
+}
+
+// HyperV migrate fabric model custom properties.
+type HyperVMigrateFabricModelCustomPropertiesArgs struct {
+	// Gets or sets the ARM Id of the HyperV site.
+	HyperVSiteId pulumi.StringInput `pulumi:"hyperVSiteId"`
+	// Gets or sets the instance type.
+	// Expected value is 'HyperVMigrate'.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// Gets or sets the migration solution ARM Id.
+	MigrationSolutionId pulumi.StringInput `pulumi:"migrationSolutionId"`
+}
+
+func (HyperVMigrateFabricModelCustomPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperVMigrateFabricModelCustomProperties)(nil)).Elem()
+}
+
+func (i HyperVMigrateFabricModelCustomPropertiesArgs) ToHyperVMigrateFabricModelCustomPropertiesOutput() HyperVMigrateFabricModelCustomPropertiesOutput {
+	return i.ToHyperVMigrateFabricModelCustomPropertiesOutputWithContext(context.Background())
+}
+
+func (i HyperVMigrateFabricModelCustomPropertiesArgs) ToHyperVMigrateFabricModelCustomPropertiesOutputWithContext(ctx context.Context) HyperVMigrateFabricModelCustomPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HyperVMigrateFabricModelCustomPropertiesOutput)
+}
+
+// HyperV migrate fabric model custom properties.
+type HyperVMigrateFabricModelCustomPropertiesOutput struct{ *pulumi.OutputState }
+
+func (HyperVMigrateFabricModelCustomPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperVMigrateFabricModelCustomProperties)(nil)).Elem()
+}
+
+func (o HyperVMigrateFabricModelCustomPropertiesOutput) ToHyperVMigrateFabricModelCustomPropertiesOutput() HyperVMigrateFabricModelCustomPropertiesOutput {
+	return o
+}
+
+func (o HyperVMigrateFabricModelCustomPropertiesOutput) ToHyperVMigrateFabricModelCustomPropertiesOutputWithContext(ctx context.Context) HyperVMigrateFabricModelCustomPropertiesOutput {
+	return o
+}
+
+// Gets or sets the ARM Id of the HyperV site.
+func (o HyperVMigrateFabricModelCustomPropertiesOutput) HyperVSiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVMigrateFabricModelCustomProperties) string { return v.HyperVSiteId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the instance type.
+// Expected value is 'HyperVMigrate'.
+func (o HyperVMigrateFabricModelCustomPropertiesOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVMigrateFabricModelCustomProperties) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the migration solution ARM Id.
+func (o HyperVMigrateFabricModelCustomPropertiesOutput) MigrationSolutionId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVMigrateFabricModelCustomProperties) string { return v.MigrationSolutionId }).(pulumi.StringOutput)
+}
+
 // HyperV migrate fabric model custom properties.
 type HyperVMigrateFabricModelCustomPropertiesResponse struct {
 	// Gets or sets the fabric container Id.
@@ -667,6 +969,52 @@ type HyperVMigrateFabricModelCustomPropertiesResponse struct {
 	MigrationHubUri string `pulumi:"migrationHubUri"`
 	// Gets or sets the migration solution ARM Id.
 	MigrationSolutionId string `pulumi:"migrationSolutionId"`
+}
+
+// HyperV migrate fabric model custom properties.
+type HyperVMigrateFabricModelCustomPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (HyperVMigrateFabricModelCustomPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperVMigrateFabricModelCustomPropertiesResponse)(nil)).Elem()
+}
+
+func (o HyperVMigrateFabricModelCustomPropertiesResponseOutput) ToHyperVMigrateFabricModelCustomPropertiesResponseOutput() HyperVMigrateFabricModelCustomPropertiesResponseOutput {
+	return o
+}
+
+func (o HyperVMigrateFabricModelCustomPropertiesResponseOutput) ToHyperVMigrateFabricModelCustomPropertiesResponseOutputWithContext(ctx context.Context) HyperVMigrateFabricModelCustomPropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the fabric container Id.
+func (o HyperVMigrateFabricModelCustomPropertiesResponseOutput) FabricContainerId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVMigrateFabricModelCustomPropertiesResponse) string { return v.FabricContainerId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the fabric resource Id.
+func (o HyperVMigrateFabricModelCustomPropertiesResponseOutput) FabricResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVMigrateFabricModelCustomPropertiesResponse) string { return v.FabricResourceId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the ARM Id of the HyperV site.
+func (o HyperVMigrateFabricModelCustomPropertiesResponseOutput) HyperVSiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVMigrateFabricModelCustomPropertiesResponse) string { return v.HyperVSiteId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the instance type.
+// Expected value is 'HyperVMigrate'.
+func (o HyperVMigrateFabricModelCustomPropertiesResponseOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVMigrateFabricModelCustomPropertiesResponse) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the migration hub Uri.
+func (o HyperVMigrateFabricModelCustomPropertiesResponseOutput) MigrationHubUri() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVMigrateFabricModelCustomPropertiesResponse) string { return v.MigrationHubUri }).(pulumi.StringOutput)
+}
+
+// Gets or sets the migration solution ARM Id.
+func (o HyperVMigrateFabricModelCustomPropertiesResponseOutput) MigrationSolutionId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVMigrateFabricModelCustomPropertiesResponse) string { return v.MigrationSolutionId }).(pulumi.StringOutput)
 }
 
 // HyperVToAzStack disk input.
@@ -686,6 +1034,137 @@ type HyperVToAzStackHCIDiskInput struct {
 	StorageContainerId *string `pulumi:"storageContainerId"`
 }
 
+// HyperVToAzStackHCIDiskInputInput is an input type that accepts HyperVToAzStackHCIDiskInputArgs and HyperVToAzStackHCIDiskInputOutput values.
+// You can construct a concrete instance of `HyperVToAzStackHCIDiskInputInput` via:
+//
+//	HyperVToAzStackHCIDiskInputArgs{...}
+type HyperVToAzStackHCIDiskInputInput interface {
+	pulumi.Input
+
+	ToHyperVToAzStackHCIDiskInputOutput() HyperVToAzStackHCIDiskInputOutput
+	ToHyperVToAzStackHCIDiskInputOutputWithContext(context.Context) HyperVToAzStackHCIDiskInputOutput
+}
+
+// HyperVToAzStack disk input.
+type HyperVToAzStackHCIDiskInputArgs struct {
+	// Gets or sets the type of the virtual hard disk, vhd or vhdx.
+	DiskFileFormat pulumi.StringInput `pulumi:"diskFileFormat"`
+	// Gets or sets the disk Id.
+	DiskId pulumi.StringInput `pulumi:"diskId"`
+	// Gets or sets the disk size in GB.
+	DiskSizeGB pulumi.Float64Input `pulumi:"diskSizeGB"`
+	// Gets or sets a value indicating whether dynamic sizing is enabled on the virtual hard
+	// disk.
+	IsDynamic pulumi.BoolPtrInput `pulumi:"isDynamic"`
+	// Gets or sets a value indicating whether disk is os disk.
+	IsOsDisk pulumi.BoolInput `pulumi:"isOsDisk"`
+	// Gets or sets the target storage account ARM Id.
+	StorageContainerId pulumi.StringPtrInput `pulumi:"storageContainerId"`
+}
+
+func (HyperVToAzStackHCIDiskInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperVToAzStackHCIDiskInput)(nil)).Elem()
+}
+
+func (i HyperVToAzStackHCIDiskInputArgs) ToHyperVToAzStackHCIDiskInputOutput() HyperVToAzStackHCIDiskInputOutput {
+	return i.ToHyperVToAzStackHCIDiskInputOutputWithContext(context.Background())
+}
+
+func (i HyperVToAzStackHCIDiskInputArgs) ToHyperVToAzStackHCIDiskInputOutputWithContext(ctx context.Context) HyperVToAzStackHCIDiskInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HyperVToAzStackHCIDiskInputOutput)
+}
+
+// HyperVToAzStackHCIDiskInputArrayInput is an input type that accepts HyperVToAzStackHCIDiskInputArray and HyperVToAzStackHCIDiskInputArrayOutput values.
+// You can construct a concrete instance of `HyperVToAzStackHCIDiskInputArrayInput` via:
+//
+//	HyperVToAzStackHCIDiskInputArray{ HyperVToAzStackHCIDiskInputArgs{...} }
+type HyperVToAzStackHCIDiskInputArrayInput interface {
+	pulumi.Input
+
+	ToHyperVToAzStackHCIDiskInputArrayOutput() HyperVToAzStackHCIDiskInputArrayOutput
+	ToHyperVToAzStackHCIDiskInputArrayOutputWithContext(context.Context) HyperVToAzStackHCIDiskInputArrayOutput
+}
+
+type HyperVToAzStackHCIDiskInputArray []HyperVToAzStackHCIDiskInputInput
+
+func (HyperVToAzStackHCIDiskInputArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HyperVToAzStackHCIDiskInput)(nil)).Elem()
+}
+
+func (i HyperVToAzStackHCIDiskInputArray) ToHyperVToAzStackHCIDiskInputArrayOutput() HyperVToAzStackHCIDiskInputArrayOutput {
+	return i.ToHyperVToAzStackHCIDiskInputArrayOutputWithContext(context.Background())
+}
+
+func (i HyperVToAzStackHCIDiskInputArray) ToHyperVToAzStackHCIDiskInputArrayOutputWithContext(ctx context.Context) HyperVToAzStackHCIDiskInputArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HyperVToAzStackHCIDiskInputArrayOutput)
+}
+
+// HyperVToAzStack disk input.
+type HyperVToAzStackHCIDiskInputOutput struct{ *pulumi.OutputState }
+
+func (HyperVToAzStackHCIDiskInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperVToAzStackHCIDiskInput)(nil)).Elem()
+}
+
+func (o HyperVToAzStackHCIDiskInputOutput) ToHyperVToAzStackHCIDiskInputOutput() HyperVToAzStackHCIDiskInputOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCIDiskInputOutput) ToHyperVToAzStackHCIDiskInputOutputWithContext(ctx context.Context) HyperVToAzStackHCIDiskInputOutput {
+	return o
+}
+
+// Gets or sets the type of the virtual hard disk, vhd or vhdx.
+func (o HyperVToAzStackHCIDiskInputOutput) DiskFileFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIDiskInput) string { return v.DiskFileFormat }).(pulumi.StringOutput)
+}
+
+// Gets or sets the disk Id.
+func (o HyperVToAzStackHCIDiskInputOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIDiskInput) string { return v.DiskId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the disk size in GB.
+func (o HyperVToAzStackHCIDiskInputOutput) DiskSizeGB() pulumi.Float64Output {
+	return o.ApplyT(func(v HyperVToAzStackHCIDiskInput) float64 { return v.DiskSizeGB }).(pulumi.Float64Output)
+}
+
+// Gets or sets a value indicating whether dynamic sizing is enabled on the virtual hard
+// disk.
+func (o HyperVToAzStackHCIDiskInputOutput) IsDynamic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIDiskInput) *bool { return v.IsDynamic }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets a value indicating whether disk is os disk.
+func (o HyperVToAzStackHCIDiskInputOutput) IsOsDisk() pulumi.BoolOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIDiskInput) bool { return v.IsOsDisk }).(pulumi.BoolOutput)
+}
+
+// Gets or sets the target storage account ARM Id.
+func (o HyperVToAzStackHCIDiskInputOutput) StorageContainerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIDiskInput) *string { return v.StorageContainerId }).(pulumi.StringPtrOutput)
+}
+
+type HyperVToAzStackHCIDiskInputArrayOutput struct{ *pulumi.OutputState }
+
+func (HyperVToAzStackHCIDiskInputArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HyperVToAzStackHCIDiskInput)(nil)).Elem()
+}
+
+func (o HyperVToAzStackHCIDiskInputArrayOutput) ToHyperVToAzStackHCIDiskInputArrayOutput() HyperVToAzStackHCIDiskInputArrayOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCIDiskInputArrayOutput) ToHyperVToAzStackHCIDiskInputArrayOutputWithContext(ctx context.Context) HyperVToAzStackHCIDiskInputArrayOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCIDiskInputArrayOutput) Index(i pulumi.IntInput) HyperVToAzStackHCIDiskInputOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HyperVToAzStackHCIDiskInput {
+		return vs[0].([]HyperVToAzStackHCIDiskInput)[vs[1].(int)]
+	}).(HyperVToAzStackHCIDiskInputOutput)
+}
+
 // HyperVToAzStack disk input.
 type HyperVToAzStackHCIDiskInputResponse struct {
 	// Gets or sets the type of the virtual hard disk, vhd or vhdx.
@@ -703,6 +1182,72 @@ type HyperVToAzStackHCIDiskInputResponse struct {
 	StorageContainerId *string `pulumi:"storageContainerId"`
 }
 
+// HyperVToAzStack disk input.
+type HyperVToAzStackHCIDiskInputResponseOutput struct{ *pulumi.OutputState }
+
+func (HyperVToAzStackHCIDiskInputResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperVToAzStackHCIDiskInputResponse)(nil)).Elem()
+}
+
+func (o HyperVToAzStackHCIDiskInputResponseOutput) ToHyperVToAzStackHCIDiskInputResponseOutput() HyperVToAzStackHCIDiskInputResponseOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCIDiskInputResponseOutput) ToHyperVToAzStackHCIDiskInputResponseOutputWithContext(ctx context.Context) HyperVToAzStackHCIDiskInputResponseOutput {
+	return o
+}
+
+// Gets or sets the type of the virtual hard disk, vhd or vhdx.
+func (o HyperVToAzStackHCIDiskInputResponseOutput) DiskFileFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIDiskInputResponse) string { return v.DiskFileFormat }).(pulumi.StringOutput)
+}
+
+// Gets or sets the disk Id.
+func (o HyperVToAzStackHCIDiskInputResponseOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIDiskInputResponse) string { return v.DiskId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the disk size in GB.
+func (o HyperVToAzStackHCIDiskInputResponseOutput) DiskSizeGB() pulumi.Float64Output {
+	return o.ApplyT(func(v HyperVToAzStackHCIDiskInputResponse) float64 { return v.DiskSizeGB }).(pulumi.Float64Output)
+}
+
+// Gets or sets a value indicating whether dynamic sizing is enabled on the virtual hard
+// disk.
+func (o HyperVToAzStackHCIDiskInputResponseOutput) IsDynamic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIDiskInputResponse) *bool { return v.IsDynamic }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets a value indicating whether disk is os disk.
+func (o HyperVToAzStackHCIDiskInputResponseOutput) IsOsDisk() pulumi.BoolOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIDiskInputResponse) bool { return v.IsOsDisk }).(pulumi.BoolOutput)
+}
+
+// Gets or sets the target storage account ARM Id.
+func (o HyperVToAzStackHCIDiskInputResponseOutput) StorageContainerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIDiskInputResponse) *string { return v.StorageContainerId }).(pulumi.StringPtrOutput)
+}
+
+type HyperVToAzStackHCIDiskInputResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HyperVToAzStackHCIDiskInputResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HyperVToAzStackHCIDiskInputResponse)(nil)).Elem()
+}
+
+func (o HyperVToAzStackHCIDiskInputResponseArrayOutput) ToHyperVToAzStackHCIDiskInputResponseArrayOutput() HyperVToAzStackHCIDiskInputResponseArrayOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCIDiskInputResponseArrayOutput) ToHyperVToAzStackHCIDiskInputResponseArrayOutputWithContext(ctx context.Context) HyperVToAzStackHCIDiskInputResponseArrayOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCIDiskInputResponseArrayOutput) Index(i pulumi.IntInput) HyperVToAzStackHCIDiskInputResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HyperVToAzStackHCIDiskInputResponse {
+		return vs[0].([]HyperVToAzStackHCIDiskInputResponse)[vs[1].(int)]
+	}).(HyperVToAzStackHCIDiskInputResponseOutput)
+}
+
 // HyperVToAzStackHCI NIC properties.
 type HyperVToAzStackHCINicInput struct {
 	// Gets or sets the NIC Id.
@@ -713,6 +1258,121 @@ type HyperVToAzStackHCINicInput struct {
 	TargetNetworkId string `pulumi:"targetNetworkId"`
 	// Gets or sets the target test network Id within AzStackHCI Cluster.
 	TestNetworkId string `pulumi:"testNetworkId"`
+}
+
+// HyperVToAzStackHCINicInputInput is an input type that accepts HyperVToAzStackHCINicInputArgs and HyperVToAzStackHCINicInputOutput values.
+// You can construct a concrete instance of `HyperVToAzStackHCINicInputInput` via:
+//
+//	HyperVToAzStackHCINicInputArgs{...}
+type HyperVToAzStackHCINicInputInput interface {
+	pulumi.Input
+
+	ToHyperVToAzStackHCINicInputOutput() HyperVToAzStackHCINicInputOutput
+	ToHyperVToAzStackHCINicInputOutputWithContext(context.Context) HyperVToAzStackHCINicInputOutput
+}
+
+// HyperVToAzStackHCI NIC properties.
+type HyperVToAzStackHCINicInputArgs struct {
+	// Gets or sets the NIC Id.
+	NicId pulumi.StringInput `pulumi:"nicId"`
+	// Gets or sets the selection type of the NIC.
+	SelectionTypeForFailover pulumi.StringInput `pulumi:"selectionTypeForFailover"`
+	// Gets or sets the target network Id within AzStackHCI Cluster.
+	TargetNetworkId pulumi.StringInput `pulumi:"targetNetworkId"`
+	// Gets or sets the target test network Id within AzStackHCI Cluster.
+	TestNetworkId pulumi.StringInput `pulumi:"testNetworkId"`
+}
+
+func (HyperVToAzStackHCINicInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperVToAzStackHCINicInput)(nil)).Elem()
+}
+
+func (i HyperVToAzStackHCINicInputArgs) ToHyperVToAzStackHCINicInputOutput() HyperVToAzStackHCINicInputOutput {
+	return i.ToHyperVToAzStackHCINicInputOutputWithContext(context.Background())
+}
+
+func (i HyperVToAzStackHCINicInputArgs) ToHyperVToAzStackHCINicInputOutputWithContext(ctx context.Context) HyperVToAzStackHCINicInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HyperVToAzStackHCINicInputOutput)
+}
+
+// HyperVToAzStackHCINicInputArrayInput is an input type that accepts HyperVToAzStackHCINicInputArray and HyperVToAzStackHCINicInputArrayOutput values.
+// You can construct a concrete instance of `HyperVToAzStackHCINicInputArrayInput` via:
+//
+//	HyperVToAzStackHCINicInputArray{ HyperVToAzStackHCINicInputArgs{...} }
+type HyperVToAzStackHCINicInputArrayInput interface {
+	pulumi.Input
+
+	ToHyperVToAzStackHCINicInputArrayOutput() HyperVToAzStackHCINicInputArrayOutput
+	ToHyperVToAzStackHCINicInputArrayOutputWithContext(context.Context) HyperVToAzStackHCINicInputArrayOutput
+}
+
+type HyperVToAzStackHCINicInputArray []HyperVToAzStackHCINicInputInput
+
+func (HyperVToAzStackHCINicInputArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HyperVToAzStackHCINicInput)(nil)).Elem()
+}
+
+func (i HyperVToAzStackHCINicInputArray) ToHyperVToAzStackHCINicInputArrayOutput() HyperVToAzStackHCINicInputArrayOutput {
+	return i.ToHyperVToAzStackHCINicInputArrayOutputWithContext(context.Background())
+}
+
+func (i HyperVToAzStackHCINicInputArray) ToHyperVToAzStackHCINicInputArrayOutputWithContext(ctx context.Context) HyperVToAzStackHCINicInputArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HyperVToAzStackHCINicInputArrayOutput)
+}
+
+// HyperVToAzStackHCI NIC properties.
+type HyperVToAzStackHCINicInputOutput struct{ *pulumi.OutputState }
+
+func (HyperVToAzStackHCINicInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperVToAzStackHCINicInput)(nil)).Elem()
+}
+
+func (o HyperVToAzStackHCINicInputOutput) ToHyperVToAzStackHCINicInputOutput() HyperVToAzStackHCINicInputOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCINicInputOutput) ToHyperVToAzStackHCINicInputOutputWithContext(ctx context.Context) HyperVToAzStackHCINicInputOutput {
+	return o
+}
+
+// Gets or sets the NIC Id.
+func (o HyperVToAzStackHCINicInputOutput) NicId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCINicInput) string { return v.NicId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the selection type of the NIC.
+func (o HyperVToAzStackHCINicInputOutput) SelectionTypeForFailover() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCINicInput) string { return v.SelectionTypeForFailover }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target network Id within AzStackHCI Cluster.
+func (o HyperVToAzStackHCINicInputOutput) TargetNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCINicInput) string { return v.TargetNetworkId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target test network Id within AzStackHCI Cluster.
+func (o HyperVToAzStackHCINicInputOutput) TestNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCINicInput) string { return v.TestNetworkId }).(pulumi.StringOutput)
+}
+
+type HyperVToAzStackHCINicInputArrayOutput struct{ *pulumi.OutputState }
+
+func (HyperVToAzStackHCINicInputArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HyperVToAzStackHCINicInput)(nil)).Elem()
+}
+
+func (o HyperVToAzStackHCINicInputArrayOutput) ToHyperVToAzStackHCINicInputArrayOutput() HyperVToAzStackHCINicInputArrayOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCINicInputArrayOutput) ToHyperVToAzStackHCINicInputArrayOutputWithContext(ctx context.Context) HyperVToAzStackHCINicInputArrayOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCINicInputArrayOutput) Index(i pulumi.IntInput) HyperVToAzStackHCINicInputOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HyperVToAzStackHCINicInput {
+		return vs[0].([]HyperVToAzStackHCINicInput)[vs[1].(int)]
+	}).(HyperVToAzStackHCINicInputOutput)
 }
 
 // HyperVToAzStackHCI NIC properties.
@@ -729,6 +1389,66 @@ type HyperVToAzStackHCINicInputResponse struct {
 	TestNetworkId string `pulumi:"testNetworkId"`
 }
 
+// HyperVToAzStackHCI NIC properties.
+type HyperVToAzStackHCINicInputResponseOutput struct{ *pulumi.OutputState }
+
+func (HyperVToAzStackHCINicInputResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperVToAzStackHCINicInputResponse)(nil)).Elem()
+}
+
+func (o HyperVToAzStackHCINicInputResponseOutput) ToHyperVToAzStackHCINicInputResponseOutput() HyperVToAzStackHCINicInputResponseOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCINicInputResponseOutput) ToHyperVToAzStackHCINicInputResponseOutputWithContext(ctx context.Context) HyperVToAzStackHCINicInputResponseOutput {
+	return o
+}
+
+// Gets or sets the network name.
+func (o HyperVToAzStackHCINicInputResponseOutput) NetworkName() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCINicInputResponse) string { return v.NetworkName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the NIC Id.
+func (o HyperVToAzStackHCINicInputResponseOutput) NicId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCINicInputResponse) string { return v.NicId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the selection type of the NIC.
+func (o HyperVToAzStackHCINicInputResponseOutput) SelectionTypeForFailover() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCINicInputResponse) string { return v.SelectionTypeForFailover }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target network Id within AzStackHCI Cluster.
+func (o HyperVToAzStackHCINicInputResponseOutput) TargetNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCINicInputResponse) string { return v.TargetNetworkId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target test network Id within AzStackHCI Cluster.
+func (o HyperVToAzStackHCINicInputResponseOutput) TestNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCINicInputResponse) string { return v.TestNetworkId }).(pulumi.StringOutput)
+}
+
+type HyperVToAzStackHCINicInputResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HyperVToAzStackHCINicInputResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HyperVToAzStackHCINicInputResponse)(nil)).Elem()
+}
+
+func (o HyperVToAzStackHCINicInputResponseArrayOutput) ToHyperVToAzStackHCINicInputResponseArrayOutput() HyperVToAzStackHCINicInputResponseArrayOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCINicInputResponseArrayOutput) ToHyperVToAzStackHCINicInputResponseArrayOutputWithContext(ctx context.Context) HyperVToAzStackHCINicInputResponseArrayOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCINicInputResponseArrayOutput) Index(i pulumi.IntInput) HyperVToAzStackHCINicInputResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HyperVToAzStackHCINicInputResponse {
+		return vs[0].([]HyperVToAzStackHCINicInputResponse)[vs[1].(int)]
+	}).(HyperVToAzStackHCINicInputResponseOutput)
+}
+
 // HyperV To AzStackHCI Policy model custom properties.
 type HyperVToAzStackHCIPolicyModelCustomProperties struct {
 	// Gets or sets the app consistent snapshot frequency (in minutes).
@@ -743,6 +1463,80 @@ type HyperVToAzStackHCIPolicyModelCustomProperties struct {
 	RecoveryPointHistoryInMinutes int `pulumi:"recoveryPointHistoryInMinutes"`
 }
 
+// HyperVToAzStackHCIPolicyModelCustomPropertiesInput is an input type that accepts HyperVToAzStackHCIPolicyModelCustomPropertiesArgs and HyperVToAzStackHCIPolicyModelCustomPropertiesOutput values.
+// You can construct a concrete instance of `HyperVToAzStackHCIPolicyModelCustomPropertiesInput` via:
+//
+//	HyperVToAzStackHCIPolicyModelCustomPropertiesArgs{...}
+type HyperVToAzStackHCIPolicyModelCustomPropertiesInput interface {
+	pulumi.Input
+
+	ToHyperVToAzStackHCIPolicyModelCustomPropertiesOutput() HyperVToAzStackHCIPolicyModelCustomPropertiesOutput
+	ToHyperVToAzStackHCIPolicyModelCustomPropertiesOutputWithContext(context.Context) HyperVToAzStackHCIPolicyModelCustomPropertiesOutput
+}
+
+// HyperV To AzStackHCI Policy model custom properties.
+type HyperVToAzStackHCIPolicyModelCustomPropertiesArgs struct {
+	// Gets or sets the app consistent snapshot frequency (in minutes).
+	AppConsistentFrequencyInMinutes pulumi.IntInput `pulumi:"appConsistentFrequencyInMinutes"`
+	// Gets or sets the crash consistent snapshot frequency (in minutes).
+	CrashConsistentFrequencyInMinutes pulumi.IntInput `pulumi:"crashConsistentFrequencyInMinutes"`
+	// Gets or sets the instance type.
+	// Expected value is 'HyperVToAzStackHCI'.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// Gets or sets the duration in minutes until which the recovery points need to be
+	// stored.
+	RecoveryPointHistoryInMinutes pulumi.IntInput `pulumi:"recoveryPointHistoryInMinutes"`
+}
+
+func (HyperVToAzStackHCIPolicyModelCustomPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperVToAzStackHCIPolicyModelCustomProperties)(nil)).Elem()
+}
+
+func (i HyperVToAzStackHCIPolicyModelCustomPropertiesArgs) ToHyperVToAzStackHCIPolicyModelCustomPropertiesOutput() HyperVToAzStackHCIPolicyModelCustomPropertiesOutput {
+	return i.ToHyperVToAzStackHCIPolicyModelCustomPropertiesOutputWithContext(context.Background())
+}
+
+func (i HyperVToAzStackHCIPolicyModelCustomPropertiesArgs) ToHyperVToAzStackHCIPolicyModelCustomPropertiesOutputWithContext(ctx context.Context) HyperVToAzStackHCIPolicyModelCustomPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HyperVToAzStackHCIPolicyModelCustomPropertiesOutput)
+}
+
+// HyperV To AzStackHCI Policy model custom properties.
+type HyperVToAzStackHCIPolicyModelCustomPropertiesOutput struct{ *pulumi.OutputState }
+
+func (HyperVToAzStackHCIPolicyModelCustomPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperVToAzStackHCIPolicyModelCustomProperties)(nil)).Elem()
+}
+
+func (o HyperVToAzStackHCIPolicyModelCustomPropertiesOutput) ToHyperVToAzStackHCIPolicyModelCustomPropertiesOutput() HyperVToAzStackHCIPolicyModelCustomPropertiesOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCIPolicyModelCustomPropertiesOutput) ToHyperVToAzStackHCIPolicyModelCustomPropertiesOutputWithContext(ctx context.Context) HyperVToAzStackHCIPolicyModelCustomPropertiesOutput {
+	return o
+}
+
+// Gets or sets the app consistent snapshot frequency (in minutes).
+func (o HyperVToAzStackHCIPolicyModelCustomPropertiesOutput) AppConsistentFrequencyInMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIPolicyModelCustomProperties) int { return v.AppConsistentFrequencyInMinutes }).(pulumi.IntOutput)
+}
+
+// Gets or sets the crash consistent snapshot frequency (in minutes).
+func (o HyperVToAzStackHCIPolicyModelCustomPropertiesOutput) CrashConsistentFrequencyInMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIPolicyModelCustomProperties) int { return v.CrashConsistentFrequencyInMinutes }).(pulumi.IntOutput)
+}
+
+// Gets or sets the instance type.
+// Expected value is 'HyperVToAzStackHCI'.
+func (o HyperVToAzStackHCIPolicyModelCustomPropertiesOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIPolicyModelCustomProperties) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the duration in minutes until which the recovery points need to be
+// stored.
+func (o HyperVToAzStackHCIPolicyModelCustomPropertiesOutput) RecoveryPointHistoryInMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIPolicyModelCustomProperties) int { return v.RecoveryPointHistoryInMinutes }).(pulumi.IntOutput)
+}
+
 // HyperV To AzStackHCI Policy model custom properties.
 type HyperVToAzStackHCIPolicyModelCustomPropertiesResponse struct {
 	// Gets or sets the app consistent snapshot frequency (in minutes).
@@ -755,6 +1549,49 @@ type HyperVToAzStackHCIPolicyModelCustomPropertiesResponse struct {
 	// Gets or sets the duration in minutes until which the recovery points need to be
 	// stored.
 	RecoveryPointHistoryInMinutes int `pulumi:"recoveryPointHistoryInMinutes"`
+}
+
+// HyperV To AzStackHCI Policy model custom properties.
+type HyperVToAzStackHCIPolicyModelCustomPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (HyperVToAzStackHCIPolicyModelCustomPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperVToAzStackHCIPolicyModelCustomPropertiesResponse)(nil)).Elem()
+}
+
+func (o HyperVToAzStackHCIPolicyModelCustomPropertiesResponseOutput) ToHyperVToAzStackHCIPolicyModelCustomPropertiesResponseOutput() HyperVToAzStackHCIPolicyModelCustomPropertiesResponseOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCIPolicyModelCustomPropertiesResponseOutput) ToHyperVToAzStackHCIPolicyModelCustomPropertiesResponseOutputWithContext(ctx context.Context) HyperVToAzStackHCIPolicyModelCustomPropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the app consistent snapshot frequency (in minutes).
+func (o HyperVToAzStackHCIPolicyModelCustomPropertiesResponseOutput) AppConsistentFrequencyInMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIPolicyModelCustomPropertiesResponse) int {
+		return v.AppConsistentFrequencyInMinutes
+	}).(pulumi.IntOutput)
+}
+
+// Gets or sets the crash consistent snapshot frequency (in minutes).
+func (o HyperVToAzStackHCIPolicyModelCustomPropertiesResponseOutput) CrashConsistentFrequencyInMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIPolicyModelCustomPropertiesResponse) int {
+		return v.CrashConsistentFrequencyInMinutes
+	}).(pulumi.IntOutput)
+}
+
+// Gets or sets the instance type.
+// Expected value is 'HyperVToAzStackHCI'.
+func (o HyperVToAzStackHCIPolicyModelCustomPropertiesResponseOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIPolicyModelCustomPropertiesResponse) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the duration in minutes until which the recovery points need to be
+// stored.
+func (o HyperVToAzStackHCIPolicyModelCustomPropertiesResponseOutput) RecoveryPointHistoryInMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIPolicyModelCustomPropertiesResponse) int {
+		return v.RecoveryPointHistoryInMinutes
+	}).(pulumi.IntOutput)
 }
 
 // HyperVToAzStackHCI protected disk properties.
@@ -782,6 +1619,97 @@ type HyperVToAzStackHCIProtectedDiskPropertiesResponse struct {
 	StorageContainerLocalPath string `pulumi:"storageContainerLocalPath"`
 	// Gets or sets the test failover clone disk.
 	TestMigrateDiskName string `pulumi:"testMigrateDiskName"`
+}
+
+// HyperVToAzStackHCI protected disk properties.
+type HyperVToAzStackHCIProtectedDiskPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (HyperVToAzStackHCIProtectedDiskPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperVToAzStackHCIProtectedDiskPropertiesResponse)(nil)).Elem()
+}
+
+func (o HyperVToAzStackHCIProtectedDiskPropertiesResponseOutput) ToHyperVToAzStackHCIProtectedDiskPropertiesResponseOutput() HyperVToAzStackHCIProtectedDiskPropertiesResponseOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCIProtectedDiskPropertiesResponseOutput) ToHyperVToAzStackHCIProtectedDiskPropertiesResponseOutputWithContext(ctx context.Context) HyperVToAzStackHCIProtectedDiskPropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the disk capacity in bytes.
+func (o HyperVToAzStackHCIProtectedDiskPropertiesResponseOutput) CapacityInBytes() pulumi.Float64Output {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedDiskPropertiesResponse) float64 { return v.CapacityInBytes }).(pulumi.Float64Output)
+}
+
+// Gets or sets the disk type.
+func (o HyperVToAzStackHCIProtectedDiskPropertiesResponseOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedDiskPropertiesResponse) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// Gets or sets a value indicating whether dynamic sizing is enabled on the virtual hard
+// disk.
+func (o HyperVToAzStackHCIProtectedDiskPropertiesResponseOutput) IsDynamic() pulumi.BoolOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedDiskPropertiesResponse) bool { return v.IsDynamic }).(pulumi.BoolOutput)
+}
+
+// Gets or sets a value indicating whether the disk is the OS disk.
+func (o HyperVToAzStackHCIProtectedDiskPropertiesResponseOutput) IsOsDisk() pulumi.BoolOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedDiskPropertiesResponse) bool { return v.IsOsDisk }).(pulumi.BoolOutput)
+}
+
+// Gets or sets the failover clone disk.
+func (o HyperVToAzStackHCIProtectedDiskPropertiesResponseOutput) MigrateDiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedDiskPropertiesResponse) string { return v.MigrateDiskName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the seed disk name.
+func (o HyperVToAzStackHCIProtectedDiskPropertiesResponseOutput) SeedDiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedDiskPropertiesResponse) string { return v.SeedDiskName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the source disk Id.
+func (o HyperVToAzStackHCIProtectedDiskPropertiesResponseOutput) SourceDiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedDiskPropertiesResponse) string { return v.SourceDiskId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the source disk Name.
+func (o HyperVToAzStackHCIProtectedDiskPropertiesResponseOutput) SourceDiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedDiskPropertiesResponse) string { return v.SourceDiskName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the ARM Id of the storage container.
+func (o HyperVToAzStackHCIProtectedDiskPropertiesResponseOutput) StorageContainerId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedDiskPropertiesResponse) string { return v.StorageContainerId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the local path of the storage container.
+func (o HyperVToAzStackHCIProtectedDiskPropertiesResponseOutput) StorageContainerLocalPath() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedDiskPropertiesResponse) string { return v.StorageContainerLocalPath }).(pulumi.StringOutput)
+}
+
+// Gets or sets the test failover clone disk.
+func (o HyperVToAzStackHCIProtectedDiskPropertiesResponseOutput) TestMigrateDiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedDiskPropertiesResponse) string { return v.TestMigrateDiskName }).(pulumi.StringOutput)
+}
+
+type HyperVToAzStackHCIProtectedDiskPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HyperVToAzStackHCIProtectedDiskPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HyperVToAzStackHCIProtectedDiskPropertiesResponse)(nil)).Elem()
+}
+
+func (o HyperVToAzStackHCIProtectedDiskPropertiesResponseArrayOutput) ToHyperVToAzStackHCIProtectedDiskPropertiesResponseArrayOutput() HyperVToAzStackHCIProtectedDiskPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCIProtectedDiskPropertiesResponseArrayOutput) ToHyperVToAzStackHCIProtectedDiskPropertiesResponseArrayOutputWithContext(ctx context.Context) HyperVToAzStackHCIProtectedDiskPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCIProtectedDiskPropertiesResponseArrayOutput) Index(i pulumi.IntInput) HyperVToAzStackHCIProtectedDiskPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HyperVToAzStackHCIProtectedDiskPropertiesResponse {
+		return vs[0].([]HyperVToAzStackHCIProtectedDiskPropertiesResponse)[vs[1].(int)]
+	}).(HyperVToAzStackHCIProtectedDiskPropertiesResponseOutput)
 }
 
 // HyperV to AzStackHCI Protected item model custom properties.
@@ -827,6 +1755,198 @@ type HyperVToAzStackHCIProtectedItemModelCustomProperties struct {
 	TargetVmName *string `pulumi:"targetVmName"`
 	// Gets or sets the target test network Id within AzStackHCI Cluster.
 	TestNetworkId *string `pulumi:"testNetworkId"`
+}
+
+// HyperVToAzStackHCIProtectedItemModelCustomPropertiesInput is an input type that accepts HyperVToAzStackHCIProtectedItemModelCustomPropertiesArgs and HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput values.
+// You can construct a concrete instance of `HyperVToAzStackHCIProtectedItemModelCustomPropertiesInput` via:
+//
+//	HyperVToAzStackHCIProtectedItemModelCustomPropertiesArgs{...}
+type HyperVToAzStackHCIProtectedItemModelCustomPropertiesInput interface {
+	pulumi.Input
+
+	ToHyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput() HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput
+	ToHyperVToAzStackHCIProtectedItemModelCustomPropertiesOutputWithContext(context.Context) HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput
+}
+
+// HyperV to AzStackHCI Protected item model custom properties.
+type HyperVToAzStackHCIProtectedItemModelCustomPropertiesArgs struct {
+	// Gets or sets the location of Azure Arc HCI custom location resource.
+	CustomLocationRegion pulumi.StringInput `pulumi:"customLocationRegion"`
+	// Gets or sets the list of disks to replicate.
+	DisksToInclude HyperVToAzStackHCIDiskInputArrayInput `pulumi:"disksToInclude"`
+	// Protected item dynamic memory config.
+	DynamicMemoryConfig ProtectedItemDynamicMemoryConfigPtrInput `pulumi:"dynamicMemoryConfig"`
+	// Gets or sets the ARM Id of the discovered machine.
+	FabricDiscoveryMachineId pulumi.StringInput `pulumi:"fabricDiscoveryMachineId"`
+	// Gets or sets the hypervisor generation of the virtual machine.
+	HyperVGeneration pulumi.StringInput `pulumi:"hyperVGeneration"`
+	// Gets or sets the instance type.
+	// Expected value is 'HyperVToAzStackHCI'.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// Gets or sets a value indicating whether memory is dynamical.
+	IsDynamicRam pulumi.BoolPtrInput `pulumi:"isDynamicRam"`
+	// Gets or sets the list of VM NIC to replicate.
+	NicsToInclude HyperVToAzStackHCINicInputArrayInput `pulumi:"nicsToInclude"`
+	// Gets or sets the Run As account Id.
+	RunAsAccountId pulumi.StringInput `pulumi:"runAsAccountId"`
+	// Gets or sets the source DRA name.
+	SourceDraName pulumi.StringInput `pulumi:"sourceDraName"`
+	// Gets or sets the target storage container ARM Id.
+	StorageContainerId pulumi.StringInput `pulumi:"storageContainerId"`
+	// Gets or sets the Target Arc Cluster Custom Location ARM Id.
+	TargetArcClusterCustomLocationId pulumi.StringInput `pulumi:"targetArcClusterCustomLocationId"`
+	// Gets or sets the target CPU cores.
+	TargetCpuCores pulumi.IntPtrInput `pulumi:"targetCpuCores"`
+	// Gets or sets the target DRA name.
+	TargetDraName pulumi.StringInput `pulumi:"targetDraName"`
+	// Gets or sets the Target HCI Cluster ARM Id.
+	TargetHciClusterId pulumi.StringInput `pulumi:"targetHciClusterId"`
+	// Gets or sets the target memory in mega-bytes.
+	TargetMemoryInMegaBytes pulumi.IntPtrInput `pulumi:"targetMemoryInMegaBytes"`
+	// Gets or sets the target network Id within AzStackHCI Cluster.
+	TargetNetworkId pulumi.StringPtrInput `pulumi:"targetNetworkId"`
+	// Gets or sets the target resource group ARM Id.
+	TargetResourceGroupId pulumi.StringInput `pulumi:"targetResourceGroupId"`
+	// Gets or sets the target VM display name.
+	TargetVmName pulumi.StringPtrInput `pulumi:"targetVmName"`
+	// Gets or sets the target test network Id within AzStackHCI Cluster.
+	TestNetworkId pulumi.StringPtrInput `pulumi:"testNetworkId"`
+}
+
+func (HyperVToAzStackHCIProtectedItemModelCustomPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperVToAzStackHCIProtectedItemModelCustomProperties)(nil)).Elem()
+}
+
+func (i HyperVToAzStackHCIProtectedItemModelCustomPropertiesArgs) ToHyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput() HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput {
+	return i.ToHyperVToAzStackHCIProtectedItemModelCustomPropertiesOutputWithContext(context.Background())
+}
+
+func (i HyperVToAzStackHCIProtectedItemModelCustomPropertiesArgs) ToHyperVToAzStackHCIProtectedItemModelCustomPropertiesOutputWithContext(ctx context.Context) HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput)
+}
+
+// HyperV to AzStackHCI Protected item model custom properties.
+type HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput struct{ *pulumi.OutputState }
+
+func (HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperVToAzStackHCIProtectedItemModelCustomProperties)(nil)).Elem()
+}
+
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput) ToHyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput() HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput) ToHyperVToAzStackHCIProtectedItemModelCustomPropertiesOutputWithContext(ctx context.Context) HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput {
+	return o
+}
+
+// Gets or sets the location of Azure Arc HCI custom location resource.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput) CustomLocationRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomProperties) string { return v.CustomLocationRegion }).(pulumi.StringOutput)
+}
+
+// Gets or sets the list of disks to replicate.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput) DisksToInclude() HyperVToAzStackHCIDiskInputArrayOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomProperties) []HyperVToAzStackHCIDiskInput {
+		return v.DisksToInclude
+	}).(HyperVToAzStackHCIDiskInputArrayOutput)
+}
+
+// Protected item dynamic memory config.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput) DynamicMemoryConfig() ProtectedItemDynamicMemoryConfigPtrOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomProperties) *ProtectedItemDynamicMemoryConfig {
+		return v.DynamicMemoryConfig
+	}).(ProtectedItemDynamicMemoryConfigPtrOutput)
+}
+
+// Gets or sets the ARM Id of the discovered machine.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput) FabricDiscoveryMachineId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomProperties) string { return v.FabricDiscoveryMachineId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the hypervisor generation of the virtual machine.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput) HyperVGeneration() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomProperties) string { return v.HyperVGeneration }).(pulumi.StringOutput)
+}
+
+// Gets or sets the instance type.
+// Expected value is 'HyperVToAzStackHCI'.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomProperties) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets a value indicating whether memory is dynamical.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput) IsDynamicRam() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomProperties) *bool { return v.IsDynamicRam }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets the list of VM NIC to replicate.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput) NicsToInclude() HyperVToAzStackHCINicInputArrayOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomProperties) []HyperVToAzStackHCINicInput {
+		return v.NicsToInclude
+	}).(HyperVToAzStackHCINicInputArrayOutput)
+}
+
+// Gets or sets the Run As account Id.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput) RunAsAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomProperties) string { return v.RunAsAccountId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the source DRA name.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput) SourceDraName() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomProperties) string { return v.SourceDraName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target storage container ARM Id.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput) StorageContainerId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomProperties) string { return v.StorageContainerId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the Target Arc Cluster Custom Location ARM Id.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput) TargetArcClusterCustomLocationId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomProperties) string {
+		return v.TargetArcClusterCustomLocationId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the target CPU cores.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput) TargetCpuCores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomProperties) *int { return v.TargetCpuCores }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the target DRA name.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput) TargetDraName() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomProperties) string { return v.TargetDraName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the Target HCI Cluster ARM Id.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput) TargetHciClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomProperties) string { return v.TargetHciClusterId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target memory in mega-bytes.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput) TargetMemoryInMegaBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomProperties) *int { return v.TargetMemoryInMegaBytes }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the target network Id within AzStackHCI Cluster.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput) TargetNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomProperties) *string { return v.TargetNetworkId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target resource group ARM Id.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput) TargetResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomProperties) string { return v.TargetResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target VM display name.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput) TargetVmName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomProperties) *string { return v.TargetVmName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target test network Id within AzStackHCI Cluster.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput) TestNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomProperties) *string { return v.TestNetworkId }).(pulumi.StringPtrOutput)
 }
 
 // HyperV to AzStackHCI Protected item model custom properties.
@@ -916,6 +2036,268 @@ type HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse struct {
 	TestNetworkId *string `pulumi:"testNetworkId"`
 }
 
+// HyperV to AzStackHCI Protected item model custom properties.
+type HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse)(nil)).Elem()
+}
+
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) ToHyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput() HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) ToHyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutputWithContext(ctx context.Context) HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the location of the protected item.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) ActiveLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.ActiveLocation }).(pulumi.StringOutput)
+}
+
+// Gets or sets the location of Azure Arc HCI custom location resource.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) CustomLocationRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.CustomLocationRegion
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the list of disks to replicate.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) DisksToInclude() HyperVToAzStackHCIDiskInputResponseArrayOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) []HyperVToAzStackHCIDiskInputResponse {
+		return v.DisksToInclude
+	}).(HyperVToAzStackHCIDiskInputResponseArrayOutput)
+}
+
+// Protected item dynamic memory config.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) DynamicMemoryConfig() ProtectedItemDynamicMemoryConfigResponsePtrOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) *ProtectedItemDynamicMemoryConfigResponse {
+		return v.DynamicMemoryConfig
+	}).(ProtectedItemDynamicMemoryConfigResponsePtrOutput)
+}
+
+// Gets or sets the ARM Id of the discovered machine.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) FabricDiscoveryMachineId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.FabricDiscoveryMachineId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the recovery point Id to which the VM was failed over.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) FailoverRecoveryPointId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.FailoverRecoveryPointId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the firmware type.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) FirmwareType() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.FirmwareType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the hypervisor generation of the virtual machine.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) HyperVGeneration() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.HyperVGeneration }).(pulumi.StringOutput)
+}
+
+// Gets or sets the initial replication progress percentage. This is calculated based on
+// total bytes processed for all disks in the source VM.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) InitialReplicationProgressPercentage() pulumi.IntOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) int {
+		return v.InitialReplicationProgressPercentage
+	}).(pulumi.IntOutput)
+}
+
+// Gets or sets the instance type.
+// Expected value is 'HyperVToAzStackHCI'.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets a value indicating whether memory is dynamical.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) IsDynamicRam() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) *bool { return v.IsDynamicRam }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets the last recovery point Id.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) LastRecoveryPointId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.LastRecoveryPointId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the last recovery point received time.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) LastRecoveryPointReceived() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.LastRecoveryPointReceived
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the latest timestamp that replication status is updated.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) LastReplicationUpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.LastReplicationUpdateTime
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the list of VM NIC to replicate.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) NicsToInclude() HyperVToAzStackHCINicInputResponseArrayOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) []HyperVToAzStackHCINicInputResponse {
+		return v.NicsToInclude
+	}).(HyperVToAzStackHCINicInputResponseArrayOutput)
+}
+
+// Gets or sets the name of the OS.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) OsName() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.OsName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the type of the OS.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) OsType() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.OsType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the list of protected disks.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) ProtectedDisks() HyperVToAzStackHCIProtectedDiskPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) []HyperVToAzStackHCIProtectedDiskPropertiesResponse {
+		return v.ProtectedDisks
+	}).(HyperVToAzStackHCIProtectedDiskPropertiesResponseArrayOutput)
+}
+
+// Gets or sets the VM NIC details.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) ProtectedNics() HyperVToAzStackHCIProtectedNicPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) []HyperVToAzStackHCIProtectedNicPropertiesResponse {
+		return v.ProtectedNics
+	}).(HyperVToAzStackHCIProtectedNicPropertiesResponseArrayOutput)
+}
+
+// Gets or sets the resync progress percentage. This is calculated based on total bytes
+// processed for all disks in the source VM.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) ResyncProgressPercentage() pulumi.IntOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) int {
+		return v.ResyncProgressPercentage
+	}).(pulumi.IntOutput)
+}
+
+// Gets or sets the Run As account Id.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) RunAsAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.RunAsAccountId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the source appliance name.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) SourceApplianceName() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.SourceApplianceName
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the source VM CPU cores.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) SourceCpuCores() pulumi.IntOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) int { return v.SourceCpuCores }).(pulumi.IntOutput)
+}
+
+// Gets or sets the source DRA name.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) SourceDraName() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.SourceDraName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the source VM ram memory size in megabytes.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) SourceMemoryInMegaBytes() pulumi.Float64Output {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) float64 {
+		return v.SourceMemoryInMegaBytes
+	}).(pulumi.Float64Output)
+}
+
+// Gets or sets the source VM display name.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) SourceVmName() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.SourceVmName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target storage container ARM Id.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) StorageContainerId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.StorageContainerId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the target appliance name.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetApplianceName() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.TargetApplianceName
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the Target Arc Cluster Custom Location ARM Id.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetArcClusterCustomLocationId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.TargetArcClusterCustomLocationId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the Target AzStackHCI cluster name.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetAzStackHciClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.TargetAzStackHciClusterName
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the target CPU cores.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetCpuCores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) *int { return v.TargetCpuCores }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the target DRA name.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetDraName() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.TargetDraName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the Target HCI Cluster ARM Id.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetHciClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.TargetHciClusterId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the target location.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.TargetLocation }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target memory in mega-bytes.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetMemoryInMegaBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) *int {
+		return v.TargetMemoryInMegaBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the target network Id within AzStackHCI Cluster.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) *string { return v.TargetNetworkId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target resource group ARM Id.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.TargetResourceGroupId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the BIOS Id of the target AzStackHCI VM.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetVmBiosId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.TargetVmBiosId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target VM display name.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetVmName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) *string { return v.TargetVmName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target test network Id within AzStackHCI Cluster.
+func (o HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TestNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse) *string { return v.TestNetworkId }).(pulumi.StringPtrOutput)
+}
+
 // HyperVToAzStackHCI NIC properties.
 type HyperVToAzStackHCIProtectedNicPropertiesResponse struct {
 	// Gets or sets the NIC mac address.
@@ -932,6 +2314,71 @@ type HyperVToAzStackHCIProtectedNicPropertiesResponse struct {
 	TestNetworkId string `pulumi:"testNetworkId"`
 }
 
+// HyperVToAzStackHCI NIC properties.
+type HyperVToAzStackHCIProtectedNicPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (HyperVToAzStackHCIProtectedNicPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperVToAzStackHCIProtectedNicPropertiesResponse)(nil)).Elem()
+}
+
+func (o HyperVToAzStackHCIProtectedNicPropertiesResponseOutput) ToHyperVToAzStackHCIProtectedNicPropertiesResponseOutput() HyperVToAzStackHCIProtectedNicPropertiesResponseOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCIProtectedNicPropertiesResponseOutput) ToHyperVToAzStackHCIProtectedNicPropertiesResponseOutputWithContext(ctx context.Context) HyperVToAzStackHCIProtectedNicPropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the NIC mac address.
+func (o HyperVToAzStackHCIProtectedNicPropertiesResponseOutput) MacAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedNicPropertiesResponse) string { return v.MacAddress }).(pulumi.StringOutput)
+}
+
+// Gets or sets the network name.
+func (o HyperVToAzStackHCIProtectedNicPropertiesResponseOutput) NetworkName() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedNicPropertiesResponse) string { return v.NetworkName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the NIC Id.
+func (o HyperVToAzStackHCIProtectedNicPropertiesResponseOutput) NicId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedNicPropertiesResponse) string { return v.NicId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the selection type of the NIC.
+func (o HyperVToAzStackHCIProtectedNicPropertiesResponseOutput) SelectionTypeForFailover() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedNicPropertiesResponse) string { return v.SelectionTypeForFailover }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target network Id within AzStackHCI Cluster.
+func (o HyperVToAzStackHCIProtectedNicPropertiesResponseOutput) TargetNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedNicPropertiesResponse) string { return v.TargetNetworkId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target test network Id within AzStackHCI Cluster.
+func (o HyperVToAzStackHCIProtectedNicPropertiesResponseOutput) TestNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIProtectedNicPropertiesResponse) string { return v.TestNetworkId }).(pulumi.StringOutput)
+}
+
+type HyperVToAzStackHCIProtectedNicPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HyperVToAzStackHCIProtectedNicPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HyperVToAzStackHCIProtectedNicPropertiesResponse)(nil)).Elem()
+}
+
+func (o HyperVToAzStackHCIProtectedNicPropertiesResponseArrayOutput) ToHyperVToAzStackHCIProtectedNicPropertiesResponseArrayOutput() HyperVToAzStackHCIProtectedNicPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCIProtectedNicPropertiesResponseArrayOutput) ToHyperVToAzStackHCIProtectedNicPropertiesResponseArrayOutputWithContext(ctx context.Context) HyperVToAzStackHCIProtectedNicPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCIProtectedNicPropertiesResponseArrayOutput) Index(i pulumi.IntInput) HyperVToAzStackHCIProtectedNicPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HyperVToAzStackHCIProtectedNicPropertiesResponse {
+		return vs[0].([]HyperVToAzStackHCIProtectedNicPropertiesResponse)[vs[1].(int)]
+	}).(HyperVToAzStackHCIProtectedNicPropertiesResponseOutput)
+}
+
 // HyperV to AzStackHCI Replication extension model custom properties.
 type HyperVToAzStackHCIReplicationExtensionModelCustomProperties struct {
 	// Gets or sets the ARM Id of the target AzStackHCI fabric.
@@ -945,6 +2392,89 @@ type HyperVToAzStackHCIReplicationExtensionModelCustomProperties struct {
 	StorageAccountId *string `pulumi:"storageAccountId"`
 	// Gets or sets the Sas Secret of storage account.
 	StorageAccountSasSecretName *string `pulumi:"storageAccountSasSecretName"`
+}
+
+// HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesInput is an input type that accepts HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesArgs and HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutput values.
+// You can construct a concrete instance of `HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesInput` via:
+//
+//	HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesArgs{...}
+type HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesInput interface {
+	pulumi.Input
+
+	ToHyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutput() HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutput
+	ToHyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutputWithContext(context.Context) HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutput
+}
+
+// HyperV to AzStackHCI Replication extension model custom properties.
+type HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesArgs struct {
+	// Gets or sets the ARM Id of the target AzStackHCI fabric.
+	AzStackHciFabricArmId pulumi.StringInput `pulumi:"azStackHciFabricArmId"`
+	// Gets or sets the ARM Id of the source HyperV fabric.
+	HyperVFabricArmId pulumi.StringInput `pulumi:"hyperVFabricArmId"`
+	// Gets or sets the instance type.
+	// Expected value is 'HyperVToAzStackHCI'.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// Gets or sets the storage account Id.
+	StorageAccountId pulumi.StringPtrInput `pulumi:"storageAccountId"`
+	// Gets or sets the Sas Secret of storage account.
+	StorageAccountSasSecretName pulumi.StringPtrInput `pulumi:"storageAccountSasSecretName"`
+}
+
+func (HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperVToAzStackHCIReplicationExtensionModelCustomProperties)(nil)).Elem()
+}
+
+func (i HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesArgs) ToHyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutput() HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutput {
+	return i.ToHyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutputWithContext(context.Background())
+}
+
+func (i HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesArgs) ToHyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutputWithContext(ctx context.Context) HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutput)
+}
+
+// HyperV to AzStackHCI Replication extension model custom properties.
+type HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutput struct{ *pulumi.OutputState }
+
+func (HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperVToAzStackHCIReplicationExtensionModelCustomProperties)(nil)).Elem()
+}
+
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutput) ToHyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutput() HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutput) ToHyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutputWithContext(ctx context.Context) HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutput {
+	return o
+}
+
+// Gets or sets the ARM Id of the target AzStackHCI fabric.
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutput) AzStackHciFabricArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIReplicationExtensionModelCustomProperties) string {
+		return v.AzStackHciFabricArmId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the ARM Id of the source HyperV fabric.
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutput) HyperVFabricArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIReplicationExtensionModelCustomProperties) string { return v.HyperVFabricArmId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the instance type.
+// Expected value is 'HyperVToAzStackHCI'.
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIReplicationExtensionModelCustomProperties) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the storage account Id.
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutput) StorageAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIReplicationExtensionModelCustomProperties) *string { return v.StorageAccountId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Sas Secret of storage account.
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutput) StorageAccountSasSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIReplicationExtensionModelCustomProperties) *string {
+		return v.StorageAccountSasSecretName
+	}).(pulumi.StringPtrOutput)
 }
 
 // HyperV to AzStackHCI Replication extension model custom properties.
@@ -984,6 +2514,141 @@ type HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse struct 
 	TargetGatewayServiceId string `pulumi:"targetGatewayServiceId"`
 	// Gets or sets the target storage container name.
 	TargetStorageContainerName string `pulumi:"targetStorageContainerName"`
+}
+
+// HyperV to AzStackHCI Replication extension model custom properties.
+type HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse)(nil)).Elem()
+}
+
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) ToHyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput() HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput {
+	return o
+}
+
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) ToHyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutputWithContext(ctx context.Context) HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the Uri of ASR.
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) AsrServiceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.AsrServiceUri
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the ARM Id of the target AzStackHCI fabric.
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) AzStackHciFabricArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.AzStackHciFabricArmId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the ARM Id of the AzStackHCI site.
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) AzStackHciSiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.AzStackHciSiteId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the Uri of Gateway.
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) GatewayServiceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.GatewayServiceUri
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the ARM Id of the source HyperV fabric.
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) HyperVFabricArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.HyperVFabricArmId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the ARM Id of the HyperV site.
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) HyperVSiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.HyperVSiteId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the instance type.
+// Expected value is 'HyperVToAzStackHCI'.
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.InstanceType
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the Uri of Rcm.
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) RcmServiceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.RcmServiceUri
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the resource group.
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) ResourceGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.ResourceGroup
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the resource location.
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) ResourceLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.ResourceLocation
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the gateway service Id of source.
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) SourceGatewayServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.SourceGatewayServiceId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the source storage container name.
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) SourceStorageContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.SourceStorageContainerName
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the storage account Id.
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) StorageAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) *string {
+		return v.StorageAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Sas Secret of storage account.
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) StorageAccountSasSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) *string {
+		return v.StorageAccountSasSecretName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the subscription.
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) SubscriptionId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.SubscriptionId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the gateway service Id of target.
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) TargetGatewayServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.TargetGatewayServiceId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the target storage container name.
+func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) TargetStorageContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.TargetStorageContainerName
+	}).(pulumi.StringOutput)
 }
 
 // Identity model.
@@ -1413,6 +3078,174 @@ type ProtectedItemDynamicMemoryConfig struct {
 	TargetMemoryBufferPercentage int `pulumi:"targetMemoryBufferPercentage"`
 }
 
+// ProtectedItemDynamicMemoryConfigInput is an input type that accepts ProtectedItemDynamicMemoryConfigArgs and ProtectedItemDynamicMemoryConfigOutput values.
+// You can construct a concrete instance of `ProtectedItemDynamicMemoryConfigInput` via:
+//
+//	ProtectedItemDynamicMemoryConfigArgs{...}
+type ProtectedItemDynamicMemoryConfigInput interface {
+	pulumi.Input
+
+	ToProtectedItemDynamicMemoryConfigOutput() ProtectedItemDynamicMemoryConfigOutput
+	ToProtectedItemDynamicMemoryConfigOutputWithContext(context.Context) ProtectedItemDynamicMemoryConfigOutput
+}
+
+// Protected item dynamic memory config.
+type ProtectedItemDynamicMemoryConfigArgs struct {
+	// Gets or sets maximum memory in MB.
+	MaximumMemoryInMegaBytes pulumi.Float64Input `pulumi:"maximumMemoryInMegaBytes"`
+	// Gets or sets minimum memory in MB.
+	MinimumMemoryInMegaBytes pulumi.Float64Input `pulumi:"minimumMemoryInMegaBytes"`
+	// Gets or sets target memory buffer in %.
+	TargetMemoryBufferPercentage pulumi.IntInput `pulumi:"targetMemoryBufferPercentage"`
+}
+
+func (ProtectedItemDynamicMemoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProtectedItemDynamicMemoryConfig)(nil)).Elem()
+}
+
+func (i ProtectedItemDynamicMemoryConfigArgs) ToProtectedItemDynamicMemoryConfigOutput() ProtectedItemDynamicMemoryConfigOutput {
+	return i.ToProtectedItemDynamicMemoryConfigOutputWithContext(context.Background())
+}
+
+func (i ProtectedItemDynamicMemoryConfigArgs) ToProtectedItemDynamicMemoryConfigOutputWithContext(ctx context.Context) ProtectedItemDynamicMemoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProtectedItemDynamicMemoryConfigOutput)
+}
+
+func (i ProtectedItemDynamicMemoryConfigArgs) ToProtectedItemDynamicMemoryConfigPtrOutput() ProtectedItemDynamicMemoryConfigPtrOutput {
+	return i.ToProtectedItemDynamicMemoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ProtectedItemDynamicMemoryConfigArgs) ToProtectedItemDynamicMemoryConfigPtrOutputWithContext(ctx context.Context) ProtectedItemDynamicMemoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProtectedItemDynamicMemoryConfigOutput).ToProtectedItemDynamicMemoryConfigPtrOutputWithContext(ctx)
+}
+
+// ProtectedItemDynamicMemoryConfigPtrInput is an input type that accepts ProtectedItemDynamicMemoryConfigArgs, ProtectedItemDynamicMemoryConfigPtr and ProtectedItemDynamicMemoryConfigPtrOutput values.
+// You can construct a concrete instance of `ProtectedItemDynamicMemoryConfigPtrInput` via:
+//
+//	        ProtectedItemDynamicMemoryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProtectedItemDynamicMemoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToProtectedItemDynamicMemoryConfigPtrOutput() ProtectedItemDynamicMemoryConfigPtrOutput
+	ToProtectedItemDynamicMemoryConfigPtrOutputWithContext(context.Context) ProtectedItemDynamicMemoryConfigPtrOutput
+}
+
+type protectedItemDynamicMemoryConfigPtrType ProtectedItemDynamicMemoryConfigArgs
+
+func ProtectedItemDynamicMemoryConfigPtr(v *ProtectedItemDynamicMemoryConfigArgs) ProtectedItemDynamicMemoryConfigPtrInput {
+	return (*protectedItemDynamicMemoryConfigPtrType)(v)
+}
+
+func (*protectedItemDynamicMemoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProtectedItemDynamicMemoryConfig)(nil)).Elem()
+}
+
+func (i *protectedItemDynamicMemoryConfigPtrType) ToProtectedItemDynamicMemoryConfigPtrOutput() ProtectedItemDynamicMemoryConfigPtrOutput {
+	return i.ToProtectedItemDynamicMemoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *protectedItemDynamicMemoryConfigPtrType) ToProtectedItemDynamicMemoryConfigPtrOutputWithContext(ctx context.Context) ProtectedItemDynamicMemoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProtectedItemDynamicMemoryConfigPtrOutput)
+}
+
+// Protected item dynamic memory config.
+type ProtectedItemDynamicMemoryConfigOutput struct{ *pulumi.OutputState }
+
+func (ProtectedItemDynamicMemoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProtectedItemDynamicMemoryConfig)(nil)).Elem()
+}
+
+func (o ProtectedItemDynamicMemoryConfigOutput) ToProtectedItemDynamicMemoryConfigOutput() ProtectedItemDynamicMemoryConfigOutput {
+	return o
+}
+
+func (o ProtectedItemDynamicMemoryConfigOutput) ToProtectedItemDynamicMemoryConfigOutputWithContext(ctx context.Context) ProtectedItemDynamicMemoryConfigOutput {
+	return o
+}
+
+func (o ProtectedItemDynamicMemoryConfigOutput) ToProtectedItemDynamicMemoryConfigPtrOutput() ProtectedItemDynamicMemoryConfigPtrOutput {
+	return o.ToProtectedItemDynamicMemoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ProtectedItemDynamicMemoryConfigOutput) ToProtectedItemDynamicMemoryConfigPtrOutputWithContext(ctx context.Context) ProtectedItemDynamicMemoryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProtectedItemDynamicMemoryConfig) *ProtectedItemDynamicMemoryConfig {
+		return &v
+	}).(ProtectedItemDynamicMemoryConfigPtrOutput)
+}
+
+// Gets or sets maximum memory in MB.
+func (o ProtectedItemDynamicMemoryConfigOutput) MaximumMemoryInMegaBytes() pulumi.Float64Output {
+	return o.ApplyT(func(v ProtectedItemDynamicMemoryConfig) float64 { return v.MaximumMemoryInMegaBytes }).(pulumi.Float64Output)
+}
+
+// Gets or sets minimum memory in MB.
+func (o ProtectedItemDynamicMemoryConfigOutput) MinimumMemoryInMegaBytes() pulumi.Float64Output {
+	return o.ApplyT(func(v ProtectedItemDynamicMemoryConfig) float64 { return v.MinimumMemoryInMegaBytes }).(pulumi.Float64Output)
+}
+
+// Gets or sets target memory buffer in %.
+func (o ProtectedItemDynamicMemoryConfigOutput) TargetMemoryBufferPercentage() pulumi.IntOutput {
+	return o.ApplyT(func(v ProtectedItemDynamicMemoryConfig) int { return v.TargetMemoryBufferPercentage }).(pulumi.IntOutput)
+}
+
+type ProtectedItemDynamicMemoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ProtectedItemDynamicMemoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProtectedItemDynamicMemoryConfig)(nil)).Elem()
+}
+
+func (o ProtectedItemDynamicMemoryConfigPtrOutput) ToProtectedItemDynamicMemoryConfigPtrOutput() ProtectedItemDynamicMemoryConfigPtrOutput {
+	return o
+}
+
+func (o ProtectedItemDynamicMemoryConfigPtrOutput) ToProtectedItemDynamicMemoryConfigPtrOutputWithContext(ctx context.Context) ProtectedItemDynamicMemoryConfigPtrOutput {
+	return o
+}
+
+func (o ProtectedItemDynamicMemoryConfigPtrOutput) Elem() ProtectedItemDynamicMemoryConfigOutput {
+	return o.ApplyT(func(v *ProtectedItemDynamicMemoryConfig) ProtectedItemDynamicMemoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ProtectedItemDynamicMemoryConfig
+		return ret
+	}).(ProtectedItemDynamicMemoryConfigOutput)
+}
+
+// Gets or sets maximum memory in MB.
+func (o ProtectedItemDynamicMemoryConfigPtrOutput) MaximumMemoryInMegaBytes() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ProtectedItemDynamicMemoryConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.MaximumMemoryInMegaBytes
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets minimum memory in MB.
+func (o ProtectedItemDynamicMemoryConfigPtrOutput) MinimumMemoryInMegaBytes() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ProtectedItemDynamicMemoryConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.MinimumMemoryInMegaBytes
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets target memory buffer in %.
+func (o ProtectedItemDynamicMemoryConfigPtrOutput) TargetMemoryBufferPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProtectedItemDynamicMemoryConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetMemoryBufferPercentage
+	}).(pulumi.IntPtrOutput)
+}
+
 // Protected item dynamic memory config.
 type ProtectedItemDynamicMemoryConfigResponse struct {
 	// Gets or sets maximum memory in MB.
@@ -1421,6 +3254,90 @@ type ProtectedItemDynamicMemoryConfigResponse struct {
 	MinimumMemoryInMegaBytes float64 `pulumi:"minimumMemoryInMegaBytes"`
 	// Gets or sets target memory buffer in %.
 	TargetMemoryBufferPercentage int `pulumi:"targetMemoryBufferPercentage"`
+}
+
+// Protected item dynamic memory config.
+type ProtectedItemDynamicMemoryConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ProtectedItemDynamicMemoryConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProtectedItemDynamicMemoryConfigResponse)(nil)).Elem()
+}
+
+func (o ProtectedItemDynamicMemoryConfigResponseOutput) ToProtectedItemDynamicMemoryConfigResponseOutput() ProtectedItemDynamicMemoryConfigResponseOutput {
+	return o
+}
+
+func (o ProtectedItemDynamicMemoryConfigResponseOutput) ToProtectedItemDynamicMemoryConfigResponseOutputWithContext(ctx context.Context) ProtectedItemDynamicMemoryConfigResponseOutput {
+	return o
+}
+
+// Gets or sets maximum memory in MB.
+func (o ProtectedItemDynamicMemoryConfigResponseOutput) MaximumMemoryInMegaBytes() pulumi.Float64Output {
+	return o.ApplyT(func(v ProtectedItemDynamicMemoryConfigResponse) float64 { return v.MaximumMemoryInMegaBytes }).(pulumi.Float64Output)
+}
+
+// Gets or sets minimum memory in MB.
+func (o ProtectedItemDynamicMemoryConfigResponseOutput) MinimumMemoryInMegaBytes() pulumi.Float64Output {
+	return o.ApplyT(func(v ProtectedItemDynamicMemoryConfigResponse) float64 { return v.MinimumMemoryInMegaBytes }).(pulumi.Float64Output)
+}
+
+// Gets or sets target memory buffer in %.
+func (o ProtectedItemDynamicMemoryConfigResponseOutput) TargetMemoryBufferPercentage() pulumi.IntOutput {
+	return o.ApplyT(func(v ProtectedItemDynamicMemoryConfigResponse) int { return v.TargetMemoryBufferPercentage }).(pulumi.IntOutput)
+}
+
+type ProtectedItemDynamicMemoryConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ProtectedItemDynamicMemoryConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProtectedItemDynamicMemoryConfigResponse)(nil)).Elem()
+}
+
+func (o ProtectedItemDynamicMemoryConfigResponsePtrOutput) ToProtectedItemDynamicMemoryConfigResponsePtrOutput() ProtectedItemDynamicMemoryConfigResponsePtrOutput {
+	return o
+}
+
+func (o ProtectedItemDynamicMemoryConfigResponsePtrOutput) ToProtectedItemDynamicMemoryConfigResponsePtrOutputWithContext(ctx context.Context) ProtectedItemDynamicMemoryConfigResponsePtrOutput {
+	return o
+}
+
+func (o ProtectedItemDynamicMemoryConfigResponsePtrOutput) Elem() ProtectedItemDynamicMemoryConfigResponseOutput {
+	return o.ApplyT(func(v *ProtectedItemDynamicMemoryConfigResponse) ProtectedItemDynamicMemoryConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ProtectedItemDynamicMemoryConfigResponse
+		return ret
+	}).(ProtectedItemDynamicMemoryConfigResponseOutput)
+}
+
+// Gets or sets maximum memory in MB.
+func (o ProtectedItemDynamicMemoryConfigResponsePtrOutput) MaximumMemoryInMegaBytes() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ProtectedItemDynamicMemoryConfigResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.MaximumMemoryInMegaBytes
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets minimum memory in MB.
+func (o ProtectedItemDynamicMemoryConfigResponsePtrOutput) MinimumMemoryInMegaBytes() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ProtectedItemDynamicMemoryConfigResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.MinimumMemoryInMegaBytes
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Gets or sets target memory buffer in %.
+func (o ProtectedItemDynamicMemoryConfigResponsePtrOutput) TargetMemoryBufferPercentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ProtectedItemDynamicMemoryConfigResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetMemoryBufferPercentage
+	}).(pulumi.IntPtrOutput)
 }
 
 // Protected item model properties.
@@ -2206,12 +4123,158 @@ type StorageContainerProperties struct {
 	Name string `pulumi:"name"`
 }
 
+// StorageContainerPropertiesInput is an input type that accepts StorageContainerPropertiesArgs and StorageContainerPropertiesOutput values.
+// You can construct a concrete instance of `StorageContainerPropertiesInput` via:
+//
+//	StorageContainerPropertiesArgs{...}
+type StorageContainerPropertiesInput interface {
+	pulumi.Input
+
+	ToStorageContainerPropertiesOutput() StorageContainerPropertiesOutput
+	ToStorageContainerPropertiesOutputWithContext(context.Context) StorageContainerPropertiesOutput
+}
+
+// Storage container properties.
+type StorageContainerPropertiesArgs struct {
+	// Gets or sets the ClusterSharedVolumePath.
+	ClusterSharedVolumePath pulumi.StringInput `pulumi:"clusterSharedVolumePath"`
+	// Gets or sets the Name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (StorageContainerPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageContainerProperties)(nil)).Elem()
+}
+
+func (i StorageContainerPropertiesArgs) ToStorageContainerPropertiesOutput() StorageContainerPropertiesOutput {
+	return i.ToStorageContainerPropertiesOutputWithContext(context.Background())
+}
+
+func (i StorageContainerPropertiesArgs) ToStorageContainerPropertiesOutputWithContext(ctx context.Context) StorageContainerPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageContainerPropertiesOutput)
+}
+
+// StorageContainerPropertiesArrayInput is an input type that accepts StorageContainerPropertiesArray and StorageContainerPropertiesArrayOutput values.
+// You can construct a concrete instance of `StorageContainerPropertiesArrayInput` via:
+//
+//	StorageContainerPropertiesArray{ StorageContainerPropertiesArgs{...} }
+type StorageContainerPropertiesArrayInput interface {
+	pulumi.Input
+
+	ToStorageContainerPropertiesArrayOutput() StorageContainerPropertiesArrayOutput
+	ToStorageContainerPropertiesArrayOutputWithContext(context.Context) StorageContainerPropertiesArrayOutput
+}
+
+type StorageContainerPropertiesArray []StorageContainerPropertiesInput
+
+func (StorageContainerPropertiesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StorageContainerProperties)(nil)).Elem()
+}
+
+func (i StorageContainerPropertiesArray) ToStorageContainerPropertiesArrayOutput() StorageContainerPropertiesArrayOutput {
+	return i.ToStorageContainerPropertiesArrayOutputWithContext(context.Background())
+}
+
+func (i StorageContainerPropertiesArray) ToStorageContainerPropertiesArrayOutputWithContext(ctx context.Context) StorageContainerPropertiesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageContainerPropertiesArrayOutput)
+}
+
+// Storage container properties.
+type StorageContainerPropertiesOutput struct{ *pulumi.OutputState }
+
+func (StorageContainerPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageContainerProperties)(nil)).Elem()
+}
+
+func (o StorageContainerPropertiesOutput) ToStorageContainerPropertiesOutput() StorageContainerPropertiesOutput {
+	return o
+}
+
+func (o StorageContainerPropertiesOutput) ToStorageContainerPropertiesOutputWithContext(ctx context.Context) StorageContainerPropertiesOutput {
+	return o
+}
+
+// Gets or sets the ClusterSharedVolumePath.
+func (o StorageContainerPropertiesOutput) ClusterSharedVolumePath() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageContainerProperties) string { return v.ClusterSharedVolumePath }).(pulumi.StringOutput)
+}
+
+// Gets or sets the Name.
+func (o StorageContainerPropertiesOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageContainerProperties) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type StorageContainerPropertiesArrayOutput struct{ *pulumi.OutputState }
+
+func (StorageContainerPropertiesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StorageContainerProperties)(nil)).Elem()
+}
+
+func (o StorageContainerPropertiesArrayOutput) ToStorageContainerPropertiesArrayOutput() StorageContainerPropertiesArrayOutput {
+	return o
+}
+
+func (o StorageContainerPropertiesArrayOutput) ToStorageContainerPropertiesArrayOutputWithContext(ctx context.Context) StorageContainerPropertiesArrayOutput {
+	return o
+}
+
+func (o StorageContainerPropertiesArrayOutput) Index(i pulumi.IntInput) StorageContainerPropertiesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageContainerProperties {
+		return vs[0].([]StorageContainerProperties)[vs[1].(int)]
+	}).(StorageContainerPropertiesOutput)
+}
+
 // Storage container properties.
 type StorageContainerPropertiesResponse struct {
 	// Gets or sets the ClusterSharedVolumePath.
 	ClusterSharedVolumePath string `pulumi:"clusterSharedVolumePath"`
 	// Gets or sets the Name.
 	Name string `pulumi:"name"`
+}
+
+// Storage container properties.
+type StorageContainerPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (StorageContainerPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageContainerPropertiesResponse)(nil)).Elem()
+}
+
+func (o StorageContainerPropertiesResponseOutput) ToStorageContainerPropertiesResponseOutput() StorageContainerPropertiesResponseOutput {
+	return o
+}
+
+func (o StorageContainerPropertiesResponseOutput) ToStorageContainerPropertiesResponseOutputWithContext(ctx context.Context) StorageContainerPropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the ClusterSharedVolumePath.
+func (o StorageContainerPropertiesResponseOutput) ClusterSharedVolumePath() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageContainerPropertiesResponse) string { return v.ClusterSharedVolumePath }).(pulumi.StringOutput)
+}
+
+// Gets or sets the Name.
+func (o StorageContainerPropertiesResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageContainerPropertiesResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type StorageContainerPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StorageContainerPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StorageContainerPropertiesResponse)(nil)).Elem()
+}
+
+func (o StorageContainerPropertiesResponseArrayOutput) ToStorageContainerPropertiesResponseArrayOutput() StorageContainerPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o StorageContainerPropertiesResponseArrayOutput) ToStorageContainerPropertiesResponseArrayOutputWithContext(ctx context.Context) StorageContainerPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o StorageContainerPropertiesResponseArrayOutput) Index(i pulumi.IntInput) StorageContainerPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageContainerPropertiesResponse {
+		return vs[0].([]StorageContainerPropertiesResponse)[vs[1].(int)]
+	}).(StorageContainerPropertiesResponseOutput)
 }
 
 // VMware DRA model custom properties.
@@ -2345,6 +4408,71 @@ type VMwareMigrateFabricModelCustomProperties struct {
 	VmwareSiteId string `pulumi:"vmwareSiteId"`
 }
 
+// VMwareMigrateFabricModelCustomPropertiesInput is an input type that accepts VMwareMigrateFabricModelCustomPropertiesArgs and VMwareMigrateFabricModelCustomPropertiesOutput values.
+// You can construct a concrete instance of `VMwareMigrateFabricModelCustomPropertiesInput` via:
+//
+//	VMwareMigrateFabricModelCustomPropertiesArgs{...}
+type VMwareMigrateFabricModelCustomPropertiesInput interface {
+	pulumi.Input
+
+	ToVMwareMigrateFabricModelCustomPropertiesOutput() VMwareMigrateFabricModelCustomPropertiesOutput
+	ToVMwareMigrateFabricModelCustomPropertiesOutputWithContext(context.Context) VMwareMigrateFabricModelCustomPropertiesOutput
+}
+
+// VMware migrate fabric model custom properties.
+type VMwareMigrateFabricModelCustomPropertiesArgs struct {
+	// Gets or sets the instance type.
+	// Expected value is 'VMwareMigrate'.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// Gets or sets the ARM Id of the migration solution.
+	MigrationSolutionId pulumi.StringInput `pulumi:"migrationSolutionId"`
+	// Gets or sets the ARM Id of the VMware site.
+	VmwareSiteId pulumi.StringInput `pulumi:"vmwareSiteId"`
+}
+
+func (VMwareMigrateFabricModelCustomPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareMigrateFabricModelCustomProperties)(nil)).Elem()
+}
+
+func (i VMwareMigrateFabricModelCustomPropertiesArgs) ToVMwareMigrateFabricModelCustomPropertiesOutput() VMwareMigrateFabricModelCustomPropertiesOutput {
+	return i.ToVMwareMigrateFabricModelCustomPropertiesOutputWithContext(context.Background())
+}
+
+func (i VMwareMigrateFabricModelCustomPropertiesArgs) ToVMwareMigrateFabricModelCustomPropertiesOutputWithContext(ctx context.Context) VMwareMigrateFabricModelCustomPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMwareMigrateFabricModelCustomPropertiesOutput)
+}
+
+// VMware migrate fabric model custom properties.
+type VMwareMigrateFabricModelCustomPropertiesOutput struct{ *pulumi.OutputState }
+
+func (VMwareMigrateFabricModelCustomPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareMigrateFabricModelCustomProperties)(nil)).Elem()
+}
+
+func (o VMwareMigrateFabricModelCustomPropertiesOutput) ToVMwareMigrateFabricModelCustomPropertiesOutput() VMwareMigrateFabricModelCustomPropertiesOutput {
+	return o
+}
+
+func (o VMwareMigrateFabricModelCustomPropertiesOutput) ToVMwareMigrateFabricModelCustomPropertiesOutputWithContext(ctx context.Context) VMwareMigrateFabricModelCustomPropertiesOutput {
+	return o
+}
+
+// Gets or sets the instance type.
+// Expected value is 'VMwareMigrate'.
+func (o VMwareMigrateFabricModelCustomPropertiesOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareMigrateFabricModelCustomProperties) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the ARM Id of the migration solution.
+func (o VMwareMigrateFabricModelCustomPropertiesOutput) MigrationSolutionId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareMigrateFabricModelCustomProperties) string { return v.MigrationSolutionId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the ARM Id of the VMware site.
+func (o VMwareMigrateFabricModelCustomPropertiesOutput) VmwareSiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareMigrateFabricModelCustomProperties) string { return v.VmwareSiteId }).(pulumi.StringOutput)
+}
+
 // VMware migrate fabric model custom properties.
 type VMwareMigrateFabricModelCustomPropertiesResponse struct {
 	// Gets or sets the instance type.
@@ -2354,6 +4482,37 @@ type VMwareMigrateFabricModelCustomPropertiesResponse struct {
 	MigrationSolutionId string `pulumi:"migrationSolutionId"`
 	// Gets or sets the ARM Id of the VMware site.
 	VmwareSiteId string `pulumi:"vmwareSiteId"`
+}
+
+// VMware migrate fabric model custom properties.
+type VMwareMigrateFabricModelCustomPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (VMwareMigrateFabricModelCustomPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareMigrateFabricModelCustomPropertiesResponse)(nil)).Elem()
+}
+
+func (o VMwareMigrateFabricModelCustomPropertiesResponseOutput) ToVMwareMigrateFabricModelCustomPropertiesResponseOutput() VMwareMigrateFabricModelCustomPropertiesResponseOutput {
+	return o
+}
+
+func (o VMwareMigrateFabricModelCustomPropertiesResponseOutput) ToVMwareMigrateFabricModelCustomPropertiesResponseOutputWithContext(ctx context.Context) VMwareMigrateFabricModelCustomPropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the instance type.
+// Expected value is 'VMwareMigrate'.
+func (o VMwareMigrateFabricModelCustomPropertiesResponseOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareMigrateFabricModelCustomPropertiesResponse) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the ARM Id of the migration solution.
+func (o VMwareMigrateFabricModelCustomPropertiesResponseOutput) MigrationSolutionId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareMigrateFabricModelCustomPropertiesResponse) string { return v.MigrationSolutionId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the ARM Id of the VMware site.
+func (o VMwareMigrateFabricModelCustomPropertiesResponseOutput) VmwareSiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareMigrateFabricModelCustomPropertiesResponse) string { return v.VmwareSiteId }).(pulumi.StringOutput)
 }
 
 // VMwareToAzStack disk input.
@@ -2373,6 +4532,137 @@ type VMwareToAzStackHCIDiskInput struct {
 	StorageContainerId *string `pulumi:"storageContainerId"`
 }
 
+// VMwareToAzStackHCIDiskInputInput is an input type that accepts VMwareToAzStackHCIDiskInputArgs and VMwareToAzStackHCIDiskInputOutput values.
+// You can construct a concrete instance of `VMwareToAzStackHCIDiskInputInput` via:
+//
+//	VMwareToAzStackHCIDiskInputArgs{...}
+type VMwareToAzStackHCIDiskInputInput interface {
+	pulumi.Input
+
+	ToVMwareToAzStackHCIDiskInputOutput() VMwareToAzStackHCIDiskInputOutput
+	ToVMwareToAzStackHCIDiskInputOutputWithContext(context.Context) VMwareToAzStackHCIDiskInputOutput
+}
+
+// VMwareToAzStack disk input.
+type VMwareToAzStackHCIDiskInputArgs struct {
+	// Gets or sets the type of the virtual hard disk, vhd or vhdx.
+	DiskFileFormat pulumi.StringInput `pulumi:"diskFileFormat"`
+	// Gets or sets the disk Id.
+	DiskId pulumi.StringInput `pulumi:"diskId"`
+	// Gets or sets the disk size in GB.
+	DiskSizeGB pulumi.Float64Input `pulumi:"diskSizeGB"`
+	// Gets or sets a value indicating whether dynamic sizing is enabled on the virtual hard
+	// disk.
+	IsDynamic pulumi.BoolPtrInput `pulumi:"isDynamic"`
+	// Gets or sets a value indicating whether disk is os disk.
+	IsOsDisk pulumi.BoolInput `pulumi:"isOsDisk"`
+	// Gets or sets the target storage account ARM Id.
+	StorageContainerId pulumi.StringPtrInput `pulumi:"storageContainerId"`
+}
+
+func (VMwareToAzStackHCIDiskInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareToAzStackHCIDiskInput)(nil)).Elem()
+}
+
+func (i VMwareToAzStackHCIDiskInputArgs) ToVMwareToAzStackHCIDiskInputOutput() VMwareToAzStackHCIDiskInputOutput {
+	return i.ToVMwareToAzStackHCIDiskInputOutputWithContext(context.Background())
+}
+
+func (i VMwareToAzStackHCIDiskInputArgs) ToVMwareToAzStackHCIDiskInputOutputWithContext(ctx context.Context) VMwareToAzStackHCIDiskInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMwareToAzStackHCIDiskInputOutput)
+}
+
+// VMwareToAzStackHCIDiskInputArrayInput is an input type that accepts VMwareToAzStackHCIDiskInputArray and VMwareToAzStackHCIDiskInputArrayOutput values.
+// You can construct a concrete instance of `VMwareToAzStackHCIDiskInputArrayInput` via:
+//
+//	VMwareToAzStackHCIDiskInputArray{ VMwareToAzStackHCIDiskInputArgs{...} }
+type VMwareToAzStackHCIDiskInputArrayInput interface {
+	pulumi.Input
+
+	ToVMwareToAzStackHCIDiskInputArrayOutput() VMwareToAzStackHCIDiskInputArrayOutput
+	ToVMwareToAzStackHCIDiskInputArrayOutputWithContext(context.Context) VMwareToAzStackHCIDiskInputArrayOutput
+}
+
+type VMwareToAzStackHCIDiskInputArray []VMwareToAzStackHCIDiskInputInput
+
+func (VMwareToAzStackHCIDiskInputArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VMwareToAzStackHCIDiskInput)(nil)).Elem()
+}
+
+func (i VMwareToAzStackHCIDiskInputArray) ToVMwareToAzStackHCIDiskInputArrayOutput() VMwareToAzStackHCIDiskInputArrayOutput {
+	return i.ToVMwareToAzStackHCIDiskInputArrayOutputWithContext(context.Background())
+}
+
+func (i VMwareToAzStackHCIDiskInputArray) ToVMwareToAzStackHCIDiskInputArrayOutputWithContext(ctx context.Context) VMwareToAzStackHCIDiskInputArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMwareToAzStackHCIDiskInputArrayOutput)
+}
+
+// VMwareToAzStack disk input.
+type VMwareToAzStackHCIDiskInputOutput struct{ *pulumi.OutputState }
+
+func (VMwareToAzStackHCIDiskInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareToAzStackHCIDiskInput)(nil)).Elem()
+}
+
+func (o VMwareToAzStackHCIDiskInputOutput) ToVMwareToAzStackHCIDiskInputOutput() VMwareToAzStackHCIDiskInputOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCIDiskInputOutput) ToVMwareToAzStackHCIDiskInputOutputWithContext(ctx context.Context) VMwareToAzStackHCIDiskInputOutput {
+	return o
+}
+
+// Gets or sets the type of the virtual hard disk, vhd or vhdx.
+func (o VMwareToAzStackHCIDiskInputOutput) DiskFileFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIDiskInput) string { return v.DiskFileFormat }).(pulumi.StringOutput)
+}
+
+// Gets or sets the disk Id.
+func (o VMwareToAzStackHCIDiskInputOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIDiskInput) string { return v.DiskId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the disk size in GB.
+func (o VMwareToAzStackHCIDiskInputOutput) DiskSizeGB() pulumi.Float64Output {
+	return o.ApplyT(func(v VMwareToAzStackHCIDiskInput) float64 { return v.DiskSizeGB }).(pulumi.Float64Output)
+}
+
+// Gets or sets a value indicating whether dynamic sizing is enabled on the virtual hard
+// disk.
+func (o VMwareToAzStackHCIDiskInputOutput) IsDynamic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIDiskInput) *bool { return v.IsDynamic }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets a value indicating whether disk is os disk.
+func (o VMwareToAzStackHCIDiskInputOutput) IsOsDisk() pulumi.BoolOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIDiskInput) bool { return v.IsOsDisk }).(pulumi.BoolOutput)
+}
+
+// Gets or sets the target storage account ARM Id.
+func (o VMwareToAzStackHCIDiskInputOutput) StorageContainerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIDiskInput) *string { return v.StorageContainerId }).(pulumi.StringPtrOutput)
+}
+
+type VMwareToAzStackHCIDiskInputArrayOutput struct{ *pulumi.OutputState }
+
+func (VMwareToAzStackHCIDiskInputArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VMwareToAzStackHCIDiskInput)(nil)).Elem()
+}
+
+func (o VMwareToAzStackHCIDiskInputArrayOutput) ToVMwareToAzStackHCIDiskInputArrayOutput() VMwareToAzStackHCIDiskInputArrayOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCIDiskInputArrayOutput) ToVMwareToAzStackHCIDiskInputArrayOutputWithContext(ctx context.Context) VMwareToAzStackHCIDiskInputArrayOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCIDiskInputArrayOutput) Index(i pulumi.IntInput) VMwareToAzStackHCIDiskInputOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VMwareToAzStackHCIDiskInput {
+		return vs[0].([]VMwareToAzStackHCIDiskInput)[vs[1].(int)]
+	}).(VMwareToAzStackHCIDiskInputOutput)
+}
+
 // VMwareToAzStack disk input.
 type VMwareToAzStackHCIDiskInputResponse struct {
 	// Gets or sets the type of the virtual hard disk, vhd or vhdx.
@@ -2390,6 +4680,72 @@ type VMwareToAzStackHCIDiskInputResponse struct {
 	StorageContainerId *string `pulumi:"storageContainerId"`
 }
 
+// VMwareToAzStack disk input.
+type VMwareToAzStackHCIDiskInputResponseOutput struct{ *pulumi.OutputState }
+
+func (VMwareToAzStackHCIDiskInputResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareToAzStackHCIDiskInputResponse)(nil)).Elem()
+}
+
+func (o VMwareToAzStackHCIDiskInputResponseOutput) ToVMwareToAzStackHCIDiskInputResponseOutput() VMwareToAzStackHCIDiskInputResponseOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCIDiskInputResponseOutput) ToVMwareToAzStackHCIDiskInputResponseOutputWithContext(ctx context.Context) VMwareToAzStackHCIDiskInputResponseOutput {
+	return o
+}
+
+// Gets or sets the type of the virtual hard disk, vhd or vhdx.
+func (o VMwareToAzStackHCIDiskInputResponseOutput) DiskFileFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIDiskInputResponse) string { return v.DiskFileFormat }).(pulumi.StringOutput)
+}
+
+// Gets or sets the disk Id.
+func (o VMwareToAzStackHCIDiskInputResponseOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIDiskInputResponse) string { return v.DiskId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the disk size in GB.
+func (o VMwareToAzStackHCIDiskInputResponseOutput) DiskSizeGB() pulumi.Float64Output {
+	return o.ApplyT(func(v VMwareToAzStackHCIDiskInputResponse) float64 { return v.DiskSizeGB }).(pulumi.Float64Output)
+}
+
+// Gets or sets a value indicating whether dynamic sizing is enabled on the virtual hard
+// disk.
+func (o VMwareToAzStackHCIDiskInputResponseOutput) IsDynamic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIDiskInputResponse) *bool { return v.IsDynamic }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets a value indicating whether disk is os disk.
+func (o VMwareToAzStackHCIDiskInputResponseOutput) IsOsDisk() pulumi.BoolOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIDiskInputResponse) bool { return v.IsOsDisk }).(pulumi.BoolOutput)
+}
+
+// Gets or sets the target storage account ARM Id.
+func (o VMwareToAzStackHCIDiskInputResponseOutput) StorageContainerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIDiskInputResponse) *string { return v.StorageContainerId }).(pulumi.StringPtrOutput)
+}
+
+type VMwareToAzStackHCIDiskInputResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VMwareToAzStackHCIDiskInputResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VMwareToAzStackHCIDiskInputResponse)(nil)).Elem()
+}
+
+func (o VMwareToAzStackHCIDiskInputResponseArrayOutput) ToVMwareToAzStackHCIDiskInputResponseArrayOutput() VMwareToAzStackHCIDiskInputResponseArrayOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCIDiskInputResponseArrayOutput) ToVMwareToAzStackHCIDiskInputResponseArrayOutputWithContext(ctx context.Context) VMwareToAzStackHCIDiskInputResponseArrayOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCIDiskInputResponseArrayOutput) Index(i pulumi.IntInput) VMwareToAzStackHCIDiskInputResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VMwareToAzStackHCIDiskInputResponse {
+		return vs[0].([]VMwareToAzStackHCIDiskInputResponse)[vs[1].(int)]
+	}).(VMwareToAzStackHCIDiskInputResponseOutput)
+}
+
 // VMwareToAzStackHCI NIC properties.
 type VMwareToAzStackHCINicInput struct {
 	// Gets or sets the NIC label.
@@ -2402,6 +4758,128 @@ type VMwareToAzStackHCINicInput struct {
 	TargetNetworkId string `pulumi:"targetNetworkId"`
 	// Gets or sets the target test network Id within AzStackHCI Cluster.
 	TestNetworkId string `pulumi:"testNetworkId"`
+}
+
+// VMwareToAzStackHCINicInputInput is an input type that accepts VMwareToAzStackHCINicInputArgs and VMwareToAzStackHCINicInputOutput values.
+// You can construct a concrete instance of `VMwareToAzStackHCINicInputInput` via:
+//
+//	VMwareToAzStackHCINicInputArgs{...}
+type VMwareToAzStackHCINicInputInput interface {
+	pulumi.Input
+
+	ToVMwareToAzStackHCINicInputOutput() VMwareToAzStackHCINicInputOutput
+	ToVMwareToAzStackHCINicInputOutputWithContext(context.Context) VMwareToAzStackHCINicInputOutput
+}
+
+// VMwareToAzStackHCI NIC properties.
+type VMwareToAzStackHCINicInputArgs struct {
+	// Gets or sets the NIC label.
+	Label pulumi.StringInput `pulumi:"label"`
+	// Gets or sets the NIC Id.
+	NicId pulumi.StringInput `pulumi:"nicId"`
+	// Gets or sets the selection type of the NIC.
+	SelectionTypeForFailover pulumi.StringInput `pulumi:"selectionTypeForFailover"`
+	// Gets or sets the target network Id within AzStackHCI Cluster.
+	TargetNetworkId pulumi.StringInput `pulumi:"targetNetworkId"`
+	// Gets or sets the target test network Id within AzStackHCI Cluster.
+	TestNetworkId pulumi.StringInput `pulumi:"testNetworkId"`
+}
+
+func (VMwareToAzStackHCINicInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareToAzStackHCINicInput)(nil)).Elem()
+}
+
+func (i VMwareToAzStackHCINicInputArgs) ToVMwareToAzStackHCINicInputOutput() VMwareToAzStackHCINicInputOutput {
+	return i.ToVMwareToAzStackHCINicInputOutputWithContext(context.Background())
+}
+
+func (i VMwareToAzStackHCINicInputArgs) ToVMwareToAzStackHCINicInputOutputWithContext(ctx context.Context) VMwareToAzStackHCINicInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMwareToAzStackHCINicInputOutput)
+}
+
+// VMwareToAzStackHCINicInputArrayInput is an input type that accepts VMwareToAzStackHCINicInputArray and VMwareToAzStackHCINicInputArrayOutput values.
+// You can construct a concrete instance of `VMwareToAzStackHCINicInputArrayInput` via:
+//
+//	VMwareToAzStackHCINicInputArray{ VMwareToAzStackHCINicInputArgs{...} }
+type VMwareToAzStackHCINicInputArrayInput interface {
+	pulumi.Input
+
+	ToVMwareToAzStackHCINicInputArrayOutput() VMwareToAzStackHCINicInputArrayOutput
+	ToVMwareToAzStackHCINicInputArrayOutputWithContext(context.Context) VMwareToAzStackHCINicInputArrayOutput
+}
+
+type VMwareToAzStackHCINicInputArray []VMwareToAzStackHCINicInputInput
+
+func (VMwareToAzStackHCINicInputArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VMwareToAzStackHCINicInput)(nil)).Elem()
+}
+
+func (i VMwareToAzStackHCINicInputArray) ToVMwareToAzStackHCINicInputArrayOutput() VMwareToAzStackHCINicInputArrayOutput {
+	return i.ToVMwareToAzStackHCINicInputArrayOutputWithContext(context.Background())
+}
+
+func (i VMwareToAzStackHCINicInputArray) ToVMwareToAzStackHCINicInputArrayOutputWithContext(ctx context.Context) VMwareToAzStackHCINicInputArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMwareToAzStackHCINicInputArrayOutput)
+}
+
+// VMwareToAzStackHCI NIC properties.
+type VMwareToAzStackHCINicInputOutput struct{ *pulumi.OutputState }
+
+func (VMwareToAzStackHCINicInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareToAzStackHCINicInput)(nil)).Elem()
+}
+
+func (o VMwareToAzStackHCINicInputOutput) ToVMwareToAzStackHCINicInputOutput() VMwareToAzStackHCINicInputOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCINicInputOutput) ToVMwareToAzStackHCINicInputOutputWithContext(ctx context.Context) VMwareToAzStackHCINicInputOutput {
+	return o
+}
+
+// Gets or sets the NIC label.
+func (o VMwareToAzStackHCINicInputOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCINicInput) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Gets or sets the NIC Id.
+func (o VMwareToAzStackHCINicInputOutput) NicId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCINicInput) string { return v.NicId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the selection type of the NIC.
+func (o VMwareToAzStackHCINicInputOutput) SelectionTypeForFailover() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCINicInput) string { return v.SelectionTypeForFailover }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target network Id within AzStackHCI Cluster.
+func (o VMwareToAzStackHCINicInputOutput) TargetNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCINicInput) string { return v.TargetNetworkId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target test network Id within AzStackHCI Cluster.
+func (o VMwareToAzStackHCINicInputOutput) TestNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCINicInput) string { return v.TestNetworkId }).(pulumi.StringOutput)
+}
+
+type VMwareToAzStackHCINicInputArrayOutput struct{ *pulumi.OutputState }
+
+func (VMwareToAzStackHCINicInputArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VMwareToAzStackHCINicInput)(nil)).Elem()
+}
+
+func (o VMwareToAzStackHCINicInputArrayOutput) ToVMwareToAzStackHCINicInputArrayOutput() VMwareToAzStackHCINicInputArrayOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCINicInputArrayOutput) ToVMwareToAzStackHCINicInputArrayOutputWithContext(ctx context.Context) VMwareToAzStackHCINicInputArrayOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCINicInputArrayOutput) Index(i pulumi.IntInput) VMwareToAzStackHCINicInputOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VMwareToAzStackHCINicInput {
+		return vs[0].([]VMwareToAzStackHCINicInput)[vs[1].(int)]
+	}).(VMwareToAzStackHCINicInputOutput)
 }
 
 // VMwareToAzStackHCI NIC properties.
@@ -2420,6 +4898,71 @@ type VMwareToAzStackHCINicInputResponse struct {
 	TestNetworkId string `pulumi:"testNetworkId"`
 }
 
+// VMwareToAzStackHCI NIC properties.
+type VMwareToAzStackHCINicInputResponseOutput struct{ *pulumi.OutputState }
+
+func (VMwareToAzStackHCINicInputResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareToAzStackHCINicInputResponse)(nil)).Elem()
+}
+
+func (o VMwareToAzStackHCINicInputResponseOutput) ToVMwareToAzStackHCINicInputResponseOutput() VMwareToAzStackHCINicInputResponseOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCINicInputResponseOutput) ToVMwareToAzStackHCINicInputResponseOutputWithContext(ctx context.Context) VMwareToAzStackHCINicInputResponseOutput {
+	return o
+}
+
+// Gets or sets the NIC label.
+func (o VMwareToAzStackHCINicInputResponseOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCINicInputResponse) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Gets or sets the network name.
+func (o VMwareToAzStackHCINicInputResponseOutput) NetworkName() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCINicInputResponse) string { return v.NetworkName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the NIC Id.
+func (o VMwareToAzStackHCINicInputResponseOutput) NicId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCINicInputResponse) string { return v.NicId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the selection type of the NIC.
+func (o VMwareToAzStackHCINicInputResponseOutput) SelectionTypeForFailover() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCINicInputResponse) string { return v.SelectionTypeForFailover }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target network Id within AzStackHCI Cluster.
+func (o VMwareToAzStackHCINicInputResponseOutput) TargetNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCINicInputResponse) string { return v.TargetNetworkId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target test network Id within AzStackHCI Cluster.
+func (o VMwareToAzStackHCINicInputResponseOutput) TestNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCINicInputResponse) string { return v.TestNetworkId }).(pulumi.StringOutput)
+}
+
+type VMwareToAzStackHCINicInputResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VMwareToAzStackHCINicInputResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VMwareToAzStackHCINicInputResponse)(nil)).Elem()
+}
+
+func (o VMwareToAzStackHCINicInputResponseArrayOutput) ToVMwareToAzStackHCINicInputResponseArrayOutput() VMwareToAzStackHCINicInputResponseArrayOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCINicInputResponseArrayOutput) ToVMwareToAzStackHCINicInputResponseArrayOutputWithContext(ctx context.Context) VMwareToAzStackHCINicInputResponseArrayOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCINicInputResponseArrayOutput) Index(i pulumi.IntInput) VMwareToAzStackHCINicInputResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VMwareToAzStackHCINicInputResponse {
+		return vs[0].([]VMwareToAzStackHCINicInputResponse)[vs[1].(int)]
+	}).(VMwareToAzStackHCINicInputResponseOutput)
+}
+
 // VMware To AzStackHCI Policy model custom properties.
 type VMwareToAzStackHCIPolicyModelCustomProperties struct {
 	// Gets or sets the app consistent snapshot frequency (in minutes).
@@ -2434,6 +4977,80 @@ type VMwareToAzStackHCIPolicyModelCustomProperties struct {
 	RecoveryPointHistoryInMinutes int `pulumi:"recoveryPointHistoryInMinutes"`
 }
 
+// VMwareToAzStackHCIPolicyModelCustomPropertiesInput is an input type that accepts VMwareToAzStackHCIPolicyModelCustomPropertiesArgs and VMwareToAzStackHCIPolicyModelCustomPropertiesOutput values.
+// You can construct a concrete instance of `VMwareToAzStackHCIPolicyModelCustomPropertiesInput` via:
+//
+//	VMwareToAzStackHCIPolicyModelCustomPropertiesArgs{...}
+type VMwareToAzStackHCIPolicyModelCustomPropertiesInput interface {
+	pulumi.Input
+
+	ToVMwareToAzStackHCIPolicyModelCustomPropertiesOutput() VMwareToAzStackHCIPolicyModelCustomPropertiesOutput
+	ToVMwareToAzStackHCIPolicyModelCustomPropertiesOutputWithContext(context.Context) VMwareToAzStackHCIPolicyModelCustomPropertiesOutput
+}
+
+// VMware To AzStackHCI Policy model custom properties.
+type VMwareToAzStackHCIPolicyModelCustomPropertiesArgs struct {
+	// Gets or sets the app consistent snapshot frequency (in minutes).
+	AppConsistentFrequencyInMinutes pulumi.IntInput `pulumi:"appConsistentFrequencyInMinutes"`
+	// Gets or sets the crash consistent snapshot frequency (in minutes).
+	CrashConsistentFrequencyInMinutes pulumi.IntInput `pulumi:"crashConsistentFrequencyInMinutes"`
+	// Gets or sets the instance type.
+	// Expected value is 'VMwareToAzStackHCI'.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// Gets or sets the duration in minutes until which the recovery points need to be
+	// stored.
+	RecoveryPointHistoryInMinutes pulumi.IntInput `pulumi:"recoveryPointHistoryInMinutes"`
+}
+
+func (VMwareToAzStackHCIPolicyModelCustomPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareToAzStackHCIPolicyModelCustomProperties)(nil)).Elem()
+}
+
+func (i VMwareToAzStackHCIPolicyModelCustomPropertiesArgs) ToVMwareToAzStackHCIPolicyModelCustomPropertiesOutput() VMwareToAzStackHCIPolicyModelCustomPropertiesOutput {
+	return i.ToVMwareToAzStackHCIPolicyModelCustomPropertiesOutputWithContext(context.Background())
+}
+
+func (i VMwareToAzStackHCIPolicyModelCustomPropertiesArgs) ToVMwareToAzStackHCIPolicyModelCustomPropertiesOutputWithContext(ctx context.Context) VMwareToAzStackHCIPolicyModelCustomPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMwareToAzStackHCIPolicyModelCustomPropertiesOutput)
+}
+
+// VMware To AzStackHCI Policy model custom properties.
+type VMwareToAzStackHCIPolicyModelCustomPropertiesOutput struct{ *pulumi.OutputState }
+
+func (VMwareToAzStackHCIPolicyModelCustomPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareToAzStackHCIPolicyModelCustomProperties)(nil)).Elem()
+}
+
+func (o VMwareToAzStackHCIPolicyModelCustomPropertiesOutput) ToVMwareToAzStackHCIPolicyModelCustomPropertiesOutput() VMwareToAzStackHCIPolicyModelCustomPropertiesOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCIPolicyModelCustomPropertiesOutput) ToVMwareToAzStackHCIPolicyModelCustomPropertiesOutputWithContext(ctx context.Context) VMwareToAzStackHCIPolicyModelCustomPropertiesOutput {
+	return o
+}
+
+// Gets or sets the app consistent snapshot frequency (in minutes).
+func (o VMwareToAzStackHCIPolicyModelCustomPropertiesOutput) AppConsistentFrequencyInMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIPolicyModelCustomProperties) int { return v.AppConsistentFrequencyInMinutes }).(pulumi.IntOutput)
+}
+
+// Gets or sets the crash consistent snapshot frequency (in minutes).
+func (o VMwareToAzStackHCIPolicyModelCustomPropertiesOutput) CrashConsistentFrequencyInMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIPolicyModelCustomProperties) int { return v.CrashConsistentFrequencyInMinutes }).(pulumi.IntOutput)
+}
+
+// Gets or sets the instance type.
+// Expected value is 'VMwareToAzStackHCI'.
+func (o VMwareToAzStackHCIPolicyModelCustomPropertiesOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIPolicyModelCustomProperties) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the duration in minutes until which the recovery points need to be
+// stored.
+func (o VMwareToAzStackHCIPolicyModelCustomPropertiesOutput) RecoveryPointHistoryInMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIPolicyModelCustomProperties) int { return v.RecoveryPointHistoryInMinutes }).(pulumi.IntOutput)
+}
+
 // VMware To AzStackHCI Policy model custom properties.
 type VMwareToAzStackHCIPolicyModelCustomPropertiesResponse struct {
 	// Gets or sets the app consistent snapshot frequency (in minutes).
@@ -2446,6 +5063,49 @@ type VMwareToAzStackHCIPolicyModelCustomPropertiesResponse struct {
 	// Gets or sets the duration in minutes until which the recovery points need to be
 	// stored.
 	RecoveryPointHistoryInMinutes int `pulumi:"recoveryPointHistoryInMinutes"`
+}
+
+// VMware To AzStackHCI Policy model custom properties.
+type VMwareToAzStackHCIPolicyModelCustomPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (VMwareToAzStackHCIPolicyModelCustomPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareToAzStackHCIPolicyModelCustomPropertiesResponse)(nil)).Elem()
+}
+
+func (o VMwareToAzStackHCIPolicyModelCustomPropertiesResponseOutput) ToVMwareToAzStackHCIPolicyModelCustomPropertiesResponseOutput() VMwareToAzStackHCIPolicyModelCustomPropertiesResponseOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCIPolicyModelCustomPropertiesResponseOutput) ToVMwareToAzStackHCIPolicyModelCustomPropertiesResponseOutputWithContext(ctx context.Context) VMwareToAzStackHCIPolicyModelCustomPropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the app consistent snapshot frequency (in minutes).
+func (o VMwareToAzStackHCIPolicyModelCustomPropertiesResponseOutput) AppConsistentFrequencyInMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIPolicyModelCustomPropertiesResponse) int {
+		return v.AppConsistentFrequencyInMinutes
+	}).(pulumi.IntOutput)
+}
+
+// Gets or sets the crash consistent snapshot frequency (in minutes).
+func (o VMwareToAzStackHCIPolicyModelCustomPropertiesResponseOutput) CrashConsistentFrequencyInMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIPolicyModelCustomPropertiesResponse) int {
+		return v.CrashConsistentFrequencyInMinutes
+	}).(pulumi.IntOutput)
+}
+
+// Gets or sets the instance type.
+// Expected value is 'VMwareToAzStackHCI'.
+func (o VMwareToAzStackHCIPolicyModelCustomPropertiesResponseOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIPolicyModelCustomPropertiesResponse) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the duration in minutes until which the recovery points need to be
+// stored.
+func (o VMwareToAzStackHCIPolicyModelCustomPropertiesResponseOutput) RecoveryPointHistoryInMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIPolicyModelCustomPropertiesResponse) int {
+		return v.RecoveryPointHistoryInMinutes
+	}).(pulumi.IntOutput)
 }
 
 // VMwareToAzStackHCI protected disk properties.
@@ -2473,6 +5133,97 @@ type VMwareToAzStackHCIProtectedDiskPropertiesResponse struct {
 	StorageContainerLocalPath string `pulumi:"storageContainerLocalPath"`
 	// Gets or sets the test failover clone disk.
 	TestMigrateDiskName string `pulumi:"testMigrateDiskName"`
+}
+
+// VMwareToAzStackHCI protected disk properties.
+type VMwareToAzStackHCIProtectedDiskPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (VMwareToAzStackHCIProtectedDiskPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareToAzStackHCIProtectedDiskPropertiesResponse)(nil)).Elem()
+}
+
+func (o VMwareToAzStackHCIProtectedDiskPropertiesResponseOutput) ToVMwareToAzStackHCIProtectedDiskPropertiesResponseOutput() VMwareToAzStackHCIProtectedDiskPropertiesResponseOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCIProtectedDiskPropertiesResponseOutput) ToVMwareToAzStackHCIProtectedDiskPropertiesResponseOutputWithContext(ctx context.Context) VMwareToAzStackHCIProtectedDiskPropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the disk capacity in bytes.
+func (o VMwareToAzStackHCIProtectedDiskPropertiesResponseOutput) CapacityInBytes() pulumi.Float64Output {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedDiskPropertiesResponse) float64 { return v.CapacityInBytes }).(pulumi.Float64Output)
+}
+
+// Gets or sets the disk type.
+func (o VMwareToAzStackHCIProtectedDiskPropertiesResponseOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedDiskPropertiesResponse) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// Gets or sets a value indicating whether dynamic sizing is enabled on the virtual hard
+// disk.
+func (o VMwareToAzStackHCIProtectedDiskPropertiesResponseOutput) IsDynamic() pulumi.BoolOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedDiskPropertiesResponse) bool { return v.IsDynamic }).(pulumi.BoolOutput)
+}
+
+// Gets or sets a value indicating whether the disk is the OS disk.
+func (o VMwareToAzStackHCIProtectedDiskPropertiesResponseOutput) IsOsDisk() pulumi.BoolOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedDiskPropertiesResponse) bool { return v.IsOsDisk }).(pulumi.BoolOutput)
+}
+
+// Gets or sets the failover clone disk.
+func (o VMwareToAzStackHCIProtectedDiskPropertiesResponseOutput) MigrateDiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedDiskPropertiesResponse) string { return v.MigrateDiskName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the seed disk name.
+func (o VMwareToAzStackHCIProtectedDiskPropertiesResponseOutput) SeedDiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedDiskPropertiesResponse) string { return v.SeedDiskName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the source disk Id.
+func (o VMwareToAzStackHCIProtectedDiskPropertiesResponseOutput) SourceDiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedDiskPropertiesResponse) string { return v.SourceDiskId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the source disk Name.
+func (o VMwareToAzStackHCIProtectedDiskPropertiesResponseOutput) SourceDiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedDiskPropertiesResponse) string { return v.SourceDiskName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the ARM Id of the storage container.
+func (o VMwareToAzStackHCIProtectedDiskPropertiesResponseOutput) StorageContainerId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedDiskPropertiesResponse) string { return v.StorageContainerId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the local path of the storage container.
+func (o VMwareToAzStackHCIProtectedDiskPropertiesResponseOutput) StorageContainerLocalPath() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedDiskPropertiesResponse) string { return v.StorageContainerLocalPath }).(pulumi.StringOutput)
+}
+
+// Gets or sets the test failover clone disk.
+func (o VMwareToAzStackHCIProtectedDiskPropertiesResponseOutput) TestMigrateDiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedDiskPropertiesResponse) string { return v.TestMigrateDiskName }).(pulumi.StringOutput)
+}
+
+type VMwareToAzStackHCIProtectedDiskPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VMwareToAzStackHCIProtectedDiskPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VMwareToAzStackHCIProtectedDiskPropertiesResponse)(nil)).Elem()
+}
+
+func (o VMwareToAzStackHCIProtectedDiskPropertiesResponseArrayOutput) ToVMwareToAzStackHCIProtectedDiskPropertiesResponseArrayOutput() VMwareToAzStackHCIProtectedDiskPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCIProtectedDiskPropertiesResponseArrayOutput) ToVMwareToAzStackHCIProtectedDiskPropertiesResponseArrayOutputWithContext(ctx context.Context) VMwareToAzStackHCIProtectedDiskPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCIProtectedDiskPropertiesResponseArrayOutput) Index(i pulumi.IntInput) VMwareToAzStackHCIProtectedDiskPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VMwareToAzStackHCIProtectedDiskPropertiesResponse {
+		return vs[0].([]VMwareToAzStackHCIProtectedDiskPropertiesResponse)[vs[1].(int)]
+	}).(VMwareToAzStackHCIProtectedDiskPropertiesResponseOutput)
 }
 
 // VMware to AzStackHCI Protected item model custom properties.
@@ -2520,6 +5271,205 @@ type VMwareToAzStackHCIProtectedItemModelCustomProperties struct {
 	TargetVmName *string `pulumi:"targetVmName"`
 	// Gets or sets the target test network Id within AzStackHCI Cluster.
 	TestNetworkId *string `pulumi:"testNetworkId"`
+}
+
+// VMwareToAzStackHCIProtectedItemModelCustomPropertiesInput is an input type that accepts VMwareToAzStackHCIProtectedItemModelCustomPropertiesArgs and VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput values.
+// You can construct a concrete instance of `VMwareToAzStackHCIProtectedItemModelCustomPropertiesInput` via:
+//
+//	VMwareToAzStackHCIProtectedItemModelCustomPropertiesArgs{...}
+type VMwareToAzStackHCIProtectedItemModelCustomPropertiesInput interface {
+	pulumi.Input
+
+	ToVMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput() VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput
+	ToVMwareToAzStackHCIProtectedItemModelCustomPropertiesOutputWithContext(context.Context) VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput
+}
+
+// VMware to AzStackHCI Protected item model custom properties.
+type VMwareToAzStackHCIProtectedItemModelCustomPropertiesArgs struct {
+	// Gets or sets the location of Azure Arc HCI custom location resource.
+	CustomLocationRegion pulumi.StringInput `pulumi:"customLocationRegion"`
+	// Gets or sets the list of disks to replicate.
+	DisksToInclude VMwareToAzStackHCIDiskInputArrayInput `pulumi:"disksToInclude"`
+	// Protected item dynamic memory config.
+	DynamicMemoryConfig ProtectedItemDynamicMemoryConfigPtrInput `pulumi:"dynamicMemoryConfig"`
+	// Gets or sets the ARM Id of the discovered machine.
+	FabricDiscoveryMachineId pulumi.StringInput `pulumi:"fabricDiscoveryMachineId"`
+	// Gets or sets the hypervisor generation of the virtual machine possible values are 1,2.
+	HyperVGeneration pulumi.StringInput `pulumi:"hyperVGeneration"`
+	// Gets or sets the instance type.
+	// Expected value is 'VMwareToAzStackHCI'.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// Gets or sets a value indicating whether memory is dynamical.
+	IsDynamicRam pulumi.BoolPtrInput `pulumi:"isDynamicRam"`
+	// Gets or sets the list of VM NIC to replicate.
+	NicsToInclude VMwareToAzStackHCINicInputArrayInput `pulumi:"nicsToInclude"`
+	// Gets or sets a value indicating whether auto resync is to be done.
+	PerformAutoResync pulumi.BoolPtrInput `pulumi:"performAutoResync"`
+	// Gets or sets the run as account Id.
+	RunAsAccountId pulumi.StringInput `pulumi:"runAsAccountId"`
+	// Gets or sets the source DRA name.
+	SourceDraName pulumi.StringInput `pulumi:"sourceDraName"`
+	// Gets or sets the target storage container ARM Id.
+	StorageContainerId pulumi.StringInput `pulumi:"storageContainerId"`
+	// Gets or sets the Target Arc Cluster Custom Location ARM Id.
+	TargetArcClusterCustomLocationId pulumi.StringInput `pulumi:"targetArcClusterCustomLocationId"`
+	// Gets or sets the target CPU cores.
+	TargetCpuCores pulumi.IntPtrInput `pulumi:"targetCpuCores"`
+	// Gets or sets the target DRA name.
+	TargetDraName pulumi.StringInput `pulumi:"targetDraName"`
+	// Gets or sets the Target HCI Cluster ARM Id.
+	TargetHciClusterId pulumi.StringInput `pulumi:"targetHciClusterId"`
+	// Gets or sets the target memory in mega-bytes.
+	TargetMemoryInMegaBytes pulumi.IntPtrInput `pulumi:"targetMemoryInMegaBytes"`
+	// Gets or sets the target network Id within AzStackHCI Cluster.
+	TargetNetworkId pulumi.StringPtrInput `pulumi:"targetNetworkId"`
+	// Gets or sets the target resource group ARM Id.
+	TargetResourceGroupId pulumi.StringInput `pulumi:"targetResourceGroupId"`
+	// Gets or sets the target VM display name.
+	TargetVmName pulumi.StringPtrInput `pulumi:"targetVmName"`
+	// Gets or sets the target test network Id within AzStackHCI Cluster.
+	TestNetworkId pulumi.StringPtrInput `pulumi:"testNetworkId"`
+}
+
+func (VMwareToAzStackHCIProtectedItemModelCustomPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareToAzStackHCIProtectedItemModelCustomProperties)(nil)).Elem()
+}
+
+func (i VMwareToAzStackHCIProtectedItemModelCustomPropertiesArgs) ToVMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput() VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput {
+	return i.ToVMwareToAzStackHCIProtectedItemModelCustomPropertiesOutputWithContext(context.Background())
+}
+
+func (i VMwareToAzStackHCIProtectedItemModelCustomPropertiesArgs) ToVMwareToAzStackHCIProtectedItemModelCustomPropertiesOutputWithContext(ctx context.Context) VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput)
+}
+
+// VMware to AzStackHCI Protected item model custom properties.
+type VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput struct{ *pulumi.OutputState }
+
+func (VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareToAzStackHCIProtectedItemModelCustomProperties)(nil)).Elem()
+}
+
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) ToVMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput() VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) ToVMwareToAzStackHCIProtectedItemModelCustomPropertiesOutputWithContext(ctx context.Context) VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput {
+	return o
+}
+
+// Gets or sets the location of Azure Arc HCI custom location resource.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) CustomLocationRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomProperties) string { return v.CustomLocationRegion }).(pulumi.StringOutput)
+}
+
+// Gets or sets the list of disks to replicate.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) DisksToInclude() VMwareToAzStackHCIDiskInputArrayOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomProperties) []VMwareToAzStackHCIDiskInput {
+		return v.DisksToInclude
+	}).(VMwareToAzStackHCIDiskInputArrayOutput)
+}
+
+// Protected item dynamic memory config.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) DynamicMemoryConfig() ProtectedItemDynamicMemoryConfigPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomProperties) *ProtectedItemDynamicMemoryConfig {
+		return v.DynamicMemoryConfig
+	}).(ProtectedItemDynamicMemoryConfigPtrOutput)
+}
+
+// Gets or sets the ARM Id of the discovered machine.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) FabricDiscoveryMachineId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomProperties) string { return v.FabricDiscoveryMachineId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the hypervisor generation of the virtual machine possible values are 1,2.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) HyperVGeneration() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomProperties) string { return v.HyperVGeneration }).(pulumi.StringOutput)
+}
+
+// Gets or sets the instance type.
+// Expected value is 'VMwareToAzStackHCI'.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomProperties) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets a value indicating whether memory is dynamical.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) IsDynamicRam() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomProperties) *bool { return v.IsDynamicRam }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets the list of VM NIC to replicate.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) NicsToInclude() VMwareToAzStackHCINicInputArrayOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomProperties) []VMwareToAzStackHCINicInput {
+		return v.NicsToInclude
+	}).(VMwareToAzStackHCINicInputArrayOutput)
+}
+
+// Gets or sets a value indicating whether auto resync is to be done.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) PerformAutoResync() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomProperties) *bool { return v.PerformAutoResync }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets the run as account Id.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) RunAsAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomProperties) string { return v.RunAsAccountId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the source DRA name.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) SourceDraName() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomProperties) string { return v.SourceDraName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target storage container ARM Id.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) StorageContainerId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomProperties) string { return v.StorageContainerId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the Target Arc Cluster Custom Location ARM Id.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) TargetArcClusterCustomLocationId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomProperties) string {
+		return v.TargetArcClusterCustomLocationId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the target CPU cores.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) TargetCpuCores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomProperties) *int { return v.TargetCpuCores }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the target DRA name.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) TargetDraName() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomProperties) string { return v.TargetDraName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the Target HCI Cluster ARM Id.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) TargetHciClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomProperties) string { return v.TargetHciClusterId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target memory in mega-bytes.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) TargetMemoryInMegaBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomProperties) *int { return v.TargetMemoryInMegaBytes }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the target network Id within AzStackHCI Cluster.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) TargetNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomProperties) *string { return v.TargetNetworkId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target resource group ARM Id.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) TargetResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomProperties) string { return v.TargetResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target VM display name.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) TargetVmName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomProperties) *string { return v.TargetVmName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target test network Id within AzStackHCI Cluster.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput) TestNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomProperties) *string { return v.TestNetworkId }).(pulumi.StringPtrOutput)
 }
 
 // VMware to AzStackHCI Protected item model custom properties.
@@ -2623,6 +5573,311 @@ type VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse struct {
 	TestNetworkId *string `pulumi:"testNetworkId"`
 }
 
+// VMware to AzStackHCI Protected item model custom properties.
+type VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse)(nil)).Elem()
+}
+
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) ToVMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput() VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) ToVMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutputWithContext(ctx context.Context) VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the location of the protected item.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) ActiveLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.ActiveLocation }).(pulumi.StringOutput)
+}
+
+// Gets or sets the location of Azure Arc HCI custom location resource.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) CustomLocationRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.CustomLocationRegion
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the list of disks to replicate.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) DisksToInclude() VMwareToAzStackHCIDiskInputResponseArrayOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) []VMwareToAzStackHCIDiskInputResponse {
+		return v.DisksToInclude
+	}).(VMwareToAzStackHCIDiskInputResponseArrayOutput)
+}
+
+// Protected item dynamic memory config.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) DynamicMemoryConfig() ProtectedItemDynamicMemoryConfigResponsePtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) *ProtectedItemDynamicMemoryConfigResponse {
+		return v.DynamicMemoryConfig
+	}).(ProtectedItemDynamicMemoryConfigResponsePtrOutput)
+}
+
+// Gets or sets the ARM Id of the discovered machine.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) FabricDiscoveryMachineId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.FabricDiscoveryMachineId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the recovery point Id to which the VM was failed over.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) FailoverRecoveryPointId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.FailoverRecoveryPointId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the firmware type.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) FirmwareType() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.FirmwareType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the hypervisor generation of the virtual machine possible values are 1,2.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) HyperVGeneration() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.HyperVGeneration }).(pulumi.StringOutput)
+}
+
+// Gets or sets the initial replication progress percentage. This is calculated based on
+// total bytes processed for all disks in the source VM.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) InitialReplicationProgressPercentage() pulumi.IntOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) int {
+		return v.InitialReplicationProgressPercentage
+	}).(pulumi.IntOutput)
+}
+
+// Gets or sets the instance type.
+// Expected value is 'VMwareToAzStackHCI'.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets a value indicating whether memory is dynamical.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) IsDynamicRam() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) *bool { return v.IsDynamicRam }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets the last recovery point Id.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) LastRecoveryPointId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.LastRecoveryPointId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the last recovery point received time.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) LastRecoveryPointReceived() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.LastRecoveryPointReceived
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the latest timestamp that replication status is updated.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) LastReplicationUpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.LastReplicationUpdateTime
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the migration progress percentage.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) MigrationProgressPercentage() pulumi.IntOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) int {
+		return v.MigrationProgressPercentage
+	}).(pulumi.IntOutput)
+}
+
+// Gets or sets the list of VM NIC to replicate.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) NicsToInclude() VMwareToAzStackHCINicInputResponseArrayOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) []VMwareToAzStackHCINicInputResponse {
+		return v.NicsToInclude
+	}).(VMwareToAzStackHCINicInputResponseArrayOutput)
+}
+
+// Gets or sets the name of the OS.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) OsName() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.OsName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the type of the OS.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) OsType() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.OsType }).(pulumi.StringOutput)
+}
+
+// Gets or sets a value indicating whether auto resync is to be done.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) PerformAutoResync() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) *bool { return v.PerformAutoResync }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets the list of protected disks.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) ProtectedDisks() VMwareToAzStackHCIProtectedDiskPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) []VMwareToAzStackHCIProtectedDiskPropertiesResponse {
+		return v.ProtectedDisks
+	}).(VMwareToAzStackHCIProtectedDiskPropertiesResponseArrayOutput)
+}
+
+// Gets or sets the VM NIC details.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) ProtectedNics() VMwareToAzStackHCIProtectedNicPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) []VMwareToAzStackHCIProtectedNicPropertiesResponse {
+		return v.ProtectedNics
+	}).(VMwareToAzStackHCIProtectedNicPropertiesResponseArrayOutput)
+}
+
+// Gets or sets the resume progress percentage.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) ResumeProgressPercentage() pulumi.IntOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) int {
+		return v.ResumeProgressPercentage
+	}).(pulumi.IntOutput)
+}
+
+// Gets or sets the resume retry count.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) ResumeRetryCount() pulumi.Float64Output {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) float64 {
+		return v.ResumeRetryCount
+	}).(pulumi.Float64Output)
+}
+
+// Gets or sets the resync progress percentage. This is calculated based on total bytes
+// processed for all disks in the source VM.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) ResyncProgressPercentage() pulumi.IntOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) int {
+		return v.ResyncProgressPercentage
+	}).(pulumi.IntOutput)
+}
+
+// Gets or sets a value indicating whether resync is required.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) ResyncRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) bool { return v.ResyncRequired }).(pulumi.BoolOutput)
+}
+
+// Gets or sets the resync retry count.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) ResyncRetryCount() pulumi.Float64Output {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) float64 {
+		return v.ResyncRetryCount
+	}).(pulumi.Float64Output)
+}
+
+// Gets or sets the resync state.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) ResyncState() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.ResyncState }).(pulumi.StringOutput)
+}
+
+// Gets or sets the run as account Id.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) RunAsAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.RunAsAccountId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the source appliance name.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) SourceApplianceName() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.SourceApplianceName
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the source VM CPU cores.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) SourceCpuCores() pulumi.IntOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) int { return v.SourceCpuCores }).(pulumi.IntOutput)
+}
+
+// Gets or sets the source DRA name.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) SourceDraName() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.SourceDraName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the source VM ram memory size in megabytes.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) SourceMemoryInMegaBytes() pulumi.Float64Output {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) float64 {
+		return v.SourceMemoryInMegaBytes
+	}).(pulumi.Float64Output)
+}
+
+// Gets or sets the source VM display name.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) SourceVmName() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.SourceVmName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target storage container ARM Id.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) StorageContainerId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.StorageContainerId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the target appliance name.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetApplianceName() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.TargetApplianceName
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the Target Arc Cluster Custom Location ARM Id.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetArcClusterCustomLocationId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.TargetArcClusterCustomLocationId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the Target AzStackHCI cluster name.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetAzStackHciClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.TargetAzStackHciClusterName
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the target CPU cores.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetCpuCores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) *int { return v.TargetCpuCores }).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the target DRA name.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetDraName() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.TargetDraName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the Target HCI Cluster ARM Id.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetHciClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.TargetHciClusterId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the target location.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.TargetLocation }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target memory in mega-bytes.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetMemoryInMegaBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) *int {
+		return v.TargetMemoryInMegaBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Gets or sets the target network Id within AzStackHCI Cluster.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) *string { return v.TargetNetworkId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target resource group ARM Id.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string {
+		return v.TargetResourceGroupId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the BIOS Id of the target AzStackHCI VM.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetVmBiosId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) string { return v.TargetVmBiosId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target VM display name.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TargetVmName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) *string { return v.TargetVmName }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the target test network Id within AzStackHCI Cluster.
+func (o VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput) TestNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponse) *string { return v.TestNetworkId }).(pulumi.StringPtrOutput)
+}
+
 // VMwareToAzStackHCI NIC properties.
 type VMwareToAzStackHCIProtectedNicPropertiesResponse struct {
 	// Gets or sets a value indicating whether this is the primary NIC.
@@ -2643,6 +5898,81 @@ type VMwareToAzStackHCIProtectedNicPropertiesResponse struct {
 	TestNetworkId string `pulumi:"testNetworkId"`
 }
 
+// VMwareToAzStackHCI NIC properties.
+type VMwareToAzStackHCIProtectedNicPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (VMwareToAzStackHCIProtectedNicPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareToAzStackHCIProtectedNicPropertiesResponse)(nil)).Elem()
+}
+
+func (o VMwareToAzStackHCIProtectedNicPropertiesResponseOutput) ToVMwareToAzStackHCIProtectedNicPropertiesResponseOutput() VMwareToAzStackHCIProtectedNicPropertiesResponseOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCIProtectedNicPropertiesResponseOutput) ToVMwareToAzStackHCIProtectedNicPropertiesResponseOutputWithContext(ctx context.Context) VMwareToAzStackHCIProtectedNicPropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets a value indicating whether this is the primary NIC.
+func (o VMwareToAzStackHCIProtectedNicPropertiesResponseOutput) IsPrimaryNic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedNicPropertiesResponse) *bool { return v.IsPrimaryNic }).(pulumi.BoolPtrOutput)
+}
+
+// Gets or sets the NIC label.
+func (o VMwareToAzStackHCIProtectedNicPropertiesResponseOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedNicPropertiesResponse) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Gets or sets the NIC mac address.
+func (o VMwareToAzStackHCIProtectedNicPropertiesResponseOutput) MacAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedNicPropertiesResponse) string { return v.MacAddress }).(pulumi.StringOutput)
+}
+
+// Gets or sets the network name.
+func (o VMwareToAzStackHCIProtectedNicPropertiesResponseOutput) NetworkName() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedNicPropertiesResponse) string { return v.NetworkName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the NIC Id.
+func (o VMwareToAzStackHCIProtectedNicPropertiesResponseOutput) NicId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedNicPropertiesResponse) string { return v.NicId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the selection type of the NIC.
+func (o VMwareToAzStackHCIProtectedNicPropertiesResponseOutput) SelectionTypeForFailover() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedNicPropertiesResponse) string { return v.SelectionTypeForFailover }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target network Id within AzStackHCI Cluster.
+func (o VMwareToAzStackHCIProtectedNicPropertiesResponseOutput) TargetNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedNicPropertiesResponse) string { return v.TargetNetworkId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the target test network Id within AzStackHCI Cluster.
+func (o VMwareToAzStackHCIProtectedNicPropertiesResponseOutput) TestNetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIProtectedNicPropertiesResponse) string { return v.TestNetworkId }).(pulumi.StringOutput)
+}
+
+type VMwareToAzStackHCIProtectedNicPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VMwareToAzStackHCIProtectedNicPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VMwareToAzStackHCIProtectedNicPropertiesResponse)(nil)).Elem()
+}
+
+func (o VMwareToAzStackHCIProtectedNicPropertiesResponseArrayOutput) ToVMwareToAzStackHCIProtectedNicPropertiesResponseArrayOutput() VMwareToAzStackHCIProtectedNicPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCIProtectedNicPropertiesResponseArrayOutput) ToVMwareToAzStackHCIProtectedNicPropertiesResponseArrayOutputWithContext(ctx context.Context) VMwareToAzStackHCIProtectedNicPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCIProtectedNicPropertiesResponseArrayOutput) Index(i pulumi.IntInput) VMwareToAzStackHCIProtectedNicPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VMwareToAzStackHCIProtectedNicPropertiesResponse {
+		return vs[0].([]VMwareToAzStackHCIProtectedNicPropertiesResponse)[vs[1].(int)]
+	}).(VMwareToAzStackHCIProtectedNicPropertiesResponseOutput)
+}
+
 // VMware to AzStackHCI Replication extension model custom properties.
 type VMwareToAzStackHCIReplicationExtensionModelCustomProperties struct {
 	// Gets or sets the ARM Id of the target AzStackHCI fabric.
@@ -2656,6 +5986,89 @@ type VMwareToAzStackHCIReplicationExtensionModelCustomProperties struct {
 	StorageAccountSasSecretName *string `pulumi:"storageAccountSasSecretName"`
 	// Gets or sets the ARM Id of the source VMware fabric.
 	VmwareFabricArmId string `pulumi:"vmwareFabricArmId"`
+}
+
+// VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesInput is an input type that accepts VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesArgs and VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutput values.
+// You can construct a concrete instance of `VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesInput` via:
+//
+//	VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesArgs{...}
+type VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesInput interface {
+	pulumi.Input
+
+	ToVMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutput() VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutput
+	ToVMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutputWithContext(context.Context) VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutput
+}
+
+// VMware to AzStackHCI Replication extension model custom properties.
+type VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesArgs struct {
+	// Gets or sets the ARM Id of the target AzStackHCI fabric.
+	AzStackHciFabricArmId pulumi.StringInput `pulumi:"azStackHciFabricArmId"`
+	// Gets or sets the instance type.
+	// Expected value is 'VMwareToAzStackHCI'.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// Gets or sets the storage account Id.
+	StorageAccountId pulumi.StringPtrInput `pulumi:"storageAccountId"`
+	// Gets or sets the Sas Secret of storage account.
+	StorageAccountSasSecretName pulumi.StringPtrInput `pulumi:"storageAccountSasSecretName"`
+	// Gets or sets the ARM Id of the source VMware fabric.
+	VmwareFabricArmId pulumi.StringInput `pulumi:"vmwareFabricArmId"`
+}
+
+func (VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareToAzStackHCIReplicationExtensionModelCustomProperties)(nil)).Elem()
+}
+
+func (i VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesArgs) ToVMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutput() VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutput {
+	return i.ToVMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutputWithContext(context.Background())
+}
+
+func (i VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesArgs) ToVMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutputWithContext(ctx context.Context) VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutput)
+}
+
+// VMware to AzStackHCI Replication extension model custom properties.
+type VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutput struct{ *pulumi.OutputState }
+
+func (VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareToAzStackHCIReplicationExtensionModelCustomProperties)(nil)).Elem()
+}
+
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutput) ToVMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutput() VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutput) ToVMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutputWithContext(ctx context.Context) VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutput {
+	return o
+}
+
+// Gets or sets the ARM Id of the target AzStackHCI fabric.
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutput) AzStackHciFabricArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIReplicationExtensionModelCustomProperties) string {
+		return v.AzStackHciFabricArmId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the instance type.
+// Expected value is 'VMwareToAzStackHCI'.
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIReplicationExtensionModelCustomProperties) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Gets or sets the storage account Id.
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutput) StorageAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIReplicationExtensionModelCustomProperties) *string { return v.StorageAccountId }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Sas Secret of storage account.
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutput) StorageAccountSasSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIReplicationExtensionModelCustomProperties) *string {
+		return v.StorageAccountSasSecretName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the ARM Id of the source VMware fabric.
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutput) VmwareFabricArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIReplicationExtensionModelCustomProperties) string { return v.VmwareFabricArmId }).(pulumi.StringOutput)
 }
 
 // VMware to AzStackHCI Replication extension model custom properties.
@@ -2695,6 +6108,141 @@ type VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse struct 
 	VmwareFabricArmId string `pulumi:"vmwareFabricArmId"`
 	// Gets or sets the ARM Id of the VMware site.
 	VmwareSiteId string `pulumi:"vmwareSiteId"`
+}
+
+// VMware to AzStackHCI Replication extension model custom properties.
+type VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse)(nil)).Elem()
+}
+
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) ToVMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput() VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput {
+	return o
+}
+
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) ToVMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutputWithContext(ctx context.Context) VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the Uri of ASR.
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) AsrServiceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.AsrServiceUri
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the ARM Id of the target AzStackHCI fabric.
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) AzStackHciFabricArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.AzStackHciFabricArmId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the ARM Id of the AzStackHCI site.
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) AzStackHciSiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.AzStackHciSiteId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the Uri of Gateway.
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) GatewayServiceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.GatewayServiceUri
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the instance type.
+// Expected value is 'VMwareToAzStackHCI'.
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.InstanceType
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the Uri of Rcm.
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) RcmServiceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.RcmServiceUri
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the resource group.
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) ResourceGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.ResourceGroup
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the resource location.
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) ResourceLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.ResourceLocation
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the gateway service Id of source.
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) SourceGatewayServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.SourceGatewayServiceId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the source storage container name.
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) SourceStorageContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.SourceStorageContainerName
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the storage account Id.
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) StorageAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) *string {
+		return v.StorageAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the Sas Secret of storage account.
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) StorageAccountSasSecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) *string {
+		return v.StorageAccountSasSecretName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the subscription.
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) SubscriptionId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.SubscriptionId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the gateway service Id of target.
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) TargetGatewayServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.TargetGatewayServiceId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the target storage container name.
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) TargetStorageContainerName() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.TargetStorageContainerName
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the ARM Id of the source VMware fabric.
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) VmwareFabricArmId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.VmwareFabricArmId
+	}).(pulumi.StringOutput)
+}
+
+// Gets or sets the ARM Id of the VMware site.
+func (o VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput) VmwareSiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse) string {
+		return v.VmwareSiteId
+	}).(pulumi.StringOutput)
 }
 
 // Vault properties.
@@ -2941,6 +6489,10 @@ func (o VaultModelResponseSystemDataOutput) LastModifiedByType() pulumi.StringPt
 }
 
 func init() {
+	pulumi.RegisterOutputType(AzStackHCIClusterPropertiesOutput{})
+	pulumi.RegisterOutputType(AzStackHCIClusterPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(AzStackHCIFabricModelCustomPropertiesOutput{})
+	pulumi.RegisterOutputType(AzStackHCIFabricModelCustomPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(DraModelPropertiesOutput{})
 	pulumi.RegisterOutputType(DraModelPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(DraModelResponseSystemDataOutput{})
@@ -2949,6 +6501,26 @@ func init() {
 	pulumi.RegisterOutputType(FabricModelResponseSystemDataOutput{})
 	pulumi.RegisterOutputType(HealthErrorModelResponseOutput{})
 	pulumi.RegisterOutputType(HealthErrorModelResponseArrayOutput{})
+	pulumi.RegisterOutputType(HyperVMigrateFabricModelCustomPropertiesOutput{})
+	pulumi.RegisterOutputType(HyperVMigrateFabricModelCustomPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(HyperVToAzStackHCIDiskInputOutput{})
+	pulumi.RegisterOutputType(HyperVToAzStackHCIDiskInputArrayOutput{})
+	pulumi.RegisterOutputType(HyperVToAzStackHCIDiskInputResponseOutput{})
+	pulumi.RegisterOutputType(HyperVToAzStackHCIDiskInputResponseArrayOutput{})
+	pulumi.RegisterOutputType(HyperVToAzStackHCINicInputOutput{})
+	pulumi.RegisterOutputType(HyperVToAzStackHCINicInputArrayOutput{})
+	pulumi.RegisterOutputType(HyperVToAzStackHCINicInputResponseOutput{})
+	pulumi.RegisterOutputType(HyperVToAzStackHCINicInputResponseArrayOutput{})
+	pulumi.RegisterOutputType(HyperVToAzStackHCIPolicyModelCustomPropertiesOutput{})
+	pulumi.RegisterOutputType(HyperVToAzStackHCIPolicyModelCustomPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(HyperVToAzStackHCIProtectedDiskPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(HyperVToAzStackHCIProtectedDiskPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(HyperVToAzStackHCIProtectedItemModelCustomPropertiesOutput{})
+	pulumi.RegisterOutputType(HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(HyperVToAzStackHCIProtectedNicPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(HyperVToAzStackHCIProtectedNicPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutput{})
+	pulumi.RegisterOutputType(HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(IdentityModelOutput{})
 	pulumi.RegisterOutputType(IdentityModelResponseOutput{})
 	pulumi.RegisterOutputType(InnerHealthErrorModelResponseOutput{})
@@ -2956,6 +6528,10 @@ func init() {
 	pulumi.RegisterOutputType(PolicyModelPropertiesOutput{})
 	pulumi.RegisterOutputType(PolicyModelPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(PolicyModelResponseSystemDataOutput{})
+	pulumi.RegisterOutputType(ProtectedItemDynamicMemoryConfigOutput{})
+	pulumi.RegisterOutputType(ProtectedItemDynamicMemoryConfigPtrOutput{})
+	pulumi.RegisterOutputType(ProtectedItemDynamicMemoryConfigResponseOutput{})
+	pulumi.RegisterOutputType(ProtectedItemDynamicMemoryConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ProtectedItemModelPropertiesOutput{})
 	pulumi.RegisterOutputType(ProtectedItemModelPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ProtectedItemModelPropertiesResponseCurrentJobOutput{})
@@ -2966,8 +6542,32 @@ func init() {
 	pulumi.RegisterOutputType(ReplicationExtensionModelPropertiesOutput{})
 	pulumi.RegisterOutputType(ReplicationExtensionModelPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ReplicationExtensionModelResponseSystemDataOutput{})
+	pulumi.RegisterOutputType(StorageContainerPropertiesOutput{})
+	pulumi.RegisterOutputType(StorageContainerPropertiesArrayOutput{})
+	pulumi.RegisterOutputType(StorageContainerPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(StorageContainerPropertiesResponseArrayOutput{})
 	pulumi.RegisterOutputType(VMwareDraModelCustomPropertiesOutput{})
 	pulumi.RegisterOutputType(VMwareDraModelCustomPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(VMwareMigrateFabricModelCustomPropertiesOutput{})
+	pulumi.RegisterOutputType(VMwareMigrateFabricModelCustomPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(VMwareToAzStackHCIDiskInputOutput{})
+	pulumi.RegisterOutputType(VMwareToAzStackHCIDiskInputArrayOutput{})
+	pulumi.RegisterOutputType(VMwareToAzStackHCIDiskInputResponseOutput{})
+	pulumi.RegisterOutputType(VMwareToAzStackHCIDiskInputResponseArrayOutput{})
+	pulumi.RegisterOutputType(VMwareToAzStackHCINicInputOutput{})
+	pulumi.RegisterOutputType(VMwareToAzStackHCINicInputArrayOutput{})
+	pulumi.RegisterOutputType(VMwareToAzStackHCINicInputResponseOutput{})
+	pulumi.RegisterOutputType(VMwareToAzStackHCINicInputResponseArrayOutput{})
+	pulumi.RegisterOutputType(VMwareToAzStackHCIPolicyModelCustomPropertiesOutput{})
+	pulumi.RegisterOutputType(VMwareToAzStackHCIPolicyModelCustomPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(VMwareToAzStackHCIProtectedDiskPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(VMwareToAzStackHCIProtectedDiskPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(VMwareToAzStackHCIProtectedItemModelCustomPropertiesOutput{})
+	pulumi.RegisterOutputType(VMwareToAzStackHCIProtectedItemModelCustomPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(VMwareToAzStackHCIProtectedNicPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(VMwareToAzStackHCIProtectedNicPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesOutput{})
+	pulumi.RegisterOutputType(VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(VaultModelPropertiesOutput{})
 	pulumi.RegisterOutputType(VaultModelPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(VaultModelPropertiesResponseOutput{})

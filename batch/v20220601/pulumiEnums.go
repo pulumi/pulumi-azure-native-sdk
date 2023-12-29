@@ -140,10 +140,11 @@ func (o CertificateFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 	}).(pulumi.StringPtrOutput)
 }
 
-// CertificateFormatInput is an input type that accepts CertificateFormatArgs and CertificateFormatOutput values.
-// You can construct a concrete instance of `CertificateFormatInput` via:
+// CertificateFormatInput is an input type that accepts values of the CertificateFormat enum
+// A concrete instance of `CertificateFormatInput` can be one of the following:
 //
-//	CertificateFormatArgs{...}
+//	CertificateFormatPfx
+//	CertificateFormatCer
 type CertificateFormatInput interface {
 	pulumi.Input
 
